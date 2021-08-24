@@ -161,6 +161,9 @@ const (
 	// API网关内部请求错误，请稍后重试。若无法解决，请联系智能客服或提交工单。
 	INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
 
+	// CAuth内部请求错误，请稍后重试。若无法解决，请联系智能客服或提交工单。
+	INTERNALERROR_CAUTHEXCEPTION = "InternalError.CauthException"
+
 	// oss内部请求错误，请稍后重试。若无法解决，请联系智能客服或提交工单。
 	INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 

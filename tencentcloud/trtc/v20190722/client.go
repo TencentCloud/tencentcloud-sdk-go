@@ -569,6 +569,7 @@ func NewDescribeRoomInformationResponse() (response *DescribeRoomInformationResp
 //  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
 //  INVALIDPARAMETER_PAGENUMBER = "InvalidParameter.PageNumber"
 //  INVALIDPARAMETER_PAGESIZE = "InvalidParameter.PageSize"
+//  INVALIDPARAMETER_PAGESIZEOVERSIZE = "InvalidParameter.PageSizeOversize"
 //  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 //  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"

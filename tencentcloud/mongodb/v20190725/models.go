@@ -1883,6 +1883,15 @@ type ModifyDBInstanceSpecRequest struct {
 
 	// 实例配置变更后oplog的大小，单位：GB，默认为磁盘空间的10%，允许设置的最小值为磁盘的10%，最大值为磁盘的90%
 	OplogSize *uint64 `json:"OplogSize,omitempty" name:"OplogSize"`
+
+	// 实例变更后的节点数，取值范围具体参照查询云数据库的售卖规格返回参数。默认为不变更节点数
+	NodeNum *uint64 `json:"NodeNum,omitempty" name:"NodeNum"`
+
+	// 实例变更后的分片数，取值范围具体参照查询云数据库的售卖规格返回参数。只能增加不能减少，默认为不变更分片数
+	ReplicateSetNum *uint64 `json:"ReplicateSetNum,omitempty" name:"ReplicateSetNum"`
+
+	// 实例配置变更的切换时间，参数为：0(默认)、1。0-调整完成时，1-维护时间内。注：调整节点数和分片数不支持在【维护时间内】变更。
+	InMaintenance *uint64 `json:"InMaintenance,omitempty" name:"InMaintenance"`
 }
 
 func (r *ModifyDBInstanceSpecRequest) ToJsonString() string {
@@ -1901,6 +1910,9 @@ func (r *ModifyDBInstanceSpecRequest) FromJsonString(s string) error {
 	delete(f, "Memory")
 	delete(f, "Volume")
 	delete(f, "OplogSize")
+	delete(f, "NodeNum")
+	delete(f, "ReplicateSetNum")
+	delete(f, "InMaintenance")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBInstanceSpecRequest has unknown keys!", "")
 	}

@@ -173,7 +173,7 @@ func NewCreateAsyncContextTaskResponse() (response *CreateAsyncContextTaskRespon
 }
 
 // CreateAsyncContextTask
-// 本接口用于创建异步上下文任务
+// 本接口用于创建离线上下文任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ASYNCTASKNOTCOMPLETED = "FailedOperation.AsyncTaskNotCompleted"
@@ -210,7 +210,7 @@ func NewCreateAsyncSearchTaskResponse() (response *CreateAsyncSearchTaskResponse
 }
 
 // CreateAsyncSearchTask
-// 本接口用于创建异步检索任务
+// 本接口用于创建离线检索任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYNTAXERROR = "FailedOperation.SyntaxError"
@@ -289,7 +289,7 @@ func NewCreateExportResponse() (response *CreateExportResponse) {
 }
 
 // CreateExport
-// 本接口用于创建日志导出
+// 本接口用于创建日志下载任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -607,7 +607,7 @@ func NewDeleteAsyncContextTaskResponse() (response *DeleteAsyncContextTaskRespon
 }
 
 // DeleteAsyncContextTask
-// 本接口用于删除异步上下文任务
+// 本接口用于删除离线上下文任务
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
@@ -640,7 +640,7 @@ func NewDeleteAsyncSearchTaskResponse() (response *DeleteAsyncSearchTaskResponse
 }
 
 // DeleteAsyncSearchTask
-// 本接口用于删除异步检索任务
+// 本接口用于删除离线检索任务
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
@@ -754,7 +754,7 @@ func NewDeleteExportResponse() (response *DeleteExportResponse) {
 }
 
 // DeleteExport
-// 本接口用于删除日志导出
+// 本接口用于删除日志下载任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1053,7 +1053,7 @@ func NewDescribeAsyncContextResultResponse() (response *DescribeAsyncContextResu
 }
 
 // DescribeAsyncContextResult
-// 本接口用户获取异步上下文任务的结果
+// 本接口用户获取离线上下文任务的结果
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ASYNCSEARCHNOTCOMPLETED = "FailedOperation.AsyncSearchNotCompleted"
@@ -1087,7 +1087,7 @@ func NewDescribeAsyncContextTasksResponse() (response *DescribeAsyncContextTasks
 }
 
 // DescribeAsyncContextTasks
-// 本接口用于获取异步上下文任务列表
+// 本接口用于获取离线上下文任务列表
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
@@ -1119,7 +1119,7 @@ func NewDescribeAsyncSearchResultResponse() (response *DescribeAsyncSearchResult
 }
 
 // DescribeAsyncSearchResult
-// 本接口用户获取异步检索任务的结果
+// 本接口用户获取离线检索任务的结果
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ASYNCSEARCHNOTCOMPLETED = "FailedOperation.AsyncSearchNotCompleted"
@@ -1154,7 +1154,7 @@ func NewDescribeAsyncSearchTasksResponse() (response *DescribeAsyncSearchTasksRe
 }
 
 // DescribeAsyncSearchTasks
-// 本接口用户获取异步检索任务列表
+// 本接口用户获取离线检索任务列表
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
@@ -1265,7 +1265,7 @@ func NewDescribeExportsResponse() (response *DescribeExportsResponse) {
 }
 
 // DescribeExports
-// 本接口用于获取日志导出列表
+// 本接口用于获取日志下载任务列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

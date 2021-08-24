@@ -2563,13 +2563,10 @@ func (r *CreateDirectConnectGatewayResponse) FromJsonString(s string) error {
 type CreateFlowLogRequest struct {
 	*tchttp.BaseRequest
 
-	// 私用网络ID或者统一ID，建议使用统一ID
-	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
-
 	// 流日志实例名字
 	FlowLogName *string `json:"FlowLogName,omitempty" name:"FlowLogName"`
 
-	// 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE
+	// 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE|CCN
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 资源唯一ID
@@ -2580,6 +2577,9 @@ type CreateFlowLogRequest struct {
 
 	// 流日志存储ID
 	CloudLogId *string `json:"CloudLogId,omitempty" name:"CloudLogId"`
+
+	// 私用网络ID或者统一ID，建议使用统一ID，当ResourceType为CCN时不填，其他类型必填。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 流日志实例描述
 	FlowLogDescription *string `json:"FlowLogDescription,omitempty" name:"FlowLogDescription"`
@@ -2600,12 +2600,12 @@ func (r *CreateFlowLogRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "VpcId")
 	delete(f, "FlowLogName")
 	delete(f, "ResourceType")
 	delete(f, "ResourceId")
 	delete(f, "TrafficType")
 	delete(f, "CloudLogId")
+	delete(f, "VpcId")
 	delete(f, "FlowLogDescription")
 	delete(f, "Tags")
 	if len(f) > 0 {
@@ -4781,11 +4781,11 @@ func (r *DeleteDirectConnectGatewayResponse) FromJsonString(s string) error {
 type DeleteFlowLogRequest struct {
 	*tchttp.BaseRequest
 
-	// 私用网络ID或者统一ID，建议使用统一ID
-	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
-
 	// 流日志唯一ID
 	FlowLogId *string `json:"FlowLogId,omitempty" name:"FlowLogId"`
+
+	// 私用网络ID或者统一ID，建议使用统一ID，删除云联网流日志时，可不填，其他流日志类型必填。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 }
 
 func (r *DeleteFlowLogRequest) ToJsonString() string {
@@ -4800,8 +4800,8 @@ func (r *DeleteFlowLogRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "VpcId")
 	delete(f, "FlowLogId")
+	delete(f, "VpcId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteFlowLogRequest has unknown keys!", "")
 	}
@@ -11332,7 +11332,7 @@ type FlowLog struct {
 	// 流日志实例名字
 	FlowLogName *string `json:"FlowLogName,omitempty" name:"FlowLogName"`
 
-	// 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE
+	// 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE|CCN
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 资源唯一ID
@@ -12916,11 +12916,11 @@ func (r *ModifyDirectConnectGatewayAttributeResponse) FromJsonString(s string) e
 type ModifyFlowLogAttributeRequest struct {
 	*tchttp.BaseRequest
 
-	// 私用网络ID或者统一ID，建议使用统一ID
-	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
-
 	// 流日志唯一ID
 	FlowLogId *string `json:"FlowLogId,omitempty" name:"FlowLogId"`
+
+	// 私用网络ID或者统一ID，建议使用统一ID，修改云联网流日志属性时可不填，其他流日志类型必填。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 流日志实例名字
 	FlowLogName *string `json:"FlowLogName,omitempty" name:"FlowLogName"`
@@ -12941,8 +12941,8 @@ func (r *ModifyFlowLogAttributeRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "VpcId")
 	delete(f, "FlowLogId")
+	delete(f, "VpcId")
 	delete(f, "FlowLogName")
 	delete(f, "FlowLogDescription")
 	if len(f) > 0 {

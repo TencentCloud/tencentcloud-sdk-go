@@ -1,10 +1,29 @@
 # 本版本更新包含以下内容：
 
-## 数字身份管控平台（员工版）(eiam) 版本：2021-04-20
+## 正版曲库直通车(ame) 版本：2019-09-16
 
-### 第 8 次发布
+### 第 15 次发布
 
-发布时间：2021-08-21 15:18:03
+发布时间：2021-08-24 08:11:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DataInfo](https://cloud.tencent.com/document/api/1155/40113#DataInfo)
+
+	* 新增成员：TagNames
+
+
+
+
+## 访问管理(cam) 版本：2019-01-16
+
+### 第 37 次发布
+
+发布时间：2021-08-24 08:04:06
 
 本次发布包含了以下内容：
 
@@ -12,18 +31,22 @@
 
 修改接口：
 
-* [DescribeUserResourcesAuthorization](https://cloud.tencent.com/document/api/1442/60257)
+* [ListAttachedGroupPolicies](https://cloud.tencent.com/document/api/598/34573)
 
-	* <font color="#dd0000">**修改入参**：</font>UserId
+	* 新增入参：Keyword
+
+* [ListAttachedRolePolicies](https://cloud.tencent.com/document/api/598/36220)
+
+	* 新增入参：Keyword
 
 
 
 
-## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 17 次发布
+### 第 66 次发布
 
-发布时间：2021-08-23 08:07:32
+发布时间：2021-08-24 08:04:24
 
 本次发布包含了以下内容：
 
@@ -31,15 +54,250 @@
 
 新增接口：
 
-* [DescribeSlowQueryAnalysis](https://cloud.tencent.com/document/api/409/60541)
-* [DescribeSlowQueryList](https://cloud.tencent.com/document/api/409/60540)
+* [ModifyAccountHost](https://cloud.tencent.com/document/api/236/60617)
+
+
+
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 17 次发布
+
+发布时间：2021-08-24 08:11:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Route](https://cloud.tencent.com/document/api/597/40861#Route)
+
+	* 新增成员：DeleteTimestamp
+
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 9 次发布
+
+发布时间：2021-08-24 08:00:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SearchLog](https://cloud.tencent.com/document/api/614/56447)
+
+	* 新增入参：UseNewAnalysis
+
+	* 新增出参：AnalysisRecords, Columns
+
 
 新增数据结构：
 
-* [AnalysisItems](https://cloud.tencent.com/document/api/409/16778#AnalysisItems)
-* [Detail](https://cloud.tencent.com/document/api/409/16778#Detail)
-* [DurationAnalysis](https://cloud.tencent.com/document/api/409/16778#DurationAnalysis)
-* [RawSlowQuery](https://cloud.tencent.com/document/api/409/16778#RawSlowQuery)
+* [Column](https://cloud.tencent.com/document/api/614/56471#Column)
+
+
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 30 次发布
+
+发布时间：2021-08-24 08:06:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetFaceIdResult](https://cloud.tencent.com/document/api/1007/49199)
+
+	* 新增出参：DeviceInfoTag, RiskInfoTag
+
+
+
+
+## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 21 次发布
+
+发布时间：2021-08-24 08:06:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CheckProxyCreate](https://cloud.tencent.com/document/api/608/36974)
+
+	* 新增入参：PackageType
+
+* [CreateProxyGroup](https://cloud.tencent.com/document/api/608/36949)
+
+	* 新增入参：PackageType
+
+* [DescribeAccessRegionsByDestRegion](https://cloud.tencent.com/document/api/608/36965)
+
+	* 新增入参：PackageType
+
+* [DescribeRegionAndPrice](https://cloud.tencent.com/document/api/608/37017)
+
+	* 新增入参：PackageType
+
+* [InquiryPriceCreateProxy](https://cloud.tencent.com/document/api/608/36957)
+
+	* 新增入参：PackageType
+
+
+修改数据结构：
+
+* [ProxyGroupDetail](https://cloud.tencent.com/document/api/608/37023#ProxyGroupDetail)
+
+	* 新增成员：PackageType
+
+
+
+
+## 游戏多媒体引擎(gme) 版本：2018-07-11
+
+### 第 12 次发布
+
+发布时间：2021-08-24 08:06:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateAgeDetectTask](https://cloud.tencent.com/document/api/607/60620)
+* [DescribeAgeDetectTask](https://cloud.tencent.com/document/api/607/60619)
+
+新增数据结构：
+
+* [AgeDetectTask](https://cloud.tencent.com/document/api/607/35375#AgeDetectTask)
+* [AgeDetectTaskResult](https://cloud.tencent.com/document/api/607/35375#AgeDetectTaskResult)
+
+
+
+## 云直播(live) 版本：2018-08-01
+
+### 第 69 次发布
+
+发布时间：2021-08-24 08:07:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeLiveDomains](https://cloud.tencent.com/document/api/267/33856)
+
+	* 新增出参：CreateLimitCount
+
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 13 次发布
+
+发布时间：2021-08-24 08:07:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyDBInstanceSpec](https://cloud.tencent.com/document/api/240/38565)
+
+	* 新增入参：NodeNum, ReplicateSetNum, InMaintenance
+
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2018-04-08
+
+
+
+## TBaaS(tbaas) 版本：2018-04-16
+
+### 第 11 次发布
+
+发布时间：2021-08-24 08:09:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [InvokeChainMakerContract](https://cloud.tencent.com/document/api/663/60624)
+* [QueryChainMakerBlockTransaction](https://cloud.tencent.com/document/api/663/60623)
+* [QueryChainMakerContract](https://cloud.tencent.com/document/api/663/60622)
+* [QueryChainMakerTransaction](https://cloud.tencent.com/document/api/663/60621)
+
+新增数据结构：
+
+* [ChainMakerContractResult](https://cloud.tencent.com/document/api/663/19466#ChainMakerContractResult)
+* [ChainMakerTransactionResult](https://cloud.tencent.com/document/api/663/19466#ChainMakerTransactionResult)
+
+
+
+## 弹性微服务(tem) 版本：2021-07-01
+
+### 第 4 次发布
+
+发布时间：2021-08-24 08:00:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeployApplication](https://cloud.tencent.com/document/api/1371/60158)
+
+	* 新增入参：LogEnable
+
+
+
+
+## 弹性微服务(tem) 版本：2020-12-21
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 96 次发布
+
+发布时间：2021-08-24 08:10:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateFlowLog](https://cloud.tencent.com/document/api/215/35015)
+
+	* <font color="#dd0000">**修改入参**：</font>VpcId
+
+* [DeleteFlowLog](https://cloud.tencent.com/document/api/215/35014)
+
+	* <font color="#dd0000">**修改入参**：</font>VpcId
+
+* [ModifyFlowLogAttribute](https://cloud.tencent.com/document/api/215/35011)
+
+	* <font color="#dd0000">**修改入参**：</font>VpcId
+
 
 
 
@@ -305,6 +563,21 @@
 
 
 ## 正版曲库直通车(ame) 版本：2019-09-16
+
+### 第 15 次发布
+
+发布时间：2021-08-24 08:11:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DataInfo](https://cloud.tencent.com/document/api/1155/40113#DataInfo)
+
+	* 新增成员：TagNames
+
 
 ### 第 14 次发布
 
@@ -5713,6 +5986,25 @@
 
 ## 访问管理(cam) 版本：2019-01-16
 
+### 第 37 次发布
+
+发布时间：2021-08-24 08:04:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ListAttachedGroupPolicies](https://cloud.tencent.com/document/api/598/34573)
+
+	* 新增入参：Keyword
+
+* [ListAttachedRolePolicies](https://cloud.tencent.com/document/api/598/36220)
+
+	* 新增入参：Keyword
+
+
 ### 第 36 次发布
 
 发布时间：2021-07-27 08:04:10
@@ -7573,6 +7865,18 @@
 
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 66 次发布
+
+发布时间：2021-08-24 08:04:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyAccountHost](https://cloud.tencent.com/document/api/236/60617)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 65 次发布
 
@@ -11412,6 +11716,21 @@
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19
 
+### 第 17 次发布
+
+发布时间：2021-08-24 08:11:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Route](https://cloud.tencent.com/document/api/597/40861#Route)
+
+	* 新增成员：DeleteTimestamp
+
+
 ### 第 16 次发布
 
 发布时间：2021-08-13 08:10:15
@@ -13229,6 +13548,27 @@
 
 
 ## 日志服务(cls) 版本：2020-10-16
+
+### 第 9 次发布
+
+发布时间：2021-08-24 08:00:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SearchLog](https://cloud.tencent.com/document/api/614/56447)
+
+	* 新增入参：UseNewAnalysis
+
+	* 新增出参：AnalysisRecords, Columns
+
+
+新增数据结构：
+
+* [[Column](https://cloud.tencent.com/document/api/614/56471#Column)](https://cloud.tencent.com/document/api/614/56471#[Column](https://cloud.tencent.com/document/api/614/56471#Column))
 
 ### 第 8 次发布
 
@@ -24332,6 +24672,21 @@
 
 ## 人脸核身(faceid) 版本：2018-03-01
 
+### 第 30 次发布
+
+发布时间：2021-08-24 08:06:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetFaceIdResult](https://cloud.tencent.com/document/api/1007/49199)
+
+	* 新增出参：DeviceInfoTag, RiskInfoTag
+
+
 ### 第 29 次发布
 
 发布时间：2021-08-11 08:05:48
@@ -25036,6 +25391,44 @@
 
 ## 全球应用加速(gaap) 版本：2018-05-29
 
+### 第 21 次发布
+
+发布时间：2021-08-24 08:06:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CheckProxyCreate](https://cloud.tencent.com/document/api/608/36974)
+
+	* 新增入参：PackageType
+
+* [CreateProxyGroup](https://cloud.tencent.com/document/api/608/36949)
+
+	* 新增入参：PackageType
+
+* [DescribeAccessRegionsByDestRegion](https://cloud.tencent.com/document/api/608/36965)
+
+	* 新增入参：PackageType
+
+* [DescribeRegionAndPrice](https://cloud.tencent.com/document/api/608/37017)
+
+	* 新增入参：PackageType
+
+* [InquiryPriceCreateProxy](https://cloud.tencent.com/document/api/608/36957)
+
+	* 新增入参：PackageType
+
+
+修改数据结构：
+
+* [ProxyGroupDetail](https://cloud.tencent.com/document/api/608/37023#ProxyGroupDetail)
+
+	* 新增成员：PackageType
+
+
 ### 第 20 次发布
 
 发布时间：2021-08-12 08:06:22
@@ -25696,6 +26089,24 @@
 
 
 ## 游戏多媒体引擎(gme) 版本：2018-07-11
+
+### 第 12 次发布
+
+发布时间：2021-08-24 08:06:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateAgeDetectTask](https://cloud.tencent.com/document/api/607/60620)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAgeDetectTask](https://cloud.tencent.com/document/api/607/60619)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AgeDetectTask](https://cloud.tencent.com/document/api/607/35375#AgeDetectTask)](https://cloud.tencent.com/document/api/607/35375#[AgeDetectTask](https://cloud.tencent.com/document/api/607/35375#AgeDetectTask))
+* [[AgeDetectTaskResult](https://cloud.tencent.com/document/api/607/35375#AgeDetectTaskResult)](https://cloud.tencent.com/document/api/607/35375#[AgeDetectTaskResult](https://cloud.tencent.com/document/api/607/35375#AgeDetectTaskResult))
 
 ### 第 11 次发布
 
@@ -31511,6 +31922,21 @@
 
 ## 云直播(live) 版本：2018-08-01
 
+### 第 69 次发布
+
+发布时间：2021-08-24 08:07:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeLiveDomains](https://cloud.tencent.com/document/api/267/33856)
+
+	* 新增出参：CreateLimitCount
+
+
 ### 第 68 次发布
 
 发布时间：2021-08-06 08:06:31
@@ -33914,6 +34340,21 @@
 
 
 ## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 13 次发布
+
+发布时间：2021-08-24 08:07:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyDBInstanceSpec](https://cloud.tencent.com/document/api/240/38565)
+
+	* 新增入参：NodeNum, ReplicateSetNum, InMaintenance
+
 
 ### 第 12 次发布
 
@@ -38457,15 +38898,15 @@
 
 新增接口：
 
-* [[DescribeSlowQueryAnalysis](https://cloud.tencent.com/document/api/409/60541)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSlowQueryList](https://cloud.tencent.com/document/api/409/60540)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSlowQueryAnalysis](https://cloud.tencent.com/document/api/409/60541)
+* [DescribeSlowQueryList](https://cloud.tencent.com/document/api/409/60540)
 
 新增数据结构：
 
-* [[AnalysisItems](https://cloud.tencent.com/document/api/409/16778#AnalysisItems)](https://cloud.tencent.com/document/api/409/16778#[AnalysisItems](https://cloud.tencent.com/document/api/409/16778#AnalysisItems))
-* [[Detail](https://cloud.tencent.com/document/api/409/16778#Detail)](https://cloud.tencent.com/document/api/409/16778#[Detail](https://cloud.tencent.com/document/api/409/16778#Detail))
-* [[DurationAnalysis](https://cloud.tencent.com/document/api/409/16778#DurationAnalysis)](https://cloud.tencent.com/document/api/409/16778#[DurationAnalysis](https://cloud.tencent.com/document/api/409/16778#DurationAnalysis))
-* [[RawSlowQuery](https://cloud.tencent.com/document/api/409/16778#RawSlowQuery)](https://cloud.tencent.com/document/api/409/16778#[RawSlowQuery](https://cloud.tencent.com/document/api/409/16778#RawSlowQuery))
+* [AnalysisItems](https://cloud.tencent.com/document/api/409/16778#AnalysisItems)
+* [Detail](https://cloud.tencent.com/document/api/409/16778#Detail)
+* [DurationAnalysis](https://cloud.tencent.com/document/api/409/16778#DurationAnalysis)
+* [RawSlowQuery](https://cloud.tencent.com/document/api/409/16778#RawSlowQuery)
 
 ### 第 16 次发布
 
@@ -42960,6 +43401,26 @@
 
 ## TBaaS(tbaas) 版本：2018-04-16
 
+### 第 11 次发布
+
+发布时间：2021-08-24 08:09:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[InvokeChainMakerContract](https://cloud.tencent.com/document/api/663/60624)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryChainMakerBlockTransaction](https://cloud.tencent.com/document/api/663/60623)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryChainMakerContract](https://cloud.tencent.com/document/api/663/60622)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryChainMakerTransaction](https://cloud.tencent.com/document/api/663/60621)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ChainMakerContractResult](https://cloud.tencent.com/document/api/663/19466#ChainMakerContractResult)](https://cloud.tencent.com/document/api/663/19466#[ChainMakerContractResult](https://cloud.tencent.com/document/api/663/19466#ChainMakerContractResult))
+* [[ChainMakerTransactionResult](https://cloud.tencent.com/document/api/663/19466#ChainMakerTransactionResult)](https://cloud.tencent.com/document/api/663/19466#[ChainMakerTransactionResult](https://cloud.tencent.com/document/api/663/19466#ChainMakerTransactionResult))
+
 ### 第 10 次发布
 
 发布时间：2021-03-16 17:32:27
@@ -46587,6 +47048,21 @@
 
 ## 弹性微服务(tem) 版本：2021-07-01
 
+### 第 4 次发布
+
+发布时间：2021-08-24 08:00:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeployApplication](https://cloud.tencent.com/document/api/1371/60158)
+
+	* 新增入参：LogEnable
+
+
 ### 第 3 次发布
 
 发布时间：2021-08-17 08:00:44
@@ -48172,6 +48648,18 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 69 次发布
+
+发布时间：2021-08-23 17:09:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyNodePoolInstanceTypes](https://cloud.tencent.com/document/api/457/60598)
 
 ### 第 68 次发布
 
@@ -54945,6 +55433,29 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 96 次发布
+
+发布时间：2021-08-24 08:10:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateFlowLog](https://cloud.tencent.com/document/api/215/35015)
+
+	* <font color="#dd0000">**修改入参**：</font>VpcId
+
+* [DeleteFlowLog](https://cloud.tencent.com/document/api/215/35014)
+
+	* <font color="#dd0000">**修改入参**：</font>VpcId
+
+* [ModifyFlowLogAttribute](https://cloud.tencent.com/document/api/215/35011)
+
+	* <font color="#dd0000">**修改入参**：</font>VpcId
+
 
 ### 第 95 次发布
 

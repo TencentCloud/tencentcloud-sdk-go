@@ -113,6 +113,7 @@ func NewAddLiveDomainResponse() (response *AddLiveDomainResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
 //  FAILEDOPERATION_DELETEDOMAININLOCKEDTIME = "FailedOperation.DeleteDomainInLockedTime"
+//  FAILEDOPERATION_HOSTOUTLIMIT = "FailedOperation.HostOutLimit"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CHINESECHARACTERDETECTED = "InternalError.ChineseCharacterDetected"
 //  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
@@ -129,6 +130,7 @@ func NewAddLiveDomainResponse() (response *AddLiveDomainResponse) {
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
 //  INVALIDPARAMETER_DOMAINALREADYEXIST = "InvalidParameter.DomainAlreadyExist"
 //  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
+//  INVALIDPARAMETER_DOMAINHITBLACKLIST = "InvalidParameter.DomainHitBlackList"
 //  INVALIDPARAMETER_DOMAINISFAMOUS = "InvalidParameter.DomainIsFamous"
 //  INVALIDPARAMETER_DOMAINISLIMITED = "InvalidParameter.DomainIsLimited"
 //  INVALIDPARAMETER_DOMAINTOOLONG = "InvalidParameter.DomainTooLong"

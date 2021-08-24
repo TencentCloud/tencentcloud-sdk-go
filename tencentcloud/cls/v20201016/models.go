@@ -304,6 +304,15 @@ type CallBackInfo struct {
 	Headers []*string `json:"Headers,omitempty" name:"Headers"`
 }
 
+type Column struct {
+
+	// 列的名字
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 列的属性
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
 type CompressInfo struct {
 
 	// 压缩格式，支持gzip、lzop和none不压缩
@@ -726,7 +735,7 @@ type CreateExportRequest struct {
 	// 日志导出检索语句
 	Query *string `json:"Query,omitempty" name:"Query"`
 
-	// 日志导出数量
+	// 日志导出数量,  最大值1000万
 	Count *uint64 `json:"Count,omitempty" name:"Count"`
 
 	// 日志导出起始时间，毫秒时间戳
@@ -4293,6 +4302,9 @@ type SearchLogRequest struct {
 
 	// 日志接口是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
 	Sort *string `json:"Sort,omitempty" name:"Sort"`
+
+	// 为true代表使用新检索,响应参数AnalysisRecords和Columns有效， 为false时代表使用老检索方式, AnalysisResults和ColNames有效
+	UseNewAnalysis *bool `json:"UseNewAnalysis,omitempty" name:"UseNewAnalysis"`
 }
 
 func (r *SearchLogRequest) ToJsonString() string {
@@ -4314,6 +4326,7 @@ func (r *SearchLogRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Context")
 	delete(f, "Sort")
+	delete(f, "UseNewAnalysis")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchLogRequest has unknown keys!", "")
 	}
@@ -4344,6 +4357,14 @@ type SearchLogResponse struct {
 		// 日志分析结果；当Analysis为False时，可能返回为null
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		AnalysisResults []*LogItems `json:"AnalysisResults,omitempty" name:"AnalysisResults"`
+
+		// 新的日志分析结果; UseNewAnalysis为true有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AnalysisRecords []*string `json:"AnalysisRecords,omitempty" name:"AnalysisRecords"`
+
+		// 日志分析的列属性; UseNewAnalysis为true有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Columns []*Column `json:"Columns,omitempty" name:"Columns"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

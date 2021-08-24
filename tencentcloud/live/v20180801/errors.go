@@ -53,6 +53,9 @@ const (
 	// 无在线流。
 	FAILEDOPERATION_HASNOTLIVINGSTREAM = "FailedOperation.HasNotLivingStream"
 
+	// 域名数量超过限制(100个）。
+	FAILEDOPERATION_HOSTOUTLIMIT = "FailedOperation.HostOutLimit"
+
 	// 操作 CDN 接口失败。
 	FAILEDOPERATION_INVOKECDNAPIFAIL = "FailedOperation.InvokeCdnApiFail"
 

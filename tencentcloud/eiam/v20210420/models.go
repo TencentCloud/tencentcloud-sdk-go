@@ -1786,7 +1786,7 @@ type ModifyApplicationRequest struct {
 	// 应用展示名称，长度限制：32个字符。 默认与应用名字相同。
 	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
 
-	// 应用状态
+	// 应用状态，true表示启用，false表示禁用。
 	AppStatus *bool `json:"AppStatus,omitempty" name:"AppStatus"`
 
 	// 应用图标图片访问地址。

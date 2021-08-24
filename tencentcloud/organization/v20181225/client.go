@@ -424,6 +424,7 @@ func NewListOrganizationMembersResponse() (response *ListOrganizationMembersResp
 // 获取企业组织成员列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 func (c *Client) ListOrganizationMembers(request *ListOrganizationMembersRequest) (response *ListOrganizationMembersResponse, err error) {
     if request == nil {

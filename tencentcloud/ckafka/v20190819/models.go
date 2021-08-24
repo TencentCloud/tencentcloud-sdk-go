@@ -2827,7 +2827,7 @@ type Route struct {
 	// 路由ID
 	RouteId *int64 `json:"RouteId,omitempty" name:"RouteId"`
 
-	// vip网络类型（1:外网TGW  2:基础网络 3:VPC网络 4:腾讯云支持环境(一般用于内部实例) 5:SSL外网访问方式访问 6:黑石环境vpc）
+	// vip网络类型（1:外网TGW  2:基础网络 3:VPC网络 4:支撑网络(标准版) 5:SSL外网访问方式访问 6:黑石环境vpc 7:支撑网络(专业版)）
 	VipType *int64 `json:"VipType,omitempty" name:"VipType"`
 
 	// 虚拟IP列表
@@ -2840,6 +2840,10 @@ type Route struct {
 	// 域名port
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainPort *int64 `json:"DomainPort,omitempty" name:"DomainPort"`
+
+	// 时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeleteTimestamp *string `json:"DeleteTimestamp,omitempty" name:"DeleteTimestamp"`
 }
 
 type RouteResponse struct {

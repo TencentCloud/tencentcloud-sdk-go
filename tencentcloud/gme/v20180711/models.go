@@ -20,6 +20,30 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AgeDetectTask struct {
+
+	// 数据唯一ID
+	DataId *string `json:"DataId,omitempty" name:"DataId"`
+
+	// 数据文件的url，为 urlencode 编码,音频文件格式支持的类型：.wav、.m4a、.amr、.mp3、.aac、.wma、.ogg
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+
+type AgeDetectTaskResult struct {
+
+	// 数据唯一ID
+	DataId *string `json:"DataId,omitempty" name:"DataId"`
+
+	// 数据文件的url
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 任务状态，0: 已创建，1:运行中，2:正常结束，3:异常结束，4:运行超时
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 任务结果：0: 成年，1:未成年，100:未知
+	Age *uint64 `json:"Age,omitempty" name:"Age"`
+}
+
 type AppStatisticsItem struct {
 
 	// 实时语音统计数据
@@ -78,6 +102,65 @@ type ApplicationDataStatistics struct {
 
 	// 大陆和海外地区Pcu统计数据汇总，单位人
 	PcuDataSum []*StatisticsItem `json:"PcuDataSum,omitempty" name:"PcuDataSum"`
+}
+
+type CreateAgeDetectTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用id
+	BizId *int64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 语音检测子任务列表，列表最多支持100个检测子任务。结构体中包含：
+	// <li>DataId：数据的唯一ID</li>
+	// <li>Url：数据文件的url，为 urlencode 编码，流式则为拉流地址</li>
+	Tasks []*AgeDetectTask `json:"Tasks,omitempty" name:"Tasks"`
+
+	// 任务结束时gme后台会自动触发回调
+	Callback *string `json:"Callback,omitempty" name:"Callback"`
+}
+
+func (r *CreateAgeDetectTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAgeDetectTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BizId")
+	delete(f, "Tasks")
+	delete(f, "Callback")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAgeDetectTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAgeDetectTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 本次任务提交后唯一id，用于获取任务运行结果
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAgeDetectTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAgeDetectTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateAppRequest struct {
@@ -172,6 +255,66 @@ func (r *CreateAppResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAppResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAgeDetectTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用id
+	BizId *int64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 创建年龄语音识别任务时返回的taskid
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeAgeDetectTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAgeDetectTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BizId")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAgeDetectTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAgeDetectTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务ID
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 语音检测返回。Results 字段是 JSON 数组，每一个元素包含：
+	// DataId： 请求中对应的 DataId。
+	// Url ：该请求中对应的 Url。
+	// Status ：子任务状态，0:已创建，1:运行中，2:已完成，3:任务异常，4:任务超时。
+	// Age ：子任务完成后的结果，0:成年人，1:未成年人，100:未知结果。
+		Results []*AgeDetectTaskResult `json:"Results,omitempty" name:"Results"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAgeDetectTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAgeDetectTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -786,7 +929,7 @@ type RealtimeSpeechConf struct {
 	// 实时语音服务开关，取值：open/close
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 实时语音音质类型，取值：high-高音质，ordinary-普通音质。默认高音质。普通音质仅白名单开放，如需要普通音质，请联系腾讯云商务。
+	// 实时语音音质类型，取值：high-高音质
 	Quality *string `json:"Quality,omitempty" name:"Quality"`
 }
 

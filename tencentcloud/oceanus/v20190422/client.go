@@ -446,6 +446,7 @@ func NewDescribeResourceRelatedJobsResponse() (response *DescribeResourceRelated
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.DB"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeResourceRelatedJobs(request *DescribeResourceRelatedJobsRequest) (response *DescribeResourceRelatedJobsResponse, err error) {
     if request == nil {
         request = NewDescribeResourceRelatedJobsRequest()

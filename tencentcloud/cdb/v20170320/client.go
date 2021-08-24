@@ -1191,6 +1191,7 @@ func NewDescribeAuditConfigResponse() (response *DescribeAuditConfigResponse) {
 // 本接口(DescribeAuditConfig)用于查询云数据库审计策略的服务配置，包括审计日志保存时长等。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  OPERATIONDENIED_AUDITPOLICYNOTEXISTERROR = "OperationDenied.AuditPolicyNotExistError"
@@ -1537,6 +1538,7 @@ func NewDescribeBinlogBackupOverviewResponse() (response *DescribeBinlogBackupOv
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED_SUBACCOUNTOPERATIONDENIED = "OperationDenied.SubAccountOperationDenied"
 func (c *Client) DescribeBinlogBackupOverview(request *DescribeBinlogBackupOverviewRequest) (response *DescribeBinlogBackupOverviewResponse, err error) {
     if request == nil {
@@ -2992,6 +2994,55 @@ func (c *Client) ModifyAccountDescription(request *ModifyAccountDescriptionReque
     return
 }
 
+func NewModifyAccountHostRequest() (request *ModifyAccountHostRequest) {
+    request = &ModifyAccountHostRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "ModifyAccountHost")
+    return
+}
+
+func NewModifyAccountHostResponse() (response *ModifyAccountHostResponse) {
+    response = &ModifyAccountHostResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyAccountHost
+// 本接口(ModifyAccountHost)用于修改云数据库账户的主机。
+//
+// 可能返回的错误码:
+//  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
+//  FAILEDOPERATION_ASYNCTASKSTATUSERROR = "FailedOperation.AsyncTaskStatusError"
+//  FAILEDOPERATION_JSONMARSHALERROR = "FailedOperation.JsonMarshalError"
+//  FAILEDOPERATION_JSONUNMARSHALERROR = "FailedOperation.JsonUnmarshalError"
+//  FAILEDOPERATION_SUBMITASYNCTASKERROR = "FailedOperation.SubmitAsyncTaskError"
+//  INTERNALERROR_AUTHERROR = "InternalError.AuthError"
+//  INTERNALERROR_CAUTHERROR = "InternalError.CauthError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_INNERCOMMONERROR = "InternalError.InnerCommonError"
+//  INTERNALERROR_INTERNALASSERTERROR = "InternalError.InternalAssertError"
+//  INTERNALERROR_INTERNALREQUESTERROR = "InternalError.InternalRequestError"
+//  INTERNALERROR_INTERNALSERVICEERRORERR = "InternalError.InternalServiceErrorErr"
+//  INVALIDPARAMETER_INSTANCENAMENOTFOUND = "InvalidParameter.InstanceNameNotFound"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_ACCOUNTHOSTRULEERROR = "InvalidParameterValue.AccountHostRuleError"
+//  OPERATIONDENIED_NOTSUPPORTMODIFYLOCALROOTHOSTERROR = "OperationDenied.NotSupportModifyLocalRootHostError"
+//  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
+//  UNSUPPORTEDOPERATION_PRIVILEGESUNSUPPORTEDERROR = "UnsupportedOperation.PrivilegesUnsupportedError"
+func (c *Client) ModifyAccountHost(request *ModifyAccountHostRequest) (response *ModifyAccountHostResponse, err error) {
+    if request == nil {
+        request = NewModifyAccountHostRequest()
+    }
+    response = NewModifyAccountHostResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAccountMaxUserConnectionsRequest() (request *ModifyAccountMaxUserConnectionsRequest) {
     request = &ModifyAccountMaxUserConnectionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3689,6 +3740,7 @@ func NewModifyTimeWindowResponse() (response *ModifyTimeWindowResponse) {
 // 本接口(ModifyTimeWindow)用于更新云数据库实例的维护时间窗口。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INVALIDPARAMETER = "InvalidParameter"

@@ -234,6 +234,66 @@ func (r *BlockByNumberHandlerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ChainMakerContractResult struct {
+
+	// 交易结果码
+	Code *int64 `json:"Code,omitempty" name:"Code"`
+
+	// 交易结果码含义
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodeMessage *string `json:"CodeMessage,omitempty" name:"CodeMessage"`
+
+	// 交易ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TxId *string `json:"TxId,omitempty" name:"TxId"`
+
+	// Gas使用量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GasUsed *int64 `json:"GasUsed,omitempty" name:"GasUsed"`
+
+	// 合约返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 合约函数返回，base64编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *string `json:"Result,omitempty" name:"Result"`
+}
+
+type ChainMakerTransactionResult struct {
+
+	// 交易结果码
+	Code *int64 `json:"Code,omitempty" name:"Code"`
+
+	// 交易结果码含义
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodeMessage *string `json:"CodeMessage,omitempty" name:"CodeMessage"`
+
+	// 交易ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TxId *string `json:"TxId,omitempty" name:"TxId"`
+
+	// Gas使用量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GasUsed *int64 `json:"GasUsed,omitempty" name:"GasUsed"`
+
+	// 区块高度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockHeight *int64 `json:"BlockHeight,omitempty" name:"BlockHeight"`
+
+	// 合约执行结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractEvent *string `json:"ContractEvent,omitempty" name:"ContractEvent"`
+
+	// 合约返回信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 交易时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+}
+
 type ChannelDetailForUser struct {
 
 	// 通道名称
@@ -2203,6 +2263,76 @@ func (r *InvokeBcosTransResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type InvokeChainMakerContractRequest struct {
+	*tchttp.BaseRequest
+
+	// 网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 业务链编号，可在业务链列表中获取
+	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
+
+	// 合约名称，可在合约管理中获取
+	ContractName *string `json:"ContractName,omitempty" name:"ContractName"`
+
+	// 合约方法名
+	FuncName *string `json:"FuncName,omitempty" name:"FuncName"`
+
+	// 合约方法入参，json格式字符串，key/value都是string类型的map
+	FuncParam *string `json:"FuncParam,omitempty" name:"FuncParam"`
+
+	// 是否异步执行，1为是，否则为0；如果异步执行，可使用返回值中的交易TxID查询执行结果
+	AsyncFlag *int64 `json:"AsyncFlag,omitempty" name:"AsyncFlag"`
+}
+
+func (r *InvokeChainMakerContractRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InvokeChainMakerContractRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "ChainId")
+	delete(f, "ContractName")
+	delete(f, "FuncName")
+	delete(f, "FuncParam")
+	delete(f, "AsyncFlag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InvokeChainMakerContractRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type InvokeChainMakerContractResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 交易结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *ChainMakerContractResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *InvokeChainMakerContractResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InvokeChainMakerContractResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type InvokeRequest struct {
 	*tchttp.BaseRequest
 
@@ -2313,6 +2443,198 @@ type PeerSet struct {
 
 	// 组织名称
 	OrgName *string `json:"OrgName,omitempty" name:"OrgName"`
+}
+
+type QueryChainMakerBlockTransactionRequest struct {
+	*tchttp.BaseRequest
+
+	// 网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 业务链编号，可在业务链列表中获取
+	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
+
+	// 区块高度，-1表示最新区块
+	BlockHeight *int64 `json:"BlockHeight,omitempty" name:"BlockHeight"`
+}
+
+func (r *QueryChainMakerBlockTransactionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryChainMakerBlockTransactionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "ChainId")
+	delete(f, "BlockHeight")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryChainMakerBlockTransactionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryChainMakerBlockTransactionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 区块交易
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result []*ChainMakerTransactionResult `json:"Result,omitempty" name:"Result"`
+
+		// 区块高度
+		BlockHeight *int64 `json:"BlockHeight,omitempty" name:"BlockHeight"`
+
+		// 交易数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TxCount *int64 `json:"TxCount,omitempty" name:"TxCount"`
+
+		// 区块时间戳
+		BlockTimestamp *int64 `json:"BlockTimestamp,omitempty" name:"BlockTimestamp"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryChainMakerBlockTransactionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryChainMakerBlockTransactionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryChainMakerContractRequest struct {
+	*tchttp.BaseRequest
+
+	// 网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 业务链编号，可在业务链列表中获取
+	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
+
+	// 合约名称，可在合约管理中获取
+	ContractName *string `json:"ContractName,omitempty" name:"ContractName"`
+
+	// 合约方法名
+	FuncName *string `json:"FuncName,omitempty" name:"FuncName"`
+
+	// 合约方法入参，json格式字符串，key/value都是string类型的map
+	FuncParam *string `json:"FuncParam,omitempty" name:"FuncParam"`
+}
+
+func (r *QueryChainMakerContractRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryChainMakerContractRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "ChainId")
+	delete(f, "ContractName")
+	delete(f, "FuncName")
+	delete(f, "FuncParam")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryChainMakerContractRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryChainMakerContractResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 交易结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *ChainMakerContractResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryChainMakerContractResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryChainMakerContractResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryChainMakerTransactionRequest struct {
+	*tchttp.BaseRequest
+
+	// 网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 业务链编号，可在业务链列表中获取
+	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
+
+	// 交易ID，通过调用合约的返回值获取
+	TxID *string `json:"TxID,omitempty" name:"TxID"`
+}
+
+func (r *QueryChainMakerTransactionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryChainMakerTransactionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "ChainId")
+	delete(f, "TxID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryChainMakerTransactionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryChainMakerTransactionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 交易结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *ChainMakerTransactionResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryChainMakerTransactionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryChainMakerTransactionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryRequest struct {

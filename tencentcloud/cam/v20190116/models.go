@@ -2397,6 +2397,9 @@ type ListAttachedGroupPoliciesRequest struct {
 
 	// 每页大小，默认值是 20
 	Rp *uint64 `json:"Rp,omitempty" name:"Rp"`
+
+	// 搜索关键字
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
 }
 
 func (r *ListAttachedGroupPoliciesRequest) ToJsonString() string {
@@ -2414,6 +2417,7 @@ func (r *ListAttachedGroupPoliciesRequest) FromJsonString(s string) error {
 	delete(f, "TargetGroupId")
 	delete(f, "Page")
 	delete(f, "Rp")
+	delete(f, "Keyword")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAttachedGroupPoliciesRequest has unknown keys!", "")
 	}
@@ -2463,6 +2467,9 @@ type ListAttachedRolePoliciesRequest struct {
 
 	// 按策略类型过滤，User表示仅查询自定义策略，QCS表示仅查询预设策略
 	PolicyType *string `json:"PolicyType,omitempty" name:"PolicyType"`
+
+	// 搜索关键字
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
 }
 
 func (r *ListAttachedRolePoliciesRequest) ToJsonString() string {
@@ -2482,6 +2489,7 @@ func (r *ListAttachedRolePoliciesRequest) FromJsonString(s string) error {
 	delete(f, "RoleId")
 	delete(f, "RoleName")
 	delete(f, "PolicyType")
+	delete(f, "Keyword")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAttachedRolePoliciesRequest has unknown keys!", "")
 	}

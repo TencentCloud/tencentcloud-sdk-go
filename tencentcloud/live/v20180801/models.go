@@ -3893,6 +3893,10 @@ type DescribeLiveDomainsResponse struct {
 		// 域名详细信息列表。
 		DomainList []*DomainInfo `json:"DomainList,omitempty" name:"DomainList"`
 
+		// 可继续添加域名数量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CreateLimitCount *int64 `json:"CreateLimitCount,omitempty" name:"CreateLimitCount"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

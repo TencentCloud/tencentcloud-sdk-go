@@ -556,6 +556,9 @@ type DeployApplicationRequest struct {
 
 	// 定时弹性策略
 	CronHorizontalAutoscaler []*CronHorizontalAutoscaler `json:"CronHorizontalAutoscaler,omitempty" name:"CronHorizontalAutoscaler"`
+
+	// 是否启用log，1为启用，0为不启用
+	LogEnable *int64 `json:"LogEnable,omitempty" name:"LogEnable"`
 }
 
 func (r *DeployApplicationRequest) ToJsonString() string {
@@ -604,6 +607,7 @@ func (r *DeployApplicationRequest) FromJsonString(s string) error {
 	delete(f, "DeployStrategyConf")
 	delete(f, "HorizontalAutoscaler")
 	delete(f, "CronHorizontalAutoscaler")
+	delete(f, "LogEnable")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployApplicationRequest has unknown keys!", "")
 	}

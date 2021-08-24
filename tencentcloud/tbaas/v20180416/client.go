@@ -1592,6 +1592,75 @@ func (c *Client) InvokeBcosTrans(request *InvokeBcosTransRequest) (response *Inv
     return
 }
 
+func NewInvokeChainMakerContractRequest() (request *InvokeChainMakerContractRequest) {
+    request = &InvokeChainMakerContractRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "InvokeChainMakerContract")
+    return
+}
+
+func NewInvokeChainMakerContractResponse() (response *InvokeChainMakerContractResponse) {
+    response = &InvokeChainMakerContractResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// InvokeChainMakerContract
+// 调用长安链合约执行交易
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_BCOSSERVICE = "FailedOperation.BcosService"
+//  FAILEDOPERATION_COMPILEDEPLOYEDCONTRACT = "FailedOperation.CompileDeployedContract"
+//  FAILEDOPERATION_COMPILEDEPLOYINGCONTRACT = "FailedOperation.CompileDeployingContract"
+//  FAILEDOPERATION_CONTRACTEDITEDBYOTHERAGENCY = "FailedOperation.ContractEditedByOtherAgency"
+//  FAILEDOPERATION_DELETEDEPLOYEDCONTRACT = "FailedOperation.DeleteDeployedContract"
+//  FAILEDOPERATION_DELETEDEPLOYINGCONTRACT = "FailedOperation.DeleteDeployingContract"
+//  FAILEDOPERATION_DEPLOYCONTRACTNOTCOMPILE = "FailedOperation.DeployContractNotCompile"
+//  FAILEDOPERATION_FRONTREQUESTFAIL = "FailedOperation.FrontRequestFail"
+//  FAILEDOPERATION_INVALIDGROUPPK = "FailedOperation.InvalidGroupPk"
+//  FAILEDOPERATION_INVALIDKEYUSER = "FailedOperation.InvalidKeyUser"
+//  FAILEDOPERATION_NEWCONTRACT = "FailedOperation.NewContract"
+//  FAILEDOPERATION_NOTDEPLOYEDCONTRACT = "FailedOperation.NotDeployedContract"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INVALIDCONTRACTPARAM = "InternalError.InvalidContractParam"
+//  INTERNALERROR_METHODTYPENOTSUPPORT = "InternalError.MethodTypeNotSupport"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETER_ACCOUNTPARAMERROR = "InvalidParameter.AccountParamError"
+//  INVALIDPARAMETER_AGENCYINVALID = "InvalidParameter.AgencyInvalid"
+//  INVALIDPARAMETER_AGENCYNETPARAMINVALID = "InvalidParameter.AgencyNetParamInvalid"
+//  INVALIDPARAMETER_ALLIANCEIDOFNETEMPTY = "InvalidParameter.AllianceIdOfNetEmpty"
+//  INVALIDPARAMETER_CONTRACTIDINVALID = "InvalidParameter.ContractIdInvalid"
+//  INVALIDPARAMETER_DATAHADEXIST = "InvalidParameter.DataHadExist"
+//  INVALIDPARAMETER_EMPTYPARAM = "InvalidParameter.EmptyParam"
+//  INVALIDPARAMETER_EXPIRETIMEINVALID = "InvalidParameter.ExpireTimeInvalid"
+//  INVALIDPARAMETER_FRONTCONNFAIL = "InvalidParameter.FrontConnFail"
+//  INVALIDPARAMETER_FRONTIPINVALID = "InvalidParameter.FrontIpInvalid"
+//  INVALIDPARAMETER_FRONTPARAMERROR = "InvalidParameter.FrontParamError"
+//  INVALIDPARAMETER_FRONTREQUESTFAIL = "InvalidParameter.FrontRequestFail"
+//  INVALIDPARAMETER_INVALIDCONTRACTARG = "InvalidParameter.InvalidContractArg"
+//  INVALIDPARAMETER_NETIDINVALID = "InvalidParameter.NetIdInvalid"
+//  INVALIDPARAMETER_NETPARAMERROR = "InvalidParameter.NetParamError"
+//  INVALIDPARAMETER_NEWKEYUSERPARAMERROR = "InvalidParameter.NewKeyUserParamError"
+//  INVALIDPARAMETER_NOINFOTODELETE = "InvalidParameter.NoInfoToDelete"
+//  INVALIDPARAMETER_NOTFOUNDVALIDFRONT = "InvalidParameter.NotFoundValidFront"
+//  INVALIDPARAMETER_REDEPLOYEDCONTRACT = "InvalidParameter.ReDeployedContract"
+//  INVALIDPARAMETER_REDEPLOYINGCONTRACT = "InvalidParameter.ReDeployingContract"
+//  INVALIDPARAMETER_ROLEINVALID = "InvalidParameter.RoleInvalid"
+//  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
+//  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
+func (c *Client) InvokeChainMakerContract(request *InvokeChainMakerContractRequest) (response *InvokeChainMakerContractResponse, err error) {
+    if request == nil {
+        request = NewInvokeChainMakerContractRequest()
+    }
+    response = NewInvokeChainMakerContractResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryRequest() (request *QueryRequest) {
     request = &QueryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1639,6 +1708,213 @@ func (c *Client) Query(request *QueryRequest) (response *QueryResponse, err erro
         request = NewQueryRequest()
     }
     response = NewQueryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryChainMakerBlockTransactionRequest() (request *QueryChainMakerBlockTransactionRequest) {
+    request = &QueryChainMakerBlockTransactionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "QueryChainMakerBlockTransaction")
+    return
+}
+
+func NewQueryChainMakerBlockTransactionResponse() (response *QueryChainMakerBlockTransactionResponse) {
+    response = &QueryChainMakerBlockTransactionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryChainMakerBlockTransaction
+// 查询长安链指定高度区块的交易
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_BCOSSERVICE = "FailedOperation.BcosService"
+//  FAILEDOPERATION_COMPILEDEPLOYEDCONTRACT = "FailedOperation.CompileDeployedContract"
+//  FAILEDOPERATION_COMPILEDEPLOYINGCONTRACT = "FailedOperation.CompileDeployingContract"
+//  FAILEDOPERATION_CONTRACTEDITEDBYOTHERAGENCY = "FailedOperation.ContractEditedByOtherAgency"
+//  FAILEDOPERATION_DELETEDEPLOYEDCONTRACT = "FailedOperation.DeleteDeployedContract"
+//  FAILEDOPERATION_DELETEDEPLOYINGCONTRACT = "FailedOperation.DeleteDeployingContract"
+//  FAILEDOPERATION_DEPLOYCONTRACTNOTCOMPILE = "FailedOperation.DeployContractNotCompile"
+//  FAILEDOPERATION_FRONTREQUESTFAIL = "FailedOperation.FrontRequestFail"
+//  FAILEDOPERATION_INVALIDGROUPPK = "FailedOperation.InvalidGroupPk"
+//  FAILEDOPERATION_INVALIDKEYUSER = "FailedOperation.InvalidKeyUser"
+//  FAILEDOPERATION_NEWCONTRACT = "FailedOperation.NewContract"
+//  FAILEDOPERATION_NOTDEPLOYEDCONTRACT = "FailedOperation.NotDeployedContract"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INVALIDCONTRACTPARAM = "InternalError.InvalidContractParam"
+//  INTERNALERROR_METHODTYPENOTSUPPORT = "InternalError.MethodTypeNotSupport"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETER_ACCOUNTPARAMERROR = "InvalidParameter.AccountParamError"
+//  INVALIDPARAMETER_AGENCYINVALID = "InvalidParameter.AgencyInvalid"
+//  INVALIDPARAMETER_AGENCYNETPARAMINVALID = "InvalidParameter.AgencyNetParamInvalid"
+//  INVALIDPARAMETER_ALLIANCEIDOFNETEMPTY = "InvalidParameter.AllianceIdOfNetEmpty"
+//  INVALIDPARAMETER_CONTRACTIDINVALID = "InvalidParameter.ContractIdInvalid"
+//  INVALIDPARAMETER_DATAHADEXIST = "InvalidParameter.DataHadExist"
+//  INVALIDPARAMETER_EMPTYPARAM = "InvalidParameter.EmptyParam"
+//  INVALIDPARAMETER_EXPIRETIMEINVALID = "InvalidParameter.ExpireTimeInvalid"
+//  INVALIDPARAMETER_FRONTCONNFAIL = "InvalidParameter.FrontConnFail"
+//  INVALIDPARAMETER_FRONTIPINVALID = "InvalidParameter.FrontIpInvalid"
+//  INVALIDPARAMETER_FRONTPARAMERROR = "InvalidParameter.FrontParamError"
+//  INVALIDPARAMETER_FRONTREQUESTFAIL = "InvalidParameter.FrontRequestFail"
+//  INVALIDPARAMETER_INVALIDCONTRACTARG = "InvalidParameter.InvalidContractArg"
+//  INVALIDPARAMETER_NETIDINVALID = "InvalidParameter.NetIdInvalid"
+//  INVALIDPARAMETER_NETPARAMERROR = "InvalidParameter.NetParamError"
+//  INVALIDPARAMETER_NEWKEYUSERPARAMERROR = "InvalidParameter.NewKeyUserParamError"
+//  INVALIDPARAMETER_NOINFOTODELETE = "InvalidParameter.NoInfoToDelete"
+//  INVALIDPARAMETER_NOTFOUNDVALIDFRONT = "InvalidParameter.NotFoundValidFront"
+//  INVALIDPARAMETER_REDEPLOYEDCONTRACT = "InvalidParameter.ReDeployedContract"
+//  INVALIDPARAMETER_REDEPLOYINGCONTRACT = "InvalidParameter.ReDeployingContract"
+//  INVALIDPARAMETER_ROLEINVALID = "InvalidParameter.RoleInvalid"
+//  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
+//  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
+func (c *Client) QueryChainMakerBlockTransaction(request *QueryChainMakerBlockTransactionRequest) (response *QueryChainMakerBlockTransactionResponse, err error) {
+    if request == nil {
+        request = NewQueryChainMakerBlockTransactionRequest()
+    }
+    response = NewQueryChainMakerBlockTransactionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryChainMakerContractRequest() (request *QueryChainMakerContractRequest) {
+    request = &QueryChainMakerContractRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "QueryChainMakerContract")
+    return
+}
+
+func NewQueryChainMakerContractResponse() (response *QueryChainMakerContractResponse) {
+    response = &QueryChainMakerContractResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryChainMakerContract
+// 调用长安链合约查询
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_BCOSSERVICE = "FailedOperation.BcosService"
+//  FAILEDOPERATION_COMPILEDEPLOYEDCONTRACT = "FailedOperation.CompileDeployedContract"
+//  FAILEDOPERATION_COMPILEDEPLOYINGCONTRACT = "FailedOperation.CompileDeployingContract"
+//  FAILEDOPERATION_CONTRACTEDITEDBYOTHERAGENCY = "FailedOperation.ContractEditedByOtherAgency"
+//  FAILEDOPERATION_DELETEDEPLOYEDCONTRACT = "FailedOperation.DeleteDeployedContract"
+//  FAILEDOPERATION_DELETEDEPLOYINGCONTRACT = "FailedOperation.DeleteDeployingContract"
+//  FAILEDOPERATION_DEPLOYCONTRACTNOTCOMPILE = "FailedOperation.DeployContractNotCompile"
+//  FAILEDOPERATION_FRONTREQUESTFAIL = "FailedOperation.FrontRequestFail"
+//  FAILEDOPERATION_INVALIDGROUPPK = "FailedOperation.InvalidGroupPk"
+//  FAILEDOPERATION_INVALIDKEYUSER = "FailedOperation.InvalidKeyUser"
+//  FAILEDOPERATION_NEWCONTRACT = "FailedOperation.NewContract"
+//  FAILEDOPERATION_NOTDEPLOYEDCONTRACT = "FailedOperation.NotDeployedContract"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INVALIDCONTRACTPARAM = "InternalError.InvalidContractParam"
+//  INTERNALERROR_METHODTYPENOTSUPPORT = "InternalError.MethodTypeNotSupport"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETER_ACCOUNTPARAMERROR = "InvalidParameter.AccountParamError"
+//  INVALIDPARAMETER_AGENCYINVALID = "InvalidParameter.AgencyInvalid"
+//  INVALIDPARAMETER_AGENCYNETPARAMINVALID = "InvalidParameter.AgencyNetParamInvalid"
+//  INVALIDPARAMETER_ALLIANCEIDOFNETEMPTY = "InvalidParameter.AllianceIdOfNetEmpty"
+//  INVALIDPARAMETER_CONTRACTIDINVALID = "InvalidParameter.ContractIdInvalid"
+//  INVALIDPARAMETER_DATAHADEXIST = "InvalidParameter.DataHadExist"
+//  INVALIDPARAMETER_EMPTYPARAM = "InvalidParameter.EmptyParam"
+//  INVALIDPARAMETER_EXPIRETIMEINVALID = "InvalidParameter.ExpireTimeInvalid"
+//  INVALIDPARAMETER_FRONTCONNFAIL = "InvalidParameter.FrontConnFail"
+//  INVALIDPARAMETER_FRONTIPINVALID = "InvalidParameter.FrontIpInvalid"
+//  INVALIDPARAMETER_FRONTPARAMERROR = "InvalidParameter.FrontParamError"
+//  INVALIDPARAMETER_FRONTREQUESTFAIL = "InvalidParameter.FrontRequestFail"
+//  INVALIDPARAMETER_INVALIDCONTRACTARG = "InvalidParameter.InvalidContractArg"
+//  INVALIDPARAMETER_NETIDINVALID = "InvalidParameter.NetIdInvalid"
+//  INVALIDPARAMETER_NETPARAMERROR = "InvalidParameter.NetParamError"
+//  INVALIDPARAMETER_NEWKEYUSERPARAMERROR = "InvalidParameter.NewKeyUserParamError"
+//  INVALIDPARAMETER_NOINFOTODELETE = "InvalidParameter.NoInfoToDelete"
+//  INVALIDPARAMETER_NOTFOUNDVALIDFRONT = "InvalidParameter.NotFoundValidFront"
+//  INVALIDPARAMETER_REDEPLOYEDCONTRACT = "InvalidParameter.ReDeployedContract"
+//  INVALIDPARAMETER_REDEPLOYINGCONTRACT = "InvalidParameter.ReDeployingContract"
+//  INVALIDPARAMETER_ROLEINVALID = "InvalidParameter.RoleInvalid"
+//  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
+//  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
+func (c *Client) QueryChainMakerContract(request *QueryChainMakerContractRequest) (response *QueryChainMakerContractResponse, err error) {
+    if request == nil {
+        request = NewQueryChainMakerContractRequest()
+    }
+    response = NewQueryChainMakerContractResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryChainMakerTransactionRequest() (request *QueryChainMakerTransactionRequest) {
+    request = &QueryChainMakerTransactionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "QueryChainMakerTransaction")
+    return
+}
+
+func NewQueryChainMakerTransactionResponse() (response *QueryChainMakerTransactionResponse) {
+    response = &QueryChainMakerTransactionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryChainMakerTransaction
+// 通过交易ID查询长安链交易
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_BCOSSERVICE = "FailedOperation.BcosService"
+//  FAILEDOPERATION_COMPILEDEPLOYEDCONTRACT = "FailedOperation.CompileDeployedContract"
+//  FAILEDOPERATION_COMPILEDEPLOYINGCONTRACT = "FailedOperation.CompileDeployingContract"
+//  FAILEDOPERATION_CONTRACTEDITEDBYOTHERAGENCY = "FailedOperation.ContractEditedByOtherAgency"
+//  FAILEDOPERATION_DELETEDEPLOYEDCONTRACT = "FailedOperation.DeleteDeployedContract"
+//  FAILEDOPERATION_DELETEDEPLOYINGCONTRACT = "FailedOperation.DeleteDeployingContract"
+//  FAILEDOPERATION_DEPLOYCONTRACTNOTCOMPILE = "FailedOperation.DeployContractNotCompile"
+//  FAILEDOPERATION_FRONTREQUESTFAIL = "FailedOperation.FrontRequestFail"
+//  FAILEDOPERATION_INVALIDGROUPPK = "FailedOperation.InvalidGroupPk"
+//  FAILEDOPERATION_INVALIDKEYUSER = "FailedOperation.InvalidKeyUser"
+//  FAILEDOPERATION_NEWCONTRACT = "FailedOperation.NewContract"
+//  FAILEDOPERATION_NOTDEPLOYEDCONTRACT = "FailedOperation.NotDeployedContract"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INVALIDCONTRACTPARAM = "InternalError.InvalidContractParam"
+//  INTERNALERROR_METHODTYPENOTSUPPORT = "InternalError.MethodTypeNotSupport"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETER_ACCOUNTPARAMERROR = "InvalidParameter.AccountParamError"
+//  INVALIDPARAMETER_AGENCYINVALID = "InvalidParameter.AgencyInvalid"
+//  INVALIDPARAMETER_AGENCYNETPARAMINVALID = "InvalidParameter.AgencyNetParamInvalid"
+//  INVALIDPARAMETER_ALLIANCEIDOFNETEMPTY = "InvalidParameter.AllianceIdOfNetEmpty"
+//  INVALIDPARAMETER_CONTRACTIDINVALID = "InvalidParameter.ContractIdInvalid"
+//  INVALIDPARAMETER_DATAHADEXIST = "InvalidParameter.DataHadExist"
+//  INVALIDPARAMETER_EMPTYPARAM = "InvalidParameter.EmptyParam"
+//  INVALIDPARAMETER_EXPIRETIMEINVALID = "InvalidParameter.ExpireTimeInvalid"
+//  INVALIDPARAMETER_FRONTCONNFAIL = "InvalidParameter.FrontConnFail"
+//  INVALIDPARAMETER_FRONTIPINVALID = "InvalidParameter.FrontIpInvalid"
+//  INVALIDPARAMETER_FRONTPARAMERROR = "InvalidParameter.FrontParamError"
+//  INVALIDPARAMETER_FRONTREQUESTFAIL = "InvalidParameter.FrontRequestFail"
+//  INVALIDPARAMETER_INVALIDCONTRACTARG = "InvalidParameter.InvalidContractArg"
+//  INVALIDPARAMETER_NETIDINVALID = "InvalidParameter.NetIdInvalid"
+//  INVALIDPARAMETER_NETPARAMERROR = "InvalidParameter.NetParamError"
+//  INVALIDPARAMETER_NEWKEYUSERPARAMERROR = "InvalidParameter.NewKeyUserParamError"
+//  INVALIDPARAMETER_NOINFOTODELETE = "InvalidParameter.NoInfoToDelete"
+//  INVALIDPARAMETER_NOTFOUNDVALIDFRONT = "InvalidParameter.NotFoundValidFront"
+//  INVALIDPARAMETER_REDEPLOYEDCONTRACT = "InvalidParameter.ReDeployedContract"
+//  INVALIDPARAMETER_REDEPLOYINGCONTRACT = "InvalidParameter.ReDeployingContract"
+//  INVALIDPARAMETER_ROLEINVALID = "InvalidParameter.RoleInvalid"
+//  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
+//  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
+func (c *Client) QueryChainMakerTransaction(request *QueryChainMakerTransactionRequest) (response *QueryChainMakerTransactionResponse, err error) {
+    if request == nil {
+        request = NewQueryChainMakerTransactionRequest()
+    }
+    response = NewQueryChainMakerTransactionResponse()
     err = c.Send(request, response)
     return
 }

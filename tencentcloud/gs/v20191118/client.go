@@ -70,6 +70,7 @@ func NewCreateSessionResponse() (response *CreateSessionResponse) {
 //  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED_ROLE = "LimitExceeded.Role"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND_NOIDLE = "ResourceNotFound.NoIdle"
 //  UNSUPPORTEDOPERATION_STOPPING = "UnsupportedOperation.Stopping"
 func (c *Client) CreateSession(request *CreateSessionRequest) (response *CreateSessionResponse, err error) {

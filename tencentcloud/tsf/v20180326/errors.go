@@ -449,6 +449,9 @@ const (
 	// 协议端口不能为空。
 	INVALIDPARAMETERVALUE_CONTAINERGROUPPROTOCOLPORTSNULL = "InvalidParameterValue.ContainergroupProtocolPortsNull"
 
+	// 镜像仓库名与应用名不匹配。
+	INVALIDPARAMETERVALUE_CONTAINERGROUPREPONAMEINVALID = "InvalidParameterValue.ContainergroupReponameInvalid"
+
 	// 容器端口不能为空。
 	INVALIDPARAMETERVALUE_CONTAINERGROUPTARGETPORTNULL = "InvalidParameterValue.ContainergroupTargetportNull"
 
@@ -532,6 +535,12 @@ const (
 
 	// 分组操作，无有效机器。
 	INVALIDPARAMETERVALUE_GROUPVALIDINSTANCENULL = "InvalidParameterValue.GroupValidInstanceNull"
+
+	// 镜像仓库名不合法,示例:tsf-repo/nginx。
+	INVALIDPARAMETERVALUE_IMAGEREPOREPONAMEINVALID = "InvalidParameterValue.ImagerepoReponameInvalid"
+
+	// 镜像仓库名不能为空。
+	INVALIDPARAMETERVALUE_IMAGEREPOREPONAMENULL = "InvalidParameterValue.ImagerepoReponameNull"
 
 	// 重装系统，无效的镜像id。
 	INVALIDPARAMETERVALUE_INSTANCEINVALIDIMAGE = "InvalidParameterValue.InstanceInvalidImage"

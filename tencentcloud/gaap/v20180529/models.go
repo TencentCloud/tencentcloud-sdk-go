@@ -387,6 +387,9 @@ type CheckProxyCreateRequest struct {
 
 	// 网络类型，可取值：normal、cn2，默认值normal
 	NetworkType *string `json:"NetworkType,omitempty" name:"NetworkType"`
+
+	// 通道组类型。Thunder表示标准通道组，Accelerator表示游戏加速器通道。
+	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 }
 
 func (r *CheckProxyCreateRequest) ToJsonString() string {
@@ -408,6 +411,7 @@ func (r *CheckProxyCreateRequest) FromJsonString(s string) error {
 	delete(f, "GroupId")
 	delete(f, "IPAddressVersion")
 	delete(f, "NetworkType")
+	delete(f, "PackageType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckProxyCreateRequest has unknown keys!", "")
 	}
@@ -1093,6 +1097,9 @@ type CreateProxyGroupRequest struct {
 
 	// IP版本，可取值：IPv4、IPv6，默认值IPv4
 	IPAddressVersion *string `json:"IPAddressVersion,omitempty" name:"IPAddressVersion"`
+
+	// 通道组套餐类型，可取值：Thunder、Accelerator，默认值Thunder
+	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 }
 
 func (r *CreateProxyGroupRequest) ToJsonString() string {
@@ -1113,6 +1120,7 @@ func (r *CreateProxyGroupRequest) FromJsonString(s string) error {
 	delete(f, "TagSet")
 	delete(f, "AccessRegionSet")
 	delete(f, "IPAddressVersion")
+	delete(f, "PackageType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProxyGroupRequest has unknown keys!", "")
 	}
@@ -2032,6 +2040,9 @@ type DescribeAccessRegionsByDestRegionRequest struct {
 
 	// IP版本，可取值：IPv4、IPv6，默认值IPv4
 	IPAddressVersion *string `json:"IPAddressVersion,omitempty" name:"IPAddressVersion"`
+
+	// 通道组类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道。
+	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 }
 
 func (r *DescribeAccessRegionsByDestRegionRequest) ToJsonString() string {
@@ -2048,6 +2059,7 @@ func (r *DescribeAccessRegionsByDestRegionRequest) FromJsonString(s string) erro
 	}
 	delete(f, "DestRegion")
 	delete(f, "IPAddressVersion")
+	delete(f, "PackageType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccessRegionsByDestRegionRequest has unknown keys!", "")
 	}
@@ -3239,14 +3251,15 @@ type DescribeProxyGroupListRequest struct {
 	// 其他值，指定的项目
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 标签列表，当存在该字段时，拉取对应标签下的资源列表。
-	// 最多支持5个标签，当存在两个或两个以上的标签时，满足其中任意一个标签时，该通道组会被拉取出来。
-	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet"`
-
 	// 过滤条件。   
 	// 每次请求的Filter.Values的上限为5。
 	// RealServerRegion - String - 是否必填：否 -（过滤条件）按照源站地域过滤，可参考DescribeDestRegions接口返回结果中的RegionId。
+	// PackageType - String - 是否必填：否 - （过滤条件）通道组类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 标签列表，当存在该字段时，拉取对应标签下的资源列表。
+	// 最多支持5个标签，当存在两个或两个以上的标签时，满足其中任意一个标签时，该通道组会被拉取出来。
+	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet"`
 }
 
 func (r *DescribeProxyGroupListRequest) ToJsonString() string {
@@ -3264,8 +3277,8 @@ func (r *DescribeProxyGroupListRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "ProjectId")
-	delete(f, "TagSet")
 	delete(f, "Filters")
+	delete(f, "TagSet")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProxyGroupListRequest has unknown keys!", "")
 	}
@@ -3641,6 +3654,9 @@ type DescribeRegionAndPriceRequest struct {
 
 	// IP版本，可取值：IPv4、IPv6，默认值IPv4
 	IPAddressVersion *string `json:"IPAddressVersion,omitempty" name:"IPAddressVersion"`
+
+	// 通道组类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道。
+	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 }
 
 func (r *DescribeRegionAndPriceRequest) ToJsonString() string {
@@ -3656,6 +3672,7 @@ func (r *DescribeRegionAndPriceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "IPAddressVersion")
+	delete(f, "PackageType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRegionAndPriceRequest has unknown keys!", "")
 	}
@@ -4561,6 +4578,9 @@ type InquiryPriceCreateProxyRequest struct {
 
 	// 网络类型，可取值：normal、cn2，默认值normal
 	NetworkType *string `json:"NetworkType,omitempty" name:"NetworkType"`
+
+	// 通道组类型。Thunder表示标准通道组，Accelerator表示游戏加速器通道。
+	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 }
 
 func (r *InquiryPriceCreateProxyRequest) ToJsonString() string {
@@ -4584,6 +4604,7 @@ func (r *InquiryPriceCreateProxyRequest) FromJsonString(s string) error {
 	delete(f, "BillingType")
 	delete(f, "IPAddressVersion")
 	delete(f, "NetworkType")
+	delete(f, "PackageType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceCreateProxyRequest has unknown keys!", "")
 	}
@@ -5872,6 +5893,10 @@ type ProxyGroupDetail struct {
 	// IP版本，可取值：IPv4、IPv6，默认值IPv4
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPAddressVersion *string `json:"IPAddressVersion,omitempty" name:"IPAddressVersion"`
+
+	// 通道组类型，可取值：Thunder、Accelerator，默认值Thunder
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 }
 
 type ProxyGroupInfo struct {

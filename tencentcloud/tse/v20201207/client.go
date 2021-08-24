@@ -64,6 +64,7 @@ func NewDescribeSREInstanceAccessAddressResponse() (response *DescribeSREInstanc
 // 可能返回的错误码:
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeSREInstanceAccessAddress(request *DescribeSREInstanceAccessAddressRequest) (response *DescribeSREInstanceAccessAddressResponse, err error) {
     if request == nil {

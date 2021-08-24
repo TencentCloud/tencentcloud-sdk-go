@@ -43,6 +43,36 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateAgeDetectTaskRequest() (request *CreateAgeDetectTaskRequest) {
+    request = &CreateAgeDetectTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gme", APIVersion, "CreateAgeDetectTask")
+    return
+}
+
+func NewCreateAgeDetectTaskResponse() (response *CreateAgeDetectTaskResponse) {
+    response = &CreateAgeDetectTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateAgeDetectTask
+// 用于创建年龄语音识别任务的接口，请求频率10次/秒。该接口目前通过白名单开放试用，如有需求，请提交工单申请。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateAgeDetectTask(request *CreateAgeDetectTaskRequest) (response *CreateAgeDetectTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateAgeDetectTaskRequest()
+    }
+    response = NewCreateAgeDetectTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAppRequest() (request *CreateAppRequest) {
     request = &CreateAppRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -78,6 +108,36 @@ func (c *Client) CreateApp(request *CreateAppRequest) (response *CreateAppRespon
         request = NewCreateAppRequest()
     }
     response = NewCreateAppResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAgeDetectTaskRequest() (request *DescribeAgeDetectTaskRequest) {
+    request = &DescribeAgeDetectTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gme", APIVersion, "DescribeAgeDetectTask")
+    return
+}
+
+func NewDescribeAgeDetectTaskResponse() (response *DescribeAgeDetectTaskResponse) {
+    response = &DescribeAgeDetectTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAgeDetectTask
+// 查询年龄语音识别任务结果，请求频率10次/秒。该接口目前通过白名单开放试用，如有需求，请提交工单申请。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAgeDetectTask(request *DescribeAgeDetectTaskRequest) (response *DescribeAgeDetectTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeAgeDetectTaskRequest()
+    }
+    response = NewDescribeAgeDetectTaskResponse()
     err = c.Send(request, response)
     return
 }

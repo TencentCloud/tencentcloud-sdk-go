@@ -81,6 +81,9 @@ type DataInfo struct {
 
 	// 试听结束时间
 	AuditionEnd *uint64 `json:"AuditionEnd,omitempty" name:"AuditionEnd"`
+
+	// 标签名称
+	TagNames []*string `json:"TagNames,omitempty" name:"TagNames"`
 }
 
 type DescribeAuthInfoRequest struct {
