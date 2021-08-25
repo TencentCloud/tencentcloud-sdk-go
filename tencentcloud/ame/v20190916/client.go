@@ -397,6 +397,42 @@ func (c *Client) DescribeMusic(request *DescribeMusicRequest) (response *Describ
     return
 }
 
+func NewDescribeMusicSaleStatusRequest() (request *DescribeMusicSaleStatusRequest) {
+    request = &DescribeMusicSaleStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ame", APIVersion, "DescribeMusicSaleStatus")
+    return
+}
+
+func NewDescribeMusicSaleStatusResponse() (response *DescribeMusicSaleStatusResponse) {
+    response = &DescribeMusicSaleStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeMusicSaleStatus
+// 根据音乐信息查询音乐是否在售
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeMusicSaleStatus(request *DescribeMusicSaleStatusRequest) (response *DescribeMusicSaleStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeMusicSaleStatusRequest()
+    }
+    response = NewDescribeMusicSaleStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePackageItemsRequest() (request *DescribePackageItemsRequest) {
     request = &DescribePackageItemsRequest{
         BaseRequest: &tchttp.BaseRequest{},

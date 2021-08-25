@@ -5381,6 +5381,63 @@ func (r *ExportReverseShellEventsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ExportScanTaskDetailsRequest struct {
+	*tchttp.BaseRequest
+
+	// 本次检测的任务id（不同于出参的导出本次检测Excel的任务Id）
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 模块类型，当前提供：Malware 木马 , Vul 漏洞 , Baseline 基线
+	ModuleType *string `json:"ModuleType,omitempty" name:"ModuleType"`
+
+	// 过滤参数：ipOrAlias（服务器名/ip）
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *ExportScanTaskDetailsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportScanTaskDetailsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "ModuleType")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportScanTaskDetailsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ExportScanTaskDetailsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 导出本次检测Excel的任务Id（不同于入参的本次检测任务id）
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ExportScanTaskDetailsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportScanTaskDetailsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ExportTasksRequest struct {
 	*tchttp.BaseRequest
 

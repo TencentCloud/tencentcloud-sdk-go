@@ -2071,6 +2071,10 @@ type TaskResponseInfo struct {
 
 	// 执行SQL的引擎类型
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 任务进度明细
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProgressDetail *string `json:"ProgressDetail,omitempty" name:"ProgressDetail"`
 }
 
 type TasksInfo struct {

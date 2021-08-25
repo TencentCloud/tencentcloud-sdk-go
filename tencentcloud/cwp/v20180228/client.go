@@ -2827,6 +2827,39 @@ func (c *Client) ExportReverseShellEvents(request *ExportReverseShellEventsReque
     return
 }
 
+func NewExportScanTaskDetailsRequest() (request *ExportScanTaskDetailsRequest) {
+    request = &ExportScanTaskDetailsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "ExportScanTaskDetails")
+    return
+}
+
+func NewExportScanTaskDetailsResponse() (response *ExportScanTaskDetailsResponse) {
+    response = &ExportScanTaskDetailsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ExportScanTaskDetails
+// 根据任务id导出指定扫描任务详情 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ExportScanTaskDetails(request *ExportScanTaskDetailsRequest) (response *ExportScanTaskDetailsResponse, err error) {
+    if request == nil {
+        request = NewExportScanTaskDetailsRequest()
+    }
+    response = NewExportScanTaskDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExportTasksRequest() (request *ExportTasksRequest) {
     request = &ExportTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},

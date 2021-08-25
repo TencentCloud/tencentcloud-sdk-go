@@ -4903,6 +4903,9 @@ func (r *ResizeInstanceDisksResponse) FromJsonString(s string) error {
 }
 
 type RunAutomationServiceEnabled struct {
+
+	// 是否开启云自动化助手。取值范围：<br><li>TRUE：表示开启云自动化助手服务<br><li>FALSE：表示不开启云自动化助手服务<br><br>默认取值：FALSE。
+	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
 }
 
 type RunInstancesRequest struct {

@@ -687,6 +687,59 @@ func (r *DescribeMusicResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeMusicSaleStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 歌曲Id集合，可传单个，也可传多个，上线查询单次50个
+	MusicIds []*string `json:"MusicIds,omitempty" name:"MusicIds"`
+
+	// 查询哪个渠道的数据，1为曲库包，2为单曲
+	PurchaseType *int64 `json:"PurchaseType,omitempty" name:"PurchaseType"`
+}
+
+func (r *DescribeMusicSaleStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMusicSaleStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MusicIds")
+	delete(f, "PurchaseType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMusicSaleStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMusicSaleStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// musicId对应歌曲状态
+		MusicStatusSet []*MusicStatus `json:"MusicStatusSet,omitempty" name:"MusicStatusSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeMusicSaleStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMusicSaleStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribePackageItemsRequest struct {
 	*tchttp.BaseRequest
 
@@ -1103,6 +1156,15 @@ type MusicOpenDetail struct {
 	// 波形图url
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WaveformUrl *string `json:"WaveformUrl,omitempty" name:"WaveformUrl"`
+}
+
+type MusicStatus struct {
+
+	// 歌曲Id
+	MusicId *string `json:"MusicId,omitempty" name:"MusicId"`
+
+	// 在售状态,0为在售，1为临时下架，2为永久下架
+	SaleStatus *int64 `json:"SaleStatus,omitempty" name:"SaleStatus"`
 }
 
 type Package struct {

@@ -4365,6 +4365,74 @@ func (r *DownloadBillResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DownloadReconciliationUrlRequest struct {
+	*tchttp.BaseRequest
+
+	// 平台应用ID
+	MainAppId *string `json:"MainAppId,omitempty" name:"MainAppId"`
+
+	// 平台代码
+	AppCode *string `json:"AppCode,omitempty" name:"AppCode"`
+
+	// 账单日期，yyyy-MM-dd
+	BillDate *string `json:"BillDate,omitempty" name:"BillDate"`
+
+	// 商户或者代理商ID
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DownloadReconciliationUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DownloadReconciliationUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MainAppId")
+	delete(f, "AppCode")
+	delete(f, "BillDate")
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DownloadReconciliationUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DownloadReconciliationUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 下载地址
+		DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+
+		// hash类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		HashType *string `json:"HashType,omitempty" name:"HashType"`
+
+		// hash值
+		HashValue *string `json:"HashValue,omitempty" name:"HashValue"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DownloadReconciliationUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DownloadReconciliationUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ExecuteMemberTransactionRequest struct {
 	*tchttp.BaseRequest
 

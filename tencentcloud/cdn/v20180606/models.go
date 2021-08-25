@@ -918,6 +918,29 @@ type CappingRule struct {
 	KBpsThreshold *int64 `json:"KBpsThreshold,omitempty" name:"KBpsThreshold"`
 }
 
+type CcTopData struct {
+
+	// 客户端Ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 访问URL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 客户端UserAgent
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserAgent *string `json:"UserAgent,omitempty" name:"UserAgent"`
+
+	// 请求数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *uint64 `json:"Value,omitempty" name:"Value"`
+
+	// 域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+}
+
 type CdnData struct {
 
 	// 查询指定的指标名称：
@@ -1578,6 +1601,15 @@ func (r *CreateVerifyRecordResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateVerifyRecordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DDoSTopData struct {
+
+	// 攻击类型
+	AttackType *string `json:"AttackType,omitempty" name:"AttackType"`
+
+	// 攻击带宽，单位：bps
+	Value *uint64 `json:"Value,omitempty" name:"Value"`
 }
 
 type DeleteCdnDomainRequest struct {
@@ -4143,6 +4175,31 @@ type DomainAreaConfig struct {
 	Area []*string `json:"Area,omitempty" name:"Area"`
 }
 
+type DomainBotCount struct {
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// BOT次数
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+
+	// Top指标值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 国家/地区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Country *string `json:"Country,omitempty" name:"Country"`
+
+	// 省份
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Province *string `json:"Province,omitempty" name:"Province"`
+
+	// 运营商
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Isp *string `json:"Isp,omitempty" name:"Isp"`
+}
+
 type DomainFilter struct {
 
 	// 过滤字段名，支持的列表如下：
@@ -5092,6 +5149,221 @@ func (r *ListScdnLogTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ListTopBotDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 获取Top量，取值范围[1-10]
+	TopCount *int64 `json:"TopCount,omitempty" name:"TopCount"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// session表示查询BOT会话的Top信息
+	// ip表示查询BOT客户端IP的Top信息
+	// 
+	// 不填代表获取会话信息
+	Metric *string `json:"Metric,omitempty" name:"Metric"`
+
+	// 域名，仅当Metric=ip时有效，不填写表示使用Domains参数
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 域名，仅当Metric=ip，并且Domain为空时有效，不填写表示获取AppID信息
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
+}
+
+func (r *ListTopBotDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTopBotDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopCount")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Metric")
+	delete(f, "Domain")
+	delete(f, "Domains")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListTopBotDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListTopBotDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 域名BOT次数列表
+		Data []*DomainBotCount `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListTopBotDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTopBotDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListTopCcDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询Top数据的开始时间，格式为：2020-01-01 00:00:00
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询Top数据的结束时间，格式为：2020-01-01 23:59:59
+	// 支持 90 天内数据查询，不传此参数，表示查当天数据
+	// 时间跨度要小于等于7天
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 域名，不传此参数，表示查询账号级别数据
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 统计指标：
+	// ip_url : Top IP+URL 默认值
+	// ua :  Top UA
+	Metric *string `json:"Metric,omitempty" name:"Metric"`
+
+	// cdn表示CDN数据，默认值
+	// ecdn表示ECDN数据
+	Source *string `json:"Source,omitempty" name:"Source"`
+
+	// 域名列表，不传此参数，表示查询账号级别数据
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
+
+	// 执行动作，取值为：intercept/redirect/observe
+	// 分别表示：拦截/重定向/观察
+	// 为空表示查询所有执行动作数据
+	ActionName *string `json:"ActionName,omitempty" name:"ActionName"`
+
+	// 地域：mainland或overseas，表示国内或海外，不填写默认表示国内
+	Area *string `json:"Area,omitempty" name:"Area"`
+}
+
+func (r *ListTopCcDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTopCcDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Domain")
+	delete(f, "Metric")
+	delete(f, "Source")
+	delete(f, "Domains")
+	delete(f, "ActionName")
+	delete(f, "Area")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListTopCcDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListTopCcDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// Top数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data []*CcTopData `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListTopCcDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTopCcDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListTopDDoSDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询Top数据的开始时间，格式为：2020-01-01 00:00:00
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询Top数据的结束时间，格式为：2020-01-01 23:59:59
+	// 支持 90 天内数据查询，时间跨度要小于等于7天
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 查询Top的数量，不填默认值为10
+	TopCount *uint64 `json:"TopCount,omitempty" name:"TopCount"`
+}
+
+func (r *ListTopDDoSDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTopDDoSDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "TopCount")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListTopDDoSDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListTopDDoSDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// DDoS Top数据
+		Data []*DDoSTopData `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListTopDDoSDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTopDDoSDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ListTopDataRequest struct {
 	*tchttp.BaseRequest
 
@@ -5209,6 +5481,119 @@ func (r *ListTopDataResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ListTopDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListTopWafDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，如：2018-09-04 10:40:00，返回结果小于等于指定时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 指定域名查询，不填写查询整个AppID下数据
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 指定攻击类型
+	// 不填则查询所有攻击类型的数据总和
+	// AttackType 映射如下:
+	// "webshell" : Webshell检测防护
+	// "oa" : 常见OA漏洞防护
+	// "xss" : XSS跨站脚本攻击防护
+	// "xxe" : XXE攻击防护
+	// "webscan" : 扫描器攻击漏洞防护
+	// "cms" : 常见CMS漏洞防护
+	// "upload" : 恶意文件上传攻击防护
+	// "sql" : SQL注入攻击防护
+	// "cmd_inject": 命令/代码注入攻击防护
+	// "osc" : 开源组件漏洞防护
+	// "file_read" : 任意文件读取
+	// "ldap" : LDAP注入攻击防护
+	// "other" : 其它漏洞防护
+	AttackType *string `json:"AttackType,omitempty" name:"AttackType"`
+
+	// 指定防御模式
+	// 不填则查询所有防御模式的数据总和
+	// DefenceMode 映射如下：
+	//   observe = '观察模式'
+	//   intercept = '拦截模式'
+	DefenceMode *string `json:"DefenceMode,omitempty" name:"DefenceMode"`
+
+	// 排序对象，支持以下几种形式：
+	// url：攻击目标 url 排序
+	// ip：攻击源 IP 排序
+	// attackType：攻击类型排序
+	// domain：当查询整个AppID下数据时，按照域名请求量排序
+	Metric *string `json:"Metric,omitempty" name:"Metric"`
+
+	// 地域：mainland 或 overseas
+	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 指定攻击类型列表，取值参考AttackType
+	AttackTypes []*string `json:"AttackTypes,omitempty" name:"AttackTypes"`
+
+	// 指定域名列表查询，不填写查询整个AppID下数据
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
+}
+
+func (r *ListTopWafDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTopWafDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Domain")
+	delete(f, "AttackType")
+	delete(f, "DefenceMode")
+	delete(f, "Metric")
+	delete(f, "Area")
+	delete(f, "AttackTypes")
+	delete(f, "Domains")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListTopWafDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListTopWafDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 攻击类型统计
+		TopTypeData []*ScdnTypeData `json:"TopTypeData,omitempty" name:"TopTypeData"`
+
+		// IP统计
+		TopIpData []*ScdnTopData `json:"TopIpData,omitempty" name:"TopIpData"`
+
+		// URL统计
+		TopUrlData []*ScdnTopUrlData `json:"TopUrlData,omitempty" name:"TopUrlData"`
+
+		// 域名统计
+		TopDomainData []*ScdnTopDomainData `json:"TopDomainData,omitempty" name:"TopDomainData"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListTopWafDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTopWafDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6590,6 +6975,18 @@ type ScdnTopData struct {
 
 	// 区域
 	District *string `json:"District,omitempty" name:"District"`
+}
+
+type ScdnTopDomainData struct {
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 请求量
+	Value *uint64 `json:"Value,omitempty" name:"Value"`
+
+	// 百分比
+	Percent *float64 `json:"Percent,omitempty" name:"Percent"`
 }
 
 type ScdnTopUrlData struct {

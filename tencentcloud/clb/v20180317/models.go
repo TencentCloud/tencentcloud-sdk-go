@@ -4325,6 +4325,9 @@ type ModifyLoadBalancerAttributesRequest struct {
 
 	// 是否开启SnatPro
 	SnatPro *bool `json:"SnatPro,omitempty" name:"SnatPro"`
+
+	// 是否开启删除保护
+	DeleteProtect *bool `json:"DeleteProtect,omitempty" name:"DeleteProtect"`
 }
 
 func (r *ModifyLoadBalancerAttributesRequest) ToJsonString() string {
@@ -4345,6 +4348,7 @@ func (r *ModifyLoadBalancerAttributesRequest) FromJsonString(s string) error {
 	delete(f, "InternetChargeInfo")
 	delete(f, "LoadBalancerPassToTarget")
 	delete(f, "SnatPro")
+	delete(f, "DeleteProtect")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLoadBalancerAttributesRequest has unknown keys!", "")
 	}

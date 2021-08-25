@@ -4684,6 +4684,10 @@ type InstanceAdvancedSettings struct {
 	// 该节点属于podCIDR大小自定义模式时，可指定节点上运行的pod数量上限
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DesiredPodNumber *int64 `json:"DesiredPodNumber,omitempty" name:"DesiredPodNumber"`
+
+	// base64 编码的用户脚本，在初始化节点之前执行，目前只对添加已有节点生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PreStartUserScript *string `json:"PreStartUserScript,omitempty" name:"PreStartUserScript"`
 }
 
 type InstanceDataDiskMountSetting struct {
@@ -5979,6 +5983,9 @@ type RouteTableInfo struct {
 }
 
 type RunAutomationServiceEnabled struct {
+
+	// 是否开启云自动化助手。取值范围：<br><li>TRUE：表示开启云自动化助手服务<br><li>FALSE：表示不开启云自动化助手服务<br><br>默认取值：FALSE。
+	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
 }
 
 type RunInstancesForNode struct {

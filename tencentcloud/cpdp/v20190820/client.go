@@ -1326,6 +1326,37 @@ func (c *Client) DownloadBill(request *DownloadBillRequest) (response *DownloadB
     return
 }
 
+func NewDownloadReconciliationUrlRequest() (request *DownloadReconciliationUrlRequest) {
+    request = &DownloadReconciliationUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "DownloadReconciliationUrl")
+    return
+}
+
+func NewDownloadReconciliationUrlResponse() (response *DownloadReconciliationUrlResponse) {
+    response = &DownloadReconciliationUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DownloadReconciliationUrl
+// 获取对账中心账单下载地址的接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_ISEMPTY = "FailedOperation.IsEmpty"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) DownloadReconciliationUrl(request *DownloadReconciliationUrlRequest) (response *DownloadReconciliationUrlResponse, err error) {
+    if request == nil {
+        request = NewDownloadReconciliationUrlRequest()
+    }
+    response = NewDownloadReconciliationUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExecuteMemberTransactionRequest() (request *ExecuteMemberTransactionRequest) {
     request = &ExecuteMemberTransactionRequest{
         BaseRequest: &tchttp.BaseRequest{},

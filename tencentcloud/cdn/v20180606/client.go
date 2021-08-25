@@ -2204,6 +2204,113 @@ func (c *Client) ListScdnLogTasks(request *ListScdnLogTasksRequest) (response *L
     return
 }
 
+func NewListTopBotDataRequest() (request *ListTopBotDataRequest) {
+    request = &ListTopBotDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "ListTopBotData")
+    return
+}
+
+func NewListTopBotDataResponse() (response *ListTopBotDataResponse) {
+    response = &ListTopBotDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListTopBotData
+// 获取Bot攻击的Top信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ERROR = "InternalError.Error"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  UNAUTHORIZEDOPERATION_CDNACCOUNTUNAUTHORIZED = "UnauthorizedOperation.CdnAccountUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_CLSINVALIDAUTHORIZATION = "UnauthorizedOperation.ClsInvalidAuthorization"
+//  UNAUTHORIZEDOPERATION_CLSUNAUTHORIZED = "UnauthorizedOperation.ClsUnauthorized"
+func (c *Client) ListTopBotData(request *ListTopBotDataRequest) (response *ListTopBotDataResponse, err error) {
+    if request == nil {
+        request = NewListTopBotDataRequest()
+    }
+    response = NewListTopBotDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListTopCcDataRequest() (request *ListTopCcDataRequest) {
+    request = &ListTopCcDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "ListTopCcData")
+    return
+}
+
+func NewListTopCcDataResponse() (response *ListTopCcDataResponse) {
+    response = &ListTopCcDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListTopCcData
+// 获取CC攻击Top数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ListTopCcData(request *ListTopCcDataRequest) (response *ListTopCcDataResponse, err error) {
+    if request == nil {
+        request = NewListTopCcDataRequest()
+    }
+    response = NewListTopCcDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListTopDDoSDataRequest() (request *ListTopDDoSDataRequest) {
+    request = &ListTopDDoSDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "ListTopDDoSData")
+    return
+}
+
+func NewListTopDDoSDataResponse() (response *ListTopDDoSDataResponse) {
+    response = &ListTopDDoSDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListTopDDoSData
+// 获取DDoS攻击Top数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ListTopDDoSData(request *ListTopDDoSDataRequest) (response *ListTopDDoSDataResponse, err error) {
+    if request == nil {
+        request = NewListTopDDoSDataRequest()
+    }
+    response = NewListTopDDoSDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListTopDataRequest() (request *ListTopDataRequest) {
     request = &ListTopDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2271,6 +2378,48 @@ func (c *Client) ListTopData(request *ListTopDataRequest) (response *ListTopData
         request = NewListTopDataRequest()
     }
     response = NewListTopDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListTopWafDataRequest() (request *ListTopWafDataRequest) {
+    request = &ListTopWafDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "ListTopWafData")
+    return
+}
+
+func NewListTopWafDataResponse() (response *ListTopWafDataResponse) {
+    response = &ListTopWafDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListTopWafData
+// 获取Waf攻击Top数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
+//  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
+//  INTERNALERROR_DATASYSTEMERROR = "InternalError.DataSystemError"
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  INVALIDPARAMETER_CDNSTATUSINVALIDDOMAIN = "InvalidParameter.CDNStatusInvalidDomain"
+//  INVALIDPARAMETER_CDNPARAMERROR = "InvalidParameter.CdnParamError"
+//  INVALIDPARAMETER_CDNSTATINVALIDDATE = "InvalidParameter.CdnStatInvalidDate"
+//  INVALIDPARAMETER_CDNSTATINVALIDFILTER = "InvalidParameter.CdnStatInvalidFilter"
+//  INVALIDPARAMETER_CDNSTATINVALIDMETRIC = "InvalidParameter.CdnStatInvalidMetric"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_CDNHOSTNOTEXISTS = "ResourceNotFound.CdnHostNotExists"
+//  RESOURCENOTFOUND_CDNUSERNOTEXISTS = "ResourceNotFound.CdnUserNotExists"
+//  UNAUTHORIZEDOPERATION_CDNACCOUNTUNAUTHORIZED = "UnauthorizedOperation.CdnAccountUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+func (c *Client) ListTopWafData(request *ListTopWafDataRequest) (response *ListTopWafDataResponse, err error) {
+    if request == nil {
+        request = NewListTopWafDataRequest()
+    }
+    response = NewListTopWafDataResponse()
     err = c.Send(request, response)
     return
 }

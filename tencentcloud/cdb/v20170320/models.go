@@ -255,6 +255,12 @@ type AuditLogFilter struct {
 
 	// 影响行数。表示筛选影响行数大于该值的审计日志。
 	AffectRows *int64 `json:"AffectRows,omitempty" name:"AffectRows"`
+
+	// SQL 类型。支持多个类型同时查询。目前支持："SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "DROP", "ALTER", "SET", "REPLACE", "EXECUTE"。
+	SqlTypes []*string `json:"SqlTypes,omitempty" name:"SqlTypes"`
+
+	// SQL 语句。支持传递多个sql语句。
+	Sqls []*string `json:"Sqls,omitempty" name:"Sqls"`
 }
 
 type AuditPolicy struct {
