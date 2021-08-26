@@ -277,7 +277,7 @@ SDK 的每一个 client 默认使用长连接模式，即请求的头部 Connect
 
 ## 地域容灾
 
-从 `v1.0.189`开始，腾讯云 GO SDK 支持地域容灾功能：
+从 `v1.0.227`开始，腾讯云 GO SDK 支持地域容灾功能：
 
 当请求满足以下条件时：
 
@@ -471,15 +471,15 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
 }
 ```
 
-# Common Request
+# Common Client
 
-从 `v1.0.189`开始，腾讯云 GO SDK 支持使用 `泛用型的API调用方式(Common Request)` 进行请求。您只需安装 `common` 包, 即可向任何产品发起调用。
+从 `v1.0.189`开始，腾讯云 GO SDK 支持使用 `泛用型的API调用方式(Common Client)` 进行请求。您只需安装 `common` 包, 即可向任何产品发起调用。
 
-**注意，您必须明确知道您调用的接口所需参数，否则可能会调用失败。**
+**注意，您必须明确知道您调用接口的参数内容，否则会调用失败。**
 
 目前仅支持使用 POST 方式发送请求，且签名方法必须使用 签名方法 v3。
 
-详细使用请参阅示例：[使用 Common Request 进行调用](https://github.com/TencentCloud/tencentcloud-sdk-go/blob/master/examples/common/common_request.go)
+详细使用请参阅示例：[使用 Common Client 进行调用](https://github.com/TencentCloud/tencentcloud-sdk-go/blob/master/examples/common/common_client.go)
 
 # 请求重试
 
