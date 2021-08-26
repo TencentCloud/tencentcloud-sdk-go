@@ -2558,6 +2558,9 @@ type CreateExternalAnchorRequest struct {
 
 	// 身份证反面图片下载链接
 	IdCardReverse *string `json:"IdCardReverse,omitempty" name:"IdCardReverse"`
+
+	// 指定分配的代理商ID
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
 }
 
 func (r *CreateExternalAnchorRequest) ToJsonString() string {
@@ -2577,6 +2580,7 @@ func (r *CreateExternalAnchorRequest) FromJsonString(s string) error {
 	delete(f, "IdNo")
 	delete(f, "IdCardFront")
 	delete(f, "IdCardReverse")
+	delete(f, "AgentId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateExternalAnchorRequest has unknown keys!", "")
 	}

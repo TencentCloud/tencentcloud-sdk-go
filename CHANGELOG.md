@@ -1,94 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 正版曲库直通车(ame) 版本：2019-09-16
+## 文件存储(cfs) 版本：2019-07-19
 
-### 第 16 次发布
+### 第 9 次发布
 
-发布时间：2021-08-25 08:10:23
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeMusicSaleStatus](https://cloud.tencent.com/document/api/1155/60689)
-
-新增数据结构：
-
-* [MusicStatus](https://cloud.tencent.com/document/api/1155/40113#MusicStatus)
-
-
-
-## 批量计算(batch) 版本：2017-03-12
-
-### 第 38 次发布
-
-发布时间：2021-08-25 08:03:12
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [RunAutomationServiceEnabled](https://cloud.tencent.com/document/api/599/15912#RunAutomationServiceEnabled)
-
-	* 新增成员：Enabled
-
-
-
-
-## 云数据库 MySQL(cdb) 版本：2017-03-20
-
-### 第 67 次发布
-
-发布时间：2021-08-25 08:03:59
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [AuditLogFilter](https://cloud.tencent.com/document/api/236/15878#AuditLogFilter)
-
-	* 新增成员：SqlTypes, Sqls
-
-
-
-
-## 内容分发网络(cdn) 版本：2018-06-06
-
-### 第 75 次发布
-
-发布时间：2021-08-25 08:04:15
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ListTopBotData](https://cloud.tencent.com/document/api/228/60688)
-* [ListTopCcData](https://cloud.tencent.com/document/api/228/60687)
-* [ListTopDDoSData](https://cloud.tencent.com/document/api/228/60686)
-* [ListTopWafData](https://cloud.tencent.com/document/api/228/60685)
-
-新增数据结构：
-
-* [CcTopData](https://cloud.tencent.com/document/api/228/30987#CcTopData)
-* [DDoSTopData](https://cloud.tencent.com/document/api/228/30987#DDoSTopData)
-* [DomainBotCount](https://cloud.tencent.com/document/api/228/30987#DomainBotCount)
-* [ScdnTopDomainData](https://cloud.tencent.com/document/api/228/30987#ScdnTopDomainData)
-
-
-
-## 负载均衡(clb) 版本：2018-03-17
-
-### 第 53 次发布
-
-发布时间：2021-08-25 08:04:41
+发布时间：2021-08-26 08:04:29
 
 本次发布包含了以下内容：
 
@@ -96,18 +12,75 @@
 
 修改接口：
 
-* [ModifyLoadBalancerAttributes](https://cloud.tencent.com/document/api/214/30680)
+* [CreateCfsFileSystem](https://cloud.tencent.com/document/api/582/38174)
 
-	* 新增入参：DeleteProtect
+	* 新增入参：CcnId, CidrBlock, Capacity
+
+
+修改数据结构：
+
+* [FileSystemInfo](https://cloud.tencent.com/document/api/582/38175#FileSystemInfo)
+
+	* 新增成员：Capacity
+
+* [MountInfo](https://cloud.tencent.com/document/api/582/38175#MountInfo)
+
+	* 新增成员：CcnID, CidrBlock
 
 
 
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
 
-### 第 43 次发布
+### 第 44 次发布
 
-发布时间：2021-08-25 08:11:07
+发布时间：2021-08-26 08:11:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateExternalAnchor](https://cloud.tencent.com/document/api/1122/60300)
+
+	* 新增入参：AgentId
+
+
+
+
+## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 22 次发布
+
+发布时间：2021-08-26 08:05:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ProxyInfo](https://cloud.tencent.com/document/api/608/37023#ProxyInfo)
+
+	* 新增成员：PackageType
+
+* [TCPListener](https://cloud.tencent.com/document/api/608/37023#TCPListener)
+
+	* 新增成员：FailoverSwitch, SessionPersist
+
+* [UDPListener](https://cloud.tencent.com/document/api/608/37023#UDPListener)
+
+	* 新增成员：SessionPersist
+
+
+
+
+## 企业组织(organization) 版本：2021-03-31
+
+### 第 1 次发布
+
+发布时间：2021-08-26 08:07:43
 
 本次发布包含了以下内容：
 
@@ -115,84 +88,11 @@
 
 新增接口：
 
-* [DownloadReconciliationUrl](https://cloud.tencent.com/document/api/1122/60690)
+* [BindOrganizationMemberAuthAccount](https://cloud.tencent.com/document/api/#/#)
 
 
 
-## 云服务器(cvm) 版本：2017-03-12
-
-### 第 63 次发布
-
-发布时间：2021-08-25 08:04:53
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [RunAutomationServiceEnabled](https://cloud.tencent.com/document/api/213/15753#RunAutomationServiceEnabled)
-
-	* 新增成员：Enabled
-
-
-
-
-## 主机安全(cwp) 版本：2018-02-28
-
-### 第 25 次发布
-
-发布时间：2021-08-25 08:11:32
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ExportScanTaskDetails](https://cloud.tencent.com/document/api/296/60691)
-
-
-
-## 数据湖计算(dlc) 版本：2021-01-25
-
-### 第 6 次发布
-
-发布时间：2021-08-25 08:00:48
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [TaskResponseInfo](https://cloud.tencent.com/document/api/1342/53778#TaskResponseInfo)
-
-	* 新增成员：ProgressDetail
-
-
-
-
-## 容器服务(tke) 版本：2018-05-25
-
-### 第 70 次发布
-
-发布时间：2021-08-25 08:08:51
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [InstanceAdvancedSettings](https://cloud.tencent.com/document/api/457/31866#InstanceAdvancedSettings)
-
-	* 新增成员：PreStartUserScript
-
-* [RunAutomationServiceEnabled](https://cloud.tencent.com/document/api/457/31866#RunAutomationServiceEnabled)
-
-	* 新增成员：Enabled
-
+## 企业组织(organization) 版本：2018-12-25
 
 
 
@@ -469,11 +369,11 @@
 
 新增接口：
 
-* [[DescribeMusicSaleStatus](https://cloud.tencent.com/document/api/1155/60689)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeMusicSaleStatus](https://cloud.tencent.com/document/api/1155/60689)
 
 新增数据结构：
 
-* [[MusicStatus](https://cloud.tencent.com/document/api/1155/40113#MusicStatus)](https://cloud.tencent.com/document/api/1155/40113#[MusicStatus](https://cloud.tencent.com/document/api/1155/40113#MusicStatus))
+* [MusicStatus](https://cloud.tencent.com/document/api/1155/40113#MusicStatus)
 
 ### 第 15 次发布
 
@@ -9218,17 +9118,17 @@
 
 新增接口：
 
-* [[ListTopBotData](https://cloud.tencent.com/document/api/228/60688)](https://cloud.tencent.com/document/api/#/#)
-* [[ListTopCcData](https://cloud.tencent.com/document/api/228/60687)](https://cloud.tencent.com/document/api/#/#)
-* [[ListTopDDoSData](https://cloud.tencent.com/document/api/228/60686)](https://cloud.tencent.com/document/api/#/#)
-* [[ListTopWafData](https://cloud.tencent.com/document/api/228/60685)](https://cloud.tencent.com/document/api/#/#)
+* [ListTopBotData](https://cloud.tencent.com/document/api/228/60688)
+* [ListTopCcData](https://cloud.tencent.com/document/api/228/60687)
+* [ListTopDDoSData](https://cloud.tencent.com/document/api/228/60686)
+* [ListTopWafData](https://cloud.tencent.com/document/api/228/60685)
 
 新增数据结构：
 
-* [[CcTopData](https://cloud.tencent.com/document/api/228/30987#CcTopData)](https://cloud.tencent.com/document/api/228/30987#[CcTopData](https://cloud.tencent.com/document/api/228/30987#CcTopData))
-* [[DDoSTopData](https://cloud.tencent.com/document/api/228/30987#DDoSTopData)](https://cloud.tencent.com/document/api/228/30987#[DDoSTopData](https://cloud.tencent.com/document/api/228/30987#DDoSTopData))
-* [[DomainBotCount](https://cloud.tencent.com/document/api/228/30987#DomainBotCount)](https://cloud.tencent.com/document/api/228/30987#[DomainBotCount](https://cloud.tencent.com/document/api/228/30987#DomainBotCount))
-* [[ScdnTopDomainData](https://cloud.tencent.com/document/api/228/30987#ScdnTopDomainData)](https://cloud.tencent.com/document/api/228/30987#[ScdnTopDomainData](https://cloud.tencent.com/document/api/228/30987#ScdnTopDomainData))
+* [CcTopData](https://cloud.tencent.com/document/api/228/30987#CcTopData)
+* [DDoSTopData](https://cloud.tencent.com/document/api/228/30987#DDoSTopData)
+* [DomainBotCount](https://cloud.tencent.com/document/api/228/30987#DomainBotCount)
+* [ScdnTopDomainData](https://cloud.tencent.com/document/api/228/30987#ScdnTopDomainData)
 
 ### 第 74 次发布
 
@@ -10952,6 +10852,32 @@
 
 
 ## 文件存储(cfs) 版本：2019-07-19
+
+### 第 9 次发布
+
+发布时间：2021-08-26 08:04:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCfsFileSystem](https://cloud.tencent.com/document/api/582/38174)
+
+	* 新增入参：CcnId, CidrBlock, Capacity
+
+
+修改数据结构：
+
+* [FileSystemInfo](https://cloud.tencent.com/document/api/582/38175#FileSystemInfo)
+
+	* 新增成员：Capacity
+
+* [MountInfo](https://cloud.tencent.com/document/api/582/38175#MountInfo)
+
+	* 新增成员：CcnID, CidrBlock
+
 
 ### 第 8 次发布
 
@@ -15089,6 +15015,21 @@
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
 
+### 第 44 次发布
+
+发布时间：2021-08-26 08:11:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateExternalAnchor](https://cloud.tencent.com/document/api/1122/60300)
+
+	* 新增入参：AgentId
+
+
 ### 第 43 次发布
 
 发布时间：2021-08-25 08:11:07
@@ -15099,7 +15040,7 @@
 
 新增接口：
 
-* [[DownloadReconciliationUrl](https://cloud.tencent.com/document/api/1122/60690)](https://cloud.tencent.com/document/api/#/#)
+* [DownloadReconciliationUrl](https://cloud.tencent.com/document/api/1122/60690)
 
 ### 第 42 次发布
 
@@ -17728,7 +17669,7 @@
 
 新增接口：
 
-* [[ExportScanTaskDetails](https://cloud.tencent.com/document/api/296/60691)](https://cloud.tencent.com/document/api/#/#)
+* [ExportScanTaskDetails](https://cloud.tencent.com/document/api/296/60691)
 
 ### 第 24 次发布
 
@@ -25422,6 +25363,29 @@
 
 
 ## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 22 次发布
+
+发布时间：2021-08-26 08:05:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ProxyInfo](https://cloud.tencent.com/document/api/608/37023#ProxyInfo)
+
+	* 新增成员：PackageType
+
+* [TCPListener](https://cloud.tencent.com/document/api/608/37023#TCPListener)
+
+	* 新增成员：FailoverSwitch, SessionPersist
+
+* [UDPListener](https://cloud.tencent.com/document/api/608/37023#UDPListener)
+
+	* 新增成员：SessionPersist
+
 
 ### 第 21 次发布
 
@@ -38469,6 +38433,22 @@
 * [OrgInvitation](https://cloud.tencent.com/document/api/850/38749#OrgInvitation)
 * [OrgMember](https://cloud.tencent.com/document/api/850/38749#OrgMember)
 * [OrgNode](https://cloud.tencent.com/document/api/850/38749#OrgNode)
+
+
+
+## 企业组织(organization) 版本：2021-03-31
+
+### 第 1 次发布
+
+发布时间：2021-08-26 08:07:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[BindOrganizationMemberAuthAccount](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
 
 
 

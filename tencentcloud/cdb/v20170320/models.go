@@ -348,10 +348,10 @@ type BackupInfo struct {
 	// 备份快照时间，时间格式：2016-03-17 02:10:37
 	Date *string `json:"Date,omitempty" name:"Date"`
 
-	// 内网下载地址
+	// 下载地址
 	IntranetUrl *string `json:"IntranetUrl,omitempty" name:"IntranetUrl"`
 
-	// 外网下载地址
+	// 下载地址
 	InternetUrl *string `json:"InternetUrl,omitempty" name:"InternetUrl"`
 
 	// 日志具体类型。可能的值有 "logical": 逻辑冷备， "physical": 物理冷备。
@@ -478,10 +478,10 @@ type BinlogInfo struct {
 	// 文件存储时间，时间格式：2016-03-17 02:10:37
 	Date *string `json:"Date,omitempty" name:"Date"`
 
-	// 内网下载地址
+	// 下载地址
 	IntranetUrl *string `json:"IntranetUrl,omitempty" name:"IntranetUrl"`
 
-	// 外网下载地址
+	// 下载地址
 	InternetUrl *string `json:"InternetUrl,omitempty" name:"InternetUrl"`
 
 	// 日志具体类型，可能的值有：binlog - 二进制日志

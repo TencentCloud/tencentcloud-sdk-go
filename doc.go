@@ -134,6 +134,7 @@ import (
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/oceanus"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ocr"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/organization"
+	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/organization"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/partners"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/pds"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/postgres"

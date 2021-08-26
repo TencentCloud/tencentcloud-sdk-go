@@ -90,7 +90,7 @@ type CreateDomainRequest struct {
 	// 指定域名的IP
 	IP *string `json:"IP,omitempty" name:"IP"`
 
-	// 是否开启通知告警
+	// 是否开启通知告警；true：开启通知告警，false：关闭通知告警
 	Notice *bool `json:"Notice,omitempty" name:"Notice"`
 
 	// 给域名添加标签，多个以逗号隔开
@@ -165,7 +165,7 @@ type DashboardResult struct {
 type DeleteDomainRequest struct {
 	*tchttp.BaseRequest
 
-	// 域名ID，可通过搜索域名接口获得
+	// 域名ID，可通过<a href="https://cloud.tencent.com/document/api/1084/49339">搜索域名</a>接口获得
 	DomainId *int64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -379,7 +379,13 @@ type DescribeDomainsRequest struct {
 	// 获取数量
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 搜索的类型 Enums(none,tags,grade,brand,code,hash,limit)
+	// 搜索的类型有：none，tags，grade，brand，code，hash，limit。
+	// 选tags，入参请填Tag，
+	// 选grade，入参请填Grade，
+	// 选brand，入参请填Brand，
+	// 选code，入参请填Code，
+	// 选hash，入参请填Hash
+	// 选limit，标识只返回数量信息
 	SearchType *string `json:"SearchType,omitempty" name:"SearchType"`
 
 	// 标签，多个标签用逗号分隔

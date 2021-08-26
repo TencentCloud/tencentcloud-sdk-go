@@ -59,9 +59,6 @@ const (
 	// 无效的监听器协议。
 	FAILEDOPERATION_INVALIDLISTENERPROTOCOL = "FailedOperation.InvalidListenerProtocol"
 
-	// 域名的数量超过限制。
-	FAILEDOPERATION_LIMITNUMOFDOMAINS = "FailedOperation.LimitNumofDomains"
-
 	// 监听器数量超过限制。
 	FAILEDOPERATION_LIMITNUMOFLISTENER = "FailedOperation.LimitNumofListener"
 
@@ -142,6 +139,12 @@ const (
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
+
+	// 域名在ICP黑名单内。
+	INVALIDPARAMETERVALUE_DOMAININICPBLACKLIST = "InvalidParameterValue.DomainInIcpBlacklist"
+
+	// 域名未备案。
+	INVALIDPARAMETERVALUE_DOMAINNOTREGISTER = "InvalidParameterValue.DomainNotRegister"
 
 	// RealServer已存在。
 	INVALIDPARAMETERVALUE_DUPLICATERS = "InvalidParameterValue.DuplicateRS"

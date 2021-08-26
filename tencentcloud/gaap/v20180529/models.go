@@ -5894,7 +5894,7 @@ type ProxyGroupDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPAddressVersion *string `json:"IPAddressVersion,omitempty" name:"IPAddressVersion"`
 
-	// 通道组类型，可取值：Thunder、Accelerator，默认值Thunder
+	// 通道组套餐类型：Thunder表示标准通道组，Accelerator表示游戏加速器通道组。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 }
@@ -6062,6 +6062,10 @@ type ProxyInfo struct {
 	// 网络类型：normal、cn2
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkType *string `json:"NetworkType,omitempty" name:"NetworkType"`
+
+	// 通道套餐类型：Thunder表示标准通道，Accelerator表示游戏加速器通道。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 }
 
 type ProxySimpleInfo struct {
@@ -6491,6 +6495,14 @@ type TCPListener struct {
 	// 不健康阈值，表示连续检查失败多少次数后认为源站不健康。范围为1到10
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnhealthyThreshold *uint64 `json:"UnhealthyThreshold,omitempty" name:"UnhealthyThreshold"`
+
+	// 源站是否开启主备模式：1开启，0关闭，DOMAIN类型源站不支持开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailoverSwitch *uint64 `json:"FailoverSwitch,omitempty" name:"FailoverSwitch"`
+
+	// 是否开启会话保持选项：0关闭， 非0开启，非0值为会话保持时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionPersist *uint64 `json:"SessionPersist,omitempty" name:"SessionPersist"`
 }
 
 type TagPair struct {
@@ -6554,4 +6566,8 @@ type UDPListener struct {
 
 	// 监听器创建时间，Unix时间戳
 	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 是否开启会话保持选项：0关闭， 非0开启，非0值为会话保持时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionPersist *uint64 `json:"SessionPersist,omitempty" name:"SessionPersist"`
 }

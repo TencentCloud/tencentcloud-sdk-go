@@ -855,7 +855,7 @@ type CreateDataForwardRequest struct {
 	// 产品ID。
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
-	// 转发地址。
+	// 转发地址。如果有鉴权Token，则需要自行传入，例如 [{\"forward\":{\"api\":\"http://123.207.117.108:1080/sub.php\",\"token\":\"testtoken\"}}]
 	ForwardAddr *string `json:"ForwardAddr,omitempty" name:"ForwardAddr"`
 
 	// 1-数据信息转发 2-设备上下线状态转发 3-数据信息转发&设备上下线状态转发
@@ -1036,13 +1036,13 @@ type CreateProductRequest struct {
 	// 设备功能码 ypsxth音频双向通话 spdxth视频单向通话
 	Features []*string `json:"Features,omitempty" name:"Features"`
 
-	// 设备操作系统 Linux
+	// 设备操作系统，通用设备填default
 	ChipOs *string `json:"ChipOs,omitempty" name:"ChipOs"`
 
-	// 芯片厂商id
+	// 芯片厂商id，通用设备填default
 	ChipManufactureId *string `json:"ChipManufactureId,omitempty" name:"ChipManufactureId"`
 
-	// 芯片id
+	// 芯片id，通用设备填default
 	ChipId *string `json:"ChipId,omitempty" name:"ChipId"`
 
 	// 产品描述信息
@@ -4288,7 +4288,7 @@ type ModifyDataForwardRequest struct {
 	// 产品ID。
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
-	// 转发地址。
+	// 转发地址。如果有鉴权Token，则需要自行传入，例如 [{\"forward\":{\"api\":\"http://123.207.117.108:1080/sub.php\",\"token\":\"testtoken\"}}]
 	ForwardAddr *string `json:"ForwardAddr,omitempty" name:"ForwardAddr"`
 
 	// 1-数据信息转发 2-设备上下线状态转发 3-数据信息转发&设备上下线状态转发

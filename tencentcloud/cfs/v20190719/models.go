@@ -83,16 +83,16 @@ type CreateCfsFileSystemRequest struct {
 	// 可用区名称，例如ap-beijing-1，请参考 [概览](https://cloud.tencent.com/document/product/582/13225) 文档中的地域与可用区列表
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 网络类型，值为 VPC，BASIC；其中 VPC 为私有网络，BASIC 为基础网络
+	// 网络类型，可选值为 VPC，BASIC，CCN；其中 VPC 为私有网络，BASIC 为基础网络, CCN 为云联网，Turbo系列当前必须选择云联网。目前基础网络已逐渐淘汰，不推荐使用。
 	NetInterface *string `json:"NetInterface,omitempty" name:"NetInterface"`
 
-	// 权限组 ID
+	// 权限组 ID，通用标准型和性能型必填，turbo系列请填写pgroupbasic
 	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
 
-	// 文件系统协议类型， 值为 NFS、CIFS; 若留空则默认为 NFS协议
+	// 文件系统协议类型， 值为 NFS、CIFS、TURBO ; 若留空则默认为 NFS协议，turbo系列必须选择turbo，不支持NFS、CIFS
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
-	// 文件系统存储类型，值为 SD ；其中 SD 为标准型存储， HP为性能存储。
+	// 文件系统存储类型，默认值为 SD ；其中 SD 为通用标准型标准型存储， HP为通用性能型存储， TB为turbo标准型， TP 为turbo性能型。
 	StorageType *string `json:"StorageType,omitempty" name:"StorageType"`
 
 	// 私有网络（VPC） ID，若网络类型选择的是VPC，该字段为必填。
@@ -101,7 +101,7 @@ type CreateCfsFileSystemRequest struct {
 	// 子网 ID，若网络类型选择的是VPC，该字段为必填。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 指定IP地址，仅VPC网络支持；若不填写、将在该子网下随机分配 IP
+	// 指定IP地址，仅VPC网络支持；若不填写、将在该子网下随机分配 IP，Turbo系列当前不支持指定
 	MountIP *string `json:"MountIP,omitempty" name:"MountIP"`
 
 	// 用户自定义文件系统名称
@@ -112,6 +112,15 @@ type CreateCfsFileSystemRequest struct {
 
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。用于保证请求幂等性的字符串失效时间为2小时。
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
+
+	// 云联网ID， 若网络类型选择的是CCN，该字段为必填
+	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
+
+	// 云联网中CFS使用的网段， 若网络类型选择的是Ccn，该字段为必填，且不能和Ccn中已经绑定的网段冲突
+	CidrBlock *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
+
+	// 文件系统容量，turbo系列必填，单位为GiB。 turbo标准型单位GB，起售40TiB，即40960 GiB；扩容步长20TiB，即20480 GiB。turbo性能型起售20TiB，即20480 GiB；扩容步长10TiB，10240 GiB。
+	Capacity *uint64 `json:"Capacity,omitempty" name:"Capacity"`
 }
 
 func (r *CreateCfsFileSystemRequest) ToJsonString() string {
@@ -137,6 +146,9 @@ func (r *CreateCfsFileSystemRequest) FromJsonString(s string) error {
 	delete(f, "FsName")
 	delete(f, "ResourceTags")
 	delete(f, "ClientToken")
+	delete(f, "CcnId")
+	delete(f, "CidrBlock")
+	delete(f, "Capacity")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCfsFileSystemRequest has unknown keys!", "")
 	}
@@ -156,10 +168,10 @@ type CreateCfsFileSystemResponse struct {
 		// 文件系统 ID
 		FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 
-		// 文件系统状态
+		// 文件系统状态，可能出现状态包括：“creating”  创建中, “create_failed” 创建失败, “available” 可用, “unserviced” 不可用, “upgrading” 升级中， “deleting” 删除中。
 		LifeCycleState *string `json:"LifeCycleState,omitempty" name:"LifeCycleState"`
 
-		// 文件系统已使用容量大小
+		// 文件系统已使用容量大小，单位为 Byte
 		SizeByte *uint64 `json:"SizeByte,omitempty" name:"SizeByte"`
 
 		// 可用区 ID
@@ -957,6 +969,9 @@ type FileSystemInfo struct {
 
 	// 文件系统吞吐上限，吞吐上限是根据文件系统当前已使用存储量、绑定的存储资源包以及吞吐资源包一同确定
 	BandwidthLimit *float64 `json:"BandwidthLimit,omitempty" name:"BandwidthLimit"`
+
+	// 文件系统总容量
+	Capacity *uint64 `json:"Capacity,omitempty" name:"Capacity"`
 }
 
 type MountInfo struct {
@@ -990,6 +1005,12 @@ type MountInfo struct {
 
 	// 子网名称
 	SubnetName *string `json:"SubnetName,omitempty" name:"SubnetName"`
+
+	// CFS Turbo使用的云联网ID
+	CcnID *string `json:"CcnID,omitempty" name:"CcnID"`
+
+	// 云联网中CFS Turbo使用的网段
+	CidrBlock *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
 }
 
 type PGroup struct {
