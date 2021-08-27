@@ -1,86 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 文件存储(cfs) 版本：2019-07-19
+## 云防火墙(cfw) 版本：2019-09-04
 
 ### 第 9 次发布
 
-发布时间：2021-08-26 08:04:29
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateCfsFileSystem](https://cloud.tencent.com/document/api/582/38174)
-
-	* 新增入参：CcnId, CidrBlock, Capacity
-
-
-修改数据结构：
-
-* [FileSystemInfo](https://cloud.tencent.com/document/api/582/38175#FileSystemInfo)
-
-	* 新增成员：Capacity
-
-* [MountInfo](https://cloud.tencent.com/document/api/582/38175#MountInfo)
-
-	* 新增成员：CcnID, CidrBlock
-
-
-
-
-## 企业收付平台(cpdp) 版本：2019-08-20
-
-### 第 44 次发布
-
-发布时间：2021-08-26 08:11:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateExternalAnchor](https://cloud.tencent.com/document/api/1122/60300)
-
-	* 新增入参：AgentId
-
-
-
-
-## 全球应用加速(gaap) 版本：2018-05-29
-
-### 第 22 次发布
-
-发布时间：2021-08-26 08:05:52
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ProxyInfo](https://cloud.tencent.com/document/api/608/37023#ProxyInfo)
-
-	* 新增成员：PackageType
-
-* [TCPListener](https://cloud.tencent.com/document/api/608/37023#TCPListener)
-
-	* 新增成员：FailoverSwitch, SessionPersist
-
-* [UDPListener](https://cloud.tencent.com/document/api/608/37023#UDPListener)
-
-	* 新增成员：SessionPersist
-
-
-
-
-## 企业组织(organization) 版本：2021-03-31
-
-### 第 1 次发布
-
-发布时间：2021-08-26 08:07:43
+发布时间：2021-08-27 08:11:17
 
 本次发布包含了以下内容：
 
@@ -88,11 +12,35 @@
 
 新增接口：
 
-* [BindOrganizationMemberAuthAccount](https://cloud.tencent.com/document/api/#/#)
+* [DescribeResourceGroupNew](https://cloud.tencent.com/document/api/1132/60781)
 
 
 
-## 企业组织(organization) 版本：2018-12-25
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 29 次发布
+
+发布时间：2021-08-27 08:06:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteDevices](https://cloud.tencent.com/document/api/1081/60780)
+* [UpdateDevicesEnableState](https://cloud.tencent.com/document/api/1081/60779)
+
+修改接口：
+
+* [GetDeviceList](https://cloud.tencent.com/document/api/1081/37653)
+
+	* 新增入参：ProjectId
+
+
+新增数据结构：
+
+* [DevicesItem](https://cloud.tencent.com/document/api/1081/34988#DevicesItem)
 
 
 
@@ -11048,6 +10996,18 @@
 
 
 ## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 9 次发布
+
+发布时间：2021-08-27 08:11:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeResourceGroupNew](https://cloud.tencent.com/document/api/1132/60781)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 8 次发布
 
@@ -29511,6 +29471,30 @@
 
 ## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
+### 第 29 次发布
+
+发布时间：2021-08-27 08:06:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DeleteDevices](https://cloud.tencent.com/document/api/1081/60780)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateDevicesEnableState](https://cloud.tencent.com/document/api/1081/60779)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [GetDeviceList](https://cloud.tencent.com/document/api/1081/37653)
+
+	* 新增入参：ProjectId
+
+
+新增数据结构：
+
+* [[DevicesItem](https://cloud.tencent.com/document/api/1081/34988#DevicesItem)](https://cloud.tencent.com/document/api/1081/34988#[DevicesItem](https://cloud.tencent.com/document/api/1081/34988#DevicesItem))
+
 ### 第 28 次发布
 
 发布时间：2021-08-18 08:06:21
@@ -38448,7 +38432,7 @@
 
 新增接口：
 
-* [[BindOrganizationMemberAuthAccount](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [BindOrganizationMemberAuthAccount](https://cloud.tencent.com/document/api/#/#)
 
 
 

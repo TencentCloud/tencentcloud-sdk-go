@@ -1617,6 +1617,72 @@ func (r *DescribeNatRuleOverviewResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeResourceGroupNewRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询类型 网络结构 vpc，业务识别- resource ，资源标签-tag
+	QueryType *string `json:"QueryType,omitempty" name:"QueryType"`
+
+	// 资产组id  全部传0
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// all  包含子组 own自己
+	ShowType *string `json:"ShowType,omitempty" name:"ShowType"`
+}
+
+func (r *DescribeResourceGroupNewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceGroupNewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "QueryType")
+	delete(f, "GroupId")
+	delete(f, "ShowType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceGroupNewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourceGroupNewResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回树形结构
+		Data *string `json:"Data,omitempty" name:"Data"`
+
+		// 无
+		UnResourceNum *int64 `json:"UnResourceNum,omitempty" name:"UnResourceNum"`
+
+		// 无
+		ReturnMsg *string `json:"ReturnMsg,omitempty" name:"ReturnMsg"`
+
+		// 无
+		ReturnCode *int64 `json:"ReturnCode,omitempty" name:"ReturnCode"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeResourceGroupNewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceGroupNewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeResourceGroupRequest struct {
 	*tchttp.BaseRequest
 

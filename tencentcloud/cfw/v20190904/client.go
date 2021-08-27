@@ -1023,6 +1023,52 @@ func (c *Client) DescribeResourceGroup(request *DescribeResourceGroupRequest) (r
     return
 }
 
+func NewDescribeResourceGroupNewRequest() (request *DescribeResourceGroupNewRequest) {
+    request = &DescribeResourceGroupNewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeResourceGroupNew")
+    return
+}
+
+func NewDescribeResourceGroupNewResponse() (response *DescribeResourceGroupNewResponse) {
+    response = &DescribeResourceGroupNewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeResourceGroupNew
+// DescribeResourceGroupNew资产中心资产树信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeResourceGroupNew(request *DescribeResourceGroupNewRequest) (response *DescribeResourceGroupNewResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceGroupNewRequest()
+    }
+    response = NewDescribeResourceGroupNewResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRuleOverviewRequest() (request *DescribeRuleOverviewRequest) {
     request = &DescribeRuleOverviewRequest{
         BaseRequest: &tchttp.BaseRequest{},

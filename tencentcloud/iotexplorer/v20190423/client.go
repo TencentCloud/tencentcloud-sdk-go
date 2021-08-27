@@ -455,6 +455,44 @@ func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDev
     return
 }
 
+func NewDeleteDevicesRequest() (request *DeleteDevicesRequest) {
+    request = &DeleteDevicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteDevices")
+    return
+}
+
+func NewDeleteDevicesResponse() (response *DeleteDevicesResponse) {
+    response = &DeleteDevicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteDevices
+// 批量删除设备
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_DEVICEHASALREADYBINDGATEWAY = "UnauthorizedOperation.DeviceHasAlreadyBindGateway"
+//  UNAUTHORIZEDOPERATION_GATEWAYHASBINDEDDEVICES = "UnauthorizedOperation.GatewayHasBindedDevices"
+//  UNSUPPORTEDOPERATION_DEVICEOTATASKINPROGRESS = "UnsupportedOperation.DeviceOtaTaskInProgress"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) DeleteDevices(request *DeleteDevicesRequest) (response *DeleteDevicesResponse, err error) {
+    if request == nil {
+        request = NewDeleteDevicesRequest()
+    }
+    response = NewDeleteDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteLoRaFrequencyRequest() (request *DeleteLoRaFrequencyRequest) {
     request = &DeleteLoRaFrequencyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1708,6 +1746,44 @@ func (c *Client) SearchTopicRule(request *SearchTopicRuleRequest) (response *Sea
         request = NewSearchTopicRuleRequest()
     }
     response = NewSearchTopicRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateDevicesEnableStateRequest() (request *UpdateDevicesEnableStateRequest) {
+    request = &UpdateDevicesEnableStateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "UpdateDevicesEnableState")
+    return
+}
+
+func NewUpdateDevicesEnableStateResponse() (response *UpdateDevicesEnableStateResponse) {
+    response = &UpdateDevicesEnableStateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateDevicesEnableState
+// 批量禁用启用设备
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_DEVICEHASALREADYBINDGATEWAY = "UnauthorizedOperation.DeviceHasAlreadyBindGateway"
+//  UNAUTHORIZEDOPERATION_GATEWAYHASBINDEDDEVICES = "UnauthorizedOperation.GatewayHasBindedDevices"
+//  UNSUPPORTEDOPERATION_DEVICEOTATASKINPROGRESS = "UnsupportedOperation.DeviceOtaTaskInProgress"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) UpdateDevicesEnableState(request *UpdateDevicesEnableStateRequest) (response *UpdateDevicesEnableStateResponse, err error) {
+    if request == nil {
+        request = NewUpdateDevicesEnableStateRequest()
+    }
+    response = NewUpdateDevicesEnableStateResponse()
     err = c.Send(request, response)
     return
 }

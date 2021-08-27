@@ -703,6 +703,60 @@ func (r *DeleteDeviceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteDevicesRequest struct {
+	*tchttp.BaseRequest
+
+	// 多个设备标识
+	DevicesItems []*DevicesItem `json:"DevicesItems,omitempty" name:"DevicesItems"`
+}
+
+func (r *DeleteDevicesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDevicesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DevicesItems")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDevicesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteDevicesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 删除的结果代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ResultCode *string `json:"ResultCode,omitempty" name:"ResultCode"`
+
+		// 删除的结果信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ResultMessage *string `json:"ResultMessage,omitempty" name:"ResultMessage"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteDevicesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDevicesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteLoRaFrequencyRequest struct {
 	*tchttp.BaseRequest
 
@@ -1559,6 +1613,15 @@ type DeviceInfo struct {
 	CreatorNickName *string `json:"CreatorNickName,omitempty" name:"CreatorNickName"`
 }
 
+type DevicesItem struct {
+
+	// 产品id
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+}
+
 type DisableTopicRuleRequest struct {
 	*tchttp.BaseRequest
 
@@ -1792,6 +1855,9 @@ type GetDeviceListRequest struct {
 
 	// 需要过滤的设备名称
 	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 项目ID。产品 ID 为 -1 时，该参数必填
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 func (r *GetDeviceListRequest) ToJsonString() string {
@@ -1811,6 +1877,7 @@ func (r *GetDeviceListRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "FirmwareVersion")
 	delete(f, "DeviceName")
+	delete(f, "ProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetDeviceListRequest has unknown keys!", "")
 	}
@@ -3205,6 +3272,64 @@ type TopicRulePayload struct {
 
 	// 是否禁用规则
 	RuleDisabled *bool `json:"RuleDisabled,omitempty" name:"RuleDisabled"`
+}
+
+type UpdateDevicesEnableStateRequest struct {
+	*tchttp.BaseRequest
+
+	// 多个设备标识
+	DevicesItems []*DevicesItem `json:"DevicesItems,omitempty" name:"DevicesItems"`
+
+	// 1：启用；0：禁用
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *UpdateDevicesEnableStateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateDevicesEnableStateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DevicesItems")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDevicesEnableStateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateDevicesEnableStateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 删除的结果代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ResultCode *string `json:"ResultCode,omitempty" name:"ResultCode"`
+
+		// 删除的结果信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ResultMessage *string `json:"ResultMessage,omitempty" name:"ResultMessage"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateDevicesEnableStateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateDevicesEnableStateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateFirmwareRequest struct {

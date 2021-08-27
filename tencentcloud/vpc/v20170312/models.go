@@ -6657,6 +6657,7 @@ type DescribeCcnRoutesRequest struct {
 	// <li>instance-type - String -（过滤条件）下一跳类型。</li>
 	// <li>instance-region - String -（过滤条件）下一跳所属地域。</li>
 	// <li>instance-id - String -（过滤条件）下一跳实例ID。</li>
+	// <li>route-table-id - String -（过滤条件）路由表ID列表，形如ccntr-1234edfr，可以根据路由表ID 过滤。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量
