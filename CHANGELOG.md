@@ -1,26 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云防火墙(cfw) 版本：2019-09-04
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
 
-### 第 9 次发布
+### 第 18 次发布
 
-发布时间：2021-08-27 08:11:17
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeResourceGroupNew](https://cloud.tencent.com/document/api/1132/60781)
-
-
-
-## 物联网开发平台(iotexplorer) 版本：2019-04-23
-
-### 第 29 次发布
-
-发布时间：2021-08-27 08:06:16
+发布时间：2021-08-30 08:10:09
 
 本次发布包含了以下内容：
 
@@ -28,19 +12,12 @@
 
 新增接口：
 
-* [DeleteDevices](https://cloud.tencent.com/document/api/1081/60780)
-* [UpdateDevicesEnableState](https://cloud.tencent.com/document/api/1081/60779)
-
-修改接口：
-
-* [GetDeviceList](https://cloud.tencent.com/document/api/1081/37653)
-
-	* 新增入参：ProjectId
-
+* [DescribeTopicSyncReplica](https://cloud.tencent.com/document/api/597/60811)
 
 新增数据结构：
 
-* [DevicesItem](https://cloud.tencent.com/document/api/1081/34988#DevicesItem)
+* [TopicInSyncReplicaInfo](https://cloud.tencent.com/document/api/597/40861#TopicInSyncReplicaInfo)
+* [TopicInSyncReplicaResult](https://cloud.tencent.com/document/api/597/40861#TopicInSyncReplicaResult)
 
 
 
@@ -11007,7 +10984,7 @@
 
 新增接口：
 
-* [[DescribeResourceGroupNew](https://cloud.tencent.com/document/api/1132/60781)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeResourceGroupNew](https://cloud.tencent.com/document/api/1132/60781)
 
 ### 第 8 次发布
 
@@ -11564,6 +11541,23 @@
 
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 18 次发布
+
+发布时间：2021-08-30 08:10:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeTopicSyncReplica](https://cloud.tencent.com/document/api/597/60811)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[TopicInSyncReplicaInfo](https://cloud.tencent.com/document/api/597/40861#TopicInSyncReplicaInfo)](https://cloud.tencent.com/document/api/597/40861#[TopicInSyncReplicaInfo](https://cloud.tencent.com/document/api/597/40861#TopicInSyncReplicaInfo))
+* [[TopicInSyncReplicaResult](https://cloud.tencent.com/document/api/597/40861#TopicInSyncReplicaResult)](https://cloud.tencent.com/document/api/597/40861#[TopicInSyncReplicaResult](https://cloud.tencent.com/document/api/597/40861#TopicInSyncReplicaResult))
 
 ### 第 17 次发布
 
@@ -29481,8 +29475,8 @@
 
 新增接口：
 
-* [[DeleteDevices](https://cloud.tencent.com/document/api/1081/60780)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateDevicesEnableState](https://cloud.tencent.com/document/api/1081/60779)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteDevices](https://cloud.tencent.com/document/api/1081/60780)
+* [UpdateDevicesEnableState](https://cloud.tencent.com/document/api/1081/60779)
 
 修改接口：
 
@@ -29493,7 +29487,7 @@
 
 新增数据结构：
 
-* [[DevicesItem](https://cloud.tencent.com/document/api/1081/34988#DevicesItem)](https://cloud.tencent.com/document/api/1081/34988#[DevicesItem](https://cloud.tencent.com/document/api/1081/34988#DevicesItem))
+* [DevicesItem](https://cloud.tencent.com/document/api/1081/34988#DevicesItem)
 
 ### 第 28 次发布
 

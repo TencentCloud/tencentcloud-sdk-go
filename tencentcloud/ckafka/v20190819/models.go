@@ -1934,6 +1934,71 @@ func (r *DescribeTopicSubscribeGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeTopicSyncReplicaRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 主题名称
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// 偏移量，不填默认为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，不填则默认10，最大值20。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 仅筛选未同步副本
+	OutOfSyncReplicaOnly *bool `json:"OutOfSyncReplicaOnly,omitempty" name:"OutOfSyncReplicaOnly"`
+}
+
+func (r *DescribeTopicSyncReplicaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTopicSyncReplicaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "TopicName")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "OutOfSyncReplicaOnly")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopicSyncReplicaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTopicSyncReplicaResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回topic 副本详情
+		Result *TopicInSyncReplicaResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTopicSyncReplicaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTopicSyncReplicaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeUserRequest struct {
 	*tchttp.BaseRequest
 
@@ -2975,6 +3040,46 @@ type TopicDetailResponse struct {
 
 	// 符合条件的所有主题详情数量
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+}
+
+type TopicInSyncReplicaInfo struct {
+
+	// 分区名称
+	Partition *string `json:"Partition,omitempty" name:"Partition"`
+
+	// Leader Id
+	Leader *uint64 `json:"Leader,omitempty" name:"Leader"`
+
+	// 副本集
+	Replica *string `json:"Replica,omitempty" name:"Replica"`
+
+	// ISR
+	InSyncReplica *string `json:"InSyncReplica,omitempty" name:"InSyncReplica"`
+
+	// 起始Offset
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginOffset *uint64 `json:"BeginOffset,omitempty" name:"BeginOffset"`
+
+	// 末端Offset
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndOffset *uint64 `json:"EndOffset,omitempty" name:"EndOffset"`
+
+	// 消息数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MessageCount *uint64 `json:"MessageCount,omitempty" name:"MessageCount"`
+
+	// 未同步副本集
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutOfSyncReplica *string `json:"OutOfSyncReplica,omitempty" name:"OutOfSyncReplica"`
+}
+
+type TopicInSyncReplicaResult struct {
+
+	// Topic详情及副本合集
+	TopicInSyncReplicaList []*TopicInSyncReplicaInfo `json:"TopicInSyncReplicaList,omitempty" name:"TopicInSyncReplicaList"`
+
+	// 总计个数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 }
 
 type TopicPartitionDO struct {

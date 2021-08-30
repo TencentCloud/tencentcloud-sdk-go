@@ -15,7 +15,7 @@
 | asr | [语音识别](https://cloud.tencent.com/document/product/1093) | 2021-08-24 08:01:43 |
 | asw | [应用与服务编排工作流](https://cloud.tencent.com/document/product/1272) | 2021-07-02 08:01:06 |
 | ba | [网站备案](https://cloud.tencent.com/document/product/243) | 2021-07-30 08:01:08 |
-| batch | [批量计算](https://cloud.tencent.com/document/product/599) | 2021-08-27 08:03:12 |
+| batch | [批量计算](https://cloud.tencent.com/document/product/599) | 2021-08-30 08:03:11 |
 | bda | [人体分析](https://cloud.tencent.com/document/product/1208) | 2021-07-02 08:01:43 |
 | billing | [计费相关](https://cloud.tencent.com/document/product/555) | 2021-07-28 08:03:31 |
 | bizlive | [商业直播](https://cloud.tencent.com/document/product) | 2020-03-10 01:08:07 |
@@ -39,7 +39,7 @@
 | cii | [智能保险助手](https://cloud.tencent.com/document/product/1368) | 2021-08-03 08:12:34 |
 | cim | [](https://cloud.tencent.com/document/product) | 2019-05-16 17:21:18 |
 | cis | [](https://cloud.tencent.com/document/product) | 2018-06-07 15:01:42 |
-| ckafka | [消息队列 Ckafka](https://cloud.tencent.com/document/product/597) | 2021-08-24 08:11:48 |
+| ckafka | [消息队列 Ckafka](https://cloud.tencent.com/document/product/597) | 2021-08-30 08:10:09 |
 | clb | [负载均衡](https://cloud.tencent.com/document/product/214) | 2021-08-25 08:04:41 |
 | cloudaudit | [云审计](https://cloud.tencent.com/document/product/629) | 2021-07-21 08:12:08 |
 | cloudhsm | [云加密机](https://cloud.tencent.com/document/product/639) | 2021-07-02 08:10:22 |
@@ -49,7 +49,7 @@
 | cms | [内容安全](https://cloud.tencent.com/document/product) | 2020-10-29 08:03:08 |
 | cpdp | [企业收付平台](https://cloud.tencent.com/document/product/1122) | 2021-08-26 08:11:04 |
 | cr | [金融联络机器人](https://cloud.tencent.com/document/product/656) | 2021-02-24 08:03:24 |
-| cvm | [云服务器](https://cloud.tencent.com/document/product/213) | 2021-08-27 08:04:42 |
+| cvm | [云服务器](https://cloud.tencent.com/document/product/213) | 2021-08-30 08:04:42 |
 | cwp | [主机安全](https://cloud.tencent.com/document/product/296) | 2021-08-25 08:11:32 |
 | cws | [漏洞扫描服务](https://cloud.tencent.com/document/product) | 2019-11-22 12:16:15 |
 | cynosdb | [云原生数据库 TDSQL-C](https://cloud.tencent.com/document/product/1003) | 2021-08-03 08:01:24 |
