@@ -50,6 +50,9 @@ const (
 	// 环境ID非法。
 	INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
 
+	// 没有操作权限。
+	INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
+
 	// 服务不存在。
 	INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
 

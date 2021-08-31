@@ -62,6 +62,7 @@ func NewCreateDomainResponse() (response *CreateDomainResponse) {
 // 通过域名端口添加监控
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_REPETITIONADD = "FailedOperation.RepetitionAdd"
 //  FAILEDOPERATION_RESOLVEDOMAINFAILED = "FailedOperation.ResolveDomainFailed"
 //  INVALIDPARAMETER_INVALIDDOMAIN = "InvalidParameter.InvalidDomain"
 //  INVALIDPARAMETER_INVALIDIP = "InvalidParameter.InvalidIP"

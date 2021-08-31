@@ -38,6 +38,9 @@ const (
 	// 询价失败。
 	FAILEDOPERATION_INQUIRYPRICE = "FailedOperation.InquiryPrice"
 
+	// 可用license数量不足，缺少1个license，请购买新license。
+	FAILEDOPERATION_LICENSEEXCEEDED = "FailedOperation.LicenseExceeded"
+
 	// 卸载主机。
 	FAILEDOPERATION_MACHINEDELETE = "FailedOperation.MachineDelete"
 
@@ -52,6 +55,9 @@ const (
 
 	// 不能关闭预付费模式专业版。
 	FAILEDOPERATION_PREPAYMODE = "FailedOperation.PrePayMode"
+
+	// 开启防护失败。
+	FAILEDOPERATION_PROTECTSTARTFAIL = "FailedOperation.ProtectStartFail"
 
 	// 回复木马失败。
 	FAILEDOPERATION_RECOVER = "FailedOperation.Recover"
@@ -116,6 +122,9 @@ const (
 	// 标签名称长度不能超过15个字符。
 	INVALIDPARAMETERVALUE_TAGNAMELENGTHLIMIT = "InvalidParameterValue.TagNameLengthLimit"
 
+	// 超过配额限制。
+	LIMITEXCEEDED = "LimitExceeded"
+
 	// 超出批量添加数量。
 	LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
 
@@ -124,6 +133,9 @@ const (
 
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
+
+	// 资源不足。
+	RESOURCEINSUFFICIENT = "ResourceInsufficient"
 
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"

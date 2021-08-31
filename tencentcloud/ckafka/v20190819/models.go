@@ -811,6 +811,52 @@ func (r *DeleteAclRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteRouteTriggerTimeRequest struct {
+	*tchttp.BaseRequest
+
+	// 修改时间
+	DelayTime *string `json:"DelayTime,omitempty" name:"DelayTime"`
+}
+
+func (r *DeleteRouteTriggerTimeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRouteTriggerTimeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DelayTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRouteTriggerTimeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteRouteTriggerTimeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteRouteTriggerTimeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRouteTriggerTimeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteTopicIpWhiteListRequest struct {
 	*tchttp.BaseRequest
 
@@ -1429,7 +1475,7 @@ type DescribeInstanceAttributesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 实例属性返回结果对象
+		// 实例属性返回结果对象。
 		Result *InstanceAttributesResponse `json:"Result,omitempty" name:"Result"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2372,6 +2418,18 @@ type InstanceAttributesResponse struct {
 	// 动态消息保留策略
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RetentionTimeConfig *DynamicRetentionTime `json:"RetentionTimeConfig,omitempty" name:"RetentionTimeConfig"`
+
+	// 最大连接数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxConnection *uint64 `json:"MaxConnection,omitempty" name:"MaxConnection"`
+
+	// 公网带宽
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicNetwork *int64 `json:"PublicNetwork,omitempty" name:"PublicNetwork"`
+
+	// 时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeleteRouteTimestamp *string `json:"DeleteRouteTimestamp,omitempty" name:"DeleteRouteTimestamp"`
 }
 
 type InstanceConfigDO struct {
@@ -2620,6 +2678,9 @@ type ModifyInstanceAttributesRequest struct {
 
 	// 修改升配置rebalance时间
 	RebalanceTime *int64 `json:"RebalanceTime,omitempty" name:"RebalanceTime"`
+
+	// 时间戳
+	PublicNetwork *int64 `json:"PublicNetwork,omitempty" name:"PublicNetwork"`
 }
 
 func (r *ModifyInstanceAttributesRequest) ToJsonString() string {
@@ -2640,6 +2701,7 @@ func (r *ModifyInstanceAttributesRequest) FromJsonString(s string) error {
 	delete(f, "Config")
 	delete(f, "DynamicRetentionConfig")
 	delete(f, "RebalanceTime")
+	delete(f, "PublicNetwork")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceAttributesRequest has unknown keys!", "")
 	}
@@ -2817,7 +2879,7 @@ func (r *ModifyTopicAttributesResponse) FromJsonString(s string) error {
 
 type OperateResponseData struct {
 
-	// FlowId
+	// FlowId11
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 }

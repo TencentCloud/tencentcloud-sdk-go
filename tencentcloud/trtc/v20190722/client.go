@@ -221,6 +221,7 @@ func NewDescribeCallDetailResponse() (response *DescribeCallDetailResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
 //  INVALIDPARAMETER_ENCODEPARAMS = "InvalidParameter.EncodeParams"
+//  INVALIDPARAMETER_PAGESIZEOVERSIZE = "InvalidParameter.PageSizeOversize"
 //  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 //  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"

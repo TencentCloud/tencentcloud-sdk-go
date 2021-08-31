@@ -64,6 +64,7 @@ func NewCreateCredentialResponse() (response *CreateCredentialResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"

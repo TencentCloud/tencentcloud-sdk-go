@@ -874,6 +874,7 @@ func NewDescribeTopSpaceTablesResponse() (response *DescribeTopSpaceTablesRespon
 // 获取实例Top表的实时空间统计信息，默认返回按大小排序。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"

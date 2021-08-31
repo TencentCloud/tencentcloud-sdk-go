@@ -18,7 +18,7 @@ const (
 	// 此产品的特有错误码
 
 	// 无效的资源ID，用于资源不存在或已过期。
-	INVALIDPARAMETER_DBAUDITRESOURCEIDINVAILD = "InvalidParameter.DbauditResourceIdInvaild"
+	INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 
 	// 无操作权限。
 	UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"

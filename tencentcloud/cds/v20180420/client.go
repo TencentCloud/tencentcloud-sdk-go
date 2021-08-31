@@ -192,7 +192,7 @@ func NewModifyDbauditInstancesRenewFlagResponse() (response *ModifyDbauditInstan
 // 本接口 (ModifyDbauditInstancesRenewFlag) 用于修改数据安全审计产品实例续费标识
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_DBAUDITRESOURCEIDINVAILD = "InvalidParameter.DbauditResourceIdInvaild"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) ModifyDbauditInstancesRenewFlag(request *ModifyDbauditInstancesRenewFlagRequest) (response *ModifyDbauditInstancesRenewFlagResponse, err error) {
     if request == nil {

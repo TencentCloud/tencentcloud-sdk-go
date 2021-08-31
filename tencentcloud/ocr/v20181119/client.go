@@ -1742,9 +1742,11 @@ func NewMLIDCardOCRResponse() (response *MLIDCardOCRResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_NOMASIDCARD = "FailedOperation.NoMASIDCard"
 //  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 func (c *Client) MLIDCardOCR(request *MLIDCardOCRRequest) (response *MLIDCardOCRResponse, err error) {
@@ -2424,6 +2426,42 @@ func (c *Client) ShipInvoiceOCR(request *ShipInvoiceOCRRequest) (response *ShipI
         request = NewShipInvoiceOCRRequest()
     }
     response = NewShipInvoiceOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSmartStructuralOCRRequest() (request *SmartStructuralOCRRequest) {
+    request = &SmartStructuralOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "SmartStructuralOCR")
+    return
+}
+
+func NewSmartStructuralOCRResponse() (response *SmartStructuralOCRResponse) {
+    response = &SmartStructuralOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SmartStructuralOCR
+// 本接口支持识别并提取各类证照、票据、表单、合同等结构化场景的字段信息。无需任何配置，灵活高效。适用于各类结构化信息录入场景。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) SmartStructuralOCR(request *SmartStructuralOCRRequest) (response *SmartStructuralOCRResponse, err error) {
+    if request == nil {
+        request = NewSmartStructuralOCRRequest()
+    }
+    response = NewSmartStructuralOCRResponse()
     err = c.Send(request, response)
     return
 }

@@ -371,6 +371,39 @@ func (c *Client) DeleteAclRule(request *DeleteAclRuleRequest) (response *DeleteA
     return
 }
 
+func NewDeleteRouteTriggerTimeRequest() (request *DeleteRouteTriggerTimeRequest) {
+    request = &DeleteRouteTriggerTimeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ckafka", APIVersion, "DeleteRouteTriggerTime")
+    return
+}
+
+func NewDeleteRouteTriggerTimeResponse() (response *DeleteRouteTriggerTimeResponse) {
+    response = &DeleteRouteTriggerTimeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteRouteTriggerTime
+// 修改删除路由延迟触发时间
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteRouteTriggerTime(request *DeleteRouteTriggerTimeRequest) (response *DeleteRouteTriggerTimeResponse, err error) {
+    if request == nil {
+        request = NewDeleteRouteTriggerTimeRequest()
+    }
+    response = NewDeleteRouteTriggerTimeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteTopicRequest() (request *DeleteTopicRequest) {
     request = &DeleteTopicRequest{
         BaseRequest: &tchttp.BaseRequest{},

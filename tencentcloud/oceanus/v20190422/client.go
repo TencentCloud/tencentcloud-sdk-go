@@ -72,6 +72,7 @@ func NewCreateJobResponse() (response *CreateJobResponse) {
 //  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
 //  INVALIDPARAMETERVALUE_CLUSTERID = "InvalidParameterValue.ClusterId"
 //  INVALIDPARAMETERVALUE_CUMEM = "InvalidParameterValue.CuMem"
+//  INVALIDPARAMETERVALUE_JOBNAME = "InvalidParameterValue.JobName"
 //  INVALIDPARAMETERVALUE_JOBNAMEEXISTED = "InvalidParameterValue.JobNameExisted"
 //  INVALIDPARAMETERVALUE_UNSUPPORTEDCOMPOSITE = "InvalidParameterValue.UnSupportedComposite"
 //  LIMITEXCEEDED_JOB = "LimitExceeded.Job"

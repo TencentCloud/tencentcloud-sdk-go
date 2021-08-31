@@ -63,6 +63,7 @@ func NewCreateApplicationResponse() (response *CreateApplicationResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+//  INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = "InvalidParameterValue.ServiceNameDuplicateError"
 func (c *Client) CreateApplication(request *CreateApplicationRequest) (response *CreateApplicationResponse, err error) {
     if request == nil {
         request = NewCreateApplicationRequest()
@@ -92,6 +93,7 @@ func NewCreateCosTokenResponse() (response *CreateCosTokenResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+//  INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = "InvalidParameterValue.ServiceNameDuplicateError"
 func (c *Client) CreateCosToken(request *CreateCosTokenRequest) (response *CreateCosTokenResponse, err error) {
     if request == nil {
         request = NewCreateCosTokenRequest()
@@ -121,6 +123,7 @@ func NewCreateEnvironmentResponse() (response *CreateEnvironmentResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+//  INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = "InvalidParameterValue.ServiceNameDuplicateError"
 func (c *Client) CreateEnvironment(request *CreateEnvironmentRequest) (response *CreateEnvironmentResponse, err error) {
     if request == nil {
         request = NewCreateEnvironmentRequest()
@@ -150,6 +153,7 @@ func NewCreateResourceResponse() (response *CreateResourceResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+//  INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = "InvalidParameterValue.ServiceNameDuplicateError"
 func (c *Client) CreateResource(request *CreateResourceRequest) (response *CreateResourceResponse, err error) {
     if request == nil {
         request = NewCreateResourceRequest()
@@ -179,6 +183,7 @@ func NewDeleteIngressResponse() (response *DeleteIngressResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+//  INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = "InvalidParameterValue.ServiceNameDuplicateError"
 func (c *Client) DeleteIngress(request *DeleteIngressRequest) (response *DeleteIngressResponse, err error) {
     if request == nil {
         request = NewDeleteIngressRequest()
@@ -208,6 +213,7 @@ func NewDeployApplicationResponse() (response *DeployApplicationResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+//  INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = "InvalidParameterValue.ServiceNameDuplicateError"
 func (c *Client) DeployApplication(request *DeployApplicationRequest) (response *DeployApplicationResponse, err error) {
     if request == nil {
         request = NewDeployApplicationRequest()
@@ -237,6 +243,7 @@ func NewDescribeApplicationPodsResponse() (response *DescribeApplicationPodsResp
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+//  INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = "InvalidParameterValue.ServiceNameDuplicateError"
 func (c *Client) DescribeApplicationPods(request *DescribeApplicationPodsRequest) (response *DescribeApplicationPodsResponse, err error) {
     if request == nil {
         request = NewDescribeApplicationPodsRequest()
@@ -266,6 +273,7 @@ func NewDescribeDeployApplicationDetailResponse() (response *DescribeDeployAppli
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+//  INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = "InvalidParameterValue.ServiceNameDuplicateError"
 func (c *Client) DescribeDeployApplicationDetail(request *DescribeDeployApplicationDetailRequest) (response *DescribeDeployApplicationDetailResponse, err error) {
     if request == nil {
         request = NewDescribeDeployApplicationDetailRequest()
@@ -295,6 +303,7 @@ func NewDescribeEnvironmentsResponse() (response *DescribeEnvironmentsResponse) 
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+//  INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = "InvalidParameterValue.ServiceNameDuplicateError"
 func (c *Client) DescribeEnvironments(request *DescribeEnvironmentsRequest) (response *DescribeEnvironmentsResponse, err error) {
     if request == nil {
         request = NewDescribeEnvironmentsRequest()
@@ -324,6 +333,7 @@ func NewDescribeIngressResponse() (response *DescribeIngressResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+//  INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = "InvalidParameterValue.ServiceNameDuplicateError"
 func (c *Client) DescribeIngress(request *DescribeIngressRequest) (response *DescribeIngressResponse, err error) {
     if request == nil {
         request = NewDescribeIngressRequest()
@@ -353,6 +363,7 @@ func NewDescribeIngressesResponse() (response *DescribeIngressesResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+//  INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = "InvalidParameterValue.ServiceNameDuplicateError"
 func (c *Client) DescribeIngresses(request *DescribeIngressesRequest) (response *DescribeIngressesResponse, err error) {
     if request == nil {
         request = NewDescribeIngressesRequest()
@@ -382,6 +393,7 @@ func NewDescribeRelatedIngressesResponse() (response *DescribeRelatedIngressesRe
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+//  INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = "InvalidParameterValue.ServiceNameDuplicateError"
 func (c *Client) DescribeRelatedIngresses(request *DescribeRelatedIngressesRequest) (response *DescribeRelatedIngressesResponse, err error) {
     if request == nil {
         request = NewDescribeRelatedIngressesRequest()
@@ -411,6 +423,7 @@ func NewGenerateApplicationPackageDownloadUrlResponse() (response *GenerateAppli
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+//  INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = "InvalidParameterValue.ServiceNameDuplicateError"
 func (c *Client) GenerateApplicationPackageDownloadUrl(request *GenerateApplicationPackageDownloadUrlRequest) (response *GenerateApplicationPackageDownloadUrlResponse, err error) {
     if request == nil {
         request = NewGenerateApplicationPackageDownloadUrlRequest()

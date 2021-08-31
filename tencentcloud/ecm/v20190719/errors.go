@@ -86,6 +86,9 @@ const (
 	// 查找不到符合条件的转发规则。
 	INVALIDPARAMETER_LOCATIONNOTFOUND = "InvalidParameter.LocationNotFound"
 
+	// KeepImageLogin, Password, KeyIds 同时只能使用1个。
+	INVALIDPARAMETER_PARAMETERCONFLICT = "InvalidParameter.ParameterConflict"
+
 	// 监听器端口检查失败，比如端口冲突。
 	INVALIDPARAMETER_PORTCHECKFAILED = "InvalidParameter.PortCheckFailed"
 

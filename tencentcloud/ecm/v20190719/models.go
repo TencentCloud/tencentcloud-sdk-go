@@ -7865,6 +7865,14 @@ type ResetInstancesRequest struct {
 
 	// 是否保留数据盘数据，取值"true"/"false"。默认为"true"
 	KeepData *string `json:"KeepData,omitempty" name:"KeepData"`
+
+	// 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：
+	// TRUE：表示保持镜像的登录设置
+	// FALSE：表示不保持镜像的登录设置
+	// 
+	// 默认取值：FALSE。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeepImageLogin *string `json:"KeepImageLogin,omitempty" name:"KeepImageLogin"`
 }
 
 func (r *ResetInstancesRequest) ToJsonString() string {
@@ -7884,6 +7892,7 @@ func (r *ResetInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Password")
 	delete(f, "EnhancedService")
 	delete(f, "KeepData")
+	delete(f, "KeepImageLogin")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetInstancesRequest has unknown keys!", "")
 	}
@@ -8137,6 +8146,14 @@ type RunInstancesRequest struct {
 
 	// 密钥对。
 	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds"`
+
+	// 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：
+	// TRUE：表示保持镜像的登录设置
+	// FALSE：表示不保持镜像的登录设置
+	// 
+	// 默认取值：FALSE。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeepImageLogin *string `json:"KeepImageLogin,omitempty" name:"KeepImageLogin"`
 }
 
 func (r *RunInstancesRequest) ToJsonString() string {
@@ -8169,6 +8186,7 @@ func (r *RunInstancesRequest) FromJsonString(s string) error {
 	delete(f, "InternetMaxBandwidthIn")
 	delete(f, "InstanceChargeType")
 	delete(f, "KeyIds")
+	delete(f, "KeepImageLogin")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunInstancesRequest has unknown keys!", "")
 	}

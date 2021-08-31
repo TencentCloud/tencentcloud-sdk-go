@@ -1611,6 +1611,7 @@ func NewMoveResourceResponse() (response *MoveResourceResponse) {
 // <li>当 DestinationResource.Resource.Id 存在时候，操作结果为产生新目录 /素材/视频/篮球/NBA</li>
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_PLATFORM = "InvalidParameter.Platform"
 //  INVALIDPARAMETERVALUE_CLASSPATH = "InvalidParameterValue.ClassPath"

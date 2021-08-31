@@ -191,6 +191,7 @@ func NewCreateCmqQueueResponse() (response *CreateCmqQueueResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CREATECLUSTER = "FailedOperation.CreateCluster"
 //  FAILEDOPERATION_CREATETOPIC = "FailedOperation.CreateTopic"
+//  INTERNALERROR_BROKERSERVICE = "InternalError.BrokerService"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateCmqQueue(request *CreateCmqQueueRequest) (response *CreateCmqQueueResponse, err error) {
     if request == nil {
@@ -1362,6 +1363,7 @@ func NewModifyEnvironmentAttributesResponse() (response *ModifyEnvironmentAttrib
 //  INVALIDPARAMETERVALUE_TTL = "InvalidParameterValue.TTL"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 //  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
 func (c *Client) ModifyEnvironmentAttributes(request *ModifyEnvironmentAttributesRequest) (response *ModifyEnvironmentAttributesResponse, err error) {

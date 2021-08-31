@@ -207,7 +207,7 @@ type CMEExportInfo struct {
 	// 导出的媒体信息，不得超过50个字符。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 导出的媒体分类路径，长度不能超过15字符。
+	// 导出的媒体分类路径，长度不能超过15字符。不存在默认创建。
 	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
 
 	// 导出的媒体标签，单个标签不得超过10个字符。

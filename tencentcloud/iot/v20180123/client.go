@@ -775,6 +775,7 @@ func NewDeleteProductResponse() (response *DeleteProductResponse) {
 // 删除用户指定的产品Id对应的信息。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_IOTSHADOWSYSTEMERROR = "InternalError.IotShadowSystemError"
 //  INTERNALERROR_MQIOTSYSTEMERROR = "InternalError.MqiotSystemError"
 //  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
 //  LIMITEXCEEDED_IOTPRODUCTOPTOOOFTEN = "LimitExceeded.IotProductOpTooOften"

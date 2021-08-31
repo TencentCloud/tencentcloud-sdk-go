@@ -139,6 +139,7 @@ func NewAttachDisksResponse() (response *AttachDisksResponse) {
 //  RESOURCEUNAVAILABLE_ATTACHED = "ResourceUnavailable.Attached"
 //  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
 //  RESOURCEUNAVAILABLE_TYPEERROR = "ResourceUnavailable.TypeError"
+//  RESOURCEUNAVAILABLE_ZONENOTMATCH = "ResourceUnavailable.ZoneNotMatch"
 //  ZONENOTMATCH = "ZoneNotMatch"
 func (c *Client) AttachDisks(request *AttachDisksRequest) (response *AttachDisksResponse, err error) {
     if request == nil {
@@ -1116,6 +1117,7 @@ func NewModifyDisksChargeTypeResponse() (response *ModifyDisksChargeTypeResponse
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEUNAVAILABLE_NOTPORTABLE = "ResourceUnavailable.NotPortable"
 //  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
+//  TRADEDEALCONFLICT = "TradeDealConflict"
 func (c *Client) ModifyDisksChargeType(request *ModifyDisksChargeTypeRequest) (response *ModifyDisksChargeTypeResponse, err error) {
     if request == nil {
         request = NewModifyDisksChargeTypeRequest()

@@ -4386,6 +4386,92 @@ type SingleInvoiceInfo struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
+type SmartStructuralOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 需返回的字段名称，例：
+	// 若客户只想返回姓名、性别两个字段的识别结果，则输入
+	// ItemNames=["姓名","性别"]
+	ItemNames []*string `json:"ItemNames,omitempty" name:"ItemNames"`
+}
+
+func (r *SmartStructuralOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SmartStructuralOCRRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	delete(f, "ItemNames")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SmartStructuralOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SmartStructuralOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 图片旋转角度(角度制)，文本的水平方向
+	// 为 0；顺时针为正，逆时针为负
+		Angle *float64 `json:"Angle,omitempty" name:"Angle"`
+
+		// 识别信息
+		StructuralItems []*StructuralItem `json:"StructuralItems,omitempty" name:"StructuralItems"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SmartStructuralOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SmartStructuralOCRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type StructuralItem struct {
+
+	// 识别出的字段名称(关键字)。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 识别出的字段名称对应的值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 置信度 0 ~100。
+	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 文本行在旋转纠正之后的图像中的像素
+	// 坐标。
+	ItemCoord *ItemCoord `json:"ItemCoord,omitempty" name:"ItemCoord"`
+}
+
 type TableCell struct {
 
 	// 单元格左上角的列索引

@@ -197,6 +197,7 @@ func NewCreateAuthDomainResponse() (response *CreateAuthDomainResponse) {
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 //  OPERATIONDENIED_RESOURCEFROZEN = "OperationDenied.ResourceFrozen"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateAuthDomain(request *CreateAuthDomainRequest) (response *CreateAuthDomainResponse, err error) {
     if request == nil {
         request = NewCreateAuthDomainRequest()
@@ -1833,6 +1834,7 @@ func NewEstablishCloudBaseRunServerResponse() (response *EstablishCloudBaseRunSe
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
 //  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
 //  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
 //  RESOURCEINUSE = "ResourceInUse"

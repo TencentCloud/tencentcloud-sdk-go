@@ -1437,6 +1437,7 @@ func NewDeleteLiveTranscodeTemplateResponse() (response *DeleteLiveTranscodeTemp
 // 删除转码模板。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_AITRANSCODEOPTIONFAIL = "FailedOperation.AiTranscodeOptionFail"
 //  FAILEDOPERATION_CONFINUSED = "FailedOperation.ConfInUsed"
 //  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
 //  INTERNALERROR = "InternalError"
@@ -2246,6 +2247,7 @@ func NewDescribeLiveDomainsResponse() (response *DescribeLiveDomainsResponse) {
 //  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
+//  RESOURCENOTFOUND_INVALIDUSER = "ResourceNotFound.InvalidUser"
 func (c *Client) DescribeLiveDomains(request *DescribeLiveDomainsRequest) (response *DescribeLiveDomainsResponse, err error) {
     if request == nil {
         request = NewDescribeLiveDomainsRequest()

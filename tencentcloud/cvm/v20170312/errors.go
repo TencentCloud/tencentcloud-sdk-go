@@ -71,6 +71,9 @@ const (
 	// 安全组操作失败。
 	FAILEDOPERATION_SECURITYGROUPACTIONFAILED = "FailedOperation.SecurityGroupActionFailed"
 
+	// 快照容量大于磁盘大小，请选用更大的磁盘空间。
+	FAILEDOPERATION_SNAPSHOTSIZELARGERTHANDATASIZE = "FailedOperation.SnapshotSizeLargerThanDataSize"
+
 	// 不支持快照size小于云盘size。
 	FAILEDOPERATION_SNAPSHOTSIZELESSTHANDATASIZE = "FailedOperation.SnapshotSizeLessThanDataSize"
 

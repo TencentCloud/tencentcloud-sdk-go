@@ -66,6 +66,7 @@ func NewCreateSessionResponse() (response *CreateSessionResponse) {
 //  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
 //  FAILEDOPERATION_SLOWDOWN = "FailedOperation.SlowDown"
 //  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  FAILEDOPERATION_TOOFREQUENTLY = "FailedOperation.TooFrequently"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

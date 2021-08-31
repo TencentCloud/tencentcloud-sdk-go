@@ -3009,6 +3009,10 @@ type L4RuleSource struct {
 
 	// 权重值，取值[0,100]
 	Weight *uint64 `json:"Weight,omitempty" name:"Weight"`
+
+	// 8000
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *uint64 `json:"Port,omitempty" name:"Port"`
 }
 
 type L7RuleEntry struct {

@@ -110,6 +110,9 @@ const (
 	// 作业id的参数无效。
 	INVALIDPARAMETERVALUE_JOBIDVALUEERROR = "InvalidParameterValue.JobIdValueError"
 
+	// Illegal JobName。
+	INVALIDPARAMETERVALUE_JOBNAME = "InvalidParameterValue.JobName"
+
 	// 作业名称已存在。
 	INVALIDPARAMETERVALUE_JOBNAMEEXISTED = "InvalidParameterValue.JobNameExisted"
 
