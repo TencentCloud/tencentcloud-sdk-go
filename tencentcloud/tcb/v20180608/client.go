@@ -1163,6 +1163,42 @@ func (c *Client) DescribeEndUsers(request *DescribeEndUsersRequest) (response *D
     return
 }
 
+func NewDescribeEnvDealRegionRequest() (request *DescribeEnvDealRegionRequest) {
+    request = &DescribeEnvDealRegionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeEnvDealRegion")
+    return
+}
+
+func NewDescribeEnvDealRegionResponse() (response *DescribeEnvDealRegionResponse) {
+    response = &DescribeEnvDealRegionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeEnvDealRegion
+// 获取环境下单地域
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_CONCURRENT = "LimitExceeded.Concurrent"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeEnvDealRegion(request *DescribeEnvDealRegionRequest) (response *DescribeEnvDealRegionResponse, err error) {
+    if request == nil {
+        request = NewDescribeEnvDealRegionRequest()
+    }
+    response = NewDescribeEnvDealRegionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEnvFreeQuotaRequest() (request *DescribeEnvFreeQuotaRequest) {
     request = &DescribeEnvFreeQuotaRequest{
         BaseRequest: &tchttp.BaseRequest{},

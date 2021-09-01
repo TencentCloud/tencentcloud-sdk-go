@@ -84,6 +84,7 @@ func NewCreateAgeDetectTaskResponse() (response *CreateAgeDetectTaskResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateAgeDetectTask(request *CreateAgeDetectTaskRequest) (response *CreateAgeDetectTaskResponse, err error) {
     if request == nil {
         request = NewCreateAgeDetectTaskRequest()
@@ -153,6 +154,7 @@ func NewDescribeAgeDetectTaskResponse() (response *DescribeAgeDetectTaskResponse
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAgeDetectTask(request *DescribeAgeDetectTaskRequest) (response *DescribeAgeDetectTaskResponse, err error) {
     if request == nil {
         request = NewDescribeAgeDetectTaskRequest()

@@ -2826,6 +2826,44 @@ func (c *Client) ModifyImmutableTagRules(request *ModifyImmutableTagRulesRequest
     return
 }
 
+func NewModifyInstanceRequest() (request *ModifyInstanceRequest) {
+    request = &ModifyInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcr", APIVersion, "ModifyInstance")
+    return
+}
+
+func NewModifyInstanceResponse() (response *ModifyInstanceResponse) {
+    response = &ModifyInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyInstance
+// 更新实例信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ERRNOTEXIST = "InternalError.ErrNotExist"
+//  INTERNALERROR_ERRORCONFLICT = "InternalError.ErrorConflict"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyInstance(request *ModifyInstanceRequest) (response *ModifyInstanceResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceRequest()
+    }
+    response = NewModifyInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyInstanceTokenRequest() (request *ModifyInstanceTokenRequest) {
     request = &ModifyInstanceTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},

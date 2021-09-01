@@ -240,6 +240,10 @@ type Cluster struct {
 	// 命名空间数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NamespaceNum *int64 `json:"NamespaceNum,omitempty" name:"NamespaceNum"`
+
+	// 已使用存储限制，MB为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsedStorageBudget *int64 `json:"UsedStorageBudget,omitempty" name:"UsedStorageBudget"`
 }
 
 type CmqDeadLetterPolicy struct {

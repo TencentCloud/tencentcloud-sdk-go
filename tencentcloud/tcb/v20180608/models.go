@@ -3208,6 +3208,88 @@ func (r *DescribeEndUsersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeEnvDealRegionRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 订单类型：
+	// ENV_PREPAY_MINIAPP= 预付费环境(微信小程序)
+	// ENV_PREPAY_CLOUD= 预付费环境(腾讯云)
+	// ENV_POSTPAY = 后付费环境
+	// HOSTING_PREPAY = 预付费静态托管
+	// PACKAGE=套餐包
+	DealType *string `json:"DealType,omitempty" name:"DealType"`
+
+	// 下单类型：
+	// CREATE = 新购
+	// RENEW = 续费
+	// MODIFY = 套餐调整(升级/降级)
+	// REFUND = 退费
+	DealAction *string `json:"DealAction,omitempty" name:"DealAction"`
+
+	// 下单地域：
+	// ap-guangzhou = 广州地域
+	// ap-shanghai = 上海地域
+	// ap-beijing = 北京地域
+	DealRegion *string `json:"DealRegion,omitempty" name:"DealRegion"`
+}
+
+func (r *DescribeEnvDealRegionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEnvDealRegionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "DealType")
+	delete(f, "DealAction")
+	delete(f, "DealRegion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEnvDealRegionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEnvDealRegionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 下单region
+		Region *string `json:"Region,omitempty" name:"Region"`
+
+		// 下单zone
+		Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+		// 下单regionId
+		RegionId *uint64 `json:"RegionId,omitempty" name:"RegionId"`
+
+		// 下单zoneId
+		ZoneId *uint64 `json:"ZoneId,omitempty" name:"ZoneId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeEnvDealRegionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEnvDealRegionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeEnvFreeQuotaRequest struct {
 	*tchttp.BaseRequest
 

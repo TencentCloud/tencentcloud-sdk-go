@@ -622,6 +622,18 @@ type Invocation struct {
 
 	// 调用来源。
 	InvocationSource *string `json:"InvocationSource,omitempty" name:"InvocationSource"`
+
+	// base64编码的命令内容
+	CommandContent *string `json:"CommandContent,omitempty" name:"CommandContent"`
+
+	// 命令类型
+	CommandType *string `json:"CommandType,omitempty" name:"CommandType"`
+
+	// 执行命令过期时间， 单位秒
+	Timeout *uint64 `json:"Timeout,omitempty" name:"Timeout"`
+
+	// 执行命令的工作路径
+	WorkingDirectory *string `json:"WorkingDirectory,omitempty" name:"WorkingDirectory"`
 }
 
 type InvocationTask struct {

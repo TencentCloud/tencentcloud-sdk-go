@@ -1171,6 +1171,72 @@ func (r *DescribeGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeIPCChannelsRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量，默认0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制，默认0
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 设备Id
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 通道类型 	4: 国标NVR通道 5:  国标VMS通道 6: 国标IPC通道
+	ChannelTypes []*uint64 `json:"ChannelTypes,omitempty" name:"ChannelTypes"`
+}
+
+func (r *DescribeIPCChannelsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIPCChannelsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "DeviceId")
+	delete(f, "ChannelTypes")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIPCChannelsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeIPCChannelsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 通道总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 通道详情列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DeviceList []*GroupDeviceItem `json:"DeviceList,omitempty" name:"DeviceList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeIPCChannelsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIPCChannelsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeRecordStreamData struct {
 
 	// Rtsp地址
@@ -1510,20 +1576,44 @@ func (r *DescribeSubGroupsResponse) FromJsonString(s string) error {
 type DescribeVideoListRequest struct {
 	*tchttp.BaseRequest
 
-	// 开始时间戳，秒级
-	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
-
-	// 结束时间戳，秒级
-	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
-
 	// 偏移
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 限制
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
+	// 开始时间戳，秒级
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间戳，秒级
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
 	// 设备Id
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 开始录制范围 开始
+	StartRecordTime *int64 `json:"StartRecordTime,omitempty" name:"StartRecordTime"`
+
+	// 开始录制范围 结束
+	EndRecordTime *int64 `json:"EndRecordTime,omitempty" name:"EndRecordTime"`
+
+	// 过期时间范围 开始
+	StartExpireTime *int64 `json:"StartExpireTime,omitempty" name:"StartExpireTime"`
+
+	// 过期时间范围 结束
+	EndExpireTime *int64 `json:"EndExpireTime,omitempty" name:"EndExpireTime"`
+
+	// 文件大小范围 开始 单位byte
+	StartFileSize *int64 `json:"StartFileSize,omitempty" name:"StartFileSize"`
+
+	// 文件大小范围 结束 单位byte
+	EndFileSize *int64 `json:"EndFileSize,omitempty" name:"EndFileSize"`
+
+	// 录制状态 99: 录制方已经回写状态 1: 开始录制了，等待回写 2: 已经到了时间模板的停止时间，在等待录制方回写
+	IsRecording *int64 `json:"IsRecording,omitempty" name:"IsRecording"`
+
+	// 通道ID默认必传
+	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
 }
 
 func (r *DescribeVideoListRequest) ToJsonString() string {
@@ -1538,11 +1628,19 @@ func (r *DescribeVideoListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "StartTime")
-	delete(f, "EndTime")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
 	delete(f, "DeviceId")
+	delete(f, "StartRecordTime")
+	delete(f, "EndRecordTime")
+	delete(f, "StartExpireTime")
+	delete(f, "EndExpireTime")
+	delete(f, "StartFileSize")
+	delete(f, "EndFileSize")
+	delete(f, "IsRecording")
+	delete(f, "ChannelId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVideoListRequest has unknown keys!", "")
 	}

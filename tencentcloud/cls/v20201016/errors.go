@@ -188,6 +188,9 @@ const (
 	// 通知模版已绑定告警，无法删除。
 	OPERATIONDENIED_NOTICEHASALARM = "OperationDenied.NoticeHasAlarm"
 
+	// topic绑定了函数投递。
+	OPERATIONDENIED_TOPICHASDELIVERFUNCTION = "OperationDenied.TopicHasDeliverFunction"
+
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
 

@@ -217,33 +217,42 @@ func (r *CreateAppRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateAppResp struct {
+
+	// 应用ID，由后台自动生成。
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 应用名称，透传输入参数的AppName
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 项目ID，透传输入的ProjectId
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 应用密钥，GME SDK初始化时使用
+	SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
+
+	// 服务创建时间戳
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 实时语音服务配置数据
+	RealtimeSpeechConf *RealtimeSpeechConf `json:"RealtimeSpeechConf,omitempty" name:"RealtimeSpeechConf"`
+
+	// 语音消息及转文本服务配置数据
+	VoiceMessageConf *VoiceMessageConf `json:"VoiceMessageConf,omitempty" name:"VoiceMessageConf"`
+
+	// 语音分析服务配置数据
+	VoiceFilterConf *VoiceFilterConf `json:"VoiceFilterConf,omitempty" name:"VoiceFilterConf"`
+}
+
 type CreateAppResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 应用ID，由后台自动生成。
-		BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+		// 创建应用返回数据
+		Data *CreateAppResp `json:"Data,omitempty" name:"Data"`
 
-		// 应用名称，透传输入参数的AppName
-		AppName *string `json:"AppName,omitempty" name:"AppName"`
-
-		// 项目ID，透传输入的ProjectId
-		ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
-
-		// 应用密钥，GME SDK初始化时使用
-		SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
-
-		// 服务创建时间戳
-		CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
-
-		// 实时语音服务配置数据
-		RealtimeSpeechConf *RealtimeSpeechConf `json:"RealtimeSpeechConf,omitempty" name:"RealtimeSpeechConf"`
-
-		// 语音消息及转文本服务配置数据
-		VoiceMessageConf *VoiceMessageConf `json:"VoiceMessageConf,omitempty" name:"VoiceMessageConf"`
-
-		// 语音分析服务配置数据
-		VoiceFilterConf *VoiceFilterConf `json:"VoiceFilterConf,omitempty" name:"VoiceFilterConf"`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -356,12 +365,21 @@ func (r *DescribeAppStatisticsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeAppStatisticsResp struct {
+
+	// 应用用量统计数据
+	AppStatistics []*AppStatisticsItem `json:"AppStatistics,omitempty" name:"AppStatistics"`
+}
+
 type DescribeAppStatisticsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
 		// 应用用量统计数据
-		AppStatistics []*AppStatisticsItem `json:"AppStatistics,omitempty" name:"AppStatistics"`
+		Data *DescribeAppStatisticsResp `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
@@ -816,15 +834,24 @@ func (r *ModifyAppStatusRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyAppStatusResp struct {
+
+	// GME应用ID
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 应用状态，取值：open/close
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
 type ModifyAppStatusResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// GME应用ID
-		BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+		// 修改应用开关状态返回数据
+		Data *ModifyAppStatusResp `json:"Data,omitempty" name:"Data"`
 
-		// 应用状态，取值：open/close
-		Status *string `json:"Status,omitempty" name:"Status"`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
