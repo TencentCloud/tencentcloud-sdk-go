@@ -997,6 +997,44 @@ func (c *Client) DescribeTopicRule(request *DescribeTopicRuleRequest) (response 
     return
 }
 
+func NewDirectBindDeviceInFamilyRequest() (request *DirectBindDeviceInFamilyRequest) {
+    request = &DirectBindDeviceInFamilyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DirectBindDeviceInFamily")
+    return
+}
+
+func NewDirectBindDeviceInFamilyResponse() (response *DirectBindDeviceInFamilyResponse) {
+    response = &DirectBindDeviceInFamilyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DirectBindDeviceInFamily
+// 直接绑定设备和家庭
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTORDEVICENOTEXIST = "ResourceNotFound.ProductOrDeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTRESOURCENOTEXIST = "ResourceNotFound.ProductResourceNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_APPNOPERMISSION = "UnauthorizedOperation.AppNoPermission"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+func (c *Client) DirectBindDeviceInFamily(request *DirectBindDeviceInFamilyRequest) (response *DirectBindDeviceInFamilyResponse, err error) {
+    if request == nil {
+        request = NewDirectBindDeviceInFamilyRequest()
+    }
+    response = NewDirectBindDeviceInFamilyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisableTopicRuleRequest() (request *DisableTopicRuleRequest) {
     request = &DisableTopicRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},

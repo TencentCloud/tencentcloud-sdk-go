@@ -20,6 +20,39 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AppDeviceInfo struct {
+
+	// 产品ID/设备名
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 设备别名
+	AliasName *string `json:"AliasName,omitempty" name:"AliasName"`
+
+	// icon地址
+	IconUrl *string `json:"IconUrl,omitempty" name:"IconUrl"`
+
+	// 家庭ID
+	FamilyId *string `json:"FamilyId,omitempty" name:"FamilyId"`
+
+	// 房间ID
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 设备类型
+	DeviceType *int64 `json:"DeviceType,omitempty" name:"DeviceType"`
+
+	// 创建时间
+	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	UpdateTime *int64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
 type CallDeviceActionAsyncRequest struct {
 	*tchttp.BaseRequest
 
@@ -1620,6 +1653,75 @@ type DevicesItem struct {
 
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+}
+
+type DirectBindDeviceInFamilyRequest struct {
+	*tchttp.BaseRequest
+
+	// 小程序appid
+	IotAppID *string `json:"IotAppID,omitempty" name:"IotAppID"`
+
+	// 用户ID
+	UserID *string `json:"UserID,omitempty" name:"UserID"`
+
+	// 家庭ID
+	FamilyId *string `json:"FamilyId,omitempty" name:"FamilyId"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 房间ID
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+}
+
+func (r *DirectBindDeviceInFamilyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DirectBindDeviceInFamilyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IotAppID")
+	delete(f, "UserID")
+	delete(f, "FamilyId")
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "RoomId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DirectBindDeviceInFamilyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DirectBindDeviceInFamilyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回设备信息
+		AppDeviceInfo *AppDeviceInfo `json:"AppDeviceInfo,omitempty" name:"AppDeviceInfo"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DirectBindDeviceInFamilyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DirectBindDeviceInFamilyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DisableTopicRuleRequest struct {

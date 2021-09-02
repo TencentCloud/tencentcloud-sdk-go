@@ -1847,7 +1847,7 @@ type InvokeFunctionRequest struct {
 	// 触发函数的版本号或别名，默认值为$DEFAULT
 	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
 
-	// 运行函数时的参数，以json格式传入，最大支持的参数长度是 6MB
+	// 运行函数时的参数，以json格式传入，最大支持的参数长度是 6MB。该字段信息对应函数 [event 入参](https://cloud.tencent.com/document/product/583/9210#.E5.87.BD.E6.95.B0.E5.85.A5.E5.8F.82.3Ca-id.3D.22input.22.3E.3C.2Fa.3E)。
 	Event *string `json:"Event,omitempty" name:"Event"`
 
 	// 返回值会包含4KB的日志，可选值为None和Tail，默认值为None。当该值为Tail时，返回参数中的Log字段会包含对应的函数执行日志
@@ -1913,16 +1913,16 @@ type InvokeRequest struct {
 	// 函数名称
 	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
 
-	// RequestResponse(同步) 和 Event(异步)，默认为同步
+	// 同步调用请使用[同步 Invoke 调用接口](https://cloud.tencent.com/document/product/583/58400) 或填写同步调用参数 RequestResponse ，建议使用同步调用接口以获取最佳性能；异步调用填写 Event；默认为同步。接口超时时间为 300s，更长超时时间请使用异步调用。
 	InvocationType *string `json:"InvocationType,omitempty" name:"InvocationType"`
 
 	// 触发函数的版本号或别名
 	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
 
-	// 运行函数时的参数，以json格式传入，最大支持的参数长度是 1M
+	// 运行函数时的参数，以json格式传入，同步调用最大支持 6MB，异步调用最大支持 128 KB。该字段信息对应函数 [event 入参](https://cloud.tencent.com/document/product/583/9210#.E5.87.BD.E6.95.B0.E5.85.A5.E5.8F.82.3Ca-id.3D.22input.22.3E.3C.2Fa.3E)。
 	ClientContext *string `json:"ClientContext,omitempty" name:"ClientContext"`
 
-	// 同步调用时指定该字段，返回值会包含4K的日志，可选值为None和Tail，默认值为None。当该值为Tail时，返回参数中的Log字段会包含对应的函数执行日志
+	// 异步调用该字段返回为空。
 	LogType *string `json:"LogType,omitempty" name:"LogType"`
 
 	// 命名空间

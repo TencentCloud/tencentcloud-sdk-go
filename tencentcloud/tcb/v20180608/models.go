@@ -5582,6 +5582,12 @@ type StandaloneGatewayInfo struct {
 
 	// 服务信息
 	ServiceInfo *BackendServiceInfo `json:"ServiceInfo,omitempty" name:"ServiceInfo"`
+
+	// 公网CLBIP
+	PublicClbIp *string `json:"PublicClbIp,omitempty" name:"PublicClbIp"`
+
+	// 内网CLBIP
+	InternalClbIp *string `json:"InternalClbIp,omitempty" name:"InternalClbIp"`
 }
 
 type StandaloneGatewayPackageInfo struct {

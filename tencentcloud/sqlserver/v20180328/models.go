@@ -6147,6 +6147,9 @@ type RenewDBInstanceRequest struct {
 
 	// 代金券ID数组，目前只支持使用1张代金券
 	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds"`
+
+	// 续费标记 0:正常续费 1:自动续费：只用于按量计费转包年包月时有效。
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 }
 
 func (r *RenewDBInstanceRequest) ToJsonString() string {
@@ -6165,6 +6168,7 @@ func (r *RenewDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "Period")
 	delete(f, "AutoVoucher")
 	delete(f, "VoucherIds")
+	delete(f, "AutoRenewFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RenewDBInstanceRequest has unknown keys!", "")
 	}

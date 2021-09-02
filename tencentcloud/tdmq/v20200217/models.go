@@ -1669,6 +1669,9 @@ type DescribeClustersRequest struct {
 
 	// 返回数量，不填则默认为10，最大值为20。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 集群ID列表过滤
+	ClusterIdList []*string `json:"ClusterIdList,omitempty" name:"ClusterIdList"`
 }
 
 func (r *DescribeClustersRequest) ToJsonString() string {
@@ -1685,6 +1688,7 @@ func (r *DescribeClustersRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "ClusterIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClustersRequest has unknown keys!", "")
 	}

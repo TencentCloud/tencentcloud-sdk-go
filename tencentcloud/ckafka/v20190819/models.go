@@ -237,6 +237,9 @@ type CreateAclRequest struct {
 
 	// 用户列表，默认为User:*，表示任何user都可以访问，当前用户只能是用户列表中包含的用户。传入时需要加 User: 前缀,如用户A则传入User:A。
 	Principal *string `json:"Principal,omitempty" name:"Principal"`
+
+	// 资源名称列表,Json字符串格式。ResourceName和resourceNameList只能指定其中一个。
+	ResourceNameList *string `json:"ResourceNameList,omitempty" name:"ResourceNameList"`
 }
 
 func (r *CreateAclRequest) ToJsonString() string {
@@ -258,6 +261,7 @@ func (r *CreateAclRequest) FromJsonString(s string) error {
 	delete(f, "ResourceName")
 	delete(f, "Host")
 	delete(f, "Principal")
+	delete(f, "ResourceNameList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAclRequest has unknown keys!", "")
 	}

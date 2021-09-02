@@ -648,9 +648,23 @@ type BandwidthAlert struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CounterMeasure *string `json:"CounterMeasure,omitempty" name:"CounterMeasure"`
 
-	// 上次触发带宽封顶阈值的时间
+	// 境内区域上次触发带宽封顶阈值的时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastTriggerTime *string `json:"LastTriggerTime,omitempty" name:"LastTriggerTime"`
+
+	// 带宽封顶提醒开关
+	// on：开启
+	// off：关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlertSwitch *string `json:"AlertSwitch,omitempty" name:"AlertSwitch"`
+
+	// 带宽封顶阈值提醒百分比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlertPercentage *int64 `json:"AlertPercentage,omitempty" name:"AlertPercentage"`
+
+	// 海外区域上次触发带宽封顶阈值的时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastTriggerTimeOverseas *string `json:"LastTriggerTimeOverseas,omitempty" name:"LastTriggerTimeOverseas"`
 }
 
 type BotCookie struct {

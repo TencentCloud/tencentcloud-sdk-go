@@ -3087,7 +3087,9 @@ func NewRenewDBInstanceResponse() (response *RenewDBInstanceResponse) {
 }
 
 // RenewDBInstance
-// 本接口（RenewDBInstance）用于续费实例。
+// 本接口（RenewDBInstance）用于续费实例。当被续费实例是按量计费实例时，则按量计费实例转为包年包月计费方式。
+//
+// 按量计费实例转包年包月询价可通过(InquiryPriceRenewDBInstance)接口获得。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"

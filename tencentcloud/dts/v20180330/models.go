@@ -710,6 +710,9 @@ type DescribeMigrateJobsRequest struct {
 
 	// 返回实例数量，默认20，有效区间[1,100]
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 标签过滤条件
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
 }
 
 func (r *DescribeMigrateJobsRequest) ToJsonString() string {
@@ -730,6 +733,7 @@ func (r *DescribeMigrateJobsRequest) FromJsonString(s string) error {
 	delete(f, "OrderSeq")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "TagFilters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMigrateJobsRequest has unknown keys!", "")
 	}
@@ -1171,11 +1175,11 @@ func (r *DescribeSyncJobsResponse) FromJsonString(s string) error {
 
 type DstInfo struct {
 
-	// 目标实例ID，如cdb-jd92ijd8
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
 	// 目标实例地域，如ap-guangzhou
 	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 目标实例ID，如cdb-jd92ijd8
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 目标实例vip。已废弃，无需填写
 	Ip *string `json:"Ip,omitempty" name:"Ip"`
@@ -1321,6 +1325,10 @@ type MigrateJobInfo struct {
 
 	// 任务错误信息提示，当任务发生错误时，不为null或者空值
 	ErrorInfo []*ErrorInfo `json:"ErrorInfo,omitempty" name:"ErrorInfo"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*TagItem `json:"Tags,omitempty" name:"Tags"`
 }
 
 type MigrateOption struct {

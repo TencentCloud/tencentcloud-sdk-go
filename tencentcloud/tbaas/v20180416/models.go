@@ -289,7 +289,7 @@ type ChainMakerTransactionResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
-	// 交易时间
+	// 交易时间，单位是秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
 }
@@ -2494,7 +2494,7 @@ type QueryChainMakerBlockTransactionResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		TxCount *int64 `json:"TxCount,omitempty" name:"TxCount"`
 
-		// 区块时间戳
+		// 区块时间戳，单位是秒
 		BlockTimestamp *int64 `json:"BlockTimestamp,omitempty" name:"BlockTimestamp"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

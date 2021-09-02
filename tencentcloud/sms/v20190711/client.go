@@ -337,7 +337,6 @@ func NewDescribeSmsSignListResponse() (response *DescribeSmsSignListResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILRESOLVEPACKET = "FailedOperation.FailResolvePacket"
 //  FAILEDOPERATION_JSONPARSEFAIL = "FailedOperation.JsonParseFail"
-//  FAILEDOPERATION_MISSINGSIGNATURETOMODIFY = "FailedOperation.MissingSignatureToModify"
 //  FAILEDOPERATION_NOTENTERPRISECERTIFICATION = "FailedOperation.NotEnterpriseCertification"
 //  FAILEDOPERATION_OTHERERROR = "FailedOperation.OtherError"
 //  INTERNALERROR_OTHERERROR = "InternalError.OtherError"
