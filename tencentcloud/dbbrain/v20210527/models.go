@@ -2126,6 +2126,75 @@ type IssueTypeInfo struct {
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 }
 
+type KillMySqlThreadsRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// kill会话任务的阶段，取值包括："Prepare"-准备阶段，"Commit"-提交阶段。
+	Stage *string `json:"Stage,omitempty" name:"Stage"`
+
+	// 需要kill的sql会话ID列表，此参数用于Prepare阶段。
+	Threads []*int64 `json:"Threads,omitempty" name:"Threads"`
+
+	// 执行ID，此参数用于Commit阶段。
+	SqlExecId *string `json:"SqlExecId,omitempty" name:"SqlExecId"`
+
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
+}
+
+func (r *KillMySqlThreadsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *KillMySqlThreadsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Stage")
+	delete(f, "Threads")
+	delete(f, "SqlExecId")
+	delete(f, "Product")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "KillMySqlThreadsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type KillMySqlThreadsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// kill完成的sql会话ID列表。
+		Threads []*int64 `json:"Threads,omitempty" name:"Threads"`
+
+		// 执行ID， Prepare阶段的任务输出，用于Commit阶段中指定执行kill操作的会话ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SqlExecId *string `json:"SqlExecId,omitempty" name:"SqlExecId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *KillMySqlThreadsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *KillMySqlThreadsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type MailConfiguration struct {
 
 	// 是否开启邮件发送: 0, 否; 1, 是。

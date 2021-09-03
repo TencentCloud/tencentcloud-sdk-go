@@ -545,6 +545,42 @@ func (c *Client) GetPersonList(request *GetPersonListRequest) (response *GetPers
     return
 }
 
+func NewGetSummaryInfoRequest() (request *GetSummaryInfoRequest) {
+    request = &GetSummaryInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bda", APIVersion, "GetSummaryInfo")
+    return
+}
+
+func NewGetSummaryInfoResponse() (response *GetSummaryInfoResponse) {
+    response = &GetSummaryInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetSummaryInfo
+// 获取人体库汇总信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_REQUESTENTITYTOOLARGE = "FailedOperation.RequestEntityTooLarge"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_LIMITEXCEED = "InvalidParameterValue.LimitExceed"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
+func (c *Client) GetSummaryInfo(request *GetSummaryInfoRequest) (response *GetSummaryInfoResponse, err error) {
+    if request == nil {
+        request = NewGetSummaryInfoRequest()
+    }
+    response = NewGetSummaryInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyGroupRequest() (request *ModifyGroupRequest) {
     request = &ModifyGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},

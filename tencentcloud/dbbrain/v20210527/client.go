@@ -956,6 +956,46 @@ func (c *Client) DescribeUserSqlAdvice(request *DescribeUserSqlAdviceRequest) (r
     return
 }
 
+func NewKillMySqlThreadsRequest() (request *KillMySqlThreadsRequest) {
+    request = &KillMySqlThreadsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "KillMySqlThreads")
+    return
+}
+
+func NewKillMySqlThreadsResponse() (response *KillMySqlThreadsResponse) {
+    response = &KillMySqlThreadsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// KillMySqlThreads
+// 根据会话ID中断当前会话，该接口分为两次提交：第一次为预提交阶段，Stage为"Prepare"，得到的返回值包含SqlExecId；第二次为确认提交， Stage为"Commit"， 将SqlExecId的值作为参数传入，最终终止会话进程。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) KillMySqlThreads(request *KillMySqlThreadsRequest) (response *KillMySqlThreadsResponse, err error) {
+    if request == nil {
+        request = NewKillMySqlThreadsRequest()
+    }
+    response = NewKillMySqlThreadsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDiagDBInstanceConfRequest() (request *ModifyDiagDBInstanceConfRequest) {
     request = &ModifyDiagDBInstanceConfRequest{
         BaseRequest: &tchttp.BaseRequest{},

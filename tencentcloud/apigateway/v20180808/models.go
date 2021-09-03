@@ -1636,7 +1636,7 @@ func (r *CreateIPStrategyResponse) FromJsonString(s string) error {
 type CreatePluginRequest struct {
 	*tchttp.BaseRequest
 
-	// 用户自定义的插件名称。最长50个字符，支持 a-z,A-Z,0-9,_, 必须字母开头，字母或者数字结尾。
+	// 用户自定义的插件名称。最长50个字符，最短2个字符，支持 a-z,A-Z,0-9,_, 必须字母开头，字母或者数字结尾。
 	PluginName *string `json:"PluginName,omitempty" name:"PluginName"`
 
 	// 插件类型。目前支持IPControl。

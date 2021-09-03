@@ -353,6 +353,10 @@ type ConfigInfo struct {
 
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 用户自定义解析字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserDefineRule *string `json:"UserDefineRule,omitempty" name:"UserDefineRule"`
 }
 
 type ContentInfo struct {
@@ -677,6 +681,9 @@ type CreateConfigRequest struct {
 
 	// 采集黑名单路径列表
 	ExcludePaths []*ExcludePathInfo `json:"ExcludePaths,omitempty" name:"ExcludePaths"`
+
+	// 用户自定义采集规则，Json格式序列化的字符串
+	UserDefineRule *string `json:"UserDefineRule,omitempty" name:"UserDefineRule"`
 }
 
 func (r *CreateConfigRequest) ToJsonString() string {
@@ -697,6 +704,7 @@ func (r *CreateConfigRequest) FromJsonString(s string) error {
 	delete(f, "LogType")
 	delete(f, "ExtractRule")
 	delete(f, "ExcludePaths")
+	delete(f, "UserDefineRule")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConfigRequest has unknown keys!", "")
 	}
@@ -3750,6 +3758,9 @@ type ModifyConfigRequest struct {
 
 	// 采集配置关联的日志主题（TopicId）
 	Output *string `json:"Output,omitempty" name:"Output"`
+
+	// 用户自定义解析字符串，Json格式序列化的字符串
+	UserDefineRule *string `json:"UserDefineRule,omitempty" name:"UserDefineRule"`
 }
 
 func (r *ModifyConfigRequest) ToJsonString() string {
@@ -3771,6 +3782,7 @@ func (r *ModifyConfigRequest) FromJsonString(s string) error {
 	delete(f, "ExtractRule")
 	delete(f, "ExcludePaths")
 	delete(f, "Output")
+	delete(f, "UserDefineRule")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyConfigRequest has unknown keys!", "")
 	}

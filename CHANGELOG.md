@@ -1,78 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 内容分发网络(cdn) 版本：2018-06-06
+## 人体分析(bda) 版本：2020-03-24
 
-### 第 76 次发布
+### 第 7 次发布
 
-发布时间：2021-09-02 08:03:38
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [BandwidthAlert](https://cloud.tencent.com/document/api/228/30987#BandwidthAlert)
-
-	* 新增成员：AlertSwitch, AlertPercentage, LastTriggerTimeOverseas
-
-
-
-
-## 消息队列 Ckafka(ckafka) 版本：2019-08-19
-
-### 第 20 次发布
-
-发布时间：2021-09-02 08:09:02
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateAcl](https://cloud.tencent.com/document/api/597/40860)
-
-	* 新增入参：ResourceNameList
-
-
-
-
-## 数据传输服务(dts) 版本：2018-03-30
-
-### 第 13 次发布
-
-发布时间：2021-09-02 08:04:47
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeMigrateJobs](https://cloud.tencent.com/document/api/571/18130)
-
-	* 新增入参：TagFilters
-
-
-修改数据结构：
-
-* [DstInfo](https://cloud.tencent.com/document/api/571/18131#DstInfo)
-
-	* <font color="#dd0000">**修改成员**：</font>InstanceId
-
-* [MigrateJobInfo](https://cloud.tencent.com/document/api/571/18131#MigrateJobInfo)
-
-	* 新增成员：Tags
-
-
-
-
-## 物联网开发平台(iotexplorer) 版本：2019-04-23
-
-### 第 30 次发布
-
-发布时间：2021-09-02 08:05:31
+发布时间：2021-09-03 08:02:16
 
 本次发布包含了以下内容：
 
@@ -80,19 +12,15 @@
 
 新增接口：
 
-* [DirectBindDeviceInFamily](https://cloud.tencent.com/document/api/1081/61081)
-
-新增数据结构：
-
-* [AppDeviceInfo](https://cloud.tencent.com/document/api/1081/34988#AppDeviceInfo)
+* [GetSummaryInfo](https://cloud.tencent.com/document/api/1208/61127)
 
 
 
-## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+## 日志服务(cls) 版本：2020-10-16
 
-### 第 26 次发布
+### 第 10 次发布
 
-发布时间：2021-09-02 08:07:01
+发布时间：2021-09-03 08:00:19
 
 本次发布包含了以下内容：
 
@@ -100,48 +28,41 @@
 
 修改接口：
 
-* [RenewDBInstance](https://cloud.tencent.com/document/api/238/19953)
+* [CreateConfig](https://cloud.tencent.com/document/api/614/58620)
 
-	* 新增入参：AutoRenewFlag
+	* 新增入参：UserDefineRule
 
+* [ModifyConfig](https://cloud.tencent.com/document/api/614/58614)
 
+	* 新增入参：UserDefineRule
 
-
-## 云开发 CloudBase(tcb) 版本：2018-06-08
-
-### 第 64 次发布
-
-发布时间：2021-09-02 08:07:27
-
-本次发布包含了以下内容：
-
-改善已有的文档。
 
 修改数据结构：
 
-* [StandaloneGatewayInfo](https://cloud.tencent.com/document/api/876/34822#StandaloneGatewayInfo)
+* [ConfigInfo](https://cloud.tencent.com/document/api/614/56471#ConfigInfo)
 
-	* 新增成员：PublicClbIp, InternalClbIp
-
-
+	* 新增成员：UserDefineRule
 
 
-## 分布式消息队列(tdmq) 版本：2020-02-17
 
-### 第 17 次发布
 
-发布时间：2021-09-02 08:09:49
+## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+
+### 第 4 次发布
+
+发布时间：2021-09-03 08:05:46
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [DescribeClusters](https://cloud.tencent.com/document/api/1179/52183)
+* [KillMySqlThreads](https://cloud.tencent.com/document/api/1130/61129)
 
-	* 新增入参：ClusterIdList
 
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
 
 
 
@@ -4079,6 +4000,18 @@
 
 
 ## 人体分析(bda) 版本：2020-03-24
+
+### 第 7 次发布
+
+发布时间：2021-09-03 08:02:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[GetSummaryInfo](https://cloud.tencent.com/document/api/1208/61127)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 6 次发布
 
@@ -13602,6 +13535,32 @@
 
 ## 日志服务(cls) 版本：2020-10-16
 
+### 第 10 次发布
+
+发布时间：2021-09-03 08:00:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateConfig](https://cloud.tencent.com/document/api/614/58620)
+
+	* 新增入参：UserDefineRule
+
+* [ModifyConfig](https://cloud.tencent.com/document/api/614/58614)
+
+	* 新增入参：UserDefineRule
+
+
+修改数据结构：
+
+* [ConfigInfo](https://cloud.tencent.com/document/api/614/56471#ConfigInfo)
+
+	* 新增成员：UserDefineRule
+
+
 ### 第 9 次发布
 
 发布时间：2021-08-24 08:00:18
@@ -19914,6 +19873,18 @@
 
 
 ## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+
+### 第 4 次发布
+
+发布时间：2021-09-03 08:05:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[KillMySqlThreads](https://cloud.tencent.com/document/api/1130/61129)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 3 次发布
 
@@ -29903,11 +29874,11 @@
 
 新增接口：
 
-* [[DirectBindDeviceInFamily](https://cloud.tencent.com/document/api/1081/61081)](https://cloud.tencent.com/document/api/#/#)
+* [DirectBindDeviceInFamily](https://cloud.tencent.com/document/api/1081/61081)
 
 新增数据结构：
 
-* [[AppDeviceInfo](https://cloud.tencent.com/document/api/1081/34988#AppDeviceInfo)](https://cloud.tencent.com/document/api/1081/34988#[AppDeviceInfo](https://cloud.tencent.com/document/api/1081/34988#AppDeviceInfo))
+* [AppDeviceInfo](https://cloud.tencent.com/document/api/1081/34988#AppDeviceInfo)
 
 ### 第 29 次发布
 

@@ -851,6 +851,57 @@ func (r *GetPersonListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type GetSummaryInfoRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *GetSummaryInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetSummaryInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetSummaryInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetSummaryInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 人体库总数量。
+		GroupCount *uint64 `json:"GroupCount,omitempty" name:"GroupCount"`
+
+		// 人员总数量
+		PersonCount *uint64 `json:"PersonCount,omitempty" name:"PersonCount"`
+
+		// 人员轨迹总数量
+		TraceCount *uint64 `json:"TraceCount,omitempty" name:"TraceCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetSummaryInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetSummaryInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type GroupInfo struct {
 
 	// 人体库名称。

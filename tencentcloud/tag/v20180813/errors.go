@@ -80,6 +80,9 @@ const (
 	// 标签值包含非法字符。
 	INVALIDPARAMETERVALUE_TAGVALUECHARACTERILLEGAL = "InvalidParameterValue.TagValueCharacterIllegal"
 
+	// 标签值不能为空值。
+	INVALIDPARAMETERVALUE_TAGVALUEEMPTY = "InvalidParameterValue.TagValueEmpty"
+
 	// 标签值长度超过限制。
 	INVALIDPARAMETERVALUE_TAGVALUELENGTHEXCEEDED = "InvalidParameterValue.TagValueLengthExceeded"
 

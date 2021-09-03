@@ -155,6 +155,7 @@ func NewCreateTagResponse() (response *CreateTagResponse) {
 //  INVALIDPARAMETERVALUE_TAGKEYEMPTY = "InvalidParameterValue.TagKeyEmpty"
 //  INVALIDPARAMETERVALUE_TAGKEYLENGTHEXCEEDED = "InvalidParameterValue.TagKeyLengthExceeded"
 //  INVALIDPARAMETERVALUE_TAGVALUECHARACTERILLEGAL = "InvalidParameterValue.TagValueCharacterIllegal"
+//  INVALIDPARAMETERVALUE_TAGVALUEEMPTY = "InvalidParameterValue.TagValueEmpty"
 //  INVALIDPARAMETERVALUE_TAGVALUELENGTHEXCEEDED = "InvalidParameterValue.TagValueLengthExceeded"
 //  LIMITEXCEEDED_TAGKEY = "LimitExceeded.TagKey"
 //  LIMITEXCEEDED_TAGVALUE = "LimitExceeded.TagValue"

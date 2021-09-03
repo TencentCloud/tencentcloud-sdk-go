@@ -742,13 +742,12 @@ type CynosdbInstance struct {
 	// pause
 	ServerlessStatus *string `json:"ServerlessStatus,omitempty" name:"ServerlessStatus"`
 
-	// 存储付费类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	StoragePayMode *int64 `json:"StoragePayMode,omitempty" name:"StoragePayMode"`
-
 	// 预付费存储Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StorageId *string `json:"StorageId,omitempty" name:"StorageId"`
+
+	// 存储付费类型
+	StoragePayMode *int64 `json:"StoragePayMode,omitempty" name:"StoragePayMode"`
 }
 
 type CynosdbInstanceDetail struct {

@@ -167,7 +167,7 @@ const (
 	// 下发短信命中了频率限制策略，可自行到控制台调整短信频率限制策略，如有其他需求请联系  [sms helper](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81)。
 	LIMITEXCEEDED_DELIVERYFREQUENCYLIMIT = "LimitExceeded.DeliveryFrequencyLimit"
 
-	// 调用短信发送 API 接口单次提交的手机号个数超过200个，请遵守 [API 接口说明](https://cloud.tencent.com/document/product/382/38778)。
+	// 调用短信发送 API 接口单次提交的手机号个数超过200个，请遵守 [API 接口说明](https://cloud.tencent.com/document/product/382/55981#2.-.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0)。
 	LIMITEXCEEDED_PHONENUMBERCOUNTLIMIT = "LimitExceeded.PhoneNumberCountLimit"
 
 	// 单个手机号日下发短信条数超过设定的上限，可自行到控制台调整短信频率限制策略。
@@ -206,7 +206,7 @@ const (
 	// 欠费被停止服务，可自行登录腾讯云充值来缴清欠款。
 	UNAUTHORIZEDOPERATION_SERIVCESUSPENDDUETOARREARS = "UnauthorizedOperation.SerivceSuspendDueToArrears"
 
-	// SmsSdkAppId 校验失败。
+	// SmsSdkAppId 校验失败，请检查[SmsSdkAppId](https://console.cloud.tencent.com/smsv2/app-manage)是否属于[云API密钥](https://console.cloud.tencent.com/cam/capi)的关联账户。
 	UNAUTHORIZEDOPERATION_SMSSDKAPPIDVERIFYFAIL = "UnauthorizedOperation.SmsSdkAppIdVerifyFail"
 
 	// 不支持该请求。

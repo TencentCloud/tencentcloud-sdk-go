@@ -1523,6 +1523,8 @@ func NewCreateNatGatewayResponse() (response *CreateNatGatewayResponse) {
 // CreateNatGateway
 // 本接口(CreateNatGateway)用于创建NAT网关。
 //
+// 在对新建的NAT网关做其他操作前，需先确认此网关已被创建完成（DescribeNatGateway接口返回的实例State字段为AVAILABLE）。
+//
 // 可能返回的错误码:
 //  ADDRESSQUOTALIMITEXCEEDED = "AddressQuotaLimitExceeded"
 //  INTERNALSERVERERROR = "InternalServerError"
