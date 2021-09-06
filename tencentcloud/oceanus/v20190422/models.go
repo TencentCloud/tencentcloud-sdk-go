@@ -1056,6 +1056,10 @@ type JobV1 struct {
 	// 细粒度下的运行的CU数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunningCu *float64 `json:"RunningCu,omitempty" name:"RunningCu"`
+
+	// 作业运行的 Flink 版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlinkVersion *string `json:"FlinkVersion,omitempty" name:"FlinkVersion"`
 }
 
 type Property struct {

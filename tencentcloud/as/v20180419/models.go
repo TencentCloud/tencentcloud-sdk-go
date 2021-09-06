@@ -69,6 +69,9 @@ type Activity struct {
 
 	// 伸缩活动中生命周期挂钩的执行结果。
 	LifecycleActionResultSet []*LifecycleActionResultInfo `json:"LifecycleActionResultSet,omitempty" name:"LifecycleActionResultSet"`
+
+	// 伸缩活动状态详细描述。
+	DetailedStatusMessageSet []*DetailedStatusMessage `json:"DetailedStatusMessageSet,omitempty" name:"DetailedStatusMessageSet"`
 }
 
 type ActivtyRelatedInstance struct {
@@ -2207,6 +2210,30 @@ func (r *DetachInstancesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DetachInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DetailedStatusMessage struct {
+
+	// 错误类型。
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 可用区信息。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例计费类型。
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
+
+	// 子网ID。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 错误描述。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 实例类型。
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
 }
 
 type DisableAutoScalingGroupRequest struct {

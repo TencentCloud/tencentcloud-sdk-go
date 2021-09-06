@@ -20,6 +20,36 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AccountVpcInfo struct {
+
+	// VpcId： vpc-xadsafsdasd
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+	// Vpc所属地区: ap-guangzhou, ap-shanghai
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// Vpc所属账号: 123456789
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// vpc资源名称：testname
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
+}
+
+type AccountVpcInfoOutput struct {
+
+	// 关联账户的uin
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// vpcid
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+	// 地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+}
+
 type AuditLog struct {
 
 	// 日志类型
@@ -140,6 +170,9 @@ type CreatePrivateZoneRequest struct {
 
 	// 创建私有域的同时，将其关联至VPC
 	Vpcs []*VpcInfo `json:"Vpcs,omitempty" name:"Vpcs"`
+
+	// 创建私有域同时绑定关联账号的VPC
+	AccountVpcSet []*AccountVpcInfo `json:"AccountVpcSet,omitempty" name:"AccountVpcSet"`
 }
 
 func (r *CreatePrivateZoneRequest) ToJsonString() string {
@@ -160,6 +193,7 @@ func (r *CreatePrivateZoneRequest) FromJsonString(s string) error {
 	delete(f, "Remark")
 	delete(f, "DnsForwardStatus")
 	delete(f, "Vpcs")
+	delete(f, "AccountVpcSet")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrivateZoneRequest has unknown keys!", "")
 	}
@@ -871,6 +905,9 @@ type ModifyPrivateZoneVpcRequest struct {
 
 	// 私有域关联的全部VPC列表
 	VpcSet []*VpcInfo `json:"VpcSet,omitempty" name:"VpcSet"`
+
+	// 私有域账号关联的全部VPC列表
+	AccountVpcSet []*AccountVpcInfo `json:"AccountVpcSet,omitempty" name:"AccountVpcSet"`
 }
 
 func (r *ModifyPrivateZoneVpcRequest) ToJsonString() string {
@@ -887,6 +924,7 @@ func (r *ModifyPrivateZoneVpcRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ZoneId")
 	delete(f, "VpcSet")
+	delete(f, "AccountVpcSet")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPrivateZoneVpcRequest has unknown keys!", "")
 	}
@@ -902,6 +940,9 @@ type ModifyPrivateZoneVpcResponse struct {
 
 		// 解析域关联的VPC列表
 		VpcSet []*VpcInfo `json:"VpcSet,omitempty" name:"VpcSet"`
+
+		// 私有域账号关联的全部VPC列表
+		AccountVpcSet []*AccountVpcInfoOutput `json:"AccountVpcSet,omitempty" name:"AccountVpcSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -954,6 +995,10 @@ type PrivateZone struct {
 
 	// 标签键值对集合
 	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags"`
+
+	// 绑定的关联账号的vpc列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountVpcSet []*AccountVpcInfoOutput `json:"AccountVpcSet,omitempty" name:"AccountVpcSet"`
 }
 
 type PrivateZoneRecord struct {

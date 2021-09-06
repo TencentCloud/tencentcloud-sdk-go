@@ -852,6 +852,66 @@ func (r *DescribePackagesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribePkgOfflineMusicRequest struct {
+	*tchttp.BaseRequest
+
+	// 订单id
+	PackageOrderId *string `json:"PackageOrderId,omitempty" name:"PackageOrderId"`
+
+	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条(注：单次上限为100)。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribePkgOfflineMusicRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePkgOfflineMusicRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PackageOrderId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePkgOfflineMusicRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePkgOfflineMusicResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 曲库包中不可用歌曲信息
+		OfflineMusicSet []*OfflineMusicDetail `json:"OfflineMusicSet,omitempty" name:"OfflineMusicSet"`
+
+		// 返回总量
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePkgOfflineMusicResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePkgOfflineMusicResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeStationsRequest struct {
 	*tchttp.BaseRequest
 
@@ -1165,6 +1225,21 @@ type MusicStatus struct {
 
 	// 在售状态,0为在售，1为临时下架，2为永久下架
 	SaleStatus *int64 `json:"SaleStatus,omitempty" name:"SaleStatus"`
+}
+
+type OfflineMusicDetail struct {
+
+	// 歌曲Id
+	ItemId *string `json:"ItemId,omitempty" name:"ItemId"`
+
+	// 歌曲名称
+	MusicName *string `json:"MusicName,omitempty" name:"MusicName"`
+
+	// 不可用原因
+	OffRemark *string `json:"OffRemark,omitempty" name:"OffRemark"`
+
+	// 不可用时间
+	OffTime *string `json:"OffTime,omitempty" name:"OffTime"`
 }
 
 type Package struct {

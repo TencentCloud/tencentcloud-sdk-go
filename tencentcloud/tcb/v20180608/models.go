@@ -20,6 +20,27 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type ActivityInfoItem struct {
+
+	// 活动id
+	ActivityId *int64 `json:"ActivityId,omitempty" name:"ActivityId"`
+
+	// 记录插入时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 记录最后一次变更时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 活动开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 活动结束时间
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 自定义备注信息
+	Tag *string `json:"Tag,omitempty" name:"Tag"`
+}
+
 type ActivityRecordItem struct {
 
 	// 用户uin
@@ -37,6 +58,14 @@ type ActivityRecordItem struct {
 	// 自定义子状态码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubStatus *string `json:"SubStatus,omitempty" name:"SubStatus"`
+
+	// 整型子状态码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubStatusInt *int64 `json:"SubStatusInt,omitempty" name:"SubStatusInt"`
+
+	// 是否软删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDeleted *bool `json:"IsDeleted,omitempty" name:"IsDeleted"`
 }
 
 type AuthDomain struct {
@@ -1877,6 +1906,55 @@ func (r *DeleteWxGatewayRouteResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeActivityInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 活动id列表
+	ActivityIdList []*int64 `json:"ActivityIdList,omitempty" name:"ActivityIdList"`
+}
+
+func (r *DescribeActivityInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeActivityInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ActivityIdList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeActivityInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeActivityInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 活动详情
+		ActivityInfoList []*ActivityInfoItem `json:"ActivityInfoList,omitempty" name:"ActivityInfoList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeActivityInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeActivityInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeActivityRecordRequest struct {
 	*tchttp.BaseRequest
 
@@ -1894,6 +1972,9 @@ type DescribeActivityRecordRequest struct {
 
 	// 状态码过滤数组，空数组时不过滤
 	Statuses []*int64 `json:"Statuses,omitempty" name:"Statuses"`
+
+	// 根据是否软删除进行过滤，[0]未删除, [1] 删除，不传不过滤
+	IsDeletedList []*int64 `json:"IsDeletedList,omitempty" name:"IsDeletedList"`
 }
 
 func (r *DescribeActivityRecordRequest) ToJsonString() string {
@@ -1913,6 +1994,7 @@ func (r *DescribeActivityRecordRequest) FromJsonString(s string) error {
 	delete(f, "ActivityIdList")
 	delete(f, "Status")
 	delete(f, "Statuses")
+	delete(f, "IsDeletedList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeActivityRecordRequest has unknown keys!", "")
 	}
@@ -4115,6 +4197,80 @@ func (r *DescribeStandaloneGatewayResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeStandaloneGatewayResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUserActivityInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 活动id
+	ActivityId *int64 `json:"ActivityId,omitempty" name:"ActivityId"`
+
+	// 渠道加密token
+	ChannelToken *string `json:"ChannelToken,omitempty" name:"ChannelToken"`
+
+	// 渠道来源，每个来源对应不同secretKey
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
+
+	// 团id, 1元钱裂变中活动团id不为空时根据团id来查询记录，为空时查询uin最新记录
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+}
+
+func (r *DescribeUserActivityInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserActivityInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ActivityId")
+	delete(f, "ChannelToken")
+	delete(f, "Channel")
+	delete(f, "GroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserActivityInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUserActivityInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 自定义标记，1元钱裂变需求中即代指`团id`
+		Tag *string `json:"Tag,omitempty" name:"Tag"`
+
+		// 自定义备注，1元钱裂变需求中返回`团列表`，uin列表通过","拼接
+		Notes *string `json:"Notes,omitempty" name:"Notes"`
+
+		// 活动剩余时间，单位为s.1元钱裂变需求中即为 time(活动过期时间)-Now()), 过期后为0，即返回必为自然数
+		ActivityTimeLeft *int64 `json:"ActivityTimeLeft,omitempty" name:"ActivityTimeLeft"`
+
+		// 拼团剩余时间，单位为s.1元钱裂变需求中即为time(成团时间)+24H-Now()，过期后为0，即返回必为自然数
+		GroupTimeLeft *int64 `json:"GroupTimeLeft,omitempty" name:"GroupTimeLeft"`
+
+		// 昵称列表,通过","拼接， 1元钱裂变活动中与Notes中uin一一对应
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		NickNameList *string `json:"NickNameList,omitempty" name:"NickNameList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeUserActivityInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserActivityInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

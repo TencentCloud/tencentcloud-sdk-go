@@ -613,6 +613,38 @@ func (c *Client) DeleteWxGatewayRoute(request *DeleteWxGatewayRouteRequest) (res
     return
 }
 
+func NewDescribeActivityInfoRequest() (request *DescribeActivityInfoRequest) {
+    request = &DescribeActivityInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeActivityInfo")
+    return
+}
+
+func NewDescribeActivityInfoResponse() (response *DescribeActivityInfoResponse) {
+    response = &DescribeActivityInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeActivityInfo
+// 查询活动信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+func (c *Client) DescribeActivityInfo(request *DescribeActivityInfoRequest) (response *DescribeActivityInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeActivityInfoRequest()
+    }
+    response = NewDescribeActivityInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeActivityRecordRequest() (request *DescribeActivityRecordRequest) {
     request = &DescribeActivityRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1675,6 +1707,38 @@ func (c *Client) DescribeStandaloneGatewayPackage(request *DescribeStandaloneGat
     return
 }
 
+func NewDescribeUserActivityInfoRequest() (request *DescribeUserActivityInfoRequest) {
+    request = &DescribeUserActivityInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeUserActivityInfo")
+    return
+}
+
+func NewDescribeUserActivityInfoResponse() (response *DescribeUserActivityInfoResponse) {
+    response = &DescribeUserActivityInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeUserActivityInfo
+// 查询用户活动信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+func (c *Client) DescribeUserActivityInfo(request *DescribeUserActivityInfoRequest) (response *DescribeUserActivityInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserActivityInfoRequest()
+    }
+    response = NewDescribeUserActivityInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeWxCloudBaseRunEnvsRequest() (request *DescribeWxCloudBaseRunEnvsRequest) {
     request = &DescribeWxCloudBaseRunEnvsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2104,6 +2168,7 @@ func NewReplaceActivityRecordResponse() (response *ReplaceActivityRecordResponse
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) ReplaceActivityRecord(request *ReplaceActivityRecordRequest) (response *ReplaceActivityRecordResponse, err error) {
     if request == nil {
         request = NewReplaceActivityRecordRequest()

@@ -310,7 +310,7 @@ func NewDescribeKTVPlaylistsResponse() (response *DescribeKTVPlaylistsResponse) 
 }
 
 // DescribeKTVPlaylists
-// 获取即时广播曲库推荐歌单列表。
+// 获取直播互动曲库推荐歌单列表。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -499,6 +499,44 @@ func (c *Client) DescribePackages(request *DescribePackagesRequest) (response *D
         request = NewDescribePackagesRequest()
     }
     response = NewDescribePackagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePkgOfflineMusicRequest() (request *DescribePkgOfflineMusicRequest) {
+    request = &DescribePkgOfflineMusicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ame", APIVersion, "DescribePkgOfflineMusic")
+    return
+}
+
+func NewDescribePkgOfflineMusicResponse() (response *DescribePkgOfflineMusicResponse) {
+    response = &DescribePkgOfflineMusicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePkgOfflineMusic
+// 根据购买曲库包用户可查询已回退的歌曲信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePkgOfflineMusic(request *DescribePkgOfflineMusicRequest) (response *DescribePkgOfflineMusicResponse, err error) {
+    if request == nil {
+        request = NewDescribePkgOfflineMusicRequest()
+    }
+    response = NewDescribePkgOfflineMusicResponse()
     err = c.Send(request, response)
     return
 }
