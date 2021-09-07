@@ -3924,7 +3924,7 @@ type DescribeLiveForbidStreamListRequest struct {
 	// 默认值：10。
 	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
 
-	// 搜索的推流 id 名称。
+	// 按流名称查询。
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 }
 

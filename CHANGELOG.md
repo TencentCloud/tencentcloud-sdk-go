@@ -1,53 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 正版曲库直通车(ame) 版本：2019-09-16
+## 云函数(scf) 版本：2018-04-16
 
-### 第 17 次发布
+### 第 33 次发布
 
-发布时间：2021-09-06 08:10:10
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribePkgOfflineMusic](https://cloud.tencent.com/document/api/1155/61164)
-
-新增数据结构：
-
-* [OfflineMusicDetail](https://cloud.tencent.com/document/api/1155/40113#OfflineMusicDetail)
-
-
-
-## 弹性伸缩(as) 版本：2018-04-19
-
-### 第 39 次发布
-
-发布时间：2021-09-06 08:03:06
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [DetailedStatusMessage](https://cloud.tencent.com/document/api/377/20453#DetailedStatusMessage)
-
-修改数据结构：
-
-* [Activity](https://cloud.tencent.com/document/api/377/20453#Activity)
-
-	* 新增成员：DetailedStatusMessageSet
-
-
-
-
-## 流计算 Oceanus(oceanus) 版本：2019-04-22
-
-### 第 9 次发布
-
-发布时间：2021-09-06 08:01:03
+发布时间：2021-09-07 08:07:50
 
 本次发布包含了以下内容：
 
@@ -55,18 +12,18 @@
 
 修改数据结构：
 
-* [JobV1](https://cloud.tencent.com/document/api/849/52010#JobV1)
+* [Function](https://cloud.tencent.com/document/api/583/17244#Function)
 
-	* 新增成员：FlinkVersion
-
-
+	* 新增成员：AsyncRunEnable, TraceEnable
 
 
-## 私有域解析 Private DNS(privatedns) 版本：2020-10-28
 
-### 第 2 次发布
 
-发布时间：2021-09-06 08:00:36
+## 互动白板(tiw) 版本：2019-09-19
+
+### 第 21 次发布
+
+发布时间：2021-09-07 08:10:23
 
 本次发布包含了以下内容：
 
@@ -74,66 +31,54 @@
 
 修改接口：
 
-* [CreatePrivateZone](https://cloud.tencent.com/document/api/1338/55946)
+* [CreateTranscode](https://cloud.tencent.com/document/api/1137/40060)
 
-	* 新增入参：AccountVpcSet
-
-* [ModifyPrivateZoneVpc](https://cloud.tencent.com/document/api/1338/55933)
-
-	* 新增入参：AccountVpcSet
-
-	* 新增出参：AccountVpcSet
-
-
-新增数据结构：
-
-* [AccountVpcInfo](https://cloud.tencent.com/document/api/1338/55947#AccountVpcInfo)
-* [AccountVpcInfoOutput](https://cloud.tencent.com/document/api/1338/55947#AccountVpcInfoOutput)
-
-修改数据结构：
-
-* [PrivateZone](https://cloud.tencent.com/document/api/1338/55947#PrivateZone)
-
-	* 新增成员：AccountVpcSet
+	* 新增入参：MinScaleResolution
 
 
 
 
-## 云开发 CloudBase(tcb) 版本：2018-06-08
+## 腾讯云微服务引擎(tse) 版本：2020-12-07
 
-### 第 65 次发布
+### 第 10 次发布
 
-发布时间：2021-09-06 08:08:19
+发布时间：2021-09-07 08:00:46
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
-
-* [DescribeActivityInfo](https://cloud.tencent.com/document/api/876/61163)
-* [DescribeUserActivityInfo](https://cloud.tencent.com/document/api/876/61162)
-
-修改接口：
-
-* [DescribeActivityRecord](https://cloud.tencent.com/document/api/876/59181)
-
-	* 新增入参：IsDeletedList
-
-* [ReplaceActivityRecord](https://cloud.tencent.com/document/api/876/59180)
-
-	* <font color="#dd0000">**修改入参**：</font>SubStatus, ChannelToken, Channel
-
-
 新增数据结构：
 
-* [ActivityInfoItem](https://cloud.tencent.com/document/api/876/34822#ActivityInfoItem)
+* [BoundK8SInfo](https://cloud.tencent.com/document/api/1364/54942#BoundK8SInfo)
+* [ServiceGovernanceInfo](https://cloud.tencent.com/document/api/1364/54942#ServiceGovernanceInfo)
 
 修改数据结构：
 
-* [ActivityRecordItem](https://cloud.tencent.com/document/api/876/34822#ActivityRecordItem)
+* [SREInstance](https://cloud.tencent.com/document/api/1364/54942#SREInstance)
 
-	* 新增成员：SubStatusInt, IsDeleted
+	* 新增成员：ServiceGovernanceInfos
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 97 次发布
+
+发布时间：2021-09-07 08:09:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateVpnConnection](https://cloud.tencent.com/document/api/215/17522)
+
+	* 新增入参：RouteType
+
+	* <font color="#dd0000">**修改入参**：</font>VpcId, SecurityPolicyDatabases
 
 
 
@@ -411,11 +356,11 @@
 
 新增接口：
 
-* [[DescribePkgOfflineMusic](https://cloud.tencent.com/document/api/1155/61164)](https://cloud.tencent.com/document/api/#/#)
+* [DescribePkgOfflineMusic](https://cloud.tencent.com/document/api/1155/61164)
 
 新增数据结构：
 
-* [[OfflineMusicDetail](https://cloud.tencent.com/document/api/1155/40113#OfflineMusicDetail)](https://cloud.tencent.com/document/api/1155/40113#[OfflineMusicDetail](https://cloud.tencent.com/document/api/1155/40113#OfflineMusicDetail))
+* [OfflineMusicDetail](https://cloud.tencent.com/document/api/1155/40113#OfflineMusicDetail)
 
 ### 第 16 次发布
 
@@ -1881,7 +1826,7 @@
 
 新增数据结构：
 
-* [[DetailedStatusMessage](https://cloud.tencent.com/document/api/377/20453#DetailedStatusMessage)](https://cloud.tencent.com/document/api/377/20453#[DetailedStatusMessage](https://cloud.tencent.com/document/api/377/20453#DetailedStatusMessage))
+* [DetailedStatusMessage](https://cloud.tencent.com/document/api/377/20453#DetailedStatusMessage)
 
 修改数据结构：
 
@@ -39889,8 +39834,8 @@
 
 新增数据结构：
 
-* [[AccountVpcInfo](https://cloud.tencent.com/document/api/1338/55947#AccountVpcInfo)](https://cloud.tencent.com/document/api/1338/55947#[AccountVpcInfo](https://cloud.tencent.com/document/api/1338/55947#AccountVpcInfo))
-* [[AccountVpcInfoOutput](https://cloud.tencent.com/document/api/1338/55947#AccountVpcInfoOutput)](https://cloud.tencent.com/document/api/1338/55947#[AccountVpcInfoOutput](https://cloud.tencent.com/document/api/1338/55947#AccountVpcInfoOutput))
+* [AccountVpcInfo](https://cloud.tencent.com/document/api/1338/55947#AccountVpcInfo)
+* [AccountVpcInfoOutput](https://cloud.tencent.com/document/api/1338/55947#AccountVpcInfoOutput)
 
 修改数据结构：
 
@@ -40846,6 +40791,21 @@
 
 
 ## 云函数(scf) 版本：2018-04-16
+
+### 第 33 次发布
+
+发布时间：2021-09-07 08:07:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Function](https://cloud.tencent.com/document/api/583/17244#Function)
+
+	* 新增成员：AsyncRunEnable, TraceEnable
+
 
 ### 第 32 次发布
 
@@ -44915,8 +44875,8 @@
 
 新增接口：
 
-* [[DescribeActivityInfo](https://cloud.tencent.com/document/api/876/61163)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeUserActivityInfo](https://cloud.tencent.com/document/api/876/61162)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeActivityInfo](https://cloud.tencent.com/document/api/876/61163)
+* [DescribeUserActivityInfo](https://cloud.tencent.com/document/api/876/61162)
 
 修改接口：
 
@@ -44931,7 +44891,7 @@
 
 新增数据结构：
 
-* [[ActivityInfoItem](https://cloud.tencent.com/document/api/876/34822#ActivityInfoItem)](https://cloud.tencent.com/document/api/876/34822#[ActivityInfoItem](https://cloud.tencent.com/document/api/876/34822#ActivityInfoItem))
+* [ActivityInfoItem](https://cloud.tencent.com/document/api/876/34822#ActivityInfoItem)
 
 修改数据结构：
 
@@ -48984,6 +48944,21 @@
 
 ## 互动白板(tiw) 版本：2019-09-19
 
+### 第 21 次发布
+
+发布时间：2021-09-07 08:10:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTranscode](https://cloud.tencent.com/document/api/1137/40060)
+
+	* 新增入参：MinScaleResolution
+
+
 ### 第 20 次发布
 
 发布时间：2021-07-21 08:10:28
@@ -51473,6 +51448,26 @@
 
 
 ## 腾讯云微服务引擎(tse) 版本：2020-12-07
+
+### 第 10 次发布
+
+发布时间：2021-09-07 08:00:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[BoundK8SInfo](https://cloud.tencent.com/document/api/1364/54942#BoundK8SInfo)](https://cloud.tencent.com/document/api/1364/54942#[BoundK8SInfo](https://cloud.tencent.com/document/api/1364/54942#BoundK8SInfo))
+* [[ServiceGovernanceInfo](https://cloud.tencent.com/document/api/1364/54942#ServiceGovernanceInfo)](https://cloud.tencent.com/document/api/1364/54942#[ServiceGovernanceInfo](https://cloud.tencent.com/document/api/1364/54942#ServiceGovernanceInfo))
+
+修改数据结构：
+
+* [SREInstance](https://cloud.tencent.com/document/api/1364/54942#SREInstance)
+
+	* 新增成员：ServiceGovernanceInfos
+
 
 ### 第 9 次发布
 
@@ -56183,6 +56178,23 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 97 次发布
+
+发布时间：2021-09-07 08:09:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateVpnConnection](https://cloud.tencent.com/document/api/215/17522)
+
+	* 新增入参：RouteType
+
+	* <font color="#dd0000">**修改入参**：</font>VpcId, SecurityPolicyDatabases
+
 
 ### 第 96 次发布
 

@@ -3992,9 +3992,6 @@ func (r *CreateVpcResponse) FromJsonString(s string) error {
 type CreateVpnConnectionRequest struct {
 	*tchttp.BaseRequest
 
-	// VPC实例ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口返回值中的VpcId获取。
-	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
-
 	// VPN网关实例ID。
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" name:"VpnGatewayId"`
 
@@ -4006,6 +4003,10 @@ type CreateVpnConnectionRequest struct {
 
 	// 预共享密钥。
 	PreShareKey *string `json:"PreShareKey,omitempty" name:"PreShareKey"`
+
+	// VPC实例ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口返回值中的VpcId获取。
+	// CCN VPN 形的通道 可以不传VPCID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// SPD策略组，例如：{"10.0.0.5/24":["172.123.10.5/16"]}，10.0.0.5/24是vpc内网段172.123.10.5/16是IDC网段。用户指定VPC内哪些网段可以和您IDC中哪些网段通信。
 	SecurityPolicyDatabases []*SecurityPolicyDatabase `json:"SecurityPolicyDatabases,omitempty" name:"SecurityPolicyDatabases"`
@@ -4027,6 +4028,9 @@ type CreateVpnConnectionRequest struct {
 
 	// 健康检查对端地址
 	HealthCheckRemoteIp *string `json:"HealthCheckRemoteIp,omitempty" name:"HealthCheckRemoteIp"`
+
+	// 通道类型, 例如:["STATIC", "StaticRoute", "Policy"]
+	RouteType *string `json:"RouteType,omitempty" name:"RouteType"`
 }
 
 func (r *CreateVpnConnectionRequest) ToJsonString() string {
@@ -4041,11 +4045,11 @@ func (r *CreateVpnConnectionRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "VpcId")
 	delete(f, "VpnGatewayId")
 	delete(f, "CustomerGatewayId")
 	delete(f, "VpnConnectionName")
 	delete(f, "PreShareKey")
+	delete(f, "VpcId")
 	delete(f, "SecurityPolicyDatabases")
 	delete(f, "IKEOptionsSpecification")
 	delete(f, "IPSECOptionsSpecification")
@@ -4053,6 +4057,7 @@ func (r *CreateVpnConnectionRequest) FromJsonString(s string) error {
 	delete(f, "EnableHealthCheck")
 	delete(f, "HealthCheckLocalIp")
 	delete(f, "HealthCheckRemoteIp")
+	delete(f, "RouteType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVpnConnectionRequest has unknown keys!", "")
 	}

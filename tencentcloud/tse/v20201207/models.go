@@ -20,6 +20,16 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type BoundK8SInfo struct {
+
+	// 绑定的kubernetes集群ID
+	BoundClusterId *string `json:"BoundClusterId,omitempty" name:"BoundClusterId"`
+
+	// 绑定的kubernetes的集群类型，分tke和eks两种
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BoundClusterType *string `json:"BoundClusterType,omitempty" name:"BoundClusterType"`
+}
+
 type DescribeSREInstanceAccessAddressRequest struct {
 	*tchttp.BaseRequest
 
@@ -263,6 +273,22 @@ type SREInstance struct {
 
 	// 私有网络列表信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcInfos []*VpcInfo `json:"VpcInfos,omitempty" name:"VpcInfos"`
+
+	// 服务治理相关信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceGovernanceInfos []*ServiceGovernanceInfo `json:"ServiceGovernanceInfos,omitempty" name:"ServiceGovernanceInfos"`
+}
+
+type ServiceGovernanceInfo struct {
+
+	// 引擎所在的地域
+	EngineRegion *string `json:"EngineRegion,omitempty" name:"EngineRegion"`
+
+	// 服务治理引擎绑定的kubernetes集群信息
+	BoundK8SInfos []*BoundK8SInfo `json:"BoundK8SInfos,omitempty" name:"BoundK8SInfos"`
+
+	// 服务治理引擎绑定的网络信息
 	VpcInfos []*VpcInfo `json:"VpcInfos,omitempty" name:"VpcInfos"`
 }
 

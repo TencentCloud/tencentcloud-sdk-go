@@ -509,7 +509,7 @@ type CreateTriggerRequest struct {
 	// 新建触发器名称。如果是定时触发器，名称支持英文字母、数字、连接符和下划线，最长100个字符；如果是cos触发器，需要是对应cos存储桶适用于XML API的访问域名(例如:5401-5ff414-12345.cos.ap-shanghai.myqcloud.com);如果是其他触发器，见具体触发器绑定参数的说明
 	TriggerName *string `json:"TriggerName,omitempty" name:"TriggerName"`
 
-	// 触发器类型，目前支持 cos 、cmq、 timer、 ckafka、apigw类型
+	// 触发器类型，目前支持 cos 、cmq、 timer、 ckafka、apigw类型。创建 cls 触发器请参考[CLS 创建投递 SCF 任务](https://cloud.tencent.com/document/product/614/61096)。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 触发器对应的参数，可见具体[触发器描述说明](https://cloud.tencent.com/document/product/583/39901)
@@ -1048,6 +1048,12 @@ type Function struct {
 	// 函数并发保留内存
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReservedConcurrencyMem *uint64 `json:"ReservedConcurrencyMem,omitempty" name:"ReservedConcurrencyMem"`
+
+	// 函数异步属性，取值 TRUE 或者 FALSE
+	AsyncRunEnable *string `json:"AsyncRunEnable,omitempty" name:"AsyncRunEnable"`
+
+	// 异步函数是否开启调用追踪，取值 TRUE 或者 FALSE
+	TraceEnable *string `json:"TraceEnable,omitempty" name:"TraceEnable"`
 }
 
 type FunctionLog struct {
