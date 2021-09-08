@@ -51,7 +51,7 @@ func main() {
 	client := common.NewCommonClient(credential, regions.GuangzhouOpen, cpf)
 	// 创建common request
 	headers := map[string]string{
-		"X-CLS-TopicId":      "e621fdb8-16f4-41cf-bc73-5aead0b75a03",
+		"X-CLS-TopicId":      "e621fdb8-16f4-41cf-bc73-5aeadxxxxxx",
 		"X-CLS-HashKey":      "0fffffffffffffffffffffffffffffff",
 	}
 	commpresstype := ""//压缩算法类型， 目前只支持lz4
