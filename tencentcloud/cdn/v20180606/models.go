@@ -786,7 +786,7 @@ type Cache struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SimpleCache *SimpleCache `json:"SimpleCache,omitempty" name:"SimpleCache"`
 
-	// 高级缓存过期时间配置（功能灰度中，尚未全量）
+	// 高级缓存过期时间配置（已弃用）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdvancedCache *AdvancedCache `json:"AdvancedCache,omitempty" name:"AdvancedCache"`
 
@@ -6418,7 +6418,8 @@ type PushUrlsCacheRequest struct {
 	// 不填充情况下，默认为 mainland， URL 中域名必须在对应区域启用了加速服务才能提交对应区域的预热任务
 	Area *string `json:"Area,omitempty" name:"Area"`
 
-	// 填写"middle"或不填充时预热至中间层节点
+	// 填写"middle"或不填充时预热至中间层节点。
+	// 注意：中国境外区域预热，资源默认加载至中国境外边缘节点，所产生的边缘层流量会计入计费流量。
 	Layer *string `json:"Layer,omitempty" name:"Layer"`
 
 	// 是否递归解析m3u8文件中的ts分片预热

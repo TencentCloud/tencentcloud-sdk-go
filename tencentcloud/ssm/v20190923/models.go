@@ -881,6 +881,9 @@ type GetSSHKeyPairValueRequest struct {
 
 	// 凭据名称，此凭据只能为SSH密钥对凭据类型。
 	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+
+	// 密钥对ID，是云服务器中密钥对的唯一标识。
+	SSHKeyId *string `json:"SSHKeyId,omitempty" name:"SSHKeyId"`
 }
 
 func (r *GetSSHKeyPairValueRequest) ToJsonString() string {
@@ -896,6 +899,7 @@ func (r *GetSSHKeyPairValueRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "SecretName")
+	delete(f, "SSHKeyId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetSSHKeyPairValueRequest has unknown keys!", "")
 	}
@@ -1140,6 +1144,13 @@ type ListSecretsRequest struct {
 	// 1  -- 表示用户云产品凭据。
 	// 2 -- 表示SSH密钥对凭据。
 	SecretType *uint64 `json:"SecretType,omitempty" name:"SecretType"`
+
+	// 此参数仅在SecretType参数值为1时生效，
+	// 当SecretType值为1时：
+	// 如果ProductName值为空，则表示查询所有类型的云产品凭据
+	// 如果ProductName值为Mysql，则表示查询Mysql数据库凭据
+	// 如果ProductName值为Tdsql-mysql，则表示查询Tdsql（Mysql版本）的凭据
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
 }
 
 func (r *ListSecretsRequest) ToJsonString() string {
@@ -1161,6 +1172,7 @@ func (r *ListSecretsRequest) FromJsonString(s string) error {
 	delete(f, "SearchSecretName")
 	delete(f, "TagFilters")
 	delete(f, "SecretType")
+	delete(f, "ProductName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListSecretsRequest has unknown keys!", "")
 	}

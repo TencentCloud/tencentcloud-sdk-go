@@ -3097,6 +3097,9 @@ type InquiryPriceTerminateInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// 退款详情。
+		InstanceRefundsSet []*InstanceRefund `json:"InstanceRefundsSet,omitempty" name:"InstanceRefundsSet"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -3255,6 +3258,21 @@ type InstanceMarketOptionsRequest struct {
 
 	// 市场选项类型，当前只支持取值：spot
 	MarketType *string `json:"MarketType,omitempty" name:"MarketType"`
+}
+
+type InstanceRefund struct {
+
+	// 实例Id。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 退款数额。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Refunds *float64 `json:"Refunds,omitempty" name:"Refunds"`
+
+	// 退款详情。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PriceDetail *string `json:"PriceDetail,omitempty" name:"PriceDetail"`
 }
 
 type InstanceStatus struct {

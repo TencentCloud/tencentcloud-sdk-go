@@ -1,29 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云函数(scf) 版本：2018-04-16
+## 云服务器(cvm) 版本：2017-03-12
 
-### 第 33 次发布
+### 第 64 次发布
 
-发布时间：2021-09-07 08:07:50
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Function](https://cloud.tencent.com/document/api/583/17244#Function)
-
-	* 新增成员：AsyncRunEnable, TraceEnable
-
-
-
-
-## 互动白板(tiw) 版本：2019-09-19
-
-### 第 21 次发布
-
-发布时间：2021-09-07 08:10:23
+发布时间：2021-09-08 08:04:44
 
 本次发布包含了以下内容：
 
@@ -31,42 +12,38 @@
 
 修改接口：
 
-* [CreateTranscode](https://cloud.tencent.com/document/api/1137/40060)
+* [InquiryPriceTerminateInstances](https://cloud.tencent.com/document/api/213/58193)
 
-	* 新增入参：MinScaleResolution
+	* 新增出参：InstanceRefundsSet
 
-
-
-
-## 腾讯云微服务引擎(tse) 版本：2020-12-07
-
-### 第 10 次发布
-
-发布时间：2021-09-07 08:00:46
-
-本次发布包含了以下内容：
-
-改善已有的文档。
 
 新增数据结构：
 
-* [BoundK8SInfo](https://cloud.tencent.com/document/api/1364/54942#BoundK8SInfo)
-* [ServiceGovernanceInfo](https://cloud.tencent.com/document/api/1364/54942#ServiceGovernanceInfo)
-
-修改数据结构：
-
-* [SREInstance](https://cloud.tencent.com/document/api/1364/54942#SREInstance)
-
-	* 新增成员：ServiceGovernanceInfos
+* [InstanceRefund](https://cloud.tencent.com/document/api/213/15753#InstanceRefund)
 
 
 
+## DNSPod(dnspod) 版本：2021-03-23
 
-## 私有网络(vpc) 版本：2017-03-12
+### 第 2 次发布
 
-### 第 97 次发布
+发布时间：2021-09-08 08:00:28
 
-发布时间：2021-09-07 08:09:15
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifySubdomainStatus](https://cloud.tencent.com/document/api/1427/61272)
+
+
+
+## 凭据管理系统(ssm) 版本：2019-09-23
+
+### 第 5 次发布
+
+发布时间：2021-09-08 08:02:54
 
 本次发布包含了以下内容：
 
@@ -74,11 +51,15 @@
 
 修改接口：
 
-* [CreateVpnConnection](https://cloud.tencent.com/document/api/215/17522)
+* [GetSSHKeyPairValue](https://cloud.tencent.com/document/api/1140/60330)
 
-	* 新增入参：RouteType
+	* 新增入参：SSHKeyId
 
-	* <font color="#dd0000">**修改入参**：</font>VpcId, SecurityPolicyDatabases
+	* <font color="#dd0000">**修改入参**：</font>SecretName
+
+* [ListSecrets](https://cloud.tencent.com/document/api/1140/40519)
+
+	* 新增入参：ProductName
 
 
 
@@ -16564,6 +16545,25 @@
 
 ## 云服务器(cvm) 版本：2017-03-12
 
+### 第 64 次发布
+
+发布时间：2021-09-08 08:04:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [InquiryPriceTerminateInstances](https://cloud.tencent.com/document/api/213/58193)
+
+	* 新增出参：InstanceRefundsSet
+
+
+新增数据结构：
+
+* [[InstanceRefund](https://cloud.tencent.com/document/api/213/15753#InstanceRefund)](https://cloud.tencent.com/document/api/213/15753#[InstanceRefund](https://cloud.tencent.com/document/api/213/15753#InstanceRefund))
+
 ### 第 63 次发布
 
 发布时间：2021-08-25 08:04:53
@@ -21248,6 +21248,18 @@
 
 
 ## DNSPod(dnspod) 版本：2021-03-23
+
+### 第 2 次发布
+
+发布时间：2021-09-08 08:00:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifySubdomainStatus](https://cloud.tencent.com/document/api/1427/61272)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 1 次发布
 
@@ -43168,6 +43180,27 @@
 
 ## 凭据管理系统(ssm) 版本：2019-09-23
 
+### 第 5 次发布
+
+发布时间：2021-09-08 08:02:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetSSHKeyPairValue](https://cloud.tencent.com/document/api/1140/60330)
+
+	* 新增入参：SSHKeyId
+
+	* <font color="#dd0000">**修改入参**：</font>SecretName
+
+* [ListSecrets](https://cloud.tencent.com/document/api/1140/40519)
+
+	* 新增入参：ProductName
+
+
 ### 第 4 次发布
 
 发布时间：2021-08-17 08:03:01
@@ -51459,8 +51492,8 @@
 
 新增数据结构：
 
-* [[BoundK8SInfo](https://cloud.tencent.com/document/api/1364/54942#BoundK8SInfo)](https://cloud.tencent.com/document/api/1364/54942#[BoundK8SInfo](https://cloud.tencent.com/document/api/1364/54942#BoundK8SInfo))
-* [[ServiceGovernanceInfo](https://cloud.tencent.com/document/api/1364/54942#ServiceGovernanceInfo)](https://cloud.tencent.com/document/api/1364/54942#[ServiceGovernanceInfo](https://cloud.tencent.com/document/api/1364/54942#ServiceGovernanceInfo))
+* [BoundK8SInfo](https://cloud.tencent.com/document/api/1364/54942#BoundK8SInfo)
+* [ServiceGovernanceInfo](https://cloud.tencent.com/document/api/1364/54942#ServiceGovernanceInfo)
 
 修改数据结构：
 

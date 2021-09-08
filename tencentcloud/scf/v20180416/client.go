@@ -581,7 +581,7 @@ func NewDeleteReservedConcurrencyConfigResponse() (response *DeleteReservedConcu
 }
 
 // DeleteReservedConcurrencyConfig
-// 删除函数的保留并发配置。
+// 删除函数的最大独占配额配置。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DEBUGMODESTATUS = "FailedOperation.DebugModeStatus"
@@ -987,7 +987,7 @@ func NewGetReservedConcurrencyConfigResponse() (response *GetReservedConcurrency
 }
 
 // GetReservedConcurrencyConfig
-// 获取函数的保留并发详情。
+// 获取函数的最大独占配额详情。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1519,7 +1519,7 @@ func NewPutReservedConcurrencyConfigResponse() (response *PutReservedConcurrency
 }
 
 // PutReservedConcurrencyConfig
-// 设置函数保留并发
+// 设置函数最大独占配额
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DEBUGMODESTATUS = "FailedOperation.DebugModeStatus"
