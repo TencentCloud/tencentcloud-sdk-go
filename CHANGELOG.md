@@ -1,33 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云服务器(cvm) 版本：2017-03-12
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
 
-### 第 64 次发布
+### 第 21 次发布
 
-发布时间：2021-09-08 08:04:44
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [InquiryPriceTerminateInstances](https://cloud.tencent.com/document/api/213/58193)
-
-	* 新增出参：InstanceRefundsSet
-
-
-新增数据结构：
-
-* [InstanceRefund](https://cloud.tencent.com/document/api/213/15753#InstanceRefund)
-
-
-
-## DNSPod(dnspod) 版本：2021-03-23
-
-### 第 2 次发布
-
-发布时间：2021-09-08 08:00:28
+发布时间：2021-09-09 08:10:08
 
 本次发布包含了以下内容：
 
@@ -35,15 +12,19 @@
 
 新增接口：
 
-* [ModifySubdomainStatus](https://cloud.tencent.com/document/api/1427/61272)
+* [BatchCreateAcl](https://cloud.tencent.com/document/api/597/61309)
+
+新增数据结构：
+
+* [AclRuleInfo](https://cloud.tencent.com/document/api/597/40861#AclRuleInfo)
 
 
 
-## 凭据管理系统(ssm) 版本：2019-09-23
+## 云直播(live) 版本：2018-08-01
 
-### 第 5 次发布
+### 第 70 次发布
 
-发布时间：2021-09-08 08:02:54
+发布时间：2021-09-09 08:06:21
 
 本次发布包含了以下内容：
 
@@ -51,15 +32,39 @@
 
 修改接口：
 
-* [GetSSHKeyPairValue](https://cloud.tencent.com/document/api/1140/60330)
+* [DescribeLiveDomains](https://cloud.tencent.com/document/api/267/33856)
 
-	* 新增入参：SSHKeyId
+	* 新增入参：PlayType
 
-	* <font color="#dd0000">**修改入参**：</font>SecretName
 
-* [ListSecrets](https://cloud.tencent.com/document/api/1140/40519)
 
-	* 新增入参：ProductName
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 66 次发布
+
+发布时间：2021-09-09 08:08:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49627)
+
+	* 新增入参：HasDockerfile, BaseImage, EntryPoint, RepoLanguage, UploadFilename
+
+* [DescribeCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49739)
+
+	* 新增出参：HasDockerfile, BaseImage, EntryPoint, RepoLanguage
+
+
+修改数据结构：
+
+* [CodeSource](https://cloud.tencent.com/document/api/876/34822#CodeSource)
+
+	* 新增成员：ProjectName
 
 
 
@@ -11662,6 +11667,22 @@
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19
 
+### 第 21 次发布
+
+发布时间：2021-09-09 08:10:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[BatchCreateAcl](https://cloud.tencent.com/document/api/597/61309)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AclRuleInfo](https://cloud.tencent.com/document/api/597/40861#AclRuleInfo)](https://cloud.tencent.com/document/api/597/40861#[AclRuleInfo](https://cloud.tencent.com/document/api/597/40861#AclRuleInfo))
+
 ### 第 20 次发布
 
 发布时间：2021-09-02 08:09:02
@@ -16562,7 +16583,7 @@
 
 新增数据结构：
 
-* [[InstanceRefund](https://cloud.tencent.com/document/api/213/15753#InstanceRefund)](https://cloud.tencent.com/document/api/213/15753#[InstanceRefund](https://cloud.tencent.com/document/api/213/15753#InstanceRefund))
+* [InstanceRefund](https://cloud.tencent.com/document/api/213/15753#InstanceRefund)
 
 ### 第 63 次发布
 
@@ -21259,7 +21280,7 @@
 
 新增接口：
 
-* [[ModifySubdomainStatus](https://cloud.tencent.com/document/api/1427/61272)](https://cloud.tencent.com/document/api/#/#)
+* [ModifySubdomainStatus](https://cloud.tencent.com/document/api/1427/61272)
 
 ### 第 1 次发布
 
@@ -32395,6 +32416,21 @@
 
 
 ## 云直播(live) 版本：2018-08-01
+
+### 第 70 次发布
+
+发布时间：2021-09-09 08:06:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeLiveDomains](https://cloud.tencent.com/document/api/267/33856)
+
+	* 新增入参：PlayType
+
 
 ### 第 69 次发布
 
@@ -44897,6 +44933,32 @@
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 66 次发布
+
+发布时间：2021-09-09 08:08:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49627)
+
+	* 新增入参：HasDockerfile, BaseImage, EntryPoint, RepoLanguage, UploadFilename
+
+* [DescribeCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49739)
+
+	* 新增出参：HasDockerfile, BaseImage, EntryPoint, RepoLanguage
+
+
+修改数据结构：
+
+* [CodeSource](https://cloud.tencent.com/document/api/876/34822#CodeSource)
+
+	* 新增成员：ProjectName
+
 
 ### 第 65 次发布
 

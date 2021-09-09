@@ -798,6 +798,10 @@ type CodeSource struct {
 	// coding项目ID，type为coding时需要填写
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// coding项目
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
 }
 
 type CommonServiceAPIRequest struct {
@@ -1065,7 +1069,7 @@ type CreateCloudBaseRunServerVersionRequest struct {
 	// 环境ID
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
 
-	// 枚举（package/repository/image)
+	// 枚举（package/repository/image/jar/war)
 	UploadType *string `json:"UploadType,omitempty" name:"UploadType"`
 
 	// 流量占比
@@ -1175,6 +1179,21 @@ type CreateCloudBaseRunServerVersionRequest struct {
 
 	// 数据卷挂载参数
 	ServiceVolumeMounts []*CloudBaseRunServiceVolumeMount `json:"ServiceVolumeMounts,omitempty" name:"ServiceVolumeMounts"`
+
+	// 是否有Dockerfile：0-default has, 1-has, 2-has not
+	HasDockerfile *int64 `json:"HasDockerfile,omitempty" name:"HasDockerfile"`
+
+	// 基础镜像
+	BaseImage *string `json:"BaseImage,omitempty" name:"BaseImage"`
+
+	// 容器启动入口命令
+	EntryPoint *string `json:"EntryPoint,omitempty" name:"EntryPoint"`
+
+	// 仓库语言
+	RepoLanguage *string `json:"RepoLanguage,omitempty" name:"RepoLanguage"`
+
+	// 用户实际上传文件名（仅UploadType为jar/war时必填）
+	UploadFilename *string `json:"UploadFilename,omitempty" name:"UploadFilename"`
 }
 
 func (r *CreateCloudBaseRunServerVersionRequest) ToJsonString() string {
@@ -1227,6 +1246,11 @@ func (r *CreateCloudBaseRunServerVersionRequest) FromJsonString(s string) error 
 	delete(f, "ServiceVolumes")
 	delete(f, "IsCreateJnsGw")
 	delete(f, "ServiceVolumeMounts")
+	delete(f, "HasDockerfile")
+	delete(f, "BaseImage")
+	delete(f, "EntryPoint")
+	delete(f, "RepoLanguage")
+	delete(f, "UploadFilename")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudBaseRunServerVersionRequest has unknown keys!", "")
 	}
@@ -2649,6 +2673,22 @@ type DescribeCloudBaseRunServerVersionResponse struct {
 		// MEM 大小
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		MemSize *float64 `json:"MemSize,omitempty" name:"MemSize"`
+
+		// 是否有Dockerfile：0-default has, 1-has, 2-has not
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		HasDockerfile *int64 `json:"HasDockerfile,omitempty" name:"HasDockerfile"`
+
+		// 基础镜像
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		BaseImage *string `json:"BaseImage,omitempty" name:"BaseImage"`
+
+		// 容器启动入口命令
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		EntryPoint *string `json:"EntryPoint,omitempty" name:"EntryPoint"`
+
+		// 仓库语言
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RepoLanguage *string `json:"RepoLanguage,omitempty" name:"RepoLanguage"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

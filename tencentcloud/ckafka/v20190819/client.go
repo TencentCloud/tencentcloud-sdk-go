@@ -43,6 +43,36 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewBatchCreateAclRequest() (request *BatchCreateAclRequest) {
+    request = &BatchCreateAclRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ckafka", APIVersion, "BatchCreateAcl")
+    return
+}
+
+func NewBatchCreateAclResponse() (response *BatchCreateAclResponse) {
+    response = &BatchCreateAclResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BatchCreateAcl
+// 批量添加ACL策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) BatchCreateAcl(request *BatchCreateAclRequest) (response *BatchCreateAclResponse, err error) {
+    if request == nil {
+        request = NewBatchCreateAclRequest()
+    }
+    response = NewBatchCreateAclResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAclRequest() (request *CreateAclRequest) {
     request = &CreateAclRequest{
         BaseRequest: &tchttp.BaseRequest{},

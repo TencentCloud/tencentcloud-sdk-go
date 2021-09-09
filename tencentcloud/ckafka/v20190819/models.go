@@ -53,6 +53,21 @@ type AclResponse struct {
 	AclList []*Acl `json:"AclList,omitempty" name:"AclList"`
 }
 
+type AclRuleInfo struct {
+
+	// Acl操作方式，枚举值(所有操作: All, 读：Read，写：Write)
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 权限类型，(Deny，Allow)
+	PermissionType *string `json:"PermissionType,omitempty" name:"PermissionType"`
+
+	// 默认为*，表示任何host都可以访问，当前ckafka不支持host为*和ip网段
+	Host *string `json:"Host,omitempty" name:"Host"`
+
+	// 用户列表，默认为User:*，表示任何user都可以访问，当前用户只能是用户列表中包含的用户。传入格式需要带【User:】前缀。例如用户A，传入为User:A。
+	Principal *string `json:"Principal,omitempty" name:"Principal"`
+}
+
 type AppIdResponse struct {
 
 	// 符合要求的所有AppId数量
@@ -71,6 +86,67 @@ type Assignment struct {
 	// topic信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Topics []*GroupInfoTopics `json:"Topics,omitempty" name:"Topics"`
+}
+
+type BatchCreateAclRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// Acl资源类型，(2:TOPIC）
+	ResourceType *int64 `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 资源列表数组
+	ResourceNames []*string `json:"ResourceNames,omitempty" name:"ResourceNames"`
+
+	// 设置的ACL规则列表
+	RuleList []*AclRuleInfo `json:"RuleList,omitempty" name:"RuleList"`
+}
+
+func (r *BatchCreateAclRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchCreateAclRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ResourceType")
+	delete(f, "ResourceNames")
+	delete(f, "RuleList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchCreateAclRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BatchCreateAclResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 状态码
+		Result *int64 `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BatchCreateAclResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchCreateAclResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ClusterInfo struct {

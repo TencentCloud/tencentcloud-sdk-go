@@ -1022,6 +1022,13 @@ type CreateLivePullStreamTaskRequest struct {
 	// VodSourceFileStart：从点播源文件开始拉流回调，
 	// VodSourceFileFinish：从点播源文件拉流结束回调，
 	// ResetTaskConfig：任务更新回调。
+	// 
+	// TaskAlarm: 用于告警事件通知，AlarmType 示例:
+	// PullFileUnstable - 文件拉取不稳定，
+	// PushStreamUnstable - 推流不稳定，
+	// PullFileFailed - 文件拉取出错，
+	// PushStreamFailed - 推流出现失败，
+	// FileEndEarly - 文件提前结束。
 	CallbackEvents []*string `json:"CallbackEvents,omitempty" name:"CallbackEvents"`
 
 	// 点播拉流转推循环次数。默认：-1。
@@ -3857,6 +3864,12 @@ type DescribeLiveDomainsRequest struct {
 
 	// 域名前缀。
 	DomainPrefix *string `json:"DomainPrefix,omitempty" name:"DomainPrefix"`
+
+	// 播放区域，只在 DomainType=1 时该参数有意义。
+	// 1: 国内。
+	// 2: 全球。
+	// 3: 海外。
+	PlayType *uint64 `json:"PlayType,omitempty" name:"PlayType"`
 }
 
 func (r *DescribeLiveDomainsRequest) ToJsonString() string {
@@ -3877,6 +3890,7 @@ func (r *DescribeLiveDomainsRequest) FromJsonString(s string) error {
 	delete(f, "PageNum")
 	delete(f, "IsDelayLive")
 	delete(f, "DomainPrefix")
+	delete(f, "PlayType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveDomainsRequest has unknown keys!", "")
 	}
