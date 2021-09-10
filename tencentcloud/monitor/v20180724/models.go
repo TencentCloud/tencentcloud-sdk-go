@@ -1760,6 +1760,9 @@ type DescribeAlarmNoticesRequest struct {
 
 	// 接收组列表
 	GroupIds []*int64 `json:"GroupIds,omitempty" name:"GroupIds"`
+
+	// 根据通知模板 id 过滤，空数组/不传则不过滤
+	NoticeIds []*string `json:"NoticeIds,omitempty" name:"NoticeIds"`
 }
 
 func (r *DescribeAlarmNoticesRequest) ToJsonString() string {
@@ -1783,6 +1786,7 @@ func (r *DescribeAlarmNoticesRequest) FromJsonString(s string) error {
 	delete(f, "ReceiverType")
 	delete(f, "UserIds")
 	delete(f, "GroupIds")
+	delete(f, "NoticeIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlarmNoticesRequest has unknown keys!", "")
 	}

@@ -1150,7 +1150,7 @@ type SendStatus struct {
 	// 用户 session 内容。
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 
-	// 短信请求错误码，具体含义请参考 [错误码](https://cloud.tencent.com/document/product/382/49316)。
+	// 短信请求错误码，具体含义请参考 [错误码](https://cloud.tencent.com/document/api/382/55981#6.-.E9.94.99.E8.AF.AF.E7.A0.81)，发送成功返回 "Ok"。
 	Code *string `json:"Code,omitempty" name:"Code"`
 
 	// 短信请求错误码描述。

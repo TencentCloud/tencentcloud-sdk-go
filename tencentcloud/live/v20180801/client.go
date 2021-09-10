@@ -59,13 +59,11 @@ func NewAddDelayLiveStreamResponse() (response *AddDelayLiveStreamResponse) {
 }
 
 // AddDelayLiveStream
-// 对流设置延播时间
+// 针对大型活动直播，通过对直播流设置延时来控制现场与观众播放画面的时间间隔，避免突发状况造成影响。
 //
-// 注意：如果在推流前设置延播，需要提前5分钟设置。
+// 
 //
-// 目前该接口只支持流粒度的，域名及应用粒度功能支持当前开发中。
-//
-// 使用场景：对重要直播，避免出现突发状况，可通过设置延迟播放，提前做好把控。
+// 注意：如果在推流前设置延播，需要提前5分钟设置，目前该接口只支持流粒度。
 //
 // 可能返回的错误码:
 //  DRYRUNOPERATION = "DryRunOperation"
@@ -4402,7 +4400,7 @@ func NewResumeDelayLiveStreamResponse() (response *ResumeDelayLiveStreamResponse
 }
 
 // ResumeDelayLiveStream
-// 恢复延迟播放设置
+// 取消直播流设置的延时配置，恢复实时直播画面。
 //
 // 可能返回的错误码:
 //  DRYRUNOPERATION = "DryRunOperation"

@@ -275,6 +275,9 @@ const (
 	// COS API调用错误。
 	RESOURCEUNAVAILABLE_COSAPIFAILED = "ResourceUnavailable.CosApiFailed"
 
+	// 独享集群状态异常。
+	RESOURCEUNAVAILABLE_EXCLUSTERSTATUSABNORMAL = "ResourceUnavailable.ExclusterStatusAbnormal"
+
 	// 数据库实例已被删除。
 	RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
 

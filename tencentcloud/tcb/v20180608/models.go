@@ -349,6 +349,10 @@ type CloudBaseProjectVersion struct {
 	// 是否私有仓库代码变更触发自动部署
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoDeployOnCodeChange *bool `json:"AutoDeployOnCodeChange,omitempty" name:"AutoDeployOnCodeChange"`
+
+	// ci部署进度（%）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BuildPercent *int64 `json:"BuildPercent,omitempty" name:"BuildPercent"`
 }
 
 type CloudBaseRunEmptyDirVolumeSource struct {
@@ -2199,6 +2203,9 @@ type DescribeCloudBaseProjectLatestVersionListRequest struct {
 
 	// 标签
 	Tags []*string `json:"Tags,omitempty" name:"Tags"`
+
+	// ci的id
+	CiId *string `json:"CiId,omitempty" name:"CiId"`
 }
 
 func (r *DescribeCloudBaseProjectLatestVersionListRequest) ToJsonString() string {
@@ -2219,6 +2226,7 @@ func (r *DescribeCloudBaseProjectLatestVersionListRequest) FromJsonString(s stri
 	delete(f, "ProjectName")
 	delete(f, "ProjectType")
 	delete(f, "Tags")
+	delete(f, "CiId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudBaseProjectLatestVersionListRequest has unknown keys!", "")
 	}

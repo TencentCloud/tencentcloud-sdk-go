@@ -331,6 +331,46 @@ func (c *Client) CreateDBInstance(request *CreateDBInstanceRequest) (response *C
     return
 }
 
+func NewCreateDedicatedClusterDBInstanceRequest() (request *CreateDedicatedClusterDBInstanceRequest) {
+    request = &CreateDedicatedClusterDBInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mariadb", APIVersion, "CreateDedicatedClusterDBInstance")
+    return
+}
+
+func NewCreateDedicatedClusterDBInstanceResponse() (response *CreateDedicatedClusterDBInstanceResponse) {
+    response = &CreateDedicatedClusterDBInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateDedicatedClusterDBInstance
+// 创建独享集群Mariadb实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CHECKVIPSTATUSFAILED = "InternalError.CheckVipStatusFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_FENCEERROR = "InternalError.FenceError"
+//  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
+//  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER_CHECKPARAMNOTPASS = "InvalidParameter.CheckParamNotPass"
+//  INVALIDPARAMETER_VPCNOTFOUND = "InvalidParameter.VpcNotFound"
+//  INVALIDPARAMETERVALUE_ILLEGALEXCLUSTERID = "InvalidParameterValue.IllegalExclusterID"
+//  INVALIDPARAMETERVALUE_ILLEGALZONE = "InvalidParameterValue.IllegalZone"
+//  INVALIDPARAMETERVALUE_SPECIDILLEGAL = "InvalidParameterValue.SpecIdIllegal"
+//  RESOURCEUNAVAILABLE_EXCLUSTERSTATUSABNORMAL = "ResourceUnavailable.ExclusterStatusAbnormal"
+func (c *Client) CreateDedicatedClusterDBInstance(request *CreateDedicatedClusterDBInstanceRequest) (response *CreateDedicatedClusterDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateDedicatedClusterDBInstanceRequest()
+    }
+    response = NewCreateDedicatedClusterDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTmpInstancesRequest() (request *CreateTmpInstancesRequest) {
     request = &CreateTmpInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

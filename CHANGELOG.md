@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
 
-### 第 21 次发布
+### 第 28 次发布
 
-发布时间：2021-09-09 08:10:08
+发布时间：2021-09-10 08:05:13
 
 本次发布包含了以下内容：
 
@@ -12,19 +12,31 @@
 
 新增接口：
 
-* [BatchCreateAcl](https://cloud.tencent.com/document/api/597/61309)
-
-新增数据结构：
-
-* [AclRuleInfo](https://cloud.tencent.com/document/api/597/40861#AclRuleInfo)
+* [CreateDedicatedClusterDCDBInstance](https://cloud.tencent.com/document/api/557/61369)
 
 
 
-## 云直播(live) 版本：2018-08-01
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
 
-### 第 70 次发布
+### 第 25 次发布
 
-发布时间：2021-09-09 08:06:21
+发布时间：2021-09-10 08:06:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateDedicatedClusterDBInstance](https://cloud.tencent.com/document/api/237/61370)
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 29 次发布
+
+发布时间：2021-09-10 08:07:03
 
 本次发布包含了以下内容：
 
@@ -32,18 +44,18 @@
 
 修改接口：
 
-* [DescribeLiveDomains](https://cloud.tencent.com/document/api/267/33856)
+* [DescribeAlarmNotices](https://cloud.tencent.com/document/api/248/51280)
 
-	* 新增入参：PlayType
+	* 新增入参：NoticeIds
 
 
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
 
-### 第 66 次发布
+### 第 67 次发布
 
-发布时间：2021-09-09 08:08:15
+发布时间：2021-09-10 08:08:32
 
 本次发布包含了以下内容：
 
@@ -51,20 +63,16 @@
 
 修改接口：
 
-* [CreateCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49627)
+* [DescribeCloudBaseProjectLatestVersionList](https://cloud.tencent.com/document/api/876/52615)
 
-	* 新增入参：HasDockerfile, BaseImage, EntryPoint, RepoLanguage, UploadFilename
-
-* [DescribeCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49739)
-
-	* 新增出参：HasDockerfile, BaseImage, EntryPoint, RepoLanguage
+	* 新增入参：CiId
 
 
 修改数据结构：
 
-* [CodeSource](https://cloud.tencent.com/document/api/876/34822#CodeSource)
+* [CloudBaseProjectVersion](https://cloud.tencent.com/document/api/876/34822#CloudBaseProjectVersion)
 
-	* 新增成员：ProjectName
+	* 新增成员：BuildPercent
 
 
 
@@ -11677,11 +11685,11 @@
 
 新增接口：
 
-* [[BatchCreateAcl](https://cloud.tencent.com/document/api/597/61309)](https://cloud.tencent.com/document/api/#/#)
+* [BatchCreateAcl](https://cloud.tencent.com/document/api/597/61309)
 
 新增数据结构：
 
-* [[AclRuleInfo](https://cloud.tencent.com/document/api/597/40861#AclRuleInfo)](https://cloud.tencent.com/document/api/597/40861#[AclRuleInfo](https://cloud.tencent.com/document/api/597/40861#AclRuleInfo))
+* [AclRuleInfo](https://cloud.tencent.com/document/api/597/40861#AclRuleInfo)
 
 ### 第 20 次发布
 
@@ -20484,6 +20492,18 @@
 
 
 ## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+
+### 第 28 次发布
+
+发布时间：2021-09-10 08:05:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateDedicatedClusterDCDBInstance](https://cloud.tencent.com/document/api/557/61369)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 27 次发布
 
@@ -33899,6 +33919,18 @@
 
 ## 云数据库 MariaDB(mariadb) 版本：2017-03-12
 
+### 第 25 次发布
+
+发布时间：2021-09-10 08:06:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateDedicatedClusterDBInstance](https://cloud.tencent.com/document/api/237/61370)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 24 次发布
 
 发布时间：2021-08-11 08:06:54
@@ -35107,6 +35139,21 @@
 
 
 ## 云监控(monitor) 版本：2018-07-24
+
+### 第 29 次发布
+
+发布时间：2021-09-10 08:07:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAlarmNotices](https://cloud.tencent.com/document/api/248/51280)
+
+	* 新增入参：NoticeIds
+
 
 ### 第 28 次发布
 
@@ -44933,6 +44980,28 @@
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 67 次发布
+
+发布时间：2021-09-10 08:08:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCloudBaseProjectLatestVersionList](https://cloud.tencent.com/document/api/876/52615)
+
+	* 新增入参：CiId
+
+
+修改数据结构：
+
+* [CloudBaseProjectVersion](https://cloud.tencent.com/document/api/876/34822#CloudBaseProjectVersion)
+
+	* 新增成员：BuildPercent
+
 
 ### 第 66 次发布
 

@@ -935,7 +935,7 @@ func NewDescribeDBSlowlogsResponse() (response *DescribeDBSlowlogsResponse) {
 }
 
 // DescribeDBSlowlogs
-// 本接口（DescribeDBSlowlogs）用于获取慢查询日志。
+// 本接口（DescribeDBSlowlogs）用于获取慢查询日志。已于2021.09.01日正式废弃，后续此接口将不再返回任何数据，新接口为DescribeSlowQueryList，详细请查看：https://cloud.tencent.com/document/product/409/60540
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -1292,7 +1292,7 @@ func NewDescribeSlowQueryAnalysisResponse() (response *DescribeSlowQueryAnalysis
 }
 
 // DescribeSlowQueryAnalysis
-// 慢查询统计分析接口，根据SQL语句抽象参数之后，进行聚合分析，并返回对应结果
+// 此接口（DescribeSlowQueryAnalysis）用于统计指定时间范围内的所有慢查询，根据SQL语句抽象参数后，进行聚合分析，并返回同类SQL列表。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
@@ -1322,10 +1322,10 @@ func NewDescribeSlowQueryListResponse() (response *DescribeSlowQueryListResponse
 }
 
 // DescribeSlowQueryList
-// 获取慢查询列表
+// 此接口（DescribeSlowQueryList）用于查询指定时间范围内的所有慢查询。
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEEXCEEDERROR = "InvalidParameterValue.ParameterValueExceedError"
 //  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"

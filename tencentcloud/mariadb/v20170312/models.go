@@ -563,6 +563,146 @@ func (r *CreateDBInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateDedicatedClusterDBInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 分配实例个数
+	GoodsNum *int64 `json:"GoodsNum,omitempty" name:"GoodsNum"`
+
+	// 內存大小，单位GB
+	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 磁盘大小，单位GB
+	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
+
+	// 独享集群集群uuid
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// （废弃）可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 项目ID
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// （废弃）Pid，可通过获取独享集群售卖配置接口得到
+	Pid *int64 `json:"Pid,omitempty" name:"Pid"`
+
+	// （废弃）机型
+	Machine *string `json:"Machine,omitempty" name:"Machine"`
+
+	// 网络Id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网Id
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// db类型，不传默认0
+	DbVersionId *string `json:"DbVersionId,omitempty" name:"DbVersionId"`
+
+	// （废弃）是否手动指定一组服务器分配, 运维使用
+	Manual *int64 `json:"Manual,omitempty" name:"Manual"`
+
+	// （废弃）DeviceNo参数
+	DeviceNo *string `json:"DeviceNo,omitempty" name:"DeviceNo"`
+
+	// 安全组ID
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
+
+	// DCN源实例ID
+	DcnInstanceId *string `json:"DcnInstanceId,omitempty" name:"DcnInstanceId"`
+
+	// DCN源实例地域名
+	DcnRegion *string `json:"DcnRegion,omitempty" name:"DcnRegion"`
+
+	// 自定义实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 标签
+	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags"`
+
+	// 支持IPv6标志：1 支持， 0 不支持
+	Ipv6Flag *int64 `json:"Ipv6Flag,omitempty" name:"Ipv6Flag"`
+
+	// 参数列表。本接口的可选值为：character_set_server（字符集，必传），lower_case_table_names（表名大小写敏感，必传，0 - 敏感；1-不敏感），innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化。默认为强同步可退化）。
+	InitParams []*DBParamValue `json:"InitParams,omitempty" name:"InitParams"`
+
+	// 实例节点数
+	NodeNum *int64 `json:"NodeNum,omitempty" name:"NodeNum"`
+
+	// 指定主节点uuid，不填随机分配
+	MasterHostId *string `json:"MasterHostId,omitempty" name:"MasterHostId"`
+
+	// 指定从节点uuid，不填随机分配
+	SlaveHostIds []*string `json:"SlaveHostIds,omitempty" name:"SlaveHostIds"`
+}
+
+func (r *CreateDedicatedClusterDBInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDedicatedClusterDBInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GoodsNum")
+	delete(f, "Memory")
+	delete(f, "Storage")
+	delete(f, "ClusterId")
+	delete(f, "Zone")
+	delete(f, "ProjectId")
+	delete(f, "Pid")
+	delete(f, "Machine")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "DbVersionId")
+	delete(f, "Manual")
+	delete(f, "DeviceNo")
+	delete(f, "SecurityGroupIds")
+	delete(f, "DcnInstanceId")
+	delete(f, "DcnRegion")
+	delete(f, "InstanceName")
+	delete(f, "ResourceTags")
+	delete(f, "Ipv6Flag")
+	delete(f, "InitParams")
+	delete(f, "NodeNum")
+	delete(f, "MasterHostId")
+	delete(f, "SlaveHostIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDedicatedClusterDBInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDedicatedClusterDBInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 分配资源ID数组
+		InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+		// 流程ID
+		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateDedicatedClusterDBInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDedicatedClusterDBInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateTmpInstancesRequest struct {
 	*tchttp.BaseRequest
 

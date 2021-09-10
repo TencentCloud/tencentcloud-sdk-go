@@ -1295,7 +1295,7 @@ func NewDescribeIPCChannelsResponse() (response *DescribeIPCChannelsResponse) {
 }
 
 // DescribeIPCChannels
-// 获取设备下属通道
+// 获取IPC设备下属通道
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

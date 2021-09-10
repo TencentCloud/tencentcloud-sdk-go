@@ -1066,6 +1066,7 @@ type DescribeGroupDevicesRequest struct {
 	Recordable *int64 `json:"Recordable,omitempty" name:"Recordable"`
 
 	// 当Group是普通组的时候，支持根据deviceTypes筛选类型
+	//  0: 普通摄像头1:  国标VMS设备 2: 国标IPC设备 3: 国标NVR设备  4: 国标NVR通道 5: 国标VMS通道 6: 国标IPC通道 9: 智能告警设备 10: 带有RTSP固定地址的设备
 	DeviceTypes []*int64 `json:"DeviceTypes,omitempty" name:"DeviceTypes"`
 }
 
@@ -1183,7 +1184,7 @@ type DescribeIPCChannelsRequest struct {
 	// 设备Id
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
 
-	// 通道类型 	4: 国标NVR通道 5:  国标VMS通道 6: 国标IPC通道
+	// 通道类型  0: 未知类型 1: 视频通道 2:  音频通道 3: 告警通道
 	ChannelTypes []*uint64 `json:"ChannelTypes,omitempty" name:"ChannelTypes"`
 }
 

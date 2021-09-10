@@ -3900,7 +3900,7 @@ type RuleInfoData struct {
 	// 协议
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
-	// 策略
+	// 策略, 0：观察，1：阻断，2：放行
 	Strategy *string `json:"Strategy,omitempty" name:"Strategy"`
 
 	// 访问源类型，1是IP，3是域名，4是IP地址模版，5是域名地址模版

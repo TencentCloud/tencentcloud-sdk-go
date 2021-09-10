@@ -569,6 +569,152 @@ func (r *CreateDCDBInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateDedicatedClusterDCDBInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 分配实例个数
+	GoodsNum *int64 `json:"GoodsNum,omitempty" name:"GoodsNum"`
+
+	// 分片数量
+	ShardNum *int64 `json:"ShardNum,omitempty" name:"ShardNum"`
+
+	// 分片內存大小, 单位GB
+	ShardMemory *int64 `json:"ShardMemory,omitempty" name:"ShardMemory"`
+
+	// 分片磁盘大小, 单位GB
+	ShardStorage *int64 `json:"ShardStorage,omitempty" name:"ShardStorage"`
+
+	// 独享集群集群uuid
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// （废弃）可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 项目ID
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// （废弃）cpu大小，单位：核
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 网络ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// （废弃）分片机型
+	ShardMachine *string `json:"ShardMachine,omitempty" name:"ShardMachine"`
+
+	// 分片的节点个数
+	ShardNodeNum *int64 `json:"ShardNodeNum,omitempty" name:"ShardNodeNum"`
+
+	// （废弃）节点cpu核数，单位：1/100核
+	ShardNodeCpu *int64 `json:"ShardNodeCpu,omitempty" name:"ShardNodeCpu"`
+
+	// （废弃）节点內存大小，单位：GB
+	ShardNodeMemory *int64 `json:"ShardNodeMemory,omitempty" name:"ShardNodeMemory"`
+
+	// （废弃）节点磁盘大小，单位：GB
+	ShardNodeStorage *int64 `json:"ShardNodeStorage,omitempty" name:"ShardNodeStorage"`
+
+	// db版本
+	DbVersionId *string `json:"DbVersionId,omitempty" name:"DbVersionId"`
+
+	// 安全组ID
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+
+	// DCN源实例ID
+	DcnInstanceId *string `json:"DcnInstanceId,omitempty" name:"DcnInstanceId"`
+
+	// DCN源实例地域名
+	DcnRegion *string `json:"DcnRegion,omitempty" name:"DcnRegion"`
+
+	// 自定义实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 标签
+	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags"`
+
+	// 支持IPv6标志：1 支持， 0 不支持
+	Ipv6Flag *int64 `json:"Ipv6Flag,omitempty" name:"Ipv6Flag"`
+
+	// （废弃）Pid，可通过获取独享集群售卖配置接口得到
+	Pid *int64 `json:"Pid,omitempty" name:"Pid"`
+
+	// 参数列表。本接口的可选值为：character_set_server（字符集，必传），lower_case_table_names（表名大小写敏感，必传，0 - 敏感；1-不敏感），innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化。默认为强同步可退化）。
+	InitParams *DBParamValue `json:"InitParams,omitempty" name:"InitParams"`
+
+	// 指定主节点uuid，不填随机分配
+	MasterHostId *string `json:"MasterHostId,omitempty" name:"MasterHostId"`
+
+	// 指定从节点uuid，不填随机分配
+	SlaveHostIds []*string `json:"SlaveHostIds,omitempty" name:"SlaveHostIds"`
+}
+
+func (r *CreateDedicatedClusterDCDBInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDedicatedClusterDCDBInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GoodsNum")
+	delete(f, "ShardNum")
+	delete(f, "ShardMemory")
+	delete(f, "ShardStorage")
+	delete(f, "ClusterId")
+	delete(f, "Zone")
+	delete(f, "ProjectId")
+	delete(f, "Cpu")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "ShardMachine")
+	delete(f, "ShardNodeNum")
+	delete(f, "ShardNodeCpu")
+	delete(f, "ShardNodeMemory")
+	delete(f, "ShardNodeStorage")
+	delete(f, "DbVersionId")
+	delete(f, "SecurityGroupId")
+	delete(f, "DcnInstanceId")
+	delete(f, "DcnRegion")
+	delete(f, "InstanceName")
+	delete(f, "ResourceTags")
+	delete(f, "Ipv6Flag")
+	delete(f, "Pid")
+	delete(f, "InitParams")
+	delete(f, "MasterHostId")
+	delete(f, "SlaveHostIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDedicatedClusterDCDBInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDedicatedClusterDCDBInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateDedicatedClusterDCDBInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDedicatedClusterDCDBInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DBAccount struct {
 
 	// 用户名
