@@ -458,6 +458,66 @@ func (r *DescribeDashboardResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribePrivateDNSAccountListRequest struct {
+	*tchttp.BaseRequest
+
+	// 分页偏移量，从0开始
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页限制数目， 最大100，默认20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤参数
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribePrivateDNSAccountListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrivateDNSAccountListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrivateDNSAccountListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePrivateDNSAccountListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 私有域解析账号数量
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 私有域解析账号列表
+		AccountSet []*PrivateDNSAccount `json:"AccountSet,omitempty" name:"AccountSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePrivateDNSAccountListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrivateDNSAccountListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribePrivateZoneListRequest struct {
 	*tchttp.BaseRequest
 
@@ -958,6 +1018,18 @@ func (r *ModifyPrivateZoneVpcResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyPrivateZoneVpcResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type PrivateDNSAccount struct {
+
+	// 主账号Uin
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 主账号名称
+	Account *string `json:"Account,omitempty" name:"Account"`
+
+	// 用户昵称
+	Nickname *string `json:"Nickname,omitempty" name:"Nickname"`
 }
 
 type PrivateZone struct {

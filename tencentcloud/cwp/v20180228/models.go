@@ -491,7 +491,7 @@ type CheckBashRuleParamsRequest struct {
 	// 填入的规则名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 用户填入的正则表达式
+	// 用户填入的正则表达式：“正则表达式“需与“提交EventId对应的命令内容”相匹配
 	Rule *string `json:"Rule,omitempty" name:"Rule"`
 
 	// 编辑时传的规则id
@@ -2712,7 +2712,7 @@ type DescribeBaselineRuleResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		BaselineRuleList []*BaselineRuleInfo `json:"BaselineRuleList,omitempty" name:"BaselineRuleList"`
 
-		// 是否显示说明列
+		// 是否显示说明列：true-是，false-否
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ShowRuleRemark *bool `json:"ShowRuleRemark,omitempty" name:"ShowRuleRemark"`
 
@@ -4510,7 +4510,7 @@ type DescribeMalwareRiskWarningResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 是否开启自动扫描
+		// 是否开启自动扫描：true-开启，false-未开启
 		IsCheckRisk *bool `json:"IsCheckRisk,omitempty" name:"IsCheckRisk"`
 
 		// 风险文件列表信息
@@ -6280,7 +6280,7 @@ type DescribeServersAndRiskAndFirstInfoResponse struct {
 		// 受影响服务器台数
 		ServersCount *uint64 `json:"ServersCount,omitempty" name:"ServersCount"`
 
-		// 是否试用
+		// 是否试用：true-是，false-否
 		IsFirstCheck *bool `json:"IsFirstCheck,omitempty" name:"IsFirstCheck"`
 
 		// 木马最近检测时间
@@ -7191,7 +7191,7 @@ type DescribeWebPageServiceInfoResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 是否已购服务
+		// 是否已购服务：true-是，false-否
 		Status *bool `json:"Status,omitempty" name:"Status"`
 
 		// 已使用授权数

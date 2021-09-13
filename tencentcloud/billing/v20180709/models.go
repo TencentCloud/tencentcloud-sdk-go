@@ -45,6 +45,9 @@ type ActionSummaryOverviewItem struct {
 
 	// 账单月份，格式2019-08
 	BillMonth *string `json:"BillMonth,omitempty" name:"BillMonth"`
+
+	// 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
+	TotalCost *string `json:"TotalCost,omitempty" name:"TotalCost"`
 }
 
 type BillDetail struct {
@@ -364,6 +367,9 @@ type BusinessSummaryOverviewItem struct {
 
 	// 账单月份，格式2019-08
 	BillMonth *string `json:"BillMonth,omitempty" name:"BillMonth"`
+
+	// 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
+	TotalCost *string `json:"TotalCost,omitempty" name:"TotalCost"`
 }
 
 type BusinessSummaryTotal struct {
@@ -379,6 +385,9 @@ type BusinessSummaryTotal struct {
 
 	// 现金金额
 	CashPayAmount *string `json:"CashPayAmount,omitempty" name:"CashPayAmount"`
+
+	// 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
+	TotalCost *string `json:"TotalCost,omitempty" name:"TotalCost"`
 }
 
 type ConditionBusiness struct {
@@ -1105,11 +1114,11 @@ type DescribeBillResourceSummaryRequest struct {
 	// 数量，最大值为1000
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 周期类型，byUsedTime按计费周期/byPayTime按扣费周期。需要与费用中心该月份账单的周期保持一致。您可前往[账单概览](https://console.cloud.tencent.com/expense/bill/overview)页面顶部查看确认您的账单统计周期类型。
-	PeriodType *string `json:"PeriodType,omitempty" name:"PeriodType"`
-
 	// 月份，格式为yyyy-mm。不能早于开通账单2.0的月份，最多可拉取24个月内的数据。
 	Month *string `json:"Month,omitempty" name:"Month"`
+
+	// 周期类型，byUsedTime按计费周期/byPayTime按扣费周期。需要与费用中心该月份账单的周期保持一致。您可前往[账单概览](https://console.cloud.tencent.com/expense/bill/overview)页面顶部查看确认您的账单统计周期类型。
+	PeriodType *string `json:"PeriodType,omitempty" name:"PeriodType"`
 
 	// 是否需要访问列表的总记录数，用于前端分页
 	// 1-表示需要， 0-表示不需要
@@ -1139,8 +1148,8 @@ func (r *DescribeBillResourceSummaryRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Offset")
 	delete(f, "Limit")
-	delete(f, "PeriodType")
 	delete(f, "Month")
+	delete(f, "PeriodType")
 	delete(f, "NeedRecordNum")
 	delete(f, "ActionType")
 	delete(f, "ResourceId")
@@ -1440,6 +1449,9 @@ type DescribeBillSummaryByTagRequest struct {
 
 	// 查询账单数据的用户UIN
 	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
+
+	// 分账标签值
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
 func (r *DescribeBillSummaryByTagRequest) ToJsonString() string {
@@ -1458,6 +1470,7 @@ func (r *DescribeBillSummaryByTagRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "TagKey")
 	delete(f, "PayerUin")
+	delete(f, "TagValue")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillSummaryByTagRequest has unknown keys!", "")
 	}
@@ -1474,6 +1487,10 @@ type DescribeBillSummaryByTagResponse struct {
 		// 各标签值花费分布详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		SummaryOverview []*TagSummaryOverviewItem `json:"SummaryOverview,omitempty" name:"SummaryOverview"`
+
+		// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SummaryTotal *SummaryTotal `json:"SummaryTotal,omitempty" name:"SummaryTotal"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2266,6 +2283,9 @@ type PayModeSummaryOverviewItem struct {
 
 	// 代金券金额
 	VoucherPayAmount *string `json:"VoucherPayAmount,omitempty" name:"VoucherPayAmount"`
+
+	// 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
+	TotalCost *string `json:"TotalCost,omitempty" name:"TotalCost"`
 }
 
 type ProductInfo struct {
@@ -2302,6 +2322,9 @@ type ProjectSummaryOverviewItem struct {
 
 	// 账单月份，格式2019-08
 	BillMonth *string `json:"BillMonth,omitempty" name:"BillMonth"`
+
+	// 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
+	TotalCost *string `json:"TotalCost,omitempty" name:"TotalCost"`
 }
 
 type RegionSummaryOverviewItem struct {
@@ -2330,6 +2353,20 @@ type RegionSummaryOverviewItem struct {
 
 	// 账单月份，格式2019-08
 	BillMonth *string `json:"BillMonth,omitempty" name:"BillMonth"`
+
+	// 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
+	TotalCost *string `json:"TotalCost,omitempty" name:"TotalCost"`
+}
+
+type SummaryTotal struct {
+
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RealTotalCost *string `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
+
+	// 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCost *string `json:"TotalCost,omitempty" name:"TotalCost"`
 }
 
 type TagSummaryOverviewItem struct {
@@ -2345,4 +2382,8 @@ type TagSummaryOverviewItem struct {
 	// 费用所占百分比，两位小数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealTotalCostRatio *string `json:"RealTotalCostRatio,omitempty" name:"RealTotalCostRatio"`
+
+	// 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCost *string `json:"TotalCost,omitempty" name:"TotalCost"`
 }

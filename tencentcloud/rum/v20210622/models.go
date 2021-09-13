@@ -412,3 +412,80 @@ func (r *DescribeErrorResponse) ToJsonString() string {
 func (r *DescribeErrorResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
+type DescribeLogListRequest struct {
+	*tchttp.BaseRequest
+
+	// 排序方式  desc  asc
+	Sort *string `json:"Sort,omitempty" name:"Sort"`
+
+	// searchlog   histogram
+	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
+
+	// 项目ID
+	ID *int64 `json:"ID,omitempty" name:"ID"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 限制
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 上下文
+	Context *string `json:"Context,omitempty" name:"Context"`
+
+	// 查询语句
+	Query *string `json:"Query,omitempty" name:"Query"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeLogListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Sort")
+	delete(f, "ActionType")
+	delete(f, "ID")
+	delete(f, "StartTime")
+	delete(f, "Limit")
+	delete(f, "Context")
+	delete(f, "Query")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLogListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLogListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回字符串
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeLogListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}

@@ -361,6 +361,54 @@ func (c *Client) DescribeDashboard(request *DescribeDashboardRequest) (response 
     return
 }
 
+func NewDescribePrivateDNSAccountListRequest() (request *DescribePrivateDNSAccountListRequest) {
+    request = &DescribePrivateDNSAccountListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("privatedns", APIVersion, "DescribePrivateDNSAccountList")
+    return
+}
+
+func NewDescribePrivateDNSAccountListResponse() (response *DescribePrivateDNSAccountListResponse) {
+    response = &DescribePrivateDNSAccountListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePrivateDNSAccountList
+// 获取私有域解析账号列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNDEFIENDERROR = "InternalError.UndefiendError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SERVICENOTSUBSCRIBED = "ResourceNotFound.ServiceNotSubscribed"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACCOUNT = "UnauthorizedOperation.UnauthorizedAccount"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePrivateDNSAccountList(request *DescribePrivateDNSAccountListRequest) (response *DescribePrivateDNSAccountListResponse, err error) {
+    if request == nil {
+        request = NewDescribePrivateDNSAccountListRequest()
+    }
+    response = NewDescribePrivateDNSAccountListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePrivateZoneRequest() (request *DescribePrivateZoneRequest) {
     request = &DescribePrivateZoneRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -276,7 +276,7 @@ type CreateAccessExportRequest struct {
 	// 日志导出检索语句
 	Query *string `json:"Query,omitempty" name:"Query"`
 
-	// 日志导出数量
+	// 日志导出数量，最大值100w
 	Count *int64 `json:"Count,omitempty" name:"Count"`
 
 	// 日志导出数据格式。json，csv，默认为json

@@ -3256,6 +3256,55 @@ func (r *DescribeEKSClustersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeEKSContainerInstanceRegionsRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeEKSContainerInstanceRegionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEKSContainerInstanceRegionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEKSContainerInstanceRegionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEKSContainerInstanceRegionsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// EKS Container Instance支持的地域信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Regions []*EksCiRegionInfo `json:"Regions,omitempty" name:"Regions"`
+
+		// 总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeEKSContainerInstanceRegionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEKSContainerInstanceRegionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeEnableVpcCniProgressRequest struct {
 	*tchttp.BaseRequest
 
@@ -4275,6 +4324,18 @@ type DnsServerConf struct {
 
 	// dns 服务器地址列表。地址格式 ip:port
 	DnsServers []*string `json:"DnsServers,omitempty" name:"DnsServers"`
+}
+
+type EksCiRegionInfo struct {
+
+	// 地域别名，形如gz
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
+
+	// 地域名，形如ap-guangzhou
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
+
+	// 地域ID
+	RegionId *uint64 `json:"RegionId,omitempty" name:"RegionId"`
 }
 
 type EksCluster struct {

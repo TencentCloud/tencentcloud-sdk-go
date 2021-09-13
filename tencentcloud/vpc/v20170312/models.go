@@ -14308,7 +14308,7 @@ type ModifyVpcEndPointServiceAttributeRequest struct {
 	// 终端节点服务名称。
 	EndPointServiceName *string `json:"EndPointServiceName,omitempty" name:"EndPointServiceName"`
 
-	// 是否自动接受。
+	// 是否自动接受终端节点的连接请求。<ui><li>true：自动接受<li>false：不自动接受</ul>
 	AutoAcceptFlag *bool `json:"AutoAcceptFlag,omitempty" name:"AutoAcceptFlag"`
 
 	// 后端服务的ID，比如lb-xxx。

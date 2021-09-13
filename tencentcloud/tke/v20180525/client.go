@@ -1931,6 +1931,43 @@ func (c *Client) DescribeEKSClusters(request *DescribeEKSClustersRequest) (respo
     return
 }
 
+func NewDescribeEKSContainerInstanceRegionsRequest() (request *DescribeEKSContainerInstanceRegionsRequest) {
+    request = &DescribeEKSContainerInstanceRegionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeEKSContainerInstanceRegions")
+    return
+}
+
+func NewDescribeEKSContainerInstanceRegionsResponse() (response *DescribeEKSContainerInstanceRegionsResponse) {
+    response = &DescribeEKSContainerInstanceRegionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeEKSContainerInstanceRegions
+// 查询容器实例支持的地域
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCOUNTUSERNOTAUTHENTICATED = "InternalError.AccountUserNotAuthenticated"
+//  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
+//  INTERNALERROR_CMDTIMEOUT = "InternalError.CmdTimeout"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeEKSContainerInstanceRegions(request *DescribeEKSContainerInstanceRegionsRequest) (response *DescribeEKSContainerInstanceRegionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeEKSContainerInstanceRegionsRequest()
+    }
+    response = NewDescribeEKSContainerInstanceRegionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEnableVpcCniProgressRequest() (request *DescribeEnableVpcCniProgressRequest) {
     request = &DescribeEnableVpcCniProgressRequest{
         BaseRequest: &tchttp.BaseRequest{},

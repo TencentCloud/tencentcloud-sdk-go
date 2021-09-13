@@ -1,42 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+## 计费相关(billing) 版本：2018-07-09
 
-### 第 28 次发布
+### 第 27 次发布
 
-发布时间：2021-09-10 08:05:13
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateDedicatedClusterDCDBInstance](https://cloud.tencent.com/document/api/557/61369)
-
-
-
-## 云数据库 MariaDB(mariadb) 版本：2017-03-12
-
-### 第 25 次发布
-
-发布时间：2021-09-10 08:06:48
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateDedicatedClusterDBInstance](https://cloud.tencent.com/document/api/237/61370)
-
-
-
-## 云监控(monitor) 版本：2018-07-24
-
-### 第 29 次发布
-
-发布时间：2021-09-10 08:07:03
+发布时间：2021-09-13 08:03:19
 
 本次发布包含了以下内容：
 
@@ -44,36 +12,111 @@
 
 修改接口：
 
-* [DescribeAlarmNotices](https://cloud.tencent.com/document/api/248/51280)
+* [DescribeBillDetail](https://cloud.tencent.com/document/api/555/19182)
 
-	* 新增入参：NoticeIds
+	* <font color="#dd0000">**修改入参**：</font>PeriodType
+
+* [DescribeBillResourceSummary](https://cloud.tencent.com/document/api/555/19181)
+
+	* <font color="#dd0000">**修改入参**：</font>PeriodType
+
+* [DescribeBillSummaryByTag](https://cloud.tencent.com/document/api/555/38208)
+
+	* 新增入参：TagValue
+
+	* 新增出参：SummaryTotal
 
 
+新增数据结构：
 
-
-## 云开发 CloudBase(tcb) 版本：2018-06-08
-
-### 第 67 次发布
-
-发布时间：2021-09-10 08:08:32
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeCloudBaseProjectLatestVersionList](https://cloud.tencent.com/document/api/876/52615)
-
-	* 新增入参：CiId
-
+* [SummaryTotal](https://cloud.tencent.com/document/api/555/19183#SummaryTotal)
 
 修改数据结构：
 
-* [CloudBaseProjectVersion](https://cloud.tencent.com/document/api/876/34822#CloudBaseProjectVersion)
+* [ActionSummaryOverviewItem](https://cloud.tencent.com/document/api/555/19183#ActionSummaryOverviewItem)
 
-	* 新增成员：BuildPercent
+	* 新增成员：TotalCost
 
+* [BusinessSummaryOverviewItem](https://cloud.tencent.com/document/api/555/19183#BusinessSummaryOverviewItem)
+
+	* 新增成员：TotalCost
+
+* [BusinessSummaryTotal](https://cloud.tencent.com/document/api/555/19183#BusinessSummaryTotal)
+
+	* 新增成员：TotalCost
+
+* [PayModeSummaryOverviewItem](https://cloud.tencent.com/document/api/555/19183#PayModeSummaryOverviewItem)
+
+	* 新增成员：TotalCost
+
+* [ProjectSummaryOverviewItem](https://cloud.tencent.com/document/api/555/19183#ProjectSummaryOverviewItem)
+
+	* 新增成员：TotalCost
+
+* [RegionSummaryOverviewItem](https://cloud.tencent.com/document/api/555/19183#RegionSummaryOverviewItem)
+
+	* 新增成员：TotalCost
+
+* [TagSummaryOverviewItem](https://cloud.tencent.com/document/api/555/19183#TagSummaryOverviewItem)
+
+	* 新增成员：TotalCost
+
+
+
+
+## 私有域解析 Private DNS(privatedns) 版本：2020-10-28
+
+### 第 3 次发布
+
+发布时间：2021-09-13 08:00:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribePrivateDNSAccountList](https://cloud.tencent.com/document/api/1338/61417)
+
+新增数据结构：
+
+* [PrivateDNSAccount](https://cloud.tencent.com/document/api/1338/55947#PrivateDNSAccount)
+
+
+
+## 前端性能监控(rum) 版本：2021-06-22
+
+### 第 5 次发布
+
+发布时间：2021-09-13 08:00:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeLogList](https://cloud.tencent.com/document/api/1464/61416)
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 71 次发布
+
+发布时间：2021-09-13 08:08:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeEKSContainerInstanceRegions](https://cloud.tencent.com/document/api/457/61419)
+
+新增数据结构：
+
+* [EksCiRegionInfo](https://cloud.tencent.com/document/api/457/31866#EksCiRegionInfo)
 
 
 
@@ -4206,6 +4249,66 @@
 
 
 ## 计费相关(billing) 版本：2018-07-09
+
+### 第 27 次发布
+
+发布时间：2021-09-13 08:03:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBillDetail](https://cloud.tencent.com/document/api/555/19182)
+
+	* <font color="#dd0000">**修改入参**：</font>PeriodType
+
+* [DescribeBillResourceSummary](https://cloud.tencent.com/document/api/555/19181)
+
+	* <font color="#dd0000">**修改入参**：</font>PeriodType
+
+* [DescribeBillSummaryByTag](https://cloud.tencent.com/document/api/555/38208)
+
+	* 新增入参：TagValue
+
+	* 新增出参：SummaryTotal
+
+
+新增数据结构：
+
+* [[SummaryTotal](https://cloud.tencent.com/document/api/555/19183#SummaryTotal)](https://cloud.tencent.com/document/api/555/19183#[SummaryTotal](https://cloud.tencent.com/document/api/555/19183#SummaryTotal))
+
+修改数据结构：
+
+* [ActionSummaryOverviewItem](https://cloud.tencent.com/document/api/555/19183#ActionSummaryOverviewItem)
+
+	* 新增成员：TotalCost
+
+* [BusinessSummaryOverviewItem](https://cloud.tencent.com/document/api/555/19183#BusinessSummaryOverviewItem)
+
+	* 新增成员：TotalCost
+
+* [BusinessSummaryTotal](https://cloud.tencent.com/document/api/555/19183#BusinessSummaryTotal)
+
+	* 新增成员：TotalCost
+
+* [PayModeSummaryOverviewItem](https://cloud.tencent.com/document/api/555/19183#PayModeSummaryOverviewItem)
+
+	* 新增成员：TotalCost
+
+* [ProjectSummaryOverviewItem](https://cloud.tencent.com/document/api/555/19183#ProjectSummaryOverviewItem)
+
+	* 新增成员：TotalCost
+
+* [RegionSummaryOverviewItem](https://cloud.tencent.com/document/api/555/19183#RegionSummaryOverviewItem)
+
+	* 新增成员：TotalCost
+
+* [TagSummaryOverviewItem](https://cloud.tencent.com/document/api/555/19183#TagSummaryOverviewItem)
+
+	* 新增成员：TotalCost
+
 
 ### 第 26 次发布
 
@@ -20503,7 +20606,7 @@
 
 新增接口：
 
-* [[CreateDedicatedClusterDCDBInstance](https://cloud.tencent.com/document/api/557/61369)](https://cloud.tencent.com/document/api/#/#)
+* [CreateDedicatedClusterDCDBInstance](https://cloud.tencent.com/document/api/557/61369)
 
 ### 第 27 次发布
 
@@ -33929,7 +34032,7 @@
 
 新增接口：
 
-* [[CreateDedicatedClusterDBInstance](https://cloud.tencent.com/document/api/237/61370)](https://cloud.tencent.com/document/api/#/#)
+* [CreateDedicatedClusterDBInstance](https://cloud.tencent.com/document/api/237/61370)
 
 ### 第 24 次发布
 
@@ -39906,6 +40009,22 @@
 
 ## 私有域解析 Private DNS(privatedns) 版本：2020-10-28
 
+### 第 3 次发布
+
+发布时间：2021-09-13 08:00:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribePrivateDNSAccountList](https://cloud.tencent.com/document/api/1338/61417)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[PrivateDNSAccount](https://cloud.tencent.com/document/api/1338/55947#PrivateDNSAccount)](https://cloud.tencent.com/document/api/1338/55947#[PrivateDNSAccount](https://cloud.tencent.com/document/api/1338/55947#PrivateDNSAccount))
+
 ### 第 2 次发布
 
 发布时间：2021-09-06 08:00:36
@@ -40833,6 +40952,18 @@
 
 
 ## 前端性能监控(rum) 版本：2021-06-22
+
+### 第 5 次发布
+
+发布时间：2021-09-13 08:00:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeLogList](https://cloud.tencent.com/document/api/1464/61416)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 4 次发布
 
@@ -49518,6 +49649,22 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 71 次发布
+
+发布时间：2021-09-13 08:08:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeEKSContainerInstanceRegions](https://cloud.tencent.com/document/api/457/61419)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[EksCiRegionInfo](https://cloud.tencent.com/document/api/457/31866#EksCiRegionInfo)](https://cloud.tencent.com/document/api/457/31866#[EksCiRegionInfo](https://cloud.tencent.com/document/api/457/31866#EksCiRegionInfo))
 
 ### 第 70 次发布
 
