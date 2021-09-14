@@ -1198,6 +1198,9 @@ type CreateCloudBaseRunServerVersionRequest struct {
 
 	// 用户实际上传文件名（仅UploadType为jar/war时必填）
 	UploadFilename *string `json:"UploadFilename,omitempty" name:"UploadFilename"`
+
+	// 自动扩缩容策略组
+	PolicyDetail []*HpaPolicy `json:"PolicyDetail,omitempty" name:"PolicyDetail"`
 }
 
 func (r *CreateCloudBaseRunServerVersionRequest) ToJsonString() string {
@@ -1255,6 +1258,7 @@ func (r *CreateCloudBaseRunServerVersionRequest) FromJsonString(s string) error 
 	delete(f, "EntryPoint")
 	delete(f, "RepoLanguage")
 	delete(f, "UploadFilename")
+	delete(f, "PolicyDetail")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudBaseRunServerVersionRequest has unknown keys!", "")
 	}
@@ -2697,6 +2701,10 @@ type DescribeCloudBaseRunServerVersionResponse struct {
 		// 仓库语言
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		RepoLanguage *string `json:"RepoLanguage,omitempty" name:"RepoLanguage"`
+
+		// 自动扩缩容策略组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PolicyDetail []*HpaPolicy `json:"PolicyDetail,omitempty" name:"PolicyDetail"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4993,6 +5001,17 @@ type FunctionInfo struct {
 	Region *string `json:"Region,omitempty" name:"Region"`
 }
 
+type HpaPolicy struct {
+
+	// 策略类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyType *string `json:"PolicyType,omitempty" name:"PolicyType"`
+
+	// 策略阈值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyThreshold *int64 `json:"PolicyThreshold,omitempty" name:"PolicyThreshold"`
+}
+
 type KVPair struct {
 
 	// 键
@@ -5629,6 +5648,9 @@ type RollUpdateCloudBaseRunServerVersionRequest struct {
 
 	// 是否更新Cls
 	IsUpdateCls *bool `json:"IsUpdateCls,omitempty" name:"IsUpdateCls"`
+
+	// 自动扩缩容策略组
+	PolicyDetail []*HpaPolicy `json:"PolicyDetail,omitempty" name:"PolicyDetail"`
 }
 
 func (r *RollUpdateCloudBaseRunServerVersionRequest) ToJsonString() string {
@@ -5676,6 +5698,7 @@ func (r *RollUpdateCloudBaseRunServerVersionRequest) FromJsonString(s string) er
 	delete(f, "OperatorRemark")
 	delete(f, "ServerPath")
 	delete(f, "IsUpdateCls")
+	delete(f, "PolicyDetail")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RollUpdateCloudBaseRunServerVersionRequest has unknown keys!", "")
 	}

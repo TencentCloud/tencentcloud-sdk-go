@@ -3868,6 +3868,64 @@ func (r *CreateTranscodeTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateVodDomainRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要接入点播的加速域名。注意：不支持填写泛域名。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 需要开启 CDN 加速的区域：
+	// <li>Chinese Mainland：中国境内（不包含港澳台）。</li>
+	// <li>Outside Chinese Mainland: 中国境外。</li>
+	// <li>Global: 全球范围。</li>
+	// 如果没有设置 AccelerateArea， 点播会根据用户在腾讯云设置的地域信息自动开通中国境内或者中国境外的 CDN 加速。开启中国境内加速的域名，需要先[备案域名](/document/product/243/18905)。
+	AccelerateArea *string `json:"AccelerateArea,omitempty" name:"AccelerateArea"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *CreateVodDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVodDomainRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "AccelerateArea")
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVodDomainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateVodDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateVodDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVodDomainResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateWatermarkTemplateRequest struct {
 	*tchttp.BaseRequest
 
@@ -4848,6 +4906,56 @@ func (r *DeleteTranscodeTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteTranscodeTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteVodDomainRequest struct {
+	*tchttp.BaseRequest
+
+	// 要删除的点播加速域名。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DeleteVodDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVodDomainRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteVodDomainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteVodDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteVodDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVodDomainResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10990,6 +11098,128 @@ func (r *ModifyTranscodeTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyVodDomainAccelerateConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要设置加速配置的域名。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 区域，可选值：
+	// <li>Chinese Mainland：中国境内（不包含港澳台）。</li>
+	// <li>Outside Chinese Mainland: 中国境外。</li>
+	// <li>Global: 全球范围。</li>
+	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 开启或者关闭所选区域的域名加速，可选值：
+	// <li>Enabled: 开启。</li>
+	// <li>Disabled：关闭。</li>
+	// 开启中国境内加速的域名，需要先[备案域名](/document/product/243/18905)。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *ModifyVodDomainAccelerateConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyVodDomainAccelerateConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Area")
+	delete(f, "Status")
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVodDomainAccelerateConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyVodDomainAccelerateConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyVodDomainAccelerateConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyVodDomainAccelerateConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyVodDomainConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 域名。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// [Referer 防盗链](/document/product/266/14046)规则。
+	RefererAuthPolicy *RefererAuthPolicy `json:"RefererAuthPolicy,omitempty" name:"RefererAuthPolicy"`
+
+	// [Key 防盗链](/document/product/266/14047)规则。
+	UrlSignatureAuthPolicy *UrlSignatureAuthPolicy `json:"UrlSignatureAuthPolicy,omitempty" name:"UrlSignatureAuthPolicy"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *ModifyVodDomainConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyVodDomainConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "RefererAuthPolicy")
+	delete(f, "UrlSignatureAuthPolicy")
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVodDomainConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyVodDomainConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyVodDomainConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyVodDomainConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyWatermarkTemplateRequest struct {
 	*tchttp.BaseRequest
 
@@ -12422,16 +12652,18 @@ type RefererAuthPolicy struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// Referer 校验类型，可选值：
-	// <li>Black: 黑名单方式校验；</li>
-	// <li>White:白名单方式校验。</li>
+	// <li>Black：黑名单方式校验。HTTP 请求携带了 Referers 列表中的某个 Referer 将被拒绝访问。</li>
+	// <li>White：白名单方式校验。HTTP 请求携带了 Referers 列表中的 Referer 时才允许访问。</li>
+	// 当 Status 取值为 Enabled 时，AuthType 必须赋值。
 	AuthType *string `json:"AuthType,omitempty" name:"AuthType"`
 
-	// 用于校验的 Referer 名单。
+	// 用于校验的 Referer 列表，最大支持20个 Referer。当 Status 取值为 Enabled 时， Referers 不能为空数组。Referer 的格式参考域名的格式。
 	Referers []*string `json:"Referers,omitempty" name:"Referers"`
 
 	// 是否允许空 Referer 访问本域名，可选值：
-	// <li>Yes: 是；</li>
-	// <li>No: 否。</li>
+	// <li>Yes： 是。</li>
+	// <li>No： 否。</li>
+	// 当 Status 取值为 Enabled 时，BlankRefererAllowed 必须赋值。
 	BlankRefererAllowed *string `json:"BlankRefererAllowed,omitempty" name:"BlankRefererAllowed"`
 }
 
@@ -13848,11 +14080,12 @@ type TransitionOpertion struct {
 type UrlSignatureAuthPolicy struct {
 
 	// [Key 防盗链](https://cloud.tencent.com/document/product/266/14047)设置状态，可选值：
-	// <li>Enabled: 启用；</li>
+	// <li>Enabled: 启用。</li>
 	// <li>Disabled: 禁用。</li>
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// [Key 防盗链](https://cloud.tencent.com/document/product/266/14047)中用于生成签名的密钥。
+	// EncryptedKey 字符串的长度为8~40个字节，不能包含不可见字符。
 	EncryptedKey *string `json:"EncryptedKey,omitempty" name:"EncryptedKey"`
 }
 

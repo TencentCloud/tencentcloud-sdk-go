@@ -489,3 +489,124 @@ func (r *DescribeLogListResponse) ToJsonString() string {
 func (r *DescribeLogListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
+type DescribeProjectsRequest struct {
+	*tchttp.BaseRequest
+
+	// 分页每页数目，整型
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页页码，整型
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeProjectsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProjectsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProjectsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProjectsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 列表总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 项目列表
+		ProjectSet []*RumProject `json:"ProjectSet,omitempty" name:"ProjectSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeProjectsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProjectsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type Filter struct {
+
+	// 一个或者多个过滤值。
+	Values []*string `json:"Values,omitempty" name:"Values"`
+
+	// 过滤键的名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+type RumProject struct {
+
+	// 项目名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 创建者 id
+	Creator *string `json:"Creator,omitempty" name:"Creator"`
+
+	// 实例 id
+	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+
+	// 项目类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 项目仓库地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Repo *string `json:"Repo,omitempty" name:"Repo"`
+
+	// 项目网址地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	URL *string `json:"URL,omitempty" name:"URL"`
+
+	// 项目采样频率
+	Rate *string `json:"Rate,omitempty" name:"Rate"`
+
+	// 项目唯一key（长度 12 位）
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 是否开启url聚类
+	EnableURLGroup *int64 `json:"EnableURLGroup,omitempty" name:"EnableURLGroup"`
+
+	// 实例名
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 项目 ID
+	ID *int64 `json:"ID,omitempty" name:"ID"`
+
+	// 实例 key
+	InstanceKey *string `json:"InstanceKey,omitempty" name:"InstanceKey"`
+
+	// 项目描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
+
+	// 是否星标  1:是 0:否
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsStar *int64 `json:"IsStar,omitempty" name:"IsStar"`
+}

@@ -886,6 +886,41 @@ func (c *Client) CreateTranscodeTemplate(request *CreateTranscodeTemplateRequest
     return
 }
 
+func NewCreateVodDomainRequest() (request *CreateVodDomainRequest) {
+    request = &CreateVodDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "CreateVodDomain")
+    return
+}
+
+func NewCreateVodDomainResponse() (response *CreateVodDomainResponse) {
+    response = &CreateVodDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateVodDomain
+// 该接口用于将加速域名添加到点播，一个用户最多添加20个加速域名。
+//
+// 1.域名添加成功后点播会进行域名的部署，域名由部署状态变为在线状态大概需要2分钟的时间。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_INVALIDACCOUNT = "FailedOperation.InvalidAccount"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DOMAINNAMEINBLACKLIST = "InvalidParameterValue.DomainNameInBlackList"
+func (c *Client) CreateVodDomain(request *CreateVodDomainRequest) (response *CreateVodDomainResponse, err error) {
+    if request == nil {
+        request = NewCreateVodDomainRequest()
+    }
+    response = NewCreateVodDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateWatermarkTemplateRequest() (request *CreateWatermarkTemplateRequest) {
     request = &CreateWatermarkTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1496,6 +1531,38 @@ func (c *Client) DeleteTranscodeTemplate(request *DeleteTranscodeTemplateRequest
         request = NewDeleteTranscodeTemplateRequest()
     }
     response = NewDeleteTranscodeTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteVodDomainRequest() (request *DeleteVodDomainRequest) {
+    request = &DeleteVodDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DeleteVodDomain")
+    return
+}
+
+func NewDeleteVodDomainResponse() (response *DeleteVodDomainResponse) {
+    response = &DeleteVodDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteVodDomain
+// 该接口用于删除点播加速域名。
+//
+// 1、域名删除前需要先关闭所有区域的加速。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteVodDomain(request *DeleteVodDomainRequest) (response *DeleteVodDomainResponse, err error) {
+    if request == nil {
+        request = NewDeleteVodDomainRequest()
+    }
+    response = NewDeleteVodDomainResponse()
     err = c.Send(request, response)
     return
 }
@@ -3836,6 +3903,70 @@ func (c *Client) ModifyTranscodeTemplate(request *ModifyTranscodeTemplateRequest
         request = NewModifyTranscodeTemplateRequest()
     }
     response = NewModifyTranscodeTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyVodDomainAccelerateConfigRequest() (request *ModifyVodDomainAccelerateConfigRequest) {
+    request = &ModifyVodDomainAccelerateConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "ModifyVodDomainAccelerateConfig")
+    return
+}
+
+func NewModifyVodDomainAccelerateConfigResponse() (response *ModifyVodDomainAccelerateConfigResponse) {
+    response = &ModifyVodDomainAccelerateConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyVodDomainAccelerateConfig
+// 该接口用于开启或者关闭点播域名的加速区域。
+//
+// 1、域名部署状态为 Online 状态时才允许开启或者关闭域名加速区域。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DOMAINDEPLOYING = "FailedOperation.DomainDeploying"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyVodDomainAccelerateConfig(request *ModifyVodDomainAccelerateConfigRequest) (response *ModifyVodDomainAccelerateConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyVodDomainAccelerateConfigRequest()
+    }
+    response = NewModifyVodDomainAccelerateConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyVodDomainConfigRequest() (request *ModifyVodDomainConfigRequest) {
+    request = &ModifyVodDomainConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "ModifyVodDomainConfig")
+    return
+}
+
+func NewModifyVodDomainConfigResponse() (response *ModifyVodDomainConfigResponse) {
+    response = &ModifyVodDomainConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyVodDomainConfig
+// 该接口用于修改域名配置，可以修改域名的防盗链配置。
+//
+// 1、域名部署状态为 Online 状态时才允许修改域名的配置。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyVodDomainConfig(request *ModifyVodDomainConfigRequest) (response *ModifyVodDomainConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyVodDomainConfigRequest()
+    }
+    response = NewModifyVodDomainConfigResponse()
     err = c.Send(request, response)
     return
 }

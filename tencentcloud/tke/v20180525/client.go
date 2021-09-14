@@ -1954,10 +1954,8 @@ func NewDescribeEKSContainerInstanceRegionsResponse() (response *DescribeEKSCont
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ACCOUNTUSERNOTAUTHENTICATED = "InternalError.AccountUserNotAuthenticated"
 //  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
-//  INTERNALERROR_CMDTIMEOUT = "InternalError.CmdTimeout"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_PARAM = "InternalError.Param"
-//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeEKSContainerInstanceRegions(request *DescribeEKSContainerInstanceRegionsRequest) (response *DescribeEKSContainerInstanceRegionsResponse, err error) {
     if request == nil {

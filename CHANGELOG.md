@@ -1,10 +1,132 @@
 # 本版本更新包含以下内容：
 
-## 计费相关(billing) 版本：2018-07-09
+## 借贷反欺诈(af) 版本：2020-02-26
 
-### 第 27 次发布
+### 第 2 次发布
 
-发布时间：2021-09-13 08:03:19
+发布时间：2021-09-14 08:01:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeAntiFraud](https://cloud.tencent.com/document/api/668/61477)
+
+新增数据结构：
+
+* [FinanceAntiFraudCryptoFilter](https://cloud.tencent.com/document/api/668/44002#FinanceAntiFraudCryptoFilter)
+* [FinanceAntiFraudFilter](https://cloud.tencent.com/document/api/668/44002#FinanceAntiFraudFilter)
+* [FinanceAntiFraudRecord](https://cloud.tencent.com/document/api/668/44002#FinanceAntiFraudRecord)
+* [RiskDetailInfo](https://cloud.tencent.com/document/api/668/44002#RiskDetailInfo)
+
+
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 10 次发布
+
+发布时间：2021-09-14 08:12:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateDatabaseWhiteListRules](https://cloud.tencent.com/document/api/1132/61483)
+
+新增数据结构：
+
+* [DatabaseWhiteListRuleData](https://cloud.tencent.com/document/api/1132/49071#DatabaseWhiteListRuleData)
+
+修改数据结构：
+
+* [NatFwInstance](https://cloud.tencent.com/document/api/1132/49071#NatFwInstance)
+
+	* 新增成员：NatIp
+
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 54 次发布
+
+发布时间：2021-09-14 08:04:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeLBListeners](https://cloud.tencent.com/document/api/214/61478)
+
+修改接口：
+
+* [CreateLoadBalancer](https://cloud.tencent.com/document/api/214/30692)
+
+	* 新增入参：SlaType
+
+
+新增数据结构：
+
+* [LBItem](https://cloud.tencent.com/document/api/214/30694#LBItem)
+* [LbRsItem](https://cloud.tencent.com/document/api/214/30694#LbRsItem)
+* [LbRsTargets](https://cloud.tencent.com/document/api/214/30694#LbRsTargets)
+* [ListenerItem](https://cloud.tencent.com/document/api/214/30694#ListenerItem)
+* [RulesItems](https://cloud.tencent.com/document/api/214/30694#RulesItems)
+
+
+
+## 图片内容检测(ims) 版本：2020-12-29
+
+### 第 2 次发布
+
+发布时间：2021-09-14 08:01:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* ImageRecognition
+
+
+
+## 图片内容检测(ims) 版本：2020-07-13
+
+
+
+## 前端性能监控(rum) 版本：2021-06-22
+
+### 第 6 次发布
+
+发布时间：2021-09-14 08:00:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeProjects](https://cloud.tencent.com/document/api/1464/61475)
+
+新增数据结构：
+
+* [Filter](https://cloud.tencent.com/document/api/1464/61476#Filter)
+* [RumProject](https://cloud.tencent.com/document/api/1464/61476#RumProject)
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 68 次发布
+
+发布时间：2021-09-14 08:08:33
 
 本次发布包含了以下内容：
 
@@ -12,111 +134,48 @@
 
 修改接口：
 
-* [DescribeBillDetail](https://cloud.tencent.com/document/api/555/19182)
+* [CreateCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49627)
 
-	* <font color="#dd0000">**修改入参**：</font>PeriodType
+	* 新增入参：PolicyDetail
 
-* [DescribeBillResourceSummary](https://cloud.tencent.com/document/api/555/19181)
+* [DescribeCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49739)
 
-	* <font color="#dd0000">**修改入参**：</font>PeriodType
+	* 新增出参：PolicyDetail
 
-* [DescribeBillSummaryByTag](https://cloud.tencent.com/document/api/555/38208)
+* [RollUpdateCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/55676)
 
-	* 新增入参：TagValue
-
-	* 新增出参：SummaryTotal
+	* 新增入参：PolicyDetail
 
 
 新增数据结构：
 
-* [SummaryTotal](https://cloud.tencent.com/document/api/555/19183#SummaryTotal)
+* [HpaPolicy](https://cloud.tencent.com/document/api/876/34822#HpaPolicy)
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 91 次发布
+
+发布时间：2021-09-14 08:09:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateVodDomain](https://cloud.tencent.com/document/api/266/61482)
+* [DeleteVodDomain](https://cloud.tencent.com/document/api/266/61481)
+* [ModifyVodDomainAccelerateConfig](https://cloud.tencent.com/document/api/266/61480)
+* [ModifyVodDomainConfig](https://cloud.tencent.com/document/api/266/61479)
 
 修改数据结构：
 
-* [ActionSummaryOverviewItem](https://cloud.tencent.com/document/api/555/19183#ActionSummaryOverviewItem)
+* [UrlSignatureAuthPolicy](https://cloud.tencent.com/document/api/266/31773#UrlSignatureAuthPolicy)
 
-	* 新增成员：TotalCost
+	* <font color="#dd0000">**修改成员**：</font>EncryptedKey
 
-* [BusinessSummaryOverviewItem](https://cloud.tencent.com/document/api/555/19183#BusinessSummaryOverviewItem)
-
-	* 新增成员：TotalCost
-
-* [BusinessSummaryTotal](https://cloud.tencent.com/document/api/555/19183#BusinessSummaryTotal)
-
-	* 新增成员：TotalCost
-
-* [PayModeSummaryOverviewItem](https://cloud.tencent.com/document/api/555/19183#PayModeSummaryOverviewItem)
-
-	* 新增成员：TotalCost
-
-* [ProjectSummaryOverviewItem](https://cloud.tencent.com/document/api/555/19183#ProjectSummaryOverviewItem)
-
-	* 新增成员：TotalCost
-
-* [RegionSummaryOverviewItem](https://cloud.tencent.com/document/api/555/19183#RegionSummaryOverviewItem)
-
-	* 新增成员：TotalCost
-
-* [TagSummaryOverviewItem](https://cloud.tencent.com/document/api/555/19183#TagSummaryOverviewItem)
-
-	* 新增成员：TotalCost
-
-
-
-
-## 私有域解析 Private DNS(privatedns) 版本：2020-10-28
-
-### 第 3 次发布
-
-发布时间：2021-09-13 08:00:37
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribePrivateDNSAccountList](https://cloud.tencent.com/document/api/1338/61417)
-
-新增数据结构：
-
-* [PrivateDNSAccount](https://cloud.tencent.com/document/api/1338/55947#PrivateDNSAccount)
-
-
-
-## 前端性能监控(rum) 版本：2021-06-22
-
-### 第 5 次发布
-
-发布时间：2021-09-13 08:00:06
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeLogList](https://cloud.tencent.com/document/api/1464/61416)
-
-
-
-## 容器服务(tke) 版本：2018-05-25
-
-### 第 71 次发布
-
-发布时间：2021-09-13 08:08:39
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeEKSContainerInstanceRegions](https://cloud.tencent.com/document/api/457/61419)
-
-新增数据结构：
-
-* [EksCiRegionInfo](https://cloud.tencent.com/document/api/457/31866#EksCiRegionInfo)
 
 
 
@@ -340,6 +399,25 @@
 
 
 ## 借贷反欺诈(af) 版本：2020-02-26
+
+### 第 2 次发布
+
+发布时间：2021-09-14 08:01:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeAntiFraud](https://cloud.tencent.com/document/api/668/61477)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[FinanceAntiFraudCryptoFilter](https://cloud.tencent.com/document/api/668/44002#FinanceAntiFraudCryptoFilter)](https://cloud.tencent.com/document/api/668/44002#[FinanceAntiFraudCryptoFilter](https://cloud.tencent.com/document/api/668/44002#FinanceAntiFraudCryptoFilter))
+* [[FinanceAntiFraudFilter](https://cloud.tencent.com/document/api/668/44002#FinanceAntiFraudFilter)](https://cloud.tencent.com/document/api/668/44002#[FinanceAntiFraudFilter](https://cloud.tencent.com/document/api/668/44002#FinanceAntiFraudFilter))
+* [[FinanceAntiFraudRecord](https://cloud.tencent.com/document/api/668/44002#FinanceAntiFraudRecord)](https://cloud.tencent.com/document/api/668/44002#[FinanceAntiFraudRecord](https://cloud.tencent.com/document/api/668/44002#FinanceAntiFraudRecord))
+* [[RiskDetailInfo](https://cloud.tencent.com/document/api/668/44002#RiskDetailInfo)](https://cloud.tencent.com/document/api/668/44002#[RiskDetailInfo](https://cloud.tencent.com/document/api/668/44002#RiskDetailInfo))
 
 ### 第 1 次发布
 
@@ -4277,7 +4355,7 @@
 
 新增数据结构：
 
-* [[SummaryTotal](https://cloud.tencent.com/document/api/555/19183#SummaryTotal)](https://cloud.tencent.com/document/api/555/19183#[SummaryTotal](https://cloud.tencent.com/document/api/555/19183#SummaryTotal))
+* [SummaryTotal](https://cloud.tencent.com/document/api/555/19183#SummaryTotal)
 
 修改数据结构：
 
@@ -11210,6 +11288,29 @@
 
 ## 云防火墙(cfw) 版本：2019-09-04
 
+### 第 10 次发布
+
+发布时间：2021-09-14 08:12:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateDatabaseWhiteListRules](https://cloud.tencent.com/document/api/1132/61483)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DatabaseWhiteListRuleData](https://cloud.tencent.com/document/api/1132/49071#DatabaseWhiteListRuleData)](https://cloud.tencent.com/document/api/1132/49071#[DatabaseWhiteListRuleData](https://cloud.tencent.com/document/api/1132/49071#DatabaseWhiteListRuleData))
+
+修改数据结构：
+
+* [NatFwInstance](https://cloud.tencent.com/document/api/1132/49071#NatFwInstance)
+
+	* 新增成员：NatIp
+
+
 ### 第 9 次发布
 
 发布时间：2021-08-27 08:11:17
@@ -12249,6 +12350,33 @@
 
 
 ## 负载均衡(clb) 版本：2018-03-17
+
+### 第 54 次发布
+
+发布时间：2021-09-14 08:04:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeLBListeners](https://cloud.tencent.com/document/api/214/61478)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreateLoadBalancer](https://cloud.tencent.com/document/api/214/30692)
+
+	* 新增入参：SlaType
+
+
+新增数据结构：
+
+* [[LBItem](https://cloud.tencent.com/document/api/214/30694#LBItem)](https://cloud.tencent.com/document/api/214/30694#[LBItem](https://cloud.tencent.com/document/api/214/30694#LBItem))
+* [[LbRsItem](https://cloud.tencent.com/document/api/214/30694#LbRsItem)](https://cloud.tencent.com/document/api/214/30694#[LbRsItem](https://cloud.tencent.com/document/api/214/30694#LbRsItem))
+* [[LbRsTargets](https://cloud.tencent.com/document/api/214/30694#LbRsTargets)](https://cloud.tencent.com/document/api/214/30694#[LbRsTargets](https://cloud.tencent.com/document/api/214/30694#LbRsTargets))
+* [[ListenerItem](https://cloud.tencent.com/document/api/214/30694#ListenerItem)](https://cloud.tencent.com/document/api/214/30694#[ListenerItem](https://cloud.tencent.com/document/api/214/30694#ListenerItem))
+* [[RulesItems](https://cloud.tencent.com/document/api/214/30694#RulesItems)](https://cloud.tencent.com/document/api/214/30694#[RulesItems](https://cloud.tencent.com/document/api/214/30694#RulesItems))
 
 ### 第 53 次发布
 
@@ -29110,6 +29238,18 @@
 
 ## 图片内容检测(ims) 版本：2020-12-29
 
+### 第 2 次发布
+
+发布时间：2021-09-14 08:01:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* ImageRecognition
+
 ### 第 1 次发布
 
 发布时间：2021-02-01 10:50:49
@@ -40019,11 +40159,11 @@
 
 新增接口：
 
-* [[DescribePrivateDNSAccountList](https://cloud.tencent.com/document/api/1338/61417)](https://cloud.tencent.com/document/api/#/#)
+* [DescribePrivateDNSAccountList](https://cloud.tencent.com/document/api/1338/61417)
 
 新增数据结构：
 
-* [[PrivateDNSAccount](https://cloud.tencent.com/document/api/1338/55947#PrivateDNSAccount)](https://cloud.tencent.com/document/api/1338/55947#[PrivateDNSAccount](https://cloud.tencent.com/document/api/1338/55947#PrivateDNSAccount))
+* [PrivateDNSAccount](https://cloud.tencent.com/document/api/1338/55947#PrivateDNSAccount)
 
 ### 第 2 次发布
 
@@ -40953,6 +41093,23 @@
 
 ## 前端性能监控(rum) 版本：2021-06-22
 
+### 第 6 次发布
+
+发布时间：2021-09-14 08:00:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeProjects](https://cloud.tencent.com/document/api/1464/61475)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Filter](https://cloud.tencent.com/document/api/1464/61476#Filter)](https://cloud.tencent.com/document/api/1464/61476#[Filter](https://cloud.tencent.com/document/api/1464/61476#Filter))
+* [[RumProject](https://cloud.tencent.com/document/api/1464/61476#RumProject)](https://cloud.tencent.com/document/api/1464/61476#[RumProject](https://cloud.tencent.com/document/api/1464/61476#RumProject))
+
 ### 第 5 次发布
 
 发布时间：2021-09-13 08:00:06
@@ -40963,7 +41120,7 @@
 
 新增接口：
 
-* [[DescribeLogList](https://cloud.tencent.com/document/api/1464/61416)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeLogList](https://cloud.tencent.com/document/api/1464/61416)
 
 ### 第 4 次发布
 
@@ -45111,6 +45268,33 @@
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 68 次发布
+
+发布时间：2021-09-14 08:08:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49627)
+
+	* 新增入参：PolicyDetail
+
+* [DescribeCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49739)
+
+	* 新增出参：PolicyDetail
+
+* [RollUpdateCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/55676)
+
+	* 新增入参：PolicyDetail
+
+
+新增数据结构：
+
+* [[HpaPolicy](https://cloud.tencent.com/document/api/876/34822#HpaPolicy)](https://cloud.tencent.com/document/api/876/34822#[HpaPolicy](https://cloud.tencent.com/document/api/876/34822#HpaPolicy))
 
 ### 第 67 次发布
 
@@ -49660,11 +49844,11 @@
 
 新增接口：
 
-* [[DescribeEKSContainerInstanceRegions](https://cloud.tencent.com/document/api/457/61419)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeEKSContainerInstanceRegions](https://cloud.tencent.com/document/api/457/61419)
 
 新增数据结构：
 
-* [[EksCiRegionInfo](https://cloud.tencent.com/document/api/457/31866#EksCiRegionInfo)](https://cloud.tencent.com/document/api/457/31866#[EksCiRegionInfo](https://cloud.tencent.com/document/api/457/31866#EksCiRegionInfo))
+* [EksCiRegionInfo](https://cloud.tencent.com/document/api/457/31866#EksCiRegionInfo)
 
 ### 第 70 次发布
 
@@ -53921,6 +54105,28 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 91 次发布
+
+发布时间：2021-09-14 08:09:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateVodDomain](https://cloud.tencent.com/document/api/266/61482)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteVodDomain](https://cloud.tencent.com/document/api/266/61481)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyVodDomainAccelerateConfig](https://cloud.tencent.com/document/api/266/61480)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyVodDomainConfig](https://cloud.tencent.com/document/api/266/61479)](https://cloud.tencent.com/document/api/#/#)
+
+修改数据结构：
+
+* [UrlSignatureAuthPolicy](https://cloud.tencent.com/document/api/266/31773#UrlSignatureAuthPolicy)
+
+	* <font color="#dd0000">**修改成员**：</font>EncryptedKey
+
 
 ### 第 90 次发布
 

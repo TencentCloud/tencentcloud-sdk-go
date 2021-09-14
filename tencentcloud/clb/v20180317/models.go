@@ -979,6 +979,9 @@ type CreateLoadBalancerRequest struct {
 	// 独占集群信息。若创建独占集群负载均衡实例，则此参数必填。
 	ExclusiveCluster *ExclusiveCluster `json:"ExclusiveCluster,omitempty" name:"ExclusiveCluster"`
 
+	// 创建性能独享型CLB，传SLA。
+	SlaType *string `json:"SlaType,omitempty" name:"SlaType"`
+
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
@@ -1027,6 +1030,7 @@ func (r *CreateLoadBalancerRequest) FromJsonString(s string) error {
 	delete(f, "Vip")
 	delete(f, "BandwidthPackageId")
 	delete(f, "ExclusiveCluster")
+	delete(f, "SlaType")
 	delete(f, "ClientToken")
 	delete(f, "SnatPro")
 	delete(f, "SnatIps")
@@ -2469,6 +2473,55 @@ func (r *DescribeExclusiveClustersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeLBListenersRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要查询的内网ip列表
+	Backends []*LbRsItem `json:"Backends,omitempty" name:"Backends"`
+}
+
+func (r *DescribeLBListenersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLBListenersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Backends")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLBListenersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLBListenersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 绑定的后端规则
+		LoadBalancers []*LBItem `json:"LoadBalancers,omitempty" name:"LoadBalancers"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeLBListenersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLBListenersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeListenersRequest struct {
 	*tchttp.BaseRequest
 
@@ -3470,6 +3523,50 @@ type LBChargePrepaid struct {
 	Period *int64 `json:"Period,omitempty" name:"Period"`
 }
 
+type LBItem struct {
+
+	// lb的字符串id
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+
+	// lb的vip
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 监听器规则
+	Listeners []*ListenerItem `json:"Listeners,omitempty" name:"Listeners"`
+
+	// LB所在地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+}
+
+type LbRsItem struct {
+
+	// vpc的字符串id，只支持字符串id。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 需要查询后端的内网ip，可以是cvm和弹性网卡。
+	PrivateIp *string `json:"PrivateIp,omitempty" name:"PrivateIp"`
+}
+
+type LbRsTargets struct {
+
+	// 内网ip类型。“cvm”或“eni”
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 后端实例的内网ip。
+	PrivateIp *string `json:"PrivateIp,omitempty" name:"PrivateIp"`
+
+	// 绑定后端实例的端口。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// rs的vpcId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *int64 `json:"VpcId,omitempty" name:"VpcId"`
+
+	// rs的权重
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
+}
+
 type Listener struct {
 
 	// 负载均衡监听器 ID
@@ -3584,6 +3681,30 @@ type ListenerHealth struct {
 	// 监听器的转发规则列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rules []*RuleHealth `json:"Rules,omitempty" name:"Rules"`
+}
+
+type ListenerItem struct {
+
+	// 监听器ID
+	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
+
+	// 监听器协议
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 监听器端口
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// 绑定规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rules []*RulesItems `json:"Rules,omitempty" name:"Rules"`
+
+	// 四层绑定对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Targets []*LbRsTargets `json:"Targets,omitempty" name:"Targets"`
+
+	// 端口段监听器的结束端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndPort *int64 `json:"EndPort,omitempty" name:"EndPort"`
 }
 
 type LoadBalancer struct {
@@ -5205,6 +5326,21 @@ type RuleTargets struct {
 	// 后端服务的信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Targets []*Backend `json:"Targets,omitempty" name:"Targets"`
+}
+
+type RulesItems struct {
+
+	// 规则id
+	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// uri
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 绑定的后端对象
+	Targets []*LbRsTargets `json:"Targets,omitempty" name:"Targets"`
 }
 
 type SetCustomizedConfigForLoadBalancerRequest struct {

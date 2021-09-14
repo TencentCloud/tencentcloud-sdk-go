@@ -1294,6 +1294,43 @@ func (c *Client) DescribeExclusiveClusters(request *DescribeExclusiveClustersReq
     return
 }
 
+func NewDescribeLBListenersRequest() (request *DescribeLBListenersRequest) {
+    request = &DescribeLBListenersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "DescribeLBListeners")
+    return
+}
+
+func NewDescribeLBListenersResponse() (response *DescribeLBListenersResponse) {
+    response = &DescribeLBListenersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeLBListeners
+// 查询后端云主机或弹性网卡绑定的负载均衡，支持弹性网卡和cvm查询。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  INVALIDPARAMETER_LISTENERIDNOTFOUND = "InvalidParameter.ListenerIdNotFound"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeLBListeners(request *DescribeLBListenersRequest) (response *DescribeLBListenersResponse, err error) {
+    if request == nil {
+        request = NewDescribeLBListenersRequest()
+    }
+    response = NewDescribeLBListenersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeListenersRequest() (request *DescribeListenersRequest) {
     request = &DescribeListenersRequest{
         BaseRequest: &tchttp.BaseRequest{},

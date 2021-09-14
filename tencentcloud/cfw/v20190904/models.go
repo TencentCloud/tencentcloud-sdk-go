@@ -256,6 +256,55 @@ func (r *CreateChooseVpcsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateDatabaseWhiteListRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 创建白名单数据
+	DatabaseWhiteListRuleData []*DatabaseWhiteListRuleData `json:"DatabaseWhiteListRuleData,omitempty" name:"DatabaseWhiteListRuleData"`
+}
+
+func (r *CreateDatabaseWhiteListRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDatabaseWhiteListRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DatabaseWhiteListRuleData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDatabaseWhiteListRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDatabaseWhiteListRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 状态值，0:添加成功，非0：添加失败
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateDatabaseWhiteListRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDatabaseWhiteListRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateNatFwInstanceRequest struct {
 	*tchttp.BaseRequest
 
@@ -450,6 +499,48 @@ func (r *CreateSecurityGroupRulesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateSecurityGroupRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DatabaseWhiteListRuleData struct {
+
+	// 访问源
+	SourceIp *string `json:"SourceIp,omitempty" name:"SourceIp"`
+
+	// 访问源类型，1 ip；6 实例；100 资源分组
+	SourceType *int64 `json:"SourceType,omitempty" name:"SourceType"`
+
+	// 访问目的
+	TargetIp *string `json:"TargetIp,omitempty" name:"TargetIp"`
+
+	// 访问目的类型，1 ip；6 实例；100 资源分组
+	TargetType *int64 `json:"TargetType,omitempty" name:"TargetType"`
+
+	// 规则描述
+	Detail *string `json:"Detail,omitempty" name:"Detail"`
+
+	// 是否地域规则，0不是 1是
+	IsRegionRule *int64 `json:"IsRegionRule,omitempty" name:"IsRegionRule"`
+
+	// 是否云厂商规则，0不是 1 时
+	IsCloudRule *int64 `json:"IsCloudRule,omitempty" name:"IsCloudRule"`
+
+	// 是否启用，0 不启用，1启用
+	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
+
+	// 地域码1
+	FirstLevelRegionCode *int64 `json:"FirstLevelRegionCode,omitempty" name:"FirstLevelRegionCode"`
+
+	// 地域码2
+	SecondLevelRegionCode *int64 `json:"SecondLevelRegionCode,omitempty" name:"SecondLevelRegionCode"`
+
+	// 地域名称1
+	FirstLevelRegionName *string `json:"FirstLevelRegionName,omitempty" name:"FirstLevelRegionName"`
+
+	// 地域名称2
+	SecondLevelRegionName *string `json:"SecondLevelRegionName,omitempty" name:"SecondLevelRegionName"`
+
+	// 云厂商码
+	CloudCode *string `json:"CloudCode,omitempty" name:"CloudCode"`
 }
 
 type DeleteAcRuleRequest struct {
@@ -3829,6 +3920,10 @@ type NatFwInstance struct {
 	// 0:正常状态， 1: 正在创建
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// nat公网ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NatIp *string `json:"NatIp,omitempty" name:"NatIp"`
 }
 
 type NatInstanceInfo struct {

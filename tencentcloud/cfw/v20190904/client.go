@@ -105,6 +105,38 @@ func (c *Client) CreateChooseVpcs(request *CreateChooseVpcsRequest) (response *C
     return
 }
 
+func NewCreateDatabaseWhiteListRulesRequest() (request *CreateDatabaseWhiteListRulesRequest) {
+    request = &CreateDatabaseWhiteListRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cfw", APIVersion, "CreateDatabaseWhiteListRules")
+    return
+}
+
+func NewCreateDatabaseWhiteListRulesResponse() (response *CreateDatabaseWhiteListRulesResponse) {
+    response = &CreateDatabaseWhiteListRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateDatabaseWhiteListRules
+// 创建暴露数据库白名单规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateDatabaseWhiteListRules(request *CreateDatabaseWhiteListRulesRequest) (response *CreateDatabaseWhiteListRulesResponse, err error) {
+    if request == nil {
+        request = NewCreateDatabaseWhiteListRulesRequest()
+    }
+    response = NewCreateDatabaseWhiteListRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateNatFwInstanceRequest() (request *CreateNatFwInstanceRequest) {
     request = &CreateNatFwInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
