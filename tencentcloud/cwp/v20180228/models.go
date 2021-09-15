@@ -491,7 +491,7 @@ type CheckBashRuleParamsRequest struct {
 	// 填入的规则名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 用户填入的正则表达式：“正则表达式“需与“提交EventId对应的命令内容”相匹配
+	// 用户填入的正则表达式："正则表达式" 需与 "提交EventId对应的命令内容" 相匹配
 	Rule *string `json:"Rule,omitempty" name:"Rule"`
 
 	// 编辑时传的规则id

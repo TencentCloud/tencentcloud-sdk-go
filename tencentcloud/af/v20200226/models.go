@@ -170,6 +170,10 @@ type FinanceAntiFraudRecord struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskInfo []*RiskDetailInfo `json:"RiskInfo,omitempty" name:"RiskInfo"`
 
+	// 多模型返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OtherModelScores []*FinanceOtherModelScores `json:"OtherModelScores,omitempty" name:"OtherModelScores"`
+
 	// 业务侧错误码。成功时返回0，错误时返回非0值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *string `json:"Code,omitempty" name:"Code"`
@@ -178,6 +182,17 @@ type FinanceAntiFraudRecord struct {
 	// 注意：此字段可能返回 null，表示取不到有效值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
+}
+
+type FinanceOtherModelScores struct {
+
+	// 模型ID序号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 模型ID序号对应的评分结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelScore *string `json:"ModelScore,omitempty" name:"ModelScore"`
 }
 
 type QueryAntiFraudRequest struct {

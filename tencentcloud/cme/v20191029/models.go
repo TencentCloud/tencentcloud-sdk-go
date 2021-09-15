@@ -1641,7 +1641,7 @@ type DescribeTasksRequest struct {
 	// 分页返回的起始偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 分页返回的记录条数，默认值：10。
+	// 分页返回的记录条数，默认值：10。最大值：20。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 操作者。填写用户的 Id，用于标识调用者及校验对任务的访问权限。
@@ -3553,6 +3553,12 @@ type PlatformInfo struct {
 
 	// 平台绑定的 license Id。
 	LicenseId *string `json:"LicenseId,omitempty" name:"LicenseId"`
+
+	// 平台状态，可取值为：
+	// <li>Normal：正常，可使用。；</li>
+	// <li>Stopped：已停用，暂无法使用；</li>
+	// <li>Expired：已过期，需要重新购买会员包。</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 创建时间，格式按照 ISO 8601 标准表示。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
