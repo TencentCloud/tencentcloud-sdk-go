@@ -76,6 +76,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eis v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/emr v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/es v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/essbasic v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/facefusion v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/faceid v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/fmu v0.0.0
@@ -260,6 +261,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eis => ../tencentcloud/eis
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/emr => ../tencentcloud/emr
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/es => ../tencentcloud/es
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/essbasic => ../tencentcloud/essbasic
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/facefusion => ../tencentcloud/facefusion
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/faceid => ../tencentcloud/faceid
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/fmu => ../tencentcloud/fmu
