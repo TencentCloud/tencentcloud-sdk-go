@@ -251,6 +251,9 @@ const (
 	// 创建子用户频率超过限制。
 	REQUESTLIMITEXCEEDED_CREATEUSER = "RequestLimitExceeded.CreateUser"
 
+	// 用户账号超出了限制。
+	REQUESTLIMITEXCEEDED_UINLIMITEXCEEDED = "RequestLimitExceeded.UinLimitExceeded"
+
 	// 用户组不存在。
 	RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 

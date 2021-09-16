@@ -9015,7 +9015,7 @@ type MediaContentReviewSegmentItem struct {
 type MediaDeleteItem struct {
 
 	// 所指定的删除部分。如果未填写该字段则参数无效。可选值有：
-	// <li>OriginFiles（删除原文件，删除后无法发起转码、微信发布等任何视频处理操作）。</li>
+	// <li>OriginalFiles（删除原文件，删除后无法发起转码、微信发布等任何视频处理操作）。</li>
 	// <li>TranscodeFiles（删除转码文件）。</li>
 	// <li>WechatPublishFiles（删除微信发布文件）。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`

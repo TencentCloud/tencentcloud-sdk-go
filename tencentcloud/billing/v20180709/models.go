@@ -247,6 +247,7 @@ type BillResourceSummary struct {
 	TotalCost *string `json:"TotalCost,omitempty" name:"TotalCost"`
 
 	// 折扣率
+	// 当聚合之后折扣不唯一或者合同价的情况下，返回“-”
 	Discount *string `json:"Discount,omitempty" name:"Discount"`
 
 	// 优惠类型
@@ -1124,7 +1125,36 @@ type DescribeBillResourceSummaryRequest struct {
 	// 1-表示需要， 0-表示不需要
 	NeedRecordNum *int64 `json:"NeedRecordNum,omitempty" name:"NeedRecordNum"`
 
-	// 查询交易类型。如 按量计费日结，按量计费小时结 等
+	// 查询交易类型，如下：
+	// 包年包月新购
+	// 包年包月续费
+	// 包年包月配置变更
+	// 包年包月退款
+	// 按量计费扣费
+	// 按量计费小时结
+	// 按量计费日结
+	// 按量计费月结
+	// 线下项目扣费
+	// 线下产品扣费
+	// 调账扣费
+	// 调账补偿
+	// 竞价实例小时结
+	// 线下项目调账补偿
+	// 线下产品调账补偿
+	// 优惠扣费
+	// 优惠补偿
+	// 按量计费迁入资源
+	// 按量计费迁出资源
+	// 包年包月迁入资源
+	// 包年包月迁出资源
+	// 预付费用
+	// 小时费用
+	// 预留实例退款
+	// 按量计费冲正
+	// 按量计费冲正
+	// 按量计费冲正
+	// 按量计费冲正
+	// 按量计费冲正
 	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
 
 	// 查询指定资源信息

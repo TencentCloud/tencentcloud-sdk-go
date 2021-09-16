@@ -275,6 +275,56 @@ func (c *Client) AssociateSecurityGroups(request *AssociateSecurityGroupsRequest
     return
 }
 
+func NewAttachDisksRequest() (request *AttachDisksRequest) {
+    request = &AttachDisksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "AttachDisks")
+    return
+}
+
+func NewAttachDisksResponse() (response *AttachDisksResponse) {
+    response = &AttachDisksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AttachDisks
+// 本接口（AttachDisks）用于挂载云硬盘。
+//
+//  
+//
+// * 支持批量操作，将多块云盘挂载到同一云主机。如果多个云盘中存在不允许挂载的云盘，则操作不执行，返回特定的错误码。
+//
+// * 本接口为异步接口，当挂载云盘的请求成功返回时，表示后台已发起挂载云盘的操作，可通过接口[DescribeDisks](/document/product/362/16315)来查询对应云盘的状态，如果云盘的状态由“ATTACHING”变为“ATTACHED”，则为挂载成功。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DISKATTACHED = "FailedOperation.DiskAttached"
+//  INTERNALERROR_RESOURCEOPFAILED = "InternalError.ResourceOpFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDDISK = "InvalidParameterValue.InvalidDisk"
+//  INVALIDPARAMETERVALUE_INVALIDDISKID = "InvalidParameterValue.InvalidDiskId"
+//  INVALIDPARAMETERVALUE_INVALIDDISKTYPE = "InvalidParameterValue.InvalidDiskType"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceID"
+//  INVALIDPARAMETERVALUE_INVALIDZONE = "InvalidParameterValue.InvalidZone"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  LIMITEXCEEDED_ATTACHEDDISKLIMITEXCEEDED = "LimitExceeded.AttachedDiskLimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEUNAVAILABLE_ATTACHED = "ResourceUnavailable.Attached"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
+//  RESOURCEUNAVAILABLE_TYPEERROR = "ResourceUnavailable.TypeError"
+//  UNSUPPORTEDOPERATION_INSTANCEIDNOTSUPPORTED = "UnsupportedOperation.InstanceIdNotSupported"
+func (c *Client) AttachDisks(request *AttachDisksRequest) (response *AttachDisksResponse, err error) {
+    if request == nil {
+        request = NewAttachDisksRequest()
+    }
+    response = NewAttachDisksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAttachNetworkInterfaceRequest() (request *AttachNetworkInterfaceRequest) {
     request = &AttachNetworkInterfaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -434,6 +484,54 @@ func (c *Client) BatchRegisterTargets(request *BatchRegisterTargetsRequest) (res
         request = NewBatchRegisterTargetsRequest()
     }
     response = NewBatchRegisterTargetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDisksRequest() (request *CreateDisksRequest) {
+    request = &CreateDisksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "CreateDisks")
+    return
+}
+
+func NewCreateDisksResponse() (response *CreateDisksResponse) {
+    response = &CreateDisksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateDisks
+// 本接口（CreateDisks）用于创建云硬盘。
+//
+// 
+//
+// * 预付费云盘的购买会预先扣除本次云盘购买所需金额，在调用本接口前请确保账户余额充足。
+//
+// * 本接口支持传入数据盘快照来创建云盘，实现将快照数据复制到新购云盘上。
+//
+// * 本接口为异步接口，当创建请求下发成功后会返回一个新建的云盘ID列表，此时云盘的创建并未立即完成。可以通过调用[DescribeDisks](/document/product/362/16315)接口根据DiskId查询对应云盘，如果能查到云盘，且状态为'UNATTACHED'或'ATTACHED'，则表示创建成功。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DATAOPERATIONFAILED = "FailedOperation.DataOperationFailed"
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
+//  INVALIDPARAMETER_DISKCONFIGNOTSUPPORTED = "InvalidParameter.DiskConfigNotSupported"
+//  INVALIDPARAMETER_PROJECTIDNOTEXIST = "InvalidParameter.ProjectIdNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOTCERTIFICATION = "UnauthorizedOperation.NotCertification"
+//  UNAUTHORIZEDOPERATION_NOTHAVEPAYMENTRIGHT = "UnauthorizedOperation.NotHavePaymentRight"
+func (c *Client) CreateDisks(request *CreateDisksRequest) (response *CreateDisksResponse, err error) {
+    if request == nil {
+        request = NewCreateDisksRequest()
+    }
+    response = NewCreateDisksResponse()
     err = c.Send(request, response)
     return
 }
@@ -1343,6 +1441,48 @@ func (c *Client) DeleteSecurityGroupPolicies(request *DeleteSecurityGroupPolicie
     return
 }
 
+func NewDeleteSnapshotsRequest() (request *DeleteSnapshotsRequest) {
+    request = &DeleteSnapshotsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DeleteSnapshots")
+    return
+}
+
+func NewDeleteSnapshotsResponse() (response *DeleteSnapshotsResponse) {
+    response = &DeleteSnapshotsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteSnapshots
+// 本接口（DeleteSnapshots）用于删除快照。
+//
+// 
+//
+// * 快照必须处于NORMAL状态，快照状态可以通过[DescribeSnapshots](/document/product/362/15647)接口查询，见输出参数中SnapshotState字段解释。
+//
+// * 支持批量操作。如果多个快照存在无法删除的快照，则操作不执行，以返回特定的错误码返回。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDSNAPSHOT = "InvalidParameterValue.InvalidSnapshot"
+//  INVALIDPARAMETERVALUE_INVALIDSNAPSHOTID = "InvalidParameterValue.InvalidSnapshotId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNSUPPORTEDOPERATION_SNAPHASSHARED = "UnsupportedOperation.SnapHasShared"
+//  UNSUPPORTEDOPERATION_SNAPSHOTHASBINDEDIMAGE = "UnsupportedOperation.SnapshotHasBindedImage"
+func (c *Client) DeleteSnapshots(request *DeleteSnapshotsRequest) (response *DeleteSnapshotsResponse, err error) {
+    if request == nil {
+        request = NewDeleteSnapshotsRequest()
+    }
+    response = NewDeleteSnapshotsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteSubnetRequest() (request *DeleteSubnetRequest) {
     request = &DeleteSubnetRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1615,6 +1755,43 @@ func (c *Client) DescribeDefaultSubnet(request *DescribeDefaultSubnetRequest) (r
         request = NewDescribeDefaultSubnetRequest()
     }
     response = NewDescribeDefaultSubnetResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDisksRequest() (request *DescribeDisksRequest) {
+    request = &DescribeDisksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DescribeDisks")
+    return
+}
+
+func NewDescribeDisksResponse() (response *DescribeDisksResponse) {
+    response = &DescribeDisksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDisks
+// 本接口（DescribeDisks）用于查询云硬盘列表。
+//
+// 
+//
+// * 可以根据云硬盘ID、云硬盘类型或者云硬盘状态等信息来查询云硬盘的详细信息，不同条件之间为与(AND)的关系，过滤信息详细请见过滤器`Filter`。
+//
+// * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的云硬盘列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeDisks(request *DescribeDisksRequest) (response *DescribeDisksResponse, err error) {
+    if request == nil {
+        request = NewDescribeDisksRequest()
+    }
+    response = NewDescribeDisksResponse()
     err = c.Send(request, response)
     return
 }
@@ -2414,6 +2591,43 @@ func (c *Client) DescribeSecurityGroups(request *DescribeSecurityGroupsRequest) 
     return
 }
 
+func NewDescribeSnapshotsRequest() (request *DescribeSnapshotsRequest) {
+    request = &DescribeSnapshotsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DescribeSnapshots")
+    return
+}
+
+func NewDescribeSnapshotsResponse() (response *DescribeSnapshotsResponse) {
+    response = &DescribeSnapshotsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSnapshots
+// 本接口（DescribeSnapshots）用于查询快照的详细信息。
+//
+// 
+//
+// * 根据快照ID、创建快照的云硬盘ID、创建快照的云硬盘类型等对结果进行过滤，不同条件之间为与(AND)的关系，过滤信息详细请见过滤器`Filter`。
+//
+// *  如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的快照列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeSnapshots(request *DescribeSnapshotsRequest) (response *DescribeSnapshotsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSnapshotsRequest()
+    }
+    response = NewDescribeSnapshotsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSubnetsRequest() (request *DescribeSubnetsRequest) {
     request = &DescribeSubnetsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2626,6 +2840,53 @@ func (c *Client) DescribeVpcs(request *DescribeVpcsRequest) (response *DescribeV
         request = NewDescribeVpcsRequest()
     }
     response = NewDescribeVpcsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDetachDisksRequest() (request *DetachDisksRequest) {
+    request = &DetachDisksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DetachDisks")
+    return
+}
+
+func NewDetachDisksResponse() (response *DetachDisksResponse) {
+    response = &DetachDisksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DetachDisks
+// 本接口（DetachDisks）用于卸载云硬盘。
+//
+// 
+//
+// * 支持批量操作，卸载挂载在同一主机上的多块云盘。如果多块云盘中存在不允许卸载的云盘，则操作不执行，返回特定的错误码。
+//
+// * 本接口为异步接口，当请求成功返回时，云盘并未立即从主机卸载，可通过接口[DescribeDisks](/document/product/362/16315)来查询对应云盘的状态，如果云盘的状态由“ATTACHED”变为“UNATTACHED”，则为卸载成功。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_RESOURCEOPFAILED = "InternalError.ResourceOpFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDDISK = "InvalidParameterValue.InvalidDisk"
+//  INVALIDPARAMETERVALUE_INVALIDDISKID = "InvalidParameterValue.InvalidDiskId"
+//  INVALIDPARAMETERVALUE_INVALIDDISKTYPE = "InvalidParameterValue.InvalidDiskType"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  RESOURCEUNAVAILABLE_NOTPORTABLE = "ResourceUnavailable.NotPortable"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
+//  RESOURCEUNAVAILABLE_TYPEERROR = "ResourceUnavailable.TypeError"
+//  UNSUPPORTEDOPERATION_INSTANCEIDNOTSUPPORTED = "UnsupportedOperation.InstanceIdNotSupported"
+func (c *Client) DetachDisks(request *DetachDisksRequest) (response *DetachDisksResponse, err error) {
+    if request == nil {
+        request = NewDetachDisksRequest()
+    }
+    response = NewDetachDisksResponse()
     err = c.Send(request, response)
     return
 }
@@ -4480,6 +4741,52 @@ func (c *Client) StopInstances(request *StopInstancesRequest) (response *StopIns
         request = NewStopInstancesRequest()
     }
     response = NewStopInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTerminateDisksRequest() (request *TerminateDisksRequest) {
+    request = &TerminateDisksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "TerminateDisks")
+    return
+}
+
+func NewTerminateDisksResponse() (response *TerminateDisksResponse) {
+    response = &TerminateDisksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// TerminateDisks
+// 本接口（TerminateDisks）用于退还云硬盘。
+//
+// 
+//
+// * 不再使用的云盘，可通过本接口主动退还。
+//
+// * 本接口支持退还预付费云盘和按小时后付费云盘。按小时后付费云盘可直接退还，预付费云盘需符合退还规则。
+//
+// * 支持批量操作，每次请求批量云硬盘的上限为50。如果批量云盘存在不允许操作的，请求会以特定错误码返回。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATAOPERATIONFAILED = "FailedOperation.DataOperationFailed"
+//  INTERNALERROR_FAILQUERYRESOURCE = "InternalError.FailQueryResource"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSUFFICIENTREFUNDQUOTA = "InvalidParameterValue.InsufficientRefundQuota"
+//  INVALIDPARAMETERVALUE_INVALIDDISK = "InvalidParameterValue.InvalidDisk"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEUNAVAILABLE_EXPIRE = "ResourceUnavailable.Expire"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
+//  RESOURCEUNAVAILABLE_REPEATREFUND = "ResourceUnavailable.RepeatRefund"
+func (c *Client) TerminateDisks(request *TerminateDisksRequest) (response *TerminateDisksResponse, err error) {
+    if request == nil {
+        request = NewTerminateDisksRequest()
+    }
+    response = NewTerminateDisksResponse()
     err = c.Send(request, response)
     return
 }

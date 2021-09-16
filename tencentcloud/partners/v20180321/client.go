@@ -544,40 +544,6 @@ func (c *Client) DescribeClientBalanceNew(request *DescribeClientBalanceNewReque
     return
 }
 
-func NewDescribeClientBaseInfoRequest() (request *DescribeClientBaseInfoRequest) {
-    request = &DescribeClientBaseInfoRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("partners", APIVersion, "DescribeClientBaseInfo")
-    return
-}
-
-func NewDescribeClientBaseInfoResponse() (response *DescribeClientBaseInfoResponse) {
-    response = &DescribeClientBaseInfoResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeClientBaseInfo
-// 该接口即将下线，请切换调用DescribeClientBasicInfo。
-//
-// 
-//
-// 国际站根据UIN查询代客基础信息【本接口仅限主账号访问】
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) DescribeClientBaseInfo(request *DescribeClientBaseInfoRequest) (response *DescribeClientBaseInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeClientBaseInfoRequest()
-    }
-    response = NewDescribeClientBaseInfoResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeRebateInfosRequest() (request *DescribeRebateInfosRequest) {
     request = &DescribeRebateInfosRequest{
         BaseRequest: &tchttp.BaseRequest{},

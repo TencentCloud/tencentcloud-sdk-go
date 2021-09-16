@@ -1,33 +1,39 @@
 # 本版本更新包含以下内容：
 
-## 借贷反欺诈(af) 版本：2020-02-26
+## 边缘计算机器(ecm) 版本：2019-07-19
 
-### 第 3 次发布
+### 第 52 次发布
 
-发布时间：2021-09-15 08:02:06
+发布时间：2021-09-16 08:02:38
 
 本次发布包含了以下内容：
 
 改善已有的文档。
+
+新增接口：
+
+* [AttachDisks](https://cloud.tencent.com/document/api/1108/61560)
+* [CreateDisks](https://cloud.tencent.com/document/api/1108/61559)
+* [DeleteSnapshots](https://cloud.tencent.com/document/api/1108/61554)
+* [DescribeDisks](https://cloud.tencent.com/document/api/1108/61558)
+* [DescribeSnapshots](https://cloud.tencent.com/document/api/1108/61553)
+* [DetachDisks](https://cloud.tencent.com/document/api/1108/61557)
+* [TerminateDisks](https://cloud.tencent.com/document/api/1108/61556)
 
 新增数据结构：
 
-* [FinanceOtherModelScores](https://cloud.tencent.com/document/api/668/44002#FinanceOtherModelScores)
-
-修改数据结构：
-
-* [FinanceAntiFraudRecord](https://cloud.tencent.com/document/api/668/44002#FinanceAntiFraudRecord)
-
-	* 新增成员：OtherModelScores
+* [Disk](https://cloud.tencent.com/document/api/1108/42574#Disk)
+* [DiskChargePrepaid](https://cloud.tencent.com/document/api/1108/42574#DiskChargePrepaid)
+* [Placement](https://cloud.tencent.com/document/api/1108/42574#Placement)
+* [Snapshot](https://cloud.tencent.com/document/api/1108/42574#Snapshot)
 
 
 
+## 游戏多媒体引擎(gme) 版本：2018-07-11
 
-## 内容分发网络(cdn) 版本：2018-06-06
+### 第 15 次发布
 
-### 第 77 次发布
-
-发布时间：2021-09-15 08:04:54
+发布时间：2021-09-16 08:07:34
 
 本次发布包含了以下内容：
 
@@ -35,28 +41,91 @@
 
 修改数据结构：
 
-* [BandwidthAlert](https://cloud.tencent.com/document/api/228/30987#BandwidthAlert)
+* [DescribeScanResult](https://cloud.tencent.com/document/api/607/35375#DescribeScanResult)
 
-	* 新增成员：Metric
-
-
+	* 新增成员：BizId
 
 
-## 腾讯云剪(cme) 版本：2019-10-29
 
-### 第 39 次发布
 
-发布时间：2021-09-15 08:03:30
+## 渠道合作伙伴(partners) 版本：2018-03-21
+
+### 第 23 次发布
+
+发布时间：2021-09-16 08:09:23
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeClientBaseInfo
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* ClientBaseElem
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 27 次发布
+
+发布时间：2021-09-16 08:09:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeBackupFiles](https://cloud.tencent.com/document/api/238/61561)
+
+修改接口：
+
+* [DescribeBackupByFlowId](https://cloud.tencent.com/document/api/238/47203)
+
+	* 新增出参：GroupId
+
+* [DescribeBackups](https://cloud.tencent.com/document/api/238/19943)
+
+	* 新增入参：Group
+
+* [DescribeDBInstances](https://cloud.tencent.com/document/api/238/19969)
+
+	* 新增入参：UidSet
+
+* [ModifyBackupName](https://cloud.tencent.com/document/api/238/47202)
+
+	* 新增入参：GroupId
+
+	* <font color="#dd0000">**修改入参**：</font>BackupId
+
+* [ModifyBackupStrategy](https://cloud.tencent.com/document/api/238/46288)
+
+	* 新增入参：BackupModel
+
+	* <font color="#dd0000">**修改入参**：</font>BackupType, BackupTime, BackupDay
+
+* [RestoreInstance](https://cloud.tencent.com/document/api/238/19950)
+
+	* 新增入参：GroupId
+
+
+新增数据结构：
+
+* [BackupFile](https://cloud.tencent.com/document/api/238/19976#BackupFile)
+
 修改数据结构：
 
-* [PlatformInfo](https://cloud.tencent.com/document/api/1156/40360#PlatformInfo)
+* [Backup](https://cloud.tencent.com/document/api/238/19976#Backup)
 
-	* 新增成员：Status
+	* 新增成员：GroupId
+
+* [DBInstance](https://cloud.tencent.com/document/api/238/19976#DBInstance)
+
+	* 新增成员：BackupModel
 
 
 
@@ -292,7 +361,7 @@
 
 新增数据结构：
 
-* [[FinanceOtherModelScores](https://cloud.tencent.com/document/api/668/44002#FinanceOtherModelScores)](https://cloud.tencent.com/document/api/668/44002#[FinanceOtherModelScores](https://cloud.tencent.com/document/api/668/44002#FinanceOtherModelScores))
+* [FinanceOtherModelScores](https://cloud.tencent.com/document/api/668/44002#FinanceOtherModelScores)
 
 修改数据结构：
 
@@ -22626,6 +22695,31 @@
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
 
+### 第 52 次发布
+
+发布时间：2021-09-16 08:02:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AttachDisks](https://cloud.tencent.com/document/api/1108/61560)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateDisks](https://cloud.tencent.com/document/api/1108/61559)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteSnapshots](https://cloud.tencent.com/document/api/1108/61554)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDisks](https://cloud.tencent.com/document/api/1108/61558)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeSnapshots](https://cloud.tencent.com/document/api/1108/61553)](https://cloud.tencent.com/document/api/#/#)
+* [[DetachDisks](https://cloud.tencent.com/document/api/1108/61557)](https://cloud.tencent.com/document/api/#/#)
+* [[TerminateDisks](https://cloud.tencent.com/document/api/1108/61556)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Disk](https://cloud.tencent.com/document/api/1108/42574#Disk)](https://cloud.tencent.com/document/api/1108/42574#[Disk](https://cloud.tencent.com/document/api/1108/42574#Disk))
+* [[DiskChargePrepaid](https://cloud.tencent.com/document/api/1108/42574#DiskChargePrepaid)](https://cloud.tencent.com/document/api/1108/42574#[DiskChargePrepaid](https://cloud.tencent.com/document/api/1108/42574#DiskChargePrepaid))
+* [[Placement](https://cloud.tencent.com/document/api/1108/42574#Placement)](https://cloud.tencent.com/document/api/1108/42574#[Placement](https://cloud.tencent.com/document/api/1108/42574#Placement))
+* [[Snapshot](https://cloud.tencent.com/document/api/1108/42574#Snapshot)](https://cloud.tencent.com/document/api/1108/42574#[Snapshot](https://cloud.tencent.com/document/api/1108/42574#Snapshot))
+
 ### 第 51 次发布
 
 发布时间：2021-08-31 08:02:05
@@ -25105,6 +25199,134 @@
 
 
 
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+### 第 1 次发布
+
+发布时间：2021-09-15 11:54:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ArchiveFlow](https://cloud.tencent.com/document/api/#/#)
+* [CancelFlow](https://cloud.tencent.com/document/api/#/#)
+* [CheckBankCard2EVerification](https://cloud.tencent.com/document/api/#/#)
+* [CheckBankCard3EVerification](https://cloud.tencent.com/document/api/#/#)
+* [CheckBankCard4EVerification](https://cloud.tencent.com/document/api/#/#)
+* [CheckBankCardVerification](https://cloud.tencent.com/document/api/#/#)
+* [CheckFaceIdentify](https://cloud.tencent.com/document/api/#/#)
+* [CheckIdCardVerification](https://cloud.tencent.com/document/api/#/#)
+* [CheckMobileAndName](https://cloud.tencent.com/document/api/#/#)
+* [CheckMobileVerification](https://cloud.tencent.com/document/api/#/#)
+* [CheckVerifyCodeMatchFlowId](https://cloud.tencent.com/document/api/#/#)
+* [CreateFaceIdSign](https://cloud.tencent.com/document/api/#/#)
+* [CreateFlowByFiles](https://cloud.tencent.com/document/api/#/#)
+* [CreateH5FaceIdUrl](https://cloud.tencent.com/document/api/#/#)
+* [CreatePreviewSignUrl](https://cloud.tencent.com/document/api/#/#)
+* [CreateSeal](https://cloud.tencent.com/document/api/#/#)
+* [CreateServerFlowSign](https://cloud.tencent.com/document/api/#/#)
+* [CreateSignUrl](https://cloud.tencent.com/document/api/#/#)
+* [CreateSubOrganization](https://cloud.tencent.com/document/api/#/#)
+* [CreateSubOrganizationAndSeal](https://cloud.tencent.com/document/api/#/#)
+* [CreateUser](https://cloud.tencent.com/document/api/#/#)
+* [CreateUserAndSeal](https://cloud.tencent.com/document/api/#/#)
+* [DeleteSeal](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCatalogApprovers](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCatalogSignComponents](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCustomFlowIds](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCustomFlowIdsByFlowId](https://cloud.tencent.com/document/api/#/#)
+* [DescribeFaceIdPhotos](https://cloud.tencent.com/document/api/#/#)
+* [DescribeFaceIdResults](https://cloud.tencent.com/document/api/#/#)
+* [DescribeFileIdsByCustomIds](https://cloud.tencent.com/document/api/#/#)
+* [DescribeFileUrls](https://cloud.tencent.com/document/api/#/#)
+* [DescribeFlow](https://cloud.tencent.com/document/api/#/#)
+* [DescribeFlowApprovers](https://cloud.tencent.com/document/api/#/#)
+* [DescribeFlowFiles](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSeals](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSubOrganizations](https://cloud.tencent.com/document/api/#/#)
+* [DescribeUsers](https://cloud.tencent.com/document/api/#/#)
+* [DestroyFlowFile](https://cloud.tencent.com/document/api/#/#)
+* [GenerateOrganizationSeal](https://cloud.tencent.com/document/api/#/#)
+* [GenerateUserSeal](https://cloud.tencent.com/document/api/#/#)
+* [ModifyOrganizationDefaultSeal](https://cloud.tencent.com/document/api/#/#)
+* [ModifySeal](https://cloud.tencent.com/document/api/#/#)
+* [ModifySubOrganizationInfo](https://cloud.tencent.com/document/api/#/#)
+* [ModifyUser](https://cloud.tencent.com/document/api/#/#)
+* [ModifyUserDefaultSeal](https://cloud.tencent.com/document/api/#/#)
+* [RejectFlow](https://cloud.tencent.com/document/api/#/#)
+* [SendFlow](https://cloud.tencent.com/document/api/#/#)
+* [SendFlowUrl](https://cloud.tencent.com/document/api/#/#)
+* [SendSignInnerVerifyCode](https://cloud.tencent.com/document/api/#/#)
+* [SignFlow](https://cloud.tencent.com/document/api/#/#)
+* [UploadFiles](https://cloud.tencent.com/document/api/#/#)
+* [VerifySubOrganization](https://cloud.tencent.com/document/api/#/#)
+* [VerifyUser](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [Address](https://cloud.tencent.com/document/api/#/##Address)
+* [Caller](https://cloud.tencent.com/document/api/#/##Caller)
+* [CatalogApprovers](https://cloud.tencent.com/document/api/#/##CatalogApprovers)
+* [CatalogComponents](https://cloud.tencent.com/document/api/#/##CatalogComponents)
+* [Component](https://cloud.tencent.com/document/api/#/##Component)
+* [ComponentSeal](https://cloud.tencent.com/document/api/#/##ComponentSeal)
+* [CustomFileIdMap](https://cloud.tencent.com/document/api/#/##CustomFileIdMap)
+* [CustomFlowIdMap](https://cloud.tencent.com/document/api/#/##CustomFlowIdMap)
+* [FaceIdPhoto](https://cloud.tencent.com/document/api/#/##FaceIdPhoto)
+* [FaceIdResult](https://cloud.tencent.com/document/api/#/##FaceIdResult)
+* [FileUrl](https://cloud.tencent.com/document/api/#/##FileUrl)
+* [FlowApproverInfo](https://cloud.tencent.com/document/api/#/##FlowApproverInfo)
+* [FlowFileInfo](https://cloud.tencent.com/document/api/#/##FlowFileInfo)
+* [FlowInfo](https://cloud.tencent.com/document/api/#/##FlowInfo)
+* [Seal](https://cloud.tencent.com/document/api/#/##Seal)
+* [SignSeal](https://cloud.tencent.com/document/api/#/##SignSeal)
+* [SmsTemplate](https://cloud.tencent.com/document/api/#/##SmsTemplate)
+* [SubOrganizationDetail](https://cloud.tencent.com/document/api/#/##SubOrganizationDetail)
+* [UploadFile](https://cloud.tencent.com/document/api/#/##UploadFile)
+* [UserDescribe](https://cloud.tencent.com/document/api/#/##UserDescribe)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 1 次发布
+
+发布时间：2021-09-15 11:54:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateConsoleLoginUrl](https://cloud.tencent.com/document/api/1420/61524)
+* [CreateFlowsByTemplates](https://cloud.tencent.com/document/api/1420/61523)
+* [CreateSignUrls](https://cloud.tencent.com/document/api/1420/61522)
+* [DescribeTemplates](https://cloud.tencent.com/document/api/1420/61521)
+* [DescribeUsage](https://cloud.tencent.com/document/api/1420/61520)
+* [PrepareFlows](https://cloud.tencent.com/document/api/1420/61519)
+* [SyncProxyOrganization](https://cloud.tencent.com/document/api/1420/61518)
+* [SyncProxyOrganizationOperators](https://cloud.tencent.com/document/api/1420/61517)
+
+新增数据结构：
+
+* [Agent](https://cloud.tencent.com/document/api/1420/61525#Agent)
+* [Component](https://cloud.tencent.com/document/api/1420/61525#Component)
+* [FlowApproverInfo](https://cloud.tencent.com/document/api/1420/61525#FlowApproverInfo)
+* [FlowInfo](https://cloud.tencent.com/document/api/1420/61525#FlowInfo)
+* [FormField](https://cloud.tencent.com/document/api/1420/61525#FormField)
+* [ProxyOrganizationOperator](https://cloud.tencent.com/document/api/1420/61525#ProxyOrganizationOperator)
+* [SignUrlInfo](https://cloud.tencent.com/document/api/1420/61525#SignUrlInfo)
+* [TemplateInfo](https://cloud.tencent.com/document/api/1420/61525#TemplateInfo)
+* [UsageDetail](https://cloud.tencent.com/document/api/1420/61525#UsageDetail)
+* [UserInfo](https://cloud.tencent.com/document/api/1420/61525#UserInfo)
+
+
+
+
 ## 人脸融合(facefusion) 版本：2018-12-01
 
 ### 第 6 次发布
@@ -26650,6 +26872,21 @@
 
 
 ## 游戏多媒体引擎(gme) 版本：2018-07-11
+
+### 第 15 次发布
+
+发布时间：2021-09-16 08:07:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DescribeScanResult](https://cloud.tencent.com/document/api/607/35375#DescribeScanResult)
+
+	* 新增成员：BizId
+
 
 ### 第 14 次发布
 
@@ -39221,6 +39458,22 @@
 
 ## 渠道合作伙伴(partners) 版本：2018-03-21
 
+### 第 23 次发布
+
+发布时间：2021-09-16 08:09:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeClientBaseInfo
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* ClientBaseElem
+
 ### 第 22 次发布
 
 发布时间：2021-06-25 08:07:32
@@ -42528,6 +42781,64 @@
 
 
 ## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 27 次发布
+
+发布时间：2021-09-16 08:09:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeBackupFiles](https://cloud.tencent.com/document/api/238/61561)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [DescribeBackupByFlowId](https://cloud.tencent.com/document/api/238/47203)
+
+	* 新增出参：GroupId
+
+* [DescribeBackups](https://cloud.tencent.com/document/api/238/19943)
+
+	* 新增入参：Group
+
+* [DescribeDBInstances](https://cloud.tencent.com/document/api/238/19969)
+
+	* 新增入参：UidSet
+
+* [ModifyBackupName](https://cloud.tencent.com/document/api/238/47202)
+
+	* 新增入参：GroupId
+
+	* <font color="#dd0000">**修改入参**：</font>BackupId
+
+* [ModifyBackupStrategy](https://cloud.tencent.com/document/api/238/46288)
+
+	* 新增入参：BackupModel
+
+	* <font color="#dd0000">**修改入参**：</font>BackupType, BackupTime, BackupDay
+
+* [RestoreInstance](https://cloud.tencent.com/document/api/238/19950)
+
+	* 新增入参：GroupId
+
+
+新增数据结构：
+
+* [[BackupFile](https://cloud.tencent.com/document/api/238/19976#BackupFile)](https://cloud.tencent.com/document/api/238/19976#[BackupFile](https://cloud.tencent.com/document/api/238/19976#BackupFile))
+
+修改数据结构：
+
+* [Backup](https://cloud.tencent.com/document/api/238/19976#Backup)
+
+	* 新增成员：GroupId
+
+* [DBInstance](https://cloud.tencent.com/document/api/238/19976#DBInstance)
+
+	* 新增成员：BackupModel
+
 
 ### 第 26 次发布
 

@@ -675,6 +675,9 @@ type DescribeScanResult struct {
 	// <li>Success: 成功结束</li>
 	// <li>Error: 异常</li>
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 提交检测的应用 ID
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 }
 
 type DescribeScanResultListRequest struct {

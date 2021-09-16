@@ -156,10 +156,10 @@ func (r *AssociateSecurityGroupsResponse) FromJsonString(s string) error {
 
 type Backup struct {
 
-	// 文件名
+	// 文件名，对于单库备份文件不返回此值；单库备份文件通过DescribeBackupFiles接口获取文件名
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
-	// 文件大小，单位 KB
+	// 文件大小，单位 KB，对于单库备份文件不返回此值；单库备份文件通过DescribeBackupFiles接口获取文件大小
 	Size *int64 `json:"Size,omitempty" name:"Size"`
 
 	// 备份开始时间
@@ -168,13 +168,13 @@ type Backup struct {
 	// 备份结束时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 内网下载地址
+	// 内网下载地址，对于单库备份文件不返回此值；单库备份文件通过DescribeBackupFiles接口获取下载地址
 	InternalAddr *string `json:"InternalAddr,omitempty" name:"InternalAddr"`
 
-	// 外网下载地址
+	// 外网下载地址，对于单库备份文件不返回此值；单库备份文件通过DescribeBackupFiles接口获取下载地址
 	ExternalAddr *string `json:"ExternalAddr,omitempty" name:"ExternalAddr"`
 
-	// 备份文件唯一标识，RestoreInstance接口会用到该字段
+	// 备份文件唯一标识，RestoreInstance接口会用到该字段，对于单库备份文件不返回此值；单库备份文件通过DescribeBackupFiles接口获取可回档的ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
 	// 备份文件状态（0-创建中；1-成功；2-失败）
@@ -189,8 +189,29 @@ type Backup struct {
 	// 备份方式，0-定时备份；1-手动临时备份
 	BackupWay *int64 `json:"BackupWay,omitempty" name:"BackupWay"`
 
-	// 备份名称，可自定义
+	// 备份任务名称，可自定义
 	BackupName *string `json:"BackupName,omitempty" name:"BackupName"`
+
+	// 聚合Id，对于打包备份文件不返回此值。通过此值调用DescribeBackupFiles接口，获取单库备份文件的详细信息
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+}
+
+type BackupFile struct {
+
+	// 备份文件唯一标识
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 备份文件名称
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 文件大小(K)
+	Size *uint64 `json:"Size,omitempty" name:"Size"`
+
+	// 备份文件的库的名称
+	DBs []*string `json:"DBs,omitempty" name:"DBs"`
+
+	// 下载地址
+	DownloadLink *string `json:"DownloadLink,omitempty" name:"DownloadLink"`
 }
 
 type CloneDBRequest struct {
@@ -1220,7 +1241,7 @@ type DBInstance struct {
 	// 实例所在私有网络子网ID，基础网络时为 0
 	SubnetId *int64 `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 实例状态。取值范围： <li>1：申请中</li> <li>2：运行中</li> <li>3：受限运行中 (主备切换中)</li> <li>4：已隔离</li> <li>5：回收中</li> <li>6：已回收</li> <li>7：任务执行中 (实例做备份、回档等操作)</li> <li>8：已下线</li> <li>9：实例扩容中</li> <li>10：实例迁移中</li> <li>11：只读</li> <li>12：重启中</li>
+	// 实例状态。取值范围： <li>1：申请中</li> <li>2：运行中</li> <li>3：受限运行中 (主备切换中)</li> <li>4：已隔离</li> <li>5：回收中</li> <li>6：已回收</li> <li>7：任务执行中 (实例做备份、回档等操作)</li> <li>8：已下线</li> <li>9：实例扩容中</li> <li>10：实例迁移中</li> <li>11：只读</li> <li>12：重启中</li>  <li>13：实例修改中且待切换</li> <li>14：订阅发布创建中</li> <li>15：订阅发布修改中</li> <li>16：实例修改中且切换中</li> <li>17：创建RO副本中</li>
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 实例访问IP
@@ -1314,6 +1335,10 @@ type DBInstance struct {
 	// 实例绑定的标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags"`
+
+	// 备份模式，master_pkg-主节点打包备份(默认) ；master_no_pkg-主节点不打包备份；slave_pkg-从节点打包备份(always on集群有效)；slave_no_pkg-从节点不打包备份(always on集群有效)；只读副本对该值无效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupModel *string `json:"BackupModel,omitempty" name:"BackupModel"`
 }
 
 type DBPrivilege struct {
@@ -1906,13 +1931,13 @@ type DescribeBackupByFlowIdResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 备份文件唯一标识，RestoreInstance接口会用到该字段
+		// 备份文件唯一标识，RestoreInstance接口会用到该字段，对于单库备份文件只返回第一条记录的备份文件唯一标识；单库备份文件需要通过DescribeBackupFiles接口获取全部记录的可回档的ID
 		Id *uint64 `json:"Id,omitempty" name:"Id"`
 
-		// 存储文件名
+		// 文件名，对于单库备份文件只返回第一条记录的文件名；单库备份文件需要通过DescribeBackupFiles接口获取全部记录的文件名
 		FileName *string `json:"FileName,omitempty" name:"FileName"`
 
-		// 备份名称，可自定义
+		// 备份任务名称，可自定义
 		BackupName *string `json:"BackupName,omitempty" name:"BackupName"`
 
 		// 备份开始时间
@@ -1921,26 +1946,29 @@ type DescribeBackupByFlowIdResponse struct {
 		// 备份结束时间
 		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-		// 文件大小，单位 KB
+		// 文件大小，单位 KB，对于单库备份文件只返回第一条记录的文件大小；单库备份文件需要通过DescribeBackupFiles接口获取全部记录的文件大小
 		Size *uint64 `json:"Size,omitempty" name:"Size"`
 
 		// 备份策略，0-实例备份；1-多库备份；实例状态是0-创建中时，该字段为默认值0，无实际意义
 		Strategy *int64 `json:"Strategy,omitempty" name:"Strategy"`
 
-		// 备份方式，0-定时备份；1-手动临时备份；实例状态是0-创建中时，该字段为默认值0，无实际意义
-		BackupWay *int64 `json:"BackupWay,omitempty" name:"BackupWay"`
-
 		// 备份文件状态，0-创建中；1-成功；2-失败
 		Status *int64 `json:"Status,omitempty" name:"Status"`
 
-		// 多库备份时的DB列表
+		// 备份方式，0-定时备份；1-手动临时备份；实例状态是0-创建中时，该字段为默认值0，无实际意义
+		BackupWay *int64 `json:"BackupWay,omitempty" name:"BackupWay"`
+
+		// DB列表，对于单库备份文件只返回第一条记录包含的库名；单库备份文件需要通过DescribeBackupFiles接口获取全部记录的库名。
 		DBs []*string `json:"DBs,omitempty" name:"DBs"`
 
-		// 内网下载地址
+		// 内网下载地址，对于单库备份文件只返回第一条记录的内网下载地址；单库备份文件需要通过DescribeBackupFiles接口获取全部记录的下载地址
 		InternalAddr *string `json:"InternalAddr,omitempty" name:"InternalAddr"`
 
-		// 外网下载地址
+		// 外网下载地址，对于单库备份文件只返回第一条记录的外网下载地址；单库备份文件需要通过DescribeBackupFiles接口获取全部记录的下载地址
 		ExternalAddr *string `json:"ExternalAddr,omitempty" name:"ExternalAddr"`
+
+		// 聚合Id，对于打包备份文件不返回此值。通过此值调用DescribeBackupFiles接口，获取单库备份文件的详细信息
+		GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2016,6 +2044,74 @@ func (r *DescribeBackupCommandResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBackupCommandResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBackupFilesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID，形如mssql-njj2mtpl
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 聚合ID, 可通过接口DescribeBackups获取
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 分页返回，每页返回的数目，取值为1-100，默认值为20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页返回，页编号，默认值为第0页
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 按照备份的库名称筛选，不填则不筛选此项
+	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
+}
+
+func (r *DescribeBackupFilesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupFilesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "GroupId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "DatabaseName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupFilesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBackupFilesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 备份总数量
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 备份文件列表详情
+		BackupFiles []*BackupFile `json:"BackupFiles,omitempty" name:"BackupFiles"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBackupFilesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupFilesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2200,6 +2296,9 @@ type DescribeBackupsRequest struct {
 
 	// 按照备份的库名称筛选，不填则不筛选此项
 	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
+
+	// 是否分组查询，默认是0，单库备份情况下 0-兼容老方式不分组，1-单库备份分组后展示
+	Group *int64 `json:"Group,omitempty" name:"Group"`
 }
 
 func (r *DescribeBackupsRequest) ToJsonString() string {
@@ -2224,6 +2323,7 @@ func (r *DescribeBackupsRequest) FromJsonString(s string) error {
 	delete(f, "BackupWay")
 	delete(f, "BackupId")
 	delete(f, "DatabaseName")
+	delete(f, "Group")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupsRequest has unknown keys!", "")
 	}
@@ -2413,6 +2513,9 @@ type DescribeDBInstancesRequest struct {
 
 	// 模糊查询关键字，支持实例id、实例名、内网ip
 	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
+
+	// 实例唯一Uid列表
+	UidSet []*string `json:"UidSet,omitempty" name:"UidSet"`
 }
 
 func (r *DescribeDBInstancesRequest) ToJsonString() string {
@@ -2441,6 +2544,7 @@ func (r *DescribeDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Zone")
 	delete(f, "TagKeys")
 	delete(f, "SearchKey")
+	delete(f, "UidSet")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBInstancesRequest has unknown keys!", "")
 	}
@@ -4640,11 +4744,15 @@ type ModifyBackupNameRequest struct {
 	// 实例ID，格式如：mssql-3l3fgqn7
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
+	// 修改的备份名称
+	BackupName *string `json:"BackupName,omitempty" name:"BackupName"`
+
 	// 要修改名称的备份ID，可通过 [DescribeBackups](https://cloud.tencent.com/document/product/238/19943)  接口获取。
 	BackupId *uint64 `json:"BackupId,omitempty" name:"BackupId"`
 
-	// 修改的备份名称
-	BackupName *string `json:"BackupName,omitempty" name:"BackupName"`
+	// 备份任务组ID，在单库备份文件模式下，可通过[DescribeBackups](https://cloud.tencent.com/document/product/238/19943) 接口获得。
+	//  BackupId 和 GroupId 同时存在，按照BackupId进行修改。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
 func (r *ModifyBackupNameRequest) ToJsonString() string {
@@ -4660,8 +4768,9 @@ func (r *ModifyBackupNameRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
-	delete(f, "BackupId")
 	delete(f, "BackupName")
+	delete(f, "BackupId")
+	delete(f, "GroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBackupNameRequest has unknown keys!", "")
 	}
@@ -4702,6 +4811,9 @@ type ModifyBackupStrategyRequest struct {
 
 	// BackupType取值为daily时，表示备份间隔天数。当前取值只能为1
 	BackupDay *uint64 `json:"BackupDay,omitempty" name:"BackupDay"`
+
+	// 备份模式，master_pkg-主节点上打包备份文件；master_no_pkg-主节点单库备份文件；slave_pkg-从节点上打包备份文件；slave_no_pkg-从节点上单库备份文件，从节点上备份只有在always on容灾模式下支持。
+	BackupModel *string `json:"BackupModel,omitempty" name:"BackupModel"`
 }
 
 func (r *ModifyBackupStrategyRequest) ToJsonString() string {
@@ -4720,6 +4832,7 @@ func (r *ModifyBackupStrategyRequest) FromJsonString(s string) error {
 	delete(f, "BackupType")
 	delete(f, "BackupTime")
 	delete(f, "BackupDay")
+	delete(f, "BackupModel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBackupStrategyRequest has unknown keys!", "")
 	}
@@ -6369,6 +6482,9 @@ type RestoreInstanceRequest struct {
 
 	// 按照ReNameRestoreDatabase中的库进行恢复，并重命名，不填则按照默认方式命名恢复的库，且恢复所有的库。
 	RenameRestore []*RenameRestoreDatabase `json:"RenameRestore,omitempty" name:"RenameRestore"`
+
+	// 备份任务组ID，在单库备份文件模式下，可通过[DescribeBackups](https://cloud.tencent.com/document/product/238/19943) 接口获得。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
 func (r *RestoreInstanceRequest) ToJsonString() string {
@@ -6387,6 +6503,7 @@ func (r *RestoreInstanceRequest) FromJsonString(s string) error {
 	delete(f, "BackupId")
 	delete(f, "TargetInstanceId")
 	delete(f, "RenameRestore")
+	delete(f, "GroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestoreInstanceRequest has unknown keys!", "")
 	}
