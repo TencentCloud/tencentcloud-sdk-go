@@ -4842,7 +4842,7 @@ type DomainSetList struct {
 	// 域名名称。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
-	// 域名解析状态。True 表示正常解析，False 表示解析失败。
+	// 域名解析状态。1 表示正常解析，0 表示解析失败。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 证书ID。

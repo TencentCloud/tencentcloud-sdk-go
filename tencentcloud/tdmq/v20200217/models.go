@@ -1845,6 +1845,12 @@ type DescribeCmqQueuesRequest struct {
 
 	// 根据QueueName进行过滤
 	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
+
+	// CMQ 队列名称列表过滤
+	QueueNameList []*string `json:"QueueNameList,omitempty" name:"QueueNameList"`
+
+	// 标签过滤查找时，需要设置为 true
+	IsTagFilter *bool `json:"IsTagFilter,omitempty" name:"IsTagFilter"`
 }
 
 func (r *DescribeCmqQueuesRequest) ToJsonString() string {
@@ -1862,6 +1868,8 @@ func (r *DescribeCmqQueuesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "QueueName")
+	delete(f, "QueueNameList")
+	delete(f, "IsTagFilter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCmqQueuesRequest has unknown keys!", "")
 	}
@@ -2020,6 +2028,12 @@ type DescribeCmqTopicsRequest struct {
 
 	// 根据TopicName进行模糊搜索
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// CMQ 主题名称列表过滤
+	TopicNameList []*string `json:"TopicNameList,omitempty" name:"TopicNameList"`
+
+	// 标签过滤查找时，需要设置为 true
+	IsTagFilter *bool `json:"IsTagFilter,omitempty" name:"IsTagFilter"`
 }
 
 func (r *DescribeCmqTopicsRequest) ToJsonString() string {
@@ -2037,6 +2051,8 @@ func (r *DescribeCmqTopicsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "TopicName")
+	delete(f, "TopicNameList")
+	delete(f, "IsTagFilter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCmqTopicsRequest has unknown keys!", "")
 	}

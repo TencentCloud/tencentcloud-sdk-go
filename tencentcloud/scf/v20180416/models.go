@@ -169,6 +169,9 @@ type Code struct {
 
 	// 加密后的Git用户名，一般无需指定
 	GitUserNameSecret *string `json:"GitUserNameSecret,omitempty" name:"GitUserNameSecret"`
+
+	// 镜像部署时配置TCR镜像信息
+	ImageConfig *ImageConfig `json:"ImageConfig,omitempty" name:"ImageConfig"`
 }
 
 type CopyFunctionRequest struct {
@@ -376,7 +379,7 @@ type CreateFunctionRequest struct {
 	// 文件系统配置参数，用于云函数挂载文件系统
 	CfsConfig *CfsConfig `json:"CfsConfig,omitempty" name:"CfsConfig"`
 
-	// 函数初始化超时时间
+	// 函数初始化超时时间，默认 65s，镜像部署函数默认 90s。
 	InitTimeout *int64 `json:"InitTimeout,omitempty" name:"InitTimeout"`
 
 	// 函数 Tag 参数，以键值对数组形式传入
@@ -1842,6 +1845,31 @@ func (r *GetReservedConcurrencyConfigResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *GetReservedConcurrencyConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ImageConfig struct {
+
+	// 镜像仓库类型，个人版或者企业版：personal/enterprise
+	ImageType *string `json:"ImageType,omitempty" name:"ImageType"`
+
+	// {domain}/{namespace}/{imageName}:{tag}@{digest}
+	ImageUri *string `json:"ImageUri,omitempty" name:"ImageUri"`
+
+	// 用于企业版TCR获取镜像拉取临时凭证，ImageType为"enterprise"时必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 应用的ENTRYPOINT
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EntryPoint *string `json:"EntryPoint,omitempty" name:"EntryPoint"`
+
+	// entrypoint执行命令
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Command *string `json:"Command,omitempty" name:"Command"`
+
+	// 命令参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Args *string `json:"Args,omitempty" name:"Args"`
 }
 
 type InvokeFunctionRequest struct {
@@ -3485,7 +3513,7 @@ type UpdateFunctionConfigurationRequest struct {
 	// 文件系统配置入参，用于云函数绑定CFS文件系统
 	CfsConfig *CfsConfig `json:"CfsConfig,omitempty" name:"CfsConfig"`
 
-	// 函数初始化执行超时时间，默认15秒
+	// 函数初始化执行超时时间
 	InitTimeout *int64 `json:"InitTimeout,omitempty" name:"InitTimeout"`
 }
 

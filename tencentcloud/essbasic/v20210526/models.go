@@ -136,6 +136,12 @@ type CreateConsoleLoginUrlRequest struct {
 
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 控制台指定模块，文件/合同管理:"DOCUMENT"，模版管理:"TEMPLATE"，印章管理:"SEAL"，组织架构/人员:"OPERATOR"，空字符串："账号信息"
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 控制台指定模块Id
+	ModuleId *string `json:"ModuleId,omitempty" name:"ModuleId"`
 }
 
 func (r *CreateConsoleLoginUrlRequest) ToJsonString() string {
@@ -155,6 +161,8 @@ func (r *CreateConsoleLoginUrlRequest) FromJsonString(s string) error {
 	delete(f, "UniformSocialCreditCode")
 	delete(f, "ProxyOperatorName")
 	delete(f, "Operator")
+	delete(f, "Module")
+	delete(f, "ModuleId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConsoleLoginUrlRequest has unknown keys!", "")
 	}
@@ -264,7 +272,7 @@ type CreateSignUrlsRequest struct {
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 签署链接类型，默认：“WEIXINAPP”-直接跳小程序; “CHANNEL”-跳转H5页面
+	// 签署链接类型，默认：“WEIXINAPP”-直接跳小程序; “CHANNEL”-跳转H5页面; “APP”-第三方APP或小程序跳转电子签小程序;
 	Endpoint *string `json:"Endpoint,omitempty" name:"Endpoint"`
 
 	// 签署完成后H5引导页跳转URL
@@ -325,6 +333,9 @@ type DescribeTemplatesRequest struct {
 
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 模版唯一标识,可以通过模版列表处获取
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
 func (r *DescribeTemplatesRequest) ToJsonString() string {
@@ -341,6 +352,7 @@ func (r *DescribeTemplatesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Agent")
 	delete(f, "Operator")
+	delete(f, "TemplateId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTemplatesRequest has unknown keys!", "")
 	}
@@ -469,6 +481,12 @@ type FlowApproverInfo struct {
 
 	// 签署完回调url
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 签署人类型，PERSON和ORGANIZATION
+	ApproverType *string `json:"ApproverType,omitempty" name:"ApproverType"`
+
+	// 用户侧第三方id
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 }
 
 type FlowInfo struct {
@@ -602,6 +620,33 @@ type ProxyOrganizationOperator struct {
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 }
 
+type Recipient struct {
+
+	// 签署人唯一标识
+	RecipientId *string `json:"RecipientId,omitempty" name:"RecipientId"`
+
+	// 签署方类型：ENTERPRISE-企业INDIVIDUAL-自然人
+	RecipientType *string `json:"RecipientType,omitempty" name:"RecipientType"`
+
+	// 描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 签署方备注信息
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+
+	// 是否需要校验
+	RequireValidation *bool `json:"RequireValidation,omitempty" name:"RequireValidation"`
+
+	// 是否必须填写
+	RequireSign *bool `json:"RequireSign,omitempty" name:"RequireSign"`
+
+	// 签署类型
+	SignType *int64 `json:"SignType,omitempty" name:"SignType"`
+
+	// 签署顺序：数字越小优先级越高
+	RoutingOrder *int64 `json:"RoutingOrder,omitempty" name:"RoutingOrder"`
+}
+
 type SignUrlInfo struct {
 
 	// 签署链接
@@ -651,6 +696,17 @@ type SignUrlInfo struct {
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 }
 
+type SyncFailReason struct {
+
+	// 经办人Id
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 失败原因
+	// 例如：Id不符合规范、证件号码不合法等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
+}
+
 type SyncProxyOrganizationOperatorsRequest struct {
 	*tchttp.BaseRequest
 
@@ -692,6 +748,16 @@ func (r *SyncProxyOrganizationOperatorsRequest) FromJsonString(s string) error {
 type SyncProxyOrganizationOperatorsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
+		// Status 同步状态,全部同步失败接口会直接报错
+	// 1-成功 
+	// 2-部分成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 同步失败经办人及其失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FailedList []*SyncFailReason `json:"FailedList,omitempty" name:"FailedList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -794,6 +860,12 @@ type TemplateInfo struct {
 
 	// 模板创建的时间戳（精确到秒）
 	CreatedOn *int64 `json:"CreatedOn,omitempty" name:"CreatedOn"`
+
+	// 模板类型：1-静默签；2-静默签授权；3-普通模版
+	TemplateType *int64 `json:"TemplateType,omitempty" name:"TemplateType"`
+
+	// 模板中的流程参与人信息
+	Recipients []*Recipient `json:"Recipients,omitempty" name:"Recipients"`
 }
 
 type UsageDetail struct {

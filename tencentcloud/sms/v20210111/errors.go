@@ -71,6 +71,9 @@ const (
 	// 此模板已经通过审核，无法再次进行修改。
 	FAILEDOPERATION_TEMPLATEALREADYPASSEDCHECK = "FailedOperation.TemplateAlreadyPassedCheck"
 
+	// 模板或签名 ID 不存在。
+	FAILEDOPERATION_TEMPLATEIDNOTEXIST = "FailedOperation.TemplateIdNotExist"
+
 	// 模板未审批或内容不匹配。（1）可登陆 [短信控制台](https://console.cloud.tencent.com/smsv2)，核查模板是否已审批并审批通过；（2）核查是否符合 [格式规范](https://cloud.tencent.com/document/product/382/9558#.E8.BF.94.E5.9B.9E1014.E9.94.99.E8.AF.AF.E5.A6.82.E4.BD.95.E5.A4.84.E7.90.86.EF.BC.9F)，若存在疑问可联系 [腾讯云短信小助手](https://tccc.qcloud.com/web/im/index.html#/chat?webAppId=8fa15978f85cb41f7e2ea36920cb3ae1&title=Sms)。
 	FAILEDOPERATION_TEMPLATEINCORRECTORUNAPPROVED = "FailedOperation.TemplateIncorrectOrUnapproved"
 
@@ -221,13 +224,13 @@ const (
 	// 欠费被停止服务，可自行登录腾讯云充值来缴清欠款。
 	UNAUTHORIZEDOPERATION_SERIVCESUSPENDDUETOARREARS = "UnauthorizedOperation.SerivceSuspendDueToArrears"
 
-	// SmsSdkAppId 校验失败，请检查[SmsSdkAppId](https://console.cloud.tencent.com/smsv2/app-manage)是否属于[云API密钥](https://console.cloud.tencent.com/cam/capi)的关联账户。
+	// SmsSdkAppId 校验失败，请检查 [SmsSdkAppId](https://console.cloud.tencent.com/smsv2/app-manage) 是否属于 [云API密钥](https://console.cloud.tencent.com/cam/capi) 的关联账户。
 	UNAUTHORIZEDOPERATION_SMSSDKAPPIDVERIFYFAIL = "UnauthorizedOperation.SmsSdkAppIdVerifyFail"
 
 	// 不支持该请求。
 	UNSUPPORTEDOPERATION_ = "UnsupportedOperation."
 
-	// 群发请求里既有国内手机号也有国际手机号。
+	// 群发请求里既有国内手机号也有国际手机号。请排查是否存在（1）使用国内签名或模板却发送国际手机号；（2）使用国际签名或模板却发送国内手机号；
 	UNSUPPORTEDOPERATION_CONTAINDOMESTICANDINTERNATIONALPHONENUMBER = "UnsupportedOperation.ContainDomesticAndInternationalPhoneNumber"
 
 	// 不支持该地区短信下发。

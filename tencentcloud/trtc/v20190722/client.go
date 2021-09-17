@@ -959,9 +959,11 @@ func NewStartMCUMixTranscodeResponse() (response *StartMCUMixTranscodeResponse) 
 //
 // 注意：
 //
-// 1、2020年1月9号及以后创建的应用才能直接调用此接口。2020年1月9日之前创建的应用默认使用云直播的云端混流，如需切换至MCU混流，请[提交工单](https://console.cloud.tencent.com/workorder/category)寻求帮助。
+// 1、**混流转码为收费功能，调用接口将产生云端混流转码费用，详见[云端混流转码计费说明](https://cloud.tencent.com/document/product/647/49446)。**
 //
-// 2、客户端混流和服务端混流不能混用。
+// 2、2020年1月9号及以后创建的应用才能直接调用此接口。2020年1月9日之前创建的应用默认使用云直播的云端混流，如需切换至MCU混流，请[提交工单](https://console.cloud.tencent.com/workorder/category)寻求帮助。
+//
+// 3、客户端混流和服务端混流不能混用。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_REQUESTREJECTION = "FailedOperation.RequestRejection"
@@ -1057,9 +1059,11 @@ func NewStartMCUMixTranscodeByStrRoomIdResponse() (response *StartMCUMixTranscod
 //
 // 注意：
 //
-// 1、2020年1月9号及以后创建的应用才能直接调用此接口。2020年1月9日之前创建的应用默认使用云直播的云端混流，如需切换至MCU混流，请[提交工单](https://console.cloud.tencent.com/workorder/category)寻求帮助。
+// 1、**混流转码为收费功能，调用接口将产生云端混流转码费用，详见[云端混流转码计费说明](https://cloud.tencent.com/document/product/647/49446)。**
 //
-// 2、客户端混流和服务端混流不能混用。
+// 2、2020年1月9号及以后创建的应用才能直接调用此接口。2020年1月9日之前创建的应用默认使用云直播的云端混流，如需切换至MCU混流，请[提交工单](https://console.cloud.tencent.com/workorder/category)寻求帮助。
+//
+// 3、客户端混流和服务端混流不能混用。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_REQUESTREJECTION = "FailedOperation.RequestRejection"

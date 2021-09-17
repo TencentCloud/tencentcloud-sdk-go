@@ -194,6 +194,9 @@ const (
 	// 存储空间不足，请查看会员权益，购买资源包或会员版本后继续使用。
 	LIMITEXCEEDED_BILLITEMSTORAGE = "LimitExceeded.BillItemStorage"
 
+	// 您已达到导出视频时长上限，若还需使用，请升级会员版本或购买资源包。
+	LIMITEXCEEDED_BILLITEMVIDEOEDITEXPORTDURATION = "LimitExceeded.BillItemVideoEditExportDuration"
+
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
 

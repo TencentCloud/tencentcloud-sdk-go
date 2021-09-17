@@ -143,6 +143,9 @@ const (
 	// 目的网段和当前VPC的CIDR冲突。
 	INVALIDPARAMETERVALUE_VPCCIDRCONFLICT = "InvalidParameterValue.VpcCidrConflict"
 
+	// 当前功能不支持此专线网关。
+	INVALIDPARAMETERVALUE_VPGTYPENOTMATCH = "InvalidParameterValue.VpgTypeNotMatch"
+
 	// 目的网段和当前VPN通道的CIDR冲突。
 	INVALIDPARAMETERVALUE_VPNCONNCIDRCONFLICT = "InvalidParameterValue.VpnConnCidrConflict"
 

@@ -961,6 +961,7 @@ func NewExportVideoByEditorTrackDataResponse() (response *ExportVideoByEditorTra
 //  INVALIDPARAMETERVALUE_TRACKDATA = "InvalidParameterValue.TrackData"
 //  INVALIDPARAMETERVALUE_VODSUBAPPID = "InvalidParameterValue.VodSubAppid"
 //  LIMITEXCEEDED_BILLITEMSTORAGE = "LimitExceeded.BillItemStorage"
+//  LIMITEXCEEDED_BILLITEMVIDEOEDITEXPORTDURATION = "LimitExceeded.BillItemVideoEditExportDuration"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -1007,6 +1008,7 @@ func NewExportVideoByTemplateResponse() (response *ExportVideoByTemplateResponse
 //  INVALIDPARAMETERVALUE_VIDEOEDITTEMPLATEIDNOTEXIST = "InvalidParameterValue.VideoEditTemplateIdNotExist"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_BILLITEMSTORAGE = "LimitExceeded.BillItemStorage"
+//  LIMITEXCEEDED_BILLITEMVIDEOEDITEXPORTDURATION = "LimitExceeded.BillItemVideoEditExportDuration"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ExportVideoByTemplate(request *ExportVideoByTemplateRequest) (response *ExportVideoByTemplateResponse, err error) {
@@ -1043,6 +1045,7 @@ func NewExportVideoByVideoSegmentationDataResponse() (response *ExportVideoByVid
 //  INVALIDPARAMETERVALUE_EXPORTDESTINATION = "InvalidParameterValue.ExportDestination"
 //  INVALIDPARAMETERVALUE_PROJECTID = "InvalidParameterValue.ProjectId"
 //  LIMITEXCEEDED_BILLITEMSTORAGE = "LimitExceeded.BillItemStorage"
+//  LIMITEXCEEDED_BILLITEMVIDEOEDITEXPORTDURATION = "LimitExceeded.BillItemVideoEditExportDuration"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 func (c *Client) ExportVideoByVideoSegmentationData(request *ExportVideoByVideoSegmentationDataRequest) (response *ExportVideoByVideoSegmentationDataResponse, err error) {
     if request == nil {
@@ -1086,6 +1089,7 @@ func NewExportVideoEditProjectResponse() (response *ExportVideoEditProjectRespon
 //  INVALIDPARAMETERVALUE_TRACKDATA = "InvalidParameterValue.TrackData"
 //  INVALIDPARAMETERVALUE_VODSUBAPPID = "InvalidParameterValue.VodSubAppid"
 //  LIMITEXCEEDED_BILLITEMSTORAGE = "LimitExceeded.BillItemStorage"
+//  LIMITEXCEEDED_BILLITEMVIDEOEDITEXPORTDURATION = "LimitExceeded.BillItemVideoEditExportDuration"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"

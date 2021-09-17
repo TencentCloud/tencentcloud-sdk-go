@@ -53,6 +53,61 @@ type AclResponse struct {
 	AclList []*Acl `json:"AclList,omitempty" name:"AclList"`
 }
 
+type AclRule struct {
+
+	// Acl规则名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 匹配类型，目前只支持前缀匹配，枚举值列表：PREFIXED
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PatternType *string `json:"PatternType,omitempty" name:"PatternType"`
+
+	// 表示前缀匹配的前缀的值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pattern *string `json:"Pattern,omitempty" name:"Pattern"`
+
+	// Acl资源类型,目前只支持Topic,枚举值列表：Topic
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 该规则所包含的ACL信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AclList *string `json:"AclList,omitempty" name:"AclList"`
+
+	// 规则所创建的时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTimeStamp *string `json:"CreateTimeStamp,omitempty" name:"CreateTimeStamp"`
+
+	// 预设ACL规则是否应用到新增的topic中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsApplied *int64 `json:"IsApplied,omitempty" name:"IsApplied"`
+
+	// 规则更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTimeStamp *string `json:"UpdateTimeStamp,omitempty" name:"UpdateTimeStamp"`
+
+	// 规则的备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 其中一个显示的对应的TopicName
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// 应用该ACL规则的Topic数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicCount *int64 `json:"TopicCount,omitempty" name:"TopicCount"`
+
+	// patternType的中文显示
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PatternTypeTitle *string `json:"PatternTypeTitle,omitempty" name:"PatternTypeTitle"`
+}
+
 type AclRuleInfo struct {
 
 	// Acl操作方式，枚举值(所有操作: All, 读：Read，写：Write)
@@ -647,6 +702,12 @@ type CreateTopicRequest struct {
 
 	// Segment分片滚动的时长，单位ms，当前最小为3600000ms
 	SegmentMs *int64 `json:"SegmentMs,omitempty" name:"SegmentMs"`
+
+	// 预设ACL规则, 1:打开  0:关闭，默认不打开
+	EnableAclRule *int64 `json:"EnableAclRule,omitempty" name:"EnableAclRule"`
+
+	// 预设ACL规则的名称
+	AclRuleName *string `json:"AclRuleName,omitempty" name:"AclRuleName"`
 }
 
 func (r *CreateTopicRequest) ToJsonString() string {
@@ -673,6 +734,8 @@ func (r *CreateTopicRequest) FromJsonString(s string) error {
 	delete(f, "UncleanLeaderElectionEnable")
 	delete(f, "RetentionMs")
 	delete(f, "SegmentMs")
+	delete(f, "EnableAclRule")
+	delete(f, "AclRuleName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTopicRequest has unknown keys!", "")
 	}
@@ -1890,6 +1953,9 @@ type DescribeTopicDetailRequest struct {
 
 	// 返回数量，不填则默认 10，最大值20，取值要大于0
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// Acl预设策略名称
+	AclRuleName *string `json:"AclRuleName,omitempty" name:"AclRuleName"`
 }
 
 func (r *DescribeTopicDetailRequest) ToJsonString() string {
@@ -1908,6 +1974,7 @@ func (r *DescribeTopicDetailRequest) FromJsonString(s string) error {
 	delete(f, "SearchWord")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "AclRuleName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopicDetailRequest has unknown keys!", "")
 	}
@@ -1951,6 +2018,9 @@ type DescribeTopicRequest struct {
 
 	// 返回数量，不填则默认为10，最大值为50
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// Acl预设策略名称
+	AclRuleName *string `json:"AclRuleName,omitempty" name:"AclRuleName"`
 }
 
 func (r *DescribeTopicRequest) ToJsonString() string {
@@ -1969,6 +2039,7 @@ func (r *DescribeTopicRequest) FromJsonString(s string) error {
 	delete(f, "SearchWord")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "AclRuleName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopicRequest has unknown keys!", "")
 	}
@@ -2904,6 +2975,15 @@ type ModifyTopicAttributesRequest struct {
 
 	// 消息删除策略，可以选择delete 或者compact
 	CleanUpPolicy *string `json:"CleanUpPolicy,omitempty" name:"CleanUpPolicy"`
+
+	// Ip白名单列表，配额限制，enableWhileList=1时必选
+	IpWhiteList []*string `json:"IpWhiteList,omitempty" name:"IpWhiteList"`
+
+	// 预设ACL规则, 1:打开  0:关闭，默认不打开
+	EnableAclRule *int64 `json:"EnableAclRule,omitempty" name:"EnableAclRule"`
+
+	// 预设ACL规则的名称
+	AclRuleName *string `json:"AclRuleName,omitempty" name:"AclRuleName"`
 }
 
 func (r *ModifyTopicAttributesRequest) ToJsonString() string {
@@ -2928,6 +3008,9 @@ func (r *ModifyTopicAttributesRequest) FromJsonString(s string) error {
 	delete(f, "SegmentMs")
 	delete(f, "MaxMessageBytes")
 	delete(f, "CleanUpPolicy")
+	delete(f, "IpWhiteList")
+	delete(f, "EnableAclRule")
+	delete(f, "AclRuleName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTopicAttributesRequest has unknown keys!", "")
 	}
@@ -3126,6 +3209,14 @@ type TopicAttributesResponse struct {
 
 	// 分区详情
 	Partitions []*TopicPartitionDO `json:"Partitions,omitempty" name:"Partitions"`
+
+	// ACL预设策略开关，1：打开； 0：关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableAclRule *int64 `json:"EnableAclRule,omitempty" name:"EnableAclRule"`
+
+	// 预设策略列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AclRuleList []*AclRule `json:"AclRuleList,omitempty" name:"AclRuleList"`
 }
 
 type TopicDetail struct {
@@ -3172,6 +3263,10 @@ type TopicDetail struct {
 	// 消息保留时间配置(用于动态配置变更记录)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RetentionTimeConfig *TopicRetentionTimeConfigRsp `json:"RetentionTimeConfig,omitempty" name:"RetentionTimeConfig"`
+
+	// 0:正常，1：已删除，2：删除中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
 type TopicDetailResponse struct {

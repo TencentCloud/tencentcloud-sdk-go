@@ -125,7 +125,7 @@ const (
 	// State JSON对象中包含非法节点。
 	INVALIDPARAMETERVALUE_JSONHASINVALIDNODE = "InvalidParameterValue.JSONHasInvalidNode"
 
-	// State JSON对象超过大小限制，最大为 64k。
+	// State JSON对象超过大小限制，最大为 8k。
 	INVALIDPARAMETERVALUE_JSONSIZEEXCEEDLIMIT = "InvalidParameterValue.JSONSizeExceedLimit"
 
 	// 请求中缺少关键字段信息。

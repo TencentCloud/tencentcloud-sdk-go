@@ -715,6 +715,41 @@ func (c *Client) CreateEKSCluster(request *CreateEKSClusterRequest) (response *C
     return
 }
 
+func NewCreateEKSContainerInstancesRequest() (request *CreateEKSContainerInstancesRequest) {
+    request = &CreateEKSContainerInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "CreateEKSContainerInstances")
+    return
+}
+
+func NewCreateEKSContainerInstancesResponse() (response *CreateEKSContainerInstancesResponse) {
+    response = &CreateEKSContainerInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateEKSContainerInstances
+// 创建容器实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
+//  INTERNALERROR_CMDTIMEOUT = "InternalError.CmdTimeout"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateEKSContainerInstances(request *CreateEKSContainerInstancesRequest) (response *CreateEKSContainerInstancesResponse, err error) {
+    if request == nil {
+        request = NewCreateEKSContainerInstancesRequest()
+    }
+    response = NewCreateEKSContainerInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePrometheusAlertRuleRequest() (request *CreatePrometheusAlertRuleRequest) {
     request = &CreatePrometheusAlertRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1165,6 +1200,42 @@ func (c *Client) DeleteEKSCluster(request *DeleteEKSClusterRequest) (response *D
         request = NewDeleteEKSClusterRequest()
     }
     response = NewDeleteEKSClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteEKSContainerInstancesRequest() (request *DeleteEKSContainerInstancesRequest) {
+    request = &DeleteEKSContainerInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DeleteEKSContainerInstances")
+    return
+}
+
+func NewDeleteEKSContainerInstancesResponse() (response *DeleteEKSContainerInstancesResponse) {
+    response = &DeleteEKSContainerInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteEKSContainerInstances
+// 删除容器实例，可批量删除
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
+//  INTERNALERROR_CONTAINERNOTFOUND = "InternalError.ContainerNotFound"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteEKSContainerInstances(request *DeleteEKSContainerInstancesRequest) (response *DeleteEKSContainerInstancesResponse, err error) {
+    if request == nil {
+        request = NewDeleteEKSContainerInstancesRequest()
+    }
+    response = NewDeleteEKSContainerInstancesResponse()
     err = c.Send(request, response)
     return
 }
@@ -1931,6 +2002,42 @@ func (c *Client) DescribeEKSClusters(request *DescribeEKSClustersRequest) (respo
     return
 }
 
+func NewDescribeEKSContainerInstanceEventRequest() (request *DescribeEKSContainerInstanceEventRequest) {
+    request = &DescribeEKSContainerInstanceEventRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeEKSContainerInstanceEvent")
+    return
+}
+
+func NewDescribeEKSContainerInstanceEventResponse() (response *DescribeEKSContainerInstanceEventResponse) {
+    response = &DescribeEKSContainerInstanceEventResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeEKSContainerInstanceEvent
+// 查询容器实例的事件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEKSContainerInstanceEvent(request *DescribeEKSContainerInstanceEventRequest) (response *DescribeEKSContainerInstanceEventResponse, err error) {
+    if request == nil {
+        request = NewDescribeEKSContainerInstanceEventRequest()
+    }
+    response = NewDescribeEKSContainerInstanceEventResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEKSContainerInstanceRegionsRequest() (request *DescribeEKSContainerInstanceRegionsRequest) {
     request = &DescribeEKSContainerInstanceRegionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1962,6 +2069,73 @@ func (c *Client) DescribeEKSContainerInstanceRegions(request *DescribeEKSContain
         request = NewDescribeEKSContainerInstanceRegionsRequest()
     }
     response = NewDescribeEKSContainerInstanceRegionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEKSContainerInstancesRequest() (request *DescribeEKSContainerInstancesRequest) {
+    request = &DescribeEKSContainerInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeEKSContainerInstances")
+    return
+}
+
+func NewDescribeEKSContainerInstancesResponse() (response *DescribeEKSContainerInstancesResponse) {
+    response = &DescribeEKSContainerInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeEKSContainerInstances
+// 查询容器实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeEKSContainerInstances(request *DescribeEKSContainerInstancesRequest) (response *DescribeEKSContainerInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeEKSContainerInstancesRequest()
+    }
+    response = NewDescribeEKSContainerInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEksContainerInstanceLogRequest() (request *DescribeEksContainerInstanceLogRequest) {
+    request = &DescribeEksContainerInstanceLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeEksContainerInstanceLog")
+    return
+}
+
+func NewDescribeEksContainerInstanceLogResponse() (response *DescribeEksContainerInstanceLogResponse) {
+    response = &DescribeEksContainerInstanceLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeEksContainerInstanceLog
+// 查询容器实例中容器日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
+//  INTERNALERROR_CONTAINERNOTFOUND = "InternalError.ContainerNotFound"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_EKSCONTAINERSTATUS = "ResourceUnavailable.EksContainerStatus"
+func (c *Client) DescribeEksContainerInstanceLog(request *DescribeEksContainerInstanceLogRequest) (response *DescribeEksContainerInstanceLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeEksContainerInstanceLogRequest()
+    }
+    response = NewDescribeEksContainerInstanceLogResponse()
     err = c.Send(request, response)
     return
 }
@@ -3039,6 +3213,37 @@ func (c *Client) RemoveNodeFromNodePool(request *RemoveNodeFromNodePoolRequest) 
     return
 }
 
+func NewRestartEKSContainerInstancesRequest() (request *RestartEKSContainerInstancesRequest) {
+    request = &RestartEKSContainerInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "RestartEKSContainerInstances")
+    return
+}
+
+func NewRestartEKSContainerInstancesResponse() (response *RestartEKSContainerInstancesResponse) {
+    response = &RestartEKSContainerInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RestartEKSContainerInstances
+// 重启弹性容器实例，支持批量操作
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) RestartEKSContainerInstances(request *RestartEKSContainerInstancesRequest) (response *RestartEKSContainerInstancesResponse, err error) {
+    if request == nil {
+        request = NewRestartEKSContainerInstancesRequest()
+    }
+    response = NewRestartEKSContainerInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSetNodePoolNodeProtectionRequest() (request *SetNodePoolNodeProtectionRequest) {
     request = &SetNodePoolNodeProtectionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3183,6 +3388,37 @@ func (c *Client) UpdateEKSCluster(request *UpdateEKSClusterRequest) (response *U
         request = NewUpdateEKSClusterRequest()
     }
     response = NewUpdateEKSClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateEKSContainerInstanceRequest() (request *UpdateEKSContainerInstanceRequest) {
+    request = &UpdateEKSContainerInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "UpdateEKSContainerInstance")
+    return
+}
+
+func NewUpdateEKSContainerInstanceResponse() (response *UpdateEKSContainerInstanceResponse) {
+    response = &UpdateEKSContainerInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateEKSContainerInstance
+// 更新容器实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateEKSContainerInstance(request *UpdateEKSContainerInstanceRequest) (response *UpdateEKSContainerInstanceResponse, err error) {
+    if request == nil {
+        request = NewUpdateEKSContainerInstanceRequest()
+    }
+    response = NewUpdateEKSContainerInstanceResponse()
     err = c.Send(request, response)
     return
 }
