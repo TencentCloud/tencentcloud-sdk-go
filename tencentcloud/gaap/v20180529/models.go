@@ -4437,6 +4437,10 @@ type DomainRuleSet struct {
 	// 2表示删除中。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainStatus *uint64 `json:"DomainStatus,omitempty" name:"DomainStatus"`
+
+	// 封禁解封状态：BANNED表示已封禁，RECOVER表示已解封或未封禁，BANNING表示封禁中，RECOVERING表示解封中，BAN_FAILED表示封禁失败，RECOVER_FAILED表示解封失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BanStatus *string `json:"BanStatus,omitempty" name:"BanStatus"`
 }
 
 type Filter struct {
@@ -6047,7 +6051,7 @@ type ProxyInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyConfigTime *uint64 `json:"ModifyConfigTime,omitempty" name:"ModifyConfigTime"`
 
-	// 通道类型
+	// 通道类型，100表示THUNDER通道，103表示微软合作通道
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyType *uint64 `json:"ProxyType,omitempty" name:"ProxyType"`
 
@@ -6066,6 +6070,10 @@ type ProxyInfo struct {
 	// 通道套餐类型：Thunder表示标准通道，Accelerator表示游戏加速器通道。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
+
+	// 封禁解封状态：BANNED表示已封禁，RECOVER表示已解封或未封禁，BANNING表示封禁中，RECOVERING表示解封中，BAN_FAILED表示封禁失败，RECOVER_FAILED表示解封失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BanStatus *string `json:"BanStatus,omitempty" name:"BanStatus"`
 }
 
 type ProxySimpleInfo struct {

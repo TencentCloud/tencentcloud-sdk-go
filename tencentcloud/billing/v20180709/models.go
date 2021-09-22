@@ -2052,7 +2052,7 @@ type DescribeDosageCosDetailByDateRequest struct {
 	// 查询用量结束时间（与开始时间同月，不支持跨月查询）
 	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
 
-	// COS 存储桶名称，可通过Get Service 接口是用来获取请求者名下的所有存储空间列表（Bucket list）https://tcloud-dev.oa.com/document/product/555/30925?!preview&!document=1
+	// COS 存储桶名称，可通过Get Service 接口是用来获取请求者名下的所有存储空间列表（Bucket list）https://cloud.tencent.com/document/product/436/8291
 	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
 }
 

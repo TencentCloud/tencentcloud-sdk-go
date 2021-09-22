@@ -168,6 +168,10 @@ type AuthorizationResouceEntityInfo struct {
 	// 授权的资源
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resource *string `json:"Resource,omitempty" name:"Resource"`
+
+	// 资源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
 }
 
 type AuthorizationUserResouceInfo struct {
@@ -191,6 +195,10 @@ type AuthorizationUserResouceInfo struct {
 	// 应用账户
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationAccounts []*string `json:"ApplicationAccounts,omitempty" name:"ApplicationAccounts"`
+
+	// 资源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
 }
 
 type CreateOrgNodeRequest struct {
@@ -781,6 +789,10 @@ type DescribeOrgResourcesAuthorizationResponse struct {
 		// 资源列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		AuthorizationOrgResourceList []*AuthorizationResouceEntityInfo `json:"AuthorizationOrgResourceList,omitempty" name:"AuthorizationOrgResourceList"`
+
+		// 资源数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

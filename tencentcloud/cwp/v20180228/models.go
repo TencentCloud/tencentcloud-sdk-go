@@ -86,6 +86,39 @@ type AssetKeyVal struct {
 	Desc *string `json:"Desc,omitempty" name:"Desc"`
 }
 
+type BanWhiteListDetail struct {
+
+	// 白名单ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 白名单别名
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 阻断来源IP
+	SrcIp *string `json:"SrcIp,omitempty" name:"SrcIp"`
+
+	// 修改白名单时间
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+	// 创建白名单时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 白名单是否全局
+	IsGlobal *bool `json:"IsGlobal,omitempty" name:"IsGlobal"`
+
+	// 机器的UUID
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 主机安全程序的UUID
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 机器IP
+	MachineIp *string `json:"MachineIp,omitempty" name:"MachineIp"`
+
+	// 机器名称
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+}
+
 type BaselineBasicInfo struct {
 
 	// 基线名称
@@ -124,6 +157,118 @@ type BaselineDetail struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
+type BaselineEffectHost struct {
+
+	// 通过项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PassCount *uint64 `json:"PassCount,omitempty" name:"PassCount"`
+
+	// 风险项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailCount *uint64 `json:"FailCount,omitempty" name:"FailCount"`
+
+	// 首次检测事件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FirstScanTime *string `json:"FirstScanTime,omitempty" name:"FirstScanTime"`
+
+	// 最后检测时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastScanTime *string `json:"LastScanTime,omitempty" name:"LastScanTime"`
+
+	// 处理状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 主机Quuid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 主机IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostIp *string `json:"HostIp,omitempty" name:"HostIp"`
+
+	// 主机别名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AliasName *string `json:"AliasName,omitempty" name:"AliasName"`
+
+	// 主机Uuid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 检测中状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxStatus *uint64 `json:"MaxStatus,omitempty" name:"MaxStatus"`
+}
+
+type BaselineEventLevelInfo struct {
+
+	// 危害等级：1-低危；2-中危；3-高危；4-严重
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventLevel *uint64 `json:"EventLevel,omitempty" name:"EventLevel"`
+
+	// 漏洞数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventCount *uint64 `json:"EventCount,omitempty" name:"EventCount"`
+}
+
+type BaselineHostTopList struct {
+
+	// 事件等级与次数列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventLevelList []*BaselineEventLevelInfo `json:"EventLevelList,omitempty" name:"EventLevelList"`
+
+	// 主机名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostName *string `json:"HostName,omitempty" name:"HostName"`
+
+	// 主机Quuid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 计算权重的分数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Score *uint64 `json:"Score,omitempty" name:"Score"`
+}
+
+type BaselineInfo struct {
+
+	// 基线名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 危害等级：1-低危；2-中危；3-高危；4-严重
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Level *uint64 `json:"Level,omitempty" name:"Level"`
+
+	// 检测项数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleCount *uint64 `json:"RuleCount,omitempty" name:"RuleCount"`
+
+	// 影响服务器数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostCount *uint64 `json:"HostCount,omitempty" name:"HostCount"`
+
+	// 通过状态:0:未通过,1:已通过
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 基线id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CategoryId *uint64 `json:"CategoryId,omitempty" name:"CategoryId"`
+
+	// 最后检测时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastScanTime *string `json:"LastScanTime,omitempty" name:"LastScanTime"`
+
+	// 检测中状态: 5
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxStatus *uint64 `json:"MaxStatus,omitempty" name:"MaxStatus"`
+
+	// 基线风险项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BaselineFailCount *uint64 `json:"BaselineFailCount,omitempty" name:"BaselineFailCount"`
+}
+
 type BaselineRuleInfo struct {
 
 	// 检测项名称
@@ -155,6 +300,25 @@ type BaselineRuleInfo struct {
 
 	// 唯一事件ID
 	EventId *uint64 `json:"EventId,omitempty" name:"EventId"`
+}
+
+type BaselineRuleTopInfo struct {
+
+	// 基线检测项名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 检测项危害等级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Level *uint64 `json:"Level,omitempty" name:"Level"`
+
+	// 事件总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventCount *uint64 `json:"EventCount,omitempty" name:"EventCount"`
+
+	// 检测项id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
 }
 
 type BashEvent struct {
@@ -363,6 +527,24 @@ type BruteAttackRule struct {
 
 	// 爆破事件失败次数
 	LoginFailTimes *uint64 `json:"LoginFailTimes,omitempty" name:"LoginFailTimes"`
+}
+
+type BruteAttackRuleList struct {
+
+	// 爆破事件发生的时间范围，单位：秒
+	TimeRange *uint64 `json:"TimeRange,omitempty" name:"TimeRange"`
+
+	// 爆破事件失败次数
+	LoginFailTimes *uint64 `json:"LoginFailTimes,omitempty" name:"LoginFailTimes"`
+
+	// 规则是否为空，为空则填充默认规则
+	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+
+	// 爆破事件发生的时间范围，单位：秒（默认规则）
+	TimeRangeDefault *uint64 `json:"TimeRangeDefault,omitempty" name:"TimeRangeDefault"`
+
+	// 爆破事件失败次数（默认规则）
+	LoginFailTimesDefault *uint64 `json:"LoginFailTimesDefault,omitempty" name:"LoginFailTimesDefault"`
 }
 
 type CancelIgnoreVulRequest struct {
@@ -2406,6 +2588,66 @@ func (r *DescribeAttackVulTypeListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeAvailableExpertServiceDetailRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeAvailableExpertServiceDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAvailableExpertServiceDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAvailableExpertServiceDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAvailableExpertServiceDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 安全管家订单
+		ExpertService []*ExpertServiceOrderInfo `json:"ExpertService,omitempty" name:"ExpertService"`
+
+		// 应急响应可用次数
+		EmergencyResponse *uint64 `json:"EmergencyResponse,omitempty" name:"EmergencyResponse"`
+
+		// 旗舰护网可用次数
+		ProtectNet *uint64 `json:"ProtectNet,omitempty" name:"ProtectNet"`
+
+		// 是否购买过安全管家
+		ExpertServiceBuy *bool `json:"ExpertServiceBuy,omitempty" name:"ExpertServiceBuy"`
+
+		// 是否购买过应急响应
+		EmergencyResponseBuy *bool `json:"EmergencyResponseBuy,omitempty" name:"EmergencyResponseBuy"`
+
+		// 是否哦购买过旗舰护网
+		ProtectNetBuy *bool `json:"ProtectNetBuy,omitempty" name:"ProtectNetBuy"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAvailableExpertServiceDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAvailableExpertServiceDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeBanModeRequest struct {
 	*tchttp.BaseRequest
 }
@@ -2551,6 +2793,133 @@ func (r *DescribeBanStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeBanWhiteListRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤条件。
+	// <li>Keywords - String - 是否必填：否 - 查询关键字 </li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeBanWhiteListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBanWhiteListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBanWhiteListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBanWhiteListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总记录数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 白名单列表
+		WhiteList []*BanWhiteListDetail `json:"WhiteList,omitempty" name:"WhiteList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBanWhiteListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBanWhiteListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBaselineAnalysisDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 基线策略id
+	StrategyId *uint64 `json:"StrategyId,omitempty" name:"StrategyId"`
+}
+
+func (r *DescribeBaselineAnalysisDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBaselineAnalysisDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StrategyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBaselineAnalysisDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBaselineAnalysisDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 最后检测时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		LatestScanTime *string `json:"LatestScanTime,omitempty" name:"LatestScanTime"`
+
+		// 是否全部服务器
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IsGlobal *uint64 `json:"IsGlobal,omitempty" name:"IsGlobal"`
+
+		// 服务器总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ScanHostCount *uint64 `json:"ScanHostCount,omitempty" name:"ScanHostCount"`
+
+		// 检测项总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ScanRuleCount *uint64 `json:"ScanRuleCount,omitempty" name:"ScanRuleCount"`
+
+		// 是否是第一次检测  1是 0不是
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IfFirstScan *uint64 `json:"IfFirstScan,omitempty" name:"IfFirstScan"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBaselineAnalysisDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBaselineAnalysisDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeBaselineBasicInfoRequest struct {
 	*tchttp.BaseRequest
 
@@ -2648,6 +3017,204 @@ func (r *DescribeBaselineDetailResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBaselineDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBaselineEffectHostListRequest struct {
+	*tchttp.BaseRequest
+
+	// 分页参数 最大100条
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页参数
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 基线id
+	BaselineId *uint64 `json:"BaselineId,omitempty" name:"BaselineId"`
+
+	// 过滤条件。
+	// <li>AliasName- String- 主机别名</li>
+	// <li>Status- Uint- 1已通过  0未通过 5检测中</li>
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
+
+	// 策略id
+	StrategyId *uint64 `json:"StrategyId,omitempty" name:"StrategyId"`
+
+	// 主机uuid数组
+	UuidList []*string `json:"UuidList,omitempty" name:"UuidList"`
+}
+
+func (r *DescribeBaselineEffectHostListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBaselineEffectHostListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "BaselineId")
+	delete(f, "Filters")
+	delete(f, "StrategyId")
+	delete(f, "UuidList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBaselineEffectHostListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBaselineEffectHostListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 记录总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 影响服务器列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		EffectHostList []*BaselineEffectHost `json:"EffectHostList,omitempty" name:"EffectHostList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBaselineEffectHostListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBaselineEffectHostListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBaselineHostTopRequest struct {
+	*tchttp.BaseRequest
+
+	// 动态top值
+	Top *uint64 `json:"Top,omitempty" name:"Top"`
+
+	// 策略id
+	StrategyId *uint64 `json:"StrategyId,omitempty" name:"StrategyId"`
+}
+
+func (r *DescribeBaselineHostTopRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBaselineHostTopRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Top")
+	delete(f, "StrategyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBaselineHostTopRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBaselineHostTopResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 主机基线策略事件Top
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		BaselineHostTopList []*BaselineHostTopList `json:"BaselineHostTopList,omitempty" name:"BaselineHostTopList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBaselineHostTopResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBaselineHostTopResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBaselineListRequest struct {
+	*tchttp.BaseRequest
+
+	// 分页参数 最大100条
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页参数
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>StrategyId- Uint64 - 基线策略id</li>
+	// <li>Status - Uint64 - 处理状态1已通过 0未通过</li>
+	// <li>Level - Uint64[] - 处理状态1已通过 0未通过</li>BaselineName 
+	// <li>BaselineName  - String - 基线名称</li>
+	// <li>Quuid- String - 主机quuid</li>
+	// <li>Uuid- String - 主机uuid</li>
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeBaselineListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBaselineListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBaselineListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBaselineListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 基线信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		BaselineList []*BaselineInfo `json:"BaselineList,omitempty" name:"BaselineList"`
+
+		// 分页查询记录总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBaselineListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBaselineListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2779,6 +3346,213 @@ func (r *DescribeBaselineScanScheduleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBaselineScanScheduleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBaselineStrategyDetailRequest struct {
+	*tchttp.BaseRequest
+
+	// 用户基线策略id
+	StrategyId *uint64 `json:"StrategyId,omitempty" name:"StrategyId"`
+}
+
+func (r *DescribeBaselineStrategyDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBaselineStrategyDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StrategyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBaselineStrategyDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBaselineStrategyDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 策略扫描通过率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PassRate *uint64 `json:"PassRate,omitempty" name:"PassRate"`
+
+		// 策略名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		StrategyName *string `json:"StrategyName,omitempty" name:"StrategyName"`
+
+		// 策略扫描周期(天)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ScanCycle *string `json:"ScanCycle,omitempty" name:"ScanCycle"`
+
+		// 定期检测时间, 该时间下发扫描
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ScanAt *string `json:"ScanAt,omitempty" name:"ScanAt"`
+
+		// 扫描范围是否全部服务器, 1:是  0:否, 为1则为全部专业版主机
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IsGlobal *uint64 `json:"IsGlobal,omitempty" name:"IsGlobal"`
+
+		// 云主机类型：
+	// cvm：腾讯云服务器
+	// bm：裸金属
+	// ecm：边缘计算主机
+	// lh: 轻量应用服务器
+	// ohter: 混合云机器
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
+
+		// 主机地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Region *string `json:"Region,omitempty" name:"Region"`
+
+		// 用户该策略下的所有主机id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Quuids []*string `json:"Quuids,omitempty" name:"Quuids"`
+
+		// 用户该策略下所有的基线id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CategoryIds []*string `json:"CategoryIds,omitempty" name:"CategoryIds"`
+
+		// 1 表示扫描过, 0没扫描过
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IfScanned *uint64 `json:"IfScanned,omitempty" name:"IfScanned"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBaselineStrategyDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBaselineStrategyDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBaselineStrategyListRequest struct {
+	*tchttp.BaseRequest
+
+	// 分页参数 最大100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页参数
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 规则开关，1：打开 0：关闭  2:全部
+	Enabled *uint64 `json:"Enabled,omitempty" name:"Enabled"`
+}
+
+func (r *DescribeBaselineStrategyListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBaselineStrategyListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Enabled")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBaselineStrategyListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBaselineStrategyListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 分页查询记录的总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 用户策略信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		StrategyList []*Strategy `json:"StrategyList,omitempty" name:"StrategyList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBaselineStrategyListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBaselineStrategyListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBaselineTopRequest struct {
+	*tchttp.BaseRequest
+
+	// 动态top值
+	Top *uint64 `json:"Top,omitempty" name:"Top"`
+
+	// 策略id
+	StrategyId *uint64 `json:"StrategyId,omitempty" name:"StrategyId"`
+}
+
+func (r *DescribeBaselineTopRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBaselineTopRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Top")
+	delete(f, "StrategyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBaselineTopRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBaselineTopResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 检测项Top列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RuleTopList []*BaselineRuleTopInfo `json:"RuleTopList,omitempty" name:"RuleTopList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBaselineTopResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBaselineTopResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2980,6 +3754,51 @@ func (r *DescribeBruteAttackListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeBruteAttackRulesRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeBruteAttackRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBruteAttackRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBruteAttackRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBruteAttackRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 爆破阻断规则列表
+		Rules []*BruteAttackRuleList `json:"Rules,omitempty" name:"Rules"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBruteAttackRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBruteAttackRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeComponentStatisticsRequest struct {
 	*tchttp.BaseRequest
 
@@ -3147,6 +3966,76 @@ func (r *DescribeESHitsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeEmergencyResponseListRequest struct {
+	*tchttp.BaseRequest
+
+	// 过滤条件。
+	// <li>Keyword- String - 是否必填：否 - 关键词过滤，</li>
+	// <li>Uuids - String - 是否必填：否 - 主机id过滤</li>
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
+
+	// 需要返回的数量，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序步长
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序方法
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段 StartTime，EndTime
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+func (r *DescribeEmergencyResponseListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEmergencyResponseListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEmergencyResponseListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEmergencyResponseListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总条数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 应急响应列表
+		List []*EmergencyResponseInfo `json:"List,omitempty" name:"List"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeEmergencyResponseListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEmergencyResponseListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeEmergencyVulListRequest struct {
 	*tchttp.BaseRequest
 
@@ -3222,6 +4111,136 @@ func (r *DescribeEmergencyVulListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeEmergencyVulListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeExpertServiceListRequest struct {
+	*tchttp.BaseRequest
+
+	// 过滤条件。
+	// <li>Keyword- String - 是否必填：否 - 关键词过滤，</li>
+	// <li>Uuids - String - 是否必填：否 - 主机id过滤</li>
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
+
+	// 需要返回的数量，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序步长
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序方法
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段 StartTime，EndTime
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+func (r *DescribeExpertServiceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExpertServiceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExpertServiceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeExpertServiceListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总条数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 安全管家数据
+		List []*SecurityButlerInfo `json:"List,omitempty" name:"List"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeExpertServiceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExpertServiceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeExpertServiceOrderListRequest struct {
+	*tchttp.BaseRequest
+
+	// <li>InquireType- String - 是否必填：否 - 订单类型过滤，</li>
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
+
+	// 分页条数 最大100条
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页步长
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeExpertServiceOrderListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExpertServiceOrderListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExpertServiceOrderListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeExpertServiceOrderListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总条数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 订单列表
+		List []*ExpertServiceOrderInfo `json:"List,omitempty" name:"List"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeExpertServiceOrderListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExpertServiceOrderListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3641,6 +4660,76 @@ func (r *DescribeIgnoreBaselineRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeIgnoreBaselineRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeIgnoreRuleEffectHostListRequest struct {
+	*tchttp.BaseRequest
+
+	// 分页参数 最大100条
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页参数
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 检测项id
+	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 过滤条件。
+	// <li>AliasName- String- 主机别名</li>
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
+
+	// 主机标签名
+	TagNames []*string `json:"TagNames,omitempty" name:"TagNames"`
+}
+
+func (r *DescribeIgnoreRuleEffectHostListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIgnoreRuleEffectHostListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "RuleId")
+	delete(f, "Filters")
+	delete(f, "TagNames")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIgnoreRuleEffectHostListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeIgnoreRuleEffectHostListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 忽略检测项影响主机列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IgnoreRuleEffectHostList []*IgnoreRuleEffectHostInfo `json:"IgnoreRuleEffectHostList,omitempty" name:"IgnoreRuleEffectHostList"`
+
+		// 分页查询记录总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeIgnoreRuleEffectHostListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIgnoreRuleEffectHostListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4383,6 +5472,70 @@ func (r *DescribeMalWareListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeMalWareListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMaliciousRequestWhiteListRequest struct {
+	*tchttp.BaseRequest
+
+	// 分页参数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页参数
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// 
+	// <li>Domain  - String - 基线名称</li>
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeMaliciousRequestWhiteListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMaliciousRequestWhiteListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMaliciousRequestWhiteListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMaliciousRequestWhiteListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 白名单信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		List []*MaliciousRequestWhiteListInfo `json:"List,omitempty" name:"List"`
+
+		// 分页查询记录总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeMaliciousRequestWhiteListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMaliciousRequestWhiteListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5219,6 +6372,76 @@ func (r *DescribeProtectDirRelatedServerResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeProtectNetListRequest struct {
+	*tchttp.BaseRequest
+
+	// 过滤条件。
+	// <li>Keyword- String - 是否必填：否 - 关键词过滤，</li>
+	// <li>Uuids - String - 是否必填：否 - 主机id过滤</li>
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
+
+	// 需要返回的数量，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序步长
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序方法
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段 StartTime，EndTime
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+func (r *DescribeProtectNetListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProtectNetListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProtectNetListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProtectNetListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总条数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 安全管家数据
+		List []*ProtectNetInfo `json:"List,omitempty" name:"List"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeProtectNetListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProtectNetListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeReverseShellEventsRequest struct {
 	*tchttp.BaseRequest
 
@@ -5736,6 +6959,55 @@ func (r *DescribeScanTaskDetailsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeScanTaskDetailsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeScanTaskStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 模块类型 当前提供 Malware 木马 , Vul 漏洞 , Baseline 基线
+	ModuleType *string `json:"ModuleType,omitempty" name:"ModuleType"`
+}
+
+func (r *DescribeScanTaskStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScanTaskStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModuleType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScanTaskStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeScanTaskStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务扫描状态列表
+		State *TaskStatus `json:"State,omitempty" name:"State"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeScanTaskStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScanTaskStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6740,6 +8012,60 @@ func (r *DescribeVulHostCountScanTimeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeVulHostTopRequest struct {
+	*tchttp.BaseRequest
+
+	// 获取top值，1-100
+	Top *uint64 `json:"Top,omitempty" name:"Top"`
+
+	// 1: web应用漏洞 2=系统组件漏洞3:安全基线 4: Linux系统漏洞 5: windows补丁 6:应急漏洞
+	VulCategory *uint64 `json:"VulCategory,omitempty" name:"VulCategory"`
+}
+
+func (r *DescribeVulHostTopRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulHostTopRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Top")
+	delete(f, "VulCategory")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulHostTopRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVulHostTopResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 服务器风险top列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VulHostTopList []*VulHostTopInfo `json:"VulHostTopList,omitempty" name:"VulHostTopList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVulHostTopResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulHostTopResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeVulInfoCvssRequest struct {
 	*tchttp.BaseRequest
 
@@ -7397,6 +8723,27 @@ type EffectiveMachineInfo struct {
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 }
 
+type EmergencyResponseInfo struct {
+
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 主机个数
+	HostNum *uint64 `json:"HostNum,omitempty" name:"HostNum"`
+
+	// 服务状态 0未启动，·响应中，2响应完成
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 服务开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 服务结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 报告下载地址
+	ReportPath *string `json:"ReportPath,omitempty" name:"ReportPath"`
+}
+
 type EmergencyVul struct {
 
 	// 漏洞id
@@ -7422,6 +8769,30 @@ type EmergencyVul struct {
 
 	// 扫描进度
 	Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
+}
+
+type ExpertServiceOrderInfo struct {
+
+	// 订单id
+	OrderId *uint64 `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 订单类型 1应急 2 旗舰护网 3 安全管家
+	InquireType *uint64 `json:"InquireType,omitempty" name:"InquireType"`
+
+	// 服务数量
+	InquireNum *uint64 `json:"InquireNum,omitempty" name:"InquireNum"`
+
+	// 服务开始时间
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 服务结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 服务时长几个月
+	ServiceTime *uint64 `json:"ServiceTime,omitempty" name:"ServiceTime"`
+
+	// 订单状态 0 未启动 1 服务中 2已过期 3完成，4退费销毁
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
 }
 
 type ExportAssetCoreModuleListRequest struct {
@@ -8374,6 +9745,59 @@ func (r *ExportScanTaskDetailsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ExportSecurityTrendsRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始时间。
+	BeginDate *string `json:"BeginDate,omitempty" name:"BeginDate"`
+
+	// 结束时间。
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+}
+
+func (r *ExportSecurityTrendsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportSecurityTrendsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BeginDate")
+	delete(f, "EndDate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportSecurityTrendsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ExportSecurityTrendsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 导出文件下载链接地址。
+		DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ExportSecurityTrendsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportSecurityTrendsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ExportTasksRequest struct {
 	*tchttp.BaseRequest
 
@@ -8917,6 +10341,37 @@ func (r *IgnoreImpactedHostsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type IgnoreRuleEffectHostInfo struct {
+
+	// 主机名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostName *string `json:"HostName,omitempty" name:"HostName"`
+
+	// 危害等级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Level *uint64 `json:"Level,omitempty" name:"Level"`
+
+	// 主机标签数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagList []*string `json:"TagList,omitempty" name:"TagList"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 最后检测事件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastScanTime *string `json:"LastScanTime,omitempty" name:"LastScanTime"`
+
+	// 事件id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventId *uint64 `json:"EventId,omitempty" name:"EventId"`
+
+	// 主机quuid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+}
+
 type InquiryPriceOpenProVersionPrepaidRequest struct {
 	*tchttp.BaseRequest
 
@@ -9190,6 +10645,24 @@ type MalWareList struct {
 
 	// 最近扫描时间
 	LatestScanTime *string `json:"LatestScanTime,omitempty" name:"LatestScanTime"`
+}
+
+type MaliciousRequestWhiteListInfo struct {
+
+	// 白名单id
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 备注
+	Mark *string `json:"Mark,omitempty" name:"Mark"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
 }
 
 type MalwareInfo struct {
@@ -10225,6 +11698,27 @@ type ProtectMachineInfo struct {
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 }
 
+type ProtectNetInfo struct {
+
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 护网天数
+	ProtectDays *uint64 `json:"ProtectDays,omitempty" name:"ProtectDays"`
+
+	// 护网状态 0未启动，1护网中，2已完成
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 护网启动时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 护网完成时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 报告下载地址
+	ReportPath *string `json:"ReportPath,omitempty" name:"ReportPath"`
+}
+
 type ProtectStat struct {
 
 	// 名称
@@ -10889,6 +12383,39 @@ type SearchTemplate struct {
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 }
 
+type SecurityButlerInfo struct {
+
+	// 数据id
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 订单id
+	OrderId *uint64 `json:"OrderId,omitempty" name:"OrderId"`
+
+	// cvm id
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 服务状态 0-服务中,1-已到期 2已销毁
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 服务开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 服务结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 主机名称
+	HostName *string `json:"HostName,omitempty" name:"HostName"`
+
+	// 主机Ip
+	HostIp *string `json:"HostIp,omitempty" name:"HostIp"`
+
+	// 主机 uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 主机风险数
+	RiskCount *uint64 `json:"RiskCount,omitempty" name:"RiskCount"`
+}
+
 type SecurityDynamic struct {
 
 	// 云镜客户端UUID。
@@ -11084,6 +12611,49 @@ func (r *StopNoticeBanTipsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Strategy struct {
+
+	// 策略名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StrategyName *string `json:"StrategyName,omitempty" name:"StrategyName"`
+
+	// 策略id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StrategyId *uint64 `json:"StrategyId,omitempty" name:"StrategyId"`
+
+	// 基线检测项总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleCount *uint64 `json:"RuleCount,omitempty" name:"RuleCount"`
+
+	// 主机数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostCount *uint64 `json:"HostCount,omitempty" name:"HostCount"`
+
+	// 扫描周期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanCycle *uint64 `json:"ScanCycle,omitempty" name:"ScanCycle"`
+
+	// 扫描时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanAt *string `json:"ScanAt,omitempty" name:"ScanAt"`
+
+	// 是否可用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enabled *uint64 `json:"Enabled,omitempty" name:"Enabled"`
+
+	// 通过率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PassRate *uint64 `json:"PassRate,omitempty" name:"PassRate"`
+
+	// 基线id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CategoryIds *string `json:"CategoryIds,omitempty" name:"CategoryIds"`
+
+	// 是否默认策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDefault *uint64 `json:"IsDefault,omitempty" name:"IsDefault"`
+}
+
 type SwitchBashRulesRequest struct {
 	*tchttp.BaseRequest
 
@@ -11227,6 +12797,22 @@ type TagMachine struct {
 
 	// 主机区域类型
 	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
+}
+
+type TaskStatus struct {
+
+	// 扫描中（包含初始化）
+	Scanning *string `json:"Scanning,omitempty" name:"Scanning"`
+
+	// 扫描终止（包含终止中）
+	Ok *string `json:"Ok,omitempty" name:"Ok"`
+
+	// 扫描失败
+	Fail *string `json:"Fail,omitempty" name:"Fail"`
+
+	// 扫描失败（提示具体原因：扫描超时、客户端版本低、客户端离线）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Stop *string `json:"Stop,omitempty" name:"Stop"`
 }
 
 type TrustMalwaresRequest struct {
@@ -11514,6 +13100,34 @@ type VulDetailInfo struct {
 
 	// 发布时间
 	PublishTime *string `json:"PublishTime,omitempty" name:"PublishTime"`
+}
+
+type VulHostTopInfo struct {
+
+	// 主机名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostName *string `json:"HostName,omitempty" name:"HostName"`
+
+	// 漏洞等级与数量统计列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VulLevelList []*VulLevelCountInfo `json:"VulLevelList,omitempty" name:"VulLevelList"`
+
+	// 主机Quuid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// top评分
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Score *uint64 `json:"Score,omitempty" name:"Score"`
+}
+
+type VulLevelCountInfo struct {
+
+	// 漏洞等级
+	VulLevel *uint64 `json:"VulLevel,omitempty" name:"VulLevel"`
+
+	// 漏洞数量
+	VulCount *uint64 `json:"VulCount,omitempty" name:"VulCount"`
 }
 
 type VulLevelInfo struct {

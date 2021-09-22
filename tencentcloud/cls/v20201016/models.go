@@ -2262,9 +2262,9 @@ func (r *DescribeConfigMachineGroupsResponse) FromJsonString(s string) error {
 type DescribeConfigsRequest struct {
 	*tchttp.BaseRequest
 
-	// <br><li> name
+	// <br><li> configName
 	// 
-	// 按照【采集配置名称】进行过滤。
+	// 按照【采集配置名称】进行模糊匹配过滤。
 	// 类型：String
 	// 
 	// 必选：否
@@ -4306,7 +4306,7 @@ type SearchLogRequest struct {
 	// 查询语句，语句长度最大为4096
 	Query *string `json:"Query,omitempty" name:"Query"`
 
-	// 单次查询返回的日志条数，最大值为100
+	// 单次查询返回的原始日志条数，最大值为100。查询语句(Query)包含SQL时，针对SQL的结果条数需在Query中指定，参考https://cloud.tencent.com/document/product/614/58977
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容
@@ -4352,7 +4352,7 @@ type SearchLogResponse struct {
 		// 加载后续内容的Context
 		Context *string `json:"Context,omitempty" name:"Context"`
 
-		// 日志查询结果是否全部返回
+		// 原始日志查询结果是否全部返回。查询语句(Query)包含SQL时该参数无意义
 		ListOver *bool `json:"ListOver,omitempty" name:"ListOver"`
 
 		// 返回的是否为分析结果

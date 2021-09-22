@@ -1364,6 +1364,37 @@ func (c *Client) DescribeAttackVulTypeList(request *DescribeAttackVulTypeListReq
     return
 }
 
+func NewDescribeAvailableExpertServiceDetailRequest() (request *DescribeAvailableExpertServiceDetailRequest) {
+    request = &DescribeAvailableExpertServiceDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAvailableExpertServiceDetail")
+    return
+}
+
+func NewDescribeAvailableExpertServiceDetailResponse() (response *DescribeAvailableExpertServiceDetailResponse) {
+    response = &DescribeAvailableExpertServiceDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAvailableExpertServiceDetail
+// 专家服务-可用订单详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAvailableExpertServiceDetail(request *DescribeAvailableExpertServiceDetailRequest) (response *DescribeAvailableExpertServiceDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeAvailableExpertServiceDetailRequest()
+    }
+    response = NewDescribeAvailableExpertServiceDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBanModeRequest() (request *DescribeBanModeRequest) {
     request = &DescribeBanModeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1467,6 +1498,76 @@ func (c *Client) DescribeBanStatus(request *DescribeBanStatusRequest) (response 
     return
 }
 
+func NewDescribeBanWhiteListRequest() (request *DescribeBanWhiteListRequest) {
+    request = &DescribeBanWhiteListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeBanWhiteList")
+    return
+}
+
+func NewDescribeBanWhiteListResponse() (response *DescribeBanWhiteListResponse) {
+    response = &DescribeBanWhiteListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBanWhiteList
+// 获取阻断白名单列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeBanWhiteList(request *DescribeBanWhiteListRequest) (response *DescribeBanWhiteListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBanWhiteListRequest()
+    }
+    response = NewDescribeBanWhiteListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBaselineAnalysisDataRequest() (request *DescribeBaselineAnalysisDataRequest) {
+    request = &DescribeBaselineAnalysisDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineAnalysisData")
+    return
+}
+
+func NewDescribeBaselineAnalysisDataResponse() (response *DescribeBaselineAnalysisDataResponse) {
+    response = &DescribeBaselineAnalysisDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBaselineAnalysisData
+// 根据基线策略id查询基线策略数据概览统计
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeBaselineAnalysisData(request *DescribeBaselineAnalysisDataRequest) (response *DescribeBaselineAnalysisDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeBaselineAnalysisDataRequest()
+    }
+    response = NewDescribeBaselineAnalysisDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBaselineBasicInfoRequest() (request *DescribeBaselineBasicInfoRequest) {
     request = &DescribeBaselineBasicInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1531,6 +1632,110 @@ func (c *Client) DescribeBaselineDetail(request *DescribeBaselineDetailRequest) 
         request = NewDescribeBaselineDetailRequest()
     }
     response = NewDescribeBaselineDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBaselineEffectHostListRequest() (request *DescribeBaselineEffectHostListRequest) {
+    request = &DescribeBaselineEffectHostListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineEffectHostList")
+    return
+}
+
+func NewDescribeBaselineEffectHostListResponse() (response *DescribeBaselineEffectHostListResponse) {
+    response = &DescribeBaselineEffectHostListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBaselineEffectHostList
+// 根据基线id查询基线影响主机列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeBaselineEffectHostList(request *DescribeBaselineEffectHostListRequest) (response *DescribeBaselineEffectHostListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBaselineEffectHostListRequest()
+    }
+    response = NewDescribeBaselineEffectHostListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBaselineHostTopRequest() (request *DescribeBaselineHostTopRequest) {
+    request = &DescribeBaselineHostTopRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineHostTop")
+    return
+}
+
+func NewDescribeBaselineHostTopResponse() (response *DescribeBaselineHostTopResponse) {
+    response = &DescribeBaselineHostTopResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBaselineHostTop
+// 接口返回TopN的风险服务器
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOPROFESSIONHOST = "FailedOperation.NoProfessionHost"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeBaselineHostTop(request *DescribeBaselineHostTopRequest) (response *DescribeBaselineHostTopResponse, err error) {
+    if request == nil {
+        request = NewDescribeBaselineHostTopRequest()
+    }
+    response = NewDescribeBaselineHostTopResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBaselineListRequest() (request *DescribeBaselineListRequest) {
+    request = &DescribeBaselineListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineList")
+    return
+}
+
+func NewDescribeBaselineListResponse() (response *DescribeBaselineListResponse) {
+    response = &DescribeBaselineListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBaselineList
+// 查询基线列表信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeBaselineList(request *DescribeBaselineListRequest) (response *DescribeBaselineListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBaselineListRequest()
+    }
+    response = NewDescribeBaselineListResponse()
     err = c.Send(request, response)
     return
 }
@@ -1600,6 +1805,111 @@ func (c *Client) DescribeBaselineScanSchedule(request *DescribeBaselineScanSched
         request = NewDescribeBaselineScanScheduleRequest()
     }
     response = NewDescribeBaselineScanScheduleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBaselineStrategyDetailRequest() (request *DescribeBaselineStrategyDetailRequest) {
+    request = &DescribeBaselineStrategyDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineStrategyDetail")
+    return
+}
+
+func NewDescribeBaselineStrategyDetailResponse() (response *DescribeBaselineStrategyDetailResponse) {
+    response = &DescribeBaselineStrategyDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBaselineStrategyDetail
+// 根据基线策略id查询策略详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeBaselineStrategyDetail(request *DescribeBaselineStrategyDetailRequest) (response *DescribeBaselineStrategyDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeBaselineStrategyDetailRequest()
+    }
+    response = NewDescribeBaselineStrategyDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBaselineStrategyListRequest() (request *DescribeBaselineStrategyListRequest) {
+    request = &DescribeBaselineStrategyListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineStrategyList")
+    return
+}
+
+func NewDescribeBaselineStrategyListResponse() (response *DescribeBaselineStrategyListResponse) {
+    response = &DescribeBaselineStrategyListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBaselineStrategyList
+// 查询一个用户下的基线策略信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeBaselineStrategyList(request *DescribeBaselineStrategyListRequest) (response *DescribeBaselineStrategyListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBaselineStrategyListRequest()
+    }
+    response = NewDescribeBaselineStrategyListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBaselineTopRequest() (request *DescribeBaselineTopRequest) {
+    request = &DescribeBaselineTopRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineTop")
+    return
+}
+
+func NewDescribeBaselineTopResponse() (response *DescribeBaselineTopResponse) {
+    response = &DescribeBaselineTopResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBaselineTop
+// 根据策略id查询基线检测项TOP
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOPROFESSIONHOST = "FailedOperation.NoProfessionHost"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeBaselineTop(request *DescribeBaselineTopRequest) (response *DescribeBaselineTopResponse, err error) {
+    if request == nil {
+        request = NewDescribeBaselineTopRequest()
+    }
+    response = NewDescribeBaselineTopResponse()
     err = c.Send(request, response)
     return
 }
@@ -1713,6 +2023,35 @@ func (c *Client) DescribeBruteAttackList(request *DescribeBruteAttackListRequest
     return
 }
 
+func NewDescribeBruteAttackRulesRequest() (request *DescribeBruteAttackRulesRequest) {
+    request = &DescribeBruteAttackRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeBruteAttackRules")
+    return
+}
+
+func NewDescribeBruteAttackRulesResponse() (response *DescribeBruteAttackRulesResponse) {
+    response = &DescribeBruteAttackRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBruteAttackRules
+// 获取爆破破解规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeBruteAttackRules(request *DescribeBruteAttackRulesRequest) (response *DescribeBruteAttackRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeBruteAttackRulesRequest()
+    }
+    response = NewDescribeBruteAttackRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeComponentStatisticsRequest() (request *DescribeComponentStatisticsRequest) {
     request = &DescribeComponentStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1815,6 +2154,38 @@ func (c *Client) DescribeESHits(request *DescribeESHitsRequest) (response *Descr
     return
 }
 
+func NewDescribeEmergencyResponseListRequest() (request *DescribeEmergencyResponseListRequest) {
+    request = &DescribeEmergencyResponseListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeEmergencyResponseList")
+    return
+}
+
+func NewDescribeEmergencyResponseListResponse() (response *DescribeEmergencyResponseListResponse) {
+    response = &DescribeEmergencyResponseListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeEmergencyResponseList
+// 专家服务-应急响应列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeEmergencyResponseList(request *DescribeEmergencyResponseListRequest) (response *DescribeEmergencyResponseListResponse, err error) {
+    if request == nil {
+        request = NewDescribeEmergencyResponseListRequest()
+    }
+    response = NewDescribeEmergencyResponseListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEmergencyVulListRequest() (request *DescribeEmergencyVulListRequest) {
     request = &DescribeEmergencyVulListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1845,6 +2216,70 @@ func (c *Client) DescribeEmergencyVulList(request *DescribeEmergencyVulListReque
         request = NewDescribeEmergencyVulListRequest()
     }
     response = NewDescribeEmergencyVulListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeExpertServiceListRequest() (request *DescribeExpertServiceListRequest) {
+    request = &DescribeExpertServiceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeExpertServiceList")
+    return
+}
+
+func NewDescribeExpertServiceListResponse() (response *DescribeExpertServiceListResponse) {
+    response = &DescribeExpertServiceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeExpertServiceList
+// 专家服务-安全管家列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeExpertServiceList(request *DescribeExpertServiceListRequest) (response *DescribeExpertServiceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeExpertServiceListRequest()
+    }
+    response = NewDescribeExpertServiceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeExpertServiceOrderListRequest() (request *DescribeExpertServiceOrderListRequest) {
+    request = &DescribeExpertServiceOrderListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeExpertServiceOrderList")
+    return
+}
+
+func NewDescribeExpertServiceOrderListResponse() (response *DescribeExpertServiceOrderListResponse) {
+    response = &DescribeExpertServiceOrderListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeExpertServiceOrderList
+// 专家服务-专家服务订单列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeExpertServiceOrderList(request *DescribeExpertServiceOrderListRequest) (response *DescribeExpertServiceOrderListResponse, err error) {
+    if request == nil {
+        request = NewDescribeExpertServiceOrderListRequest()
+    }
+    response = NewDescribeExpertServiceOrderListResponse()
     err = c.Send(request, response)
     return
 }
@@ -2046,6 +2481,41 @@ func (c *Client) DescribeIgnoreBaselineRule(request *DescribeIgnoreBaselineRuleR
         request = NewDescribeIgnoreBaselineRuleRequest()
     }
     response = NewDescribeIgnoreBaselineRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIgnoreRuleEffectHostListRequest() (request *DescribeIgnoreRuleEffectHostListRequest) {
+    request = &DescribeIgnoreRuleEffectHostListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeIgnoreRuleEffectHostList")
+    return
+}
+
+func NewDescribeIgnoreRuleEffectHostListResponse() (response *DescribeIgnoreRuleEffectHostListResponse) {
+    response = &DescribeIgnoreRuleEffectHostListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeIgnoreRuleEffectHostList
+// 根据检测项id与筛选条件查询忽略检测项影响主机列表信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeIgnoreRuleEffectHostList(request *DescribeIgnoreRuleEffectHostListRequest) (response *DescribeIgnoreRuleEffectHostListResponse, err error) {
+    if request == nil {
+        request = NewDescribeIgnoreRuleEffectHostListRequest()
+    }
+    response = NewDescribeIgnoreRuleEffectHostListResponse()
     err = c.Send(request, response)
     return
 }
@@ -2409,6 +2879,40 @@ func (c *Client) DescribeMalWareList(request *DescribeMalWareListRequest) (respo
         request = NewDescribeMalWareListRequest()
     }
     response = NewDescribeMalWareListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMaliciousRequestWhiteListRequest() (request *DescribeMaliciousRequestWhiteListRequest) {
+    request = &DescribeMaliciousRequestWhiteListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeMaliciousRequestWhiteList")
+    return
+}
+
+func NewDescribeMaliciousRequestWhiteListResponse() (response *DescribeMaliciousRequestWhiteListResponse) {
+    response = &DescribeMaliciousRequestWhiteListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeMaliciousRequestWhiteList
+// 查询恶意请求白名单列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeMaliciousRequestWhiteList(request *DescribeMaliciousRequestWhiteListRequest) (response *DescribeMaliciousRequestWhiteListResponse, err error) {
+    if request == nil {
+        request = NewDescribeMaliciousRequestWhiteListRequest()
+    }
+    response = NewDescribeMaliciousRequestWhiteListResponse()
     err = c.Send(request, response)
     return
 }
@@ -2886,6 +3390,38 @@ func (c *Client) DescribeProtectDirRelatedServer(request *DescribeProtectDirRela
     return
 }
 
+func NewDescribeProtectNetListRequest() (request *DescribeProtectNetListRequest) {
+    request = &DescribeProtectNetListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeProtectNetList")
+    return
+}
+
+func NewDescribeProtectNetListResponse() (response *DescribeProtectNetListResponse) {
+    response = &DescribeProtectNetListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeProtectNetList
+// 专家服务-旗舰护网列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeProtectNetList(request *DescribeProtectNetListRequest) (response *DescribeProtectNetListResponse, err error) {
+    if request == nil {
+        request = NewDescribeProtectNetListRequest()
+    }
+    response = NewDescribeProtectNetListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeReverseShellEventsRequest() (request *DescribeReverseShellEventsRequest) {
     request = &DescribeReverseShellEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3170,6 +3706,41 @@ func (c *Client) DescribeScanTaskDetails(request *DescribeScanTaskDetailsRequest
         request = NewDescribeScanTaskDetailsRequest()
     }
     response = NewDescribeScanTaskDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeScanTaskStatusRequest() (request *DescribeScanTaskStatusRequest) {
+    request = &DescribeScanTaskStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeScanTaskStatus")
+    return
+}
+
+func NewDescribeScanTaskStatusResponse() (response *DescribeScanTaskStatusResponse) {
+    response = &DescribeScanTaskStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeScanTaskStatus
+// DescribeScanTaskStatus 查询机器扫描状态列表用于过滤筛选
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeScanTaskStatus(request *DescribeScanTaskStatusRequest) (response *DescribeScanTaskStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeScanTaskStatusRequest()
+    }
+    response = NewDescribeScanTaskStatusResponse()
     err = c.Send(request, response)
     return
 }
@@ -3718,6 +4289,41 @@ func (c *Client) DescribeVulHostCountScanTime(request *DescribeVulHostCountScanT
         request = NewDescribeVulHostCountScanTimeRequest()
     }
     response = NewDescribeVulHostCountScanTimeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVulHostTopRequest() (request *DescribeVulHostTopRequest) {
+    request = &DescribeVulHostTopRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeVulHostTop")
+    return
+}
+
+func NewDescribeVulHostTopResponse() (response *DescribeVulHostTopResponse) {
+    response = &DescribeVulHostTopResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeVulHostTop
+// 获取服务器风险top列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeVulHostTop(request *DescribeVulHostTopRequest) (response *DescribeVulHostTopResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulHostTopRequest()
+    }
+    response = NewDescribeVulHostTopResponse()
     err = c.Send(request, response)
     return
 }
@@ -4585,6 +5191,35 @@ func (c *Client) ExportScanTaskDetails(request *ExportScanTaskDetailsRequest) (r
         request = NewExportScanTaskDetailsRequest()
     }
     response = NewExportScanTaskDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExportSecurityTrendsRequest() (request *ExportSecurityTrendsRequest) {
+    request = &ExportSecurityTrendsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "ExportSecurityTrends")
+    return
+}
+
+func NewExportSecurityTrendsResponse() (response *ExportSecurityTrendsResponse) {
+    response = &ExportSecurityTrendsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ExportSecurityTrends
+// 导出风险趋势
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ExportSecurityTrends(request *ExportSecurityTrendsRequest) (response *ExportSecurityTrendsResponse, err error) {
+    if request == nil {
+        request = NewExportSecurityTrendsRequest()
+    }
+    response = NewExportSecurityTrendsResponse()
     err = c.Send(request, response)
     return
 }

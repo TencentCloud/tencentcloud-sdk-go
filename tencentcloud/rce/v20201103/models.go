@@ -43,6 +43,67 @@ type AccountInfo struct {
 	OtherAccount *OtherAccountInfo `json:"OtherAccount,omitempty" name:"OtherAccount"`
 }
 
+type DescribeRiskModelRequest struct {
+	*tchttp.BaseRequest
+
+	// 业务入参
+	BusinessSecurityData *InputDescribeRiskModelData `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
+}
+
+func (r *DescribeRiskModelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRiskModelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BusinessSecurityData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRiskModelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRiskModelResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务出参
+		Data *OutputDescribeRiskModel `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRiskModelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRiskModelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type InputDescribeRiskModelData struct {
+
+	// 业务参数加密后的签名值
+	UserData *string `json:"UserData,omitempty" name:"UserData"`
+
+	// 调用时间戳，精确到秒
+	ApplyDate *uint64 `json:"ApplyDate,omitempty" name:"ApplyDate"`
+
+	// 客户业务侧标识用户的唯一ID
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+}
+
 type InputDetails struct {
 
 	// 字段名称
@@ -273,6 +334,25 @@ type OtherAccountInfo struct {
 
 	// 用户设备号。若 AccountType 是8（设备号），则无需重复填写，否则填入对应的设备号。
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+}
+
+type OutputDescribeRiskModel struct {
+
+	// 请求返回状态值，0为成功，别的结合Message查看
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *int64 `json:"Code,omitempty" name:"Code"`
+
+	// 请求返回信息
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 请求返回结果
+	Value *OutputDescribeRiskModelValue `json:"Value,omitempty" name:"Value"`
+}
+
+type OutputDescribeRiskModelValue struct {
+
+	// 模型分数值
+	ApplyScore *float64 `json:"ApplyScore,omitempty" name:"ApplyScore"`
 }
 
 type OutputManageMarketingRisk struct {

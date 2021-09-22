@@ -8345,6 +8345,10 @@ type QuerySinglePaymentResultData struct {
 	// 代理商名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AgentName *string `json:"AgentName,omitempty" name:"AgentName"`
+
+	// 交易状态描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeStatusDesc *string `json:"TradeStatusDesc,omitempty" name:"TradeStatusDesc"`
 }
 
 type QuerySinglePaymentResultRequest struct {

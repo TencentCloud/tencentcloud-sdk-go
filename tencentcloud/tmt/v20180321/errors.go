@@ -44,6 +44,9 @@ const (
 	// 重复的SessionUuid和Seq组合。
 	INVALIDPARAMETER_DUPLICATEDSESSIONIDANDSEQ = "InvalidParameter.DuplicatedSessionIdAndSeq"
 
+	// 参数错误。
+	INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+
 	// Seq之间的间隙请不要大于2000。
 	INVALIDPARAMETER_SEQINTERVALTOOLARGE = "InvalidParameter.SeqIntervalTooLarge"
 

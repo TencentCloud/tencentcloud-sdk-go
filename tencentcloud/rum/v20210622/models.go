@@ -26,7 +26,7 @@ type CreateProjectRequest struct {
 	// 创建的项目名(不为空且最长为 200)
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 项目对应实例 id
+	// 业务系统 ID
 	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
 
 	// 项目抽样率(大于等于 0)
