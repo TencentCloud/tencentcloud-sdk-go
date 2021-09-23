@@ -3671,7 +3671,7 @@ type SetInstancesProtectionRequest struct {
 	// 实例ID。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
-	// 实例是否需要移出保护。
+	// 实例是否需要设置保护。
 	ProtectedFromScaleIn *bool `json:"ProtectedFromScaleIn,omitempty" name:"ProtectedFromScaleIn"`
 }
 

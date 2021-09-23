@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 企业收付平台(cpdp) 版本：2019-08-20
+## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 46 次发布
+### 第 78 次发布
 
-发布时间：2021-09-22 08:05:35
+发布时间：2021-09-23 08:05:21
 
 本次发布包含了以下内容：
 
@@ -12,102 +12,45 @@
 
 修改数据结构：
 
-* [QuerySinglePaymentResultData](https://cloud.tencent.com/document/api/1122/40683#QuerySinglePaymentResultData)
+* [ScdnDomain](https://cloud.tencent.com/document/api/228/30987#ScdnDomain)
 
-	* 新增成员：TradeStatusDesc
-
-
+	* 新增成员：WafLevel
 
 
-## 主机安全(cwp) 版本：2018-02-28
 
-### 第 27 次发布
 
-发布时间：2021-09-22 08:06:00
+## 智能保险助手(cii) 版本：2021-04-08
+
+### 第 4 次发布
+
+发布时间：2021-09-23 08:05:48
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增接口：
-
-* [DescribeAvailableExpertServiceDetail](https://cloud.tencent.com/document/api/296/61727)
-* [DescribeBanWhiteList](https://cloud.tencent.com/document/api/296/61722)
-* [DescribeBaselineAnalysisData](https://cloud.tencent.com/document/api/296/61717)
-* [DescribeBaselineEffectHostList](https://cloud.tencent.com/document/api/296/61716)
-* [DescribeBaselineHostTop](https://cloud.tencent.com/document/api/296/61715)
-* [DescribeBaselineList](https://cloud.tencent.com/document/api/296/61714)
-* [DescribeBaselineStrategyDetail](https://cloud.tencent.com/document/api/296/61713)
-* [DescribeBaselineStrategyList](https://cloud.tencent.com/document/api/296/61712)
-* [DescribeBaselineTop](https://cloud.tencent.com/document/api/296/61711)
-* [DescribeBruteAttackRules](https://cloud.tencent.com/document/api/296/61721)
-* [DescribeEmergencyResponseList](https://cloud.tencent.com/document/api/296/61726)
-* [DescribeExpertServiceList](https://cloud.tencent.com/document/api/296/61725)
-* [DescribeExpertServiceOrderList](https://cloud.tencent.com/document/api/296/61724)
-* [DescribeIgnoreRuleEffectHostList](https://cloud.tencent.com/document/api/296/61710)
-* [DescribeMaliciousRequestWhiteList](https://cloud.tencent.com/document/api/296/61720)
-* [DescribeProtectNetList](https://cloud.tencent.com/document/api/296/61723)
-* [DescribeScanTaskStatus](https://cloud.tencent.com/document/api/296/61719)
-* [DescribeVulHostTop](https://cloud.tencent.com/document/api/296/61709)
-* [ExportSecurityTrends](https://cloud.tencent.com/document/api/296/61718)
 
 新增数据结构：
 
-* [BanWhiteListDetail](https://cloud.tencent.com/document/api/296/19867#BanWhiteListDetail)
-* [BaselineEffectHost](https://cloud.tencent.com/document/api/296/19867#BaselineEffectHost)
-* [BaselineEventLevelInfo](https://cloud.tencent.com/document/api/296/19867#BaselineEventLevelInfo)
-* [BaselineHostTopList](https://cloud.tencent.com/document/api/296/19867#BaselineHostTopList)
-* [BaselineInfo](https://cloud.tencent.com/document/api/296/19867#BaselineInfo)
-* [BaselineRuleTopInfo](https://cloud.tencent.com/document/api/296/19867#BaselineRuleTopInfo)
-* [BruteAttackRuleList](https://cloud.tencent.com/document/api/296/19867#BruteAttackRuleList)
-* [EmergencyResponseInfo](https://cloud.tencent.com/document/api/296/19867#EmergencyResponseInfo)
-* [ExpertServiceOrderInfo](https://cloud.tencent.com/document/api/296/19867#ExpertServiceOrderInfo)
-* [IgnoreRuleEffectHostInfo](https://cloud.tencent.com/document/api/296/19867#IgnoreRuleEffectHostInfo)
-* [MaliciousRequestWhiteListInfo](https://cloud.tencent.com/document/api/296/19867#MaliciousRequestWhiteListInfo)
-* [ProtectNetInfo](https://cloud.tencent.com/document/api/296/19867#ProtectNetInfo)
-* [SecurityButlerInfo](https://cloud.tencent.com/document/api/296/19867#SecurityButlerInfo)
-* [Strategy](https://cloud.tencent.com/document/api/296/19867#Strategy)
-* [TaskStatus](https://cloud.tencent.com/document/api/296/19867#TaskStatus)
-* [VulHostTopInfo](https://cloud.tencent.com/document/api/296/19867#VulHostTopInfo)
-* [VulLevelCountInfo](https://cloud.tencent.com/document/api/296/19867#VulLevelCountInfo)
-
-
-
-## 数字身份管控平台（员工版）(eiam) 版本：2021-04-20
-
-### 第 9 次发布
-
-发布时间：2021-09-22 08:07:57
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeOrgResourcesAuthorization](https://cloud.tencent.com/document/api/1442/60259)
-
-	* 新增出参：TotalCount
-
+* [ClassifyInfo](https://cloud.tencent.com/document/api/1368/56853#ClassifyInfo)
 
 修改数据结构：
 
-* [AuthorizationResouceEntityInfo](https://cloud.tencent.com/document/api/1442/57931#AuthorizationResouceEntityInfo)
+* [ResultObject](https://cloud.tencent.com/document/api/1368/56853#ResultObject)
 
-	* 新增成员：ResourceName
-
-* [AuthorizationUserResouceInfo](https://cloud.tencent.com/document/api/1442/57931#AuthorizationUserResouceInfo)
-
-	* 新增成员：ResourceName
+	* 新增成员：ReportType
 
 
 
 
-## 全球应用加速(gaap) 版本：2018-05-29
+## 智能保险助手(cii) 版本：2020-12-10
 
-### 第 23 次发布
 
-发布时间：2021-09-22 08:08:23
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 30 次发布
+
+发布时间：2021-09-23 08:10:38
 
 本次发布包含了以下内容：
 
@@ -115,22 +58,18 @@
 
 修改数据结构：
 
-* [DomainRuleSet](https://cloud.tencent.com/document/api/608/37023#DomainRuleSet)
+* [MetricSet](https://cloud.tencent.com/document/api/248/30354#MetricSet)
 
-	* 新增成员：BanStatus
-
-* [ProxyInfo](https://cloud.tencent.com/document/api/608/37023#ProxyInfo)
-
-	* 新增成员：BanStatus
+	* 新增成员：MetricCName, MetricEName
 
 
 
 
-## 全栈式风控引擎(rce) 版本：2020-11-03
+## 短信(sms) 版本：2021-01-11
 
 ### 第 2 次发布
 
-发布时间：2021-09-22 08:12:15
+发布时间：2021-09-23 08:11:56
 
 本次发布包含了以下内容：
 
@@ -138,13 +77,43 @@
 
 新增接口：
 
-* [DescribeRiskModel](https://cloud.tencent.com/document/api/1343/61728)
+* [DescribePhoneNumberInfo](https://cloud.tencent.com/document/api/382/61755)
 
 新增数据结构：
 
-* [InputDescribeRiskModelData](https://cloud.tencent.com/document/api/1343/52566#InputDescribeRiskModelData)
-* [OutputDescribeRiskModel](https://cloud.tencent.com/document/api/1343/52566#OutputDescribeRiskModel)
-* [OutputDescribeRiskModelValue](https://cloud.tencent.com/document/api/1343/52566#OutputDescribeRiskModelValue)
+* [PhoneNumberInfo](https://cloud.tencent.com/document/api/382/52068#PhoneNumberInfo)
+
+
+
+## 短信(sms) 版本：2019-07-11
+
+
+
+## 腾讯云自动化助手(tat) 版本：2020-10-28
+
+### 第 13 次发布
+
+发布时间：2021-09-23 08:12:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateInvoker](https://cloud.tencent.com/document/api/1340/61762)
+* [DeleteInvoker](https://cloud.tencent.com/document/api/1340/61761)
+* [DescribeInvokerRecords](https://cloud.tencent.com/document/api/1340/61760)
+* [DescribeInvokers](https://cloud.tencent.com/document/api/1340/61759)
+* [DisableInvoker](https://cloud.tencent.com/document/api/1340/61758)
+* [EnableInvoker](https://cloud.tencent.com/document/api/1340/61757)
+* [ModifyInvoker](https://cloud.tencent.com/document/api/1340/61756)
+
+新增数据结构：
+
+* [Invoker](https://cloud.tencent.com/document/api/1340/52687#Invoker)
+* [InvokerRecord](https://cloud.tencent.com/document/api/1340/52687#InvokerRecord)
+* [ScheduleSettings](https://cloud.tencent.com/document/api/1340/52687#ScheduleSettings)
 
 
 
@@ -9320,6 +9289,21 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 78 次发布
+
+发布时间：2021-09-23 08:05:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ScdnDomain](https://cloud.tencent.com/document/api/228/30987#ScdnDomain)
+
+	* 新增成员：WafLevel
+
+
 ### 第 77 次发布
 
 发布时间：2021-09-15 08:04:54
@@ -11768,6 +11752,25 @@
 
 
 ## 智能保险助手(cii) 版本：2021-04-08
+
+### 第 4 次发布
+
+发布时间：2021-09-23 08:05:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[ClassifyInfo](https://cloud.tencent.com/document/api/1368/56853#ClassifyInfo)](https://cloud.tencent.com/document/api/1368/56853#[ClassifyInfo](https://cloud.tencent.com/document/api/1368/56853#ClassifyInfo))
+
+修改数据结构：
+
+* [ResultObject](https://cloud.tencent.com/document/api/1368/56853#ResultObject)
+
+	* 新增成员：ReportType
+
 
 ### 第 3 次发布
 
@@ -18179,45 +18182,45 @@
 
 新增接口：
 
-* [[DescribeAvailableExpertServiceDetail](https://cloud.tencent.com/document/api/296/61727)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBanWhiteList](https://cloud.tencent.com/document/api/296/61722)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBaselineAnalysisData](https://cloud.tencent.com/document/api/296/61717)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBaselineEffectHostList](https://cloud.tencent.com/document/api/296/61716)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBaselineHostTop](https://cloud.tencent.com/document/api/296/61715)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBaselineList](https://cloud.tencent.com/document/api/296/61714)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBaselineStrategyDetail](https://cloud.tencent.com/document/api/296/61713)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBaselineStrategyList](https://cloud.tencent.com/document/api/296/61712)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBaselineTop](https://cloud.tencent.com/document/api/296/61711)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBruteAttackRules](https://cloud.tencent.com/document/api/296/61721)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeEmergencyResponseList](https://cloud.tencent.com/document/api/296/61726)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeExpertServiceList](https://cloud.tencent.com/document/api/296/61725)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeExpertServiceOrderList](https://cloud.tencent.com/document/api/296/61724)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeIgnoreRuleEffectHostList](https://cloud.tencent.com/document/api/296/61710)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeMaliciousRequestWhiteList](https://cloud.tencent.com/document/api/296/61720)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeProtectNetList](https://cloud.tencent.com/document/api/296/61723)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeScanTaskStatus](https://cloud.tencent.com/document/api/296/61719)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeVulHostTop](https://cloud.tencent.com/document/api/296/61709)](https://cloud.tencent.com/document/api/#/#)
-* [[ExportSecurityTrends](https://cloud.tencent.com/document/api/296/61718)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeAvailableExpertServiceDetail](https://cloud.tencent.com/document/api/296/61727)
+* [DescribeBanWhiteList](https://cloud.tencent.com/document/api/296/61722)
+* [DescribeBaselineAnalysisData](https://cloud.tencent.com/document/api/296/61717)
+* [DescribeBaselineEffectHostList](https://cloud.tencent.com/document/api/296/61716)
+* [DescribeBaselineHostTop](https://cloud.tencent.com/document/api/296/61715)
+* [DescribeBaselineList](https://cloud.tencent.com/document/api/296/61714)
+* [DescribeBaselineStrategyDetail](https://cloud.tencent.com/document/api/296/61713)
+* [DescribeBaselineStrategyList](https://cloud.tencent.com/document/api/296/61712)
+* [DescribeBaselineTop](https://cloud.tencent.com/document/api/296/61711)
+* [DescribeBruteAttackRules](https://cloud.tencent.com/document/api/296/61721)
+* [DescribeEmergencyResponseList](https://cloud.tencent.com/document/api/296/61726)
+* [DescribeExpertServiceList](https://cloud.tencent.com/document/api/296/61725)
+* [DescribeExpertServiceOrderList](https://cloud.tencent.com/document/api/296/61724)
+* [DescribeIgnoreRuleEffectHostList](https://cloud.tencent.com/document/api/296/61710)
+* [DescribeMaliciousRequestWhiteList](https://cloud.tencent.com/document/api/296/61720)
+* [DescribeProtectNetList](https://cloud.tencent.com/document/api/296/61723)
+* [DescribeScanTaskStatus](https://cloud.tencent.com/document/api/296/61719)
+* [DescribeVulHostTop](https://cloud.tencent.com/document/api/296/61709)
+* [ExportSecurityTrends](https://cloud.tencent.com/document/api/296/61718)
 
 新增数据结构：
 
-* [[BanWhiteListDetail](https://cloud.tencent.com/document/api/296/19867#BanWhiteListDetail)](https://cloud.tencent.com/document/api/296/19867#[BanWhiteListDetail](https://cloud.tencent.com/document/api/296/19867#BanWhiteListDetail))
-* [[BaselineEffectHost](https://cloud.tencent.com/document/api/296/19867#BaselineEffectHost)](https://cloud.tencent.com/document/api/296/19867#[BaselineEffectHost](https://cloud.tencent.com/document/api/296/19867#BaselineEffectHost))
-* [[BaselineEventLevelInfo](https://cloud.tencent.com/document/api/296/19867#BaselineEventLevelInfo)](https://cloud.tencent.com/document/api/296/19867#[BaselineEventLevelInfo](https://cloud.tencent.com/document/api/296/19867#BaselineEventLevelInfo))
-* [[BaselineHostTopList](https://cloud.tencent.com/document/api/296/19867#BaselineHostTopList)](https://cloud.tencent.com/document/api/296/19867#[BaselineHostTopList](https://cloud.tencent.com/document/api/296/19867#BaselineHostTopList))
-* [[BaselineInfo](https://cloud.tencent.com/document/api/296/19867#BaselineInfo)](https://cloud.tencent.com/document/api/296/19867#[BaselineInfo](https://cloud.tencent.com/document/api/296/19867#BaselineInfo))
-* [[BaselineRuleTopInfo](https://cloud.tencent.com/document/api/296/19867#BaselineRuleTopInfo)](https://cloud.tencent.com/document/api/296/19867#[BaselineRuleTopInfo](https://cloud.tencent.com/document/api/296/19867#BaselineRuleTopInfo))
-* [[BruteAttackRuleList](https://cloud.tencent.com/document/api/296/19867#BruteAttackRuleList)](https://cloud.tencent.com/document/api/296/19867#[BruteAttackRuleList](https://cloud.tencent.com/document/api/296/19867#BruteAttackRuleList))
-* [[EmergencyResponseInfo](https://cloud.tencent.com/document/api/296/19867#EmergencyResponseInfo)](https://cloud.tencent.com/document/api/296/19867#[EmergencyResponseInfo](https://cloud.tencent.com/document/api/296/19867#EmergencyResponseInfo))
-* [[ExpertServiceOrderInfo](https://cloud.tencent.com/document/api/296/19867#ExpertServiceOrderInfo)](https://cloud.tencent.com/document/api/296/19867#[ExpertServiceOrderInfo](https://cloud.tencent.com/document/api/296/19867#ExpertServiceOrderInfo))
-* [[IgnoreRuleEffectHostInfo](https://cloud.tencent.com/document/api/296/19867#IgnoreRuleEffectHostInfo)](https://cloud.tencent.com/document/api/296/19867#[IgnoreRuleEffectHostInfo](https://cloud.tencent.com/document/api/296/19867#IgnoreRuleEffectHostInfo))
-* [[MaliciousRequestWhiteListInfo](https://cloud.tencent.com/document/api/296/19867#MaliciousRequestWhiteListInfo)](https://cloud.tencent.com/document/api/296/19867#[MaliciousRequestWhiteListInfo](https://cloud.tencent.com/document/api/296/19867#MaliciousRequestWhiteListInfo))
-* [[ProtectNetInfo](https://cloud.tencent.com/document/api/296/19867#ProtectNetInfo)](https://cloud.tencent.com/document/api/296/19867#[ProtectNetInfo](https://cloud.tencent.com/document/api/296/19867#ProtectNetInfo))
-* [[SecurityButlerInfo](https://cloud.tencent.com/document/api/296/19867#SecurityButlerInfo)](https://cloud.tencent.com/document/api/296/19867#[SecurityButlerInfo](https://cloud.tencent.com/document/api/296/19867#SecurityButlerInfo))
-* [[Strategy](https://cloud.tencent.com/document/api/296/19867#Strategy)](https://cloud.tencent.com/document/api/296/19867#[Strategy](https://cloud.tencent.com/document/api/296/19867#Strategy))
-* [[TaskStatus](https://cloud.tencent.com/document/api/296/19867#TaskStatus)](https://cloud.tencent.com/document/api/296/19867#[TaskStatus](https://cloud.tencent.com/document/api/296/19867#TaskStatus))
-* [[VulHostTopInfo](https://cloud.tencent.com/document/api/296/19867#VulHostTopInfo)](https://cloud.tencent.com/document/api/296/19867#[VulHostTopInfo](https://cloud.tencent.com/document/api/296/19867#VulHostTopInfo))
-* [[VulLevelCountInfo](https://cloud.tencent.com/document/api/296/19867#VulLevelCountInfo)](https://cloud.tencent.com/document/api/296/19867#[VulLevelCountInfo](https://cloud.tencent.com/document/api/296/19867#VulLevelCountInfo))
+* [BanWhiteListDetail](https://cloud.tencent.com/document/api/296/19867#BanWhiteListDetail)
+* [BaselineEffectHost](https://cloud.tencent.com/document/api/296/19867#BaselineEffectHost)
+* [BaselineEventLevelInfo](https://cloud.tencent.com/document/api/296/19867#BaselineEventLevelInfo)
+* [BaselineHostTopList](https://cloud.tencent.com/document/api/296/19867#BaselineHostTopList)
+* [BaselineInfo](https://cloud.tencent.com/document/api/296/19867#BaselineInfo)
+* [BaselineRuleTopInfo](https://cloud.tencent.com/document/api/296/19867#BaselineRuleTopInfo)
+* [BruteAttackRuleList](https://cloud.tencent.com/document/api/296/19867#BruteAttackRuleList)
+* [EmergencyResponseInfo](https://cloud.tencent.com/document/api/296/19867#EmergencyResponseInfo)
+* [ExpertServiceOrderInfo](https://cloud.tencent.com/document/api/296/19867#ExpertServiceOrderInfo)
+* [IgnoreRuleEffectHostInfo](https://cloud.tencent.com/document/api/296/19867#IgnoreRuleEffectHostInfo)
+* [MaliciousRequestWhiteListInfo](https://cloud.tencent.com/document/api/296/19867#MaliciousRequestWhiteListInfo)
+* [ProtectNetInfo](https://cloud.tencent.com/document/api/296/19867#ProtectNetInfo)
+* [SecurityButlerInfo](https://cloud.tencent.com/document/api/296/19867#SecurityButlerInfo)
+* [Strategy](https://cloud.tencent.com/document/api/296/19867#Strategy)
+* [TaskStatus](https://cloud.tencent.com/document/api/296/19867#TaskStatus)
+* [VulHostTopInfo](https://cloud.tencent.com/document/api/296/19867#VulHostTopInfo)
+* [VulLevelCountInfo](https://cloud.tencent.com/document/api/296/19867#VulLevelCountInfo)
 
 ### 第 26 次发布
 
@@ -35760,6 +35763,21 @@
 
 ## 云监控(monitor) 版本：2018-07-24
 
+### 第 30 次发布
+
+发布时间：2021-09-23 08:10:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MetricSet](https://cloud.tencent.com/document/api/248/30354#MetricSet)
+
+	* 新增成员：MetricCName, MetricEName
+
+
 ### 第 29 次发布
 
 发布时间：2021-09-10 08:07:03
@@ -40645,13 +40663,13 @@
 
 新增接口：
 
-* [[DescribeRiskModel](https://cloud.tencent.com/document/api/1343/61728)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeRiskModel](https://cloud.tencent.com/document/api/1343/61728)
 
 新增数据结构：
 
-* [[InputDescribeRiskModelData](https://cloud.tencent.com/document/api/1343/52566#InputDescribeRiskModelData)](https://cloud.tencent.com/document/api/1343/52566#[InputDescribeRiskModelData](https://cloud.tencent.com/document/api/1343/52566#InputDescribeRiskModelData))
-* [[OutputDescribeRiskModel](https://cloud.tencent.com/document/api/1343/52566#OutputDescribeRiskModel)](https://cloud.tencent.com/document/api/1343/52566#[OutputDescribeRiskModel](https://cloud.tencent.com/document/api/1343/52566#OutputDescribeRiskModel))
-* [[OutputDescribeRiskModelValue](https://cloud.tencent.com/document/api/1343/52566#OutputDescribeRiskModelValue)](https://cloud.tencent.com/document/api/1343/52566#[OutputDescribeRiskModelValue](https://cloud.tencent.com/document/api/1343/52566#OutputDescribeRiskModelValue))
+* [InputDescribeRiskModelData](https://cloud.tencent.com/document/api/1343/52566#InputDescribeRiskModelData)
+* [OutputDescribeRiskModel](https://cloud.tencent.com/document/api/1343/52566#OutputDescribeRiskModel)
+* [OutputDescribeRiskModelValue](https://cloud.tencent.com/document/api/1343/52566#OutputDescribeRiskModelValue)
 
 ### 第 1 次发布
 
@@ -42703,6 +42721,22 @@
 
 ## 短信(sms) 版本：2021-01-11
 
+### 第 2 次发布
+
+发布时间：2021-09-23 08:11:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribePhoneNumberInfo](https://cloud.tencent.com/document/api/382/61755)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[PhoneNumberInfo](https://cloud.tencent.com/document/api/382/52068#PhoneNumberInfo)](https://cloud.tencent.com/document/api/382/52068#[PhoneNumberInfo](https://cloud.tencent.com/document/api/382/52068#PhoneNumberInfo))
+
 ### 第 1 次发布
 
 发布时间：2021-05-18 14:31:03
@@ -44590,6 +44624,30 @@
 
 
 ## 腾讯云自动化助手(tat) 版本：2020-10-28
+
+### 第 13 次发布
+
+发布时间：2021-09-23 08:12:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateInvoker](https://cloud.tencent.com/document/api/1340/61762)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteInvoker](https://cloud.tencent.com/document/api/1340/61761)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeInvokerRecords](https://cloud.tencent.com/document/api/1340/61760)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeInvokers](https://cloud.tencent.com/document/api/1340/61759)](https://cloud.tencent.com/document/api/#/#)
+* [[DisableInvoker](https://cloud.tencent.com/document/api/1340/61758)](https://cloud.tencent.com/document/api/#/#)
+* [[EnableInvoker](https://cloud.tencent.com/document/api/1340/61757)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyInvoker](https://cloud.tencent.com/document/api/1340/61756)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Invoker](https://cloud.tencent.com/document/api/1340/52687#Invoker)](https://cloud.tencent.com/document/api/1340/52687#[Invoker](https://cloud.tencent.com/document/api/1340/52687#Invoker))
+* [[InvokerRecord](https://cloud.tencent.com/document/api/1340/52687#InvokerRecord)](https://cloud.tencent.com/document/api/1340/52687#[InvokerRecord](https://cloud.tencent.com/document/api/1340/52687#InvokerRecord))
+* [[ScheduleSettings](https://cloud.tencent.com/document/api/1340/52687#ScheduleSettings)](https://cloud.tencent.com/document/api/1340/52687#[ScheduleSettings](https://cloud.tencent.com/document/api/1340/52687#ScheduleSettings))
 
 ### 第 12 次发布
 

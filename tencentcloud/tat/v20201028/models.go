@@ -198,6 +198,79 @@ func (r *CreateCommandResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateInvokerRequest struct {
+	*tchttp.BaseRequest
+
+	// 执行器名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 执行器类型，当前仅支持周期类型执行器，取值：`SCHEDULE` 。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 远程命令ID。
+	CommandId *string `json:"CommandId,omitempty" name:"CommandId"`
+
+	// 触发器关联的实例ID。列表上限 100。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 命令执行用户。
+	Username *string `json:"Username,omitempty" name:"Username"`
+
+	// 命令自定义参数。
+	Parameters *string `json:"Parameters,omitempty" name:"Parameters"`
+
+	// 周期执行器设置，当创建周期执行器时，必须指定此参数。
+	ScheduleSettings *ScheduleSettings `json:"ScheduleSettings,omitempty" name:"ScheduleSettings"`
+}
+
+func (r *CreateInvokerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateInvokerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Type")
+	delete(f, "CommandId")
+	delete(f, "InstanceIds")
+	delete(f, "Username")
+	delete(f, "Parameters")
+	delete(f, "ScheduleSettings")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInvokerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateInvokerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 执行器ID。
+		InvokerId *string `json:"InvokerId,omitempty" name:"InvokerId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateInvokerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateInvokerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteCommandRequest struct {
 	*tchttp.BaseRequest
 
@@ -241,6 +314,52 @@ func (r *DeleteCommandResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteCommandResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteInvokerRequest struct {
+	*tchttp.BaseRequest
+
+	// 待删除的执行器ID。
+	InvokerId *string `json:"InvokerId,omitempty" name:"InvokerId"`
+}
+
+func (r *DeleteInvokerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteInvokerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InvokerId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteInvokerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteInvokerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteInvokerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteInvokerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -516,6 +635,134 @@ func (r *DescribeInvocationsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeInvokerRecordsRequest struct {
+	*tchttp.BaseRequest
+
+	// 执行器ID列表。列表上限 100。
+	InvokerIds []*string `json:"InvokerIds,omitempty" name:"InvokerIds"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeInvokerRecordsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInvokerRecordsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InvokerIds")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInvokerRecordsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInvokerRecordsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的历史记录数量。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 执行器执行历史记录。
+		InvokerRecordSet []*InvokerRecord `json:"InvokerRecordSet,omitempty" name:"InvokerRecordSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInvokerRecordsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInvokerRecordsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInvokersRequest struct {
+	*tchttp.BaseRequest
+
+	// 执行器ID列表。
+	InvokerIds []*string `json:"InvokerIds,omitempty" name:"InvokerIds"`
+
+	// 过滤条件：
+	// 
+	// <li> invoker-id - String - 是否必填：否 - （过滤条件）按执行器ID过滤。
+	// <li> command-id - String - 是否必填：否 - （过滤条件）按命令ID过滤。
+	// <li> type - String - 是否必填：否 - （过滤条件）按执行器类型过滤。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeInvokersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInvokersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InvokerIds")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInvokersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInvokersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 满足条件的执行器数量。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 执行器信息。
+		InvokerSet []*Invoker `json:"InvokerSet,omitempty" name:"InvokerSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInvokersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInvokersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeRegionsRequest struct {
 	*tchttp.BaseRequest
 }
@@ -561,6 +808,98 @@ func (r *DescribeRegionsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRegionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableInvokerRequest struct {
+	*tchttp.BaseRequest
+
+	// 待停止的执行器ID。
+	InvokerId *string `json:"InvokerId,omitempty" name:"InvokerId"`
+}
+
+func (r *DisableInvokerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableInvokerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InvokerId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableInvokerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableInvokerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DisableInvokerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableInvokerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableInvokerRequest struct {
+	*tchttp.BaseRequest
+
+	// 待启用的执行器ID。
+	InvokerId *string `json:"InvokerId,omitempty" name:"InvokerId"`
+}
+
+func (r *EnableInvokerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableInvokerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InvokerId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableInvokerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableInvokerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EnableInvokerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableInvokerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -783,6 +1122,61 @@ func (r *InvokeCommandResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Invoker struct {
+
+	// 执行器ID。
+	InvokerId *string `json:"InvokerId,omitempty" name:"InvokerId"`
+
+	// 执行器名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 执行器类型。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 命令ID。
+	CommandId *string `json:"CommandId,omitempty" name:"CommandId"`
+
+	// 用户名。
+	Username *string `json:"Username,omitempty" name:"Username"`
+
+	// 自定义参数。
+	Parameters *string `json:"Parameters,omitempty" name:"Parameters"`
+
+	// 实例ID列表。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 执行器是否启用。
+	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+
+	// 执行器周期计划。周期执行器会返回此字段。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleSettings *ScheduleSettings `json:"ScheduleSettings,omitempty" name:"ScheduleSettings"`
+
+	// 创建时间。
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 修改时间。
+	UpdatedTime *string `json:"UpdatedTime,omitempty" name:"UpdatedTime"`
+}
+
+type InvokerRecord struct {
+
+	// 执行器ID。
+	InvokerId *string `json:"InvokerId,omitempty" name:"InvokerId"`
+
+	// 执行时间。
+	InvokeTime *string `json:"InvokeTime,omitempty" name:"InvokeTime"`
+
+	// 执行原因。
+	Reason *string `json:"Reason,omitempty" name:"Reason"`
+
+	// 命令执行ID。
+	InvocationId *string `json:"InvocationId,omitempty" name:"InvocationId"`
+
+	// 触发结果。
+	Result *string `json:"Result,omitempty" name:"Result"`
+}
+
 type ModifyCommandRequest struct {
 	*tchttp.BaseRequest
 
@@ -864,6 +1258,80 @@ func (r *ModifyCommandResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyCommandResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyInvokerRequest struct {
+	*tchttp.BaseRequest
+
+	// 待修改的执行器ID。
+	InvokerId *string `json:"InvokerId,omitempty" name:"InvokerId"`
+
+	// 待修改的执行器名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 执行器类型，当前仅支持周期类型执行器，取值：`SCHEDULE` 。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 待修改的命令ID。
+	CommandId *string `json:"CommandId,omitempty" name:"CommandId"`
+
+	// 待修改的用户名。
+	Username *string `json:"Username,omitempty" name:"Username"`
+
+	// 待修改的自定义参数。
+	Parameters *string `json:"Parameters,omitempty" name:"Parameters"`
+
+	// 待修改的实例ID列表。列表长度上限100。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 待修改的周期执行器设置。
+	ScheduleSettings *ScheduleSettings `json:"ScheduleSettings,omitempty" name:"ScheduleSettings"`
+}
+
+func (r *ModifyInvokerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInvokerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InvokerId")
+	delete(f, "Name")
+	delete(f, "Type")
+	delete(f, "CommandId")
+	delete(f, "Username")
+	delete(f, "Parameters")
+	delete(f, "InstanceIds")
+	delete(f, "ScheduleSettings")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInvokerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyInvokerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyInvokerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInvokerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1056,6 +1524,20 @@ func (r *RunCommandResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RunCommandResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ScheduleSettings struct {
+
+	// 执行策略：
+	// <br><li>ONCE：单次执行
+	// <br><li>RECURRENCE：周期执行
+	Policy *string `json:"Policy,omitempty" name:"Policy"`
+
+	// 触发 Crontab 表达式。Policy 为 RECURRENCE 时，需要指定此字段。Crontab 按北京时间解析。
+	Recurrence *string `json:"Recurrence,omitempty" name:"Recurrence"`
+
+	// 执行器下次执行时间。Policy 为 ONCE 时，需要指定此字段。
+	InvokeTime *string `json:"InvokeTime,omitempty" name:"InvokeTime"`
 }
 
 type Tag struct {

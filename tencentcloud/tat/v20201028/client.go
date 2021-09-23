@@ -94,6 +94,42 @@ func (c *Client) CreateCommand(request *CreateCommandRequest) (response *CreateC
     return
 }
 
+func NewCreateInvokerRequest() (request *CreateInvokerRequest) {
+    request = &CreateInvokerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tat", APIVersion, "CreateInvoker")
+    return
+}
+
+func NewCreateInvokerResponse() (response *CreateInvokerResponse) {
+    response = &CreateInvokerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateInvoker
+// 此接口用于创建执行器。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDCOMMANDID = "InvalidParameterValue.InvalidCommandId"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
+//  INVALIDPARAMETERVALUE_PARAMETERINVALIDJSONFORMAT = "InvalidParameterValue.ParameterInvalidJsonFormat"
+//  RESOURCENOTFOUND_COMMANDNOTFOUND = "ResourceNotFound.CommandNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) CreateInvoker(request *CreateInvokerRequest) (response *CreateInvokerResponse, err error) {
+    if request == nil {
+        request = NewCreateInvokerRequest()
+    }
+    response = NewCreateInvokerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCommandRequest() (request *DeleteCommandRequest) {
     request = &DeleteCommandRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -112,12 +148,15 @@ func NewDeleteCommandResponse() (response *DeleteCommandResponse) {
 // DeleteCommand
 // 此接口用于删除命令。
 //
+// 如果命令与执行器关联，则无法被删除。
+//
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDCOMMANDID = "InvalidParameterValue.InvalidCommandId"
 //  RESOURCENOTFOUND_COMMANDNOTFOUND = "ResourceNotFound.CommandNotFound"
 //  RESOURCEUNAVAILABLE_COMMANDINEXECUTING = "ResourceUnavailable.CommandInExecuting"
+//  RESOURCEUNAVAILABLE_COMMANDININVOKER = "ResourceUnavailable.CommandInInvoker"
 //  UNAUTHORIZEDOPERATION_CAMAUTHFAILED = "UnauthorizedOperation.CamAuthFailed"
 //  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
 //  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
@@ -127,6 +166,36 @@ func (c *Client) DeleteCommand(request *DeleteCommandRequest) (response *DeleteC
         request = NewDeleteCommandRequest()
     }
     response = NewDeleteCommandResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteInvokerRequest() (request *DeleteInvokerRequest) {
+    request = &DeleteInvokerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tat", APIVersion, "DeleteInvoker")
+    return
+}
+
+func NewDeleteInvokerResponse() (response *DeleteInvokerResponse) {
+    response = &DeleteInvokerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteInvoker
+// 此接口用于删除执行器。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteInvoker(request *DeleteInvokerRequest) (response *DeleteInvokerResponse, err error) {
+    if request == nil {
+        request = NewDeleteInvokerRequest()
+    }
+    response = NewDeleteInvokerResponse()
     err = c.Send(request, response)
     return
 }
@@ -284,6 +353,67 @@ func (c *Client) DescribeInvocations(request *DescribeInvocationsRequest) (respo
     return
 }
 
+func NewDescribeInvokerRecordsRequest() (request *DescribeInvokerRecordsRequest) {
+    request = &DescribeInvokerRecordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tat", APIVersion, "DescribeInvokerRecords")
+    return
+}
+
+func NewDescribeInvokerRecordsResponse() (response *DescribeInvokerRecordsResponse) {
+    response = &DescribeInvokerRecordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeInvokerRecords
+// 此接口用于查询执行器的执行记录。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeInvokerRecords(request *DescribeInvokerRecordsRequest) (response *DescribeInvokerRecordsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInvokerRecordsRequest()
+    }
+    response = NewDescribeInvokerRecordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInvokersRequest() (request *DescribeInvokersRequest) {
+    request = &DescribeInvokersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tat", APIVersion, "DescribeInvokers")
+    return
+}
+
+func NewDescribeInvokersResponse() (response *DescribeInvokersResponse) {
+    response = &DescribeInvokersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeInvokers
+// 此接口用于查询执行器信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER_CONFLICTPARAMETER = "InvalidParameter.ConflictParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeInvokers(request *DescribeInvokersRequest) (response *DescribeInvokersResponse, err error) {
+    if request == nil {
+        request = NewDescribeInvokersRequest()
+    }
+    response = NewDescribeInvokersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRegionsRequest() (request *DescribeRegionsRequest) {
     request = &DescribeRegionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -315,6 +445,66 @@ func (c *Client) DescribeRegions(request *DescribeRegionsRequest) (response *Des
         request = NewDescribeRegionsRequest()
     }
     response = NewDescribeRegionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisableInvokerRequest() (request *DisableInvokerRequest) {
+    request = &DisableInvokerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tat", APIVersion, "DisableInvoker")
+    return
+}
+
+func NewDisableInvokerResponse() (response *DisableInvokerResponse) {
+    response = &DisableInvokerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DisableInvoker
+// 此接口用于停止执行器。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DisableInvoker(request *DisableInvokerRequest) (response *DisableInvokerResponse, err error) {
+    if request == nil {
+        request = NewDisableInvokerRequest()
+    }
+    response = NewDisableInvokerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableInvokerRequest() (request *EnableInvokerRequest) {
+    request = &EnableInvokerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tat", APIVersion, "EnableInvoker")
+    return
+}
+
+func NewEnableInvokerResponse() (response *EnableInvokerResponse) {
+    response = &EnableInvokerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// EnableInvoker
+// 此接口用于启用执行器。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) EnableInvoker(request *EnableInvokerRequest) (response *EnableInvokerResponse, err error) {
+    if request == nil {
+        request = NewEnableInvokerRequest()
+    }
+    response = NewEnableInvokerResponse()
     err = c.Send(request, response)
     return
 }
@@ -427,6 +617,43 @@ func (c *Client) ModifyCommand(request *ModifyCommandRequest) (response *ModifyC
         request = NewModifyCommandRequest()
     }
     response = NewModifyCommandResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyInvokerRequest() (request *ModifyInvokerRequest) {
+    request = &ModifyInvokerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tat", APIVersion, "ModifyInvoker")
+    return
+}
+
+func NewModifyInvokerResponse() (response *ModifyInvokerResponse) {
+    response = &ModifyInvokerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyInvoker
+// 此接口用于修改执行器。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INCONSISTENTINSTANCE = "InvalidParameterValue.InconsistentInstance"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
+//  INVALIDPARAMETERVALUE_PARAMETERDISABLED = "InvalidParameterValue.ParameterDisabled"
+//  INVALIDPARAMETERVALUE_PARAMETERINVALIDJSONFORMAT = "InvalidParameterValue.ParameterInvalidJsonFormat"
+//  RESOURCENOTFOUND_COMMANDNOTFOUND = "ResourceNotFound.CommandNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_AGENTNOTINSTALLED = "ResourceUnavailable.AgentNotInstalled"
+func (c *Client) ModifyInvoker(request *ModifyInvokerRequest) (response *ModifyInvokerResponse, err error) {
+    if request == nil {
+        request = NewModifyInvokerRequest()
+    }
+    response = NewModifyInvokerResponse()
     err = c.Send(request, response)
     return
 }

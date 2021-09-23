@@ -3966,6 +3966,14 @@ type MetricSet struct {
 
 	// 维度描述信息
 	Dimensions []*DimensionsDesc `json:"Dimensions,omitempty" name:"Dimensions"`
+
+	// 指标中文名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricCName *string `json:"MetricCName,omitempty" name:"MetricCName"`
+
+	// 指标英文名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricEName *string `json:"MetricEName,omitempty" name:"MetricEName"`
 }
 
 type MidQueryCondition struct {

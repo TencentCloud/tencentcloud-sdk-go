@@ -6887,6 +6887,10 @@ type ScdnDomain struct {
 	// 域名加速区域，取值global | mainland |  overseas
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// waf规则等级，可取100|200|300
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WafLevel *int64 `json:"WafLevel,omitempty" name:"WafLevel"`
 }
 
 type ScdnErrorPage struct {

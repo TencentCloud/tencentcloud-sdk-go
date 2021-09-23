@@ -413,6 +413,56 @@ type DeleteTemplateStatus struct {
 	DeleteTime *uint64 `json:"DeleteTime,omitempty" name:"DeleteTime"`
 }
 
+type DescribePhoneNumberInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询手机号码，采用 E.164 标准，格式为+[国家或地区码][手机号]，单次请求最多支持200个手机号。
+	// 例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
+	PhoneNumberSet []*string `json:"PhoneNumberSet,omitempty" name:"PhoneNumberSet"`
+}
+
+func (r *DescribePhoneNumberInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePhoneNumberInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PhoneNumberSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePhoneNumberInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePhoneNumberInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 获取号码信息。
+		PhoneNumberInfoSet []*PhoneNumberInfo `json:"PhoneNumberInfoSet,omitempty" name:"PhoneNumberInfoSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePhoneNumberInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePhoneNumberInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSignListStatus struct {
 
 	// 签名ID。
@@ -756,6 +806,30 @@ type ModifyTemplateStatus struct {
 
 	// 模板ID。
 	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+type PhoneNumberInfo struct {
+
+	// 号码信息查询错误码，查询成功返回 "Ok"。
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 号码信息查询错误码描述。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 国家（或地区）码。
+	NationCode *string `json:"NationCode,omitempty" name:"NationCode"`
+
+	// 用户号码，去除国家或地区码前缀的普通格式，示例如：13711112222。
+	SubscriberNumber *string `json:"SubscriberNumber,omitempty" name:"SubscriberNumber"`
+
+	// 解析后的规范的 E.164 号码，与下发短信的号码解析结果一致。解析失败时会原样返回。
+	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
+
+	// 国家码或地区码，例如 CN、US 等，对于未识别出国家码或者地区码，默认返回 DEF。
+	IsoCode *string `json:"IsoCode,omitempty" name:"IsoCode"`
+
+	// 国家码或地区名，例如 China，可参考 [国际/港澳台短信价格总览](https://cloud.tencent.com/document/product/382/18051#.E6.97.A5.E7.BB.93.E5.90.8E.E4.BB.98.E8.B4.B9.3Ca-id.3D.22post-payment.22.3E.3C.2Fa.3E)
+	IsoName *string `json:"IsoName,omitempty" name:"IsoName"`
 }
 
 type PullSmsReplyStatus struct {

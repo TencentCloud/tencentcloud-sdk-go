@@ -62,6 +62,9 @@ const (
 	// 手机号在黑名单库中，通常是用户退订或者命中运营商黑名单导致的，可联系 [sms helper](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) 解决。
 	FAILEDOPERATION_PHONENUMBERINBLACKLIST = "FailedOperation.PhoneNumberInBlacklist"
 
+	// 号码解析失败，请检查号码是否符合 E.164 标准。
+	FAILEDOPERATION_PHONENUMBERPARSEFAIL = "FailedOperation.PhoneNumberParseFail"
+
 	// 签名个数达到最大值。
 	FAILEDOPERATION_SIGNNUMBERLIMIT = "FailedOperation.SignNumberLimit"
 

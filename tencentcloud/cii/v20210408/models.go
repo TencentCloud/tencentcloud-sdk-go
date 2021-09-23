@@ -20,6 +20,27 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type ClassifyInfo struct {
+
+	// 一级分类
+	FirstClass *string `json:"FirstClass,omitempty" name:"FirstClass"`
+
+	// 二级分类
+	SecondClass *string `json:"SecondClass,omitempty" name:"SecondClass"`
+
+	// 三级分类
+	ThirdClass *string `json:"ThirdClass,omitempty" name:"ThirdClass"`
+
+	// 一级分类序号
+	FirstClassId *uint64 `json:"FirstClassId,omitempty" name:"FirstClassId"`
+
+	// 二级分类序号
+	SecondClassId *uint64 `json:"SecondClassId,omitempty" name:"SecondClassId"`
+
+	// 三级分类序号
+	ThirdClassId *uint64 `json:"ThirdClassId,omitempty" name:"ThirdClassId"`
+}
+
 type CompareMetricsData struct {
 
 	// 短文准确率
@@ -485,6 +506,10 @@ type ResultObject struct {
 
 	// 由结构化算法结构化json转换的字符串，具体协议参见算法结构化结果协议
 	StructureResult *string `json:"StructureResult,omitempty" name:"StructureResult"`
+
+	// 报告分类信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReportType []*ClassifyInfo `json:"ReportType,omitempty" name:"ReportType"`
 }
 
 type ReviewDataTaskInfo struct {

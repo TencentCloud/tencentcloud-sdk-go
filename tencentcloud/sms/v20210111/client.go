@@ -314,6 +314,37 @@ func (c *Client) DeleteSmsTemplate(request *DeleteSmsTemplateRequest) (response 
     return
 }
 
+func NewDescribePhoneNumberInfoRequest() (request *DescribePhoneNumberInfoRequest) {
+    request = &DescribePhoneNumberInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sms", APIVersion, "DescribePhoneNumberInfo")
+    return
+}
+
+func NewDescribePhoneNumberInfoResponse() (response *DescribePhoneNumberInfoResponse) {
+    response = &DescribePhoneNumberInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePhoneNumberInfo
+// 提供 E.164 格式号码国家或地区码识别，以及解析后规范的E.164号码。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_JSONPARSEFAIL = "FailedOperation.JsonParseFail"
+//  FAILEDOPERATION_PHONENUMBERPARSEFAIL = "FailedOperation.PhoneNumberParseFail"
+//  LIMITEXCEEDED_PHONENUMBERCOUNTLIMIT = "LimitExceeded.PhoneNumberCountLimit"
+func (c *Client) DescribePhoneNumberInfo(request *DescribePhoneNumberInfoRequest) (response *DescribePhoneNumberInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribePhoneNumberInfoRequest()
+    }
+    response = NewDescribePhoneNumberInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSmsSignListRequest() (request *DescribeSmsSignListRequest) {
     request = &DescribeSmsSignListRequest{
         BaseRequest: &tchttp.BaseRequest{},

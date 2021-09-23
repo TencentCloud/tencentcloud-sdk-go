@@ -438,6 +438,13 @@ func NewAssociateAddressResponse() (response *AssociateAddressResponse) {
 //  INVALIDNETWORKINTERFACEID_NOTFOUND = "InvalidNetworkInterfaceId.NotFound"
 //  INVALIDPARAMETERCONFLICT = "InvalidParameterConflict"
 //  INVALIDPARAMETERVALUE_COMBINATION = "InvalidParameterValue.Combination"
+//  INVALIDPARAMETERVALUE_INSTANCEDOESNOTSUPPORTANYCAST = "InvalidParameterValue.InstanceDoesNotSupportAnycast"
+//  INVALIDPARAMETERVALUE_INSTANCEHASWANIP = "InvalidParameterValue.InstanceHasWanIP"
+//  INVALIDPARAMETERVALUE_INSTANCENOWANIP = "InvalidParameterValue.InstanceNoWanIP"
+//  INVALIDPARAMETERVALUE_INSTANCENORMALPUBLICIPBLOCKED = "InvalidParameterValue.InstanceNormalPublicIpBlocked"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEINTERNETCHARGETYPE = "InvalidParameterValue.InvalidInstanceInternetChargeType"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCESTATE = "InvalidParameterValue.InvalidInstanceState"
+//  INVALIDPARAMETERVALUE_LBALREADYBINDEIP = "InvalidParameterValue.LBAlreadyBindEip"
 //  INVALIDPRIVATEIPADDRESS_ALREADYBINDEIP = "InvalidPrivateIpAddress.AlreadyBindEip"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) AssociateAddress(request *AssociateAddressRequest) (response *AssociateAddressResponse, err error) {
@@ -6866,6 +6873,8 @@ func NewModifyAddressesBandwidthResponse() (response *ModifyAddressesBandwidthRe
 //  INVALIDADDRESSID_NOTFOUND = "InvalidAddressId.NotFound"
 //  INVALIDPARAMETERVALUE_BANDWIDTHOUTOFRANGE = "InvalidParameterValue.BandwidthOutOfRange"
 //  INVALIDPARAMETERVALUE_BANDWIDTHTOOSMALL = "InvalidParameterValue.BandwidthTooSmall"
+//  INVALIDPARAMETERVALUE_INSTANCENOCALCIP = "InvalidParameterValue.InstanceNoCalcIP"
+//  INVALIDPARAMETERVALUE_INSTANCENOWANIP = "InvalidParameterValue.InstanceNoWanIP"
 func (c *Client) ModifyAddressesBandwidth(request *ModifyAddressesBandwidthRequest) (response *ModifyAddressesBandwidthResponse, err error) {
     if request == nil {
         request = NewModifyAddressesBandwidthRequest()
@@ -8806,6 +8815,8 @@ func NewTransformAddressResponse() (response *TransformAddressResponse) {
 //  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
 //  INVALIDINSTANCEID_ALREADYBINDEIP = "InvalidInstanceId.AlreadyBindEip"
 //  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETERVALUE_INSTANCENOWANIP = "InvalidParameterValue.InstanceNoWanIP"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCESTATE = "InvalidParameterValue.InvalidInstanceState"
 func (c *Client) TransformAddress(request *TransformAddressRequest) (response *TransformAddressResponse, err error) {
     if request == nil {
         request = NewTransformAddressRequest()

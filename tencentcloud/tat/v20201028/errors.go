@@ -17,6 +17,9 @@ package v20201028
 const (
 	// 此产品的特有错误码
 
+	// CAM签名/鉴权错误。
+	AUTHFAILURE = "AuthFailure"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
@@ -101,6 +104,9 @@ const (
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
 
+	// 资源不存在。
+	RESOURCENOTFOUND = "ResourceNotFound"
+
 	// 命令不存在。
 	RESOURCENOTFOUND_COMMANDNOTFOUND = "ResourceNotFound.CommandNotFound"
 
@@ -115,6 +121,9 @@ const (
 
 	// 命令正在执行中。
 	RESOURCEUNAVAILABLE_COMMANDINEXECUTING = "ResourceUnavailable.CommandInExecuting"
+
+	// 命令已关联执行器。
+	RESOURCEUNAVAILABLE_COMMANDININVOKER = "ResourceUnavailable.CommandInInvoker"
 
 	// 实例未处于运行中。
 	RESOURCEUNAVAILABLE_INSTANCESTATENOTRUNNING = "ResourceUnavailable.InstanceStateNotRunning"

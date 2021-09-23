@@ -107,14 +107,38 @@ const (
 	// 缺少参数。
 	INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
 
+	// 该实例不支持AnycastEIP。
+	INVALIDPARAMETERVALUE_INSTANCEDOESNOTSUPPORTANYCAST = "InvalidParameterValue.InstanceDoesNotSupportAnycast"
+
+	// 该实例已有WanIP。
+	INVALIDPARAMETERVALUE_INSTANCEHASWANIP = "InvalidParameterValue.InstanceHasWanIP"
+
+	// 该实例没有CalcIP，无法完成请求。
+	INVALIDPARAMETERVALUE_INSTANCENOCALCIP = "InvalidParameterValue.InstanceNoCalcIP"
+
+	// 该实例没有WanIP，无法完成请求。
+	INVALIDPARAMETERVALUE_INSTANCENOWANIP = "InvalidParameterValue.InstanceNoWanIP"
+
+	// 由于该IP被禁用，无法绑定该实例。
+	INVALIDPARAMETERVALUE_INSTANCENORMALPUBLICIPBLOCKED = "InvalidParameterValue.InstanceNormalPublicIpBlocked"
+
 	// 传入的DedicatedClusterId有误。
 	INVALIDPARAMETERVALUE_INVALIDDEDICATEDCLUSTERID = "InvalidParameterValue.InvalidDedicatedClusterId"
 
 	// 该过滤规则不合法。
 	INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 
+	// 该IP只能绑定小时流量后付费和带宽包实例。
+	INVALIDPARAMETERVALUE_INVALIDINSTANCEINTERNETCHARGETYPE = "InvalidParameterValue.InvalidInstanceInternetChargeType"
+
+	// 该实例状态无法完成操作。
+	INVALIDPARAMETERVALUE_INVALIDINSTANCESTATE = "InvalidParameterValue.InvalidInstanceState"
+
 	// 该Tag不合法。
 	INVALIDPARAMETERVALUE_INVALIDTAG = "InvalidParameterValue.InvalidTag"
+
+	// 负载均衡实例已经绑定了EIP。
+	INVALIDPARAMETERVALUE_LBALREADYBINDEIP = "InvalidParameterValue.LBAlreadyBindEip"
 
 	// 参数值超出限制。
 	INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
