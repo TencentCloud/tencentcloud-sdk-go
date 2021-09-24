@@ -3395,8 +3395,39 @@ type DescribeClustersRequest struct {
 	// 最大输出条数，默认20，最大为100
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 过滤条件,当前只支持按照单个条件ClusterName进行过滤
+	// ·  ClusterName
+	//     按照【集群名】进行过滤。
+	//     类型：String
+	//     必选：否
+	// 
+	// ·  Tags
+	//     按照【标签键值对】进行过滤。
+	//     类型：String
+	//     必选：否
+	// 
+	// ·  vpc-id
+	//     按照【VPC】进行过滤。
+	//     类型：String
+	//     必选：否
+	// 
+	// ·  tag-key
+	//     按照【标签键】进行过滤。
+	//     类型：String
+	//     必选：否
+	// 
+	// ·  tag-value
+	//     按照【标签值】进行过滤。
+	//     类型：String
+	//     必选：否
+	// 
+	// ·  tag:tag-key
+	//     按照【标签键值对】进行过滤。
+	//     类型：String
+	//     必选：否
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 集群类型，例如：MANAGED_CLUSTER
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
 }
 
 func (r *DescribeClustersRequest) ToJsonString() string {
@@ -3415,6 +3446,7 @@ func (r *DescribeClustersRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Filters")
+	delete(f, "ClusterType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClustersRequest has unknown keys!", "")
 	}
@@ -3966,6 +3998,66 @@ func (r *DescribeExistedInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeExistedInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeExternalClusterSpecRequest struct {
+	*tchttp.BaseRequest
+
+	// 注册集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 默认false 获取内网，是否获取外网版注册命令
+	IsExtranet *bool `json:"IsExtranet,omitempty" name:"IsExtranet"`
+
+	// 默认false 不刷新有效时间 ，true刷新有效时间
+	IsRefreshExpirationTime *bool `json:"IsRefreshExpirationTime,omitempty" name:"IsRefreshExpirationTime"`
+}
+
+func (r *DescribeExternalClusterSpecRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExternalClusterSpecRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "IsExtranet")
+	delete(f, "IsRefreshExpirationTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExternalClusterSpecRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeExternalClusterSpecResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 导入第三方集群YAML定义
+		Spec *string `json:"Spec,omitempty" name:"Spec"`
+
+		// agent.yaml文件过期时间字符串，时区UTC
+		Expiration *string `json:"Expiration,omitempty" name:"Expiration"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeExternalClusterSpecResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExternalClusterSpecResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

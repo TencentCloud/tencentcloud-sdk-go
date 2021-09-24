@@ -371,6 +371,9 @@ type DescribeStructureResultResponse struct {
 		// 结构化结果
 		Results []*StructureResultObject `json:"Results,omitempty" name:"Results"`
 
+		// 主任务ID
+		MainTaskId *string `json:"MainTaskId,omitempty" name:"MainTaskId"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -537,4 +540,7 @@ type StructureResultObject struct {
 
 	// 结构化结果
 	StructureResult *string `json:"StructureResult,omitempty" name:"StructureResult"`
+
+	// 子任务ID
+	SubTaskId *string `json:"SubTaskId,omitempty" name:"SubTaskId"`
 }

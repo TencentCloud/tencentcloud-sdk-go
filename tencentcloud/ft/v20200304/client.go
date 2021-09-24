@@ -170,6 +170,7 @@ func NewFaceCartoonPicResponse() (response *FaceCartoonPicResponse) {
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCEUNAVAILABLE_LOWBALANCE = "ResourceUnavailable.LowBalance"
 //  RESOURCEUNAVAILABLE_NOTREADY = "ResourceUnavailable.NotReady"
+//  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) FaceCartoonPic(request *FaceCartoonPicRequest) (response *FaceCartoonPicResponse, err error) {
     if request == nil {
         request = NewFaceCartoonPicRequest()

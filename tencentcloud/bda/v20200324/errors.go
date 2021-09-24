@@ -89,6 +89,9 @@ const (
 	// 后端服务超时。
 	FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
 
+	// RPC请求失败，一般为算法微服务故障。
+	FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+
 	// 人像分割失败。
 	FAILEDOPERATION_SEGMENTFAILED = "FailedOperation.SegmentFailed"
 
@@ -109,6 +112,9 @@ const (
 
 	// 内部错误。
 	FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+
+	// 未知错误。
+	FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
 
 	// 视频解码失败。
 	FAILEDOPERATION_VIDEODECODEFAILED = "FailedOperation.VideoDecodeFailed"
@@ -208,6 +214,9 @@ const (
 
 	// 计费状态未知，请确认是否已在控制台开通服务。
 	RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+
+	// 服务未开通。
+	RESOURCEUNAVAILABLE_NOTREADY = "ResourceUnavailable.NotReady"
 
 	// 未知方法名。
 	UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"

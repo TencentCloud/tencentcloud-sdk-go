@@ -393,6 +393,40 @@ func (c *Client) DeleteSnapshots(request *DeleteSnapshotsRequest) (response *Del
     return
 }
 
+func NewDeleteTableDataFlowRequest() (request *DeleteTableDataFlowRequest) {
+    request = &DeleteTableDataFlowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcaplusdb", APIVersion, "DeleteTableDataFlow")
+    return
+}
+
+func NewDeleteTableDataFlowResponse() (response *DeleteTableDataFlowResponse) {
+    response = &DeleteTableDataFlowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteTableDataFlow
+// 删除表格的数据订阅
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteTableDataFlow(request *DeleteTableDataFlowRequest) (response *DeleteTableDataFlowResponse, err error) {
+    if request == nil {
+        request = NewDeleteTableDataFlowRequest()
+    }
+    response = NewDeleteTableDataFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteTableGroupRequest() (request *DeleteTableGroupRequest) {
     request = &DeleteTableGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1572,6 +1606,42 @@ func (c *Client) RollbackTables(request *RollbackTablesRequest) (response *Rollb
         request = NewRollbackTablesRequest()
     }
     response = NewRollbackTablesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetTableDataFlowRequest() (request *SetTableDataFlowRequest) {
+    request = &SetTableDataFlowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcaplusdb", APIVersion, "SetTableDataFlow")
+    return
+}
+
+func NewSetTableDataFlowResponse() (response *SetTableDataFlowResponse) {
+    response = &SetTableDataFlowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SetTableDataFlow
+// 新增、修改表格数据订阅
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) SetTableDataFlow(request *SetTableDataFlowRequest) (response *SetTableDataFlowResponse, err error) {
+    if request == nil {
+        request = NewSetTableDataFlowRequest()
+    }
+    response = NewSetTableDataFlowResponse()
     err = c.Send(request, response)
     return
 }

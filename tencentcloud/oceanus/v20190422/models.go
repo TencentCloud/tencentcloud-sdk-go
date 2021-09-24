@@ -136,6 +136,9 @@ type CreateJobRequest struct {
 
 	// 作业名所属文件夹ID，根目录为"root"
 	FolderId *string `json:"FolderId,omitempty" name:"FolderId"`
+
+	// 作业运行的Flink版本
+	FlinkVersion *string `json:"FlinkVersion,omitempty" name:"FlinkVersion"`
 }
 
 func (r *CreateJobRequest) ToJsonString() string {
@@ -157,6 +160,7 @@ func (r *CreateJobRequest) FromJsonString(s string) error {
 	delete(f, "CuMem")
 	delete(f, "Remark")
 	delete(f, "FolderId")
+	delete(f, "FlinkVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobRequest has unknown keys!", "")
 	}
@@ -819,6 +823,9 @@ type DescribeSystemResourcesRequest struct {
 
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 查询对应Flink版本的内置connector
+	FlinkVersion *string `json:"FlinkVersion,omitempty" name:"FlinkVersion"`
 }
 
 func (r *DescribeSystemResourcesRequest) ToJsonString() string {
@@ -838,6 +845,7 @@ func (r *DescribeSystemResourcesRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Filters")
 	delete(f, "ClusterId")
+	delete(f, "FlinkVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSystemResourcesRequest has unknown keys!", "")
 	}

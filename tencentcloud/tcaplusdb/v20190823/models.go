@@ -256,6 +256,14 @@ type ClusterInfo struct {
 	// 审批人uin列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbaUins []*string `json:"DbaUins,omitempty" name:"DbaUins"`
+
+	// 是否开启了数据订阅
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataFlowStatus *int64 `json:"DataFlowStatus,omitempty" name:"DataFlowStatus"`
+
+	// 数据订阅的kafka信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KafkaInfo *KafkaInfo `json:"KafkaInfo,omitempty" name:"KafkaInfo"`
 }
 
 type CompareIdlFilesRequest struct {
@@ -838,6 +846,62 @@ func (r *DeleteSnapshotsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteSnapshotsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteTableDataFlowRequest struct {
+	*tchttp.BaseRequest
+
+	// 表格所属集群实例ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 待删除分布式索引的表格列表
+	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables"`
+}
+
+func (r *DeleteTableDataFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTableDataFlowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "SelectedTables")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTableDataFlowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteTableDataFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 删除表格分布式索引结果数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 删除表格分布式索引结果列表
+		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteTableDataFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTableDataFlowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2136,6 +2200,27 @@ func (r *ImportSnapshotsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type KafkaInfo struct {
+
+	// kafaka address
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// kafaka topic
+	Topic *string `json:"Topic,omitempty" name:"Topic"`
+
+	// kafka username
+	User *string `json:"User,omitempty" name:"User"`
+
+	// kafka password
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// ckafka实例
+	Instance *string `json:"Instance,omitempty" name:"Instance"`
+
+	// 是否走VPC
+	IsVpc *int64 `json:"IsVpc,omitempty" name:"IsVpc"`
+}
+
 type KeyFile struct {
 
 	// key文件名称
@@ -3061,6 +3146,9 @@ type ProxyMachineInfo struct {
 
 	// 机器类型
 	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
+
+	// 可分配proxy资源数
+	AvailableCount *int64 `json:"AvailableCount,omitempty" name:"AvailableCount"`
 }
 
 type RecoverRecycleTablesRequest struct {
@@ -3260,11 +3348,14 @@ type SelectedTableWithField struct {
 	// 表格数据结构类型：`GENERIC`或`LIST`
 	TableType *string `json:"TableType,omitempty" name:"TableType"`
 
-	// 待创建索引的字段列表
+	// 待创建索引、缓写、数据订阅的字段列表
 	SelectedFields []*FieldInfo `json:"SelectedFields,omitempty" name:"SelectedFields"`
 
 	// 索引分片数
 	ShardNum *uint64 `json:"ShardNum,omitempty" name:"ShardNum"`
+
+	// ckafka实例信息
+	KafkaInfo *KafkaInfo `json:"KafkaInfo,omitempty" name:"KafkaInfo"`
 }
 
 type ServerDetailInfo struct {
@@ -3295,6 +3386,62 @@ type ServerMachineInfo struct {
 
 	// 机器类型
 	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
+}
+
+type SetTableDataFlowRequest struct {
+	*tchttp.BaseRequest
+
+	// 表所属集群实例ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 待创建分布式索引表格列表
+	SelectedTables []*SelectedTableWithField `json:"SelectedTables,omitempty" name:"SelectedTables"`
+}
+
+func (r *SetTableDataFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetTableDataFlowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "SelectedTables")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetTableDataFlowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SetTableDataFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 表格数据订阅创建结果数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 表格数据订阅创建结果列表
+		TableResults []*TableResultNew `json:"TableResults,omitempty" name:"TableResults"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SetTableDataFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetTableDataFlowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SetTableIndexRequest struct {
@@ -3553,7 +3700,7 @@ type TableInfoNew struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SortRule *int64 `json:"SortRule,omitempty" name:"SortRule"`
 
-	// 表格分布式索引信息
+	// 表格分布式索引/缓写、kafka数据订阅信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbClusterInfoStruct *string `json:"DbClusterInfoStruct,omitempty" name:"DbClusterInfoStruct"`
 }

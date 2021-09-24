@@ -17,6 +17,9 @@ package v20181201
 const (
 	// 此产品的特有错误码
 
+	// 认证失败。
+	AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 

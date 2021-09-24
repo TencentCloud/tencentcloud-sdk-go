@@ -3025,19 +3025,20 @@ type DescribeCallbackRecordsListRequest struct {
 	// 流名称，精确匹配。
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 
-	// 页码
+	// 页码。
 	PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
 
-	// 每页条数
+	// 每页条数。
 	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
 
 	// 事件类型。
 	// 0: "断流",
 	// 1: "推流",
-	// 100: "录制"
+	// 100: "录制"。
 	EventType *uint64 `json:"EventType,omitempty" name:"EventType"`
 
-	// 回调结果。0为成功，其他为失败
+	// 回调结果。
+	// 0为成功，其他为失败。
 	ResultCode *uint64 `json:"ResultCode,omitempty" name:"ResultCode"`
 }
 
@@ -3070,19 +3071,19 @@ type DescribeCallbackRecordsListResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 回调事件列表
+		// 回调事件列表。
 		DataInfoList []*CallbackEventInfo `json:"DataInfoList,omitempty" name:"DataInfoList"`
 
-		// 页码
+		// 页码。
 		PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
 
-		// 每页条数
+		// 每页条数。
 		PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
 
-		// 总条数
+		// 总条数。
 		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
 
-		// 总页数
+		// 总页数。
 		TotalPage *uint64 `json:"TotalPage,omitempty" name:"TotalPage"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6106,7 +6107,7 @@ type DescribeScreenShotSheetNumListRequest struct {
 	// 推流域名（支持查询2019年11 月1日之后的域名维度数据）。
 	PushDomains []*string `json:"PushDomains,omitempty" name:"PushDomains"`
 
-	// 数据维度，数据延迟1个半小时，可选值包括：1、Minute（5分钟粒度，最大支持查询时间范围是31天），2、Day（天粒度，默认值，最大支持查询时间范围是186天当天）。
+	// 数据维度，数据延迟1个半小时，可选值包括：1、Minute（5分钟粒度，最大支持查询时间范围是31天），2、Day（天粒度，默认值，按照北京时间做跨天处理，最大支持查询时间范围是186天当天）。
 	Granularity *string `json:"Granularity,omitempty" name:"Granularity"`
 }
 
@@ -6324,7 +6325,7 @@ type DescribeStreamPushInfoListRequest struct {
 	// 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS，最大时间跨度支持6小时，支持最近6天数据查询。
+	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS，支持查询最近7天数据，建议查询时间跨度在3小时之内。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 推流域名。

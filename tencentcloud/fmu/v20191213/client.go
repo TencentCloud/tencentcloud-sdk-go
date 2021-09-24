@@ -196,6 +196,7 @@ func NewCreateModelResponse() (response *CreateModelResponse) {
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
 //  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
 //  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_IMAGEUPLOADFAILED = "FailedOperation.ImageUploadFailed"
 //  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
 //  FAILEDOPERATION_MODELVALUEEXCEED = "FailedOperation.ModelValueExceed"
 //  FAILEDOPERATION_PARAMETERVALUEERROR = "FailedOperation.ParameterValueError"

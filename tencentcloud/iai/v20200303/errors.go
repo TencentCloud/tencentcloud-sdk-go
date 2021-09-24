@@ -17,6 +17,9 @@ package v20200303
 const (
 	// 此产品的特有错误码
 
+	// 认证失败。
+	AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+
 	// 该操作不支持跨算法模型版本。
 	FAILEDOPERATION_ACROSSVERSIONSERROR = "FailedOperation.AcrossVersionsError"
 

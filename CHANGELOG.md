@@ -1,43 +1,27 @@
 # 本版本更新包含以下内容：
 
-## 内容分发网络(cdn) 版本：2018-06-06
-
-### 第 78 次发布
-
-发布时间：2021-09-23 08:05:21
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ScdnDomain](https://cloud.tencent.com/document/api/228/30987#ScdnDomain)
-
-	* 新增成员：WafLevel
-
-
-
-
 ## 智能保险助手(cii) 版本：2021-04-08
 
-### 第 4 次发布
+### 第 5 次发布
 
-发布时间：2021-09-23 08:05:48
+发布时间：2021-09-24 09:54:37
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增数据结构：
+修改接口：
 
-* [ClassifyInfo](https://cloud.tencent.com/document/api/1368/56853#ClassifyInfo)
+* [DescribeStructureResult](https://cloud.tencent.com/document/api/1368/58068)
+
+	* 新增出参：MainTaskId
+
 
 修改数据结构：
 
-* [ResultObject](https://cloud.tencent.com/document/api/1368/56853#ResultObject)
+* [StructureResultObject](https://cloud.tencent.com/document/api/1368/56853#StructureResultObject)
 
-	* 新增成员：ReportType
+	* 新增成员：SubTaskId
 
 
 
@@ -46,54 +30,34 @@
 
 
 
-## 云监控(monitor) 版本：2018-07-24
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
 
-### 第 30 次发布
+### 第 10 次发布
 
-发布时间：2021-09-23 08:10:38
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [MetricSet](https://cloud.tencent.com/document/api/248/30354#MetricSet)
-
-	* 新增成员：MetricCName, MetricEName
-
-
-
-
-## 短信(sms) 版本：2021-01-11
-
-### 第 2 次发布
-
-发布时间：2021-09-23 08:11:56
+发布时间：2021-09-24 10:00:20
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [DescribePhoneNumberInfo](https://cloud.tencent.com/document/api/382/61755)
+* [CreateJob](https://cloud.tencent.com/document/api/849/52009)
 
-新增数据结构：
+	* 新增入参：FlinkVersion
 
-* [PhoneNumberInfo](https://cloud.tencent.com/document/api/382/52068#PhoneNumberInfo)
+* [DescribeSystemResources](https://cloud.tencent.com/document/api/849/51999)
 
-
-
-## 短信(sms) 版本：2019-07-11
+	* 新增入参：FlinkVersion
 
 
 
-## 腾讯云自动化助手(tat) 版本：2020-10-28
+
+## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
 
 ### 第 13 次发布
 
-发布时间：2021-09-23 08:12:30
+发布时间：2021-09-24 10:11:33
 
 本次发布包含了以下内容：
 
@@ -101,19 +65,73 @@
 
 新增接口：
 
-* [CreateInvoker](https://cloud.tencent.com/document/api/1340/61762)
-* [DeleteInvoker](https://cloud.tencent.com/document/api/1340/61761)
-* [DescribeInvokerRecords](https://cloud.tencent.com/document/api/1340/61760)
-* [DescribeInvokers](https://cloud.tencent.com/document/api/1340/61759)
-* [DisableInvoker](https://cloud.tencent.com/document/api/1340/61758)
-* [EnableInvoker](https://cloud.tencent.com/document/api/1340/61757)
-* [ModifyInvoker](https://cloud.tencent.com/document/api/1340/61756)
+* [DeleteTableDataFlow](https://cloud.tencent.com/document/api/596/61849)
+* [SetTableDataFlow](https://cloud.tencent.com/document/api/596/61848)
 
 新增数据结构：
 
-* [Invoker](https://cloud.tencent.com/document/api/1340/52687#Invoker)
-* [InvokerRecord](https://cloud.tencent.com/document/api/1340/52687#InvokerRecord)
-* [ScheduleSettings](https://cloud.tencent.com/document/api/1340/52687#ScheduleSettings)
+* [KafkaInfo](https://cloud.tencent.com/document/api/596/39686#KafkaInfo)
+
+修改数据结构：
+
+* [ClusterInfo](https://cloud.tencent.com/document/api/596/39686#ClusterInfo)
+
+	* 新增成员：DataFlowStatus, KafkaInfo
+
+* [ProxyMachineInfo](https://cloud.tencent.com/document/api/596/39686#ProxyMachineInfo)
+
+	* 新增成员：AvailableCount
+
+* [SelectedTableWithField](https://cloud.tencent.com/document/api/596/39686#SelectedTableWithField)
+
+	* 新增成员：KafkaInfo
+
+
+
+
+## 图像分析(tiia) 版本：2019-05-29
+
+### 第 15 次发布
+
+发布时间：2021-09-24 10:12:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [CarPlateContent](https://cloud.tencent.com/document/api/865/35474#CarPlateContent)
+
+修改数据结构：
+
+* [CarTagItem](https://cloud.tencent.com/document/api/865/35474#CarTagItem)
+
+	* 新增成员：PlateContent
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 73 次发布
+
+发布时间：2021-09-24 10:12:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeExternalClusterSpec](https://cloud.tencent.com/document/api/457/61850)
+
+修改接口：
+
+* [DescribeClusters](https://cloud.tencent.com/document/api/457/31862)
+
+	* 新增入参：ClusterType
+
 
 
 
@@ -11753,6 +11771,28 @@
 
 ## 智能保险助手(cii) 版本：2021-04-08
 
+### 第 5 次发布
+
+发布时间：2021-09-24 09:54:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeStructureResult](https://cloud.tencent.com/document/api/1368/58068)
+
+	* 新增出参：MainTaskId
+
+
+修改数据结构：
+
+* [StructureResultObject](https://cloud.tencent.com/document/api/1368/56853#StructureResultObject)
+
+	* 新增成员：SubTaskId
+
+
 ### 第 4 次发布
 
 发布时间：2021-09-23 08:05:48
@@ -11763,7 +11803,7 @@
 
 新增数据结构：
 
-* [[ClassifyInfo](https://cloud.tencent.com/document/api/1368/56853#ClassifyInfo)](https://cloud.tencent.com/document/api/1368/56853#[ClassifyInfo](https://cloud.tencent.com/document/api/1368/56853#ClassifyInfo))
+* [ClassifyInfo](https://cloud.tencent.com/document/api/1368/56853#ClassifyInfo)
 
 修改数据结构：
 
@@ -38328,6 +38368,25 @@
 
 ## 流计算 Oceanus(oceanus) 版本：2019-04-22
 
+### 第 10 次发布
+
+发布时间：2021-09-24 10:00:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateJob](https://cloud.tencent.com/document/api/849/52009)
+
+	* 新增入参：FlinkVersion
+
+* [DescribeSystemResources](https://cloud.tencent.com/document/api/849/51999)
+
+	* 新增入参：FlinkVersion
+
+
 ### 第 9 次发布
 
 发布时间：2021-09-06 08:01:03
@@ -42731,11 +42790,11 @@
 
 新增接口：
 
-* [[DescribePhoneNumberInfo](https://cloud.tencent.com/document/api/382/61755)](https://cloud.tencent.com/document/api/#/#)
+* [DescribePhoneNumberInfo](https://cloud.tencent.com/document/api/1103/62781)
 
 新增数据结构：
 
-* [[PhoneNumberInfo](https://cloud.tencent.com/document/api/382/52068#PhoneNumberInfo)](https://cloud.tencent.com/document/api/382/52068#[PhoneNumberInfo](https://cloud.tencent.com/document/api/382/52068#PhoneNumberInfo))
+* [PhoneNumberInfo](https://cloud.tencent.com/document/api/1103/51356#PhoneNumberInfo)
 
 ### 第 1 次发布
 
@@ -42747,39 +42806,39 @@
 
 新增接口：
 
-* [AddSmsSign](https://cloud.tencent.com/document/api/382/55971)
-* [AddSmsTemplate](https://cloud.tencent.com/document/api/382/55974)
-* [CallbackStatusStatistics](https://cloud.tencent.com/document/api/382/55966)
-* [DeleteSmsSign](https://cloud.tencent.com/document/api/382/55970)
-* [DeleteSmsTemplate](https://cloud.tencent.com/document/api/382/55973)
-* [DescribeSmsSignList](https://cloud.tencent.com/document/api/382/55969)
-* [DescribeSmsTemplateList](https://cloud.tencent.com/document/api/382/52067)
-* [ModifySmsSign](https://cloud.tencent.com/document/api/382/55968)
-* [ModifySmsTemplate](https://cloud.tencent.com/document/api/382/55972)
-* [PullSmsReplyStatus](https://cloud.tencent.com/document/api/382/55979)
-* [PullSmsReplyStatusByPhoneNumber](https://cloud.tencent.com/document/api/382/55978)
-* [PullSmsSendStatus](https://cloud.tencent.com/document/api/382/55977)
-* [PullSmsSendStatusByPhoneNumber](https://cloud.tencent.com/document/api/382/55976)
-* [SendSms](https://cloud.tencent.com/document/api/382/55981)
-* [SendStatusStatistics](https://cloud.tencent.com/document/api/382/55965)
-* [SmsPackagesStatistics](https://cloud.tencent.com/document/api/382/55964)
+* [AddSmsSign](https://cloud.tencent.com/document/api/1103/51410)
+* [AddSmsTemplate](https://cloud.tencent.com/document/api/1103/51412)
+* [CallbackStatusStatistics](https://cloud.tencent.com/document/api/1103/51414)
+* [DeleteSmsSign](https://cloud.tencent.com/document/api/1103/51427)
+* [DeleteSmsTemplate](https://cloud.tencent.com/document/api/1103/51400)
+* [DescribeSmsSignList](https://cloud.tencent.com/document/api/1103/51490)
+* [DescribeSmsTemplateList](https://cloud.tencent.com/document/api/1103/51492)
+* [ModifySmsSign](https://cloud.tencent.com/document/api/1103/51495)
+* [ModifySmsTemplate](https://cloud.tencent.com/document/api/1103/51496)
+* [PullSmsReplyStatus](https://cloud.tencent.com/document/api/1103/51506)
+* [PullSmsReplyStatusByPhoneNumber](https://cloud.tencent.com/document/api/1103/51507)
+* [PullSmsSendStatus](https://cloud.tencent.com/document/api/1103/51510)
+* [PullSmsSendStatusByPhoneNumber](https://cloud.tencent.com/document/api/1103/51511)
+* [SendSms](https://cloud.tencent.com/document/api/1103/51355)
+* [SendStatusStatistics](https://cloud.tencent.com/document/api/1103/51514)
+* [SmsPackagesStatistics](https://cloud.tencent.com/document/api/1103/51509)
 
 新增数据结构：
 
-* [AddSignStatus](https://cloud.tencent.com/document/api/382/52068#AddSignStatus)
-* [AddTemplateStatus](https://cloud.tencent.com/document/api/382/52068#AddTemplateStatus)
-* [CallbackStatusStatistics](https://cloud.tencent.com/document/api/382/52068#CallbackStatusStatistics)
-* [DeleteSignStatus](https://cloud.tencent.com/document/api/382/52068#DeleteSignStatus)
-* [DeleteTemplateStatus](https://cloud.tencent.com/document/api/382/52068#DeleteTemplateStatus)
-* [DescribeSignListStatus](https://cloud.tencent.com/document/api/382/52068#DescribeSignListStatus)
-* [DescribeTemplateListStatus](https://cloud.tencent.com/document/api/382/52068#DescribeTemplateListStatus)
-* [ModifySignStatus](https://cloud.tencent.com/document/api/382/52068#ModifySignStatus)
-* [ModifyTemplateStatus](https://cloud.tencent.com/document/api/382/52068#ModifyTemplateStatus)
-* [PullSmsReplyStatus](https://cloud.tencent.com/document/api/382/52068#PullSmsReplyStatus)
-* [PullSmsSendStatus](https://cloud.tencent.com/document/api/382/52068#PullSmsSendStatus)
-* [SendStatus](https://cloud.tencent.com/document/api/382/52068#SendStatus)
-* [SendStatusStatistics](https://cloud.tencent.com/document/api/382/52068#SendStatusStatistics)
-* [SmsPackagesStatistics](https://cloud.tencent.com/document/api/382/52068#SmsPackagesStatistics)
+* [AddSignStatus](https://cloud.tencent.com/document/api/1103/51356#AddSignStatus)
+* [AddTemplateStatus](https://cloud.tencent.com/document/api/1103/51356#AddTemplateStatus)
+* [CallbackStatusStatistics](https://cloud.tencent.com/document/api/1103/51356#CallbackStatusStatistics)
+* [DeleteSignStatus](https://cloud.tencent.com/document/api/1103/51356#DeleteSignStatus)
+* [DeleteTemplateStatus](https://cloud.tencent.com/document/api/1103/51356#DeleteTemplateStatus)
+* [DescribeSignListStatus](https://cloud.tencent.com/document/api/1103/51356#DescribeSignListStatus)
+* [DescribeTemplateListStatus](https://cloud.tencent.com/document/api/1103/51356#DescribeTemplateListStatus)
+* [ModifySignStatus](https://cloud.tencent.com/document/api/1103/51356#ModifySignStatus)
+* [ModifyTemplateStatus](https://cloud.tencent.com/document/api/1103/51356#ModifyTemplateStatus)
+* [PullSmsReplyStatus](https://cloud.tencent.com/document/api/1103/51356#PullSmsReplyStatus)
+* [PullSmsSendStatus](https://cloud.tencent.com/document/api/1103/51356#PullSmsSendStatus)
+* [SendStatus](https://cloud.tencent.com/document/api/1103/51356#SendStatus)
+* [SendStatusStatistics](https://cloud.tencent.com/document/api/1103/51356#SendStatusStatistics)
+* [SmsPackagesStatistics](https://cloud.tencent.com/document/api/1103/51356#SmsPackagesStatistics)
 
 
 
@@ -44635,19 +44694,19 @@
 
 新增接口：
 
-* [[CreateInvoker](https://cloud.tencent.com/document/api/1340/61762)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteInvoker](https://cloud.tencent.com/document/api/1340/61761)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeInvokerRecords](https://cloud.tencent.com/document/api/1340/61760)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeInvokers](https://cloud.tencent.com/document/api/1340/61759)](https://cloud.tencent.com/document/api/#/#)
-* [[DisableInvoker](https://cloud.tencent.com/document/api/1340/61758)](https://cloud.tencent.com/document/api/#/#)
-* [[EnableInvoker](https://cloud.tencent.com/document/api/1340/61757)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyInvoker](https://cloud.tencent.com/document/api/1340/61756)](https://cloud.tencent.com/document/api/#/#)
+* [CreateInvoker](https://cloud.tencent.com/document/api/1340/61762)
+* [DeleteInvoker](https://cloud.tencent.com/document/api/1340/61761)
+* [DescribeInvokerRecords](https://cloud.tencent.com/document/api/1340/61760)
+* [DescribeInvokers](https://cloud.tencent.com/document/api/1340/61759)
+* [DisableInvoker](https://cloud.tencent.com/document/api/1340/61758)
+* [EnableInvoker](https://cloud.tencent.com/document/api/1340/61757)
+* [ModifyInvoker](https://cloud.tencent.com/document/api/1340/61756)
 
 新增数据结构：
 
-* [[Invoker](https://cloud.tencent.com/document/api/1340/52687#Invoker)](https://cloud.tencent.com/document/api/1340/52687#[Invoker](https://cloud.tencent.com/document/api/1340/52687#Invoker))
-* [[InvokerRecord](https://cloud.tencent.com/document/api/1340/52687#InvokerRecord)](https://cloud.tencent.com/document/api/1340/52687#[InvokerRecord](https://cloud.tencent.com/document/api/1340/52687#InvokerRecord))
-* [[ScheduleSettings](https://cloud.tencent.com/document/api/1340/52687#ScheduleSettings)](https://cloud.tencent.com/document/api/1340/52687#[ScheduleSettings](https://cloud.tencent.com/document/api/1340/52687#ScheduleSettings))
+* [Invoker](https://cloud.tencent.com/document/api/1340/52687#Invoker)
+* [InvokerRecord](https://cloud.tencent.com/document/api/1340/52687#InvokerRecord)
+* [ScheduleSettings](https://cloud.tencent.com/document/api/1340/52687#ScheduleSettings)
 
 ### 第 12 次发布
 
@@ -45318,6 +45377,38 @@
 
 
 ## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
+
+### 第 13 次发布
+
+发布时间：2021-09-24 10:11:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DeleteTableDataFlow](https://cloud.tencent.com/document/api/596/61849)](https://cloud.tencent.com/document/api/#/#)
+* [[SetTableDataFlow](https://cloud.tencent.com/document/api/596/61848)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[KafkaInfo](https://cloud.tencent.com/document/api/596/39686#KafkaInfo)](https://cloud.tencent.com/document/api/596/39686#[KafkaInfo](https://cloud.tencent.com/document/api/596/39686#KafkaInfo))
+
+修改数据结构：
+
+* [ClusterInfo](https://cloud.tencent.com/document/api/596/39686#ClusterInfo)
+
+	* 新增成员：DataFlowStatus, KafkaInfo
+
+* [ProxyMachineInfo](https://cloud.tencent.com/document/api/596/39686#ProxyMachineInfo)
+
+	* 新增成员：AvailableCount
+
+* [SelectedTableWithField](https://cloud.tencent.com/document/api/596/39686#SelectedTableWithField)
+
+	* 新增成员：KafkaInfo
+
 
 ### 第 12 次发布
 
@@ -49411,6 +49502,25 @@
 
 ## 图像分析(tiia) 版本：2019-05-29
 
+### 第 15 次发布
+
+发布时间：2021-09-24 10:12:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[CarPlateContent](https://cloud.tencent.com/document/api/865/35474#CarPlateContent)](https://cloud.tencent.com/document/api/865/35474#[CarPlateContent](https://cloud.tencent.com/document/api/865/35474#CarPlateContent))
+
+修改数据结构：
+
+* [CarTagItem](https://cloud.tencent.com/document/api/865/35474#CarTagItem)
+
+	* 新增成员：PlateContent
+
+
 ### 第 14 次发布
 
 发布时间：2021-07-01 08:08:11
@@ -50398,6 +50508,25 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 73 次发布
+
+发布时间：2021-09-24 10:12:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeExternalClusterSpec](https://cloud.tencent.com/document/api/457/61850)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [DescribeClusters](https://cloud.tencent.com/document/api/457/31862)
+
+	* 新增入参：ClusterType
+
 
 ### 第 72 次发布
 

@@ -99,6 +99,25 @@ func (r *AssessQualityResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CarPlateContent struct {
+
+	// 车牌信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Plate *string `json:"Plate,omitempty" name:"Plate"`
+
+	// 车牌颜色。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Color *string `json:"Color,omitempty" name:"Color"`
+
+	// 车牌类型；渣土车车牌遮挡时,该值为枚举值“异常”。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 车牌在图片中的坐标信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PlateLocation []*Coord `json:"PlateLocation,omitempty" name:"PlateLocation"`
+}
+
 type CarTagItem struct {
 
 	// 车系
@@ -121,6 +140,10 @@ type CarTagItem struct {
 
 	// 车辆在图片中的坐标信息
 	CarLocation []*Coord `json:"CarLocation,omitempty" name:"CarLocation"`
+
+	// 车牌信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PlateContent *CarPlateContent `json:"PlateContent,omitempty" name:"PlateContent"`
 }
 
 type Coord struct {

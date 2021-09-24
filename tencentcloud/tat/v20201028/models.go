@@ -36,7 +36,9 @@ type AutomationAgentInfo struct {
 	// <li> Offline：离线
 	AgentStatus *string `json:"AgentStatus,omitempty" name:"AgentStatus"`
 
-	// Agent运行环境
+	// Agent运行环境，取值范围：
+	// <li> Linux：Linux实例
+	// <li> Windows：Windows实例
 	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 

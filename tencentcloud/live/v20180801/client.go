@@ -1714,7 +1714,7 @@ func NewDescribeCallbackRecordsListResponse() (response *DescribeCallbackRecords
 }
 
 // DescribeCallbackRecordsList
-// 回调事件查询
+// 用于查询回调事件。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
