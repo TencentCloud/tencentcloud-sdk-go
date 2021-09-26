@@ -1206,6 +1206,9 @@ type CreateDBInstanceHourRequest struct {
 
 	// 是否自动发起灾备同步功能。该参数仅对购买灾备实例生效。 可选值为：0 - 不自动发起灾备同步；1 - 自动发起灾备同步。
 	AutoSyncFlag *int64 `json:"AutoSyncFlag,omitempty" name:"AutoSyncFlag"`
+
+	// 金融围拢 ID 。
+	CageId *string `json:"CageId,omitempty" name:"CageId"`
 }
 
 func (r *CreateDBInstanceHourRequest) ToJsonString() string {
@@ -1251,6 +1254,7 @@ func (r *CreateDBInstanceHourRequest) FromJsonString(s string) error {
 	delete(f, "InstanceNodes")
 	delete(f, "Cpu")
 	delete(f, "AutoSyncFlag")
+	delete(f, "CageId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBInstanceHourRequest has unknown keys!", "")
 	}
@@ -1381,6 +1385,9 @@ type CreateDBInstanceRequest struct {
 
 	// 是否自动发起灾备同步功能。该参数仅对购买灾备实例生效。 可选值为：0 - 不自动发起灾备同步；1 - 自动发起灾备同步。
 	AutoSyncFlag *int64 `json:"AutoSyncFlag,omitempty" name:"AutoSyncFlag"`
+
+	// 金融围拢 ID。
+	CageId *string `json:"CageId,omitempty" name:"CageId"`
 }
 
 func (r *CreateDBInstanceRequest) ToJsonString() string {
@@ -1427,6 +1434,7 @@ func (r *CreateDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "InstanceNodes")
 	delete(f, "Cpu")
 	delete(f, "AutoSyncFlag")
+	delete(f, "CageId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBInstanceRequest has unknown keys!", "")
 	}
@@ -3551,6 +3559,9 @@ type DescribeDBInstancesRequest struct {
 
 	// 是否以标签键为过滤条件。
 	TagKeysForSearch []*string `json:"TagKeysForSearch,omitempty" name:"TagKeysForSearch"`
+
+	// 金融围拢 ID 。
+	CageIds []*string `json:"CageIds,omitempty" name:"CageIds"`
 }
 
 func (r *DescribeDBInstancesRequest) ToJsonString() string {
@@ -3592,6 +3603,7 @@ func (r *DescribeDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "WithMaster")
 	delete(f, "DeployGroupIds")
 	delete(f, "TagKeysForSearch")
+	delete(f, "CageIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBInstancesRequest has unknown keys!", "")
 	}

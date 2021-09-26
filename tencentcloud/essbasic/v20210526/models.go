@@ -64,7 +64,7 @@ type Component struct {
 	// 表单域的控件不能作为印章和签名控件
 	ComponentType *string `json:"ComponentType,omitempty" name:"ComponentType"`
 
-	// 控件名称
+	// 控件简称
 	ComponentName *string `json:"ComponentName,omitempty" name:"ComponentName"`
 
 	// 定义控件是否为必填项，默认为false

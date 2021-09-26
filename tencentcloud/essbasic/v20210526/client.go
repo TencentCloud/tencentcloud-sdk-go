@@ -103,13 +103,23 @@ func NewCreateFlowsByTemplatesResponse() (response *CreateFlowsByTemplatesRespon
 // 接口（CreateFlowsByTemplates）用于使用多个模板批量创建流程
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
 //  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
 //  INTERNALERROR_THIRDPARTY = "InternalError.ThirdParty"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
+//  INVALIDPARAMETER_BIZAPPROVERALREADYEXISTS = "InvalidParameter.BizApproverAlreadyExists"
 //  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
 func (c *Client) CreateFlowsByTemplates(request *CreateFlowsByTemplatesRequest) (response *CreateFlowsByTemplatesResponse, err error) {
     if request == nil {
         request = NewCreateFlowsByTemplatesRequest()
@@ -138,9 +148,19 @@ func NewCreateSignUrlsResponse() (response *CreateSignUrlsResponse) {
 // 根据流程Id批量创建签署参与者签署H5链接
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateSignUrls(request *CreateSignUrlsRequest) (response *CreateSignUrlsResponse, err error) {
     if request == nil {
         request = NewCreateSignUrlsRequest()
@@ -169,9 +189,17 @@ func NewDescribeTemplatesResponse() (response *DescribeTemplatesResponse) {
 // 通过此接口（DescribeTemplates）查询该企业在电子签渠道版中配置的有效模板列表
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
 func (c *Client) DescribeTemplates(request *DescribeTemplatesRequest) (response *DescribeTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeTemplatesRequest()
@@ -210,6 +238,7 @@ func NewDescribeUsageResponse() (response *DescribeUsageResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_BANNEDAPPLICATION = "OperationDenied.BannedApplication"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -247,6 +276,7 @@ func NewPrepareFlowsResponse() (response *PrepareFlowsResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
 func (c *Client) PrepareFlows(request *PrepareFlowsRequest) (response *PrepareFlowsResponse, err error) {
     if request == nil {
@@ -284,6 +314,7 @@ func NewSyncProxyOrganizationResponse() (response *SyncProxyOrganizationResponse
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_BANNEDAPPLICATION = "OperationDenied.BannedApplication"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -324,6 +355,7 @@ func NewSyncProxyOrganizationOperatorsResponse() (response *SyncProxyOrganizatio
 //  OPERATIONDENIED_NOAPIAUTH = "OperationDenied.NoApiAuth"
 //  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"

@@ -35,11 +35,20 @@ const (
 	// 加密错误。
 	INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
 
+	// 生成唯一ID错误。
+	INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+
 	// 第三方错误。
 	INTERNALERROR_THIRDPARTY = "InternalError.ThirdParty"
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
+
+	// 应用号不存在。
+	INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
+
+	// 重复添加签署人。
+	INVALIDPARAMETER_BIZAPPROVERALREADYEXISTS = "InvalidParameter.BizApproverAlreadyExists"
 
 	// 数据不存在。
 	INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
@@ -49,6 +58,9 @@ const (
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
+
+	// 超过配额限制。
+	LIMITEXCEEDED = "LimitExceeded"
 
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
@@ -73,6 +85,9 @@ const (
 
 	// 模板不存在。
 	RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+
+	// 资源不可用。
+	RESOURCEUNAVAILABLE = "ResourceUnavailable"
 
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
