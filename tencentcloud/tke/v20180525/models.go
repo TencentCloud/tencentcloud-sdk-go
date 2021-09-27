@@ -3052,6 +3052,9 @@ type DescribeClusterKubeconfigRequest struct {
 
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 默认false 获取内网，是否获取外网访问的kubeconfig
+	IsExtranet *bool `json:"IsExtranet,omitempty" name:"IsExtranet"`
 }
 
 func (r *DescribeClusterKubeconfigRequest) ToJsonString() string {
@@ -3067,6 +3070,7 @@ func (r *DescribeClusterKubeconfigRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ClusterId")
+	delete(f, "IsExtranet")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterKubeconfigRequest has unknown keys!", "")
 	}

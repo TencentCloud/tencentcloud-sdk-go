@@ -1654,6 +1654,9 @@ type CreateApplicationRequest struct {
 
 	// 服务配置信息列表
 	ServiceConfigList []*ServiceConfig `json:"ServiceConfigList,omitempty" name:"ServiceConfigList"`
+
+	// 忽略创建镜像仓库
+	IgnoreCreateImageRepository *bool `json:"IgnoreCreateImageRepository,omitempty" name:"IgnoreCreateImageRepository"`
 }
 
 func (r *CreateApplicationRequest) ToJsonString() string {
@@ -1677,6 +1680,7 @@ func (r *CreateApplicationRequest) FromJsonString(s string) error {
 	delete(f, "ApplicationRuntimeType")
 	delete(f, "ProgramId")
 	delete(f, "ServiceConfigList")
+	delete(f, "IgnoreCreateImageRepository")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateApplicationRequest has unknown keys!", "")
 	}

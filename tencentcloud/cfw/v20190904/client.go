@@ -43,6 +43,52 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAddAcRuleRequest() (request *AddAcRuleRequest) {
+    request = &AddAcRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cfw", APIVersion, "AddAcRule")
+    return
+}
+
+func NewAddAcRuleResponse() (response *AddAcRuleResponse) {
+    response = &AddAcRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddAcRule
+// 添加互联网边界规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AddAcRule(request *AddAcRuleRequest) (response *AddAcRuleResponse, err error) {
+    if request == nil {
+        request = NewAddAcRuleRequest()
+    }
+    response = NewAddAcRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAcRulesRequest() (request *CreateAcRulesRequest) {
     request = &CreateAcRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -179,6 +225,52 @@ func (c *Client) CreateNatFwInstance(request *CreateNatFwInstanceRequest) (respo
         request = NewCreateNatFwInstanceRequest()
     }
     response = NewCreateNatFwInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateNatFwInstanceWithDomainRequest() (request *CreateNatFwInstanceWithDomainRequest) {
+    request = &CreateNatFwInstanceWithDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cfw", APIVersion, "CreateNatFwInstanceWithDomain")
+    return
+}
+
+func NewCreateNatFwInstanceWithDomainResponse() (response *CreateNatFwInstanceWithDomainResponse) {
+    response = &CreateNatFwInstanceWithDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateNatFwInstanceWithDomain
+// 创建防火墙实例和接入域名
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateNatFwInstanceWithDomain(request *CreateNatFwInstanceWithDomainRequest) (response *CreateNatFwInstanceWithDomainResponse, err error) {
+    if request == nil {
+        request = NewCreateNatFwInstanceWithDomainRequest()
+    }
+    response = NewCreateNatFwInstanceWithDomainResponse()
     err = c.Send(request, response)
     return
 }
@@ -2236,6 +2328,52 @@ func (c *Client) ModifyVPCSwitchStatus(request *ModifyVPCSwitchStatusRequest) (r
         request = NewModifyVPCSwitchStatusRequest()
     }
     response = NewModifyVPCSwitchStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRemoveAcRuleRequest() (request *RemoveAcRuleRequest) {
+    request = &RemoveAcRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cfw", APIVersion, "RemoveAcRule")
+    return
+}
+
+func NewRemoveAcRuleResponse() (response *RemoveAcRuleResponse) {
+    response = &RemoveAcRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RemoveAcRule
+// 删除互联网边界规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RemoveAcRule(request *RemoveAcRuleRequest) (response *RemoveAcRuleResponse, err error) {
+    if request == nil {
+        request = NewRemoveAcRuleRequest()
+    }
+    response = NewRemoveAcRuleResponse()
     err = c.Send(request, response)
     return
 }

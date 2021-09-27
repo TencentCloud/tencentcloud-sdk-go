@@ -61,6 +61,367 @@ type AccountStatistics struct {
 	MachineNum *uint64 `json:"MachineNum,omitempty" name:"MachineNum"`
 }
 
+type AssetAppBaseInfo struct {
+
+	// 主机内网IP
+	MachineIp *string `json:"MachineIp,omitempty" name:"MachineIp"`
+
+	// 主机外网IP
+	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
+
+	// 主机Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 主机Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 操作系统信息
+	OsInfo *string `json:"OsInfo,omitempty" name:"OsInfo"`
+
+	// 主机业务组ID
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 主机标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tag []*MachineTag `json:"Tag,omitempty" name:"Tag"`
+
+	// 应用名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 应用类型	
+	// 1: 运维
+	// 2 : 数据库
+	// 3 : 安全
+	// 4 : 可疑应用
+	// 5 : 系统架构
+	// 6 : 系统应用
+	// 7 : WEB服务
+	// 99: 其他
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 二进制路径
+	BinPath *string `json:"BinPath,omitempty" name:"BinPath"`
+
+	// 配置文件路径
+	ConfigPath *string `json:"ConfigPath,omitempty" name:"ConfigPath"`
+
+	// 关联进程数
+	ProcessCount *uint64 `json:"ProcessCount,omitempty" name:"ProcessCount"`
+
+	// 应用描述
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
+
+	// 版本号
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 数据更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type AssetAppProcessInfo struct {
+
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 进程状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 进程版本
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 路径
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 用户
+	User *string `json:"User,omitempty" name:"User"`
+
+	// 启动时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+}
+
+type AssetCoreModuleBaseInfo struct {
+
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 描述
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
+
+	// 路径
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 版本
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 服务器IP
+	MachineIp *string `json:"MachineIp,omitempty" name:"MachineIp"`
+
+	// 服务器名称
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	// 操作系统
+	OsInfo *string `json:"OsInfo,omitempty" name:"OsInfo"`
+
+	// 模块大小
+	Size *uint64 `json:"Size,omitempty" name:"Size"`
+
+	// 依赖进程数
+	ProcessCount *uint64 `json:"ProcessCount,omitempty" name:"ProcessCount"`
+
+	// 依赖模块数
+	ModuleCount *uint64 `json:"ModuleCount,omitempty" name:"ModuleCount"`
+
+	// 模块ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 主机Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 主机uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 数据更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type AssetCoreModuleDetail struct {
+
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 描述
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
+
+	// 路径
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 版本
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 大小
+	Size *uint64 `json:"Size,omitempty" name:"Size"`
+
+	// 依赖进程
+	Processes *string `json:"Processes,omitempty" name:"Processes"`
+
+	// 被依赖模块
+	Modules *string `json:"Modules,omitempty" name:"Modules"`
+
+	// 参数信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Params []*AssetCoreModuleParam `json:"Params,omitempty" name:"Params"`
+
+	// 数据更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type AssetCoreModuleParam struct {
+
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 数据
+	Data *string `json:"Data,omitempty" name:"Data"`
+}
+
+type AssetDatabaseBaseInfo struct {
+
+	// 主机内网IP
+	MachineIp *string `json:"MachineIp,omitempty" name:"MachineIp"`
+
+	// 主机外网IP
+	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
+
+	// 主机Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 主机Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 操作系统信息
+	OsInfo *string `json:"OsInfo,omitempty" name:"OsInfo"`
+
+	// 主机业务组ID
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 主机标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tag []*MachineTag `json:"Tag,omitempty" name:"Tag"`
+
+	// 数据库名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 版本
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 监听端口
+	Port *string `json:"Port,omitempty" name:"Port"`
+
+	// 协议
+	Proto *string `json:"Proto,omitempty" name:"Proto"`
+
+	// 运行用户
+	User *string `json:"User,omitempty" name:"User"`
+
+	// 绑定IP
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 配置文件路径
+	ConfigPath *string `json:"ConfigPath,omitempty" name:"ConfigPath"`
+
+	// 日志文件路径
+	LogPath *string `json:"LogPath,omitempty" name:"LogPath"`
+
+	// 数据路径
+	DataPath *string `json:"DataPath,omitempty" name:"DataPath"`
+
+	// 运行权限
+	Permission *string `json:"Permission,omitempty" name:"Permission"`
+
+	// 错误日志路径
+	ErrorLogPath *string `json:"ErrorLogPath,omitempty" name:"ErrorLogPath"`
+
+	// 插件路径
+	PlugInPath *string `json:"PlugInPath,omitempty" name:"PlugInPath"`
+
+	// 二进制路径
+	BinPath *string `json:"BinPath,omitempty" name:"BinPath"`
+
+	// 启动参数
+	Param *string `json:"Param,omitempty" name:"Param"`
+
+	// 数据库ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 数据更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type AssetDatabaseDetail struct {
+
+	// 主机内网IP
+	MachineIp *string `json:"MachineIp,omitempty" name:"MachineIp"`
+
+	// 主机外网IP
+	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
+
+	// 主机Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 主机Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 操作系统信息
+	OsInfo *string `json:"OsInfo,omitempty" name:"OsInfo"`
+
+	// 数据库名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 版本
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 监听端口
+	Port *string `json:"Port,omitempty" name:"Port"`
+
+	// 协议
+	Proto *string `json:"Proto,omitempty" name:"Proto"`
+
+	// 运行用户
+	User *string `json:"User,omitempty" name:"User"`
+
+	// 绑定IP
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 配置文件路径
+	ConfigPath *string `json:"ConfigPath,omitempty" name:"ConfigPath"`
+
+	// 日志文件路径
+	LogPath *string `json:"LogPath,omitempty" name:"LogPath"`
+
+	// 数据路径
+	DataPath *string `json:"DataPath,omitempty" name:"DataPath"`
+
+	// 运行权限
+	Permission *string `json:"Permission,omitempty" name:"Permission"`
+
+	// 错误日志路径
+	ErrorLogPath *string `json:"ErrorLogPath,omitempty" name:"ErrorLogPath"`
+
+	// 插件路径
+	PlugInPath *string `json:"PlugInPath,omitempty" name:"PlugInPath"`
+
+	// 二进制路径
+	BinPath *string `json:"BinPath,omitempty" name:"BinPath"`
+
+	// 启动参数
+	Param *string `json:"Param,omitempty" name:"Param"`
+
+	// 数据更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type AssetDiskPartitionInfo struct {
+
+	// 分区名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 分区大小：单位G
+	Size *uint64 `json:"Size,omitempty" name:"Size"`
+
+	// 分区使用率
+	Percent *float64 `json:"Percent,omitempty" name:"Percent"`
+
+	// 文件系统类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 挂载目录
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 已使用空间：单位G
+	Used *uint64 `json:"Used,omitempty" name:"Used"`
+}
+
+type AssetEnvBaseInfo struct {
+
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 类型：
+	// 0:用户变量
+	// 1:系统变量
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 启动用户
+	User *string `json:"User,omitempty" name:"User"`
+
+	// 环境变量值
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 服务器IP
+	MachineIp *string `json:"MachineIp,omitempty" name:"MachineIp"`
+
+	// 服务器名称
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	// 操作系统
+	OsInfo *string `json:"OsInfo,omitempty" name:"OsInfo"`
+
+	// 主机Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 主机uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 数据更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
 type AssetFilters struct {
 
 	// 过滤键的名称。
@@ -71,6 +432,138 @@ type AssetFilters struct {
 
 	// 是否模糊查询
 	ExactMatch *bool `json:"ExactMatch,omitempty" name:"ExactMatch"`
+}
+
+type AssetInitServiceBaseInfo struct {
+
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 类型：
+	// 1:编码器
+	// 2:IE插件
+	// 3:网络提供者
+	// 4:镜像劫持
+	// 5:LSA提供者
+	// 6:KnownDLLs
+	// 7:启动执行
+	// 8:WMI
+	// 9:计划任务
+	// 10:Winsock提供者
+	// 11:打印监控器
+	// 12:资源管理器
+	// 13:驱动服务
+	// 14:登录
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 默认启用状态：0未启用，1启用
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 启动用户
+	User *string `json:"User,omitempty" name:"User"`
+
+	// 路径
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 服务器IP
+	MachineIp *string `json:"MachineIp,omitempty" name:"MachineIp"`
+
+	// 服务器名称
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	// 操作系统
+	OsInfo *string `json:"OsInfo,omitempty" name:"OsInfo"`
+
+	// 主机Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 主机uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 数据更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type AssetJarBaseInfo struct {
+
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 类型：1应用程序，2系统类库，3Web服务自带库，8:其他，
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 是否可执行：0未知，1是，2否
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 版本
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 路径
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 服务器IP
+	MachineIp *string `json:"MachineIp,omitempty" name:"MachineIp"`
+
+	// 服务器名称
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	// 操作系统
+	OsInfo *string `json:"OsInfo,omitempty" name:"OsInfo"`
+
+	// Jar包ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// Jar包Md5
+	Md5 *string `json:"Md5,omitempty" name:"Md5"`
+
+	// 主机Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 主机uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 数据更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type AssetJarDetail struct {
+
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 类型：1应用程序，2系统类库，3Web服务自带库，8:其他，
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 是否可执行：0未知，1是，2否
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 版本
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 路径
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 服务器IP
+	MachineIp *string `json:"MachineIp,omitempty" name:"MachineIp"`
+
+	// 服务器名称
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	// 操作系统
+	OsInfo *string `json:"OsInfo,omitempty" name:"OsInfo"`
+
+	// 引用进程列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Process []*AssetAppProcessInfo `json:"Process,omitempty" name:"Process"`
+
+	// Jar包Md5
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Md5 *string `json:"Md5,omitempty" name:"Md5"`
+
+	// 数据更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type AssetKeyVal struct {
@@ -84,6 +577,880 @@ type AssetKeyVal struct {
 	// 描述信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Desc *string `json:"Desc,omitempty" name:"Desc"`
+}
+
+type AssetMachineBaseInfo struct {
+
+	// 服务器Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 服务器uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 服务器内网IP
+	MachineIp *string `json:"MachineIp,omitempty" name:"MachineIp"`
+
+	// 服务器名称
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	// 操作系统名称
+	OsInfo *string `json:"OsInfo,omitempty" name:"OsInfo"`
+
+	// CPU信息
+	Cpu *string `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 内存容量：单位G
+	MemSize *uint64 `json:"MemSize,omitempty" name:"MemSize"`
+
+	// 内存使用率百分比
+	MemLoad *string `json:"MemLoad,omitempty" name:"MemLoad"`
+
+	// 硬盘容量：单位G
+	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 硬盘使用率百分比
+	DiskLoad *string `json:"DiskLoad,omitempty" name:"DiskLoad"`
+
+	// 分区数
+	PartitionCount *uint64 `json:"PartitionCount,omitempty" name:"PartitionCount"`
+
+	// 主机外网IP
+	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
+
+	// 业务组ID
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// Cpu数量
+	CpuSize *uint64 `json:"CpuSize,omitempty" name:"CpuSize"`
+
+	// Cpu使用率百分比
+	CpuLoad *string `json:"CpuLoad,omitempty" name:"CpuLoad"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tag []*MachineTag `json:"Tag,omitempty" name:"Tag"`
+
+	// 数据更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type AssetMachineDetail struct {
+
+	// 服务器Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 服务器uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 服务器内网IP
+	MachineIp *string `json:"MachineIp,omitempty" name:"MachineIp"`
+
+	// 服务器名称
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	// 操作系统名称
+	OsInfo *string `json:"OsInfo,omitempty" name:"OsInfo"`
+
+	// CPU信息
+	Cpu *string `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 内存容量：单位G
+	MemSize *uint64 `json:"MemSize,omitempty" name:"MemSize"`
+
+	// 内存使用率百分比
+	MemLoad *string `json:"MemLoad,omitempty" name:"MemLoad"`
+
+	// 硬盘容量：单位G
+	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 硬盘使用率百分比
+	DiskLoad *string `json:"DiskLoad,omitempty" name:"DiskLoad"`
+
+	// 分区数
+	PartitionCount *uint64 `json:"PartitionCount,omitempty" name:"PartitionCount"`
+
+	// 主机外网IP
+	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
+
+	// Cpu数量
+	CpuSize *uint64 `json:"CpuSize,omitempty" name:"CpuSize"`
+
+	// Cpu使用率百分比
+	CpuLoad *string `json:"CpuLoad,omitempty" name:"CpuLoad"`
+
+	// 防护级别：0基础版，1专业版
+	ProtectLevel *uint64 `json:"ProtectLevel,omitempty" name:"ProtectLevel"`
+
+	// 风险状态：UNKNOW-未知，RISK-风险，SAFT-安全
+	RiskStatus *string `json:"RiskStatus,omitempty" name:"RiskStatus"`
+
+	// 已防护天数
+	ProtectDays *uint64 `json:"ProtectDays,omitempty" name:"ProtectDays"`
+
+	// 专业版开通时间
+	BuyTime *string `json:"BuyTime,omitempty" name:"BuyTime"`
+
+	// 专业版到期时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 内核版本
+	CoreVersion *string `json:"CoreVersion,omitempty" name:"CoreVersion"`
+
+	// linux/windows
+	OsType *string `json:"OsType,omitempty" name:"OsType"`
+
+	// agent版本
+	AgentVersion *string `json:"AgentVersion,omitempty" name:"AgentVersion"`
+
+	// 安装时间
+	InstallTime *string `json:"InstallTime,omitempty" name:"InstallTime"`
+
+	// 系统启动时间
+	BootTime *string `json:"BootTime,omitempty" name:"BootTime"`
+
+	// 最后上线时间
+	LastLiveTime *string `json:"LastLiveTime,omitempty" name:"LastLiveTime"`
+
+	// 生产商
+	Producer *string `json:"Producer,omitempty" name:"Producer"`
+
+	// 序列号
+	SerialNumber *string `json:"SerialNumber,omitempty" name:"SerialNumber"`
+
+	// 网卡
+	NetCards []*AssetNetworkCardInfo `json:"NetCards,omitempty" name:"NetCards"`
+
+	// 分区
+	Disks []*AssetDiskPartitionInfo `json:"Disks,omitempty" name:"Disks"`
+
+	// 0在线，1已离线
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 业务组ID
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 设备型号
+	DeviceVersion *string `json:"DeviceVersion,omitempty" name:"DeviceVersion"`
+
+	// 离线时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OfflineTime *string `json:"OfflineTime,omitempty" name:"OfflineTime"`
+
+	// 主机ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 数据更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type AssetNetworkCardInfo struct {
+
+	// 网卡名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// Ipv4对应IP
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 网关
+	GateWay *string `json:"GateWay,omitempty" name:"GateWay"`
+
+	// MAC地址
+	Mac *string `json:"Mac,omitempty" name:"Mac"`
+
+	// Ipv6对应IP
+	Ipv6 *string `json:"Ipv6,omitempty" name:"Ipv6"`
+
+	// DNS服务器
+	DnsServer *string `json:"DnsServer,omitempty" name:"DnsServer"`
+}
+
+type AssetPlanTask struct {
+
+	// 默认启用状态：1启用，2未启用
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 执行周期
+	Cycle *string `json:"Cycle,omitempty" name:"Cycle"`
+
+	// 执行命令或脚本
+	Command *string `json:"Command,omitempty" name:"Command"`
+
+	// 启动用户
+	User *string `json:"User,omitempty" name:"User"`
+
+	// 配置文件路径
+	ConfigPath *string `json:"ConfigPath,omitempty" name:"ConfigPath"`
+
+	// 服务器IP
+	MachineIp *string `json:"MachineIp,omitempty" name:"MachineIp"`
+
+	// 服务器名称
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	// 操作系统
+	OsInfo *string `json:"OsInfo,omitempty" name:"OsInfo"`
+
+	// 主机Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 主机uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 数据更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type AssetPortBaseInfo struct {
+
+	// 主机内网IP
+	MachineIp *string `json:"MachineIp,omitempty" name:"MachineIp"`
+
+	// 主机外网IP
+	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
+
+	// 主机Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 主机Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 操作系统信息
+	OsInfo *string `json:"OsInfo,omitempty" name:"OsInfo"`
+
+	// 主机业务组ID
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 主机标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tag []*MachineTag `json:"Tag,omitempty" name:"Tag"`
+
+	// 进程名称
+	ProcessName *string `json:"ProcessName,omitempty" name:"ProcessName"`
+
+	// 进程版本
+	ProcessVersion *string `json:"ProcessVersion,omitempty" name:"ProcessVersion"`
+
+	// 进程路径
+	ProcessPath *string `json:"ProcessPath,omitempty" name:"ProcessPath"`
+
+	// 进程ID
+	Pid *string `json:"Pid,omitempty" name:"Pid"`
+
+	// 运行用户
+	User *string `json:"User,omitempty" name:"User"`
+
+	// 启动时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 启动参数
+	Param *string `json:"Param,omitempty" name:"Param"`
+
+	// 进程TTY
+	Teletype *string `json:"Teletype,omitempty" name:"Teletype"`
+
+	// 端口
+	Port *string `json:"Port,omitempty" name:"Port"`
+
+	// 所属用户组
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 进程MD5
+	Md5 *string `json:"Md5,omitempty" name:"Md5"`
+
+	// 父进程ID
+	Ppid *string `json:"Ppid,omitempty" name:"Ppid"`
+
+	// 父进程名称
+	ParentProcessName *string `json:"ParentProcessName,omitempty" name:"ParentProcessName"`
+
+	// 端口协议
+	Proto *string `json:"Proto,omitempty" name:"Proto"`
+
+	// 绑定IP
+	BindIp *string `json:"BindIp,omitempty" name:"BindIp"`
+
+	// 主机名称
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	// 数据更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type AssetProcessBaseInfo struct {
+
+	// 主机内网IP
+	MachineIp *string `json:"MachineIp,omitempty" name:"MachineIp"`
+
+	// 主机外网IP
+	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
+
+	// 主机Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 主机Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 操作系统信息
+	OsInfo *string `json:"OsInfo,omitempty" name:"OsInfo"`
+
+	// 主机业务组ID
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 主机标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tag []*MachineTag `json:"Tag,omitempty" name:"Tag"`
+
+	// 进程名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 进程说明
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
+
+	// 进程路径
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 进程ID
+	Pid *string `json:"Pid,omitempty" name:"Pid"`
+
+	// 运行用户
+	User *string `json:"User,omitempty" name:"User"`
+
+	// 启动时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 启动参数
+	Param *string `json:"Param,omitempty" name:"Param"`
+
+	// 进程TTY
+	Tty *string `json:"Tty,omitempty" name:"Tty"`
+
+	// 进程版本
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 进程用户组
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 进程MD5
+	Md5 *string `json:"Md5,omitempty" name:"Md5"`
+
+	// 父进程ID
+	Ppid *string `json:"Ppid,omitempty" name:"Ppid"`
+
+	// 父进程名称
+	ParentProcessName *string `json:"ParentProcessName,omitempty" name:"ParentProcessName"`
+
+	// 进程状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 数字签名:0无，1有， 999 空，仅windows
+	HasSign *uint64 `json:"HasSign,omitempty" name:"HasSign"`
+
+	// 是否通过安装包安装：:0否，1是， 999 空，仅linux
+	InstallByPackage *uint64 `json:"InstallByPackage,omitempty" name:"InstallByPackage"`
+
+	// 软件包名
+	PackageName *string `json:"PackageName,omitempty" name:"PackageName"`
+
+	// 主机名称
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	// 数据更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type AssetSystemPackageInfo struct {
+
+	// 数据库名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 描述
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
+
+	// 版本
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 安装时间
+	InstallTime *string `json:"InstallTime,omitempty" name:"InstallTime"`
+
+	// 类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 主机名称
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	// 主机IP
+	MachineIp *string `json:"MachineIp,omitempty" name:"MachineIp"`
+
+	// 操作系统
+	OsInfo *string `json:"OsInfo,omitempty" name:"OsInfo"`
+
+	// 数据更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type AssetUserBaseInfo struct {
+
+	// 主机内网IP
+	MachineIp *string `json:"MachineIp,omitempty" name:"MachineIp"`
+
+	// 主机外网IP
+	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
+
+	// 主机名称
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	// 操作系统信息
+	OsInfo *string `json:"OsInfo,omitempty" name:"OsInfo"`
+
+	// 主机Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 主机Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 账号UID
+	Uid *string `json:"Uid,omitempty" name:"Uid"`
+
+	// 账号GID
+	Gid *string `json:"Gid,omitempty" name:"Gid"`
+
+	// 账号状态：0-禁用；1-启用
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 是否有root权限：0-否；1是，999为空: 仅linux
+	IsRoot *uint64 `json:"IsRoot,omitempty" name:"IsRoot"`
+
+	// 登录方式：0-不可登录；1-只允许key登录；2只允许密码登录；3-允许key和密码，999为空，仅linux
+	LoginType *uint64 `json:"LoginType,omitempty" name:"LoginType"`
+
+	// 上次登录时间
+	LastLoginTime *string `json:"LastLoginTime,omitempty" name:"LastLoginTime"`
+
+	// 账号名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 主机业务组ID
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 账号类型：0访客用户，1标准用户，2管理员用户 ,999为空,仅windows
+	UserType *uint64 `json:"UserType,omitempty" name:"UserType"`
+
+	// 是否域账号：0否， 1是，2否, 999为空  仅windows
+	IsDomain *uint64 `json:"IsDomain,omitempty" name:"IsDomain"`
+
+	// 是否有sudo权限，1是，0否, 999为空, 仅linux
+	IsSudo *uint64 `json:"IsSudo,omitempty" name:"IsSudo"`
+
+	// 是否允许ssh登录，1是，0否, 999为空, 仅linux
+	IsSshLogin *uint64 `json:"IsSshLogin,omitempty" name:"IsSshLogin"`
+
+	// Home目录
+	HomePath *string `json:"HomePath,omitempty" name:"HomePath"`
+
+	// Shell路径  仅linux
+	Shell *string `json:"Shell,omitempty" name:"Shell"`
+
+	// 是否shell登录性，0不是；1是 仅linux
+	ShellLoginStatus *uint64 `json:"ShellLoginStatus,omitempty" name:"ShellLoginStatus"`
+
+	// 密码修改时间
+	PasswordChangeTime *string `json:"PasswordChangeTime,omitempty" name:"PasswordChangeTime"`
+
+	// 密码过期时间  仅linux
+	PasswordDueTime *string `json:"PasswordDueTime,omitempty" name:"PasswordDueTime"`
+
+	// 密码锁定时间：单位天, -1为永不锁定 999为空，仅linux
+	PasswordLockDays *int64 `json:"PasswordLockDays,omitempty" name:"PasswordLockDays"`
+
+	// 密码状态：1正常 2即将过期 3已过期 4已锁定 999为空 仅linux
+	PasswordStatus *int64 `json:"PasswordStatus,omitempty" name:"PasswordStatus"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type AssetUserDetail struct {
+
+	// 主机内网IP
+	MachineIp *string `json:"MachineIp,omitempty" name:"MachineIp"`
+
+	// 主机名称
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	// 主机Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 主机Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 账号UID
+	Uid *string `json:"Uid,omitempty" name:"Uid"`
+
+	// 账号GID
+	Gid *string `json:"Gid,omitempty" name:"Gid"`
+
+	// 账号状态：0-禁用；1-启用
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 是否有root权限：0-否；1是，999为空: 仅linux
+	IsRoot *uint64 `json:"IsRoot,omitempty" name:"IsRoot"`
+
+	// 上次登录时间
+	LastLoginTime *string `json:"LastLoginTime,omitempty" name:"LastLoginTime"`
+
+	// 账号名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 账号类型：0访客用户，1标准用户，2管理员用户 ,999为空,仅windows
+	UserType *uint64 `json:"UserType,omitempty" name:"UserType"`
+
+	// 是否域账号：0否， 1是, 999为空  仅windows
+	IsDomain *uint64 `json:"IsDomain,omitempty" name:"IsDomain"`
+
+	// 是否允许ssh登录，1是，0否, 999为空, 仅linux
+	IsSshLogin *uint64 `json:"IsSshLogin,omitempty" name:"IsSshLogin"`
+
+	// Home目录
+	HomePath *string `json:"HomePath,omitempty" name:"HomePath"`
+
+	// Shell路径  仅linux
+	Shell *string `json:"Shell,omitempty" name:"Shell"`
+
+	// 是否shell登录性，0不是；1是 仅linux
+	ShellLoginStatus *uint64 `json:"ShellLoginStatus,omitempty" name:"ShellLoginStatus"`
+
+	// 密码修改时间
+	PasswordChangeTime *string `json:"PasswordChangeTime,omitempty" name:"PasswordChangeTime"`
+
+	// 密码过期时间  仅linux
+	PasswordDueTime *string `json:"PasswordDueTime,omitempty" name:"PasswordDueTime"`
+
+	// 密码锁定时间：单位天, -1为永不锁定 999为空，仅linux
+	PasswordLockDays *int64 `json:"PasswordLockDays,omitempty" name:"PasswordLockDays"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 用户组名
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 账号到期时间
+	DisableTime *string `json:"DisableTime,omitempty" name:"DisableTime"`
+
+	// 最近登录终端
+	LastLoginTerminal *string `json:"LastLoginTerminal,omitempty" name:"LastLoginTerminal"`
+
+	// 最近登录位置
+	LastLoginLoc *string `json:"LastLoginLoc,omitempty" name:"LastLoginLoc"`
+
+	// 最近登录IP
+	LastLoginIp *string `json:"LastLoginIp,omitempty" name:"LastLoginIp"`
+
+	// 密码过期提醒：单位天
+	PasswordWarnDays *uint64 `json:"PasswordWarnDays,omitempty" name:"PasswordWarnDays"`
+
+	// 密码修改设置：0-不可修改，1-可修改
+	PasswordChangeType *uint64 `json:"PasswordChangeType,omitempty" name:"PasswordChangeType"`
+
+	// 用户公钥列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Keys []*AssetUserKeyInfo `json:"Keys,omitempty" name:"Keys"`
+
+	// 数据更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type AssetUserKeyInfo struct {
+
+	// 公钥值
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 公钥备注
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 加密方式
+	EncryptType *string `json:"EncryptType,omitempty" name:"EncryptType"`
+}
+
+type AssetWebAppBaseInfo struct {
+
+	// 主机内网IP
+	MachineIp *string `json:"MachineIp,omitempty" name:"MachineIp"`
+
+	// 主机外网IP
+	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
+
+	// 主机Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 主机Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 操作系统信息
+	OsInfo *string `json:"OsInfo,omitempty" name:"OsInfo"`
+
+	// 主机业务组ID
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 主机标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tag []*MachineTag `json:"Tag,omitempty" name:"Tag"`
+
+	// 应用名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 版本
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 根路径
+	RootPath *string `json:"RootPath,omitempty" name:"RootPath"`
+
+	// 服务类型
+	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+
+	// 站点域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 虚拟路径
+	VirtualPath *string `json:"VirtualPath,omitempty" name:"VirtualPath"`
+
+	// 插件数
+	PluginCount *uint64 `json:"PluginCount,omitempty" name:"PluginCount"`
+
+	// 应用ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 应用描述
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
+
+	// 主机名称
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	// 数据更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type AssetWebAppPluginInfo struct {
+
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 描述
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
+
+	// 版本
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 链接
+	Link *string `json:"Link,omitempty" name:"Link"`
+}
+
+type AssetWebFrameBaseInfo struct {
+
+	// 主机内网IP
+	MachineIp *string `json:"MachineIp,omitempty" name:"MachineIp"`
+
+	// 主机外网IP
+	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
+
+	// 主机Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 主机Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 操作系统信息
+	OsInfo *string `json:"OsInfo,omitempty" name:"OsInfo"`
+
+	// 主机业务组ID
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 主机标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tag []*MachineTag `json:"Tag,omitempty" name:"Tag"`
+
+	// 数据库名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 版本
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 语言
+	Lang *string `json:"Lang,omitempty" name:"Lang"`
+
+	// 服务类型
+	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+
+	// 主机名称
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	// 数据更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type AssetWebLocationBaseInfo struct {
+
+	// 主机Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 主机Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 内网IP
+	MachineIp *string `json:"MachineIp,omitempty" name:"MachineIp"`
+
+	// 外网IP
+	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
+
+	// 主机名称
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	// 操作系统
+	OsInfo *string `json:"OsInfo,omitempty" name:"OsInfo"`
+
+	// 域名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 站点端口
+	Port *string `json:"Port,omitempty" name:"Port"`
+
+	// 站点协议
+	Proto *string `json:"Proto,omitempty" name:"Proto"`
+
+	// 服务类型
+	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+
+	// 站点路经数
+	PathCount *uint64 `json:"PathCount,omitempty" name:"PathCount"`
+
+	// 运行用户
+	User *string `json:"User,omitempty" name:"User"`
+
+	// 主目录
+	MainPath *string `json:"MainPath,omitempty" name:"MainPath"`
+
+	// 主目录所有者
+	MainPathOwner *string `json:"MainPathOwner,omitempty" name:"MainPathOwner"`
+
+	// 拥有者权限
+	Permission *string `json:"Permission,omitempty" name:"Permission"`
+
+	// 主机业务组ID
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 主机标签
+	Tag []*MachineTag `json:"Tag,omitempty" name:"Tag"`
+
+	// Web站点Id
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 数据更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type AssetWebLocationInfo struct {
+
+	// 域名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 站点端口
+	Port *string `json:"Port,omitempty" name:"Port"`
+
+	// 站点协议
+	Proto *string `json:"Proto,omitempty" name:"Proto"`
+
+	// 服务类型
+	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+
+	// 安全模块状态：0未启用，1启用，999空，仅nginx
+	SafeStatus *uint64 `json:"SafeStatus,omitempty" name:"SafeStatus"`
+
+	// 运行用户
+	User *string `json:"User,omitempty" name:"User"`
+
+	// 主目录
+	MainPath *string `json:"MainPath,omitempty" name:"MainPath"`
+
+	// 启动命令
+	Command *string `json:"Command,omitempty" name:"Command"`
+
+	// 绑定IP
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 数据更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type AssetWebServiceBaseInfo struct {
+
+	// 主机内网IP
+	MachineIp *string `json:"MachineIp,omitempty" name:"MachineIp"`
+
+	// 主机外网IP
+	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
+
+	// 主机Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 主机Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 操作系统信息
+	OsInfo *string `json:"OsInfo,omitempty" name:"OsInfo"`
+
+	// 主机业务组ID
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 主机标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tag []*MachineTag `json:"Tag,omitempty" name:"Tag"`
+
+	// 数据库名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 版本
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 二进制路径
+	BinPath *string `json:"BinPath,omitempty" name:"BinPath"`
+
+	// 启动用户
+	User *string `json:"User,omitempty" name:"User"`
+
+	// 安装路径
+	InstallPath *string `json:"InstallPath,omitempty" name:"InstallPath"`
+
+	// 配置路径
+	ConfigPath *string `json:"ConfigPath,omitempty" name:"ConfigPath"`
+
+	// 关联进程数
+	ProcessCount *uint64 `json:"ProcessCount,omitempty" name:"ProcessCount"`
+
+	// Web服务ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 主机名称
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	// 描述
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
+
+	// 数据更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type BanWhiteListDetail struct {
@@ -2235,6 +3602,517 @@ func (r *DescribeAccountsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeAssetAppListRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>AppName- string - 是否必填：否 - 应用名搜索</li>
+	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+	// <li>Type - int - 是否必填：否 - 类型	: 仅linux
+	// 0: 全部
+	// 1: 运维
+	// 2 : 数据库
+	// 3 : 安全
+	// 4 : 可疑应用
+	// 5 : 系统架构
+	// 6 : 系统应用
+	// 7 : WEB服务
+	// 99:其他</li>
+	// <li>OsType - uint64 - 是否必填：否 - windows/linux</li>
+	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
+	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序方式：ProcessCount
+	By *string `json:"By,omitempty" name:"By"`
+
+	// 排序方式，asc升序 或 desc降序
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 查询指定Quuid主机的信息
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+}
+
+func (r *DescribeAssetAppListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetAppListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "By")
+	delete(f, "Order")
+	delete(f, "Quuid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetAppListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetAppListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 应用列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Apps []*AssetAppBaseInfo `json:"Apps,omitempty" name:"Apps"`
+
+		// 总数量
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAssetAppListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetAppListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetAppProcessListRequest struct {
+	*tchttp.BaseRequest
+
+	// 主机Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 主机Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// App名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeAssetAppProcessListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetAppProcessListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Quuid")
+	delete(f, "Uuid")
+	delete(f, "Name")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetAppProcessListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetAppProcessListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 进程列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Process []*AssetAppProcessInfo `json:"Process,omitempty" name:"Process"`
+
+		// 分区总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAssetAppProcessListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetAppProcessListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetCoreModuleInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务器Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 服务器Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 内核模块ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DescribeAssetCoreModuleInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetCoreModuleInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Quuid")
+	delete(f, "Uuid")
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetCoreModuleInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetCoreModuleInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 内核模块详情
+		Module *AssetCoreModuleDetail `json:"Module,omitempty" name:"Module"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAssetCoreModuleInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetCoreModuleInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetCoreModuleListRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+	// <li>Name- string - 是否必填：否 - 包名</li>
+	// <li>User- string - 是否必填：否 - 用户</li>
+	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序方式，asc升序 或 desc降序
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序依据:Size,ProcessCount,ModuleCount
+	By *string `json:"By,omitempty" name:"By"`
+
+	// 服务器Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 服务器Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+}
+
+func (r *DescribeAssetCoreModuleListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetCoreModuleListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "Order")
+	delete(f, "By")
+	delete(f, "Uuid")
+	delete(f, "Quuid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetCoreModuleListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetCoreModuleListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Modules []*AssetCoreModuleBaseInfo `json:"Modules,omitempty" name:"Modules"`
+
+		// 总数量
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAssetCoreModuleListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetCoreModuleListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetDatabaseInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务器Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 服务器Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 数据库ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DescribeAssetDatabaseInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetDatabaseInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Quuid")
+	delete(f, "Uuid")
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetDatabaseInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetDatabaseInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 数据库详情
+		Database *AssetDatabaseDetail `json:"Database,omitempty" name:"Database"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAssetDatabaseInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetDatabaseInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetDatabaseListRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+	// <li>User- string - 是否必填：否 - 运行用户</li>
+	// <li>Ip - String - 是否必填：否 - 绑定IP</li>
+	// <li>Port - Int - 是否必填：否 - 端口</li>
+	// <li>Name - Int - 是否必填：否 - 数据库名称
+	// 0:全部
+	// 1:MySQL
+	// 2:Redis
+	// 3:Oracle
+	// 4:MongoDB
+	// 5:MemCache
+	// 6:PostgreSQL
+	// 7:HBase
+	// 8:DB2
+	// 9:Sybase
+	// 10:TiDB</li>
+	// <li>Proto - String - 是否必填：否 - 协议：1:TCP, 2:UDP, 3:未知</li>
+	// <li>OsType - String - 是否必填：否 - 操作系统: linux/windows</li>
+	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
+	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 查询指定Quuid主机的信息
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+}
+
+func (r *DescribeAssetDatabaseListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetDatabaseListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "Quuid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetDatabaseListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetDatabaseListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Databases []*AssetDatabaseBaseInfo `json:"Databases,omitempty" name:"Databases"`
+
+		// 总数量
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAssetDatabaseListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetDatabaseListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetEnvListRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 类型：
+	// 0
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 过滤条件。
+	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+	// <li>Name- string - 是否必填：否 - 环境变量名</li>
+	// <li>Type- int - 是否必填：否 - 类型：0用户变量，1系统变量</li>
+	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 服务器Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 服务器Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+}
+
+func (r *DescribeAssetEnvListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetEnvListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Type")
+	delete(f, "Filters")
+	delete(f, "Uuid")
+	delete(f, "Quuid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetEnvListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetEnvListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Envs []*AssetEnvBaseInfo `json:"Envs,omitempty" name:"Envs"`
+
+		// 总数量
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAssetEnvListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetEnvListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeAssetInfoRequest struct {
 	*tchttp.BaseRequest
 }
@@ -2307,6 +4185,613 @@ func (r *DescribeAssetInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeAssetInitServiceListRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+	// <li>Name- string - 是否必填：否 - 包名</li>
+	// <li>User- string - 是否必填：否 - 用户</li>
+	// <li>Status- string - 是否必填：否 - 默认启用状态：0未启用， 1启用 仅linux</li>
+	// <li>Type- string - 是否必填：否 - 类型：类型 仅windows：
+	// 1:编码器
+	// 2:IE插件
+	// 3:网络提供者
+	// 4:镜像劫持
+	// 5:LSA提供者
+	// 6:KnownDLLs
+	// 7:启动执行
+	// 8:WMI
+	// 9:计划任务
+	// 10:Winsock提供者
+	// 11:打印监控器
+	// 12:资源管理器
+	// 13:驱动服务
+	// 14:登录</li>
+	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 服务器Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 服务器Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+}
+
+func (r *DescribeAssetInitServiceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetInitServiceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "Uuid")
+	delete(f, "Quuid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetInitServiceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetInitServiceListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Services []*AssetInitServiceBaseInfo `json:"Services,omitempty" name:"Services"`
+
+		// 总数量
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAssetInitServiceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetInitServiceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetJarInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务器Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 服务器Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// Jar包ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DescribeAssetJarInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetJarInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Quuid")
+	delete(f, "Uuid")
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetJarInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetJarInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// Jar包详情
+		Jar *AssetJarDetail `json:"Jar,omitempty" name:"Jar"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAssetJarInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetJarInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetJarListRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+	// <li>Name- string - 是否必填：否 - 包名</li>
+	// <li>Type- uint - 是否必填：否 - 类型	
+	// 1: 应用程序
+	// 2 : 系统类库
+	// 3 : Web服务自带库
+	// 4 : 其他依赖包</li>
+	// <li>Status- string - 是否必填：否 - 是否可执行：0否，1是</li>
+	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 服务器Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 服务器Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+}
+
+func (r *DescribeAssetJarListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetJarListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "Uuid")
+	delete(f, "Quuid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetJarListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetJarListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 应用列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Jars []*AssetJarBaseInfo `json:"Jars,omitempty" name:"Jars"`
+
+		// 总数量
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAssetJarListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetJarListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetMachineDetailRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务器Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 服务器Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+}
+
+func (r *DescribeAssetMachineDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetMachineDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Quuid")
+	delete(f, "Uuid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetMachineDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetMachineDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 主机详情
+		MachineDetail *AssetMachineDetail `json:"MachineDetail,omitempty" name:"MachineDetail"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAssetMachineDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetMachineDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetMachineListRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+	// <li>OsType - String - 是否必填：否 - windows或linux</li>
+	// <li>CpuLoad - Int - 是否必填：否 - 
+	// 0: 未知  1: 低负载
+	// 2: 中负载  3: 高负载</li>
+	// <li>DiskLoad - Int - 是否必填：否 - 
+	// 0: 0%或未知  1: 0%～20%
+	// 2: 20%～50%  3: 50%～80%
+	// 4: 80%～100%</li>
+	// <li>MemLoad - Int - 是否必填：否 - 
+	// 0: 0%或未知  1: 0%～20%
+	// 2: 20%～50%  3: 50%～80%
+	// 4: 80%～100%</li>
+	// <li>Quuid：主机Quuid</li>
+	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 可选排序：PartitionCount
+	By *string `json:"By,omitempty" name:"By"`
+
+	// 排序方式，asc升序 或 desc降序
+	Order *string `json:"Order,omitempty" name:"Order"`
+}
+
+func (r *DescribeAssetMachineListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetMachineListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "By")
+	delete(f, "Order")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetMachineListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetMachineListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 记录列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Machines []*AssetMachineBaseInfo `json:"Machines,omitempty" name:"Machines"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAssetMachineListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetMachineListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetPlanTaskListRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+	// <li>User- string - 是否必填：否 - 用户</li>
+	// <li>Status- int - 是否必填：否 - 默认启用状态：0未启用， 1启用 </li>
+	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 服务器Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 服务器Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+}
+
+func (r *DescribeAssetPlanTaskListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetPlanTaskListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "Uuid")
+	delete(f, "Quuid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetPlanTaskListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetPlanTaskListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Tasks []*AssetPlanTask `json:"Tasks,omitempty" name:"Tasks"`
+
+		// 总数量
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAssetPlanTaskListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetPlanTaskListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetPortInfoListRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>Port - uint64 - 是否必填：否 - 端口</li>
+	// <li>Ip - String - 是否必填：否 - 绑定IP</li>
+	// <li>ProcessName - String - 是否必填：否 - 监听进程</li>
+	// <li>Pid - uint64 - 是否必填：否 - PID</li>
+	// <li>User - String - 是否必填：否 - 运行用户</li>
+	// <li>Group - String - 是否必填：否 - 所属用户组</li>
+	// <li>Ppid - uint64 - 是否必填：否 - PPID</li>
+	// <li>Proto - string - 是否必填：否 - tcp/udp或“”(空字符串筛选未知状态)</li>
+	// <li>OsType - uint64 - 是否必填：否 - windows/linux</li>
+	// <li>RunTimeStart - String - 是否必填：否 - 运行开始时间</li>
+	// <li>RunTimeEnd - String - 是否必填：否 - 运行结束时间</li>
+	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序方式，asc升序 或 desc降序
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序方式：StartTime
+	By *string `json:"By,omitempty" name:"By"`
+
+	// 查询指定Quuid主机的信息
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+}
+
+func (r *DescribeAssetPortInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetPortInfoListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "Order")
+	delete(f, "By")
+	delete(f, "Quuid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetPortInfoListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetPortInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 记录总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Ports []*AssetPortBaseInfo `json:"Ports,omitempty" name:"Ports"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAssetPortInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetPortInfoListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetProcessInfoListRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+	// <li>Name - String - 是否必填：否 - 进程名</li>
+	// <li>User - String - 是否必填：否 - 进程用户</li>
+	// <li>Group - String - 是否必填：否 - 进程用户组</li>
+	// <li>Pid - uint64 - 是否必填：否 - 进程ID</li>
+	// <li>Ppid - uint64 - 是否必填：否 - 父进程ID</li>
+	// <li>OsType - uint64 - 是否必填：否 - windows/linux</li>
+	// <li>Status - string - 是否必填：否 - 进程状态：
+	// 1:R 可执行
+	// 2:S 可中断
+	// 3:D 不可中断
+	// 4:T 暂停状态或跟踪状态
+	// 5:Z 僵尸状态
+	// 6:X 将被销毁</li>
+	// <li>RunTimeStart - String - 是否必填：否 - 运行开始时间</li>
+	// <li>RunTimeEnd - String - 是否必填：否 - 运行结束时间</li>
+	// <li>InstallByPackage - uint64 - 是否必填：否 - 是否包安装：0否，1是</li>
+	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 查询指定Quuid主机的信息
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 排序方式，asc升序 或 desc降序
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序方式：StartTime
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+func (r *DescribeAssetProcessInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetProcessInfoListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "Quuid")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetProcessInfoListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetProcessInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 记录总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Process []*AssetProcessBaseInfo `json:"Process,omitempty" name:"Process"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAssetProcessInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetProcessInfoListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeAssetRecentMachineInfoRequest struct {
 	*tchttp.BaseRequest
 
@@ -2370,6 +4855,798 @@ func (r *DescribeAssetRecentMachineInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAssetRecentMachineInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetSystemPackageListRequest struct {
+	*tchttp.BaseRequest
+
+	// 主机Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 主机Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>Name - String - 是否必填：否 - 包 名</li>
+	// <li>StartTime - String - 是否必填：否 - 安装开始时间</li>
+	// <li>EndTime - String - 是否必填：否 - 安装开始时间</li>
+	// <li>Type - int - 是否必填：否 - 安装包类型：
+	// 1:rmp
+	// 2:dpkg
+	// 3:java
+	// 4:system</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序方式，asc升序 或 desc降序
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序方式可选：InstallTime 安装时间
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+func (r *DescribeAssetSystemPackageListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetSystemPackageListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Uuid")
+	delete(f, "Quuid")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetSystemPackageListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetSystemPackageListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 记录总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Packages []*AssetSystemPackageInfo `json:"Packages,omitempty" name:"Packages"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAssetSystemPackageListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetSystemPackageListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetUserInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务器Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 服务器Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 账户名
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+func (r *DescribeAssetUserInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetUserInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Quuid")
+	delete(f, "Uuid")
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetUserInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetUserInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 用户详细信息
+		User *AssetUserDetail `json:"User,omitempty" name:"User"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAssetUserInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetUserInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetUserListRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+	// <li>Name - String - 是否必填：否 - 账户名（模糊匹配）</li>
+	// <li>NameStrict - String - 是否必填：否 - 账户名（严格匹配）</li>
+	// <li>Uid - uint64 - 是否必填：否 - Uid</li>
+	// <li>Guid - uint64 - 是否必填：否 - Guid</li>
+	// <li>LoginTimeStart - String - 是否必填：否 - 开始时间，如：2021-01-11</li>
+	// <li>LoginTimeEnd - String - 是否必填：否 - 结束时间，如：2021-01-11</li>
+	// <li>LoginType - uint64 - 是否必填：否 - 0-不可登录；1-只允许key登录；2只允许密码登录；3-允许key和密码 仅linux</li>
+	// <li>OsType - String - 是否必填：否 - windows或linux</li>
+	// <li>Status - uint64 - 是否必填：否 - 账号状态：0-禁用；1-启用</li>
+	// <li>UserType - uint64 - 是否必填：否 - 账号类型：0访客用户，1标准用户，2管理员用户 仅windows</li>
+	// <li>IsDomain - uint64 - 是否必填：否 - 是否域账号：0 不是，1是 仅windows
+	// <li>IsRoot - uint64 - 是否必填：否 - 是否Root权限：0 不是，1是 仅linux
+	// <li>IsSudo - uint64 - 是否必填：否 - 是否Sudo权限：0 不是，1是 仅linux</li>
+	// <li>IsSshLogin - uint64 - 是否必填：否 - 是否ssh登录：0 不是，1是 仅linux</li>
+	// <li>ShellLoginStatus - uint64 - 是否必填：否 - 是否shell登录性，0不是；1是 仅linux</li>
+	// <li>PasswordStatus - uint64 - 是否必填：否 - 密码状态：1正常 2即将过期 3已过期 4已锁定 仅linux</li>
+	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序方式，asc升序 或 desc降序
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 可选排序：
+	// LoginTime
+	// PasswordChangeTime
+	// PasswordDuaTime
+	// PasswordLockDays
+	By *string `json:"By,omitempty" name:"By"`
+
+	// 查询指定Quuid主机的信息
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+}
+
+func (r *DescribeAssetUserListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetUserListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "Order")
+	delete(f, "By")
+	delete(f, "Quuid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetUserListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetUserListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 记录总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 账号列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Users []*AssetUserBaseInfo `json:"Users,omitempty" name:"Users"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAssetUserListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetUserListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetWebAppListRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+	// <li>Name - String - 是否必填：否 - 应用名</li>
+	// <li>Domain - String - 是否必填：否 - 站点域名</li>
+	// <li>Type - int - 是否必填：否 - 服务类型：
+	// 0：全部
+	// 1:Tomcat
+	// 2:Apache
+	// 3:Nginx
+	// 4:WebLogic
+	// 5:Websphere
+	// 6:JBoss
+	// 7:Jetty
+	// 8:IHS
+	// 9:Tengine</li>
+	// <li>OsType - String - 是否必填：否 - windows/linux</li>
+	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序方式，asc升序 或 desc降序
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 可选排序：PluginCount
+	By *string `json:"By,omitempty" name:"By"`
+
+	// 查询指定Quuid主机的信息
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+}
+
+func (r *DescribeAssetWebAppListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetWebAppListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "Order")
+	delete(f, "By")
+	delete(f, "Quuid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetWebAppListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetWebAppListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 记录总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		WebApps []*AssetWebAppBaseInfo `json:"WebApps,omitempty" name:"WebApps"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAssetWebAppListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetWebAppListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetWebAppPluginListRequest struct {
+	*tchttp.BaseRequest
+
+	// 主机Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 主机Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// Web应用ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeAssetWebAppPluginListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetWebAppPluginListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Quuid")
+	delete(f, "Uuid")
+	delete(f, "Id")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetWebAppPluginListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetWebAppPluginListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Plugins []*AssetWebAppPluginInfo `json:"Plugins,omitempty" name:"Plugins"`
+
+		// 分区总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAssetWebAppPluginListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetWebAppPluginListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetWebFrameListRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+	// <li>Name - String - 是否必填：否 - 框架名</li>
+	// <li>NameStrict - String - 是否必填：否 - 框架名（严格匹配）</li>
+	// <li>Lang - String - 是否必填：否 - 框架语言:java/python</li>
+	// <li>Type - String - 是否必填：否 - 服务类型：
+	// 0：全部
+	// 1:Tomcat
+	// 2:Apache
+	// 3:Nginx
+	// 4:WebLogic
+	// 5:Websphere
+	// 6:JBoss
+	// 7:WildFly
+	// 8:Jetty
+	// 9:IHS
+	// 10:Tengine</li>
+	// <li>OsType - String - 是否必填：否 - windows/linux</li>
+	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序方式，asc升序 或 desc降序
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 可选排序：JarCount
+	By *string `json:"By,omitempty" name:"By"`
+
+	// 查询指定Quuid主机的信息
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+}
+
+func (r *DescribeAssetWebFrameListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetWebFrameListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "Order")
+	delete(f, "By")
+	delete(f, "Quuid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetWebFrameListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetWebFrameListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 记录总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		WebFrames []*AssetWebFrameBaseInfo `json:"WebFrames,omitempty" name:"WebFrames"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAssetWebFrameListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetWebFrameListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetWebLocationInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务器Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 服务器Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 站点Id
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DescribeAssetWebLocationInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetWebLocationInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Quuid")
+	delete(f, "Uuid")
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetWebLocationInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetWebLocationInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 站点信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		WebLocation *AssetWebLocationInfo `json:"WebLocation,omitempty" name:"WebLocation"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAssetWebLocationInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetWebLocationInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetWebLocationListRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+	// <li>Name - String - 是否必填：否 - 域名</li>
+	// <li>User - String - 是否必填：否 - 运行用户</li>
+	// <li>Port - uint64 - 是否必填：否 - 站点端口</li>
+	// <li>Proto - uint64 - 是否必填：否 - 站点协议：1:HTTP,2:HTTPS</li>
+	// <li>ServiceType - uint64 - 是否必填：否 - 服务类型：
+	// 1:Tomcat
+	// 2：Apache
+	// 3:Nginx
+	// 4:WebLogic
+	// 5:Websphere
+	// 6:JBoss
+	// 7:WildFly
+	// 8:Jetty
+	// 9:IHS
+	// 10:Tengine</li>
+	// <li>OsType - String - 是否必填：否 - windows/linux</li>
+	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序方式，asc升序 或 desc降序
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 可选排序：PathCount
+	By *string `json:"By,omitempty" name:"By"`
+
+	// 查询指定Quuid主机的信息
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+}
+
+func (r *DescribeAssetWebLocationListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetWebLocationListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "Order")
+	delete(f, "By")
+	delete(f, "Quuid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetWebLocationListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetWebLocationListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 记录总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 站点列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Locations []*AssetWebLocationBaseInfo `json:"Locations,omitempty" name:"Locations"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAssetWebLocationListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetWebLocationListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetWebServiceInfoListRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>User- string - 是否必填：否 - 运行用户</li>
+	// <li>Name- string - 是否必填：否 - Web服务名：
+	// 1:Tomcat
+	// 2:Apache
+	// 3:Nginx
+	// 4:WebLogic
+	// 5:Websphere
+	// 6:JBoss
+	// 7:WildFly
+	// 8:Jetty
+	// 9:IHS
+	// 10:Tengine</li>
+	// <li>OsType- string - 是否必填：否 - Windows/linux</li>
+	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
+	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序方式，asc升序 或 desc降序
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 可选排序：ProcessCount
+	By *string `json:"By,omitempty" name:"By"`
+
+	// 查询指定Quuid主机的信息
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+}
+
+func (r *DescribeAssetWebServiceInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetWebServiceInfoListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "Order")
+	delete(f, "By")
+	delete(f, "Quuid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetWebServiceInfoListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetWebServiceInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		WebServices []*AssetWebServiceBaseInfo `json:"WebServices,omitempty" name:"WebServices"`
+
+		// 总数量
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAssetWebServiceInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetWebServiceInfoListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetWebServiceProcessListRequest struct {
+	*tchttp.BaseRequest
+
+	// 主机Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 主机Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// Web服务ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeAssetWebServiceProcessListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetWebServiceProcessListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Quuid")
+	delete(f, "Uuid")
+	delete(f, "Id")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetWebServiceProcessListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAssetWebServiceProcessListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 进程列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Process []*AssetAppProcessInfo `json:"Process,omitempty" name:"Process"`
+
+		// 总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAssetWebServiceProcessListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetWebServiceProcessListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3399,7 +6676,7 @@ type DescribeBaselineStrategyDetailResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		IsGlobal *uint64 `json:"IsGlobal,omitempty" name:"IsGlobal"`
 
-		// 云主机类型：
+		// 云服务器类型：
 	// cvm：腾讯云服务器
 	// bm：裸金属
 	// ecm：边缘计算主机
@@ -7877,6 +11154,12 @@ func (r *DescribeVersionStatisticsRequest) FromJsonString(s string) error {
 type DescribeVersionStatisticsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
+		// 基础版数量
+		BasicVersionNum *uint64 `json:"BasicVersionNum,omitempty" name:"BasicVersionNum"`
+
+		// 专业版数量
+		ProVersionNum *uint64 `json:"ProVersionNum,omitempty" name:"ProVersionNum"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

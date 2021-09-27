@@ -1195,6 +1195,246 @@ func (c *Client) DescribeAccounts(request *DescribeAccountsRequest) (response *D
     return
 }
 
+func NewDescribeAssetAppListRequest() (request *DescribeAssetAppListRequest) {
+    request = &DescribeAssetAppListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetAppList")
+    return
+}
+
+func NewDescribeAssetAppListResponse() (response *DescribeAssetAppListResponse) {
+    response = &DescribeAssetAppListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetAppList
+// 查询应用列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetAppList(request *DescribeAssetAppListRequest) (response *DescribeAssetAppListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetAppListRequest()
+    }
+    response = NewDescribeAssetAppListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAssetAppProcessListRequest() (request *DescribeAssetAppProcessListRequest) {
+    request = &DescribeAssetAppProcessListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetAppProcessList")
+    return
+}
+
+func NewDescribeAssetAppProcessListResponse() (response *DescribeAssetAppProcessListResponse) {
+    response = &DescribeAssetAppProcessListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetAppProcessList
+// 获取软件关联进程列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAssetAppProcessList(request *DescribeAssetAppProcessListRequest) (response *DescribeAssetAppProcessListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetAppProcessListRequest()
+    }
+    response = NewDescribeAssetAppProcessListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAssetCoreModuleInfoRequest() (request *DescribeAssetCoreModuleInfoRequest) {
+    request = &DescribeAssetCoreModuleInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetCoreModuleInfo")
+    return
+}
+
+func NewDescribeAssetCoreModuleInfoResponse() (response *DescribeAssetCoreModuleInfoResponse) {
+    response = &DescribeAssetCoreModuleInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetCoreModuleInfo
+// 获取内核模块详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAssetCoreModuleInfo(request *DescribeAssetCoreModuleInfoRequest) (response *DescribeAssetCoreModuleInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetCoreModuleInfoRequest()
+    }
+    response = NewDescribeAssetCoreModuleInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAssetCoreModuleListRequest() (request *DescribeAssetCoreModuleListRequest) {
+    request = &DescribeAssetCoreModuleListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetCoreModuleList")
+    return
+}
+
+func NewDescribeAssetCoreModuleListResponse() (response *DescribeAssetCoreModuleListResponse) {
+    response = &DescribeAssetCoreModuleListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetCoreModuleList
+// 查询资产管理内核模块列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetCoreModuleList(request *DescribeAssetCoreModuleListRequest) (response *DescribeAssetCoreModuleListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetCoreModuleListRequest()
+    }
+    response = NewDescribeAssetCoreModuleListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAssetDatabaseInfoRequest() (request *DescribeAssetDatabaseInfoRequest) {
+    request = &DescribeAssetDatabaseInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetDatabaseInfo")
+    return
+}
+
+func NewDescribeAssetDatabaseInfoResponse() (response *DescribeAssetDatabaseInfoResponse) {
+    response = &DescribeAssetDatabaseInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetDatabaseInfo
+// 获取资产管理数据库详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAssetDatabaseInfo(request *DescribeAssetDatabaseInfoRequest) (response *DescribeAssetDatabaseInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetDatabaseInfoRequest()
+    }
+    response = NewDescribeAssetDatabaseInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAssetDatabaseListRequest() (request *DescribeAssetDatabaseListRequest) {
+    request = &DescribeAssetDatabaseListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetDatabaseList")
+    return
+}
+
+func NewDescribeAssetDatabaseListResponse() (response *DescribeAssetDatabaseListResponse) {
+    response = &DescribeAssetDatabaseListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetDatabaseList
+// 查询资产管理数据库列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetDatabaseList(request *DescribeAssetDatabaseListRequest) (response *DescribeAssetDatabaseListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetDatabaseListRequest()
+    }
+    response = NewDescribeAssetDatabaseListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAssetEnvListRequest() (request *DescribeAssetEnvListRequest) {
+    request = &DescribeAssetEnvListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetEnvList")
+    return
+}
+
+func NewDescribeAssetEnvListResponse() (response *DescribeAssetEnvListResponse) {
+    response = &DescribeAssetEnvListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetEnvList
+// 查询资产管理环境变量列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetEnvList(request *DescribeAssetEnvListRequest) (response *DescribeAssetEnvListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetEnvListRequest()
+    }
+    response = NewDescribeAssetEnvListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetInfoRequest() (request *DescribeAssetInfoRequest) {
     request = &DescribeAssetInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1223,6 +1463,274 @@ func (c *Client) DescribeAssetInfo(request *DescribeAssetInfoRequest) (response 
         request = NewDescribeAssetInfoRequest()
     }
     response = NewDescribeAssetInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAssetInitServiceListRequest() (request *DescribeAssetInitServiceListRequest) {
+    request = &DescribeAssetInitServiceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetInitServiceList")
+    return
+}
+
+func NewDescribeAssetInitServiceListResponse() (response *DescribeAssetInitServiceListResponse) {
+    response = &DescribeAssetInitServiceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetInitServiceList
+// 查询资产管理启动服务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetInitServiceList(request *DescribeAssetInitServiceListRequest) (response *DescribeAssetInitServiceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetInitServiceListRequest()
+    }
+    response = NewDescribeAssetInitServiceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAssetJarInfoRequest() (request *DescribeAssetJarInfoRequest) {
+    request = &DescribeAssetJarInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetJarInfo")
+    return
+}
+
+func NewDescribeAssetJarInfoResponse() (response *DescribeAssetJarInfoResponse) {
+    response = &DescribeAssetJarInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetJarInfo
+// 获取Jar包详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAssetJarInfo(request *DescribeAssetJarInfoRequest) (response *DescribeAssetJarInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetJarInfoRequest()
+    }
+    response = NewDescribeAssetJarInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAssetJarListRequest() (request *DescribeAssetJarListRequest) {
+    request = &DescribeAssetJarListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetJarList")
+    return
+}
+
+func NewDescribeAssetJarListResponse() (response *DescribeAssetJarListResponse) {
+    response = &DescribeAssetJarListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetJarList
+// 查询Jar包列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetJarList(request *DescribeAssetJarListRequest) (response *DescribeAssetJarListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetJarListRequest()
+    }
+    response = NewDescribeAssetJarListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAssetMachineDetailRequest() (request *DescribeAssetMachineDetailRequest) {
+    request = &DescribeAssetMachineDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetMachineDetail")
+    return
+}
+
+func NewDescribeAssetMachineDetailResponse() (response *DescribeAssetMachineDetailResponse) {
+    response = &DescribeAssetMachineDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetMachineDetail
+// 获取资产管理主机资源详细信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAssetMachineDetail(request *DescribeAssetMachineDetailRequest) (response *DescribeAssetMachineDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetMachineDetailRequest()
+    }
+    response = NewDescribeAssetMachineDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAssetMachineListRequest() (request *DescribeAssetMachineListRequest) {
+    request = &DescribeAssetMachineListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetMachineList")
+    return
+}
+
+func NewDescribeAssetMachineListResponse() (response *DescribeAssetMachineListResponse) {
+    response = &DescribeAssetMachineListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetMachineList
+// 获取资产指纹页面的资源监控列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAssetMachineList(request *DescribeAssetMachineListRequest) (response *DescribeAssetMachineListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetMachineListRequest()
+    }
+    response = NewDescribeAssetMachineListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAssetPlanTaskListRequest() (request *DescribeAssetPlanTaskListRequest) {
+    request = &DescribeAssetPlanTaskListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetPlanTaskList")
+    return
+}
+
+func NewDescribeAssetPlanTaskListResponse() (response *DescribeAssetPlanTaskListResponse) {
+    response = &DescribeAssetPlanTaskListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetPlanTaskList
+// 查询资产管理计划任务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetPlanTaskList(request *DescribeAssetPlanTaskListRequest) (response *DescribeAssetPlanTaskListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetPlanTaskListRequest()
+    }
+    response = NewDescribeAssetPlanTaskListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAssetPortInfoListRequest() (request *DescribeAssetPortInfoListRequest) {
+    request = &DescribeAssetPortInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetPortInfoList")
+    return
+}
+
+func NewDescribeAssetPortInfoListResponse() (response *DescribeAssetPortInfoListResponse) {
+    response = &DescribeAssetPortInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetPortInfoList
+// 获取资产管理端口列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAssetPortInfoList(request *DescribeAssetPortInfoListRequest) (response *DescribeAssetPortInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetPortInfoListRequest()
+    }
+    response = NewDescribeAssetPortInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAssetProcessInfoListRequest() (request *DescribeAssetProcessInfoListRequest) {
+    request = &DescribeAssetProcessInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetProcessInfoList")
+    return
+}
+
+func NewDescribeAssetProcessInfoListResponse() (response *DescribeAssetProcessInfoListResponse) {
+    response = &DescribeAssetProcessInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetProcessInfoList
+// 获取资产管理进程列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAssetProcessInfoList(request *DescribeAssetProcessInfoListRequest) (response *DescribeAssetProcessInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetProcessInfoListRequest()
+    }
+    response = NewDescribeAssetProcessInfoListResponse()
     err = c.Send(request, response)
     return
 }
@@ -1258,6 +1766,331 @@ func (c *Client) DescribeAssetRecentMachineInfo(request *DescribeAssetRecentMach
         request = NewDescribeAssetRecentMachineInfoRequest()
     }
     response = NewDescribeAssetRecentMachineInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAssetSystemPackageListRequest() (request *DescribeAssetSystemPackageListRequest) {
+    request = &DescribeAssetSystemPackageListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetSystemPackageList")
+    return
+}
+
+func NewDescribeAssetSystemPackageListResponse() (response *DescribeAssetSystemPackageListResponse) {
+    response = &DescribeAssetSystemPackageListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetSystemPackageList
+// 获取资产管理系统安装包列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAssetSystemPackageList(request *DescribeAssetSystemPackageListRequest) (response *DescribeAssetSystemPackageListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetSystemPackageListRequest()
+    }
+    response = NewDescribeAssetSystemPackageListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAssetUserInfoRequest() (request *DescribeAssetUserInfoRequest) {
+    request = &DescribeAssetUserInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetUserInfo")
+    return
+}
+
+func NewDescribeAssetUserInfoResponse() (response *DescribeAssetUserInfoResponse) {
+    response = &DescribeAssetUserInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetUserInfo
+// 获取主机账号详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+func (c *Client) DescribeAssetUserInfo(request *DescribeAssetUserInfoRequest) (response *DescribeAssetUserInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetUserInfoRequest()
+    }
+    response = NewDescribeAssetUserInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAssetUserListRequest() (request *DescribeAssetUserListRequest) {
+    request = &DescribeAssetUserListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetUserList")
+    return
+}
+
+func NewDescribeAssetUserListResponse() (response *DescribeAssetUserListResponse) {
+    response = &DescribeAssetUserListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetUserList
+// 获取账号列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeAssetUserList(request *DescribeAssetUserListRequest) (response *DescribeAssetUserListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetUserListRequest()
+    }
+    response = NewDescribeAssetUserListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAssetWebAppListRequest() (request *DescribeAssetWebAppListRequest) {
+    request = &DescribeAssetWebAppListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetWebAppList")
+    return
+}
+
+func NewDescribeAssetWebAppListResponse() (response *DescribeAssetWebAppListResponse) {
+    response = &DescribeAssetWebAppListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetWebAppList
+// 获取资产管理Web应用列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAssetWebAppList(request *DescribeAssetWebAppListRequest) (response *DescribeAssetWebAppListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetWebAppListRequest()
+    }
+    response = NewDescribeAssetWebAppListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAssetWebAppPluginListRequest() (request *DescribeAssetWebAppPluginListRequest) {
+    request = &DescribeAssetWebAppPluginListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetWebAppPluginList")
+    return
+}
+
+func NewDescribeAssetWebAppPluginListResponse() (response *DescribeAssetWebAppPluginListResponse) {
+    response = &DescribeAssetWebAppPluginListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetWebAppPluginList
+// 获取资产管理Web应用插件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAssetWebAppPluginList(request *DescribeAssetWebAppPluginListRequest) (response *DescribeAssetWebAppPluginListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetWebAppPluginListRequest()
+    }
+    response = NewDescribeAssetWebAppPluginListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAssetWebFrameListRequest() (request *DescribeAssetWebFrameListRequest) {
+    request = &DescribeAssetWebFrameListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetWebFrameList")
+    return
+}
+
+func NewDescribeAssetWebFrameListResponse() (response *DescribeAssetWebFrameListResponse) {
+    response = &DescribeAssetWebFrameListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetWebFrameList
+// 获取资产管理Web框架列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAssetWebFrameList(request *DescribeAssetWebFrameListRequest) (response *DescribeAssetWebFrameListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetWebFrameListRequest()
+    }
+    response = NewDescribeAssetWebFrameListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAssetWebLocationInfoRequest() (request *DescribeAssetWebLocationInfoRequest) {
+    request = &DescribeAssetWebLocationInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetWebLocationInfo")
+    return
+}
+
+func NewDescribeAssetWebLocationInfoResponse() (response *DescribeAssetWebLocationInfoResponse) {
+    response = &DescribeAssetWebLocationInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetWebLocationInfo
+// 获取Web站点详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAssetWebLocationInfo(request *DescribeAssetWebLocationInfoRequest) (response *DescribeAssetWebLocationInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetWebLocationInfoRequest()
+    }
+    response = NewDescribeAssetWebLocationInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAssetWebLocationListRequest() (request *DescribeAssetWebLocationListRequest) {
+    request = &DescribeAssetWebLocationListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetWebLocationList")
+    return
+}
+
+func NewDescribeAssetWebLocationListResponse() (response *DescribeAssetWebLocationListResponse) {
+    response = &DescribeAssetWebLocationListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetWebLocationList
+// 获取Web站点列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAssetWebLocationList(request *DescribeAssetWebLocationListRequest) (response *DescribeAssetWebLocationListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetWebLocationListRequest()
+    }
+    response = NewDescribeAssetWebLocationListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAssetWebServiceInfoListRequest() (request *DescribeAssetWebServiceInfoListRequest) {
+    request = &DescribeAssetWebServiceInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetWebServiceInfoList")
+    return
+}
+
+func NewDescribeAssetWebServiceInfoListResponse() (response *DescribeAssetWebServiceInfoListResponse) {
+    response = &DescribeAssetWebServiceInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetWebServiceInfoList
+// 查询资产管理Web服务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetWebServiceInfoList(request *DescribeAssetWebServiceInfoListRequest) (response *DescribeAssetWebServiceInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetWebServiceInfoListRequest()
+    }
+    response = NewDescribeAssetWebServiceInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAssetWebServiceProcessListRequest() (request *DescribeAssetWebServiceProcessListRequest) {
+    request = &DescribeAssetWebServiceProcessListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetWebServiceProcessList")
+    return
+}
+
+func NewDescribeAssetWebServiceProcessListResponse() (response *DescribeAssetWebServiceProcessListResponse) {
+    response = &DescribeAssetWebServiceProcessListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetWebServiceProcessList
+// 获取Web服务关联进程列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAssetWebServiceProcessList(request *DescribeAssetWebServiceProcessListRequest) (response *DescribeAssetWebServiceProcessListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetWebServiceProcessListRequest()
+    }
+    response = NewDescribeAssetWebServiceProcessListResponse()
     err = c.Send(request, response)
     return
 }
@@ -4222,6 +5055,12 @@ func NewDescribeVersionStatisticsResponse() (response *DescribeVersionStatistics
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeVersionStatistics(request *DescribeVersionStatisticsRequest) (response *DescribeVersionStatisticsResponse, err error) {
     if request == nil {
         request = NewDescribeVersionStatisticsRequest()

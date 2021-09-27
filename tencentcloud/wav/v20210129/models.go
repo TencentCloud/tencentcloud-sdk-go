@@ -414,6 +414,9 @@ type ExternalContactSimpleInfo struct {
 	// 添加了此外部联系人的企业成员的姓名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SalesName *string `json:"SalesName,omitempty" name:"SalesName"`
+
+	// 添加了此外部联系人的企业成员的归属部门id列表
+	DepartmentIdList []*int64 `json:"DepartmentIdList,omitempty" name:"DepartmentIdList"`
 }
 
 type ExternalContactTag struct {

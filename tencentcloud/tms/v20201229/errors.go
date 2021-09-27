@@ -29,6 +29,9 @@ const (
 	// 文本类型错误，需要base64的文本。
 	INVALIDPARAMETER_ERRTEXTCONTENTTYPE = "InvalidParameter.ErrTextContentType"
 
+	// 请求的文本长度超过限制。
+	INVALIDPARAMETERVALUE_ERRTEXTCONTENTLEN = "InvalidParameterValue.ErrTextContentLen"
+
 	// 请求的文本格式错误（需要base64编码格式的文本）。
 	INVALIDPARAMETERVALUE_ERRTEXTCONTENTTYPE = "InvalidParameterValue.ErrTextContentType"
 

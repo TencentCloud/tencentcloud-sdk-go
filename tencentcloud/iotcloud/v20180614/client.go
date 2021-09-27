@@ -1823,6 +1823,37 @@ func (c *Client) RetryDeviceFirmwareTask(request *RetryDeviceFirmwareTaskRequest
     return
 }
 
+func NewSetProductsForbiddenStatusRequest() (request *SetProductsForbiddenStatusRequest) {
+    request = &SetProductsForbiddenStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "SetProductsForbiddenStatus")
+    return
+}
+
+func NewSetProductsForbiddenStatusResponse() (response *SetProductsForbiddenStatusResponse) {
+    response = &SetProductsForbiddenStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SetProductsForbiddenStatus
+// 批量设置产品禁用状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) SetProductsForbiddenStatus(request *SetProductsForbiddenStatusRequest) (response *SetProductsForbiddenStatusResponse, err error) {
+    if request == nil {
+        request = NewSetProductsForbiddenStatusRequest()
+    }
+    response = NewSetProductsForbiddenStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUnbindDevicesRequest() (request *UnbindDevicesRequest) {
     request = &UnbindDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1919,6 +1950,39 @@ func (c *Client) UpdateDeviceShadow(request *UpdateDeviceShadowRequest) (respons
         request = NewUpdateDeviceShadowRequest()
     }
     response = NewUpdateDeviceShadowResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateDevicesEnableStateRequest() (request *UpdateDevicesEnableStateRequest) {
+    request = &UpdateDevicesEnableStateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "UpdateDevicesEnableState")
+    return
+}
+
+func NewUpdateDevicesEnableStateResponse() (response *UpdateDevicesEnableStateResponse) {
+    response = &UpdateDevicesEnableStateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateDevicesEnableState
+// 批量启用或者禁用设备 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_PRODUCTTYPENOTSUPPORT = "InvalidParameterValue.ProductTypeNotSupport"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  UNAUTHORIZEDOPERATION_DEVICEHASALREADYBINDGATEWAY = "UnauthorizedOperation.DeviceHasAlreadyBindGateway"
+func (c *Client) UpdateDevicesEnableState(request *UpdateDevicesEnableStateRequest) (response *UpdateDevicesEnableStateResponse, err error) {
+    if request == nil {
+        request = NewUpdateDevicesEnableStateRequest()
+    }
+    response = NewUpdateDevicesEnableStateResponse()
     err = c.Send(request, response)
     return
 }

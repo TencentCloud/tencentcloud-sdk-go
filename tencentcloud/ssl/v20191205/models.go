@@ -1297,6 +1297,9 @@ type DescribeManagersRequest struct {
 	// 'expiring'  即将过期
 	// 'expired' 已过期
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 管理人姓名/邮箱/部门精准匹配
+	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
 }
 
 func (r *DescribeManagersRequest) ToJsonString() string {
@@ -1317,6 +1320,7 @@ func (r *DescribeManagersRequest) FromJsonString(s string) error {
 	delete(f, "ManagerName")
 	delete(f, "ManagerMail")
 	delete(f, "Status")
+	delete(f, "SearchKey")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeManagersRequest has unknown keys!", "")
 	}
@@ -1504,6 +1508,13 @@ type ManagerInfo struct {
 	// 审核通过时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VerifyTime *string `json:"VerifyTime,omitempty" name:"VerifyTime"`
+
+	// 具体审核状态信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusInfo []*ManagerStatusInfo `json:"StatusInfo,omitempty" name:"StatusInfo"`
+}
+
+type ManagerStatusInfo struct {
 }
 
 type ModifyCertificateAliasRequest struct {

@@ -122,6 +122,9 @@ const (
 	// VPC已绑定其它解析域。
 	INVALIDPARAMETER_VPCBINDED = "InvalidParameter.VpcBinded"
 
+	// VPC关联反解析域超过限制。
+	INVALIDPARAMETER_VPCPTRZONEBINDEXCEED = "InvalidParameter.VpcPtrZoneBindExceed"
+
 	// 解析域不存在。
 	INVALIDPARAMETER_ZONENOTEXISTS = "InvalidParameter.ZoneNotExists"
 

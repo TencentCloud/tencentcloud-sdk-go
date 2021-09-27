@@ -467,6 +467,40 @@ type AdvancedAuthenticationTypeF struct {
 	BackupSecretKey *string `json:"BackupSecretKey,omitempty" name:"BackupSecretKey"`
 }
 
+type AdvancedCCRules struct {
+
+	// 规则名称
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 探测时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DetectionTime *uint64 `json:"DetectionTime,omitempty" name:"DetectionTime"`
+
+	// 限频阈值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FrequencyLimit *uint64 `json:"FrequencyLimit,omitempty" name:"FrequencyLimit"`
+
+	// IP 惩罚开关，可选on|off
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PunishmentSwitch *string `json:"PunishmentSwitch,omitempty" name:"PunishmentSwitch"`
+
+	// IP 惩罚时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PunishmentTime *uint64 `json:"PunishmentTime,omitempty" name:"PunishmentTime"`
+
+	// 执行动作，intercept|redirect
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 动作为 redirect 时，重定向的url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RedirectUrl *string `json:"RedirectUrl,omitempty" name:"RedirectUrl"`
+
+	// 七层限频具体配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Configure []*ScdnSevenLayerRules `json:"Configure,omitempty" name:"Configure"`
+}
+
 type AdvancedCache struct {
 
 	// 缓存过期规则
@@ -4364,6 +4398,10 @@ type EnableCachesResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		CacheOptResult *CacheOptResult `json:"CacheOptResult,omitempty" name:"CacheOptResult"`
 
+		// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -6847,6 +6885,10 @@ type ScdnConfig struct {
 	// 自定义 cc 防护规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rules []*ScdnCCRules `json:"Rules,omitempty" name:"Rules"`
+
+	// 增强自定义 cc 防护规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdvancedRules []*AdvancedCCRules `json:"AdvancedRules,omitempty" name:"AdvancedRules"`
 }
 
 type ScdnDdosConfig struct {
@@ -6982,6 +7024,45 @@ type ScdnLogTaskDetail struct {
 	// mainland或overseas
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Area *string `json:"Area,omitempty" name:"Area"`
+}
+
+type ScdnSevenLayerRules struct {
+
+	// 区分大小写
+	CaseSensitive *bool `json:"CaseSensitive,omitempty" name:"CaseSensitive"`
+
+	// 规则类型：
+	// protocol：协议，填写 HTTP/HTTPS
+	// method：请求方法，支持 HEAD、GET、POST、PUT、OPTIONS、TRACE、DELETE、PATCH、CONNECT
+	// all：域名 匹配内容固定为"*",不可编辑修改
+	// ip：IP 填写 CIDR 表达式
+	// directory：路径，以/开头，支持目录和具体路径，128字符以内
+	// index：首页 默认固定值：/;/index.html,不可编辑修改
+	// path：文件全路径，资源地址，如/acb/test.png，支持通配符，如/abc/*.jpg
+	// file：文件扩展名，填写具体扩展名，如 jpg;png;css
+	// param：请求参数，填写具体 value 值，512字符以内
+	// referer：Referer，填写具体 value 值，512字符以内
+	// cookie：Cookie，填写具体 value 值，512字符以内
+	// user-agent：User-Agent，填写具体 value 值，512字符以内
+	// head：自定义请求头，填写具体value值，512字符以内；内容为空或者不存在时，无匹配内容输入框，填写匹配参数即可
+	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
+
+	// 逻辑操作符，取值 ：
+	// 不包含：exclude, 
+	// 包含：include, 
+	// 不等于：notequal, 
+	// 等于：equal, 
+	// 前缀匹配：matching
+	// 内容为空或不存在：null
+	LogicOperator *string `json:"LogicOperator,omitempty" name:"LogicOperator"`
+
+	// 规则值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleValue []*string `json:"RuleValue,omitempty" name:"RuleValue"`
+
+	// 匹配参数，只有请求参数、Cookie、自定义请求头 有值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleParam *string `json:"RuleParam,omitempty" name:"RuleParam"`
 }
 
 type ScdnTopData struct {

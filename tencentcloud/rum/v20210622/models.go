@@ -550,6 +550,63 @@ func (r *DescribeProjectsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeScoresRequest struct {
+	*tchttp.BaseRequest
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 项目ID
+	ID *int64 `json:"ID,omitempty" name:"ID"`
+}
+
+func (r *DescribeScoresRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScoresRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EndTime")
+	delete(f, "StartTime")
+	delete(f, "ID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScoresRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeScoresResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 数组
+		ScoreSet []*ScoreInfo `json:"ScoreSet,omitempty" name:"ScoreSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeScoresResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScoresResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Filter struct {
 
 	// 一个或者多个过滤值。
@@ -609,4 +666,46 @@ type RumProject struct {
 	// 是否星标  1:是 0:否
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsStar *int64 `json:"IsStar,omitempty" name:"IsStar"`
+}
+
+type ScoreInfo struct {
+
+	// duration
+	StaticDuration *string `json:"StaticDuration,omitempty" name:"StaticDuration"`
+
+	// pv
+	PagePv *string `json:"PagePv,omitempty" name:"PagePv"`
+
+	// 失败
+	ApiFail *string `json:"ApiFail,omitempty" name:"ApiFail"`
+
+	// 请求
+	ApiNum *string `json:"ApiNum,omitempty" name:"ApiNum"`
+
+	// fail
+	StaticFail *string `json:"StaticFail,omitempty" name:"StaticFail"`
+
+	// 项目id
+	ProjectID *int64 `json:"ProjectID,omitempty" name:"ProjectID"`
+
+	// uv
+	PageUv *string `json:"PageUv,omitempty" name:"PageUv"`
+
+	// 请求次数
+	ApiDuration *string `json:"ApiDuration,omitempty" name:"ApiDuration"`
+
+	// 分数
+	Score *string `json:"Score,omitempty" name:"Score"`
+
+	// error
+	PageError *string `json:"PageError,omitempty" name:"PageError"`
+
+	// num
+	StaticNum *string `json:"StaticNum,omitempty" name:"StaticNum"`
+
+	// num
+	RecordNum *int64 `json:"RecordNum,omitempty" name:"RecordNum"`
+
+	// Duration
+	PageDuration *string `json:"PageDuration,omitempty" name:"PageDuration"`
 }

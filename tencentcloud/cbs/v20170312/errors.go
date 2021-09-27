@@ -188,6 +188,9 @@ const (
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"
 
+	// 暂不支持从EKS上卸载云硬盘。
+	UNSUPPORTEDOPERATION_DETACHPOD = "UnsupportedOperation.DetachPod"
+
 	// 磁盘已加密。
 	UNSUPPORTEDOPERATION_DISKENCRYPT = "UnsupportedOperation.DiskEncrypt"
 

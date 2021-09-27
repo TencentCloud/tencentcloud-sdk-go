@@ -467,7 +467,7 @@ type CreateInstancePreRequest struct {
 	// 预付费自动续费标记，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
 	RenewFlag *int64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
 
-	// 支持指定版本Kafka版本（0.10.2/1.1.1/2.4.2） 。指定专业版参数specificationsType=pro
+	// 支持指定版本Kafka版本（0.10.2/1.1.1/2.4.1） 。指定专业版参数specificationsType=pro
 	KafkaVersion *string `json:"KafkaVersion,omitempty" name:"KafkaVersion"`
 
 	// 专业版必须填写 （专业版：profession、标准版：standard） 默认是standard。专业版填profession

@@ -7914,10 +7914,10 @@ func (r *DescribeIpGeolocationDatabaseUrlResponse) FromJsonString(s string) erro
 type DescribeIpGeolocationInfosRequest struct {
 	*tchttp.BaseRequest
 
-	// 查询IP地址列表，支持IPv4和IPv6。
+	// 需查询的IP地址列表，支持IPv4和IPv6。批量查询的IP地址上限为100个。
 	AddressIps []*string `json:"AddressIps,omitempty" name:"AddressIps"`
 
-	// 查询IP地址的字段信息，包括"Country","Province","City","Region","Isp","AsName","AsId"
+	// 需查询的IP地址的字段信息。
 	Fields *IpField `json:"Fields,omitempty" name:"Fields"`
 }
 
@@ -7945,10 +7945,10 @@ type DescribeIpGeolocationInfosResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// IP地址信息列表
+		// IP地址信息列表。
 		AddressInfo []*IpGeolocationInfo `json:"AddressInfo,omitempty" name:"AddressInfo"`
 
-		// IP地址信息个数
+		// IP地址信息个数。
 		Total *int64 `json:"Total,omitempty" name:"Total"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

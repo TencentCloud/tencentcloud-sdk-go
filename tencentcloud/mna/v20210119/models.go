@@ -39,15 +39,15 @@ type CreateQosRequest struct {
 	DestAddressInfo *DestAddressInfo `json:"DestAddressInfo,omitempty" name:"DestAddressInfo"`
 
 	// 加速套餐
-	// T100K：上/下行保障 100kbps
-	// T200K：上/下行保障 200kbps
-	// T400K：上/下行保障 400kbps
-	// BD1M：下行带宽保障1Mbps
-	// BD2M：下行带宽保障2Mbps
-	// BD4M：下行带宽保障4Mbps
-	// BU1M：上行带宽保障1Mbps
-	// BU2M：上行带宽保障2Mbps
-	// BU4M：上行带宽保障4Mbps
+	// T100K：时延性保障 + 带宽保障上下行保障 100kbps
+	// T200K：时延性保障 + 带宽保障上下行保障 200kbps
+	// T400K：时延性保障 + 带宽保障上下行保障  400kbps
+	// BD1M：带宽型保障 + 下行带宽保障1Mbps
+	// BD2M：带宽型保障 + 下行带宽保障2Mbps
+	// BD4M：带宽型保障 + 下行带宽保障4Mbps
+	// BU1M：带宽型保障 + 上行带宽保障1Mbps
+	// BU2M：带宽型保障 + 上行带宽保障2Mbps
+	// BU4M：带宽型保障 + 上行带宽保障4Mbps
 	QosMenu *string `json:"QosMenu,omitempty" name:"QosMenu"`
 
 	// 申请加速的设备信息，包括运营商，操作系统，设备唯一标识等。
@@ -61,6 +61,12 @@ type CreateQosRequest struct {
 
 	// 应用模板ID
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 针对特殊协议进行加速
+	// 1. IP （默认值）
+	// 2. UDP
+	// 3. TCP
+	Protocol *uint64 `json:"Protocol,omitempty" name:"Protocol"`
 }
 
 func (r *CreateQosRequest) ToJsonString() string {
@@ -82,6 +88,7 @@ func (r *CreateQosRequest) FromJsonString(s string) error {
 	delete(f, "Duration")
 	delete(f, "Capacity")
 	delete(f, "TemplateId")
+	delete(f, "Protocol")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateQosRequest has unknown keys!", "")
 	}

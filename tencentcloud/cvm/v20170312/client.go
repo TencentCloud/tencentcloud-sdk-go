@@ -3306,7 +3306,6 @@ func NewSyncImagesResponse() (response *SyncImagesResponse) {
 // * 单个帐号在每个地域最多支持存在10个自定义镜像。
 //
 // 可能返回的错误码:
-//  IMAGEQUOTALIMITEXCEEDED = "ImageQuotaLimitExceeded"
 //  INVALIDIMAGEID_INCORRECTSTATE = "InvalidImageId.IncorrectState"
 //  INVALIDIMAGEID_MALFORMED = "InvalidImageId.Malformed"
 //  INVALIDIMAGEID_NOTFOUND = "InvalidImageId.NotFound"

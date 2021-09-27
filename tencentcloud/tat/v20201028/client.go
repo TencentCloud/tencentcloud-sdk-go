@@ -405,6 +405,7 @@ func NewDescribeInvokersResponse() (response *DescribeInvokersResponse) {
 //  AUTHFAILURE = "AuthFailure"
 //  INVALIDPARAMETER_CONFLICTPARAMETER = "InvalidParameter.ConflictParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 func (c *Client) DescribeInvokers(request *DescribeInvokersRequest) (response *DescribeInvokersResponse, err error) {
     if request == nil {
         request = NewDescribeInvokersRequest()

@@ -800,6 +800,36 @@ func (c *Client) DescribeCloudBaseProjectVersionList(request *DescribeCloudBaseP
     return
 }
 
+func NewDescribeCloudBaseRunAllVpcsRequest() (request *DescribeCloudBaseRunAllVpcsRequest) {
+    request = &DescribeCloudBaseRunAllVpcsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseRunAllVpcs")
+    return
+}
+
+func NewDescribeCloudBaseRunAllVpcsResponse() (response *DescribeCloudBaseRunAllVpcsResponse) {
+    response = &DescribeCloudBaseRunAllVpcsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCloudBaseRunAllVpcs
+// 查询环境下所有的vpc列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCloudBaseRunAllVpcs(request *DescribeCloudBaseRunAllVpcsRequest) (response *DescribeCloudBaseRunAllVpcsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudBaseRunAllVpcsRequest()
+    }
+    response = NewDescribeCloudBaseRunAllVpcsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudBaseRunConfForGateWayRequest() (request *DescribeCloudBaseRunConfForGateWayRequest) {
     request = &DescribeCloudBaseRunConfForGateWayRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -828,6 +858,36 @@ func (c *Client) DescribeCloudBaseRunConfForGateWay(request *DescribeCloudBaseRu
         request = NewDescribeCloudBaseRunConfForGateWayRequest()
     }
     response = NewDescribeCloudBaseRunConfForGateWayResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudBaseRunOperationTypesRequest() (request *DescribeCloudBaseRunOperationTypesRequest) {
+    request = &DescribeCloudBaseRunOperationTypesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseRunOperationTypes")
+    return
+}
+
+func NewDescribeCloudBaseRunOperationTypesResponse() (response *DescribeCloudBaseRunOperationTypesResponse) {
+    response = &DescribeCloudBaseRunOperationTypesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCloudBaseRunOperationTypes
+// 查询服务、版本和操作类型
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCloudBaseRunOperationTypes(request *DescribeCloudBaseRunOperationTypesRequest) (response *DescribeCloudBaseRunOperationTypesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudBaseRunOperationTypesRequest()
+    }
+    response = NewDescribeCloudBaseRunOperationTypesResponse()
     err = c.Send(request, response)
     return
 }
@@ -954,6 +1014,38 @@ func (c *Client) DescribeCloudBaseRunVersion(request *DescribeCloudBaseRunVersio
         request = NewDescribeCloudBaseRunVersionRequest()
     }
     response = NewDescribeCloudBaseRunVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudBaseRunVersionRsByConditionRequest() (request *DescribeCloudBaseRunVersionRsByConditionRequest) {
+    request = &DescribeCloudBaseRunVersionRsByConditionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseRunVersionRsByCondition")
+    return
+}
+
+func NewDescribeCloudBaseRunVersionRsByConditionResponse() (response *DescribeCloudBaseRunVersionRsByConditionResponse) {
+    response = &DescribeCloudBaseRunVersionRsByConditionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCloudBaseRunVersionRsByCondition
+// DescribeCloudBaseRunVersionRsByCondition 获取云托管详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeCloudBaseRunVersionRsByCondition(request *DescribeCloudBaseRunVersionRsByConditionRequest) (response *DescribeCloudBaseRunVersionRsByConditionResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudBaseRunVersionRsByConditionRequest()
+    }
+    response = NewDescribeCloudBaseRunVersionRsByConditionResponse()
     err = c.Send(request, response)
     return
 }

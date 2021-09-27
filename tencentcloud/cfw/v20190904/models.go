@@ -60,6 +60,155 @@ type AcListsData struct {
 	LogId *string `json:"LogId,omitempty" name:"LogId"`
 }
 
+type AddAcRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// -1表示优先级最低，1表示优先级最高
+	OrderIndex *string `json:"OrderIndex,omitempty" name:"OrderIndex"`
+
+	// 访问控制策略中设置的流量通过云防火墙的方式。取值：
+	// accept：放行
+	// drop：拒绝
+	// log：观察
+	RuleAction *string `json:"RuleAction,omitempty" name:"RuleAction"`
+
+	// 访问控制策略的流量方向。取值：
+	// in：外对内流量访问控制
+	// out：内对外流量访问控制
+	Direction *string `json:"Direction,omitempty" name:"Direction"`
+
+	// 访问控制策略的描述信息
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 访问控制策略中的源地址类型。取值：
+	// net：源IP或网段（IP或者CIDR）
+	// location：源区域
+	// template：云防火墙地址模板
+	// instance：实例id
+	// vendor：云厂商
+	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
+
+	// 访问控制策略中的源地址。取值：
+	// 当SourceType为net时，SourceContent为源IP地址或者CIDR地址。
+	// 例如：1.1.1.0/24
+	// 
+	// 当SourceType为template时，SourceContent为源地址模板名称。
+	// 
+	// 当SourceType为location时，SourceContent为源区域。
+	// 例如["BJ11", "ZB"]
+	// 
+	// 当SourceType为instance时，SourceContent为该实例id对应的公网ip。
+	// 例如ins-xxxxx
+	// 
+	// 当SourceType为vendor时，SourceContent为所选择厂商的公网ip列表。
+	// 例如：aws,huawei,tencent,aliyun,azure,all代表以上五个
+	SourceContent *string `json:"SourceContent,omitempty" name:"SourceContent"`
+
+	// 访问控制策略中的目的地址类型。取值：
+	// net：目的IP或者网段（IP或者CIDR）
+	// location：源区域
+	// template：云防火墙地址模板
+	// instance：实例id
+	// vendor：云厂商
+	// domain: 域名或者ip
+	DestType *string `json:"DestType,omitempty" name:"DestType"`
+
+	// 访问控制策略中的目的地址。取值：
+	// 当DestType为net时，DestContent为源IP地址或者CIDR地址。
+	// 例如：1.1.1.0/24
+	// 
+	// 当DestType为template时，DestContent为源地址模板名称。
+	// 
+	// 当DestType为location时，DestContent为源区域。
+	// 例如["BJ11", "ZB"]
+	// 
+	// 当DestType为instance时，DestContent为该实例id对应的公网ip。
+	// 例如ins-xxxxx
+	// 
+	// 当DestType为domain时，DestContent为该实例id对应的域名规则。
+	// 例如*.qq.com
+	// 
+	// 当DestType为vendor时，DestContent为所选择厂商的公网ip列表。
+	// 例如：aws,huawei,tencent,aliyun,azure,all代表以上五个
+	DestContent *string `json:"DestContent,omitempty" name:"DestContent"`
+
+	// 访问控制策略的端口。取值：
+	// -1/-1：全部端口
+	// 80,443：80或者443
+	Port *string `json:"Port,omitempty" name:"Port"`
+
+	// 访问控制策略中流量访问的协议类型。取值：TCP，目前互联网边界规则只能支持TCP，不传参数默认就是TCP
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 七层协议，取值：
+	// HTTP/HTTPS
+	// TLS/SSL
+	ApplicationName *string `json:"ApplicationName,omitempty" name:"ApplicationName"`
+
+	// 是否启用规则，默认为启用，取值：
+	// true为启用，false为不启用
+	Enable *string `json:"Enable,omitempty" name:"Enable"`
+}
+
+func (r *AddAcRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddAcRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OrderIndex")
+	delete(f, "RuleAction")
+	delete(f, "Direction")
+	delete(f, "Description")
+	delete(f, "SourceType")
+	delete(f, "SourceContent")
+	delete(f, "DestType")
+	delete(f, "DestContent")
+	delete(f, "Port")
+	delete(f, "Protocol")
+	delete(f, "ApplicationName")
+	delete(f, "Enable")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddAcRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddAcRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 创建成功后返回新策略的uuid
+		RuleUuid *int64 `json:"RuleUuid,omitempty" name:"RuleUuid"`
+
+		// 0代表成功，-1代表失败
+		ReturnCode *int64 `json:"ReturnCode,omitempty" name:"ReturnCode"`
+
+		// success代表成功，failed代表失败
+		ReturnMsg *string `json:"ReturnMsg,omitempty" name:"ReturnMsg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AddAcRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddAcRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type AssetZone struct {
 
 	// 地域
@@ -376,6 +525,88 @@ func (r *CreateNatFwInstanceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateNatFwInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateNatFwInstanceWithDomainRequest struct {
+	*tchttp.BaseRequest
+
+	// 防火墙实例名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 带宽
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 模式 1：接入模式；0：新增模式
+	Mode *int64 `json:"Mode,omitempty" name:"Mode"`
+
+	// 新增模式传递参数，其中NewModeItems和NatgwList至少传递一种。
+	NewModeItems *NewModeItems `json:"NewModeItems,omitempty" name:"NewModeItems"`
+
+	// 接入模式接入的nat网关列表，其中NewModeItems和NatgwList至少传递一种。
+	NatGwList []*string `json:"NatGwList,omitempty" name:"NatGwList"`
+
+	// 主可用区，为空则选择默认可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 备可用区，为空则选择默认可用区
+	ZoneBak *string `json:"ZoneBak,omitempty" name:"ZoneBak"`
+
+	// 异地灾备 1：使用异地灾备；0：不使用异地灾备
+	CrossAZone *int64 `json:"CrossAZone,omitempty" name:"CrossAZone"`
+
+	// 0不创建域名,1创建域名
+	IsCreateDomain *int64 `json:"IsCreateDomain,omitempty" name:"IsCreateDomain"`
+
+	// 如果要创建域名则必填
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+}
+
+func (r *CreateNatFwInstanceWithDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateNatFwInstanceWithDomainRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Width")
+	delete(f, "Mode")
+	delete(f, "NewModeItems")
+	delete(f, "NatGwList")
+	delete(f, "Zone")
+	delete(f, "ZoneBak")
+	delete(f, "CrossAZone")
+	delete(f, "IsCreateDomain")
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNatFwInstanceWithDomainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateNatFwInstanceWithDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateNatFwInstanceWithDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateNatFwInstanceWithDomainResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3979,6 +4210,63 @@ type NewModeItems struct {
 
 	// 新增模式下新增绑定的出口弹性公网ip个数，其中Eips和AddCount至少传递一个。
 	AddCount *int64 `json:"AddCount,omitempty" name:"AddCount"`
+}
+
+type RemoveAcRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 规则的uuid，可通过查询规则列表获取
+	RuleUuid *int64 `json:"RuleUuid,omitempty" name:"RuleUuid"`
+}
+
+func (r *RemoveAcRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveAcRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleUuid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveAcRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RemoveAcRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 删除成功后返回被删除策略的uuid
+		RuleUuid *int64 `json:"RuleUuid,omitempty" name:"RuleUuid"`
+
+		// 0代表成功，-1代表失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ReturnCode *int64 `json:"ReturnCode,omitempty" name:"ReturnCode"`
+
+		// success代表成功，failed代表失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ReturnMsg *string `json:"ReturnMsg,omitempty" name:"ReturnMsg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RemoveAcRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveAcRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RuleInfoData struct {
