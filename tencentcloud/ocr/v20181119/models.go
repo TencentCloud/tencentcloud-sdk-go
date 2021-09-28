@@ -1670,6 +1670,9 @@ type GeneralAccurateOCRRequest struct {
 
 	// 是否返回单字信息，默认关
 	IsWords *bool `json:"IsWords,omitempty" name:"IsWords"`
+
+	// 是否开启原图切图检测功能，开启后可提升“整图面积大，但单字符占比面积小”（例如：试卷）场景下的识别效果，默认关
+	EnableDetectSplit *bool `json:"EnableDetectSplit,omitempty" name:"EnableDetectSplit"`
 }
 
 func (r *GeneralAccurateOCRRequest) ToJsonString() string {
@@ -1687,6 +1690,7 @@ func (r *GeneralAccurateOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	delete(f, "IsWords")
+	delete(f, "EnableDetectSplit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GeneralAccurateOCRRequest has unknown keys!", "")
 	}

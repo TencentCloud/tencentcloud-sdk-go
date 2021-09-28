@@ -299,6 +299,18 @@ type Column struct {
 	// 对该类的注释。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 表示整个 numeric 的长度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Precision *int64 `json:"Precision,omitempty" name:"Precision"`
+
+	// 表示小数部分的长度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Scale *int64 `json:"Scale,omitempty" name:"Scale"`
+
+	// 是否为null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Nullable *string `json:"Nullable,omitempty" name:"Nullable"`
 }
 
 type CreateDatabaseRequest struct {
@@ -1363,10 +1375,10 @@ type DescribeTasksRequest struct {
 	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,每个过滤参数支持的过滤值不超过5个。
-	// task-id - String - （任务ID过滤）task-id取值形如：e386471f-139a-4e59-877f-50ece8135b99。
+	// 过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,其中task-id支持最大50个过滤个数，其他过滤参数支持的总数不超过5个。
+	// task-id - String - （任务ID准确过滤）task-id取值形如：e386471f-139a-4e59-877f-50ece8135b99。
 	// task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)。
-	// task-sql-keyword - String - （SQL语句关键字）取值形如：DROP TABLE。
+	// task-sql-keyword - String - （SQL语句关键字模糊过滤）取值形如：DROP TABLE。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序字段，支持如下字段类型，create-time
@@ -1889,17 +1901,20 @@ type Partition struct {
 
 type Policy struct {
 
-	// 需要授权的数据源名称，当前仅支持COSDataCatalog或者*
-	Catalog *string `json:"Catalog,omitempty" name:"Catalog"`
-
-	// 需要授权的数据库名，填*代表当前Catalog下所有数据库
+	// 需要授权的数据库名，填*代表当前Catalog下所有数据库。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别时只允许填空，其他类型下可以任意指定数据库。
 	Database *string `json:"Database,omitempty" name:"Database"`
 
-	// 需要授权的表名，填*代表当前Database下所有表
+	// 需要授权的数据源名称，管理员级别下只支持填*（代表该级别全部资源）；数据源级别和数据库级别鉴权的情况下，只支持填COSDataCatalog或者*；在数据表级别鉴权下可以填写用户自定义数据源。不填情况下默认为COSDataCatalog。注意：如果是对用户自定义数据源进行鉴权，DLC能够管理的权限是用户接入数据源的时候提供的账户的子集。
+	Catalog *string `json:"Catalog,omitempty" name:"Catalog"`
+
+	// 需要授权的表名，填*代表当前Database下所有表。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。
 	Table *string `json:"Table,omitempty" name:"Table"`
 
-	// 授权粒度，当前只支持ALL，即全部权限
+	// 授权的权限操作，对于不同级别的鉴权提供不同操作。管理员权限：ALL，不填默认为ALL；数据连接级鉴权：CRETE；数据库级别鉴权：ALL、CREATE、ALTER、DROP；数据表权限：ALL、SELECT、INSERT、ALTER、DELETE、DROP、UPDATE。注意：在数据表权限下，指定的数据源不为COSDataCatalog的时候，只支持SELECT操作。
 	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 授权类型，现在支持四种授权类型：ADMIN:管理员级别鉴权 DATASOURCE：数据连接级别鉴权 DATABASE：数据库级别鉴权 TABLE：表级别鉴权。不填默认为管理员级别鉴权。
+	PolicyType *string `json:"PolicyType,omitempty" name:"PolicyType"`
 }
 
 type Property struct {

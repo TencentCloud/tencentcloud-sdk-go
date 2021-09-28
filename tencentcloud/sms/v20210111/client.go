@@ -330,7 +330,9 @@ func NewDescribePhoneNumberInfoResponse() (response *DescribePhoneNumberInfoResp
 }
 
 // DescribePhoneNumberInfo
-// 提供 E.164 格式号码国家或地区码识别，以及解析后规范的E.164号码。
+// 提供电话号码的信息查询，包括国家（或地区）码、规范的 E.164 格式号码等。
+//
+// >- 例如：查询号码 +86018845720123，可以得到国家码 86、规范的 E.164 号码 +8618845720123 等信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_JSONPARSEFAIL = "FailedOperation.JsonParseFail"
@@ -695,7 +697,7 @@ func NewPullSmsSendStatusResponse() (response *PullSmsSendStatusResponse) {
 //
 // 目前也支持 [配置回调](https://cloud.tencent.com/document/product/382/37809#.E8.AE.BE.E7.BD.AE.E4.BA.8B.E4.BB.B6.E5.9B.9E.E8.B0.83.E9.85.8D.E7.BD.AE) 的方式来获取下发状态。
 //
-// >- 注：此接口需要联系 [sms helper](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) 开通。
+// >- 注：此接口需要联系 [腾讯云短信小助手](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) 开通。
 //
 // >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 SDK 来使用云短信服务。
 //

@@ -49,15 +49,15 @@
 | cms | [内容安全](https://cloud.tencent.com/document/product) | 2020-10-29 08:03:08 |
 | cpdp | [企业收付平台](https://cloud.tencent.com/document/product/1122) | 2021-09-22 08:05:35 |
 | cr | [金融联络机器人](https://cloud.tencent.com/document/product/656) | 2021-02-24 08:03:24 |
-| cvm | [云服务器](https://cloud.tencent.com/document/product/213) | 2021-09-27 08:09:14 |
-| cwp | [主机安全](https://cloud.tencent.com/document/product/296) | 2021-09-27 08:09:25 |
+| cvm | [云服务器](https://cloud.tencent.com/document/product/213) | 2021-09-28 08:03:36 |
+| cwp | [主机安全](https://cloud.tencent.com/document/product/296) | 2021-09-28 08:03:47 |
 | cws | [漏洞扫描服务](https://cloud.tencent.com/document/product) | 2019-11-22 12:16:15 |
 | cynosdb | [云原生数据库 TDSQL-C](https://cloud.tencent.com/document/product/1003) | 2021-09-16 08:02:00 |
 | dayu | [DDoS 高防包](https://cloud.tencent.com/document/product/1021) | 2021-09-16 08:06:18 |
 | dbbrain | [数据库智能管家 DBbrain](https://cloud.tencent.com/document/product/1130) | 2021-09-16 08:06:32 |
 | dc | [专线接入](https://cloud.tencent.com/document/product/216) | 2021-09-16 08:06:39 |
 | dcdb | [分布式数据库 TDSQL](https://cloud.tencent.com/document/product/557) | 2021-09-23 08:07:35 |
-| dlc | [数据湖计算](https://cloud.tencent.com/document/product/1342) | 2021-09-16 08:01:09 |
+| dlc | [数据湖计算](https://cloud.tencent.com/document/product/1342) | 2021-09-28 08:04:47 |
 | dnspod | [DNSPod](https://cloud.tencent.com/document/product/1427) | 2021-09-16 08:00:42 |
 | domain | [域名注册](https://cloud.tencent.com/document/product/242) | 2021-09-16 08:06:51 |
 | drm | [数字版权管理](https://cloud.tencent.com/document/product/1000) | 2021-09-16 08:06:55 |
@@ -113,7 +113,7 @@
 | nlp | [自然语言处理](https://cloud.tencent.com/document/product/271) | 2021-09-16 08:14:38 |
 | npp | [号码保护](https://cloud.tencent.com/document/product) | 2020-04-22 08:00:22 |
 | oceanus | [流计算 Oceanus](https://cloud.tencent.com/document/product/849) | 2021-09-24 10:00:20 |
-| ocr | [文字识别](https://cloud.tencent.com/document/product/866) | 2021-09-16 08:09:11 |
+| ocr | [文字识别](https://cloud.tencent.com/document/product/866) | 2021-09-28 08:08:22 |
 | organization | [企业组织](https://cloud.tencent.com/document/product/850) | 2021-08-26 08:07:43 |
 | partners | [渠道合作伙伴](https://cloud.tencent.com/document/product/563) | 2021-09-16 08:09:23 |
 | pds | [私域安全](https://cloud.tencent.com/document/product/1473) | 2021-09-16 08:00:11 |
@@ -127,7 +127,7 @@
 | scf | [云函数](https://cloud.tencent.com/document/product/583) | 2021-09-17 08:11:57 |
 | ses | [邮件推送](https://cloud.tencent.com/document/product/1288) | 2021-09-16 08:14:21 |
 | smpn | [营销号码安全](https://cloud.tencent.com/document/product/1127) | 2021-09-16 08:04:09 |
-| sms | [短信](https://cloud.tencent.com/document/product/382) | 2021-09-23 08:11:56 |
+| sms | [短信](https://cloud.tencent.com/document/product/382) | 2021-09-27 10:59:59 |
 | soe | [智聆口语评测](https://cloud.tencent.com/document/product/884) | 2021-09-16 08:09:52 |
 | solar | [智汇零售](https://cloud.tencent.com/document/product) | 2020-03-19 08:01:59 |
 | sqlserver | [云数据库 SQL Server](https://cloud.tencent.com/document/product/238) | 2021-09-16 08:09:54 |
@@ -143,7 +143,7 @@
 | tbaas | [TBaaS](https://cloud.tencent.com/document/product/663) | 2021-09-16 08:10:18 |
 | tbm | [](https://cloud.tencent.com/document/product) | 2019-03-29 14:49:11 |
 | tbp | [腾讯智能对话平台](https://cloud.tencent.com/document/product/1060) | 2021-09-16 08:10:24 |
-| tcaplusdb | [游戏数据库 TcaplusDB](https://cloud.tencent.com/document/product/596) | 2021-09-24 10:11:33 |
+| tcaplusdb | [游戏数据库 TcaplusDB](https://cloud.tencent.com/document/product/596) | 2021-09-28 08:09:50 |
 | tcb | [云开发 CloudBase](https://cloud.tencent.com/document/product/876) | 2021-09-27 08:16:19 |
 | tcex | [腾讯云释义](https://cloud.tencent.com/document/product/1266) | 2021-09-16 08:01:55 |
 | tci | [腾讯智学课堂分析](https://cloud.tencent.com/document/product) | 2020-08-24 08:06:03 |
@@ -165,7 +165,7 @@
 | tmt | [机器翻译](https://cloud.tencent.com/document/product/551) | 2021-09-22 08:14:22 |
 | trtc | [实时音视频](https://cloud.tencent.com/document/product/647) | 2021-09-17 08:14:11 |
 | tse | [腾讯云微服务引擎](https://cloud.tencent.com/document/product/1364) | 2021-09-27 08:17:29 |
-| tsf | [腾讯微服务平台 TSF](https://cloud.tencent.com/document/product/649) | 2021-09-27 08:17:31 |
+| tsf | [腾讯微服务平台 TSF](https://cloud.tencent.com/document/product/649) | 2021-09-28 08:11:05 |
 | tsw | [腾讯微服务观测平台 TSW](https://cloud.tencent.com/document/product/1311) | 2021-09-16 08:14:31 |
 | tts | [语音合成](https://cloud.tencent.com/document/product/1073) | 2021-09-16 08:11:28 |
 | ump | [客流数字化平台](https://cloud.tencent.com/document/product/1320) | 2021-09-16 08:01:36 |

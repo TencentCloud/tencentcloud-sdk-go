@@ -454,6 +454,9 @@ type CreateClusterRequest struct {
 
 	// 集群类型1共享2独占
 	ClusterType *int64 `json:"ClusterType,omitempty" name:"ClusterType"`
+
+	// 密码认证类型，0 静态认证， 1 签名认证
+	AuthType *int64 `json:"AuthType,omitempty" name:"AuthType"`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
@@ -478,6 +481,7 @@ func (r *CreateClusterRequest) FromJsonString(s string) error {
 	delete(f, "ServerList")
 	delete(f, "ProxyList")
 	delete(f, "ClusterType")
+	delete(f, "AuthType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterRequest has unknown keys!", "")
 	}
@@ -2654,10 +2658,10 @@ type ModifySnapshotsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 批量创建的快照数量
+		// 批量修改的快照数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 批量创建的快照结果列表
+		// 批量修改的快照结果列表
 		TableResults []*SnapshotResult `json:"TableResults,omitempty" name:"TableResults"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

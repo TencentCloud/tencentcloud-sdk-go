@@ -9029,6 +9029,9 @@ type DescribeMalwareTimingScanSettingResponse struct {
 		// 一键扫描超时时长，如：1800秒（s）
 		ClickTimeout *uint64 `json:"ClickTimeout,omitempty" name:"ClickTimeout"`
 
+		// 是否杀掉进程 1杀掉 0不杀掉 只有开启自动隔离才生效
+		KillProcess *uint64 `json:"KillProcess,omitempty" name:"KillProcess"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -14250,6 +14253,9 @@ type ModifyMalwareTimingScanSettingsRequest struct {
 
 	// 是否自动隔离 1隔离 0 不隔离
 	AutoIsolation *uint64 `json:"AutoIsolation,omitempty" name:"AutoIsolation"`
+
+	// 是否杀掉进程 1杀掉 0不杀掉
+	KillProcess *uint64 `json:"KillProcess,omitempty" name:"KillProcess"`
 }
 
 func (r *ModifyMalwareTimingScanSettingsRequest) ToJsonString() string {
@@ -14274,6 +14280,7 @@ func (r *ModifyMalwareTimingScanSettingsRequest) FromJsonString(s string) error 
 	delete(f, "RealTimeMonitoring")
 	delete(f, "QuuidList")
 	delete(f, "AutoIsolation")
+	delete(f, "KillProcess")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMalwareTimingScanSettingsRequest has unknown keys!", "")
 	}
@@ -15749,6 +15756,9 @@ type SeparateMalwaresRequest struct {
 
 	// 木马事件ID数组。(最大100条)
 	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
+
+	// 是否杀掉进程
+	KillProcess *bool `json:"KillProcess,omitempty" name:"KillProcess"`
 }
 
 func (r *SeparateMalwaresRequest) ToJsonString() string {
@@ -15764,6 +15774,7 @@ func (r *SeparateMalwaresRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Ids")
+	delete(f, "KillProcess")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SeparateMalwaresRequest has unknown keys!", "")
 	}
