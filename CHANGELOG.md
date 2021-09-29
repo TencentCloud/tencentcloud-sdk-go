@@ -1,10 +1,26 @@
 # 本版本更新包含以下内容：
 
-## 主机安全(cwp) 版本：2018-02-28
+## 移动网络加速(mna) 版本：2021-01-19
 
-### 第 29 次发布
+### 第 4 次发布
 
-发布时间：2021-09-28 08:03:47
+发布时间：2021-09-29 08:07:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeQos](https://cloud.tencent.com/document/api/1385/62090)
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 70 次发布
+
+发布时间：2021-09-29 08:09:41
 
 本次发布包含了以下内容：
 
@@ -12,49 +28,18 @@
 
 修改接口：
 
-* [DescribeMalwareTimingScanSetting](https://cloud.tencent.com/document/api/296/58240)
+* [DescribeCloudBaseBuildService](https://cloud.tencent.com/document/api/876/48345)
 
-	* 新增出参：KillProcess
-
-* [ModifyMalwareTimingScanSettings](https://cloud.tencent.com/document/api/296/52509)
-
-	* 新增入参：KillProcess
-
-* [SeparateMalwares](https://cloud.tencent.com/document/api/296/30320)
-
-	* 新增入参：KillProcess
+	* 新增入参：Suffix
 
 
 
 
-## 数据湖计算(dlc) 版本：2021-01-25
+## 容器服务(tke) 版本：2018-05-25
 
-### 第 7 次发布
+### 第 75 次发布
 
-发布时间：2021-09-28 08:04:47
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Column](https://cloud.tencent.com/document/api/1342/53778#Column)
-
-	* 新增成员：Precision, Scale, Nullable
-
-* [Policy](https://cloud.tencent.com/document/api/1342/53778#Policy)
-
-	* 新增成员：PolicyType
-
-
-
-
-## 文字识别(ocr) 版本：2018-11-19
-
-### 第 55 次发布
-
-发布时间：2021-09-28 08:08:22
+发布时间：2021-09-29 08:10:54
 
 本次发布包含了以下内容：
 
@@ -62,54 +47,9 @@
 
 修改接口：
 
-* [GeneralAccurateOCR](https://cloud.tencent.com/document/api/866/34937)
+* [ModifyClusterNodePool](https://cloud.tencent.com/document/api/457/49431)
 
-	* 新增入参：EnableDetectSplit
-
-
-
-
-## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
-
-### 第 14 次发布
-
-发布时间：2021-09-28 08:09:50
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateCluster](https://cloud.tencent.com/document/api/596/41491)
-
-	* 新增入参：AuthType
-
-
-
-
-## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
-
-### 第 58 次发布
-
-发布时间：2021-09-28 08:11:05
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DeployGroup](https://cloud.tencent.com/document/api/649/36070)
-
-	* 新增入参：JdkName, JdkVersion
-
-
-修改数据结构：
-
-* [ScalableRule](https://cloud.tencent.com/document/api/649/36099#ScalableRule)
-
-	* 新增成员：Description
+	* 新增入参：ExtraArgs
 
 
 
@@ -35579,6 +35519,18 @@
 
 ## 移动网络加速(mna) 版本：2021-01-19
 
+### 第 4 次发布
+
+发布时间：2021-09-29 08:07:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeQos](https://cloud.tencent.com/document/api/1385/62090)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 3 次发布
 
 发布时间：2021-09-27 08:14:04
@@ -46184,6 +46136,21 @@
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
 
+### 第 70 次发布
+
+发布时间：2021-09-29 08:09:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCloudBaseBuildService](https://cloud.tencent.com/document/api/876/48345)
+
+	* 新增入参：Suffix
+
+
 ### 第 69 次发布
 
 发布时间：2021-09-27 08:16:19
@@ -50800,6 +50767,21 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 75 次发布
+
+发布时间：2021-09-29 08:10:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyClusterNodePool](https://cloud.tencent.com/document/api/457/49431)
+
+	* 新增入参：ExtraArgs
+
 
 ### 第 74 次发布
 

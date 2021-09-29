@@ -5969,6 +5969,9 @@ type ModifyClusterNodePoolRequest struct {
 
 	// 镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
 	OsCustomizeType *string `json:"OsCustomizeType,omitempty" name:"OsCustomizeType"`
+
+	// 节点自定义参数
+	ExtraArgs *InstanceExtraArgs `json:"ExtraArgs,omitempty" name:"ExtraArgs"`
 }
 
 func (r *ModifyClusterNodePoolRequest) ToJsonString() string {
@@ -5993,6 +5996,7 @@ func (r *ModifyClusterNodePoolRequest) FromJsonString(s string) error {
 	delete(f, "EnableAutoscale")
 	delete(f, "OsName")
 	delete(f, "OsCustomizeType")
+	delete(f, "ExtraArgs")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterNodePoolRequest has unknown keys!", "")
 	}

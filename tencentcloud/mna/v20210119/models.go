@@ -173,6 +173,72 @@ func (r *DeleteQosResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeQosRequest struct {
+	*tchttp.BaseRequest
+
+	// 单次加速唯一 Id
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+}
+
+func (r *DescribeQosRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeQosRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SessionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeQosRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeQosResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 0：无匹配的加速中会话
+	// 1：存在匹配的加速中会话
+		Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+		// 手机公网出口IP，仅匹配时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SrcPublicIpv4 *string `json:"SrcPublicIpv4,omitempty" name:"SrcPublicIpv4"`
+
+		// 业务访问目的IP，仅匹配时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DestIpv4 []*string `json:"DestIpv4,omitempty" name:"DestIpv4"`
+
+		// 当前加速剩余时长（单位秒）有，仅匹配时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+
+		// 加速套餐类型，仅匹配时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		QosMenu *string `json:"QosMenu,omitempty" name:"QosMenu"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeQosResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeQosResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DestAddressInfo struct {
 
 	// 加速业务目标 ip 地址数组

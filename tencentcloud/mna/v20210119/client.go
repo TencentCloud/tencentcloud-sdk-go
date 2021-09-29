@@ -121,3 +121,33 @@ func (c *Client) DeleteQos(request *DeleteQosRequest) (response *DeleteQosRespon
     err = c.Send(request, response)
     return
 }
+
+func NewDescribeQosRequest() (request *DescribeQosRequest) {
+    request = &DescribeQosRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mna", APIVersion, "DescribeQos")
+    return
+}
+
+func NewDescribeQosResponse() (response *DescribeQosResponse) {
+    response = &DescribeQosResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeQos
+// 获取Qos加速状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeQos(request *DescribeQosRequest) (response *DescribeQosResponse, err error) {
+    if request == nil {
+        request = NewDescribeQosRequest()
+    }
+    response = NewDescribeQosResponse()
+    err = c.Send(request, response)
+    return
+}

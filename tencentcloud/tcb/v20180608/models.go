@@ -2119,6 +2119,9 @@ type DescribeCloudBaseBuildServiceRequest struct {
 
 	// 服务版本
 	ServiceVersion *string `json:"ServiceVersion,omitempty" name:"ServiceVersion"`
+
+	// 文件后缀
+	Suffix *string `json:"Suffix,omitempty" name:"Suffix"`
 }
 
 func (r *DescribeCloudBaseBuildServiceRequest) ToJsonString() string {
@@ -2137,6 +2140,7 @@ func (r *DescribeCloudBaseBuildServiceRequest) FromJsonString(s string) error {
 	delete(f, "ServiceName")
 	delete(f, "CIBusiness")
 	delete(f, "ServiceVersion")
+	delete(f, "Suffix")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudBaseBuildServiceRequest has unknown keys!", "")
 	}
