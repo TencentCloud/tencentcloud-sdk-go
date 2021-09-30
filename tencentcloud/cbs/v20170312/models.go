@@ -223,6 +223,45 @@ func (r *BindAutoSnapshotPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Cdc struct {
+
+	// 独享集群围笼ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CageId *string `json:"CageId,omitempty" name:"CageId"`
+
+	// 独享集群状态。取值范围：<br><li>NORMAL:正常<br><li>CLOSED：关闭售卖<br><li>FAULT：状态异常<br><li>ISOLATED：已隔离。
+	CdcState *string `json:"CdcState,omitempty" name:"CdcState"`
+
+	// 独享集群所属的[可用区](/document/api/213/9452#zone)ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 独享集群实例名称。
+	CdcName *string `json:"CdcName,omitempty" name:"CdcName"`
+
+	// 独享集群的资源大小。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CdcResource *CdcSize `json:"CdcResource,omitempty" name:"CdcResource"`
+
+	// 独享集群实例id。
+	CdcId *string `json:"CdcId,omitempty" name:"CdcId"`
+
+	// 独享集群类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘集群<br><li>CLOUD_PREMIUM：表示高性能云硬盘集群<br><li>CLOUD_SSD：SSD表示SSD云硬盘集群。
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 独享集群过期时间。
+	ExpiredTime *string `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
+}
+
+type CdcSize struct {
+
+	// 独享集群的可用容量大小，单位GiB
+	DiskAavilable *uint64 `json:"DiskAavilable,omitempty" name:"DiskAavilable"`
+
+	// 独享集群的总容量大小，单位GiB
+	DiskTotal *uint64 `json:"DiskTotal,omitempty" name:"DiskTotal"`
+}
+
 type CreateAutoSnapshotPolicyRequest struct {
 	*tchttp.BaseRequest
 
@@ -805,6 +844,70 @@ func (r *DescribeDiskOperationLogsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDiskOperationLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDiskStoragePoolRequest struct {
+	*tchttp.BaseRequest
+
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 指定需要查询的独享集群ID列表，该入参不能与Filters一起使用。
+	CdcIds []*string `json:"CdcIds,omitempty" name:"CdcIds"`
+
+	// 过滤条件。参数不支持同时指定`CdcIds`和`Filters`。<br><li>cdc-id - Array of String - 是否必填：否 -（过滤条件）按独享集群ID过滤。<br><li>zone - Array of String - 是否必填：否 -（过滤条件）按独享集群所在[可用区](/document/api/213/9452#zone)过滤。<br><li>cage-id - Array of String - 是否必填：否 -（过滤条件）按独享集群所在围笼的ID过滤。<br><li>disk-type - Array of String - 是否必填：否 -（过滤条件）按照云盘介质类型过滤。(CLOUD_BASIC：表示普通云硬盘 | CLOUD_PREMIUM：表示高性能云硬盘。| CLOUD_SSD：SSD表示SSD云硬盘。)
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeDiskStoragePoolRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDiskStoragePoolRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "CdcIds")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDiskStoragePoolRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDiskStoragePoolResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的独享集群的数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 独享集群的详细信息列表
+		DiskStoragePoolSet []*Cdc `json:"DiskStoragePoolSet,omitempty" name:"DiskStoragePoolSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDiskStoragePoolResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDiskStoragePoolResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

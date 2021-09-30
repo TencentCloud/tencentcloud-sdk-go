@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 移动网络加速(mna) 版本：2021-01-19
+## 云硬盘(cbs) 版本：2017-03-12
 
-### 第 4 次发布
+### 第 32 次发布
 
-发布时间：2021-09-29 08:07:33
+发布时间：2021-09-30 08:01:36
 
 本次发布包含了以下内容：
 
@@ -12,15 +12,57 @@
 
 新增接口：
 
-* [DescribeQos](https://cloud.tencent.com/document/api/1385/62090)
+* [DescribeDiskStoragePool](https://cloud.tencent.com/document/api/362/62143)
+
+新增数据结构：
+
+* [Cdc](https://cloud.tencent.com/document/api/362/15669#Cdc)
+* [CdcSize](https://cloud.tencent.com/document/api/362/15669#CdcSize)
 
 
 
-## 云开发 CloudBase(tcb) 版本：2018-06-08
+## 智能保险助手(cii) 版本：2021-04-08
 
-### 第 70 次发布
+### 第 6 次发布
 
-发布时间：2021-09-29 08:09:41
+发布时间：2021-09-30 08:02:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateUnderwriteTaskById](https://cloud.tencent.com/document/api/1368/62147)
+* [DescribeMachineUnderwrite](https://cloud.tencent.com/document/api/1368/62146)
+* [DescribeStructureDifference](https://cloud.tencent.com/document/api/1368/62144)
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreateStructureTaskTest
+* DescribeStructureTaskResultTest
+
+新增数据结构：
+
+* [InsuranceResult](https://cloud.tencent.com/document/api/1368/56853#InsuranceResult)
+* [MachinePredict](https://cloud.tencent.com/document/api/1368/56853#MachinePredict)
+* [MachineUnderwriteOutput](https://cloud.tencent.com/document/api/1368/56853#MachineUnderwriteOutput)
+* [PerStructDifference](https://cloud.tencent.com/document/api/1368/56853#PerStructDifference)
+* [StructureModifyItem](https://cloud.tencent.com/document/api/1368/56853#StructureModifyItem)
+* [StructureOneItem](https://cloud.tencent.com/document/api/1368/56853#StructureOneItem)
+* [UnderwriteItem](https://cloud.tencent.com/document/api/1368/56853#UnderwriteItem)
+
+
+
+## 智能保险助手(cii) 版本：2020-12-10
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 30 次发布
+
+发布时间：2021-09-30 08:03:28
 
 本次发布包含了以下内容：
 
@@ -28,29 +70,80 @@
 
 修改接口：
 
-* [DescribeCloudBaseBuildService](https://cloud.tencent.com/document/api/876/48345)
+* [EditBashRules](https://cloud.tencent.com/document/api/296/58239)
 
-	* 新增入参：Suffix
-
-
+	* <font color="#dd0000">**修改入参**：</font>Name, Rule
 
 
-## 容器服务(tke) 版本：2018-05-25
+修改数据结构：
 
-### 第 75 次发布
+* [MalwareInfo](https://cloud.tencent.com/document/api/296/19867#MalwareInfo)
 
-发布时间：2021-09-29 08:10:54
+	* 新增成员：MachineWanIp, PsTree, MachineStatus, Status
+
+* [RiskDnsList](https://cloud.tencent.com/document/api/296/19867#RiskDnsList)
+
+	* 新增成员：MachineWanIp, MachineStatus
+
+
+
+
+## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 19 次发布
+
+发布时间：2021-09-30 08:05:14
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [ModifyClusterNodePool](https://cloud.tencent.com/document/api/457/49431)
+* [UpdateJdk](https://cloud.tencent.com/document/api/845/62148)
 
-	* 新增入参：ExtraArgs
 
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 3 次发布
+
+发布时间：2021-09-30 08:05:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SignUrlInfo](https://cloud.tencent.com/document/api/1420/61525#SignUrlInfo)
+
+	* 新增成员：OpenId
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 企业微信汽车行业版(wav) 版本：2021-01-29
+
+### 第 8 次发布
+
+发布时间：2021-09-30 08:11:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [QueryClueInfoList](https://cloud.tencent.com/document/api/1318/62149)
+
+新增数据结构：
+
+* [ClueInfoDetail](https://cloud.tencent.com/document/api/1318/56791#ClueInfoDetail)
 
 
 
@@ -6894,6 +6987,23 @@
 
 ## 云硬盘(cbs) 版本：2017-03-12
 
+### 第 32 次发布
+
+发布时间：2021-09-30 08:01:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDiskStoragePool](https://cloud.tencent.com/document/api/362/62143)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Cdc](https://cloud.tencent.com/document/api/362/15669#Cdc)](https://cloud.tencent.com/document/api/362/15669#[Cdc](https://cloud.tencent.com/document/api/362/15669#Cdc))
+* [[CdcSize](https://cloud.tencent.com/document/api/362/15669#CdcSize)](https://cloud.tencent.com/document/api/362/15669#[CdcSize](https://cloud.tencent.com/document/api/362/15669#CdcSize))
+
 ### 第 31 次发布
 
 发布时间：2021-07-15 08:03:44
@@ -11753,6 +11863,35 @@
 
 
 ## 智能保险助手(cii) 版本：2021-04-08
+
+### 第 6 次发布
+
+发布时间：2021-09-30 08:02:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateUnderwriteTaskById](https://cloud.tencent.com/document/api/1368/62147)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeMachineUnderwrite](https://cloud.tencent.com/document/api/1368/62146)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeStructureDifference](https://cloud.tencent.com/document/api/1368/62144)](https://cloud.tencent.com/document/api/#/#)
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreateStructureTaskTest
+* DescribeStructureTaskResultTest
+
+新增数据结构：
+
+* [[InsuranceResult](https://cloud.tencent.com/document/api/1368/56853#InsuranceResult)](https://cloud.tencent.com/document/api/1368/56853#[InsuranceResult](https://cloud.tencent.com/document/api/1368/56853#InsuranceResult))
+* [[MachinePredict](https://cloud.tencent.com/document/api/1368/56853#MachinePredict)](https://cloud.tencent.com/document/api/1368/56853#[MachinePredict](https://cloud.tencent.com/document/api/1368/56853#MachinePredict))
+* [[MachineUnderwriteOutput](https://cloud.tencent.com/document/api/1368/56853#MachineUnderwriteOutput)](https://cloud.tencent.com/document/api/1368/56853#[MachineUnderwriteOutput](https://cloud.tencent.com/document/api/1368/56853#MachineUnderwriteOutput))
+* [[PerStructDifference](https://cloud.tencent.com/document/api/1368/56853#PerStructDifference)](https://cloud.tencent.com/document/api/1368/56853#[PerStructDifference](https://cloud.tencent.com/document/api/1368/56853#PerStructDifference))
+* [[StructureModifyItem](https://cloud.tencent.com/document/api/1368/56853#StructureModifyItem)](https://cloud.tencent.com/document/api/1368/56853#[StructureModifyItem](https://cloud.tencent.com/document/api/1368/56853#StructureModifyItem))
+* [[StructureOneItem](https://cloud.tencent.com/document/api/1368/56853#StructureOneItem)](https://cloud.tencent.com/document/api/1368/56853#[StructureOneItem](https://cloud.tencent.com/document/api/1368/56853#StructureOneItem))
+* [[UnderwriteItem](https://cloud.tencent.com/document/api/1368/56853#UnderwriteItem)](https://cloud.tencent.com/document/api/1368/56853#[UnderwriteItem](https://cloud.tencent.com/document/api/1368/56853#UnderwriteItem))
 
 ### 第 5 次发布
 
@@ -18194,6 +18333,32 @@
 
 
 ## 主机安全(cwp) 版本：2018-02-28
+
+### 第 30 次发布
+
+发布时间：2021-09-30 08:03:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [EditBashRules](https://cloud.tencent.com/document/api/296/58239)
+
+	* <font color="#dd0000">**修改入参**：</font>Name, Rule
+
+
+修改数据结构：
+
+* [MalwareInfo](https://cloud.tencent.com/document/api/296/19867#MalwareInfo)
+
+	* 新增成员：MachineWanIp, PsTree, MachineStatus, Status
+
+* [RiskDnsList](https://cloud.tencent.com/document/api/296/19867#RiskDnsList)
+
+	* 新增成员：MachineWanIp, MachineStatus
+
 
 ### 第 29 次发布
 
@@ -25049,6 +25214,18 @@
 
 ## Elasticsearch Service(es) 版本：2018-04-16
 
+### 第 19 次发布
+
+发布时间：2021-09-30 08:05:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[UpdateJdk](https://cloud.tencent.com/document/api/845/62148)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 18 次发布
 
 发布时间：2021-08-13 08:05:41
@@ -25584,6 +25761,21 @@
 
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 3 次发布
+
+发布时间：2021-09-30 08:05:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SignUrlInfo](https://cloud.tencent.com/document/api/1420/61525#SignUrlInfo)
+
+	* 新增成员：OpenId
+
 
 ### 第 2 次发布
 
@@ -35529,7 +35721,7 @@
 
 新增接口：
 
-* [[DescribeQos](https://cloud.tencent.com/document/api/1385/62090)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeQos](https://cloud.tencent.com/document/api/1385/62090)
 
 ### 第 3 次发布
 
@@ -60195,6 +60387,22 @@
 
 
 ## 企业微信汽车行业版(wav) 版本：2021-01-29
+
+### 第 8 次发布
+
+发布时间：2021-09-30 08:11:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[QueryClueInfoList](https://cloud.tencent.com/document/api/1318/62149)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ClueInfoDetail](https://cloud.tencent.com/document/api/1318/56791#ClueInfoDetail)](https://cloud.tencent.com/document/api/1318/56791#[ClueInfoDetail](https://cloud.tencent.com/document/api/1318/56791#ClueInfoDetail))
 
 ### 第 7 次发布
 

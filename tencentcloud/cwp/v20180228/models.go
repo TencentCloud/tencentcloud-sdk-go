@@ -11849,12 +11849,6 @@ func (r *DescribeWebPageServiceInfoResponse) FromJsonString(s string) error {
 type EditBashRulesRequest struct {
 	*tchttp.BaseRequest
 
-	// 规则名称
-	Name *string `json:"Name,omitempty" name:"Name"`
-
-	// 正则表达式
-	Rule *string `json:"Rule,omitempty" name:"Rule"`
-
 	// 规则ID（新增时不填）
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
@@ -11864,8 +11858,14 @@ type EditBashRulesRequest struct {
 	// 主机IP
 	HostIp *string `json:"HostIp,omitempty" name:"HostIp"`
 
+	// 规则名称，编辑时不可修改规则名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
 	// 危险等级(0:无，1: 高危 2:中危 3: 低危)
 	Level *uint64 `json:"Level,omitempty" name:"Level"`
+
+	// 正则表达式 ，编辑时不可修改正则表达式，需要对内容QueryEscape后再base64
+	Rule *string `json:"Rule,omitempty" name:"Rule"`
 
 	// 是否全局规则(默认否)：1-全局，0-非全局
 	IsGlobal *uint64 `json:"IsGlobal,omitempty" name:"IsGlobal"`
@@ -11892,12 +11892,12 @@ func (r *EditBashRulesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Name")
-	delete(f, "Rule")
 	delete(f, "Id")
 	delete(f, "Uuids")
 	delete(f, "HostIp")
+	delete(f, "Name")
 	delete(f, "Level")
+	delete(f, "Rule")
 	delete(f, "IsGlobal")
 	delete(f, "White")
 	delete(f, "EventId")
@@ -14014,6 +14014,22 @@ type MalwareInfo struct {
 
 	// 参考链接
 	Reference *string `json:"Reference,omitempty" name:"Reference"`
+
+	// 外网ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
+
+	// 进程树 json  pid:进程id，exe:文件路径 ，account:进程所属用组和用户 ,cmdline:执行命令，ssh_service: SSH服务ip, ssh_soure:登录源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PsTree *string `json:"PsTree,omitempty" name:"PsTree"`
+
+	// 主机在线状态 OFFLINE  ONLINE
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineStatus *string `json:"MachineStatus,omitempty" name:"MachineStatus"`
+
+	// 状态；4-:待处理，5-已信任，6-已隔离
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
 }
 
 type MalwareRisk struct {
@@ -15353,6 +15369,14 @@ type RiskDnsList struct {
 
 	// 标签特性
 	Tags []*string `json:"Tags,omitempty" name:"Tags"`
+
+	// 外网ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
+
+	// 主机在线状态 OFFLINE  ONLINE
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineStatus *string `json:"MachineStatus,omitempty" name:"MachineStatus"`
 }
 
 type ScanAssetRequest struct {

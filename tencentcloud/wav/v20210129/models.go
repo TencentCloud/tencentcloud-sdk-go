@@ -233,6 +233,51 @@ type ChatArchivingMsgTypeVideo struct {
 	CosKey *string `json:"CosKey,omitempty" name:"CosKey"`
 }
 
+type ClueInfoDetail struct {
+
+	// 线索id，线索唯一识别编码
+	ClueId *string `json:"ClueId,omitempty" name:"ClueId"`
+
+	// 接待客户经销商顾问所属组织id,多个组织使用逗号分割
+	DealerId *string `json:"DealerId,omitempty" name:"DealerId"`
+
+	// 线索获取时间，用户添加企业微信时间，单位是秒
+	EnquireTime *uint64 `json:"EnquireTime,omitempty" name:"EnquireTime"`
+
+	// 客户在微信生态中唯一识别码
+	UnionId *string `json:"UnionId,omitempty" name:"UnionId"`
+
+	// 微信昵称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 联系方式
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+
+	// 车系编号
+	SeriesCode *string `json:"SeriesCode,omitempty" name:"SeriesCode"`
+
+	// 车型编号
+	ModelCode *string `json:"ModelCode,omitempty" name:"ModelCode"`
+
+	// 省份编号
+	ProvinceCode *string `json:"ProvinceCode,omitempty" name:"ProvinceCode"`
+
+	// 城市编号
+	CityCode *string `json:"CityCode,omitempty" name:"CityCode"`
+
+	// 顾问名称
+	SalesName *string `json:"SalesName,omitempty" name:"SalesName"`
+
+	// 顾问电话
+	SalesPhone *string `json:"SalesPhone,omitempty" name:"SalesPhone"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 标签
+	TagList []*string `json:"TagList,omitempty" name:"TagList"`
+}
+
 type CreateChannelCodeRequest struct {
 	*tchttp.BaseRequest
 
@@ -856,6 +901,68 @@ func (r *QueryChatArchivingListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryChatArchivingListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryClueInfoListRequest struct {
+	*tchttp.BaseRequest
+
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *QueryClueInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryClueInfoListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Cursor")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryClueInfoListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryClueInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 线索信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PageData []*ClueInfoDetail `json:"PageData,omitempty" name:"PageData"`
+
+		// 分页游标，下次调用带上该值，则从当前的位置继续往后拉，以实现增量拉取。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
+
+		// 是否还有更多数据。0-否；1-是。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		HasMore *uint64 `json:"HasMore,omitempty" name:"HasMore"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryClueInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryClueInfoListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

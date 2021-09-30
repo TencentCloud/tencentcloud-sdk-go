@@ -545,6 +545,42 @@ func (c *Client) DescribeDiskOperationLogs(request *DescribeDiskOperationLogsReq
     return
 }
 
+func NewDescribeDiskStoragePoolRequest() (request *DescribeDiskStoragePoolRequest) {
+    request = &DescribeDiskStoragePoolRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cbs", APIVersion, "DescribeDiskStoragePool")
+    return
+}
+
+func NewDescribeDiskStoragePoolResponse() (response *DescribeDiskStoragePoolResponse) {
+    response = &DescribeDiskStoragePoolResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDiskStoragePool
+// 本接口（DescribeDiskStoragePool）查询用户的云硬盘独享集群列表。
+//
+// 
+//
+// * 可以根据独享集群ID(CdcId)、集群区域名(zone)类型等信息来查询和过滤云硬盘独享集群详细信息，不同条件之间为与(AND)的关系，过滤信息详细请见过滤器`Filter`。
+//
+// * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的云硬盘独享集群列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeDiskStoragePool(request *DescribeDiskStoragePoolRequest) (response *DescribeDiskStoragePoolResponse, err error) {
+    if request == nil {
+        request = NewDescribeDiskStoragePoolRequest()
+    }
+    response = NewDescribeDiskStoragePoolResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDisksRequest() (request *DescribeDisksRequest) {
     request = &DescribeDisksRequest{
         BaseRequest: &tchttp.BaseRequest{},

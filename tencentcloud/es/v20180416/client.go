@@ -453,6 +453,47 @@ func (c *Client) UpdateInstance(request *UpdateInstanceRequest) (response *Updat
     return
 }
 
+func NewUpdateJdkRequest() (request *UpdateJdkRequest) {
+    request = &UpdateJdkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("es", APIVersion, "UpdateJdk")
+    return
+}
+
+func NewUpdateJdkResponse() (response *UpdateJdkResponse) {
+    response = &UpdateJdkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateJdk
+// 更新实例Jdk配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  FAILEDOPERATION_ERRORCLUSTERSTATENOREPLICATION = "FailedOperation.ErrorClusterStateNoReplication"
+//  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateJdk(request *UpdateJdkRequest) (response *UpdateJdkResponse, err error) {
+    if request == nil {
+        request = NewUpdateJdkRequest()
+    }
+    response = NewUpdateJdkResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdatePluginsRequest() (request *UpdatePluginsRequest) {
     request = &UpdatePluginsRequest{
         BaseRequest: &tchttp.BaseRequest{},

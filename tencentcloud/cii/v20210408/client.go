@@ -78,23 +78,58 @@ func (c *Client) CreateStructureTask(request *CreateStructureTaskRequest) (respo
     return
 }
 
-func NewCreateStructureTaskTestRequest() (request *CreateStructureTaskTestRequest) {
-    request = &CreateStructureTaskTestRequest{
+func NewCreateUnderwriteTaskByIdRequest() (request *CreateUnderwriteTaskByIdRequest) {
+    request = &CreateUnderwriteTaskByIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
-    request.Init().WithApiInfo("cii", APIVersion, "CreateStructureTaskTest")
+    request.Init().WithApiInfo("cii", APIVersion, "CreateUnderwriteTaskById")
     return
 }
 
-func NewCreateStructureTaskTestResponse() (response *CreateStructureTaskTestResponse) {
-    response = &CreateStructureTaskTestResponse{
+func NewCreateUnderwriteTaskByIdResponse() (response *CreateUnderwriteTaskByIdResponse) {
+    response = &CreateUnderwriteTaskByIdResponse{
         BaseResponse: &tchttp.BaseResponse{},
     }
     return
 }
 
-// CreateStructureTaskTest
-// 本接口(CreateStructureTaskTest)基于提供的客户及保单信息，创建并启动结构化识别任务。用于路由到测试环境。
+// CreateUnderwriteTaskById
+// 本接口(CreateUnderwriteTaskById)用于根据结构化任务ID创建核保任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreateUnderwriteTaskById(request *CreateUnderwriteTaskByIdRequest) (response *CreateUnderwriteTaskByIdResponse, err error) {
+    if request == nil {
+        request = NewCreateUnderwriteTaskByIdRequest()
+    }
+    response = NewCreateUnderwriteTaskByIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMachineUnderwriteRequest() (request *DescribeMachineUnderwriteRequest) {
+    request = &DescribeMachineUnderwriteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cii", APIVersion, "DescribeMachineUnderwrite")
+    return
+}
+
+func NewDescribeMachineUnderwriteResponse() (response *DescribeMachineUnderwriteResponse) {
+    response = &DescribeMachineUnderwriteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeMachineUnderwrite
+// 本接口(DescribeMachineUnderwrite)用于查询机器核保任务数据
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -102,13 +137,11 @@ func NewCreateStructureTaskTestResponse() (response *CreateStructureTaskTestResp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-func (c *Client) CreateStructureTaskTest(request *CreateStructureTaskTestRequest) (response *CreateStructureTaskTestResponse, err error) {
+func (c *Client) DescribeMachineUnderwrite(request *DescribeMachineUnderwriteRequest) (response *DescribeMachineUnderwriteResponse, err error) {
     if request == nil {
-        request = NewCreateStructureTaskTestRequest()
+        request = NewDescribeMachineUnderwriteRequest()
     }
-    response = NewCreateStructureTaskTestResponse()
+    response = NewDescribeMachineUnderwriteResponse()
     err = c.Send(request, response)
     return
 }
@@ -140,6 +173,37 @@ func (c *Client) DescribeStructCompareData(request *DescribeStructCompareDataReq
         request = NewDescribeStructCompareDataRequest()
     }
     response = NewDescribeStructCompareDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStructureDifferenceRequest() (request *DescribeStructureDifferenceRequest) {
+    request = &DescribeStructureDifferenceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cii", APIVersion, "DescribeStructureDifference")
+    return
+}
+
+func NewDescribeStructureDifferenceResponse() (response *DescribeStructureDifferenceResponse) {
+    response = &DescribeStructureDifferenceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeStructureDifference
+// 结构化复核差异查询接口，对比结构化复核前后数据差异，返回差异的部分。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeStructureDifference(request *DescribeStructureDifferenceRequest) (response *DescribeStructureDifferenceResponse, err error) {
+    if request == nil {
+        request = NewDescribeStructureDifferenceRequest()
+    }
+    response = NewDescribeStructureDifferenceResponse()
     err = c.Send(request, response)
     return
 }
@@ -209,40 +273,6 @@ func (c *Client) DescribeStructureTaskResult(request *DescribeStructureTaskResul
         request = NewDescribeStructureTaskResultRequest()
     }
     response = NewDescribeStructureTaskResultResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeStructureTaskResultTestRequest() (request *DescribeStructureTaskResultTestRequest) {
-    request = &DescribeStructureTaskResultTestRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cii", APIVersion, "DescribeStructureTaskResultTest")
-    return
-}
-
-func NewDescribeStructureTaskResultTestResponse() (response *DescribeStructureTaskResultTestResponse) {
-    response = &DescribeStructureTaskResultTestResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeStructureTaskResultTest
-// 依据任务ID获取结构化结果接口，该接口用于路由到测试环境。
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-func (c *Client) DescribeStructureTaskResultTest(request *DescribeStructureTaskResultTestRequest) (response *DescribeStructureTaskResultTestResponse, err error) {
-    if request == nil {
-        request = NewDescribeStructureTaskResultTestRequest()
-    }
-    response = NewDescribeStructureTaskResultTestResponse()
     err = c.Send(request, response)
     return
 }

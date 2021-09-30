@@ -165,79 +165,123 @@ func (r *CreateStructureTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type CreateStructureTaskTestRequest struct {
+type CreateUnderwriteTaskByIdRequest struct {
 	*tchttp.BaseRequest
 
-	// 服务类型
-	// Structured 仅结构化
-	// Underwrite 结构化+核保
-	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+	// 主任务ID数组，
+	MainTaskIds []*string `json:"MainTaskIds,omitempty" name:"MainTaskIds"`
 
-	// 创建任务时可以上传多个报告，后台生成多个识别子任务，子任务的详细信息
-	TaskInfos []*CreateStructureTaskInfo `json:"TaskInfos,omitempty" name:"TaskInfos"`
-
-	// 保单号
-	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
-
-	// 核保触发方式
-	// Auto 自动
-	// Manual 手动
-	TriggerType *string `json:"TriggerType,omitempty" name:"TriggerType"`
-
-	// 险种，如果是体检报告类型，此参数是必填，类型说明如下：
-	// CriticalDiseaseInsurance:重疾险
-	// LifeInsurance：寿险
-	// AccidentInsurance：意外险
-	InsuranceTypes []*string `json:"InsuranceTypes,omitempty" name:"InsuranceTypes"`
-
-	// 回调地址，接收Post请求传送结果
+	// 回调地址，可不传（提供轮询机制）。
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 }
 
-func (r *CreateStructureTaskTestRequest) ToJsonString() string {
+func (r *CreateUnderwriteTaskByIdRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
-func (r *CreateStructureTaskTestRequest) FromJsonString(s string) error {
+func (r *CreateUnderwriteTaskByIdRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "ServiceType")
-	delete(f, "TaskInfos")
-	delete(f, "PolicyId")
-	delete(f, "TriggerType")
-	delete(f, "InsuranceTypes")
+	delete(f, "MainTaskIds")
 	delete(f, "CallbackUrl")
 	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateStructureTaskTestRequest has unknown keys!", "")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUnderwriteTaskByIdRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type CreateStructureTaskTestResponse struct {
+type CreateUnderwriteTaskByIdResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 创建的主任务号，用于查询结果
-		MainTaskId *string `json:"MainTaskId,omitempty" name:"MainTaskId"`
+		// 核保任务ID数据
+		UnderwriteTaskIds []*string `json:"UnderwriteTaskIds,omitempty" name:"UnderwriteTaskIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
-func (r *CreateStructureTaskTestResponse) ToJsonString() string {
+func (r *CreateUnderwriteTaskByIdResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
-func (r *CreateStructureTaskTestResponse) FromJsonString(s string) error {
+func (r *CreateUnderwriteTaskByIdResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMachineUnderwriteRequest struct {
+	*tchttp.BaseRequest
+
+	// 核保任务ID
+	UnderwriteTaskId *string `json:"UnderwriteTaskId,omitempty" name:"UnderwriteTaskId"`
+}
+
+func (r *DescribeMachineUnderwriteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMachineUnderwriteRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UnderwriteTaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMachineUnderwriteRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMachineUnderwriteResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 腾讯云主账号ID
+		Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+		// 操作人子账户ID
+		SubAccountUin *string `json:"SubAccountUin,omitempty" name:"SubAccountUin"`
+
+		// 保单ID
+		PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+		// 主任务ID
+		MainTaskId *string `json:"MainTaskId,omitempty" name:"MainTaskId"`
+
+		// 核保任务ID
+		UnderwriteTaskId *string `json:"UnderwriteTaskId,omitempty" name:"UnderwriteTaskId"`
+
+		// 状态码
+		Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+		// 机器核保结果
+		UnderwriteResults []*MachineUnderwriteOutput `json:"UnderwriteResults,omitempty" name:"UnderwriteResults"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeMachineUnderwriteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMachineUnderwriteResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -329,6 +373,69 @@ func (r *DescribeStructCompareDataResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeStructCompareDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeStructureDifferenceRequest struct {
+	*tchttp.BaseRequest
+
+	// 主任务号
+	MainTaskId *string `json:"MainTaskId,omitempty" name:"MainTaskId"`
+
+	// 子任务号
+	SubTaskId *string `json:"SubTaskId,omitempty" name:"SubTaskId"`
+}
+
+func (r *DescribeStructureDifferenceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStructureDifferenceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MainTaskId")
+	delete(f, "SubTaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStructureDifferenceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeStructureDifferenceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 主任务号
+		MainTaskId *string `json:"MainTaskId,omitempty" name:"MainTaskId"`
+
+		// 结果状态：
+	// 0：返回成功
+	// 1：结果未生成
+	// 2：结果生成失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 差异的结果数组
+		Results []*PerStructDifference `json:"Results,omitempty" name:"Results"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeStructureDifferenceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStructureDifferenceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -446,60 +553,61 @@ func (r *DescribeStructureTaskResultResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeStructureTaskResultTestRequest struct {
-	*tchttp.BaseRequest
+type InsuranceResult struct {
 
-	// 结构化任务ID
-	MainTaskId *string `json:"MainTaskId,omitempty" name:"MainTaskId"`
+	// 险种
+	InsuranceType *string `json:"InsuranceType,omitempty" name:"InsuranceType"`
+
+	// 对应险种的机器核保结果
+	Result []*MachinePredict `json:"Result,omitempty" name:"Result"`
 }
 
-func (r *DescribeStructureTaskResultTestRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
+type MachinePredict struct {
+
+	// 核保引擎名称
+	Title *string `json:"Title,omitempty" name:"Title"`
+
+	// 核保结论
+	Conclusion *string `json:"Conclusion,omitempty" name:"Conclusion"`
+
+	// AI决策树解释
+	Explanation []*UnderwriteItem `json:"Explanation,omitempty" name:"Explanation"`
+
+	// 疾病指标
+	Disease []*UnderwriteItem `json:"Disease,omitempty" name:"Disease"`
+
+	// 检查异常
+	Laboratory []*UnderwriteItem `json:"Laboratory,omitempty" name:"Laboratory"`
 }
 
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeStructureTaskResultTestRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "MainTaskId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStructureTaskResultTestRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
+type MachineUnderwriteOutput struct {
+
+	// 客户号
+	CustomerId *string `json:"CustomerId,omitempty" name:"CustomerId"`
+
+	// 客户姓名
+	CustomerName *string `json:"CustomerName,omitempty" name:"CustomerName"`
+
+	// 各个险种的结果
+	Results []*InsuranceResult `json:"Results,omitempty" name:"Results"`
 }
 
-type DescribeStructureTaskResultTestResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
+type PerStructDifference struct {
 
-		// 结果状态：
-	// 0：返回成功
-	// 1：结果未生成
-	// 2：结果生成失败
-		Status *uint64 `json:"Status,omitempty" name:"Status"`
+	// 子任务ID
+	SubTaskId *string `json:"SubTaskId,omitempty" name:"SubTaskId"`
 
-		// 结构化识别结果数组，每个数组元素对应一个图片的结构化结果，顺序和输入参数的ImageList或FileList对应。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Results []*ResultObject `json:"Results,omitempty" name:"Results"`
+	// 任务类型
+	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
+	// 修改的项
+	ModifyItems []*StructureModifyItem `json:"ModifyItems,omitempty" name:"ModifyItems"`
 
-func (r *DescribeStructureTaskResultTestResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
+	// 新增的项
+	NewItems []*StructureOneItem `json:"NewItems,omitempty" name:"NewItems"`
 
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeStructureTaskResultTestResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
+	// 删除的项
+	RemoveItems []*StructureOneItem `json:"RemoveItems,omitempty" name:"RemoveItems"`
 }
 
 type ResultObject struct {
@@ -530,6 +638,32 @@ type ReviewDataTaskInfo struct {
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 }
 
+type StructureModifyItem struct {
+
+	// 修改的字段的路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 机器结果的值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Machine *string `json:"Machine,omitempty" name:"Machine"`
+
+	// 人工结果的值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Manual *string `json:"Manual,omitempty" name:"Manual"`
+}
+
+type StructureOneItem struct {
+
+	// 新字段的路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 字段的值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type StructureResultObject struct {
 
 	// 0表示正常返回
@@ -543,4 +677,16 @@ type StructureResultObject struct {
 
 	// 子任务ID
 	SubTaskId *string `json:"SubTaskId,omitempty" name:"SubTaskId"`
+}
+
+type UnderwriteItem struct {
+
+	// 字段名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 结果
+	Result *string `json:"Result,omitempty" name:"Result"`
+
+	// 风险值或者说明
+	Value *string `json:"Value,omitempty" name:"Value"`
 }

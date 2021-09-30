@@ -262,6 +262,40 @@ func (c *Client) QueryChatArchivingList(request *QueryChatArchivingListRequest) 
     return
 }
 
+func NewQueryClueInfoListRequest() (request *QueryClueInfoListRequest) {
+    request = &QueryClueInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("wav", APIVersion, "QueryClueInfoList")
+    return
+}
+
+func NewQueryClueInfoListResponse() (response *QueryClueInfoListResponse) {
+    response = &QueryClueInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryClueInfoList
+// 企业可通过此接口获取线索列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) QueryClueInfoList(request *QueryClueInfoListRequest) (response *QueryClueInfoListResponse, err error) {
+    if request == nil {
+        request = NewQueryClueInfoListRequest()
+    }
+    response = NewQueryClueInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryExternalContactDetailRequest() (request *QueryExternalContactDetailRequest) {
     request = &QueryExternalContactDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},

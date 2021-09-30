@@ -694,6 +694,10 @@ type SignUrlInfo struct {
 	// 签署链接对应流程Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 企业经办人 用户在渠道的编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 }
 
 type SyncFailReason struct {
