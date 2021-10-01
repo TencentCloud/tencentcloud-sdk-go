@@ -1,31 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云硬盘(cbs) 版本：2017-03-12
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
-### 第 32 次发布
+### 第 31 次发布
 
-发布时间：2021-09-30 08:01:36
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeDiskStoragePool](https://cloud.tencent.com/document/api/362/62143)
-
-新增数据结构：
-
-* [Cdc](https://cloud.tencent.com/document/api/362/15669#Cdc)
-* [CdcSize](https://cloud.tencent.com/document/api/362/15669#CdcSize)
-
-
-
-## 智能保险助手(cii) 版本：2021-04-08
-
-### 第 6 次发布
-
-发布时间：2021-09-30 08:02:25
+发布时间：2021-10-01 08:11:47
 
 本次发布包含了以下内容：
 
@@ -33,117 +12,7 @@
 
 新增接口：
 
-* [CreateUnderwriteTaskById](https://cloud.tencent.com/document/api/1368/62147)
-* [DescribeMachineUnderwrite](https://cloud.tencent.com/document/api/1368/62146)
-* [DescribeStructureDifference](https://cloud.tencent.com/document/api/1368/62144)
-
-<font color="#dd0000">**删除接口**：</font>
-
-* CreateStructureTaskTest
-* DescribeStructureTaskResultTest
-
-新增数据结构：
-
-* [InsuranceResult](https://cloud.tencent.com/document/api/1368/56853#InsuranceResult)
-* [MachinePredict](https://cloud.tencent.com/document/api/1368/56853#MachinePredict)
-* [MachineUnderwriteOutput](https://cloud.tencent.com/document/api/1368/56853#MachineUnderwriteOutput)
-* [PerStructDifference](https://cloud.tencent.com/document/api/1368/56853#PerStructDifference)
-* [StructureModifyItem](https://cloud.tencent.com/document/api/1368/56853#StructureModifyItem)
-* [StructureOneItem](https://cloud.tencent.com/document/api/1368/56853#StructureOneItem)
-* [UnderwriteItem](https://cloud.tencent.com/document/api/1368/56853#UnderwriteItem)
-
-
-
-## 智能保险助手(cii) 版本：2020-12-10
-
-
-
-## 主机安全(cwp) 版本：2018-02-28
-
-### 第 30 次发布
-
-发布时间：2021-09-30 08:03:28
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [EditBashRules](https://cloud.tencent.com/document/api/296/58239)
-
-	* <font color="#dd0000">**修改入参**：</font>Name, Rule
-
-
-修改数据结构：
-
-* [MalwareInfo](https://cloud.tencent.com/document/api/296/19867#MalwareInfo)
-
-	* 新增成员：MachineWanIp, PsTree, MachineStatus, Status
-
-* [RiskDnsList](https://cloud.tencent.com/document/api/296/19867#RiskDnsList)
-
-	* 新增成员：MachineWanIp, MachineStatus
-
-
-
-
-## Elasticsearch Service(es) 版本：2018-04-16
-
-### 第 19 次发布
-
-发布时间：2021-09-30 08:05:14
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [UpdateJdk](https://cloud.tencent.com/document/api/845/62148)
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
-
-### 第 3 次发布
-
-发布时间：2021-09-30 08:05:19
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [SignUrlInfo](https://cloud.tencent.com/document/api/1420/61525#SignUrlInfo)
-
-	* 新增成员：OpenId
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
-
-
-
-## 企业微信汽车行业版(wav) 版本：2021-01-29
-
-### 第 8 次发布
-
-发布时间：2021-09-30 08:11:50
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [QueryClueInfoList](https://cloud.tencent.com/document/api/1318/62149)
-
-新增数据结构：
-
-* [ClueInfoDetail](https://cloud.tencent.com/document/api/1318/56791#ClueInfoDetail)
+* [CreateTopicPolicy](https://cloud.tencent.com/document/api/1081/62259)
 
 
 
@@ -6997,12 +6866,12 @@
 
 新增接口：
 
-* [[DescribeDiskStoragePool](https://cloud.tencent.com/document/api/362/62143)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDiskStoragePool](https://cloud.tencent.com/document/api/362/62143)
 
 新增数据结构：
 
-* [[Cdc](https://cloud.tencent.com/document/api/362/15669#Cdc)](https://cloud.tencent.com/document/api/362/15669#[Cdc](https://cloud.tencent.com/document/api/362/15669#Cdc))
-* [[CdcSize](https://cloud.tencent.com/document/api/362/15669#CdcSize)](https://cloud.tencent.com/document/api/362/15669#[CdcSize](https://cloud.tencent.com/document/api/362/15669#CdcSize))
+* [Cdc](https://cloud.tencent.com/document/api/362/15669#Cdc)
+* [CdcSize](https://cloud.tencent.com/document/api/362/15669#CdcSize)
 
 ### 第 31 次发布
 
@@ -11874,9 +11743,9 @@
 
 新增接口：
 
-* [[CreateUnderwriteTaskById](https://cloud.tencent.com/document/api/1368/62147)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeMachineUnderwrite](https://cloud.tencent.com/document/api/1368/62146)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeStructureDifference](https://cloud.tencent.com/document/api/1368/62144)](https://cloud.tencent.com/document/api/#/#)
+* [CreateUnderwriteTaskById](https://cloud.tencent.com/document/api/1368/62147)
+* [DescribeMachineUnderwrite](https://cloud.tencent.com/document/api/1368/62146)
+* [DescribeStructureDifference](https://cloud.tencent.com/document/api/1368/62144)
 
 <font color="#dd0000">**删除接口**：</font>
 
@@ -11885,13 +11754,13 @@
 
 新增数据结构：
 
-* [[InsuranceResult](https://cloud.tencent.com/document/api/1368/56853#InsuranceResult)](https://cloud.tencent.com/document/api/1368/56853#[InsuranceResult](https://cloud.tencent.com/document/api/1368/56853#InsuranceResult))
-* [[MachinePredict](https://cloud.tencent.com/document/api/1368/56853#MachinePredict)](https://cloud.tencent.com/document/api/1368/56853#[MachinePredict](https://cloud.tencent.com/document/api/1368/56853#MachinePredict))
-* [[MachineUnderwriteOutput](https://cloud.tencent.com/document/api/1368/56853#MachineUnderwriteOutput)](https://cloud.tencent.com/document/api/1368/56853#[MachineUnderwriteOutput](https://cloud.tencent.com/document/api/1368/56853#MachineUnderwriteOutput))
-* [[PerStructDifference](https://cloud.tencent.com/document/api/1368/56853#PerStructDifference)](https://cloud.tencent.com/document/api/1368/56853#[PerStructDifference](https://cloud.tencent.com/document/api/1368/56853#PerStructDifference))
-* [[StructureModifyItem](https://cloud.tencent.com/document/api/1368/56853#StructureModifyItem)](https://cloud.tencent.com/document/api/1368/56853#[StructureModifyItem](https://cloud.tencent.com/document/api/1368/56853#StructureModifyItem))
-* [[StructureOneItem](https://cloud.tencent.com/document/api/1368/56853#StructureOneItem)](https://cloud.tencent.com/document/api/1368/56853#[StructureOneItem](https://cloud.tencent.com/document/api/1368/56853#StructureOneItem))
-* [[UnderwriteItem](https://cloud.tencent.com/document/api/1368/56853#UnderwriteItem)](https://cloud.tencent.com/document/api/1368/56853#[UnderwriteItem](https://cloud.tencent.com/document/api/1368/56853#UnderwriteItem))
+* [InsuranceResult](https://cloud.tencent.com/document/api/1368/56853#InsuranceResult)
+* [MachinePredict](https://cloud.tencent.com/document/api/1368/56853#MachinePredict)
+* [MachineUnderwriteOutput](https://cloud.tencent.com/document/api/1368/56853#MachineUnderwriteOutput)
+* [PerStructDifference](https://cloud.tencent.com/document/api/1368/56853#PerStructDifference)
+* [StructureModifyItem](https://cloud.tencent.com/document/api/1368/56853#StructureModifyItem)
+* [StructureOneItem](https://cloud.tencent.com/document/api/1368/56853#StructureOneItem)
+* [UnderwriteItem](https://cloud.tencent.com/document/api/1368/56853#UnderwriteItem)
 
 ### 第 5 次发布
 
@@ -25224,7 +25093,7 @@
 
 新增接口：
 
-* [[UpdateJdk](https://cloud.tencent.com/document/api/845/62148)](https://cloud.tencent.com/document/api/#/#)
+* [UpdateJdk](https://cloud.tencent.com/document/api/845/62148)
 
 ### 第 18 次发布
 
@@ -30935,6 +30804,18 @@
 
 
 ## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 31 次发布
+
+发布时间：2021-10-01 08:11:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateTopicPolicy](https://cloud.tencent.com/document/api/1081/62259)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 30 次发布
 
@@ -60398,11 +60279,11 @@
 
 新增接口：
 
-* [[QueryClueInfoList](https://cloud.tencent.com/document/api/1318/62149)](https://cloud.tencent.com/document/api/#/#)
+* [QueryClueInfoList](https://cloud.tencent.com/document/api/1318/62149)
 
 新增数据结构：
 
-* [[ClueInfoDetail](https://cloud.tencent.com/document/api/1318/56791#ClueInfoDetail)](https://cloud.tencent.com/document/api/1318/56791#[ClueInfoDetail](https://cloud.tencent.com/document/api/1318/56791#ClueInfoDetail))
+* [ClueInfoDetail](https://cloud.tencent.com/document/api/1318/56791#ClueInfoDetail)
 
 ### 第 7 次发布
 

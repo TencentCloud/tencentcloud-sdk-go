@@ -380,6 +380,39 @@ func (c *Client) CreateStudioProduct(request *CreateStudioProductRequest) (respo
     return
 }
 
+func NewCreateTopicPolicyRequest() (request *CreateTopicPolicyRequest) {
+    request = &CreateTopicPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateTopicPolicy")
+    return
+}
+
+func NewCreateTopicPolicyResponse() (response *CreateTopicPolicyResponse) {
+    response = &CreateTopicPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateTopicPolicy
+// 本接口（CreateTopicPolicy）用于创建一个Topic 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TOPICPOLICYALREADYEXIST = "InvalidParameterValue.TopicPolicyAlreadyExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+func (c *Client) CreateTopicPolicy(request *CreateTopicPolicyRequest) (response *CreateTopicPolicyResponse, err error) {
+    if request == nil {
+        request = NewCreateTopicPolicyRequest()
+    }
+    response = NewCreateTopicPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTopicRuleRequest() (request *CreateTopicRuleRequest) {
     request = &CreateTopicRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},

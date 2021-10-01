@@ -90,13 +90,13 @@
 | ims | [图片内容检测](https://cloud.tencent.com/document/product/1125) | 2021-09-16 08:01:45 |
 | iot | [加速物联网套件](https://cloud.tencent.com/document/product/568) | 2021-09-16 08:07:49 |
 | iotcloud | [物联网通信](https://cloud.tencent.com/document/product/634) | 2021-07-21 08:06:35 |
-| iotexplorer | [物联网开发平台](https://cloud.tencent.com/document/product/1081) | 2021-09-17 08:09:40 |
+| iotexplorer | [物联网开发平台](https://cloud.tencent.com/document/product/1081) | 2021-10-01 08:11:47 |
 | iottid | [物联网设备身份认证](https://cloud.tencent.com/document/product/1086) | 2021-09-16 08:08:06 |
 | iotvideo | [物联网智能视频服务](https://cloud.tencent.com/document/product/1131) | 2021-09-16 08:03:15 |
 | iotvideoindustry | [物联网智能视频服务（行业版）](https://cloud.tencent.com/document/product/1361) | 2021-09-16 08:01:15 |
 | kms | [密钥管理系统](https://cloud.tencent.com/document/product/573) | 2021-09-16 08:08:09 |
 | lighthouse | [轻量应用服务器](https://cloud.tencent.com/document/product/1207) | 2021-09-16 08:02:08 |
-| live | [云直播](https://cloud.tencent.com/document/product/267) | 2021-09-24 09:59:10 |
+| live | [云直播](https://cloud.tencent.com/document/product/267) | 2021-10-01 08:12:23 |
 | lp | [登录保护](https://cloud.tencent.com/document/product/1190) | 2021-09-16 08:02:23 |
 | mariadb | [云数据库 MariaDB](https://cloud.tencent.com/document/product/237) | 2021-09-23 08:10:23 |
 | market | [云市场](https://cloud.tencent.com/document/product/306) | 2021-09-16 08:00:25 |

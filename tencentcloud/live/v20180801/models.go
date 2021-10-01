@@ -4003,8 +4003,8 @@ type DescribeLivePackageInfoRequest struct {
 	*tchttp.BaseRequest
 
 	// 包类型，可选值：
-	// 0：流量包；
-	// 1：转码包。
+	// 0：流量包
+	// 1：转码包
 	// 2: 连麦包。
 	PackageType *int64 `json:"PackageType,omitempty" name:"PackageType"`
 
@@ -4012,17 +4012,17 @@ type DescribeLivePackageInfoRequest struct {
 	// 1. BuyTimeDesc： 最新购买的排在最前面
 	// 2. BuyTimeAsc： 最老购买的排在最前面
 	// 3. ExpireTimeDesc： 最后过期的排在最前面
-	// 4. ExpireTimeAsc：最先过期的排在最前面
+	// 4. ExpireTimeAsc：最先过期的排在最前面。
 	// 
 	// 注意：
-	// 1. PackageType 为 2（连麦包） 的时候，不支持 3、4 排序
+	// 1. PackageType 为 2（连麦包） 的时候，不支持 3、4 排序。
 	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
 
 	// 取得第几页的数据，和 PageSize 同时传递才会生效。
 	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
 
 	// 分页大小，和 PageNum 同时传递才会生效。
-	// 取值：10 ～ 100 之间的任意整数
+	// 取值：10 ～ 100 之间的任意整数。
 	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
 }
 
@@ -4065,23 +4065,23 @@ type DescribeLivePackageInfoResponse struct {
 	// 204: 日结流量
 	// 205: 日结时长
 	// 206: 月结时长
-	// 304: 日结流量
+	// 304: 日结流量。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		PackageBillMode *int64 `json:"PackageBillMode,omitempty" name:"PackageBillMode"`
 
-		// 总页数
+		// 总页数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		TotalPage *int64 `json:"TotalPage,omitempty" name:"TotalPage"`
 
-		// 数据总条数
+		// 数据总条数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		TotalNum *int64 `json:"TotalNum,omitempty" name:"TotalNum"`
 
-		// 当前页数
+		// 当前页数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
 
-		// 当前每页数量
+		// 当前每页数量。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
 
