@@ -1454,6 +1454,38 @@ func (c *Client) DescribeClusterAsGroups(request *DescribeClusterAsGroupsRequest
     return
 }
 
+func NewDescribeClusterAuthenticationOptionsRequest() (request *DescribeClusterAuthenticationOptionsRequest) {
+    request = &DescribeClusterAuthenticationOptionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterAuthenticationOptions")
+    return
+}
+
+func NewDescribeClusterAuthenticationOptionsResponse() (response *DescribeClusterAuthenticationOptionsResponse) {
+    response = &DescribeClusterAuthenticationOptionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeClusterAuthenticationOptions
+// 查看集群认证配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+func (c *Client) DescribeClusterAuthenticationOptions(request *DescribeClusterAuthenticationOptionsRequest) (response *DescribeClusterAuthenticationOptionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterAuthenticationOptionsRequest()
+    }
+    response = NewDescribeClusterAuthenticationOptionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterCommonNamesRequest() (request *DescribeClusterCommonNamesRequest) {
     request = &DescribeClusterCommonNamesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2999,6 +3031,38 @@ func (c *Client) ModifyClusterAttribute(request *ModifyClusterAttributeRequest) 
         request = NewModifyClusterAttributeRequest()
     }
     response = NewModifyClusterAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyClusterAuthenticationOptionsRequest() (request *ModifyClusterAuthenticationOptionsRequest) {
+    request = &ModifyClusterAuthenticationOptionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "ModifyClusterAuthenticationOptions")
+    return
+}
+
+func NewModifyClusterAuthenticationOptionsResponse() (response *ModifyClusterAuthenticationOptionsResponse) {
+    response = &ModifyClusterAuthenticationOptionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyClusterAuthenticationOptions
+// 修改集群认证配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+func (c *Client) ModifyClusterAuthenticationOptions(request *ModifyClusterAuthenticationOptionsRequest) (response *ModifyClusterAuthenticationOptionsResponse, err error) {
+    if request == nil {
+        request = NewModifyClusterAuthenticationOptionsRequest()
+    }
+    response = NewModifyClusterAuthenticationOptionsResponse()
     err = c.Send(request, response)
     return
 }

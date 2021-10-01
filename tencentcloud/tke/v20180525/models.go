@@ -2758,6 +2758,60 @@ func (r *DescribeClusterAsGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeClusterAuthenticationOptionsRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribeClusterAuthenticationOptionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterAuthenticationOptionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterAuthenticationOptionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterAuthenticationOptionsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// ServiceAccount认证配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ServiceAccounts *ServiceAccountAuthenticationOptions `json:"ServiceAccounts,omitempty" name:"ServiceAccounts"`
+
+		// 最近一次修改操作结果，返回值可能为：Updating，Success，Failed，TimeOut
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		LatestOperationState *string `json:"LatestOperationState,omitempty" name:"LatestOperationState"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeClusterAuthenticationOptionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterAuthenticationOptionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeClusterCommonNamesRequest struct {
 	*tchttp.BaseRequest
 
@@ -5887,6 +5941,56 @@ func (r *ModifyClusterAttributeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyClusterAuthenticationOptionsRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// ServiceAccount认证配置
+	ServiceAccounts *ServiceAccountAuthenticationOptions `json:"ServiceAccounts,omitempty" name:"ServiceAccounts"`
+}
+
+func (r *ModifyClusterAuthenticationOptionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyClusterAuthenticationOptionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "ServiceAccounts")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterAuthenticationOptionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyClusterAuthenticationOptionsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyClusterAuthenticationOptionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyClusterAuthenticationOptionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyClusterEndpointSPRequest struct {
 	*tchttp.BaseRequest
 
@@ -7003,6 +7107,21 @@ type SecurityContext struct {
 	// 安全能力清单
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Capabilities *Capabilities `json:"Capabilities,omitempty" name:"Capabilities"`
+}
+
+type ServiceAccountAuthenticationOptions struct {
+
+	// service-account-issuer
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Issuer *string `json:"Issuer,omitempty" name:"Issuer"`
+
+	// service-account-jwks-uri
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JWKSURI *string `json:"JWKSURI,omitempty" name:"JWKSURI"`
+
+	// 如果为true，则会自动创建允许匿名用户访问'/.well-known/openid-configuration'和/openid/v1/jwks的rbac规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoCreateDiscoveryAnonymousAuth *bool `json:"AutoCreateDiscoveryAnonymousAuth,omitempty" name:"AutoCreateDiscoveryAnonymousAuth"`
 }
 
 type SetNodePoolNodeProtectionRequest struct {
