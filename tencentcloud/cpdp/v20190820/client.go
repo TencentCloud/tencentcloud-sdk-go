@@ -2543,6 +2543,38 @@ func (c *Client) QueryMerchantOrder(request *QueryMerchantOrderRequest) (respons
     return
 }
 
+func NewQueryMerchantPayWayListRequest() (request *QueryMerchantPayWayListRequest) {
+    request = &QueryMerchantPayWayListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryMerchantPayWayList")
+    return
+}
+
+func NewQueryMerchantPayWayListResponse() (response *QueryMerchantPayWayListResponse) {
+    response = &QueryMerchantPayWayListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryMerchantPayWayList
+// 商户查询已开通的支付方式列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) QueryMerchantPayWayList(request *QueryMerchantPayWayListRequest) (response *QueryMerchantPayWayListResponse, err error) {
+    if request == nil {
+        request = NewQueryMerchantPayWayListRequest()
+    }
+    response = NewQueryMerchantPayWayListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryOrderRequest() (request *QueryOrderRequest) {
     request = &QueryOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -302,6 +302,82 @@ func (c *Client) CreateEnvironment(request *CreateEnvironmentRequest) (response 
     return
 }
 
+func NewCreateEnvironmentRoleRequest() (request *CreateEnvironmentRoleRequest) {
+    request = &CreateEnvironmentRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "CreateEnvironmentRole")
+    return
+}
+
+func NewCreateEnvironmentRoleResponse() (response *CreateEnvironmentRoleResponse) {
+    response = &CreateEnvironmentRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateEnvironmentRole
+// 创建环境角色授权
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATEENVIRONMENTROLE = "FailedOperation.CreateEnvironmentRole"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCEINUSE_ENVIRONMENTROLE = "ResourceInUse.EnvironmentRole"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
+func (c *Client) CreateEnvironmentRole(request *CreateEnvironmentRoleRequest) (response *CreateEnvironmentRoleResponse, err error) {
+    if request == nil {
+        request = NewCreateEnvironmentRoleRequest()
+    }
+    response = NewCreateEnvironmentRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateRoleRequest() (request *CreateRoleRequest) {
+    request = &CreateRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "CreateRole")
+    return
+}
+
+func NewCreateRoleResponse() (response *CreateRoleResponse) {
+    response = &CreateRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateRole
+// 创建角色
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATEROLE = "FailedOperation.CreateRole"
+//  FAILEDOPERATION_CREATESECRETKEY = "FailedOperation.CreateSecretKey"
+//  FAILEDOPERATION_SAVESECRETKEY = "FailedOperation.SaveSecretKey"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCEINUSE_ROLE = "ResourceInUse.Role"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) CreateRole(request *CreateRoleRequest) (response *CreateRoleResponse, err error) {
+    if request == nil {
+        request = NewCreateRoleRequest()
+    }
+    response = NewCreateRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSubscriptionRequest() (request *CreateSubscriptionRequest) {
     request = &CreateSubscriptionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -505,6 +581,39 @@ func (c *Client) DeleteCmqTopic(request *DeleteCmqTopicRequest) (response *Delet
     return
 }
 
+func NewDeleteEnvironmentRolesRequest() (request *DeleteEnvironmentRolesRequest) {
+    request = &DeleteEnvironmentRolesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DeleteEnvironmentRoles")
+    return
+}
+
+func NewDeleteEnvironmentRolesResponse() (response *DeleteEnvironmentRolesResponse) {
+    response = &DeleteEnvironmentRolesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteEnvironmentRoles
+// 删除环境角色授权。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DELETEENVIRONMENTROLES = "FailedOperation.DeleteEnvironmentRoles"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_ENVIRONMENTROLE = "ResourceNotFound.EnvironmentRole"
+func (c *Client) DeleteEnvironmentRoles(request *DeleteEnvironmentRolesRequest) (response *DeleteEnvironmentRolesResponse, err error) {
+    if request == nil {
+        request = NewDeleteEnvironmentRolesRequest()
+    }
+    response = NewDeleteEnvironmentRolesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteEnvironmentsRequest() (request *DeleteEnvironmentsRequest) {
     request = &DeleteEnvironmentsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -540,6 +649,41 @@ func (c *Client) DeleteEnvironments(request *DeleteEnvironmentsRequest) (respons
         request = NewDeleteEnvironmentsRequest()
     }
     response = NewDeleteEnvironmentsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteRolesRequest() (request *DeleteRolesRequest) {
+    request = &DeleteRolesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DeleteRoles")
+    return
+}
+
+func NewDeleteRolesResponse() (response *DeleteRolesResponse) {
+    response = &DeleteRolesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteRoles
+// 删除角色，支持批量。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DELETEROLES = "FailedOperation.DeleteRoles"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCEINUSE_ENVIRONMENTROLE = "ResourceInUse.EnvironmentRole"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
+func (c *Client) DeleteRoles(request *DeleteRolesRequest) (response *DeleteRolesResponse, err error) {
+    if request == nil {
+        request = NewDeleteRolesRequest()
+    }
+    response = NewDeleteRolesResponse()
     err = c.Send(request, response)
     return
 }
@@ -1145,6 +1289,40 @@ func (c *Client) DescribeProducers(request *DescribeProducersRequest) (response 
     return
 }
 
+func NewDescribeRolesRequest() (request *DescribeRolesRequest) {
+    request = &DescribeRolesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRoles")
+    return
+}
+
+func NewDescribeRolesResponse() (response *DescribeRolesResponse) {
+    response = &DescribeRolesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRoles
+// 获取角色列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) DescribeRoles(request *DescribeRolesRequest) (response *DescribeRolesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRolesRequest()
+    }
+    response = NewDescribeRolesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSubscriptionsRequest() (request *DescribeSubscriptionsRequest) {
     request = &DescribeSubscriptionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1371,6 +1549,73 @@ func (c *Client) ModifyEnvironmentAttributes(request *ModifyEnvironmentAttribute
         request = NewModifyEnvironmentAttributesRequest()
     }
     response = NewModifyEnvironmentAttributesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyEnvironmentRoleRequest() (request *ModifyEnvironmentRoleRequest) {
+    request = &ModifyEnvironmentRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "ModifyEnvironmentRole")
+    return
+}
+
+func NewModifyEnvironmentRoleResponse() (response *ModifyEnvironmentRoleResponse) {
+    response = &ModifyEnvironmentRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyEnvironmentRole
+// 修改环境角色授权。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_UPDATEENVIRONMENTROLE = "FailedOperation.UpdateEnvironmentRole"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_ENVIRONMENTROLE = "ResourceNotFound.EnvironmentRole"
+func (c *Client) ModifyEnvironmentRole(request *ModifyEnvironmentRoleRequest) (response *ModifyEnvironmentRoleResponse, err error) {
+    if request == nil {
+        request = NewModifyEnvironmentRoleRequest()
+    }
+    response = NewModifyEnvironmentRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyRoleRequest() (request *ModifyRoleRequest) {
+    request = &ModifyRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "ModifyRole")
+    return
+}
+
+func NewModifyRoleResponse() (response *ModifyRoleResponse) {
+    response = &ModifyRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyRole
+// 角色修改
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_UPDATEROLE = "FailedOperation.UpdateRole"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
+func (c *Client) ModifyRole(request *ModifyRoleRequest) (response *ModifyRoleResponse, err error) {
+    if request == nil {
+        request = NewModifyRoleRequest()
+    }
+    response = NewModifyRoleResponse()
     err = c.Send(request, response)
     return
 }

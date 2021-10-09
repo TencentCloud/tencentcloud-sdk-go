@@ -4691,6 +4691,45 @@ type MerchantManagementResult struct {
 	List []*MerchantManagementList `json:"List,omitempty" name:"List"`
 }
 
+type MerchantPayWayData struct {
+
+	// 支付币种
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayCurrency *string `json:"PayCurrency,omitempty" name:"PayCurrency"`
+
+	// 支付图标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayIcon *string `json:"PayIcon,omitempty" name:"PayIcon"`
+
+	// 支付名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayInternalName *string `json:"PayInternalName,omitempty" name:"PayInternalName"`
+
+	// 支付简称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayName *string `json:"PayName,omitempty" name:"PayName"`
+
+	// 是否支持退款
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaySplitRefund *string `json:"PaySplitRefund,omitempty" name:"PaySplitRefund"`
+
+	// 支付标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayTag *string `json:"PayTag,omitempty" name:"PayTag"`
+
+	// 支付凭证图标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayTicketIcon *string `json:"PayTicketIcon,omitempty" name:"PayTicketIcon"`
+
+	// 支付类型，逗号分隔
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayType *string `json:"PayType,omitempty" name:"PayType"`
+
+	// 凭证名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TicketName *string `json:"TicketName,omitempty" name:"TicketName"`
+}
+
 type MigrateOrderRefundQueryRequest struct {
 	*tchttp.BaseRequest
 
@@ -7576,6 +7615,75 @@ func (r *QueryMerchantOrderResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryMerchantOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryMerchantPayWayListRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 支付类型，逗号分隔
+	PayType *string `json:"PayType,omitempty" name:"PayType"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QueryMerchantPayWayListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryMerchantPayWayListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "PayType")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryMerchantPayWayListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryMerchantPayWayListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 查询商户支付方式列表结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result []*MerchantPayWayData `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryMerchantPayWayListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryMerchantPayWayListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

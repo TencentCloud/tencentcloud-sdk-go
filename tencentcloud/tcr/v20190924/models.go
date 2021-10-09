@@ -803,6 +803,9 @@ type CreateReplicationInstanceRequest struct {
 
 	// 复制实例地域ID
 	ReplicationRegionId *uint64 `json:"ReplicationRegionId,omitempty" name:"ReplicationRegionId"`
+
+	// 复制实例地域名称
+	ReplicationRegionName *string `json:"ReplicationRegionName,omitempty" name:"ReplicationRegionName"`
 }
 
 func (r *CreateReplicationInstanceRequest) ToJsonString() string {
@@ -819,6 +822,7 @@ func (r *CreateReplicationInstanceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "RegistryId")
 	delete(f, "ReplicationRegionId")
+	delete(f, "ReplicationRegionName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateReplicationInstanceRequest has unknown keys!", "")
 	}
@@ -4431,8 +4435,11 @@ type ManageInternalEndpointRequest struct {
 	// 需要接入的用户子网id
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 请求的地域ID
+	// 请求的地域ID，用于实例复制地域
 	RegionId *uint64 `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 请求的地域名称，用于实例复制地域
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
 }
 
 func (r *ManageInternalEndpointRequest) ToJsonString() string {
@@ -4452,6 +4459,7 @@ func (r *ManageInternalEndpointRequest) FromJsonString(s string) error {
 	delete(f, "VpcId")
 	delete(f, "SubnetId")
 	delete(f, "RegionId")
+	delete(f, "RegionName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ManageInternalEndpointRequest has unknown keys!", "")
 	}
