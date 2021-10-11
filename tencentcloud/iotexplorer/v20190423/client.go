@@ -215,6 +215,39 @@ func (c *Client) CreateDevice(request *CreateDeviceRequest) (response *CreateDev
     return
 }
 
+func NewCreateFenceBindRequest() (request *CreateFenceBindRequest) {
+    request = &CreateFenceBindRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateFenceBind")
+    return
+}
+
+func NewCreateFenceBindResponse() (response *CreateFenceBindResponse) {
+    response = &CreateFenceBindResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateFenceBind
+// 创建围栏绑定信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOFENCE = "UnauthorizedOperation.NoPermissionToStudioFence"
+func (c *Client) CreateFenceBind(request *CreateFenceBindRequest) (response *CreateFenceBindResponse, err error) {
+    if request == nil {
+        request = NewCreateFenceBindRequest()
+    }
+    response = NewCreateFenceBindResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateLoRaFrequencyRequest() (request *CreateLoRaFrequencyRequest) {
     request = &CreateLoRaFrequencyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -274,6 +307,75 @@ func (c *Client) CreateLoRaGateway(request *CreateLoRaGatewayRequest) (response 
         request = NewCreateLoRaGatewayRequest()
     }
     response = NewCreateLoRaGatewayResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreatePositionFenceRequest() (request *CreatePositionFenceRequest) {
+    request = &CreatePositionFenceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreatePositionFence")
+    return
+}
+
+func NewCreatePositionFenceResponse() (response *CreatePositionFenceResponse) {
+    response = &CreatePositionFenceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreatePositionFence
+// 创建围栏
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_SPACENOTEXIST = "ResourceNotFound.SpaceNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_FENCEDUPKEYEXIST = "UnsupportedOperation.FenceDupKeyExist"
+func (c *Client) CreatePositionFence(request *CreatePositionFenceRequest) (response *CreatePositionFenceResponse, err error) {
+    if request == nil {
+        request = NewCreatePositionFenceRequest()
+    }
+    response = NewCreatePositionFenceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreatePositionSpaceRequest() (request *CreatePositionSpaceRequest) {
+    request = &CreatePositionSpaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreatePositionSpace")
+    return
+}
+
+func NewCreatePositionSpaceResponse() (response *CreatePositionSpaceResponse) {
+    response = &CreatePositionSpaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreatePositionSpace
+// 创建位置空间
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_PROJECTNOTEXIST = "ResourceNotFound.ProjectNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_SPACEDUPKEYEXIST = "UnsupportedOperation.SpaceDupKeyExist"
+func (c *Client) CreatePositionSpace(request *CreatePositionSpaceRequest) (response *CreatePositionSpaceResponse, err error) {
+    if request == nil {
+        request = NewCreatePositionSpaceRequest()
+    }
+    response = NewCreatePositionSpaceResponse()
     err = c.Send(request, response)
     return
 }
@@ -526,6 +628,40 @@ func (c *Client) DeleteDevices(request *DeleteDevicesRequest) (response *DeleteD
     return
 }
 
+func NewDeleteFenceBindRequest() (request *DeleteFenceBindRequest) {
+    request = &DeleteFenceBindRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteFenceBind")
+    return
+}
+
+func NewDeleteFenceBindResponse() (response *DeleteFenceBindResponse) {
+    response = &DeleteFenceBindResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteFenceBind
+// 删除围栏绑定信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FENCEBINDNOTEXIST = "ResourceNotFound.FenceBindNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOFENCE = "UnauthorizedOperation.NoPermissionToStudioFence"
+func (c *Client) DeleteFenceBind(request *DeleteFenceBindRequest) (response *DeleteFenceBindResponse, err error) {
+    if request == nil {
+        request = NewDeleteFenceBindRequest()
+    }
+    response = NewDeleteFenceBindResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteLoRaFrequencyRequest() (request *DeleteLoRaFrequencyRequest) {
     request = &DeleteLoRaFrequencyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -589,6 +725,76 @@ func (c *Client) DeleteLoRaGateway(request *DeleteLoRaGatewayRequest) (response 
         request = NewDeleteLoRaGatewayRequest()
     }
     response = NewDeleteLoRaGatewayResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeletePositionFenceRequest() (request *DeletePositionFenceRequest) {
+    request = &DeletePositionFenceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DeletePositionFence")
+    return
+}
+
+func NewDeletePositionFenceResponse() (response *DeletePositionFenceResponse) {
+    response = &DeletePositionFenceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeletePositionFence
+// 删除围栏
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_FENCENOTEXIST = "ResourceNotFound.FenceNotExist"
+//  RESOURCENOTFOUND_SPACENOTEXIST = "ResourceNotFound.SpaceNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOFENCE = "UnauthorizedOperation.NoPermissionToStudioFence"
+//  UNSUPPORTEDOPERATION_BINDSEXISTUNDERFENCE = "UnsupportedOperation.BindsExistUnderFence"
+func (c *Client) DeletePositionFence(request *DeletePositionFenceRequest) (response *DeletePositionFenceResponse, err error) {
+    if request == nil {
+        request = NewDeletePositionFenceRequest()
+    }
+    response = NewDeletePositionFenceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeletePositionSpaceRequest() (request *DeletePositionSpaceRequest) {
+    request = &DeletePositionSpaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DeletePositionSpace")
+    return
+}
+
+func NewDeletePositionSpaceResponse() (response *DeletePositionSpaceResponse) {
+    response = &DeletePositionSpaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeletePositionSpace
+// 删除位置空间
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_SPACENOTEXIST = "ResourceNotFound.SpaceNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_FENCEEXISTUNDERSPACE = "UnsupportedOperation.FenceExistUnderSpace"
+func (c *Client) DeletePositionSpace(request *DeletePositionSpaceRequest) (response *DeletePositionSpaceResponse, err error) {
+    if request == nil {
+        request = NewDeletePositionSpaceRequest()
+    }
+    response = NewDeletePositionSpaceResponse()
     err = c.Send(request, response)
     return
 }
@@ -810,6 +1016,103 @@ func (c *Client) DescribeDeviceDataHistory(request *DescribeDeviceDataHistoryReq
     return
 }
 
+func NewDescribeDevicePositionListRequest() (request *DescribeDevicePositionListRequest) {
+    request = &DescribeDevicePositionListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeDevicePositionList")
+    return
+}
+
+func NewDescribeDevicePositionListResponse() (response *DescribeDevicePositionListResponse) {
+    response = &DescribeDevicePositionListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDevicePositionList
+// 获取设备位置列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_PRODUCTIDINVALID = "InvalidParameterValue.ProductIDInvalid"
+func (c *Client) DescribeDevicePositionList(request *DescribeDevicePositionListRequest) (response *DescribeDevicePositionListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDevicePositionListRequest()
+    }
+    response = NewDescribeDevicePositionListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFenceBindListRequest() (request *DescribeFenceBindListRequest) {
+    request = &DescribeFenceBindListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeFenceBindList")
+    return
+}
+
+func NewDescribeFenceBindListResponse() (response *DescribeFenceBindListResponse) {
+    response = &DescribeFenceBindListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeFenceBindList
+// 获取围栏绑定信息列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOFENCE = "UnauthorizedOperation.NoPermissionToStudioFence"
+func (c *Client) DescribeFenceBindList(request *DescribeFenceBindListRequest) (response *DescribeFenceBindListResponse, err error) {
+    if request == nil {
+        request = NewDescribeFenceBindListRequest()
+    }
+    response = NewDescribeFenceBindListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFenceEventListRequest() (request *DescribeFenceEventListRequest) {
+    request = &DescribeFenceEventListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeFenceEventList")
+    return
+}
+
+func NewDescribeFenceEventListResponse() (response *DescribeFenceEventListResponse) {
+    response = &DescribeFenceEventListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeFenceEventList
+// 获取围栏告警事件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_STARTTIMELATERENDTIME = "InvalidParameterValue.StartTimeLaterEndTime"
+//  RESOURCENOTFOUND_FENCENOTEXIST = "ResourceNotFound.FenceNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOFENCE = "UnauthorizedOperation.NoPermissionToStudioFence"
+func (c *Client) DescribeFenceEventList(request *DescribeFenceEventListRequest) (response *DescribeFenceEventListResponse, err error) {
+    if request == nil {
+        request = NewDescribeFenceEventListRequest()
+    }
+    response = NewDescribeFenceEventListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFirmwareTaskRequest() (request *DescribeFirmwareTaskRequest) {
     request = &DescribeFirmwareTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -929,6 +1232,40 @@ func (c *Client) DescribeModelDefinition(request *DescribeModelDefinitionRequest
     return
 }
 
+func NewDescribePositionFenceListRequest() (request *DescribePositionFenceListRequest) {
+    request = &DescribePositionFenceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribePositionFenceList")
+    return
+}
+
+func NewDescribePositionFenceListResponse() (response *DescribePositionFenceListResponse) {
+    response = &DescribePositionFenceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePositionFenceList
+// 获取围栏列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_SPACENOTEXIST = "ResourceNotFound.SpaceNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribePositionFenceList(request *DescribePositionFenceListRequest) (response *DescribePositionFenceListResponse, err error) {
+    if request == nil {
+        request = NewDescribePositionFenceListRequest()
+    }
+    response = NewDescribePositionFenceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProjectRequest() (request *DescribeProjectRequest) {
     request = &DescribeProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -958,6 +1295,40 @@ func (c *Client) DescribeProject(request *DescribeProjectRequest) (response *Des
         request = NewDescribeProjectRequest()
     }
     response = NewDescribeProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSpaceFenceEventListRequest() (request *DescribeSpaceFenceEventListRequest) {
+    request = &DescribeSpaceFenceEventListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeSpaceFenceEventList")
+    return
+}
+
+func NewDescribeSpaceFenceEventListResponse() (response *DescribeSpaceFenceEventListResponse) {
+    response = &DescribeSpaceFenceEventListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSpaceFenceEventList
+// 获取位置空间中围栏告警事件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_STARTTIMELATERENDTIME = "InvalidParameterValue.StartTimeLaterEndTime"
+//  RESOURCENOTFOUND_SPACENOTEXIST = "ResourceNotFound.SpaceNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeSpaceFenceEventList(request *DescribeSpaceFenceEventListRequest) (response *DescribeSpaceFenceEventListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSpaceFenceEventListRequest()
+    }
+    response = NewDescribeSpaceFenceEventListResponse()
     err = c.Send(request, response)
     return
 }
@@ -1212,6 +1583,43 @@ func (c *Client) GetDeviceList(request *GetDeviceListRequest) (response *GetDevi
     return
 }
 
+func NewGetDeviceLocationHistoryRequest() (request *GetDeviceLocationHistoryRequest) {
+    request = &GetDeviceLocationHistoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "GetDeviceLocationHistory")
+    return
+}
+
+func NewGetDeviceLocationHistoryResponse() (response *GetDeviceLocationHistoryResponse) {
+    response = &GetDeviceLocationHistoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetDeviceLocationHistory
+// 获取设备历史位置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_STARTTIMELATERENDTIME = "InvalidParameterValue.StartTimeLaterEndTime"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+func (c *Client) GetDeviceLocationHistory(request *GetDeviceLocationHistoryRequest) (response *GetDeviceLocationHistoryResponse, err error) {
+    if request == nil {
+        request = NewGetDeviceLocationHistoryRequest()
+    }
+    response = NewGetDeviceLocationHistoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetLoRaGatewayListRequest() (request *GetLoRaGatewayListRequest) {
     request = &GetLoRaGatewayListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1242,6 +1650,39 @@ func (c *Client) GetLoRaGatewayList(request *GetLoRaGatewayListRequest) (respons
         request = NewGetLoRaGatewayListRequest()
     }
     response = NewGetLoRaGatewayListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetPositionSpaceListRequest() (request *GetPositionSpaceListRequest) {
+    request = &GetPositionSpaceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "GetPositionSpaceList")
+    return
+}
+
+func NewGetPositionSpaceListResponse() (response *GetPositionSpaceListResponse) {
+    response = &GetPositionSpaceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetPositionSpaceList
+// 获取位置空间列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) GetPositionSpaceList(request *GetPositionSpaceListRequest) (response *GetPositionSpaceListResponse, err error) {
+    if request == nil {
+        request = NewGetPositionSpaceListRequest()
+    }
+    response = NewGetPositionSpaceListResponse()
     err = c.Send(request, response)
     return
 }
@@ -1422,6 +1863,39 @@ func (c *Client) ListFirmwares(request *ListFirmwaresRequest) (response *ListFir
     return
 }
 
+func NewModifyFenceBindRequest() (request *ModifyFenceBindRequest) {
+    request = &ModifyFenceBindRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyFenceBind")
+    return
+}
+
+func NewModifyFenceBindResponse() (response *ModifyFenceBindResponse) {
+    response = &ModifyFenceBindResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyFenceBind
+// 更新围栏绑定信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOFENCE = "UnauthorizedOperation.NoPermissionToStudioFence"
+func (c *Client) ModifyFenceBind(request *ModifyFenceBindRequest) (response *ModifyFenceBindResponse, err error) {
+    if request == nil {
+        request = NewModifyFenceBindRequest()
+    }
+    response = NewModifyFenceBindResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyLoRaFrequencyRequest() (request *ModifyLoRaFrequencyRequest) {
     request = &ModifyLoRaFrequencyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1568,6 +2042,74 @@ func (c *Client) ModifyModelDefinition(request *ModifyModelDefinitionRequest) (r
     return
 }
 
+func NewModifyPositionFenceRequest() (request *ModifyPositionFenceRequest) {
+    request = &ModifyPositionFenceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyPositionFence")
+    return
+}
+
+func NewModifyPositionFenceResponse() (response *ModifyPositionFenceResponse) {
+    response = &ModifyPositionFenceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyPositionFence
+// 更新围栏
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  RESOURCENOTFOUND_FENCENOTEXIST = "ResourceNotFound.FenceNotExist"
+//  RESOURCENOTFOUND_SPACENOTEXIST = "ResourceNotFound.SpaceNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOFENCE = "UnauthorizedOperation.NoPermissionToStudioFence"
+func (c *Client) ModifyPositionFence(request *ModifyPositionFenceRequest) (response *ModifyPositionFenceResponse, err error) {
+    if request == nil {
+        request = NewModifyPositionFenceRequest()
+    }
+    response = NewModifyPositionFenceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyPositionSpaceRequest() (request *ModifyPositionSpaceRequest) {
+    request = &ModifyPositionSpaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyPositionSpace")
+    return
+}
+
+func NewModifyPositionSpaceResponse() (response *ModifyPositionSpaceResponse) {
+    response = &ModifyPositionSpaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyPositionSpace
+// 更新位置空间
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_SPACENOTEXIST = "ResourceNotFound.SpaceNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_SPACEDUPKEYEXIST = "UnsupportedOperation.SpaceDupKeyExist"
+func (c *Client) ModifyPositionSpace(request *ModifyPositionSpaceRequest) (response *ModifyPositionSpaceResponse, err error) {
+    if request == nil {
+        request = NewModifyPositionSpaceRequest()
+    }
+    response = NewModifyPositionSpaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyProjectRequest() (request *ModifyProjectRequest) {
     request = &ModifyProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1599,6 +2141,40 @@ func (c *Client) ModifyProject(request *ModifyProjectRequest) (response *ModifyP
         request = NewModifyProjectRequest()
     }
     response = NewModifyProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySpacePropertyRequest() (request *ModifySpacePropertyRequest) {
+    request = &ModifySpacePropertyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifySpaceProperty")
+    return
+}
+
+func NewModifySpacePropertyResponse() (response *ModifySpacePropertyResponse) {
+    response = &ModifySpacePropertyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifySpaceProperty
+// 更新位置空间产品属性
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_SPACENOTEXIST = "ResourceNotFound.SpaceNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+func (c *Client) ModifySpaceProperty(request *ModifySpacePropertyRequest) (response *ModifySpacePropertyResponse, err error) {
+    if request == nil {
+        request = NewModifySpacePropertyRequest()
+    }
+    response = NewModifySpacePropertyResponse()
     err = c.Send(request, response)
     return
 }
@@ -1755,6 +2331,38 @@ func (c *Client) ReleaseStudioProduct(request *ReleaseStudioProductRequest) (res
         request = NewReleaseStudioProductRequest()
     }
     response = NewReleaseStudioProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSearchPositionSpaceRequest() (request *SearchPositionSpaceRequest) {
+    request = &SearchPositionSpaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "SearchPositionSpace")
+    return
+}
+
+func NewSearchPositionSpaceResponse() (response *SearchPositionSpaceResponse) {
+    response = &SearchPositionSpaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SearchPositionSpace
+// 搜索位置空间
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) SearchPositionSpace(request *SearchPositionSpaceRequest) (response *SearchPositionSpaceResponse, err error) {
+    if request == nil {
+        request = NewSearchPositionSpaceRequest()
+    }
+    response = NewSearchPositionSpaceResponse()
     err = c.Send(request, response)
     return
 }

@@ -438,7 +438,8 @@ type DescribeCommandsRequest struct {
 	// 过滤条件。
 	// <li> command-id - String - 是否必填：否 -（过滤条件）按照命令ID过滤。
 	// <li> command-name - String - 是否必填：否 -（过滤条件）按照命令名称过滤。
-	// <li> created-by - String - 是否必填：否 -（过滤条件）按照命令创建者过滤，取值为 TAT 或 USER，TAT 代表公共命令，USER 代表由用户创建的命令。 
+	// <li> command-type - String - 是否必填：否 -（过滤条件）按照命令类型过滤，取值为 SHELL 或 POWERSHELL。
+	// <li> created-by - String - 是否必填：否 -（过滤条件）按照命令创建者过滤，取值为 TAT 或 USER，TAT 代表公共命令，USER 代表由用户创建的命令。
 	// <li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
 	// <li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
 	// <li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例4</li>

@@ -191,6 +191,9 @@ const (
 	// 规则数量超过限制。
 	INVALIDPARAMETERVALUE_RULENUMBERBEYONDLIMIT = "InvalidParameterValue.RuleNumberBeyondLimit"
 
+	// 开始时间晚于结束时间。
+	INVALIDPARAMETERVALUE_STARTTIMELATERENDTIME = "InvalidParameterValue.StartTimeLaterEndTime"
+
 	// Topic已存在。
 	INVALIDPARAMETERVALUE_TOPICPOLICYALREADYEXIST = "InvalidParameterValue.TopicPolicyAlreadyExist"
 
@@ -251,6 +254,12 @@ const (
 	// 设备没有影子信息。
 	RESOURCENOTFOUND_DEVICESHADOWNOTEXIST = "ResourceNotFound.DeviceShadowNotExist"
 
+	// 围栏未绑定该设备。
+	RESOURCENOTFOUND_FENCEBINDNOTEXIST = "ResourceNotFound.FenceBindNotExist"
+
+	// 围栏未创建或是已删除。
+	RESOURCENOTFOUND_FENCENOTEXIST = "ResourceNotFound.FenceNotExist"
+
 	// 固件不存在。
 	RESOURCENOTFOUND_FIRMWARENOTEXIST = "ResourceNotFound.FirmwareNotExist"
 
@@ -280,6 +289,9 @@ const (
 
 	// 项目不存在。
 	RESOURCENOTFOUND_PROJECTNOTEXIST = "ResourceNotFound.ProjectNotExist"
+
+	// 位置空间未创建或是已删除。
+	RESOURCENOTFOUND_SPACENOTEXIST = "ResourceNotFound.SpaceNotExist"
 
 	// LoRa频点尚未创建或已被删除。
 	RESOURCENOTFOUND_STUDIOLORAFREQNOTEXIST = "ResourceNotFound.StudioLoRaFreqNotExist"
@@ -311,6 +323,9 @@ const (
 	// 项目ACL错误。
 	UNAUTHORIZEDOPERATION_NOPERMISSIONTOPROJECT = "UnauthorizedOperation.NoPermissionToProject"
 
+	// 围栏ACL错误。
+	UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOFENCE = "UnauthorizedOperation.NoPermissionToStudioFence"
+
 	// 实例ACL错误。
 	UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOINSTANCE = "UnauthorizedOperation.NoPermissionToStudioInstance"
 
@@ -329,6 +344,9 @@ const (
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"
 
+	// 围栏下还存在绑定的设备。
+	UNSUPPORTEDOPERATION_BINDSEXISTUNDERFENCE = "UnsupportedOperation.BindsExistUnderFence"
+
 	// 创建的设备已经存在。
 	UNSUPPORTEDOPERATION_DEVICEDUPKEYEXIST = "UnsupportedOperation.DeviceDupKeyExist"
 
@@ -340,6 +358,12 @@ const (
 
 	// 产品下还存在未删除的设备。
 	UNSUPPORTEDOPERATION_DEVICESEXISTUNDERPRODUCT = "UnsupportedOperation.DevicesExistUnderProduct"
+
+	// 存在重复围栏。
+	UNSUPPORTEDOPERATION_FENCEDUPKEYEXIST = "UnsupportedOperation.FenceDupKeyExist"
+
+	// 位置空间下还存在未删除的围栏。
+	UNSUPPORTEDOPERATION_FENCEEXISTUNDERSPACE = "UnsupportedOperation.FenceExistUnderSpace"
 
 	// 网关产品还绑定子产品，无法删除。
 	UNSUPPORTEDOPERATION_GATEWAYPRODUCTHASBINDEDPRODUCT = "UnsupportedOperation.GatewayProductHasBindedProduct"
@@ -373,6 +397,9 @@ const (
 
 	// 存在重复项目。
 	UNSUPPORTEDOPERATION_PROJECTDUPKEYEXIST = "UnsupportedOperation.ProjectDupKeyExist"
+
+	// 存在重复位置空间。
+	UNSUPPORTEDOPERATION_SPACEDUPKEYEXIST = "UnsupportedOperation.SpaceDupKeyExist"
 
 	// LoRa频点还被节点或网关使用。
 	UNSUPPORTEDOPERATION_STUDIOLORAFREQINUSED = "UnsupportedOperation.StudioLoRaFreqInUsed"

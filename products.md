@@ -50,7 +50,7 @@
 | cpdp | [企业收付平台](https://cloud.tencent.com/document/product/1122) | 2021-10-09 11:10:00 |
 | cr | [金融联络机器人](https://cloud.tencent.com/document/product/656) | 2021-02-24 08:03:24 |
 | cvm | [云服务器](https://cloud.tencent.com/document/product/213) | 2021-09-28 08:03:36 |
-| cwp | [主机安全](https://cloud.tencent.com/document/product/296) | 2021-09-30 08:03:28 |
+| cwp | [主机安全](https://cloud.tencent.com/document/product/296) | 2021-10-11 08:03:11 |
 | cws | [漏洞扫描服务](https://cloud.tencent.com/document/product) | 2019-11-22 12:16:15 |
 | cynosdb | [云原生数据库 TDSQL-C](https://cloud.tencent.com/document/product/1003) | 2021-09-16 08:02:00 |
 | dayu | [DDoS 高防包](https://cloud.tencent.com/document/product/1021) | 2021-09-16 08:06:18 |
@@ -90,7 +90,7 @@
 | ims | [图片内容检测](https://cloud.tencent.com/document/product/1125) | 2021-09-16 08:01:45 |
 | iot | [加速物联网套件](https://cloud.tencent.com/document/product/568) | 2021-09-16 08:07:49 |
 | iotcloud | [物联网通信](https://cloud.tencent.com/document/product/634) | 2021-07-21 08:06:35 |
-| iotexplorer | [物联网开发平台](https://cloud.tencent.com/document/product/1081) | 2021-10-01 08:11:47 |
+| iotexplorer | [物联网开发平台](https://cloud.tencent.com/document/product/1081) | 2021-10-11 08:06:10 |
 | iottid | [物联网设备身份认证](https://cloud.tencent.com/document/product/1086) | 2021-09-16 08:08:06 |
 | iotvideo | [物联网智能视频服务](https://cloud.tencent.com/document/product/1131) | 2021-09-16 08:03:15 |
 | iotvideoindustry | [物联网智能视频服务（行业版）](https://cloud.tencent.com/document/product/1361) | 2021-09-16 08:01:15 |
@@ -102,7 +102,7 @@
 | market | [云市场](https://cloud.tencent.com/document/product/306) | 2021-09-16 08:00:25 |
 | memcached | [云数据库 Memcached](https://cloud.tencent.com/document/product) | 2020-08-24 08:07:49 |
 | mgobe | [游戏联机对战引擎](https://cloud.tencent.com/document/product/1038) | 2021-09-16 08:01:53 |
-| mna | [移动网络加速](https://cloud.tencent.com/document/product/1385) | 2021-10-09 11:15:49 |
+| mna | [移动网络加速](https://cloud.tencent.com/document/product/1385) | 2021-10-11 08:07:22 |
 | mongodb | [云数据库 MongoDB](https://cloud.tencent.com/document/product/240) | 2021-09-27 08:14:06 |
 | monitor | [云监控](https://cloud.tencent.com/document/product/248) | 2021-09-23 08:10:38 |
 | mps | [视频处理](https://cloud.tencent.com/document/product/862) | 2021-09-16 08:08:57 |
@@ -138,7 +138,7 @@
 | sts | [安全凭证服务](https://cloud.tencent.com/document/product/1312) | 2021-09-16 08:13:47 |
 | taf | [流量反欺诈](https://cloud.tencent.com/document/product/1031) | 2021-09-16 08:02:28 |
 | tag | [标签](https://cloud.tencent.com/document/product/651) | 2021-09-16 08:10:15 |
-| tat | [腾讯云自动化助手](https://cloud.tencent.com/document/product/1340) | 2021-09-24 10:11:24 |
+| tat | [腾讯云自动化助手](https://cloud.tencent.com/document/product/1340) | 2021-10-11 08:09:12 |
 | tav | [文件检测](https://cloud.tencent.com/document/product) | 2019-11-28 22:10:04 |
 | tbaas | [TBaaS](https://cloud.tencent.com/document/product/663) | 2021-09-16 08:10:18 |
 | tbm | [](https://cloud.tencent.com/document/product) | 2019-03-29 14:49:11 |
@@ -149,7 +149,7 @@
 | tci | [腾讯智学课堂分析](https://cloud.tencent.com/document/product) | 2020-08-24 08:06:03 |
 | tcr | [容器镜像服务](https://cloud.tencent.com/document/product/1141) | 2021-10-09 11:19:12 |
 | tdid | [分布式身份](https://cloud.tencent.com/document/product/1439) | 2021-09-16 08:00:13 |
-| tdmq | [分布式消息队列](https://cloud.tencent.com/document/product/1179) | 2021-10-09 11:19:31 |
+| tdmq | [分布式消息队列](https://cloud.tencent.com/document/product/1179) | 2021-10-11 08:09:49 |
 | tem | [弹性微服务](https://cloud.tencent.com/document/product/1371) | 2021-09-16 08:00:59 |
 | tia | [智能钛机器学习](https://cloud.tencent.com/document/product) | 2020-03-16 08:18:42 |
 | tic | [腾讯云IaC平台](https://cloud.tencent.com/document/product/1213) | 2021-09-16 08:01:33 |
@@ -162,7 +162,7 @@
 | tke | [容器服务](https://cloud.tencent.com/document/product/457) | 2021-10-01 21:29:42 |
 | tkgdq | [腾讯知识图谱数据查询](https://cloud.tencent.com/document/product) | 2020-03-10 00:51:44 |
 | tms | [文本内容安全](https://cloud.tencent.com/document/product/1124) | 2021-09-16 08:02:16 |
-| tmt | [机器翻译](https://cloud.tencent.com/document/product/551) | 2021-09-22 08:14:22 |
+| tmt | [机器翻译](https://cloud.tencent.com/document/product/551) | 2021-10-11 08:10:28 |
 | trtc | [实时音视频](https://cloud.tencent.com/document/product/647) | 2021-09-17 08:14:11 |
 | tse | [腾讯云微服务引擎](https://cloud.tencent.com/document/product/1364) | 2021-09-27 08:17:29 |
 | tsf | [腾讯微服务平台 TSF](https://cloud.tencent.com/document/product/649) | 2021-09-28 08:11:05 |

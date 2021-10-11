@@ -1,55 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 企业收付平台(cpdp) 版本：2019-08-20
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
-### 第 47 次发布
+### 第 32 次发布
 
-发布时间：2021-10-09 11:10:00
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [QueryMerchantPayWayList](https://cloud.tencent.com/document/api/1122/62394)
-
-新增数据结构：
-
-* [MerchantPayWayData](https://cloud.tencent.com/document/api/1122/40683#MerchantPayWayData)
-
-
-
-## 容器镜像服务(tcr) 版本：2019-09-24
-
-### 第 37 次发布
-
-发布时间：2021-10-09 11:19:12
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateReplicationInstance](https://cloud.tencent.com/document/api/1141/54178)
-
-	* 新增入参：ReplicationRegionName
-
-	* <font color="#dd0000">**修改入参**：</font>ReplicationRegionId
-
-* [ManageInternalEndpoint](https://cloud.tencent.com/document/api/1141/50733)
-
-	* 新增入参：RegionName
-
-
-
-
-## 分布式消息队列(tdmq) 版本：2020-02-17
-
-### 第 19 次发布
-
-发布时间：2021-10-09 11:19:31
+发布时间：2021-10-11 08:06:10
 
 本次发布包含了以下内容：
 
@@ -57,17 +12,35 @@
 
 新增接口：
 
-* [CreateEnvironmentRole](https://cloud.tencent.com/document/api/1179/62402)
-* [CreateRole](https://cloud.tencent.com/document/api/1179/62401)
-* [DeleteEnvironmentRoles](https://cloud.tencent.com/document/api/1179/62400)
-* [DeleteRoles](https://cloud.tencent.com/document/api/1179/62403)
-* [DescribeRoles](https://cloud.tencent.com/document/api/1179/62399)
-* [ModifyEnvironmentRole](https://cloud.tencent.com/document/api/1179/62398)
-* [ModifyRole](https://cloud.tencent.com/document/api/1179/62397)
+* [CreateFenceBind](https://cloud.tencent.com/document/api/1081/62457)
+* [CreatePositionFence](https://cloud.tencent.com/document/api/1081/62456)
+* [CreatePositionSpace](https://cloud.tencent.com/document/api/1081/62455)
+* [DeleteFenceBind](https://cloud.tencent.com/document/api/1081/62454)
+* [DeletePositionFence](https://cloud.tencent.com/document/api/1081/62453)
+* [DeletePositionSpace](https://cloud.tencent.com/document/api/1081/62452)
+* [DescribeDevicePositionList](https://cloud.tencent.com/document/api/1081/62451)
+* [DescribeFenceBindList](https://cloud.tencent.com/document/api/1081/62450)
+* [DescribeFenceEventList](https://cloud.tencent.com/document/api/1081/62449)
+* [DescribePositionFenceList](https://cloud.tencent.com/document/api/1081/62448)
+* [DescribeSpaceFenceEventList](https://cloud.tencent.com/document/api/1081/62447)
+* [GetDeviceLocationHistory](https://cloud.tencent.com/document/api/1081/62446)
+* [GetPositionSpaceList](https://cloud.tencent.com/document/api/1081/62445)
+* [ModifyFenceBind](https://cloud.tencent.com/document/api/1081/62444)
+* [ModifyPositionFence](https://cloud.tencent.com/document/api/1081/62443)
+* [ModifyPositionSpace](https://cloud.tencent.com/document/api/1081/62442)
+* [ModifySpaceProperty](https://cloud.tencent.com/document/api/1081/62441)
+* [SearchPositionSpace](https://cloud.tencent.com/document/api/1081/62440)
 
 新增数据结构：
 
-* [Role](https://cloud.tencent.com/document/api/1179/46089#Role)
+* [FenceAlarmPoint](https://cloud.tencent.com/document/api/1081/34988#FenceAlarmPoint)
+* [FenceBindDeviceItem](https://cloud.tencent.com/document/api/1081/34988#FenceBindDeviceItem)
+* [FenceBindProductItem](https://cloud.tencent.com/document/api/1081/34988#FenceBindProductItem)
+* [FenceEventItem](https://cloud.tencent.com/document/api/1081/34988#FenceEventItem)
+* [PositionFenceInfo](https://cloud.tencent.com/document/api/1081/34988#PositionFenceInfo)
+* [PositionFenceItem](https://cloud.tencent.com/document/api/1081/34988#PositionFenceItem)
+* [PositionItem](https://cloud.tencent.com/document/api/1081/34988#PositionItem)
+* [PositionSpaceInfo](https://cloud.tencent.com/document/api/1081/34988#PositionSpaceInfo)
 
 
 
@@ -14073,7 +14046,7 @@
 
 新增接口：
 
-* [UploadLog](https://cloud.tencent.com/document/api/614/59470)
+* [UploadLog](https://cloud.tencent.com/document/api/1451/48198)
 
 ### 第 5 次发布
 
@@ -15575,11 +15548,11 @@
 
 新增接口：
 
-* [[QueryMerchantPayWayList](https://cloud.tencent.com/document/api/1122/62394)](https://cloud.tencent.com/document/api/#/#)
+* [QueryMerchantPayWayList](https://cloud.tencent.com/document/api/1122/62394)
 
 新增数据结构：
 
-* [[MerchantPayWayData](https://cloud.tencent.com/document/api/1122/40683#MerchantPayWayData)](https://cloud.tencent.com/document/api/1122/40683#[MerchantPayWayData](https://cloud.tencent.com/document/api/1122/40683#MerchantPayWayData))
+* [MerchantPayWayData](https://cloud.tencent.com/document/api/1122/40683#MerchantPayWayData)
 
 ### 第 46 次发布
 
@@ -20549,7 +20522,7 @@
 
 新增接口：
 
-* [KillMySqlThreads](https://cloud.tencent.com/document/api/1130/61129)
+* [KillMySqlThreads](https://cloud.tencent.com/document/api/1133/62353)
 
 ### 第 3 次发布
 
@@ -20561,7 +20534,7 @@
 
 修改接口：
 
-* [DescribeSlowLogUserHostStats](https://cloud.tencent.com/document/api/1130/57783)
+* [DescribeSlowLogUserHostStats](https://cloud.tencent.com/document/api/1133/57507)
 
 	* 新增入参：Md5
 
@@ -20583,7 +20556,7 @@
 
 新增接口：
 
-* [DescribeMySqlProcessList](https://cloud.tencent.com/document/api/1130/57824)
+* [DescribeMySqlProcessList](https://cloud.tencent.com/document/api/1133/58983)
 
 新增数据结构：
 
@@ -20599,33 +20572,33 @@
 
 新增接口：
 
-* [AddUserContact](https://cloud.tencent.com/document/api/1130/57811)
-* [CreateDBDiagReportTask](https://cloud.tencent.com/document/api/1130/57802)
-* [CreateDBDiagReportUrl](https://cloud.tencent.com/document/api/1130/57810)
-* [CreateMailProfile](https://cloud.tencent.com/document/api/1130/57809)
-* [CreateSchedulerMailProfile](https://cloud.tencent.com/document/api/1130/57808)
-* [CreateSecurityAuditLogExportTask](https://cloud.tencent.com/document/api/1130/57801)
-* [DeleteSecurityAuditLogExportTasks](https://cloud.tencent.com/document/api/1130/57800)
-* [DescribeAllUserContact](https://cloud.tencent.com/document/api/1130/57807)
-* [DescribeAllUserGroup](https://cloud.tencent.com/document/api/1130/57806)
-* [DescribeDBDiagEvent](https://cloud.tencent.com/document/api/1130/57788)
-* [DescribeDBDiagHistory](https://cloud.tencent.com/document/api/1130/57787)
-* [DescribeDBDiagReportTasks](https://cloud.tencent.com/document/api/1130/57805)
-* [DescribeDBSpaceStatus](https://cloud.tencent.com/document/api/1130/57799)
-* [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798)
-* [DescribeHealthScore](https://cloud.tencent.com/document/api/1130/57797)
-* [DescribeMailProfile](https://cloud.tencent.com/document/api/1130/57804)
-* [DescribeSecurityAuditLogDownloadUrls](https://cloud.tencent.com/document/api/1130/57796)
-* [DescribeSecurityAuditLogExportTasks](https://cloud.tencent.com/document/api/1130/57795)
-* [DescribeSlowLogTimeSeriesStats](https://cloud.tencent.com/document/api/1130/57785)
-* [DescribeSlowLogTopSqls](https://cloud.tencent.com/document/api/1130/57784)
-* [DescribeSlowLogUserHostStats](https://cloud.tencent.com/document/api/1130/57783)
-* [DescribeTopSpaceSchemaTimeSeries](https://cloud.tencent.com/document/api/1130/57794)
-* [DescribeTopSpaceSchemas](https://cloud.tencent.com/document/api/1130/57793)
-* [DescribeTopSpaceTableTimeSeries](https://cloud.tencent.com/document/api/1130/57792)
-* [DescribeTopSpaceTables](https://cloud.tencent.com/document/api/1130/57791)
-* [DescribeUserSqlAdvice](https://cloud.tencent.com/document/api/1130/57782)
-* [ModifyDiagDBInstanceConf](https://cloud.tencent.com/document/api/1130/57790)
+* [AddUserContact](https://cloud.tencent.com/document/api/1133/57477)
+* [CreateDBDiagReportTask](https://cloud.tencent.com/document/api/1133/57481)
+* [CreateDBDiagReportUrl](https://cloud.tencent.com/document/api/1133/57483)
+* [CreateMailProfile](https://cloud.tencent.com/document/api/1133/57488)
+* [CreateSchedulerMailProfile](https://cloud.tencent.com/document/api/1133/57489)
+* [CreateSecurityAuditLogExportTask](https://cloud.tencent.com/document/api/1133/57490)
+* [DeleteSecurityAuditLogExportTasks](https://cloud.tencent.com/document/api/1133/57491)
+* [DescribeAllUserContact](https://cloud.tencent.com/document/api/1133/57492)
+* [DescribeAllUserGroup](https://cloud.tencent.com/document/api/1133/57493)
+* [DescribeDBDiagEvent](https://cloud.tencent.com/document/api/1133/57495)
+* [DescribeDBDiagHistory](https://cloud.tencent.com/document/api/1133/57496)
+* [DescribeDBDiagReportTasks](https://cloud.tencent.com/document/api/1133/57497)
+* [DescribeDBSpaceStatus](https://cloud.tencent.com/document/api/1133/57498)
+* [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1133/57499)
+* [DescribeHealthScore](https://cloud.tencent.com/document/api/1133/57500)
+* [DescribeMailProfile](https://cloud.tencent.com/document/api/1133/57501)
+* [DescribeSecurityAuditLogDownloadUrls](https://cloud.tencent.com/document/api/1133/57502)
+* [DescribeSecurityAuditLogExportTasks](https://cloud.tencent.com/document/api/1133/57503)
+* [DescribeSlowLogTimeSeriesStats](https://cloud.tencent.com/document/api/1133/57505)
+* [DescribeSlowLogTopSqls](https://cloud.tencent.com/document/api/1133/57506)
+* [DescribeSlowLogUserHostStats](https://cloud.tencent.com/document/api/1133/57507)
+* [DescribeTopSpaceSchemaTimeSeries](https://cloud.tencent.com/document/api/1133/57508)
+* [DescribeTopSpaceSchemas](https://cloud.tencent.com/document/api/1133/57509)
+* [DescribeTopSpaceTableTimeSeries](https://cloud.tencent.com/document/api/1133/57510)
+* [DescribeTopSpaceTables](https://cloud.tencent.com/document/api/1133/57513)
+* [DescribeUserSqlAdvice](https://cloud.tencent.com/document/api/1133/57514)
+* [ModifyDiagDBInstanceConf](https://cloud.tencent.com/document/api/1133/57515)
 
 新增数据结构：
 
@@ -30875,6 +30848,46 @@
 
 
 ## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 32 次发布
+
+发布时间：2021-10-11 08:06:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateFenceBind](https://cloud.tencent.com/document/api/1081/62457)](https://cloud.tencent.com/document/api/#/#)
+* [[CreatePositionFence](https://cloud.tencent.com/document/api/1081/62456)](https://cloud.tencent.com/document/api/#/#)
+* [[CreatePositionSpace](https://cloud.tencent.com/document/api/1081/62455)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteFenceBind](https://cloud.tencent.com/document/api/1081/62454)](https://cloud.tencent.com/document/api/#/#)
+* [[DeletePositionFence](https://cloud.tencent.com/document/api/1081/62453)](https://cloud.tencent.com/document/api/#/#)
+* [[DeletePositionSpace](https://cloud.tencent.com/document/api/1081/62452)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDevicePositionList](https://cloud.tencent.com/document/api/1081/62451)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeFenceBindList](https://cloud.tencent.com/document/api/1081/62450)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeFenceEventList](https://cloud.tencent.com/document/api/1081/62449)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePositionFenceList](https://cloud.tencent.com/document/api/1081/62448)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeSpaceFenceEventList](https://cloud.tencent.com/document/api/1081/62447)](https://cloud.tencent.com/document/api/#/#)
+* [[GetDeviceLocationHistory](https://cloud.tencent.com/document/api/1081/62446)](https://cloud.tencent.com/document/api/#/#)
+* [[GetPositionSpaceList](https://cloud.tencent.com/document/api/1081/62445)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyFenceBind](https://cloud.tencent.com/document/api/1081/62444)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyPositionFence](https://cloud.tencent.com/document/api/1081/62443)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyPositionSpace](https://cloud.tencent.com/document/api/1081/62442)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifySpaceProperty](https://cloud.tencent.com/document/api/1081/62441)](https://cloud.tencent.com/document/api/#/#)
+* [[SearchPositionSpace](https://cloud.tencent.com/document/api/1081/62440)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[FenceAlarmPoint](https://cloud.tencent.com/document/api/1081/34988#FenceAlarmPoint)](https://cloud.tencent.com/document/api/1081/34988#[FenceAlarmPoint](https://cloud.tencent.com/document/api/1081/34988#FenceAlarmPoint))
+* [[FenceBindDeviceItem](https://cloud.tencent.com/document/api/1081/34988#FenceBindDeviceItem)](https://cloud.tencent.com/document/api/1081/34988#[FenceBindDeviceItem](https://cloud.tencent.com/document/api/1081/34988#FenceBindDeviceItem))
+* [[FenceBindProductItem](https://cloud.tencent.com/document/api/1081/34988#FenceBindProductItem)](https://cloud.tencent.com/document/api/1081/34988#[FenceBindProductItem](https://cloud.tencent.com/document/api/1081/34988#FenceBindProductItem))
+* [[FenceEventItem](https://cloud.tencent.com/document/api/1081/34988#FenceEventItem)](https://cloud.tencent.com/document/api/1081/34988#[FenceEventItem](https://cloud.tencent.com/document/api/1081/34988#FenceEventItem))
+* [[PositionFenceInfo](https://cloud.tencent.com/document/api/1081/34988#PositionFenceInfo)](https://cloud.tencent.com/document/api/1081/34988#[PositionFenceInfo](https://cloud.tencent.com/document/api/1081/34988#PositionFenceInfo))
+* [[PositionFenceItem](https://cloud.tencent.com/document/api/1081/34988#PositionFenceItem)](https://cloud.tencent.com/document/api/1081/34988#[PositionFenceItem](https://cloud.tencent.com/document/api/1081/34988#PositionFenceItem))
+* [[PositionItem](https://cloud.tencent.com/document/api/1081/34988#PositionItem)](https://cloud.tencent.com/document/api/1081/34988#[PositionItem](https://cloud.tencent.com/document/api/1081/34988#PositionItem))
+* [[PositionSpaceInfo](https://cloud.tencent.com/document/api/1081/34988#PositionSpaceInfo)](https://cloud.tencent.com/document/api/1081/34988#[PositionSpaceInfo](https://cloud.tencent.com/document/api/1081/34988#PositionSpaceInfo))
 
 ### 第 31 次发布
 
@@ -48645,17 +48658,17 @@
 
 新增接口：
 
-* [[CreateEnvironmentRole](https://cloud.tencent.com/document/api/1179/62402)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateRole](https://cloud.tencent.com/document/api/1179/62401)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteEnvironmentRoles](https://cloud.tencent.com/document/api/1179/62400)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteRoles](https://cloud.tencent.com/document/api/1179/62403)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeRoles](https://cloud.tencent.com/document/api/1179/62399)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyEnvironmentRole](https://cloud.tencent.com/document/api/1179/62398)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyRole](https://cloud.tencent.com/document/api/1179/62397)](https://cloud.tencent.com/document/api/#/#)
+* [CreateEnvironmentRole](https://cloud.tencent.com/document/api/1179/62402)
+* [CreateRole](https://cloud.tencent.com/document/api/1179/62401)
+* [DeleteEnvironmentRoles](https://cloud.tencent.com/document/api/1179/62400)
+* [DeleteRoles](https://cloud.tencent.com/document/api/1179/62403)
+* [DescribeRoles](https://cloud.tencent.com/document/api/1179/62399)
+* [ModifyEnvironmentRole](https://cloud.tencent.com/document/api/1179/62398)
+* [ModifyRole](https://cloud.tencent.com/document/api/1179/62397)
 
 新增数据结构：
 
-* [[Role](https://cloud.tencent.com/document/api/1179/46089#Role)](https://cloud.tencent.com/document/api/1179/46089#[Role](https://cloud.tencent.com/document/api/1179/46089#Role))
+* [Role](https://cloud.tencent.com/document/api/1179/46089#Role)
 
 ### 第 18 次发布
 
