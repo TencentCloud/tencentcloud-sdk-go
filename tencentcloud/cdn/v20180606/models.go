@@ -832,7 +832,7 @@ type Cache struct {
 
 	// 高级路径缓存配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleCache []*RuleCache `json:"RuleCache,omitempty" name:"RuleCache"`
+	RuleCache []*RuleCache `json:"RuleCache" name:"RuleCache"`
 }
 
 type CacheConfigCache struct {
