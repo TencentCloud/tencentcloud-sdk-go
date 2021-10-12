@@ -131,7 +131,7 @@ type Code struct {
 	// 对象存储桶名称（填写存储桶名称自定义部分，不包含-appid）
 	CosBucketName *string `json:"CosBucketName,omitempty" name:"CosBucketName"`
 
-	// 对象存储对象路径
+	// 对象存储中代码包文件路径，以/开头
 	CosObjectName *string `json:"CosObjectName,omitempty" name:"CosObjectName"`
 
 	// 包含函数代码文件及其依赖项的 zip 格式文件，zip包大小上限为 50MB，使用该接口时要求将 zip 文件的内容转成 base64 编码

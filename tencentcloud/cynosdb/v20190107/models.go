@@ -77,6 +77,9 @@ type AddInstancesRequest struct {
 
 	// 订单来源
 	OrderSource *string `json:"OrderSource,omitempty" name:"OrderSource"`
+
+	// 交易模式 0-下单并支付 1-下单
+	DealMode *int64 `json:"DealMode,omitempty" name:"DealMode"`
 }
 
 func (r *AddInstancesRequest) ToJsonString() string {
@@ -103,6 +106,7 @@ func (r *AddInstancesRequest) FromJsonString(s string) error {
 	delete(f, "AutoVoucher")
 	delete(f, "DbType")
 	delete(f, "OrderSource")
+	delete(f, "DealMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddInstancesRequest has unknown keys!", "")
 	}
@@ -341,6 +345,21 @@ type CreateClustersRequest struct {
 	// 当DbType为MYSQL时，在集群计算计费模式为后付费（包括DbMode为SERVERLESS）时，存储计费模式仅可为按量计费
 	// 回档与克隆均不支持包年包月存储
 	StoragePayMode *int64 `json:"StoragePayMode,omitempty" name:"StoragePayMode"`
+
+	// 安全组id数组
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
+
+	// 告警策略Id数组
+	AlarmPolicyIds []*string `json:"AlarmPolicyIds,omitempty" name:"AlarmPolicyIds"`
+
+	// 参数数组
+	ClusterParams []*ParamItem `json:"ClusterParams,omitempty" name:"ClusterParams"`
+
+	// 交易模式，0-下单且支付，1-下单
+	DealMode *int64 `json:"DealMode,omitempty" name:"DealMode"`
+
+	// 参数模版ID
+	ParamTemplateId *int64 `json:"ParamTemplateId,omitempty" name:"ParamTemplateId"`
 }
 
 func (r *CreateClustersRequest) ToJsonString() string {
@@ -389,6 +408,11 @@ func (r *CreateClustersRequest) FromJsonString(s string) error {
 	delete(f, "AutoPause")
 	delete(f, "AutoPauseDelay")
 	delete(f, "StoragePayMode")
+	delete(f, "SecurityGroupIds")
+	delete(f, "AlarmPolicyIds")
+	delete(f, "ClusterParams")
+	delete(f, "DealMode")
+	delete(f, "ParamTemplateId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClustersRequest has unknown keys!", "")
 	}
@@ -407,11 +431,11 @@ type CreateClustersResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
 
-		// 资源ID列表（异步发货可能无法返回该字段, 强烈建议使用dealNames字段查询接口DescribeResourcesByDealName获取异步发货的资源ID）
+		// 资源ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取资源ID）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 
-		// 集群ID列表（异步发货可能不返回该字段, 强烈建议使用dealNames查询接口DescribeResourcesByDealName获取异步发货的集群ID）
+		// 集群ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取集群ID）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
 
@@ -2210,6 +2234,18 @@ func (r *OfflineInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ParamItem struct {
+
+	// 参数名称
+	ParamName *string `json:"ParamName,omitempty" name:"ParamName"`
+
+	// 当前值
+	CurrentValue *string `json:"CurrentValue,omitempty" name:"CurrentValue"`
+
+	// 原有值
+	OldValue *string `json:"OldValue,omitempty" name:"OldValue"`
+}
+
 type PolicyRule struct {
 
 	// 策略，ACCEPT或者DROP
@@ -2362,6 +2398,9 @@ type UpgradeInstanceRequest struct {
 	// 数据库类型，取值范围: 
 	// <li> MYSQL </li>
 	DbType *string `json:"DbType,omitempty" name:"DbType"`
+
+	// 交易模式 0-下单并支付 1-下单
+	DealMode *int64 `json:"DealMode,omitempty" name:"DealMode"`
 }
 
 func (r *UpgradeInstanceRequest) ToJsonString() string {
@@ -2383,6 +2422,7 @@ func (r *UpgradeInstanceRequest) FromJsonString(s string) error {
 	delete(f, "StorageLimit")
 	delete(f, "AutoVoucher")
 	delete(f, "DbType")
+	delete(f, "DealMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeInstanceRequest has unknown keys!", "")
 	}

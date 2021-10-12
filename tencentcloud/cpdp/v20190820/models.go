@@ -7627,7 +7627,7 @@ type QueryMerchantPayWayListRequest struct {
 	// 收单系统分配的密钥
 	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
 
-	// 支付类型，逗号分隔
+	// 支付类型，逗号分隔。1-现金，2-主扫，3-被扫，4-JSAPI。
 	PayType *string `json:"PayType,omitempty" name:"PayType"`
 
 	// 沙箱环境填sandbox，正式环境不填

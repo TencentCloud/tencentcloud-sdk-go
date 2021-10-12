@@ -309,6 +309,9 @@ type CreateSignUrlsResponse struct {
 		// 签署参与者签署H5链接信息数组
 		SignUrlInfos []*SignUrlInfo `json:"SignUrlInfos,omitempty" name:"SignUrlInfos"`
 
+		// 生成失败时的错误信息，成功返回”“，顺序和出参SignUrlInfos保持一致
+		ErrorMessages []*string `json:"ErrorMessages,omitempty" name:"ErrorMessages"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

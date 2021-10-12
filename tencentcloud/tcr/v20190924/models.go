@@ -3297,6 +3297,15 @@ type DescribeReplicationInstanceSyncStatusRequest struct {
 
 	// 复制实例的地域Id
 	ReplicationRegionId *uint64 `json:"ReplicationRegionId,omitempty" name:"ReplicationRegionId"`
+
+	// 是否显示同步日志
+	ShowReplicationLog *bool `json:"ShowReplicationLog,omitempty" name:"ShowReplicationLog"`
+
+	// 日志页号, 默认0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 最大输出条数，默认5，最大为20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
 func (r *DescribeReplicationInstanceSyncStatusRequest) ToJsonString() string {
@@ -3314,6 +3323,9 @@ func (r *DescribeReplicationInstanceSyncStatusRequest) FromJsonString(s string) 
 	delete(f, "RegistryId")
 	delete(f, "ReplicationRegistryId")
 	delete(f, "ReplicationRegionId")
+	delete(f, "ShowReplicationLog")
+	delete(f, "Offset")
+	delete(f, "Limit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeReplicationInstanceSyncStatusRequest has unknown keys!", "")
 	}
@@ -3329,6 +3341,10 @@ type DescribeReplicationInstanceSyncStatusResponse struct {
 
 		// 同步完成时间
 		ReplicationTime *string `json:"ReplicationTime,omitempty" name:"ReplicationTime"`
+
+		// 同步日志
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ReplicationLog *ReplicationLog `json:"ReplicationLog,omitempty" name:"ReplicationLog"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5447,6 +5463,33 @@ type ReplicationFilter struct {
 
 	// 默认为空
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type ReplicationLog struct {
+
+	// 资源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 源资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Source *string `json:"Source,omitempty" name:"Source"`
+
+	// 目的资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Destination *string `json:"Destination,omitempty" name:"Destination"`
+
+	// 同步状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
 type ReplicationRegistry struct {
