@@ -222,6 +222,7 @@ func NewDescribeBillSummaryByProductResponse() (response *DescribeBillSummaryByP
 // 获取产品汇总费用分布
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
 //  INVALIDPARAMETER = "InvalidParameter"

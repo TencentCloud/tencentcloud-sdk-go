@@ -1,45 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 内容分发网络(cdn) 版本：2018-06-06
+## 正版曲库直通车(ame) 版本：2019-09-16
 
-### 第 80 次发布
+### 第 18 次发布
 
-发布时间：2021-10-12 08:03:17
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [AdvancedScdnAclGroup](https://cloud.tencent.com/document/api/228/30987#AdvancedScdnAclGroup)
-* [AdvancedScdnAclRule](https://cloud.tencent.com/document/api/228/30987#AdvancedScdnAclRule)
-* [RangeOriginPullRule](https://cloud.tencent.com/document/api/228/30987#RangeOriginPullRule)
-
-修改数据结构：
-
-* [CompressionRule](https://cloud.tencent.com/document/api/228/30987#CompressionRule)
-
-	* 新增成员：RuleType, RulePaths
-
-	* <font color="#dd0000">**修改成员**：</font>FileExtensions
-
-* [RangeOriginPull](https://cloud.tencent.com/document/api/228/30987#RangeOriginPull)
-
-	* 新增成员：RangeRules
-
-* [ScdnAclConfig](https://cloud.tencent.com/document/api/228/30987#ScdnAclConfig)
-
-	* 新增成员：AdvancedScriptData
-
-
-
-
-## 云原生数据库 TDSQL-C(cynosdb) 版本：2019-01-07
-
-### 第 11 次发布
-
-发布时间：2021-10-12 08:04:56
+发布时间：2021-10-13 08:02:42
 
 本次发布包含了以下内容：
 
@@ -47,30 +12,22 @@
 
 修改接口：
 
-* [AddInstances](https://cloud.tencent.com/document/api/1003/48088)
+* [DescribeKTVMusicDetail](https://cloud.tencent.com/document/api/1155/56402)
 
-	* 新增入参：DealMode
-
-* [CreateClusters](https://cloud.tencent.com/document/api/1003/48087)
-
-	* 新增入参：SecurityGroupIds, AlarmPolicyIds, ClusterParams, DealMode, ParamTemplateId
-
-* [UpgradeInstance](https://cloud.tencent.com/document/api/1003/48077)
-
-	* 新增入参：DealMode
+	* 新增出参：DefinitionInfoSet
 
 
 新增数据结构：
 
-* [ParamItem](https://cloud.tencent.com/document/api/1003/48097#ParamItem)
+* [KTVMusicDefinitionInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicDefinitionInfo)
 
 
 
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+## 计费相关(billing) 版本：2018-07-09
 
-### 第 4 次发布
+### 第 28 次发布
 
-发布时间：2021-10-12 08:06:14
+发布时间：2021-10-13 08:03:28
 
 本次发布包含了以下内容：
 
@@ -78,22 +35,42 @@
 
 修改接口：
 
-* [CreateSignUrls](https://cloud.tencent.com/document/api/1420/61522)
+* [DescribeBillSummaryByProduct](https://cloud.tencent.com/document/api/555/35761)
 
-	* 新增出参：ErrorMessages
-
-
+	* 新增入参：PayType
 
 
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 48 次发布
+
+发布时间：2021-10-13 08:05:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [QueryOrderStatus](https://cloud.tencent.com/document/api/1122/62613)
+* [RefundTlinxOrder](https://cloud.tencent.com/document/api/1122/62612)
+* [UnifiedTlinxOrder](https://cloud.tencent.com/document/api/1122/62611)
+
+新增数据结构：
+
+* [PayOrderResult](https://cloud.tencent.com/document/api/1122/40683#PayOrderResult)
+* [QueryOrderStatusResult](https://cloud.tencent.com/document/api/1122/40683#QueryOrderStatusResult)
+* [RefundOrderResult](https://cloud.tencent.com/document/api/1122/40683#RefundOrderResult)
 
 
 
 ## 视频处理(mps) 版本：2019-06-12
 
-### 第 34 次发布
+### 第 35 次发布
 
-发布时间：2021-10-12 08:08:34
+发布时间：2021-10-13 08:09:46
 
 本次发布包含了以下内容：
 
@@ -101,37 +78,89 @@
 
 修改数据结构：
 
-* [LiveStreamTaskNotifyConfig](https://cloud.tencent.com/document/api/862/37615#LiveStreamTaskNotifyConfig)
+* [MediaVideoStreamItem](https://cloud.tencent.com/document/api/862/37615#MediaVideoStreamItem)
 
-	* 新增成员：NotifyType, NotifyUrl
-
-
+	* 新增成员：HdrType
 
 
-## 容器镜像服务(tcr) 版本：2019-09-24
 
-### 第 38 次发布
 
-发布时间：2021-10-12 08:10:36
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 56 次发布
+
+发布时间：2021-10-13 08:10:08
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+新增接口：
+
+* [RecognizeOnlineTaxiItineraryOCR](https://cloud.tencent.com/document/api/866/62614)
+
+新增数据结构：
+
+* [OnlineTaxiItineraryInfo](https://cloud.tencent.com/document/api/866/33527#OnlineTaxiItineraryInfo)
+
+
+
+## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 20 次发布
+
+发布时间：2021-10-13 08:12:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Environment](https://cloud.tencent.com/document/api/1179/46089#Environment)
+
+	* 新增成员：RetentionPolicy
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 98 次发布
+
+发布时间：2021-10-13 08:13:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeNatGatewayDirectConnectGatewayRoute](https://cloud.tencent.com/document/api/215/62616)
+* [RefreshDirectConnectGatewayRouteToNatGateway](https://cloud.tencent.com/document/api/215/62615)
+
 修改接口：
 
-* [DescribeReplicationInstanceSyncStatus](https://cloud.tencent.com/document/api/1141/55297)
+* [ModifyBandwidthPackageAttribute](https://cloud.tencent.com/document/api/215/19208)
 
-	* 新增入参：ShowReplicationLog, Offset, Limit
+	* 新增入参：MigrateOnRefund
 
-	* <font color="#dd0000">**修改入参**：</font>ReplicationRegionId
+* [UnassignPrivateIpAddresses](https://cloud.tencent.com/document/api/215/15814)
 
-	* 新增出参：ReplicationLog
+	* 新增入参：InstanceId
 
 
 新增数据结构：
 
-* [ReplicationLog](https://cloud.tencent.com/document/api/1141/41603#ReplicationLog)
+* [DirectConnectSubnet](https://cloud.tencent.com/document/api/215/15824#DirectConnectSubnet)
+* [NatDirectConnectGatewayRoute](https://cloud.tencent.com/document/api/215/15824#NatDirectConnectGatewayRoute)
+
+修改数据结构：
+
+* [SecurityGroup](https://cloud.tencent.com/document/api/215/15824#SecurityGroup)
+
+	* 新增成员：UpdateTime
+
 
 
 
@@ -435,6 +464,25 @@
 
 
 ## 正版曲库直通车(ame) 版本：2019-09-16
+
+### 第 18 次发布
+
+发布时间：2021-10-13 08:02:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeKTVMusicDetail](https://cloud.tencent.com/document/api/1155/56402)
+
+	* 新增出参：DefinitionInfoSet
+
+
+新增数据结构：
+
+* [[KTVMusicDefinitionInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicDefinitionInfo)](https://cloud.tencent.com/document/api/1155/40113#[KTVMusicDefinitionInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicDefinitionInfo))
 
 ### 第 17 次发布
 
@@ -4302,6 +4350,21 @@
 
 
 ## 计费相关(billing) 版本：2018-07-09
+
+### 第 28 次发布
+
+发布时间：2021-10-13 08:03:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBillSummaryByProduct](https://cloud.tencent.com/document/api/555/35761)
+
+	* 新增入参：PayType
+
 
 ### 第 27 次发布
 
@@ -9357,9 +9420,9 @@
 
 新增数据结构：
 
-* [[AdvancedScdnAclGroup](https://cloud.tencent.com/document/api/228/30987#AdvancedScdnAclGroup)](https://cloud.tencent.com/document/api/228/30987#[AdvancedScdnAclGroup](https://cloud.tencent.com/document/api/228/30987#AdvancedScdnAclGroup))
-* [[AdvancedScdnAclRule](https://cloud.tencent.com/document/api/228/30987#AdvancedScdnAclRule)](https://cloud.tencent.com/document/api/228/30987#[AdvancedScdnAclRule](https://cloud.tencent.com/document/api/228/30987#AdvancedScdnAclRule))
-* [[RangeOriginPullRule](https://cloud.tencent.com/document/api/228/30987#RangeOriginPullRule)](https://cloud.tencent.com/document/api/228/30987#[RangeOriginPullRule](https://cloud.tencent.com/document/api/228/30987#RangeOriginPullRule))
+* [AdvancedScdnAclGroup](https://cloud.tencent.com/document/api/228/30987#AdvancedScdnAclGroup)
+* [AdvancedScdnAclRule](https://cloud.tencent.com/document/api/228/30987#AdvancedScdnAclRule)
+* [RangeOriginPullRule](https://cloud.tencent.com/document/api/228/30987#RangeOriginPullRule)
 
 修改数据结构：
 
@@ -15660,6 +15723,26 @@
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
 
+### 第 48 次发布
+
+发布时间：2021-10-13 08:05:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[QueryOrderStatus](https://cloud.tencent.com/document/api/1122/62613)](https://cloud.tencent.com/document/api/#/#)
+* [[RefundTlinxOrder](https://cloud.tencent.com/document/api/1122/62612)](https://cloud.tencent.com/document/api/#/#)
+* [[UnifiedTlinxOrder](https://cloud.tencent.com/document/api/1122/62611)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[PayOrderResult](https://cloud.tencent.com/document/api/1122/40683#PayOrderResult)](https://cloud.tencent.com/document/api/1122/40683#[PayOrderResult](https://cloud.tencent.com/document/api/1122/40683#PayOrderResult))
+* [[QueryOrderStatusResult](https://cloud.tencent.com/document/api/1122/40683#QueryOrderStatusResult)](https://cloud.tencent.com/document/api/1122/40683#[QueryOrderStatusResult](https://cloud.tencent.com/document/api/1122/40683#QueryOrderStatusResult))
+* [[RefundOrderResult](https://cloud.tencent.com/document/api/1122/40683#RefundOrderResult)](https://cloud.tencent.com/document/api/1122/40683#[RefundOrderResult](https://cloud.tencent.com/document/api/1122/40683#RefundOrderResult))
+
 ### 第 47 次发布
 
 发布时间：2021-10-09 11:10:00
@@ -19624,7 +19707,7 @@
 
 新增数据结构：
 
-* [[ParamItem](https://cloud.tencent.com/document/api/1003/48097#ParamItem)](https://cloud.tencent.com/document/api/1003/48097#[ParamItem](https://cloud.tencent.com/document/api/1003/48097#ParamItem))
+* [ParamItem](https://cloud.tencent.com/document/api/1003/48097#ParamItem)
 
 ### 第 10 次发布
 
@@ -36936,6 +37019,21 @@
 
 ## 视频处理(mps) 版本：2019-06-12
 
+### 第 35 次发布
+
+发布时间：2021-10-13 08:09:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MediaVideoStreamItem](https://cloud.tencent.com/document/api/862/37615#MediaVideoStreamItem)
+
+	* 新增成员：HdrType
+
+
 ### 第 34 次发布
 
 发布时间：2021-10-12 08:08:34
@@ -39057,6 +39155,22 @@
 
 
 ## 文字识别(ocr) 版本：2018-11-19
+
+### 第 56 次发布
+
+发布时间：2021-10-13 08:10:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[RecognizeOnlineTaxiItineraryOCR](https://cloud.tencent.com/document/api/866/62614)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[OnlineTaxiItineraryInfo](https://cloud.tencent.com/document/api/866/33527#OnlineTaxiItineraryInfo)](https://cloud.tencent.com/document/api/866/33527#[OnlineTaxiItineraryInfo](https://cloud.tencent.com/document/api/866/33527#OnlineTaxiItineraryInfo))
 
 ### 第 55 次发布
 
@@ -48124,7 +48238,7 @@
 
 新增数据结构：
 
-* [[ReplicationLog](https://cloud.tencent.com/document/api/1141/41603#ReplicationLog)](https://cloud.tencent.com/document/api/1141/41603#[ReplicationLog](https://cloud.tencent.com/document/api/1141/41603#ReplicationLog))
+* [ReplicationLog](https://cloud.tencent.com/document/api/1141/41603#ReplicationLog)
 
 ### 第 37 次发布
 
@@ -48849,6 +48963,21 @@
 
 
 ## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 20 次发布
+
+发布时间：2021-10-13 08:12:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Environment](https://cloud.tencent.com/document/api/1179/46089#Environment)
+
+	* 新增成员：RetentionPolicy
+
 
 ### 第 19 次发布
 
@@ -58175,6 +58304,42 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 98 次发布
+
+发布时间：2021-10-13 08:13:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeNatGatewayDirectConnectGatewayRoute](https://cloud.tencent.com/document/api/215/62616)](https://cloud.tencent.com/document/api/#/#)
+* [[RefreshDirectConnectGatewayRouteToNatGateway](https://cloud.tencent.com/document/api/215/62615)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [ModifyBandwidthPackageAttribute](https://cloud.tencent.com/document/api/215/19208)
+
+	* 新增入参：MigrateOnRefund
+
+* [UnassignPrivateIpAddresses](https://cloud.tencent.com/document/api/215/15814)
+
+	* 新增入参：InstanceId
+
+
+新增数据结构：
+
+* [[DirectConnectSubnet](https://cloud.tencent.com/document/api/215/15824#DirectConnectSubnet)](https://cloud.tencent.com/document/api/215/15824#[DirectConnectSubnet](https://cloud.tencent.com/document/api/215/15824#DirectConnectSubnet))
+* [[NatDirectConnectGatewayRoute](https://cloud.tencent.com/document/api/215/15824#NatDirectConnectGatewayRoute)](https://cloud.tencent.com/document/api/215/15824#[NatDirectConnectGatewayRoute](https://cloud.tencent.com/document/api/215/15824#NatDirectConnectGatewayRoute))
+
+修改数据结构：
+
+* [SecurityGroup](https://cloud.tencent.com/document/api/215/15824#SecurityGroup)
+
+	* 新增成员：UpdateTime
+
 
 ### 第 97 次发布
 

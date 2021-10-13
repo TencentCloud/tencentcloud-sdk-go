@@ -435,6 +435,9 @@ type DescribeKTVMusicDetailResponse struct {
 		// 歌词下载地址
 		LyricsUrl *string `json:"LyricsUrl,omitempty" name:"LyricsUrl"`
 
+		// 歌曲规格信息列表
+		DefinitionInfoSet []*KTVMusicDefinitionInfo `json:"DefinitionInfoSet,omitempty" name:"DefinitionInfoSet"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -1033,6 +1036,21 @@ type KTVMusicBaseInfo struct {
 
 	// 歌曲时长
 	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+}
+
+type KTVMusicDefinitionInfo struct {
+
+	// 规格，取值有：
+	// <li>audio/mi：低规格；</li>
+	// <li>audio/lo：中规格；</li>
+	// <li>audio/hi：高规格。</li>
+	Definition *string `json:"Definition,omitempty" name:"Definition"`
+
+	// 码率，单位为 bps。
+	Bitrate *int64 `json:"Bitrate,omitempty" name:"Bitrate"`
+
+	// 文件大小，单位为字节。
+	Size *int64 `json:"Size,omitempty" name:"Size"`
 }
 
 type KTVPlaylistBaseInfo struct {

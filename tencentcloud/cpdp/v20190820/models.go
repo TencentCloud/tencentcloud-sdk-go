@@ -5275,6 +5275,65 @@ type OrganizationInfo struct {
 	LegalPersonIdCode *string `json:"LegalPersonIdCode,omitempty" name:"LegalPersonIdCode"`
 }
 
+type PayOrderResult struct {
+
+	// 付款订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
+
+	// 开发者流水号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeveloperNo *string `json:"DeveloperNo,omitempty" name:"DeveloperNo"`
+
+	// 交易优惠金额（免充值券）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeDiscountAmount *string `json:"TradeDiscountAmount,omitempty" name:"TradeDiscountAmount"`
+
+	// 付款方式名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayName *string `json:"PayName,omitempty" name:"PayName"`
+
+	// 商户流水号（从1开始自增长不重复）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderMerchantId *string `json:"OrderMerchantId,omitempty" name:"OrderMerchantId"`
+
+	// 交易帐号（银行卡号、支付宝帐号、微信帐号等，某些收单机构没有此数据）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeAccount *string `json:"TradeAccount,omitempty" name:"TradeAccount"`
+
+	// 实际交易金额（以分为单位，没有小数点）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeAmount *string `json:"TradeAmount,omitempty" name:"TradeAmount"`
+
+	// 币种签名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrencySign *string `json:"CurrencySign,omitempty" name:"CurrencySign"`
+
+	// 付款完成时间（以收单机构为准）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradePayTime *string `json:"TradePayTime,omitempty" name:"TradePayTime"`
+
+	// 门店流水号（从1开始自增长不重复）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopOrderId *string `json:"ShopOrderId,omitempty" name:"ShopOrderId"`
+
+	// 支付标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayTag *string `json:"PayTag,omitempty" name:"PayTag"`
+
+	// 订单状态（1交易成功，2待支付，4已取消，9等待用户输入密码确认
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 币种代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderCurrency *string `json:"OrderCurrency,omitempty" name:"OrderCurrency"`
+
+	// 二维码字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeQrcode *string `json:"TradeQrcode,omitempty" name:"TradeQrcode"`
+}
+
 type QueryAcctBindingRequest struct {
 	*tchttp.BaseRequest
 
@@ -7954,6 +8013,210 @@ func (r *QueryOrderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type QueryOrderStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 开发者流水号
+	DeveloperNo *string `json:"DeveloperNo,omitempty" name:"DeveloperNo"`
+
+	// 付款订单号
+	OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QueryOrderStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryOrderStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "DeveloperNo")
+	delete(f, "OrderNo")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryOrderStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryOrderStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 查询订单付款状态结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *QueryOrderStatusResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryOrderStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryOrderStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryOrderStatusResult struct {
+
+	// 付款订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
+
+	// 开发者流水号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeveloperNo *string `json:"DeveloperNo,omitempty" name:"DeveloperNo"`
+
+	// 交易优惠金额（免充值券）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeDiscountAmount *string `json:"TradeDiscountAmount,omitempty" name:"TradeDiscountAmount"`
+
+	// 付款方式名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayName *string `json:"PayName,omitempty" name:"PayName"`
+
+	// 商户流水号（从1开始自增长不重复）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderMerchantId *string `json:"OrderMerchantId,omitempty" name:"OrderMerchantId"`
+
+	// 交易帐号（银行卡号、支付宝帐号、微信帐号等，某些收单机构没有此数据）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeAccount *string `json:"TradeAccount,omitempty" name:"TradeAccount"`
+
+	// 实际交易金额（以分为单位，没有小数点）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeAmount *string `json:"TradeAmount,omitempty" name:"TradeAmount"`
+
+	// 币种签名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrencySign *string `json:"CurrencySign,omitempty" name:"CurrencySign"`
+
+	// 付款完成时间（以收单机构为准）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradePayTime *string `json:"TradePayTime,omitempty" name:"TradePayTime"`
+
+	// 门店流水号（从1开始自增长不重复）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopOrderId *string `json:"ShopOrderId,omitempty" name:"ShopOrderId"`
+
+	// 支付标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayTag *string `json:"PayTag,omitempty" name:"PayTag"`
+
+	// 订单状态（1交易成功，2待支付，4已取消，9等待用户输入密码确认
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 币种代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderCurrency *string `json:"OrderCurrency,omitempty" name:"OrderCurrency"`
+
+	// 二维码字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeQrcode *string `json:"TradeQrcode,omitempty" name:"TradeQrcode"`
+
+	// 开始交易时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeTime *string `json:"TradeTime,omitempty" name:"TradeTime"`
+
+	// 折扣金额（以分为单位，没有小数点）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiscountAmount *string `json:"DiscountAmount,omitempty" name:"DiscountAmount"`
+
+	// 商户号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+
+	// 订单备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 订单标题
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderName *string `json:"OrderName,omitempty" name:"OrderName"`
+
+	// 原始金额（以分为单位，没有小数点）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalAmount *string `json:"OriginalAmount,omitempty" name:"OriginalAmount"`
+
+	// 门店编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopNo *string `json:"ShopNo,omitempty" name:"ShopNo"`
+
+	// 收单机构原始交易数据，如果返回非标准json数据，请自行转换
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeResult *string `json:"TradeResult,omitempty" name:"TradeResult"`
+
+	// 订单流水号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 订单类型（1消费，2辙单）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderType *string `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 收单机构交易号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeNo *string `json:"TradeNo,omitempty" name:"TradeNo"`
+
+	// 原始订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalOrderNo *string `json:"OriginalOrderNo,omitempty" name:"OriginalOrderNo"`
+
+	// 订单标记，订单附加数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tag *string `json:"Tag,omitempty" name:"Tag"`
+
+	// 下单时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddTime *string `json:"AddTime,omitempty" name:"AddTime"`
+
+	// 收银员编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CashierId *string `json:"CashierId,omitempty" name:"CashierId"`
+
+	// 收银员名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CashierRealName *string `json:"CashierRealName,omitempty" name:"CashierRealName"`
+
+	// 店铺全称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopFullName *string `json:"ShopFullName,omitempty" name:"ShopFullName"`
+
+	// 店铺名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopName *string `json:"ShopName,omitempty" name:"ShopName"`
+}
+
 type QueryOutwardOrderData struct {
 
 	// 商户号
@@ -9786,6 +10049,69 @@ func (r *RefundOrderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type RefundOrderResult struct {
+
+	// 付款订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
+
+	// 开发者流水号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeveloperNo *string `json:"DeveloperNo,omitempty" name:"DeveloperNo"`
+
+	// 交易优惠金额（免充值券）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeDiscountAmount *string `json:"TradeDiscountAmount,omitempty" name:"TradeDiscountAmount"`
+
+	// 付款方式名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayName *string `json:"PayName,omitempty" name:"PayName"`
+
+	// 商户流水号（从1开始自增长不重复）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderMerchantId *string `json:"OrderMerchantId,omitempty" name:"OrderMerchantId"`
+
+	// 实际交易金额（以分为单位，没有小数点）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeAmount *string `json:"TradeAmount,omitempty" name:"TradeAmount"`
+
+	// 币种签名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrencySign *string `json:"CurrencySign,omitempty" name:"CurrencySign"`
+
+	// 付款完成时间（以收单机构为准）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradePayTime *string `json:"TradePayTime,omitempty" name:"TradePayTime"`
+
+	// 门店流水号（从1开始自增长不重复）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopOrderId *string `json:"ShopOrderId,omitempty" name:"ShopOrderId"`
+
+	// 支付标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayTag *string `json:"PayTag,omitempty" name:"PayTag"`
+
+	// 订单状态（1交易成功，2待支付，4已取消，9等待用户输入密码确认
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 币种代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderCurrency *string `json:"OrderCurrency,omitempty" name:"OrderCurrency"`
+
+	// 开始交易时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeTime *string `json:"TradeTime,omitempty" name:"TradeTime"`
+
+	// 折扣金额（以分为单位，没有小数点）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiscountAmount *string `json:"DiscountAmount,omitempty" name:"DiscountAmount"`
+
+	// 原始订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalOrderNo *string `json:"OriginalOrderNo,omitempty" name:"OriginalOrderNo"`
+}
+
 type RefundOutSubOrderRefundList struct {
 
 	// 平台应退金额
@@ -9895,6 +10221,95 @@ func (r *RefundResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RefundResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RefundTlinxOrderRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 原始订单的开发者交易流水号
+	DeveloperNo *string `json:"DeveloperNo,omitempty" name:"DeveloperNo"`
+
+	// 新退款订单的开发者流水号，同一门店内唯一
+	RefundOutNo *string `json:"RefundOutNo,omitempty" name:"RefundOutNo"`
+
+	// 退款订单名称，可以为空
+	RefundOrderName *string `json:"RefundOrderName,omitempty" name:"RefundOrderName"`
+
+	// 退款金额（以分为单位，没有小数点）
+	RefundAmount *string `json:"RefundAmount,omitempty" name:"RefundAmount"`
+
+	// 主管密码，对密码进行sha1加密，默认为123456
+	ShopPassword *string `json:"ShopPassword,omitempty" name:"ShopPassword"`
+
+	// 退款备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *RefundTlinxOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RefundTlinxOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "DeveloperNo")
+	delete(f, "RefundOutNo")
+	delete(f, "RefundOrderName")
+	delete(f, "RefundAmount")
+	delete(f, "ShopPassword")
+	delete(f, "Remark")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RefundTlinxOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RefundTlinxOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 退款响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *RefundOrderResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RefundTlinxOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RefundTlinxOrderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -11644,6 +12059,135 @@ func (r *UnifiedOrderResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UnifiedOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UnifiedTlinxOrderRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 开发者流水号
+	DeveloperNo *string `json:"DeveloperNo,omitempty" name:"DeveloperNo"`
+
+	// 支付标签
+	PayTag *string `json:"PayTag,omitempty" name:"PayTag"`
+
+	// 实际交易金额（以分为单位，没有小数点）
+	TradeAmount *string `json:"TradeAmount,omitempty" name:"TradeAmount"`
+
+	// 订单标记，订单附加数据
+	Tag *string `json:"Tag,omitempty" name:"Tag"`
+
+	// 交易结果异步通知url地址
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+
+	// 付款方式名称(当PayTag为Diy时，PayName不能为空)
+	PayName *string `json:"PayName,omitempty" name:"PayName"`
+
+	// 订单名称（描述）
+	OrderName *string `json:"OrderName,omitempty" name:"OrderName"`
+
+	// 原始交易金额（以分为单位，没有小数点）
+	OriginalAmount *string `json:"OriginalAmount,omitempty" name:"OriginalAmount"`
+
+	// 折扣金额（以分为单位，没有小数点）
+	DiscountAmount *string `json:"DiscountAmount,omitempty" name:"DiscountAmount"`
+
+	// 抹零金额（以分为单位，没有小数点）
+	IgnoreAmount *string `json:"IgnoreAmount,omitempty" name:"IgnoreAmount"`
+
+	// 交易帐号（银行卡号）
+	TradeAccount *string `json:"TradeAccount,omitempty" name:"TradeAccount"`
+
+	// 交易号（收单机构交易号）
+	TradeNo *string `json:"TradeNo,omitempty" name:"TradeNo"`
+
+	// 收单机构原始交易报文，请转换为json
+	TradeResult *string `json:"TradeResult,omitempty" name:"TradeResult"`
+
+	// 订单备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 条码支付的授权码（条码抢扫手机扫到的一串数字）
+	AuthCode *string `json:"AuthCode,omitempty" name:"AuthCode"`
+
+	// 公众号支付时，支付成功后跳转url地址
+	JumpUrl *string `json:"JumpUrl,omitempty" name:"JumpUrl"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *UnifiedTlinxOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnifiedTlinxOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "DeveloperNo")
+	delete(f, "PayTag")
+	delete(f, "TradeAmount")
+	delete(f, "Tag")
+	delete(f, "NotifyUrl")
+	delete(f, "PayName")
+	delete(f, "OrderName")
+	delete(f, "OriginalAmount")
+	delete(f, "DiscountAmount")
+	delete(f, "IgnoreAmount")
+	delete(f, "TradeAccount")
+	delete(f, "TradeNo")
+	delete(f, "TradeResult")
+	delete(f, "Remark")
+	delete(f, "AuthCode")
+	delete(f, "JumpUrl")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnifiedTlinxOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UnifiedTlinxOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 统一下单响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *PayOrderResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UnifiedTlinxOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnifiedTlinxOrderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

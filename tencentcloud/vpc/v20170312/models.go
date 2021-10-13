@@ -8100,6 +8100,70 @@ func (r *DescribeNatGatewayDestinationIpPortTranslationNatRulesResponse) FromJso
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeNatGatewayDirectConnectGatewayRouteRequest struct {
+	*tchttp.BaseRequest
+
+	// nat的唯一标识
+	NatGatewayId *string `json:"NatGatewayId,omitempty" name:"NatGatewayId"`
+
+	// vpc的唯一标识
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 0到200之间
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 大于0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeNatGatewayDirectConnectGatewayRouteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNatGatewayDirectConnectGatewayRouteRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NatGatewayId")
+	delete(f, "VpcId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNatGatewayDirectConnectGatewayRouteRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeNatGatewayDirectConnectGatewayRouteResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 路由数据
+		NatDirectConnectGatewayRouteSet []*NatDirectConnectGatewayRoute `json:"NatDirectConnectGatewayRouteSet,omitempty" name:"NatDirectConnectGatewayRouteSet"`
+
+		// 路由总数
+		Total *int64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeNatGatewayDirectConnectGatewayRouteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNatGatewayDirectConnectGatewayRouteResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeNatGatewaySourceIpTranslationNatRulesRequest struct {
 	*tchttp.BaseRequest
 
@@ -10459,6 +10523,15 @@ type DirectConnectGatewayCcnRoute struct {
 	ASPath []*string `json:"ASPath,omitempty" name:"ASPath"`
 }
 
+type DirectConnectSubnet struct {
+
+	// 专线网关ID
+	DirectConnectGatewayId *string `json:"DirectConnectGatewayId,omitempty" name:"DirectConnectGatewayId"`
+
+	// IDC子网网段
+	CidrBlock *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
+}
+
 type DisableCcnRoutesRequest struct {
 	*tchttp.BaseRequest
 
@@ -12566,6 +12639,9 @@ type ModifyBandwidthPackageAttributeRequest struct {
 
 	// 带宽包计费模式
 	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// 退款时迁移为后付费带宽包。默认值：否
+	MigrateOnRefund *bool `json:"MigrateOnRefund,omitempty" name:"MigrateOnRefund"`
 }
 
 func (r *ModifyBandwidthPackageAttributeRequest) ToJsonString() string {
@@ -12583,6 +12659,7 @@ func (r *ModifyBandwidthPackageAttributeRequest) FromJsonString(s string) error 
 	delete(f, "BandwidthPackageId")
 	delete(f, "BandwidthPackageName")
 	delete(f, "ChargeType")
+	delete(f, "MigrateOnRefund")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBandwidthPackageAttributeRequest has unknown keys!", "")
 	}
@@ -12665,10 +12742,10 @@ type ModifyCcnAttributeRequest struct {
 	// CCN实例ID。形如：ccn-f49l6u0z。
 	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
 
-	// CCN名称，最大长度不能超过60个字节。
+	// CCN名称，最大长度不能超过60个字节，限制：CcnName和CcnDescription必须至少选择一个参数输入，否则报错。
 	CcnName *string `json:"CcnName,omitempty" name:"CcnName"`
 
-	// CCN描述信息，最大长度不能超过100个字节。
+	// CCN描述信息，最大长度不能超过100个字节，限制：CcnName和CcnDescription必须至少选择一个参数输入，否则报错。
 	CcnDescription *string `json:"CcnDescription,omitempty" name:"CcnDescription"`
 }
 
@@ -14648,6 +14725,25 @@ func (r *ModifyVpnGatewayRoutesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type NatDirectConnectGatewayRoute struct {
+
+	// 子网的 `IPv4` `CIDR`
+	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" name:"DestinationCidrBlock"`
+
+	// 下一跳网关的类型，目前此接口支持的类型有：
+	// DIRECTCONNECT：专线网关
+	GatewayType *string `json:"GatewayType,omitempty" name:"GatewayType"`
+
+	// 下一跳网关ID
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// 路由的创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 路由的更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
 type NatGateway struct {
 
 	// NAT网关的ID。
@@ -15109,6 +15205,63 @@ type ReferredSecurityGroup struct {
 
 	// 引用安全组实例ID（SecurityGroupId）的所有安全组实例ID。
 	ReferredSecurityGroupIds []*string `json:"ReferredSecurityGroupIds,omitempty" name:"ReferredSecurityGroupIds"`
+}
+
+type RefreshDirectConnectGatewayRouteToNatGatewayRequest struct {
+	*tchttp.BaseRequest
+
+	// vpc的ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// NAT网关ID
+	NatGatewayId *string `json:"NatGatewayId,omitempty" name:"NatGatewayId"`
+
+	// 是否是预刷新；True:是， False:否
+	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
+}
+
+func (r *RefreshDirectConnectGatewayRouteToNatGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RefreshDirectConnectGatewayRouteToNatGatewayRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VpcId")
+	delete(f, "NatGatewayId")
+	delete(f, "DryRun")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RefreshDirectConnectGatewayRouteToNatGatewayRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RefreshDirectConnectGatewayRouteToNatGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// IDC子网信息
+		DirectConnectSubnetSet []*DirectConnectSubnet `json:"DirectConnectSubnetSet,omitempty" name:"DirectConnectSubnetSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RefreshDirectConnectGatewayRouteToNatGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RefreshDirectConnectGatewayRouteToNatGatewayResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RejectAttachCcnInstancesRequest struct {
@@ -16205,6 +16358,10 @@ type SecurityGroup struct {
 
 	// 标签键值对。
 	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet"`
+
+	// 安全组更新时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type SecurityGroupAssociationStatistics struct {
@@ -16740,6 +16897,9 @@ type UnassignPrivateIpAddressesRequest struct {
 
 	// 指定的内网IP信息，单次最多指定10个。
 	PrivateIpAddresses []*PrivateIpAddressSpecification `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses"`
+
+	// 网卡绑定的子机实例ID，该参数仅用于指定网卡退还IP并解绑子机的场景，如果不涉及解绑子机，请勿填写。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 func (r *UnassignPrivateIpAddressesRequest) ToJsonString() string {
@@ -16756,6 +16916,7 @@ func (r *UnassignPrivateIpAddressesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "NetworkInterfaceId")
 	delete(f, "PrivateIpAddresses")
+	delete(f, "InstanceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnassignPrivateIpAddressesRequest has unknown keys!", "")
 	}

@@ -2989,6 +2989,10 @@ type Environment struct {
 	// Topic数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicNum *int64 `json:"TopicNum,omitempty" name:"TopicNum"`
+
+	// 消息保留策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetentionPolicy *RetentionPolicy `json:"RetentionPolicy,omitempty" name:"RetentionPolicy"`
 }
 
 type EnvironmentRole struct {

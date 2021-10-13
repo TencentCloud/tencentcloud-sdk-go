@@ -3355,6 +3355,7 @@ func NewModifyAdaptiveDynamicStreamingTemplateResponse() (response *ModifyAdapti
 //  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
 //  INVALIDPARAMETERVALUE_SOUNDSYSTEM = "InvalidParameterValue.SoundSystem"
 //  INVALIDPARAMETERVALUE_WIDTH = "InvalidParameterValue.Width"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) ModifyAdaptiveDynamicStreamingTemplate(request *ModifyAdaptiveDynamicStreamingTemplateRequest) (response *ModifyAdaptiveDynamicStreamingTemplateResponse, err error) {
     if request == nil {
         request = NewModifyAdaptiveDynamicStreamingTemplateRequest()

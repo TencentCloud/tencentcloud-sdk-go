@@ -5925,6 +5925,10 @@ type MediaVideoStreamItem struct {
 	// 色彩空间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColorTransfer *string `json:"ColorTransfer,omitempty" name:"ColorTransfer"`
+
+	// HDR类型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HdrType *string `json:"HdrType,omitempty" name:"HdrType"`
 }
 
 type ModifyAIAnalysisTemplateRequest struct {

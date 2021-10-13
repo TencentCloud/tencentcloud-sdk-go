@@ -2607,6 +2607,38 @@ func (c *Client) QueryOrder(request *QueryOrderRequest) (response *QueryOrderRes
     return
 }
 
+func NewQueryOrderStatusRequest() (request *QueryOrderStatusRequest) {
+    request = &QueryOrderStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryOrderStatus")
+    return
+}
+
+func NewQueryOrderStatusResponse() (response *QueryOrderStatusResponse) {
+    response = &QueryOrderStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryOrderStatus
+// 云支付-查询订单付款状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
+//  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) QueryOrderStatus(request *QueryOrderStatusRequest) (response *QueryOrderStatusResponse, err error) {
+    if request == nil {
+        request = NewQueryOrderStatusRequest()
+    }
+    response = NewQueryOrderStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryOutwardOrderRequest() (request *QueryOutwardOrderRequest) {
     request = &QueryOutwardOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3197,6 +3229,38 @@ func (c *Client) RefundOrder(request *RefundOrderRequest) (response *RefundOrder
     return
 }
 
+func NewRefundTlinxOrderRequest() (request *RefundTlinxOrderRequest) {
+    request = &RefundTlinxOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "RefundTlinxOrder")
+    return
+}
+
+func NewRefundTlinxOrderResponse() (response *RefundTlinxOrderResponse) {
+    response = &RefundTlinxOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RefundTlinxOrder
+// 云支付Tlinx退款接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_ORDERREFUNDERROR = "FailedOperation.OrderRefundError"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) RefundTlinxOrder(request *RefundTlinxOrderRequest) (response *RefundTlinxOrderResponse, err error) {
+    if request == nil {
+        request = NewRefundTlinxOrderRequest()
+    }
+    response = NewRefundTlinxOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRegisterBehaviorRequest() (request *RegisterBehaviorRequest) {
     request = &RegisterBehaviorRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3719,6 +3783,43 @@ func (c *Client) UnifiedOrder(request *UnifiedOrderRequest) (response *UnifiedOr
         request = NewUnifiedOrderRequest()
     }
     response = NewUnifiedOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnifiedTlinxOrderRequest() (request *UnifiedTlinxOrderRequest) {
+    request = &UnifiedTlinxOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "UnifiedTlinxOrder")
+    return
+}
+
+func NewUnifiedTlinxOrderResponse() (response *UnifiedTlinxOrderResponse) {
+    response = &UnifiedTlinxOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UnifiedTlinxOrder
+// 云支付Tlinx统一下单接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
+//  FAILEDOPERATION_CHANNELDENY = "FailedOperation.ChannelDeny"
+//  FAILEDOPERATION_OCCOMPLETEDORDER = "FailedOperation.OcCompletedOrder"
+//  FAILEDOPERATION_OCREPEATORDER = "FailedOperation.OcRepeatOrder"
+//  FAILEDOPERATION_PARENTAPPIDERROR = "FailedOperation.ParentAppIdError"
+//  FAILEDOPERATION_PORTALERROR = "FailedOperation.PortalError"
+//  FAILEDOPERATION_WECHATERROR = "FailedOperation.WechatError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) UnifiedTlinxOrder(request *UnifiedTlinxOrderRequest) (response *UnifiedTlinxOrderResponse, err error) {
+    if request == nil {
+        request = NewUnifiedTlinxOrderRequest()
+    }
+    response = NewUnifiedTlinxOrderResponse()
     err = c.Send(request, response)
     return
 }
