@@ -107,6 +107,9 @@ const (
 	// 证书已关联云资源，无法吊销。
 	FAILEDOPERATION_REVOKERESOURCEFAILED = "FailedOperation.RevokeResourceFailed"
 
+	// 角色不存在，请前往授权。
+	FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
@@ -124,4 +127,10 @@ const (
 
 	// 公司管理人不存在。
 	RESOURCENOTFOUND_MANAGER = "ResourceNotFound.Manager"
+
+	// 未授权操作。
+	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+
+	// 未知参数错误。
+	UNKNOWNPARAMETER = "UnknownParameter"
 )

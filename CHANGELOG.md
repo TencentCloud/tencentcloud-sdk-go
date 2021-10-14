@@ -1,52 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 正版曲库直通车(ame) 版本：2019-09-16
+## 访问管理(cam) 版本：2019-01-16
 
-### 第 18 次发布
+### 第 38 次发布
 
-发布时间：2021-10-13 08:02:42
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeKTVMusicDetail](https://cloud.tencent.com/document/api/1155/56402)
-
-	* 新增出参：DefinitionInfoSet
-
-
-新增数据结构：
-
-* [KTVMusicDefinitionInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicDefinitionInfo)
-
-
-
-## 计费相关(billing) 版本：2018-07-09
-
-### 第 28 次发布
-
-发布时间：2021-10-13 08:03:28
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeBillSummaryByProduct](https://cloud.tencent.com/document/api/555/35761)
-
-	* 新增入参：PayType
-
-
-
-
-## 企业收付平台(cpdp) 版本：2019-08-20
-
-### 第 48 次发布
-
-发布时间：2021-10-13 08:05:27
+发布时间：2021-10-14 08:05:24
 
 本次发布包含了以下内容：
 
@@ -54,42 +12,17 @@
 
 新增接口：
 
-* [QueryOrderStatus](https://cloud.tencent.com/document/api/1122/62613)
-* [RefundTlinxOrder](https://cloud.tencent.com/document/api/1122/62612)
-* [UnifiedTlinxOrder](https://cloud.tencent.com/document/api/1122/62611)
-
-新增数据结构：
-
-* [PayOrderResult](https://cloud.tencent.com/document/api/1122/40683#PayOrderResult)
-* [QueryOrderStatusResult](https://cloud.tencent.com/document/api/1122/40683#QueryOrderStatusResult)
-* [RefundOrderResult](https://cloud.tencent.com/document/api/1122/40683#RefundOrderResult)
+* [CreateUserSAMLConfig](https://cloud.tencent.com/document/api/598/62664)
+* [DescribeUserSAMLConfig](https://cloud.tencent.com/document/api/598/62663)
+* [UpdateUserSAMLConfig](https://cloud.tencent.com/document/api/598/62662)
 
 
 
-## 视频处理(mps) 版本：2019-06-12
+## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 35 次发布
+### 第 81 次发布
 
-发布时间：2021-10-13 08:09:46
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [MediaVideoStreamItem](https://cloud.tencent.com/document/api/862/37615#MediaVideoStreamItem)
-
-	* 新增成员：HdrType
-
-
-
-
-## 文字识别(ocr) 版本：2018-11-19
-
-### 第 56 次发布
-
-发布时间：2021-10-13 08:10:08
+发布时间：2021-10-14 08:06:02
 
 本次发布包含了以下内容：
 
@@ -97,38 +30,27 @@
 
 新增接口：
 
-* [RecognizeOnlineTaxiItineraryOCR](https://cloud.tencent.com/document/api/866/62614)
+* [DescribeScdnIpStrategy](https://cloud.tencent.com/document/api/228/62665)
 
 新增数据结构：
 
-* [OnlineTaxiItineraryInfo](https://cloud.tencent.com/document/api/866/33527#OnlineTaxiItineraryInfo)
-
-
-
-## 分布式消息队列(tdmq) 版本：2020-02-17
-
-### 第 20 次发布
-
-发布时间：2021-10-13 08:12:03
-
-本次发布包含了以下内容：
-
-改善已有的文档。
+* [ScdnIpStrategy](https://cloud.tencent.com/document/api/228/30987#ScdnIpStrategy)
+* [ScdnIpStrategyFilter](https://cloud.tencent.com/document/api/228/30987#ScdnIpStrategyFilter)
 
 修改数据结构：
 
-* [Environment](https://cloud.tencent.com/document/api/1179/46089#Environment)
+* [IpFilter](https://cloud.tencent.com/document/api/228/30987#IpFilter)
 
-	* 新增成员：RetentionPolicy
-
-
+	* 新增成员：ReturnCode
 
 
-## 私有网络(vpc) 版本：2017-03-12
 
-### 第 98 次发布
 
-发布时间：2021-10-13 08:13:36
+## 域名注册(domain) 版本：2018-08-08
+
+### 第 16 次发布
+
+发布时间：2021-10-14 08:08:15
 
 本次发布包含了以下内容：
 
@@ -136,31 +58,57 @@
 
 新增接口：
 
-* [DescribeNatGatewayDirectConnectGatewayRoute](https://cloud.tencent.com/document/api/215/62616)
-* [RefreshDirectConnectGatewayRouteToNatGateway](https://cloud.tencent.com/document/api/215/62615)
-
-修改接口：
-
-* [ModifyBandwidthPackageAttribute](https://cloud.tencent.com/document/api/215/19208)
-
-	* 新增入参：MigrateOnRefund
-
-* [UnassignPrivateIpAddresses](https://cloud.tencent.com/document/api/215/15814)
-
-	* 新增入参：InstanceId
-
+* [CreatePhoneEmail](https://cloud.tencent.com/document/api/242/62669)
+* [DeletePhoneEmail](https://cloud.tencent.com/document/api/242/62668)
+* [DescribePhoneEmailList](https://cloud.tencent.com/document/api/242/62667)
+* [SendPhoneEmailCode](https://cloud.tencent.com/document/api/242/62666)
 
 新增数据结构：
 
-* [DirectConnectSubnet](https://cloud.tencent.com/document/api/215/15824#DirectConnectSubnet)
-* [NatDirectConnectGatewayRoute](https://cloud.tencent.com/document/api/215/15824#NatDirectConnectGatewayRoute)
+* [PhoneEmailData](https://cloud.tencent.com/document/api/242/38895#PhoneEmailData)
 
-修改数据结构：
 
-* [SecurityGroup](https://cloud.tencent.com/document/api/215/15824#SecurityGroup)
 
-	* 新增成员：UpdateTime
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
+### 第 33 次发布
+
+发布时间：2021-10-14 08:10:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteTopicPolicy](https://cloud.tencent.com/document/api/1081/62673)
+* [DescribeTopicPolicy](https://cloud.tencent.com/document/api/1081/62672)
+* [ListTopicPolicy](https://cloud.tencent.com/document/api/1081/62671)
+* [ModifyTopicPolicy](https://cloud.tencent.com/document/api/1081/62670)
+
+新增数据结构：
+
+* [TopicItem](https://cloud.tencent.com/document/api/1081/34988#TopicItem)
+
+
+
+## 证书(ssl) 版本：2019-12-05
+
+### 第 9 次发布
+
+发布时间：2021-10-14 08:12:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDeployedResources](https://cloud.tencent.com/document/api/400/62674)
+
+新增数据结构：
+
+* [DeployedResources](https://cloud.tencent.com/document/api/400/41679#DeployedResources)
 
 
 
@@ -482,7 +430,7 @@
 
 新增数据结构：
 
-* [[KTVMusicDefinitionInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicDefinitionInfo)](https://cloud.tencent.com/document/api/1155/40113#[KTVMusicDefinitionInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicDefinitionInfo))
+* [KTVMusicDefinitionInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicDefinitionInfo)
 
 ### 第 17 次发布
 
@@ -6074,6 +6022,20 @@
 
 ## 访问管理(cam) 版本：2019-01-16
 
+### 第 38 次发布
+
+发布时间：2021-10-14 08:05:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateUserSAMLConfig](https://cloud.tencent.com/document/api/598/62664)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeUserSAMLConfig](https://cloud.tencent.com/document/api/598/62663)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateUserSAMLConfig](https://cloud.tencent.com/document/api/598/62662)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 37 次发布
 
 发布时间：2021-08-24 08:04:06
@@ -9409,6 +9371,30 @@
 
 
 ## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 81 次发布
+
+发布时间：2021-10-14 08:06:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeScdnIpStrategy](https://cloud.tencent.com/document/api/228/62665)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ScdnIpStrategy](https://cloud.tencent.com/document/api/228/30987#ScdnIpStrategy)](https://cloud.tencent.com/document/api/228/30987#[ScdnIpStrategy](https://cloud.tencent.com/document/api/228/30987#ScdnIpStrategy))
+* [[ScdnIpStrategyFilter](https://cloud.tencent.com/document/api/228/30987#ScdnIpStrategyFilter)](https://cloud.tencent.com/document/api/228/30987#[ScdnIpStrategyFilter](https://cloud.tencent.com/document/api/228/30987#ScdnIpStrategyFilter))
+
+修改数据结构：
+
+* [IpFilter](https://cloud.tencent.com/document/api/228/30987#IpFilter)
+
+	* 新增成员：ReturnCode
+
 
 ### 第 80 次发布
 
@@ -15733,15 +15719,15 @@
 
 新增接口：
 
-* [[QueryOrderStatus](https://cloud.tencent.com/document/api/1122/62613)](https://cloud.tencent.com/document/api/#/#)
-* [[RefundTlinxOrder](https://cloud.tencent.com/document/api/1122/62612)](https://cloud.tencent.com/document/api/#/#)
-* [[UnifiedTlinxOrder](https://cloud.tencent.com/document/api/1122/62611)](https://cloud.tencent.com/document/api/#/#)
+* [QueryOrderStatus](https://cloud.tencent.com/document/api/1122/62613)
+* [RefundTlinxOrder](https://cloud.tencent.com/document/api/1122/62612)
+* [UnifiedTlinxOrder](https://cloud.tencent.com/document/api/1122/62611)
 
 新增数据结构：
 
-* [[PayOrderResult](https://cloud.tencent.com/document/api/1122/40683#PayOrderResult)](https://cloud.tencent.com/document/api/1122/40683#[PayOrderResult](https://cloud.tencent.com/document/api/1122/40683#PayOrderResult))
-* [[QueryOrderStatusResult](https://cloud.tencent.com/document/api/1122/40683#QueryOrderStatusResult)](https://cloud.tencent.com/document/api/1122/40683#[QueryOrderStatusResult](https://cloud.tencent.com/document/api/1122/40683#QueryOrderStatusResult))
-* [[RefundOrderResult](https://cloud.tencent.com/document/api/1122/40683#RefundOrderResult)](https://cloud.tencent.com/document/api/1122/40683#[RefundOrderResult](https://cloud.tencent.com/document/api/1122/40683#RefundOrderResult))
+* [PayOrderResult](https://cloud.tencent.com/document/api/1122/40683#PayOrderResult)
+* [QueryOrderStatusResult](https://cloud.tencent.com/document/api/1122/40683#QueryOrderStatusResult)
+* [RefundOrderResult](https://cloud.tencent.com/document/api/1122/40683#RefundOrderResult)
 
 ### 第 47 次发布
 
@@ -22180,6 +22166,25 @@
 
 
 ## 域名注册(domain) 版本：2018-08-08
+
+### 第 16 次发布
+
+发布时间：2021-10-14 08:08:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreatePhoneEmail](https://cloud.tencent.com/document/api/242/62669)](https://cloud.tencent.com/document/api/#/#)
+* [[DeletePhoneEmail](https://cloud.tencent.com/document/api/242/62668)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePhoneEmailList](https://cloud.tencent.com/document/api/242/62667)](https://cloud.tencent.com/document/api/#/#)
+* [[SendPhoneEmailCode](https://cloud.tencent.com/document/api/242/62666)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[PhoneEmailData](https://cloud.tencent.com/document/api/242/38895#PhoneEmailData)](https://cloud.tencent.com/document/api/242/38895#[PhoneEmailData](https://cloud.tencent.com/document/api/242/38895#PhoneEmailData))
 
 ### 第 15 次发布
 
@@ -31096,6 +31101,25 @@
 
 ## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
+### 第 33 次发布
+
+发布时间：2021-10-14 08:10:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DeleteTopicPolicy](https://cloud.tencent.com/document/api/1081/62673)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeTopicPolicy](https://cloud.tencent.com/document/api/1081/62672)](https://cloud.tencent.com/document/api/#/#)
+* [[ListTopicPolicy](https://cloud.tencent.com/document/api/1081/62671)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyTopicPolicy](https://cloud.tencent.com/document/api/1081/62670)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[TopicItem](https://cloud.tencent.com/document/api/1081/34988#TopicItem)](https://cloud.tencent.com/document/api/1081/34988#[TopicItem](https://cloud.tencent.com/document/api/1081/34988#TopicItem))
+
 ### 第 32 次发布
 
 发布时间：2021-10-11 08:06:10
@@ -39166,11 +39190,11 @@
 
 新增接口：
 
-* [[RecognizeOnlineTaxiItineraryOCR](https://cloud.tencent.com/document/api/866/62614)](https://cloud.tencent.com/document/api/#/#)
+* [RecognizeOnlineTaxiItineraryOCR](https://cloud.tencent.com/document/api/866/62614)
 
 新增数据结构：
 
-* [[OnlineTaxiItineraryInfo](https://cloud.tencent.com/document/api/866/33527#OnlineTaxiItineraryInfo)](https://cloud.tencent.com/document/api/866/33527#[OnlineTaxiItineraryInfo](https://cloud.tencent.com/document/api/866/33527#OnlineTaxiItineraryInfo))
+* [OnlineTaxiItineraryInfo](https://cloud.tencent.com/document/api/866/33527#OnlineTaxiItineraryInfo)
 
 ### 第 55 次发布
 
@@ -44566,6 +44590,22 @@
 
 
 ## 证书(ssl) 版本：2019-12-05
+
+### 第 9 次发布
+
+发布时间：2021-10-14 08:12:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDeployedResources](https://cloud.tencent.com/document/api/400/62674)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DeployedResources](https://cloud.tencent.com/document/api/400/41679#DeployedResources)](https://cloud.tencent.com/document/api/400/41679#[DeployedResources](https://cloud.tencent.com/document/api/400/41679#DeployedResources))
 
 ### 第 8 次发布
 
@@ -58315,8 +58355,8 @@
 
 新增接口：
 
-* [[DescribeNatGatewayDirectConnectGatewayRoute](https://cloud.tencent.com/document/api/215/62616)](https://cloud.tencent.com/document/api/#/#)
-* [[RefreshDirectConnectGatewayRouteToNatGateway](https://cloud.tencent.com/document/api/215/62615)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeNatGatewayDirectConnectGatewayRoute](https://cloud.tencent.com/document/api/215/62616)
+* [RefreshDirectConnectGatewayRouteToNatGateway](https://cloud.tencent.com/document/api/215/62615)
 
 修改接口：
 
@@ -58331,8 +58371,8 @@
 
 新增数据结构：
 
-* [[DirectConnectSubnet](https://cloud.tencent.com/document/api/215/15824#DirectConnectSubnet)](https://cloud.tencent.com/document/api/215/15824#[DirectConnectSubnet](https://cloud.tencent.com/document/api/215/15824#DirectConnectSubnet))
-* [[NatDirectConnectGatewayRoute](https://cloud.tencent.com/document/api/215/15824#NatDirectConnectGatewayRoute)](https://cloud.tencent.com/document/api/215/15824#[NatDirectConnectGatewayRoute](https://cloud.tencent.com/document/api/215/15824#NatDirectConnectGatewayRoute))
+* [DirectConnectSubnet](https://cloud.tencent.com/document/api/215/15824#DirectConnectSubnet)
+* [NatDirectConnectGatewayRoute](https://cloud.tencent.com/document/api/215/15824#NatDirectConnectGatewayRoute)
 
 修改数据结构：
 

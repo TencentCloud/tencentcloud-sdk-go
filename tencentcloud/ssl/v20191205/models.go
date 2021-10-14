@@ -646,6 +646,18 @@ func (r *DeleteManagerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeployedResources struct {
+
+	// 证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 数量
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+
+	// 资源标识:clb,cdn,live,waf,antiddos
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
 type DescribeCertificateDetailRequest struct {
 	*tchttp.BaseRequest
 
@@ -1157,6 +1169,59 @@ func (r *DescribeCertificatesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCertificatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeployedResourcesRequest struct {
+	*tchttp.BaseRequest
+
+	// 证书ID
+	CertificateIds []*string `json:"CertificateIds,omitempty" name:"CertificateIds"`
+
+	// 资源类型:clb,cdn,live,waf,antiddos
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+}
+
+func (r *DescribeDeployedResourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeployedResourcesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateIds")
+	delete(f, "ResourceType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeployedResourcesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeployedResourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 资源详情
+		DeployedResources []*DeployedResources `json:"DeployedResources,omitempty" name:"DeployedResources"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDeployedResourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeployedResourcesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

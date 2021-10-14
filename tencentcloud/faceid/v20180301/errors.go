@@ -254,6 +254,9 @@ const (
 	// 帐号已欠费。
 	UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
 
+	// 计费状态异常。
+	UNAUTHORIZEDOPERATION_CHARGESTATUSEXCEPTION = "UnauthorizedOperation.ChargeStatusException"
+
 	// 账号未实名。
 	UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
 

@@ -870,6 +870,38 @@ func (c *Client) DeleteStudioProduct(request *DeleteStudioProductRequest) (respo
     return
 }
 
+func NewDeleteTopicPolicyRequest() (request *DeleteTopicPolicyRequest) {
+    request = &DeleteTopicPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteTopicPolicy")
+    return
+}
+
+func NewDeleteTopicPolicyResponse() (response *DeleteTopicPolicyResponse) {
+    response = &DeleteTopicPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteTopicPolicy
+// 本接口（DeleteTopicPolicy）用于删除Topic 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  RESOURCENOTFOUND_TOPICPOLICYNOTEXIST = "ResourceNotFound.TopicPolicyNotExist"
+func (c *Client) DeleteTopicPolicy(request *DeleteTopicPolicyRequest) (response *DeleteTopicPolicyResponse, err error) {
+    if request == nil {
+        request = NewDeleteTopicPolicyRequest()
+    }
+    response = NewDeleteTopicPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteTopicRuleRequest() (request *DeleteTopicRuleRequest) {
     request = &DeleteTopicRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1361,6 +1393,38 @@ func (c *Client) DescribeStudioProduct(request *DescribeStudioProductRequest) (r
         request = NewDescribeStudioProductRequest()
     }
     response = NewDescribeStudioProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTopicPolicyRequest() (request *DescribeTopicPolicyRequest) {
+    request = &DescribeTopicPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeTopicPolicy")
+    return
+}
+
+func NewDescribeTopicPolicyResponse() (response *DescribeTopicPolicyResponse) {
+    response = &DescribeTopicPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTopicPolicy
+// 本接口（DescribeTopicPolicy）用于查看Topic详细信息 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  RESOURCENOTFOUND_TOPICPOLICYNOTEXIST = "ResourceNotFound.TopicPolicyNotExist"
+func (c *Client) DescribeTopicPolicy(request *DescribeTopicPolicyRequest) (response *DescribeTopicPolicyResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopicPolicyRequest()
+    }
+    response = NewDescribeTopicPolicyResponse()
     err = c.Send(request, response)
     return
 }
@@ -1863,6 +1927,37 @@ func (c *Client) ListFirmwares(request *ListFirmwaresRequest) (response *ListFir
     return
 }
 
+func NewListTopicPolicyRequest() (request *ListTopicPolicyRequest) {
+    request = &ListTopicPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ListTopicPolicy")
+    return
+}
+
+func NewListTopicPolicyResponse() (response *ListTopicPolicyResponse) {
+    response = &ListTopicPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListTopicPolicy
+// 本接口（ListTopicPolicy）用于获取Topic列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+func (c *Client) ListTopicPolicy(request *ListTopicPolicyRequest) (response *ListTopicPolicyResponse, err error) {
+    if request == nil {
+        request = NewListTopicPolicyRequest()
+    }
+    response = NewListTopicPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyFenceBindRequest() (request *ModifyFenceBindRequest) {
     request = &ModifyFenceBindRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2221,6 +2316,40 @@ func (c *Client) ModifyStudioProduct(request *ModifyStudioProductRequest) (respo
         request = NewModifyStudioProductRequest()
     }
     response = NewModifyStudioProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyTopicPolicyRequest() (request *ModifyTopicPolicyRequest) {
+    request = &ModifyTopicPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyTopicPolicy")
+    return
+}
+
+func NewModifyTopicPolicyResponse() (response *ModifyTopicPolicyResponse) {
+    response = &ModifyTopicPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyTopicPolicy
+// 本接口（UpdateTopicPolicy）用于更新Topic信息 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TOPICPOLICYALREADYEXIST = "InvalidParameterValue.TopicPolicyAlreadyExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  RESOURCENOTFOUND_TOPICPOLICYNOTEXIST = "ResourceNotFound.TopicPolicyNotExist"
+func (c *Client) ModifyTopicPolicy(request *ModifyTopicPolicyRequest) (response *ModifyTopicPolicyResponse, err error) {
+    if request == nil {
+        request = NewModifyTopicPolicyRequest()
+    }
+    response = NewModifyTopicPolicyResponse()
     err = c.Send(request, response)
     return
 }

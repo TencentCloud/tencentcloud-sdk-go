@@ -189,6 +189,40 @@ func (c *Client) CreateDomainBatch(request *CreateDomainBatchRequest) (response 
     return
 }
 
+func NewCreatePhoneEmailRequest() (request *CreatePhoneEmailRequest) {
+    request = &CreatePhoneEmailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("domain", APIVersion, "CreatePhoneEmail")
+    return
+}
+
+func NewCreatePhoneEmailResponse() (response *CreatePhoneEmailResponse) {
+    response = &CreatePhoneEmailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreatePhoneEmail
+// 此接口用于创建有效的手机、邮箱
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DUPLICATEPHONEEMAIL = "FailedOperation.DuplicatePhoneEmail"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_CODETYPEISINVALID = "InvalidParameter.CodeTypeIsInvalid"
+//  INVALIDPARAMETER_EMAILISINVALID = "InvalidParameter.EmailIsInvalid"
+//  INVALIDPARAMETER_TELEPHONEISINVALID = "InvalidParameter.TelephoneIsInvalid"
+//  INVALIDPARAMETER_VERIFYCODEISINVALID = "InvalidParameter.VerifyCodeIsInvalid"
+func (c *Client) CreatePhoneEmail(request *CreatePhoneEmailRequest) (response *CreatePhoneEmailResponse, err error) {
+    if request == nil {
+        request = NewCreatePhoneEmailRequest()
+    }
+    response = NewCreatePhoneEmailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTemplateRequest() (request *CreateTemplateRequest) {
     request = &CreateTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -242,6 +276,38 @@ func (c *Client) CreateTemplate(request *CreateTemplateRequest) (response *Creat
         request = NewCreateTemplateRequest()
     }
     response = NewCreateTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeletePhoneEmailRequest() (request *DeletePhoneEmailRequest) {
+    request = &DeletePhoneEmailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("domain", APIVersion, "DeletePhoneEmail")
+    return
+}
+
+func NewDeletePhoneEmailResponse() (response *DeletePhoneEmailResponse) {
+    response = &DeletePhoneEmailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeletePhoneEmail
+// 此接口用于删除已验证的手机邮箱
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMAILISINVALID = "InvalidParameter.EmailIsInvalid"
+//  INVALIDPARAMETER_TELEPHONEISINVALID = "InvalidParameter.TelephoneIsInvalid"
+func (c *Client) DeletePhoneEmail(request *DeletePhoneEmailRequest) (response *DeletePhoneEmailResponse, err error) {
+    if request == nil {
+        request = NewDeletePhoneEmailRequest()
+    }
+    response = NewDeletePhoneEmailResponse()
     err = c.Send(request, response)
     return
 }
@@ -438,6 +504,36 @@ func (c *Client) DescribeDomainPriceList(request *DescribeDomainPriceListRequest
     return
 }
 
+func NewDescribePhoneEmailListRequest() (request *DescribePhoneEmailListRequest) {
+    request = &DescribePhoneEmailListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("domain", APIVersion, "DescribePhoneEmailList")
+    return
+}
+
+func NewDescribePhoneEmailListResponse() (response *DescribePhoneEmailListResponse) {
+    response = &DescribePhoneEmailListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePhoneEmailList
+// 本接口用于获取已验证的手机邮箱列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribePhoneEmailList(request *DescribePhoneEmailListRequest) (response *DescribePhoneEmailListResponse, err error) {
+    if request == nil {
+        request = NewDescribePhoneEmailListRequest()
+    }
+    response = NewDescribePhoneEmailListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTemplateRequest() (request *DescribeTemplateRequest) {
     request = &DescribeTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -622,6 +718,40 @@ func (c *Client) RenewDomainBatch(request *RenewDomainBatchRequest) (response *R
         request = NewRenewDomainBatchRequest()
     }
     response = NewRenewDomainBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSendPhoneEmailCodeRequest() (request *SendPhoneEmailCodeRequest) {
+    request = &SendPhoneEmailCodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("domain", APIVersion, "SendPhoneEmailCode")
+    return
+}
+
+func NewSendPhoneEmailCodeResponse() (response *SendPhoneEmailCodeResponse) {
+    response = &SendPhoneEmailCodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SendPhoneEmailCode
+// 此接口用于发送手机邮箱验证码。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SENDVERIFYCODEISLIMITED = "FailedOperation.SendVerifyCodeIsLimited"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_CODETYPEISINVALID = "InvalidParameter.CodeTypeIsInvalid"
+//  INVALIDPARAMETER_EMAILISINVALID = "InvalidParameter.EmailIsInvalid"
+//  INVALIDPARAMETER_TELEPHONEISINVALID = "InvalidParameter.TelephoneIsInvalid"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) SendPhoneEmailCode(request *SendPhoneEmailCodeRequest) (response *SendPhoneEmailCodeResponse, err error) {
+    if request == nil {
+        request = NewSendPhoneEmailCodeRequest()
+    }
+    response = NewSendPhoneEmailCodeResponse()
     err = c.Send(request, response)
     return
 }

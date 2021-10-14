@@ -41,6 +41,9 @@ const (
 	// 获取域名价格列表失败。
 	FAILEDOPERATION_DOMAINPRICELISTFAILED = "FailedOperation.DomainPriceListFailed"
 
+	// 当前账号下已有相同的手机/邮箱，无需重复添加。
+	FAILEDOPERATION_DUPLICATEPHONEEMAIL = "FailedOperation.DuplicatePhoneEmail"
+
 	// 域名过户失败。
 	FAILEDOPERATION_MODIFYDOMAINOWNERFAILED = "FailedOperation.ModifyDomainOwnerFailed"
 
@@ -49,6 +52,9 @@ const (
 
 	// 域名注册操作失败，请稍后重试。
 	FAILEDOPERATION_REGISTERDOMAINFAILED = "FailedOperation.RegisterDomainFailed"
+
+	// 发送验证码过于频繁，请稍后重试。
+	FAILEDOPERATION_SENDVERIFYCODEISLIMITED = "FailedOperation.SendVerifyCodeIsLimited"
 
 	// 修改 DNS 失败，请输入正确的 DNS 服务器地址。
 	FAILEDOPERATION_SETDOMAINDNSFAILED = "FailedOperation.SetDomainDnsFailed"
@@ -73,6 +79,9 @@ const (
 
 	// 资质照片输入不正确。
 	INVALIDPARAMETER_CERTIFICATEIMAGEISINVALID = "InvalidParameter.CertificateImageIsInvalid"
+
+	// 类型只能为手机或者邮箱。
+	INVALIDPARAMETER_CODETYPEISINVALID = "InvalidParameter.CodeTypeIsInvalid"
 
 	// 无权限自定义DNS。
 	INVALIDPARAMETER_CUSTOMDNSNOTALLOWED = "InvalidParameter.CustomDnsNotAllowed"
@@ -140,6 +149,9 @@ const (
 	// 用户类型为空或者不合法。
 	INVALIDPARAMETER_USERTYPEISINVALID = "InvalidParameter.UserTypeIsInvalid"
 
+	// 验证码错误，请重新输入。
+	INVALIDPARAMETER_VERIFYCODEISINVALID = "InvalidParameter.VerifyCodeIsInvalid"
+
 	// 邮编为空或者不合法。
 	INVALIDPARAMETER_ZIPCODEISINVALID = "InvalidParameter.ZipCodeIsInvalid"
 
@@ -157,6 +169,9 @@ const (
 
 	// 模板已存在。
 	MISSINGPARAMETER_TEMPLATEIDISEXIST = "MissingParameter.TemplateIdIsExist"
+
+	// 请求的次数超过了频率限制。
+	REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 
 	// 当前正在执行中的任务过多，请稍后再提交新的任务。
 	RESOURCEINSUFFICIENT_OVERWORK = "ResourceInsufficient.Overwork"

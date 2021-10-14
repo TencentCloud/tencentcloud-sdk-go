@@ -3784,6 +3784,76 @@ func (r *DescribeScdnConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeScdnIpStrategyRequest struct {
+	*tchttp.BaseRequest
+
+	// 分页起始地址
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 列表分页记录条数，最大1000
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询条件过滤器
+	Filters []*ScdnIpStrategyFilter `json:"Filters,omitempty" name:"Filters"`
+
+	// 指定查询返回结果的排序字段，支持domain，update_time
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序方式，支持asc，desc
+	Sequence *string `json:"Sequence,omitempty" name:"Sequence"`
+}
+
+func (r *DescribeScdnIpStrategyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScdnIpStrategyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "Order")
+	delete(f, "Sequence")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScdnIpStrategyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeScdnIpStrategyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// IP策略列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IpStrategyList []*ScdnIpStrategy `json:"IpStrategyList,omitempty" name:"IpStrategyList"`
+
+		// 配置的策略条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeScdnIpStrategyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScdnIpStrategyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeScdnTopDataRequest struct {
 	*tchttp.BaseRequest
 
@@ -5082,6 +5152,11 @@ type IpFilter struct {
 	// IP 黑白名单分路径配置，白名单功能
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilterRules []*IpFilterPathRule `json:"FilterRules,omitempty" name:"FilterRules"`
+
+	// IP 黑白名单验证失败时返回的 HTTP Code
+	// 合法值: 400~499
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReturnCode *int64 `json:"ReturnCode,omitempty" name:"ReturnCode"`
 }
 
 type IpFilterPathRule struct {
@@ -7276,6 +7351,45 @@ type ScdnEventLogConditions struct {
 
 	// 匹配值，允许使用通配符(*)查询，匹配零个、单个、多个字符，例如 1.2.*
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type ScdnIpStrategy struct {
+
+	// 域名|global表示全部域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 策略ID
+	StrategyId *string `json:"StrategyId,omitempty" name:"StrategyId"`
+
+	// IP白名单列表
+	IpList []*string `json:"IpList,omitempty" name:"IpList"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 规则类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
+
+	// 规则值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleValue []*string `json:"RuleValue,omitempty" name:"RuleValue"`
+}
+
+type ScdnIpStrategyFilter struct {
+
+	// 过滤字段名，支持domain, ip
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 过滤字段值
+	Value []*string `json:"Value,omitempty" name:"Value"`
+
+	// 是否启用模糊查询，仅支持过滤字段名为domain。
+	// 模糊查询时，Value长度最大为1
+	Fuzzy *bool `json:"Fuzzy,omitempty" name:"Fuzzy"`
 }
 
 type ScdnLogTaskDetail struct {

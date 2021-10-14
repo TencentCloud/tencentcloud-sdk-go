@@ -1563,6 +1563,40 @@ func (c *Client) DescribeScdnConfig(request *DescribeScdnConfigRequest) (respons
     return
 }
 
+func NewDescribeScdnIpStrategyRequest() (request *DescribeScdnIpStrategyRequest) {
+    request = &DescribeScdnIpStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "DescribeScdnIpStrategy")
+    return
+}
+
+func NewDescribeScdnIpStrategyResponse() (response *DescribeScdnIpStrategyResponse) {
+    response = &DescribeScdnIpStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeScdnIpStrategy
+// 查询在SCDN IP安全策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
+//  INTERNALERROR_SCDNUSERNOPACKAGE = "InternalError.ScdnUserNoPackage"
+//  INVALIDPARAMETER_CDNPARAMERROR = "InvalidParameter.CdnParamError"
+//  RESOURCENOTFOUND_CDNHOSTNOTEXISTS = "ResourceNotFound.CdnHostNotExists"
+//  RESOURCENOTFOUND_CDNUSERNOTEXISTS = "ResourceNotFound.CdnUserNotExists"
+//  UNAUTHORIZEDOPERATION_CDNUSERNOWHITELIST = "UnauthorizedOperation.CdnUserNoWhitelist"
+func (c *Client) DescribeScdnIpStrategy(request *DescribeScdnIpStrategyRequest) (response *DescribeScdnIpStrategyResponse, err error) {
+    if request == nil {
+        request = NewDescribeScdnIpStrategyRequest()
+    }
+    response = NewDescribeScdnIpStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeScdnTopDataRequest() (request *DescribeScdnTopDataRequest) {
     request = &DescribeScdnTopDataRequest{
         BaseRequest: &tchttp.BaseRequest{},

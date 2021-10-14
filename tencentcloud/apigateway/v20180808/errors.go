@@ -308,7 +308,7 @@ const (
 	// API文档数量超出限制。
 	LIMITEXCEEDED_APIDOCLIMITEXCEEDED = "LimitExceeded.APIDocLimitExceeded"
 
-	// 应用数量超过限制。
+	// 服务绑定的应用数量超过限制。
 	LIMITEXCEEDED_APIAPPCOUNTLIMITEXCEEDED = "LimitExceeded.ApiAppCountLimitExceeded"
 
 	// API数量超过限制。

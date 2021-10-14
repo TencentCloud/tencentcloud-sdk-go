@@ -25,13 +25,13 @@
 | bmvpc | [黑石私有网络](https://cloud.tencent.com/document/product/1024) | 2021-09-16 08:04:47 |
 | bri | [业务风险情报](https://cloud.tencent.com/document/product/1064) | 2021-01-07 08:02:40 |
 | btoe | [区块链可信取证](https://cloud.tencent.com/document/product/1259) | 2021-09-16 08:01:04 |
-| cam | [访问管理](https://cloud.tencent.com/document/product/598) | 2021-09-16 08:04:55 |
+| cam | [访问管理](https://cloud.tencent.com/document/product/598) | 2021-10-14 08:05:24 |
 | captcha | [验证码](https://cloud.tencent.com/document/product/1110) | 2021-09-16 08:05:04 |
 | cat | [云拨测](https://cloud.tencent.com/document/product/280) | 2021-09-16 08:03:51 |
 | cbs | [云硬盘](https://cloud.tencent.com/document/product/362) | 2021-09-30 08:01:36 |
 | ccc | [云呼叫中心](https://cloud.tencent.com/document/product/679) | 2021-09-16 08:02:05 |
 | cdb | [云数据库 MySQL](https://cloud.tencent.com/document/product/236) | 2021-09-26 15:02:28 |
-| cdn | [内容分发网络](https://cloud.tencent.com/document/product/228) | 2021-10-12 08:03:17 |
+| cdn | [内容分发网络](https://cloud.tencent.com/document/product/228) | 2021-10-14 08:06:02 |
 | cds | [数据安全审计](https://cloud.tencent.com/document/product/856) | 2021-09-16 08:05:40 |
 | cfs | [文件存储](https://cloud.tencent.com/document/product/582) | 2021-09-16 08:05:42 |
 | cfw | [云防火墙](https://cloud.tencent.com/document/product/1132) | 2021-09-27 08:08:06 |
@@ -59,7 +59,7 @@
 | dcdb | [分布式数据库 TDSQL](https://cloud.tencent.com/document/product/557) | 2021-09-23 08:07:35 |
 | dlc | [数据湖计算](https://cloud.tencent.com/document/product/1342) | 2021-09-28 08:04:47 |
 | dnspod | [DNSPod](https://cloud.tencent.com/document/product/1427) | 2021-09-16 08:00:42 |
-| domain | [域名注册](https://cloud.tencent.com/document/product/242) | 2021-09-16 08:06:51 |
+| domain | [域名注册](https://cloud.tencent.com/document/product/242) | 2021-10-14 08:08:15 |
 | drm | [数字版权管理](https://cloud.tencent.com/document/product/1000) | 2021-09-16 08:06:55 |
 | ds | [电子合同服务](https://cloud.tencent.com/document/product/869) | 2021-09-16 08:06:57 |
 | dtf | [分布式事务](https://cloud.tencent.com/document/product/1224) | 2021-09-16 08:00:16 |
@@ -73,7 +73,7 @@
 | es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2021-09-30 08:05:14 |
 | essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2021-10-12 08:06:14 |
 | facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2021-09-16 08:07:14 |
-| faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2021-09-22 08:08:14 |
+| faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2021-10-14 08:09:03 |
 | fmu | [人脸试妆](https://cloud.tencent.com/document/product/1172) | 2021-09-24 09:57:29 |
 | ft | [人像变换](https://cloud.tencent.com/document/product/1202) | 2021-09-24 09:57:31 |
 | gaap | [全球应用加速](https://cloud.tencent.com/document/product/608) | 2021-09-22 08:08:23 |
@@ -90,7 +90,7 @@
 | ims | [图片内容检测](https://cloud.tencent.com/document/product/1125) | 2021-09-16 08:01:45 |
 | iot | [加速物联网套件](https://cloud.tencent.com/document/product/568) | 2021-09-16 08:07:49 |
 | iotcloud | [物联网通信](https://cloud.tencent.com/document/product/634) | 2021-07-21 08:06:35 |
-| iotexplorer | [物联网开发平台](https://cloud.tencent.com/document/product/1081) | 2021-10-11 08:06:10 |
+| iotexplorer | [物联网开发平台](https://cloud.tencent.com/document/product/1081) | 2021-10-14 08:10:09 |
 | iottid | [物联网设备身份认证](https://cloud.tencent.com/document/product/1086) | 2021-09-16 08:08:06 |
 | iotvideo | [物联网智能视频服务](https://cloud.tencent.com/document/product/1131) | 2021-09-16 08:03:15 |
 | iotvideoindustry | [物联网智能视频服务（行业版）](https://cloud.tencent.com/document/product/1361) | 2021-09-16 08:01:15 |
@@ -132,7 +132,7 @@
 | solar | [智汇零售](https://cloud.tencent.com/document/product) | 2020-03-19 08:01:59 |
 | sqlserver | [云数据库 SQL Server](https://cloud.tencent.com/document/product/238) | 2021-09-16 08:09:54 |
 | ssa | [态势感知](https://cloud.tencent.com/document/product/664) | 2021-09-16 08:01:30 |
-| ssl | [证书](https://cloud.tencent.com/document/product/400) | 2021-09-27 08:15:47 |
+| ssl | [证书](https://cloud.tencent.com/document/product/400) | 2021-10-14 08:12:50 |
 | sslpod | [SSL 证书监控](https://cloud.tencent.com/document/product/1084) | 2021-09-16 08:01:50 |
 | ssm | [凭据管理系统](https://cloud.tencent.com/document/product/1140) | 2021-09-16 08:03:57 |
 | sts | [安全凭证服务](https://cloud.tencent.com/document/product/1312) | 2021-09-16 08:13:47 |

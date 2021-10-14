@@ -497,6 +497,39 @@ func (c *Client) DescribeCertificates(request *DescribeCertificatesRequest) (res
     return
 }
 
+func NewDescribeDeployedResourcesRequest() (request *DescribeDeployedResourcesRequest) {
+    request = &DescribeDeployedResourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ssl", APIVersion, "DescribeDeployedResources")
+    return
+}
+
+func NewDescribeDeployedResourcesResponse() (response *DescribeDeployedResourcesResponse) {
+    response = &DescribeDeployedResourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDeployedResources
+// 证书查询关联资源
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeDeployedResources(request *DescribeDeployedResourcesRequest) (response *DescribeDeployedResourcesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeployedResourcesRequest()
+    }
+    response = NewDescribeDeployedResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeManagerDetailRequest() (request *DescribeManagerDetailRequest) {
     request = &DescribeManagerDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},

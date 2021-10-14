@@ -517,6 +517,35 @@ func (c *Client) CreateServiceLinkedRole(request *CreateServiceLinkedRoleRequest
     return
 }
 
+func NewCreateUserSAMLConfigRequest() (request *CreateUserSAMLConfigRequest) {
+    request = &CreateUserSAMLConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "CreateUserSAMLConfig")
+    return
+}
+
+func NewCreateUserSAMLConfigResponse() (response *CreateUserSAMLConfigResponse) {
+    response = &CreateUserSAMLConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateUserSAMLConfig
+// 创建用户SAML配置
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_METADATAERROR = "InvalidParameterValue.MetadataError"
+func (c *Client) CreateUserSAMLConfig(request *CreateUserSAMLConfigRequest) (response *CreateUserSAMLConfigResponse, err error) {
+    if request == nil {
+        request = NewCreateUserSAMLConfigRequest()
+    }
+    response = NewCreateUserSAMLConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteGroupRequest() (request *DeleteGroupRequest) {
     request = &DeleteGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -979,6 +1008,37 @@ func (c *Client) DescribeSubAccounts(request *DescribeSubAccountsRequest) (respo
         request = NewDescribeSubAccountsRequest()
     }
     response = NewDescribeSubAccountsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUserSAMLConfigRequest() (request *DescribeUserSAMLConfigRequest) {
+    request = &DescribeUserSAMLConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "DescribeUserSAMLConfig")
+    return
+}
+
+func NewDescribeUserSAMLConfigResponse() (response *DescribeUserSAMLConfigResponse) {
+    response = &DescribeUserSAMLConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeUserSAMLConfig
+// 查询用户SAML配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeUserSAMLConfig(request *DescribeUserSAMLConfigRequest) (response *DescribeUserSAMLConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserSAMLConfigRequest()
+    }
+    response = NewDescribeUserSAMLConfigResponse()
     err = c.Send(request, response)
     return
 }
@@ -2308,6 +2368,36 @@ func (c *Client) UpdateUser(request *UpdateUserRequest) (response *UpdateUserRes
         request = NewUpdateUserRequest()
     }
     response = NewUpdateUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateUserSAMLConfigRequest() (request *UpdateUserSAMLConfigRequest) {
+    request = &UpdateUserSAMLConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "UpdateUserSAMLConfig")
+    return
+}
+
+func NewUpdateUserSAMLConfigResponse() (response *UpdateUserSAMLConfigResponse) {
+    response = &UpdateUserSAMLConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateUserSAMLConfig
+// 修改用户SAML配置
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_METADATAERROR = "InvalidParameterValue.MetadataError"
+//  RESOURCENOTFOUND_IDENTITYNOTEXIST = "ResourceNotFound.IdentityNotExist"
+func (c *Client) UpdateUserSAMLConfig(request *UpdateUserSAMLConfigRequest) (response *UpdateUserSAMLConfigResponse, err error) {
+    if request == nil {
+        request = NewUpdateUserSAMLConfigRequest()
+    }
+    response = NewUpdateUserSAMLConfigResponse()
     err = c.Send(request, response)
     return
 }
