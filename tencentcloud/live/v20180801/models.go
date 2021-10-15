@@ -1440,7 +1440,7 @@ type CreateLiveSnapshotTemplateRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 截图间隔，单位s，默认10s。
-	// 范围： 5s ~ 300s。
+	// 范围： 2s ~ 300s。
 	SnapshotInterval *int64 `json:"SnapshotInterval,omitempty" name:"SnapshotInterval"`
 
 	// 截图宽度。默认：0（原始宽）。
@@ -8457,13 +8457,13 @@ type PushDataInfo struct {
 	// 推流视频帧率，单位: Hz。
 	VideoFps *uint64 `json:"VideoFps,omitempty" name:"VideoFps"`
 
-	// 推流视频码率，单位: bps。
+	// 推流视频码率，单位: Kbps。
 	VideoSpeed *uint64 `json:"VideoSpeed,omitempty" name:"VideoSpeed"`
 
 	// 推流音频帧率，单位: Hz。
 	AudioFps *uint64 `json:"AudioFps,omitempty" name:"AudioFps"`
 
-	// 推流音频码率，单位: bps。
+	// 推流音频码率，单位: Kbps。
 	AudioSpeed *uint64 `json:"AudioSpeed,omitempty" name:"AudioSpeed"`
 
 	// 推流域名。

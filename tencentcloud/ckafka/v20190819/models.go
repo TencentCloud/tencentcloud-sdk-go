@@ -3143,6 +3143,25 @@ type RouteResponse struct {
 	Routers []*Route `json:"Routers,omitempty" name:"Routers"`
 }
 
+type SaleInfo struct {
+
+	// 手动设置的flag标志
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Flag *bool `json:"Flag,omitempty" name:"Flag"`
+
+	// ckakfa版本号(1.1.1/2.4.2/0.10.2)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 专业版、标准版标志
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 售罄标志：true售罄
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SoldOut *bool `json:"SoldOut,omitempty" name:"SoldOut"`
+}
+
 type SubscribedInfo struct {
 
 	// 订阅的主题名
@@ -3436,6 +3455,10 @@ type ZoneInfo struct {
 
 	// json对象，key为机型，value true为售罄，false为未售罄
 	SoldOut *string `json:"SoldOut,omitempty" name:"SoldOut"`
+
+	// 标准版售罄信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SalesInfo []*SaleInfo `json:"SalesInfo,omitempty" name:"SalesInfo"`
 }
 
 type ZoneResponse struct {

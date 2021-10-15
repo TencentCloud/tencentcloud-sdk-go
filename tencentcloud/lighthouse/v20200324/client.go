@@ -2156,7 +2156,7 @@ func NewTerminateInstancesResponse() (response *TerminateInstancesResponse) {
 }
 
 // TerminateInstances
-// 本接口 (TerminateInstances) 用于退还实例。
+// 本接口 (TerminateInstances) 用于销毁实例。
 //
 // 
 //

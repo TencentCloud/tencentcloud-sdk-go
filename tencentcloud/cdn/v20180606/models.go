@@ -1548,6 +1548,9 @@ type CreateDiagnoseUrlRequest struct {
 
 	// 需诊断的url，形如：http://www.test.com/test.txt。
 	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 请求源带协议头，形如：https://console.cloud.tencent.com
+	Origin *string `json:"Origin,omitempty" name:"Origin"`
 }
 
 func (r *CreateDiagnoseUrlRequest) ToJsonString() string {
@@ -1563,6 +1566,7 @@ func (r *CreateDiagnoseUrlRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Url")
+	delete(f, "Origin")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDiagnoseUrlRequest has unknown keys!", "")
 	}
@@ -5411,6 +5415,9 @@ type ListDiagnoseReportRequest struct {
 
 	// 用于搜索诊断系统返回的诊断链接，形如：http://cdn.cloud.tencent.com/self_diagnose/xxxxx
 	DiagnoseLink *string `json:"DiagnoseLink,omitempty" name:"DiagnoseLink"`
+
+	// 请求源带协议头，形如：https://console.cloud.tencent.com
+	Origin *string `json:"Origin,omitempty" name:"Origin"`
 }
 
 func (r *ListDiagnoseReportRequest) ToJsonString() string {
@@ -5427,6 +5434,7 @@ func (r *ListDiagnoseReportRequest) FromJsonString(s string) error {
 	}
 	delete(f, "KeyWords")
 	delete(f, "DiagnoseLink")
+	delete(f, "Origin")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListDiagnoseReportRequest has unknown keys!", "")
 	}
@@ -6336,7 +6344,9 @@ type Origin struct {
 	// cos：对象存储源站
 	// ip：IP 列表作为源站
 	// ipv6：源站列表为一个单独的 IPv6 地址
-	// ip_ipv6：源站列表为多个 IPv4 地址和一个 IPv6 地址
+	// ip_ipv6：源站列表为多个 IPv4 地址和IPv6 地址
+	// ipv6_domain: 源站列表为多个 IPv6 地址以及域名
+	// ip_ipv6_domain：源站列表为多个 IPv4 地址IPv6 地址以及域名
 	// 出参增加以下几种类型：
 	// image：数据万象源站
 	// ftp：历史 FTP 托管源源站，现已不维护
@@ -6371,6 +6381,11 @@ type Origin struct {
 	// domain：域名类型
 	// ip：IP 列表作为源站
 	// 修改 BackupOrigins 时需要同时填充对应的 BackupOriginType
+	// 以下备源源站类型尚未全量支持，需要申请试用：
+	// ipv6_domain: 源站列表为多个 IPv6 地址以及域名
+	// ip_ipv6：源站列表为多个 IPv4 地址和IPv6 地址
+	// ipv6_domain: 源站列表为多个 IPv6 地址以及域名
+	// ip_ipv6_domain：源站列表为多个 IPv4 地址IPv6 地址以及域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupOriginType *string `json:"BackupOriginType,omitempty" name:"BackupOriginType"`
 

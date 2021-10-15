@@ -48,6 +48,15 @@ type AccessRegionDetial struct {
 
 	// 可选的带宽取值数组
 	BandwidthList []*int64 `json:"BandwidthList,omitempty" name:"BandwidthList"`
+
+	// 机房所属大区
+	RegionArea *string `json:"RegionArea,omitempty" name:"RegionArea"`
+
+	// 机房所属大区名
+	RegionAreaName *string `json:"RegionAreaName,omitempty" name:"RegionAreaName"`
+
+	// 机房类型, dc表示DataCenter数据中心, ec表示EdgeComputing边缘节点
+	IDCType *string `json:"IDCType,omitempty" name:"IDCType"`
 }
 
 type AccessRegionDomainConf struct {
@@ -2977,6 +2986,20 @@ type DescribeProxiesRequest struct {
 	// 当该字段为0时，仅拉取通道组的通道，
 	// 不存在该字段时，拉取所有通道，包括独立通道和通道组通道。
 	Independent *int64 `json:"Independent,omitempty" name:"Independent"`
+
+	// 输出通道列表的排列顺序。取值范围：
+	// asc：升序排列
+	// desc：降序排列。
+	// 默认为降序。
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 通道列表排序的依据字段。取值范围：
+	// create_time：依据通道的创建时间排序
+	// proxy_id：依据通道的ID排序
+	// bandwidth：依据通道带宽上限排序
+	// concurrent_connections：依据通道并发排序
+	// 默认按通道创建时间排序。
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
 }
 
 func (r *DescribeProxiesRequest) ToJsonString() string {
@@ -2998,6 +3021,8 @@ func (r *DescribeProxiesRequest) FromJsonString(s string) error {
 	delete(f, "ProxyIds")
 	delete(f, "TagSet")
 	delete(f, "Independent")
+	delete(f, "Order")
+	delete(f, "OrderField")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProxiesRequest has unknown keys!", "")
 	}
@@ -4553,6 +4578,18 @@ type HttpHeaderParam struct {
 	HeaderValue *string `json:"HeaderValue,omitempty" name:"HeaderValue"`
 }
 
+type IPDetail struct {
+
+	// IP字符串
+	IP *string `json:"IP,omitempty" name:"IP"`
+
+	// 供应商，BGP表示默认，CMCC表示中国移动，CUCC表示中国联通，CTCC表示中国电信
+	Provider *string `json:"Provider,omitempty" name:"Provider"`
+
+	// 带宽
+	Bandwidth *int64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+}
+
 type InquiryPriceCreateProxyRequest struct {
 	*tchttp.BaseRequest
 
@@ -5989,8 +6026,7 @@ type ProxyInfo struct {
 	// ADJUSTING表示配置变更中；
 	// ISOLATING表示隔离中；
 	// ISOLATED表示已隔离；
-	// CLONING表示复制中；
-	// UNKNOWN表示未知状态。
+	// CLONING表示复制中。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 接入域名。
@@ -6063,7 +6099,7 @@ type ProxyInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPAddressVersion *string `json:"IPAddressVersion,omitempty" name:"IPAddressVersion"`
 
-	// 网络类型：normal、cn2
+	// 网络类型：normal表示常规BGP，cn2表示精品BGP，triple表示三网
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkType *string `json:"NetworkType,omitempty" name:"NetworkType"`
 
@@ -6074,6 +6110,10 @@ type ProxyInfo struct {
 	// 封禁解封状态：BANNED表示已封禁，RECOVER表示已解封或未封禁，BANNING表示封禁中，RECOVERING表示解封中，BAN_FAILED表示封禁失败，RECOVER_FAILED表示解封失败。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BanStatus *string `json:"BanStatus,omitempty" name:"BanStatus"`
+
+	// IP列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IPList []*IPDetail `json:"IPList,omitempty" name:"IPList"`
 }
 
 type ProxySimpleInfo struct {
@@ -6103,8 +6143,7 @@ type ProxyStatus struct {
 	// CLOSED表示已关闭；
 	// ADJUSTING表示配置变更中；
 	// ISOLATING表示隔离中；
-	// ISOLATED表示已隔离；
-	// UNKNOWN表示未知状态。
+	// ISOLATED表示已隔离。
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
@@ -6151,6 +6190,10 @@ type RealServerStatus struct {
 
 	// 绑定此源站的通道ID，没有绑定时为空字符串。
 	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
+
+	// 绑定此源站的通道组ID，没有绑定时为空字符串。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
 type RegionDetail struct {
@@ -6160,6 +6203,15 @@ type RegionDetail struct {
 
 	// 区域英文名或中文名
 	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
+
+	// 机房所属大区
+	RegionArea *string `json:"RegionArea,omitempty" name:"RegionArea"`
+
+	// 机房所属大区名
+	RegionAreaName *string `json:"RegionAreaName,omitempty" name:"RegionAreaName"`
+
+	// 机房类型, dc表示DataCenter数据中心, ec表示EdgeComputing边缘节点
+	IDCType *string `json:"IDCType,omitempty" name:"IDCType"`
 }
 
 type RemoveRealServersRequest struct {

@@ -150,6 +150,38 @@ func (c *Client) AddIp6Rules(request *AddIp6RulesRequest) (response *AddIp6Rules
     return
 }
 
+func NewAddTemplateMemberRequest() (request *AddTemplateMemberRequest) {
+    request = &AddTemplateMemberRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "AddTemplateMember")
+    return
+}
+
+func NewAddTemplateMemberResponse() (response *AddTemplateMemberResponse) {
+    response = &AddTemplateMemberResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddTemplateMember
+// 增加模版对象中的IP地址、协议端口、IP地址组、协议端口组。当前仅支持北京、泰国、北美地域请求。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) AddTemplateMember(request *AddTemplateMemberRequest) (response *AddTemplateMemberResponse, err error) {
+    if request == nil {
+        request = NewAddTemplateMemberRequest()
+    }
+    response = NewAddTemplateMemberResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAllocateAddressesRequest() (request *AllocateAddressesRequest) {
     request = &AllocateAddressesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3362,6 +3394,38 @@ func (c *Client) DeleteSubnet(request *DeleteSubnetRequest) (response *DeleteSub
         request = NewDeleteSubnetRequest()
     }
     response = NewDeleteSubnetResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteTemplateMemberRequest() (request *DeleteTemplateMemberRequest) {
+    request = &DeleteTemplateMemberRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteTemplateMember")
+    return
+}
+
+func NewDeleteTemplateMemberResponse() (response *DeleteTemplateMemberResponse) {
+    response = &DeleteTemplateMemberResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteTemplateMember
+// 删除模版对象中的IP地址、协议端口、IP地址组、协议端口组。当前仅支持北京、泰国、北美地域请求。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteTemplateMember(request *DeleteTemplateMemberRequest) (response *DeleteTemplateMemberResponse, err error) {
+    if request == nil {
+        request = NewDeleteTemplateMemberRequest()
+    }
+    response = NewDeleteTemplateMemberResponse()
     err = c.Send(request, response)
     return
 }
@@ -7965,6 +8029,38 @@ func (c *Client) ModifySubnetAttribute(request *ModifySubnetAttributeRequest) (r
         request = NewModifySubnetAttributeRequest()
     }
     response = NewModifySubnetAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyTemplateMemberRequest() (request *ModifyTemplateMemberRequest) {
+    request = &ModifyTemplateMemberRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyTemplateMember")
+    return
+}
+
+func NewModifyTemplateMemberResponse() (response *ModifyTemplateMemberResponse) {
+    response = &ModifyTemplateMemberResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyTemplateMember
+// 修改模版对象中的IP地址、协议端口、IP地址组、协议端口组。当前仅支持北京、泰国、北美地域请求。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyTemplateMember(request *ModifyTemplateMemberRequest) (response *ModifyTemplateMemberResponse, err error) {
+    if request == nil {
+        request = NewModifyTemplateMemberRequest()
+    }
+    response = NewModifyTemplateMemberResponse()
     err = c.Send(request, response)
     return
 }
