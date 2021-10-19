@@ -134,6 +134,9 @@ const (
 	// 项目不存在。
 	INVALIDPARAMETERVALUE_PROJECTID = "InvalidParameterValue.ProjectId"
 
+	// 轨道素材替换类型无效或不匹配。
+	INVALIDPARAMETERVALUE_REPLACEMENTTYPE = "InvalidParameterValue.ReplacementType"
+
 	// 角色不合法。
 	INVALIDPARAMETERVALUE_ROLE = "InvalidParameterValue.Role"
 

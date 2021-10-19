@@ -250,6 +250,7 @@ func NewCheckIdCardInformationResponse() (response *CheckIdCardInformationRespon
 //  FAILEDOPERATION_COMPARESYSTEMERROR = "FailedOperation.CompareSystemError"
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
+//  FAILEDOPERATION_ENCRYPTSYSTEMERROR = "FailedOperation.EncryptSystemError"
 //  FAILEDOPERATION_FILESAVEERROR = "FailedOperation.FileSaveError"
 //  FAILEDOPERATION_IDFORMATERROR = "FailedOperation.IdFormatError"
 //  FAILEDOPERATION_IDNAMEMISMATCH = "FailedOperation.IdNameMisMatch"

@@ -1593,6 +1593,18 @@ func (r *DescribeDeviceDataResponse) FromJsonString(s string) error {
 
 type DescribeDevicePositionListRequest struct {
 	*tchttp.BaseRequest
+
+	// 产品标识列表
+	ProductIdList []*string `json:"ProductIdList,omitempty" name:"ProductIdList"`
+
+	// 坐标类型
+	CoordinateType *int64 `json:"CoordinateType,omitempty" name:"CoordinateType"`
+
+	// 分页偏移
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页的大小
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
 func (r *DescribeDevicePositionListRequest) ToJsonString() string {
@@ -1607,6 +1619,10 @@ func (r *DescribeDevicePositionListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "ProductIdList")
+	delete(f, "CoordinateType")
+	delete(f, "Offset")
+	delete(f, "Limit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDevicePositionListRequest has unknown keys!", "")
 	}
@@ -1616,6 +1632,12 @@ func (r *DescribeDevicePositionListRequest) FromJsonString(s string) error {
 type DescribeDevicePositionListResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
+		// 产品设备位置信息列表
+		Positions []*ProductDevicesPositionItem `json:"Positions,omitempty" name:"Positions"`
+
+		// 产品设备位置信息的数目
+		Total *int64 `json:"Total,omitempty" name:"Total"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2440,6 +2462,21 @@ type DeviceInfo struct {
 	// 创建人昵称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatorNickName *string `json:"CreatorNickName,omitempty" name:"CreatorNickName"`
+}
+
+type DevicePositionItem struct {
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 位置信息时间
+	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 设备经度信息
+	Longitude *float64 `json:"Longitude,omitempty" name:"Longitude"`
+
+	// 设备纬度信息
+	Latitude *float64 `json:"Latitude,omitempty" name:"Latitude"`
 }
 
 type DevicesItem struct {
@@ -4261,6 +4298,18 @@ type PositionSpaceInfo struct {
 
 	// 用户自定义地图缩放
 	Zoom *uint64 `json:"Zoom,omitempty" name:"Zoom"`
+}
+
+type ProductDevicesPositionItem struct {
+
+	// 设备位置列表
+	Items []*DevicePositionItem `json:"Items,omitempty" name:"Items"`
+
+	// 产品标识
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备位置数量
+	Total *int64 `json:"Total,omitempty" name:"Total"`
 }
 
 type ProductEntry struct {

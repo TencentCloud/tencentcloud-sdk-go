@@ -1,56 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 内容分发网络(cdn) 版本：2018-06-06
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
-### 第 82 次发布
+### 第 34 次发布
 
-发布时间：2021-10-15 08:07:48
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateDiagnoseUrl](https://cloud.tencent.com/document/api/228/49326)
-
-	* 新增入参：Origin
-
-* [ListDiagnoseReport](https://cloud.tencent.com/document/api/228/49324)
-
-	* 新增入参：Origin
-
-
-
-
-## 消息队列 Ckafka(ckafka) 版本：2019-08-19
-
-### 第 23 次发布
-
-发布时间：2021-10-15 08:08:18
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [SaleInfo](https://cloud.tencent.com/document/api/597/40861#SaleInfo)
-
-修改数据结构：
-
-* [ZoneInfo](https://cloud.tencent.com/document/api/597/40861#ZoneInfo)
-
-	* 新增成员：SalesInfo
-
-
-
-
-## 全球应用加速(gaap) 版本：2018-05-29
-
-### 第 24 次发布
-
-发布时间：2021-10-15 08:10:54
+发布时间：2021-10-19 08:09:21
 
 本次发布包含了以下内容：
 
@@ -58,78 +12,17 @@
 
 修改接口：
 
-* [DescribeProxies](https://cloud.tencent.com/document/api/608/36963)
+* [DescribeDevicePositionList](https://cloud.tencent.com/document/api/1081/62451)
 
-	* 新增入参：Order, OrderField
+	* 新增入参：ProductIdList, CoordinateType, Offset, Limit
+
+	* 新增出参：Positions, Total
 
 
 新增数据结构：
 
-* [IPDetail](https://cloud.tencent.com/document/api/608/37023#IPDetail)
-
-修改数据结构：
-
-* [AccessRegionDetial](https://cloud.tencent.com/document/api/608/37023#AccessRegionDetial)
-
-	* 新增成员：RegionArea, RegionAreaName, IDCType
-
-* [ProxyInfo](https://cloud.tencent.com/document/api/608/37023#ProxyInfo)
-
-	* 新增成员：IPList
-
-* [RealServerStatus](https://cloud.tencent.com/document/api/608/37023#RealServerStatus)
-
-	* 新增成员：GroupId
-
-* [RegionDetail](https://cloud.tencent.com/document/api/608/37023#RegionDetail)
-
-	* 新增成员：RegionArea, RegionAreaName, IDCType
-
-
-
-
-## 实时音视频(trtc) 版本：2019-07-22
-
-### 第 26 次发布
-
-发布时间：2021-10-15 08:16:00
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [EncodeParams](https://cloud.tencent.com/document/api/647/44055#EncodeParams)
-
-	* 新增成员：BackgroundImageUrl
-
-* [WaterMarkParams](https://cloud.tencent.com/document/api/647/44055#WaterMarkParams)
-
-	* 新增成员：WaterMarkUrl
-
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 99 次发布
-
-发布时间：2021-10-15 08:16:52
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [AddTemplateMember](https://cloud.tencent.com/document/api/215/62762)
-* [DeleteTemplateMember](https://cloud.tencent.com/document/api/215/62761)
-* [ModifyTemplateMember](https://cloud.tencent.com/document/api/215/62760)
-
-新增数据结构：
-
-* [MemberInfo](https://cloud.tencent.com/document/api/215/15824#MemberInfo)
+* [DevicePositionItem](https://cloud.tencent.com/document/api/1081/34988#DevicePositionItem)
+* [ProductDevicesPositionItem](https://cloud.tencent.com/document/api/1081/34988#ProductDevicesPositionItem)
 
 
 
@@ -12165,7 +12058,7 @@
 
 新增数据结构：
 
-* [[SaleInfo](https://cloud.tencent.com/document/api/597/40861#SaleInfo)](https://cloud.tencent.com/document/api/597/40861#[SaleInfo](https://cloud.tencent.com/document/api/597/40861#SaleInfo))
+* [SaleInfo](https://cloud.tencent.com/document/api/597/40861#SaleInfo)
 
 修改数据结构：
 
@@ -14179,7 +14072,7 @@
 
 	* 新增入参：UserDefineRule
 
-* [ModifyConfig](https://cloud.tencent.com/document/api/1451/50696)
+* [ModifyConfig](https://cloud.tencent.com/document/api/614/58614)
 
 	* 新增入参：UserDefineRule
 
@@ -14325,7 +14218,7 @@
 * [DescribeConfigs](https://cloud.tencent.com/document/api/1451/50689)
 * [DescribeLogsets](https://cloud.tencent.com/document/api/1451/48155)
 * [DescribeMachineGroupConfigs](https://cloud.tencent.com/document/api/1451/50710)
-* [ModifyConfig](https://cloud.tencent.com/document/api/1451/50696)
+* [ModifyConfig](https://cloud.tencent.com/document/api/614/58614)
 * [ModifyLogset](https://cloud.tencent.com/document/api/1451/64048)
 
 修改接口：
@@ -20874,7 +20767,7 @@
 * [DescribeTopSpaceSchemas](https://cloud.tencent.com/document/api/1133/57509)
 * [DescribeTopSpaceTableTimeSeries](https://cloud.tencent.com/document/api/1133/57510)
 * [DescribeTopSpaceTables](https://cloud.tencent.com/document/api/1133/57513)
-* [DescribeUserSqlAdvice](https://cloud.tencent.com/document/api/1133/57514)
+* [DescribeUserSqlAdvice](https://cloud.tencent.com/document/api/1130/57782)
 * [ModifyDiagDBInstanceConf](https://cloud.tencent.com/document/api/1133/57515)
 
 新增数据结构：
@@ -26916,7 +26809,7 @@
 
 新增数据结构：
 
-* [[IPDetail](https://cloud.tencent.com/document/api/608/37023#IPDetail)](https://cloud.tencent.com/document/api/608/37023#[IPDetail](https://cloud.tencent.com/document/api/608/37023#IPDetail))
+* [IPDetail](https://cloud.tencent.com/document/api/608/37023#IPDetail)
 
 修改数据结构：
 
@@ -31197,6 +31090,28 @@
 
 
 ## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 34 次发布
+
+发布时间：2021-10-19 08:09:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDevicePositionList](https://cloud.tencent.com/document/api/1081/62451)
+
+	* 新增入参：ProductIdList, CoordinateType, Offset, Limit
+
+	* 新增出参：Positions, Total
+
+
+新增数据结构：
+
+* [[DevicePositionItem](https://cloud.tencent.com/document/api/1081/34988#DevicePositionItem)](https://cloud.tencent.com/document/api/1081/34988#[DevicePositionItem](https://cloud.tencent.com/document/api/1081/34988#DevicePositionItem))
+* [[ProductDevicesPositionItem](https://cloud.tencent.com/document/api/1081/34988#ProductDevicesPositionItem)](https://cloud.tencent.com/document/api/1081/34988#[ProductDevicesPositionItem](https://cloud.tencent.com/document/api/1081/34988#ProductDevicesPositionItem))
 
 ### 第 33 次发布
 
@@ -43581,7 +43496,7 @@
 * [PullSmsSendStatusByPhoneNumber](https://cloud.tencent.com/document/api/1103/51511)
 * [SendSms](https://cloud.tencent.com/document/api/1103/51355)
 * [SendStatusStatistics](https://cloud.tencent.com/document/api/1103/51514)
-* [SmsPackagesStatistics](https://cloud.tencent.com/document/api/1103/51509)
+* [SmsPackagesStatistics](https://cloud.tencent.com/document/api/382/55964)
 
 新增数据结构：
 
@@ -58471,13 +58386,13 @@
 
 新增接口：
 
-* [[AddTemplateMember](https://cloud.tencent.com/document/api/215/62762)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteTemplateMember](https://cloud.tencent.com/document/api/215/62761)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyTemplateMember](https://cloud.tencent.com/document/api/215/62760)](https://cloud.tencent.com/document/api/#/#)
+* [AddTemplateMember](https://cloud.tencent.com/document/api/215/62762)
+* [DeleteTemplateMember](https://cloud.tencent.com/document/api/215/62761)
+* [ModifyTemplateMember](https://cloud.tencent.com/document/api/215/62760)
 
 新增数据结构：
 
-* [[MemberInfo](https://cloud.tencent.com/document/api/215/15824#MemberInfo)](https://cloud.tencent.com/document/api/215/15824#[MemberInfo](https://cloud.tencent.com/document/api/215/15824#MemberInfo))
+* [MemberInfo](https://cloud.tencent.com/document/api/215/15824#MemberInfo)
 
 ### 第 98 次发布
 

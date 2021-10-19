@@ -1005,6 +1005,7 @@ func NewExportVideoByTemplateResponse() (response *ExportVideoByTemplateResponse
 //  INVALIDPARAMETERVALUE_MATERIALID = "InvalidParameterValue.MaterialId"
 //  INVALIDPARAMETERVALUE_MEDIAREPLACEMENTINFO = "InvalidParameterValue.MediaReplacementInfo"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
+//  INVALIDPARAMETERVALUE_REPLACEMENTTYPE = "InvalidParameterValue.ReplacementType"
 //  INVALIDPARAMETERVALUE_VIDEOEDITTEMPLATEIDNOTEXIST = "InvalidParameterValue.VideoEditTemplateIdNotExist"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_BILLITEMSTORAGE = "LimitExceeded.BillItemStorage"
