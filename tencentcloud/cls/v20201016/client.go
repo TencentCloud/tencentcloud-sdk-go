@@ -2593,6 +2593,6 @@ func (c *Client) UploadLog(request *UploadLogRequest) (response *UploadLogRespon
         request = NewUploadLogRequest()
     }
     response = NewUploadLogResponse()
-    err = c.SendOctetStream(request, response)
+    err = c.Send(request, response)
     return
 }
