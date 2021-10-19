@@ -25,12 +25,12 @@ func (c *Client) SendOctetStream(request tchttp.Request, response tchttp.Respons
 	if c.profile.HttpProfile.ReqMethod != "POST" {
 		return tcerr.NewTencentCloudSDKError("ClientError", "Invalid request method.", "")
 	}
-	cr, ok := request.(*tchttp.CommonRequest)
-	if !ok {
-		return tcerr.NewTencentCloudSDKError("ClientError", "Invalid request, must be *CommonRequest!", "")
-	}
-	if !cr.IsOctetStream() {
-		return tcerr.NewTencentCloudSDKError("ClientError", "Invalid request, does not meet the conditions for sending OctetStream", "")
-	}
+	//cr, ok := request.(*tchttp.CommonRequest)
+	//if !ok {
+	//	return tcerr.NewTencentCloudSDKError("ClientError", "Invalid request, must be *CommonRequest!", "")
+	//}
+	//if !cr.IsOctetStream() {
+	//	return tcerr.NewTencentCloudSDKError("ClientError", "Invalid request, does not meet the conditions for sending OctetStream", "")
+	//}
 	return c.Send(request, response)
 }

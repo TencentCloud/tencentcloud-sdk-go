@@ -16,6 +16,10 @@ import (
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 )
 
+const (
+	octetStream = "application/octet-stream"
+)
+
 type Client struct {
 	region          string
 	httpClient      *http.Client
@@ -147,6 +151,7 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 	isOctetStream := false
 	cr := &tchttp.CommonRequest{}
 	ok := false
+	var octetStreamBody []byte
 	if cr, ok = request.(*tchttp.CommonRequest); ok {
 		if cr.IsOctetStream() {
 			isOctetStream = true
@@ -155,7 +160,22 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 			for k, v := range cr.GetHeader() {
 				headers[k] = v
 			}
+			octetStreamBody = cr.GetOctetStreamBody()
 		}
+	}
+
+	if !isOctetStream && request.GetContentType() == octetStream {
+		isOctetStream = true
+		b, _ := json.Marshal(request)
+		var m map[string]string
+		_ = json.Unmarshal(b, &m)
+		for k, v := range m {
+			key := "X-" + strings.ToUpper(request.GetService()) + "-" + k
+			headers[key] = v
+		}
+
+		headers["Content-Type"] = octetStream
+		octetStreamBody = request.GetOctetStreamBody()
 	}
 	// start signature v3 process
 
@@ -186,7 +206,7 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 	if httpRequestMethod == "POST" {
 		if isOctetStream {
 			// todo Conversion comparison between string and []byte affects performance much
-			requestPayload = string(cr.GetOctetStreamBody())
+			requestPayload = string(octetStreamBody)
 		} else {
 			b, err := json.Marshal(request)
 			if err != nil {

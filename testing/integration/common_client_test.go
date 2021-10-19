@@ -107,16 +107,14 @@ func TestOctetStreamAction(t *testing.T) {
 	cpf.HttpProfile.ReqMethod = "POST"
 	client, _ := cls.NewClient(cr, regions.Guangzhou, cpf)
 	request := cls.NewUploadLogRequest()
-	headers := map[string]string{
-		"X-CLS-TopicId":      "f6c4fa6f-367a-4f14-8289-1ff6f77ed975",
-		"X-CLS-HashKey":      "0fffffffffffffffffffffffffffffff",
-		"X-CLS-CompressType": "",
-	}
+	request.TopicId = common.StringPtr("f6c4fa6f-367a-4f14-8289-1ff6f77ed975")
+	request.HashKey = common.StringPtr("0fffffffffffffffffffffffffffffff")
+	request.CompressType = common.StringPtr("")
+
 	body, _ := ioutil.ReadFile("./binary.data")
+	request.SetOctetStreamBody(body)
 
-	request.SetOctetStreamParameters(headers, body)
 	response, err := client.UploadLog(request)
-
 	if terr, ok := err.(*errors.TencentCloudSDKError); ok {
 		if terr.GetCode() == "OperationDenied" || terr.GetCode() == "ResourceNotFound.TopicNotExist" {
 			return

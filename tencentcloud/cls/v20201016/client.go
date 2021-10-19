@@ -2223,8 +2223,11 @@ func (c *Client) SplitPartition(request *SplitPartitionRequest) (response *Split
     return
 }
 
-func NewUploadLogRequest() (request *tchttp.CommonRequest) {
-    request = tchttp.NewCommonRequest("cls", APIVersion, "UploadLog")
+func NewUploadLogRequest() (request *UploadLogRequest) {
+    request = &UploadLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cls", APIVersion, "UploadLog")
     return
 }
 
@@ -2585,7 +2588,7 @@ func NewUploadLogResponse() (response *UploadLogResponse) {
 //  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
 //  RESOURCENOTFOUND_PARTITIONNOTEXIST = "ResourceNotFound.PartitionNotExist"
 //  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
-func (c *Client) UploadLog(request *tchttp.CommonRequest) (response *UploadLogResponse, err error) {
+func (c *Client) UploadLog(request *UploadLogRequest) (response *UploadLogResponse, err error) {
     if request == nil {
         request = NewUploadLogRequest()
     }
