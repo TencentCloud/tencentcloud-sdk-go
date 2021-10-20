@@ -1717,6 +1717,9 @@ func (r *CreateVpcResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DataDisk struct {
+}
+
 type DeleteHaVipRequest struct {
 	*tchttp.BaseRequest
 
@@ -7468,6 +7471,12 @@ type Module struct {
 
 	// 自定义脚本数据
 	UserData *string `json:"UserData,omitempty" name:"UserData"`
+
+	// 系统盘信息。
+	SystemDisk *SystemDisk `json:"SystemDisk,omitempty" name:"SystemDisk"`
+
+	// 数据盘信息。
+	DataDisks []*DataDisk `json:"DataDisks,omitempty" name:"DataDisks"`
 }
 
 type ModuleCounter struct {
@@ -8713,6 +8722,12 @@ type RunInstancesRequest struct {
 	// 默认取值：FALSE。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeepImageLogin *string `json:"KeepImageLogin,omitempty" name:"KeepImageLogin"`
+
+	// 系统盘信息。
+	SystemDisk *SystemDisk `json:"SystemDisk,omitempty" name:"SystemDisk"`
+
+	// 数据盘信息。
+	DataDisks []*DataDisk `json:"DataDisks,omitempty" name:"DataDisks"`
 }
 
 func (r *RunInstancesRequest) ToJsonString() string {
@@ -8746,6 +8761,8 @@ func (r *RunInstancesRequest) FromJsonString(s string) error {
 	delete(f, "InstanceChargeType")
 	delete(f, "KeyIds")
 	delete(f, "KeepImageLogin")
+	delete(f, "SystemDisk")
+	delete(f, "DataDisks")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunInstancesRequest has unknown keys!", "")
 	}
@@ -9298,6 +9315,21 @@ type Subnet struct {
 	// 地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitempty" name:"Region"`
+}
+
+type SystemDisk struct {
+
+	// 硬盘类型。取值范围：
+	// - LOCAL_BASIC：本地硬盘；
+	// - CLOUD_PREMIUM：高性能云硬盘；
+	// 默认取值：CLOUD_BASIC。
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 硬盘ID。此参数暂不可用。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
+
+	// 硬盘容量大小。单位GB。
+	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
 }
 
 type Tag struct {

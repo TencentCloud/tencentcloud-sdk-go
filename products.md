@@ -49,7 +49,7 @@
 | cms | [内容安全](https://cloud.tencent.com/document/product) | 2020-10-29 08:03:08 |
 | cpdp | [企业收付平台](https://cloud.tencent.com/document/product/1122) | 2021-10-13 08:05:27 |
 | cr | [金融联络机器人](https://cloud.tencent.com/document/product/656) | 2021-02-24 08:03:24 |
-| cvm | [云服务器](https://cloud.tencent.com/document/product/213) | 2021-10-19 08:06:19 |
+| cvm | [云服务器](https://cloud.tencent.com/document/product/213) | 2021-10-20 08:08:42 |
 | cwp | [主机安全](https://cloud.tencent.com/document/product/296) | 2021-10-11 08:03:11 |
 | cws | [漏洞扫描服务](https://cloud.tencent.com/document/product) | 2019-11-22 12:16:15 |
 | cynosdb | [云原生数据库 TDSQL-C](https://cloud.tencent.com/document/product/1003) | 2021-10-12 08:04:56 |
@@ -66,7 +66,7 @@
 | dts | [数据传输服务](https://cloud.tencent.com/document/product/571) | 2021-09-16 08:07:00 |
 | ecc | [英文作文批改](https://cloud.tencent.com/document/product/1076) | 2021-09-16 08:07:05 |
 | ecdn | [全站加速网络](https://cloud.tencent.com/document/product/570) | 2021-10-13 08:06:59 |
-| ecm | [边缘计算机器](https://cloud.tencent.com/document/product/1108) | 2021-09-16 08:02:38 |
+| ecm | [边缘计算机器](https://cloud.tencent.com/document/product/1108) | 2021-10-20 08:10:10 |
 | eiam | [数字身份管控平台（员工版）](https://cloud.tencent.com/document/product/1442) | 2021-09-22 08:07:57 |
 | eis | [企业集成服务](https://cloud.tencent.com/document/product/1270) | 2021-09-16 08:00:40 |
 | emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2021-09-16 08:07:07 |
@@ -95,7 +95,7 @@
 | iotvideo | [物联网智能视频服务](https://cloud.tencent.com/document/product/1131) | 2021-09-16 08:03:15 |
 | iotvideoindustry | [物联网智能视频服务（行业版）](https://cloud.tencent.com/document/product/1361) | 2021-09-16 08:01:15 |
 | kms | [密钥管理系统](https://cloud.tencent.com/document/product/573) | 2021-09-16 08:08:09 |
-| lighthouse | [轻量应用服务器](https://cloud.tencent.com/document/product/1207) | 2021-10-15 08:12:20 |
+| lighthouse | [轻量应用服务器](https://cloud.tencent.com/document/product/1207) | 2021-10-20 08:12:10 |
 | live | [云直播](https://cloud.tencent.com/document/product/267) | 2021-10-15 08:12:28 |
 | lp | [登录保护](https://cloud.tencent.com/document/product/1190) | 2021-09-16 08:02:23 |
 | mariadb | [云数据库 MariaDB](https://cloud.tencent.com/document/product/237) | 2021-09-23 08:10:23 |

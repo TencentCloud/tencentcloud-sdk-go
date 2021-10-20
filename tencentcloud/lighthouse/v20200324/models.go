@@ -542,6 +542,24 @@ func (r *CreateKeyPairResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DataDiskPrice struct {
+
+	// 磁盘ID
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
+
+	// 磁盘单价
+	OriginalDiskPrice *float64 `json:"OriginalDiskPrice,omitempty" name:"OriginalDiskPrice"`
+
+	// 磁盘总价
+	OriginalPrice *float64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
+
+	// 折扣
+	Discount *float64 `json:"Discount,omitempty" name:"Discount"`
+
+	// 折后总价
+	DiscountPrice *float64 `json:"DiscountPrice,omitempty" name:"DiscountPrice"`
+}
+
 type DeleteBlueprintsRequest struct {
 	*tchttp.BaseRequest
 
@@ -2988,6 +3006,9 @@ type Price struct {
 
 	// 实例价格。
 	InstancePrice *InstancePrice `json:"InstancePrice,omitempty" name:"InstancePrice"`
+
+	// 数据盘价格。
+	DataDiskPrices []*DataDiskPrice `json:"DataDiskPrices,omitempty" name:"DataDiskPrices"`
 }
 
 type RebootInstancesRequest struct {

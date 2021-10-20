@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 物联网开发平台(iotexplorer) 版本：2019-04-23
+## 边缘计算机器(ecm) 版本：2019-07-19
 
-### 第 34 次发布
+### 第 53 次发布
 
-发布时间：2021-10-19 08:09:21
+发布时间：2021-10-20 08:10:10
 
 本次发布包含了以下内容：
 
@@ -12,17 +12,45 @@
 
 修改接口：
 
-* [DescribeDevicePositionList](https://cloud.tencent.com/document/api/1081/62451)
+* [RunInstances](https://cloud.tencent.com/document/api/1108/43513)
 
-	* 新增入参：ProductIdList, CoordinateType, Offset, Limit
-
-	* 新增出参：Positions, Total
+	* 新增入参：SystemDisk, DataDisks
 
 
 新增数据结构：
 
-* [DevicePositionItem](https://cloud.tencent.com/document/api/1081/34988#DevicePositionItem)
-* [ProductDevicesPositionItem](https://cloud.tencent.com/document/api/1081/34988#ProductDevicesPositionItem)
+* [DataDisk](https://cloud.tencent.com/document/api/1108/42574#DataDisk)
+* [SystemDisk](https://cloud.tencent.com/document/api/1108/42574#SystemDisk)
+
+修改数据结构：
+
+* [Module](https://cloud.tencent.com/document/api/1108/42574#Module)
+
+	* 新增成员：SystemDisk, DataDisks
+
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 20 次发布
+
+发布时间：2021-10-20 08:12:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [DataDiskPrice](https://cloud.tencent.com/document/api/1207/47576#DataDiskPrice)
+
+修改数据结构：
+
+* [Price](https://cloud.tencent.com/document/api/1207/47576#Price)
+
+	* 新增成员：DataDiskPrices
+
 
 
 
@@ -23229,6 +23257,33 @@
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
 
+### 第 53 次发布
+
+发布时间：2021-10-20 08:10:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RunInstances](https://cloud.tencent.com/document/api/1108/43513)
+
+	* 新增入参：SystemDisk, DataDisks
+
+
+新增数据结构：
+
+* [[DataDisk](https://cloud.tencent.com/document/api/1108/42574#DataDisk)](https://cloud.tencent.com/document/api/1108/42574#[DataDisk](https://cloud.tencent.com/document/api/1108/42574#DataDisk))
+* [[SystemDisk](https://cloud.tencent.com/document/api/1108/42574#SystemDisk)](https://cloud.tencent.com/document/api/1108/42574#[SystemDisk](https://cloud.tencent.com/document/api/1108/42574#SystemDisk))
+
+修改数据结构：
+
+* [Module](https://cloud.tencent.com/document/api/1108/42574#Module)
+
+	* 新增成员：SystemDisk, DataDisks
+
+
 ### 第 52 次发布
 
 发布时间：2021-09-16 08:02:38
@@ -31110,8 +31165,8 @@
 
 新增数据结构：
 
-* [[DevicePositionItem](https://cloud.tencent.com/document/api/1081/34988#DevicePositionItem)](https://cloud.tencent.com/document/api/1081/34988#[DevicePositionItem](https://cloud.tencent.com/document/api/1081/34988#DevicePositionItem))
-* [[ProductDevicesPositionItem](https://cloud.tencent.com/document/api/1081/34988#ProductDevicesPositionItem)](https://cloud.tencent.com/document/api/1081/34988#[ProductDevicesPositionItem](https://cloud.tencent.com/document/api/1081/34988#ProductDevicesPositionItem))
+* [DevicePositionItem](https://cloud.tencent.com/document/api/1081/34988#DevicePositionItem)
+* [ProductDevicesPositionItem](https://cloud.tencent.com/document/api/1081/34988#ProductDevicesPositionItem)
 
 ### 第 33 次发布
 
@@ -33256,6 +33311,25 @@
 
 
 ## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 20 次发布
+
+发布时间：2021-10-20 08:12:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[DataDiskPrice](https://cloud.tencent.com/document/api/1207/47576#DataDiskPrice)](https://cloud.tencent.com/document/api/1207/47576#[DataDiskPrice](https://cloud.tencent.com/document/api/1207/47576#DataDiskPrice))
+
+修改数据结构：
+
+* [Price](https://cloud.tencent.com/document/api/1207/47576#Price)
+
+	* 新增成员：DataDiskPrices
+
 
 ### 第 19 次发布
 
