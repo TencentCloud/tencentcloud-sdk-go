@@ -20,38 +20,6 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
-type Account struct {
-
-	// 唯一ID。
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
-
-	// 云镜客户端唯一Uuid
-	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
-
-	// 主机内网IP。
-	MachineIp *string `json:"MachineIp,omitempty" name:"MachineIp"`
-
-	// 主机名称。
-	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
-
-	// 帐号名。
-	Username *string `json:"Username,omitempty" name:"Username"`
-
-	// 帐号所属组。
-	Groups *string `json:"Groups,omitempty" name:"Groups"`
-
-	// 帐号类型。
-	// <li>ORDINARY：普通帐号</li>
-	// <li>SUPPER：超级管理员帐号</li>
-	Privilege *string `json:"Privilege,omitempty" name:"Privilege"`
-
-	// 帐号创建时间。
-	AccountCreateTime *string `json:"AccountCreateTime,omitempty" name:"AccountCreateTime"`
-
-	// 帐号最后登录时间。
-	LastLoginTime *string `json:"LastLoginTime,omitempty" name:"LastLoginTime"`
-}
-
 type AccountStatistics struct {
 
 	// 用户名。
@@ -3528,77 +3496,6 @@ func (r *DescribeAccountStatisticsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAccountStatisticsResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeAccountsRequest struct {
-	*tchttp.BaseRequest
-
-	// 云镜客户端唯一Uuid。Username和Uuid必填其一，使用Uuid表示，查询该主机下列表信息。
-	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
-
-	// 云镜客户端唯一Uuid。Username和Uuid必填其一，使用Username表示，查询该用户名下列表信息。
-	Username *string `json:"Username,omitempty" name:"Username"`
-
-	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 过滤条件。
-	// <li>Username - String - 是否必填：否 - 帐号名</li>
-	// <li>Privilege - String - 是否必填：否 - 帐号类型（ORDINARY: 普通帐号 | SUPPER: 超级管理员帐号）</li>
-	// <li>MachineIp - String - 是否必填：否 - 主机内网IP</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
-}
-
-func (r *DescribeAccountsRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeAccountsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Uuid")
-	delete(f, "Username")
-	delete(f, "Limit")
-	delete(f, "Offset")
-	delete(f, "Filters")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccountsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeAccountsResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 帐号列表记录总数。
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 帐号数据列表。
-		Accounts []*Account `json:"Accounts,omitempty" name:"Accounts"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *DescribeAccountsResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeAccountsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

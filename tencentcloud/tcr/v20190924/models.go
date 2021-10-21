@@ -598,6 +598,9 @@ type CreateInternalEndpointDnsRequest struct {
 	// false: 使用vpc域名
 	// 默认为vpc域名
 	UsePublicDomain *bool `json:"UsePublicDomain,omitempty" name:"UsePublicDomain"`
+
+	// 解析地域，需要保证和vpc处于同一地域，如果不填则默认为主实例地域
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
 }
 
 func (r *CreateInternalEndpointDnsRequest) ToJsonString() string {
@@ -616,6 +619,7 @@ func (r *CreateInternalEndpointDnsRequest) FromJsonString(s string) error {
 	delete(f, "VpcId")
 	delete(f, "EniLBIp")
 	delete(f, "UsePublicDomain")
+	delete(f, "RegionName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInternalEndpointDnsRequest has unknown keys!", "")
 	}
@@ -1655,6 +1659,9 @@ type DeleteInternalEndpointDnsRequest struct {
 	// true：使用默认域名
 	// false:  使用带有vpc的域名
 	UsePublicDomain *bool `json:"UsePublicDomain,omitempty" name:"UsePublicDomain"`
+
+	// 解析地域，需要保证和vpc处于同一地域，如果不填则默认为主实例地域
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
 }
 
 func (r *DeleteInternalEndpointDnsRequest) ToJsonString() string {
@@ -1673,6 +1680,7 @@ func (r *DeleteInternalEndpointDnsRequest) FromJsonString(s string) error {
 	delete(f, "VpcId")
 	delete(f, "EniLBIp")
 	delete(f, "UsePublicDomain")
+	delete(f, "RegionName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteInternalEndpointDnsRequest has unknown keys!", "")
 	}
@@ -6145,6 +6153,9 @@ type VpcAndDomainInfo struct {
 	// true：use instance name as subdomain
 	// false: use instancename+"-vpc" as subdomain
 	UsePublicDomain *bool `json:"UsePublicDomain,omitempty" name:"UsePublicDomain"`
+
+	// 解析地域，需要保证和vpc处于同一地域，如果不填则默认为主实例地域
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
 }
 
 type VpcPrivateDomainStatus struct {

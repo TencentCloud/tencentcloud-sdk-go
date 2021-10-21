@@ -1000,6 +1000,9 @@ type CreateLoadBalancerRequest struct {
 
 	// EIP 的唯一 ID，形如：eip-11112222，仅适用于内网负载均衡绑定EIP。
 	EipAddressId *string `json:"EipAddressId,omitempty" name:"EipAddressId"`
+
+	// Target是否放通来自CLB的流量。开启放通（true）：只验证CLB上的安全组；不开启放通（false）：需同时验证CLB和后端实例上的安全组。
+	LoadBalancerPassToTarget *bool `json:"LoadBalancerPassToTarget,omitempty" name:"LoadBalancerPassToTarget"`
 }
 
 func (r *CreateLoadBalancerRequest) ToJsonString() string {
@@ -1037,6 +1040,7 @@ func (r *CreateLoadBalancerRequest) FromJsonString(s string) error {
 	delete(f, "ClusterTag")
 	delete(f, "SlaveZoneId")
 	delete(f, "EipAddressId")
+	delete(f, "LoadBalancerPassToTarget")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLoadBalancerRequest has unknown keys!", "")
 	}
@@ -3494,6 +3498,10 @@ type HealthCheck struct {
 	// 自定义探测相关参数。健康检查协议CheckType的值取HTTP时，必传此字段，代表后端服务的HTTP版本：HTTP/1.0、HTTP/1.1；（仅适用于TCP监听器）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpVersion *string `json:"HttpVersion,omitempty" name:"HttpVersion"`
+
+	// 自定义探测相关参数。健康检查原IP类型：0（使用LB的VIP做为源IP），1（使用100.64网段IP做为源IP），默认值：0
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceIpType *int64 `json:"SourceIpType,omitempty" name:"SourceIpType"`
 }
 
 type InternetAccessible struct {
@@ -4376,6 +4384,9 @@ type ModifyListenerRequest struct {
 
 	// 解绑后端目标时，是否发RST给客户端，此参数仅适用于TCP监听器。
 	DeregisterTargetRst *bool `json:"DeregisterTargetRst,omitempty" name:"DeregisterTargetRst"`
+
+	// 会话保持类型。NORMAL表示默认会话保持类型。QUIC_CID表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。
+	SessionType *string `json:"SessionType,omitempty" name:"SessionType"`
 }
 
 func (r *ModifyListenerRequest) ToJsonString() string {
@@ -4400,6 +4411,7 @@ func (r *ModifyListenerRequest) FromJsonString(s string) error {
 	delete(f, "SniSwitch")
 	delete(f, "KeepaliveEnable")
 	delete(f, "DeregisterTargetRst")
+	delete(f, "SessionType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyListenerRequest has unknown keys!", "")
 	}

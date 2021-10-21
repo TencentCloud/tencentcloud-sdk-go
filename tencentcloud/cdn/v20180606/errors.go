@@ -74,6 +74,9 @@ const (
 	// 安全加速服务已停服，请重新购买套餐后开启。
 	INTERNALERROR_SCDNUSERSUSPEND = "InternalError.ScdnUserSuspend"
 
+	// 内部数据错误，请重试或联系客服人员解决。
+	INTERNALERROR_SYSTEMDBERROR = "InternalError.SystemDBError"
+
 	// 内部服务错误，请联系腾讯云工程师进一步排查。
 	INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 
@@ -316,6 +319,9 @@ const (
 
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
+
+	// 操作被拒绝。
+	OPERATIONDENIED = "OperationDenied"
 
 	// 请求的次数超过了频率限制。
 	REQUESTLIMITEXCEEDED = "RequestLimitExceeded"

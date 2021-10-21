@@ -104,6 +104,9 @@ const (
 	// 在应当指定传统型负载均衡器的参数中，错误地指定了一个非传统型的负载均衡器。
 	INVALIDPARAMETERVALUE_CLASSICLB = "InvalidParameterValue.ClassicLb"
 
+	// 通知接收端类型冲突。
+	INVALIDPARAMETERVALUE_CONFLICTNOTIFICATIONTARGET = "InvalidParameterValue.ConflictNotificationTarget"
+
 	// 定时任务指定的Cron表达式无效。
 	INVALIDPARAMETERVALUE_CRONEXPRESSIONILLEGAL = "InvalidParameterValue.CronExpressionIllegal"
 

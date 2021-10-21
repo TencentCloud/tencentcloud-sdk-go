@@ -986,6 +986,9 @@ type CreateCloneInstanceRequest struct {
 
 	// 新克隆实例节点数。如果需要克隆出三节点实例， 请将该值设置为3 或指定 BackupZone 参数。如果需要克隆出两节点实例，请将该值设置为2。默认克隆出两节点实例。
 	InstanceNodes *int64 `json:"InstanceNodes,omitempty" name:"InstanceNodes"`
+
+	// 置放群组 ID。
+	DeployGroupId *string `json:"DeployGroupId,omitempty" name:"DeployGroupId"`
 }
 
 func (r *CreateCloneInstanceRequest) ToJsonString() string {
@@ -1017,6 +1020,7 @@ func (r *CreateCloneInstanceRequest) FromJsonString(s string) error {
 	delete(f, "BackupZone")
 	delete(f, "DeviceType")
 	delete(f, "InstanceNodes")
+	delete(f, "DeployGroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloneInstanceRequest has unknown keys!", "")
 	}

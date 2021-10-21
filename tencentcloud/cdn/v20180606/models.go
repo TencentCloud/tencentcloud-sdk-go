@@ -1372,6 +1372,21 @@ type ClientInfo struct {
 	Ip *string `json:"Ip,omitempty" name:"Ip"`
 }
 
+type ClsLogIpData struct {
+
+	// IP
+	ClientIp *string `json:"ClientIp,omitempty" name:"ClientIp"`
+
+	// 在给定的时间段中，1秒内的最大请求量
+	Request *uint64 `json:"Request,omitempty" name:"Request"`
+
+	// 在获取的Top信息中，IP出现的次数
+	Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+	// 在给定的时间段中，1秒内的最大请求量对应的时间
+	Time *string `json:"Time,omitempty" name:"Time"`
+}
+
 type ClsLogObject struct {
 
 	// 主题ID
@@ -1953,6 +1968,45 @@ func (r *CreateVerifyRecordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DDoSAttackBandwidthData struct {
+
+	// ddos攻击类型，当值为all的时候表示所有的攻击类型的总带宽峰值
+	AttackType *string `json:"AttackType,omitempty" name:"AttackType"`
+
+	// ddos攻击带宽大小
+	Value *float64 `json:"Value,omitempty" name:"Value"`
+
+	// 攻击时间点
+	Time *string `json:"Time,omitempty" name:"Time"`
+}
+
+type DDoSAttackIPTopData struct {
+
+	// 攻击ip
+	AttackIP *string `json:"AttackIP,omitempty" name:"AttackIP"`
+
+	// 攻击ip所在省份
+	Province *string `json:"Province,omitempty" name:"Province"`
+
+	// 攻击ip所在国家
+	Country *string `json:"Country,omitempty" name:"Country"`
+
+	// 红果电信
+	Isp *string `json:"Isp,omitempty" name:"Isp"`
+
+	// 攻击次数
+	AttackCount *float64 `json:"AttackCount,omitempty" name:"AttackCount"`
+}
+
+type DDoSStatsData struct {
+
+	// 时间
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 带宽数值，单位bps
+	Value *float64 `json:"Value,omitempty" name:"Value"`
+}
+
 type DDoSTopData struct {
 
 	// 攻击类型
@@ -2216,6 +2270,105 @@ func (r *DescribeBillingDataResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBillingDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCcDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，如：2018-09-04 10:40:00，返回结果小于等于指定时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 时间粒度，支持以下几种模式：
+	// min：1 分钟粒度，指定查询区间 24 小时内（含 24 小时），可返回 1 分钟粒度明细数据
+	// 5min：5 分钟粒度，指定查询区间 31 天内（含 31 天），可返回 5 分钟粒度明细数据
+	// hour：1 小时粒度，指定查询区间 31 天内（含 31 天），可返回 1 小时粒度明细数据
+	// day：天粒度，指定查询区间大于 31 天，可返回天粒度明细数据
+	Interval *string `json:"Interval,omitempty" name:"Interval"`
+
+	// 指定域名查询，为空时，表示查询账号级别数据
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 执行动作，取值为：intercept/redirect/observe
+	// 分别表示：拦截/重定向/观察
+	// 为空时，表示所有执行动作
+	ActionName *string `json:"ActionName,omitempty" name:"ActionName"`
+
+	// 指定域名列表查询，为空时，表示查询账号级别数据
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
+
+	// cdn表示CDN数据，默认值
+	// ecdn表示ECDN数据
+	Source *string `json:"Source,omitempty" name:"Source"`
+
+	// 地域：mainland或overseas，表示国内或海外，不填写默认表示国内
+	Area *string `json:"Area,omitempty" name:"Area"`
+}
+
+func (r *DescribeCcDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCcDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Interval")
+	delete(f, "Domain")
+	delete(f, "ActionName")
+	delete(f, "Domains")
+	delete(f, "Source")
+	delete(f, "Area")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCcDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCcDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 指定执行动作的请求数数据，如果指定类型为空，表示所有类型的请求总数
+		Data []*TimestampData `json:"Data,omitempty" name:"Data"`
+
+		// 粒度
+		Interval *string `json:"Interval,omitempty" name:"Interval"`
+
+		// 执行动作为拦截类型QPS统计数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		InterceptQpsData []*TimestampData `json:"InterceptQpsData,omitempty" name:"InterceptQpsData"`
+
+		// 执行动作为重定向类型QPS统计数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RedirectQpsData []*TimestampData `json:"RedirectQpsData,omitempty" name:"RedirectQpsData"`
+
+		// 执行动作为观察类型QPS统计数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ObserveQpsData []*TimestampData `json:"ObserveQpsData,omitempty" name:"ObserveQpsData"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCcDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCcDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2618,6 +2771,77 @@ func (r *DescribeCertDomainsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDDoSDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，如：2018-09-04 10:40:00，返回结果小于等于指定时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 时间粒度，支持以下几种模式：
+	// min：1 分钟粒度，指定查询区间 24 小时内（含 24 小时），可返回 1 分钟粒度明细数据
+	// 5min：5 分钟粒度，指定查询区间 31 天内（含 31 天），可返回 5 分钟粒度明细数据
+	// hour：1 小时粒度，指定查询区间 31 天内（含 31 天），可返回 1 小时粒度明细数据
+	// day：天粒度，指定查询区间大于 31 天，可返回天粒度明细数据
+	Interval *string `json:"Interval,omitempty" name:"Interval"`
+}
+
+func (r *DescribeDDoSDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDDoSDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Interval")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDDoSDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// DDoS统计数据数组
+		Data []*DDoSStatsData `json:"Data,omitempty" name:"Data"`
+
+		// 时间粒度：
+	// min：1 分钟粒度
+	// 5min：5 分钟粒度
+	// hour：1 小时粒度
+	// day：天粒度
+		Interval *string `json:"Interval,omitempty" name:"Interval"`
+
+		// DDoS统计攻击带宽峰值数组
+		AttackBandwidthData []*DDoSAttackBandwidthData `json:"AttackBandwidthData,omitempty" name:"AttackBandwidthData"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDDoSDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDDoSDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDiagnoseReportRequest struct {
 	*tchttp.BaseRequest
 
@@ -2908,6 +3132,90 @@ func (r *DescribeDomainsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDomainsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEventLogDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 防护类型，映射如下：
+	//   waf = "Web攻击"
+	//   cc = "CC攻击"
+	Mode *string `json:"Mode,omitempty" name:"Mode"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，最长跨度为30分钟
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 执行动作，取值为：intercept/redirect/observe
+	// 分别表示：拦截/重定向/观察
+	// 参数放空，表示查询全部动作数据
+	ActionName *string `json:"ActionName,omitempty" name:"ActionName"`
+
+	// 请求URL，支持URL开头和结尾使用\*表示通配
+	// 如：
+	// /files/* 表示所有以/files/开头的请求
+	// *.jpg 表示所有以.jpg结尾的请求
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 地域 mainland 或者 overseas，为空时默认 mainland
+	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 来源产品，cdn 或者 ecdn，为空时默认 cdn
+	Source *string `json:"Source,omitempty" name:"Source"`
+}
+
+func (r *DescribeEventLogDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEventLogDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Mode")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Domain")
+	delete(f, "ActionName")
+	delete(f, "Url")
+	delete(f, "Area")
+	delete(f, "Source")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEventLogDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEventLogDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 统计曲线结果
+		Results []*EventLogStatsData `json:"Results,omitempty" name:"Results"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeEventLogDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEventLogDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4096,6 +4404,115 @@ func (r *DescribeUrlViolationsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeWafDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询起始时间，如：2018-09-04 10:40:00，返回结果大于等于指定时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，如：2018-09-04 10:40:00，返回结果小于等于指定时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 时间粒度，支持以下几种模式：
+	// min：1 分钟粒度，指定查询区间 24 小时内（含 24 小时），可返回 1 分钟粒度明细数据
+	// 5min：5 分钟粒度，指定查询区间 31 天内（含 31 天），可返回 5 分钟粒度明细数据
+	// hour：1 小时粒度，指定查询区间 31 天内（含 31 天），可返回 1 小时粒度明细数据
+	// day：天粒度，指定查询区间大于 31 天，可返回天粒度明细数据
+	// 
+	// 仅支持30天内数据查询，且查询时间范围在 7 到 30 天最小粒度是 hour。
+	Interval *string `json:"Interval,omitempty" name:"Interval"`
+
+	// 指定域名查询
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 指定攻击类型
+	// 不填则查询所有攻击类型的数据分布
+	// AttackType 映射如下:
+	// "webshell" : Webshell检测防护
+	// "oa" : 常见OA漏洞防护
+	// "xss" : XSS跨站脚本攻击防护
+	// "xxe" : XXE攻击防护
+	// "webscan" : 扫描器攻击漏洞防护
+	// "cms" : 常见CMS漏洞防护
+	// "upload" : 恶意文件上传攻击防护
+	// "sql" : SQL注入攻击防护
+	// "cmd_inject": 命令/代码注入攻击防护
+	// "osc" : 开源组件漏洞防护
+	// "file_read" : 任意文件读取
+	// "ldap" : LDAP注入攻击防护
+	// "other" : 其它漏洞防护
+	AttackType *string `json:"AttackType,omitempty" name:"AttackType"`
+
+	// 指定防御模式
+	// 不填则查询所有防御模式的数据总和
+	// DefenceMode映射如下：
+	//   observe = '观察模式'
+	//   intercept = '拦截模式'
+	DefenceMode *string `json:"DefenceMode,omitempty" name:"DefenceMode"`
+
+	// 地域：mainland 或 overseas
+	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 指定多个攻击类型，取值参考AttackType
+	AttackTypes []*string `json:"AttackTypes,omitempty" name:"AttackTypes"`
+
+	// 指定域名列表查询
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
+}
+
+func (r *DescribeWafDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWafDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Interval")
+	delete(f, "Domain")
+	delete(f, "AttackType")
+	delete(f, "DefenceMode")
+	delete(f, "Area")
+	delete(f, "AttackTypes")
+	delete(f, "Domains")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWafDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWafDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 粒度数据
+		Data []*TimestampData `json:"Data,omitempty" name:"Data"`
+
+		// 粒度
+		Interval *string `json:"Interval,omitempty" name:"Interval"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWafDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWafDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DetailDomain struct {
 
 	// 域名 ID
@@ -4864,6 +5281,15 @@ type ErrorPageRule struct {
 	// 重定向 URL
 	// 需要为完整跳转路径，如 https://www.test.com/error.html
 	RedirectUrl *string `json:"RedirectUrl,omitempty" name:"RedirectUrl"`
+}
+
+type EventLogStatsData struct {
+
+	// 时间
+	Datetime *string `json:"Datetime,omitempty" name:"Datetime"`
+
+	// 请求数
+	Request *uint64 `json:"Request,omitempty" name:"Request"`
 }
 
 type FollowRedirect struct {
@@ -5739,6 +6165,96 @@ func (r *ListTopCcDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ListTopClsLogDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要查询的日志集ID
+	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
+
+	// 需要查询的日志主题ID组合，多个以逗号分隔
+	TopicIds *string `json:"TopicIds,omitempty" name:"TopicIds"`
+
+	// 需要查询的日志的起始时间，格式 YYYY-mm-dd HH:MM:SS
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 需要查询的日志的结束时间，格式 YYYY-mm-dd HH:MM:SS，时间跨度应小于10分钟
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 指定域名查询
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 指定访问的URL查询，支持URL开头和结尾使用\*表示通配
+	// 如：
+	// /files/* 表示所有以/files/开头的请求
+	// *.jpg 表示所有以.jpg结尾的请求
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 接入渠道，默认值为cdn
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
+
+	// 要查询的Top条数，最大值为100，默认为10
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 按请求量排序， asc（升序）或者 desc（降序），默认为 desc
+	Sort *string `json:"Sort,omitempty" name:"Sort"`
+}
+
+func (r *ListTopClsLogDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTopClsLogDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LogsetId")
+	delete(f, "TopicIds")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Domain")
+	delete(f, "Url")
+	delete(f, "Channel")
+	delete(f, "Limit")
+	delete(f, "Sort")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListTopClsLogDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListTopClsLogDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 数据列表
+		Data []*ClsLogIpData `json:"Data,omitempty" name:"Data"`
+
+		// 获取到Top总记录数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 获取到的不重复IP条数
+		IpCount *uint64 `json:"IpCount,omitempty" name:"IpCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListTopClsLogDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTopClsLogDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ListTopDDoSDataRequest struct {
 	*tchttp.BaseRequest
 
@@ -5751,6 +6267,9 @@ type ListTopDDoSDataRequest struct {
 
 	// 查询Top的数量，不填默认值为10
 	TopCount *uint64 `json:"TopCount,omitempty" name:"TopCount"`
+
+	// AttackIP表示查询攻击ip的top排行，AttackType表示攻击类型的top排行，为空默认为AttackType
+	Metric *string `json:"Metric,omitempty" name:"Metric"`
 }
 
 func (r *ListTopDDoSDataRequest) ToJsonString() string {
@@ -5768,6 +6287,7 @@ func (r *ListTopDDoSDataRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "TopCount")
+	delete(f, "Metric")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListTopDDoSDataRequest has unknown keys!", "")
 	}
@@ -5778,8 +6298,11 @@ type ListTopDDoSDataResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// DDoS Top数据
+		// DDoS 攻击类型的top数据，当Metric=AttackType的时候返回攻击类型的统计数据，IPData为空
 		Data []*DDoSTopData `json:"Data,omitempty" name:"Data"`
+
+		// ddos攻击ip的top数据，Metric=AttackIP的时候返回IPData，Data为空
+		IPData []*DDoSAttackIPTopData `json:"IPData,omitempty" name:"IPData"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

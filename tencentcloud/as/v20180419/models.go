@@ -265,6 +265,15 @@ type AutoScalingNotification struct {
 
 	// 事件通知ID。
 	AutoScalingNotificationId *string `json:"AutoScalingNotificationId,omitempty" name:"AutoScalingNotificationId"`
+
+	// 通知接收端类型。
+	TargetType *string `json:"TargetType,omitempty" name:"TargetType"`
+
+	// CMQ 队列名。
+	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
+
+	// CMQ 主题名。
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 }
 
 type ClearLaunchConfigurationAttributesRequest struct {
@@ -858,6 +867,15 @@ type CreateNotificationConfigurationRequest struct {
 
 	// 通知组ID，即为用户组ID集合，用户组ID可以通过[ListGroups](https://cloud.tencent.com/document/product/598/34589)查询。
 	NotificationUserGroupIds []*string `json:"NotificationUserGroupIds,omitempty" name:"NotificationUserGroupIds"`
+
+	// 通知接收端类型，取值：`USER_GROUP`，`CMQ_QUEUE`，`CMQ_TOPIC`。默认值为：`USER_GROUP`。
+	TargetType *string `json:"TargetType,omitempty" name:"TargetType"`
+
+	// CMQ 队列名称，如 TargetType 取值为 `CMQ_QUEUE`，该字段必填。
+	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
+
+	// CMQ 主题名称，如 TargetType 取值为 `CMQ_TOPIC`，该字段必填。
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 }
 
 func (r *CreateNotificationConfigurationRequest) ToJsonString() string {
@@ -875,6 +893,9 @@ func (r *CreateNotificationConfigurationRequest) FromJsonString(s string) error 
 	delete(f, "AutoScalingGroupId")
 	delete(f, "NotificationTypes")
 	delete(f, "NotificationUserGroupIds")
+	delete(f, "TargetType")
+	delete(f, "QueueName")
+	delete(f, "TopicName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNotificationConfigurationRequest has unknown keys!", "")
 	}
@@ -3151,6 +3172,12 @@ type ModifyNotificationConfigurationRequest struct {
 
 	// 通知组ID，即为用户组ID集合，用户组ID可以通过[ListGroups](https://cloud.tencent.com/document/product/598/34589)查询。
 	NotificationUserGroupIds []*string `json:"NotificationUserGroupIds,omitempty" name:"NotificationUserGroupIds"`
+
+	// CMQ 队列名。
+	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
+
+	// CMQ 主题名。
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 }
 
 func (r *ModifyNotificationConfigurationRequest) ToJsonString() string {
@@ -3168,6 +3195,8 @@ func (r *ModifyNotificationConfigurationRequest) FromJsonString(s string) error 
 	delete(f, "AutoScalingNotificationId")
 	delete(f, "NotificationTypes")
 	delete(f, "NotificationUserGroupIds")
+	delete(f, "QueueName")
+	delete(f, "TopicName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNotificationConfigurationRequest has unknown keys!", "")
 	}

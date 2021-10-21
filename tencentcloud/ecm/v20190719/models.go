@@ -1718,6 +1718,16 @@ func (r *CreateVpcResponse) FromJsonString(s string) error {
 }
 
 type DataDisk struct {
+
+	// 数据盘大小。单位GB。
+	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 数据盘类型，取值范围：
+	// - LOCAL_BASIC：本地硬盘
+	// - CLOUD_PREMIUM：高性能云硬盘
+	// 
+	// 默认取值： LOCAL_BASIC。
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
 }
 
 type DeleteHaVipRequest struct {

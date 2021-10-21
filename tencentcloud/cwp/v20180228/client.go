@@ -1159,42 +1159,6 @@ func (c *Client) DescribeAccountStatistics(request *DescribeAccountStatisticsReq
     return
 }
 
-func NewDescribeAccountsRequest() (request *DescribeAccountsRequest) {
-    request = &DescribeAccountsRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAccounts")
-    return
-}
-
-func NewDescribeAccountsResponse() (response *DescribeAccountsResponse) {
-    response = &DescribeAccountsResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeAccounts
-// 该接口已废弃
-//
-// 
-//
-// 本接口 (DescribeAccounts) 用于获取帐号列表数据。
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
-//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
-//  MISSINGPARAMETER = "MissingParameter"
-func (c *Client) DescribeAccounts(request *DescribeAccountsRequest) (response *DescribeAccountsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAccountsRequest()
-    }
-    response = NewDescribeAccountsResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeAssetAppListRequest() (request *DescribeAssetAppListRequest) {
     request = &DescribeAssetAppListRequest{
         BaseRequest: &tchttp.BaseRequest{},

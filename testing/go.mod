@@ -6,6 +6,7 @@ go 1.14
 require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aa v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aai v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/advisor v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/af v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/afc v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ame v0.0.0
@@ -191,6 +192,7 @@ require (
 replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aa => ../tencentcloud/aa
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aai => ../tencentcloud/aai
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/advisor => ../tencentcloud/advisor
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/af => ../tencentcloud/af
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/afc => ../tencentcloud/afc
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ame => ../tencentcloud/ame

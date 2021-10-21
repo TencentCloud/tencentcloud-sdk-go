@@ -431,7 +431,62 @@ func NewCreateNotificationConfigurationResponse() (response *CreateNotificationC
 // CreateNotificationConfiguration
 // 本接口（CreateNotificationConfiguration）用于创建通知。
 //
+// 通知到 CMQ 主题或队列时，消息内容如下：
+//
+// ```
+//
+// {
+//
+//     "Service": "Tencent Cloud Auto Scaling",
+//
+//     "CreatedTime": "2021-10-11T10:15:11Z", // 活动创建时间
+//
+//     "AppId": "100000000",
+//
+//     "ActivityId": "asa-fznnvrja", // 伸缩活动ID
+//
+//     "AutoScalingGroupId": "asg-pc2oqu2z", // 伸缩组ID
+//
+//     "ActivityType": "SCALE_OUT",  // 伸缩活动类型
+//
+//     "StatusCode": "SUCCESSFUL",   // 伸缩活动结果
+//
+//     "Description": "Activity was launched in response to a difference between desired capacity and actual capacity,
+//
+//     scale out 1 instance(s).", // 伸缩活动描述
+//
+//     "StartTime": "2021-10-11T10:15:11Z",  // 活动开始时间
+//
+//     "EndTime": "2021-10-11T10:15:32Z",    // 活动结束时间
+//
+//     "DetailedStatusMessageSet": [ // 活动内部错误集合（非空不代表活动失败）
+//
+//         {
+//
+//             "Code": "InvalidInstanceType",
+//
+//             "Zone": "ap-guangzhou-2",
+//
+//             "InstanceId": "",
+//
+//             "InstanceChargeType": "POSTPAID_BY_HOUR",
+//
+//             "SubnetId": "subnet-4t5mgeuu",
+//
+//             "Message": "The specified instance type `S5.LARGE8` is invalid in `subnet-4t5mgeuu`, `ap-guangzhou-2`.",
+//
+//             "InstanceType": "S5.LARGE8"
+//
+//         }
+//
+//     ]
+//
+// }
+//
+// ```
+//
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CONFLICTNOTIFICATIONTARGET = "InvalidParameterValue.ConflictNotificationTarget"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDNOTIFICATIONUSERGROUPID = "InvalidParameterValue.InvalidNotificationUserGroupId"
 //  INVALIDPARAMETERVALUE_USERGROUPIDNOTFOUND = "InvalidParameterValue.UserGroupIdNotFound"
@@ -1540,7 +1595,10 @@ func NewModifyNotificationConfigurationResponse() (response *ModifyNotificationC
 // ModifyNotificationConfiguration
 // 本接口（ModifyNotificationConfiguration）用于修改通知。
 //
+// * 通知的接收端类型不支持修改。
+//
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CONFLICTNOTIFICATIONTARGET = "InvalidParameterValue.ConflictNotificationTarget"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGNOTIFICATIONID = "InvalidParameterValue.InvalidAutoScalingNotificationId"
 //  INVALIDPARAMETERVALUE_INVALIDNOTIFICATIONUSERGROUPID = "InvalidParameterValue.InvalidNotificationUserGroupId"
 //  INVALIDPARAMETERVALUE_USERGROUPIDNOTFOUND = "InvalidParameterValue.UserGroupIdNotFound"

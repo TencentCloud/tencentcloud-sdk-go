@@ -10,6 +10,7 @@ import (
     _ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aa"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aai"
+	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/advisor"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/af"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/afc"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ame"

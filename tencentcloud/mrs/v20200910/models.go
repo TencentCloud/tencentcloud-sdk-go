@@ -175,6 +175,119 @@ type DiseaseMedicalHistory struct {
 	TransfusionHistory *string `json:"TransfusionHistory,omitempty" name:"TransfusionHistory"`
 }
 
+type EcgDescription struct {
+
+	// 心率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HeartRate *EcgItem `json:"HeartRate,omitempty" name:"HeartRate"`
+
+	// 心房率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuricularRate *EcgItem `json:"AuricularRate,omitempty" name:"AuricularRate"`
+
+	// 心室率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VentricularRate *EcgItem `json:"VentricularRate,omitempty" name:"VentricularRate"`
+
+	// 节律
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rhythm *EcgItem `json:"Rhythm,omitempty" name:"Rhythm"`
+
+	// P波时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PDuration *EcgItem `json:"PDuration,omitempty" name:"PDuration"`
+
+	// QRS时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QrsDuration *EcgItem `json:"QrsDuration,omitempty" name:"QrsDuration"`
+
+	// QRS电轴
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QrsAxis *EcgItem `json:"QrsAxis,omitempty" name:"QrsAxis"`
+
+	// P-R间期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PRInterval *EcgItem `json:"PRInterval,omitempty" name:"PRInterval"`
+
+	// P-P间期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PPInterval *EcgItem `json:"PPInterval,omitempty" name:"PPInterval"`
+
+	// R-R间期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RRInterval *EcgItem `json:"RRInterval,omitempty" name:"RRInterval"`
+
+	// P-J间期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PJInterval *EcgItem `json:"PJInterval,omitempty" name:"PJInterval"`
+
+	// Q-T间期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QTInterval *EcgItem `json:"QTInterval,omitempty" name:"QTInterval"`
+
+	// qt/qtc间期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QTCInterval *EcgItem `json:"QTCInterval,omitempty" name:"QTCInterval"`
+
+	// RV5/SV1振幅
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rv5SV1Amplitude *EcgItem `json:"Rv5SV1Amplitude,omitempty" name:"Rv5SV1Amplitude"`
+
+	// RV5+SV1振幅
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rv5AddSV1Amplitude *EcgItem `json:"Rv5AddSV1Amplitude,omitempty" name:"Rv5AddSV1Amplitude"`
+
+	// PRT电轴
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PRTAxis *EcgItem `json:"PRTAxis,omitempty" name:"PRTAxis"`
+
+	// RV5振幅
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rv5Amplitude *EcgItem `json:"Rv5Amplitude,omitempty" name:"Rv5Amplitude"`
+
+	// SV1振幅
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SV1Amplitude *EcgItem `json:"SV1Amplitude,omitempty" name:"SV1Amplitude"`
+
+	// RV6/SV2
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RV6SV2 *EcgItem `json:"RV6SV2,omitempty" name:"RV6SV2"`
+
+	// P/QRS/T电轴
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PQRSTAxis *EcgItem `json:"PQRSTAxis,omitempty" name:"PQRSTAxis"`
+}
+
+type EcgDiagnosis struct {
+
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value []*string `json:"Value,omitempty" name:"Value"`
+}
+
+type EcgItem struct {
+
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Unit *string `json:"Unit,omitempty" name:"Unit"`
+
+	// 原文
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Src *string `json:"Src,omitempty" name:"Src"`
+}
+
 type Elastic struct {
 
 	// 原文位置
@@ -196,6 +309,17 @@ type Elastic struct {
 	// 名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+type Electrocardiogram struct {
+
+	// 心电图详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EcgDescription *EcgDescription `json:"EcgDescription,omitempty" name:"EcgDescription"`
+
+	// 心电图诊断
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EcgDiagnosis *EcgDiagnosis `json:"EcgDiagnosis,omitempty" name:"EcgDiagnosis"`
 }
 
 type FamilyMedicalHistory struct {
@@ -421,7 +545,7 @@ type ImageToObjectRequest struct {
 	// 图片处理参数
 	HandleParam *HandleParam `json:"HandleParam,omitempty" name:"HandleParam"`
 
-	// 报告类型，目前支持11（检验报告），12（检查报告），15（病理报告），28（出院报告），29（入院报告），210（门诊病历），212（手术记录），218（诊断证明）。如果不清楚报告类型，可以使用分类引擎，该字段传0（同时IsUsedClassify字段必须为True，否则无法输出结果）
+	// 报告类型，目前支持11（检验报告），12（检查报告），15（病理报告），28（出院报告），29（入院报告），210（门诊病历），212（手术记录），218（诊断证明），363（心电图）。如果不清楚报告类型，可以使用分类引擎，该字段传0（同时IsUsedClassify字段必须为True，否则无法输出结果）
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
 	// 是否使用分类引擎，当不确定报告类型时，可以使用收费的报告分类引擎服务。若该字段为 False，则 Type 字段不能为 0，否则无法输出结果。
@@ -969,6 +1093,26 @@ type PatientInfo struct {
 	// 医保类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MedicalInsuranceType *string `json:"MedicalInsuranceType,omitempty" name:"MedicalInsuranceType"`
+
+	// 标准化年龄
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgeNorm *string `json:"AgeNorm,omitempty" name:"AgeNorm"`
+
+	// 民族
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Nation *string `json:"Nation,omitempty" name:"Nation"`
+
+	// 婚姻代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MarriedCode *string `json:"MarriedCode,omitempty" name:"MarriedCode"`
+
+	// 职业代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProfessionCode *string `json:"ProfessionCode,omitempty" name:"ProfessionCode"`
+
+	// 居民医保代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MedicalInsuranceTypeCode *string `json:"MedicalInsuranceTypeCode,omitempty" name:"MedicalInsuranceTypeCode"`
 }
 
 type PersonalMedicalHistory struct {
@@ -1220,6 +1364,10 @@ type Template struct {
 	// 手术记录
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Surgery *Surgery `json:"Surgery,omitempty" name:"Surgery"`
+
+	// 心电图报告
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Electrocardiogram *Electrocardiogram `json:"Electrocardiogram,omitempty" name:"Electrocardiogram"`
 }
 
 type TextToClassRequest struct {
@@ -1277,7 +1425,7 @@ type TextToObjectRequest struct {
 	// 报告文本
 	Text *string `json:"Text,omitempty" name:"Text"`
 
-	// 报告类型，目前支持12（检查报告），15（病理报告），28（出院报告），29（入院报告），210（门诊病历），212（手术记录），218（诊断证明）。如果不清楚报告类型，可以使用分类引擎，该字段传0（同时IsUsedClassify字段必须为True，否则无法输出结果）
+	// 报告类型，目前支持12（检查报告），15（病理报告），28（出院报告），29（入院报告），210（门诊病历），212（手术记录），218（诊断证明），363（心电图）。如果不清楚报告类型，可以使用分类引擎，该字段传0（同时IsUsedClassify字段必须为True，否则无法输出结果）
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
 	// 是否使用分类引擎，当不确定报告类型时，可以使用收费的报告分类引擎服务。若该字段为False，则Type字段不能为0，否则无法输出结果。

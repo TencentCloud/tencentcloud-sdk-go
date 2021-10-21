@@ -219,7 +219,7 @@ type Cluster struct {
 	// 最大QPS
 	MaxQps *int64 `json:"MaxQps,omitempty" name:"MaxQps"`
 
-	// 消息保留时间
+	// 最大消息保留时间，分钟为单位
 	MessageRetentionTime *int64 `json:"MessageRetentionTime,omitempty" name:"MessageRetentionTime"`
 
 	// 最大存储容量
@@ -244,6 +244,38 @@ type Cluster struct {
 	// 已使用存储限制，MB为单位
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsedStorageBudget *int64 `json:"UsedStorageBudget,omitempty" name:"UsedStorageBudget"`
+
+	// 最大生产消息速率，以条数为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxPublishRateInMessages *int64 `json:"MaxPublishRateInMessages,omitempty" name:"MaxPublishRateInMessages"`
+
+	// 最大推送消息速率，以条数为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxDispatchRateInMessages *int64 `json:"MaxDispatchRateInMessages,omitempty" name:"MaxDispatchRateInMessages"`
+
+	// 最大生产消息速率，以字节为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxPublishRateInBytes *int64 `json:"MaxPublishRateInBytes,omitempty" name:"MaxPublishRateInBytes"`
+
+	// 最大推送消息速率，以字节为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxDispatchRateInBytes *int64 `json:"MaxDispatchRateInBytes,omitempty" name:"MaxDispatchRateInBytes"`
+
+	// 已创建主题数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicNum *int64 `json:"TopicNum,omitempty" name:"TopicNum"`
+
+	// 最长消息延时，以秒为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxMessageDelayInSeconds *int64 `json:"MaxMessageDelayInSeconds,omitempty" name:"MaxMessageDelayInSeconds"`
+
+	// 是否开启公网访问，不填时默认开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicAccessEnabled *bool `json:"PublicAccessEnabled,omitempty" name:"PublicAccessEnabled"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type CmqDeadLetterPolicy struct {
@@ -600,6 +632,9 @@ type CreateClusterRequest struct {
 
 	// 集群的标签列表
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 是否开启公网访问，不填时默认开启
+	PublicAccessEnabled *bool `json:"PublicAccessEnabled,omitempty" name:"PublicAccessEnabled"`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
@@ -618,6 +653,7 @@ func (r *CreateClusterRequest) FromJsonString(s string) error {
 	delete(f, "BindClusterId")
 	delete(f, "Remark")
 	delete(f, "Tags")
+	delete(f, "PublicAccessEnabled")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterRequest has unknown keys!", "")
 	}
@@ -1901,6 +1937,12 @@ type DescribeClustersRequest struct {
 
 	// 集群ID列表过滤
 	ClusterIdList []*string `json:"ClusterIdList,omitempty" name:"ClusterIdList"`
+
+	// 是否标签过滤
+	IsTagFilter *bool `json:"IsTagFilter,omitempty" name:"IsTagFilter"`
+
+	// 过滤器。目前支持按标签过滤。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeClustersRequest) ToJsonString() string {
@@ -1918,6 +1960,8 @@ func (r *DescribeClustersRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "ClusterIdList")
+	delete(f, "IsTagFilter")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClustersRequest has unknown keys!", "")
 	}
@@ -2080,6 +2124,9 @@ type DescribeCmqQueuesRequest struct {
 
 	// 标签过滤查找时，需要设置为 true
 	IsTagFilter *bool `json:"IsTagFilter,omitempty" name:"IsTagFilter"`
+
+	// 过滤器。目前支持按标签过滤。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeCmqQueuesRequest) ToJsonString() string {
@@ -2099,6 +2146,7 @@ func (r *DescribeCmqQueuesRequest) FromJsonString(s string) error {
 	delete(f, "QueueName")
 	delete(f, "QueueNameList")
 	delete(f, "IsTagFilter")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCmqQueuesRequest has unknown keys!", "")
 	}
@@ -2263,6 +2311,9 @@ type DescribeCmqTopicsRequest struct {
 
 	// 标签过滤查找时，需要设置为 true
 	IsTagFilter *bool `json:"IsTagFilter,omitempty" name:"IsTagFilter"`
+
+	// 过滤器。目前支持按标签过滤。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeCmqTopicsRequest) ToJsonString() string {
@@ -2282,6 +2333,7 @@ func (r *DescribeCmqTopicsRequest) FromJsonString(s string) error {
 	delete(f, "TopicName")
 	delete(f, "TopicNameList")
 	delete(f, "IsTagFilter")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCmqTopicsRequest has unknown keys!", "")
 	}
@@ -3051,6 +3103,9 @@ type ModifyClusterRequest struct {
 
 	// 说明信息。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 开启公网访问，只能为true
+	PublicAccessEnabled *bool `json:"PublicAccessEnabled,omitempty" name:"PublicAccessEnabled"`
 }
 
 func (r *ModifyClusterRequest) ToJsonString() string {
@@ -3068,6 +3123,7 @@ func (r *ModifyClusterRequest) FromJsonString(s string) error {
 	delete(f, "ClusterId")
 	delete(f, "ClusterName")
 	delete(f, "Remark")
+	delete(f, "PublicAccessEnabled")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterRequest has unknown keys!", "")
 	}
