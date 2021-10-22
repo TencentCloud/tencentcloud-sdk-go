@@ -140,7 +140,7 @@ const (
 	// 域名拥有特殊配置，需人工处理。
 	INVALIDPARAMETER_CDNHOSTHASSPECIALCONFIG = "InvalidParameter.CdnHostHasSpecialConfig"
 
-	// 内部域名不允许接入。
+	// 该域名为内部域名，不可接入。
 	INVALIDPARAMETER_CDNHOSTINTERNALHOST = "InvalidParameter.CdnHostInternalHost"
 
 	// 错误的中间源配置。

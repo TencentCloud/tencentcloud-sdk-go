@@ -328,6 +328,67 @@ func (r *CreateSignUrlsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeResourceUrlsByFlowsRequest struct {
+	*tchttp.BaseRequest
+
+	// 渠道应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 查询资源所对应的流程Id
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+}
+
+func (r *DescribeResourceUrlsByFlowsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceUrlsByFlowsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "Operator")
+	delete(f, "FlowIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceUrlsByFlowsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourceUrlsByFlowsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 流程资源对应链接信息
+		FlowResourceUrlInfos []*FlowResourceUrlInfo `json:"FlowResourceUrlInfos,omitempty" name:"FlowResourceUrlInfos"`
+
+		// 创建消息，对应多个合同ID，
+	// 成功为“”,创建失败则对应失败消息
+		ErrorMessages []*string `json:"ErrorMessages,omitempty" name:"ErrorMessages"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeResourceUrlsByFlowsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceUrlsByFlowsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeTemplatesRequest struct {
 	*tchttp.BaseRequest
 
@@ -526,6 +587,17 @@ type FlowInfo struct {
 	CustomerData *string `json:"CustomerData,omitempty" name:"CustomerData"`
 }
 
+type FlowResourceUrlInfo struct {
+
+	// 流程对应Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 流程对应资源链接信息数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceUrlInfos []*ResourceUrlInfo `json:"ResourceUrlInfos,omitempty" name:"ResourceUrlInfos"`
+}
+
 type FormField struct {
 
 	// 表单域或控件的Value
@@ -648,6 +720,21 @@ type Recipient struct {
 
 	// 签署顺序：数字越小优先级越高
 	RoutingOrder *int64 `json:"RoutingOrder,omitempty" name:"RoutingOrder"`
+}
+
+type ResourceUrlInfo struct {
+
+	// 资源链接地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 资源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 资源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 type SignUrlInfo struct {

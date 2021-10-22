@@ -68,11 +68,11 @@
 | ecc | [英文作文批改](https://cloud.tencent.com/document/product/1076) | 2021-09-16 08:07:05 |
 | ecdn | [全站加速网络](https://cloud.tencent.com/document/product/570) | 2021-10-13 08:06:59 |
 | ecm | [边缘计算机器](https://cloud.tencent.com/document/product/1108) | 2021-10-21 11:26:12 |
-| eiam | [数字身份管控平台（员工版）](https://cloud.tencent.com/document/product/1442) | 2021-09-22 08:07:57 |
+| eiam | [数字身份管控平台（员工版）](https://cloud.tencent.com/document/product/1442) | 2021-10-22 08:10:22 |
 | eis | [企业集成服务](https://cloud.tencent.com/document/product/1270) | 2021-09-16 08:00:40 |
 | emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2021-09-16 08:07:07 |
 | es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2021-09-30 08:05:14 |
-| essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2021-10-12 08:06:14 |
+| essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2021-10-22 08:10:34 |
 | facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2021-09-16 08:07:14 |
 | faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2021-10-21 11:26:59 |
 | fmu | [人脸试妆](https://cloud.tencent.com/document/product/1172) | 2021-09-24 09:57:29 |
@@ -166,14 +166,14 @@
 | tmt | [机器翻译](https://cloud.tencent.com/document/product/551) | 2021-10-11 08:10:28 |
 | trtc | [实时音视频](https://cloud.tencent.com/document/product/647) | 2021-10-15 08:16:00 |
 | tse | [腾讯云微服务引擎](https://cloud.tencent.com/document/product/1364) | 2021-09-27 08:17:29 |
-| tsf | [腾讯微服务平台 TSF](https://cloud.tencent.com/document/product/649) | 2021-10-21 11:40:48 |
+| tsf | [腾讯微服务平台 TSF](https://cloud.tencent.com/document/product/649) | 2021-10-22 08:15:47 |
 | tsw | [腾讯微服务观测平台 TSW](https://cloud.tencent.com/document/product/1311) | 2021-09-16 08:14:31 |
 | tts | [语音合成](https://cloud.tencent.com/document/product/1073) | 2021-09-16 08:11:28 |
 | ump | [客流数字化平台](https://cloud.tencent.com/document/product/1320) | 2021-09-16 08:01:36 |
 | vm | [视频内容安全](https://cloud.tencent.com/document/product/1265) | 2021-09-16 08:01:26 |
 | vms | [语音消息](https://cloud.tencent.com/document/product/1128) | 2021-09-16 08:01:28 |
 | vod | [云点播](https://cloud.tencent.com/document/product/266) | 2021-09-27 08:18:01 |
-| vpc | [私有网络](https://cloud.tencent.com/document/product/215) | 2021-10-21 11:45:08 |
+| vpc | [私有网络](https://cloud.tencent.com/document/product/215) | 2021-10-22 08:16:35 |
 | waf | [Web 应用防火墙](https://cloud.tencent.com/document/product/627) | 2021-09-16 08:14:32 |
 | wav | [企业微信汽车行业版](https://cloud.tencent.com/document/product/1318) | 2021-09-30 08:11:50 |
 | wss | [SSL证书管理服务](https://cloud.tencent.com/document/product) | 2020-04-01 08:53:44 |

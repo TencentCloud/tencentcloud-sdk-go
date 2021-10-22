@@ -170,6 +170,49 @@ func (c *Client) CreateSignUrls(request *CreateSignUrlsRequest) (response *Creat
     return
 }
 
+func NewDescribeResourceUrlsByFlowsRequest() (request *DescribeResourceUrlsByFlowsRequest) {
+    request = &DescribeResourceUrlsByFlowsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("essbasic", APIVersion, "DescribeResourceUrlsByFlows")
+    return
+}
+
+func NewDescribeResourceUrlsByFlowsResponse() (response *DescribeResourceUrlsByFlowsResponse) {
+    response = &DescribeResourceUrlsByFlowsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeResourceUrlsByFlows
+// 根据流程信息批量获取资源下载链接
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeResourceUrlsByFlows(request *DescribeResourceUrlsByFlowsRequest) (response *DescribeResourceUrlsByFlowsResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceUrlsByFlowsRequest()
+    }
+    response = NewDescribeResourceUrlsByFlowsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTemplatesRequest() (request *DescribeTemplatesRequest) {
     request = &DescribeTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
