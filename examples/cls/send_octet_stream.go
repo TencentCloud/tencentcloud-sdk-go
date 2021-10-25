@@ -5,13 +5,11 @@ import (
 	"os"
 	"time"
 
-	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
-	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
-	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
 	pb "github.com/golang/protobuf/proto"
-	"github.com/pierrec/lz4"
 	"github.com/tencentcloud/tencentcloud-sdk-go/examples/cls/proto"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
 	tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 )
 func GenPbBody() []byte {
 	nowtimestamp := int64(time.Now().Unix())
@@ -40,6 +38,9 @@ func GenPbBody() []byte {
 }
 
 func main() {
+	region := "xxxx"//需要根据客户的实际地域自行填写
+	topicId := "xxxxxx-xxxxxx-xxxxxx-xxxxxx"//这里需要使用客户实际的topicId，不能输入topicname
+	hashKey := ""//可选参数，具体参考官方文档：https://cloud.tencent.com/document/product/614/59470
 	credential := common.NewCredential(
 		os.Getenv("TENCENTCLOUD_SECRET_ID"),
 		os.Getenv("TENCENTCLOUD_SECRET_KEY"))
@@ -47,31 +48,23 @@ func main() {
 
 	cpf.HttpProfile.Endpoint = "cls.tencentcloudapi.com"
 	cpf.HttpProfile.ReqMethod = "POST"
+
 	//创建common client
-	client := common.NewCommonClient(credential, regions.GuangzhouOpen, cpf)
+	client := common.NewCommonClient(credential, region, cpf)
 	// 创建common request
 	headers := map[string]string{
-		"X-CLS-TopicId":      "e621fdb8-16f4-41cf-bc73-5aeadxxxxxx",
-		"X-CLS-HashKey":      "0fffffffffffffffffffffffffffffff",
+		"X-CLS-TopicId": topicId,
+		"X-CLS-HashKey": hashKey,
 	}
-	commpresstype := ""//压缩算法类型， 目前只支持lz4
-	body := GenPbBody()
-	length := lz4.CompressBlockBound(len(body)) + 1
-	compressbody := make([]byte, length)
-	n, err := lz4.CompressBlock(body, compressbody, nil)
-	if err == nil && n > 0 {
-		commpresstype = "lz4"
-		body = compressbody[0:n]
-	}
-	headers["X-CLS-CompressType"] = commpresstype
 
+	body := GenPbBody()
 	request := tchttp.NewCommonRequest("cls", "2020-10-16", "UploadLog")
 	request.SetOctetStreamParameters(headers, body)
 	//创建common response
 	response := tchttp.NewCommonResponse()
 
 	//发送请求
-	err = client.SendOctetStream(request, response)
+	err := client.SendOctetStream(request, response)
 	if err != nil {
 		fmt.Println(fmt.Sprintf("fail to invoke api: %v", err))
 		return
