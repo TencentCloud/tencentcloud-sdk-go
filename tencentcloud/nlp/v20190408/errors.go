@@ -116,7 +116,7 @@ const (
 	// 文件资源不可用
 	RESOURCEUNAVAILABLE_FILEUNAVAILABLE = "ResourceUnavailable.FileUnavailable"
 
-	// 您的账号尚未开通NLP服务，请通过网址 https://console.cloud.tencent.com/nlp 登录腾讯云NLP控制台进行服务开通后再使用
+	// 您的账号尚未开通NLP服务，请登录腾讯云NLP控制台进行服务开通后再使用
 	RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
 
 	// 未授权操作。

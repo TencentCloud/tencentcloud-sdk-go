@@ -1215,6 +1215,12 @@ type CreateModuleRequest struct {
 
 	// 是否禁止分配外网IP
 	DisableWanIp *bool `json:"DisableWanIp,omitempty" name:"DisableWanIp"`
+
+	// 系统盘信息。
+	SystemDisk *SystemDisk `json:"SystemDisk,omitempty" name:"SystemDisk"`
+
+	// 数据盘信息。
+	DataDisks []*DataDisk `json:"DataDisks,omitempty" name:"DataDisks"`
 }
 
 func (r *CreateModuleRequest) ToJsonString() string {
@@ -1240,6 +1246,8 @@ func (r *CreateModuleRequest) FromJsonString(s string) error {
 	delete(f, "SecurityGroups")
 	delete(f, "DefaultBandWidthIn")
 	delete(f, "DisableWanIp")
+	delete(f, "SystemDisk")
+	delete(f, "DataDisks")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModuleRequest has unknown keys!", "")
 	}
@@ -3808,6 +3816,55 @@ func (r *DescribeNodeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeNodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePackingQuotaGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 过滤条件，name取值为：Zone-可用区， InstanceType-实例类型，DataDiskSize - 数据盘大小
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribePackingQuotaGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePackingQuotaGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePackingQuotaGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePackingQuotaGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 装箱配额组
+		PackingQuotaSet []*PackingQuotaGroup `json:"PackingQuotaSet,omitempty" name:"PackingQuotaSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePackingQuotaGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePackingQuotaGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6633,6 +6690,15 @@ type ModifyModuleConfigRequest struct {
 
 	// 默认数据盘大小，单位：G。范围不得超过数据盘范围大小，详看DescribeConfig。
 	DefaultDataDiskSize *int64 `json:"DefaultDataDiskSize,omitempty" name:"DefaultDataDiskSize"`
+
+	// 默认系统盘大小，单位：G。范围不得超过数据盘范围大小，详看DescribeConfig。
+	DefaultSystemDiskSize *int64 `json:"DefaultSystemDiskSize,omitempty" name:"DefaultSystemDiskSize"`
+
+	// 系统盘
+	SystemDisk *SystemDisk `json:"SystemDisk,omitempty" name:"SystemDisk"`
+
+	// 数据盘
+	DataDisks []*DataDisk `json:"DataDisks,omitempty" name:"DataDisks"`
 }
 
 func (r *ModifyModuleConfigRequest) ToJsonString() string {
@@ -6650,6 +6716,9 @@ func (r *ModifyModuleConfigRequest) FromJsonString(s string) error {
 	delete(f, "ModuleId")
 	delete(f, "InstanceType")
 	delete(f, "DefaultDataDiskSize")
+	delete(f, "DefaultSystemDiskSize")
+	delete(f, "SystemDisk")
+	delete(f, "DataDisks")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModuleConfigRequest has unknown keys!", "")
 	}
@@ -7688,28 +7757,28 @@ type NetworkStorageRange struct {
 
 type Node struct {
 
-	// zone信息
+	// zone信息。
 	ZoneInfo *ZoneInfo `json:"ZoneInfo,omitempty" name:"ZoneInfo"`
 
-	// 国家信息
+	// 国家信息。
 	Country *Country `json:"Country,omitempty" name:"Country"`
 
-	// 区域信息
+	// 区域信息。
 	Area *Area `json:"Area,omitempty" name:"Area"`
 
-	// 省份信息
+	// 省份信息。
 	Province *Province `json:"Province,omitempty" name:"Province"`
 
-	// 城市信息
+	// 城市信息。
 	City *City `json:"City,omitempty" name:"City"`
 
-	// Region信息
+	// Region信息。
 	RegionInfo *RegionInfo `json:"RegionInfo,omitempty" name:"RegionInfo"`
 
-	// 运营商列表
+	// 运营商列表。
 	ISPSet []*ISP `json:"ISPSet,omitempty" name:"ISPSet"`
 
-	// 运营商数量
+	// 运营商数量。
 	ISPNum *int64 `json:"ISPNum,omitempty" name:"ISPNum"`
 }
 
@@ -7748,6 +7817,30 @@ type OsVersion struct {
 	// 支持的操作系统架构
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Architecture []*string `json:"Architecture,omitempty" name:"Architecture"`
+}
+
+type PackingQuotaGroup struct {
+
+	// 可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 可用区id
+	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// ISP id
+	ISPId *string `json:"ISPId,omitempty" name:"ISPId"`
+
+	// 一组相互关联的装箱配额
+	PackingQuotaInfos []*PackingQuotaInfo `json:"PackingQuotaInfos,omitempty" name:"PackingQuotaInfos"`
+}
+
+type PackingQuotaInfo struct {
+
+	// 实例类型
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 装箱配额
+	PackingQuota *int64 `json:"PackingQuota,omitempty" name:"PackingQuota"`
 }
 
 type PeakBase struct {

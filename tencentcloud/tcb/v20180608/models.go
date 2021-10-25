@@ -5494,6 +5494,15 @@ type OrderInfo struct {
 	// 资源初始化结果(仅当ExtensionId不为空时有效): successful(初始化成功), failed(初始化失败), doing(初始化进行中), init(准备初始化)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceReady *string `json:"ResourceReady,omitempty" name:"ResourceReady"`
+
+	// 安装标记。建议使用方统一转大小写之后再判断。
+	// <li>QuickStart：快速启动来源</li>
+	// <li>Activity：活动来源</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Flag *string `json:"Flag,omitempty" name:"Flag"`
+
+	// 下单时的参数
+	ReqBody *string `json:"ReqBody,omitempty" name:"ReqBody"`
 }
 
 type PackageFreeQuotaInfo struct {

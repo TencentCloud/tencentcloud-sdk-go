@@ -2317,6 +2317,44 @@ func (c *Client) DescribeNode(request *DescribeNodeRequest) (response *DescribeN
     return
 }
 
+func NewDescribePackingQuotaGroupRequest() (request *DescribePackingQuotaGroupRequest) {
+    request = &DescribePackingQuotaGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DescribePackingQuotaGroup")
+    return
+}
+
+func NewDescribePackingQuotaGroupResponse() (response *DescribePackingQuotaGroupResponse) {
+    response = &DescribePackingQuotaGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePackingQuotaGroup
+// 使用本接口获取某种机型在某些区域的装箱配额（当使用虚拟机型时，返回的是一组相互关联的装箱配额）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATAOPERATIONFAILED = "FailedOperation.DataOperationFailed"
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  FAILEDOPERATION_OPERATIONNOTALLOW = "FailedOperation.OperationNotAllow"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePackingQuotaGroup(request *DescribePackingQuotaGroupRequest) (response *DescribePackingQuotaGroupResponse, err error) {
+    if request == nil {
+        request = NewDescribePackingQuotaGroupRequest()
+    }
+    response = NewDescribePackingQuotaGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePeakBaseOverviewRequest() (request *DescribePeakBaseOverviewRequest) {
     request = &DescribePeakBaseOverviewRequest{
         BaseRequest: &tchttp.BaseRequest{},

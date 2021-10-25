@@ -12,7 +12,7 @@
 | ape | [正版图库直通车](https://cloud.tencent.com/document/product/1181) | 2021-09-16 08:01:43 |
 | api | [云 API](https://cloud.tencent.com/document/product/546) | 2021-04-25 10:09:57 |
 | apigateway | [API网关](https://cloud.tencent.com/document/product/628) | 2021-09-29 08:00:45 |
-| as | [弹性伸缩](https://cloud.tencent.com/document/product/377) | 2021-10-21 11:15:03 |
+| as | [弹性伸缩](https://cloud.tencent.com/document/product/377) | 2021-10-25 08:01:20 |
 | asr | [语音识别](https://cloud.tencent.com/document/product/1093) | 2021-09-16 08:01:57 |
 | asw | [应用与服务编排工作流](https://cloud.tencent.com/document/product/1272) | 2021-09-16 08:01:40 |
 | ba | [网站备案](https://cloud.tencent.com/document/product/243) | 2021-09-16 08:01:39 |
@@ -67,12 +67,12 @@
 | dts | [数据传输服务](https://cloud.tencent.com/document/product/571) | 2021-09-16 08:07:00 |
 | ecc | [英文作文批改](https://cloud.tencent.com/document/product/1076) | 2021-09-16 08:07:05 |
 | ecdn | [全站加速网络](https://cloud.tencent.com/document/product/570) | 2021-10-13 08:06:59 |
-| ecm | [边缘计算机器](https://cloud.tencent.com/document/product/1108) | 2021-10-21 11:26:12 |
+| ecm | [边缘计算机器](https://cloud.tencent.com/document/product/1108) | 2021-10-25 08:05:17 |
 | eiam | [数字身份管控平台（员工版）](https://cloud.tencent.com/document/product/1442) | 2021-10-22 08:10:22 |
 | eis | [企业集成服务](https://cloud.tencent.com/document/product/1270) | 2021-09-16 08:00:40 |
 | emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2021-09-16 08:07:07 |
 | es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2021-09-30 08:05:14 |
-| essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2021-10-22 08:10:34 |
+| essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2021-10-25 08:05:49 |
 | facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2021-09-16 08:07:14 |
 | faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2021-10-21 11:26:59 |
 | fmu | [人脸试妆](https://cloud.tencent.com/document/product/1172) | 2021-09-24 09:57:29 |
@@ -125,7 +125,7 @@
 | rkp | [风险探针](https://cloud.tencent.com/document/product/1169) | 2021-09-16 08:13:45 |
 | rp | [注册保护](https://cloud.tencent.com/document/product/1191) | 2021-09-16 08:02:24 |
 | rum | [前端性能监控](https://cloud.tencent.com/document/product/1464) | 2021-09-27 08:15:19 |
-| scf | [云函数](https://cloud.tencent.com/document/product/583) | 2021-10-12 08:09:33 |
+| scf | [云函数](https://cloud.tencent.com/document/product/583) | 2021-10-25 08:09:06 |
 | ses | [邮件推送](https://cloud.tencent.com/document/product/1288) | 2021-09-16 08:14:21 |
 | smpn | [营销号码安全](https://cloud.tencent.com/document/product/1127) | 2021-09-16 08:04:09 |
 | sms | [短信](https://cloud.tencent.com/document/product/382) | 2021-09-27 10:59:59 |
@@ -145,7 +145,7 @@
 | tbm | [](https://cloud.tencent.com/document/product) | 2019-03-29 14:49:11 |
 | tbp | [腾讯智能对话平台](https://cloud.tencent.com/document/product/1060) | 2021-09-16 08:10:24 |
 | tcaplusdb | [游戏数据库 TcaplusDB](https://cloud.tencent.com/document/product/596) | 2021-09-28 08:09:50 |
-| tcb | [云开发 CloudBase](https://cloud.tencent.com/document/product/876) | 2021-09-29 08:09:41 |
+| tcb | [云开发 CloudBase](https://cloud.tencent.com/document/product/876) | 2021-10-25 08:10:05 |
 | tcex | [腾讯云释义](https://cloud.tencent.com/document/product/1266) | 2021-09-16 08:01:55 |
 | tci | [腾讯智学课堂分析](https://cloud.tencent.com/document/product) | 2020-08-24 08:06:03 |
 | tcr | [容器镜像服务](https://cloud.tencent.com/document/product/1141) | 2021-10-21 11:37:27 |

@@ -2912,6 +2912,9 @@ type PutProvisionedConcurrencyConfigRequest struct {
 
 	// 函数所属命名空间，默认为default
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 定时预置任务
+	TriggerActions []*TriggerAction `json:"TriggerActions,omitempty" name:"TriggerActions"`
 }
 
 func (r *PutProvisionedConcurrencyConfigRequest) ToJsonString() string {
@@ -2930,6 +2933,7 @@ func (r *PutProvisionedConcurrencyConfigRequest) FromJsonString(s string) error 
 	delete(f, "Qualifier")
 	delete(f, "VersionProvisionedConcurrencyNum")
 	delete(f, "Namespace")
+	delete(f, "TriggerActions")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PutProvisionedConcurrencyConfigRequest has unknown keys!", "")
 	}
@@ -3229,6 +3233,21 @@ type Trigger struct {
 
 	// 触发器绑定的别名或版本
 	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
+}
+
+type TriggerAction struct {
+
+	// 定时预置名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerName *string `json:"TriggerName,omitempty" name:"TriggerName"`
+
+	// 定时预置并发数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerProvisionedConcurrencyNum *uint64 `json:"TriggerProvisionedConcurrencyNum,omitempty" name:"TriggerProvisionedConcurrencyNum"`
+
+	// 设置定时触发器的时间配置，cron表达式。Cron 表达式有七个必需字段，按空格分隔。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerCronConfig *string `json:"TriggerCronConfig,omitempty" name:"TriggerCronConfig"`
 }
 
 type TriggerCount struct {
@@ -3742,6 +3761,10 @@ type VersionProvisionedConcurrencyInfo struct {
 
 	// 函数版本号
 	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
+
+	// 预置并发定时任务。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerActions []*TriggerAction `json:"TriggerActions,omitempty" name:"TriggerActions"`
 }
 
 type VersionWeight struct {

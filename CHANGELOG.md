@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+## 边缘计算机器(ecm) 版本：2019-07-19
 
-### 第 5 次发布
+### 第 55 次发布
 
-发布时间：2021-10-22 08:10:34
+发布时间：2021-10-25 08:05:17
 
 本次发布包含了以下内容：
 
@@ -12,16 +12,72 @@
 
 新增接口：
 
-* [DescribeResourceUrlsByFlows](https://cloud.tencent.com/document/api/1420/63220)
+* [DescribePackingQuotaGroup](https://cloud.tencent.com/document/api/1108/63290)
+
+修改接口：
+
+* [CreateModule](https://cloud.tencent.com/document/api/1108/42557)
+
+	* 新增入参：SystemDisk, DataDisks
+
+* [ModifyModuleConfig](https://cloud.tencent.com/document/api/1108/47143)
+
+	* 新增入参：DefaultSystemDiskSize, SystemDisk, DataDisks
+
 
 新增数据结构：
 
-* [FlowResourceUrlInfo](https://cloud.tencent.com/document/api/1420/61525#FlowResourceUrlInfo)
-* [ResourceUrlInfo](https://cloud.tencent.com/document/api/1420/61525#ResourceUrlInfo)
+* [PackingQuotaGroup](https://cloud.tencent.com/document/api/1108/42574#PackingQuotaGroup)
+* [PackingQuotaInfo](https://cloud.tencent.com/document/api/1108/42574#PackingQuotaInfo)
 
 
 
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+## 云函数(scf) 版本：2018-04-16
+
+### 第 35 次发布
+
+发布时间：2021-10-25 08:09:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [PutProvisionedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51246)
+
+	* 新增入参：TriggerActions
+
+
+新增数据结构：
+
+* [TriggerAction](https://cloud.tencent.com/document/api/583/17244#TriggerAction)
+
+修改数据结构：
+
+* [VersionProvisionedConcurrencyInfo](https://cloud.tencent.com/document/api/583/17244#VersionProvisionedConcurrencyInfo)
+
+	* 新增成员：TriggerActions
+
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 71 次发布
+
+发布时间：2021-10-25 08:10:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OrderInfo](https://cloud.tencent.com/document/api/876/34822#OrderInfo)
+
+	* 新增成员：Flag, ReqBody
+
 
 
 
@@ -23370,6 +23426,34 @@
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
 
+### 第 55 次发布
+
+发布时间：2021-10-25 08:05:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribePackingQuotaGroup](https://cloud.tencent.com/document/api/1108/63290)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreateModule](https://cloud.tencent.com/document/api/1108/42557)
+
+	* 新增入参：SystemDisk, DataDisks
+
+* [ModifyModuleConfig](https://cloud.tencent.com/document/api/1108/47143)
+
+	* 新增入参：DefaultSystemDiskSize, SystemDisk, DataDisks
+
+
+新增数据结构：
+
+* [[PackingQuotaGroup](https://cloud.tencent.com/document/api/1108/42574#PackingQuotaGroup)](https://cloud.tencent.com/document/api/1108/42574#[PackingQuotaGroup](https://cloud.tencent.com/document/api/1108/42574#PackingQuotaGroup))
+* [[PackingQuotaInfo](https://cloud.tencent.com/document/api/1108/42574#PackingQuotaInfo)](https://cloud.tencent.com/document/api/1108/42574#[PackingQuotaInfo](https://cloud.tencent.com/document/api/1108/42574#PackingQuotaInfo))
+
 ### 第 54 次发布
 
 发布时间：2021-10-21 11:26:12
@@ -26057,12 +26141,12 @@
 
 新增接口：
 
-* [[DescribeResourceUrlsByFlows](https://cloud.tencent.com/document/api/1420/63220)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeResourceUrlsByFlows](https://cloud.tencent.com/document/api/1420/63220)
 
 新增数据结构：
 
-* [[FlowResourceUrlInfo](https://cloud.tencent.com/document/api/1420/61525#FlowResourceUrlInfo)](https://cloud.tencent.com/document/api/1420/61525#[FlowResourceUrlInfo](https://cloud.tencent.com/document/api/1420/61525#FlowResourceUrlInfo))
-* [[ResourceUrlInfo](https://cloud.tencent.com/document/api/1420/61525#ResourceUrlInfo)](https://cloud.tencent.com/document/api/1420/61525#[ResourceUrlInfo](https://cloud.tencent.com/document/api/1420/61525#ResourceUrlInfo))
+* [FlowResourceUrlInfo](https://cloud.tencent.com/document/api/1420/61525#FlowResourceUrlInfo)
+* [ResourceUrlInfo](https://cloud.tencent.com/document/api/1420/61525#ResourceUrlInfo)
 
 ### 第 4 次发布
 
@@ -42598,6 +42682,32 @@
 
 ## 云函数(scf) 版本：2018-04-16
 
+### 第 35 次发布
+
+发布时间：2021-10-25 08:09:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [PutProvisionedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51246)
+
+	* 新增入参：TriggerActions
+
+
+新增数据结构：
+
+* [[TriggerAction](https://cloud.tencent.com/document/api/583/17244#TriggerAction)](https://cloud.tencent.com/document/api/583/17244#[TriggerAction](https://cloud.tencent.com/document/api/583/17244#TriggerAction))
+
+修改数据结构：
+
+* [VersionProvisionedConcurrencyInfo](https://cloud.tencent.com/document/api/583/17244#VersionProvisionedConcurrencyInfo)
+
+	* 新增成员：TriggerActions
+
+
 ### 第 34 次发布
 
 发布时间：2021-09-17 08:11:57
@@ -46897,6 +47007,21 @@
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 71 次发布
+
+发布时间：2021-10-25 08:10:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OrderInfo](https://cloud.tencent.com/document/api/876/34822#OrderInfo)
+
+	* 新增成员：Flag, ReqBody
+
 
 ### 第 70 次发布
 
