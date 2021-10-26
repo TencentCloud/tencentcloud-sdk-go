@@ -1321,6 +1321,62 @@ func (r *DescribeDBInstanceAttributeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDBInstanceParametersRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
+
+	// 查询指定参数详情。ParamName为空或不传，默认返回全部参数列表
+	ParamName *string `json:"ParamName,omitempty" name:"ParamName"`
+}
+
+func (r *DescribeDBInstanceParametersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBInstanceParametersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "ParamName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBInstanceParametersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDBInstanceParametersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 参数列表总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 参数列表返回详情
+		Detail []*ParamInfo `json:"Detail,omitempty" name:"Detail"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDBInstanceParametersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBInstanceParametersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDBInstancesRequest struct {
 	*tchttp.BaseRequest
 
@@ -1640,6 +1696,58 @@ func (r *DescribeOrdersResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeOrdersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeParamsEventRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例DB ID
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
+}
+
+func (r *DescribeParamsEventRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeParamsEventRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeParamsEventRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeParamsEventResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 参数修改事件总数，以参数为统计粒度
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 实例参数修改事件详情
+		EventItems []*EventItem `json:"EventItems,omitempty" name:"EventItems"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeParamsEventResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeParamsEventResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2228,6 +2336,56 @@ type ErrLogDetail struct {
 	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
 }
 
+type EventInfo struct {
+
+	// 参数名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamName *string `json:"ParamName,omitempty" name:"ParamName"`
+
+	// 原参数值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OldValue *string `json:"OldValue,omitempty" name:"OldValue"`
+
+	// 本次修改期望参数值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NewValue *string `json:"NewValue,omitempty" name:"NewValue"`
+
+	// 后台参数修改开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+	// 后台参数生效开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EffectiveTime *string `json:"EffectiveTime,omitempty" name:"EffectiveTime"`
+
+	// 修改状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 操作者（一般为用户sub UIN）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 时间日志。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventLog *string `json:"EventLog,omitempty" name:"EventLog"`
+}
+
+type EventItem struct {
+
+	// 参数名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamName *string `json:"ParamName,omitempty" name:"ParamName"`
+
+	// 修改事件数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventCount *int64 `json:"EventCount,omitempty" name:"EventCount"`
+
+	// 修改时间详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventDetail []*EventInfo `json:"EventDetail,omitempty" name:"EventDetail"`
+}
+
 type Filter struct {
 
 	// 过滤键的名称。
@@ -2644,6 +2802,56 @@ func (r *ModifyDBInstanceNameResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyDBInstanceParametersRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
+
+	// 待修改参数及期望值
+	ParamList []*ParamEntry `json:"ParamList,omitempty" name:"ParamList"`
+}
+
+func (r *ModifyDBInstanceParametersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBInstanceParametersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "ParamList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBInstanceParametersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDBInstanceParametersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDBInstanceParametersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBInstanceParametersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyDBInstanceReadOnlyGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -3027,6 +3235,86 @@ func (r *OpenServerlessDBExtranetAccessResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *OpenServerlessDBExtranetAccessResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ParamEntry struct {
+
+	// 参数名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 修改参数值。入参均以字符串形式传递，例如：小数”0.1“、整数”1000“、枚举”replica“
+	ExpectedValue *string `json:"ExpectedValue,omitempty" name:"ExpectedValue"`
+}
+
+type ParamInfo struct {
+
+	// 参数ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ID *int64 `json:"ID,omitempty" name:"ID"`
+
+	// 参数名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 参数值类型：integer（整型）、real（浮点型）、bool（布尔型）、enum（枚举类型）、mutil_enum（枚举类型、支持多选）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamValueType *string `json:"ParamValueType,omitempty" name:"ParamValueType"`
+
+	// 参数值 单位。参数没有单位是，该字段返回空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Unit *string `json:"Unit,omitempty" name:"Unit"`
+
+	// 参数默认值。以字符串形式返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
+
+	// 参数当前运行值。以字符串形式返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentValue *string `json:"CurrentValue,omitempty" name:"CurrentValue"`
+
+	// 枚举类型参数，取值范围
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnumValue []*string `json:"EnumValue,omitempty" name:"EnumValue"`
+
+	// 数值类型（integer、real）参数，取值下界
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Max *float64 `json:"Max,omitempty" name:"Max"`
+
+	// 数值类型（integer、real）参数，取值上界
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Min *float64 `json:"Min,omitempty" name:"Min"`
+
+	// 参数中文描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamDescriptionCH *string `json:"ParamDescriptionCH,omitempty" name:"ParamDescriptionCH"`
+
+	// 参数英文描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamDescriptionEN *string `json:"ParamDescriptionEN,omitempty" name:"ParamDescriptionEN"`
+
+	// 参数修改，是否重启生效。（true为需要，false为不需要）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NeedReboot *bool `json:"NeedReboot,omitempty" name:"NeedReboot"`
+
+	// 参数中文分类
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClassificationCN *string `json:"ClassificationCN,omitempty" name:"ClassificationCN"`
+
+	// 参数英文分类
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClassificationEN *string `json:"ClassificationEN,omitempty" name:"ClassificationEN"`
+
+	// 是否和规格相关。（true为相关，false为不想关）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpecRelated *bool `json:"SpecRelated,omitempty" name:"SpecRelated"`
+
+	// 是否为重点参数。（true为重点参数，修改是需要重点关注，可能会影响实例性能）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Advanced *bool `json:"Advanced,omitempty" name:"Advanced"`
+
+	// 参数最后一次修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastModifyTime *string `json:"LastModifyTime,omitempty" name:"LastModifyTime"`
 }
 
 type PgDeal struct {

@@ -77,3 +77,48 @@ func (c *Client) BindOrganizationMemberAuthAccount(request *BindOrganizationMemb
     err = c.Send(request, response)
     return
 }
+
+func NewCreateOrganizationMemberRequest() (request *CreateOrganizationMemberRequest) {
+    request = &CreateOrganizationMemberRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("organization", APIVersion, "CreateOrganizationMember")
+    return
+}
+
+func NewCreateOrganizationMemberResponse() (response *CreateOrganizationMemberResponse) {
+    response = &CreateOrganizationMemberResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateOrganizationMember
+// 创建组织成员
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTHINFOEMPTY = "FailedOperation.AuthInfoEmpty"
+//  FAILEDOPERATION_AUTHNOTENTERPRISE = "FailedOperation.AuthNotEnterprise"
+//  FAILEDOPERATION_CREATEACCOUNT = "FailedOperation.CreateAccount"
+//  FAILEDOPERATION_CREATEMEMBERAUTHOVERLIMIT = "FailedOperation.CreateMemberAuthOverLimit"
+//  FAILEDOPERATION_CREATERECORDALREADYSUCCESS = "FailedOperation.CreateRecordAlreadySuccess"
+//  FAILEDOPERATION_CREATERECORDNOTEXIST = "FailedOperation.CreateRecordNotExist"
+//  FAILEDOPERATION_CREATEROLE = "FailedOperation.CreateRole"
+//  FAILEDOPERATION_MEMBERNAMEUSED = "FailedOperation.MemberNameUsed"
+//  FAILEDOPERATION_ORGANIZATIONMEMBERNAMEUSED = "FailedOperation.OrganizationMemberNameUsed"
+//  FAILEDOPERATION_ORGANIZATIONNODENOTEXIST = "FailedOperation.OrganizationNodeNotExist"
+//  FAILEDOPERATION_ORGANIZATIONPERMISSIONILLEGAL = "FailedOperation.OrganizationPermissionIllegal"
+//  FAILEDOPERATION_ORGANIZATIONPOLICYILLEGAL = "FailedOperation.OrganizationPolicyIllegal"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_CREATEMEMBEROVERLIMIT = "LimitExceeded.CreateMemberOverLimit"
+//  LIMITEXCEEDED_ORGANIZATIONMEMBEROVERLIMIT = "LimitExceeded.OrganizationMemberOverLimit"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) CreateOrganizationMember(request *CreateOrganizationMemberRequest) (response *CreateOrganizationMemberResponse, err error) {
+    if request == nil {
+        request = NewCreateOrganizationMemberRequest()
+    }
+    response = NewCreateOrganizationMemberResponse()
+    err = c.Send(request, response)
+    return
+}

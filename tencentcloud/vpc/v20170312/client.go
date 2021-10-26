@@ -7958,7 +7958,6 @@ func NewModifyServiceTemplateAttributeResponse() (response *ModifyServiceTemplat
 // 本接口（ModifyServiceTemplateAttribute）用于修改协议端口模板
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"

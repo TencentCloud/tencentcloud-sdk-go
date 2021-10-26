@@ -892,6 +892,38 @@ func (c *Client) DescribeCloudBaseRunOperationTypes(request *DescribeCloudBaseRu
     return
 }
 
+func NewDescribeCloudBaseRunPodListRequest() (request *DescribeCloudBaseRunPodListRequest) {
+    request = &DescribeCloudBaseRunPodListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseRunPodList")
+    return
+}
+
+func NewDescribeCloudBaseRunPodListResponse() (response *DescribeCloudBaseRunPodListResponse) {
+    response = &DescribeCloudBaseRunPodListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCloudBaseRunPodList
+// 查询云应用服务版本容器列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeCloudBaseRunPodList(request *DescribeCloudBaseRunPodListRequest) (response *DescribeCloudBaseRunPodListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudBaseRunPodListRequest()
+    }
+    response = NewDescribeCloudBaseRunPodListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudBaseRunResourceRequest() (request *DescribeCloudBaseRunResourceRequest) {
     request = &DescribeCloudBaseRunResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -948,6 +980,37 @@ func (c *Client) DescribeCloudBaseRunResourceForExtend(request *DescribeCloudBas
         request = NewDescribeCloudBaseRunResourceForExtendRequest()
     }
     response = NewDescribeCloudBaseRunResourceForExtendResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudBaseRunServerRequest() (request *DescribeCloudBaseRunServerRequest) {
+    request = &DescribeCloudBaseRunServerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseRunServer")
+    return
+}
+
+func NewDescribeCloudBaseRunServerResponse() (response *DescribeCloudBaseRunServerResponse) {
+    response = &DescribeCloudBaseRunServerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCloudBaseRunServer
+// 查询单个服务的详情，版本以及详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCloudBaseRunServer(request *DescribeCloudBaseRunServerRequest) (response *DescribeCloudBaseRunServerResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudBaseRunServerRequest()
+    }
+    response = NewDescribeCloudBaseRunServerResponse()
     err = c.Send(request, response)
     return
 }

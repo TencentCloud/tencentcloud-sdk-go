@@ -11138,6 +11138,75 @@ func (r *DescribeVulCountByDatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeVulEffectHostListRequest struct {
+	*tchttp.BaseRequest
+
+	// 分页limit 最大100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页Offset
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 漏洞id
+	VulId *uint64 `json:"VulId,omitempty" name:"VulId"`
+
+	// 过滤条件。
+	// <li>AliasName - String - 主机名筛选</li>
+	// <li>TagIds - String - 主机标签id串，多个用英文逗号分隔</li>
+	// <li>Status - String - 状态,0: 待处理 1:忽略  3:已修复  5:检测中  6:修复这中.</li>
+	// <li>Uuid - String数组 - Uuid串数组</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeVulEffectHostListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulEffectHostListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "VulId")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulEffectHostListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVulEffectHostListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 列表总数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 影响主机列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VulEffectHostList []*VulEffectHostList `json:"VulEffectHostList,omitempty" name:"VulEffectHostList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVulEffectHostListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulEffectHostListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeVulHostCountScanTimeRequest struct {
 	*tchttp.BaseRequest
 }
@@ -11390,6 +11459,80 @@ func (r *DescribeVulLevelCountResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeVulLevelCountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVulListRequest struct {
+	*tchttp.BaseRequest
+
+	// 返回数量，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>IfEmergency - String - 是否必填：否 - 是否为应急漏洞，查询应急漏洞传:yes</li>
+	// <li>Status - String - 是否必填：是 - 漏洞状态筛选，0: 待处理 1:忽略  3:已修复  5:检测中，6：修复中 控制台仅处理0,1,3,5,6五种状态</li>
+	// <li>Level - String - 是否必填：否 - 漏洞等级筛选 1:低 2:中 3:高 4:提示</li>
+	// <li>VulName- String - 是否必填：否 - 漏洞名称搜索</li>
+	// <li>LastDay- int - 是否必填：否 - 查询近几日的数据，需要 -1 之后传入，例如近3日数据，传2</li>
+	// <li>OrderBy - String 是否必填：否 默认按照处理状态,威胁等级,检测时间排序 -排序字段，支持：level,lastTime的动态排序  hostCount 影响主机台数排序</li>
+	// <li>IsShowFollowVul -  String 是否必填：否   是否仅展示重点关注漏洞  0=展示全部 1=仅展示重点关注漏洞</li>
+	// <li>VulCategory-  String 是否必填：否   1: web应用漏洞 2:系统组件漏洞3:安全基线 4: Linux系统漏洞 5: windows补丁</li>
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeVulListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVulListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 漏洞列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VulInfoList []*VulInfoList `json:"VulInfoList,omitempty" name:"VulInfoList"`
+
+		// 漏洞总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 重点关注漏洞总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FollowVulCount *uint64 `json:"FollowVulCount,omitempty" name:"FollowVulCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVulListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -16317,6 +16460,49 @@ type VulDetailInfo struct {
 	PublishTime *string `json:"PublishTime,omitempty" name:"PublishTime"`
 }
 
+type VulEffectHostList struct {
+
+	// 事件id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventId *uint64 `json:"EventId,omitempty" name:"EventId"`
+
+	// 状态：0: 待处理 1:忽略  3:已修复  5:检测中 6:修复中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 最后检测时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastTime *string `json:"LastTime,omitempty" name:"LastTime"`
+
+	// 危害等级：1-低危；2-中危；3-高危；4-严重
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Level *uint64 `json:"Level,omitempty" name:"Level"`
+
+	// 主机Quuid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 主机Uuid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 主机HostIp
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostIp *string `json:"HostIp,omitempty" name:"HostIp"`
+
+	// 主机别名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AliasName *string `json:"AliasName,omitempty" name:"AliasName"`
+
+	// 主机标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
+
+	// 说明
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
 type VulHostTopInfo struct {
 
 	// 主机名
@@ -16334,6 +16520,57 @@ type VulHostTopInfo struct {
 	// top评分
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Score *uint64 `json:"Score,omitempty" name:"Score"`
+}
+
+type VulInfoList struct {
+
+	// 漏洞包含的事件id串，多个用“,”分割
+	Ids *string `json:"Ids,omitempty" name:"Ids"`
+
+	// 漏洞名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 0: 待处理 1:忽略  3:已修复  5:检测中 6:修复中 控制台仅处理0,1,3,5,6四种状态
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 漏洞id
+	VulId *uint64 `json:"VulId,omitempty" name:"VulId"`
+
+	// 漏洞披露事件
+	PublishTime *string `json:"PublishTime,omitempty" name:"PublishTime"`
+
+	// 最后检测时间
+	LastTime *string `json:"LastTime,omitempty" name:"LastTime"`
+
+	// 影响主机数
+	HostCount *uint64 `json:"HostCount,omitempty" name:"HostCount"`
+
+	// 漏洞等级 1:低 2:中 3:高 4:提示
+	Level *uint64 `json:"Level,omitempty" name:"Level"`
+
+	// 废弃字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	From *uint64 `json:"From,omitempty" name:"From"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Descript *string `json:"Descript,omitempty" name:"Descript"`
+
+	// 废弃字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublishTimeWisteria *string `json:"PublishTimeWisteria,omitempty" name:"PublishTimeWisteria"`
+
+	// 废弃字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NameWisteria *string `json:"NameWisteria,omitempty" name:"NameWisteria"`
+
+	// 废弃字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DescriptWisteria *string `json:"DescriptWisteria,omitempty" name:"DescriptWisteria"`
+
+	// 聚合后事件状态串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusStr *string `json:"StatusStr,omitempty" name:"StatusStr"`
 }
 
 type VulLevelCountInfo struct {

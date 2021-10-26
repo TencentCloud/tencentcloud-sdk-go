@@ -22,15 +22,7 @@ import (
 
 type AccountInfo struct {
 
-	// 用户账号类型（默认开通 QQ 开放账号、手机号，手机 MD5 账号类型查询。如需使用微信开放账号，则需要 提交工单 由腾讯云进行资格审核，审核通过后方可正常使用微信开放账号）：
-	// 1：QQ开放账号。
-	// 2：微信开放账号。
-	// 4：手机号（暂仅支持国内手机号）。
-	// 8：设备号（imei/imeiMD5/idfa/idfaMD5）。
-	// 0：其他。
-	// 10004：支持手机号MD5加密和sha256加密；
-	// 标准中国大陆手机号11位，MD5加密后取长度32位小写字符串；例如：手机号13112345678的Md5加密结果为手"dafc728802534d51fbf85c70313a2bd2"
-	// 标准中国大陆手机号11位，sha256加密后取长度为64位的小写字符串；例如：手机号13112345678的sha256加密的结果为“9f46715cff1a9ac969ec01924111f7f3697a97ad98a4fd53e15a78d79d1f3551”
+	// 账号类型
 	AccountType *uint64 `json:"AccountType,omitempty" name:"AccountType"`
 
 	// QQ账号信息，AccountType是1时，该字段必填。
@@ -126,7 +118,7 @@ type InputManageMarketingRisk struct {
 	// 登录来源的外网IP
 	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
 
-	// 用户操作时间戳，单位秒（格林威治时间精确到秒，如1501590972）。
+	// 时间戳
 	PostTime *uint64 `json:"PostTime,omitempty" name:"PostTime"`
 
 	// 用户唯一标识。
@@ -176,67 +168,6 @@ type InputManageMarketingRisk struct {
 	DeviceType *int64 `json:"DeviceType,omitempty" name:"DeviceType"`
 
 	// 详细信息
-	// FieldName 清单
-	// Android serial_number String 否 设备序列号
-	// Android carrier String 否 运营商；-1: 获取失败，0: 其他，1: 移动，2: 联通，3: 电信，4: 铁通
-	// Android mcc_mnc String 否 netOperator MCC+MNC
-	// Android model String 否 手机型号
-	// Android os_system String 否 操作系统
-	// Android vendor_id String 否 设备品牌 “华为”“oppo”“小米”
-	// Android device_version String 否 设备版本
-	// Android android_api_level String 否 安卓API等级
-	// Android phone_chip_info String 否 手机芯片信息
-	// Android resolution_w String 否 屏幕分辨率宽，保留整数
-	// Android resolution_h String 否 屏幕分辨率高，保留整数
-	// Android brightness String 否 屏幕亮度
-	// Android bluetooth_address String 否 蓝牙地址
-	// Android baseband_version String 否 基带版本
-	// Android kernel_version String 否 kernel 版本
-	// Android cpu_core String 否 CPU 核数
-	// Android cpu_model String 否 CPU 型号
-	// Android memory String 否 内存容量，单位转换为 GB
-	// Android storage String 否 存储容量，单位转换为 GB
-	// Android volume String 否 手机音量
-	// Android battery_power String 否 电池电量
-	// Android language String 否 语言
-	// Android package_name String 否 软件包名
-	// Android App_version String 否 App 版本号
-	// Android App_name String 否 App 显示名称
-	// Android is_debug String 否 是否 debug；0 为正常模式，1 为 debug 模式；其他值无效
-	// Android is_root String 否 是否越狱；0 为正常，1 为越狱；其他值无效
-	// Android is_proxy String 否 是否启动代理；0 为未开启，1 为开启；其他值无效
-	// Android is_emulator String 否 是否模拟器；0 为未开启，1 为开启；其他值无效
-	// Android charge_status String 否 充电状态；1-不在充电，2-USB充电，3-电源充电
-	// Android network_type String 否 网络类型：2G/3G/4G/5G/WiFi/WWAN/other
-	// Android wifi_mac String 否 WiFi MAC地址
-	// IOS model String 否 机器型号 iPhone11
-	// IOS memory String 否 内存容量，单位转换为 GB
-	// IOS os_system String 否 操作系统
-	// IOS device_version String 否 设备版本
-	// IOS phone_chip_info String 否 手机芯片信息
-	// IOS device_name String 否 设备名称 "xxx 的 iPhone"，"xxx's IPhone" 等等
-	// IOS uptime String 否 开机时间
-	// IOS language String 否 系统语言
-	// IOS carrier String 否 运营商
-	// IOS cpu_model String 否 CPU 型号
-	// IOS cpu_core String 否 CPU 个数
-	// IOS volume String 否 手机音量
-	// IOS battery_power String 否 电池电量
-	// IOS resolution_w String 否 屏幕分辨率宽，保留整数
-	// IOS resolution_h String 否 屏幕分辨率高，保留整数
-	// IOS package_name String 否 App 包名
-	// IOS App_version String 否 App 版本号
-	// IOS App_name String 否 App 显示名称
-	// IOS is_debug String 否 是否 debug；0 为正常模式，1 为 debug 模式；其他值无效
-	// IOS is_root String 否 是否越狱；0 为正常，1 为越狱；其他值无效
-	// IOS is_proxy String 否 是否启动代理；0 为未开启，1 为开启；其他值无效
-	// IOS is_emulator String 否 是否模拟器；0 为未开启，1 为开启；其他值无效
-	// IOS charge_status String 否 充电状态；1-不在充电，2-USB充电，3-电源充电
-	// IOS network_type String 否 网络类型：2G/3G/4G/5G/WiFi/WWAN/other
-	// IOS wifi_mac String 否 WiFi MAC地址
-	// 其他 os_system String 否 操作系统
-	// 其他 browser String 否 浏览器信息
-	// 其他 from_url String 否 来源链接
 	Details []*InputDetails `json:"Details,omitempty" name:"Details"`
 
 	// 可选填写。详情请跳转至SponsorInfo查看。
@@ -310,29 +241,22 @@ type OnlineScamInfo struct {
 	// 1：广播。
 	ContentType *int64 `json:"ContentType,omitempty" name:"ContentType"`
 
-	// 诈骗账号类型：
-	// 1：11位手机号。
-	// 2：QQ账号。
+	// 类型
 	FraudType *int64 `json:"FraudType,omitempty" name:"FraudType"`
 
-	// 诈骗账号，手机号或QQ账号。
+	// 账号
 	FraudAccount *string `json:"FraudAccount,omitempty" name:"FraudAccount"`
 }
 
 type OtherAccountInfo struct {
 
-	// 其它账号信息：
-	// AccountType是4时，填入真实的手机号（如13123456789）。
-	// AccountType是8时，支持 imei、idfa、imeiMD5、idfaMD5 入参。
-	// AccountType是0时，填入账号信息。
-	// AccountType是10004时，填入手机号的MD5值。
-	// 注：imeiMd5 加密方式为：imei 明文小写后，进行 MD5 加密，加密后取小写值。IdfaMd5 加密方式为：idfa 明文大写后，进行 MD5 加密，加密后取小写值。
+	// id
 	AccountId *string `json:"AccountId,omitempty" name:"AccountId"`
 
-	// 手机号，若 AccountType 是4（手机号）、或10004（手机号 MD5），则无需重复填写，否则填入对应的手机号（如13123456789）。
+	// 手机号
 	MobilePhone *string `json:"MobilePhone,omitempty" name:"MobilePhone"`
 
-	// 用户设备号。若 AccountType 是8（设备号），则无需重复填写，否则填入对应的设备号。
+	// id
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
 }
 
@@ -455,19 +379,19 @@ type QQAccountInfo struct {
 
 type SponsorInfo struct {
 
-	// 助力场景建议填写：活动发起人微信OpenID。
+	// OpenID
 	SponsorOpenId *string `json:"SponsorOpenId,omitempty" name:"SponsorOpenId"`
 
-	// 助力场景建议填写：发起人设备号。
+	// 设备号
 	SponsorDeviceNumber *string `json:"SponsorDeviceNumber,omitempty" name:"SponsorDeviceNumber"`
 
-	// 助力场景建议填写：发起人手机号。
+	// 手机号
 	SponsorPhone *string `json:"SponsorPhone,omitempty" name:"SponsorPhone"`
 
-	// 助力场景建议填写：发起人IP。
+	// IP
 	SponsorIp *string `json:"SponsorIp,omitempty" name:"SponsorIp"`
 
-	// 助力场景建议填写：活动链接。
+	// 链接
 	CampaignUrl *string `json:"CampaignUrl,omitempty" name:"CampaignUrl"`
 }
 
@@ -484,8 +408,7 @@ type WeChatAccountInfo struct {
 	// 随机串。如果WeChatSubType是2，该字段必填。Token签名随机数，建议16个字符。
 	RandStr *string `json:"RandStr,omitempty" name:"RandStr"`
 
-	// 如果WeChatSubType是1，填入授权的access_token（注意：不是普通access_token，详情请参阅官方说明文档。获取网页版本的access_token时，scope字段必需填写snsapi_userinfo。
-	// 如果WeChatSubType是2，填入以session_key为密钥签名随机数RandStr（hmac_sha256签名算法）得到的字符串。
+	// token
 	WeChatAccessToken *string `json:"WeChatAccessToken,omitempty" name:"WeChatAccessToken"`
 
 	// 用于标识微信用户登录后所关联业务自身的账号ID。

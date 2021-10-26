@@ -5067,6 +5067,42 @@ func (c *Client) DescribeVulCountByDates(request *DescribeVulCountByDatesRequest
     return
 }
 
+func NewDescribeVulEffectHostListRequest() (request *DescribeVulEffectHostListRequest) {
+    request = &DescribeVulEffectHostListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeVulEffectHostList")
+    return
+}
+
+func NewDescribeVulEffectHostListResponse() (response *DescribeVulEffectHostListResponse) {
+    response = &DescribeVulEffectHostListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeVulEffectHostList
+// 漏洞影响主机列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeVulEffectHostList(request *DescribeVulEffectHostListRequest) (response *DescribeVulEffectHostListResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulEffectHostListRequest()
+    }
+    response = NewDescribeVulEffectHostListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVulHostCountScanTimeRequest() (request *DescribeVulHostCountScanTimeRequest) {
     request = &DescribeVulHostCountScanTimeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5192,6 +5228,40 @@ func (c *Client) DescribeVulLevelCount(request *DescribeVulLevelCountRequest) (r
         request = NewDescribeVulLevelCountRequest()
     }
     response = NewDescribeVulLevelCountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVulListRequest() (request *DescribeVulListRequest) {
+    request = &DescribeVulListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeVulList")
+    return
+}
+
+func NewDescribeVulListResponse() (response *DescribeVulListResponse) {
+    response = &DescribeVulListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeVulList
+// 获取漏洞列表数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeVulList(request *DescribeVulListRequest) (response *DescribeVulListResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulListRequest()
+    }
+    response = NewDescribeVulListResponse()
     err = c.Send(request, response)
     return
 }

@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 边缘计算机器(ecm) 版本：2019-07-19
+## 主机安全(cwp) 版本：2018-02-28
 
-### 第 55 次发布
+### 第 32 次发布
 
-发布时间：2021-10-25 08:05:17
+发布时间：2021-10-26 08:07:04
 
 本次发布包含了以下内容：
 
@@ -12,71 +12,130 @@
 
 新增接口：
 
-* [DescribePackingQuotaGroup](https://cloud.tencent.com/document/api/1108/63290)
-
-修改接口：
-
-* [CreateModule](https://cloud.tencent.com/document/api/1108/42557)
-
-	* 新增入参：SystemDisk, DataDisks
-
-* [ModifyModuleConfig](https://cloud.tencent.com/document/api/1108/47143)
-
-	* 新增入参：DefaultSystemDiskSize, SystemDisk, DataDisks
-
+* [DescribeVulEffectHostList](https://cloud.tencent.com/document/api/296/63341)
+* [DescribeVulList](https://cloud.tencent.com/document/api/296/63340)
 
 新增数据结构：
 
-* [PackingQuotaGroup](https://cloud.tencent.com/document/api/1108/42574#PackingQuotaGroup)
-* [PackingQuotaInfo](https://cloud.tencent.com/document/api/1108/42574#PackingQuotaInfo)
+* [VulEffectHostList](https://cloud.tencent.com/document/api/296/19867#VulEffectHostList)
+* [VulInfoList](https://cloud.tencent.com/document/api/296/19867#VulInfoList)
 
 
 
-## 云函数(scf) 版本：2018-04-16
+## 企业组织(organization) 版本：2021-03-31
 
-### 第 35 次发布
+### 第 2 次发布
 
-发布时间：2021-10-25 08:09:06
+发布时间：2021-10-25 11:36:50
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [PutProvisionedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51246)
+* [CreateOrganizationMember](https://cloud.tencent.com/document/api/850/63310)
 
-	* 新增入参：TriggerActions
 
+
+## 企业组织(organization) 版本：2018-12-25
+
+
+
+## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+
+### 第 18 次发布
+
+发布时间：2021-10-26 08:11:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDBInstanceParameters](https://cloud.tencent.com/document/api/409/63344)
+* [DescribeParamsEvent](https://cloud.tencent.com/document/api/409/63343)
+* [ModifyDBInstanceParameters](https://cloud.tencent.com/document/api/409/63342)
 
 新增数据结构：
 
-* [TriggerAction](https://cloud.tencent.com/document/api/583/17244#TriggerAction)
-
-修改数据结构：
-
-* [VersionProvisionedConcurrencyInfo](https://cloud.tencent.com/document/api/583/17244#VersionProvisionedConcurrencyInfo)
-
-	* 新增成员：TriggerActions
-
+* [EventInfo](https://cloud.tencent.com/document/api/409/16778#EventInfo)
+* [EventItem](https://cloud.tencent.com/document/api/409/16778#EventItem)
+* [ParamEntry](https://cloud.tencent.com/document/api/409/16778#ParamEntry)
+* [ParamInfo](https://cloud.tencent.com/document/api/409/16778#ParamInfo)
 
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
 
-### 第 71 次发布
+### 第 72 次发布
 
-发布时间：2021-10-25 08:10:05
+发布时间：2021-10-26 08:13:05
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+新增接口：
+
+* [DescribeCloudBaseRunPodList](https://cloud.tencent.com/document/api/876/63345)
+* [DescribeCloudBaseRunServer](https://cloud.tencent.com/document/api/876/63346)
+
+新增数据结构：
+
+* [CloudBaseRunKVPriority](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunKVPriority)
+* [CloudBaseRunServerVersionItem](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunServerVersionItem)
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 100 次发布
+
+发布时间：2021-10-26 08:14:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAddressTemplate](https://cloud.tencent.com/document/api/215/16708)
+
+	* 新增入参：AddressesExtra
+
+	* <font color="#dd0000">**修改入参**：</font>Addresses
+
+* [CreateServiceTemplate](https://cloud.tencent.com/document/api/215/16710)
+
+	* 新增入参：ServicesExtra
+
+	* <font color="#dd0000">**修改入参**：</font>Services
+
+* [ModifyAddressTemplateAttribute](https://cloud.tencent.com/document/api/215/16720)
+
+	* 新增入参：AddressesExtra
+
+* [ModifyServiceTemplateAttribute](https://cloud.tencent.com/document/api/215/16722)
+
+	* 新增入参：ServicesExtra
+
+
+新增数据结构：
+
+* [AddressInfo](https://cloud.tencent.com/document/api/215/15824#AddressInfo)
+* [ServicesInfo](https://cloud.tencent.com/document/api/215/15824#ServicesInfo)
+
 修改数据结构：
 
-* [OrderInfo](https://cloud.tencent.com/document/api/876/34822#OrderInfo)
+* [AddressTemplate](https://cloud.tencent.com/document/api/215/15824#AddressTemplate)
 
-	* 新增成员：Flag, ReqBody
+	* 新增成员：AddressExtraSet
+
+* [ServiceTemplate](https://cloud.tencent.com/document/api/215/15824#ServiceTemplate)
+
+	* 新增成员：ServiceExtraSet
 
 
 
@@ -18571,6 +18630,24 @@
 
 ## 主机安全(cwp) 版本：2018-02-28
 
+### 第 32 次发布
+
+发布时间：2021-10-26 08:07:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeVulEffectHostList](https://cloud.tencent.com/document/api/296/63341)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeVulList](https://cloud.tencent.com/document/api/296/63340)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[VulEffectHostList](https://cloud.tencent.com/document/api/296/19867#VulEffectHostList)](https://cloud.tencent.com/document/api/296/19867#[VulEffectHostList](https://cloud.tencent.com/document/api/296/19867#VulEffectHostList))
+* [[VulInfoList](https://cloud.tencent.com/document/api/296/19867#VulInfoList)](https://cloud.tencent.com/document/api/296/19867#[VulInfoList](https://cloud.tencent.com/document/api/296/19867#VulInfoList))
+
 ### 第 31 次发布
 
 发布时间：2021-10-21 11:24:07
@@ -23436,7 +23513,7 @@
 
 新增接口：
 
-* [[DescribePackingQuotaGroup](https://cloud.tencent.com/document/api/1108/63290)](https://cloud.tencent.com/document/api/#/#)
+* [DescribePackingQuotaGroup](https://cloud.tencent.com/document/api/1108/63290)
 
 修改接口：
 
@@ -23451,8 +23528,8 @@
 
 新增数据结构：
 
-* [[PackingQuotaGroup](https://cloud.tencent.com/document/api/1108/42574#PackingQuotaGroup)](https://cloud.tencent.com/document/api/1108/42574#[PackingQuotaGroup](https://cloud.tencent.com/document/api/1108/42574#PackingQuotaGroup))
-* [[PackingQuotaInfo](https://cloud.tencent.com/document/api/1108/42574#PackingQuotaInfo)](https://cloud.tencent.com/document/api/1108/42574#[PackingQuotaInfo](https://cloud.tencent.com/document/api/1108/42574#PackingQuotaInfo))
+* [PackingQuotaGroup](https://cloud.tencent.com/document/api/1108/42574#PackingQuotaGroup)
+* [PackingQuotaInfo](https://cloud.tencent.com/document/api/1108/42574#PackingQuotaInfo)
 
 ### 第 54 次发布
 
@@ -40730,6 +40807,18 @@
 
 ## 企业组织(organization) 版本：2021-03-31
 
+### 第 2 次发布
+
+发布时间：2021-10-25 11:36:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateOrganizationMember](https://cloud.tencent.com/document/api/850/63310)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 1 次发布
 
 发布时间：2021-08-26 08:07:43
@@ -40740,7 +40829,7 @@
 
 新增接口：
 
-* [BindOrganizationMemberAuthAccount](https://cloud.tencent.com/document/api/#/#)
+* [BindOrganizationMemberAuthAccount](https://cloud.tencent.com/document/api/850/63308)
 
 
 
@@ -41207,6 +41296,27 @@
 
 
 ## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+
+### 第 18 次发布
+
+发布时间：2021-10-26 08:11:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDBInstanceParameters](https://cloud.tencent.com/document/api/409/63344)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeParamsEvent](https://cloud.tencent.com/document/api/409/63343)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyDBInstanceParameters](https://cloud.tencent.com/document/api/409/63342)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[EventInfo](https://cloud.tencent.com/document/api/409/16778#EventInfo)](https://cloud.tencent.com/document/api/409/16778#[EventInfo](https://cloud.tencent.com/document/api/409/16778#EventInfo))
+* [[EventItem](https://cloud.tencent.com/document/api/409/16778#EventItem)](https://cloud.tencent.com/document/api/409/16778#[EventItem](https://cloud.tencent.com/document/api/409/16778#EventItem))
+* [[ParamEntry](https://cloud.tencent.com/document/api/409/16778#ParamEntry)](https://cloud.tencent.com/document/api/409/16778#[ParamEntry](https://cloud.tencent.com/document/api/409/16778#ParamEntry))
+* [[ParamInfo](https://cloud.tencent.com/document/api/409/16778#ParamInfo)](https://cloud.tencent.com/document/api/409/16778#[ParamInfo](https://cloud.tencent.com/document/api/409/16778#ParamInfo))
 
 ### 第 17 次发布
 
@@ -42699,7 +42809,7 @@
 
 新增数据结构：
 
-* [[TriggerAction](https://cloud.tencent.com/document/api/583/17244#TriggerAction)](https://cloud.tencent.com/document/api/583/17244#[TriggerAction](https://cloud.tencent.com/document/api/583/17244#TriggerAction))
+* [TriggerAction](https://cloud.tencent.com/document/api/583/17244#TriggerAction)
 
 修改数据结构：
 
@@ -47007,6 +47117,24 @@
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 72 次发布
+
+发布时间：2021-10-26 08:13:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeCloudBaseRunPodList](https://cloud.tencent.com/document/api/876/63345)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeCloudBaseRunServer](https://cloud.tencent.com/document/api/876/63346)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CloudBaseRunKVPriority](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunKVPriority)](https://cloud.tencent.com/document/api/876/34822#[CloudBaseRunKVPriority](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunKVPriority))
+* [[CloudBaseRunServerVersionItem](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunServerVersionItem)](https://cloud.tencent.com/document/api/876/34822#[CloudBaseRunServerVersionItem](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunServerVersionItem))
 
 ### 第 71 次发布
 
@@ -58841,6 +58969,53 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 100 次发布
+
+发布时间：2021-10-26 08:14:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAddressTemplate](https://cloud.tencent.com/document/api/215/16708)
+
+	* 新增入参：AddressesExtra
+
+	* <font color="#dd0000">**修改入参**：</font>Addresses
+
+* [CreateServiceTemplate](https://cloud.tencent.com/document/api/215/16710)
+
+	* 新增入参：ServicesExtra
+
+	* <font color="#dd0000">**修改入参**：</font>Services
+
+* [ModifyAddressTemplateAttribute](https://cloud.tencent.com/document/api/215/16720)
+
+	* 新增入参：AddressesExtra
+
+* [ModifyServiceTemplateAttribute](https://cloud.tencent.com/document/api/215/16722)
+
+	* 新增入参：ServicesExtra
+
+
+新增数据结构：
+
+* [[AddressInfo](https://cloud.tencent.com/document/api/215/15824#AddressInfo)](https://cloud.tencent.com/document/api/215/15824#[AddressInfo](https://cloud.tencent.com/document/api/215/15824#AddressInfo))
+* [[ServicesInfo](https://cloud.tencent.com/document/api/215/15824#ServicesInfo)](https://cloud.tencent.com/document/api/215/15824#[ServicesInfo](https://cloud.tencent.com/document/api/215/15824#ServicesInfo))
+
+修改数据结构：
+
+* [AddressTemplate](https://cloud.tencent.com/document/api/215/15824#AddressTemplate)
+
+	* 新增成员：AddressExtraSet
+
+* [ServiceTemplate](https://cloud.tencent.com/document/api/215/15824#ServiceTemplate)
+
+	* 新增成员：ServiceExtraSet
+
 
 ### 第 99 次发布
 

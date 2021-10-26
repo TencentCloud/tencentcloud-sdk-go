@@ -442,6 +442,21 @@ type CloudBaseRunImageSecretInfo struct {
 	Email *string `json:"Email,omitempty" name:"Email"`
 }
 
+type CloudBaseRunKVPriority struct {
+
+	// 参数的Key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 参数的Value
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 优先级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Priority *int64 `json:"Priority,omitempty" name:"Priority"`
+}
+
 type CloudBaseRunNfsVolumeSource struct {
 
 	// NFS挂载Server
@@ -458,6 +473,75 @@ type CloudBaseRunNfsVolumeSource struct {
 
 	// 临时目录
 	EnableEmptyDirVolume *bool `json:"EnableEmptyDirVolume,omitempty" name:"EnableEmptyDirVolume"`
+}
+
+type CloudBaseRunServerVersionItem struct {
+
+	// 版本名称
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 流量占比
+	FlowRatio *int64 `json:"FlowRatio,omitempty" name:"FlowRatio"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedTime *string `json:"UpdatedTime,omitempty" name:"UpdatedTime"`
+
+	// 构建ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BuildId *int64 `json:"BuildId,omitempty" name:"BuildId"`
+
+	// 构建方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UploadType *string `json:"UploadType,omitempty" name:"UploadType"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// url中的参数路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UrlParam *ObjectKV `json:"UrlParam,omitempty" name:"UrlParam"`
+
+	// 优先级（数值越小，优先级越高）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Priority *int64 `json:"Priority,omitempty" name:"Priority"`
+
+	// 是否是默认兜底版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDefaultPriority *bool `json:"IsDefaultPriority,omitempty" name:"IsDefaultPriority"`
+
+	// KV Params
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowParams []*CloudBaseRunKVPriority `json:"FlowParams,omitempty" name:"FlowParams"`
+
+	// 最小副本数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinReplicas *int64 `json:"MinReplicas,omitempty" name:"MinReplicas"`
+
+	// 最大副本数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxReplicas *int64 `json:"MaxReplicas,omitempty" name:"MaxReplicas"`
+
+	// 操作记录id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunId *string `json:"RunId,omitempty" name:"RunId"`
+
+	// 进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Percent *int64 `json:"Percent,omitempty" name:"Percent"`
+
+	// 当前副本数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentReplicas *int64 `json:"CurrentReplicas,omitempty" name:"CurrentReplicas"`
 }
 
 type CloudBaseRunServiceVolumeMount struct {
@@ -2509,6 +2593,76 @@ func (r *DescribeCloudBaseRunOperationTypesResponse) FromJsonString(s string) er
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeCloudBaseRunPodListRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 服务名
+	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+	// 版本名
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+
+	// 分页限制
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 容器状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 容器名
+	PodName *string `json:"PodName,omitempty" name:"PodName"`
+}
+
+func (r *DescribeCloudBaseRunPodListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudBaseRunPodListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "ServerName")
+	delete(f, "VersionName")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Status")
+	delete(f, "PodName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudBaseRunPodListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudBaseRunPodListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCloudBaseRunPodListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudBaseRunPodListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeCloudBaseRunResourceForExtendRequest struct {
 	*tchttp.BaseRequest
 
@@ -2638,6 +2792,96 @@ func (r *DescribeCloudBaseRunResourceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCloudBaseRunResourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudBaseRunServerRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 服务名称
+	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+	// 分页偏移
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 版本名字（精确匹配）
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+}
+
+func (r *DescribeCloudBaseRunServerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudBaseRunServerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "ServerName")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "VersionName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudBaseRunServerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudBaseRunServerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 版本列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VersionItems []*CloudBaseRunServerVersionItem `json:"VersionItems,omitempty" name:"VersionItems"`
+
+		// 服务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+		// 是否对于外网开放
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IsPublic *bool `json:"IsPublic,omitempty" name:"IsPublic"`
+
+		// 镜像仓库
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ImageRepo *string `json:"ImageRepo,omitempty" name:"ImageRepo"`
+
+		// 流量配置的类型（FLOW,URL_PARAMS)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TrafficType *string `json:"TrafficType,omitempty" name:"TrafficType"`
+
+		// 服务创建类型，默认为空，一键部署为oneclick
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCloudBaseRunServerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudBaseRunServerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

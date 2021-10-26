@@ -320,6 +320,16 @@ type AddressChargePrepaid struct {
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 }
 
+type AddressInfo struct {
+
+	// ip地址
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
 type AddressTemplate struct {
 
 	// IP地址模板名称。
@@ -333,6 +343,9 @@ type AddressTemplate struct {
 
 	// 创建时间。
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 带备注的IP地址信息。
+	AddressExtraSet []*AddressInfo `json:"AddressExtraSet,omitempty" name:"AddressExtraSet"`
 }
 
 type AddressTemplateGroup struct {
@@ -1930,8 +1943,11 @@ type CreateAddressTemplateRequest struct {
 	// IP地址模版名称
 	AddressTemplateName *string `json:"AddressTemplateName,omitempty" name:"AddressTemplateName"`
 
-	// 地址信息，支持 IP、CIDR、IP 范围。
+	// 地址信息，支持 IP、CIDR、IP 范围。Addresses与AddressesExtra必填其一。
 	Addresses []*string `json:"Addresses,omitempty" name:"Addresses"`
+
+	// 地址信息，支持携带备注，支持 IP、CIDR、IP 范围。Addresses与AddressesExtra必填其一。
+	AddressesExtra []*AddressInfo `json:"AddressesExtra,omitempty" name:"AddressesExtra"`
 }
 
 func (r *CreateAddressTemplateRequest) ToJsonString() string {
@@ -1948,6 +1964,7 @@ func (r *CreateAddressTemplateRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AddressTemplateName")
 	delete(f, "Addresses")
+	delete(f, "AddressesExtra")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAddressTemplateRequest has unknown keys!", "")
 	}
@@ -3605,8 +3622,11 @@ type CreateServiceTemplateRequest struct {
 	// 协议端口模板名称
 	ServiceTemplateName *string `json:"ServiceTemplateName,omitempty" name:"ServiceTemplateName"`
 
-	// 支持单个端口、多个端口、连续端口及所有端口，协议支持：TCP、UDP、ICMP、GRE 协议。
+	// 支持单个端口、多个端口、连续端口及所有端口，协议支持：TCP、UDP、ICMP、GRE 协议。Services与ServicesExtra必填其一。
 	Services []*string `json:"Services,omitempty" name:"Services"`
+
+	// 支持添加备注，单个端口、多个端口、连续端口及所有端口，协议支持：TCP、UDP、ICMP、GRE 协议。Services与ServicesExtra必填其一。
+	ServicesExtra []*ServicesInfo `json:"ServicesExtra,omitempty" name:"ServicesExtra"`
 }
 
 func (r *CreateServiceTemplateRequest) ToJsonString() string {
@@ -3623,6 +3643,7 @@ func (r *CreateServiceTemplateRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ServiceTemplateName")
 	delete(f, "Services")
+	delete(f, "ServicesExtra")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateServiceTemplateRequest has unknown keys!", "")
 	}
@@ -6186,8 +6207,9 @@ type DescribeAddressTemplatesRequest struct {
 	*tchttp.BaseRequest
 
 	// 过滤条件。
-	// <li>address-template-name - String - （过滤条件）IP地址模板名称。</li>
-	// <li>address-template-id - String - （过滤条件）IP地址模板实例ID，例如：ipm-mdunqeb6。</li>
+	// <li>address-template-name - IP地址模板名称。</li>
+	// <li>address-template-id - IP地址模板实例ID，例如：ipm-mdunqeb6。</li>
+	// <li>address-ip - IP地址。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
@@ -9243,8 +9265,9 @@ type DescribeServiceTemplatesRequest struct {
 	*tchttp.BaseRequest
 
 	// 过滤条件。
-	// <li>service-template-name - String - （过滤条件）协议端口模板名称。</li>
-	// <li>service-template-id - String - （过滤条件）协议端口模板实例ID，例如：ppm-e6dy460g。</li>
+	// <li>service-template-name - 协议端口模板名称。</li>
+	// <li>service-template-id - 协议端口模板实例ID，例如：ppm-e6dy460g。</li>
+	// <li>service-port- 协议端口。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
@@ -12521,6 +12544,9 @@ type ModifyAddressTemplateAttributeRequest struct {
 
 	// 地址信息，支持 IP、CIDR、IP 范围。
 	Addresses []*string `json:"Addresses,omitempty" name:"Addresses"`
+
+	// 支持添加备注的地址信息，支持 IP、CIDR、IP 范围。
+	AddressesExtra []*AddressInfo `json:"AddressesExtra,omitempty" name:"AddressesExtra"`
 }
 
 func (r *ModifyAddressTemplateAttributeRequest) ToJsonString() string {
@@ -12538,6 +12564,7 @@ func (r *ModifyAddressTemplateAttributeRequest) FromJsonString(s string) error {
 	delete(f, "AddressTemplateId")
 	delete(f, "AddressTemplateName")
 	delete(f, "Addresses")
+	delete(f, "AddressesExtra")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAddressTemplateAttributeRequest has unknown keys!", "")
 	}
@@ -14215,6 +14242,9 @@ type ModifyServiceTemplateAttributeRequest struct {
 
 	// 支持单个端口、多个端口、连续端口及所有端口，协议支持：TCP、UDP、ICMP、GRE 协议。
 	Services []*string `json:"Services,omitempty" name:"Services"`
+
+	// 支持添加备注的协议端口信息，支持单个端口、多个端口、连续端口及所有端口，协议支持：TCP、UDP、ICMP、GRE 协议。
+	ServicesExtra []*ServicesInfo `json:"ServicesExtra,omitempty" name:"ServicesExtra"`
 }
 
 func (r *ModifyServiceTemplateAttributeRequest) ToJsonString() string {
@@ -14232,6 +14262,7 @@ func (r *ModifyServiceTemplateAttributeRequest) FromJsonString(s string) error {
 	delete(f, "ServiceTemplateId")
 	delete(f, "ServiceTemplateName")
 	delete(f, "Services")
+	delete(f, "ServicesExtra")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyServiceTemplateAttributeRequest has unknown keys!", "")
 	}
@@ -16642,6 +16673,9 @@ type ServiceTemplate struct {
 
 	// 创建时间。
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 带备注的协议端口信息。
+	ServiceExtraSet []*ServicesInfo `json:"ServiceExtraSet,omitempty" name:"ServiceExtraSet"`
 }
 
 type ServiceTemplateGroup struct {
@@ -16669,6 +16703,16 @@ type ServiceTemplateSpecification struct {
 
 	// 协议端口组ID，例如：ppmg-f5n1f8da。
 	ServiceGroupId *string `json:"ServiceGroupId,omitempty" name:"ServiceGroupId"`
+}
+
+type ServicesInfo struct {
+
+	// 协议端口
+	Service *string `json:"Service,omitempty" name:"Service"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
 type SetCcnRegionBandwidthLimitsRequest struct {

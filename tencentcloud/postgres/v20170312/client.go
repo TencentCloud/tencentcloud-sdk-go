@@ -870,6 +870,38 @@ func (c *Client) DescribeDBInstanceAttribute(request *DescribeDBInstanceAttribut
     return
 }
 
+func NewDescribeDBInstanceParametersRequest() (request *DescribeDBInstanceParametersRequest) {
+    request = &DescribeDBInstanceParametersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("postgres", APIVersion, "DescribeDBInstanceParameters")
+    return
+}
+
+func NewDescribeDBInstanceParametersResponse() (response *DescribeDBInstanceParametersResponse) {
+    response = &DescribeDBInstanceParametersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDBInstanceParameters
+// 获取实例可修改参数列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CAMAUTHFAILED = "FailedOperation.CamAuthFailed"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) DescribeDBInstanceParameters(request *DescribeDBInstanceParametersRequest) (response *DescribeDBInstanceParametersResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBInstanceParametersRequest()
+    }
+    response = NewDescribeDBInstanceParametersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBInstancesRequest() (request *DescribeDBInstancesRequest) {
     request = &DescribeDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1096,6 +1128,38 @@ func (c *Client) DescribeOrders(request *DescribeOrdersRequest) (response *Descr
         request = NewDescribeOrdersRequest()
     }
     response = NewDescribeOrdersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeParamsEventRequest() (request *DescribeParamsEventRequest) {
+    request = &DescribeParamsEventRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("postgres", APIVersion, "DescribeParamsEvent")
+    return
+}
+
+func NewDescribeParamsEventResponse() (response *DescribeParamsEventResponse) {
+    response = &DescribeParamsEventResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeParamsEvent
+// 获取参数修改事件详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CAMAUTHFAILED = "FailedOperation.CamAuthFailed"
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) DescribeParamsEvent(request *DescribeParamsEventRequest) (response *DescribeParamsEventResponse, err error) {
+    if request == nil {
+        request = NewDescribeParamsEventRequest()
+    }
+    response = NewDescribeParamsEventResponse()
     err = c.Send(request, response)
     return
 }
@@ -1842,6 +1906,37 @@ func (c *Client) ModifyDBInstanceName(request *ModifyDBInstanceNameRequest) (res
         request = NewModifyDBInstanceNameRequest()
     }
     response = NewModifyDBInstanceNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDBInstanceParametersRequest() (request *ModifyDBInstanceParametersRequest) {
+    request = &ModifyDBInstanceParametersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("postgres", APIVersion, "ModifyDBInstanceParameters")
+    return
+}
+
+func NewModifyDBInstanceParametersResponse() (response *ModifyDBInstanceParametersResponse) {
+    response = &ModifyDBInstanceParametersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDBInstanceParameters
+// 批量修改参数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CAMAUTHFAILED = "FailedOperation.CamAuthFailed"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) ModifyDBInstanceParameters(request *ModifyDBInstanceParametersRequest) (response *ModifyDBInstanceParametersResponse, err error) {
+    if request == nil {
+        request = NewModifyDBInstanceParametersRequest()
+    }
+    response = NewModifyDBInstanceParametersResponse()
     err = c.Send(request, response)
     return
 }

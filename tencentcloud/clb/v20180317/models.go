@@ -979,7 +979,9 @@ type CreateLoadBalancerRequest struct {
 	// 独占集群信息。若创建独占集群负载均衡实例，则此参数必填。
 	ExclusiveCluster *ExclusiveCluster `json:"ExclusiveCluster,omitempty" name:"ExclusiveCluster"`
 
-	// 创建性能独享型CLB，传SLA。
+	// 创建性能容量型 CLB 实例。
+	// <ul><li>若需要创建性能容量型 CLB 实例，则此参数必填，且取值为：SLA，表示创建按量计费模式下的默认性能保障规格的性能容量型实例。</li>
+	// <li>若需要创建共享型 CLB 实例，则无需填写此参数。</li></ul>
 	SlaType *string `json:"SlaType,omitempty" name:"SlaType"`
 
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
