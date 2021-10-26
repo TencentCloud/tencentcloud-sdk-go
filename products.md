@@ -53,7 +53,7 @@
 | cvm | [云服务器](https://cloud.tencent.com/document/product/213) | 2021-10-20 08:08:42 |
 | cwp | [主机安全](https://cloud.tencent.com/document/product/296) | 2021-10-26 08:07:04 |
 | cws | [漏洞扫描服务](https://cloud.tencent.com/document/product) | 2019-11-22 12:16:15 |
-| cynosdb | [云原生数据库 TDSQL-C](https://cloud.tencent.com/document/product/1003) | 2021-10-12 08:04:56 |
+| cynosdb | [云原生数据库 TDSQL-C](https://cloud.tencent.com/document/product/1003) | 2021-10-26 11:55:38 |
 | dayu | [DDoS 高防包](https://cloud.tencent.com/document/product/1021) | 2021-09-16 08:06:18 |
 | dbbrain | [数据库智能管家 DBbrain](https://cloud.tencent.com/document/product/1130) | 2021-09-16 08:06:32 |
 | dc | [专线接入](https://cloud.tencent.com/document/product/216) | 2021-09-16 08:06:39 |

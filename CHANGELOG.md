@@ -1,141 +1,24 @@
 # 本版本更新包含以下内容：
 
-## 主机安全(cwp) 版本：2018-02-28
+## 云原生数据库 TDSQL-C(cynosdb) 版本：2019-01-07
 
-### 第 32 次发布
+### 第 12 次发布
 
-发布时间：2021-10-26 08:07:04
+发布时间：2021-10-26 11:55:38
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增接口：
-
-* [DescribeVulEffectHostList](https://cloud.tencent.com/document/api/296/63341)
-* [DescribeVulList](https://cloud.tencent.com/document/api/296/63340)
 
 新增数据结构：
 
-* [VulEffectHostList](https://cloud.tencent.com/document/api/296/19867#VulEffectHostList)
-* [VulInfoList](https://cloud.tencent.com/document/api/296/19867#VulInfoList)
-
-
-
-## 企业组织(organization) 版本：2021-03-31
-
-### 第 2 次发布
-
-发布时间：2021-10-25 11:36:50
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateOrganizationMember](https://cloud.tencent.com/document/api/850/63310)
-
-
-
-## 企业组织(organization) 版本：2018-12-25
-
-
-
-## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
-
-### 第 18 次发布
-
-发布时间：2021-10-26 08:11:42
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeDBInstanceParameters](https://cloud.tencent.com/document/api/409/63344)
-* [DescribeParamsEvent](https://cloud.tencent.com/document/api/409/63343)
-* [ModifyDBInstanceParameters](https://cloud.tencent.com/document/api/409/63342)
-
-新增数据结构：
-
-* [EventInfo](https://cloud.tencent.com/document/api/409/16778#EventInfo)
-* [EventItem](https://cloud.tencent.com/document/api/409/16778#EventItem)
-* [ParamEntry](https://cloud.tencent.com/document/api/409/16778#ParamEntry)
-* [ParamInfo](https://cloud.tencent.com/document/api/409/16778#ParamInfo)
-
-
-
-## 云开发 CloudBase(tcb) 版本：2018-06-08
-
-### 第 72 次发布
-
-发布时间：2021-10-26 08:13:05
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeCloudBaseRunPodList](https://cloud.tencent.com/document/api/876/63345)
-* [DescribeCloudBaseRunServer](https://cloud.tencent.com/document/api/876/63346)
-
-新增数据结构：
-
-* [CloudBaseRunKVPriority](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunKVPriority)
-* [CloudBaseRunServerVersionItem](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunServerVersionItem)
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 100 次发布
-
-发布时间：2021-10-26 08:14:56
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateAddressTemplate](https://cloud.tencent.com/document/api/215/16708)
-
-	* 新增入参：AddressesExtra
-
-	* <font color="#dd0000">**修改入参**：</font>Addresses
-
-* [CreateServiceTemplate](https://cloud.tencent.com/document/api/215/16710)
-
-	* 新增入参：ServicesExtra
-
-	* <font color="#dd0000">**修改入参**：</font>Services
-
-* [ModifyAddressTemplateAttribute](https://cloud.tencent.com/document/api/215/16720)
-
-	* 新增入参：AddressesExtra
-
-* [ModifyServiceTemplateAttribute](https://cloud.tencent.com/document/api/215/16722)
-
-	* 新增入参：ServicesExtra
-
-
-新增数据结构：
-
-* [AddressInfo](https://cloud.tencent.com/document/api/215/15824#AddressInfo)
-* [ServicesInfo](https://cloud.tencent.com/document/api/215/15824#ServicesInfo)
+* [NetAddr](https://cloud.tencent.com/document/api/1003/48097#NetAddr)
 
 修改数据结构：
 
-* [AddressTemplate](https://cloud.tencent.com/document/api/215/15824#AddressTemplate)
+* [CynosdbCluster](https://cloud.tencent.com/document/api/1003/48097#CynosdbCluster)
 
-	* 新增成员：AddressExtraSet
-
-* [ServiceTemplate](https://cloud.tencent.com/document/api/215/15824#ServiceTemplate)
-
-	* 新增成员：ServiceExtraSet
+	* 新增成员：NetAddrs
 
 
 
@@ -18640,13 +18523,13 @@
 
 新增接口：
 
-* [[DescribeVulEffectHostList](https://cloud.tencent.com/document/api/296/63341)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeVulList](https://cloud.tencent.com/document/api/296/63340)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeVulEffectHostList](https://cloud.tencent.com/document/api/296/63341)
+* [DescribeVulList](https://cloud.tencent.com/document/api/296/63340)
 
 新增数据结构：
 
-* [[VulEffectHostList](https://cloud.tencent.com/document/api/296/19867#VulEffectHostList)](https://cloud.tencent.com/document/api/296/19867#[VulEffectHostList](https://cloud.tencent.com/document/api/296/19867#VulEffectHostList))
-* [[VulInfoList](https://cloud.tencent.com/document/api/296/19867#VulInfoList)](https://cloud.tencent.com/document/api/296/19867#[VulInfoList](https://cloud.tencent.com/document/api/296/19867#VulInfoList))
+* [VulEffectHostList](https://cloud.tencent.com/document/api/296/19867#VulEffectHostList)
+* [VulInfoList](https://cloud.tencent.com/document/api/296/19867#VulInfoList)
 
 ### 第 31 次发布
 
@@ -19893,6 +19776,25 @@
 
 
 ## 云原生数据库 TDSQL-C(cynosdb) 版本：2019-01-07
+
+### 第 12 次发布
+
+发布时间：2021-10-26 11:55:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[NetAddr](https://cloud.tencent.com/document/api/1003/48097#NetAddr)](https://cloud.tencent.com/document/api/1003/48097#[NetAddr](https://cloud.tencent.com/document/api/1003/48097#NetAddr))
+
+修改数据结构：
+
+* [CynosdbCluster](https://cloud.tencent.com/document/api/1003/48097#CynosdbCluster)
+
+	* 新增成员：NetAddrs
+
 
 ### 第 11 次发布
 
@@ -40817,7 +40719,7 @@
 
 新增接口：
 
-* [[CreateOrganizationMember](https://cloud.tencent.com/document/api/850/63310)](https://cloud.tencent.com/document/api/#/#)
+* [CreateOrganizationMember](https://cloud.tencent.com/document/api/850/63310)
 
 ### 第 1 次发布
 
@@ -41307,16 +41209,16 @@
 
 新增接口：
 
-* [[DescribeDBInstanceParameters](https://cloud.tencent.com/document/api/409/63344)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeParamsEvent](https://cloud.tencent.com/document/api/409/63343)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyDBInstanceParameters](https://cloud.tencent.com/document/api/409/63342)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDBInstanceParameters](https://cloud.tencent.com/document/api/409/63344)
+* [DescribeParamsEvent](https://cloud.tencent.com/document/api/409/63343)
+* [ModifyDBInstanceParameters](https://cloud.tencent.com/document/api/409/63342)
 
 新增数据结构：
 
-* [[EventInfo](https://cloud.tencent.com/document/api/409/16778#EventInfo)](https://cloud.tencent.com/document/api/409/16778#[EventInfo](https://cloud.tencent.com/document/api/409/16778#EventInfo))
-* [[EventItem](https://cloud.tencent.com/document/api/409/16778#EventItem)](https://cloud.tencent.com/document/api/409/16778#[EventItem](https://cloud.tencent.com/document/api/409/16778#EventItem))
-* [[ParamEntry](https://cloud.tencent.com/document/api/409/16778#ParamEntry)](https://cloud.tencent.com/document/api/409/16778#[ParamEntry](https://cloud.tencent.com/document/api/409/16778#ParamEntry))
-* [[ParamInfo](https://cloud.tencent.com/document/api/409/16778#ParamInfo)](https://cloud.tencent.com/document/api/409/16778#[ParamInfo](https://cloud.tencent.com/document/api/409/16778#ParamInfo))
+* [EventInfo](https://cloud.tencent.com/document/api/409/16778#EventInfo)
+* [EventItem](https://cloud.tencent.com/document/api/409/16778#EventItem)
+* [ParamEntry](https://cloud.tencent.com/document/api/409/16778#ParamEntry)
+* [ParamInfo](https://cloud.tencent.com/document/api/409/16778#ParamInfo)
 
 ### 第 17 次发布
 
@@ -47128,13 +47030,13 @@
 
 新增接口：
 
-* [[DescribeCloudBaseRunPodList](https://cloud.tencent.com/document/api/876/63345)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeCloudBaseRunServer](https://cloud.tencent.com/document/api/876/63346)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCloudBaseRunPodList](https://cloud.tencent.com/document/api/876/63345)
+* [DescribeCloudBaseRunServer](https://cloud.tencent.com/document/api/876/63346)
 
 新增数据结构：
 
-* [[CloudBaseRunKVPriority](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunKVPriority)](https://cloud.tencent.com/document/api/876/34822#[CloudBaseRunKVPriority](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunKVPriority))
-* [[CloudBaseRunServerVersionItem](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunServerVersionItem)](https://cloud.tencent.com/document/api/876/34822#[CloudBaseRunServerVersionItem](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunServerVersionItem))
+* [CloudBaseRunKVPriority](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunKVPriority)
+* [CloudBaseRunServerVersionItem](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunServerVersionItem)
 
 ### 第 71 次发布
 
@@ -59003,8 +58905,8 @@
 
 新增数据结构：
 
-* [[AddressInfo](https://cloud.tencent.com/document/api/215/15824#AddressInfo)](https://cloud.tencent.com/document/api/215/15824#[AddressInfo](https://cloud.tencent.com/document/api/215/15824#AddressInfo))
-* [[ServicesInfo](https://cloud.tencent.com/document/api/215/15824#ServicesInfo)](https://cloud.tencent.com/document/api/215/15824#[ServicesInfo](https://cloud.tencent.com/document/api/215/15824#ServicesInfo))
+* [AddressInfo](https://cloud.tencent.com/document/api/215/15824#AddressInfo)
+* [ServicesInfo](https://cloud.tencent.com/document/api/215/15824#ServicesInfo)
 
 修改数据结构：
 

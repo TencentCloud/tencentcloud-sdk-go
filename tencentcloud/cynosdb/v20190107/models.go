@@ -561,6 +561,9 @@ type CynosdbCluster struct {
 
 	// 集群计算规格对应的最大存储值
 	MaxStorageSize *int64 `json:"MaxStorageSize,omitempty" name:"MaxStorageSize"`
+
+	// 集群网络信息
+	NetAddrs []*NetAddr `json:"NetAddrs,omitempty" name:"NetAddrs"`
 }
 
 type CynosdbClusterDetail struct {
@@ -2107,6 +2110,29 @@ func (r *ModifyMaintainPeriodConfigResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyMaintainPeriodConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type NetAddr struct {
+
+	// 内网ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 内网端口号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
+
+	// 外网域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WanDomain *string `json:"WanDomain,omitempty" name:"WanDomain"`
+
+	// 外网端口号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WanPort *int64 `json:"WanPort,omitempty" name:"WanPort"`
+
+	// 网络类型（ro-只读,rw/ha-读写）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetType *string `json:"NetType,omitempty" name:"NetType"`
 }
 
 type ObjectTask struct {
