@@ -205,6 +205,15 @@ type Filter struct {
 	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
+type KVPair struct {
+
+	// 键
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 值
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type SREInstance struct {
 
 	// 实例ID
@@ -278,6 +287,10 @@ type SREInstance struct {
 	// 服务治理相关信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceGovernanceInfos []*ServiceGovernanceInfo `json:"ServiceGovernanceInfos,omitempty" name:"ServiceGovernanceInfos"`
+
+	// 实例的标签信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*KVPair `json:"Tags,omitempty" name:"Tags"`
 }
 
 type ServiceGovernanceInfo struct {

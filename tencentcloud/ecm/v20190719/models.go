@@ -1016,6 +1016,55 @@ func (r *CreateImageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateKeyPairRequest struct {
+	*tchttp.BaseRequest
+
+	// 密钥对名称，可由数字，字母和下划线组成，长度不超过25个字符。
+	KeyName *string `json:"KeyName,omitempty" name:"KeyName"`
+}
+
+func (r *CreateKeyPairRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateKeyPairRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "KeyName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateKeyPairRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateKeyPairResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 密钥对信息。
+		KeyPair *KeyPair `json:"KeyPair,omitempty" name:"KeyPair"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateKeyPairResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateKeyPairResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateListenerRequest struct {
 	*tchttp.BaseRequest
 
@@ -4998,6 +5047,70 @@ func (r *DisassociateAddressResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DisassociateInstancesKeyPairsRequest struct {
+	*tchttp.BaseRequest
+
+	// 可以通过以下方式获取可用的实例ID：
+	// 通过登录控制台查询实例ID。
+	// 通过调用接口 DescribeInstances ，取返回信息中的 InstanceId 获取实例ID。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 密钥对ID列表，每次请求批量密钥对的上限为100。密钥对ID形如：skey-11112222。
+	// 
+	// 可以通过以下方式获取可用的密钥ID：
+	// 通过登录控制台查询密钥ID。
+	// 通过调用接口 DescribeKeyPairs ，取返回信息中的 KeyId 获取密钥对ID。
+	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds"`
+
+	// 是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机，然后再解绑密钥。取值范围：
+	// TRUE：表示在正常关机失败后进行强制关机。
+	// FALSE：表示在正常关机失败后不进行强制关机。
+	// 
+	// 默认取值：FALSE。
+	ForceStop *bool `json:"ForceStop,omitempty" name:"ForceStop"`
+}
+
+func (r *DisassociateInstancesKeyPairsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisassociateInstancesKeyPairsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIds")
+	delete(f, "KeyIds")
+	delete(f, "ForceStop")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisassociateInstancesKeyPairsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DisassociateInstancesKeyPairsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DisassociateInstancesKeyPairsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisassociateInstancesKeyPairsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DisassociateSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 
@@ -5882,6 +5995,41 @@ type Ipv6Address struct {
 	// DELETING：删除中
 	// AVAILABLE：可用的
 	State *string `json:"State,omitempty" name:"State"`
+}
+
+type KeyPair struct {
+
+	// 密钥对的ID，是密钥对的唯一标识。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+	// 密钥对名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyName *string `json:"KeyName,omitempty" name:"KeyName"`
+
+	// 密钥对所属的项目ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 密钥对描述信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 密钥对的纯文本公钥。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicKey *string `json:"PublicKey,omitempty" name:"PublicKey"`
+
+	// 钥对的纯文本私钥。腾讯云不会保管私钥，请用户自行妥善保存。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivateKey *string `json:"PrivateKey,omitempty" name:"PrivateKey"`
+
+	// 钥关联的实例ID列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssociatedInstanceIds []*string `json:"AssociatedInstanceIds,omitempty" name:"AssociatedInstanceIds"`
+
+	// 创建时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 }
 
 type Listener struct {

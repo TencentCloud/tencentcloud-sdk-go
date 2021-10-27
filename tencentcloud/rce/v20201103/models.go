@@ -84,6 +84,18 @@ func (r *DescribeRiskModelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type InputCryptoManageMarketingRisk struct {
+
+	// 是否授权
+	IsAuthorized *string `json:"IsAuthorized,omitempty" name:"IsAuthorized"`
+
+	// 加密类型
+	CryptoType *string `json:"CryptoType,omitempty" name:"CryptoType"`
+
+	// 加密内容
+	CryptoContent *string `json:"CryptoContent,omitempty" name:"CryptoContent"`
+}
+
 type InputDescribeRiskModelData struct {
 
 	// 业务参数加密后的签名值
@@ -182,6 +194,9 @@ type ManageMarketingRiskRequest struct {
 
 	// 业务入参
 	BusinessSecurityData *InputManageMarketingRisk `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
+
+	// 业务入参
+	BusinessCryptoData *InputCryptoManageMarketingRisk `json:"BusinessCryptoData,omitempty" name:"BusinessCryptoData"`
 }
 
 func (r *ManageMarketingRiskRequest) ToJsonString() string {
@@ -197,6 +212,7 @@ func (r *ManageMarketingRiskRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "BusinessSecurityData")
+	delete(f, "BusinessCryptoData")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ManageMarketingRiskRequest has unknown keys!", "")
 	}

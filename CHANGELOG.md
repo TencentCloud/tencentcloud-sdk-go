@@ -1,10 +1,166 @@
 # 本版本更新包含以下内容：
 
+## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 41 次发布
+
+发布时间：2021-10-27 08:02:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyLaunchConfigurationAttributes](https://cloud.tencent.com/document/api/377/31298)
+
+	* 新增入参：EnhancedService
+
+
+
+
+## 云硬盘(cbs) 版本：2017-03-12
+
+### 第 33 次发布
+
+发布时间：2021-10-27 08:03:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Snapshot](https://cloud.tencent.com/document/api/362/15669#Snapshot)
+
+	* <font color="#dd0000">**修改成员**：</font>SnapshotId
+
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 11 次发布
+
+发布时间：2021-10-27 08:04:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetAlarmLog](https://cloud.tencent.com/document/api/614/56460)
+
+	* 新增入参：UseNewAnalysis
+
+	* 新增出参：AnalysisRecords, Columns
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 33 次发布
+
+发布时间：2021-10-27 08:05:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* RescanImpactedHost
+
+
+
 ## 云原生数据库 TDSQL-C(cynosdb) 版本：2019-01-07
 
-### 第 12 次发布
+### 第 13 次发布
 
-发布时间：2021-10-26 11:55:38
+发布时间：2021-10-27 08:06:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyClusterParam](https://cloud.tencent.com/document/api/1003/63365)
+
+
+
+## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 56 次发布
+
+发布时间：2021-10-27 08:07:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateKeyPair](https://cloud.tencent.com/document/api/1108/63368)
+* [DisassociateInstancesKeyPairs](https://cloud.tencent.com/document/api/1108/63367)
+
+新增数据结构：
+
+* [KeyPair](https://cloud.tencent.com/document/api/1108/42574#KeyPair)
+
+
+
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 35 次发布
+
+发布时间：2021-10-27 08:08:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DeviceInfo](https://cloud.tencent.com/document/api/1081/34988#DeviceInfo)
+
+	* 新增成员：EnableState, ProductId, ProductName, DeviceType
+
+
+
+
+## 全栈式风控引擎(rce) 版本：2020-11-03
+
+### 第 3 次发布
+
+发布时间：2021-10-27 08:10:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ManageMarketingRisk](https://cloud.tencent.com/document/api/1343/52565)
+
+	* 新增入参：BusinessCryptoData
+
+	* <font color="#dd0000">**修改入参**：</font>BusinessSecurityData
+
+
+新增数据结构：
+
+* [InputCryptoManageMarketingRisk](https://cloud.tencent.com/document/api/1343/52566#InputCryptoManageMarketingRisk)
+
+
+
+## 腾讯云微服务引擎(tse) 版本：2020-12-07
+
+### 第 11 次发布
+
+发布时间：2021-10-27 08:12:44
 
 本次发布包含了以下内容：
 
@@ -12,13 +168,13 @@
 
 新增数据结构：
 
-* [NetAddr](https://cloud.tencent.com/document/api/1003/48097#NetAddr)
+* [KVPair](https://cloud.tencent.com/document/api/1364/54942#KVPair)
 
 修改数据结构：
 
-* [CynosdbCluster](https://cloud.tencent.com/document/api/1003/48097#CynosdbCluster)
+* [SREInstance](https://cloud.tencent.com/document/api/1364/54942#SREInstance)
 
-	* 新增成员：NetAddrs
+	* 新增成员：Tags
 
 
 
@@ -1836,6 +1992,21 @@
 
 
 ## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 41 次发布
+
+发布时间：2021-10-27 08:02:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyLaunchConfigurationAttributes](https://cloud.tencent.com/document/api/377/31298)
+
+	* 新增入参：EnhancedService
+
 
 ### 第 40 次发布
 
@@ -6962,6 +7133,21 @@
 
 
 ## 云硬盘(cbs) 版本：2017-03-12
+
+### 第 33 次发布
+
+发布时间：2021-10-27 08:03:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Snapshot](https://cloud.tencent.com/document/api/362/15669#Snapshot)
+
+	* <font color="#dd0000">**修改成员**：</font>SnapshotId
+
 
 ### 第 32 次发布
 
@@ -14181,6 +14367,23 @@
 
 ## 日志服务(cls) 版本：2020-10-16
 
+### 第 11 次发布
+
+发布时间：2021-10-27 08:04:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetAlarmLog](https://cloud.tencent.com/document/api/614/56460)
+
+	* 新增入参：UseNewAnalysis
+
+	* 新增出参：AnalysisRecords, Columns
+
+
 ### 第 10 次发布
 
 发布时间：2021-09-03 08:00:19
@@ -18513,6 +18716,18 @@
 
 ## 主机安全(cwp) 版本：2018-02-28
 
+### 第 33 次发布
+
+发布时间：2021-10-27 08:05:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* RescanImpactedHost
+
 ### 第 32 次发布
 
 发布时间：2021-10-26 08:07:04
@@ -19777,6 +19992,18 @@
 
 ## 云原生数据库 TDSQL-C(cynosdb) 版本：2019-01-07
 
+### 第 13 次发布
+
+发布时间：2021-10-27 08:06:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyClusterParam](https://cloud.tencent.com/document/api/1003/63365)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 12 次发布
 
 发布时间：2021-10-26 11:55:38
@@ -19787,7 +20014,7 @@
 
 新增数据结构：
 
-* [[NetAddr](https://cloud.tencent.com/document/api/1003/48097#NetAddr)](https://cloud.tencent.com/document/api/1003/48097#[NetAddr](https://cloud.tencent.com/document/api/1003/48097#NetAddr))
+* [NetAddr](https://cloud.tencent.com/document/api/1003/48097#NetAddr)
 
 修改数据结构：
 
@@ -23404,6 +23631,23 @@
 
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 56 次发布
+
+发布时间：2021-10-27 08:07:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateKeyPair](https://cloud.tencent.com/document/api/1108/63368)](https://cloud.tencent.com/document/api/#/#)
+* [[DisassociateInstancesKeyPairs](https://cloud.tencent.com/document/api/1108/63367)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[KeyPair](https://cloud.tencent.com/document/api/1108/42574#KeyPair)](https://cloud.tencent.com/document/api/1108/42574#[KeyPair](https://cloud.tencent.com/document/api/1108/42574#KeyPair))
 
 ### 第 55 次发布
 
@@ -31368,6 +31612,21 @@
 
 
 ## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 35 次发布
+
+发布时间：2021-10-27 08:08:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DeviceInfo](https://cloud.tencent.com/document/api/1081/34988#DeviceInfo)
+
+	* 新增成员：EnableState, ProductId, ProductName, DeviceType
+
 
 ### 第 34 次发布
 
@@ -41726,6 +41985,27 @@
 
 
 ## 全栈式风控引擎(rce) 版本：2020-11-03
+
+### 第 3 次发布
+
+发布时间：2021-10-27 08:10:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ManageMarketingRisk](https://cloud.tencent.com/document/api/1343/52565)
+
+	* 新增入参：BusinessCryptoData
+
+	* <font color="#dd0000">**修改入参**：</font>BusinessSecurityData
+
+
+新增数据结构：
+
+* [[InputCryptoManageMarketingRisk](https://cloud.tencent.com/document/api/1343/52566#InputCryptoManageMarketingRisk)](https://cloud.tencent.com/document/api/1343/52566#[InputCryptoManageMarketingRisk](https://cloud.tencent.com/document/api/1343/52566#InputCryptoManageMarketingRisk))
 
 ### 第 2 次发布
 
@@ -54065,6 +54345,25 @@
 
 
 ## 腾讯云微服务引擎(tse) 版本：2020-12-07
+
+### 第 11 次发布
+
+发布时间：2021-10-27 08:12:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[KVPair](https://cloud.tencent.com/document/api/1364/54942#KVPair)](https://cloud.tencent.com/document/api/1364/54942#[KVPair](https://cloud.tencent.com/document/api/1364/54942#KVPair))
+
+修改数据结构：
+
+* [SREInstance](https://cloud.tencent.com/document/api/1364/54942#SREInstance)
+
+	* 新增成员：Tags
+
 
 ### 第 10 次发布
 

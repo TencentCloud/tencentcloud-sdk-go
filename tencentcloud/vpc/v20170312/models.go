@@ -322,10 +322,10 @@ type AddressChargePrepaid struct {
 
 type AddressInfo struct {
 
-	// ip地址
+	// ip地址。
 	Address *string `json:"Address,omitempty" name:"Address"`
 
-	// 备注
+	// 备注。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitempty" name:"Description"`
 }
@@ -16707,10 +16707,10 @@ type ServiceTemplateSpecification struct {
 
 type ServicesInfo struct {
 
-	// 协议端口
+	// 协议端口。
 	Service *string `json:"Service,omitempty" name:"Service"`
 
-	// 备注
+	// 备注。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitempty" name:"Description"`
 }

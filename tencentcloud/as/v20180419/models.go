@@ -3036,6 +3036,9 @@ type ModifyLaunchConfigurationAttributesRequest struct {
 	// 如果用户在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 参照此字段进行设置，并传递给 CVM；如果用户未在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 按照“as-{{ 伸缩组AutoScalingGroupName }}”进行设置，并传递给 CVM。
 	// 新增该属性时，必须传递云服务器的实例名称，其它未传递字段会设置为默认值。
 	InstanceNameSettings *InstanceNameSettings `json:"InstanceNameSettings,omitempty" name:"InstanceNameSettings"`
+
+	// 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。
+	EnhancedService *EnhancedService `json:"EnhancedService,omitempty" name:"EnhancedService"`
 }
 
 func (r *ModifyLaunchConfigurationAttributesRequest) ToJsonString() string {
@@ -3066,6 +3069,7 @@ func (r *ModifyLaunchConfigurationAttributesRequest) FromJsonString(s string) er
 	delete(f, "DataDisks")
 	delete(f, "HostNameSettings")
 	delete(f, "InstanceNameSettings")
+	delete(f, "EnhancedService")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLaunchConfigurationAttributesRequest has unknown keys!", "")
 	}

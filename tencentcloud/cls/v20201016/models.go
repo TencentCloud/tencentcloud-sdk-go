@@ -3275,6 +3275,9 @@ type GetAlarmLogRequest struct {
 
 	// 日志接口是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
 	Sort *string `json:"Sort,omitempty" name:"Sort"`
+
+	// 为true代表使用新检索,响应参数AnalysisRecords和Columns有效， 为false时代表使用老检索方式, AnalysisResults和ColNames有效
+	UseNewAnalysis *bool `json:"UseNewAnalysis,omitempty" name:"UseNewAnalysis"`
 }
 
 func (r *GetAlarmLogRequest) ToJsonString() string {
@@ -3295,6 +3298,7 @@ func (r *GetAlarmLogRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Context")
 	delete(f, "Sort")
+	delete(f, "UseNewAnalysis")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetAlarmLogRequest has unknown keys!", "")
 	}
@@ -3325,6 +3329,14 @@ type GetAlarmLogResponse struct {
 		// 日志分析结果；当Analysis为False时，可能返回为null
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		AnalysisResults []*LogItems `json:"AnalysisResults,omitempty" name:"AnalysisResults"`
+
+		// 新的日志分析结果; UseNewAnalysis为true有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AnalysisRecords []*string `json:"AnalysisRecords,omitempty" name:"AnalysisRecords"`
+
+		// 日志分析的列属性; UseNewAnalysis为true有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Columns []*Column `json:"Columns,omitempty" name:"Columns"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

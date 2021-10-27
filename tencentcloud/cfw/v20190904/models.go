@@ -1760,7 +1760,7 @@ type DescribeNatFwInstancesInfoResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		NatinsLst []*NatInstanceInfo `json:"NatinsLst,omitempty" name:"NatinsLst"`
 
-		// 总共多少条数
+		// nat 防火墙个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Total *int64 `json:"Total,omitempty" name:"Total"`
 

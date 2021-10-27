@@ -2462,6 +2462,22 @@ type DeviceInfo struct {
 	// 创建人昵称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatorNickName *string `json:"CreatorNickName,omitempty" name:"CreatorNickName"`
+
+	// 启用/禁用状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableState *int64 `json:"EnableState,omitempty" name:"EnableState"`
+
+	// 产品ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 产品名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 设备类型（设备、子设备、网关）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
 }
 
 type DevicePositionItem struct {

@@ -98,8 +98,14 @@ const (
 	// 该地址不是CalcIP。
 	INVALIDPARAMETERVALUE_ADDRESSNOTCALCIP = "InvalidParameterValue.AddressNotCalcIP"
 
+	// 未找到该地址。
+	INVALIDPARAMETERVALUE_ADDRESSNOTFOUND = "InvalidParameterValue.AddressNotFound"
+
 	// 带宽超出限制。
 	INVALIDPARAMETERVALUE_BANDWIDTHOUTOFRANGE = "InvalidParameterValue.BandwidthOutOfRange"
+
+	// 该带宽包正在被使用。
+	INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEINUSE = "InvalidParameterValue.BandwidthPackageInUse"
 
 	// 未查询到该带宽包。
 	INVALIDPARAMETERVALUE_BANDWIDTHPACKAGENOTFOUND = "InvalidParameterValue.BandwidthPackageNotFound"
@@ -140,6 +146,9 @@ const (
 	// 由于该IP被禁用，无法绑定该实例。
 	INVALIDPARAMETERVALUE_INSTANCENORMALPUBLICIPBLOCKED = "InvalidParameterValue.InstanceNormalPublicIpBlocked"
 
+	// 无效的带宽包计费方式。
+	INVALIDPARAMETERVALUE_INVALIDBANDWIDTHPACKAGECHARGETYPE = "InvalidParameterValue.InvalidBandwidthPackageChargeType"
+
 	// 传入的DedicatedClusterId有误。
 	INVALIDPARAMETERVALUE_INVALIDDEDICATEDCLUSTERID = "InvalidParameterValue.InvalidDedicatedClusterId"
 
@@ -167,6 +176,9 @@ const (
 	// 探测目的IP与同一个私有网络内的同一个子网下的其他网络探测的探测目的IP相同。
 	INVALIDPARAMETERVALUE_NETDETECTSAMEIP = "InvalidParameterValue.NetDetectSameIp"
 
+	// 未找到网络接口ID，或私有IP地址未在网络接口配置。
+	INVALIDPARAMETERVALUE_NETWORKINTERFACENOTFOUND = "InvalidParameterValue.NetworkInterfaceNotFound"
+
 	// 该操作仅对主网卡支持。
 	INVALIDPARAMETERVALUE_ONLYSUPPORTEDFORMASTERNETWORKCARD = "InvalidParameterValue.OnlySupportedForMasterNetworkCard"
 
@@ -175,6 +187,12 @@ const (
 
 	// 参数值是一个系统保留对象。
 	INVALIDPARAMETERVALUE_RESERVED = "InvalidParameterValue.Reserved"
+
+	// 该资源已加入其他带宽包。
+	INVALIDPARAMETERVALUE_RESOURCEALREADYEXISTED = "InvalidParameterValue.ResourceAlreadyExisted"
+
+	// 资源ID不正确。
+	INVALIDPARAMETERVALUE_RESOURCEIDMALFORMED = "InvalidParameterValue.ResourceIdMalformed"
 
 	// 该资源不在此带宽包中。
 	INVALIDPARAMETERVALUE_RESOURCENOTEXISTED = "InvalidParameterValue.ResourceNotExisted"
@@ -379,6 +397,12 @@ const (
 
 	// 无效的实例状态。
 	UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+
+	// 该计费方式不支持此操作。
+	UNSUPPORTEDOPERATION_INVALIDRESOURCEINTERNETCHARGETYPE = "UnsupportedOperation.InvalidResourceInternetChargeType"
+
+	// 不支持加入此协议的带宽包。
+	UNSUPPORTEDOPERATION_INVALIDRESOURCEPROTOCOL = "UnsupportedOperation.InvalidResourceProtocol"
 
 	// 资源状态不合法。
 	UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"

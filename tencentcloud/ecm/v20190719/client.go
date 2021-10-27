@@ -616,6 +616,38 @@ func (c *Client) CreateImage(request *CreateImageRequest) (response *CreateImage
     return
 }
 
+func NewCreateKeyPairRequest() (request *CreateKeyPairRequest) {
+    request = &CreateKeyPairRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "CreateKeyPair")
+    return
+}
+
+func NewCreateKeyPairResponse() (response *CreateKeyPairResponse) {
+    response = &CreateKeyPairResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateKeyPair
+// 用于创建一个 OpenSSH RSA 密钥对，可以用于登录 Linux 实例。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDKEYPAIRNAME = "InvalidParameterValue.InvalidKeyPairName"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreateKeyPair(request *CreateKeyPairRequest) (response *CreateKeyPairResponse, err error) {
+    if request == nil {
+        request = NewCreateKeyPairRequest()
+    }
+    response = NewCreateKeyPairResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateListenerRequest() (request *CreateListenerRequest) {
     request = &CreateListenerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3048,6 +3080,39 @@ func (c *Client) DisassociateAddress(request *DisassociateAddressRequest) (respo
         request = NewDisassociateAddressRequest()
     }
     response = NewDisassociateAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisassociateInstancesKeyPairsRequest() (request *DisassociateInstancesKeyPairsRequest) {
+    request = &DisassociateInstancesKeyPairsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DisassociateInstancesKeyPairs")
+    return
+}
+
+func NewDisassociateInstancesKeyPairsResponse() (response *DisassociateInstancesKeyPairsResponse) {
+    response = &DisassociateInstancesKeyPairsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DisassociateInstancesKeyPairs
+// 用于解除实例的密钥绑定关系。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCEIDNOTSUPPORTED = "InvalidParameterValue.InstanceIdNotSupported"
+//  INVALIDPARAMETERVALUE_INVALIDKEYPAIRID = "InvalidParameterValue.InvalidKeyPairId"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DisassociateInstancesKeyPairs(request *DisassociateInstancesKeyPairsRequest) (response *DisassociateInstancesKeyPairsResponse, err error) {
+    if request == nil {
+        request = NewDisassociateInstancesKeyPairsRequest()
+    }
+    response = NewDisassociateInstancesKeyPairsResponse()
     err = c.Send(request, response)
     return
 }

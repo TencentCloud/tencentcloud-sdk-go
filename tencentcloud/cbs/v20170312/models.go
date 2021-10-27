@@ -1530,11 +1530,11 @@ func (r *GetSnapOverviewResponse) FromJsonString(s string) error {
 
 type Image struct {
 
-	// 镜像实例ID。
-	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
-
 	// 镜像名称。
 	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+
+	// 镜像实例ID。
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
 }
 
 type InquirePriceModifyDiskExtraPerformanceRequest struct {
@@ -2401,59 +2401,59 @@ type SharePermission struct {
 
 type Snapshot struct {
 
-	// 快照ID。
-	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
-
 	// 快照所在的位置。
 	Placement *Placement `json:"Placement,omitempty" name:"Placement"`
-
-	// 创建此快照的云硬盘类型。取值范围：<br><li>SYSTEM_DISK：系统盘<br><li>DATA_DISK：数据盘。
-	DiskUsage *string `json:"DiskUsage,omitempty" name:"DiskUsage"`
-
-	// 创建此快照的云硬盘ID。
-	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
-
-	// 创建此快照的云硬盘大小，单位GB。
-	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
-
-	// 快照的状态。取值范围：<br><li>NORMAL：正常<br><li>CREATING：创建中<br><li>ROLLBACKING：回滚中<br><li>COPYING_FROM_REMOTE：跨地域复制中<br><li>CHECKING_COPIED：复制校验中<br><li>TORECYCLE：待回收。
-	SnapshotState *string `json:"SnapshotState,omitempty" name:"SnapshotState"`
-
-	// 快照名称，用户自定义的快照别名。调用[ModifySnapshotAttribute](/document/product/362/15650)可修改此字段。
-	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
-
-	// 快照创建进度百分比，快照创建成功后此字段恒为100。
-	Percent *uint64 `json:"Percent,omitempty" name:"Percent"`
-
-	// 快照的创建时间。
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
-
-	// 快照到期时间。如果快照为永久保留，此字段为空。
-	DeadlineTime *string `json:"DeadlineTime,omitempty" name:"DeadlineTime"`
-
-	// 是否为加密盘创建的快照。取值范围：<br><li>true：该快照为加密盘创建的<br><li>false:非加密盘创建的快照。
-	Encrypt *bool `json:"Encrypt,omitempty" name:"Encrypt"`
-
-	// 是否为永久快照。取值范围：<br><li>true：永久快照<br><li>false：非永久快照。
-	IsPermanent *bool `json:"IsPermanent,omitempty" name:"IsPermanent"`
-
-	// 快照正在跨地域复制的目的地域，默认取值为[]。
-	CopyingToRegions []*string `json:"CopyingToRegions,omitempty" name:"CopyingToRegions"`
 
 	// 是否为跨地域复制的快照。取值范围：<br><li>true：表示为跨地域复制的快照。<br><li>false:本地域的快照。
 	CopyFromRemote *bool `json:"CopyFromRemote,omitempty" name:"CopyFromRemote"`
 
+	// 快照的状态。取值范围：<br><li>NORMAL：正常<br><li>CREATING：创建中<br><li>ROLLBACKING：回滚中<br><li>COPYING_FROM_REMOTE：跨地域复制中<br><li>CHECKING_COPIED：复制校验中<br><li>TORECYCLE：待回收。
+	SnapshotState *string `json:"SnapshotState,omitempty" name:"SnapshotState"`
+
+	// 是否为永久快照。取值范围：<br><li>true：永久快照<br><li>false：非永久快照。
+	IsPermanent *bool `json:"IsPermanent,omitempty" name:"IsPermanent"`
+
+	// 快照名称，用户自定义的快照别名。调用[ModifySnapshotAttribute](/document/product/362/15650)可修改此字段。
+	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
+
+	// 快照到期时间。如果快照为永久保留，此字段为空。
+	DeadlineTime *string `json:"DeadlineTime,omitempty" name:"DeadlineTime"`
+
+	// 快照创建进度百分比，快照创建成功后此字段恒为100。
+	Percent *uint64 `json:"Percent,omitempty" name:"Percent"`
+
 	// 快照关联的镜像列表。
 	Images []*Image `json:"Images,omitempty" name:"Images"`
 
-	// 快照关联的镜像个数。
-	ImageCount *uint64 `json:"ImageCount,omitempty" name:"ImageCount"`
+	// 快照当前被共享数。
+	ShareReference *uint64 `json:"ShareReference,omitempty" name:"ShareReference"`
 
 	// 快照类型，目前该项取值可以为PRIVATE_SNAPSHOT或者SHARED_SNAPSHOT
 	SnapshotType *string `json:"SnapshotType,omitempty" name:"SnapshotType"`
 
-	// 快照当前被共享数。
-	ShareReference *uint64 `json:"ShareReference,omitempty" name:"ShareReference"`
+	// 创建此快照的云硬盘大小，单位GB。
+	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 创建此快照的云硬盘ID。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
+
+	// 快照正在跨地域复制的目的地域，默认取值为[]。
+	CopyingToRegions []*string `json:"CopyingToRegions,omitempty" name:"CopyingToRegions"`
+
+	// 是否为加密盘创建的快照。取值范围：<br><li>true：该快照为加密盘创建的<br><li>false:非加密盘创建的快照。
+	Encrypt *bool `json:"Encrypt,omitempty" name:"Encrypt"`
+
+	// 快照的创建时间。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 快照关联的镜像个数。
+	ImageCount *uint64 `json:"ImageCount,omitempty" name:"ImageCount"`
+
+	// 创建此快照的云硬盘类型。取值范围：<br><li>SYSTEM_DISK：系统盘<br><li>DATA_DISK：数据盘。
+	DiskUsage *string `json:"DiskUsage,omitempty" name:"DiskUsage"`
+
+	// 快照ID。
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
 
 	// 快照开始共享的时间。
 	TimeStartShare *string `json:"TimeStartShare,omitempty" name:"TimeStartShare"`

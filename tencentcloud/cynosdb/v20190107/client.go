@@ -775,6 +775,42 @@ func (c *Client) ModifyBackupConfig(request *ModifyBackupConfigRequest) (respons
     return
 }
 
+func NewModifyClusterParamRequest() (request *ModifyClusterParamRequest) {
+    request = &ModifyClusterParamRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cynosdb", APIVersion, "ModifyClusterParam")
+    return
+}
+
+func NewModifyClusterParamResponse() (response *ModifyClusterParamResponse) {
+    response = &ModifyClusterParamResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyClusterParam
+// 修改集群参数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
+//  OPERATIONDENIED_SERVERLESSCLUSTERSTATUSDENIED = "OperationDenied.ServerlessClusterStatusDenied"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyClusterParam(request *ModifyClusterParamRequest) (response *ModifyClusterParamResponse, err error) {
+    if request == nil {
+        request = NewModifyClusterParamRequest()
+    }
+    response = NewModifyClusterParamResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDBInstanceSecurityGroupsRequest() (request *ModifyDBInstanceSecurityGroupsRequest) {
     request = &ModifyDBInstanceSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},

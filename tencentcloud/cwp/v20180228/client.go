@@ -6865,45 +6865,6 @@ func (c *Client) RenewProVersion(request *RenewProVersionRequest) (response *Ren
     return
 }
 
-func NewRescanImpactedHostRequest() (request *RescanImpactedHostRequest) {
-    request = &RescanImpactedHostRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cwp", APIVersion, "RescanImpactedHost")
-    return
-}
-
-func NewRescanImpactedHostResponse() (response *RescanImpactedHostResponse) {
-    response = &RescanImpactedHostResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// RescanImpactedHost
-// 该接口已废弃
-//
-// 
-//
-// 本接口 (RescanImpactedHost) 用于漏洞重新检测。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_AGENTOFFLINE = "FailedOperation.AgentOffline"
-//  FAILEDOPERATION_RESCANVUL = "FailedOperation.RescanVul"
-//  FAILEDOPERATION_RESCANVULPROCESSINUSE = "FailedOperation.RescanVulProcessInUse"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) RescanImpactedHost(request *RescanImpactedHostRequest) (response *RescanImpactedHostResponse, err error) {
-    if request == nil {
-        request = NewRescanImpactedHostRequest()
-    }
-    response = NewRescanImpactedHostResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewScanAssetRequest() (request *ScanAssetRequest) {
     request = &ScanAssetRequest{
         BaseRequest: &tchttp.BaseRequest{},

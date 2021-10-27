@@ -65,9 +65,6 @@ const (
 	// 重新检测漏洞失败。
 	FAILEDOPERATION_RESCANVUL = "FailedOperation.RescanVul"
 
-	// 该主机已有重新检测任务正在执行中。
-	FAILEDOPERATION_RESCANVULPROCESSINUSE = "FailedOperation.RescanVulProcessInUse"
-
 	// 单台主机隔离失败。
 	FAILEDOPERATION_SINGLESEPARATE = "FailedOperation.SingleSeparate"
 

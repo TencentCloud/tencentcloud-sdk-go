@@ -146,6 +146,9 @@ const (
 	// 实例配置不匹配。
 	INVALIDPARAMETERVALUE_INSTANCECONFIGNOTMATCH = "InvalidParameterValue.InstanceConfigNotMatch"
 
+	// 实例不支持当前操作。
+	INVALIDPARAMETERVALUE_INSTANCEIDNOTSUPPORTED = "InvalidParameterValue.InstanceIdNotSupported"
+
 	// 实例名字长度超出限制。
 	INVALIDPARAMETERVALUE_INSTANCENAMETOOLONG = "InvalidParameterValue.InstanceNameTooLong"
 
@@ -244,6 +247,12 @@ const (
 
 	// 计费类型不合法。
 	INVALIDPARAMETERVALUE_INVALIDINTERNETCHARGETYPE = "InvalidParameterValue.InvalidInternetChargeType"
+
+	// 秘钥ID无效。
+	INVALIDPARAMETERVALUE_INVALIDKEYPAIRID = "InvalidParameterValue.InvalidKeyPairId"
+
+	// 秘钥名称异常。
+	INVALIDPARAMETERVALUE_INVALIDKEYPAIRNAME = "InvalidParameterValue.InvalidKeyPairName"
 
 	// 负载均衡数量不合法。
 	INVALIDPARAMETERVALUE_INVALIDLOADBALANCERNUM = "InvalidParameterValue.InvalidLoadBalancerNum"
