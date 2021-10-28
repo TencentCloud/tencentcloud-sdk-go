@@ -62,7 +62,15 @@ func NewAcknowledgeMessageResponse() (response *AcknowledgeMessageResponse) {
 // 根据提供的 MessageID 确认指定 topic 中的消息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CREATEPRODUCERERROR = "FailedOperation.CreateProducerError"
+//  FAILEDOPERATION_CREATEPULSARCLIENTERROR = "FailedOperation.CreatePulsarClientError"
+//  FAILEDOPERATION_MAXMESSAGESIZEERROR = "FailedOperation.MaxMessageSizeError"
+//  FAILEDOPERATION_MESSAGEIDERROR = "FailedOperation.MessageIDError"
+//  FAILEDOPERATION_RECEIVEERROR = "FailedOperation.ReceiveError"
+//  FAILEDOPERATION_RECEIVETIMEOUT = "FailedOperation.ReceiveTimeout"
+//  FAILEDOPERATION_TOPICTYPEERROR = "FailedOperation.TopicTypeError"
 //  INVALIDPARAMETER_TENANTNOTFOUND = "InvalidParameter.TenantNotFound"
+//  INVALIDPARAMETER_TOKENNOTFOUND = "InvalidParameter.TokenNotFound"
 //  INVALIDPARAMETERVALUE_TOPICNOTFOUND = "InvalidParameterValue.TopicNotFound"
 func (c *Client) AcknowledgeMessage(request *AcknowledgeMessageRequest) (response *AcknowledgeMessageResponse, err error) {
     if request == nil {
@@ -92,7 +100,15 @@ func NewClearCmqQueueResponse() (response *ClearCmqQueueResponse) {
 // 清空cmq消息队列中的消息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CREATEPRODUCERERROR = "FailedOperation.CreateProducerError"
+//  FAILEDOPERATION_CREATEPULSARCLIENTERROR = "FailedOperation.CreatePulsarClientError"
+//  FAILEDOPERATION_MAXMESSAGESIZEERROR = "FailedOperation.MaxMessageSizeError"
+//  FAILEDOPERATION_MESSAGEIDERROR = "FailedOperation.MessageIDError"
+//  FAILEDOPERATION_RECEIVEERROR = "FailedOperation.ReceiveError"
+//  FAILEDOPERATION_RECEIVETIMEOUT = "FailedOperation.ReceiveTimeout"
+//  FAILEDOPERATION_TOPICTYPEERROR = "FailedOperation.TopicTypeError"
 //  INVALIDPARAMETER_TENANTNOTFOUND = "InvalidParameter.TenantNotFound"
+//  INVALIDPARAMETER_TOKENNOTFOUND = "InvalidParameter.TokenNotFound"
 //  INVALIDPARAMETERVALUE_TOPICNOTFOUND = "InvalidParameterValue.TopicNotFound"
 func (c *Client) ClearCmqQueue(request *ClearCmqQueueRequest) (response *ClearCmqQueueResponse, err error) {
     if request == nil {
@@ -122,7 +138,15 @@ func NewClearCmqSubscriptionFilterTagsResponse() (response *ClearCmqSubscription
 // 清空订阅者消息标签
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CREATEPRODUCERERROR = "FailedOperation.CreateProducerError"
+//  FAILEDOPERATION_CREATEPULSARCLIENTERROR = "FailedOperation.CreatePulsarClientError"
+//  FAILEDOPERATION_MAXMESSAGESIZEERROR = "FailedOperation.MaxMessageSizeError"
+//  FAILEDOPERATION_MESSAGEIDERROR = "FailedOperation.MessageIDError"
+//  FAILEDOPERATION_RECEIVEERROR = "FailedOperation.ReceiveError"
+//  FAILEDOPERATION_RECEIVETIMEOUT = "FailedOperation.ReceiveTimeout"
+//  FAILEDOPERATION_TOPICTYPEERROR = "FailedOperation.TopicTypeError"
 //  INVALIDPARAMETER_TENANTNOTFOUND = "InvalidParameter.TenantNotFound"
+//  INVALIDPARAMETER_TOKENNOTFOUND = "InvalidParameter.TokenNotFound"
 //  INVALIDPARAMETERVALUE_TOPICNOTFOUND = "InvalidParameterValue.TopicNotFound"
 func (c *Client) ClearCmqSubscriptionFilterTags(request *ClearCmqSubscriptionFilterTagsRequest) (response *ClearCmqSubscriptionFilterTagsResponse, err error) {
     if request == nil {
@@ -335,6 +359,143 @@ func (c *Client) CreateEnvironmentRole(request *CreateEnvironmentRoleRequest) (r
         request = NewCreateEnvironmentRoleRequest()
     }
     response = NewCreateEnvironmentRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateRocketMQClusterRequest() (request *CreateRocketMQClusterRequest) {
+    request = &CreateRocketMQClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "CreateRocketMQCluster")
+    return
+}
+
+func NewCreateRocketMQClusterResponse() (response *CreateRocketMQClusterResponse) {
+    response = &CreateRocketMQClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateRocketMQCluster
+// 此接口用于创建一个RocketMQ集群
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateRocketMQCluster(request *CreateRocketMQClusterRequest) (response *CreateRocketMQClusterResponse, err error) {
+    if request == nil {
+        request = NewCreateRocketMQClusterRequest()
+    }
+    response = NewCreateRocketMQClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateRocketMQGroupRequest() (request *CreateRocketMQGroupRequest) {
+    request = &CreateRocketMQGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "CreateRocketMQGroup")
+    return
+}
+
+func NewCreateRocketMQGroupResponse() (response *CreateRocketMQGroupResponse) {
+    response = &CreateRocketMQGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateRocketMQGroup
+// 创建RocketMQ消费组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+func (c *Client) CreateRocketMQGroup(request *CreateRocketMQGroupRequest) (response *CreateRocketMQGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateRocketMQGroupRequest()
+    }
+    response = NewCreateRocketMQGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateRocketMQNamespaceRequest() (request *CreateRocketMQNamespaceRequest) {
+    request = &CreateRocketMQNamespaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "CreateRocketMQNamespace")
+    return
+}
+
+func NewCreateRocketMQNamespaceResponse() (response *CreateRocketMQNamespaceResponse) {
+    response = &CreateRocketMQNamespaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateRocketMQNamespace
+// 创建RocketMQ命名空间
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateRocketMQNamespace(request *CreateRocketMQNamespaceRequest) (response *CreateRocketMQNamespaceResponse, err error) {
+    if request == nil {
+        request = NewCreateRocketMQNamespaceRequest()
+    }
+    response = NewCreateRocketMQNamespaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateRocketMQTopicRequest() (request *CreateRocketMQTopicRequest) {
+    request = &CreateRocketMQTopicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "CreateRocketMQTopic")
+    return
+}
+
+func NewCreateRocketMQTopicResponse() (response *CreateRocketMQTopicResponse) {
+    response = &CreateRocketMQTopicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateRocketMQTopic
+// 创建RocketMQ主题
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateRocketMQTopic(request *CreateRocketMQTopicRequest) (response *CreateRocketMQTopicResponse, err error) {
+    if request == nil {
+        request = NewCreateRocketMQTopicRequest()
+    }
+    response = NewCreateRocketMQTopicResponse()
     err = c.Send(request, response)
     return
 }
@@ -649,6 +810,135 @@ func (c *Client) DeleteEnvironments(request *DeleteEnvironmentsRequest) (respons
         request = NewDeleteEnvironmentsRequest()
     }
     response = NewDeleteEnvironmentsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteRocketMQClusterRequest() (request *DeleteRocketMQClusterRequest) {
+    request = &DeleteRocketMQClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DeleteRocketMQCluster")
+    return
+}
+
+func NewDeleteRocketMQClusterResponse() (response *DeleteRocketMQClusterResponse) {
+    response = &DeleteRocketMQClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteRocketMQCluster
+// 删除RocketMQ集群
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DELETECLUSTER = "FailedOperation.DeleteCluster"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteRocketMQCluster(request *DeleteRocketMQClusterRequest) (response *DeleteRocketMQClusterResponse, err error) {
+    if request == nil {
+        request = NewDeleteRocketMQClusterRequest()
+    }
+    response = NewDeleteRocketMQClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteRocketMQGroupRequest() (request *DeleteRocketMQGroupRequest) {
+    request = &DeleteRocketMQGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DeleteRocketMQGroup")
+    return
+}
+
+func NewDeleteRocketMQGroupResponse() (response *DeleteRocketMQGroupResponse) {
+    response = &DeleteRocketMQGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteRocketMQGroup
+// 删除RocketMQ消费组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteRocketMQGroup(request *DeleteRocketMQGroupRequest) (response *DeleteRocketMQGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteRocketMQGroupRequest()
+    }
+    response = NewDeleteRocketMQGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteRocketMQNamespaceRequest() (request *DeleteRocketMQNamespaceRequest) {
+    request = &DeleteRocketMQNamespaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DeleteRocketMQNamespace")
+    return
+}
+
+func NewDeleteRocketMQNamespaceResponse() (response *DeleteRocketMQNamespaceResponse) {
+    response = &DeleteRocketMQNamespaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteRocketMQNamespace
+// 删除RocketMQ命名空间
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteRocketMQNamespace(request *DeleteRocketMQNamespaceRequest) (response *DeleteRocketMQNamespaceResponse, err error) {
+    if request == nil {
+        request = NewDeleteRocketMQNamespaceRequest()
+    }
+    response = NewDeleteRocketMQNamespaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteRocketMQTopicRequest() (request *DeleteRocketMQTopicRequest) {
+    request = &DeleteRocketMQTopicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DeleteRocketMQTopic")
+    return
+}
+
+func NewDeleteRocketMQTopicResponse() (response *DeleteRocketMQTopicResponse) {
+    response = &DeleteRocketMQTopicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteRocketMQTopic
+// 删除RocketMQ主题
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteRocketMQTopic(request *DeleteRocketMQTopicRequest) (response *DeleteRocketMQTopicResponse, err error) {
+    if request == nil {
+        request = NewDeleteRocketMQTopicRequest()
+    }
+    response = NewDeleteRocketMQTopicResponse()
     err = c.Send(request, response)
     return
 }
@@ -1289,6 +1579,165 @@ func (c *Client) DescribeProducers(request *DescribeProducersRequest) (response 
     return
 }
 
+func NewDescribeRocketMQClusterRequest() (request *DescribeRocketMQClusterRequest) {
+    request = &DescribeRocketMQClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQCluster")
+    return
+}
+
+func NewDescribeRocketMQClusterResponse() (response *DescribeRocketMQClusterResponse) {
+    response = &DescribeRocketMQClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRocketMQCluster
+// 获取单个RocketMQ集群信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRocketMQCluster(request *DescribeRocketMQClusterRequest) (response *DescribeRocketMQClusterResponse, err error) {
+    if request == nil {
+        request = NewDescribeRocketMQClusterRequest()
+    }
+    response = NewDescribeRocketMQClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRocketMQClustersRequest() (request *DescribeRocketMQClustersRequest) {
+    request = &DescribeRocketMQClustersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQClusters")
+    return
+}
+
+func NewDescribeRocketMQClustersResponse() (response *DescribeRocketMQClustersResponse) {
+    response = &DescribeRocketMQClustersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRocketMQClusters
+// 获取RocketMQ集群列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRocketMQClusters(request *DescribeRocketMQClustersRequest) (response *DescribeRocketMQClustersResponse, err error) {
+    if request == nil {
+        request = NewDescribeRocketMQClustersRequest()
+    }
+    response = NewDescribeRocketMQClustersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRocketMQGroupsRequest() (request *DescribeRocketMQGroupsRequest) {
+    request = &DescribeRocketMQGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQGroups")
+    return
+}
+
+func NewDescribeRocketMQGroupsResponse() (response *DescribeRocketMQGroupsResponse) {
+    response = &DescribeRocketMQGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRocketMQGroups
+// 获取RocketMQ消费组列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRocketMQGroups(request *DescribeRocketMQGroupsRequest) (response *DescribeRocketMQGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRocketMQGroupsRequest()
+    }
+    response = NewDescribeRocketMQGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRocketMQNamespacesRequest() (request *DescribeRocketMQNamespacesRequest) {
+    request = &DescribeRocketMQNamespacesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQNamespaces")
+    return
+}
+
+func NewDescribeRocketMQNamespacesResponse() (response *DescribeRocketMQNamespacesResponse) {
+    response = &DescribeRocketMQNamespacesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRocketMQNamespaces
+// 获取RocketMQ命名空间列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRocketMQNamespaces(request *DescribeRocketMQNamespacesRequest) (response *DescribeRocketMQNamespacesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRocketMQNamespacesRequest()
+    }
+    response = NewDescribeRocketMQNamespacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRocketMQTopicsRequest() (request *DescribeRocketMQTopicsRequest) {
+    request = &DescribeRocketMQTopicsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQTopics")
+    return
+}
+
+func NewDescribeRocketMQTopicsResponse() (response *DescribeRocketMQTopicsResponse) {
+    response = &DescribeRocketMQTopicsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRocketMQTopics
+// 获取RocketMQ主题列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRocketMQTopics(request *DescribeRocketMQTopicsRequest) (response *DescribeRocketMQTopicsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRocketMQTopicsRequest()
+    }
+    response = NewDescribeRocketMQTopicsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRolesRequest() (request *DescribeRolesRequest) {
     request = &DescribeRolesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1586,6 +2035,141 @@ func (c *Client) ModifyEnvironmentRole(request *ModifyEnvironmentRoleRequest) (r
     return
 }
 
+func NewModifyRocketMQClusterRequest() (request *ModifyRocketMQClusterRequest) {
+    request = &ModifyRocketMQClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "ModifyRocketMQCluster")
+    return
+}
+
+func NewModifyRocketMQClusterResponse() (response *ModifyRocketMQClusterResponse) {
+    response = &ModifyRocketMQClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyRocketMQCluster
+// 更新RocketMQ集群信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyRocketMQCluster(request *ModifyRocketMQClusterRequest) (response *ModifyRocketMQClusterResponse, err error) {
+    if request == nil {
+        request = NewModifyRocketMQClusterRequest()
+    }
+    response = NewModifyRocketMQClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyRocketMQGroupRequest() (request *ModifyRocketMQGroupRequest) {
+    request = &ModifyRocketMQGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "ModifyRocketMQGroup")
+    return
+}
+
+func NewModifyRocketMQGroupResponse() (response *ModifyRocketMQGroupResponse) {
+    response = &ModifyRocketMQGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyRocketMQGroup
+// 更新RocketMQ消费组信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyRocketMQGroup(request *ModifyRocketMQGroupRequest) (response *ModifyRocketMQGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyRocketMQGroupRequest()
+    }
+    response = NewModifyRocketMQGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyRocketMQNamespaceRequest() (request *ModifyRocketMQNamespaceRequest) {
+    request = &ModifyRocketMQNamespaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "ModifyRocketMQNamespace")
+    return
+}
+
+func NewModifyRocketMQNamespaceResponse() (response *ModifyRocketMQNamespaceResponse) {
+    response = &ModifyRocketMQNamespaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyRocketMQNamespace
+// 更新RocketMQ命名空间
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyRocketMQNamespace(request *ModifyRocketMQNamespaceRequest) (response *ModifyRocketMQNamespaceResponse, err error) {
+    if request == nil {
+        request = NewModifyRocketMQNamespaceRequest()
+    }
+    response = NewModifyRocketMQNamespaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyRocketMQTopicRequest() (request *ModifyRocketMQTopicRequest) {
+    request = &ModifyRocketMQTopicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "ModifyRocketMQTopic")
+    return
+}
+
+func NewModifyRocketMQTopicResponse() (response *ModifyRocketMQTopicResponse) {
+    response = &ModifyRocketMQTopicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyRocketMQTopic
+// 更新RocketMQ主题信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyRocketMQTopic(request *ModifyRocketMQTopicRequest) (response *ModifyRocketMQTopicResponse, err error) {
+    if request == nil {
+        request = NewModifyRocketMQTopicRequest()
+    }
+    response = NewModifyRocketMQTopicResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyRoleRequest() (request *ModifyRoleRequest) {
     request = &ModifyRoleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1704,8 +2288,14 @@ func NewReceiveMessageResponse() (response *ReceiveMessageResponse) {
 // 接收发送到指定 topic 中的消息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CREATEPRODUCERERROR = "FailedOperation.CreateProducerError"
+//  FAILEDOPERATION_CREATEPULSARCLIENTERROR = "FailedOperation.CreatePulsarClientError"
+//  FAILEDOPERATION_MAXMESSAGESIZEERROR = "FailedOperation.MaxMessageSizeError"
+//  FAILEDOPERATION_MESSAGEIDERROR = "FailedOperation.MessageIDError"
 //  FAILEDOPERATION_RECEIVEERROR = "FailedOperation.ReceiveError"
 //  FAILEDOPERATION_RECEIVETIMEOUT = "FailedOperation.ReceiveTimeout"
+//  FAILEDOPERATION_SENDMESSAGETIMEOUTERROR = "FailedOperation.SendMessageTimeoutError"
+//  FAILEDOPERATION_TOPICTYPEERROR = "FailedOperation.TopicTypeError"
 //  INVALIDPARAMETER_TENANTNOTFOUND = "InvalidParameter.TenantNotFound"
 //  INVALIDPARAMETER_TOKENNOTFOUND = "InvalidParameter.TokenNotFound"
 //  INVALIDPARAMETERVALUE_TOPICNOTFOUND = "InvalidParameterValue.TopicNotFound"
@@ -1813,6 +2403,12 @@ func NewSendBatchMessagesResponse() (response *SendBatchMessagesResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEPRODUCERERROR = "FailedOperation.CreateProducerError"
 //  FAILEDOPERATION_CREATEPULSARCLIENTERROR = "FailedOperation.CreatePulsarClientError"
+//  FAILEDOPERATION_MAXMESSAGESIZEERROR = "FailedOperation.MaxMessageSizeError"
+//  FAILEDOPERATION_MESSAGEIDERROR = "FailedOperation.MessageIDError"
+//  FAILEDOPERATION_RECEIVEERROR = "FailedOperation.ReceiveError"
+//  FAILEDOPERATION_RECEIVETIMEOUT = "FailedOperation.ReceiveTimeout"
+//  FAILEDOPERATION_SENDMESSAGETIMEOUTERROR = "FailedOperation.SendMessageTimeoutError"
+//  FAILEDOPERATION_TOPICTYPEERROR = "FailedOperation.TopicTypeError"
 //  INVALIDPARAMETER_TENANTNOTFOUND = "InvalidParameter.TenantNotFound"
 //  INVALIDPARAMETER_TOKENNOTFOUND = "InvalidParameter.TokenNotFound"
 //  INVALIDPARAMETERVALUE_TOPICNOTFOUND = "InvalidParameterValue.TopicNotFound"
@@ -1875,6 +2471,12 @@ func NewSendMessagesResponse() (response *SendMessagesResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEPRODUCERERROR = "FailedOperation.CreateProducerError"
 //  FAILEDOPERATION_CREATEPULSARCLIENTERROR = "FailedOperation.CreatePulsarClientError"
+//  FAILEDOPERATION_MAXMESSAGESIZEERROR = "FailedOperation.MaxMessageSizeError"
+//  FAILEDOPERATION_MESSAGEIDERROR = "FailedOperation.MessageIDError"
+//  FAILEDOPERATION_RECEIVEERROR = "FailedOperation.ReceiveError"
+//  FAILEDOPERATION_RECEIVETIMEOUT = "FailedOperation.ReceiveTimeout"
+//  FAILEDOPERATION_SENDMESSAGETIMEOUTERROR = "FailedOperation.SendMessageTimeoutError"
+//  FAILEDOPERATION_TOPICTYPEERROR = "FailedOperation.TopicTypeError"
 //  INVALIDPARAMETER_TENANTNOTFOUND = "InvalidParameter.TenantNotFound"
 //  INVALIDPARAMETER_TOKENNOTFOUND = "InvalidParameter.TokenNotFound"
 //  INVALIDPARAMETERVALUE_TOPICNOTFOUND = "InvalidParameterValue.TopicNotFound"

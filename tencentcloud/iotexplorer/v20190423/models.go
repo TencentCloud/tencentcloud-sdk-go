@@ -166,7 +166,7 @@ type CallDeviceActionSyncResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		OutputParams *string `json:"OutputParams,omitempty" name:"OutputParams"`
 
-		// 返回状态
+		// 返回状态，当设备不在线等部分情况，会通过该 Status 返回。
 		Status *string `json:"Status,omitempty" name:"Status"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

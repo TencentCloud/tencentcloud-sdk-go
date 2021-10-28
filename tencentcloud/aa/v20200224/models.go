@@ -444,15 +444,10 @@ func (r *QueryActivityAntiRushAdvancedResponse) FromJsonString(s string) error {
 type QueryActivityAntiRushRequest struct {
 	*tchttp.BaseRequest
 
-	// 用户账号类型（默认开通 QQ 开放账号、手机号，手机 MD5 账号类型查询。如需使用微信开放账号，则需要 提交工单 由腾讯云进行资格审核，审核通过后方可正常使用微信开放账号）：
-	// 1：QQ 开放帐号。
-	// 2：微信开放账号。
-	// 4：手机号。
-	// 0：其他。
-	// 10004：手机号 MD5。
+	// 账号类型
 	AccountType *string `json:"AccountType,omitempty" name:"AccountType"`
 
-	// 用户 ID 不同的 accountType 对应不同的用户 ID。如果是 QQ，则填入对应的 openid，微信用户则填入对应的 openid/unionid，手机号则填入对应真实用户手机号（如13123456789）。
+	// uid值
 	Uid *string `json:"Uid,omitempty" name:"Uid"`
 
 	// 用户的真实外网 IP。若填入非外网有效ip，会返回level=0的风控结果，risktype中会有205的风险码返回作为标识
@@ -467,7 +462,7 @@ type QueryActivityAntiRushRequest struct {
 	// 昵称，UTF-8 编码。
 	NickName *string `json:"NickName,omitempty" name:"NickName"`
 
-	// 手机号。若 accountType 选4（手机号）、或10004（手机号 MD5），则无需重复填写。否则填入对应的手机号（如15912345687）。accountType为1或2时，该字段支持MD5值；
+	// 手机号
 	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
 
 	// 用户邮箱地址。
@@ -550,8 +545,7 @@ type QueryActivityAntiRushRequest struct {
 	// Token 签名随机数，WxSubType为微信小程序时必填，建议16个字符。
 	RandNum *string `json:"RandNum,omitempty" name:"RandNum"`
 
-	// 如果 accountType为2而且wxSubType有填，该字段必选，否则不需要填写；
-	// 如果是微信小程序（WxSubType=2），该字段为以ssesion_key为key去签名随机数radnNum得到的值（ hmac_sha256签名算法）；如果是微信公众号或第三方登录，则为授权的access_token（网页版本的access_Token,而且获取token的scope字段必需填写snsapi_userinfo；）
+	// token
 	WxToken *string `json:"WxToken,omitempty" name:"WxToken"`
 
 	// 是否识别设备异常：
@@ -650,8 +644,7 @@ type QueryActivityAntiRushResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		AssociateAccount *string `json:"AssociateAccount,omitempty" name:"AssociateAccount"`
 
-		// 用户ID 
-	// accountType不同对应不同的用户ID。如果是QQ或微信用户则填入对应的openId
+		// uid值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Uid *string `json:"Uid,omitempty" name:"Uid"`
 

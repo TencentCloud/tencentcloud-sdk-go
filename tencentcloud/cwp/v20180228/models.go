@@ -5803,7 +5803,7 @@ type DescribeAvailableExpertServiceDetailResponse struct {
 		// 是否购买过应急响应
 		EmergencyResponseBuy *bool `json:"EmergencyResponseBuy,omitempty" name:"EmergencyResponseBuy"`
 
-		// 是否哦购买过旗舰护网
+		// 是否购买过旗舰护网
 		ProtectNetBuy *bool `json:"ProtectNetBuy,omitempty" name:"ProtectNetBuy"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

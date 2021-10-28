@@ -819,11 +819,11 @@ type DetectDetail struct {
 
 type DetectInfoBestFrame struct {
 
-	// 活体比对最佳帧。
+	// 活体比对最佳帧Base64编码。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BestFrame *string `json:"BestFrame,omitempty" name:"BestFrame"`
 
-	// 自截帧。
+	// 自截帧Base64编码数组。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BestFrames []*string `json:"BestFrames,omitempty" name:"BestFrames"`
 }
