@@ -1026,6 +1026,96 @@ type BotJavaScript struct {
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
+type BotRecord struct {
+
+	// 动作，取值为以为3个类型中的一个："intercept","permit","monitor"，分别表示： 拦截， 放行，监控
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 会话总次数
+	Nums *int64 `json:"Nums,omitempty" name:"Nums"`
+
+	// BotType=UB时，表示预测标签，取值如下：
+	//                 "crawler_unregular",
+	//                 "crawler_regular",
+	//                 "request_repeat",
+	//                 "credential_miss_user",
+	//                 "credential_without_user",
+	//                 "credential_only_action",
+	//                 "credential_user_password",
+	//                 "credential_cracking",
+	//                 "credential_stuffing",
+	//                 "brush_sms",
+	//                 "brush_captcha",
+	//                 "reg_malicious"
+	// BotType=TCB时，表示Bot分类，取值如下：
+	//                 "Uncategorised",
+	//                 "Search engine bot",
+	//                 "Site monitor",
+	//                 "Screenshot creator",
+	//                 "Link checker",
+	//                 "Web scraper",
+	//                 "Vulnerability scanner",
+	//                 "Virus scanner",
+	//                 "Speed tester",
+	//                 "Feed Fetcher",
+	//                 "Tool",
+	//                 "Marketing"
+	// BotType=UCB时，为二期接口，暂时未定义内容
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 会话持续时间
+	SessionDuration *float64 `json:"SessionDuration,omitempty" name:"SessionDuration"`
+
+	// 访问源IP
+	SrcIp *string `json:"SrcIp,omitempty" name:"SrcIp"`
+
+	// 异常特征
+	BotFeature []*string `json:"BotFeature,omitempty" name:"BotFeature"`
+
+	// 最新检测时间
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// BOT得分
+	Score *int64 `json:"Score,omitempty" name:"Score"`
+
+	// 平均速率
+	AvgSpeed *float64 `json:"AvgSpeed,omitempty" name:"AvgSpeed"`
+
+	// BotType=TCB，表示TCB名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TcbDetail *string `json:"TcbDetail,omitempty" name:"TcbDetail"`
+
+	// BOT记录唯一ID，用于查询访问详情
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+type BotSortBy struct {
+
+	// 排序参数名称， 取值为：timestamp， nums， session_duration，score.total，stat.avg_speed分别表示按照：最新检测时间，会话总次数，会话持续时间，BOT得分，平均速率排序
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// asc/desc
+	Sequence *string `json:"Sequence,omitempty" name:"Sequence"`
+}
+
+type BotStatisticsCount struct {
+
+	// BOT次数
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+
+	// Top指标值,如果是ip维度就是ip如果是session维度就是域名
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// ip所在国家
+	Country *string `json:"Country,omitempty" name:"Country"`
+
+	// ip所在省份
+	Province *string `json:"Province,omitempty" name:"Province"`
+
+	// ip归属的idc
+	Isp *string `json:"Isp,omitempty" name:"Isp"`
+}
+
 type BriefDomain struct {
 
 	// 域名 ID
@@ -4031,6 +4121,161 @@ func (r *DescribeReportDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeScdnBotRecordsRequest struct {
+	*tchttp.BaseRequest
+
+	// BOT类型，取值为"UB","UCB","TCB"，分别表示：未知类型，自定义类型，公开类型
+	BotType *string `json:"BotType,omitempty" name:"BotType"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页参数
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页参数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// mainland 大陆地区 overseas境外地区
+	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 排序参数
+	SortBy []*BotSortBy `json:"SortBy,omitempty" name:"SortBy"`
+
+	// BotType=UB时，表示需要过滤的预测标签，取值如下：
+	//                 "crawler_unregular",
+	//                 "crawler_regular",
+	//                 "request_repeat",
+	//                 "credential_miss_user",
+	//                 "credential_without_user",
+	//                 "credential_only_action",
+	//                 "credential_user_password",
+	//                 "credential_cracking",
+	//                 "credential_stuffing",
+	//                 "brush_sms",
+	//                 "brush_captcha",
+	//                 "reg_malicious"
+	// BotType=TCB时，表示需要过滤的Bot分类，取值如下：
+	//                 "Uncategorised",
+	//                 "Search engine bot",
+	//                 "Site monitor",
+	//                 "Screenshot creator",
+	//                 "Link checker",
+	//                 "Web scraper",
+	//                 "Vulnerability scanner",
+	//                 "Virus scanner",
+	//                 "Speed tester",
+	//                 "Feed Fetcher",
+	//                 "Tool",
+	//                 "Marketing"
+	// BotType=UCB时，取值如下：
+	// User-Agent为空或不存在
+	// User-Agent类型为BOT
+	// User-Agent类型为HTTP Library
+	// User-Agent类型为Framework
+	// User-Agent类型为Tools
+	// User-Agent类型为Unkonwn BOT
+	// User-Agent类型为Scanner
+	// Referer空或不存在
+	// Referer滥用(多个UA使用相同Referer)
+	// Cookie滥用(多个UA使用相同Cookie)
+	// Cookie空或不存在
+	// Connection空或不存在
+	// Accept空或不存在
+	// Accept-Language空或不存在
+	// Accept-Enconding空或不存在
+	// 使用HTTP HEAD方法
+	// HTTP协议为1.0或者更低
+	// IDC-IP 腾讯云
+	// IDC-IP 阿里云
+	// IDC-IP 华为云
+	// IDC-IP 金山云
+	// IDC-IP UCloud
+	// IDC-IP 百度云
+	// IDC-IP 京东云
+	// IDC-IP 青云
+	// IDC-IP Aws
+	// IDC-IP Azure
+	// IDC-IP Google
+	// 
+	// 以上所有类型，FilterName为空时，表示不过滤，获取所有内容
+	FilterName *string `json:"FilterName,omitempty" name:"FilterName"`
+
+	// 目前支持的Action
+	// "intercept" 拦截
+	// "monitor"，监控
+	// "permit" 放行
+	// "redirect" 重定向
+	// 
+	// 尚未支持的Action
+	// "captcha" 验证码
+	FilterAction *string `json:"FilterAction,omitempty" name:"FilterAction"`
+
+	// 过滤的IP
+	FilterIp *string `json:"FilterIp,omitempty" name:"FilterIp"`
+}
+
+func (r *DescribeScdnBotRecordsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScdnBotRecordsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BotType")
+	delete(f, "Domain")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Area")
+	delete(f, "SortBy")
+	delete(f, "FilterName")
+	delete(f, "FilterAction")
+	delete(f, "FilterIp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScdnBotRecordsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeScdnBotRecordsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// BOT拦截结果数组
+		Data []*BotRecord `json:"Data,omitempty" name:"Data"`
+
+		// 记录数量
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeScdnBotRecordsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScdnBotRecordsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeScdnConfigRequest struct {
 	*tchttp.BaseRequest
 
@@ -4278,6 +4523,92 @@ func (r *DescribeScdnTopDataResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeScdnTopDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTopDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询起始日期：yyyy-MM-dd HH:mm:ss
+	// 当前仅支持按天粒度的数据查询，参数需为某天的起点时刻
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询起始日期：yyyy-MM-dd HH:mm:ss
+	// 当前仅支持按天粒度的数据查询，参数需为某天的结束时刻
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 排序对象，支持以下几种形式：
+	// ip、ua_device、ua_browser、ua_os、referer
+	Metric *string `json:"Metric,omitempty" name:"Metric"`
+
+	// 排序使用的指标名称：
+	// flux：Metric 为 host 时指代访问流量
+	// request：Metric 为 host 时指代访问请求数
+	Filter *string `json:"Filter,omitempty" name:"Filter"`
+
+	// 指定查询域名列表，最多可一次性查询 30 个加速域名明细
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
+
+	// 未填充域名情况下，指定项目查询，若填充了具体域名信息，以域名为主
+	Project *int64 `json:"Project,omitempty" name:"Project"`
+
+	// 是否详细显示每个域名的的具体数值
+	Detail *bool `json:"Detail,omitempty" name:"Detail"`
+
+	// 地域，目前可不填，默认是大陆
+	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 产品名，目前仅可使用cdn
+	Product *string `json:"Product,omitempty" name:"Product"`
+}
+
+func (r *DescribeTopDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTopDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Metric")
+	delete(f, "Filter")
+	delete(f, "Domains")
+	delete(f, "Project")
+	delete(f, "Detail")
+	delete(f, "Area")
+	delete(f, "Product")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTopDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 各个资源的Top 访问数据详情。
+		Data []*TopDataMore `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTopDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTopDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4581,7 +4912,7 @@ type DetailDomain struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FollowRedirect *FollowRedirect `json:"FollowRedirect,omitempty" name:"FollowRedirect"`
 
-	// 自定义错误页面配置（功能灰度中，敬请期待）
+	// 自定义错误页面配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorPage *ErrorPage `json:"ErrorPage,omitempty" name:"ErrorPage"`
 
@@ -4734,15 +5065,15 @@ type DetailDomain struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ipv6Access *Ipv6Access `json:"Ipv6Access,omitempty" name:"Ipv6Access"`
 
-	// 高级配置集合。
+	// 高级配置集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdvanceSet []*AdvanceConfig `json:"AdvanceSet,omitempty" name:"AdvanceSet"`
 
-	// 离线缓存
+	// 离线缓存（功能灰度中，尚未全量，请等待后续全量发布）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OfflineCache *OfflineCache `json:"OfflineCache,omitempty" name:"OfflineCache"`
 
-	// 合并回源
+	// 合并回源（白名单功能）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginCombine *OriginCombine `json:"OriginCombine,omitempty" name:"OriginCombine"`
 
@@ -4761,6 +5092,10 @@ type DetailDomain struct {
 	// WebSocket配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WebSocket *WebSocket `json:"WebSocket,omitempty" name:"WebSocket"`
+
+	// 远程鉴权配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemoteAuthentication *RemoteAuthentication `json:"RemoteAuthentication,omitempty" name:"RemoteAuthentication"`
 }
 
 type DiagnoseData struct {
@@ -6008,6 +6343,78 @@ func (r *ListScdnLogTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ListScdnTopBotDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 获取Top量，取值范围[1-10]
+	TopCount *int64 `json:"TopCount,omitempty" name:"TopCount"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// mainland 大陆地区 overseas境外地区
+	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// session表示查询BOT会话的Top信息
+	// ip表示查询BOT客户端IP的Top信息
+	// 
+	// 不填代表获取会话信息
+	Metric *string `json:"Metric,omitempty" name:"Metric"`
+
+	// 域名，仅当Metric=ip，并且Domain为空时有效，不填写表示获取AppID信息
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
+}
+
+func (r *ListScdnTopBotDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListScdnTopBotDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopCount")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Area")
+	delete(f, "Metric")
+	delete(f, "Domains")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListScdnTopBotDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListScdnTopBotDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 域名BOT次数列表
+		Data []*BotStatisticsCount `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListScdnTopBotDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListScdnTopBotDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ListTopBotDataRequest struct {
 	*tchttp.BaseRequest
 
@@ -6386,6 +6793,9 @@ type ListTopDataRequest struct {
 
 	// 指定查询的产品数据，可选为cdn或者ecdn，默认为cdn
 	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 只返回前N条数据，默认为最大值100，metric=url时默认为最大值1000
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
 func (r *ListTopDataRequest) ToJsonString() string {
@@ -6411,6 +6821,7 @@ func (r *ListTopDataRequest) FromJsonString(s string) error {
 	delete(f, "Area")
 	delete(f, "AreaType")
 	delete(f, "Product")
+	delete(f, "Limit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListTopDataRequest has unknown keys!", "")
 	}
@@ -7548,6 +7959,57 @@ type RegionMapRelation struct {
 	SubRegionIdList []*int64 `json:"SubRegionIdList,omitempty" name:"SubRegionIdList"`
 }
 
+type RemoteAuthentication struct {
+
+	// 远程鉴权开关；
+	// on : 开启;
+	// off: 关闭；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 远程鉴权规则配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemoteAuthenticationRules []*RemoteAuthenticationRule `json:"RemoteAuthenticationRules,omitempty" name:"RemoteAuthenticationRules"`
+
+	// 远程鉴权Server
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Server *string `json:"Server,omitempty" name:"Server"`
+}
+
+type RemoteAuthenticationRule struct {
+
+	// 远程鉴权服务http url
+	Server *string `json:"Server,omitempty" name:"Server"`
+
+	// 请求远程鉴权服务器的http方法；取值范围[get,post,head,all]; all 表示不限制请求方法；
+	// all: 不指定访问访问方法；
+	AuthMethod *string `json:"AuthMethod,omitempty" name:"AuthMethod"`
+
+	// 规则类型：
+	// all：所有文件生效
+	// file：指定文件后缀生效
+	// directory：指定路径生效
+	// path：指定绝对路径生效
+	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
+
+	// 对应类型下的匹配内容：
+	// all 时填充 *
+	// file 时填充后缀名，如 jpg、txt
+	// directory 时填充路径，如 /xxx/test
+	// path 时填充绝对路径，如 /xxx/test.html
+	// index 时填充 /
+	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths"`
+
+	// 请求远程鉴权服务器超时时间，单位毫秒；
+	// 取值范围：[1,30 000]
+	AuthTimeout *int64 `json:"AuthTimeout,omitempty" name:"AuthTimeout"`
+
+	// 请求远程鉴权服务器超时后执行拦截或者放行；
+	// RETURN_200: 超时后放行；
+	// RETURN_403:超时返回403；
+	AuthTimeoutAction *string `json:"AuthTimeoutAction,omitempty" name:"AuthTimeoutAction"`
+}
+
 type ReportData struct {
 
 	// 项目ID/域名ID。
@@ -8620,6 +9082,15 @@ type TopData struct {
 	DetailData []*TopDetailData `json:"DetailData,omitempty" name:"DetailData"`
 }
 
+type TopDataMore struct {
+
+	// 资源名称，根据查询条件不同分为以下几类：
+	Resource *string `json:"Resource,omitempty" name:"Resource"`
+
+	// 排序结果详情
+	DetailData []*TopDetailDataMore `json:"DetailData,omitempty" name:"DetailData"`
+}
+
 type TopDetailData struct {
 
 	// 数据类型的名称
@@ -8627,6 +9098,19 @@ type TopDetailData struct {
 
 	// 数据值
 	Value *float64 `json:"Value,omitempty" name:"Value"`
+}
+
+type TopDetailDataMore struct {
+
+	// 数据类型的名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 数据值
+	Value *float64 `json:"Value,omitempty" name:"Value"`
+
+	// 数据值在总值中的百分比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Percent *float64 `json:"Percent,omitempty" name:"Percent"`
 }
 
 type TopicInfo struct {
@@ -8694,7 +9178,7 @@ type TrafficPackage struct {
 	// 流量包来源
 	Channel *string `json:"Channel,omitempty" name:"Channel"`
 
-	// 流量包生效区域，目前仅支持mainland
+	// 流量包生效区域，mainland或overseas
 	Area *string `json:"Area,omitempty" name:"Area"`
 
 	// 流量包生命周期月数
@@ -8705,6 +9189,19 @@ type TrafficPackage struct {
 
 	// 流量包是否支持退费
 	RefundAvailable *bool `json:"RefundAvailable,omitempty" name:"RefundAvailable"`
+
+	// 流量包生效区域
+	// 0：中国大陆
+	// 1：亚太一区
+	// 2：亚太二区
+	// 3：亚太三区
+	// 4：中东
+	// 5：北美
+	// 6：欧洲
+	// 7：南美
+	// 8：非洲
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *int64 `json:"Region,omitempty" name:"Region"`
 }
 
 type UpdateDomainConfigRequest struct {
@@ -8799,6 +9296,7 @@ type UpdateDomainConfigRequest struct {
 	// mainland：中国境内加速
 	// overseas：中国境外加速
 	// global：全球加速
+	// 从mainland/overseas修改至global时，域名的配置将被同步至overseas/mainland。若域名含有后端特殊配置，此类配置的同步过程有一定延时，请耐心等待
 	Area *string `json:"Area,omitempty" name:"Area"`
 
 	// 回源超时配置
@@ -8813,7 +9311,7 @@ type UpdateDomainConfigRequest struct {
 	// 访问控制
 	AccessControl *AccessControl `json:"AccessControl,omitempty" name:"AccessControl"`
 
-	// URL重定向配置
+	// 访问URL重写配置
 	UrlRedirect *UrlRedirect `json:"UrlRedirect,omitempty" name:"UrlRedirect"`
 
 	// 访问端口配置
@@ -8842,6 +9340,9 @@ type UpdateDomainConfigRequest struct {
 
 	// WebSocket配置
 	WebSocket *WebSocket `json:"WebSocket,omitempty" name:"WebSocket"`
+
+	// 远程鉴权配置
+	RemoteAuthentication *RemoteAuthentication `json:"RemoteAuthentication,omitempty" name:"RemoteAuthentication"`
 }
 
 func (r *UpdateDomainConfigRequest) ToJsonString() string {
@@ -8898,6 +9399,7 @@ func (r *UpdateDomainConfigRequest) FromJsonString(s string) error {
 	delete(f, "Quic")
 	delete(f, "OssPrivateAccess")
 	delete(f, "WebSocket")
+	delete(f, "RemoteAuthentication")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDomainConfigRequest has unknown keys!", "")
 	}

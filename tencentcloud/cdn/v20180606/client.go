@@ -1648,6 +1648,39 @@ func (c *Client) DescribeReportData(request *DescribeReportDataRequest) (respons
     return
 }
 
+func NewDescribeScdnBotRecordsRequest() (request *DescribeScdnBotRecordsRequest) {
+    request = &DescribeScdnBotRecordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "DescribeScdnBotRecords")
+    return
+}
+
+func NewDescribeScdnBotRecordsResponse() (response *DescribeScdnBotRecordsResponse) {
+    response = &DescribeScdnBotRecordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeScdnBotRecords
+// 查询BOT会话记录列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CDNCONFIGERROR = "InternalError.CdnConfigError"
+//  INTERNALERROR_ERROR = "InternalError.Error"
+//  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_CLSINVALIDAUTHORIZATION = "UnauthorizedOperation.ClsInvalidAuthorization"
+//  UNAUTHORIZEDOPERATION_CLSUNAUTHORIZED = "UnauthorizedOperation.ClsUnauthorized"
+func (c *Client) DescribeScdnBotRecords(request *DescribeScdnBotRecordsRequest) (response *DescribeScdnBotRecordsResponse, err error) {
+    if request == nil {
+        request = NewDescribeScdnBotRecordsRequest()
+    }
+    response = NewDescribeScdnBotRecordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeScdnConfigRequest() (request *DescribeScdnConfigRequest) {
     request = &DescribeScdnConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1755,6 +1788,82 @@ func (c *Client) DescribeScdnTopData(request *DescribeScdnTopDataRequest) (respo
         request = NewDescribeScdnTopDataRequest()
     }
     response = NewDescribeScdnTopDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTopDataRequest() (request *DescribeTopDataRequest) {
+    request = &DescribeTopDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "DescribeTopData")
+    return
+}
+
+func NewDescribeTopDataResponse() (response *DescribeTopDataResponse) {
+    response = &DescribeTopDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTopData
+// DescribeTopData 通过入参 Metric 和 Filter 组合不同，可以查询以下排序数据：
+//
+// 
+//
+// + 依据总流量、总请求数对访问 IP 排序，从大至小返回 TOP 100 IP
+//
+// + 依据总流量、总请求数对访问 Refer 排序，从大至小返回 TOP 100 Refer
+//
+// + 依据总流量、总请求数对访问 设备 排序，从大至小返回 设备类型
+//
+// + 依据总流量、总请求数对访问 操作系统 排序，从大至小返回 操作系统
+//
+// + 依据总流量、总请求数对访问 浏览器 排序，从大至小返回 浏览器
+//
+// 
+//
+// 注意：
+//
+// + 仅支持 90 天内数据查询，且从2021年09月20日开始有数据
+//
+// + 本接口为beta版，尚未正式全量发布
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CDNCONFIGERROR = "FailedOperation.CdnConfigError"
+//  INTERNALERROR_CDNCONFIGERROR = "InternalError.CdnConfigError"
+//  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
+//  INTERNALERROR_CDNQUERYPARAMERROR = "InternalError.CdnQueryParamError"
+//  INTERNALERROR_CDNQUERYSYSTEMERROR = "InternalError.CdnQuerySystemError"
+//  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
+//  INTERNALERROR_DATASYSTEMERROR = "InternalError.DataSystemError"
+//  INTERNALERROR_ERROR = "InternalError.Error"
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  INVALIDPARAMETER_CDNHOSTINVALIDPARAM = "InvalidParameter.CdnHostInvalidParam"
+//  INVALIDPARAMETER_CDNINTERFACEERROR = "InvalidParameter.CdnInterfaceError"
+//  INVALIDPARAMETER_CDNPARAMERROR = "InvalidParameter.CdnParamError"
+//  INVALIDPARAMETER_CDNSTATINVALIDDATE = "InvalidParameter.CdnStatInvalidDate"
+//  INVALIDPARAMETER_CDNSTATINVALIDFILTER = "InvalidParameter.CdnStatInvalidFilter"
+//  INVALIDPARAMETER_CDNSTATINVALIDMETRIC = "InvalidParameter.CdnStatInvalidMetric"
+//  INVALIDPARAMETER_CDNSTATINVALIDPROJECTID = "InvalidParameter.CdnStatInvalidProjectId"
+//  INVALIDPARAMETER_CDNSTATTOOMANYDOMAINS = "InvalidParameter.CdnStatTooManyDomains"
+//  LIMITEXCEEDED_CDNHOSTOPTOOOFTEN = "LimitExceeded.CdnHostOpTooOften"
+//  RESOURCENOTFOUND_CDNHOSTNOTEXISTS = "ResourceNotFound.CdnHostNotExists"
+//  RESOURCENOTFOUND_CDNPROJECTNOTEXISTS = "ResourceNotFound.CdnProjectNotExists"
+//  RESOURCENOTFOUND_CDNUSERNOTEXISTS = "ResourceNotFound.CdnUserNotExists"
+//  UNAUTHORIZEDOPERATION_CDNACCOUNTUNAUTHORIZED = "UnauthorizedOperation.CdnAccountUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNHOSTUNAUTHORIZED = "UnauthorizedOperation.CdnHostUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNPROJECTUNAUTHORIZED = "UnauthorizedOperation.CdnProjectUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNUSERISSUSPENDED = "UnauthorizedOperation.CdnUserIsSuspended"
+//  UNAUTHORIZEDOPERATION_CDNUSERNOWHITELIST = "UnauthorizedOperation.CdnUserNoWhitelist"
+//  UNAUTHORIZEDOPERATION_OPERATIONTOOOFTEN = "UnauthorizedOperation.OperationTooOften"
+func (c *Client) DescribeTopData(request *DescribeTopDataRequest) (response *DescribeTopDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopDataRequest()
+    }
+    response = NewDescribeTopDataResponse()
     err = c.Send(request, response)
     return
 }
@@ -2402,6 +2511,39 @@ func (c *Client) ListScdnLogTasks(request *ListScdnLogTasksRequest) (response *L
         request = NewListScdnLogTasksRequest()
     }
     response = NewListScdnLogTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListScdnTopBotDataRequest() (request *ListScdnTopBotDataRequest) {
+    request = &ListScdnTopBotDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "ListScdnTopBotData")
+    return
+}
+
+func NewListScdnTopBotDataResponse() (response *ListScdnTopBotDataResponse) {
+    response = &ListScdnTopBotDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListScdnTopBotData
+// 获取Bot攻击的Top数据列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ERROR = "InternalError.Error"
+//  UNAUTHORIZEDOPERATION_CDNACCOUNTUNAUTHORIZED = "UnauthorizedOperation.CdnAccountUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_CLSINVALIDAUTHORIZATION = "UnauthorizedOperation.ClsInvalidAuthorization"
+//  UNAUTHORIZEDOPERATION_CLSUNAUTHORIZED = "UnauthorizedOperation.ClsUnauthorized"
+func (c *Client) ListScdnTopBotData(request *ListScdnTopBotDataRequest) (response *ListScdnTopBotDataResponse, err error) {
+    if request == nil {
+        request = NewListScdnTopBotDataRequest()
+    }
+    response = NewListScdnTopBotDataResponse()
     err = c.Send(request, response)
     return
 }
@@ -3228,6 +3370,9 @@ func NewUpdateDomainConfigResponse() (response *UpdateDomainConfigResponse) {
 //  INVALIDPARAMETER_CDNKEYRULESINVALIDQUERYSTRINGVALUE = "InvalidParameter.CdnKeyRulesInvalidQueryStringValue"
 //  INVALIDPARAMETER_CDNPARAMERROR = "InvalidParameter.CdnParamError"
 //  INVALIDPARAMETER_CDNSTATINVALIDPROJECTID = "InvalidParameter.CdnStatInvalidProjectId"
+//  INVALIDPARAMETER_REMOTEAUTHINVALIDPLATFORM = "InvalidParameter.RemoteAuthInvalidPlatform"
+//  INVALIDPARAMETER_REMOTEAUTHINVALIDPROTOCOL = "InvalidParameter.RemoteAuthInvalidProtocol"
+//  LIMITEXCEEDED_CDNCONFIGTOOMANYCACHERULES = "LimitExceeded.CdnConfigTooManyCacheRules"
 //  LIMITEXCEEDED_CDNHOSTOPTOOOFTEN = "LimitExceeded.CdnHostOpTooOften"
 //  RESOURCEINUSE_CDNHOSTEXISTS = "ResourceInUse.CdnHostExists"
 //  RESOURCEINUSE_CDNOPINPROGRESS = "ResourceInUse.CdnOpInProgress"

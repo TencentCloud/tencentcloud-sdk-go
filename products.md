@@ -32,7 +32,7 @@
 | cbs | [云硬盘](https://cloud.tencent.com/document/product/362) | 2021-10-27 08:03:51 |
 | ccc | [云呼叫中心](https://cloud.tencent.com/document/product/679) | 2021-09-16 08:02:05 |
 | cdb | [云数据库 MySQL](https://cloud.tencent.com/document/product/236) | 2021-10-21 11:16:58 |
-| cdn | [内容分发网络](https://cloud.tencent.com/document/product/228) | 2021-10-21 11:18:54 |
+| cdn | [内容分发网络](https://cloud.tencent.com/document/product/228) | 2021-10-28 15:10:03 |
 | cds | [数据安全审计](https://cloud.tencent.com/document/product/856) | 2021-09-16 08:05:40 |
 | cfs | [文件存储](https://cloud.tencent.com/document/product/582) | 2021-09-16 08:05:42 |
 | cfw | [云防火墙](https://cloud.tencent.com/document/product/1132) | 2021-10-27 08:04:17 |

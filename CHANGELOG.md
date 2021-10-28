@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 分布式消息队列(tdmq) 版本：2020-02-17
+## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 22 次发布
+### 第 84 次发布
 
-发布时间：2021-10-27 20:52:54
+发布时间：2021-10-28 15:10:03
 
 本次发布包含了以下内容：
 
@@ -12,33 +12,41 @@
 
 新增接口：
 
-* [CreateRocketMQCluster](https://cloud.tencent.com/document/api/1179/63429)
-* [CreateRocketMQGroup](https://cloud.tencent.com/document/api/1179/63428)
-* [CreateRocketMQNamespace](https://cloud.tencent.com/document/api/1179/63427)
-* [CreateRocketMQTopic](https://cloud.tencent.com/document/api/1179/63426)
-* [DeleteRocketMQCluster](https://cloud.tencent.com/document/api/1179/63425)
-* [DeleteRocketMQGroup](https://cloud.tencent.com/document/api/1179/63424)
-* [DeleteRocketMQNamespace](https://cloud.tencent.com/document/api/1179/63412)
-* [DeleteRocketMQTopic](https://cloud.tencent.com/document/api/1179/63423)
-* [DescribeRocketMQCluster](https://cloud.tencent.com/document/api/1179/63422)
-* [DescribeRocketMQClusters](https://cloud.tencent.com/document/api/1179/63421)
-* [DescribeRocketMQGroups](https://cloud.tencent.com/document/api/1179/63420)
-* [DescribeRocketMQNamespaces](https://cloud.tencent.com/document/api/1179/63419)
-* [DescribeRocketMQTopics](https://cloud.tencent.com/document/api/1179/63418)
-* [ModifyRocketMQCluster](https://cloud.tencent.com/document/api/1179/63417)
-* [ModifyRocketMQGroup](https://cloud.tencent.com/document/api/1179/63416)
-* [ModifyRocketMQNamespace](https://cloud.tencent.com/document/api/1179/63415)
-* [ModifyRocketMQTopic](https://cloud.tencent.com/document/api/1179/63414)
+* [DescribeScdnBotRecords](https://cloud.tencent.com/document/api/228/63468)
+* [DescribeTopData](https://cloud.tencent.com/document/api/228/63466)
+* [ListScdnTopBotData](https://cloud.tencent.com/document/api/228/63467)
+
+修改接口：
+
+* [ListTopData](https://cloud.tencent.com/document/api/228/30983)
+
+	* 新增入参：Limit
+
+* [UpdateDomainConfig](https://cloud.tencent.com/document/api/228/41116)
+
+	* 新增入参：RemoteAuthentication
+
 
 新增数据结构：
 
-* [RocketMQClusterConfig](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterConfig)
-* [RocketMQClusterDetail](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterDetail)
-* [RocketMQClusterInfo](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterInfo)
-* [RocketMQClusterRecentStats](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterRecentStats)
-* [RocketMQGroup](https://cloud.tencent.com/document/api/1179/46089#RocketMQGroup)
-* [RocketMQNamespace](https://cloud.tencent.com/document/api/1179/46089#RocketMQNamespace)
-* [RocketMQTopic](https://cloud.tencent.com/document/api/1179/46089#RocketMQTopic)
+* [BotRecord](https://cloud.tencent.com/document/api/228/30987#BotRecord)
+* [BotSortBy](https://cloud.tencent.com/document/api/228/30987#BotSortBy)
+* [BotStatisticsCount](https://cloud.tencent.com/document/api/228/30987#BotStatisticsCount)
+* [RemoteAuthentication](https://cloud.tencent.com/document/api/228/30987#RemoteAuthentication)
+* [RemoteAuthenticationRule](https://cloud.tencent.com/document/api/228/30987#RemoteAuthenticationRule)
+* [TopDataMore](https://cloud.tencent.com/document/api/228/30987#TopDataMore)
+* [TopDetailDataMore](https://cloud.tencent.com/document/api/228/30987#TopDetailDataMore)
+
+修改数据结构：
+
+* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
+
+	* 新增成员：RemoteAuthentication
+
+* [TrafficPackage](https://cloud.tencent.com/document/api/228/30987#TrafficPackage)
+
+	* 新增成员：Region
+
 
 
 
@@ -9398,6 +9406,52 @@
 
 
 ## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 84 次发布
+
+发布时间：2021-10-28 15:10:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeScdnBotRecords](https://cloud.tencent.com/document/api/228/63468)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeTopData](https://cloud.tencent.com/document/api/228/63466)](https://cloud.tencent.com/document/api/#/#)
+* [[ListScdnTopBotData](https://cloud.tencent.com/document/api/228/63467)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [ListTopData](https://cloud.tencent.com/document/api/228/30983)
+
+	* 新增入参：Limit
+
+* [UpdateDomainConfig](https://cloud.tencent.com/document/api/228/41116)
+
+	* 新增入参：RemoteAuthentication
+
+
+新增数据结构：
+
+* [[BotRecord](https://cloud.tencent.com/document/api/228/30987#BotRecord)](https://cloud.tencent.com/document/api/228/30987#[BotRecord](https://cloud.tencent.com/document/api/228/30987#BotRecord))
+* [[BotSortBy](https://cloud.tencent.com/document/api/228/30987#BotSortBy)](https://cloud.tencent.com/document/api/228/30987#[BotSortBy](https://cloud.tencent.com/document/api/228/30987#BotSortBy))
+* [[BotStatisticsCount](https://cloud.tencent.com/document/api/228/30987#BotStatisticsCount)](https://cloud.tencent.com/document/api/228/30987#[BotStatisticsCount](https://cloud.tencent.com/document/api/228/30987#BotStatisticsCount))
+* [[RemoteAuthentication](https://cloud.tencent.com/document/api/228/30987#RemoteAuthentication)](https://cloud.tencent.com/document/api/228/30987#[RemoteAuthentication](https://cloud.tencent.com/document/api/228/30987#RemoteAuthentication))
+* [[RemoteAuthenticationRule](https://cloud.tencent.com/document/api/228/30987#RemoteAuthenticationRule)](https://cloud.tencent.com/document/api/228/30987#[RemoteAuthenticationRule](https://cloud.tencent.com/document/api/228/30987#RemoteAuthenticationRule))
+* [[TopDataMore](https://cloud.tencent.com/document/api/228/30987#TopDataMore)](https://cloud.tencent.com/document/api/228/30987#[TopDataMore](https://cloud.tencent.com/document/api/228/30987#TopDataMore))
+* [[TopDetailDataMore](https://cloud.tencent.com/document/api/228/30987#TopDetailDataMore)](https://cloud.tencent.com/document/api/228/30987#[TopDetailDataMore](https://cloud.tencent.com/document/api/228/30987#TopDetailDataMore))
+
+修改数据结构：
+
+* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
+
+	* 新增成员：RemoteAuthentication
+
+* [TrafficPackage](https://cloud.tencent.com/document/api/228/30987#TrafficPackage)
+
+	* 新增成员：Region
+
 
 ### 第 83 次发布
 
@@ -49610,33 +49664,33 @@
 
 新增接口：
 
-* [[CreateRocketMQCluster](https://cloud.tencent.com/document/api/1179/63429)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateRocketMQGroup](https://cloud.tencent.com/document/api/1179/63428)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateRocketMQNamespace](https://cloud.tencent.com/document/api/1179/63427)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateRocketMQTopic](https://cloud.tencent.com/document/api/1179/63426)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteRocketMQCluster](https://cloud.tencent.com/document/api/1179/63425)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteRocketMQGroup](https://cloud.tencent.com/document/api/1179/63424)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteRocketMQNamespace](https://cloud.tencent.com/document/api/1179/63412)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteRocketMQTopic](https://cloud.tencent.com/document/api/1179/63423)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeRocketMQCluster](https://cloud.tencent.com/document/api/1179/63422)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeRocketMQClusters](https://cloud.tencent.com/document/api/1179/63421)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeRocketMQGroups](https://cloud.tencent.com/document/api/1179/63420)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeRocketMQNamespaces](https://cloud.tencent.com/document/api/1179/63419)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeRocketMQTopics](https://cloud.tencent.com/document/api/1179/63418)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyRocketMQCluster](https://cloud.tencent.com/document/api/1179/63417)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyRocketMQGroup](https://cloud.tencent.com/document/api/1179/63416)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyRocketMQNamespace](https://cloud.tencent.com/document/api/1179/63415)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyRocketMQTopic](https://cloud.tencent.com/document/api/1179/63414)](https://cloud.tencent.com/document/api/#/#)
+* [CreateRocketMQCluster](https://cloud.tencent.com/document/api/1179/63429)
+* [CreateRocketMQGroup](https://cloud.tencent.com/document/api/1179/63428)
+* [CreateRocketMQNamespace](https://cloud.tencent.com/document/api/1179/63427)
+* [CreateRocketMQTopic](https://cloud.tencent.com/document/api/1179/63426)
+* [DeleteRocketMQCluster](https://cloud.tencent.com/document/api/1179/63425)
+* [DeleteRocketMQGroup](https://cloud.tencent.com/document/api/1179/63424)
+* [DeleteRocketMQNamespace](https://cloud.tencent.com/document/api/1179/63412)
+* [DeleteRocketMQTopic](https://cloud.tencent.com/document/api/1179/63423)
+* [DescribeRocketMQCluster](https://cloud.tencent.com/document/api/1179/63422)
+* [DescribeRocketMQClusters](https://cloud.tencent.com/document/api/1179/63421)
+* [DescribeRocketMQGroups](https://cloud.tencent.com/document/api/1179/63420)
+* [DescribeRocketMQNamespaces](https://cloud.tencent.com/document/api/1179/63419)
+* [DescribeRocketMQTopics](https://cloud.tencent.com/document/api/1179/63418)
+* [ModifyRocketMQCluster](https://cloud.tencent.com/document/api/1179/63417)
+* [ModifyRocketMQGroup](https://cloud.tencent.com/document/api/1179/63416)
+* [ModifyRocketMQNamespace](https://cloud.tencent.com/document/api/1179/63415)
+* [ModifyRocketMQTopic](https://cloud.tencent.com/document/api/1179/63414)
 
 新增数据结构：
 
-* [[RocketMQClusterConfig](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterConfig)](https://cloud.tencent.com/document/api/1179/46089#[RocketMQClusterConfig](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterConfig))
-* [[RocketMQClusterDetail](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterDetail)](https://cloud.tencent.com/document/api/1179/46089#[RocketMQClusterDetail](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterDetail))
-* [[RocketMQClusterInfo](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterInfo)](https://cloud.tencent.com/document/api/1179/46089#[RocketMQClusterInfo](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterInfo))
-* [[RocketMQClusterRecentStats](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterRecentStats)](https://cloud.tencent.com/document/api/1179/46089#[RocketMQClusterRecentStats](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterRecentStats))
-* [[RocketMQGroup](https://cloud.tencent.com/document/api/1179/46089#RocketMQGroup)](https://cloud.tencent.com/document/api/1179/46089#[RocketMQGroup](https://cloud.tencent.com/document/api/1179/46089#RocketMQGroup))
-* [[RocketMQNamespace](https://cloud.tencent.com/document/api/1179/46089#RocketMQNamespace)](https://cloud.tencent.com/document/api/1179/46089#[RocketMQNamespace](https://cloud.tencent.com/document/api/1179/46089#RocketMQNamespace))
-* [[RocketMQTopic](https://cloud.tencent.com/document/api/1179/46089#RocketMQTopic)](https://cloud.tencent.com/document/api/1179/46089#[RocketMQTopic](https://cloud.tencent.com/document/api/1179/46089#RocketMQTopic))
+* [RocketMQClusterConfig](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterConfig)
+* [RocketMQClusterDetail](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterDetail)
+* [RocketMQClusterInfo](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterInfo)
+* [RocketMQClusterRecentStats](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterRecentStats)
+* [RocketMQGroup](https://cloud.tencent.com/document/api/1179/46089#RocketMQGroup)
+* [RocketMQNamespace](https://cloud.tencent.com/document/api/1179/46089#RocketMQNamespace)
+* [RocketMQTopic](https://cloud.tencent.com/document/api/1179/46089#RocketMQTopic)
 
 ### 第 21 次发布
 
