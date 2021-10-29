@@ -296,6 +296,46 @@ func (c *Client) DescribeSnapshotTask(request *DescribeSnapshotTaskRequest) (res
     return
 }
 
+func NewDescribeTIWDailyUsageRequest() (request *DescribeTIWDailyUsageRequest) {
+    request = &DescribeTIWDailyUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeTIWDailyUsage")
+    return
+}
+
+func NewDescribeTIWDailyUsageResponse() (response *DescribeTIWDailyUsageResponse) {
+    response = &DescribeTIWDailyUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTIWDailyUsage
+// 查询互动白板天维度计费用量。
+//
+// 1. 单次查询统计区间最多不能超过31天。
+//
+// 2. 由于统计延迟等原因，暂时不支持查询当天数据，建议在次日上午7点以后再来查询前一天的用量，例如在10月27日上午7点后，再来查询到10月26日整天的用量
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  INVALIDPARAMETER_TRANSCODEPARAMETER = "InvalidParameter.TranscodeParameter"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeTIWDailyUsage(request *DescribeTIWDailyUsageRequest) (response *DescribeTIWDailyUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribeTIWDailyUsageRequest()
+    }
+    response = NewDescribeTIWDailyUsageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTranscodeRequest() (request *DescribeTranscodeRequest) {
     request = &DescribeTranscodeRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -29,6 +29,93 @@ type Attachment struct {
 	Content *string `json:"Content,omitempty" name:"Content"`
 }
 
+type BatchSendEmailRequest struct {
+	*tchttp.BaseRequest
+
+	// 发信邮件地址。请填写发件人邮箱地址，例如：noreply@mail.qcloud.com。如需填写发件人说明，请按照
+	// 发信人 <邮件地址> 的方式填写，例如：
+	// 腾讯云团队 <noreply@mail.qcloud.com>
+	FromEmailAddress *string `json:"FromEmailAddress,omitempty" name:"FromEmailAddress"`
+
+	// 收件人列表ID
+	ReceiverId *uint64 `json:"ReceiverId,omitempty" name:"ReceiverId"`
+
+	// 邮件主题
+	Subject *string `json:"Subject,omitempty" name:"Subject"`
+
+	// 任务类型 1即时 2 定时 3 周期
+	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人将会回复到腾讯云。
+	ReplyToAddresses *string `json:"ReplyToAddresses,omitempty" name:"ReplyToAddresses"`
+
+	// 使用模板发送时，填写的模板相关参数
+	Template *Template `json:"Template,omitempty" name:"Template"`
+
+	// 使用API直接发送内容时，填写的邮件内容
+	Simple *Simple `json:"Simple,omitempty" name:"Simple"`
+
+	// 需要发送附件时，填写附件相关参数。
+	Attachments []*Attachment `json:"Attachments,omitempty" name:"Attachments"`
+
+	// 周期发送任务的必要参数
+	CycleParam *CycleEmailParam `json:"CycleParam,omitempty" name:"CycleParam"`
+
+	// 定时发送任务的必要参数
+	TimedParam *TimedEmailParam `json:"TimedParam,omitempty" name:"TimedParam"`
+}
+
+func (r *BatchSendEmailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchSendEmailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FromEmailAddress")
+	delete(f, "ReceiverId")
+	delete(f, "Subject")
+	delete(f, "TaskType")
+	delete(f, "ReplyToAddresses")
+	delete(f, "Template")
+	delete(f, "Simple")
+	delete(f, "Attachments")
+	delete(f, "CycleParam")
+	delete(f, "TimedParam")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchSendEmailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BatchSendEmailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 发送任务ID
+		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BatchSendEmailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchSendEmailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type BlackEmailAddress struct {
 
 	// 邮箱被拉黑时间
@@ -191,6 +278,15 @@ func (r *CreateEmailTemplateResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateEmailTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type CycleEmailParam struct {
+
+	// 任务开始时间
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 任务周期 小时维度
+	IntervalTime *uint64 `json:"IntervalTime,omitempty" name:"IntervalTime"`
 }
 
 type DNSAttributes struct {
@@ -877,8 +973,8 @@ type SendEmailRequest struct {
 	*tchttp.BaseRequest
 
 	// 发信邮件地址。请填写发件人邮箱地址，例如：noreply@mail.qcloud.com。如需填写发件人说明，请按照 
-	// 发信人 &lt;邮件地址&gt; 的方式填写，例如：
-	// 腾讯云团队 &lt;noreply@mail.qcloud.com&gt;
+	// 发信人 <邮件地址> 的方式填写，例如：
+	// 腾讯云团队 <noreply@mail.qcloud.com>
 	FromEmailAddress *string `json:"FromEmailAddress,omitempty" name:"FromEmailAddress"`
 
 	// 收信人邮箱地址，最多支持群发50人。注意：邮件内容会显示所有收件人地址，非群发邮件请多次调用API发送。
@@ -1057,6 +1153,12 @@ type TemplatesMetadata struct {
 
 	// 审核原因
 	ReviewReason *string `json:"ReviewReason,omitempty" name:"ReviewReason"`
+}
+
+type TimedEmailParam struct {
+
+	// 定时发送邮件的开始时间
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
 }
 
 type UpdateEmailIdentityRequest struct {

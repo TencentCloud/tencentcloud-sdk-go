@@ -738,6 +738,7 @@ func NewInquirePriceRenewDBInstancesResponse() (response *InquirePriceRenewDBIns
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 //  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  INVALIDPARAMETERVALUE_ZONECLOSED = "InvalidParameterValue.ZoneClosed"
 func (c *Client) InquirePriceRenewDBInstances(request *InquirePriceRenewDBInstancesRequest) (response *InquirePriceRenewDBInstancesResponse, err error) {
     if request == nil {
         request = NewInquirePriceRenewDBInstancesRequest()

@@ -798,6 +798,9 @@ type DescribeDeployApplicationDetailRequest struct {
 
 	// 环境id
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 版本部署id
+	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
 }
 
 func (r *DescribeDeployApplicationDetailRequest) ToJsonString() string {
@@ -814,6 +817,7 @@ func (r *DescribeDeployApplicationDetailRequest) FromJsonString(s string) error 
 	}
 	delete(f, "ApplicationId")
 	delete(f, "EnvironmentId")
+	delete(f, "VersionId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeployApplicationDetailRequest has unknown keys!", "")
 	}

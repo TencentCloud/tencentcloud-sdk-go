@@ -958,8 +958,14 @@ type EidInfo struct {
 	// 商户方 appeIDcode 的数字证书
 	EidCode *string `json:"EidCode,omitempty" name:"EidCode"`
 
-	// eID 中心针对商户方EidCode的电子签名
+	// Eid中心针对商户方EidCode的电子签名
 	EidSign *string `json:"EidSign,omitempty" name:"EidSign"`
+
+	// 商户方公钥加密的会话密钥的base64字符串，[指引详见](https://cloud.tencent.com/document/product/1007/63370)
+	DesKey *string `json:"DesKey,omitempty" name:"DesKey"`
+
+	// 会话密钥sm2加密后的base64字符串，[指引详见](https://cloud.tencent.com/document/product/1007/63370)
+	UserInfo *string `json:"UserInfo,omitempty" name:"UserInfo"`
 }
 
 type EncryptedPhoneVerificationRequest struct {
@@ -1338,7 +1344,7 @@ type GetEidResultResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 文本类信息。
+		// 文本类信息。（基于对敏感信息的保护，验证使用的姓名和身份证号统一通过加密后从Eidinfo参数中返回，如需获取请在控制台申请返回身份信息，详见[E证通获取实名信息指引](https://cloud.tencent.com/document/product/1007/63370)）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Text *DetectInfoText `json:"Text,omitempty" name:"Text"`
 
@@ -1350,7 +1356,7 @@ type GetEidResultResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		BestFrame *DetectInfoBestFrame `json:"BestFrame,omitempty" name:"BestFrame"`
 
-		// Eid信息
+		// Eid信息。（包括商户下用户唯一标识以及加密后的姓名、身份证号信息。解密方式详见[E证通获取实名信息指引](https://cloud.tencent.com/document/product/1007/63370)）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		EidInfo *EidInfo `json:"EidInfo,omitempty" name:"EidInfo"`
 
@@ -1513,11 +1519,11 @@ type GetFaceIdResultResponse struct {
 		// 相似度，0-100，数值越大相似度越高
 		Similarity *float64 `json:"Similarity,omitempty" name:"Similarity"`
 
-		// 用户核验的视频
+		// 用户核验的视频base64，如果选择了使用cos，返回完整cos地址如https://bucket.cos.ap-guangzhou.myqcloud.com/objectKey
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		VideoBase64 *string `json:"VideoBase64,omitempty" name:"VideoBase64"`
 
-		// 用户核验视频的截帧
+		// 用户核验视频的截帧base64，如果选择了使用cos，返回完整cos地址如https://bucket.cos.ap-guangzhou.myqcloud.com/objectKey
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		BestFrameBase64 *string `json:"BestFrameBase64,omitempty" name:"BestFrameBase64"`
 
@@ -1577,6 +1583,10 @@ type GetFaceIdTokenRequest struct {
 
 	// 透传参数 1000长度字符串
 	Extra *string `json:"Extra,omitempty" name:"Extra"`
+
+	// 默认为false，设置该参数为true后，核身过程中的视频图片将会存储在人脸核身控制台授权cos的bucket中，拉取结果时会返回对应资源完整cos地址。开通地址见https://console.cloud.tencent.com/faceid/cos
+	// 【注意】选择该参数为true后将不返回base64数据，请根据接入情况谨慎修改。
+	UseCos *bool `json:"UseCos,omitempty" name:"UseCos"`
 }
 
 func (r *GetFaceIdTokenRequest) ToJsonString() string {
@@ -1597,6 +1607,7 @@ func (r *GetFaceIdTokenRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "Meta")
 	delete(f, "Extra")
+	delete(f, "UseCos")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetFaceIdTokenRequest has unknown keys!", "")
 	}

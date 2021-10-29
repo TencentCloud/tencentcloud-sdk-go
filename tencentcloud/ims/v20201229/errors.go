@@ -38,6 +38,9 @@ const (
 	// 图片内容错误。
 	INVALIDPARAMETER_INVALIDIMAGECONTENT = "InvalidParameter.InvalidImageContent"
 
+	// 参数不合法。
+	INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 

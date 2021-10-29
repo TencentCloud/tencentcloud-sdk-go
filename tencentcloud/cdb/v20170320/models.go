@@ -377,6 +377,9 @@ type BackupInfo struct {
 
 	// 备份方式。可能的值有 "manual": 手动备份， "automatic": 自动备份。
 	Way *string `json:"Way,omitempty" name:"Way"`
+
+	// 手动备份别名
+	ManualBackupName *string `json:"ManualBackupName,omitempty" name:"ManualBackupName"`
 }
 
 type BackupItem struct {
@@ -887,6 +890,9 @@ type CreateBackupRequest struct {
 	// 需要备份的库表信息，如果不设置该参数，则默认整实例备份。在 BackupMethod=logical 逻辑备份中才可设置该参数。指定的库表必须存在，否则可能导致备份失败。
 	// 例：如果需要备份 db1 库的 tb1、tb2 表 和 db2 库。则该参数设置为 [{"Db": "db1", "Table": "tb1"}, {"Db": "db1", "Table": "tb2"}, {"Db": "db2"} ]。
 	BackupDBTableList []*BackupItem `json:"BackupDBTableList,omitempty" name:"BackupDBTableList"`
+
+	// 手动备份别名
+	ManualBackupName *string `json:"ManualBackupName,omitempty" name:"ManualBackupName"`
 }
 
 func (r *CreateBackupRequest) ToJsonString() string {
@@ -904,6 +910,7 @@ func (r *CreateBackupRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "BackupMethod")
 	delete(f, "BackupDBTableList")
+	delete(f, "ManualBackupName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBackupRequest has unknown keys!", "")
 	}
@@ -989,6 +996,9 @@ type CreateCloneInstanceRequest struct {
 
 	// 置放群组 ID。
 	DeployGroupId *string `json:"DeployGroupId,omitempty" name:"DeployGroupId"`
+
+	// 是否只预检此次请求。true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制等。如果检查不通过，则返回对应错误码；如果检查通过，则返回RequestId.默认为false：发送正常请求，通过检查后直接创建实例。
+	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
 }
 
 func (r *CreateCloneInstanceRequest) ToJsonString() string {
@@ -1021,6 +1031,7 @@ func (r *CreateCloneInstanceRequest) FromJsonString(s string) error {
 	delete(f, "DeviceType")
 	delete(f, "InstanceNodes")
 	delete(f, "DeployGroupId")
+	delete(f, "DryRun")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloneInstanceRequest has unknown keys!", "")
 	}
@@ -1213,6 +1224,12 @@ type CreateDBInstanceHourRequest struct {
 
 	// 金融围拢 ID 。
 	CageId *string `json:"CageId,omitempty" name:"CageId"`
+
+	// 告警策略名数组，例如:["policy-uyoee9wg"]，AlarmPolicyList不为空时该参数无效。
+	AlarmPolicyIdList []*string `json:"AlarmPolicyIdList,omitempty" name:"AlarmPolicyIdList"`
+
+	// 是否只预检此次请求。true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制等。如果检查不通过，则返回对应错误码；如果检查通过，则返回RequestId.默认为false：发送正常请求，通过检查后直接创建实例。
+	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
 }
 
 func (r *CreateDBInstanceHourRequest) ToJsonString() string {
@@ -1259,6 +1276,8 @@ func (r *CreateDBInstanceHourRequest) FromJsonString(s string) error {
 	delete(f, "Cpu")
 	delete(f, "AutoSyncFlag")
 	delete(f, "CageId")
+	delete(f, "AlarmPolicyIdList")
+	delete(f, "DryRun")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBInstanceHourRequest has unknown keys!", "")
 	}
@@ -1392,6 +1411,12 @@ type CreateDBInstanceRequest struct {
 
 	// 金融围拢 ID。
 	CageId *string `json:"CageId,omitempty" name:"CageId"`
+
+	// 告警策略名数组，例如:["policy-uyoee9wg"]，AlarmPolicyList不为空时该参数无效。
+	AlarmPolicyIdList []*string `json:"AlarmPolicyIdList,omitempty" name:"AlarmPolicyIdList"`
+
+	// 是否只预检此次请求。true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制等。如果检查不通过，则返回对应错误码；如果检查通过，则返回RequestId.默认为false：发送正常请求，通过检查后直接创建实例。
+	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
 }
 
 func (r *CreateDBInstanceRequest) ToJsonString() string {
@@ -1439,6 +1464,8 @@ func (r *CreateDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "Cpu")
 	delete(f, "AutoSyncFlag")
 	delete(f, "CageId")
+	delete(f, "AlarmPolicyIdList")
+	delete(f, "DryRun")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBInstanceRequest has unknown keys!", "")
 	}

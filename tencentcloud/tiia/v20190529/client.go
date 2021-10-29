@@ -88,6 +88,101 @@ func (c *Client) AssessQuality(request *AssessQualityRequest) (response *AssessQ
     return
 }
 
+func NewCreateGroupRequest() (request *CreateGroupRequest) {
+    request = &CreateGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiia", APIVersion, "CreateGroup")
+    return
+}
+
+func NewCreateGroupResponse() (response *CreateGroupResponse) {
+    response = &CreateGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateGroup
+// 用于创建一个空的图片库，如果图片库已存在则返回错误。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+//  FAILEDOPERATION_PARAMETEREMPTY = "FailedOperation.ParameterEmpty"
+//  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_BRIEFTOOLONG = "InvalidParameterValue.BriefTooLong"
+//  INVALIDPARAMETERVALUE_IMAGEGROUPIDALREADYEXIST = "InvalidParameterValue.ImageGroupIdAlreadyExist"
+//  INVALIDPARAMETERVALUE_IMAGEGROUPIDILLEGAL = "InvalidParameterValue.ImageGroupIdIllegal"
+//  INVALIDPARAMETERVALUE_IMAGEGROUPIDNOTEXIST = "InvalidParameterValue.ImageGroupIdNotExist"
+//  INVALIDPARAMETERVALUE_IMAGEGROUPIDTOOLONG = "InvalidParameterValue.ImageGroupIdTooLong"
+//  INVALIDPARAMETERVALUE_IMAGEGROUPNAMEEMPTY = "InvalidParameterValue.ImageGroupNameEmpty"
+//  INVALIDPARAMETERVALUE_IMAGEGROUPNAMETOOLONG = "InvalidParameterValue.ImageGroupNameTooLong"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  INVALIDPARAMETERVALUE_LIMITEXCEED = "InvalidParameterValue.LimitExceed"
+func (c *Client) CreateGroup(request *CreateGroupRequest) (response *CreateGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateGroupRequest()
+    }
+    response = NewCreateGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateImageRequest() (request *CreateImageRequest) {
+    request = &CreateImageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiia", APIVersion, "CreateImage")
+    return
+}
+
+func NewCreateImageResponse() (response *CreateImageResponse) {
+    response = &CreateImageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateImage
+// 创建图片，并添加对应图片的自定义信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEENTITYCOUNTEXCEED = "FailedOperation.ImageEntityCountExceed"
+//  FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
+//  FAILEDOPERATION_IMAGENUMEXCEED = "FailedOperation.ImageNumExceed"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_IMAGEURLINVALID = "FailedOperation.ImageUrlInvalid"
+//  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_CUSTOMCONTENTTOOLONG = "InvalidParameterValue.CustomContentTooLong"
+//  INVALIDPARAMETERVALUE_ENTITYIDEMPTY = "InvalidParameterValue.EntityIdEmpty"
+//  INVALIDPARAMETERVALUE_ENTITYIDTOOLONG = "InvalidParameterValue.EntityIdTooLong"
+//  INVALIDPARAMETERVALUE_IMAGEGROUPIDILLEGAL = "InvalidParameterValue.ImageGroupIdIllegal"
+//  INVALIDPARAMETERVALUE_IMAGEGROUPIDNOTEXIST = "InvalidParameterValue.ImageGroupIdNotExist"
+//  INVALIDPARAMETERVALUE_IMAGEGROUPIDTOOLONG = "InvalidParameterValue.ImageGroupIdTooLong"
+//  INVALIDPARAMETERVALUE_PICNAMEALREADYEXIST = "InvalidParameterValue.PicNameAlreadyExist"
+//  INVALIDPARAMETERVALUE_PICNAMEEMPTY = "InvalidParameterValue.PicNameEmpty"
+//  INVALIDPARAMETERVALUE_PICNAMETOOLONG = "InvalidParameterValue.PicNameTooLong"
+//  INVALIDPARAMETERVALUE_TAGSKEYSEXCEED = "InvalidParameterValue.TagsKeysExceed"
+//  INVALIDPARAMETERVALUE_TAGSVALUEILLEGAL = "InvalidParameterValue.TagsValueIllegal"
+//  INVALIDPARAMETERVALUE_TAGSVALUESIZEEXCEED = "InvalidParameterValue.TagsValueSizeExceed"
+//  MISSINGPARAMETER_ERRORPARAMETEREMPTY = "MissingParameter.ErrorParameterEmpty"
+func (c *Client) CreateImage(request *CreateImageRequest) (response *CreateImageResponse, err error) {
+    if request == nil {
+        request = NewCreateImageRequest()
+    }
+    response = NewCreateImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCropImageRequest() (request *CropImageRequest) {
     request = &CropImageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -132,6 +227,120 @@ func (c *Client) CropImage(request *CropImageRequest) (response *CropImageRespon
         request = NewCropImageRequest()
     }
     response = NewCropImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteImagesRequest() (request *DeleteImagesRequest) {
+    request = &DeleteImagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiia", APIVersion, "DeleteImages")
+    return
+}
+
+func NewDeleteImagesResponse() (response *DeleteImagesResponse) {
+    response = &DeleteImagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteImages
+// 删除图片。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IMAGEDELETEFAILED = "FailedOperation.ImageDeleteFailed"
+//  FAILEDOPERATION_IMAGENOTFOUNDINFO = "FailedOperation.ImageNotFoundInfo"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  INVALIDPARAMETERVALUE_ENTITYIDEMPTY = "InvalidParameterValue.EntityIdEmpty"
+//  INVALIDPARAMETERVALUE_ENTITYIDTOOLONG = "InvalidParameterValue.EntityIdTooLong"
+//  INVALIDPARAMETERVALUE_IMAGEGROUPIDILLEGAL = "InvalidParameterValue.ImageGroupIdIllegal"
+//  INVALIDPARAMETERVALUE_IMAGEGROUPIDNOTEXIST = "InvalidParameterValue.ImageGroupIdNotExist"
+//  INVALIDPARAMETERVALUE_IMAGEGROUPIDTOOLONG = "InvalidParameterValue.ImageGroupIdTooLong"
+//  INVALIDPARAMETERVALUE_PICNAMETOOLONG = "InvalidParameterValue.PicNameTooLong"
+func (c *Client) DeleteImages(request *DeleteImagesRequest) (response *DeleteImagesResponse, err error) {
+    if request == nil {
+        request = NewDeleteImagesRequest()
+    }
+    response = NewDeleteImagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGroupsRequest() (request *DescribeGroupsRequest) {
+    request = &DescribeGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiia", APIVersion, "DescribeGroups")
+    return
+}
+
+func NewDescribeGroupsResponse() (response *DescribeGroupsResponse) {
+    response = &DescribeGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeGroups
+// 查询所有的图库信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_IMAGEGROUPIDILLEGAL = "InvalidParameterValue.ImageGroupIdIllegal"
+//  INVALIDPARAMETERVALUE_IMAGEGROUPIDNOTEXIST = "InvalidParameterValue.ImageGroupIdNotExist"
+//  INVALIDPARAMETERVALUE_IMAGEGROUPIDTOOLONG = "InvalidParameterValue.ImageGroupIdTooLong"
+func (c *Client) DescribeGroups(request *DescribeGroupsRequest) (response *DescribeGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeGroupsRequest()
+    }
+    response = NewDescribeGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImagesRequest() (request *DescribeImagesRequest) {
+    request = &DescribeImagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiia", APIVersion, "DescribeImages")
+    return
+}
+
+func NewDescribeImagesResponse() (response *DescribeImagesResponse) {
+    response = &DescribeImagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeImages
+// 获取指定图片库中的图片列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IMAGENOTFOUNDINFO = "FailedOperation.ImageNotFoundInfo"
+//  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  INVALIDPARAMETERVALUE_ENTITYIDEMPTY = "InvalidParameterValue.EntityIdEmpty"
+//  INVALIDPARAMETERVALUE_ENTITYIDTOOLONG = "InvalidParameterValue.EntityIdTooLong"
+//  INVALIDPARAMETERVALUE_IMAGEGROUPIDILLEGAL = "InvalidParameterValue.ImageGroupIdIllegal"
+//  INVALIDPARAMETERVALUE_IMAGEGROUPIDNOTEXIST = "InvalidParameterValue.ImageGroupIdNotExist"
+//  INVALIDPARAMETERVALUE_IMAGEGROUPIDTOOLONG = "InvalidParameterValue.ImageGroupIdTooLong"
+//  INVALIDPARAMETERVALUE_PICNAMEEMPTY = "InvalidParameterValue.PicNameEmpty"
+//  INVALIDPARAMETERVALUE_PICNAMETOOLONG = "InvalidParameterValue.PicNameTooLong"
+func (c *Client) DescribeImages(request *DescribeImagesRequest) (response *DescribeImagesResponse, err error) {
+    if request == nil {
+        request = NewDescribeImagesRequest()
+    }
+    response = NewDescribeImagesResponse()
     err = c.Send(request, response)
     return
 }
@@ -597,6 +806,53 @@ func (c *Client) RecognizeCar(request *RecognizeCarRequest) (response *Recognize
         request = NewRecognizeCarRequest()
     }
     response = NewRecognizeCarResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSearchImageRequest() (request *SearchImageRequest) {
+    request = &SearchImageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiia", APIVersion, "SearchImage")
+    return
+}
+
+func NewSearchImageResponse() (response *SearchImageResponse) {
+    response = &SearchImageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SearchImage
+// 本接口用于对一张待识别的商品图片，在指定图片库中检索出最相似的图片列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEGROUPEMPTY = "FailedOperation.ImageGroupEmpty"
+//  FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
+//  FAILEDOPERATION_IMAGESEARCHINVALID = "FailedOperation.ImageSearchInvalid"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_IMAGEURLINVALID = "FailedOperation.ImageUrlInvalid"
+//  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_ENTITYIDTOOLONG = "InvalidParameterValue.EntityIdTooLong"
+//  INVALIDPARAMETERVALUE_FILTERINVALID = "InvalidParameterValue.FilterInvalid"
+//  INVALIDPARAMETERVALUE_FILTERSIZEEXCEED = "InvalidParameterValue.FilterSizeExceed"
+//  INVALIDPARAMETERVALUE_IMAGEGROUPIDILLEGAL = "InvalidParameterValue.ImageGroupIdIllegal"
+//  INVALIDPARAMETERVALUE_IMAGEGROUPIDNOTEXIST = "InvalidParameterValue.ImageGroupIdNotExist"
+//  INVALIDPARAMETERVALUE_IMAGEGROUPIDTOOLONG = "InvalidParameterValue.ImageGroupIdTooLong"
+//  INVALIDPARAMETERVALUE_LIMITEXCEED = "InvalidParameterValue.LimitExceed"
+//  MISSINGPARAMETER_ERRORPARAMETEREMPTY = "MissingParameter.ErrorParameterEmpty"
+func (c *Client) SearchImage(request *SearchImageRequest) (response *SearchImageResponse, err error) {
+    if request == nil {
+        request = NewSearchImageRequest()
+    }
+    response = NewSearchImageResponse()
     err = c.Send(request, response)
     return
 }

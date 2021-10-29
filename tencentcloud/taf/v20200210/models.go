@@ -271,6 +271,21 @@ type InputSendTrafficSecuritySmsMsg struct {
 
 	// 手机号码列表（号码量<=200）
 	Mobiles []*string `json:"Mobiles,omitempty" name:"Mobiles"`
+
+	// 是否授权，1：已授权
+	IsAuthorized *int64 `json:"IsAuthorized,omitempty" name:"IsAuthorized"`
+
+	// 加密方式，0：AES加密；1：DES加密
+	EncryptMethod *int64 `json:"EncryptMethod,omitempty" name:"EncryptMethod"`
+
+	// 加密算法中的块处理模式，0：ECB模式；1：CBC模式；2：CTR模式；3：CFB模式；4：OFB模式；
+	EncryptMode *int64 `json:"EncryptMode,omitempty" name:"EncryptMode"`
+
+	// 填充模式，0：ZeroPadding；1：PKCS5Padding；2：PKCS7Padding；
+	PaddingType *int64 `json:"PaddingType,omitempty" name:"PaddingType"`
+
+	// 加密数据
+	EncryptData *string `json:"EncryptData,omitempty" name:"EncryptData"`
 }
 
 type InputTaBspData struct {

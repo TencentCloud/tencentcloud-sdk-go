@@ -1510,7 +1510,7 @@ type BaselineEffectHost struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastScanTime *string `json:"LastScanTime,omitempty" name:"LastScanTime"`
 
-	// 处理状态
+	// 风险项处理状态状态：0-未通过，1-通过
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
@@ -3942,8 +3942,7 @@ type DescribeAssetEnvListRequest struct {
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 类型：
-	// 0
+	// 该字段已废弃，由Filters代替
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
 	// 过滤条件。

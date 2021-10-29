@@ -3715,6 +3715,8 @@ func NewModifyRoTypeResponse() (response *ModifyRoTypeResponse) {
 //  INVALIDPARAMETERVALUE_SRCTYPENOTEQUALDSTTYPE = "InvalidParameterValue.SrcTypeNotEqualDstType"
 //  OPERATIONDENIED_DELAYREPLICATIONRUNNING = "OperationDenied.DelayReplicationRunning"
 //  OPERATIONDENIED_INSTANCETASKRUNNING = "OperationDenied.InstanceTaskRunning"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTTHISFEATURE = "UnsupportedOperation.NotSupportThisFeature"
 func (c *Client) ModifyRoType(request *ModifyRoTypeRequest) (response *ModifyRoTypeResponse, err error) {
     if request == nil {
         request = NewModifyRoTypeRequest()

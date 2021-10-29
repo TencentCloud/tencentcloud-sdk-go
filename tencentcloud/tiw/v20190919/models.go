@@ -595,6 +595,73 @@ func (r *DescribeSnapshotTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeTIWDailyUsageRequest struct {
+	*tchttp.BaseRequest
+
+	// 互动白板应用SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 需要查询的子产品用量，支持传入以下值
+	// - sp_tiw_board: 互动白板时长，单位为分钟
+	// - sp_tiw_dt: 动态转码页数，单位页
+	// - sp_tiw_st: 静态转码页数，单位页
+	// - sp_tiw_ric: 实时录制时长，单位分钟
+	// 
+	// 注意：动态转码以1:8的比例计算文档转码页数，静态转码以1:1的比例计算文档转码页数
+	SubProduct *string `json:"SubProduct,omitempty" name:"SubProduct"`
+
+	// 开始时间，格式YYYY-MM-DD，查询结果里包括该天数据
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，格式YYYY-MM-DD，查询结果里包括该天数据，单次查询统计区间最多不能超过31天。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeTIWDailyUsageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTIWDailyUsageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "SubProduct")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTIWDailyUsageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTIWDailyUsageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 指定区间指定产品的用量汇总
+		Usages []*UsageDataItem `json:"Usages,omitempty" name:"Usages"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTIWDailyUsageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTIWDailyUsageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeTranscodeCallbackRequest struct {
 	*tchttp.BaseRequest
 
@@ -2090,6 +2157,27 @@ type TimeValue struct {
 	Time *uint64 `json:"Time,omitempty" name:"Time"`
 
 	// 查询指标对应当前时间的值
+	Value *float64 `json:"Value,omitempty" name:"Value"`
+}
+
+type UsageDataItem struct {
+
+	// 日期，格式为YYYY-MM-DD
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 白板应用SDKAppID
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 互动白板子产品，请求参数传入的一致
+	// - sp_tiw_board: 互动白板时长
+	// - sp_tiw_dt: 动态转码页数
+	// - sp_tiw_st: 静态转码页数
+	// - sp_tiw_ric: 实时录制时长
+	SubProduct *string `json:"SubProduct,omitempty" name:"SubProduct"`
+
+	// 用量值
+	// - 静态转码、动态转码单位为页
+	// - 白板时长、实时录制时长单位为分钟
 	Value *float64 `json:"Value,omitempty" name:"Value"`
 }
 

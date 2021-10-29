@@ -566,6 +566,7 @@ func NewGetEidResultResponse() (response *GetEidResultResponse) {
 // 完成验证后，用EidToken调用本接口获取结果信息，EidToken生成后三天内（3\*24\*3,600秒）可多次拉取。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
 //  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
 //  INTERNALERROR = "InternalError"

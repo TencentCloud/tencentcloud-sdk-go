@@ -437,7 +437,7 @@ func NewSendTrafficSecuritySmsMessageResponse() (response *SendTrafficSecuritySm
 }
 
 // SendTrafficSecuritySmsMessage
-// SendTrafficSecuritySmsMessage
+// 流量安选产品，短信发送接口
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_CAPSIGERROR = "AuthFailure.CapSigError"

@@ -155,6 +155,154 @@ type Coord struct {
 	Y *int64 `json:"Y,omitempty" name:"Y"`
 }
 
+type CreateGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 图库ID，不可重复，仅支持字母、数字和下划线。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 图库名称描述。
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 该库的容量限制。
+	MaxCapacity *uint64 `json:"MaxCapacity,omitempty" name:"MaxCapacity"`
+
+	// 简介。
+	Brief *string `json:"Brief,omitempty" name:"Brief"`
+
+	// 该库的访问限频 ，默认10。
+	MaxQps *uint64 `json:"MaxQps,omitempty" name:"MaxQps"`
+
+	// 图库类型， 默认为通用。
+	// 类型： 
+	// 1: 通用图库，以用户输入图提取特征。
+	// 2: 灰度图库，输入图和搜索图均转为灰度图提取特征。
+	GroupType *uint64 `json:"GroupType,omitempty" name:"GroupType"`
+}
+
+func (r *CreateGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "GroupName")
+	delete(f, "MaxCapacity")
+	delete(f, "Brief")
+	delete(f, "MaxQps")
+	delete(f, "GroupType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateImageRequest struct {
+	*tchttp.BaseRequest
+
+	// 图库ID。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 物品ID，最多支持64个字符。 
+	// 若EntityId已存在，则对其追加图片。
+	EntityId *string `json:"EntityId,omitempty" name:"EntityId"`
+
+	// 图片名称，最多支持64个字符， 
+	// 同一个EntityId，最大支持5张图。如果图片名称已存在，则会更新库中的图片。
+	PicName *string `json:"PicName,omitempty" name:"PicName"`
+
+	// 图片的 Url 。对应图片 base64 编码后大小不可超过2M。  
+	// Url、Image必须提供一个，如果都提供，只使用 Url。 
+	// 图片分辨率不超过1920*1080。
+	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片 base64 数据，base64 编码后大小不可超过2M。 
+	// 图片分辨率不超过1920*1080。 
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 用户自定义的内容，最多支持4096个字符，查询时原样带回。
+	CustomContent *string `json:"CustomContent,omitempty" name:"CustomContent"`
+
+	// 图片自定义标签，最多不超过10个，格式为JSON。
+	Tags *string `json:"Tags,omitempty" name:"Tags"`
+}
+
+func (r *CreateImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateImageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "EntityId")
+	delete(f, "PicName")
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	delete(f, "CustomContent")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateImageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateImageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateImageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CropImageRequest struct {
 	*tchttp.BaseRequest
 
@@ -251,6 +399,181 @@ func (r *CropImageResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CropImageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteImagesRequest struct {
+	*tchttp.BaseRequest
+
+	// 图库名称。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 物品ID。
+	EntityId *string `json:"EntityId,omitempty" name:"EntityId"`
+
+	// 图片名称，如果不指定本参数，则删除EntityId下所有的图片；否则删除指定的图。
+	PicName *string `json:"PicName,omitempty" name:"PicName"`
+}
+
+func (r *DeleteImagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteImagesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "EntityId")
+	delete(f, "PicName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteImagesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteImagesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteImagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteImagesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeGroupsRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始序号，默认值为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认值为10，最大值为100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 图库ID，如果不为空，则返回指定库信息。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+}
+
+func (r *DescribeGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "GroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 图库信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Groups []*GroupInfo `json:"Groups,omitempty" name:"Groups"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeImagesRequest struct {
+	*tchttp.BaseRequest
+
+	// 图库名称。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 物品ID。
+	EntityId *string `json:"EntityId,omitempty" name:"EntityId"`
+
+	// 图片名称。
+	PicName *string `json:"PicName,omitempty" name:"PicName"`
+}
+
+func (r *DescribeImagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImagesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "EntityId")
+	delete(f, "PicName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImagesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeImagesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 图库名称。
+		GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+		// 物品ID。
+		EntityId *string `json:"EntityId,omitempty" name:"EntityId"`
+
+		// 图片信息。
+		ImageInfos []*ImageInfo `json:"ImageInfos,omitempty" name:"ImageInfos"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeImagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImagesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -865,6 +1188,56 @@ type Face struct {
 	ID *string `json:"ID,omitempty" name:"ID"`
 }
 
+type GroupInfo struct {
+
+	// 图库Id。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 图库名称。
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 图库简介。
+	Brief *string `json:"Brief,omitempty" name:"Brief"`
+
+	// 图库容量。
+	MaxCapacity *uint64 `json:"MaxCapacity,omitempty" name:"MaxCapacity"`
+
+	// 该库的访问限频 。
+	MaxQps *uint64 `json:"MaxQps,omitempty" name:"MaxQps"`
+
+	// 图库类型： 
+	// 1: 通用图库，以用户输入图提取特征。
+	// 2: 灰度图库，输入图和搜索图均转为灰度图提取特征。
+	GroupType *uint64 `json:"GroupType,omitempty" name:"GroupType"`
+
+	// 图库图片数量。
+	PicCount *uint64 `json:"PicCount,omitempty" name:"PicCount"`
+
+	// 图库创建时间。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 图库更新时间。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type ImageInfo struct {
+
+	// 图片名称。
+	EntityId *string `json:"EntityId,omitempty" name:"EntityId"`
+
+	// 用户自定义的内容。
+	CustomContent *string `json:"CustomContent,omitempty" name:"CustomContent"`
+
+	// 图片自定义标签，JSON格式。
+	Tags *string `json:"Tags,omitempty" name:"Tags"`
+
+	// 图片名称。
+	PicName *string `json:"PicName,omitempty" name:"PicName"`
+
+	// 相似度。
+	Score *int64 `json:"Score,omitempty" name:"Score"`
+}
+
 type Labels struct {
 
 	// 公众人物身份标签的一级分类，例如体育明星、娱乐明星、政治人物等；
@@ -1022,6 +1395,90 @@ type RegionDetected struct {
 
 	// 检测到的主体在图片中的坐标，表示为矩形框的四个顶点坐标
 	Location *Location `json:"Location,omitempty" name:"Location"`
+}
+
+type SearchImageRequest struct {
+	*tchttp.BaseRequest
+
+	// 图库名称。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 图片的 Url 。对应图片 base64 编码后大小不可超过2M。 
+	// 图片分辨率不超过1920*1080。 
+	// Url、Image必须提供一个，如果都提供，只使用 Url。 
+	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片 base64 数据，base64 编码后大小不可超过2M。 
+	// 图片分辨率不超过1920*1080。 
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 出参Score中，只有超过MatchThreshold值的结果才会返回。默认为0
+	MatchThreshold *int64 `json:"MatchThreshold,omitempty" name:"MatchThreshold"`
+
+	// 起始序号，默认值为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认值为10，最大值为100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 针对入库时提交的Tags信息进行条件过滤。支持>、>=、 <、 <=、=，!=，多个条件之间支持AND和OR进行连接。
+	Filter *string `json:"Filter,omitempty" name:"Filter"`
+}
+
+func (r *SearchImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchImageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	delete(f, "MatchThreshold")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchImageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchImageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回结果数量。
+		Count *int64 `json:"Count,omitempty" name:"Count"`
+
+		// 图片信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ImageInfos []*ImageInfo `json:"ImageInfos,omitempty" name:"ImageInfos"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SearchImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchImageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Threshold struct {

@@ -1,10 +1,120 @@
 # 本版本更新包含以下内容：
 
-## 内容分发网络(cdn) 版本：2018-06-06
+## 云顾问(advisor) 版本：2020-07-21
 
-### 第 84 次发布
+### 第 2 次发布
 
-发布时间：2021-10-28 15:10:03
+发布时间：2021-10-29 08:00:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTaskStrategyRisks](https://cloud.tencent.com/document/api/1264/63112)
+
+	* 新增出参：Risks
+
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 70 次发布
+
+发布时间：2021-10-29 08:01:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateBackup](https://cloud.tencent.com/document/api/236/15844)
+
+	* 新增入参：ManualBackupName
+
+* [CreateCloneInstance](https://cloud.tencent.com/document/api/236/50424)
+
+	* 新增入参：DryRun
+
+* [CreateDBInstance](https://cloud.tencent.com/document/api/236/15871)
+
+	* 新增入参：AlarmPolicyIdList, DryRun
+
+* [CreateDBInstanceHour](https://cloud.tencent.com/document/api/236/15865)
+
+	* 新增入参：AlarmPolicyIdList, DryRun
+
+
+修改数据结构：
+
+* [BackupInfo](https://cloud.tencent.com/document/api/236/15878#BackupInfo)
+
+	* 新增成员：ManualBackupName
+
+
+
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 32 次发布
+
+发布时间：2021-10-29 08:05:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetFaceIdToken](https://cloud.tencent.com/document/api/1007/49198)
+
+	* 新增入参：UseCos
+
+
+修改数据结构：
+
+* [EidInfo](https://cloud.tencent.com/document/api/1007/41958#EidInfo)
+
+	* 新增成员：DesKey, UserInfo
+
+
+
+
+## 图片内容检测(ims) 版本：2020-12-29
+
+### 第 3 次发布
+
+发布时间：2021-10-29 08:06:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ObjectDetail](https://cloud.tencent.com/document/api/1125/53274#ObjectDetail)
+
+	* 新增成员：SubLabel
+
+* [OcrTextDetail](https://cloud.tencent.com/document/api/1125/53274#OcrTextDetail)
+
+	* 新增成员：SubLabel
+
+
+
+
+## 图片内容检测(ims) 版本：2020-07-13
+
+
+
+## 邮件推送(ses) 版本：2020-10-02
+
+### 第 5 次发布
+
+发布时间：2021-10-29 08:08:48
 
 本次发布包含了以下内容：
 
@@ -12,41 +122,122 @@
 
 新增接口：
 
-* [DescribeScdnBotRecords](https://cloud.tencent.com/document/api/228/63468)
-* [DescribeTopData](https://cloud.tencent.com/document/api/228/63466)
-* [ListScdnTopBotData](https://cloud.tencent.com/document/api/228/63467)
-
-修改接口：
-
-* [ListTopData](https://cloud.tencent.com/document/api/228/30983)
-
-	* 新增入参：Limit
-
-* [UpdateDomainConfig](https://cloud.tencent.com/document/api/228/41116)
-
-	* 新增入参：RemoteAuthentication
-
+* [BatchSendEmail](https://cloud.tencent.com/document/api/1288/63481)
 
 新增数据结构：
 
-* [BotRecord](https://cloud.tencent.com/document/api/228/30987#BotRecord)
-* [BotSortBy](https://cloud.tencent.com/document/api/228/30987#BotSortBy)
-* [BotStatisticsCount](https://cloud.tencent.com/document/api/228/30987#BotStatisticsCount)
-* [RemoteAuthentication](https://cloud.tencent.com/document/api/228/30987#RemoteAuthentication)
-* [RemoteAuthenticationRule](https://cloud.tencent.com/document/api/228/30987#RemoteAuthenticationRule)
-* [TopDataMore](https://cloud.tencent.com/document/api/228/30987#TopDataMore)
-* [TopDetailDataMore](https://cloud.tencent.com/document/api/228/30987#TopDetailDataMore)
+* [CycleEmailParam](https://cloud.tencent.com/document/api/1288/51053#CycleEmailParam)
+* [TimedEmailParam](https://cloud.tencent.com/document/api/1288/51053#TimedEmailParam)
+
+
+
+## 流量反欺诈(taf) 版本：2020-02-10
+
+### 第 7 次发布
+
+发布时间：2021-10-29 08:09:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 修改数据结构：
 
-* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
+* [InputSendTrafficSecuritySmsMsg](https://cloud.tencent.com/document/api/1031/43310#InputSendTrafficSecuritySmsMsg)
 
-	* 新增成员：RemoteAuthentication
+	* 新增成员：IsAuthorized, EncryptMethod, EncryptMode, PaddingType, EncryptData
 
-* [TrafficPackage](https://cloud.tencent.com/document/api/228/30987#TrafficPackage)
 
-	* 新增成员：Region
 
+
+## 弹性微服务(tem) 版本：2021-07-01
+
+### 第 5 次发布
+
+发布时间：2021-10-29 08:10:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDeployApplicationDetail](https://cloud.tencent.com/document/api/1371/60154)
+
+	* 新增入参：VersionId
+
+
+
+
+## 弹性微服务(tem) 版本：2020-12-21
+
+
+
+## 图像分析(tiia) 版本：2019-05-29
+
+### 第 16 次发布
+
+发布时间：2021-10-29 08:10:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateGroup](https://cloud.tencent.com/document/api/865/63488)
+* [CreateImage](https://cloud.tencent.com/document/api/865/63487)
+* [DeleteImages](https://cloud.tencent.com/document/api/865/63486)
+* [DescribeGroups](https://cloud.tencent.com/document/api/865/63485)
+* [DescribeImages](https://cloud.tencent.com/document/api/865/63484)
+* [SearchImage](https://cloud.tencent.com/document/api/865/63483)
+
+新增数据结构：
+
+* [GroupInfo](https://cloud.tencent.com/document/api/865/35474#GroupInfo)
+* [ImageInfo](https://cloud.tencent.com/document/api/865/35474#ImageInfo)
+
+
+
+## 互动白板(tiw) 版本：2019-09-19
+
+### 第 22 次发布
+
+发布时间：2021-10-29 08:10:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeTIWDailyUsage](https://cloud.tencent.com/document/api/1137/63489)
+
+新增数据结构：
+
+* [UsageDataItem](https://cloud.tencent.com/document/api/1137/40068#UsageDataItem)
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 27 次发布
+
+发布时间：2021-10-29 08:10:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeRealtimeNetwork
+* DescribeRealtimeQuality
+* DescribeRealtimeScale
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* RealtimeData
 
 
 
@@ -270,6 +461,21 @@
 
 
 ## 云顾问(advisor) 版本：2020-07-21
+
+### 第 2 次发布
+
+发布时间：2021-10-29 08:00:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTaskStrategyRisks](https://cloud.tencent.com/document/api/1264/63112)
+
+	* 新增出参：Risks
+
 
 ### 第 1 次发布
 
@@ -7953,6 +8159,40 @@
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
 
+### 第 70 次发布
+
+发布时间：2021-10-29 08:01:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateBackup](https://cloud.tencent.com/document/api/236/15844)
+
+	* 新增入参：ManualBackupName
+
+* [CreateCloneInstance](https://cloud.tencent.com/document/api/236/50424)
+
+	* 新增入参：DryRun
+
+* [CreateDBInstance](https://cloud.tencent.com/document/api/236/15871)
+
+	* 新增入参：AlarmPolicyIdList, DryRun
+
+* [CreateDBInstanceHour](https://cloud.tencent.com/document/api/236/15865)
+
+	* 新增入参：AlarmPolicyIdList, DryRun
+
+
+修改数据结构：
+
+* [BackupInfo](https://cloud.tencent.com/document/api/236/15878#BackupInfo)
+
+	* 新增成员：ManualBackupName
+
+
 ### 第 69 次发布
 
 发布时间：2021-10-21 11:16:58
@@ -9417,9 +9657,9 @@
 
 新增接口：
 
-* [[DescribeScdnBotRecords](https://cloud.tencent.com/document/api/228/63468)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeTopData](https://cloud.tencent.com/document/api/228/63466)](https://cloud.tencent.com/document/api/#/#)
-* [[ListScdnTopBotData](https://cloud.tencent.com/document/api/228/63467)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeScdnBotRecords](https://cloud.tencent.com/document/api/228/63468)
+* [DescribeTopData](https://cloud.tencent.com/document/api/228/63466)
+* [ListScdnTopBotData](https://cloud.tencent.com/document/api/228/63467)
 
 修改接口：
 
@@ -9434,13 +9674,13 @@
 
 新增数据结构：
 
-* [[BotRecord](https://cloud.tencent.com/document/api/228/30987#BotRecord)](https://cloud.tencent.com/document/api/228/30987#[BotRecord](https://cloud.tencent.com/document/api/228/30987#BotRecord))
-* [[BotSortBy](https://cloud.tencent.com/document/api/228/30987#BotSortBy)](https://cloud.tencent.com/document/api/228/30987#[BotSortBy](https://cloud.tencent.com/document/api/228/30987#BotSortBy))
-* [[BotStatisticsCount](https://cloud.tencent.com/document/api/228/30987#BotStatisticsCount)](https://cloud.tencent.com/document/api/228/30987#[BotStatisticsCount](https://cloud.tencent.com/document/api/228/30987#BotStatisticsCount))
-* [[RemoteAuthentication](https://cloud.tencent.com/document/api/228/30987#RemoteAuthentication)](https://cloud.tencent.com/document/api/228/30987#[RemoteAuthentication](https://cloud.tencent.com/document/api/228/30987#RemoteAuthentication))
-* [[RemoteAuthenticationRule](https://cloud.tencent.com/document/api/228/30987#RemoteAuthenticationRule)](https://cloud.tencent.com/document/api/228/30987#[RemoteAuthenticationRule](https://cloud.tencent.com/document/api/228/30987#RemoteAuthenticationRule))
-* [[TopDataMore](https://cloud.tencent.com/document/api/228/30987#TopDataMore)](https://cloud.tencent.com/document/api/228/30987#[TopDataMore](https://cloud.tencent.com/document/api/228/30987#TopDataMore))
-* [[TopDetailDataMore](https://cloud.tencent.com/document/api/228/30987#TopDetailDataMore)](https://cloud.tencent.com/document/api/228/30987#[TopDetailDataMore](https://cloud.tencent.com/document/api/228/30987#TopDetailDataMore))
+* [BotRecord](https://cloud.tencent.com/document/api/228/30987#BotRecord)
+* [BotSortBy](https://cloud.tencent.com/document/api/228/30987#BotSortBy)
+* [BotStatisticsCount](https://cloud.tencent.com/document/api/228/30987#BotStatisticsCount)
+* [RemoteAuthentication](https://cloud.tencent.com/document/api/228/30987#RemoteAuthentication)
+* [RemoteAuthenticationRule](https://cloud.tencent.com/document/api/228/30987#RemoteAuthenticationRule)
+* [TopDataMore](https://cloud.tencent.com/document/api/228/30987#TopDataMore)
+* [TopDetailDataMore](https://cloud.tencent.com/document/api/228/30987#TopDetailDataMore)
 
 修改数据结构：
 
@@ -26497,6 +26737,28 @@
 
 ## 人脸核身(faceid) 版本：2018-03-01
 
+### 第 32 次发布
+
+发布时间：2021-10-29 08:05:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetFaceIdToken](https://cloud.tencent.com/document/api/1007/49198)
+
+	* 新增入参：UseCos
+
+
+修改数据结构：
+
+* [EidInfo](https://cloud.tencent.com/document/api/1007/41958#EidInfo)
+
+	* 新增成员：DesKey, UserInfo
+
+
 ### 第 31 次发布
 
 发布时间：2021-10-21 11:26:59
@@ -30542,6 +30804,25 @@
 
 
 ## 图片内容检测(ims) 版本：2020-12-29
+
+### 第 3 次发布
+
+发布时间：2021-10-29 08:06:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ObjectDetail](https://cloud.tencent.com/document/api/1125/53274#ObjectDetail)
+
+	* 新增成员：SubLabel
+
+* [OcrTextDetail](https://cloud.tencent.com/document/api/1125/53274#OcrTextDetail)
+
+	* 新增成员：SubLabel
+
 
 ### 第 2 次发布
 
@@ -43703,6 +43984,23 @@
 
 ## 邮件推送(ses) 版本：2020-10-02
 
+### 第 5 次发布
+
+发布时间：2021-10-29 08:08:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[BatchSendEmail](https://cloud.tencent.com/document/api/1288/63481)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CycleEmailParam](https://cloud.tencent.com/document/api/1288/51053#CycleEmailParam)](https://cloud.tencent.com/document/api/1288/51053#[CycleEmailParam](https://cloud.tencent.com/document/api/1288/51053#CycleEmailParam))
+* [[TimedEmailParam](https://cloud.tencent.com/document/api/1288/51053#TimedEmailParam)](https://cloud.tencent.com/document/api/1288/51053#[TimedEmailParam](https://cloud.tencent.com/document/api/1288/51053#TimedEmailParam))
+
 ### 第 4 次发布
 
 发布时间：2021-01-15 08:09:39
@@ -45683,6 +45981,21 @@
 
 
 ## 流量反欺诈(taf) 版本：2020-02-10
+
+### 第 7 次发布
+
+发布时间：2021-10-29 08:09:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InputSendTrafficSecuritySmsMsg](https://cloud.tencent.com/document/api/1031/43310#InputSendTrafficSecuritySmsMsg)
+
+	* 新增成员：IsAuthorized, EncryptMethod, EncryptMode, PaddingType, EncryptData
+
 
 ### 第 6 次发布
 
@@ -50430,6 +50743,21 @@
 
 ## 弹性微服务(tem) 版本：2021-07-01
 
+### 第 5 次发布
+
+发布时间：2021-10-29 08:10:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDeployApplicationDetail](https://cloud.tencent.com/document/api/1371/60154)
+
+	* 新增入参：VersionId
+
+
 ### 第 4 次发布
 
 发布时间：2021-08-24 08:00:55
@@ -51058,6 +51386,28 @@
 
 ## 图像分析(tiia) 版本：2019-05-29
 
+### 第 16 次发布
+
+发布时间：2021-10-29 08:10:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateGroup](https://cloud.tencent.com/document/api/865/63488)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateImage](https://cloud.tencent.com/document/api/865/63487)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteImages](https://cloud.tencent.com/document/api/865/63486)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeGroups](https://cloud.tencent.com/document/api/865/63485)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeImages](https://cloud.tencent.com/document/api/865/63484)](https://cloud.tencent.com/document/api/#/#)
+* [[SearchImage](https://cloud.tencent.com/document/api/865/63483)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[GroupInfo](https://cloud.tencent.com/document/api/865/35474#GroupInfo)](https://cloud.tencent.com/document/api/865/35474#[GroupInfo](https://cloud.tencent.com/document/api/865/35474#GroupInfo))
+* [[ImageInfo](https://cloud.tencent.com/document/api/865/35474#ImageInfo)](https://cloud.tencent.com/document/api/865/35474#[ImageInfo](https://cloud.tencent.com/document/api/865/35474#ImageInfo))
+
 ### 第 15 次发布
 
 发布时间：2021-09-24 10:12:47
@@ -51653,6 +52003,22 @@
 
 
 ## 互动白板(tiw) 版本：2019-09-19
+
+### 第 22 次发布
+
+发布时间：2021-10-29 08:10:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeTIWDailyUsage](https://cloud.tencent.com/document/api/1137/63489)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[UsageDataItem](https://cloud.tencent.com/document/api/1137/40068#UsageDataItem)](https://cloud.tencent.com/document/api/1137/40068#[UsageDataItem](https://cloud.tencent.com/document/api/1137/40068#UsageDataItem))
 
 ### 第 21 次发布
 
@@ -53856,6 +54222,24 @@
 
 
 ## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 27 次发布
+
+发布时间：2021-10-29 08:10:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeRealtimeNetwork
+* DescribeRealtimeQuality
+* DescribeRealtimeScale
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* RealtimeData
 
 ### 第 26 次发布
 
