@@ -3687,45 +3687,6 @@ func (c *Client) ModifyRoReplicationDelay(request *ModifyRoReplicationDelayReque
     return
 }
 
-func NewModifyRoTypeRequest() (request *ModifyRoTypeRequest) {
-    request = &ModifyRoTypeRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cdb", APIVersion, "ModifyRoType")
-    return
-}
-
-func NewModifyRoTypeResponse() (response *ModifyRoTypeResponse) {
-    response = &ModifyRoTypeResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// ModifyRoType
-// 修改只读实例类型，可以将普通只读实例变为延迟只读实例，或者将延迟只读实例变为普通只读实例。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_NOTDELAYRO = "FailedOperation.NotDelayRo"
-//  FAILEDOPERATION_OPERATIONREPLICATIONERROR = "FailedOperation.OperationReplicationError"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE_DUETIMEWRONG = "InvalidParameterValue.DueTimeWrong"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
-//  INVALIDPARAMETERVALUE_SRCTYPEEQUALDSTTYPE = "InvalidParameterValue.SrcTypeEqualDstType"
-//  INVALIDPARAMETERVALUE_SRCTYPENOTEQUALDSTTYPE = "InvalidParameterValue.SrcTypeNotEqualDstType"
-//  OPERATIONDENIED_DELAYREPLICATIONRUNNING = "OperationDenied.DelayReplicationRunning"
-//  OPERATIONDENIED_INSTANCETASKRUNNING = "OperationDenied.InstanceTaskRunning"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-//  UNSUPPORTEDOPERATION_NOTSUPPORTTHISFEATURE = "UnsupportedOperation.NotSupportThisFeature"
-func (c *Client) ModifyRoType(request *ModifyRoTypeRequest) (response *ModifyRoTypeResponse, err error) {
-    if request == nil {
-        request = NewModifyRoTypeRequest()
-    }
-    response = NewModifyRoTypeResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewModifyTimeWindowRequest() (request *ModifyTimeWindowRequest) {
     request = &ModifyTimeWindowRequest{
         BaseRequest: &tchttp.BaseRequest{},

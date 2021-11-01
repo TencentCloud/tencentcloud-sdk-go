@@ -234,6 +234,7 @@ func NewDescribeTemplatesResponse() (response *DescribeTemplatesResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
 //  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
@@ -390,9 +391,17 @@ func NewSyncProxyOrganizationOperatorsResponse() (response *SyncProxyOrganizatio
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_STAFFALREADYVERIFY = "FailedOperation.StaffAlreadyVerify"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INTERNALERROR_DBUPDATE = "InternalError.DbUpdate"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_NOAPIAUTH = "OperationDenied.NoApiAuth"

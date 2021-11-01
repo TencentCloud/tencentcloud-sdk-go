@@ -433,14 +433,14 @@ func (r *DescribeCallInMetricsResponse) FromJsonString(s string) error {
 type DescribeChatMessagesRequest struct {
 	*tchttp.BaseRequest
 
-	// 服务记录ID
-	CdrId *string `json:"CdrId,omitempty" name:"CdrId"`
-
 	// 实例ID
 	InstanceId *int64 `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 应用ID
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 服务记录ID
+	CdrId *string `json:"CdrId,omitempty" name:"CdrId"`
 
 	// 返回记录条数 最大为100默认20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
@@ -450,6 +450,9 @@ type DescribeChatMessagesRequest struct {
 
 	// 1为从早到晚，2为从晚到早，默认为2
 	Order *int64 `json:"Order,omitempty" name:"Order"`
+
+	// 服务记录SessionID
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 }
 
 func (r *DescribeChatMessagesRequest) ToJsonString() string {
@@ -464,12 +467,13 @@ func (r *DescribeChatMessagesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "CdrId")
 	delete(f, "InstanceId")
 	delete(f, "SdkAppId")
+	delete(f, "CdrId")
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "Order")
+	delete(f, "SessionId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeChatMessagesRequest has unknown keys!", "")
 	}
@@ -979,6 +983,9 @@ type DescribeTelCdrRequest struct {
 
 	// 按手机号筛选
 	Phones []*string `json:"Phones,omitempty" name:"Phones"`
+
+	// 按SessionId筛选
+	SessionIds []*string `json:"SessionIds,omitempty" name:"SessionIds"`
 }
 
 func (r *DescribeTelCdrRequest) ToJsonString() string {
@@ -1002,6 +1009,7 @@ func (r *DescribeTelCdrRequest) FromJsonString(s string) error {
 	delete(f, "PageSize")
 	delete(f, "PageNumber")
 	delete(f, "Phones")
+	delete(f, "SessionIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTelCdrRequest has unknown keys!", "")
 	}
@@ -1199,6 +1207,12 @@ type PSTNSession struct {
 
 	// 转外线被叫
 	OutBoundCallee *string `json:"OutBoundCallee,omitempty" name:"OutBoundCallee"`
+
+	// 主叫号码保护ID，开启号码保护映射功能时有效，且Caller字段置空
+	ProtectedCaller *string `json:"ProtectedCaller,omitempty" name:"ProtectedCaller"`
+
+	// 被叫号码保护ID，开启号码保护映射功能时有效，且Callee字段置空
+	ProtectedCallee *string `json:"ProtectedCallee,omitempty" name:"ProtectedCallee"`
 }
 
 type PSTNSessionInfo struct {
@@ -1235,6 +1249,12 @@ type PSTNSessionInfo struct {
 
 	// 振铃时间，Unix 时间戳
 	RingTimestamp *int64 `json:"RingTimestamp,omitempty" name:"RingTimestamp"`
+
+	// 主叫号码保护ID，开启号码保护映射功能时有效，且Caller字段置空
+	ProtectedCaller *string `json:"ProtectedCaller,omitempty" name:"ProtectedCaller"`
+
+	// 被叫号码保护ID，开启号码保护映射功能时有效，且Callee字段置空
+	ProtectedCallee *string `json:"ProtectedCallee,omitempty" name:"ProtectedCallee"`
 }
 
 type SeatUserInfo struct {
@@ -1581,6 +1601,14 @@ type TelCdrInfo struct {
 	// 会话 ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 主叫号码保护ID，开启号码保护映射功能时有效，且Caller字段置空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProtectedCaller *string `json:"ProtectedCaller,omitempty" name:"ProtectedCaller"`
+
+	// 被叫号码保护ID，开启号码保护映射功能时有效，且Callee字段置空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProtectedCallee *string `json:"ProtectedCallee,omitempty" name:"ProtectedCallee"`
 }
 
 type UnbindStaffSkillGroupListRequest struct {

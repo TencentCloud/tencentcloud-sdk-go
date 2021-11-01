@@ -4597,6 +4597,15 @@ type TopicInfo struct {
 
 type UploadLogRequest struct {
 	*tchttp.BaseRequest
+
+	// 主题id
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 根据 hashkey 写入相应范围的主题分区
+	HashKey *string `json:"HashKey,omitempty" name:"HashKey"`
+
+	// 压缩方法
+	CompressType *string `json:"CompressType,omitempty" name:"CompressType"`
 }
 
 func (r *UploadLogRequest) ToJsonString() string {
@@ -4611,6 +4620,9 @@ func (r *UploadLogRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "TopicId")
+	delete(f, "HashKey")
+	delete(f, "CompressType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadLogRequest has unknown keys!", "")
 	}

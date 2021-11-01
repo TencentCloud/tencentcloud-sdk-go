@@ -7115,64 +7115,6 @@ func (r *ModifyRoReplicationDelayResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type ModifyRoTypeRequest struct {
-	*tchttp.BaseRequest
-
-	// 实例 ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-	// 只读实例源类型，取值 NORMAL（普通只读实例）、DELAY_REPLICATION（延迟只读实例）。
-	SrcRoInstType *string `json:"SrcRoInstType,omitempty" name:"SrcRoInstType"`
-
-	// 只读实例目标类型，取值 NORMAL（普通只读实例）、DELAY_REPLICATION（延迟只读实例）。
-	DstRoInstType *string `json:"DstRoInstType,omitempty" name:"DstRoInstType"`
-
-	// 延迟时间（s），将实例修改为延迟只读实例时必传。最小值1，最大值259200。
-	ReplicationDelay *int64 `json:"ReplicationDelay,omitempty" name:"ReplicationDelay"`
-}
-
-func (r *ModifyRoTypeRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ModifyRoTypeRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "InstanceId")
-	delete(f, "SrcRoInstType")
-	delete(f, "DstRoInstType")
-	delete(f, "ReplicationDelay")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRoTypeRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type ModifyRoTypeResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *ModifyRoTypeResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ModifyRoTypeResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ModifyTimeWindowRequest struct {
 	*tchttp.BaseRequest
 

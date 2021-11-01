@@ -741,6 +741,7 @@ func NewSendPhoneEmailCodeResponse() (response *SendPhoneEmailCodeResponse) {
 // 此接口用于发送手机邮箱验证码。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_SENDTCBPHONEEMAILCODEFAILED = "FailedOperation.SendTcbPhoneEmailCodeFailed"
 //  FAILEDOPERATION_SENDVERIFYCODEISLIMITED = "FailedOperation.SendVerifyCodeIsLimited"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_CODETYPEISINVALID = "InvalidParameter.CodeTypeIsInvalid"

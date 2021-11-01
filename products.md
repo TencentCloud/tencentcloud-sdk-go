@@ -12,7 +12,7 @@
 | ape | [正版图库直通车](https://cloud.tencent.com/document/product/1181) | 2021-09-16 08:01:43 |
 | api | [云 API](https://cloud.tencent.com/document/product/546) | 2021-04-25 10:09:57 |
 | apigateway | [API网关](https://cloud.tencent.com/document/product/628) | 2021-09-29 08:00:45 |
-| as | [弹性伸缩](https://cloud.tencent.com/document/product/377) | 2021-10-27 08:02:46 |
+| as | [弹性伸缩](https://cloud.tencent.com/document/product/377) | 2021-11-01 08:05:02 |
 | asr | [语音识别](https://cloud.tencent.com/document/product/1093) | 2021-09-16 08:01:57 |
 | asw | [应用与服务编排工作流](https://cloud.tencent.com/document/product/1272) | 2021-09-16 08:01:40 |
 | ba | [网站备案](https://cloud.tencent.com/document/product/243) | 2021-09-16 08:01:39 |
@@ -30,8 +30,8 @@
 | captcha | [验证码](https://cloud.tencent.com/document/product/1110) | 2021-09-16 08:05:04 |
 | cat | [云拨测](https://cloud.tencent.com/document/product/280) | 2021-09-16 08:03:51 |
 | cbs | [云硬盘](https://cloud.tencent.com/document/product/362) | 2021-10-27 08:03:51 |
-| ccc | [云呼叫中心](https://cloud.tencent.com/document/product/679) | 2021-09-16 08:02:05 |
-| cdb | [云数据库 MySQL](https://cloud.tencent.com/document/product/236) | 2021-10-29 08:01:53 |
+| ccc | [云呼叫中心](https://cloud.tencent.com/document/product/679) | 2021-11-01 08:06:08 |
+| cdb | [云数据库 MySQL](https://cloud.tencent.com/document/product/236) | 2021-11-01 08:06:13 |
 | cdn | [内容分发网络](https://cloud.tencent.com/document/product/228) | 2021-10-28 15:10:03 |
 | cds | [数据安全审计](https://cloud.tencent.com/document/product/856) | 2021-09-16 08:05:40 |
 | cfs | [文件存储](https://cloud.tencent.com/document/product/582) | 2021-09-16 08:05:42 |
@@ -44,8 +44,8 @@
 | clb | [负载均衡](https://cloud.tencent.com/document/product/214) | 2021-10-26 08:06:08 |
 | cloudaudit | [云审计](https://cloud.tencent.com/document/product/629) | 2021-09-16 08:14:35 |
 | cloudhsm | [云加密机](https://cloud.tencent.com/document/product/639) | 2021-09-16 08:12:58 |
-| cls | [日志服务](https://cloud.tencent.com/document/product/614) | 2021-10-27 08:04:57 |
-| cme | [腾讯云剪](https://cloud.tencent.com/document/product/1156) | 2021-09-17 08:06:15 |
+| cls | [日志服务](https://cloud.tencent.com/document/product/614) | 2021-11-01 08:07:18 |
+| cme | [腾讯云剪](https://cloud.tencent.com/document/product/1156) | 2021-11-01 08:07:26 |
 | cmq | [消息队列 CMQ](https://cloud.tencent.com/document/product/406) | 2021-09-16 08:03:08 |
 | cms | [内容安全](https://cloud.tencent.com/document/product) | 2020-10-29 08:03:08 |
 | cpdp | [企业收付平台](https://cloud.tencent.com/document/product/1122) | 2021-10-13 08:05:27 |
@@ -137,7 +137,7 @@
 | sslpod | [SSL 证书监控](https://cloud.tencent.com/document/product/1084) | 2021-09-16 08:01:50 |
 | ssm | [凭据管理系统](https://cloud.tencent.com/document/product/1140) | 2021-09-16 08:03:57 |
 | sts | [安全凭证服务](https://cloud.tencent.com/document/product/1312) | 2021-09-16 08:13:47 |
-| taf | [流量反欺诈](https://cloud.tencent.com/document/product/1031) | 2021-10-29 08:09:22 |
+| taf | [流量反欺诈](https://cloud.tencent.com/document/product/1031) | 2021-11-01 08:13:31 |
 | tag | [标签](https://cloud.tencent.com/document/product/651) | 2021-09-16 08:10:15 |
 | tat | [腾讯云自动化助手](https://cloud.tencent.com/document/product/1340) | 2021-10-11 08:09:12 |
 | tav | [文件检测](https://cloud.tencent.com/document/product) | 2019-11-28 22:10:04 |

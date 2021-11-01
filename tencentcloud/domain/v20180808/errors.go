@@ -53,6 +53,9 @@ const (
 	// 域名注册操作失败，请稍后重试。
 	FAILEDOPERATION_REGISTERDOMAINFAILED = "FailedOperation.RegisterDomainFailed"
 
+	// 当前账号为云开发（TCB）账号，无法使用验证功能，请切换登录小程序公众号后重新操作。
+	FAILEDOPERATION_SENDTCBPHONEEMAILCODEFAILED = "FailedOperation.SendTcbPhoneEmailCodeFailed"
+
 	// 发送验证码过于频繁，请稍后重试。
 	FAILEDOPERATION_SENDVERIFYCODEISLIMITED = "FailedOperation.SendVerifyCodeIsLimited"
 

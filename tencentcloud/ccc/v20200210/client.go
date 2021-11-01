@@ -261,6 +261,7 @@ func NewDescribeChatMessagesResponse() (response *DescribeChatMessagesResponse) 
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_RECORDNOTEXIST = "InvalidParameterValue.RecordNotExist"
 func (c *Client) DescribeChatMessages(request *DescribeChatMessagesRequest) (response *DescribeChatMessagesResponse, err error) {
     if request == nil {
         request = NewDescribeChatMessagesRequest()

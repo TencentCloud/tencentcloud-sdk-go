@@ -75,6 +75,9 @@ type EnhanceTaDegreeRequest struct {
 
 	// 业务数据
 	BspData *InputTaBspData `json:"BspData,omitempty" name:"BspData"`
+
+	// 业务加密数据
+	BusinessEncryptData *InputBusinessEncryptData `json:"BusinessEncryptData,omitempty" name:"BusinessEncryptData"`
 }
 
 func (r *EnhanceTaDegreeRequest) ToJsonString() string {
@@ -90,6 +93,7 @@ func (r *EnhanceTaDegreeRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "BspData")
+	delete(f, "BusinessEncryptData")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnhanceTaDegreeRequest has unknown keys!", "")
 	}
@@ -118,6 +122,9 @@ func (r *EnhanceTaDegreeResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *EnhanceTaDegreeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type InputBusinessEncryptData struct {
 }
 
 type InputKolBspData struct {
@@ -305,7 +312,7 @@ type InputTaBspData struct {
 	// 性别[1：男；2：女]
 	Gender *int64 `json:"Gender,omitempty" name:"Gender"`
 
-	// 用户操作时间
+	// 用户操作时间,uinux时间戳，精确到秒
 	UserTime *int64 `json:"UserTime,omitempty" name:"UserTime"`
 
 	// Imei [在(Imei|ImeiMd5|Idfa|IdfaMd5)里面4选1]
@@ -364,6 +371,9 @@ type InputTaBspData struct {
 
 	// 辅助区分信息
 	Context *string `json:"Context,omitempty" name:"Context"`
+
+	// 是否授权
+	IsAuthorized *uint64 `json:"IsAuthorized,omitempty" name:"IsAuthorized"`
 }
 
 type OutputKolData struct {
