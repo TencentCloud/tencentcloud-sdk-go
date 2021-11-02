@@ -2286,6 +2286,9 @@ type ComposeMediaTask struct {
 	// 错误信息。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
+	// 制作媒体文件任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
 	// 制作媒体文件任务的输入。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Input *ComposeMediaTaskInput `json:"Input,omitempty" name:"Input"`
@@ -2298,11 +2301,11 @@ type ComposeMediaTask struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
 
-	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
-	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
-
 	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 }
 
 type ComposeMediaTaskInput struct {
@@ -7820,6 +7823,9 @@ type EditMediaTask struct {
 	// 错误信息。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
+	// 编辑视频任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
 	// 视频编辑任务的输入。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Input *EditMediaTaskInput `json:"Input,omitempty" name:"Input"`
@@ -7828,17 +7834,17 @@ type EditMediaTask struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *EditMediaTaskOutput `json:"Output,omitempty" name:"Output"`
 
+	// 原始视频的元信息。
+	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
+
 	// 若发起视频编辑任务时指定了视频处理流程，则该字段为流程任务 ID。
 	ProcedureTaskId *string `json:"ProcedureTaskId,omitempty" name:"ProcedureTaskId"`
-
-	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
-	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 
 	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 
-	// 原始视频的元信息。
-	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 }
 
 type EditMediaTaskInput struct {

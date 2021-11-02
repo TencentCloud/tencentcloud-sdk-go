@@ -3144,6 +3144,9 @@ type TerminateAsyncEventRequest struct {
 
 	// 命名空间
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 优雅关停
+	GraceShutdown *bool `json:"GraceShutdown,omitempty" name:"GraceShutdown"`
 }
 
 func (r *TerminateAsyncEventRequest) ToJsonString() string {
@@ -3161,6 +3164,7 @@ func (r *TerminateAsyncEventRequest) FromJsonString(s string) error {
 	delete(f, "FunctionName")
 	delete(f, "InvokeRequestId")
 	delete(f, "Namespace")
+	delete(f, "GraceShutdown")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TerminateAsyncEventRequest has unknown keys!", "")
 	}

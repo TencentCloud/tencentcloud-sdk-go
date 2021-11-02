@@ -261,14 +261,17 @@ type InputRecognizeTargetAudience struct {
 	// ad_type
 	AdType *int64 `json:"AdType,omitempty" name:"AdType"`
 
-	// app name
+	// app名称
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
-	// appVer
+	// app版本描述
 	AppVer *string `json:"AppVer,omitempty" name:"AppVer"`
 
 	// 竞价模式1：rtb 2:pd
 	ReqType *int64 `json:"ReqType,omitempty" name:"ReqType"`
+
+	// 用户是否授权,1为授权，0为未授权
+	IsAuthorized *uint64 `json:"IsAuthorized,omitempty" name:"IsAuthorized"`
 }
 
 type InputSendTrafficSecuritySmsMsg struct {
@@ -658,6 +661,9 @@ type RecognizeTargetAudienceRequest struct {
 
 	// 业务数据
 	BspData *InputRecognizeTargetAudience `json:"BspData,omitempty" name:"BspData"`
+
+	// 业务加密数据
+	BusinessEncryptData *InputBusinessEncryptData `json:"BusinessEncryptData,omitempty" name:"BusinessEncryptData"`
 }
 
 func (r *RecognizeTargetAudienceRequest) ToJsonString() string {
@@ -673,6 +679,7 @@ func (r *RecognizeTargetAudienceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "BspData")
+	delete(f, "BusinessEncryptData")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeTargetAudienceRequest has unknown keys!", "")
 	}

@@ -7279,6 +7279,7 @@ type Origin struct {
 	// ip：IP 列表作为源站
 	// ipv6：源站列表为一个单独的 IPv6 地址
 	// ip_ipv6：源站列表为多个 IPv4 地址和IPv6 地址
+	// ip_domain: 支持IP和域名形式源站混填（白名单功能）
 	// ipv6_domain: 源站列表为多个 IPv6 地址以及域名
 	// ip_ipv6_domain：源站列表为多个 IPv4 地址IPv6 地址以及域名
 	// 出参增加以下几种类型：
@@ -9648,6 +9649,10 @@ type UrlRedirectRule struct {
 	// 目标host，必须以http://或https://开头，并填写标准格式域名，如果不填写，默认为http:// + 当前域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RedirectHost *string `json:"RedirectHost,omitempty" name:"RedirectHost"`
+
+	// 指定是全路径配置还是任意匹配
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FullMatch *bool `json:"FullMatch,omitempty" name:"FullMatch"`
 }
 
 type UserAgentFilter struct {

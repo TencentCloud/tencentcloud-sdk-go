@@ -1,10 +1,29 @@
 # 本版本更新包含以下内容：
 
-## 云呼叫中心(ccc) 版本：2020-02-10
+## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 16 次发布
+### 第 85 次发布
 
-发布时间：2021-11-01 08:06:08
+发布时间：2021-11-02 08:03:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [UrlRedirectRule](https://cloud.tencent.com/document/api/228/30987#UrlRedirectRule)
+
+	* 新增成员：FullMatch
+
+
+
+
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 24 次发布
+
+发布时间：2021-11-02 08:04:08
 
 本次发布包含了以下内容：
 
@@ -12,55 +31,29 @@
 
 修改接口：
 
-* [DescribeChatMessages](https://cloud.tencent.com/document/api/679/49676)
+* [CreateTopic](https://cloud.tencent.com/document/api/597/40851)
 
-	* 新增入参：SessionId
+	* 新增入参：RetentionBytes
 
-	* <font color="#dd0000">**修改入参**：</font>CdrId
+* [ModifyTopicAttributes](https://cloud.tencent.com/document/api/597/40844)
 
-* [DescribeTelCdr](https://cloud.tencent.com/document/api/679/47714)
-
-	* 新增入参：SessionIds
+	* 新增入参：RetentionBytes
 
 
 修改数据结构：
 
-* [PSTNSession](https://cloud.tencent.com/document/api/679/47715#PSTNSession)
+* [Config](https://cloud.tencent.com/document/api/597/40861#Config)
 
-	* 新增成员：ProtectedCaller, ProtectedCallee
-
-* [PSTNSessionInfo](https://cloud.tencent.com/document/api/679/47715#PSTNSessionInfo)
-
-	* 新增成员：ProtectedCaller, ProtectedCallee
-
-* [TelCdrInfo](https://cloud.tencent.com/document/api/679/47715#TelCdrInfo)
-
-	* 新增成员：ProtectedCaller, ProtectedCallee
+	* 新增成员：RetentionBytes
 
 
 
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
+## 负载均衡(clb) 版本：2018-03-17
 
-### 第 71 次发布
+### 第 56 次发布
 
-发布时间：2021-11-01 08:06:13
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* ModifyRoType
-
-
-
-## 日志服务(cls) 版本：2020-10-16
-
-### 第 12 次发布
-
-发布时间：2021-11-01 08:07:18
+发布时间：2021-11-02 08:04:16
 
 本次发布包含了以下内容：
 
@@ -68,18 +61,18 @@
 
 修改接口：
 
-* [UploadLog](https://cloud.tencent.com/document/api/614/59470)
+* [CreateLoadBalancerSnatIps](https://cloud.tencent.com/document/api/214/41505)
 
-	* 新增入参：TopicId, HashKey, CompressType
-
-
+	* 新增入参：Number
 
 
-## 腾讯云剪(cme) 版本：2019-10-29
 
-### 第 40 次发布
 
-发布时间：2021-11-01 08:07:26
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 34 次发布
+
+发布时间：2021-11-02 08:05:13
 
 本次发布包含了以下内容：
 
@@ -87,18 +80,48 @@
 
 修改接口：
 
-* [ExportVideoByEditorTrackData](https://cloud.tencent.com/document/api/1156/44159)
+* [DescribeVersionStatistics](https://cloud.tencent.com/document/api/296/60922)
 
-	* 新增入参：AspectRatio
+	* 新增出参：UltimateVersionNum
+
+
+修改数据结构：
+
+* [EffectiveMachineInfo](https://cloud.tencent.com/document/api/296/19867#EffectiveMachineInfo)
+
+	* 新增成员：KernelVersion, MachineStatus
+
+* [Machine](https://cloud.tencent.com/document/api/296/19867#Machine)
+
+	* 新增成员：KernelVersion
+
+
+
+
+## 云函数(scf) 版本：2018-04-16
+
+### 第 36 次发布
+
+发布时间：2021-11-02 08:10:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [TerminateAsyncEvent](https://cloud.tencent.com/document/api/583/52500)
+
+	* 新增入参：GraceShutdown
 
 
 
 
 ## 流量反欺诈(taf) 版本：2020-02-10
 
-### 第 8 次发布
+### 第 9 次发布
 
-发布时间：2021-11-01 08:13:31
+发布时间：2021-11-02 08:10:53
 
 本次发布包含了以下内容：
 
@@ -106,20 +129,58 @@
 
 修改接口：
 
-* [EnhanceTaDegree](https://cloud.tencent.com/document/api/1031/43308)
+* [RecognizeTargetAudience](https://cloud.tencent.com/document/api/1031/43305)
 
 	* 新增入参：BusinessEncryptData
 
 
-新增数据结构：
+修改数据结构：
 
-* [InputBusinessEncryptData](https://cloud.tencent.com/document/api/1031/43310#InputBusinessEncryptData)
+* [InputRecognizeTargetAudience](https://cloud.tencent.com/document/api/1031/43310#InputRecognizeTargetAudience)
+
+	* 新增成员：IsAuthorized
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 77 次发布
+
+发布时间：2021-11-02 08:12:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyClusterEndpointSP](https://cloud.tencent.com/document/api/457/39408)
+
+	* <font color="#dd0000">**修改入参**：</font>SecurityPolicies
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 92 次发布
+
+发布时间：2021-11-02 08:12:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 修改数据结构：
 
-* [InputTaBspData](https://cloud.tencent.com/document/api/1031/43310#InputTaBspData)
+* [ComposeMediaTask](https://cloud.tencent.com/document/api/266/31773#ComposeMediaTask)
 
-	* 新增成员：IsAuthorized
+	* 新增成员：Progress
+
+* [EditMediaTask](https://cloud.tencent.com/document/api/266/31773#EditMediaTask)
+
+	* 新增成员：Progress
 
 
 
@@ -9578,6 +9639,21 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 85 次发布
+
+发布时间：2021-11-02 08:03:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [UrlRedirectRule](https://cloud.tencent.com/document/api/228/30987#UrlRedirectRule)
+
+	* 新增成员：FullMatch
+
+
 ### 第 84 次发布
 
 发布时间：2021-10-28 15:10:03
@@ -12419,6 +12495,32 @@
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19
 
+### 第 24 次发布
+
+发布时间：2021-11-02 08:04:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTopic](https://cloud.tencent.com/document/api/597/40851)
+
+	* 新增入参：RetentionBytes
+
+* [ModifyTopicAttributes](https://cloud.tencent.com/document/api/597/40844)
+
+	* 新增入参：RetentionBytes
+
+
+修改数据结构：
+
+* [Config](https://cloud.tencent.com/document/api/597/40861#Config)
+
+	* 新增成员：RetentionBytes
+
+
 ### 第 23 次发布
 
 发布时间：2021-10-15 08:08:18
@@ -12951,6 +13053,21 @@
 
 
 ## 负载均衡(clb) 版本：2018-03-17
+
+### 第 56 次发布
+
+发布时间：2021-11-02 08:04:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateLoadBalancerSnatIps](https://cloud.tencent.com/document/api/214/41505)
+
+	* 新增入参：Number
+
 
 ### 第 55 次发布
 
@@ -18833,6 +18950,32 @@
 
 
 ## 主机安全(cwp) 版本：2018-02-28
+
+### 第 34 次发布
+
+发布时间：2021-11-02 08:05:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeVersionStatistics](https://cloud.tencent.com/document/api/296/60922)
+
+	* 新增出参：UltimateVersionNum
+
+
+修改数据结构：
+
+* [EffectiveMachineInfo](https://cloud.tencent.com/document/api/296/19867#EffectiveMachineInfo)
+
+	* 新增成员：KernelVersion, MachineStatus
+
+* [Machine](https://cloud.tencent.com/document/api/296/19867#Machine)
+
+	* 新增成员：KernelVersion
+
 
 ### 第 33 次发布
 
@@ -43133,6 +43276,21 @@
 
 ## 云函数(scf) 版本：2018-04-16
 
+### 第 36 次发布
+
+发布时间：2021-11-02 08:10:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [TerminateAsyncEvent](https://cloud.tencent.com/document/api/583/52500)
+
+	* 新增入参：GraceShutdown
+
+
 ### 第 35 次发布
 
 发布时间：2021-10-25 08:09:06
@@ -45943,6 +46101,28 @@
 
 ## 流量反欺诈(taf) 版本：2020-02-10
 
+### 第 9 次发布
+
+发布时间：2021-11-02 08:10:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RecognizeTargetAudience](https://cloud.tencent.com/document/api/1031/43305)
+
+	* 新增入参：BusinessEncryptData
+
+
+修改数据结构：
+
+* [InputRecognizeTargetAudience](https://cloud.tencent.com/document/api/1031/43310#InputRecognizeTargetAudience)
+
+	* 新增成员：IsAuthorized
+
+
 ### 第 8 次发布
 
 发布时间：2021-11-01 08:13:31
@@ -45960,7 +46140,7 @@
 
 新增数据结构：
 
-* [[InputBusinessEncryptData](https://cloud.tencent.com/document/api/1031/43310#InputBusinessEncryptData)](https://cloud.tencent.com/document/api/1031/43310#[InputBusinessEncryptData](https://cloud.tencent.com/document/api/1031/43310#InputBusinessEncryptData))
+* [InputBusinessEncryptData](https://cloud.tencent.com/document/api/1031/43310#InputBusinessEncryptData)
 
 修改数据结构：
 
@@ -52418,6 +52598,21 @@
 
 ## 容器服务(tke) 版本：2018-05-25
 
+### 第 77 次发布
+
+发布时间：2021-11-02 08:12:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyClusterEndpointSP](https://cloud.tencent.com/document/api/457/39408)
+
+	* <font color="#dd0000">**修改入参**：</font>SecurityPolicies
+
+
 ### 第 76 次发布
 
 发布时间：2021-10-01 21:29:42
@@ -56906,6 +57101,25 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 92 次发布
+
+发布时间：2021-11-02 08:12:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ComposeMediaTask](https://cloud.tencent.com/document/api/266/31773#ComposeMediaTask)
+
+	* 新增成员：Progress
+
+* [EditMediaTask](https://cloud.tencent.com/document/api/266/31773#EditMediaTask)
+
+	* 新增成员：Progress
+
 
 ### 第 91 次发布
 

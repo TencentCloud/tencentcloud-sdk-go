@@ -267,6 +267,10 @@ type Config struct {
 	// 最大消息字节数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxMessageBytes *int64 `json:"MaxMessageBytes,omitempty" name:"MaxMessageBytes"`
+
+	// 消息保留文件大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetentionBytes *int64 `json:"RetentionBytes,omitempty" name:"RetentionBytes"`
 }
 
 type ConsumerGroup struct {
@@ -670,7 +674,7 @@ type CreateTopicRequest struct {
 	// 实例Id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 主题名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+	// 主题名称，是一个不超过 128 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 
 	// Partition个数，大于0
@@ -708,6 +712,9 @@ type CreateTopicRequest struct {
 
 	// 预设ACL规则的名称
 	AclRuleName *string `json:"AclRuleName,omitempty" name:"AclRuleName"`
+
+	// 可选, 保留文件大小. 默认为-1,单位bytes, 当前最小值为1048576B
+	RetentionBytes *int64 `json:"RetentionBytes,omitempty" name:"RetentionBytes"`
 }
 
 func (r *CreateTopicRequest) ToJsonString() string {
@@ -736,6 +743,7 @@ func (r *CreateTopicRequest) FromJsonString(s string) error {
 	delete(f, "SegmentMs")
 	delete(f, "EnableAclRule")
 	delete(f, "AclRuleName")
+	delete(f, "RetentionBytes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTopicRequest has unknown keys!", "")
 	}
@@ -2984,6 +2992,9 @@ type ModifyTopicAttributesRequest struct {
 
 	// 预设ACL规则的名称
 	AclRuleName *string `json:"AclRuleName,omitempty" name:"AclRuleName"`
+
+	// 可选, 保留文件大小. 默认为-1,单位bytes, 当前最小值为1048576B
+	RetentionBytes *int64 `json:"RetentionBytes,omitempty" name:"RetentionBytes"`
 }
 
 func (r *ModifyTopicAttributesRequest) ToJsonString() string {
@@ -3011,6 +3022,7 @@ func (r *ModifyTopicAttributesRequest) FromJsonString(s string) error {
 	delete(f, "IpWhiteList")
 	delete(f, "EnableAclRule")
 	delete(f, "AclRuleName")
+	delete(f, "RetentionBytes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTopicAttributesRequest has unknown keys!", "")
 	}

@@ -400,7 +400,6 @@ func NewCreateClusterEndpointResponse() (response *CreateClusterEndpointResponse
 //  INTERNALERROR_CLUSTERSTATE = "InternalError.ClusterState"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_EMPTYCLUSTERNOTSUPPORT = "InternalError.EmptyClusterNotSupport"
-//  INTERNALERROR_KUBECOMMON = "InternalError.KubeCommon"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER = "InvalidParameter"

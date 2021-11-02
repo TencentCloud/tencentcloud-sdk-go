@@ -1080,6 +1080,9 @@ type CreateLoadBalancerSnatIpsRequest struct {
 
 	// 添加SnatIp信息，可指定IP申请，或者指定子网自动申请。
 	SnatIps []*SnatIp `json:"SnatIps,omitempty" name:"SnatIps"`
+
+	// 添加SnatIp个数，与SnatIps一起使用，当指定Ip时，不能指定创建SnatIp个数。
+	Number *uint64 `json:"Number,omitempty" name:"Number"`
 }
 
 func (r *CreateLoadBalancerSnatIpsRequest) ToJsonString() string {
@@ -1096,6 +1099,7 @@ func (r *CreateLoadBalancerSnatIpsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "LoadBalancerId")
 	delete(f, "SnatIps")
+	delete(f, "Number")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLoadBalancerSnatIpsRequest has unknown keys!", "")
 	}

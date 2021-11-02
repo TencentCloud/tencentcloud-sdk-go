@@ -11060,6 +11060,9 @@ type DescribeVersionStatisticsResponse struct {
 		// 专业版数量
 		ProVersionNum *uint64 `json:"ProVersionNum,omitempty" name:"ProVersionNum"`
 
+		// 旗舰版数量
+		UltimateVersionNum *uint64 `json:"UltimateVersionNum,omitempty" name:"UltimateVersionNum"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -12046,6 +12049,14 @@ type EffectiveMachineInfo struct {
 	// 云镜Uuid
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 内核版本号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KernelVersion *string `json:"KernelVersion,omitempty" name:"KernelVersion"`
+
+	// 在线状态 OFFLINE，ONLINE
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineStatus *string `json:"MachineStatus,omitempty" name:"MachineStatus"`
 }
 
 type EmergencyResponseInfo struct {
@@ -13915,6 +13926,9 @@ type Machine struct {
 
 	// 机器所属专区类型 CVM 云服务器, BM 黑石, ECM 边缘计算, LH 轻量应用服务器 ,Other 混合云专区
 	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
+
+	// 内核版本
+	KernelVersion *string `json:"KernelVersion,omitempty" name:"KernelVersion"`
 }
 
 type MachineTag struct {
