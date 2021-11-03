@@ -94,7 +94,7 @@
 | iotexplorer | [物联网开发平台](https://cloud.tencent.com/document/product/1081) | 2021-10-28 08:08:02 |
 | iottid | [物联网设备身份认证](https://cloud.tencent.com/document/product/1086) | 2021-09-16 08:08:06 |
 | iotvideo | [物联网智能视频服务](https://cloud.tencent.com/document/product/1131) | 2021-09-16 08:03:15 |
-| iotvideoindustry | [物联网智能视频服务（行业版）](https://cloud.tencent.com/document/product/1361) | 2021-09-16 08:01:15 |
+| iotvideoindustry | [物联网智能视频服务（行业版）](https://cloud.tencent.com/document/product/1361) | 2021-11-03 08:12:03 |
 | kms | [密钥管理系统](https://cloud.tencent.com/document/product/573) | 2021-09-16 08:08:09 |
 | lighthouse | [轻量应用服务器](https://cloud.tencent.com/document/product/1207) | 2021-10-20 08:12:10 |
 | live | [云直播](https://cloud.tencent.com/document/product/267) | 2021-10-21 11:29:49 |
@@ -137,7 +137,7 @@
 | sslpod | [SSL 证书监控](https://cloud.tencent.com/document/product/1084) | 2021-09-16 08:01:50 |
 | ssm | [凭据管理系统](https://cloud.tencent.com/document/product/1140) | 2021-09-16 08:03:57 |
 | sts | [安全凭证服务](https://cloud.tencent.com/document/product/1312) | 2021-09-16 08:13:47 |
-| taf | [流量反欺诈](https://cloud.tencent.com/document/product/1031) | 2021-11-02 08:10:53 |
+| taf | [流量反欺诈](https://cloud.tencent.com/document/product/1031) | 2021-11-03 08:14:28 |
 | tag | [标签](https://cloud.tencent.com/document/product/651) | 2021-09-16 08:10:15 |
 | tat | [腾讯云自动化助手](https://cloud.tencent.com/document/product/1340) | 2021-10-11 08:09:12 |
 | tav | [文件检测](https://cloud.tencent.com/document/product) | 2019-11-28 22:10:04 |
@@ -165,7 +165,7 @@
 | tms | [文本内容安全](https://cloud.tencent.com/document/product/1124) | 2021-09-16 08:02:16 |
 | tmt | [机器翻译](https://cloud.tencent.com/document/product/551) | 2021-10-11 08:10:28 |
 | trtc | [实时音视频](https://cloud.tencent.com/document/product/647) | 2021-10-29 08:10:53 |
-| tse | [腾讯云微服务引擎](https://cloud.tencent.com/document/product/1364) | 2021-10-27 08:12:44 |
+| tse | [腾讯云微服务引擎](https://cloud.tencent.com/document/product/1364) | 2021-11-03 08:15:55 |
 | tsf | [腾讯微服务平台 TSF](https://cloud.tencent.com/document/product/649) | 2021-10-27 08:12:46 |
 | tsw | [腾讯微服务观测平台 TSW](https://cloud.tencent.com/document/product/1311) | 2021-09-16 08:14:31 |
 | tts | [语音合成](https://cloud.tencent.com/document/product/1073) | 2021-09-16 08:11:28 |

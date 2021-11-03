@@ -59,7 +59,7 @@ func NewDetectFraudKOLResponse() (response *DetectFraudKOLResponse) {
 }
 
 // DetectFraudKOL
-// DetectFraudKOL
+// 流量反欺诈-KOL欺诈识别
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_CAPSIGERROR = "AuthFailure.CapSigError"

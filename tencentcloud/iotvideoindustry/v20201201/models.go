@@ -899,7 +899,7 @@ type DescribeDeviceStreamsRequest struct {
 	// 流地址失效时间
 	ExpireTime *uint64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
-	// 通道唯一标识
+	// 通道唯一标识（接口升级字段为必填）
 	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
 }
 

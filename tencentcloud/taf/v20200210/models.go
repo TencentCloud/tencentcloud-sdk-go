@@ -25,6 +25,9 @@ type DetectFraudKOLRequest struct {
 
 	// 业务数据
 	BspData *InputKolBspData `json:"BspData,omitempty" name:"BspData"`
+
+	// 业务加密数据
+	BusinessEncryptData *InputBusinessEncryptData `json:"BusinessEncryptData,omitempty" name:"BusinessEncryptData"`
 }
 
 func (r *DetectFraudKOLRequest) ToJsonString() string {
@@ -40,6 +43,7 @@ func (r *DetectFraudKOLRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "BspData")
+	delete(f, "BusinessEncryptData")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectFraudKOLRequest has unknown keys!", "")
 	}
@@ -149,6 +153,9 @@ type InputKolDataList struct {
 
 	// 代理商名称
 	AgentInfo *string `json:"AgentInfo,omitempty" name:"AgentInfo"`
+
+	// 是否授权
+	IsAuthorized *uint64 `json:"IsAuthorized,omitempty" name:"IsAuthorized"`
 }
 
 type InputRecognizeEffectiveFlow struct {
