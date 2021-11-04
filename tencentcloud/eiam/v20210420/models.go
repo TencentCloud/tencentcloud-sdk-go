@@ -266,10 +266,10 @@ func (r *CreateOrgNodeResponse) FromJsonString(s string) error {
 type CreateUserGroupRequest struct {
 	*tchttp.BaseRequest
 
-	// 昵称，长度限制：64个字符。 DisplayName是唯一的。
+	// 用户组昵称，长度限制：64个字符。 DisplayName是唯一的。
 	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
 
-	// 用户备注，长度限制：512个字符。
+	// 用户组备注，长度限制：512个字符。
 	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
@@ -964,11 +964,11 @@ type DescribeUserGroupResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 昵称，长度限制：64个字符。 DisplayName不唯一。
+		// 用户组昵称，长度限制：64个字符。 DisplayName不唯一。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
 
-		// 用户备注，长度限制：512个字符。
+		// 用户组备注，长度限制：512个字符。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Description *string `json:"Description,omitempty" name:"Description"`
 

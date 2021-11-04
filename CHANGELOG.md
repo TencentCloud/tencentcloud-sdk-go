@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 流量反欺诈(taf) 版本：2020-02-10
+## API网关(apigateway) 版本：2018-08-08
 
-### 第 10 次发布
+### 第 20 次发布
 
-发布时间：2021-11-03 08:14:28
+发布时间：2021-11-04 08:03:57
 
 本次发布包含了以下内容：
 
@@ -12,16 +12,80 @@
 
 修改接口：
 
-* [DetectFraudKOL](https://cloud.tencent.com/document/api/1031/43309)
+* [DescribeService](https://cloud.tencent.com/document/api/628/45199)
 
-	* 新增入参：BusinessEncryptData
+	* 新增出参：DeploymentType, SpecialUse
 
 
 修改数据结构：
 
-* [InputKolDataList](https://cloud.tencent.com/document/api/1031/43310#InputKolDataList)
+* [Service](https://cloud.tencent.com/document/api/628/45244#Service)
 
-	* 新增成员：IsAuthorized
+	* 新增成员：DeploymentType
+
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 49 次发布
+
+发布时间：2021-11-04 08:06:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [QueryMaliciousRegistration](https://cloud.tencent.com/document/api/1122/63688)
+
+修改接口：
+
+* [UnifiedTlinxOrder](https://cloud.tencent.com/document/api/1122/62611)
+
+	* 新增入参：Royalty
+
+	* <font color="#dd0000">**修改入参**：</font>Tag
+
+
+新增数据结构：
+
+* [MerchantRiskInfo](https://cloud.tencent.com/document/api/1122/40683#MerchantRiskInfo)
+
+
+
+## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+
+### 第 19 次发布
+
+发布时间：2021-11-04 08:11:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyDBInstanceSpec](https://cloud.tencent.com/document/api/409/63689)
+
+
+
+## 云数据库 Redis(redis) 版本：2018-04-12
+
+### 第 37 次发布
+
+发布时间：2021-11-04 08:12:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [EnableReplicaReadonly](https://cloud.tencent.com/document/api/239/34437)
+
+	* 新增出参：TaskId
 
 
 
@@ -1357,6 +1421,28 @@
 
 
 ## API网关(apigateway) 版本：2018-08-08
+
+### 第 20 次发布
+
+发布时间：2021-11-04 08:03:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeService](https://cloud.tencent.com/document/api/628/45199)
+
+	* 新增出参：DeploymentType, SpecialUse
+
+
+修改数据结构：
+
+* [Service](https://cloud.tencent.com/document/api/628/45244#Service)
+
+	* 新增成员：DeploymentType
+
 
 ### 第 19 次发布
 
@@ -16062,6 +16148,31 @@
 
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 49 次发布
+
+发布时间：2021-11-04 08:06:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[QueryMaliciousRegistration](https://cloud.tencent.com/document/api/1122/63688)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [UnifiedTlinxOrder](https://cloud.tencent.com/document/api/1122/62611)
+
+	* 新增入参：Royalty
+
+	* <font color="#dd0000">**修改入参**：</font>Tag
+
+
+新增数据结构：
+
+* [[MerchantRiskInfo](https://cloud.tencent.com/document/api/1122/40683#MerchantRiskInfo)](https://cloud.tencent.com/document/api/1122/40683#[MerchantRiskInfo](https://cloud.tencent.com/document/api/1122/40683#MerchantRiskInfo))
 
 ### 第 48 次发布
 
@@ -41601,6 +41712,18 @@
 
 ## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
 
+### 第 19 次发布
+
+发布时间：2021-11-04 08:11:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyDBInstanceSpec](https://cloud.tencent.com/document/api/409/63689)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 18 次发布
 
 发布时间：2021-10-26 08:11:42
@@ -42197,6 +42320,21 @@
 
 
 ## 云数据库 Redis(redis) 版本：2018-04-12
+
+### 第 37 次发布
+
+发布时间：2021-11-04 08:12:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [EnableReplicaReadonly](https://cloud.tencent.com/document/api/239/34437)
+
+	* 新增出参：TaskId
+
 
 ### 第 36 次发布
 

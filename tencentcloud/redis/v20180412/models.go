@@ -3185,8 +3185,13 @@ type EnableReplicaReadonlyResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 错误：ERROR，正确OK。
+		// 错误：ERROR，正确OK（已废弃）
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

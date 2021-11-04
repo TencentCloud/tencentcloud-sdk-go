@@ -2335,6 +2335,35 @@ func (c *Client) QueryInvoiceV2(request *QueryInvoiceV2Request) (response *Query
     return
 }
 
+func NewQueryMaliciousRegistrationRequest() (request *QueryMaliciousRegistrationRequest) {
+    request = &QueryMaliciousRegistrationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryMaliciousRegistration")
+    return
+}
+
+func NewQueryMaliciousRegistrationResponse() (response *QueryMaliciousRegistrationResponse) {
+    response = &QueryMaliciousRegistrationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryMaliciousRegistration
+// 商户恶意注册接口
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
+func (c *Client) QueryMaliciousRegistration(request *QueryMaliciousRegistrationRequest) (response *QueryMaliciousRegistrationResponse, err error) {
+    if request == nil {
+        request = NewQueryMaliciousRegistrationRequest()
+    }
+    response = NewQueryMaliciousRegistrationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryMemberBindRequest() (request *QueryMemberBindRequest) {
     request = &QueryMemberBindRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3803,7 +3832,7 @@ func NewUnifiedTlinxOrderResponse() (response *UnifiedTlinxOrderResponse) {
 }
 
 // UnifiedTlinxOrder
-// 云支付Tlinx统一下单接口
+// 云支付-统一下单接口
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

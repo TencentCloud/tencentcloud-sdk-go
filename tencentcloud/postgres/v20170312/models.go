@@ -2909,6 +2909,90 @@ func (r *ModifyDBInstanceReadOnlyGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyDBInstanceSpecRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID，形如：postgres-6bwgamo3。
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
+
+	// 升级后的实例内存大小，单位GiB。
+	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 升级后的实例磁盘大小，单位GiB。
+	Storage *uint64 `json:"Storage,omitempty" name:"Storage"`
+
+	// 是否自动使用代金券,1是,0否，默认不使用。
+	AutoVoucher *uint64 `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
+
+	// 代金券ID列表，目前仅支持指定一张代金券。
+	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds"`
+
+	// 活动ID。
+	ActivityId *uint64 `json:"ActivityId,omitempty" name:"ActivityId"`
+
+	// 指定实例配置完成变更后的切换时间，默认为 立即切换，入参为 0 ：立即切换 。1：指定时间切换。
+	SwitchTag *uint64 `json:"SwitchTag,omitempty" name:"SwitchTag"`
+
+	// 切换开始时间。
+	SwitchStartTime *string `json:"SwitchStartTime,omitempty" name:"SwitchStartTime"`
+
+	// 切换截止时间。
+	SwitchEndTime *string `json:"SwitchEndTime,omitempty" name:"SwitchEndTime"`
+}
+
+func (r *ModifyDBInstanceSpecRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBInstanceSpecRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "Memory")
+	delete(f, "Storage")
+	delete(f, "AutoVoucher")
+	delete(f, "VoucherIds")
+	delete(f, "ActivityId")
+	delete(f, "SwitchTag")
+	delete(f, "SwitchStartTime")
+	delete(f, "SwitchEndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBInstanceSpecRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDBInstanceSpecResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 订单号。
+		DealName *string `json:"DealName,omitempty" name:"DealName"`
+
+		// 冻结流水号。
+		BillId *string `json:"BillId,omitempty" name:"BillId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDBInstanceSpecResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBInstanceSpecResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyDBInstancesProjectRequest struct {
 	*tchttp.BaseRequest
 

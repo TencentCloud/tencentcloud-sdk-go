@@ -478,7 +478,7 @@ type CreateNatFwInstanceRequest struct {
 	// 备可用区，为空则选择默认可用区
 	ZoneBak *string `json:"ZoneBak,omitempty" name:"ZoneBak"`
 
-	// 异地灾备 1：使用异地灾备；0：不使用异地灾备
+	// 异地灾备 1：使用异地灾备；0：不使用异地灾备；为空则默认不使用异地灾备
 	CrossAZone *int64 `json:"CrossAZone,omitempty" name:"CrossAZone"`
 }
 
@@ -552,7 +552,7 @@ type CreateNatFwInstanceWithDomainRequest struct {
 	// 备可用区，为空则选择默认可用区
 	ZoneBak *string `json:"ZoneBak,omitempty" name:"ZoneBak"`
 
-	// 异地灾备 1：使用异地灾备；0：不使用异地灾备
+	// 异地灾备 1：使用异地灾备；0：不使用异地灾备；为空则默认不使用异地灾备
 	CrossAZone *int64 `json:"CrossAZone,omitempty" name:"CrossAZone"`
 
 	// 0不创建域名,1创建域名
@@ -1942,7 +1942,7 @@ func (r *DescribeNatRuleOverviewResponse) FromJsonString(s string) error {
 type DescribeResourceGroupNewRequest struct {
 	*tchttp.BaseRequest
 
-	// 查询类型 网络结构 vpc，业务识别- resource ，资源标签-tag
+	// 查询类型 网络结构-vpc，业务识别-resource ，资源标签-tag
 	QueryType *string `json:"QueryType,omitempty" name:"QueryType"`
 
 	// 资产组id  全部传0
@@ -1980,13 +1980,13 @@ type DescribeResourceGroupNewResponse struct {
 		// 返回树形结构
 		Data *string `json:"Data,omitempty" name:"Data"`
 
-		// 无
+		// 未分类实例数量
 		UnResourceNum *int64 `json:"UnResourceNum,omitempty" name:"UnResourceNum"`
 
-		// 无
+		// 接口返回消息
 		ReturnMsg *string `json:"ReturnMsg,omitempty" name:"ReturnMsg"`
 
-		// 无
+		// 返回码；0为请求成功
 		ReturnCode *int64 `json:"ReturnCode,omitempty" name:"ReturnCode"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2216,16 +2216,16 @@ type DescribeSourceAssetRequest struct {
 	// 资产类型 1公网 2内网
 	InsType *string `json:"InsType,omitempty" name:"InsType"`
 
-	// 是否未分组 1是
+	// ChooseType为1，查询已经分组的资产；ChooseType不为1查询没有分组的资产
 	ChooseType *string `json:"ChooseType,omitempty" name:"ChooseType"`
 
 	// 地域
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 页大小
+	// 查询单页的最大值；eg：10；则最多返回10条结果
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 偏移量
+	// 查询结果的偏移量
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
@@ -2263,7 +2263,7 @@ type DescribeSourceAssetResponse struct {
 		// 数据
 		Data []*InstanceInfo `json:"Data,omitempty" name:"Data"`
 
-		// 10
+		// 返回数据总数
 		Total *int64 `json:"Total,omitempty" name:"Total"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

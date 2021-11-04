@@ -29,6 +29,9 @@ const (
 	// 后台DB执行错误。
 	DBERROR = "DBError"
 
+	// 操作失败。
+	FAILEDOPERATION = "FailedOperation"
+
 	// 访问基础网络服务失败，请稍后重试。如果持续不成功，请联系客服进行处理。
 	FAILEDOPERATION_BASENETWORKACCESSERROR = "FailedOperation.BaseNetworkAccessError"
 

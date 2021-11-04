@@ -428,6 +428,9 @@ const (
 	// 不支持修改EIAM类型授权API。
 	UNSUPPORTEDOPERATION_MODIFYEIAMAUTHAPI = "UnsupportedOperation.ModifyEIAMAuthApi"
 
+	// 网络类型不支持修改。
+	UNSUPPORTEDOPERATION_MODIFYNETTYPE = "UnsupportedOperation.ModifyNetType"
+
 	// 前端协议类型不支持修改。
 	UNSUPPORTEDOPERATION_MODIFYPROTOCOL = "UnsupportedOperation.ModifyProtocol"
 
