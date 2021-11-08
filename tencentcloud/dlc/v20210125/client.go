@@ -48,6 +48,7 @@ func NewAddUsersToWorkGroupRequest() (request *AddUsersToWorkGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "AddUsersToWorkGroup")
+    
     return
 }
 
@@ -79,6 +80,7 @@ func NewAttachUserPolicyRequest() (request *AttachUserPolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "AttachUserPolicy")
+    
     return
 }
 
@@ -109,6 +111,7 @@ func NewAttachWorkGroupPolicyRequest() (request *AttachWorkGroupPolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "AttachWorkGroupPolicy")
+    
     return
 }
 
@@ -138,6 +141,7 @@ func NewBindWorkGroupsToUserRequest() (request *BindWorkGroupsToUserRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "BindWorkGroupsToUser")
+    
     return
 }
 
@@ -169,6 +173,7 @@ func NewCancelTaskRequest() (request *CancelTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "CancelTask")
+    
     return
 }
 
@@ -199,6 +204,7 @@ func NewCreateDatabaseRequest() (request *CreateDatabaseRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "CreateDatabase")
+    
     return
 }
 
@@ -229,6 +235,7 @@ func NewCreateScriptRequest() (request *CreateScriptRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "CreateScript")
+    
     return
 }
 
@@ -260,6 +267,7 @@ func NewCreateStoreLocationRequest() (request *CreateStoreLocationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "CreateStoreLocation")
+    
     return
 }
 
@@ -291,6 +299,7 @@ func NewCreateTableRequest() (request *CreateTableRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "CreateTable")
+    
     return
 }
 
@@ -322,6 +331,7 @@ func NewCreateTaskRequest() (request *CreateTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "CreateTask")
+    
     return
 }
 
@@ -355,6 +365,7 @@ func NewCreateTasksRequest() (request *CreateTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "CreateTasks")
+    
     return
 }
 
@@ -388,6 +399,7 @@ func NewCreateTasksInOrderRequest() (request *CreateTasksInOrderRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "CreateTasksInOrder")
+    
     return
 }
 
@@ -420,6 +432,7 @@ func NewCreateUserRequest() (request *CreateUserRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "CreateUser")
+    
     return
 }
 
@@ -452,6 +465,7 @@ func NewCreateWorkGroupRequest() (request *CreateWorkGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "CreateWorkGroup")
+    
     return
 }
 
@@ -484,6 +498,7 @@ func NewDeleteScriptRequest() (request *DeleteScriptRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "DeleteScript")
+    
     return
 }
 
@@ -514,6 +529,7 @@ func NewDeleteUserRequest() (request *DeleteUserRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "DeleteUser")
+    
     return
 }
 
@@ -545,6 +561,7 @@ func NewDeleteUsersFromWorkGroupRequest() (request *DeleteUsersFromWorkGroupRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "DeleteUsersFromWorkGroup")
+    
     return
 }
 
@@ -575,6 +592,7 @@ func NewDeleteWorkGroupRequest() (request *DeleteWorkGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "DeleteWorkGroup")
+    
     return
 }
 
@@ -604,6 +622,7 @@ func NewDescribeDatabasesRequest() (request *DescribeDatabasesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeDatabases")
+    
     return
 }
 
@@ -635,6 +654,7 @@ func NewDescribeScriptsRequest() (request *DescribeScriptsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeScripts")
+    
     return
 }
 
@@ -665,6 +685,7 @@ func NewDescribeStoreLocationRequest() (request *DescribeStoreLocationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeStoreLocation")
+    
     return
 }
 
@@ -695,6 +716,7 @@ func NewDescribeTableRequest() (request *DescribeTableRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeTable")
+    
     return
 }
 
@@ -729,6 +751,7 @@ func NewDescribeTablesRequest() (request *DescribeTablesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeTables")
+    
     return
 }
 
@@ -760,6 +783,7 @@ func NewDescribeTasksRequest() (request *DescribeTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeTasks")
+    
     return
 }
 
@@ -791,6 +815,7 @@ func NewDescribeUsersRequest() (request *DescribeUsersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeUsers")
+    
     return
 }
 
@@ -822,6 +847,7 @@ func NewDescribeViewsRequest() (request *DescribeViewsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeViews")
+    
     return
 }
 
@@ -853,6 +879,7 @@ func NewDescribeWorkGroupsRequest() (request *DescribeWorkGroupsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeWorkGroups")
+    
     return
 }
 
@@ -884,6 +911,7 @@ func NewDetachUserPolicyRequest() (request *DetachUserPolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "DetachUserPolicy")
+    
     return
 }
 
@@ -914,6 +942,7 @@ func NewDetachWorkGroupPolicyRequest() (request *DetachWorkGroupPolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "DetachWorkGroupPolicy")
+    
     return
 }
 
@@ -943,6 +972,7 @@ func NewModifyUserRequest() (request *ModifyUserRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "ModifyUser")
+    
     return
 }
 
@@ -973,6 +1003,7 @@ func NewModifyWorkGroupRequest() (request *ModifyWorkGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "ModifyWorkGroup")
+    
     return
 }
 
@@ -1002,6 +1033,7 @@ func NewUnbindWorkGroupsFromUserRequest() (request *UnbindWorkGroupsFromUserRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "UnbindWorkGroupsFromUser")
+    
     return
 }
 

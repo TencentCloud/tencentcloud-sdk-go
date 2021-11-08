@@ -48,6 +48,7 @@ func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("memcached", APIVersion, "DescribeInstances")
+    
     return
 }
 

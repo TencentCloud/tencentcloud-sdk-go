@@ -48,6 +48,7 @@ func NewAssessQualityRequest() (request *AssessQualityRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "AssessQuality")
+    
     return
 }
 
@@ -93,6 +94,7 @@ func NewCreateGroupRequest() (request *CreateGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "CreateGroup")
+    
     return
 }
 
@@ -136,6 +138,7 @@ func NewCreateImageRequest() (request *CreateImageRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "CreateImage")
+    
     return
 }
 
@@ -188,6 +191,7 @@ func NewCropImageRequest() (request *CropImageRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "CropImage")
+    
     return
 }
 
@@ -236,6 +240,7 @@ func NewDeleteImagesRequest() (request *DeleteImagesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "DeleteImages")
+    
     return
 }
 
@@ -276,6 +281,7 @@ func NewDescribeGroupsRequest() (request *DescribeGroupsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "DescribeGroups")
+    
     return
 }
 
@@ -311,6 +317,7 @@ func NewDescribeImagesRequest() (request *DescribeImagesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "DescribeImages")
+    
     return
 }
 
@@ -350,6 +357,7 @@ func NewDetectCelebrityRequest() (request *DetectCelebrityRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "DetectCelebrity")
+    
     return
 }
 
@@ -400,6 +408,7 @@ func NewDetectDisgustRequest() (request *DetectDisgustRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "DetectDisgust")
+    
     return
 }
 
@@ -448,6 +457,7 @@ func NewDetectLabelRequest() (request *DetectLabelRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "DetectLabel")
+    
     return
 }
 
@@ -529,6 +539,7 @@ func NewDetectLabelBetaRequest() (request *DetectLabelBetaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "DetectLabelBeta")
+    
     return
 }
 
@@ -576,6 +587,7 @@ func NewDetectMisbehaviorRequest() (request *DetectMisbehaviorRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "DetectMisbehavior")
+    
     return
 }
 
@@ -619,6 +631,7 @@ func NewDetectProductRequest() (request *DetectProductRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "DetectProduct")
+    
     return
 }
 
@@ -664,6 +677,7 @@ func NewDetectProductBetaRequest() (request *DetectProductBetaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "DetectProductBeta")
+    
     return
 }
 
@@ -720,6 +734,7 @@ func NewEnhanceImageRequest() (request *EnhanceImageRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "EnhanceImage")
+    
     return
 }
 
@@ -769,6 +784,7 @@ func NewRecognizeCarRequest() (request *RecognizeCarRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "RecognizeCar")
+    
     return
 }
 
@@ -815,6 +831,7 @@ func NewSearchImageRequest() (request *SearchImageRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "SearchImage")
+    
     return
 }
 

@@ -48,6 +48,7 @@ func NewDescribeEisConnectorConfigRequest() (request *DescribeEisConnectorConfig
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eis", APIVersion, "DescribeEisConnectorConfig")
+    
     return
 }
 
@@ -81,6 +82,7 @@ func NewListEisConnectorOperationsRequest() (request *ListEisConnectorOperations
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eis", APIVersion, "ListEisConnectorOperations")
+    
     return
 }
 
@@ -114,6 +116,7 @@ func NewListEisConnectorsRequest() (request *ListEisConnectorsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eis", APIVersion, "ListEisConnectors")
+    
     return
 }
 

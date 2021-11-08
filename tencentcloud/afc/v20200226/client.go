@@ -48,6 +48,7 @@ func NewQueryAntiFraudVipRequest() (request *QueryAntiFraudVipRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("afc", APIVersion, "QueryAntiFraudVip")
+    
     return
 }
 

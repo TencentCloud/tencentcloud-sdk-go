@@ -48,6 +48,7 @@ func NewCancelTaskRequest() (request *CancelTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ams", APIVersion, "CancelTask")
+    
     return
 }
 
@@ -92,6 +93,7 @@ func NewCreateAudioModerationSyncTaskRequest() (request *CreateAudioModerationSy
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ams", APIVersion, "CreateAudioModerationSyncTask")
+    
     return
 }
 
@@ -173,6 +175,7 @@ func NewCreateAudioModerationTaskRequest() (request *CreateAudioModerationTaskRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ams", APIVersion, "CreateAudioModerationTask")
+    
     return
 }
 
@@ -266,6 +269,7 @@ func NewDescribeTaskDetailRequest() (request *DescribeTaskDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ams", APIVersion, "DescribeTaskDetail")
+    
     return
 }
 
@@ -311,6 +315,7 @@ func NewDescribeTasksRequest() (request *DescribeTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ams", APIVersion, "DescribeTasks")
+    
     return
 }
 

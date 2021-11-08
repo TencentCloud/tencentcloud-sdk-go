@@ -48,6 +48,7 @@ func NewArchiveFlowRequest() (request *ArchiveFlowRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "ArchiveFlow")
+    
     return
 }
 
@@ -85,6 +86,7 @@ func NewCancelFlowRequest() (request *CancelFlowRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "CancelFlow")
+    
     return
 }
 
@@ -123,6 +125,7 @@ func NewCheckBankCard2EVerificationRequest() (request *CheckBankCard2EVerificati
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "CheckBankCard2EVerification")
+    
     return
 }
 
@@ -155,6 +158,7 @@ func NewCheckBankCard3EVerificationRequest() (request *CheckBankCard3EVerificati
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "CheckBankCard3EVerification")
+    
     return
 }
 
@@ -187,6 +191,7 @@ func NewCheckBankCard4EVerificationRequest() (request *CheckBankCard4EVerificati
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "CheckBankCard4EVerification")
+    
     return
 }
 
@@ -219,6 +224,7 @@ func NewCheckBankCardVerificationRequest() (request *CheckBankCardVerificationRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "CheckBankCardVerification")
+    
     return
 }
 
@@ -257,6 +263,7 @@ func NewCheckFaceIdentifyRequest() (request *CheckFaceIdentifyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "CheckFaceIdentify")
+    
     return
 }
 
@@ -291,6 +298,7 @@ func NewCheckIdCardVerificationRequest() (request *CheckIdCardVerificationReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "CheckIdCardVerification")
+    
     return
 }
 
@@ -323,6 +331,7 @@ func NewCheckMobileAndNameRequest() (request *CheckMobileAndNameRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "CheckMobileAndName")
+    
     return
 }
 
@@ -355,6 +364,7 @@ func NewCheckMobileVerificationRequest() (request *CheckMobileVerificationReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "CheckMobileVerification")
+    
     return
 }
 
@@ -387,6 +397,7 @@ func NewCheckVerifyCodeMatchFlowIdRequest() (request *CheckVerifyCodeMatchFlowId
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "CheckVerifyCodeMatchFlowId")
+    
     return
 }
 
@@ -424,6 +435,7 @@ func NewCreateFaceIdSignRequest() (request *CreateFaceIdSignRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "CreateFaceIdSign")
+    
     return
 }
 
@@ -457,6 +469,7 @@ func NewCreateFlowByFilesRequest() (request *CreateFlowByFilesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "CreateFlowByFiles")
+    
     return
 }
 
@@ -495,6 +508,7 @@ func NewCreateH5FaceIdUrlRequest() (request *CreateH5FaceIdUrlRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "CreateH5FaceIdUrl")
+    
     return
 }
 
@@ -528,6 +542,7 @@ func NewCreatePreviewSignUrlRequest() (request *CreatePreviewSignUrlRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "CreatePreviewSignUrl")
+    
     return
 }
 
@@ -608,6 +623,7 @@ func NewCreateSealRequest() (request *CreateSealRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "CreateSeal")
+    
     return
 }
 
@@ -650,6 +666,7 @@ func NewCreateServerFlowSignRequest() (request *CreateServerFlowSignRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "CreateServerFlowSign")
+    
     return
 }
 
@@ -694,6 +711,7 @@ func NewCreateSignUrlRequest() (request *CreateSignUrlRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "CreateSignUrl")
+    
     return
 }
 
@@ -774,6 +792,7 @@ func NewCreateSubOrganizationRequest() (request *CreateSubOrganizationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "CreateSubOrganization")
+    
     return
 }
 
@@ -852,6 +871,7 @@ func NewCreateSubOrganizationAndSealRequest() (request *CreateSubOrganizationAnd
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "CreateSubOrganizationAndSeal")
+    
     return
 }
 
@@ -937,6 +957,7 @@ func NewCreateUserRequest() (request *CreateUserRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "CreateUser")
+    
     return
 }
 
@@ -1017,6 +1038,7 @@ func NewCreateUserAndSealRequest() (request *CreateUserAndSealRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "CreateUserAndSeal")
+    
     return
 }
 
@@ -1105,6 +1127,7 @@ func NewDeleteSealRequest() (request *DeleteSealRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "DeleteSeal")
+    
     return
 }
 
@@ -1146,6 +1169,7 @@ func NewDescribeCatalogApproversRequest() (request *DescribeCatalogApproversRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "DescribeCatalogApprovers")
+    
     return
 }
 
@@ -1179,6 +1203,7 @@ func NewDescribeCatalogSignComponentsRequest() (request *DescribeCatalogSignComp
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "DescribeCatalogSignComponents")
+    
     return
 }
 
@@ -1259,6 +1284,7 @@ func NewDescribeCustomFlowIdsRequest() (request *DescribeCustomFlowIdsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "DescribeCustomFlowIds")
+    
     return
 }
 
@@ -1294,6 +1320,7 @@ func NewDescribeCustomFlowIdsByFlowIdRequest() (request *DescribeCustomFlowIdsBy
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "DescribeCustomFlowIdsByFlowId")
+    
     return
 }
 
@@ -1329,6 +1356,7 @@ func NewDescribeFaceIdPhotosRequest() (request *DescribeFaceIdPhotosRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "DescribeFaceIdPhotos")
+    
     return
 }
 
@@ -1363,6 +1391,7 @@ func NewDescribeFaceIdResultsRequest() (request *DescribeFaceIdResultsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "DescribeFaceIdResults")
+    
     return
 }
 
@@ -1397,6 +1426,7 @@ func NewDescribeFileIdsByCustomIdsRequest() (request *DescribeFileIdsByCustomIds
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "DescribeFileIdsByCustomIds")
+    
     return
 }
 
@@ -1433,6 +1463,7 @@ func NewDescribeFileUrlsRequest() (request *DescribeFileUrlsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "DescribeFileUrls")
+    
     return
 }
 
@@ -1466,6 +1497,7 @@ func NewDescribeFlowRequest() (request *DescribeFlowRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "DescribeFlow")
+    
     return
 }
 
@@ -1498,6 +1530,7 @@ func NewDescribeFlowApproversRequest() (request *DescribeFlowApproversRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "DescribeFlowApprovers")
+    
     return
 }
 
@@ -1529,6 +1562,7 @@ func NewDescribeFlowFilesRequest() (request *DescribeFlowFilesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "DescribeFlowFiles")
+    
     return
 }
 
@@ -1560,6 +1594,7 @@ func NewDescribeSealsRequest() (request *DescribeSealsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "DescribeSeals")
+    
     return
 }
 
@@ -1596,6 +1631,7 @@ func NewDescribeSubOrganizationsRequest() (request *DescribeSubOrganizationsRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "DescribeSubOrganizations")
+    
     return
 }
 
@@ -1676,6 +1712,7 @@ func NewDescribeUsersRequest() (request *DescribeUsersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "DescribeUsers")
+    
     return
 }
 
@@ -1711,6 +1748,7 @@ func NewDestroyFlowFileRequest() (request *DestroyFlowFileRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "DestroyFlowFile")
+    
     return
 }
 
@@ -1746,6 +1784,7 @@ func NewGenerateOrganizationSealRequest() (request *GenerateOrganizationSealRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "GenerateOrganizationSeal")
+    
     return
 }
 
@@ -1786,6 +1825,7 @@ func NewGenerateUserSealRequest() (request *GenerateUserSealRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "GenerateUserSeal")
+    
     return
 }
 
@@ -1834,6 +1874,7 @@ func NewModifyOrganizationDefaultSealRequest() (request *ModifyOrganizationDefau
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "ModifyOrganizationDefaultSeal")
+    
     return
 }
 
@@ -1871,6 +1912,7 @@ func NewModifySealRequest() (request *ModifySealRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "ModifySeal")
+    
     return
 }
 
@@ -1912,6 +1954,7 @@ func NewModifySubOrganizationInfoRequest() (request *ModifySubOrganizationInfoRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "ModifySubOrganizationInfo")
+    
     return
 }
 
@@ -1994,6 +2037,7 @@ func NewModifyUserRequest() (request *ModifyUserRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "ModifyUser")
+    
     return
 }
 
@@ -2078,6 +2122,7 @@ func NewModifyUserDefaultSealRequest() (request *ModifyUserDefaultSealRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "ModifyUserDefaultSeal")
+    
     return
 }
 
@@ -2115,6 +2160,7 @@ func NewRejectFlowRequest() (request *RejectFlowRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "RejectFlow")
+    
     return
 }
 
@@ -2195,6 +2241,7 @@ func NewSendFlowRequest() (request *SendFlowRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "SendFlow")
+    
     return
 }
 
@@ -2231,6 +2278,7 @@ func NewSendFlowUrlRequest() (request *SendFlowUrlRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "SendFlowUrl")
+    
     return
 }
 
@@ -2270,6 +2318,7 @@ func NewSendSignInnerVerifyCodeRequest() (request *SendSignInnerVerifyCodeReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "SendSignInnerVerifyCode")
+    
     return
 }
 
@@ -2312,6 +2361,7 @@ func NewSignFlowRequest() (request *SignFlowRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "SignFlow")
+    
     return
 }
 
@@ -2346,6 +2396,7 @@ func NewUploadFilesRequest() (request *UploadFilesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "UploadFiles")
+    
     return
 }
 
@@ -2380,6 +2431,7 @@ func NewVerifySubOrganizationRequest() (request *VerifySubOrganizationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "VerifySubOrganization")
+    
     return
 }
 
@@ -2460,6 +2512,7 @@ func NewVerifyUserRequest() (request *VerifyUserRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "VerifyUser")
+    
     return
 }
 

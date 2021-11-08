@@ -48,6 +48,7 @@ func NewImageToClassRequest() (request *ImageToClassRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("mrs", APIVersion, "ImageToClass")
+    
     return
 }
 
@@ -99,6 +100,7 @@ func NewImageToObjectRequest() (request *ImageToObjectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("mrs", APIVersion, "ImageToObject")
+    
     return
 }
 
@@ -150,6 +152,7 @@ func NewTextToClassRequest() (request *TextToClassRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("mrs", APIVersion, "TextToClass")
+    
     return
 }
 
@@ -200,6 +203,7 @@ func NewTextToObjectRequest() (request *TextToObjectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("mrs", APIVersion, "TextToObject")
+    
     return
 }
 

@@ -48,6 +48,7 @@ func NewDescribeDasbImageIdsRequest() (request *DescribeDasbImageIdsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cds", APIVersion, "DescribeDasbImageIds")
+    
     return
 }
 
@@ -74,6 +75,7 @@ func NewDescribeDbauditInstanceTypeRequest() (request *DescribeDbauditInstanceTy
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cds", APIVersion, "DescribeDbauditInstanceType")
+    
     return
 }
 
@@ -100,6 +102,7 @@ func NewDescribeDbauditInstancesRequest() (request *DescribeDbauditInstancesRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cds", APIVersion, "DescribeDbauditInstances")
+    
     return
 }
 
@@ -126,6 +129,7 @@ func NewDescribeDbauditUsedRegionsRequest() (request *DescribeDbauditUsedRegions
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cds", APIVersion, "DescribeDbauditUsedRegions")
+    
     return
 }
 
@@ -152,6 +156,7 @@ func NewInquiryPriceDbauditInstanceRequest() (request *InquiryPriceDbauditInstan
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cds", APIVersion, "InquiryPriceDbauditInstance")
+    
     return
 }
 
@@ -178,6 +183,7 @@ func NewModifyDbauditInstancesRenewFlagRequest() (request *ModifyDbauditInstance
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cds", APIVersion, "ModifyDbauditInstancesRenewFlag")
+    
     return
 }
 

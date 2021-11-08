@@ -48,6 +48,7 @@ func NewTextProcessRequest() (request *TextProcessRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbp", APIVersion, "TextProcess")
+    
     return
 }
 
@@ -83,6 +84,7 @@ func NewTextResetRequest() (request *TextResetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbp", APIVersion, "TextReset")
+    
     return
 }
 

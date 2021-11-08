@@ -48,6 +48,7 @@ func NewAddRealServersRequest() (request *AddRealServersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "AddRealServers")
+    
     return
 }
 
@@ -88,6 +89,7 @@ func NewBindListenerRealServersRequest() (request *BindListenerRealServersReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "BindListenerRealServers")
+    
     return
 }
 
@@ -132,6 +134,7 @@ func NewBindRuleRealServersRequest() (request *BindRuleRealServersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "BindRuleRealServers")
+    
     return
 }
 
@@ -176,6 +179,7 @@ func NewCheckProxyCreateRequest() (request *CheckProxyCreateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "CheckProxyCreate")
+    
     return
 }
 
@@ -214,6 +218,7 @@ func NewCloseProxiesRequest() (request *CloseProxiesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "CloseProxies")
+    
     return
 }
 
@@ -255,6 +260,7 @@ func NewCloseProxyGroupRequest() (request *CloseProxyGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "CloseProxyGroup")
+    
     return
 }
 
@@ -294,6 +300,7 @@ func NewCloseSecurityPolicyRequest() (request *CloseSecurityPolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "CloseSecurityPolicy")
+    
     return
 }
 
@@ -334,6 +341,7 @@ func NewCreateCertificateRequest() (request *CreateCertificateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "CreateCertificate")
+    
     return
 }
 
@@ -373,6 +381,7 @@ func NewCreateCustomHeaderRequest() (request *CreateCustomHeaderRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "CreateCustomHeader")
+    
     return
 }
 
@@ -412,6 +421,7 @@ func NewCreateDomainRequest() (request *CreateDomainRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "CreateDomain")
+    
     return
 }
 
@@ -456,6 +466,7 @@ func NewCreateDomainErrorPageInfoRequest() (request *CreateDomainErrorPageInfoRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "CreateDomainErrorPageInfo")
+    
     return
 }
 
@@ -495,6 +506,7 @@ func NewCreateHTTPListenerRequest() (request *CreateHTTPListenerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "CreateHTTPListener")
+    
     return
 }
 
@@ -539,6 +551,7 @@ func NewCreateHTTPSListenerRequest() (request *CreateHTTPSListenerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "CreateHTTPSListener")
+    
     return
 }
 
@@ -583,6 +596,7 @@ func NewCreateProxyRequest() (request *CreateProxyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "CreateProxy")
+    
     return
 }
 
@@ -630,6 +644,7 @@ func NewCreateProxyGroupRequest() (request *CreateProxyGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "CreateProxyGroup")
+    
     return
 }
 
@@ -670,6 +685,7 @@ func NewCreateProxyGroupDomainRequest() (request *CreateProxyGroupDomainRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "CreateProxyGroupDomain")
+    
     return
 }
 
@@ -708,6 +724,7 @@ func NewCreateRuleRequest() (request *CreateRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "CreateRule")
+    
     return
 }
 
@@ -752,6 +769,7 @@ func NewCreateSecurityPolicyRequest() (request *CreateSecurityPolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "CreateSecurityPolicy")
+    
     return
 }
 
@@ -791,6 +809,7 @@ func NewCreateSecurityRulesRequest() (request *CreateSecurityRulesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "CreateSecurityRules")
+    
     return
 }
 
@@ -831,6 +850,7 @@ func NewCreateTCPListenersRequest() (request *CreateTCPListenersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "CreateTCPListeners")
+    
     return
 }
 
@@ -878,6 +898,7 @@ func NewCreateUDPListenersRequest() (request *CreateUDPListenersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "CreateUDPListeners")
+    
     return
 }
 
@@ -921,6 +942,7 @@ func NewDeleteCertificateRequest() (request *DeleteCertificateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DeleteCertificate")
+    
     return
 }
 
@@ -959,6 +981,7 @@ func NewDeleteDomainRequest() (request *DeleteDomainRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DeleteDomain")
+    
     return
 }
 
@@ -1000,6 +1023,7 @@ func NewDeleteDomainErrorPageInfoRequest() (request *DeleteDomainErrorPageInfoRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DeleteDomainErrorPageInfo")
+    
     return
 }
 
@@ -1038,6 +1062,7 @@ func NewDeleteListenersRequest() (request *DeleteListenersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DeleteListeners")
+    
     return
 }
 
@@ -1078,6 +1103,7 @@ func NewDeleteProxyGroupRequest() (request *DeleteProxyGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DeleteProxyGroup")
+    
     return
 }
 
@@ -1118,6 +1144,7 @@ func NewDeleteRuleRequest() (request *DeleteRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DeleteRule")
+    
     return
 }
 
@@ -1159,6 +1186,7 @@ func NewDeleteSecurityPolicyRequest() (request *DeleteSecurityPolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DeleteSecurityPolicy")
+    
     return
 }
 
@@ -1198,6 +1226,7 @@ func NewDeleteSecurityRulesRequest() (request *DeleteSecurityRulesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DeleteSecurityRules")
+    
     return
 }
 
@@ -1236,6 +1265,7 @@ func NewDescribeAccessRegionsRequest() (request *DescribeAccessRegionsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeAccessRegions")
+    
     return
 }
 
@@ -1274,6 +1304,7 @@ func NewDescribeAccessRegionsByDestRegionRequest() (request *DescribeAccessRegio
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeAccessRegionsByDestRegion")
+    
     return
 }
 
@@ -1311,6 +1342,7 @@ func NewDescribeBlackHeaderRequest() (request *DescribeBlackHeaderRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeBlackHeader")
+    
     return
 }
 
@@ -1348,6 +1380,7 @@ func NewDescribeCertificateDetailRequest() (request *DescribeCertificateDetailRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeCertificateDetail")
+    
     return
 }
 
@@ -1386,6 +1419,7 @@ func NewDescribeCertificatesRequest() (request *DescribeCertificatesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeCertificates")
+    
     return
 }
 
@@ -1424,6 +1458,7 @@ func NewDescribeCountryAreaMappingRequest() (request *DescribeCountryAreaMapping
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeCountryAreaMapping")
+    
     return
 }
 
@@ -1463,6 +1498,7 @@ func NewDescribeCustomHeaderRequest() (request *DescribeCustomHeaderRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeCustomHeader")
+    
     return
 }
 
@@ -1500,6 +1536,7 @@ func NewDescribeDestRegionsRequest() (request *DescribeDestRegionsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeDestRegions")
+    
     return
 }
 
@@ -1537,6 +1574,7 @@ func NewDescribeDomainErrorPageInfoRequest() (request *DescribeDomainErrorPageIn
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeDomainErrorPageInfo")
+    
     return
 }
 
@@ -1571,6 +1609,7 @@ func NewDescribeDomainErrorPageInfoByIdsRequest() (request *DescribeDomainErrorP
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeDomainErrorPageInfoByIds")
+    
     return
 }
 
@@ -1605,6 +1644,7 @@ func NewDescribeGroupAndStatisticsProxyRequest() (request *DescribeGroupAndStati
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeGroupAndStatisticsProxy")
+    
     return
 }
 
@@ -1642,6 +1682,7 @@ func NewDescribeGroupDomainConfigRequest() (request *DescribeGroupDomainConfigRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeGroupDomainConfig")
+    
     return
 }
 
@@ -1682,6 +1723,7 @@ func NewDescribeHTTPListenersRequest() (request *DescribeHTTPListenersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeHTTPListeners")
+    
     return
 }
 
@@ -1721,6 +1763,7 @@ func NewDescribeHTTPSListenersRequest() (request *DescribeHTTPSListenersRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeHTTPSListeners")
+    
     return
 }
 
@@ -1760,6 +1803,7 @@ func NewDescribeListenerRealServersRequest() (request *DescribeListenerRealServe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeListenerRealServers")
+    
     return
 }
 
@@ -1797,6 +1841,7 @@ func NewDescribeListenerStatisticsRequest() (request *DescribeListenerStatistics
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeListenerStatistics")
+    
     return
 }
 
@@ -1835,6 +1880,7 @@ func NewDescribeProxiesRequest() (request *DescribeProxiesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeProxies")
+    
     return
 }
 
@@ -1873,6 +1919,7 @@ func NewDescribeProxiesStatusRequest() (request *DescribeProxiesStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeProxiesStatus")
+    
     return
 }
 
@@ -1912,6 +1959,7 @@ func NewDescribeProxyAndStatisticsListenersRequest() (request *DescribeProxyAndS
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeProxyAndStatisticsListeners")
+    
     return
 }
 
@@ -1948,6 +1996,7 @@ func NewDescribeProxyDetailRequest() (request *DescribeProxyDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeProxyDetail")
+    
     return
 }
 
@@ -1990,6 +2039,7 @@ func NewDescribeProxyGroupDetailsRequest() (request *DescribeProxyGroupDetailsRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeProxyGroupDetails")
+    
     return
 }
 
@@ -2029,6 +2079,7 @@ func NewDescribeProxyGroupListRequest() (request *DescribeProxyGroupListRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeProxyGroupList")
+    
     return
 }
 
@@ -2068,6 +2119,7 @@ func NewDescribeProxyGroupStatisticsRequest() (request *DescribeProxyGroupStatis
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeProxyGroupStatistics")
+    
     return
 }
 
@@ -2105,6 +2157,7 @@ func NewDescribeProxyStatisticsRequest() (request *DescribeProxyStatisticsReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeProxyStatistics")
+    
     return
 }
 
@@ -2142,6 +2195,7 @@ func NewDescribeRealServerStatisticsRequest() (request *DescribeRealServerStatis
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeRealServerStatistics")
+    
     return
 }
 
@@ -2177,6 +2231,7 @@ func NewDescribeRealServersRequest() (request *DescribeRealServersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeRealServers")
+    
     return
 }
 
@@ -2214,6 +2269,7 @@ func NewDescribeRealServersStatusRequest() (request *DescribeRealServersStatusRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeRealServersStatus")
+    
     return
 }
 
@@ -2251,6 +2307,7 @@ func NewDescribeRegionAndPriceRequest() (request *DescribeRegionAndPriceRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeRegionAndPrice")
+    
     return
 }
 
@@ -2288,6 +2345,7 @@ func NewDescribeResourcesByTagRequest() (request *DescribeResourcesByTagRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeResourcesByTag")
+    
     return
 }
 
@@ -2325,6 +2383,7 @@ func NewDescribeRuleRealServersRequest() (request *DescribeRuleRealServersReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeRuleRealServers")
+    
     return
 }
 
@@ -2362,6 +2421,7 @@ func NewDescribeRulesRequest() (request *DescribeRulesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeRules")
+    
     return
 }
 
@@ -2399,6 +2459,7 @@ func NewDescribeRulesByRuleIdsRequest() (request *DescribeRulesByRuleIdsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeRulesByRuleIds")
+    
     return
 }
 
@@ -2439,6 +2500,7 @@ func NewDescribeSecurityPolicyDetailRequest() (request *DescribeSecurityPolicyDe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeSecurityPolicyDetail")
+    
     return
 }
 
@@ -2478,6 +2540,7 @@ func NewDescribeSecurityRulesRequest() (request *DescribeSecurityRulesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeSecurityRules")
+    
     return
 }
 
@@ -2518,6 +2581,7 @@ func NewDescribeTCPListenersRequest() (request *DescribeTCPListenersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeTCPListeners")
+    
     return
 }
 
@@ -2556,6 +2620,7 @@ func NewDescribeUDPListenersRequest() (request *DescribeUDPListenersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DescribeUDPListeners")
+    
     return
 }
 
@@ -2593,6 +2658,7 @@ func NewDestroyProxiesRequest() (request *DestroyProxiesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "DestroyProxies")
+    
     return
 }
 
@@ -2637,6 +2703,7 @@ func NewInquiryPriceCreateProxyRequest() (request *InquiryPriceCreateProxyReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "InquiryPriceCreateProxy")
+    
     return
 }
 
@@ -2680,6 +2747,7 @@ func NewModifyCertificateRequest() (request *ModifyCertificateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "ModifyCertificate")
+    
     return
 }
 
@@ -2722,6 +2790,7 @@ func NewModifyCertificateAttributesRequest() (request *ModifyCertificateAttribut
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "ModifyCertificateAttributes")
+    
     return
 }
 
@@ -2760,6 +2829,7 @@ func NewModifyDomainRequest() (request *ModifyDomainRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "ModifyDomain")
+    
     return
 }
 
@@ -2804,6 +2874,7 @@ func NewModifyGroupDomainConfigRequest() (request *ModifyGroupDomainConfigReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "ModifyGroupDomainConfig")
+    
     return
 }
 
@@ -2842,6 +2913,7 @@ func NewModifyHTTPListenerAttributeRequest() (request *ModifyHTTPListenerAttribu
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "ModifyHTTPListenerAttribute")
+    
     return
 }
 
@@ -2882,6 +2954,7 @@ func NewModifyHTTPSListenerAttributeRequest() (request *ModifyHTTPSListenerAttri
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "ModifyHTTPSListenerAttribute")
+    
     return
 }
 
@@ -2922,6 +2995,7 @@ func NewModifyProxiesAttributeRequest() (request *ModifyProxiesAttributeRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "ModifyProxiesAttribute")
+    
     return
 }
 
@@ -2963,6 +3037,7 @@ func NewModifyProxiesProjectRequest() (request *ModifyProxiesProjectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "ModifyProxiesProject")
+    
     return
 }
 
@@ -3004,6 +3079,7 @@ func NewModifyProxyConfigurationRequest() (request *ModifyProxyConfigurationRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "ModifyProxyConfiguration")
+    
     return
 }
 
@@ -3046,6 +3122,7 @@ func NewModifyProxyGroupAttributeRequest() (request *ModifyProxyGroupAttributeRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "ModifyProxyGroupAttribute")
+    
     return
 }
 
@@ -3084,6 +3161,7 @@ func NewModifyRealServerNameRequest() (request *ModifyRealServerNameRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "ModifyRealServerName")
+    
     return
 }
 
@@ -3120,6 +3198,7 @@ func NewModifyRuleAttributeRequest() (request *ModifyRuleAttributeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "ModifyRuleAttribute")
+    
     return
 }
 
@@ -3158,6 +3237,7 @@ func NewModifySecurityRuleRequest() (request *ModifySecurityRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "ModifySecurityRule")
+    
     return
 }
 
@@ -3198,6 +3278,7 @@ func NewModifyTCPListenerAttributeRequest() (request *ModifyTCPListenerAttribute
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "ModifyTCPListenerAttribute")
+    
     return
 }
 
@@ -3238,6 +3319,7 @@ func NewModifyUDPListenerAttributeRequest() (request *ModifyUDPListenerAttribute
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "ModifyUDPListenerAttribute")
+    
     return
 }
 
@@ -3278,6 +3360,7 @@ func NewOpenProxiesRequest() (request *OpenProxiesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "OpenProxies")
+    
     return
 }
 
@@ -3319,6 +3402,7 @@ func NewOpenProxyGroupRequest() (request *OpenProxyGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "OpenProxyGroup")
+    
     return
 }
 
@@ -3357,6 +3441,7 @@ func NewOpenSecurityPolicyRequest() (request *OpenSecurityPolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "OpenSecurityPolicy")
+    
     return
 }
 
@@ -3397,6 +3482,7 @@ func NewRemoveRealServersRequest() (request *RemoveRealServersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "RemoveRealServers")
+    
     return
 }
 
@@ -3435,6 +3521,7 @@ func NewSetAuthenticationRequest() (request *SetAuthenticationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gaap", APIVersion, "SetAuthentication")
+    
     return
 }
 

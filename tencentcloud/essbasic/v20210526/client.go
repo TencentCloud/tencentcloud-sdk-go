@@ -48,6 +48,7 @@ func NewCreateConsoleLoginUrlRequest() (request *CreateConsoleLoginUrlRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "CreateConsoleLoginUrl")
+    
     return
 }
 
@@ -89,6 +90,7 @@ func NewCreateFlowsByTemplatesRequest() (request *CreateFlowsByTemplatesRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "CreateFlowsByTemplates")
+    
     return
 }
 
@@ -134,6 +136,7 @@ func NewCreateSignUrlsRequest() (request *CreateSignUrlsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "CreateSignUrls")
+    
     return
 }
 
@@ -175,6 +178,7 @@ func NewDescribeResourceUrlsByFlowsRequest() (request *DescribeResourceUrlsByFlo
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "DescribeResourceUrlsByFlows")
+    
     return
 }
 
@@ -218,6 +222,7 @@ func NewDescribeTemplatesRequest() (request *DescribeTemplatesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "DescribeTemplates")
+    
     return
 }
 
@@ -258,6 +263,7 @@ func NewDescribeUsageRequest() (request *DescribeUsageRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "DescribeUsage")
+    
     return
 }
 
@@ -300,6 +306,7 @@ func NewPrepareFlowsRequest() (request *PrepareFlowsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "PrepareFlows")
+    
     return
 }
 
@@ -336,6 +343,7 @@ func NewSyncProxyOrganizationRequest() (request *SyncProxyOrganizationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "SyncProxyOrganization")
+    
     return
 }
 
@@ -376,6 +384,7 @@ func NewSyncProxyOrganizationOperatorsRequest() (request *SyncProxyOrganizationO
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("essbasic", APIVersion, "SyncProxyOrganizationOperators")
+    
     return
 }
 

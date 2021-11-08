@@ -48,6 +48,7 @@ func NewDescribeRiskModelRequest() (request *DescribeRiskModelRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("rce", APIVersion, "DescribeRiskModel")
+    
     return
 }
 
@@ -119,6 +120,7 @@ func NewManageMarketingRiskRequest() (request *ManageMarketingRiskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("rce", APIVersion, "ManageMarketingRisk")
+    
     return
 }
 

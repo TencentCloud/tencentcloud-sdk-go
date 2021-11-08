@@ -48,6 +48,7 @@ func NewCreateSmpnEpaRequest() (request *CreateSmpnEpaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("smpn", APIVersion, "CreateSmpnEpa")
+    
     return
 }
 
@@ -80,6 +81,7 @@ func NewDescribeSmpnChpRequest() (request *DescribeSmpnChpRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("smpn", APIVersion, "DescribeSmpnChp")
+    
     return
 }
 
@@ -111,6 +113,7 @@ func NewDescribeSmpnFnrRequest() (request *DescribeSmpnFnrRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("smpn", APIVersion, "DescribeSmpnFnr")
+    
     return
 }
 
@@ -142,6 +145,7 @@ func NewDescribeSmpnMhmRequest() (request *DescribeSmpnMhmRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("smpn", APIVersion, "DescribeSmpnMhm")
+    
     return
 }
 
@@ -173,6 +177,7 @@ func NewDescribeSmpnMrlRequest() (request *DescribeSmpnMrlRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("smpn", APIVersion, "DescribeSmpnMrl")
+    
     return
 }
 

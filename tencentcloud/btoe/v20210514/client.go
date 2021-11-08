@@ -48,6 +48,7 @@ func NewCreateAudioDepositRequest() (request *CreateAudioDepositRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("btoe", APIVersion, "CreateAudioDeposit")
+    
     return
 }
 
@@ -88,6 +89,7 @@ func NewCreateDataDepositRequest() (request *CreateDataDepositRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("btoe", APIVersion, "CreateDataDeposit")
+    
     return
 }
 
@@ -130,6 +132,7 @@ func NewCreateDocDepositRequest() (request *CreateDocDepositRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("btoe", APIVersion, "CreateDocDeposit")
+    
     return
 }
 
@@ -174,6 +177,7 @@ func NewCreateHashDepositRequest() (request *CreateHashDepositRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("btoe", APIVersion, "CreateHashDeposit")
+    
     return
 }
 
@@ -210,6 +214,7 @@ func NewCreateHashDepositNoCertRequest() (request *CreateHashDepositNoCertReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("btoe", APIVersion, "CreateHashDepositNoCert")
+    
     return
 }
 
@@ -245,6 +250,7 @@ func NewCreateHashDepositNoSealRequest() (request *CreateHashDepositNoSealReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("btoe", APIVersion, "CreateHashDepositNoSeal")
+    
     return
 }
 
@@ -279,6 +285,7 @@ func NewCreateImageDepositRequest() (request *CreateImageDepositRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("btoe", APIVersion, "CreateImageDeposit")
+    
     return
 }
 
@@ -323,6 +330,7 @@ func NewCreateVideoDepositRequest() (request *CreateVideoDepositRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("btoe", APIVersion, "CreateVideoDeposit")
+    
     return
 }
 
@@ -365,6 +373,7 @@ func NewGetDepositCertRequest() (request *GetDepositCertRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("btoe", APIVersion, "GetDepositCert")
+    
     return
 }
 
@@ -399,6 +408,7 @@ func NewGetDepositFileRequest() (request *GetDepositFileRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("btoe", APIVersion, "GetDepositFile")
+    
     return
 }
 
@@ -448,6 +458,7 @@ func NewGetDepositInfoRequest() (request *GetDepositInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("btoe", APIVersion, "GetDepositInfo")
+    
     return
 }
 
@@ -487,6 +498,7 @@ func NewVerifyEvidenceBlockChainTxHashRequest() (request *VerifyEvidenceBlockCha
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("btoe", APIVersion, "VerifyEvidenceBlockChainTxHash")
+    
     return
 }
 
@@ -518,6 +530,7 @@ func NewVerifyEvidenceHashRequest() (request *VerifyEvidenceHashRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("btoe", APIVersion, "VerifyEvidenceHash")
+    
     return
 }
 

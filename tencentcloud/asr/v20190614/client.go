@@ -48,6 +48,7 @@ func NewCloseAsyncRecognitionTaskRequest() (request *CloseAsyncRecognitionTaskRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("asr", APIVersion, "CloseAsyncRecognitionTask")
+    
     return
 }
 
@@ -80,6 +81,7 @@ func NewCreateAsrVocabRequest() (request *CreateAsrVocabRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("asr", APIVersion, "CreateAsrVocab")
+    
     return
 }
 
@@ -138,6 +140,7 @@ func NewCreateAsyncRecognitionTaskRequest() (request *CreateAsyncRecognitionTask
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("asr", APIVersion, "CreateAsyncRecognitionTask")
+    
     return
 }
 
@@ -185,6 +188,7 @@ func NewCreateCustomizationRequest() (request *CreateCustomizationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("asr", APIVersion, "CreateCustomization")
+    
     return
 }
 
@@ -222,6 +226,7 @@ func NewCreateRecTaskRequest() (request *CreateRecTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("asr", APIVersion, "CreateRecTask")
+    
     return
 }
 
@@ -284,6 +289,7 @@ func NewDeleteAsrVocabRequest() (request *DeleteAsrVocabRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("asr", APIVersion, "DeleteAsrVocab")
+    
     return
 }
 
@@ -323,6 +329,7 @@ func NewDeleteCustomizationRequest() (request *DeleteCustomizationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("asr", APIVersion, "DeleteCustomization")
+    
     return
 }
 
@@ -361,6 +368,7 @@ func NewDescribeAsyncRecognitionTasksRequest() (request *DescribeAsyncRecognitio
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("asr", APIVersion, "DescribeAsyncRecognitionTasks")
+    
     return
 }
 
@@ -392,6 +400,7 @@ func NewDescribeTaskStatusRequest() (request *DescribeTaskStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("asr", APIVersion, "DescribeTaskStatus")
+    
     return
 }
 
@@ -440,6 +449,7 @@ func NewDownloadAsrVocabRequest() (request *DownloadAsrVocabRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("asr", APIVersion, "DownloadAsrVocab")
+    
     return
 }
 
@@ -475,6 +485,7 @@ func NewDownloadCustomizationRequest() (request *DownloadCustomizationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("asr", APIVersion, "DownloadCustomization")
+    
     return
 }
 
@@ -511,6 +522,7 @@ func NewGetAsrVocabRequest() (request *GetAsrVocabRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("asr", APIVersion, "GetAsrVocab")
+    
     return
 }
 
@@ -544,6 +556,7 @@ func NewGetAsrVocabListRequest() (request *GetAsrVocabListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("asr", APIVersion, "GetAsrVocabList")
+    
     return
 }
 
@@ -581,6 +594,7 @@ func NewGetCustomizationListRequest() (request *GetCustomizationListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("asr", APIVersion, "GetCustomizationList")
+    
     return
 }
 
@@ -613,6 +627,7 @@ func NewModifyCustomizationRequest() (request *ModifyCustomizationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("asr", APIVersion, "ModifyCustomization")
+    
     return
 }
 
@@ -650,6 +665,7 @@ func NewModifyCustomizationStateRequest() (request *ModifyCustomizationStateRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("asr", APIVersion, "ModifyCustomizationState")
+    
     return
 }
 
@@ -687,6 +703,7 @@ func NewSentenceRecognitionRequest() (request *SentenceRecognitionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("asr", APIVersion, "SentenceRecognition")
+    
     return
 }
 
@@ -745,6 +762,7 @@ func NewSetVocabStateRequest() (request *SetVocabStateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("asr", APIVersion, "SetVocabState")
+    
     return
 }
 
@@ -781,6 +799,7 @@ func NewUpdateAsrVocabRequest() (request *UpdateAsrVocabRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("asr", APIVersion, "UpdateAsrVocab")
+    
     return
 }
 

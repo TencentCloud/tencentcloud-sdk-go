@@ -48,6 +48,7 @@ func NewCreatePrivateZoneRequest() (request *CreatePrivateZoneRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "CreatePrivateZone")
+    
     return
 }
 
@@ -108,6 +109,7 @@ func NewCreatePrivateZoneRecordRequest() (request *CreatePrivateZoneRecordReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "CreatePrivateZoneRecord")
+    
     return
 }
 
@@ -171,6 +173,7 @@ func NewDeletePrivateZoneRequest() (request *DeletePrivateZoneRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "DeletePrivateZone")
+    
     return
 }
 
@@ -221,6 +224,7 @@ func NewDeletePrivateZoneRecordRequest() (request *DeletePrivateZoneRecordReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "DeletePrivateZoneRecord")
+    
     return
 }
 
@@ -272,6 +276,7 @@ func NewDescribeAuditLogRequest() (request *DescribeAuditLogRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "DescribeAuditLog")
+    
     return
 }
 
@@ -318,6 +323,7 @@ func NewDescribeDashboardRequest() (request *DescribeDashboardRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "DescribeDashboard")
+    
     return
 }
 
@@ -367,6 +373,7 @@ func NewDescribePrivateDNSAccountListRequest() (request *DescribePrivateDNSAccou
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "DescribePrivateDNSAccountList")
+    
     return
 }
 
@@ -415,6 +422,7 @@ func NewDescribePrivateZoneRequest() (request *DescribePrivateZoneRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "DescribePrivateZone")
+    
     return
 }
 
@@ -465,6 +473,7 @@ func NewDescribePrivateZoneListRequest() (request *DescribePrivateZoneListReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "DescribePrivateZoneList")
+    
     return
 }
 
@@ -513,6 +522,7 @@ func NewDescribePrivateZoneRecordListRequest() (request *DescribePrivateZoneReco
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "DescribePrivateZoneRecordList")
+    
     return
 }
 
@@ -553,6 +563,7 @@ func NewDescribePrivateZoneServiceRequest() (request *DescribePrivateZoneService
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "DescribePrivateZoneService")
+    
     return
 }
 
@@ -600,6 +611,7 @@ func NewDescribeRequestDataRequest() (request *DescribeRequestDataRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "DescribeRequestData")
+    
     return
 }
 
@@ -631,6 +643,7 @@ func NewModifyPrivateZoneRequest() (request *ModifyPrivateZoneRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "ModifyPrivateZone")
+    
     return
 }
 
@@ -681,6 +694,7 @@ func NewModifyPrivateZoneRecordRequest() (request *ModifyPrivateZoneRecordReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "ModifyPrivateZoneRecord")
+    
     return
 }
 
@@ -747,6 +761,7 @@ func NewModifyPrivateZoneVpcRequest() (request *ModifyPrivateZoneVpcRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "ModifyPrivateZoneVpc")
+    
     return
 }
 
@@ -801,6 +816,7 @@ func NewSubscribePrivateZoneServiceRequest() (request *SubscribePrivateZoneServi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "SubscribePrivateZoneService")
+    
     return
 }
 

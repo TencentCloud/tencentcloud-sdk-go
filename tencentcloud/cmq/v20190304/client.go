@@ -48,6 +48,7 @@ func NewClearQueueRequest() (request *ClearQueueRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "ClearQueue")
+    
     return
 }
 
@@ -86,6 +87,7 @@ func NewClearSubscriptionFilterTagsRequest() (request *ClearSubscriptionFilterTa
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "ClearSubscriptionFilterTags")
+    
     return
 }
 
@@ -124,6 +126,7 @@ func NewCreateQueueRequest() (request *CreateQueueRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "CreateQueue")
+    
     return
 }
 
@@ -158,6 +161,7 @@ func NewCreateSubscribeRequest() (request *CreateSubscribeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "CreateSubscribe")
+    
     return
 }
 
@@ -196,6 +200,7 @@ func NewCreateTopicRequest() (request *CreateTopicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "CreateTopic")
+    
     return
 }
 
@@ -233,6 +238,7 @@ func NewDeleteQueueRequest() (request *DeleteQueueRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "DeleteQueue")
+    
     return
 }
 
@@ -267,6 +273,7 @@ func NewDeleteSubscribeRequest() (request *DeleteSubscribeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "DeleteSubscribe")
+    
     return
 }
 
@@ -304,6 +311,7 @@ func NewDeleteTopicRequest() (request *DeleteTopicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "DeleteTopic")
+    
     return
 }
 
@@ -341,6 +349,7 @@ func NewDescribeDeadLetterSourceQueuesRequest() (request *DescribeDeadLetterSour
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "DescribeDeadLetterSourceQueues")
+    
     return
 }
 
@@ -378,6 +387,7 @@ func NewDescribeQueueDetailRequest() (request *DescribeQueueDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "DescribeQueueDetail")
+    
     return
 }
 
@@ -415,6 +425,7 @@ func NewDescribeSubscriptionDetailRequest() (request *DescribeSubscriptionDetail
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "DescribeSubscriptionDetail")
+    
     return
 }
 
@@ -453,6 +464,7 @@ func NewDescribeTopicDetailRequest() (request *DescribeTopicDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "DescribeTopicDetail")
+    
     return
 }
 
@@ -491,6 +503,7 @@ func NewModifyQueueAttributeRequest() (request *ModifyQueueAttributeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "ModifyQueueAttribute")
+    
     return
 }
 
@@ -529,6 +542,7 @@ func NewModifySubscriptionAttributeRequest() (request *ModifySubscriptionAttribu
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "ModifySubscriptionAttribute")
+    
     return
 }
 
@@ -567,6 +581,7 @@ func NewModifyTopicAttributeRequest() (request *ModifyTopicAttributeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "ModifyTopicAttribute")
+    
     return
 }
 
@@ -604,6 +619,7 @@ func NewRewindQueueRequest() (request *RewindQueueRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "RewindQueue")
+    
     return
 }
 
@@ -641,6 +657,7 @@ func NewUnbindDeadLetterRequest() (request *UnbindDeadLetterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "UnbindDeadLetter")
+    
     return
 }
 

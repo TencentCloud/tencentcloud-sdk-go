@@ -48,6 +48,7 @@ func NewBatchDescribeOrderCertificateRequest() (request *BatchDescribeOrderCerti
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ape", APIVersion, "BatchDescribeOrderCertificate")
+    
     return
 }
 
@@ -81,6 +82,7 @@ func NewBatchDescribeOrderImageRequest() (request *BatchDescribeOrderImageReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ape", APIVersion, "BatchDescribeOrderImage")
+    
     return
 }
 
@@ -115,6 +117,7 @@ func NewCreateOrderAndDownloadsRequest() (request *CreateOrderAndDownloadsReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ape", APIVersion, "CreateOrderAndDownloads")
+    
     return
 }
 
@@ -147,6 +150,7 @@ func NewCreateOrderAndPayRequest() (request *CreateOrderAndPayRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ape", APIVersion, "CreateOrderAndPay")
+    
     return
 }
 
@@ -183,6 +187,7 @@ func NewDescribeAuthUsersRequest() (request *DescribeAuthUsersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ape", APIVersion, "DescribeAuthUsers")
+    
     return
 }
 
@@ -214,6 +219,7 @@ func NewDescribeDownloadInfosRequest() (request *DescribeDownloadInfosRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ape", APIVersion, "DescribeDownloadInfos")
+    
     return
 }
 
@@ -244,6 +250,7 @@ func NewDescribeImageRequest() (request *DescribeImageRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ape", APIVersion, "DescribeImage")
+    
     return
 }
 
@@ -280,6 +287,7 @@ func NewDescribeImagesRequest() (request *DescribeImagesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ape", APIVersion, "DescribeImages")
+    
     return
 }
 

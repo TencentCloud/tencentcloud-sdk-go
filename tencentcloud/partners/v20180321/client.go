@@ -48,6 +48,7 @@ func NewAgentPayDealsRequest() (request *AgentPayDealsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "AgentPayDeals")
+    
     return
 }
 
@@ -80,6 +81,7 @@ func NewAgentTransferMoneyRequest() (request *AgentTransferMoneyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "AgentTransferMoney")
+    
     return
 }
 
@@ -112,6 +114,7 @@ func NewAuditApplyClientRequest() (request *AuditApplyClientRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "AuditApplyClient")
+    
     return
 }
 
@@ -143,6 +146,7 @@ func NewCreatePayRelationForClientRequest() (request *CreatePayRelationForClient
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "CreatePayRelationForClient")
+    
     return
 }
 
@@ -172,6 +176,7 @@ func NewDescribeAgentAuditedClientsRequest() (request *DescribeAgentAuditedClien
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentAuditedClients")
+    
     return
 }
 
@@ -203,6 +208,7 @@ func NewDescribeAgentBillsRequest() (request *DescribeAgentBillsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentBills")
+    
     return
 }
 
@@ -233,6 +239,7 @@ func NewDescribeAgentClientGradeRequest() (request *DescribeAgentClientGradeRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentClientGrade")
+    
     return
 }
 
@@ -265,6 +272,7 @@ func NewDescribeAgentClientsRequest() (request *DescribeAgentClientsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentClients")
+    
     return
 }
 
@@ -295,6 +303,7 @@ func NewDescribeAgentDealsByCacheRequest() (request *DescribeAgentDealsByCacheRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentDealsByCache")
+    
     return
 }
 
@@ -327,6 +336,7 @@ func NewDescribeAgentDealsCacheRequest() (request *DescribeAgentDealsCacheReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentDealsCache")
+    
     return
 }
 
@@ -359,6 +369,7 @@ func NewDescribeAgentPayDealsRequest() (request *DescribeAgentPayDealsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentPayDeals")
+    
     return
 }
 
@@ -391,6 +402,7 @@ func NewDescribeAgentPayDealsV2Request() (request *DescribeAgentPayDealsV2Reques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentPayDealsV2")
+    
     return
 }
 
@@ -423,6 +435,7 @@ func NewDescribeAgentSelfPayDealsRequest() (request *DescribeAgentSelfPayDealsRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentSelfPayDeals")
+    
     return
 }
 
@@ -455,6 +468,7 @@ func NewDescribeAgentSelfPayDealsV2Request() (request *DescribeAgentSelfPayDeals
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentSelfPayDealsV2")
+    
     return
 }
 
@@ -487,6 +501,7 @@ func NewDescribeClientBalanceRequest() (request *DescribeClientBalanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "DescribeClientBalance")
+    
     return
 }
 
@@ -518,6 +533,7 @@ func NewDescribeClientBalanceNewRequest() (request *DescribeClientBalanceNewRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "DescribeClientBalanceNew")
+    
     return
 }
 
@@ -549,6 +565,7 @@ func NewDescribeRebateInfosRequest() (request *DescribeRebateInfosRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "DescribeRebateInfos")
+    
     return
 }
 
@@ -579,6 +596,7 @@ func NewDescribeSalesmansRequest() (request *DescribeSalesmansRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "DescribeSalesmans")
+    
     return
 }
 
@@ -611,6 +629,7 @@ func NewDescribeUnbindClientListRequest() (request *DescribeUnbindClientListRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "DescribeUnbindClientList")
+    
     return
 }
 
@@ -643,6 +662,7 @@ func NewModifyClientRemarkRequest() (request *ModifyClientRemarkRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "ModifyClientRemark")
+    
     return
 }
 
@@ -673,6 +693,7 @@ func NewRemovePayRelationForClientRequest() (request *RemovePayRelationForClient
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "RemovePayRelationForClient")
+    
     return
 }
 

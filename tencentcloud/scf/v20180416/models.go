@@ -390,6 +390,12 @@ type CreateFunctionRequest struct {
 
 	// 是否开启事件追踪，TRUE 为开启，FALSE为关闭
 	TraceEnable *string `json:"TraceEnable,omitempty" name:"TraceEnable"`
+
+	// HTTP函数支持的访问协议。当前支持WebSockets协议，值为WS
+	ProtocolType *string `json:"ProtocolType,omitempty" name:"ProtocolType"`
+
+	// HTTP函数配置ProtocolType访问协议，当前协议可配置的参数
+	ProtocolParams *ProtocolParams `json:"ProtocolParams,omitempty" name:"ProtocolParams"`
 }
 
 func (r *CreateFunctionRequest) ToJsonString() string {
@@ -427,6 +433,8 @@ func (r *CreateFunctionRequest) FromJsonString(s string) error {
 	delete(f, "Tags")
 	delete(f, "AsyncRunEnable")
 	delete(f, "TraceEnable")
+	delete(f, "ProtocolType")
+	delete(f, "ProtocolParams")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFunctionRequest has unknown keys!", "")
 	}
@@ -1636,6 +1644,14 @@ type GetFunctionResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		TraceEnable *string `json:"TraceEnable,omitempty" name:"TraceEnable"`
 
+		// HTTP函数支持的访问协议。当前支持WebSockets协议。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ProtocolType *string `json:"ProtocolType,omitempty" name:"ProtocolType"`
+
+		// HTTP函数配置ProtocolType访问协议，当前协议配置的参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ProtocolParams *ProtocolParams `json:"ProtocolParams,omitempty" name:"ProtocolParams"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -2737,6 +2753,13 @@ type NamespaceUsage struct {
 	FunctionsCount *int64 `json:"FunctionsCount,omitempty" name:"FunctionsCount"`
 }
 
+type ProtocolParams struct {
+
+	// WebSockets协议支持的参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WSParams *WSParams `json:"WSParams,omitempty" name:"WSParams"`
+}
+
 type PublicNetConfigIn struct {
 
 	// 是否开启公网访问能力取值['DISABLE','ENABLE']
@@ -3538,6 +3561,9 @@ type UpdateFunctionConfigurationRequest struct {
 
 	// 函数初始化执行超时时间
 	InitTimeout *int64 `json:"InitTimeout,omitempty" name:"InitTimeout"`
+
+	// HTTP函数配置ProtocolType访问协议，当前协议可配置的参数
+	ProtocolParams *ProtocolParams `json:"ProtocolParams,omitempty" name:"ProtocolParams"`
 }
 
 func (r *UpdateFunctionConfigurationRequest) ToJsonString() string {
@@ -3570,6 +3596,7 @@ func (r *UpdateFunctionConfigurationRequest) FromJsonString(s string) error {
 	delete(f, "PublicNetConfig")
 	delete(f, "CfsConfig")
 	delete(f, "InitTimeout")
+	delete(f, "ProtocolParams")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateFunctionConfigurationRequest has unknown keys!", "")
 	}
@@ -3787,4 +3814,11 @@ type VpcConfig struct {
 
 	// 子网的 Id
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+}
+
+type WSParams struct {
+
+	// 空闲超时时间, 单位秒，默认15s。可配置范围1~1800s。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdleTimeOut *uint64 `json:"IdleTimeOut,omitempty" name:"IdleTimeOut"`
 }

@@ -48,6 +48,7 @@ func NewAddAcRuleRequest() (request *AddAcRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "AddAcRule")
+    
     return
 }
 
@@ -94,6 +95,7 @@ func NewCreateAcRulesRequest() (request *CreateAcRulesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "CreateAcRules")
+    
     return
 }
 
@@ -125,6 +127,7 @@ func NewCreateChooseVpcsRequest() (request *CreateChooseVpcsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "CreateChooseVpcs")
+    
     return
 }
 
@@ -156,6 +159,7 @@ func NewCreateDatabaseWhiteListRulesRequest() (request *CreateDatabaseWhiteListR
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "CreateDatabaseWhiteListRules")
+    
     return
 }
 
@@ -188,6 +192,7 @@ func NewCreateNatFwInstanceRequest() (request *CreateNatFwInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "CreateNatFwInstance")
+    
     return
 }
 
@@ -234,6 +239,7 @@ func NewCreateNatFwInstanceWithDomainRequest() (request *CreateNatFwInstanceWith
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "CreateNatFwInstanceWithDomain")
+    
     return
 }
 
@@ -280,6 +286,7 @@ func NewCreateSecurityGroupApiRulesRequest() (request *CreateSecurityGroupApiRul
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "CreateSecurityGroupApiRules")
+    
     return
 }
 
@@ -312,6 +319,7 @@ func NewCreateSecurityGroupRulesRequest() (request *CreateSecurityGroupRulesRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "CreateSecurityGroupRules")
+    
     return
 }
 
@@ -347,6 +355,7 @@ func NewDeleteAcRuleRequest() (request *DeleteAcRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DeleteAcRule")
+    
     return
 }
 
@@ -378,6 +387,7 @@ func NewDeleteAllAccessControlRuleRequest() (request *DeleteAllAccessControlRule
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DeleteAllAccessControlRule")
+    
     return
 }
 
@@ -410,6 +420,7 @@ func NewDeleteNatFwInstanceRequest() (request *DeleteNatFwInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DeleteNatFwInstance")
+    
     return
 }
 
@@ -456,6 +467,7 @@ func NewDeleteResourceGroupRequest() (request *DeleteResourceGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DeleteResourceGroup")
+    
     return
 }
 
@@ -502,6 +514,7 @@ func NewDeleteSecurityGroupAllRuleRequest() (request *DeleteSecurityGroupAllRule
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DeleteSecurityGroupAllRule")
+    
     return
 }
 
@@ -534,6 +547,7 @@ func NewDeleteSecurityGroupRuleRequest() (request *DeleteSecurityGroupRuleReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DeleteSecurityGroupRule")
+    
     return
 }
 
@@ -565,6 +579,7 @@ func NewDeleteVpcInstanceRequest() (request *DeleteVpcInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DeleteVpcInstance")
+    
     return
 }
 
@@ -596,6 +611,7 @@ func NewDescribeAcListsRequest() (request *DescribeAcListsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DescribeAcLists")
+    
     return
 }
 
@@ -628,6 +644,7 @@ func NewDescribeAssociatedInstanceListRequest() (request *DescribeAssociatedInst
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DescribeAssociatedInstanceList")
+    
     return
 }
 
@@ -660,6 +677,7 @@ func NewDescribeBlockByIpTimesListRequest() (request *DescribeBlockByIpTimesList
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DescribeBlockByIpTimesList")
+    
     return
 }
 
@@ -706,6 +724,7 @@ func NewDescribeBlockStaticListRequest() (request *DescribeBlockStaticListReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DescribeBlockStaticList")
+    
     return
 }
 
@@ -752,6 +771,7 @@ func NewDescribeCfwEipsRequest() (request *DescribeCfwEipsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DescribeCfwEips")
+    
     return
 }
 
@@ -798,6 +818,7 @@ func NewDescribeGuideScanInfoRequest() (request *DescribeGuideScanInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DescribeGuideScanInfo")
+    
     return
 }
 
@@ -844,6 +865,7 @@ func NewDescribeNatFwInfoCountRequest() (request *DescribeNatFwInfoCountRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DescribeNatFwInfoCount")
+    
     return
 }
 
@@ -890,6 +912,7 @@ func NewDescribeNatFwInstanceRequest() (request *DescribeNatFwInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DescribeNatFwInstance")
+    
     return
 }
 
@@ -936,6 +959,7 @@ func NewDescribeNatFwInstanceWithRegionRequest() (request *DescribeNatFwInstance
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DescribeNatFwInstanceWithRegion")
+    
     return
 }
 
@@ -982,6 +1006,7 @@ func NewDescribeNatFwInstancesInfoRequest() (request *DescribeNatFwInstancesInfo
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DescribeNatFwInstancesInfo")
+    
     return
 }
 
@@ -1028,6 +1053,7 @@ func NewDescribeNatFwVpcDnsLstRequest() (request *DescribeNatFwVpcDnsLstRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DescribeNatFwVpcDnsLst")
+    
     return
 }
 
@@ -1074,6 +1100,7 @@ func NewDescribeNatRuleOverviewRequest() (request *DescribeNatRuleOverviewReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DescribeNatRuleOverview")
+    
     return
 }
 
@@ -1106,6 +1133,7 @@ func NewDescribeResourceGroupRequest() (request *DescribeResourceGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DescribeResourceGroup")
+    
     return
 }
 
@@ -1152,6 +1180,7 @@ func NewDescribeResourceGroupNewRequest() (request *DescribeResourceGroupNewRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DescribeResourceGroupNew")
+    
     return
 }
 
@@ -1198,6 +1227,7 @@ func NewDescribeRuleOverviewRequest() (request *DescribeRuleOverviewRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DescribeRuleOverview")
+    
     return
 }
 
@@ -1230,6 +1260,7 @@ func NewDescribeSecurityGroupListRequest() (request *DescribeSecurityGroupListRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DescribeSecurityGroupList")
+    
     return
 }
 
@@ -1262,6 +1293,7 @@ func NewDescribeSourceAssetRequest() (request *DescribeSourceAssetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DescribeSourceAsset")
+    
     return
 }
 
@@ -1292,6 +1324,7 @@ func NewDescribeSwitchListsRequest() (request *DescribeSwitchListsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DescribeSwitchLists")
+    
     return
 }
 
@@ -1322,6 +1355,7 @@ func NewDescribeSyncAssetStatusRequest() (request *DescribeSyncAssetStatusReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DescribeSyncAssetStatus")
+    
     return
 }
 
@@ -1354,6 +1388,7 @@ func NewDescribeTLogInfoRequest() (request *DescribeTLogInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DescribeTLogInfo")
+    
     return
 }
 
@@ -1400,6 +1435,7 @@ func NewDescribeTLogIpListRequest() (request *DescribeTLogIpListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DescribeTLogIpList")
+    
     return
 }
 
@@ -1446,6 +1482,7 @@ func NewDescribeTableStatusRequest() (request *DescribeTableStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DescribeTableStatus")
+    
     return
 }
 
@@ -1478,6 +1515,7 @@ func NewDescribeUnHandleEventTabListRequest() (request *DescribeUnHandleEventTab
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DescribeUnHandleEventTabList")
+    
     return
 }
 
@@ -1524,6 +1562,7 @@ func NewDescribeVpcRuleOverviewRequest() (request *DescribeVpcRuleOverviewReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "DescribeVpcRuleOverview")
+    
     return
 }
 
@@ -1556,6 +1595,7 @@ func NewExpandCfwVerticalRequest() (request *ExpandCfwVerticalRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "ExpandCfwVertical")
+    
     return
 }
 
@@ -1602,6 +1642,7 @@ func NewModifyAcRuleRequest() (request *ModifyAcRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "ModifyAcRule")
+    
     return
 }
 
@@ -1634,6 +1675,7 @@ func NewModifyAllPublicIPSwitchStatusRequest() (request *ModifyAllPublicIPSwitch
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "ModifyAllPublicIPSwitchStatus")
+    
     return
 }
 
@@ -1665,6 +1707,7 @@ func NewModifyAllRuleStatusRequest() (request *ModifyAllRuleStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "ModifyAllRuleStatus")
+    
     return
 }
 
@@ -1697,6 +1740,7 @@ func NewModifyAllSwitchStatusRequest() (request *ModifyAllSwitchStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "ModifyAllSwitchStatus")
+    
     return
 }
 
@@ -1728,6 +1772,7 @@ func NewModifyAllVPCSwitchStatusRequest() (request *ModifyAllVPCSwitchStatusRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "ModifyAllVPCSwitchStatus")
+    
     return
 }
 
@@ -1759,6 +1804,7 @@ func NewModifyAssetScanRequest() (request *ModifyAssetScanRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "ModifyAssetScan")
+    
     return
 }
 
@@ -1790,6 +1836,7 @@ func NewModifyBlockIgnoreListRequest() (request *ModifyBlockIgnoreListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "ModifyBlockIgnoreList")
+    
     return
 }
 
@@ -1828,6 +1875,7 @@ func NewModifyBlockTopRequest() (request *ModifyBlockTopRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "ModifyBlockTop")
+    
     return
 }
 
@@ -1874,6 +1922,7 @@ func NewModifyItemSwitchStatusRequest() (request *ModifyItemSwitchStatusRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "ModifyItemSwitchStatus")
+    
     return
 }
 
@@ -1903,6 +1952,7 @@ func NewModifyNatFwReSelectRequest() (request *ModifyNatFwReSelectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "ModifyNatFwReSelect")
+    
     return
 }
 
@@ -1949,6 +1999,7 @@ func NewModifyNatFwSwitchRequest() (request *ModifyNatFwSwitchRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "ModifyNatFwSwitch")
+    
     return
 }
 
@@ -1995,6 +2046,7 @@ func NewModifyNatFwVpcDnsSwitchRequest() (request *ModifyNatFwVpcDnsSwitchReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "ModifyNatFwVpcDnsSwitch")
+    
     return
 }
 
@@ -2035,6 +2087,7 @@ func NewModifyPublicIPSwitchStatusRequest() (request *ModifyPublicIPSwitchStatus
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "ModifyPublicIPSwitchStatus")
+    
     return
 }
 
@@ -2066,6 +2119,7 @@ func NewModifyResourceGroupRequest() (request *ModifyResourceGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "ModifyResourceGroup")
+    
     return
 }
 
@@ -2114,6 +2168,7 @@ func NewModifySecurityGroupAllRuleStatusRequest() (request *ModifySecurityGroupA
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "ModifySecurityGroupAllRuleStatus")
+    
     return
 }
 
@@ -2146,6 +2201,7 @@ func NewModifySecurityGroupItemRuleStatusRequest() (request *ModifySecurityGroup
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "ModifySecurityGroupItemRuleStatus")
+    
     return
 }
 
@@ -2178,6 +2234,7 @@ func NewModifySecurityGroupRuleRequest() (request *ModifySecurityGroupRuleReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "ModifySecurityGroupRule")
+    
     return
 }
 
@@ -2211,6 +2268,7 @@ func NewModifySecurityGroupSequenceRulesRequest() (request *ModifySecurityGroupS
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "ModifySecurityGroupSequenceRules")
+    
     return
 }
 
@@ -2242,6 +2300,7 @@ func NewModifySequenceRulesRequest() (request *ModifySequenceRulesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "ModifySequenceRules")
+    
     return
 }
 
@@ -2274,6 +2333,7 @@ func NewModifyTableStatusRequest() (request *ModifyTableStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "ModifyTableStatus")
+    
     return
 }
 
@@ -2306,6 +2366,7 @@ func NewModifyVPCSwitchStatusRequest() (request *ModifyVPCSwitchStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "ModifyVPCSwitchStatus")
+    
     return
 }
 
@@ -2337,6 +2398,7 @@ func NewRemoveAcRuleRequest() (request *RemoveAcRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "RemoveAcRule")
+    
     return
 }
 
@@ -2383,6 +2445,7 @@ func NewRunSyncAssetRequest() (request *RunSyncAssetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "RunSyncAsset")
+    
     return
 }
 
@@ -2415,6 +2478,7 @@ func NewSetNatFwDnatRuleRequest() (request *SetNatFwDnatRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "SetNatFwDnatRule")
+    
     return
 }
 
@@ -2461,6 +2525,7 @@ func NewSetNatFwEipRequest() (request *SetNatFwEipRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "SetNatFwEip")
+    
     return
 }
 
@@ -2507,6 +2572,7 @@ func NewStopSecurityGroupRuleDispatchRequest() (request *StopSecurityGroupRuleDi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfw", APIVersion, "StopSecurityGroupRuleDispatch")
+    
     return
 }
 

@@ -48,6 +48,7 @@ func NewAttachInstancesRequest() (request *AttachInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "AttachInstances")
+    
     return
 }
 
@@ -95,6 +96,7 @@ func NewCreateComputeEnvRequest() (request *CreateComputeEnvRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "CreateComputeEnv")
+    
     return
 }
 
@@ -145,6 +147,7 @@ func NewCreateCpmComputeEnvRequest() (request *CreateCpmComputeEnvRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "CreateCpmComputeEnv")
+    
     return
 }
 
@@ -185,6 +188,7 @@ func NewCreateTaskTemplateRequest() (request *CreateTaskTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "CreateTaskTemplate")
+    
     return
 }
 
@@ -231,6 +235,7 @@ func NewDeleteComputeEnvRequest() (request *DeleteComputeEnvRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DeleteComputeEnv")
+    
     return
 }
 
@@ -266,6 +271,7 @@ func NewDeleteJobRequest() (request *DeleteJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DeleteJob")
+    
     return
 }
 
@@ -303,6 +309,7 @@ func NewDeleteTaskTemplatesRequest() (request *DeleteTaskTemplatesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DeleteTaskTemplates")
+    
     return
 }
 
@@ -334,6 +341,7 @@ func NewDescribeAvailableCvmInstanceTypesRequest() (request *DescribeAvailableCv
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DescribeAvailableCvmInstanceTypes")
+    
     return
 }
 
@@ -368,6 +376,7 @@ func NewDescribeComputeEnvRequest() (request *DescribeComputeEnvRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DescribeComputeEnv")
+    
     return
 }
 
@@ -399,6 +408,7 @@ func NewDescribeComputeEnvActivitiesRequest() (request *DescribeComputeEnvActivi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DescribeComputeEnvActivities")
+    
     return
 }
 
@@ -432,6 +442,7 @@ func NewDescribeComputeEnvCreateInfoRequest() (request *DescribeComputeEnvCreate
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DescribeComputeEnvCreateInfo")
+    
     return
 }
 
@@ -462,6 +473,7 @@ func NewDescribeComputeEnvCreateInfosRequest() (request *DescribeComputeEnvCreat
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DescribeComputeEnvCreateInfos")
+    
     return
 }
 
@@ -495,6 +507,7 @@ func NewDescribeComputeEnvsRequest() (request *DescribeComputeEnvsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DescribeComputeEnvs")
+    
     return
 }
 
@@ -531,6 +544,7 @@ func NewDescribeCpmOsInfoRequest() (request *DescribeCpmOsInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DescribeCpmOsInfo")
+    
     return
 }
 
@@ -562,6 +576,7 @@ func NewDescribeCvmZoneInstanceConfigInfosRequest() (request *DescribeCvmZoneIns
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DescribeCvmZoneInstanceConfigInfos")
+    
     return
 }
 
@@ -597,6 +612,7 @@ func NewDescribeInstanceCategoriesRequest() (request *DescribeInstanceCategories
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DescribeInstanceCategories")
+    
     return
 }
 
@@ -627,6 +643,7 @@ func NewDescribeJobRequest() (request *DescribeJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DescribeJob")
+    
     return
 }
 
@@ -658,6 +675,7 @@ func NewDescribeJobSubmitInfoRequest() (request *DescribeJobSubmitInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DescribeJobSubmitInfo")
+    
     return
 }
 
@@ -689,6 +707,7 @@ func NewDescribeJobsRequest() (request *DescribeJobsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DescribeJobs")
+    
     return
 }
 
@@ -724,6 +743,7 @@ func NewDescribeTaskRequest() (request *DescribeTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DescribeTask")
+    
     return
 }
 
@@ -755,6 +775,7 @@ func NewDescribeTaskLogsRequest() (request *DescribeTaskLogsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DescribeTaskLogs")
+    
     return
 }
 
@@ -793,6 +814,7 @@ func NewDescribeTaskTemplatesRequest() (request *DescribeTaskTemplatesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DescribeTaskTemplates")
+    
     return
 }
 
@@ -826,6 +848,7 @@ func NewDetachInstancesRequest() (request *DetachInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DetachInstances")
+    
     return
 }
 
@@ -861,6 +884,7 @@ func NewModifyComputeEnvRequest() (request *ModifyComputeEnvRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "ModifyComputeEnv")
+    
     return
 }
 
@@ -905,6 +929,7 @@ func NewModifyTaskTemplateRequest() (request *ModifyTaskTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "ModifyTaskTemplate")
+    
     return
 }
 
@@ -952,6 +977,7 @@ func NewRetryJobsRequest() (request *RetryJobsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "RetryJobs")
+    
     return
 }
 
@@ -986,6 +1012,7 @@ func NewSubmitJobRequest() (request *SubmitJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "SubmitJob")
+    
     return
 }
 
@@ -1043,6 +1070,7 @@ func NewTerminateComputeNodeRequest() (request *TerminateComputeNodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "TerminateComputeNode")
+    
     return
 }
 
@@ -1081,6 +1109,7 @@ func NewTerminateComputeNodesRequest() (request *TerminateComputeNodesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "TerminateComputeNodes")
+    
     return
 }
 
@@ -1116,6 +1145,7 @@ func NewTerminateJobRequest() (request *TerminateJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "TerminateJob")
+    
     return
 }
 
@@ -1153,6 +1183,7 @@ func NewTerminateTaskInstanceRequest() (request *TerminateTaskInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "TerminateTaskInstance")
+    
     return
 }
 

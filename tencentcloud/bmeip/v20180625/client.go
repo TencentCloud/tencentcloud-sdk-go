@@ -48,6 +48,7 @@ func NewBindEipAclsRequest() (request *BindEipAclsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "BindEipAcls")
+    
     return
 }
 
@@ -77,6 +78,7 @@ func NewBindHostedRequest() (request *BindHostedRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "BindHosted")
+    
     return
 }
 
@@ -108,6 +110,7 @@ func NewBindRsRequest() (request *BindRsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "BindRs")
+    
     return
 }
 
@@ -139,6 +142,7 @@ func NewBindVpcIpRequest() (request *BindVpcIpRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "BindVpcIp")
+    
     return
 }
 
@@ -168,6 +172,7 @@ func NewCreateEipRequest() (request *CreateEipRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "CreateEip")
+    
     return
 }
 
@@ -198,6 +203,7 @@ func NewCreateEipAclRequest() (request *CreateEipAclRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "CreateEipAcl")
+    
     return
 }
 
@@ -228,6 +234,7 @@ func NewDeleteEipRequest() (request *DeleteEipRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "DeleteEip")
+    
     return
 }
 
@@ -259,6 +266,7 @@ func NewDeleteEipAclRequest() (request *DeleteEipAclRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "DeleteEipAcl")
+    
     return
 }
 
@@ -289,6 +297,7 @@ func NewDescribeEipAclsRequest() (request *DescribeEipAclsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "DescribeEipAcls")
+    
     return
 }
 
@@ -319,6 +328,7 @@ func NewDescribeEipQuotaRequest() (request *DescribeEipQuotaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "DescribeEipQuota")
+    
     return
 }
 
@@ -348,6 +358,7 @@ func NewDescribeEipTaskRequest() (request *DescribeEipTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "DescribeEipTask")
+    
     return
 }
 
@@ -377,6 +388,7 @@ func NewDescribeEipsRequest() (request *DescribeEipsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "DescribeEips")
+    
     return
 }
 
@@ -406,6 +418,7 @@ func NewModifyEipAclRequest() (request *ModifyEipAclRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "ModifyEipAcl")
+    
     return
 }
 
@@ -436,6 +449,7 @@ func NewModifyEipChargeRequest() (request *ModifyEipChargeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "ModifyEipCharge")
+    
     return
 }
 
@@ -466,6 +480,7 @@ func NewModifyEipNameRequest() (request *ModifyEipNameRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "ModifyEipName")
+    
     return
 }
 
@@ -496,6 +511,7 @@ func NewUnbindEipAclsRequest() (request *UnbindEipAclsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "UnbindEipAcls")
+    
     return
 }
 
@@ -527,6 +543,7 @@ func NewUnbindHostedRequest() (request *UnbindHostedRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "UnbindHosted")
+    
     return
 }
 
@@ -558,6 +575,7 @@ func NewUnbindRsRequest() (request *UnbindRsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "UnbindRs")
+    
     return
 }
 
@@ -587,6 +605,7 @@ func NewUnbindRsListRequest() (request *UnbindRsListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "UnbindRsList")
+    
     return
 }
 
@@ -617,6 +636,7 @@ func NewUnbindVpcIpRequest() (request *UnbindVpcIpRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "UnbindVpcIp")
+    
     return
 }
 

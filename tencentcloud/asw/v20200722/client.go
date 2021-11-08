@@ -48,6 +48,7 @@ func NewCreateFlowServiceRequest() (request *CreateFlowServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("asw", APIVersion, "CreateFlowService")
+    
     return
 }
 
@@ -80,6 +81,7 @@ func NewDescribeExecutionRequest() (request *DescribeExecutionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("asw", APIVersion, "DescribeExecution")
+    
     return
 }
 
@@ -112,6 +114,7 @@ func NewDescribeExecutionHistoryRequest() (request *DescribeExecutionHistoryRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("asw", APIVersion, "DescribeExecutionHistory")
+    
     return
 }
 
@@ -144,6 +147,7 @@ func NewDescribeExecutionsRequest() (request *DescribeExecutionsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("asw", APIVersion, "DescribeExecutions")
+    
     return
 }
 
@@ -175,6 +179,7 @@ func NewDescribeFlowServiceDetailRequest() (request *DescribeFlowServiceDetailRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("asw", APIVersion, "DescribeFlowServiceDetail")
+    
     return
 }
 
@@ -208,6 +213,7 @@ func NewDescribeFlowServicesRequest() (request *DescribeFlowServicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("asw", APIVersion, "DescribeFlowServices")
+    
     return
 }
 
@@ -240,6 +246,7 @@ func NewModifyFlowServiceRequest() (request *ModifyFlowServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("asw", APIVersion, "ModifyFlowService")
+    
     return
 }
 
@@ -272,6 +279,7 @@ func NewStartExecutionRequest() (request *StartExecutionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("asw", APIVersion, "StartExecution")
+    
     return
 }
 
@@ -304,6 +312,7 @@ func NewStopExecutionRequest() (request *StopExecutionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("asw", APIVersion, "StopExecution")
+    
     return
 }
 

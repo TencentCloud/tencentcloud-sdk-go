@@ -48,6 +48,7 @@ func NewCreateSnapshotTaskRequest() (request *CreateSnapshotTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "CreateSnapshotTask")
+    
     return
 }
 
@@ -84,6 +85,7 @@ func NewCreateTranscodeRequest() (request *CreateTranscodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "CreateTranscode")
+    
     return
 }
 
@@ -122,6 +124,7 @@ func NewCreateVideoGenerationTaskRequest() (request *CreateVideoGenerationTaskRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "CreateVideoGenerationTask")
+    
     return
 }
 
@@ -160,6 +163,7 @@ func NewDescribeOnlineRecordRequest() (request *DescribeOnlineRecordRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "DescribeOnlineRecord")
+    
     return
 }
 
@@ -195,6 +199,7 @@ func NewDescribeOnlineRecordCallbackRequest() (request *DescribeOnlineRecordCall
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "DescribeOnlineRecordCallback")
+    
     return
 }
 
@@ -229,6 +234,7 @@ func NewDescribeQualityMetricsRequest() (request *DescribeQualityMetricsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "DescribeQualityMetrics")
+    
     return
 }
 
@@ -262,6 +268,7 @@ func NewDescribeSnapshotTaskRequest() (request *DescribeSnapshotTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "DescribeSnapshotTask")
+    
     return
 }
 
@@ -301,6 +308,7 @@ func NewDescribeTIWDailyUsageRequest() (request *DescribeTIWDailyUsageRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "DescribeTIWDailyUsage")
+    
     return
 }
 
@@ -341,6 +349,7 @@ func NewDescribeTranscodeRequest() (request *DescribeTranscodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "DescribeTranscode")
+    
     return
 }
 
@@ -385,6 +394,7 @@ func NewDescribeTranscodeCallbackRequest() (request *DescribeTranscodeCallbackRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "DescribeTranscodeCallback")
+    
     return
 }
 
@@ -419,6 +429,7 @@ func NewDescribeVideoGenerationTaskRequest() (request *DescribeVideoGenerationTa
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "DescribeVideoGenerationTask")
+    
     return
 }
 
@@ -454,6 +465,7 @@ func NewDescribeVideoGenerationTaskCallbackRequest() (request *DescribeVideoGene
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "DescribeVideoGenerationTaskCallback")
+    
     return
 }
 
@@ -488,6 +500,7 @@ func NewDescribeWhiteboardPushRequest() (request *DescribeWhiteboardPushRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "DescribeWhiteboardPush")
+    
     return
 }
 
@@ -523,6 +536,7 @@ func NewDescribeWhiteboardPushCallbackRequest() (request *DescribeWhiteboardPush
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "DescribeWhiteboardPushCallback")
+    
     return
 }
 
@@ -557,6 +571,7 @@ func NewPauseOnlineRecordRequest() (request *PauseOnlineRecordRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "PauseOnlineRecord")
+    
     return
 }
 
@@ -593,6 +608,7 @@ func NewResumeOnlineRecordRequest() (request *ResumeOnlineRecordRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "ResumeOnlineRecord")
+    
     return
 }
 
@@ -629,6 +645,7 @@ func NewSetOnlineRecordCallbackRequest() (request *SetOnlineRecordCallbackReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "SetOnlineRecordCallback")
+    
     return
 }
 
@@ -663,6 +680,7 @@ func NewSetOnlineRecordCallbackKeyRequest() (request *SetOnlineRecordCallbackKey
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "SetOnlineRecordCallbackKey")
+    
     return
 }
 
@@ -697,6 +715,7 @@ func NewSetTranscodeCallbackRequest() (request *SetTranscodeCallbackRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "SetTranscodeCallback")
+    
     return
 }
 
@@ -731,6 +750,7 @@ func NewSetTranscodeCallbackKeyRequest() (request *SetTranscodeCallbackKeyReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "SetTranscodeCallbackKey")
+    
     return
 }
 
@@ -765,6 +785,7 @@ func NewSetVideoGenerationTaskCallbackRequest() (request *SetVideoGenerationTask
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "SetVideoGenerationTaskCallback")
+    
     return
 }
 
@@ -799,6 +820,7 @@ func NewSetVideoGenerationTaskCallbackKeyRequest() (request *SetVideoGenerationT
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "SetVideoGenerationTaskCallbackKey")
+    
     return
 }
 
@@ -833,6 +855,7 @@ func NewSetWhiteboardPushCallbackRequest() (request *SetWhiteboardPushCallbackRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "SetWhiteboardPushCallback")
+    
     return
 }
 
@@ -867,6 +890,7 @@ func NewSetWhiteboardPushCallbackKeyRequest() (request *SetWhiteboardPushCallbac
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "SetWhiteboardPushCallbackKey")
+    
     return
 }
 
@@ -901,6 +925,7 @@ func NewStartOnlineRecordRequest() (request *StartOnlineRecordRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "StartOnlineRecord")
+    
     return
 }
 
@@ -939,6 +964,7 @@ func NewStartWhiteboardPushRequest() (request *StartWhiteboardPushRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "StartWhiteboardPush")
+    
     return
 }
 
@@ -977,6 +1003,7 @@ func NewStopOnlineRecordRequest() (request *StopOnlineRecordRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "StopOnlineRecord")
+    
     return
 }
 
@@ -1012,6 +1039,7 @@ func NewStopWhiteboardPushRequest() (request *StopWhiteboardPushRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "StopWhiteboardPush")
+    
     return
 }
 

@@ -48,6 +48,7 @@ func NewCreatePictureRequest() (request *CreatePictureRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "CreatePicture")
+    
     return
 }
 
@@ -82,6 +83,7 @@ func NewCreateTroubleInfoRequest() (request *CreateTroubleInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "CreateTroubleInfo")
+    
     return
 }
 
@@ -117,6 +119,7 @@ func NewDeletePictureRequest() (request *DeletePictureRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "DeletePicture")
+    
     return
 }
 
@@ -150,6 +153,7 @@ func NewDescribeAbnormalEventRequest() (request *DescribeAbnormalEventRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "DescribeAbnormalEvent")
+    
     return
 }
 
@@ -196,6 +200,7 @@ func NewDescribeCallDetailRequest() (request *DescribeCallDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "DescribeCallDetail")
+    
     return
 }
 
@@ -246,6 +251,7 @@ func NewDescribeDetailEventRequest() (request *DescribeDetailEventRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "DescribeDetailEvent")
+    
     return
 }
 
@@ -294,6 +300,7 @@ func NewDescribeHistoryScaleRequest() (request *DescribeHistoryScaleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "DescribeHistoryScale")
+    
     return
 }
 
@@ -336,6 +343,7 @@ func NewDescribePictureRequest() (request *DescribePictureRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "DescribePicture")
+    
     return
 }
 
@@ -370,6 +378,7 @@ func NewDescribeRecordStatisticRequest() (request *DescribeRecordStatisticReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "DescribeRecordStatistic")
+    
     return
 }
 
@@ -414,6 +423,7 @@ func NewDescribeRoomInformationRequest() (request *DescribeRoomInformationReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "DescribeRoomInformation")
+    
     return
 }
 
@@ -466,6 +476,7 @@ func NewDescribeTrtcInteractiveTimeRequest() (request *DescribeTrtcInteractiveTi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "DescribeTrtcInteractiveTime")
+    
     return
 }
 
@@ -506,6 +517,7 @@ func NewDescribeTrtcMcuTranscodeTimeRequest() (request *DescribeTrtcMcuTranscode
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "DescribeTrtcMcuTranscodeTime")
+    
     return
 }
 
@@ -546,6 +558,7 @@ func NewDescribeUserInformationRequest() (request *DescribeUserInformationReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "DescribeUserInformation")
+    
     return
 }
 
@@ -594,6 +607,7 @@ func NewDismissRoomRequest() (request *DismissRoomRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "DismissRoom")
+    
     return
 }
 
@@ -632,6 +646,7 @@ func NewDismissRoomByStrRoomIdRequest() (request *DismissRoomByStrRoomIdRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "DismissRoomByStrRoomId")
+    
     return
 }
 
@@ -669,6 +684,7 @@ func NewModifyPictureRequest() (request *ModifyPictureRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "ModifyPicture")
+    
     return
 }
 
@@ -703,6 +719,7 @@ func NewRemoveUserRequest() (request *RemoveUserRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "RemoveUser")
+    
     return
 }
 
@@ -743,6 +760,7 @@ func NewRemoveUserByStrRoomIdRequest() (request *RemoveUserByStrRoomIdRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "RemoveUserByStrRoomId")
+    
     return
 }
 
@@ -782,6 +800,7 @@ func NewStartMCUMixTranscodeRequest() (request *StartMCUMixTranscodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "StartMCUMixTranscode")
+    
     return
 }
 
@@ -882,6 +901,7 @@ func NewStartMCUMixTranscodeByStrRoomIdRequest() (request *StartMCUMixTranscodeB
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "StartMCUMixTranscodeByStrRoomId")
+    
     return
 }
 
@@ -978,6 +998,7 @@ func NewStopMCUMixTranscodeRequest() (request *StopMCUMixTranscodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "StopMCUMixTranscode")
+    
     return
 }
 
@@ -1018,6 +1039,7 @@ func NewStopMCUMixTranscodeByStrRoomIdRequest() (request *StopMCUMixTranscodeByS
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "StopMCUMixTranscodeByStrRoomId")
+    
     return
 }
 

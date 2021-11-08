@@ -48,6 +48,7 @@ func NewDescribeInvocationResultRequest() (request *DescribeInvocationResultRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcex", APIVersion, "DescribeInvocationResult")
+    
     return
 }
 
@@ -82,6 +83,7 @@ func NewInvokeServiceRequest() (request *InvokeServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcex", APIVersion, "InvokeService")
+    
     return
 }
 

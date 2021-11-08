@@ -48,6 +48,7 @@ func NewCreateCameraAlertsRequest() (request *CreateCameraAlertsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "CreateCameraAlerts")
+    
     return
 }
 
@@ -92,6 +93,7 @@ func NewCreateCameraStateRequest() (request *CreateCameraStateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "CreateCameraState")
+    
     return
 }
 
@@ -134,6 +136,7 @@ func NewCreateCaptureRequest() (request *CreateCaptureRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "CreateCapture")
+    
     return
 }
 
@@ -176,6 +179,7 @@ func NewCreateMultiBizAlertRequest() (request *CreateMultiBizAlertRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "CreateMultiBizAlert")
+    
     return
 }
 
@@ -218,6 +222,7 @@ func NewCreateProgramStateRequest() (request *CreateProgramStateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "CreateProgramState")
+    
     return
 }
 
@@ -260,6 +265,7 @@ func NewCreateServerStateRequest() (request *CreateServerStateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "CreateServerState")
+    
     return
 }
 
@@ -302,6 +308,7 @@ func NewDeleteMultiBizAlertRequest() (request *DeleteMultiBizAlertRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "DeleteMultiBizAlert")
+    
     return
 }
 
@@ -344,6 +351,7 @@ func NewDeleteTaskRequest() (request *DeleteTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "DeleteTask")
+    
     return
 }
 
@@ -386,6 +394,7 @@ func NewDescribeCamerasRequest() (request *DescribeCamerasRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "DescribeCameras")
+    
     return
 }
 
@@ -428,6 +437,7 @@ func NewDescribeConfigRequest() (request *DescribeConfigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "DescribeConfig")
+    
     return
 }
 
@@ -474,6 +484,7 @@ func NewDescribeImageRequest() (request *DescribeImageRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "DescribeImage")
+    
     return
 }
 
@@ -516,6 +527,7 @@ func NewDescribeMultiBizBaseImageRequest() (request *DescribeMultiBizBaseImageRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "DescribeMultiBizBaseImage")
+    
     return
 }
 
@@ -558,6 +570,7 @@ func NewDescribeTasksRequest() (request *DescribeTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "DescribeTasks")
+    
     return
 }
 
@@ -600,6 +613,7 @@ func NewDescribeZonesRequest() (request *DescribeZonesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "DescribeZones")
+    
     return
 }
 
@@ -642,6 +656,7 @@ func NewModifyMultiBizConfigRequest() (request *ModifyMultiBizConfigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "ModifyMultiBizConfig")
+    
     return
 }
 
@@ -684,6 +699,7 @@ func NewReportServiceRegisterRequest() (request *ReportServiceRegisterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "ReportServiceRegister")
+    
     return
 }
 
@@ -726,6 +742,7 @@ func NewSearchImageRequest() (request *SearchImageRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "SearchImage")
+    
     return
 }
 

@@ -48,6 +48,7 @@ func NewBatchModifyDomainInfoRequest() (request *BatchModifyDomainInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("domain", APIVersion, "BatchModifyDomainInfo")
+    
     return
 }
 
@@ -88,6 +89,7 @@ func NewCheckBatchStatusRequest() (request *CheckBatchStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("domain", APIVersion, "CheckBatchStatus")
+    
     return
 }
 
@@ -118,6 +120,7 @@ func NewCheckDomainRequest() (request *CheckDomainRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("domain", APIVersion, "CheckDomain")
+    
     return
 }
 
@@ -151,6 +154,7 @@ func NewCreateDomainBatchRequest() (request *CreateDomainBatchRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("domain", APIVersion, "CreateDomainBatch")
+    
     return
 }
 
@@ -194,6 +198,7 @@ func NewCreatePhoneEmailRequest() (request *CreatePhoneEmailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("domain", APIVersion, "CreatePhoneEmail")
+    
     return
 }
 
@@ -228,6 +233,7 @@ func NewCreateTemplateRequest() (request *CreateTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("domain", APIVersion, "CreateTemplate")
+    
     return
 }
 
@@ -285,6 +291,7 @@ func NewDeletePhoneEmailRequest() (request *DeletePhoneEmailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("domain", APIVersion, "DeletePhoneEmail")
+    
     return
 }
 
@@ -317,6 +324,7 @@ func NewDeleteTemplateRequest() (request *DeleteTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("domain", APIVersion, "DeleteTemplate")
+    
     return
 }
 
@@ -351,6 +359,7 @@ func NewDescribeBatchOperationLogDetailsRequest() (request *DescribeBatchOperati
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("domain", APIVersion, "DescribeBatchOperationLogDetails")
+    
     return
 }
 
@@ -382,6 +391,7 @@ func NewDescribeBatchOperationLogsRequest() (request *DescribeBatchOperationLogs
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("domain", APIVersion, "DescribeBatchOperationLogs")
+    
     return
 }
 
@@ -413,6 +423,7 @@ func NewDescribeDomainBaseInfoRequest() (request *DescribeDomainBaseInfoRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("domain", APIVersion, "DescribeDomainBaseInfo")
+    
     return
 }
 
@@ -447,6 +458,7 @@ func NewDescribeDomainNameListRequest() (request *DescribeDomainNameListRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("domain", APIVersion, "DescribeDomainNameList")
+    
     return
 }
 
@@ -477,6 +489,7 @@ func NewDescribeDomainPriceListRequest() (request *DescribeDomainPriceListReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("domain", APIVersion, "DescribeDomainPriceList")
+    
     return
 }
 
@@ -509,6 +522,7 @@ func NewDescribePhoneEmailListRequest() (request *DescribePhoneEmailListRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("domain", APIVersion, "DescribePhoneEmailList")
+    
     return
 }
 
@@ -539,6 +553,7 @@ func NewDescribeTemplateRequest() (request *DescribeTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("domain", APIVersion, "DescribeTemplate")
+    
     return
 }
 
@@ -576,6 +591,7 @@ func NewDescribeTemplateListRequest() (request *DescribeTemplateListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("domain", APIVersion, "DescribeTemplateList")
+    
     return
 }
 
@@ -611,6 +627,7 @@ func NewModifyDomainDNSBatchRequest() (request *ModifyDomainDNSBatchRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("domain", APIVersion, "ModifyDomainDNSBatch")
+    
     return
 }
 
@@ -654,6 +671,7 @@ func NewModifyDomainOwnerBatchRequest() (request *ModifyDomainOwnerBatchRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("domain", APIVersion, "ModifyDomainOwnerBatch")
+    
     return
 }
 
@@ -689,6 +707,7 @@ func NewRenewDomainBatchRequest() (request *RenewDomainBatchRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("domain", APIVersion, "RenewDomainBatch")
+    
     return
 }
 
@@ -727,6 +746,7 @@ func NewSendPhoneEmailCodeRequest() (request *SendPhoneEmailCodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("domain", APIVersion, "SendPhoneEmailCode")
+    
     return
 }
 
@@ -762,6 +782,7 @@ func NewSetDomainAutoRenewRequest() (request *SetDomainAutoRenewRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("domain", APIVersion, "SetDomainAutoRenew")
+    
     return
 }
 
@@ -798,6 +819,7 @@ func NewTransferInDomainBatchRequest() (request *TransferInDomainBatchRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("domain", APIVersion, "TransferInDomainBatch")
+    
     return
 }
 
@@ -839,6 +861,7 @@ func NewTransferProhibitionBatchRequest() (request *TransferProhibitionBatchRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("domain", APIVersion, "TransferProhibitionBatch")
+    
     return
 }
 
@@ -876,6 +899,7 @@ func NewUpdateProhibitionBatchRequest() (request *UpdateProhibitionBatchRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("domain", APIVersion, "UpdateProhibitionBatch")
+    
     return
 }
 
@@ -913,6 +937,7 @@ func NewUploadImageRequest() (request *UploadImageRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("domain", APIVersion, "UploadImage")
+    
     return
 }
 

@@ -48,6 +48,7 @@ func NewCreateBindInstanceRequest() (request *CreateBindInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ms", APIVersion, "CreateBindInstance")
+    
     return
 }
 
@@ -80,6 +81,7 @@ func NewCreateCosSecKeyInstanceRequest() (request *CreateCosSecKeyInstanceReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ms", APIVersion, "CreateCosSecKeyInstance")
+    
     return
 }
 
@@ -111,6 +113,7 @@ func NewCreateResourceInstancesRequest() (request *CreateResourceInstancesReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ms", APIVersion, "CreateResourceInstances")
+    
     return
 }
 
@@ -146,6 +149,7 @@ func NewCreateScanInstancesRequest() (request *CreateScanInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ms", APIVersion, "CreateScanInstances")
+    
     return
 }
 
@@ -178,6 +182,7 @@ func NewCreateShieldInstanceRequest() (request *CreateShieldInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ms", APIVersion, "CreateShieldInstance")
+    
     return
 }
 
@@ -215,6 +220,7 @@ func NewCreateShieldPlanInstanceRequest() (request *CreateShieldPlanInstanceRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ms", APIVersion, "CreateShieldPlanInstance")
+    
     return
 }
 
@@ -248,6 +254,7 @@ func NewDeleteScanInstancesRequest() (request *DeleteScanInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ms", APIVersion, "DeleteScanInstances")
+    
     return
 }
 
@@ -279,6 +286,7 @@ func NewDeleteShieldInstancesRequest() (request *DeleteShieldInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ms", APIVersion, "DeleteShieldInstances")
+    
     return
 }
 
@@ -311,6 +319,7 @@ func NewDescribeResourceInstancesRequest() (request *DescribeResourceInstancesRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ms", APIVersion, "DescribeResourceInstances")
+    
     return
 }
 
@@ -347,6 +356,7 @@ func NewDescribeScanInstancesRequest() (request *DescribeScanInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ms", APIVersion, "DescribeScanInstances")
+    
     return
 }
 
@@ -385,6 +395,7 @@ func NewDescribeScanResultsRequest() (request *DescribeScanResultsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ms", APIVersion, "DescribeScanResults")
+    
     return
 }
 
@@ -417,6 +428,7 @@ func NewDescribeShieldInstancesRequest() (request *DescribeShieldInstancesReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ms", APIVersion, "DescribeShieldInstances")
+    
     return
 }
 
@@ -455,6 +467,7 @@ func NewDescribeShieldPlanInstanceRequest() (request *DescribeShieldPlanInstance
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ms", APIVersion, "DescribeShieldPlanInstance")
+    
     return
 }
 
@@ -487,6 +500,7 @@ func NewDescribeShieldResultRequest() (request *DescribeShieldResultRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ms", APIVersion, "DescribeShieldResult")
+    
     return
 }
 
@@ -518,6 +532,7 @@ func NewDescribeUserBaseInfoInstanceRequest() (request *DescribeUserBaseInfoInst
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ms", APIVersion, "DescribeUserBaseInfoInstance")
+    
     return
 }
 

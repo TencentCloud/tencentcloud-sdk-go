@@ -48,6 +48,7 @@ func NewDescribeStrategiesRequest() (request *DescribeStrategiesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("advisor", APIVersion, "DescribeStrategies")
+    
     return
 }
 
@@ -80,6 +81,7 @@ func NewDescribeTaskStrategyRisksRequest() (request *DescribeTaskStrategyRisksRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("advisor", APIVersion, "DescribeTaskStrategyRisks")
+    
     return
 }
 

@@ -48,6 +48,7 @@ func NewCreateJobRequest() (request *CreateJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "CreateJob")
+    
     return
 }
 
@@ -82,6 +83,7 @@ func NewCreateRsgAsGroupRequest() (request *CreateRsgAsGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "CreateRsgAsGroup")
+    
     return
 }
 
@@ -117,6 +119,7 @@ func NewCreateRuntimeRequest() (request *CreateRuntimeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "CreateRuntime")
+    
     return
 }
 
@@ -151,6 +154,7 @@ func NewCreateServiceRequest() (request *CreateServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "CreateService")
+    
     return
 }
 
@@ -185,6 +189,7 @@ func NewCreateServiceConfigRequest() (request *CreateServiceConfigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "CreateServiceConfig")
+    
     return
 }
 
@@ -219,6 +224,7 @@ func NewDeleteInstanceRequest() (request *DeleteInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "DeleteInstance")
+    
     return
 }
 
@@ -252,6 +258,7 @@ func NewDeleteJobRequest() (request *DeleteJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "DeleteJob")
+    
     return
 }
 
@@ -283,6 +290,7 @@ func NewDeleteResourceGroupRequest() (request *DeleteResourceGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "DeleteResourceGroup")
+    
     return
 }
 
@@ -314,6 +322,7 @@ func NewDeleteRsgAsGroupRequest() (request *DeleteRsgAsGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "DeleteRsgAsGroup")
+    
     return
 }
 
@@ -346,6 +355,7 @@ func NewDeleteRuntimeRequest() (request *DeleteRuntimeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "DeleteRuntime")
+    
     return
 }
 
@@ -380,6 +390,7 @@ func NewDeleteServiceRequest() (request *DeleteServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "DeleteService")
+    
     return
 }
 
@@ -413,6 +424,7 @@ func NewDeleteServiceConfigRequest() (request *DeleteServiceConfigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "DeleteServiceConfig")
+    
     return
 }
 
@@ -446,6 +458,7 @@ func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "DescribeInstances")
+    
     return
 }
 
@@ -478,6 +491,7 @@ func NewDescribeResourceGroupsRequest() (request *DescribeResourceGroupsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "DescribeResourceGroups")
+    
     return
 }
 
@@ -510,6 +524,7 @@ func NewDescribeRsgAsGroupActivitiesRequest() (request *DescribeRsgAsGroupActivi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "DescribeRsgAsGroupActivities")
+    
     return
 }
 
@@ -543,6 +558,7 @@ func NewDescribeRsgAsGroupsRequest() (request *DescribeRsgAsGroupsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "DescribeRsgAsGroups")
+    
     return
 }
 
@@ -576,6 +592,7 @@ func NewDescribeRuntimesRequest() (request *DescribeRuntimesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "DescribeRuntimes")
+    
     return
 }
 
@@ -609,6 +626,7 @@ func NewDescribeServiceConfigsRequest() (request *DescribeServiceConfigsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "DescribeServiceConfigs")
+    
     return
 }
 
@@ -642,6 +660,7 @@ func NewDescribeServicesRequest() (request *DescribeServicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "DescribeServices")
+    
     return
 }
 
@@ -676,6 +695,7 @@ func NewDisableRsgAsGroupRequest() (request *DisableRsgAsGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "DisableRsgAsGroup")
+    
     return
 }
 
@@ -709,6 +729,7 @@ func NewEnableRsgAsGroupRequest() (request *EnableRsgAsGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "EnableRsgAsGroup")
+    
     return
 }
 
@@ -742,6 +763,7 @@ func NewExposeServiceRequest() (request *ExposeServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "ExposeService")
+    
     return
 }
 
@@ -776,6 +798,7 @@ func NewUpdateJobRequest() (request *UpdateJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "UpdateJob")
+    
     return
 }
 
@@ -809,6 +832,7 @@ func NewUpdateRsgAsGroupRequest() (request *UpdateRsgAsGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "UpdateRsgAsGroup")
+    
     return
 }
 
@@ -842,6 +866,7 @@ func NewUpdateServiceRequest() (request *UpdateServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "UpdateService")
+    
     return
 }
 

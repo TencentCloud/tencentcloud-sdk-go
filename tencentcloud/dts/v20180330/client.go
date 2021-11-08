@@ -48,6 +48,7 @@ func NewActivateSubscribeRequest() (request *ActivateSubscribeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "ActivateSubscribe")
+    
     return
 }
 
@@ -84,6 +85,7 @@ func NewCompleteMigrateJobRequest() (request *CompleteMigrateJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "CompleteMigrateJob")
+    
     return
 }
 
@@ -124,6 +126,7 @@ func NewCreateMigrateCheckJobRequest() (request *CreateMigrateCheckJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "CreateMigrateCheckJob")
+    
     return
 }
 
@@ -168,6 +171,7 @@ func NewCreateMigrateJobRequest() (request *CreateMigrateJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "CreateMigrateJob")
+    
     return
 }
 
@@ -207,6 +211,7 @@ func NewCreateSubscribeRequest() (request *CreateSubscribeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "CreateSubscribe")
+    
     return
 }
 
@@ -234,86 +239,12 @@ func (c *Client) CreateSubscribe(request *CreateSubscribeRequest) (response *Cre
     return
 }
 
-func NewCreateSyncCheckJobRequest() (request *CreateSyncCheckJobRequest) {
-    request = &CreateSyncCheckJobRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("dts", APIVersion, "CreateSyncCheckJob")
-    return
-}
-
-func NewCreateSyncCheckJobResponse() (response *CreateSyncCheckJobResponse) {
-    response = &CreateSyncCheckJobResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// CreateSyncCheckJob
-// 在调用 StartSyncJob 接口启动灾备同步前, 必须调用本接口创建校验, 且校验成功后才能开始同步数据. 校验的结果可以通过 DescribeSyncCheckJob 查看.
-//
-// 校验成功后才能启动同步.
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_NOTALLOWOPERATION = "FailedOperation.NotAllowOperation"
-//  INTERNALERROR_ADDTASKERROR = "InternalError.AddTaskError"
-//  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
-//  INTERNALERROR_DUPLICATEJOB = "InternalError.DuplicateJob"
-//  INTERNALERROR_LOCKERROR = "InternalError.LockError"
-//  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
-//  LIMITEXCEEDED_MAXUNUSEDJOBS = "LimitExceeded.MaxUnusedJobs"
-//  RESOURCENOTFOUND_JOBNOTEXIST = "ResourceNotFound.JobNotExist"
-func (c *Client) CreateSyncCheckJob(request *CreateSyncCheckJobRequest) (response *CreateSyncCheckJobResponse, err error) {
-    if request == nil {
-        request = NewCreateSyncCheckJobRequest()
-    }
-    response = NewCreateSyncCheckJobResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewCreateSyncJobRequest() (request *CreateSyncJobRequest) {
-    request = &CreateSyncJobRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("dts", APIVersion, "CreateSyncJob")
-    return
-}
-
-func NewCreateSyncJobResponse() (response *CreateSyncJobResponse) {
-    response = &CreateSyncJobResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// CreateSyncJob
-// 本接口(CreateSyncJob)用于创建灾备同步任务。
-//
-// 创建同步任务后，可以通过 CreateSyncCheckJob 接口发起校验任务。校验成功后才可以通过 StartSyncJob 接口启动同步任务。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_NOTALLOWOPERATION = "FailedOperation.NotAllowOperation"
-//  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
-//  INTERNALERROR_DUPLICATEJOB = "InternalError.DuplicateJob"
-//  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) CreateSyncJob(request *CreateSyncJobRequest) (response *CreateSyncJobResponse, err error) {
-    if request == nil {
-        request = NewCreateSyncJobRequest()
-    }
-    response = NewCreateSyncJobResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDeleteMigrateJobRequest() (request *DeleteMigrateJobRequest) {
     request = &DeleteMigrateJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "DeleteMigrateJob")
+    
     return
 }
 
@@ -344,44 +275,12 @@ func (c *Client) DeleteMigrateJob(request *DeleteMigrateJobRequest) (response *D
     return
 }
 
-func NewDeleteSyncJobRequest() (request *DeleteSyncJobRequest) {
-    request = &DeleteSyncJobRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("dts", APIVersion, "DeleteSyncJob")
-    return
-}
-
-func NewDeleteSyncJobResponse() (response *DeleteSyncJobResponse) {
-    response = &DeleteSyncJobResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DeleteSyncJob
-// 删除灾备同步任务 （运行中的同步任务不能删除）。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_NOTALLOWOPERATION = "FailedOperation.NotAllowOperation"
-//  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
-//  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND_JOBNOTEXIST = "ResourceNotFound.JobNotExist"
-func (c *Client) DeleteSyncJob(request *DeleteSyncJobRequest) (response *DeleteSyncJobResponse, err error) {
-    if request == nil {
-        request = NewDeleteSyncJobRequest()
-    }
-    response = NewDeleteSyncJobResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeAsyncRequestInfoRequest() (request *DescribeAsyncRequestInfoRequest) {
     request = &DescribeAsyncRequestInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "DescribeAsyncRequestInfo")
+    
     return
 }
 
@@ -415,6 +314,7 @@ func NewDescribeMigrateCheckJobRequest() (request *DescribeMigrateCheckJobReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "DescribeMigrateCheckJob")
+    
     return
 }
 
@@ -452,6 +352,7 @@ func NewDescribeMigrateJobsRequest() (request *DescribeMigrateJobsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "DescribeMigrateJobs")
+    
     return
 }
 
@@ -487,6 +388,7 @@ func NewDescribeRegionConfRequest() (request *DescribeRegionConfRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "DescribeRegionConf")
+    
     return
 }
 
@@ -518,6 +420,7 @@ func NewDescribeSubscribeConfRequest() (request *DescribeSubscribeConfRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "DescribeSubscribeConf")
+    
     return
 }
 
@@ -551,6 +454,7 @@ func NewDescribeSubscribesRequest() (request *DescribeSubscribesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "DescribeSubscribes")
+    
     return
 }
 
@@ -581,6 +485,7 @@ func NewDescribeSyncCheckJobRequest() (request *DescribeSyncCheckJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "DescribeSyncCheckJob")
+    
     return
 }
 
@@ -619,43 +524,12 @@ func (c *Client) DescribeSyncCheckJob(request *DescribeSyncCheckJobRequest) (res
     return
 }
 
-func NewDescribeSyncJobsRequest() (request *DescribeSyncJobsRequest) {
-    request = &DescribeSyncJobsRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("dts", APIVersion, "DescribeSyncJobs")
-    return
-}
-
-func NewDescribeSyncJobsResponse() (response *DescribeSyncJobsResponse) {
-    response = &DescribeSyncJobsResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeSyncJobs
-// 查询在迁移平台发起的灾备同步任务
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_NOTALLOWOPERATION = "FailedOperation.NotAllowOperation"
-//  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
-//  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) DescribeSyncJobs(request *DescribeSyncJobsRequest) (response *DescribeSyncJobsResponse, err error) {
-    if request == nil {
-        request = NewDescribeSyncJobsRequest()
-    }
-    response = NewDescribeSyncJobsResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewIsolateSubscribeRequest() (request *IsolateSubscribeRequest) {
     request = &IsolateSubscribeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "IsolateSubscribe")
+    
     return
 }
 
@@ -687,6 +561,7 @@ func NewModifyMigrateJobRequest() (request *ModifyMigrateJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "ModifyMigrateJob")
+    
     return
 }
 
@@ -728,6 +603,7 @@ func NewModifySubscribeAutoRenewFlagRequest() (request *ModifySubscribeAutoRenew
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "ModifySubscribeAutoRenewFlag")
+    
     return
 }
 
@@ -759,6 +635,7 @@ func NewModifySubscribeConsumeTimeRequest() (request *ModifySubscribeConsumeTime
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "ModifySubscribeConsumeTime")
+    
     return
 }
 
@@ -792,6 +669,7 @@ func NewModifySubscribeNameRequest() (request *ModifySubscribeNameRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "ModifySubscribeName")
+    
     return
 }
 
@@ -823,6 +701,7 @@ func NewModifySubscribeObjectsRequest() (request *ModifySubscribeObjectsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "ModifySubscribeObjects")
+    
     return
 }
 
@@ -856,6 +735,7 @@ func NewModifySubscribeVipVportRequest() (request *ModifySubscribeVipVportReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "ModifySubscribeVipVport")
+    
     return
 }
 
@@ -888,6 +768,7 @@ func NewModifySyncJobRequest() (request *ModifySyncJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "ModifySyncJob")
+    
     return
 }
 
@@ -926,6 +807,7 @@ func NewOfflineIsolatedSubscribeRequest() (request *OfflineIsolatedSubscribeRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "OfflineIsolatedSubscribe")
+    
     return
 }
 
@@ -958,6 +840,7 @@ func NewResetSubscribeRequest() (request *ResetSubscribeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "ResetSubscribe")
+    
     return
 }
 
@@ -991,6 +874,7 @@ func NewStartMigrateJobRequest() (request *StartMigrateJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "StartMigrateJob")
+    
     return
 }
 
@@ -1027,48 +911,12 @@ func (c *Client) StartMigrateJob(request *StartMigrateJobRequest) (response *Sta
     return
 }
 
-func NewStartSyncJobRequest() (request *StartSyncJobRequest) {
-    request = &StartSyncJobRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("dts", APIVersion, "StartSyncJob")
-    return
-}
-
-func NewStartSyncJobResponse() (response *StartSyncJobResponse) {
-    response = &StartSyncJobResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// StartSyncJob
-// 创建的灾备同步任务在通过 CreateSyncCheckJob 和 DescribeSyncCheckJob 确定校验成功后，可以调用该接口启动同步
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_NOTALLOWOPERATION = "FailedOperation.NotAllowOperation"
-//  FAILEDOPERATION_STARTJOBFAILED = "FailedOperation.StartJobFailed"
-//  INTERNALERROR_ADDTASKERROR = "InternalError.AddTaskError"
-//  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
-//  INTERNALERROR_DUPLICATEJOB = "InternalError.DuplicateJob"
-//  INTERNALERROR_LOCKERROR = "InternalError.LockError"
-//  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND_JOBNOTEXIST = "ResourceNotFound.JobNotExist"
-func (c *Client) StartSyncJob(request *StartSyncJobRequest) (response *StartSyncJobResponse, err error) {
-    if request == nil {
-        request = NewStartSyncJobRequest()
-    }
-    response = NewStartSyncJobResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewStopMigrateJobRequest() (request *StopMigrateJobRequest) {
     request = &StopMigrateJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "StopMigrateJob")
+    
     return
 }
 
@@ -1097,42 +945,6 @@ func (c *Client) StopMigrateJob(request *StopMigrateJobRequest) (response *StopM
         request = NewStopMigrateJobRequest()
     }
     response = NewStopMigrateJobResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewSwitchDrToMasterRequest() (request *SwitchDrToMasterRequest) {
-    request = &SwitchDrToMasterRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("dts", APIVersion, "SwitchDrToMaster")
-    return
-}
-
-func NewSwitchDrToMasterResponse() (response *SwitchDrToMasterResponse) {
-    response = &SwitchDrToMasterResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// SwitchDrToMaster
-// 将灾备升级为主实例，停止从原来所属主实例的同步，断开主备关系。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_NOTALLOWOPERATION = "FailedOperation.NotAllowOperation"
-//  FAILEDOPERATION_STARTJOBFAILED = "FailedOperation.StartJobFailed"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_CGWSYSTEMERROR = "InternalError.CgwSystemError"
-//  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-//  UNSUPPORTEDOPERATION_ACTIONNOTSUPPORT = "UnsupportedOperation.ActionNotSupport"
-func (c *Client) SwitchDrToMaster(request *SwitchDrToMasterRequest) (response *SwitchDrToMasterResponse, err error) {
-    if request == nil {
-        request = NewSwitchDrToMasterRequest()
-    }
-    response = NewSwitchDrToMasterResponse()
     err = c.Send(request, response)
     return
 }

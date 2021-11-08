@@ -48,6 +48,7 @@ func NewCreateStructureTaskRequest() (request *CreateStructureTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cii", APIVersion, "CreateStructureTask")
+    
     return
 }
 
@@ -83,6 +84,7 @@ func NewCreateUnderwriteTaskByIdRequest() (request *CreateUnderwriteTaskByIdRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cii", APIVersion, "CreateUnderwriteTaskById")
+    
     return
 }
 
@@ -118,6 +120,7 @@ func NewDescribeMachineUnderwriteRequest() (request *DescribeMachineUnderwriteRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cii", APIVersion, "DescribeMachineUnderwrite")
+    
     return
 }
 
@@ -151,6 +154,7 @@ func NewDescribeStructCompareDataRequest() (request *DescribeStructCompareDataRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cii", APIVersion, "DescribeStructCompareData")
+    
     return
 }
 
@@ -182,6 +186,7 @@ func NewDescribeStructureDifferenceRequest() (request *DescribeStructureDifferen
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cii", APIVersion, "DescribeStructureDifference")
+    
     return
 }
 
@@ -213,6 +218,7 @@ func NewDescribeStructureResultRequest() (request *DescribeStructureResultReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cii", APIVersion, "DescribeStructureResult")
+    
     return
 }
 
@@ -248,6 +254,7 @@ func NewDescribeStructureTaskResultRequest() (request *DescribeStructureTaskResu
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cii", APIVersion, "DescribeStructureTaskResult")
+    
     return
 }
 

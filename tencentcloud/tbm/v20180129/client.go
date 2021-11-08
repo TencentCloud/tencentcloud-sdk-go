@@ -48,6 +48,7 @@ func NewDescribeBrandCommentCountRequest() (request *DescribeBrandCommentCountRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbm", APIVersion, "DescribeBrandCommentCount")
+    
     return
 }
 
@@ -80,6 +81,7 @@ func NewDescribeBrandExposureRequest() (request *DescribeBrandExposureRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbm", APIVersion, "DescribeBrandExposure")
+    
     return
 }
 
@@ -113,6 +115,7 @@ func NewDescribeBrandMediaReportRequest() (request *DescribeBrandMediaReportRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbm", APIVersion, "DescribeBrandMediaReport")
+    
     return
 }
 
@@ -146,6 +149,7 @@ func NewDescribeBrandNegCommentsRequest() (request *DescribeBrandNegCommentsRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbm", APIVersion, "DescribeBrandNegComments")
+    
     return
 }
 
@@ -177,6 +181,7 @@ func NewDescribeBrandPosCommentsRequest() (request *DescribeBrandPosCommentsRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbm", APIVersion, "DescribeBrandPosComments")
+    
     return
 }
 
@@ -208,6 +213,7 @@ func NewDescribeBrandSocialOpinionRequest() (request *DescribeBrandSocialOpinion
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbm", APIVersion, "DescribeBrandSocialOpinion")
+    
     return
 }
 
@@ -241,6 +247,7 @@ func NewDescribeBrandSocialReportRequest() (request *DescribeBrandSocialReportRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbm", APIVersion, "DescribeBrandSocialReport")
+    
     return
 }
 
@@ -274,6 +281,7 @@ func NewDescribeIndustryNewsRequest() (request *DescribeIndustryNewsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbm", APIVersion, "DescribeIndustryNews")
+    
     return
 }
 
@@ -307,6 +315,7 @@ func NewDescribeUserPortraitRequest() (request *DescribeUserPortraitRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbm", APIVersion, "DescribeUserPortrait")
+    
     return
 }
 

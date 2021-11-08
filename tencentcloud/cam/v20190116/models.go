@@ -2372,11 +2372,14 @@ func (r *GetUserResponse) FromJsonString(s string) error {
 
 type GroupIdOfUidInfo struct {
 
+	// 用户组 ID
+	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
+
 	// 子用户 UID
 	Uid *uint64 `json:"Uid,omitempty" name:"Uid"`
 
-	// 用户组 ID
-	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
+	// 子用户 Uin，Uid和Uin至少有一个必填
+	Uin *uint64 `json:"Uin,omitempty" name:"Uin"`
 }
 
 type GroupInfo struct {

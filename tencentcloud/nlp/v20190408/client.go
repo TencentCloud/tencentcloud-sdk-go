@@ -48,6 +48,7 @@ func NewAutoSummarizationRequest() (request *AutoSummarizationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("nlp", APIVersion, "AutoSummarization")
+    
     return
 }
 
@@ -85,6 +86,7 @@ func NewChatBotRequest() (request *ChatBotRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("nlp", APIVersion, "ChatBot")
+    
     return
 }
 
@@ -122,6 +124,7 @@ func NewCreateDictRequest() (request *CreateDictRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("nlp", APIVersion, "CreateDict")
+    
     return
 }
 
@@ -169,6 +172,7 @@ func NewCreateWordItemsRequest() (request *CreateWordItemsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("nlp", APIVersion, "CreateWordItems")
+    
     return
 }
 
@@ -201,6 +205,7 @@ func NewDeleteDictRequest() (request *DeleteDictRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("nlp", APIVersion, "DeleteDict")
+    
     return
 }
 
@@ -233,6 +238,7 @@ func NewDeleteWordItemsRequest() (request *DeleteWordItemsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("nlp", APIVersion, "DeleteWordItems")
+    
     return
 }
 
@@ -265,6 +271,7 @@ func NewDependencyParsingRequest() (request *DependencyParsingRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("nlp", APIVersion, "DependencyParsing")
+    
     return
 }
 
@@ -298,6 +305,7 @@ func NewDescribeDictRequest() (request *DescribeDictRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("nlp", APIVersion, "DescribeDict")
+    
     return
 }
 
@@ -331,6 +339,7 @@ func NewDescribeDictsRequest() (request *DescribeDictsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("nlp", APIVersion, "DescribeDicts")
+    
     return
 }
 
@@ -366,6 +375,7 @@ func NewDescribeEntityRequest() (request *DescribeEntityRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("nlp", APIVersion, "DescribeEntity")
+    
     return
 }
 
@@ -416,6 +426,7 @@ func NewDescribeRelationRequest() (request *DescribeRelationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("nlp", APIVersion, "DescribeRelation")
+    
     return
 }
 
@@ -465,6 +476,7 @@ func NewDescribeTripleRequest() (request *DescribeTripleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("nlp", APIVersion, "DescribeTriple")
+    
     return
 }
 
@@ -513,6 +525,7 @@ func NewDescribeWordItemsRequest() (request *DescribeWordItemsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("nlp", APIVersion, "DescribeWordItems")
+    
     return
 }
 
@@ -547,6 +560,7 @@ func NewKeywordsExtractionRequest() (request *KeywordsExtractionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("nlp", APIVersion, "KeywordsExtraction")
+    
     return
 }
 
@@ -584,6 +598,7 @@ func NewLexicalAnalysisRequest() (request *LexicalAnalysisRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("nlp", APIVersion, "LexicalAnalysis")
+    
     return
 }
 
@@ -636,6 +651,7 @@ func NewSearchWordItemsRequest() (request *SearchWordItemsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("nlp", APIVersion, "SearchWordItems")
+    
     return
 }
 
@@ -669,6 +685,7 @@ func NewSentenceEmbeddingRequest() (request *SentenceEmbeddingRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("nlp", APIVersion, "SentenceEmbedding")
+    
     return
 }
 
@@ -709,6 +726,7 @@ func NewSentimentAnalysisRequest() (request *SentimentAnalysisRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("nlp", APIVersion, "SentimentAnalysis")
+    
     return
 }
 
@@ -750,6 +768,7 @@ func NewSimilarWordsRequest() (request *SimilarWordsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("nlp", APIVersion, "SimilarWords")
+    
     return
 }
 
@@ -786,6 +805,7 @@ func NewTextClassificationRequest() (request *TextClassificationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("nlp", APIVersion, "TextClassification")
+    
     return
 }
 
@@ -838,6 +858,7 @@ func NewTextCorrectionRequest() (request *TextCorrectionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("nlp", APIVersion, "TextCorrection")
+    
     return
 }
 
@@ -876,6 +897,7 @@ func NewTextSimilarityRequest() (request *TextSimilarityRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("nlp", APIVersion, "TextSimilarity")
+    
     return
 }
 
@@ -921,6 +943,7 @@ func NewUpdateDictRequest() (request *UpdateDictRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("nlp", APIVersion, "UpdateDict")
+    
     return
 }
 
@@ -954,6 +977,7 @@ func NewWordEmbeddingRequest() (request *WordEmbeddingRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("nlp", APIVersion, "WordEmbedding")
+    
     return
 }
 
@@ -1006,6 +1030,7 @@ func NewWordSimilarityRequest() (request *WordSimilarityRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("nlp", APIVersion, "WordSimilarity")
+    
     return
 }
 

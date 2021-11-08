@@ -48,6 +48,7 @@ func NewDeleteCertRequest() (request *DeleteCertRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("wss", APIVersion, "DeleteCert")
+    
     return
 }
 
@@ -81,6 +82,7 @@ func NewDescribeCertListRequest() (request *DescribeCertListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("wss", APIVersion, "DescribeCertList")
+    
     return
 }
 
@@ -113,6 +115,7 @@ func NewUploadCertRequest() (request *UploadCertRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("wss", APIVersion, "UploadCert")
+    
     return
 }
 

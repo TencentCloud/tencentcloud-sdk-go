@@ -48,6 +48,7 @@ func NewDescribeNewUserAcquisitionRequest() (request *DescribeNewUserAcquisition
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("pds", APIVersion, "DescribeNewUserAcquisition")
+    
     return
 }
 
@@ -87,6 +88,7 @@ func NewDescribeStockEstimationRequest() (request *DescribeStockEstimationReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("pds", APIVersion, "DescribeStockEstimation")
+    
     return
 }
 

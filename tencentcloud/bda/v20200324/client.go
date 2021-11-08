@@ -48,6 +48,7 @@ func NewCreateGroupRequest() (request *CreateGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "CreateGroup")
+    
     return
 }
 
@@ -106,6 +107,7 @@ func NewCreatePersonRequest() (request *CreatePersonRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "CreatePerson")
+    
     return
 }
 
@@ -171,6 +173,7 @@ func NewCreateSegmentationTaskRequest() (request *CreateSegmentationTaskRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "CreateSegmentationTask")
+    
     return
 }
 
@@ -209,6 +212,7 @@ func NewCreateTraceRequest() (request *CreateTraceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "CreateTrace")
+    
     return
 }
 
@@ -269,6 +273,7 @@ func NewDeleteGroupRequest() (request *DeleteGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "DeleteGroup")
+    
     return
 }
 
@@ -308,6 +313,7 @@ func NewDeletePersonRequest() (request *DeletePersonRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "DeletePerson")
+    
     return
 }
 
@@ -346,6 +352,7 @@ func NewDescribeSegmentationTaskRequest() (request *DescribeSegmentationTaskRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "DescribeSegmentationTask")
+    
     return
 }
 
@@ -381,6 +388,7 @@ func NewDetectBodyRequest() (request *DetectBodyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "DetectBody")
+    
     return
 }
 
@@ -428,6 +436,7 @@ func NewDetectBodyJointsRequest() (request *DetectBodyJointsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "DetectBodyJoints")
+    
     return
 }
 
@@ -477,6 +486,7 @@ func NewGetGroupListRequest() (request *GetGroupListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "GetGroupList")
+    
     return
 }
 
@@ -515,6 +525,7 @@ func NewGetPersonListRequest() (request *GetPersonListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "GetPersonList")
+    
     return
 }
 
@@ -554,6 +565,7 @@ func NewGetSummaryInfoRequest() (request *GetSummaryInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "GetSummaryInfo")
+    
     return
 }
 
@@ -592,6 +604,7 @@ func NewModifyGroupRequest() (request *ModifyGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "ModifyGroup")
+    
     return
 }
 
@@ -633,6 +646,7 @@ func NewModifyPersonInfoRequest() (request *ModifyPersonInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "ModifyPersonInfo")
+    
     return
 }
 
@@ -671,6 +685,7 @@ func NewSearchTraceRequest() (request *SearchTraceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "SearchTrace")
+    
     return
 }
 
@@ -734,6 +749,7 @@ func NewSegmentCustomizedPortraitPicRequest() (request *SegmentCustomizedPortrai
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "SegmentCustomizedPortraitPic")
+    
     return
 }
 
@@ -781,6 +797,7 @@ func NewSegmentPortraitPicRequest() (request *SegmentPortraitPicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "SegmentPortraitPic")
+    
     return
 }
 
@@ -829,6 +846,7 @@ func NewTerminateSegmentationTaskRequest() (request *TerminateSegmentationTaskRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "TerminateSegmentationTask")
+    
     return
 }
 

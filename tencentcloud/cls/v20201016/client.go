@@ -48,6 +48,7 @@ func NewApplyConfigToMachineGroupRequest() (request *ApplyConfigToMachineGroupRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "ApplyConfigToMachineGroup")
+    
     return
 }
 
@@ -87,6 +88,7 @@ func NewCreateAlarmRequest() (request *CreateAlarmRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "CreateAlarm")
+    
     return
 }
 
@@ -126,6 +128,7 @@ func NewCreateAlarmNoticeRequest() (request *CreateAlarmNoticeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "CreateAlarmNotice")
+    
     return
 }
 
@@ -162,6 +165,7 @@ func NewCreateAsyncContextTaskRequest() (request *CreateAsyncContextTaskRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "CreateAsyncContextTask")
+    
     return
 }
 
@@ -199,6 +203,7 @@ func NewCreateAsyncSearchTaskRequest() (request *CreateAsyncSearchTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "CreateAsyncSearchTask")
+    
     return
 }
 
@@ -237,6 +242,7 @@ func NewCreateConfigRequest() (request *CreateConfigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "CreateConfig")
+    
     return
 }
 
@@ -278,6 +284,7 @@ func NewCreateExportRequest() (request *CreateExportRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "CreateExport")
+    
     return
 }
 
@@ -316,6 +323,7 @@ func NewCreateIndexRequest() (request *CreateIndexRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "CreateIndex")
+    
     return
 }
 
@@ -355,6 +363,7 @@ func NewCreateLogsetRequest() (request *CreateLogsetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "CreateLogset")
+    
     return
 }
 
@@ -396,6 +405,7 @@ func NewCreateMachineGroupRequest() (request *CreateMachineGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "CreateMachineGroup")
+    
     return
 }
 
@@ -439,6 +449,7 @@ func NewCreateShipperRequest() (request *CreateShipperRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "CreateShipper")
+    
     return
 }
 
@@ -481,6 +492,7 @@ func NewCreateTopicRequest() (request *CreateTopicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "CreateTopic")
+    
     return
 }
 
@@ -523,6 +535,7 @@ func NewDeleteAlarmRequest() (request *DeleteAlarmRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DeleteAlarm")
+    
     return
 }
 
@@ -559,6 +572,7 @@ func NewDeleteAlarmNoticeRequest() (request *DeleteAlarmNoticeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DeleteAlarmNotice")
+    
     return
 }
 
@@ -597,6 +611,7 @@ func NewDeleteAsyncContextTaskRequest() (request *DeleteAsyncContextTaskRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DeleteAsyncContextTask")
+    
     return
 }
 
@@ -630,6 +645,7 @@ func NewDeleteAsyncSearchTaskRequest() (request *DeleteAsyncSearchTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DeleteAsyncSearchTask")
+    
     return
 }
 
@@ -665,6 +681,7 @@ func NewDeleteConfigRequest() (request *DeleteConfigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DeleteConfig")
+    
     return
 }
 
@@ -705,6 +722,7 @@ func NewDeleteConfigFromMachineGroupRequest() (request *DeleteConfigFromMachineG
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DeleteConfigFromMachineGroup")
+    
     return
 }
 
@@ -744,6 +762,7 @@ func NewDeleteExportRequest() (request *DeleteExportRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DeleteExport")
+    
     return
 }
 
@@ -781,6 +800,7 @@ func NewDeleteIndexRequest() (request *DeleteIndexRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DeleteIndex")
+    
     return
 }
 
@@ -820,6 +840,7 @@ func NewDeleteLogsetRequest() (request *DeleteLogsetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DeleteLogset")
+    
     return
 }
 
@@ -859,6 +880,7 @@ func NewDeleteMachineGroupRequest() (request *DeleteMachineGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DeleteMachineGroup")
+    
     return
 }
 
@@ -898,6 +920,7 @@ func NewDeleteShipperRequest() (request *DeleteShipperRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DeleteShipper")
+    
     return
 }
 
@@ -938,6 +961,7 @@ func NewDeleteTopicRequest() (request *DeleteTopicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DeleteTopic")
+    
     return
 }
 
@@ -976,6 +1000,7 @@ func NewDescribeAlarmNoticesRequest() (request *DescribeAlarmNoticesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeAlarmNotices")
+    
     return
 }
 
@@ -1012,6 +1037,7 @@ func NewDescribeAlarmsRequest() (request *DescribeAlarmsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeAlarms")
+    
     return
 }
 
@@ -1044,6 +1070,7 @@ func NewDescribeAsyncContextResultRequest() (request *DescribeAsyncContextResult
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeAsyncContextResult")
+    
     return
 }
 
@@ -1080,6 +1107,7 @@ func NewDescribeAsyncContextTasksRequest() (request *DescribeAsyncContextTasksRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeAsyncContextTasks")
+    
     return
 }
 
@@ -1112,6 +1140,7 @@ func NewDescribeAsyncSearchResultRequest() (request *DescribeAsyncSearchResultRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeAsyncSearchResult")
+    
     return
 }
 
@@ -1148,6 +1177,7 @@ func NewDescribeAsyncSearchTasksRequest() (request *DescribeAsyncSearchTasksRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeAsyncSearchTasks")
+    
     return
 }
 
@@ -1181,6 +1211,7 @@ func NewDescribeConfigMachineGroupsRequest() (request *DescribeConfigMachineGrou
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeConfigMachineGroups")
+    
     return
 }
 
@@ -1221,6 +1252,7 @@ func NewDescribeConfigsRequest() (request *DescribeConfigsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeConfigs")
+    
     return
 }
 
@@ -1259,6 +1291,7 @@ func NewDescribeExportsRequest() (request *DescribeExportsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeExports")
+    
     return
 }
 
@@ -1297,6 +1330,7 @@ func NewDescribeIndexRequest() (request *DescribeIndexRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeIndex")
+    
     return
 }
 
@@ -1337,6 +1371,7 @@ func NewDescribeLogContextRequest() (request *DescribeLogContextRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeLogContext")
+    
     return
 }
 
@@ -1379,6 +1414,7 @@ func NewDescribeLogsetsRequest() (request *DescribeLogsetsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeLogsets")
+    
     return
 }
 
@@ -1418,6 +1454,7 @@ func NewDescribeMachineGroupConfigsRequest() (request *DescribeMachineGroupConfi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeMachineGroupConfigs")
+    
     return
 }
 
@@ -1456,6 +1493,7 @@ func NewDescribeMachineGroupsRequest() (request *DescribeMachineGroupsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeMachineGroups")
+    
     return
 }
 
@@ -1493,6 +1531,7 @@ func NewDescribeMachinesRequest() (request *DescribeMachinesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeMachines")
+    
     return
 }
 
@@ -1533,6 +1572,7 @@ func NewDescribePartitionsRequest() (request *DescribePartitionsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribePartitions")
+    
     return
 }
 
@@ -1572,6 +1612,7 @@ func NewDescribeShipperTasksRequest() (request *DescribeShipperTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeShipperTasks")
+    
     return
 }
 
@@ -1612,6 +1653,7 @@ func NewDescribeShippersRequest() (request *DescribeShippersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeShippers")
+    
     return
 }
 
@@ -1652,6 +1694,7 @@ func NewDescribeTopicsRequest() (request *DescribeTopicsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeTopics")
+    
     return
 }
 
@@ -1691,6 +1734,7 @@ func NewGetAlarmLogRequest() (request *GetAlarmLogRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "GetAlarmLog")
+    
     return
 }
 
@@ -1735,6 +1779,7 @@ func NewMergePartitionRequest() (request *MergePartitionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "MergePartition")
+    
     return
 }
 
@@ -1776,6 +1821,7 @@ func NewModifyAlarmRequest() (request *ModifyAlarmRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "ModifyAlarm")
+    
     return
 }
 
@@ -1816,6 +1862,7 @@ func NewModifyAlarmNoticeRequest() (request *ModifyAlarmNoticeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "ModifyAlarmNotice")
+    
     return
 }
 
@@ -1855,6 +1902,7 @@ func NewModifyConfigRequest() (request *ModifyConfigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "ModifyConfig")
+    
     return
 }
 
@@ -1896,6 +1944,7 @@ func NewModifyIndexRequest() (request *ModifyIndexRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "ModifyIndex")
+    
     return
 }
 
@@ -1935,6 +1984,7 @@ func NewModifyLogsetRequest() (request *ModifyLogsetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "ModifyLogset")
+    
     return
 }
 
@@ -1976,6 +2026,7 @@ func NewModifyMachineGroupRequest() (request *ModifyMachineGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "ModifyMachineGroup")
+    
     return
 }
 
@@ -2018,6 +2069,7 @@ func NewModifyShipperRequest() (request *ModifyShipperRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "ModifyShipper")
+    
     return
 }
 
@@ -2057,6 +2109,7 @@ func NewModifyTopicRequest() (request *ModifyTopicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "ModifyTopic")
+    
     return
 }
 
@@ -2100,6 +2153,7 @@ func NewRetryShipperTaskRequest() (request *RetryShipperTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "RetryShipperTask")
+    
     return
 }
 
@@ -2142,6 +2196,7 @@ func NewSearchLogRequest() (request *SearchLogRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "SearchLog")
+    
     return
 }
 
@@ -2185,6 +2240,7 @@ func NewSplitPartitionRequest() (request *SplitPartitionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "SplitPartition")
+    
     return
 }
 
@@ -2229,6 +2285,7 @@ func NewUploadLogRequest() (request *UploadLogRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "UploadLog")
+    
     return
 }
 

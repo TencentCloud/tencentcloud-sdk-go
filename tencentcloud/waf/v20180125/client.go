@@ -48,6 +48,7 @@ func NewAddCustomRuleRequest() (request *AddCustomRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "AddCustomRule")
+    
     return
 }
 
@@ -77,6 +78,7 @@ func NewCreateAccessExportRequest() (request *CreateAccessExportRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "CreateAccessExport")
+    
     return
 }
 
@@ -125,6 +127,7 @@ func NewCreateAttackDownloadTaskRequest() (request *CreateAttackDownloadTaskRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "CreateAttackDownloadTask")
+    
     return
 }
 
@@ -154,6 +157,7 @@ func NewDeleteAccessExportRequest() (request *DeleteAccessExportRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "DeleteAccessExport")
+    
     return
 }
 
@@ -202,6 +206,7 @@ func NewDeleteAttackDownloadRecordRequest() (request *DeleteAttackDownloadRecord
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "DeleteAttackDownloadRecord")
+    
     return
 }
 
@@ -232,6 +237,7 @@ func NewDeleteDownloadRecordRequest() (request *DeleteDownloadRecordRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "DeleteDownloadRecord")
+    
     return
 }
 
@@ -261,6 +267,7 @@ func NewDeleteSessionRequest() (request *DeleteSessionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "DeleteSession")
+    
     return
 }
 
@@ -290,6 +297,7 @@ func NewDescribeAccessExportsRequest() (request *DescribeAccessExportsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "DescribeAccessExports")
+    
     return
 }
 
@@ -338,6 +346,7 @@ func NewDescribeAccessFastAnalysisRequest() (request *DescribeAccessFastAnalysis
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "DescribeAccessFastAnalysis")
+    
     return
 }
 
@@ -386,6 +395,7 @@ func NewDescribeAccessIndexRequest() (request *DescribeAccessIndexRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "DescribeAccessIndex")
+    
     return
 }
 
@@ -434,6 +444,7 @@ func NewDescribeCustomRulesRequest() (request *DescribeCustomRulesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "DescribeCustomRules")
+    
     return
 }
 
@@ -463,6 +474,7 @@ func NewDescribeFlowTrendRequest() (request *DescribeFlowTrendRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "DescribeFlowTrend")
+    
     return
 }
 
@@ -495,6 +507,7 @@ func NewDescribeUserClbWafRegionsRequest() (request *DescribeUserClbWafRegionsRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "DescribeUserClbWafRegions")
+    
     return
 }
 
@@ -538,6 +551,7 @@ func NewModifyAccessPeriodRequest() (request *ModifyAccessPeriodRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "ModifyAccessPeriod")
+    
     return
 }
 
@@ -586,6 +600,7 @@ func NewModifyCustomRuleStatusRequest() (request *ModifyCustomRuleStatusRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "ModifyCustomRuleStatus")
+    
     return
 }
 
@@ -615,6 +630,7 @@ func NewSearchAccessLogRequest() (request *SearchAccessLogRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "SearchAccessLog")
+    
     return
 }
 

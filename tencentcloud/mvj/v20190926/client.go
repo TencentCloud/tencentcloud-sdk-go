@@ -48,6 +48,7 @@ func NewMarketingValueJudgementRequest() (request *MarketingValueJudgementReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("mvj", APIVersion, "MarketingValueJudgement")
+    
     return
 }
 

@@ -48,6 +48,7 @@ func NewBatchUpdateFirmwareRequest() (request *BatchUpdateFirmwareRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "BatchUpdateFirmware")
+    
     return
 }
 
@@ -80,6 +81,7 @@ func NewBindDevicesRequest() (request *BindDevicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "BindDevices")
+    
     return
 }
 
@@ -116,6 +118,7 @@ func NewCancelDeviceFirmwareTaskRequest() (request *CancelDeviceFirmwareTaskRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "CancelDeviceFirmwareTask")
+    
     return
 }
 
@@ -147,6 +150,7 @@ func NewCancelTaskRequest() (request *CancelTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "CancelTask")
+    
     return
 }
 
@@ -179,6 +183,7 @@ func NewCreateDeviceRequest() (request *CreateDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "CreateDevice")
+    
     return
 }
 
@@ -219,6 +224,7 @@ func NewCreateLoraDeviceRequest() (request *CreateLoraDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "CreateLoraDevice")
+    
     return
 }
 
@@ -249,6 +255,7 @@ func NewCreateMultiDeviceRequest() (request *CreateMultiDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "CreateMultiDevice")
+    
     return
 }
 
@@ -280,6 +287,7 @@ func NewCreateMultiDevicesTaskRequest() (request *CreateMultiDevicesTaskRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "CreateMultiDevicesTask")
+    
     return
 }
 
@@ -312,6 +320,7 @@ func NewCreateProductRequest() (request *CreateProductRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "CreateProduct")
+    
     return
 }
 
@@ -348,6 +357,7 @@ func NewCreateTaskRequest() (request *CreateTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "CreateTask")
+    
     return
 }
 
@@ -380,6 +390,7 @@ func NewCreateTaskFileUrlRequest() (request *CreateTaskFileUrlRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "CreateTaskFileUrl")
+    
     return
 }
 
@@ -410,6 +421,7 @@ func NewCreateTopicPolicyRequest() (request *CreateTopicPolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "CreateTopicPolicy")
+    
     return
 }
 
@@ -444,6 +456,7 @@ func NewCreateTopicRuleRequest() (request *CreateTopicRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "CreateTopicRule")
+    
     return
 }
 
@@ -482,6 +495,7 @@ func NewDeleteDeviceRequest() (request *DeleteDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DeleteDevice")
+    
     return
 }
 
@@ -517,6 +531,7 @@ func NewDeleteLoraDeviceRequest() (request *DeleteLoraDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DeleteLoraDevice")
+    
     return
 }
 
@@ -547,6 +562,7 @@ func NewDeleteProductRequest() (request *DeleteProductRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DeleteProduct")
+    
     return
 }
 
@@ -582,6 +598,7 @@ func NewDeleteTopicRuleRequest() (request *DeleteTopicRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DeleteTopicRule")
+    
     return
 }
 
@@ -613,6 +630,7 @@ func NewDescribeAllDevicesRequest() (request *DescribeAllDevicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeAllDevices")
+    
     return
 }
 
@@ -644,6 +662,7 @@ func NewDescribeDeviceRequest() (request *DescribeDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeDevice")
+    
     return
 }
 
@@ -676,6 +695,7 @@ func NewDescribeDeviceClientKeyRequest() (request *DescribeDeviceClientKeyReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeDeviceClientKey")
+    
     return
 }
 
@@ -710,6 +730,7 @@ func NewDescribeDeviceResourceRequest() (request *DescribeDeviceResourceRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeDeviceResource")
+    
     return
 }
 
@@ -742,6 +763,7 @@ func NewDescribeDeviceResourcesRequest() (request *DescribeDeviceResourcesReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeDeviceResources")
+    
     return
 }
 
@@ -773,6 +795,7 @@ func NewDescribeDeviceShadowRequest() (request *DescribeDeviceShadowRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeDeviceShadow")
+    
     return
 }
 
@@ -806,6 +829,7 @@ func NewDescribeDevicesRequest() (request *DescribeDevicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeDevices")
+    
     return
 }
 
@@ -837,6 +861,7 @@ func NewDescribeFirmwareRequest() (request *DescribeFirmwareRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeFirmware")
+    
     return
 }
 
@@ -866,6 +891,7 @@ func NewDescribeFirmwareTaskRequest() (request *DescribeFirmwareTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeFirmwareTask")
+    
     return
 }
 
@@ -895,6 +921,7 @@ func NewDescribeFirmwareTaskDevicesRequest() (request *DescribeFirmwareTaskDevic
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeFirmwareTaskDevices")
+    
     return
 }
 
@@ -924,6 +951,7 @@ func NewDescribeFirmwareTaskDistributionRequest() (request *DescribeFirmwareTask
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeFirmwareTaskDistribution")
+    
     return
 }
 
@@ -953,6 +981,7 @@ func NewDescribeFirmwareTaskStatisticsRequest() (request *DescribeFirmwareTaskSt
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeFirmwareTaskStatistics")
+    
     return
 }
 
@@ -982,6 +1011,7 @@ func NewDescribeFirmwareTasksRequest() (request *DescribeFirmwareTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeFirmwareTasks")
+    
     return
 }
 
@@ -1011,6 +1041,7 @@ func NewDescribeLoraDeviceRequest() (request *DescribeLoraDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeLoraDevice")
+    
     return
 }
 
@@ -1045,6 +1076,7 @@ func NewDescribeMultiDevTaskRequest() (request *DescribeMultiDevTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeMultiDevTask")
+    
     return
 }
 
@@ -1079,6 +1111,7 @@ func NewDescribeMultiDevicesRequest() (request *DescribeMultiDevicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeMultiDevices")
+    
     return
 }
 
@@ -1115,6 +1148,7 @@ func NewDescribeProductResourceRequest() (request *DescribeProductResourceReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeProductResource")
+    
     return
 }
 
@@ -1147,6 +1181,7 @@ func NewDescribeProductResourcesRequest() (request *DescribeProductResourcesRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeProductResources")
+    
     return
 }
 
@@ -1180,6 +1215,7 @@ func NewDescribeProductTaskRequest() (request *DescribeProductTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeProductTask")
+    
     return
 }
 
@@ -1212,6 +1248,7 @@ func NewDescribeProductTasksRequest() (request *DescribeProductTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeProductTasks")
+    
     return
 }
 
@@ -1242,6 +1279,7 @@ func NewDescribeProductsRequest() (request *DescribeProductsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeProducts")
+    
     return
 }
 
@@ -1272,6 +1310,7 @@ func NewDescribePushResourceTaskStatisticsRequest() (request *DescribePushResour
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribePushResourceTaskStatistics")
+    
     return
 }
 
@@ -1301,6 +1340,7 @@ func NewDescribeResourceTasksRequest() (request *DescribeResourceTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeResourceTasks")
+    
     return
 }
 
@@ -1330,6 +1370,7 @@ func NewDescribeTaskRequest() (request *DescribeTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeTask")
+    
     return
 }
 
@@ -1361,6 +1402,7 @@ func NewDescribeTasksRequest() (request *DescribeTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeTasks")
+    
     return
 }
 
@@ -1391,6 +1433,7 @@ func NewDisableTopicRuleRequest() (request *DisableTopicRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DisableTopicRule")
+    
     return
 }
 
@@ -1426,6 +1469,7 @@ func NewEditFirmwareRequest() (request *EditFirmwareRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "EditFirmware")
+    
     return
 }
 
@@ -1455,6 +1499,7 @@ func NewEnableTopicRuleRequest() (request *EnableTopicRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "EnableTopicRule")
+    
     return
 }
 
@@ -1497,6 +1542,7 @@ func NewGetCOSURLRequest() (request *GetCOSURLRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "GetCOSURL")
+    
     return
 }
 
@@ -1527,6 +1573,7 @@ func NewGetUserResourceInfoRequest() (request *GetUserResourceInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "GetUserResourceInfo")
+    
     return
 }
 
@@ -1558,6 +1605,7 @@ func NewPublishAsDeviceRequest() (request *PublishAsDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "PublishAsDevice")
+    
     return
 }
 
@@ -1587,6 +1635,7 @@ func NewPublishBroadcastMessageRequest() (request *PublishBroadcastMessageReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "PublishBroadcastMessage")
+    
     return
 }
 
@@ -1617,6 +1666,7 @@ func NewPublishMessageRequest() (request *PublishMessageRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "PublishMessage")
+    
     return
 }
 
@@ -1659,6 +1709,7 @@ func NewPublishRRPCMessageRequest() (request *PublishRRPCMessageRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "PublishRRPCMessage")
+    
     return
 }
 
@@ -1694,6 +1745,7 @@ func NewPublishToDeviceRequest() (request *PublishToDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "PublishToDevice")
+    
     return
 }
 
@@ -1723,6 +1775,7 @@ func NewReplaceTopicRuleRequest() (request *ReplaceTopicRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "ReplaceTopicRule")
+    
     return
 }
 
@@ -1765,6 +1818,7 @@ func NewResetDeviceStateRequest() (request *ResetDeviceStateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "ResetDeviceState")
+    
     return
 }
 
@@ -1797,6 +1851,7 @@ func NewRetryDeviceFirmwareTaskRequest() (request *RetryDeviceFirmwareTaskReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "RetryDeviceFirmwareTask")
+    
     return
 }
 
@@ -1828,6 +1883,7 @@ func NewSetProductsForbiddenStatusRequest() (request *SetProductsForbiddenStatus
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "SetProductsForbiddenStatus")
+    
     return
 }
 
@@ -1859,6 +1915,7 @@ func NewUnbindDevicesRequest() (request *UnbindDevicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "UnbindDevices")
+    
     return
 }
 
@@ -1890,6 +1947,7 @@ func NewUpdateDeviceAvailableStateRequest() (request *UpdateDeviceAvailableState
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "UpdateDeviceAvailableState")
+    
     return
 }
 
@@ -1922,6 +1980,7 @@ func NewUpdateDeviceShadowRequest() (request *UpdateDeviceShadowRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "UpdateDeviceShadow")
+    
     return
 }
 
@@ -1959,6 +2018,7 @@ func NewUpdateDevicesEnableStateRequest() (request *UpdateDevicesEnableStateRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "UpdateDevicesEnableState")
+    
     return
 }
 
@@ -1992,6 +2052,7 @@ func NewUpdateTopicPolicyRequest() (request *UpdateTopicPolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "UpdateTopicPolicy")
+    
     return
 }
 
@@ -2024,6 +2085,7 @@ func NewUploadFirmwareRequest() (request *UploadFirmwareRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "UploadFirmware")
+    
     return
 }
 

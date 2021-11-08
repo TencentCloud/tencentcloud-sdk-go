@@ -48,6 +48,7 @@ func NewApplyUploadRequest() (request *ApplyUploadRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ApplyUpload")
+    
     return
 }
 
@@ -87,6 +88,7 @@ func NewAttachMediaSubtitlesRequest() (request *AttachMediaSubtitlesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "AttachMediaSubtitles")
+    
     return
 }
 
@@ -120,6 +122,7 @@ func NewCommitUploadRequest() (request *CommitUploadRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "CommitUpload")
+    
     return
 }
 
@@ -153,6 +156,7 @@ func NewComposeMediaRequest() (request *ComposeMediaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ComposeMedia")
+    
     return
 }
 
@@ -204,6 +208,7 @@ func NewConfirmEventsRequest() (request *ConfirmEventsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ConfirmEvents")
+    
     return
 }
 
@@ -241,6 +246,7 @@ func NewCreateAIAnalysisTemplateRequest() (request *CreateAIAnalysisTemplateRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "CreateAIAnalysisTemplate")
+    
     return
 }
 
@@ -281,6 +287,7 @@ func NewCreateAIRecognitionTemplateRequest() (request *CreateAIRecognitionTempla
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "CreateAIRecognitionTemplate")
+    
     return
 }
 
@@ -324,6 +331,7 @@ func NewCreateAdaptiveDynamicStreamingTemplateRequest() (request *CreateAdaptive
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "CreateAdaptiveDynamicStreamingTemplate")
+    
     return
 }
 
@@ -372,6 +380,7 @@ func NewCreateAnimatedGraphicsTemplateRequest() (request *CreateAnimatedGraphics
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "CreateAnimatedGraphicsTemplate")
+    
     return
 }
 
@@ -413,6 +422,7 @@ func NewCreateClassRequest() (request *CreateClassRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "CreateClass")
+    
     return
 }
 
@@ -457,6 +467,7 @@ func NewCreateContentReviewTemplateRequest() (request *CreateContentReviewTempla
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "CreateContentReviewTemplate")
+    
     return
 }
 
@@ -499,6 +510,7 @@ func NewCreateHeadTailTemplateRequest() (request *CreateHeadTailTemplateRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "CreateHeadTailTemplate")
+    
     return
 }
 
@@ -538,6 +550,7 @@ func NewCreateImageProcessingTemplateRequest() (request *CreateImageProcessingTe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "CreateImageProcessingTemplate")
+    
     return
 }
 
@@ -577,6 +590,7 @@ func NewCreateImageSpriteTemplateRequest() (request *CreateImageSpriteTemplateRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "CreateImageSpriteTemplate")
+    
     return
 }
 
@@ -618,6 +632,7 @@ func NewCreatePersonSampleRequest() (request *CreatePersonSampleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "CreatePersonSample")
+    
     return
 }
 
@@ -651,6 +666,7 @@ func NewCreateProcedureTemplateRequest() (request *CreateProcedureTemplateReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "CreateProcedureTemplate")
+    
     return
 }
 
@@ -687,6 +703,7 @@ func NewCreateSampleSnapshotTemplateRequest() (request *CreateSampleSnapshotTemp
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "CreateSampleSnapshotTemplate")
+    
     return
 }
 
@@ -727,6 +744,7 @@ func NewCreateSnapshotByTimeOffsetTemplateRequest() (request *CreateSnapshotByTi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "CreateSnapshotByTimeOffsetTemplate")
+    
     return
 }
 
@@ -766,6 +784,7 @@ func NewCreateSubAppIdRequest() (request *CreateSubAppIdRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "CreateSubAppId")
+    
     return
 }
 
@@ -800,6 +819,7 @@ func NewCreateSuperPlayerConfigRequest() (request *CreateSuperPlayerConfigReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "CreateSuperPlayerConfig")
+    
     return
 }
 
@@ -834,6 +854,7 @@ func NewCreateTranscodeTemplateRequest() (request *CreateTranscodeTemplateReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "CreateTranscodeTemplate")
+    
     return
 }
 
@@ -891,6 +912,7 @@ func NewCreateVodDomainRequest() (request *CreateVodDomainRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "CreateVodDomain")
+    
     return
 }
 
@@ -926,6 +948,7 @@ func NewCreateWatermarkTemplateRequest() (request *CreateWatermarkTemplateReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "CreateWatermarkTemplate")
+    
     return
 }
 
@@ -977,6 +1000,7 @@ func NewCreateWordSamplesRequest() (request *CreateWordSamplesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "CreateWordSamples")
+    
     return
 }
 
@@ -1008,6 +1032,7 @@ func NewDeleteAIAnalysisTemplateRequest() (request *DeleteAIAnalysisTemplateRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DeleteAIAnalysisTemplate")
+    
     return
 }
 
@@ -1045,6 +1070,7 @@ func NewDeleteAIRecognitionTemplateRequest() (request *DeleteAIRecognitionTempla
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DeleteAIRecognitionTemplate")
+    
     return
 }
 
@@ -1078,6 +1104,7 @@ func NewDeleteAdaptiveDynamicStreamingTemplateRequest() (request *DeleteAdaptive
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DeleteAdaptiveDynamicStreamingTemplate")
+    
     return
 }
 
@@ -1110,6 +1137,7 @@ func NewDeleteAnimatedGraphicsTemplateRequest() (request *DeleteAnimatedGraphics
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DeleteAnimatedGraphicsTemplate")
+    
     return
 }
 
@@ -1142,6 +1170,7 @@ func NewDeleteClassRequest() (request *DeleteClassRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DeleteClass")
+    
     return
 }
 
@@ -1176,6 +1205,7 @@ func NewDeleteContentReviewTemplateRequest() (request *DeleteContentReviewTempla
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DeleteContentReviewTemplate")
+    
     return
 }
 
@@ -1209,6 +1239,7 @@ func NewDeleteHeadTailTemplateRequest() (request *DeleteHeadTailTemplateRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DeleteHeadTailTemplate")
+    
     return
 }
 
@@ -1244,6 +1275,7 @@ func NewDeleteImageProcessingTemplateRequest() (request *DeleteImageProcessingTe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DeleteImageProcessingTemplate")
+    
     return
 }
 
@@ -1279,6 +1311,7 @@ func NewDeleteImageSpriteTemplateRequest() (request *DeleteImageSpriteTemplateRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DeleteImageSpriteTemplate")
+    
     return
 }
 
@@ -1310,6 +1343,7 @@ func NewDeleteMediaRequest() (request *DeleteMediaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DeleteMedia")
+    
     return
 }
 
@@ -1347,6 +1381,7 @@ func NewDeletePersonSampleRequest() (request *DeletePersonSampleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DeletePersonSample")
+    
     return
 }
 
@@ -1378,6 +1413,7 @@ func NewDeleteProcedureTemplateRequest() (request *DeleteProcedureTemplateReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DeleteProcedureTemplate")
+    
     return
 }
 
@@ -1412,6 +1448,7 @@ func NewDeleteSampleSnapshotTemplateRequest() (request *DeleteSampleSnapshotTemp
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DeleteSampleSnapshotTemplate")
+    
     return
 }
 
@@ -1443,6 +1480,7 @@ func NewDeleteSnapshotByTimeOffsetTemplateRequest() (request *DeleteSnapshotByTi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DeleteSnapshotByTimeOffsetTemplate")
+    
     return
 }
 
@@ -1474,6 +1512,7 @@ func NewDeleteSuperPlayerConfigRequest() (request *DeleteSuperPlayerConfigReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DeleteSuperPlayerConfig")
+    
     return
 }
 
@@ -1509,6 +1548,7 @@ func NewDeleteTranscodeTemplateRequest() (request *DeleteTranscodeTemplateReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DeleteTranscodeTemplate")
+    
     return
 }
 
@@ -1542,6 +1582,7 @@ func NewDeleteVodDomainRequest() (request *DeleteVodDomainRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DeleteVodDomain")
+    
     return
 }
 
@@ -1574,6 +1615,7 @@ func NewDeleteWatermarkTemplateRequest() (request *DeleteWatermarkTemplateReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DeleteWatermarkTemplate")
+    
     return
 }
 
@@ -1608,6 +1650,7 @@ func NewDeleteWordSamplesRequest() (request *DeleteWordSamplesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DeleteWordSamples")
+    
     return
 }
 
@@ -1639,6 +1682,7 @@ func NewDescribeAIAnalysisTemplatesRequest() (request *DescribeAIAnalysisTemplat
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeAIAnalysisTemplates")
+    
     return
 }
 
@@ -1673,6 +1717,7 @@ func NewDescribeAIRecognitionTemplatesRequest() (request *DescribeAIRecognitionT
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeAIRecognitionTemplates")
+    
     return
 }
 
@@ -1708,6 +1753,7 @@ func NewDescribeAdaptiveDynamicStreamingTemplatesRequest() (request *DescribeAda
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeAdaptiveDynamicStreamingTemplates")
+    
     return
 }
 
@@ -1743,6 +1789,7 @@ func NewDescribeAllClassRequest() (request *DescribeAllClassRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeAllClass")
+    
     return
 }
 
@@ -1775,6 +1822,7 @@ func NewDescribeAnimatedGraphicsTemplatesRequest() (request *DescribeAnimatedGra
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeAnimatedGraphicsTemplates")
+    
     return
 }
 
@@ -1810,6 +1858,7 @@ func NewDescribeCDNStatDetailsRequest() (request *DescribeCDNStatDetailsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeCDNStatDetails")
+    
     return
 }
 
@@ -1856,6 +1905,7 @@ func NewDescribeCDNUsageDataRequest() (request *DescribeCDNUsageDataRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeCDNUsageData")
+    
     return
 }
 
@@ -1904,6 +1954,7 @@ func NewDescribeCdnLogsRequest() (request *DescribeCdnLogsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeCdnLogs")
+    
     return
 }
 
@@ -1945,6 +1996,7 @@ func NewDescribeContentReviewTemplatesRequest() (request *DescribeContentReviewT
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeContentReviewTemplates")
+    
     return
 }
 
@@ -1981,6 +2033,7 @@ func NewDescribeDailyMediaPlayStatRequest() (request *DescribeDailyMediaPlayStat
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeDailyMediaPlayStat")
+    
     return
 }
 
@@ -2015,6 +2068,7 @@ func NewDescribeDailyMostPlayedStatRequest() (request *DescribeDailyMostPlayedSt
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeDailyMostPlayedStat")
+    
     return
 }
 
@@ -2058,6 +2112,7 @@ func NewDescribeDailyPlayStatFileListRequest() (request *DescribeDailyPlayStatFi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeDailyPlayStatFileList")
+    
     return
 }
 
@@ -2104,6 +2159,7 @@ func NewDescribeDrmDataKeyRequest() (request *DescribeDrmDataKeyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeDrmDataKey")
+    
     return
 }
 
@@ -2136,6 +2192,7 @@ func NewDescribeEventConfigRequest() (request *DescribeEventConfigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeEventConfig")
+    
     return
 }
 
@@ -2177,6 +2234,7 @@ func NewDescribeEventsStateRequest() (request *DescribeEventsStateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeEventsState")
+    
     return
 }
 
@@ -2209,6 +2267,7 @@ func NewDescribeHeadTailTemplatesRequest() (request *DescribeHeadTailTemplatesRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeHeadTailTemplates")
+    
     return
 }
 
@@ -2243,6 +2302,7 @@ func NewDescribeImageProcessingTemplatesRequest() (request *DescribeImageProcess
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeImageProcessingTemplates")
+    
     return
 }
 
@@ -2279,6 +2339,7 @@ func NewDescribeImageSpriteTemplatesRequest() (request *DescribeImageSpriteTempl
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeImageSpriteTemplates")
+    
     return
 }
 
@@ -2314,6 +2375,7 @@ func NewDescribeMediaInfosRequest() (request *DescribeMediaInfosRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeMediaInfos")
+    
     return
 }
 
@@ -2370,6 +2432,7 @@ func NewDescribeMediaProcessUsageDataRequest() (request *DescribeMediaProcessUsa
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeMediaProcessUsageData")
+    
     return
 }
 
@@ -2406,6 +2469,7 @@ func NewDescribePersonSamplesRequest() (request *DescribePersonSamplesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribePersonSamples")
+    
     return
 }
 
@@ -2437,6 +2501,7 @@ func NewDescribePrepaidProductsRequest() (request *DescribePrepaidProductsReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribePrepaidProducts")
+    
     return
 }
 
@@ -2470,6 +2535,7 @@ func NewDescribeProcedureTemplatesRequest() (request *DescribeProcedureTemplates
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeProcedureTemplates")
+    
     return
 }
 
@@ -2505,6 +2571,7 @@ func NewDescribeReviewDetailsRequest() (request *DescribeReviewDetailsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeReviewDetails")
+    
     return
 }
 
@@ -2550,6 +2617,7 @@ func NewDescribeSampleSnapshotTemplatesRequest() (request *DescribeSampleSnapsho
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeSampleSnapshotTemplates")
+    
     return
 }
 
@@ -2585,6 +2653,7 @@ func NewDescribeSnapshotByTimeOffsetTemplatesRequest() (request *DescribeSnapsho
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeSnapshotByTimeOffsetTemplates")
+    
     return
 }
 
@@ -2620,6 +2689,7 @@ func NewDescribeStorageDataRequest() (request *DescribeStorageDataRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeStorageData")
+    
     return
 }
 
@@ -2653,6 +2723,7 @@ func NewDescribeStorageDetailsRequest() (request *DescribeStorageDetailsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeStorageDetails")
+    
     return
 }
 
@@ -2698,6 +2769,7 @@ func NewDescribeSubAppIdsRequest() (request *DescribeSubAppIdsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeSubAppIds")
+    
     return
 }
 
@@ -2730,6 +2802,7 @@ func NewDescribeSuperPlayerConfigsRequest() (request *DescribeSuperPlayerConfigs
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeSuperPlayerConfigs")
+    
     return
 }
 
@@ -2763,6 +2836,7 @@ func NewDescribeTaskDetailRequest() (request *DescribeTaskDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeTaskDetail")
+    
     return
 }
 
@@ -2799,6 +2873,7 @@ func NewDescribeTasksRequest() (request *DescribeTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeTasks")
+    
     return
 }
 
@@ -2837,6 +2912,7 @@ func NewDescribeTranscodeTemplatesRequest() (request *DescribeTranscodeTemplates
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeTranscodeTemplates")
+    
     return
 }
 
@@ -2875,6 +2951,7 @@ func NewDescribeVodDomainsRequest() (request *DescribeVodDomainsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeVodDomains")
+    
     return
 }
 
@@ -2910,6 +2987,7 @@ func NewDescribeWatermarkTemplatesRequest() (request *DescribeWatermarkTemplates
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeWatermarkTemplates")
+    
     return
 }
 
@@ -2946,6 +3024,7 @@ func NewDescribeWordSamplesRequest() (request *DescribeWordSamplesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "DescribeWordSamples")
+    
     return
 }
 
@@ -2977,6 +3056,7 @@ func NewEditMediaRequest() (request *EditMediaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "EditMedia")
+    
     return
 }
 
@@ -3042,6 +3122,7 @@ func NewExecuteFunctionRequest() (request *ExecuteFunctionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ExecuteFunction")
+    
     return
 }
 
@@ -3077,6 +3158,7 @@ func NewForbidMediaDistributionRequest() (request *ForbidMediaDistributionReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ForbidMediaDistribution")
+    
     return
 }
 
@@ -3115,6 +3197,7 @@ func NewLiveRealTimeClipRequest() (request *LiveRealTimeClipRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "LiveRealTimeClip")
+    
     return
 }
 
@@ -3199,6 +3282,7 @@ func NewManageTaskRequest() (request *ManageTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ManageTask")
+    
     return
 }
 
@@ -3234,6 +3318,7 @@ func NewModifyAIAnalysisTemplateRequest() (request *ModifyAIAnalysisTemplateRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ModifyAIAnalysisTemplate")
+    
     return
 }
 
@@ -3278,6 +3363,7 @@ func NewModifyAIRecognitionTemplateRequest() (request *ModifyAIRecognitionTempla
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ModifyAIRecognitionTemplate")
+    
     return
 }
 
@@ -3322,6 +3408,7 @@ func NewModifyAdaptiveDynamicStreamingTemplateRequest() (request *ModifyAdaptive
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ModifyAdaptiveDynamicStreamingTemplate")
+    
     return
 }
 
@@ -3370,6 +3457,7 @@ func NewModifyAnimatedGraphicsTemplateRequest() (request *ModifyAnimatedGraphics
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ModifyAnimatedGraphicsTemplate")
+    
     return
 }
 
@@ -3410,6 +3498,7 @@ func NewModifyClassRequest() (request *ModifyClassRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ModifyClass")
+    
     return
 }
 
@@ -3445,6 +3534,7 @@ func NewModifyContentReviewTemplateRequest() (request *ModifyContentReviewTempla
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ModifyContentReviewTemplate")
+    
     return
 }
 
@@ -3487,6 +3577,7 @@ func NewModifyEventConfigRequest() (request *ModifyEventConfigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ModifyEventConfig")
+    
     return
 }
 
@@ -3530,6 +3621,7 @@ func NewModifyHeadTailTemplateRequest() (request *ModifyHeadTailTemplateRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ModifyHeadTailTemplate")
+    
     return
 }
 
@@ -3566,6 +3658,7 @@ func NewModifyImageSpriteTemplateRequest() (request *ModifyImageSpriteTemplateRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ModifyImageSpriteTemplate")
+    
     return
 }
 
@@ -3605,6 +3698,7 @@ func NewModifyMediaInfoRequest() (request *ModifyMediaInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ModifyMediaInfo")
+    
     return
 }
 
@@ -3652,6 +3746,7 @@ func NewModifyPersonSampleRequest() (request *ModifyPersonSampleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ModifyPersonSample")
+    
     return
 }
 
@@ -3687,6 +3782,7 @@ func NewModifySampleSnapshotTemplateRequest() (request *ModifySampleSnapshotTemp
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ModifySampleSnapshotTemplate")
+    
     return
 }
 
@@ -3725,6 +3821,7 @@ func NewModifySnapshotByTimeOffsetTemplateRequest() (request *ModifySnapshotByTi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ModifySnapshotByTimeOffsetTemplate")
+    
     return
 }
 
@@ -3762,6 +3859,7 @@ func NewModifySubAppIdInfoRequest() (request *ModifySubAppIdInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ModifySubAppIdInfo")
+    
     return
 }
 
@@ -3796,6 +3894,7 @@ func NewModifySubAppIdStatusRequest() (request *ModifySubAppIdStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ModifySubAppIdStatus")
+    
     return
 }
 
@@ -3829,6 +3928,7 @@ func NewModifySuperPlayerConfigRequest() (request *ModifySuperPlayerConfigReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ModifySuperPlayerConfig")
+    
     return
 }
 
@@ -3862,6 +3962,7 @@ func NewModifyTranscodeTemplateRequest() (request *ModifyTranscodeTemplateReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ModifyTranscodeTemplate")
+    
     return
 }
 
@@ -3915,6 +4016,7 @@ func NewModifyVodDomainAccelerateConfigRequest() (request *ModifyVodDomainAccele
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ModifyVodDomainAccelerateConfig")
+    
     return
 }
 
@@ -3948,6 +4050,7 @@ func NewModifyVodDomainConfigRequest() (request *ModifyVodDomainConfigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ModifyVodDomainConfig")
+    
     return
 }
 
@@ -3979,6 +4082,7 @@ func NewModifyWatermarkTemplateRequest() (request *ModifyWatermarkTemplateReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ModifyWatermarkTemplate")
+    
     return
 }
 
@@ -4026,6 +4130,7 @@ func NewModifyWordSampleRequest() (request *ModifyWordSampleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ModifyWordSample")
+    
     return
 }
 
@@ -4058,6 +4163,7 @@ func NewParseStreamingManifestRequest() (request *ParseStreamingManifestRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ParseStreamingManifest")
+    
     return
 }
 
@@ -4090,6 +4196,7 @@ func NewProcessMediaRequest() (request *ProcessMediaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ProcessMedia")
+    
     return
 }
 
@@ -4157,6 +4264,7 @@ func NewProcessMediaByProcedureRequest() (request *ProcessMediaByProcedureReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ProcessMediaByProcedure")
+    
     return
 }
 
@@ -4208,6 +4316,7 @@ func NewProcessMediaByUrlRequest() (request *ProcessMediaByUrlRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ProcessMediaByUrl")
+    
     return
 }
 
@@ -4250,6 +4359,7 @@ func NewPullEventsRequest() (request *PullEventsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "PullEvents")
+    
     return
 }
 
@@ -4294,6 +4404,7 @@ func NewPullUploadRequest() (request *PullUploadRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "PullUpload")
+    
     return
 }
 
@@ -4340,6 +4451,7 @@ func NewPushUrlCacheRequest() (request *PushUrlCacheRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "PushUrlCache")
+    
     return
 }
 
@@ -4375,6 +4487,7 @@ func NewResetProcedureTemplateRequest() (request *ResetProcedureTemplateRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "ResetProcedureTemplate")
+    
     return
 }
 
@@ -4410,6 +4523,7 @@ func NewSearchMediaRequest() (request *SearchMediaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "SearchMedia")
+    
     return
 }
 
@@ -4528,6 +4642,7 @@ func NewSimpleHlsClipRequest() (request *SimpleHlsClipRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "SimpleHlsClip")
+    
     return
 }
 
@@ -4609,6 +4724,7 @@ func NewSplitMediaRequest() (request *SplitMediaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "SplitMedia")
+    
     return
 }
 
@@ -4645,6 +4761,7 @@ func NewWeChatMiniProgramPublishRequest() (request *WeChatMiniProgramPublishRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vod", APIVersion, "WeChatMiniProgramPublish")
+    
     return
 }
 

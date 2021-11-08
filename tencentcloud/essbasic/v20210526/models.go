@@ -973,6 +973,10 @@ type UsageDetail struct {
 	// 日期，当需要汇总数据时日期为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 渠道侧合作企业名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyOrganizationName *string `json:"ProxyOrganizationName,omitempty" name:"ProxyOrganizationName"`
 }
 
 type UserInfo struct {

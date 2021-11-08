@@ -48,6 +48,7 @@ func NewDeregisterMigrationTaskRequest() (request *DeregisterMigrationTaskReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("msp", APIVersion, "DeregisterMigrationTask")
+    
     return
 }
 
@@ -78,6 +79,7 @@ func NewDescribeMigrationTaskRequest() (request *DescribeMigrationTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("msp", APIVersion, "DescribeMigrationTask")
+    
     return
 }
 
@@ -107,6 +109,7 @@ func NewListMigrationProjectRequest() (request *ListMigrationProjectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("msp", APIVersion, "ListMigrationProject")
+    
     return
 }
 
@@ -136,6 +139,7 @@ func NewListMigrationTaskRequest() (request *ListMigrationTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("msp", APIVersion, "ListMigrationTask")
+    
     return
 }
 
@@ -165,6 +169,7 @@ func NewModifyMigrationTaskBelongToProjectRequest() (request *ModifyMigrationTas
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("msp", APIVersion, "ModifyMigrationTaskBelongToProject")
+    
     return
 }
 
@@ -195,6 +200,7 @@ func NewModifyMigrationTaskStatusRequest() (request *ModifyMigrationTaskStatusRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("msp", APIVersion, "ModifyMigrationTaskStatus")
+    
     return
 }
 
@@ -224,6 +230,7 @@ func NewRegisterMigrationTaskRequest() (request *RegisterMigrationTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("msp", APIVersion, "RegisterMigrationTask")
+    
     return
 }
 

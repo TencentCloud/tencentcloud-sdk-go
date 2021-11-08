@@ -131,6 +131,12 @@ const (
 	// 用户手机已存在。
 	FAILEDOPERATION_USERPHONEEXISTED = "FailedOperation.UserPhoneExisted"
 
+	// 用户手机不能为空。
+	FAILEDOPERATION_USERPHONEISEMPTY = "FailedOperation.UserPhoneIsEmpty"
+
+	// 校验失败：
+	INVALIDPARAMETER_ATTRIBUTEVALUEVALIDFAILURE = "InvalidParameter.AttributeValueValidFailure"
+
 	// 输入参数超出长度限制。
 	INVALIDPARAMETER_PARAMETEREXCEEDSLENGTHLIMIT = "InvalidParameter.ParameterExceedsLengthLimit"
 

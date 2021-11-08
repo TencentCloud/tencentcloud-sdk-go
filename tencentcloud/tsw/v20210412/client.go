@@ -48,6 +48,7 @@ func NewDescribeComponentAlertObjectRequest() (request *DescribeComponentAlertOb
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tsw", APIVersion, "DescribeComponentAlertObject")
+    
     return
 }
 
@@ -74,6 +75,7 @@ func NewDescribeServiceAlertObjectRequest() (request *DescribeServiceAlertObject
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tsw", APIVersion, "DescribeServiceAlertObject")
+    
     return
 }
 
@@ -100,6 +102,7 @@ func NewDescribeTokenRequest() (request *DescribeTokenRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tsw", APIVersion, "DescribeToken")
+    
     return
 }
 

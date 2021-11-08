@@ -48,6 +48,7 @@ func NewDescribeImageStatRequest() (request *DescribeImageStatRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ims", APIVersion, "DescribeImageStat")
+    
     return
 }
 
@@ -84,6 +85,7 @@ func NewDescribeImsListRequest() (request *DescribeImsListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ims", APIVersion, "DescribeImsList")
+    
     return
 }
 
@@ -119,6 +121,7 @@ func NewImageModerationRequest() (request *ImageModerationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ims", APIVersion, "ImageModeration")
+    
     return
 }
 

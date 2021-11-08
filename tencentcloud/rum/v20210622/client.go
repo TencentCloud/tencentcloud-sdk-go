@@ -48,6 +48,7 @@ func NewCreateProjectRequest() (request *CreateProjectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("rum", APIVersion, "CreateProject")
+    
     return
 }
 
@@ -85,6 +86,7 @@ func NewDescribeDataLogUrlStatisticsRequest() (request *DescribeDataLogUrlStatis
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("rum", APIVersion, "DescribeDataLogUrlStatistics")
+    
     return
 }
 
@@ -134,6 +136,7 @@ func NewDescribeDataPerformancePageRequest() (request *DescribeDataPerformancePa
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("rum", APIVersion, "DescribeDataPerformancePage")
+    
     return
 }
 
@@ -184,6 +187,7 @@ func NewDescribeErrorRequest() (request *DescribeErrorRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("rum", APIVersion, "DescribeError")
+    
     return
 }
 
@@ -232,6 +236,7 @@ func NewDescribeLogListRequest() (request *DescribeLogListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("rum", APIVersion, "DescribeLogList")
+    
     return
 }
 
@@ -280,6 +285,7 @@ func NewDescribeProjectsRequest() (request *DescribeProjectsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("rum", APIVersion, "DescribeProjects")
+    
     return
 }
 
@@ -318,6 +324,7 @@ func NewDescribeScoresRequest() (request *DescribeScoresRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("rum", APIVersion, "DescribeScores")
+    
     return
 }
 

@@ -48,6 +48,7 @@ func NewCreateMonitorsRequest() (request *CreateMonitorsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "CreateMonitors")
+    
     return
 }
 
@@ -81,6 +82,7 @@ func NewCreateSitesRequest() (request *CreateSitesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "CreateSites")
+    
     return
 }
 
@@ -112,6 +114,7 @@ func NewCreateSitesScansRequest() (request *CreateSitesScansRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "CreateSitesScans")
+    
     return
 }
 
@@ -144,6 +147,7 @@ func NewCreateVulsMisinformationRequest() (request *CreateVulsMisinformationRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "CreateVulsMisinformation")
+    
     return
 }
 
@@ -177,6 +181,7 @@ func NewCreateVulsReportRequest() (request *CreateVulsReportRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "CreateVulsReport")
+    
     return
 }
 
@@ -207,6 +212,7 @@ func NewDeleteMonitorsRequest() (request *DeleteMonitorsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "DeleteMonitors")
+    
     return
 }
 
@@ -238,6 +244,7 @@ func NewDeleteSitesRequest() (request *DeleteSitesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "DeleteSites")
+    
     return
 }
 
@@ -269,6 +276,7 @@ func NewDescribeConfigRequest() (request *DescribeConfigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "DescribeConfig")
+    
     return
 }
 
@@ -298,6 +306,7 @@ func NewDescribeMonitorsRequest() (request *DescribeMonitorsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "DescribeMonitors")
+    
     return
 }
 
@@ -329,6 +338,7 @@ func NewDescribeSiteQuotaRequest() (request *DescribeSiteQuotaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "DescribeSiteQuota")
+    
     return
 }
 
@@ -358,6 +368,7 @@ func NewDescribeSitesRequest() (request *DescribeSitesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "DescribeSites")
+    
     return
 }
 
@@ -389,6 +400,7 @@ func NewDescribeSitesVerificationRequest() (request *DescribeSitesVerificationRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "DescribeSitesVerification")
+    
     return
 }
 
@@ -420,6 +432,7 @@ func NewDescribeVulsRequest() (request *DescribeVulsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "DescribeVuls")
+    
     return
 }
 
@@ -452,6 +465,7 @@ func NewDescribeVulsNumberRequest() (request *DescribeVulsNumberRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "DescribeVulsNumber")
+    
     return
 }
 
@@ -481,6 +495,7 @@ func NewDescribeVulsNumberTimelineRequest() (request *DescribeVulsNumberTimeline
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "DescribeVulsNumberTimeline")
+    
     return
 }
 
@@ -510,6 +525,7 @@ func NewModifyConfigAttributeRequest() (request *ModifyConfigAttributeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "ModifyConfigAttribute")
+    
     return
 }
 
@@ -539,6 +555,7 @@ func NewModifyMonitorAttributeRequest() (request *ModifyMonitorAttributeRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "ModifyMonitorAttribute")
+    
     return
 }
 
@@ -571,6 +588,7 @@ func NewModifySiteAttributeRequest() (request *ModifySiteAttributeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "ModifySiteAttribute")
+    
     return
 }
 
@@ -602,6 +620,7 @@ func NewVerifySitesRequest() (request *VerifySitesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "VerifySites")
+    
     return
 }
 

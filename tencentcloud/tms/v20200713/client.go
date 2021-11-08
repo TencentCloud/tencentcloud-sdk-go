@@ -48,6 +48,7 @@ func NewAccountTipoffAccessRequest() (request *AccountTipoffAccessRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tms", APIVersion, "AccountTipoffAccess")
+    
     return
 }
 
@@ -88,6 +89,7 @@ func NewDescribeTextLibRequest() (request *DescribeTextLibRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tms", APIVersion, "DescribeTextLib")
+    
     return
 }
 
@@ -124,6 +126,7 @@ func NewDescribeTextStatRequest() (request *DescribeTextStatRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tms", APIVersion, "DescribeTextStat")
+    
     return
 }
 
@@ -156,6 +159,7 @@ func NewTextModerationRequest() (request *TextModerationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tms", APIVersion, "TextModeration")
+    
     return
 }
 

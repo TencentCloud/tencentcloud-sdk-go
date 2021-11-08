@@ -48,6 +48,7 @@ func NewInitOralProcessRequest() (request *InitOralProcessRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("soe", APIVersion, "InitOralProcess")
+    
     return
 }
 
@@ -158,6 +159,7 @@ func NewKeywordEvaluateRequest() (request *KeywordEvaluateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("soe", APIVersion, "KeywordEvaluate")
+    
     return
 }
 
@@ -254,6 +256,7 @@ func NewTransmitOralProcessRequest() (request *TransmitOralProcessRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("soe", APIVersion, "TransmitOralProcess")
+    
     return
 }
 
@@ -377,6 +380,7 @@ func NewTransmitOralProcessWithInitRequest() (request *TransmitOralProcessWithIn
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("soe", APIVersion, "TransmitOralProcessWithInit")
+    
     return
 }
 

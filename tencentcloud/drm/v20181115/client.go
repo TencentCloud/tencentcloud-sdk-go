@@ -48,6 +48,7 @@ func NewAddFairPlayPemRequest() (request *AddFairPlayPemRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("drm", APIVersion, "AddFairPlayPem")
+    
     return
 }
 
@@ -84,6 +85,7 @@ func NewCreateEncryptKeysRequest() (request *CreateEncryptKeysRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("drm", APIVersion, "CreateEncryptKeys")
+    
     return
 }
 
@@ -116,6 +118,7 @@ func NewCreateLicenseRequest() (request *CreateLicenseRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("drm", APIVersion, "CreateLicense")
+    
     return
 }
 
@@ -150,6 +153,7 @@ func NewDeleteFairPlayPemRequest() (request *DeleteFairPlayPemRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("drm", APIVersion, "DeleteFairPlayPem")
+    
     return
 }
 
@@ -186,6 +190,7 @@ func NewDescribeAllKeysRequest() (request *DescribeAllKeysRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("drm", APIVersion, "DescribeAllKeys")
+    
     return
 }
 
@@ -218,6 +223,7 @@ func NewDescribeFairPlayPemRequest() (request *DescribeFairPlayPemRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("drm", APIVersion, "DescribeFairPlayPem")
+    
     return
 }
 
@@ -250,6 +256,7 @@ func NewDescribeKeysRequest() (request *DescribeKeysRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("drm", APIVersion, "DescribeKeys")
+    
     return
 }
 
@@ -284,6 +291,7 @@ func NewModifyFairPlayPemRequest() (request *ModifyFairPlayPemRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("drm", APIVersion, "ModifyFairPlayPem")
+    
     return
 }
 
@@ -320,6 +328,7 @@ func NewStartEncryptionRequest() (request *StartEncryptionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("drm", APIVersion, "StartEncryption")
+    
     return
 }
 

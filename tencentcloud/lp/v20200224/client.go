@@ -48,6 +48,7 @@ func NewQueryLoginProtectionRequest() (request *QueryLoginProtectionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("lp", APIVersion, "QueryLoginProtection")
+    
     return
 }
 

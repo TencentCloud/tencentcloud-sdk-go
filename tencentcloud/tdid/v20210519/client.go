@@ -48,6 +48,7 @@ func NewCreateCredentialRequest() (request *CreateCredentialRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdid", APIVersion, "CreateCredential")
+    
     return
 }
 
@@ -82,6 +83,7 @@ func NewCreateSelectiveCredentialRequest() (request *CreateSelectiveCredentialRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdid", APIVersion, "CreateSelectiveCredential")
+    
     return
 }
 
@@ -123,6 +125,7 @@ func NewCreateTDidRequest() (request *CreateTDidRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdid", APIVersion, "CreateTDid")
+    
     return
 }
 
@@ -162,6 +165,7 @@ func NewVerifyCredentialRequest() (request *VerifyCredentialRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdid", APIVersion, "VerifyCredential")
+    
     return
 }
 

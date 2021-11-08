@@ -48,6 +48,7 @@ func NewCreateCommandRequest() (request *CreateCommandRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "CreateCommand")
+    
     return
 }
 
@@ -99,6 +100,7 @@ func NewCreateInvokerRequest() (request *CreateInvokerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "CreateInvoker")
+    
     return
 }
 
@@ -135,6 +137,7 @@ func NewDeleteCommandRequest() (request *DeleteCommandRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "DeleteCommand")
+    
     return
 }
 
@@ -175,6 +178,7 @@ func NewDeleteInvokerRequest() (request *DeleteInvokerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "DeleteInvoker")
+    
     return
 }
 
@@ -205,6 +209,7 @@ func NewDescribeAutomationAgentStatusRequest() (request *DescribeAutomationAgent
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "DescribeAutomationAgentStatus")
+    
     return
 }
 
@@ -244,6 +249,7 @@ func NewDescribeCommandsRequest() (request *DescribeCommandsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "DescribeCommands")
+    
     return
 }
 
@@ -282,6 +288,7 @@ func NewDescribeInvocationTasksRequest() (request *DescribeInvocationTasksReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "DescribeInvocationTasks")
+    
     return
 }
 
@@ -321,6 +328,7 @@ func NewDescribeInvocationsRequest() (request *DescribeInvocationsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "DescribeInvocations")
+    
     return
 }
 
@@ -359,6 +367,7 @@ func NewDescribeInvokerRecordsRequest() (request *DescribeInvokerRecordsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "DescribeInvokerRecords")
+    
     return
 }
 
@@ -389,6 +398,7 @@ func NewDescribeInvokersRequest() (request *DescribeInvokersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "DescribeInvokers")
+    
     return
 }
 
@@ -421,6 +431,7 @@ func NewDescribeRegionsRequest() (request *DescribeRegionsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "DescribeRegions")
+    
     return
 }
 
@@ -456,6 +467,7 @@ func NewDisableInvokerRequest() (request *DisableInvokerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "DisableInvoker")
+    
     return
 }
 
@@ -486,6 +498,7 @@ func NewEnableInvokerRequest() (request *EnableInvokerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "EnableInvoker")
+    
     return
 }
 
@@ -501,6 +514,7 @@ func NewEnableInvokerResponse() (response *EnableInvokerResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETERVALUE_INVALIDINVOKERID = "InvalidParameterValue.InvalidInvokerId"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) EnableInvoker(request *EnableInvokerRequest) (response *EnableInvokerResponse, err error) {
     if request == nil {
@@ -516,6 +530,7 @@ func NewInvokeCommandRequest() (request *InvokeCommandRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "InvokeCommand")
+    
     return
 }
 
@@ -581,6 +596,7 @@ func NewModifyCommandRequest() (request *ModifyCommandRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "ModifyCommand")
+    
     return
 }
 
@@ -629,6 +645,7 @@ func NewModifyInvokerRequest() (request *ModifyInvokerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "ModifyInvoker")
+    
     return
 }
 
@@ -666,6 +683,7 @@ func NewPreviewReplacedCommandContentRequest() (request *PreviewReplacedCommandC
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "PreviewReplacedCommandContent")
+    
     return
 }
 
@@ -713,6 +731,7 @@ func NewRunCommandRequest() (request *RunCommandRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "RunCommand")
+    
     return
 }
 

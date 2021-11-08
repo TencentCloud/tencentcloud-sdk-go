@@ -48,6 +48,7 @@ func NewCreateApplicationRequest() (request *CreateApplicationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tem", APIVersion, "CreateApplication")
+    
     return
 }
 
@@ -78,6 +79,7 @@ func NewCreateCosTokenRequest() (request *CreateCosTokenRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tem", APIVersion, "CreateCosToken")
+    
     return
 }
 
@@ -108,6 +110,7 @@ func NewCreateEnvironmentRequest() (request *CreateEnvironmentRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tem", APIVersion, "CreateEnvironment")
+    
     return
 }
 
@@ -138,6 +141,7 @@ func NewCreateResourceRequest() (request *CreateResourceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tem", APIVersion, "CreateResource")
+    
     return
 }
 
@@ -168,6 +172,7 @@ func NewDeleteIngressRequest() (request *DeleteIngressRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tem", APIVersion, "DeleteIngress")
+    
     return
 }
 
@@ -198,6 +203,7 @@ func NewDeployApplicationRequest() (request *DeployApplicationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tem", APIVersion, "DeployApplication")
+    
     return
 }
 
@@ -228,6 +234,7 @@ func NewDescribeApplicationPodsRequest() (request *DescribeApplicationPodsReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tem", APIVersion, "DescribeApplicationPods")
+    
     return
 }
 
@@ -258,6 +265,7 @@ func NewDescribeDeployApplicationDetailRequest() (request *DescribeDeployApplica
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tem", APIVersion, "DescribeDeployApplicationDetail")
+    
     return
 }
 
@@ -288,6 +296,7 @@ func NewDescribeEnvironmentsRequest() (request *DescribeEnvironmentsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tem", APIVersion, "DescribeEnvironments")
+    
     return
 }
 
@@ -318,6 +327,7 @@ func NewDescribeIngressRequest() (request *DescribeIngressRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tem", APIVersion, "DescribeIngress")
+    
     return
 }
 
@@ -348,6 +358,7 @@ func NewDescribeIngressesRequest() (request *DescribeIngressesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tem", APIVersion, "DescribeIngresses")
+    
     return
 }
 
@@ -378,6 +389,7 @@ func NewDescribeRelatedIngressesRequest() (request *DescribeRelatedIngressesRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tem", APIVersion, "DescribeRelatedIngresses")
+    
     return
 }
 
@@ -408,6 +420,7 @@ func NewGenerateApplicationPackageDownloadUrlRequest() (request *GenerateApplica
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tem", APIVersion, "GenerateApplicationPackageDownloadUrl")
+    
     return
 }
 
@@ -438,6 +451,7 @@ func NewModifyApplicationInfoRequest() (request *ModifyApplicationInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tem", APIVersion, "ModifyApplicationInfo")
+    
     return
 }
 
@@ -467,6 +481,7 @@ func NewModifyEnvironmentRequest() (request *ModifyEnvironmentRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tem", APIVersion, "ModifyEnvironment")
+    
     return
 }
 
@@ -496,6 +511,7 @@ func NewModifyIngressRequest() (request *ModifyIngressRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tem", APIVersion, "ModifyIngress")
+    
     return
 }
 
@@ -525,6 +541,7 @@ func NewRestartApplicationPodRequest() (request *RestartApplicationPodRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tem", APIVersion, "RestartApplicationPod")
+    
     return
 }
 
@@ -554,6 +571,7 @@ func NewResumeDeployApplicationRequest() (request *ResumeDeployApplicationReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tem", APIVersion, "ResumeDeployApplication")
+    
     return
 }
 
@@ -583,6 +601,7 @@ func NewRevertDeployApplicationRequest() (request *RevertDeployApplicationReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tem", APIVersion, "RevertDeployApplication")
+    
     return
 }
 

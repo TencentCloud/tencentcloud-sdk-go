@@ -126,6 +126,9 @@ type CreateInstanceRequest struct {
 
 	// 可视化节点配置
 	WebNodeTypeInfo *WebNodeTypeInfo `json:"WebNodeTypeInfo,omitempty" name:"WebNodeTypeInfo"`
+
+	// 创建https集群，默认是http
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -169,6 +172,7 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "BasicSecurityType")
 	delete(f, "SceneType")
 	delete(f, "WebNodeTypeInfo")
+	delete(f, "Protocol")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRequest has unknown keys!", "")
 	}
@@ -826,6 +830,14 @@ type InstanceInfo struct {
 	// JDK类型，oracle或kona
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Jdk *string `json:"Jdk,omitempty" name:"Jdk"`
+
+	// 集群网络通讯协议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 安全组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityGroups []*string `json:"SecurityGroups,omitempty" name:"SecurityGroups"`
 }
 
 type InstanceLog struct {
@@ -1315,6 +1327,18 @@ type UpdateInstanceRequest struct {
 
 	// 可视化节点配置
 	WebNodeTypeInfo *WebNodeTypeInfo `json:"WebNodeTypeInfo,omitempty" name:"WebNodeTypeInfo"`
+
+	// 切换到新网络架构
+	SwitchPrivateLink *string `json:"SwitchPrivateLink,omitempty" name:"SwitchPrivateLink"`
+
+	// 启用Cerebro
+	EnableCerebro *bool `json:"EnableCerebro,omitempty" name:"EnableCerebro"`
+
+	// Cerebro公网访问状态
+	CerebroPublicAccess *string `json:"CerebroPublicAccess,omitempty" name:"CerebroPublicAccess"`
+
+	// Cerebro内网访问状态
+	CerebroPrivateAccess *string `json:"CerebroPrivateAccess,omitempty" name:"CerebroPrivateAccess"`
 }
 
 func (r *UpdateInstanceRequest) ToJsonString() string {
@@ -1354,6 +1378,10 @@ func (r *UpdateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "SceneType")
 	delete(f, "KibanaConfig")
 	delete(f, "WebNodeTypeInfo")
+	delete(f, "SwitchPrivateLink")
+	delete(f, "EnableCerebro")
+	delete(f, "CerebroPublicAccess")
+	delete(f, "CerebroPrivateAccess")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateInstanceRequest has unknown keys!", "")
 	}

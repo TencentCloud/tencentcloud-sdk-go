@@ -48,6 +48,7 @@ func NewCreateCallBackRequest() (request *CreateCallBackRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("npp", APIVersion, "CreateCallBack")
+    
     return
 }
 
@@ -74,6 +75,7 @@ func NewDelVirtualNumRequest() (request *DelVirtualNumRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("npp", APIVersion, "DelVirtualNum")
+    
     return
 }
 
@@ -100,6 +102,7 @@ func NewDeleteCallBackRequest() (request *DeleteCallBackRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("npp", APIVersion, "DeleteCallBack")
+    
     return
 }
 
@@ -126,6 +129,7 @@ func NewDescribeCallBackCdrRequest() (request *DescribeCallBackCdrRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("npp", APIVersion, "DescribeCallBackCdr")
+    
     return
 }
 
@@ -152,6 +156,7 @@ func NewDescribeCallBackStatusRequest() (request *DescribeCallBackStatusRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("npp", APIVersion, "DescribeCallBackStatus")
+    
     return
 }
 
@@ -178,6 +183,7 @@ func NewDescribeCallerDisplayListRequest() (request *DescribeCallerDisplayListRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("npp", APIVersion, "DescribeCallerDisplayList")
+    
     return
 }
 
@@ -204,6 +210,7 @@ func NewGet400CdrRequest() (request *Get400CdrRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("npp", APIVersion, "Get400Cdr")
+    
     return
 }
 
@@ -230,6 +237,7 @@ func NewGetVirtualNumRequest() (request *GetVirtualNumRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("npp", APIVersion, "GetVirtualNum")
+    
     return
 }
 

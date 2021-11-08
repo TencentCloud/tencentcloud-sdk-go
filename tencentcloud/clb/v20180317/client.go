@@ -48,6 +48,7 @@ func NewAssociateTargetGroupsRequest() (request *AssociateTargetGroupsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "AssociateTargetGroups")
+    
     return
 }
 
@@ -84,6 +85,7 @@ func NewAutoRewriteRequest() (request *AutoRewriteRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "AutoRewrite")
+    
     return
 }
 
@@ -130,6 +132,7 @@ func NewBatchDeregisterTargetsRequest() (request *BatchDeregisterTargetsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "BatchDeregisterTargets")
+    
     return
 }
 
@@ -175,6 +178,7 @@ func NewBatchModifyTargetWeightRequest() (request *BatchModifyTargetWeightReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "BatchModifyTargetWeight")
+    
     return
 }
 
@@ -210,6 +214,7 @@ func NewBatchRegisterTargetsRequest() (request *BatchRegisterTargetsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "BatchRegisterTargets")
+    
     return
 }
 
@@ -254,6 +259,7 @@ func NewCreateClsLogSetRequest() (request *CreateClsLogSetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "CreateClsLogSet")
+    
     return
 }
 
@@ -291,6 +297,7 @@ func NewCreateListenerRequest() (request *CreateListenerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "CreateListener")
+    
     return
 }
 
@@ -331,6 +338,7 @@ func NewCreateLoadBalancerRequest() (request *CreateLoadBalancerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "CreateLoadBalancer")
+    
     return
 }
 
@@ -374,6 +382,7 @@ func NewCreateLoadBalancerSnatIpsRequest() (request *CreateLoadBalancerSnatIpsRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "CreateLoadBalancerSnatIps")
+    
     return
 }
 
@@ -410,6 +419,7 @@ func NewCreateRuleRequest() (request *CreateRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "CreateRule")
+    
     return
 }
 
@@ -450,6 +460,7 @@ func NewCreateTargetGroupRequest() (request *CreateTargetGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "CreateTargetGroup")
+    
     return
 }
 
@@ -484,6 +495,7 @@ func NewCreateTopicRequest() (request *CreateTopicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "CreateTopic")
+    
     return
 }
 
@@ -524,6 +536,7 @@ func NewDeleteListenerRequest() (request *DeleteListenerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DeleteListener")
+    
     return
 }
 
@@ -561,6 +574,7 @@ func NewDeleteLoadBalancerRequest() (request *DeleteLoadBalancerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DeleteLoadBalancer")
+    
     return
 }
 
@@ -601,6 +615,7 @@ func NewDeleteLoadBalancerListenersRequest() (request *DeleteLoadBalancerListene
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DeleteLoadBalancerListeners")
+    
     return
 }
 
@@ -639,6 +654,7 @@ func NewDeleteLoadBalancerSnatIpsRequest() (request *DeleteLoadBalancerSnatIpsRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DeleteLoadBalancerSnatIps")
+    
     return
 }
 
@@ -674,6 +690,7 @@ func NewDeleteRewriteRequest() (request *DeleteRewriteRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DeleteRewrite")
+    
     return
 }
 
@@ -716,6 +733,7 @@ func NewDeleteRuleRequest() (request *DeleteRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DeleteRule")
+    
     return
 }
 
@@ -753,6 +771,7 @@ func NewDeleteTargetGroupsRequest() (request *DeleteTargetGroupsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DeleteTargetGroups")
+    
     return
 }
 
@@ -786,6 +805,7 @@ func NewDeregisterTargetGroupInstancesRequest() (request *DeregisterTargetGroupI
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DeregisterTargetGroupInstances")
+    
     return
 }
 
@@ -821,6 +841,7 @@ func NewDeregisterTargetsRequest() (request *DeregisterTargetsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DeregisterTargets")
+    
     return
 }
 
@@ -860,6 +881,7 @@ func NewDeregisterTargetsFromClassicalLBRequest() (request *DeregisterTargetsFro
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DeregisterTargetsFromClassicalLB")
+    
     return
 }
 
@@ -897,6 +919,7 @@ func NewDescribeBlockIPListRequest() (request *DescribeBlockIPListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DescribeBlockIPList")
+    
     return
 }
 
@@ -932,6 +955,7 @@ func NewDescribeBlockIPTaskRequest() (request *DescribeBlockIPTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DescribeBlockIPTask")
+    
     return
 }
 
@@ -962,6 +986,7 @@ func NewDescribeClassicalLBByInstanceIdRequest() (request *DescribeClassicalLBBy
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DescribeClassicalLBByInstanceId")
+    
     return
 }
 
@@ -999,6 +1024,7 @@ func NewDescribeClassicalLBHealthStatusRequest() (request *DescribeClassicalLBHe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DescribeClassicalLBHealthStatus")
+    
     return
 }
 
@@ -1036,6 +1062,7 @@ func NewDescribeClassicalLBListenersRequest() (request *DescribeClassicalLBListe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DescribeClassicalLBListeners")
+    
     return
 }
 
@@ -1073,6 +1100,7 @@ func NewDescribeClassicalLBTargetsRequest() (request *DescribeClassicalLBTargets
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DescribeClassicalLBTargets")
+    
     return
 }
 
@@ -1110,6 +1138,7 @@ func NewDescribeClsLogSetRequest() (request *DescribeClsLogSetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DescribeClsLogSet")
+    
     return
 }
 
@@ -1142,6 +1171,7 @@ func NewDescribeClusterResourcesRequest() (request *DescribeClusterResourcesRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DescribeClusterResources")
+    
     return
 }
 
@@ -1179,6 +1209,7 @@ func NewDescribeCustomizedConfigAssociateListRequest() (request *DescribeCustomi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DescribeCustomizedConfigAssociateList")
+    
     return
 }
 
@@ -1215,6 +1246,7 @@ func NewDescribeCustomizedConfigListRequest() (request *DescribeCustomizedConfig
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DescribeCustomizedConfigList")
+    
     return
 }
 
@@ -1262,6 +1294,7 @@ func NewDescribeExclusiveClustersRequest() (request *DescribeExclusiveClustersRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DescribeExclusiveClusters")
+    
     return
 }
 
@@ -1299,6 +1332,7 @@ func NewDescribeLBListenersRequest() (request *DescribeLBListenersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DescribeLBListeners")
+    
     return
 }
 
@@ -1336,6 +1370,7 @@ func NewDescribeListenersRequest() (request *DescribeListenersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DescribeListeners")
+    
     return
 }
 
@@ -1372,6 +1407,7 @@ func NewDescribeLoadBalancerListByCertIdRequest() (request *DescribeLoadBalancer
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DescribeLoadBalancerListByCertId")
+    
     return
 }
 
@@ -1407,6 +1443,7 @@ func NewDescribeLoadBalancerTrafficRequest() (request *DescribeLoadBalancerTraff
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DescribeLoadBalancerTraffic")
+    
     return
 }
 
@@ -1440,6 +1477,7 @@ func NewDescribeLoadBalancersRequest() (request *DescribeLoadBalancersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DescribeLoadBalancers")
+    
     return
 }
 
@@ -1477,6 +1515,7 @@ func NewDescribeLoadBalancersDetailRequest() (request *DescribeLoadBalancersDeta
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DescribeLoadBalancersDetail")
+    
     return
 }
 
@@ -1514,6 +1553,7 @@ func NewDescribeQuotaRequest() (request *DescribeQuotaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DescribeQuota")
+    
     return
 }
 
@@ -1543,6 +1583,7 @@ func NewDescribeRewriteRequest() (request *DescribeRewriteRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DescribeRewrite")
+    
     return
 }
 
@@ -1582,6 +1623,7 @@ func NewDescribeTargetGroupInstancesRequest() (request *DescribeTargetGroupInsta
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DescribeTargetGroupInstances")
+    
     return
 }
 
@@ -1615,6 +1657,7 @@ func NewDescribeTargetGroupListRequest() (request *DescribeTargetGroupListReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DescribeTargetGroupList")
+    
     return
 }
 
@@ -1648,6 +1691,7 @@ func NewDescribeTargetGroupsRequest() (request *DescribeTargetGroupsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DescribeTargetGroups")
+    
     return
 }
 
@@ -1681,6 +1725,7 @@ func NewDescribeTargetHealthRequest() (request *DescribeTargetHealthRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DescribeTargetHealth")
+    
     return
 }
 
@@ -1717,6 +1762,7 @@ func NewDescribeTargetsRequest() (request *DescribeTargetsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DescribeTargets")
+    
     return
 }
 
@@ -1753,6 +1799,7 @@ func NewDescribeTaskStatusRequest() (request *DescribeTaskStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DescribeTaskStatus")
+    
     return
 }
 
@@ -1784,6 +1831,7 @@ func NewDisassociateTargetGroupsRequest() (request *DisassociateTargetGroupsRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "DisassociateTargetGroups")
+    
     return
 }
 
@@ -1819,6 +1867,7 @@ func NewManualRewriteRequest() (request *ManualRewriteRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "ManualRewrite")
+    
     return
 }
 
@@ -1865,6 +1914,7 @@ func NewModifyBlockIPListRequest() (request *ModifyBlockIPListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "ModifyBlockIPList")
+    
     return
 }
 
@@ -1903,6 +1953,7 @@ func NewModifyDomainRequest() (request *ModifyDomainRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "ModifyDomain")
+    
     return
 }
 
@@ -1940,6 +1991,7 @@ func NewModifyDomainAttributesRequest() (request *ModifyDomainAttributesRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "ModifyDomainAttributes")
+    
     return
 }
 
@@ -1978,6 +2030,7 @@ func NewModifyListenerRequest() (request *ModifyListenerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "ModifyListener")
+    
     return
 }
 
@@ -2016,6 +2069,7 @@ func NewModifyLoadBalancerAttributesRequest() (request *ModifyLoadBalancerAttrib
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "ModifyLoadBalancerAttributes")
+    
     return
 }
 
@@ -2057,6 +2111,7 @@ func NewModifyRuleRequest() (request *ModifyRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "ModifyRule")
+    
     return
 }
 
@@ -2095,6 +2150,7 @@ func NewModifyTargetGroupAttributeRequest() (request *ModifyTargetGroupAttribute
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "ModifyTargetGroupAttribute")
+    
     return
 }
 
@@ -2128,6 +2184,7 @@ func NewModifyTargetGroupInstancesPortRequest() (request *ModifyTargetGroupInsta
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "ModifyTargetGroupInstancesPort")
+    
     return
 }
 
@@ -2164,6 +2221,7 @@ func NewModifyTargetGroupInstancesWeightRequest() (request *ModifyTargetGroupIns
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "ModifyTargetGroupInstancesWeight")
+    
     return
 }
 
@@ -2199,6 +2257,7 @@ func NewModifyTargetPortRequest() (request *ModifyTargetPortRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "ModifyTargetPort")
+    
     return
 }
 
@@ -2237,6 +2296,7 @@ func NewModifyTargetWeightRequest() (request *ModifyTargetWeightRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "ModifyTargetWeight")
+    
     return
 }
 
@@ -2275,6 +2335,7 @@ func NewRegisterTargetGroupInstancesRequest() (request *RegisterTargetGroupInsta
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "RegisterTargetGroupInstances")
+    
     return
 }
 
@@ -2311,6 +2372,7 @@ func NewRegisterTargetsRequest() (request *RegisterTargetsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "RegisterTargets")
+    
     return
 }
 
@@ -2352,6 +2414,7 @@ func NewRegisterTargetsWithClassicalLBRequest() (request *RegisterTargetsWithCla
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "RegisterTargetsWithClassicalLB")
+    
     return
 }
 
@@ -2389,6 +2452,7 @@ func NewReplaceCertForLoadBalancersRequest() (request *ReplaceCertForLoadBalance
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "ReplaceCertForLoadBalancers")
+    
     return
 }
 
@@ -2429,6 +2493,7 @@ func NewSetCustomizedConfigForLoadBalancerRequest() (request *SetCustomizedConfi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "SetCustomizedConfigForLoadBalancer")
+    
     return
 }
 
@@ -2467,6 +2532,7 @@ func NewSetLoadBalancerClsLogRequest() (request *SetLoadBalancerClsLogRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "SetLoadBalancerClsLog")
+    
     return
 }
 
@@ -2504,6 +2570,7 @@ func NewSetLoadBalancerSecurityGroupsRequest() (request *SetLoadBalancerSecurity
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "SetLoadBalancerSecurityGroups")
+    
     return
 }
 
@@ -2543,6 +2610,7 @@ func NewSetSecurityGroupForLoadbalancersRequest() (request *SetSecurityGroupForL
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("clb", APIVersion, "SetSecurityGroupForLoadbalancers")
+    
     return
 }
 

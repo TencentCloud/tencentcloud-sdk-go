@@ -48,6 +48,7 @@ func NewCreateFileSampleRequest() (request *CreateFileSampleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cms", APIVersion, "CreateFileSample")
+    
     return
 }
 
@@ -81,6 +82,7 @@ func NewCreateTextSampleRequest() (request *CreateTextSampleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cms", APIVersion, "CreateTextSample")
+    
     return
 }
 
@@ -114,6 +116,7 @@ func NewDeleteFileSampleRequest() (request *DeleteFileSampleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cms", APIVersion, "DeleteFileSample")
+    
     return
 }
 
@@ -147,6 +150,7 @@ func NewDeleteTextSampleRequest() (request *DeleteTextSampleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cms", APIVersion, "DeleteTextSample")
+    
     return
 }
 
@@ -180,6 +184,7 @@ func NewDescribeFileSampleRequest() (request *DescribeFileSampleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cms", APIVersion, "DescribeFileSample")
+    
     return
 }
 
@@ -213,6 +218,7 @@ func NewDescribeTextSampleRequest() (request *DescribeTextSampleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cms", APIVersion, "DescribeTextSample")
+    
     return
 }
 
@@ -246,6 +252,7 @@ func NewImageModerationRequest() (request *ImageModerationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cms", APIVersion, "ImageModeration")
+    
     return
 }
 
@@ -286,6 +293,7 @@ func NewManualReviewRequest() (request *ManualReviewRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cms", APIVersion, "ManualReview")
+    
     return
 }
 
@@ -330,6 +338,7 @@ func NewTextModerationRequest() (request *TextModerationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cms", APIVersion, "TextModeration")
+    
     return
 }
 

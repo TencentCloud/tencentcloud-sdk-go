@@ -48,6 +48,7 @@ func NewBindAlarmPolicyRequest() (request *BindAlarmPolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "BindAlarmPolicy")
+    
     return
 }
 
@@ -79,6 +80,7 @@ func NewCreateAgentGroupRequest() (request *CreateAgentGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "CreateAgentGroup")
+    
     return
 }
 
@@ -110,6 +112,7 @@ func NewCreateTaskExRequest() (request *CreateTaskExRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "CreateTaskEx")
+    
     return
 }
 
@@ -141,6 +144,7 @@ func NewDeleteAgentGroupRequest() (request *DeleteAgentGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "DeleteAgentGroup")
+    
     return
 }
 
@@ -172,6 +176,7 @@ func NewDeleteTasksRequest() (request *DeleteTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "DeleteTasks")
+    
     return
 }
 
@@ -203,6 +208,7 @@ func NewDescribeAgentGroupsRequest() (request *DescribeAgentGroupsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "DescribeAgentGroups")
+    
     return
 }
 
@@ -234,6 +240,7 @@ func NewDescribeAgentsRequest() (request *DescribeAgentsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "DescribeAgents")
+    
     return
 }
 
@@ -265,6 +272,7 @@ func NewDescribeAlarmTopicRequest() (request *DescribeAlarmTopicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "DescribeAlarmTopic")
+    
     return
 }
 
@@ -296,6 +304,7 @@ func NewDescribeAlarmsRequest() (request *DescribeAlarmsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "DescribeAlarms")
+    
     return
 }
 
@@ -326,6 +335,7 @@ func NewDescribeAlarmsByTaskRequest() (request *DescribeAlarmsByTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "DescribeAlarmsByTask")
+    
     return
 }
 
@@ -357,6 +367,7 @@ func NewDescribeCatLogsRequest() (request *DescribeCatLogsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "DescribeCatLogs")
+    
     return
 }
 
@@ -388,6 +399,7 @@ func NewDescribeTaskDetailRequest() (request *DescribeTaskDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "DescribeTaskDetail")
+    
     return
 }
 
@@ -419,6 +431,7 @@ func NewDescribeTasksByTypeRequest() (request *DescribeTasksByTypeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "DescribeTasksByType")
+    
     return
 }
 
@@ -450,6 +463,7 @@ func NewDescribeUserLimitRequest() (request *DescribeUserLimitRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "DescribeUserLimit")
+    
     return
 }
 
@@ -481,6 +495,7 @@ func NewGetAvailRatioHistoryRequest() (request *GetAvailRatioHistoryRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "GetAvailRatioHistory")
+    
     return
 }
 
@@ -512,6 +527,7 @@ func NewGetDailyAvailRatioRequest() (request *GetDailyAvailRatioRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "GetDailyAvailRatio")
+    
     return
 }
 
@@ -543,6 +559,7 @@ func NewGetRealAvailRatioRequest() (request *GetRealAvailRatioRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "GetRealAvailRatio")
+    
     return
 }
 
@@ -574,6 +591,7 @@ func NewGetRespTimeTrendExRequest() (request *GetRespTimeTrendExRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "GetRespTimeTrendEx")
+    
     return
 }
 
@@ -605,6 +623,7 @@ func NewGetResultSummaryRequest() (request *GetResultSummaryRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "GetResultSummary")
+    
     return
 }
 
@@ -636,6 +655,7 @@ func NewGetReturnCodeHistoryRequest() (request *GetReturnCodeHistoryRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "GetReturnCodeHistory")
+    
     return
 }
 
@@ -667,6 +687,7 @@ func NewGetReturnCodeInfoRequest() (request *GetReturnCodeInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "GetReturnCodeInfo")
+    
     return
 }
 
@@ -698,6 +719,7 @@ func NewGetTaskTotalNumberRequest() (request *GetTaskTotalNumberRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "GetTaskTotalNumber")
+    
     return
 }
 
@@ -728,6 +750,7 @@ func NewModifyAgentGroupRequest() (request *ModifyAgentGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "ModifyAgentGroup")
+    
     return
 }
 
@@ -759,6 +782,7 @@ func NewModifyTaskExRequest() (request *ModifyTaskExRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "ModifyTaskEx")
+    
     return
 }
 
@@ -790,6 +814,7 @@ func NewPauseTaskRequest() (request *PauseTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "PauseTask")
+    
     return
 }
 
@@ -821,6 +846,7 @@ func NewRunTaskRequest() (request *RunTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "RunTask")
+    
     return
 }
 
@@ -852,6 +878,7 @@ func NewVerifyResultRequest() (request *VerifyResultRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "VerifyResult")
+    
     return
 }
 

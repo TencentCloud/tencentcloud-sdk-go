@@ -48,6 +48,7 @@ func NewAddInstancesRequest() (request *AddInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "AddInstances")
+    
     return
 }
 
@@ -96,6 +97,7 @@ func NewCreateClustersRequest() (request *CreateClustersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "CreateClusters")
+    
     return
 }
 
@@ -116,6 +118,7 @@ func NewCreateClustersResponse() (response *CreateClustersResponse) {
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
 //  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_DBTYPENOTFOUND = "InvalidParameterValue.DBTypeNotFound"
 //  INVALIDPARAMETERVALUE_ILLEGALPASSWORD = "InvalidParameterValue.IllegalPassword"
@@ -145,6 +148,7 @@ func NewDescribeAccountsRequest() (request *DescribeAccountsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeAccounts")
+    
     return
 }
 
@@ -181,6 +185,7 @@ func NewDescribeBackupConfigRequest() (request *DescribeBackupConfigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeBackupConfig")
+    
     return
 }
 
@@ -217,6 +222,7 @@ func NewDescribeBackupListRequest() (request *DescribeBackupListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeBackupList")
+    
     return
 }
 
@@ -253,6 +259,7 @@ func NewDescribeClusterDetailRequest() (request *DescribeClusterDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeClusterDetail")
+    
     return
 }
 
@@ -294,6 +301,7 @@ func NewDescribeClusterInstanceGrpsRequest() (request *DescribeClusterInstanceGr
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeClusterInstanceGrps")
+    
     return
 }
 
@@ -327,6 +335,7 @@ func NewDescribeClustersRequest() (request *DescribeClustersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeClusters")
+    
     return
 }
 
@@ -363,6 +372,7 @@ func NewDescribeDBSecurityGroupsRequest() (request *DescribeDBSecurityGroupsRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeDBSecurityGroups")
+    
     return
 }
 
@@ -394,6 +404,7 @@ func NewDescribeInstanceDetailRequest() (request *DescribeInstanceDetailRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeInstanceDetail")
+    
     return
 }
 
@@ -430,6 +441,7 @@ func NewDescribeInstanceSpecsRequest() (request *DescribeInstanceSpecsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeInstanceSpecs")
+    
     return
 }
 
@@ -461,6 +473,7 @@ func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeInstances")
+    
     return
 }
 
@@ -501,6 +514,7 @@ func NewDescribeMaintainPeriodRequest() (request *DescribeMaintainPeriodRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeMaintainPeriod")
+    
     return
 }
 
@@ -534,6 +548,7 @@ func NewDescribeProjectSecurityGroupsRequest() (request *DescribeProjectSecurity
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeProjectSecurityGroups")
+    
     return
 }
 
@@ -566,6 +581,7 @@ func NewDescribeResourcesByDealNameRequest() (request *DescribeResourcesByDealNa
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeResourcesByDealName")
+    
     return
 }
 
@@ -600,6 +616,7 @@ func NewDescribeRollbackTimeRangeRequest() (request *DescribeRollbackTimeRangeRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeRollbackTimeRange")
+    
     return
 }
 
@@ -635,6 +652,7 @@ func NewDescribeRollbackTimeValidityRequest() (request *DescribeRollbackTimeVali
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeRollbackTimeValidity")
+    
     return
 }
 
@@ -667,6 +685,7 @@ func NewIsolateClusterRequest() (request *IsolateClusterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "IsolateCluster")
+    
     return
 }
 
@@ -708,6 +727,7 @@ func NewIsolateInstanceRequest() (request *IsolateInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "IsolateInstance")
+    
     return
 }
 
@@ -746,6 +766,7 @@ func NewModifyBackupConfigRequest() (request *ModifyBackupConfigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "ModifyBackupConfig")
+    
     return
 }
 
@@ -780,6 +801,7 @@ func NewModifyClusterParamRequest() (request *ModifyClusterParamRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "ModifyClusterParam")
+    
     return
 }
 
@@ -816,6 +838,7 @@ func NewModifyDBInstanceSecurityGroupsRequest() (request *ModifyDBInstanceSecuri
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "ModifyDBInstanceSecurityGroups")
+    
     return
 }
 
@@ -849,6 +872,7 @@ func NewModifyMaintainPeriodConfigRequest() (request *ModifyMaintainPeriodConfig
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "ModifyMaintainPeriodConfig")
+    
     return
 }
 
@@ -882,6 +906,7 @@ func NewOfflineClusterRequest() (request *OfflineClusterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "OfflineCluster")
+    
     return
 }
 
@@ -918,6 +943,7 @@ func NewOfflineInstanceRequest() (request *OfflineInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "OfflineInstance")
+    
     return
 }
 
@@ -956,6 +982,7 @@ func NewSetRenewFlagRequest() (request *SetRenewFlagRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "SetRenewFlag")
+    
     return
 }
 
@@ -999,6 +1026,7 @@ func NewUpgradeInstanceRequest() (request *UpgradeInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "UpgradeInstance")
+    
     return
 }
 

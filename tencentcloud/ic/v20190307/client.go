@@ -48,6 +48,7 @@ func NewDescribeAppRequest() (request *DescribeAppRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ic", APIVersion, "DescribeApp")
+    
     return
 }
 
@@ -79,6 +80,7 @@ func NewDescribeCardRequest() (request *DescribeCardRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ic", APIVersion, "DescribeCard")
+    
     return
 }
 
@@ -110,6 +112,7 @@ func NewDescribeCardsRequest() (request *DescribeCardsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ic", APIVersion, "DescribeCards")
+    
     return
 }
 
@@ -139,6 +142,7 @@ func NewModifyUserCardRemarkRequest() (request *ModifyUserCardRemarkRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ic", APIVersion, "ModifyUserCardRemark")
+    
     return
 }
 
@@ -171,6 +175,7 @@ func NewRenewCardsRequest() (request *RenewCardsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ic", APIVersion, "RenewCards")
+    
     return
 }
 
@@ -213,6 +218,7 @@ func NewSendMultiSmsRequest() (request *SendMultiSmsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ic", APIVersion, "SendMultiSms")
+    
     return
 }
 
@@ -244,6 +250,7 @@ func NewSendSmsRequest() (request *SendSmsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ic", APIVersion, "SendSms")
+    
     return
 }
 

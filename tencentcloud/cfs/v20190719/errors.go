@@ -116,6 +116,9 @@ const (
 	// 用户区域选择错误 (ZoneName) 或 (ZoneId, Region)二者必选一。
 	INVALIDPARAMETERVALUE_INVALIDREGIONZONEINFO = "InvalidParameterValue.InvalidRegionZoneInfo"
 
+	// 参数值错误: 资源标签值错误。
+	INVALIDPARAMETERVALUE_INVALIDRESOURCETAGS = "InvalidParameterValue.InvalidResourceTags"
+
 	// 读写权限设置错误。
 	INVALIDPARAMETERVALUE_INVALIDRWPERMISSION = "InvalidParameterValue.InvalidRwPermission"
 

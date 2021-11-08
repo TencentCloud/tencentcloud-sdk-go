@@ -48,6 +48,7 @@ func NewAddUserToUserGroupRequest() (request *AddUserToUserGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "AddUserToUserGroup")
+    
     return
 }
 
@@ -82,6 +83,7 @@ func NewCreateOrgNodeRequest() (request *CreateOrgNodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "CreateOrgNode")
+    
     return
 }
 
@@ -115,6 +117,7 @@ func NewCreateUserRequest() (request *CreateUserRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "CreateUser")
+    
     return
 }
 
@@ -151,6 +154,7 @@ func NewCreateUserGroupRequest() (request *CreateUserGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "CreateUserGroup")
+    
     return
 }
 
@@ -182,6 +186,7 @@ func NewDeleteOrgNodeRequest() (request *DeleteOrgNodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "DeleteOrgNode")
+    
     return
 }
 
@@ -217,6 +222,7 @@ func NewDeleteUserRequest() (request *DeleteUserRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "DeleteUser")
+    
     return
 }
 
@@ -248,6 +254,7 @@ func NewDeleteUserGroupRequest() (request *DeleteUserGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "DeleteUserGroup")
+    
     return
 }
 
@@ -280,6 +287,7 @@ func NewDescribeApplicationRequest() (request *DescribeApplicationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "DescribeApplication")
+    
     return
 }
 
@@ -311,6 +319,7 @@ func NewDescribeOrgNodeRequest() (request *DescribeOrgNodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "DescribeOrgNode")
+    
     return
 }
 
@@ -342,6 +351,7 @@ func NewDescribeOrgResourcesAuthorizationRequest() (request *DescribeOrgResource
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "DescribeOrgResourcesAuthorization")
+    
     return
 }
 
@@ -374,6 +384,7 @@ func NewDescribePublicKeyRequest() (request *DescribePublicKeyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "DescribePublicKey")
+    
     return
 }
 
@@ -406,6 +417,7 @@ func NewDescribeUserGroupRequest() (request *DescribeUserGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "DescribeUserGroup")
+    
     return
 }
 
@@ -437,6 +449,7 @@ func NewDescribeUserGroupResourcesAuthorizationRequest() (request *DescribeUserG
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "DescribeUserGroupResourcesAuthorization")
+    
     return
 }
 
@@ -469,6 +482,7 @@ func NewDescribeUserInfoRequest() (request *DescribeUserInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "DescribeUserInfo")
+    
     return
 }
 
@@ -500,6 +514,7 @@ func NewDescribeUserResourcesAuthorizationRequest() (request *DescribeUserResour
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "DescribeUserResourcesAuthorization")
+    
     return
 }
 
@@ -532,6 +547,7 @@ func NewListApplicationAuthorizationsRequest() (request *ListApplicationAuthoriz
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "ListApplicationAuthorizations")
+    
     return
 }
 
@@ -565,6 +581,7 @@ func NewListApplicationsRequest() (request *ListApplicationsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "ListApplications")
+    
     return
 }
 
@@ -597,6 +614,7 @@ func NewListAuthorizedApplicationsToOrgNodeRequest() (request *ListAuthorizedApp
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "ListAuthorizedApplicationsToOrgNode")
+    
     return
 }
 
@@ -628,6 +646,7 @@ func NewListAuthorizedApplicationsToUserRequest() (request *ListAuthorizedApplic
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "ListAuthorizedApplicationsToUser")
+    
     return
 }
 
@@ -660,6 +679,7 @@ func NewListAuthorizedApplicationsToUserGroupRequest() (request *ListAuthorizedA
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "ListAuthorizedApplicationsToUserGroup")
+    
     return
 }
 
@@ -691,6 +711,7 @@ func NewListUserGroupsRequest() (request *ListUserGroupsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "ListUserGroups")
+    
     return
 }
 
@@ -723,6 +744,7 @@ func NewListUserGroupsOfUserRequest() (request *ListUserGroupsOfUserRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "ListUserGroupsOfUser")
+    
     return
 }
 
@@ -754,6 +776,7 @@ func NewListUsersRequest() (request *ListUsersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "ListUsers")
+    
     return
 }
 
@@ -788,6 +811,7 @@ func NewListUsersInOrgNodeRequest() (request *ListUsersInOrgNodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "ListUsersInOrgNode")
+    
     return
 }
 
@@ -819,6 +843,7 @@ func NewListUsersInUserGroupRequest() (request *ListUsersInUserGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "ListUsersInUserGroup")
+    
     return
 }
 
@@ -851,6 +876,7 @@ func NewModifyApplicationRequest() (request *ModifyApplicationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "ModifyApplication")
+    
     return
 }
 
@@ -882,6 +908,7 @@ func NewModifyUserInfoRequest() (request *ModifyUserInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "ModifyUserInfo")
+    
     return
 }
 
@@ -899,6 +926,9 @@ func NewModifyUserInfoResponse() (response *ModifyUserInfoResponse) {
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
 //  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
 //  FAILEDOPERATION_TIMEFORMATISILLEGAL = "FailedOperation.TimeFormatIsIllegal"
+//  FAILEDOPERATION_USERPHONEEXISTED = "FailedOperation.UserPhoneExisted"
+//  FAILEDOPERATION_USERPHONEISEMPTY = "FailedOperation.UserPhoneIsEmpty"
+//  INVALIDPARAMETER_ATTRIBUTEVALUEVALIDFAILURE = "InvalidParameter.AttributeValueValidFailure"
 //  INVALIDPARAMETER_PARAMETEREXCEEDSLENGTHLIMIT = "InvalidParameter.ParameterExceedsLengthLimit"
 //  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
 func (c *Client) ModifyUserInfo(request *ModifyUserInfoRequest) (response *ModifyUserInfoResponse, err error) {
@@ -915,6 +945,7 @@ func NewRemoveUserFromUserGroupRequest() (request *RemoveUserFromUserGroupReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "RemoveUserFromUserGroup")
+    
     return
 }
 
@@ -950,6 +981,7 @@ func NewUpdateOrgNodeRequest() (request *UpdateOrgNodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "UpdateOrgNode")
+    
     return
 }
 

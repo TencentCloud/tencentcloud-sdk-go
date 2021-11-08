@@ -48,6 +48,7 @@ func NewBindStaffSkillGroupListRequest() (request *BindStaffSkillGroupListReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "BindStaffSkillGroupList")
+    
     return
 }
 
@@ -80,6 +81,7 @@ func NewCreateSDKLoginTokenRequest() (request *CreateSDKLoginTokenRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "CreateSDKLoginToken")
+    
     return
 }
 
@@ -113,6 +115,7 @@ func NewCreateStaffRequest() (request *CreateStaffRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "CreateStaff")
+    
     return
 }
 
@@ -148,6 +151,7 @@ func NewCreateUserSigRequest() (request *CreateUserSigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "CreateUserSig")
+    
     return
 }
 
@@ -180,6 +184,7 @@ func NewDeleteStaffRequest() (request *DeleteStaffRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "DeleteStaff")
+    
     return
 }
 
@@ -210,6 +215,7 @@ func NewDescribeCallInMetricsRequest() (request *DescribeCallInMetricsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeCallInMetrics")
+    
     return
 }
 
@@ -243,6 +249,7 @@ func NewDescribeChatMessagesRequest() (request *DescribeChatMessagesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeChatMessages")
+    
     return
 }
 
@@ -276,6 +283,7 @@ func NewDescribeIMCdrsRequest() (request *DescribeIMCdrsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeIMCdrs")
+    
     return
 }
 
@@ -306,6 +314,7 @@ func NewDescribePSTNActiveSessionListRequest() (request *DescribePSTNActiveSessi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "DescribePSTNActiveSessionList")
+    
     return
 }
 
@@ -336,6 +345,7 @@ func NewDescribeSeatUserListRequest() (request *DescribeSeatUserListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeSeatUserList")
+    
     return
 }
 
@@ -372,6 +382,7 @@ func NewDescribeSkillGroupInfoListRequest() (request *DescribeSkillGroupInfoList
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeSkillGroupInfoList")
+    
     return
 }
 
@@ -405,6 +416,7 @@ func NewDescribeStaffInfoListRequest() (request *DescribeStaffInfoListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeStaffInfoList")
+    
     return
 }
 
@@ -437,6 +449,7 @@ func NewDescribeStaffStatusMetricsRequest() (request *DescribeStaffStatusMetrics
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeStaffStatusMetrics")
+    
     return
 }
 
@@ -469,6 +482,7 @@ func NewDescribeTelCallInfoRequest() (request *DescribeTelCallInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeTelCallInfo")
+    
     return
 }
 
@@ -501,6 +515,7 @@ func NewDescribeTelCdrRequest() (request *DescribeTelCdrRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeTelCdr")
+    
     return
 }
 
@@ -534,6 +549,7 @@ func NewDescribeTelSessionRequest() (request *DescribeTelSessionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeTelSession")
+    
     return
 }
 
@@ -565,6 +581,7 @@ func NewUnbindStaffSkillGroupListRequest() (request *UnbindStaffSkillGroupListRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "UnbindStaffSkillGroupList")
+    
     return
 }
 

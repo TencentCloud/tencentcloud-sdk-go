@@ -48,6 +48,7 @@ func NewAcquireClusterAdminRoleRequest() (request *AcquireClusterAdminRoleReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "AcquireClusterAdminRole")
+    
     return
 }
 
@@ -87,6 +88,7 @@ func NewAddClusterCIDRRequest() (request *AddClusterCIDRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "AddClusterCIDR")
+    
     return
 }
 
@@ -126,6 +128,7 @@ func NewAddExistedInstancesRequest() (request *AddExistedInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "AddExistedInstances")
+    
     return
 }
 
@@ -165,6 +168,7 @@ func NewAddNodeToNodePoolRequest() (request *AddNodeToNodePoolRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "AddNodeToNodePool")
+    
     return
 }
 
@@ -194,6 +198,7 @@ func NewAddVpcCniSubnetsRequest() (request *AddVpcCniSubnetsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "AddVpcCniSubnets")
+    
     return
 }
 
@@ -232,6 +237,7 @@ func NewCheckInstancesUpgradeAbleRequest() (request *CheckInstancesUpgradeAbleRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "CheckInstancesUpgradeAble")
+    
     return
 }
 
@@ -269,6 +275,7 @@ func NewCreateClusterRequest() (request *CreateClusterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "CreateCluster")
+    
     return
 }
 
@@ -334,6 +341,7 @@ func NewCreateClusterAsGroupRequest() (request *CreateClusterAsGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "CreateClusterAsGroup")
+    
     return
 }
 
@@ -380,6 +388,7 @@ func NewCreateClusterEndpointRequest() (request *CreateClusterEndpointRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "CreateClusterEndpoint")
+    
     return
 }
 
@@ -427,6 +436,7 @@ func NewCreateClusterEndpointVipRequest() (request *CreateClusterEndpointVipRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "CreateClusterEndpointVip")
+    
     return
 }
 
@@ -473,6 +483,7 @@ func NewCreateClusterInstancesRequest() (request *CreateClusterInstancesRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "CreateClusterInstances")
+    
     return
 }
 
@@ -532,6 +543,7 @@ func NewCreateClusterNodePoolRequest() (request *CreateClusterNodePoolRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "CreateClusterNodePool")
+    
     return
 }
 
@@ -567,6 +579,7 @@ func NewCreateClusterNodePoolFromExistingAsgRequest() (request *CreateClusterNod
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "CreateClusterNodePoolFromExistingAsg")
+    
     return
 }
 
@@ -596,6 +609,7 @@ func NewCreateClusterRouteRequest() (request *CreateClusterRouteRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "CreateClusterRoute")
+    
     return
 }
 
@@ -638,6 +652,7 @@ func NewCreateClusterRouteTableRequest() (request *CreateClusterRouteTableReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "CreateClusterRouteTable")
+    
     return
 }
 
@@ -680,6 +695,7 @@ func NewCreateEKSClusterRequest() (request *CreateEKSClusterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "CreateEKSCluster")
+    
     return
 }
 
@@ -719,6 +735,7 @@ func NewCreateEKSContainerInstancesRequest() (request *CreateEKSContainerInstanc
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "CreateEKSContainerInstances")
+    
     return
 }
 
@@ -754,6 +771,7 @@ func NewCreatePrometheusAlertRuleRequest() (request *CreatePrometheusAlertRuleRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "CreatePrometheusAlertRule")
+    
     return
 }
 
@@ -786,6 +804,7 @@ func NewCreatePrometheusDashboardRequest() (request *CreatePrometheusDashboardRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "CreatePrometheusDashboard")
+    
     return
 }
 
@@ -820,6 +839,7 @@ func NewCreatePrometheusTemplateRequest() (request *CreatePrometheusTemplateRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "CreatePrometheusTemplate")
+    
     return
 }
 
@@ -851,6 +871,7 @@ func NewDeleteClusterRequest() (request *DeleteClusterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DeleteCluster")
+    
     return
 }
 
@@ -890,6 +911,7 @@ func NewDeleteClusterAsGroupsRequest() (request *DeleteClusterAsGroupsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DeleteClusterAsGroups")
+    
     return
 }
 
@@ -935,6 +957,7 @@ func NewDeleteClusterEndpointRequest() (request *DeleteClusterEndpointRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DeleteClusterEndpoint")
+    
     return
 }
 
@@ -985,6 +1008,7 @@ func NewDeleteClusterEndpointVipRequest() (request *DeleteClusterEndpointVipRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DeleteClusterEndpointVip")
+    
     return
 }
 
@@ -1032,6 +1056,7 @@ func NewDeleteClusterInstancesRequest() (request *DeleteClusterInstancesRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DeleteClusterInstances")
+    
     return
 }
 
@@ -1070,6 +1095,7 @@ func NewDeleteClusterNodePoolRequest() (request *DeleteClusterNodePoolRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DeleteClusterNodePool")
+    
     return
 }
 
@@ -1101,6 +1127,7 @@ func NewDeleteClusterRouteRequest() (request *DeleteClusterRouteRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DeleteClusterRoute")
+    
     return
 }
 
@@ -1135,6 +1162,7 @@ func NewDeleteClusterRouteTableRequest() (request *DeleteClusterRouteTableReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DeleteClusterRouteTable")
+    
     return
 }
 
@@ -1169,6 +1197,7 @@ func NewDeleteEKSClusterRequest() (request *DeleteEKSClusterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DeleteEKSCluster")
+    
     return
 }
 
@@ -1208,6 +1237,7 @@ func NewDeleteEKSContainerInstancesRequest() (request *DeleteEKSContainerInstanc
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DeleteEKSContainerInstances")
+    
     return
 }
 
@@ -1244,6 +1274,7 @@ func NewDeletePrometheusAlertRuleRequest() (request *DeletePrometheusAlertRuleRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DeletePrometheusAlertRule")
+    
     return
 }
 
@@ -1276,6 +1307,7 @@ func NewDeletePrometheusTemplateRequest() (request *DeletePrometheusTemplateRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DeletePrometheusTemplate")
+    
     return
 }
 
@@ -1309,6 +1341,7 @@ func NewDeletePrometheusTemplateSyncRequest() (request *DeletePrometheusTemplate
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DeletePrometheusTemplateSync")
+    
     return
 }
 
@@ -1344,6 +1377,7 @@ func NewDescribeAvailableClusterVersionRequest() (request *DescribeAvailableClus
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribeAvailableClusterVersion")
+    
     return
 }
 
@@ -1378,6 +1412,7 @@ func NewDescribeClusterAsGroupOptionRequest() (request *DescribeClusterAsGroupOp
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterAsGroupOption")
+    
     return
 }
 
@@ -1417,6 +1452,7 @@ func NewDescribeClusterAsGroupsRequest() (request *DescribeClusterAsGroupsReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterAsGroups")
+    
     return
 }
 
@@ -1458,6 +1494,7 @@ func NewDescribeClusterAuthenticationOptionsRequest() (request *DescribeClusterA
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterAuthenticationOptions")
+    
     return
 }
 
@@ -1490,6 +1527,7 @@ func NewDescribeClusterCommonNamesRequest() (request *DescribeClusterCommonNames
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterCommonNames")
+    
     return
 }
 
@@ -1526,6 +1564,7 @@ func NewDescribeClusterControllersRequest() (request *DescribeClusterControllers
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterControllers")
+    
     return
 }
 
@@ -1559,6 +1598,7 @@ func NewDescribeClusterEndpointStatusRequest() (request *DescribeClusterEndpoint
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterEndpointStatus")
+    
     return
 }
 
@@ -1609,6 +1649,7 @@ func NewDescribeClusterEndpointVipStatusRequest() (request *DescribeClusterEndpo
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterEndpointVipStatus")
+    
     return
 }
 
@@ -1659,6 +1700,7 @@ func NewDescribeClusterInstancesRequest() (request *DescribeClusterInstancesRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterInstances")
+    
     return
 }
 
@@ -1697,6 +1739,7 @@ func NewDescribeClusterKubeconfigRequest() (request *DescribeClusterKubeconfigRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterKubeconfig")
+    
     return
 }
 
@@ -1739,6 +1782,7 @@ func NewDescribeClusterNodePoolDetailRequest() (request *DescribeClusterNodePool
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterNodePoolDetail")
+    
     return
 }
 
@@ -1772,6 +1816,7 @@ func NewDescribeClusterNodePoolsRequest() (request *DescribeClusterNodePoolsRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterNodePools")
+    
     return
 }
 
@@ -1805,6 +1850,7 @@ func NewDescribeClusterRouteTablesRequest() (request *DescribeClusterRouteTables
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterRouteTables")
+    
     return
 }
 
@@ -1834,6 +1880,7 @@ func NewDescribeClusterRoutesRequest() (request *DescribeClusterRoutesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterRoutes")
+    
     return
 }
 
@@ -1865,6 +1912,7 @@ func NewDescribeClusterSecurityRequest() (request *DescribeClusterSecurityReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterSecurity")
+    
     return
 }
 
@@ -1917,6 +1965,7 @@ func NewDescribeClustersRequest() (request *DescribeClustersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribeClusters")
+    
     return
 }
 
@@ -1959,6 +2008,7 @@ func NewDescribeEKSClusterCredentialRequest() (request *DescribeEKSClusterCreden
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribeEKSClusterCredential")
+    
     return
 }
 
@@ -1999,6 +2049,7 @@ func NewDescribeEKSClustersRequest() (request *DescribeEKSClustersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribeEKSClusters")
+    
     return
 }
 
@@ -2038,6 +2089,7 @@ func NewDescribeEKSContainerInstanceEventRequest() (request *DescribeEKSContaine
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribeEKSContainerInstanceEvent")
+    
     return
 }
 
@@ -2074,6 +2126,7 @@ func NewDescribeEKSContainerInstanceRegionsRequest() (request *DescribeEKSContai
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribeEKSContainerInstanceRegions")
+    
     return
 }
 
@@ -2109,6 +2162,7 @@ func NewDescribeEKSContainerInstancesRequest() (request *DescribeEKSContainerIns
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribeEKSContainerInstances")
+    
     return
 }
 
@@ -2142,6 +2196,7 @@ func NewDescribeEksContainerInstanceLogRequest() (request *DescribeEksContainerI
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribeEksContainerInstanceLog")
+    
     return
 }
 
@@ -2176,6 +2231,7 @@ func NewDescribeEnableVpcCniProgressRequest() (request *DescribeEnableVpcCniProg
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribeEnableVpcCniProgress")
+    
     return
 }
 
@@ -2205,6 +2261,7 @@ func NewDescribeExistedInstancesRequest() (request *DescribeExistedInstancesRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribeExistedInstances")
+    
     return
 }
 
@@ -2262,6 +2319,7 @@ func NewDescribeExternalClusterSpecRequest() (request *DescribeExternalClusterSp
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribeExternalClusterSpec")
+    
     return
 }
 
@@ -2304,6 +2362,7 @@ func NewDescribeImagesRequest() (request *DescribeImagesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribeImages")
+    
     return
 }
 
@@ -2350,6 +2409,7 @@ func NewDescribePrometheusAgentInstancesRequest() (request *DescribePrometheusAg
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribePrometheusAgentInstances")
+    
     return
 }
 
@@ -2382,6 +2442,7 @@ func NewDescribePrometheusAgentsRequest() (request *DescribePrometheusAgentsRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribePrometheusAgents")
+    
     return
 }
 
@@ -2414,6 +2475,7 @@ func NewDescribePrometheusAlertHistoryRequest() (request *DescribePrometheusAler
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribePrometheusAlertHistory")
+    
     return
 }
 
@@ -2449,6 +2511,7 @@ func NewDescribePrometheusAlertRuleRequest() (request *DescribePrometheusAlertRu
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribePrometheusAlertRule")
+    
     return
 }
 
@@ -2484,6 +2547,7 @@ func NewDescribePrometheusInstanceRequest() (request *DescribePrometheusInstance
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribePrometheusInstance")
+    
     return
 }
 
@@ -2519,6 +2583,7 @@ func NewDescribePrometheusOverviewsRequest() (request *DescribePrometheusOvervie
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribePrometheusOverviews")
+    
     return
 }
 
@@ -2551,6 +2616,7 @@ func NewDescribePrometheusTargetsRequest() (request *DescribePrometheusTargetsRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribePrometheusTargets")
+    
     return
 }
 
@@ -2586,6 +2652,7 @@ func NewDescribePrometheusTemplateSyncRequest() (request *DescribePrometheusTemp
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribePrometheusTemplateSync")
+    
     return
 }
 
@@ -2618,6 +2685,7 @@ func NewDescribePrometheusTemplatesRequest() (request *DescribePrometheusTemplat
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribePrometheusTemplates")
+    
     return
 }
 
@@ -2649,6 +2717,7 @@ func NewDescribeRegionsRequest() (request *DescribeRegionsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribeRegions")
+    
     return
 }
 
@@ -2693,6 +2762,7 @@ func NewDescribeRouteTableConflictsRequest() (request *DescribeRouteTableConflic
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribeRouteTableConflicts")
+    
     return
 }
 
@@ -2728,6 +2798,7 @@ func NewDescribeVersionsRequest() (request *DescribeVersionsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribeVersions")
+    
     return
 }
 
@@ -2773,6 +2844,7 @@ func NewDescribeVpcCniPodLimitsRequest() (request *DescribeVpcCniPodLimitsReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DescribeVpcCniPodLimits")
+    
     return
 }
 
@@ -2814,6 +2886,7 @@ func NewDisableVpcCniNetworkTypeRequest() (request *DisableVpcCniNetworkTypeRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "DisableVpcCniNetworkType")
+    
     return
 }
 
@@ -2846,6 +2919,7 @@ func NewEnableVpcCniNetworkTypeRequest() (request *EnableVpcCniNetworkTypeReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "EnableVpcCniNetworkType")
+    
     return
 }
 
@@ -2876,6 +2950,7 @@ func NewGetUpgradeInstanceProgressRequest() (request *GetUpgradeInstanceProgress
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "GetUpgradeInstanceProgress")
+    
     return
 }
 
@@ -2906,6 +2981,7 @@ func NewModifyClusterAsGroupAttributeRequest() (request *ModifyClusterAsGroupAtt
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "ModifyClusterAsGroupAttribute")
+    
     return
 }
 
@@ -2955,6 +3031,7 @@ func NewModifyClusterAsGroupOptionAttributeRequest() (request *ModifyClusterAsGr
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "ModifyClusterAsGroupOptionAttribute")
+    
     return
 }
 
@@ -3000,6 +3077,7 @@ func NewModifyClusterAttributeRequest() (request *ModifyClusterAttributeRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "ModifyClusterAttribute")
+    
     return
 }
 
@@ -3039,6 +3117,7 @@ func NewModifyClusterAuthenticationOptionsRequest() (request *ModifyClusterAuthe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "ModifyClusterAuthenticationOptions")
+    
     return
 }
 
@@ -3071,6 +3150,7 @@ func NewModifyClusterEndpointSPRequest() (request *ModifyClusterEndpointSPReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "ModifyClusterEndpointSP")
+    
     return
 }
 
@@ -3118,6 +3198,7 @@ func NewModifyClusterNodePoolRequest() (request *ModifyClusterNodePoolRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "ModifyClusterNodePool")
+    
     return
 }
 
@@ -3151,6 +3232,7 @@ func NewModifyNodePoolDesiredCapacityAboutAsgRequest() (request *ModifyNodePoolD
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "ModifyNodePoolDesiredCapacityAboutAsg")
+    
     return
 }
 
@@ -3189,6 +3271,7 @@ func NewModifyNodePoolInstanceTypesRequest() (request *ModifyNodePoolInstanceTyp
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "ModifyNodePoolInstanceTypes")
+    
     return
 }
 
@@ -3227,6 +3310,7 @@ func NewModifyPrometheusAlertRuleRequest() (request *ModifyPrometheusAlertRuleRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "ModifyPrometheusAlertRule")
+    
     return
 }
 
@@ -3260,6 +3344,7 @@ func NewModifyPrometheusTemplateRequest() (request *ModifyPrometheusTemplateRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "ModifyPrometheusTemplate")
+    
     return
 }
 
@@ -3293,6 +3378,7 @@ func NewRemoveNodeFromNodePoolRequest() (request *RemoveNodeFromNodePoolRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "RemoveNodeFromNodePool")
+    
     return
 }
 
@@ -3323,6 +3409,7 @@ func NewRestartEKSContainerInstancesRequest() (request *RestartEKSContainerInsta
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "RestartEKSContainerInstances")
+    
     return
 }
 
@@ -3354,6 +3441,7 @@ func NewSetNodePoolNodeProtectionRequest() (request *SetNodePoolNodeProtectionRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "SetNodePoolNodeProtection")
+    
     return
 }
 
@@ -3392,6 +3480,7 @@ func NewSyncPrometheusTemplateRequest() (request *SyncPrometheusTemplateRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "SyncPrometheusTemplate")
+    
     return
 }
 
@@ -3427,6 +3516,7 @@ func NewUpdateClusterVersionRequest() (request *UpdateClusterVersionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "UpdateClusterVersion")
+    
     return
 }
 
@@ -3462,6 +3552,7 @@ func NewUpdateEKSClusterRequest() (request *UpdateEKSClusterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "UpdateEKSCluster")
+    
     return
 }
 
@@ -3502,6 +3593,7 @@ func NewUpdateEKSContainerInstanceRequest() (request *UpdateEKSContainerInstance
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "UpdateEKSContainerInstance")
+    
     return
 }
 
@@ -3533,6 +3625,7 @@ func NewUpgradeClusterInstancesRequest() (request *UpgradeClusterInstancesReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tke", APIVersion, "UpgradeClusterInstances")
+    
     return
 }
 

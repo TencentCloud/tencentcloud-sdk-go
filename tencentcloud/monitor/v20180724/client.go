@@ -48,6 +48,7 @@ func NewBindingPolicyObjectRequest() (request *BindingPolicyObjectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "BindingPolicyObject")
+    
     return
 }
 
@@ -78,6 +79,7 @@ func NewCreateAlarmNoticeRequest() (request *CreateAlarmNoticeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "CreateAlarmNotice")
+    
     return
 }
 
@@ -113,6 +115,7 @@ func NewCreateAlarmPolicyRequest() (request *CreateAlarmPolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "CreateAlarmPolicy")
+    
     return
 }
 
@@ -148,6 +151,7 @@ func NewCreateAlertRuleRequest() (request *CreateAlertRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "CreateAlertRule")
+    
     return
 }
 
@@ -192,6 +196,7 @@ func NewCreatePolicyGroupRequest() (request *CreatePolicyGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "CreatePolicyGroup")
+    
     return
 }
 
@@ -233,6 +238,7 @@ func NewCreateServiceDiscoveryRequest() (request *CreateServiceDiscoveryRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "CreateServiceDiscovery")
+    
     return
 }
 
@@ -276,6 +282,7 @@ func NewDeleteAlarmNoticesRequest() (request *DeleteAlarmNoticesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "DeleteAlarmNotices")
+    
     return
 }
 
@@ -309,6 +316,7 @@ func NewDeleteAlarmPolicyRequest() (request *DeleteAlarmPolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "DeleteAlarmPolicy")
+    
     return
 }
 
@@ -342,6 +350,7 @@ func NewDeleteAlertRulesRequest() (request *DeleteAlertRulesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "DeleteAlertRules")
+    
     return
 }
 
@@ -382,6 +391,7 @@ func NewDeletePolicyGroupRequest() (request *DeletePolicyGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "DeletePolicyGroup")
+    
     return
 }
 
@@ -446,6 +456,7 @@ func NewDeleteServiceDiscoveryRequest() (request *DeleteServiceDiscoveryRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "DeleteServiceDiscovery")
+    
     return
 }
 
@@ -488,6 +499,7 @@ func NewDescribeAccidentEventListRequest() (request *DescribeAccidentEventListRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "DescribeAccidentEventList")
+    
     return
 }
 
@@ -521,6 +533,7 @@ func NewDescribeAlarmEventsRequest() (request *DescribeAlarmEventsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "DescribeAlarmEvents")
+    
     return
 }
 
@@ -551,6 +564,7 @@ func NewDescribeAlarmHistoriesRequest() (request *DescribeAlarmHistoriesRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "DescribeAlarmHistories")
+    
     return
 }
 
@@ -589,6 +603,7 @@ func NewDescribeAlarmMetricsRequest() (request *DescribeAlarmMetricsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "DescribeAlarmMetrics")
+    
     return
 }
 
@@ -619,6 +634,7 @@ func NewDescribeAlarmNoticeRequest() (request *DescribeAlarmNoticeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "DescribeAlarmNotice")
+    
     return
 }
 
@@ -654,6 +670,7 @@ func NewDescribeAlarmNoticeCallbacksRequest() (request *DescribeAlarmNoticeCallb
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "DescribeAlarmNoticeCallbacks")
+    
     return
 }
 
@@ -689,6 +706,7 @@ func NewDescribeAlarmNoticesRequest() (request *DescribeAlarmNoticesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "DescribeAlarmNotices")
+    
     return
 }
 
@@ -724,6 +742,7 @@ func NewDescribeAlarmPoliciesRequest() (request *DescribeAlarmPoliciesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "DescribeAlarmPolicies")
+    
     return
 }
 
@@ -755,6 +774,7 @@ func NewDescribeAlarmPolicyRequest() (request *DescribeAlarmPolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "DescribeAlarmPolicy")
+    
     return
 }
 
@@ -787,6 +807,7 @@ func NewDescribeAlertRulesRequest() (request *DescribeAlertRulesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "DescribeAlertRules")
+    
     return
 }
 
@@ -827,6 +848,7 @@ func NewDescribeAllNamespacesRequest() (request *DescribeAllNamespacesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "DescribeAllNamespaces")
+    
     return
 }
 
@@ -856,6 +878,7 @@ func NewDescribeBaseMetricsRequest() (request *DescribeBaseMetricsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "DescribeBaseMetrics")
+    
     return
 }
 
@@ -885,6 +908,7 @@ func NewDescribeBasicAlarmListRequest() (request *DescribeBasicAlarmListRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "DescribeBasicAlarmList")
+    
     return
 }
 
@@ -919,6 +943,7 @@ func NewDescribeBindingPolicyObjectListRequest() (request *DescribeBindingPolicy
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "DescribeBindingPolicyObjectList")
+    
     return
 }
 
@@ -985,6 +1010,7 @@ func NewDescribeMonitorTypesRequest() (request *DescribeMonitorTypesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "DescribeMonitorTypes")
+    
     return
 }
 
@@ -1014,6 +1040,7 @@ func NewDescribePolicyConditionListRequest() (request *DescribePolicyConditionLi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "DescribePolicyConditionList")
+    
     return
 }
 
@@ -1078,6 +1105,7 @@ func NewDescribePolicyGroupInfoRequest() (request *DescribePolicyGroupInfoReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "DescribePolicyGroupInfo")
+    
     return
 }
 
@@ -1142,6 +1170,7 @@ func NewDescribePolicyGroupListRequest() (request *DescribePolicyGroupListReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "DescribePolicyGroupList")
+    
     return
 }
 
@@ -1206,6 +1235,7 @@ func NewDescribeProductEventListRequest() (request *DescribeProductEventListRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "DescribeProductEventList")
+    
     return
 }
 
@@ -1242,6 +1272,7 @@ func NewDescribeProductListRequest() (request *DescribeProductListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "DescribeProductList")
+    
     return
 }
 
@@ -1281,6 +1312,7 @@ func NewDescribeServiceDiscoveryRequest() (request *DescribeServiceDiscoveryRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "DescribeServiceDiscovery")
+    
     return
 }
 
@@ -1321,6 +1353,7 @@ func NewDescribeStatisticDataRequest() (request *DescribeStatisticDataRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "DescribeStatisticData")
+    
     return
 }
 
@@ -1394,6 +1427,7 @@ func NewGetMonitorDataRequest() (request *GetMonitorDataRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "GetMonitorData")
+    
     return
 }
 
@@ -1430,6 +1464,7 @@ func NewModifyAlarmNoticeRequest() (request *ModifyAlarmNoticeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "ModifyAlarmNotice")
+    
     return
 }
 
@@ -1464,6 +1499,7 @@ func NewModifyAlarmPolicyConditionRequest() (request *ModifyAlarmPolicyCondition
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "ModifyAlarmPolicyCondition")
+    
     return
 }
 
@@ -1498,6 +1534,7 @@ func NewModifyAlarmPolicyInfoRequest() (request *ModifyAlarmPolicyInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "ModifyAlarmPolicyInfo")
+    
     return
 }
 
@@ -1532,6 +1569,7 @@ func NewModifyAlarmPolicyNoticeRequest() (request *ModifyAlarmPolicyNoticeReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "ModifyAlarmPolicyNotice")
+    
     return
 }
 
@@ -1564,6 +1602,7 @@ func NewModifyAlarmPolicyStatusRequest() (request *ModifyAlarmPolicyStatusReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "ModifyAlarmPolicyStatus")
+    
     return
 }
 
@@ -1598,6 +1637,7 @@ func NewModifyAlarmPolicyTasksRequest() (request *ModifyAlarmPolicyTasksRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "ModifyAlarmPolicyTasks")
+    
     return
 }
 
@@ -1631,6 +1671,7 @@ func NewModifyAlarmReceiversRequest() (request *ModifyAlarmReceiversRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "ModifyAlarmReceivers")
+    
     return
 }
 
@@ -1664,6 +1705,7 @@ func NewModifyPolicyGroupRequest() (request *ModifyPolicyGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "ModifyPolicyGroup")
+    
     return
 }
 
@@ -1714,6 +1756,7 @@ func NewPutMonitorDataRequest() (request *PutMonitorDataRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "PutMonitorData")
+    
     return
 }
 
@@ -1771,6 +1814,7 @@ func NewSendCustomAlarmMsgRequest() (request *SendCustomAlarmMsgRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "SendCustomAlarmMsg")
+    
     return
 }
 
@@ -1807,6 +1851,7 @@ func NewSetDefaultAlarmPolicyRequest() (request *SetDefaultAlarmPolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "SetDefaultAlarmPolicy")
+    
     return
 }
 
@@ -1843,6 +1888,7 @@ func NewUnBindingAllPolicyObjectRequest() (request *UnBindingAllPolicyObjectRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "UnBindingAllPolicyObject")
+    
     return
 }
 
@@ -1907,6 +1953,7 @@ func NewUnBindingPolicyObjectRequest() (request *UnBindingPolicyObjectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "UnBindingPolicyObject")
+    
     return
 }
 
@@ -1973,6 +2020,7 @@ func NewUpdateAlertRuleRequest() (request *UpdateAlertRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "UpdateAlertRule")
+    
     return
 }
 
@@ -2017,6 +2065,7 @@ func NewUpdateAlertRuleStateRequest() (request *UpdateAlertRuleStateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "UpdateAlertRuleState")
+    
     return
 }
 
@@ -2057,6 +2106,7 @@ func NewUpdateServiceDiscoveryRequest() (request *UpdateServiceDiscoveryRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("monitor", APIVersion, "UpdateServiceDiscovery")
+    
     return
 }
 

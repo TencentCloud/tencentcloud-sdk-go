@@ -48,6 +48,7 @@ func NewDetectFraudKOLRequest() (request *DetectFraudKOLRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("taf", APIVersion, "DetectFraudKOL")
+    
     return
 }
 
@@ -110,6 +111,7 @@ func NewEnhanceTaDegreeRequest() (request *EnhanceTaDegreeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("taf", APIVersion, "EnhanceTaDegree")
+    
     return
 }
 
@@ -172,6 +174,7 @@ func NewRecognizeCustomizedAudienceRequest() (request *RecognizeCustomizedAudien
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("taf", APIVersion, "RecognizeCustomizedAudience")
+    
     return
 }
 
@@ -234,6 +237,7 @@ func NewRecognizeEffectiveFlowRequest() (request *RecognizeEffectiveFlowRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("taf", APIVersion, "RecognizeEffectiveFlow")
+    
     return
 }
 
@@ -284,6 +288,7 @@ func NewRecognizePreciseTargetAudienceRequest() (request *RecognizePreciseTarget
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("taf", APIVersion, "RecognizePreciseTargetAudience")
+    
     return
 }
 
@@ -346,6 +351,7 @@ func NewRecognizeTargetAudienceRequest() (request *RecognizeTargetAudienceReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("taf", APIVersion, "RecognizeTargetAudience")
+    
     return
 }
 
@@ -426,6 +432,7 @@ func NewSendTrafficSecuritySmsMessageRequest() (request *SendTrafficSecuritySmsM
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("taf", APIVersion, "SendTrafficSecuritySmsMessage")
+    
     return
 }
 

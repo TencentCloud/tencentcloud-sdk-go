@@ -48,6 +48,7 @@ func NewDescribeAntiFraudRequest() (request *DescribeAntiFraudRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("af", APIVersion, "DescribeAntiFraud")
+    
     return
 }
 
@@ -124,6 +125,7 @@ func NewQueryAntiFraudRequest() (request *QueryAntiFraudRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("af", APIVersion, "QueryAntiFraud")
+    
     return
 }
 

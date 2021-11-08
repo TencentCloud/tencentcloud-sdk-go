@@ -48,6 +48,7 @@ func NewAcceptOrganizationInvitationRequest() (request *AcceptOrganizationInvita
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "AcceptOrganizationInvitation")
+    
     return
 }
 
@@ -78,6 +79,7 @@ func NewAddOrganizationNodeRequest() (request *AddOrganizationNodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "AddOrganizationNode")
+    
     return
 }
 
@@ -111,6 +113,7 @@ func NewCancelOrganizationInvitationRequest() (request *CancelOrganizationInvita
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "CancelOrganizationInvitation")
+    
     return
 }
 
@@ -140,6 +143,7 @@ func NewCreateOrganizationRequest() (request *CreateOrganizationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "CreateOrganization")
+    
     return
 }
 
@@ -170,6 +174,7 @@ func NewDeleteOrganizationRequest() (request *DeleteOrganizationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "DeleteOrganization")
+    
     return
 }
 
@@ -201,6 +206,7 @@ func NewDeleteOrganizationMemberFromNodeRequest() (request *DeleteOrganizationMe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "DeleteOrganizationMemberFromNode")
+    
     return
 }
 
@@ -232,6 +238,7 @@ func NewDeleteOrganizationMembersRequest() (request *DeleteOrganizationMembersRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "DeleteOrganizationMembers")
+    
     return
 }
 
@@ -262,6 +269,7 @@ func NewDeleteOrganizationNodesRequest() (request *DeleteOrganizationNodesReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "DeleteOrganizationNodes")
+    
     return
 }
 
@@ -292,6 +300,7 @@ func NewDenyOrganizationInvitationRequest() (request *DenyOrganizationInvitation
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "DenyOrganizationInvitation")
+    
     return
 }
 
@@ -321,6 +330,7 @@ func NewGetOrganizationRequest() (request *GetOrganizationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "GetOrganization")
+    
     return
 }
 
@@ -351,6 +361,7 @@ func NewGetOrganizationMemberRequest() (request *GetOrganizationMemberRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "GetOrganizationMember")
+    
     return
 }
 
@@ -381,6 +392,7 @@ func NewListOrganizationInvitationsRequest() (request *ListOrganizationInvitatio
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "ListOrganizationInvitations")
+    
     return
 }
 
@@ -410,6 +422,7 @@ func NewListOrganizationMembersRequest() (request *ListOrganizationMembersReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "ListOrganizationMembers")
+    
     return
 }
 
@@ -440,6 +453,7 @@ func NewListOrganizationNodeMembersRequest() (request *ListOrganizationNodeMembe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "ListOrganizationNodeMembers")
+    
     return
 }
 
@@ -470,6 +484,7 @@ func NewListOrganizationNodesRequest() (request *ListOrganizationNodesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "ListOrganizationNodes")
+    
     return
 }
 
@@ -499,6 +514,7 @@ func NewMoveOrganizationMembersToNodeRequest() (request *MoveOrganizationMembers
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "MoveOrganizationMembersToNode")
+    
     return
 }
 
@@ -530,6 +546,7 @@ func NewQuitOrganizationRequest() (request *QuitOrganizationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "QuitOrganization")
+    
     return
 }
 
@@ -560,6 +577,7 @@ func NewSendOrganizationInvitationRequest() (request *SendOrganizationInvitation
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "SendOrganizationInvitation")
+    
     return
 }
 
@@ -596,6 +614,7 @@ func NewUpdateOrganizationMemberRequest() (request *UpdateOrganizationMemberRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "UpdateOrganizationMember")
+    
     return
 }
 
@@ -627,6 +646,7 @@ func NewUpdateOrganizationNodeRequest() (request *UpdateOrganizationNodeRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "UpdateOrganizationNode")
+    
     return
 }
 

@@ -48,6 +48,7 @@ func NewCreateAgeDetectTaskRequest() (request *CreateAgeDetectTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gme", APIVersion, "CreateAgeDetectTask")
+    
     return
 }
 
@@ -99,6 +100,7 @@ func NewCreateAppRequest() (request *CreateAppRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gme", APIVersion, "CreateApp")
+    
     return
 }
 
@@ -138,6 +140,7 @@ func NewDescribeAgeDetectTaskRequest() (request *DescribeAgeDetectTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gme", APIVersion, "DescribeAgeDetectTask")
+    
     return
 }
 
@@ -169,6 +172,7 @@ func NewDescribeAppStatisticsRequest() (request *DescribeAppStatisticsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gme", APIVersion, "DescribeAppStatistics")
+    
     return
 }
 
@@ -207,6 +211,7 @@ func NewDescribeApplicationDataRequest() (request *DescribeApplicationDataReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gme", APIVersion, "DescribeApplicationData")
+    
     return
 }
 
@@ -240,6 +245,7 @@ func NewDescribeFilterResultRequest() (request *DescribeFilterResultRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gme", APIVersion, "DescribeFilterResult")
+    
     return
 }
 
@@ -273,6 +279,7 @@ func NewDescribeFilterResultListRequest() (request *DescribeFilterResultListRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gme", APIVersion, "DescribeFilterResultList")
+    
     return
 }
 
@@ -306,6 +313,7 @@ func NewDescribeRoomInfoRequest() (request *DescribeRoomInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gme", APIVersion, "DescribeRoomInfo")
+    
     return
 }
 
@@ -338,6 +346,7 @@ func NewDescribeScanResultListRequest() (request *DescribeScanResultListRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gme", APIVersion, "DescribeScanResultList")
+    
     return
 }
 
@@ -378,6 +387,7 @@ func NewDescribeUserInAndOutTimeRequest() (request *DescribeUserInAndOutTimeRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gme", APIVersion, "DescribeUserInAndOutTime")
+    
     return
 }
 
@@ -425,6 +435,7 @@ func NewModifyAppStatusRequest() (request *ModifyAppStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gme", APIVersion, "ModifyAppStatus")
+    
     return
 }
 
@@ -463,6 +474,7 @@ func NewModifyRoomInfoRequest() (request *ModifyRoomInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gme", APIVersion, "ModifyRoomInfo")
+    
     return
 }
 
@@ -495,6 +507,7 @@ func NewScanVoiceRequest() (request *ScanVoiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gme", APIVersion, "ScanVoice")
+    
     return
 }
 
@@ -805,6 +818,7 @@ func NewVoiceFilterRequest() (request *VoiceFilterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gme", APIVersion, "VoiceFilter")
+    
     return
 }
 

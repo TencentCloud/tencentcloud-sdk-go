@@ -1646,7 +1646,7 @@ type DescribeCCTrendRequest struct {
 	// 统计结束时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 指标，取值[inqps(总请求峰值，dropqps(攻击请求峰值))]
+	// 指标，取值[inqps(总请求峰值，dropqps(攻击请求峰值))，incount(请求次数), dropcount(攻击次数)]
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 
 	// 域名，可选
@@ -1711,7 +1711,7 @@ type DescribeCCTrendResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Id *string `json:"Id,omitempty" name:"Id"`
 
-		// 指标，取值[inqps(总请求峰值，dropqps(攻击请求峰值))]
+		// 指标，取值[inqps(总请求峰值，dropqps(攻击请求峰值))，incount(请求次数), dropcount(攻击次数)]
 		MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

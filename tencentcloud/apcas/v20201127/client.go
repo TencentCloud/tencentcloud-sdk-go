@@ -48,6 +48,7 @@ func NewGetTaskDetailRequest() (request *GetTaskDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apcas", APIVersion, "GetTaskDetail")
+    
     return
 }
 
@@ -87,6 +88,7 @@ func NewGetTaskListRequest() (request *GetTaskListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apcas", APIVersion, "GetTaskList")
+    
     return
 }
 
@@ -123,6 +125,7 @@ func NewPredictRatingRequest() (request *PredictRatingRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apcas", APIVersion, "PredictRating")
+    
     return
 }
 
@@ -160,6 +163,7 @@ func NewQueryCallDetailsRequest() (request *QueryCallDetailsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apcas", APIVersion, "QueryCallDetails")
+    
     return
 }
 
@@ -192,6 +196,7 @@ func NewQueryCallStatRequest() (request *QueryCallStatRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apcas", APIVersion, "QueryCallStat")
+    
     return
 }
 
@@ -223,6 +228,7 @@ func NewQueryGeneralStatRequest() (request *QueryGeneralStatRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apcas", APIVersion, "QueryGeneralStat")
+    
     return
 }
 
@@ -254,6 +260,7 @@ func NewUploadIdRequest() (request *UploadIdRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apcas", APIVersion, "UploadId")
+    
     return
 }
 

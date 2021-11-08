@@ -48,6 +48,7 @@ func NewCopyFunctionRequest() (request *CopyFunctionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "CopyFunction")
+    
     return
 }
 
@@ -109,6 +110,7 @@ func NewCreateAliasRequest() (request *CreateAliasRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "CreateAlias")
+    
     return
 }
 
@@ -154,6 +156,7 @@ func NewCreateFunctionRequest() (request *CreateFunctionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "CreateFunction")
+    
     return
 }
 
@@ -265,6 +268,7 @@ func NewCreateNamespaceRequest() (request *CreateNamespaceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "CreateNamespace")
+    
     return
 }
 
@@ -306,6 +310,7 @@ func NewCreateTriggerRequest() (request *CreateTriggerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "CreateTrigger")
+    
     return
 }
 
@@ -385,6 +390,7 @@ func NewDeleteAliasRequest() (request *DeleteAliasRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "DeleteAlias")
+    
     return
 }
 
@@ -420,6 +426,7 @@ func NewDeleteFunctionRequest() (request *DeleteFunctionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "DeleteFunction")
+    
     return
 }
 
@@ -469,6 +476,7 @@ func NewDeleteLayerVersionRequest() (request *DeleteLayerVersionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "DeleteLayerVersion")
+    
     return
 }
 
@@ -504,6 +512,7 @@ func NewDeleteNamespaceRequest() (request *DeleteNamespaceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "DeleteNamespace")
+    
     return
 }
 
@@ -541,6 +550,7 @@ func NewDeleteProvisionedConcurrencyConfigRequest() (request *DeleteProvisionedC
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "DeleteProvisionedConcurrencyConfig")
+    
     return
 }
 
@@ -578,6 +588,7 @@ func NewDeleteReservedConcurrencyConfigRequest() (request *DeleteReservedConcurr
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "DeleteReservedConcurrencyConfig")
+    
     return
 }
 
@@ -612,6 +623,7 @@ func NewDeleteTriggerRequest() (request *DeleteTriggerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "DeleteTrigger")
+    
     return
 }
 
@@ -667,6 +679,7 @@ func NewGetAccountRequest() (request *GetAccountRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "GetAccount")
+    
     return
 }
 
@@ -697,6 +710,7 @@ func NewGetAliasRequest() (request *GetAliasRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "GetAlias")
+    
     return
 }
 
@@ -736,6 +750,7 @@ func NewGetFunctionRequest() (request *GetFunctionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "GetFunction")
+    
     return
 }
 
@@ -781,6 +796,7 @@ func NewGetFunctionAddressRequest() (request *GetFunctionAddressRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "GetFunctionAddress")
+    
     return
 }
 
@@ -825,6 +841,7 @@ func NewGetFunctionEventInvokeConfigRequest() (request *GetFunctionEventInvokeCo
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "GetFunctionEventInvokeConfig")
+    
     return
 }
 
@@ -869,6 +886,7 @@ func NewGetFunctionLogsRequest() (request *GetFunctionLogsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "GetFunctionLogs")
+    
     return
 }
 
@@ -915,6 +933,7 @@ func NewGetLayerVersionRequest() (request *GetLayerVersionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "GetLayerVersion")
+    
     return
 }
 
@@ -947,6 +966,7 @@ func NewGetProvisionedConcurrencyConfigRequest() (request *GetProvisionedConcurr
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "GetProvisionedConcurrencyConfig")
+    
     return
 }
 
@@ -984,6 +1004,7 @@ func NewGetReservedConcurrencyConfigRequest() (request *GetReservedConcurrencyCo
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "GetReservedConcurrencyConfig")
+    
     return
 }
 
@@ -1020,6 +1041,7 @@ func NewInvokeRequest() (request *InvokeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "Invoke")
+    
     return
 }
 
@@ -1059,6 +1081,7 @@ func NewInvokeFunctionRequest() (request *InvokeFunctionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "InvokeFunction")
+    
     return
 }
 
@@ -1099,6 +1122,7 @@ func NewListAliasesRequest() (request *ListAliasesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "ListAliases")
+    
     return
 }
 
@@ -1134,6 +1158,7 @@ func NewListAsyncEventsRequest() (request *ListAsyncEventsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "ListAsyncEvents")
+    
     return
 }
 
@@ -1171,6 +1196,7 @@ func NewListFunctionsRequest() (request *ListFunctionsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "ListFunctions")
+    
     return
 }
 
@@ -1211,6 +1237,7 @@ func NewListLayerVersionsRequest() (request *ListLayerVersionsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "ListLayerVersions")
+    
     return
 }
 
@@ -1244,6 +1271,7 @@ func NewListLayersRequest() (request *ListLayersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "ListLayers")
+    
     return
 }
 
@@ -1278,6 +1306,7 @@ func NewListNamespacesRequest() (request *ListNamespacesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "ListNamespaces")
+    
     return
 }
 
@@ -1310,6 +1339,7 @@ func NewListTriggersRequest() (request *ListTriggersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "ListTriggers")
+    
     return
 }
 
@@ -1342,6 +1372,7 @@ func NewListVersionByFunctionRequest() (request *ListVersionByFunctionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "ListVersionByFunction")
+    
     return
 }
 
@@ -1379,6 +1410,7 @@ func NewPublishLayerVersionRequest() (request *PublishLayerVersionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "PublishLayerVersion")
+    
     return
 }
 
@@ -1429,6 +1461,7 @@ func NewPublishVersionRequest() (request *PublishVersionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "PublishVersion")
+    
     return
 }
 
@@ -1469,6 +1502,7 @@ func NewPutProvisionedConcurrencyConfigRequest() (request *PutProvisionedConcurr
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "PutProvisionedConcurrencyConfig")
+    
     return
 }
 
@@ -1527,6 +1561,7 @@ func NewPutReservedConcurrencyConfigRequest() (request *PutReservedConcurrencyCo
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "PutReservedConcurrencyConfig")
+    
     return
 }
 
@@ -1567,6 +1602,7 @@ func NewPutTotalConcurrencyConfigRequest() (request *PutTotalConcurrencyConfigRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "PutTotalConcurrencyConfig")
+    
     return
 }
 
@@ -1605,6 +1641,7 @@ func NewTerminateAsyncEventRequest() (request *TerminateAsyncEventRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "TerminateAsyncEvent")
+    
     return
 }
 
@@ -1637,6 +1674,7 @@ func NewUpdateAliasRequest() (request *UpdateAliasRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "UpdateAlias")
+    
     return
 }
 
@@ -1680,6 +1718,7 @@ func NewUpdateFunctionCodeRequest() (request *UpdateFunctionCodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "UpdateFunctionCode")
+    
     return
 }
 
@@ -1741,6 +1780,7 @@ func NewUpdateFunctionConfigurationRequest() (request *UpdateFunctionConfigurati
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "UpdateFunctionConfiguration")
+    
     return
 }
 
@@ -1818,6 +1858,7 @@ func NewUpdateFunctionEventInvokeConfigRequest() (request *UpdateFunctionEventIn
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "UpdateFunctionEventInvokeConfig")
+    
     return
 }
 
@@ -1863,6 +1904,7 @@ func NewUpdateNamespaceRequest() (request *UpdateNamespaceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("scf", APIVersion, "UpdateNamespace")
+    
     return
 }
 

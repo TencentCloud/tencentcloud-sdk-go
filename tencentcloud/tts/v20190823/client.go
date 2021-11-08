@@ -48,6 +48,7 @@ func NewCreateTtsTaskRequest() (request *CreateTtsTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tts", APIVersion, "CreateTtsTask")
+    
     return
 }
 
@@ -128,6 +129,7 @@ func NewDescribeTtsTaskStatusRequest() (request *DescribeTtsTaskStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tts", APIVersion, "DescribeTtsTaskStatus")
+    
     return
 }
 
@@ -201,6 +203,7 @@ func NewTextToVoiceRequest() (request *TextToVoiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tts", APIVersion, "TextToVoice")
+    
     return
 }
 

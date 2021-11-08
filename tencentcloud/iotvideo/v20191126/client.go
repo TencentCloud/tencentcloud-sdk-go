@@ -48,6 +48,7 @@ func NewClearDeviceActiveCodeRequest() (request *ClearDeviceActiveCodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "ClearDeviceActiveCode")
+    
     return
 }
 
@@ -98,6 +99,7 @@ func NewCreateAnonymousAccessTokenRequest() (request *CreateAnonymousAccessToken
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateAnonymousAccessToken")
+    
     return
 }
 
@@ -148,6 +150,7 @@ func NewCreateAppUsrRequest() (request *CreateAppUsrRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateAppUsr")
+    
     return
 }
 
@@ -198,6 +201,7 @@ func NewCreateBindingRequest() (request *CreateBindingRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateBinding")
+    
     return
 }
 
@@ -250,6 +254,7 @@ func NewCreateDevTokenRequest() (request *CreateDevTokenRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateDevToken")
+    
     return
 }
 
@@ -306,6 +311,7 @@ func NewCreateDevicesRequest() (request *CreateDevicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateDevices")
+    
     return
 }
 
@@ -358,6 +364,7 @@ func NewCreateGencodeRequest() (request *CreateGencodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateGencode")
+    
     return
 }
 
@@ -408,6 +415,7 @@ func NewCreateIotDataTypeRequest() (request *CreateIotDataTypeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateIotDataType")
+    
     return
 }
 
@@ -458,6 +466,7 @@ func NewCreateIotModelRequest() (request *CreateIotModelRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateIotModel")
+    
     return
 }
 
@@ -510,6 +519,7 @@ func NewCreateProductRequest() (request *CreateProductRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateProduct")
+    
     return
 }
 
@@ -560,6 +570,7 @@ func NewCreateStorageRequest() (request *CreateStorageRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateStorage")
+    
     return
 }
 
@@ -610,6 +621,7 @@ func NewCreateStorageServiceRequest() (request *CreateStorageServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateStorageService")
+    
     return
 }
 
@@ -660,6 +672,7 @@ func NewCreateTraceIdsRequest() (request *CreateTraceIdsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateTraceIds")
+    
     return
 }
 
@@ -710,6 +723,7 @@ func NewCreateUploadPathRequest() (request *CreateUploadPathRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateUploadPath")
+    
     return
 }
 
@@ -760,6 +774,7 @@ func NewCreateUsrTokenRequest() (request *CreateUsrTokenRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateUsrToken")
+    
     return
 }
 
@@ -810,6 +825,7 @@ func NewDeleteAppUsrRequest() (request *DeleteAppUsrRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteAppUsr")
+    
     return
 }
 
@@ -860,6 +876,7 @@ func NewDeleteBindingRequest() (request *DeleteBindingRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteBinding")
+    
     return
 }
 
@@ -910,6 +927,7 @@ func NewDeleteDeviceRequest() (request *DeleteDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteDevice")
+    
     return
 }
 
@@ -960,6 +978,7 @@ func NewDeleteIotDataTypeRequest() (request *DeleteIotDataTypeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteIotDataType")
+    
     return
 }
 
@@ -1010,6 +1029,7 @@ func NewDeleteMessageQueueRequest() (request *DeleteMessageQueueRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteMessageQueue")
+    
     return
 }
 
@@ -1060,6 +1080,7 @@ func NewDeleteOtaVersionRequest() (request *DeleteOtaVersionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteOtaVersion")
+    
     return
 }
 
@@ -1110,6 +1131,7 @@ func NewDeleteProductRequest() (request *DeleteProductRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteProduct")
+    
     return
 }
 
@@ -1160,6 +1182,7 @@ func NewDeleteTraceIdsRequest() (request *DeleteTraceIdsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteTraceIds")
+    
     return
 }
 
@@ -1210,6 +1233,7 @@ func NewDeliverStorageServiceRequest() (request *DeliverStorageServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeliverStorageService")
+    
     return
 }
 
@@ -1260,6 +1284,7 @@ func NewDescribeAccountBalanceRequest() (request *DescribeAccountBalanceRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeAccountBalance")
+    
     return
 }
 
@@ -1310,6 +1335,7 @@ func NewDescribeBindDevRequest() (request *DescribeBindDevRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeBindDev")
+    
     return
 }
 
@@ -1360,6 +1386,7 @@ func NewDescribeBindUsrRequest() (request *DescribeBindUsrRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeBindUsr")
+    
     return
 }
 
@@ -1410,6 +1437,7 @@ func NewDescribeDeviceRequest() (request *DescribeDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeDevice")
+    
     return
 }
 
@@ -1460,6 +1488,7 @@ func NewDescribeDeviceModelRequest() (request *DescribeDeviceModelRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeDeviceModel")
+    
     return
 }
 
@@ -1510,6 +1539,7 @@ func NewDescribeDevicesRequest() (request *DescribeDevicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeDevices")
+    
     return
 }
 
@@ -1560,6 +1590,7 @@ func NewDescribeIotDataTypeRequest() (request *DescribeIotDataTypeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeIotDataType")
+    
     return
 }
 
@@ -1610,6 +1641,7 @@ func NewDescribeIotModelRequest() (request *DescribeIotModelRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeIotModel")
+    
     return
 }
 
@@ -1660,6 +1692,7 @@ func NewDescribeIotModelsRequest() (request *DescribeIotModelsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeIotModels")
+    
     return
 }
 
@@ -1710,6 +1743,7 @@ func NewDescribeLogsRequest() (request *DescribeLogsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeLogs")
+    
     return
 }
 
@@ -1762,6 +1796,7 @@ func NewDescribeMessageQueueRequest() (request *DescribeMessageQueueRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeMessageQueue")
+    
     return
 }
 
@@ -1812,6 +1847,7 @@ func NewDescribeModelDataRetRequest() (request *DescribeModelDataRetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeModelDataRet")
+    
     return
 }
 
@@ -1862,6 +1898,7 @@ func NewDescribeOsListRequest() (request *DescribeOsListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeOsList")
+    
     return
 }
 
@@ -1912,6 +1949,7 @@ func NewDescribeOtaVersionsRequest() (request *DescribeOtaVersionsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeOtaVersions")
+    
     return
 }
 
@@ -1962,6 +2000,7 @@ func NewDescribeProductRequest() (request *DescribeProductRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeProduct")
+    
     return
 }
 
@@ -2012,6 +2051,7 @@ func NewDescribeProductsRequest() (request *DescribeProductsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeProducts")
+    
     return
 }
 
@@ -2062,6 +2102,7 @@ func NewDescribePubVersionsRequest() (request *DescribePubVersionsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribePubVersions")
+    
     return
 }
 
@@ -2112,6 +2153,7 @@ func NewDescribeRechargeRecordsRequest() (request *DescribeRechargeRecordsReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeRechargeRecords")
+    
     return
 }
 
@@ -2162,6 +2204,7 @@ func NewDescribeRegistrationStatusRequest() (request *DescribeRegistrationStatus
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeRegistrationStatus")
+    
     return
 }
 
@@ -2212,6 +2255,7 @@ func NewDescribeRunLogRequest() (request *DescribeRunLogRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeRunLog")
+    
     return
 }
 
@@ -2262,6 +2306,7 @@ func NewDescribeStorageServiceRequest() (request *DescribeStorageServiceRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeStorageService")
+    
     return
 }
 
@@ -2312,6 +2357,7 @@ func NewDescribeStreamRequest() (request *DescribeStreamRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeStream")
+    
     return
 }
 
@@ -2370,6 +2416,7 @@ func NewDescribeTraceIdsRequest() (request *DescribeTraceIdsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeTraceIds")
+    
     return
 }
 
@@ -2420,6 +2467,7 @@ func NewDescribeTraceStatusRequest() (request *DescribeTraceStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeTraceStatus")
+    
     return
 }
 
@@ -2470,6 +2518,7 @@ func NewDisableDeviceRequest() (request *DisableDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DisableDevice")
+    
     return
 }
 
@@ -2520,6 +2569,7 @@ func NewDisableDeviceStreamRequest() (request *DisableDeviceStreamRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DisableDeviceStream")
+    
     return
 }
 
@@ -2570,6 +2620,7 @@ func NewDisableOtaVersionRequest() (request *DisableOtaVersionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DisableOtaVersion")
+    
     return
 }
 
@@ -2620,6 +2671,7 @@ func NewModifyDeviceRequest() (request *ModifyDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "ModifyDevice")
+    
     return
 }
 
@@ -2651,6 +2703,7 @@ func NewModifyDeviceActionRequest() (request *ModifyDeviceActionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "ModifyDeviceAction")
+    
     return
 }
 
@@ -2713,6 +2766,7 @@ func NewModifyDevicePropertyRequest() (request *ModifyDevicePropertyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "ModifyDeviceProperty")
+    
     return
 }
 
@@ -2775,6 +2829,7 @@ func NewModifyProductRequest() (request *ModifyProductRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "ModifyProduct")
+    
     return
 }
 
@@ -2825,6 +2880,7 @@ func NewModifyVerContentRequest() (request *ModifyVerContentRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "ModifyVerContent")
+    
     return
 }
 
@@ -2875,6 +2931,7 @@ func NewRefundStorageServiceRequest() (request *RefundStorageServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "RefundStorageService")
+    
     return
 }
 
@@ -2933,6 +2990,7 @@ func NewRunDeviceRequest() (request *RunDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "RunDevice")
+    
     return
 }
 
@@ -2983,6 +3041,7 @@ func NewRunDeviceStreamRequest() (request *RunDeviceStreamRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "RunDeviceStream")
+    
     return
 }
 
@@ -3033,6 +3092,7 @@ func NewRunIotModelRequest() (request *RunIotModelRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "RunIotModel")
+    
     return
 }
 
@@ -3083,6 +3143,7 @@ func NewRunOtaVersionRequest() (request *RunOtaVersionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "RunOtaVersion")
+    
     return
 }
 
@@ -3133,6 +3194,7 @@ func NewRunTestOtaVersionRequest() (request *RunTestOtaVersionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "RunTestOtaVersion")
+    
     return
 }
 
@@ -3183,6 +3245,7 @@ func NewSendOnlineMsgRequest() (request *SendOnlineMsgRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "SendOnlineMsg")
+    
     return
 }
 
@@ -3239,6 +3302,7 @@ func NewSetMessageQueueRequest() (request *SetMessageQueueRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "SetMessageQueue")
+    
     return
 }
 
@@ -3289,6 +3353,7 @@ func NewUpgradeDeviceRequest() (request *UpgradeDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "UpgradeDevice")
+    
     return
 }
 
@@ -3343,6 +3408,7 @@ func NewUploadOtaVersionRequest() (request *UploadOtaVersionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "UploadOtaVersion")
+    
     return
 }
 

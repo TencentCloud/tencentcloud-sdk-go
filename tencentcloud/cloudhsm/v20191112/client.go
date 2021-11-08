@@ -48,6 +48,7 @@ func NewDescribeHSMBySubnetIdRequest() (request *DescribeHSMBySubnetIdRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudhsm", APIVersion, "DescribeHSMBySubnetId")
+    
     return
 }
 
@@ -80,6 +81,7 @@ func NewDescribeHSMByVpcIdRequest() (request *DescribeHSMByVpcIdRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudhsm", APIVersion, "DescribeHSMByVpcId")
+    
     return
 }
 
@@ -112,6 +114,7 @@ func NewDescribeSubnetRequest() (request *DescribeSubnetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudhsm", APIVersion, "DescribeSubnet")
+    
     return
 }
 
@@ -144,6 +147,7 @@ func NewDescribeSupportedHsmRequest() (request *DescribeSupportedHsmRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudhsm", APIVersion, "DescribeSupportedHsm")
+    
     return
 }
 
@@ -175,6 +179,7 @@ func NewDescribeUsgRequest() (request *DescribeUsgRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudhsm", APIVersion, "DescribeUsg")
+    
     return
 }
 
@@ -207,6 +212,7 @@ func NewDescribeUsgRuleRequest() (request *DescribeUsgRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudhsm", APIVersion, "DescribeUsgRule")
+    
     return
 }
 
@@ -239,6 +245,7 @@ func NewDescribeVpcRequest() (request *DescribeVpcRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudhsm", APIVersion, "DescribeVpc")
+    
     return
 }
 
@@ -271,6 +278,7 @@ func NewDescribeVsmAttributesRequest() (request *DescribeVsmAttributesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudhsm", APIVersion, "DescribeVsmAttributes")
+    
     return
 }
 
@@ -303,6 +311,7 @@ func NewDescribeVsmsRequest() (request *DescribeVsmsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudhsm", APIVersion, "DescribeVsms")
+    
     return
 }
 
@@ -335,6 +344,7 @@ func NewInquiryPriceBuyVsmRequest() (request *InquiryPriceBuyVsmRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudhsm", APIVersion, "InquiryPriceBuyVsm")
+    
     return
 }
 
@@ -367,6 +377,7 @@ func NewModifyVsmAttributesRequest() (request *ModifyVsmAttributesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudhsm", APIVersion, "ModifyVsmAttributes")
+    
     return
 }
 

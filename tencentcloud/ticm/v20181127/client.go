@@ -48,6 +48,7 @@ func NewDescribeVideoTaskRequest() (request *DescribeVideoTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ticm", APIVersion, "DescribeVideoTask")
+    
     return
 }
 
@@ -77,6 +78,7 @@ func NewImageModerationRequest() (request *ImageModerationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ticm", APIVersion, "ImageModeration")
+    
     return
 }
 
@@ -112,6 +114,7 @@ func NewVideoModerationRequest() (request *VideoModerationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ticm", APIVersion, "VideoModeration")
+    
     return
 }
 

@@ -48,6 +48,7 @@ func NewBindGroupDevicesRequest() (request *BindGroupDevicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "BindGroupDevices")
+    
     return
 }
 
@@ -111,6 +112,7 @@ func NewControlDevicePTZRequest() (request *ControlDevicePTZRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "ControlDevicePTZ")
+    
     return
 }
 
@@ -162,6 +164,7 @@ func NewControlRecordStreamRequest() (request *ControlRecordStreamRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "ControlRecordStream")
+    
     return
 }
 
@@ -247,6 +250,7 @@ func NewCreateDeviceRequest() (request *CreateDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "CreateDevice")
+    
     return
 }
 
@@ -324,6 +328,7 @@ func NewCreateDeviceGroupRequest() (request *CreateDeviceGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "CreateDeviceGroup")
+    
     return
 }
 
@@ -399,6 +404,7 @@ func NewCreateRecordPlanRequest() (request *CreateRecordPlanRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "CreateRecordPlan")
+    
     return
 }
 
@@ -448,6 +454,7 @@ func NewCreateTimeTemplateRequest() (request *CreateTimeTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "CreateTimeTemplate")
+    
     return
 }
 
@@ -490,6 +497,7 @@ func NewDeleteDeviceRequest() (request *DeleteDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DeleteDevice")
+    
     return
 }
 
@@ -557,6 +565,7 @@ func NewDeleteDeviceGroupRequest() (request *DeleteDeviceGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DeleteDeviceGroup")
+    
     return
 }
 
@@ -623,6 +632,7 @@ func NewDeleteRecordPlanRequest() (request *DeleteRecordPlanRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DeleteRecordPlan")
+    
     return
 }
 
@@ -668,6 +678,7 @@ func NewDeleteTimeTemplateRequest() (request *DeleteTimeTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DeleteTimeTemplate")
+    
     return
 }
 
@@ -717,6 +728,7 @@ func NewDescribeAllDeviceListRequest() (request *DescribeAllDeviceListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeAllDeviceList")
+    
     return
 }
 
@@ -787,6 +799,7 @@ func NewDescribeDeviceGroupRequest() (request *DescribeDeviceGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeDeviceGroup")
+    
     return
 }
 
@@ -862,6 +875,7 @@ func NewDescribeDevicePassWordRequest() (request *DescribeDevicePassWordRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeDevicePassWord")
+    
     return
 }
 
@@ -938,6 +952,7 @@ func NewDescribeDeviceStreamsRequest() (request *DescribeDeviceStreamsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeDeviceStreams")
+    
     return
 }
 
@@ -1016,6 +1031,7 @@ func NewDescribeGroupByIdRequest() (request *DescribeGroupByIdRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeGroupById")
+    
     return
 }
 
@@ -1082,6 +1098,7 @@ func NewDescribeGroupByPathRequest() (request *DescribeGroupByPathRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeGroupByPath")
+    
     return
 }
 
@@ -1148,6 +1165,7 @@ func NewDescribeGroupDevicesRequest() (request *DescribeGroupDevicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeGroupDevices")
+    
     return
 }
 
@@ -1213,6 +1231,7 @@ func NewDescribeGroupsRequest() (request *DescribeGroupsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeGroups")
+    
     return
 }
 
@@ -1284,6 +1303,7 @@ func NewDescribeIPCChannelsRequest() (request *DescribeIPCChannelsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeIPCChannels")
+    
     return
 }
 
@@ -1372,6 +1392,7 @@ func NewDescribeRecordStreamRequest() (request *DescribeRecordStreamRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeRecordStream")
+    
     return
 }
 
@@ -1466,6 +1487,7 @@ func NewDescribeSIPServerRequest() (request *DescribeSIPServerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeSIPServer")
+    
     return
 }
 
@@ -1537,6 +1559,7 @@ func NewDescribeStatisticDetailsRequest() (request *DescribeStatisticDetailsRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeStatisticDetails")
+    
     return
 }
 
@@ -1575,6 +1598,7 @@ func NewDescribeStatisticSummaryRequest() (request *DescribeStatisticSummaryRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeStatisticSummary")
+    
     return
 }
 
@@ -1615,6 +1639,7 @@ func NewDescribeSubGroupsRequest() (request *DescribeSubGroupsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeSubGroups")
+    
     return
 }
 
@@ -1684,6 +1709,7 @@ func NewDescribeVideoListRequest() (request *DescribeVideoListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeVideoList")
+    
     return
 }
 
@@ -1771,6 +1797,7 @@ func NewGetRecordDatesByDevRequest() (request *GetRecordDatesByDevRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "GetRecordDatesByDev")
+    
     return
 }
 
@@ -1809,6 +1836,7 @@ func NewGetRecordPlanByDevRequest() (request *GetRecordPlanByDevRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "GetRecordPlanByDev")
+    
     return
 }
 
@@ -1872,6 +1900,7 @@ func NewGetRecordPlanByIdRequest() (request *GetRecordPlanByIdRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "GetRecordPlanById")
+    
     return
 }
 
@@ -1913,6 +1942,7 @@ func NewGetRecordPlansRequest() (request *GetRecordPlansRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "GetRecordPlans")
+    
     return
 }
 
@@ -1953,6 +1983,7 @@ func NewGetTimeTemplateByIdRequest() (request *GetTimeTemplateByIdRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "GetTimeTemplateById")
+    
     return
 }
 
@@ -1994,6 +2025,7 @@ func NewGetTimeTemplatesRequest() (request *GetTimeTemplatesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "GetTimeTemplates")
+    
     return
 }
 
@@ -2034,6 +2066,7 @@ func NewGetVideoListByConRequest() (request *GetVideoListByConRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "GetVideoListByCon")
+    
     return
 }
 
@@ -2073,6 +2106,7 @@ func NewModifyDeviceDataRequest() (request *ModifyDeviceDataRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "ModifyDeviceData")
+    
     return
 }
 
@@ -2143,6 +2177,7 @@ func NewUpdateDeviceGroupRequest() (request *UpdateDeviceGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "UpdateDeviceGroup")
+    
     return
 }
 
@@ -2217,6 +2252,7 @@ func NewUpdateDevicePassWordRequest() (request *UpdateDevicePassWordRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "UpdateDevicePassWord")
+    
     return
 }
 
@@ -2287,6 +2323,7 @@ func NewUpdateRecordPlanRequest() (request *UpdateRecordPlanRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "UpdateRecordPlan")
+    
     return
 }
 
@@ -2335,6 +2372,7 @@ func NewUpdateTimeTemplateRequest() (request *UpdateTimeTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "UpdateTimeTemplate")
+    
     return
 }
 

@@ -48,6 +48,7 @@ func NewCreateInstanceRequest() (request *CreateInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "CreateInstance")
+    
     return
 }
 
@@ -144,6 +145,7 @@ func NewDescribeClusterNodesRequest() (request *DescribeClusterNodesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "DescribeClusterNodes")
+    
     return
 }
 
@@ -196,6 +198,7 @@ func NewDescribeCvmQuotaRequest() (request *DescribeCvmQuotaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "DescribeCvmQuota")
+    
     return
 }
 
@@ -225,6 +228,7 @@ func NewDescribeInstanceRenewNodesRequest() (request *DescribeInstanceRenewNodes
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "DescribeInstanceRenewNodes")
+    
     return
 }
 
@@ -277,6 +281,7 @@ func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "DescribeInstances")
+    
     return
 }
 
@@ -330,6 +335,7 @@ func NewDescribeJobFlowRequest() (request *DescribeJobFlowRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "DescribeJobFlow")
+    
     return
 }
 
@@ -360,6 +366,7 @@ func NewInquirePriceRenewEmrRequest() (request *InquirePriceRenewEmrRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "InquirePriceRenewEmr")
+    
     return
 }
 
@@ -414,6 +421,7 @@ func NewInquiryPriceCreateInstanceRequest() (request *InquiryPriceCreateInstance
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "InquiryPriceCreateInstance")
+    
     return
 }
 
@@ -475,6 +483,7 @@ func NewInquiryPriceRenewInstanceRequest() (request *InquiryPriceRenewInstanceRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "InquiryPriceRenewInstance")
+    
     return
 }
 
@@ -529,6 +538,7 @@ func NewInquiryPriceScaleOutInstanceRequest() (request *InquiryPriceScaleOutInst
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "InquiryPriceScaleOutInstance")
+    
     return
 }
 
@@ -589,6 +599,7 @@ func NewInquiryPriceUpdateInstanceRequest() (request *InquiryPriceUpdateInstance
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "InquiryPriceUpdateInstance")
+    
     return
 }
 
@@ -644,6 +655,7 @@ func NewRunJobFlowRequest() (request *RunJobFlowRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "RunJobFlow")
+    
     return
 }
 
@@ -703,6 +715,7 @@ func NewScaleOutInstanceRequest() (request *ScaleOutInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "ScaleOutInstance")
+    
     return
 }
 
@@ -777,6 +790,7 @@ func NewSyncPodStateRequest() (request *SyncPodStateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "SyncPodState")
+    
     return
 }
 
@@ -871,6 +885,7 @@ func NewTerminateInstanceRequest() (request *TerminateInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "TerminateInstance")
+    
     return
 }
 
@@ -910,6 +925,7 @@ func NewTerminateTasksRequest() (request *TerminateTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "TerminateTasks")
+    
     return
 }
 

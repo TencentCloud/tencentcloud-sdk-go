@@ -48,6 +48,7 @@ func NewDescribeAuthInfoRequest() (request *DescribeAuthInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "DescribeAuthInfo")
+    
     return
 }
 
@@ -87,6 +88,7 @@ func NewDescribeCloudMusicRequest() (request *DescribeCloudMusicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "DescribeCloudMusic")
+    
     return
 }
 
@@ -121,6 +123,7 @@ func NewDescribeCloudMusicPurchasedRequest() (request *DescribeCloudMusicPurchas
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "DescribeCloudMusicPurchased")
+    
     return
 }
 
@@ -165,6 +168,7 @@ func NewDescribeItemByIdRequest() (request *DescribeItemByIdRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "DescribeItemById")
+    
     return
 }
 
@@ -196,6 +200,7 @@ func NewDescribeItemsRequest() (request *DescribeItemsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "DescribeItems")
+    
     return
 }
 
@@ -230,6 +235,7 @@ func NewDescribeKTVMusicDetailRequest() (request *DescribeKTVMusicDetailRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "DescribeKTVMusicDetail")
+    
     return
 }
 
@@ -262,6 +268,7 @@ func NewDescribeKTVPlaylistDetailRequest() (request *DescribeKTVPlaylistDetailRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "DescribeKTVPlaylistDetail")
+    
     return
 }
 
@@ -299,6 +306,7 @@ func NewDescribeKTVPlaylistsRequest() (request *DescribeKTVPlaylistsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "DescribeKTVPlaylists")
+    
     return
 }
 
@@ -337,6 +345,7 @@ func NewDescribeLyricRequest() (request *DescribeLyricRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "DescribeLyric")
+    
     return
 }
 
@@ -368,6 +377,7 @@ func NewDescribeMusicRequest() (request *DescribeMusicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "DescribeMusic")
+    
     return
 }
 
@@ -402,6 +412,7 @@ func NewDescribeMusicSaleStatusRequest() (request *DescribeMusicSaleStatusReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "DescribeMusicSaleStatus")
+    
     return
 }
 
@@ -438,6 +449,7 @@ func NewDescribePackageItemsRequest() (request *DescribePackageItemsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "DescribePackageItems")
+    
     return
 }
 
@@ -473,6 +485,7 @@ func NewDescribePackagesRequest() (request *DescribePackagesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "DescribePackages")
+    
     return
 }
 
@@ -508,6 +521,7 @@ func NewDescribePkgOfflineMusicRequest() (request *DescribePkgOfflineMusicReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "DescribePkgOfflineMusic")
+    
     return
 }
 
@@ -546,6 +560,7 @@ func NewDescribeStationsRequest() (request *DescribeStationsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "DescribeStations")
+    
     return
 }
 
@@ -580,6 +595,7 @@ func NewModifyMusicOnShelvesRequest() (request *ModifyMusicOnShelvesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "ModifyMusicOnShelves")
+    
     return
 }
 
@@ -618,6 +634,7 @@ func NewPutMusicOnTheShelvesRequest() (request *PutMusicOnTheShelvesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "PutMusicOnTheShelves")
+    
     return
 }
 
@@ -656,6 +673,7 @@ func NewReportDataRequest() (request *ReportDataRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "ReportData")
+    
     return
 }
 
@@ -687,6 +705,7 @@ func NewSearchKTVMusicsRequest() (request *SearchKTVMusicsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "SearchKTVMusics")
+    
     return
 }
 
@@ -718,6 +737,7 @@ func NewTakeMusicOffShelvesRequest() (request *TakeMusicOffShelvesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "TakeMusicOffShelves")
+    
     return
 }
 

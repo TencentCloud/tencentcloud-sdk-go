@@ -48,6 +48,7 @@ func NewDismissRoomRequest() (request *DismissRoomRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("mgobe", APIVersion, "DismissRoom")
+    
     return
 }
 

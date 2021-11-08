@@ -79,7 +79,4 @@ const (
 
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"
-
-	// 当前实例类型不支持该操作。
-	UNSUPPORTEDOPERATION_ACTIONNOTSUPPORT = "UnsupportedOperation.ActionNotSupport"
 )

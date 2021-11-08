@@ -48,6 +48,7 @@ func NewApplyCertificateRequest() (request *ApplyCertificateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "ApplyCertificate")
+    
     return
 }
 
@@ -94,6 +95,7 @@ func NewCancelCertificateOrderRequest() (request *CancelCertificateOrderRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "CancelCertificateOrder")
+    
     return
 }
 
@@ -130,6 +132,7 @@ func NewCheckCertificateChainRequest() (request *CheckCertificateChainRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "CheckCertificateChain")
+    
     return
 }
 
@@ -159,6 +162,7 @@ func NewCommitCertificateInformationRequest() (request *CommitCertificateInforma
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "CommitCertificateInformation")
+    
     return
 }
 
@@ -196,6 +200,7 @@ func NewCompleteCertificateRequest() (request *CompleteCertificateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "CompleteCertificate")
+    
     return
 }
 
@@ -227,6 +232,7 @@ func NewCreateCertificateRequest() (request *CreateCertificateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "CreateCertificate")
+    
     return
 }
 
@@ -262,6 +268,7 @@ func NewDeleteCertificateRequest() (request *DeleteCertificateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "DeleteCertificate")
+    
     return
 }
 
@@ -308,6 +315,7 @@ func NewDeleteManagerRequest() (request *DeleteManagerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "DeleteManager")
+    
     return
 }
 
@@ -340,6 +348,7 @@ func NewDescribeCertificateRequest() (request *DescribeCertificateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "DescribeCertificate")
+    
     return
 }
 
@@ -387,6 +396,7 @@ func NewDescribeCertificateDetailRequest() (request *DescribeCertificateDetailRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "DescribeCertificateDetail")
+    
     return
 }
 
@@ -423,6 +433,7 @@ func NewDescribeCertificateOperateLogsRequest() (request *DescribeCertificateOpe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "DescribeCertificateOperateLogs")
+    
     return
 }
 
@@ -456,6 +467,7 @@ func NewDescribeCertificatesRequest() (request *DescribeCertificatesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "DescribeCertificates")
+    
     return
 }
 
@@ -502,6 +514,7 @@ func NewDescribeDeployedResourcesRequest() (request *DescribeDeployedResourcesRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "DescribeDeployedResources")
+    
     return
 }
 
@@ -535,6 +548,7 @@ func NewDescribeManagerDetailRequest() (request *DescribeManagerDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "DescribeManagerDetail")
+    
     return
 }
 
@@ -567,6 +581,7 @@ func NewDescribeManagersRequest() (request *DescribeManagersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "DescribeManagers")
+    
     return
 }
 
@@ -597,6 +612,7 @@ func NewDownloadCertificateRequest() (request *DownloadCertificateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "DownloadCertificate")
+    
     return
 }
 
@@ -642,6 +658,7 @@ func NewModifyCertificateAliasRequest() (request *ModifyCertificateAliasRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "ModifyCertificateAlias")
+    
     return
 }
 
@@ -677,6 +694,7 @@ func NewModifyCertificateProjectRequest() (request *ModifyCertificateProjectRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "ModifyCertificateProject")
+    
     return
 }
 
@@ -710,6 +728,7 @@ func NewReplaceCertificateRequest() (request *ReplaceCertificateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "ReplaceCertificate")
+    
     return
 }
 
@@ -755,6 +774,7 @@ func NewRevokeCertificateRequest() (request *RevokeCertificateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "RevokeCertificate")
+    
     return
 }
 
@@ -791,6 +811,7 @@ func NewSubmitAuditManagerRequest() (request *SubmitAuditManagerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "SubmitAuditManager")
+    
     return
 }
 
@@ -823,6 +844,7 @@ func NewSubmitCertificateInformationRequest() (request *SubmitCertificateInforma
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "SubmitCertificateInformation")
+    
     return
 }
 
@@ -859,6 +881,7 @@ func NewUploadCertificateRequest() (request *UploadCertificateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "UploadCertificate")
+    
     return
 }
 
@@ -905,6 +928,7 @@ func NewUploadConfirmLetterRequest() (request *UploadConfirmLetterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "UploadConfirmLetter")
+    
     return
 }
 
@@ -944,6 +968,7 @@ func NewUploadRevokeLetterRequest() (request *UploadRevokeLetterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "UploadRevokeLetter")
+    
     return
 }
 
@@ -987,6 +1012,7 @@ func NewVerifyManagerRequest() (request *VerifyManagerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "VerifyManager")
+    
     return
 }
 

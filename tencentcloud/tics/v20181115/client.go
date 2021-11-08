@@ -48,6 +48,7 @@ func NewDescribeDomainInfoRequest() (request *DescribeDomainInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tics", APIVersion, "DescribeDomainInfo")
+    
     return
 }
 
@@ -81,6 +82,7 @@ func NewDescribeFileInfoRequest() (request *DescribeFileInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tics", APIVersion, "DescribeFileInfo")
+    
     return
 }
 
@@ -114,6 +116,7 @@ func NewDescribeIpInfoRequest() (request *DescribeIpInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tics", APIVersion, "DescribeIpInfo")
+    
     return
 }
 
@@ -147,6 +150,7 @@ func NewDescribeThreatInfoRequest() (request *DescribeThreatInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tics", APIVersion, "DescribeThreatInfo")
+    
     return
 }
 

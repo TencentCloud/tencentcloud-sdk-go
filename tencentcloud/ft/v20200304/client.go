@@ -48,6 +48,7 @@ func NewCancelFaceMorphJobRequest() (request *CancelFaceMorphJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ft", APIVersion, "CancelFaceMorphJob")
+    
     return
 }
 
@@ -85,6 +86,7 @@ func NewChangeAgePicRequest() (request *ChangeAgePicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ft", APIVersion, "ChangeAgePic")
+    
     return
 }
 
@@ -139,6 +141,7 @@ func NewFaceCartoonPicRequest() (request *FaceCartoonPicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ft", APIVersion, "FaceCartoonPic")
+    
     return
 }
 
@@ -185,6 +188,7 @@ func NewMorphFaceRequest() (request *MorphFaceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ft", APIVersion, "MorphFace")
+    
     return
 }
 
@@ -230,6 +234,7 @@ func NewQueryFaceMorphJobRequest() (request *QueryFaceMorphJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ft", APIVersion, "QueryFaceMorphJob")
+    
     return
 }
 
@@ -265,6 +270,7 @@ func NewSwapGenderPicRequest() (request *SwapGenderPicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ft", APIVersion, "SwapGenderPic")
+    
     return
 }
 

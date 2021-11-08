@@ -48,6 +48,7 @@ func NewCreateContainerInstanceRequest() (request *CreateContainerInstanceReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cis", APIVersion, "CreateContainerInstance")
+    
     return
 }
 
@@ -78,6 +79,7 @@ func NewDeleteContainerInstanceRequest() (request *DeleteContainerInstanceReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cis", APIVersion, "DeleteContainerInstance")
+    
     return
 }
 
@@ -108,6 +110,7 @@ func NewDescribeContainerInstanceRequest() (request *DescribeContainerInstanceRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cis", APIVersion, "DescribeContainerInstance")
+    
     return
 }
 
@@ -138,6 +141,7 @@ func NewDescribeContainerInstanceEventsRequest() (request *DescribeContainerInst
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cis", APIVersion, "DescribeContainerInstanceEvents")
+    
     return
 }
 
@@ -168,6 +172,7 @@ func NewDescribeContainerInstancesRequest() (request *DescribeContainerInstances
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cis", APIVersion, "DescribeContainerInstances")
+    
     return
 }
 
@@ -198,6 +203,7 @@ func NewDescribeContainerLogRequest() (request *DescribeContainerLogRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cis", APIVersion, "DescribeContainerLog")
+    
     return
 }
 
@@ -228,6 +234,7 @@ func NewInquiryPriceCreateCisRequest() (request *InquiryPriceCreateCisRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cis", APIVersion, "InquiryPriceCreateCis")
+    
     return
 }
 

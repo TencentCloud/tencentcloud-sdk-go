@@ -48,6 +48,7 @@ func NewApplySnapshotRequest() (request *ApplySnapshotRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "ApplySnapshot")
+    
     return
 }
 
@@ -102,6 +103,7 @@ func NewAttachDisksRequest() (request *AttachDisksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "AttachDisks")
+    
     return
 }
 
@@ -155,6 +157,7 @@ func NewBindAutoSnapshotPolicyRequest() (request *BindAutoSnapshotPolicyRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "BindAutoSnapshotPolicy")
+    
     return
 }
 
@@ -199,6 +202,7 @@ func NewCreateAutoSnapshotPolicyRequest() (request *CreateAutoSnapshotPolicyRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "CreateAutoSnapshotPolicy")
+    
     return
 }
 
@@ -238,6 +242,7 @@ func NewCreateDisksRequest() (request *CreateDisksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "CreateDisks")
+    
     return
 }
 
@@ -286,6 +291,7 @@ func NewCreateSnapshotRequest() (request *CreateSnapshotRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "CreateSnapshot")
+    
     return
 }
 
@@ -341,6 +347,7 @@ func NewDeleteAutoSnapshotPoliciesRequest() (request *DeleteAutoSnapshotPolicies
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "DeleteAutoSnapshotPolicies")
+    
     return
 }
 
@@ -377,6 +384,7 @@ func NewDeleteSnapshotsRequest() (request *DeleteSnapshotsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "DeleteSnapshots")
+    
     return
 }
 
@@ -419,6 +427,7 @@ func NewDescribeAutoSnapshotPoliciesRequest() (request *DescribeAutoSnapshotPoli
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "DescribeAutoSnapshotPolicies")
+    
     return
 }
 
@@ -456,6 +465,7 @@ func NewDescribeDiskAssociatedAutoSnapshotPolicyRequest() (request *DescribeDisk
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "DescribeDiskAssociatedAutoSnapshotPolicy")
+    
     return
 }
 
@@ -486,6 +496,7 @@ func NewDescribeDiskConfigQuotaRequest() (request *DescribeDiskConfigQuotaReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "DescribeDiskConfigQuota")
+    
     return
 }
 
@@ -516,6 +527,7 @@ func NewDescribeDiskOperationLogsRequest() (request *DescribeDiskOperationLogsRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "DescribeDiskOperationLogs")
+    
     return
 }
 
@@ -550,6 +562,7 @@ func NewDescribeDiskStoragePoolRequest() (request *DescribeDiskStoragePoolReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "DescribeDiskStoragePool")
+    
     return
 }
 
@@ -586,6 +599,7 @@ func NewDescribeDisksRequest() (request *DescribeDisksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "DescribeDisks")
+    
     return
 }
 
@@ -623,6 +637,7 @@ func NewDescribeInstancesDiskNumRequest() (request *DescribeInstancesDiskNumRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "DescribeInstancesDiskNum")
+    
     return
 }
 
@@ -659,6 +674,7 @@ func NewDescribeSnapshotOperationLogsRequest() (request *DescribeSnapshotOperati
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "DescribeSnapshotOperationLogs")
+    
     return
 }
 
@@ -697,6 +713,7 @@ func NewDescribeSnapshotSharePermissionRequest() (request *DescribeSnapshotShare
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "DescribeSnapshotSharePermission")
+    
     return
 }
 
@@ -728,6 +745,7 @@ func NewDescribeSnapshotsRequest() (request *DescribeSnapshotsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "DescribeSnapshots")
+    
     return
 }
 
@@ -765,6 +783,7 @@ func NewDetachDisksRequest() (request *DetachDisksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "DetachDisks")
+    
     return
 }
 
@@ -817,6 +836,7 @@ func NewGetSnapOverviewRequest() (request *GetSnapOverviewRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "GetSnapOverview")
+    
     return
 }
 
@@ -847,6 +867,7 @@ func NewInquirePriceModifyDiskExtraPerformanceRequest() (request *InquirePriceMo
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "InquirePriceModifyDiskExtraPerformance")
+    
     return
 }
 
@@ -879,6 +900,7 @@ func NewInquiryPriceCreateDisksRequest() (request *InquiryPriceCreateDisksReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "InquiryPriceCreateDisks")
+    
     return
 }
 
@@ -913,6 +935,7 @@ func NewInquiryPriceRenewDisksRequest() (request *InquiryPriceRenewDisksRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "InquiryPriceRenewDisks")
+    
     return
 }
 
@@ -957,6 +980,7 @@ func NewInquiryPriceResizeDiskRequest() (request *InquiryPriceResizeDiskRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "InquiryPriceResizeDisk")
+    
     return
 }
 
@@ -995,6 +1019,7 @@ func NewModifyAutoSnapshotPolicyAttributeRequest() (request *ModifyAutoSnapshotP
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "ModifyAutoSnapshotPolicyAttribute")
+    
     return
 }
 
@@ -1034,6 +1059,7 @@ func NewModifyDiskAttributesRequest() (request *ModifyDiskAttributesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "ModifyDiskAttributes")
+    
     return
 }
 
@@ -1077,6 +1103,7 @@ func NewModifyDiskExtraPerformanceRequest() (request *ModifyDiskExtraPerformance
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "ModifyDiskExtraPerformance")
+    
     return
 }
 
@@ -1117,6 +1144,7 @@ func NewModifyDisksChargeTypeRequest() (request *ModifyDisksChargeTypeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "ModifyDisksChargeType")
+    
     return
 }
 
@@ -1169,6 +1197,7 @@ func NewModifyDisksRenewFlagRequest() (request *ModifyDisksRenewFlagRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "ModifyDisksRenewFlag")
+    
     return
 }
 
@@ -1201,6 +1230,7 @@ func NewModifySnapshotAttributeRequest() (request *ModifySnapshotAttributeReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "ModifySnapshotAttribute")
+    
     return
 }
 
@@ -1239,6 +1269,7 @@ func NewModifySnapshotsSharePermissionRequest() (request *ModifySnapshotsSharePe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "ModifySnapshotsSharePermission")
+    
     return
 }
 
@@ -1284,6 +1315,7 @@ func NewRenewDiskRequest() (request *RenewDiskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "RenewDisk")
+    
     return
 }
 
@@ -1329,6 +1361,7 @@ func NewResizeDiskRequest() (request *ResizeDiskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "ResizeDisk")
+    
     return
 }
 
@@ -1377,6 +1410,7 @@ func NewTerminateDisksRequest() (request *TerminateDisksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "TerminateDisks")
+    
     return
 }
 
@@ -1425,6 +1459,7 @@ func NewUnbindAutoSnapshotPolicyRequest() (request *UnbindAutoSnapshotPolicyRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cbs", APIVersion, "UnbindAutoSnapshotPolicy")
+    
     return
 }
 

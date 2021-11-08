@@ -48,6 +48,7 @@ func NewApplyParamsTemplateRequest() (request *ApplyParamsTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "ApplyParamsTemplate")
+    
     return
 }
 
@@ -89,6 +90,7 @@ func NewAssociateSecurityGroupsRequest() (request *AssociateSecurityGroupsReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "AssociateSecurityGroups")
+    
     return
 }
 
@@ -122,6 +124,7 @@ func NewChangeReplicaToMasterRequest() (request *ChangeReplicaToMasterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "ChangeReplicaToMaster")
+    
     return
 }
 
@@ -160,6 +163,7 @@ func NewCleanUpInstanceRequest() (request *CleanUpInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "CleanUpInstance")
+    
     return
 }
 
@@ -193,6 +197,7 @@ func NewClearInstanceRequest() (request *ClearInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "ClearInstance")
+    
     return
 }
 
@@ -227,6 +232,7 @@ func NewCreateInstanceAccountRequest() (request *CreateInstanceAccountRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "CreateInstanceAccount")
+    
     return
 }
 
@@ -259,6 +265,7 @@ func NewCreateInstancesRequest() (request *CreateInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "CreateInstances")
+    
     return
 }
 
@@ -314,6 +321,7 @@ func NewCreateParamTemplateRequest() (request *CreateParamTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "CreateParamTemplate")
+    
     return
 }
 
@@ -346,6 +354,7 @@ func NewDeleteInstanceAccountRequest() (request *DeleteInstanceAccountRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DeleteInstanceAccount")
+    
     return
 }
 
@@ -379,6 +388,7 @@ func NewDeleteParamTemplateRequest() (request *DeleteParamTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DeleteParamTemplate")
+    
     return
 }
 
@@ -411,6 +421,7 @@ func NewDescribeAutoBackupConfigRequest() (request *DescribeAutoBackupConfigRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeAutoBackupConfig")
+    
     return
 }
 
@@ -444,6 +455,7 @@ func NewDescribeBackupUrlRequest() (request *DescribeBackupUrlRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeBackupUrl")
+    
     return
 }
 
@@ -483,6 +495,7 @@ func NewDescribeCommonDBInstancesRequest() (request *DescribeCommonDBInstancesRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeCommonDBInstances")
+    
     return
 }
 
@@ -517,6 +530,7 @@ func NewDescribeDBSecurityGroupsRequest() (request *DescribeDBSecurityGroupsRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeDBSecurityGroups")
+    
     return
 }
 
@@ -556,6 +570,7 @@ func NewDescribeInstanceAccountRequest() (request *DescribeInstanceAccountReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceAccount")
+    
     return
 }
 
@@ -588,6 +603,7 @@ func NewDescribeInstanceBackupsRequest() (request *DescribeInstanceBackupsReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceBackups")
+    
     return
 }
 
@@ -622,6 +638,7 @@ func NewDescribeInstanceDTSInfoRequest() (request *DescribeInstanceDTSInfoReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceDTSInfo")
+    
     return
 }
 
@@ -652,6 +669,7 @@ func NewDescribeInstanceDealDetailRequest() (request *DescribeInstanceDealDetail
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceDealDetail")
+    
     return
 }
 
@@ -683,6 +701,7 @@ func NewDescribeInstanceMonitorBigKeyRequest() (request *DescribeInstanceMonitor
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceMonitorBigKey")
+    
     return
 }
 
@@ -712,6 +731,7 @@ func NewDescribeInstanceMonitorBigKeySizeDistRequest() (request *DescribeInstanc
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceMonitorBigKeySizeDist")
+    
     return
 }
 
@@ -741,6 +761,7 @@ func NewDescribeInstanceMonitorBigKeyTypeDistRequest() (request *DescribeInstanc
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceMonitorBigKeyTypeDist")
+    
     return
 }
 
@@ -770,6 +791,7 @@ func NewDescribeInstanceMonitorHotKeyRequest() (request *DescribeInstanceMonitor
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceMonitorHotKey")
+    
     return
 }
 
@@ -799,6 +821,7 @@ func NewDescribeInstanceMonitorSIPRequest() (request *DescribeInstanceMonitorSIP
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceMonitorSIP")
+    
     return
 }
 
@@ -828,6 +851,7 @@ func NewDescribeInstanceMonitorTookDistRequest() (request *DescribeInstanceMonit
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceMonitorTookDist")
+    
     return
 }
 
@@ -857,6 +881,7 @@ func NewDescribeInstanceMonitorTopNCmdRequest() (request *DescribeInstanceMonito
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceMonitorTopNCmd")
+    
     return
 }
 
@@ -886,6 +911,7 @@ func NewDescribeInstanceMonitorTopNCmdTookRequest() (request *DescribeInstanceMo
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceMonitorTopNCmdTook")
+    
     return
 }
 
@@ -915,6 +941,7 @@ func NewDescribeInstanceNodeInfoRequest() (request *DescribeInstanceNodeInfoRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceNodeInfo")
+    
     return
 }
 
@@ -947,6 +974,7 @@ func NewDescribeInstanceParamRecordsRequest() (request *DescribeInstanceParamRec
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceParamRecords")
+    
     return
 }
 
@@ -983,6 +1011,7 @@ func NewDescribeInstanceParamsRequest() (request *DescribeInstanceParamsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceParams")
+    
     return
 }
 
@@ -1023,6 +1052,7 @@ func NewDescribeInstanceSecurityGroupRequest() (request *DescribeInstanceSecurit
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceSecurityGroup")
+    
     return
 }
 
@@ -1058,6 +1088,7 @@ func NewDescribeInstanceShardsRequest() (request *DescribeInstanceShardsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceShards")
+    
     return
 }
 
@@ -1089,6 +1120,7 @@ func NewDescribeInstanceZoneInfoRequest() (request *DescribeInstanceZoneInfoRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceZoneInfo")
+    
     return
 }
 
@@ -1126,6 +1158,7 @@ func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstances")
+    
     return
 }
 
@@ -1162,6 +1195,7 @@ func NewDescribeMaintenanceWindowRequest() (request *DescribeMaintenanceWindowRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeMaintenanceWindow")
+    
     return
 }
 
@@ -1194,6 +1228,7 @@ func NewDescribeParamTemplateInfoRequest() (request *DescribeParamTemplateInfoRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeParamTemplateInfo")
+    
     return
 }
 
@@ -1228,6 +1263,7 @@ func NewDescribeParamTemplatesRequest() (request *DescribeParamTemplatesRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeParamTemplates")
+    
     return
 }
 
@@ -1260,6 +1296,7 @@ func NewDescribeProductInfoRequest() (request *DescribeProductInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeProductInfo")
+    
     return
 }
 
@@ -1293,6 +1330,7 @@ func NewDescribeProjectSecurityGroupRequest() (request *DescribeProjectSecurityG
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeProjectSecurityGroup")
+    
     return
 }
 
@@ -1330,6 +1368,7 @@ func NewDescribeProjectSecurityGroupsRequest() (request *DescribeProjectSecurity
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeProjectSecurityGroups")
+    
     return
 }
 
@@ -1364,6 +1403,7 @@ func NewDescribeProxySlowLogRequest() (request *DescribeProxySlowLogRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeProxySlowLog")
+    
     return
 }
 
@@ -1399,6 +1439,7 @@ func NewDescribeSlowLogRequest() (request *DescribeSlowLogRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeSlowLog")
+    
     return
 }
 
@@ -1434,6 +1475,7 @@ func NewDescribeTaskInfoRequest() (request *DescribeTaskInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeTaskInfo")
+    
     return
 }
 
@@ -1465,6 +1507,7 @@ func NewDescribeTaskListRequest() (request *DescribeTaskListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeTaskList")
+    
     return
 }
 
@@ -1497,6 +1540,7 @@ func NewDescribeTendisSlowLogRequest() (request *DescribeTendisSlowLogRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeTendisSlowLog")
+    
     return
 }
 
@@ -1527,6 +1571,7 @@ func NewDestroyPostpaidInstanceRequest() (request *DestroyPostpaidInstanceReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DestroyPostpaidInstance")
+    
     return
 }
 
@@ -1566,6 +1611,7 @@ func NewDestroyPrepaidInstanceRequest() (request *DestroyPrepaidInstanceRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DestroyPrepaidInstance")
+    
     return
 }
 
@@ -1607,6 +1653,7 @@ func NewDisableReplicaReadonlyRequest() (request *DisableReplicaReadonlyRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DisableReplicaReadonly")
+    
     return
 }
 
@@ -1641,6 +1688,7 @@ func NewDisassociateSecurityGroupsRequest() (request *DisassociateSecurityGroups
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DisassociateSecurityGroups")
+    
     return
 }
 
@@ -1673,6 +1721,7 @@ func NewEnableReplicaReadonlyRequest() (request *EnableReplicaReadonlyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "EnableReplicaReadonly")
+    
     return
 }
 
@@ -1708,6 +1757,7 @@ func NewInquiryPriceCreateInstanceRequest() (request *InquiryPriceCreateInstance
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "InquiryPriceCreateInstance")
+    
     return
 }
 
@@ -1741,6 +1791,7 @@ func NewInquiryPriceRenewInstanceRequest() (request *InquiryPriceRenewInstanceRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "InquiryPriceRenewInstance")
+    
     return
 }
 
@@ -1777,6 +1828,7 @@ func NewInquiryPriceUpgradeInstanceRequest() (request *InquiryPriceUpgradeInstan
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "InquiryPriceUpgradeInstance")
+    
     return
 }
 
@@ -1811,6 +1863,7 @@ func NewKillMasterGroupRequest() (request *KillMasterGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "KillMasterGroup")
+    
     return
 }
 
@@ -1853,6 +1906,7 @@ func NewManualBackupInstanceRequest() (request *ManualBackupInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "ManualBackupInstance")
+    
     return
 }
 
@@ -1890,6 +1944,7 @@ func NewModfiyInstancePasswordRequest() (request *ModfiyInstancePasswordRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "ModfiyInstancePassword")
+    
     return
 }
 
@@ -1928,6 +1983,7 @@ func NewModifyAutoBackupConfigRequest() (request *ModifyAutoBackupConfigRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "ModifyAutoBackupConfig")
+    
     return
 }
 
@@ -1964,6 +2020,7 @@ func NewModifyConnectionConfigRequest() (request *ModifyConnectionConfigRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "ModifyConnectionConfig")
+    
     return
 }
 
@@ -1993,6 +2050,7 @@ func NewModifyDBInstanceSecurityGroupsRequest() (request *ModifyDBInstanceSecuri
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "ModifyDBInstanceSecurityGroups")
+    
     return
 }
 
@@ -2029,6 +2087,7 @@ func NewModifyInstanceRequest() (request *ModifyInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "ModifyInstance")
+    
     return
 }
 
@@ -2065,6 +2124,7 @@ func NewModifyInstanceAccountRequest() (request *ModifyInstanceAccountRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "ModifyInstanceAccount")
+    
     return
 }
 
@@ -2098,6 +2158,7 @@ func NewModifyInstanceParamsRequest() (request *ModifyInstanceParamsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "ModifyInstanceParams")
+    
     return
 }
 
@@ -2139,6 +2200,7 @@ func NewModifyMaintenanceWindowRequest() (request *ModifyMaintenanceWindowReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "ModifyMaintenanceWindow")
+    
     return
 }
 
@@ -2172,6 +2234,7 @@ func NewModifyNetworkConfigRequest() (request *ModifyNetworkConfigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "ModifyNetworkConfig")
+    
     return
 }
 
@@ -2209,6 +2272,7 @@ func NewModifyParamTemplateRequest() (request *ModifyParamTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "ModifyParamTemplate")
+    
     return
 }
 
@@ -2241,6 +2305,7 @@ func NewRenewInstanceRequest() (request *RenewInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "RenewInstance")
+    
     return
 }
 
@@ -2278,6 +2343,7 @@ func NewResetPasswordRequest() (request *ResetPasswordRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "ResetPassword")
+    
     return
 }
 
@@ -2314,6 +2380,7 @@ func NewRestoreInstanceRequest() (request *RestoreInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "RestoreInstance")
+    
     return
 }
 
@@ -2354,6 +2421,7 @@ func NewStartupInstanceRequest() (request *StartupInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "StartupInstance")
+    
     return
 }
 
@@ -2389,6 +2457,7 @@ func NewSwitchInstanceVipRequest() (request *SwitchInstanceVipRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "SwitchInstanceVip")
+    
     return
 }
 
@@ -2425,6 +2494,7 @@ func NewUpgradeInstanceRequest() (request *UpgradeInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "UpgradeInstance")
+    
     return
 }
 
@@ -2464,6 +2534,7 @@ func NewUpgradeInstanceVersionRequest() (request *UpgradeInstanceVersionRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "UpgradeInstanceVersion")
+    
     return
 }
 
@@ -2496,6 +2567,7 @@ func NewUpgradeVersionToMultiAvailabilityZonesRequest() (request *UpgradeVersion
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "UpgradeVersionToMultiAvailabilityZones")
+    
     return
 }
 

@@ -48,6 +48,7 @@ func NewCreateAuditRequest() (request *CreateAuditRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudaudit", APIVersion, "CreateAudit")
+    
     return
 }
 
@@ -106,6 +107,7 @@ func NewDeleteAuditRequest() (request *DeleteAuditRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudaudit", APIVersion, "DeleteAudit")
+    
     return
 }
 
@@ -136,6 +138,7 @@ func NewDescribeAuditRequest() (request *DescribeAuditRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudaudit", APIVersion, "DescribeAudit")
+    
     return
 }
 
@@ -166,6 +169,7 @@ func NewDescribeEventsRequest() (request *DescribeEventsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudaudit", APIVersion, "DescribeEvents")
+    
     return
 }
 
@@ -196,6 +200,7 @@ func NewGetAttributeKeyRequest() (request *GetAttributeKeyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudaudit", APIVersion, "GetAttributeKey")
+    
     return
 }
 
@@ -225,6 +230,7 @@ func NewInquireAuditCreditRequest() (request *InquireAuditCreditRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudaudit", APIVersion, "InquireAuditCredit")
+    
     return
 }
 
@@ -254,6 +260,7 @@ func NewListAuditsRequest() (request *ListAuditsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudaudit", APIVersion, "ListAudits")
+    
     return
 }
 
@@ -283,6 +290,7 @@ func NewListCmqEnableRegionRequest() (request *ListCmqEnableRegionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudaudit", APIVersion, "ListCmqEnableRegion")
+    
     return
 }
 
@@ -312,6 +320,7 @@ func NewListCosEnableRegionRequest() (request *ListCosEnableRegionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudaudit", APIVersion, "ListCosEnableRegion")
+    
     return
 }
 
@@ -341,6 +350,7 @@ func NewListKeyAliasByRegionRequest() (request *ListKeyAliasByRegionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudaudit", APIVersion, "ListKeyAliasByRegion")
+    
     return
 }
 
@@ -370,6 +380,7 @@ func NewLookUpEventsRequest() (request *LookUpEventsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudaudit", APIVersion, "LookUpEvents")
+    
     return
 }
 
@@ -404,6 +415,7 @@ func NewStartLoggingRequest() (request *StartLoggingRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudaudit", APIVersion, "StartLogging")
+    
     return
 }
 
@@ -434,6 +446,7 @@ func NewStopLoggingRequest() (request *StopLoggingRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudaudit", APIVersion, "StopLogging")
+    
     return
 }
 
@@ -464,6 +477,7 @@ func NewUpdateAuditRequest() (request *UpdateAuditRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudaudit", APIVersion, "UpdateAudit")
+    
     return
 }
 

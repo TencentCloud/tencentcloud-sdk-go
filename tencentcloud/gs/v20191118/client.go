@@ -48,6 +48,7 @@ func NewCreateSessionRequest() (request *CreateSessionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gs", APIVersion, "CreateSession")
+    
     return
 }
 
@@ -88,6 +89,7 @@ func NewDescribeInstancesCountRequest() (request *DescribeInstancesCountRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gs", APIVersion, "DescribeInstancesCount")
+    
     return
 }
 
@@ -119,6 +121,7 @@ func NewSaveGameArchiveRequest() (request *SaveGameArchiveRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gs", APIVersion, "SaveGameArchive")
+    
     return
 }
 
@@ -154,6 +157,7 @@ func NewStopGameRequest() (request *StopGameRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gs", APIVersion, "StopGame")
+    
     return
 }
 
@@ -185,6 +189,7 @@ func NewSwitchGameArchiveRequest() (request *SwitchGameArchiveRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gs", APIVersion, "SwitchGameArchive")
+    
     return
 }
 
@@ -220,6 +225,7 @@ func NewTrylockWorkerRequest() (request *TrylockWorkerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gs", APIVersion, "TrylockWorker")
+    
     return
 }
 

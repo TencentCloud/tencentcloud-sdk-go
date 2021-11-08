@@ -48,6 +48,7 @@ func NewDescribeEntityRequest() (request *DescribeEntityRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tkgdq", APIVersion, "DescribeEntity")
+    
     return
 }
 
@@ -87,6 +88,7 @@ func NewDescribeRelationRequest() (request *DescribeRelationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tkgdq", APIVersion, "DescribeRelation")
+    
     return
 }
 
@@ -126,6 +128,7 @@ func NewDescribeTripleRequest() (request *DescribeTripleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tkgdq", APIVersion, "DescribeTriple")
+    
     return
 }
 

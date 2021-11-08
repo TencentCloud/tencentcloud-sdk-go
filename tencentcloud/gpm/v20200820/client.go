@@ -48,6 +48,7 @@ func NewCancelMatchingRequest() (request *CancelMatchingRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gpm", APIVersion, "CancelMatching")
+    
     return
 }
 
@@ -94,6 +95,7 @@ func NewCreateMatchRequest() (request *CreateMatchRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gpm", APIVersion, "CreateMatch")
+    
     return
 }
 
@@ -152,6 +154,7 @@ func NewCreateRuleRequest() (request *CreateRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gpm", APIVersion, "CreateRule")
+    
     return
 }
 
@@ -208,6 +211,7 @@ func NewDeleteMatchRequest() (request *DeleteMatchRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gpm", APIVersion, "DeleteMatch")
+    
     return
 }
 
@@ -263,6 +267,7 @@ func NewDeleteRuleRequest() (request *DeleteRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gpm", APIVersion, "DeleteRule")
+    
     return
 }
 
@@ -317,6 +322,7 @@ func NewDescribeDataRequest() (request *DescribeDataRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gpm", APIVersion, "DescribeData")
+    
     return
 }
 
@@ -371,6 +377,7 @@ func NewDescribeMatchRequest() (request *DescribeMatchRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gpm", APIVersion, "DescribeMatch")
+    
     return
 }
 
@@ -423,6 +430,7 @@ func NewDescribeMatchCodesRequest() (request *DescribeMatchCodesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gpm", APIVersion, "DescribeMatchCodes")
+    
     return
 }
 
@@ -474,6 +482,7 @@ func NewDescribeMatchesRequest() (request *DescribeMatchesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gpm", APIVersion, "DescribeMatches")
+    
     return
 }
 
@@ -529,6 +538,7 @@ func NewDescribeMatchingProgressRequest() (request *DescribeMatchingProgressRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gpm", APIVersion, "DescribeMatchingProgress")
+    
     return
 }
 
@@ -574,6 +584,7 @@ func NewDescribeRuleRequest() (request *DescribeRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gpm", APIVersion, "DescribeRule")
+    
     return
 }
 
@@ -625,6 +636,7 @@ func NewDescribeRulesRequest() (request *DescribeRulesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gpm", APIVersion, "DescribeRules")
+    
     return
 }
 
@@ -678,6 +690,7 @@ func NewDescribeTokenRequest() (request *DescribeTokenRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gpm", APIVersion, "DescribeToken")
+    
     return
 }
 
@@ -710,6 +723,7 @@ func NewModifyMatchRequest() (request *ModifyMatchRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gpm", APIVersion, "ModifyMatch")
+    
     return
 }
 
@@ -767,6 +781,7 @@ func NewModifyRuleRequest() (request *ModifyRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gpm", APIVersion, "ModifyRule")
+    
     return
 }
 
@@ -820,6 +835,7 @@ func NewModifyTokenRequest() (request *ModifyTokenRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gpm", APIVersion, "ModifyToken")
+    
     return
 }
 
@@ -852,6 +868,7 @@ func NewStartMatchingRequest() (request *StartMatchingRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gpm", APIVersion, "StartMatching")
+    
     return
 }
 
@@ -907,6 +924,7 @@ func NewStartMatchingBackfillRequest() (request *StartMatchingBackfillRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gpm", APIVersion, "StartMatchingBackfill")
+    
     return
 }
 

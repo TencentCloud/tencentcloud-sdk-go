@@ -48,6 +48,7 @@ func NewAuthTestTidRequest() (request *AuthTestTidRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iottid", APIVersion, "AuthTestTid")
+    
     return
 }
 
@@ -81,6 +82,7 @@ func NewBurnTidNotifyRequest() (request *BurnTidNotifyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iottid", APIVersion, "BurnTidNotify")
+    
     return
 }
 
@@ -116,6 +118,7 @@ func NewDeliverTidNotifyRequest() (request *DeliverTidNotifyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iottid", APIVersion, "DeliverTidNotify")
+    
     return
 }
 
@@ -150,6 +153,7 @@ func NewDeliverTidsRequest() (request *DeliverTidsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iottid", APIVersion, "DeliverTids")
+    
     return
 }
 
@@ -184,6 +188,7 @@ func NewDescribeAvailableLibCountRequest() (request *DescribeAvailableLibCountRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iottid", APIVersion, "DescribeAvailableLibCount")
+    
     return
 }
 
@@ -216,6 +221,7 @@ func NewDescribePermissionRequest() (request *DescribePermissionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iottid", APIVersion, "DescribePermission")
+    
     return
 }
 
@@ -248,6 +254,7 @@ func NewDownloadTidsRequest() (request *DownloadTidsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iottid", APIVersion, "DownloadTids")
+    
     return
 }
 
@@ -282,6 +289,7 @@ func NewUploadDeviceUniqueCodeRequest() (request *UploadDeviceUniqueCodeRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iottid", APIVersion, "UploadDeviceUniqueCode")
+    
     return
 }
 
@@ -317,6 +325,7 @@ func NewVerifyChipBurnInfoRequest() (request *VerifyChipBurnInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iottid", APIVersion, "VerifyChipBurnInfo")
+    
     return
 }
 

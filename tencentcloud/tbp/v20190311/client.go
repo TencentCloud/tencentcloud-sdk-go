@@ -48,6 +48,7 @@ func NewCreateBotRequest() (request *CreateBotRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbp", APIVersion, "CreateBot")
+    
     return
 }
 
@@ -79,6 +80,7 @@ func NewResetRequest() (request *ResetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbp", APIVersion, "Reset")
+    
     return
 }
 
@@ -113,6 +115,7 @@ func NewTextProcessRequest() (request *TextProcessRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbp", APIVersion, "TextProcess")
+    
     return
 }
 
@@ -148,6 +151,7 @@ func NewTextResetRequest() (request *TextResetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbp", APIVersion, "TextReset")
+    
     return
 }
 

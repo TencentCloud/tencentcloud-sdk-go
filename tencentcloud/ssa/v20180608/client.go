@@ -48,6 +48,7 @@ func NewDescribeAssetDetailRequest() (request *DescribeAssetDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeAssetDetail")
+    
     return
 }
 
@@ -78,6 +79,7 @@ func NewDescribeAssetListRequest() (request *DescribeAssetListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeAssetList")
+    
     return
 }
 
@@ -109,6 +111,7 @@ func NewDescribeAssetsMappingListRequest() (request *DescribeAssetsMappingListRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeAssetsMappingList")
+    
     return
 }
 
@@ -141,6 +144,7 @@ func NewDescribeCheckConfigAssetListRequest() (request *DescribeCheckConfigAsset
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeCheckConfigAssetList")
+    
     return
 }
 
@@ -173,6 +177,7 @@ func NewDescribeCheckConfigDetailRequest() (request *DescribeCheckConfigDetailRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeCheckConfigDetail")
+    
     return
 }
 
@@ -205,6 +210,7 @@ func NewDescribeComplianceAssetListRequest() (request *DescribeComplianceAssetLi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeComplianceAssetList")
+    
     return
 }
 
@@ -236,6 +242,7 @@ func NewDescribeComplianceDetailRequest() (request *DescribeComplianceDetailRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeComplianceDetail")
+    
     return
 }
 
@@ -268,6 +275,7 @@ func NewDescribeComplianceListRequest() (request *DescribeComplianceListRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeComplianceList")
+    
     return
 }
 
@@ -301,6 +309,7 @@ func NewDescribeConfigListRequest() (request *DescribeConfigListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeConfigList")
+    
     return
 }
 
@@ -332,6 +341,7 @@ func NewDescribeEventDetailRequest() (request *DescribeEventDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeEventDetail")
+    
     return
 }
 
@@ -361,6 +371,7 @@ func NewDescribeLeakDetectionListRequest() (request *DescribeLeakDetectionListRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeLeakDetectionList")
+    
     return
 }
 
@@ -391,6 +402,7 @@ func NewDescribeSafetyEventListRequest() (request *DescribeSafetyEventListReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeSafetyEventList")
+    
     return
 }
 
@@ -422,6 +434,7 @@ func NewDescribeSocCspmComplianceRequest() (request *DescribeSocCspmComplianceRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeSocCspmCompliance")
+    
     return
 }
 
@@ -471,6 +484,7 @@ func NewDescribeVulDetailRequest() (request *DescribeVulDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeVulDetail")
+    
     return
 }
 
@@ -500,6 +514,7 @@ func NewDescribeVulListRequest() (request *DescribeVulListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeVulList")
+    
     return
 }
 
@@ -531,6 +546,7 @@ func NewSaDivulgeDataQueryPubRequest() (request *SaDivulgeDataQueryPubRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "SaDivulgeDataQueryPub")
+    
     return
 }
 

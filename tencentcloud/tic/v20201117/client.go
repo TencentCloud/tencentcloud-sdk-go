@@ -48,6 +48,7 @@ func NewApplyStackRequest() (request *ApplyStackRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tic", APIVersion, "ApplyStack")
+    
     return
 }
 
@@ -89,6 +90,7 @@ func NewCreateStackRequest() (request *CreateStackRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tic", APIVersion, "CreateStack")
+    
     return
 }
 
@@ -123,6 +125,7 @@ func NewCreateStackVersionRequest() (request *CreateStackVersionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tic", APIVersion, "CreateStackVersion")
+    
     return
 }
 
@@ -160,6 +163,7 @@ func NewDeleteStackRequest() (request *DeleteStackRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tic", APIVersion, "DeleteStack")
+    
     return
 }
 
@@ -194,6 +198,7 @@ func NewDeleteStackVersionRequest() (request *DeleteStackVersionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tic", APIVersion, "DeleteStackVersion")
+    
     return
 }
 
@@ -228,6 +233,7 @@ func NewDescribeStackEventRequest() (request *DescribeStackEventRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tic", APIVersion, "DescribeStackEvent")
+    
     return
 }
 
@@ -262,6 +268,7 @@ func NewDescribeStackEventsRequest() (request *DescribeStackEventsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tic", APIVersion, "DescribeStackEvents")
+    
     return
 }
 
@@ -303,6 +310,7 @@ func NewDescribeStackVersionsRequest() (request *DescribeStackVersionsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tic", APIVersion, "DescribeStackVersions")
+    
     return
 }
 
@@ -344,6 +352,7 @@ func NewDescribeStacksRequest() (request *DescribeStacksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tic", APIVersion, "DescribeStacks")
+    
     return
 }
 
@@ -383,6 +392,7 @@ func NewDestroyStackRequest() (request *DestroyStackRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tic", APIVersion, "DestroyStack")
+    
     return
 }
 
@@ -418,6 +428,7 @@ func NewPlanStackRequest() (request *PlanStackRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tic", APIVersion, "PlanStack")
+    
     return
 }
 
@@ -459,6 +470,7 @@ func NewUpdateStackRequest() (request *UpdateStackRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tic", APIVersion, "UpdateStack")
+    
     return
 }
 
@@ -492,6 +504,7 @@ func NewUpdateStackVersionRequest() (request *UpdateStackVersionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tic", APIVersion, "UpdateStackVersion")
+    
     return
 }
 

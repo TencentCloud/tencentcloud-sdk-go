@@ -48,6 +48,7 @@ func NewSendCodeVoiceRequest() (request *SendCodeVoiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vms", APIVersion, "SendCodeVoice")
+    
     return
 }
 
@@ -98,6 +99,7 @@ func NewSendTtsVoiceRequest() (request *SendTtsVoiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vms", APIVersion, "SendTtsVoice")
+    
     return
 }
 

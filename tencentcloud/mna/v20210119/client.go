@@ -48,6 +48,7 @@ func NewCreateQosRequest() (request *CreateQosRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("mna", APIVersion, "CreateQos")
+    
     return
 }
 
@@ -89,6 +90,7 @@ func NewDeleteQosRequest() (request *DeleteQosRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("mna", APIVersion, "DeleteQos")
+    
     return
 }
 
@@ -127,6 +129,7 @@ func NewDescribeQosRequest() (request *DescribeQosRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("mna", APIVersion, "DescribeQos")
+    
     return
 }
 

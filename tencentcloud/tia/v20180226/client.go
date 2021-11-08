@@ -48,6 +48,7 @@ func NewCreateJobRequest() (request *CreateJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tia", APIVersion, "CreateJob")
+    
     return
 }
 
@@ -83,6 +84,7 @@ func NewCreateModelRequest() (request *CreateModelRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tia", APIVersion, "CreateModel")
+    
     return
 }
 
@@ -132,6 +134,7 @@ func NewDeleteJobRequest() (request *DeleteJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tia", APIVersion, "DeleteJob")
+    
     return
 }
 
@@ -163,6 +166,7 @@ func NewDeleteModelRequest() (request *DeleteModelRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tia", APIVersion, "DeleteModel")
+    
     return
 }
 
@@ -201,6 +205,7 @@ func NewDescribeJobRequest() (request *DescribeJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tia", APIVersion, "DescribeJob")
+    
     return
 }
 
@@ -236,6 +241,7 @@ func NewDescribeModelRequest() (request *DescribeModelRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tia", APIVersion, "DescribeModel")
+    
     return
 }
 
@@ -272,6 +278,7 @@ func NewInstallAgentRequest() (request *InstallAgentRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tia", APIVersion, "InstallAgent")
+    
     return
 }
 
@@ -305,6 +312,7 @@ func NewListJobsRequest() (request *ListJobsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tia", APIVersion, "ListJobs")
+    
     return
 }
 
@@ -339,6 +347,7 @@ func NewListModelsRequest() (request *ListModelsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tia", APIVersion, "ListModels")
+    
     return
 }
 
@@ -379,6 +388,7 @@ func NewQueryLogsRequest() (request *QueryLogsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tia", APIVersion, "QueryLogs")
+    
     return
 }
 

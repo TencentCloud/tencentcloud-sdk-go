@@ -48,6 +48,7 @@ func NewClearTablesRequest() (request *ClearTablesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "ClearTables")
+    
     return
 }
 
@@ -82,6 +83,7 @@ func NewCompareIdlFilesRequest() (request *CompareIdlFilesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "CompareIdlFiles")
+    
     return
 }
 
@@ -115,6 +117,7 @@ func NewCreateBackupRequest() (request *CreateBackupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "CreateBackup")
+    
     return
 }
 
@@ -148,6 +151,7 @@ func NewCreateClusterRequest() (request *CreateClusterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "CreateCluster")
+    
     return
 }
 
@@ -185,6 +189,7 @@ func NewCreateSnapshotsRequest() (request *CreateSnapshotsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "CreateSnapshots")
+    
     return
 }
 
@@ -222,6 +227,7 @@ func NewCreateTableGroupRequest() (request *CreateTableGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "CreateTableGroup")
+    
     return
 }
 
@@ -257,6 +263,7 @@ func NewCreateTablesRequest() (request *CreateTablesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "CreateTables")
+    
     return
 }
 
@@ -294,6 +301,7 @@ func NewDeleteClusterRequest() (request *DeleteClusterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "DeleteCluster")
+    
     return
 }
 
@@ -326,6 +334,7 @@ func NewDeleteIdlFilesRequest() (request *DeleteIdlFilesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "DeleteIdlFiles")
+    
     return
 }
 
@@ -361,6 +370,7 @@ func NewDeleteSnapshotsRequest() (request *DeleteSnapshotsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "DeleteSnapshots")
+    
     return
 }
 
@@ -398,6 +408,7 @@ func NewDeleteTableDataFlowRequest() (request *DeleteTableDataFlowRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "DeleteTableDataFlow")
+    
     return
 }
 
@@ -432,6 +443,7 @@ func NewDeleteTableGroupRequest() (request *DeleteTableGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "DeleteTableGroup")
+    
     return
 }
 
@@ -463,6 +475,7 @@ func NewDeleteTableIndexRequest() (request *DeleteTableIndexRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "DeleteTableIndex")
+    
     return
 }
 
@@ -497,6 +510,7 @@ func NewDeleteTablesRequest() (request *DeleteTablesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "DeleteTables")
+    
     return
 }
 
@@ -531,6 +545,7 @@ func NewDescribeApplicationsRequest() (request *DescribeApplicationsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "DescribeApplications")
+    
     return
 }
 
@@ -565,6 +580,7 @@ func NewDescribeClusterTagsRequest() (request *DescribeClusterTagsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "DescribeClusterTags")
+    
     return
 }
 
@@ -598,6 +614,7 @@ func NewDescribeClustersRequest() (request *DescribeClustersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "DescribeClusters")
+    
     return
 }
 
@@ -630,6 +647,7 @@ func NewDescribeIdlFileInfosRequest() (request *DescribeIdlFileInfosRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "DescribeIdlFileInfos")
+    
     return
 }
 
@@ -662,6 +680,7 @@ func NewDescribeMachineRequest() (request *DescribeMachineRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "DescribeMachine")
+    
     return
 }
 
@@ -694,6 +713,7 @@ func NewDescribeRegionsRequest() (request *DescribeRegionsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "DescribeRegions")
+    
     return
 }
 
@@ -723,6 +743,7 @@ func NewDescribeSnapshotsRequest() (request *DescribeSnapshotsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "DescribeSnapshots")
+    
     return
 }
 
@@ -759,6 +780,7 @@ func NewDescribeTableGroupTagsRequest() (request *DescribeTableGroupTagsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "DescribeTableGroupTags")
+    
     return
 }
 
@@ -792,6 +814,7 @@ func NewDescribeTableGroupsRequest() (request *DescribeTableGroupsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "DescribeTableGroups")
+    
     return
 }
 
@@ -826,6 +849,7 @@ func NewDescribeTableTagsRequest() (request *DescribeTableTagsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "DescribeTableTags")
+    
     return
 }
 
@@ -859,6 +883,7 @@ func NewDescribeTablesRequest() (request *DescribeTablesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "DescribeTables")
+    
     return
 }
 
@@ -893,6 +918,7 @@ func NewDescribeTablesInRecycleRequest() (request *DescribeTablesInRecycleReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "DescribeTablesInRecycle")
+    
     return
 }
 
@@ -926,6 +952,7 @@ func NewDescribeTasksRequest() (request *DescribeTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "DescribeTasks")
+    
     return
 }
 
@@ -956,6 +983,7 @@ func NewDescribeUinInWhitelistRequest() (request *DescribeUinInWhitelistRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "DescribeUinInWhitelist")
+    
     return
 }
 
@@ -985,6 +1013,7 @@ func NewDisableRestProxyRequest() (request *DisableRestProxyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "DisableRestProxy")
+    
     return
 }
 
@@ -1018,6 +1047,7 @@ func NewEnableRestProxyRequest() (request *EnableRestProxyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "EnableRestProxy")
+    
     return
 }
 
@@ -1051,6 +1081,7 @@ func NewImportSnapshotsRequest() (request *ImportSnapshotsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "ImportSnapshots")
+    
     return
 }
 
@@ -1089,6 +1120,7 @@ func NewMergeTablesDataRequest() (request *MergeTablesDataRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "MergeTablesData")
+    
     return
 }
 
@@ -1126,6 +1158,7 @@ func NewModifyCensorshipRequest() (request *ModifyCensorshipRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "ModifyCensorship")
+    
     return
 }
 
@@ -1163,6 +1196,7 @@ func NewModifyClusterMachineRequest() (request *ModifyClusterMachineRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "ModifyClusterMachine")
+    
     return
 }
 
@@ -1197,6 +1231,7 @@ func NewModifyClusterNameRequest() (request *ModifyClusterNameRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "ModifyClusterName")
+    
     return
 }
 
@@ -1232,6 +1267,7 @@ func NewModifyClusterPasswordRequest() (request *ModifyClusterPasswordRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "ModifyClusterPassword")
+    
     return
 }
 
@@ -1269,6 +1305,7 @@ func NewModifyClusterTagsRequest() (request *ModifyClusterTagsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "ModifyClusterTags")
+    
     return
 }
 
@@ -1303,6 +1340,7 @@ func NewModifySnapshotsRequest() (request *ModifySnapshotsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "ModifySnapshots")
+    
     return
 }
 
@@ -1340,6 +1378,7 @@ func NewModifyTableGroupNameRequest() (request *ModifyTableGroupNameRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "ModifyTableGroupName")
+    
     return
 }
 
@@ -1373,6 +1412,7 @@ func NewModifyTableGroupTagsRequest() (request *ModifyTableGroupTagsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "ModifyTableGroupTags")
+    
     return
 }
 
@@ -1407,6 +1447,7 @@ func NewModifyTableMemosRequest() (request *ModifyTableMemosRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "ModifyTableMemos")
+    
     return
 }
 
@@ -1441,6 +1482,7 @@ func NewModifyTableQuotasRequest() (request *ModifyTableQuotasRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "ModifyTableQuotas")
+    
     return
 }
 
@@ -1476,6 +1518,7 @@ func NewModifyTableTagsRequest() (request *ModifyTableTagsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "ModifyTableTags")
+    
     return
 }
 
@@ -1511,6 +1554,7 @@ func NewModifyTablesRequest() (request *ModifyTablesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "ModifyTables")
+    
     return
 }
 
@@ -1546,6 +1590,7 @@ func NewRecoverRecycleTablesRequest() (request *RecoverRecycleTablesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "RecoverRecycleTables")
+    
     return
 }
 
@@ -1580,6 +1625,7 @@ func NewRollbackTablesRequest() (request *RollbackTablesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "RollbackTables")
+    
     return
 }
 
@@ -1615,6 +1661,7 @@ func NewSetTableDataFlowRequest() (request *SetTableDataFlowRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "SetTableDataFlow")
+    
     return
 }
 
@@ -1651,6 +1698,7 @@ func NewSetTableIndexRequest() (request *SetTableIndexRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "SetTableIndex")
+    
     return
 }
 
@@ -1686,6 +1734,7 @@ func NewUpdateApplyRequest() (request *UpdateApplyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "UpdateApply")
+    
     return
 }
 
@@ -1722,6 +1771,7 @@ func NewVerifyIdlFilesRequest() (request *VerifyIdlFilesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcaplusdb", APIVersion, "VerifyIdlFiles")
+    
     return
 }
 

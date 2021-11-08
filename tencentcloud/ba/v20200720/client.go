@@ -48,6 +48,7 @@ func NewCreateWeappQRUrlRequest() (request *CreateWeappQRUrlRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ba", APIVersion, "CreateWeappQRUrl")
+    
     return
 }
 
@@ -79,6 +80,7 @@ func NewDescribeGetAuthInfoRequest() (request *DescribeGetAuthInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ba", APIVersion, "DescribeGetAuthInfo")
+    
     return
 }
 
@@ -109,6 +111,7 @@ func NewSyncIcpOrderWebInfoRequest() (request *SyncIcpOrderWebInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ba", APIVersion, "SyncIcpOrderWebInfo")
+    
     return
 }
 

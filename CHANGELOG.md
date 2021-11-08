@@ -1,10 +1,59 @@
 # 本版本更新包含以下内容：
 
-## API网关(apigateway) 版本：2018-08-08
+## 访问管理(cam) 版本：2019-01-16
+
+### 第 39 次发布
+
+发布时间：2021-11-08 08:02:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [GroupIdOfUidInfo](https://cloud.tencent.com/document/api/598/33167#GroupIdOfUidInfo)
+
+	* 新增成员：Uin
+
+	* <font color="#dd0000">**修改成员**：</font>Uid
+
+
+
+
+## 数据传输服务(dts) 版本：2018-03-30
+
+### 第 14 次发布
+
+发布时间：2021-11-08 08:05:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreateSyncCheckJob
+* CreateSyncJob
+* DeleteSyncJob
+* DescribeSyncJobs
+* StartSyncJob
+* SwitchDrToMaster
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* SyncDetailInfo
+* SyncInstanceInfo
+* SyncJobInfo
+* SyncStepDetailInfo
+
+
+
+## Elasticsearch Service(es) 版本：2018-04-16
 
 ### 第 20 次发布
 
-发布时间：2021-11-04 08:03:57
+发布时间：2021-11-08 08:06:16
 
 本次发布包含了以下内容：
 
@@ -12,81 +61,76 @@
 
 修改接口：
 
-* [DescribeService](https://cloud.tencent.com/document/api/628/45199)
+* [CreateInstance](https://cloud.tencent.com/document/api/845/30633)
 
-	* 新增出参：DeploymentType, SpecialUse
+	* 新增入参：Protocol
+
+* [UpdateInstance](https://cloud.tencent.com/document/api/845/30629)
+
+	* 新增入参：SwitchPrivateLink, EnableCerebro, CerebroPublicAccess, CerebroPrivateAccess
 
 
 修改数据结构：
 
-* [Service](https://cloud.tencent.com/document/api/628/45244#Service)
+* [InstanceInfo](https://cloud.tencent.com/document/api/845/30634#InstanceInfo)
 
-	* 新增成员：DeploymentType
-
-
+	* 新增成员：Protocol, SecurityGroups
 
 
-## 企业收付平台(cpdp) 版本：2019-08-20
 
-### 第 49 次发布
 
-发布时间：2021-11-04 08:06:43
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 6 次发布
+
+发布时间：2021-11-08 08:06:21
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改数据结构：
 
-* [QueryMaliciousRegistration](https://cloud.tencent.com/document/api/1122/63688)
+* [UsageDetail](https://cloud.tencent.com/document/api/1420/61525#UsageDetail)
+
+	* 新增成员：ProxyOrganizationName
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 云函数(scf) 版本：2018-04-16
+
+### 第 37 次发布
+
+发布时间：2021-11-08 08:09:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 修改接口：
 
-* [UnifiedTlinxOrder](https://cloud.tencent.com/document/api/1122/62611)
+* [CreateFunction](https://cloud.tencent.com/document/api/583/18586)
 
-	* 新增入参：Royalty
+	* 新增入参：ProtocolType, ProtocolParams
 
-	* <font color="#dd0000">**修改入参**：</font>Tag
+* [GetFunction](https://cloud.tencent.com/document/api/583/18584)
+
+	* 新增出参：ProtocolType, ProtocolParams
+
+* [UpdateFunctionConfiguration](https://cloud.tencent.com/document/api/583/18580)
+
+	* 新增入参：ProtocolParams
 
 
 新增数据结构：
 
-* [MerchantRiskInfo](https://cloud.tencent.com/document/api/1122/40683#MerchantRiskInfo)
-
-
-
-## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
-
-### 第 19 次发布
-
-发布时间：2021-11-04 08:11:48
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ModifyDBInstanceSpec](https://cloud.tencent.com/document/api/409/63689)
-
-
-
-## 云数据库 Redis(redis) 版本：2018-04-12
-
-### 第 37 次发布
-
-发布时间：2021-11-04 08:12:00
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [EnableReplicaReadonly](https://cloud.tencent.com/document/api/239/34437)
-
-	* 新增出参：TaskId
-
+* [ProtocolParams](https://cloud.tencent.com/document/api/583/17244#ProtocolParams)
+* [WSParams](https://cloud.tencent.com/document/api/583/17244#WSParams)
 
 
 
@@ -6103,6 +6147,23 @@
 
 
 ## 访问管理(cam) 版本：2019-01-16
+
+### 第 39 次发布
+
+发布时间：2021-11-08 08:02:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [GroupIdOfUidInfo](https://cloud.tencent.com/document/api/598/33167#GroupIdOfUidInfo)
+
+	* 新增成员：Uin
+
+	* <font color="#dd0000">**修改成员**：</font>Uid
+
 
 ### 第 38 次发布
 
@@ -16159,7 +16220,7 @@
 
 新增接口：
 
-* [[QueryMaliciousRegistration](https://cloud.tencent.com/document/api/1122/63688)](https://cloud.tencent.com/document/api/#/#)
+* [QueryMaliciousRegistration](https://cloud.tencent.com/document/api/1122/63688)
 
 修改接口：
 
@@ -16172,7 +16233,7 @@
 
 新增数据结构：
 
-* [[MerchantRiskInfo](https://cloud.tencent.com/document/api/1122/40683#MerchantRiskInfo)](https://cloud.tencent.com/document/api/1122/40683#[MerchantRiskInfo](https://cloud.tencent.com/document/api/1122/40683#MerchantRiskInfo))
+* [MerchantRiskInfo](https://cloud.tencent.com/document/api/1122/40683#MerchantRiskInfo)
 
 ### 第 48 次发布
 
@@ -23257,6 +23318,30 @@
 
 ## 数据传输服务(dts) 版本：2018-03-30
 
+### 第 14 次发布
+
+发布时间：2021-11-08 08:05:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreateSyncCheckJob
+* CreateSyncJob
+* DeleteSyncJob
+* DescribeSyncJobs
+* StartSyncJob
+* SwitchDrToMaster
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* SyncDetailInfo
+* SyncInstanceInfo
+* SyncJobInfo
+* SyncStepDetailInfo
+
 ### 第 13 次发布
 
 发布时间：2021-09-02 08:04:47
@@ -26019,6 +26104,32 @@
 
 ## Elasticsearch Service(es) 版本：2018-04-16
 
+### 第 20 次发布
+
+发布时间：2021-11-08 08:06:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstance](https://cloud.tencent.com/document/api/845/30633)
+
+	* 新增入参：Protocol
+
+* [UpdateInstance](https://cloud.tencent.com/document/api/845/30629)
+
+	* 新增入参：SwitchPrivateLink, EnableCerebro, CerebroPublicAccess, CerebroPrivateAccess
+
+
+修改数据结构：
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/845/30634#InstanceInfo)
+
+	* 新增成员：Protocol, SecurityGroups
+
+
 ### 第 19 次发布
 
 发布时间：2021-09-30 08:05:14
@@ -26566,6 +26677,21 @@
 
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 6 次发布
+
+发布时间：2021-11-08 08:06:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [UsageDetail](https://cloud.tencent.com/document/api/1420/61525#UsageDetail)
+
+	* 新增成员：ProxyOrganizationName
+
 
 ### 第 5 次发布
 
@@ -41722,7 +41848,7 @@
 
 新增接口：
 
-* [[ModifyDBInstanceSpec](https://cloud.tencent.com/document/api/409/63689)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyDBInstanceSpec](https://cloud.tencent.com/document/api/409/63689)
 
 ### 第 18 次发布
 
@@ -43254,6 +43380,34 @@
 
 
 ## 云函数(scf) 版本：2018-04-16
+
+### 第 37 次发布
+
+发布时间：2021-11-08 08:09:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateFunction](https://cloud.tencent.com/document/api/583/18586)
+
+	* 新增入参：ProtocolType, ProtocolParams
+
+* [GetFunction](https://cloud.tencent.com/document/api/583/18584)
+
+	* 新增出参：ProtocolType, ProtocolParams
+
+* [UpdateFunctionConfiguration](https://cloud.tencent.com/document/api/583/18580)
+
+	* 新增入参：ProtocolParams
+
+
+新增数据结构：
+
+* [[ProtocolParams](https://cloud.tencent.com/document/api/583/17244#ProtocolParams)](https://cloud.tencent.com/document/api/583/17244#[ProtocolParams](https://cloud.tencent.com/document/api/583/17244#ProtocolParams))
+* [[WSParams](https://cloud.tencent.com/document/api/583/17244#WSParams)](https://cloud.tencent.com/document/api/583/17244#[WSParams](https://cloud.tencent.com/document/api/583/17244#WSParams))
 
 ### 第 36 次发布
 

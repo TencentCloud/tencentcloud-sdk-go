@@ -48,6 +48,7 @@ func NewQueryRegisterProtectionRequest() (request *QueryRegisterProtectionReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("rp", APIVersion, "QueryRegisterProtection")
+    
     return
 }
 

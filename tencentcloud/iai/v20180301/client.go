@@ -48,6 +48,7 @@ func NewAnalyzeDenseLandmarksRequest() (request *AnalyzeDenseLandmarksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "AnalyzeDenseLandmarks")
+    
     return
 }
 
@@ -97,6 +98,7 @@ func NewAnalyzeFaceRequest() (request *AnalyzeFaceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "AnalyzeFace")
+    
     return
 }
 
@@ -200,6 +202,7 @@ func NewCheckSimilarPersonRequest() (request *CheckSimilarPersonRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "CheckSimilarPerson")
+    
     return
 }
 
@@ -319,6 +322,7 @@ func NewCompareFaceRequest() (request *CompareFaceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "CompareFace")
+    
     return
 }
 
@@ -428,6 +432,7 @@ func NewCopyPersonRequest() (request *CopyPersonRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "CopyPerson")
+    
     return
 }
 
@@ -527,6 +532,7 @@ func NewCreateFaceRequest() (request *CreateFaceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "CreateFace")
+    
     return
 }
 
@@ -632,6 +638,7 @@ func NewCreateGroupRequest() (request *CreateGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "CreateGroup")
+    
     return
 }
 
@@ -736,6 +743,7 @@ func NewCreatePersonRequest() (request *CreatePersonRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "CreatePerson")
+    
     return
 }
 
@@ -841,6 +849,7 @@ func NewDeleteFaceRequest() (request *DeleteFaceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "DeleteFace")
+    
     return
 }
 
@@ -935,6 +944,7 @@ func NewDeleteGroupRequest() (request *DeleteGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "DeleteGroup")
+    
     return
 }
 
@@ -1028,6 +1038,7 @@ func NewDeletePersonRequest() (request *DeletePersonRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "DeletePerson")
+    
     return
 }
 
@@ -1122,6 +1133,7 @@ func NewDeletePersonFromGroupRequest() (request *DeletePersonFromGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "DeletePersonFromGroup")
+    
     return
 }
 
@@ -1216,6 +1228,7 @@ func NewDetectFaceRequest() (request *DetectFaceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "DetectFace")
+    
     return
 }
 
@@ -1344,6 +1357,7 @@ func NewDetectFaceAttributesRequest() (request *DetectFaceAttributesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "DetectFaceAttributes")
+    
     return
 }
 
@@ -1441,6 +1455,7 @@ func NewDetectLiveFaceRequest() (request *DetectLiveFaceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "DetectLiveFace")
+    
     return
 }
 
@@ -1560,6 +1575,7 @@ func NewEstimateCheckSimilarPersonCostTimeRequest() (request *EstimateCheckSimil
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "EstimateCheckSimilarPersonCostTime")
+    
     return
 }
 
@@ -1661,6 +1677,7 @@ func NewGetCheckSimilarPersonJobIdListRequest() (request *GetCheckSimilarPersonJ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "GetCheckSimilarPersonJobIdList")
+    
     return
 }
 
@@ -1714,6 +1731,7 @@ func NewGetGroupInfoRequest() (request *GetGroupInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "GetGroupInfo")
+    
     return
 }
 
@@ -1750,6 +1768,7 @@ func NewGetGroupListRequest() (request *GetGroupListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "GetGroupList")
+    
     return
 }
 
@@ -1843,6 +1862,7 @@ func NewGetPersonBaseInfoRequest() (request *GetPersonBaseInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "GetPersonBaseInfo")
+    
     return
 }
 
@@ -1936,6 +1956,7 @@ func NewGetPersonGroupInfoRequest() (request *GetPersonGroupInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "GetPersonGroupInfo")
+    
     return
 }
 
@@ -2029,6 +2050,7 @@ func NewGetPersonListRequest() (request *GetPersonListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "GetPersonList")
+    
     return
 }
 
@@ -2122,6 +2144,7 @@ func NewGetPersonListNumRequest() (request *GetPersonListNumRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "GetPersonListNum")
+    
     return
 }
 
@@ -2215,6 +2238,7 @@ func NewGetSimilarPersonResultRequest() (request *GetSimilarPersonResultRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "GetSimilarPersonResult")
+    
     return
 }
 
@@ -2312,6 +2336,7 @@ func NewGetUpgradeGroupFaceModelVersionJobListRequest() (request *GetUpgradeGrou
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "GetUpgradeGroupFaceModelVersionJobList")
+    
     return
 }
 
@@ -2348,6 +2373,7 @@ func NewGetUpgradeGroupFaceModelVersionResultRequest() (request *GetUpgradeGroup
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "GetUpgradeGroupFaceModelVersionResult")
+    
     return
 }
 
@@ -2383,6 +2409,7 @@ func NewModifyGroupRequest() (request *ModifyGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "ModifyGroup")
+    
     return
 }
 
@@ -2476,6 +2503,7 @@ func NewModifyPersonBaseInfoRequest() (request *ModifyPersonBaseInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "ModifyPersonBaseInfo")
+    
     return
 }
 
@@ -2569,6 +2597,7 @@ func NewModifyPersonGroupInfoRequest() (request *ModifyPersonGroupInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "ModifyPersonGroupInfo")
+    
     return
 }
 
@@ -2662,6 +2691,7 @@ func NewRevertGroupFaceModelVersionRequest() (request *RevertGroupFaceModelVersi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "RevertGroupFaceModelVersion")
+    
     return
 }
 
@@ -2702,6 +2732,7 @@ func NewSearchFacesRequest() (request *SearchFacesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "SearchFaces")
+    
     return
 }
 
@@ -2825,6 +2856,7 @@ func NewSearchFacesReturnsByGroupRequest() (request *SearchFacesReturnsByGroupRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "SearchFacesReturnsByGroup")
+    
     return
 }
 
@@ -2948,6 +2980,7 @@ func NewSearchPersonsRequest() (request *SearchPersonsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "SearchPersons")
+    
     return
 }
 
@@ -3034,6 +3067,7 @@ func NewSearchPersonsReturnsByGroupRequest() (request *SearchPersonsReturnsByGro
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "SearchPersonsReturnsByGroup")
+    
     return
 }
 
@@ -3117,6 +3151,7 @@ func NewUpgradeGroupFaceModelVersionRequest() (request *UpgradeGroupFaceModelVer
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "UpgradeGroupFaceModelVersion")
+    
     return
 }
 
@@ -3158,6 +3193,7 @@ func NewVerifyFaceRequest() (request *VerifyFaceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "VerifyFace")
+    
     return
 }
 
@@ -3270,6 +3306,7 @@ func NewVerifyPersonRequest() (request *VerifyPersonRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "VerifyPerson")
+    
     return
 }
 

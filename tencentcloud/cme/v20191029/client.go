@@ -48,6 +48,7 @@ func NewAddTeamMemberRequest() (request *AddTeamMemberRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "AddTeamMember")
+    
     return
 }
 
@@ -82,6 +83,7 @@ func NewCopyProjectRequest() (request *CopyProjectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "CopyProject")
+    
     return
 }
 
@@ -116,6 +118,7 @@ func NewCreateClassRequest() (request *CreateClassRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "CreateClass")
+    
     return
 }
 
@@ -151,6 +154,7 @@ func NewCreateLinkRequest() (request *CreateLinkRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "CreateLink")
+    
     return
 }
 
@@ -191,6 +195,7 @@ func NewCreateProjectRequest() (request *CreateProjectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "CreateProject")
+    
     return
 }
 
@@ -240,6 +245,7 @@ func NewCreateTeamRequest() (request *CreateTeamRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "CreateTeam")
+    
     return
 }
 
@@ -275,6 +281,7 @@ func NewDeleteClassRequest() (request *DeleteClassRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DeleteClass")
+    
     return
 }
 
@@ -313,6 +320,7 @@ func NewDeleteLoginStatusRequest() (request *DeleteLoginStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DeleteLoginStatus")
+    
     return
 }
 
@@ -343,6 +351,7 @@ func NewDeleteMaterialRequest() (request *DeleteMaterialRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DeleteMaterial")
+    
     return
 }
 
@@ -376,6 +385,7 @@ func NewDeleteProjectRequest() (request *DeleteProjectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DeleteProject")
+    
     return
 }
 
@@ -411,6 +421,7 @@ func NewDeleteTeamRequest() (request *DeleteTeamRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DeleteTeam")
+    
     return
 }
 
@@ -448,6 +459,7 @@ func NewDeleteTeamMembersRequest() (request *DeleteTeamMembersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DeleteTeamMembers")
+    
     return
 }
 
@@ -480,6 +492,7 @@ func NewDescribeAccountsRequest() (request *DescribeAccountsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DescribeAccounts")
+    
     return
 }
 
@@ -521,6 +534,7 @@ func NewDescribeClassRequest() (request *DescribeClassRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DescribeClass")
+    
     return
 }
 
@@ -554,6 +568,7 @@ func NewDescribeJoinTeamsRequest() (request *DescribeJoinTeamsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DescribeJoinTeams")
+    
     return
 }
 
@@ -588,6 +603,7 @@ func NewDescribeLoginStatusRequest() (request *DescribeLoginStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DescribeLoginStatus")
+    
     return
 }
 
@@ -619,6 +635,7 @@ func NewDescribeMaterialsRequest() (request *DescribeMaterialsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DescribeMaterials")
+    
     return
 }
 
@@ -653,6 +670,7 @@ func NewDescribePlatformsRequest() (request *DescribePlatformsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DescribePlatforms")
+    
     return
 }
 
@@ -689,6 +707,7 @@ func NewDescribeProjectsRequest() (request *DescribeProjectsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DescribeProjects")
+    
     return
 }
 
@@ -729,6 +748,7 @@ func NewDescribeResourceAuthorizationRequest() (request *DescribeResourceAuthori
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DescribeResourceAuthorization")
+    
     return
 }
 
@@ -762,6 +782,7 @@ func NewDescribeSharedSpaceRequest() (request *DescribeSharedSpaceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DescribeSharedSpace")
+    
     return
 }
 
@@ -793,6 +814,7 @@ func NewDescribeTaskDetailRequest() (request *DescribeTaskDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DescribeTaskDetail")
+    
     return
 }
 
@@ -830,6 +852,7 @@ func NewDescribeTasksRequest() (request *DescribeTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DescribeTasks")
+    
     return
 }
 
@@ -862,6 +885,7 @@ func NewDescribeTeamMembersRequest() (request *DescribeTeamMembersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DescribeTeamMembers")
+    
     return
 }
 
@@ -899,6 +923,7 @@ func NewDescribeTeamsRequest() (request *DescribeTeamsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DescribeTeams")
+    
     return
 }
 
@@ -934,6 +959,7 @@ func NewExportVideoByEditorTrackDataRequest() (request *ExportVideoByEditorTrack
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "ExportVideoByEditorTrackData")
+    
     return
 }
 
@@ -979,6 +1005,7 @@ func NewExportVideoByTemplateRequest() (request *ExportVideoByTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "ExportVideoByTemplate")
+    
     return
 }
 
@@ -1026,6 +1053,7 @@ func NewExportVideoByVideoSegmentationDataRequest() (request *ExportVideoByVideo
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "ExportVideoByVideoSegmentationData")
+    
     return
 }
 
@@ -1062,6 +1090,7 @@ func NewExportVideoEditProjectRequest() (request *ExportVideoEditProjectRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "ExportVideoEditProject")
+    
     return
 }
 
@@ -1108,6 +1137,7 @@ func NewFlattenListMediaRequest() (request *FlattenListMediaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "FlattenListMedia")
+    
     return
 }
 
@@ -1144,6 +1174,7 @@ func NewGenerateVideoSegmentationSchemeByAiRequest() (request *GenerateVideoSegm
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "GenerateVideoSegmentationSchemeByAi")
+    
     return
 }
 
@@ -1182,6 +1213,7 @@ func NewGrantResourceAuthorizationRequest() (request *GrantResourceAuthorization
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "GrantResourceAuthorization")
+    
     return
 }
 
@@ -1215,6 +1247,7 @@ func NewHandleStreamConnectProjectRequest() (request *HandleStreamConnectProject
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "HandleStreamConnectProject")
+    
     return
 }
 
@@ -1287,6 +1320,7 @@ func NewImportMaterialRequest() (request *ImportMaterialRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "ImportMaterial")
+    
     return
 }
 
@@ -1331,6 +1365,7 @@ func NewImportMediaToProjectRequest() (request *ImportMediaToProjectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "ImportMediaToProject")
+    
     return
 }
 
@@ -1371,6 +1406,7 @@ func NewListMediaRequest() (request *ListMediaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "ListMedia")
+    
     return
 }
 
@@ -1408,6 +1444,7 @@ func NewModifyMaterialRequest() (request *ModifyMaterialRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "ModifyMaterial")
+    
     return
 }
 
@@ -1442,6 +1479,7 @@ func NewModifyProjectRequest() (request *ModifyProjectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "ModifyProject")
+    
     return
 }
 
@@ -1480,6 +1518,7 @@ func NewModifyTeamRequest() (request *ModifyTeamRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "ModifyTeam")
+    
     return
 }
 
@@ -1516,6 +1555,7 @@ func NewModifyTeamMemberRequest() (request *ModifyTeamMemberRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "ModifyTeamMember")
+    
     return
 }
 
@@ -1551,6 +1591,7 @@ func NewMoveClassRequest() (request *MoveClassRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "MoveClass")
+    
     return
 }
 
@@ -1592,6 +1633,7 @@ func NewMoveResourceRequest() (request *MoveResourceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "MoveResource")
+    
     return
 }
 
@@ -1636,6 +1678,7 @@ func NewParseEventRequest() (request *ParseEventRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "ParseEvent")
+    
     return
 }
 
@@ -1668,6 +1711,7 @@ func NewRevokeResourceAuthorizationRequest() (request *RevokeResourceAuthorizati
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "RevokeResourceAuthorization")
+    
     return
 }
 
@@ -1700,6 +1744,7 @@ func NewSearchMaterialRequest() (request *SearchMaterialRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "SearchMaterial")
+    
     return
 }
 
