@@ -480,50 +480,6 @@ func (c *Client) DescribeSubscribes(request *DescribeSubscribesRequest) (respons
     return
 }
 
-func NewDescribeSyncCheckJobRequest() (request *DescribeSyncCheckJobRequest) {
-    request = &DescribeSyncCheckJobRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("dts", APIVersion, "DescribeSyncCheckJob")
-    
-    return
-}
-
-func NewDescribeSyncCheckJobResponse() (response *DescribeSyncCheckJobResponse) {
-    response = &DescribeSyncCheckJobResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeSyncCheckJob
-// 本接口用于在通过 CreateSyncCheckJob 接口创建灾备同步校验任务后，获取校验的结果。能查询到当前校验的状态和进度。
-//
-// 若通过校验, 则可调用 StartSyncJob 启动同步任务。
-//
-// 若未通过校验, 则会返回校验失败的原因。 可通过 ModifySyncJob 修改配置，然后再次发起校验。
-//
-// 校验任务需要大概约30秒，当返回的 Status 不为 finished 时表示尚未校验完成，需要轮询该接口。
-//
-// 如果 Status=finished 且 CheckFlag=1 时表示校验成功。
-//
-// 如果 Status=finished 且 CheckFlag !=1 时表示校验失败。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_NOTALLOWOPERATION = "FailedOperation.NotAllowOperation"
-//  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
-//  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND_JOBNOTEXIST = "ResourceNotFound.JobNotExist"
-func (c *Client) DescribeSyncCheckJob(request *DescribeSyncCheckJobRequest) (response *DescribeSyncCheckJobResponse, err error) {
-    if request == nil {
-        request = NewDescribeSyncCheckJobRequest()
-    }
-    response = NewDescribeSyncCheckJobResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewIsolateSubscribeRequest() (request *IsolateSubscribeRequest) {
     request = &IsolateSubscribeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -759,45 +715,6 @@ func (c *Client) ModifySubscribeVipVport(request *ModifySubscribeVipVportRequest
         request = NewModifySubscribeVipVportRequest()
     }
     response = NewModifySubscribeVipVportResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewModifySyncJobRequest() (request *ModifySyncJobRequest) {
-    request = &ModifySyncJobRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("dts", APIVersion, "ModifySyncJob")
-    
-    return
-}
-
-func NewModifySyncJobResponse() (response *ModifySyncJobResponse) {
-    response = &ModifySyncJobResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// ModifySyncJob
-// 修改灾备同步任务. 
-//
-// 当同步任务处于下述状态时, 允许调用本接口: 同步任务创建中, 创建完成, 校验成功, 校验失败. 
-//
-// 源实例和目标实例信息不允许修改，可以修改任务名、需要同步的库表。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_NOTALLOWOPERATION = "FailedOperation.NotAllowOperation"
-//  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
-//  INTERNALERROR_DUPLICATEJOB = "InternalError.DuplicateJob"
-//  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND_JOBNOTEXIST = "ResourceNotFound.JobNotExist"
-func (c *Client) ModifySyncJob(request *ModifySyncJobRequest) (response *ModifySyncJobResponse, err error) {
-    if request == nil {
-        request = NewModifySyncJobRequest()
-    }
-    response = NewModifySyncJobResponse()
     err = c.Send(request, response)
     return
 }

@@ -4780,7 +4780,7 @@ type DescribeAssetSystemPackageListRequest struct {
 	// 4:system</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 排序方式，asc升序 或 desc降序
+	// 排序方式，asc-升序 或 desc-降序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
 	// 排序方式可选：InstallTime 安装时间
@@ -6061,7 +6061,7 @@ type DescribeBaselineAnalysisDataResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		LatestScanTime *string `json:"LatestScanTime,omitempty" name:"LatestScanTime"`
 
-		// 是否全部服务器
+		// 是否全部服务器：1-是 0-否
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		IsGlobal *uint64 `json:"IsGlobal,omitempty" name:"IsGlobal"`
 
@@ -8651,10 +8651,10 @@ func (r *DescribeMalWareListResponse) FromJsonString(s string) error {
 type DescribeMaliciousRequestWhiteListRequest struct {
 	*tchttp.BaseRequest
 
-	// 分页参数
+	// 返回数量，默认为10，最大值为100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 分页参数
+	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 过滤条件。
@@ -13683,7 +13683,7 @@ type IgnoreRuleEffectHostInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostName *string `json:"HostName,omitempty" name:"HostName"`
 
-	// 危害等级
+	// 危害等级：1-低位，2-中危，3-高危，4-严重
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Level *uint64 `json:"Level,omitempty" name:"Level"`
 
@@ -13691,11 +13691,11 @@ type IgnoreRuleEffectHostInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagList []*string `json:"TagList,omitempty" name:"TagList"`
 
-	// 状态
+	// 状态：0-未通过，1-忽略，3-已通过，5-检测中
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
-	// 最后检测事件
+	// 最后检测时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastScanTime *string `json:"LastScanTime,omitempty" name:"LastScanTime"`
 

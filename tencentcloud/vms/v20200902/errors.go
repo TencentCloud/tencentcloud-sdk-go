@@ -17,6 +17,9 @@ package v20200902
 const (
 	// 此产品的特有错误码
 
+	// 访问上下游模块超时。
+	FAILEDOPERATION_ACCESSUPSTREAMTIMEOUT = "FailedOperation.AccessUpstreamTimeout"
+
 	// 语音内容中含有敏感词，请[联系我们](https://cloud.tencent.com/document/product/1128/37720)沟通解决。
 	FAILEDOPERATION_CONTAINSENSITIVEWORD = "FailedOperation.ContainSensitiveWord"
 
@@ -55,6 +58,9 @@ const (
 
 	// 后端 Sig 校验失败。
 	INTERNALERROR_SIGVERIFICATIONFAIL = "InternalError.SigVerificationFail"
+
+	// 内部sso通道超时。
+	INTERNALERROR_SSOSENDRECVFAIL = "InternalError.SsoSendRecvFail"
 
 	// 语音上游错误，请[联系我们](https://cloud.tencent.com/document/product/1128/37720)沟通解决。
 	INTERNALERROR_UPSTREAMERROR = "InternalError.UpstreamError"

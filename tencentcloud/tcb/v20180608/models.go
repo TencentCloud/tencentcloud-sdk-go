@@ -2535,6 +2535,86 @@ func (r *DescribeCloudBaseRunConfForGateWayResponse) FromJsonString(s string) er
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeCloudBaseRunOneClickTaskExternalRequest struct {
+	*tchttp.BaseRequest
+
+	// 外部任务Id 最长64字节
+	ExternalId *string `json:"ExternalId,omitempty" name:"ExternalId"`
+}
+
+func (r *DescribeCloudBaseRunOneClickTaskExternalRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudBaseRunOneClickTaskExternalRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ExternalId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudBaseRunOneClickTaskExternalRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudBaseRunOneClickTaskExternalResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 外部任务Id
+		ExternalId *string `json:"ExternalId,omitempty" name:"ExternalId"`
+
+		// 环境Id
+		EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+		// 用户uin
+		UserUin *string `json:"UserUin,omitempty" name:"UserUin"`
+
+		// 服务名
+		ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+		// 版本名
+		VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+
+		// 创建时间
+		CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+		// 当前阶段
+	// 微信云托管环境创建阶段：envStage
+	// 存储资源创建阶段：storageStage
+	// 服务创建阶段：serverStage
+		Stage *string `json:"Stage,omitempty" name:"Stage"`
+
+		// 状态
+	// running
+	// stopped
+	// failed
+	// finished
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 失败原因
+		FailReason *string `json:"FailReason,omitempty" name:"FailReason"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCloudBaseRunOneClickTaskExternalResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudBaseRunOneClickTaskExternalResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeCloudBaseRunOperationTypesRequest struct {
 	*tchttp.BaseRequest
 
@@ -2792,6 +2872,73 @@ func (r *DescribeCloudBaseRunResourceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCloudBaseRunResourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudBaseRunServerDomainNameRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务名
+	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+	// 环境Id
+	UserEnvId *string `json:"UserEnvId,omitempty" name:"UserEnvId"`
+
+	// 用户Uin
+	UserUin *string `json:"UserUin,omitempty" name:"UserUin"`
+
+	// 外部Id
+	ExternalId *string `json:"ExternalId,omitempty" name:"ExternalId"`
+}
+
+func (r *DescribeCloudBaseRunServerDomainNameRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudBaseRunServerDomainNameRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServerName")
+	delete(f, "UserEnvId")
+	delete(f, "UserUin")
+	delete(f, "ExternalId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudBaseRunServerDomainNameRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudBaseRunServerDomainNameResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 公网服务域名
+		PublicDomain *string `json:"PublicDomain,omitempty" name:"PublicDomain"`
+
+		// 内部服务域名
+		InternalDomain *string `json:"InternalDomain,omitempty" name:"InternalDomain"`
+
+		// 弃用
+		DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCloudBaseRunServerDomainNameResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudBaseRunServerDomainNameResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

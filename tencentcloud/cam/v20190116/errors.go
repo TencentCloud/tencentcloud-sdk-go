@@ -224,6 +224,9 @@ const (
 	// 用户对象不存在。
 	INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"
 
+	// 用户的Uin和Uid不能都为空。
+	INVALIDPARAMETER_USERUINANDUINNOTALLNULL = "InvalidParameter.UserUinAndUinNotAllNull"
+
 	// 策略文档的Version字段不合法。
 	INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
 

@@ -1683,6 +1683,44 @@ func (c *Client) DescribeReportData(request *DescribeReportDataRequest) (respons
     return
 }
 
+func NewDescribeScdnBotDataRequest() (request *DescribeScdnBotDataRequest) {
+    request = &DescribeScdnBotDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdn", APIVersion, "DescribeScdnBotData")
+    
+    return
+}
+
+func NewDescribeScdnBotDataResponse() (response *DescribeScdnBotDataResponse) {
+    response = &DescribeScdnBotDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeScdnBotData
+// 获取BOT统计数据列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CDNCONFIGERROR = "InternalError.CdnConfigError"
+//  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
+//  INTERNALERROR_ERROR = "InternalError.Error"
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  INTERNALERROR_SYSTEMDBERROR = "InternalError.SystemDBError"
+//  INVALIDPARAMETER_CDNPARAMERROR = "InvalidParameter.CdnParamError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  UNAUTHORIZEDOPERATION_CDNACCOUNTUNAUTHORIZED = "UnauthorizedOperation.CdnAccountUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+func (c *Client) DescribeScdnBotData(request *DescribeScdnBotDataRequest) (response *DescribeScdnBotDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeScdnBotDataRequest()
+    }
+    response = NewDescribeScdnBotDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeScdnBotRecordsRequest() (request *DescribeScdnBotRecordsRequest) {
     request = &DescribeScdnBotRecordsRequest{
         BaseRequest: &tchttp.BaseRequest{},

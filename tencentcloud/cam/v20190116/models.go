@@ -131,7 +131,7 @@ func (r *AddUserResponse) FromJsonString(s string) error {
 type AddUserToGroupRequest struct {
 	*tchttp.BaseRequest
 
-	// 添加的子用户 UID 和用户组 ID 关联关系
+	// 添加的子用户 UIN/UID 和用户组 ID 关联关系
 	Info []*GroupIdOfUidInfo `json:"Info,omitempty" name:"Info"`
 }
 
@@ -3577,7 +3577,7 @@ func (r *PutUserPermissionsBoundaryResponse) FromJsonString(s string) error {
 type RemoveUserFromGroupRequest struct {
 	*tchttp.BaseRequest
 
-	// 要删除的用户 UID和用户组 ID对应数组
+	// 要删除的用户 UIN/UID和用户组 ID对应数组
 	Info []*GroupIdOfUidInfo `json:"Info,omitempty" name:"Info"`
 }
 

@@ -1,31 +1,61 @@
 # 本版本更新包含以下内容：
 
-## 访问管理(cam) 版本：2019-01-16
+## 云顾问(advisor) 版本：2020-07-21
 
-### 第 39 次发布
+### 第 3 次发布
 
-发布时间：2021-11-08 08:02:23
+发布时间：2021-11-09 08:05:53
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+新增数据结构：
+
+* [KeyValue](https://cloud.tencent.com/document/api/1264/63113#KeyValue)
+
 修改数据结构：
 
-* [GroupIdOfUidInfo](https://cloud.tencent.com/document/api/598/33167#GroupIdOfUidInfo)
+* [RiskFieldsDesc](https://cloud.tencent.com/document/api/1264/63113#RiskFieldsDesc)
 
-	* 新增成员：Uin
+	* 新增成员：FieldDict
 
-	* <font color="#dd0000">**修改成员**：</font>Uid
+
+
+
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 86 次发布
+
+发布时间：2021-11-09 08:07:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeScdnBotData](https://cloud.tencent.com/document/api/228/63777)
+
+新增数据结构：
+
+* [BotStats](https://cloud.tencent.com/document/api/228/30987#BotStats)
+* [BotStatsDetailData](https://cloud.tencent.com/document/api/228/30987#BotStatsDetailData)
+
+修改数据结构：
+
+* [TrafficPackage](https://cloud.tencent.com/document/api/228/30987#TrafficPackage)
+
+	* 新增成员：ConfigId
 
 
 
 
 ## 数据传输服务(dts) 版本：2018-03-30
 
-### 第 14 次发布
+### 第 15 次发布
 
-发布时间：2021-11-08 08:05:43
+发布时间：2021-11-09 08:10:46
 
 本次发布包含了以下内容：
 
@@ -33,27 +63,21 @@
 
 <font color="#dd0000">**删除接口**：</font>
 
-* CreateSyncCheckJob
-* CreateSyncJob
-* DeleteSyncJob
-* DescribeSyncJobs
-* StartSyncJob
-* SwitchDrToMaster
+* DescribeSyncCheckJob
+* ModifySyncJob
 
 <font color="#dd0000">**删除数据结构**：</font>
 
-* SyncDetailInfo
-* SyncInstanceInfo
-* SyncJobInfo
-* SyncStepDetailInfo
+* SyncCheckStepInfo
+* SyncOption
 
 
 
-## Elasticsearch Service(es) 版本：2018-04-16
+## 文字识别(ocr) 版本：2018-11-19
 
-### 第 20 次发布
+### 第 57 次发布
 
-发布时间：2021-11-08 08:06:16
+发布时间：2021-11-09 08:13:57
 
 本次发布包含了以下内容：
 
@@ -61,52 +85,35 @@
 
 修改接口：
 
-* [CreateInstance](https://cloud.tencent.com/document/api/845/30633)
+* [GeneralAccurateOCR](https://cloud.tencent.com/document/api/866/34937)
 
-	* 新增入参：Protocol
-
-* [UpdateInstance](https://cloud.tencent.com/document/api/845/30629)
-
-	* 新增入参：SwitchPrivateLink, EnableCerebro, CerebroPublicAccess, CerebroPrivateAccess
-
-
-修改数据结构：
-
-* [InstanceInfo](https://cloud.tencent.com/document/api/845/30634#InstanceInfo)
-
-	* 新增成员：Protocol, SecurityGroups
+	* 新增入参：IsPdf, PdfPageNumber
 
 
 
 
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+## 云开发 CloudBase(tcb) 版本：2018-06-08
 
-### 第 6 次发布
+### 第 73 次发布
 
-发布时间：2021-11-08 08:06:21
+发布时间：2021-11-09 08:15:23
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [UsageDetail](https://cloud.tencent.com/document/api/1420/61525#UsageDetail)
-
-	* 新增成员：ProxyOrganizationName
-
+* [DescribeCloudBaseRunOneClickTaskExternal](https://cloud.tencent.com/document/api/876/63779)
+* [DescribeCloudBaseRunServerDomainName](https://cloud.tencent.com/document/api/876/63778)
 
 
 
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+## 图像分析(tiia) 版本：2019-05-29
 
+### 第 17 次发布
 
-
-## 云函数(scf) 版本：2018-04-16
-
-### 第 37 次发布
-
-发布时间：2021-11-08 08:09:22
+发布时间：2021-11-09 08:16:08
 
 本次发布包含了以下内容：
 
@@ -114,23 +121,10 @@
 
 修改接口：
 
-* [CreateFunction](https://cloud.tencent.com/document/api/583/18586)
+* [DetectProductBeta](https://cloud.tencent.com/document/api/865/43354)
 
-	* 新增入参：ProtocolType, ProtocolParams
+	* 新增入参：NeedLemma
 
-* [GetFunction](https://cloud.tencent.com/document/api/583/18584)
-
-	* 新增出参：ProtocolType, ProtocolParams
-
-* [UpdateFunctionConfiguration](https://cloud.tencent.com/document/api/583/18580)
-
-	* 新增入参：ProtocolParams
-
-
-新增数据结构：
-
-* [ProtocolParams](https://cloud.tencent.com/document/api/583/17244#ProtocolParams)
-* [WSParams](https://cloud.tencent.com/document/api/583/17244#WSParams)
 
 
 
@@ -354,6 +348,25 @@
 
 
 ## 云顾问(advisor) 版本：2020-07-21
+
+### 第 3 次发布
+
+发布时间：2021-11-09 08:05:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[KeyValue](https://cloud.tencent.com/document/api/1264/63113#KeyValue)](https://cloud.tencent.com/document/api/1264/63113#[KeyValue](https://cloud.tencent.com/document/api/1264/63113#KeyValue))
+
+修改数据结构：
+
+* [RiskFieldsDesc](https://cloud.tencent.com/document/api/1264/63113#RiskFieldsDesc)
+
+	* 新增成员：FieldDict
+
 
 ### 第 2 次发布
 
@@ -9626,6 +9639,30 @@
 
 
 ## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 86 次发布
+
+发布时间：2021-11-09 08:07:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeScdnBotData](https://cloud.tencent.com/document/api/228/63777)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[BotStats](https://cloud.tencent.com/document/api/228/30987#BotStats)](https://cloud.tencent.com/document/api/228/30987#[BotStats](https://cloud.tencent.com/document/api/228/30987#BotStats))
+* [[BotStatsDetailData](https://cloud.tencent.com/document/api/228/30987#BotStatsDetailData)](https://cloud.tencent.com/document/api/228/30987#[BotStatsDetailData](https://cloud.tencent.com/document/api/228/30987#BotStatsDetailData))
+
+修改数据结构：
+
+* [TrafficPackage](https://cloud.tencent.com/document/api/228/30987#TrafficPackage)
+
+	* 新增成员：ConfigId
+
 
 ### 第 85 次发布
 
@@ -23317,6 +23354,24 @@
 
 
 ## 数据传输服务(dts) 版本：2018-03-30
+
+### 第 15 次发布
+
+发布时间：2021-11-09 08:10:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeSyncCheckJob
+* ModifySyncJob
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* SyncCheckStepInfo
+* SyncOption
 
 ### 第 14 次发布
 
@@ -40154,6 +40209,21 @@
 
 ## 文字识别(ocr) 版本：2018-11-19
 
+### 第 57 次发布
+
+发布时间：2021-11-09 08:13:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GeneralAccurateOCR](https://cloud.tencent.com/document/api/866/34937)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+
 ### 第 56 次发布
 
 发布时间：2021-10-13 08:10:08
@@ -43406,8 +43476,8 @@
 
 新增数据结构：
 
-* [[ProtocolParams](https://cloud.tencent.com/document/api/583/17244#ProtocolParams)](https://cloud.tencent.com/document/api/583/17244#[ProtocolParams](https://cloud.tencent.com/document/api/583/17244#ProtocolParams))
-* [[WSParams](https://cloud.tencent.com/document/api/583/17244#WSParams)](https://cloud.tencent.com/document/api/583/17244#[WSParams](https://cloud.tencent.com/document/api/583/17244#WSParams))
+* [ProtocolParams](https://cloud.tencent.com/document/api/583/17244#ProtocolParams)
+* [WSParams](https://cloud.tencent.com/document/api/583/17244#WSParams)
 
 ### 第 36 次发布
 
@@ -47852,6 +47922,19 @@
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
 
+### 第 73 次发布
+
+发布时间：2021-11-09 08:15:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeCloudBaseRunOneClickTaskExternal](https://cloud.tencent.com/document/api/876/63779)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeCloudBaseRunServerDomainName](https://cloud.tencent.com/document/api/876/63778)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 72 次发布
 
 发布时间：2021-10-26 08:13:05
@@ -51707,6 +51790,21 @@
 
 
 ## 图像分析(tiia) 版本：2019-05-29
+
+### 第 17 次发布
+
+发布时间：2021-11-09 08:16:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DetectProductBeta](https://cloud.tencent.com/document/api/865/43354)
+
+	* 新增入参：NeedLemma
+
 
 ### 第 16 次发布
 

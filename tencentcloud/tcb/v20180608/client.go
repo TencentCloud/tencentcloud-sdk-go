@@ -887,6 +887,39 @@ func (c *Client) DescribeCloudBaseRunConfForGateWay(request *DescribeCloudBaseRu
     return
 }
 
+func NewDescribeCloudBaseRunOneClickTaskExternalRequest() (request *DescribeCloudBaseRunOneClickTaskExternalRequest) {
+    request = &DescribeCloudBaseRunOneClickTaskExternalRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseRunOneClickTaskExternal")
+    
+    return
+}
+
+func NewDescribeCloudBaseRunOneClickTaskExternalResponse() (response *DescribeCloudBaseRunOneClickTaskExternalResponse) {
+    response = &DescribeCloudBaseRunOneClickTaskExternalResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCloudBaseRunOneClickTaskExternal
+// 查询一键部署任务 （特定接口：外部查询使用）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+func (c *Client) DescribeCloudBaseRunOneClickTaskExternal(request *DescribeCloudBaseRunOneClickTaskExternalRequest) (response *DescribeCloudBaseRunOneClickTaskExternalResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudBaseRunOneClickTaskExternalRequest()
+    }
+    response = NewDescribeCloudBaseRunOneClickTaskExternalResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudBaseRunOperationTypesRequest() (request *DescribeCloudBaseRunOperationTypesRequest) {
     request = &DescribeCloudBaseRunOperationTypesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1041,6 +1074,39 @@ func (c *Client) DescribeCloudBaseRunServer(request *DescribeCloudBaseRunServerR
         request = NewDescribeCloudBaseRunServerRequest()
     }
     response = NewDescribeCloudBaseRunServerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudBaseRunServerDomainNameRequest() (request *DescribeCloudBaseRunServerDomainNameRequest) {
+    request = &DescribeCloudBaseRunServerDomainNameRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseRunServerDomainName")
+    
+    return
+}
+
+func NewDescribeCloudBaseRunServerDomainNameResponse() (response *DescribeCloudBaseRunServerDomainNameResponse) {
+    response = &DescribeCloudBaseRunServerDomainNameResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCloudBaseRunServerDomainName
+// 查询微信云托管服务域名
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+func (c *Client) DescribeCloudBaseRunServerDomainName(request *DescribeCloudBaseRunServerDomainNameRequest) (response *DescribeCloudBaseRunServerDomainNameResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudBaseRunServerDomainNameRequest()
+    }
+    response = NewDescribeCloudBaseRunServerDomainNameResponse()
     err = c.Send(request, response)
     return
 }

@@ -1673,6 +1673,12 @@ type GeneralAccurateOCRRequest struct {
 
 	// 是否开启原图切图检测功能，开启后可提升“整图面积大，但单字符占比面积小”（例如：试卷）场景下的识别效果，默认关
 	EnableDetectSplit *bool `json:"EnableDetectSplit,omitempty" name:"EnableDetectSplit"`
+
+	// 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *uint64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 func (r *GeneralAccurateOCRRequest) ToJsonString() string {
@@ -1691,6 +1697,8 @@ func (r *GeneralAccurateOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "IsWords")
 	delete(f, "EnableDetectSplit")
+	delete(f, "IsPdf")
+	delete(f, "PdfPageNumber")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GeneralAccurateOCRRequest has unknown keys!", "")
 	}

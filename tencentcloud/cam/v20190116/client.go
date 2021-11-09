@@ -103,6 +103,7 @@ func NewAddUserToGroupResponse() (response *AddUserToGroupResponse) {
 //  INVALIDPARAMETER_GROUPNOTEXIST = "InvalidParameter.GroupNotExist"
 //  INVALIDPARAMETER_GROUPUSERFULL = "InvalidParameter.GroupUserFull"
 //  INVALIDPARAMETER_USERGROUPFULL = "InvalidParameter.UserGroupFull"
+//  INVALIDPARAMETER_USERUINANDUINNOTALLNULL = "InvalidParameter.UserUinAndUinNotAllNull"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) AddUserToGroup(request *AddUserToGroupRequest) (response *AddUserToGroupResponse, err error) {
     if request == nil {
@@ -2065,6 +2066,7 @@ func NewRemoveUserFromGroupResponse() (response *RemoveUserFromGroupResponse) {
 // 从用户组删除用户
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_USERUINANDUINNOTALLNULL = "InvalidParameter.UserUinAndUinNotAllNull"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) RemoveUserFromGroup(request *RemoveUserFromGroupRequest) (response *RemoveUserFromGroupResponse, err error) {
     if request == nil {

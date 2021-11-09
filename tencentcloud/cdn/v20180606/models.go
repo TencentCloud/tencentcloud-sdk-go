@@ -1116,6 +1116,24 @@ type BotStatisticsCount struct {
 	Isp *string `json:"Isp,omitempty" name:"Isp"`
 }
 
+type BotStats struct {
+
+	// 指标名称
+	Metric *string `json:"Metric,omitempty" name:"Metric"`
+
+	// 指标详细数据
+	DetailData []*BotStatsDetailData `json:"DetailData,omitempty" name:"DetailData"`
+}
+
+type BotStatsDetailData struct {
+
+	// 时间
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 数据值
+	Value *int64 `json:"Value,omitempty" name:"Value"`
+}
+
 type BriefDomain struct {
 
 	// 域名 ID
@@ -4118,6 +4136,74 @@ func (r *DescribeReportDataResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeReportDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeScdnBotDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// mainland 大陆地区 overseas境外地区
+	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 取值："2min"或者"hour"，表示查询2分钟或者1小时粒度的数据，如果查询时间范围>1天，则强制返回1小时粒度数据
+	Interval *string `json:"Interval,omitempty" name:"Interval"`
+
+	// 域名数组，多选域名时，使用此参数,不填写表示查询所有域名的数据（AppID维度数据）
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
+}
+
+func (r *DescribeScdnBotDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScdnBotDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Area")
+	delete(f, "Interval")
+	delete(f, "Domains")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScdnBotDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeScdnBotDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 统计信息详细数据
+		Data []*BotStats `json:"Data,omitempty" name:"Data"`
+
+		// 当前返回数据的粒度，取值："2min"或者"hour"，分别表示2分钟或者1小时粒度
+		Interval *string `json:"Interval,omitempty" name:"Interval"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeScdnBotDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScdnBotDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9203,6 +9289,10 @@ type TrafficPackage struct {
 	// 8：非洲
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *int64 `json:"Region,omitempty" name:"Region"`
+
+	// 流量包类型id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigId *int64 `json:"ConfigId,omitempty" name:"ConfigId"`
 }
 
 type UpdateDomainConfigRequest struct {

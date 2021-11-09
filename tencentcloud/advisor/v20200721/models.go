@@ -194,6 +194,15 @@ func (r *DescribeTaskStrategyRisksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type KeyValue struct {
+
+	// 键名
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 键名对应值
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type RiskFieldsDesc struct {
 
 	// 字段ID
@@ -208,4 +217,8 @@ type RiskFieldsDesc struct {
 	// stringSlice : 字符串数组类型，例如["a", "b"]
 	// tags: 标签类型, 例如: [{"Key":"kkk","Value":"vvv"},{"Key":"kkk2","Value":"vvv2"}]
 	FieldType *string `json:"FieldType,omitempty" name:"FieldType"`
+
+	// 字段值对应字典
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldDict []*KeyValue `json:"FieldDict,omitempty" name:"FieldDict"`
 }

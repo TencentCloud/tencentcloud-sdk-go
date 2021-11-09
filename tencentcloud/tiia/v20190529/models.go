@@ -980,6 +980,9 @@ type DetectProductBetaRequest struct {
 	// 图片经过base64编码的内容。最大不超过1M，分辨率在25万到100万之间。 
 	// 与ImageUrl同时存在时优先使用ImageUrl字段。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 是否需要百科信息 1：是，0: 否，默认是0
+	NeedLemma *int64 `json:"NeedLemma,omitempty" name:"NeedLemma"`
 }
 
 func (r *DetectProductBetaRequest) ToJsonString() string {
@@ -996,6 +999,7 @@ func (r *DetectProductBetaRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ImageUrl")
 	delete(f, "ImageBase64")
+	delete(f, "NeedLemma")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectProductBetaRequest has unknown keys!", "")
 	}

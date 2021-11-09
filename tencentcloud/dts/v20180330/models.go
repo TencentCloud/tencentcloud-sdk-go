@@ -865,67 +865,6 @@ func (r *DescribeSubscribesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeSyncCheckJobRequest struct {
-	*tchttp.BaseRequest
-
-	// 要查询的灾备同步任务ID
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
-}
-
-func (r *DescribeSyncCheckJobRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeSyncCheckJobRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "JobId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSyncCheckJobRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeSyncCheckJobResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务校验状态： starting(开始中)，running(校验中)，finished(校验完成)
-		Status *string `json:"Status,omitempty" name:"Status"`
-
-		// 任务校验结果代码
-		ErrorCode *int64 `json:"ErrorCode,omitempty" name:"ErrorCode"`
-
-		// 提示信息
-		ErrorMessage *string `json:"ErrorMessage,omitempty" name:"ErrorMessage"`
-
-		// 任务执行步骤描述
-		StepInfo []*SyncCheckStepInfo `json:"StepInfo,omitempty" name:"StepInfo"`
-
-		// 校验标志：0（尚未校验成功） ， 1（校验成功）
-		CheckFlag *int64 `json:"CheckFlag,omitempty" name:"CheckFlag"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *DescribeSyncCheckJobResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeSyncCheckJobResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DstInfo struct {
 
 	// 目标实例地域，如ap-guangzhou
@@ -1491,66 +1430,6 @@ func (r *ModifySubscribeVipVportResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type ModifySyncJobRequest struct {
-	*tchttp.BaseRequest
-
-	// 待修改的灾备同步任务ID
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
-
-	// 灾备同步任务名称
-	JobName *string `json:"JobName,omitempty" name:"JobName"`
-
-	// 灾备同步任务配置选项
-	SyncOption *SyncOption `json:"SyncOption,omitempty" name:"SyncOption"`
-
-	// 当选择'指定库表'灾备同步的时候, 需要设置待同步的源数据库表信息,用符合json数组格式的字符串描述, 如下所例。
-	// 对于database-table两级结构的数据库：
-	// [{"Database":"db1","Table":["table1","table2"]},{"Database":"db2"}]
-	DatabaseInfo *string `json:"DatabaseInfo,omitempty" name:"DatabaseInfo"`
-}
-
-func (r *ModifySyncJobRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ModifySyncJobRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "JobId")
-	delete(f, "JobName")
-	delete(f, "SyncOption")
-	delete(f, "DatabaseInfo")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySyncJobRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type ModifySyncJobResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *ModifySyncJobResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ModifySyncJobResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type OfflineIsolatedSubscribeRequest struct {
 	*tchttp.BaseRequest
 
@@ -1901,36 +1780,6 @@ type SubscribeRegionConf struct {
 	// 当前地域的售卖情况，1 - 正常， 2-灰度，3 - 停售
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
-}
-
-type SyncCheckStepInfo struct {
-
-	// 步骤序列
-	StepNo *uint64 `json:"StepNo,omitempty" name:"StepNo"`
-
-	// 步骤展现名称
-	StepName *string `json:"StepName,omitempty" name:"StepName"`
-
-	// 步骤执行结果代码
-	StepCode *int64 `json:"StepCode,omitempty" name:"StepCode"`
-
-	// 步骤执行结果提示
-	StepMessage *string `json:"StepMessage,omitempty" name:"StepMessage"`
-}
-
-type SyncOption struct {
-
-	// 同步对象，1-整个实例，2-指定库表
-	SyncObject *uint64 `json:"SyncObject,omitempty" name:"SyncObject"`
-
-	// 同步开始设置，1-立即开始
-	RunMode *uint64 `json:"RunMode,omitempty" name:"RunMode"`
-
-	// 同步模式， 3-全量且增量同步
-	SyncType *uint64 `json:"SyncType,omitempty" name:"SyncType"`
-
-	// 数据一致性检测， 1-无需配置
-	ConsistencyType *uint64 `json:"ConsistencyType,omitempty" name:"ConsistencyType"`
 }
 
 type TagFilter struct {

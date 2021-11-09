@@ -114,6 +114,7 @@ func NewSendTtsVoiceResponse() (response *SendTtsVoiceResponse) {
 // 给用户发送指定模板的语音通知。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACCESSUPSTREAMTIMEOUT = "FailedOperation.AccessUpstreamTimeout"
 //  FAILEDOPERATION_CONTAINSENSITIVEWORD = "FailedOperation.ContainSensitiveWord"
 //  FAILEDOPERATION_FAILRESOLVEPACKET = "FailedOperation.FailResolvePacket"
 //  FAILEDOPERATION_INSUFFICIENTBALANCEINVOICEPACKAGE = "FailedOperation.InsufficientBalanceInVoicePackage"
@@ -127,6 +128,7 @@ func NewSendTtsVoiceResponse() (response *SendTtsVoiceResponse) {
 //  INTERNALERROR_REQUESTTIMEEXCEPTION = "InternalError.RequestTimeException"
 //  INTERNALERROR_RESTAPIINTERFACENOTEXIST = "InternalError.RestApiInterfaceNotExist"
 //  INTERNALERROR_SIGVERIFICATIONFAIL = "InternalError.SigVerificationFail"
+//  INTERNALERROR_SSOSENDRECVFAIL = "InternalError.SsoSendRecvFail"
 //  INTERNALERROR_UPSTREAMERROR = "InternalError.UpstreamError"
 //  INVALIDPARAMETERVALUE_CALLEDNUMBERVERIFYFAIL = "InvalidParameterValue.CalledNumberVerifyFail"
 //  INVALIDPARAMETERVALUE_CONTENTLENGTHLIMIT = "InvalidParameterValue.ContentLengthLimit"
