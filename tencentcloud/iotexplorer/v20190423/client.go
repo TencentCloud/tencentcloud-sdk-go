@@ -176,6 +176,52 @@ func (c *Client) ControlDeviceData(request *ControlDeviceDataRequest) (response 
     return
 }
 
+func NewCreateBatchProductionRequest() (request *CreateBatchProductionRequest) {
+    request = &CreateBatchProductionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateBatchProduction")
+    
+    return
+}
+
+func NewCreateBatchProductionResponse() (response *CreateBatchProductionResponse) {
+    response = &CreateBatchProductionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateBatchProduction
+// 用于新建批量生产设备
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PRODUCTNOTRELEASED = "FailedOperation.ProductNotReleased"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_BATCHPRODUCTIONEXCEEDLIMIT = "LimitExceeded.BatchProductionExceedLimit"
+//  LIMITEXCEEDED_BATCHPRODUCTIONNULL = "LimitExceeded.BatchProductionNull"
+//  RESOURCEINSUFFICIENT_BATCHPRODUCTIONISRUNNING = "ResourceInsufficient.BatchProductionIsRunning"
+//  RESOURCENOTFOUND_CANNOTGETFROMURL = "ResourceNotFound.CannotGetFromUrl"
+//  RESOURCENOTFOUND_DEVICEDUPKEYEXIST = "ResourceNotFound.DeviceDupKeyExist"
+//  RESOURCENOTFOUND_PROJECTNOTEXIST = "ResourceNotFound.ProjectNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOPROJECT = "UnauthorizedOperation.NoPermissionToProject"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_DEVICEEXCEEDLIMIT = "UnsupportedOperation.DeviceExceedLimit"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) CreateBatchProduction(request *CreateBatchProductionRequest) (response *CreateBatchProductionResponse, err error) {
+    if request == nil {
+        request = NewCreateBatchProductionRequest()
+    }
+    response = NewCreateBatchProductionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDeviceRequest() (request *CreateDeviceRequest) {
     request = &CreateDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -961,6 +1007,42 @@ func (c *Client) DeleteTopicRule(request *DeleteTopicRuleRequest) (response *Del
     return
 }
 
+func NewDescribeBatchProductionRequest() (request *DescribeBatchProductionRequest) {
+    request = &DescribeBatchProductionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeBatchProduction")
+    
+    return
+}
+
+func NewDescribeBatchProductionResponse() (response *DescribeBatchProductionResponse) {
+    response = &DescribeBatchProductionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBatchProduction
+// 获取量产详情信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_BATCHPRODUCTIONNOTEXIST = "ResourceNotFound.BatchProductionNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOPROJECT = "UnauthorizedOperation.NoPermissionToProject"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+func (c *Client) DescribeBatchProduction(request *DescribeBatchProductionRequest) (response *DescribeBatchProductionResponse, err error) {
+    if request == nil {
+        request = NewDescribeBatchProductionRequest()
+    }
+    response = NewDescribeBatchProductionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeviceRequest() (request *DescribeDeviceRequest) {
     request = &DescribeDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1617,6 +1699,41 @@ func (c *Client) EnableTopicRule(request *EnableTopicRuleRequest) (response *Ena
         request = NewEnableTopicRuleRequest()
     }
     response = NewEnableTopicRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetBatchProductionsListRequest() (request *GetBatchProductionsListRequest) {
+    request = &GetBatchProductionsListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "GetBatchProductionsList")
+    
+    return
+}
+
+func NewGetBatchProductionsListResponse() (response *GetBatchProductionsListResponse) {
+    response = &GetBatchProductionsListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetBatchProductionsList
+// 列出量产数据列表信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_PROJECTNOTEXIST = "ResourceNotFound.ProjectNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOPROJECT = "UnauthorizedOperation.NoPermissionToProject"
+func (c *Client) GetBatchProductionsList(request *GetBatchProductionsListRequest) (response *GetBatchProductionsListResponse, err error) {
+    if request == nil {
+        request = NewGetBatchProductionsListRequest()
+    }
+    response = NewGetBatchProductionsListResponse()
     err = c.Send(request, response)
     return
 }

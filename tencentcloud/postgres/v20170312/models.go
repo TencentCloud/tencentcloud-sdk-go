@@ -2915,10 +2915,10 @@ type ModifyDBInstanceSpecRequest struct {
 	// 实例ID，形如：postgres-6bwgamo3。
 	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
 
-	// 升级后的实例内存大小，单位GiB。
+	// 修改后的实例内存大小，单位GiB。
 	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
 
-	// 升级后的实例磁盘大小，单位GiB。
+	// 修改后的实例磁盘大小，单位GiB。
 	Storage *uint64 `json:"Storage,omitempty" name:"Storage"`
 
 	// 是否自动使用代金券,1是,0否，默认不使用。

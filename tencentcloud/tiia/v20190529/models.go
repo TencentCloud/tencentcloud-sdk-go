@@ -1253,6 +1253,21 @@ type Labels struct {
 	SecondLabel *string `json:"SecondLabel,omitempty" name:"SecondLabel"`
 }
 
+type LemmaInfo struct {
+
+	// 词条
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LemmaTitle *string `json:"LemmaTitle,omitempty" name:"LemmaTitle"`
+
+	// 词条描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LemmaAbstract *string `json:"LemmaAbstract,omitempty" name:"LemmaAbstract"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tag *string `json:"Tag,omitempty" name:"Tag"`
+}
+
 type Location struct {
 
 	// 位置矩形框的左上角横坐标
@@ -1321,6 +1336,10 @@ type ProductInfo struct {
 
 	// 搜索到的商品配图URL。
 	Image *string `json:"Image,omitempty" name:"Image"`
+
+	// 百科词条列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LemmaInfoList []*LemmaInfo `json:"LemmaInfoList,omitempty" name:"LemmaInfoList"`
 }
 
 type RecognizeCarRequest struct {

@@ -2568,7 +2568,7 @@ type DescribeCloudBaseRunOneClickTaskExternalResponse struct {
 		// 外部任务Id
 		ExternalId *string `json:"ExternalId,omitempty" name:"ExternalId"`
 
-		// 环境Id
+		// 弃用
 		EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
 
 		// 用户uin
@@ -2598,6 +2598,9 @@ type DescribeCloudBaseRunOneClickTaskExternalResponse struct {
 
 		// 失败原因
 		FailReason *string `json:"FailReason,omitempty" name:"FailReason"`
+
+		// 用户envId
+		UserEnvId *string `json:"UserEnvId,omitempty" name:"UserEnvId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

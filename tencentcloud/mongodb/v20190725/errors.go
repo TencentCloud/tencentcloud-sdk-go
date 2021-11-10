@@ -29,6 +29,9 @@ const (
 	// appId校验失败。
 	INTERNALERROR_CHECKAPPIDFAILED = "InternalError.CheckAppIdFailed"
 
+	// 实例查询失败。
+	INTERNALERROR_FINDINSTANCEFAILED = "InternalError.FindInstanceFailed"
+
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 

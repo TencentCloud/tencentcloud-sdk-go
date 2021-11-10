@@ -53,6 +53,24 @@ type AppDeviceInfo struct {
 	UpdateTime *int64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
+type BatchProductionInfo struct {
+
+	// 量产ID
+	BatchProductionId *string `json:"BatchProductionId,omitempty" name:"BatchProductionId"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 烧录方式
+	BurnMethod *int64 `json:"BurnMethod,omitempty" name:"BurnMethod"`
+
+	// 创建时间
+	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 产品名称
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+}
+
 type CallDeviceActionAsyncRequest struct {
 	*tchttp.BaseRequest
 
@@ -256,6 +274,85 @@ func (r *ControlDeviceDataResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ControlDeviceDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateBatchProductionRequest struct {
+	*tchttp.BaseRequest
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 烧录方式，0为直接烧录，1为动态注册。
+	BurnMethod *int64 `json:"BurnMethod,omitempty" name:"BurnMethod"`
+
+	// 生成方式，0为系统生成，1为文件上传。
+	GenerationMethod *int64 `json:"GenerationMethod,omitempty" name:"GenerationMethod"`
+
+	// 文件上传URL，用于文件上传时填写。
+	UploadUrl *string `json:"UploadUrl,omitempty" name:"UploadUrl"`
+
+	// 量产数量，用于系统生成时填写。
+	BatchCnt *int64 `json:"BatchCnt,omitempty" name:"BatchCnt"`
+
+	// 是否生成二维码,0为不生成，1为生成。
+	GenerationQRCode *int64 `json:"GenerationQRCode,omitempty" name:"GenerationQRCode"`
+}
+
+func (r *CreateBatchProductionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchProductionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "ProductId")
+	delete(f, "BurnMethod")
+	delete(f, "GenerationMethod")
+	delete(f, "UploadUrl")
+	delete(f, "BatchCnt")
+	delete(f, "GenerationQRCode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchProductionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateBatchProductionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 项目Id
+		ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+		// 产品Id
+		ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+		// 量产id
+		BatchProductionId *string `json:"BatchProductionId,omitempty" name:"BatchProductionId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateBatchProductionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchProductionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1445,6 +1542,74 @@ func (r *DeleteTopicRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteTopicRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBatchProductionRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 量产ID
+	BatchProductionId *string `json:"BatchProductionId,omitempty" name:"BatchProductionId"`
+}
+
+func (r *DescribeBatchProductionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBatchProductionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "BatchProductionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBatchProductionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBatchProductionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 量产数量。
+		BatchCnt *int64 `json:"BatchCnt,omitempty" name:"BatchCnt"`
+
+		// 烧录方式。
+		BurnMethod *int64 `json:"BurnMethod,omitempty" name:"BurnMethod"`
+
+		// 创建时间。
+		CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+		// 下载URL。
+		DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+
+		// 生成方式。
+		GenerationMethod *int64 `json:"GenerationMethod,omitempty" name:"GenerationMethod"`
+
+		// 上传URL。
+		UploadUrl *string `json:"UploadUrl,omitempty" name:"UploadUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBatchProductionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBatchProductionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2784,6 +2949,67 @@ type FirmwareInfo struct {
 	// 创建者昵称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatorNickName *string `json:"CreatorNickName,omitempty" name:"CreatorNickName"`
+}
+
+type GetBatchProductionsListRequest struct {
+	*tchttp.BaseRequest
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量限制
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *GetBatchProductionsListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetBatchProductionsListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetBatchProductionsListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetBatchProductionsListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回详情信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		BatchProductions []*BatchProductionInfo `json:"BatchProductions,omitempty" name:"BatchProductions"`
+
+		// 返回数量。
+		TotalCnt *int64 `json:"TotalCnt,omitempty" name:"TotalCnt"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetBatchProductionsListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetBatchProductionsListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetCOSURLRequest struct {

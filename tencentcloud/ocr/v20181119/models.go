@@ -2063,7 +2063,7 @@ type HKIDCardOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
@@ -2352,7 +2352,7 @@ type IDCardOCRResponse struct {
 	// Portrait，身份证头像照片的base64编码，请求 Config.CropPortrait 时返回；
 	// 
 	// Quality，图片质量分数，请求 Config.Quality 时返回（取值范围：0~100，分数越低越模糊，建议阈值≥50）;
-	// BorderCodeValue，身份证边框不完整告警阈值分数，请求 Config.BorderCheckWarn时返回（取值范围：0~100，分数越低边框遮挡可能性越低，建议阈值≥50）;
+	// BorderCodeValue，身份证边框不完整告警阈值分数，请求 Config.BorderCheckWarn时返回（取值范围：0~100，分数越低边框遮挡可能性越低，建议阈值≤50）;
 	// 
 	// WarnInfos，告警信息，Code 告警码列表和释义：
 	// -9100	身份证有效日期不合法告警，
@@ -3863,6 +3863,98 @@ func (r *QuotaInvoiceOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type RecognizeContainerOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+func (r *RecognizeContainerOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeContainerOCRRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeContainerOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RecognizeContainerOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 集装箱箱号
+		ContainerId *string `json:"ContainerId,omitempty" name:"ContainerId"`
+
+		// 集装箱类型
+		ContainerType *string `json:"ContainerType,omitempty" name:"ContainerType"`
+
+		// 集装箱总重量，单位：千克（KG）
+		GrossKG *string `json:"GrossKG,omitempty" name:"GrossKG"`
+
+		// 集装箱总重量，单位：磅（LB）
+		GrossLB *string `json:"GrossLB,omitempty" name:"GrossLB"`
+
+		// 集装箱有效承重，单位：千克（KG）
+		PayloadKG *string `json:"PayloadKG,omitempty" name:"PayloadKG"`
+
+		// 集装箱有效承重，单位：磅（LB）
+		PayloadLB *string `json:"PayloadLB,omitempty" name:"PayloadLB"`
+
+		// 集装箱容量，单位：立方米
+		CapacityM3 *string `json:"CapacityM3,omitempty" name:"CapacityM3"`
+
+		// 集装箱容量，单位：立英尺
+		CapacityFT3 *string `json:"CapacityFT3,omitempty" name:"CapacityFT3"`
+
+		// 告警码
+	// -9926	集装箱箱号不完整或者不清晰
+	// -9927	集装箱类型不完整或者不清晰
+		Warn []*int64 `json:"Warn,omitempty" name:"Warn"`
+
+		// 集装箱自身重量，单位：千克（KG）
+		TareKG *string `json:"TareKG,omitempty" name:"TareKG"`
+
+		// 集装箱自身重量，单位：磅（LB）
+		TareLB *string `json:"TareLB,omitempty" name:"TareLB"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RecognizeContainerOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeContainerOCRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type RecognizeOnlineTaxiItineraryOCRRequest struct {
 	*tchttp.BaseRequest
 
@@ -4176,6 +4268,54 @@ type ResidenceBookletOCRResponse struct {
 
 		// 住址
 		Address *string `json:"Address,omitempty" name:"Address"`
+
+		// 承办人签章文字
+		Signature *string `json:"Signature,omitempty" name:"Signature"`
+
+		// 签发日期
+		IssueDate *string `json:"IssueDate,omitempty" name:"IssueDate"`
+
+		// 户主页编号
+		HomePageNumber *string `json:"HomePageNumber,omitempty" name:"HomePageNumber"`
+
+		// 户主姓名
+		HouseholderName *string `json:"HouseholderName,omitempty" name:"HouseholderName"`
+
+		// 户主或与户主关系
+		Relationship *string `json:"Relationship,omitempty" name:"Relationship"`
+
+		// 本市（县）其他住址
+		OtherAddresses *string `json:"OtherAddresses,omitempty" name:"OtherAddresses"`
+
+		// 宗教信仰
+		ReligiousBelief *string `json:"ReligiousBelief,omitempty" name:"ReligiousBelief"`
+
+		// 身高
+		Height *string `json:"Height,omitempty" name:"Height"`
+
+		// 血型
+		BloodType *string `json:"BloodType,omitempty" name:"BloodType"`
+
+		// 婚姻状况
+		MaritalStatus *string `json:"MaritalStatus,omitempty" name:"MaritalStatus"`
+
+		// 兵役状况
+		VeteranStatus *string `json:"VeteranStatus,omitempty" name:"VeteranStatus"`
+
+		// 职业
+		Profession *string `json:"Profession,omitempty" name:"Profession"`
+
+		// 何时由何地迁来本市(县)
+		MoveToCityInformation *string `json:"MoveToCityInformation,omitempty" name:"MoveToCityInformation"`
+
+		// 何时由何地迁来本址
+		MoveToSiteInformation *string `json:"MoveToSiteInformation,omitempty" name:"MoveToSiteInformation"`
+
+		// 登记日期
+		RegistrationDate *string `json:"RegistrationDate,omitempty" name:"RegistrationDate"`
+
+		// 曾用名
+		FormerName *string `json:"FormerName,omitempty" name:"FormerName"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5643,11 +5783,18 @@ type VatInvoiceVerifyRequest struct {
 	// 开票日期（不支持当天发票查询，只支持一年以内），如：2019-12-20。
 	InvoiceDate *string `json:"InvoiceDate,omitempty" name:"InvoiceDate"`
 
-	// 金额/发票校验码后6位（根据票种传递对应值，如果报参数错误，请仔细检查每个票种对应的值）
+	// 根据票种传递对应值，如果报参数错误，请仔细检查每个票种对应的值
+	// 
 	// 增值税专用发票：开具金额（不含税）
+	// 
 	// 增值税普通发票、增值税电子普通发票（含通行费发票）、增值税普通发票（卷票）：校验码后6位
+	// 
+	// 区块链发票：不含税金额/校验码，例如：“285.01/856ab”
+	// 
 	// 机动车销售统一发票：不含税价
+	// 
 	// 货物运输业增值税专用发票：合计金额
+	// 
 	// 二手车销售统一发票：车价合计
 	Additional *string `json:"Additional,omitempty" name:"Additional"`
 }

@@ -6069,6 +6069,10 @@ type Listener struct {
 	// 监听器的会话类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionType *string `json:"SessionType,omitempty" name:"SessionType"`
+
+	// 端口段结束端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndPort *int64 `json:"EndPort,omitempty" name:"EndPort"`
 }
 
 type ListenerBackend struct {

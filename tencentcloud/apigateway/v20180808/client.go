@@ -1526,6 +1526,81 @@ func (c *Client) DescribeApisStatus(request *DescribeApisStatusRequest) (respons
     return
 }
 
+func NewDescribeExclusiveInstanceDetailRequest() (request *DescribeExclusiveInstanceDetailRequest) {
+    request = &DescribeExclusiveInstanceDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "DescribeExclusiveInstanceDetail")
+    
+    return
+}
+
+func NewDescribeExclusiveInstanceDetailResponse() (response *DescribeExclusiveInstanceDetailResponse) {
+    response = &DescribeExclusiveInstanceDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeExclusiveInstanceDetail
+// 本接口（DescribeExclusiveInstanceDetail）用于查询独享实例详情信息。​
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTEXIST = "FailedOperation.InstanceNotExist"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+func (c *Client) DescribeExclusiveInstanceDetail(request *DescribeExclusiveInstanceDetailRequest) (response *DescribeExclusiveInstanceDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeExclusiveInstanceDetailRequest()
+    }
+    response = NewDescribeExclusiveInstanceDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeExclusiveInstancesRequest() (request *DescribeExclusiveInstancesRequest) {
+    request = &DescribeExclusiveInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "DescribeExclusiveInstances")
+    
+    return
+}
+
+func NewDescribeExclusiveInstancesResponse() (response *DescribeExclusiveInstancesResponse) {
+    response = &DescribeExclusiveInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeExclusiveInstances
+// 本接口（DescribeExclusiveInstances）用于查询独享实例列表信息。​
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
+func (c *Client) DescribeExclusiveInstances(request *DescribeExclusiveInstancesRequest) (response *DescribeExclusiveInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeExclusiveInstancesRequest()
+    }
+    response = NewDescribeExclusiveInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeIPStrategyRequest() (request *DescribeIPStrategyRequest) {
     request = &DescribeIPStrategyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2564,6 +2639,47 @@ func (c *Client) ModifyApiIncrement(request *ModifyApiIncrementRequest) (respons
         request = NewModifyApiIncrementRequest()
     }
     response = NewModifyApiIncrementResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyExclusiveInstanceRequest() (request *ModifyExclusiveInstanceRequest) {
+    request = &ModifyExclusiveInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "ModifyExclusiveInstance")
+    
+    return
+}
+
+func NewModifyExclusiveInstanceResponse() (response *ModifyExclusiveInstanceResponse) {
+    response = &ModifyExclusiveInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyExclusiveInstance
+// 本接口（ModifyExclusiveInstance）用于修改独享实例信息。​
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCESSKEYEXIST = "FailedOperation.AccessKeyExist"
+//  FAILEDOPERATION_APIBINDENVIRONMEN = "FailedOperation.ApiBindEnvironmen"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyExclusiveInstance(request *ModifyExclusiveInstanceRequest) (response *ModifyExclusiveInstanceResponse, err error) {
+    if request == nil {
+        request = NewModifyExclusiveInstanceRequest()
+    }
+    response = NewModifyExclusiveInstanceResponse()
     err = c.Send(request, response)
     return
 }

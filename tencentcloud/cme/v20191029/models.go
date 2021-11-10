@@ -3546,7 +3546,7 @@ type PenguinMediaPlatformPublishInfo struct {
 
 type PlatformInfo struct {
 
-	// 平台名称。
+	// 平台标识。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
 	// 平台描述。

@@ -2014,6 +2014,9 @@ type DescribeCloudStorageEventsRequest struct {
 
 	// 用户ID
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 通道ID 非NVR设备则不填 NVR设备则必填 默认为无
+	ChannelId *uint64 `json:"ChannelId,omitempty" name:"ChannelId"`
 }
 
 func (r *DescribeCloudStorageEventsRequest) ToJsonString() string {
@@ -2036,6 +2039,7 @@ func (r *DescribeCloudStorageEventsRequest) FromJsonString(s string) error {
 	delete(f, "Size")
 	delete(f, "EventId")
 	delete(f, "UserId")
+	delete(f, "ChannelId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudStorageEventsRequest has unknown keys!", "")
 	}
@@ -2055,7 +2059,7 @@ type DescribeCloudStorageEventsResponse struct {
 		// 拉取结果是否已经结束
 		Listover *bool `json:"Listover,omitempty" name:"Listover"`
 
-		// 拉取结果数量
+		// 内部结果数量，并不等同于事件总数。
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
 
 		// 视频播放URL

@@ -3271,6 +3271,112 @@ func (r *DescribeApisStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeExclusiveInstanceDetailRequest struct {
+	*tchttp.BaseRequest
+
+	// 独享实例唯一id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeExclusiveInstanceDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExclusiveInstanceDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExclusiveInstanceDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeExclusiveInstanceDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 独享实例详情
+		Result *InstanceDetail `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeExclusiveInstanceDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExclusiveInstanceDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeExclusiveInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 分页查询，limit
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页查询，offset
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeExclusiveInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExclusiveInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExclusiveInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeExclusiveInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 独享实例列表查询结果
+		Result *InstanceInfo `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeExclusiveInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExclusiveInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeIPStrategyApisStatusRequest struct {
 	*tchttp.BaseRequest
 
@@ -5148,6 +5254,104 @@ type IPStrategysStatus struct {
 	StrategySet []*IPStrategy `json:"StrategySet,omitempty" name:"StrategySet"`
 }
 
+type InstanceChargePrepaid struct {
+
+	// 自动续费标示
+	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
+
+	// 预付费到期时间
+	ExpiredTime *string `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
+}
+
+type InstanceDetail struct {
+
+	// 独享实例唯一id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 独享实例名字
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 独享实例描述
+	InstanceDescription *string `json:"InstanceDescription,omitempty" name:"InstanceDescription"`
+
+	// 独享实例计费类型
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
+
+	// 独享实例状态
+	InstanceState *string `json:"InstanceState,omitempty" name:"InstanceState"`
+
+	// 独享实例预付费类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
+
+	// 独享实例类型
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 独享实例网络类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkConfig *NetworkConfig `json:"NetworkConfig,omitempty" name:"NetworkConfig"`
+
+	// 独享实例vpc配置
+	VpcConfig *VpcConfig `json:"VpcConfig,omitempty" name:"VpcConfig"`
+
+	// 独享实例参数配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Parameters []*ParameterInfo `json:"Parameters,omitempty" name:"Parameters"`
+
+	// 独享实例隔离时间
+	IsolationStartedTime *string `json:"IsolationStartedTime,omitempty" name:"IsolationStartedTime"`
+
+	// 创建时间
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 可用区列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zones *string `json:"Zones,omitempty" name:"Zones"`
+}
+
+type InstanceInfo struct {
+
+	// 独享实例唯一id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 独享实例name
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 独享实例描述
+	InstanceDescription *string `json:"InstanceDescription,omitempty" name:"InstanceDescription"`
+
+	// 独享实例计费类型
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
+
+	// 独享实例类型
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 独享实例状态
+	InstanceState *string `json:"InstanceState,omitempty" name:"InstanceState"`
+
+	// 独享实例创建时间
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DealName *string `json:"DealName,omitempty" name:"DealName"`
+
+	// 资源ID同唯一id
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+}
+
+type InstanceParameterInput struct {
+
+	// ServiceRequestNumPreSec，ApiRequestNumPreSec
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 参数值
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type LogQuery struct {
 
 	// 检索字段
@@ -5665,6 +5869,67 @@ func (r *ModifyApiResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyExclusiveInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 独享实例唯一id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 独享实例name
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 独享实例描述
+	InstanceDescription *string `json:"InstanceDescription,omitempty" name:"InstanceDescription"`
+
+	// 独享实例参数配置
+	Parameters []*InstanceParameterInput `json:"Parameters,omitempty" name:"Parameters"`
+}
+
+func (r *ModifyExclusiveInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyExclusiveInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "InstanceName")
+	delete(f, "InstanceDescription")
+	delete(f, "Parameters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyExclusiveInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyExclusiveInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 独享实例详情信息
+		Result *InstanceDetail `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyExclusiveInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyExclusiveInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyIPStrategyRequest struct {
 	*tchttp.BaseRequest
 
@@ -6047,6 +6312,24 @@ func (r *ModifyUsagePlanResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type NetworkConfig struct {
+
+	// 最大出带宽
+	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
+
+	// EnableInternetInbound信息
+	EnableInternetInbound *bool `json:"EnableInternetInbound,omitempty" name:"EnableInternetInbound"`
+
+	// EnableInternetOutbound信息
+	EnableInternetOutbound *bool `json:"EnableInternetOutbound,omitempty" name:"EnableInternetOutbound"`
+
+	// InboundIpAddresses信息
+	InboundIpAddresses []*string `json:"InboundIpAddresses,omitempty" name:"InboundIpAddresses"`
+
+	// OutboundIpAddresses信息
+	OutboundIpAddresses []*string `json:"OutboundIpAddresses,omitempty" name:"OutboundIpAddresses"`
+}
+
 type OauthConfig struct {
 
 	// 公钥，用于验证用户token。
@@ -6057,6 +6340,33 @@ type OauthConfig struct {
 
 	// 重定向地址，用于引导用户登录操作。
 	LoginRedirectUrl *string `json:"LoginRedirectUrl,omitempty" name:"LoginRedirectUrl"`
+}
+
+type ParameterInfo struct {
+
+	// 名字
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 当前值
+	Value *int64 `json:"Value,omitempty" name:"Value"`
+
+	// 默认值
+	Default *int64 `json:"Default,omitempty" name:"Default"`
+
+	// 单位
+	Unit *string `json:"Unit,omitempty" name:"Unit"`
+
+	// 类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 最小
+	Minimum *int64 `json:"Minimum,omitempty" name:"Minimum"`
+
+	// 最大
+	Maximum *int64 `json:"Maximum,omitempty" name:"Maximum"`
+
+	// 修改时间
+	ModifedTime *string `json:"ModifedTime,omitempty" name:"ModifedTime"`
 }
 
 type PathMapping struct {
@@ -7334,4 +7644,13 @@ type UsagePlansStatus struct {
 	// 使用计划列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsagePlanStatusSet []*UsagePlanStatusInfo `json:"UsagePlanStatusSet,omitempty" name:"UsagePlanStatusSet"`
+}
+
+type VpcConfig struct {
+
+	// vpcid
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+	// subnetid
+	UniqSubnetId *string `json:"UniqSubnetId,omitempty" name:"UniqSubnetId"`
 }

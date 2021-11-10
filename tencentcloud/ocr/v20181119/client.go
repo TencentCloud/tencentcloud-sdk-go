@@ -2211,6 +2211,44 @@ func (c *Client) QuotaInvoiceOCR(request *QuotaInvoiceOCRRequest) (response *Quo
     return
 }
 
+func NewRecognizeContainerOCRRequest() (request *RecognizeContainerOCRRequest) {
+    request = &RecognizeContainerOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "RecognizeContainerOCR")
+    
+    return
+}
+
+func NewRecognizeContainerOCRResponse() (response *RecognizeContainerOCRResponse) {
+    response = &RecognizeContainerOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RecognizeContainerOCR
+// 本接口支持集装箱箱门信息识别，识别字段包括集装箱箱号、类型、总重量、有效承重、容量、自身重量，具备集装箱箱号、类型不完整或者不清晰的告警功能。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeContainerOCR(request *RecognizeContainerOCRRequest) (response *RecognizeContainerOCRResponse, err error) {
+    if request == nil {
+        request = NewRecognizeContainerOCRRequest()
+    }
+    response = NewRecognizeContainerOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRecognizeOnlineTaxiItineraryOCRRequest() (request *RecognizeOnlineTaxiItineraryOCRRequest) {
     request = &RecognizeOnlineTaxiItineraryOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2271,6 +2309,7 @@ func NewRecognizeTableOCRResponse() (response *RecognizeTableOCRResponse) {
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
 //  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
