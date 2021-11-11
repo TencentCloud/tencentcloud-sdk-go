@@ -1991,22 +1991,22 @@ type DescribeSlowQueryAnalysisRequest struct {
 	// 查询起始时间戳，格式 “YYYY-MM-DD HH:mm:ss” ，日志保留时间默认为7天，起始时间不能超出保留时间范围。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 查询j结束时间戳，格式 “YYYY-MM-DD HH:mm:ss”。
+	// 查询结束时间戳，格式 “YYYY-MM-DD HH:mm:ss”。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 根据数据库名进行筛选，可以为空。
 	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
 
-	// 排序维度。 可选参数，取值范围[CallNum,CostTime,AvgCostTime]。
+	// 排序维度。 可选参数，取值范围[CallNum,CostTime,AvgCostTime]。默认CallNum。
 	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
 
-	// 排序类型。升序asc、降序desc。
+	// 排序类型。升序asc、降序desc。默认desc。
 	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
 
-	// 分页大小。取值范围[1,100]。
+	// 分页大小。取值范围[1,100]。默认50。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 分页偏移。取值范围[0,INF)。
+	// 分页偏移。取值范围[0,INF)。默认0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
@@ -2071,7 +2071,7 @@ type DescribeSlowQueryListRequest struct {
 	// 查询起始时间戳，格式 “YYYY-MM-DD HH:mm:ss” ，日志保留时间默认为7天，起始时间不能超出保留时间范围。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 查询j结束时间戳，格式 “YYYY-MM-DD HH:mm:ss”。
+	// 查询结束时间戳，格式 “YYYY-MM-DD HH:mm:ss”。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 根据数据库名进行筛选，可以为空。
@@ -2933,10 +2933,10 @@ type ModifyDBInstanceSpecRequest struct {
 	// 指定实例配置完成变更后的切换时间，默认为 立即切换，入参为 0 ：立即切换 。1：指定时间切换。
 	SwitchTag *uint64 `json:"SwitchTag,omitempty" name:"SwitchTag"`
 
-	// 切换开始时间。
+	// 切换开始时间，时间格式：HH:MM:SS，例如：01:00:00。
 	SwitchStartTime *string `json:"SwitchStartTime,omitempty" name:"SwitchStartTime"`
 
-	// 切换截止时间。
+	// 切换截止时间，时间格式：HH:MM:SS，例如：01:30:00。
 	SwitchEndTime *string `json:"SwitchEndTime,omitempty" name:"SwitchEndTime"`
 }
 
@@ -3340,7 +3340,10 @@ type ParamInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 参数值类型：integer（整型）、real（浮点型）、bool（布尔型）、enum（枚举类型）、mutil_enum（枚举类型、支持多选）
+	// 参数值类型：integer（整型）、real（浮点型）、bool（布尔型）、enum（枚举类型）、mutil_enum（枚举类型、支持多选）。
+	// 当参数类型为integer（整型）、real（浮点型）时，参数的取值范围根据返回值的Max、Min确定； 
+	// 当参数类型为bool（布尔型）时，参数设置值取值范围是true | false； 
+	// 当参数类型为enum（枚举类型）、mutil_enum（多枚举类型）时，参数的取值范围由返回值中的EnumValue确定。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParamValueType *string `json:"ParamValueType,omitempty" name:"ParamValueType"`
 

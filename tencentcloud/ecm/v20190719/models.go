@@ -1092,6 +1092,9 @@ type CreateListenerRequest struct {
 
 	// 会话保持类型。不传或传NORMAL表示默认会话保持类型。QUIC_CID 表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。
 	SessionType *string `json:"SessionType,omitempty" name:"SessionType"`
+
+	// 批量端口段的结束端口，必须和Ports长度一样。
+	EndPorts []*int64 `json:"EndPorts,omitempty" name:"EndPorts"`
 }
 
 func (r *CreateListenerRequest) ToJsonString() string {
@@ -1114,6 +1117,7 @@ func (r *CreateListenerRequest) FromJsonString(s string) error {
 	delete(f, "SessionExpireTime")
 	delete(f, "Scheduler")
 	delete(f, "SessionType")
+	delete(f, "EndPorts")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateListenerRequest has unknown keys!", "")
 	}

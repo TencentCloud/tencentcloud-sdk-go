@@ -158,7 +158,7 @@ type ColorEnhance struct {
 type CosAuthMode struct {
 
 	// 授权类型，可选值： 
-	// 0：bucket授权，需要将对应bucket授权给本服务帐号（3020447271），否则会读写cos失败； 
+	// 0：bucket授权，需要将对应bucket授权给本服务帐号（3020447271和100012301793），否则会读写cos失败； 
 	// 1：key托管，把cos的账号id和key托管于本服务，本服务会提供一个托管id； 
 	// 3：临时key授权。
 	// 注意：目前智能编辑还不支持临时key授权；画质重生目前只支持bucket授权

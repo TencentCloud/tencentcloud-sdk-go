@@ -338,15 +338,15 @@ type DescribeCallDetailRequest struct {
 	// 需查询的指标，不填则只返回用户列表，填all则返回所有指标。
 	// appCpu：APP CPU使用率；
 	// sysCpu：系统 CPU使用率；
-	// aBit：上/下行音频码率；
-	// aBlock：音频卡顿时长；
-	// bigvBit：上/下行视频码率；
+	// aBit：上/下行音频码率；单位：bps
+	// aBlock：音频卡顿时长；单位：ms
+	// bigvBit：上/下行视频码率；单位：bps
 	// bigvCapFps：视频采集帧率；
 	// bigvEncFps：视频发送帧率；
 	// bigvDecFps：渲染帧率；
-	// bigvBlock：视频卡顿时长；
-	// aLoss：上/下行音频丢包；
-	// bigvLoss：上/下行视频丢包；
+	// bigvBlock：视频卡顿时长；单位：ms
+	// aLoss：上/下行音频丢包率；
+	// bigvLoss：上/下行视频丢包率；
 	// bigvWidth：上/下行分辨率宽；
 	// bigvHeight：上/下行分辨率高
 	DataType []*string `json:"DataType,omitempty" name:"DataType"`

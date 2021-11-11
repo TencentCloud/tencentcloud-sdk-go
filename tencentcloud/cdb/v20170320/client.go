@@ -1413,6 +1413,37 @@ func (c *Client) DescribeBackupDatabases(request *DescribeBackupDatabasesRequest
     return
 }
 
+func NewDescribeBackupDownloadRestrictionRequest() (request *DescribeBackupDownloadRestrictionRequest) {
+    request = &DescribeBackupDownloadRestrictionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeBackupDownloadRestriction")
+    
+    return
+}
+
+func NewDescribeBackupDownloadRestrictionResponse() (response *DescribeBackupDownloadRestrictionResponse) {
+    response = &DescribeBackupDownloadRestrictionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBackupDownloadRestriction
+// 该接口用户查询当前地域用户设置的默认备份下载来源限制。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_AUTHERROR = "InternalError.AuthError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+func (c *Client) DescribeBackupDownloadRestriction(request *DescribeBackupDownloadRestrictionRequest) (response *DescribeBackupDownloadRestrictionResponse, err error) {
+    if request == nil {
+        request = NewDescribeBackupDownloadRestrictionRequest()
+    }
+    response = NewDescribeBackupDownloadRestrictionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBackupOverviewRequest() (request *DescribeBackupOverviewRequest) {
     request = &DescribeBackupOverviewRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3424,6 +3455,37 @@ func (c *Client) ModifyBackupConfig(request *ModifyBackupConfigRequest) (respons
         request = NewModifyBackupConfigRequest()
     }
     response = NewModifyBackupConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyBackupDownloadRestrictionRequest() (request *ModifyBackupDownloadRestrictionRequest) {
+    request = &ModifyBackupDownloadRestrictionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "ModifyBackupDownloadRestriction")
+    
+    return
+}
+
+func NewModifyBackupDownloadRestrictionResponse() (response *ModifyBackupDownloadRestrictionResponse) {
+    response = &ModifyBackupDownloadRestrictionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyBackupDownloadRestriction
+// 该接口用于修改用户当前地域的备份文件限制下载来源，可以设置内外网均可下载、仅内网可下载，或内网指定的vpc、ip可以下载。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_AUTHERROR = "InternalError.AuthError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+func (c *Client) ModifyBackupDownloadRestriction(request *ModifyBackupDownloadRestrictionRequest) (response *ModifyBackupDownloadRestrictionResponse, err error) {
+    if request == nil {
+        request = NewModifyBackupDownloadRestrictionRequest()
+    }
+    response = NewModifyBackupDownloadRestrictionResponse()
     err = c.Send(request, response)
     return
 }

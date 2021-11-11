@@ -153,6 +153,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tcb v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tcex v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tci v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tcm v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tcr v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tdid v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tdmq v0.0.0
@@ -339,6 +340,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tcb => ../tencentcloud/tcb
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tcex => ../tencentcloud/tcex
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tci => ../tencentcloud/tci
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tcm => ../tencentcloud/tcm
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tcr => ../tencentcloud/tcr
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tdid => ../tencentcloud/tdid
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tdmq => ../tencentcloud/tdmq
