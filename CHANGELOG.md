@@ -1,51 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
 
-### 第 72 次发布
+### 第 60 次发布
 
-发布时间：2021-11-11 10:57:53
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeBackupDownloadRestriction](https://cloud.tencent.com/document/api/236/63891)
-* [ModifyBackupDownloadRestriction](https://cloud.tencent.com/document/api/236/63890)
-
-新增数据结构：
-
-* [BackupLimitVpcItem](https://cloud.tencent.com/document/api/236/15878#BackupLimitVpcItem)
-
-
-
-## 负载均衡(clb) 版本：2018-03-17
-
-### 第 57 次发布
-
-发布时间：2021-11-11 10:58:59
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ModifyLoadBalancerSla](https://cloud.tencent.com/document/api/214/63892)
-
-新增数据结构：
-
-* [SlaUpdateParam](https://cloud.tencent.com/document/api/214/30694#SlaUpdateParam)
-
-
-
-## 边缘计算机器(ecm) 版本：2019-07-19
-
-### 第 58 次发布
-
-发布时间：2021-11-11 11:01:56
+发布时间：2021-11-12 08:10:33
 
 本次发布包含了以下内容：
 
@@ -53,63 +12,80 @@
 
 修改接口：
 
-* [CreateListener](https://cloud.tencent.com/document/api/1108/48466)
+* [CreateApplication](https://cloud.tencent.com/document/api/649/36094)
 
-	* 新增入参：EndPorts
+	* 新增入参：ProgramIdList
 
+* [CreateCluster](https://cloud.tencent.com/document/api/649/36049)
 
+	* 新增入参：KuberneteApiServer, KuberneteNativeType, KuberneteNativeSecret, ProgramIdList
 
+* [CreateConfig](https://cloud.tencent.com/document/api/649/38348)
 
-## 服务网格(tcm) 版本：2021-04-13
+	* 新增入参：ProgramIdList
 
-### 第 1 次发布
+* [CreateFileConfig](https://cloud.tencent.com/document/api/649/58594)
 
-发布时间：2021-11-10 15:03:56
+	* 新增入参：ProgramIdList
 
-本次发布包含了以下内容：
+* [CreateGatewayApi](https://cloud.tencent.com/document/api/649/50639)
 
-改善已有的文档。
+	* 新增入参：ProgramIdList
 
-新增接口：
+* [CreateLane](https://cloud.tencent.com/document/api/649/44508)
 
-* [DescribeMesh](https://cloud.tencent.com/document/api/1261/63842)
-* [DescribeMeshList](https://cloud.tencent.com/document/api/1261/63841)
+	* 新增入参：ProgramIdList
 
-新增数据结构：
+* [CreateLaneRule](https://cloud.tencent.com/document/api/649/44507)
 
-* [AccessLogConfig](https://cloud.tencent.com/document/api/1261/63843#AccessLogConfig)
-* [ActiveOperation](https://cloud.tencent.com/document/api/1261/63843#ActiveOperation)
-* [AutoInjectionNamespaceState](https://cloud.tencent.com/document/api/1261/63843#AutoInjectionNamespaceState)
-* [CLS](https://cloud.tencent.com/document/api/1261/63843#CLS)
-* [Cluster](https://cloud.tencent.com/document/api/1261/63843#Cluster)
-* [ClusterConfig](https://cloud.tencent.com/document/api/1261/63843#ClusterConfig)
-* [ClusterStatus](https://cloud.tencent.com/document/api/1261/63843#ClusterStatus)
-* [DeployConfig](https://cloud.tencent.com/document/api/1261/63843#DeployConfig)
-* [EgressGateway](https://cloud.tencent.com/document/api/1261/63843#EgressGateway)
-* [Filter](https://cloud.tencent.com/document/api/1261/63843#Filter)
-* [GrafanaInfo](https://cloud.tencent.com/document/api/1261/63843#GrafanaInfo)
-* [HorizontalPodAutoscalerSpec](https://cloud.tencent.com/document/api/1261/63843#HorizontalPodAutoscalerSpec)
-* [IngressGateway](https://cloud.tencent.com/document/api/1261/63843#IngressGateway)
-* [IngressGatewayStatus](https://cloud.tencent.com/document/api/1261/63843#IngressGatewayStatus)
-* [IstioConfig](https://cloud.tencent.com/document/api/1261/63843#IstioConfig)
-* [IstiodConfig](https://cloud.tencent.com/document/api/1261/63843#IstiodConfig)
-* [LoadBalancer](https://cloud.tencent.com/document/api/1261/63843#LoadBalancer)
-* [LoadBalancerStatus](https://cloud.tencent.com/document/api/1261/63843#LoadBalancerStatus)
-* [Mesh](https://cloud.tencent.com/document/api/1261/63843#Mesh)
-* [MeshConfig](https://cloud.tencent.com/document/api/1261/63843#MeshConfig)
-* [MeshStatus](https://cloud.tencent.com/document/api/1261/63843#MeshStatus)
-* [MetricSpec](https://cloud.tencent.com/document/api/1261/63843#MetricSpec)
-* [PodsMetricSource](https://cloud.tencent.com/document/api/1261/63843#PodsMetricSource)
-* [PrometheusConfig](https://cloud.tencent.com/document/api/1261/63843#PrometheusConfig)
-* [PrometheusStatus](https://cloud.tencent.com/document/api/1261/63843#PrometheusStatus)
-* [Resource](https://cloud.tencent.com/document/api/1261/63843#Resource)
-* [ResourceMetricSource](https://cloud.tencent.com/document/api/1261/63843#ResourceMetricSource)
-* [ResourceRequirements](https://cloud.tencent.com/document/api/1261/63843#ResourceRequirements)
-* [SelectedItems](https://cloud.tencent.com/document/api/1261/63843#SelectedItems)
-* [SelectedRange](https://cloud.tencent.com/document/api/1261/63843#SelectedRange)
-* [Service](https://cloud.tencent.com/document/api/1261/63843#Service)
-* [TracingConfig](https://cloud.tencent.com/document/api/1261/63843#TracingConfig)
-* [WorkloadConfig](https://cloud.tencent.com/document/api/1261/63843#WorkloadConfig)
+	* 新增入参：ProgramIdList
+
+* [CreateNamespace](https://cloud.tencent.com/document/api/649/36098)
+
+	* 新增入参：ProgramIdList
+
+* [CreatePublicConfig](https://cloud.tencent.com/document/api/649/38347)
+
+	* 新增入参：ProgramIdList
+
+* [DescribeConfigSummary](https://cloud.tencent.com/document/api/649/38341)
+
+	* 新增入参：ConfigTagList, DisableProgramAuthCheck, ConfigIdList
+
+* [DescribeGroups](https://cloud.tencent.com/document/api/649/36065)
+
+	* 新增入参：GroupIdList
+
+* [DescribeLaneRules](https://cloud.tencent.com/document/api/649/44505)
+
+	* 新增入参：RuleIdList
+
+* [DescribeLanes](https://cloud.tencent.com/document/api/649/44504)
+
+	* 新增入参：LaneIdList, DisableProgramAuthCheck
+
+	* <font color="#dd0000">**修改入参**：</font>Limit, Offset
+
+* [DescribePublicConfigSummary](https://cloud.tencent.com/document/api/649/38336)
+
+	* 新增入参：ConfigTagList, DisableProgramAuthCheck, ConfigIdList
+
+* [DescribeServerlessGroups](https://cloud.tencent.com/document/api/649/39421)
+
+	* 新增入参：GroupIdList
+
+* [DescribeSimpleApplications](https://cloud.tencent.com/document/api/649/36089)
+
+	* 新增入参：DisableProgramAuthCheck
+
+* [DescribeSimpleClusters](https://cloud.tencent.com/document/api/649/36047)
+
+	* 新增入参：DisableProgramAuthCheck
+
+* [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096)
+
+	* 新增入参：DisableProgramAuthCheck
+
 
 
 
@@ -8159,12 +8135,12 @@
 
 新增接口：
 
-* [[DescribeBackupDownloadRestriction](https://cloud.tencent.com/document/api/236/63891)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyBackupDownloadRestriction](https://cloud.tencent.com/document/api/236/63890)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeBackupDownloadRestriction](https://cloud.tencent.com/document/api/236/63891)
+* [ModifyBackupDownloadRestriction](https://cloud.tencent.com/document/api/236/63890)
 
 新增数据结构：
 
-* [[BackupLimitVpcItem](https://cloud.tencent.com/document/api/236/15878#BackupLimitVpcItem)](https://cloud.tencent.com/document/api/236/15878#[BackupLimitVpcItem](https://cloud.tencent.com/document/api/236/15878#BackupLimitVpcItem))
+* [BackupLimitVpcItem](https://cloud.tencent.com/document/api/236/15878#BackupLimitVpcItem)
 
 ### 第 71 次发布
 
@@ -13115,11 +13091,11 @@
 
 新增接口：
 
-* [[ModifyLoadBalancerSla](https://cloud.tencent.com/document/api/214/63892)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyLoadBalancerSla](https://cloud.tencent.com/document/api/214/63892)
 
 新增数据结构：
 
-* [[SlaUpdateParam](https://cloud.tencent.com/document/api/214/30694#SlaUpdateParam)](https://cloud.tencent.com/document/api/214/30694#[SlaUpdateParam](https://cloud.tencent.com/document/api/214/30694#SlaUpdateParam))
+* [SlaUpdateParam](https://cloud.tencent.com/document/api/214/30694#SlaUpdateParam)
 
 ### 第 56 次发布
 
@@ -49748,44 +49724,44 @@
 
 新增接口：
 
-* [[DescribeMesh](https://cloud.tencent.com/document/api/1261/63842)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeMeshList](https://cloud.tencent.com/document/api/1261/63841)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeMesh](https://cloud.tencent.com/document/api/1261/63842)
+* [DescribeMeshList](https://cloud.tencent.com/document/api/1261/63841)
 
 新增数据结构：
 
-* [[AccessLogConfig](https://cloud.tencent.com/document/api/1261/63843#AccessLogConfig)](https://cloud.tencent.com/document/api/1261/63843#[AccessLogConfig](https://cloud.tencent.com/document/api/1261/63843#AccessLogConfig))
-* [[ActiveOperation](https://cloud.tencent.com/document/api/1261/63843#ActiveOperation)](https://cloud.tencent.com/document/api/1261/63843#[ActiveOperation](https://cloud.tencent.com/document/api/1261/63843#ActiveOperation))
-* [[AutoInjectionNamespaceState](https://cloud.tencent.com/document/api/1261/63843#AutoInjectionNamespaceState)](https://cloud.tencent.com/document/api/1261/63843#[AutoInjectionNamespaceState](https://cloud.tencent.com/document/api/1261/63843#AutoInjectionNamespaceState))
-* [[CLS](https://cloud.tencent.com/document/api/1261/63843#CLS)](https://cloud.tencent.com/document/api/1261/63843#[CLS](https://cloud.tencent.com/document/api/1261/63843#CLS))
-* [[Cluster](https://cloud.tencent.com/document/api/1261/63843#Cluster)](https://cloud.tencent.com/document/api/1261/63843#[Cluster](https://cloud.tencent.com/document/api/1261/63843#Cluster))
-* [[ClusterConfig](https://cloud.tencent.com/document/api/1261/63843#ClusterConfig)](https://cloud.tencent.com/document/api/1261/63843#[ClusterConfig](https://cloud.tencent.com/document/api/1261/63843#ClusterConfig))
-* [[ClusterStatus](https://cloud.tencent.com/document/api/1261/63843#ClusterStatus)](https://cloud.tencent.com/document/api/1261/63843#[ClusterStatus](https://cloud.tencent.com/document/api/1261/63843#ClusterStatus))
-* [[DeployConfig](https://cloud.tencent.com/document/api/1261/63843#DeployConfig)](https://cloud.tencent.com/document/api/1261/63843#[DeployConfig](https://cloud.tencent.com/document/api/1261/63843#DeployConfig))
-* [[EgressGateway](https://cloud.tencent.com/document/api/1261/63843#EgressGateway)](https://cloud.tencent.com/document/api/1261/63843#[EgressGateway](https://cloud.tencent.com/document/api/1261/63843#EgressGateway))
-* [[Filter](https://cloud.tencent.com/document/api/1261/63843#Filter)](https://cloud.tencent.com/document/api/1261/63843#[Filter](https://cloud.tencent.com/document/api/1261/63843#Filter))
-* [[GrafanaInfo](https://cloud.tencent.com/document/api/1261/63843#GrafanaInfo)](https://cloud.tencent.com/document/api/1261/63843#[GrafanaInfo](https://cloud.tencent.com/document/api/1261/63843#GrafanaInfo))
-* [[HorizontalPodAutoscalerSpec](https://cloud.tencent.com/document/api/1261/63843#HorizontalPodAutoscalerSpec)](https://cloud.tencent.com/document/api/1261/63843#[HorizontalPodAutoscalerSpec](https://cloud.tencent.com/document/api/1261/63843#HorizontalPodAutoscalerSpec))
-* [[IngressGateway](https://cloud.tencent.com/document/api/1261/63843#IngressGateway)](https://cloud.tencent.com/document/api/1261/63843#[IngressGateway](https://cloud.tencent.com/document/api/1261/63843#IngressGateway))
-* [[IngressGatewayStatus](https://cloud.tencent.com/document/api/1261/63843#IngressGatewayStatus)](https://cloud.tencent.com/document/api/1261/63843#[IngressGatewayStatus](https://cloud.tencent.com/document/api/1261/63843#IngressGatewayStatus))
-* [[IstioConfig](https://cloud.tencent.com/document/api/1261/63843#IstioConfig)](https://cloud.tencent.com/document/api/1261/63843#[IstioConfig](https://cloud.tencent.com/document/api/1261/63843#IstioConfig))
-* [[IstiodConfig](https://cloud.tencent.com/document/api/1261/63843#IstiodConfig)](https://cloud.tencent.com/document/api/1261/63843#[IstiodConfig](https://cloud.tencent.com/document/api/1261/63843#IstiodConfig))
-* [[LoadBalancer](https://cloud.tencent.com/document/api/1261/63843#LoadBalancer)](https://cloud.tencent.com/document/api/1261/63843#[LoadBalancer](https://cloud.tencent.com/document/api/1261/63843#LoadBalancer))
-* [[LoadBalancerStatus](https://cloud.tencent.com/document/api/1261/63843#LoadBalancerStatus)](https://cloud.tencent.com/document/api/1261/63843#[LoadBalancerStatus](https://cloud.tencent.com/document/api/1261/63843#LoadBalancerStatus))
-* [[Mesh](https://cloud.tencent.com/document/api/1261/63843#Mesh)](https://cloud.tencent.com/document/api/1261/63843#[Mesh](https://cloud.tencent.com/document/api/1261/63843#Mesh))
-* [[MeshConfig](https://cloud.tencent.com/document/api/1261/63843#MeshConfig)](https://cloud.tencent.com/document/api/1261/63843#[MeshConfig](https://cloud.tencent.com/document/api/1261/63843#MeshConfig))
-* [[MeshStatus](https://cloud.tencent.com/document/api/1261/63843#MeshStatus)](https://cloud.tencent.com/document/api/1261/63843#[MeshStatus](https://cloud.tencent.com/document/api/1261/63843#MeshStatus))
-* [[MetricSpec](https://cloud.tencent.com/document/api/1261/63843#MetricSpec)](https://cloud.tencent.com/document/api/1261/63843#[MetricSpec](https://cloud.tencent.com/document/api/1261/63843#MetricSpec))
-* [[PodsMetricSource](https://cloud.tencent.com/document/api/1261/63843#PodsMetricSource)](https://cloud.tencent.com/document/api/1261/63843#[PodsMetricSource](https://cloud.tencent.com/document/api/1261/63843#PodsMetricSource))
-* [[PrometheusConfig](https://cloud.tencent.com/document/api/1261/63843#PrometheusConfig)](https://cloud.tencent.com/document/api/1261/63843#[PrometheusConfig](https://cloud.tencent.com/document/api/1261/63843#PrometheusConfig))
-* [[PrometheusStatus](https://cloud.tencent.com/document/api/1261/63843#PrometheusStatus)](https://cloud.tencent.com/document/api/1261/63843#[PrometheusStatus](https://cloud.tencent.com/document/api/1261/63843#PrometheusStatus))
-* [[Resource](https://cloud.tencent.com/document/api/1261/63843#Resource)](https://cloud.tencent.com/document/api/1261/63843#[Resource](https://cloud.tencent.com/document/api/1261/63843#Resource))
-* [[ResourceMetricSource](https://cloud.tencent.com/document/api/1261/63843#ResourceMetricSource)](https://cloud.tencent.com/document/api/1261/63843#[ResourceMetricSource](https://cloud.tencent.com/document/api/1261/63843#ResourceMetricSource))
-* [[ResourceRequirements](https://cloud.tencent.com/document/api/1261/63843#ResourceRequirements)](https://cloud.tencent.com/document/api/1261/63843#[ResourceRequirements](https://cloud.tencent.com/document/api/1261/63843#ResourceRequirements))
-* [[SelectedItems](https://cloud.tencent.com/document/api/1261/63843#SelectedItems)](https://cloud.tencent.com/document/api/1261/63843#[SelectedItems](https://cloud.tencent.com/document/api/1261/63843#SelectedItems))
-* [[SelectedRange](https://cloud.tencent.com/document/api/1261/63843#SelectedRange)](https://cloud.tencent.com/document/api/1261/63843#[SelectedRange](https://cloud.tencent.com/document/api/1261/63843#SelectedRange))
-* [[Service](https://cloud.tencent.com/document/api/1261/63843#Service)](https://cloud.tencent.com/document/api/1261/63843#[Service](https://cloud.tencent.com/document/api/1261/63843#Service))
-* [[TracingConfig](https://cloud.tencent.com/document/api/1261/63843#TracingConfig)](https://cloud.tencent.com/document/api/1261/63843#[TracingConfig](https://cloud.tencent.com/document/api/1261/63843#TracingConfig))
-* [[WorkloadConfig](https://cloud.tencent.com/document/api/1261/63843#WorkloadConfig)](https://cloud.tencent.com/document/api/1261/63843#[WorkloadConfig](https://cloud.tencent.com/document/api/1261/63843#WorkloadConfig))
+* [AccessLogConfig](https://cloud.tencent.com/document/api/1261/63843#AccessLogConfig)
+* [ActiveOperation](https://cloud.tencent.com/document/api/1261/63843#ActiveOperation)
+* [AutoInjectionNamespaceState](https://cloud.tencent.com/document/api/1261/63843#AutoInjectionNamespaceState)
+* [CLS](https://cloud.tencent.com/document/api/1261/63843#CLS)
+* [Cluster](https://cloud.tencent.com/document/api/1261/63843#Cluster)
+* [ClusterConfig](https://cloud.tencent.com/document/api/1261/63843#ClusterConfig)
+* [ClusterStatus](https://cloud.tencent.com/document/api/1261/63843#ClusterStatus)
+* [DeployConfig](https://cloud.tencent.com/document/api/1261/63843#DeployConfig)
+* [EgressGateway](https://cloud.tencent.com/document/api/1261/63843#EgressGateway)
+* [Filter](https://cloud.tencent.com/document/api/1261/63843#Filter)
+* [GrafanaInfo](https://cloud.tencent.com/document/api/1261/63843#GrafanaInfo)
+* [HorizontalPodAutoscalerSpec](https://cloud.tencent.com/document/api/1261/63843#HorizontalPodAutoscalerSpec)
+* [IngressGateway](https://cloud.tencent.com/document/api/1261/63843#IngressGateway)
+* [IngressGatewayStatus](https://cloud.tencent.com/document/api/1261/63843#IngressGatewayStatus)
+* [IstioConfig](https://cloud.tencent.com/document/api/1261/63843#IstioConfig)
+* [IstiodConfig](https://cloud.tencent.com/document/api/1261/63843#IstiodConfig)
+* [LoadBalancer](https://cloud.tencent.com/document/api/1261/63843#LoadBalancer)
+* [LoadBalancerStatus](https://cloud.tencent.com/document/api/1261/63843#LoadBalancerStatus)
+* [Mesh](https://cloud.tencent.com/document/api/1261/63843#Mesh)
+* [MeshConfig](https://cloud.tencent.com/document/api/1261/63843#MeshConfig)
+* [MeshStatus](https://cloud.tencent.com/document/api/1261/63843#MeshStatus)
+* [MetricSpec](https://cloud.tencent.com/document/api/1261/63843#MetricSpec)
+* [PodsMetricSource](https://cloud.tencent.com/document/api/1261/63843#PodsMetricSource)
+* [PrometheusConfig](https://cloud.tencent.com/document/api/1261/63843#PrometheusConfig)
+* [PrometheusStatus](https://cloud.tencent.com/document/api/1261/63843#PrometheusStatus)
+* [Resource](https://cloud.tencent.com/document/api/1261/63843#Resource)
+* [ResourceMetricSource](https://cloud.tencent.com/document/api/1261/63843#ResourceMetricSource)
+* [ResourceRequirements](https://cloud.tencent.com/document/api/1261/63843#ResourceRequirements)
+* [SelectedItems](https://cloud.tencent.com/document/api/1261/63843#SelectedItems)
+* [SelectedRange](https://cloud.tencent.com/document/api/1261/63843#SelectedRange)
+* [Service](https://cloud.tencent.com/document/api/1261/63843#Service)
+* [TracingConfig](https://cloud.tencent.com/document/api/1261/63843#TracingConfig)
+* [WorkloadConfig](https://cloud.tencent.com/document/api/1261/63843#WorkloadConfig)
 
 
 
@@ -55550,6 +55526,91 @@
 
 
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 60 次发布
+
+发布时间：2021-11-12 08:10:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateApplication](https://cloud.tencent.com/document/api/649/36094)
+
+	* 新增入参：ProgramIdList
+
+* [CreateCluster](https://cloud.tencent.com/document/api/649/36049)
+
+	* 新增入参：KuberneteApiServer, KuberneteNativeType, KuberneteNativeSecret, ProgramIdList
+
+* [CreateConfig](https://cloud.tencent.com/document/api/649/38348)
+
+	* 新增入参：ProgramIdList
+
+* [CreateFileConfig](https://cloud.tencent.com/document/api/649/58594)
+
+	* 新增入参：ProgramIdList
+
+* [CreateGatewayApi](https://cloud.tencent.com/document/api/649/50639)
+
+	* 新增入参：ProgramIdList
+
+* [CreateLane](https://cloud.tencent.com/document/api/649/44508)
+
+	* 新增入参：ProgramIdList
+
+* [CreateLaneRule](https://cloud.tencent.com/document/api/649/44507)
+
+	* 新增入参：ProgramIdList
+
+* [CreateNamespace](https://cloud.tencent.com/document/api/649/36098)
+
+	* 新增入参：ProgramIdList
+
+* [CreatePublicConfig](https://cloud.tencent.com/document/api/649/38347)
+
+	* 新增入参：ProgramIdList
+
+* [DescribeConfigSummary](https://cloud.tencent.com/document/api/649/38341)
+
+	* 新增入参：ConfigTagList, DisableProgramAuthCheck, ConfigIdList
+
+* [DescribeGroups](https://cloud.tencent.com/document/api/649/36065)
+
+	* 新增入参：GroupIdList
+
+* [DescribeLaneRules](https://cloud.tencent.com/document/api/649/44505)
+
+	* 新增入参：RuleIdList
+
+* [DescribeLanes](https://cloud.tencent.com/document/api/649/44504)
+
+	* 新增入参：LaneIdList, DisableProgramAuthCheck
+
+	* <font color="#dd0000">**修改入参**：</font>Limit, Offset
+
+* [DescribePublicConfigSummary](https://cloud.tencent.com/document/api/649/38336)
+
+	* 新增入参：ConfigTagList, DisableProgramAuthCheck, ConfigIdList
+
+* [DescribeServerlessGroups](https://cloud.tencent.com/document/api/649/39421)
+
+	* 新增入参：GroupIdList
+
+* [DescribeSimpleApplications](https://cloud.tencent.com/document/api/649/36089)
+
+	* 新增入参：DisableProgramAuthCheck
+
+* [DescribeSimpleClusters](https://cloud.tencent.com/document/api/649/36047)
+
+	* 新增入参：DisableProgramAuthCheck
+
+* [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096)
+
+	* 新增入参：DisableProgramAuthCheck
+
 
 ### 第 59 次发布
 

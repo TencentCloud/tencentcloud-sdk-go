@@ -122,6 +122,9 @@ const (
 	// VPC已绑定其它解析域。
 	INVALIDPARAMETER_VPCBINDED = "InvalidParameter.VpcBinded"
 
+	// 当前VPC已关联相同主域名。
+	INVALIDPARAMETER_VPCBINDEDMAINDOMAIN = "InvalidParameter.VpcBindedMainDomain"
+
 	// VPC关联反解析域超过限制。
 	INVALIDPARAMETER_VPCPTRZONEBINDEXCEED = "InvalidParameter.VpcPtrZoneBindExceed"
 

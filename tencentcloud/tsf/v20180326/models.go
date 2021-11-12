@@ -1657,6 +1657,9 @@ type CreateApplicationRequest struct {
 
 	// 忽略创建镜像仓库
 	IgnoreCreateImageRepository *bool `json:"IgnoreCreateImageRepository,omitempty" name:"IgnoreCreateImageRepository"`
+
+	// 无
+	ProgramIdList []*string `json:"ProgramIdList,omitempty" name:"ProgramIdList"`
 }
 
 func (r *CreateApplicationRequest) ToJsonString() string {
@@ -1681,6 +1684,7 @@ func (r *CreateApplicationRequest) FromJsonString(s string) error {
 	delete(f, "ProgramId")
 	delete(f, "ServiceConfigList")
 	delete(f, "IgnoreCreateImageRepository")
+	delete(f, "ProgramIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateApplicationRequest has unknown keys!", "")
 	}
@@ -1749,6 +1753,18 @@ type CreateClusterRequest struct {
 
 	// 需要绑定的数据集ID
 	ProgramId *string `json:"ProgramId,omitempty" name:"ProgramId"`
+
+	// api地址
+	KuberneteApiServer *string `json:"KuberneteApiServer,omitempty" name:"KuberneteApiServer"`
+
+	// K : kubeconfig, S : service account
+	KuberneteNativeType *string `json:"KuberneteNativeType,omitempty" name:"KuberneteNativeType"`
+
+	// native secret
+	KuberneteNativeSecret *string `json:"KuberneteNativeSecret,omitempty" name:"KuberneteNativeSecret"`
+
+	// 无
+	ProgramIdList []*string `json:"ProgramIdList,omitempty" name:"ProgramIdList"`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
@@ -1775,6 +1791,10 @@ func (r *CreateClusterRequest) FromJsonString(s string) error {
 	delete(f, "MaxNodePodNum")
 	delete(f, "MaxClusterServiceNum")
 	delete(f, "ProgramId")
+	delete(f, "KuberneteApiServer")
+	delete(f, "KuberneteNativeType")
+	delete(f, "KuberneteNativeSecret")
+	delete(f, "ProgramIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterRequest has unknown keys!", "")
 	}
@@ -1827,6 +1847,9 @@ type CreateConfigRequest struct {
 
 	// Base64编码的配置项
 	EncodeWithBase64 *bool `json:"EncodeWithBase64,omitempty" name:"EncodeWithBase64"`
+
+	// 无
+	ProgramIdList []*string `json:"ProgramIdList,omitempty" name:"ProgramIdList"`
 }
 
 func (r *CreateConfigRequest) ToJsonString() string {
@@ -1848,6 +1871,7 @@ func (r *CreateConfigRequest) FromJsonString(s string) error {
 	delete(f, "ConfigVersionDesc")
 	delete(f, "ConfigType")
 	delete(f, "EncodeWithBase64")
+	delete(f, "ProgramIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConfigRequest has unknown keys!", "")
 	}
@@ -2051,6 +2075,9 @@ type CreateFileConfigRequest struct {
 
 	// Base64编码的配置项
 	EncodeWithBase64 *bool `json:"EncodeWithBase64,omitempty" name:"EncodeWithBase64"`
+
+	// 无
+	ProgramIdList []*string `json:"ProgramIdList,omitempty" name:"ProgramIdList"`
 }
 
 func (r *CreateFileConfigRequest) ToJsonString() string {
@@ -2075,6 +2102,7 @@ func (r *CreateFileConfigRequest) FromJsonString(s string) error {
 	delete(f, "ConfigFileCode")
 	delete(f, "ConfigPostCmd")
 	delete(f, "EncodeWithBase64")
+	delete(f, "ProgramIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFileConfigRequest has unknown keys!", "")
 	}
@@ -2113,6 +2141,9 @@ type CreateGatewayApiRequest struct {
 
 	// Api信息
 	ApiList []*ApiInfo `json:"ApiList,omitempty" name:"ApiList"`
+
+	// 无
+	ProgramIdList []*string `json:"ProgramIdList,omitempty" name:"ProgramIdList"`
 }
 
 func (r *CreateGatewayApiRequest) ToJsonString() string {
@@ -2129,6 +2160,7 @@ func (r *CreateGatewayApiRequest) FromJsonString(s string) error {
 	}
 	delete(f, "GroupId")
 	delete(f, "ApiList")
+	delete(f, "ProgramIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateGatewayApiRequest has unknown keys!", "")
 	}
@@ -2243,6 +2275,9 @@ type CreateLaneRequest struct {
 
 	// 泳道部署组信息
 	LaneGroupList []*LaneGroup `json:"LaneGroupList,omitempty" name:"LaneGroupList"`
+
+	// 无
+	ProgramIdList []*string `json:"ProgramIdList,omitempty" name:"ProgramIdList"`
 }
 
 func (r *CreateLaneRequest) ToJsonString() string {
@@ -2260,6 +2295,7 @@ func (r *CreateLaneRequest) FromJsonString(s string) error {
 	delete(f, "LaneName")
 	delete(f, "Remark")
 	delete(f, "LaneGroupList")
+	delete(f, "ProgramIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLaneRequest has unknown keys!", "")
 	}
@@ -2307,6 +2343,9 @@ type CreateLaneRuleRequest struct {
 
 	// 泳道Id
 	LaneId *string `json:"LaneId,omitempty" name:"LaneId"`
+
+	// 无
+	ProgramIdList []*string `json:"ProgramIdList,omitempty" name:"ProgramIdList"`
 }
 
 func (r *CreateLaneRuleRequest) ToJsonString() string {
@@ -2326,6 +2365,7 @@ func (r *CreateLaneRuleRequest) FromJsonString(s string) error {
 	delete(f, "RuleTagList")
 	delete(f, "RuleTagRelationship")
 	delete(f, "LaneId")
+	delete(f, "ProgramIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLaneRuleRequest has unknown keys!", "")
 	}
@@ -2441,6 +2481,9 @@ type CreateNamespaceRequest struct {
 
 	// 需要绑定的数据集ID
 	ProgramId *string `json:"ProgramId,omitempty" name:"ProgramId"`
+
+	// 无
+	ProgramIdList []*string `json:"ProgramIdList,omitempty" name:"ProgramIdList"`
 }
 
 func (r *CreateNamespaceRequest) ToJsonString() string {
@@ -2463,6 +2506,7 @@ func (r *CreateNamespaceRequest) FromJsonString(s string) error {
 	delete(f, "NamespaceId")
 	delete(f, "IsHaEnable")
 	delete(f, "ProgramId")
+	delete(f, "ProgramIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNamespaceRequest has unknown keys!", "")
 	}
@@ -2562,6 +2606,9 @@ type CreatePublicConfigRequest struct {
 
 	// Base64编码的配置项
 	EncodeWithBase64 *bool `json:"EncodeWithBase64,omitempty" name:"EncodeWithBase64"`
+
+	// 无
+	ProgramIdList []*string `json:"ProgramIdList,omitempty" name:"ProgramIdList"`
 }
 
 func (r *CreatePublicConfigRequest) ToJsonString() string {
@@ -2582,6 +2629,7 @@ func (r *CreatePublicConfigRequest) FromJsonString(s string) error {
 	delete(f, "ConfigVersionDesc")
 	delete(f, "ConfigType")
 	delete(f, "EncodeWithBase64")
+	delete(f, "ProgramIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePublicConfigRequest has unknown keys!", "")
 	}
@@ -5130,6 +5178,15 @@ type DescribeConfigSummaryRequest struct {
 
 	// 升序传 0，降序传 1
 	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 无
+	ConfigTagList []*string `json:"ConfigTagList,omitempty" name:"ConfigTagList"`
+
+	// 无
+	DisableProgramAuthCheck *bool `json:"DisableProgramAuthCheck,omitempty" name:"DisableProgramAuthCheck"`
+
+	// 无
+	ConfigIdList []*string `json:"ConfigIdList,omitempty" name:"ConfigIdList"`
 }
 
 func (r *DescribeConfigSummaryRequest) ToJsonString() string {
@@ -5150,6 +5207,9 @@ func (r *DescribeConfigSummaryRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "OrderBy")
 	delete(f, "OrderType")
+	delete(f, "ConfigTagList")
+	delete(f, "DisableProgramAuthCheck")
+	delete(f, "ConfigIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConfigSummaryRequest has unknown keys!", "")
 	}
@@ -6288,6 +6348,9 @@ type DescribeGroupsRequest struct {
 
 	// 部署组状态过滤字段
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 无
+	GroupIdList []*string `json:"GroupIdList,omitempty" name:"GroupIdList"`
 }
 
 func (r *DescribeGroupsRequest) ToJsonString() string {
@@ -6312,6 +6375,7 @@ func (r *DescribeGroupsRequest) FromJsonString(s string) error {
 	delete(f, "ClusterId")
 	delete(f, "GroupResourceTypeList")
 	delete(f, "Status")
+	delete(f, "GroupIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGroupsRequest has unknown keys!", "")
 	}
@@ -6567,6 +6631,9 @@ type DescribeLaneRulesRequest struct {
 
 	// 泳道规则ID（用于精确搜索）
 	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 无
+	RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList"`
 }
 
 func (r *DescribeLaneRulesRequest) ToJsonString() string {
@@ -6585,6 +6652,7 @@ func (r *DescribeLaneRulesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "SearchWord")
 	delete(f, "RuleId")
+	delete(f, "RuleIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLaneRulesRequest has unknown keys!", "")
 	}
@@ -6626,6 +6694,12 @@ type DescribeLanesRequest struct {
 
 	// 搜索关键字
 	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 无
+	LaneIdList []*string `json:"LaneIdList,omitempty" name:"LaneIdList"`
+
+	// 无
+	DisableProgramAuthCheck *bool `json:"DisableProgramAuthCheck,omitempty" name:"DisableProgramAuthCheck"`
 }
 
 func (r *DescribeLanesRequest) ToJsonString() string {
@@ -6643,6 +6717,8 @@ func (r *DescribeLanesRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "SearchWord")
+	delete(f, "LaneIdList")
+	delete(f, "DisableProgramAuthCheck")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLanesRequest has unknown keys!", "")
 	}
@@ -7386,6 +7462,15 @@ type DescribePublicConfigSummaryRequest struct {
 
 	// 升序传 0，降序传 1
 	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 无
+	ConfigTagList []*string `json:"ConfigTagList,omitempty" name:"ConfigTagList"`
+
+	// 无
+	DisableProgramAuthCheck *bool `json:"DisableProgramAuthCheck,omitempty" name:"DisableProgramAuthCheck"`
+
+	// 无
+	ConfigIdList []*string `json:"ConfigIdList,omitempty" name:"ConfigIdList"`
 }
 
 func (r *DescribePublicConfigSummaryRequest) ToJsonString() string {
@@ -7405,6 +7490,9 @@ func (r *DescribePublicConfigSummaryRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "OrderBy")
 	delete(f, "OrderType")
+	delete(f, "ConfigTagList")
+	delete(f, "DisableProgramAuthCheck")
+	delete(f, "ConfigIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePublicConfigSummaryRequest has unknown keys!", "")
 	}
@@ -7742,6 +7830,9 @@ type DescribeServerlessGroupsRequest struct {
 
 	// 分组所属集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 无
+	GroupIdList []*string `json:"GroupIdList,omitempty" name:"GroupIdList"`
 }
 
 func (r *DescribeServerlessGroupsRequest) ToJsonString() string {
@@ -7764,6 +7855,7 @@ func (r *DescribeServerlessGroupsRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "NamespaceId")
 	delete(f, "ClusterId")
+	delete(f, "GroupIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServerlessGroupsRequest has unknown keys!", "")
 	}
@@ -7817,6 +7909,9 @@ type DescribeSimpleApplicationsRequest struct {
 
 	// 通过id和name进行关键词过滤
 	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 无
+	DisableProgramAuthCheck *bool `json:"DisableProgramAuthCheck,omitempty" name:"DisableProgramAuthCheck"`
 }
 
 func (r *DescribeSimpleApplicationsRequest) ToJsonString() string {
@@ -7838,6 +7933,7 @@ func (r *DescribeSimpleApplicationsRequest) FromJsonString(s string) error {
 	delete(f, "MicroserviceType")
 	delete(f, "ApplicationResourceTypeList")
 	delete(f, "SearchWord")
+	delete(f, "DisableProgramAuthCheck")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSimpleApplicationsRequest has unknown keys!", "")
 	}
@@ -7885,6 +7981,9 @@ type DescribeSimpleClustersRequest struct {
 
 	// 对id和name进行关键词过滤
 	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 无
+	DisableProgramAuthCheck *bool `json:"DisableProgramAuthCheck,omitempty" name:"DisableProgramAuthCheck"`
 }
 
 func (r *DescribeSimpleClustersRequest) ToJsonString() string {
@@ -7904,6 +8003,7 @@ func (r *DescribeSimpleClustersRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "SearchWord")
+	delete(f, "DisableProgramAuthCheck")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSimpleClustersRequest has unknown keys!", "")
 	}
@@ -8048,6 +8148,9 @@ type DescribeSimpleNamespacesRequest struct {
 
 	// 通过是否是默认命名空间过滤，不传表示拉取全部命名空间。0：默认，命名空间。1：非默认命名空间
 	IsDefault *string `json:"IsDefault,omitempty" name:"IsDefault"`
+
+	// 无
+	DisableProgramAuthCheck *bool `json:"DisableProgramAuthCheck,omitempty" name:"DisableProgramAuthCheck"`
 }
 
 func (r *DescribeSimpleNamespacesRequest) ToJsonString() string {
@@ -8072,6 +8175,7 @@ func (r *DescribeSimpleNamespacesRequest) FromJsonString(s string) error {
 	delete(f, "NamespaceTypeList")
 	delete(f, "NamespaceName")
 	delete(f, "IsDefault")
+	delete(f, "DisableProgramAuthCheck")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSimpleNamespacesRequest has unknown keys!", "")
 	}
