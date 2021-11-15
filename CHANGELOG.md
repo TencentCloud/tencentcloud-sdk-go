@@ -1,10 +1,66 @@
 # 本版本更新包含以下内容：
 
-## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+## 弹性伸缩(as) 版本：2018-04-19
 
-### 第 60 次发布
+### 第 42 次发布
 
-发布时间：2021-11-12 08:10:33
+发布时间：2021-11-15 08:04:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreatePaiInstance
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 50 次发布
+
+发布时间：2021-11-12 15:56:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateAnchor](https://cloud.tencent.com/document/api/1122/63932)
+* [UploadFile](https://cloud.tencent.com/document/api/1122/63931)
+
+新增数据结构：
+
+* [AnchorExtendInfo](https://cloud.tencent.com/document/api/1122/40683#AnchorExtendInfo)
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 31 次发布
+
+发布时间：2021-11-15 08:10:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TagInstance](https://cloud.tencent.com/document/api/248/30354#TagInstance)
+
+	* <font color="#dd0000">**修改成员**：</font>RegionId
+
+
+
+
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 11 次发布
+
+发布时间：2021-11-15 08:11:30
 
 本次发布包含了以下内容：
 
@@ -12,79 +68,38 @@
 
 修改接口：
 
-* [CreateApplication](https://cloud.tencent.com/document/api/649/36094)
+* [CreateResource](https://cloud.tencent.com/document/api/849/52000)
 
-	* 新增入参：ProgramIdList
+	* 新增入参：FolderId
 
-* [CreateCluster](https://cloud.tencent.com/document/api/649/36049)
+	* <font color="#dd0000">**修改入参**：</font>Name
 
-	* 新增入参：KuberneteApiServer, KuberneteNativeType, KuberneteNativeSecret, ProgramIdList
+* [DescribeResourceRelatedJobs](https://cloud.tencent.com/document/api/849/54669)
 
-* [CreateConfig](https://cloud.tencent.com/document/api/649/38348)
+	* 新增入参：ResourceConfigVersion
 
-	* 新增入参：ProgramIdList
 
-* [CreateFileConfig](https://cloud.tencent.com/document/api/649/58594)
 
-	* 新增入参：ProgramIdList
 
-* [CreateGatewayApi](https://cloud.tencent.com/document/api/649/50639)
+## 云开发 CloudBase(tcb) 版本：2018-06-08
 
-	* 新增入参：ProgramIdList
+### 第 75 次发布
 
-* [CreateLane](https://cloud.tencent.com/document/api/649/44508)
+发布时间：2021-11-15 08:13:00
 
-	* 新增入参：ProgramIdList
+本次发布包含了以下内容：
 
-* [CreateLaneRule](https://cloud.tencent.com/document/api/649/44507)
+改善已有的文档。
 
-	* 新增入参：ProgramIdList
+新增接口：
 
-* [CreateNamespace](https://cloud.tencent.com/document/api/649/36098)
+* [ModifyCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/63949)
 
-	* 新增入参：ProgramIdList
+修改数据结构：
 
-* [CreatePublicConfig](https://cloud.tencent.com/document/api/649/38347)
+* [CloudBaseRunServerVersionItem](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunServerVersionItem)
 
-	* 新增入参：ProgramIdList
-
-* [DescribeConfigSummary](https://cloud.tencent.com/document/api/649/38341)
-
-	* 新增入参：ConfigTagList, DisableProgramAuthCheck, ConfigIdList
-
-* [DescribeGroups](https://cloud.tencent.com/document/api/649/36065)
-
-	* 新增入参：GroupIdList
-
-* [DescribeLaneRules](https://cloud.tencent.com/document/api/649/44505)
-
-	* 新增入参：RuleIdList
-
-* [DescribeLanes](https://cloud.tencent.com/document/api/649/44504)
-
-	* 新增入参：LaneIdList, DisableProgramAuthCheck
-
-	* <font color="#dd0000">**修改入参**：</font>Limit, Offset
-
-* [DescribePublicConfigSummary](https://cloud.tencent.com/document/api/649/38336)
-
-	* 新增入参：ConfigTagList, DisableProgramAuthCheck, ConfigIdList
-
-* [DescribeServerlessGroups](https://cloud.tencent.com/document/api/649/39421)
-
-	* 新增入参：GroupIdList
-
-* [DescribeSimpleApplications](https://cloud.tencent.com/document/api/649/36089)
-
-	* 新增入参：DisableProgramAuthCheck
-
-* [DescribeSimpleClusters](https://cloud.tencent.com/document/api/649/36047)
-
-	* 新增入参：DisableProgramAuthCheck
-
-* [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096)
-
-	* 新增入参：DisableProgramAuthCheck
+	* 新增成员：Architecture
 
 
 
@@ -1982,6 +1997,18 @@
 
 
 ## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 42 次发布
+
+发布时间：2021-11-15 08:04:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreatePaiInstance
 
 ### 第 41 次发布
 
@@ -16264,6 +16291,23 @@
 
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 50 次发布
+
+发布时间：2021-11-12 15:56:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateAnchor](https://cloud.tencent.com/document/api/1122/63932)](https://cloud.tencent.com/document/api/#/#)
+* [[UploadFile](https://cloud.tencent.com/document/api/1122/63931)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AnchorExtendInfo](https://cloud.tencent.com/document/api/1122/40683#AnchorExtendInfo)](https://cloud.tencent.com/document/api/1122/40683#[AnchorExtendInfo](https://cloud.tencent.com/document/api/1122/40683#AnchorExtendInfo))
 
 ### 第 49 次发布
 
@@ -37473,6 +37517,21 @@
 
 ## 云监控(monitor) 版本：2018-07-24
 
+### 第 31 次发布
+
+发布时间：2021-11-15 08:10:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TagInstance](https://cloud.tencent.com/document/api/248/30354#TagInstance)
+
+	* <font color="#dd0000">**修改成员**：</font>RegionId
+
+
 ### 第 30 次发布
 
 发布时间：2021-09-23 08:10:38
@@ -40093,6 +40152,27 @@
 
 
 ## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 11 次发布
+
+发布时间：2021-11-15 08:11:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateResource](https://cloud.tencent.com/document/api/849/52000)
+
+	* 新增入参：FolderId
+
+	* <font color="#dd0000">**修改入参**：</font>Name
+
+* [DescribeResourceRelatedJobs](https://cloud.tencent.com/document/api/849/54669)
+
+	* 新增入参：ResourceConfigVersion
+
 
 ### 第 10 次发布
 
@@ -48021,6 +48101,25 @@
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 75 次发布
+
+发布时间：2021-11-15 08:13:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/63949)](https://cloud.tencent.com/document/api/#/#)
+
+修改数据结构：
+
+* [CloudBaseRunServerVersionItem](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunServerVersionItem)
+
+	* 新增成员：Architecture
+
 
 ### 第 74 次发布
 

@@ -32,9 +32,6 @@ const (
 	// Cmq 接口调用失败。
 	INTERNALERROR_CALLCMQERROR = "InternalError.CallCmqError"
 
-	// Cns 接口调用失败。
-	INTERNALERROR_CALLCNSERROR = "InternalError.CallCnsError"
-
 	// 内部接口调用失败。
 	INTERNALERROR_CALLERROR = "InternalError.CallError"
 

@@ -257,17 +257,20 @@ type CreateResourceRequest struct {
 	// 资源位置
 	ResourceLoc *ResourceLoc `json:"ResourceLoc,omitempty" name:"ResourceLoc"`
 
-	// 资源名称
-	Name *string `json:"Name,omitempty" name:"Name"`
-
 	// 资源类型。目前只支持 JAR，取值为 1
 	ResourceType *int64 `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 资源描述
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
+	// 资源名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
 	// 资源版本描述
 	ResourceConfigRemark *string `json:"ResourceConfigRemark,omitempty" name:"ResourceConfigRemark"`
+
+	// 目录ID
+	FolderId *string `json:"FolderId,omitempty" name:"FolderId"`
 }
 
 func (r *CreateResourceRequest) ToJsonString() string {
@@ -283,10 +286,11 @@ func (r *CreateResourceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ResourceLoc")
-	delete(f, "Name")
 	delete(f, "ResourceType")
 	delete(f, "Remark")
+	delete(f, "Name")
 	delete(f, "ResourceConfigRemark")
+	delete(f, "FolderId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateResourceRequest has unknown keys!", "")
 	}
@@ -691,6 +695,9 @@ type DescribeResourceRelatedJobsRequest struct {
 
 	// 分页大小，默认为20，最大值为100
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 资源版本号
+	ResourceConfigVersion *int64 `json:"ResourceConfigVersion,omitempty" name:"ResourceConfigVersion"`
 }
 
 func (r *DescribeResourceRelatedJobsRequest) ToJsonString() string {
@@ -709,6 +716,7 @@ func (r *DescribeResourceRelatedJobsRequest) FromJsonString(s string) error {
 	delete(f, "DESCByJobConfigCreateTime")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "ResourceConfigVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceRelatedJobsRequest has unknown keys!", "")
 	}

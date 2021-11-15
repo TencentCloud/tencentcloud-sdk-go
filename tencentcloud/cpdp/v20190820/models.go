@@ -138,6 +138,21 @@ type AnchorContractInfo struct {
 	IdNo *string `json:"IdNo,omitempty" name:"IdNo"`
 }
 
+type AnchorExtendInfo struct {
+
+	// 扩展信息类型
+	// __id_card_no__:身份证号码
+	// __id_card_name__:身份证姓名
+	// __id_card_front__:身份证图片正面
+	// __id_card_back__:身份证图片反面
+	// __tax_type__:完税类型:0-自然人,1-个体工商户
+	// __channel_account__:渠道账号(_敏感信息_ 使用 __AES128-CBC-PKCS#7__ 加密)
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 扩展信息
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type ApplyApplicationMaterialRequest struct {
 	*tchttp.BaseRequest
 
@@ -2273,6 +2288,90 @@ func (r *CreateAgentTaxPaymentInfosResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAgentTaxPaymentInfosResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAnchorRequest struct {
+	*tchttp.BaseRequest
+
+	// 主播业务ID，唯一
+	AnchorUid *string `json:"AnchorUid,omitempty" name:"AnchorUid"`
+
+	// 主播姓名
+	AnchorName *string `json:"AnchorName,omitempty" name:"AnchorName"`
+
+	// 主播电话
+	// _敏感信息_ 使用 __AES128-CBC-PKCS#7__ 加密
+	AnchorPhone *string `json:"AnchorPhone,omitempty" name:"AnchorPhone"`
+
+	// 主播邮箱
+	// _敏感信息_ 使用 __AES128-CBC-PKCS#7__ 加密
+	AnchorEmail *string `json:"AnchorEmail,omitempty" name:"AnchorEmail"`
+
+	// 主播地址
+	// _敏感信息_ 使用 __AES128-CBC-PKCS#7__ 加密
+	AnchorAddress *string `json:"AnchorAddress,omitempty" name:"AnchorAddress"`
+
+	// 主播身份证号
+	// _敏感信息_ 使用 __AES128-CBC-PKCS#7__ 加密
+	AnchorIdNo *string `json:"AnchorIdNo,omitempty" name:"AnchorIdNo"`
+
+	// 主播类型
+	// __KMusic__:全民K歌
+	// __QMusic__:QQ音乐
+	// __WeChat__:微信视频号
+	AnchorType *string `json:"AnchorType,omitempty" name:"AnchorType"`
+
+	// 主播扩展信息
+	AnchorExtendInfo []*AnchorExtendInfo `json:"AnchorExtendInfo,omitempty" name:"AnchorExtendInfo"`
+}
+
+func (r *CreateAnchorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAnchorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AnchorUid")
+	delete(f, "AnchorName")
+	delete(f, "AnchorPhone")
+	delete(f, "AnchorEmail")
+	delete(f, "AnchorAddress")
+	delete(f, "AnchorIdNo")
+	delete(f, "AnchorType")
+	delete(f, "AnchorExtendInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAnchorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAnchorResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 主播ID
+		AnchorId *string `json:"AnchorId,omitempty" name:"AnchorId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAnchorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAnchorResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -12367,6 +12466,75 @@ func (r *UploadExternalAnchorInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UploadExternalAnchorInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadFileRequest struct {
+	*tchttp.BaseRequest
+
+	// 文件名
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 文件类型
+	// __IdCard__:身份证
+	// __IdCardCheck__:身份证加验证(只支持人像面)
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 文件链接
+	// __FileUrl和FileContent二选一__
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+
+	// 文件内容，Base64编码
+	// __FileUrl和FileContent二选一__
+	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
+
+	// 文件扩展信息
+	FileExtendInfo []*AnchorExtendInfo `json:"FileExtendInfo,omitempty" name:"FileExtendInfo"`
+}
+
+func (r *UploadFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadFileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileName")
+	delete(f, "FileType")
+	delete(f, "FileUrl")
+	delete(f, "FileContent")
+	delete(f, "FileExtendInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadFileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadFileResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 文件ID
+		FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UploadFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadFileResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -691,6 +691,39 @@ func (c *Client) CreateAgentTaxPaymentInfos(request *CreateAgentTaxPaymentInfosR
     return
 }
 
+func NewCreateAnchorRequest() (request *CreateAnchorRequest) {
+    request = &CreateAnchorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "CreateAnchor")
+    
+    return
+}
+
+func NewCreateAnchorResponse() (response *CreateAnchorResponse) {
+    response = &CreateAnchorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateAnchor
+// 直播平台-主播入驻
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEAGENT = "FailedOperation.CreateAgent"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
+//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
+func (c *Client) CreateAnchor(request *CreateAnchorRequest) (response *CreateAnchorResponse, err error) {
+    if request == nil {
+        request = NewCreateAnchorRequest()
+    }
+    response = NewCreateAnchorResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBatchPaymentRequest() (request *CreateBatchPaymentRequest) {
     request = &CreateBatchPaymentRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -711,12 +744,10 @@ func NewCreateBatchPaymentResponse() (response *CreateBatchPaymentResponse) {
 // 灵云-批量主播转账接口
 //
 // 可能返回的错误码:
-//  INTERNALERROR_DELETEDBERROR = "InternalError.DeleteDBError"
-//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
-//  RESOURCENOTFOUND_BATCHINFONOTFOUND = "ResourceNotFound.BatchInfoNotFound"
-//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
+//  FAILEDOPERATION_CREATEAGENT = "FailedOperation.CreateAgent"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
+//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
 func (c *Client) CreateBatchPayment(request *CreateBatchPaymentRequest) (response *CreateBatchPaymentResponse, err error) {
     if request == nil {
         request = NewCreateBatchPaymentRequest()
@@ -3993,6 +4024,39 @@ func (c *Client) UploadExternalAnchorInfo(request *UploadExternalAnchorInfoReque
         request = NewUploadExternalAnchorInfoRequest()
     }
     response = NewUploadExternalAnchorInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUploadFileRequest() (request *UploadFileRequest) {
+    request = &UploadFileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "UploadFile")
+    
+    return
+}
+
+func NewUploadFileResponse() (response *UploadFileResponse) {
+    response = &UploadFileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UploadFile
+// 直播平台-文件上传
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
+//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
+func (c *Client) UploadFile(request *UploadFileRequest) (response *UploadFileResponse, err error) {
+    if request == nil {
+        request = NewUploadFileRequest()
+    }
+    response = NewUploadFileResponse()
     err = c.Send(request, response)
     return
 }

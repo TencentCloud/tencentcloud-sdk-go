@@ -12,7 +12,7 @@
 | ape | [正版图库直通车](https://cloud.tencent.com/document/product/1181) | 2021-11-10 08:02:03 |
 | api | [云 API](https://cloud.tencent.com/document/product/546) | 2021-04-25 10:09:57 |
 | apigateway | [API网关](https://cloud.tencent.com/document/product/628) | 2021-11-10 08:02:05 |
-| as | [弹性伸缩](https://cloud.tencent.com/document/product/377) | 2021-11-10 08:02:21 |
+| as | [弹性伸缩](https://cloud.tencent.com/document/product/377) | 2021-11-15 08:04:22 |
 | asr | [语音识别](https://cloud.tencent.com/document/product/1093) | 2021-11-10 08:02:28 |
 | asw | [应用与服务编排工作流](https://cloud.tencent.com/document/product/1272) | 2021-11-10 08:02:31 |
 | ba | [网站备案](https://cloud.tencent.com/document/product/243) | 2021-11-10 08:02:33 |
@@ -48,7 +48,7 @@
 | cme | [腾讯云剪](https://cloud.tencent.com/document/product/1156) | 2021-11-10 08:04:37 |
 | cmq | [消息队列 CMQ](https://cloud.tencent.com/document/product/406) | 2021-11-10 08:04:45 |
 | cms | [内容安全](https://cloud.tencent.com/document/product) | 2020-10-29 08:03:08 |
-| cpdp | [企业收付平台](https://cloud.tencent.com/document/product/1122) | 2021-11-10 08:04:48 |
+| cpdp | [企业收付平台](https://cloud.tencent.com/document/product/1122) | 2021-11-15 08:06:45 |
 | cr | [金融联络机器人](https://cloud.tencent.com/document/product/656) | 2021-02-24 08:03:24 |
 | cvm | [云服务器](https://cloud.tencent.com/document/product/213) | 2021-11-12 08:03:23 |
 | cwp | [主机安全](https://cloud.tencent.com/document/product/296) | 2021-11-10 08:05:17 |
@@ -105,15 +105,15 @@
 | mgobe | [游戏联机对战引擎](https://cloud.tencent.com/document/product/1038) | 2021-11-10 08:08:55 |
 | mna | [移动网络加速](https://cloud.tencent.com/document/product/1385) | 2021-11-10 08:08:55 |
 | mongodb | [云数据库 MongoDB](https://cloud.tencent.com/document/product/240) | 2021-11-10 08:08:57 |
-| monitor | [云监控](https://cloud.tencent.com/document/product/248) | 2021-11-10 08:08:58 |
+| monitor | [云监控](https://cloud.tencent.com/document/product/248) | 2021-11-15 08:10:59 |
 | mps | [视频处理](https://cloud.tencent.com/document/product/862) | 2021-11-10 08:09:09 |
-| mrs | [医疗报告结构化](https://cloud.tencent.com/document/product/1314) | 2021-11-10 08:09:20 |
+| mrs | [医疗报告结构化](https://cloud.tencent.com/document/product/1314) | 2021-11-15 08:11:22 |
 | ms | [移动应用安全](https://cloud.tencent.com/document/product) | 2020-06-05 08:13:52 |
 | msp | [迁移服务平台](https://cloud.tencent.com/document/product/659) | 2021-11-10 08:09:22 |
 | mvj | [营销价值判断](https://cloud.tencent.com/document/product) | 2020-03-19 08:11:44 |
 | nlp | [自然语言处理](https://cloud.tencent.com/document/product/271) | 2021-11-10 08:09:23 |
 | npp | [号码保护](https://cloud.tencent.com/document/product) | 2020-04-22 08:00:22 |
-| oceanus | [流计算 Oceanus](https://cloud.tencent.com/document/product/849) | 2021-11-10 08:09:27 |
+| oceanus | [流计算 Oceanus](https://cloud.tencent.com/document/product/849) | 2021-11-15 08:11:30 |
 | ocr | [文字识别](https://cloud.tencent.com/document/product/866) | 2021-11-12 08:07:55 |
 | organization | [企业组织](https://cloud.tencent.com/document/product/850) | 2021-11-10 08:09:46 |
 | partners | [渠道合作伙伴](https://cloud.tencent.com/document/product/563) | 2021-11-10 08:09:47 |
@@ -145,7 +145,7 @@
 | tbm | [](https://cloud.tencent.com/document/product) | 2019-03-29 14:49:11 |
 | tbp | [腾讯智能对话平台](https://cloud.tencent.com/document/product/1060) | 2021-11-10 08:10:55 |
 | tcaplusdb | [游戏数据库 TcaplusDB](https://cloud.tencent.com/document/product/596) | 2021-11-10 08:10:55 |
-| tcb | [云开发 CloudBase](https://cloud.tencent.com/document/product/876) | 2021-11-10 08:11:02 |
+| tcb | [云开发 CloudBase](https://cloud.tencent.com/document/product/876) | 2021-11-15 08:13:00 |
 | tcex | [腾讯云释义](https://cloud.tencent.com/document/product/1266) | 2021-11-10 08:11:12 |
 | tci | [腾讯智学课堂分析](https://cloud.tencent.com/document/product) | 2020-08-24 08:06:03 |
 | tcm | [服务网格](https://cloud.tencent.com/document/product/1261) | 2021-11-10 15:03:56 |
@@ -160,7 +160,7 @@
 | tiems | [智能钛弹性模型服务](https://cloud.tencent.com/document/product/1120) | 2021-11-10 08:11:38 |
 | tiia | [图像分析](https://cloud.tencent.com/document/product/865) | 2021-11-10 08:11:42 |
 | tione | [智能钛机器学习平台](https://cloud.tencent.com/document/product/851) | 2021-11-10 08:11:45 |
-| tiw | [互动白板](https://cloud.tencent.com/document/product/1137) | 2021-11-10 08:11:49 |
+| tiw | [互动白板](https://cloud.tencent.com/document/product/1137) | 2021-11-15 08:13:50 |
 | tke | [容器服务](https://cloud.tencent.com/document/product/457) | 2021-11-10 08:11:53 |
 | tkgdq | [腾讯知识图谱数据查询](https://cloud.tencent.com/document/product) | 2020-03-10 00:51:44 |
 | tms | [文本内容安全](https://cloud.tencent.com/document/product/1124) | 2021-11-10 08:12:05 |

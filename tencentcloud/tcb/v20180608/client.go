@@ -2299,6 +2299,39 @@ func (c *Client) ModifyCloudBaseRunServerFlowConf(request *ModifyCloudBaseRunSer
     return
 }
 
+func NewModifyCloudBaseRunServerVersionRequest() (request *ModifyCloudBaseRunServerVersionRequest) {
+    request = &ModifyCloudBaseRunServerVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "ModifyCloudBaseRunServerVersion")
+    
+    return
+}
+
+func NewModifyCloudBaseRunServerVersionResponse() (response *ModifyCloudBaseRunServerVersionResponse) {
+    response = &ModifyCloudBaseRunServerVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyCloudBaseRunServerVersion
+// 修改服务版本的副本数，环境变量
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyCloudBaseRunServerVersion(request *ModifyCloudBaseRunServerVersionRequest) (response *ModifyCloudBaseRunServerVersionResponse, err error) {
+    if request == nil {
+        request = NewModifyCloudBaseRunServerVersionRequest()
+    }
+    response = NewModifyCloudBaseRunServerVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDatabaseACLRequest() (request *ModifyDatabaseACLRequest) {
     request = &ModifyDatabaseACLRequest{
         BaseRequest: &tchttp.BaseRequest{},

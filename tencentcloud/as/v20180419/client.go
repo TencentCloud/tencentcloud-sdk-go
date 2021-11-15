@@ -512,41 +512,6 @@ func (c *Client) CreateNotificationConfiguration(request *CreateNotificationConf
     return
 }
 
-func NewCreatePaiInstanceRequest() (request *CreatePaiInstanceRequest) {
-    request = &CreatePaiInstanceRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("as", APIVersion, "CreatePaiInstance")
-    
-    return
-}
-
-func NewCreatePaiInstanceResponse() (response *CreatePaiInstanceResponse) {
-    response = &CreatePaiInstanceResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// CreatePaiInstance
-// 本接口 (CreatePaiInstance) 用于创建一个指定配置的PAI实例。
-//
-// 可能返回的错误码:
-//  INTERNALERROR_CALLCNSERROR = "InternalError.CallCnsError"
-//  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
-//  INVALIDPARAMETER_INVALIDCOMBINATION = "InvalidParameter.InvalidCombination"
-//  INVALIDPARAMETERVALUE_INVALIDINSTANCETYPE = "InvalidParameterValue.InvalidInstanceType"
-//  INVALIDPARAMETERVALUE_INVALIDSUBNETID = "InvalidParameterValue.InvalidSubnetId"
-//  INVALIDPARAMETERVALUE_NOTSTRINGTYPEFLOAT = "InvalidParameterValue.NotStringTypeFloat"
-func (c *Client) CreatePaiInstance(request *CreatePaiInstanceRequest) (response *CreatePaiInstanceResponse, err error) {
-    if request == nil {
-        request = NewCreatePaiInstanceRequest()
-    }
-    response = NewCreatePaiInstanceResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewCreateScalingPolicyRequest() (request *CreateScalingPolicyRequest) {
     request = &CreateScalingPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},

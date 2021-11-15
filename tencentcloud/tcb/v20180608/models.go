@@ -542,6 +542,10 @@ type CloudBaseRunServerVersionItem struct {
 	// 当前副本数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentReplicas *int64 `json:"CurrentReplicas,omitempty" name:"CurrentReplicas"`
+
+	// Monolithic，Microservice
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Architecture *string `json:"Architecture,omitempty" name:"Architecture"`
 }
 
 type CloudBaseRunServiceVolumeMount struct {
@@ -5669,6 +5673,100 @@ func (r *ModifyCloudBaseRunServerFlowConfResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyCloudBaseRunServerFlowConfResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCloudBaseRunServerVersionRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 服务名称
+	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+	// 版本名称
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+
+	// 环境变量
+	EnvParams *string `json:"EnvParams,omitempty" name:"EnvParams"`
+
+	// 最小副本数
+	MinNum *string `json:"MinNum,omitempty" name:"MinNum"`
+
+	// 最大副本数
+	MaxNum *string `json:"MaxNum,omitempty" name:"MaxNum"`
+
+	// 端口
+	ContainerPort *string `json:"ContainerPort,omitempty" name:"ContainerPort"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 日志采集路径
+	CustomLogs *string `json:"CustomLogs,omitempty" name:"CustomLogs"`
+
+	// 是否重设备注
+	IsResetRemark *bool `json:"IsResetRemark,omitempty" name:"IsResetRemark"`
+
+	// 修改基础信息
+	BasicModify *bool `json:"BasicModify,omitempty" name:"BasicModify"`
+
+	// 操作备注
+	OperatorRemark *string `json:"OperatorRemark,omitempty" name:"OperatorRemark"`
+}
+
+func (r *ModifyCloudBaseRunServerVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCloudBaseRunServerVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "ServerName")
+	delete(f, "VersionName")
+	delete(f, "EnvParams")
+	delete(f, "MinNum")
+	delete(f, "MaxNum")
+	delete(f, "ContainerPort")
+	delete(f, "Remark")
+	delete(f, "CustomLogs")
+	delete(f, "IsResetRemark")
+	delete(f, "BasicModify")
+	delete(f, "OperatorRemark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCloudBaseRunServerVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCloudBaseRunServerVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回结果（succ为成功）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyCloudBaseRunServerVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCloudBaseRunServerVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
