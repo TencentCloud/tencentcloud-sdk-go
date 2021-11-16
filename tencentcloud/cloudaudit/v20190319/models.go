@@ -362,6 +362,10 @@ type DescribeEventsResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Events []*Event `json:"Events,omitempty" name:"Events"`
 
+		// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

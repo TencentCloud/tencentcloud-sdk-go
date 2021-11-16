@@ -245,6 +245,7 @@ func NewTrylockWorkerResponse() (response *TrylockWorkerResponse) {
 //  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_NOIDLE = "ResourceNotFound.NoIdle"
+//  RESOURCEUNAVAILABLE_INITIALIZATION = "ResourceUnavailable.Initialization"
 //  UNSUPPORTEDOPERATION_STOPPING = "UnsupportedOperation.Stopping"
 func (c *Client) TrylockWorker(request *TrylockWorkerRequest) (response *TrylockWorkerResponse, err error) {
     if request == nil {

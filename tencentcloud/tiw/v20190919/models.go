@@ -117,11 +117,11 @@ type CreateTranscodeRequest struct {
 	// 如果IsStaticPPT为False，后缀名为.ppt或.pptx的文档会动态转码成HTML5页面，其他格式的文档会静态转码成图片；如果IsStaticPPT为True，所有格式的文档会静态转码成图片；
 	IsStaticPPT *bool `json:"IsStaticPPT,omitempty" name:"IsStaticPPT"`
 
-	// 注意: 该参数已废弃, 请使用 MinScaleResolution
+	// 注意: 该参数已废弃, 请使用最新的 [云API SDK](https://cloud.tencent.com/document/api/1137/40060#SDK) ，使用 MinScaleResolution字段传递分辨率
 	// 
 	// 转码后文档的最小分辨率，不传、传空字符串或分辨率格式错误则使用文档原分辨率
 	// 
-	// 注意分辨率宽高中间为英文字母"xyz"的"x"
+	// 示例：1280x720，注意分辨率宽高中间为英文字母"xyz"的"x"
 	MinResolution *string `json:"MinResolution,omitempty" name:"MinResolution"`
 
 	// 动态PPT转码可以为文件生成该分辨率的缩略图，不传、传空字符串或分辨率格式错误则不生成缩略图，分辨率格式同MinResolution

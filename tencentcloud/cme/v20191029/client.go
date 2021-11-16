@@ -765,6 +765,7 @@ func NewDescribeResourceAuthorizationResponse() (response *DescribeResourceAutho
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_OWNERTYPE = "InvalidParameterValue.OwnerType"
+//  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"

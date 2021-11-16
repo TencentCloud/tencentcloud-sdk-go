@@ -4644,7 +4644,7 @@ func NewStopRecordTaskResponse() (response *StopRecordTaskResponse) {
 }
 
 // StopRecordTask
-// 提前结束录制，并中止运行中的录制任务。任务被成功终止后，本次任务将不再启动。
+// 提前结束录制，中止运行中的录制任务并生成录制文件。任务被成功终止后，本次任务将不再启动。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

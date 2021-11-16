@@ -65,6 +65,9 @@ const (
 	// 号码解析失败，请检查号码是否符合 E.164 标准。
 	FAILEDOPERATION_PHONENUMBERPARSEFAIL = "FailedOperation.PhoneNumberParseFail"
 
+	// 非主账号无法使用拉取模板列表功能。您可以使用主账号下云 API 密钥来调用接口。
+	FAILEDOPERATION_PROHIBITSUBACCOUNTUSE = "FailedOperation.ProhibitSubAccountUse"
+
 	// 签名个数达到最大值。
 	FAILEDOPERATION_SIGNNUMBERLIMIT = "FailedOperation.SignNumberLimit"
 

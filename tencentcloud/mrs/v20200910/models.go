@@ -50,6 +50,17 @@ type AspectRatio struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
+type BiopsyPart struct {
+
+	// 值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 原文
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Src *string `json:"Src,omitempty" name:"Src"`
+}
+
 type BlockInfo struct {
 
 	// 原文位置
@@ -320,6 +331,55 @@ type Electrocardiogram struct {
 	// 心电图诊断
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EcgDiagnosis *EcgDiagnosis `json:"EcgDiagnosis,omitempty" name:"EcgDiagnosis"`
+}
+
+type Endoscopy struct {
+
+	// 活检部位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BiopsyPart *BiopsyPart `json:"BiopsyPart,omitempty" name:"BiopsyPart"`
+
+	// 可见描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Desc *EndoscopyDesc `json:"Desc,omitempty" name:"Desc"`
+
+	// 结论
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Summary *Summary `json:"Summary,omitempty" name:"Summary"`
+}
+
+type EndoscopyDesc struct {
+
+	// 描述内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 器官
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Organ []*EndoscopyOrgan `json:"Organ,omitempty" name:"Organ"`
+}
+
+type EndoscopyOrgan struct {
+
+	// 部位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Part *Part `json:"Part,omitempty" name:"Part"`
+
+	// 原文位置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Index []*int64 `json:"Index,omitempty" name:"Index"`
+
+	// 原文
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Src *string `json:"Src,omitempty" name:"Src"`
+
+	// 部位别名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PartAlias *string `json:"PartAlias,omitempty" name:"PartAlias"`
+
+	// 症状描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SymDescList []*BlockInfo `json:"SymDescList,omitempty" name:"SymDescList"`
 }
 
 type FamilyMedicalHistory struct {
@@ -756,6 +816,41 @@ type MedicalRecordInfo struct {
 	TreatmentOpinion *string `json:"TreatmentOpinion,omitempty" name:"TreatmentOpinion"`
 }
 
+type Medicine struct {
+
+	// 药品名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 商品名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeName *string `json:"TradeName,omitempty" name:"TradeName"`
+
+	// 厂商
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Firm *string `json:"Firm,omitempty" name:"Firm"`
+
+	// 医保类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Category *string `json:"Category,omitempty" name:"Category"`
+
+	// 规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Specification *string `json:"Specification,omitempty" name:"Specification"`
+
+	// 最小包装数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinQuantity *string `json:"MinQuantity,omitempty" name:"MinQuantity"`
+
+	// 最小制剂单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DosageUnit *string `json:"DosageUnit,omitempty" name:"DosageUnit"`
+
+	// 最小包装单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackingUnit *string `json:"PackingUnit,omitempty" name:"PackingUnit"`
+}
+
 type MenstrualMedicalHistory struct {
 
 	// 末次月经时间
@@ -1138,6 +1233,13 @@ type PersonalMedicalHistory struct {
 	AlcoholicHistory *string `json:"AlcoholicHistory,omitempty" name:"AlcoholicHistory"`
 }
 
+type Prescription struct {
+
+	// 药品列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MedicineList []*Medicine `json:"MedicineList,omitempty" name:"MedicineList"`
+}
+
 type ReportInfo struct {
 
 	// 医院名称
@@ -1368,6 +1470,14 @@ type Template struct {
 	// 心电图报告
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Electrocardiogram *Electrocardiogram `json:"Electrocardiogram,omitempty" name:"Electrocardiogram"`
+
+	// 内窥镜报告
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Endoscopy *Endoscopy `json:"Endoscopy,omitempty" name:"Endoscopy"`
+
+	// 处方单
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Prescription *Prescription `json:"Prescription,omitempty" name:"Prescription"`
 }
 
 type TextToClassRequest struct {

@@ -2911,7 +2911,7 @@ type GrantAccountPrivilegesRequest struct {
 	// 字段权限： INSERT，REFERENCES，SELECT，UPDATE
 	Privileges []*string `json:"Privileges,omitempty" name:"Privileges"`
 
-	// 类型,可以填入 table 、 view 、 proc 、 func 和 \*。当 DbName 为具体数据库名，Type为 \* 时，表示设置该数据库权限（即db.\*），此时忽略 Object 参数
+	// 类型,可以填入 table 和 \*。当 DbName 为具体数据库名，Type为 \* 时，表示设置该数据库权限（即db.\*），此时忽略 Object 参数
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 具体的 Type 的名称，例如 Type 为 table 时就是具体的表名。DbName 和 Type 都为具体名称，则 Object 表示具体对象名，不能为 \* 或者为空

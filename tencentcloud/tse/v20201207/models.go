@@ -77,6 +77,14 @@ type DescribeSREInstanceAccessAddressResponse struct {
 		// apollo多环境公网ip
 		EnvAddressInfos []*EnvAddressInfo `json:"EnvAddressInfos,omitempty" name:"EnvAddressInfos"`
 
+		// 控制台公网访问地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ConsoleInternetAddress *string `json:"ConsoleInternetAddress,omitempty" name:"ConsoleInternetAddress"`
+
+		// 控制台内网访问地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ConsoleIntranetAddress *string `json:"ConsoleIntranetAddress,omitempty" name:"ConsoleIntranetAddress"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -291,6 +299,14 @@ type SREInstance struct {
 	// 实例的标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*KVPair `json:"Tags,omitempty" name:"Tags"`
+
+	// 引擎实例是否开启控制台公网访问地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableConsoleInternet *bool `json:"EnableConsoleInternet,omitempty" name:"EnableConsoleInternet"`
+
+	// 引擎实例是否开启控制台内网访问地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableConsoleIntranet *bool `json:"EnableConsoleIntranet,omitempty" name:"EnableConsoleIntranet"`
 }
 
 type ServiceGovernanceInfo struct {

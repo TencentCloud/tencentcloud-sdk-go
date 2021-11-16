@@ -1,47 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 弹性伸缩(as) 版本：2018-04-19
+## 云呼叫中心(ccc) 版本：2020-02-10
 
-### 第 42 次发布
+### 第 17 次发布
 
-发布时间：2021-11-15 08:04:22
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* CreatePaiInstance
-
-
-
-## 企业收付平台(cpdp) 版本：2019-08-20
-
-### 第 50 次发布
-
-发布时间：2021-11-12 15:56:31
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateAnchor](https://cloud.tencent.com/document/api/1122/63932)
-* [UploadFile](https://cloud.tencent.com/document/api/1122/63931)
-
-新增数据结构：
-
-* [AnchorExtendInfo](https://cloud.tencent.com/document/api/1122/40683#AnchorExtendInfo)
-
-
-
-## 云监控(monitor) 版本：2018-07-24
-
-### 第 31 次发布
-
-发布时间：2021-11-15 08:10:59
+发布时间：2021-11-16 08:06:45
 
 本次发布包含了以下内容：
 
@@ -49,18 +12,18 @@
 
 修改数据结构：
 
-* [TagInstance](https://cloud.tencent.com/document/api/248/30354#TagInstance)
+* [TelCdrInfo](https://cloud.tencent.com/document/api/679/47715#TelCdrInfo)
 
-	* <font color="#dd0000">**修改成员**：</font>RegionId
-
-
+	* 新增成员：Uui
 
 
-## 流计算 Oceanus(oceanus) 版本：2019-04-22
 
-### 第 11 次发布
 
-发布时间：2021-11-15 08:11:30
+## 云审计(cloudaudit) 版本：2019-03-19
+
+### 第 9 次发布
+
+发布时间：2021-11-16 08:07:51
 
 本次发布包含了以下内容：
 
@@ -68,38 +31,107 @@
 
 修改接口：
 
-* [CreateResource](https://cloud.tencent.com/document/api/849/52000)
+* [DescribeEvents](https://cloud.tencent.com/document/api/629/54488)
 
-	* 新增入参：FolderId
-
-	* <font color="#dd0000">**修改入参**：</font>Name
-
-* [DescribeResourceRelatedJobs](https://cloud.tencent.com/document/api/849/54669)
-
-	* 新增入参：ResourceConfigVersion
+	* 新增出参：TotalCount
 
 
 
 
-## 云开发 CloudBase(tcb) 版本：2018-06-08
+## 腾讯云剪(cme) 版本：2019-10-29
 
-### 第 75 次发布
+### 第 41 次发布
 
-发布时间：2021-11-15 08:13:00
+发布时间：2021-11-16 08:08:03
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [ModifyCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/63949)
+* [DescribeResourceAuthorization](https://cloud.tencent.com/document/api/1156/43251)
+
+	* <font color="#dd0000">**修改入参**：</font>Owner, Resource
+
+
+
+
+## 医疗报告结构化(mrs) 版本：2020-09-10
+
+### 第 7 次发布
+
+发布时间：2021-11-16 08:13:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [BiopsyPart](https://cloud.tencent.com/document/api/1314/56230#BiopsyPart)
+* [Endoscopy](https://cloud.tencent.com/document/api/1314/56230#Endoscopy)
+* [EndoscopyDesc](https://cloud.tencent.com/document/api/1314/56230#EndoscopyDesc)
+* [EndoscopyOrgan](https://cloud.tencent.com/document/api/1314/56230#EndoscopyOrgan)
+* [Medicine](https://cloud.tencent.com/document/api/1314/56230#Medicine)
+* [Prescription](https://cloud.tencent.com/document/api/1314/56230#Prescription)
 
 修改数据结构：
 
-* [CloudBaseRunServerVersionItem](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunServerVersionItem)
+* [Template](https://cloud.tencent.com/document/api/1314/56230#Template)
 
-	* 新增成员：Architecture
+	* 新增成员：Endoscopy, Prescription
+
+
+
+
+## 短信(sms) 版本：2021-01-11
+
+### 第 3 次发布
+
+发布时间：2021-11-16 08:13:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSmsTemplateList](https://cloud.tencent.com/document/api/382/52067)
+
+	* 新增入参：Limit, Offset
+
+	* <font color="#dd0000">**修改入参**：</font>TemplateIdSet
+
+
+
+
+## 短信(sms) 版本：2019-07-11
+
+
+
+## 腾讯云微服务引擎(tse) 版本：2020-12-07
+
+### 第 12 次发布
+
+发布时间：2021-11-16 08:15:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSREInstanceAccessAddress](https://cloud.tencent.com/document/api/1364/54941)
+
+	* 新增出参：ConsoleInternetAddress, ConsoleIntranetAddress
+
+
+修改数据结构：
+
+* [SREInstance](https://cloud.tencent.com/document/api/1364/54942#SREInstance)
+
+	* 新增成员：EnableConsoleInternet, EnableConsoleIntranet
 
 
 
@@ -7839,6 +7871,21 @@
 
 ## 云呼叫中心(ccc) 版本：2020-02-10
 
+### 第 17 次发布
+
+发布时间：2021-11-16 08:06:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TelCdrInfo](https://cloud.tencent.com/document/api/679/47715#TelCdrInfo)
+
+	* 新增成员：Uui
+
+
 ### 第 16 次发布
 
 发布时间：2021-11-01 08:06:08
@@ -14373,6 +14420,21 @@
 
 ## 云审计(cloudaudit) 版本：2019-03-19
 
+### 第 9 次发布
+
+发布时间：2021-11-16 08:07:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeEvents](https://cloud.tencent.com/document/api/629/54488)
+
+	* 新增出参：TotalCount
+
+
 ### 第 8 次发布
 
 发布时间：2021-06-17 08:11:39
@@ -14964,6 +15026,21 @@
 
 
 ## 腾讯云剪(cme) 版本：2019-10-29
+
+### 第 41 次发布
+
+发布时间：2021-11-16 08:08:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeResourceAuthorization](https://cloud.tencent.com/document/api/1156/43251)
+
+	* <font color="#dd0000">**修改入参**：</font>Owner, Resource
+
 
 ### 第 40 次发布
 
@@ -16302,12 +16379,12 @@
 
 新增接口：
 
-* [[CreateAnchor](https://cloud.tencent.com/document/api/1122/63932)](https://cloud.tencent.com/document/api/#/#)
-* [[UploadFile](https://cloud.tencent.com/document/api/1122/63931)](https://cloud.tencent.com/document/api/#/#)
+* [CreateAnchor](https://cloud.tencent.com/document/api/1122/63932)
+* [UploadFile](https://cloud.tencent.com/document/api/1122/63931)
 
 新增数据结构：
 
-* [[AnchorExtendInfo](https://cloud.tencent.com/document/api/1122/40683#AnchorExtendInfo)](https://cloud.tencent.com/document/api/1122/40683#[AnchorExtendInfo](https://cloud.tencent.com/document/api/1122/40683#AnchorExtendInfo))
+* [AnchorExtendInfo](https://cloud.tencent.com/document/api/1122/40683#AnchorExtendInfo)
 
 ### 第 49 次发布
 
@@ -39416,6 +39493,30 @@
 
 ## 医疗报告结构化(mrs) 版本：2020-09-10
 
+### 第 7 次发布
+
+发布时间：2021-11-16 08:13:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[BiopsyPart](https://cloud.tencent.com/document/api/1314/56230#BiopsyPart)](https://cloud.tencent.com/document/api/1314/56230#[BiopsyPart](https://cloud.tencent.com/document/api/1314/56230#BiopsyPart))
+* [[Endoscopy](https://cloud.tencent.com/document/api/1314/56230#Endoscopy)](https://cloud.tencent.com/document/api/1314/56230#[Endoscopy](https://cloud.tencent.com/document/api/1314/56230#Endoscopy))
+* [[EndoscopyDesc](https://cloud.tencent.com/document/api/1314/56230#EndoscopyDesc)](https://cloud.tencent.com/document/api/1314/56230#[EndoscopyDesc](https://cloud.tencent.com/document/api/1314/56230#EndoscopyDesc))
+* [[EndoscopyOrgan](https://cloud.tencent.com/document/api/1314/56230#EndoscopyOrgan)](https://cloud.tencent.com/document/api/1314/56230#[EndoscopyOrgan](https://cloud.tencent.com/document/api/1314/56230#EndoscopyOrgan))
+* [[Medicine](https://cloud.tencent.com/document/api/1314/56230#Medicine)](https://cloud.tencent.com/document/api/1314/56230#[Medicine](https://cloud.tencent.com/document/api/1314/56230#Medicine))
+* [[Prescription](https://cloud.tencent.com/document/api/1314/56230#Prescription)](https://cloud.tencent.com/document/api/1314/56230#[Prescription](https://cloud.tencent.com/document/api/1314/56230#Prescription))
+
+修改数据结构：
+
+* [Template](https://cloud.tencent.com/document/api/1314/56230#Template)
+
+	* 新增成员：Endoscopy, Prescription
+
+
 ### 第 6 次发布
 
 发布时间：2021-10-21 11:32:09
@@ -44834,6 +44935,23 @@
 
 ## 短信(sms) 版本：2021-01-11
 
+### 第 3 次发布
+
+发布时间：2021-11-16 08:13:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSmsTemplateList](https://cloud.tencent.com/document/api/382/52067)
+
+	* 新增入参：Limit, Offset
+
+	* <font color="#dd0000">**修改入参**：</font>TemplateIdSet
+
+
 ### 第 2 次发布
 
 发布时间：2021-09-23 08:11:56
@@ -48112,7 +48230,7 @@
 
 新增接口：
 
-* [[ModifyCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/63949)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/63949)
 
 修改数据结构：
 
@@ -55406,6 +55524,28 @@
 
 
 ## 腾讯云微服务引擎(tse) 版本：2020-12-07
+
+### 第 12 次发布
+
+发布时间：2021-11-16 08:15:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSREInstanceAccessAddress](https://cloud.tencent.com/document/api/1364/54941)
+
+	* 新增出参：ConsoleInternetAddress, ConsoleIntranetAddress
+
+
+修改数据结构：
+
+* [SREInstance](https://cloud.tencent.com/document/api/1364/54942#SREInstance)
+
+	* 新增成员：EnableConsoleInternet, EnableConsoleIntranet
+
 
 ### 第 11 次发布
 

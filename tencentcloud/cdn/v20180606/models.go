@@ -8065,18 +8065,21 @@ type RemoteAuthentication struct {
 
 type RemoteAuthenticationRule struct {
 
-	// 远程鉴权服务http url
+	// 远程鉴权Server。
+	// 默认值:和上层配置的"Server"一致；
 	Server *string `json:"Server,omitempty" name:"Server"`
 
-	// 请求远程鉴权服务器的http方法；取值范围[get,post,head,all]; all 表示不限制请求方法；
-	// all: 不指定访问访问方法；
+	// 请求远程鉴权服务器的http方法；取值范围[get,post,head,all]; 
+	// all: 表示"遵循终端用户请求方法"
+	// 默认值: all
 	AuthMethod *string `json:"AuthMethod,omitempty" name:"AuthMethod"`
 
 	// 规则类型：
 	// all：所有文件生效
 	// file：指定文件后缀生效
-	// directory：指定路径生效
-	// path：指定绝对路径生效
+	// directory：指定目录生效
+	// path：指定文件绝对路径生效
+	// 默认值:all
 	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
 
 	// 对应类型下的匹配内容：
@@ -8085,15 +8088,18 @@ type RemoteAuthenticationRule struct {
 	// directory 时填充路径，如 /xxx/test
 	// path 时填充绝对路径，如 /xxx/test.html
 	// index 时填充 /
+	// 默认值:*
 	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths"`
 
 	// 请求远程鉴权服务器超时时间，单位毫秒；
 	// 取值范围：[1,30 000]
+	// 默认值:20000
 	AuthTimeout *int64 `json:"AuthTimeout,omitempty" name:"AuthTimeout"`
 
 	// 请求远程鉴权服务器超时后执行拦截或者放行；
 	// RETURN_200: 超时后放行；
-	// RETURN_403:超时返回403；
+	// RETURN_403:超时拦截；
+	// 默认值:RETURN_200
 	AuthTimeoutAction *string `json:"AuthTimeoutAction,omitempty" name:"AuthTimeoutAction"`
 }
 

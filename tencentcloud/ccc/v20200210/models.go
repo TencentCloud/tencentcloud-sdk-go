@@ -1609,6 +1609,10 @@ type TelCdrInfo struct {
 	// 被叫号码保护ID，开启号码保护映射功能时有效，且Callee字段置空
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProtectedCallee *string `json:"ProtectedCallee,omitempty" name:"ProtectedCallee"`
+
+	// 客户自定义数据（User-to-User Interface）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uui *string `json:"Uui,omitempty" name:"Uui"`
 }
 
 type UnbindStaffSkillGroupListRequest struct {
