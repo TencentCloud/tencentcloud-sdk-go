@@ -51,6 +51,626 @@ type Acct struct {
 	MaintenanceDate *string `json:"MaintenanceDate,omitempty" name:"MaintenanceDate"`
 }
 
+type AddContractRequest struct {
+	*tchttp.BaseRequest
+
+	// 签约扣率百分比（如：0.32）
+	Fee *string `json:"Fee,omitempty" name:"Fee"`
+
+	// 机构合同主键（系统有唯一性校验），建议使用合同表的主键ID，防止重复添加合同
+	OutContractId *string `json:"OutContractId,omitempty" name:"OutContractId"`
+
+	// 封顶值（分为单位，无封顶填0）
+	PaymentClassificationLimit *string `json:"PaymentClassificationLimit,omitempty" name:"PaymentClassificationLimit"`
+
+	// 联系人电话
+	ContactTelephone *string `json:"ContactTelephone,omitempty" name:"ContactTelephone"`
+
+	// 支付方式编号
+	PaymentId *string `json:"PaymentId,omitempty" name:"PaymentId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 合同生效日期（yyyy-mm-dd）
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 合同过期日期（yyyy-mm-dd）
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+	// 合同签约人
+	SignMan *string `json:"SignMan,omitempty" name:"SignMan"`
+
+	// 签购单名称，建议使用商户招牌名称
+	SignName *string `json:"SignName,omitempty" name:"SignName"`
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 商户编号
+	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+
+	// 合同照片【私密区】
+	PictureOne *string `json:"PictureOne,omitempty" name:"PictureOne"`
+
+	// 联系人
+	Contact *string `json:"Contact,omitempty" name:"Contact"`
+
+	// 合同签署日期（yyyy-mm-dd）
+	SignDate *string `json:"SignDate,omitempty" name:"SignDate"`
+
+	// 合同编号（系统有唯一性校验）
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 是否自动续签（1是，0否）
+	AutoSign *string `json:"AutoSign,omitempty" name:"AutoSign"`
+
+	// 支付方式行业分类编号
+	PaymentClassificationId *string `json:"PaymentClassificationId,omitempty" name:"PaymentClassificationId"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 合同照片【私密区】
+	PictureTwo *string `json:"PictureTwo,omitempty" name:"PictureTwo"`
+
+	// 合同选项8
+	PaymentOptionTen *string `json:"PaymentOptionTen,omitempty" name:"PaymentOptionTen"`
+
+	// 合同选项7（不同支付方式规则不一样，请以支付方式规定的格式传值）
+	PaymentOptionNine *string `json:"PaymentOptionNine,omitempty" name:"PaymentOptionNine"`
+
+	// 合同选项6（不同支付方式规则不一样，请以支付方式规定的格式传值）
+	PaymentOptionOther *string `json:"PaymentOptionOther,omitempty" name:"PaymentOptionOther"`
+
+	// 合同证书选项1（不同支付方式规则不一样，请以支付方式规定的格式传值）
+	PaymentOptionFive *string `json:"PaymentOptionFive,omitempty" name:"PaymentOptionFive"`
+
+	// 合同选项4（不同支付方式规则不一样，请以支付方式规定的格式传值）
+	PaymentOptionFour *string `json:"PaymentOptionFour,omitempty" name:"PaymentOptionFour"`
+
+	// 合同选项5（不同支付方式规则不一样，请以支付方式规定的格式传值）
+	PaymentOptionSeven *string `json:"PaymentOptionSeven,omitempty" name:"PaymentOptionSeven"`
+
+	// 合同证书选项2（不同支付方式规则不一样，请以支付方式规定的格式传值）
+	PaymentOptionSix *string `json:"PaymentOptionSix,omitempty" name:"PaymentOptionSix"`
+
+	// 合同选项1（不同支付方式规则不一样，请以支付方式规定的格式传值）
+	PaymentOptionOne *string `json:"PaymentOptionOne,omitempty" name:"PaymentOptionOne"`
+
+	// 合同选项3（不同支付方式规则不一样，请以支付方式规定的格式传值）
+	PaymentOptionThree *string `json:"PaymentOptionThree,omitempty" name:"PaymentOptionThree"`
+
+	// 合同选项2（不同支付方式规则不一样，请以支付方式规定的格式传值）
+	PaymentOptionTwo *string `json:"PaymentOptionTwo,omitempty" name:"PaymentOptionTwo"`
+
+	// 渠道扩展字段，json格式
+	ChannelExtJson *string `json:"ChannelExtJson,omitempty" name:"ChannelExtJson"`
+}
+
+func (r *AddContractRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddContractRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Fee")
+	delete(f, "OutContractId")
+	delete(f, "PaymentClassificationLimit")
+	delete(f, "ContactTelephone")
+	delete(f, "PaymentId")
+	delete(f, "OpenKey")
+	delete(f, "StartDate")
+	delete(f, "EndDate")
+	delete(f, "SignMan")
+	delete(f, "SignName")
+	delete(f, "OpenId")
+	delete(f, "MerchantNo")
+	delete(f, "PictureOne")
+	delete(f, "Contact")
+	delete(f, "SignDate")
+	delete(f, "Code")
+	delete(f, "AutoSign")
+	delete(f, "PaymentClassificationId")
+	delete(f, "Profile")
+	delete(f, "PictureTwo")
+	delete(f, "PaymentOptionTen")
+	delete(f, "PaymentOptionNine")
+	delete(f, "PaymentOptionOther")
+	delete(f, "PaymentOptionFive")
+	delete(f, "PaymentOptionFour")
+	delete(f, "PaymentOptionSeven")
+	delete(f, "PaymentOptionSix")
+	delete(f, "PaymentOptionOne")
+	delete(f, "PaymentOptionThree")
+	delete(f, "PaymentOptionTwo")
+	delete(f, "ChannelExtJson")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddContractRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddContractResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 添加合同响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *AddContractResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AddContractResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddContractResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddContractResult struct {
+
+	// 合同主键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractId *string `json:"ContractId,omitempty" name:"ContractId"`
+}
+
+type AddMerchantRequest struct {
+	*tchttp.BaseRequest
+
+	// 法人姓名
+	BossName *string `json:"BossName,omitempty" name:"BossName"`
+
+	// 营业执照图片【私密区】（系统返回的图片路径），（小微商户不效验，随意传要有值，公司/个体户必传）
+	BusinessLicensePicture *string `json:"BusinessLicensePicture,omitempty" name:"BusinessLicensePicture"`
+
+	// 招牌名称
+	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 营业执照过期时间（yyyy-mm-dd）
+	BusinessLicenseEndDate *string `json:"BusinessLicenseEndDate,omitempty" name:"BusinessLicenseEndDate"`
+
+	// 法人证件生效时间（yyyy-mm-dd）
+	BossStartDate *string `json:"BossStartDate,omitempty" name:"BossStartDate"`
+
+	// 清算联行号，开户行行号
+	BankNo *string `json:"BankNo,omitempty" name:"BankNo"`
+
+	// 开户行名称
+	BankName *string `json:"BankName,omitempty" name:"BankName"`
+
+	// 营业执照类型（1三证合一，2非三证合一）
+	BusinessLicenseType *string `json:"BusinessLicenseType,omitempty" name:"BusinessLicenseType"`
+
+	// 法人证件过期时间（yyyy-mm-dd）
+	BossEndDate *string `json:"BossEndDate,omitempty" name:"BossEndDate"`
+
+	// 营业执照编号（系统有唯一性校验），（小微商户不效验，随意传要有值，公司/个体户必传）
+	BusinessLicenseNo *string `json:"BusinessLicenseNo,omitempty" name:"BusinessLicenseNo"`
+
+	// 营业执照生效时间（yyyy-mm-dd），（小微商户不效验，随意传要有值，公司/个体户必传）
+	BusinessLicenseStartDate *string `json:"BusinessLicenseStartDate,omitempty" name:"BusinessLicenseStartDate"`
+
+	// 法人证件类型（1居民身份证,2临时居民身份证,3居民户口簿,4护照,5港澳居民来往内地通行证,6回乡证,7军人证,8武警身份证,9其他法定文件）
+	BossIdType *string `json:"BossIdType,omitempty" name:"BossIdType"`
+
+	// 详细地址，不含省市区县名称，长度需要大于5。
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 法人证件国别/地区（中国CHN，香港HKG，澳门MAC，台湾CTN）
+	BossIdCountry *string `json:"BossIdCountry,omitempty" name:"BossIdCountry"`
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 商户名称，小微商户命名要符合“”商户_名字” （例如：商户_张三）
+	MerchantName *string `json:"MerchantName,omitempty" name:"MerchantName"`
+
+	// 法人性别（1男，2女）
+	BossSex *string `json:"BossSex,omitempty" name:"BossSex"`
+
+	// 行业分类编号列表（第一个分类编号为主分类，后面的为二级分类）
+	ClassificationIds []*string `json:"ClassificationIds,omitempty" name:"ClassificationIds"`
+
+	// 法人证件号码
+	BossIdNo *string `json:"BossIdNo,omitempty" name:"BossIdNo"`
+
+	// 许可证图片【私密区】，（小微商户不效验，随意传要有值，公司/个体户必传）
+	LicencePicture *string `json:"LicencePicture,omitempty" name:"LicencePicture"`
+
+	// 营业时间，多个以小写逗号分开(9:00-12:00,13:00-18:00)
+	OpenHours *string `json:"OpenHours,omitempty" name:"OpenHours"`
+
+	// 银行户名
+	AccountName *string `json:"AccountName,omitempty" name:"AccountName"`
+
+	// 银行账号
+	AccountNo *string `json:"AccountNo,omitempty" name:"AccountNo"`
+
+	// 结算账户类型（2对私，1对公）
+	AccountType *string `json:"AccountType,omitempty" name:"AccountType"`
+
+	// 联系电话
+	Telephone *string `json:"Telephone,omitempty" name:"Telephone"`
+
+	// 法人身份证正面【私密区】（系统返回的图片路径）
+	BossPositive *string `json:"BossPositive,omitempty" name:"BossPositive"`
+
+	// 城市编号
+	CityId *string `json:"CityId,omitempty" name:"CityId"`
+
+	// 法人身份证背面【私密区】（系统返回的图片路径）
+	BossBack *string `json:"BossBack,omitempty" name:"BossBack"`
+
+	// 机构商户主键（系统有唯一性校验），建议使用商户表的主键ID，防止重复添加商户
+	OutMerchantId *string `json:"OutMerchantId,omitempty" name:"OutMerchantId"`
+
+	// 组织机构代码证生效时间（yyyy-mm-dd）
+	OrganizationStartDate *string `json:"OrganizationStartDate,omitempty" name:"OrganizationStartDate"`
+
+	// 法人亲属证件号码
+	AccountIdNo *string `json:"AccountIdNo,omitempty" name:"AccountIdNo"`
+
+	// 财务联系人
+	FinancialContact *string `json:"FinancialContact,omitempty" name:"FinancialContact"`
+
+	// 法人亲属证件类型（1居民身份证,2临时居民身份证,3居民户口簿,4护照,5港澳居民来往内地通行证,6回乡证,7军人证,8武警身份证,9其他法定文件）结算账户人身份为法人亲属时必填
+	AccountIdType *string `json:"AccountIdType,omitempty" name:"AccountIdType"`
+
+	// 组织机构代码证号
+	OrganizationNo *string `json:"OrganizationNo,omitempty" name:"OrganizationNo"`
+
+	// 其他资料1
+	OtherPictureOne *string `json:"OtherPictureOne,omitempty" name:"OtherPictureOne"`
+
+	// 财务联系人电话
+	FinancialTelephone *string `json:"FinancialTelephone,omitempty" name:"FinancialTelephone"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 组织机构代码证图片【私密区】
+	OrganizationPicture *string `json:"OrganizationPicture,omitempty" name:"OrganizationPicture"`
+
+	// 税务登记证生效时间（yyyy-mm-dd）
+	TaxRegistrationStartDate *string `json:"TaxRegistrationStartDate,omitempty" name:"TaxRegistrationStartDate"`
+
+	// 商户标记，自定义参数
+	Tag *string `json:"Tag,omitempty" name:"Tag"`
+
+	// 结算账户人身份（1法人，2法人亲属），结算帐户为对私时必填
+	AccountBoss *string `json:"AccountBoss,omitempty" name:"AccountBoss"`
+
+	// 法人电话
+	BossTelephone *string `json:"BossTelephone,omitempty" name:"BossTelephone"`
+
+	// 税务登记证图片【私密区】
+	TaxRegistrationPicture *string `json:"TaxRegistrationPicture,omitempty" name:"TaxRegistrationPicture"`
+
+	// 组织机构代码证过期时间（yyyy-mm-dd）
+	OrganizationEndDate *string `json:"OrganizationEndDate,omitempty" name:"OrganizationEndDate"`
+
+	// 法人职业
+	BossJob *string `json:"BossJob,omitempty" name:"BossJob"`
+
+	// 其他资料3
+	OtherPictureThree *string `json:"OtherPictureThree,omitempty" name:"OtherPictureThree"`
+
+	// 授权文件【私密区】
+	LicencePictureTwo *string `json:"LicencePictureTwo,omitempty" name:"LicencePictureTwo"`
+
+	// 商户logo【公共区】
+	Logo *string `json:"Logo,omitempty" name:"Logo"`
+
+	// 法人住址
+	BossAddress *string `json:"BossAddress,omitempty" name:"BossAddress"`
+
+	// 法人邮箱
+	BossEmail *string `json:"BossEmail,omitempty" name:"BossEmail"`
+
+	// 其他资料2
+	OtherPictureTwo *string `json:"OtherPictureTwo,omitempty" name:"OtherPictureTwo"`
+
+	// 商户简介
+	Intro *string `json:"Intro,omitempty" name:"Intro"`
+
+	// 客户经理姓名，必须为系统后台的管理员真实姓名
+	AccountManagerName *string `json:"AccountManagerName,omitempty" name:"AccountManagerName"`
+
+	// 税务登记证过期时间（yyyy-mm-dd）
+	TaxRegistrationEndDate *string `json:"TaxRegistrationEndDate,omitempty" name:"TaxRegistrationEndDate"`
+
+	// 其他资料4
+	OtherPictureFour *string `json:"OtherPictureFour,omitempty" name:"OtherPictureFour"`
+
+	// 税务登记证号
+	TaxRegistrationNo *string `json:"TaxRegistrationNo,omitempty" name:"TaxRegistrationNo"`
+
+	// 商户类型：1-个人，2-小微，3-企事业。不传默认为2-小微商户。
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *AddMerchantRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddMerchantRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BossName")
+	delete(f, "BusinessLicensePicture")
+	delete(f, "BrandName")
+	delete(f, "OpenKey")
+	delete(f, "BusinessLicenseEndDate")
+	delete(f, "BossStartDate")
+	delete(f, "BankNo")
+	delete(f, "BankName")
+	delete(f, "BusinessLicenseType")
+	delete(f, "BossEndDate")
+	delete(f, "BusinessLicenseNo")
+	delete(f, "BusinessLicenseStartDate")
+	delete(f, "BossIdType")
+	delete(f, "Address")
+	delete(f, "BossIdCountry")
+	delete(f, "OpenId")
+	delete(f, "MerchantName")
+	delete(f, "BossSex")
+	delete(f, "ClassificationIds")
+	delete(f, "BossIdNo")
+	delete(f, "LicencePicture")
+	delete(f, "OpenHours")
+	delete(f, "AccountName")
+	delete(f, "AccountNo")
+	delete(f, "AccountType")
+	delete(f, "Telephone")
+	delete(f, "BossPositive")
+	delete(f, "CityId")
+	delete(f, "BossBack")
+	delete(f, "OutMerchantId")
+	delete(f, "OrganizationStartDate")
+	delete(f, "AccountIdNo")
+	delete(f, "FinancialContact")
+	delete(f, "AccountIdType")
+	delete(f, "OrganizationNo")
+	delete(f, "OtherPictureOne")
+	delete(f, "FinancialTelephone")
+	delete(f, "Profile")
+	delete(f, "OrganizationPicture")
+	delete(f, "TaxRegistrationStartDate")
+	delete(f, "Tag")
+	delete(f, "AccountBoss")
+	delete(f, "BossTelephone")
+	delete(f, "TaxRegistrationPicture")
+	delete(f, "OrganizationEndDate")
+	delete(f, "BossJob")
+	delete(f, "OtherPictureThree")
+	delete(f, "LicencePictureTwo")
+	delete(f, "Logo")
+	delete(f, "BossAddress")
+	delete(f, "BossEmail")
+	delete(f, "OtherPictureTwo")
+	delete(f, "Intro")
+	delete(f, "AccountManagerName")
+	delete(f, "TaxRegistrationEndDate")
+	delete(f, "OtherPictureFour")
+	delete(f, "TaxRegistrationNo")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddMerchantRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddMerchantResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 添加商户响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *AddMerchantResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AddMerchantResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddMerchantResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddMerchantResult struct {
+
+	// 系统商户号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+}
+
+type AddShopRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 门店简称（例如：南山店）
+	ShopName *string `json:"ShopName,omitempty" name:"ShopName"`
+
+	// 商户编号
+	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+
+	// 整体门面（含招牌）图片【公共区】
+	PictureTwo *string `json:"PictureTwo,omitempty" name:"PictureTwo"`
+
+	// 店内环境图片【公共区】
+	PictureThree *string `json:"PictureThree,omitempty" name:"PictureThree"`
+
+	// 整体门面（含招牌）图片【公共区】
+	PictureOne *string `json:"PictureOne,omitempty" name:"PictureOne"`
+
+	// 门店电话
+	Telephone *string `json:"Telephone,omitempty" name:"Telephone"`
+
+	// 机构门店主键（系统有唯一性校验），建议使用门店表的主键ID，防止重复添加门店
+	OutShopId *string `json:"OutShopId,omitempty" name:"OutShopId"`
+
+	// 门店所在的城市编码
+	CityId *string `json:"CityId,omitempty" name:"CityId"`
+
+	// 门店全称（例如：江山小厨（南山店））
+	ShopFullName *string `json:"ShopFullName,omitempty" name:"ShopFullName"`
+
+	// 营业时间，多个以小写逗号分开(9:00-12:00,13:00-18:00)
+	OpenHours *string `json:"OpenHours,omitempty" name:"OpenHours"`
+
+	// 门店详细地址，不含省市区县名称
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 高德地图纬度
+	LatitudeTwo *string `json:"LatitudeTwo,omitempty" name:"LatitudeTwo"`
+
+	// 其他照片【公共区】
+	OtherPicture *string `json:"OtherPicture,omitempty" name:"OtherPicture"`
+
+	// 高德地图经度
+	LongitudeTwo *string `json:"LongitudeTwo,omitempty" name:"LongitudeTwo"`
+
+	// 门店负责人
+	Contact *string `json:"Contact,omitempty" name:"Contact"`
+
+	// 百度地图经度
+	Longitude *string `json:"Longitude,omitempty" name:"Longitude"`
+
+	// 百度地图纬度
+	Latitude *string `json:"Latitude,omitempty" name:"Latitude"`
+
+	// 负责人手机号码
+	FinancialTelephone *string `json:"FinancialTelephone,omitempty" name:"FinancialTelephone"`
+}
+
+func (r *AddShopRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddShopRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "ShopName")
+	delete(f, "MerchantNo")
+	delete(f, "PictureTwo")
+	delete(f, "PictureThree")
+	delete(f, "PictureOne")
+	delete(f, "Telephone")
+	delete(f, "OutShopId")
+	delete(f, "CityId")
+	delete(f, "ShopFullName")
+	delete(f, "OpenHours")
+	delete(f, "Address")
+	delete(f, "OpenKey")
+	delete(f, "Profile")
+	delete(f, "LatitudeTwo")
+	delete(f, "OtherPicture")
+	delete(f, "LongitudeTwo")
+	delete(f, "Contact")
+	delete(f, "Longitude")
+	delete(f, "Latitude")
+	delete(f, "FinancialTelephone")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddShopRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddShopResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 添加申请响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *AddShopResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AddShopResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddShopResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddShopResult struct {
+
+	// 门店编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopNo *string `json:"ShopNo,omitempty" name:"ShopNo"`
+}
+
 type AgencyClientInfo struct {
 
 	// 经办人姓名，存在经办人必输
@@ -1612,6 +2232,25 @@ func (r *CheckAmountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CityCodeResult struct {
+
+	// 城市编码cityid，数字与字母的结合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CityId *string `json:"CityId,omitempty" name:"CityId"`
+
+	// 省份
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Province *string `json:"Province,omitempty" name:"Province"`
+
+	// 县区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	District *string `json:"District,omitempty" name:"District"`
+
+	// 城市
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	City *string `json:"City,omitempty" name:"City"`
+}
+
 type ClearItem struct {
 
 	// STRING(8)，日期（格式: 20190101）
@@ -2039,6 +2678,73 @@ func (r *ContractOrderResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ContractOrderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ContractPayListResult struct {
+
+	// 支付标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentTag *string `json:"PaymentTag,omitempty" name:"PaymentTag"`
+
+	// 支付方式图片url路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentIcon *string `json:"PaymentIcon,omitempty" name:"PaymentIcon"`
+
+	// 支付方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionSix *string `json:"PaymentOptionSix,omitempty" name:"PaymentOptionSix"`
+
+	// 付款方式名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentName *string `json:"PaymentName,omitempty" name:"PaymentName"`
+
+	// 支付方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionSeven *string `json:"PaymentOptionSeven,omitempty" name:"PaymentOptionSeven"`
+
+	// 支付方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionTwo *string `json:"PaymentOptionTwo,omitempty" name:"PaymentOptionTwo"`
+
+	// 支付方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionOne *string `json:"PaymentOptionOne,omitempty" name:"PaymentOptionOne"`
+
+	// 支付方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionOther *string `json:"PaymentOptionOther,omitempty" name:"PaymentOptionOther"`
+
+	// 支持的交易类型（多个以小写逗号分开，0现金，1刷卡，2主扫，3被扫，4JSPAY，5预授权）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentType *string `json:"PaymentType,omitempty" name:"PaymentType"`
+
+	// 支付方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionFive *string `json:"PaymentOptionFive,omitempty" name:"PaymentOptionFive"`
+
+	// 支付方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionNine *string `json:"PaymentOptionNine,omitempty" name:"PaymentOptionNine"`
+
+	// 支付方式编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentId *string `json:"PaymentId,omitempty" name:"PaymentId"`
+
+	// 支付方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionThree *string `json:"PaymentOptionThree,omitempty" name:"PaymentOptionThree"`
+
+	// 付款方式名称（内部名称）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentInternalName *string `json:"PaymentInternalName,omitempty" name:"PaymentInternalName"`
+
+	// 支付方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionFour *string `json:"PaymentOptionFour,omitempty" name:"PaymentOptionFour"`
+
+	// 支付方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionTen *string `json:"PaymentOptionTen,omitempty" name:"PaymentOptionTen"`
 }
 
 type ContractSyncInfo struct {
@@ -4393,6 +5099,688 @@ func (r *DescribeOrderStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DistributeAccreditQueryRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *DistributeAccreditQueryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeAccreditQueryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DistributeAccreditQueryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeAccreditQueryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 查询授权申请结果响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *DistributeAccreditQueryResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DistributeAccreditQueryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeAccreditQueryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeAccreditQueryResult struct {
+
+	// 状态（0-未开通，1-已开通，2-商户主动关闭，3-待审核，4-冻结，5-注销，6-待签合同）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 合同h5地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractUrl *string `json:"ContractUrl,omitempty" name:"ContractUrl"`
+
+	// 说明
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+type DistributeAccreditResult struct {
+
+	// 合同h5地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractUrl *string `json:"ContractUrl,omitempty" name:"ContractUrl"`
+
+	// 系统商户号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+}
+
+type DistributeAccreditTlinxRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 验证方式，传1手机验证(验证码时效60S)传2结算卡验证(时效6小时)，多种方式用逗号隔开
+	AuthType *string `json:"AuthType,omitempty" name:"AuthType"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 分账比例（500=5%）不传默认百分之10
+	Percent *string `json:"Percent,omitempty" name:"Percent"`
+
+	// 营业执照商户全称
+	FullName *string `json:"FullName,omitempty" name:"FullName"`
+}
+
+func (r *DistributeAccreditTlinxRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeAccreditTlinxRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "AuthType")
+	delete(f, "OpenKey")
+	delete(f, "Profile")
+	delete(f, "Percent")
+	delete(f, "FullName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DistributeAccreditTlinxRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeAccreditTlinxResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 授权申请响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *DistributeAccreditResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DistributeAccreditTlinxResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeAccreditTlinxResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeAddReceiverRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 商户编号
+	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *DistributeAddReceiverRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeAddReceiverRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "MerchantNo")
+	delete(f, "Profile")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DistributeAddReceiverRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeAddReceiverResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 添加分账接收方响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *DistributeReceiverResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DistributeAddReceiverResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeAddReceiverResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeApplyRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 商户分账单号
+	OutDistributeNo *string `json:"OutDistributeNo,omitempty" name:"OutDistributeNo"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 分账明细
+	Details []*MultiApplyDetail `json:"Details,omitempty" name:"Details"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 说明
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 商户交易订单号，和OrderNo二者传其一
+	DeveloperNo *string `json:"DeveloperNo,omitempty" name:"DeveloperNo"`
+
+	// 平台交易订单号，和DeveloperNo二者传其一
+	OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
+}
+
+func (r *DistributeApplyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeApplyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OutDistributeNo")
+	delete(f, "OpenKey")
+	delete(f, "Details")
+	delete(f, "Profile")
+	delete(f, "Remark")
+	delete(f, "DeveloperNo")
+	delete(f, "OrderNo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DistributeApplyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeApplyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 分账申请响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *DistributeMultiApplyResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DistributeApplyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeApplyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeCancelRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 平台交易订单号
+	OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 平台分账单号，type为2时，和OutDistributeNo二者传其一
+	DistributeNo *string `json:"DistributeNo,omitempty" name:"DistributeNo"`
+
+	// 商户分账单号，type为2时，和DistributeNo二者传其一
+	OutDistributeNo *string `json:"OutDistributeNo,omitempty" name:"OutDistributeNo"`
+}
+
+func (r *DistributeCancelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeCancelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "OrderNo")
+	delete(f, "Profile")
+	delete(f, "DistributeNo")
+	delete(f, "OutDistributeNo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DistributeCancelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeCancelResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 分账撤销响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *DistributeCancelResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DistributeCancelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeCancelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeCancelResult struct {
+
+	// 分账订单状态（0初始1成功2失败3撤销）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 平台交易订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
+
+	// 商户分账单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutDistributeNo *string `json:"OutDistributeNo,omitempty" name:"OutDistributeNo"`
+
+	// 平台分账单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DistributeNo *string `json:"DistributeNo,omitempty" name:"DistributeNo"`
+}
+
+type DistributeMultiApplyResult struct {
+
+	// 分账状态（0分账初始 1分账成功 2分账失败）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 平台分账单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DistributeNo *string `json:"DistributeNo,omitempty" name:"DistributeNo"`
+
+	// 入账日期，yyyy-MM-dd格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InDate *string `json:"InDate,omitempty" name:"InDate"`
+
+	// 分账金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Amount *string `json:"Amount,omitempty" name:"Amount"`
+
+	// 商户分账单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutDistributeNo *string `json:"OutDistributeNo,omitempty" name:"OutDistributeNo"`
+
+	// 平台支付单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
+}
+
+type DistributeQueryReceiverRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *DistributeQueryReceiverRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeQueryReceiverRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DistributeQueryReceiverRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeQueryReceiverResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 查询询已添加分账接收方响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *DistributeReceiverResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DistributeQueryReceiverResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeQueryReceiverResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeQueryRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 查询类型（1-全部，2-单笔）
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 平台分账单号，type为2时，和OutDistributeNo二者传其一
+	DistributeNo *string `json:"DistributeNo,omitempty" name:"DistributeNo"`
+
+	// 商户分账单号，type为2时，和DistributeNo二者传其一
+	OutDistributeNo *string `json:"OutDistributeNo,omitempty" name:"OutDistributeNo"`
+
+	// 平台交易订单号
+	OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
+}
+
+func (r *DistributeQueryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeQueryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "Type")
+	delete(f, "Profile")
+	delete(f, "DistributeNo")
+	delete(f, "OutDistributeNo")
+	delete(f, "OrderNo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DistributeQueryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeQueryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 分账结果响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *DistributeQueryResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DistributeQueryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeQueryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeQueryResult struct {
+
+	// 分账订单列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Orders []*MultiApplyOrder `json:"Orders,omitempty" name:"Orders"`
+}
+
+type DistributeReceiverResult struct {
+
+	// 商户编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+}
+
+type DistributeRemoveReceiverRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 商户编号
+	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *DistributeRemoveReceiverRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeRemoveReceiverRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "MerchantNo")
+	delete(f, "Profile")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DistributeRemoveReceiverRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeRemoveReceiverResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 解除分账接收方响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *DistributeReceiverResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DistributeRemoveReceiverResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeRemoveReceiverResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DownloadBillRequest struct {
 	*tchttp.BaseRequest
 
@@ -4465,6 +5853,90 @@ func (r *DownloadBillResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DownloadBillResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DownloadFileResult struct {
+
+	// 文件内容（base64加密的二进制内容）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 存储区域（0私密区，1公共区），请严格按文件要求，上传到不同的区域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Storage *string `json:"Storage,omitempty" name:"Storage"`
+}
+
+type DownloadOrgFileRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 存储区域（0私密区，1公共区），请严格按文件要求，上传到不同的区域
+	Storage *string `json:"Storage,omitempty" name:"Storage"`
+
+	// 文件路径
+	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
+}
+
+func (r *DownloadOrgFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DownloadOrgFileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "Profile")
+	delete(f, "Storage")
+	delete(f, "FilePath")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DownloadOrgFileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DownloadOrgFileResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 下载机构文件响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *DownloadFileResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DownloadOrgFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DownloadOrgFileResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4764,6 +6236,18 @@ type FileItem struct {
 	// STRING(64)，提取码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DrawCode *string `json:"DrawCode,omitempty" name:"DrawCode"`
+}
+
+type MerchantClassificationId struct {
+
+	// 分类编号
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 分类名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 父级编号（0为一级编号，大于0为父级分类编号）
+	Parent *string `json:"Parent,omitempty" name:"Parent"`
 }
 
 type MerchantManagementList struct {
@@ -5280,6 +6764,49 @@ func (r *ModifyMntMbrBindRelateAcctBankCodeResponse) FromJsonString(s string) er
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type MultiApplyDetail struct {
+
+	// 商户编号
+	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+
+	// 分账金额
+	Amount *string `json:"Amount,omitempty" name:"Amount"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+type MultiApplyOrder struct {
+
+	// 商户分账单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutDistributeNo *string `json:"OutDistributeNo,omitempty" name:"OutDistributeNo"`
+
+	// 平台分账单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DistributeNo *string `json:"DistributeNo,omitempty" name:"DistributeNo"`
+
+	// 平台交易订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
+
+	// 分账订单状态（0初始1成功2失败3撤销）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 入账日期，格式yyyy-MM-dd
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InDate *string `json:"InDate,omitempty" name:"InDate"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 分账明细
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Details []*MultiApplyDetail `json:"Details,omitempty" name:"Details"`
+}
+
 type Order struct {
 
 	// 含税金额
@@ -5383,6 +6910,87 @@ type OrganizationInfo struct {
 	// 法人证件号码，如果SubMchName不是法人，需要另外送入法人信息（企业必输）
 	// <敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
 	LegalPersonIdCode *string `json:"LegalPersonIdCode,omitempty" name:"LegalPersonIdCode"`
+}
+
+type PayDataResult struct {
+
+	// 支付标签（唯一性）
+	PaymentTag *string `json:"PaymentTag,omitempty" name:"PaymentTag"`
+
+	// 添加合同时需要隐藏的选项（多个以小写逗号分开）
+	PaymentOptionHide *string `json:"PaymentOptionHide,omitempty" name:"PaymentOptionHide"`
+
+	// 支付方式图片url路径
+	PaymentIcon *string `json:"PaymentIcon,omitempty" name:"PaymentIcon"`
+
+	// 合同选项名称6
+	PaymentOptionSix *string `json:"PaymentOptionSix,omitempty" name:"PaymentOptionSix"`
+
+	// 付款方式名称
+	PaymentName *string `json:"PaymentName,omitempty" name:"PaymentName"`
+
+	// 合同选项名称7
+	PaymentOptionSeven *string `json:"PaymentOptionSeven,omitempty" name:"PaymentOptionSeven"`
+
+	// 合同选项名称8
+	PaymentOptionOther *string `json:"PaymentOptionOther,omitempty" name:"PaymentOptionOther"`
+
+	// 合同选项名称2
+	PaymentOptionTwo *string `json:"PaymentOptionTwo,omitempty" name:"PaymentOptionTwo"`
+
+	// 合同选项名称1
+	PaymentOptionOne *string `json:"PaymentOptionOne,omitempty" name:"PaymentOptionOne"`
+
+	// 是否开启智能扣率（1是，0否）
+	PaymentDiscountFee *string `json:"PaymentDiscountFee,omitempty" name:"PaymentDiscountFee"`
+
+	// 支持的交易类型（多个以小写逗号分开，0现金，1刷卡，2主扫，3被扫，4JSPAY，5预授权）
+	PaymentType *string `json:"PaymentType,omitempty" name:"PaymentType"`
+
+	// 合同选项名称5
+	PaymentOptionFive *string `json:"PaymentOptionFive,omitempty" name:"PaymentOptionFive"`
+
+	// 合同选项名称9
+	PaymentOptionNine *string `json:"PaymentOptionNine,omitempty" name:"PaymentOptionNine"`
+
+	// 支付方式编号
+	PaymentId *string `json:"PaymentId,omitempty" name:"PaymentId"`
+
+	// 合同选项名称3
+	PaymentOptionThree *string `json:"PaymentOptionThree,omitempty" name:"PaymentOptionThree"`
+
+	// 付款方式名称（内部名称）
+	PaymentInternalName *string `json:"PaymentInternalName,omitempty" name:"PaymentInternalName"`
+
+	// 合同选项名称4
+	PaymentOptionFour *string `json:"PaymentOptionFour,omitempty" name:"PaymentOptionFour"`
+
+	// 合同选项名称10
+	PaymentOptionTen *string `json:"PaymentOptionTen,omitempty" name:"PaymentOptionTen"`
+}
+
+type PayFeeDataResult struct {
+
+	// 机构的分佣扣率扣率
+	OrganizationFee *string `json:"OrganizationFee,omitempty" name:"OrganizationFee"`
+
+	// 商户手续费封顶值，0为不限封顶
+	PaymentClassificationLimit *string `json:"PaymentClassificationLimit,omitempty" name:"PaymentClassificationLimit"`
+
+	// 机构的分佣扣率类型(1按签约扣率，2按收单收益)
+	OrganizationFeeType *string `json:"OrganizationFeeType,omitempty" name:"OrganizationFeeType"`
+
+	// 商户扣率最大值
+	PaymentClassificationMaxFee *string `json:"PaymentClassificationMaxFee,omitempty" name:"PaymentClassificationMaxFee"`
+
+	// 商户扣率最小值
+	PaymentClassificationMinFee *string `json:"PaymentClassificationMinFee,omitempty" name:"PaymentClassificationMinFee"`
+
+	// 行业会类编号
+	PaymentClassificationId *string `json:"PaymentClassificationId,omitempty" name:"PaymentClassificationId"`
+
+	// 行业分类名称
+	PaymentClassificationName *string `json:"PaymentClassificationName,omitempty" name:"PaymentClassificationName"`
 }
 
 type PayOrderResult struct {
@@ -6605,6 +8213,71 @@ func (r *QueryBillDownloadURLResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type QueryCityCodeRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QueryCityCodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryCityCodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryCityCodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryCityCodeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 查询城市编码响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result []*CityCodeResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryCityCodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryCityCodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type QueryCommonTransferRechargeRequest struct {
 	*tchttp.BaseRequest
 
@@ -6706,6 +8379,278 @@ func (r *QueryCommonTransferRechargeResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *QueryCommonTransferRechargeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryContractPayFeeRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 支付方式编号
+	PaymentId *string `json:"PaymentId,omitempty" name:"PaymentId"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QueryContractPayFeeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryContractPayFeeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "PaymentId")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryContractPayFeeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryContractPayFeeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 查询支付方式费率及自定义表单项响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *QueryContractPayFeeResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryContractPayFeeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryContractPayFeeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryContractPayFeeResult struct {
+
+	// pay支付方式json数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pay *PayDataResult `json:"Pay,omitempty" name:"Pay"`
+
+	// 合同扩展自定义字段
+	ExtraInput []*string `json:"ExtraInput,omitempty" name:"ExtraInput"`
+
+	// pay_fee支付方式行业分类费率json数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayFee []*PayFeeDataResult `json:"PayFee,omitempty" name:"PayFee"`
+}
+
+type QueryContractPayWayListRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QueryContractPayWayListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryContractPayWayListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryContractPayWayListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryContractPayWayListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 查询合同支付方式响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result []*ContractPayListResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryContractPayWayListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryContractPayWayListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryContractRelateShopRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 合同主键
+	ContractId *string `json:"ContractId,omitempty" name:"ContractId"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QueryContractRelateShopRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryContractRelateShopRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "ContractId")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryContractRelateShopRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryContractRelateShopResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 查询合同可关联门店响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result []*QueryContractRelateShopResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryContractRelateShopResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryContractRelateShopResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryContractRelateShopResult struct {
+
+	// 省份
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Province *string `json:"Province,omitempty" name:"Province"`
+
+	// 城市编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CityId *string `json:"CityId,omitempty" name:"CityId"`
+
+	// 门店简称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopName *string `json:"ShopName,omitempty" name:"ShopName"`
+
+	// 终端数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TerminalCount *string `json:"TerminalCount,omitempty" name:"TerminalCount"`
+
+	// 城市
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 门店状态（0未审核，1已审核，2审核未通过，3待审核，4已删除，5初审通过）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopStatus *string `json:"ShopStatus,omitempty" name:"ShopStatus"`
+
+	// 若是支付宝合同，支付宝上线状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AliPayOnline *string `json:"AliPayOnline,omitempty" name:"AliPayOnline"`
+
+	// 门店编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopNo *string `json:"ShopNo,omitempty" name:"ShopNo"`
+
+	// 县/区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Country *string `json:"Country,omitempty" name:"Country"`
+
+	// 若是支付宝合同，支付宝审核状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AliPayStatus *string `json:"AliPayStatus,omitempty" name:"AliPayStatus"`
+
+	// 为空或者0表示未关联，大于0表示已关联
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsChecked *string `json:"IsChecked,omitempty" name:"IsChecked"`
+
+	// 详细地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 若是支付宝合同，支付宝审核描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AliPayDesc *string `json:"AliPayDesc,omitempty" name:"AliPayDesc"`
 }
 
 type QueryContractRequest struct {
@@ -7766,6 +9711,71 @@ type QueryMerchantBalanceResult struct {
 	Data *QueryMerchantBalanceData `json:"Data,omitempty" name:"Data"`
 }
 
+type QueryMerchantClassificationRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QueryMerchantClassificationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryMerchantClassificationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryMerchantClassificationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryMerchantClassificationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 查询商户分类响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result []*MerchantClassificationId `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryMerchantClassificationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryMerchantClassificationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type QueryMerchantInfoForManagementRequest struct {
 	*tchttp.BaseRequest
 
@@ -8800,6 +10810,134 @@ func (r *QueryRefundResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *QueryRefundResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryShopOpenIdRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 门店编号
+	ShopNo *string `json:"ShopNo,omitempty" name:"ShopNo"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QueryShopOpenIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryShopOpenIdRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "ShopNo")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryShopOpenIdRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryShopOpenIdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 获取门店OpenId响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *QueryShopOpenIdResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryShopOpenIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryShopOpenIdResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryShopOpenIdResult struct {
+
+	// 省份
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Province *string `json:"Province,omitempty" name:"Province"`
+
+	// 城市
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 门店简称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopName *string `json:"ShopName,omitempty" name:"ShopName"`
+
+	// 商户编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+
+	// 城市编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CityId *string `json:"CityId,omitempty" name:"CityId"`
+
+	// open_id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 门店电话
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Telephone *string `json:"Telephone,omitempty" name:"Telephone"`
+
+	// 门店编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopNo *string `json:"ShopNo,omitempty" name:"ShopNo"`
+
+	// 县/区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	County *string `json:"County,omitempty" name:"County"`
+
+	// 门店全称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopFullName *string `json:"ShopFullName,omitempty" name:"ShopFullName"`
+
+	// 品牌名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
+
+	// 详细地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// open_key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 商户名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantName *string `json:"MerchantName,omitempty" name:"MerchantName"`
 }
 
 type QuerySinglePayItem struct {
@@ -12538,6 +14676,98 @@ func (r *UploadFileResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type UploadFileResult struct {
+
+	// 存储区域（0私密区，1公共区），请严格按文件要求，上传到不同的区域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Storage *string `json:"Storage,omitempty" name:"Storage"`
+
+	// 文件路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
+}
+
+type UploadOrgFileRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 存储区域（0私密区，1公共区），请严格按文件要求，上传到不同的区域
+	Storage *string `json:"Storage,omitempty" name:"Storage"`
+
+	// 文件的md5值（为防止平台多次上传重复文件，文件名为文件md5,且不会覆盖，重复上传返回第一次上传成功的文件路径）
+	FileMd5 *string `json:"FileMd5,omitempty" name:"FileMd5"`
+
+	// 文件内容（先将图片转换成二进制，再进行base64加密）
+	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
+
+	// 文件扩展名（png,jpg,gif）
+	FileExtension *string `json:"FileExtension,omitempty" name:"FileExtension"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *UploadOrgFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadOrgFileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "Storage")
+	delete(f, "FileMd5")
+	delete(f, "FileContent")
+	delete(f, "FileExtension")
+	delete(f, "OpenKey")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadOrgFileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadOrgFileResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 上传机构文件响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *UploadFileResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UploadOrgFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadOrgFileResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type UploadTaxListRequest struct {
 	*tchttp.BaseRequest
 
@@ -12651,6 +14881,870 @@ func (r *UploadTaxPaymentResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UploadTaxPaymentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ViewContractRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 外部合同主键编号（ContractId或OutContractId必须传一个）
+	OutContractId *string `json:"OutContractId,omitempty" name:"OutContractId"`
+
+	// 合同主键（ContractId或OutContractId必须传一个）
+	ContractId *string `json:"ContractId,omitempty" name:"ContractId"`
+}
+
+func (r *ViewContractRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ViewContractRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "Profile")
+	delete(f, "OutContractId")
+	delete(f, "ContractId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ViewContractRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ViewContractResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 合同明细响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *ViewContractResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ViewContractResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ViewContractResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ViewContractResult struct {
+
+	// 支付标签（唯一性）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentTag *string `json:"PaymentTag,omitempty" name:"PaymentTag"`
+
+	// 城市
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 机构编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentNo *string `json:"AgentNo,omitempty" name:"AgentNo"`
+
+	// 合同选项值4
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractOptionFour *string `json:"ContractOptionFour,omitempty" name:"ContractOptionFour"`
+
+	// 合同选项值2
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractOptionTwo *string `json:"ContractOptionTwo,omitempty" name:"ContractOptionTwo"`
+
+	// 合同状态（0未审核，1已审核，2审核未通过，3待审核，4已删除，5初审通过）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 支付方式编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentId *string `json:"PaymentId,omitempty" name:"PaymentId"`
+
+	// 商户签约扣率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Fee *string `json:"Fee,omitempty" name:"Fee"`
+
+	// 合同选项名称5
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionFive *string `json:"PaymentOptionFive,omitempty" name:"PaymentOptionFive"`
+
+	// 机构合同主键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutContractId *string `json:"OutContractId,omitempty" name:"OutContractId"`
+
+	// 不同的支付方式对于进件有不同的个性化需求，支付方式字段都是以双下划写开头的字段名称，请以支付方式规定的格式传值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelExtJson *string `json:"ChannelExtJson,omitempty" name:"ChannelExtJson"`
+
+	// 合同选项值5
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractOptionFive *string `json:"ContractOptionFive,omitempty" name:"ContractOptionFive"`
+
+	// 省份
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Province *string `json:"Province,omitempty" name:"Province"`
+
+	// 生效日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 详细地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 过期日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+	// 合同选项值6
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractOptionSix *string `json:"ContractOptionSix,omitempty" name:"ContractOptionSix"`
+
+	// 合同选项名称7
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionSeven *string `json:"PaymentOptionSeven,omitempty" name:"PaymentOptionSeven"`
+
+	// 合同照片补充【私密区】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PictureTwo *string `json:"PictureTwo,omitempty" name:"PictureTwo"`
+
+	// 商户编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+
+	// 机构名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentName *string `json:"AgentName,omitempty" name:"AgentName"`
+
+	// 合同选项值8
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractOptionOther *string `json:"ContractOptionOther,omitempty" name:"ContractOptionOther"`
+
+	// 合同选项值3
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractOptionThree *string `json:"ContractOptionThree,omitempty" name:"ContractOptionThree"`
+
+	// 县/区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Country *string `json:"Country,omitempty" name:"Country"`
+
+	// 合同关联的门店数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopCount *string `json:"ShopCount,omitempty" name:"ShopCount"`
+
+	// 合同选项名称3
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionThree *string `json:"PaymentOptionThree,omitempty" name:"PaymentOptionThree"`
+
+	// 支付方式行业名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentClassificationName *string `json:"PaymentClassificationName,omitempty" name:"PaymentClassificationName"`
+
+	// 合同选项值7
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractOptionSeven *string `json:"ContractOptionSeven,omitempty" name:"ContractOptionSeven"`
+
+	// 合同选项名称4
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionFour *string `json:"PaymentOptionFour,omitempty" name:"PaymentOptionFour"`
+
+	// 商户签约扣率封顶值（分为单位）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentClassificationLimit *string `json:"PaymentClassificationLimit,omitempty" name:"PaymentClassificationLimit"`
+
+	// 审核备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 合同选项名称6
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionSix *string `json:"PaymentOptionSix,omitempty" name:"PaymentOptionSix"`
+
+	// 品牌名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantName *string `json:"MerchantName,omitempty" name:"MerchantName"`
+
+	// 合同选项值1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractOptionOne *string `json:"ContractOptionOne,omitempty" name:"ContractOptionOne"`
+
+	// 合同选项名称8
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionOther *string `json:"PaymentOptionOther,omitempty" name:"PaymentOptionOther"`
+
+	// 合同选项名称2
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionTwo *string `json:"PaymentOptionTwo,omitempty" name:"PaymentOptionTwo"`
+
+	// 合同选项名称1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionOne *string `json:"PaymentOptionOne,omitempty" name:"PaymentOptionOne"`
+
+	// 更新时间（yyyy-mm-dd hh:ii:ss）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 联系人电话
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContactTelephone *string `json:"ContactTelephone,omitempty" name:"ContactTelephone"`
+
+	// 联系人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Contact *string `json:"Contact,omitempty" name:"Contact"`
+
+	// 签约日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SignDate *string `json:"SignDate,omitempty" name:"SignDate"`
+
+	// 合同选项名称9
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionNine *string `json:"PaymentOptionNine,omitempty" name:"PaymentOptionNine"`
+
+	// 付款方式名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentName *string `json:"PaymentName,omitempty" name:"PaymentName"`
+
+	// 付款方式名称（内部名称）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentInternalName *string `json:"PaymentInternalName,omitempty" name:"PaymentInternalName"`
+
+	// 合同选项值10
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractOptionTen *string `json:"ContractOptionTen,omitempty" name:"ContractOptionTen"`
+
+	// 合同编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 合同照片【私密区】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PictureOne *string `json:"PictureOne,omitempty" name:"PictureOne"`
+
+	// 签约人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SignMan *string `json:"SignMan,omitempty" name:"SignMan"`
+
+	// 渠道号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelNo *string `json:"ChannelNo,omitempty" name:"ChannelNo"`
+
+	// 添加时间（yyyy-mm-dd hh:ii:ss）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddTime *string `json:"AddTime,omitempty" name:"AddTime"`
+
+	// 是否自动续签（1是，0否）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoSign *string `json:"AutoSign,omitempty" name:"AutoSign"`
+
+	// 合同选项值9
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractOptionNine *string `json:"ContractOptionNine,omitempty" name:"ContractOptionNine"`
+
+	// 城市编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CityId *string `json:"CityId,omitempty" name:"CityId"`
+
+	// 交易类型（多个以小写逗号分开，0现金，1刷卡，2主扫，3被扫，4JSPAY，5预授权）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentType *string `json:"PaymentType,omitempty" name:"PaymentType"`
+
+	// 支付方式行业编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentClassificationId *string `json:"PaymentClassificationId,omitempty" name:"PaymentClassificationId"`
+
+	// 品牌名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
+
+	// 合同选项名称10
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionTen *string `json:"PaymentOptionTen,omitempty" name:"PaymentOptionTen"`
+
+	// 合同主键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractId *string `json:"ContractId,omitempty" name:"ContractId"`
+}
+
+type ViewMerchantRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 外部商户主键编号（MerchantNo或OutMerchantId必须传一个）
+	OutMerchantId *string `json:"OutMerchantId,omitempty" name:"OutMerchantId"`
+
+	// 商户编号（MerchantNo或OutMerchantId必须传一个）
+	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+}
+
+func (r *ViewMerchantRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ViewMerchantRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "Profile")
+	delete(f, "OutMerchantId")
+	delete(f, "MerchantNo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ViewMerchantRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ViewMerchantResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 商户明细响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *ViewMerchantResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ViewMerchantResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ViewMerchantResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ViewMerchantResult struct {
+
+	// 城市
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 税务登记证图片【私密区】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaxCollectionPicture *string `json:"TaxCollectionPicture,omitempty" name:"TaxCollectionPicture"`
+
+	// 法人证件号码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BossIdNo *string `json:"BossIdNo,omitempty" name:"BossIdNo"`
+
+	// 法人亲属证件号码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountIdNo *string `json:"AccountIdNo,omitempty" name:"AccountIdNo"`
+
+	// 其他资料3
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OtherPictureThree *string `json:"OtherPictureThree,omitempty" name:"OtherPictureThree"`
+
+	// 法人亲属证件类型（1居民身份证,2临时居民身份证,3居民户口簿,4护照,5港澳居民来往内地通行证,6回乡证,7军人证,8武警身份证,9其他法定文件）结算账户人身份为法人亲属时必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountIdType *string `json:"AccountIdType,omitempty" name:"AccountIdType"`
+
+	// 商户状态（0未审核，1已审核，2审核未通过，3待审核，4已删除，5初审通过）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 营业执照图片【私密区】（系统返回的图片路径）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessLicensePicture *string `json:"BusinessLicensePicture,omitempty" name:"BusinessLicensePicture"`
+
+	// 品牌名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
+
+	// 法人身份证正面【私密区】（系统返回的图片路径）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BossPositive *string `json:"BossPositive,omitempty" name:"BossPositive"`
+
+	// 开通应用数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppCount *string `json:"AppCount,omitempty" name:"AppCount"`
+
+	// 法人身份证背面【私密区】（系统返回的图片路径）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BossBack *string `json:"BossBack,omitempty" name:"BossBack"`
+
+	// 组织机构代码证图片【私密区】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrganizationCodePicture *string `json:"OrganizationCodePicture,omitempty" name:"OrganizationCodePicture"`
+
+	// 营业执照过期时间（yyyy-mm-dd）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessLicenseEndDate *string `json:"BusinessLicenseEndDate,omitempty" name:"BusinessLicenseEndDate"`
+
+	// 组织机构代码证号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrganizationCodeNo *string `json:"OrganizationCodeNo,omitempty" name:"OrganizationCodeNo"`
+
+	// 机构编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentNo *string `json:"AgentNo,omitempty" name:"AgentNo"`
+
+	// 省份
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Province *string `json:"Province,omitempty" name:"Province"`
+
+	// 法人证件生效时间（yyyy-mm-dd）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BossStartDate *string `json:"BossStartDate,omitempty" name:"BossStartDate"`
+
+	// 更新时间（yyyy-mm-dd hh:ii:ss）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 清算联行号，开户行行号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BankNo *string `json:"BankNo,omitempty" name:"BankNo"`
+
+	// 税务登记证生效时间（yyyy-mm-dd）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaxCollectionStartDate *string `json:"TaxCollectionStartDate,omitempty" name:"TaxCollectionStartDate"`
+
+	// 营业执照生效时间（yyyy-mm-dd）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessLicenseStartDate *string `json:"BusinessLicenseStartDate,omitempty" name:"BusinessLicenseStartDate"`
+
+	// 客户经理用户编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountManagerId *string `json:"AccountManagerId,omitempty" name:"AccountManagerId"`
+
+	// 分类编号(多个以小写逗号分开)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClassificationIds *string `json:"ClassificationIds,omitempty" name:"ClassificationIds"`
+
+	// 营业执照类型（1三证合一，2非三证合一）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessLicenseType *string `json:"BusinessLicenseType,omitempty" name:"BusinessLicenseType"`
+
+	// 法人证件过期时间（yyyy-mm-dd）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BossEndDate *string `json:"BossEndDate,omitempty" name:"BossEndDate"`
+
+	// 营业执照编号（系统有唯一性校验）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessLicenseNo *string `json:"BusinessLicenseNo,omitempty" name:"BusinessLicenseNo"`
+
+	// 机构名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentName *string `json:"AgentName,omitempty" name:"AgentName"`
+
+	// 商户简介
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Intro *string `json:"Intro,omitempty" name:"Intro"`
+
+	// 法人证件类型（1居民身份证,2临时居民身份证,3居民户口簿,4护照,5港澳居民来往内地通行证,6回乡证,7军人证,8武警身份证,9其他法定文件）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BossIdType *string `json:"BossIdType,omitempty" name:"BossIdType"`
+
+	// 添加时间（yyyy-mm-dd hh:ii:ss）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddTime *string `json:"AddTime,omitempty" name:"AddTime"`
+
+	// 门店数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopCount *string `json:"ShopCount,omitempty" name:"ShopCount"`
+
+	// 结算账户人身份（1法人，2法人亲属），结算帐户为对私时必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountBoss *string `json:"AccountBoss,omitempty" name:"AccountBoss"`
+
+	// 分类名称(多个以小写逗号分开)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClassificationNames *string `json:"ClassificationNames,omitempty" name:"ClassificationNames"`
+
+	// 法人电话
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BossTelephone *string `json:"BossTelephone,omitempty" name:"BossTelephone"`
+
+	// 客户经理姓名，必须为系统后台的管理员真实姓名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountManagerName *string `json:"AccountManagerName,omitempty" name:"AccountManagerName"`
+
+	// 终端数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TerminalCount *string `json:"TerminalCount,omitempty" name:"TerminalCount"`
+
+	// 审核备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 财务联系人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinancialContact *string `json:"FinancialContact,omitempty" name:"FinancialContact"`
+
+	// 商户名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantName *string `json:"MerchantName,omitempty" name:"MerchantName"`
+
+	// 法人性别（1男，2女）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BossSex *string `json:"BossSex,omitempty" name:"BossSex"`
+
+	// 商户编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+
+	// 法人住址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BossAddress *string `json:"BossAddress,omitempty" name:"BossAddress"`
+
+	// 县/区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Country *string `json:"Country,omitempty" name:"Country"`
+
+	// 详细地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 法人职业
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BossJob *string `json:"BossJob,omitempty" name:"BossJob"`
+
+	// 许可证图片【私密区】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LicencePicture *string `json:"LicencePicture,omitempty" name:"LicencePicture"`
+
+	// 组织机构代码证过期时间（yyyy-mm-dd）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrganizationCodeEndDate *string `json:"OrganizationCodeEndDate,omitempty" name:"OrganizationCodeEndDate"`
+
+	// 营业时间，多个以小写逗号分开(9:00-12:00,13:00-18:00)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OpenHours *string `json:"OpenHours,omitempty" name:"OpenHours"`
+
+	// 其他资料2
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OtherPictureTwo *string `json:"OtherPictureTwo,omitempty" name:"OtherPictureTwo"`
+
+	// 其他资料1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OtherPictureOne *string `json:"OtherPictureOne,omitempty" name:"OtherPictureOne"`
+
+	// 银行户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountName *string `json:"AccountName,omitempty" name:"AccountName"`
+
+	// 合同数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractCount *string `json:"ContractCount,omitempty" name:"ContractCount"`
+
+	// 授权文件【私密区】（当结算帐户身份为法人亲属时必传）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LicencePictureTwo *string `json:"LicencePictureTwo,omitempty" name:"LicencePictureTwo"`
+
+	// 银行账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountNo *string `json:"AccountNo,omitempty" name:"AccountNo"`
+
+	// 法人邮箱
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BossEmail *string `json:"BossEmail,omitempty" name:"BossEmail"`
+
+	// 结算账户类型（2对私，1对公）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountType *string `json:"AccountType,omitempty" name:"AccountType"`
+
+	// 税务登记证过期时间（yyyy-mm-dd）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaxCollectionEndDate *string `json:"TaxCollectionEndDate,omitempty" name:"TaxCollectionEndDate"`
+
+	// 开户行名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BankName *string `json:"BankName,omitempty" name:"BankName"`
+
+	// 联系电话
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Telephone *string `json:"Telephone,omitempty" name:"Telephone"`
+
+	// 外部商户主键编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutMerchantId *string `json:"OutMerchantId,omitempty" name:"OutMerchantId"`
+
+	// 城市编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CityId *string `json:"CityId,omitempty" name:"CityId"`
+
+	// 法人证件国别/地区（中国CHN，香港HKG，澳门MAC，台湾CTN）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BossIdCount *string `json:"BossIdCount,omitempty" name:"BossIdCount"`
+
+	// 商户标记，自定义参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tag *string `json:"Tag,omitempty" name:"Tag"`
+
+	// 财务联系人电话
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinancialTelephone *string `json:"FinancialTelephone,omitempty" name:"FinancialTelephone"`
+
+	// 法人姓名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BossName *string `json:"BossName,omitempty" name:"BossName"`
+
+	// 组织机构代码证生效时间（yyyy-mm-dd）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrganizationCodeStartDate *string `json:"OrganizationCodeStartDate,omitempty" name:"OrganizationCodeStartDate"`
+
+	// 商户logo【公共区】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Logo *string `json:"Logo,omitempty" name:"Logo"`
+
+	// 其他资料4
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OtherPictureFour *string `json:"OtherPictureFour,omitempty" name:"OtherPictureFour"`
+
+	// 税务登记证号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaxCollectionNo *string `json:"TaxCollectionNo,omitempty" name:"TaxCollectionNo"`
+}
+
+type ViewShopRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 外部商户主键编号（ShopNo或OutShopId必须传一个）
+	OutShopId *string `json:"OutShopId,omitempty" name:"OutShopId"`
+
+	// 门店编号（ShopNo或OutShopId必须传一个）
+	ShopNo *string `json:"ShopNo,omitempty" name:"ShopNo"`
+}
+
+func (r *ViewShopRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ViewShopRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "Profile")
+	delete(f, "OutShopId")
+	delete(f, "ShopNo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ViewShopRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ViewShopResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 门店明细响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *ViewShopResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ViewShopResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ViewShopResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ViewShopResult struct {
+
+	// 城市
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 门店简称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopName *string `json:"ShopName,omitempty" name:"ShopName"`
+
+	// 百度地图纬度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Latitude *string `json:"Latitude,omitempty" name:"Latitude"`
+
+	// 品牌名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
+
+	// 开通应用数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppCount *string `json:"AppCount,omitempty" name:"AppCount"`
+
+	// 负责人手机号码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContactTelephone *string `json:"ContactTelephone,omitempty" name:"ContactTelephone"`
+
+	// 商户名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantName *string `json:"MerchantName,omitempty" name:"MerchantName"`
+
+	// 省份
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Province *string `json:"Province,omitempty" name:"Province"`
+
+	// 县/区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	County *string `json:"County,omitempty" name:"County"`
+
+	// 更新时间（yyyy-mm-dd hh:ii:ss）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 终端数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TerminalCount *string `json:"TerminalCount,omitempty" name:"TerminalCount"`
+
+	// 收银台图片【公共区】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PictureTwo *string `json:"PictureTwo,omitempty" name:"PictureTwo"`
+
+	// 高德地图纬度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LatitudeTwo *string `json:"LatitudeTwo,omitempty" name:"LatitudeTwo"`
+
+	// 机构名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentName *string `json:"AgentName,omitempty" name:"AgentName"`
+
+	// 其他照片【公共区】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PictureFour *string `json:"PictureFour,omitempty" name:"PictureFour"`
+
+	// 高德地图经度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LongitudeTwo *string `json:"LongitudeTwo,omitempty" name:"LongitudeTwo"`
+
+	// 门店状态（0未审核，1已审核，2审核未通过，3待审核，4已删除，5初审通过）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 审核备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 机构编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentNo *string `json:"AgentNo,omitempty" name:"AgentNo"`
+
+	// 商户编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+
+	// 添加时间（yyyy-mm-dd hh:ii:ss）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddTime *string `json:"AddTime,omitempty" name:"AddTime"`
+
+	// 详细地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 百度地图经度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Longitude *string `json:"Longitude,omitempty" name:"Longitude"`
+
+	// 门店编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopNo *string `json:"ShopNo,omitempty" name:"ShopNo"`
+
+	// 门店全称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopFullName *string `json:"ShopFullName,omitempty" name:"ShopFullName"`
+
+	// 门店负责人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Contact *string `json:"Contact,omitempty" name:"Contact"`
+
+	// 店内环境图片【公共区】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PictureThree *string `json:"PictureThree,omitempty" name:"PictureThree"`
+
+	// 整体门面（含招牌）图片【公共区】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PictureOne *string `json:"PictureOne,omitempty" name:"PictureOne"`
+
+	// 门店电话
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Telephone *string `json:"Telephone,omitempty" name:"Telephone"`
+
+	// 机构门店主键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutShopId *string `json:"OutShopId,omitempty" name:"OutShopId"`
+
+	// 城市编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CityId *string `json:"CityId,omitempty" name:"CityId"`
 }
 
 type WithdrawBill struct {

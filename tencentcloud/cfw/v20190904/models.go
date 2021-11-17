@@ -4774,6 +4774,9 @@ type StaticInfo struct {
 
 type StopSecurityGroupRuleDispatchRequest struct {
 	*tchttp.BaseRequest
+
+	// 值为1，中止全部
+	StopType *int64 `json:"StopType,omitempty" name:"StopType"`
 }
 
 func (r *StopSecurityGroupRuleDispatchRequest) ToJsonString() string {
@@ -4788,6 +4791,7 @@ func (r *StopSecurityGroupRuleDispatchRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "StopType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopSecurityGroupRuleDispatchRequest has unknown keys!", "")
 	}

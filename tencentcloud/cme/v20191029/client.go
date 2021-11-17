@@ -276,6 +276,37 @@ func (c *Client) CreateTeam(request *CreateTeamRequest) (response *CreateTeamRes
     return
 }
 
+func NewCreateVideoEncodingPresetRequest() (request *CreateVideoEncodingPresetRequest) {
+    request = &CreateVideoEncodingPresetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cme", APIVersion, "CreateVideoEncodingPreset")
+    
+    return
+}
+
+func NewCreateVideoEncodingPresetResponse() (response *CreateVideoEncodingPresetResponse) {
+    response = &CreateVideoEncodingPresetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateVideoEncodingPreset
+// 指定导出的参数，创建一个视频编码配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateVideoEncodingPreset(request *CreateVideoEncodingPresetRequest) (response *CreateVideoEncodingPresetResponse, err error) {
+    if request == nil {
+        request = NewCreateVideoEncodingPresetRequest()
+    }
+    response = NewCreateVideoEncodingPresetResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteClassRequest() (request *DeleteClassRequest) {
     request = &DeleteClassRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -483,6 +514,37 @@ func (c *Client) DeleteTeamMembers(request *DeleteTeamMembersRequest) (response 
         request = NewDeleteTeamMembersRequest()
     }
     response = NewDeleteTeamMembersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteVideoEncodingPresetRequest() (request *DeleteVideoEncodingPresetRequest) {
+    request = &DeleteVideoEncodingPresetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cme", APIVersion, "DeleteVideoEncodingPreset")
+    
+    return
+}
+
+func NewDeleteVideoEncodingPresetResponse() (response *DeleteVideoEncodingPresetResponse) {
+    response = &DeleteVideoEncodingPresetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteVideoEncodingPreset
+// 删除指定 ID 的视频编码配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteVideoEncodingPreset(request *DeleteVideoEncodingPresetRequest) (response *DeleteVideoEncodingPresetResponse, err error) {
+    if request == nil {
+        request = NewDeleteVideoEncodingPresetRequest()
+    }
+    response = NewDeleteVideoEncodingPresetResponse()
     err = c.Send(request, response)
     return
 }
@@ -951,6 +1013,37 @@ func (c *Client) DescribeTeams(request *DescribeTeamsRequest) (response *Describ
         request = NewDescribeTeamsRequest()
     }
     response = NewDescribeTeamsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVideoEncodingPresetsRequest() (request *DescribeVideoEncodingPresetsRequest) {
+    request = &DescribeVideoEncodingPresetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cme", APIVersion, "DescribeVideoEncodingPresets")
+    
+    return
+}
+
+func NewDescribeVideoEncodingPresetsResponse() (response *DescribeVideoEncodingPresetsResponse) {
+    response = &DescribeVideoEncodingPresetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeVideoEncodingPresets
+// 查询视频编码配置信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeVideoEncodingPresets(request *DescribeVideoEncodingPresetsRequest) (response *DescribeVideoEncodingPresetsResponse, err error) {
+    if request == nil {
+        request = NewDescribeVideoEncodingPresetsRequest()
+    }
+    response = NewDescribeVideoEncodingPresetsResponse()
     err = c.Send(request, response)
     return
 }
@@ -1583,6 +1676,42 @@ func (c *Client) ModifyTeamMember(request *ModifyTeamMemberRequest) (response *M
         request = NewModifyTeamMemberRequest()
     }
     response = NewModifyTeamMemberResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyVideoEncodingPresetRequest() (request *ModifyVideoEncodingPresetRequest) {
+    request = &ModifyVideoEncodingPresetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cme", APIVersion, "ModifyVideoEncodingPreset")
+    
+    return
+}
+
+func NewModifyVideoEncodingPresetResponse() (response *ModifyVideoEncodingPresetResponse) {
+    response = &ModifyVideoEncodingPresetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyVideoEncodingPreset
+// 修改视频编码配置信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_MEMBERNOTEXIST = "InvalidParameterValue.MemberNotExist"
+//  INVALIDPARAMETERVALUE_OPERATOR = "InvalidParameterValue.Operator"
+//  INVALIDPARAMETERVALUE_ROLE = "InvalidParameterValue.Role"
+//  INVALIDPARAMETERVALUE_TEAMNOTEXIST = "InvalidParameterValue.TeamNotExist"
+//  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyVideoEncodingPreset(request *ModifyVideoEncodingPresetRequest) (response *ModifyVideoEncodingPresetResponse, err error) {
+    if request == nil {
+        request = NewModifyVideoEncodingPresetRequest()
+    }
+    response = NewModifyVideoEncodingPresetResponse()
     err = c.Send(request, response)
     return
 }

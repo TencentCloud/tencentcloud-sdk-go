@@ -247,13 +247,16 @@ type CreateClustersRequest struct {
 	// 所属项目ID
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
+	// 当DbMode为NORMAL或不填时必选
 	// 普通实例Cpu核数
 	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
 
+	// 当DbMode为NORMAL或不填时必选
 	// 普通实例内存,单位G
 	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
 
-	// 存储大小，单位G
+	// 该参数无实际意义，已废弃。
+	// 存储大小，单位G。
 	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
 
 	// 集群名称
@@ -286,6 +289,7 @@ type CreateClustersRequest struct {
 	// 时间点回档，指定时间；快照回档，快照时间
 	ExpectTime *string `json:"ExpectTime,omitempty" name:"ExpectTime"`
 
+	// 该参数无实际意义，已废弃。
 	// 时间点回档，指定时间允许范围
 	ExpectTimeThresh *uint64 `json:"ExpectTimeThresh,omitempty" name:"ExpectTimeThresh"`
 
@@ -1468,7 +1472,14 @@ type DescribeInstancesRequest struct {
 	// 引擎类型：目前支持“MYSQL”， “POSTGRESQL”
 	DbType *string `json:"DbType,omitempty" name:"DbType"`
 
-	// 实例状态
+	// 实例状态, 可选值:
+	// creating 创建中
+	// running 运行中
+	// isolating 隔离中
+	// isolated 已隔离
+	// activating 恢复中
+	// offlining 下线中
+	// offlined 已下线
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 实例id列表
@@ -1943,7 +1954,7 @@ type ModifyBackupConfigRequest struct {
 	// 表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
 	BackupTimeBeg *uint64 `json:"BackupTimeBeg,omitempty" name:"BackupTimeBeg"`
 
-	// 表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+	// 表示全备结束时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
 	BackupTimeEnd *uint64 `json:"BackupTimeEnd,omitempty" name:"BackupTimeEnd"`
 
 	// 表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600*24*7=604800

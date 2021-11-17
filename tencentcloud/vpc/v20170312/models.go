@@ -4179,11 +4179,17 @@ type CreateVpnGatewayRequest struct {
 	// 可用区，如：ap-guangzhou-2。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// VPN网关类型。值“CCN”云联网类型VPN网关
+	// VPN网关类型。值“CCN”云联网类型VPN网关，值SSL为SSL-VPN
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// CDC实例ID
+	CdcId *string `json:"CdcId,omitempty" name:"CdcId"`
+
+	// SSL-VPN 最大CLIENT 连接数。可选 [5, 10, 20, 50, 100]。仅SSL-VPN 需要选这个参数。
+	MaxConnection *uint64 `json:"MaxConnection,omitempty" name:"MaxConnection"`
 }
 
 func (r *CreateVpnGatewayRequest) ToJsonString() string {
@@ -4206,6 +4212,8 @@ func (r *CreateVpnGatewayRequest) FromJsonString(s string) error {
 	delete(f, "Zone")
 	delete(f, "Type")
 	delete(f, "Tags")
+	delete(f, "CdcId")
+	delete(f, "MaxConnection")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVpnGatewayRequest has unknown keys!", "")
 	}
@@ -13337,6 +13345,9 @@ type ModifyIp6AddressesBandwidthResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// 任务ID
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -17365,6 +17376,12 @@ type VpnGateway struct {
 
 	// Type值为CCN时，该值表示云联网实例ID
 	NetworkInstanceId *string `json:"NetworkInstanceId,omitempty" name:"NetworkInstanceId"`
+
+	// CDC 实例ID
+	CdcId *string `json:"CdcId,omitempty" name:"CdcId"`
+
+	// SSL-VPN 客户端连接数。
+	MaxConnection *uint64 `json:"MaxConnection,omitempty" name:"MaxConnection"`
 }
 
 type VpnGatewayQuota struct {

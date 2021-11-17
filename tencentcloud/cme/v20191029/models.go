@@ -620,6 +620,88 @@ func (r *CreateTeamResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateVideoEncodingPresetRequest struct {
+	*tchttp.BaseRequest
+
+	// 平台名称，指定访问的平台。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 配置名，可用来简单描述该配置的作用。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 封装格式，可选值：
+	// <li>mp4 ；</li>
+	// <li>mov 。</li>
+	// 默认值：mp4。
+	Container *string `json:"Container,omitempty" name:"Container"`
+
+	// 是否去除视频数据，可选值：
+	// <li>0：保留；</li>
+	// <li>1：去除。</li>
+	// 默认值：0。
+	RemoveVideo *int64 `json:"RemoveVideo,omitempty" name:"RemoveVideo"`
+
+	// 是否去除音频数据，可选值：
+	// <li>0：保留；</li>
+	// <li>1：去除。</li>
+	// 默认值：0。
+	RemoveAudio *int64 `json:"RemoveAudio,omitempty" name:"RemoveAudio"`
+
+	// 编码配置的视频设置。默认值参考VideoEncodingPresetVideoSetting 定义。
+	VideoSetting *VideoEncodingPresetVideoSetting `json:"VideoSetting,omitempty" name:"VideoSetting"`
+
+	// 编码配置的音频设置。默认值参考VideoEncodingPresetAudioSetting 定义。
+	AudioSetting *VideoEncodingPresetAudioSetting `json:"AudioSetting,omitempty" name:"AudioSetting"`
+}
+
+func (r *CreateVideoEncodingPresetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVideoEncodingPresetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Platform")
+	delete(f, "Name")
+	delete(f, "Container")
+	delete(f, "RemoveVideo")
+	delete(f, "RemoveAudio")
+	delete(f, "VideoSetting")
+	delete(f, "AudioSetting")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVideoEncodingPresetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateVideoEncodingPresetResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 模板 ID。
+		Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateVideoEncodingPresetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVideoEncodingPresetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteClassRequest struct {
 	*tchttp.BaseRequest
 
@@ -948,6 +1030,56 @@ func (r *DeleteTeamResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteVideoEncodingPresetRequest struct {
+	*tchttp.BaseRequest
+
+	// 平台名称，指定访问的平台。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 要删除的视频编码配置 ID。
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DeleteVideoEncodingPresetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVideoEncodingPresetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Platform")
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteVideoEncodingPresetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteVideoEncodingPresetResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteVideoEncodingPresetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVideoEncodingPresetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeAccountsRequest struct {
 	*tchttp.BaseRequest
 
@@ -1078,7 +1210,7 @@ type DescribeJoinTeamsRequest struct {
 	// 团队成员　ID。
 	MemberId *string `json:"MemberId,omitempty" name:"MemberId"`
 
-	// 分页偏移量，默认值：0
+	// 分页偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 返回记录条数，默认值：30，最大值：30。
@@ -1114,7 +1246,7 @@ type DescribeJoinTeamsResponse struct {
 		// 符合条件的记录总数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 团队列表
+		// 团队列表。
 		TeamSet []*JoinTeamInfo `json:"TeamSet,omitempty" name:"TeamSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1835,6 +1967,70 @@ func (r *DescribeTeamsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeVideoEncodingPresetsRequest struct {
+	*tchttp.BaseRequest
+
+	// 平台名称，指定访问的平台。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 要查询的配置 ID 列表。填写该参数则按照配置 ID 进行查询。
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
+
+	// 分页大小，默认20。最大值50。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页起始，默认0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeVideoEncodingPresetsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVideoEncodingPresetsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Platform")
+	delete(f, "Ids")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVideoEncodingPresetsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVideoEncodingPresetsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的编码配置总个数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 视频编码配置信息。
+		VideoEncodingPresetSet []*VideoEncodingPreset `json:"VideoEncodingPresetSet,omitempty" name:"VideoEncodingPresetSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVideoEncodingPresetsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVideoEncodingPresetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type EmptyTrackItem struct {
 
 	// 持续时间，单位为秒。
@@ -1872,7 +2068,7 @@ type ExportVideoByEditorTrackDataRequest struct {
 	// 平台名称，指定访问的平台。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
-	// 导出模板 Id，目前不支持自定义创建，只支持下面的预置模板 Id。
+	// 导出视频编码配置 Id，推荐优先使用下面的预置模板 Id，有其他需求可通过接口定制视频编码配置。
 	// <li>10：分辨率为 480P，输出视频格式为 MP4；</li>
 	// <li>11：分辨率为 720P，输出视频格式为 MP4；</li>
 	// <li>12：分辨率为 1080P，输出视频格式为 MP4。</li>
@@ -1886,7 +2082,9 @@ type ExportVideoByEditorTrackDataRequest struct {
 	// 在线编辑轨道数据。轨道数据相关介绍，请查看 [视频合成协议](https://cloud.tencent.com/document/product/1156/51225)。
 	TrackData *string `json:"TrackData,omitempty" name:"TrackData"`
 
-	// 轨道数据对应的画布宽高比。
+	// 轨道数据对应的画布宽高比，配合视频编码配置中的视频短边尺寸，可决定导出画面的尺寸。例：
+	// <li>如果 AspectRatio 取值 16:9，视频编码配置选为12（短边1080），则导出尺寸为 1920 * 1080；</li>
+	// <li>如果 AspectRatio 取值 9:16，视频编码配置选为11（短边720），则导出尺寸为 720 *1280。</li>
 	AspectRatio *string `json:"AspectRatio,omitempty" name:"AspectRatio"`
 
 	// 视频封面图片文件（如 jpeg, png 等）进行 Base64 编码后的字符串，仅支持 gif、jpeg、png 三种图片格式，原图片文件不能超过2 M大 小。
@@ -2129,7 +2327,7 @@ type ExportVideoEditProjectRequest struct {
 	// 项目 Id。
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 导出模板 Id，目前不支持自定义创建，只支持下面的预置模板 Id。
+	// 视频编码配置 ID，支持自定义创建，推荐优先使用系统预置的导出配置。
 	// <li>10：分辨率为 480P，输出视频格式为 MP4；</li>
 	// <li>11：分辨率为 720P，输出视频格式为 MP4；</li>
 	// <li>12：分辨率为 1080P，输出视频格式为 MP4。</li>
@@ -2148,6 +2346,9 @@ type ExportVideoEditProjectRequest struct {
 
 	// 导出的云点播媒资信息。当导出目标为 VOD 时必填。
 	VODExportInfo *VODExportInfo `json:"VODExportInfo,omitempty" name:"VODExportInfo"`
+
+	// 视频导出扩展参数。可以覆盖导出模板中的参数，灵活的指定导出规格及参数。
+	ExportExtensionArgs *VideoExportExtensionArgs `json:"ExportExtensionArgs,omitempty" name:"ExportExtensionArgs"`
 
 	// 操作者。填写用户的 Id，用于标识调用者及校验项目导出权限。
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
@@ -2172,6 +2373,7 @@ func (r *ExportVideoEditProjectRequest) FromJsonString(s string) error {
 	delete(f, "CoverData")
 	delete(f, "CMEExportInfo")
 	delete(f, "VODExportInfo")
+	delete(f, "ExportExtensionArgs")
 	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportVideoEditProjectRequest has unknown keys!", "")
@@ -3347,6 +3549,82 @@ func (r *ModifyTeamResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyVideoEncodingPresetRequest struct {
+	*tchttp.BaseRequest
+
+	// 平台名称，指定访问的平台。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 配置 ID。
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 更改后的视频编码配置名，不填则不修改。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 是否去除视频数据，可选值：
+	// <li>0：保留；</li>
+	// <li>1：去除。</li>
+	// 默认值：0。
+	RemoveVideo *int64 `json:"RemoveVideo,omitempty" name:"RemoveVideo"`
+
+	// 是否去除音频数据，可选值：
+	// <li>0：保留；</li>
+	// <li>1：去除。</li>
+	// 默认值：0。
+	RemoveAudio *int64 `json:"RemoveAudio,omitempty" name:"RemoveAudio"`
+
+	// 更改后的编码配置的视频设置。
+	VideoSetting *VideoEncodingPresetVideoSettingForUpdate `json:"VideoSetting,omitempty" name:"VideoSetting"`
+
+	// 更改后的编码配置的音频设置。
+	AudioSetting *VideoEncodingPresetAudioSettingForUpdate `json:"AudioSetting,omitempty" name:"AudioSetting"`
+}
+
+func (r *ModifyVideoEncodingPresetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyVideoEncodingPresetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Platform")
+	delete(f, "Id")
+	delete(f, "Name")
+	delete(f, "RemoveVideo")
+	delete(f, "RemoveAudio")
+	delete(f, "VideoSetting")
+	delete(f, "AudioSetting")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVideoEncodingPresetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyVideoEncodingPresetResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyVideoEncodingPresetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyVideoEncodingPresetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type MoveClassRequest struct {
 	*tchttp.BaseRequest
 
@@ -4200,6 +4478,161 @@ type VideoEditTemplateMaterial struct {
 
 	// 模板预览视频 URL 地址 。
 	PreviewVideoUrl *string `json:"PreviewVideoUrl,omitempty" name:"PreviewVideoUrl"`
+}
+
+type VideoEncodingPreset struct {
+
+	// 配置 ID。
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 配置名。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 封装格式，可选值：
+	// <li>mp4 ；</li>
+	// <li>mov 。</li>
+	Container *string `json:"Container,omitempty" name:"Container"`
+
+	// 是否去除视频数据，可选值：
+	// <li>0：保留；</li>
+	// <li>1：去除。</li>
+	// 默认值：0。
+	RemoveVideo *int64 `json:"RemoveVideo,omitempty" name:"RemoveVideo"`
+
+	// 是否去除音频数据，可选值：
+	// <li>0：保留；</li>
+	// <li>1：去除。</li>
+	// 默认值：0。
+	RemoveAudio *int64 `json:"RemoveAudio,omitempty" name:"RemoveAudio"`
+
+	// 视频编码配置中的视频设置。
+	VideoSetting *VideoEncodingPresetVideoSetting `json:"VideoSetting,omitempty" name:"VideoSetting"`
+
+	// 视频编码配置中的音频设置。
+	AudioSetting *VideoEncodingPresetAudioSetting `json:"AudioSetting,omitempty" name:"AudioSetting"`
+}
+
+type VideoEncodingPresetAudioSetting struct {
+
+	// 音频流的编码格式，可选值：
+	// AAC：AAC 编码。
+	// 
+	// 默认值：AAC。
+	Codec *string `json:"Codec,omitempty" name:"Codec"`
+
+	// 音频码率，单位：bps。
+	// 默认值：64K。
+	Bitrate *uint64 `json:"Bitrate,omitempty" name:"Bitrate"`
+
+	// 音频声道数，可选值： 
+	// <li>1：单声道；</li>
+	// <li>2：双声道。</li> 
+	// 默认值：2。
+	Channels *uint64 `json:"Channels,omitempty" name:"Channels"`
+
+	// 音频流的采样率，仅支持 16000； 32000； 44100； 48000。单位：Hz。 
+	// 默认值：16000。
+	SampleRate *uint64 `json:"SampleRate,omitempty" name:"SampleRate"`
+}
+
+type VideoEncodingPresetAudioSettingForUpdate struct {
+
+	// 音频码率，单位：bps。
+	// 不填则不修改。
+	Bitrate *string `json:"Bitrate,omitempty" name:"Bitrate"`
+
+	// 音频声道数，可选值： 
+	// <li>1：单声道；</li>
+	// <li>2：双声道。</li> 
+	// 不填则不修改。
+	Channels *uint64 `json:"Channels,omitempty" name:"Channels"`
+
+	// 音频流的采样率，目前仅支持： 16000； 32000； 44100； 48000。单位：Hz。
+	// 不填则不修改。
+	SampleRate *uint64 `json:"SampleRate,omitempty" name:"SampleRate"`
+}
+
+type VideoEncodingPresetVideoSetting struct {
+
+	// 视频流的编码格式，可选值：
+	// <li>H264：H.264 编码。</li>
+	Codec *string `json:"Codec,omitempty" name:"Codec"`
+
+	// 视频短边尺寸，取值范围： [128, 4096]，单位：px。
+	// 视频最后的分辨率，根据短边尺寸和宽高比进行计算。
+	// 例：如果项目的宽高比是 16：9 ：
+	// <li>短边尺寸为 1080，则导出视频的分辨率为 1920 * 1080。</li>
+	// <li>短边尺寸为 720，则导出视频的分辨率为 1280 * 720。</li>
+	// 如果项目的宽高比是 9：16 ：
+	// <li>短边尺寸为 1080，则导出视频的分辨率为 1080 * 1920。</li>
+	// <li>短边尺寸为 720，则导出视频的分辨率为 720 * 1280。</li>
+	// 默认值：1080。
+	ShortEdge *uint64 `json:"ShortEdge,omitempty" name:"ShortEdge"`
+
+	// 指定码率，单位 bps。当该参数为'0'时则不强制限定码率。
+	// 默认值：0。
+	Bitrate *uint64 `json:"Bitrate,omitempty" name:"Bitrate"`
+}
+
+type VideoEncodingPresetVideoSettingForUpdate struct {
+
+	// 视频短边尺寸，取值范围： [128, 4096]，单位：px。
+	// 视频最后的分辨率，根据短边尺寸和宽高比进行计算。
+	// 例：如果项目的宽高比是 16：9 ：
+	// <li>短边尺寸为 1080，则导出视频的分辨率为 1920 * 1080。</li>
+	// <li>短边尺寸为 720，则导出视频的分辨率为 1280 * 720。</li>
+	// 如果项目的宽高比是 9：16 ：
+	// <li>短边尺寸为 1080，则导出视频的分辨率为 1080 * 1920。</li>
+	// <li>短边尺寸为 720，则导出视频的分辨率为 720 * 1280。</li>
+	// 不填则不修改。
+	ShortEdge *uint64 `json:"ShortEdge,omitempty" name:"ShortEdge"`
+
+	// 指定码率，单位 bps。当该参数为'0' 时则不强制限定码率。
+	// 不填则不修改。
+	Bitrate *uint64 `json:"Bitrate,omitempty" name:"Bitrate"`
+
+	// 指定帧率。单位 Hz。
+	// 不填则不修改。
+	FrameRate *float64 `json:"FrameRate,omitempty" name:"FrameRate"`
+}
+
+type VideoExportExtensionArgs struct {
+
+	// 封装格式，可选值：
+	// <li>mp4 </li>
+	// <li>mov </li>
+	// 不填则默认使用导出模板中的值。
+	Container *string `json:"Container,omitempty" name:"Container"`
+
+	// 视频短边尺寸，取值范围： [128, 4096]，单位：px。
+	// 视频最后的分辨率，根据短边尺寸和宽高比进行计算。
+	// 例如：项目的宽高比是 16：9 ：
+	// <li>短边尺寸为 1080，则导出视频的分辨率为 1920 * 1080。</li>
+	// <li>短边尺寸为 720，则导出视频的分辨率为 1280 * 720</li>
+	// 不填则默认使用导出模板中对的值。
+	ShortEdge *uint64 `json:"ShortEdge,omitempty" name:"ShortEdge"`
+
+	// 指定码率，单位 bps。当该参数为 0 时则不强制限定码率。
+	// 不填则默认使用导出模板中的值。
+	VideoBitrate *uint64 `json:"VideoBitrate,omitempty" name:"VideoBitrate"`
+
+	// 是否去除视频数据，可选值：
+	// <li>0：保留；</li>
+	// <li>1：去除。</li>
+	// 不填则默认使用导出模板中对的值。
+	RemoveVideo *int64 `json:"RemoveVideo,omitempty" name:"RemoveVideo"`
+
+	// 是否去除音频数据，可选值：
+	// <li>0：保留；</li>
+	// <li>1：去除。</li>
+	// 不填则默认使用导出模板中对的值。
+	RemoveAudio *int64 `json:"RemoveAudio,omitempty" name:"RemoveAudio"`
+
+	// 片段起始时间，单位：毫秒。
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 片段结束时间，单位：毫秒。
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
 }
 
 type VideoMaterial struct {

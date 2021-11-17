@@ -1883,6 +1883,46 @@ func (c *Client) ModifyDBParameters(request *ModifyDBParametersRequest) (respons
     return
 }
 
+func NewModifyDBSyncModeRequest() (request *ModifyDBSyncModeRequest) {
+    request = &ModifyDBSyncModeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mariadb", APIVersion, "ModifyDBSyncMode")
+    
+    return
+}
+
+func NewModifyDBSyncModeResponse() (response *ModifyDBSyncModeResponse) {
+    response = &ModifyDBSyncModeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDBSyncMode
+// 本接口（ModifyDBSyncMode）用于修改云数据库实例的同步模式。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEFLOWFAILED = "FailedOperation.CreateFlowFailed"
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_GETINSTANCEINFOFAILED = "InternalError.GetInstanceInfoFailed"
+//  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_BADSYNCMODE = "InvalidParameterValue.BadSyncMode"
+//  RESOURCENOTFOUND_NOINSTANCEFOUND = "ResourceNotFound.NoInstanceFound"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNSUPPORTEDOPERATION_INVALIDOPERATION = "UnsupportedOperation.InvalidOperation"
+func (c *Client) ModifyDBSyncMode(request *ModifyDBSyncModeRequest) (response *ModifyDBSyncModeResponse, err error) {
+    if request == nil {
+        request = NewModifyDBSyncModeRequest()
+    }
+    response = NewModifyDBSyncModeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyLogFileRetentionPeriodRequest() (request *ModifyLogFileRetentionPeriodRequest) {
     request = &ModifyLogFileRetentionPeriodRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1964,6 +2004,38 @@ func (c *Client) ModifyRealServerAccessStrategy(request *ModifyRealServerAccessS
         request = NewModifyRealServerAccessStrategyRequest()
     }
     response = NewModifyRealServerAccessStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySyncTaskAttributeRequest() (request *ModifySyncTaskAttributeRequest) {
+    request = &ModifySyncTaskAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mariadb", APIVersion, "ModifySyncTaskAttribute")
+    
+    return
+}
+
+func NewModifySyncTaskAttributeResponse() (response *ModifySyncTaskAttributeResponse) {
+    response = &ModifySyncTaskAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifySyncTaskAttribute
+// 本接口 (ModifySyncTaskAttribute) 用于修改同步任务的属性（目前只支持修改任务名称）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  RESOURCENOTFOUND_SYNCTASKDELETED = "ResourceNotFound.SyncTaskDeleted"
+func (c *Client) ModifySyncTaskAttribute(request *ModifySyncTaskAttributeRequest) (response *ModifySyncTaskAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifySyncTaskAttributeRequest()
+    }
+    response = NewModifySyncTaskAttributeResponse()
     err = c.Send(request, response)
     return
 }

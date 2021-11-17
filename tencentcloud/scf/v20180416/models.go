@@ -355,6 +355,9 @@ type CreateFunctionRequest struct {
 	// 函数绑定的角色
 	Role *string `json:"Role,omitempty" name:"Role"`
 
+	// [在线依赖安装](https://cloud.tencent.com/document/product/583/37920)，TRUE 表示安装，默认值为 FALSE。仅支持 Node.js 函数。
+	InstallDependency *string `json:"InstallDependency,omitempty" name:"InstallDependency"`
+
 	// 函数日志投递到的CLS LogsetID
 	ClsLogsetId *string `json:"ClsLogsetId,omitempty" name:"ClsLogsetId"`
 
@@ -421,6 +424,7 @@ func (r *CreateFunctionRequest) FromJsonString(s string) error {
 	delete(f, "VpcConfig")
 	delete(f, "Namespace")
 	delete(f, "Role")
+	delete(f, "InstallDependency")
 	delete(f, "ClsLogsetId")
 	delete(f, "ClsTopicId")
 	delete(f, "Type")
@@ -3535,6 +3539,9 @@ type UpdateFunctionConfigurationRequest struct {
 	// 函数绑定的角色
 	Role *string `json:"Role,omitempty" name:"Role"`
 
+	// [在线依赖安装](https://cloud.tencent.com/document/product/583/37920)，TRUE 表示安装，默认值为 FALSE。仅支持 Node.js 函数。
+	InstallDependency *string `json:"InstallDependency,omitempty" name:"InstallDependency"`
+
 	// 日志投递到的cls日志集ID
 	ClsLogsetId *string `json:"ClsLogsetId,omitempty" name:"ClsLogsetId"`
 
@@ -3587,6 +3594,7 @@ func (r *UpdateFunctionConfigurationRequest) FromJsonString(s string) error {
 	delete(f, "Namespace")
 	delete(f, "VpcConfig")
 	delete(f, "Role")
+	delete(f, "InstallDependency")
 	delete(f, "ClsLogsetId")
 	delete(f, "ClsTopicId")
 	delete(f, "Publish")

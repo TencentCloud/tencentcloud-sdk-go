@@ -43,6 +43,87 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAddContractRequest() (request *AddContractRequest) {
+    request = &AddContractRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "AddContract")
+    
+    return
+}
+
+func NewAddContractResponse() (response *AddContractResponse) {
+    response = &AddContractResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddContract
+// 云支付-添加合同接口
+func (c *Client) AddContract(request *AddContractRequest) (response *AddContractResponse, err error) {
+    if request == nil {
+        request = NewAddContractRequest()
+    }
+    response = NewAddContractResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAddMerchantRequest() (request *AddMerchantRequest) {
+    request = &AddMerchantRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "AddMerchant")
+    
+    return
+}
+
+func NewAddMerchantResponse() (response *AddMerchantResponse) {
+    response = &AddMerchantResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddMerchant
+// 云支付-添加商户接口
+func (c *Client) AddMerchant(request *AddMerchantRequest) (response *AddMerchantResponse, err error) {
+    if request == nil {
+        request = NewAddMerchantRequest()
+    }
+    response = NewAddMerchantResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAddShopRequest() (request *AddShopRequest) {
+    request = &AddShopRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "AddShop")
+    
+    return
+}
+
+func NewAddShopResponse() (response *AddShopResponse) {
+    response = &AddShopResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddShop
+// 云支付-添加门店接口
+func (c *Client) AddShop(request *AddShopRequest) (response *AddShopResponse, err error) {
+    if request == nil {
+        request = NewAddShopRequest()
+    }
+    response = NewAddShopResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewApplyApplicationMaterialRequest() (request *ApplyApplicationMaterialRequest) {
     request = &ApplyApplicationMaterialRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1357,6 +1438,254 @@ func (c *Client) DescribeOrderStatus(request *DescribeOrderStatusRequest) (respo
     return
 }
 
+func NewDistributeAccreditQueryRequest() (request *DistributeAccreditQueryRequest) {
+    request = &DistributeAccreditQueryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "DistributeAccreditQuery")
+    
+    return
+}
+
+func NewDistributeAccreditQueryResponse() (response *DistributeAccreditQueryResponse) {
+    response = &DistributeAccreditQueryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DistributeAccreditQuery
+// 云支付-分账授权申请查询接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
+//  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
+func (c *Client) DistributeAccreditQuery(request *DistributeAccreditQueryRequest) (response *DistributeAccreditQueryResponse, err error) {
+    if request == nil {
+        request = NewDistributeAccreditQueryRequest()
+    }
+    response = NewDistributeAccreditQueryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDistributeAccreditTlinxRequest() (request *DistributeAccreditTlinxRequest) {
+    request = &DistributeAccreditTlinxRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "DistributeAccreditTlinx")
+    
+    return
+}
+
+func NewDistributeAccreditTlinxResponse() (response *DistributeAccreditTlinxResponse) {
+    response = &DistributeAccreditTlinxResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DistributeAccreditTlinx
+// 云支付-分账授权申请接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
+//  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
+func (c *Client) DistributeAccreditTlinx(request *DistributeAccreditTlinxRequest) (response *DistributeAccreditTlinxResponse, err error) {
+    if request == nil {
+        request = NewDistributeAccreditTlinxRequest()
+    }
+    response = NewDistributeAccreditTlinxResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDistributeAddReceiverRequest() (request *DistributeAddReceiverRequest) {
+    request = &DistributeAddReceiverRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "DistributeAddReceiver")
+    
+    return
+}
+
+func NewDistributeAddReceiverResponse() (response *DistributeAddReceiverResponse) {
+    response = &DistributeAddReceiverResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DistributeAddReceiver
+// 云支付-分账添加分账接收方接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
+//  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
+func (c *Client) DistributeAddReceiver(request *DistributeAddReceiverRequest) (response *DistributeAddReceiverResponse, err error) {
+    if request == nil {
+        request = NewDistributeAddReceiverRequest()
+    }
+    response = NewDistributeAddReceiverResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDistributeApplyRequest() (request *DistributeApplyRequest) {
+    request = &DistributeApplyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "DistributeApply")
+    
+    return
+}
+
+func NewDistributeApplyResponse() (response *DistributeApplyResponse) {
+    response = &DistributeApplyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DistributeApply
+// 云支付-分账请求接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
+//  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
+func (c *Client) DistributeApply(request *DistributeApplyRequest) (response *DistributeApplyResponse, err error) {
+    if request == nil {
+        request = NewDistributeApplyRequest()
+    }
+    response = NewDistributeApplyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDistributeCancelRequest() (request *DistributeCancelRequest) {
+    request = &DistributeCancelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "DistributeCancel")
+    
+    return
+}
+
+func NewDistributeCancelResponse() (response *DistributeCancelResponse) {
+    response = &DistributeCancelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DistributeCancel
+// 云支付-分账撤销接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
+//  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
+func (c *Client) DistributeCancel(request *DistributeCancelRequest) (response *DistributeCancelResponse, err error) {
+    if request == nil {
+        request = NewDistributeCancelRequest()
+    }
+    response = NewDistributeCancelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDistributeQueryRequest() (request *DistributeQueryRequest) {
+    request = &DistributeQueryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "DistributeQuery")
+    
+    return
+}
+
+func NewDistributeQueryResponse() (response *DistributeQueryResponse) {
+    response = &DistributeQueryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DistributeQuery
+// 云支付-分账结果查询接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
+//  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
+func (c *Client) DistributeQuery(request *DistributeQueryRequest) (response *DistributeQueryResponse, err error) {
+    if request == nil {
+        request = NewDistributeQueryRequest()
+    }
+    response = NewDistributeQueryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDistributeQueryReceiverRequest() (request *DistributeQueryReceiverRequest) {
+    request = &DistributeQueryReceiverRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "DistributeQueryReceiver")
+    
+    return
+}
+
+func NewDistributeQueryReceiverResponse() (response *DistributeQueryReceiverResponse) {
+    response = &DistributeQueryReceiverResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DistributeQueryReceiver
+// 云支付-T查询已添加分账接收方接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
+//  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
+func (c *Client) DistributeQueryReceiver(request *DistributeQueryReceiverRequest) (response *DistributeQueryReceiverResponse, err error) {
+    if request == nil {
+        request = NewDistributeQueryReceiverRequest()
+    }
+    response = NewDistributeQueryReceiverResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDistributeRemoveReceiverRequest() (request *DistributeRemoveReceiverRequest) {
+    request = &DistributeRemoveReceiverRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "DistributeRemoveReceiver")
+    
+    return
+}
+
+func NewDistributeRemoveReceiverResponse() (response *DistributeRemoveReceiverResponse) {
+    response = &DistributeRemoveReceiverResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DistributeRemoveReceiver
+// 云支付-分账解除分账接收方接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
+//  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
+func (c *Client) DistributeRemoveReceiver(request *DistributeRemoveReceiverRequest) (response *DistributeRemoveReceiverResponse, err error) {
+    if request == nil {
+        request = NewDistributeRemoveReceiverRequest()
+    }
+    response = NewDistributeRemoveReceiverResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDownloadBillRequest() (request *DownloadBillRequest) {
     request = &DownloadBillRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1389,6 +1718,42 @@ func (c *Client) DownloadBill(request *DownloadBillRequest) (response *DownloadB
         request = NewDownloadBillRequest()
     }
     response = NewDownloadBillResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDownloadOrgFileRequest() (request *DownloadOrgFileRequest) {
+    request = &DownloadOrgFileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "DownloadOrgFile")
+    
+    return
+}
+
+func NewDownloadOrgFileResponse() (response *DownloadOrgFileResponse) {
+    response = &DownloadOrgFileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DownloadOrgFile
+// 云支付-下载机构文件接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CONFIGERROR = "FailedOperation.ConfigError"
+//  FAILEDOPERATION_DBCONFIGERROR = "FailedOperation.DBConfigError"
+//  FAILEDOPERATION_FILENOTEXIST = "FailedOperation.FileNotExist"
+//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DownloadOrgFile(request *DownloadOrgFileRequest) (response *DownloadOrgFileResponse, err error) {
+    if request == nil {
+        request = NewDownloadOrgFileRequest()
+    }
+    response = NewDownloadOrgFileResponse()
     err = c.Send(request, response)
     return
 }
@@ -2152,6 +2517,44 @@ func (c *Client) QueryBillDownloadURL(request *QueryBillDownloadURLRequest) (res
     return
 }
 
+func NewQueryCityCodeRequest() (request *QueryCityCodeRequest) {
+    request = &QueryCityCodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryCityCode")
+    
+    return
+}
+
+func NewQueryCityCodeResponse() (response *QueryCityCodeResponse) {
+    response = &QueryCityCodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryCityCode
+// 云支付-查询城市编码接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+func (c *Client) QueryCityCode(request *QueryCityCodeRequest) (response *QueryCityCodeResponse, err error) {
+    if request == nil {
+        request = NewQueryCityCodeRequest()
+    }
+    response = NewQueryCityCodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryCommonTransferRechargeRequest() (request *QueryCommonTransferRechargeRequest) {
     request = &QueryCommonTransferRechargeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2248,6 +2651,192 @@ func (c *Client) QueryContract(request *QueryContractRequest) (response *QueryCo
         request = NewQueryContractRequest()
     }
     response = NewQueryContractResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryContractPayFeeRequest() (request *QueryContractPayFeeRequest) {
+    request = &QueryContractPayFeeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryContractPayFee")
+    
+    return
+}
+
+func NewQueryContractPayFeeResponse() (response *QueryContractPayFeeResponse) {
+    response = &QueryContractPayFeeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryContractPayFee
+// 云支付-查询支付方式费率及自定义表单项接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BACKCALLERROR = "FailedOperation.BackCallError"
+//  FAILEDOPERATION_CALLCHANNELGATEWAYERROR = "FailedOperation.CallChannelGatewayError"
+//  FAILEDOPERATION_DBCLIENTCONNECTFAILED = "FailedOperation.DbClientConnectFailed"
+//  FAILEDOPERATION_DBCLIENTQUERYFAILED = "FailedOperation.DbClientQueryFailed"
+//  FAILEDOPERATION_DBCLIENTUPDATEFAILED = "FailedOperation.DbClientUpdateFailed"
+//  FAILEDOPERATION_EXTERNALCONTRACTINDEXNOTFOUND = "FailedOperation.ExternalContractIndexNotFound"
+//  FAILEDOPERATION_EXTERNALCONTRACTNOTFOUND = "FailedOperation.ExternalContractNotFound"
+//  FAILEDOPERATION_EXTERNALMERCHANTCONTRACTINFOCONFIGNOFOUND = "FailedOperation.ExternalMerchantContractInfoConfigNoFound"
+//  FAILEDOPERATION_EXTERNALMERCHANTINDEXCONFIGNOFOUND = "FailedOperation.ExternalMerchantIndexConfigNoFound"
+//  FAILEDOPERATION_EXTERNALMERCHANTINFOCONFIGNOFOUND = "FailedOperation.ExternalMerchantInfoConfigNoFound"
+//  FAILEDOPERATION_HTTPDOREQUESTERROR = "FailedOperation.HttpDoRequestError"
+//  FAILEDOPERATION_MARSHALERROR = "FailedOperation.MarshalError"
+//  FAILEDOPERATION_MERCHANTPERMISSIONERROR = "FailedOperation.MerchantPermissionError"
+//  FAILEDOPERATION_NOTIFYURLPARSEERROR = "FailedOperation.NotifyUrlParseError"
+//  FAILEDOPERATION_PARAMETERERROR = "FailedOperation.ParameterError"
+//  FAILEDOPERATION_QUERYCONTRACTNULL = "FailedOperation.QueryContractNull"
+//  FAILEDOPERATION_QUERYMCHANNELERROR = "FailedOperation.QueryMchannelError"
+//  FAILEDOPERATION_QUERYMODEERROR = "FailedOperation.QueryModeError"
+//  FAILEDOPERATION_QUERYRESULTNULL = "FailedOperation.QueryResultNull"
+//  FAILEDOPERATION_SIGNERROR = "FailedOperation.SignError"
+//  FAILEDOPERATION_UNMARSHALERROR = "FailedOperation.UnmarshalError"
+//  FAILEDOPERATION_UPDATECONTRACTSTATUSFAILED = "FailedOperation.UpdateContractStatusFailed"
+//  FAILEDOPERATION_XMLFAIL = "FailedOperation.XmlFail"
+//  INTERNALERROR_BACKENDCONNECTIONERROR = "InternalError.BackendConnectionError"
+//  INTERNALERROR_BACKENDINTERNALERROR = "InternalError.BackendInternalError"
+//  INTERNALERROR_BACKENDNETWORKERROR = "InternalError.BackendNetworkError"
+//  INTERNALERROR_BACKENDROUTERERROR = "InternalError.BackendRouterError"
+//  INTERNALERROR_BACKENDTIMEOUT = "InternalError.BackendTimeOut"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMMARSHALFAILED = "InvalidParameter.ParamMarshalFailed"
+//  INVALIDPARAMETER_PARAMUNMARSHALFAILED = "InvalidParameter.ParamUnmarshalFailed"
+//  MISSINGPARAMETER_ = "MissingParameter."
+func (c *Client) QueryContractPayFee(request *QueryContractPayFeeRequest) (response *QueryContractPayFeeResponse, err error) {
+    if request == nil {
+        request = NewQueryContractPayFeeRequest()
+    }
+    response = NewQueryContractPayFeeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryContractPayWayListRequest() (request *QueryContractPayWayListRequest) {
+    request = &QueryContractPayWayListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryContractPayWayList")
+    
+    return
+}
+
+func NewQueryContractPayWayListResponse() (response *QueryContractPayWayListResponse) {
+    response = &QueryContractPayWayListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryContractPayWayList
+// 云支付-查询合同支付方式列表接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BACKCALLERROR = "FailedOperation.BackCallError"
+//  FAILEDOPERATION_CALLCHANNELGATEWAYERROR = "FailedOperation.CallChannelGatewayError"
+//  FAILEDOPERATION_DBCLIENTCONNECTFAILED = "FailedOperation.DbClientConnectFailed"
+//  FAILEDOPERATION_DBCLIENTQUERYFAILED = "FailedOperation.DbClientQueryFailed"
+//  FAILEDOPERATION_DBCLIENTUPDATEFAILED = "FailedOperation.DbClientUpdateFailed"
+//  FAILEDOPERATION_EXTERNALCONTRACTINDEXNOTFOUND = "FailedOperation.ExternalContractIndexNotFound"
+//  FAILEDOPERATION_EXTERNALCONTRACTNOTFOUND = "FailedOperation.ExternalContractNotFound"
+//  FAILEDOPERATION_EXTERNALMERCHANTCONTRACTINFOCONFIGNOFOUND = "FailedOperation.ExternalMerchantContractInfoConfigNoFound"
+//  FAILEDOPERATION_EXTERNALMERCHANTINDEXCONFIGNOFOUND = "FailedOperation.ExternalMerchantIndexConfigNoFound"
+//  FAILEDOPERATION_EXTERNALMERCHANTINFOCONFIGNOFOUND = "FailedOperation.ExternalMerchantInfoConfigNoFound"
+//  FAILEDOPERATION_HTTPDOREQUESTERROR = "FailedOperation.HttpDoRequestError"
+//  FAILEDOPERATION_MARSHALERROR = "FailedOperation.MarshalError"
+//  FAILEDOPERATION_MERCHANTPERMISSIONERROR = "FailedOperation.MerchantPermissionError"
+//  FAILEDOPERATION_NOTIFYURLPARSEERROR = "FailedOperation.NotifyUrlParseError"
+//  FAILEDOPERATION_PARAMETERERROR = "FailedOperation.ParameterError"
+//  FAILEDOPERATION_QUERYCONTRACTNULL = "FailedOperation.QueryContractNull"
+//  FAILEDOPERATION_QUERYMCHANNELERROR = "FailedOperation.QueryMchannelError"
+//  FAILEDOPERATION_QUERYMODEERROR = "FailedOperation.QueryModeError"
+//  FAILEDOPERATION_QUERYRESULTNULL = "FailedOperation.QueryResultNull"
+//  FAILEDOPERATION_SIGNERROR = "FailedOperation.SignError"
+//  FAILEDOPERATION_UNMARSHALERROR = "FailedOperation.UnmarshalError"
+//  FAILEDOPERATION_UPDATECONTRACTSTATUSFAILED = "FailedOperation.UpdateContractStatusFailed"
+//  FAILEDOPERATION_XMLFAIL = "FailedOperation.XmlFail"
+//  INTERNALERROR_BACKENDCONNECTIONERROR = "InternalError.BackendConnectionError"
+//  INTERNALERROR_BACKENDINTERNALERROR = "InternalError.BackendInternalError"
+//  INTERNALERROR_BACKENDNETWORKERROR = "InternalError.BackendNetworkError"
+//  INTERNALERROR_BACKENDROUTERERROR = "InternalError.BackendRouterError"
+//  INTERNALERROR_BACKENDTIMEOUT = "InternalError.BackendTimeOut"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMMARSHALFAILED = "InvalidParameter.ParamMarshalFailed"
+//  INVALIDPARAMETER_PARAMUNMARSHALFAILED = "InvalidParameter.ParamUnmarshalFailed"
+//  MISSINGPARAMETER_ = "MissingParameter."
+func (c *Client) QueryContractPayWayList(request *QueryContractPayWayListRequest) (response *QueryContractPayWayListResponse, err error) {
+    if request == nil {
+        request = NewQueryContractPayWayListRequest()
+    }
+    response = NewQueryContractPayWayListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryContractRelateShopRequest() (request *QueryContractRelateShopRequest) {
+    request = &QueryContractRelateShopRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryContractRelateShop")
+    
+    return
+}
+
+func NewQueryContractRelateShopResponse() (response *QueryContractRelateShopResponse) {
+    response = &QueryContractRelateShopResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryContractRelateShop
+// 云支付-查询合同可关联门店接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BACKCALLERROR = "FailedOperation.BackCallError"
+//  FAILEDOPERATION_CALLCHANNELGATEWAYERROR = "FailedOperation.CallChannelGatewayError"
+//  FAILEDOPERATION_DBCLIENTCONNECTFAILED = "FailedOperation.DbClientConnectFailed"
+//  FAILEDOPERATION_DBCLIENTQUERYFAILED = "FailedOperation.DbClientQueryFailed"
+//  FAILEDOPERATION_DBCLIENTUPDATEFAILED = "FailedOperation.DbClientUpdateFailed"
+//  FAILEDOPERATION_EXTERNALCONTRACTINDEXNOTFOUND = "FailedOperation.ExternalContractIndexNotFound"
+//  FAILEDOPERATION_EXTERNALCONTRACTNOTFOUND = "FailedOperation.ExternalContractNotFound"
+//  FAILEDOPERATION_EXTERNALMERCHANTCONTRACTINFOCONFIGNOFOUND = "FailedOperation.ExternalMerchantContractInfoConfigNoFound"
+//  FAILEDOPERATION_EXTERNALMERCHANTINDEXCONFIGNOFOUND = "FailedOperation.ExternalMerchantIndexConfigNoFound"
+//  FAILEDOPERATION_EXTERNALMERCHANTINFOCONFIGNOFOUND = "FailedOperation.ExternalMerchantInfoConfigNoFound"
+//  FAILEDOPERATION_HTTPDOREQUESTERROR = "FailedOperation.HttpDoRequestError"
+//  FAILEDOPERATION_MARSHALERROR = "FailedOperation.MarshalError"
+//  FAILEDOPERATION_MERCHANTPERMISSIONERROR = "FailedOperation.MerchantPermissionError"
+//  FAILEDOPERATION_NOTIFYURLPARSEERROR = "FailedOperation.NotifyUrlParseError"
+//  FAILEDOPERATION_PARAMETERERROR = "FailedOperation.ParameterError"
+//  FAILEDOPERATION_QUERYCONTRACTNULL = "FailedOperation.QueryContractNull"
+//  FAILEDOPERATION_QUERYMCHANNELERROR = "FailedOperation.QueryMchannelError"
+//  FAILEDOPERATION_QUERYMODEERROR = "FailedOperation.QueryModeError"
+//  FAILEDOPERATION_QUERYRESULTNULL = "FailedOperation.QueryResultNull"
+//  FAILEDOPERATION_SIGNERROR = "FailedOperation.SignError"
+//  FAILEDOPERATION_UNMARSHALERROR = "FailedOperation.UnmarshalError"
+//  FAILEDOPERATION_UPDATECONTRACTSTATUSFAILED = "FailedOperation.UpdateContractStatusFailed"
+//  FAILEDOPERATION_XMLFAIL = "FailedOperation.XmlFail"
+//  INTERNALERROR_BACKENDCONNECTIONERROR = "InternalError.BackendConnectionError"
+//  INTERNALERROR_BACKENDINTERNALERROR = "InternalError.BackendInternalError"
+//  INTERNALERROR_BACKENDNETWORKERROR = "InternalError.BackendNetworkError"
+//  INTERNALERROR_BACKENDROUTERERROR = "InternalError.BackendRouterError"
+//  INTERNALERROR_BACKENDTIMEOUT = "InternalError.BackendTimeOut"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMMARSHALFAILED = "InvalidParameter.ParamMarshalFailed"
+//  INVALIDPARAMETER_PARAMUNMARSHALFAILED = "InvalidParameter.ParamUnmarshalFailed"
+//  MISSINGPARAMETER_ = "MissingParameter."
+func (c *Client) QueryContractRelateShop(request *QueryContractRelateShopRequest) (response *QueryContractRelateShopResponse, err error) {
+    if request == nil {
+        request = NewQueryContractRelateShopRequest()
+    }
+    response = NewQueryContractRelateShopResponse()
     err = c.Send(request, response)
     return
 }
@@ -2603,6 +3192,38 @@ func (c *Client) QueryMerchantBalance(request *QueryMerchantBalanceRequest) (res
     return
 }
 
+func NewQueryMerchantClassificationRequest() (request *QueryMerchantClassificationRequest) {
+    request = &QueryMerchantClassificationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryMerchantClassification")
+    
+    return
+}
+
+func NewQueryMerchantClassificationResponse() (response *QueryMerchantClassificationResponse) {
+    response = &QueryMerchantClassificationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryMerchantClassification
+// 云支付-查询商户分类接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) QueryMerchantClassification(request *QueryMerchantClassificationRequest) (response *QueryMerchantClassificationResponse, err error) {
+    if request == nil {
+        request = NewQueryMerchantClassificationRequest()
+    }
+    response = NewQueryMerchantClassificationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryMerchantInfoForManagementRequest() (request *QueryMerchantInfoForManagementRequest) {
     request = &QueryMerchantInfoForManagementRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2904,6 +3525,39 @@ func (c *Client) QueryRefund(request *QueryRefundRequest) (response *QueryRefund
         request = NewQueryRefundRequest()
     }
     response = NewQueryRefundResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryShopOpenIdRequest() (request *QueryShopOpenIdRequest) {
+    request = &QueryShopOpenIdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryShopOpenId")
+    
+    return
+}
+
+func NewQueryShopOpenIdResponse() (response *QueryShopOpenIdResponse) {
+    response = &QueryShopOpenIdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryShopOpenId
+// 云支付-获取门店OpenId接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
+//  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) QueryShopOpenId(request *QueryShopOpenIdRequest) (response *QueryShopOpenIdResponse, err error) {
+    if request == nil {
+        request = NewQueryShopOpenIdRequest()
+    }
+    response = NewQueryShopOpenIdResponse()
     err = c.Send(request, response)
     return
 }
@@ -4061,6 +4715,39 @@ func (c *Client) UploadFile(request *UploadFileRequest) (response *UploadFileRes
     return
 }
 
+func NewUploadOrgFileRequest() (request *UploadOrgFileRequest) {
+    request = &UploadOrgFileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "UploadOrgFile")
+    
+    return
+}
+
+func NewUploadOrgFileResponse() (response *UploadOrgFileResponse) {
+    response = &UploadOrgFileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UploadOrgFile
+// 云支付-上传机构文件接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
+//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
+func (c *Client) UploadOrgFile(request *UploadOrgFileRequest) (response *UploadOrgFileResponse, err error) {
+    if request == nil {
+        request = NewUploadOrgFileRequest()
+    }
+    response = NewUploadOrgFileResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUploadTaxListRequest() (request *UploadTaxListRequest) {
     request = &UploadTaxListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4126,6 +4813,111 @@ func (c *Client) UploadTaxPayment(request *UploadTaxPaymentRequest) (response *U
         request = NewUploadTaxPaymentRequest()
     }
     response = NewUploadTaxPaymentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewViewContractRequest() (request *ViewContractRequest) {
+    request = &ViewContractRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "ViewContract")
+    
+    return
+}
+
+func NewViewContractResponse() (response *ViewContractResponse) {
+    response = &ViewContractResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ViewContract
+// 云支付-查询合同明细接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UPLOADTAXLIST = "FailedOperation.UploadTaxList"
+//  FAILEDOPERATION_UPLOADTAXPAYMENT = "FailedOperation.UploadTaxPayment"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
+//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+func (c *Client) ViewContract(request *ViewContractRequest) (response *ViewContractResponse, err error) {
+    if request == nil {
+        request = NewViewContractRequest()
+    }
+    response = NewViewContractResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewViewMerchantRequest() (request *ViewMerchantRequest) {
+    request = &ViewMerchantRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "ViewMerchant")
+    
+    return
+}
+
+func NewViewMerchantResponse() (response *ViewMerchantResponse) {
+    response = &ViewMerchantResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ViewMerchant
+// 云支付-查询商户明细接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UPLOADTAXLIST = "FailedOperation.UploadTaxList"
+//  FAILEDOPERATION_UPLOADTAXPAYMENT = "FailedOperation.UploadTaxPayment"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
+//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+func (c *Client) ViewMerchant(request *ViewMerchantRequest) (response *ViewMerchantResponse, err error) {
+    if request == nil {
+        request = NewViewMerchantRequest()
+    }
+    response = NewViewMerchantResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewViewShopRequest() (request *ViewShopRequest) {
+    request = &ViewShopRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "ViewShop")
+    
+    return
+}
+
+func NewViewShopResponse() (response *ViewShopResponse) {
+    response = &ViewShopResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ViewShop
+// 云支付-查询门店明细接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UPLOADTAXLIST = "FailedOperation.UploadTaxList"
+//  FAILEDOPERATION_UPLOADTAXPAYMENT = "FailedOperation.UploadTaxPayment"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
+//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+func (c *Client) ViewShop(request *ViewShopRequest) (response *ViewShopResponse, err error) {
+    if request == nil {
+        request = NewViewShopRequest()
+    }
+    response = NewViewShopResponse()
     err = c.Send(request, response)
     return
 }
