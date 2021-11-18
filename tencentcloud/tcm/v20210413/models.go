@@ -356,6 +356,17 @@ type IngressGatewayStatus struct {
 	LoadBalancer *LoadBalancerStatus `json:"LoadBalancer,omitempty" name:"LoadBalancer"`
 }
 
+type InjectConfig struct {
+
+	// 不需要进行代理的 ip 地址范围
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExcludeIPRanges []*string `json:"ExcludeIPRanges,omitempty" name:"ExcludeIPRanges"`
+
+	// 是否等待sidecar启动
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HoldApplicationUntilProxyStarts *bool `json:"HoldApplicationUntilProxyStarts,omitempty" name:"HoldApplicationUntilProxyStarts"`
+}
+
 type IstioConfig struct {
 
 	// 外部流量策略
@@ -363,6 +374,10 @@ type IstioConfig struct {
 
 	// 调用链配置
 	Tracing *TracingConfig `json:"Tracing,omitempty" name:"Tracing"`
+
+	// 禁用策略检查功能
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisablePolicyChecks *bool `json:"DisablePolicyChecks,omitempty" name:"DisablePolicyChecks"`
 }
 
 type IstiodConfig struct {
@@ -461,6 +476,10 @@ type MeshConfig struct {
 
 	// Prometheus配置
 	Prometheus *PrometheusConfig `json:"Prometheus,omitempty" name:"Prometheus"`
+
+	// 自动注入配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Inject *InjectConfig `json:"Inject,omitempty" name:"Inject"`
 }
 
 type MeshStatus struct {

@@ -10014,6 +10014,18 @@ type DescribeScanStateResponse struct {
 		// 0一键检测 1定时检测
 		Type *uint64 `json:"Type,omitempty" name:"Type"`
 
+		// 开始扫描时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ScanBeginTime *string `json:"ScanBeginTime,omitempty" name:"ScanBeginTime"`
+
+		// 扫描漏洞数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RiskEventCount *uint64 `json:"RiskEventCount,omitempty" name:"RiskEventCount"`
+
+		// 扫描结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ScanEndTime *string `json:"ScanEndTime,omitempty" name:"ScanEndTime"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -10512,7 +10524,7 @@ type DescribeSecurityEventsCntResponse struct {
 		// 反弹Shell相关风险事件
 		ReverseShell *SecurityEventInfo `json:"ReverseShell,omitempty" name:"ReverseShell"`
 
-		// 系统组件相关风险事件
+		// 应用漏洞风险事件
 		SysVul *SecurityEventInfo `json:"SysVul,omitempty" name:"SysVul"`
 
 		// Web应用漏洞相关风险事件
@@ -10532,6 +10544,14 @@ type DescribeSecurityEventsCntResponse struct {
 
 		// 所有事件总数
 		EventsCount *uint64 `json:"EventsCount,omitempty" name:"EventsCount"`
+
+		// window 系统漏洞事件总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		WindowVul *SecurityEventInfo `json:"WindowVul,omitempty" name:"WindowVul"`
+
+		// linux系统漏洞事件总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		LinuxVul *SecurityEventInfo `json:"LinuxVul,omitempty" name:"LinuxVul"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -11155,7 +11175,7 @@ type DescribeVulEffectHostListRequest struct {
 	// 过滤条件。
 	// <li>AliasName - String - 主机名筛选</li>
 	// <li>TagIds - String - 主机标签id串，多个用英文逗号分隔</li>
-	// <li>Status - String - 状态,0: 待处理 1:忽略  3:已修复  5:检测中  6:修复这中.</li>
+	// <li>Status - String - 状态,0: 待处理 1:忽略  3:已修复  5:检测中  6:修复中  8=:修复失败.</li>
 	// <li>Uuid - String数组 - Uuid串数组</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
@@ -11362,7 +11382,7 @@ type DescribeVulInfoCvssResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		VulLevel *uint64 `json:"VulLevel,omitempty" name:"VulLevel"`
 
-		// 漏洞分类 1: web应用漏洞 2:系统组件漏洞
+		// 漏洞分类 1: web应用漏洞 2:应用漏洞3:安全基线 4: Linux系统漏洞 5: Windows系统漏洞
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		VulType *uint64 `json:"VulType,omitempty" name:"VulType"`
 
@@ -11402,6 +11422,10 @@ type DescribeVulInfoCvssResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		CvssScoreFloat *float64 `json:"CvssScoreFloat,omitempty" name:"CvssScoreFloat"`
 
+		// 漏洞标签 多个逗号分割
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Labels *string `json:"Labels,omitempty" name:"Labels"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -11420,6 +11444,9 @@ func (r *DescribeVulInfoCvssResponse) FromJsonString(s string) error {
 
 type DescribeVulLevelCountRequest struct {
 	*tchttp.BaseRequest
+
+	// 1: web应用漏洞 2=系统组件漏洞3:安全基线 4: Linux系统漏洞 5: windows补丁 6:应急漏洞
+	VulCategory *uint64 `json:"VulCategory,omitempty" name:"VulCategory"`
 }
 
 func (r *DescribeVulLevelCountRequest) ToJsonString() string {
@@ -11434,6 +11461,7 @@ func (r *DescribeVulLevelCountRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "VulCategory")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulLevelCountRequest has unknown keys!", "")
 	}
@@ -11474,15 +11502,18 @@ type DescribeVulListRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 过滤条件。
-	// <li>IfEmergency - String - 是否必填：否 - 是否为应急漏洞，查询应急漏洞传:yes</li>
-	// <li>Status - String - 是否必填：是 - 漏洞状态筛选，0: 待处理 1:忽略  3:已修复  5:检测中，6：修复中 控制台仅处理0,1,3,5,6五种状态</li>
-	// <li>Level - String - 是否必填：否 - 漏洞等级筛选 1:低 2:中 3:高 4:提示</li>
-	// <li>VulName- String - 是否必填：否 - 漏洞名称搜索</li>
-	// <li>LastDay- int - 是否必填：否 - 查询近几日的数据，需要 -1 之后传入，例如近3日数据，传2</li>
-	// <li>OrderBy - String 是否必填：否 默认按照处理状态,威胁等级,检测时间排序 -排序字段，支持：level,lastTime的动态排序  hostCount 影响主机台数排序</li>
-	// <li>IsShowFollowVul -  String 是否必填：否   是否仅展示重点关注漏洞  0=展示全部 1=仅展示重点关注漏洞</li>
-	// <li>VulCategory-  String 是否必填：否   1: web应用漏洞 2:系统组件漏洞3:安全基线 4: Linux系统漏洞 5: windows补丁</li>
+	// <li>Status - String - 是否必填：否 - 处理状态  0 -- 待处理 1 -- 已加白 2 -- 已删除 3 - 已忽略</li>
+	// <li>ModifyTime - String - 是否必填：否 - 最近发生时间</li>
+	// <li>Uuid- String - 是否必填：否 - 主机uuid查询</li>
+	// <li>VulName- string -</li>
+	// <li>HostIp- string - 是否必填：否 - 主机ip</li>
 	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
+
+	// 可选排序字段 Level，LastTime，HostCount
+	By *string `json:"By,omitempty" name:"By"`
+
+	// 排序顺序：desc  默认asc
+	Order *string `json:"Order,omitempty" name:"Order"`
 }
 
 func (r *DescribeVulListRequest) ToJsonString() string {
@@ -11500,6 +11531,8 @@ func (r *DescribeVulListRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "Filters")
+	delete(f, "By")
+	delete(f, "Order")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulListRequest has unknown keys!", "")
 	}
@@ -11544,7 +11577,7 @@ type DescribeVulTopRequest struct {
 	// 漏洞风险服务器top，1-100
 	Top *uint64 `json:"Top,omitempty" name:"Top"`
 
-	// 1: web应用漏洞 2=系统组件漏洞3:安全基线 4: Linux系统漏洞 5: windows补丁，传0的时候表示查应急漏洞
+	// 1: web应用漏洞 2=系统组件漏洞3:安全基线 4: Linux系统漏洞 5: windows补丁 6:应急漏洞
 	VulCategory *uint64 `json:"VulCategory,omitempty" name:"VulCategory"`
 }
 
@@ -12105,6 +12138,22 @@ type EmergencyVul struct {
 
 	// 扫描进度
 	Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
+
+	// cve编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CveId *string `json:"CveId,omitempty" name:"CveId"`
+
+	// CVSS评分
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CvssScore *float64 `json:"CvssScore,omitempty" name:"CvssScore"`
+
+	// 漏洞标签 多个逗号分割
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Labels *string `json:"Labels,omitempty" name:"Labels"`
+
+	// 影响机器数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostCount *uint64 `json:"HostCount,omitempty" name:"HostCount"`
 }
 
 type ExpertServiceOrderInfo struct {
@@ -15532,14 +15581,14 @@ func (r *ScanVulAgainResponse) FromJsonString(s string) error {
 type ScanVulRequest struct {
 	*tchttp.BaseRequest
 
-	// 漏洞类型：1: web应用漏洞 2:系统组件漏洞 (多选英文;分隔)
-	VulCategories *string `json:"VulCategories,omitempty" name:"VulCategories"`
-
 	// 危害等级：1-低危；2-中危；3-高危；4-严重 (多选英文;分隔)
 	VulLevels *string `json:"VulLevels,omitempty" name:"VulLevels"`
 
 	// 服务器分类：1:专业版服务器；2:自选服务器
 	HostType *uint64 `json:"HostType,omitempty" name:"HostType"`
+
+	// 漏洞类型：1: web应用漏洞（webCMS） 2:系统组件（应用漏洞）漏洞  3:安全基线 4:Linux软件漏洞 5:Windows系统漏洞(多选英文;分隔)
+	VulCategories *string `json:"VulCategories,omitempty" name:"VulCategories"`
 
 	// 自选服务器时生效，主机quuid的string数组
 	QuuidList []*string `json:"QuuidList,omitempty" name:"QuuidList"`
@@ -15566,9 +15615,9 @@ func (r *ScanVulRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "VulCategories")
 	delete(f, "VulLevels")
 	delete(f, "HostType")
+	delete(f, "VulCategories")
 	delete(f, "QuuidList")
 	delete(f, "VulEmergency")
 	delete(f, "TimeoutPeriod")
@@ -16433,7 +16482,7 @@ type VulEffectHostList struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventId *uint64 `json:"EventId,omitempty" name:"EventId"`
 
-	// 状态：0: 待处理 1:忽略  3:已修复  5:检测中 6:修复中
+	// 状态：0: 待处理 1:忽略  3:已修复  5:检测中 6:修复中 7: 回滚中 8:修复失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
@@ -16468,6 +16517,18 @@ type VulEffectHostList struct {
 	// 说明
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 版本信息 0=普通版本 1=专业版 2=旗舰版
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostVersion *uint64 `json:"HostVersion,omitempty" name:"HostVersion"`
+
+	// 是否能自动修复 0 :漏洞不可自动修复，  1：可自动修复， 2：客户端已离线， 3：主机不是旗舰版只能手动修复， 4：机型不允许 ，5：修复中 ，6：已修复， 7：检测中  9:修复失败，10:已忽略 11:漏洞只支持linux不支持Windows 12：漏洞只支持Windows不支持linux，13:修复失败但此时主机已离线，14:修复失败但此时主机不是旗舰版， 15:已手动修复
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsSupportAutoFix *uint64 `json:"IsSupportAutoFix,omitempty" name:"IsSupportAutoFix"`
+
+	// 失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FixStatusMsg *string `json:"FixStatusMsg,omitempty" name:"FixStatusMsg"`
 }
 
 type VulHostTopInfo struct {
@@ -16497,7 +16558,7 @@ type VulInfoList struct {
 	// 漏洞名
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 0: 待处理 1:忽略  3:已修复  5:检测中 6:修复中 控制台仅处理0,1,3,5,6四种状态
+	// 0: 待处理 1:忽略  3:已修复  5:检测中 6:修复中  8:修复失败
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 漏洞id
@@ -16538,6 +16599,26 @@ type VulInfoList struct {
 	// 聚合后事件状态串
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusStr *string `json:"StatusStr,omitempty" name:"StatusStr"`
+
+	// cve编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CveId *string `json:"CveId,omitempty" name:"CveId"`
+
+	// CVSS评分
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CvssScore *float64 `json:"CvssScore,omitempty" name:"CvssScore"`
+
+	// 漏洞标签 多个逗号分割
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Labels *string `json:"Labels,omitempty" name:"Labels"`
+
+	// 是否能自动修复且包含能自动修复的主机， 0=否  1=是
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FixSwitch *uint64 `json:"FixSwitch,omitempty" name:"FixSwitch"`
+
+	// 最后扫描任务的id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
 }
 
 type VulLevelCountInfo struct {
@@ -16579,7 +16660,7 @@ type VulTopInfo struct {
 
 type WarningInfoObj struct {
 
-	// 事件告警类型；1：离线，2：木马，3：异常登录，4：爆破，5：漏洞（已拆分为9-12四种类型）6：高危命令，7：反弹sell，8：本地提权，9：系统组件漏洞，10：wen应用漏洞，11：应急漏洞，12：安全基线 ,13: 防篡改
+	// 事件告警类型；1：离线，2：木马，3：异常登录，4：爆破，5：漏洞（已拆分为9-12四种类型）6：高危命令，7：反弹sell，8：本地提权，9：应用漏洞，10：web-cms漏洞，11：应急漏洞，12：安全基线 ,13: 防篡改，14：恶意请求，15: 网络攻击，16：Windows系统漏洞，17：Linux软件漏洞
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
 	// 1: 关闭告警 0: 开启告警

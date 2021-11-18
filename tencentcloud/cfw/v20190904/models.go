@@ -209,6 +209,63 @@ func (r *AddAcRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AddEnterpriseSecurityGroupRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 创建规则数据
+	Data []*SecurityGroupRule `json:"Data,omitempty" name:"Data"`
+
+	// 添加类型，0：添加到最后，1：添加到最前；2：中间插入；默认0添加到最后
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
+}
+
+func (r *AddEnterpriseSecurityGroupRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddEnterpriseSecurityGroupRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Data")
+	delete(f, "Type")
+	delete(f, "ClientToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddEnterpriseSecurityGroupRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddEnterpriseSecurityGroupRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 状态值，0：添加成功，非0：添加失败
+		Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AddEnterpriseSecurityGroupRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddEnterpriseSecurityGroupRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type AssetZone struct {
 
 	// 地域
@@ -1521,6 +1578,123 @@ func (r *DescribeCfwEipsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCfwEipsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEnterpriseSecurityGroupRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 分页查询时，显示的当前页的页码。
+	// 
+	// 默认值为1。
+	PageNo *string `json:"PageNo,omitempty" name:"PageNo"`
+
+	// 分页查询时，显示的每页数据的最大条数。
+	// 
+	// 可设置值最大为50。
+	PageSize *string `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 访问源示例：
+	// net：IP/CIDR(192.168.0.2)
+	// template：参数模板(ipm-dyodhpby)
+	// instance：资产实例(ins-123456)
+	// resourcegroup：资产分组(/全部分组/分组1/子分组1)
+	// tag：资源标签({"Key":"标签key值","Value":"标签Value值"})
+	// region：地域(ap-gaungzhou)
+	// 支持通配
+	SourceContent *string `json:"SourceContent,omitempty" name:"SourceContent"`
+
+	// 访问目的示例：
+	// net：IP/CIDR(192.168.0.2)
+	// template：参数模板(ipm-dyodhpby)
+	// instance：资产实例(ins-123456)
+	// resourcegroup：资产分组(/全部分组/分组1/子分组1)
+	// tag：资源标签({"Key":"标签key值","Value":"标签Value值"})
+	// region：地域(ap-gaungzhou)
+	// 支持通配
+	DestContent *string `json:"DestContent,omitempty" name:"DestContent"`
+
+	// 规则描述，支持通配
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 访问控制策略中设置的流量通过云防火墙的方式。取值：
+	// accept：放行
+	// drop：拒绝
+	RuleAction *string `json:"RuleAction,omitempty" name:"RuleAction"`
+
+	// 是否启用规则，默认为启用，取值：
+	// true为启用，false为不启用
+	Enable *string `json:"Enable,omitempty" name:"Enable"`
+
+	// 访问控制策略的端口。取值：
+	// -1/-1：全部端口
+	// 80：80端口
+	Port *string `json:"Port,omitempty" name:"Port"`
+
+	// 协议；TCP/UDP/ICMP/ANY
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 端口协议类型参数模板id；协议端口模板id；与Protocol,Port互斥
+	ServiceTemplateId *string `json:"ServiceTemplateId,omitempty" name:"ServiceTemplateId"`
+}
+
+func (r *DescribeEnterpriseSecurityGroupRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEnterpriseSecurityGroupRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNo")
+	delete(f, "PageSize")
+	delete(f, "SourceContent")
+	delete(f, "DestContent")
+	delete(f, "Description")
+	delete(f, "RuleAction")
+	delete(f, "Enable")
+	delete(f, "Port")
+	delete(f, "Protocol")
+	delete(f, "ServiceTemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEnterpriseSecurityGroupRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEnterpriseSecurityGroupRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 分页查询时，显示的当前页的页码。
+		PageNo *string `json:"PageNo,omitempty" name:"PageNo"`
+
+		// 分页查询时，显示的每页数据的最大条数。
+		PageSize *string `json:"PageSize,omitempty" name:"PageSize"`
+
+		// 访问控制策略列表
+		Rules []*SecurityGroupRule `json:"Rules,omitempty" name:"Rules"`
+
+		// 访问控制策略的总数量。
+		TotalCount *string `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeEnterpriseSecurityGroupRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEnterpriseSecurityGroupRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4269,6 +4443,63 @@ func (r *RemoveAcRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type RemoveEnterpriseSecurityGroupRuleRequest struct {
+	*tchttp.BaseRequest
+
+	// 规则的uuid，可通过查询规则列表获取
+	RuleUuid *int64 `json:"RuleUuid,omitempty" name:"RuleUuid"`
+
+	// 删除类型，0是单条删除，RuleUuid填写删除规则id，1为全部删除，RuleUuid填0即可
+	RemoveType *int64 `json:"RemoveType,omitempty" name:"RemoveType"`
+}
+
+func (r *RemoveEnterpriseSecurityGroupRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveEnterpriseSecurityGroupRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleUuid")
+	delete(f, "RemoveType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveEnterpriseSecurityGroupRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RemoveEnterpriseSecurityGroupRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 删除成功后返回被删除策略的uuid
+		RuleUuid *int64 `json:"RuleUuid,omitempty" name:"RuleUuid"`
+
+		// 0代表成功，-1代表失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RemoveEnterpriseSecurityGroupRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveEnterpriseSecurityGroupRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type RuleInfoData struct {
 
 	// 执行顺序
@@ -4617,6 +4848,58 @@ type SecurityGroupOrderIndexData struct {
 
 	// 企业安全组规则更新目标执行顺序
 	NewOrderIndex *uint64 `json:"NewOrderIndex,omitempty" name:"NewOrderIndex"`
+}
+
+type SecurityGroupRule struct {
+
+	// 访问源示例：
+	// net：IP/CIDR(192.168.0.2)
+	// template：参数模板(ipm-dyodhpby)
+	// instance：资产实例(ins-123456)
+	// resourcegroup：资产分组(/全部分组/分组1/子分组1)
+	// tag：资源标签({"Key":"标签key值","Value":"标签Value值"})
+	// region：地域(ap-gaungzhou)
+	SourceContent *string `json:"SourceContent,omitempty" name:"SourceContent"`
+
+	// 访问源类型，类型可以为以下6种：net|template|instance|resourcegroup|tag|region
+	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
+
+	// 访问目的示例：
+	// net：IP/CIDR(192.168.0.2)
+	// template：参数模板(ipm-dyodhpby)
+	// instance：资产实例(ins-123456)
+	// resourcegroup：资产分组(/全部分组/分组1/子分组1)
+	// tag：资源标签({"Key":"标签key值","Value":"标签Value值"})
+	// region：地域(ap-gaungzhou)
+	DestContent *string `json:"DestContent,omitempty" name:"DestContent"`
+
+	// 访问目的类型，类型可以为以下6种：net|template|instance|resourcegroup|tag|region
+	DestType *string `json:"DestType,omitempty" name:"DestType"`
+
+	// 访问控制策略中设置的流量通过云防火墙的方式。取值：
+	// accept：放行
+	// drop：拒绝
+	RuleAction *string `json:"RuleAction,omitempty" name:"RuleAction"`
+
+	// 描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 规则顺序，-1表示最低，1表示最高
+	OrderIndex *string `json:"OrderIndex,omitempty" name:"OrderIndex"`
+
+	// 协议；TCP/UDP/ICMP/ANY
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 访问控制策略的端口。取值：
+	// -1/-1：全部端口
+	// 80：80端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *string `json:"Port,omitempty" name:"Port"`
+
+	// 端口协议类型参数模板id；协议端口模板id；与Protocol,Port互斥
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceTemplateId *string `json:"ServiceTemplateId,omitempty" name:"ServiceTemplateId"`
 }
 
 type SequenceData struct {

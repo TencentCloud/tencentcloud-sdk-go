@@ -788,7 +788,7 @@ type DescribeCertificateDetailResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		StatusName *string `json:"StatusName,omitempty" name:"StatusName"`
 
-		// 证书包含的多个域名（包含主域名）
+		// 证书包含的多个域名（不包含主域名，主域名使用Domain字段）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		SubjectAltName []*string `json:"SubjectAltName,omitempty" name:"SubjectAltName"`
 

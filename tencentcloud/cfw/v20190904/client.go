@@ -90,6 +90,42 @@ func (c *Client) AddAcRule(request *AddAcRuleRequest) (response *AddAcRuleRespon
     return
 }
 
+func NewAddEnterpriseSecurityGroupRulesRequest() (request *AddEnterpriseSecurityGroupRulesRequest) {
+    request = &AddEnterpriseSecurityGroupRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cfw", APIVersion, "AddEnterpriseSecurityGroupRules")
+    
+    return
+}
+
+func NewAddEnterpriseSecurityGroupRulesResponse() (response *AddEnterpriseSecurityGroupRulesResponse) {
+    response = &AddEnterpriseSecurityGroupRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddEnterpriseSecurityGroupRules
+// 创建新企业安全组规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AddEnterpriseSecurityGroupRules(request *AddEnterpriseSecurityGroupRulesRequest) (response *AddEnterpriseSecurityGroupRulesResponse, err error) {
+    if request == nil {
+        request = NewAddEnterpriseSecurityGroupRulesRequest()
+    }
+    response = NewAddEnterpriseSecurityGroupRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAcRulesRequest() (request *CreateAcRulesRequest) {
     request = &CreateAcRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -809,6 +845,53 @@ func (c *Client) DescribeCfwEips(request *DescribeCfwEipsRequest) (response *Des
         request = NewDescribeCfwEipsRequest()
     }
     response = NewDescribeCfwEipsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEnterpriseSecurityGroupRuleRequest() (request *DescribeEnterpriseSecurityGroupRuleRequest) {
+    request = &DescribeEnterpriseSecurityGroupRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeEnterpriseSecurityGroupRule")
+    
+    return
+}
+
+func NewDescribeEnterpriseSecurityGroupRuleResponse() (response *DescribeEnterpriseSecurityGroupRuleResponse) {
+    response = &DescribeEnterpriseSecurityGroupRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeEnterpriseSecurityGroupRule
+// 查询新企业安全组规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEnterpriseSecurityGroupRule(request *DescribeEnterpriseSecurityGroupRuleRequest) (response *DescribeEnterpriseSecurityGroupRuleResponse, err error) {
+    if request == nil {
+        request = NewDescribeEnterpriseSecurityGroupRuleRequest()
+    }
+    response = NewDescribeEnterpriseSecurityGroupRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -2436,6 +2519,53 @@ func (c *Client) RemoveAcRule(request *RemoveAcRuleRequest) (response *RemoveAcR
         request = NewRemoveAcRuleRequest()
     }
     response = NewRemoveAcRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRemoveEnterpriseSecurityGroupRuleRequest() (request *RemoveEnterpriseSecurityGroupRuleRequest) {
+    request = &RemoveEnterpriseSecurityGroupRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cfw", APIVersion, "RemoveEnterpriseSecurityGroupRule")
+    
+    return
+}
+
+func NewRemoveEnterpriseSecurityGroupRuleResponse() (response *RemoveEnterpriseSecurityGroupRuleResponse) {
+    response = &RemoveEnterpriseSecurityGroupRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RemoveEnterpriseSecurityGroupRule
+// 删除新企业安全组规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RemoveEnterpriseSecurityGroupRule(request *RemoveEnterpriseSecurityGroupRuleRequest) (response *RemoveEnterpriseSecurityGroupRuleResponse, err error) {
+    if request == nil {
+        request = NewRemoveEnterpriseSecurityGroupRuleRequest()
+    }
+    response = NewRemoveEnterpriseSecurityGroupRuleResponse()
     err = c.Send(request, response)
     return
 }

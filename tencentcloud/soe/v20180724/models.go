@@ -27,7 +27,7 @@ type InitOralProcessRequest struct {
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 
 	// 被评估语音对应的文本，仅支持中文和英文。
-	// 句子模式下不超过个 30 单词或者中文文字，段落模式不超过 120 单词或者中文文字，中文评估使用 utf-8 编码，自由说模式该值无效。
+	// 句子模式下不超过个 30 单词或者中文文字，段落模式不超过 120 单词或者中文文字，中文评估使用 utf-8 编码，自由说模式RefText可以不填。
 	// 关于RefText的文本键入要求，请参考[评测模式介绍](https://cloud.tencent.com/document/product/884/56131)。
 	// 如需要在评测模式下使用自定义注音（支持中英文），可以通过设置「TextMode」参数实现，设置方式请参考[音素标注](https://cloud.tencent.com/document/product/884/33698)。
 	RefText *string `json:"RefText,omitempty" name:"RefText"`
@@ -79,6 +79,7 @@ type InitOralProcessRequest struct {
 	// 评估语言
 	// 0：英文
 	// 1：中文
+	// ServerType不填默认为0
 	ServerType *int64 `json:"ServerType,omitempty" name:"ServerType"`
 
 	// 异步模式标识
@@ -149,7 +150,7 @@ func (r *InitOralProcessResponse) FromJsonString(s string) error {
 
 type Keyword struct {
 
-	// 被评估语音对应的文本，句子模式下不超过个 20 单词或者中文文字，段落模式不超过 120 单词或者中文文字，中文评估使用 utf-8 编码，自由说模式该值无效。如需要在单词模式和句子模式下使用自定义音素，可以通过设置 TextMode 使用[音素标注](https://cloud.tencent.com/document/product/884/33698)。
+	// 被评估语音对应的文本，句子模式下不超过个 20 单词或者中文文字，段落模式不超过 120 单词或者中文文字，中文评估使用 utf-8 编码，自由说模式RefText可以不填。如需要在单词模式和句子模式下使用自定义音素，可以通过设置 TextMode 使用[音素标注](https://cloud.tencent.com/document/product/884/33698)。
 	RefText *string `json:"RefText,omitempty" name:"RefText"`
 
 	// 评估模式，0：词模式（中文评测模式下为文字模式），1：句子模式，2：段落模式，3：自由说模式，当为词模式评估时，能够提供每个音节的评估信息，当为句子模式时，能够提供完整度和流利度信息。
@@ -159,6 +160,7 @@ type Keyword struct {
 	ScoreCoeff *float64 `json:"ScoreCoeff,omitempty" name:"ScoreCoeff"`
 
 	// 评估语言，0：英文，1：中文。
+	// ServerType不填默认传0
 	ServerType *uint64 `json:"ServerType,omitempty" name:"ServerType"`
 
 	// 输入文本模式，0: 普通文本，1：[音素结构](https://cloud.tencent.com/document/product/884/33698)文本。
@@ -470,7 +472,7 @@ type TransmitOralProcessWithInitRequest struct {
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 
 	// 被评估语音对应的文本，仅支持中文和英文。
-	// 句子模式下不超过个 30 单词或者中文文字，段落模式不超过 120 单词或者中文文字，中文评估使用 utf-8 编码，自由说模式该值无效。
+	// 句子模式下不超过个 30 单词或者中文文字，段落模式不超过 120 单词或者中文文字，中文评估使用 utf-8 编码，自由说模式RefText可以不填。
 	// 关于RefText的文本键入要求，请参考[评测模式介绍](https://cloud.tencent.com/document/product/884/56131)。
 	// 如需要在评测模式下使用自定义注音（支持中英文），可以通过设置「TextMode」参数实现，设置方式请参考[音素标注](https://cloud.tencent.com/document/product/884/33698)。
 	RefText *string `json:"RefText,omitempty" name:"RefText"`
@@ -519,6 +521,7 @@ type TransmitOralProcessWithInitRequest struct {
 	// 评估语言
 	// 0：英文
 	// 1：中文
+	// ServerType不填默认为0
 	ServerType *int64 `json:"ServerType,omitempty" name:"ServerType"`
 
 	// 异步模式标识

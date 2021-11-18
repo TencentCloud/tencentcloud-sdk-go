@@ -104,6 +104,9 @@ const (
 	// 无效的Content。
 	INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
 
+	// 低频不支持配置kv和tag索引。
+	INVALIDPARAMETER_INVALIDINDEXRULEFORSEARCHLOW = "InvalidParameter.InValidIndexRuleForSearchLow"
+
 	// 指定日志主题已经存在索引规则。
 	INVALIDPARAMETER_INDEXCONFLICT = "InvalidParameter.IndexConflict"
 
@@ -185,11 +188,17 @@ const (
 	// 账户不存在。
 	OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
 
+	// 低频不支持告警。
+	OPERATIONDENIED_ALARMNOTSUPPORTFORSEARCHLOW = "OperationDenied.AlarmNotSupportForSearchLow"
+
 	// 字段没有开启分析功能。
 	OPERATIONDENIED_ANALYSISSWITCHCLOSE = "OperationDenied.AnalysisSwitchClose"
 
 	// 通知模版已绑定告警，无法删除。
 	OPERATIONDENIED_NOTICEHASALARM = "OperationDenied.NoticeHasAlarm"
+
+	// topic绑定了数据加工。
+	OPERATIONDENIED_TOPICHASDATAFORMTASK = "OperationDenied.TopicHasDataFormTask"
 
 	// topic绑定了函数投递。
 	OPERATIONDENIED_TOPICHASDELIVERFUNCTION = "OperationDenied.TopicHasDeliverFunction"

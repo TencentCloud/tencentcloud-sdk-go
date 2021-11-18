@@ -272,6 +272,9 @@ const (
 	// 输入文本太长。
 	INVALIDPARAMETERVALUE_REFTXTTOOLANG = "InvalidParameterValue.RefTxtTooLang"
 
+	// 请求内容包含违禁词汇，请检查后重试。
+	INVALIDPARAMETERVALUE_SENSITIVEWORDS = "InvalidParameterValue.SensitiveWords"
+
 	// SessionId已存在，建议使用uuid作为SessionId重新初始化。
 	INVALIDPARAMETERVALUE_SESSIONIDINUSE = "InvalidParameterValue.SessionIdInUse"
 

@@ -4857,6 +4857,8 @@ func NewDescribeSecurityEventsCntResponse() (response *DescribeSecurityEventsCnt
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeSecurityEventsCnt(request *DescribeSecurityEventsCntRequest) (response *DescribeSecurityEventsCntResponse, err error) {
     if request == nil {
         request = NewDescribeSecurityEventsCntRequest()
@@ -7174,6 +7176,7 @@ func NewScanVulAgainResponse() (response *ScanVulAgainResponse) {
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ScanVulAgain(request *ScanVulAgainRequest) (response *ScanVulAgainResponse, err error) {
     if request == nil {
