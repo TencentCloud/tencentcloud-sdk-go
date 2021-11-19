@@ -1846,7 +1846,9 @@ type StartWhiteboardPushRequest struct {
 	// 客户的SdkAppId
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 需要推流白板的房间号，取值范围: (1, 4294967295)
+	// 需要推流的白板房间号，取值范围: (1, 4294967295)。
+	// 
+	// 在没有指定TRTCRoomId和TRTCRoomIdStr的情况下，默认会以RoomId作为白板流进行推流的TRTC房间号。
 	RoomId *int64 `json:"RoomId,omitempty" name:"RoomId"`
 
 	// 用于白板推流服务进房进行推流的用户ID，最大长度不能大于60个字节，该ID必须是一个单独的未在SDK中使用的ID，白板推流服务使用这个用户ID进入房间进行白板音视频推流，若该ID和SDK中使用的ID重复，会导致SDK和白板推流服务互踢，影响正常推流。
@@ -1926,6 +1928,22 @@ type StartWhiteboardPushRequest struct {
 
 	// 内部参数，不需要关注此参数
 	ExtraData *string `json:"ExtraData,omitempty" name:"ExtraData"`
+
+	// **内部体验字段，若需要体验可以提工单申请开通体验**
+	// 
+	// TRTC数字类型房间号，取值范围: (1, 4294967295)。
+	// 
+	// 在同时指定了RoomId与TRTCRoomId的情况下，优先使用TRTCRoomId作为白板流进行推流的TRTC房间号。
+	// 
+	// 当指定了TRTCRoomIdStr的情况下，此字段将被忽略。
+	TRTCRoomId *int64 `json:"TRTCRoomId,omitempty" name:"TRTCRoomId"`
+
+	// **内部体验字段，若需要体验可以提工单申请开通体验**
+	// 
+	// TRTC字符串类型房间号。
+	// 
+	// 在指定了TRTCRoomIdStr的情况下，会优先使用TRTCRoomIdStr作为白板流进行推流的TRTC房间号。
+	TRTCRoomIdStr *string `json:"TRTCRoomIdStr,omitempty" name:"TRTCRoomIdStr"`
 }
 
 func (r *StartWhiteboardPushRequest) ToJsonString() string {
@@ -1956,6 +1974,8 @@ func (r *StartWhiteboardPushRequest) FromJsonString(s string) error {
 	delete(f, "AutoPublish")
 	delete(f, "UserDefinedStreamId")
 	delete(f, "ExtraData")
+	delete(f, "TRTCRoomId")
+	delete(f, "TRTCRoomIdStr")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartWhiteboardPushRequest has unknown keys!", "")
 	}

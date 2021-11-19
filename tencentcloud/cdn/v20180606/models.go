@@ -843,6 +843,11 @@ type AuthenticationTypeA struct {
 	// whitelist：白名单，表示对除了 FileExtensions 列表之外的所有类型进行鉴权
 	// blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
 	FilterType *string `json:"FilterType,omitempty" name:"FilterType"`
+
+	// 计算签名的备用密钥
+	// 仅允许大小写字母与数字，长度 6~32 位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupSecretKey *string `json:"BackupSecretKey,omitempty" name:"BackupSecretKey"`
 }
 
 type AuthenticationTypeB struct {
@@ -863,6 +868,11 @@ type AuthenticationTypeB struct {
 	// whitelist：白名单，表示对除了 FileExtensions 列表之外的所有类型进行鉴权
 	// blacklist：黑名单，表示仅对 FileExtensions 中的类型进行鉴权
 	FilterType *string `json:"FilterType,omitempty" name:"FilterType"`
+
+	// 计算签名的备用密钥
+	// 仅允许大小写字母与数字，长度 6~32 位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupSecretKey *string `json:"BackupSecretKey,omitempty" name:"BackupSecretKey"`
 }
 
 type AuthenticationTypeC struct {
@@ -889,6 +899,11 @@ type AuthenticationTypeC struct {
 	// hex：十六进制
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeFormat *string `json:"TimeFormat,omitempty" name:"TimeFormat"`
+
+	// 计算签名的备用密钥
+	// 仅允许大小写字母与数字，长度 6~32 位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupSecretKey *string `json:"BackupSecretKey,omitempty" name:"BackupSecretKey"`
 }
 
 type AuthenticationTypeD struct {
@@ -922,6 +937,11 @@ type AuthenticationTypeD struct {
 	// dec：十进制
 	// hex：十六进制
 	TimeFormat *string `json:"TimeFormat,omitempty" name:"TimeFormat"`
+
+	// 计算签名的备用密钥
+	// 仅允许大小写字母与数字，长度 6~32 位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupSecretKey *string `json:"BackupSecretKey,omitempty" name:"BackupSecretKey"`
 }
 
 type AwsPrivateAccess struct {
@@ -5182,6 +5202,10 @@ type DetailDomain struct {
 	// 远程鉴权配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemoteAuthentication *RemoteAuthentication `json:"RemoteAuthentication,omitempty" name:"RemoteAuthentication"`
+
+	// 共享CNAME配置（白名单功能）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShareCname *ShareCname `json:"ShareCname,omitempty" name:"ShareCname"`
 }
 
 type DiagnoseData struct {
@@ -8828,6 +8852,18 @@ type ServerCert struct {
 	Message *string `json:"Message,omitempty" name:"Message"`
 }
 
+type ShareCname struct {
+
+	// ShareCname 配置开关, 开关为off时，域名使用默认CNAME，若需要使用共享CNAME，将开关置为on.
+	// 
+	// * ShareCname 为内测功能,如需使用,请联系腾讯云工程师开白.
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 设置共享CNAME.
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cname *string `json:"Cname,omitempty" name:"Cname"`
+}
+
 type SimpleCache struct {
 
 	// 缓存过期时间规则
@@ -9440,6 +9476,9 @@ type UpdateDomainConfigRequest struct {
 
 	// 远程鉴权配置
 	RemoteAuthentication *RemoteAuthentication `json:"RemoteAuthentication,omitempty" name:"RemoteAuthentication"`
+
+	// 共享CNAME配置，白名单功能
+	ShareCname *ShareCname `json:"ShareCname,omitempty" name:"ShareCname"`
 }
 
 func (r *UpdateDomainConfigRequest) ToJsonString() string {
@@ -9497,6 +9536,7 @@ func (r *UpdateDomainConfigRequest) FromJsonString(s string) error {
 	delete(f, "OssPrivateAccess")
 	delete(f, "WebSocket")
 	delete(f, "RemoteAuthentication")
+	delete(f, "ShareCname")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDomainConfigRequest has unknown keys!", "")
 	}

@@ -2517,6 +2517,42 @@ func (c *Client) DescribePeakNetworkOverview(request *DescribePeakNetworkOvervie
     return
 }
 
+func NewDescribePriceRunInstanceRequest() (request *DescribePriceRunInstanceRequest) {
+    request = &DescribePriceRunInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ecm", APIVersion, "DescribePriceRunInstance")
+    
+    return
+}
+
+func NewDescribePriceRunInstanceResponse() (response *DescribePriceRunInstanceResponse) {
+    response = &DescribePriceRunInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePriceRunInstance
+// 查询实例价格
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
+//  INVALIDPARAMETERVALUE_INVALIDSYSTEMDISKSIZE = "InvalidParameterValue.InvalidSystemDiskSize"
+//  INVALIDPARAMETERVALUE_INVALIDSYSTEMDISKTYPE = "InvalidParameterValue.InvalidSystemDiskType"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
+func (c *Client) DescribePriceRunInstance(request *DescribePriceRunInstanceRequest) (response *DescribePriceRunInstanceResponse, err error) {
+    if request == nil {
+        request = NewDescribePriceRunInstanceRequest()
+    }
+    response = NewDescribePriceRunInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRouteConflictsRequest() (request *DescribeRouteConflictsRequest) {
     request = &DescribeRouteConflictsRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -1702,6 +1702,38 @@ func (c *Client) DescribeProduct(request *DescribeProductRequest) (response *Des
     return
 }
 
+func NewDescribeProductDynamicRegisterRequest() (request *DescribeProductDynamicRegisterRequest) {
+    request = &DescribeProductDynamicRegisterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeProductDynamicRegister")
+    
+    return
+}
+
+func NewDescribeProductDynamicRegisterResponse() (response *DescribeProductDynamicRegisterResponse) {
+    response = &DescribeProductDynamicRegisterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeProductDynamicRegister
+// 获取产品动态注册详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeProductDynamicRegister(request *DescribeProductDynamicRegisterRequest) (response *DescribeProductDynamicRegisterResponse, err error) {
+    if request == nil {
+        request = NewDescribeProductDynamicRegisterRequest()
+    }
+    response = NewDescribeProductDynamicRegisterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProductsRequest() (request *DescribeProductsRequest) {
     request = &DescribeProductsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2207,6 +2239,38 @@ func (c *Client) ModifyProduct(request *ModifyProductRequest) (response *ModifyP
         request = NewModifyProductRequest()
     }
     response = NewModifyProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyProductDynamicRegisterRequest() (request *ModifyProductDynamicRegisterRequest) {
+    request = &ModifyProductDynamicRegisterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "ModifyProductDynamicRegister")
+    
+    return
+}
+
+func NewModifyProductDynamicRegisterResponse() (response *ModifyProductDynamicRegisterResponse) {
+    response = &ModifyProductDynamicRegisterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyProductDynamicRegister
+// 修改产品动态注册
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyProductDynamicRegister(request *ModifyProductDynamicRegisterRequest) (response *ModifyProductDynamicRegisterResponse, err error) {
+    if request == nil {
+        request = NewModifyProductDynamicRegisterRequest()
+    }
+    response = NewModifyProductDynamicRegisterResponse()
     err = c.Send(request, response)
     return
 }

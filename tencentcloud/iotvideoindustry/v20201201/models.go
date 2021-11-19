@@ -2335,6 +2335,18 @@ type RecordTaskItem struct {
 	// 本录制片段当前的录制状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordStatus *int64 `json:"RecordStatus,omitempty" name:"RecordStatus"`
+
+	// 场景ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SceneId *int64 `json:"SceneId,omitempty" name:"SceneId"`
+
+	// 告警ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WarnId *int64 `json:"WarnId,omitempty" name:"WarnId"`
+
+	// 录制id，NVR下属设备有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordId *string `json:"RecordId,omitempty" name:"RecordId"`
 }
 
 type ServerConfiguration struct {

@@ -1,80 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 借贷反欺诈(af) 版本：2020-02-26
+## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 4 次发布
+### 第 87 次发布
 
-发布时间：2021-11-18 08:02:15
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [GetAntiFraud](https://cloud.tencent.com/document/api/668/64230)
-
-新增数据结构：
-
-* [AntiFraudCryptoFilter](https://cloud.tencent.com/document/api/668/44002#AntiFraudCryptoFilter)
-* [AntiFraudFilter](https://cloud.tencent.com/document/api/668/44002#AntiFraudFilter)
-* [AntiFraudRecord](https://cloud.tencent.com/document/api/668/44002#AntiFraudRecord)
-* [OtherModelScoresDetail](https://cloud.tencent.com/document/api/668/44002#OtherModelScoresDetail)
-* [SimpleKindRiskDetail](https://cloud.tencent.com/document/api/668/44002#SimpleKindRiskDetail)
-
-
-
-## 定制建模(afc) 版本：2020-02-26
-
-### 第 2 次发布
-
-发布时间：2021-11-18 08:02:17
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [GetAntiFraudVip](https://cloud.tencent.com/document/api/1029/64231)
-
-新增数据结构：
-
-* [AntiFraudVipCryptoFilter](https://cloud.tencent.com/document/api/1029/44018#AntiFraudVipCryptoFilter)
-* [AntiFraudVipFilter](https://cloud.tencent.com/document/api/1029/44018#AntiFraudVipFilter)
-* [AntiFraudVipRecord](https://cloud.tencent.com/document/api/1029/44018#AntiFraudVipRecord)
-* [OtherModelScores](https://cloud.tencent.com/document/api/1029/44018#OtherModelScores)
-* [SimpleKindRiskDetail](https://cloud.tencent.com/document/api/1029/44018#SimpleKindRiskDetail)
-
-
-
-## 云防火墙(cfw) 版本：2019-09-04
-
-### 第 13 次发布
-
-发布时间：2021-11-18 08:04:19
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [AddEnterpriseSecurityGroupRules](https://cloud.tencent.com/document/api/1132/64234)
-* [DescribeEnterpriseSecurityGroupRule](https://cloud.tencent.com/document/api/1132/64233)
-* [RemoveEnterpriseSecurityGroupRule](https://cloud.tencent.com/document/api/1132/64232)
-
-新增数据结构：
-
-* [SecurityGroupRule](https://cloud.tencent.com/document/api/1132/49071#SecurityGroupRule)
-
-
-
-## 主机安全(cwp) 版本：2018-02-28
-
-### 第 35 次发布
-
-发布时间：2021-11-18 08:05:46
+发布时间：2021-11-19 08:07:05
 
 本次发布包含了以下内容：
 
@@ -82,71 +12,141 @@
 
 修改接口：
 
-* [DescribeScanState](https://cloud.tencent.com/document/api/296/60923)
+* [UpdateDomainConfig](https://cloud.tencent.com/document/api/228/41116)
 
-	* 新增出参：ScanBeginTime, RiskEventCount, ScanEndTime
+	* 新增入参：ShareCname
 
-* [DescribeSecurityEventsCnt](https://cloud.tencent.com/document/api/296/50427)
 
-	* 新增出参：WindowVul, LinuxVul
+新增数据结构：
 
-* [DescribeVulInfoCvss](https://cloud.tencent.com/document/api/296/60898)
-
-	* 新增出参：Labels
-
-* [DescribeVulLevelCount](https://cloud.tencent.com/document/api/296/60897)
-
-	* 新增入参：VulCategory
-
-* [DescribeVulList](https://cloud.tencent.com/document/api/296/63340)
-
-	* 新增入参：By, Order
-
-* [ScanVul](https://cloud.tencent.com/document/api/296/57375)
-
-	* <font color="#dd0000">**修改入参**：</font>VulCategories
-
+* [ShareCname](https://cloud.tencent.com/document/api/228/30987#ShareCname)
 
 修改数据结构：
 
-* [EmergencyVul](https://cloud.tencent.com/document/api/296/19867#EmergencyVul)
+* [AuthenticationTypeA](https://cloud.tencent.com/document/api/228/30987#AuthenticationTypeA)
 
-	* 新增成员：CveId, CvssScore, Labels, HostCount
+	* 新增成员：BackupSecretKey
 
-* [VulEffectHostList](https://cloud.tencent.com/document/api/296/19867#VulEffectHostList)
+* [AuthenticationTypeB](https://cloud.tencent.com/document/api/228/30987#AuthenticationTypeB)
 
-	* 新增成员：HostVersion, IsSupportAutoFix, FixStatusMsg
+	* 新增成员：BackupSecretKey
 
-* [VulInfoList](https://cloud.tencent.com/document/api/296/19867#VulInfoList)
+* [AuthenticationTypeC](https://cloud.tencent.com/document/api/228/30987#AuthenticationTypeC)
 
-	* 新增成员：CveId, CvssScore, Labels, FixSwitch, TaskId
+	* 新增成员：BackupSecretKey
+
+* [AuthenticationTypeD](https://cloud.tencent.com/document/api/228/30987#AuthenticationTypeD)
+
+	* 新增成员：BackupSecretKey
+
+* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
+
+	* 新增成员：ShareCname
 
 
 
 
-## 服务网格(tcm) 版本：2021-04-13
+## 边缘计算机器(ecm) 版本：2019-07-19
 
-### 第 2 次发布
+### 第 59 次发布
 
-发布时间：2021-11-18 08:12:32
+发布时间：2021-11-18 20:07:06
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+新增接口：
+
+* [DescribePriceRunInstance](https://cloud.tencent.com/document/api/1108/64437)
+
 新增数据结构：
 
-* [InjectConfig](https://cloud.tencent.com/document/api/1261/63843#InjectConfig)
+* [InstancePricesPartDetail](https://cloud.tencent.com/document/api/1108/42574#InstancePricesPartDetail)
+* [InstancesPrice](https://cloud.tencent.com/document/api/1108/42574#InstancesPrice)
+* [PriceDetail](https://cloud.tencent.com/document/api/1108/42574#PriceDetail)
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+### 第 13 次发布
+
+发布时间：2021-11-19 08:11:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeProductDynamicRegister](https://cloud.tencent.com/document/api/1131/64445)
+* [ModifyProductDynamicRegister](https://cloud.tencent.com/document/api/1131/64444)
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+
+
+## 物联网智能视频服务（行业版）(iotvideoindustry) 版本：2020-12-01
+
+### 第 11 次发布
+
+发布时间：2021-11-19 08:12:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 修改数据结构：
 
-* [IstioConfig](https://cloud.tencent.com/document/api/1261/63843#IstioConfig)
+* [RecordTaskItem](https://cloud.tencent.com/document/api/1361/53754#RecordTaskItem)
 
-	* 新增成员：DisablePolicyChecks
+	* 新增成员：SceneId, WarnId, RecordId
 
-* [MeshConfig](https://cloud.tencent.com/document/api/1261/63843#MeshConfig)
 
-	* 新增成员：Inject
+
+
+## 态势感知(ssa) 版本：2018-06-08
+
+### 第 5 次发布
+
+发布时间：2021-11-19 08:14:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeSocAlertList](https://cloud.tencent.com/document/api/664/64446)
+
+新增数据结构：
+
+* [AlertListData](https://cloud.tencent.com/document/api/664/51406#AlertListData)
+* [AlertType](https://cloud.tencent.com/document/api/664/51406#AlertType)
+* [ConcernInfo](https://cloud.tencent.com/document/api/664/51406#ConcernInfo)
+* [QueryFilter](https://cloud.tencent.com/document/api/664/51406#QueryFilter)
+* [QuerySort](https://cloud.tencent.com/document/api/664/51406#QuerySort)
+
+
+
+## 互动白板(tiw) 版本：2019-09-19
+
+### 第 23 次发布
+
+发布时间：2021-11-19 08:15:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [StartWhiteboardPush](https://cloud.tencent.com/document/api/1137/52081)
+
+	* 新增入参：TRTCRoomId, TRTCRoomIdStr
 
 
 
@@ -440,15 +440,15 @@
 
 新增接口：
 
-* [[GetAntiFraud](https://cloud.tencent.com/document/api/668/64230)](https://cloud.tencent.com/document/api/#/#)
+* [GetAntiFraud](https://cloud.tencent.com/document/api/668/64230)
 
 新增数据结构：
 
-* [[AntiFraudCryptoFilter](https://cloud.tencent.com/document/api/668/44002#AntiFraudCryptoFilter)](https://cloud.tencent.com/document/api/668/44002#[AntiFraudCryptoFilter](https://cloud.tencent.com/document/api/668/44002#AntiFraudCryptoFilter))
-* [[AntiFraudFilter](https://cloud.tencent.com/document/api/668/44002#AntiFraudFilter)](https://cloud.tencent.com/document/api/668/44002#[AntiFraudFilter](https://cloud.tencent.com/document/api/668/44002#AntiFraudFilter))
-* [[AntiFraudRecord](https://cloud.tencent.com/document/api/668/44002#AntiFraudRecord)](https://cloud.tencent.com/document/api/668/44002#[AntiFraudRecord](https://cloud.tencent.com/document/api/668/44002#AntiFraudRecord))
-* [[OtherModelScoresDetail](https://cloud.tencent.com/document/api/668/44002#OtherModelScoresDetail)](https://cloud.tencent.com/document/api/668/44002#[OtherModelScoresDetail](https://cloud.tencent.com/document/api/668/44002#OtherModelScoresDetail))
-* [[SimpleKindRiskDetail](https://cloud.tencent.com/document/api/668/44002#SimpleKindRiskDetail)](https://cloud.tencent.com/document/api/668/44002#[SimpleKindRiskDetail](https://cloud.tencent.com/document/api/668/44002#SimpleKindRiskDetail))
+* [AntiFraudCryptoFilter](https://cloud.tencent.com/document/api/668/44002#AntiFraudCryptoFilter)
+* [AntiFraudFilter](https://cloud.tencent.com/document/api/668/44002#AntiFraudFilter)
+* [AntiFraudRecord](https://cloud.tencent.com/document/api/668/44002#AntiFraudRecord)
+* [OtherModelScoresDetail](https://cloud.tencent.com/document/api/668/44002#OtherModelScoresDetail)
+* [SimpleKindRiskDetail](https://cloud.tencent.com/document/api/668/44002#SimpleKindRiskDetail)
 
 ### 第 3 次发布
 
@@ -519,15 +519,15 @@
 
 新增接口：
 
-* [[GetAntiFraudVip](https://cloud.tencent.com/document/api/1029/64231)](https://cloud.tencent.com/document/api/#/#)
+* [GetAntiFraudVip](https://cloud.tencent.com/document/api/1029/64231)
 
 新增数据结构：
 
-* [[AntiFraudVipCryptoFilter](https://cloud.tencent.com/document/api/1029/44018#AntiFraudVipCryptoFilter)](https://cloud.tencent.com/document/api/1029/44018#[AntiFraudVipCryptoFilter](https://cloud.tencent.com/document/api/1029/44018#AntiFraudVipCryptoFilter))
-* [[AntiFraudVipFilter](https://cloud.tencent.com/document/api/1029/44018#AntiFraudVipFilter)](https://cloud.tencent.com/document/api/1029/44018#[AntiFraudVipFilter](https://cloud.tencent.com/document/api/1029/44018#AntiFraudVipFilter))
-* [[AntiFraudVipRecord](https://cloud.tencent.com/document/api/1029/44018#AntiFraudVipRecord)](https://cloud.tencent.com/document/api/1029/44018#[AntiFraudVipRecord](https://cloud.tencent.com/document/api/1029/44018#AntiFraudVipRecord))
-* [[OtherModelScores](https://cloud.tencent.com/document/api/1029/44018#OtherModelScores)](https://cloud.tencent.com/document/api/1029/44018#[OtherModelScores](https://cloud.tencent.com/document/api/1029/44018#OtherModelScores))
-* [[SimpleKindRiskDetail](https://cloud.tencent.com/document/api/1029/44018#SimpleKindRiskDetail)](https://cloud.tencent.com/document/api/1029/44018#[SimpleKindRiskDetail](https://cloud.tencent.com/document/api/1029/44018#SimpleKindRiskDetail))
+* [AntiFraudVipCryptoFilter](https://cloud.tencent.com/document/api/1029/44018#AntiFraudVipCryptoFilter)
+* [AntiFraudVipFilter](https://cloud.tencent.com/document/api/1029/44018#AntiFraudVipFilter)
+* [AntiFraudVipRecord](https://cloud.tencent.com/document/api/1029/44018#AntiFraudVipRecord)
+* [OtherModelScores](https://cloud.tencent.com/document/api/1029/44018#OtherModelScores)
+* [SimpleKindRiskDetail](https://cloud.tencent.com/document/api/1029/44018#SimpleKindRiskDetail)
 
 ### 第 1 次发布
 
@@ -9771,6 +9771,48 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 87 次发布
+
+发布时间：2021-11-19 08:07:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpdateDomainConfig](https://cloud.tencent.com/document/api/228/41116)
+
+	* 新增入参：ShareCname
+
+
+新增数据结构：
+
+* [[ShareCname](https://cloud.tencent.com/document/api/228/30987#ShareCname)](https://cloud.tencent.com/document/api/228/30987#[ShareCname](https://cloud.tencent.com/document/api/228/30987#ShareCname))
+
+修改数据结构：
+
+* [AuthenticationTypeA](https://cloud.tencent.com/document/api/228/30987#AuthenticationTypeA)
+
+	* 新增成员：BackupSecretKey
+
+* [AuthenticationTypeB](https://cloud.tencent.com/document/api/228/30987#AuthenticationTypeB)
+
+	* 新增成员：BackupSecretKey
+
+* [AuthenticationTypeC](https://cloud.tencent.com/document/api/228/30987#AuthenticationTypeC)
+
+	* 新增成员：BackupSecretKey
+
+* [AuthenticationTypeD](https://cloud.tencent.com/document/api/228/30987#AuthenticationTypeD)
+
+	* 新增成员：BackupSecretKey
+
+* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
+
+	* 新增成员：ShareCname
+
+
 ### 第 86 次发布
 
 发布时间：2021-11-09 08:07:45
@@ -11986,13 +12028,13 @@
 
 新增接口：
 
-* [[AddEnterpriseSecurityGroupRules](https://cloud.tencent.com/document/api/1132/64234)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeEnterpriseSecurityGroupRule](https://cloud.tencent.com/document/api/1132/64233)](https://cloud.tencent.com/document/api/#/#)
-* [[RemoveEnterpriseSecurityGroupRule](https://cloud.tencent.com/document/api/1132/64232)](https://cloud.tencent.com/document/api/#/#)
+* [AddEnterpriseSecurityGroupRules](https://cloud.tencent.com/document/api/1132/64234)
+* [DescribeEnterpriseSecurityGroupRule](https://cloud.tencent.com/document/api/1132/64233)
+* [RemoveEnterpriseSecurityGroupRule](https://cloud.tencent.com/document/api/1132/64232)
 
 新增数据结构：
 
-* [[SecurityGroupRule](https://cloud.tencent.com/document/api/1132/49071#SecurityGroupRule)](https://cloud.tencent.com/document/api/1132/49071#[SecurityGroupRule](https://cloud.tencent.com/document/api/1132/49071#SecurityGroupRule))
+* [SecurityGroupRule](https://cloud.tencent.com/document/api/1132/49071#SecurityGroupRule)
 
 ### 第 12 次发布
 
@@ -24368,6 +24410,24 @@
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
 
+### 第 59 次发布
+
+发布时间：2021-11-18 20:07:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribePriceRunInstance](https://cloud.tencent.com/document/api/1108/64437)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[InstancePricesPartDetail](https://cloud.tencent.com/document/api/1108/42574#InstancePricesPartDetail)](https://cloud.tencent.com/document/api/1108/42574#[InstancePricesPartDetail](https://cloud.tencent.com/document/api/1108/42574#InstancePricesPartDetail))
+* [[InstancesPrice](https://cloud.tencent.com/document/api/1108/42574#InstancesPrice)](https://cloud.tencent.com/document/api/1108/42574#[InstancesPrice](https://cloud.tencent.com/document/api/1108/42574#InstancesPrice))
+* [[PriceDetail](https://cloud.tencent.com/document/api/1108/42574#PriceDetail)](https://cloud.tencent.com/document/api/1108/42574#[PriceDetail](https://cloud.tencent.com/document/api/1108/42574#PriceDetail))
+
 ### 第 58 次发布
 
 发布时间：2021-11-11 11:01:56
@@ -33767,6 +33827,19 @@
 
 ## 物联网智能视频服务(iotvideo) 版本：2020-12-15
 
+### 第 13 次发布
+
+发布时间：2021-11-19 08:11:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeProductDynamicRegister](https://cloud.tencent.com/document/api/1131/64445)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyProductDynamicRegister](https://cloud.tencent.com/document/api/1131/64444)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 12 次发布
 
 发布时间：2021-11-10 08:08:18
@@ -34060,6 +34133,21 @@
 
 
 ## 物联网智能视频服务（行业版）(iotvideoindustry) 版本：2020-12-01
+
+### 第 11 次发布
+
+发布时间：2021-11-19 08:12:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RecordTaskItem](https://cloud.tencent.com/document/api/1361/53754#RecordTaskItem)
+
+	* 新增成员：SceneId, WarnId, RecordId
+
 
 ### 第 10 次发布
 
@@ -46272,6 +46360,26 @@
 
 ## 态势感知(ssa) 版本：2018-06-08
 
+### 第 5 次发布
+
+发布时间：2021-11-19 08:14:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeSocAlertList](https://cloud.tencent.com/document/api/664/64446)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AlertListData](https://cloud.tencent.com/document/api/664/51406#AlertListData)](https://cloud.tencent.com/document/api/664/51406#[AlertListData](https://cloud.tencent.com/document/api/664/51406#AlertListData))
+* [[AlertType](https://cloud.tencent.com/document/api/664/51406#AlertType)](https://cloud.tencent.com/document/api/664/51406#[AlertType](https://cloud.tencent.com/document/api/664/51406#AlertType))
+* [[ConcernInfo](https://cloud.tencent.com/document/api/664/51406#ConcernInfo)](https://cloud.tencent.com/document/api/664/51406#[ConcernInfo](https://cloud.tencent.com/document/api/664/51406#ConcernInfo))
+* [[QueryFilter](https://cloud.tencent.com/document/api/664/51406#QueryFilter)](https://cloud.tencent.com/document/api/664/51406#[QueryFilter](https://cloud.tencent.com/document/api/664/51406#QueryFilter))
+* [[QuerySort](https://cloud.tencent.com/document/api/664/51406#QuerySort)](https://cloud.tencent.com/document/api/664/51406#[QuerySort](https://cloud.tencent.com/document/api/664/51406#QuerySort))
+
 ### 第 4 次发布
 
 发布时间：2021-08-16 08:01:05
@@ -50224,7 +50332,7 @@
 
 新增数据结构：
 
-* [[InjectConfig](https://cloud.tencent.com/document/api/1261/63843#InjectConfig)](https://cloud.tencent.com/document/api/1261/63843#[InjectConfig](https://cloud.tencent.com/document/api/1261/63843#InjectConfig))
+* [InjectConfig](https://cloud.tencent.com/document/api/1261/63843#InjectConfig)
 
 修改数据结构：
 
@@ -53134,6 +53242,21 @@
 
 
 ## 互动白板(tiw) 版本：2019-09-19
+
+### 第 23 次发布
+
+发布时间：2021-11-19 08:15:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [StartWhiteboardPush](https://cloud.tencent.com/document/api/1137/52081)
+
+	* 新增入参：TRTCRoomId, TRTCRoomIdStr
+
 
 ### 第 22 次发布
 

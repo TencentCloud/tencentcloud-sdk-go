@@ -11292,7 +11292,7 @@ type DescribeVulHostTopRequest struct {
 	// 获取top值，1-100
 	Top *uint64 `json:"Top,omitempty" name:"Top"`
 
-	// 1: web应用漏洞 2=系统组件漏洞3:安全基线 4: Linux系统漏洞 5: windows补丁 6:应急漏洞
+	// 1:web-cms 漏洞，2.应用漏洞 3:安全基线 4: Linux软件漏洞 5: windows系统漏洞 6:应急漏洞
 	VulCategory *uint64 `json:"VulCategory,omitempty" name:"VulCategory"`
 }
 
@@ -11445,7 +11445,7 @@ func (r *DescribeVulInfoCvssResponse) FromJsonString(s string) error {
 type DescribeVulLevelCountRequest struct {
 	*tchttp.BaseRequest
 
-	// 1: web应用漏洞 2=系统组件漏洞3:安全基线 4: Linux系统漏洞 5: windows补丁 6:应急漏洞
+	// 1:web-cms 漏洞，2.应用漏洞 3:安全基线 4: Linux软件漏洞 5: windows系统漏洞 6:应急漏洞
 	VulCategory *uint64 `json:"VulCategory,omitempty" name:"VulCategory"`
 }
 
@@ -11577,7 +11577,7 @@ type DescribeVulTopRequest struct {
 	// 漏洞风险服务器top，1-100
 	Top *uint64 `json:"Top,omitempty" name:"Top"`
 
-	// 1: web应用漏洞 2=系统组件漏洞3:安全基线 4: Linux系统漏洞 5: windows补丁 6:应急漏洞
+	// 1:web-cms 漏洞，2.应用漏洞 3:安全基线 4: Linux软件漏洞 5: windows系统漏洞 6:应急漏洞
 	VulCategory *uint64 `json:"VulCategory,omitempty" name:"VulCategory"`
 }
 

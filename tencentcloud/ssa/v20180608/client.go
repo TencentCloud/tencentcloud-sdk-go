@@ -429,6 +429,38 @@ func (c *Client) DescribeSafetyEventList(request *DescribeSafetyEventListRequest
     return
 }
 
+func NewDescribeSocAlertListRequest() (request *DescribeSocAlertListRequest) {
+    request = &DescribeSocAlertListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ssa", APIVersion, "DescribeSocAlertList")
+    
+    return
+}
+
+func NewDescribeSocAlertListResponse() (response *DescribeSocAlertListResponse) {
+    response = &DescribeSocAlertListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSocAlertList
+// 拉取告警列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+func (c *Client) DescribeSocAlertList(request *DescribeSocAlertListRequest) (response *DescribeSocAlertListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSocAlertListRequest()
+    }
+    response = NewDescribeSocAlertListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSocCspmComplianceRequest() (request *DescribeSocCspmComplianceRequest) {
     request = &DescribeSocCspmComplianceRequest{
         BaseRequest: &tchttp.BaseRequest{},

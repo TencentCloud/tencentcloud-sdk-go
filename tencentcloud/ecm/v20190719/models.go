@@ -4043,6 +4043,67 @@ func (r *DescribePeakNetworkOverviewResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribePriceRunInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例的机型信息
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 系统盘信息
+	SystemDisk *SystemDisk `json:"SystemDisk,omitempty" name:"SystemDisk"`
+
+	// 实例个数
+	InstanceCount *uint64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
+
+	// 数据盘信息
+	DataDisk []*DataDisk `json:"DataDisk,omitempty" name:"DataDisk"`
+}
+
+func (r *DescribePriceRunInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePriceRunInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceType")
+	delete(f, "SystemDisk")
+	delete(f, "InstanceCount")
+	delete(f, "DataDisk")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePriceRunInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePriceRunInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例价格信息
+		InstancePrice *InstancesPrice `json:"InstancePrice,omitempty" name:"InstancePrice"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePriceRunInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePriceRunInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeRouteConflictsRequest struct {
 	*tchttp.BaseRequest
 
@@ -5916,6 +5977,18 @@ type InstanceOperator struct {
 	DeniedActions []*OperatorAction `json:"DeniedActions,omitempty" name:"DeniedActions"`
 }
 
+type InstancePricesPartDetail struct {
+
+	// cpu的价格信息
+	CpuPrice *PriceDetail `json:"CpuPrice,omitempty" name:"CpuPrice"`
+
+	// 内存价格信息
+	MemPrice *PriceDetail `json:"MemPrice,omitempty" name:"MemPrice"`
+
+	// 磁盘价格信息
+	DisksPrice *PriceDetail `json:"DisksPrice,omitempty" name:"DisksPrice"`
+}
+
 type InstanceStatistic struct {
 
 	// 实例的类型
@@ -5959,6 +6032,21 @@ type InstanceTypeConfig struct {
 	// GPU型号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GpuModelName *string `json:"GpuModelName,omitempty" name:"GpuModelName"`
+}
+
+type InstancesPrice struct {
+
+	// 分部描述实例子维度的价格
+	InstancePricesPartDetail *InstancePricesPartDetail `json:"InstancePricesPartDetail,omitempty" name:"InstancePricesPartDetail"`
+
+	// 实例总价折扣
+	Discount *uint64 `json:"Discount,omitempty" name:"Discount"`
+
+	// 折扣后价格
+	DiscountPrice *uint64 `json:"DiscountPrice,omitempty" name:"DiscountPrice"`
+
+	// 折扣前价格，原始总价
+	OriginalPrice *uint64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
 }
 
 type Internet struct {
@@ -8103,6 +8191,18 @@ type Position struct {
 
 	// 实例所在的Region的信息。
 	RegionInfo *RegionInfo `json:"RegionInfo,omitempty" name:"RegionInfo"`
+}
+
+type PriceDetail struct {
+
+	// 表示折扣，20 表示20%，打2折
+	Discount *uint64 `json:"Discount,omitempty" name:"Discount"`
+
+	// 打折后价格，单位分
+	DiscountPrice *uint64 `json:"DiscountPrice,omitempty" name:"DiscountPrice"`
+
+	// 折扣前价格，单位分
+	OriginalPrice *uint64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
 }
 
 type PrivateIPAddressInfo struct {

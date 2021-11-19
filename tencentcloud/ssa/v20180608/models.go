@@ -29,6 +29,120 @@ type AggregationObj struct {
 	Bucket []*Bucket `json:"Bucket,omitempty" name:"Bucket"`
 }
 
+type AlertListData struct {
+
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 返回列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlertList []*AlertType `json:"AlertList,omitempty" name:"AlertList"`
+}
+
+type AlertType struct {
+
+	// 时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlertTime *string `json:"AlertTime,omitempty" name:"AlertTime"`
+
+	// 唯一id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlertId *string `json:"AlertId,omitempty" name:"AlertId"`
+
+	// 资产id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetId *string `json:"AssetId,omitempty" name:"AssetId"`
+
+	// 内网ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetPrivateIp []*string `json:"AssetPrivateIp,omitempty" name:"AssetPrivateIp"`
+
+	// 名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlertName *string `json:"AlertName,omitempty" name:"AlertName"`
+
+	// 告警级别  0:未知 1:低危 2:中危 3:高危 4:严重
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Level *int64 `json:"Level,omitempty" name:"Level"`
+
+	// 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Source *string `json:"Source,omitempty" name:"Source"`
+
+	// 攻击字段1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackChain *string `json:"AttackChain,omitempty" name:"AttackChain"`
+
+	// 攻击字段2
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackId *string `json:"AttackId,omitempty" name:"AttackId"`
+
+	// 关注点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Concerns []*ConcernInfo `json:"Concerns,omitempty" name:"Concerns"`
+
+	// 1：已防御，0,2：仅检测(0:告警类 1:拦截类 2:放行类 )
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Action *int64 `json:"Action,omitempty" name:"Action"`
+
+	// 0/空：未知，1：未成功，2：成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackResult *int64 `json:"AttackResult,omitempty" name:"AttackResult"`
+
+	// //调查状态  0/空：未启用，1：调查中，2：完成调查
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventStatus *int64 `json:"EventStatus,omitempty" name:"EventStatus"`
+
+	// //关联事件ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+
+	// //处置状态  0：未关闭，1：已关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 资产名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetName *string `json:"AssetName,omitempty" name:"AssetName"`
+
+	// 恶意实体
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConcernMaliciousCount *int64 `json:"ConcernMaliciousCount,omitempty" name:"ConcernMaliciousCount"`
+
+	// 受害者实体
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConcernVictimCount *int64 `json:"ConcernVictimCount,omitempty" name:"ConcernVictimCount"`
+
+	// 资产类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VictimAssetType *string `json:"VictimAssetType,omitempty" name:"VictimAssetType"`
+
+	// 告警子类
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubType *string `json:"SubType,omitempty" name:"SubType"`
+
+	// 攻击技术名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackName *string `json:"AttackName,omitempty" name:"AttackName"`
+
+	// 外网ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetPublicIp []*string `json:"AssetPublicIp,omitempty" name:"AssetPublicIp"`
+
+	// 攻击战术名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackTactic *string `json:"AttackTactic,omitempty" name:"AttackTactic"`
+
+	// 资产子网
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VictimAssetSub *string `json:"VictimAssetSub,omitempty" name:"VictimAssetSub"`
+}
+
 type Asset struct {
 
 	// 资产类型
@@ -493,6 +607,25 @@ type ComplianceCheckDetail struct {
 	// 合规检查项完整名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Title *string `json:"Title,omitempty" name:"Title"`
+}
+
+type ConcernInfo struct {
+
+	// 关注点类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConcernType *int64 `json:"ConcernType,omitempty" name:"ConcernType"`
+
+	// 实体类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EntityType *int64 `json:"EntityType,omitempty" name:"EntityType"`
+
+	// 关注点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Concern *string `json:"Concern,omitempty" name:"Concern"`
+
+	// 最近数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatisticsCount *int64 `json:"StatisticsCount,omitempty" name:"StatisticsCount"`
 }
 
 type DataAssetMapping struct {
@@ -1529,6 +1662,71 @@ func (r *DescribeSafetyEventListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSocAlertListRequest struct {
+	*tchttp.BaseRequest
+
+	// 页大小
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 页码
+	PageIndex *int64 `json:"PageIndex,omitempty" name:"PageIndex"`
+
+	// 业务场景 参考ScenesType
+	Scenes *int64 `json:"Scenes,omitempty" name:"Scenes"`
+
+	// 查询参数
+	Filter []*QueryFilter `json:"Filter,omitempty" name:"Filter"`
+
+	// 排序参数
+	Sorter []*QuerySort `json:"Sorter,omitempty" name:"Sorter"`
+}
+
+func (r *DescribeSocAlertListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSocAlertListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageSize")
+	delete(f, "PageIndex")
+	delete(f, "Scenes")
+	delete(f, "Filter")
+	delete(f, "Sorter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSocAlertListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSocAlertListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务数据
+		Data *AlertListData `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSocAlertListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSocAlertListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSocCspmComplianceRequest struct {
 	*tchttp.BaseRequest
 }
@@ -1768,6 +1966,27 @@ type Filter struct {
 
 	// 是否需要精确匹配
 	ExactMatch *bool `json:"ExactMatch,omitempty" name:"ExactMatch"`
+}
+
+type QueryFilter struct {
+
+	// 查询的字段
+	FilterKey *string `json:"FilterKey,omitempty" name:"FilterKey"`
+
+	// 查询的值
+	FilterValue *string `json:"FilterValue,omitempty" name:"FilterValue"`
+
+	// 匹配类型，枚举见pb
+	FilterOperatorType *int64 `json:"FilterOperatorType,omitempty" name:"FilterOperatorType"`
+}
+
+type QuerySort struct {
+
+	// 排序字段
+	SortKey *string `json:"SortKey,omitempty" name:"SortKey"`
+
+	// 顺序，1升序2降序
+	SortType *int64 `json:"SortType,omitempty" name:"SortType"`
 }
 
 type SaDivulgeDataQueryPub struct {
