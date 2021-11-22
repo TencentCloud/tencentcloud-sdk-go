@@ -29,6 +29,17 @@ type AggregationObj struct {
 	Bucket []*Bucket `json:"Bucket,omitempty" name:"Bucket"`
 }
 
+type AlertDetail struct {
+
+	// 告警基础信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BaseInfo *AlertType `json:"BaseInfo,omitempty" name:"BaseInfo"`
+
+	// 告警详情，json序列化
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Detail *string `json:"Detail,omitempty" name:"Detail"`
+}
+
 type AlertListData struct {
 
 	// 总数
@@ -1659,6 +1670,60 @@ func (r *DescribeSafetyEventListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeSafetyEventListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSocAlertDetailsRequest struct {
+	*tchttp.BaseRequest
+
+	// 告警id
+	AlertId *string `json:"AlertId,omitempty" name:"AlertId"`
+
+	// 告警时间，取Timestamp字段
+	AlertTimestamp *string `json:"AlertTimestamp,omitempty" name:"AlertTimestamp"`
+}
+
+func (r *DescribeSocAlertDetailsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSocAlertDetailsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AlertId")
+	delete(f, "AlertTimestamp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSocAlertDetailsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSocAlertDetailsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回详情数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data *AlertDetail `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSocAlertDetailsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSocAlertDetailsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

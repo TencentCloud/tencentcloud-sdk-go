@@ -4554,7 +4554,7 @@ type DescribeServicesStatusRequest struct {
 	// 偏移量，默认为 0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 过滤条件。支持ServiceId、ServiceName、NotUsagePlanId、Environment、IpVersion。InstanceId
+	// 过滤条件。支持ServiceId、ServiceName、NotUsagePlanId、Environment、IpVersion、InstanceId、NetType、EIAMAppId。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 

@@ -3677,7 +3677,7 @@ func (r *ModifyRealServerAccessStrategyResponse) FromJsonString(s string) error 
 type ModifySyncTaskAttributeRequest struct {
 	*tchttp.BaseRequest
 
-	// 一个或多个待操作的任务ID。可通过[DescribeSyncTasks](https://tcloud-dev.oa.com/document/product/237/32979?!preview&!document=1) API返回值中的TaskId获取。每次请求允许操作的实例数量上限是100。
+	// 一个或多个待操作的任务ID。可通过DescribeSyncTasks API返回值中的TaskId获取。每次请求允许操作的实例数量上限是100。
 	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds"`
 
 	// 任务名称。可任意命名，但不得超过100个字符。

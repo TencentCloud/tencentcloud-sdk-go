@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 内容分发网络(cdn) 版本：2018-06-06
+## DDoS 防护(antiddos) 版本：2020-03-09
 
-### 第 87 次发布
+### 第 13 次发布
 
-发布时间：2021-11-19 08:07:05
+发布时间：2021-11-22 08:01:25
 
 本次发布包含了以下内容：
 
@@ -12,107 +12,25 @@
 
 修改接口：
 
-* [UpdateDomainConfig](https://cloud.tencent.com/document/api/228/41116)
+* [DescribeListBGPIPInstances](https://cloud.tencent.com/document/api/1021/57524)
 
-	* 新增入参：ShareCname
+	* 新增入参：FilterDamDDoSStatus
 
-
-新增数据结构：
-
-* [ShareCname](https://cloud.tencent.com/document/api/228/30987#ShareCname)
 
 修改数据结构：
 
-* [AuthenticationTypeA](https://cloud.tencent.com/document/api/228/30987#AuthenticationTypeA)
+* [BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance)
 
-	* 新增成员：BackupSecretKey
-
-* [AuthenticationTypeB](https://cloud.tencent.com/document/api/228/30987#AuthenticationTypeB)
-
-	* 新增成员：BackupSecretKey
-
-* [AuthenticationTypeC](https://cloud.tencent.com/document/api/228/30987#AuthenticationTypeC)
-
-	* 新增成员：BackupSecretKey
-
-* [AuthenticationTypeD](https://cloud.tencent.com/document/api/228/30987#AuthenticationTypeD)
-
-	* 新增成员：BackupSecretKey
-
-* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
-
-	* 新增成员：ShareCname
-
-
-
-
-## 边缘计算机器(ecm) 版本：2019-07-19
-
-### 第 59 次发布
-
-发布时间：2021-11-18 20:07:06
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribePriceRunInstance](https://cloud.tencent.com/document/api/1108/64437)
-
-新增数据结构：
-
-* [InstancePricesPartDetail](https://cloud.tencent.com/document/api/1108/42574#InstancePricesPartDetail)
-* [InstancesPrice](https://cloud.tencent.com/document/api/1108/42574#InstancesPrice)
-* [PriceDetail](https://cloud.tencent.com/document/api/1108/42574#PriceDetail)
-
-
-
-## 物联网智能视频服务(iotvideo) 版本：2020-12-15
-
-### 第 13 次发布
-
-发布时间：2021-11-19 08:11:51
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeProductDynamicRegister](https://cloud.tencent.com/document/api/1131/64445)
-* [ModifyProductDynamicRegister](https://cloud.tencent.com/document/api/1131/64444)
-
-
-
-## 物联网智能视频服务(iotvideo) 版本：2019-11-26
-
-
-
-## 物联网智能视频服务（行业版）(iotvideoindustry) 版本：2020-12-01
-
-### 第 11 次发布
-
-发布时间：2021-11-19 08:12:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [RecordTaskItem](https://cloud.tencent.com/document/api/1361/53754#RecordTaskItem)
-
-	* 新增成员：SceneId, WarnId, RecordId
+	* 新增成员：DamDDoSStatus
 
 
 
 
 ## 态势感知(ssa) 版本：2018-06-08
 
-### 第 5 次发布
+### 第 6 次发布
 
-发布时间：2021-11-19 08:14:18
+发布时间：2021-11-22 08:10:13
 
 本次发布包含了以下内容：
 
@@ -120,34 +38,11 @@
 
 新增接口：
 
-* [DescribeSocAlertList](https://cloud.tencent.com/document/api/664/64446)
+* [DescribeSocAlertDetails](https://cloud.tencent.com/document/api/664/64537)
 
 新增数据结构：
 
-* [AlertListData](https://cloud.tencent.com/document/api/664/51406#AlertListData)
-* [AlertType](https://cloud.tencent.com/document/api/664/51406#AlertType)
-* [ConcernInfo](https://cloud.tencent.com/document/api/664/51406#ConcernInfo)
-* [QueryFilter](https://cloud.tencent.com/document/api/664/51406#QueryFilter)
-* [QuerySort](https://cloud.tencent.com/document/api/664/51406#QuerySort)
-
-
-
-## 互动白板(tiw) 版本：2019-09-19
-
-### 第 23 次发布
-
-发布时间：2021-11-19 08:15:40
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [StartWhiteboardPush](https://cloud.tencent.com/document/api/1137/52081)
-
-	* 新增入参：TRTCRoomId, TRTCRoomIdStr
-
+* [AlertDetail](https://cloud.tencent.com/document/api/664/51406#AlertDetail)
 
 
 
@@ -1069,6 +964,28 @@
 
 
 ## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 13 次发布
+
+发布时间：2021-11-22 08:01:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeListBGPIPInstances](https://cloud.tencent.com/document/api/1021/57524)
+
+	* 新增入参：FilterDamDDoSStatus
+
+
+修改数据结构：
+
+* [BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance)
+
+	* 新增成员：DamDDoSStatus
+
 
 ### 第 12 次发布
 
@@ -9788,7 +9705,7 @@
 
 新增数据结构：
 
-* [[ShareCname](https://cloud.tencent.com/document/api/228/30987#ShareCname)](https://cloud.tencent.com/document/api/228/30987#[ShareCname](https://cloud.tencent.com/document/api/228/30987#ShareCname))
+* [ShareCname](https://cloud.tencent.com/document/api/228/30987#ShareCname)
 
 修改数据结构：
 
@@ -24420,13 +24337,13 @@
 
 新增接口：
 
-* [[DescribePriceRunInstance](https://cloud.tencent.com/document/api/1108/64437)](https://cloud.tencent.com/document/api/#/#)
+* [DescribePriceRunInstance](https://cloud.tencent.com/document/api/1108/64437)
 
 新增数据结构：
 
-* [[InstancePricesPartDetail](https://cloud.tencent.com/document/api/1108/42574#InstancePricesPartDetail)](https://cloud.tencent.com/document/api/1108/42574#[InstancePricesPartDetail](https://cloud.tencent.com/document/api/1108/42574#InstancePricesPartDetail))
-* [[InstancesPrice](https://cloud.tencent.com/document/api/1108/42574#InstancesPrice)](https://cloud.tencent.com/document/api/1108/42574#[InstancesPrice](https://cloud.tencent.com/document/api/1108/42574#InstancesPrice))
-* [[PriceDetail](https://cloud.tencent.com/document/api/1108/42574#PriceDetail)](https://cloud.tencent.com/document/api/1108/42574#[PriceDetail](https://cloud.tencent.com/document/api/1108/42574#PriceDetail))
+* [InstancePricesPartDetail](https://cloud.tencent.com/document/api/1108/42574#InstancePricesPartDetail)
+* [InstancesPrice](https://cloud.tencent.com/document/api/1108/42574#InstancesPrice)
+* [PriceDetail](https://cloud.tencent.com/document/api/1108/42574#PriceDetail)
 
 ### 第 58 次发布
 
@@ -33837,8 +33754,8 @@
 
 新增接口：
 
-* [[DescribeProductDynamicRegister](https://cloud.tencent.com/document/api/1131/64445)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyProductDynamicRegister](https://cloud.tencent.com/document/api/1131/64444)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeProductDynamicRegister](https://cloud.tencent.com/document/api/1131/64445)
+* [ModifyProductDynamicRegister](https://cloud.tencent.com/document/api/1131/64444)
 
 ### 第 12 次发布
 
@@ -46360,6 +46277,22 @@
 
 ## 态势感知(ssa) 版本：2018-06-08
 
+### 第 6 次发布
+
+发布时间：2021-11-22 08:10:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeSocAlertDetails](https://cloud.tencent.com/document/api/664/64537)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AlertDetail](https://cloud.tencent.com/document/api/664/51406#AlertDetail)](https://cloud.tencent.com/document/api/664/51406#[AlertDetail](https://cloud.tencent.com/document/api/664/51406#AlertDetail))
+
 ### 第 5 次发布
 
 发布时间：2021-11-19 08:14:18
@@ -46370,15 +46303,15 @@
 
 新增接口：
 
-* [[DescribeSocAlertList](https://cloud.tencent.com/document/api/664/64446)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSocAlertList](https://cloud.tencent.com/document/api/664/64446)
 
 新增数据结构：
 
-* [[AlertListData](https://cloud.tencent.com/document/api/664/51406#AlertListData)](https://cloud.tencent.com/document/api/664/51406#[AlertListData](https://cloud.tencent.com/document/api/664/51406#AlertListData))
-* [[AlertType](https://cloud.tencent.com/document/api/664/51406#AlertType)](https://cloud.tencent.com/document/api/664/51406#[AlertType](https://cloud.tencent.com/document/api/664/51406#AlertType))
-* [[ConcernInfo](https://cloud.tencent.com/document/api/664/51406#ConcernInfo)](https://cloud.tencent.com/document/api/664/51406#[ConcernInfo](https://cloud.tencent.com/document/api/664/51406#ConcernInfo))
-* [[QueryFilter](https://cloud.tencent.com/document/api/664/51406#QueryFilter)](https://cloud.tencent.com/document/api/664/51406#[QueryFilter](https://cloud.tencent.com/document/api/664/51406#QueryFilter))
-* [[QuerySort](https://cloud.tencent.com/document/api/664/51406#QuerySort)](https://cloud.tencent.com/document/api/664/51406#[QuerySort](https://cloud.tencent.com/document/api/664/51406#QuerySort))
+* [AlertListData](https://cloud.tencent.com/document/api/664/51406#AlertListData)
+* [AlertType](https://cloud.tencent.com/document/api/664/51406#AlertType)
+* [ConcernInfo](https://cloud.tencent.com/document/api/664/51406#ConcernInfo)
+* [QueryFilter](https://cloud.tencent.com/document/api/664/51406#QueryFilter)
+* [QuerySort](https://cloud.tencent.com/document/api/664/51406#QuerySort)
 
 ### 第 4 次发布
 
