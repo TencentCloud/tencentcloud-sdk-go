@@ -2,35 +2,9 @@
 
 ## DDoS 防护(antiddos) 版本：2020-03-09
 
-### 第 13 次发布
+### 第 14 次发布
 
-发布时间：2021-11-22 08:01:25
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeListBGPIPInstances](https://cloud.tencent.com/document/api/1021/57524)
-
-	* 新增入参：FilterDamDDoSStatus
-
-
-修改数据结构：
-
-* [BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance)
-
-	* 新增成员：DamDDoSStatus
-
-
-
-
-## 态势感知(ssa) 版本：2018-06-08
-
-### 第 6 次发布
-
-发布时间：2021-11-22 08:10:13
+发布时间：2021-11-23 08:02:33
 
 本次发布包含了以下内容：
 
@@ -38,11 +12,104 @@
 
 新增接口：
 
-* [DescribeSocAlertDetails](https://cloud.tencent.com/document/api/664/64537)
+* [ModifyNewDomainRules](https://cloud.tencent.com/document/api/1021/64631)
 
 新增数据结构：
 
-* [AlertDetail](https://cloud.tencent.com/document/api/664/51406#AlertDetail)
+* [NewL7RuleEntry](https://cloud.tencent.com/document/api/1021/57582#NewL7RuleEntry)
+
+
+
+## 计费相关(billing) 版本：2018-07-09
+
+### 第 29 次发布
+
+发布时间：2021-11-23 08:03:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBillDetail](https://cloud.tencent.com/document/api/555/19182)
+
+	* 新增入参：BusinessCode
+
+* [DescribeBillResourceSummary](https://cloud.tencent.com/document/api/555/19181)
+
+	* 新增入参：BusinessCode
+
+
+
+
+## 智能保险助手(cii) 版本：2021-04-08
+
+### 第 7 次发布
+
+发布时间：2021-11-23 08:04:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [UploadMedicalFile](https://cloud.tencent.com/document/api/1368/64633)
+
+
+
+## 智能保险助手(cii) 版本：2020-12-10
+
+
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 33 次发布
+
+发布时间：2021-11-23 08:07:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [LivenessCompare](https://cloud.tencent.com/document/api/1007/31819)
+
+	* 新增入参：ImageUrl, VideoUrl
+
+	* <font color="#dd0000">**修改入参**：</font>ImageBase64, VideoBase64
+
+* [LivenessRecognition](https://cloud.tencent.com/document/api/1007/31818)
+
+	* 新增入参：VideoUrl
+
+	* <font color="#dd0000">**修改入参**：</font>VideoBase64
+
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+### 第 14 次发布
+
+发布时间：2021-11-23 08:09:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ResetCloudStorage](https://cloud.tencent.com/document/api/1131/53958)
+
+	* 新增入参：ChannelId, UserId
+
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
 
 
 
@@ -964,6 +1031,22 @@
 
 
 ## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 14 次发布
+
+发布时间：2021-11-23 08:02:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyNewDomainRules](https://cloud.tencent.com/document/api/1021/64631)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[NewL7RuleEntry](https://cloud.tencent.com/document/api/1021/57582#NewL7RuleEntry)](https://cloud.tencent.com/document/api/1021/57582#[NewL7RuleEntry](https://cloud.tencent.com/document/api/1021/57582#NewL7RuleEntry))
 
 ### 第 13 次发布
 
@@ -4453,6 +4536,25 @@
 
 
 ## 计费相关(billing) 版本：2018-07-09
+
+### 第 29 次发布
+
+发布时间：2021-11-23 08:03:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBillDetail](https://cloud.tencent.com/document/api/555/19182)
+
+	* 新增入参：BusinessCode
+
+* [DescribeBillResourceSummary](https://cloud.tencent.com/document/api/555/19181)
+
+	* 新增入参：BusinessCode
+
 
 ### 第 28 次发布
 
@@ -12459,6 +12561,18 @@
 
 
 ## 智能保险助手(cii) 版本：2021-04-08
+
+### 第 7 次发布
+
+发布时间：2021-11-23 08:04:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[UploadMedicalFile](https://cloud.tencent.com/document/api/1368/64633)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 6 次发布
 
@@ -27364,6 +27478,29 @@
 
 ## 人脸核身(faceid) 版本：2018-03-01
 
+### 第 33 次发布
+
+发布时间：2021-11-23 08:07:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [LivenessCompare](https://cloud.tencent.com/document/api/1007/31819)
+
+	* 新增入参：ImageUrl, VideoUrl
+
+	* <font color="#dd0000">**修改入参**：</font>ImageBase64, VideoBase64
+
+* [LivenessRecognition](https://cloud.tencent.com/document/api/1007/31818)
+
+	* 新增入参：VideoUrl
+
+	* <font color="#dd0000">**修改入参**：</font>VideoBase64
+
+
 ### 第 32 次发布
 
 发布时间：2021-10-29 08:05:31
@@ -33743,6 +33880,21 @@
 
 
 ## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+### 第 14 次发布
+
+发布时间：2021-11-23 08:09:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ResetCloudStorage](https://cloud.tencent.com/document/api/1131/53958)
+
+	* 新增入参：ChannelId, UserId
+
 
 ### 第 13 次发布
 
@@ -46287,11 +46439,11 @@
 
 新增接口：
 
-* [[DescribeSocAlertDetails](https://cloud.tencent.com/document/api/664/64537)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSocAlertDetails](https://cloud.tencent.com/document/api/664/64537)
 
 新增数据结构：
 
-* [[AlertDetail](https://cloud.tencent.com/document/api/664/51406#AlertDetail)](https://cloud.tencent.com/document/api/664/51406#[AlertDetail](https://cloud.tencent.com/document/api/664/51406#AlertDetail))
+* [AlertDetail](https://cloud.tencent.com/document/api/664/51406#AlertDetail)
 
 ### 第 5 次发布
 

@@ -20,6 +20,12 @@ const (
 	// CAM签名/鉴权错误。
 	AUTHFAILURE = "AuthFailure"
 
+	// 企业认证失败。
+	AUTHFAILURE_ENTERPRISE = "AuthFailure.Enterprise"
+
+	// 个人认证失败。
+	AUTHFAILURE_PERSONAL = "AuthFailure.Personal"
+
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 

@@ -4994,6 +4994,12 @@ type ResetCloudStorageRequest struct {
 
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 通道ID 非NVR设备则不填 NVR设备则必填 默认为无
+	ChannelId *uint64 `json:"ChannelId,omitempty" name:"ChannelId"`
+
+	// 云存用户Id，为空则为默认云存空间。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
 }
 
 func (r *ResetCloudStorageRequest) ToJsonString() string {
@@ -5010,6 +5016,8 @@ func (r *ResetCloudStorageRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ProductId")
 	delete(f, "DeviceName")
+	delete(f, "ChannelId")
+	delete(f, "UserId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetCloudStorageRequest has unknown keys!", "")
 	}

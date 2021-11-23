@@ -65,6 +65,9 @@ const (
 	// 文件下载失败。
 	FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 
+	// 文件下载超时。
+	FAILEDOPERATION_DOWNLOADTIMEOUTERROR = "FailedOperation.DownLoadTimeoutError"
+
 	// 图片内容为空。
 	FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
 

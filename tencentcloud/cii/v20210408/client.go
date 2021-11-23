@@ -283,3 +283,39 @@ func (c *Client) DescribeStructureTaskResult(request *DescribeStructureTaskResul
     err = c.Send(request, response)
     return
 }
+
+func NewUploadMedicalFileRequest() (request *UploadMedicalFileRequest) {
+    request = &UploadMedicalFileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cii", APIVersion, "UploadMedicalFile")
+    
+    return
+}
+
+func NewUploadMedicalFileResponse() (response *UploadMedicalFileResponse) {
+    response = &UploadMedicalFileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UploadMedicalFile
+// 上传医疗影像文件，可以用来做结构化。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_ENTERPRISE = "AuthFailure.Enterprise"
+//  AUTHFAILURE_PERSONAL = "AuthFailure.Personal"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) UploadMedicalFile(request *UploadMedicalFileRequest) (response *UploadMedicalFileResponse, err error) {
+    if request == nil {
+        request = NewUploadMedicalFileRequest()
+    }
+    response = NewUploadMedicalFileResponse()
+    err = c.Send(request, response)
+    return
+}

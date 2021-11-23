@@ -690,3 +690,57 @@ type UnderwriteItem struct {
 	// 风险值或者说明
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
+
+type UploadMedicalFileRequest struct {
+	*tchttp.BaseRequest
+
+	// 文件内容的base64的值。FileBase64与FileURL有一个不为空即可，若FileURL同时存在，那么取FileBase64。
+	File *string `json:"File,omitempty" name:"File"`
+
+	// 文件的URL地址。FileBase64与FileURL有一个不为空即可，若FileBase64同时存在，那么取FileBase64。
+	FileURL *string `json:"FileURL,omitempty" name:"FileURL"`
+}
+
+func (r *UploadMedicalFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadMedicalFileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "File")
+	delete(f, "FileURL")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadMedicalFileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadMedicalFileResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 文件存储的key，可以用来创建结构化任务。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FileKey *string `json:"FileKey,omitempty" name:"FileKey"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UploadMedicalFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadMedicalFileResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}

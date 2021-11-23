@@ -1671,6 +1671,37 @@ func (c *Client) ModifyL7RulesEdge(request *ModifyL7RulesEdgeRequest) (response 
     return
 }
 
+func NewModifyNewDomainRulesRequest() (request *ModifyNewDomainRulesRequest) {
+    request = &ModifyNewDomainRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("antiddos", APIVersion, "ModifyNewDomainRules")
+    
+    return
+}
+
+func NewModifyNewDomainRulesResponse() (response *ModifyNewDomainRulesResponse) {
+    response = &ModifyNewDomainRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyNewDomainRules
+// 修改7层转发规则
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyNewDomainRules(request *ModifyNewDomainRulesRequest) (response *ModifyNewDomainRulesResponse, err error) {
+    if request == nil {
+        request = NewModifyNewDomainRulesRequest()
+    }
+    response = NewModifyNewDomainRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyPacketFilterConfigRequest() (request *ModifyPacketFilterConfigRequest) {
     request = &ModifyPacketFilterConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},

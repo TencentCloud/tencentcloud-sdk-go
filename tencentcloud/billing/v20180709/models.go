@@ -904,7 +904,7 @@ type DescribeBillDetailRequest struct {
 	// 1-表示需要， 0-表示不需要
 	NeedRecordNum *int64 `json:"NeedRecordNum,omitempty" name:"NeedRecordNum"`
 
-	// 查询指定产品信息（暂时未开放获取）
+	// 已废弃参数，未开放
 	ProductCode *string `json:"ProductCode,omitempty" name:"ProductCode"`
 
 	// 付费模式 prePay/postPay
@@ -918,6 +918,10 @@ type DescribeBillDetailRequest struct {
 
 	// 项目ID:资源所属项目ID
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 商品名称代码
+	// 备注：如需获取当月使用过的BusinessCode，请调用API：<a href="https://cloud.tencent.com/document/product/555/35761">获取产品汇总费用分布</a>
+	BusinessCode *string `json:"BusinessCode,omitempty" name:"BusinessCode"`
 }
 
 func (r *DescribeBillDetailRequest) ToJsonString() string {
@@ -944,6 +948,7 @@ func (r *DescribeBillDetailRequest) FromJsonString(s string) error {
 	delete(f, "ResourceId")
 	delete(f, "ActionType")
 	delete(f, "ProjectId")
+	delete(f, "BusinessCode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillDetailRequest has unknown keys!", "")
 	}
@@ -1162,6 +1167,10 @@ type DescribeBillResourceSummaryRequest struct {
 
 	// 付费模式 prePay/postPay
 	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 商品名称代码
+	// 备注：如需获取当月使用过的BusinessCode，请调用API：<a href="https://cloud.tencent.com/document/product/555/35761">获取产品汇总费用分布</a>
+	BusinessCode *string `json:"BusinessCode,omitempty" name:"BusinessCode"`
 }
 
 func (r *DescribeBillResourceSummaryRequest) ToJsonString() string {
@@ -1184,6 +1193,7 @@ func (r *DescribeBillResourceSummaryRequest) FromJsonString(s string) error {
 	delete(f, "ActionType")
 	delete(f, "ResourceId")
 	delete(f, "PayMode")
+	delete(f, "BusinessCode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillResourceSummaryRequest has unknown keys!", "")
 	}

@@ -868,13 +868,20 @@ type CreateNotificationConfigurationRequest struct {
 	// 通知组ID，即为用户组ID集合，用户组ID可以通过[ListGroups](https://cloud.tencent.com/document/product/598/34589)查询。
 	NotificationUserGroupIds []*string `json:"NotificationUserGroupIds,omitempty" name:"NotificationUserGroupIds"`
 
-	// 通知接收端类型，取值：`USER_GROUP`，`CMQ_QUEUE`，`CMQ_TOPIC`。默认值为：`USER_GROUP`。
+	// 通知接收端类型，取值如下
+	// <br><li>USER_GROUP：用户组
+	// <br><li>CMQ_QUEUE：CMQ 队列
+	// <br><li>CMQ_TOPIC：CMQ 主题
+	// <br><li>TDMQ_CMQ_TOPIC：TDMQ CMQ 主题
+	// <br><li>TDMQ_CMQ_QUEUE：TDMQ CMQ 队列
+	// 
+	// 默认值为：`USER_GROUP`。
 	TargetType *string `json:"TargetType,omitempty" name:"TargetType"`
 
-	// CMQ 队列名称，如 TargetType 取值为 `CMQ_QUEUE`，该字段必填。
+	// CMQ 队列名称，如 TargetType 取值为 `CMQ_QUEUE` 或 `TDMQ_CMQ_QUEUE` 时，该字段必填。
 	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
 
-	// CMQ 主题名称，如 TargetType 取值为 `CMQ_TOPIC`，该字段必填。
+	// CMQ 主题名称，如 TargetType 取值为 `CMQ_TOPIC` 或 `TDMQ_CMQ_TOPIC` 时，该字段必填。
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 }
 
@@ -3084,10 +3091,10 @@ type ModifyNotificationConfigurationRequest struct {
 	// 通知组ID，即为用户组ID集合，用户组ID可以通过[ListGroups](https://cloud.tencent.com/document/product/598/34589)查询。
 	NotificationUserGroupIds []*string `json:"NotificationUserGroupIds,omitempty" name:"NotificationUserGroupIds"`
 
-	// CMQ 队列名。
+	// CMQ 队列或 TDMQ CMQ 队列名。
 	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
 
-	// CMQ 主题名。
+	// CMQ 主题或 TDMQ CMQ 主题名。
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 }
 
@@ -3281,15 +3288,17 @@ func (r *ModifyScheduledActionResponse) FromJsonString(s string) error {
 
 type NotificationTarget struct {
 
-	// 目标类型，取值范围包括`CMQ_QUEUE`、`CMQ_TOPIC`。
+	// 目标类型，取值范围包括`CMQ_QUEUE`、`CMQ_TOPIC`、`TDMQ_CMQ_QUEUE`、`TDMQ_CMQ_TOPIC`。
 	// <li> CMQ_QUEUE，指腾讯云消息队列-队列模型。</li>
 	// <li> CMQ_TOPIC，指腾讯云消息队列-主题模型。</li>
+	// <li> TDMQ_CMQ_QUEUE，指腾讯云 TDMQ 消息队列-队列模型。</li>
+	// <li> TDMQ_CMQ_TOPIC，指腾讯云 TDMQ 消息队列-主题模型。</li>
 	TargetType *string `json:"TargetType,omitempty" name:"TargetType"`
 
-	// 队列名称，如果`TargetType`取值为`CMQ_QUEUE`，则本字段必填。
+	// 队列名称，如果`TargetType`取值为`CMQ_QUEUE` 或 `TDMQ_CMQ_QUEUE`，则本字段必填。
 	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
 
-	// 主题名称，如果`TargetType`取值为`CMQ_TOPIC`，则本字段必填。
+	// 主题名称，如果`TargetType`取值为`CMQ_TOPIC` 或 `TDMQ_CMQ_TOPIC`，则本字段必填。
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 }
 
