@@ -14,7 +14,7 @@ import (
 )
 func GenPbBody() []byte {
 	nowtimestamp := int64(time.Now().Unix())
-	key := "system1,log,x,fewwe,sdfsafaf,sfasfds,,fasf8wr8w][[]][][][][bbvvv..,./"
+	key := "system1,log"
 	value := "start1,report"
 	log := proto.Log{
 		Time: &nowtimestamp,
