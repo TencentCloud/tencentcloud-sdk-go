@@ -881,7 +881,7 @@ type DBInstance struct {
 	// 实例DB字符集
 	DBCharset *string `json:"DBCharset,omitempty" name:"DBCharset"`
 
-	// PostgreSQL内核版本
+	// PostgreSQL主版本
 	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
 
 	// 实例创建时间
@@ -936,6 +936,14 @@ type DBInstance struct {
 	// 下线时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OfflineTime *string `json:"OfflineTime,omitempty" name:"OfflineTime"`
+
+	// 数据库内核版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DBKernelVersion *string `json:"DBKernelVersion,omitempty" name:"DBKernelVersion"`
+
+	// 实例网络信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkAccessList []*NetworkAccess `json:"NetworkAccessList,omitempty" name:"NetworkAccessList"`
 }
 
 type DBInstanceNetInfo struct {
@@ -3170,6 +3178,41 @@ func (r *ModifySwitchTimePeriodResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type NetworkAccess struct {
+
+	// 网络资源id，实例id或RO组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 资源类型，1-实例 2-RO组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceType *uint64 `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 私有网络ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// IP地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// ipv6的IP地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vip6 *string `json:"Vip6,omitempty" name:"Vip6"`
+
+	// 连接Port地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
+
+	// 子网ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 网络状态，1-申请中，2-使用中，3-删除中，4-已删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcStatus *int64 `json:"VpcStatus,omitempty" name:"VpcStatus"`
+}
+
 type NormalQueryItem struct {
 
 	// 用户名
@@ -3504,6 +3547,10 @@ type ReadOnlyGroup struct {
 
 	// 网络信息
 	DBInstanceNetInfo []*DBInstanceNetInfo `json:"DBInstanceNetInfo,omitempty" name:"DBInstanceNetInfo"`
+
+	// 只读组网络信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkAccessList []*NetworkAccess `json:"NetworkAccessList,omitempty" name:"NetworkAccessList"`
 }
 
 type RebalanceReadOnlyGroupRequest struct {
@@ -3864,6 +3911,10 @@ type ServerlessDBInstance struct {
 	// 实例绑定的标签数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagList []*Tag `json:"TagList,omitempty" name:"TagList"`
+
+	// 数据库内核版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DBKernelVersion *string `json:"DBKernelVersion,omitempty" name:"DBKernelVersion"`
 }
 
 type ServerlessDBInstanceNetInfo struct {

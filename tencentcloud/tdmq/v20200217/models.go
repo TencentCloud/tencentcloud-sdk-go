@@ -20,6 +20,221 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AMQPClusterConfig struct {
+
+	// 单Vhost TPS上限
+	MaxTpsPerVHost *uint64 `json:"MaxTpsPerVHost,omitempty" name:"MaxTpsPerVHost"`
+
+	// 单Vhost客户端连接数上限
+	MaxConnNumPerVHost *uint64 `json:"MaxConnNumPerVHost,omitempty" name:"MaxConnNumPerVHost"`
+
+	// 最大Vhost数量
+	MaxVHostNum *uint64 `json:"MaxVHostNum,omitempty" name:"MaxVHostNum"`
+
+	// 最大exchange数量
+	MaxExchangeNum *uint64 `json:"MaxExchangeNum,omitempty" name:"MaxExchangeNum"`
+
+	// 最大Queue数量
+	MaxQueueNum *uint64 `json:"MaxQueueNum,omitempty" name:"MaxQueueNum"`
+
+	// 消息最大保留时间，以毫秒为单位
+	MaxRetentionTime *uint64 `json:"MaxRetentionTime,omitempty" name:"MaxRetentionTime"`
+
+	// 已使用Vhost数量
+	UsedVHostNum *uint64 `json:"UsedVHostNum,omitempty" name:"UsedVHostNum"`
+
+	// 已使用exchange数量
+	UsedExchangeNum *uint64 `json:"UsedExchangeNum,omitempty" name:"UsedExchangeNum"`
+
+	// 已使用queue数量
+	UsedQueueNum *uint64 `json:"UsedQueueNum,omitempty" name:"UsedQueueNum"`
+}
+
+type AMQPClusterDetail struct {
+
+	// 集群基本信息
+	Info *AMQPClusterInfo `json:"Info,omitempty" name:"Info"`
+
+	// 集群配置信息
+	Config *AMQPClusterConfig `json:"Config,omitempty" name:"Config"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+}
+
+type AMQPClusterInfo struct {
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 地域信息
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 创建时间，毫秒为单位
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 集群说明信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 公网接入地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicEndPoint *string `json:"PublicEndPoint,omitempty" name:"PublicEndPoint"`
+
+	// VPC接入地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcEndPoint *string `json:"VpcEndPoint,omitempty" name:"VpcEndPoint"`
+}
+
+type AMQPClusterRecentStats struct {
+
+	// Queue数量
+	QueueNum *uint64 `json:"QueueNum,omitempty" name:"QueueNum"`
+
+	// 消息生产数
+	ProducedMsgNum *uint64 `json:"ProducedMsgNum,omitempty" name:"ProducedMsgNum"`
+
+	// 消息堆积数
+	AccumulativeMsgNum *uint64 `json:"AccumulativeMsgNum,omitempty" name:"AccumulativeMsgNum"`
+
+	// Exchange数量
+	ExchangeNum *uint64 `json:"ExchangeNum,omitempty" name:"ExchangeNum"`
+}
+
+type AMQPExchange struct {
+
+	// Exchange名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// Exchange的类别，为枚举类型:Direct, Fanout, Topic
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 主绑定数
+	SourceBindedNum *uint64 `json:"SourceBindedNum,omitempty" name:"SourceBindedNum"`
+
+	// 说明
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 被绑定数
+	DestBindedNum *uint64 `json:"DestBindedNum,omitempty" name:"DestBindedNum"`
+
+	// 创建时间，以毫秒为单位
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 创建时间，以毫秒为单位
+	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 是否为内部Exchange(以amq.前缀开头的)
+	Internal *bool `json:"Internal,omitempty" name:"Internal"`
+}
+
+type AMQPQueueDetail struct {
+
+	// Queue名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 说明
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 被绑定数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DestBindedNum *uint64 `json:"DestBindedNum,omitempty" name:"DestBindedNum"`
+
+	// 创建时间，以毫秒为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 创建时间，以毫秒为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 在线消费者数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OnlineConsumerNum *uint64 `json:"OnlineConsumerNum,omitempty" name:"OnlineConsumerNum"`
+
+	// 每秒钟的事务数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tps *uint64 `json:"Tps,omitempty" name:"Tps"`
+
+	// 消息堆积数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccumulativeMsgNum *uint64 `json:"AccumulativeMsgNum,omitempty" name:"AccumulativeMsgNum"`
+
+	// 是否自动删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoDelete *bool `json:"AutoDelete,omitempty" name:"AutoDelete"`
+
+	// 死信交换机
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeadLetterExchange *string `json:"DeadLetterExchange,omitempty" name:"DeadLetterExchange"`
+
+	// 死信交换机路由键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeadLetterRoutingKey *string `json:"DeadLetterRoutingKey,omitempty" name:"DeadLetterRoutingKey"`
+}
+
+type AMQPRouteRelation struct {
+
+	// 路由关系ID
+	RouteRelationId *string `json:"RouteRelationId,omitempty" name:"RouteRelationId"`
+
+	// 源Exchange
+	SourceExchange *string `json:"SourceExchange,omitempty" name:"SourceExchange"`
+
+	// 目标类型:Queue|Exchange
+	DestType *string `json:"DestType,omitempty" name:"DestType"`
+
+	// 目标值
+	DestValue *string `json:"DestValue,omitempty" name:"DestValue"`
+
+	// 绑定key
+	RoutingKey *string `json:"RoutingKey,omitempty" name:"RoutingKey"`
+
+	// 源路由类型:Direct|Topic|Fanout
+	SourceExchangeType *string `json:"SourceExchangeType,omitempty" name:"SourceExchangeType"`
+
+	// 创建时间，以毫秒为单位
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 修改时间，以毫秒为单位
+	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 说明信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+type AMQPVHost struct {
+
+	// 命名空间名称，3-64个字符，只能包含字母、数字、“-”及“_”
+	VHostId *string `json:"VHostId,omitempty" name:"VHostId"`
+
+	// 未消费消息的保留时间，以毫秒单位，范围60秒到15天
+	MsgTtl *uint64 `json:"MsgTtl,omitempty" name:"MsgTtl"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 创建时间，以毫秒为单位
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间，以毫秒为单位
+	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 用户名
+	Username *string `json:"Username,omitempty" name:"Username"`
+
+	// 密码
+	Password *string `json:"Password,omitempty" name:"Password"`
+}
+
 type AcknowledgeMessageRequest struct {
 	*tchttp.BaseRequest
 
@@ -616,6 +831,323 @@ type ConsumersSchedule struct {
 	// 超时丢弃比例。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgRateExpired *string `json:"MsgRateExpired,omitempty" name:"MsgRateExpired"`
+}
+
+type CreateAMQPClusterRequest struct {
+	*tchttp.BaseRequest
+
+	// 3-64个字符，只能包含字母、数字、“-”及“_”
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 集群描述，128个字符以内
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *CreateAMQPClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAMQPClusterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAMQPClusterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAMQPClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 集群ID
+		ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAMQPClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAMQPClusterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAMQPExchangeRequest struct {
+	*tchttp.BaseRequest
+
+	// 交换机名称，3-64个字符，只能包含字母、数字、“-”及“_”
+	Exchange *string `json:"Exchange,omitempty" name:"Exchange"`
+
+	// 交换机所在的vhost，目前支持在单个vhost下创建主题
+	VHosts []*string `json:"VHosts,omitempty" name:"VHosts"`
+
+	// 交换机类型，可选值为Direct, Fanout, Topic
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 交换机说明，最大128个字符
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 备用交换机名称
+	AlternateExchange *string `json:"AlternateExchange,omitempty" name:"AlternateExchange"`
+}
+
+func (r *CreateAMQPExchangeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAMQPExchangeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Exchange")
+	delete(f, "VHosts")
+	delete(f, "Type")
+	delete(f, "ClusterId")
+	delete(f, "Remark")
+	delete(f, "AlternateExchange")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAMQPExchangeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAMQPExchangeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAMQPExchangeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAMQPExchangeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAMQPQueueRequest struct {
+	*tchttp.BaseRequest
+
+	// 队列名称，3-64个字符，只能包含字母、数字、“-”及“_”
+	Queue *string `json:"Queue,omitempty" name:"Queue"`
+
+	// 队列所在的vhost名称
+	VHostId *string `json:"VHostId,omitempty" name:"VHostId"`
+
+	// 是否自动清除
+	AutoDelete *bool `json:"AutoDelete,omitempty" name:"AutoDelete"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 队列说明，最大128个字符
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 死信exchange
+	DeadLetterExchange *string `json:"DeadLetterExchange,omitempty" name:"DeadLetterExchange"`
+
+	// 路由键
+	DeadLetterRoutingKey *string `json:"DeadLetterRoutingKey,omitempty" name:"DeadLetterRoutingKey"`
+}
+
+func (r *CreateAMQPQueueRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAMQPQueueRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Queue")
+	delete(f, "VHostId")
+	delete(f, "AutoDelete")
+	delete(f, "ClusterId")
+	delete(f, "Remark")
+	delete(f, "DeadLetterExchange")
+	delete(f, "DeadLetterRoutingKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAMQPQueueRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAMQPQueueResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAMQPQueueResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAMQPQueueResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAMQPRouteRelationRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 交换机所在的vhost
+	VHostId *string `json:"VHostId,omitempty" name:"VHostId"`
+
+	// 源Exchange名称
+	SourceExchange *string `json:"SourceExchange,omitempty" name:"SourceExchange"`
+
+	// 目标类型:Queue|Exchange
+	DestType *string `json:"DestType,omitempty" name:"DestType"`
+
+	// 目标值
+	DestValue *string `json:"DestValue,omitempty" name:"DestValue"`
+
+	// 交换机说明，最大128个字符
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 绑定key,缺省值为default
+	RoutingKey *string `json:"RoutingKey,omitempty" name:"RoutingKey"`
+}
+
+func (r *CreateAMQPRouteRelationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAMQPRouteRelationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "VHostId")
+	delete(f, "SourceExchange")
+	delete(f, "DestType")
+	delete(f, "DestValue")
+	delete(f, "Remark")
+	delete(f, "RoutingKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAMQPRouteRelationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAMQPRouteRelationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAMQPRouteRelationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAMQPRouteRelationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAMQPVHostRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// vhost名称，3-64个字符，只能包含字母、数字、“-”及“_”
+	VHostId *string `json:"VHostId,omitempty" name:"VHostId"`
+
+	// 未消费消息的保留时间，以毫秒为单位，60秒-15天
+	MsgTtl *uint64 `json:"MsgTtl,omitempty" name:"MsgTtl"`
+
+	// 说明，最大128个字符
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *CreateAMQPVHostRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAMQPVHostRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "VHostId")
+	delete(f, "MsgTtl")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAMQPVHostRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAMQPVHostResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAMQPVHostResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAMQPVHostResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateClusterRequest struct {
@@ -1539,6 +2071,264 @@ func (r *CreateTopicResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteAMQPClusterRequest struct {
+	*tchttp.BaseRequest
+
+	// 待删除的集群Id。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *DeleteAMQPClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAMQPClusterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAMQPClusterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAMQPClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteAMQPClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAMQPClusterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAMQPExchangeRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// Vhost名称
+	VHostId *string `json:"VHostId,omitempty" name:"VHostId"`
+
+	// 交换机名称
+	Exchange *string `json:"Exchange,omitempty" name:"Exchange"`
+}
+
+func (r *DeleteAMQPExchangeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAMQPExchangeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "VHostId")
+	delete(f, "Exchange")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAMQPExchangeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAMQPExchangeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteAMQPExchangeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAMQPExchangeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAMQPQueueRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// Vhost名称
+	VHostId *string `json:"VHostId,omitempty" name:"VHostId"`
+
+	// 队列名称
+	Queue *string `json:"Queue,omitempty" name:"Queue"`
+}
+
+func (r *DeleteAMQPQueueRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAMQPQueueRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "VHostId")
+	delete(f, "Queue")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAMQPQueueRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAMQPQueueResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteAMQPQueueResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAMQPQueueResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAMQPRouteRelationRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// Vhost名称
+	VHostId *string `json:"VHostId,omitempty" name:"VHostId"`
+
+	// 路由关系ID
+	RouteRelationId *string `json:"RouteRelationId,omitempty" name:"RouteRelationId"`
+}
+
+func (r *DeleteAMQPRouteRelationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAMQPRouteRelationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "VHostId")
+	delete(f, "RouteRelationId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAMQPRouteRelationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAMQPRouteRelationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteAMQPRouteRelationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAMQPRouteRelationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAMQPVHostRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// vhost名称
+	VHostId *string `json:"VHostId,omitempty" name:"VHostId"`
+}
+
+func (r *DeleteAMQPVHostRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAMQPVHostRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "VHostId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAMQPVHostRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAMQPVHostResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteAMQPVHostResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAMQPVHostResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteClusterRequest struct {
 	*tchttp.BaseRequest
 
@@ -2213,6 +3003,492 @@ func (r *DeleteTopicsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteTopicsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAMQPClusterRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribeAMQPClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAMQPClusterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAMQPClusterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAMQPClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 集群信息
+		ClusterInfo *AMQPClusterInfo `json:"ClusterInfo,omitempty" name:"ClusterInfo"`
+
+		// 集群配置
+		ClusterConfig *AMQPClusterConfig `json:"ClusterConfig,omitempty" name:"ClusterConfig"`
+
+		// 集群最近使用量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ClusterStats *AMQPClusterRecentStats `json:"ClusterStats,omitempty" name:"ClusterStats"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAMQPClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAMQPClusterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAMQPClustersRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 按照集群ID关键字搜索
+	IdKeyword *string `json:"IdKeyword,omitempty" name:"IdKeyword"`
+
+	// 按照集群名称关键字搜索
+	NameKeyword *string `json:"NameKeyword,omitempty" name:"NameKeyword"`
+
+	// 集群ID列表过滤
+	ClusterIdList []*string `json:"ClusterIdList,omitempty" name:"ClusterIdList"`
+
+	// 标签过滤查找时，需要设置为true
+	IsTagFilter *bool `json:"IsTagFilter,omitempty" name:"IsTagFilter"`
+
+	// 过滤器。目前支持按标签过滤。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeAMQPClustersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAMQPClustersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "IdKeyword")
+	delete(f, "NameKeyword")
+	delete(f, "ClusterIdList")
+	delete(f, "IsTagFilter")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAMQPClustersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAMQPClustersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 集群信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ClusterList []*AMQPClusterDetail `json:"ClusterList,omitempty" name:"ClusterList"`
+
+		// 总条数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAMQPClustersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAMQPClustersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAMQPCreateQuotaRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeAMQPCreateQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAMQPCreateQuotaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAMQPCreateQuotaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAMQPCreateQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 租户总共可使用集群数量
+		MaxClusterNum *uint64 `json:"MaxClusterNum,omitempty" name:"MaxClusterNum"`
+
+		// 租户已创建集群数量
+		UsedClusterNum *uint64 `json:"UsedClusterNum,omitempty" name:"UsedClusterNum"`
+
+		// Exchange容量
+		ExchangeCapacity *uint64 `json:"ExchangeCapacity,omitempty" name:"ExchangeCapacity"`
+
+		// Queue容量
+		QueueCapacity *uint64 `json:"QueueCapacity,omitempty" name:"QueueCapacity"`
+
+		// 单Vhost TPS
+		MaxTpsPerVHost *uint64 `json:"MaxTpsPerVHost,omitempty" name:"MaxTpsPerVHost"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAMQPCreateQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAMQPCreateQuotaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAMQPExchangesRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询限制数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// Vhost ID
+	VHostId *string `json:"VHostId,omitempty" name:"VHostId"`
+
+	// 按路由类型过滤查询结果，可选择Direct, Fanout, Topic
+	FilterType []*string `json:"FilterType,omitempty" name:"FilterType"`
+
+	// 按exchange名称搜索，支持模糊查询
+	FilterName *string `json:"FilterName,omitempty" name:"FilterName"`
+
+	// 过滤查询内部或者外部exchange
+	FilterInternal *bool `json:"FilterInternal,omitempty" name:"FilterInternal"`
+}
+
+func (r *DescribeAMQPExchangesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAMQPExchangesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "ClusterId")
+	delete(f, "VHostId")
+	delete(f, "FilterType")
+	delete(f, "FilterName")
+	delete(f, "FilterInternal")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAMQPExchangesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAMQPExchangesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总记录数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 主题信息列表
+		Exchanges []*AMQPExchange `json:"Exchanges,omitempty" name:"Exchanges"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAMQPExchangesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAMQPExchangesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAMQPQueuesRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询限制数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// Vhost名称
+	VHostId *string `json:"VHostId,omitempty" name:"VHostId"`
+
+	// 按队列名称搜索，支持模糊查询
+	NameKeyword *string `json:"NameKeyword,omitempty" name:"NameKeyword"`
+
+	// 查询结果排序规则，ASC为升序，DESC为降序
+	SortOrder *string `json:"SortOrder,omitempty" name:"SortOrder"`
+
+	// 对查询结果排序，此为排序字段，目前支持Accumulative（消息堆积量）、Tps
+	SortedBy *string `json:"SortedBy,omitempty" name:"SortedBy"`
+
+	// 队列名称，指定此参数后将只返回该队列信息
+	FilterOneQueue *string `json:"FilterOneQueue,omitempty" name:"FilterOneQueue"`
+}
+
+func (r *DescribeAMQPQueuesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAMQPQueuesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "ClusterId")
+	delete(f, "VHostId")
+	delete(f, "NameKeyword")
+	delete(f, "SortOrder")
+	delete(f, "SortedBy")
+	delete(f, "FilterOneQueue")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAMQPQueuesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAMQPQueuesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总记录数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 队列信息列表
+		Queues []*AMQPQueueDetail `json:"Queues,omitempty" name:"Queues"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAMQPQueuesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAMQPQueuesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAMQPRouteRelationsRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询限制数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// Vhost名称
+	VHostId *string `json:"VHostId,omitempty" name:"VHostId"`
+
+	// 按源exchange名称过滤查询结果，支持模糊查询
+	FilterSourceExchange *string `json:"FilterSourceExchange,omitempty" name:"FilterSourceExchange"`
+
+	// 按绑定的目标类型过滤查询结果，可选值:Exchange、Queue
+	FilterDestType *string `json:"FilterDestType,omitempty" name:"FilterDestType"`
+
+	// 按目标名称过滤查询结果，支持模糊查询
+	FilterDestValue *string `json:"FilterDestValue,omitempty" name:"FilterDestValue"`
+}
+
+func (r *DescribeAMQPRouteRelationsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAMQPRouteRelationsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "ClusterId")
+	delete(f, "VHostId")
+	delete(f, "FilterSourceExchange")
+	delete(f, "FilterDestType")
+	delete(f, "FilterDestValue")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAMQPRouteRelationsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAMQPRouteRelationsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总记录数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 路由关系列表
+		RouteRelations []*AMQPRouteRelation `json:"RouteRelations,omitempty" name:"RouteRelations"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAMQPRouteRelationsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAMQPRouteRelationsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAMQPVHostsRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 按名称搜索
+	NameKeyword *string `json:"NameKeyword,omitempty" name:"NameKeyword"`
+}
+
+func (r *DescribeAMQPVHostsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAMQPVHostsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "NameKeyword")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAMQPVHostsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAMQPVHostsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// Vhost 列表
+		VHosts []*AMQPVHost `json:"VHosts,omitempty" name:"VHosts"`
+
+		// 总条数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAMQPVHostsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAMQPVHostsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3890,6 +5166,246 @@ type FilterSubscription struct {
 
 	// 按照订阅名过滤，精确查询。
 	SubscriptionNames []*string `json:"SubscriptionNames,omitempty" name:"SubscriptionNames"`
+}
+
+type ModifyAMQPClusterRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 3-64个字符，只能包含字母、数字、“-”及“_”
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 说明信息，不超过128个字符
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *ModifyAMQPClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAMQPClusterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "ClusterName")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAMQPClusterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAMQPClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyAMQPClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAMQPClusterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAMQPExchangeRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// Vhost间名称
+	VHostId *string `json:"VHostId,omitempty" name:"VHostId"`
+
+	// 交换机名称
+	Exchange *string `json:"Exchange,omitempty" name:"Exchange"`
+
+	// 说明信息，最大128个字符
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *ModifyAMQPExchangeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAMQPExchangeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "VHostId")
+	delete(f, "Exchange")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAMQPExchangeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAMQPExchangeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyAMQPExchangeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAMQPExchangeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAMQPQueueRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// Vhost名称
+	VHostId *string `json:"VHostId,omitempty" name:"VHostId"`
+
+	// 队列名称
+	Queue *string `json:"Queue,omitempty" name:"Queue"`
+
+	// 是否自动清除
+	AutoDelete *bool `json:"AutoDelete,omitempty" name:"AutoDelete"`
+
+	// 说明信息，最大128个字符
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 死信exchange
+	DeadLetterExchange *string `json:"DeadLetterExchange,omitempty" name:"DeadLetterExchange"`
+
+	// 路由键
+	DeadLetterRoutingKey *string `json:"DeadLetterRoutingKey,omitempty" name:"DeadLetterRoutingKey"`
+}
+
+func (r *ModifyAMQPQueueRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAMQPQueueRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "VHostId")
+	delete(f, "Queue")
+	delete(f, "AutoDelete")
+	delete(f, "Remark")
+	delete(f, "DeadLetterExchange")
+	delete(f, "DeadLetterRoutingKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAMQPQueueRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAMQPQueueResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyAMQPQueueResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAMQPQueueResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAMQPVHostRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// vhost名称，3-64个字符，只能包含字母、数字、“-”及“_”
+	VHostId *string `json:"VHostId,omitempty" name:"VHostId"`
+
+	// 未消费消息的保留时间，以毫秒为单位，60秒-15天
+	MsgTtl *uint64 `json:"MsgTtl,omitempty" name:"MsgTtl"`
+
+	// 说明，最大128个字符
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *ModifyAMQPVHostRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAMQPVHostRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "VHostId")
+	delete(f, "MsgTtl")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAMQPVHostRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAMQPVHostResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyAMQPVHostResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAMQPVHostResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyClusterRequest struct {

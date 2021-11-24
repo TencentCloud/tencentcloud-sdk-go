@@ -29,6 +29,12 @@ const (
 	// 参数冲突。
 	INVALIDPARAMETER_CONFLICTPARAMETER = "InvalidParameter.ConflictParameter"
 
+	// OutputCOSBucketUrl 无效。
+	INVALIDPARAMETER_INVALIDOUTPUTCOSBUCKETURL = "InvalidParameter.InvalidOutputCOSBucketUrl"
+
+	// OutputCOSKeyPrefix 无效。
+	INVALIDPARAMETER_INVALIDOUTPUTCOSKEYPREFIX = "InvalidParameter.InvalidOutputCOSKeyPrefix"
+
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 

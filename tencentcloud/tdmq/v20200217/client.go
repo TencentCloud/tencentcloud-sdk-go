@@ -160,6 +160,183 @@ func (c *Client) ClearCmqSubscriptionFilterTags(request *ClearCmqSubscriptionFil
     return
 }
 
+func NewCreateAMQPClusterRequest() (request *CreateAMQPClusterRequest) {
+    request = &CreateAMQPClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "CreateAMQPCluster")
+    
+    return
+}
+
+func NewCreateAMQPClusterResponse() (response *CreateAMQPClusterResponse) {
+    response = &CreateAMQPClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateAMQPCluster
+// 创建AMQP集群
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateAMQPCluster(request *CreateAMQPClusterRequest) (response *CreateAMQPClusterResponse, err error) {
+    if request == nil {
+        request = NewCreateAMQPClusterRequest()
+    }
+    response = NewCreateAMQPClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateAMQPExchangeRequest() (request *CreateAMQPExchangeRequest) {
+    request = &CreateAMQPExchangeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "CreateAMQPExchange")
+    
+    return
+}
+
+func NewCreateAMQPExchangeResponse() (response *CreateAMQPExchangeResponse) {
+    response = &CreateAMQPExchangeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateAMQPExchange
+// 创建AMQP Exchange
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateAMQPExchange(request *CreateAMQPExchangeRequest) (response *CreateAMQPExchangeResponse, err error) {
+    if request == nil {
+        request = NewCreateAMQPExchangeRequest()
+    }
+    response = NewCreateAMQPExchangeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateAMQPQueueRequest() (request *CreateAMQPQueueRequest) {
+    request = &CreateAMQPQueueRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "CreateAMQPQueue")
+    
+    return
+}
+
+func NewCreateAMQPQueueResponse() (response *CreateAMQPQueueResponse) {
+    response = &CreateAMQPQueueResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateAMQPQueue
+// 创建AMQP队列
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateAMQPQueue(request *CreateAMQPQueueRequest) (response *CreateAMQPQueueResponse, err error) {
+    if request == nil {
+        request = NewCreateAMQPQueueRequest()
+    }
+    response = NewCreateAMQPQueueResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateAMQPRouteRelationRequest() (request *CreateAMQPRouteRelationRequest) {
+    request = &CreateAMQPRouteRelationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "CreateAMQPRouteRelation")
+    
+    return
+}
+
+func NewCreateAMQPRouteRelationResponse() (response *CreateAMQPRouteRelationResponse) {
+    response = &CreateAMQPRouteRelationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateAMQPRouteRelation
+// 创建AMQP路由关系
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateAMQPRouteRelation(request *CreateAMQPRouteRelationRequest) (response *CreateAMQPRouteRelationResponse, err error) {
+    if request == nil {
+        request = NewCreateAMQPRouteRelationRequest()
+    }
+    response = NewCreateAMQPRouteRelationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateAMQPVHostRequest() (request *CreateAMQPVHostRequest) {
+    request = &CreateAMQPVHostRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "CreateAMQPVHost")
+    
+    return
+}
+
+func NewCreateAMQPVHostResponse() (response *CreateAMQPVHostResponse) {
+    response = &CreateAMQPVHostResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateAMQPVHost
+// 创建Amqp Vhost
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateAMQPVHost(request *CreateAMQPVHostRequest) (response *CreateAMQPVHostResponse, err error) {
+    if request == nil {
+        request = NewCreateAMQPVHostRequest()
+    }
+    response = NewCreateAMQPVHostResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateClusterRequest() (request *CreateClusterRequest) {
     request = &CreateClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -635,6 +812,173 @@ func (c *Client) CreateTopic(request *CreateTopicRequest) (response *CreateTopic
     return
 }
 
+func NewDeleteAMQPClusterRequest() (request *DeleteAMQPClusterRequest) {
+    request = &DeleteAMQPClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DeleteAMQPCluster")
+    
+    return
+}
+
+func NewDeleteAMQPClusterResponse() (response *DeleteAMQPClusterResponse) {
+    response = &DeleteAMQPClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteAMQPCluster
+// 删除AMQP集群
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteAMQPCluster(request *DeleteAMQPClusterRequest) (response *DeleteAMQPClusterResponse, err error) {
+    if request == nil {
+        request = NewDeleteAMQPClusterRequest()
+    }
+    response = NewDeleteAMQPClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAMQPExchangeRequest() (request *DeleteAMQPExchangeRequest) {
+    request = &DeleteAMQPExchangeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DeleteAMQPExchange")
+    
+    return
+}
+
+func NewDeleteAMQPExchangeResponse() (response *DeleteAMQPExchangeResponse) {
+    response = &DeleteAMQPExchangeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteAMQPExchange
+// 删除Amqp交换机
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteAMQPExchange(request *DeleteAMQPExchangeRequest) (response *DeleteAMQPExchangeResponse, err error) {
+    if request == nil {
+        request = NewDeleteAMQPExchangeRequest()
+    }
+    response = NewDeleteAMQPExchangeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAMQPQueueRequest() (request *DeleteAMQPQueueRequest) {
+    request = &DeleteAMQPQueueRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DeleteAMQPQueue")
+    
+    return
+}
+
+func NewDeleteAMQPQueueResponse() (response *DeleteAMQPQueueResponse) {
+    response = &DeleteAMQPQueueResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteAMQPQueue
+// 删除Amqp队列
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteAMQPQueue(request *DeleteAMQPQueueRequest) (response *DeleteAMQPQueueResponse, err error) {
+    if request == nil {
+        request = NewDeleteAMQPQueueRequest()
+    }
+    response = NewDeleteAMQPQueueResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAMQPRouteRelationRequest() (request *DeleteAMQPRouteRelationRequest) {
+    request = &DeleteAMQPRouteRelationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DeleteAMQPRouteRelation")
+    
+    return
+}
+
+func NewDeleteAMQPRouteRelationResponse() (response *DeleteAMQPRouteRelationResponse) {
+    response = &DeleteAMQPRouteRelationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteAMQPRouteRelation
+// 删除Amqp路由关系
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteAMQPRouteRelation(request *DeleteAMQPRouteRelationRequest) (response *DeleteAMQPRouteRelationResponse, err error) {
+    if request == nil {
+        request = NewDeleteAMQPRouteRelationRequest()
+    }
+    response = NewDeleteAMQPRouteRelationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAMQPVHostRequest() (request *DeleteAMQPVHostRequest) {
+    request = &DeleteAMQPVHostRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DeleteAMQPVHost")
+    
+    return
+}
+
+func NewDeleteAMQPVHostResponse() (response *DeleteAMQPVHostResponse) {
+    response = &DeleteAMQPVHostResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteAMQPVHost
+// 删除Vhost
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteAMQPVHost(request *DeleteAMQPVHostRequest) (response *DeleteAMQPVHostResponse, err error) {
+    if request == nil {
+        request = NewDeleteAMQPVHostRequest()
+    }
+    response = NewDeleteAMQPVHostResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteClusterRequest() (request *DeleteClusterRequest) {
     request = &DeleteClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1081,6 +1425,238 @@ func (c *Client) DeleteTopics(request *DeleteTopicsRequest) (response *DeleteTop
         request = NewDeleteTopicsRequest()
     }
     response = NewDeleteTopicsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAMQPClusterRequest() (request *DescribeAMQPClusterRequest) {
+    request = &DescribeAMQPClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeAMQPCluster")
+    
+    return
+}
+
+func NewDescribeAMQPClusterResponse() (response *DescribeAMQPClusterResponse) {
+    response = &DescribeAMQPClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAMQPCluster
+// 获取单个Amqp集群信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAMQPCluster(request *DescribeAMQPClusterRequest) (response *DescribeAMQPClusterResponse, err error) {
+    if request == nil {
+        request = NewDescribeAMQPClusterRequest()
+    }
+    response = NewDescribeAMQPClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAMQPClustersRequest() (request *DescribeAMQPClustersRequest) {
+    request = &DescribeAMQPClustersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeAMQPClusters")
+    
+    return
+}
+
+func NewDescribeAMQPClustersResponse() (response *DescribeAMQPClustersResponse) {
+    response = &DescribeAMQPClustersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAMQPClusters
+// 获取amqp集群列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+func (c *Client) DescribeAMQPClusters(request *DescribeAMQPClustersRequest) (response *DescribeAMQPClustersResponse, err error) {
+    if request == nil {
+        request = NewDescribeAMQPClustersRequest()
+    }
+    response = NewDescribeAMQPClustersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAMQPCreateQuotaRequest() (request *DescribeAMQPCreateQuotaRequest) {
+    request = &DescribeAMQPCreateQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeAMQPCreateQuota")
+    
+    return
+}
+
+func NewDescribeAMQPCreateQuotaResponse() (response *DescribeAMQPCreateQuotaResponse) {
+    response = &DescribeAMQPCreateQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAMQPCreateQuota
+// 获取用户的配额，如Queue容量，Exchange容量，Vhost容量，单Vhost Tps数,剩余可创建集群数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAMQPCreateQuota(request *DescribeAMQPCreateQuotaRequest) (response *DescribeAMQPCreateQuotaResponse, err error) {
+    if request == nil {
+        request = NewDescribeAMQPCreateQuotaRequest()
+    }
+    response = NewDescribeAMQPCreateQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAMQPExchangesRequest() (request *DescribeAMQPExchangesRequest) {
+    request = &DescribeAMQPExchangesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeAMQPExchanges")
+    
+    return
+}
+
+func NewDescribeAMQPExchangesResponse() (response *DescribeAMQPExchangesResponse) {
+    response = &DescribeAMQPExchangesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAMQPExchanges
+// 获取AMQP Exchange列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAMQPExchanges(request *DescribeAMQPExchangesRequest) (response *DescribeAMQPExchangesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAMQPExchangesRequest()
+    }
+    response = NewDescribeAMQPExchangesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAMQPQueuesRequest() (request *DescribeAMQPQueuesRequest) {
+    request = &DescribeAMQPQueuesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeAMQPQueues")
+    
+    return
+}
+
+func NewDescribeAMQPQueuesResponse() (response *DescribeAMQPQueuesResponse) {
+    response = &DescribeAMQPQueuesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAMQPQueues
+// 获取Amqp队列列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAMQPQueues(request *DescribeAMQPQueuesRequest) (response *DescribeAMQPQueuesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAMQPQueuesRequest()
+    }
+    response = NewDescribeAMQPQueuesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAMQPRouteRelationsRequest() (request *DescribeAMQPRouteRelationsRequest) {
+    request = &DescribeAMQPRouteRelationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeAMQPRouteRelations")
+    
+    return
+}
+
+func NewDescribeAMQPRouteRelationsResponse() (response *DescribeAMQPRouteRelationsResponse) {
+    response = &DescribeAMQPRouteRelationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAMQPRouteRelations
+// 获取Amqp路由关系列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAMQPRouteRelations(request *DescribeAMQPRouteRelationsRequest) (response *DescribeAMQPRouteRelationsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAMQPRouteRelationsRequest()
+    }
+    response = NewDescribeAMQPRouteRelationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAMQPVHostsRequest() (request *DescribeAMQPVHostsRequest) {
+    request = &DescribeAMQPVHostsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeAMQPVHosts")
+    
+    return
+}
+
+func NewDescribeAMQPVHostsResponse() (response *DescribeAMQPVHostsResponse) {
+    response = &DescribeAMQPVHostsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAMQPVHosts
+// 获取Amqp Vhost 列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEBINDVPC = "FailedOperation.CreateBindVpc"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAMQPVHosts(request *DescribeAMQPVHostsRequest) (response *DescribeAMQPVHostsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAMQPVHostsRequest()
+    }
+    response = NewDescribeAMQPVHostsResponse()
     err = c.Send(request, response)
     return
 }
@@ -1894,6 +2470,147 @@ func (c *Client) DescribeTopics(request *DescribeTopicsRequest) (response *Descr
         request = NewDescribeTopicsRequest()
     }
     response = NewDescribeTopicsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAMQPClusterRequest() (request *ModifyAMQPClusterRequest) {
+    request = &ModifyAMQPClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "ModifyAMQPCluster")
+    
+    return
+}
+
+func NewModifyAMQPClusterResponse() (response *ModifyAMQPClusterResponse) {
+    response = &ModifyAMQPClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyAMQPCluster
+// 更新Amqp集群信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyAMQPCluster(request *ModifyAMQPClusterRequest) (response *ModifyAMQPClusterResponse, err error) {
+    if request == nil {
+        request = NewModifyAMQPClusterRequest()
+    }
+    response = NewModifyAMQPClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAMQPExchangeRequest() (request *ModifyAMQPExchangeRequest) {
+    request = &ModifyAMQPExchangeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "ModifyAMQPExchange")
+    
+    return
+}
+
+func NewModifyAMQPExchangeResponse() (response *ModifyAMQPExchangeResponse) {
+    response = &ModifyAMQPExchangeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyAMQPExchange
+// 更新Amqp交换机
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyAMQPExchange(request *ModifyAMQPExchangeRequest) (response *ModifyAMQPExchangeResponse, err error) {
+    if request == nil {
+        request = NewModifyAMQPExchangeRequest()
+    }
+    response = NewModifyAMQPExchangeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAMQPQueueRequest() (request *ModifyAMQPQueueRequest) {
+    request = &ModifyAMQPQueueRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "ModifyAMQPQueue")
+    
+    return
+}
+
+func NewModifyAMQPQueueResponse() (response *ModifyAMQPQueueResponse) {
+    response = &ModifyAMQPQueueResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyAMQPQueue
+// 更新Amqp队列
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyAMQPQueue(request *ModifyAMQPQueueRequest) (response *ModifyAMQPQueueResponse, err error) {
+    if request == nil {
+        request = NewModifyAMQPQueueRequest()
+    }
+    response = NewModifyAMQPQueueResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAMQPVHostRequest() (request *ModifyAMQPVHostRequest) {
+    request = &ModifyAMQPVHostRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "ModifyAMQPVHost")
+    
+    return
+}
+
+func NewModifyAMQPVHostResponse() (response *ModifyAMQPVHostResponse) {
+    response = &ModifyAMQPVHostResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyAMQPVHost
+// 更新Vhost
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyAMQPVHost(request *ModifyAMQPVHostRequest) (response *ModifyAMQPVHostResponse, err error) {
+    if request == nil {
+        request = NewModifyAMQPVHostRequest()
+    }
+    response = NewModifyAMQPVHostResponse()
     err = c.Send(request, response)
     return
 }

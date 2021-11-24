@@ -5807,6 +5807,10 @@ type MediaProcessTaskTranscodeResult struct {
 	// 转码任务的输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *MediaTranscodeItem `json:"Output,omitempty" name:"Output"`
+
+	// 转码进度，取值范围 [0-100]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type MediaSampleSnapshotItem struct {

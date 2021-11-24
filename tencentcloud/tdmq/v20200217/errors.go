@@ -23,6 +23,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 创建vpc绑定关系失败。
+	FAILEDOPERATION_CREATEBINDVPC = "FailedOperation.CreateBindVpc"
+
 	// 创建集群失败。
 	FAILEDOPERATION_CREATECLUSTER = "FailedOperation.CreateCluster"
 

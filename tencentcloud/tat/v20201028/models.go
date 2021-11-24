@@ -147,6 +147,15 @@ type CreateCommandRequest struct {
 	// 在 CVM 或 Lighthouse 实例中执行命令的用户名称。
 	// 使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。默认情况下，在Linux实例中以root用户执行命令。
 	Username *string `json:"Username,omitempty" name:"Username"`
+
+	// 指定日志上传的cos bucket 地址，必须以https开头，如 https://BucketName-123454321.cos.ap-beijing.myqcloud.com。
+	OutputCOSBucketUrl *string `json:"OutputCOSBucketUrl,omitempty" name:"OutputCOSBucketUrl"`
+
+	// 指定日志在cos bucket中的目录，目录命名有如下规则：
+	// 1. 可用数字、中英文和可见字符的组合，长度最多为60。
+	// 2. 用 / 分割路径，可快速创建子目录。
+	// 3. 不允许连续 / ；不允许以 / 开头；不允许以..作为文件夹名称
+	OutputCOSKeyPrefix *string `json:"OutputCOSKeyPrefix,omitempty" name:"OutputCOSKeyPrefix"`
 }
 
 func (r *CreateCommandRequest) ToJsonString() string {
@@ -171,6 +180,8 @@ func (r *CreateCommandRequest) FromJsonString(s string) error {
 	delete(f, "DefaultParameters")
 	delete(f, "Tags")
 	delete(f, "Username")
+	delete(f, "OutputCOSBucketUrl")
+	delete(f, "OutputCOSKeyPrefix")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCommandRequest has unknown keys!", "")
 	}

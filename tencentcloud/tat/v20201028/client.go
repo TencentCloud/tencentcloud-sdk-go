@@ -65,6 +65,8 @@ func NewCreateCommandResponse() (response *CreateCommandResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDOUTPUTCOSBUCKETURL = "InvalidParameter.InvalidOutputCOSBucketUrl"
+//  INVALIDPARAMETER_INVALIDOUTPUTCOSKEYPREFIX = "InvalidParameter.InvalidOutputCOSKeyPrefix"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_COMMANDCONTENTINVALID = "InvalidParameterValue.CommandContentInvalid"
 //  INVALIDPARAMETERVALUE_COMMANDNAMEDUPLICATED = "InvalidParameterValue.CommandNameDuplicated"
@@ -559,6 +561,8 @@ func NewInvokeCommandResponse() (response *InvokeCommandResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDOUTPUTCOSBUCKETURL = "InvalidParameter.InvalidOutputCOSBucketUrl"
+//  INVALIDPARAMETER_INVALIDOUTPUTCOSKEYPREFIX = "InvalidParameter.InvalidOutputCOSKeyPrefix"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_AGENTUNSUPPORTEDCOMMANDTYPE = "InvalidParameterValue.AgentUnsupportedCommandType"
 //  INVALIDPARAMETERVALUE_INCONSISTENTINSTANCE = "InvalidParameterValue.InconsistentInstance"
@@ -613,6 +617,8 @@ func NewModifyCommandResponse() (response *ModifyCommandResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDOUTPUTCOSBUCKETURL = "InvalidParameter.InvalidOutputCOSBucketUrl"
+//  INVALIDPARAMETER_INVALIDOUTPUTCOSKEYPREFIX = "InvalidParameter.InvalidOutputCOSKeyPrefix"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_COMMANDCONTENTINVALID = "InvalidParameterValue.CommandContentInvalid"
 //  INVALIDPARAMETERVALUE_COMMANDNAMEDUPLICATED = "InvalidParameterValue.CommandNameDuplicated"
@@ -760,6 +766,8 @@ func NewRunCommandResponse() (response *RunCommandResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDOUTPUTCOSBUCKETURL = "InvalidParameter.InvalidOutputCOSBucketUrl"
+//  INVALIDPARAMETER_INVALIDOUTPUTCOSKEYPREFIX = "InvalidParameter.InvalidOutputCOSKeyPrefix"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_COMMANDCONTENTINVALID = "InvalidParameterValue.CommandContentInvalid"
 //  INVALIDPARAMETERVALUE_COMMANDNAMEDUPLICATED = "InvalidParameterValue.CommandNameDuplicated"
