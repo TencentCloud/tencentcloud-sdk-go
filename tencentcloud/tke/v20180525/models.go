@@ -7102,6 +7102,130 @@ type RunSecurityServiceEnabled struct {
 	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
 }
 
+type ScaleInClusterMasterRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群实例ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// master缩容选项
+	ScaleInMasters []*ScaleInMaster `json:"ScaleInMasters,omitempty" name:"ScaleInMasters"`
+}
+
+func (r *ScaleInClusterMasterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ScaleInClusterMasterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "ScaleInMasters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScaleInClusterMasterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ScaleInClusterMasterResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ScaleInClusterMasterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ScaleInClusterMasterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ScaleInMaster struct {
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 缩容的实例角色：MASTER,ETCD,MASTER_ETCD
+	NodeRole *string `json:"NodeRole,omitempty" name:"NodeRole"`
+
+	// 实例的保留模式
+	InstanceDeleteMode *string `json:"InstanceDeleteMode,omitempty" name:"InstanceDeleteMode"`
+}
+
+type ScaleOutClusterMasterRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群实例ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 新建节点参数
+	RunInstancesForNode []*RunInstancesForNode `json:"RunInstancesForNode,omitempty" name:"RunInstancesForNode"`
+
+	// 添加已有节点相关参数
+	ExistedInstancesForNode []*ExistedInstancesForNode `json:"ExistedInstancesForNode,omitempty" name:"ExistedInstancesForNode"`
+
+	// 实例高级设置
+	InstanceAdvancedSettings *InstanceAdvancedSettings `json:"InstanceAdvancedSettings,omitempty" name:"InstanceAdvancedSettings"`
+
+	// 集群master组件自定义参数
+	ExtraArgs *ClusterExtraArgs `json:"ExtraArgs,omitempty" name:"ExtraArgs"`
+}
+
+func (r *ScaleOutClusterMasterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ScaleOutClusterMasterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "RunInstancesForNode")
+	delete(f, "ExistedInstancesForNode")
+	delete(f, "InstanceAdvancedSettings")
+	delete(f, "ExtraArgs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScaleOutClusterMasterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ScaleOutClusterMasterResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ScaleOutClusterMasterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ScaleOutClusterMasterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type SecurityContext struct {
 
 	// 安全能力清单

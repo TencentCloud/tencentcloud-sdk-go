@@ -455,6 +455,7 @@ type CreateProjectRequest struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 项目归属者。
+	// 注：云转推项目，仅支持个人归属。
 	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
 
 	// 项目类别，取值有：

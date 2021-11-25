@@ -45,7 +45,7 @@
 | cloudaudit | [云审计](https://cloud.tencent.com/document/product/629) | 2021-11-16 08:07:51 |
 | cloudhsm | [云加密机](https://cloud.tencent.com/document/product/639) | 2021-11-10 08:04:28 |
 | cls | [日志服务](https://cloud.tencent.com/document/product/614) | 2021-11-10 08:04:30 |
-| cme | [腾讯云剪](https://cloud.tencent.com/document/product/1156) | 2021-11-17 08:08:41 |
+| cme | [腾讯云剪](https://cloud.tencent.com/document/product/1156) | 2021-11-25 08:08:36 |
 | cmq | [消息队列 CMQ](https://cloud.tencent.com/document/product/406) | 2021-11-10 08:04:45 |
 | cms | [内容安全](https://cloud.tencent.com/document/product) | 2020-10-29 08:03:08 |
 | cpdp | [企业收付平台](https://cloud.tencent.com/document/product/1122) | 2021-11-17 08:08:58 |
@@ -55,7 +55,7 @@
 | cws | [漏洞扫描服务](https://cloud.tencent.com/document/product) | 2019-11-22 12:16:15 |
 | cynosdb | [云原生数据库 TDSQL-C](https://cloud.tencent.com/document/product/1003) | 2021-11-17 08:10:15 |
 | dayu | [DDoS 高防包](https://cloud.tencent.com/document/product/1021) | 2021-11-10 08:05:47 |
-| dbbrain | [数据库智能管家 DBbrain](https://cloud.tencent.com/document/product/1130) | 2021-11-10 08:05:59 |
+| dbbrain | [数据库智能管家 DBbrain](https://cloud.tencent.com/document/product/1130) | 2021-11-25 08:09:57 |
 | dc | [专线接入](https://cloud.tencent.com/document/product/216) | 2021-11-10 08:06:00 |
 | dcdb | [分布式数据库 TDSQL](https://cloud.tencent.com/document/product/557) | 2021-11-17 08:10:41 |
 | dlc | [数据湖计算](https://cloud.tencent.com/document/product/1342) | 2021-11-10 08:06:10 |
@@ -161,7 +161,7 @@
 | tiia | [图像分析](https://cloud.tencent.com/document/product/865) | 2021-11-10 08:11:42 |
 | tione | [智能钛机器学习平台](https://cloud.tencent.com/document/product/851) | 2021-11-10 08:11:45 |
 | tiw | [互动白板](https://cloud.tencent.com/document/product/1137) | 2021-11-19 08:15:40 |
-| tke | [容器服务](https://cloud.tencent.com/document/product/457) | 2021-11-10 08:11:53 |
+| tke | [容器服务](https://cloud.tencent.com/document/product/457) | 2021-11-25 08:15:58 |
 | tkgdq | [腾讯知识图谱数据查询](https://cloud.tencent.com/document/product) | 2020-03-10 00:51:44 |
 | tms | [文本内容安全](https://cloud.tencent.com/document/product/1124) | 2021-11-10 08:12:05 |
 | tmt | [机器翻译](https://cloud.tencent.com/document/product/551) | 2021-11-10 08:12:05 |

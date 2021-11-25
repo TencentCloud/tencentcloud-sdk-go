@@ -3436,6 +3436,67 @@ func (c *Client) RestartEKSContainerInstances(request *RestartEKSContainerInstan
     return
 }
 
+func NewScaleInClusterMasterRequest() (request *ScaleInClusterMasterRequest) {
+    request = &ScaleInClusterMasterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "ScaleInClusterMaster")
+    
+    return
+}
+
+func NewScaleInClusterMasterResponse() (response *ScaleInClusterMasterResponse) {
+    response = &ScaleInClusterMasterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ScaleInClusterMaster
+// 缩容独立集群master节点
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ScaleInClusterMaster(request *ScaleInClusterMasterRequest) (response *ScaleInClusterMasterResponse, err error) {
+    if request == nil {
+        request = NewScaleInClusterMasterRequest()
+    }
+    response = NewScaleInClusterMasterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewScaleOutClusterMasterRequest() (request *ScaleOutClusterMasterRequest) {
+    request = &ScaleOutClusterMasterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "ScaleOutClusterMaster")
+    
+    return
+}
+
+func NewScaleOutClusterMasterResponse() (response *ScaleOutClusterMasterResponse) {
+    response = &ScaleOutClusterMasterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ScaleOutClusterMaster
+// 扩容独立集群master节点
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ScaleOutClusterMaster(request *ScaleOutClusterMasterRequest) (response *ScaleOutClusterMasterResponse, err error) {
+    if request == nil {
+        request = NewScaleOutClusterMasterRequest()
+    }
+    response = NewScaleOutClusterMasterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSetNodePoolNodeProtectionRequest() (request *SetNodePoolNodeProtectionRequest) {
     request = &SetNodePoolNodeProtectionRequest{
         BaseRequest: &tchttp.BaseRequest{},
