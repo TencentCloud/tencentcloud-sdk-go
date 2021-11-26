@@ -675,6 +675,37 @@ func (c *Client) DescribeAcLists(request *DescribeAcListsRequest) (response *Des
     return
 }
 
+func NewDescribeAddrTemplateListRequest() (request *DescribeAddrTemplateListRequest) {
+    request = &DescribeAddrTemplateListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeAddrTemplateList")
+    
+    return
+}
+
+func NewDescribeAddrTemplateListResponse() (response *DescribeAddrTemplateListResponse) {
+    response = &DescribeAddrTemplateListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAddrTemplateList
+// 获取地址模版列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAddrTemplateList(request *DescribeAddrTemplateListRequest) (response *DescribeAddrTemplateListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAddrTemplateListRequest()
+    }
+    response = NewDescribeAddrTemplateListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssociatedInstanceListRequest() (request *DescribeAssociatedInstanceListRequest) {
     request = &DescribeAssociatedInstanceListRequest{
         BaseRequest: &tchttp.BaseRequest{},

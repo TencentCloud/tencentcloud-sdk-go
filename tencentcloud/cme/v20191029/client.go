@@ -60,7 +60,7 @@ func NewAddTeamMemberResponse() (response *AddTeamMemberResponse) {
 }
 
 // AddTeamMember
-// 向一个团队中团队成员，并且指定成员的角色。
+// 向一个团队中添加团队成员，并且指定成员的角色。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -207,11 +207,19 @@ func NewCreateProjectResponse() (response *CreateProjectResponse) {
 }
 
 // CreateProject
-// 创建云剪的编辑项目，支持创建视频剪辑、直播剪辑、导播台、视频拆条、录制回放以及云转推项目。
+// 创建云剪项目，目前支持的项目类型有：
 //
-// 
+// <li>视频剪辑项目：用于普通视频剪辑；</li>
 //
-// <b>若需使用云转推功能，请先咨询 [智能客服](https://cloud.tencent.com/act/event/smarty-service?from=doc_1138) 或 [提交工单](https://console.cloud.tencent.com/workorder/category) 。</b>
+// <li>直播剪辑项目：用于直播流剪辑；</li>
+//
+// <li>导播台项目：用于云导播台；</li>
+//
+// <li>视频拆条：用于视频拆条；</li>
+//
+// <li>录制回放项目：用于直播录制回放；</li>
+//
+// <li>云转推项目：用于直播云转推。</li>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATERECORDTASK = "FailedOperation.CreateRecordTask"
@@ -428,7 +436,7 @@ func NewDeleteProjectResponse() (response *DeleteProjectResponse) {
 }
 
 // DeleteProject
-// 删除云剪编辑项目。
+// 删除项目。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -464,7 +472,7 @@ func NewDeleteTeamResponse() (response *DeleteTeamResponse) {
 }
 
 // DeleteTeam
-// 删除一个团队。
+// 删除一个团队。要删除团队，必须满足以下条件：
 //
 // <li>要删除的团队必须没有归属的素材；</li>
 //
@@ -502,7 +510,7 @@ func NewDeleteTeamMembersResponse() (response *DeleteTeamMembersResponse) {
 }
 
 // DeleteTeamMembers
-// 将团队成员从团队中删除，默认只有 Owner 及管理员才有此权限。
+// 将团队成员从团队中删除。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -566,7 +574,7 @@ func NewDescribeAccountsResponse() (response *DescribeAccountsResponse) {
 }
 
 // DescribeAccounts
-// 获取用户账号信息。
+// 获取平台中所有的已注册账号。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -642,7 +650,7 @@ func NewDescribeJoinTeamsResponse() (response *DescribeJoinTeamsResponse) {
 }
 
 // DescribeJoinTeams
-// 获取指定的团队成员所加入的团队列表。
+// 获取用户所加入的团队列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -750,6 +758,10 @@ func NewDescribePlatformsResponse() (response *DescribePlatformsResponse) {
 //
 // 
 //
+// 关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+//
+// 
+//
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -822,7 +834,7 @@ func NewDescribeResourceAuthorizationResponse() (response *DescribeResourceAutho
 }
 
 // DescribeResourceAuthorization
-// 查询指定资源的授权列表。
+// 查询资源被授权的情况。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -960,7 +972,7 @@ func NewDescribeTeamMembersResponse() (response *DescribeTeamMembersResponse) {
 }
 
 // DescribeTeamMembers
-// 获取指定成员 ID 的信息，同时支持拉取所有团队成员信息。
+// 获取指定团队的成员信息。支持获取指定成员的信息，同时也支持分页拉取指定团队的所有成员信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1065,7 +1077,7 @@ func NewExportVideoByEditorTrackDataResponse() (response *ExportVideoByEditorTra
 }
 
 // ExportVideoByEditorTrackData
-// 使用视频合成协议导出视频，支持导出到CME云媒资和VOD云媒资。
+// 使用 [视频合成协议](https://cloud.tencent.com/document/product/1156/51225) 合成视频，支持导出视频到 CME 云媒资或者云点播媒资。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1111,7 +1123,7 @@ func NewExportVideoByTemplateResponse() (response *ExportVideoByTemplateResponse
 }
 
 // ExportVideoByTemplate
-// 使用视频编辑模板直接导出视频。
+// 使用视频剪辑模板直接导出视频。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1159,7 +1171,7 @@ func NewExportVideoByVideoSegmentationDataResponse() (response *ExportVideoByVid
 }
 
 // ExportVideoByVideoSegmentationData
-// 使用视频智能拆条数据导出视频，将指定的视频拆条片段导出为一个视频。
+// 使用视频智能拆条数据导出视频，将指定的视频拆条片段导出为一个视频(内测中，请勿使用)。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1243,7 +1255,7 @@ func NewFlattenListMediaResponse() (response *FlattenListMediaResponse) {
 }
 
 // FlattenListMedia
-// 平铺分类路径下及其子分类下的所有媒体基础信息。
+// 平铺分类路径下及其子分类下的所有媒体基础信息，返回当前分类及子分类中的所有媒体的基础信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1319,7 +1331,7 @@ func NewGrantResourceAuthorizationResponse() (response *GrantResourceAuthorizati
 }
 
 // GrantResourceAuthorization
-// 资源归属者对目标个人或团队授予目标资源的相应权限。
+// 资源归属者对个人或团队授予目标资源的相应权限。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1426,7 +1438,7 @@ func NewImportMaterialResponse() (response *ImportMaterialResponse) {
 }
 
 // ImportMaterial
-// 将云点播媒资文件导入到云剪媒体资源库。
+// 将云点播媒资文件导入到云剪媒体资源库。支持导入媒体归属团队或者个人。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1471,7 +1483,7 @@ func NewImportMediaToProjectResponse() (response *ImportMediaToProjectResponse) 
 }
 
 // ImportMediaToProject
-// 将云点播中的媒资或者用户自有媒资文件添加到媒体库中，跟项目关联，供后续视频编辑使用。目前仅普通编辑项目和智能视频拆条项目有效。
+// 将云点播中的媒资或者用户自有媒资文件添加到项目中与项目关联，供后续视频编辑使用。目前仅视频编辑项目和智能视频拆条项目有效。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CREATETASK = "InternalError.CreateTask"
@@ -1585,7 +1597,7 @@ func NewModifyProjectResponse() (response *ModifyProjectResponse) {
 }
 
 // ModifyProject
-// 修改云剪编辑项目的信息。
+// 修改项目信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1853,7 +1865,7 @@ func NewRevokeResourceAuthorizationResponse() (response *RevokeResourceAuthoriza
 }
 
 // RevokeResourceAuthorization
-//  资源所属实体对目标实体回收目标资源的相应权限，若原本没有相应权限则不产生变更。
+//  资源所属实体对目标实体撤销目标资源的相应权限，若原本没有相应权限则不产生变更。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

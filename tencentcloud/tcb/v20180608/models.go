@@ -2606,6 +2606,12 @@ type DescribeCloudBaseRunOneClickTaskExternalResponse struct {
 		// 用户envId
 		UserEnvId *string `json:"UserEnvId,omitempty" name:"UserEnvId"`
 
+		// 创建时间
+		StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+		// 步骤信息
+		Steps []*OneClickTaskStepInfo `json:"Steps,omitempty" name:"Steps"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -5941,6 +5947,30 @@ type ObjectKV struct {
 
 	// object key 对应的 value
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type OneClickTaskStepInfo struct {
+
+	// 未启动："todo"
+	// 运行中："running"
+	// 失败："failed"
+	// 成功结束："finished"
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 耗时：秒
+	CostTime *int64 `json:"CostTime,omitempty" name:"CostTime"`
+
+	// 失败原因
+	FailReason *string `json:"FailReason,omitempty" name:"FailReason"`
+
+	// 步骤名
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
 type OrderInfo struct {

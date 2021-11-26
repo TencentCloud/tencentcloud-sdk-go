@@ -1308,6 +1308,77 @@ func (r *DescribeAcListsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeAddrTemplateListRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量，分页用
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 条数，分页用
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序字段，取值 'UpdateTime' | 'RulesNum'
+	By *string `json:"By,omitempty" name:"By"`
+
+	// 排序，取值 'asc'|'desc'
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 搜索值
+	SearchValue *string `json:"SearchValue,omitempty" name:"SearchValue"`
+}
+
+func (r *DescribeAddrTemplateListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAddrTemplateListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "By")
+	delete(f, "Order")
+	delete(f, "SearchValue")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAddrTemplateListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAddrTemplateListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 模版总数
+		Total *int64 `json:"Total,omitempty" name:"Total"`
+
+		// 模版列表数据
+		Data []*TemplateListInfo `json:"Data,omitempty" name:"Data"`
+
+		// 模版名称列表
+		NameList []*string `json:"NameList,omitempty" name:"NameList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAddrTemplateListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAddrTemplateListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeAssociatedInstanceListRequest struct {
 	*tchttp.BaseRequest
 
@@ -4900,6 +4971,12 @@ type SecurityGroupRule struct {
 	// 端口协议类型参数模板id；协议端口模板id；与Protocol,Port互斥
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceTemplateId *string `json:"ServiceTemplateId,omitempty" name:"ServiceTemplateId"`
+
+	// 规则对应的唯一id
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 规则状态，true表示启用，false表示禁用
+	Enable *string `json:"Enable,omitempty" name:"Enable"`
 }
 
 type SequenceData struct {
@@ -5176,6 +5253,41 @@ type TLogInfo struct {
 
 	// 暴力破解
 	BruteForceNum *int64 `json:"BruteForceNum,omitempty" name:"BruteForceNum"`
+}
+
+type TemplateListInfo struct {
+
+	// 模版ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 模版名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Detail *string `json:"Detail,omitempty" name:"Detail"`
+
+	// IP模版
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpString *string `json:"IpString,omitempty" name:"IpString"`
+
+	// 插入时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InsertTime *string `json:"InsertTime,omitempty" name:"InsertTime"`
+
+	// 修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 模版类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 关联规则条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RulesNum *int64 `json:"RulesNum,omitempty" name:"RulesNum"`
 }
 
 type UnHandleEvent struct {

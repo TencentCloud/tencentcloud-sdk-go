@@ -3906,6 +3906,9 @@ type UpgradeDCDBInstanceRequest struct {
 
 	// 代金券ID列表，目前仅支持指定一张代金券。
 	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds"`
+
+	// 变更部署时指定的新可用区列表，第1个为主可用区，其余为从可用区
+	Zones []*string `json:"Zones,omitempty" name:"Zones"`
 }
 
 func (r *UpgradeDCDBInstanceRequest) ToJsonString() string {
@@ -3927,6 +3930,7 @@ func (r *UpgradeDCDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "SplitShardConfig")
 	delete(f, "AutoVoucher")
 	delete(f, "VoucherIds")
+	delete(f, "Zones")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeDCDBInstanceRequest has unknown keys!", "")
 	}

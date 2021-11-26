@@ -990,7 +990,9 @@ type DescribeImagesRequest struct {
 	// <li> image-type - String - 是否必填： 否 - （过滤条件）按照镜像类型进行过滤。取值范围：
 	//     PRIVATE_IMAGE: 私有镜像 (本账户创建的镜像) 
 	//     PUBLIC_IMAGE: 公共镜像 (腾讯云官方镜像)
-	//    SHARED_IMAGE: 共享镜像(其他账户共享给本账户的镜像) 。</li>
+	//     SHARED_IMAGE: 共享镜像(其他账户共享给本账户的镜像) 。</li>
+	// <li> image-name - String - 是否必填： 否 - （过滤条件）按照镜像名称进行过滤</li>
+	// <li> platform - String - 是否必填： 否 - （过滤条件）按照镜像平台过滤，如 CentOS</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。关于Offset详见[API简介](/document/api/213/568#.E8.BE.93.E5.85.A5.E5.8F.82.E6.95.B0.E4.B8.8E.E8.BF.94.E5.9B.9E.E5.8F.82.E6.95.B0.E9.87.8A.E4.B9.89)。

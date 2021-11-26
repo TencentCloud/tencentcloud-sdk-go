@@ -2675,6 +2675,9 @@ type DescribeUpgradePriceRequest struct {
 	// 存储空间大小，单位：GB，可以通过 DescribeDBInstanceSpecs
 	//  查询实例规格获得不同内存大小对应的磁盘规格下限和上限。
 	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
+
+	// 新节点数，传0表示节点数不变
+	NodeCount *int64 `json:"NodeCount,omitempty" name:"NodeCount"`
 }
 
 func (r *DescribeUpgradePriceRequest) ToJsonString() string {
@@ -2692,6 +2695,7 @@ func (r *DescribeUpgradePriceRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "Memory")
 	delete(f, "Storage")
+	delete(f, "NodeCount")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUpgradePriceRequest has unknown keys!", "")
 	}
@@ -4299,6 +4303,9 @@ type UpgradeDBInstanceRequest struct {
 
 	// 代金券ID列表，目前仅支持指定一张代金券。
 	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds"`
+
+	// 变更部署时指定的新可用区列表，第1个为主可用区，其余为从可用区
+	Zones []*string `json:"Zones,omitempty" name:"Zones"`
 }
 
 func (r *UpgradeDBInstanceRequest) ToJsonString() string {
@@ -4318,6 +4325,7 @@ func (r *UpgradeDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "Storage")
 	delete(f, "AutoVoucher")
 	delete(f, "VoucherIds")
+	delete(f, "Zones")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeDBInstanceRequest has unknown keys!", "")
 	}

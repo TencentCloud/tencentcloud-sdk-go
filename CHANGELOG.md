@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 容器服务(tke) 版本：2018-05-25
+## 云防火墙(cfw) 版本：2019-09-04
 
-### 第 78 次发布
+### 第 14 次发布
 
-发布时间：2021-11-25 08:15:58
+发布时间：2021-11-26 08:05:36
 
 本次发布包含了以下内容：
 
@@ -12,12 +12,102 @@
 
 新增接口：
 
-* [ScaleInClusterMaster](https://cloud.tencent.com/document/api/457/64792)
-* [ScaleOutClusterMaster](https://cloud.tencent.com/document/api/457/64791)
+* [DescribeAddrTemplateList](https://cloud.tencent.com/document/api/1132/64831)
 
 新增数据结构：
 
-* [ScaleInMaster](https://cloud.tencent.com/document/api/457/31866#ScaleInMaster)
+* [TemplateListInfo](https://cloud.tencent.com/document/api/1132/49071#TemplateListInfo)
+
+修改数据结构：
+
+* [SecurityGroupRule](https://cloud.tencent.com/document/api/1132/49071#SecurityGroupRule)
+
+	* 新增成员：Id, Enable
+
+
+
+
+## 腾讯云剪(cme) 版本：2019-10-29
+
+### 第 43 次发布
+
+发布时间：2021-11-26 08:06:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [HandleStreamConnectProject](https://cloud.tencent.com/document/api/1156/54998)
+
+	* 新增入参：Operator
+
+
+
+
+## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+
+### 第 30 次发布
+
+发布时间：2021-11-26 08:08:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpgradeDCDBInstance](https://cloud.tencent.com/document/api/557/16136)
+
+	* 新增入参：Zones
+
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 27 次发布
+
+发布时间：2021-11-26 08:11:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeUpgradePrice](https://cloud.tencent.com/document/api/237/16183)
+
+	* 新增入参：NodeCount
+
+* [UpgradeDBInstance](https://cloud.tencent.com/document/api/237/16189)
+
+	* 新增入参：Zones
+
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 76 次发布
+
+发布时间：2021-11-26 08:13:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCloudBaseRunOneClickTaskExternal](https://cloud.tencent.com/document/api/876/63779)
+
+	* 新增出参：StartTime, Steps
+
+
+新增数据结构：
+
+* [OneClickTaskStepInfo](https://cloud.tencent.com/document/api/876/34822#OneClickTaskStepInfo)
 
 
 
@@ -11945,6 +12035,29 @@
 
 ## 云防火墙(cfw) 版本：2019-09-04
 
+### 第 14 次发布
+
+发布时间：2021-11-26 08:05:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeAddrTemplateList](https://cloud.tencent.com/document/api/1132/64831)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[TemplateListInfo](https://cloud.tencent.com/document/api/1132/49071#TemplateListInfo)](https://cloud.tencent.com/document/api/1132/49071#[TemplateListInfo](https://cloud.tencent.com/document/api/1132/49071#TemplateListInfo))
+
+修改数据结构：
+
+* [SecurityGroupRule](https://cloud.tencent.com/document/api/1132/49071#SecurityGroupRule)
+
+	* 新增成员：Id, Enable
+
+
 ### 第 13 次发布
 
 发布时间：2021-11-18 08:04:19
@@ -15095,6 +15208,21 @@
 
 
 ## 腾讯云剪(cme) 版本：2019-10-29
+
+### 第 43 次发布
+
+发布时间：2021-11-26 08:06:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [HandleStreamConnectProject](https://cloud.tencent.com/document/api/1156/54998)
+
+	* 新增入参：Operator
+
 
 ### 第 42 次发布
 
@@ -22282,6 +22410,21 @@
 
 
 ## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+
+### 第 30 次发布
+
+发布时间：2021-11-26 08:08:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpgradeDCDBInstance](https://cloud.tencent.com/document/api/557/16136)
+
+	* 新增入参：Zones
+
 
 ### 第 29 次发布
 
@@ -36636,6 +36779,25 @@
 
 ## 云数据库 MariaDB(mariadb) 版本：2017-03-12
 
+### 第 27 次发布
+
+发布时间：2021-11-26 08:11:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeUpgradePrice](https://cloud.tencent.com/document/api/237/16183)
+
+	* 新增入参：NodeCount
+
+* [UpgradeDBInstance](https://cloud.tencent.com/document/api/237/16189)
+
+	* 新增入参：Zones
+
+
 ### 第 26 次发布
 
 发布时间：2021-11-17 08:13:35
@@ -48661,6 +48823,25 @@
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
 
+### 第 76 次发布
+
+发布时间：2021-11-26 08:13:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCloudBaseRunOneClickTaskExternal](https://cloud.tencent.com/document/api/876/63779)
+
+	* 新增出参：StartTime, Steps
+
+
+新增数据结构：
+
+* [[OneClickTaskStepInfo](https://cloud.tencent.com/document/api/876/34822#OneClickTaskStepInfo)](https://cloud.tencent.com/document/api/876/34822#[OneClickTaskStepInfo](https://cloud.tencent.com/document/api/876/34822#OneClickTaskStepInfo))
+
 ### 第 75 次发布
 
 发布时间：2021-11-15 08:13:00
@@ -53788,12 +53969,12 @@
 
 新增接口：
 
-* [[ScaleInClusterMaster](https://cloud.tencent.com/document/api/457/64792)](https://cloud.tencent.com/document/api/#/#)
-* [[ScaleOutClusterMaster](https://cloud.tencent.com/document/api/457/64791)](https://cloud.tencent.com/document/api/#/#)
+* [ScaleInClusterMaster](https://cloud.tencent.com/document/api/457/64792)
+* [ScaleOutClusterMaster](https://cloud.tencent.com/document/api/457/64791)
 
 新增数据结构：
 
-* [[ScaleInMaster](https://cloud.tencent.com/document/api/457/31866#ScaleInMaster)](https://cloud.tencent.com/document/api/457/31866#[ScaleInMaster](https://cloud.tencent.com/document/api/457/31866#ScaleInMaster))
+* [ScaleInMaster](https://cloud.tencent.com/document/api/457/31866#ScaleInMaster)
 
 ### 第 77 次发布
 
