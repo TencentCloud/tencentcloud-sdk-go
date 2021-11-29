@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云防火墙(cfw) 版本：2019-09-04
+## 负载均衡(clb) 版本：2018-03-17
 
-### 第 14 次发布
+### 第 58 次发布
 
-发布时间：2021-11-26 08:05:36
+发布时间：2021-11-29 08:05:45
 
 本次发布包含了以下内容：
 
@@ -12,102 +12,24 @@
 
 新增接口：
 
-* [DescribeAddrTemplateList](https://cloud.tencent.com/document/api/1132/64831)
-
-新增数据结构：
-
-* [TemplateListInfo](https://cloud.tencent.com/document/api/1132/49071#TemplateListInfo)
-
-修改数据结构：
-
-* [SecurityGroupRule](https://cloud.tencent.com/document/api/1132/49071#SecurityGroupRule)
-
-	* 新增成员：Id, Enable
+* [CloneLoadBalancer](https://cloud.tencent.com/document/api/214/64874)
 
 
 
+## 容器服务(tke) 版本：2018-05-25
 
-## 腾讯云剪(cme) 版本：2019-10-29
+### 第 79 次发布
 
-### 第 43 次发布
-
-发布时间：2021-11-26 08:06:20
+发布时间：2021-11-29 08:13:39
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [HandleStreamConnectProject](https://cloud.tencent.com/document/api/1156/54998)
-
-	* 新增入参：Operator
-
-
-
-
-## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
-
-### 第 30 次发布
-
-发布时间：2021-11-26 08:08:12
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [UpgradeDCDBInstance](https://cloud.tencent.com/document/api/557/16136)
-
-	* 新增入参：Zones
-
-
-
-
-## 云数据库 MariaDB(mariadb) 版本：2017-03-12
-
-### 第 27 次发布
-
-发布时间：2021-11-26 08:11:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeUpgradePrice](https://cloud.tencent.com/document/api/237/16183)
-
-	* 新增入参：NodeCount
-
-* [UpgradeDBInstance](https://cloud.tencent.com/document/api/237/16189)
-
-	* 新增入参：Zones
-
-
-
-
-## 云开发 CloudBase(tcb) 版本：2018-06-08
-
-### 第 76 次发布
-
-发布时间：2021-11-26 08:13:21
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeCloudBaseRunOneClickTaskExternal](https://cloud.tencent.com/document/api/876/63779)
-
-	* 新增出参：StartTime, Steps
-
-
-新增数据结构：
-
-* [OneClickTaskStepInfo](https://cloud.tencent.com/document/api/876/34822#OneClickTaskStepInfo)
+* [DisableClusterDeletionProtection](https://cloud.tencent.com/document/api/457/64876)
+* [EnableClusterDeletionProtection](https://cloud.tencent.com/document/api/457/64875)
 
 
 
@@ -12045,11 +11967,11 @@
 
 新增接口：
 
-* [[DescribeAddrTemplateList](https://cloud.tencent.com/document/api/1132/64831)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeAddrTemplateList](https://cloud.tencent.com/document/api/1132/64831)
 
 新增数据结构：
 
-* [[TemplateListInfo](https://cloud.tencent.com/document/api/1132/49071#TemplateListInfo)](https://cloud.tencent.com/document/api/1132/49071#[TemplateListInfo](https://cloud.tencent.com/document/api/1132/49071#TemplateListInfo))
+* [TemplateListInfo](https://cloud.tencent.com/document/api/1132/49071#TemplateListInfo)
 
 修改数据结构：
 
@@ -13336,6 +13258,18 @@
 
 
 ## 负载均衡(clb) 版本：2018-03-17
+
+### 第 58 次发布
+
+发布时间：2021-11-29 08:05:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CloneLoadBalancer](https://cloud.tencent.com/document/api/214/64874)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 57 次发布
 
@@ -48840,7 +48774,7 @@
 
 新增数据结构：
 
-* [[OneClickTaskStepInfo](https://cloud.tencent.com/document/api/876/34822#OneClickTaskStepInfo)](https://cloud.tencent.com/document/api/876/34822#[OneClickTaskStepInfo](https://cloud.tencent.com/document/api/876/34822#OneClickTaskStepInfo))
+* [OneClickTaskStepInfo](https://cloud.tencent.com/document/api/876/34822#OneClickTaskStepInfo)
 
 ### 第 75 次发布
 
@@ -53958,6 +53892,19 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 79 次发布
+
+发布时间：2021-11-29 08:13:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DisableClusterDeletionProtection](https://cloud.tencent.com/document/api/457/64876)](https://cloud.tencent.com/document/api/#/#)
+* [[EnableClusterDeletionProtection](https://cloud.tencent.com/document/api/457/64875)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 78 次发布
 

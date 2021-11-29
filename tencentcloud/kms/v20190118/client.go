@@ -1613,13 +1613,14 @@ func NewSignByAsymmetricKeyResponse() (response *SignByAsymmetricKeyResponse) {
 // SignByAsymmetricKey
 // 非对称密钥签名。
 //
-// 注意：只有成功创建了KeyUsage= ASYMMETRIC_SIGN_VERIFY_SM2、ASYMMETRIC_SIGN_VERIFY_ECC 或 ASYMMETRIC_SIGN_VERIFY_RSA_2048 的密钥才可以使用签名功能
+// 注意：只有 KeyUsage 为 ASYMMETRIC_SIGN_VERIFY_SM2、ASYMMETRIC_SIGN_VERIFY_ECC 或其他支持的 ASYMMETRIC_SIGN_VERIFY_${ALGORITHM} 的密钥才可以使用签名功能。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
 //  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
 func (c *Client) SignByAsymmetricKey(request *SignByAsymmetricKeyRequest) (response *SignByAsymmetricKeyResponse, err error) {

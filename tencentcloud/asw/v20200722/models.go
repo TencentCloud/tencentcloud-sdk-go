@@ -563,7 +563,7 @@ type StartExecutionRequest struct {
 	// 状态机资源名
 	StateMachineResourceName *string `json:"StateMachineResourceName,omitempty" name:"StateMachineResourceName"`
 
-	// 输入参数
+	// 输入参数，内容为JsonObject，长度不大于524288字符。
 	Input *string `json:"Input,omitempty" name:"Input"`
 
 	// 本次执行名。如果不填，系统会自动生成。如果填，应保证状态机下唯一

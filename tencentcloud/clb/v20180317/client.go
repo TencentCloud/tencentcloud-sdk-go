@@ -254,6 +254,55 @@ func (c *Client) BatchRegisterTargets(request *BatchRegisterTargetsRequest) (res
     return
 }
 
+func NewCloneLoadBalancerRequest() (request *CloneLoadBalancerRequest) {
+    request = &CloneLoadBalancerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "CloneLoadBalancer")
+    
+    return
+}
+
+func NewCloneLoadBalancerResponse() (response *CloneLoadBalancerResponse) {
+    response = &CloneLoadBalancerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CloneLoadBalancer
+// 克隆负载均衡实例，根据指定的负载均衡实例，复制出相同规则和绑定关系的负载均衡实例。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDLBSTATUS = "FailedOperation.InvalidLBStatus"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  INVALIDPARAMETER_LISTENERIDNOTFOUND = "InvalidParameter.ListenerIdNotFound"
+//  INVALIDPARAMETER_LOCATIONNOTFOUND = "InvalidParameter.LocationNotFound"
+//  INVALIDPARAMETER_PORTCHECKFAILED = "InvalidParameter.PortCheckFailed"
+//  INVALIDPARAMETER_PROTOCOLCHECKFAILED = "InvalidParameter.ProtocolCheckFailed"
+//  INVALIDPARAMETER_REGIONNOTFOUND = "InvalidParameter.RegionNotFound"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+func (c *Client) CloneLoadBalancer(request *CloneLoadBalancerRequest) (response *CloneLoadBalancerResponse, err error) {
+    if request == nil {
+        request = NewCloneLoadBalancerRequest()
+    }
+    response = NewCloneLoadBalancerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateClsLogSetRequest() (request *CreateClsLogSetRequest) {
     request = &CreateClsLogSetRequest{
         BaseRequest: &tchttp.BaseRequest{},

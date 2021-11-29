@@ -8135,7 +8135,7 @@ type SlowLogItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timestamp *uint64 `json:"Timestamp,omitempty" name:"Timestamp"`
 
-	// Sql的执行时长。
+	// Sql的执行时长（秒）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueryTime *float64 `json:"QueryTime,omitempty" name:"QueryTime"`
 
@@ -8155,7 +8155,7 @@ type SlowLogItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Database *string `json:"Database,omitempty" name:"Database"`
 
-	// 锁时长。
+	// 锁时长（秒）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LockTime *float64 `json:"LockTime,omitempty" name:"LockTime"`
 

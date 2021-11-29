@@ -2881,6 +2881,37 @@ func (c *Client) DescribeVpcCniPodLimits(request *DescribeVpcCniPodLimitsRequest
     return
 }
 
+func NewDisableClusterDeletionProtectionRequest() (request *DisableClusterDeletionProtectionRequest) {
+    request = &DisableClusterDeletionProtectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DisableClusterDeletionProtection")
+    
+    return
+}
+
+func NewDisableClusterDeletionProtectionResponse() (response *DisableClusterDeletionProtectionResponse) {
+    response = &DisableClusterDeletionProtectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DisableClusterDeletionProtection
+// 关闭集群删除保护
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DisableClusterDeletionProtection(request *DisableClusterDeletionProtectionRequest) (response *DisableClusterDeletionProtectionResponse, err error) {
+    if request == nil {
+        request = NewDisableClusterDeletionProtectionRequest()
+    }
+    response = NewDisableClusterDeletionProtectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisableVpcCniNetworkTypeRequest() (request *DisableVpcCniNetworkTypeRequest) {
     request = &DisableVpcCniNetworkTypeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2910,6 +2941,37 @@ func (c *Client) DisableVpcCniNetworkType(request *DisableVpcCniNetworkTypeReque
         request = NewDisableVpcCniNetworkTypeRequest()
     }
     response = NewDisableVpcCniNetworkTypeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableClusterDeletionProtectionRequest() (request *EnableClusterDeletionProtectionRequest) {
+    request = &EnableClusterDeletionProtectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "EnableClusterDeletionProtection")
+    
+    return
+}
+
+func NewEnableClusterDeletionProtectionResponse() (response *EnableClusterDeletionProtectionResponse) {
+    response = &EnableClusterDeletionProtectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// EnableClusterDeletionProtection
+// 启用集群删除保护
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) EnableClusterDeletionProtection(request *EnableClusterDeletionProtectionRequest) (response *EnableClusterDeletionProtectionResponse, err error) {
+    if request == nil {
+        request = NewEnableClusterDeletionProtectionRequest()
+    }
+    response = NewEnableClusterDeletionProtectionResponse()
     err = c.Send(request, response)
     return
 }

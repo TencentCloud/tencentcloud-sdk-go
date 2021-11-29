@@ -607,6 +607,123 @@ type ClassicalTargetInfo struct {
 	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
 }
 
+type CloneLoadBalancerRequest struct {
+	*tchttp.BaseRequest
+
+	// 负载均衡ID。
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+
+	// 克隆出负载均衡实例的名称，规则：1-60 个英文、汉字、数字、连接线“-”或下划线“_”。
+	// 注意：如果名称与系统中已有负载均衡实例的名称相同，则系统将会自动生成此次创建的负载均衡实例的名称。
+	LoadBalancerName *string `json:"LoadBalancerName,omitempty" name:"LoadBalancerName"`
+
+	// 负载均衡实例所属的项目 ID，可以通过 DescribeProject 接口获取。不传此参数则视为默认项目。
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 仅适用于公网负载均衡。设置跨可用区容灾时的主可用区ID，例如 100001 或 ap-guangzhou-1
+	// 注：主可用区是需要承载流量的可用区，备可用区默认不承载流量，主可用区不可用时才使用备可用区，平台将为您自动选择最佳备可用区。可通过 DescribeMasterZones 接口查询一个地域的主可用区的列表。
+	MasterZoneId *string `json:"MasterZoneId,omitempty" name:"MasterZoneId"`
+
+	// 仅适用于公网负载均衡。设置跨可用区容灾时的备可用区ID，例如 100001 或 ap-guangzhou-1
+	// 注：备可用区是主可用区故障后，需要承载流量的可用区。可通过 DescribeMasterZones 接口查询一个地域的主/备可用区的列表。
+	SlaveZoneId *string `json:"SlaveZoneId,omitempty" name:"SlaveZoneId"`
+
+	// 仅适用于公网负载均衡。可用区ID，指定可用区以创建负载均衡实例。如：ap-guangzhou-1。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 仅适用于公网负载均衡。负载均衡的网络计费模式。
+	InternetAccessible *InternetAccessible `json:"InternetAccessible,omitempty" name:"InternetAccessible"`
+
+	// 仅适用于公网负载均衡。CMCC | CTCC | CUCC，分别对应 移动 | 电信 | 联通，如果不指定本参数，则默认使用BGP。可通过 DescribeSingleIsp 接口查询一个地域所支持的Isp。如果指定运营商，则网络计费式只能使用按带宽包计费(BANDWIDTH_PACKAGE)。
+	VipIsp *string `json:"VipIsp,omitempty" name:"VipIsp"`
+
+	// 指定Vip申请负载均衡。
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 购买负载均衡同时，给负载均衡打上标签。
+	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags"`
+
+	// 独占集群信息。
+	ExclusiveCluster *ExclusiveCluster `json:"ExclusiveCluster,omitempty" name:"ExclusiveCluster"`
+
+	// 带宽包ID，指定此参数时，网络计费方式（InternetAccessible.InternetChargeType）只支持按带宽包计费（BANDWIDTH_PACKAGE）。
+	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" name:"BandwidthPackageId"`
+
+	// 是否支持绑定跨地域/跨Vpc绑定IP的功能。
+	SnatPro *bool `json:"SnatPro,omitempty" name:"SnatPro"`
+
+	// 开启绑定跨地域/跨Vpc绑定IP的功能后，创建SnatIp。
+	SnatIps []*SnatIp `json:"SnatIps,omitempty" name:"SnatIps"`
+
+	// 公网独占集群ID或者CDCId。
+	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
+
+	// Stgw独占集群的标签。
+	ClusterTag *string `json:"ClusterTag,omitempty" name:"ClusterTag"`
+
+	// 仅适用于私有网络内网负载均衡。内网就近接入时，选择可用区下发。
+	Zones []*string `json:"Zones,omitempty" name:"Zones"`
+
+	// EIP 的唯一 ID，形如：eip-11112222，仅适用于内网负载均衡绑定EIP。
+	EipAddressId *string `json:"EipAddressId,omitempty" name:"EipAddressId"`
+}
+
+func (r *CloneLoadBalancerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CloneLoadBalancerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "LoadBalancerName")
+	delete(f, "ProjectId")
+	delete(f, "MasterZoneId")
+	delete(f, "SlaveZoneId")
+	delete(f, "ZoneId")
+	delete(f, "InternetAccessible")
+	delete(f, "VipIsp")
+	delete(f, "Vip")
+	delete(f, "Tags")
+	delete(f, "ExclusiveCluster")
+	delete(f, "BandwidthPackageId")
+	delete(f, "SnatPro")
+	delete(f, "SnatIps")
+	delete(f, "ClusterIds")
+	delete(f, "ClusterTag")
+	delete(f, "Zones")
+	delete(f, "EipAddressId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CloneLoadBalancerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CloneLoadBalancerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CloneLoadBalancerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CloneLoadBalancerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Cluster struct {
 
 	// 集群唯一ID
