@@ -540,6 +540,10 @@ type CreateInstancePreResponse struct {
 		// 操作型返回的Data数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Data *CreateInstancePreData `json:"Data,omitempty" name:"Data"`
+
+		// 删除是时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DeleteRouteTimestamp *string `json:"DeleteRouteTimestamp,omitempty" name:"DeleteRouteTimestamp"`
 	} `json:"Response"`
 }
 

@@ -43,6 +43,58 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreatePrivateDNSAccountRequest() (request *CreatePrivateDNSAccountRequest) {
+    request = &CreatePrivateDNSAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("privatedns", APIVersion, "CreatePrivateDNSAccount")
+    
+    return
+}
+
+func NewCreatePrivateDNSAccountResponse() (response *CreatePrivateDNSAccountResponse) {
+    response = &CreatePrivateDNSAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreatePrivateDNSAccount
+// 创建私有域解析账号
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNDEFIENDERROR = "InternalError.UndefiendError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ACCOUNTEXIST = "InvalidParameter.AccountExist"
+//  INVALIDPARAMETER_RECORDEXIST = "InvalidParameter.RecordExist"
+//  INVALIDPARAMETER_RECORDNOTEXIST = "InvalidParameter.RecordNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SERVICENOTSUBSCRIBED = "ResourceNotFound.ServiceNotSubscribed"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACCOUNT = "UnauthorizedOperation.UnauthorizedAccount"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreatePrivateDNSAccount(request *CreatePrivateDNSAccountRequest) (response *CreatePrivateDNSAccountResponse, err error) {
+    if request == nil {
+        request = NewCreatePrivateDNSAccountRequest()
+    }
+    response = NewCreatePrivateDNSAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePrivateZoneRequest() (request *CreatePrivateZoneRequest) {
     request = &CreatePrivateZoneRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -170,6 +222,56 @@ func (c *Client) CreatePrivateZoneRecord(request *CreatePrivateZoneRecordRequest
     return
 }
 
+func NewDeletePrivateDNSAccountRequest() (request *DeletePrivateDNSAccountRequest) {
+    request = &DeletePrivateDNSAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("privatedns", APIVersion, "DeletePrivateDNSAccount")
+    
+    return
+}
+
+func NewDeletePrivateDNSAccountResponse() (response *DeletePrivateDNSAccountResponse) {
+    response = &DeletePrivateDNSAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeletePrivateDNSAccount
+// 删除私有域解析账号
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNDEFIENDERROR = "InternalError.UndefiendError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SERVICENOTSUBSCRIBED = "ResourceNotFound.ServiceNotSubscribed"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACCOUNT = "UnauthorizedOperation.UnauthorizedAccount"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_EXISTBOUNDVPC = "UnsupportedOperation.ExistBoundVpc"
+func (c *Client) DeletePrivateDNSAccount(request *DeletePrivateDNSAccountRequest) (response *DeletePrivateDNSAccountResponse, err error) {
+    if request == nil {
+        request = NewDeletePrivateDNSAccountRequest()
+    }
+    response = NewDeletePrivateDNSAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeletePrivateZoneRequest() (request *DeletePrivateZoneRequest) {
     request = &DeletePrivateZoneRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -269,6 +371,57 @@ func (c *Client) DeletePrivateZoneRecord(request *DeletePrivateZoneRecordRequest
         request = NewDeletePrivateZoneRecordRequest()
     }
     response = NewDeletePrivateZoneRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAccountVpcListRequest() (request *DescribeAccountVpcListRequest) {
+    request = &DescribeAccountVpcListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("privatedns", APIVersion, "DescribeAccountVpcList")
+    
+    return
+}
+
+func NewDescribeAccountVpcListResponse() (response *DescribeAccountVpcListResponse) {
+    response = &DescribeAccountVpcListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAccountVpcList
+// 获取私有域解析账号的VPC列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNDEFIENDERROR = "InternalError.UndefiendError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SERVICENOTSUBSCRIBED = "ResourceNotFound.ServiceNotSubscribed"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_ROLEUNAUTHORIZED = "UnauthorizedOperation.RoleUnAuthorized"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACCOUNT = "UnauthorizedOperation.UnauthorizedAccount"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_ACCOUNTNOTBOUND = "UnsupportedOperation.AccountNotBound"
+func (c *Client) DescribeAccountVpcList(request *DescribeAccountVpcListRequest) (response *DescribeAccountVpcListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccountVpcListRequest()
+    }
+    response = NewDescribeAccountVpcListResponse()
     err = c.Send(request, response)
     return
 }

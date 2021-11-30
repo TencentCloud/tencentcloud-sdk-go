@@ -3180,11 +3180,11 @@ func (r *ModifySwitchTimePeriodResponse) FromJsonString(s string) error {
 
 type NetworkAccess struct {
 
-	// 网络资源id，实例id或RO组id
+	// 网络资源id，实例id或RO组id(此字段已废弃)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// 资源类型，1-实例 2-RO组
+	// 资源类型，1-实例 2-RO组(此字段已废弃)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceType *uint64 `json:"ResourceType,omitempty" name:"ResourceType"`
 
@@ -3192,15 +3192,15 @@ type NetworkAccess struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// IP地址
+	// IPV4地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vip *string `json:"Vip,omitempty" name:"Vip"`
 
-	// ipv6的IP地址
+	// IPV6地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vip6 *string `json:"Vip6,omitempty" name:"Vip6"`
 
-	// 连接Port地址
+	// 访问端口
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
 

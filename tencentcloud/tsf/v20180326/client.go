@@ -2899,6 +2899,41 @@ func (c *Client) DescribeGroup(request *DescribeGroupRequest) (response *Describ
     return
 }
 
+func NewDescribeGroupAttributeRequest() (request *DescribeGroupAttributeRequest) {
+    request = &DescribeGroupAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeGroupAttribute")
+    
+    return
+}
+
+func NewDescribeGroupAttributeResponse() (response *DescribeGroupAttributeResponse) {
+    response = &DescribeGroupAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeGroupAttribute
+// 获取部署组其他属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INTERNALERROR_GROUPCOMMONERROR = "InternalError.GroupCommonError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_REPOPACKAGEPARAMERROR = "InvalidParameter.RepoPackageParamError"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+func (c *Client) DescribeGroupAttribute(request *DescribeGroupAttributeRequest) (response *DescribeGroupAttributeResponse, err error) {
+    if request == nil {
+        request = NewDescribeGroupAttributeRequest()
+    }
+    response = NewDescribeGroupAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeGroupBindedGatewaysRequest() (request *DescribeGroupBindedGatewaysRequest) {
     request = &DescribeGroupBindedGatewaysRequest{
         BaseRequest: &tchttp.BaseRequest{},

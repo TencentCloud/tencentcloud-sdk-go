@@ -328,6 +328,19 @@ func (r *AddVpcCniSubnetsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AppChart struct {
+
+	// chart名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// chart的标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// chart的版本
+	LatestVersion *string `json:"LatestVersion,omitempty" name:"LatestVersion"`
+}
+
 type AutoScalingGroupRange struct {
 
 	// 伸缩组最小实例数
@@ -5499,6 +5512,137 @@ type Filter struct {
 
 	// 字段的过滤值。
 	Values []*string `json:"Values,omitempty" name:"Values"`
+}
+
+type ForwardApplicationRequestV3Request struct {
+	*tchttp.BaseRequest
+
+	// 请求集群addon的访问
+	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// 请求集群addon的路径
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 请求集群addon后允许接收的数据格式
+	Accept *string `json:"Accept,omitempty" name:"Accept"`
+
+	// 请求集群addon的数据格式
+	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
+
+	// 请求集群addon的数据
+	RequestBody *string `json:"RequestBody,omitempty" name:"RequestBody"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 是否编码请求内容
+	EncodedBody *string `json:"EncodedBody,omitempty" name:"EncodedBody"`
+}
+
+func (r *ForwardApplicationRequestV3Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ForwardApplicationRequestV3Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Method")
+	delete(f, "Path")
+	delete(f, "Accept")
+	delete(f, "ContentType")
+	delete(f, "RequestBody")
+	delete(f, "ClusterName")
+	delete(f, "EncodedBody")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ForwardApplicationRequestV3Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ForwardApplicationRequestV3Response struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 请求集群addon后返回的数据
+		ResponseBody *string `json:"ResponseBody,omitempty" name:"ResponseBody"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ForwardApplicationRequestV3Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ForwardApplicationRequestV3Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetTkeAppChartListRequest struct {
+	*tchttp.BaseRequest
+
+	// app类型，取值log,scheduler,network,storage,monitor,dns,image,other,invisible
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+
+	// app支持的操作系统，取值arm32、arm64、amd64
+	Arch *string `json:"Arch,omitempty" name:"Arch"`
+
+	// 集群类型，取值tke、eks
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+}
+
+func (r *GetTkeAppChartListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTkeAppChartListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Kind")
+	delete(f, "Arch")
+	delete(f, "ClusterType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTkeAppChartListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetTkeAppChartListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 所支持的chart列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AppCharts []*AppChart `json:"AppCharts,omitempty" name:"AppCharts"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetTkeAppChartListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTkeAppChartListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetUpgradeInstanceProgressRequest struct {

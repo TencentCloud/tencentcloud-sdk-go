@@ -541,13 +541,13 @@ type ImageInfo struct {
 type ImageToClassRequest struct {
 	*tchttp.BaseRequest
 
-	// 图片列表，允许传入多张图片，支持传入图片的url或base64编码
+	// 图片列表，允许传入多张图片，支持传入图片的base64编码，暂不支持图片url
 	ImageInfoList []*ImageInfo `json:"ImageInfoList,omitempty" name:"ImageInfoList"`
 
 	// 图片处理参数
 	HandleParam *HandleParam `json:"HandleParam,omitempty" name:"HandleParam"`
 
-	// 图片类型，目前支持11（检验报告），12（检查报告），15（病理报告），218（诊断证明）。
+	// 不填，默认为0
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 }
 
@@ -599,13 +599,13 @@ func (r *ImageToClassResponse) FromJsonString(s string) error {
 type ImageToObjectRequest struct {
 	*tchttp.BaseRequest
 
-	// 图片列表，允许传入多张图片，支持传入图片的url或base64编码
+	// 图片列表，允许传入多张图片，目前只支持传入图片base64编码，图片url暂不支持
 	ImageInfoList []*ImageInfo `json:"ImageInfoList,omitempty" name:"ImageInfoList"`
 
 	// 图片处理参数
 	HandleParam *HandleParam `json:"HandleParam,omitempty" name:"HandleParam"`
 
-	// 报告类型，目前支持11（检验报告），12（检查报告），15（病理报告），28（出院报告），29（入院报告），210（门诊病历），212（手术记录），218（诊断证明），363（心电图），27（内窥镜检查），215（处方单）。如果不清楚报告类型，可以使用分类引擎，该字段传0（同时IsUsedClassify字段必须为True，否则无法输出结果）
+	// 报告类型，目前支持11（检验报告），12（检查报告），15（病理报告），28（出院报告），29（入院报告），210（门诊病历），212（手术记录），218（诊断证明），363（心电图），27（内窥镜检查），215（处方单），219（免疫接种证明），301（C14呼气试验）。如果不清楚报告类型，可以使用分类引擎，该字段传0（同时IsUsedClassify字段必须为True，否则无法输出结果）
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
 	// 是否使用分类引擎，当不确定报告类型时，可以使用收费的报告分类引擎服务。若该字段为 False，则 Type 字段不能为 0，否则无法输出结果。
@@ -1478,6 +1478,10 @@ type Template struct {
 	// 处方单
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Prescription *Prescription `json:"Prescription,omitempty" name:"Prescription"`
+
+	// 免疫接种证明
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VaccineCertificate *VaccineCertificate `json:"VaccineCertificate,omitempty" name:"VaccineCertificate"`
 }
 
 type TextToClassRequest struct {
@@ -1535,7 +1539,7 @@ type TextToObjectRequest struct {
 	// 报告文本
 	Text *string `json:"Text,omitempty" name:"Text"`
 
-	// 报告类型，目前支持12（检查报告），15（病理报告），28（出院报告），29（入院报告），210（门诊病历），212（手术记录），218（诊断证明），363（心电图），27（内窥镜检查），215（处方单）。如果不清楚报告类型，可以使用分类引擎，该字段传0（同时IsUsedClassify字段必须为True，否则无法输出结果）
+	// 报告类型，目前支持12（检查报告），15（病理报告），28（出院报告），29（入院报告），210（门诊病历），212（手术记录），218（诊断证明），363（心电图），27（内窥镜检查），215（处方单），219（免疫接种证明），301（C14呼气试验）。如果不清楚报告类型，可以使用分类引擎，该字段传0（同时IsUsedClassify字段必须为True，否则无法输出结果）
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
 	// 是否使用分类引擎，当不确定报告类型时，可以使用收费的报告分类引擎服务。若该字段为False，则Type字段不能为0，否则无法输出结果。
@@ -1846,6 +1850,52 @@ type TuberInfo struct {
 	// 原文
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Src *string `json:"Src,omitempty" name:"Src"`
+}
+
+type Vaccination struct {
+
+	// 序号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 疫苗名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vaccine *string `json:"Vaccine,omitempty" name:"Vaccine"`
+
+	// 剂次
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Dose *string `json:"Dose,omitempty" name:"Dose"`
+
+	// 接种日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 疫苗批号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LotNumber *string `json:"LotNumber,omitempty" name:"LotNumber"`
+
+	// 生产企业
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Manufacturer *string `json:"Manufacturer,omitempty" name:"Manufacturer"`
+
+	// 接种单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Clinic *string `json:"Clinic,omitempty" name:"Clinic"`
+
+	// 接种部位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Site *string `json:"Site,omitempty" name:"Site"`
+
+	// 接种者
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Provider *string `json:"Provider,omitempty" name:"Provider"`
+}
+
+type VaccineCertificate struct {
+
+	// 免疫接种列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VaccineList []*Vaccination `json:"VaccineList,omitempty" name:"VaccineList"`
 }
 
 type Value struct {

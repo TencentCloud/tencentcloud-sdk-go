@@ -5959,6 +5959,56 @@ func (r *DescribeGatewayMonitorOverviewResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeGroupAttributeRequest struct {
+	*tchttp.BaseRequest
+
+	// 部署组ID字段
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+}
+
+func (r *DescribeGroupAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGroupAttributeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGroupAttributeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeGroupAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 虚拟机部署组信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *VmGroupOther `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeGroupAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGroupAttributeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeGroupBindedGatewaysRequest struct {
 	*tchttp.BaseRequest
 
@@ -14401,6 +14451,45 @@ type VmGroup struct {
 	// 部署组备注
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Alias *string `json:"Alias,omitempty" name:"Alias"`
+}
+
+type VmGroupOther struct {
+
+	// 部署组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 程序包ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
+
+	// 程序包名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageName *string `json:"PackageName,omitempty" name:"PackageName"`
+
+	// 程序包版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageVersion *string `json:"PackageVersion,omitempty" name:"PackageVersion"`
+
+	// 部署组实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceCount *int64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
+
+	// 部署组运行中实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunInstanceCount *int64 `json:"RunInstanceCount,omitempty" name:"RunInstanceCount"`
+
+	// 部署组中停止实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OffInstanceCount *int64 `json:"OffInstanceCount,omitempty" name:"OffInstanceCount"`
+
+	// 部署组状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupStatus *string `json:"GroupStatus,omitempty" name:"GroupStatus"`
+
+	// 服务配置信息是否匹配
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsNotEqualServiceConfig *bool `json:"IsNotEqualServiceConfig,omitempty" name:"IsNotEqualServiceConfig"`
 }
 
 type VmGroupSimple struct {

@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 负载均衡(clb) 版本：2018-03-17
+## 应用性能观测(apm) 版本：2021-06-22
 
-### 第 58 次发布
+### 第 1 次发布
 
-发布时间：2021-11-29 08:05:45
+发布时间：2021-11-29 14:39:11
 
 本次发布包含了以下内容：
 
@@ -12,15 +12,107 @@
 
 新增接口：
 
-* [CloneLoadBalancer](https://cloud.tencent.com/document/api/214/64874)
+* [DescribeApmAgent](https://cloud.tencent.com/document/api/1463/64926)
+
+新增数据结构：
+
+* [ApmAgentInfo](https://cloud.tencent.com/document/api/1463/64927#ApmAgentInfo)
+
+
+
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 25 次发布
+
+发布时间：2021-11-30 08:04:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstancePre](https://cloud.tencent.com/document/api/597/45847)
+
+	* 新增出参：DeleteRouteTimestamp
+
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 59 次发布
+
+发布时间：2021-11-30 08:04:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeLoadBalancerOverview](https://cloud.tencent.com/document/api/214/64973)
+
+修改数据结构：
+
+* [LoadBalancer](https://cloud.tencent.com/document/api/214/30694#LoadBalancer)
+
+	* 新增成员：ClusterIds, AttributeFlags
+
+
+
+
+## 医疗报告结构化(mrs) 版本：2020-09-10
+
+### 第 8 次发布
+
+发布时间：2021-11-30 08:10:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [Vaccination](https://cloud.tencent.com/document/api/1314/56230#Vaccination)
+* [VaccineCertificate](https://cloud.tencent.com/document/api/1314/56230#VaccineCertificate)
+
+修改数据结构：
+
+* [Template](https://cloud.tencent.com/document/api/1314/56230#Template)
+
+	* 新增成员：VaccineCertificate
+
+
+
+
+## 私有域解析 Private DNS(privatedns) 版本：2020-10-28
+
+### 第 4 次发布
+
+发布时间：2021-11-30 08:10:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreatePrivateDNSAccount](https://cloud.tencent.com/document/api/1338/64976)
+* [DeletePrivateDNSAccount](https://cloud.tencent.com/document/api/1338/64975)
+* [DescribeAccountVpcList](https://cloud.tencent.com/document/api/1338/64974)
+
+新增数据结构：
+
+* [AccountVpcInfoOut](https://cloud.tencent.com/document/api/1338/55947#AccountVpcInfoOut)
 
 
 
 ## 容器服务(tke) 版本：2018-05-25
 
-### 第 79 次发布
+### 第 80 次发布
 
-发布时间：2021-11-29 08:13:39
+发布时间：2021-11-30 08:12:44
 
 本次发布包含了以下内容：
 
@@ -28,8 +120,32 @@
 
 新增接口：
 
-* [DisableClusterDeletionProtection](https://cloud.tencent.com/document/api/457/64876)
-* [EnableClusterDeletionProtection](https://cloud.tencent.com/document/api/457/64875)
+* [ForwardApplicationRequestV3](https://cloud.tencent.com/document/api/457/64978)
+* [GetTkeAppChartList](https://cloud.tencent.com/document/api/457/64977)
+
+新增数据结构：
+
+* [AppChart](https://cloud.tencent.com/document/api/457/31866#AppChart)
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 61 次发布
+
+发布时间：2021-11-30 08:13:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeGroupAttribute](https://cloud.tencent.com/document/api/649/64979)
+
+新增数据结构：
+
+* [VmGroupOther](https://cloud.tencent.com/document/api/649/36099#VmGroupOther)
 
 
 
@@ -1999,6 +2115,27 @@
 * [UsagePlanInfo](https://cloud.tencent.com/document/api/628/45244#UsagePlanInfo)
 * [UsagePlanStatusInfo](https://cloud.tencent.com/document/api/628/45244#UsagePlanStatusInfo)
 * [UsagePlansStatus](https://cloud.tencent.com/document/api/628/45244#UsagePlansStatus)
+
+
+
+
+## 应用性能观测(apm) 版本：2021-06-22
+
+### 第 1 次发布
+
+发布时间：2021-11-29 14:39:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeApmAgent](https://cloud.tencent.com/document/api/1463/64926)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ApmAgentInfo](https://cloud.tencent.com/document/api/1463/64927#ApmAgentInfo)](https://cloud.tencent.com/document/api/1463/64927#[ApmAgentInfo](https://cloud.tencent.com/document/api/1463/64927#ApmAgentInfo))
 
 
 
@@ -12700,6 +12837,21 @@
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19
 
+### 第 25 次发布
+
+发布时间：2021-11-30 08:04:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstancePre](https://cloud.tencent.com/document/api/597/45847)
+
+	* 新增出参：DeleteRouteTimestamp
+
+
 ### 第 24 次发布
 
 发布时间：2021-11-02 08:04:08
@@ -13259,6 +13411,25 @@
 
 ## 负载均衡(clb) 版本：2018-03-17
 
+### 第 59 次发布
+
+发布时间：2021-11-30 08:04:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeLoadBalancerOverview](https://cloud.tencent.com/document/api/214/64973)](https://cloud.tencent.com/document/api/#/#)
+
+修改数据结构：
+
+* [LoadBalancer](https://cloud.tencent.com/document/api/214/30694#LoadBalancer)
+
+	* 新增成员：ClusterIds, AttributeFlags
+
+
 ### 第 58 次发布
 
 发布时间：2021-11-29 08:05:45
@@ -13269,7 +13440,7 @@
 
 新增接口：
 
-* [[CloneLoadBalancer](https://cloud.tencent.com/document/api/214/64874)](https://cloud.tencent.com/document/api/#/#)
+* [CloneLoadBalancer](https://cloud.tencent.com/document/api/214/64874)
 
 ### 第 57 次发布
 
@@ -39933,6 +40104,26 @@
 
 ## 医疗报告结构化(mrs) 版本：2020-09-10
 
+### 第 8 次发布
+
+发布时间：2021-11-30 08:10:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[Vaccination](https://cloud.tencent.com/document/api/1314/56230#Vaccination)](https://cloud.tencent.com/document/api/1314/56230#[Vaccination](https://cloud.tencent.com/document/api/1314/56230#Vaccination))
+* [[VaccineCertificate](https://cloud.tencent.com/document/api/1314/56230#VaccineCertificate)](https://cloud.tencent.com/document/api/1314/56230#[VaccineCertificate](https://cloud.tencent.com/document/api/1314/56230#VaccineCertificate))
+
+修改数据结构：
+
+* [Template](https://cloud.tencent.com/document/api/1314/56230#Template)
+
+	* 新增成员：VaccineCertificate
+
+
 ### 第 7 次发布
 
 发布时间：2021-11-16 08:13:00
@@ -43102,6 +43293,24 @@
 
 
 ## 私有域解析 Private DNS(privatedns) 版本：2020-10-28
+
+### 第 4 次发布
+
+发布时间：2021-11-30 08:10:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreatePrivateDNSAccount](https://cloud.tencent.com/document/api/1338/64976)](https://cloud.tencent.com/document/api/#/#)
+* [[DeletePrivateDNSAccount](https://cloud.tencent.com/document/api/1338/64975)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAccountVpcList](https://cloud.tencent.com/document/api/1338/64974)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AccountVpcInfoOut](https://cloud.tencent.com/document/api/1338/55947#AccountVpcInfoOut)](https://cloud.tencent.com/document/api/1338/55947#[AccountVpcInfoOut](https://cloud.tencent.com/document/api/1338/55947#AccountVpcInfoOut))
 
 ### 第 3 次发布
 
@@ -52297,6 +52506,36 @@
 
 
 
+## 高性能计算平台(thpc) 版本：2021-11-09
+
+### 第 1 次发布
+
+发布时间：2021-11-29 12:09:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateCluster](https://cloud.tencent.com/document/api/1527/64905)
+* [DeleteCluster](https://cloud.tencent.com/document/api/1527/64904)
+
+新增数据结构：
+
+* [ComputeNode](https://cloud.tencent.com/document/api/1527/64906#ComputeNode)
+* [DataDisk](https://cloud.tencent.com/document/api/1527/64906#DataDisk)
+* [InstanceChargePrepaid](https://cloud.tencent.com/document/api/1527/64906#InstanceChargePrepaid)
+* [InternetAccessible](https://cloud.tencent.com/document/api/1527/64906#InternetAccessible)
+* [LoginSettings](https://cloud.tencent.com/document/api/1527/64906#LoginSettings)
+* [ManagerNode](https://cloud.tencent.com/document/api/1527/64906#ManagerNode)
+* [Placement](https://cloud.tencent.com/document/api/1527/64906#Placement)
+* [SystemDisk](https://cloud.tencent.com/document/api/1527/64906#SystemDisk)
+* [VirtualPrivateCloud](https://cloud.tencent.com/document/api/1527/64906#VirtualPrivateCloud)
+
+
+
+
 ## 智能钛机器学习(tia) 版本：2018-02-26
 
 ### 第 3 次发布
@@ -53893,6 +54132,23 @@
 
 ## 容器服务(tke) 版本：2018-05-25
 
+### 第 80 次发布
+
+发布时间：2021-11-30 08:12:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ForwardApplicationRequestV3](https://cloud.tencent.com/document/api/457/64978)](https://cloud.tencent.com/document/api/#/#)
+* [[GetTkeAppChartList](https://cloud.tencent.com/document/api/457/64977)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AppChart](https://cloud.tencent.com/document/api/457/31866#AppChart)](https://cloud.tencent.com/document/api/457/31866#[AppChart](https://cloud.tencent.com/document/api/457/31866#AppChart))
+
 ### 第 79 次发布
 
 发布时间：2021-11-29 08:13:39
@@ -53903,8 +54159,8 @@
 
 新增接口：
 
-* [[DisableClusterDeletionProtection](https://cloud.tencent.com/document/api/457/64876)](https://cloud.tencent.com/document/api/#/#)
-* [[EnableClusterDeletionProtection](https://cloud.tencent.com/document/api/457/64875)](https://cloud.tencent.com/document/api/#/#)
+* [DisableClusterDeletionProtection](https://cloud.tencent.com/document/api/457/64876)
+* [EnableClusterDeletionProtection](https://cloud.tencent.com/document/api/457/64875)
 
 ### 第 78 次发布
 
@@ -56432,6 +56688,22 @@
 
 
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 61 次发布
+
+发布时间：2021-11-30 08:13:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeGroupAttribute](https://cloud.tencent.com/document/api/649/64979)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[VmGroupOther](https://cloud.tencent.com/document/api/649/36099#VmGroupOther)](https://cloud.tencent.com/document/api/649/36099#[VmGroupOther](https://cloud.tencent.com/document/api/649/36099#VmGroupOther))
 
 ### 第 60 次发布
 

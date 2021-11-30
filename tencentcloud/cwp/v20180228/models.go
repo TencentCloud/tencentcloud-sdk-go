@@ -10225,7 +10225,7 @@ type DescribeScanVulSettingResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 漏洞类型：1: web应用漏洞 2:系统组件漏洞 (多选英文逗号分隔)
+		// 漏洞类型：1: web-cms漏洞 2:应用漏洞  4: Linux软件漏洞 5: Windows系统漏洞
 		VulCategories *string `json:"VulCategories,omitempty" name:"VulCategories"`
 
 		// 危害等级：1-低危；2-中危；3-高危；4-严重 (多选英文逗号分隔)
@@ -10940,7 +10940,7 @@ func (r *DescribeTagsResponse) FromJsonString(s string) error {
 type DescribeUndoVulCountsRequest struct {
 	*tchttp.BaseRequest
 
-	// 漏洞分类，最小值为1，最大值为5
+	// 漏洞分类，1: web-cms漏洞 2:应用漏洞  4: Linux软件漏洞 5: Windows系统漏洞
 	VulCategory *uint64 `json:"VulCategory,omitempty" name:"VulCategory"`
 
 	// 是否应急漏洞筛选, 是 : yes
@@ -11105,7 +11105,7 @@ type DescribeVulCountByDatesRequest struct {
 	// 需要查询最近几天的数据，需要都 -1后传入
 	LastDays []*uint64 `json:"LastDays,omitempty" name:"LastDays"`
 
-	// 漏洞的分类，最小值为1最大值为5
+	// 漏洞的分类: 1: web-cms漏洞 2:应用漏洞  4: Linux软件漏洞 5: Windows系统漏洞
 	VulCategory *uint64 `json:"VulCategory,omitempty" name:"VulCategory"`
 
 	// 是否为应急漏洞筛选  是: yes
@@ -11382,7 +11382,7 @@ type DescribeVulInfoCvssResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		VulLevel *uint64 `json:"VulLevel,omitempty" name:"VulLevel"`
 
-		// 漏洞分类 1: web应用漏洞 2:应用漏洞3:安全基线 4: Linux系统漏洞 5: Windows系统漏洞
+		// 漏洞分类 1: web-cms漏洞 2:应用漏洞  4: Linux软件漏洞 5: Windows系统漏洞
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		VulType *uint64 `json:"VulType,omitempty" name:"VulType"`
 
@@ -11507,6 +11507,7 @@ type DescribeVulListRequest struct {
 	// <li>Uuid- String - 是否必填：否 - 主机uuid查询</li>
 	// <li>VulName- string -</li>
 	// <li>HostIp- string - 是否必填：否 - 主机ip</li>
+	// <li>VulCategory- string - 是否必填：否 - 漏洞类别 1: web-cms漏洞 2:应用漏洞  4: Linux软件漏洞 5: Windows系统漏洞</li>
 	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
 
 	// 可选排序字段 Level，LastTime，HostCount
@@ -13413,7 +13414,7 @@ type ExportVulListRequest struct {
 	*tchttp.BaseRequest
 
 	// 过滤条件。
-	// <li>VulCategory - int - 是否必填：否 - 漏洞分类筛选 1: web应用漏洞 2:系统组件漏洞 3:安全基线</li>
+	// <li>VulCategory - int - 是否必填：否 - 漏洞分类筛选1: web-cms漏洞 2:应用漏洞  4: Linux软件漏洞 5: Windows系统漏洞</li>
 	// <li>IfEmergency - String - 是否必填：否 - 是否为应急漏洞，查询应急漏洞传:yes</li>
 	// <li>Status - String - 是否必填：是 - 漏洞状态筛选，0: 待处理 1:忽略  3:已修复  5:检测中， 控制台仅处理0,1,3,5四种状态</li>
 	// <li>Level - String - 是否必填：否 - 漏洞等级筛选 1:低 2:中 3:高 4:提示</li>
@@ -15587,7 +15588,7 @@ type ScanVulRequest struct {
 	// 服务器分类：1:专业版服务器；2:自选服务器
 	HostType *uint64 `json:"HostType,omitempty" name:"HostType"`
 
-	// 漏洞类型：1: web应用漏洞（webCMS） 2:系统组件（应用漏洞）漏洞  3:安全基线 4:Linux软件漏洞 5:Windows系统漏洞(多选英文;分隔)
+	// 漏洞类型：1: web-cms漏洞 2:应用漏洞  4: Linux软件漏洞 5: Windows系统漏洞 (多选英文;分隔)
 	VulCategories *string `json:"VulCategories,omitempty" name:"VulCategories"`
 
 	// 自选服务器时生效，主机quuid的string数组
@@ -15658,7 +15659,7 @@ type ScanVulSettingRequest struct {
 	// 定期检测间隔时间（天）
 	TimerInterval *uint64 `json:"TimerInterval,omitempty" name:"TimerInterval"`
 
-	// 漏洞类型：1: web应用漏洞 2:系统组件漏洞, 以数组方式传参[1,2]
+	// 漏洞类型：1: web-cms漏洞 2:应用漏洞  4: Linux软件漏洞 5: Windows系统漏洞, 以数组方式传参[1,2]
 	VulCategories []*uint64 `json:"VulCategories,omitempty" name:"VulCategories"`
 
 	// 危害等级：1-低危；2-中危；3-高危；4-严重,以数组方式传参[1,2,3]
@@ -16454,7 +16455,7 @@ type VulDetailInfo struct {
 	// cve编号
 	CveId *string `json:"CveId,omitempty" name:"CveId"`
 
-	// 漏洞分类
+	// 1: web-cms漏洞 2:应用漏洞  4: Linux软件漏洞 5: Windows系统漏洞 0= 应急漏洞
 	VulCategory *uint64 `json:"VulCategory,omitempty" name:"VulCategory"`
 
 	// 漏洞描述

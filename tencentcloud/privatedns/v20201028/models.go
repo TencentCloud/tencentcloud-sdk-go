@@ -38,6 +38,21 @@ type AccountVpcInfo struct {
 	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
 }
 
+type AccountVpcInfoOut struct {
+
+	// VpcId： vpc-xadsafsdasd
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// Vpc所属地区: ap-guangzhou, ap-shanghai
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// Vpc所属账号: 123456789
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// vpc资源名称：testname
+	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
+}
+
 type AccountVpcInfoOutput struct {
 
 	// 关联账户的uin
@@ -75,6 +90,52 @@ type AuditLogInfo struct {
 
 	// 日志内容
 	Content *string `json:"Content,omitempty" name:"Content"`
+}
+
+type CreatePrivateDNSAccountRequest struct {
+	*tchttp.BaseRequest
+
+	// 私有域解析账号
+	Account *PrivateDNSAccount `json:"Account,omitempty" name:"Account"`
+}
+
+func (r *CreatePrivateDNSAccountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrivateDNSAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Account")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrivateDNSAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePrivateDNSAccountResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreatePrivateDNSAccountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrivateDNSAccountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreatePrivateZoneRecordRequest struct {
@@ -235,6 +296,52 @@ type DatePoint struct {
 	Value *int64 `json:"Value,omitempty" name:"Value"`
 }
 
+type DeletePrivateDNSAccountRequest struct {
+	*tchttp.BaseRequest
+
+	// 私有域解析账号
+	Account *PrivateDNSAccount `json:"Account,omitempty" name:"Account"`
+}
+
+func (r *DeletePrivateDNSAccountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePrivateDNSAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Account")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePrivateDNSAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePrivateDNSAccountResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeletePrivateDNSAccountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePrivateDNSAccountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeletePrivateZoneRecordRequest struct {
 	*tchttp.BaseRequest
 
@@ -336,6 +443,70 @@ func (r *DeletePrivateZoneResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeletePrivateZoneResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAccountVpcListRequest struct {
+	*tchttp.BaseRequest
+
+	// 关联账号的uin
+	AccountUin *string `json:"AccountUin,omitempty" name:"AccountUin"`
+
+	// 分页偏移量，从0开始
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页限制数目， 最大100，默认20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤参数
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeAccountVpcListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccountVpcListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AccountUin")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccountVpcListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAccountVpcListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// VPC数量
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// VPC 列表
+		VpcSet []*AccountVpcInfoOut `json:"VpcSet,omitempty" name:"VpcSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAccountVpcListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccountVpcListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

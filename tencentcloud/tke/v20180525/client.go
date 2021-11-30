@@ -3007,6 +3007,78 @@ func (c *Client) EnableVpcCniNetworkType(request *EnableVpcCniNetworkTypeRequest
     return
 }
 
+func NewForwardApplicationRequestV3Request() (request *ForwardApplicationRequestV3Request) {
+    request = &ForwardApplicationRequestV3Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "ForwardApplicationRequestV3")
+    
+    return
+}
+
+func NewForwardApplicationRequestV3Response() (response *ForwardApplicationRequestV3Response) {
+    response = &ForwardApplicationRequestV3Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ForwardApplicationRequestV3
+// 操作TKE集群的addon
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ForwardApplicationRequestV3(request *ForwardApplicationRequestV3Request) (response *ForwardApplicationRequestV3Response, err error) {
+    if request == nil {
+        request = NewForwardApplicationRequestV3Request()
+    }
+    response = NewForwardApplicationRequestV3Response()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetTkeAppChartListRequest() (request *GetTkeAppChartListRequest) {
+    request = &GetTkeAppChartListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "GetTkeAppChartList")
+    
+    return
+}
+
+func NewGetTkeAppChartListResponse() (response *GetTkeAppChartListResponse) {
+    response = &GetTkeAppChartListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetTkeAppChartList
+// 获取TKE支持的App列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) GetTkeAppChartList(request *GetTkeAppChartListRequest) (response *GetTkeAppChartListResponse, err error) {
+    if request == nil {
+        request = NewGetTkeAppChartListRequest()
+    }
+    response = NewGetTkeAppChartListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetUpgradeInstanceProgressRequest() (request *GetUpgradeInstanceProgressRequest) {
     request = &GetUpgradeInstanceProgressRequest{
         BaseRequest: &tchttp.BaseRequest{},

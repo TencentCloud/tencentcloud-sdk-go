@@ -1487,6 +1487,41 @@ func (c *Client) DescribeLoadBalancerListByCertId(request *DescribeLoadBalancerL
     return
 }
 
+func NewDescribeLoadBalancerOverviewRequest() (request *DescribeLoadBalancerOverviewRequest) {
+    request = &DescribeLoadBalancerOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "DescribeLoadBalancerOverview")
+    
+    return
+}
+
+func NewDescribeLoadBalancerOverviewResponse() (response *DescribeLoadBalancerOverviewResponse) {
+    response = &DescribeLoadBalancerOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeLoadBalancerOverview
+// 查询运行中、隔离中、即将到期和负载均衡总数。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+func (c *Client) DescribeLoadBalancerOverview(request *DescribeLoadBalancerOverviewRequest) (response *DescribeLoadBalancerOverviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeLoadBalancerOverviewRequest()
+    }
+    response = NewDescribeLoadBalancerOverviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLoadBalancerTrafficRequest() (request *DescribeLoadBalancerTrafficRequest) {
     request = &DescribeLoadBalancerTrafficRequest{
         BaseRequest: &tchttp.BaseRequest{},
