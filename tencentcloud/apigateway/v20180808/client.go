@@ -3202,7 +3202,7 @@ func NewUpdateApiAppKeyResponse() (response *UpdateApiAppKeyResponse) {
 }
 
 // UpdateApiAppKey
-// 本接口（UpdateApiAppKey）用于更新应用秘钥。
+// 本接口（UpdateApiAppKey）用于更新应用密钥。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APIERROR = "FailedOperation.ApiError"

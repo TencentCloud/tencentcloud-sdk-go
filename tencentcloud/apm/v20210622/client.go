@@ -76,3 +76,37 @@ func (c *Client) DescribeApmAgent(request *DescribeApmAgentRequest) (response *D
     err = c.Send(request, response)
     return
 }
+
+func NewDescribeApmInstancesRequest() (request *DescribeApmInstancesRequest) {
+    request = &DescribeApmInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apm", APIVersion, "DescribeApmInstances")
+    
+    return
+}
+
+func NewDescribeApmInstancesResponse() (response *DescribeApmInstancesResponse) {
+    response = &DescribeApmInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeApmInstances
+// APM实例列表拉取
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeApmInstances(request *DescribeApmInstancesRequest) (response *DescribeApmInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeApmInstancesRequest()
+    }
+    response = NewDescribeApmInstancesResponse()
+    err = c.Send(request, response)
+    return
+}

@@ -127,6 +127,7 @@ import (
 	iotvideov20191126 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iotvideo/v20191126"
 	iotvideov20201215 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iotvideo/v20201215"
 	iotvideoindustryv20201201 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iotvideoindustry/v20201201"
+	ivldv20210903 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ivld/v20210903"
 	kmsv20190118 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/kms/v20190118"
 	lighthousev20200324 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lighthouse/v20200324"
 	livev20180801 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/live/v20180801"
@@ -1615,6 +1616,19 @@ func TestIotvideoindustryv20201201Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf(fmt.Sprintf("fail to init iotvideoindustry_v20201201 client: %v", err))
+    }
+}
+
+func TestIvldv20210903Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := ivldv20210903.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf(fmt.Sprintf("fail to init ivld_v20210903 client: %v", err))
     }
 }
 

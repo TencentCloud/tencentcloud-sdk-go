@@ -11,8 +11,8 @@
 | apcas | [汽车精准获客服务](https://cloud.tencent.com/document/product/1244) | 2021-11-10 08:02:02 |
 | ape | [正版图库直通车](https://cloud.tencent.com/document/product/1181) | 2021-11-10 08:02:03 |
 | api | [云 API](https://cloud.tencent.com/document/product/546) | 2021-04-25 10:09:57 |
-| apigateway | [API网关](https://cloud.tencent.com/document/product/628) | 2021-11-24 08:04:10 |
-| apm | [应用性能观测](https://cloud.tencent.com/document/product/1463) | 2021-11-29 14:39:11 |
+| apigateway | [API网关](https://cloud.tencent.com/document/product/628) | 2021-12-01 08:02:45 |
+| apm | [应用性能观测](https://cloud.tencent.com/document/product/1463) | 2021-12-01 08:02:58 |
 | as | [弹性伸缩](https://cloud.tencent.com/document/product/377) | 2021-11-23 08:02:56 |
 | asr | [语音识别](https://cloud.tencent.com/document/product/1093) | 2021-11-10 08:02:28 |
 | asw | [应用与服务编排工作流](https://cloud.tencent.com/document/product/1272) | 2021-11-29 08:03:58 |
@@ -36,7 +36,7 @@
 | cdn | [内容分发网络](https://cloud.tencent.com/document/product/228) | 2021-11-19 08:07:05 |
 | cds | [数据安全审计](https://cloud.tencent.com/document/product/856) | 2021-11-10 08:03:57 |
 | cfs | [文件存储](https://cloud.tencent.com/document/product/582) | 2021-11-17 08:07:53 |
-| cfw | [云防火墙](https://cloud.tencent.com/document/product/1132) | 2021-11-26 08:05:36 |
+| cfw | [云防火墙](https://cloud.tencent.com/document/product/1132) | 2021-12-01 08:04:35 |
 | chdfs | [云 HDFS](https://cloud.tencent.com/document/product/1105) | 2021-11-10 08:04:08 |
 | cii | [智能保险助手](https://cloud.tencent.com/document/product/1368) | 2021-11-23 08:04:46 |
 | cim | [](https://cloud.tencent.com/document/product) | 2019-05-16 17:21:18 |
@@ -65,7 +65,7 @@
 | drm | [数字版权管理](https://cloud.tencent.com/document/product/1000) | 2021-11-10 08:06:23 |
 | ds | [电子合同服务](https://cloud.tencent.com/document/product/869) | 2021-11-10 08:06:24 |
 | dtf | [分布式事务](https://cloud.tencent.com/document/product/1224) | 2021-11-10 08:06:26 |
-| dts | [数据传输服务](https://cloud.tencent.com/document/product/571) | 2021-11-10 08:06:27 |
+| dts | [数据传输服务](https://cloud.tencent.com/document/product/571) | 2021-12-01 08:07:08 |
 | ecc | [英文作文批改](https://cloud.tencent.com/document/product/1076) | 2021-11-10 08:06:30 |
 | ecdn | [全站加速网络](https://cloud.tencent.com/document/product/570) | 2021-11-10 08:06:32 |
 | ecm | [边缘计算机器](https://cloud.tencent.com/document/product/1108) | 2021-11-18 20:07:06 |
@@ -96,8 +96,9 @@
 | iottid | [物联网设备身份认证](https://cloud.tencent.com/document/product/1086) | 2021-11-10 08:08:16 |
 | iotvideo | [物联网智能视频服务](https://cloud.tencent.com/document/product/1131) | 2021-11-23 08:09:04 |
 | iotvideoindustry | [物联网智能视频服务（行业版）](https://cloud.tencent.com/document/product/1361) | 2021-11-19 08:12:04 |
+| ivld | [视频智能标签](https://cloud.tencent.com/document/product/1509) | 2021-11-30 14:56:41 |
 | kms | [密钥管理系统](https://cloud.tencent.com/document/product/573) | 2021-11-29 08:10:07 |
-| lighthouse | [轻量应用服务器](https://cloud.tencent.com/document/product/1207) | 2021-10-20 08:12:10 |
+| lighthouse | [轻量应用服务器](https://cloud.tencent.com/document/product/1207) | 2021-11-30 20:01:47 |
 | live | [云直播](https://cloud.tencent.com/document/product/267) | 2021-11-22 08:08:13 |
 | lp | [登录保护](https://cloud.tencent.com/document/product/1190) | 2021-11-10 08:08:46 |
 | mariadb | [云数据库 MariaDB](https://cloud.tencent.com/document/product/237) | 2021-11-26 08:11:04 |
@@ -105,7 +106,7 @@
 | memcached | [云数据库 Memcached](https://cloud.tencent.com/document/product) | 2020-08-24 08:07:49 |
 | mgobe | [游戏联机对战引擎](https://cloud.tencent.com/document/product/1038) | 2021-11-10 08:08:55 |
 | mna | [移动网络加速](https://cloud.tencent.com/document/product/1385) | 2021-11-10 08:08:55 |
-| mongodb | [云数据库 MongoDB](https://cloud.tencent.com/document/product/240) | 2021-11-10 08:08:57 |
+| mongodb | [云数据库 MongoDB](https://cloud.tencent.com/document/product/240) | 2021-12-01 08:10:00 |
 | monitor | [云监控](https://cloud.tencent.com/document/product/248) | 2021-11-18 08:10:15 |
 | mps | [视频处理](https://cloud.tencent.com/document/product/862) | 2021-11-24 08:11:23 |
 | mrs | [医疗报告结构化](https://cloud.tencent.com/document/product/1314) | 2021-11-30 08:10:05 |

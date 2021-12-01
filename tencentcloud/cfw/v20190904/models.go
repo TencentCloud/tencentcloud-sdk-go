@@ -4682,7 +4682,7 @@ type ScanInfo struct {
 	// 扫描结果信息
 	ScanResultInfo *ScanResultInfo `json:"ScanResultInfo,omitempty" name:"ScanResultInfo"`
 
-	// 扫描状态 0扫描中 1完成   2没赠送过扫描显示开启界面
+	// 扫描状态 0扫描中 1完成  2未勾选自动扫描
 	ScanStatus *int64 `json:"ScanStatus,omitempty" name:"ScanStatus"`
 
 	// 进度

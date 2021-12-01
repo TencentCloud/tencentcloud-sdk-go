@@ -181,6 +181,7 @@ func NewCreateDBInstanceResponse() (response *CreateDBInstanceResponse) {
 //  INVALIDPARAMETERVALUE_VPCIDORSUBNETIDNOTFOUND = "InvalidParameterValue.VpcIdOrSubnetIdNotFound"
 //  INVALIDPARAMETERVALUE_ZONECLOSED = "InvalidParameterValue.ZoneClosed"
 //  INVALIDPARAMETERVALUE_ZONEERROR = "InvalidParameterValue.ZoneError"
+//  UNSUPPORTEDOPERATION_VERSIONNOTSUPPORT = "UnsupportedOperation.VersionNotSupport"
 func (c *Client) CreateDBInstance(request *CreateDBInstanceRequest) (response *CreateDBInstanceResponse, err error) {
     if request == nil {
         request = NewCreateDBInstanceRequest()
@@ -226,6 +227,7 @@ func NewCreateDBInstanceHourResponse() (response *CreateDBInstanceHourResponse) 
 //  INVALIDPARAMETERVALUE_VPCIDORSUBNETIDNOTFOUND = "InvalidParameterValue.VpcIdOrSubnetIdNotFound"
 //  INVALIDPARAMETERVALUE_ZONECLOSED = "InvalidParameterValue.ZoneClosed"
 //  INVALIDPARAMETERVALUE_ZONEERROR = "InvalidParameterValue.ZoneError"
+//  UNSUPPORTEDOPERATION_VERSIONNOTSUPPORT = "UnsupportedOperation.VersionNotSupport"
 func (c *Client) CreateDBInstanceHour(request *CreateDBInstanceHourRequest) (response *CreateDBInstanceHourResponse, err error) {
     if request == nil {
         request = NewCreateDBInstanceHourRequest()
