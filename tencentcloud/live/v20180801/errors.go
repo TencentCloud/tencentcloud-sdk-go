@@ -83,6 +83,9 @@ const (
 	// 流不存在。
 	FAILEDOPERATION_STREAMNOTEXIST = "FailedOperation.StreamNotExist"
 
+	// 解绑Tag失败，请尝试手动解绑。
+	FAILEDOPERATION_TAGUNBINDERROR = "FailedOperation.TagUnbindError"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 

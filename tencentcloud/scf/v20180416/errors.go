@@ -290,6 +290,9 @@ const (
 	// Filters参数错误。
 	INVALIDPARAMETERVALUE_FILTERS = "InvalidParameterValue.Filters"
 
+	// Function取值与规范不符，请修正后再试。可参考：https://tencentcs.com/5jXKFnBW。
+	INVALIDPARAMETERVALUE_FUNCTION = "InvalidParameterValue.Function"
+
 	// 函数不存在。
 	INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
 
@@ -403,6 +406,9 @@ const (
 
 	// Stamp取值与规范不符，请修正后再试。
 	INVALIDPARAMETERVALUE_STAMP = "InvalidParameterValue.Stamp"
+
+	// 起始时间传入错误。
+	INVALIDPARAMETERVALUE_STARTTIME = "InvalidParameterValue.StartTime"
 
 	// 需要同时指定开始日期与结束日期。
 	INVALIDPARAMETERVALUE_STARTTIMEORENDTIME = "InvalidParameterValue.StartTimeOrEndTime"

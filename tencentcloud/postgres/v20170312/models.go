@@ -941,7 +941,7 @@ type DBInstance struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DBKernelVersion *string `json:"DBKernelVersion,omitempty" name:"DBKernelVersion"`
 
-	// 实例网络信息列表
+	// 实例网络信息列表（此字段已废弃）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkAccessList []*NetworkAccess `json:"NetworkAccessList,omitempty" name:"NetworkAccessList"`
 }
@@ -960,8 +960,16 @@ type DBInstanceNetInfo struct {
 	// 网络类型，1、inner（基础网络内网地址）；2、private（私有网络内网地址）；3、public（基础网络或私有网络的外网地址）；
 	NetType *string `json:"NetType,omitempty" name:"NetType"`
 
-	// 网络连接状态
+	// 网络连接状态，1、initing（未开通）；2、opened（已开通）；3、closed（已关闭）；4、opening（开通中）；5、closing（关闭中）；
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 私有网络ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }
 
 type DeleteReadOnlyGroupRequest struct {
@@ -3180,11 +3188,11 @@ func (r *ModifySwitchTimePeriodResponse) FromJsonString(s string) error {
 
 type NetworkAccess struct {
 
-	// 网络资源id，实例id或RO组id(此字段已废弃)
+	// 网络资源id，实例id或RO组id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// 资源类型，1-实例 2-RO组(此字段已废弃)
+	// 资源类型，1-实例 2-RO组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceType *uint64 `json:"ResourceType,omitempty" name:"ResourceType"`
 
@@ -3548,7 +3556,7 @@ type ReadOnlyGroup struct {
 	// 网络信息
 	DBInstanceNetInfo []*DBInstanceNetInfo `json:"DBInstanceNetInfo,omitempty" name:"DBInstanceNetInfo"`
 
-	// 只读组网络信息列表
+	// 只读组网络信息列表（此字段已废弃）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkAccessList []*NetworkAccess `json:"NetworkAccessList,omitempty" name:"NetworkAccessList"`
 }

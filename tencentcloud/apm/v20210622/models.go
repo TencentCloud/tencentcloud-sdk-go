@@ -129,6 +129,72 @@ type ApmTag struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
+type CreateApmInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 实例描述信息
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// Trace数据保存时长
+	TraceDuration *int64 `json:"TraceDuration,omitempty" name:"TraceDuration"`
+
+	// 标签列表
+	Tags []*ApmTag `json:"Tags,omitempty" name:"Tags"`
+
+	// 实例上报额度值
+	SpanDailyCounters *uint64 `json:"SpanDailyCounters,omitempty" name:"SpanDailyCounters"`
+}
+
+func (r *CreateApmInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateApmInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Description")
+	delete(f, "TraceDuration")
+	delete(f, "Tags")
+	delete(f, "SpanDailyCounters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateApmInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateApmInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateApmInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateApmInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeApmAgentRequest struct {
 	*tchttp.BaseRequest
 

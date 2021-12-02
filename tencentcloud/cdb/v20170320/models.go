@@ -8730,6 +8730,9 @@ type UpgradeDBInstanceEngineVersionRequest struct {
 
 	// 是否是内核子版本升级，支持的值：1 - 升级内核子版本；0 - 升级数据库引擎版本。
 	UpgradeSubversion *int64 `json:"UpgradeSubversion,omitempty" name:"UpgradeSubversion"`
+
+	// 延迟阈值。取值范围1~10
+	MaxDelayTime *int64 `json:"MaxDelayTime,omitempty" name:"MaxDelayTime"`
 }
 
 func (r *UpgradeDBInstanceEngineVersionRequest) ToJsonString() string {
@@ -8748,6 +8751,7 @@ func (r *UpgradeDBInstanceEngineVersionRequest) FromJsonString(s string) error {
 	delete(f, "EngineVersion")
 	delete(f, "WaitSwitch")
 	delete(f, "UpgradeSubversion")
+	delete(f, "MaxDelayTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeDBInstanceEngineVersionRequest has unknown keys!", "")
 	}
@@ -8818,6 +8822,9 @@ type UpgradeDBInstanceRequest struct {
 
 	// 是否极速变配。0-普通升级，1-极速变配。选择极速变配会根据资源状况校验是否可以进行极速变配，满足条件则进行极速变配，不满足条件会返回报错信息。
 	FastUpgrade *int64 `json:"FastUpgrade,omitempty" name:"FastUpgrade"`
+
+	// 延迟阈值。取值范围1~10，默认值为10。
+	MaxDelayTime *int64 `json:"MaxDelayTime,omitempty" name:"MaxDelayTime"`
 }
 
 func (r *UpgradeDBInstanceRequest) ToJsonString() string {
@@ -8845,6 +8852,7 @@ func (r *UpgradeDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "DeviceType")
 	delete(f, "Cpu")
 	delete(f, "FastUpgrade")
+	delete(f, "MaxDelayTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeDBInstanceRequest has unknown keys!", "")
 	}

@@ -210,6 +210,10 @@ type BGPIPInstance struct {
 
 	// 是否开启安全加速，是为1，否为0。
 	DamDDoSStatus *uint64 `json:"DamDDoSStatus,omitempty" name:"DamDDoSStatus"`
+
+	// 是否Ipv6版本的IP, 是为1，否为0
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	V6Flag *uint64 `json:"V6Flag,omitempty" name:"V6Flag"`
 }
 
 type BGPIPInstanceSpecification struct {

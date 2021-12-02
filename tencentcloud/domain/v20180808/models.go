@@ -960,7 +960,7 @@ type DescribeTemplateListRequest struct {
 	// 用户注册类型，默认:all , 个人：I ,企业: E
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 认证状态：未实名认证:NotUpload, 实名审核中:InAudit，已实名认证:Approved，实名审核失败:Reject
+	// 认证状态：未实名审核:NotUpload, 实名审核中:InAudit，已实名审核:Approved，实名审核失败:Reject，更新手机邮箱:NotVerified。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 域名所有者筛选

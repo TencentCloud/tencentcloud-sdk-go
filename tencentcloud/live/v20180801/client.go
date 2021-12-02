@@ -1138,6 +1138,7 @@ func NewDeleteLiveDomainResponse() (response *DeleteLiveDomainResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DELETEDOMAININLOCKEDTIME = "FailedOperation.DeleteDomainInLockedTime"
 //  FAILEDOPERATION_JIFEINOENOUGHFUND = "FailedOperation.JiFeiNoEnoughFund"
+//  FAILEDOPERATION_TAGUNBINDERROR = "FailedOperation.TagUnbindError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"

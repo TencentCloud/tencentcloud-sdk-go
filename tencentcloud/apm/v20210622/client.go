@@ -43,6 +43,33 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateApmInstanceRequest() (request *CreateApmInstanceRequest) {
+    request = &CreateApmInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apm", APIVersion, "CreateApmInstance")
+    
+    return
+}
+
+func NewCreateApmInstanceResponse() (response *CreateApmInstanceResponse) {
+    response = &CreateApmInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateApmInstance
+// 业务购买APM实例，调用该接口创建
+func (c *Client) CreateApmInstance(request *CreateApmInstanceRequest) (response *CreateApmInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateApmInstanceRequest()
+    }
+    response = NewCreateApmInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeApmAgentRequest() (request *DescribeApmAgentRequest) {
     request = &DescribeApmAgentRequest{
         BaseRequest: &tchttp.BaseRequest{},

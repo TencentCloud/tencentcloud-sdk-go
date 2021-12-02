@@ -156,7 +156,7 @@ type AudioTrackItem struct {
 	// 音频媒体，可取值为：
 	// <ul>
 	// <li>当 SourceType 为 VOD 时，参数填云点播 FileId ；</li>
-	// <li>当 SourceType 为 CME 时，参数填云剪媒体 Id；</li>
+	// <li>当 SourceType 为 CME 时，参数填多媒体创作引擎媒体 Id；</li>
 	// <li>当 SourceType 为 EXTERNAL 时，目前仅支持外部媒体 URL(如`https://www.example.com/a.mp3`)，参数填写规则请参见注意事项。</li>
 	// </ul>
 	// 
@@ -2087,8 +2087,8 @@ type ExportVideoByEditorTrackDataRequest struct {
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 导出目标，指定导出视频的目标媒资库，可取值有：
-	// <li>CME：云剪，即导出为云剪媒资库，此导出目标在云点播媒资库依然可见；</li>
-	// <li>VOD：云点播，即导出为云点播媒资库，此导出目标在云剪媒资库将不可见。</li>
+	// <li>CME：多媒体创建引擎，即导出到多媒体创作引擎媒资库，此导出目标在云点播媒资库依然可见；</li>
+	// <li>VOD：云点播，即导出为云点播媒资库，此导出目标在多媒体创作引擎媒资库将不可见。</li>
 	ExportDestination *string `json:"ExportDestination,omitempty" name:"ExportDestination"`
 
 	// 在线编辑轨道数据。轨道数据相关介绍，请查看 [视频合成协议](https://cloud.tencent.com/document/product/1156/51225)。
@@ -2102,7 +2102,7 @@ type ExportVideoByEditorTrackDataRequest struct {
 	// 视频封面图片文件（如 jpeg, png 等）进行 Base64 编码后的字符串，仅支持 gif、jpeg、png 三种图片格式，原图片文件不能超过2 M大 小。
 	CoverData *string `json:"CoverData,omitempty" name:"CoverData"`
 
-	// 导出的云剪媒体信息。当导出目标为 CME 时必填。
+	// 导出的多媒体创作引擎媒体信息。当导出目标为 CME 时必填。
 	CMEExportInfo *CMEExportInfo `json:"CMEExportInfo,omitempty" name:"CMEExportInfo"`
 
 	// 导出的云点播媒资信息。当导出目标为 VOD 时必填。
@@ -2178,14 +2178,14 @@ type ExportVideoByTemplateRequest struct {
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 导出目标，指定导出视频的目标媒资库，可取值有：
-	// <li>CME：云剪，即导出为云剪媒资库，此导出目标在云点播媒资库依然可见；</li>
-	// <li>VOD：云点播，即导出为云点播媒资库，此导出目标在云剪媒资库将不可见。</li>
+	// <li>CME：多媒体创作引擎，即导出为多媒体创作引擎媒资库，此导出目标在云点播媒资库依然可见；</li>
+	// <li>VOD：云点播，即导出为云点播媒资库，此导出目标在多媒体创作引擎媒资库将不可见。</li>
 	ExportDestination *string `json:"ExportDestination,omitempty" name:"ExportDestination"`
 
 	// 需要替换的素材信息。
 	SlotReplacements []*SlotReplacementInfo `json:"SlotReplacements,omitempty" name:"SlotReplacements"`
 
-	// 导出的云剪媒资信息。当导出目标为 CME 时必填。
+	// 导出的多媒体创作引擎媒资信息。当导出目标为 CME 时必填。
 	CMEExportInfo *CMEExportInfo `json:"CMEExportInfo,omitempty" name:"CMEExportInfo"`
 
 	// 导出的云点播媒资信息。当导出目标为 VOD 时必填。
@@ -2266,11 +2266,11 @@ type ExportVideoByVideoSegmentationDataRequest struct {
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 导出目标，指定导出视频的目标媒资库，可取值有：
-	// <li>CME：云剪，即导出为云剪媒资库，此导出目标在云点播媒资库依然可见；</li>
-	// <li>VOD：云点播，即导出为云点播媒资库，此导出目标在云剪媒资库将不可见。</li>
+	// <li>CME：多媒体创作引擎，即导出为多媒体创作引擎媒资库，此导出目标在云点播媒资库依然可见；</li>
+	// <li>VOD：云点播，即导出为云点播媒资库，此导出目标在多媒体创作引擎媒资库将不可见。</li>
 	ExportDestination *string `json:"ExportDestination,omitempty" name:"ExportDestination"`
 
-	// 导出的云剪媒体信息。当导出目标为 CME 时必填。
+	// 导出的多媒体创作引擎媒体信息。当导出目标为 CME 时必填。
 	CMEExportInfo *CMEExportInfo `json:"CMEExportInfo,omitempty" name:"CMEExportInfo"`
 
 	// 导出的云点播媒资信息。当导出目标为 VOD 时必填。
@@ -2345,15 +2345,15 @@ type ExportVideoEditProjectRequest struct {
 	// <li>12：分辨率为 1080P，输出视频格式为 MP4。</li>
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
-	// 导出目标。
-	// <li>CME：云剪，即导出为云剪媒体；</li>
-	// <li>VOD：云点播，即导出为云点播媒资。</li>
+	// 导出目标，指定导出视频的目标媒资库，可取值有：
+	// <li>CME：多媒体创作引擎，即导出为多媒体创作引擎媒资库，此导出目标在云点播媒资库依然可见；</li>
+	// <li>VOD：云点播，即导出为云点播媒资库，此导出目标在多媒体创作引擎媒资库将不可见。</li>
 	ExportDestination *string `json:"ExportDestination,omitempty" name:"ExportDestination"`
 
 	// 视频封面图片文件（如 jpeg, png 等）进行 Base64 编码后的字符串，仅支持 gif、jpeg、png 三种图片格式，原图片文件不能超过2 M大 小。
 	CoverData *string `json:"CoverData,omitempty" name:"CoverData"`
 
-	// 导出的云剪媒体信息。当导出目标为 CME 时必填。
+	// 导出的多媒体创作引擎媒体信息。当导出目标为 CME 时必填。
 	CMEExportInfo *CMEExportInfo `json:"CMEExportInfo,omitempty" name:"CMEExportInfo"`
 
 	// 导出的云点播媒资信息。当导出目标为 VOD 时必填。
@@ -2745,7 +2745,7 @@ type ImportMaterialRequest struct {
 	// <li>VOD：云点播文件；</li>
 	// <li>EXTERNAL：媒资绑定。</li>
 	// 
-	// 注意：如果不填默认为云点播文件，如果媒体存储在非腾讯云点播中，都需要使用媒资绑定。另外，导入云点播的文件，使用云点播的子应用 Id 必须与创建云剪平台时使用的云点播子应用一致。
+	// 注意：如果不填默认为云点播文件，如果媒体存储在非腾讯云点播中，都需要使用媒资绑定。另外，导入云点播的文件，使用云点播的子应用 Id 必须与创建多媒体创作引擎平台时使用的云点播子应用一致。
 	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
 
 	// 云点播媒资 FileId，仅当 SourceType 为 VOD 时有效。
@@ -4034,7 +4034,7 @@ type RtmpPushInputInfo struct {
 	// 直播推流地址有效期，单位：秒 。
 	ExpiredSecond *uint64 `json:"ExpiredSecond,omitempty" name:"ExpiredSecond"`
 
-	// 直播推流地址，入参不填默认由云剪生成。
+	// 直播推流地址，入参不填默认由多媒体创作引擎生成。
 	PushUrl *string `json:"PushUrl,omitempty" name:"PushUrl"`
 }
 
@@ -4470,7 +4470,7 @@ type VideoEditProjectInput struct {
 
 type VideoEditProjectOutput struct {
 
-	// 导出的云剪素材 MaterialId，仅当导出为云剪素材时有效。
+	// 导出的多媒体创作引擎媒体 Id，仅当导出目标为多媒体创作引擎媒体时有效。
 	MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
 
 	// 云点播媒资 FileId。
@@ -4617,7 +4617,7 @@ type VideoExportExtensionArgs struct {
 	// 封装格式，可选值：
 	// <li>mp4 </li>
 	// <li>mov </li>
-	// 不填则默认使用导出模板中的值。
+	// 不填则使用视频导出编码配置。
 	Container *string `json:"Container,omitempty" name:"Container"`
 
 	// 视频短边尺寸，取值范围： [128, 4096]，单位：px。
@@ -4625,23 +4625,26 @@ type VideoExportExtensionArgs struct {
 	// 例如：项目的宽高比是 16：9 ：
 	// <li>短边尺寸为 1080，则导出视频的分辨率为 1920 * 1080。</li>
 	// <li>短边尺寸为 720，则导出视频的分辨率为 1280 * 720</li>
-	// 不填则默认使用导出模板中对的值。
+	// 不填则使用视频导出编码配置。
 	ShortEdge *uint64 `json:"ShortEdge,omitempty" name:"ShortEdge"`
 
 	// 指定码率，单位 bps。当该参数为 0 时则不强制限定码率。
-	// 不填则默认使用导出模板中的值。
+	// 不填则使用视频导出编码配置。
 	VideoBitrate *uint64 `json:"VideoBitrate,omitempty" name:"VideoBitrate"`
+
+	// 帧率。取值范围：[15, 60]，不填默认值为 25。
+	FrameRate *float64 `json:"FrameRate,omitempty" name:"FrameRate"`
 
 	// 是否去除视频数据，可选值：
 	// <li>0：保留；</li>
 	// <li>1：去除。</li>
-	// 不填则默认使用导出模板中对的值。
+	// 不填则使用视频导出编码配置。
 	RemoveVideo *int64 `json:"RemoveVideo,omitempty" name:"RemoveVideo"`
 
 	// 是否去除音频数据，可选值：
 	// <li>0：保留；</li>
 	// <li>1：去除。</li>
-	// 不填则默认使用导出模板中对的值。
+	// 不填则使用视频导出编码配置。
 	RemoveAudio *int64 `json:"RemoveAudio,omitempty" name:"RemoveAudio"`
 
 	// 片段起始时间，单位：毫秒。
@@ -4729,7 +4732,7 @@ type VideoTrackItem struct {
 	// 视频媒体，可取值为：
 	// <ul>
 	// <li>当 SourceType 为 VOD 时，参数填云点播 FileId ；</li>
-	// <li>当 SourceType 为 CME 时，参数填云剪媒体 Id；</li>
+	// <li>当 SourceType 为 CME 时，参数填多媒体创作引擎媒体 Id；</li>
 	// <li>当 SourceType 为 EXTERNAL 时，目前仅支持外部媒体 URL(如`https://www.example.com/a.mp4`)，参数填写规则请参见注意事项。</li>
 	// </ul>
 	// 

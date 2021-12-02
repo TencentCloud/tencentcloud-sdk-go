@@ -207,7 +207,7 @@ func NewCreateProjectResponse() (response *CreateProjectResponse) {
 }
 
 // CreateProject
-// 创建云剪项目，目前支持的项目类型有：
+// 创建多媒体创作引擎项目，目前支持的项目类型有：
 //
 // <li>视频剪辑项目：用于普通视频剪辑；</li>
 //
@@ -371,7 +371,7 @@ func NewDeleteLoginStatusResponse() (response *DeleteLoginStatusResponse) {
 }
 
 // DeleteLoginStatus
-// 删除用户登录态，使用户登出云剪平台。
+// 删除用户登录态，使用户登出多媒体创作引擎平台。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1438,7 +1438,7 @@ func NewImportMaterialResponse() (response *ImportMaterialResponse) {
 }
 
 // ImportMaterial
-// 将云点播媒资文件导入到云剪媒体资源库。支持导入媒体归属团队或者个人。
+// 将云点播媒资文件导入到多媒体创作引擎媒体资源库。支持导入媒体归属团队或者个人。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

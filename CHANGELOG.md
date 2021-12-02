@@ -1,90 +1,182 @@
 # 本版本更新包含以下内容：
 
-## 应用性能观测(apm) 版本：2021-06-22
+## DDoS 防护(antiddos) 版本：2020-03-09
 
-### 第 2 次发布
+### 第 15 次发布
 
-发布时间：2021-12-01 08:02:58
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeApmInstances](https://cloud.tencent.com/document/api/1463/65103)
-
-新增数据结构：
-
-* [ApmInstanceDetail](https://cloud.tencent.com/document/api/1463/64927#ApmInstanceDetail)
-* [ApmTag](https://cloud.tencent.com/document/api/1463/64927#ApmTag)
-
-
-
-## 视频智能标签(ivld) 版本：2021-09-03
-
-### 第 1 次发布
-
-发布时间：2021-11-30 14:02:22
+发布时间：2021-12-02 08:02:10
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增接口：
-
-* [CreateTask](https://cloud.tencent.com/document/api/1509/65057)
-* [DeleteMedia](https://cloud.tencent.com/document/api/1509/65062)
-* [DescribeMedia](https://cloud.tencent.com/document/api/1509/65061)
-* [DescribeMedias](https://cloud.tencent.com/document/api/1509/65060)
-* [DescribeTask](https://cloud.tencent.com/document/api/1509/65056)
-* [DescribeTaskDetail](https://cloud.tencent.com/document/api/1509/65055)
-* [DescribeTasks](https://cloud.tencent.com/document/api/1509/65054)
-* [ImportMedia](https://cloud.tencent.com/document/api/1509/65059)
-
-新增数据结构：
-
-* [AppearIndexPair](https://cloud.tencent.com/document/api/1509/65063#AppearIndexPair)
-* [AppearInfo](https://cloud.tencent.com/document/api/1509/65063#AppearInfo)
-* [AudioInfo](https://cloud.tencent.com/document/api/1509/65063#AudioInfo)
-* [Data](https://cloud.tencent.com/document/api/1509/65063#Data)
-* [L1Tag](https://cloud.tencent.com/document/api/1509/65063#L1Tag)
-* [L2Tag](https://cloud.tencent.com/document/api/1509/65063#L2Tag)
-* [L3Tag](https://cloud.tencent.com/document/api/1509/65063#L3Tag)
-* [MediaFilter](https://cloud.tencent.com/document/api/1509/65063#MediaFilter)
-* [MediaInfo](https://cloud.tencent.com/document/api/1509/65063#MediaInfo)
-* [MediaMetadata](https://cloud.tencent.com/document/api/1509/65063#MediaMetadata)
-* [MediaPreknownInfo](https://cloud.tencent.com/document/api/1509/65063#MediaPreknownInfo)
-* [MultiLevelTag](https://cloud.tencent.com/document/api/1509/65063#MultiLevelTag)
-* [ShowInfo](https://cloud.tencent.com/document/api/1509/65063#ShowInfo)
-* [SortBy](https://cloud.tencent.com/document/api/1509/65063#SortBy)
-* [TaskFilter](https://cloud.tencent.com/document/api/1509/65063#TaskFilter)
-* [TaskInfo](https://cloud.tencent.com/document/api/1509/65063#TaskInfo)
-* [TextAppearInfo](https://cloud.tencent.com/document/api/1509/65063#TextAppearInfo)
-* [TextInfo](https://cloud.tencent.com/document/api/1509/65063#TextInfo)
-* [VideoAppearInfo](https://cloud.tencent.com/document/api/1509/65063#VideoAppearInfo)
-
-
-
-## 轻量应用服务器(lighthouse) 版本：2020-03-24
-
-### 第 21 次发布
-
-发布时间：2021-11-30 20:01:47
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除数据结构**：</font>
-
-* DataDiskPrice
 
 修改数据结构：
 
-* [Price](https://cloud.tencent.com/document/api/1207/47576#Price)
+* [BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance)
 
-	* <font color="#dd0000">**删除成员**：</font>DataDiskPrices
+	* 新增成员：V6Flag
+
+
+
+
+## 应用性能观测(apm) 版本：2021-06-22
+
+### 第 3 次发布
+
+发布时间：2021-12-02 08:02:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateApmInstance](https://cloud.tencent.com/document/api/1463/65347)
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 73 次发布
+
+发布时间：2021-12-02 08:03:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpgradeDBInstance](https://cloud.tencent.com/document/api/236/15876)
+
+	* 新增入参：MaxDelayTime
+
+* [UpgradeDBInstanceEngineVersion](https://cloud.tencent.com/document/api/236/15870)
+
+	* 新增入参：MaxDelayTime
+
+
+
+
+## 腾讯云剪(cme) 版本：2019-10-29
+
+### 第 44 次发布
+
+发布时间：2021-12-02 08:04:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [VideoExportExtensionArgs](https://cloud.tencent.com/document/api/1156/40360#VideoExportExtensionArgs)
+
+	* 新增成员：FrameRate
+
+
+
+
+## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+
+### 第 21 次发布
+
+发布时间：2021-12-02 08:10:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DBInstanceNetInfo](https://cloud.tencent.com/document/api/409/16778#DBInstanceNetInfo)
+
+	* 新增成员：VpcId, SubnetId
+
+
+
+
+## 私有域解析 Private DNS(privatedns) 版本：2020-10-28
+
+### 第 5 次发布
+
+发布时间：2021-12-02 08:10:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AccountVpcInfo](https://cloud.tencent.com/document/api/1338/55947#AccountVpcInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>VpcName
+
+
+
+
+## 云函数(scf) 版本：2018-04-16
+
+### 第 39 次发布
+
+发布时间：2021-12-02 08:10:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetRequestStatus](https://cloud.tencent.com/document/api/583/65348)
+
+新增数据结构：
+
+* [RequestStatus](https://cloud.tencent.com/document/api/583/17244#RequestStatus)
+
+
+
+## 腾讯云自动化助手(tat) 版本：2020-10-28
+
+### 第 15 次发布
+
+发布时间：2021-12-02 08:11:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [InvokeCommand](https://cloud.tencent.com/document/api/1340/52678)
+
+	* 新增入参：OutputCOSBucketUrl, OutputCOSKeyPrefix
+
+* [ModifyCommand](https://cloud.tencent.com/document/api/1340/52677)
+
+	* 新增入参：OutputCOSBucketUrl, OutputCOSKeyPrefix
+
+* [RunCommand](https://cloud.tencent.com/document/api/1340/52676)
+
+	* 新增入参：OutputCOSBucketUrl, OutputCOSKeyPrefix
+
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 5 次发布
+
+发布时间：2021-12-02 08:14:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAccessFastAnalysis](https://cloud.tencent.com/document/api/627/60014)
+
+	* 新增入参：TopicId, From, To, Query, FieldName
 
 
 
@@ -1007,6 +1099,21 @@
 
 
 ## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 15 次发布
+
+发布时间：2021-12-02 08:02:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance)
+
+	* 新增成员：V6Flag
+
 
 ### 第 14 次发布
 
@@ -2061,6 +2168,18 @@
 
 ## 应用性能观测(apm) 版本：2021-06-22
 
+### 第 3 次发布
+
+发布时间：2021-12-02 08:02:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateApmInstance](https://cloud.tencent.com/document/api/1463/65347)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 2 次发布
 
 发布时间：2021-12-01 08:02:58
@@ -2071,12 +2190,12 @@
 
 新增接口：
 
-* [[DescribeApmInstances](https://cloud.tencent.com/document/api/1463/65103)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeApmInstances](https://cloud.tencent.com/document/api/1463/65103)
 
 新增数据结构：
 
-* [[ApmInstanceDetail](https://cloud.tencent.com/document/api/1463/64927#ApmInstanceDetail)](https://cloud.tencent.com/document/api/1463/64927#[ApmInstanceDetail](https://cloud.tencent.com/document/api/1463/64927#ApmInstanceDetail))
-* [[ApmTag](https://cloud.tencent.com/document/api/1463/64927#ApmTag)](https://cloud.tencent.com/document/api/1463/64927#[ApmTag](https://cloud.tencent.com/document/api/1463/64927#ApmTag))
+* [ApmInstanceDetail](https://cloud.tencent.com/document/api/1463/64927#ApmInstanceDetail)
+* [ApmTag](https://cloud.tencent.com/document/api/1463/64927#ApmTag)
 
 ### 第 1 次发布
 
@@ -8286,6 +8405,25 @@
 
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 73 次发布
+
+发布时间：2021-12-02 08:03:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpgradeDBInstance](https://cloud.tencent.com/document/api/236/15876)
+
+	* 新增入参：MaxDelayTime
+
+* [UpgradeDBInstanceEngineVersion](https://cloud.tencent.com/document/api/236/15870)
+
+	* 新增入参：MaxDelayTime
+
 
 ### 第 72 次发布
 
@@ -15270,6 +15408,21 @@
 
 
 ## 腾讯云剪(cme) 版本：2019-10-29
+
+### 第 44 次发布
+
+发布时间：2021-12-02 08:04:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [VideoExportExtensionArgs](https://cloud.tencent.com/document/api/1156/40360#VideoExportExtensionArgs)
+
+	* 新增成员：FrameRate
+
 
 ### 第 43 次发布
 
@@ -34628,36 +34781,36 @@
 
 新增接口：
 
-* [[CreateTask](https://cloud.tencent.com/document/api/1509/65057)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteMedia](https://cloud.tencent.com/document/api/1509/65062)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeMedia](https://cloud.tencent.com/document/api/1509/65061)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeMedias](https://cloud.tencent.com/document/api/1509/65060)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeTask](https://cloud.tencent.com/document/api/1509/65056)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeTaskDetail](https://cloud.tencent.com/document/api/1509/65055)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeTasks](https://cloud.tencent.com/document/api/1509/65054)](https://cloud.tencent.com/document/api/#/#)
-* [[ImportMedia](https://cloud.tencent.com/document/api/1509/65059)](https://cloud.tencent.com/document/api/#/#)
+* [CreateTask](https://cloud.tencent.com/document/api/1509/65057)
+* [DeleteMedia](https://cloud.tencent.com/document/api/1509/65062)
+* [DescribeMedia](https://cloud.tencent.com/document/api/1509/65061)
+* [DescribeMedias](https://cloud.tencent.com/document/api/1509/65060)
+* [DescribeTask](https://cloud.tencent.com/document/api/1509/65056)
+* [DescribeTaskDetail](https://cloud.tencent.com/document/api/1509/65055)
+* [DescribeTasks](https://cloud.tencent.com/document/api/1509/65054)
+* [ImportMedia](https://cloud.tencent.com/document/api/1509/65059)
 
 新增数据结构：
 
-* [[AppearIndexPair](https://cloud.tencent.com/document/api/1509/65063#AppearIndexPair)](https://cloud.tencent.com/document/api/1509/65063#[AppearIndexPair](https://cloud.tencent.com/document/api/1509/65063#AppearIndexPair))
-* [[AppearInfo](https://cloud.tencent.com/document/api/1509/65063#AppearInfo)](https://cloud.tencent.com/document/api/1509/65063#[AppearInfo](https://cloud.tencent.com/document/api/1509/65063#AppearInfo))
-* [[AudioInfo](https://cloud.tencent.com/document/api/1509/65063#AudioInfo)](https://cloud.tencent.com/document/api/1509/65063#[AudioInfo](https://cloud.tencent.com/document/api/1509/65063#AudioInfo))
-* [[Data](https://cloud.tencent.com/document/api/1509/65063#Data)](https://cloud.tencent.com/document/api/1509/65063#[Data](https://cloud.tencent.com/document/api/1509/65063#Data))
-* [[L1Tag](https://cloud.tencent.com/document/api/1509/65063#L1Tag)](https://cloud.tencent.com/document/api/1509/65063#[L1Tag](https://cloud.tencent.com/document/api/1509/65063#L1Tag))
-* [[L2Tag](https://cloud.tencent.com/document/api/1509/65063#L2Tag)](https://cloud.tencent.com/document/api/1509/65063#[L2Tag](https://cloud.tencent.com/document/api/1509/65063#L2Tag))
-* [[L3Tag](https://cloud.tencent.com/document/api/1509/65063#L3Tag)](https://cloud.tencent.com/document/api/1509/65063#[L3Tag](https://cloud.tencent.com/document/api/1509/65063#L3Tag))
-* [[MediaFilter](https://cloud.tencent.com/document/api/1509/65063#MediaFilter)](https://cloud.tencent.com/document/api/1509/65063#[MediaFilter](https://cloud.tencent.com/document/api/1509/65063#MediaFilter))
-* [[MediaInfo](https://cloud.tencent.com/document/api/1509/65063#MediaInfo)](https://cloud.tencent.com/document/api/1509/65063#[MediaInfo](https://cloud.tencent.com/document/api/1509/65063#MediaInfo))
-* [[MediaMetadata](https://cloud.tencent.com/document/api/1509/65063#MediaMetadata)](https://cloud.tencent.com/document/api/1509/65063#[MediaMetadata](https://cloud.tencent.com/document/api/1509/65063#MediaMetadata))
-* [[MediaPreknownInfo](https://cloud.tencent.com/document/api/1509/65063#MediaPreknownInfo)](https://cloud.tencent.com/document/api/1509/65063#[MediaPreknownInfo](https://cloud.tencent.com/document/api/1509/65063#MediaPreknownInfo))
-* [[MultiLevelTag](https://cloud.tencent.com/document/api/1509/65063#MultiLevelTag)](https://cloud.tencent.com/document/api/1509/65063#[MultiLevelTag](https://cloud.tencent.com/document/api/1509/65063#MultiLevelTag))
-* [[ShowInfo](https://cloud.tencent.com/document/api/1509/65063#ShowInfo)](https://cloud.tencent.com/document/api/1509/65063#[ShowInfo](https://cloud.tencent.com/document/api/1509/65063#ShowInfo))
-* [[SortBy](https://cloud.tencent.com/document/api/1509/65063#SortBy)](https://cloud.tencent.com/document/api/1509/65063#[SortBy](https://cloud.tencent.com/document/api/1509/65063#SortBy))
-* [[TaskFilter](https://cloud.tencent.com/document/api/1509/65063#TaskFilter)](https://cloud.tencent.com/document/api/1509/65063#[TaskFilter](https://cloud.tencent.com/document/api/1509/65063#TaskFilter))
-* [[TaskInfo](https://cloud.tencent.com/document/api/1509/65063#TaskInfo)](https://cloud.tencent.com/document/api/1509/65063#[TaskInfo](https://cloud.tencent.com/document/api/1509/65063#TaskInfo))
-* [[TextAppearInfo](https://cloud.tencent.com/document/api/1509/65063#TextAppearInfo)](https://cloud.tencent.com/document/api/1509/65063#[TextAppearInfo](https://cloud.tencent.com/document/api/1509/65063#TextAppearInfo))
-* [[TextInfo](https://cloud.tencent.com/document/api/1509/65063#TextInfo)](https://cloud.tencent.com/document/api/1509/65063#[TextInfo](https://cloud.tencent.com/document/api/1509/65063#TextInfo))
-* [[VideoAppearInfo](https://cloud.tencent.com/document/api/1509/65063#VideoAppearInfo)](https://cloud.tencent.com/document/api/1509/65063#[VideoAppearInfo](https://cloud.tencent.com/document/api/1509/65063#VideoAppearInfo))
+* [AppearIndexPair](https://cloud.tencent.com/document/api/1509/65063#AppearIndexPair)
+* [AppearInfo](https://cloud.tencent.com/document/api/1509/65063#AppearInfo)
+* [AudioInfo](https://cloud.tencent.com/document/api/1509/65063#AudioInfo)
+* [Data](https://cloud.tencent.com/document/api/1509/65063#Data)
+* [L1Tag](https://cloud.tencent.com/document/api/1509/65063#L1Tag)
+* [L2Tag](https://cloud.tencent.com/document/api/1509/65063#L2Tag)
+* [L3Tag](https://cloud.tencent.com/document/api/1509/65063#L3Tag)
+* [MediaFilter](https://cloud.tencent.com/document/api/1509/65063#MediaFilter)
+* [MediaInfo](https://cloud.tencent.com/document/api/1509/65063#MediaInfo)
+* [MediaMetadata](https://cloud.tencent.com/document/api/1509/65063#MediaMetadata)
+* [MediaPreknownInfo](https://cloud.tencent.com/document/api/1509/65063#MediaPreknownInfo)
+* [MultiLevelTag](https://cloud.tencent.com/document/api/1509/65063#MultiLevelTag)
+* [ShowInfo](https://cloud.tencent.com/document/api/1509/65063#ShowInfo)
+* [SortBy](https://cloud.tencent.com/document/api/1509/65063#SortBy)
+* [TaskFilter](https://cloud.tencent.com/document/api/1509/65063#TaskFilter)
+* [TaskInfo](https://cloud.tencent.com/document/api/1509/65063#TaskInfo)
+* [TextAppearInfo](https://cloud.tencent.com/document/api/1509/65063#TextAppearInfo)
+* [TextInfo](https://cloud.tencent.com/document/api/1509/65063#TextInfo)
+* [VideoAppearInfo](https://cloud.tencent.com/document/api/1509/65063#VideoAppearInfo)
 
 
 
@@ -42842,6 +42995,21 @@
 
 ## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
 
+### 第 21 次发布
+
+发布时间：2021-12-02 08:10:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DBInstanceNetInfo](https://cloud.tencent.com/document/api/409/16778#DBInstanceNetInfo)
+
+	* 新增成员：VpcId, SubnetId
+
+
 ### 第 20 次发布
 
 发布时间：2021-11-24 08:12:02
@@ -43315,6 +43483,21 @@
 
 
 ## 私有域解析 Private DNS(privatedns) 版本：2020-10-28
+
+### 第 5 次发布
+
+发布时间：2021-12-02 08:10:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AccountVpcInfo](https://cloud.tencent.com/document/api/1338/55947#AccountVpcInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>VpcName
+
 
 ### 第 4 次发布
 
@@ -44429,6 +44612,22 @@
 
 
 ## 云函数(scf) 版本：2018-04-16
+
+### 第 39 次发布
+
+发布时间：2021-12-02 08:10:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[GetRequestStatus](https://cloud.tencent.com/document/api/583/65348)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[RequestStatus](https://cloud.tencent.com/document/api/583/17244#RequestStatus)](https://cloud.tencent.com/document/api/583/17244#[RequestStatus](https://cloud.tencent.com/document/api/583/17244#RequestStatus))
 
 ### 第 38 次发布
 
@@ -47735,6 +47934,29 @@
 
 
 ## 腾讯云自动化助手(tat) 版本：2020-10-28
+
+### 第 15 次发布
+
+发布时间：2021-12-02 08:11:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [InvokeCommand](https://cloud.tencent.com/document/api/1340/52678)
+
+	* 新增入参：OutputCOSBucketUrl, OutputCOSKeyPrefix
+
+* [ModifyCommand](https://cloud.tencent.com/document/api/1340/52677)
+
+	* 新增入参：OutputCOSBucketUrl, OutputCOSKeyPrefix
+
+* [RunCommand](https://cloud.tencent.com/document/api/1340/52676)
+
+	* 新增入参：OutputCOSBucketUrl, OutputCOSKeyPrefix
+
 
 ### 第 14 次发布
 
@@ -63913,6 +64135,21 @@
 
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 5 次发布
+
+发布时间：2021-12-02 08:14:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAccessFastAnalysis](https://cloud.tencent.com/document/api/627/60014)
+
+	* 新增入参：TopicId, From, To, Query, FieldName
+
 
 ### 第 4 次发布
 

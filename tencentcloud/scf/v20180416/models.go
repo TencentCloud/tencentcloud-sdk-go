@@ -1813,6 +1813,76 @@ func (r *GetProvisionedConcurrencyConfigResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type GetRequestStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 函数名称
+	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 需要查询状态的请求 id
+	FunctionRequestId *string `json:"FunctionRequestId,omitempty" name:"FunctionRequestId"`
+
+	// 函数的所在的命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 查询的开始时间，例如：2017-05-16 20:00:00，不填默认为当前时间 - 24小时
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询的结束时间，例如：2017-05-16 20:59:59，不填默认为当前时间。EndTime 需要晚于 StartTime。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *GetRequestStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetRequestStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FunctionName")
+	delete(f, "FunctionRequestId")
+	delete(f, "Namespace")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetRequestStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetRequestStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 函数运行状态的总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 函数运行状态数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data []*RequestStatus `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetRequestStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetRequestStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type GetReservedConcurrencyConfigRequest struct {
 	*tchttp.BaseRequest
 
@@ -1970,7 +2040,7 @@ type InvokeRequest struct {
 	// 同步调用请使用[同步 Invoke 调用接口](https://cloud.tencent.com/document/product/583/58400) 或填写同步调用参数 RequestResponse ，建议使用同步调用接口以获取最佳性能；异步调用填写 Event；默认为同步。接口超时时间为 300s，更长超时时间请使用异步调用。
 	InvocationType *string `json:"InvocationType,omitempty" name:"InvocationType"`
 
-	// 触发函数的版本号或别名
+	// 触发函数的版本号或别名，默认值为 $LATEST
 	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
 
 	// 运行函数时的参数，以json格式传入，同步调用最大支持 6MB，异步调用最大支持 128 KB。该字段信息对应函数 [event 入参](https://cloud.tencent.com/document/product/583/9210#.E5.87.BD.E6.95.B0.E5.85.A5.E5.8F.82.3Ca-id.3D.22input.22.3E.3C.2Fa.3E)。
@@ -3089,6 +3159,33 @@ func (r *PutTotalConcurrencyConfigResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *PutTotalConcurrencyConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type RequestStatus struct {
+
+	// 函数的名称
+	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 函数执行完成后的返回值
+	RetMsg *string `json:"RetMsg,omitempty" name:"RetMsg"`
+
+	// 查询的请求 id
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+
+	// 请求开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 请求执行结果， 0 表示执行成功，1表示运行中，-1 表示执行异常。
+	RetCode *int64 `json:"RetCode,omitempty" name:"RetCode"`
+
+	// 请求运行耗时，单位：ms
+	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 请求消耗内存，单位为 MB
+	MemUsage *float64 `json:"MemUsage,omitempty" name:"MemUsage"`
+
+	// 重试次数
+	RetryNum *int64 `json:"RetryNum,omitempty" name:"RetryNum"`
 }
 
 type Result struct {

@@ -999,6 +999,48 @@ func (c *Client) GetProvisionedConcurrencyConfig(request *GetProvisionedConcurre
     return
 }
 
+func NewGetRequestStatusRequest() (request *GetRequestStatusRequest) {
+    request = &GetRequestStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("scf", APIVersion, "GetRequestStatus")
+    
+    return
+}
+
+func NewGetRequestStatusResponse() (response *GetRequestStatusResponse) {
+    response = &GetRequestStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetRequestStatus
+// 该接口根据指定的查询条件返回函数单个请求运行状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TOPICNOTEXIST = "FailedOperation.TopicNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATETIME = "InvalidParameterValue.DateTime"
+//  INVALIDPARAMETERVALUE_FUNCTION = "InvalidParameterValue.Function"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  INVALIDPARAMETERVALUE_RETCODE = "InvalidParameterValue.RetCode"
+//  INVALIDPARAMETERVALUE_STARTTIME = "InvalidParameterValue.StartTime"
+//  INVALIDPARAMETERVALUE_STARTTIMEORENDTIME = "InvalidParameterValue.StartTimeOrEndTime"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+func (c *Client) GetRequestStatus(request *GetRequestStatusRequest) (response *GetRequestStatusResponse, err error) {
+    if request == nil {
+        request = NewGetRequestStatusRequest()
+    }
+    response = NewGetRequestStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetReservedConcurrencyConfigRequest() (request *GetReservedConcurrencyConfigRequest) {
     request = &GetReservedConcurrencyConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},

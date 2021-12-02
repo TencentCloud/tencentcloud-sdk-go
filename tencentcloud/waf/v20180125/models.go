@@ -674,6 +674,21 @@ func (r *DescribeAccessExportsResponse) FromJsonString(s string) error {
 
 type DescribeAccessFastAnalysisRequest struct {
 	*tchttp.BaseRequest
+
+	// 客户要查询的日志主题ID，每个客户都有对应的一个主题
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 要查询的日志的起始时间，Unix时间戳，单位ms
+	From *int64 `json:"From,omitempty" name:"From"`
+
+	// 要查询的日志的结束时间，Unix时间戳，单位ms
+	To *int64 `json:"To,omitempty" name:"To"`
+
+	// 查询语句，语句长度最大为4096，由于本接口是分析接口，如果无过滤条件，必须传 * 表示匹配所有，参考CLS的分析统计语句的文档
+	Query *string `json:"Query,omitempty" name:"Query"`
+
+	// 需要分析统计的字段名
+	FieldName *string `json:"FieldName,omitempty" name:"FieldName"`
 }
 
 func (r *DescribeAccessFastAnalysisRequest) ToJsonString() string {
@@ -688,6 +703,11 @@ func (r *DescribeAccessFastAnalysisRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "TopicId")
+	delete(f, "From")
+	delete(f, "To")
+	delete(f, "Query")
+	delete(f, "FieldName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccessFastAnalysisRequest has unknown keys!", "")
 	}
