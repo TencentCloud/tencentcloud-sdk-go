@@ -3492,6 +3492,86 @@ func (r *DescribeAMQPVHostsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeAllTenantsRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询限制条数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 物理集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 虚拟集群ID
+	TenantId *string `json:"TenantId,omitempty" name:"TenantId"`
+
+	// 虚拟集群名称
+	TenantName *string `json:"TenantName,omitempty" name:"TenantName"`
+
+	// 协议类型数组
+	Types []*string `json:"Types,omitempty" name:"Types"`
+
+	// 排序字段名，支持createTime，updateTime
+	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+
+	// 升序排列ASC，降序排列DESC
+	SortOrder *string `json:"SortOrder,omitempty" name:"SortOrder"`
+}
+
+func (r *DescribeAllTenantsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAllTenantsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "ClusterName")
+	delete(f, "TenantId")
+	delete(f, "TenantName")
+	delete(f, "Types")
+	delete(f, "SortBy")
+	delete(f, "SortOrder")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAllTenantsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAllTenantsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总条数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 虚拟集群列表
+		Tenants []*InternalTenant `json:"Tenants,omitempty" name:"Tenants"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAllTenantsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAllTenantsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeBindClustersRequest struct {
 	*tchttp.BaseRequest
 }
@@ -5168,6 +5248,75 @@ type FilterSubscription struct {
 	SubscriptionNames []*string `json:"SubscriptionNames,omitempty" name:"SubscriptionNames"`
 }
 
+type InternalTenant struct {
+
+	// 虚拟集群ID
+	TenantId *string `json:"TenantId,omitempty" name:"TenantId"`
+
+	// 虚拟集群名称
+	TenantName *string `json:"TenantName,omitempty" name:"TenantName"`
+
+	// 客户UIN
+	CustomerUin *string `json:"CustomerUin,omitempty" name:"CustomerUin"`
+
+	// 客户的APPID
+	CustomerAppId *string `json:"CustomerAppId,omitempty" name:"CustomerAppId"`
+
+	// 物理集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 集群协议类型，支持的值为TDMQ，ROCKETMQ，AMQP，CMQ
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 命名空间配额
+	MaxNamespaces *int64 `json:"MaxNamespaces,omitempty" name:"MaxNamespaces"`
+
+	// 已使用命名空间配额
+	UsedNamespaces *int64 `json:"UsedNamespaces,omitempty" name:"UsedNamespaces"`
+
+	// Topic配额
+	MaxTopics *int64 `json:"MaxTopics,omitempty" name:"MaxTopics"`
+
+	// 已使用Topic配额
+	UsedTopics *int64 `json:"UsedTopics,omitempty" name:"UsedTopics"`
+
+	// Topic分区数配额
+	MaxPartitions *int64 `json:"MaxPartitions,omitempty" name:"MaxPartitions"`
+
+	// 已使用Topic分区数配额
+	UsedPartitions *int64 `json:"UsedPartitions,omitempty" name:"UsedPartitions"`
+
+	// 存储配额, byte为单位
+	MaxMsgBacklogSize *uint64 `json:"MaxMsgBacklogSize,omitempty" name:"MaxMsgBacklogSize"`
+
+	// 命名空间最大生产TPS
+	MaxPublishTps *uint64 `json:"MaxPublishTps,omitempty" name:"MaxPublishTps"`
+
+	// 消息最大保留时间，秒为单位
+	MaxRetention *uint64 `json:"MaxRetention,omitempty" name:"MaxRetention"`
+
+	// 创建时间，毫秒为单位
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 修改时间，毫秒为单位
+	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 命名空间最大消费TPS
+	MaxDispatchTps *uint64 `json:"MaxDispatchTps,omitempty" name:"MaxDispatchTps"`
+
+	// 命名空间最大消费带宽，byte为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxDispatchRateInBytes *uint64 `json:"MaxDispatchRateInBytes,omitempty" name:"MaxDispatchRateInBytes"`
+
+	// 命名空间最大生产带宽，byte为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxPublishRateInBytes *uint64 `json:"MaxPublishRateInBytes,omitempty" name:"MaxPublishRateInBytes"`
+
+	// 消息最大保留空间，MB为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxRetentionSizeInMB *uint64 `json:"MaxRetentionSizeInMB,omitempty" name:"MaxRetentionSizeInMB"`
+}
+
 type ModifyAMQPClusterRequest struct {
 	*tchttp.BaseRequest
 
@@ -6532,24 +6681,166 @@ func (r *RewindCmqQueueResponse) FromJsonString(s string) error {
 }
 
 type RocketMQClusterConfig struct {
+
+	// 单命名空间TPS上线
+	MaxTpsPerNamespace *uint64 `json:"MaxTpsPerNamespace,omitempty" name:"MaxTpsPerNamespace"`
+
+	// 最大命名空间数量
+	MaxNamespaceNum *uint64 `json:"MaxNamespaceNum,omitempty" name:"MaxNamespaceNum"`
+
+	// 已使用命名空间数量
+	UsedNamespaceNum *uint64 `json:"UsedNamespaceNum,omitempty" name:"UsedNamespaceNum"`
+
+	// 最大Topic数量
+	MaxTopicNum *uint64 `json:"MaxTopicNum,omitempty" name:"MaxTopicNum"`
+
+	// 已使用Topic数量
+	UsedTopicNum *uint64 `json:"UsedTopicNum,omitempty" name:"UsedTopicNum"`
+
+	// 最大Group数量
+	MaxGroupNum *uint64 `json:"MaxGroupNum,omitempty" name:"MaxGroupNum"`
+
+	// 已使用Group数量
+	UsedGroupNum *uint64 `json:"UsedGroupNum,omitempty" name:"UsedGroupNum"`
+
+	// 消息最大保留时间，以毫秒为单位
+	MaxRetentionTime *uint64 `json:"MaxRetentionTime,omitempty" name:"MaxRetentionTime"`
+
+	// 消息最长延时，以毫秒为单位
+	MaxLatencyTime *uint64 `json:"MaxLatencyTime,omitempty" name:"MaxLatencyTime"`
 }
 
 type RocketMQClusterDetail struct {
+
+	// 集群基本信息
+	Info *RocketMQClusterInfo `json:"Info,omitempty" name:"Info"`
+
+	// 集群配置信息
+	Config *RocketMQClusterConfig `json:"Config,omitempty" name:"Config"`
+
+	// 集群状态，0:创建中，1:正常，2:销毁中，3:已删除，4: 隔离中，5:创建失败，6: 删除失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
 type RocketMQClusterInfo struct {
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 地域信息
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 创建时间，毫秒为单位
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 集群说明信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 公网接入地址
+	PublicEndPoint *string `json:"PublicEndPoint,omitempty" name:"PublicEndPoint"`
+
+	// VPC接入地址
+	VpcEndPoint *string `json:"VpcEndPoint,omitempty" name:"VpcEndPoint"`
 }
 
 type RocketMQClusterRecentStats struct {
+
+	// Topic数量
+	TopicNum *uint64 `json:"TopicNum,omitempty" name:"TopicNum"`
+
+	// 消息生产数
+	ProducedMsgNum *uint64 `json:"ProducedMsgNum,omitempty" name:"ProducedMsgNum"`
+
+	// 消息消费数
+	ConsumedMsgNum *uint64 `json:"ConsumedMsgNum,omitempty" name:"ConsumedMsgNum"`
+
+	// 消息堆积数
+	AccumulativeMsgNum *uint64 `json:"AccumulativeMsgNum,omitempty" name:"AccumulativeMsgNum"`
 }
 
 type RocketMQGroup struct {
+
+	// 消费组名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 在线消费者数量
+	ConsumerNum *uint64 `json:"ConsumerNum,omitempty" name:"ConsumerNum"`
+
+	// 消费TPS
+	TPS *uint64 `json:"TPS,omitempty" name:"TPS"`
+
+	// 总堆积数量
+	TotalAccumulative *int64 `json:"TotalAccumulative,omitempty" name:"TotalAccumulative"`
+
+	// 0表示集群消费模式，1表示广播消费模式，-1表示未知
+	ConsumptionMode *int64 `json:"ConsumptionMode,omitempty" name:"ConsumptionMode"`
+
+	// 是否允许消费
+	ReadEnabled *bool `json:"ReadEnabled,omitempty" name:"ReadEnabled"`
+
+	// 重试队列分区数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetryPartitionNum *uint64 `json:"RetryPartitionNum,omitempty" name:"RetryPartitionNum"`
+
+	// 创建时间，以毫秒为单位
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 修改时间，以毫秒为单位
+	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 客户端协议
+	ClientProtocol *string `json:"ClientProtocol,omitempty" name:"ClientProtocol"`
+
+	// 说明信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 消费者类型，枚举值ACTIVELY, PASSIVELY
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConsumerType *string `json:"ConsumerType,omitempty" name:"ConsumerType"`
+
+	// 是否开启广播消费
+	BroadcastEnabled *bool `json:"BroadcastEnabled,omitempty" name:"BroadcastEnabled"`
 }
 
 type RocketMQNamespace struct {
+
+	// 命名空间名称，3-64个字符，只能包含字母、数字、“-”及“_”
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 未消费消息的保留时间，以毫秒单位，范围60秒到15天
+	Ttl *uint64 `json:"Ttl,omitempty" name:"Ttl"`
+
+	// 消息持久化后保留的时间，以毫秒单位
+	RetentionTime *uint64 `json:"RetentionTime,omitempty" name:"RetentionTime"`
+
+	// 说明
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
 type RocketMQTopic struct {
+
+	// 主题名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 说明
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 读写分区数
+	PartitionNum *uint64 `json:"PartitionNum,omitempty" name:"PartitionNum"`
+
+	// 创建时间，以毫秒为单位
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 创建时间，以毫秒为单位
+	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type Role struct {

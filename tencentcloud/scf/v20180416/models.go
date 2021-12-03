@@ -3544,6 +3544,9 @@ type UpdateFunctionCodeRequest struct {
 	// 对象存储的地域，注：北京分为ap-beijing和ap-beijing-1
 	CosBucketRegion *string `json:"CosBucketRegion,omitempty" name:"CosBucketRegion"`
 
+	// 是否自动安装依赖
+	InstallDependency *string `json:"InstallDependency,omitempty" name:"InstallDependency"`
+
 	// 函数所属环境
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
 
@@ -3576,6 +3579,7 @@ func (r *UpdateFunctionCodeRequest) FromJsonString(s string) error {
 	delete(f, "ZipFile")
 	delete(f, "Namespace")
 	delete(f, "CosBucketRegion")
+	delete(f, "InstallDependency")
 	delete(f, "EnvId")
 	delete(f, "Publish")
 	delete(f, "Code")

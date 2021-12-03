@@ -1318,6 +1318,9 @@ type PackageItem struct {
 
 	// 授权区域，global: 全球 CN: 中国
 	AuthorizedArea *string `json:"AuthorizedArea,omitempty" name:"AuthorizedArea"`
+
+	// 标签数组
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 }
 
 type PutMusicOnTheShelvesRequest struct {

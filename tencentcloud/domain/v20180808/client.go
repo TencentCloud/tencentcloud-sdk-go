@@ -306,6 +306,7 @@ func NewDeletePhoneEmailResponse() (response *DeletePhoneEmailResponse) {
 // 此接口用于删除已验证的手机邮箱
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_EMAILISINVALID = "InvalidParameter.EmailIsInvalid"

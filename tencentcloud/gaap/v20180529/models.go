@@ -3425,6 +3425,9 @@ type DescribeProxyStatisticsRequest struct {
 	// 当时间范围不超过7天，支持最小粒度300秒；
 	// 当时间范围不超过30天，支持最小粒度3600秒。
 	Granularity *uint64 `json:"Granularity,omitempty" name:"Granularity"`
+
+	// 运营商（通道为三网通道时有效），支持CMCC，CUCC，CTCC，传空值或不传则合并三个运营商数据
+	Isp *string `json:"Isp,omitempty" name:"Isp"`
 }
 
 func (r *DescribeProxyStatisticsRequest) ToJsonString() string {
@@ -3444,6 +3447,7 @@ func (r *DescribeProxyStatisticsRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "MetricNames")
 	delete(f, "Granularity")
+	delete(f, "Isp")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProxyStatisticsRequest has unknown keys!", "")
 	}

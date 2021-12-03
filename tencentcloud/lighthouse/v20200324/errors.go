@@ -182,6 +182,9 @@ const (
 	// 不正确的配额资源名称。
 	INVALIDPARAMETERVALUE_INVALIDRESOURCEQUOTARESOURCENAME = "InvalidParameterValue.InvalidResourceQuotaResourceName"
 
+	// 参数Zone的取值不合法。
+	INVALIDPARAMETERVALUE_INVALIDZONE = "InvalidParameterValue.InvalidZone"
+
 	// 参数值非法，密钥对 ID 格式非法。
 	INVALIDPARAMETERVALUE_KEYPAIRIDMALFORMED = "InvalidParameterValue.KeyPairIdMalformed"
 

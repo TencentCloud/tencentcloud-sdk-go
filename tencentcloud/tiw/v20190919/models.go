@@ -2242,10 +2242,10 @@ type VideoInfo struct {
 
 type Whiteboard struct {
 
-	// 实时录制结果里白板视频宽，默认为1280
+	// 实时录制结果里白板视频宽，取值必须大于等于2，默认为1280
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
-	// 实时录制结果里白板视频高，默认为960
+	// 实时录制结果里白板视频高，取值必须大于等于2，默认为960
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 
 	// 白板初始化参数，透传到白板 SDK

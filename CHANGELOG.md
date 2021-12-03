@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## DDoS 防护(antiddos) 版本：2020-03-09
+## 正版曲库直通车(ame) 版本：2019-09-16
 
-### 第 15 次发布
+### 第 19 次发布
 
-发布时间：2021-12-02 08:02:10
+发布时间：2021-12-03 08:01:26
 
 本次发布包含了以下内容：
 
@@ -12,34 +12,37 @@
 
 修改数据结构：
 
-* [BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance)
+* [PackageItem](https://cloud.tencent.com/document/api/1155/40113#PackageItem)
 
-	* 新增成员：V6Flag
-
-
+	* 新增成员：Tags
 
 
-## 应用性能观测(apm) 版本：2021-06-22
 
-### 第 3 次发布
 
-发布时间：2021-12-02 08:02:32
+## 域名注册(domain) 版本：2018-08-08
+
+### 第 17 次发布
+
+发布时间：2021-12-03 08:05:53
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改数据结构：
 
-* [CreateApmInstance](https://cloud.tencent.com/document/api/1463/65347)
+* [PhoneEmailData](https://cloud.tencent.com/document/api/242/38895#PhoneEmailData)
+
+	* 新增成员：CheckStatus
 
 
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 73 次发布
+## 全球应用加速(gaap) 版本：2018-05-29
 
-发布时间：2021-12-02 08:03:37
+### 第 25 次发布
+
+发布时间：2021-12-03 08:06:49
 
 本次发布包含了以下内容：
 
@@ -47,79 +50,136 @@
 
 修改接口：
 
-* [UpgradeDBInstance](https://cloud.tencent.com/document/api/236/15876)
+* [DescribeProxyStatistics](https://cloud.tencent.com/document/api/608/37019)
 
-	* 新增入参：MaxDelayTime
-
-* [UpgradeDBInstanceEngineVersion](https://cloud.tencent.com/document/api/236/15870)
-
-	* 新增入参：MaxDelayTime
+	* 新增入参：Isp
 
 
 
 
-## 腾讯云剪(cme) 版本：2019-10-29
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
 
-### 第 44 次发布
+### 第 15 次发布
 
-发布时间：2021-12-02 08:04:53
+发布时间：2021-12-03 08:07:55
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+修改接口：
+
+* [CreateProduct](https://cloud.tencent.com/document/api/1131/53112)
+
+	* 新增入参：NetType
+
+
 修改数据结构：
 
-* [VideoExportExtensionArgs](https://cloud.tencent.com/document/api/1156/40360#VideoExportExtensionArgs)
+* [VideoProduct](https://cloud.tencent.com/document/api/1131/53113#VideoProduct)
 
-	* 新增成员：FrameRate
-
-
+	* 新增成员：NetType
 
 
-## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
 
-### 第 21 次发布
 
-发布时间：2021-12-02 08:10:29
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+
+
+## 物联网智能视频服务（行业版）(iotvideoindustry) 版本：2020-12-01
+
+### 第 12 次发布
+
+发布时间：2021-12-03 08:08:18
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+修改接口：
 
-* [DBInstanceNetInfo](https://cloud.tencent.com/document/api/409/16778#DBInstanceNetInfo)
+* [DescribeStatisticSummary](https://cloud.tencent.com/document/api/1361/53727)
 
-	* 新增成员：VpcId, SubnetId
+	* 新增出参：LivePushTotal
+
+* [DescribeVideoList](https://cloud.tencent.com/document/api/1361/54757)
+
+	* 新增入参：PlanId, SceneId, WarnId, RecordType
 
 
 
 
-## 私有域解析 Private DNS(privatedns) 版本：2020-10-28
+## 云监控(monitor) 版本：2018-07-24
 
-### 第 5 次发布
+### 第 32 次发布
 
-发布时间：2021-12-02 08:10:37
+发布时间：2021-12-03 08:09:12
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+修改接口：
 
-* [AccountVpcInfo](https://cloud.tencent.com/document/api/1338/55947#AccountVpcInfo)
+* [BindingPolicyObject](https://cloud.tencent.com/document/api/248/40421)
 
-	* <font color="#dd0000">**修改成员**：</font>VpcName
+	* <font color="#dd0000">**修改入参**：</font>GroupId
 
 
 
 
 ## 云函数(scf) 版本：2018-04-16
 
-### 第 39 次发布
+### 第 40 次发布
 
-发布时间：2021-12-02 08:10:45
+发布时间：2021-12-03 08:10:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpdateFunctionCode](https://cloud.tencent.com/document/api/583/18581)
+
+	* 新增入参：InstallDependency
+
+
+
+
+## 腾讯云自动化助手(tat) 版本：2020-10-28
+
+### 第 16 次发布
+
+发布时间：2021-12-03 08:11:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Command](https://cloud.tencent.com/document/api/1340/52687#Command)
+
+	* 新增成员：OutputCOSBucketUrl, OutputCOSKeyPrefix
+
+* [Invocation](https://cloud.tencent.com/document/api/1340/52687#Invocation)
+
+	* 新增成员：OutputCOSBucketUrl, OutputCOSKeyPrefix
+
+* [TaskResult](https://cloud.tencent.com/document/api/1340/52687#TaskResult)
+
+	* 新增成员：OutputUrl, OutputUploadCOSErrorInfo
+
+
+
+
+## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 24 次发布
+
+发布时间：2021-12-03 08:11:41
 
 本次发布包含了以下内容：
 
@@ -127,56 +187,41 @@
 
 新增接口：
 
-* [GetRequestStatus](https://cloud.tencent.com/document/api/583/65348)
+* [DescribeAllTenants](https://cloud.tencent.com/document/api/1179/65403)
 
 新增数据结构：
 
-* [RequestStatus](https://cloud.tencent.com/document/api/583/17244#RequestStatus)
+* [InternalTenant](https://cloud.tencent.com/document/api/1179/46089#InternalTenant)
 
+修改数据结构：
 
+* [RocketMQClusterConfig](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterConfig)
 
-## 腾讯云自动化助手(tat) 版本：2020-10-28
+	* 新增成员：MaxTpsPerNamespace, MaxNamespaceNum, UsedNamespaceNum, MaxTopicNum, UsedTopicNum, MaxGroupNum, UsedGroupNum, MaxRetentionTime, MaxLatencyTime
 
-### 第 15 次发布
+* [RocketMQClusterDetail](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterDetail)
 
-发布时间：2021-12-02 08:11:32
+	* 新增成员：Info, Config, Status
 
-本次发布包含了以下内容：
+* [RocketMQClusterInfo](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterInfo)
 
-改善已有的文档。
+	* 新增成员：ClusterId, ClusterName, Region, CreateTime, Remark, PublicEndPoint, VpcEndPoint
 
-修改接口：
+* [RocketMQClusterRecentStats](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterRecentStats)
 
-* [InvokeCommand](https://cloud.tencent.com/document/api/1340/52678)
+	* 新增成员：TopicNum, ProducedMsgNum, ConsumedMsgNum, AccumulativeMsgNum
 
-	* 新增入参：OutputCOSBucketUrl, OutputCOSKeyPrefix
+* [RocketMQGroup](https://cloud.tencent.com/document/api/1179/46089#RocketMQGroup)
 
-* [ModifyCommand](https://cloud.tencent.com/document/api/1340/52677)
+	* 新增成员：Name, ConsumerNum, TPS, TotalAccumulative, ConsumptionMode, ReadEnabled, RetryPartitionNum, CreateTime, UpdateTime, ClientProtocol, Remark, ConsumerType, BroadcastEnabled
 
-	* 新增入参：OutputCOSBucketUrl, OutputCOSKeyPrefix
+* [RocketMQNamespace](https://cloud.tencent.com/document/api/1179/46089#RocketMQNamespace)
 
-* [RunCommand](https://cloud.tencent.com/document/api/1340/52676)
+	* 新增成员：NamespaceId, Ttl, RetentionTime, Remark
 
-	* 新增入参：OutputCOSBucketUrl, OutputCOSKeyPrefix
+* [RocketMQTopic](https://cloud.tencent.com/document/api/1179/46089#RocketMQTopic)
 
-
-
-
-## Web 应用防火墙(waf) 版本：2018-01-25
-
-### 第 5 次发布
-
-发布时间：2021-12-02 08:14:23
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeAccessFastAnalysis](https://cloud.tencent.com/document/api/627/60014)
-
-	* 新增入参：TopicId, From, To, Query, FieldName
+	* 新增成员：Name, Remark, PartitionNum, CreateTime, UpdateTime
 
 
 
@@ -579,6 +624,21 @@
 
 
 ## 正版曲库直通车(ame) 版本：2019-09-16
+
+### 第 19 次发布
+
+发布时间：2021-12-03 08:01:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PackageItem](https://cloud.tencent.com/document/api/1155/40113#PackageItem)
+
+	* 新增成员：Tags
+
 
 ### 第 18 次发布
 
@@ -2178,7 +2238,7 @@
 
 新增接口：
 
-* [[CreateApmInstance](https://cloud.tencent.com/document/api/1463/65347)](https://cloud.tencent.com/document/api/#/#)
+* [CreateApmInstance](https://cloud.tencent.com/document/api/1463/65347)
 
 ### 第 2 次发布
 
@@ -23555,6 +23615,21 @@
 
 ## 域名注册(domain) 版本：2018-08-08
 
+### 第 17 次发布
+
+发布时间：2021-12-03 08:05:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PhoneEmailData](https://cloud.tencent.com/document/api/242/38895#PhoneEmailData)
+
+	* 新增成员：CheckStatus
+
+
 ### 第 16 次发布
 
 发布时间：2021-10-14 08:08:15
@@ -28522,6 +28597,21 @@
 
 
 ## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 25 次发布
+
+发布时间：2021-12-03 08:06:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeProxyStatistics](https://cloud.tencent.com/document/api/608/37019)
+
+	* 新增入参：Isp
+
 
 ### 第 24 次发布
 
@@ -34147,6 +34237,28 @@
 
 ## 物联网智能视频服务(iotvideo) 版本：2020-12-15
 
+### 第 15 次发布
+
+发布时间：2021-12-03 08:07:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateProduct](https://cloud.tencent.com/document/api/1131/53112)
+
+	* 新增入参：NetType
+
+
+修改数据结构：
+
+* [VideoProduct](https://cloud.tencent.com/document/api/1131/53113#VideoProduct)
+
+	* 新增成员：NetType
+
+
 ### 第 14 次发布
 
 发布时间：2021-11-23 08:09:04
@@ -34468,6 +34580,25 @@
 
 
 ## 物联网智能视频服务（行业版）(iotvideoindustry) 版本：2020-12-01
+
+### 第 12 次发布
+
+发布时间：2021-12-03 08:08:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeStatisticSummary](https://cloud.tencent.com/document/api/1361/53727)
+
+	* 新增出参：LivePushTotal
+
+* [DescribeVideoList](https://cloud.tencent.com/document/api/1361/54757)
+
+	* 新增入参：PlanId, SceneId, WarnId, RecordType
+
 
 ### 第 11 次发布
 
@@ -38364,6 +38495,21 @@
 
 
 ## 云监控(monitor) 版本：2018-07-24
+
+### 第 32 次发布
+
+发布时间：2021-12-03 08:09:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BindingPolicyObject](https://cloud.tencent.com/document/api/248/40421)
+
+	* <font color="#dd0000">**修改入参**：</font>GroupId
+
 
 ### 第 31 次发布
 
@@ -44613,6 +44759,21 @@
 
 ## 云函数(scf) 版本：2018-04-16
 
+### 第 40 次发布
+
+发布时间：2021-12-03 08:10:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpdateFunctionCode](https://cloud.tencent.com/document/api/583/18581)
+
+	* 新增入参：InstallDependency
+
+
 ### 第 39 次发布
 
 发布时间：2021-12-02 08:10:45
@@ -44623,11 +44784,11 @@
 
 新增接口：
 
-* [[GetRequestStatus](https://cloud.tencent.com/document/api/583/65348)](https://cloud.tencent.com/document/api/#/#)
+* [GetRequestStatus](https://cloud.tencent.com/document/api/583/65348)
 
 新增数据结构：
 
-* [[RequestStatus](https://cloud.tencent.com/document/api/583/17244#RequestStatus)](https://cloud.tencent.com/document/api/583/17244#[RequestStatus](https://cloud.tencent.com/document/api/583/17244#RequestStatus))
+* [RequestStatus](https://cloud.tencent.com/document/api/583/17244#RequestStatus)
 
 ### 第 38 次发布
 
@@ -47934,6 +48095,29 @@
 
 
 ## 腾讯云自动化助手(tat) 版本：2020-10-28
+
+### 第 16 次发布
+
+发布时间：2021-12-03 08:11:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Command](https://cloud.tencent.com/document/api/1340/52687#Command)
+
+	* 新增成员：OutputCOSBucketUrl, OutputCOSKeyPrefix
+
+* [Invocation](https://cloud.tencent.com/document/api/1340/52687#Invocation)
+
+	* 新增成员：OutputCOSBucketUrl, OutputCOSKeyPrefix
+
+* [TaskResult](https://cloud.tencent.com/document/api/1340/52687#TaskResult)
+
+	* 新增成员：OutputUrl, OutputUploadCOSErrorInfo
+
 
 ### 第 15 次发布
 
@@ -51789,6 +51973,53 @@
 
 
 ## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 24 次发布
+
+发布时间：2021-12-03 08:11:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeAllTenants](https://cloud.tencent.com/document/api/1179/65403)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[InternalTenant](https://cloud.tencent.com/document/api/1179/46089#InternalTenant)](https://cloud.tencent.com/document/api/1179/46089#[InternalTenant](https://cloud.tencent.com/document/api/1179/46089#InternalTenant))
+
+修改数据结构：
+
+* [RocketMQClusterConfig](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterConfig)
+
+	* 新增成员：MaxTpsPerNamespace, MaxNamespaceNum, UsedNamespaceNum, MaxTopicNum, UsedTopicNum, MaxGroupNum, UsedGroupNum, MaxRetentionTime, MaxLatencyTime
+
+* [RocketMQClusterDetail](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterDetail)
+
+	* 新增成员：Info, Config, Status
+
+* [RocketMQClusterInfo](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterInfo)
+
+	* 新增成员：ClusterId, ClusterName, Region, CreateTime, Remark, PublicEndPoint, VpcEndPoint
+
+* [RocketMQClusterRecentStats](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterRecentStats)
+
+	* 新增成员：TopicNum, ProducedMsgNum, ConsumedMsgNum, AccumulativeMsgNum
+
+* [RocketMQGroup](https://cloud.tencent.com/document/api/1179/46089#RocketMQGroup)
+
+	* 新增成员：Name, ConsumerNum, TPS, TotalAccumulative, ConsumptionMode, ReadEnabled, RetryPartitionNum, CreateTime, UpdateTime, ClientProtocol, Remark, ConsumerType, BroadcastEnabled
+
+* [RocketMQNamespace](https://cloud.tencent.com/document/api/1179/46089#RocketMQNamespace)
+
+	* 新增成员：NamespaceId, Ttl, RetentionTime, Remark
+
+* [RocketMQTopic](https://cloud.tencent.com/document/api/1179/46089#RocketMQTopic)
+
+	* 新增成员：Name, Remark, PartitionNum, CreateTime, UpdateTime
+
 
 ### 第 23 次发布
 

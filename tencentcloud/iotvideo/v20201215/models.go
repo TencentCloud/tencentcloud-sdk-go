@@ -1050,6 +1050,9 @@ type CreateProductRequest struct {
 
 	// 认证方式 只支持取值为2 psk认证
 	EncryptionType *uint64 `json:"EncryptionType,omitempty" name:"EncryptionType"`
+
+	// 连接类型，wifi表示WIFI连接，cellular表示4G连接
+	NetType *string `json:"NetType,omitempty" name:"NetType"`
 }
 
 func (r *CreateProductRequest) ToJsonString() string {
@@ -1073,6 +1076,7 @@ func (r *CreateProductRequest) FromJsonString(s string) error {
 	delete(f, "ChipId")
 	delete(f, "ProductDescription")
 	delete(f, "EncryptionType")
+	delete(f, "NetType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProductRequest has unknown keys!", "")
 	}
@@ -5473,6 +5477,10 @@ type VideoProduct struct {
 
 	// 修改时间unix时间戳
 	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 连接类型，wifi表示WIFI连接，cellular表示4G连接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetType *string `json:"NetType,omitempty" name:"NetType"`
 }
 
 type WakeUpDeviceRequest struct {

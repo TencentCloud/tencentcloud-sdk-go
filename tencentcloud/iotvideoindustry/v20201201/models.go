@@ -205,6 +205,10 @@ type ControlRecordStreamRequest struct {
 
 	// |控制参数，CmdJson结构转义的json字符串。| Action  | string  |是|控制动作，play(用于暂停后恢复播放)、pause（暂停）、teardown(停止)、jump(拖动播放)
 	// | Offset  | uint  |否|拖动播放时的时间偏移量（相对于起始时间）,单位：秒
+	// 目前支持的command：
+	// "Command": "{"Action":"PAUSE"}" 暂停
+	// "Command": "{"Action":"PLAY"}" 暂停恢复
+	// "Command": "{"Action":"PLAY","Offset":"15"}" 位置偏移，可以替代jump操作
 	Command *string `json:"Command,omitempty" name:"Command"`
 
 	// 通道唯一标识
@@ -1386,6 +1390,7 @@ type DescribeStatisticDetailsRequest struct {
 	// 4.已用存储容量总数：StorageUsage
 	// 5. X-P2P分享流量: P2PFluxTotal
 	// 6. X-P2P峰值带宽: P2PPeakValue
+	// 7. RTMP推流路数(直播推流): LivePushTotal
 	StatisticField *string `json:"StatisticField,omitempty" name:"StatisticField"`
 }
 
@@ -1487,6 +1492,10 @@ type DescribeStatisticSummaryResponse struct {
 		// X-P2P峰值带宽。 单位bps
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		P2PPeakValue *float64 `json:"P2PPeakValue,omitempty" name:"P2PPeakValue"`
+
+		// RTMP推流路数 ( 直播推流)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		LivePushTotal *int64 `json:"LivePushTotal,omitempty" name:"LivePushTotal"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1615,6 +1624,18 @@ type DescribeVideoListRequest struct {
 
 	// 通道ID默认必传
 	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
+
+	// 录制计划ID
+	PlanId *string `json:"PlanId,omitempty" name:"PlanId"`
+
+	// 场景ID
+	SceneId *int64 `json:"SceneId,omitempty" name:"SceneId"`
+
+	// 告警ID
+	WarnId *int64 `json:"WarnId,omitempty" name:"WarnId"`
+
+	// 录制类型 1: 联动计划录制 2: 告警录制
+	RecordType []*int64 `json:"RecordType,omitempty" name:"RecordType"`
 }
 
 func (r *DescribeVideoListRequest) ToJsonString() string {
@@ -1642,6 +1663,10 @@ func (r *DescribeVideoListRequest) FromJsonString(s string) error {
 	delete(f, "EndFileSize")
 	delete(f, "IsRecording")
 	delete(f, "ChannelId")
+	delete(f, "PlanId")
+	delete(f, "SceneId")
+	delete(f, "WarnId")
+	delete(f, "RecordType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVideoListRequest has unknown keys!", "")
 	}

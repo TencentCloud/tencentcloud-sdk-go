@@ -936,7 +936,8 @@ type DescribeCaptchaResultResponse struct {
 	// 18 uin no match 号码不匹配
 	// 19 seq redirect 重定向验证
 	// 20 opt no vcode 操作使用pt免验证码校验错误
-	// 21 diff 差别，验证错误
+	// 21 diff 差别，验证错误 
+	// 该情况出现原因一般为，当验证码前端生成terror格式票据并进行后端票据校验时，用户网络较差，该情况下仍会返回可用票据，业务侧可以自行根据需要，进行票据生成或做其他处理。详情参见 [验证码Web前端接入-异常处理文档](https://cloud.tencent.com/document/product/1110/36841#.E5.BC.82.E5.B8.B8.E5.A4.84.E7.90.86)。
 	// 22 captcha type not match 验证码类型与拉取时不一致
 	// 23 verify type error 验证类型错误
 	// 24 invalid pkg 非法请求包

@@ -1360,6 +1360,9 @@ type PhoneEmailData struct {
 
 	// 创建时间
 	CreatedOn *string `json:"CreatedOn,omitempty" name:"CreatedOn"`
+
+	// 1=控制台校验，2=第三方校验
+	CheckStatus *int64 `json:"CheckStatus,omitempty" name:"CheckStatus"`
 }
 
 type PriceInfo struct {

@@ -206,6 +206,9 @@ const (
 	// ApmConfigRegion参数传入错误。
 	INVALIDPARAMETERVALUE_APMCONFIGREGION = "InvalidParameterValue.ApmConfigRegion"
 
+	// Args 参数值有误。
+	INVALIDPARAMETERVALUE_ARGS = "InvalidParameterValue.Args"
+
 	// 函数异步重试配置参数无效。
 	INVALIDPARAMETERVALUE_ASYNCTRIGGERCONFIG = "InvalidParameterValue.AsyncTriggerConfig"
 
@@ -239,6 +242,9 @@ const (
 	// CodeSource传入错误。
 	INVALIDPARAMETERVALUE_CODESOURCE = "InvalidParameterValue.CodeSource"
 
+	// Command[Entrypoint] 参数值有误。
+	INVALIDPARAMETERVALUE_COMMAND = "InvalidParameterValue.Command"
+
 	// CompatibleRuntimes参数传入错误。
 	INVALIDPARAMETERVALUE_COMPATIBLERUNTIMES = "InvalidParameterValue.CompatibleRuntimes"
 
@@ -271,6 +277,9 @@ const (
 
 	// Description传入错误。
 	INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
+
+	// 环境变量DNS[OS_NAMESERVER]配置有误。
+	INVALIDPARAMETERVALUE_DNSINFO = "InvalidParameterValue.DnsInfo"
 
 	// EipConfig参数错误。
 	INVALIDPARAMETERVALUE_EIPCONFIG = "InvalidParameterValue.EipConfig"
@@ -319,6 +328,9 @@ const (
 
 	// IdleTimeOut参数传入错误。
 	INVALIDPARAMETERVALUE_IDLETIMEOUT = "InvalidParameterValue.IdleTimeOut"
+
+	// imageUri 传入有误。
+	INVALIDPARAMETERVALUE_IMAGEURI = "InvalidParameterValue.ImageUri"
 
 	// InlineZipFile非法。
 	INVALIDPARAMETERVALUE_INLINEZIPFILE = "InvalidParameterValue.InlineZipFile"
@@ -385,6 +397,9 @@ const (
 
 	// 不支持的函数版本。
 	INVALIDPARAMETERVALUE_QUALIFIER = "InvalidParameterValue.Qualifier"
+
+	// 企业版镜像实例ID[RegistryId]传值错误。
+	INVALIDPARAMETERVALUE_REGISTRYID = "InvalidParameterValue.RegistryId"
 
 	// RetCode不合法。
 	INVALIDPARAMETERVALUE_RETCODE = "InvalidParameterValue.RetCode"

@@ -1661,6 +1661,39 @@ func (c *Client) DescribeAMQPVHosts(request *DescribeAMQPVHostsRequest) (respons
     return
 }
 
+func NewDescribeAllTenantsRequest() (request *DescribeAllTenantsRequest) {
+    request = &DescribeAllTenantsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeAllTenants")
+    
+    return
+}
+
+func NewDescribeAllTenantsResponse() (response *DescribeAllTenantsResponse) {
+    response = &DescribeAllTenantsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAllTenants
+// 获取某个租户的虚拟集群列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEBINDVPC = "FailedOperation.CreateBindVpc"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAllTenants(request *DescribeAllTenantsRequest) (response *DescribeAllTenantsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAllTenantsRequest()
+    }
+    response = NewDescribeAllTenantsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBindClustersRequest() (request *DescribeBindClustersRequest) {
     request = &DescribeBindClustersRequest{
         BaseRequest: &tchttp.BaseRequest{},
