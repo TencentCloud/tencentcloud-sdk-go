@@ -197,6 +197,9 @@ const (
 	// 权限组规则和权限组不匹配。
 	INVALIDPARAMETERVALUE_RULENOTMATCHPGROUP = "InvalidParameterValue.RuleNotMatchPgroup"
 
+	// 参数值错误: 标签键个数超过上限（6个）。
+	INVALIDPARAMETERVALUE_TAGKEYFILTERLIMITEXCEEDED = "InvalidParameterValue.TagKeyFilterLimitExceeded"
+
 	// 标签键长度超过限制（不能超过127字节）。
 	INVALIDPARAMETERVALUE_TAGKEYLIMITEXCEEDED = "InvalidParameterValue.TagKeyLimitExceeded"
 

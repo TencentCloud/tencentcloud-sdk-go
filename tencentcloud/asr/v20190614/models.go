@@ -312,6 +312,7 @@ type CreateRecTaskRequest struct {
 	// • 16k_zh_medical  医疗；
 	// • 16k_th 泰语；
 	// • 16k_wuu-SH：16k 上海话方言；
+	// • 16k_zh_dialect：多方言。
 	EngineModelType *string `json:"EngineModelType,omitempty" name:"EngineModelType"`
 
 	// 识别声道数。1：单声道；2：双声道（仅支持 8k_zh 引擎模）。注意：录音识别会自动将音频转码为填写的识别声道数
@@ -1092,8 +1093,9 @@ type SentenceRecognitionRequest struct {
 	// • 16k_en：16k 英语；
 	// • 16k_ca：16k 粤语；
 	// • 16k_ja：16k 日语；
-	// •16k_wuu-SH：16k 上海话方言；
-	// •16k_zh_medical：16k 医疗。
+	// • 16k_wuu-SH：16k 上海话方言；
+	// • 16k_zh_medical：16k 医疗；
+	// • 16k_zh_dialect：多方言。
 	EngSerViceType *string `json:"EngSerViceType,omitempty" name:"EngSerViceType"`
 
 	// 语音数据来源。0：语音 URL；1：语音数据（post body）。

@@ -362,6 +362,61 @@ func (r *DeleteStaffResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeCCCBuyInfoListRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用ID列表，不传时查询所有应用
+	SdkAppIds []*int64 `json:"SdkAppIds,omitempty" name:"SdkAppIds"`
+}
+
+func (r *DescribeCCCBuyInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCCCBuyInfoListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCCCBuyInfoListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCCCBuyInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 应用总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 应用购买信息列表
+		SdkAppIdBuyList []*SdkAppIdBuyInfo `json:"SdkAppIdBuyList,omitempty" name:"SdkAppIdBuyList"`
+
+		// 套餐包购买信息列表
+		PackageBuyList []*PackageBuyInfo `json:"PackageBuyList,omitempty" name:"PackageBuyList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCCCBuyInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCCCBuyInfoListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeCallInMetricsRequest struct {
 	*tchttp.BaseRequest
 
@@ -1257,6 +1312,66 @@ type PSTNSessionInfo struct {
 	ProtectedCallee *string `json:"ProtectedCallee,omitempty" name:"ProtectedCallee"`
 }
 
+type PackageBuyInfo struct {
+
+	// 套餐包Id
+	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
+
+	// 套餐包类型，0-外呼套餐包|1-400呼入套餐包
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 套餐包总量
+	CapacitySize *int64 `json:"CapacitySize,omitempty" name:"CapacitySize"`
+
+	// 套餐包剩余量
+	CapacityRemain *int64 `json:"CapacityRemain,omitempty" name:"CapacityRemain"`
+
+	// 购买时间戳
+	BuyTime *int64 `json:"BuyTime,omitempty" name:"BuyTime"`
+
+	// 截至时间戳
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+type PhoneNumBuyInfo struct {
+
+	// 电话号码
+	PhoneNum *string `json:"PhoneNum,omitempty" name:"PhoneNum"`
+
+	// 号码类型，0-固话|1-虚商号码|2-运营商号码|3-400号码
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 号码呼叫类型，1-呼入|2-呼出|3-呼入呼出
+	CallType *int64 `json:"CallType,omitempty" name:"CallType"`
+
+	// 购买时间戳
+	BuyTime *int64 `json:"BuyTime,omitempty" name:"BuyTime"`
+
+	// 截至时间戳
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 号码状态，1正常|2停用
+	State *int64 `json:"State,omitempty" name:"State"`
+}
+
+type SdkAppIdBuyInfo struct {
+
+	// 应用ID
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 应用名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 坐席购买数（还在有效期内）
+	StaffBuyNum *int64 `json:"StaffBuyNum,omitempty" name:"StaffBuyNum"`
+
+	// 坐席购买列表 （还在有效期内）
+	StaffBuyList []*StaffBuyInfo `json:"StaffBuyList,omitempty" name:"StaffBuyList"`
+
+	// 号码购买列表
+	PhoneNumBuyList []*PhoneNumBuyInfo `json:"PhoneNumBuyList,omitempty" name:"PhoneNumBuyList"`
+}
+
 type SeatUserInfo struct {
 
 	// 坐席名称
@@ -1391,6 +1506,18 @@ type SkillGroupItem struct {
 
 	// 类型：IM、TEL、ALL（全媒体）
 	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type StaffBuyInfo struct {
+
+	// 购买坐席数量
+	Num *int64 `json:"Num,omitempty" name:"Num"`
+
+	// 购买时间戳
+	BuyTime *int64 `json:"BuyTime,omitempty" name:"BuyTime"`
+
+	// 截至时间戳
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
 }
 
 type StaffInfo struct {

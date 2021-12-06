@@ -1473,6 +1473,21 @@ func (r *ApplyWithdrawalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AssignmentData struct {
+
+	// 主播ID
+	AnchorId *string `json:"AnchorId,omitempty" name:"AnchorId"`
+
+	// 主播名称
+	AnchorName *string `json:"AnchorName,omitempty" name:"AnchorName"`
+
+	// 代理商ID
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+
+	// 代理商名称
+	AgentName *string `json:"AgentName,omitempty" name:"AgentName"`
+}
+
 type BankCardItem struct {
 
 	// 超级网银行号
@@ -4733,6 +4748,70 @@ func (r *CreateTransferBatchResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeduceQuotaRequest struct {
+	*tchttp.BaseRequest
+
+	// 主播ID
+	AnchorId *string `json:"AnchorId,omitempty" name:"AnchorId"`
+
+	// 提现金额，单位为"分"
+	Amount *int64 `json:"Amount,omitempty" name:"Amount"`
+
+	// 外部业务订单号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+}
+
+func (r *DeduceQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeduceQuotaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AnchorId")
+	delete(f, "Amount")
+	delete(f, "OrderId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeduceQuotaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeduceQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。响应成功："SUCCESS"，其他为不成功。
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 响应消息
+		ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+
+		// 返回响应
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *AssignmentData `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeduceQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeduceQuotaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteAgentTaxPaymentInfoRequest struct {
 	*tchttp.BaseRequest
 
@@ -7594,6 +7673,62 @@ func (r *QueryApplicationMaterialResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryApplicationMaterialResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryAssignmentRequest struct {
+	*tchttp.BaseRequest
+
+	// 主播ID
+	AnchorId *string `json:"AnchorId,omitempty" name:"AnchorId"`
+}
+
+func (r *QueryAssignmentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryAssignmentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AnchorId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryAssignmentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryAssignmentResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。响应成功："SUCCESS"，其他为不成功。
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 响应消息
+		ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+
+		// 返回响应
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *AssignmentData `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryAssignmentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryAssignmentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

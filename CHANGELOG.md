@@ -1,48 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 正版曲库直通车(ame) 版本：2019-09-16
+## API网关(apigateway) 版本：2018-08-08
 
-### 第 19 次发布
+### 第 22 次发布
 
-发布时间：2021-12-03 08:01:26
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [PackageItem](https://cloud.tencent.com/document/api/1155/40113#PackageItem)
-
-	* 新增成员：Tags
-
-
-
-
-## 域名注册(domain) 版本：2018-08-08
-
-### 第 17 次发布
-
-发布时间：2021-12-03 08:05:53
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [PhoneEmailData](https://cloud.tencent.com/document/api/242/38895#PhoneEmailData)
-
-	* 新增成员：CheckStatus
-
-
-
-
-## 全球应用加速(gaap) 版本：2018-05-29
-
-### 第 25 次发布
-
-发布时间：2021-12-03 08:06:49
+发布时间：2021-12-06 08:00:59
 
 本次发布包含了以下内容：
 
@@ -50,136 +12,18 @@
 
 修改接口：
 
-* [DescribeProxyStatistics](https://cloud.tencent.com/document/api/608/37019)
+* [CreateApi](https://cloud.tencent.com/document/api/628/45243)
 
-	* 新增入参：Isp
+	* 新增入参：EIAMAppType, EIAMAuthType, TokenTimeout, EIAMAppId
 
 
 
 
-## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+## 云呼叫中心(ccc) 版本：2020-02-10
 
-### 第 15 次发布
+### 第 18 次发布
 
-发布时间：2021-12-03 08:07:55
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateProduct](https://cloud.tencent.com/document/api/1131/53112)
-
-	* 新增入参：NetType
-
-
-修改数据结构：
-
-* [VideoProduct](https://cloud.tencent.com/document/api/1131/53113#VideoProduct)
-
-	* 新增成员：NetType
-
-
-
-
-## 物联网智能视频服务(iotvideo) 版本：2019-11-26
-
-
-
-## 物联网智能视频服务（行业版）(iotvideoindustry) 版本：2020-12-01
-
-### 第 12 次发布
-
-发布时间：2021-12-03 08:08:18
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeStatisticSummary](https://cloud.tencent.com/document/api/1361/53727)
-
-	* 新增出参：LivePushTotal
-
-* [DescribeVideoList](https://cloud.tencent.com/document/api/1361/54757)
-
-	* 新增入参：PlanId, SceneId, WarnId, RecordType
-
-
-
-
-## 云监控(monitor) 版本：2018-07-24
-
-### 第 32 次发布
-
-发布时间：2021-12-03 08:09:12
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [BindingPolicyObject](https://cloud.tencent.com/document/api/248/40421)
-
-	* <font color="#dd0000">**修改入参**：</font>GroupId
-
-
-
-
-## 云函数(scf) 版本：2018-04-16
-
-### 第 40 次发布
-
-发布时间：2021-12-03 08:10:14
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [UpdateFunctionCode](https://cloud.tencent.com/document/api/583/18581)
-
-	* 新增入参：InstallDependency
-
-
-
-
-## 腾讯云自动化助手(tat) 版本：2020-10-28
-
-### 第 16 次发布
-
-发布时间：2021-12-03 08:11:00
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Command](https://cloud.tencent.com/document/api/1340/52687#Command)
-
-	* 新增成员：OutputCOSBucketUrl, OutputCOSKeyPrefix
-
-* [Invocation](https://cloud.tencent.com/document/api/1340/52687#Invocation)
-
-	* 新增成员：OutputCOSBucketUrl, OutputCOSKeyPrefix
-
-* [TaskResult](https://cloud.tencent.com/document/api/1340/52687#TaskResult)
-
-	* 新增成员：OutputUrl, OutputUploadCOSErrorInfo
-
-
-
-
-## 分布式消息队列(tdmq) 版本：2020-02-17
-
-### 第 24 次发布
-
-发布时间：2021-12-03 08:11:41
+发布时间：2021-12-06 08:02:18
 
 本次发布包含了以下内容：
 
@@ -187,42 +31,112 @@
 
 新增接口：
 
-* [DescribeAllTenants](https://cloud.tencent.com/document/api/1179/65403)
+* [DescribeCCCBuyInfoList](https://cloud.tencent.com/document/api/679/65435)
 
 新增数据结构：
 
-* [InternalTenant](https://cloud.tencent.com/document/api/1179/46089#InternalTenant)
+* [PackageBuyInfo](https://cloud.tencent.com/document/api/679/47715#PackageBuyInfo)
+* [PhoneNumBuyInfo](https://cloud.tencent.com/document/api/679/47715#PhoneNumBuyInfo)
+* [SdkAppIdBuyInfo](https://cloud.tencent.com/document/api/679/47715#SdkAppIdBuyInfo)
+* [StaffBuyInfo](https://cloud.tencent.com/document/api/679/47715#StaffBuyInfo)
+
+
+
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 88 次发布
+
+发布时间：2021-12-06 08:02:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ListClsLogTopics](https://cloud.tencent.com/document/api/228/42194)
+
+	* 新增出参：ExtraLogset
+
+
+新增数据结构：
+
+* [ExtraLogset](https://cloud.tencent.com/document/api/228/30987#ExtraLogset)
 
 修改数据结构：
 
-* [RocketMQClusterConfig](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterConfig)
+* [LogSetInfo](https://cloud.tencent.com/document/api/228/30987#LogSetInfo)
 
-	* 新增成员：MaxTpsPerNamespace, MaxNamespaceNum, UsedNamespaceNum, MaxTopicNum, UsedTopicNum, MaxGroupNum, UsedGroupNum, MaxRetentionTime, MaxLatencyTime
+	* 新增成员：Deleted, RegionEn
 
-* [RocketMQClusterDetail](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterDetail)
+* [TopicInfo](https://cloud.tencent.com/document/api/228/30987#TopicInfo)
 
-	* 新增成员：Info, Config, Status
+	* 新增成员：Deleted
 
-* [RocketMQClusterInfo](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterInfo)
 
-	* 新增成员：ClusterId, ClusterName, Region, CreateTime, Remark, PublicEndPoint, VpcEndPoint
 
-* [RocketMQClusterRecentStats](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterRecentStats)
 
-	* 新增成员：TopicNum, ProducedMsgNum, ConsumedMsgNum, AccumulativeMsgNum
+## 企业收付平台(cpdp) 版本：2019-08-20
 
-* [RocketMQGroup](https://cloud.tencent.com/document/api/1179/46089#RocketMQGroup)
+### 第 52 次发布
 
-	* 新增成员：Name, ConsumerNum, TPS, TotalAccumulative, ConsumptionMode, ReadEnabled, RetryPartitionNum, CreateTime, UpdateTime, ClientProtocol, Remark, ConsumerType, BroadcastEnabled
+发布时间：2021-12-06 08:03:46
 
-* [RocketMQNamespace](https://cloud.tencent.com/document/api/1179/46089#RocketMQNamespace)
+本次发布包含了以下内容：
 
-	* 新增成员：NamespaceId, Ttl, RetentionTime, Remark
+改善已有的文档。
 
-* [RocketMQTopic](https://cloud.tencent.com/document/api/1179/46089#RocketMQTopic)
+新增接口：
 
-	* 新增成员：Name, Remark, PartitionNum, CreateTime, UpdateTime
+* [DeduceQuota](https://cloud.tencent.com/document/api/1122/65437)
+* [QueryAssignment](https://cloud.tencent.com/document/api/1122/65436)
 
+新增数据结构：
+
+* [AssignmentData](https://cloud.tencent.com/document/api/1122/40683#AssignmentData)
+
+
+
+## 域名注册(domain) 版本：2018-08-08
+
+### 第 18 次发布
+
+发布时间：2021-12-06 08:05:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDomainBatch](https://cloud.tencent.com/document/api/242/48942)
+
+	* 新增入参：UpdateProhibition, TransferProhibition
+
+* [TransferInDomainBatch](https://cloud.tencent.com/document/api/242/49195)
+
+	* 新增入参：UpdateProhibition, TransferProhibition
+
+
+
+
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 37 次发布
+
+发布时间：2021-12-06 08:07:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GenSingleDeviceSignatureOfPublic](https://cloud.tencent.com/document/api/1081/65438)
+
+新增数据结构：
+
+* [DeviceSignatureInfo](https://cloud.tencent.com/document/api/1081/34988#DeviceSignatureInfo)
 
 
 
@@ -1684,6 +1598,21 @@
 
 
 ## API网关(apigateway) 版本：2018-08-08
+
+### 第 22 次发布
+
+发布时间：2021-12-06 08:00:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateApi](https://cloud.tencent.com/document/api/628/45243)
+
+	* 新增入参：EIAMAppType, EIAMAuthType, TokenTimeout, EIAMAppId
+
 
 ### 第 21 次发布
 
@@ -8138,6 +8067,25 @@
 
 ## 云呼叫中心(ccc) 版本：2020-02-10
 
+### 第 18 次发布
+
+发布时间：2021-12-06 08:02:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeCCCBuyInfoList](https://cloud.tencent.com/document/api/679/65435)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[PackageBuyInfo](https://cloud.tencent.com/document/api/679/47715#PackageBuyInfo)](https://cloud.tencent.com/document/api/679/47715#[PackageBuyInfo](https://cloud.tencent.com/document/api/679/47715#PackageBuyInfo))
+* [[PhoneNumBuyInfo](https://cloud.tencent.com/document/api/679/47715#PhoneNumBuyInfo)](https://cloud.tencent.com/document/api/679/47715#[PhoneNumBuyInfo](https://cloud.tencent.com/document/api/679/47715#PhoneNumBuyInfo))
+* [[SdkAppIdBuyInfo](https://cloud.tencent.com/document/api/679/47715#SdkAppIdBuyInfo)](https://cloud.tencent.com/document/api/679/47715#[SdkAppIdBuyInfo](https://cloud.tencent.com/document/api/679/47715#SdkAppIdBuyInfo))
+* [[StaffBuyInfo](https://cloud.tencent.com/document/api/679/47715#StaffBuyInfo)](https://cloud.tencent.com/document/api/679/47715#[StaffBuyInfo](https://cloud.tencent.com/document/api/679/47715#StaffBuyInfo))
+
 ### 第 17 次发布
 
 发布时间：2021-11-16 08:06:45
@@ -10001,6 +9949,36 @@
 
 
 ## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 88 次发布
+
+发布时间：2021-12-06 08:02:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ListClsLogTopics](https://cloud.tencent.com/document/api/228/42194)
+
+	* 新增出参：ExtraLogset
+
+
+新增数据结构：
+
+* [[ExtraLogset](https://cloud.tencent.com/document/api/228/30987#ExtraLogset)](https://cloud.tencent.com/document/api/228/30987#[ExtraLogset](https://cloud.tencent.com/document/api/228/30987#ExtraLogset))
+
+修改数据结构：
+
+* [LogSetInfo](https://cloud.tencent.com/document/api/228/30987#LogSetInfo)
+
+	* 新增成员：Deleted, RegionEn
+
+* [TopicInfo](https://cloud.tencent.com/document/api/228/30987#TopicInfo)
+
+	* 新增成员：Deleted
+
 
 ### 第 87 次发布
 
@@ -15467,7 +15445,7 @@
 
 
 
-## 腾讯云剪(cme) 版本：2019-10-29
+## 多媒体创作引擎(cme) 版本：2019-10-29
 
 ### 第 44 次发布
 
@@ -16871,6 +16849,23 @@
 
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 52 次发布
+
+发布时间：2021-12-06 08:03:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DeduceQuota](https://cloud.tencent.com/document/api/1122/65437)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryAssignment](https://cloud.tencent.com/document/api/1122/65436)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AssignmentData](https://cloud.tencent.com/document/api/1122/40683#AssignmentData)](https://cloud.tencent.com/document/api/1122/40683#[AssignmentData](https://cloud.tencent.com/document/api/1122/40683#AssignmentData))
 
 ### 第 51 次发布
 
@@ -23614,6 +23609,25 @@
 
 
 ## 域名注册(domain) 版本：2018-08-08
+
+### 第 18 次发布
+
+发布时间：2021-12-06 08:05:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDomainBatch](https://cloud.tencent.com/document/api/242/48942)
+
+	* 新增入参：UpdateProhibition, TransferProhibition
+
+* [TransferInDomainBatch](https://cloud.tencent.com/document/api/242/49195)
+
+	* 新增入参：UpdateProhibition, TransferProhibition
+
 
 ### 第 17 次发布
 
@@ -32930,6 +32944,22 @@
 
 
 ## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 37 次发布
+
+发布时间：2021-12-06 08:07:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[GenSingleDeviceSignatureOfPublic](https://cloud.tencent.com/document/api/1081/65438)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DeviceSignatureInfo](https://cloud.tencent.com/document/api/1081/34988#DeviceSignatureInfo)](https://cloud.tencent.com/document/api/1081/34988#[DeviceSignatureInfo](https://cloud.tencent.com/document/api/1081/34988#DeviceSignatureInfo))
 
 ### 第 36 次发布
 
@@ -51984,11 +52014,11 @@
 
 新增接口：
 
-* [[DescribeAllTenants](https://cloud.tencent.com/document/api/1179/65403)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeAllTenants](https://cloud.tencent.com/document/api/1179/65403)
 
 新增数据结构：
 
-* [[InternalTenant](https://cloud.tencent.com/document/api/1179/46089#InternalTenant)](https://cloud.tencent.com/document/api/1179/46089#[InternalTenant](https://cloud.tencent.com/document/api/1179/46089#InternalTenant))
+* [InternalTenant](https://cloud.tencent.com/document/api/1179/46089#InternalTenant)
 
 修改数据结构：
 

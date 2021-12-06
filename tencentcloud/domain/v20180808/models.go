@@ -346,6 +346,12 @@ type CreateDomainBatchRequest struct {
 
 	// 使用的特惠包ID，PayMode为2时必填
 	PackageResourceId *string `json:"PackageResourceId,omitempty" name:"PackageResourceId"`
+
+	// 是否开启更新锁：0=默认不开启，1=开启
+	UpdateProhibition *int64 `json:"UpdateProhibition,omitempty" name:"UpdateProhibition"`
+
+	// 是否开启转移锁：0=默认不开启，1=开启
+	TransferProhibition *int64 `json:"TransferProhibition,omitempty" name:"TransferProhibition"`
 }
 
 func (r *CreateDomainBatchRequest) ToJsonString() string {
@@ -366,6 +372,8 @@ func (r *CreateDomainBatchRequest) FromJsonString(s string) error {
 	delete(f, "PayMode")
 	delete(f, "AutoRenewFlag")
 	delete(f, "PackageResourceId")
+	delete(f, "UpdateProhibition")
+	delete(f, "TransferProhibition")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDomainBatchRequest has unknown keys!", "")
 	}
@@ -1610,6 +1618,12 @@ type TransferInDomainBatchRequest struct {
 	// false：关闭60天内禁止转移注册商锁定
 	// 默认 true
 	LockTransfer *bool `json:"LockTransfer,omitempty" name:"LockTransfer"`
+
+	// 是否开启更新锁：0=默认不开启，1=开启
+	UpdateProhibition *int64 `json:"UpdateProhibition,omitempty" name:"UpdateProhibition"`
+
+	// 是否开启转移锁：0=默认不开启，1=开启
+	TransferProhibition *int64 `json:"TransferProhibition,omitempty" name:"TransferProhibition"`
 }
 
 func (r *TransferInDomainBatchRequest) ToJsonString() string {
@@ -1630,6 +1644,8 @@ func (r *TransferInDomainBatchRequest) FromJsonString(s string) error {
 	delete(f, "PayMode")
 	delete(f, "AutoRenewFlag")
 	delete(f, "LockTransfer")
+	delete(f, "UpdateProhibition")
+	delete(f, "TransferProhibition")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TransferInDomainBatchRequest has unknown keys!", "")
 	}

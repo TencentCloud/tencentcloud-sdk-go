@@ -188,6 +188,9 @@ const (
 	// 插件定义参数取值重复，请修改后重新操作。
 	INVALIDPARAMETERVALUE_DUPLICATEPLUGINCONFIG = "InvalidParameterValue.DuplicatePluginConfig"
 
+	// 非法的后端ip地址。
+	INVALIDPARAMETERVALUE_ILLEGALPROXYIP = "InvalidParameterValue.IllegalProxyIp"
+
 	// 密钥错误。
 	INVALIDPARAMETERVALUE_INVALIDACCESSKEYIDS = "InvalidParameterValue.InvalidAccessKeyIds"
 
@@ -275,6 +278,9 @@ const (
 	// TSF类型API配置错误。
 	INVALIDPARAMETERVALUE_INVALIDTSFCONFIG = "InvalidParameterValue.InvalidTsfConfig"
 
+	// 当前后端通道不存在或者是无效状态。
+	INVALIDPARAMETERVALUE_INVALIDUPSTREAM = "InvalidParameterValue.InvalidUpstream"
+
 	// URL参数错误。
 	INVALIDPARAMETERVALUE_INVALIDURL = "InvalidParameterValue.InvalidUrl"
 
@@ -340,6 +346,12 @@ const (
 
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
+
+	// 缺少后端服务参数。
+	MISSINGPARAMETER_BACKENDSPECIFICPARAM = "MissingParameter.BackendSpecificParam"
+
+	// 插件缺少参数，请按规则重新操作。
+	MISSINGPARAMETER_PLUGINCONFIG = "MissingParameter.PluginConfig"
 
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
@@ -448,6 +460,9 @@ const (
 
 	// 密钥已绑定使用计划，请先解绑再试。
 	UNSUPPORTEDOPERATION_RESOURCEISINUSE = "UnsupportedOperation.ResourceIsInUse"
+
+	// 资源未关联。
+	UNSUPPORTEDOPERATION_RESOURCEUNASSOCIATED = "UnsupportedOperation.ResourceUnassociated"
 
 	// 当前Uin未在手工密钥白名单列表内。
 	UNSUPPORTEDOPERATION_UINNOTINWHITELIST = "UnsupportedOperation.UinNotInWhiteList"

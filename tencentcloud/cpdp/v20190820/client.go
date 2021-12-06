@@ -1302,6 +1302,48 @@ func (c *Client) CreateTransferBatch(request *CreateTransferBatchRequest) (respo
     return
 }
 
+func NewDeduceQuotaRequest() (request *DeduceQuotaRequest) {
+    request = &DeduceQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "DeduceQuota")
+    
+    return
+}
+
+func NewDeduceQuotaResponse() (response *DeduceQuotaResponse) {
+    response = &DeduceQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeduceQuota
+// 直播平台-扣减额度
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ALREADYEXISTS = "FailedOperation.AlreadyExists"
+//  FAILEDOPERATION_APPIDMCHIDNOTMATCH = "FailedOperation.AppidMchidNotMatch"
+//  FAILEDOPERATION_FREQUENCYLIMITED = "FailedOperation.FrequencyLimited"
+//  FAILEDOPERATION_INVALIDREQUEST = "FailedOperation.InvalidRequest"
+//  FAILEDOPERATION_NOAUTH = "FailedOperation.NoAuth"
+//  FAILEDOPERATION_NOTENOUGH = "FailedOperation.NotEnough"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  FAILEDOPERATION_PARAMERROR = "FailedOperation.ParamError"
+//  FAILEDOPERATION_QUOTAEXCEED = "FailedOperation.QuotaExceed"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_ = "InternalError."
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_ = "MissingParameter."
+func (c *Client) DeduceQuota(request *DeduceQuotaRequest) (response *DeduceQuotaResponse, err error) {
+    if request == nil {
+        request = NewDeduceQuotaRequest()
+    }
+    response = NewDeduceQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAgentTaxPaymentInfoRequest() (request *DeleteAgentTaxPaymentInfoRequest) {
     request = &DeleteAgentTaxPaymentInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2289,6 +2331,38 @@ func (c *Client) QueryApplicationMaterial(request *QueryApplicationMaterialReque
         request = NewQueryApplicationMaterialRequest()
     }
     response = NewQueryApplicationMaterialResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryAssignmentRequest() (request *QueryAssignmentRequest) {
+    request = &QueryAssignmentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryAssignment")
+    
+    return
+}
+
+func NewQueryAssignmentResponse() (response *QueryAssignmentResponse) {
+    response = &QueryAssignmentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryAssignment
+// 直播平台-查询分配关系
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) QueryAssignment(request *QueryAssignmentRequest) (response *QueryAssignmentResponse, err error) {
+    if request == nil {
+        request = NewQueryAssignmentRequest()
+    }
+    response = NewQueryAssignmentResponse()
     err = c.Send(request, response)
     return
 }

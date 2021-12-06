@@ -210,6 +210,40 @@ func (c *Client) DeleteStaff(request *DeleteStaffRequest) (response *DeleteStaff
     return
 }
 
+func NewDescribeCCCBuyInfoListRequest() (request *DescribeCCCBuyInfoListRequest) {
+    request = &DescribeCCCBuyInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeCCCBuyInfoList")
+    
+    return
+}
+
+func NewDescribeCCCBuyInfoListResponse() (response *DescribeCCCBuyInfoListResponse) {
+    response = &DescribeCCCBuyInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCCCBuyInfoList
+// 获取用户购买信息列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ACCOUNTNOTEXIST = "InvalidParameterValue.AccountNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeCCCBuyInfoList(request *DescribeCCCBuyInfoListRequest) (response *DescribeCCCBuyInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCCCBuyInfoListRequest()
+    }
+    response = NewDescribeCCCBuyInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCallInMetricsRequest() (request *DescribeCallInMetricsRequest) {
     request = &DescribeCallInMetricsRequest{
         BaseRequest: &tchttp.BaseRequest{},

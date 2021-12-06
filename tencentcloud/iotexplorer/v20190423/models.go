@@ -2660,6 +2660,15 @@ type DevicePositionItem struct {
 	Latitude *float64 `json:"Latitude,omitempty" name:"Latitude"`
 }
 
+type DeviceSignatureInfo struct {
+
+	// 设备名
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 设备签名
+	DeviceSignature *string `json:"DeviceSignature,omitempty" name:"DeviceSignature"`
+}
+
 type DevicesItem struct {
 
 	// 产品id
@@ -2949,6 +2958,63 @@ type FirmwareInfo struct {
 	// 创建者昵称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatorNickName *string `json:"CreatorNickName,omitempty" name:"CreatorNickName"`
+}
+
+type GenSingleDeviceSignatureOfPublicRequest struct {
+	*tchttp.BaseRequest
+
+	// 设备所属的产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 需要绑定的设备
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 设备绑定签名的有效时间,以秒为单位。取值范围：0 < Expire <= 86400，Expire == -1（十年）
+	Expire *int64 `json:"Expire,omitempty" name:"Expire"`
+}
+
+func (r *GenSingleDeviceSignatureOfPublicRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenSingleDeviceSignatureOfPublicRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "Expire")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenSingleDeviceSignatureOfPublicRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GenSingleDeviceSignatureOfPublicResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 设备签名
+		DeviceSignature *DeviceSignatureInfo `json:"DeviceSignature,omitempty" name:"DeviceSignature"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GenSingleDeviceSignatureOfPublicResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenSingleDeviceSignatureOfPublicResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetBatchProductionsListRequest struct {

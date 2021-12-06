@@ -1703,6 +1703,48 @@ func (c *Client) EnableTopicRule(request *EnableTopicRuleRequest) (response *Ena
     return
 }
 
+func NewGenSingleDeviceSignatureOfPublicRequest() (request *GenSingleDeviceSignatureOfPublicRequest) {
+    request = &GenSingleDeviceSignatureOfPublicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "GenSingleDeviceSignatureOfPublic")
+    
+    return
+}
+
+func NewGenSingleDeviceSignatureOfPublicResponse() (response *GenSingleDeviceSignatureOfPublicResponse) {
+    response = &GenSingleDeviceSignatureOfPublicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GenSingleDeviceSignatureOfPublic
+// 无
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTORDEVICENOTEXIST = "ResourceNotFound.ProductOrDeviceNotExist"
+//  RESOURCENOTFOUND_PROJECTNOTEXIST = "ResourceNotFound.ProjectNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOPROJECT = "UnauthorizedOperation.NoPermissionToProject"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) GenSingleDeviceSignatureOfPublic(request *GenSingleDeviceSignatureOfPublicRequest) (response *GenSingleDeviceSignatureOfPublicResponse, err error) {
+    if request == nil {
+        request = NewGenSingleDeviceSignatureOfPublicRequest()
+    }
+    response = NewGenSingleDeviceSignatureOfPublicResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetBatchProductionsListRequest() (request *GetBatchProductionsListRequest) {
     request = &GetBatchProductionsListRequest{
         BaseRequest: &tchttp.BaseRequest{},

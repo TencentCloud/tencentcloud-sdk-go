@@ -5737,6 +5737,17 @@ type EventLogStatsData struct {
 	Request *uint64 `json:"Request,omitempty" name:"Request"`
 }
 
+type ExtraLogset struct {
+
+	// 日志集信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Logset *LogSetInfo `json:"Logset,omitempty" name:"Logset"`
+
+	// 日志主题信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Topics []*TopicInfo `json:"Topics,omitempty" name:"Topics"`
+}
+
 type FollowRedirect struct {
 
 	// 回源跟随开关
@@ -6179,12 +6190,16 @@ type ListClsLogTopicsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 日志集信息
+		// 上海区域日志集信息
 		Logset *LogSetInfo `json:"Logset,omitempty" name:"Logset"`
 
-		// 日志主题信息列表
+		// 上海区域日志主题信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Topics []*TopicInfo `json:"Topics,omitempty" name:"Topics"`
+
+		// 其他区域日志集信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ExtraLogset []*ExtraLogset `json:"ExtraLogset,omitempty" name:"ExtraLogset"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -7100,6 +7115,14 @@ type LogSetInfo struct {
 
 	// 区域
 	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// cls侧是否已经被删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Deleted *string `json:"Deleted,omitempty" name:"Deleted"`
+
+	// 英文区域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionEn *string `json:"RegionEn,omitempty" name:"RegionEn"`
 }
 
 type MainlandConfig struct {
@@ -9260,6 +9283,10 @@ type TopicInfo struct {
 	// 归属于cdn或ecdn
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Channel *string `json:"Channel,omitempty" name:"Channel"`
+
+	// cls侧是否已经被删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Deleted *string `json:"Deleted,omitempty" name:"Deleted"`
 }
 
 type TpgAdapter struct {
