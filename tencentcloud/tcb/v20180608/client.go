@@ -132,6 +132,7 @@ func NewCommonServiceAPIResponse() (response *CommonServiceAPIResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCENOTEXISTS = "InvalidParameter.ResourceNotExists"
 func (c *Client) CommonServiceAPI(request *CommonServiceAPIRequest) (response *CommonServiceAPIResponse, err error) {
     if request == nil {
         request = NewCommonServiceAPIRequest()

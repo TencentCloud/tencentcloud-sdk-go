@@ -26,7 +26,7 @@ type CreateSessionRequest struct {
 	// 客户端session信息，从JSSDK请求中获得
 	ClientSession *string `json:"ClientSession,omitempty" name:"ClientSession"`
 
-	// 游戏用户ID
+	// 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
 	// 游戏ID
@@ -248,7 +248,7 @@ func (r *SaveGameArchiveResponse) FromJsonString(s string) error {
 type StopGameRequest struct {
 	*tchttp.BaseRequest
 
-	// 游戏用户ID
+	// 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
 	// 【多人游戏】游戏主机用户ID
@@ -356,7 +356,7 @@ func (r *SwitchGameArchiveResponse) FromJsonString(s string) error {
 type TrylockWorkerRequest struct {
 	*tchttp.BaseRequest
 
-	// 游戏用户ID
+	// 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
 	// 游戏ID

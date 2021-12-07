@@ -58,6 +58,12 @@ type CreateJobConfigRequest struct {
 
 	// TaskManager规格
 	TaskManagerSpec *float64 `json:"TaskManagerSpec,omitempty" name:"TaskManagerSpec"`
+
+	// CLS日志集ID
+	ClsLogsetId *string `json:"ClsLogsetId,omitempty" name:"ClsLogsetId"`
+
+	// CLS日志主题ID
+	ClsTopicId *string `json:"ClsTopicId,omitempty" name:"ClsTopicId"`
 }
 
 func (r *CreateJobConfigRequest) ToJsonString() string {
@@ -84,6 +90,8 @@ func (r *CreateJobConfigRequest) FromJsonString(s string) error {
 	delete(f, "LogCollect")
 	delete(f, "JobManagerSpec")
 	delete(f, "TaskManagerSpec")
+	delete(f, "ClsLogsetId")
+	delete(f, "ClsTopicId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobConfigRequest has unknown keys!", "")
 	}
@@ -957,6 +965,14 @@ type JobConfig struct {
 	// TaskManager规格
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskManagerSpec *float64 `json:"TaskManagerSpec,omitempty" name:"TaskManagerSpec"`
+
+	// CLS日志集ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClsLogsetId *string `json:"ClsLogsetId,omitempty" name:"ClsLogsetId"`
+
+	// CLS日志主题ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClsTopicId *string `json:"ClsTopicId,omitempty" name:"ClsTopicId"`
 }
 
 type JobV1 struct {

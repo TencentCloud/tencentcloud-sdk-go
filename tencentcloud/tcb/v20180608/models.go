@@ -904,6 +904,9 @@ type CommonServiceAPIRequest struct {
 
 	// 需要转发的云API参数，要转成JSON格式
 	JSONData *string `json:"JSONData,omitempty" name:"JSONData"`
+
+	// 指定角色
+	ApiRole *string `json:"ApiRole,omitempty" name:"ApiRole"`
 }
 
 func (r *CommonServiceAPIRequest) ToJsonString() string {
@@ -920,6 +923,7 @@ func (r *CommonServiceAPIRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Service")
 	delete(f, "JSONData")
+	delete(f, "ApiRole")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CommonServiceAPIRequest has unknown keys!", "")
 	}

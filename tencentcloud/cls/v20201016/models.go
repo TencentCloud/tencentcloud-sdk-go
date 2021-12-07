@@ -1854,6 +1854,8 @@ type DescribeAlarmsRequest struct {
 	// 
 	// 类型：String
 	// 
+	// 备注：enable参数值范围: 1, t, T, TRUE, true, True, 0, f, F, FALSE, false, False。 其它值将返回参数错误信息.
+	// 
 	// 必选：否
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
