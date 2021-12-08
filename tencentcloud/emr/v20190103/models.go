@@ -258,6 +258,30 @@ type ClusterInstancesInfo struct {
 	// 地区ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 场景名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SceneName *string `json:"SceneName,omitempty" name:"SceneName"`
+
+	// 场景化集群类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SceneServiceClass *string `json:"SceneServiceClass,omitempty" name:"SceneServiceClass"`
+
+	// 场景化EMR版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SceneEmrVersion *string `json:"SceneEmrVersion,omitempty" name:"SceneEmrVersion"`
+
+	// 场景化集群类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+
+	// vpc name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
+
+	// subnet name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetName *string `json:"SubnetName,omitempty" name:"SubnetName"`
 }
 
 type ClusterSetting struct {

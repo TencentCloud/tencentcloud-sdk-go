@@ -76,6 +76,7 @@ func NewCreateQosResponse() (response *CreateQosResponse) {
 //  OPERATIONDENIED_VENDORRETURNERROR = "OperationDenied.VendorReturnError"
 //  OPERATIONDENIED_VENDORSERVERERROR = "OperationDenied.VendorServerError"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateQos(request *CreateQosRequest) (response *CreateQosResponse, err error) {
     if request == nil {
         request = NewCreateQosRequest()

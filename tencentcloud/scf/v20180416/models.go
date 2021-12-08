@@ -75,6 +75,18 @@ type AsyncEvent struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
+type AsyncEventStatus struct {
+
+	// 异步事件状态，RUNNING 表示运行中, FINISHED 表示调用成功, ABORTED 表示调用终止, FAILED 表示调用失败。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 请求状态码
+	StatusCode *int64 `json:"StatusCode,omitempty" name:"StatusCode"`
+
+	// 异步执行请求 Id
+	InvokeRequestId *string `json:"InvokeRequestId,omitempty" name:"InvokeRequestId"`
+}
+
 type AsyncTriggerConfig struct {
 
 	// 用户错误的异步重试重试配置
@@ -1011,7 +1023,10 @@ type Environment struct {
 
 type Filter struct {
 
-	// 需要过滤的字段。
+	// 需要过滤的字段。过滤条件数量限制为10。
+	// Name可选值：VpcId, SubnetId, ClsTopicId, ClsLogsetId, Role, CfsId, CfsMountInsId, Eip；Values 长度限制为1。
+	// Name可选值：Status, Runtime, FunctionType, PublicNetStatus, AsyncRunEnable, TraceEnable；Values 长度限制为20。
+	// 当 Name = Runtime 时，CustomImage 表示过滤镜像类型函数。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 字段的过滤值。
@@ -1251,6 +1266,55 @@ func (r *GetAliasResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetAliasResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetAsyncEventStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 异步执行请求 id
+	InvokeRequestId *string `json:"InvokeRequestId,omitempty" name:"InvokeRequestId"`
+}
+
+func (r *GetAsyncEventStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetAsyncEventStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InvokeRequestId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetAsyncEventStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetAsyncEventStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 异步事件状态
+		Result *AsyncEventStatus `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetAsyncEventStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetAsyncEventStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -386,6 +386,10 @@ type QueryFaceMorphJobResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		FaceMorphOutput *FaceMorphOutput `json:"FaceMorphOutput,omitempty" name:"FaceMorphOutput"`
 
+		// 当前任务状态码：1：排队中、3: 处理中、5: 处理失败、7:处理完成
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		JobStatusCode *int64 `json:"JobStatusCode,omitempty" name:"JobStatusCode"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

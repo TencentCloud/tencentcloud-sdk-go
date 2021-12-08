@@ -185,8 +185,20 @@ const (
 	// 模板内容存在敏感词，请参考[正文模板审核标准](https://cloud.tencent.com/document/product/382/39023)。
 	INVALIDPARAMETERVALUE_TEMPLATEWITHDIRTYWORDS = "InvalidParameterValue.TemplateWithDirtyWords"
 
+	// 业务短信国家/地区日下发条数超过设定的上限，可自行到控制台调整短信频率限制策略。
+	LIMITEXCEEDED_APPCOUNTRYORREGIONDAILYLIMIT = "LimitExceeded.AppCountryOrRegionDailyLimit"
+
+	// 业务短信国家/地区在黑名单中，可自行到控制台调整短信限制策略。
+	LIMITEXCEEDED_APPCOUNTRYORREGIONINBLACKLIST = "LimitExceeded.AppCountryOrRegionInBlacklist"
+
 	// 业务短信日下发条数超过设定的上限 ，可自行到控制台调整短信频率限制策略。
 	LIMITEXCEEDED_APPDAILYLIMIT = "LimitExceeded.AppDailyLimit"
+
+	// 业务短信国际/港澳台日下发条数超过设定的上限，可自行到控制台调整短信频率限制策略。
+	LIMITEXCEEDED_APPGLOBALDAILYLIMIT = "LimitExceeded.AppGlobalDailyLimit"
+
+	// 业务短信中国大陆日下发条数超过设定的上限，可自行到控制台调整短信频率限制策略。
+	LIMITEXCEEDED_APPMAINLANDCHINADAILYLIMIT = "LimitExceeded.AppMainlandChinaDailyLimit"
 
 	// 短信日下发条数超过设定的上限 (国际/港澳台)，如需调整限制，可联系 [腾讯云短信小助手](https://cloud.tencent.com/document/product/382/3773)。
 	LIMITEXCEEDED_DAILYLIMIT = "LimitExceeded.DailyLimit"

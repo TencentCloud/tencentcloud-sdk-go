@@ -1593,6 +1593,9 @@ type ContainerInfo struct {
 
 	// 主机名称
 	HostName *string `json:"HostName,omitempty" name:"HostName"`
+
+	// 外网ip
+	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
 }
 
 type ContainerMount struct {
@@ -1934,7 +1937,7 @@ type CreateCheckComponentResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// “InstallSucc"表示安装成功，"InstallFailed"表示安装失败
+		// "InstallSucc"表示安装成功，"InstallFailed"表示安装失败
 		InstallResult *string `json:"InstallResult,omitempty" name:"InstallResult"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4007,7 +4010,7 @@ type DescribeAssetHostDetailResponse struct {
 		// 容器数
 		ContainerCnt *uint64 `json:"ContainerCnt,omitempty" name:"ContainerCnt"`
 
-		// k8s ip
+		// k8s IP
 		K8sMasterIP *string `json:"K8sMasterIP,omitempty" name:"K8sMasterIP"`
 
 		// k8s version
@@ -4016,8 +4019,17 @@ type DescribeAssetHostDetailResponse struct {
 		// kube proxy
 		KubeProxyVersion *string `json:"KubeProxyVersion,omitempty" name:"KubeProxyVersion"`
 
-		// 主机运行状态 offline,online,pause
+		// "UNINSTALL"："未安装","OFFLINE"："离线", "ONLINE"："防护中
 		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 是否Containerd
+		IsContainerd *bool `json:"IsContainerd,omitempty" name:"IsContainerd"`
+
+		// 主机来源;"TENCENTCLOUD":"腾讯云服务器","OTHERCLOUD":"非腾讯云服务器"
+		MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
+
+		// 外网ip
+		PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4045,12 +4057,13 @@ type DescribeAssetHostListRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 过滤条件。
-	// <li>Status - String - 是否必填：否 - 主机运行状态筛选，0："offline",1："online", 2："paused"</li>
+	// <li>Status - String - 是否必填：否 - agent状态筛选，"ALL":"全部"(或不传该字段),"UNINSTALL"："未安装","OFFLINE"："离线", "ONLINE"："防护中"</li>
 	// <li>HostName - String - 是否必填：否 - 主机名筛选</li>
 	// <li>Group- String - 是否必填：否 - 主机群组搜索</li>
 	// <li>HostIP- string - 是否必填：否 - 主机ip搜索</li>
 	// <li>HostID- string - 是否必填：否 - 主机id搜索</li>
 	// <li>DockerVersion- string - 是否必填：否 - docker版本搜索</li>
+	// <li>MachineType- string - 是否必填：否 - 主机来源MachineType搜索，"ALL":"全部"(或不传该字段),"TENCENTCLOUD":"腾讯云服务器","OTHERCLOUD":"非腾讯云服务器"</li>
 	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序字段
@@ -8088,7 +8101,7 @@ type DescribeProVersionInfoResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-		// 需购买的虚拟机核数
+		// 需购买的机器核数
 		CoresCnt *uint64 `json:"CoresCnt,omitempty" name:"CoresCnt"`
 
 		// 弹性计费上限
@@ -10185,7 +10198,7 @@ type HostInfo struct {
 	// 主机id
 	HostID *string `json:"HostID,omitempty" name:"HostID"`
 
-	// 主机ip
+	// 主机ip即内网ip
 	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
 
 	// 主机名称
@@ -10206,8 +10219,20 @@ type HostInfo struct {
 	// 容器个数
 	ContainerCnt *uint64 `json:"ContainerCnt,omitempty" name:"ContainerCnt"`
 
-	// 主机运行状态
+	// agent运行状态
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 是否是Containerd
+	IsContainerd *bool `json:"IsContainerd,omitempty" name:"IsContainerd"`
+
+	// 主机来源
+	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
+
+	// 外网ip
+	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
+
+	// 主机uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 }
 
 type ImageHost struct {
@@ -11730,6 +11755,12 @@ type PortInfo struct {
 
 	// 运行账号
 	RunAs *string `json:"RunAs,omitempty" name:"RunAs"`
+
+	// 主机名称
+	HostName *string `json:"HostName,omitempty" name:"HostName"`
+
+	// 外网ip
+	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
 }
 
 type ProcessDetailBaseInfo struct {
@@ -11814,6 +11845,12 @@ type ProcessInfo struct {
 
 	// 进程名称
 	ProcessName *string `json:"ProcessName,omitempty" name:"ProcessName"`
+
+	// 主机名称
+	HostName *string `json:"HostName,omitempty" name:"HostName"`
+
+	// 外网ip
+	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
 }
 
 type RemoveAssetImageRegistryRegistryDetailRequest struct {
@@ -12537,6 +12574,12 @@ type ServiceInfo struct {
 
 	// 容器id
 	ContainerId *string `json:"ContainerId,omitempty" name:"ContainerId"`
+
+	// 主机名称
+	HostName *string `json:"HostName,omitempty" name:"HostName"`
+
+	// 外网ip
+	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
 }
 
 type SetCheckModeRequest struct {
@@ -12577,7 +12620,7 @@ type SetCheckModeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// “Succ"表示设置成功，"Failed"表示设置失败
+		// "Succ"表示设置成功，"Failed"表示设置失败
 		SetCheckResult *string `json:"SetCheckResult,omitempty" name:"SetCheckResult"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

@@ -527,23 +527,32 @@ func (r *CreateInstancePreRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateInstancePreResp struct {
+
+	// 返回的code，0为正常，非0为错误
+	ReturnCode *string `json:"ReturnCode,omitempty" name:"ReturnCode"`
+
+	// 成功消息
+	ReturnMessage *string `json:"ReturnMessage,omitempty" name:"ReturnMessage"`
+
+	// 操作型返回的Data数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *CreateInstancePreData `json:"Data,omitempty" name:"Data"`
+
+	// 删除是时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeleteRouteTimestamp *string `json:"DeleteRouteTimestamp,omitempty" name:"DeleteRouteTimestamp"`
+}
+
 type CreateInstancePreResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 返回的code，0为正常，非0为错误
-		ReturnCode *string `json:"ReturnCode,omitempty" name:"ReturnCode"`
+		// 返回结果
+		Result *CreateInstancePreResp `json:"Result,omitempty" name:"Result"`
 
-		// 成功消息
-		ReturnMessage *string `json:"ReturnMessage,omitempty" name:"ReturnMessage"`
-
-		// 操作型返回的Data数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data *CreateInstancePreData `json:"Data,omitempty" name:"Data"`
-
-		// 删除是时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		DeleteRouteTimestamp *string `json:"DeleteRouteTimestamp,omitempty" name:"DeleteRouteTimestamp"`
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 

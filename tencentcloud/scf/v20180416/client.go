@@ -750,6 +750,39 @@ func (c *Client) GetAlias(request *GetAliasRequest) (response *GetAliasResponse,
     return
 }
 
+func NewGetAsyncEventStatusRequest() (request *GetAsyncEventStatusRequest) {
+    request = &GetAsyncEventStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("scf", APIVersion, "GetAsyncEventStatus")
+    
+    return
+}
+
+func NewGetAsyncEventStatusResponse() (response *GetAsyncEventStatusResponse) {
+    response = &GetAsyncEventStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetAsyncEventStatus
+// 获取函数异步执行事件状态，事件状态保留 3 * 24 小时（从事件完成开始计时）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ASYNCEVENTSTATUS = "FailedOperation.AsyncEventStatus"
+//  RESOURCENOTFOUND_ASYNCEVENT = "ResourceNotFound.AsyncEvent"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+func (c *Client) GetAsyncEventStatus(request *GetAsyncEventStatusRequest) (response *GetAsyncEventStatusResponse, err error) {
+    if request == nil {
+        request = NewGetAsyncEventStatusRequest()
+    }
+    response = NewGetAsyncEventStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetFunctionRequest() (request *GetFunctionRequest) {
     request = &GetFunctionRequest{
         BaseRequest: &tchttp.BaseRequest{},

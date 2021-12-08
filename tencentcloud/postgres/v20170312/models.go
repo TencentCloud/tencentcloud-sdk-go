@@ -368,7 +368,7 @@ type CreateInstancesRequest struct {
 	// 售卖规格ID。该参数可以通过调用DescribeProductConfig的返回值中的SpecCode字段来获取。
 	SpecCode *string `json:"SpecCode,omitempty" name:"SpecCode"`
 
-	// PostgreSQL内核版本，目前支持：9.3.5、9.5.4、10.4、11.8、12.4五种版本。
+	// PostgreSQL主版本，目前支持：9.3、9.5、10、11、12、13以及9.3.5、9.5.4、10.4、11.8、12.4版本。
 	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
 
 	// 实例容量大小，单位：GB。

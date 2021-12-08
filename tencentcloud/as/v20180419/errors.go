@@ -56,6 +56,9 @@ const (
 	// VPC接口调用失败。
 	INTERNALERROR_CALLVPCERROR = "InternalError.CallVpcError"
 
+	// 调用其他服务异常。
+	INTERNALERROR_CALLEEERROR = "InternalError.CalleeError"
+
 	// 内部请求错误。
 	INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
 
@@ -365,6 +368,12 @@ const (
 	// 指定的定时任务不存在。
 	RESOURCENOTFOUND_SCHEDULEDACTIONNOTFOUND = "ResourceNotFound.ScheduledActionNotFound"
 
+	// TDMQ-CMQ 队列不存在。
+	RESOURCENOTFOUND_TDMQCMQQUEUENOTFOUND = "ResourceNotFound.TDMQCMQQueueNotFound"
+
+	// TDMQ-CMQ 主题不存在。
+	RESOURCENOTFOUND_TDMQCMQTOPICNOTFOUND = "ResourceNotFound.TDMQCMQTopicNotFound"
+
 	// 伸缩组状态异常。
 	RESOURCEUNAVAILABLE_AUTOSCALINGGROUPABNORMALSTATUS = "ResourceUnavailable.AutoScalingGroupAbnormalStatus"
 
@@ -409,6 +418,9 @@ const (
 
 	// 关机实例不允许添加到伸缩组。
 	RESOURCEUNAVAILABLE_STOPPEDINSTANCENOTALLOWATTACH = "ResourceUnavailable.StoppedInstanceNotAllowAttach"
+
+	// TDMQ-CMQ 主题无订阅者。
+	RESOURCEUNAVAILABLE_TDMQCMQTOPICHASNOSUBSCRIBER = "ResourceUnavailable.TDMQCMQTopicHasNoSubscriber"
 
 	// 指定的可用区不可用。
 	RESOURCEUNAVAILABLE_ZONEUNAVAILABLE = "ResourceUnavailable.ZoneUnavailable"
