@@ -2,7 +2,7 @@ package common
 
 import (
 	"fmt"
-	"math/rand"
+	"crypto/rand"
 	"reflect"
 )
 
