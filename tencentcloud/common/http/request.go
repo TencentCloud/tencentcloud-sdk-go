@@ -31,14 +31,18 @@ type Request interface {
 	GetDomain() string
 	GetHttpMethod() string
 	GetParams() map[string]string
+	GetBody() []byte
 	GetPath() string
 	GetService() string
 	GetUrl() string
 	GetVersion() string
+	GetContentType() string
 	SetScheme(string)
 	SetRootDomain(string)
 	SetDomain(string)
 	SetHttpMethod(string)
+	SetContentType(string)
+	SetBody([]byte)
 }
 
 type BaseRequest struct {
@@ -53,6 +57,9 @@ type BaseRequest struct {
 	service string
 	version string
 	action  string
+
+	contentType string
+	body []byte
 }
 
 func (r *BaseRequest) GetAction() string {
@@ -90,6 +97,22 @@ func (r *BaseRequest) GetServiceDomain(service string) (domain string) {
 	}
 	domain = service + "." + rootDomain
 	return
+}
+
+func (r *BaseRequest) GetBody() []byte {
+	return r.body
+}
+
+func (r *BaseRequest) SetBody(body []byte) {
+	r.body = body
+}
+
+func (r *BaseRequest) GetContentType() string {
+	return r.contentType
+}
+
+func (r *BaseRequest) SetContentType(contentType string) {
+	r.contentType = contentType
 }
 
 func (r *BaseRequest) SetDomain(domain string) {
@@ -174,6 +197,11 @@ func (r *BaseRequest) WithApiInfo(service, version, action string) *BaseRequest 
 	r.service = service
 	r.version = version
 	r.action = action
+	return r
+}
+
+func (r *BaseRequest) WithContentType(contentType string) *BaseRequest {
+	r.contentType = contentType
 	return r
 }
 
