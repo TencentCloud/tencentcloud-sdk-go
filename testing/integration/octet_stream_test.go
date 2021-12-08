@@ -23,10 +23,8 @@ func TestOctetStreamAction(t *testing.T) {
 	request.HashKey = common.StringPtr("0fffffffffffffffffffffffffffffff")
 	request.CompressType = common.StringPtr("")
 
-	body, _ := ioutil.ReadFile("./binary.data")
-	request.SetOctetStreamBody(body)
-
-	response, err := client.UploadLog(request)
+	data, _ := ioutil.ReadFile("./binary.data")
+	response, err := client.UploadLog(request, data)
 	if terr, ok := err.(*errors.TencentCloudSDKError); ok {
 		if terr.GetCode() == "OperationDenied" || terr.GetCode() == "ResourceNotFound.TopicNotExist" {
 			return

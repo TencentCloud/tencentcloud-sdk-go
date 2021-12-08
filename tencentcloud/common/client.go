@@ -175,7 +175,7 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 		}
 
 		headers["Content-Type"] = octetStream
-		octetStreamBody = request.GetOctetStreamBody()
+		octetStreamBody = request.GetBody()
 	}
 	// start signature v3 process
 

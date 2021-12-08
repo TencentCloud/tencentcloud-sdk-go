@@ -31,7 +31,7 @@ type Request interface {
 	GetDomain() string
 	GetHttpMethod() string
 	GetParams() map[string]string
-	GetOctetStreamBody() []byte
+	GetBody() []byte
 	GetPath() string
 	GetService() string
 	GetUrl() string
@@ -42,7 +42,7 @@ type Request interface {
 	SetDomain(string)
 	SetHttpMethod(string)
 	SetContentType(string)
-	SetOctetStreamBody([]byte)
+	SetBody([]byte)
 }
 
 type BaseRequest struct {
@@ -59,7 +59,7 @@ type BaseRequest struct {
 	action  string
 
 	contentType string
-	octetStreamBody []byte
+	body []byte
 }
 
 func (r *BaseRequest) GetAction() string {
@@ -99,12 +99,12 @@ func (r *BaseRequest) GetServiceDomain(service string) (domain string) {
 	return
 }
 
-func (r *BaseRequest) GetOctetStreamBody() []byte {
-	return r.octetStreamBody
+func (r *BaseRequest) GetBody() []byte {
+	return r.body
 }
 
-func (r *BaseRequest) SetOctetStreamBody(body []byte) {
-	r.octetStreamBody = body
+func (r *BaseRequest) SetBody(body []byte) {
+	r.body = body
 }
 
 func (r *BaseRequest) GetContentType() string {
