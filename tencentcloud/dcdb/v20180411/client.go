@@ -49,6 +49,7 @@ func NewAssociateSecurityGroupsRequest() (request *AssociateSecurityGroupsReques
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "AssociateSecurityGroups")
     
+    
     return
 }
 
@@ -94,6 +95,7 @@ func (c *Client) AssociateSecurityGroups(request *AssociateSecurityGroupsRequest
     if request == nil {
         request = NewAssociateSecurityGroupsRequest()
     }
+    
     response = NewAssociateSecurityGroupsResponse()
     err = c.Send(request, response)
     return
@@ -104,6 +106,7 @@ func NewCancelDcnJobRequest() (request *CancelDcnJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "CancelDcnJob")
+    
     
     return
 }
@@ -129,6 +132,7 @@ func (c *Client) CancelDcnJob(request *CancelDcnJobRequest) (response *CancelDcn
     if request == nil {
         request = NewCancelDcnJobRequest()
     }
+    
     response = NewCancelDcnJobResponse()
     err = c.Send(request, response)
     return
@@ -139,6 +143,7 @@ func NewCloneAccountRequest() (request *CloneAccountRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "CloneAccount")
+    
     
     return
 }
@@ -167,6 +172,7 @@ func (c *Client) CloneAccount(request *CloneAccountRequest) (response *CloneAcco
     if request == nil {
         request = NewCloneAccountRequest()
     }
+    
     response = NewCloneAccountResponse()
     err = c.Send(request, response)
     return
@@ -177,6 +183,7 @@ func NewCloseDBExtranetAccessRequest() (request *CloseDBExtranetAccessRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "CloseDBExtranetAccess")
+    
     
     return
 }
@@ -205,6 +212,7 @@ func (c *Client) CloseDBExtranetAccess(request *CloseDBExtranetAccessRequest) (r
     if request == nil {
         request = NewCloseDBExtranetAccessRequest()
     }
+    
     response = NewCloseDBExtranetAccessResponse()
     err = c.Send(request, response)
     return
@@ -215,6 +223,7 @@ func NewCopyAccountPrivilegesRequest() (request *CopyAccountPrivilegesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "CopyAccountPrivileges")
+    
     
     return
 }
@@ -245,6 +254,7 @@ func (c *Client) CopyAccountPrivileges(request *CopyAccountPrivilegesRequest) (r
     if request == nil {
         request = NewCopyAccountPrivilegesRequest()
     }
+    
     response = NewCopyAccountPrivilegesResponse()
     err = c.Send(request, response)
     return
@@ -255,6 +265,7 @@ func NewCreateAccountRequest() (request *CreateAccountRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "CreateAccount")
+    
     
     return
 }
@@ -288,6 +299,7 @@ func (c *Client) CreateAccount(request *CreateAccountRequest) (response *CreateA
     if request == nil {
         request = NewCreateAccountRequest()
     }
+    
     response = NewCreateAccountResponse()
     err = c.Send(request, response)
     return
@@ -298,6 +310,7 @@ func NewCreateDCDBInstanceRequest() (request *CreateDCDBInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "CreateDCDBInstance")
+    
     
     return
 }
@@ -334,6 +347,7 @@ func (c *Client) CreateDCDBInstance(request *CreateDCDBInstanceRequest) (respons
     if request == nil {
         request = NewCreateDCDBInstanceRequest()
     }
+    
     response = NewCreateDCDBInstanceResponse()
     err = c.Send(request, response)
     return
@@ -344,6 +358,7 @@ func NewCreateDedicatedClusterDCDBInstanceRequest() (request *CreateDedicatedClu
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "CreateDedicatedClusterDCDBInstance")
+    
     
     return
 }
@@ -374,6 +389,7 @@ func (c *Client) CreateDedicatedClusterDCDBInstance(request *CreateDedicatedClus
     if request == nil {
         request = NewCreateDedicatedClusterDCDBInstanceRequest()
     }
+    
     response = NewCreateDedicatedClusterDCDBInstanceResponse()
     err = c.Send(request, response)
     return
@@ -384,6 +400,7 @@ func NewDeleteAccountRequest() (request *DeleteAccountRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "DeleteAccount")
+    
     
     return
 }
@@ -411,6 +428,7 @@ func (c *Client) DeleteAccount(request *DeleteAccountRequest) (response *DeleteA
     if request == nil {
         request = NewDeleteAccountRequest()
     }
+    
     response = NewDeleteAccountResponse()
     err = c.Send(request, response)
     return
@@ -421,6 +439,7 @@ func NewDescribeAccountPrivilegesRequest() (request *DescribeAccountPrivilegesRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeAccountPrivileges")
+    
     
     return
 }
@@ -450,6 +469,7 @@ func (c *Client) DescribeAccountPrivileges(request *DescribeAccountPrivilegesReq
     if request == nil {
         request = NewDescribeAccountPrivilegesRequest()
     }
+    
     response = NewDescribeAccountPrivilegesResponse()
     err = c.Send(request, response)
     return
@@ -460,6 +480,7 @@ func NewDescribeAccountsRequest() (request *DescribeAccountsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeAccounts")
+    
     
     return
 }
@@ -486,6 +507,7 @@ func (c *Client) DescribeAccounts(request *DescribeAccountsRequest) (response *D
     if request == nil {
         request = NewDescribeAccountsRequest()
     }
+    
     response = NewDescribeAccountsResponse()
     err = c.Send(request, response)
     return
@@ -496,6 +518,7 @@ func NewDescribeDBLogFilesRequest() (request *DescribeDBLogFilesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDBLogFiles")
+    
     
     return
 }
@@ -527,6 +550,7 @@ func (c *Client) DescribeDBLogFiles(request *DescribeDBLogFilesRequest) (respons
     if request == nil {
         request = NewDescribeDBLogFilesRequest()
     }
+    
     response = NewDescribeDBLogFilesResponse()
     err = c.Send(request, response)
     return
@@ -537,6 +561,7 @@ func NewDescribeDBParametersRequest() (request *DescribeDBParametersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDBParameters")
+    
     
     return
 }
@@ -564,6 +589,7 @@ func (c *Client) DescribeDBParameters(request *DescribeDBParametersRequest) (res
     if request == nil {
         request = NewDescribeDBParametersRequest()
     }
+    
     response = NewDescribeDBParametersResponse()
     err = c.Send(request, response)
     return
@@ -574,6 +600,7 @@ func NewDescribeDBSecurityGroupsRequest() (request *DescribeDBSecurityGroupsRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDBSecurityGroups")
+    
     
     return
 }
@@ -610,6 +637,7 @@ func (c *Client) DescribeDBSecurityGroups(request *DescribeDBSecurityGroupsReque
     if request == nil {
         request = NewDescribeDBSecurityGroupsRequest()
     }
+    
     response = NewDescribeDBSecurityGroupsResponse()
     err = c.Send(request, response)
     return
@@ -620,6 +648,7 @@ func NewDescribeDBSyncModeRequest() (request *DescribeDBSyncModeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDBSyncMode")
+    
     
     return
 }
@@ -647,6 +676,7 @@ func (c *Client) DescribeDBSyncMode(request *DescribeDBSyncModeRequest) (respons
     if request == nil {
         request = NewDescribeDBSyncModeRequest()
     }
+    
     response = NewDescribeDBSyncModeResponse()
     err = c.Send(request, response)
     return
@@ -657,6 +687,7 @@ func NewDescribeDCDBInstanceNodeInfoRequest() (request *DescribeDCDBInstanceNode
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDCDBInstanceNodeInfo")
+    
     
     return
 }
@@ -680,6 +711,7 @@ func (c *Client) DescribeDCDBInstanceNodeInfo(request *DescribeDCDBInstanceNodeI
     if request == nil {
         request = NewDescribeDCDBInstanceNodeInfoRequest()
     }
+    
     response = NewDescribeDCDBInstanceNodeInfoResponse()
     err = c.Send(request, response)
     return
@@ -690,6 +722,7 @@ func NewDescribeDCDBInstancesRequest() (request *DescribeDCDBInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDCDBInstances")
+    
     
     return
 }
@@ -721,6 +754,7 @@ func (c *Client) DescribeDCDBInstances(request *DescribeDCDBInstancesRequest) (r
     if request == nil {
         request = NewDescribeDCDBInstancesRequest()
     }
+    
     response = NewDescribeDCDBInstancesResponse()
     err = c.Send(request, response)
     return
@@ -731,6 +765,7 @@ func NewDescribeDCDBPriceRequest() (request *DescribeDCDBPriceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDCDBPrice")
+    
     
     return
 }
@@ -756,6 +791,7 @@ func (c *Client) DescribeDCDBPrice(request *DescribeDCDBPriceRequest) (response 
     if request == nil {
         request = NewDescribeDCDBPriceRequest()
     }
+    
     response = NewDescribeDCDBPriceResponse()
     err = c.Send(request, response)
     return
@@ -766,6 +802,7 @@ func NewDescribeDCDBRenewalPriceRequest() (request *DescribeDCDBRenewalPriceRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDCDBRenewalPrice")
+    
     
     return
 }
@@ -792,6 +829,7 @@ func (c *Client) DescribeDCDBRenewalPrice(request *DescribeDCDBRenewalPriceReque
     if request == nil {
         request = NewDescribeDCDBRenewalPriceRequest()
     }
+    
     response = NewDescribeDCDBRenewalPriceResponse()
     err = c.Send(request, response)
     return
@@ -802,6 +840,7 @@ func NewDescribeDCDBSaleInfoRequest() (request *DescribeDCDBSaleInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDCDBSaleInfo")
+    
     
     return
 }
@@ -825,6 +864,7 @@ func (c *Client) DescribeDCDBSaleInfo(request *DescribeDCDBSaleInfoRequest) (res
     if request == nil {
         request = NewDescribeDCDBSaleInfoRequest()
     }
+    
     response = NewDescribeDCDBSaleInfoResponse()
     err = c.Send(request, response)
     return
@@ -835,6 +875,7 @@ func NewDescribeDCDBShardsRequest() (request *DescribeDCDBShardsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDCDBShards")
+    
     
     return
 }
@@ -866,6 +907,7 @@ func (c *Client) DescribeDCDBShards(request *DescribeDCDBShardsRequest) (respons
     if request == nil {
         request = NewDescribeDCDBShardsRequest()
     }
+    
     response = NewDescribeDCDBShardsResponse()
     err = c.Send(request, response)
     return
@@ -876,6 +918,7 @@ func NewDescribeDCDBUpgradePriceRequest() (request *DescribeDCDBUpgradePriceRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDCDBUpgradePrice")
+    
     
     return
 }
@@ -904,6 +947,7 @@ func (c *Client) DescribeDCDBUpgradePrice(request *DescribeDCDBUpgradePriceReque
     if request == nil {
         request = NewDescribeDCDBUpgradePriceRequest()
     }
+    
     response = NewDescribeDCDBUpgradePriceResponse()
     err = c.Send(request, response)
     return
@@ -914,6 +958,7 @@ func NewDescribeDatabaseObjectsRequest() (request *DescribeDatabaseObjectsReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDatabaseObjects")
+    
     
     return
 }
@@ -940,6 +985,7 @@ func (c *Client) DescribeDatabaseObjects(request *DescribeDatabaseObjectsRequest
     if request == nil {
         request = NewDescribeDatabaseObjectsRequest()
     }
+    
     response = NewDescribeDatabaseObjectsResponse()
     err = c.Send(request, response)
     return
@@ -950,6 +996,7 @@ func NewDescribeDatabaseTableRequest() (request *DescribeDatabaseTableRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDatabaseTable")
+    
     
     return
 }
@@ -976,6 +1023,7 @@ func (c *Client) DescribeDatabaseTable(request *DescribeDatabaseTableRequest) (r
     if request == nil {
         request = NewDescribeDatabaseTableRequest()
     }
+    
     response = NewDescribeDatabaseTableResponse()
     err = c.Send(request, response)
     return
@@ -986,6 +1034,7 @@ func NewDescribeDatabasesRequest() (request *DescribeDatabasesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDatabases")
+    
     
     return
 }
@@ -1012,6 +1061,7 @@ func (c *Client) DescribeDatabases(request *DescribeDatabasesRequest) (response 
     if request == nil {
         request = NewDescribeDatabasesRequest()
     }
+    
     response = NewDescribeDatabasesResponse()
     err = c.Send(request, response)
     return
@@ -1022,6 +1072,7 @@ func NewDescribeDcnDetailRequest() (request *DescribeDcnDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDcnDetail")
+    
     
     return
 }
@@ -1045,6 +1096,7 @@ func (c *Client) DescribeDcnDetail(request *DescribeDcnDetailRequest) (response 
     if request == nil {
         request = NewDescribeDcnDetailRequest()
     }
+    
     response = NewDescribeDcnDetailResponse()
     err = c.Send(request, response)
     return
@@ -1055,6 +1107,7 @@ func NewDescribeFlowRequest() (request *DescribeFlowRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeFlow")
+    
     
     return
 }
@@ -1077,6 +1130,7 @@ func (c *Client) DescribeFlow(request *DescribeFlowRequest) (response *DescribeF
     if request == nil {
         request = NewDescribeFlowRequest()
     }
+    
     response = NewDescribeFlowResponse()
     err = c.Send(request, response)
     return
@@ -1087,6 +1141,7 @@ func NewDescribeOrdersRequest() (request *DescribeOrdersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeOrders")
+    
     
     return
 }
@@ -1111,6 +1166,7 @@ func (c *Client) DescribeOrders(request *DescribeOrdersRequest) (response *Descr
     if request == nil {
         request = NewDescribeOrdersRequest()
     }
+    
     response = NewDescribeOrdersResponse()
     err = c.Send(request, response)
     return
@@ -1121,6 +1177,7 @@ func NewDescribeProjectSecurityGroupsRequest() (request *DescribeProjectSecurity
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeProjectSecurityGroups")
+    
     
     return
 }
@@ -1142,6 +1199,7 @@ func (c *Client) DescribeProjectSecurityGroups(request *DescribeProjectSecurityG
     if request == nil {
         request = NewDescribeProjectSecurityGroupsRequest()
     }
+    
     response = NewDescribeProjectSecurityGroupsResponse()
     err = c.Send(request, response)
     return
@@ -1152,6 +1210,7 @@ func NewDescribeProjectsRequest() (request *DescribeProjectsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeProjects")
+    
     
     return
 }
@@ -1173,6 +1232,7 @@ func (c *Client) DescribeProjects(request *DescribeProjectsRequest) (response *D
     if request == nil {
         request = NewDescribeProjectsRequest()
     }
+    
     response = NewDescribeProjectsResponse()
     err = c.Send(request, response)
     return
@@ -1183,6 +1243,7 @@ func NewDescribeShardSpecRequest() (request *DescribeShardSpecRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeShardSpec")
+    
     
     return
 }
@@ -1206,6 +1267,7 @@ func (c *Client) DescribeShardSpec(request *DescribeShardSpecRequest) (response 
     if request == nil {
         request = NewDescribeShardSpecRequest()
     }
+    
     response = NewDescribeShardSpecResponse()
     err = c.Send(request, response)
     return
@@ -1216,6 +1278,7 @@ func NewDescribeSqlLogsRequest() (request *DescribeSqlLogsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeSqlLogs")
+    
     
     return
 }
@@ -1241,6 +1304,7 @@ func (c *Client) DescribeSqlLogs(request *DescribeSqlLogsRequest) (response *Des
     if request == nil {
         request = NewDescribeSqlLogsRequest()
     }
+    
     response = NewDescribeSqlLogsResponse()
     err = c.Send(request, response)
     return
@@ -1251,6 +1315,7 @@ func NewDescribeUserTasksRequest() (request *DescribeUserTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeUserTasks")
+    
     
     return
 }
@@ -1272,6 +1337,7 @@ func (c *Client) DescribeUserTasks(request *DescribeUserTasksRequest) (response 
     if request == nil {
         request = NewDescribeUserTasksRequest()
     }
+    
     response = NewDescribeUserTasksResponse()
     err = c.Send(request, response)
     return
@@ -1282,6 +1348,7 @@ func NewDestroyDCDBInstanceRequest() (request *DestroyDCDBInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "DestroyDCDBInstance")
+    
     
     return
 }
@@ -1307,6 +1374,7 @@ func (c *Client) DestroyDCDBInstance(request *DestroyDCDBInstanceRequest) (respo
     if request == nil {
         request = NewDestroyDCDBInstanceRequest()
     }
+    
     response = NewDestroyDCDBInstanceResponse()
     err = c.Send(request, response)
     return
@@ -1317,6 +1385,7 @@ func NewDestroyHourDCDBInstanceRequest() (request *DestroyHourDCDBInstanceReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "DestroyHourDCDBInstance")
+    
     
     return
 }
@@ -1342,6 +1411,7 @@ func (c *Client) DestroyHourDCDBInstance(request *DestroyHourDCDBInstanceRequest
     if request == nil {
         request = NewDestroyHourDCDBInstanceRequest()
     }
+    
     response = NewDestroyHourDCDBInstanceResponse()
     err = c.Send(request, response)
     return
@@ -1352,6 +1422,7 @@ func NewDisassociateSecurityGroupsRequest() (request *DisassociateSecurityGroups
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "DisassociateSecurityGroups")
+    
     
     return
 }
@@ -1388,6 +1459,7 @@ func (c *Client) DisassociateSecurityGroups(request *DisassociateSecurityGroupsR
     if request == nil {
         request = NewDisassociateSecurityGroupsRequest()
     }
+    
     response = NewDisassociateSecurityGroupsResponse()
     err = c.Send(request, response)
     return
@@ -1398,6 +1470,7 @@ func NewFlushBinlogRequest() (request *FlushBinlogRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "FlushBinlog")
+    
     
     return
 }
@@ -1425,6 +1498,7 @@ func (c *Client) FlushBinlog(request *FlushBinlogRequest) (response *FlushBinlog
     if request == nil {
         request = NewFlushBinlogRequest()
     }
+    
     response = NewFlushBinlogResponse()
     err = c.Send(request, response)
     return
@@ -1435,6 +1509,7 @@ func NewGrantAccountPrivilegesRequest() (request *GrantAccountPrivilegesRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "GrantAccountPrivileges")
+    
     
     return
 }
@@ -1469,6 +1544,7 @@ func (c *Client) GrantAccountPrivileges(request *GrantAccountPrivilegesRequest) 
     if request == nil {
         request = NewGrantAccountPrivilegesRequest()
     }
+    
     response = NewGrantAccountPrivilegesResponse()
     err = c.Send(request, response)
     return
@@ -1479,6 +1555,7 @@ func NewInitDCDBInstancesRequest() (request *InitDCDBInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "InitDCDBInstances")
+    
     
     return
 }
@@ -1505,6 +1582,7 @@ func (c *Client) InitDCDBInstances(request *InitDCDBInstancesRequest) (response 
     if request == nil {
         request = NewInitDCDBInstancesRequest()
     }
+    
     response = NewInitDCDBInstancesResponse()
     err = c.Send(request, response)
     return
@@ -1515,6 +1593,7 @@ func NewKillSessionRequest() (request *KillSessionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "KillSession")
+    
     
     return
 }
@@ -1538,6 +1617,7 @@ func (c *Client) KillSession(request *KillSessionRequest) (response *KillSession
     if request == nil {
         request = NewKillSessionRequest()
     }
+    
     response = NewKillSessionResponse()
     err = c.Send(request, response)
     return
@@ -1548,6 +1628,7 @@ func NewModifyAccountDescriptionRequest() (request *ModifyAccountDescriptionRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "ModifyAccountDescription")
+    
     
     return
 }
@@ -1574,6 +1655,7 @@ func (c *Client) ModifyAccountDescription(request *ModifyAccountDescriptionReque
     if request == nil {
         request = NewModifyAccountDescriptionRequest()
     }
+    
     response = NewModifyAccountDescriptionResponse()
     err = c.Send(request, response)
     return
@@ -1584,6 +1666,7 @@ func NewModifyDBInstanceSecurityGroupsRequest() (request *ModifyDBInstanceSecuri
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "ModifyDBInstanceSecurityGroups")
+    
     
     return
 }
@@ -1625,6 +1708,7 @@ func (c *Client) ModifyDBInstanceSecurityGroups(request *ModifyDBInstanceSecurit
     if request == nil {
         request = NewModifyDBInstanceSecurityGroupsRequest()
     }
+    
     response = NewModifyDBInstanceSecurityGroupsResponse()
     err = c.Send(request, response)
     return
@@ -1635,6 +1719,7 @@ func NewModifyDBInstancesProjectRequest() (request *ModifyDBInstancesProjectRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "ModifyDBInstancesProject")
+    
     
     return
 }
@@ -1659,6 +1744,7 @@ func (c *Client) ModifyDBInstancesProject(request *ModifyDBInstancesProjectReque
     if request == nil {
         request = NewModifyDBInstancesProjectRequest()
     }
+    
     response = NewModifyDBInstancesProjectResponse()
     err = c.Send(request, response)
     return
@@ -1669,6 +1755,7 @@ func NewModifyDBParametersRequest() (request *ModifyDBParametersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "ModifyDBParameters")
+    
     
     return
 }
@@ -1696,6 +1783,7 @@ func (c *Client) ModifyDBParameters(request *ModifyDBParametersRequest) (respons
     if request == nil {
         request = NewModifyDBParametersRequest()
     }
+    
     response = NewModifyDBParametersResponse()
     err = c.Send(request, response)
     return
@@ -1706,6 +1794,7 @@ func NewModifyDBSyncModeRequest() (request *ModifyDBSyncModeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "ModifyDBSyncMode")
+    
     
     return
 }
@@ -1736,6 +1825,7 @@ func (c *Client) ModifyDBSyncMode(request *ModifyDBSyncModeRequest) (response *M
     if request == nil {
         request = NewModifyDBSyncModeRequest()
     }
+    
     response = NewModifyDBSyncModeResponse()
     err = c.Send(request, response)
     return
@@ -1746,6 +1836,7 @@ func NewModifyRealServerAccessStrategyRequest() (request *ModifyRealServerAccess
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "ModifyRealServerAccessStrategy")
+    
     
     return
 }
@@ -1784,6 +1875,7 @@ func (c *Client) ModifyRealServerAccessStrategy(request *ModifyRealServerAccessS
     if request == nil {
         request = NewModifyRealServerAccessStrategyRequest()
     }
+    
     response = NewModifyRealServerAccessStrategyResponse()
     err = c.Send(request, response)
     return
@@ -1794,6 +1886,7 @@ func NewOpenDBExtranetAccessRequest() (request *OpenDBExtranetAccessRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "OpenDBExtranetAccess")
+    
     
     return
 }
@@ -1821,6 +1914,7 @@ func (c *Client) OpenDBExtranetAccess(request *OpenDBExtranetAccessRequest) (res
     if request == nil {
         request = NewOpenDBExtranetAccessRequest()
     }
+    
     response = NewOpenDBExtranetAccessResponse()
     err = c.Send(request, response)
     return
@@ -1831,6 +1925,7 @@ func NewRenewDCDBInstanceRequest() (request *RenewDCDBInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "RenewDCDBInstance")
+    
     
     return
 }
@@ -1860,6 +1955,7 @@ func (c *Client) RenewDCDBInstance(request *RenewDCDBInstanceRequest) (response 
     if request == nil {
         request = NewRenewDCDBInstanceRequest()
     }
+    
     response = NewRenewDCDBInstanceResponse()
     err = c.Send(request, response)
     return
@@ -1870,6 +1966,7 @@ func NewResetAccountPasswordRequest() (request *ResetAccountPasswordRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "ResetAccountPassword")
+    
     
     return
 }
@@ -1900,6 +1997,7 @@ func (c *Client) ResetAccountPassword(request *ResetAccountPasswordRequest) (res
     if request == nil {
         request = NewResetAccountPasswordRequest()
     }
+    
     response = NewResetAccountPasswordResponse()
     err = c.Send(request, response)
     return
@@ -1910,6 +2008,7 @@ func NewUpgradeDCDBInstanceRequest() (request *UpgradeDCDBInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dcdb", APIVersion, "UpgradeDCDBInstance")
+    
     
     return
 }
@@ -1942,6 +2041,7 @@ func (c *Client) UpgradeDCDBInstance(request *UpgradeDCDBInstanceRequest) (respo
     if request == nil {
         request = NewUpgradeDCDBInstanceRequest()
     }
+    
     response = NewUpgradeDCDBInstanceResponse()
     err = c.Send(request, response)
     return

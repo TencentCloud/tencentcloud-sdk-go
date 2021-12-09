@@ -49,6 +49,7 @@ func NewCreateSessionRequest() (request *CreateSessionRequest) {
     }
     request.Init().WithApiInfo("bizlive", APIVersion, "CreateSession")
     
+    
     return
 }
 
@@ -71,6 +72,7 @@ func (c *Client) CreateSession(request *CreateSessionRequest) (response *CreateS
     if request == nil {
         request = NewCreateSessionRequest()
     }
+    
     response = NewCreateSessionResponse()
     err = c.Send(request, response)
     return
@@ -81,6 +83,7 @@ func NewDescribeStreamPlayInfoListRequest() (request *DescribeStreamPlayInfoList
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bizlive", APIVersion, "DescribeStreamPlayInfoList")
+    
     
     return
 }
@@ -104,6 +107,7 @@ func (c *Client) DescribeStreamPlayInfoList(request *DescribeStreamPlayInfoListR
     if request == nil {
         request = NewDescribeStreamPlayInfoListRequest()
     }
+    
     response = NewDescribeStreamPlayInfoListResponse()
     err = c.Send(request, response)
     return
@@ -114,6 +118,7 @@ func NewDescribeWorkersRequest() (request *DescribeWorkersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bizlive", APIVersion, "DescribeWorkers")
+    
     
     return
 }
@@ -134,6 +139,7 @@ func (c *Client) DescribeWorkers(request *DescribeWorkersRequest) (response *Des
     if request == nil {
         request = NewDescribeWorkersRequest()
     }
+    
     response = NewDescribeWorkersResponse()
     err = c.Send(request, response)
     return
@@ -144,6 +150,7 @@ func NewForbidLiveStreamRequest() (request *ForbidLiveStreamRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bizlive", APIVersion, "ForbidLiveStream")
+    
     
     return
 }
@@ -175,6 +182,7 @@ func (c *Client) ForbidLiveStream(request *ForbidLiveStreamRequest) (response *F
     if request == nil {
         request = NewForbidLiveStreamRequest()
     }
+    
     response = NewForbidLiveStreamResponse()
     err = c.Send(request, response)
     return
@@ -185,6 +193,7 @@ func NewRegisterIMRequest() (request *RegisterIMRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bizlive", APIVersion, "RegisterIM")
+    
     
     return
 }
@@ -209,6 +218,7 @@ func (c *Client) RegisterIM(request *RegisterIMRequest) (response *RegisterIMRes
     if request == nil {
         request = NewRegisterIMRequest()
     }
+    
     response = NewRegisterIMResponse()
     err = c.Send(request, response)
     return
@@ -219,6 +229,7 @@ func NewStopGameRequest() (request *StopGameRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bizlive", APIVersion, "StopGame")
+    
     
     return
 }
@@ -240,6 +251,7 @@ func (c *Client) StopGame(request *StopGameRequest) (response *StopGameResponse,
     if request == nil {
         request = NewStopGameRequest()
     }
+    
     response = NewStopGameResponse()
     err = c.Send(request, response)
     return

@@ -49,6 +49,7 @@ func NewDescribeAgentShellRequest() (request *DescribeAgentShellRequest) {
     }
     request.Init().WithApiInfo("tsw", APIVersion, "DescribeAgentShell")
     
+    
     return
 }
 
@@ -65,6 +66,7 @@ func (c *Client) DescribeAgentShell(request *DescribeAgentShellRequest) (respons
     if request == nil {
         request = NewDescribeAgentShellRequest()
     }
+    
     response = NewDescribeAgentShellResponse()
     err = c.Send(request, response)
     return

@@ -49,6 +49,7 @@ func NewBindOrganizationMemberAuthAccountRequest() (request *BindOrganizationMem
     }
     request.Init().WithApiInfo("organization", APIVersion, "BindOrganizationMemberAuthAccount")
     
+    
     return
 }
 
@@ -74,6 +75,7 @@ func (c *Client) BindOrganizationMemberAuthAccount(request *BindOrganizationMemb
     if request == nil {
         request = NewBindOrganizationMemberAuthAccountRequest()
     }
+    
     response = NewBindOrganizationMemberAuthAccountResponse()
     err = c.Send(request, response)
     return
@@ -84,6 +86,7 @@ func NewCreateOrganizationMemberRequest() (request *CreateOrganizationMemberRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "CreateOrganizationMember")
+    
     
     return
 }
@@ -120,6 +123,7 @@ func (c *Client) CreateOrganizationMember(request *CreateOrganizationMemberReque
     if request == nil {
         request = NewCreateOrganizationMemberRequest()
     }
+    
     response = NewCreateOrganizationMemberResponse()
     err = c.Send(request, response)
     return

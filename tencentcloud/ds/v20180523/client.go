@@ -49,6 +49,7 @@ func NewCheckVcodeRequest() (request *CheckVcodeRequest) {
     }
     request.Init().WithApiInfo("ds", APIVersion, "CheckVcode")
     
+    
     return
 }
 
@@ -85,6 +86,7 @@ func (c *Client) CheckVcode(request *CheckVcodeRequest) (response *CheckVcodeRes
     if request == nil {
         request = NewCheckVcodeRequest()
     }
+    
     response = NewCheckVcodeResponse()
     err = c.Send(request, response)
     return
@@ -95,6 +97,7 @@ func NewCreateContractByUploadRequest() (request *CreateContractByUploadRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ds", APIVersion, "CreateContractByUpload")
+    
     
     return
 }
@@ -129,6 +132,7 @@ func (c *Client) CreateContractByUpload(request *CreateContractByUploadRequest) 
     if request == nil {
         request = NewCreateContractByUploadRequest()
     }
+    
     response = NewCreateContractByUploadResponse()
     err = c.Send(request, response)
     return
@@ -139,6 +143,7 @@ func NewCreateEnterpriseAccountRequest() (request *CreateEnterpriseAccountReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ds", APIVersion, "CreateEnterpriseAccount")
+    
     
     return
 }
@@ -177,6 +182,7 @@ func (c *Client) CreateEnterpriseAccount(request *CreateEnterpriseAccountRequest
     if request == nil {
         request = NewCreateEnterpriseAccountRequest()
     }
+    
     response = NewCreateEnterpriseAccountResponse()
     err = c.Send(request, response)
     return
@@ -187,6 +193,7 @@ func NewCreatePersonalAccountRequest() (request *CreatePersonalAccountRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ds", APIVersion, "CreatePersonalAccount")
+    
     
     return
 }
@@ -220,6 +227,7 @@ func (c *Client) CreatePersonalAccount(request *CreatePersonalAccountRequest) (r
     if request == nil {
         request = NewCreatePersonalAccountRequest()
     }
+    
     response = NewCreatePersonalAccountResponse()
     err = c.Send(request, response)
     return
@@ -230,6 +238,7 @@ func NewCreateSealRequest() (request *CreateSealRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ds", APIVersion, "CreateSeal")
+    
     
     return
 }
@@ -266,6 +275,7 @@ func (c *Client) CreateSeal(request *CreateSealRequest) (response *CreateSealRes
     if request == nil {
         request = NewCreateSealRequest()
     }
+    
     response = NewCreateSealResponse()
     err = c.Send(request, response)
     return
@@ -276,6 +286,7 @@ func NewDeleteAccountRequest() (request *DeleteAccountRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ds", APIVersion, "DeleteAccount")
+    
     
     return
 }
@@ -302,6 +313,7 @@ func (c *Client) DeleteAccount(request *DeleteAccountRequest) (response *DeleteA
     if request == nil {
         request = NewDeleteAccountRequest()
     }
+    
     response = NewDeleteAccountResponse()
     err = c.Send(request, response)
     return
@@ -312,6 +324,7 @@ func NewDeleteSealRequest() (request *DeleteSealRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ds", APIVersion, "DeleteSeal")
+    
     
     return
 }
@@ -342,6 +355,7 @@ func (c *Client) DeleteSeal(request *DeleteSealRequest) (response *DeleteSealRes
     if request == nil {
         request = NewDeleteSealRequest()
     }
+    
     response = NewDeleteSealResponse()
     err = c.Send(request, response)
     return
@@ -352,6 +366,7 @@ func NewDescribeTaskStatusRequest() (request *DescribeTaskStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ds", APIVersion, "DescribeTaskStatus")
+    
     
     return
 }
@@ -377,6 +392,7 @@ func (c *Client) DescribeTaskStatus(request *DescribeTaskStatusRequest) (respons
     if request == nil {
         request = NewDescribeTaskStatusRequest()
     }
+    
     response = NewDescribeTaskStatusResponse()
     err = c.Send(request, response)
     return
@@ -387,6 +403,7 @@ func NewDownloadContractRequest() (request *DownloadContractRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ds", APIVersion, "DownloadContract")
+    
     
     return
 }
@@ -413,6 +430,7 @@ func (c *Client) DownloadContract(request *DownloadContractRequest) (response *D
     if request == nil {
         request = NewDownloadContractRequest()
     }
+    
     response = NewDownloadContractResponse()
     err = c.Send(request, response)
     return
@@ -423,6 +441,7 @@ func NewSendVcodeRequest() (request *SendVcodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ds", APIVersion, "SendVcode")
+    
     
     return
 }
@@ -456,6 +475,7 @@ func (c *Client) SendVcode(request *SendVcodeRequest) (response *SendVcodeRespon
     if request == nil {
         request = NewSendVcodeRequest()
     }
+    
     response = NewSendVcodeResponse()
     err = c.Send(request, response)
     return
@@ -466,6 +486,7 @@ func NewSignContractByCoordinateRequest() (request *SignContractByCoordinateRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ds", APIVersion, "SignContractByCoordinate")
+    
     
     return
 }
@@ -511,6 +532,7 @@ func (c *Client) SignContractByCoordinate(request *SignContractByCoordinateReque
     if request == nil {
         request = NewSignContractByCoordinateRequest()
     }
+    
     response = NewSignContractByCoordinateResponse()
     err = c.Send(request, response)
     return
@@ -521,6 +543,7 @@ func NewSignContractByKeywordRequest() (request *SignContractByKeywordRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ds", APIVersion, "SignContractByKeyword")
+    
     
     return
 }
@@ -566,6 +589,7 @@ func (c *Client) SignContractByKeyword(request *SignContractByKeywordRequest) (r
     if request == nil {
         request = NewSignContractByKeywordRequest()
     }
+    
     response = NewSignContractByKeywordResponse()
     err = c.Send(request, response)
     return

@@ -49,6 +49,7 @@ func NewDescribeRegionsRequest() (request *DescribeRegionsRequest) {
     }
     request.Init().WithApiInfo("api", APIVersion, "DescribeRegions")
     
+    
     return
 }
 
@@ -69,6 +70,7 @@ func (c *Client) DescribeRegions(request *DescribeRegionsRequest) (response *Des
     if request == nil {
         request = NewDescribeRegionsRequest()
     }
+    
     response = NewDescribeRegionsResponse()
     err = c.Send(request, response)
     return
@@ -79,6 +81,7 @@ func NewDescribeZonesRequest() (request *DescribeZonesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("api", APIVersion, "DescribeZones")
+    
     
     return
 }
@@ -99,6 +102,7 @@ func (c *Client) DescribeZones(request *DescribeZonesRequest) (response *Describ
     if request == nil {
         request = NewDescribeZonesRequest()
     }
+    
     response = NewDescribeZonesResponse()
     err = c.Send(request, response)
     return

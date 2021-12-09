@@ -49,6 +49,7 @@ func NewCreateDomainRequest() (request *CreateDomainRequest) {
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "CreateDomain")
     
+    
     return
 }
 
@@ -74,6 +75,7 @@ func (c *Client) CreateDomain(request *CreateDomainRequest) (response *CreateDom
     if request == nil {
         request = NewCreateDomainRequest()
     }
+    
     response = NewCreateDomainResponse()
     err = c.Send(request, response)
     return
@@ -84,6 +86,7 @@ func NewCreateDomainAliasRequest() (request *CreateDomainAliasRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "CreateDomainAlias")
+    
     
     return
 }
@@ -124,6 +127,7 @@ func (c *Client) CreateDomainAlias(request *CreateDomainAliasRequest) (response 
     if request == nil {
         request = NewCreateDomainAliasRequest()
     }
+    
     response = NewCreateDomainAliasResponse()
     err = c.Send(request, response)
     return
@@ -134,6 +138,7 @@ func NewCreateDomainBatchRequest() (request *CreateDomainBatchRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "CreateDomainBatch")
+    
     
     return
 }
@@ -170,6 +175,7 @@ func (c *Client) CreateDomainBatch(request *CreateDomainBatchRequest) (response 
     if request == nil {
         request = NewCreateDomainBatchRequest()
     }
+    
     response = NewCreateDomainBatchResponse()
     err = c.Send(request, response)
     return
@@ -180,6 +186,7 @@ func NewCreateDomainGroupRequest() (request *CreateDomainGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "CreateDomainGroup")
+    
     
     return
 }
@@ -209,6 +216,7 @@ func (c *Client) CreateDomainGroup(request *CreateDomainGroupRequest) (response 
     if request == nil {
         request = NewCreateDomainGroupRequest()
     }
+    
     response = NewCreateDomainGroupResponse()
     err = c.Send(request, response)
     return
@@ -219,6 +227,7 @@ func NewCreateRecordRequest() (request *CreateRecordRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "CreateRecord")
+    
     
     return
 }
@@ -287,6 +296,7 @@ func (c *Client) CreateRecord(request *CreateRecordRequest) (response *CreateRec
     if request == nil {
         request = NewCreateRecordRequest()
     }
+    
     response = NewCreateRecordResponse()
     err = c.Send(request, response)
     return
@@ -297,6 +307,7 @@ func NewCreateRecordBatchRequest() (request *CreateRecordBatchRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "CreateRecordBatch")
+    
     
     return
 }
@@ -334,6 +345,7 @@ func (c *Client) CreateRecordBatch(request *CreateRecordBatchRequest) (response 
     if request == nil {
         request = NewCreateRecordBatchRequest()
     }
+    
     response = NewCreateRecordBatchResponse()
     err = c.Send(request, response)
     return
@@ -344,6 +356,7 @@ func NewDeleteDomainRequest() (request *DeleteDomainRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "DeleteDomain")
+    
     
     return
 }
@@ -374,6 +387,7 @@ func (c *Client) DeleteDomain(request *DeleteDomainRequest) (response *DeleteDom
     if request == nil {
         request = NewDeleteDomainRequest()
     }
+    
     response = NewDeleteDomainResponse()
     err = c.Send(request, response)
     return
@@ -384,6 +398,7 @@ func NewDeleteDomainAliasRequest() (request *DeleteDomainAliasRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "DeleteDomainAlias")
+    
     
     return
 }
@@ -420,6 +435,7 @@ func (c *Client) DeleteDomainAlias(request *DeleteDomainAliasRequest) (response 
     if request == nil {
         request = NewDeleteDomainAliasRequest()
     }
+    
     response = NewDeleteDomainAliasResponse()
     err = c.Send(request, response)
     return
@@ -430,6 +446,7 @@ func NewDeleteRecordRequest() (request *DeleteRecordRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "DeleteRecord")
+    
     
     return
 }
@@ -474,6 +491,7 @@ func (c *Client) DeleteRecord(request *DeleteRecordRequest) (response *DeleteRec
     if request == nil {
         request = NewDeleteRecordRequest()
     }
+    
     response = NewDeleteRecordResponse()
     err = c.Send(request, response)
     return
@@ -484,6 +502,7 @@ func NewDeleteShareDomainRequest() (request *DeleteShareDomainRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "DeleteShareDomain")
+    
     
     return
 }
@@ -513,6 +532,7 @@ func (c *Client) DeleteShareDomain(request *DeleteShareDomainRequest) (response 
     if request == nil {
         request = NewDeleteShareDomainRequest()
     }
+    
     response = NewDeleteShareDomainResponse()
     err = c.Send(request, response)
     return
@@ -523,6 +543,7 @@ func NewDescribeBatchTaskRequest() (request *DescribeBatchTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "DescribeBatchTask")
+    
     
     return
 }
@@ -545,6 +566,7 @@ func (c *Client) DescribeBatchTask(request *DescribeBatchTaskRequest) (response 
     if request == nil {
         request = NewDescribeBatchTaskRequest()
     }
+    
     response = NewDescribeBatchTaskResponse()
     err = c.Send(request, response)
     return
@@ -555,6 +577,7 @@ func NewDescribeDomainRequest() (request *DescribeDomainRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "DescribeDomain")
+    
     
     return
 }
@@ -580,7 +603,53 @@ func (c *Client) DescribeDomain(request *DescribeDomainRequest) (response *Descr
     if request == nil {
         request = NewDescribeDomainRequest()
     }
+    
     response = NewDescribeDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDomainAliasListRequest() (request *DescribeDomainAliasListRequest) {
+    request = &DescribeDomainAliasListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dnspod", APIVersion, "DescribeDomainAliasList")
+    
+    
+    return
+}
+
+func NewDescribeDomainAliasListResponse() (response *DescribeDomainAliasListResponse) {
+    response = &DescribeDomainAliasListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDomainAliasList
+// 获取域名别名列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTREALNAMEDUSER = "FailedOperation.NotRealNamedUser"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NODATAOFDOMAINALIAS = "ResourceNotFound.NoDataOfDomainAlias"
+func (c *Client) DescribeDomainAliasList(request *DescribeDomainAliasListRequest) (response *DescribeDomainAliasListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainAliasListRequest()
+    }
+    
+    response = NewDescribeDomainAliasListResponse()
     err = c.Send(request, response)
     return
 }
@@ -590,6 +659,7 @@ func NewDescribeDomainListRequest() (request *DescribeDomainListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "DescribeDomainList")
+    
     
     return
 }
@@ -624,6 +694,7 @@ func (c *Client) DescribeDomainList(request *DescribeDomainListRequest) (respons
     if request == nil {
         request = NewDescribeDomainListRequest()
     }
+    
     response = NewDescribeDomainListResponse()
     err = c.Send(request, response)
     return
@@ -634,6 +705,7 @@ func NewDescribeDomainLogListRequest() (request *DescribeDomainLogListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "DescribeDomainLogList")
+    
     
     return
 }
@@ -660,6 +732,7 @@ func (c *Client) DescribeDomainLogList(request *DescribeDomainLogListRequest) (r
     if request == nil {
         request = NewDescribeDomainLogListRequest()
     }
+    
     response = NewDescribeDomainLogListResponse()
     err = c.Send(request, response)
     return
@@ -670,6 +743,7 @@ func NewDescribeDomainPurviewRequest() (request *DescribeDomainPurviewRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "DescribeDomainPurview")
+    
     
     return
 }
@@ -709,6 +783,7 @@ func (c *Client) DescribeDomainPurview(request *DescribeDomainPurviewRequest) (r
     if request == nil {
         request = NewDescribeDomainPurviewRequest()
     }
+    
     response = NewDescribeDomainPurviewResponse()
     err = c.Send(request, response)
     return
@@ -719,6 +794,7 @@ func NewDescribeDomainShareInfoRequest() (request *DescribeDomainShareInfoReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "DescribeDomainShareInfo")
+    
     
     return
 }
@@ -743,6 +819,7 @@ func (c *Client) DescribeDomainShareInfo(request *DescribeDomainShareInfoRequest
     if request == nil {
         request = NewDescribeDomainShareInfoRequest()
     }
+    
     response = NewDescribeDomainShareInfoResponse()
     err = c.Send(request, response)
     return
@@ -753,6 +830,7 @@ func NewDescribeRecordRequest() (request *DescribeRecordRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "DescribeRecord")
+    
     
     return
 }
@@ -794,6 +872,7 @@ func (c *Client) DescribeRecord(request *DescribeRecordRequest) (response *Descr
     if request == nil {
         request = NewDescribeRecordRequest()
     }
+    
     response = NewDescribeRecordResponse()
     err = c.Send(request, response)
     return
@@ -804,6 +883,7 @@ func NewDescribeRecordLineListRequest() (request *DescribeRecordLineListRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "DescribeRecordLineList")
+    
     
     return
 }
@@ -842,6 +922,7 @@ func (c *Client) DescribeRecordLineList(request *DescribeRecordLineListRequest) 
     if request == nil {
         request = NewDescribeRecordLineListRequest()
     }
+    
     response = NewDescribeRecordLineListResponse()
     err = c.Send(request, response)
     return
@@ -852,6 +933,7 @@ func NewDescribeRecordListRequest() (request *DescribeRecordListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "DescribeRecordList")
+    
     
     return
 }
@@ -892,6 +974,7 @@ func (c *Client) DescribeRecordList(request *DescribeRecordListRequest) (respons
     if request == nil {
         request = NewDescribeRecordListRequest()
     }
+    
     response = NewDescribeRecordListResponse()
     err = c.Send(request, response)
     return
@@ -902,6 +985,7 @@ func NewDescribeRecordTypeRequest() (request *DescribeRecordTypeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "DescribeRecordType")
+    
     
     return
 }
@@ -940,6 +1024,7 @@ func (c *Client) DescribeRecordType(request *DescribeRecordTypeRequest) (respons
     if request == nil {
         request = NewDescribeRecordTypeRequest()
     }
+    
     response = NewDescribeRecordTypeResponse()
     err = c.Send(request, response)
     return
@@ -950,6 +1035,7 @@ func NewDescribeUserDetailRequest() (request *DescribeUserDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "DescribeUserDetail")
+    
     
     return
 }
@@ -976,6 +1062,7 @@ func (c *Client) DescribeUserDetail(request *DescribeUserDetailRequest) (respons
     if request == nil {
         request = NewDescribeUserDetailRequest()
     }
+    
     response = NewDescribeUserDetailResponse()
     err = c.Send(request, response)
     return
@@ -986,6 +1073,7 @@ func NewModifyDomainLockRequest() (request *ModifyDomainLockRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "ModifyDomainLock")
+    
     
     return
 }
@@ -1029,6 +1117,7 @@ func (c *Client) ModifyDomainLock(request *ModifyDomainLockRequest) (response *M
     if request == nil {
         request = NewModifyDomainLockRequest()
     }
+    
     response = NewModifyDomainLockResponse()
     err = c.Send(request, response)
     return
@@ -1039,6 +1128,7 @@ func NewModifyDomainOwnerRequest() (request *ModifyDomainOwnerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "ModifyDomainOwner")
+    
     
     return
 }
@@ -1074,6 +1164,7 @@ func (c *Client) ModifyDomainOwner(request *ModifyDomainOwnerRequest) (response 
     if request == nil {
         request = NewModifyDomainOwnerRequest()
     }
+    
     response = NewModifyDomainOwnerResponse()
     err = c.Send(request, response)
     return
@@ -1084,6 +1175,7 @@ func NewModifyDomainRemarkRequest() (request *ModifyDomainRemarkRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "ModifyDomainRemark")
+    
     
     return
 }
@@ -1126,6 +1218,7 @@ func (c *Client) ModifyDomainRemark(request *ModifyDomainRemarkRequest) (respons
     if request == nil {
         request = NewModifyDomainRemarkRequest()
     }
+    
     response = NewModifyDomainRemarkResponse()
     err = c.Send(request, response)
     return
@@ -1136,6 +1229,7 @@ func NewModifyDomainStatusRequest() (request *ModifyDomainStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "ModifyDomainStatus")
+    
     
     return
 }
@@ -1163,6 +1257,7 @@ func (c *Client) ModifyDomainStatus(request *ModifyDomainStatusRequest) (respons
     if request == nil {
         request = NewModifyDomainStatusRequest()
     }
+    
     response = NewModifyDomainStatusResponse()
     err = c.Send(request, response)
     return
@@ -1173,6 +1268,7 @@ func NewModifyDomainUnlockRequest() (request *ModifyDomainUnlockRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "ModifyDomainUnlock")
+    
     
     return
 }
@@ -1216,6 +1312,7 @@ func (c *Client) ModifyDomainUnlock(request *ModifyDomainUnlockRequest) (respons
     if request == nil {
         request = NewModifyDomainUnlockRequest()
     }
+    
     response = NewModifyDomainUnlockResponse()
     err = c.Send(request, response)
     return
@@ -1226,6 +1323,7 @@ func NewModifyDynamicDNSRequest() (request *ModifyDynamicDNSRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "ModifyDynamicDNS")
+    
     
     return
 }
@@ -1289,6 +1387,7 @@ func (c *Client) ModifyDynamicDNS(request *ModifyDynamicDNSRequest) (response *M
     if request == nil {
         request = NewModifyDynamicDNSRequest()
     }
+    
     response = NewModifyDynamicDNSResponse()
     err = c.Send(request, response)
     return
@@ -1299,6 +1398,7 @@ func NewModifyRecordRequest() (request *ModifyRecordRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "ModifyRecord")
+    
     
     return
 }
@@ -1368,6 +1468,7 @@ func (c *Client) ModifyRecord(request *ModifyRecordRequest) (response *ModifyRec
     if request == nil {
         request = NewModifyRecordRequest()
     }
+    
     response = NewModifyRecordResponse()
     err = c.Send(request, response)
     return
@@ -1378,6 +1479,7 @@ func NewModifyRecordBatchRequest() (request *ModifyRecordBatchRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "ModifyRecordBatch")
+    
     
     return
 }
@@ -1420,6 +1522,7 @@ func (c *Client) ModifyRecordBatch(request *ModifyRecordBatchRequest) (response 
     if request == nil {
         request = NewModifyRecordBatchRequest()
     }
+    
     response = NewModifyRecordBatchResponse()
     err = c.Send(request, response)
     return
@@ -1430,6 +1533,7 @@ func NewModifyRecordRemarkRequest() (request *ModifyRecordRemarkRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "ModifyRecordRemark")
+    
     
     return
 }
@@ -1475,6 +1579,7 @@ func (c *Client) ModifyRecordRemark(request *ModifyRecordRemarkRequest) (respons
     if request == nil {
         request = NewModifyRecordRemarkRequest()
     }
+    
     response = NewModifyRecordRemarkResponse()
     err = c.Send(request, response)
     return
@@ -1485,6 +1590,7 @@ func NewModifyRecordStatusRequest() (request *ModifyRecordStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "ModifyRecordStatus")
+    
     
     return
 }
@@ -1547,6 +1653,7 @@ func (c *Client) ModifyRecordStatus(request *ModifyRecordStatusRequest) (respons
     if request == nil {
         request = NewModifyRecordStatusRequest()
     }
+    
     response = NewModifyRecordStatusResponse()
     err = c.Send(request, response)
     return
@@ -1557,6 +1664,7 @@ func NewModifySubdomainStatusRequest() (request *ModifySubdomainStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dnspod", APIVersion, "ModifySubdomainStatus")
+    
     
     return
 }
@@ -1620,6 +1728,7 @@ func (c *Client) ModifySubdomainStatus(request *ModifySubdomainStatusRequest) (r
     if request == nil {
         request = NewModifySubdomainStatusRequest()
     }
+    
     response = NewModifySubdomainStatusResponse()
     err = c.Send(request, response)
     return

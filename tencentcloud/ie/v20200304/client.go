@@ -49,6 +49,7 @@ func NewCreateEditingTaskRequest() (request *CreateEditingTaskRequest) {
     }
     request.Init().WithApiInfo("ie", APIVersion, "CreateEditingTask")
     
+    
     return
 }
 
@@ -85,6 +86,7 @@ func (c *Client) CreateEditingTask(request *CreateEditingTaskRequest) (response 
     if request == nil {
         request = NewCreateEditingTaskRequest()
     }
+    
     response = NewCreateEditingTaskResponse()
     err = c.Send(request, response)
     return
@@ -95,6 +97,7 @@ func NewCreateMediaProcessTaskRequest() (request *CreateMediaProcessTaskRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ie", APIVersion, "CreateMediaProcessTask")
+    
     
     return
 }
@@ -133,6 +136,7 @@ func (c *Client) CreateMediaProcessTask(request *CreateMediaProcessTaskRequest) 
     if request == nil {
         request = NewCreateMediaProcessTaskRequest()
     }
+    
     response = NewCreateMediaProcessTaskResponse()
     err = c.Send(request, response)
     return
@@ -143,6 +147,7 @@ func NewCreateMediaQualityRestorationTaskRequest() (request *CreateMediaQualityR
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ie", APIVersion, "CreateMediaQualityRestorationTask")
+    
     
     return
 }
@@ -174,6 +179,7 @@ func (c *Client) CreateMediaQualityRestorationTask(request *CreateMediaQualityRe
     if request == nil {
         request = NewCreateMediaQualityRestorationTaskRequest()
     }
+    
     response = NewCreateMediaQualityRestorationTaskResponse()
     err = c.Send(request, response)
     return
@@ -184,6 +190,7 @@ func NewCreateQualityControlTaskRequest() (request *CreateQualityControlTaskRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ie", APIVersion, "CreateQualityControlTask")
+    
     
     return
 }
@@ -215,6 +222,7 @@ func (c *Client) CreateQualityControlTask(request *CreateQualityControlTaskReque
     if request == nil {
         request = NewCreateQualityControlTaskRequest()
     }
+    
     response = NewCreateQualityControlTaskResponse()
     err = c.Send(request, response)
     return
@@ -225,6 +233,7 @@ func NewDescribeEditingTaskResultRequest() (request *DescribeEditingTaskResultRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ie", APIVersion, "DescribeEditingTaskResult")
+    
     
     return
 }
@@ -249,6 +258,7 @@ func (c *Client) DescribeEditingTaskResult(request *DescribeEditingTaskResultReq
     if request == nil {
         request = NewDescribeEditingTaskResultRequest()
     }
+    
     response = NewDescribeEditingTaskResultResponse()
     err = c.Send(request, response)
     return
@@ -259,6 +269,7 @@ func NewDescribeMediaProcessTaskResultRequest() (request *DescribeMediaProcessTa
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ie", APIVersion, "DescribeMediaProcessTaskResult")
+    
     
     return
 }
@@ -279,6 +290,7 @@ func (c *Client) DescribeMediaProcessTaskResult(request *DescribeMediaProcessTas
     if request == nil {
         request = NewDescribeMediaProcessTaskResultRequest()
     }
+    
     response = NewDescribeMediaProcessTaskResultResponse()
     err = c.Send(request, response)
     return
@@ -289,6 +301,7 @@ func NewDescribeMediaQualityRestorationTaskRusultRequest() (request *DescribeMed
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ie", APIVersion, "DescribeMediaQualityRestorationTaskRusult")
+    
     
     return
 }
@@ -325,6 +338,7 @@ func (c *Client) DescribeMediaQualityRestorationTaskRusult(request *DescribeMedi
     if request == nil {
         request = NewDescribeMediaQualityRestorationTaskRusultRequest()
     }
+    
     response = NewDescribeMediaQualityRestorationTaskRusultResponse()
     err = c.Send(request, response)
     return
@@ -335,6 +349,7 @@ func NewDescribeQualityControlTaskResultRequest() (request *DescribeQualityContr
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ie", APIVersion, "DescribeQualityControlTaskResult")
+    
     
     return
 }
@@ -367,6 +382,7 @@ func (c *Client) DescribeQualityControlTaskResult(request *DescribeQualityContro
     if request == nil {
         request = NewDescribeQualityControlTaskResultRequest()
     }
+    
     response = NewDescribeQualityControlTaskResultResponse()
     err = c.Send(request, response)
     return
@@ -377,6 +393,7 @@ func NewStopMediaProcessTaskRequest() (request *StopMediaProcessTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ie", APIVersion, "StopMediaProcessTask")
+    
     
     return
 }
@@ -400,6 +417,7 @@ func (c *Client) StopMediaProcessTask(request *StopMediaProcessTaskRequest) (res
     if request == nil {
         request = NewStopMediaProcessTaskRequest()
     }
+    
     response = NewStopMediaProcessTaskResponse()
     err = c.Send(request, response)
     return
@@ -410,6 +428,7 @@ func NewStopMediaQualityRestorationTaskRequest() (request *StopMediaQualityResto
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ie", APIVersion, "StopMediaQualityRestorationTask")
+    
     
     return
 }
@@ -438,6 +457,7 @@ func (c *Client) StopMediaQualityRestorationTask(request *StopMediaQualityRestor
     if request == nil {
         request = NewStopMediaQualityRestorationTaskRequest()
     }
+    
     response = NewStopMediaQualityRestorationTaskResponse()
     err = c.Send(request, response)
     return

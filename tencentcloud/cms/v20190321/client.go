@@ -49,6 +49,7 @@ func NewCreateFileSampleRequest() (request *CreateFileSampleRequest) {
     }
     request.Init().WithApiInfo("cms", APIVersion, "CreateFileSample")
     
+    
     return
 }
 
@@ -72,6 +73,7 @@ func (c *Client) CreateFileSample(request *CreateFileSampleRequest) (response *C
     if request == nil {
         request = NewCreateFileSampleRequest()
     }
+    
     response = NewCreateFileSampleResponse()
     err = c.Send(request, response)
     return
@@ -82,6 +84,7 @@ func NewCreateTextSampleRequest() (request *CreateTextSampleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cms", APIVersion, "CreateTextSample")
+    
     
     return
 }
@@ -106,6 +109,7 @@ func (c *Client) CreateTextSample(request *CreateTextSampleRequest) (response *C
     if request == nil {
         request = NewCreateTextSampleRequest()
     }
+    
     response = NewCreateTextSampleResponse()
     err = c.Send(request, response)
     return
@@ -116,6 +120,7 @@ func NewDeleteFileSampleRequest() (request *DeleteFileSampleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cms", APIVersion, "DeleteFileSample")
+    
     
     return
 }
@@ -140,6 +145,7 @@ func (c *Client) DeleteFileSample(request *DeleteFileSampleRequest) (response *D
     if request == nil {
         request = NewDeleteFileSampleRequest()
     }
+    
     response = NewDeleteFileSampleResponse()
     err = c.Send(request, response)
     return
@@ -150,6 +156,7 @@ func NewDeleteTextSampleRequest() (request *DeleteTextSampleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cms", APIVersion, "DeleteTextSample")
+    
     
     return
 }
@@ -174,6 +181,7 @@ func (c *Client) DeleteTextSample(request *DeleteTextSampleRequest) (response *D
     if request == nil {
         request = NewDeleteTextSampleRequest()
     }
+    
     response = NewDeleteTextSampleResponse()
     err = c.Send(request, response)
     return
@@ -184,6 +192,7 @@ func NewDescribeFileSampleRequest() (request *DescribeFileSampleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cms", APIVersion, "DescribeFileSample")
+    
     
     return
 }
@@ -208,6 +217,7 @@ func (c *Client) DescribeFileSample(request *DescribeFileSampleRequest) (respons
     if request == nil {
         request = NewDescribeFileSampleRequest()
     }
+    
     response = NewDescribeFileSampleResponse()
     err = c.Send(request, response)
     return
@@ -218,6 +228,7 @@ func NewDescribeTextSampleRequest() (request *DescribeTextSampleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cms", APIVersion, "DescribeTextSample")
+    
     
     return
 }
@@ -242,6 +253,7 @@ func (c *Client) DescribeTextSample(request *DescribeTextSampleRequest) (respons
     if request == nil {
         request = NewDescribeTextSampleRequest()
     }
+    
     response = NewDescribeTextSampleResponse()
     err = c.Send(request, response)
     return
@@ -252,6 +264,7 @@ func NewImageModerationRequest() (request *ImageModerationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cms", APIVersion, "ImageModeration")
+    
     
     return
 }
@@ -283,6 +296,7 @@ func (c *Client) ImageModeration(request *ImageModerationRequest) (response *Ima
     if request == nil {
         request = NewImageModerationRequest()
     }
+    
     response = NewImageModerationResponse()
     err = c.Send(request, response)
     return
@@ -293,6 +307,7 @@ func NewManualReviewRequest() (request *ManualReviewRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cms", APIVersion, "ManualReview")
+    
     
     return
 }
@@ -328,6 +343,7 @@ func (c *Client) ManualReview(request *ManualReviewRequest) (response *ManualRev
     if request == nil {
         request = NewManualReviewRequest()
     }
+    
     response = NewManualReviewResponse()
     err = c.Send(request, response)
     return
@@ -338,6 +354,7 @@ func NewTextModerationRequest() (request *TextModerationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cms", APIVersion, "TextModeration")
+    
     
     return
 }
@@ -363,6 +380,7 @@ func (c *Client) TextModeration(request *TextModerationRequest) (response *TextM
     if request == nil {
         request = NewTextModerationRequest()
     }
+    
     response = NewTextModerationResponse()
     err = c.Send(request, response)
     return

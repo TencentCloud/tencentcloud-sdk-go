@@ -49,6 +49,7 @@ func NewAttachCcnInstancesRequest() (request *AttachCcnInstancesRequest) {
     }
     request.Init().WithApiInfo("gse", APIVersion, "AttachCcnInstances")
     
+    
     return
 }
 
@@ -85,6 +86,7 @@ func (c *Client) AttachCcnInstances(request *AttachCcnInstancesRequest) (respons
     if request == nil {
         request = NewAttachCcnInstancesRequest()
     }
+    
     response = NewAttachCcnInstancesResponse()
     err = c.Send(request, response)
     return
@@ -95,6 +97,7 @@ func NewCopyFleetRequest() (request *CopyFleetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "CopyFleet")
+    
     
     return
 }
@@ -132,6 +135,7 @@ func (c *Client) CopyFleet(request *CopyFleetRequest) (response *CopyFleetRespon
     if request == nil {
         request = NewCopyFleetRequest()
     }
+    
     response = NewCopyFleetResponse()
     err = c.Send(request, response)
     return
@@ -142,6 +146,7 @@ func NewCreateAliasRequest() (request *CreateAliasRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "CreateAlias")
+    
     
     return
 }
@@ -166,6 +171,7 @@ func (c *Client) CreateAlias(request *CreateAliasRequest) (response *CreateAlias
     if request == nil {
         request = NewCreateAliasRequest()
     }
+    
     response = NewCreateAliasResponse()
     err = c.Send(request, response)
     return
@@ -176,6 +182,7 @@ func NewCreateAssetRequest() (request *CreateAssetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "CreateAsset")
+    
     
     return
 }
@@ -228,6 +235,7 @@ func (c *Client) CreateAsset(request *CreateAssetRequest) (response *CreateAsset
     if request == nil {
         request = NewCreateAssetRequest()
     }
+    
     response = NewCreateAssetResponse()
     err = c.Send(request, response)
     return
@@ -238,6 +246,7 @@ func NewCreateAssetWithImageRequest() (request *CreateAssetWithImageRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "CreateAssetWithImage")
+    
     
     return
 }
@@ -274,6 +283,7 @@ func (c *Client) CreateAssetWithImage(request *CreateAssetWithImageRequest) (res
     if request == nil {
         request = NewCreateAssetWithImageRequest()
     }
+    
     response = NewCreateAssetWithImageResponse()
     err = c.Send(request, response)
     return
@@ -284,6 +294,7 @@ func NewCreateFleetRequest() (request *CreateFleetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "CreateFleet")
+    
     
     return
 }
@@ -319,6 +330,7 @@ func (c *Client) CreateFleet(request *CreateFleetRequest) (response *CreateFleet
     if request == nil {
         request = NewCreateFleetRequest()
     }
+    
     response = NewCreateFleetResponse()
     err = c.Send(request, response)
     return
@@ -329,6 +341,7 @@ func NewCreateGameServerSessionRequest() (request *CreateGameServerSessionReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "CreateGameServerSession")
+    
     
     return
 }
@@ -358,6 +371,7 @@ func (c *Client) CreateGameServerSession(request *CreateGameServerSessionRequest
     if request == nil {
         request = NewCreateGameServerSessionRequest()
     }
+    
     response = NewCreateGameServerSessionResponse()
     err = c.Send(request, response)
     return
@@ -368,6 +382,7 @@ func NewCreateGameServerSessionQueueRequest() (request *CreateGameServerSessionQ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "CreateGameServerSessionQueue")
+    
     
     return
 }
@@ -396,6 +411,7 @@ func (c *Client) CreateGameServerSessionQueue(request *CreateGameServerSessionQu
     if request == nil {
         request = NewCreateGameServerSessionQueueRequest()
     }
+    
     response = NewCreateGameServerSessionQueueResponse()
     err = c.Send(request, response)
     return
@@ -406,6 +422,7 @@ func NewDeleteAliasRequest() (request *DeleteAliasRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DeleteAlias")
+    
     
     return
 }
@@ -429,6 +446,7 @@ func (c *Client) DeleteAlias(request *DeleteAliasRequest) (response *DeleteAlias
     if request == nil {
         request = NewDeleteAliasRequest()
     }
+    
     response = NewDeleteAliasResponse()
     err = c.Send(request, response)
     return
@@ -439,6 +457,7 @@ func NewDeleteAssetRequest() (request *DeleteAssetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DeleteAsset")
+    
     
     return
 }
@@ -466,6 +485,7 @@ func (c *Client) DeleteAsset(request *DeleteAssetRequest) (response *DeleteAsset
     if request == nil {
         request = NewDeleteAssetRequest()
     }
+    
     response = NewDeleteAssetResponse()
     err = c.Send(request, response)
     return
@@ -476,6 +496,7 @@ func NewDeleteFleetRequest() (request *DeleteFleetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DeleteFleet")
+    
     
     return
 }
@@ -508,6 +529,7 @@ func (c *Client) DeleteFleet(request *DeleteFleetRequest) (response *DeleteFleet
     if request == nil {
         request = NewDeleteFleetRequest()
     }
+    
     response = NewDeleteFleetResponse()
     err = c.Send(request, response)
     return
@@ -518,6 +540,7 @@ func NewDeleteGameServerSessionQueueRequest() (request *DeleteGameServerSessionQ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DeleteGameServerSessionQueue")
+    
     
     return
 }
@@ -541,6 +564,7 @@ func (c *Client) DeleteGameServerSessionQueue(request *DeleteGameServerSessionQu
     if request == nil {
         request = NewDeleteGameServerSessionQueueRequest()
     }
+    
     response = NewDeleteGameServerSessionQueueResponse()
     err = c.Send(request, response)
     return
@@ -551,6 +575,7 @@ func NewDeleteScalingPolicyRequest() (request *DeleteScalingPolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DeleteScalingPolicy")
+    
     
     return
 }
@@ -580,6 +605,7 @@ func (c *Client) DeleteScalingPolicy(request *DeleteScalingPolicyRequest) (respo
     if request == nil {
         request = NewDeleteScalingPolicyRequest()
     }
+    
     response = NewDeleteScalingPolicyResponse()
     err = c.Send(request, response)
     return
@@ -590,6 +616,7 @@ func NewDeleteTimerScalingPolicyRequest() (request *DeleteTimerScalingPolicyRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DeleteTimerScalingPolicy")
+    
     
     return
 }
@@ -616,6 +643,7 @@ func (c *Client) DeleteTimerScalingPolicy(request *DeleteTimerScalingPolicyReque
     if request == nil {
         request = NewDeleteTimerScalingPolicyRequest()
     }
+    
     response = NewDeleteTimerScalingPolicyResponse()
     err = c.Send(request, response)
     return
@@ -626,6 +654,7 @@ func NewDescribeAliasRequest() (request *DescribeAliasRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DescribeAlias")
+    
     
     return
 }
@@ -649,6 +678,7 @@ func (c *Client) DescribeAlias(request *DescribeAliasRequest) (response *Describ
     if request == nil {
         request = NewDescribeAliasRequest()
     }
+    
     response = NewDescribeAliasResponse()
     err = c.Send(request, response)
     return
@@ -659,6 +689,7 @@ func NewDescribeAssetRequest() (request *DescribeAssetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DescribeAsset")
+    
     
     return
 }
@@ -684,6 +715,7 @@ func (c *Client) DescribeAsset(request *DescribeAssetRequest) (response *Describ
     if request == nil {
         request = NewDescribeAssetRequest()
     }
+    
     response = NewDescribeAssetResponse()
     err = c.Send(request, response)
     return
@@ -694,6 +726,7 @@ func NewDescribeAssetSystemsRequest() (request *DescribeAssetSystemsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DescribeAssetSystems")
+    
     
     return
 }
@@ -719,6 +752,7 @@ func (c *Client) DescribeAssetSystems(request *DescribeAssetSystemsRequest) (res
     if request == nil {
         request = NewDescribeAssetSystemsRequest()
     }
+    
     response = NewDescribeAssetSystemsResponse()
     err = c.Send(request, response)
     return
@@ -729,6 +763,7 @@ func NewDescribeAssetsRequest() (request *DescribeAssetsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DescribeAssets")
+    
     
     return
 }
@@ -755,6 +790,7 @@ func (c *Client) DescribeAssets(request *DescribeAssetsRequest) (response *Descr
     if request == nil {
         request = NewDescribeAssetsRequest()
     }
+    
     response = NewDescribeAssetsResponse()
     err = c.Send(request, response)
     return
@@ -765,6 +801,7 @@ func NewDescribeCcnInstancesRequest() (request *DescribeCcnInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DescribeCcnInstances")
+    
     
     return
 }
@@ -803,6 +840,7 @@ func (c *Client) DescribeCcnInstances(request *DescribeCcnInstancesRequest) (res
     if request == nil {
         request = NewDescribeCcnInstancesRequest()
     }
+    
     response = NewDescribeCcnInstancesResponse()
     err = c.Send(request, response)
     return
@@ -813,6 +851,7 @@ func NewDescribeFleetAttributesRequest() (request *DescribeFleetAttributesReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DescribeFleetAttributes")
+    
     
     return
 }
@@ -837,6 +876,7 @@ func (c *Client) DescribeFleetAttributes(request *DescribeFleetAttributesRequest
     if request == nil {
         request = NewDescribeFleetAttributesRequest()
     }
+    
     response = NewDescribeFleetAttributesResponse()
     err = c.Send(request, response)
     return
@@ -847,6 +887,7 @@ func NewDescribeFleetCapacityRequest() (request *DescribeFleetCapacityRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DescribeFleetCapacity")
+    
     
     return
 }
@@ -874,6 +915,7 @@ func (c *Client) DescribeFleetCapacity(request *DescribeFleetCapacityRequest) (r
     if request == nil {
         request = NewDescribeFleetCapacityRequest()
     }
+    
     response = NewDescribeFleetCapacityResponse()
     err = c.Send(request, response)
     return
@@ -884,6 +926,7 @@ func NewDescribeFleetEventsRequest() (request *DescribeFleetEventsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DescribeFleetEvents")
+    
     
     return
 }
@@ -909,6 +952,7 @@ func (c *Client) DescribeFleetEvents(request *DescribeFleetEventsRequest) (respo
     if request == nil {
         request = NewDescribeFleetEventsRequest()
     }
+    
     response = NewDescribeFleetEventsResponse()
     err = c.Send(request, response)
     return
@@ -919,6 +963,7 @@ func NewDescribeFleetPortSettingsRequest() (request *DescribeFleetPortSettingsRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DescribeFleetPortSettings")
+    
     
     return
 }
@@ -946,6 +991,7 @@ func (c *Client) DescribeFleetPortSettings(request *DescribeFleetPortSettingsReq
     if request == nil {
         request = NewDescribeFleetPortSettingsRequest()
     }
+    
     response = NewDescribeFleetPortSettingsResponse()
     err = c.Send(request, response)
     return
@@ -956,6 +1002,7 @@ func NewDescribeFleetRelatedResourcesRequest() (request *DescribeFleetRelatedRes
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DescribeFleetRelatedResources")
+    
     
     return
 }
@@ -982,6 +1029,7 @@ func (c *Client) DescribeFleetRelatedResources(request *DescribeFleetRelatedReso
     if request == nil {
         request = NewDescribeFleetRelatedResourcesRequest()
     }
+    
     response = NewDescribeFleetRelatedResourcesResponse()
     err = c.Send(request, response)
     return
@@ -992,6 +1040,7 @@ func NewDescribeFleetStatisticDetailsRequest() (request *DescribeFleetStatisticD
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DescribeFleetStatisticDetails")
+    
     
     return
 }
@@ -1024,6 +1073,7 @@ func (c *Client) DescribeFleetStatisticDetails(request *DescribeFleetStatisticDe
     if request == nil {
         request = NewDescribeFleetStatisticDetailsRequest()
     }
+    
     response = NewDescribeFleetStatisticDetailsResponse()
     err = c.Send(request, response)
     return
@@ -1034,6 +1084,7 @@ func NewDescribeFleetStatisticFlowsRequest() (request *DescribeFleetStatisticFlo
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DescribeFleetStatisticFlows")
+    
     
     return
 }
@@ -1065,6 +1116,7 @@ func (c *Client) DescribeFleetStatisticFlows(request *DescribeFleetStatisticFlow
     if request == nil {
         request = NewDescribeFleetStatisticFlowsRequest()
     }
+    
     response = NewDescribeFleetStatisticFlowsResponse()
     err = c.Send(request, response)
     return
@@ -1075,6 +1127,7 @@ func NewDescribeFleetStatisticSummaryRequest() (request *DescribeFleetStatisticS
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DescribeFleetStatisticSummary")
+    
     
     return
 }
@@ -1104,6 +1157,7 @@ func (c *Client) DescribeFleetStatisticSummary(request *DescribeFleetStatisticSu
     if request == nil {
         request = NewDescribeFleetStatisticSummaryRequest()
     }
+    
     response = NewDescribeFleetStatisticSummaryResponse()
     err = c.Send(request, response)
     return
@@ -1114,6 +1168,7 @@ func NewDescribeFleetUtilizationRequest() (request *DescribeFleetUtilizationRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DescribeFleetUtilization")
+    
     
     return
 }
@@ -1147,6 +1202,7 @@ func (c *Client) DescribeFleetUtilization(request *DescribeFleetUtilizationReque
     if request == nil {
         request = NewDescribeFleetUtilizationRequest()
     }
+    
     response = NewDescribeFleetUtilizationResponse()
     err = c.Send(request, response)
     return
@@ -1157,6 +1213,7 @@ func NewDescribeGameServerSessionDetailsRequest() (request *DescribeGameServerSe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DescribeGameServerSessionDetails")
+    
     
     return
 }
@@ -1184,6 +1241,7 @@ func (c *Client) DescribeGameServerSessionDetails(request *DescribeGameServerSes
     if request == nil {
         request = NewDescribeGameServerSessionDetailsRequest()
     }
+    
     response = NewDescribeGameServerSessionDetailsResponse()
     err = c.Send(request, response)
     return
@@ -1194,6 +1252,7 @@ func NewDescribeGameServerSessionPlacementRequest() (request *DescribeGameServer
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DescribeGameServerSessionPlacement")
+    
     
     return
 }
@@ -1218,6 +1277,7 @@ func (c *Client) DescribeGameServerSessionPlacement(request *DescribeGameServerS
     if request == nil {
         request = NewDescribeGameServerSessionPlacementRequest()
     }
+    
     response = NewDescribeGameServerSessionPlacementResponse()
     err = c.Send(request, response)
     return
@@ -1228,6 +1288,7 @@ func NewDescribeGameServerSessionQueuesRequest() (request *DescribeGameServerSes
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DescribeGameServerSessionQueues")
+    
     
     return
 }
@@ -1253,6 +1314,7 @@ func (c *Client) DescribeGameServerSessionQueues(request *DescribeGameServerSess
     if request == nil {
         request = NewDescribeGameServerSessionQueuesRequest()
     }
+    
     response = NewDescribeGameServerSessionQueuesResponse()
     err = c.Send(request, response)
     return
@@ -1263,6 +1325,7 @@ func NewDescribeGameServerSessionsRequest() (request *DescribeGameServerSessions
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DescribeGameServerSessions")
+    
     
     return
 }
@@ -1290,6 +1353,7 @@ func (c *Client) DescribeGameServerSessions(request *DescribeGameServerSessionsR
     if request == nil {
         request = NewDescribeGameServerSessionsRequest()
     }
+    
     response = NewDescribeGameServerSessionsResponse()
     err = c.Send(request, response)
     return
@@ -1300,6 +1364,7 @@ func NewDescribeInstanceLimitRequest() (request *DescribeInstanceLimitRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DescribeInstanceLimit")
+    
     
     return
 }
@@ -1324,6 +1389,7 @@ func (c *Client) DescribeInstanceLimit(request *DescribeInstanceLimitRequest) (r
     if request == nil {
         request = NewDescribeInstanceLimitRequest()
     }
+    
     response = NewDescribeInstanceLimitResponse()
     err = c.Send(request, response)
     return
@@ -1334,6 +1400,7 @@ func NewDescribeInstanceTypesRequest() (request *DescribeInstanceTypesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DescribeInstanceTypes")
+    
     
     return
 }
@@ -1358,6 +1425,7 @@ func (c *Client) DescribeInstanceTypes(request *DescribeInstanceTypesRequest) (r
     if request == nil {
         request = NewDescribeInstanceTypesRequest()
     }
+    
     response = NewDescribeInstanceTypesResponse()
     err = c.Send(request, response)
     return
@@ -1368,6 +1436,7 @@ func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DescribeInstances")
+    
     
     return
 }
@@ -1393,6 +1462,7 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    
     response = NewDescribeInstancesResponse()
     err = c.Send(request, response)
     return
@@ -1403,6 +1473,7 @@ func NewDescribeInstancesExtendRequest() (request *DescribeInstancesExtendReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DescribeInstancesExtend")
+    
     
     return
 }
@@ -1428,6 +1499,7 @@ func (c *Client) DescribeInstancesExtend(request *DescribeInstancesExtendRequest
     if request == nil {
         request = NewDescribeInstancesExtendRequest()
     }
+    
     response = NewDescribeInstancesExtendResponse()
     err = c.Send(request, response)
     return
@@ -1438,6 +1510,7 @@ func NewDescribePlayerSessionsRequest() (request *DescribePlayerSessionsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DescribePlayerSessions")
+    
     
     return
 }
@@ -1464,6 +1537,7 @@ func (c *Client) DescribePlayerSessions(request *DescribePlayerSessionsRequest) 
     if request == nil {
         request = NewDescribePlayerSessionsRequest()
     }
+    
     response = NewDescribePlayerSessionsResponse()
     err = c.Send(request, response)
     return
@@ -1474,6 +1548,7 @@ func NewDescribeRuntimeConfigurationRequest() (request *DescribeRuntimeConfigura
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DescribeRuntimeConfiguration")
+    
     
     return
 }
@@ -1506,6 +1581,7 @@ func (c *Client) DescribeRuntimeConfiguration(request *DescribeRuntimeConfigurat
     if request == nil {
         request = NewDescribeRuntimeConfigurationRequest()
     }
+    
     response = NewDescribeRuntimeConfigurationResponse()
     err = c.Send(request, response)
     return
@@ -1516,6 +1592,7 @@ func NewDescribeScalingPoliciesRequest() (request *DescribeScalingPoliciesReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DescribeScalingPolicies")
+    
     
     return
 }
@@ -1541,6 +1618,7 @@ func (c *Client) DescribeScalingPolicies(request *DescribeScalingPoliciesRequest
     if request == nil {
         request = NewDescribeScalingPoliciesRequest()
     }
+    
     response = NewDescribeScalingPoliciesResponse()
     err = c.Send(request, response)
     return
@@ -1551,6 +1629,7 @@ func NewDescribeTimerScalingPoliciesRequest() (request *DescribeTimerScalingPoli
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DescribeTimerScalingPolicies")
+    
     
     return
 }
@@ -1577,6 +1656,7 @@ func (c *Client) DescribeTimerScalingPolicies(request *DescribeTimerScalingPolic
     if request == nil {
         request = NewDescribeTimerScalingPoliciesRequest()
     }
+    
     response = NewDescribeTimerScalingPoliciesResponse()
     err = c.Send(request, response)
     return
@@ -1587,6 +1667,7 @@ func NewDescribeUserQuotaRequest() (request *DescribeUserQuotaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DescribeUserQuota")
+    
     
     return
 }
@@ -1619,6 +1700,7 @@ func (c *Client) DescribeUserQuota(request *DescribeUserQuotaRequest) (response 
     if request == nil {
         request = NewDescribeUserQuotaRequest()
     }
+    
     response = NewDescribeUserQuotaResponse()
     err = c.Send(request, response)
     return
@@ -1629,6 +1711,7 @@ func NewDescribeUserQuotasRequest() (request *DescribeUserQuotasRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DescribeUserQuotas")
+    
     
     return
 }
@@ -1661,6 +1744,7 @@ func (c *Client) DescribeUserQuotas(request *DescribeUserQuotasRequest) (respons
     if request == nil {
         request = NewDescribeUserQuotasRequest()
     }
+    
     response = NewDescribeUserQuotasResponse()
     err = c.Send(request, response)
     return
@@ -1671,6 +1755,7 @@ func NewDetachCcnInstancesRequest() (request *DetachCcnInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "DetachCcnInstances")
+    
     
     return
 }
@@ -1708,6 +1793,7 @@ func (c *Client) DetachCcnInstances(request *DetachCcnInstancesRequest) (respons
     if request == nil {
         request = NewDetachCcnInstancesRequest()
     }
+    
     response = NewDetachCcnInstancesResponse()
     err = c.Send(request, response)
     return
@@ -1718,6 +1804,7 @@ func NewEndGameServerSessionAndProcessRequest() (request *EndGameServerSessionAn
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "EndGameServerSessionAndProcess")
+    
     
     return
 }
@@ -1741,6 +1828,7 @@ func (c *Client) EndGameServerSessionAndProcess(request *EndGameServerSessionAnd
     if request == nil {
         request = NewEndGameServerSessionAndProcessRequest()
     }
+    
     response = NewEndGameServerSessionAndProcessResponse()
     err = c.Send(request, response)
     return
@@ -1751,6 +1839,7 @@ func NewGetGameServerInstanceLogUrlRequest() (request *GetGameServerInstanceLogU
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "GetGameServerInstanceLogUrl")
+    
     
     return
 }
@@ -1777,6 +1866,7 @@ func (c *Client) GetGameServerInstanceLogUrl(request *GetGameServerInstanceLogUr
     if request == nil {
         request = NewGetGameServerInstanceLogUrlRequest()
     }
+    
     response = NewGetGameServerInstanceLogUrlResponse()
     err = c.Send(request, response)
     return
@@ -1787,6 +1877,7 @@ func NewGetGameServerSessionLogUrlRequest() (request *GetGameServerSessionLogUrl
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "GetGameServerSessionLogUrl")
+    
     
     return
 }
@@ -1813,6 +1904,7 @@ func (c *Client) GetGameServerSessionLogUrl(request *GetGameServerSessionLogUrlR
     if request == nil {
         request = NewGetGameServerSessionLogUrlRequest()
     }
+    
     response = NewGetGameServerSessionLogUrlResponse()
     err = c.Send(request, response)
     return
@@ -1823,6 +1915,7 @@ func NewGetInstanceAccessRequest() (request *GetInstanceAccessRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "GetInstanceAccess")
+    
     
     return
 }
@@ -1855,6 +1948,7 @@ func (c *Client) GetInstanceAccess(request *GetInstanceAccessRequest) (response 
     if request == nil {
         request = NewGetInstanceAccessRequest()
     }
+    
     response = NewGetInstanceAccessResponse()
     err = c.Send(request, response)
     return
@@ -1865,6 +1959,7 @@ func NewGetUploadCredentialsRequest() (request *GetUploadCredentialsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "GetUploadCredentials")
+    
     
     return
 }
@@ -1890,6 +1985,7 @@ func (c *Client) GetUploadCredentials(request *GetUploadCredentialsRequest) (res
     if request == nil {
         request = NewGetUploadCredentialsRequest()
     }
+    
     response = NewGetUploadCredentialsResponse()
     err = c.Send(request, response)
     return
@@ -1900,6 +1996,7 @@ func NewGetUploadFederationTokenRequest() (request *GetUploadFederationTokenRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "GetUploadFederationToken")
+    
     
     return
 }
@@ -1921,6 +2018,7 @@ func (c *Client) GetUploadFederationToken(request *GetUploadFederationTokenReque
     if request == nil {
         request = NewGetUploadFederationTokenRequest()
     }
+    
     response = NewGetUploadFederationTokenResponse()
     err = c.Send(request, response)
     return
@@ -1931,6 +2029,7 @@ func NewJoinGameServerSessionRequest() (request *JoinGameServerSessionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "JoinGameServerSession")
+    
     
     return
 }
@@ -1960,6 +2059,7 @@ func (c *Client) JoinGameServerSession(request *JoinGameServerSessionRequest) (r
     if request == nil {
         request = NewJoinGameServerSessionRequest()
     }
+    
     response = NewJoinGameServerSessionResponse()
     err = c.Send(request, response)
     return
@@ -1970,6 +2070,7 @@ func NewJoinGameServerSessionBatchRequest() (request *JoinGameServerSessionBatch
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "JoinGameServerSessionBatch")
+    
     
     return
 }
@@ -1998,6 +2099,7 @@ func (c *Client) JoinGameServerSessionBatch(request *JoinGameServerSessionBatchR
     if request == nil {
         request = NewJoinGameServerSessionBatchRequest()
     }
+    
     response = NewJoinGameServerSessionBatchResponse()
     err = c.Send(request, response)
     return
@@ -2008,6 +2110,7 @@ func NewListAliasesRequest() (request *ListAliasesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "ListAliases")
+    
     
     return
 }
@@ -2032,6 +2135,7 @@ func (c *Client) ListAliases(request *ListAliasesRequest) (response *ListAliases
     if request == nil {
         request = NewListAliasesRequest()
     }
+    
     response = NewListAliasesResponse()
     err = c.Send(request, response)
     return
@@ -2042,6 +2146,7 @@ func NewListFleetsRequest() (request *ListFleetsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "ListFleets")
+    
     
     return
 }
@@ -2075,6 +2180,7 @@ func (c *Client) ListFleets(request *ListFleetsRequest) (response *ListFleetsRes
     if request == nil {
         request = NewListFleetsRequest()
     }
+    
     response = NewListFleetsResponse()
     err = c.Send(request, response)
     return
@@ -2085,6 +2191,7 @@ func NewPutScalingPolicyRequest() (request *PutScalingPolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "PutScalingPolicy")
+    
     
     return
 }
@@ -2306,6 +2413,7 @@ func (c *Client) PutScalingPolicy(request *PutScalingPolicyRequest) (response *P
     if request == nil {
         request = NewPutScalingPolicyRequest()
     }
+    
     response = NewPutScalingPolicyResponse()
     err = c.Send(request, response)
     return
@@ -2316,6 +2424,7 @@ func NewPutTimerScalingPolicyRequest() (request *PutTimerScalingPolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "PutTimerScalingPolicy")
+    
     
     return
 }
@@ -2347,6 +2456,7 @@ func (c *Client) PutTimerScalingPolicy(request *PutTimerScalingPolicyRequest) (r
     if request == nil {
         request = NewPutTimerScalingPolicyRequest()
     }
+    
     response = NewPutTimerScalingPolicyResponse()
     err = c.Send(request, response)
     return
@@ -2357,6 +2467,7 @@ func NewResolveAliasRequest() (request *ResolveAliasRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "ResolveAlias")
+    
     
     return
 }
@@ -2381,6 +2492,7 @@ func (c *Client) ResolveAlias(request *ResolveAliasRequest) (response *ResolveAl
     if request == nil {
         request = NewResolveAliasRequest()
     }
+    
     response = NewResolveAliasResponse()
     err = c.Send(request, response)
     return
@@ -2391,6 +2503,7 @@ func NewSearchGameServerSessionsRequest() (request *SearchGameServerSessionsRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "SearchGameServerSessions")
+    
     
     return
 }
@@ -2417,6 +2530,7 @@ func (c *Client) SearchGameServerSessions(request *SearchGameServerSessionsReque
     if request == nil {
         request = NewSearchGameServerSessionsRequest()
     }
+    
     response = NewSearchGameServerSessionsResponse()
     err = c.Send(request, response)
     return
@@ -2427,6 +2541,7 @@ func NewSetServerReservedRequest() (request *SetServerReservedRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "SetServerReserved")
+    
     
     return
 }
@@ -2458,6 +2573,7 @@ func (c *Client) SetServerReserved(request *SetServerReservedRequest) (response 
     if request == nil {
         request = NewSetServerReservedRequest()
     }
+    
     response = NewSetServerReservedResponse()
     err = c.Send(request, response)
     return
@@ -2468,6 +2584,7 @@ func NewSetServerWeightRequest() (request *SetServerWeightRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "SetServerWeight")
+    
     
     return
 }
@@ -2500,6 +2617,7 @@ func (c *Client) SetServerWeight(request *SetServerWeightRequest) (response *Set
     if request == nil {
         request = NewSetServerWeightRequest()
     }
+    
     response = NewSetServerWeightResponse()
     err = c.Send(request, response)
     return
@@ -2510,6 +2628,7 @@ func NewStartFleetActionsRequest() (request *StartFleetActionsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "StartFleetActions")
+    
     
     return
 }
@@ -2537,6 +2656,7 @@ func (c *Client) StartFleetActions(request *StartFleetActionsRequest) (response 
     if request == nil {
         request = NewStartFleetActionsRequest()
     }
+    
     response = NewStartFleetActionsResponse()
     err = c.Send(request, response)
     return
@@ -2547,6 +2667,7 @@ func NewStartGameServerSessionPlacementRequest() (request *StartGameServerSessio
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "StartGameServerSessionPlacement")
+    
     
     return
 }
@@ -2573,6 +2694,7 @@ func (c *Client) StartGameServerSessionPlacement(request *StartGameServerSession
     if request == nil {
         request = NewStartGameServerSessionPlacementRequest()
     }
+    
     response = NewStartGameServerSessionPlacementResponse()
     err = c.Send(request, response)
     return
@@ -2583,6 +2705,7 @@ func NewStopFleetActionsRequest() (request *StopFleetActionsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "StopFleetActions")
+    
     
     return
 }
@@ -2610,6 +2733,7 @@ func (c *Client) StopFleetActions(request *StopFleetActionsRequest) (response *S
     if request == nil {
         request = NewStopFleetActionsRequest()
     }
+    
     response = NewStopFleetActionsResponse()
     err = c.Send(request, response)
     return
@@ -2620,6 +2744,7 @@ func NewStopGameServerSessionPlacementRequest() (request *StopGameServerSessionP
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "StopGameServerSessionPlacement")
+    
     
     return
 }
@@ -2643,6 +2768,7 @@ func (c *Client) StopGameServerSessionPlacement(request *StopGameServerSessionPl
     if request == nil {
         request = NewStopGameServerSessionPlacementRequest()
     }
+    
     response = NewStopGameServerSessionPlacementResponse()
     err = c.Send(request, response)
     return
@@ -2653,6 +2779,7 @@ func NewUpdateAliasRequest() (request *UpdateAliasRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "UpdateAlias")
+    
     
     return
 }
@@ -2676,6 +2803,7 @@ func (c *Client) UpdateAlias(request *UpdateAliasRequest) (response *UpdateAlias
     if request == nil {
         request = NewUpdateAliasRequest()
     }
+    
     response = NewUpdateAliasResponse()
     err = c.Send(request, response)
     return
@@ -2686,6 +2814,7 @@ func NewUpdateAssetRequest() (request *UpdateAssetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "UpdateAsset")
+    
     
     return
 }
@@ -2711,6 +2840,7 @@ func (c *Client) UpdateAsset(request *UpdateAssetRequest) (response *UpdateAsset
     if request == nil {
         request = NewUpdateAssetRequest()
     }
+    
     response = NewUpdateAssetResponse()
     err = c.Send(request, response)
     return
@@ -2721,6 +2851,7 @@ func NewUpdateBucketAccelerateOptRequest() (request *UpdateBucketAccelerateOptRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "UpdateBucketAccelerateOpt")
+    
     
     return
 }
@@ -2746,6 +2877,7 @@ func (c *Client) UpdateBucketAccelerateOpt(request *UpdateBucketAccelerateOptReq
     if request == nil {
         request = NewUpdateBucketAccelerateOptRequest()
     }
+    
     response = NewUpdateBucketAccelerateOptResponse()
     err = c.Send(request, response)
     return
@@ -2756,6 +2888,7 @@ func NewUpdateBucketCORSOptRequest() (request *UpdateBucketCORSOptRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "UpdateBucketCORSOpt")
+    
     
     return
 }
@@ -2782,6 +2915,7 @@ func (c *Client) UpdateBucketCORSOpt(request *UpdateBucketCORSOptRequest) (respo
     if request == nil {
         request = NewUpdateBucketCORSOptRequest()
     }
+    
     response = NewUpdateBucketCORSOptResponse()
     err = c.Send(request, response)
     return
@@ -2792,6 +2926,7 @@ func NewUpdateFleetAttributesRequest() (request *UpdateFleetAttributesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "UpdateFleetAttributes")
+    
     
     return
 }
@@ -2824,6 +2959,7 @@ func (c *Client) UpdateFleetAttributes(request *UpdateFleetAttributesRequest) (r
     if request == nil {
         request = NewUpdateFleetAttributesRequest()
     }
+    
     response = NewUpdateFleetAttributesResponse()
     err = c.Send(request, response)
     return
@@ -2834,6 +2970,7 @@ func NewUpdateFleetCapacityRequest() (request *UpdateFleetCapacityRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "UpdateFleetCapacity")
+    
     
     return
 }
@@ -2862,6 +2999,7 @@ func (c *Client) UpdateFleetCapacity(request *UpdateFleetCapacityRequest) (respo
     if request == nil {
         request = NewUpdateFleetCapacityRequest()
     }
+    
     response = NewUpdateFleetCapacityResponse()
     err = c.Send(request, response)
     return
@@ -2872,6 +3010,7 @@ func NewUpdateFleetNameRequest() (request *UpdateFleetNameRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "UpdateFleetName")
+    
     
     return
 }
@@ -2904,6 +3043,7 @@ func (c *Client) UpdateFleetName(request *UpdateFleetNameRequest) (response *Upd
     if request == nil {
         request = NewUpdateFleetNameRequest()
     }
+    
     response = NewUpdateFleetNameResponse()
     err = c.Send(request, response)
     return
@@ -2914,6 +3054,7 @@ func NewUpdateFleetPortSettingsRequest() (request *UpdateFleetPortSettingsReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "UpdateFleetPortSettings")
+    
     
     return
 }
@@ -2946,6 +3087,7 @@ func (c *Client) UpdateFleetPortSettings(request *UpdateFleetPortSettingsRequest
     if request == nil {
         request = NewUpdateFleetPortSettingsRequest()
     }
+    
     response = NewUpdateFleetPortSettingsResponse()
     err = c.Send(request, response)
     return
@@ -2956,6 +3098,7 @@ func NewUpdateGameServerSessionRequest() (request *UpdateGameServerSessionReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "UpdateGameServerSession")
+    
     
     return
 }
@@ -2981,6 +3124,7 @@ func (c *Client) UpdateGameServerSession(request *UpdateGameServerSessionRequest
     if request == nil {
         request = NewUpdateGameServerSessionRequest()
     }
+    
     response = NewUpdateGameServerSessionResponse()
     err = c.Send(request, response)
     return
@@ -2991,6 +3135,7 @@ func NewUpdateGameServerSessionQueueRequest() (request *UpdateGameServerSessionQ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "UpdateGameServerSessionQueue")
+    
     
     return
 }
@@ -3018,6 +3163,7 @@ func (c *Client) UpdateGameServerSessionQueue(request *UpdateGameServerSessionQu
     if request == nil {
         request = NewUpdateGameServerSessionQueueRequest()
     }
+    
     response = NewUpdateGameServerSessionQueueResponse()
     err = c.Send(request, response)
     return
@@ -3028,6 +3174,7 @@ func NewUpdateRuntimeConfigurationRequest() (request *UpdateRuntimeConfiguration
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gse", APIVersion, "UpdateRuntimeConfiguration")
+    
     
     return
 }
@@ -3060,6 +3207,7 @@ func (c *Client) UpdateRuntimeConfiguration(request *UpdateRuntimeConfigurationR
     if request == nil {
         request = NewUpdateRuntimeConfigurationRequest()
     }
+    
     response = NewUpdateRuntimeConfigurationResponse()
     err = c.Send(request, response)
     return

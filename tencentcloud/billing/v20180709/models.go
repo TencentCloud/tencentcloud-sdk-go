@@ -110,15 +110,15 @@ type BillDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*BillTagInfo `json:"Tags,omitempty" name:"Tags"`
 
-	// 商品名称代码
+	// 产品名称代码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessCode *string `json:"BusinessCode,omitempty" name:"BusinessCode"`
 
-	// 子商品名称代码
+	// 子产品名称代码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductCode *string `json:"ProductCode,omitempty" name:"ProductCode"`
 
-	// 交易类型代码（未开放的字段）
+	// 交易类型代码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
 
@@ -198,7 +198,7 @@ type BillResourceSummary struct {
 	// 产品名称：云产品大类，如云服务器CVM、云数据库MySQL
 	BusinessCodeName *string `json:"BusinessCodeName,omitempty" name:"BusinessCodeName"`
 
-	// 子产品：云产品子类，如云服务器CVM-标准型S1， 当没有获取到子产品名称时，返回"-"
+	// 子产品名称：云产品子类，如云服务器CVM-标准型S1， 当没有获取到子产品名称时，返回"-"
 	ProductCodeName *string `json:"ProductCodeName,omitempty" name:"ProductCodeName"`
 
 	// 计费模式：包年包月和按量计费
@@ -287,10 +287,10 @@ type BillResourceSummary struct {
 	// 操作者uin,无值则返回"-"
 	OperateUin *string `json:"OperateUin,omitempty" name:"OperateUin"`
 
-	// 商品名称代码
+	// 产品名称代码
 	BusinessCode *string `json:"BusinessCode,omitempty" name:"BusinessCode"`
 
-	// 子商品名称代码
+	// 子产品名称代码
 	ProductCode *string `json:"ProductCode,omitempty" name:"ProductCode"`
 
 	// 区域ID
@@ -344,7 +344,7 @@ type BillTransactionInfo struct {
 
 type BusinessSummaryOverviewItem struct {
 
-	// 产品码
+	// 产品名称代码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessCode *string `json:"BusinessCode,omitempty" name:"BusinessCode"`
 
@@ -393,7 +393,7 @@ type BusinessSummaryTotal struct {
 
 type ConditionBusiness struct {
 
-	// 产品码
+	// 产品名称代码
 	BusinessCode *string `json:"BusinessCode,omitempty" name:"BusinessCode"`
 
 	// 产品名称
@@ -432,7 +432,7 @@ type Conditions struct {
 	// 只支持6和12两个值
 	TimeRange *uint64 `json:"TimeRange,omitempty" name:"TimeRange"`
 
-	// 产品编码
+	// 产品名称代码
 	BusinessCode *string `json:"BusinessCode,omitempty" name:"BusinessCode"`
 
 	// 项目ID
@@ -447,10 +447,10 @@ type Conditions struct {
 	// 资源关键字
 	ResourceKeyword *string `json:"ResourceKeyword,omitempty" name:"ResourceKeyword"`
 
-	// 产品编码
+	// 产品名称代码
 	BusinessCodes []*string `json:"BusinessCodes,omitempty" name:"BusinessCodes"`
 
-	// 子产品编码
+	// 子产品名称代码
 	ProductCodes []*string `json:"ProductCodes,omitempty" name:"ProductCodes"`
 
 	// 地域ID
@@ -489,7 +489,7 @@ type Conditions struct {
 
 type ConsumptionBusinessSummaryDataItem struct {
 
-	// 产品码
+	// 产品名称代码
 	BusinessCode *string `json:"BusinessCode,omitempty" name:"BusinessCode"`
 
 	// 产品名称
@@ -585,7 +585,7 @@ type ConsumptionResourceSummaryDataItem struct {
 	// 付费模式名称
 	PayModeName *string `json:"PayModeName,omitempty" name:"PayModeName"`
 
-	// 产品码
+	// 产品名称代码
 	BusinessCode *string `json:"BusinessCode,omitempty" name:"BusinessCode"`
 
 	// 产品名称
@@ -679,10 +679,10 @@ type CostDetail struct {
 	// 支付者uin
 	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
 
-	// 业务名称
+	// 产品名称
 	BusinessCodeName *string `json:"BusinessCodeName,omitempty" name:"BusinessCodeName"`
 
-	// 产品名称
+	// 子产品名称
 	ProductCodeName *string `json:"ProductCodeName,omitempty" name:"ProductCodeName"`
 
 	// 计费模式名称
@@ -722,7 +722,7 @@ type CostDetail struct {
 	// 组件明细
 	ComponentSet []*CostComponentSet `json:"ComponentSet,omitempty" name:"ComponentSet"`
 
-	// 产品代码
+	// 子产品名称代码
 	ProductCode *string `json:"ProductCode,omitempty" name:"ProductCode"`
 }
 
@@ -913,13 +913,43 @@ type DescribeBillDetailRequest struct {
 	// 查询指定资源信息
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// 查询交易类型。如 按量计费日结，按量计费小时结 等
+	// 查询交易类型，如下：
+	// 包年包月新购
+	// 包年包月续费
+	// 包年包月配置变更
+	// 包年包月退款
+	// 按量计费扣费
+	// 按量计费小时结
+	// 按量计费日结
+	// 按量计费月结
+	// 线下项目扣费
+	// 线下产品扣费
+	// 调账扣费
+	// 调账补偿
+	// 竞价实例小时结
+	// 线下项目调账补偿
+	// 线下产品调账补偿
+	// 优惠扣费
+	// 优惠补偿
+	// 按量计费迁入资源
+	// 按量计费迁出资源
+	// 包年包月迁入资源
+	// 包年包月迁出资源
+	// 预付费用
+	// 小时费用
+	// 预留实例退款
+	// 按量计费冲正
+	// 按量计费冲正
+	// 按量计费冲正
+	// 按量计费冲正
+	// 按量计费冲正
+	// 包年包月转按量
 	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
 
 	// 项目ID:资源所属项目ID
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 商品名称代码
+	// 产品名称代码
 	// 备注：如需获取当月使用过的BusinessCode，请调用API：<a href="https://cloud.tencent.com/document/product/555/35761">获取产品汇总费用分布</a>
 	BusinessCode *string `json:"BusinessCode,omitempty" name:"BusinessCode"`
 }
@@ -1160,6 +1190,7 @@ type DescribeBillResourceSummaryRequest struct {
 	// 按量计费冲正
 	// 按量计费冲正
 	// 按量计费冲正
+	// 包年包月转按量
 	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
 
 	// 查询指定资源信息
@@ -1168,7 +1199,7 @@ type DescribeBillResourceSummaryRequest struct {
 	// 付费模式 prePay/postPay
 	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
 
-	// 商品名称代码
+	// 产品名称代码
 	// 备注：如需获取当月使用过的BusinessCode，请调用API：<a href="https://cloud.tencent.com/document/product/555/35761">获取产品汇总费用分布</a>
 	BusinessCode *string `json:"BusinessCode,omitempty" name:"BusinessCode"`
 }

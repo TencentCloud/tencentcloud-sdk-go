@@ -49,6 +49,7 @@ func NewDescribeCaptchaAppIdInfoRequest() (request *DescribeCaptchaAppIdInfoRequ
     }
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaAppIdInfo")
     
+    
     return
 }
 
@@ -71,6 +72,7 @@ func (c *Client) DescribeCaptchaAppIdInfo(request *DescribeCaptchaAppIdInfoReque
     if request == nil {
         request = NewDescribeCaptchaAppIdInfoRequest()
     }
+    
     response = NewDescribeCaptchaAppIdInfoResponse()
     err = c.Send(request, response)
     return
@@ -81,6 +83,7 @@ func NewDescribeCaptchaDataRequest() (request *DescribeCaptchaDataRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaData")
+    
     
     return
 }
@@ -104,6 +107,7 @@ func (c *Client) DescribeCaptchaData(request *DescribeCaptchaDataRequest) (respo
     if request == nil {
         request = NewDescribeCaptchaDataRequest()
     }
+    
     response = NewDescribeCaptchaDataResponse()
     err = c.Send(request, response)
     return
@@ -114,6 +118,7 @@ func NewDescribeCaptchaDataSumRequest() (request *DescribeCaptchaDataSumRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaDataSum")
+    
     
     return
 }
@@ -137,6 +142,7 @@ func (c *Client) DescribeCaptchaDataSum(request *DescribeCaptchaDataSumRequest) 
     if request == nil {
         request = NewDescribeCaptchaDataSumRequest()
     }
+    
     response = NewDescribeCaptchaDataSumResponse()
     err = c.Send(request, response)
     return
@@ -147,6 +153,7 @@ func NewDescribeCaptchaMiniDataRequest() (request *DescribeCaptchaMiniDataReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaMiniData")
+    
     
     return
 }
@@ -170,6 +177,7 @@ func (c *Client) DescribeCaptchaMiniData(request *DescribeCaptchaMiniDataRequest
     if request == nil {
         request = NewDescribeCaptchaMiniDataRequest()
     }
+    
     response = NewDescribeCaptchaMiniDataResponse()
     err = c.Send(request, response)
     return
@@ -180,6 +188,7 @@ func NewDescribeCaptchaMiniDataSumRequest() (request *DescribeCaptchaMiniDataSum
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaMiniDataSum")
+    
     
     return
 }
@@ -203,6 +212,7 @@ func (c *Client) DescribeCaptchaMiniDataSum(request *DescribeCaptchaMiniDataSumR
     if request == nil {
         request = NewDescribeCaptchaMiniDataSumRequest()
     }
+    
     response = NewDescribeCaptchaMiniDataSumResponse()
     err = c.Send(request, response)
     return
@@ -213,6 +223,7 @@ func NewDescribeCaptchaMiniOperDataRequest() (request *DescribeCaptchaMiniOperDa
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaMiniOperData")
+    
     
     return
 }
@@ -236,6 +247,7 @@ func (c *Client) DescribeCaptchaMiniOperData(request *DescribeCaptchaMiniOperDat
     if request == nil {
         request = NewDescribeCaptchaMiniOperDataRequest()
     }
+    
     response = NewDescribeCaptchaMiniOperDataResponse()
     err = c.Send(request, response)
     return
@@ -246,6 +258,7 @@ func NewDescribeCaptchaMiniResultRequest() (request *DescribeCaptchaMiniResultRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaMiniResult")
+    
     
     return
 }
@@ -269,6 +282,7 @@ func (c *Client) DescribeCaptchaMiniResult(request *DescribeCaptchaMiniResultReq
     if request == nil {
         request = NewDescribeCaptchaMiniResultRequest()
     }
+    
     response = NewDescribeCaptchaMiniResultResponse()
     err = c.Send(request, response)
     return
@@ -279,6 +293,7 @@ func NewDescribeCaptchaMiniRiskResultRequest() (request *DescribeCaptchaMiniRisk
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaMiniRiskResult")
+    
     
     return
 }
@@ -302,6 +317,7 @@ func (c *Client) DescribeCaptchaMiniRiskResult(request *DescribeCaptchaMiniRiskR
     if request == nil {
         request = NewDescribeCaptchaMiniRiskResultRequest()
     }
+    
     response = NewDescribeCaptchaMiniRiskResultResponse()
     err = c.Send(request, response)
     return
@@ -312,6 +328,7 @@ func NewDescribeCaptchaOperDataRequest() (request *DescribeCaptchaOperDataReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaOperData")
+    
     
     return
 }
@@ -335,6 +352,7 @@ func (c *Client) DescribeCaptchaOperData(request *DescribeCaptchaOperDataRequest
     if request == nil {
         request = NewDescribeCaptchaOperDataRequest()
     }
+    
     response = NewDescribeCaptchaOperDataResponse()
     err = c.Send(request, response)
     return
@@ -345,6 +363,7 @@ func NewDescribeCaptchaResultRequest() (request *DescribeCaptchaResultRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaResult")
+    
     
     return
 }
@@ -368,6 +387,7 @@ func (c *Client) DescribeCaptchaResult(request *DescribeCaptchaResultRequest) (r
     if request == nil {
         request = NewDescribeCaptchaResultRequest()
     }
+    
     response = NewDescribeCaptchaResultResponse()
     err = c.Send(request, response)
     return
@@ -378,6 +398,7 @@ func NewDescribeCaptchaTicketDataRequest() (request *DescribeCaptchaTicketDataRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaTicketData")
+    
     
     return
 }
@@ -401,6 +422,7 @@ func (c *Client) DescribeCaptchaTicketData(request *DescribeCaptchaTicketDataReq
     if request == nil {
         request = NewDescribeCaptchaTicketDataRequest()
     }
+    
     response = NewDescribeCaptchaTicketDataResponse()
     err = c.Send(request, response)
     return
@@ -411,6 +433,7 @@ func NewDescribeCaptchaUserAllAppIdRequest() (request *DescribeCaptchaUserAllApp
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaUserAllAppId")
+    
     
     return
 }
@@ -434,6 +457,7 @@ func (c *Client) DescribeCaptchaUserAllAppId(request *DescribeCaptchaUserAllAppI
     if request == nil {
         request = NewDescribeCaptchaUserAllAppIdRequest()
     }
+    
     response = NewDescribeCaptchaUserAllAppIdResponse()
     err = c.Send(request, response)
     return
@@ -444,6 +468,7 @@ func NewUpdateCaptchaAppIdInfoRequest() (request *UpdateCaptchaAppIdInfoRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("captcha", APIVersion, "UpdateCaptchaAppIdInfo")
+    
     
     return
 }
@@ -467,6 +492,7 @@ func (c *Client) UpdateCaptchaAppIdInfo(request *UpdateCaptchaAppIdInfoRequest) 
     if request == nil {
         request = NewUpdateCaptchaAppIdInfoRequest()
     }
+    
     response = NewUpdateCaptchaAppIdInfoResponse()
     err = c.Send(request, response)
     return

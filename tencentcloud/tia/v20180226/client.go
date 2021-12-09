@@ -49,6 +49,7 @@ func NewCreateJobRequest() (request *CreateJobRequest) {
     }
     request.Init().WithApiInfo("tia", APIVersion, "CreateJob")
     
+    
     return
 }
 
@@ -74,6 +75,7 @@ func (c *Client) CreateJob(request *CreateJobRequest) (response *CreateJobRespon
     if request == nil {
         request = NewCreateJobRequest()
     }
+    
     response = NewCreateJobResponse()
     err = c.Send(request, response)
     return
@@ -84,6 +86,7 @@ func NewCreateModelRequest() (request *CreateModelRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tia", APIVersion, "CreateModel")
+    
     
     return
 }
@@ -124,6 +127,7 @@ func (c *Client) CreateModel(request *CreateModelRequest) (response *CreateModel
     if request == nil {
         request = NewCreateModelRequest()
     }
+    
     response = NewCreateModelResponse()
     err = c.Send(request, response)
     return
@@ -134,6 +138,7 @@ func NewDeleteJobRequest() (request *DeleteJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tia", APIVersion, "DeleteJob")
+    
     
     return
 }
@@ -156,6 +161,7 @@ func (c *Client) DeleteJob(request *DeleteJobRequest) (response *DeleteJobRespon
     if request == nil {
         request = NewDeleteJobRequest()
     }
+    
     response = NewDeleteJobResponse()
     err = c.Send(request, response)
     return
@@ -166,6 +172,7 @@ func NewDeleteModelRequest() (request *DeleteModelRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tia", APIVersion, "DeleteModel")
+    
     
     return
 }
@@ -195,6 +202,7 @@ func (c *Client) DeleteModel(request *DeleteModelRequest) (response *DeleteModel
     if request == nil {
         request = NewDeleteModelRequest()
     }
+    
     response = NewDeleteModelResponse()
     err = c.Send(request, response)
     return
@@ -205,6 +213,7 @@ func NewDescribeJobRequest() (request *DescribeJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tia", APIVersion, "DescribeJob")
+    
     
     return
 }
@@ -231,6 +240,7 @@ func (c *Client) DescribeJob(request *DescribeJobRequest) (response *DescribeJob
     if request == nil {
         request = NewDescribeJobRequest()
     }
+    
     response = NewDescribeJobResponse()
     err = c.Send(request, response)
     return
@@ -241,6 +251,7 @@ func NewDescribeModelRequest() (request *DescribeModelRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tia", APIVersion, "DescribeModel")
+    
     
     return
 }
@@ -268,6 +279,7 @@ func (c *Client) DescribeModel(request *DescribeModelRequest) (response *Describ
     if request == nil {
         request = NewDescribeModelRequest()
     }
+    
     response = NewDescribeModelResponse()
     err = c.Send(request, response)
     return
@@ -278,6 +290,7 @@ func NewInstallAgentRequest() (request *InstallAgentRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tia", APIVersion, "InstallAgent")
+    
     
     return
 }
@@ -302,6 +315,7 @@ func (c *Client) InstallAgent(request *InstallAgentRequest) (response *InstallAg
     if request == nil {
         request = NewInstallAgentRequest()
     }
+    
     response = NewInstallAgentResponse()
     err = c.Send(request, response)
     return
@@ -312,6 +326,7 @@ func NewListJobsRequest() (request *ListJobsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tia", APIVersion, "ListJobs")
+    
     
     return
 }
@@ -337,6 +352,7 @@ func (c *Client) ListJobs(request *ListJobsRequest) (response *ListJobsResponse,
     if request == nil {
         request = NewListJobsRequest()
     }
+    
     response = NewListJobsResponse()
     err = c.Send(request, response)
     return
@@ -347,6 +363,7 @@ func NewListModelsRequest() (request *ListModelsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tia", APIVersion, "ListModels")
+    
     
     return
 }
@@ -378,6 +395,7 @@ func (c *Client) ListModels(request *ListModelsRequest) (response *ListModelsRes
     if request == nil {
         request = NewListModelsRequest()
     }
+    
     response = NewListModelsResponse()
     err = c.Send(request, response)
     return
@@ -388,6 +406,7 @@ func NewQueryLogsRequest() (request *QueryLogsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tia", APIVersion, "QueryLogs")
+    
     
     return
 }
@@ -414,6 +433,7 @@ func (c *Client) QueryLogs(request *QueryLogsRequest) (response *QueryLogsRespon
     if request == nil {
         request = NewQueryLogsRequest()
     }
+    
     response = NewQueryLogsResponse()
     err = c.Send(request, response)
     return

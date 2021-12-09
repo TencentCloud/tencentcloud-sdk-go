@@ -49,6 +49,7 @@ func NewAgentPayDealsRequest() (request *AgentPayDealsRequest) {
     }
     request.Init().WithApiInfo("partners", APIVersion, "AgentPayDeals")
     
+    
     return
 }
 
@@ -71,6 +72,7 @@ func (c *Client) AgentPayDeals(request *AgentPayDealsRequest) (response *AgentPa
     if request == nil {
         request = NewAgentPayDealsRequest()
     }
+    
     response = NewAgentPayDealsResponse()
     err = c.Send(request, response)
     return
@@ -81,6 +83,7 @@ func NewAgentTransferMoneyRequest() (request *AgentTransferMoneyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "AgentTransferMoney")
+    
     
     return
 }
@@ -104,6 +107,7 @@ func (c *Client) AgentTransferMoney(request *AgentTransferMoneyRequest) (respons
     if request == nil {
         request = NewAgentTransferMoneyRequest()
     }
+    
     response = NewAgentTransferMoneyResponse()
     err = c.Send(request, response)
     return
@@ -114,6 +118,7 @@ func NewAuditApplyClientRequest() (request *AuditApplyClientRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "AuditApplyClient")
+    
     
     return
 }
@@ -136,6 +141,7 @@ func (c *Client) AuditApplyClient(request *AuditApplyClientRequest) (response *A
     if request == nil {
         request = NewAuditApplyClientRequest()
     }
+    
     response = NewAuditApplyClientResponse()
     err = c.Send(request, response)
     return
@@ -146,6 +152,7 @@ func NewCreatePayRelationForClientRequest() (request *CreatePayRelationForClient
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "CreatePayRelationForClient")
+    
     
     return
 }
@@ -166,6 +173,7 @@ func (c *Client) CreatePayRelationForClient(request *CreatePayRelationForClientR
     if request == nil {
         request = NewCreatePayRelationForClientRequest()
     }
+    
     response = NewCreatePayRelationForClientResponse()
     err = c.Send(request, response)
     return
@@ -176,6 +184,7 @@ func NewDescribeAgentAuditedClientsRequest() (request *DescribeAgentAuditedClien
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentAuditedClients")
+    
     
     return
 }
@@ -198,6 +207,7 @@ func (c *Client) DescribeAgentAuditedClients(request *DescribeAgentAuditedClient
     if request == nil {
         request = NewDescribeAgentAuditedClientsRequest()
     }
+    
     response = NewDescribeAgentAuditedClientsResponse()
     err = c.Send(request, response)
     return
@@ -208,6 +218,7 @@ func NewDescribeAgentBillsRequest() (request *DescribeAgentBillsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentBills")
+    
     
     return
 }
@@ -229,6 +240,7 @@ func (c *Client) DescribeAgentBills(request *DescribeAgentBillsRequest) (respons
     if request == nil {
         request = NewDescribeAgentBillsRequest()
     }
+    
     response = NewDescribeAgentBillsResponse()
     err = c.Send(request, response)
     return
@@ -239,6 +251,7 @@ func NewDescribeAgentClientGradeRequest() (request *DescribeAgentClientGradeRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentClientGrade")
+    
     
     return
 }
@@ -262,6 +275,7 @@ func (c *Client) DescribeAgentClientGrade(request *DescribeAgentClientGradeReque
     if request == nil {
         request = NewDescribeAgentClientGradeRequest()
     }
+    
     response = NewDescribeAgentClientGradeResponse()
     err = c.Send(request, response)
     return
@@ -272,6 +286,7 @@ func NewDescribeAgentClientsRequest() (request *DescribeAgentClientsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentClients")
+    
     
     return
 }
@@ -293,6 +308,7 @@ func (c *Client) DescribeAgentClients(request *DescribeAgentClientsRequest) (res
     if request == nil {
         request = NewDescribeAgentClientsRequest()
     }
+    
     response = NewDescribeAgentClientsResponse()
     err = c.Send(request, response)
     return
@@ -303,6 +319,7 @@ func NewDescribeAgentDealsByCacheRequest() (request *DescribeAgentDealsByCacheRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentDealsByCache")
+    
     
     return
 }
@@ -326,6 +343,7 @@ func (c *Client) DescribeAgentDealsByCache(request *DescribeAgentDealsByCacheReq
     if request == nil {
         request = NewDescribeAgentDealsByCacheRequest()
     }
+    
     response = NewDescribeAgentDealsByCacheResponse()
     err = c.Send(request, response)
     return
@@ -336,6 +354,7 @@ func NewDescribeAgentDealsCacheRequest() (request *DescribeAgentDealsCacheReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentDealsCache")
+    
     
     return
 }
@@ -359,6 +378,7 @@ func (c *Client) DescribeAgentDealsCache(request *DescribeAgentDealsCacheRequest
     if request == nil {
         request = NewDescribeAgentDealsCacheRequest()
     }
+    
     response = NewDescribeAgentDealsCacheResponse()
     err = c.Send(request, response)
     return
@@ -369,6 +389,7 @@ func NewDescribeAgentPayDealsRequest() (request *DescribeAgentPayDealsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentPayDeals")
+    
     
     return
 }
@@ -392,6 +413,7 @@ func (c *Client) DescribeAgentPayDeals(request *DescribeAgentPayDealsRequest) (r
     if request == nil {
         request = NewDescribeAgentPayDealsRequest()
     }
+    
     response = NewDescribeAgentPayDealsResponse()
     err = c.Send(request, response)
     return
@@ -402,6 +424,7 @@ func NewDescribeAgentPayDealsV2Request() (request *DescribeAgentPayDealsV2Reques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentPayDealsV2")
+    
     
     return
 }
@@ -425,6 +448,7 @@ func (c *Client) DescribeAgentPayDealsV2(request *DescribeAgentPayDealsV2Request
     if request == nil {
         request = NewDescribeAgentPayDealsV2Request()
     }
+    
     response = NewDescribeAgentPayDealsV2Response()
     err = c.Send(request, response)
     return
@@ -435,6 +459,7 @@ func NewDescribeAgentSelfPayDealsRequest() (request *DescribeAgentSelfPayDealsRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentSelfPayDeals")
+    
     
     return
 }
@@ -458,6 +483,7 @@ func (c *Client) DescribeAgentSelfPayDeals(request *DescribeAgentSelfPayDealsReq
     if request == nil {
         request = NewDescribeAgentSelfPayDealsRequest()
     }
+    
     response = NewDescribeAgentSelfPayDealsResponse()
     err = c.Send(request, response)
     return
@@ -468,6 +494,7 @@ func NewDescribeAgentSelfPayDealsV2Request() (request *DescribeAgentSelfPayDeals
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentSelfPayDealsV2")
+    
     
     return
 }
@@ -491,6 +518,7 @@ func (c *Client) DescribeAgentSelfPayDealsV2(request *DescribeAgentSelfPayDealsV
     if request == nil {
         request = NewDescribeAgentSelfPayDealsV2Request()
     }
+    
     response = NewDescribeAgentSelfPayDealsV2Response()
     err = c.Send(request, response)
     return
@@ -501,6 +529,7 @@ func NewDescribeClientBalanceRequest() (request *DescribeClientBalanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "DescribeClientBalance")
+    
     
     return
 }
@@ -523,6 +552,7 @@ func (c *Client) DescribeClientBalance(request *DescribeClientBalanceRequest) (r
     if request == nil {
         request = NewDescribeClientBalanceRequest()
     }
+    
     response = NewDescribeClientBalanceResponse()
     err = c.Send(request, response)
     return
@@ -533,6 +563,7 @@ func NewDescribeClientBalanceNewRequest() (request *DescribeClientBalanceNewRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "DescribeClientBalanceNew")
+    
     
     return
 }
@@ -555,6 +586,7 @@ func (c *Client) DescribeClientBalanceNew(request *DescribeClientBalanceNewReque
     if request == nil {
         request = NewDescribeClientBalanceNewRequest()
     }
+    
     response = NewDescribeClientBalanceNewResponse()
     err = c.Send(request, response)
     return
@@ -565,6 +597,7 @@ func NewDescribeRebateInfosRequest() (request *DescribeRebateInfosRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "DescribeRebateInfos")
+    
     
     return
 }
@@ -586,6 +619,7 @@ func (c *Client) DescribeRebateInfos(request *DescribeRebateInfosRequest) (respo
     if request == nil {
         request = NewDescribeRebateInfosRequest()
     }
+    
     response = NewDescribeRebateInfosResponse()
     err = c.Send(request, response)
     return
@@ -596,6 +630,7 @@ func NewDescribeSalesmansRequest() (request *DescribeSalesmansRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "DescribeSalesmans")
+    
     
     return
 }
@@ -619,6 +654,7 @@ func (c *Client) DescribeSalesmans(request *DescribeSalesmansRequest) (response 
     if request == nil {
         request = NewDescribeSalesmansRequest()
     }
+    
     response = NewDescribeSalesmansResponse()
     err = c.Send(request, response)
     return
@@ -629,6 +665,7 @@ func NewDescribeUnbindClientListRequest() (request *DescribeUnbindClientListRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "DescribeUnbindClientList")
+    
     
     return
 }
@@ -652,6 +689,7 @@ func (c *Client) DescribeUnbindClientList(request *DescribeUnbindClientListReque
     if request == nil {
         request = NewDescribeUnbindClientListRequest()
     }
+    
     response = NewDescribeUnbindClientListResponse()
     err = c.Send(request, response)
     return
@@ -662,6 +700,7 @@ func NewModifyClientRemarkRequest() (request *ModifyClientRemarkRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "ModifyClientRemark")
+    
     
     return
 }
@@ -683,6 +722,7 @@ func (c *Client) ModifyClientRemark(request *ModifyClientRemarkRequest) (respons
     if request == nil {
         request = NewModifyClientRemarkRequest()
     }
+    
     response = NewModifyClientRemarkResponse()
     err = c.Send(request, response)
     return
@@ -693,6 +733,7 @@ func NewRemovePayRelationForClientRequest() (request *RemovePayRelationForClient
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("partners", APIVersion, "RemovePayRelationForClient")
+    
     
     return
 }
@@ -713,6 +754,7 @@ func (c *Client) RemovePayRelationForClient(request *RemovePayRelationForClientR
     if request == nil {
         request = NewRemovePayRelationForClientRequest()
     }
+    
     response = NewRemovePayRelationForClientResponse()
     err = c.Send(request, response)
     return

@@ -49,6 +49,7 @@ func NewInitOralProcessRequest() (request *InitOralProcessRequest) {
     }
     request.Init().WithApiInfo("soe", APIVersion, "InitOralProcess")
     
+    
     return
 }
 
@@ -150,6 +151,7 @@ func (c *Client) InitOralProcess(request *InitOralProcessRequest) (response *Ini
     if request == nil {
         request = NewInitOralProcessRequest()
     }
+    
     response = NewInitOralProcessResponse()
     err = c.Send(request, response)
     return
@@ -160,6 +162,7 @@ func NewKeywordEvaluateRequest() (request *KeywordEvaluateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("soe", APIVersion, "KeywordEvaluate")
+    
     
     return
 }
@@ -248,6 +251,7 @@ func (c *Client) KeywordEvaluate(request *KeywordEvaluateRequest) (response *Key
     if request == nil {
         request = NewKeywordEvaluateRequest()
     }
+    
     response = NewKeywordEvaluateResponse()
     err = c.Send(request, response)
     return
@@ -258,6 +262,7 @@ func NewTransmitOralProcessRequest() (request *TransmitOralProcessRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("soe", APIVersion, "TransmitOralProcess")
+    
     
     return
 }
@@ -373,6 +378,7 @@ func (c *Client) TransmitOralProcess(request *TransmitOralProcessRequest) (respo
     if request == nil {
         request = NewTransmitOralProcessRequest()
     }
+    
     response = NewTransmitOralProcessResponse()
     err = c.Send(request, response)
     return
@@ -383,6 +389,7 @@ func NewTransmitOralProcessWithInitRequest() (request *TransmitOralProcessWithIn
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("soe", APIVersion, "TransmitOralProcessWithInit")
+    
     
     return
 }
@@ -509,6 +516,7 @@ func (c *Client) TransmitOralProcessWithInit(request *TransmitOralProcessWithIni
     if request == nil {
         request = NewTransmitOralProcessWithInitRequest()
     }
+    
     response = NewTransmitOralProcessWithInitResponse()
     err = c.Send(request, response)
     return

@@ -49,6 +49,7 @@ func NewAttachPluginRequest() (request *AttachPluginRequest) {
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "AttachPlugin")
     
+    
     return
 }
 
@@ -77,6 +78,7 @@ func (c *Client) AttachPlugin(request *AttachPluginRequest) (response *AttachPlu
     if request == nil {
         request = NewAttachPluginRequest()
     }
+    
     response = NewAttachPluginResponse()
     err = c.Send(request, response)
     return
@@ -87,6 +89,7 @@ func NewBindApiAppRequest() (request *BindApiAppRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "BindApiApp")
+    
     
     return
 }
@@ -117,6 +120,7 @@ func (c *Client) BindApiApp(request *BindApiAppRequest) (response *BindApiAppRes
     if request == nil {
         request = NewBindApiAppRequest()
     }
+    
     response = NewBindApiAppResponse()
     err = c.Send(request, response)
     return
@@ -127,6 +131,7 @@ func NewBindEnvironmentRequest() (request *BindEnvironmentRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "BindEnvironment")
+    
     
     return
 }
@@ -159,6 +164,7 @@ func (c *Client) BindEnvironment(request *BindEnvironmentRequest) (response *Bin
     if request == nil {
         request = NewBindEnvironmentRequest()
     }
+    
     response = NewBindEnvironmentResponse()
     err = c.Send(request, response)
     return
@@ -169,6 +175,7 @@ func NewBindIPStrategyRequest() (request *BindIPStrategyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "BindIPStrategy")
+    
     
     return
 }
@@ -194,6 +201,7 @@ func (c *Client) BindIPStrategy(request *BindIPStrategyRequest) (response *BindI
     if request == nil {
         request = NewBindIPStrategyRequest()
     }
+    
     response = NewBindIPStrategyResponse()
     err = c.Send(request, response)
     return
@@ -204,6 +212,7 @@ func NewBindSecretIdsRequest() (request *BindSecretIdsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "BindSecretIds")
+    
     
     return
 }
@@ -233,6 +242,7 @@ func (c *Client) BindSecretIds(request *BindSecretIdsRequest) (response *BindSec
     if request == nil {
         request = NewBindSecretIdsRequest()
     }
+    
     response = NewBindSecretIdsResponse()
     err = c.Send(request, response)
     return
@@ -243,6 +253,7 @@ func NewBindSubDomainRequest() (request *BindSubDomainRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "BindSubDomain")
+    
     
     return
 }
@@ -298,6 +309,7 @@ func (c *Client) BindSubDomain(request *BindSubDomainRequest) (response *BindSub
     if request == nil {
         request = NewBindSubDomainRequest()
     }
+    
     response = NewBindSubDomainResponse()
     err = c.Send(request, response)
     return
@@ -308,6 +320,7 @@ func NewBuildAPIDocRequest() (request *BuildAPIDocRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "BuildAPIDoc")
+    
     
     return
 }
@@ -333,6 +346,7 @@ func (c *Client) BuildAPIDoc(request *BuildAPIDocRequest) (response *BuildAPIDoc
     if request == nil {
         request = NewBuildAPIDocRequest()
     }
+    
     response = NewBuildAPIDocResponse()
     err = c.Send(request, response)
     return
@@ -343,6 +357,7 @@ func NewCreateAPIDocRequest() (request *CreateAPIDocRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "CreateAPIDoc")
+    
     
     return
 }
@@ -386,6 +401,7 @@ func (c *Client) CreateAPIDoc(request *CreateAPIDocRequest) (response *CreateAPI
     if request == nil {
         request = NewCreateAPIDocRequest()
     }
+    
     response = NewCreateAPIDocResponse()
     err = c.Send(request, response)
     return
@@ -396,6 +412,7 @@ func NewCreateApiRequest() (request *CreateApiRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "CreateApi")
+    
     
     return
 }
@@ -455,6 +472,7 @@ func (c *Client) CreateApi(request *CreateApiRequest) (response *CreateApiRespon
     if request == nil {
         request = NewCreateApiRequest()
     }
+    
     response = NewCreateApiResponse()
     err = c.Send(request, response)
     return
@@ -465,6 +483,7 @@ func NewCreateApiAppRequest() (request *CreateApiAppRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "CreateApiApp")
+    
     
     return
 }
@@ -490,6 +509,7 @@ func (c *Client) CreateApiApp(request *CreateApiAppRequest) (response *CreateApi
     if request == nil {
         request = NewCreateApiAppRequest()
     }
+    
     response = NewCreateApiAppResponse()
     err = c.Send(request, response)
     return
@@ -500,6 +520,7 @@ func NewCreateApiKeyRequest() (request *CreateApiKeyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "CreateApiKey")
+    
     
     return
 }
@@ -523,6 +544,7 @@ func (c *Client) CreateApiKey(request *CreateApiKeyRequest) (response *CreateApi
     if request == nil {
         request = NewCreateApiKeyRequest()
     }
+    
     response = NewCreateApiKeyResponse()
     err = c.Send(request, response)
     return
@@ -533,6 +555,7 @@ func NewCreateIPStrategyRequest() (request *CreateIPStrategyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "CreateIPStrategy")
+    
     
     return
 }
@@ -555,6 +578,7 @@ func (c *Client) CreateIPStrategy(request *CreateIPStrategyRequest) (response *C
     if request == nil {
         request = NewCreateIPStrategyRequest()
     }
+    
     response = NewCreateIPStrategyResponse()
     err = c.Send(request, response)
     return
@@ -565,6 +589,7 @@ func NewCreatePluginRequest() (request *CreatePluginRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "CreatePlugin")
+    
     
     return
 }
@@ -608,6 +633,7 @@ func (c *Client) CreatePlugin(request *CreatePluginRequest) (response *CreatePlu
     if request == nil {
         request = NewCreatePluginRequest()
     }
+    
     response = NewCreatePluginResponse()
     err = c.Send(request, response)
     return
@@ -618,6 +644,7 @@ func NewCreateServiceRequest() (request *CreateServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "CreateService")
+    
     
     return
 }
@@ -663,6 +690,7 @@ func (c *Client) CreateService(request *CreateServiceRequest) (response *CreateS
     if request == nil {
         request = NewCreateServiceRequest()
     }
+    
     response = NewCreateServiceResponse()
     err = c.Send(request, response)
     return
@@ -673,6 +701,7 @@ func NewCreateUsagePlanRequest() (request *CreateUsagePlanRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "CreateUsagePlan")
+    
     
     return
 }
@@ -697,6 +726,7 @@ func (c *Client) CreateUsagePlan(request *CreateUsagePlanRequest) (response *Cre
     if request == nil {
         request = NewCreateUsagePlanRequest()
     }
+    
     response = NewCreateUsagePlanResponse()
     err = c.Send(request, response)
     return
@@ -707,6 +737,7 @@ func NewDeleteAPIDocRequest() (request *DeleteAPIDocRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DeleteAPIDoc")
+    
     
     return
 }
@@ -743,6 +774,7 @@ func (c *Client) DeleteAPIDoc(request *DeleteAPIDocRequest) (response *DeleteAPI
     if request == nil {
         request = NewDeleteAPIDocRequest()
     }
+    
     response = NewDeleteAPIDocResponse()
     err = c.Send(request, response)
     return
@@ -753,6 +785,7 @@ func NewDeleteApiRequest() (request *DeleteApiRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DeleteApi")
+    
     
     return
 }
@@ -796,6 +829,7 @@ func (c *Client) DeleteApi(request *DeleteApiRequest) (response *DeleteApiRespon
     if request == nil {
         request = NewDeleteApiRequest()
     }
+    
     response = NewDeleteApiResponse()
     err = c.Send(request, response)
     return
@@ -806,6 +840,7 @@ func NewDeleteApiAppRequest() (request *DeleteApiAppRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DeleteApiApp")
+    
     
     return
 }
@@ -837,6 +872,7 @@ func (c *Client) DeleteApiApp(request *DeleteApiAppRequest) (response *DeleteApi
     if request == nil {
         request = NewDeleteApiAppRequest()
     }
+    
     response = NewDeleteApiAppResponse()
     err = c.Send(request, response)
     return
@@ -847,6 +883,7 @@ func NewDeleteApiKeyRequest() (request *DeleteApiKeyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DeleteApiKey")
+    
     
     return
 }
@@ -870,6 +907,7 @@ func (c *Client) DeleteApiKey(request *DeleteApiKeyRequest) (response *DeleteApi
     if request == nil {
         request = NewDeleteApiKeyRequest()
     }
+    
     response = NewDeleteApiKeyResponse()
     err = c.Send(request, response)
     return
@@ -880,6 +918,7 @@ func NewDeleteIPStrategyRequest() (request *DeleteIPStrategyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DeleteIPStrategy")
+    
     
     return
 }
@@ -900,6 +939,7 @@ func (c *Client) DeleteIPStrategy(request *DeleteIPStrategyRequest) (response *D
     if request == nil {
         request = NewDeleteIPStrategyRequest()
     }
+    
     response = NewDeleteIPStrategyResponse()
     err = c.Send(request, response)
     return
@@ -910,6 +950,7 @@ func NewDeletePluginRequest() (request *DeletePluginRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DeletePlugin")
+    
     
     return
 }
@@ -932,6 +973,7 @@ func (c *Client) DeletePlugin(request *DeletePluginRequest) (response *DeletePlu
     if request == nil {
         request = NewDeletePluginRequest()
     }
+    
     response = NewDeletePluginResponse()
     err = c.Send(request, response)
     return
@@ -942,6 +984,7 @@ func NewDeleteServiceRequest() (request *DeleteServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DeleteService")
+    
     
     return
 }
@@ -969,6 +1012,7 @@ func (c *Client) DeleteService(request *DeleteServiceRequest) (response *DeleteS
     if request == nil {
         request = NewDeleteServiceRequest()
     }
+    
     response = NewDeleteServiceResponse()
     err = c.Send(request, response)
     return
@@ -979,6 +1023,7 @@ func NewDeleteServiceSubDomainMappingRequest() (request *DeleteServiceSubDomainM
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DeleteServiceSubDomainMapping")
+    
     
     return
 }
@@ -1004,6 +1049,7 @@ func (c *Client) DeleteServiceSubDomainMapping(request *DeleteServiceSubDomainMa
     if request == nil {
         request = NewDeleteServiceSubDomainMappingRequest()
     }
+    
     response = NewDeleteServiceSubDomainMappingResponse()
     err = c.Send(request, response)
     return
@@ -1014,6 +1060,7 @@ func NewDeleteUsagePlanRequest() (request *DeleteUsagePlanRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DeleteUsagePlan")
+    
     
     return
 }
@@ -1036,6 +1083,7 @@ func (c *Client) DeleteUsagePlan(request *DeleteUsagePlanRequest) (response *Del
     if request == nil {
         request = NewDeleteUsagePlanRequest()
     }
+    
     response = NewDeleteUsagePlanResponse()
     err = c.Send(request, response)
     return
@@ -1046,6 +1094,7 @@ func NewDemoteServiceUsagePlanRequest() (request *DemoteServiceUsagePlanRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DemoteServiceUsagePlan")
+    
     
     return
 }
@@ -1072,6 +1121,7 @@ func (c *Client) DemoteServiceUsagePlan(request *DemoteServiceUsagePlanRequest) 
     if request == nil {
         request = NewDemoteServiceUsagePlanRequest()
     }
+    
     response = NewDemoteServiceUsagePlanResponse()
     err = c.Send(request, response)
     return
@@ -1082,6 +1132,7 @@ func NewDescribeAPIDocDetailRequest() (request *DescribeAPIDocDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeAPIDocDetail")
+    
     
     return
 }
@@ -1105,6 +1156,7 @@ func (c *Client) DescribeAPIDocDetail(request *DescribeAPIDocDetailRequest) (res
     if request == nil {
         request = NewDescribeAPIDocDetailRequest()
     }
+    
     response = NewDescribeAPIDocDetailResponse()
     err = c.Send(request, response)
     return
@@ -1115,6 +1167,7 @@ func NewDescribeAPIDocsRequest() (request *DescribeAPIDocsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeAPIDocs")
+    
     
     return
 }
@@ -1145,6 +1198,7 @@ func (c *Client) DescribeAPIDocs(request *DescribeAPIDocsRequest) (response *Des
     if request == nil {
         request = NewDescribeAPIDocsRequest()
     }
+    
     response = NewDescribeAPIDocsResponse()
     err = c.Send(request, response)
     return
@@ -1155,6 +1209,7 @@ func NewDescribeAllPluginApisRequest() (request *DescribeAllPluginApisRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeAllPluginApis")
+    
     
     return
 }
@@ -1177,6 +1232,7 @@ func (c *Client) DescribeAllPluginApis(request *DescribeAllPluginApisRequest) (r
     if request == nil {
         request = NewDescribeAllPluginApisRequest()
     }
+    
     response = NewDescribeAllPluginApisResponse()
     err = c.Send(request, response)
     return
@@ -1187,6 +1243,7 @@ func NewDescribeApiRequest() (request *DescribeApiRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeApi")
+    
     
     return
 }
@@ -1216,6 +1273,7 @@ func (c *Client) DescribeApi(request *DescribeApiRequest) (response *DescribeApi
     if request == nil {
         request = NewDescribeApiRequest()
     }
+    
     response = NewDescribeApiResponse()
     err = c.Send(request, response)
     return
@@ -1226,6 +1284,7 @@ func NewDescribeApiAppRequest() (request *DescribeApiAppRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeApiApp")
+    
     
     return
 }
@@ -1248,6 +1307,7 @@ func (c *Client) DescribeApiApp(request *DescribeApiAppRequest) (response *Descr
     if request == nil {
         request = NewDescribeApiAppRequest()
     }
+    
     response = NewDescribeApiAppResponse()
     err = c.Send(request, response)
     return
@@ -1258,6 +1318,7 @@ func NewDescribeApiAppBindApisStatusRequest() (request *DescribeApiAppBindApisSt
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeApiAppBindApisStatus")
+    
     
     return
 }
@@ -1278,6 +1339,7 @@ func (c *Client) DescribeApiAppBindApisStatus(request *DescribeApiAppBindApisSta
     if request == nil {
         request = NewDescribeApiAppBindApisStatusRequest()
     }
+    
     response = NewDescribeApiAppBindApisStatusResponse()
     err = c.Send(request, response)
     return
@@ -1288,6 +1350,7 @@ func NewDescribeApiAppsStatusRequest() (request *DescribeApiAppsStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeApiAppsStatus")
+    
     
     return
 }
@@ -1309,6 +1372,7 @@ func (c *Client) DescribeApiAppsStatus(request *DescribeApiAppsStatusRequest) (r
     if request == nil {
         request = NewDescribeApiAppsStatusRequest()
     }
+    
     response = NewDescribeApiAppsStatusResponse()
     err = c.Send(request, response)
     return
@@ -1319,6 +1383,7 @@ func NewDescribeApiBindApiAppsStatusRequest() (request *DescribeApiBindApiAppsSt
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeApiBindApiAppsStatus")
+    
     
     return
 }
@@ -1339,6 +1404,7 @@ func (c *Client) DescribeApiBindApiAppsStatus(request *DescribeApiBindApiAppsSta
     if request == nil {
         request = NewDescribeApiBindApiAppsStatusRequest()
     }
+    
     response = NewDescribeApiBindApiAppsStatusResponse()
     err = c.Send(request, response)
     return
@@ -1349,6 +1415,7 @@ func NewDescribeApiEnvironmentStrategyRequest() (request *DescribeApiEnvironment
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeApiEnvironmentStrategy")
+    
     
     return
 }
@@ -1372,6 +1439,7 @@ func (c *Client) DescribeApiEnvironmentStrategy(request *DescribeApiEnvironmentS
     if request == nil {
         request = NewDescribeApiEnvironmentStrategyRequest()
     }
+    
     response = NewDescribeApiEnvironmentStrategyResponse()
     err = c.Send(request, response)
     return
@@ -1382,6 +1450,7 @@ func NewDescribeApiForApiAppRequest() (request *DescribeApiForApiAppRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeApiForApiApp")
+    
     
     return
 }
@@ -1408,6 +1477,7 @@ func (c *Client) DescribeApiForApiApp(request *DescribeApiForApiAppRequest) (res
     if request == nil {
         request = NewDescribeApiForApiAppRequest()
     }
+    
     response = NewDescribeApiForApiAppResponse()
     err = c.Send(request, response)
     return
@@ -1418,6 +1488,7 @@ func NewDescribeApiKeyRequest() (request *DescribeApiKeyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeApiKey")
+    
     
     return
 }
@@ -1440,6 +1511,7 @@ func (c *Client) DescribeApiKey(request *DescribeApiKeyRequest) (response *Descr
     if request == nil {
         request = NewDescribeApiKeyRequest()
     }
+    
     response = NewDescribeApiKeyResponse()
     err = c.Send(request, response)
     return
@@ -1450,6 +1522,7 @@ func NewDescribeApiKeysStatusRequest() (request *DescribeApiKeysStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeApiKeysStatus")
+    
     
     return
 }
@@ -1472,6 +1545,7 @@ func (c *Client) DescribeApiKeysStatus(request *DescribeApiKeysStatusRequest) (r
     if request == nil {
         request = NewDescribeApiKeysStatusRequest()
     }
+    
     response = NewDescribeApiKeysStatusResponse()
     err = c.Send(request, response)
     return
@@ -1482,6 +1556,7 @@ func NewDescribeApiUsagePlanRequest() (request *DescribeApiUsagePlanRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeApiUsagePlan")
+    
     
     return
 }
@@ -1506,6 +1581,7 @@ func (c *Client) DescribeApiUsagePlan(request *DescribeApiUsagePlanRequest) (res
     if request == nil {
         request = NewDescribeApiUsagePlanRequest()
     }
+    
     response = NewDescribeApiUsagePlanResponse()
     err = c.Send(request, response)
     return
@@ -1516,6 +1592,7 @@ func NewDescribeApisStatusRequest() (request *DescribeApisStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeApisStatus")
+    
     
     return
 }
@@ -1541,6 +1618,7 @@ func (c *Client) DescribeApisStatus(request *DescribeApisStatusRequest) (respons
     if request == nil {
         request = NewDescribeApisStatusRequest()
     }
+    
     response = NewDescribeApisStatusResponse()
     err = c.Send(request, response)
     return
@@ -1551,6 +1629,7 @@ func NewDescribeExclusiveInstanceDetailRequest() (request *DescribeExclusiveInst
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeExclusiveInstanceDetail")
+    
     
     return
 }
@@ -1578,6 +1657,7 @@ func (c *Client) DescribeExclusiveInstanceDetail(request *DescribeExclusiveInsta
     if request == nil {
         request = NewDescribeExclusiveInstanceDetailRequest()
     }
+    
     response = NewDescribeExclusiveInstanceDetailResponse()
     err = c.Send(request, response)
     return
@@ -1588,6 +1668,7 @@ func NewDescribeExclusiveInstancesRequest() (request *DescribeExclusiveInstances
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeExclusiveInstances")
+    
     
     return
 }
@@ -1616,6 +1697,7 @@ func (c *Client) DescribeExclusiveInstances(request *DescribeExclusiveInstancesR
     if request == nil {
         request = NewDescribeExclusiveInstancesRequest()
     }
+    
     response = NewDescribeExclusiveInstancesResponse()
     err = c.Send(request, response)
     return
@@ -1626,6 +1708,7 @@ func NewDescribeIPStrategyRequest() (request *DescribeIPStrategyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeIPStrategy")
+    
     
     return
 }
@@ -1648,6 +1731,7 @@ func (c *Client) DescribeIPStrategy(request *DescribeIPStrategyRequest) (respons
     if request == nil {
         request = NewDescribeIPStrategyRequest()
     }
+    
     response = NewDescribeIPStrategyResponse()
     err = c.Send(request, response)
     return
@@ -1658,6 +1742,7 @@ func NewDescribeIPStrategyApisStatusRequest() (request *DescribeIPStrategyApisSt
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeIPStrategyApisStatus")
+    
     
     return
 }
@@ -1678,6 +1763,7 @@ func (c *Client) DescribeIPStrategyApisStatus(request *DescribeIPStrategyApisSta
     if request == nil {
         request = NewDescribeIPStrategyApisStatusRequest()
     }
+    
     response = NewDescribeIPStrategyApisStatusResponse()
     err = c.Send(request, response)
     return
@@ -1688,6 +1774,7 @@ func NewDescribeIPStrategysStatusRequest() (request *DescribeIPStrategysStatusRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeIPStrategysStatus")
+    
     
     return
 }
@@ -1710,6 +1797,7 @@ func (c *Client) DescribeIPStrategysStatus(request *DescribeIPStrategysStatusReq
     if request == nil {
         request = NewDescribeIPStrategysStatusRequest()
     }
+    
     response = NewDescribeIPStrategysStatusResponse()
     err = c.Send(request, response)
     return
@@ -1720,6 +1808,7 @@ func NewDescribeLogSearchRequest() (request *DescribeLogSearchRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeLogSearch")
+    
     
     return
 }
@@ -1740,6 +1829,7 @@ func (c *Client) DescribeLogSearch(request *DescribeLogSearchRequest) (response 
     if request == nil {
         request = NewDescribeLogSearchRequest()
     }
+    
     response = NewDescribeLogSearchResponse()
     err = c.Send(request, response)
     return
@@ -1750,6 +1840,7 @@ func NewDescribePluginRequest() (request *DescribePluginRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribePlugin")
+    
     
     return
 }
@@ -1772,6 +1863,7 @@ func (c *Client) DescribePlugin(request *DescribePluginRequest) (response *Descr
     if request == nil {
         request = NewDescribePluginRequest()
     }
+    
     response = NewDescribePluginResponse()
     err = c.Send(request, response)
     return
@@ -1782,6 +1874,7 @@ func NewDescribePluginApisRequest() (request *DescribePluginApisRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribePluginApis")
+    
     
     return
 }
@@ -1805,6 +1898,7 @@ func (c *Client) DescribePluginApis(request *DescribePluginApisRequest) (respons
     if request == nil {
         request = NewDescribePluginApisRequest()
     }
+    
     response = NewDescribePluginApisResponse()
     err = c.Send(request, response)
     return
@@ -1815,6 +1909,7 @@ func NewDescribePluginsRequest() (request *DescribePluginsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribePlugins")
+    
     
     return
 }
@@ -1839,6 +1934,7 @@ func (c *Client) DescribePlugins(request *DescribePluginsRequest) (response *Des
     if request == nil {
         request = NewDescribePluginsRequest()
     }
+    
     response = NewDescribePluginsResponse()
     err = c.Send(request, response)
     return
@@ -1849,6 +1945,7 @@ func NewDescribeServiceRequest() (request *DescribeServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeService")
+    
     
     return
 }
@@ -1876,6 +1973,7 @@ func (c *Client) DescribeService(request *DescribeServiceRequest) (response *Des
     if request == nil {
         request = NewDescribeServiceRequest()
     }
+    
     response = NewDescribeServiceResponse()
     err = c.Send(request, response)
     return
@@ -1886,6 +1984,7 @@ func NewDescribeServiceEnvironmentListRequest() (request *DescribeServiceEnviron
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeServiceEnvironmentList")
+    
     
     return
 }
@@ -1907,6 +2006,7 @@ func (c *Client) DescribeServiceEnvironmentList(request *DescribeServiceEnvironm
     if request == nil {
         request = NewDescribeServiceEnvironmentListRequest()
     }
+    
     response = NewDescribeServiceEnvironmentListResponse()
     err = c.Send(request, response)
     return
@@ -1917,6 +2017,7 @@ func NewDescribeServiceEnvironmentReleaseHistoryRequest() (request *DescribeServ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeServiceEnvironmentReleaseHistory")
+    
     
     return
 }
@@ -1939,6 +2040,7 @@ func (c *Client) DescribeServiceEnvironmentReleaseHistory(request *DescribeServi
     if request == nil {
         request = NewDescribeServiceEnvironmentReleaseHistoryRequest()
     }
+    
     response = NewDescribeServiceEnvironmentReleaseHistoryResponse()
     err = c.Send(request, response)
     return
@@ -1949,6 +2051,7 @@ func NewDescribeServiceEnvironmentStrategyRequest() (request *DescribeServiceEnv
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeServiceEnvironmentStrategy")
+    
     
     return
 }
@@ -1969,6 +2072,7 @@ func (c *Client) DescribeServiceEnvironmentStrategy(request *DescribeServiceEnvi
     if request == nil {
         request = NewDescribeServiceEnvironmentStrategyRequest()
     }
+    
     response = NewDescribeServiceEnvironmentStrategyResponse()
     err = c.Send(request, response)
     return
@@ -1979,6 +2083,7 @@ func NewDescribeServiceForApiAppRequest() (request *DescribeServiceForApiAppRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeServiceForApiApp")
+    
     
     return
 }
@@ -2000,6 +2105,7 @@ func (c *Client) DescribeServiceForApiApp(request *DescribeServiceForApiAppReque
     if request == nil {
         request = NewDescribeServiceForApiAppRequest()
     }
+    
     response = NewDescribeServiceForApiAppResponse()
     err = c.Send(request, response)
     return
@@ -2010,6 +2116,7 @@ func NewDescribeServiceReleaseVersionRequest() (request *DescribeServiceReleaseV
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeServiceReleaseVersion")
+    
     
     return
 }
@@ -2032,6 +2139,7 @@ func (c *Client) DescribeServiceReleaseVersion(request *DescribeServiceReleaseVe
     if request == nil {
         request = NewDescribeServiceReleaseVersionRequest()
     }
+    
     response = NewDescribeServiceReleaseVersionResponse()
     err = c.Send(request, response)
     return
@@ -2042,6 +2150,7 @@ func NewDescribeServiceSubDomainMappingsRequest() (request *DescribeServiceSubDo
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeServiceSubDomainMappings")
+    
     
     return
 }
@@ -2066,6 +2175,7 @@ func (c *Client) DescribeServiceSubDomainMappings(request *DescribeServiceSubDom
     if request == nil {
         request = NewDescribeServiceSubDomainMappingsRequest()
     }
+    
     response = NewDescribeServiceSubDomainMappingsResponse()
     err = c.Send(request, response)
     return
@@ -2076,6 +2186,7 @@ func NewDescribeServiceSubDomainsRequest() (request *DescribeServiceSubDomainsRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeServiceSubDomains")
+    
     
     return
 }
@@ -2102,6 +2213,7 @@ func (c *Client) DescribeServiceSubDomains(request *DescribeServiceSubDomainsReq
     if request == nil {
         request = NewDescribeServiceSubDomainsRequest()
     }
+    
     response = NewDescribeServiceSubDomainsResponse()
     err = c.Send(request, response)
     return
@@ -2112,6 +2224,7 @@ func NewDescribeServiceUsagePlanRequest() (request *DescribeServiceUsagePlanRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeServiceUsagePlan")
+    
     
     return
 }
@@ -2135,6 +2248,7 @@ func (c *Client) DescribeServiceUsagePlan(request *DescribeServiceUsagePlanReque
     if request == nil {
         request = NewDescribeServiceUsagePlanRequest()
     }
+    
     response = NewDescribeServiceUsagePlanResponse()
     err = c.Send(request, response)
     return
@@ -2145,6 +2259,7 @@ func NewDescribeServicesStatusRequest() (request *DescribeServicesStatusRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeServicesStatus")
+    
     
     return
 }
@@ -2182,6 +2297,7 @@ func (c *Client) DescribeServicesStatus(request *DescribeServicesStatusRequest) 
     if request == nil {
         request = NewDescribeServicesStatusRequest()
     }
+    
     response = NewDescribeServicesStatusResponse()
     err = c.Send(request, response)
     return
@@ -2192,6 +2308,7 @@ func NewDescribeUsagePlanRequest() (request *DescribeUsagePlanRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeUsagePlan")
+    
     
     return
 }
@@ -2213,6 +2330,7 @@ func (c *Client) DescribeUsagePlan(request *DescribeUsagePlanRequest) (response 
     if request == nil {
         request = NewDescribeUsagePlanRequest()
     }
+    
     response = NewDescribeUsagePlanResponse()
     err = c.Send(request, response)
     return
@@ -2223,6 +2341,7 @@ func NewDescribeUsagePlanEnvironmentsRequest() (request *DescribeUsagePlanEnviro
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeUsagePlanEnvironments")
+    
     
     return
 }
@@ -2246,6 +2365,7 @@ func (c *Client) DescribeUsagePlanEnvironments(request *DescribeUsagePlanEnviron
     if request == nil {
         request = NewDescribeUsagePlanEnvironmentsRequest()
     }
+    
     response = NewDescribeUsagePlanEnvironmentsResponse()
     err = c.Send(request, response)
     return
@@ -2256,6 +2376,7 @@ func NewDescribeUsagePlanSecretIdsRequest() (request *DescribeUsagePlanSecretIds
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeUsagePlanSecretIds")
+    
     
     return
 }
@@ -2279,6 +2400,7 @@ func (c *Client) DescribeUsagePlanSecretIds(request *DescribeUsagePlanSecretIdsR
     if request == nil {
         request = NewDescribeUsagePlanSecretIdsRequest()
     }
+    
     response = NewDescribeUsagePlanSecretIdsResponse()
     err = c.Send(request, response)
     return
@@ -2289,6 +2411,7 @@ func NewDescribeUsagePlansStatusRequest() (request *DescribeUsagePlansStatusRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DescribeUsagePlansStatus")
+    
     
     return
 }
@@ -2310,6 +2433,7 @@ func (c *Client) DescribeUsagePlansStatus(request *DescribeUsagePlansStatusReque
     if request == nil {
         request = NewDescribeUsagePlansStatusRequest()
     }
+    
     response = NewDescribeUsagePlansStatusResponse()
     err = c.Send(request, response)
     return
@@ -2320,6 +2444,7 @@ func NewDetachPluginRequest() (request *DetachPluginRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DetachPlugin")
+    
     
     return
 }
@@ -2345,6 +2470,7 @@ func (c *Client) DetachPlugin(request *DetachPluginRequest) (response *DetachPlu
     if request == nil {
         request = NewDetachPluginRequest()
     }
+    
     response = NewDetachPluginResponse()
     err = c.Send(request, response)
     return
@@ -2355,6 +2481,7 @@ func NewDisableApiKeyRequest() (request *DisableApiKeyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "DisableApiKey")
+    
     
     return
 }
@@ -2378,6 +2505,7 @@ func (c *Client) DisableApiKey(request *DisableApiKeyRequest) (response *Disable
     if request == nil {
         request = NewDisableApiKeyRequest()
     }
+    
     response = NewDisableApiKeyResponse()
     err = c.Send(request, response)
     return
@@ -2388,6 +2516,7 @@ func NewEnableApiKeyRequest() (request *EnableApiKeyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "EnableApiKey")
+    
     
     return
 }
@@ -2410,6 +2539,7 @@ func (c *Client) EnableApiKey(request *EnableApiKeyRequest) (response *EnableApi
     if request == nil {
         request = NewEnableApiKeyRequest()
     }
+    
     response = NewEnableApiKeyResponse()
     err = c.Send(request, response)
     return
@@ -2420,6 +2550,7 @@ func NewGenerateApiDocumentRequest() (request *GenerateApiDocumentRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "GenerateApiDocument")
+    
     
     return
 }
@@ -2443,6 +2574,7 @@ func (c *Client) GenerateApiDocument(request *GenerateApiDocumentRequest) (respo
     if request == nil {
         request = NewGenerateApiDocumentRequest()
     }
+    
     response = NewGenerateApiDocumentResponse()
     err = c.Send(request, response)
     return
@@ -2453,6 +2585,7 @@ func NewModifyAPIDocRequest() (request *ModifyAPIDocRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "ModifyAPIDoc")
+    
     
     return
 }
@@ -2478,6 +2611,7 @@ func (c *Client) ModifyAPIDoc(request *ModifyAPIDocRequest) (response *ModifyAPI
     if request == nil {
         request = NewModifyAPIDocRequest()
     }
+    
     response = NewModifyAPIDocResponse()
     err = c.Send(request, response)
     return
@@ -2488,6 +2622,7 @@ func NewModifyApiRequest() (request *ModifyApiRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "ModifyApi")
+    
     
     return
 }
@@ -2549,6 +2684,7 @@ func (c *Client) ModifyApi(request *ModifyApiRequest) (response *ModifyApiRespon
     if request == nil {
         request = NewModifyApiRequest()
     }
+    
     response = NewModifyApiResponse()
     err = c.Send(request, response)
     return
@@ -2559,6 +2695,7 @@ func NewModifyApiAppRequest() (request *ModifyApiAppRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "ModifyApiApp")
+    
     
     return
 }
@@ -2591,6 +2728,7 @@ func (c *Client) ModifyApiApp(request *ModifyApiAppRequest) (response *ModifyApi
     if request == nil {
         request = NewModifyApiAppRequest()
     }
+    
     response = NewModifyApiAppResponse()
     err = c.Send(request, response)
     return
@@ -2601,6 +2739,7 @@ func NewModifyApiEnvironmentStrategyRequest() (request *ModifyApiEnvironmentStra
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "ModifyApiEnvironmentStrategy")
+    
     
     return
 }
@@ -2624,6 +2763,7 @@ func (c *Client) ModifyApiEnvironmentStrategy(request *ModifyApiEnvironmentStrat
     if request == nil {
         request = NewModifyApiEnvironmentStrategyRequest()
     }
+    
     response = NewModifyApiEnvironmentStrategyResponse()
     err = c.Send(request, response)
     return
@@ -2634,6 +2774,7 @@ func NewModifyApiIncrementRequest() (request *ModifyApiIncrementRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "ModifyApiIncrement")
+    
     
     return
 }
@@ -2658,6 +2799,7 @@ func (c *Client) ModifyApiIncrement(request *ModifyApiIncrementRequest) (respons
     if request == nil {
         request = NewModifyApiIncrementRequest()
     }
+    
     response = NewModifyApiIncrementResponse()
     err = c.Send(request, response)
     return
@@ -2668,6 +2810,7 @@ func NewModifyExclusiveInstanceRequest() (request *ModifyExclusiveInstanceReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "ModifyExclusiveInstance")
+    
     
     return
 }
@@ -2699,6 +2842,7 @@ func (c *Client) ModifyExclusiveInstance(request *ModifyExclusiveInstanceRequest
     if request == nil {
         request = NewModifyExclusiveInstanceRequest()
     }
+    
     response = NewModifyExclusiveInstanceResponse()
     err = c.Send(request, response)
     return
@@ -2709,6 +2853,7 @@ func NewModifyIPStrategyRequest() (request *ModifyIPStrategyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "ModifyIPStrategy")
+    
     
     return
 }
@@ -2730,6 +2875,7 @@ func (c *Client) ModifyIPStrategy(request *ModifyIPStrategyRequest) (response *M
     if request == nil {
         request = NewModifyIPStrategyRequest()
     }
+    
     response = NewModifyIPStrategyResponse()
     err = c.Send(request, response)
     return
@@ -2740,6 +2886,7 @@ func NewModifyPluginRequest() (request *ModifyPluginRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "ModifyPlugin")
+    
     
     return
 }
@@ -2783,6 +2930,7 @@ func (c *Client) ModifyPlugin(request *ModifyPluginRequest) (response *ModifyPlu
     if request == nil {
         request = NewModifyPluginRequest()
     }
+    
     response = NewModifyPluginResponse()
     err = c.Send(request, response)
     return
@@ -2793,6 +2941,7 @@ func NewModifyServiceRequest() (request *ModifyServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "ModifyService")
+    
     
     return
 }
@@ -2820,6 +2969,7 @@ func (c *Client) ModifyService(request *ModifyServiceRequest) (response *ModifyS
     if request == nil {
         request = NewModifyServiceRequest()
     }
+    
     response = NewModifyServiceResponse()
     err = c.Send(request, response)
     return
@@ -2830,6 +2980,7 @@ func NewModifyServiceEnvironmentStrategyRequest() (request *ModifyServiceEnviron
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "ModifyServiceEnvironmentStrategy")
+    
     
     return
 }
@@ -2853,6 +3004,7 @@ func (c *Client) ModifyServiceEnvironmentStrategy(request *ModifyServiceEnvironm
     if request == nil {
         request = NewModifyServiceEnvironmentStrategyRequest()
     }
+    
     response = NewModifyServiceEnvironmentStrategyResponse()
     err = c.Send(request, response)
     return
@@ -2863,6 +3015,7 @@ func NewModifySubDomainRequest() (request *ModifySubDomainRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "ModifySubDomain")
+    
     
     return
 }
@@ -2895,6 +3048,7 @@ func (c *Client) ModifySubDomain(request *ModifySubDomainRequest) (response *Mod
     if request == nil {
         request = NewModifySubDomainRequest()
     }
+    
     response = NewModifySubDomainResponse()
     err = c.Send(request, response)
     return
@@ -2905,6 +3059,7 @@ func NewModifyUsagePlanRequest() (request *ModifyUsagePlanRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "ModifyUsagePlan")
+    
     
     return
 }
@@ -2927,6 +3082,7 @@ func (c *Client) ModifyUsagePlan(request *ModifyUsagePlanRequest) (response *Mod
     if request == nil {
         request = NewModifyUsagePlanRequest()
     }
+    
     response = NewModifyUsagePlanResponse()
     err = c.Send(request, response)
     return
@@ -2937,6 +3093,7 @@ func NewReleaseServiceRequest() (request *ReleaseServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "ReleaseService")
+    
     
     return
 }
@@ -2966,6 +3123,7 @@ func (c *Client) ReleaseService(request *ReleaseServiceRequest) (response *Relea
     if request == nil {
         request = NewReleaseServiceRequest()
     }
+    
     response = NewReleaseServiceResponse()
     err = c.Send(request, response)
     return
@@ -2976,6 +3134,7 @@ func NewResetAPIDocPasswordRequest() (request *ResetAPIDocPasswordRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "ResetAPIDocPassword")
+    
     
     return
 }
@@ -2998,6 +3157,7 @@ func (c *Client) ResetAPIDocPassword(request *ResetAPIDocPasswordRequest) (respo
     if request == nil {
         request = NewResetAPIDocPasswordRequest()
     }
+    
     response = NewResetAPIDocPasswordResponse()
     err = c.Send(request, response)
     return
@@ -3008,6 +3168,7 @@ func NewUnBindEnvironmentRequest() (request *UnBindEnvironmentRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "UnBindEnvironment")
+    
     
     return
 }
@@ -3035,6 +3196,7 @@ func (c *Client) UnBindEnvironment(request *UnBindEnvironmentRequest) (response 
     if request == nil {
         request = NewUnBindEnvironmentRequest()
     }
+    
     response = NewUnBindEnvironmentResponse()
     err = c.Send(request, response)
     return
@@ -3045,6 +3207,7 @@ func NewUnBindIPStrategyRequest() (request *UnBindIPStrategyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "UnBindIPStrategy")
+    
     
     return
 }
@@ -3072,6 +3235,7 @@ func (c *Client) UnBindIPStrategy(request *UnBindIPStrategyRequest) (response *U
     if request == nil {
         request = NewUnBindIPStrategyRequest()
     }
+    
     response = NewUnBindIPStrategyResponse()
     err = c.Send(request, response)
     return
@@ -3082,6 +3246,7 @@ func NewUnBindSecretIdsRequest() (request *UnBindSecretIdsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "UnBindSecretIds")
+    
     
     return
 }
@@ -3104,6 +3269,7 @@ func (c *Client) UnBindSecretIds(request *UnBindSecretIdsRequest) (response *UnB
     if request == nil {
         request = NewUnBindSecretIdsRequest()
     }
+    
     response = NewUnBindSecretIdsResponse()
     err = c.Send(request, response)
     return
@@ -3114,6 +3280,7 @@ func NewUnBindSubDomainRequest() (request *UnBindSubDomainRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "UnBindSubDomain")
+    
     
     return
 }
@@ -3141,6 +3308,7 @@ func (c *Client) UnBindSubDomain(request *UnBindSubDomainRequest) (response *UnB
     if request == nil {
         request = NewUnBindSubDomainRequest()
     }
+    
     response = NewUnBindSubDomainResponse()
     err = c.Send(request, response)
     return
@@ -3151,6 +3319,7 @@ func NewUnReleaseServiceRequest() (request *UnReleaseServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "UnReleaseService")
+    
     
     return
 }
@@ -3179,6 +3348,7 @@ func (c *Client) UnReleaseService(request *UnReleaseServiceRequest) (response *U
     if request == nil {
         request = NewUnReleaseServiceRequest()
     }
+    
     response = NewUnReleaseServiceResponse()
     err = c.Send(request, response)
     return
@@ -3189,6 +3359,7 @@ func NewUnbindApiAppRequest() (request *UnbindApiAppRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "UnbindApiApp")
+    
     
     return
 }
@@ -3217,6 +3388,7 @@ func (c *Client) UnbindApiApp(request *UnbindApiAppRequest) (response *UnbindApi
     if request == nil {
         request = NewUnbindApiAppRequest()
     }
+    
     response = NewUnbindApiAppResponse()
     err = c.Send(request, response)
     return
@@ -3227,6 +3399,7 @@ func NewUpdateApiAppKeyRequest() (request *UpdateApiAppKeyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "UpdateApiAppKey")
+    
     
     return
 }
@@ -3258,6 +3431,7 @@ func (c *Client) UpdateApiAppKey(request *UpdateApiAppKeyRequest) (response *Upd
     if request == nil {
         request = NewUpdateApiAppKeyRequest()
     }
+    
     response = NewUpdateApiAppKeyResponse()
     err = c.Send(request, response)
     return
@@ -3268,6 +3442,7 @@ func NewUpdateApiKeyRequest() (request *UpdateApiKeyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "UpdateApiKey")
+    
     
     return
 }
@@ -3289,6 +3464,7 @@ func (c *Client) UpdateApiKey(request *UpdateApiKeyRequest) (response *UpdateApi
     if request == nil {
         request = NewUpdateApiKeyRequest()
     }
+    
     response = NewUpdateApiKeyResponse()
     err = c.Send(request, response)
     return
@@ -3299,6 +3475,7 @@ func NewUpdateServiceRequest() (request *UpdateServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apigateway", APIVersion, "UpdateService")
+    
     
     return
 }
@@ -3325,6 +3502,7 @@ func (c *Client) UpdateService(request *UpdateServiceRequest) (response *UpdateS
     if request == nil {
         request = NewUpdateServiceRequest()
     }
+    
     response = NewUpdateServiceResponse()
     err = c.Send(request, response)
     return

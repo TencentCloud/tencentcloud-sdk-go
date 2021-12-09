@@ -49,6 +49,7 @@ func NewDescribeDomainInfoRequest() (request *DescribeDomainInfoRequest) {
     }
     request.Init().WithApiInfo("tics", APIVersion, "DescribeDomainInfo")
     
+    
     return
 }
 
@@ -72,6 +73,7 @@ func (c *Client) DescribeDomainInfo(request *DescribeDomainInfoRequest) (respons
     if request == nil {
         request = NewDescribeDomainInfoRequest()
     }
+    
     response = NewDescribeDomainInfoResponse()
     err = c.Send(request, response)
     return
@@ -82,6 +84,7 @@ func NewDescribeFileInfoRequest() (request *DescribeFileInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tics", APIVersion, "DescribeFileInfo")
+    
     
     return
 }
@@ -106,6 +109,7 @@ func (c *Client) DescribeFileInfo(request *DescribeFileInfoRequest) (response *D
     if request == nil {
         request = NewDescribeFileInfoRequest()
     }
+    
     response = NewDescribeFileInfoResponse()
     err = c.Send(request, response)
     return
@@ -116,6 +120,7 @@ func NewDescribeIpInfoRequest() (request *DescribeIpInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tics", APIVersion, "DescribeIpInfo")
+    
     
     return
 }
@@ -140,6 +145,7 @@ func (c *Client) DescribeIpInfo(request *DescribeIpInfoRequest) (response *Descr
     if request == nil {
         request = NewDescribeIpInfoRequest()
     }
+    
     response = NewDescribeIpInfoResponse()
     err = c.Send(request, response)
     return
@@ -150,6 +156,7 @@ func NewDescribeThreatInfoRequest() (request *DescribeThreatInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tics", APIVersion, "DescribeThreatInfo")
+    
     
     return
 }
@@ -174,6 +181,7 @@ func (c *Client) DescribeThreatInfo(request *DescribeThreatInfoRequest) (respons
     if request == nil {
         request = NewDescribeThreatInfoRequest()
     }
+    
     response = NewDescribeThreatInfoResponse()
     err = c.Send(request, response)
     return

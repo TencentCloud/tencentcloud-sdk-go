@@ -49,6 +49,7 @@ func NewCreateCredentialRequest() (request *CreateCredentialRequest) {
     }
     request.Init().WithApiInfo("tdid", APIVersion, "CreateCredential")
     
+    
     return
 }
 
@@ -73,6 +74,7 @@ func (c *Client) CreateCredential(request *CreateCredentialRequest) (response *C
     if request == nil {
         request = NewCreateCredentialRequest()
     }
+    
     response = NewCreateCredentialResponse()
     err = c.Send(request, response)
     return
@@ -83,6 +85,7 @@ func NewCreateSelectiveCredentialRequest() (request *CreateSelectiveCredentialRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdid", APIVersion, "CreateSelectiveCredential")
+    
     
     return
 }
@@ -115,6 +118,7 @@ func (c *Client) CreateSelectiveCredential(request *CreateSelectiveCredentialReq
     if request == nil {
         request = NewCreateSelectiveCredentialRequest()
     }
+    
     response = NewCreateSelectiveCredentialResponse()
     err = c.Send(request, response)
     return
@@ -125,6 +129,7 @@ func NewCreateTDidRequest() (request *CreateTDidRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdid", APIVersion, "CreateTDid")
+    
     
     return
 }
@@ -155,6 +160,7 @@ func (c *Client) CreateTDid(request *CreateTDidRequest) (response *CreateTDidRes
     if request == nil {
         request = NewCreateTDidRequest()
     }
+    
     response = NewCreateTDidResponse()
     err = c.Send(request, response)
     return
@@ -165,6 +171,7 @@ func NewVerifyCredentialRequest() (request *VerifyCredentialRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdid", APIVersion, "VerifyCredential")
+    
     
     return
 }
@@ -197,6 +204,7 @@ func (c *Client) VerifyCredential(request *VerifyCredentialRequest) (response *V
     if request == nil {
         request = NewVerifyCredentialRequest()
     }
+    
     response = NewVerifyCredentialResponse()
     err = c.Send(request, response)
     return

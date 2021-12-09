@@ -49,6 +49,7 @@ func NewAcceptDirectConnectTunnelRequest() (request *AcceptDirectConnectTunnelRe
     }
     request.Init().WithApiInfo("dc", APIVersion, "AcceptDirectConnectTunnel")
     
+    
     return
 }
 
@@ -73,6 +74,7 @@ func (c *Client) AcceptDirectConnectTunnel(request *AcceptDirectConnectTunnelReq
     if request == nil {
         request = NewAcceptDirectConnectTunnelRequest()
     }
+    
     response = NewAcceptDirectConnectTunnelResponse()
     err = c.Send(request, response)
     return
@@ -83,6 +85,7 @@ func NewApplyInternetAddressRequest() (request *ApplyInternetAddressRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dc", APIVersion, "ApplyInternetAddress")
+    
     
     return
 }
@@ -103,6 +106,7 @@ func (c *Client) ApplyInternetAddress(request *ApplyInternetAddressRequest) (res
     if request == nil {
         request = NewApplyInternetAddressRequest()
     }
+    
     response = NewApplyInternetAddressResponse()
     err = c.Send(request, response)
     return
@@ -113,6 +117,7 @@ func NewCreateDirectConnectRequest() (request *CreateDirectConnectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dc", APIVersion, "CreateDirectConnect")
+    
     
     return
 }
@@ -144,6 +149,7 @@ func (c *Client) CreateDirectConnect(request *CreateDirectConnectRequest) (respo
     if request == nil {
         request = NewCreateDirectConnectRequest()
     }
+    
     response = NewCreateDirectConnectResponse()
     err = c.Send(request, response)
     return
@@ -154,6 +160,7 @@ func NewCreateDirectConnectTunnelRequest() (request *CreateDirectConnectTunnelRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dc", APIVersion, "CreateDirectConnectTunnel")
+    
     
     return
 }
@@ -189,6 +196,7 @@ func (c *Client) CreateDirectConnectTunnel(request *CreateDirectConnectTunnelReq
     if request == nil {
         request = NewCreateDirectConnectTunnelRequest()
     }
+    
     response = NewCreateDirectConnectTunnelResponse()
     err = c.Send(request, response)
     return
@@ -199,6 +207,7 @@ func NewDeleteDirectConnectRequest() (request *DeleteDirectConnectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dc", APIVersion, "DeleteDirectConnect")
+    
     
     return
 }
@@ -229,6 +238,7 @@ func (c *Client) DeleteDirectConnect(request *DeleteDirectConnectRequest) (respo
     if request == nil {
         request = NewDeleteDirectConnectRequest()
     }
+    
     response = NewDeleteDirectConnectResponse()
     err = c.Send(request, response)
     return
@@ -239,6 +249,7 @@ func NewDeleteDirectConnectTunnelRequest() (request *DeleteDirectConnectTunnelRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dc", APIVersion, "DeleteDirectConnectTunnel")
+    
     
     return
 }
@@ -264,6 +275,7 @@ func (c *Client) DeleteDirectConnectTunnel(request *DeleteDirectConnectTunnelReq
     if request == nil {
         request = NewDeleteDirectConnectTunnelRequest()
     }
+    
     response = NewDeleteDirectConnectTunnelResponse()
     err = c.Send(request, response)
     return
@@ -274,6 +286,7 @@ func NewDescribeAccessPointsRequest() (request *DescribeAccessPointsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dc", APIVersion, "DescribeAccessPoints")
+    
     
     return
 }
@@ -301,6 +314,7 @@ func (c *Client) DescribeAccessPoints(request *DescribeAccessPointsRequest) (res
     if request == nil {
         request = NewDescribeAccessPointsRequest()
     }
+    
     response = NewDescribeAccessPointsResponse()
     err = c.Send(request, response)
     return
@@ -311,6 +325,7 @@ func NewDescribeDirectConnectTunnelExtraRequest() (request *DescribeDirectConnec
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dc", APIVersion, "DescribeDirectConnectTunnelExtra")
+    
     
     return
 }
@@ -333,6 +348,7 @@ func (c *Client) DescribeDirectConnectTunnelExtra(request *DescribeDirectConnect
     if request == nil {
         request = NewDescribeDirectConnectTunnelExtraRequest()
     }
+    
     response = NewDescribeDirectConnectTunnelExtraResponse()
     err = c.Send(request, response)
     return
@@ -343,6 +359,7 @@ func NewDescribeDirectConnectTunnelsRequest() (request *DescribeDirectConnectTun
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dc", APIVersion, "DescribeDirectConnectTunnels")
+    
     
     return
 }
@@ -367,6 +384,7 @@ func (c *Client) DescribeDirectConnectTunnels(request *DescribeDirectConnectTunn
     if request == nil {
         request = NewDescribeDirectConnectTunnelsRequest()
     }
+    
     response = NewDescribeDirectConnectTunnelsResponse()
     err = c.Send(request, response)
     return
@@ -377,6 +395,7 @@ func NewDescribeDirectConnectsRequest() (request *DescribeDirectConnectsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dc", APIVersion, "DescribeDirectConnects")
+    
     
     return
 }
@@ -402,6 +421,7 @@ func (c *Client) DescribeDirectConnects(request *DescribeDirectConnectsRequest) 
     if request == nil {
         request = NewDescribeDirectConnectsRequest()
     }
+    
     response = NewDescribeDirectConnectsResponse()
     err = c.Send(request, response)
     return
@@ -412,6 +432,7 @@ func NewDescribeInternetAddressRequest() (request *DescribeInternetAddressReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dc", APIVersion, "DescribeInternetAddress")
+    
     
     return
 }
@@ -437,6 +458,7 @@ func (c *Client) DescribeInternetAddress(request *DescribeInternetAddressRequest
     if request == nil {
         request = NewDescribeInternetAddressRequest()
     }
+    
     response = NewDescribeInternetAddressResponse()
     err = c.Send(request, response)
     return
@@ -447,6 +469,7 @@ func NewDescribeInternetAddressQuotaRequest() (request *DescribeInternetAddressQ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dc", APIVersion, "DescribeInternetAddressQuota")
+    
     
     return
 }
@@ -472,6 +495,7 @@ func (c *Client) DescribeInternetAddressQuota(request *DescribeInternetAddressQu
     if request == nil {
         request = NewDescribeInternetAddressQuotaRequest()
     }
+    
     response = NewDescribeInternetAddressQuotaResponse()
     err = c.Send(request, response)
     return
@@ -482,6 +506,7 @@ func NewDescribeInternetAddressStatisticsRequest() (request *DescribeInternetAdd
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dc", APIVersion, "DescribeInternetAddressStatistics")
+    
     
     return
 }
@@ -507,6 +532,7 @@ func (c *Client) DescribeInternetAddressStatistics(request *DescribeInternetAddr
     if request == nil {
         request = NewDescribeInternetAddressStatisticsRequest()
     }
+    
     response = NewDescribeInternetAddressStatisticsResponse()
     err = c.Send(request, response)
     return
@@ -517,6 +543,7 @@ func NewDescribePublicDirectConnectTunnelRoutesRequest() (request *DescribePubli
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dc", APIVersion, "DescribePublicDirectConnectTunnelRoutes")
+    
     
     return
 }
@@ -540,6 +567,7 @@ func (c *Client) DescribePublicDirectConnectTunnelRoutes(request *DescribePublic
     if request == nil {
         request = NewDescribePublicDirectConnectTunnelRoutesRequest()
     }
+    
     response = NewDescribePublicDirectConnectTunnelRoutesResponse()
     err = c.Send(request, response)
     return
@@ -550,6 +578,7 @@ func NewDisableInternetAddressRequest() (request *DisableInternetAddressRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dc", APIVersion, "DisableInternetAddress")
+    
     
     return
 }
@@ -573,6 +602,7 @@ func (c *Client) DisableInternetAddress(request *DisableInternetAddressRequest) 
     if request == nil {
         request = NewDisableInternetAddressRequest()
     }
+    
     response = NewDisableInternetAddressResponse()
     err = c.Send(request, response)
     return
@@ -583,6 +613,7 @@ func NewEnableInternetAddressRequest() (request *EnableInternetAddressRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dc", APIVersion, "EnableInternetAddress")
+    
     
     return
 }
@@ -606,6 +637,7 @@ func (c *Client) EnableInternetAddress(request *EnableInternetAddressRequest) (r
     if request == nil {
         request = NewEnableInternetAddressRequest()
     }
+    
     response = NewEnableInternetAddressResponse()
     err = c.Send(request, response)
     return
@@ -616,6 +648,7 @@ func NewModifyDirectConnectAttributeRequest() (request *ModifyDirectConnectAttri
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dc", APIVersion, "ModifyDirectConnectAttribute")
+    
     
     return
 }
@@ -643,6 +676,7 @@ func (c *Client) ModifyDirectConnectAttribute(request *ModifyDirectConnectAttrib
     if request == nil {
         request = NewModifyDirectConnectAttributeRequest()
     }
+    
     response = NewModifyDirectConnectAttributeResponse()
     err = c.Send(request, response)
     return
@@ -653,6 +687,7 @@ func NewModifyDirectConnectTunnelAttributeRequest() (request *ModifyDirectConnec
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dc", APIVersion, "ModifyDirectConnectTunnelAttribute")
+    
     
     return
 }
@@ -678,6 +713,7 @@ func (c *Client) ModifyDirectConnectTunnelAttribute(request *ModifyDirectConnect
     if request == nil {
         request = NewModifyDirectConnectTunnelAttributeRequest()
     }
+    
     response = NewModifyDirectConnectTunnelAttributeResponse()
     err = c.Send(request, response)
     return
@@ -688,6 +724,7 @@ func NewModifyDirectConnectTunnelExtraRequest() (request *ModifyDirectConnectTun
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dc", APIVersion, "ModifyDirectConnectTunnelExtra")
+    
     
     return
 }
@@ -717,6 +754,7 @@ func (c *Client) ModifyDirectConnectTunnelExtra(request *ModifyDirectConnectTunn
     if request == nil {
         request = NewModifyDirectConnectTunnelExtraRequest()
     }
+    
     response = NewModifyDirectConnectTunnelExtraResponse()
     err = c.Send(request, response)
     return
@@ -727,6 +765,7 @@ func NewRejectDirectConnectTunnelRequest() (request *RejectDirectConnectTunnelRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dc", APIVersion, "RejectDirectConnectTunnel")
+    
     
     return
 }
@@ -751,6 +790,7 @@ func (c *Client) RejectDirectConnectTunnel(request *RejectDirectConnectTunnelReq
     if request == nil {
         request = NewRejectDirectConnectTunnelRequest()
     }
+    
     response = NewRejectDirectConnectTunnelResponse()
     err = c.Send(request, response)
     return
@@ -761,6 +801,7 @@ func NewReleaseInternetAddressRequest() (request *ReleaseInternetAddressRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dc", APIVersion, "ReleaseInternetAddress")
+    
     
     return
 }
@@ -785,6 +826,7 @@ func (c *Client) ReleaseInternetAddress(request *ReleaseInternetAddressRequest) 
     if request == nil {
         request = NewReleaseInternetAddressRequest()
     }
+    
     response = NewReleaseInternetAddressResponse()
     err = c.Send(request, response)
     return

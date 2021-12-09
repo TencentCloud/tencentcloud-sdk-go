@@ -49,6 +49,7 @@ func NewDescribeAppRequest() (request *DescribeAppRequest) {
     }
     request.Init().WithApiInfo("ic", APIVersion, "DescribeApp")
     
+    
     return
 }
 
@@ -70,6 +71,7 @@ func (c *Client) DescribeApp(request *DescribeAppRequest) (response *DescribeApp
     if request == nil {
         request = NewDescribeAppRequest()
     }
+    
     response = NewDescribeAppResponse()
     err = c.Send(request, response)
     return
@@ -80,6 +82,7 @@ func NewDescribeCardRequest() (request *DescribeCardRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ic", APIVersion, "DescribeCard")
+    
     
     return
 }
@@ -102,6 +105,7 @@ func (c *Client) DescribeCard(request *DescribeCardRequest) (response *DescribeC
     if request == nil {
         request = NewDescribeCardRequest()
     }
+    
     response = NewDescribeCardResponse()
     err = c.Send(request, response)
     return
@@ -112,6 +116,7 @@ func NewDescribeCardsRequest() (request *DescribeCardsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ic", APIVersion, "DescribeCards")
+    
     
     return
 }
@@ -132,6 +137,7 @@ func (c *Client) DescribeCards(request *DescribeCardsRequest) (response *Describ
     if request == nil {
         request = NewDescribeCardsRequest()
     }
+    
     response = NewDescribeCardsResponse()
     err = c.Send(request, response)
     return
@@ -142,6 +148,7 @@ func NewModifyUserCardRemarkRequest() (request *ModifyUserCardRemarkRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ic", APIVersion, "ModifyUserCardRemark")
+    
     
     return
 }
@@ -165,6 +172,7 @@ func (c *Client) ModifyUserCardRemark(request *ModifyUserCardRemarkRequest) (res
     if request == nil {
         request = NewModifyUserCardRemarkRequest()
     }
+    
     response = NewModifyUserCardRemarkResponse()
     err = c.Send(request, response)
     return
@@ -175,6 +183,7 @@ func NewRenewCardsRequest() (request *RenewCardsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ic", APIVersion, "RenewCards")
+    
     
     return
 }
@@ -208,6 +217,7 @@ func (c *Client) RenewCards(request *RenewCardsRequest) (response *RenewCardsRes
     if request == nil {
         request = NewRenewCardsRequest()
     }
+    
     response = NewRenewCardsResponse()
     err = c.Send(request, response)
     return
@@ -218,6 +228,7 @@ func NewSendMultiSmsRequest() (request *SendMultiSmsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ic", APIVersion, "SendMultiSms")
+    
     
     return
 }
@@ -240,6 +251,7 @@ func (c *Client) SendMultiSms(request *SendMultiSmsRequest) (response *SendMulti
     if request == nil {
         request = NewSendMultiSmsRequest()
     }
+    
     response = NewSendMultiSmsResponse()
     err = c.Send(request, response)
     return
@@ -250,6 +262,7 @@ func NewSendSmsRequest() (request *SendSmsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ic", APIVersion, "SendSms")
+    
     
     return
 }
@@ -272,6 +285,7 @@ func (c *Client) SendSms(request *SendSmsRequest) (response *SendSmsResponse, er
     if request == nil {
         request = NewSendSmsRequest()
     }
+    
     response = NewSendSmsResponse()
     err = c.Send(request, response)
     return

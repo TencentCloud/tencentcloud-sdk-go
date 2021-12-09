@@ -4823,6 +4823,68 @@ func (r *PublishMessageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type PublishRRPCMessageRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 消息内容，utf8编码
+	Payload *string `json:"Payload,omitempty" name:"Payload"`
+}
+
+func (r *PublishRRPCMessageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PublishRRPCMessageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "Payload")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PublishRRPCMessageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type PublishRRPCMessageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// RRPC消息ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		MessageId *int64 `json:"MessageId,omitempty" name:"MessageId"`
+
+		// 设备回复的消息内容，采用base64编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PayloadBase64 *string `json:"PayloadBase64,omitempty" name:"PayloadBase64"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PublishRRPCMessageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PublishRRPCMessageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ReleaseStudioProductRequest struct {
 	*tchttp.BaseRequest
 

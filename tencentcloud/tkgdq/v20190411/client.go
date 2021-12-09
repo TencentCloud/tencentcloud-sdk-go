@@ -49,6 +49,7 @@ func NewDescribeEntityRequest() (request *DescribeEntityRequest) {
     }
     request.Init().WithApiInfo("tkgdq", APIVersion, "DescribeEntity")
     
+    
     return
 }
 
@@ -78,6 +79,7 @@ func (c *Client) DescribeEntity(request *DescribeEntityRequest) (response *Descr
     if request == nil {
         request = NewDescribeEntityRequest()
     }
+    
     response = NewDescribeEntityResponse()
     err = c.Send(request, response)
     return
@@ -88,6 +90,7 @@ func NewDescribeRelationRequest() (request *DescribeRelationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tkgdq", APIVersion, "DescribeRelation")
+    
     
     return
 }
@@ -118,6 +121,7 @@ func (c *Client) DescribeRelation(request *DescribeRelationRequest) (response *D
     if request == nil {
         request = NewDescribeRelationRequest()
     }
+    
     response = NewDescribeRelationResponse()
     err = c.Send(request, response)
     return
@@ -128,6 +132,7 @@ func NewDescribeTripleRequest() (request *DescribeTripleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tkgdq", APIVersion, "DescribeTriple")
+    
     
     return
 }
@@ -158,6 +163,7 @@ func (c *Client) DescribeTriple(request *DescribeTripleRequest) (response *Descr
     if request == nil {
         request = NewDescribeTripleRequest()
     }
+    
     response = NewDescribeTripleResponse()
     err = c.Send(request, response)
     return

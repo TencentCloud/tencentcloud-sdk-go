@@ -49,6 +49,7 @@ func NewDescribeSREInstanceAccessAddressRequest() (request *DescribeSREInstanceA
     }
     request.Init().WithApiInfo("tse", APIVersion, "DescribeSREInstanceAccessAddress")
     
+    
     return
 }
 
@@ -71,6 +72,7 @@ func (c *Client) DescribeSREInstanceAccessAddress(request *DescribeSREInstanceAc
     if request == nil {
         request = NewDescribeSREInstanceAccessAddressRequest()
     }
+    
     response = NewDescribeSREInstanceAccessAddressResponse()
     err = c.Send(request, response)
     return
@@ -81,6 +83,7 @@ func NewDescribeSREInstancesRequest() (request *DescribeSREInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tse", APIVersion, "DescribeSREInstances")
+    
     
     return
 }
@@ -103,6 +106,7 @@ func (c *Client) DescribeSREInstances(request *DescribeSREInstancesRequest) (res
     if request == nil {
         request = NewDescribeSREInstancesRequest()
     }
+    
     response = NewDescribeSREInstancesResponse()
     err = c.Send(request, response)
     return

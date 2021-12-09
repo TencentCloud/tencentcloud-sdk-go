@@ -49,6 +49,7 @@ func NewAssignProjectRequest() (request *AssignProjectRequest) {
     }
     request.Init().WithApiInfo("mongodb", APIVersion, "AssignProject")
     
+    
     return
 }
 
@@ -73,6 +74,7 @@ func (c *Client) AssignProject(request *AssignProjectRequest) (response *AssignP
     if request == nil {
         request = NewAssignProjectRequest()
     }
+    
     response = NewAssignProjectResponse()
     err = c.Send(request, response)
     return
@@ -83,6 +85,7 @@ func NewCreateDBInstanceRequest() (request *CreateDBInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("mongodb", APIVersion, "CreateDBInstance")
+    
     
     return
 }
@@ -103,6 +106,7 @@ func (c *Client) CreateDBInstance(request *CreateDBInstanceRequest) (response *C
     if request == nil {
         request = NewCreateDBInstanceRequest()
     }
+    
     response = NewCreateDBInstanceResponse()
     err = c.Send(request, response)
     return
@@ -113,6 +117,7 @@ func NewCreateDBInstanceHourRequest() (request *CreateDBInstanceHourRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("mongodb", APIVersion, "CreateDBInstanceHour")
+    
     
     return
 }
@@ -133,6 +138,7 @@ func (c *Client) CreateDBInstanceHour(request *CreateDBInstanceHourRequest) (res
     if request == nil {
         request = NewCreateDBInstanceHourRequest()
     }
+    
     response = NewCreateDBInstanceHourResponse()
     err = c.Send(request, response)
     return
@@ -143,6 +149,7 @@ func NewDescribeClientConnectionsRequest() (request *DescribeClientConnectionsRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("mongodb", APIVersion, "DescribeClientConnections")
+    
     
     return
 }
@@ -167,6 +174,7 @@ func (c *Client) DescribeClientConnections(request *DescribeClientConnectionsReq
     if request == nil {
         request = NewDescribeClientConnectionsRequest()
     }
+    
     response = NewDescribeClientConnectionsResponse()
     err = c.Send(request, response)
     return
@@ -177,6 +185,7 @@ func NewDescribeDBInstancesRequest() (request *DescribeDBInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("mongodb", APIVersion, "DescribeDBInstances")
+    
     
     return
 }
@@ -201,6 +210,7 @@ func (c *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (respo
     if request == nil {
         request = NewDescribeDBInstancesRequest()
     }
+    
     response = NewDescribeDBInstancesResponse()
     err = c.Send(request, response)
     return
@@ -211,6 +221,7 @@ func NewDescribeSlowLogRequest() (request *DescribeSlowLogRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("mongodb", APIVersion, "DescribeSlowLog")
+    
     
     return
 }
@@ -240,6 +251,7 @@ func (c *Client) DescribeSlowLog(request *DescribeSlowLogRequest) (response *Des
     if request == nil {
         request = NewDescribeSlowLogRequest()
     }
+    
     response = NewDescribeSlowLogResponse()
     err = c.Send(request, response)
     return
@@ -250,6 +262,7 @@ func NewDescribeSpecInfoRequest() (request *DescribeSpecInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("mongodb", APIVersion, "DescribeSpecInfo")
+    
     
     return
 }
@@ -271,6 +284,7 @@ func (c *Client) DescribeSpecInfo(request *DescribeSpecInfoRequest) (response *D
     if request == nil {
         request = NewDescribeSpecInfoRequest()
     }
+    
     response = NewDescribeSpecInfoResponse()
     err = c.Send(request, response)
     return
@@ -281,6 +295,7 @@ func NewRenameInstanceRequest() (request *RenameInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("mongodb", APIVersion, "RenameInstance")
+    
     
     return
 }
@@ -305,6 +320,7 @@ func (c *Client) RenameInstance(request *RenameInstanceRequest) (response *Renam
     if request == nil {
         request = NewRenameInstanceRequest()
     }
+    
     response = NewRenameInstanceResponse()
     err = c.Send(request, response)
     return
@@ -315,6 +331,7 @@ func NewSetAutoRenewRequest() (request *SetAutoRenewRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("mongodb", APIVersion, "SetAutoRenew")
+    
     
     return
 }
@@ -338,6 +355,7 @@ func (c *Client) SetAutoRenew(request *SetAutoRenewRequest) (response *SetAutoRe
     if request == nil {
         request = NewSetAutoRenewRequest()
     }
+    
     response = NewSetAutoRenewResponse()
     err = c.Send(request, response)
     return
@@ -348,6 +366,7 @@ func NewSetPasswordRequest() (request *SetPasswordRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("mongodb", APIVersion, "SetPassword")
+    
     
     return
 }
@@ -375,6 +394,7 @@ func (c *Client) SetPassword(request *SetPasswordRequest) (response *SetPassword
     if request == nil {
         request = NewSetPasswordRequest()
     }
+    
     response = NewSetPasswordResponse()
     err = c.Send(request, response)
     return
@@ -385,6 +405,7 @@ func NewTerminateDBInstanceRequest() (request *TerminateDBInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("mongodb", APIVersion, "TerminateDBInstance")
+    
     
     return
 }
@@ -406,6 +427,7 @@ func (c *Client) TerminateDBInstance(request *TerminateDBInstanceRequest) (respo
     if request == nil {
         request = NewTerminateDBInstanceRequest()
     }
+    
     response = NewTerminateDBInstanceResponse()
     err = c.Send(request, response)
     return
@@ -416,6 +438,7 @@ func NewUpgradeDBInstanceRequest() (request *UpgradeDBInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("mongodb", APIVersion, "UpgradeDBInstance")
+    
     
     return
 }
@@ -436,6 +459,7 @@ func (c *Client) UpgradeDBInstance(request *UpgradeDBInstanceRequest) (response 
     if request == nil {
         request = NewUpgradeDBInstanceRequest()
     }
+    
     response = NewUpgradeDBInstanceResponse()
     err = c.Send(request, response)
     return
@@ -446,6 +470,7 @@ func NewUpgradeDBInstanceHourRequest() (request *UpgradeDBInstanceHourRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("mongodb", APIVersion, "UpgradeDBInstanceHour")
+    
     
     return
 }
@@ -466,6 +491,7 @@ func (c *Client) UpgradeDBInstanceHour(request *UpgradeDBInstanceHourRequest) (r
     if request == nil {
         request = NewUpgradeDBInstanceHourRequest()
     }
+    
     response = NewUpgradeDBInstanceHourResponse()
     err = c.Send(request, response)
     return

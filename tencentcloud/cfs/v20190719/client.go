@@ -49,6 +49,7 @@ func NewCreateCfsFileSystemRequest() (request *CreateCfsFileSystemRequest) {
     }
     request.Init().WithApiInfo("cfs", APIVersion, "CreateCfsFileSystem")
     
+    
     return
 }
 
@@ -115,6 +116,7 @@ func (c *Client) CreateCfsFileSystem(request *CreateCfsFileSystemRequest) (respo
     if request == nil {
         request = NewCreateCfsFileSystemRequest()
     }
+    
     response = NewCreateCfsFileSystemResponse()
     err = c.Send(request, response)
     return
@@ -125,6 +127,7 @@ func NewCreateCfsPGroupRequest() (request *CreateCfsPGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "CreateCfsPGroup")
+    
     
     return
 }
@@ -153,6 +156,7 @@ func (c *Client) CreateCfsPGroup(request *CreateCfsPGroupRequest) (response *Cre
     if request == nil {
         request = NewCreateCfsPGroupRequest()
     }
+    
     response = NewCreateCfsPGroupResponse()
     err = c.Send(request, response)
     return
@@ -163,6 +167,7 @@ func NewCreateCfsRuleRequest() (request *CreateCfsRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "CreateCfsRule")
+    
     
     return
 }
@@ -199,6 +204,7 @@ func (c *Client) CreateCfsRule(request *CreateCfsRuleRequest) (response *CreateC
     if request == nil {
         request = NewCreateCfsRuleRequest()
     }
+    
     response = NewCreateCfsRuleResponse()
     err = c.Send(request, response)
     return
@@ -209,6 +215,7 @@ func NewDeleteCfsFileSystemRequest() (request *DeleteCfsFileSystemRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "DeleteCfsFileSystem")
+    
     
     return
 }
@@ -241,6 +248,7 @@ func (c *Client) DeleteCfsFileSystem(request *DeleteCfsFileSystemRequest) (respo
     if request == nil {
         request = NewDeleteCfsFileSystemRequest()
     }
+    
     response = NewDeleteCfsFileSystemResponse()
     err = c.Send(request, response)
     return
@@ -251,6 +259,7 @@ func NewDeleteCfsPGroupRequest() (request *DeleteCfsPGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "DeleteCfsPGroup")
+    
     
     return
 }
@@ -280,6 +289,7 @@ func (c *Client) DeleteCfsPGroup(request *DeleteCfsPGroupRequest) (response *Del
     if request == nil {
         request = NewDeleteCfsPGroupRequest()
     }
+    
     response = NewDeleteCfsPGroupResponse()
     err = c.Send(request, response)
     return
@@ -290,6 +300,7 @@ func NewDeleteCfsRuleRequest() (request *DeleteCfsRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "DeleteCfsRule")
+    
     
     return
 }
@@ -326,6 +337,7 @@ func (c *Client) DeleteCfsRule(request *DeleteCfsRuleRequest) (response *DeleteC
     if request == nil {
         request = NewDeleteCfsRuleRequest()
     }
+    
     response = NewDeleteCfsRuleResponse()
     err = c.Send(request, response)
     return
@@ -336,6 +348,7 @@ func NewDeleteMountTargetRequest() (request *DeleteMountTargetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "DeleteMountTarget")
+    
     
     return
 }
@@ -366,6 +379,7 @@ func (c *Client) DeleteMountTarget(request *DeleteMountTargetRequest) (response 
     if request == nil {
         request = NewDeleteMountTargetRequest()
     }
+    
     response = NewDeleteMountTargetResponse()
     err = c.Send(request, response)
     return
@@ -376,6 +390,7 @@ func NewDescribeAvailableZoneInfoRequest() (request *DescribeAvailableZoneInfoRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "DescribeAvailableZoneInfo")
+    
     
     return
 }
@@ -399,6 +414,7 @@ func (c *Client) DescribeAvailableZoneInfo(request *DescribeAvailableZoneInfoReq
     if request == nil {
         request = NewDescribeAvailableZoneInfoRequest()
     }
+    
     response = NewDescribeAvailableZoneInfoResponse()
     err = c.Send(request, response)
     return
@@ -409,6 +425,7 @@ func NewDescribeCfsFileSystemClientsRequest() (request *DescribeCfsFileSystemCli
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "DescribeCfsFileSystemClients")
+    
     
     return
 }
@@ -434,6 +451,7 @@ func (c *Client) DescribeCfsFileSystemClients(request *DescribeCfsFileSystemClie
     if request == nil {
         request = NewDescribeCfsFileSystemClientsRequest()
     }
+    
     response = NewDescribeCfsFileSystemClientsResponse()
     err = c.Send(request, response)
     return
@@ -444,6 +462,7 @@ func NewDescribeCfsFileSystemsRequest() (request *DescribeCfsFileSystemsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "DescribeCfsFileSystems")
+    
     
     return
 }
@@ -475,6 +494,7 @@ func (c *Client) DescribeCfsFileSystems(request *DescribeCfsFileSystemsRequest) 
     if request == nil {
         request = NewDescribeCfsFileSystemsRequest()
     }
+    
     response = NewDescribeCfsFileSystemsResponse()
     err = c.Send(request, response)
     return
@@ -485,6 +505,7 @@ func NewDescribeCfsPGroupsRequest() (request *DescribeCfsPGroupsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "DescribeCfsPGroups")
+    
     
     return
 }
@@ -507,6 +528,7 @@ func (c *Client) DescribeCfsPGroups(request *DescribeCfsPGroupsRequest) (respons
     if request == nil {
         request = NewDescribeCfsPGroupsRequest()
     }
+    
     response = NewDescribeCfsPGroupsResponse()
     err = c.Send(request, response)
     return
@@ -517,6 +539,7 @@ func NewDescribeCfsRulesRequest() (request *DescribeCfsRulesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "DescribeCfsRules")
+    
     
     return
 }
@@ -541,6 +564,7 @@ func (c *Client) DescribeCfsRules(request *DescribeCfsRulesRequest) (response *D
     if request == nil {
         request = NewDescribeCfsRulesRequest()
     }
+    
     response = NewDescribeCfsRulesResponse()
     err = c.Send(request, response)
     return
@@ -551,6 +575,7 @@ func NewDescribeCfsServiceStatusRequest() (request *DescribeCfsServiceStatusRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "DescribeCfsServiceStatus")
+    
     
     return
 }
@@ -575,6 +600,7 @@ func (c *Client) DescribeCfsServiceStatus(request *DescribeCfsServiceStatusReque
     if request == nil {
         request = NewDescribeCfsServiceStatusRequest()
     }
+    
     response = NewDescribeCfsServiceStatusResponse()
     err = c.Send(request, response)
     return
@@ -585,6 +611,7 @@ func NewDescribeMountTargetsRequest() (request *DescribeMountTargetsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "DescribeMountTargets")
+    
     
     return
 }
@@ -614,6 +641,7 @@ func (c *Client) DescribeMountTargets(request *DescribeMountTargetsRequest) (res
     if request == nil {
         request = NewDescribeMountTargetsRequest()
     }
+    
     response = NewDescribeMountTargetsResponse()
     err = c.Send(request, response)
     return
@@ -624,6 +652,7 @@ func NewSignUpCfsServiceRequest() (request *SignUpCfsServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "SignUpCfsService")
+    
     
     return
 }
@@ -648,6 +677,7 @@ func (c *Client) SignUpCfsService(request *SignUpCfsServiceRequest) (response *S
     if request == nil {
         request = NewSignUpCfsServiceRequest()
     }
+    
     response = NewSignUpCfsServiceResponse()
     err = c.Send(request, response)
     return
@@ -658,6 +688,7 @@ func NewUpdateCfsFileSystemNameRequest() (request *UpdateCfsFileSystemNameReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "UpdateCfsFileSystemName")
+    
     
     return
 }
@@ -690,6 +721,7 @@ func (c *Client) UpdateCfsFileSystemName(request *UpdateCfsFileSystemNameRequest
     if request == nil {
         request = NewUpdateCfsFileSystemNameRequest()
     }
+    
     response = NewUpdateCfsFileSystemNameResponse()
     err = c.Send(request, response)
     return
@@ -700,6 +732,7 @@ func NewUpdateCfsFileSystemPGroupRequest() (request *UpdateCfsFileSystemPGroupRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "UpdateCfsFileSystemPGroup")
+    
     
     return
 }
@@ -736,6 +769,7 @@ func (c *Client) UpdateCfsFileSystemPGroup(request *UpdateCfsFileSystemPGroupReq
     if request == nil {
         request = NewUpdateCfsFileSystemPGroupRequest()
     }
+    
     response = NewUpdateCfsFileSystemPGroupResponse()
     err = c.Send(request, response)
     return
@@ -746,6 +780,7 @@ func NewUpdateCfsFileSystemSizeLimitRequest() (request *UpdateCfsFileSystemSizeL
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "UpdateCfsFileSystemSizeLimit")
+    
     
     return
 }
@@ -778,6 +813,7 @@ func (c *Client) UpdateCfsFileSystemSizeLimit(request *UpdateCfsFileSystemSizeLi
     if request == nil {
         request = NewUpdateCfsFileSystemSizeLimitRequest()
     }
+    
     response = NewUpdateCfsFileSystemSizeLimitResponse()
     err = c.Send(request, response)
     return
@@ -788,6 +824,7 @@ func NewUpdateCfsPGroupRequest() (request *UpdateCfsPGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "UpdateCfsPGroup")
+    
     
     return
 }
@@ -821,6 +858,7 @@ func (c *Client) UpdateCfsPGroup(request *UpdateCfsPGroupRequest) (response *Upd
     if request == nil {
         request = NewUpdateCfsPGroupRequest()
     }
+    
     response = NewUpdateCfsPGroupResponse()
     err = c.Send(request, response)
     return
@@ -831,6 +869,7 @@ func NewUpdateCfsRuleRequest() (request *UpdateCfsRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "UpdateCfsRule")
+    
     
     return
 }
@@ -868,6 +907,7 @@ func (c *Client) UpdateCfsRule(request *UpdateCfsRuleRequest) (response *UpdateC
     if request == nil {
         request = NewUpdateCfsRuleRequest()
     }
+    
     response = NewUpdateCfsRuleResponse()
     err = c.Send(request, response)
     return

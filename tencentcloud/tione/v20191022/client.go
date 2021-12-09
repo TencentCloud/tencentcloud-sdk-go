@@ -49,6 +49,7 @@ func NewCreateCodeRepositoryRequest() (request *CreateCodeRepositoryRequest) {
     }
     request.Init().WithApiInfo("tione", APIVersion, "CreateCodeRepository")
     
+    
     return
 }
 
@@ -77,6 +78,7 @@ func (c *Client) CreateCodeRepository(request *CreateCodeRepositoryRequest) (res
     if request == nil {
         request = NewCreateCodeRepositoryRequest()
     }
+    
     response = NewCreateCodeRepositoryResponse()
     err = c.Send(request, response)
     return
@@ -87,6 +89,7 @@ func NewCreateNotebookInstanceRequest() (request *CreateNotebookInstanceRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tione", APIVersion, "CreateNotebookInstance")
+    
     
     return
 }
@@ -123,6 +126,7 @@ func (c *Client) CreateNotebookInstance(request *CreateNotebookInstanceRequest) 
     if request == nil {
         request = NewCreateNotebookInstanceRequest()
     }
+    
     response = NewCreateNotebookInstanceResponse()
     err = c.Send(request, response)
     return
@@ -133,6 +137,7 @@ func NewCreateNotebookLifecycleScriptRequest() (request *CreateNotebookLifecycle
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tione", APIVersion, "CreateNotebookLifecycleScript")
+    
     
     return
 }
@@ -158,6 +163,7 @@ func (c *Client) CreateNotebookLifecycleScript(request *CreateNotebookLifecycleS
     if request == nil {
         request = NewCreateNotebookLifecycleScriptRequest()
     }
+    
     response = NewCreateNotebookLifecycleScriptResponse()
     err = c.Send(request, response)
     return
@@ -168,6 +174,7 @@ func NewCreatePresignedNotebookInstanceUrlRequest() (request *CreatePresignedNot
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tione", APIVersion, "CreatePresignedNotebookInstanceUrl")
+    
     
     return
 }
@@ -193,6 +200,7 @@ func (c *Client) CreatePresignedNotebookInstanceUrl(request *CreatePresignedNote
     if request == nil {
         request = NewCreatePresignedNotebookInstanceUrlRequest()
     }
+    
     response = NewCreatePresignedNotebookInstanceUrlResponse()
     err = c.Send(request, response)
     return
@@ -203,6 +211,7 @@ func NewCreateTrainingJobRequest() (request *CreateTrainingJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tione", APIVersion, "CreateTrainingJob")
+    
     
     return
 }
@@ -239,6 +248,7 @@ func (c *Client) CreateTrainingJob(request *CreateTrainingJobRequest) (response 
     if request == nil {
         request = NewCreateTrainingJobRequest()
     }
+    
     response = NewCreateTrainingJobResponse()
     err = c.Send(request, response)
     return
@@ -249,6 +259,7 @@ func NewDeleteCodeRepositoryRequest() (request *DeleteCodeRepositoryRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tione", APIVersion, "DeleteCodeRepository")
+    
     
     return
 }
@@ -276,6 +287,7 @@ func (c *Client) DeleteCodeRepository(request *DeleteCodeRepositoryRequest) (res
     if request == nil {
         request = NewDeleteCodeRepositoryRequest()
     }
+    
     response = NewDeleteCodeRepositoryResponse()
     err = c.Send(request, response)
     return
@@ -286,6 +298,7 @@ func NewDeleteNotebookInstanceRequest() (request *DeleteNotebookInstanceRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tione", APIVersion, "DeleteNotebookInstance")
+    
     
     return
 }
@@ -310,6 +323,7 @@ func (c *Client) DeleteNotebookInstance(request *DeleteNotebookInstanceRequest) 
     if request == nil {
         request = NewDeleteNotebookInstanceRequest()
     }
+    
     response = NewDeleteNotebookInstanceResponse()
     err = c.Send(request, response)
     return
@@ -320,6 +334,7 @@ func NewDeleteNotebookLifecycleScriptRequest() (request *DeleteNotebookLifecycle
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tione", APIVersion, "DeleteNotebookLifecycleScript")
+    
     
     return
 }
@@ -345,6 +360,7 @@ func (c *Client) DeleteNotebookLifecycleScript(request *DeleteNotebookLifecycleS
     if request == nil {
         request = NewDeleteNotebookLifecycleScriptRequest()
     }
+    
     response = NewDeleteNotebookLifecycleScriptResponse()
     err = c.Send(request, response)
     return
@@ -355,6 +371,7 @@ func NewDescribeCodeRepositoriesRequest() (request *DescribeCodeRepositoriesRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tione", APIVersion, "DescribeCodeRepositories")
+    
     
     return
 }
@@ -381,6 +398,7 @@ func (c *Client) DescribeCodeRepositories(request *DescribeCodeRepositoriesReque
     if request == nil {
         request = NewDescribeCodeRepositoriesRequest()
     }
+    
     response = NewDescribeCodeRepositoriesResponse()
     err = c.Send(request, response)
     return
@@ -391,6 +409,7 @@ func NewDescribeCodeRepositoryRequest() (request *DescribeCodeRepositoryRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tione", APIVersion, "DescribeCodeRepository")
+    
     
     return
 }
@@ -417,6 +436,7 @@ func (c *Client) DescribeCodeRepository(request *DescribeCodeRepositoryRequest) 
     if request == nil {
         request = NewDescribeCodeRepositoryRequest()
     }
+    
     response = NewDescribeCodeRepositoryResponse()
     err = c.Send(request, response)
     return
@@ -427,6 +447,7 @@ func NewDescribeNotebookInstanceRequest() (request *DescribeNotebookInstanceRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tione", APIVersion, "DescribeNotebookInstance")
+    
     
     return
 }
@@ -453,6 +474,7 @@ func (c *Client) DescribeNotebookInstance(request *DescribeNotebookInstanceReque
     if request == nil {
         request = NewDescribeNotebookInstanceRequest()
     }
+    
     response = NewDescribeNotebookInstanceResponse()
     err = c.Send(request, response)
     return
@@ -463,6 +485,7 @@ func NewDescribeNotebookInstancesRequest() (request *DescribeNotebookInstancesRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tione", APIVersion, "DescribeNotebookInstances")
+    
     
     return
 }
@@ -487,6 +510,7 @@ func (c *Client) DescribeNotebookInstances(request *DescribeNotebookInstancesReq
     if request == nil {
         request = NewDescribeNotebookInstancesRequest()
     }
+    
     response = NewDescribeNotebookInstancesResponse()
     err = c.Send(request, response)
     return
@@ -497,6 +521,7 @@ func NewDescribeNotebookLifecycleScriptRequest() (request *DescribeNotebookLifec
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tione", APIVersion, "DescribeNotebookLifecycleScript")
+    
     
     return
 }
@@ -520,6 +545,7 @@ func (c *Client) DescribeNotebookLifecycleScript(request *DescribeNotebookLifecy
     if request == nil {
         request = NewDescribeNotebookLifecycleScriptRequest()
     }
+    
     response = NewDescribeNotebookLifecycleScriptResponse()
     err = c.Send(request, response)
     return
@@ -530,6 +556,7 @@ func NewDescribeNotebookLifecycleScriptsRequest() (request *DescribeNotebookLife
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tione", APIVersion, "DescribeNotebookLifecycleScripts")
+    
     
     return
 }
@@ -553,6 +580,7 @@ func (c *Client) DescribeNotebookLifecycleScripts(request *DescribeNotebookLifec
     if request == nil {
         request = NewDescribeNotebookLifecycleScriptsRequest()
     }
+    
     response = NewDescribeNotebookLifecycleScriptsResponse()
     err = c.Send(request, response)
     return
@@ -563,6 +591,7 @@ func NewDescribeNotebookSummaryRequest() (request *DescribeNotebookSummaryReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tione", APIVersion, "DescribeNotebookSummary")
+    
     
     return
 }
@@ -583,6 +612,7 @@ func (c *Client) DescribeNotebookSummary(request *DescribeNotebookSummaryRequest
     if request == nil {
         request = NewDescribeNotebookSummaryRequest()
     }
+    
     response = NewDescribeNotebookSummaryResponse()
     err = c.Send(request, response)
     return
@@ -593,6 +623,7 @@ func NewDescribeTrainingJobRequest() (request *DescribeTrainingJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tione", APIVersion, "DescribeTrainingJob")
+    
     
     return
 }
@@ -616,6 +647,7 @@ func (c *Client) DescribeTrainingJob(request *DescribeTrainingJobRequest) (respo
     if request == nil {
         request = NewDescribeTrainingJobRequest()
     }
+    
     response = NewDescribeTrainingJobResponse()
     err = c.Send(request, response)
     return
@@ -626,6 +658,7 @@ func NewDescribeTrainingJobsRequest() (request *DescribeTrainingJobsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tione", APIVersion, "DescribeTrainingJobs")
+    
     
     return
 }
@@ -649,6 +682,7 @@ func (c *Client) DescribeTrainingJobs(request *DescribeTrainingJobsRequest) (res
     if request == nil {
         request = NewDescribeTrainingJobsRequest()
     }
+    
     response = NewDescribeTrainingJobsResponse()
     err = c.Send(request, response)
     return
@@ -659,6 +693,7 @@ func NewStartNotebookInstanceRequest() (request *StartNotebookInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tione", APIVersion, "StartNotebookInstance")
+    
     
     return
 }
@@ -682,6 +717,7 @@ func (c *Client) StartNotebookInstance(request *StartNotebookInstanceRequest) (r
     if request == nil {
         request = NewStartNotebookInstanceRequest()
     }
+    
     response = NewStartNotebookInstanceResponse()
     err = c.Send(request, response)
     return
@@ -692,6 +728,7 @@ func NewStopNotebookInstanceRequest() (request *StopNotebookInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tione", APIVersion, "StopNotebookInstance")
+    
     
     return
 }
@@ -716,6 +753,7 @@ func (c *Client) StopNotebookInstance(request *StopNotebookInstanceRequest) (res
     if request == nil {
         request = NewStopNotebookInstanceRequest()
     }
+    
     response = NewStopNotebookInstanceResponse()
     err = c.Send(request, response)
     return
@@ -726,6 +764,7 @@ func NewStopTrainingJobRequest() (request *StopTrainingJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tione", APIVersion, "StopTrainingJob")
+    
     
     return
 }
@@ -748,6 +787,7 @@ func (c *Client) StopTrainingJob(request *StopTrainingJobRequest) (response *Sto
     if request == nil {
         request = NewStopTrainingJobRequest()
     }
+    
     response = NewStopTrainingJobResponse()
     err = c.Send(request, response)
     return
@@ -758,6 +798,7 @@ func NewUpdateCodeRepositoryRequest() (request *UpdateCodeRepositoryRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tione", APIVersion, "UpdateCodeRepository")
+    
     
     return
 }
@@ -785,6 +826,7 @@ func (c *Client) UpdateCodeRepository(request *UpdateCodeRepositoryRequest) (res
     if request == nil {
         request = NewUpdateCodeRepositoryRequest()
     }
+    
     response = NewUpdateCodeRepositoryResponse()
     err = c.Send(request, response)
     return
@@ -795,6 +837,7 @@ func NewUpdateNotebookInstanceRequest() (request *UpdateNotebookInstanceRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tione", APIVersion, "UpdateNotebookInstance")
+    
     
     return
 }
@@ -828,6 +871,7 @@ func (c *Client) UpdateNotebookInstance(request *UpdateNotebookInstanceRequest) 
     if request == nil {
         request = NewUpdateNotebookInstanceRequest()
     }
+    
     response = NewUpdateNotebookInstanceResponse()
     err = c.Send(request, response)
     return
@@ -838,6 +882,7 @@ func NewUpdateNotebookLifecycleScriptRequest() (request *UpdateNotebookLifecycle
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tione", APIVersion, "UpdateNotebookLifecycleScript")
+    
     
     return
 }
@@ -862,6 +907,7 @@ func (c *Client) UpdateNotebookLifecycleScript(request *UpdateNotebookLifecycleS
     if request == nil {
         request = NewUpdateNotebookLifecycleScriptRequest()
     }
+    
     response = NewUpdateNotebookLifecycleScriptResponse()
     err = c.Send(request, response)
     return

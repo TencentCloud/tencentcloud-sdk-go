@@ -288,6 +288,36 @@ type AdvanceConfig struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
+type AdvanceHttps struct {
+
+	// 自定义Tls数据开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomTlsStatus *string `json:"CustomTlsStatus,omitempty" name:"CustomTlsStatus"`
+
+	// Tls版本列表，支持设置 TLSv1, TLSV1.1, TLSV1.2, TLSv1.3，修改时必须开启连续的版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TlsVersion []*string `json:"TlsVersion,omitempty" name:"TlsVersion"`
+
+	// 自定义加密套件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cipher *string `json:"Cipher,omitempty" name:"Cipher"`
+
+	// 回源双向校验开启状态
+	// off - 关闭校验
+	// oneWay - 校验源站
+	// twoWay - 双向校验
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VerifyOriginType *string `json:"VerifyOriginType,omitempty" name:"VerifyOriginType"`
+
+	// 回源层证书配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertInfo *ServerCert `json:"CertInfo,omitempty" name:"CertInfo"`
+
+	// 源站证书配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginCertInfo *ClientCert `json:"OriginCertInfo,omitempty" name:"OriginCertInfo"`
+}
+
 type AdvancedAuthentication struct {
 
 	// 防盗链配置开关，on或off，开启时必须且只能配置一种模式，其余模式为null。
@@ -7472,6 +7502,10 @@ type Origin struct {
 	// 分路径回源配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PathBasedOrigin []*PathBasedOriginRule `json:"PathBasedOrigin,omitempty" name:"PathBasedOrigin"`
+
+	// HTTPS回源高级配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdvanceHttps *AdvanceHttps `json:"AdvanceHttps,omitempty" name:"AdvanceHttps"`
 }
 
 type OriginAuthentication struct {

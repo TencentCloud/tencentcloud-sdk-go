@@ -49,6 +49,7 @@ func NewAcceptOrganizationInvitationRequest() (request *AcceptOrganizationInvita
     }
     request.Init().WithApiInfo("organization", APIVersion, "AcceptOrganizationInvitation")
     
+    
     return
 }
 
@@ -69,6 +70,7 @@ func (c *Client) AcceptOrganizationInvitation(request *AcceptOrganizationInvitat
     if request == nil {
         request = NewAcceptOrganizationInvitationRequest()
     }
+    
     response = NewAcceptOrganizationInvitationResponse()
     err = c.Send(request, response)
     return
@@ -79,6 +81,7 @@ func NewAddOrganizationNodeRequest() (request *AddOrganizationNodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "AddOrganizationNode")
+    
     
     return
 }
@@ -103,6 +106,7 @@ func (c *Client) AddOrganizationNode(request *AddOrganizationNodeRequest) (respo
     if request == nil {
         request = NewAddOrganizationNodeRequest()
     }
+    
     response = NewAddOrganizationNodeResponse()
     err = c.Send(request, response)
     return
@@ -113,6 +117,7 @@ func NewCancelOrganizationInvitationRequest() (request *CancelOrganizationInvita
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "CancelOrganizationInvitation")
+    
     
     return
 }
@@ -133,6 +138,7 @@ func (c *Client) CancelOrganizationInvitation(request *CancelOrganizationInvitat
     if request == nil {
         request = NewCancelOrganizationInvitationRequest()
     }
+    
     response = NewCancelOrganizationInvitationResponse()
     err = c.Send(request, response)
     return
@@ -143,6 +149,7 @@ func NewCreateOrganizationRequest() (request *CreateOrganizationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "CreateOrganization")
+    
     
     return
 }
@@ -164,6 +171,7 @@ func (c *Client) CreateOrganization(request *CreateOrganizationRequest) (respons
     if request == nil {
         request = NewCreateOrganizationRequest()
     }
+    
     response = NewCreateOrganizationResponse()
     err = c.Send(request, response)
     return
@@ -174,6 +182,7 @@ func NewDeleteOrganizationRequest() (request *DeleteOrganizationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "DeleteOrganization")
+    
     
     return
 }
@@ -196,6 +205,7 @@ func (c *Client) DeleteOrganization(request *DeleteOrganizationRequest) (respons
     if request == nil {
         request = NewDeleteOrganizationRequest()
     }
+    
     response = NewDeleteOrganizationResponse()
     err = c.Send(request, response)
     return
@@ -206,6 +216,7 @@ func NewDeleteOrganizationMemberFromNodeRequest() (request *DeleteOrganizationMe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "DeleteOrganizationMemberFromNode")
+    
     
     return
 }
@@ -228,6 +239,7 @@ func (c *Client) DeleteOrganizationMemberFromNode(request *DeleteOrganizationMem
     if request == nil {
         request = NewDeleteOrganizationMemberFromNodeRequest()
     }
+    
     response = NewDeleteOrganizationMemberFromNodeResponse()
     err = c.Send(request, response)
     return
@@ -238,6 +250,7 @@ func NewDeleteOrganizationMembersRequest() (request *DeleteOrganizationMembersRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "DeleteOrganizationMembers")
+    
     
     return
 }
@@ -259,6 +272,7 @@ func (c *Client) DeleteOrganizationMembers(request *DeleteOrganizationMembersReq
     if request == nil {
         request = NewDeleteOrganizationMembersRequest()
     }
+    
     response = NewDeleteOrganizationMembersResponse()
     err = c.Send(request, response)
     return
@@ -269,6 +283,7 @@ func NewDeleteOrganizationNodesRequest() (request *DeleteOrganizationNodesReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "DeleteOrganizationNodes")
+    
     
     return
 }
@@ -290,6 +305,7 @@ func (c *Client) DeleteOrganizationNodes(request *DeleteOrganizationNodesRequest
     if request == nil {
         request = NewDeleteOrganizationNodesRequest()
     }
+    
     response = NewDeleteOrganizationNodesResponse()
     err = c.Send(request, response)
     return
@@ -300,6 +316,7 @@ func NewDenyOrganizationInvitationRequest() (request *DenyOrganizationInvitation
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "DenyOrganizationInvitation")
+    
     
     return
 }
@@ -320,6 +337,7 @@ func (c *Client) DenyOrganizationInvitation(request *DenyOrganizationInvitationR
     if request == nil {
         request = NewDenyOrganizationInvitationRequest()
     }
+    
     response = NewDenyOrganizationInvitationResponse()
     err = c.Send(request, response)
     return
@@ -330,6 +348,7 @@ func NewGetOrganizationRequest() (request *GetOrganizationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "GetOrganization")
+    
     
     return
 }
@@ -351,6 +370,7 @@ func (c *Client) GetOrganization(request *GetOrganizationRequest) (response *Get
     if request == nil {
         request = NewGetOrganizationRequest()
     }
+    
     response = NewGetOrganizationResponse()
     err = c.Send(request, response)
     return
@@ -361,6 +381,7 @@ func NewGetOrganizationMemberRequest() (request *GetOrganizationMemberRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "GetOrganizationMember")
+    
     
     return
 }
@@ -382,6 +403,7 @@ func (c *Client) GetOrganizationMember(request *GetOrganizationMemberRequest) (r
     if request == nil {
         request = NewGetOrganizationMemberRequest()
     }
+    
     response = NewGetOrganizationMemberResponse()
     err = c.Send(request, response)
     return
@@ -392,6 +414,7 @@ func NewListOrganizationInvitationsRequest() (request *ListOrganizationInvitatio
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "ListOrganizationInvitations")
+    
     
     return
 }
@@ -412,6 +435,7 @@ func (c *Client) ListOrganizationInvitations(request *ListOrganizationInvitation
     if request == nil {
         request = NewListOrganizationInvitationsRequest()
     }
+    
     response = NewListOrganizationInvitationsResponse()
     err = c.Send(request, response)
     return
@@ -422,6 +446,7 @@ func NewListOrganizationMembersRequest() (request *ListOrganizationMembersReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "ListOrganizationMembers")
+    
     
     return
 }
@@ -443,6 +468,7 @@ func (c *Client) ListOrganizationMembers(request *ListOrganizationMembersRequest
     if request == nil {
         request = NewListOrganizationMembersRequest()
     }
+    
     response = NewListOrganizationMembersResponse()
     err = c.Send(request, response)
     return
@@ -453,6 +479,7 @@ func NewListOrganizationNodeMembersRequest() (request *ListOrganizationNodeMembe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "ListOrganizationNodeMembers")
+    
     
     return
 }
@@ -474,6 +501,7 @@ func (c *Client) ListOrganizationNodeMembers(request *ListOrganizationNodeMember
     if request == nil {
         request = NewListOrganizationNodeMembersRequest()
     }
+    
     response = NewListOrganizationNodeMembersResponse()
     err = c.Send(request, response)
     return
@@ -484,6 +512,7 @@ func NewListOrganizationNodesRequest() (request *ListOrganizationNodesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "ListOrganizationNodes")
+    
     
     return
 }
@@ -504,6 +533,7 @@ func (c *Client) ListOrganizationNodes(request *ListOrganizationNodesRequest) (r
     if request == nil {
         request = NewListOrganizationNodesRequest()
     }
+    
     response = NewListOrganizationNodesResponse()
     err = c.Send(request, response)
     return
@@ -514,6 +544,7 @@ func NewMoveOrganizationMembersToNodeRequest() (request *MoveOrganizationMembers
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "MoveOrganizationMembersToNode")
+    
     
     return
 }
@@ -536,6 +567,7 @@ func (c *Client) MoveOrganizationMembersToNode(request *MoveOrganizationMembersT
     if request == nil {
         request = NewMoveOrganizationMembersToNodeRequest()
     }
+    
     response = NewMoveOrganizationMembersToNodeResponse()
     err = c.Send(request, response)
     return
@@ -546,6 +578,7 @@ func NewQuitOrganizationRequest() (request *QuitOrganizationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "QuitOrganization")
+    
     
     return
 }
@@ -567,6 +600,7 @@ func (c *Client) QuitOrganization(request *QuitOrganizationRequest) (response *Q
     if request == nil {
         request = NewQuitOrganizationRequest()
     }
+    
     response = NewQuitOrganizationResponse()
     err = c.Send(request, response)
     return
@@ -577,6 +611,7 @@ func NewSendOrganizationInvitationRequest() (request *SendOrganizationInvitation
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "SendOrganizationInvitation")
+    
     
     return
 }
@@ -604,6 +639,7 @@ func (c *Client) SendOrganizationInvitation(request *SendOrganizationInvitationR
     if request == nil {
         request = NewSendOrganizationInvitationRequest()
     }
+    
     response = NewSendOrganizationInvitationResponse()
     err = c.Send(request, response)
     return
@@ -614,6 +650,7 @@ func NewUpdateOrganizationMemberRequest() (request *UpdateOrganizationMemberRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "UpdateOrganizationMember")
+    
     
     return
 }
@@ -636,6 +673,7 @@ func (c *Client) UpdateOrganizationMember(request *UpdateOrganizationMemberReque
     if request == nil {
         request = NewUpdateOrganizationMemberRequest()
     }
+    
     response = NewUpdateOrganizationMemberResponse()
     err = c.Send(request, response)
     return
@@ -646,6 +684,7 @@ func NewUpdateOrganizationNodeRequest() (request *UpdateOrganizationNodeRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("organization", APIVersion, "UpdateOrganizationNode")
+    
     
     return
 }
@@ -669,6 +708,7 @@ func (c *Client) UpdateOrganizationNode(request *UpdateOrganizationNodeRequest) 
     if request == nil {
         request = NewUpdateOrganizationNodeRequest()
     }
+    
     response = NewUpdateOrganizationNodeResponse()
     err = c.Send(request, response)
     return

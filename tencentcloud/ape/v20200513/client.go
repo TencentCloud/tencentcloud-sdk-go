@@ -49,6 +49,7 @@ func NewBatchDescribeOrderCertificateRequest() (request *BatchDescribeOrderCerti
     }
     request.Init().WithApiInfo("ape", APIVersion, "BatchDescribeOrderCertificate")
     
+    
     return
 }
 
@@ -72,6 +73,7 @@ func (c *Client) BatchDescribeOrderCertificate(request *BatchDescribeOrderCertif
     if request == nil {
         request = NewBatchDescribeOrderCertificateRequest()
     }
+    
     response = NewBatchDescribeOrderCertificateResponse()
     err = c.Send(request, response)
     return
@@ -82,6 +84,7 @@ func NewBatchDescribeOrderImageRequest() (request *BatchDescribeOrderImageReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ape", APIVersion, "BatchDescribeOrderImage")
+    
     
     return
 }
@@ -107,6 +110,7 @@ func (c *Client) BatchDescribeOrderImage(request *BatchDescribeOrderImageRequest
     if request == nil {
         request = NewBatchDescribeOrderImageRequest()
     }
+    
     response = NewBatchDescribeOrderImageResponse()
     err = c.Send(request, response)
     return
@@ -117,6 +121,7 @@ func NewCreateOrderAndDownloadsRequest() (request *CreateOrderAndDownloadsReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ape", APIVersion, "CreateOrderAndDownloads")
+    
     
     return
 }
@@ -140,6 +145,7 @@ func (c *Client) CreateOrderAndDownloads(request *CreateOrderAndDownloadsRequest
     if request == nil {
         request = NewCreateOrderAndDownloadsRequest()
     }
+    
     response = NewCreateOrderAndDownloadsResponse()
     err = c.Send(request, response)
     return
@@ -150,6 +156,7 @@ func NewCreateOrderAndPayRequest() (request *CreateOrderAndPayRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ape", APIVersion, "CreateOrderAndPay")
+    
     
     return
 }
@@ -177,6 +184,7 @@ func (c *Client) CreateOrderAndPay(request *CreateOrderAndPayRequest) (response 
     if request == nil {
         request = NewCreateOrderAndPayRequest()
     }
+    
     response = NewCreateOrderAndPayResponse()
     err = c.Send(request, response)
     return
@@ -187,6 +195,7 @@ func NewDescribeAuthUsersRequest() (request *DescribeAuthUsersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ape", APIVersion, "DescribeAuthUsers")
+    
     
     return
 }
@@ -209,6 +218,7 @@ func (c *Client) DescribeAuthUsers(request *DescribeAuthUsersRequest) (response 
     if request == nil {
         request = NewDescribeAuthUsersRequest()
     }
+    
     response = NewDescribeAuthUsersResponse()
     err = c.Send(request, response)
     return
@@ -219,6 +229,7 @@ func NewDescribeDownloadInfosRequest() (request *DescribeDownloadInfosRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ape", APIVersion, "DescribeDownloadInfos")
+    
     
     return
 }
@@ -240,6 +251,7 @@ func (c *Client) DescribeDownloadInfos(request *DescribeDownloadInfosRequest) (r
     if request == nil {
         request = NewDescribeDownloadInfosRequest()
     }
+    
     response = NewDescribeDownloadInfosResponse()
     err = c.Send(request, response)
     return
@@ -250,6 +262,7 @@ func NewDescribeImageRequest() (request *DescribeImageRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ape", APIVersion, "DescribeImage")
+    
     
     return
 }
@@ -277,6 +290,7 @@ func (c *Client) DescribeImage(request *DescribeImageRequest) (response *Describ
     if request == nil {
         request = NewDescribeImageRequest()
     }
+    
     response = NewDescribeImageResponse()
     err = c.Send(request, response)
     return
@@ -287,6 +301,7 @@ func NewDescribeImagesRequest() (request *DescribeImagesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ape", APIVersion, "DescribeImages")
+    
     
     return
 }
@@ -312,6 +327,7 @@ func (c *Client) DescribeImages(request *DescribeImagesRequest) (response *Descr
     if request == nil {
         request = NewDescribeImagesRequest()
     }
+    
     response = NewDescribeImagesResponse()
     err = c.Send(request, response)
     return

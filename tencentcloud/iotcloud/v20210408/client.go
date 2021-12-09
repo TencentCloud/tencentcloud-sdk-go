@@ -49,6 +49,7 @@ func NewCreateDeviceRequest() (request *CreateDeviceRequest) {
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "CreateDevice")
     
+    
     return
 }
 
@@ -79,6 +80,7 @@ func (c *Client) CreateDevice(request *CreateDeviceRequest) (response *CreateDev
     if request == nil {
         request = NewCreateDeviceRequest()
     }
+    
     response = NewCreateDeviceResponse()
     err = c.Send(request, response)
     return
@@ -89,6 +91,7 @@ func NewCreatePrivateCARequest() (request *CreatePrivateCARequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "CreatePrivateCA")
+    
     
     return
 }
@@ -109,6 +112,7 @@ func (c *Client) CreatePrivateCA(request *CreatePrivateCARequest) (response *Cre
     if request == nil {
         request = NewCreatePrivateCARequest()
     }
+    
     response = NewCreatePrivateCAResponse()
     err = c.Send(request, response)
     return
@@ -119,6 +123,7 @@ func NewDeleteDeviceRequest() (request *DeleteDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DeleteDevice")
+    
     
     return
 }
@@ -144,6 +149,7 @@ func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDev
     if request == nil {
         request = NewDeleteDeviceRequest()
     }
+    
     response = NewDeleteDeviceResponse()
     err = c.Send(request, response)
     return
@@ -154,6 +160,7 @@ func NewDeletePrivateCARequest() (request *DeletePrivateCARequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DeletePrivateCA")
+    
     
     return
 }
@@ -179,6 +186,7 @@ func (c *Client) DeletePrivateCA(request *DeletePrivateCARequest) (response *Del
     if request == nil {
         request = NewDeletePrivateCARequest()
     }
+    
     response = NewDeletePrivateCAResponse()
     err = c.Send(request, response)
     return
@@ -189,6 +197,7 @@ func NewDeleteProductRequest() (request *DeleteProductRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DeleteProduct")
+    
     
     return
 }
@@ -215,6 +224,7 @@ func (c *Client) DeleteProduct(request *DeleteProductRequest) (response *DeleteP
     if request == nil {
         request = NewDeleteProductRequest()
     }
+    
     response = NewDeleteProductResponse()
     err = c.Send(request, response)
     return
@@ -225,6 +235,7 @@ func NewDescribeDeviceRequest() (request *DescribeDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeDevice")
+    
     
     return
 }
@@ -248,6 +259,7 @@ func (c *Client) DescribeDevice(request *DescribeDeviceRequest) (response *Descr
     if request == nil {
         request = NewDescribeDeviceRequest()
     }
+    
     response = NewDescribeDeviceResponse()
     err = c.Send(request, response)
     return
@@ -258,6 +270,7 @@ func NewDescribeDevicesRequest() (request *DescribeDevicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeDevices")
+    
     
     return
 }
@@ -280,6 +293,7 @@ func (c *Client) DescribeDevices(request *DescribeDevicesRequest) (response *Des
     if request == nil {
         request = NewDescribeDevicesRequest()
     }
+    
     response = NewDescribeDevicesResponse()
     err = c.Send(request, response)
     return
@@ -290,6 +304,7 @@ func NewDescribePrivateCARequest() (request *DescribePrivateCARequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribePrivateCA")
+    
     
     return
 }
@@ -312,6 +327,7 @@ func (c *Client) DescribePrivateCA(request *DescribePrivateCARequest) (response 
     if request == nil {
         request = NewDescribePrivateCARequest()
     }
+    
     response = NewDescribePrivateCAResponse()
     err = c.Send(request, response)
     return
@@ -322,6 +338,7 @@ func NewDescribePrivateCABindedProductsRequest() (request *DescribePrivateCABind
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribePrivateCABindedProducts")
+    
     
     return
 }
@@ -344,6 +361,7 @@ func (c *Client) DescribePrivateCABindedProducts(request *DescribePrivateCABinde
     if request == nil {
         request = NewDescribePrivateCABindedProductsRequest()
     }
+    
     response = NewDescribePrivateCABindedProductsResponse()
     err = c.Send(request, response)
     return
@@ -354,6 +372,7 @@ func NewDescribePrivateCAsRequest() (request *DescribePrivateCAsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribePrivateCAs")
+    
     
     return
 }
@@ -376,6 +395,7 @@ func (c *Client) DescribePrivateCAs(request *DescribePrivateCAsRequest) (respons
     if request == nil {
         request = NewDescribePrivateCAsRequest()
     }
+    
     response = NewDescribePrivateCAsResponse()
     err = c.Send(request, response)
     return
@@ -386,6 +406,7 @@ func NewDescribeProductRequest() (request *DescribeProductRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeProduct")
+    
     
     return
 }
@@ -408,6 +429,7 @@ func (c *Client) DescribeProduct(request *DescribeProductRequest) (response *Des
     if request == nil {
         request = NewDescribeProductRequest()
     }
+    
     response = NewDescribeProductResponse()
     err = c.Send(request, response)
     return
@@ -418,6 +440,7 @@ func NewDescribeProductCARequest() (request *DescribeProductCARequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeProductCA")
+    
     
     return
 }
@@ -440,6 +463,7 @@ func (c *Client) DescribeProductCA(request *DescribeProductCARequest) (response 
     if request == nil {
         request = NewDescribeProductCARequest()
     }
+    
     response = NewDescribeProductCAResponse()
     err = c.Send(request, response)
     return
@@ -450,6 +474,7 @@ func NewUpdateDeviceLogLevelRequest() (request *UpdateDeviceLogLevelRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "UpdateDeviceLogLevel")
+    
     
     return
 }
@@ -472,6 +497,7 @@ func (c *Client) UpdateDeviceLogLevel(request *UpdateDeviceLogLevelRequest) (res
     if request == nil {
         request = NewUpdateDeviceLogLevelRequest()
     }
+    
     response = NewUpdateDeviceLogLevelResponse()
     err = c.Send(request, response)
     return
@@ -482,6 +508,7 @@ func NewUpdateDevicesEnableStateRequest() (request *UpdateDevicesEnableStateRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "UpdateDevicesEnableState")
+    
     
     return
 }
@@ -506,6 +533,7 @@ func (c *Client) UpdateDevicesEnableState(request *UpdateDevicesEnableStateReque
     if request == nil {
         request = NewUpdateDevicesEnableStateRequest()
     }
+    
     response = NewUpdateDevicesEnableStateResponse()
     err = c.Send(request, response)
     return
@@ -516,6 +544,7 @@ func NewUpdatePrivateCARequest() (request *UpdatePrivateCARequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "UpdatePrivateCA")
+    
     
     return
 }
@@ -540,6 +569,7 @@ func (c *Client) UpdatePrivateCA(request *UpdatePrivateCARequest) (response *Upd
     if request == nil {
         request = NewUpdatePrivateCARequest()
     }
+    
     response = NewUpdatePrivateCAResponse()
     err = c.Send(request, response)
     return

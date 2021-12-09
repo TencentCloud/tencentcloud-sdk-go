@@ -159,6 +159,9 @@ type ClientConnection struct {
 
 	// 对应客户端IP的连接数
 	Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+	// 是否为内部ip
+	InternalService *bool `json:"InternalService,omitempty" name:"InternalService"`
 }
 
 type CreateBackupDBInstanceRequest struct {

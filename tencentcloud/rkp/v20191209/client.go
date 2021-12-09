@@ -49,6 +49,7 @@ func NewGetOpenIdRequest() (request *GetOpenIdRequest) {
     }
     request.Init().WithApiInfo("rkp", APIVersion, "GetOpenId")
     
+    
     return
 }
 
@@ -79,6 +80,7 @@ func (c *Client) GetOpenId(request *GetOpenIdRequest) (response *GetOpenIdRespon
     if request == nil {
         request = NewGetOpenIdRequest()
     }
+    
     response = NewGetOpenIdResponse()
     err = c.Send(request, response)
     return
@@ -89,6 +91,7 @@ func NewGetTokenRequest() (request *GetTokenRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("rkp", APIVersion, "GetToken")
+    
     
     return
 }
@@ -119,6 +122,7 @@ func (c *Client) GetToken(request *GetTokenRequest) (response *GetTokenResponse,
     if request == nil {
         request = NewGetTokenRequest()
     }
+    
     response = NewGetTokenResponse()
     err = c.Send(request, response)
     return
@@ -129,6 +133,7 @@ func NewQueryDevAndRiskRequest() (request *QueryDevAndRiskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("rkp", APIVersion, "QueryDevAndRisk")
+    
     
     return
 }
@@ -173,6 +178,7 @@ func (c *Client) QueryDevAndRisk(request *QueryDevAndRiskRequest) (response *Que
     if request == nil {
         request = NewQueryDevAndRiskRequest()
     }
+    
     response = NewQueryDevAndRiskResponse()
     err = c.Send(request, response)
     return

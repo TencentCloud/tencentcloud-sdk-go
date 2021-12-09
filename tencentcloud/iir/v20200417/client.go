@@ -49,6 +49,7 @@ func NewRecognizeProductRequest() (request *RecognizeProductRequest) {
     }
     request.Init().WithApiInfo("iir", APIVersion, "RecognizeProduct")
     
+    
     return
 }
 
@@ -86,6 +87,7 @@ func (c *Client) RecognizeProduct(request *RecognizeProductRequest) (response *R
     if request == nil {
         request = NewRecognizeProductRequest()
     }
+    
     response = NewRecognizeProductResponse()
     err = c.Send(request, response)
     return

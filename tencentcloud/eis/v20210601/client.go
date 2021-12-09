@@ -49,6 +49,7 @@ func NewGetRuntimeMCRequest() (request *GetRuntimeMCRequest) {
     }
     request.Init().WithApiInfo("eis", APIVersion, "GetRuntimeMC")
     
+    
     return
 }
 
@@ -78,6 +79,7 @@ func (c *Client) GetRuntimeMC(request *GetRuntimeMCRequest) (response *GetRuntim
     if request == nil {
         request = NewGetRuntimeMCRequest()
     }
+    
     response = NewGetRuntimeMCResponse()
     err = c.Send(request, response)
     return
@@ -88,6 +90,7 @@ func NewGetRuntimeResourceMonitorMetricMCRequest() (request *GetRuntimeResourceM
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eis", APIVersion, "GetRuntimeResourceMonitorMetricMC")
+    
     
     return
 }
@@ -116,6 +119,7 @@ func (c *Client) GetRuntimeResourceMonitorMetricMC(request *GetRuntimeResourceMo
     if request == nil {
         request = NewGetRuntimeResourceMonitorMetricMCRequest()
     }
+    
     response = NewGetRuntimeResourceMonitorMetricMCResponse()
     err = c.Send(request, response)
     return
@@ -126,6 +130,7 @@ func NewListDeployableRuntimesMCRequest() (request *ListDeployableRuntimesMCRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eis", APIVersion, "ListDeployableRuntimesMC")
+    
     
     return
 }
@@ -146,6 +151,7 @@ func (c *Client) ListDeployableRuntimesMC(request *ListDeployableRuntimesMCReque
     if request == nil {
         request = NewListDeployableRuntimesMCRequest()
     }
+    
     response = NewListDeployableRuntimesMCResponse()
     err = c.Send(request, response)
     return
@@ -156,6 +162,7 @@ func NewListRuntimeDeployedInstancesMCRequest() (request *ListRuntimeDeployedIns
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eis", APIVersion, "ListRuntimeDeployedInstancesMC")
+    
     
     return
 }
@@ -184,6 +191,7 @@ func (c *Client) ListRuntimeDeployedInstancesMC(request *ListRuntimeDeployedInst
     if request == nil {
         request = NewListRuntimeDeployedInstancesMCRequest()
     }
+    
     response = NewListRuntimeDeployedInstancesMCResponse()
     err = c.Send(request, response)
     return
@@ -194,6 +202,7 @@ func NewListRuntimesMCRequest() (request *ListRuntimesMCRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eis", APIVersion, "ListRuntimesMC")
+    
     
     return
 }
@@ -219,6 +228,7 @@ func (c *Client) ListRuntimesMC(request *ListRuntimesMCRequest) (response *ListR
     if request == nil {
         request = NewListRuntimesMCRequest()
     }
+    
     response = NewListRuntimesMCResponse()
     err = c.Send(request, response)
     return

@@ -49,6 +49,7 @@ func NewCreateMonitorsRequest() (request *CreateMonitorsRequest) {
     }
     request.Init().WithApiInfo("cws", APIVersion, "CreateMonitors")
     
+    
     return
 }
 
@@ -72,6 +73,7 @@ func (c *Client) CreateMonitors(request *CreateMonitorsRequest) (response *Creat
     if request == nil {
         request = NewCreateMonitorsRequest()
     }
+    
     response = NewCreateMonitorsResponse()
     err = c.Send(request, response)
     return
@@ -82,6 +84,7 @@ func NewCreateSitesRequest() (request *CreateSitesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "CreateSites")
+    
     
     return
 }
@@ -104,6 +107,7 @@ func (c *Client) CreateSites(request *CreateSitesRequest) (response *CreateSites
     if request == nil {
         request = NewCreateSitesRequest()
     }
+    
     response = NewCreateSitesResponse()
     err = c.Send(request, response)
     return
@@ -114,6 +118,7 @@ func NewCreateSitesScansRequest() (request *CreateSitesScansRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "CreateSitesScans")
+    
     
     return
 }
@@ -137,6 +142,7 @@ func (c *Client) CreateSitesScans(request *CreateSitesScansRequest) (response *C
     if request == nil {
         request = NewCreateSitesScansRequest()
     }
+    
     response = NewCreateSitesScansResponse()
     err = c.Send(request, response)
     return
@@ -147,6 +153,7 @@ func NewCreateVulsMisinformationRequest() (request *CreateVulsMisinformationRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "CreateVulsMisinformation")
+    
     
     return
 }
@@ -171,6 +178,7 @@ func (c *Client) CreateVulsMisinformation(request *CreateVulsMisinformationReque
     if request == nil {
         request = NewCreateVulsMisinformationRequest()
     }
+    
     response = NewCreateVulsMisinformationResponse()
     err = c.Send(request, response)
     return
@@ -181,6 +189,7 @@ func NewCreateVulsReportRequest() (request *CreateVulsReportRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "CreateVulsReport")
+    
     
     return
 }
@@ -202,6 +211,7 @@ func (c *Client) CreateVulsReport(request *CreateVulsReportRequest) (response *C
     if request == nil {
         request = NewCreateVulsReportRequest()
     }
+    
     response = NewCreateVulsReportResponse()
     err = c.Send(request, response)
     return
@@ -212,6 +222,7 @@ func NewDeleteMonitorsRequest() (request *DeleteMonitorsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "DeleteMonitors")
+    
     
     return
 }
@@ -234,6 +245,7 @@ func (c *Client) DeleteMonitors(request *DeleteMonitorsRequest) (response *Delet
     if request == nil {
         request = NewDeleteMonitorsRequest()
     }
+    
     response = NewDeleteMonitorsResponse()
     err = c.Send(request, response)
     return
@@ -244,6 +256,7 @@ func NewDeleteSitesRequest() (request *DeleteSitesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "DeleteSites")
+    
     
     return
 }
@@ -266,6 +279,7 @@ func (c *Client) DeleteSites(request *DeleteSitesRequest) (response *DeleteSites
     if request == nil {
         request = NewDeleteSitesRequest()
     }
+    
     response = NewDeleteSitesResponse()
     err = c.Send(request, response)
     return
@@ -276,6 +290,7 @@ func NewDescribeConfigRequest() (request *DescribeConfigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "DescribeConfig")
+    
     
     return
 }
@@ -296,6 +311,7 @@ func (c *Client) DescribeConfig(request *DescribeConfigRequest) (response *Descr
     if request == nil {
         request = NewDescribeConfigRequest()
     }
+    
     response = NewDescribeConfigResponse()
     err = c.Send(request, response)
     return
@@ -306,6 +322,7 @@ func NewDescribeMonitorsRequest() (request *DescribeMonitorsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "DescribeMonitors")
+    
     
     return
 }
@@ -328,6 +345,7 @@ func (c *Client) DescribeMonitors(request *DescribeMonitorsRequest) (response *D
     if request == nil {
         request = NewDescribeMonitorsRequest()
     }
+    
     response = NewDescribeMonitorsResponse()
     err = c.Send(request, response)
     return
@@ -338,6 +356,7 @@ func NewDescribeSiteQuotaRequest() (request *DescribeSiteQuotaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "DescribeSiteQuota")
+    
     
     return
 }
@@ -358,6 +377,7 @@ func (c *Client) DescribeSiteQuota(request *DescribeSiteQuotaRequest) (response 
     if request == nil {
         request = NewDescribeSiteQuotaRequest()
     }
+    
     response = NewDescribeSiteQuotaResponse()
     err = c.Send(request, response)
     return
@@ -368,6 +388,7 @@ func NewDescribeSitesRequest() (request *DescribeSitesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "DescribeSites")
+    
     
     return
 }
@@ -390,6 +411,7 @@ func (c *Client) DescribeSites(request *DescribeSitesRequest) (response *Describ
     if request == nil {
         request = NewDescribeSitesRequest()
     }
+    
     response = NewDescribeSitesResponse()
     err = c.Send(request, response)
     return
@@ -400,6 +422,7 @@ func NewDescribeSitesVerificationRequest() (request *DescribeSitesVerificationRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "DescribeSitesVerification")
+    
     
     return
 }
@@ -422,6 +445,7 @@ func (c *Client) DescribeSitesVerification(request *DescribeSitesVerificationReq
     if request == nil {
         request = NewDescribeSitesVerificationRequest()
     }
+    
     response = NewDescribeSitesVerificationResponse()
     err = c.Send(request, response)
     return
@@ -432,6 +456,7 @@ func NewDescribeVulsRequest() (request *DescribeVulsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "DescribeVuls")
+    
     
     return
 }
@@ -455,6 +480,7 @@ func (c *Client) DescribeVuls(request *DescribeVulsRequest) (response *DescribeV
     if request == nil {
         request = NewDescribeVulsRequest()
     }
+    
     response = NewDescribeVulsResponse()
     err = c.Send(request, response)
     return
@@ -465,6 +491,7 @@ func NewDescribeVulsNumberRequest() (request *DescribeVulsNumberRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "DescribeVulsNumber")
+    
     
     return
 }
@@ -485,6 +512,7 @@ func (c *Client) DescribeVulsNumber(request *DescribeVulsNumberRequest) (respons
     if request == nil {
         request = NewDescribeVulsNumberRequest()
     }
+    
     response = NewDescribeVulsNumberResponse()
     err = c.Send(request, response)
     return
@@ -495,6 +523,7 @@ func NewDescribeVulsNumberTimelineRequest() (request *DescribeVulsNumberTimeline
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "DescribeVulsNumberTimeline")
+    
     
     return
 }
@@ -515,6 +544,7 @@ func (c *Client) DescribeVulsNumberTimeline(request *DescribeVulsNumberTimelineR
     if request == nil {
         request = NewDescribeVulsNumberTimelineRequest()
     }
+    
     response = NewDescribeVulsNumberTimelineResponse()
     err = c.Send(request, response)
     return
@@ -525,6 +555,7 @@ func NewModifyConfigAttributeRequest() (request *ModifyConfigAttributeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "ModifyConfigAttribute")
+    
     
     return
 }
@@ -545,6 +576,7 @@ func (c *Client) ModifyConfigAttribute(request *ModifyConfigAttributeRequest) (r
     if request == nil {
         request = NewModifyConfigAttributeRequest()
     }
+    
     response = NewModifyConfigAttributeResponse()
     err = c.Send(request, response)
     return
@@ -555,6 +587,7 @@ func NewModifyMonitorAttributeRequest() (request *ModifyMonitorAttributeRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "ModifyMonitorAttribute")
+    
     
     return
 }
@@ -578,6 +611,7 @@ func (c *Client) ModifyMonitorAttribute(request *ModifyMonitorAttributeRequest) 
     if request == nil {
         request = NewModifyMonitorAttributeRequest()
     }
+    
     response = NewModifyMonitorAttributeResponse()
     err = c.Send(request, response)
     return
@@ -588,6 +622,7 @@ func NewModifySiteAttributeRequest() (request *ModifySiteAttributeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "ModifySiteAttribute")
+    
     
     return
 }
@@ -610,6 +645,7 @@ func (c *Client) ModifySiteAttribute(request *ModifySiteAttributeRequest) (respo
     if request == nil {
         request = NewModifySiteAttributeRequest()
     }
+    
     response = NewModifySiteAttributeResponse()
     err = c.Send(request, response)
     return
@@ -620,6 +656,7 @@ func NewVerifySitesRequest() (request *VerifySitesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cws", APIVersion, "VerifySites")
+    
     
     return
 }
@@ -642,6 +679,7 @@ func (c *Client) VerifySites(request *VerifySitesRequest) (response *VerifySites
     if request == nil {
         request = NewVerifySitesRequest()
     }
+    
     response = NewVerifySitesResponse()
     err = c.Send(request, response)
     return

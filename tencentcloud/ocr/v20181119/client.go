@@ -49,6 +49,7 @@ func NewAdvertiseOCRRequest() (request *AdvertiseOCRRequest) {
     }
     request.Init().WithApiInfo("ocr", APIVersion, "AdvertiseOCR")
     
+    
     return
 }
 
@@ -83,6 +84,7 @@ func (c *Client) AdvertiseOCR(request *AdvertiseOCRRequest) (response *Advertise
     if request == nil {
         request = NewAdvertiseOCRRequest()
     }
+    
     response = NewAdvertiseOCRResponse()
     err = c.Send(request, response)
     return
@@ -93,6 +95,7 @@ func NewArithmeticOCRRequest() (request *ArithmeticOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "ArithmeticOCR")
+    
     
     return
 }
@@ -123,6 +126,7 @@ func (c *Client) ArithmeticOCR(request *ArithmeticOCRRequest) (response *Arithme
     if request == nil {
         request = NewArithmeticOCRRequest()
     }
+    
     response = NewArithmeticOCRResponse()
     err = c.Send(request, response)
     return
@@ -133,6 +137,7 @@ func NewBankCardOCRRequest() (request *BankCardOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "BankCardOCR")
+    
     
     return
 }
@@ -161,6 +166,7 @@ func (c *Client) BankCardOCR(request *BankCardOCRRequest) (response *BankCardOCR
     if request == nil {
         request = NewBankCardOCRRequest()
     }
+    
     response = NewBankCardOCRResponse()
     err = c.Send(request, response)
     return
@@ -171,6 +177,7 @@ func NewBankSlipOCRRequest() (request *BankSlipOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "BankSlipOCR")
+    
     
     return
 }
@@ -200,6 +207,7 @@ func (c *Client) BankSlipOCR(request *BankSlipOCRRequest) (response *BankSlipOCR
     if request == nil {
         request = NewBankSlipOCRRequest()
     }
+    
     response = NewBankSlipOCRResponse()
     err = c.Send(request, response)
     return
@@ -210,6 +218,7 @@ func NewBizLicenseOCRRequest() (request *BizLicenseOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "BizLicenseOCR")
+    
     
     return
 }
@@ -237,6 +246,7 @@ func (c *Client) BizLicenseOCR(request *BizLicenseOCRRequest) (response *BizLice
     if request == nil {
         request = NewBizLicenseOCRRequest()
     }
+    
     response = NewBizLicenseOCRResponse()
     err = c.Send(request, response)
     return
@@ -247,6 +257,7 @@ func NewBusInvoiceOCRRequest() (request *BusInvoiceOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "BusInvoiceOCR")
+    
     
     return
 }
@@ -274,6 +285,7 @@ func (c *Client) BusInvoiceOCR(request *BusInvoiceOCRRequest) (response *BusInvo
     if request == nil {
         request = NewBusInvoiceOCRRequest()
     }
+    
     response = NewBusInvoiceOCRResponse()
     err = c.Send(request, response)
     return
@@ -284,6 +296,7 @@ func NewBusinessCardOCRRequest() (request *BusinessCardOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "BusinessCardOCR")
+    
     
     return
 }
@@ -313,6 +326,7 @@ func (c *Client) BusinessCardOCR(request *BusinessCardOCRRequest) (response *Bus
     if request == nil {
         request = NewBusinessCardOCRRequest()
     }
+    
     response = NewBusinessCardOCRResponse()
     err = c.Send(request, response)
     return
@@ -323,6 +337,7 @@ func NewCarInvoiceOCRRequest() (request *CarInvoiceOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "CarInvoiceOCR")
+    
     
     return
 }
@@ -350,6 +365,7 @@ func (c *Client) CarInvoiceOCR(request *CarInvoiceOCRRequest) (response *CarInvo
     if request == nil {
         request = NewCarInvoiceOCRRequest()
     }
+    
     response = NewCarInvoiceOCRResponse()
     err = c.Send(request, response)
     return
@@ -360,6 +376,7 @@ func NewClassifyDetectOCRRequest() (request *ClassifyDetectOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "ClassifyDetectOCR")
+    
     
     return
 }
@@ -389,6 +406,7 @@ func (c *Client) ClassifyDetectOCR(request *ClassifyDetectOCRRequest) (response 
     if request == nil {
         request = NewClassifyDetectOCRRequest()
     }
+    
     response = NewClassifyDetectOCRResponse()
     err = c.Send(request, response)
     return
@@ -399,6 +417,7 @@ func NewDriverLicenseOCRRequest() (request *DriverLicenseOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "DriverLicenseOCR")
+    
     
     return
 }
@@ -443,6 +462,7 @@ func (c *Client) DriverLicenseOCR(request *DriverLicenseOCRRequest) (response *D
     if request == nil {
         request = NewDriverLicenseOCRRequest()
     }
+    
     response = NewDriverLicenseOCRResponse()
     err = c.Send(request, response)
     return
@@ -453,6 +473,7 @@ func NewDutyPaidProofOCRRequest() (request *DutyPaidProofOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "DutyPaidProofOCR")
+    
     
     return
 }
@@ -480,6 +501,7 @@ func (c *Client) DutyPaidProofOCR(request *DutyPaidProofOCRRequest) (response *D
     if request == nil {
         request = NewDutyPaidProofOCRRequest()
     }
+    
     response = NewDutyPaidProofOCRResponse()
     err = c.Send(request, response)
     return
@@ -490,6 +512,7 @@ func NewEduPaperOCRRequest() (request *EduPaperOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "EduPaperOCR")
+    
     
     return
 }
@@ -519,6 +542,7 @@ func (c *Client) EduPaperOCR(request *EduPaperOCRRequest) (response *EduPaperOCR
     if request == nil {
         request = NewEduPaperOCRRequest()
     }
+    
     response = NewEduPaperOCRResponse()
     err = c.Send(request, response)
     return
@@ -529,6 +553,7 @@ func NewEnglishOCRRequest() (request *EnglishOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "EnglishOCR")
+    
     
     return
 }
@@ -559,6 +584,7 @@ func (c *Client) EnglishOCR(request *EnglishOCRRequest) (response *EnglishOCRRes
     if request == nil {
         request = NewEnglishOCRRequest()
     }
+    
     response = NewEnglishOCRResponse()
     err = c.Send(request, response)
     return
@@ -569,6 +595,7 @@ func NewEnterpriseLicenseOCRRequest() (request *EnterpriseLicenseOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "EnterpriseLicenseOCR")
+    
     
     return
 }
@@ -596,6 +623,7 @@ func (c *Client) EnterpriseLicenseOCR(request *EnterpriseLicenseOCRRequest) (res
     if request == nil {
         request = NewEnterpriseLicenseOCRRequest()
     }
+    
     response = NewEnterpriseLicenseOCRResponse()
     err = c.Send(request, response)
     return
@@ -606,6 +634,7 @@ func NewEstateCertOCRRequest() (request *EstateCertOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "EstateCertOCR")
+    
     
     return
 }
@@ -637,6 +666,7 @@ func (c *Client) EstateCertOCR(request *EstateCertOCRRequest) (response *EstateC
     if request == nil {
         request = NewEstateCertOCRRequest()
     }
+    
     response = NewEstateCertOCRResponse()
     err = c.Send(request, response)
     return
@@ -647,6 +677,7 @@ func NewFinanBillOCRRequest() (request *FinanBillOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "FinanBillOCR")
+    
     
     return
 }
@@ -675,6 +706,7 @@ func (c *Client) FinanBillOCR(request *FinanBillOCRRequest) (response *FinanBill
     if request == nil {
         request = NewFinanBillOCRRequest()
     }
+    
     response = NewFinanBillOCRResponse()
     err = c.Send(request, response)
     return
@@ -685,6 +717,7 @@ func NewFinanBillSliceOCRRequest() (request *FinanBillSliceOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "FinanBillSliceOCR")
+    
     
     return
 }
@@ -713,6 +746,7 @@ func (c *Client) FinanBillSliceOCR(request *FinanBillSliceOCRRequest) (response 
     if request == nil {
         request = NewFinanBillSliceOCRRequest()
     }
+    
     response = NewFinanBillSliceOCRResponse()
     err = c.Send(request, response)
     return
@@ -723,6 +757,7 @@ func NewFlightInvoiceOCRRequest() (request *FlightInvoiceOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "FlightInvoiceOCR")
+    
     
     return
 }
@@ -750,6 +785,7 @@ func (c *Client) FlightInvoiceOCR(request *FlightInvoiceOCRRequest) (response *F
     if request == nil {
         request = NewFlightInvoiceOCRRequest()
     }
+    
     response = NewFlightInvoiceOCRResponse()
     err = c.Send(request, response)
     return
@@ -760,6 +796,7 @@ func NewFormulaOCRRequest() (request *FormulaOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "FormulaOCR")
+    
     
     return
 }
@@ -789,6 +826,7 @@ func (c *Client) FormulaOCR(request *FormulaOCRRequest) (response *FormulaOCRRes
     if request == nil {
         request = NewFormulaOCRRequest()
     }
+    
     response = NewFormulaOCRResponse()
     err = c.Send(request, response)
     return
@@ -799,6 +837,7 @@ func NewGeneralAccurateOCRRequest() (request *GeneralAccurateOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "GeneralAccurateOCR")
+    
     
     return
 }
@@ -952,6 +991,7 @@ func (c *Client) GeneralAccurateOCR(request *GeneralAccurateOCRRequest) (respons
     if request == nil {
         request = NewGeneralAccurateOCRRequest()
     }
+    
     response = NewGeneralAccurateOCRResponse()
     err = c.Send(request, response)
     return
@@ -962,6 +1002,7 @@ func NewGeneralBasicOCRRequest() (request *GeneralBasicOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "GeneralBasicOCR")
+    
     
     return
 }
@@ -1113,6 +1154,7 @@ func (c *Client) GeneralBasicOCR(request *GeneralBasicOCRRequest) (response *Gen
     if request == nil {
         request = NewGeneralBasicOCRRequest()
     }
+    
     response = NewGeneralBasicOCRResponse()
     err = c.Send(request, response)
     return
@@ -1123,6 +1165,7 @@ func NewGeneralEfficientOCRRequest() (request *GeneralEfficientOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "GeneralEfficientOCR")
+    
     
     return
 }
@@ -1300,6 +1343,7 @@ func (c *Client) GeneralEfficientOCR(request *GeneralEfficientOCRRequest) (respo
     if request == nil {
         request = NewGeneralEfficientOCRRequest()
     }
+    
     response = NewGeneralEfficientOCRResponse()
     err = c.Send(request, response)
     return
@@ -1310,6 +1354,7 @@ func NewGeneralFastOCRRequest() (request *GeneralFastOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "GeneralFastOCR")
+    
     
     return
 }
@@ -1340,6 +1385,7 @@ func (c *Client) GeneralFastOCR(request *GeneralFastOCRRequest) (response *Gener
     if request == nil {
         request = NewGeneralFastOCRRequest()
     }
+    
     response = NewGeneralFastOCRResponse()
     err = c.Send(request, response)
     return
@@ -1350,6 +1396,7 @@ func NewGeneralHandwritingOCRRequest() (request *GeneralHandwritingOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "GeneralHandwritingOCR")
+    
     
     return
 }
@@ -1382,6 +1429,7 @@ func (c *Client) GeneralHandwritingOCR(request *GeneralHandwritingOCRRequest) (r
     if request == nil {
         request = NewGeneralHandwritingOCRRequest()
     }
+    
     response = NewGeneralHandwritingOCRResponse()
     err = c.Send(request, response)
     return
@@ -1392,6 +1440,7 @@ func NewHKIDCardOCRRequest() (request *HKIDCardOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "HKIDCardOCR")
+    
     
     return
 }
@@ -1422,6 +1471,7 @@ func (c *Client) HKIDCardOCR(request *HKIDCardOCRRequest) (response *HKIDCardOCR
     if request == nil {
         request = NewHKIDCardOCRRequest()
     }
+    
     response = NewHKIDCardOCRResponse()
     err = c.Send(request, response)
     return
@@ -1432,6 +1482,7 @@ func NewHmtResidentPermitOCRRequest() (request *HmtResidentPermitOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "HmtResidentPermitOCR")
+    
     
     return
 }
@@ -1461,6 +1512,7 @@ func (c *Client) HmtResidentPermitOCR(request *HmtResidentPermitOCRRequest) (res
     if request == nil {
         request = NewHmtResidentPermitOCRRequest()
     }
+    
     response = NewHmtResidentPermitOCRResponse()
     err = c.Send(request, response)
     return
@@ -1471,6 +1523,7 @@ func NewIDCardOCRRequest() (request *IDCardOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "IDCardOCR")
+    
     
     return
 }
@@ -1595,6 +1648,7 @@ func (c *Client) IDCardOCR(request *IDCardOCRRequest) (response *IDCardOCRRespon
     if request == nil {
         request = NewIDCardOCRRequest()
     }
+    
     response = NewIDCardOCRResponse()
     err = c.Send(request, response)
     return
@@ -1605,6 +1659,7 @@ func NewInstitutionOCRRequest() (request *InstitutionOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "InstitutionOCR")
+    
     
     return
 }
@@ -1632,6 +1687,7 @@ func (c *Client) InstitutionOCR(request *InstitutionOCRRequest) (response *Insti
     if request == nil {
         request = NewInstitutionOCRRequest()
     }
+    
     response = NewInstitutionOCRResponse()
     err = c.Send(request, response)
     return
@@ -1642,6 +1698,7 @@ func NewInsuranceBillOCRRequest() (request *InsuranceBillOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "InsuranceBillOCR")
+    
     
     return
 }
@@ -1671,6 +1728,7 @@ func (c *Client) InsuranceBillOCR(request *InsuranceBillOCRRequest) (response *I
     if request == nil {
         request = NewInsuranceBillOCRRequest()
     }
+    
     response = NewInsuranceBillOCRResponse()
     err = c.Send(request, response)
     return
@@ -1681,6 +1739,7 @@ func NewInvoiceGeneralOCRRequest() (request *InvoiceGeneralOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "InvoiceGeneralOCR")
+    
     
     return
 }
@@ -1708,6 +1767,7 @@ func (c *Client) InvoiceGeneralOCR(request *InvoiceGeneralOCRRequest) (response 
     if request == nil {
         request = NewInvoiceGeneralOCRRequest()
     }
+    
     response = NewInvoiceGeneralOCRResponse()
     err = c.Send(request, response)
     return
@@ -1718,6 +1778,7 @@ func NewLicensePlateOCRRequest() (request *LicensePlateOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "LicensePlateOCR")
+    
     
     return
 }
@@ -1745,6 +1806,7 @@ func (c *Client) LicensePlateOCR(request *LicensePlateOCRRequest) (response *Lic
     if request == nil {
         request = NewLicensePlateOCRRequest()
     }
+    
     response = NewLicensePlateOCRResponse()
     err = c.Send(request, response)
     return
@@ -1755,6 +1817,7 @@ func NewMLIDCardOCRRequest() (request *MLIDCardOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "MLIDCardOCR")
+    
     
     return
 }
@@ -1785,6 +1848,7 @@ func (c *Client) MLIDCardOCR(request *MLIDCardOCRRequest) (response *MLIDCardOCR
     if request == nil {
         request = NewMLIDCardOCRRequest()
     }
+    
     response = NewMLIDCardOCRResponse()
     err = c.Send(request, response)
     return
@@ -1795,6 +1859,7 @@ func NewMLIDPassportOCRRequest() (request *MLIDPassportOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "MLIDPassportOCR")
+    
     
     return
 }
@@ -1823,6 +1888,7 @@ func (c *Client) MLIDPassportOCR(request *MLIDPassportOCRRequest) (response *MLI
     if request == nil {
         request = NewMLIDPassportOCRRequest()
     }
+    
     response = NewMLIDPassportOCRResponse()
     err = c.Send(request, response)
     return
@@ -1833,6 +1899,7 @@ func NewMainlandPermitOCRRequest() (request *MainlandPermitOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "MainlandPermitOCR")
+    
     
     return
 }
@@ -1860,6 +1927,7 @@ func (c *Client) MainlandPermitOCR(request *MainlandPermitOCRRequest) (response 
     if request == nil {
         request = NewMainlandPermitOCRRequest()
     }
+    
     response = NewMainlandPermitOCRResponse()
     err = c.Send(request, response)
     return
@@ -1870,6 +1938,7 @@ func NewMixedInvoiceDetectRequest() (request *MixedInvoiceDetectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "MixedInvoiceDetect")
+    
     
     return
 }
@@ -1897,6 +1966,7 @@ func (c *Client) MixedInvoiceDetect(request *MixedInvoiceDetectRequest) (respons
     if request == nil {
         request = NewMixedInvoiceDetectRequest()
     }
+    
     response = NewMixedInvoiceDetectResponse()
     err = c.Send(request, response)
     return
@@ -1907,6 +1977,7 @@ func NewMixedInvoiceOCRRequest() (request *MixedInvoiceOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "MixedInvoiceOCR")
+    
     
     return
 }
@@ -1935,6 +2006,7 @@ func (c *Client) MixedInvoiceOCR(request *MixedInvoiceOCRRequest) (response *Mix
     if request == nil {
         request = NewMixedInvoiceOCRRequest()
     }
+    
     response = NewMixedInvoiceOCRResponse()
     err = c.Send(request, response)
     return
@@ -1945,6 +2017,7 @@ func NewOrgCodeCertOCRRequest() (request *OrgCodeCertOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "OrgCodeCertOCR")
+    
     
     return
 }
@@ -1972,6 +2045,7 @@ func (c *Client) OrgCodeCertOCR(request *OrgCodeCertOCRRequest) (response *OrgCo
     if request == nil {
         request = NewOrgCodeCertOCRRequest()
     }
+    
     response = NewOrgCodeCertOCRResponse()
     err = c.Send(request, response)
     return
@@ -1982,6 +2056,7 @@ func NewPassportOCRRequest() (request *PassportOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "PassportOCR")
+    
     
     return
 }
@@ -2010,6 +2085,7 @@ func (c *Client) PassportOCR(request *PassportOCRRequest) (response *PassportOCR
     if request == nil {
         request = NewPassportOCRRequest()
     }
+    
     response = NewPassportOCRResponse()
     err = c.Send(request, response)
     return
@@ -2020,6 +2096,7 @@ func NewPermitOCRRequest() (request *PermitOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "PermitOCR")
+    
     
     return
 }
@@ -2047,6 +2124,7 @@ func (c *Client) PermitOCR(request *PermitOCRRequest) (response *PermitOCRRespon
     if request == nil {
         request = NewPermitOCRRequest()
     }
+    
     response = NewPermitOCRResponse()
     err = c.Send(request, response)
     return
@@ -2057,6 +2135,7 @@ func NewPropOwnerCertOCRRequest() (request *PropOwnerCertOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "PropOwnerCertOCR")
+    
     
     return
 }
@@ -2089,6 +2168,7 @@ func (c *Client) PropOwnerCertOCR(request *PropOwnerCertOCRRequest) (response *P
     if request == nil {
         request = NewPropOwnerCertOCRRequest()
     }
+    
     response = NewPropOwnerCertOCRResponse()
     err = c.Send(request, response)
     return
@@ -2099,6 +2179,7 @@ func NewQrcodeOCRRequest() (request *QrcodeOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "QrcodeOCR")
+    
     
     return
 }
@@ -2131,6 +2212,7 @@ func (c *Client) QrcodeOCR(request *QrcodeOCRRequest) (response *QrcodeOCRRespon
     if request == nil {
         request = NewQrcodeOCRRequest()
     }
+    
     response = NewQrcodeOCRResponse()
     err = c.Send(request, response)
     return
@@ -2141,6 +2223,7 @@ func NewQueryBarCodeRequest() (request *QueryBarCodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "QueryBarCode")
+    
     
     return
 }
@@ -2169,6 +2252,7 @@ func (c *Client) QueryBarCode(request *QueryBarCodeRequest) (response *QueryBarC
     if request == nil {
         request = NewQueryBarCodeRequest()
     }
+    
     response = NewQueryBarCodeResponse()
     err = c.Send(request, response)
     return
@@ -2179,6 +2263,7 @@ func NewQuotaInvoiceOCRRequest() (request *QuotaInvoiceOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "QuotaInvoiceOCR")
+    
     
     return
 }
@@ -2206,6 +2291,7 @@ func (c *Client) QuotaInvoiceOCR(request *QuotaInvoiceOCRRequest) (response *Quo
     if request == nil {
         request = NewQuotaInvoiceOCRRequest()
     }
+    
     response = NewQuotaInvoiceOCRResponse()
     err = c.Send(request, response)
     return
@@ -2216,6 +2302,7 @@ func NewRecognizeContainerOCRRequest() (request *RecognizeContainerOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "RecognizeContainerOCR")
+    
     
     return
 }
@@ -2244,6 +2331,7 @@ func (c *Client) RecognizeContainerOCR(request *RecognizeContainerOCRRequest) (r
     if request == nil {
         request = NewRecognizeContainerOCRRequest()
     }
+    
     response = NewRecognizeContainerOCRResponse()
     err = c.Send(request, response)
     return
@@ -2254,6 +2342,7 @@ func NewRecognizeOnlineTaxiItineraryOCRRequest() (request *RecognizeOnlineTaxiIt
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "RecognizeOnlineTaxiItineraryOCR")
+    
     
     return
 }
@@ -2281,6 +2370,7 @@ func (c *Client) RecognizeOnlineTaxiItineraryOCR(request *RecognizeOnlineTaxiIti
     if request == nil {
         request = NewRecognizeOnlineTaxiItineraryOCRRequest()
     }
+    
     response = NewRecognizeOnlineTaxiItineraryOCRResponse()
     err = c.Send(request, response)
     return
@@ -2291,6 +2381,7 @@ func NewRecognizeTableOCRRequest() (request *RecognizeTableOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "RecognizeTableOCR")
+    
     
     return
 }
@@ -2320,6 +2411,7 @@ func (c *Client) RecognizeTableOCR(request *RecognizeTableOCRRequest) (response 
     if request == nil {
         request = NewRecognizeTableOCRRequest()
     }
+    
     response = NewRecognizeTableOCRResponse()
     err = c.Send(request, response)
     return
@@ -2330,6 +2422,7 @@ func NewRecognizeThaiIDCardOCRRequest() (request *RecognizeThaiIDCardOCRRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "RecognizeThaiIDCardOCR")
+    
     
     return
 }
@@ -2360,6 +2453,7 @@ func (c *Client) RecognizeThaiIDCardOCR(request *RecognizeThaiIDCardOCRRequest) 
     if request == nil {
         request = NewRecognizeThaiIDCardOCRRequest()
     }
+    
     response = NewRecognizeThaiIDCardOCRResponse()
     err = c.Send(request, response)
     return
@@ -2370,6 +2464,7 @@ func NewResidenceBookletOCRRequest() (request *ResidenceBookletOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "ResidenceBookletOCR")
+    
     
     return
 }
@@ -2400,6 +2495,7 @@ func (c *Client) ResidenceBookletOCR(request *ResidenceBookletOCRRequest) (respo
     if request == nil {
         request = NewResidenceBookletOCRRequest()
     }
+    
     response = NewResidenceBookletOCRResponse()
     err = c.Send(request, response)
     return
@@ -2410,6 +2506,7 @@ func NewRideHailingDriverLicenseOCRRequest() (request *RideHailingDriverLicenseO
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "RideHailingDriverLicenseOCR")
+    
     
     return
 }
@@ -2437,6 +2534,7 @@ func (c *Client) RideHailingDriverLicenseOCR(request *RideHailingDriverLicenseOC
     if request == nil {
         request = NewRideHailingDriverLicenseOCRRequest()
     }
+    
     response = NewRideHailingDriverLicenseOCRResponse()
     err = c.Send(request, response)
     return
@@ -2447,6 +2545,7 @@ func NewRideHailingTransportLicenseOCRRequest() (request *RideHailingTransportLi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "RideHailingTransportLicenseOCR")
+    
     
     return
 }
@@ -2476,6 +2575,7 @@ func (c *Client) RideHailingTransportLicenseOCR(request *RideHailingTransportLic
     if request == nil {
         request = NewRideHailingTransportLicenseOCRRequest()
     }
+    
     response = NewRideHailingTransportLicenseOCRResponse()
     err = c.Send(request, response)
     return
@@ -2486,6 +2586,7 @@ func NewSealOCRRequest() (request *SealOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "SealOCR")
+    
     
     return
 }
@@ -2514,6 +2615,7 @@ func (c *Client) SealOCR(request *SealOCRRequest) (response *SealOCRResponse, er
     if request == nil {
         request = NewSealOCRRequest()
     }
+    
     response = NewSealOCRResponse()
     err = c.Send(request, response)
     return
@@ -2524,6 +2626,7 @@ func NewShipInvoiceOCRRequest() (request *ShipInvoiceOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "ShipInvoiceOCR")
+    
     
     return
 }
@@ -2551,6 +2654,7 @@ func (c *Client) ShipInvoiceOCR(request *ShipInvoiceOCRRequest) (response *ShipI
     if request == nil {
         request = NewShipInvoiceOCRRequest()
     }
+    
     response = NewShipInvoiceOCRResponse()
     err = c.Send(request, response)
     return
@@ -2561,6 +2665,7 @@ func NewSmartStructuralOCRRequest() (request *SmartStructuralOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "SmartStructuralOCR")
+    
     
     return
 }
@@ -2588,6 +2693,7 @@ func (c *Client) SmartStructuralOCR(request *SmartStructuralOCRRequest) (respons
     if request == nil {
         request = NewSmartStructuralOCRRequest()
     }
+    
     response = NewSmartStructuralOCRResponse()
     err = c.Send(request, response)
     return
@@ -2598,6 +2704,7 @@ func NewTableOCRRequest() (request *TableOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "TableOCR")
+    
     
     return
 }
@@ -2634,6 +2741,7 @@ func (c *Client) TableOCR(request *TableOCRRequest) (response *TableOCRResponse,
     if request == nil {
         request = NewTableOCRRequest()
     }
+    
     response = NewTableOCRResponse()
     err = c.Send(request, response)
     return
@@ -2644,6 +2752,7 @@ func NewTaxiInvoiceOCRRequest() (request *TaxiInvoiceOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "TaxiInvoiceOCR")
+    
     
     return
 }
@@ -2671,6 +2780,7 @@ func (c *Client) TaxiInvoiceOCR(request *TaxiInvoiceOCRRequest) (response *TaxiI
     if request == nil {
         request = NewTaxiInvoiceOCRRequest()
     }
+    
     response = NewTaxiInvoiceOCRResponse()
     err = c.Send(request, response)
     return
@@ -2681,6 +2791,7 @@ func NewTextDetectRequest() (request *TextDetectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "TextDetect")
+    
     
     return
 }
@@ -2709,6 +2820,7 @@ func (c *Client) TextDetect(request *TextDetectRequest) (response *TextDetectRes
     if request == nil {
         request = NewTextDetectRequest()
     }
+    
     response = NewTextDetectResponse()
     err = c.Send(request, response)
     return
@@ -2719,6 +2831,7 @@ func NewTollInvoiceOCRRequest() (request *TollInvoiceOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "TollInvoiceOCR")
+    
     
     return
 }
@@ -2746,6 +2859,7 @@ func (c *Client) TollInvoiceOCR(request *TollInvoiceOCRRequest) (response *TollI
     if request == nil {
         request = NewTollInvoiceOCRRequest()
     }
+    
     response = NewTollInvoiceOCRResponse()
     err = c.Send(request, response)
     return
@@ -2756,6 +2870,7 @@ func NewTrainTicketOCRRequest() (request *TrainTicketOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "TrainTicketOCR")
+    
     
     return
 }
@@ -2783,6 +2898,7 @@ func (c *Client) TrainTicketOCR(request *TrainTicketOCRRequest) (response *Train
     if request == nil {
         request = NewTrainTicketOCRRequest()
     }
+    
     response = NewTrainTicketOCRResponse()
     err = c.Send(request, response)
     return
@@ -2793,6 +2909,7 @@ func NewVatInvoiceOCRRequest() (request *VatInvoiceOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "VatInvoiceOCR")
+    
     
     return
 }
@@ -2825,6 +2942,7 @@ func (c *Client) VatInvoiceOCR(request *VatInvoiceOCRRequest) (response *VatInvo
     if request == nil {
         request = NewVatInvoiceOCRRequest()
     }
+    
     response = NewVatInvoiceOCRResponse()
     err = c.Send(request, response)
     return
@@ -2835,6 +2953,7 @@ func NewVatInvoiceVerifyRequest() (request *VatInvoiceVerifyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "VatInvoiceVerify")
+    
     
     return
 }
@@ -2863,6 +2982,7 @@ func (c *Client) VatInvoiceVerify(request *VatInvoiceVerifyRequest) (response *V
     if request == nil {
         request = NewVatInvoiceVerifyRequest()
     }
+    
     response = NewVatInvoiceVerifyResponse()
     err = c.Send(request, response)
     return
@@ -2873,6 +2993,7 @@ func NewVatRollInvoiceOCRRequest() (request *VatRollInvoiceOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "VatRollInvoiceOCR")
+    
     
     return
 }
@@ -2900,6 +3021,7 @@ func (c *Client) VatRollInvoiceOCR(request *VatRollInvoiceOCRRequest) (response 
     if request == nil {
         request = NewVatRollInvoiceOCRRequest()
     }
+    
     response = NewVatRollInvoiceOCRResponse()
     err = c.Send(request, response)
     return
@@ -2910,6 +3032,7 @@ func NewVehicleLicenseOCRRequest() (request *VehicleLicenseOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "VehicleLicenseOCR")
+    
     
     return
 }
@@ -2954,6 +3077,7 @@ func (c *Client) VehicleLicenseOCR(request *VehicleLicenseOCRRequest) (response 
     if request == nil {
         request = NewVehicleLicenseOCRRequest()
     }
+    
     response = NewVehicleLicenseOCRResponse()
     err = c.Send(request, response)
     return
@@ -2964,6 +3088,7 @@ func NewVehicleRegCertOCRRequest() (request *VehicleRegCertOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "VehicleRegCertOCR")
+    
     
     return
 }
@@ -2991,6 +3116,7 @@ func (c *Client) VehicleRegCertOCR(request *VehicleRegCertOCRRequest) (response 
     if request == nil {
         request = NewVehicleRegCertOCRRequest()
     }
+    
     response = NewVehicleRegCertOCRResponse()
     err = c.Send(request, response)
     return
@@ -3001,6 +3127,7 @@ func NewVerifyBasicBizLicenseRequest() (request *VerifyBasicBizLicenseRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "VerifyBasicBizLicense")
+    
     
     return
 }
@@ -3033,6 +3160,7 @@ func (c *Client) VerifyBasicBizLicense(request *VerifyBasicBizLicenseRequest) (r
     if request == nil {
         request = NewVerifyBasicBizLicenseRequest()
     }
+    
     response = NewVerifyBasicBizLicenseResponse()
     err = c.Send(request, response)
     return
@@ -3043,6 +3171,7 @@ func NewVerifyBizLicenseRequest() (request *VerifyBizLicenseRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "VerifyBizLicense")
+    
     
     return
 }
@@ -3079,6 +3208,7 @@ func (c *Client) VerifyBizLicense(request *VerifyBizLicenseRequest) (response *V
     if request == nil {
         request = NewVerifyBizLicenseRequest()
     }
+    
     response = NewVerifyBizLicenseResponse()
     err = c.Send(request, response)
     return
@@ -3089,6 +3219,7 @@ func NewVerifyEnterpriseFourFactorsRequest() (request *VerifyEnterpriseFourFacto
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "VerifyEnterpriseFourFactors")
+    
     
     return
 }
@@ -3112,6 +3243,7 @@ func (c *Client) VerifyEnterpriseFourFactors(request *VerifyEnterpriseFourFactor
     if request == nil {
         request = NewVerifyEnterpriseFourFactorsRequest()
     }
+    
     response = NewVerifyEnterpriseFourFactorsResponse()
     err = c.Send(request, response)
     return
@@ -3122,6 +3254,7 @@ func NewVerifyOfdVatInvoiceOCRRequest() (request *VerifyOfdVatInvoiceOCRRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "VerifyOfdVatInvoiceOCR")
+    
     
     return
 }
@@ -3145,6 +3278,7 @@ func (c *Client) VerifyOfdVatInvoiceOCR(request *VerifyOfdVatInvoiceOCRRequest) 
     if request == nil {
         request = NewVerifyOfdVatInvoiceOCRRequest()
     }
+    
     response = NewVerifyOfdVatInvoiceOCRResponse()
     err = c.Send(request, response)
     return
@@ -3155,6 +3289,7 @@ func NewVinOCRRequest() (request *VinOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "VinOCR")
+    
     
     return
 }
@@ -3183,6 +3318,7 @@ func (c *Client) VinOCR(request *VinOCRRequest) (response *VinOCRResponse, err e
     if request == nil {
         request = NewVinOCRRequest()
     }
+    
     response = NewVinOCRResponse()
     err = c.Send(request, response)
     return
@@ -3193,6 +3329,7 @@ func NewWaybillOCRRequest() (request *WaybillOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ocr", APIVersion, "WaybillOCR")
+    
     
     return
 }
@@ -3223,6 +3360,7 @@ func (c *Client) WaybillOCR(request *WaybillOCRRequest) (response *WaybillOCRRes
     if request == nil {
         request = NewWaybillOCRRequest()
     }
+    
     response = NewWaybillOCRResponse()
     err = c.Send(request, response)
     return

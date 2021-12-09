@@ -49,6 +49,7 @@ func NewAddUsersToWorkGroupRequest() (request *AddUsersToWorkGroupRequest) {
     }
     request.Init().WithApiInfo("dlc", APIVersion, "AddUsersToWorkGroup")
     
+    
     return
 }
 
@@ -70,6 +71,7 @@ func (c *Client) AddUsersToWorkGroup(request *AddUsersToWorkGroupRequest) (respo
     if request == nil {
         request = NewAddUsersToWorkGroupRequest()
     }
+    
     response = NewAddUsersToWorkGroupResponse()
     err = c.Send(request, response)
     return
@@ -80,6 +82,7 @@ func NewAttachUserPolicyRequest() (request *AttachUserPolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "AttachUserPolicy")
+    
     
     return
 }
@@ -101,6 +104,7 @@ func (c *Client) AttachUserPolicy(request *AttachUserPolicyRequest) (response *A
     if request == nil {
         request = NewAttachUserPolicyRequest()
     }
+    
     response = NewAttachUserPolicyResponse()
     err = c.Send(request, response)
     return
@@ -111,6 +115,7 @@ func NewAttachWorkGroupPolicyRequest() (request *AttachWorkGroupPolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "AttachWorkGroupPolicy")
+    
     
     return
 }
@@ -131,6 +136,7 @@ func (c *Client) AttachWorkGroupPolicy(request *AttachWorkGroupPolicyRequest) (r
     if request == nil {
         request = NewAttachWorkGroupPolicyRequest()
     }
+    
     response = NewAttachWorkGroupPolicyResponse()
     err = c.Send(request, response)
     return
@@ -141,6 +147,7 @@ func NewBindWorkGroupsToUserRequest() (request *BindWorkGroupsToUserRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "BindWorkGroupsToUser")
+    
     
     return
 }
@@ -163,6 +170,7 @@ func (c *Client) BindWorkGroupsToUser(request *BindWorkGroupsToUserRequest) (res
     if request == nil {
         request = NewBindWorkGroupsToUserRequest()
     }
+    
     response = NewBindWorkGroupsToUserResponse()
     err = c.Send(request, response)
     return
@@ -173,6 +181,7 @@ func NewCancelTaskRequest() (request *CancelTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "CancelTask")
+    
     
     return
 }
@@ -194,6 +203,7 @@ func (c *Client) CancelTask(request *CancelTaskRequest) (response *CancelTaskRes
     if request == nil {
         request = NewCancelTaskRequest()
     }
+    
     response = NewCancelTaskResponse()
     err = c.Send(request, response)
     return
@@ -204,6 +214,7 @@ func NewCreateDatabaseRequest() (request *CreateDatabaseRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "CreateDatabase")
+    
     
     return
 }
@@ -225,6 +236,7 @@ func (c *Client) CreateDatabase(request *CreateDatabaseRequest) (response *Creat
     if request == nil {
         request = NewCreateDatabaseRequest()
     }
+    
     response = NewCreateDatabaseResponse()
     err = c.Send(request, response)
     return
@@ -235,6 +247,7 @@ func NewCreateScriptRequest() (request *CreateScriptRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "CreateScript")
+    
     
     return
 }
@@ -257,6 +270,7 @@ func (c *Client) CreateScript(request *CreateScriptRequest) (response *CreateScr
     if request == nil {
         request = NewCreateScriptRequest()
     }
+    
     response = NewCreateScriptResponse()
     err = c.Send(request, response)
     return
@@ -267,6 +281,7 @@ func NewCreateStoreLocationRequest() (request *CreateStoreLocationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "CreateStoreLocation")
+    
     
     return
 }
@@ -289,6 +304,7 @@ func (c *Client) CreateStoreLocation(request *CreateStoreLocationRequest) (respo
     if request == nil {
         request = NewCreateStoreLocationRequest()
     }
+    
     response = NewCreateStoreLocationResponse()
     err = c.Send(request, response)
     return
@@ -299,6 +315,7 @@ func NewCreateTableRequest() (request *CreateTableRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "CreateTable")
+    
     
     return
 }
@@ -321,6 +338,7 @@ func (c *Client) CreateTable(request *CreateTableRequest) (response *CreateTable
     if request == nil {
         request = NewCreateTableRequest()
     }
+    
     response = NewCreateTableResponse()
     err = c.Send(request, response)
     return
@@ -331,6 +349,7 @@ func NewCreateTaskRequest() (request *CreateTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "CreateTask")
+    
     
     return
 }
@@ -355,6 +374,7 @@ func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskRes
     if request == nil {
         request = NewCreateTaskRequest()
     }
+    
     response = NewCreateTaskResponse()
     err = c.Send(request, response)
     return
@@ -365,6 +385,7 @@ func NewCreateTasksRequest() (request *CreateTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "CreateTasks")
+    
     
     return
 }
@@ -389,6 +410,7 @@ func (c *Client) CreateTasks(request *CreateTasksRequest) (response *CreateTasks
     if request == nil {
         request = NewCreateTasksRequest()
     }
+    
     response = NewCreateTasksResponse()
     err = c.Send(request, response)
     return
@@ -399,6 +421,7 @@ func NewCreateTasksInOrderRequest() (request *CreateTasksInOrderRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "CreateTasksInOrder")
+    
     
     return
 }
@@ -422,6 +445,7 @@ func (c *Client) CreateTasksInOrder(request *CreateTasksInOrderRequest) (respons
     if request == nil {
         request = NewCreateTasksInOrderRequest()
     }
+    
     response = NewCreateTasksInOrderResponse()
     err = c.Send(request, response)
     return
@@ -432,6 +456,7 @@ func NewCreateUserRequest() (request *CreateUserRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "CreateUser")
+    
     
     return
 }
@@ -455,6 +480,7 @@ func (c *Client) CreateUser(request *CreateUserRequest) (response *CreateUserRes
     if request == nil {
         request = NewCreateUserRequest()
     }
+    
     response = NewCreateUserResponse()
     err = c.Send(request, response)
     return
@@ -465,6 +491,7 @@ func NewCreateWorkGroupRequest() (request *CreateWorkGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "CreateWorkGroup")
+    
     
     return
 }
@@ -488,6 +515,7 @@ func (c *Client) CreateWorkGroup(request *CreateWorkGroupRequest) (response *Cre
     if request == nil {
         request = NewCreateWorkGroupRequest()
     }
+    
     response = NewCreateWorkGroupResponse()
     err = c.Send(request, response)
     return
@@ -498,6 +526,7 @@ func NewDeleteScriptRequest() (request *DeleteScriptRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "DeleteScript")
+    
     
     return
 }
@@ -519,6 +548,7 @@ func (c *Client) DeleteScript(request *DeleteScriptRequest) (response *DeleteScr
     if request == nil {
         request = NewDeleteScriptRequest()
     }
+    
     response = NewDeleteScriptResponse()
     err = c.Send(request, response)
     return
@@ -529,6 +559,7 @@ func NewDeleteUserRequest() (request *DeleteUserRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "DeleteUser")
+    
     
     return
 }
@@ -551,6 +582,7 @@ func (c *Client) DeleteUser(request *DeleteUserRequest) (response *DeleteUserRes
     if request == nil {
         request = NewDeleteUserRequest()
     }
+    
     response = NewDeleteUserResponse()
     err = c.Send(request, response)
     return
@@ -561,6 +593,7 @@ func NewDeleteUsersFromWorkGroupRequest() (request *DeleteUsersFromWorkGroupRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "DeleteUsersFromWorkGroup")
+    
     
     return
 }
@@ -582,6 +615,7 @@ func (c *Client) DeleteUsersFromWorkGroup(request *DeleteUsersFromWorkGroupReque
     if request == nil {
         request = NewDeleteUsersFromWorkGroupRequest()
     }
+    
     response = NewDeleteUsersFromWorkGroupResponse()
     err = c.Send(request, response)
     return
@@ -592,6 +626,7 @@ func NewDeleteWorkGroupRequest() (request *DeleteWorkGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "DeleteWorkGroup")
+    
     
     return
 }
@@ -612,6 +647,7 @@ func (c *Client) DeleteWorkGroup(request *DeleteWorkGroupRequest) (response *Del
     if request == nil {
         request = NewDeleteWorkGroupRequest()
     }
+    
     response = NewDeleteWorkGroupResponse()
     err = c.Send(request, response)
     return
@@ -622,6 +658,7 @@ func NewDescribeDatabasesRequest() (request *DescribeDatabasesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeDatabases")
+    
     
     return
 }
@@ -644,6 +681,7 @@ func (c *Client) DescribeDatabases(request *DescribeDatabasesRequest) (response 
     if request == nil {
         request = NewDescribeDatabasesRequest()
     }
+    
     response = NewDescribeDatabasesResponse()
     err = c.Send(request, response)
     return
@@ -654,6 +692,7 @@ func NewDescribeScriptsRequest() (request *DescribeScriptsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeScripts")
+    
     
     return
 }
@@ -675,6 +714,7 @@ func (c *Client) DescribeScripts(request *DescribeScriptsRequest) (response *Des
     if request == nil {
         request = NewDescribeScriptsRequest()
     }
+    
     response = NewDescribeScriptsResponse()
     err = c.Send(request, response)
     return
@@ -685,6 +725,7 @@ func NewDescribeStoreLocationRequest() (request *DescribeStoreLocationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeStoreLocation")
+    
     
     return
 }
@@ -706,6 +747,7 @@ func (c *Client) DescribeStoreLocation(request *DescribeStoreLocationRequest) (r
     if request == nil {
         request = NewDescribeStoreLocationRequest()
     }
+    
     response = NewDescribeStoreLocationResponse()
     err = c.Send(request, response)
     return
@@ -716,6 +758,7 @@ func NewDescribeTableRequest() (request *DescribeTableRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeTable")
+    
     
     return
 }
@@ -741,6 +784,7 @@ func (c *Client) DescribeTable(request *DescribeTableRequest) (response *Describ
     if request == nil {
         request = NewDescribeTableRequest()
     }
+    
     response = NewDescribeTableResponse()
     err = c.Send(request, response)
     return
@@ -751,6 +795,7 @@ func NewDescribeTablesRequest() (request *DescribeTablesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeTables")
+    
     
     return
 }
@@ -773,6 +818,7 @@ func (c *Client) DescribeTables(request *DescribeTablesRequest) (response *Descr
     if request == nil {
         request = NewDescribeTablesRequest()
     }
+    
     response = NewDescribeTablesResponse()
     err = c.Send(request, response)
     return
@@ -783,6 +829,7 @@ func NewDescribeTasksRequest() (request *DescribeTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeTasks")
+    
     
     return
 }
@@ -805,6 +852,7 @@ func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *Describ
     if request == nil {
         request = NewDescribeTasksRequest()
     }
+    
     response = NewDescribeTasksResponse()
     err = c.Send(request, response)
     return
@@ -815,6 +863,7 @@ func NewDescribeUsersRequest() (request *DescribeUsersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeUsers")
+    
     
     return
 }
@@ -837,6 +886,7 @@ func (c *Client) DescribeUsers(request *DescribeUsersRequest) (response *Describ
     if request == nil {
         request = NewDescribeUsersRequest()
     }
+    
     response = NewDescribeUsersResponse()
     err = c.Send(request, response)
     return
@@ -847,6 +897,7 @@ func NewDescribeViewsRequest() (request *DescribeViewsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeViews")
+    
     
     return
 }
@@ -869,6 +920,7 @@ func (c *Client) DescribeViews(request *DescribeViewsRequest) (response *Describ
     if request == nil {
         request = NewDescribeViewsRequest()
     }
+    
     response = NewDescribeViewsResponse()
     err = c.Send(request, response)
     return
@@ -879,6 +931,7 @@ func NewDescribeWorkGroupsRequest() (request *DescribeWorkGroupsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeWorkGroups")
+    
     
     return
 }
@@ -901,6 +954,7 @@ func (c *Client) DescribeWorkGroups(request *DescribeWorkGroupsRequest) (respons
     if request == nil {
         request = NewDescribeWorkGroupsRequest()
     }
+    
     response = NewDescribeWorkGroupsResponse()
     err = c.Send(request, response)
     return
@@ -911,6 +965,7 @@ func NewDetachUserPolicyRequest() (request *DetachUserPolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "DetachUserPolicy")
+    
     
     return
 }
@@ -932,6 +987,7 @@ func (c *Client) DetachUserPolicy(request *DetachUserPolicyRequest) (response *D
     if request == nil {
         request = NewDetachUserPolicyRequest()
     }
+    
     response = NewDetachUserPolicyResponse()
     err = c.Send(request, response)
     return
@@ -942,6 +998,7 @@ func NewDetachWorkGroupPolicyRequest() (request *DetachWorkGroupPolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "DetachWorkGroupPolicy")
+    
     
     return
 }
@@ -962,6 +1019,7 @@ func (c *Client) DetachWorkGroupPolicy(request *DetachWorkGroupPolicyRequest) (r
     if request == nil {
         request = NewDetachWorkGroupPolicyRequest()
     }
+    
     response = NewDetachWorkGroupPolicyResponse()
     err = c.Send(request, response)
     return
@@ -972,6 +1030,7 @@ func NewModifyUserRequest() (request *ModifyUserRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "ModifyUser")
+    
     
     return
 }
@@ -993,6 +1052,7 @@ func (c *Client) ModifyUser(request *ModifyUserRequest) (response *ModifyUserRes
     if request == nil {
         request = NewModifyUserRequest()
     }
+    
     response = NewModifyUserResponse()
     err = c.Send(request, response)
     return
@@ -1003,6 +1063,7 @@ func NewModifyWorkGroupRequest() (request *ModifyWorkGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "ModifyWorkGroup")
+    
     
     return
 }
@@ -1023,6 +1084,7 @@ func (c *Client) ModifyWorkGroup(request *ModifyWorkGroupRequest) (response *Mod
     if request == nil {
         request = NewModifyWorkGroupRequest()
     }
+    
     response = NewModifyWorkGroupResponse()
     err = c.Send(request, response)
     return
@@ -1033,6 +1095,7 @@ func NewUnbindWorkGroupsFromUserRequest() (request *UnbindWorkGroupsFromUserRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dlc", APIVersion, "UnbindWorkGroupsFromUser")
+    
     
     return
 }
@@ -1054,6 +1117,7 @@ func (c *Client) UnbindWorkGroupsFromUser(request *UnbindWorkGroupsFromUserReque
     if request == nil {
         request = NewUnbindWorkGroupsFromUserRequest()
     }
+    
     response = NewUnbindWorkGroupsFromUserResponse()
     err = c.Send(request, response)
     return

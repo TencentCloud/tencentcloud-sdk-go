@@ -49,6 +49,7 @@ func NewCreateTaskRequest() (request *CreateTaskRequest) {
     }
     request.Init().WithApiInfo("ivld", APIVersion, "CreateTask")
     
+    
     return
 }
 
@@ -80,6 +81,7 @@ func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskRes
     if request == nil {
         request = NewCreateTaskRequest()
     }
+    
     response = NewCreateTaskResponse()
     err = c.Send(request, response)
     return
@@ -90,6 +92,7 @@ func NewDeleteMediaRequest() (request *DeleteMediaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ivld", APIVersion, "DeleteMedia")
+    
     
     return
 }
@@ -121,6 +124,7 @@ func (c *Client) DeleteMedia(request *DeleteMediaRequest) (response *DeleteMedia
     if request == nil {
         request = NewDeleteMediaRequest()
     }
+    
     response = NewDeleteMediaResponse()
     err = c.Send(request, response)
     return
@@ -131,6 +135,7 @@ func NewDescribeMediaRequest() (request *DescribeMediaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ivld", APIVersion, "DescribeMedia")
+    
     
     return
 }
@@ -160,6 +165,7 @@ func (c *Client) DescribeMedia(request *DescribeMediaRequest) (response *Describ
     if request == nil {
         request = NewDescribeMediaRequest()
     }
+    
     response = NewDescribeMediaResponse()
     err = c.Send(request, response)
     return
@@ -170,6 +176,7 @@ func NewDescribeMediasRequest() (request *DescribeMediasRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ivld", APIVersion, "DescribeMedias")
+    
     
     return
 }
@@ -211,6 +218,7 @@ func (c *Client) DescribeMedias(request *DescribeMediasRequest) (response *Descr
     if request == nil {
         request = NewDescribeMediasRequest()
     }
+    
     response = NewDescribeMediasResponse()
     err = c.Send(request, response)
     return
@@ -221,6 +229,7 @@ func NewDescribeTaskRequest() (request *DescribeTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ivld", APIVersion, "DescribeTask")
+    
     
     return
 }
@@ -250,6 +259,7 @@ func (c *Client) DescribeTask(request *DescribeTaskRequest) (response *DescribeT
     if request == nil {
         request = NewDescribeTaskRequest()
     }
+    
     response = NewDescribeTaskResponse()
     err = c.Send(request, response)
     return
@@ -260,6 +270,7 @@ func NewDescribeTaskDetailRequest() (request *DescribeTaskDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ivld", APIVersion, "DescribeTaskDetail")
+    
     
     return
 }
@@ -284,6 +295,7 @@ func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (respons
     if request == nil {
         request = NewDescribeTaskDetailRequest()
     }
+    
     response = NewDescribeTaskDetailResponse()
     err = c.Send(request, response)
     return
@@ -294,6 +306,7 @@ func NewDescribeTasksRequest() (request *DescribeTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ivld", APIVersion, "DescribeTasks")
+    
     
     return
 }
@@ -327,6 +340,7 @@ func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *Describ
     if request == nil {
         request = NewDescribeTasksRequest()
     }
+    
     response = NewDescribeTasksResponse()
     err = c.Send(request, response)
     return
@@ -337,6 +351,7 @@ func NewImportMediaRequest() (request *ImportMediaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ivld", APIVersion, "ImportMedia")
+    
     
     return
 }
@@ -391,6 +406,7 @@ func (c *Client) ImportMedia(request *ImportMediaRequest) (response *ImportMedia
     if request == nil {
         request = NewImportMediaRequest()
     }
+    
     response = NewImportMediaResponse()
     err = c.Send(request, response)
     return

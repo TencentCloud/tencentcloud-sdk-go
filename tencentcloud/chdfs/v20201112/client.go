@@ -49,6 +49,7 @@ func NewAssociateAccessGroupsRequest() (request *AssociateAccessGroupsRequest) {
     }
     request.Init().WithApiInfo("chdfs", APIVersion, "AssociateAccessGroups")
     
+    
     return
 }
 
@@ -78,6 +79,7 @@ func (c *Client) AssociateAccessGroups(request *AssociateAccessGroupsRequest) (r
     if request == nil {
         request = NewAssociateAccessGroupsRequest()
     }
+    
     response = NewAssociateAccessGroupsResponse()
     err = c.Send(request, response)
     return
@@ -88,6 +90,7 @@ func NewCreateAccessGroupRequest() (request *CreateAccessGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("chdfs", APIVersion, "CreateAccessGroup")
+    
     
     return
 }
@@ -120,6 +123,7 @@ func (c *Client) CreateAccessGroup(request *CreateAccessGroupRequest) (response 
     if request == nil {
         request = NewCreateAccessGroupRequest()
     }
+    
     response = NewCreateAccessGroupResponse()
     err = c.Send(request, response)
     return
@@ -130,6 +134,7 @@ func NewCreateAccessRulesRequest() (request *CreateAccessRulesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("chdfs", APIVersion, "CreateAccessRules")
+    
     
     return
 }
@@ -161,6 +166,7 @@ func (c *Client) CreateAccessRules(request *CreateAccessRulesRequest) (response 
     if request == nil {
         request = NewCreateAccessRulesRequest()
     }
+    
     response = NewCreateAccessRulesResponse()
     err = c.Send(request, response)
     return
@@ -171,6 +177,7 @@ func NewCreateFileSystemRequest() (request *CreateFileSystemRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("chdfs", APIVersion, "CreateFileSystem")
+    
     
     return
 }
@@ -202,6 +209,7 @@ func (c *Client) CreateFileSystem(request *CreateFileSystemRequest) (response *C
     if request == nil {
         request = NewCreateFileSystemRequest()
     }
+    
     response = NewCreateFileSystemResponse()
     err = c.Send(request, response)
     return
@@ -212,6 +220,7 @@ func NewCreateLifeCycleRulesRequest() (request *CreateLifeCycleRulesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("chdfs", APIVersion, "CreateLifeCycleRules")
+    
     
     return
 }
@@ -244,6 +253,7 @@ func (c *Client) CreateLifeCycleRules(request *CreateLifeCycleRulesRequest) (res
     if request == nil {
         request = NewCreateLifeCycleRulesRequest()
     }
+    
     response = NewCreateLifeCycleRulesResponse()
     err = c.Send(request, response)
     return
@@ -254,6 +264,7 @@ func NewCreateMountPointRequest() (request *CreateMountPointRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("chdfs", APIVersion, "CreateMountPoint")
+    
     
     return
 }
@@ -285,6 +296,7 @@ func (c *Client) CreateMountPoint(request *CreateMountPointRequest) (response *C
     if request == nil {
         request = NewCreateMountPointRequest()
     }
+    
     response = NewCreateMountPointResponse()
     err = c.Send(request, response)
     return
@@ -295,6 +307,7 @@ func NewCreateRestoreTasksRequest() (request *CreateRestoreTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("chdfs", APIVersion, "CreateRestoreTasks")
+    
     
     return
 }
@@ -326,6 +339,7 @@ func (c *Client) CreateRestoreTasks(request *CreateRestoreTasksRequest) (respons
     if request == nil {
         request = NewCreateRestoreTasksRequest()
     }
+    
     response = NewCreateRestoreTasksResponse()
     err = c.Send(request, response)
     return
@@ -336,6 +350,7 @@ func NewDeleteAccessGroupRequest() (request *DeleteAccessGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("chdfs", APIVersion, "DeleteAccessGroup")
+    
     
     return
 }
@@ -364,6 +379,7 @@ func (c *Client) DeleteAccessGroup(request *DeleteAccessGroupRequest) (response 
     if request == nil {
         request = NewDeleteAccessGroupRequest()
     }
+    
     response = NewDeleteAccessGroupResponse()
     err = c.Send(request, response)
     return
@@ -374,6 +390,7 @@ func NewDeleteAccessRulesRequest() (request *DeleteAccessRulesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("chdfs", APIVersion, "DeleteAccessRules")
+    
     
     return
 }
@@ -400,6 +417,7 @@ func (c *Client) DeleteAccessRules(request *DeleteAccessRulesRequest) (response 
     if request == nil {
         request = NewDeleteAccessRulesRequest()
     }
+    
     response = NewDeleteAccessRulesResponse()
     err = c.Send(request, response)
     return
@@ -410,6 +428,7 @@ func NewDeleteFileSystemRequest() (request *DeleteFileSystemRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("chdfs", APIVersion, "DeleteFileSystem")
+    
     
     return
 }
@@ -439,6 +458,7 @@ func (c *Client) DeleteFileSystem(request *DeleteFileSystemRequest) (response *D
     if request == nil {
         request = NewDeleteFileSystemRequest()
     }
+    
     response = NewDeleteFileSystemResponse()
     err = c.Send(request, response)
     return
@@ -449,6 +469,7 @@ func NewDeleteLifeCycleRulesRequest() (request *DeleteLifeCycleRulesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("chdfs", APIVersion, "DeleteLifeCycleRules")
+    
     
     return
 }
@@ -475,6 +496,7 @@ func (c *Client) DeleteLifeCycleRules(request *DeleteLifeCycleRulesRequest) (res
     if request == nil {
         request = NewDeleteLifeCycleRulesRequest()
     }
+    
     response = NewDeleteLifeCycleRulesResponse()
     err = c.Send(request, response)
     return
@@ -485,6 +507,7 @@ func NewDeleteMountPointRequest() (request *DeleteMountPointRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("chdfs", APIVersion, "DeleteMountPoint")
+    
     
     return
 }
@@ -512,6 +535,7 @@ func (c *Client) DeleteMountPoint(request *DeleteMountPointRequest) (response *D
     if request == nil {
         request = NewDeleteMountPointRequest()
     }
+    
     response = NewDeleteMountPointResponse()
     err = c.Send(request, response)
     return
@@ -522,6 +546,7 @@ func NewDescribeAccessGroupRequest() (request *DescribeAccessGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("chdfs", APIVersion, "DescribeAccessGroup")
+    
     
     return
 }
@@ -549,6 +574,7 @@ func (c *Client) DescribeAccessGroup(request *DescribeAccessGroupRequest) (respo
     if request == nil {
         request = NewDescribeAccessGroupRequest()
     }
+    
     response = NewDescribeAccessGroupResponse()
     err = c.Send(request, response)
     return
@@ -559,6 +585,7 @@ func NewDescribeAccessGroupsRequest() (request *DescribeAccessGroupsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("chdfs", APIVersion, "DescribeAccessGroups")
+    
     
     return
 }
@@ -586,6 +613,7 @@ func (c *Client) DescribeAccessGroups(request *DescribeAccessGroupsRequest) (res
     if request == nil {
         request = NewDescribeAccessGroupsRequest()
     }
+    
     response = NewDescribeAccessGroupsResponse()
     err = c.Send(request, response)
     return
@@ -596,6 +624,7 @@ func NewDescribeAccessRulesRequest() (request *DescribeAccessRulesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("chdfs", APIVersion, "DescribeAccessRules")
+    
     
     return
 }
@@ -623,6 +652,7 @@ func (c *Client) DescribeAccessRules(request *DescribeAccessRulesRequest) (respo
     if request == nil {
         request = NewDescribeAccessRulesRequest()
     }
+    
     response = NewDescribeAccessRulesResponse()
     err = c.Send(request, response)
     return
@@ -633,6 +663,7 @@ func NewDescribeFileSystemRequest() (request *DescribeFileSystemRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("chdfs", APIVersion, "DescribeFileSystem")
+    
     
     return
 }
@@ -661,6 +692,7 @@ func (c *Client) DescribeFileSystem(request *DescribeFileSystemRequest) (respons
     if request == nil {
         request = NewDescribeFileSystemRequest()
     }
+    
     response = NewDescribeFileSystemResponse()
     err = c.Send(request, response)
     return
@@ -671,6 +703,7 @@ func NewDescribeFileSystemsRequest() (request *DescribeFileSystemsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("chdfs", APIVersion, "DescribeFileSystems")
+    
     
     return
 }
@@ -696,6 +729,7 @@ func (c *Client) DescribeFileSystems(request *DescribeFileSystemsRequest) (respo
     if request == nil {
         request = NewDescribeFileSystemsRequest()
     }
+    
     response = NewDescribeFileSystemsResponse()
     err = c.Send(request, response)
     return
@@ -706,6 +740,7 @@ func NewDescribeLifeCycleRulesRequest() (request *DescribeLifeCycleRulesRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("chdfs", APIVersion, "DescribeLifeCycleRules")
+    
     
     return
 }
@@ -735,6 +770,7 @@ func (c *Client) DescribeLifeCycleRules(request *DescribeLifeCycleRulesRequest) 
     if request == nil {
         request = NewDescribeLifeCycleRulesRequest()
     }
+    
     response = NewDescribeLifeCycleRulesResponse()
     err = c.Send(request, response)
     return
@@ -745,6 +781,7 @@ func NewDescribeMountPointRequest() (request *DescribeMountPointRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("chdfs", APIVersion, "DescribeMountPoint")
+    
     
     return
 }
@@ -772,6 +809,7 @@ func (c *Client) DescribeMountPoint(request *DescribeMountPointRequest) (respons
     if request == nil {
         request = NewDescribeMountPointRequest()
     }
+    
     response = NewDescribeMountPointResponse()
     err = c.Send(request, response)
     return
@@ -782,6 +820,7 @@ func NewDescribeMountPointsRequest() (request *DescribeMountPointsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("chdfs", APIVersion, "DescribeMountPoints")
+    
     
     return
 }
@@ -812,6 +851,7 @@ func (c *Client) DescribeMountPoints(request *DescribeMountPointsRequest) (respo
     if request == nil {
         request = NewDescribeMountPointsRequest()
     }
+    
     response = NewDescribeMountPointsResponse()
     err = c.Send(request, response)
     return
@@ -822,6 +862,7 @@ func NewDescribeResourceTagsRequest() (request *DescribeResourceTagsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("chdfs", APIVersion, "DescribeResourceTags")
+    
     
     return
 }
@@ -850,6 +891,7 @@ func (c *Client) DescribeResourceTags(request *DescribeResourceTagsRequest) (res
     if request == nil {
         request = NewDescribeResourceTagsRequest()
     }
+    
     response = NewDescribeResourceTagsResponse()
     err = c.Send(request, response)
     return
@@ -860,6 +902,7 @@ func NewDescribeRestoreTasksRequest() (request *DescribeRestoreTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("chdfs", APIVersion, "DescribeRestoreTasks")
+    
     
     return
 }
@@ -888,6 +931,7 @@ func (c *Client) DescribeRestoreTasks(request *DescribeRestoreTasksRequest) (res
     if request == nil {
         request = NewDescribeRestoreTasksRequest()
     }
+    
     response = NewDescribeRestoreTasksResponse()
     err = c.Send(request, response)
     return
@@ -898,6 +942,7 @@ func NewDisassociateAccessGroupsRequest() (request *DisassociateAccessGroupsRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("chdfs", APIVersion, "DisassociateAccessGroups")
+    
     
     return
 }
@@ -927,6 +972,7 @@ func (c *Client) DisassociateAccessGroups(request *DisassociateAccessGroupsReque
     if request == nil {
         request = NewDisassociateAccessGroupsRequest()
     }
+    
     response = NewDisassociateAccessGroupsResponse()
     err = c.Send(request, response)
     return
@@ -937,6 +983,7 @@ func NewModifyAccessGroupRequest() (request *ModifyAccessGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("chdfs", APIVersion, "ModifyAccessGroup")
+    
     
     return
 }
@@ -966,6 +1013,7 @@ func (c *Client) ModifyAccessGroup(request *ModifyAccessGroupRequest) (response 
     if request == nil {
         request = NewModifyAccessGroupRequest()
     }
+    
     response = NewModifyAccessGroupResponse()
     err = c.Send(request, response)
     return
@@ -976,6 +1024,7 @@ func NewModifyAccessRulesRequest() (request *ModifyAccessRulesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("chdfs", APIVersion, "ModifyAccessRules")
+    
     
     return
 }
@@ -1003,6 +1052,7 @@ func (c *Client) ModifyAccessRules(request *ModifyAccessRulesRequest) (response 
     if request == nil {
         request = NewModifyAccessRulesRequest()
     }
+    
     response = NewModifyAccessRulesResponse()
     err = c.Send(request, response)
     return
@@ -1013,6 +1063,7 @@ func NewModifyFileSystemRequest() (request *ModifyFileSystemRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("chdfs", APIVersion, "ModifyFileSystem")
+    
     
     return
 }
@@ -1045,6 +1096,7 @@ func (c *Client) ModifyFileSystem(request *ModifyFileSystemRequest) (response *M
     if request == nil {
         request = NewModifyFileSystemRequest()
     }
+    
     response = NewModifyFileSystemResponse()
     err = c.Send(request, response)
     return
@@ -1055,6 +1107,7 @@ func NewModifyLifeCycleRulesRequest() (request *ModifyLifeCycleRulesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("chdfs", APIVersion, "ModifyLifeCycleRules")
+    
     
     return
 }
@@ -1082,6 +1135,7 @@ func (c *Client) ModifyLifeCycleRules(request *ModifyLifeCycleRulesRequest) (res
     if request == nil {
         request = NewModifyLifeCycleRulesRequest()
     }
+    
     response = NewModifyLifeCycleRulesResponse()
     err = c.Send(request, response)
     return
@@ -1092,6 +1146,7 @@ func NewModifyMountPointRequest() (request *ModifyMountPointRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("chdfs", APIVersion, "ModifyMountPoint")
+    
     
     return
 }
@@ -1120,6 +1175,7 @@ func (c *Client) ModifyMountPoint(request *ModifyMountPointRequest) (response *M
     if request == nil {
         request = NewModifyMountPointRequest()
     }
+    
     response = NewModifyMountPointResponse()
     err = c.Send(request, response)
     return
@@ -1130,6 +1186,7 @@ func NewModifyResourceTagsRequest() (request *ModifyResourceTagsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("chdfs", APIVersion, "ModifyResourceTags")
+    
     
     return
 }
@@ -1160,6 +1217,7 @@ func (c *Client) ModifyResourceTags(request *ModifyResourceTagsRequest) (respons
     if request == nil {
         request = NewModifyResourceTagsRequest()
     }
+    
     response = NewModifyResourceTagsResponse()
     err = c.Send(request, response)
     return

@@ -49,6 +49,7 @@ func NewBindGroupDevicesRequest() (request *BindGroupDevicesRequest) {
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "BindGroupDevices")
     
+    
     return
 }
 
@@ -102,6 +103,7 @@ func (c *Client) BindGroupDevices(request *BindGroupDevicesRequest) (response *B
     if request == nil {
         request = NewBindGroupDevicesRequest()
     }
+    
     response = NewBindGroupDevicesResponse()
     err = c.Send(request, response)
     return
@@ -112,6 +114,7 @@ func NewControlDevicePTZRequest() (request *ControlDevicePTZRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "ControlDevicePTZ")
+    
     
     return
 }
@@ -154,6 +157,7 @@ func (c *Client) ControlDevicePTZ(request *ControlDevicePTZRequest) (response *C
     if request == nil {
         request = NewControlDevicePTZRequest()
     }
+    
     response = NewControlDevicePTZResponse()
     err = c.Send(request, response)
     return
@@ -164,6 +168,7 @@ func NewControlRecordStreamRequest() (request *ControlRecordStreamRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "ControlRecordStream")
+    
     
     return
 }
@@ -240,6 +245,7 @@ func (c *Client) ControlRecordStream(request *ControlRecordStreamRequest) (respo
     if request == nil {
         request = NewControlRecordStreamRequest()
     }
+    
     response = NewControlRecordStreamResponse()
     err = c.Send(request, response)
     return
@@ -250,6 +256,7 @@ func NewCreateDeviceRequest() (request *CreateDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "CreateDevice")
+    
     
     return
 }
@@ -318,6 +325,7 @@ func (c *Client) CreateDevice(request *CreateDeviceRequest) (response *CreateDev
     if request == nil {
         request = NewCreateDeviceRequest()
     }
+    
     response = NewCreateDeviceResponse()
     err = c.Send(request, response)
     return
@@ -328,6 +336,7 @@ func NewCreateDeviceGroupRequest() (request *CreateDeviceGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "CreateDeviceGroup")
+    
     
     return
 }
@@ -394,6 +403,7 @@ func (c *Client) CreateDeviceGroup(request *CreateDeviceGroupRequest) (response 
     if request == nil {
         request = NewCreateDeviceGroupRequest()
     }
+    
     response = NewCreateDeviceGroupResponse()
     err = c.Send(request, response)
     return
@@ -404,6 +414,7 @@ func NewCreateRecordPlanRequest() (request *CreateRecordPlanRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "CreateRecordPlan")
+    
     
     return
 }
@@ -444,6 +455,7 @@ func (c *Client) CreateRecordPlan(request *CreateRecordPlanRequest) (response *C
     if request == nil {
         request = NewCreateRecordPlanRequest()
     }
+    
     response = NewCreateRecordPlanResponse()
     err = c.Send(request, response)
     return
@@ -454,6 +466,7 @@ func NewCreateTimeTemplateRequest() (request *CreateTimeTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "CreateTimeTemplate")
+    
     
     return
 }
@@ -487,6 +500,7 @@ func (c *Client) CreateTimeTemplate(request *CreateTimeTemplateRequest) (respons
     if request == nil {
         request = NewCreateTimeTemplateRequest()
     }
+    
     response = NewCreateTimeTemplateResponse()
     err = c.Send(request, response)
     return
@@ -497,6 +511,7 @@ func NewDeleteDeviceRequest() (request *DeleteDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DeleteDevice")
+    
     
     return
 }
@@ -555,6 +570,7 @@ func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDev
     if request == nil {
         request = NewDeleteDeviceRequest()
     }
+    
     response = NewDeleteDeviceResponse()
     err = c.Send(request, response)
     return
@@ -565,6 +581,7 @@ func NewDeleteDeviceGroupRequest() (request *DeleteDeviceGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DeleteDeviceGroup")
+    
     
     return
 }
@@ -622,6 +639,7 @@ func (c *Client) DeleteDeviceGroup(request *DeleteDeviceGroupRequest) (response 
     if request == nil {
         request = NewDeleteDeviceGroupRequest()
     }
+    
     response = NewDeleteDeviceGroupResponse()
     err = c.Send(request, response)
     return
@@ -632,6 +650,7 @@ func NewDeleteRecordPlanRequest() (request *DeleteRecordPlanRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DeleteRecordPlan")
+    
     
     return
 }
@@ -668,6 +687,7 @@ func (c *Client) DeleteRecordPlan(request *DeleteRecordPlanRequest) (response *D
     if request == nil {
         request = NewDeleteRecordPlanRequest()
     }
+    
     response = NewDeleteRecordPlanResponse()
     err = c.Send(request, response)
     return
@@ -678,6 +698,7 @@ func NewDeleteTimeTemplateRequest() (request *DeleteTimeTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DeleteTimeTemplate")
+    
     
     return
 }
@@ -718,6 +739,7 @@ func (c *Client) DeleteTimeTemplate(request *DeleteTimeTemplateRequest) (respons
     if request == nil {
         request = NewDeleteTimeTemplateRequest()
     }
+    
     response = NewDeleteTimeTemplateResponse()
     err = c.Send(request, response)
     return
@@ -728,6 +750,7 @@ func NewDescribeAllDeviceListRequest() (request *DescribeAllDeviceListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeAllDeviceList")
+    
     
     return
 }
@@ -789,6 +812,7 @@ func (c *Client) DescribeAllDeviceList(request *DescribeAllDeviceListRequest) (r
     if request == nil {
         request = NewDescribeAllDeviceListRequest()
     }
+    
     response = NewDescribeAllDeviceListResponse()
     err = c.Send(request, response)
     return
@@ -799,6 +823,7 @@ func NewDescribeDeviceGroupRequest() (request *DescribeDeviceGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeDeviceGroup")
+    
     
     return
 }
@@ -865,6 +890,7 @@ func (c *Client) DescribeDeviceGroup(request *DescribeDeviceGroupRequest) (respo
     if request == nil {
         request = NewDescribeDeviceGroupRequest()
     }
+    
     response = NewDescribeDeviceGroupResponse()
     err = c.Send(request, response)
     return
@@ -875,6 +901,7 @@ func NewDescribeDevicePassWordRequest() (request *DescribeDevicePassWordRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeDevicePassWord")
+    
     
     return
 }
@@ -942,6 +969,7 @@ func (c *Client) DescribeDevicePassWord(request *DescribeDevicePassWordRequest) 
     if request == nil {
         request = NewDescribeDevicePassWordRequest()
     }
+    
     response = NewDescribeDevicePassWordResponse()
     err = c.Send(request, response)
     return
@@ -952,6 +980,7 @@ func NewDescribeDeviceStreamsRequest() (request *DescribeDeviceStreamsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeDeviceStreams")
+    
     
     return
 }
@@ -1021,6 +1050,7 @@ func (c *Client) DescribeDeviceStreams(request *DescribeDeviceStreamsRequest) (r
     if request == nil {
         request = NewDescribeDeviceStreamsRequest()
     }
+    
     response = NewDescribeDeviceStreamsResponse()
     err = c.Send(request, response)
     return
@@ -1031,6 +1061,7 @@ func NewDescribeGroupByIdRequest() (request *DescribeGroupByIdRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeGroupById")
+    
     
     return
 }
@@ -1088,6 +1119,7 @@ func (c *Client) DescribeGroupById(request *DescribeGroupByIdRequest) (response 
     if request == nil {
         request = NewDescribeGroupByIdRequest()
     }
+    
     response = NewDescribeGroupByIdResponse()
     err = c.Send(request, response)
     return
@@ -1098,6 +1130,7 @@ func NewDescribeGroupByPathRequest() (request *DescribeGroupByPathRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeGroupByPath")
+    
     
     return
 }
@@ -1155,6 +1188,7 @@ func (c *Client) DescribeGroupByPath(request *DescribeGroupByPathRequest) (respo
     if request == nil {
         request = NewDescribeGroupByPathRequest()
     }
+    
     response = NewDescribeGroupByPathResponse()
     err = c.Send(request, response)
     return
@@ -1165,6 +1199,7 @@ func NewDescribeGroupDevicesRequest() (request *DescribeGroupDevicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeGroupDevices")
+    
     
     return
 }
@@ -1221,6 +1256,7 @@ func (c *Client) DescribeGroupDevices(request *DescribeGroupDevicesRequest) (res
     if request == nil {
         request = NewDescribeGroupDevicesRequest()
     }
+    
     response = NewDescribeGroupDevicesResponse()
     err = c.Send(request, response)
     return
@@ -1231,6 +1267,7 @@ func NewDescribeGroupsRequest() (request *DescribeGroupsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeGroups")
+    
     
     return
 }
@@ -1293,6 +1330,7 @@ func (c *Client) DescribeGroups(request *DescribeGroupsRequest) (response *Descr
     if request == nil {
         request = NewDescribeGroupsRequest()
     }
+    
     response = NewDescribeGroupsResponse()
     err = c.Send(request, response)
     return
@@ -1303,6 +1341,7 @@ func NewDescribeIPCChannelsRequest() (request *DescribeIPCChannelsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeIPCChannels")
+    
     
     return
 }
@@ -1382,6 +1421,7 @@ func (c *Client) DescribeIPCChannels(request *DescribeIPCChannelsRequest) (respo
     if request == nil {
         request = NewDescribeIPCChannelsRequest()
     }
+    
     response = NewDescribeIPCChannelsResponse()
     err = c.Send(request, response)
     return
@@ -1392,6 +1432,7 @@ func NewDescribeRecordStreamRequest() (request *DescribeRecordStreamRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeRecordStream")
+    
     
     return
 }
@@ -1477,6 +1518,7 @@ func (c *Client) DescribeRecordStream(request *DescribeRecordStreamRequest) (res
     if request == nil {
         request = NewDescribeRecordStreamRequest()
     }
+    
     response = NewDescribeRecordStreamResponse()
     err = c.Send(request, response)
     return
@@ -1487,6 +1529,7 @@ func NewDescribeSIPServerRequest() (request *DescribeSIPServerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeSIPServer")
+    
     
     return
 }
@@ -1549,6 +1592,7 @@ func (c *Client) DescribeSIPServer(request *DescribeSIPServerRequest) (response 
     if request == nil {
         request = NewDescribeSIPServerRequest()
     }
+    
     response = NewDescribeSIPServerResponse()
     err = c.Send(request, response)
     return
@@ -1559,6 +1603,7 @@ func NewDescribeStatisticDetailsRequest() (request *DescribeStatisticDetailsRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeStatisticDetails")
+    
     
     return
 }
@@ -1588,6 +1633,7 @@ func (c *Client) DescribeStatisticDetails(request *DescribeStatisticDetailsReque
     if request == nil {
         request = NewDescribeStatisticDetailsRequest()
     }
+    
     response = NewDescribeStatisticDetailsResponse()
     err = c.Send(request, response)
     return
@@ -1598,6 +1644,7 @@ func NewDescribeStatisticSummaryRequest() (request *DescribeStatisticSummaryRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeStatisticSummary")
+    
     
     return
 }
@@ -1629,6 +1676,7 @@ func (c *Client) DescribeStatisticSummary(request *DescribeStatisticSummaryReque
     if request == nil {
         request = NewDescribeStatisticSummaryRequest()
     }
+    
     response = NewDescribeStatisticSummaryResponse()
     err = c.Send(request, response)
     return
@@ -1639,6 +1687,7 @@ func NewDescribeSubGroupsRequest() (request *DescribeSubGroupsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeSubGroups")
+    
     
     return
 }
@@ -1699,6 +1748,7 @@ func (c *Client) DescribeSubGroups(request *DescribeSubGroupsRequest) (response 
     if request == nil {
         request = NewDescribeSubGroupsRequest()
     }
+    
     response = NewDescribeSubGroupsResponse()
     err = c.Send(request, response)
     return
@@ -1709,6 +1759,7 @@ func NewDescribeVideoListRequest() (request *DescribeVideoListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "DescribeVideoList")
+    
     
     return
 }
@@ -1787,6 +1838,7 @@ func (c *Client) DescribeVideoList(request *DescribeVideoListRequest) (response 
     if request == nil {
         request = NewDescribeVideoListRequest()
     }
+    
     response = NewDescribeVideoListResponse()
     err = c.Send(request, response)
     return
@@ -1797,6 +1849,7 @@ func NewGetRecordDatesByDevRequest() (request *GetRecordDatesByDevRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "GetRecordDatesByDev")
+    
     
     return
 }
@@ -1826,6 +1879,7 @@ func (c *Client) GetRecordDatesByDev(request *GetRecordDatesByDevRequest) (respo
     if request == nil {
         request = NewGetRecordDatesByDevRequest()
     }
+    
     response = NewGetRecordDatesByDevResponse()
     err = c.Send(request, response)
     return
@@ -1836,6 +1890,7 @@ func NewGetRecordPlanByDevRequest() (request *GetRecordPlanByDevRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "GetRecordPlanByDev")
+    
     
     return
 }
@@ -1890,6 +1945,7 @@ func (c *Client) GetRecordPlanByDev(request *GetRecordPlanByDevRequest) (respons
     if request == nil {
         request = NewGetRecordPlanByDevRequest()
     }
+    
     response = NewGetRecordPlanByDevResponse()
     err = c.Send(request, response)
     return
@@ -1900,6 +1956,7 @@ func NewGetRecordPlanByIdRequest() (request *GetRecordPlanByIdRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "GetRecordPlanById")
+    
     
     return
 }
@@ -1932,6 +1989,7 @@ func (c *Client) GetRecordPlanById(request *GetRecordPlanByIdRequest) (response 
     if request == nil {
         request = NewGetRecordPlanByIdRequest()
     }
+    
     response = NewGetRecordPlanByIdResponse()
     err = c.Send(request, response)
     return
@@ -1942,6 +2000,7 @@ func NewGetRecordPlansRequest() (request *GetRecordPlansRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "GetRecordPlans")
+    
     
     return
 }
@@ -1973,6 +2032,7 @@ func (c *Client) GetRecordPlans(request *GetRecordPlansRequest) (response *GetRe
     if request == nil {
         request = NewGetRecordPlansRequest()
     }
+    
     response = NewGetRecordPlansResponse()
     err = c.Send(request, response)
     return
@@ -1983,6 +2043,7 @@ func NewGetTimeTemplateByIdRequest() (request *GetTimeTemplateByIdRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "GetTimeTemplateById")
+    
     
     return
 }
@@ -2015,6 +2076,7 @@ func (c *Client) GetTimeTemplateById(request *GetTimeTemplateByIdRequest) (respo
     if request == nil {
         request = NewGetTimeTemplateByIdRequest()
     }
+    
     response = NewGetTimeTemplateByIdResponse()
     err = c.Send(request, response)
     return
@@ -2025,6 +2087,7 @@ func NewGetTimeTemplatesRequest() (request *GetTimeTemplatesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "GetTimeTemplates")
+    
     
     return
 }
@@ -2056,6 +2119,7 @@ func (c *Client) GetTimeTemplates(request *GetTimeTemplatesRequest) (response *G
     if request == nil {
         request = NewGetTimeTemplatesRequest()
     }
+    
     response = NewGetTimeTemplatesResponse()
     err = c.Send(request, response)
     return
@@ -2066,6 +2130,7 @@ func NewGetVideoListByConRequest() (request *GetVideoListByConRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "GetVideoListByCon")
+    
     
     return
 }
@@ -2096,6 +2161,7 @@ func (c *Client) GetVideoListByCon(request *GetVideoListByConRequest) (response 
     if request == nil {
         request = NewGetVideoListByConRequest()
     }
+    
     response = NewGetVideoListByConResponse()
     err = c.Send(request, response)
     return
@@ -2106,6 +2172,7 @@ func NewModifyDeviceDataRequest() (request *ModifyDeviceDataRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "ModifyDeviceData")
+    
     
     return
 }
@@ -2167,6 +2234,7 @@ func (c *Client) ModifyDeviceData(request *ModifyDeviceDataRequest) (response *M
     if request == nil {
         request = NewModifyDeviceDataRequest()
     }
+    
     response = NewModifyDeviceDataResponse()
     err = c.Send(request, response)
     return
@@ -2177,6 +2245,7 @@ func NewUpdateDeviceGroupRequest() (request *UpdateDeviceGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "UpdateDeviceGroup")
+    
     
     return
 }
@@ -2242,6 +2311,7 @@ func (c *Client) UpdateDeviceGroup(request *UpdateDeviceGroupRequest) (response 
     if request == nil {
         request = NewUpdateDeviceGroupRequest()
     }
+    
     response = NewUpdateDeviceGroupResponse()
     err = c.Send(request, response)
     return
@@ -2252,6 +2322,7 @@ func NewUpdateDevicePassWordRequest() (request *UpdateDevicePassWordRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "UpdateDevicePassWord")
+    
     
     return
 }
@@ -2313,6 +2384,7 @@ func (c *Client) UpdateDevicePassWord(request *UpdateDevicePassWordRequest) (res
     if request == nil {
         request = NewUpdateDevicePassWordRequest()
     }
+    
     response = NewUpdateDevicePassWordResponse()
     err = c.Send(request, response)
     return
@@ -2323,6 +2395,7 @@ func NewUpdateRecordPlanRequest() (request *UpdateRecordPlanRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "UpdateRecordPlan")
+    
     
     return
 }
@@ -2362,6 +2435,7 @@ func (c *Client) UpdateRecordPlan(request *UpdateRecordPlanRequest) (response *U
     if request == nil {
         request = NewUpdateRecordPlanRequest()
     }
+    
     response = NewUpdateRecordPlanResponse()
     err = c.Send(request, response)
     return
@@ -2372,6 +2446,7 @@ func NewUpdateTimeTemplateRequest() (request *UpdateTimeTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideoindustry", APIVersion, "UpdateTimeTemplate")
+    
     
     return
 }
@@ -2409,6 +2484,7 @@ func (c *Client) UpdateTimeTemplate(request *UpdateTimeTemplateRequest) (respons
     if request == nil {
         request = NewUpdateTimeTemplateRequest()
     }
+    
     response = NewUpdateTimeTemplateResponse()
     err = c.Send(request, response)
     return

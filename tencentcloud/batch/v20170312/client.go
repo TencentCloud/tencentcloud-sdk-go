@@ -49,6 +49,7 @@ func NewAttachInstancesRequest() (request *AttachInstancesRequest) {
     }
     request.Init().WithApiInfo("batch", APIVersion, "AttachInstances")
     
+    
     return
 }
 
@@ -86,6 +87,7 @@ func (c *Client) AttachInstances(request *AttachInstancesRequest) (response *Att
     if request == nil {
         request = NewAttachInstancesRequest()
     }
+    
     response = NewAttachInstancesResponse()
     err = c.Send(request, response)
     return
@@ -96,6 +98,7 @@ func NewCreateComputeEnvRequest() (request *CreateComputeEnvRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "CreateComputeEnv")
+    
     
     return
 }
@@ -137,6 +140,7 @@ func (c *Client) CreateComputeEnv(request *CreateComputeEnvRequest) (response *C
     if request == nil {
         request = NewCreateComputeEnvRequest()
     }
+    
     response = NewCreateComputeEnvResponse()
     err = c.Send(request, response)
     return
@@ -147,6 +151,7 @@ func NewCreateCpmComputeEnvRequest() (request *CreateCpmComputeEnvRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "CreateCpmComputeEnv")
+    
     
     return
 }
@@ -178,6 +183,7 @@ func (c *Client) CreateCpmComputeEnv(request *CreateCpmComputeEnvRequest) (respo
     if request == nil {
         request = NewCreateCpmComputeEnvRequest()
     }
+    
     response = NewCreateCpmComputeEnvResponse()
     err = c.Send(request, response)
     return
@@ -188,6 +194,7 @@ func NewCreateTaskTemplateRequest() (request *CreateTaskTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "CreateTaskTemplate")
+    
     
     return
 }
@@ -225,6 +232,7 @@ func (c *Client) CreateTaskTemplate(request *CreateTaskTemplateRequest) (respons
     if request == nil {
         request = NewCreateTaskTemplateRequest()
     }
+    
     response = NewCreateTaskTemplateResponse()
     err = c.Send(request, response)
     return
@@ -235,6 +243,7 @@ func NewDeleteComputeEnvRequest() (request *DeleteComputeEnvRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DeleteComputeEnv")
+    
     
     return
 }
@@ -261,6 +270,7 @@ func (c *Client) DeleteComputeEnv(request *DeleteComputeEnvRequest) (response *D
     if request == nil {
         request = NewDeleteComputeEnvRequest()
     }
+    
     response = NewDeleteComputeEnvResponse()
     err = c.Send(request, response)
     return
@@ -271,6 +281,7 @@ func NewDeleteJobRequest() (request *DeleteJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DeleteJob")
+    
     
     return
 }
@@ -299,6 +310,7 @@ func (c *Client) DeleteJob(request *DeleteJobRequest) (response *DeleteJobRespon
     if request == nil {
         request = NewDeleteJobRequest()
     }
+    
     response = NewDeleteJobResponse()
     err = c.Send(request, response)
     return
@@ -309,6 +321,7 @@ func NewDeleteTaskTemplatesRequest() (request *DeleteTaskTemplatesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DeleteTaskTemplates")
+    
     
     return
 }
@@ -331,6 +344,7 @@ func (c *Client) DeleteTaskTemplates(request *DeleteTaskTemplatesRequest) (respo
     if request == nil {
         request = NewDeleteTaskTemplatesRequest()
     }
+    
     response = NewDeleteTaskTemplatesResponse()
     err = c.Send(request, response)
     return
@@ -341,6 +355,7 @@ func NewDescribeAvailableCvmInstanceTypesRequest() (request *DescribeAvailableCv
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DescribeAvailableCvmInstanceTypes")
+    
     
     return
 }
@@ -366,6 +381,7 @@ func (c *Client) DescribeAvailableCvmInstanceTypes(request *DescribeAvailableCvm
     if request == nil {
         request = NewDescribeAvailableCvmInstanceTypesRequest()
     }
+    
     response = NewDescribeAvailableCvmInstanceTypesResponse()
     err = c.Send(request, response)
     return
@@ -376,6 +392,7 @@ func NewDescribeComputeEnvRequest() (request *DescribeComputeEnvRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DescribeComputeEnv")
+    
     
     return
 }
@@ -398,6 +415,7 @@ func (c *Client) DescribeComputeEnv(request *DescribeComputeEnvRequest) (respons
     if request == nil {
         request = NewDescribeComputeEnvRequest()
     }
+    
     response = NewDescribeComputeEnvResponse()
     err = c.Send(request, response)
     return
@@ -408,6 +426,7 @@ func NewDescribeComputeEnvActivitiesRequest() (request *DescribeComputeEnvActivi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DescribeComputeEnvActivities")
+    
     
     return
 }
@@ -432,6 +451,7 @@ func (c *Client) DescribeComputeEnvActivities(request *DescribeComputeEnvActivit
     if request == nil {
         request = NewDescribeComputeEnvActivitiesRequest()
     }
+    
     response = NewDescribeComputeEnvActivitiesResponse()
     err = c.Send(request, response)
     return
@@ -442,6 +462,7 @@ func NewDescribeComputeEnvCreateInfoRequest() (request *DescribeComputeEnvCreate
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DescribeComputeEnvCreateInfo")
+    
     
     return
 }
@@ -463,6 +484,7 @@ func (c *Client) DescribeComputeEnvCreateInfo(request *DescribeComputeEnvCreateI
     if request == nil {
         request = NewDescribeComputeEnvCreateInfoRequest()
     }
+    
     response = NewDescribeComputeEnvCreateInfoResponse()
     err = c.Send(request, response)
     return
@@ -473,6 +495,7 @@ func NewDescribeComputeEnvCreateInfosRequest() (request *DescribeComputeEnvCreat
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DescribeComputeEnvCreateInfos")
+    
     
     return
 }
@@ -497,6 +520,7 @@ func (c *Client) DescribeComputeEnvCreateInfos(request *DescribeComputeEnvCreate
     if request == nil {
         request = NewDescribeComputeEnvCreateInfosRequest()
     }
+    
     response = NewDescribeComputeEnvCreateInfosResponse()
     err = c.Send(request, response)
     return
@@ -507,6 +531,7 @@ func NewDescribeComputeEnvsRequest() (request *DescribeComputeEnvsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DescribeComputeEnvs")
+    
     
     return
 }
@@ -534,6 +559,7 @@ func (c *Client) DescribeComputeEnvs(request *DescribeComputeEnvsRequest) (respo
     if request == nil {
         request = NewDescribeComputeEnvsRequest()
     }
+    
     response = NewDescribeComputeEnvsResponse()
     err = c.Send(request, response)
     return
@@ -544,6 +570,7 @@ func NewDescribeCpmOsInfoRequest() (request *DescribeCpmOsInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DescribeCpmOsInfo")
+    
     
     return
 }
@@ -566,6 +593,7 @@ func (c *Client) DescribeCpmOsInfo(request *DescribeCpmOsInfoRequest) (response 
     if request == nil {
         request = NewDescribeCpmOsInfoRequest()
     }
+    
     response = NewDescribeCpmOsInfoResponse()
     err = c.Send(request, response)
     return
@@ -576,6 +604,7 @@ func NewDescribeCvmZoneInstanceConfigInfosRequest() (request *DescribeCvmZoneIns
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DescribeCvmZoneInstanceConfigInfos")
+    
     
     return
 }
@@ -602,6 +631,7 @@ func (c *Client) DescribeCvmZoneInstanceConfigInfos(request *DescribeCvmZoneInst
     if request == nil {
         request = NewDescribeCvmZoneInstanceConfigInfosRequest()
     }
+    
     response = NewDescribeCvmZoneInstanceConfigInfosResponse()
     err = c.Send(request, response)
     return
@@ -612,6 +642,7 @@ func NewDescribeInstanceCategoriesRequest() (request *DescribeInstanceCategories
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DescribeInstanceCategories")
+    
     
     return
 }
@@ -633,6 +664,7 @@ func (c *Client) DescribeInstanceCategories(request *DescribeInstanceCategoriesR
     if request == nil {
         request = NewDescribeInstanceCategoriesRequest()
     }
+    
     response = NewDescribeInstanceCategoriesResponse()
     err = c.Send(request, response)
     return
@@ -643,6 +675,7 @@ func NewDescribeJobRequest() (request *DescribeJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DescribeJob")
+    
     
     return
 }
@@ -665,6 +698,7 @@ func (c *Client) DescribeJob(request *DescribeJobRequest) (response *DescribeJob
     if request == nil {
         request = NewDescribeJobRequest()
     }
+    
     response = NewDescribeJobResponse()
     err = c.Send(request, response)
     return
@@ -675,6 +709,7 @@ func NewDescribeJobSubmitInfoRequest() (request *DescribeJobSubmitInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DescribeJobSubmitInfo")
+    
     
     return
 }
@@ -697,6 +732,7 @@ func (c *Client) DescribeJobSubmitInfo(request *DescribeJobSubmitInfoRequest) (r
     if request == nil {
         request = NewDescribeJobSubmitInfoRequest()
     }
+    
     response = NewDescribeJobSubmitInfoResponse()
     err = c.Send(request, response)
     return
@@ -707,6 +743,7 @@ func NewDescribeJobsRequest() (request *DescribeJobsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DescribeJobs")
+    
     
     return
 }
@@ -733,6 +770,7 @@ func (c *Client) DescribeJobs(request *DescribeJobsRequest) (response *DescribeJ
     if request == nil {
         request = NewDescribeJobsRequest()
     }
+    
     response = NewDescribeJobsResponse()
     err = c.Send(request, response)
     return
@@ -743,6 +781,7 @@ func NewDescribeTaskRequest() (request *DescribeTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DescribeTask")
+    
     
     return
 }
@@ -765,6 +804,7 @@ func (c *Client) DescribeTask(request *DescribeTaskRequest) (response *DescribeT
     if request == nil {
         request = NewDescribeTaskRequest()
     }
+    
     response = NewDescribeTaskResponse()
     err = c.Send(request, response)
     return
@@ -775,6 +815,7 @@ func NewDescribeTaskLogsRequest() (request *DescribeTaskLogsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DescribeTaskLogs")
+    
     
     return
 }
@@ -804,6 +845,7 @@ func (c *Client) DescribeTaskLogs(request *DescribeTaskLogsRequest) (response *D
     if request == nil {
         request = NewDescribeTaskLogsRequest()
     }
+    
     response = NewDescribeTaskLogsResponse()
     err = c.Send(request, response)
     return
@@ -814,6 +856,7 @@ func NewDescribeTaskTemplatesRequest() (request *DescribeTaskTemplatesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DescribeTaskTemplates")
+    
     
     return
 }
@@ -838,6 +881,7 @@ func (c *Client) DescribeTaskTemplates(request *DescribeTaskTemplatesRequest) (r
     if request == nil {
         request = NewDescribeTaskTemplatesRequest()
     }
+    
     response = NewDescribeTaskTemplatesResponse()
     err = c.Send(request, response)
     return
@@ -848,6 +892,7 @@ func NewDetachInstancesRequest() (request *DetachInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "DetachInstances")
+    
     
     return
 }
@@ -874,6 +919,7 @@ func (c *Client) DetachInstances(request *DetachInstancesRequest) (response *Det
     if request == nil {
         request = NewDetachInstancesRequest()
     }
+    
     response = NewDetachInstancesResponse()
     err = c.Send(request, response)
     return
@@ -884,6 +930,7 @@ func NewModifyComputeEnvRequest() (request *ModifyComputeEnvRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "ModifyComputeEnv")
+    
     
     return
 }
@@ -919,6 +966,7 @@ func (c *Client) ModifyComputeEnv(request *ModifyComputeEnvRequest) (response *M
     if request == nil {
         request = NewModifyComputeEnvRequest()
     }
+    
     response = NewModifyComputeEnvResponse()
     err = c.Send(request, response)
     return
@@ -929,6 +977,7 @@ func NewModifyTaskTemplateRequest() (request *ModifyTaskTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "ModifyTaskTemplate")
+    
     
     return
 }
@@ -967,6 +1016,7 @@ func (c *Client) ModifyTaskTemplate(request *ModifyTaskTemplateRequest) (respons
     if request == nil {
         request = NewModifyTaskTemplateRequest()
     }
+    
     response = NewModifyTaskTemplateResponse()
     err = c.Send(request, response)
     return
@@ -977,6 +1027,7 @@ func NewRetryJobsRequest() (request *RetryJobsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "RetryJobs")
+    
     
     return
 }
@@ -1002,6 +1053,7 @@ func (c *Client) RetryJobs(request *RetryJobsRequest) (response *RetryJobsRespon
     if request == nil {
         request = NewRetryJobsRequest()
     }
+    
     response = NewRetryJobsResponse()
     err = c.Send(request, response)
     return
@@ -1012,6 +1064,7 @@ func NewSubmitJobRequest() (request *SubmitJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "SubmitJob")
+    
     
     return
 }
@@ -1060,6 +1113,7 @@ func (c *Client) SubmitJob(request *SubmitJobRequest) (response *SubmitJobRespon
     if request == nil {
         request = NewSubmitJobRequest()
     }
+    
     response = NewSubmitJobResponse()
     err = c.Send(request, response)
     return
@@ -1070,6 +1124,7 @@ func NewTerminateComputeNodeRequest() (request *TerminateComputeNodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "TerminateComputeNode")
+    
     
     return
 }
@@ -1099,6 +1154,7 @@ func (c *Client) TerminateComputeNode(request *TerminateComputeNodeRequest) (res
     if request == nil {
         request = NewTerminateComputeNodeRequest()
     }
+    
     response = NewTerminateComputeNodeResponse()
     err = c.Send(request, response)
     return
@@ -1109,6 +1165,7 @@ func NewTerminateComputeNodesRequest() (request *TerminateComputeNodesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "TerminateComputeNodes")
+    
     
     return
 }
@@ -1135,6 +1192,7 @@ func (c *Client) TerminateComputeNodes(request *TerminateComputeNodesRequest) (r
     if request == nil {
         request = NewTerminateComputeNodesRequest()
     }
+    
     response = NewTerminateComputeNodesResponse()
     err = c.Send(request, response)
     return
@@ -1145,6 +1203,7 @@ func NewTerminateJobRequest() (request *TerminateJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "TerminateJob")
+    
     
     return
 }
@@ -1173,6 +1232,7 @@ func (c *Client) TerminateJob(request *TerminateJobRequest) (response *Terminate
     if request == nil {
         request = NewTerminateJobRequest()
     }
+    
     response = NewTerminateJobResponse()
     err = c.Send(request, response)
     return
@@ -1183,6 +1243,7 @@ func NewTerminateTaskInstanceRequest() (request *TerminateTaskInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("batch", APIVersion, "TerminateTaskInstance")
+    
     
     return
 }
@@ -1214,6 +1275,7 @@ func (c *Client) TerminateTaskInstance(request *TerminateTaskInstanceRequest) (r
     if request == nil {
         request = NewTerminateTaskInstanceRequest()
     }
+    
     response = NewTerminateTaskInstanceResponse()
     err = c.Send(request, response)
     return

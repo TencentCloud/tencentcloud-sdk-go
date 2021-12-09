@@ -49,6 +49,7 @@ func NewAddFairPlayPemRequest() (request *AddFairPlayPemRequest) {
     }
     request.Init().WithApiInfo("drm", APIVersion, "AddFairPlayPem")
     
+    
     return
 }
 
@@ -75,6 +76,7 @@ func (c *Client) AddFairPlayPem(request *AddFairPlayPemRequest) (response *AddFa
     if request == nil {
         request = NewAddFairPlayPemRequest()
     }
+    
     response = NewAddFairPlayPemResponse()
     err = c.Send(request, response)
     return
@@ -85,6 +87,7 @@ func NewCreateEncryptKeysRequest() (request *CreateEncryptKeysRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("drm", APIVersion, "CreateEncryptKeys")
+    
     
     return
 }
@@ -108,6 +111,7 @@ func (c *Client) CreateEncryptKeys(request *CreateEncryptKeysRequest) (response 
     if request == nil {
         request = NewCreateEncryptKeysRequest()
     }
+    
     response = NewCreateEncryptKeysResponse()
     err = c.Send(request, response)
     return
@@ -118,6 +122,7 @@ func NewCreateLicenseRequest() (request *CreateLicenseRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("drm", APIVersion, "CreateLicense")
+    
     
     return
 }
@@ -143,6 +148,7 @@ func (c *Client) CreateLicense(request *CreateLicenseRequest) (response *CreateL
     if request == nil {
         request = NewCreateLicenseRequest()
     }
+    
     response = NewCreateLicenseResponse()
     err = c.Send(request, response)
     return
@@ -153,6 +159,7 @@ func NewDeleteFairPlayPemRequest() (request *DeleteFairPlayPemRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("drm", APIVersion, "DeleteFairPlayPem")
+    
     
     return
 }
@@ -180,6 +187,7 @@ func (c *Client) DeleteFairPlayPem(request *DeleteFairPlayPemRequest) (response 
     if request == nil {
         request = NewDeleteFairPlayPemRequest()
     }
+    
     response = NewDeleteFairPlayPemResponse()
     err = c.Send(request, response)
     return
@@ -190,6 +198,7 @@ func NewDescribeAllKeysRequest() (request *DescribeAllKeysRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("drm", APIVersion, "DescribeAllKeys")
+    
     
     return
 }
@@ -213,6 +222,7 @@ func (c *Client) DescribeAllKeys(request *DescribeAllKeysRequest) (response *Des
     if request == nil {
         request = NewDescribeAllKeysRequest()
     }
+    
     response = NewDescribeAllKeysResponse()
     err = c.Send(request, response)
     return
@@ -223,6 +233,7 @@ func NewDescribeFairPlayPemRequest() (request *DescribeFairPlayPemRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("drm", APIVersion, "DescribeFairPlayPem")
+    
     
     return
 }
@@ -246,6 +257,7 @@ func (c *Client) DescribeFairPlayPem(request *DescribeFairPlayPemRequest) (respo
     if request == nil {
         request = NewDescribeFairPlayPemRequest()
     }
+    
     response = NewDescribeFairPlayPemResponse()
     err = c.Send(request, response)
     return
@@ -256,6 +268,7 @@ func NewDescribeKeysRequest() (request *DescribeKeysRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("drm", APIVersion, "DescribeKeys")
+    
     
     return
 }
@@ -281,6 +294,7 @@ func (c *Client) DescribeKeys(request *DescribeKeysRequest) (response *DescribeK
     if request == nil {
         request = NewDescribeKeysRequest()
     }
+    
     response = NewDescribeKeysResponse()
     err = c.Send(request, response)
     return
@@ -291,6 +305,7 @@ func NewModifyFairPlayPemRequest() (request *ModifyFairPlayPemRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("drm", APIVersion, "ModifyFairPlayPem")
+    
     
     return
 }
@@ -318,6 +333,7 @@ func (c *Client) ModifyFairPlayPem(request *ModifyFairPlayPemRequest) (response 
     if request == nil {
         request = NewModifyFairPlayPemRequest()
     }
+    
     response = NewModifyFairPlayPemResponse()
     err = c.Send(request, response)
     return
@@ -328,6 +344,7 @@ func NewStartEncryptionRequest() (request *StartEncryptionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("drm", APIVersion, "StartEncryption")
+    
     
     return
 }
@@ -353,6 +370,7 @@ func (c *Client) StartEncryption(request *StartEncryptionRequest) (response *Sta
     if request == nil {
         request = NewStartEncryptionRequest()
     }
+    
     response = NewStartEncryptionResponse()
     err = c.Send(request, response)
     return

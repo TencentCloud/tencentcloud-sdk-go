@@ -49,6 +49,7 @@ func NewClearDeviceActiveCodeRequest() (request *ClearDeviceActiveCodeRequest) {
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "ClearDeviceActiveCode")
     
+    
     return
 }
 
@@ -89,6 +90,7 @@ func (c *Client) ClearDeviceActiveCode(request *ClearDeviceActiveCodeRequest) (r
     if request == nil {
         request = NewClearDeviceActiveCodeRequest()
     }
+    
     response = NewClearDeviceActiveCodeResponse()
     err = c.Send(request, response)
     return
@@ -99,6 +101,7 @@ func NewCreateAnonymousAccessTokenRequest() (request *CreateAnonymousAccessToken
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateAnonymousAccessToken")
+    
     
     return
 }
@@ -140,6 +143,7 @@ func (c *Client) CreateAnonymousAccessToken(request *CreateAnonymousAccessTokenR
     if request == nil {
         request = NewCreateAnonymousAccessTokenRequest()
     }
+    
     response = NewCreateAnonymousAccessTokenResponse()
     err = c.Send(request, response)
     return
@@ -150,6 +154,7 @@ func NewCreateAppUsrRequest() (request *CreateAppUsrRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateAppUsr")
+    
     
     return
 }
@@ -191,6 +196,7 @@ func (c *Client) CreateAppUsr(request *CreateAppUsrRequest) (response *CreateApp
     if request == nil {
         request = NewCreateAppUsrRequest()
     }
+    
     response = NewCreateAppUsrResponse()
     err = c.Send(request, response)
     return
@@ -201,6 +207,7 @@ func NewCreateBindingRequest() (request *CreateBindingRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateBinding")
+    
     
     return
 }
@@ -244,6 +251,7 @@ func (c *Client) CreateBinding(request *CreateBindingRequest) (response *CreateB
     if request == nil {
         request = NewCreateBindingRequest()
     }
+    
     response = NewCreateBindingResponse()
     err = c.Send(request, response)
     return
@@ -254,6 +262,7 @@ func NewCreateDevTokenRequest() (request *CreateDevTokenRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateDevToken")
+    
     
     return
 }
@@ -301,6 +310,7 @@ func (c *Client) CreateDevToken(request *CreateDevTokenRequest) (response *Creat
     if request == nil {
         request = NewCreateDevTokenRequest()
     }
+    
     response = NewCreateDevTokenResponse()
     err = c.Send(request, response)
     return
@@ -311,6 +321,7 @@ func NewCreateDevicesRequest() (request *CreateDevicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateDevices")
+    
     
     return
 }
@@ -354,6 +365,7 @@ func (c *Client) CreateDevices(request *CreateDevicesRequest) (response *CreateD
     if request == nil {
         request = NewCreateDevicesRequest()
     }
+    
     response = NewCreateDevicesResponse()
     err = c.Send(request, response)
     return
@@ -364,6 +376,7 @@ func NewCreateGencodeRequest() (request *CreateGencodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateGencode")
+    
     
     return
 }
@@ -405,6 +418,7 @@ func (c *Client) CreateGencode(request *CreateGencodeRequest) (response *CreateG
     if request == nil {
         request = NewCreateGencodeRequest()
     }
+    
     response = NewCreateGencodeResponse()
     err = c.Send(request, response)
     return
@@ -415,6 +429,7 @@ func NewCreateIotDataTypeRequest() (request *CreateIotDataTypeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateIotDataType")
+    
     
     return
 }
@@ -456,6 +471,7 @@ func (c *Client) CreateIotDataType(request *CreateIotDataTypeRequest) (response 
     if request == nil {
         request = NewCreateIotDataTypeRequest()
     }
+    
     response = NewCreateIotDataTypeResponse()
     err = c.Send(request, response)
     return
@@ -466,6 +482,7 @@ func NewCreateIotModelRequest() (request *CreateIotModelRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateIotModel")
+    
     
     return
 }
@@ -509,6 +526,7 @@ func (c *Client) CreateIotModel(request *CreateIotModelRequest) (response *Creat
     if request == nil {
         request = NewCreateIotModelRequest()
     }
+    
     response = NewCreateIotModelResponse()
     err = c.Send(request, response)
     return
@@ -519,6 +537,7 @@ func NewCreateProductRequest() (request *CreateProductRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateProduct")
+    
     
     return
 }
@@ -560,6 +579,7 @@ func (c *Client) CreateProduct(request *CreateProductRequest) (response *CreateP
     if request == nil {
         request = NewCreateProductRequest()
     }
+    
     response = NewCreateProductResponse()
     err = c.Send(request, response)
     return
@@ -570,6 +590,7 @@ func NewCreateStorageRequest() (request *CreateStorageRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateStorage")
+    
     
     return
 }
@@ -611,6 +632,7 @@ func (c *Client) CreateStorage(request *CreateStorageRequest) (response *CreateS
     if request == nil {
         request = NewCreateStorageRequest()
     }
+    
     response = NewCreateStorageResponse()
     err = c.Send(request, response)
     return
@@ -621,6 +643,7 @@ func NewCreateStorageServiceRequest() (request *CreateStorageServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateStorageService")
+    
     
     return
 }
@@ -662,6 +685,7 @@ func (c *Client) CreateStorageService(request *CreateStorageServiceRequest) (res
     if request == nil {
         request = NewCreateStorageServiceRequest()
     }
+    
     response = NewCreateStorageServiceResponse()
     err = c.Send(request, response)
     return
@@ -672,6 +696,7 @@ func NewCreateTraceIdsRequest() (request *CreateTraceIdsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateTraceIds")
+    
     
     return
 }
@@ -713,6 +738,7 @@ func (c *Client) CreateTraceIds(request *CreateTraceIdsRequest) (response *Creat
     if request == nil {
         request = NewCreateTraceIdsRequest()
     }
+    
     response = NewCreateTraceIdsResponse()
     err = c.Send(request, response)
     return
@@ -723,6 +749,7 @@ func NewCreateUploadPathRequest() (request *CreateUploadPathRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateUploadPath")
+    
     
     return
 }
@@ -764,6 +791,7 @@ func (c *Client) CreateUploadPath(request *CreateUploadPathRequest) (response *C
     if request == nil {
         request = NewCreateUploadPathRequest()
     }
+    
     response = NewCreateUploadPathResponse()
     err = c.Send(request, response)
     return
@@ -774,6 +802,7 @@ func NewCreateUsrTokenRequest() (request *CreateUsrTokenRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateUsrToken")
+    
     
     return
 }
@@ -815,6 +844,7 @@ func (c *Client) CreateUsrToken(request *CreateUsrTokenRequest) (response *Creat
     if request == nil {
         request = NewCreateUsrTokenRequest()
     }
+    
     response = NewCreateUsrTokenResponse()
     err = c.Send(request, response)
     return
@@ -825,6 +855,7 @@ func NewDeleteAppUsrRequest() (request *DeleteAppUsrRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteAppUsr")
+    
     
     return
 }
@@ -866,6 +897,7 @@ func (c *Client) DeleteAppUsr(request *DeleteAppUsrRequest) (response *DeleteApp
     if request == nil {
         request = NewDeleteAppUsrRequest()
     }
+    
     response = NewDeleteAppUsrResponse()
     err = c.Send(request, response)
     return
@@ -876,6 +908,7 @@ func NewDeleteBindingRequest() (request *DeleteBindingRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteBinding")
+    
     
     return
 }
@@ -917,6 +950,7 @@ func (c *Client) DeleteBinding(request *DeleteBindingRequest) (response *DeleteB
     if request == nil {
         request = NewDeleteBindingRequest()
     }
+    
     response = NewDeleteBindingResponse()
     err = c.Send(request, response)
     return
@@ -927,6 +961,7 @@ func NewDeleteDeviceRequest() (request *DeleteDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteDevice")
+    
     
     return
 }
@@ -968,6 +1003,7 @@ func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDev
     if request == nil {
         request = NewDeleteDeviceRequest()
     }
+    
     response = NewDeleteDeviceResponse()
     err = c.Send(request, response)
     return
@@ -978,6 +1014,7 @@ func NewDeleteIotDataTypeRequest() (request *DeleteIotDataTypeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteIotDataType")
+    
     
     return
 }
@@ -1019,6 +1056,7 @@ func (c *Client) DeleteIotDataType(request *DeleteIotDataTypeRequest) (response 
     if request == nil {
         request = NewDeleteIotDataTypeRequest()
     }
+    
     response = NewDeleteIotDataTypeResponse()
     err = c.Send(request, response)
     return
@@ -1029,6 +1067,7 @@ func NewDeleteMessageQueueRequest() (request *DeleteMessageQueueRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteMessageQueue")
+    
     
     return
 }
@@ -1070,6 +1109,7 @@ func (c *Client) DeleteMessageQueue(request *DeleteMessageQueueRequest) (respons
     if request == nil {
         request = NewDeleteMessageQueueRequest()
     }
+    
     response = NewDeleteMessageQueueResponse()
     err = c.Send(request, response)
     return
@@ -1080,6 +1120,7 @@ func NewDeleteOtaVersionRequest() (request *DeleteOtaVersionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteOtaVersion")
+    
     
     return
 }
@@ -1121,6 +1162,7 @@ func (c *Client) DeleteOtaVersion(request *DeleteOtaVersionRequest) (response *D
     if request == nil {
         request = NewDeleteOtaVersionRequest()
     }
+    
     response = NewDeleteOtaVersionResponse()
     err = c.Send(request, response)
     return
@@ -1131,6 +1173,7 @@ func NewDeleteProductRequest() (request *DeleteProductRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteProduct")
+    
     
     return
 }
@@ -1172,6 +1215,7 @@ func (c *Client) DeleteProduct(request *DeleteProductRequest) (response *DeleteP
     if request == nil {
         request = NewDeleteProductRequest()
     }
+    
     response = NewDeleteProductResponse()
     err = c.Send(request, response)
     return
@@ -1182,6 +1226,7 @@ func NewDeleteTraceIdsRequest() (request *DeleteTraceIdsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteTraceIds")
+    
     
     return
 }
@@ -1223,6 +1268,7 @@ func (c *Client) DeleteTraceIds(request *DeleteTraceIdsRequest) (response *Delet
     if request == nil {
         request = NewDeleteTraceIdsRequest()
     }
+    
     response = NewDeleteTraceIdsResponse()
     err = c.Send(request, response)
     return
@@ -1233,6 +1279,7 @@ func NewDeliverStorageServiceRequest() (request *DeliverStorageServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeliverStorageService")
+    
     
     return
 }
@@ -1274,6 +1321,7 @@ func (c *Client) DeliverStorageService(request *DeliverStorageServiceRequest) (r
     if request == nil {
         request = NewDeliverStorageServiceRequest()
     }
+    
     response = NewDeliverStorageServiceResponse()
     err = c.Send(request, response)
     return
@@ -1284,6 +1332,7 @@ func NewDescribeAccountBalanceRequest() (request *DescribeAccountBalanceRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeAccountBalance")
+    
     
     return
 }
@@ -1325,6 +1374,7 @@ func (c *Client) DescribeAccountBalance(request *DescribeAccountBalanceRequest) 
     if request == nil {
         request = NewDescribeAccountBalanceRequest()
     }
+    
     response = NewDescribeAccountBalanceResponse()
     err = c.Send(request, response)
     return
@@ -1335,6 +1385,7 @@ func NewDescribeBindDevRequest() (request *DescribeBindDevRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeBindDev")
+    
     
     return
 }
@@ -1376,6 +1427,7 @@ func (c *Client) DescribeBindDev(request *DescribeBindDevRequest) (response *Des
     if request == nil {
         request = NewDescribeBindDevRequest()
     }
+    
     response = NewDescribeBindDevResponse()
     err = c.Send(request, response)
     return
@@ -1386,6 +1438,7 @@ func NewDescribeBindUsrRequest() (request *DescribeBindUsrRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeBindUsr")
+    
     
     return
 }
@@ -1427,6 +1480,7 @@ func (c *Client) DescribeBindUsr(request *DescribeBindUsrRequest) (response *Des
     if request == nil {
         request = NewDescribeBindUsrRequest()
     }
+    
     response = NewDescribeBindUsrResponse()
     err = c.Send(request, response)
     return
@@ -1437,6 +1491,7 @@ func NewDescribeDeviceRequest() (request *DescribeDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeDevice")
+    
     
     return
 }
@@ -1478,6 +1533,7 @@ func (c *Client) DescribeDevice(request *DescribeDeviceRequest) (response *Descr
     if request == nil {
         request = NewDescribeDeviceRequest()
     }
+    
     response = NewDescribeDeviceResponse()
     err = c.Send(request, response)
     return
@@ -1488,6 +1544,7 @@ func NewDescribeDeviceModelRequest() (request *DescribeDeviceModelRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeDeviceModel")
+    
     
     return
 }
@@ -1529,6 +1586,7 @@ func (c *Client) DescribeDeviceModel(request *DescribeDeviceModelRequest) (respo
     if request == nil {
         request = NewDescribeDeviceModelRequest()
     }
+    
     response = NewDescribeDeviceModelResponse()
     err = c.Send(request, response)
     return
@@ -1539,6 +1597,7 @@ func NewDescribeDevicesRequest() (request *DescribeDevicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeDevices")
+    
     
     return
 }
@@ -1580,6 +1639,7 @@ func (c *Client) DescribeDevices(request *DescribeDevicesRequest) (response *Des
     if request == nil {
         request = NewDescribeDevicesRequest()
     }
+    
     response = NewDescribeDevicesResponse()
     err = c.Send(request, response)
     return
@@ -1590,6 +1650,7 @@ func NewDescribeIotDataTypeRequest() (request *DescribeIotDataTypeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeIotDataType")
+    
     
     return
 }
@@ -1631,6 +1692,7 @@ func (c *Client) DescribeIotDataType(request *DescribeIotDataTypeRequest) (respo
     if request == nil {
         request = NewDescribeIotDataTypeRequest()
     }
+    
     response = NewDescribeIotDataTypeResponse()
     err = c.Send(request, response)
     return
@@ -1641,6 +1703,7 @@ func NewDescribeIotModelRequest() (request *DescribeIotModelRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeIotModel")
+    
     
     return
 }
@@ -1682,6 +1745,7 @@ func (c *Client) DescribeIotModel(request *DescribeIotModelRequest) (response *D
     if request == nil {
         request = NewDescribeIotModelRequest()
     }
+    
     response = NewDescribeIotModelResponse()
     err = c.Send(request, response)
     return
@@ -1692,6 +1756,7 @@ func NewDescribeIotModelsRequest() (request *DescribeIotModelsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeIotModels")
+    
     
     return
 }
@@ -1733,6 +1798,7 @@ func (c *Client) DescribeIotModels(request *DescribeIotModelsRequest) (response 
     if request == nil {
         request = NewDescribeIotModelsRequest()
     }
+    
     response = NewDescribeIotModelsResponse()
     err = c.Send(request, response)
     return
@@ -1743,6 +1809,7 @@ func NewDescribeLogsRequest() (request *DescribeLogsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeLogs")
+    
     
     return
 }
@@ -1786,6 +1853,7 @@ func (c *Client) DescribeLogs(request *DescribeLogsRequest) (response *DescribeL
     if request == nil {
         request = NewDescribeLogsRequest()
     }
+    
     response = NewDescribeLogsResponse()
     err = c.Send(request, response)
     return
@@ -1796,6 +1864,7 @@ func NewDescribeMessageQueueRequest() (request *DescribeMessageQueueRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeMessageQueue")
+    
     
     return
 }
@@ -1837,6 +1906,7 @@ func (c *Client) DescribeMessageQueue(request *DescribeMessageQueueRequest) (res
     if request == nil {
         request = NewDescribeMessageQueueRequest()
     }
+    
     response = NewDescribeMessageQueueResponse()
     err = c.Send(request, response)
     return
@@ -1847,6 +1917,7 @@ func NewDescribeModelDataRetRequest() (request *DescribeModelDataRetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeModelDataRet")
+    
     
     return
 }
@@ -1888,6 +1959,7 @@ func (c *Client) DescribeModelDataRet(request *DescribeModelDataRetRequest) (res
     if request == nil {
         request = NewDescribeModelDataRetRequest()
     }
+    
     response = NewDescribeModelDataRetResponse()
     err = c.Send(request, response)
     return
@@ -1898,6 +1970,7 @@ func NewDescribeOsListRequest() (request *DescribeOsListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeOsList")
+    
     
     return
 }
@@ -1939,6 +2012,7 @@ func (c *Client) DescribeOsList(request *DescribeOsListRequest) (response *Descr
     if request == nil {
         request = NewDescribeOsListRequest()
     }
+    
     response = NewDescribeOsListResponse()
     err = c.Send(request, response)
     return
@@ -1949,6 +2023,7 @@ func NewDescribeOtaVersionsRequest() (request *DescribeOtaVersionsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeOtaVersions")
+    
     
     return
 }
@@ -1990,6 +2065,7 @@ func (c *Client) DescribeOtaVersions(request *DescribeOtaVersionsRequest) (respo
     if request == nil {
         request = NewDescribeOtaVersionsRequest()
     }
+    
     response = NewDescribeOtaVersionsResponse()
     err = c.Send(request, response)
     return
@@ -2000,6 +2076,7 @@ func NewDescribeProductRequest() (request *DescribeProductRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeProduct")
+    
     
     return
 }
@@ -2041,6 +2118,7 @@ func (c *Client) DescribeProduct(request *DescribeProductRequest) (response *Des
     if request == nil {
         request = NewDescribeProductRequest()
     }
+    
     response = NewDescribeProductResponse()
     err = c.Send(request, response)
     return
@@ -2051,6 +2129,7 @@ func NewDescribeProductsRequest() (request *DescribeProductsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeProducts")
+    
     
     return
 }
@@ -2092,6 +2171,7 @@ func (c *Client) DescribeProducts(request *DescribeProductsRequest) (response *D
     if request == nil {
         request = NewDescribeProductsRequest()
     }
+    
     response = NewDescribeProductsResponse()
     err = c.Send(request, response)
     return
@@ -2102,6 +2182,7 @@ func NewDescribePubVersionsRequest() (request *DescribePubVersionsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribePubVersions")
+    
     
     return
 }
@@ -2143,6 +2224,7 @@ func (c *Client) DescribePubVersions(request *DescribePubVersionsRequest) (respo
     if request == nil {
         request = NewDescribePubVersionsRequest()
     }
+    
     response = NewDescribePubVersionsResponse()
     err = c.Send(request, response)
     return
@@ -2153,6 +2235,7 @@ func NewDescribeRechargeRecordsRequest() (request *DescribeRechargeRecordsReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeRechargeRecords")
+    
     
     return
 }
@@ -2194,6 +2277,7 @@ func (c *Client) DescribeRechargeRecords(request *DescribeRechargeRecordsRequest
     if request == nil {
         request = NewDescribeRechargeRecordsRequest()
     }
+    
     response = NewDescribeRechargeRecordsResponse()
     err = c.Send(request, response)
     return
@@ -2204,6 +2288,7 @@ func NewDescribeRegistrationStatusRequest() (request *DescribeRegistrationStatus
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeRegistrationStatus")
+    
     
     return
 }
@@ -2245,6 +2330,7 @@ func (c *Client) DescribeRegistrationStatus(request *DescribeRegistrationStatusR
     if request == nil {
         request = NewDescribeRegistrationStatusRequest()
     }
+    
     response = NewDescribeRegistrationStatusResponse()
     err = c.Send(request, response)
     return
@@ -2255,6 +2341,7 @@ func NewDescribeRunLogRequest() (request *DescribeRunLogRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeRunLog")
+    
     
     return
 }
@@ -2296,6 +2383,7 @@ func (c *Client) DescribeRunLog(request *DescribeRunLogRequest) (response *Descr
     if request == nil {
         request = NewDescribeRunLogRequest()
     }
+    
     response = NewDescribeRunLogResponse()
     err = c.Send(request, response)
     return
@@ -2306,6 +2394,7 @@ func NewDescribeStorageServiceRequest() (request *DescribeStorageServiceRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeStorageService")
+    
     
     return
 }
@@ -2347,6 +2436,7 @@ func (c *Client) DescribeStorageService(request *DescribeStorageServiceRequest) 
     if request == nil {
         request = NewDescribeStorageServiceRequest()
     }
+    
     response = NewDescribeStorageServiceResponse()
     err = c.Send(request, response)
     return
@@ -2357,6 +2447,7 @@ func NewDescribeStreamRequest() (request *DescribeStreamRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeStream")
+    
     
     return
 }
@@ -2406,6 +2497,7 @@ func (c *Client) DescribeStream(request *DescribeStreamRequest) (response *Descr
     if request == nil {
         request = NewDescribeStreamRequest()
     }
+    
     response = NewDescribeStreamResponse()
     err = c.Send(request, response)
     return
@@ -2416,6 +2508,7 @@ func NewDescribeTraceIdsRequest() (request *DescribeTraceIdsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeTraceIds")
+    
     
     return
 }
@@ -2457,6 +2550,7 @@ func (c *Client) DescribeTraceIds(request *DescribeTraceIdsRequest) (response *D
     if request == nil {
         request = NewDescribeTraceIdsRequest()
     }
+    
     response = NewDescribeTraceIdsResponse()
     err = c.Send(request, response)
     return
@@ -2467,6 +2561,7 @@ func NewDescribeTraceStatusRequest() (request *DescribeTraceStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeTraceStatus")
+    
     
     return
 }
@@ -2508,6 +2603,7 @@ func (c *Client) DescribeTraceStatus(request *DescribeTraceStatusRequest) (respo
     if request == nil {
         request = NewDescribeTraceStatusRequest()
     }
+    
     response = NewDescribeTraceStatusResponse()
     err = c.Send(request, response)
     return
@@ -2518,6 +2614,7 @@ func NewDisableDeviceRequest() (request *DisableDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DisableDevice")
+    
     
     return
 }
@@ -2559,6 +2656,7 @@ func (c *Client) DisableDevice(request *DisableDeviceRequest) (response *Disable
     if request == nil {
         request = NewDisableDeviceRequest()
     }
+    
     response = NewDisableDeviceResponse()
     err = c.Send(request, response)
     return
@@ -2569,6 +2667,7 @@ func NewDisableDeviceStreamRequest() (request *DisableDeviceStreamRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DisableDeviceStream")
+    
     
     return
 }
@@ -2610,6 +2709,7 @@ func (c *Client) DisableDeviceStream(request *DisableDeviceStreamRequest) (respo
     if request == nil {
         request = NewDisableDeviceStreamRequest()
     }
+    
     response = NewDisableDeviceStreamResponse()
     err = c.Send(request, response)
     return
@@ -2620,6 +2720,7 @@ func NewDisableOtaVersionRequest() (request *DisableOtaVersionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DisableOtaVersion")
+    
     
     return
 }
@@ -2661,6 +2762,7 @@ func (c *Client) DisableOtaVersion(request *DisableOtaVersionRequest) (response 
     if request == nil {
         request = NewDisableOtaVersionRequest()
     }
+    
     response = NewDisableOtaVersionResponse()
     err = c.Send(request, response)
     return
@@ -2671,6 +2773,7 @@ func NewModifyDeviceRequest() (request *ModifyDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "ModifyDevice")
+    
     
     return
 }
@@ -2693,6 +2796,7 @@ func (c *Client) ModifyDevice(request *ModifyDeviceRequest) (response *ModifyDev
     if request == nil {
         request = NewModifyDeviceRequest()
     }
+    
     response = NewModifyDeviceResponse()
     err = c.Send(request, response)
     return
@@ -2703,6 +2807,7 @@ func NewModifyDeviceActionRequest() (request *ModifyDeviceActionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "ModifyDeviceAction")
+    
     
     return
 }
@@ -2756,6 +2861,7 @@ func (c *Client) ModifyDeviceAction(request *ModifyDeviceActionRequest) (respons
     if request == nil {
         request = NewModifyDeviceActionRequest()
     }
+    
     response = NewModifyDeviceActionResponse()
     err = c.Send(request, response)
     return
@@ -2766,6 +2872,7 @@ func NewModifyDevicePropertyRequest() (request *ModifyDevicePropertyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "ModifyDeviceProperty")
+    
     
     return
 }
@@ -2819,6 +2926,7 @@ func (c *Client) ModifyDeviceProperty(request *ModifyDevicePropertyRequest) (res
     if request == nil {
         request = NewModifyDevicePropertyRequest()
     }
+    
     response = NewModifyDevicePropertyResponse()
     err = c.Send(request, response)
     return
@@ -2829,6 +2937,7 @@ func NewModifyProductRequest() (request *ModifyProductRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "ModifyProduct")
+    
     
     return
 }
@@ -2870,6 +2979,7 @@ func (c *Client) ModifyProduct(request *ModifyProductRequest) (response *ModifyP
     if request == nil {
         request = NewModifyProductRequest()
     }
+    
     response = NewModifyProductResponse()
     err = c.Send(request, response)
     return
@@ -2880,6 +2990,7 @@ func NewModifyVerContentRequest() (request *ModifyVerContentRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "ModifyVerContent")
+    
     
     return
 }
@@ -2921,6 +3032,7 @@ func (c *Client) ModifyVerContent(request *ModifyVerContentRequest) (response *M
     if request == nil {
         request = NewModifyVerContentRequest()
     }
+    
     response = NewModifyVerContentResponse()
     err = c.Send(request, response)
     return
@@ -2931,6 +3043,7 @@ func NewRefundStorageServiceRequest() (request *RefundStorageServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "RefundStorageService")
+    
     
     return
 }
@@ -2980,6 +3093,7 @@ func (c *Client) RefundStorageService(request *RefundStorageServiceRequest) (res
     if request == nil {
         request = NewRefundStorageServiceRequest()
     }
+    
     response = NewRefundStorageServiceResponse()
     err = c.Send(request, response)
     return
@@ -2990,6 +3104,7 @@ func NewRunDeviceRequest() (request *RunDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "RunDevice")
+    
     
     return
 }
@@ -3031,6 +3146,7 @@ func (c *Client) RunDevice(request *RunDeviceRequest) (response *RunDeviceRespon
     if request == nil {
         request = NewRunDeviceRequest()
     }
+    
     response = NewRunDeviceResponse()
     err = c.Send(request, response)
     return
@@ -3041,6 +3157,7 @@ func NewRunDeviceStreamRequest() (request *RunDeviceStreamRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "RunDeviceStream")
+    
     
     return
 }
@@ -3082,6 +3199,7 @@ func (c *Client) RunDeviceStream(request *RunDeviceStreamRequest) (response *Run
     if request == nil {
         request = NewRunDeviceStreamRequest()
     }
+    
     response = NewRunDeviceStreamResponse()
     err = c.Send(request, response)
     return
@@ -3092,6 +3210,7 @@ func NewRunIotModelRequest() (request *RunIotModelRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "RunIotModel")
+    
     
     return
 }
@@ -3133,6 +3252,7 @@ func (c *Client) RunIotModel(request *RunIotModelRequest) (response *RunIotModel
     if request == nil {
         request = NewRunIotModelRequest()
     }
+    
     response = NewRunIotModelResponse()
     err = c.Send(request, response)
     return
@@ -3143,6 +3263,7 @@ func NewRunOtaVersionRequest() (request *RunOtaVersionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "RunOtaVersion")
+    
     
     return
 }
@@ -3184,6 +3305,7 @@ func (c *Client) RunOtaVersion(request *RunOtaVersionRequest) (response *RunOtaV
     if request == nil {
         request = NewRunOtaVersionRequest()
     }
+    
     response = NewRunOtaVersionResponse()
     err = c.Send(request, response)
     return
@@ -3194,6 +3316,7 @@ func NewRunTestOtaVersionRequest() (request *RunTestOtaVersionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "RunTestOtaVersion")
+    
     
     return
 }
@@ -3235,6 +3358,7 @@ func (c *Client) RunTestOtaVersion(request *RunTestOtaVersionRequest) (response 
     if request == nil {
         request = NewRunTestOtaVersionRequest()
     }
+    
     response = NewRunTestOtaVersionResponse()
     err = c.Send(request, response)
     return
@@ -3245,6 +3369,7 @@ func NewSendOnlineMsgRequest() (request *SendOnlineMsgRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "SendOnlineMsg")
+    
     
     return
 }
@@ -3292,6 +3417,7 @@ func (c *Client) SendOnlineMsg(request *SendOnlineMsgRequest) (response *SendOnl
     if request == nil {
         request = NewSendOnlineMsgRequest()
     }
+    
     response = NewSendOnlineMsgResponse()
     err = c.Send(request, response)
     return
@@ -3302,6 +3428,7 @@ func NewSetMessageQueueRequest() (request *SetMessageQueueRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "SetMessageQueue")
+    
     
     return
 }
@@ -3343,6 +3470,7 @@ func (c *Client) SetMessageQueue(request *SetMessageQueueRequest) (response *Set
     if request == nil {
         request = NewSetMessageQueueRequest()
     }
+    
     response = NewSetMessageQueueResponse()
     err = c.Send(request, response)
     return
@@ -3353,6 +3481,7 @@ func NewUpgradeDeviceRequest() (request *UpgradeDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "UpgradeDevice")
+    
     
     return
 }
@@ -3398,6 +3527,7 @@ func (c *Client) UpgradeDevice(request *UpgradeDeviceRequest) (response *Upgrade
     if request == nil {
         request = NewUpgradeDeviceRequest()
     }
+    
     response = NewUpgradeDeviceResponse()
     err = c.Send(request, response)
     return
@@ -3408,6 +3538,7 @@ func NewUploadOtaVersionRequest() (request *UploadOtaVersionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "UploadOtaVersion")
+    
     
     return
 }
@@ -3449,6 +3580,7 @@ func (c *Client) UploadOtaVersion(request *UploadOtaVersionRequest) (response *U
     if request == nil {
         request = NewUploadOtaVersionRequest()
     }
+    
     response = NewUploadOtaVersionResponse()
     err = c.Send(request, response)
     return

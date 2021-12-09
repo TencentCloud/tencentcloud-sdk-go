@@ -1308,6 +1308,10 @@ type TaskStatus struct {
 	// 识别结果详情，包含每个句子中的词时间偏移，一般用于生成字幕的场景。(录音识别请求中ResTextFormat=1时该字段不为空)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultDetail []*SentenceDetail `json:"ResultDetail,omitempty" name:"ResultDetail"`
+
+	// 音频时长(秒)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioDuration *float64 `json:"AudioDuration,omitempty" name:"AudioDuration"`
 }
 
 type UpdateAsrVocabRequest struct {

@@ -49,6 +49,7 @@ func NewGetTaskDetailRequest() (request *GetTaskDetailRequest) {
     }
     request.Init().WithApiInfo("apcas", APIVersion, "GetTaskDetail")
     
+    
     return
 }
 
@@ -78,6 +79,7 @@ func (c *Client) GetTaskDetail(request *GetTaskDetailRequest) (response *GetTask
     if request == nil {
         request = NewGetTaskDetailRequest()
     }
+    
     response = NewGetTaskDetailResponse()
     err = c.Send(request, response)
     return
@@ -88,6 +90,7 @@ func NewGetTaskListRequest() (request *GetTaskListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apcas", APIVersion, "GetTaskList")
+    
     
     return
 }
@@ -115,6 +118,7 @@ func (c *Client) GetTaskList(request *GetTaskListRequest) (response *GetTaskList
     if request == nil {
         request = NewGetTaskListRequest()
     }
+    
     response = NewGetTaskListResponse()
     err = c.Send(request, response)
     return
@@ -125,6 +129,7 @@ func NewPredictRatingRequest() (request *PredictRatingRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apcas", APIVersion, "PredictRating")
+    
     
     return
 }
@@ -153,6 +158,7 @@ func (c *Client) PredictRating(request *PredictRatingRequest) (response *Predict
     if request == nil {
         request = NewPredictRatingRequest()
     }
+    
     response = NewPredictRatingResponse()
     err = c.Send(request, response)
     return
@@ -163,6 +169,7 @@ func NewQueryCallDetailsRequest() (request *QueryCallDetailsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apcas", APIVersion, "QueryCallDetails")
+    
     
     return
 }
@@ -186,6 +193,7 @@ func (c *Client) QueryCallDetails(request *QueryCallDetailsRequest) (response *Q
     if request == nil {
         request = NewQueryCallDetailsRequest()
     }
+    
     response = NewQueryCallDetailsResponse()
     err = c.Send(request, response)
     return
@@ -196,6 +204,7 @@ func NewQueryCallStatRequest() (request *QueryCallStatRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apcas", APIVersion, "QueryCallStat")
+    
     
     return
 }
@@ -218,6 +227,7 @@ func (c *Client) QueryCallStat(request *QueryCallStatRequest) (response *QueryCa
     if request == nil {
         request = NewQueryCallStatRequest()
     }
+    
     response = NewQueryCallStatResponse()
     err = c.Send(request, response)
     return
@@ -228,6 +238,7 @@ func NewQueryGeneralStatRequest() (request *QueryGeneralStatRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apcas", APIVersion, "QueryGeneralStat")
+    
     
     return
 }
@@ -250,6 +261,7 @@ func (c *Client) QueryGeneralStat(request *QueryGeneralStatRequest) (response *Q
     if request == nil {
         request = NewQueryGeneralStatRequest()
     }
+    
     response = NewQueryGeneralStatResponse()
     err = c.Send(request, response)
     return
@@ -260,6 +272,7 @@ func NewUploadIdRequest() (request *UploadIdRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("apcas", APIVersion, "UploadId")
+    
     
     return
 }
@@ -288,6 +301,7 @@ func (c *Client) UploadId(request *UploadIdRequest) (response *UploadIdResponse,
     if request == nil {
         request = NewUploadIdRequest()
     }
+    
     response = NewUploadIdResponse()
     err = c.Send(request, response)
     return

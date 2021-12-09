@@ -49,6 +49,7 @@ func NewCreateJobRequest() (request *CreateJobRequest) {
     }
     request.Init().WithApiInfo("oceanus", APIVersion, "CreateJob")
     
+    
     return
 }
 
@@ -84,6 +85,7 @@ func (c *Client) CreateJob(request *CreateJobRequest) (response *CreateJobRespon
     if request == nil {
         request = NewCreateJobRequest()
     }
+    
     response = NewCreateJobResponse()
     err = c.Send(request, response)
     return
@@ -94,6 +96,7 @@ func NewCreateJobConfigRequest() (request *CreateJobConfigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("oceanus", APIVersion, "CreateJobConfig")
+    
     
     return
 }
@@ -131,6 +134,7 @@ func (c *Client) CreateJobConfig(request *CreateJobConfigRequest) (response *Cre
     if request == nil {
         request = NewCreateJobConfigRequest()
     }
+    
     response = NewCreateJobConfigResponse()
     err = c.Send(request, response)
     return
@@ -141,6 +145,7 @@ func NewCreateResourceRequest() (request *CreateResourceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("oceanus", APIVersion, "CreateResource")
+    
     
     return
 }
@@ -171,6 +176,7 @@ func (c *Client) CreateResource(request *CreateResourceRequest) (response *Creat
     if request == nil {
         request = NewCreateResourceRequest()
     }
+    
     response = NewCreateResourceResponse()
     err = c.Send(request, response)
     return
@@ -181,6 +187,7 @@ func NewCreateResourceConfigRequest() (request *CreateResourceConfigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("oceanus", APIVersion, "CreateResourceConfig")
+    
     
     return
 }
@@ -207,6 +214,7 @@ func (c *Client) CreateResourceConfig(request *CreateResourceConfigRequest) (res
     if request == nil {
         request = NewCreateResourceConfigRequest()
     }
+    
     response = NewCreateResourceConfigResponse()
     err = c.Send(request, response)
     return
@@ -217,6 +225,7 @@ func NewDeleteResourceConfigsRequest() (request *DeleteResourceConfigsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("oceanus", APIVersion, "DeleteResourceConfigs")
+    
     
     return
 }
@@ -247,6 +256,7 @@ func (c *Client) DeleteResourceConfigs(request *DeleteResourceConfigsRequest) (r
     if request == nil {
         request = NewDeleteResourceConfigsRequest()
     }
+    
     response = NewDeleteResourceConfigsResponse()
     err = c.Send(request, response)
     return
@@ -257,6 +267,7 @@ func NewDeleteResourcesRequest() (request *DeleteResourcesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("oceanus", APIVersion, "DeleteResources")
+    
     
     return
 }
@@ -284,6 +295,7 @@ func (c *Client) DeleteResources(request *DeleteResourcesRequest) (response *Del
     if request == nil {
         request = NewDeleteResourcesRequest()
     }
+    
     response = NewDeleteResourcesResponse()
     err = c.Send(request, response)
     return
@@ -294,6 +306,7 @@ func NewDeleteTableConfigRequest() (request *DeleteTableConfigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("oceanus", APIVersion, "DeleteTableConfig")
+    
     
     return
 }
@@ -315,6 +328,7 @@ func (c *Client) DeleteTableConfig(request *DeleteTableConfigRequest) (response 
     if request == nil {
         request = NewDeleteTableConfigRequest()
     }
+    
     response = NewDeleteTableConfigResponse()
     err = c.Send(request, response)
     return
@@ -325,6 +339,7 @@ func NewDescribeJobConfigsRequest() (request *DescribeJobConfigsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("oceanus", APIVersion, "DescribeJobConfigs")
+    
     
     return
 }
@@ -353,6 +368,7 @@ func (c *Client) DescribeJobConfigs(request *DescribeJobConfigsRequest) (respons
     if request == nil {
         request = NewDescribeJobConfigsRequest()
     }
+    
     response = NewDescribeJobConfigsResponse()
     err = c.Send(request, response)
     return
@@ -363,6 +379,7 @@ func NewDescribeJobsRequest() (request *DescribeJobsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("oceanus", APIVersion, "DescribeJobs")
+    
     
     return
 }
@@ -388,6 +405,7 @@ func (c *Client) DescribeJobs(request *DescribeJobsRequest) (response *DescribeJ
     if request == nil {
         request = NewDescribeJobsRequest()
     }
+    
     response = NewDescribeJobsResponse()
     err = c.Send(request, response)
     return
@@ -398,6 +416,7 @@ func NewDescribeResourceConfigsRequest() (request *DescribeResourceConfigsReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("oceanus", APIVersion, "DescribeResourceConfigs")
+    
     
     return
 }
@@ -428,6 +447,7 @@ func (c *Client) DescribeResourceConfigs(request *DescribeResourceConfigsRequest
     if request == nil {
         request = NewDescribeResourceConfigsRequest()
     }
+    
     response = NewDescribeResourceConfigsResponse()
     err = c.Send(request, response)
     return
@@ -438,6 +458,7 @@ func NewDescribeResourceRelatedJobsRequest() (request *DescribeResourceRelatedJo
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("oceanus", APIVersion, "DescribeResourceRelatedJobs")
+    
     
     return
 }
@@ -463,6 +484,7 @@ func (c *Client) DescribeResourceRelatedJobs(request *DescribeResourceRelatedJob
     if request == nil {
         request = NewDescribeResourceRelatedJobsRequest()
     }
+    
     response = NewDescribeResourceRelatedJobsResponse()
     err = c.Send(request, response)
     return
@@ -473,6 +495,7 @@ func NewDescribeResourcesRequest() (request *DescribeResourcesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("oceanus", APIVersion, "DescribeResources")
+    
     
     return
 }
@@ -500,6 +523,7 @@ func (c *Client) DescribeResources(request *DescribeResourcesRequest) (response 
     if request == nil {
         request = NewDescribeResourcesRequest()
     }
+    
     response = NewDescribeResourcesResponse()
     err = c.Send(request, response)
     return
@@ -510,6 +534,7 @@ func NewDescribeSystemResourcesRequest() (request *DescribeSystemResourcesReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("oceanus", APIVersion, "DescribeSystemResources")
+    
     
     return
 }
@@ -537,6 +562,7 @@ func (c *Client) DescribeSystemResources(request *DescribeSystemResourcesRequest
     if request == nil {
         request = NewDescribeSystemResourcesRequest()
     }
+    
     response = NewDescribeSystemResourcesResponse()
     err = c.Send(request, response)
     return
@@ -547,6 +573,7 @@ func NewRunJobsRequest() (request *RunJobsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("oceanus", APIVersion, "RunJobs")
+    
     
     return
 }
@@ -591,6 +618,7 @@ func (c *Client) RunJobs(request *RunJobsRequest) (response *RunJobsResponse, er
     if request == nil {
         request = NewRunJobsRequest()
     }
+    
     response = NewRunJobsResponse()
     err = c.Send(request, response)
     return
@@ -601,6 +629,7 @@ func NewStopJobsRequest() (request *StopJobsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("oceanus", APIVersion, "StopJobs")
+    
     
     return
 }
@@ -628,6 +657,7 @@ func (c *Client) StopJobs(request *StopJobsRequest) (response *StopJobsResponse,
     if request == nil {
         request = NewStopJobsRequest()
     }
+    
     response = NewStopJobsResponse()
     err = c.Send(request, response)
     return

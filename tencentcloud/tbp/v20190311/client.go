@@ -49,6 +49,7 @@ func NewCreateBotRequest() (request *CreateBotRequest) {
     }
     request.Init().WithApiInfo("tbp", APIVersion, "CreateBot")
     
+    
     return
 }
 
@@ -70,6 +71,7 @@ func (c *Client) CreateBot(request *CreateBotRequest) (response *CreateBotRespon
     if request == nil {
         request = NewCreateBotRequest()
     }
+    
     response = NewCreateBotResponse()
     err = c.Send(request, response)
     return
@@ -80,6 +82,7 @@ func NewResetRequest() (request *ResetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbp", APIVersion, "Reset")
+    
     
     return
 }
@@ -105,6 +108,7 @@ func (c *Client) Reset(request *ResetRequest) (response *ResetResponse, err erro
     if request == nil {
         request = NewResetRequest()
     }
+    
     response = NewResetResponse()
     err = c.Send(request, response)
     return
@@ -115,6 +119,7 @@ func NewTextProcessRequest() (request *TextProcessRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbp", APIVersion, "TextProcess")
+    
     
     return
 }
@@ -141,6 +146,7 @@ func (c *Client) TextProcess(request *TextProcessRequest) (response *TextProcess
     if request == nil {
         request = NewTextProcessRequest()
     }
+    
     response = NewTextProcessResponse()
     err = c.Send(request, response)
     return
@@ -151,6 +157,7 @@ func NewTextResetRequest() (request *TextResetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbp", APIVersion, "TextReset")
+    
     
     return
 }
@@ -177,6 +184,7 @@ func (c *Client) TextReset(request *TextResetRequest) (response *TextResetRespon
     if request == nil {
         request = NewTextResetRequest()
     }
+    
     response = NewTextResetResponse()
     err = c.Send(request, response)
     return

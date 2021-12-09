@@ -49,6 +49,7 @@ func NewCreateContainerInstanceRequest() (request *CreateContainerInstanceReques
     }
     request.Init().WithApiInfo("cis", APIVersion, "CreateContainerInstance")
     
+    
     return
 }
 
@@ -69,6 +70,7 @@ func (c *Client) CreateContainerInstance(request *CreateContainerInstanceRequest
     if request == nil {
         request = NewCreateContainerInstanceRequest()
     }
+    
     response = NewCreateContainerInstanceResponse()
     err = c.Send(request, response)
     return
@@ -79,6 +81,7 @@ func NewDeleteContainerInstanceRequest() (request *DeleteContainerInstanceReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cis", APIVersion, "DeleteContainerInstance")
+    
     
     return
 }
@@ -100,6 +103,7 @@ func (c *Client) DeleteContainerInstance(request *DeleteContainerInstanceRequest
     if request == nil {
         request = NewDeleteContainerInstanceRequest()
     }
+    
     response = NewDeleteContainerInstanceResponse()
     err = c.Send(request, response)
     return
@@ -110,6 +114,7 @@ func NewDescribeContainerInstanceRequest() (request *DescribeContainerInstanceRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cis", APIVersion, "DescribeContainerInstance")
+    
     
     return
 }
@@ -131,6 +136,7 @@ func (c *Client) DescribeContainerInstance(request *DescribeContainerInstanceReq
     if request == nil {
         request = NewDescribeContainerInstanceRequest()
     }
+    
     response = NewDescribeContainerInstanceResponse()
     err = c.Send(request, response)
     return
@@ -141,6 +147,7 @@ func NewDescribeContainerInstanceEventsRequest() (request *DescribeContainerInst
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cis", APIVersion, "DescribeContainerInstanceEvents")
+    
     
     return
 }
@@ -162,6 +169,7 @@ func (c *Client) DescribeContainerInstanceEvents(request *DescribeContainerInsta
     if request == nil {
         request = NewDescribeContainerInstanceEventsRequest()
     }
+    
     response = NewDescribeContainerInstanceEventsResponse()
     err = c.Send(request, response)
     return
@@ -172,6 +180,7 @@ func NewDescribeContainerInstancesRequest() (request *DescribeContainerInstances
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cis", APIVersion, "DescribeContainerInstances")
+    
     
     return
 }
@@ -193,6 +202,7 @@ func (c *Client) DescribeContainerInstances(request *DescribeContainerInstancesR
     if request == nil {
         request = NewDescribeContainerInstancesRequest()
     }
+    
     response = NewDescribeContainerInstancesResponse()
     err = c.Send(request, response)
     return
@@ -203,6 +213,7 @@ func NewDescribeContainerLogRequest() (request *DescribeContainerLogRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cis", APIVersion, "DescribeContainerLog")
+    
     
     return
 }
@@ -224,6 +235,7 @@ func (c *Client) DescribeContainerLog(request *DescribeContainerLogRequest) (res
     if request == nil {
         request = NewDescribeContainerLogRequest()
     }
+    
     response = NewDescribeContainerLogResponse()
     err = c.Send(request, response)
     return
@@ -234,6 +246,7 @@ func NewInquiryPriceCreateCisRequest() (request *InquiryPriceCreateCisRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cis", APIVersion, "InquiryPriceCreateCis")
+    
     
     return
 }
@@ -255,6 +268,7 @@ func (c *Client) InquiryPriceCreateCis(request *InquiryPriceCreateCisRequest) (r
     if request == nil {
         request = NewInquiryPriceCreateCisRequest()
     }
+    
     response = NewInquiryPriceCreateCisResponse()
     err = c.Send(request, response)
     return

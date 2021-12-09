@@ -49,6 +49,7 @@ func NewCreateInstanceRequest() (request *CreateInstanceRequest) {
     }
     request.Init().WithApiInfo("emr", APIVersion, "CreateInstance")
     
+    
     return
 }
 
@@ -135,6 +136,7 @@ func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *Creat
     if request == nil {
         request = NewCreateInstanceRequest()
     }
+    
     response = NewCreateInstanceResponse()
     err = c.Send(request, response)
     return
@@ -145,6 +147,7 @@ func NewDescribeClusterNodesRequest() (request *DescribeClusterNodesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "DescribeClusterNodes")
+    
     
     return
 }
@@ -188,6 +191,7 @@ func (c *Client) DescribeClusterNodes(request *DescribeClusterNodesRequest) (res
     if request == nil {
         request = NewDescribeClusterNodesRequest()
     }
+    
     response = NewDescribeClusterNodesResponse()
     err = c.Send(request, response)
     return
@@ -198,6 +202,7 @@ func NewDescribeCvmQuotaRequest() (request *DescribeCvmQuotaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "DescribeCvmQuota")
+    
     
     return
 }
@@ -218,6 +223,7 @@ func (c *Client) DescribeCvmQuota(request *DescribeCvmQuotaRequest) (response *D
     if request == nil {
         request = NewDescribeCvmQuotaRequest()
     }
+    
     response = NewDescribeCvmQuotaResponse()
     err = c.Send(request, response)
     return
@@ -228,6 +234,7 @@ func NewDescribeInstanceRenewNodesRequest() (request *DescribeInstanceRenewNodes
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "DescribeInstanceRenewNodes")
+    
     
     return
 }
@@ -271,6 +278,7 @@ func (c *Client) DescribeInstanceRenewNodes(request *DescribeInstanceRenewNodesR
     if request == nil {
         request = NewDescribeInstanceRenewNodesRequest()
     }
+    
     response = NewDescribeInstanceRenewNodesResponse()
     err = c.Send(request, response)
     return
@@ -281,6 +289,7 @@ func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "DescribeInstances")
+    
     
     return
 }
@@ -325,6 +334,7 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    
     response = NewDescribeInstancesResponse()
     err = c.Send(request, response)
     return
@@ -335,6 +345,7 @@ func NewDescribeJobFlowRequest() (request *DescribeJobFlowRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "DescribeJobFlow")
+    
     
     return
 }
@@ -356,6 +367,7 @@ func (c *Client) DescribeJobFlow(request *DescribeJobFlowRequest) (response *Des
     if request == nil {
         request = NewDescribeJobFlowRequest()
     }
+    
     response = NewDescribeJobFlowResponse()
     err = c.Send(request, response)
     return
@@ -366,6 +378,7 @@ func NewInquirePriceRenewEmrRequest() (request *InquirePriceRenewEmrRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "InquirePriceRenewEmr")
+    
     
     return
 }
@@ -411,6 +424,7 @@ func (c *Client) InquirePriceRenewEmr(request *InquirePriceRenewEmrRequest) (res
     if request == nil {
         request = NewInquirePriceRenewEmrRequest()
     }
+    
     response = NewInquirePriceRenewEmrResponse()
     err = c.Send(request, response)
     return
@@ -421,6 +435,7 @@ func NewInquiryPriceCreateInstanceRequest() (request *InquiryPriceCreateInstance
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "InquiryPriceCreateInstance")
+    
     
     return
 }
@@ -473,6 +488,7 @@ func (c *Client) InquiryPriceCreateInstance(request *InquiryPriceCreateInstanceR
     if request == nil {
         request = NewInquiryPriceCreateInstanceRequest()
     }
+    
     response = NewInquiryPriceCreateInstanceResponse()
     err = c.Send(request, response)
     return
@@ -483,6 +499,7 @@ func NewInquiryPriceRenewInstanceRequest() (request *InquiryPriceRenewInstanceRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "InquiryPriceRenewInstance")
+    
     
     return
 }
@@ -528,6 +545,7 @@ func (c *Client) InquiryPriceRenewInstance(request *InquiryPriceRenewInstanceReq
     if request == nil {
         request = NewInquiryPriceRenewInstanceRequest()
     }
+    
     response = NewInquiryPriceRenewInstanceResponse()
     err = c.Send(request, response)
     return
@@ -538,6 +556,7 @@ func NewInquiryPriceScaleOutInstanceRequest() (request *InquiryPriceScaleOutInst
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "InquiryPriceScaleOutInstance")
+    
     
     return
 }
@@ -589,6 +608,7 @@ func (c *Client) InquiryPriceScaleOutInstance(request *InquiryPriceScaleOutInsta
     if request == nil {
         request = NewInquiryPriceScaleOutInstanceRequest()
     }
+    
     response = NewInquiryPriceScaleOutInstanceResponse()
     err = c.Send(request, response)
     return
@@ -599,6 +619,7 @@ func NewInquiryPriceUpdateInstanceRequest() (request *InquiryPriceUpdateInstance
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "InquiryPriceUpdateInstance")
+    
     
     return
 }
@@ -645,6 +666,7 @@ func (c *Client) InquiryPriceUpdateInstance(request *InquiryPriceUpdateInstanceR
     if request == nil {
         request = NewInquiryPriceUpdateInstanceRequest()
     }
+    
     response = NewInquiryPriceUpdateInstanceResponse()
     err = c.Send(request, response)
     return
@@ -655,6 +677,7 @@ func NewRunJobFlowRequest() (request *RunJobFlowRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "RunJobFlow")
+    
     
     return
 }
@@ -705,6 +728,7 @@ func (c *Client) RunJobFlow(request *RunJobFlowRequest) (response *RunJobFlowRes
     if request == nil {
         request = NewRunJobFlowRequest()
     }
+    
     response = NewRunJobFlowResponse()
     err = c.Send(request, response)
     return
@@ -715,6 +739,7 @@ func NewScaleOutInstanceRequest() (request *ScaleOutInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "ScaleOutInstance")
+    
     
     return
 }
@@ -780,6 +805,7 @@ func (c *Client) ScaleOutInstance(request *ScaleOutInstanceRequest) (response *S
     if request == nil {
         request = NewScaleOutInstanceRequest()
     }
+    
     response = NewScaleOutInstanceResponse()
     err = c.Send(request, response)
     return
@@ -790,6 +816,7 @@ func NewSyncPodStateRequest() (request *SyncPodStateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "SyncPodState")
+    
     
     return
 }
@@ -875,6 +902,7 @@ func (c *Client) SyncPodState(request *SyncPodStateRequest) (response *SyncPodSt
     if request == nil {
         request = NewSyncPodStateRequest()
     }
+    
     response = NewSyncPodStateResponse()
     err = c.Send(request, response)
     return
@@ -885,6 +913,7 @@ func NewTerminateInstanceRequest() (request *TerminateInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "TerminateInstance")
+    
     
     return
 }
@@ -914,6 +943,7 @@ func (c *Client) TerminateInstance(request *TerminateInstanceRequest) (response 
     if request == nil {
         request = NewTerminateInstanceRequest()
     }
+    
     response = NewTerminateInstanceResponse()
     err = c.Send(request, response)
     return
@@ -924,6 +954,7 @@ func NewTerminateTasksRequest() (request *TerminateTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("emr", APIVersion, "TerminateTasks")
+    
     
     return
 }
@@ -971,6 +1002,7 @@ func (c *Client) TerminateTasks(request *TerminateTasksRequest) (response *Termi
     if request == nil {
         request = NewTerminateTasksRequest()
     }
+    
     response = NewTerminateTasksResponse()
     err = c.Send(request, response)
     return

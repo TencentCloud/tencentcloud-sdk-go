@@ -49,6 +49,7 @@ func NewDescribeAuthInfoRequest() (request *DescribeAuthInfoRequest) {
     }
     request.Init().WithApiInfo("ame", APIVersion, "DescribeAuthInfo")
     
+    
     return
 }
 
@@ -78,6 +79,7 @@ func (c *Client) DescribeAuthInfo(request *DescribeAuthInfoRequest) (response *D
     if request == nil {
         request = NewDescribeAuthInfoRequest()
     }
+    
     response = NewDescribeAuthInfoResponse()
     err = c.Send(request, response)
     return
@@ -88,6 +90,7 @@ func NewDescribeCloudMusicRequest() (request *DescribeCloudMusicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "DescribeCloudMusic")
+    
     
     return
 }
@@ -113,6 +116,7 @@ func (c *Client) DescribeCloudMusic(request *DescribeCloudMusicRequest) (respons
     if request == nil {
         request = NewDescribeCloudMusicRequest()
     }
+    
     response = NewDescribeCloudMusicResponse()
     err = c.Send(request, response)
     return
@@ -123,6 +127,7 @@ func NewDescribeCloudMusicPurchasedRequest() (request *DescribeCloudMusicPurchas
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "DescribeCloudMusicPurchased")
+    
     
     return
 }
@@ -158,6 +163,7 @@ func (c *Client) DescribeCloudMusicPurchased(request *DescribeCloudMusicPurchase
     if request == nil {
         request = NewDescribeCloudMusicPurchasedRequest()
     }
+    
     response = NewDescribeCloudMusicPurchasedResponse()
     err = c.Send(request, response)
     return
@@ -168,6 +174,7 @@ func NewDescribeItemByIdRequest() (request *DescribeItemByIdRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "DescribeItemById")
+    
     
     return
 }
@@ -190,6 +197,7 @@ func (c *Client) DescribeItemById(request *DescribeItemByIdRequest) (response *D
     if request == nil {
         request = NewDescribeItemByIdRequest()
     }
+    
     response = NewDescribeItemByIdResponse()
     err = c.Send(request, response)
     return
@@ -200,6 +208,7 @@ func NewDescribeItemsRequest() (request *DescribeItemsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "DescribeItems")
+    
     
     return
 }
@@ -225,6 +234,7 @@ func (c *Client) DescribeItems(request *DescribeItemsRequest) (response *Describ
     if request == nil {
         request = NewDescribeItemsRequest()
     }
+    
     response = NewDescribeItemsResponse()
     err = c.Send(request, response)
     return
@@ -235,6 +245,7 @@ func NewDescribeKTVMusicDetailRequest() (request *DescribeKTVMusicDetailRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "DescribeKTVMusicDetail")
+    
     
     return
 }
@@ -258,6 +269,7 @@ func (c *Client) DescribeKTVMusicDetail(request *DescribeKTVMusicDetailRequest) 
     if request == nil {
         request = NewDescribeKTVMusicDetailRequest()
     }
+    
     response = NewDescribeKTVMusicDetailResponse()
     err = c.Send(request, response)
     return
@@ -268,6 +280,7 @@ func NewDescribeKTVPlaylistDetailRequest() (request *DescribeKTVPlaylistDetailRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "DescribeKTVPlaylistDetail")
+    
     
     return
 }
@@ -296,6 +309,7 @@ func (c *Client) DescribeKTVPlaylistDetail(request *DescribeKTVPlaylistDetailReq
     if request == nil {
         request = NewDescribeKTVPlaylistDetailRequest()
     }
+    
     response = NewDescribeKTVPlaylistDetailResponse()
     err = c.Send(request, response)
     return
@@ -306,6 +320,7 @@ func NewDescribeKTVPlaylistsRequest() (request *DescribeKTVPlaylistsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "DescribeKTVPlaylists")
+    
     
     return
 }
@@ -335,6 +350,7 @@ func (c *Client) DescribeKTVPlaylists(request *DescribeKTVPlaylistsRequest) (res
     if request == nil {
         request = NewDescribeKTVPlaylistsRequest()
     }
+    
     response = NewDescribeKTVPlaylistsResponse()
     err = c.Send(request, response)
     return
@@ -345,6 +361,7 @@ func NewDescribeLyricRequest() (request *DescribeLyricRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "DescribeLyric")
+    
     
     return
 }
@@ -367,6 +384,7 @@ func (c *Client) DescribeLyric(request *DescribeLyricRequest) (response *Describ
     if request == nil {
         request = NewDescribeLyricRequest()
     }
+    
     response = NewDescribeLyricResponse()
     err = c.Send(request, response)
     return
@@ -377,6 +395,7 @@ func NewDescribeMusicRequest() (request *DescribeMusicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "DescribeMusic")
+    
     
     return
 }
@@ -402,6 +421,7 @@ func (c *Client) DescribeMusic(request *DescribeMusicRequest) (response *Describ
     if request == nil {
         request = NewDescribeMusicRequest()
     }
+    
     response = NewDescribeMusicResponse()
     err = c.Send(request, response)
     return
@@ -412,6 +432,7 @@ func NewDescribeMusicSaleStatusRequest() (request *DescribeMusicSaleStatusReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "DescribeMusicSaleStatus")
+    
     
     return
 }
@@ -439,6 +460,7 @@ func (c *Client) DescribeMusicSaleStatus(request *DescribeMusicSaleStatusRequest
     if request == nil {
         request = NewDescribeMusicSaleStatusRequest()
     }
+    
     response = NewDescribeMusicSaleStatusResponse()
     err = c.Send(request, response)
     return
@@ -449,6 +471,7 @@ func NewDescribePackageItemsRequest() (request *DescribePackageItemsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "DescribePackageItems")
+    
     
     return
 }
@@ -475,6 +498,7 @@ func (c *Client) DescribePackageItems(request *DescribePackageItemsRequest) (res
     if request == nil {
         request = NewDescribePackageItemsRequest()
     }
+    
     response = NewDescribePackageItemsResponse()
     err = c.Send(request, response)
     return
@@ -485,6 +509,7 @@ func NewDescribePackagesRequest() (request *DescribePackagesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "DescribePackages")
+    
     
     return
 }
@@ -511,6 +536,7 @@ func (c *Client) DescribePackages(request *DescribePackagesRequest) (response *D
     if request == nil {
         request = NewDescribePackagesRequest()
     }
+    
     response = NewDescribePackagesResponse()
     err = c.Send(request, response)
     return
@@ -521,6 +547,7 @@ func NewDescribePkgOfflineMusicRequest() (request *DescribePkgOfflineMusicReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "DescribePkgOfflineMusic")
+    
     
     return
 }
@@ -550,6 +577,7 @@ func (c *Client) DescribePkgOfflineMusic(request *DescribePkgOfflineMusicRequest
     if request == nil {
         request = NewDescribePkgOfflineMusicRequest()
     }
+    
     response = NewDescribePkgOfflineMusicResponse()
     err = c.Send(request, response)
     return
@@ -560,6 +588,7 @@ func NewDescribeStationsRequest() (request *DescribeStationsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "DescribeStations")
+    
     
     return
 }
@@ -585,6 +614,7 @@ func (c *Client) DescribeStations(request *DescribeStationsRequest) (response *D
     if request == nil {
         request = NewDescribeStationsRequest()
     }
+    
     response = NewDescribeStationsResponse()
     err = c.Send(request, response)
     return
@@ -595,6 +625,7 @@ func NewModifyMusicOnShelvesRequest() (request *ModifyMusicOnShelvesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "ModifyMusicOnShelves")
+    
     
     return
 }
@@ -624,6 +655,7 @@ func (c *Client) ModifyMusicOnShelves(request *ModifyMusicOnShelvesRequest) (res
     if request == nil {
         request = NewModifyMusicOnShelvesRequest()
     }
+    
     response = NewModifyMusicOnShelvesResponse()
     err = c.Send(request, response)
     return
@@ -634,6 +666,7 @@ func NewPutMusicOnTheShelvesRequest() (request *PutMusicOnTheShelvesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "PutMusicOnTheShelves")
+    
     
     return
 }
@@ -663,6 +696,7 @@ func (c *Client) PutMusicOnTheShelves(request *PutMusicOnTheShelvesRequest) (res
     if request == nil {
         request = NewPutMusicOnTheShelvesRequest()
     }
+    
     response = NewPutMusicOnTheShelvesResponse()
     err = c.Send(request, response)
     return
@@ -673,6 +707,7 @@ func NewReportDataRequest() (request *ReportDataRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "ReportData")
+    
     
     return
 }
@@ -695,6 +730,7 @@ func (c *Client) ReportData(request *ReportDataRequest) (response *ReportDataRes
     if request == nil {
         request = NewReportDataRequest()
     }
+    
     response = NewReportDataResponse()
     err = c.Send(request, response)
     return
@@ -705,6 +741,7 @@ func NewSearchKTVMusicsRequest() (request *SearchKTVMusicsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "SearchKTVMusics")
+    
     
     return
 }
@@ -727,6 +764,7 @@ func (c *Client) SearchKTVMusics(request *SearchKTVMusicsRequest) (response *Sea
     if request == nil {
         request = NewSearchKTVMusicsRequest()
     }
+    
     response = NewSearchKTVMusicsResponse()
     err = c.Send(request, response)
     return
@@ -737,6 +775,7 @@ func NewTakeMusicOffShelvesRequest() (request *TakeMusicOffShelvesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ame", APIVersion, "TakeMusicOffShelves")
+    
     
     return
 }
@@ -766,6 +805,7 @@ func (c *Client) TakeMusicOffShelves(request *TakeMusicOffShelvesRequest) (respo
     if request == nil {
         request = NewTakeMusicOffShelvesRequest()
     }
+    
     response = NewTakeMusicOffShelvesResponse()
     err = c.Send(request, response)
     return

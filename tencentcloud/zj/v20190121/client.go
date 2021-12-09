@@ -49,6 +49,7 @@ func NewAddCrowdPackInfoRequest() (request *AddCrowdPackInfoRequest) {
     }
     request.Init().WithApiInfo("zj", APIVersion, "AddCrowdPackInfo")
     
+    
     return
 }
 
@@ -68,6 +69,7 @@ func (c *Client) AddCrowdPackInfo(request *AddCrowdPackInfoRequest) (response *A
     if request == nil {
         request = NewAddCrowdPackInfoRequest()
     }
+    
     response = NewAddCrowdPackInfoResponse()
     err = c.Send(request, response)
     return
@@ -78,6 +80,7 @@ func NewAddSmsSignRequest() (request *AddSmsSignRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("zj", APIVersion, "AddSmsSign")
+    
     
     return
 }
@@ -103,6 +106,7 @@ func (c *Client) AddSmsSign(request *AddSmsSignRequest) (response *AddSmsSignRes
     if request == nil {
         request = NewAddSmsSignRequest()
     }
+    
     response = NewAddSmsSignResponse()
     err = c.Send(request, response)
     return
@@ -113,6 +117,7 @@ func NewAddSmsTemplateRequest() (request *AddSmsTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("zj", APIVersion, "AddSmsTemplate")
+    
     
     return
 }
@@ -139,6 +144,7 @@ func (c *Client) AddSmsTemplate(request *AddSmsTemplateRequest) (response *AddSm
     if request == nil {
         request = NewAddSmsTemplateRequest()
     }
+    
     response = NewAddSmsTemplateResponse()
     err = c.Send(request, response)
     return
@@ -149,6 +155,7 @@ func NewCancelCampaignRequest() (request *CancelCampaignRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("zj", APIVersion, "CancelCampaign")
+    
     
     return
 }
@@ -174,6 +181,7 @@ func (c *Client) CancelCampaign(request *CancelCampaignRequest) (response *Cance
     if request == nil {
         request = NewCancelCampaignRequest()
     }
+    
     response = NewCancelCampaignResponse()
     err = c.Send(request, response)
     return
@@ -184,6 +192,7 @@ func NewCreateCampaignRequest() (request *CreateCampaignRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("zj", APIVersion, "CreateCampaign")
+    
     
     return
 }
@@ -210,6 +219,7 @@ func (c *Client) CreateCampaign(request *CreateCampaignRequest) (response *Creat
     if request == nil {
         request = NewCreateCampaignRequest()
     }
+    
     response = NewCreateCampaignResponse()
     err = c.Send(request, response)
     return
@@ -220,6 +230,7 @@ func NewCreateMmsInstanceRequest() (request *CreateMmsInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("zj", APIVersion, "CreateMmsInstance")
+    
     
     return
 }
@@ -245,6 +256,7 @@ func (c *Client) CreateMmsInstance(request *CreateMmsInstanceRequest) (response 
     if request == nil {
         request = NewCreateMmsInstanceRequest()
     }
+    
     response = NewCreateMmsInstanceResponse()
     err = c.Send(request, response)
     return
@@ -255,6 +267,7 @@ func NewDelCrowdPackRequest() (request *DelCrowdPackRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("zj", APIVersion, "DelCrowdPack")
+    
     
     return
 }
@@ -279,6 +292,7 @@ func (c *Client) DelCrowdPack(request *DelCrowdPackRequest) (response *DelCrowdP
     if request == nil {
         request = NewDelCrowdPackRequest()
     }
+    
     response = NewDelCrowdPackResponse()
     err = c.Send(request, response)
     return
@@ -289,6 +303,7 @@ func NewDelTemplateRequest() (request *DelTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("zj", APIVersion, "DelTemplate")
+    
     
     return
 }
@@ -312,6 +327,7 @@ func (c *Client) DelTemplate(request *DelTemplateRequest) (response *DelTemplate
     if request == nil {
         request = NewDelTemplateRequest()
     }
+    
     response = NewDelTemplateResponse()
     err = c.Send(request, response)
     return
@@ -322,6 +338,7 @@ func NewDeleteMmsInstanceRequest() (request *DeleteMmsInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("zj", APIVersion, "DeleteMmsInstance")
+    
     
     return
 }
@@ -347,6 +364,7 @@ func (c *Client) DeleteMmsInstance(request *DeleteMmsInstanceRequest) (response 
     if request == nil {
         request = NewDeleteMmsInstanceRequest()
     }
+    
     response = NewDeleteMmsInstanceResponse()
     err = c.Send(request, response)
     return
@@ -357,6 +375,7 @@ func NewDescribeMmsInstanceInfoRequest() (request *DescribeMmsInstanceInfoReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("zj", APIVersion, "DescribeMmsInstanceInfo")
+    
     
     return
 }
@@ -381,6 +400,7 @@ func (c *Client) DescribeMmsInstanceInfo(request *DescribeMmsInstanceInfoRequest
     if request == nil {
         request = NewDescribeMmsInstanceInfoRequest()
     }
+    
     response = NewDescribeMmsInstanceInfoResponse()
     err = c.Send(request, response)
     return
@@ -391,6 +411,7 @@ func NewDescribeMmsInstanceListRequest() (request *DescribeMmsInstanceListReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("zj", APIVersion, "DescribeMmsInstanceList")
+    
     
     return
 }
@@ -415,6 +436,7 @@ func (c *Client) DescribeMmsInstanceList(request *DescribeMmsInstanceListRequest
     if request == nil {
         request = NewDescribeMmsInstanceListRequest()
     }
+    
     response = NewDescribeMmsInstanceListResponse()
     err = c.Send(request, response)
     return
@@ -425,6 +447,7 @@ func NewDescribeSmsCampaignStatisticsRequest() (request *DescribeSmsCampaignStat
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("zj", APIVersion, "DescribeSmsCampaignStatistics")
+    
     
     return
 }
@@ -450,6 +473,7 @@ func (c *Client) DescribeSmsCampaignStatistics(request *DescribeSmsCampaignStati
     if request == nil {
         request = NewDescribeSmsCampaignStatisticsRequest()
     }
+    
     response = NewDescribeSmsCampaignStatisticsResponse()
     err = c.Send(request, response)
     return
@@ -460,6 +484,7 @@ func NewDescribeSmsSignListRequest() (request *DescribeSmsSignListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("zj", APIVersion, "DescribeSmsSignList")
+    
     
     return
 }
@@ -485,6 +510,7 @@ func (c *Client) DescribeSmsSignList(request *DescribeSmsSignListRequest) (respo
     if request == nil {
         request = NewDescribeSmsSignListRequest()
     }
+    
     response = NewDescribeSmsSignListResponse()
     err = c.Send(request, response)
     return
@@ -495,6 +521,7 @@ func NewDescribeSmsTemplateListRequest() (request *DescribeSmsTemplateListReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("zj", APIVersion, "DescribeSmsTemplateList")
+    
     
     return
 }
@@ -520,6 +547,7 @@ func (c *Client) DescribeSmsTemplateList(request *DescribeSmsTemplateListRequest
     if request == nil {
         request = NewDescribeSmsTemplateListRequest()
     }
+    
     response = NewDescribeSmsTemplateListResponse()
     err = c.Send(request, response)
     return
@@ -530,6 +558,7 @@ func NewGetCrowdPackListRequest() (request *GetCrowdPackListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("zj", APIVersion, "GetCrowdPackList")
+    
     
     return
 }
@@ -554,6 +583,7 @@ func (c *Client) GetCrowdPackList(request *GetCrowdPackListRequest) (response *G
     if request == nil {
         request = NewGetCrowdPackListRequest()
     }
+    
     response = NewGetCrowdPackListResponse()
     err = c.Send(request, response)
     return
@@ -564,6 +594,7 @@ func NewGetCrowdUploadInfoRequest() (request *GetCrowdUploadInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("zj", APIVersion, "GetCrowdUploadInfo")
+    
     
     return
 }
@@ -588,6 +619,7 @@ func (c *Client) GetCrowdUploadInfo(request *GetCrowdUploadInfoRequest) (respons
     if request == nil {
         request = NewGetCrowdUploadInfoRequest()
     }
+    
     response = NewGetCrowdUploadInfoResponse()
     err = c.Send(request, response)
     return
@@ -598,6 +630,7 @@ func NewGetSmsAmountInfoRequest() (request *GetSmsAmountInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("zj", APIVersion, "GetSmsAmountInfo")
+    
     
     return
 }
@@ -622,6 +655,7 @@ func (c *Client) GetSmsAmountInfo(request *GetSmsAmountInfoRequest) (response *G
     if request == nil {
         request = NewGetSmsAmountInfoRequest()
     }
+    
     response = NewGetSmsAmountInfoResponse()
     err = c.Send(request, response)
     return
@@ -632,6 +666,7 @@ func NewGetSmsCampaignStatusRequest() (request *GetSmsCampaignStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("zj", APIVersion, "GetSmsCampaignStatus")
+    
     
     return
 }
@@ -656,6 +691,7 @@ func (c *Client) GetSmsCampaignStatus(request *GetSmsCampaignStatusRequest) (res
     if request == nil {
         request = NewGetSmsCampaignStatusRequest()
     }
+    
     response = NewGetSmsCampaignStatusResponse()
     err = c.Send(request, response)
     return
@@ -666,6 +702,7 @@ func NewModifySmsTemplateRequest() (request *ModifySmsTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("zj", APIVersion, "ModifySmsTemplate")
+    
     
     return
 }
@@ -705,6 +742,7 @@ func (c *Client) ModifySmsTemplate(request *ModifySmsTemplateRequest) (response 
     if request == nil {
         request = NewModifySmsTemplateRequest()
     }
+    
     response = NewModifySmsTemplateResponse()
     err = c.Send(request, response)
     return
@@ -715,6 +753,7 @@ func NewPushMmsContentRequest() (request *PushMmsContentRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("zj", APIVersion, "PushMmsContent")
+    
     
     return
 }
@@ -740,6 +779,7 @@ func (c *Client) PushMmsContent(request *PushMmsContentRequest) (response *PushM
     if request == nil {
         request = NewPushMmsContentRequest()
     }
+    
     response = NewPushMmsContentResponse()
     err = c.Send(request, response)
     return
@@ -750,6 +790,7 @@ func NewSendSmsRequest() (request *SendSmsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("zj", APIVersion, "SendSms")
+    
     
     return
 }
@@ -775,6 +816,7 @@ func (c *Client) SendSms(request *SendSmsRequest) (response *SendSmsResponse, er
     if request == nil {
         request = NewSendSmsRequest()
     }
+    
     response = NewSendSmsResponse()
     err = c.Send(request, response)
     return

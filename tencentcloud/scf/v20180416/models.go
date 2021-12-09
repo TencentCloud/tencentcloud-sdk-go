@@ -679,7 +679,7 @@ type DeleteFunctionRequest struct {
 	// 函数所属命名空间
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
-	// 函数版本
+	// 函数版本，如果删除版本的话传入版本号，不传入改字段删除函数下的所有版本
 	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
 }
 
@@ -1144,6 +1144,10 @@ type FunctionVersion struct {
 	// 更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModTime *string `json:"ModTime,omitempty" name:"ModTime"`
+
+	// 版本状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
 type GetAccountRequest struct {
@@ -3333,7 +3337,7 @@ type TerminateAsyncEventRequest struct {
 	// 命名空间
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
-	// 优雅关停
+	// 该参数已下线
 	GraceShutdown *bool `json:"GraceShutdown,omitempty" name:"GraceShutdown"`
 }
 

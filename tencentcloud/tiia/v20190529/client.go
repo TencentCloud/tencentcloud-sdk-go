@@ -49,6 +49,7 @@ func NewAssessQualityRequest() (request *AssessQualityRequest) {
     }
     request.Init().WithApiInfo("tiia", APIVersion, "AssessQuality")
     
+    
     return
 }
 
@@ -84,6 +85,7 @@ func (c *Client) AssessQuality(request *AssessQualityRequest) (response *AssessQ
     if request == nil {
         request = NewAssessQualityRequest()
     }
+    
     response = NewAssessQualityResponse()
     err = c.Send(request, response)
     return
@@ -94,6 +96,7 @@ func NewCreateGroupRequest() (request *CreateGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "CreateGroup")
+    
     
     return
 }
@@ -128,6 +131,7 @@ func (c *Client) CreateGroup(request *CreateGroupRequest) (response *CreateGroup
     if request == nil {
         request = NewCreateGroupRequest()
     }
+    
     response = NewCreateGroupResponse()
     err = c.Send(request, response)
     return
@@ -138,6 +142,7 @@ func NewCreateImageRequest() (request *CreateImageRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "CreateImage")
+    
     
     return
 }
@@ -181,6 +186,7 @@ func (c *Client) CreateImage(request *CreateImageRequest) (response *CreateImage
     if request == nil {
         request = NewCreateImageRequest()
     }
+    
     response = NewCreateImageResponse()
     err = c.Send(request, response)
     return
@@ -191,6 +197,7 @@ func NewCropImageRequest() (request *CropImageRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "CropImage")
+    
     
     return
 }
@@ -230,6 +237,7 @@ func (c *Client) CropImage(request *CropImageRequest) (response *CropImageRespon
     if request == nil {
         request = NewCropImageRequest()
     }
+    
     response = NewCropImageResponse()
     err = c.Send(request, response)
     return
@@ -240,6 +248,7 @@ func NewDeleteImagesRequest() (request *DeleteImagesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "DeleteImages")
+    
     
     return
 }
@@ -271,6 +280,7 @@ func (c *Client) DeleteImages(request *DeleteImagesRequest) (response *DeleteIma
     if request == nil {
         request = NewDeleteImagesRequest()
     }
+    
     response = NewDeleteImagesResponse()
     err = c.Send(request, response)
     return
@@ -281,6 +291,7 @@ func NewDescribeGroupsRequest() (request *DescribeGroupsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "DescribeGroups")
+    
     
     return
 }
@@ -307,6 +318,7 @@ func (c *Client) DescribeGroups(request *DescribeGroupsRequest) (response *Descr
     if request == nil {
         request = NewDescribeGroupsRequest()
     }
+    
     response = NewDescribeGroupsResponse()
     err = c.Send(request, response)
     return
@@ -317,6 +329,7 @@ func NewDescribeImagesRequest() (request *DescribeImagesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "DescribeImages")
+    
     
     return
 }
@@ -347,6 +360,7 @@ func (c *Client) DescribeImages(request *DescribeImagesRequest) (response *Descr
     if request == nil {
         request = NewDescribeImagesRequest()
     }
+    
     response = NewDescribeImagesResponse()
     err = c.Send(request, response)
     return
@@ -357,6 +371,7 @@ func NewDetectCelebrityRequest() (request *DetectCelebrityRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "DetectCelebrity")
+    
     
     return
 }
@@ -398,6 +413,7 @@ func (c *Client) DetectCelebrity(request *DetectCelebrityRequest) (response *Det
     if request == nil {
         request = NewDetectCelebrityRequest()
     }
+    
     response = NewDetectCelebrityResponse()
     err = c.Send(request, response)
     return
@@ -408,6 +424,7 @@ func NewDetectDisgustRequest() (request *DetectDisgustRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "DetectDisgust")
+    
     
     return
 }
@@ -447,6 +464,7 @@ func (c *Client) DetectDisgust(request *DetectDisgustRequest) (response *DetectD
     if request == nil {
         request = NewDetectDisgustRequest()
     }
+    
     response = NewDetectDisgustResponse()
     err = c.Send(request, response)
     return
@@ -457,6 +475,7 @@ func NewDetectLabelRequest() (request *DetectLabelRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "DetectLabel")
+    
     
     return
 }
@@ -529,6 +548,7 @@ func (c *Client) DetectLabel(request *DetectLabelRequest) (response *DetectLabel
     if request == nil {
         request = NewDetectLabelRequest()
     }
+    
     response = NewDetectLabelResponse()
     err = c.Send(request, response)
     return
@@ -539,6 +559,7 @@ func NewDetectLabelBetaRequest() (request *DetectLabelBetaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "DetectLabelBeta")
+    
     
     return
 }
@@ -577,6 +598,7 @@ func (c *Client) DetectLabelBeta(request *DetectLabelBetaRequest) (response *Det
     if request == nil {
         request = NewDetectLabelBetaRequest()
     }
+    
     response = NewDetectLabelBetaResponse()
     err = c.Send(request, response)
     return
@@ -587,6 +609,7 @@ func NewDetectMisbehaviorRequest() (request *DetectMisbehaviorRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "DetectMisbehavior")
+    
     
     return
 }
@@ -621,6 +644,7 @@ func (c *Client) DetectMisbehavior(request *DetectMisbehaviorRequest) (response 
     if request == nil {
         request = NewDetectMisbehaviorRequest()
     }
+    
     response = NewDetectMisbehaviorResponse()
     err = c.Send(request, response)
     return
@@ -631,6 +655,7 @@ func NewDetectProductRequest() (request *DetectProductRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "DetectProduct")
+    
     
     return
 }
@@ -667,6 +692,7 @@ func (c *Client) DetectProduct(request *DetectProductRequest) (response *DetectP
     if request == nil {
         request = NewDetectProductRequest()
     }
+    
     response = NewDetectProductResponse()
     err = c.Send(request, response)
     return
@@ -677,6 +703,7 @@ func NewDetectProductBetaRequest() (request *DetectProductBetaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "DetectProductBeta")
+    
     
     return
 }
@@ -724,6 +751,7 @@ func (c *Client) DetectProductBeta(request *DetectProductBetaRequest) (response 
     if request == nil {
         request = NewDetectProductBetaRequest()
     }
+    
     response = NewDetectProductBetaResponse()
     err = c.Send(request, response)
     return
@@ -734,6 +762,7 @@ func NewEnhanceImageRequest() (request *EnhanceImageRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "EnhanceImage")
+    
     
     return
 }
@@ -774,6 +803,7 @@ func (c *Client) EnhanceImage(request *EnhanceImageRequest) (response *EnhanceIm
     if request == nil {
         request = NewEnhanceImageRequest()
     }
+    
     response = NewEnhanceImageResponse()
     err = c.Send(request, response)
     return
@@ -784,6 +814,7 @@ func NewRecognizeCarRequest() (request *RecognizeCarRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "RecognizeCar")
+    
     
     return
 }
@@ -821,6 +852,7 @@ func (c *Client) RecognizeCar(request *RecognizeCarRequest) (response *Recognize
     if request == nil {
         request = NewRecognizeCarRequest()
     }
+    
     response = NewRecognizeCarResponse()
     err = c.Send(request, response)
     return
@@ -831,6 +863,7 @@ func NewSearchImageRequest() (request *SearchImageRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiia", APIVersion, "SearchImage")
+    
     
     return
 }
@@ -869,6 +902,7 @@ func (c *Client) SearchImage(request *SearchImageRequest) (response *SearchImage
     if request == nil {
         request = NewSearchImageRequest()
     }
+    
     response = NewSearchImageResponse()
     err = c.Send(request, response)
     return

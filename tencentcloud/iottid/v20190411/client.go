@@ -49,6 +49,7 @@ func NewAuthTestTidRequest() (request *AuthTestTidRequest) {
     }
     request.Init().WithApiInfo("iottid", APIVersion, "AuthTestTid")
     
+    
     return
 }
 
@@ -72,6 +73,7 @@ func (c *Client) AuthTestTid(request *AuthTestTidRequest) (response *AuthTestTid
     if request == nil {
         request = NewAuthTestTidRequest()
     }
+    
     response = NewAuthTestTidResponse()
     err = c.Send(request, response)
     return
@@ -82,6 +84,7 @@ func NewBurnTidNotifyRequest() (request *BurnTidNotifyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iottid", APIVersion, "BurnTidNotify")
+    
     
     return
 }
@@ -108,6 +111,7 @@ func (c *Client) BurnTidNotify(request *BurnTidNotifyRequest) (response *BurnTid
     if request == nil {
         request = NewBurnTidNotifyRequest()
     }
+    
     response = NewBurnTidNotifyResponse()
     err = c.Send(request, response)
     return
@@ -118,6 +122,7 @@ func NewDeliverTidNotifyRequest() (request *DeliverTidNotifyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iottid", APIVersion, "DeliverTidNotify")
+    
     
     return
 }
@@ -143,6 +148,7 @@ func (c *Client) DeliverTidNotify(request *DeliverTidNotifyRequest) (response *D
     if request == nil {
         request = NewDeliverTidNotifyRequest()
     }
+    
     response = NewDeliverTidNotifyResponse()
     err = c.Send(request, response)
     return
@@ -153,6 +159,7 @@ func NewDeliverTidsRequest() (request *DeliverTidsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iottid", APIVersion, "DeliverTids")
+    
     
     return
 }
@@ -178,6 +185,7 @@ func (c *Client) DeliverTids(request *DeliverTidsRequest) (response *DeliverTids
     if request == nil {
         request = NewDeliverTidsRequest()
     }
+    
     response = NewDeliverTidsResponse()
     err = c.Send(request, response)
     return
@@ -188,6 +196,7 @@ func NewDescribeAvailableLibCountRequest() (request *DescribeAvailableLibCountRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iottid", APIVersion, "DescribeAvailableLibCount")
+    
     
     return
 }
@@ -211,6 +220,7 @@ func (c *Client) DescribeAvailableLibCount(request *DescribeAvailableLibCountReq
     if request == nil {
         request = NewDescribeAvailableLibCountRequest()
     }
+    
     response = NewDescribeAvailableLibCountResponse()
     err = c.Send(request, response)
     return
@@ -221,6 +231,7 @@ func NewDescribePermissionRequest() (request *DescribePermissionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iottid", APIVersion, "DescribePermission")
+    
     
     return
 }
@@ -244,6 +255,7 @@ func (c *Client) DescribePermission(request *DescribePermissionRequest) (respons
     if request == nil {
         request = NewDescribePermissionRequest()
     }
+    
     response = NewDescribePermissionResponse()
     err = c.Send(request, response)
     return
@@ -254,6 +266,7 @@ func NewDownloadTidsRequest() (request *DownloadTidsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iottid", APIVersion, "DownloadTids")
+    
     
     return
 }
@@ -279,6 +292,7 @@ func (c *Client) DownloadTids(request *DownloadTidsRequest) (response *DownloadT
     if request == nil {
         request = NewDownloadTidsRequest()
     }
+    
     response = NewDownloadTidsResponse()
     err = c.Send(request, response)
     return
@@ -289,6 +303,7 @@ func NewUploadDeviceUniqueCodeRequest() (request *UploadDeviceUniqueCodeRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iottid", APIVersion, "UploadDeviceUniqueCode")
+    
     
     return
 }
@@ -315,6 +330,7 @@ func (c *Client) UploadDeviceUniqueCode(request *UploadDeviceUniqueCodeRequest) 
     if request == nil {
         request = NewUploadDeviceUniqueCodeRequest()
     }
+    
     response = NewUploadDeviceUniqueCodeResponse()
     err = c.Send(request, response)
     return
@@ -325,6 +341,7 @@ func NewVerifyChipBurnInfoRequest() (request *VerifyChipBurnInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iottid", APIVersion, "VerifyChipBurnInfo")
+    
     
     return
 }
@@ -349,6 +366,7 @@ func (c *Client) VerifyChipBurnInfo(request *VerifyChipBurnInfoRequest) (respons
     if request == nil {
         request = NewVerifyChipBurnInfoRequest()
     }
+    
     response = NewVerifyChipBurnInfoResponse()
     err = c.Send(request, response)
     return

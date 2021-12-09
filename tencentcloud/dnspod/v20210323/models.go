@@ -922,6 +922,59 @@ func (r *DescribeBatchTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDomainAliasListRequest struct {
+	*tchttp.BaseRequest
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 域名ID,域名ID，参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain
+	DomainId *int64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+func (r *DescribeDomainAliasListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDomainAliasListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDomainAliasListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDomainAliasListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 域名别名列表
+		DomainAliasList []*DomainAliasInfo `json:"DomainAliasList,omitempty" name:"DomainAliasList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDomainAliasListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDomainAliasListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDomainListRequest struct {
 	*tchttp.BaseRequest
 
@@ -1529,6 +1582,15 @@ func (r *DescribeUserDetailResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeUserDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DomainAliasInfo struct {
+
+	// 域名别名ID
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// 域名别名
+	DomainAlias *string `json:"DomainAlias,omitempty" name:"DomainAlias"`
 }
 
 type DomainCountInfo struct {

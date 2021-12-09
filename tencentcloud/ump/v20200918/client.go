@@ -49,6 +49,7 @@ func NewCreateCameraAlertsRequest() (request *CreateCameraAlertsRequest) {
     }
     request.Init().WithApiInfo("ump", APIVersion, "CreateCameraAlerts")
     
+    
     return
 }
 
@@ -83,6 +84,7 @@ func (c *Client) CreateCameraAlerts(request *CreateCameraAlertsRequest) (respons
     if request == nil {
         request = NewCreateCameraAlertsRequest()
     }
+    
     response = NewCreateCameraAlertsResponse()
     err = c.Send(request, response)
     return
@@ -93,6 +95,7 @@ func NewCreateCameraStateRequest() (request *CreateCameraStateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "CreateCameraState")
+    
     
     return
 }
@@ -126,6 +129,7 @@ func (c *Client) CreateCameraState(request *CreateCameraStateRequest) (response 
     if request == nil {
         request = NewCreateCameraStateRequest()
     }
+    
     response = NewCreateCameraStateResponse()
     err = c.Send(request, response)
     return
@@ -136,6 +140,7 @@ func NewCreateCaptureRequest() (request *CreateCaptureRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "CreateCapture")
+    
     
     return
 }
@@ -169,6 +174,7 @@ func (c *Client) CreateCapture(request *CreateCaptureRequest) (response *CreateC
     if request == nil {
         request = NewCreateCaptureRequest()
     }
+    
     response = NewCreateCaptureResponse()
     err = c.Send(request, response)
     return
@@ -179,6 +185,7 @@ func NewCreateMultiBizAlertRequest() (request *CreateMultiBizAlertRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "CreateMultiBizAlert")
+    
     
     return
 }
@@ -212,6 +219,7 @@ func (c *Client) CreateMultiBizAlert(request *CreateMultiBizAlertRequest) (respo
     if request == nil {
         request = NewCreateMultiBizAlertRequest()
     }
+    
     response = NewCreateMultiBizAlertResponse()
     err = c.Send(request, response)
     return
@@ -222,6 +230,7 @@ func NewCreateProgramStateRequest() (request *CreateProgramStateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "CreateProgramState")
+    
     
     return
 }
@@ -255,6 +264,7 @@ func (c *Client) CreateProgramState(request *CreateProgramStateRequest) (respons
     if request == nil {
         request = NewCreateProgramStateRequest()
     }
+    
     response = NewCreateProgramStateResponse()
     err = c.Send(request, response)
     return
@@ -265,6 +275,7 @@ func NewCreateServerStateRequest() (request *CreateServerStateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "CreateServerState")
+    
     
     return
 }
@@ -298,6 +309,7 @@ func (c *Client) CreateServerState(request *CreateServerStateRequest) (response 
     if request == nil {
         request = NewCreateServerStateRequest()
     }
+    
     response = NewCreateServerStateResponse()
     err = c.Send(request, response)
     return
@@ -308,6 +320,7 @@ func NewDeleteMultiBizAlertRequest() (request *DeleteMultiBizAlertRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "DeleteMultiBizAlert")
+    
     
     return
 }
@@ -341,6 +354,7 @@ func (c *Client) DeleteMultiBizAlert(request *DeleteMultiBizAlertRequest) (respo
     if request == nil {
         request = NewDeleteMultiBizAlertRequest()
     }
+    
     response = NewDeleteMultiBizAlertResponse()
     err = c.Send(request, response)
     return
@@ -351,6 +365,7 @@ func NewDeleteTaskRequest() (request *DeleteTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "DeleteTask")
+    
     
     return
 }
@@ -384,6 +399,7 @@ func (c *Client) DeleteTask(request *DeleteTaskRequest) (response *DeleteTaskRes
     if request == nil {
         request = NewDeleteTaskRequest()
     }
+    
     response = NewDeleteTaskResponse()
     err = c.Send(request, response)
     return
@@ -394,6 +410,7 @@ func NewDescribeCamerasRequest() (request *DescribeCamerasRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "DescribeCameras")
+    
     
     return
 }
@@ -427,6 +444,7 @@ func (c *Client) DescribeCameras(request *DescribeCamerasRequest) (response *Des
     if request == nil {
         request = NewDescribeCamerasRequest()
     }
+    
     response = NewDescribeCamerasResponse()
     err = c.Send(request, response)
     return
@@ -437,6 +455,7 @@ func NewDescribeConfigRequest() (request *DescribeConfigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "DescribeConfig")
+    
     
     return
 }
@@ -474,6 +493,7 @@ func (c *Client) DescribeConfig(request *DescribeConfigRequest) (response *Descr
     if request == nil {
         request = NewDescribeConfigRequest()
     }
+    
     response = NewDescribeConfigResponse()
     err = c.Send(request, response)
     return
@@ -484,6 +504,7 @@ func NewDescribeImageRequest() (request *DescribeImageRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "DescribeImage")
+    
     
     return
 }
@@ -517,6 +538,7 @@ func (c *Client) DescribeImage(request *DescribeImageRequest) (response *Describ
     if request == nil {
         request = NewDescribeImageRequest()
     }
+    
     response = NewDescribeImageResponse()
     err = c.Send(request, response)
     return
@@ -527,6 +549,7 @@ func NewDescribeMultiBizBaseImageRequest() (request *DescribeMultiBizBaseImageRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "DescribeMultiBizBaseImage")
+    
     
     return
 }
@@ -560,6 +583,7 @@ func (c *Client) DescribeMultiBizBaseImage(request *DescribeMultiBizBaseImageReq
     if request == nil {
         request = NewDescribeMultiBizBaseImageRequest()
     }
+    
     response = NewDescribeMultiBizBaseImageResponse()
     err = c.Send(request, response)
     return
@@ -570,6 +594,7 @@ func NewDescribeTasksRequest() (request *DescribeTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "DescribeTasks")
+    
     
     return
 }
@@ -603,6 +628,7 @@ func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *Describ
     if request == nil {
         request = NewDescribeTasksRequest()
     }
+    
     response = NewDescribeTasksResponse()
     err = c.Send(request, response)
     return
@@ -613,6 +639,7 @@ func NewDescribeZonesRequest() (request *DescribeZonesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "DescribeZones")
+    
     
     return
 }
@@ -646,6 +673,7 @@ func (c *Client) DescribeZones(request *DescribeZonesRequest) (response *Describ
     if request == nil {
         request = NewDescribeZonesRequest()
     }
+    
     response = NewDescribeZonesResponse()
     err = c.Send(request, response)
     return
@@ -656,6 +684,7 @@ func NewModifyMultiBizConfigRequest() (request *ModifyMultiBizConfigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "ModifyMultiBizConfig")
+    
     
     return
 }
@@ -689,6 +718,7 @@ func (c *Client) ModifyMultiBizConfig(request *ModifyMultiBizConfigRequest) (res
     if request == nil {
         request = NewModifyMultiBizConfigRequest()
     }
+    
     response = NewModifyMultiBizConfigResponse()
     err = c.Send(request, response)
     return
@@ -699,6 +729,7 @@ func NewReportServiceRegisterRequest() (request *ReportServiceRegisterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "ReportServiceRegister")
+    
     
     return
 }
@@ -732,6 +763,7 @@ func (c *Client) ReportServiceRegister(request *ReportServiceRegisterRequest) (r
     if request == nil {
         request = NewReportServiceRegisterRequest()
     }
+    
     response = NewReportServiceRegisterResponse()
     err = c.Send(request, response)
     return
@@ -742,6 +774,7 @@ func NewSearchImageRequest() (request *SearchImageRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ump", APIVersion, "SearchImage")
+    
     
     return
 }
@@ -775,6 +808,7 @@ func (c *Client) SearchImage(request *SearchImageRequest) (response *SearchImage
     if request == nil {
         request = NewSearchImageRequest()
     }
+    
     response = NewSearchImageResponse()
     err = c.Send(request, response)
     return

@@ -49,6 +49,7 @@ func NewBatchSendEmailRequest() (request *BatchSendEmailRequest) {
     }
     request.Init().WithApiInfo("ses", APIVersion, "BatchSendEmail")
     
+    
     return
 }
 
@@ -79,6 +80,7 @@ func (c *Client) BatchSendEmail(request *BatchSendEmailRequest) (response *Batch
     if request == nil {
         request = NewBatchSendEmailRequest()
     }
+    
     response = NewBatchSendEmailResponse()
     err = c.Send(request, response)
     return
@@ -89,6 +91,7 @@ func NewCreateEmailAddressRequest() (request *CreateEmailAddressRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ses", APIVersion, "CreateEmailAddress")
+    
     
     return
 }
@@ -119,6 +122,7 @@ func (c *Client) CreateEmailAddress(request *CreateEmailAddressRequest) (respons
     if request == nil {
         request = NewCreateEmailAddressRequest()
     }
+    
     response = NewCreateEmailAddressResponse()
     err = c.Send(request, response)
     return
@@ -129,6 +133,7 @@ func NewCreateEmailIdentityRequest() (request *CreateEmailIdentityRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ses", APIVersion, "CreateEmailIdentity")
+    
     
     return
 }
@@ -159,6 +164,7 @@ func (c *Client) CreateEmailIdentity(request *CreateEmailIdentityRequest) (respo
     if request == nil {
         request = NewCreateEmailIdentityRequest()
     }
+    
     response = NewCreateEmailIdentityResponse()
     err = c.Send(request, response)
     return
@@ -169,6 +175,7 @@ func NewCreateEmailTemplateRequest() (request *CreateEmailTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ses", APIVersion, "CreateEmailTemplate")
+    
     
     return
 }
@@ -201,6 +208,7 @@ func (c *Client) CreateEmailTemplate(request *CreateEmailTemplateRequest) (respo
     if request == nil {
         request = NewCreateEmailTemplateRequest()
     }
+    
     response = NewCreateEmailTemplateResponse()
     err = c.Send(request, response)
     return
@@ -211,6 +219,7 @@ func NewDeleteBlackListRequest() (request *DeleteBlackListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ses", APIVersion, "DeleteBlackList")
+    
     
     return
 }
@@ -234,6 +243,7 @@ func (c *Client) DeleteBlackList(request *DeleteBlackListRequest) (response *Del
     if request == nil {
         request = NewDeleteBlackListRequest()
     }
+    
     response = NewDeleteBlackListResponse()
     err = c.Send(request, response)
     return
@@ -244,6 +254,7 @@ func NewDeleteEmailAddressRequest() (request *DeleteEmailAddressRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ses", APIVersion, "DeleteEmailAddress")
+    
     
     return
 }
@@ -271,6 +282,7 @@ func (c *Client) DeleteEmailAddress(request *DeleteEmailAddressRequest) (respons
     if request == nil {
         request = NewDeleteEmailAddressRequest()
     }
+    
     response = NewDeleteEmailAddressResponse()
     err = c.Send(request, response)
     return
@@ -281,6 +293,7 @@ func NewDeleteEmailIdentityRequest() (request *DeleteEmailIdentityRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ses", APIVersion, "DeleteEmailIdentity")
+    
     
     return
 }
@@ -307,6 +320,7 @@ func (c *Client) DeleteEmailIdentity(request *DeleteEmailIdentityRequest) (respo
     if request == nil {
         request = NewDeleteEmailIdentityRequest()
     }
+    
     response = NewDeleteEmailIdentityResponse()
     err = c.Send(request, response)
     return
@@ -317,6 +331,7 @@ func NewDeleteEmailTemplateRequest() (request *DeleteEmailTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ses", APIVersion, "DeleteEmailTemplate")
+    
     
     return
 }
@@ -343,6 +358,7 @@ func (c *Client) DeleteEmailTemplate(request *DeleteEmailTemplateRequest) (respo
     if request == nil {
         request = NewDeleteEmailTemplateRequest()
     }
+    
     response = NewDeleteEmailTemplateResponse()
     err = c.Send(request, response)
     return
@@ -353,6 +369,7 @@ func NewGetEmailIdentityRequest() (request *GetEmailIdentityRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ses", APIVersion, "GetEmailIdentity")
+    
     
     return
 }
@@ -380,6 +397,7 @@ func (c *Client) GetEmailIdentity(request *GetEmailIdentityRequest) (response *G
     if request == nil {
         request = NewGetEmailIdentityRequest()
     }
+    
     response = NewGetEmailIdentityResponse()
     err = c.Send(request, response)
     return
@@ -390,6 +408,7 @@ func NewGetEmailTemplateRequest() (request *GetEmailTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ses", APIVersion, "GetEmailTemplate")
+    
     
     return
 }
@@ -417,6 +436,7 @@ func (c *Client) GetEmailTemplate(request *GetEmailTemplateRequest) (response *G
     if request == nil {
         request = NewGetEmailTemplateRequest()
     }
+    
     response = NewGetEmailTemplateResponse()
     err = c.Send(request, response)
     return
@@ -427,6 +447,7 @@ func NewGetSendEmailStatusRequest() (request *GetSendEmailStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ses", APIVersion, "GetSendEmailStatus")
+    
     
     return
 }
@@ -478,6 +499,7 @@ func (c *Client) GetSendEmailStatus(request *GetSendEmailStatusRequest) (respons
     if request == nil {
         request = NewGetSendEmailStatusRequest()
     }
+    
     response = NewGetSendEmailStatusResponse()
     err = c.Send(request, response)
     return
@@ -488,6 +510,7 @@ func NewGetStatisticsReportRequest() (request *GetStatisticsReportRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ses", APIVersion, "GetStatisticsReport")
+    
     
     return
 }
@@ -513,6 +536,7 @@ func (c *Client) GetStatisticsReport(request *GetStatisticsReportRequest) (respo
     if request == nil {
         request = NewGetStatisticsReportRequest()
     }
+    
     response = NewGetStatisticsReportResponse()
     err = c.Send(request, response)
     return
@@ -523,6 +547,7 @@ func NewListBlackEmailAddressRequest() (request *ListBlackEmailAddressRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ses", APIVersion, "ListBlackEmailAddress")
+    
     
     return
 }
@@ -548,6 +573,7 @@ func (c *Client) ListBlackEmailAddress(request *ListBlackEmailAddressRequest) (r
     if request == nil {
         request = NewListBlackEmailAddressRequest()
     }
+    
     response = NewListBlackEmailAddressResponse()
     err = c.Send(request, response)
     return
@@ -558,6 +584,7 @@ func NewListEmailAddressRequest() (request *ListEmailAddressRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ses", APIVersion, "ListEmailAddress")
+    
     
     return
 }
@@ -584,6 +611,7 @@ func (c *Client) ListEmailAddress(request *ListEmailAddressRequest) (response *L
     if request == nil {
         request = NewListEmailAddressRequest()
     }
+    
     response = NewListEmailAddressResponse()
     err = c.Send(request, response)
     return
@@ -594,6 +622,7 @@ func NewListEmailIdentitiesRequest() (request *ListEmailIdentitiesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ses", APIVersion, "ListEmailIdentities")
+    
     
     return
 }
@@ -620,6 +649,7 @@ func (c *Client) ListEmailIdentities(request *ListEmailIdentitiesRequest) (respo
     if request == nil {
         request = NewListEmailIdentitiesRequest()
     }
+    
     response = NewListEmailIdentitiesResponse()
     err = c.Send(request, response)
     return
@@ -630,6 +660,7 @@ func NewListEmailTemplatesRequest() (request *ListEmailTemplatesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ses", APIVersion, "ListEmailTemplates")
+    
     
     return
 }
@@ -656,6 +687,7 @@ func (c *Client) ListEmailTemplates(request *ListEmailTemplatesRequest) (respons
     if request == nil {
         request = NewListEmailTemplatesRequest()
     }
+    
     response = NewListEmailTemplatesResponse()
     err = c.Send(request, response)
     return
@@ -666,6 +698,7 @@ func NewSendEmailRequest() (request *SendEmailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ses", APIVersion, "SendEmail")
+    
     
     return
 }
@@ -722,6 +755,7 @@ func (c *Client) SendEmail(request *SendEmailRequest) (response *SendEmailRespon
     if request == nil {
         request = NewSendEmailRequest()
     }
+    
     response = NewSendEmailResponse()
     err = c.Send(request, response)
     return
@@ -732,6 +766,7 @@ func NewUpdateEmailIdentityRequest() (request *UpdateEmailIdentityRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ses", APIVersion, "UpdateEmailIdentity")
+    
     
     return
 }
@@ -760,6 +795,7 @@ func (c *Client) UpdateEmailIdentity(request *UpdateEmailIdentityRequest) (respo
     if request == nil {
         request = NewUpdateEmailIdentityRequest()
     }
+    
     response = NewUpdateEmailIdentityResponse()
     err = c.Send(request, response)
     return
@@ -770,6 +806,7 @@ func NewUpdateEmailTemplateRequest() (request *UpdateEmailTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ses", APIVersion, "UpdateEmailTemplate")
+    
     
     return
 }
@@ -800,6 +837,7 @@ func (c *Client) UpdateEmailTemplate(request *UpdateEmailTemplateRequest) (respo
     if request == nil {
         request = NewUpdateEmailTemplateRequest()
     }
+    
     response = NewUpdateEmailTemplateResponse()
     err = c.Send(request, response)
     return

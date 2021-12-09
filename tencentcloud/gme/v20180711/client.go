@@ -49,6 +49,7 @@ func NewCreateAgeDetectTaskRequest() (request *CreateAgeDetectTaskRequest) {
     }
     request.Init().WithApiInfo("gme", APIVersion, "CreateAgeDetectTask")
     
+    
     return
 }
 
@@ -90,6 +91,7 @@ func (c *Client) CreateAgeDetectTask(request *CreateAgeDetectTaskRequest) (respo
     if request == nil {
         request = NewCreateAgeDetectTaskRequest()
     }
+    
     response = NewCreateAgeDetectTaskResponse()
     err = c.Send(request, response)
     return
@@ -100,6 +102,7 @@ func NewCreateAppRequest() (request *CreateAppRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gme", APIVersion, "CreateApp")
+    
     
     return
 }
@@ -130,6 +133,7 @@ func (c *Client) CreateApp(request *CreateAppRequest) (response *CreateAppRespon
     if request == nil {
         request = NewCreateAppRequest()
     }
+    
     response = NewCreateAppResponse()
     err = c.Send(request, response)
     return
@@ -140,6 +144,7 @@ func NewDescribeAgeDetectTaskRequest() (request *DescribeAgeDetectTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gme", APIVersion, "DescribeAgeDetectTask")
+    
     
     return
 }
@@ -162,6 +167,7 @@ func (c *Client) DescribeAgeDetectTask(request *DescribeAgeDetectTaskRequest) (r
     if request == nil {
         request = NewDescribeAgeDetectTaskRequest()
     }
+    
     response = NewDescribeAgeDetectTaskResponse()
     err = c.Send(request, response)
     return
@@ -172,6 +178,7 @@ func NewDescribeAppStatisticsRequest() (request *DescribeAppStatisticsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gme", APIVersion, "DescribeAppStatistics")
+    
     
     return
 }
@@ -201,6 +208,7 @@ func (c *Client) DescribeAppStatistics(request *DescribeAppStatisticsRequest) (r
     if request == nil {
         request = NewDescribeAppStatisticsRequest()
     }
+    
     response = NewDescribeAppStatisticsResponse()
     err = c.Send(request, response)
     return
@@ -211,6 +219,7 @@ func NewDescribeApplicationDataRequest() (request *DescribeApplicationDataReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gme", APIVersion, "DescribeApplicationData")
+    
     
     return
 }
@@ -235,6 +244,7 @@ func (c *Client) DescribeApplicationData(request *DescribeApplicationDataRequest
     if request == nil {
         request = NewDescribeApplicationDataRequest()
     }
+    
     response = NewDescribeApplicationDataResponse()
     err = c.Send(request, response)
     return
@@ -245,6 +255,7 @@ func NewDescribeFilterResultRequest() (request *DescribeFilterResultRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gme", APIVersion, "DescribeFilterResult")
+    
     
     return
 }
@@ -269,6 +280,7 @@ func (c *Client) DescribeFilterResult(request *DescribeFilterResultRequest) (res
     if request == nil {
         request = NewDescribeFilterResultRequest()
     }
+    
     response = NewDescribeFilterResultResponse()
     err = c.Send(request, response)
     return
@@ -279,6 +291,7 @@ func NewDescribeFilterResultListRequest() (request *DescribeFilterResultListRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gme", APIVersion, "DescribeFilterResultList")
+    
     
     return
 }
@@ -303,6 +316,7 @@ func (c *Client) DescribeFilterResultList(request *DescribeFilterResultListReque
     if request == nil {
         request = NewDescribeFilterResultListRequest()
     }
+    
     response = NewDescribeFilterResultListResponse()
     err = c.Send(request, response)
     return
@@ -313,6 +327,7 @@ func NewDescribeRoomInfoRequest() (request *DescribeRoomInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gme", APIVersion, "DescribeRoomInfo")
+    
     
     return
 }
@@ -336,6 +351,7 @@ func (c *Client) DescribeRoomInfo(request *DescribeRoomInfoRequest) (response *D
     if request == nil {
         request = NewDescribeRoomInfoRequest()
     }
+    
     response = NewDescribeRoomInfoResponse()
     err = c.Send(request, response)
     return
@@ -346,6 +362,7 @@ func NewDescribeScanResultListRequest() (request *DescribeScanResultListRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gme", APIVersion, "DescribeScanResultList")
+    
     
     return
 }
@@ -377,6 +394,7 @@ func (c *Client) DescribeScanResultList(request *DescribeScanResultListRequest) 
     if request == nil {
         request = NewDescribeScanResultListRequest()
     }
+    
     response = NewDescribeScanResultListResponse()
     err = c.Send(request, response)
     return
@@ -387,6 +405,7 @@ func NewDescribeUserInAndOutTimeRequest() (request *DescribeUserInAndOutTimeRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gme", APIVersion, "DescribeUserInAndOutTime")
+    
     
     return
 }
@@ -425,6 +444,7 @@ func (c *Client) DescribeUserInAndOutTime(request *DescribeUserInAndOutTimeReque
     if request == nil {
         request = NewDescribeUserInAndOutTimeRequest()
     }
+    
     response = NewDescribeUserInAndOutTimeResponse()
     err = c.Send(request, response)
     return
@@ -435,6 +455,7 @@ func NewModifyAppStatusRequest() (request *ModifyAppStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gme", APIVersion, "ModifyAppStatus")
+    
     
     return
 }
@@ -464,6 +485,7 @@ func (c *Client) ModifyAppStatus(request *ModifyAppStatusRequest) (response *Mod
     if request == nil {
         request = NewModifyAppStatusRequest()
     }
+    
     response = NewModifyAppStatusResponse()
     err = c.Send(request, response)
     return
@@ -474,6 +496,7 @@ func NewModifyRoomInfoRequest() (request *ModifyRoomInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gme", APIVersion, "ModifyRoomInfo")
+    
     
     return
 }
@@ -497,6 +520,7 @@ func (c *Client) ModifyRoomInfo(request *ModifyRoomInfoRequest) (response *Modif
     if request == nil {
         request = NewModifyRoomInfoRequest()
     }
+    
     response = NewModifyRoomInfoResponse()
     err = c.Send(request, response)
     return
@@ -507,6 +531,7 @@ func NewScanVoiceRequest() (request *ScanVoiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gme", APIVersion, "ScanVoice")
+    
     
     return
 }
@@ -808,6 +833,7 @@ func (c *Client) ScanVoice(request *ScanVoiceRequest) (response *ScanVoiceRespon
     if request == nil {
         request = NewScanVoiceRequest()
     }
+    
     response = NewScanVoiceResponse()
     err = c.Send(request, response)
     return
@@ -818,6 +844,7 @@ func NewVoiceFilterRequest() (request *VoiceFilterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gme", APIVersion, "VoiceFilter")
+    
     
     return
 }
@@ -846,6 +873,7 @@ func (c *Client) VoiceFilter(request *VoiceFilterRequest) (response *VoiceFilter
     if request == nil {
         request = NewVoiceFilterRequest()
     }
+    
     response = NewVoiceFilterResponse()
     err = c.Send(request, response)
     return

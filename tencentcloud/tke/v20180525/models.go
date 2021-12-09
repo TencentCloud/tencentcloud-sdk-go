@@ -5173,6 +5173,10 @@ type EksCi struct {
 	// 自动为用户创建的EipId
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoCreatedEipId *string `json:"AutoCreatedEipId,omitempty" name:"AutoCreatedEipId"`
+
+	// 容器状态是否持久化
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PersistStatus *bool `json:"PersistStatus,omitempty" name:"PersistStatus"`
 }
 
 type EksCiRegionInfo struct {

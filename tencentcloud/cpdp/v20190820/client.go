@@ -49,6 +49,7 @@ func NewAddContractRequest() (request *AddContractRequest) {
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "AddContract")
     
+    
     return
 }
 
@@ -65,6 +66,7 @@ func (c *Client) AddContract(request *AddContractRequest) (response *AddContract
     if request == nil {
         request = NewAddContractRequest()
     }
+    
     response = NewAddContractResponse()
     err = c.Send(request, response)
     return
@@ -75,6 +77,7 @@ func NewAddMerchantRequest() (request *AddMerchantRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "AddMerchant")
+    
     
     return
 }
@@ -92,6 +95,7 @@ func (c *Client) AddMerchant(request *AddMerchantRequest) (response *AddMerchant
     if request == nil {
         request = NewAddMerchantRequest()
     }
+    
     response = NewAddMerchantResponse()
     err = c.Send(request, response)
     return
@@ -102,6 +106,7 @@ func NewAddShopRequest() (request *AddShopRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "AddShop")
+    
     
     return
 }
@@ -119,6 +124,7 @@ func (c *Client) AddShop(request *AddShopRequest) (response *AddShopResponse, er
     if request == nil {
         request = NewAddShopRequest()
     }
+    
     response = NewAddShopResponse()
     err = c.Send(request, response)
     return
@@ -129,6 +135,7 @@ func NewApplyApplicationMaterialRequest() (request *ApplyApplicationMaterialRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "ApplyApplicationMaterial")
+    
     
     return
 }
@@ -151,6 +158,7 @@ func (c *Client) ApplyApplicationMaterial(request *ApplyApplicationMaterialReque
     if request == nil {
         request = NewApplyApplicationMaterialRequest()
     }
+    
     response = NewApplyApplicationMaterialResponse()
     err = c.Send(request, response)
     return
@@ -161,6 +169,7 @@ func NewApplyOutwardOrderRequest() (request *ApplyOutwardOrderRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "ApplyOutwardOrder")
+    
     
     return
 }
@@ -183,6 +192,7 @@ func (c *Client) ApplyOutwardOrder(request *ApplyOutwardOrderRequest) (response 
     if request == nil {
         request = NewApplyOutwardOrderRequest()
     }
+    
     response = NewApplyOutwardOrderResponse()
     err = c.Send(request, response)
     return
@@ -193,6 +203,7 @@ func NewApplyPayerInfoRequest() (request *ApplyPayerInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "ApplyPayerInfo")
+    
     
     return
 }
@@ -215,6 +226,7 @@ func (c *Client) ApplyPayerInfo(request *ApplyPayerInfoRequest) (response *Apply
     if request == nil {
         request = NewApplyPayerInfoRequest()
     }
+    
     response = NewApplyPayerInfoResponse()
     err = c.Send(request, response)
     return
@@ -225,6 +237,7 @@ func NewApplyReWithdrawalRequest() (request *ApplyReWithdrawalRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "ApplyReWithdrawal")
+    
     
     return
 }
@@ -249,6 +262,7 @@ func (c *Client) ApplyReWithdrawal(request *ApplyReWithdrawalRequest) (response 
     if request == nil {
         request = NewApplyReWithdrawalRequest()
     }
+    
     response = NewApplyReWithdrawalResponse()
     err = c.Send(request, response)
     return
@@ -259,6 +273,7 @@ func NewApplyTradeRequest() (request *ApplyTradeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "ApplyTrade")
+    
     
     return
 }
@@ -281,6 +296,7 @@ func (c *Client) ApplyTrade(request *ApplyTradeRequest) (response *ApplyTradeRes
     if request == nil {
         request = NewApplyTradeRequest()
     }
+    
     response = NewApplyTradeResponse()
     err = c.Send(request, response)
     return
@@ -291,6 +307,7 @@ func NewApplyWithdrawalRequest() (request *ApplyWithdrawalRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "ApplyWithdrawal")
+    
     
     return
 }
@@ -315,6 +332,7 @@ func (c *Client) ApplyWithdrawal(request *ApplyWithdrawalRequest) (response *App
     if request == nil {
         request = NewApplyWithdrawalRequest()
     }
+    
     response = NewApplyWithdrawalResponse()
     err = c.Send(request, response)
     return
@@ -325,6 +343,7 @@ func NewBindAccountRequest() (request *BindAccountRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "BindAccount")
+    
     
     return
 }
@@ -349,6 +368,7 @@ func (c *Client) BindAccount(request *BindAccountRequest) (response *BindAccount
     if request == nil {
         request = NewBindAccountRequest()
     }
+    
     response = NewBindAccountResponse()
     err = c.Send(request, response)
     return
@@ -359,6 +379,7 @@ func NewBindAcctRequest() (request *BindAcctRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "BindAcct")
+    
     
     return
 }
@@ -383,6 +404,7 @@ func (c *Client) BindAcct(request *BindAcctRequest) (response *BindAcctResponse,
     if request == nil {
         request = NewBindAcctRequest()
     }
+    
     response = NewBindAcctResponse()
     err = c.Send(request, response)
     return
@@ -393,6 +415,7 @@ func NewBindRelateAccReUnionPayRequest() (request *BindRelateAccReUnionPayReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "BindRelateAccReUnionPay")
+    
     
     return
 }
@@ -421,6 +444,7 @@ func (c *Client) BindRelateAccReUnionPay(request *BindRelateAccReUnionPayRequest
     if request == nil {
         request = NewBindRelateAccReUnionPayRequest()
     }
+    
     response = NewBindRelateAccReUnionPayResponse()
     err = c.Send(request, response)
     return
@@ -431,6 +455,7 @@ func NewBindRelateAcctSmallAmountRequest() (request *BindRelateAcctSmallAmountRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "BindRelateAcctSmallAmount")
+    
     
     return
 }
@@ -465,6 +490,7 @@ func (c *Client) BindRelateAcctSmallAmount(request *BindRelateAcctSmallAmountReq
     if request == nil {
         request = NewBindRelateAcctSmallAmountRequest()
     }
+    
     response = NewBindRelateAcctSmallAmountResponse()
     err = c.Send(request, response)
     return
@@ -475,6 +501,7 @@ func NewBindRelateAcctUnionPayRequest() (request *BindRelateAcctUnionPayRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "BindRelateAcctUnionPay")
+    
     
     return
 }
@@ -511,6 +538,7 @@ func (c *Client) BindRelateAcctUnionPay(request *BindRelateAcctUnionPayRequest) 
     if request == nil {
         request = NewBindRelateAcctUnionPayRequest()
     }
+    
     response = NewBindRelateAcctUnionPayResponse()
     err = c.Send(request, response)
     return
@@ -521,6 +549,7 @@ func NewCheckAcctRequest() (request *CheckAcctRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "CheckAcct")
+    
     
     return
 }
@@ -545,6 +574,7 @@ func (c *Client) CheckAcct(request *CheckAcctRequest) (response *CheckAcctRespon
     if request == nil {
         request = NewCheckAcctRequest()
     }
+    
     response = NewCheckAcctResponse()
     err = c.Send(request, response)
     return
@@ -555,6 +585,7 @@ func NewCheckAmountRequest() (request *CheckAmountRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "CheckAmount")
+    
     
     return
 }
@@ -583,6 +614,7 @@ func (c *Client) CheckAmount(request *CheckAmountRequest) (response *CheckAmount
     if request == nil {
         request = NewCheckAmountRequest()
     }
+    
     response = NewCheckAmountResponse()
     err = c.Send(request, response)
     return
@@ -593,6 +625,7 @@ func NewCloseOrderRequest() (request *CloseOrderRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "CloseOrder")
+    
     
     return
 }
@@ -617,6 +650,7 @@ func (c *Client) CloseOrder(request *CloseOrderRequest) (response *CloseOrderRes
     if request == nil {
         request = NewCloseOrderRequest()
     }
+    
     response = NewCloseOrderResponse()
     err = c.Send(request, response)
     return
@@ -627,6 +661,7 @@ func NewConfirmOrderRequest() (request *ConfirmOrderRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "ConfirmOrder")
+    
     
     return
 }
@@ -649,6 +684,7 @@ func (c *Client) ConfirmOrder(request *ConfirmOrderRequest) (response *ConfirmOr
     if request == nil {
         request = NewConfirmOrderRequest()
     }
+    
     response = NewConfirmOrderResponse()
     err = c.Send(request, response)
     return
@@ -659,6 +695,7 @@ func NewContractOrderRequest() (request *ContractOrderRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "ContractOrder")
+    
     
     return
 }
@@ -698,6 +735,7 @@ func (c *Client) ContractOrder(request *ContractOrderRequest) (response *Contrac
     if request == nil {
         request = NewContractOrderRequest()
     }
+    
     response = NewContractOrderResponse()
     err = c.Send(request, response)
     return
@@ -708,6 +746,7 @@ func NewCreateAcctRequest() (request *CreateAcctRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateAcct")
+    
     
     return
 }
@@ -732,6 +771,7 @@ func (c *Client) CreateAcct(request *CreateAcctRequest) (response *CreateAcctRes
     if request == nil {
         request = NewCreateAcctRequest()
     }
+    
     response = NewCreateAcctResponse()
     err = c.Send(request, response)
     return
@@ -742,6 +782,7 @@ func NewCreateAgentTaxPaymentInfosRequest() (request *CreateAgentTaxPaymentInfos
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateAgentTaxPaymentInfos")
+    
     
     return
 }
@@ -767,6 +808,7 @@ func (c *Client) CreateAgentTaxPaymentInfos(request *CreateAgentTaxPaymentInfosR
     if request == nil {
         request = NewCreateAgentTaxPaymentInfosRequest()
     }
+    
     response = NewCreateAgentTaxPaymentInfosResponse()
     err = c.Send(request, response)
     return
@@ -777,6 +819,7 @@ func NewCreateAnchorRequest() (request *CreateAnchorRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateAnchor")
+    
     
     return
 }
@@ -800,6 +843,7 @@ func (c *Client) CreateAnchor(request *CreateAnchorRequest) (response *CreateAnc
     if request == nil {
         request = NewCreateAnchorRequest()
     }
+    
     response = NewCreateAnchorResponse()
     err = c.Send(request, response)
     return
@@ -810,6 +854,7 @@ func NewCreateBatchPaymentRequest() (request *CreateBatchPaymentRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateBatchPayment")
+    
     
     return
 }
@@ -833,6 +878,7 @@ func (c *Client) CreateBatchPayment(request *CreateBatchPaymentRequest) (respons
     if request == nil {
         request = NewCreateBatchPaymentRequest()
     }
+    
     response = NewCreateBatchPaymentResponse()
     err = c.Send(request, response)
     return
@@ -843,6 +889,7 @@ func NewCreateCustAcctIdRequest() (request *CreateCustAcctIdRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateCustAcctId")
+    
     
     return
 }
@@ -874,6 +921,7 @@ func (c *Client) CreateCustAcctId(request *CreateCustAcctIdRequest) (response *C
     if request == nil {
         request = NewCreateCustAcctIdRequest()
     }
+    
     response = NewCreateCustAcctIdResponse()
     err = c.Send(request, response)
     return
@@ -884,6 +932,7 @@ func NewCreateExternalAnchorRequest() (request *CreateExternalAnchorRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateExternalAnchor")
+    
     
     return
 }
@@ -913,6 +962,7 @@ func (c *Client) CreateExternalAnchor(request *CreateExternalAnchorRequest) (res
     if request == nil {
         request = NewCreateExternalAnchorRequest()
     }
+    
     response = NewCreateExternalAnchorResponse()
     err = c.Send(request, response)
     return
@@ -923,6 +973,7 @@ func NewCreateInvoiceRequest() (request *CreateInvoiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateInvoice")
+    
     
     return
 }
@@ -958,6 +1009,7 @@ func (c *Client) CreateInvoice(request *CreateInvoiceRequest) (response *CreateI
     if request == nil {
         request = NewCreateInvoiceRequest()
     }
+    
     response = NewCreateInvoiceResponse()
     err = c.Send(request, response)
     return
@@ -968,6 +1020,7 @@ func NewCreateInvoiceV2Request() (request *CreateInvoiceV2Request) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateInvoiceV2")
+    
     
     return
 }
@@ -988,6 +1041,7 @@ func (c *Client) CreateInvoiceV2(request *CreateInvoiceV2Request) (response *Cre
     if request == nil {
         request = NewCreateInvoiceV2Request()
     }
+    
     response = NewCreateInvoiceV2Response()
     err = c.Send(request, response)
     return
@@ -998,6 +1052,7 @@ func NewCreateMerchantRequest() (request *CreateMerchantRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateMerchant")
+    
     
     return
 }
@@ -1025,6 +1080,7 @@ func (c *Client) CreateMerchant(request *CreateMerchantRequest) (response *Creat
     if request == nil {
         request = NewCreateMerchantRequest()
     }
+    
     response = NewCreateMerchantResponse()
     err = c.Send(request, response)
     return
@@ -1035,6 +1091,7 @@ func NewCreateOrderRequest() (request *CreateOrderRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateOrder")
+    
     
     return
 }
@@ -1059,6 +1116,7 @@ func (c *Client) CreateOrder(request *CreateOrderRequest) (response *CreateOrder
     if request == nil {
         request = NewCreateOrderRequest()
     }
+    
     response = NewCreateOrderResponse()
     err = c.Send(request, response)
     return
@@ -1069,6 +1127,7 @@ func NewCreatePayMerchantRequest() (request *CreatePayMerchantRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "CreatePayMerchant")
+    
     
     return
 }
@@ -1095,6 +1154,7 @@ func (c *Client) CreatePayMerchant(request *CreatePayMerchantRequest) (response 
     if request == nil {
         request = NewCreatePayMerchantRequest()
     }
+    
     response = NewCreatePayMerchantResponse()
     err = c.Send(request, response)
     return
@@ -1105,6 +1165,7 @@ func NewCreateRedInvoiceRequest() (request *CreateRedInvoiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateRedInvoice")
+    
     
     return
 }
@@ -1139,6 +1200,7 @@ func (c *Client) CreateRedInvoice(request *CreateRedInvoiceRequest) (response *C
     if request == nil {
         request = NewCreateRedInvoiceRequest()
     }
+    
     response = NewCreateRedInvoiceResponse()
     err = c.Send(request, response)
     return
@@ -1149,6 +1211,7 @@ func NewCreateRedInvoiceV2Request() (request *CreateRedInvoiceV2Request) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateRedInvoiceV2")
+    
     
     return
 }
@@ -1183,6 +1246,7 @@ func (c *Client) CreateRedInvoiceV2(request *CreateRedInvoiceV2Request) (respons
     if request == nil {
         request = NewCreateRedInvoiceV2Request()
     }
+    
     response = NewCreateRedInvoiceV2Response()
     err = c.Send(request, response)
     return
@@ -1193,6 +1257,7 @@ func NewCreateSinglePayRequest() (request *CreateSinglePayRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateSinglePay")
+    
     
     return
 }
@@ -1219,6 +1284,7 @@ func (c *Client) CreateSinglePay(request *CreateSinglePayRequest) (response *Cre
     if request == nil {
         request = NewCreateSinglePayRequest()
     }
+    
     response = NewCreateSinglePayResponse()
     err = c.Send(request, response)
     return
@@ -1229,6 +1295,7 @@ func NewCreateSinglePaymentRequest() (request *CreateSinglePaymentRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateSinglePayment")
+    
     
     return
 }
@@ -1255,6 +1322,7 @@ func (c *Client) CreateSinglePayment(request *CreateSinglePaymentRequest) (respo
     if request == nil {
         request = NewCreateSinglePaymentRequest()
     }
+    
     response = NewCreateSinglePaymentResponse()
     err = c.Send(request, response)
     return
@@ -1265,6 +1333,7 @@ func NewCreateTransferBatchRequest() (request *CreateTransferBatchRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateTransferBatch")
+    
     
     return
 }
@@ -1297,6 +1366,7 @@ func (c *Client) CreateTransferBatch(request *CreateTransferBatchRequest) (respo
     if request == nil {
         request = NewCreateTransferBatchRequest()
     }
+    
     response = NewCreateTransferBatchResponse()
     err = c.Send(request, response)
     return
@@ -1307,6 +1377,7 @@ func NewDeduceQuotaRequest() (request *DeduceQuotaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "DeduceQuota")
+    
     
     return
 }
@@ -1339,6 +1410,7 @@ func (c *Client) DeduceQuota(request *DeduceQuotaRequest) (response *DeduceQuota
     if request == nil {
         request = NewDeduceQuotaRequest()
     }
+    
     response = NewDeduceQuotaResponse()
     err = c.Send(request, response)
     return
@@ -1349,6 +1421,7 @@ func NewDeleteAgentTaxPaymentInfoRequest() (request *DeleteAgentTaxPaymentInfoRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "DeleteAgentTaxPaymentInfo")
+    
     
     return
 }
@@ -1374,6 +1447,7 @@ func (c *Client) DeleteAgentTaxPaymentInfo(request *DeleteAgentTaxPaymentInfoReq
     if request == nil {
         request = NewDeleteAgentTaxPaymentInfoRequest()
     }
+    
     response = NewDeleteAgentTaxPaymentInfoResponse()
     err = c.Send(request, response)
     return
@@ -1384,6 +1458,7 @@ func NewDeleteAgentTaxPaymentInfosRequest() (request *DeleteAgentTaxPaymentInfos
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "DeleteAgentTaxPaymentInfos")
+    
     
     return
 }
@@ -1409,6 +1484,7 @@ func (c *Client) DeleteAgentTaxPaymentInfos(request *DeleteAgentTaxPaymentInfosR
     if request == nil {
         request = NewDeleteAgentTaxPaymentInfosRequest()
     }
+    
     response = NewDeleteAgentTaxPaymentInfosResponse()
     err = c.Send(request, response)
     return
@@ -1419,6 +1495,7 @@ func NewDescribeChargeDetailRequest() (request *DescribeChargeDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "DescribeChargeDetail")
+    
     
     return
 }
@@ -1444,6 +1521,7 @@ func (c *Client) DescribeChargeDetail(request *DescribeChargeDetailRequest) (res
     if request == nil {
         request = NewDescribeChargeDetailRequest()
     }
+    
     response = NewDescribeChargeDetailResponse()
     err = c.Send(request, response)
     return
@@ -1454,6 +1532,7 @@ func NewDescribeOrderStatusRequest() (request *DescribeOrderStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "DescribeOrderStatus")
+    
     
     return
 }
@@ -1475,6 +1554,7 @@ func (c *Client) DescribeOrderStatus(request *DescribeOrderStatusRequest) (respo
     if request == nil {
         request = NewDescribeOrderStatusRequest()
     }
+    
     response = NewDescribeOrderStatusResponse()
     err = c.Send(request, response)
     return
@@ -1485,6 +1565,7 @@ func NewDistributeAccreditQueryRequest() (request *DistributeAccreditQueryReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "DistributeAccreditQuery")
+    
     
     return
 }
@@ -1506,6 +1587,7 @@ func (c *Client) DistributeAccreditQuery(request *DistributeAccreditQueryRequest
     if request == nil {
         request = NewDistributeAccreditQueryRequest()
     }
+    
     response = NewDistributeAccreditQueryResponse()
     err = c.Send(request, response)
     return
@@ -1516,6 +1598,7 @@ func NewDistributeAccreditTlinxRequest() (request *DistributeAccreditTlinxReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "DistributeAccreditTlinx")
+    
     
     return
 }
@@ -1537,6 +1620,7 @@ func (c *Client) DistributeAccreditTlinx(request *DistributeAccreditTlinxRequest
     if request == nil {
         request = NewDistributeAccreditTlinxRequest()
     }
+    
     response = NewDistributeAccreditTlinxResponse()
     err = c.Send(request, response)
     return
@@ -1547,6 +1631,7 @@ func NewDistributeAddReceiverRequest() (request *DistributeAddReceiverRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "DistributeAddReceiver")
+    
     
     return
 }
@@ -1568,6 +1653,7 @@ func (c *Client) DistributeAddReceiver(request *DistributeAddReceiverRequest) (r
     if request == nil {
         request = NewDistributeAddReceiverRequest()
     }
+    
     response = NewDistributeAddReceiverResponse()
     err = c.Send(request, response)
     return
@@ -1578,6 +1664,7 @@ func NewDistributeApplyRequest() (request *DistributeApplyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "DistributeApply")
+    
     
     return
 }
@@ -1599,6 +1686,7 @@ func (c *Client) DistributeApply(request *DistributeApplyRequest) (response *Dis
     if request == nil {
         request = NewDistributeApplyRequest()
     }
+    
     response = NewDistributeApplyResponse()
     err = c.Send(request, response)
     return
@@ -1609,6 +1697,7 @@ func NewDistributeCancelRequest() (request *DistributeCancelRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "DistributeCancel")
+    
     
     return
 }
@@ -1630,6 +1719,7 @@ func (c *Client) DistributeCancel(request *DistributeCancelRequest) (response *D
     if request == nil {
         request = NewDistributeCancelRequest()
     }
+    
     response = NewDistributeCancelResponse()
     err = c.Send(request, response)
     return
@@ -1640,6 +1730,7 @@ func NewDistributeQueryRequest() (request *DistributeQueryRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "DistributeQuery")
+    
     
     return
 }
@@ -1661,6 +1752,7 @@ func (c *Client) DistributeQuery(request *DistributeQueryRequest) (response *Dis
     if request == nil {
         request = NewDistributeQueryRequest()
     }
+    
     response = NewDistributeQueryResponse()
     err = c.Send(request, response)
     return
@@ -1671,6 +1763,7 @@ func NewDistributeQueryReceiverRequest() (request *DistributeQueryReceiverReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "DistributeQueryReceiver")
+    
     
     return
 }
@@ -1692,6 +1785,7 @@ func (c *Client) DistributeQueryReceiver(request *DistributeQueryReceiverRequest
     if request == nil {
         request = NewDistributeQueryReceiverRequest()
     }
+    
     response = NewDistributeQueryReceiverResponse()
     err = c.Send(request, response)
     return
@@ -1702,6 +1796,7 @@ func NewDistributeRemoveReceiverRequest() (request *DistributeRemoveReceiverRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "DistributeRemoveReceiver")
+    
     
     return
 }
@@ -1723,6 +1818,7 @@ func (c *Client) DistributeRemoveReceiver(request *DistributeRemoveReceiverReque
     if request == nil {
         request = NewDistributeRemoveReceiverRequest()
     }
+    
     response = NewDistributeRemoveReceiverResponse()
     err = c.Send(request, response)
     return
@@ -1733,6 +1829,7 @@ func NewDownloadBillRequest() (request *DownloadBillRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "DownloadBill")
+    
     
     return
 }
@@ -1759,6 +1856,7 @@ func (c *Client) DownloadBill(request *DownloadBillRequest) (response *DownloadB
     if request == nil {
         request = NewDownloadBillRequest()
     }
+    
     response = NewDownloadBillResponse()
     err = c.Send(request, response)
     return
@@ -1769,6 +1867,7 @@ func NewDownloadOrgFileRequest() (request *DownloadOrgFileRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "DownloadOrgFile")
+    
     
     return
 }
@@ -1795,6 +1894,7 @@ func (c *Client) DownloadOrgFile(request *DownloadOrgFileRequest) (response *Dow
     if request == nil {
         request = NewDownloadOrgFileRequest()
     }
+    
     response = NewDownloadOrgFileResponse()
     err = c.Send(request, response)
     return
@@ -1805,6 +1905,7 @@ func NewDownloadReconciliationUrlRequest() (request *DownloadReconciliationUrlRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "DownloadReconciliationUrl")
+    
     
     return
 }
@@ -1827,6 +1928,7 @@ func (c *Client) DownloadReconciliationUrl(request *DownloadReconciliationUrlReq
     if request == nil {
         request = NewDownloadReconciliationUrlRequest()
     }
+    
     response = NewDownloadReconciliationUrlResponse()
     err = c.Send(request, response)
     return
@@ -1837,6 +1939,7 @@ func NewExecuteMemberTransactionRequest() (request *ExecuteMemberTransactionRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "ExecuteMemberTransaction")
+    
     
     return
 }
@@ -1859,6 +1962,7 @@ func (c *Client) ExecuteMemberTransaction(request *ExecuteMemberTransactionReque
     if request == nil {
         request = NewExecuteMemberTransactionRequest()
     }
+    
     response = NewExecuteMemberTransactionResponse()
     err = c.Send(request, response)
     return
@@ -1869,6 +1973,7 @@ func NewMigrateOrderRefundRequest() (request *MigrateOrderRefundRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "MigrateOrderRefund")
+    
     
     return
 }
@@ -1906,6 +2011,7 @@ func (c *Client) MigrateOrderRefund(request *MigrateOrderRefundRequest) (respons
     if request == nil {
         request = NewMigrateOrderRefundRequest()
     }
+    
     response = NewMigrateOrderRefundResponse()
     err = c.Send(request, response)
     return
@@ -1916,6 +2022,7 @@ func NewMigrateOrderRefundQueryRequest() (request *MigrateOrderRefundQueryReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "MigrateOrderRefundQuery")
+    
     
     return
 }
@@ -1951,6 +2058,7 @@ func (c *Client) MigrateOrderRefundQuery(request *MigrateOrderRefundQueryRequest
     if request == nil {
         request = NewMigrateOrderRefundQueryRequest()
     }
+    
     response = NewMigrateOrderRefundQueryResponse()
     err = c.Send(request, response)
     return
@@ -1961,6 +2069,7 @@ func NewModifyAgentTaxPaymentInfoRequest() (request *ModifyAgentTaxPaymentInfoRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "ModifyAgentTaxPaymentInfo")
+    
     
     return
 }
@@ -1986,6 +2095,7 @@ func (c *Client) ModifyAgentTaxPaymentInfo(request *ModifyAgentTaxPaymentInfoReq
     if request == nil {
         request = NewModifyAgentTaxPaymentInfoRequest()
     }
+    
     response = NewModifyAgentTaxPaymentInfoResponse()
     err = c.Send(request, response)
     return
@@ -1996,6 +2106,7 @@ func NewModifyBindedAccountRequest() (request *ModifyBindedAccountRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "ModifyBindedAccount")
+    
     
     return
 }
@@ -2021,6 +2132,7 @@ func (c *Client) ModifyBindedAccount(request *ModifyBindedAccountRequest) (respo
     if request == nil {
         request = NewModifyBindedAccountRequest()
     }
+    
     response = NewModifyBindedAccountResponse()
     err = c.Send(request, response)
     return
@@ -2031,6 +2143,7 @@ func NewModifyMerchantRequest() (request *ModifyMerchantRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "ModifyMerchant")
+    
     
     return
 }
@@ -2053,6 +2166,7 @@ func (c *Client) ModifyMerchant(request *ModifyMerchantRequest) (response *Modif
     if request == nil {
         request = NewModifyMerchantRequest()
     }
+    
     response = NewModifyMerchantResponse()
     err = c.Send(request, response)
     return
@@ -2063,6 +2177,7 @@ func NewModifyMntMbrBindRelateAcctBankCodeRequest() (request *ModifyMntMbrBindRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "ModifyMntMbrBindRelateAcctBankCode")
+    
     
     return
 }
@@ -2091,6 +2206,7 @@ func (c *Client) ModifyMntMbrBindRelateAcctBankCode(request *ModifyMntMbrBindRel
     if request == nil {
         request = NewModifyMntMbrBindRelateAcctBankCodeRequest()
     }
+    
     response = NewModifyMntMbrBindRelateAcctBankCodeResponse()
     err = c.Send(request, response)
     return
@@ -2101,6 +2217,7 @@ func NewQueryAcctBindingRequest() (request *QueryAcctBindingRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryAcctBinding")
+    
     
     return
 }
@@ -2125,6 +2242,7 @@ func (c *Client) QueryAcctBinding(request *QueryAcctBindingRequest) (response *Q
     if request == nil {
         request = NewQueryAcctBindingRequest()
     }
+    
     response = NewQueryAcctBindingResponse()
     err = c.Send(request, response)
     return
@@ -2135,6 +2253,7 @@ func NewQueryAcctInfoRequest() (request *QueryAcctInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryAcctInfo")
+    
     
     return
 }
@@ -2159,6 +2278,7 @@ func (c *Client) QueryAcctInfo(request *QueryAcctInfoRequest) (response *QueryAc
     if request == nil {
         request = NewQueryAcctInfoRequest()
     }
+    
     response = NewQueryAcctInfoResponse()
     err = c.Send(request, response)
     return
@@ -2169,6 +2289,7 @@ func NewQueryAcctInfoListRequest() (request *QueryAcctInfoListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryAcctInfoList")
+    
     
     return
 }
@@ -2193,6 +2314,7 @@ func (c *Client) QueryAcctInfoList(request *QueryAcctInfoListRequest) (response 
     if request == nil {
         request = NewQueryAcctInfoListRequest()
     }
+    
     response = NewQueryAcctInfoListResponse()
     err = c.Send(request, response)
     return
@@ -2203,6 +2325,7 @@ func NewQueryAgentStatementsRequest() (request *QueryAgentStatementsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryAgentStatements")
+    
     
     return
 }
@@ -2229,6 +2352,7 @@ func (c *Client) QueryAgentStatements(request *QueryAgentStatementsRequest) (res
     if request == nil {
         request = NewQueryAgentStatementsRequest()
     }
+    
     response = NewQueryAgentStatementsResponse()
     err = c.Send(request, response)
     return
@@ -2239,6 +2363,7 @@ func NewQueryAgentTaxPaymentBatchRequest() (request *QueryAgentTaxPaymentBatchRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryAgentTaxPaymentBatch")
+    
     
     return
 }
@@ -2264,6 +2389,7 @@ func (c *Client) QueryAgentTaxPaymentBatch(request *QueryAgentTaxPaymentBatchReq
     if request == nil {
         request = NewQueryAgentTaxPaymentBatchRequest()
     }
+    
     response = NewQueryAgentTaxPaymentBatchResponse()
     err = c.Send(request, response)
     return
@@ -2274,6 +2400,7 @@ func NewQueryAnchorContractInfoRequest() (request *QueryAnchorContractInfoReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryAnchorContractInfo")
+    
     
     return
 }
@@ -2298,6 +2425,7 @@ func (c *Client) QueryAnchorContractInfo(request *QueryAnchorContractInfoRequest
     if request == nil {
         request = NewQueryAnchorContractInfoRequest()
     }
+    
     response = NewQueryAnchorContractInfoResponse()
     err = c.Send(request, response)
     return
@@ -2308,6 +2436,7 @@ func NewQueryApplicationMaterialRequest() (request *QueryApplicationMaterialRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryApplicationMaterial")
+    
     
     return
 }
@@ -2330,6 +2459,7 @@ func (c *Client) QueryApplicationMaterial(request *QueryApplicationMaterialReque
     if request == nil {
         request = NewQueryApplicationMaterialRequest()
     }
+    
     response = NewQueryApplicationMaterialResponse()
     err = c.Send(request, response)
     return
@@ -2340,6 +2470,7 @@ func NewQueryAssignmentRequest() (request *QueryAssignmentRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryAssignment")
+    
     
     return
 }
@@ -2362,6 +2493,7 @@ func (c *Client) QueryAssignment(request *QueryAssignmentRequest) (response *Que
     if request == nil {
         request = NewQueryAssignmentRequest()
     }
+    
     response = NewQueryAssignmentResponse()
     err = c.Send(request, response)
     return
@@ -2372,6 +2504,7 @@ func NewQueryBalanceRequest() (request *QueryBalanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryBalance")
+    
     
     return
 }
@@ -2396,6 +2529,7 @@ func (c *Client) QueryBalance(request *QueryBalanceRequest) (response *QueryBala
     if request == nil {
         request = NewQueryBalanceRequest()
     }
+    
     response = NewQueryBalanceResponse()
     err = c.Send(request, response)
     return
@@ -2406,6 +2540,7 @@ func NewQueryBankClearRequest() (request *QueryBankClearRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryBankClear")
+    
     
     return
 }
@@ -2434,6 +2569,7 @@ func (c *Client) QueryBankClear(request *QueryBankClearRequest) (response *Query
     if request == nil {
         request = NewQueryBankClearRequest()
     }
+    
     response = NewQueryBankClearResponse()
     err = c.Send(request, response)
     return
@@ -2444,6 +2580,7 @@ func NewQueryBankTransactionDetailsRequest() (request *QueryBankTransactionDetai
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryBankTransactionDetails")
+    
     
     return
 }
@@ -2472,6 +2609,7 @@ func (c *Client) QueryBankTransactionDetails(request *QueryBankTransactionDetail
     if request == nil {
         request = NewQueryBankTransactionDetailsRequest()
     }
+    
     response = NewQueryBankTransactionDetailsResponse()
     err = c.Send(request, response)
     return
@@ -2482,6 +2620,7 @@ func NewQueryBankWithdrawCashDetailsRequest() (request *QueryBankWithdrawCashDet
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryBankWithdrawCashDetails")
+    
     
     return
 }
@@ -2510,6 +2649,7 @@ func (c *Client) QueryBankWithdrawCashDetails(request *QueryBankWithdrawCashDeta
     if request == nil {
         request = NewQueryBankWithdrawCashDetailsRequest()
     }
+    
     response = NewQueryBankWithdrawCashDetailsResponse()
     err = c.Send(request, response)
     return
@@ -2520,6 +2660,7 @@ func NewQueryBatchPaymentResultRequest() (request *QueryBatchPaymentResultReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryBatchPaymentResult")
+    
     
     return
 }
@@ -2548,6 +2689,7 @@ func (c *Client) QueryBatchPaymentResult(request *QueryBatchPaymentResultRequest
     if request == nil {
         request = NewQueryBatchPaymentResultRequest()
     }
+    
     response = NewQueryBatchPaymentResultResponse()
     err = c.Send(request, response)
     return
@@ -2558,6 +2700,7 @@ func NewQueryBillDownloadURLRequest() (request *QueryBillDownloadURLRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryBillDownloadURL")
+    
     
     return
 }
@@ -2586,6 +2729,7 @@ func (c *Client) QueryBillDownloadURL(request *QueryBillDownloadURLRequest) (res
     if request == nil {
         request = NewQueryBillDownloadURLRequest()
     }
+    
     response = NewQueryBillDownloadURLResponse()
     err = c.Send(request, response)
     return
@@ -2596,6 +2740,7 @@ func NewQueryCityCodeRequest() (request *QueryCityCodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryCityCode")
+    
     
     return
 }
@@ -2624,6 +2769,7 @@ func (c *Client) QueryCityCode(request *QueryCityCodeRequest) (response *QueryCi
     if request == nil {
         request = NewQueryCityCodeRequest()
     }
+    
     response = NewQueryCityCodeResponse()
     err = c.Send(request, response)
     return
@@ -2634,6 +2780,7 @@ func NewQueryCommonTransferRechargeRequest() (request *QueryCommonTransferRechar
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryCommonTransferRecharge")
+    
     
     return
 }
@@ -2662,6 +2809,7 @@ func (c *Client) QueryCommonTransferRecharge(request *QueryCommonTransferRecharg
     if request == nil {
         request = NewQueryCommonTransferRechargeRequest()
     }
+    
     response = NewQueryCommonTransferRechargeResponse()
     err = c.Send(request, response)
     return
@@ -2672,6 +2820,7 @@ func NewQueryContractRequest() (request *QueryContractRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryContract")
+    
     
     return
 }
@@ -2724,6 +2873,7 @@ func (c *Client) QueryContract(request *QueryContractRequest) (response *QueryCo
     if request == nil {
         request = NewQueryContractRequest()
     }
+    
     response = NewQueryContractResponse()
     err = c.Send(request, response)
     return
@@ -2734,6 +2884,7 @@ func NewQueryContractPayFeeRequest() (request *QueryContractPayFeeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryContractPayFee")
+    
     
     return
 }
@@ -2786,6 +2937,7 @@ func (c *Client) QueryContractPayFee(request *QueryContractPayFeeRequest) (respo
     if request == nil {
         request = NewQueryContractPayFeeRequest()
     }
+    
     response = NewQueryContractPayFeeResponse()
     err = c.Send(request, response)
     return
@@ -2796,6 +2948,7 @@ func NewQueryContractPayWayListRequest() (request *QueryContractPayWayListReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryContractPayWayList")
+    
     
     return
 }
@@ -2848,6 +3001,7 @@ func (c *Client) QueryContractPayWayList(request *QueryContractPayWayListRequest
     if request == nil {
         request = NewQueryContractPayWayListRequest()
     }
+    
     response = NewQueryContractPayWayListResponse()
     err = c.Send(request, response)
     return
@@ -2858,6 +3012,7 @@ func NewQueryContractRelateShopRequest() (request *QueryContractRelateShopReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryContractRelateShop")
+    
     
     return
 }
@@ -2910,6 +3065,7 @@ func (c *Client) QueryContractRelateShop(request *QueryContractRelateShopRequest
     if request == nil {
         request = NewQueryContractRelateShopRequest()
     }
+    
     response = NewQueryContractRelateShopResponse()
     err = c.Send(request, response)
     return
@@ -2920,6 +3076,7 @@ func NewQueryCustAcctIdBalanceRequest() (request *QueryCustAcctIdBalanceRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryCustAcctIdBalance")
+    
     
     return
 }
@@ -2948,6 +3105,7 @@ func (c *Client) QueryCustAcctIdBalance(request *QueryCustAcctIdBalanceRequest) 
     if request == nil {
         request = NewQueryCustAcctIdBalanceRequest()
     }
+    
     response = NewQueryCustAcctIdBalanceResponse()
     err = c.Send(request, response)
     return
@@ -2958,6 +3116,7 @@ func NewQueryDownloadBillURLRequest() (request *QueryDownloadBillURLRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryDownloadBillURL")
+    
     
     return
 }
@@ -2981,6 +3140,7 @@ func (c *Client) QueryDownloadBillURL(request *QueryDownloadBillURLRequest) (res
     if request == nil {
         request = NewQueryDownloadBillURLRequest()
     }
+    
     response = NewQueryDownloadBillURLResponse()
     err = c.Send(request, response)
     return
@@ -2991,6 +3151,7 @@ func NewQueryExchangeRateRequest() (request *QueryExchangeRateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryExchangeRate")
+    
     
     return
 }
@@ -3013,6 +3174,7 @@ func (c *Client) QueryExchangeRate(request *QueryExchangeRateRequest) (response 
     if request == nil {
         request = NewQueryExchangeRateRequest()
     }
+    
     response = NewQueryExchangeRateResponse()
     err = c.Send(request, response)
     return
@@ -3023,6 +3185,7 @@ func NewQueryInvoiceRequest() (request *QueryInvoiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryInvoice")
+    
     
     return
 }
@@ -3058,6 +3221,7 @@ func (c *Client) QueryInvoice(request *QueryInvoiceRequest) (response *QueryInvo
     if request == nil {
         request = NewQueryInvoiceRequest()
     }
+    
     response = NewQueryInvoiceResponse()
     err = c.Send(request, response)
     return
@@ -3068,6 +3232,7 @@ func NewQueryInvoiceV2Request() (request *QueryInvoiceV2Request) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryInvoiceV2")
+    
     
     return
 }
@@ -3088,6 +3253,7 @@ func (c *Client) QueryInvoiceV2(request *QueryInvoiceV2Request) (response *Query
     if request == nil {
         request = NewQueryInvoiceV2Request()
     }
+    
     response = NewQueryInvoiceV2Response()
     err = c.Send(request, response)
     return
@@ -3098,6 +3264,7 @@ func NewQueryMaliciousRegistrationRequest() (request *QueryMaliciousRegistration
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryMaliciousRegistration")
+    
     
     return
 }
@@ -3118,6 +3285,7 @@ func (c *Client) QueryMaliciousRegistration(request *QueryMaliciousRegistrationR
     if request == nil {
         request = NewQueryMaliciousRegistrationRequest()
     }
+    
     response = NewQueryMaliciousRegistrationResponse()
     err = c.Send(request, response)
     return
@@ -3128,6 +3296,7 @@ func NewQueryMemberBindRequest() (request *QueryMemberBindRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryMemberBind")
+    
     
     return
 }
@@ -3158,6 +3327,7 @@ func (c *Client) QueryMemberBind(request *QueryMemberBindRequest) (response *Que
     if request == nil {
         request = NewQueryMemberBindRequest()
     }
+    
     response = NewQueryMemberBindResponse()
     err = c.Send(request, response)
     return
@@ -3168,6 +3338,7 @@ func NewQueryMemberTransactionRequest() (request *QueryMemberTransactionRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryMemberTransaction")
+    
     
     return
 }
@@ -3196,6 +3367,7 @@ func (c *Client) QueryMemberTransaction(request *QueryMemberTransactionRequest) 
     if request == nil {
         request = NewQueryMemberTransactionRequest()
     }
+    
     response = NewQueryMemberTransactionResponse()
     err = c.Send(request, response)
     return
@@ -3206,6 +3378,7 @@ func NewQueryMerchantRequest() (request *QueryMerchantRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryMerchant")
+    
     
     return
 }
@@ -3229,6 +3402,7 @@ func (c *Client) QueryMerchant(request *QueryMerchantRequest) (response *QueryMe
     if request == nil {
         request = NewQueryMerchantRequest()
     }
+    
     response = NewQueryMerchantResponse()
     err = c.Send(request, response)
     return
@@ -3239,6 +3413,7 @@ func NewQueryMerchantBalanceRequest() (request *QueryMerchantBalanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryMerchantBalance")
+    
     
     return
 }
@@ -3261,6 +3436,7 @@ func (c *Client) QueryMerchantBalance(request *QueryMerchantBalanceRequest) (res
     if request == nil {
         request = NewQueryMerchantBalanceRequest()
     }
+    
     response = NewQueryMerchantBalanceResponse()
     err = c.Send(request, response)
     return
@@ -3271,6 +3447,7 @@ func NewQueryMerchantClassificationRequest() (request *QueryMerchantClassificati
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryMerchantClassification")
+    
     
     return
 }
@@ -3293,6 +3470,7 @@ func (c *Client) QueryMerchantClassification(request *QueryMerchantClassificatio
     if request == nil {
         request = NewQueryMerchantClassificationRequest()
     }
+    
     response = NewQueryMerchantClassificationResponse()
     err = c.Send(request, response)
     return
@@ -3303,6 +3481,7 @@ func NewQueryMerchantInfoForManagementRequest() (request *QueryMerchantInfoForMa
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryMerchantInfoForManagement")
+    
     
     return
 }
@@ -3331,6 +3510,7 @@ func (c *Client) QueryMerchantInfoForManagement(request *QueryMerchantInfoForMan
     if request == nil {
         request = NewQueryMerchantInfoForManagementRequest()
     }
+    
     response = NewQueryMerchantInfoForManagementResponse()
     err = c.Send(request, response)
     return
@@ -3341,6 +3521,7 @@ func NewQueryMerchantOrderRequest() (request *QueryMerchantOrderRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryMerchantOrder")
+    
     
     return
 }
@@ -3364,6 +3545,7 @@ func (c *Client) QueryMerchantOrder(request *QueryMerchantOrderRequest) (respons
     if request == nil {
         request = NewQueryMerchantOrderRequest()
     }
+    
     response = NewQueryMerchantOrderResponse()
     err = c.Send(request, response)
     return
@@ -3374,6 +3556,7 @@ func NewQueryMerchantPayWayListRequest() (request *QueryMerchantPayWayListReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryMerchantPayWayList")
+    
     
     return
 }
@@ -3397,6 +3580,7 @@ func (c *Client) QueryMerchantPayWayList(request *QueryMerchantPayWayListRequest
     if request == nil {
         request = NewQueryMerchantPayWayListRequest()
     }
+    
     response = NewQueryMerchantPayWayListResponse()
     err = c.Send(request, response)
     return
@@ -3407,6 +3591,7 @@ func NewQueryOrderRequest() (request *QueryOrderRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryOrder")
+    
     
     return
 }
@@ -3430,6 +3615,7 @@ func (c *Client) QueryOrder(request *QueryOrderRequest) (response *QueryOrderRes
     if request == nil {
         request = NewQueryOrderRequest()
     }
+    
     response = NewQueryOrderResponse()
     err = c.Send(request, response)
     return
@@ -3440,6 +3626,7 @@ func NewQueryOrderStatusRequest() (request *QueryOrderStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryOrderStatus")
+    
     
     return
 }
@@ -3463,6 +3650,7 @@ func (c *Client) QueryOrderStatus(request *QueryOrderStatusRequest) (response *Q
     if request == nil {
         request = NewQueryOrderStatusRequest()
     }
+    
     response = NewQueryOrderStatusResponse()
     err = c.Send(request, response)
     return
@@ -3473,6 +3661,7 @@ func NewQueryOutwardOrderRequest() (request *QueryOutwardOrderRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryOutwardOrder")
+    
     
     return
 }
@@ -3495,6 +3684,7 @@ func (c *Client) QueryOutwardOrder(request *QueryOutwardOrderRequest) (response 
     if request == nil {
         request = NewQueryOutwardOrderRequest()
     }
+    
     response = NewQueryOutwardOrderResponse()
     err = c.Send(request, response)
     return
@@ -3505,6 +3695,7 @@ func NewQueryPayerInfoRequest() (request *QueryPayerInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryPayerInfo")
+    
     
     return
 }
@@ -3527,6 +3718,7 @@ func (c *Client) QueryPayerInfo(request *QueryPayerInfoRequest) (response *Query
     if request == nil {
         request = NewQueryPayerInfoRequest()
     }
+    
     response = NewQueryPayerInfoResponse()
     err = c.Send(request, response)
     return
@@ -3537,6 +3729,7 @@ func NewQueryReconciliationDocumentRequest() (request *QueryReconciliationDocume
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryReconciliationDocument")
+    
     
     return
 }
@@ -3565,6 +3758,7 @@ func (c *Client) QueryReconciliationDocument(request *QueryReconciliationDocumen
     if request == nil {
         request = NewQueryReconciliationDocumentRequest()
     }
+    
     response = NewQueryReconciliationDocumentResponse()
     err = c.Send(request, response)
     return
@@ -3575,6 +3769,7 @@ func NewQueryRefundRequest() (request *QueryRefundRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryRefund")
+    
     
     return
 }
@@ -3598,6 +3793,7 @@ func (c *Client) QueryRefund(request *QueryRefundRequest) (response *QueryRefund
     if request == nil {
         request = NewQueryRefundRequest()
     }
+    
     response = NewQueryRefundResponse()
     err = c.Send(request, response)
     return
@@ -3608,6 +3804,7 @@ func NewQueryShopOpenIdRequest() (request *QueryShopOpenIdRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryShopOpenId")
+    
     
     return
 }
@@ -3631,6 +3828,7 @@ func (c *Client) QueryShopOpenId(request *QueryShopOpenIdRequest) (response *Que
     if request == nil {
         request = NewQueryShopOpenIdRequest()
     }
+    
     response = NewQueryShopOpenIdResponse()
     err = c.Send(request, response)
     return
@@ -3641,6 +3839,7 @@ func NewQuerySinglePayRequest() (request *QuerySinglePayRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QuerySinglePay")
+    
     
     return
 }
@@ -3666,6 +3865,7 @@ func (c *Client) QuerySinglePay(request *QuerySinglePayRequest) (response *Query
     if request == nil {
         request = NewQuerySinglePayRequest()
     }
+    
     response = NewQuerySinglePayResponse()
     err = c.Send(request, response)
     return
@@ -3676,6 +3876,7 @@ func NewQuerySinglePaymentResultRequest() (request *QuerySinglePaymentResultRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QuerySinglePaymentResult")
+    
     
     return
 }
@@ -3701,6 +3902,7 @@ func (c *Client) QuerySinglePaymentResult(request *QuerySinglePaymentResultReque
     if request == nil {
         request = NewQuerySinglePaymentResultRequest()
     }
+    
     response = NewQuerySinglePaymentResultResponse()
     err = c.Send(request, response)
     return
@@ -3711,6 +3913,7 @@ func NewQuerySingleTransactionStatusRequest() (request *QuerySingleTransactionSt
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QuerySingleTransactionStatus")
+    
     
     return
 }
@@ -3739,6 +3942,7 @@ func (c *Client) QuerySingleTransactionStatus(request *QuerySingleTransactionSta
     if request == nil {
         request = NewQuerySingleTransactionStatusRequest()
     }
+    
     response = NewQuerySingleTransactionStatusResponse()
     err = c.Send(request, response)
     return
@@ -3749,6 +3953,7 @@ func NewQuerySmallAmountTransferRequest() (request *QuerySmallAmountTransferRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QuerySmallAmountTransfer")
+    
     
     return
 }
@@ -3777,6 +3982,7 @@ func (c *Client) QuerySmallAmountTransfer(request *QuerySmallAmountTransferReque
     if request == nil {
         request = NewQuerySmallAmountTransferRequest()
     }
+    
     response = NewQuerySmallAmountTransferResponse()
     err = c.Send(request, response)
     return
@@ -3787,6 +3993,7 @@ func NewQueryTradeRequest() (request *QueryTradeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryTrade")
+    
     
     return
 }
@@ -3809,6 +4016,7 @@ func (c *Client) QueryTrade(request *QueryTradeRequest) (response *QueryTradeRes
     if request == nil {
         request = NewQueryTradeRequest()
     }
+    
     response = NewQueryTradeResponse()
     err = c.Send(request, response)
     return
@@ -3819,6 +4027,7 @@ func NewQueryTransferBatchRequest() (request *QueryTransferBatchRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryTransferBatch")
+    
     
     return
 }
@@ -3851,6 +4060,7 @@ func (c *Client) QueryTransferBatch(request *QueryTransferBatchRequest) (respons
     if request == nil {
         request = NewQueryTransferBatchRequest()
     }
+    
     response = NewQueryTransferBatchResponse()
     err = c.Send(request, response)
     return
@@ -3861,6 +4071,7 @@ func NewQueryTransferDetailRequest() (request *QueryTransferDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryTransferDetail")
+    
     
     return
 }
@@ -3893,6 +4104,7 @@ func (c *Client) QueryTransferDetail(request *QueryTransferDetailRequest) (respo
     if request == nil {
         request = NewQueryTransferDetailRequest()
     }
+    
     response = NewQueryTransferDetailResponse()
     err = c.Send(request, response)
     return
@@ -3903,6 +4115,7 @@ func NewQueryTransferResultRequest() (request *QueryTransferResultRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryTransferResult")
+    
     
     return
 }
@@ -3935,6 +4148,7 @@ func (c *Client) QueryTransferResult(request *QueryTransferResultRequest) (respo
     if request == nil {
         request = NewQueryTransferResultRequest()
     }
+    
     response = NewQueryTransferResultResponse()
     err = c.Send(request, response)
     return
@@ -3945,6 +4159,7 @@ func NewRechargeByThirdPayRequest() (request *RechargeByThirdPayRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "RechargeByThirdPay")
+    
     
     return
 }
@@ -3966,6 +4181,7 @@ func (c *Client) RechargeByThirdPay(request *RechargeByThirdPayRequest) (respons
     if request == nil {
         request = NewRechargeByThirdPayRequest()
     }
+    
     response = NewRechargeByThirdPayResponse()
     err = c.Send(request, response)
     return
@@ -3976,6 +4192,7 @@ func NewRechargeMemberThirdPayRequest() (request *RechargeMemberThirdPayRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "RechargeMemberThirdPay")
+    
     
     return
 }
@@ -4004,6 +4221,7 @@ func (c *Client) RechargeMemberThirdPay(request *RechargeMemberThirdPayRequest) 
     if request == nil {
         request = NewRechargeMemberThirdPayRequest()
     }
+    
     response = NewRechargeMemberThirdPayResponse()
     err = c.Send(request, response)
     return
@@ -4014,6 +4232,7 @@ func NewRefundRequest() (request *RefundRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "Refund")
+    
     
     return
 }
@@ -4039,6 +4258,7 @@ func (c *Client) Refund(request *RefundRequest) (response *RefundResponse, err e
     if request == nil {
         request = NewRefundRequest()
     }
+    
     response = NewRefundResponse()
     err = c.Send(request, response)
     return
@@ -4049,6 +4269,7 @@ func NewRefundMemberTransactionRequest() (request *RefundMemberTransactionReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "RefundMemberTransaction")
+    
     
     return
 }
@@ -4070,6 +4291,7 @@ func (c *Client) RefundMemberTransaction(request *RefundMemberTransactionRequest
     if request == nil {
         request = NewRefundMemberTransactionRequest()
     }
+    
     response = NewRefundMemberTransactionResponse()
     err = c.Send(request, response)
     return
@@ -4080,6 +4302,7 @@ func NewRefundOrderRequest() (request *RefundOrderRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "RefundOrder")
+    
     
     return
 }
@@ -4103,6 +4326,7 @@ func (c *Client) RefundOrder(request *RefundOrderRequest) (response *RefundOrder
     if request == nil {
         request = NewRefundOrderRequest()
     }
+    
     response = NewRefundOrderResponse()
     err = c.Send(request, response)
     return
@@ -4113,6 +4337,7 @@ func NewRefundTlinxOrderRequest() (request *RefundTlinxOrderRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "RefundTlinxOrder")
+    
     
     return
 }
@@ -4136,6 +4361,7 @@ func (c *Client) RefundTlinxOrder(request *RefundTlinxOrderRequest) (response *R
     if request == nil {
         request = NewRefundTlinxOrderRequest()
     }
+    
     response = NewRefundTlinxOrderResponse()
     err = c.Send(request, response)
     return
@@ -4146,6 +4372,7 @@ func NewRegisterBehaviorRequest() (request *RegisterBehaviorRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "RegisterBehavior")
+    
     
     return
 }
@@ -4170,6 +4397,7 @@ func (c *Client) RegisterBehavior(request *RegisterBehaviorRequest) (response *R
     if request == nil {
         request = NewRegisterBehaviorRequest()
     }
+    
     response = NewRegisterBehaviorResponse()
     err = c.Send(request, response)
     return
@@ -4180,6 +4408,7 @@ func NewRegisterBillRequest() (request *RegisterBillRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "RegisterBill")
+    
     
     return
 }
@@ -4204,6 +4433,7 @@ func (c *Client) RegisterBill(request *RegisterBillRequest) (response *RegisterB
     if request == nil {
         request = NewRegisterBillRequest()
     }
+    
     response = NewRegisterBillResponse()
     err = c.Send(request, response)
     return
@@ -4214,6 +4444,7 @@ func NewRegisterBillSupportWithdrawRequest() (request *RegisterBillSupportWithdr
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "RegisterBillSupportWithdraw")
+    
     
     return
 }
@@ -4242,6 +4473,7 @@ func (c *Client) RegisterBillSupportWithdraw(request *RegisterBillSupportWithdra
     if request == nil {
         request = NewRegisterBillSupportWithdrawRequest()
     }
+    
     response = NewRegisterBillSupportWithdrawResponse()
     err = c.Send(request, response)
     return
@@ -4252,6 +4484,7 @@ func NewRevResigterBillSupportWithdrawRequest() (request *RevResigterBillSupport
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "RevResigterBillSupportWithdraw")
+    
     
     return
 }
@@ -4280,6 +4513,7 @@ func (c *Client) RevResigterBillSupportWithdraw(request *RevResigterBillSupportW
     if request == nil {
         request = NewRevResigterBillSupportWithdrawRequest()
     }
+    
     response = NewRevResigterBillSupportWithdrawResponse()
     err = c.Send(request, response)
     return
@@ -4290,6 +4524,7 @@ func NewReviseMbrPropertyRequest() (request *ReviseMbrPropertyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "ReviseMbrProperty")
+    
     
     return
 }
@@ -4318,6 +4553,7 @@ func (c *Client) ReviseMbrProperty(request *ReviseMbrPropertyRequest) (response 
     if request == nil {
         request = NewReviseMbrPropertyRequest()
     }
+    
     response = NewReviseMbrPropertyResponse()
     err = c.Send(request, response)
     return
@@ -4328,6 +4564,7 @@ func NewRevokeMemberRechargeThirdPayRequest() (request *RevokeMemberRechargeThir
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "RevokeMemberRechargeThirdPay")
+    
     
     return
 }
@@ -4356,6 +4593,7 @@ func (c *Client) RevokeMemberRechargeThirdPay(request *RevokeMemberRechargeThird
     if request == nil {
         request = NewRevokeMemberRechargeThirdPayRequest()
     }
+    
     response = NewRevokeMemberRechargeThirdPayResponse()
     err = c.Send(request, response)
     return
@@ -4366,6 +4604,7 @@ func NewRevokeRechargeByThirdPayRequest() (request *RevokeRechargeByThirdPayRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "RevokeRechargeByThirdPay")
+    
     
     return
 }
@@ -4387,6 +4626,7 @@ func (c *Client) RevokeRechargeByThirdPay(request *RevokeRechargeByThirdPayReque
     if request == nil {
         request = NewRevokeRechargeByThirdPayRequest()
     }
+    
     response = NewRevokeRechargeByThirdPayResponse()
     err = c.Send(request, response)
     return
@@ -4397,6 +4637,7 @@ func NewSyncContractDataRequest() (request *SyncContractDataRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "SyncContractData")
+    
     
     return
 }
@@ -4445,6 +4686,7 @@ func (c *Client) SyncContractData(request *SyncContractDataRequest) (response *S
     if request == nil {
         request = NewSyncContractDataRequest()
     }
+    
     response = NewSyncContractDataResponse()
     err = c.Send(request, response)
     return
@@ -4455,6 +4697,7 @@ func NewTerminateContractRequest() (request *TerminateContractRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "TerminateContract")
+    
     
     return
 }
@@ -4505,6 +4748,7 @@ func (c *Client) TerminateContract(request *TerminateContractRequest) (response 
     if request == nil {
         request = NewTerminateContractRequest()
     }
+    
     response = NewTerminateContractResponse()
     err = c.Send(request, response)
     return
@@ -4515,6 +4759,7 @@ func NewTransferSinglePayRequest() (request *TransferSinglePayRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "TransferSinglePay")
+    
     
     return
 }
@@ -4565,6 +4810,7 @@ func (c *Client) TransferSinglePay(request *TransferSinglePayRequest) (response 
     if request == nil {
         request = NewTransferSinglePayRequest()
     }
+    
     response = NewTransferSinglePayResponse()
     err = c.Send(request, response)
     return
@@ -4575,6 +4821,7 @@ func NewUnBindAcctRequest() (request *UnBindAcctRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "UnBindAcct")
+    
     
     return
 }
@@ -4599,6 +4846,7 @@ func (c *Client) UnBindAcct(request *UnBindAcctRequest) (response *UnBindAcctRes
     if request == nil {
         request = NewUnBindAcctRequest()
     }
+    
     response = NewUnBindAcctResponse()
     err = c.Send(request, response)
     return
@@ -4609,6 +4857,7 @@ func NewUnbindRelateAcctRequest() (request *UnbindRelateAcctRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "UnbindRelateAcct")
+    
     
     return
 }
@@ -4637,6 +4886,7 @@ func (c *Client) UnbindRelateAcct(request *UnbindRelateAcctRequest) (response *U
     if request == nil {
         request = NewUnbindRelateAcctRequest()
     }
+    
     response = NewUnbindRelateAcctResponse()
     err = c.Send(request, response)
     return
@@ -4647,6 +4897,7 @@ func NewUnifiedOrderRequest() (request *UnifiedOrderRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "UnifiedOrder")
+    
     
     return
 }
@@ -4675,6 +4926,7 @@ func (c *Client) UnifiedOrder(request *UnifiedOrderRequest) (response *UnifiedOr
     if request == nil {
         request = NewUnifiedOrderRequest()
     }
+    
     response = NewUnifiedOrderResponse()
     err = c.Send(request, response)
     return
@@ -4685,6 +4937,7 @@ func NewUnifiedTlinxOrderRequest() (request *UnifiedTlinxOrderRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "UnifiedTlinxOrder")
+    
     
     return
 }
@@ -4713,6 +4966,7 @@ func (c *Client) UnifiedTlinxOrder(request *UnifiedTlinxOrderRequest) (response 
     if request == nil {
         request = NewUnifiedTlinxOrderRequest()
     }
+    
     response = NewUnifiedTlinxOrderResponse()
     err = c.Send(request, response)
     return
@@ -4723,6 +4977,7 @@ func NewUploadExternalAnchorInfoRequest() (request *UploadExternalAnchorInfoRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "UploadExternalAnchorInfo")
+    
     
     return
 }
@@ -4751,6 +5006,7 @@ func (c *Client) UploadExternalAnchorInfo(request *UploadExternalAnchorInfoReque
     if request == nil {
         request = NewUploadExternalAnchorInfoRequest()
     }
+    
     response = NewUploadExternalAnchorInfoResponse()
     err = c.Send(request, response)
     return
@@ -4761,6 +5017,7 @@ func NewUploadFileRequest() (request *UploadFileRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "UploadFile")
+    
     
     return
 }
@@ -4784,6 +5041,7 @@ func (c *Client) UploadFile(request *UploadFileRequest) (response *UploadFileRes
     if request == nil {
         request = NewUploadFileRequest()
     }
+    
     response = NewUploadFileResponse()
     err = c.Send(request, response)
     return
@@ -4794,6 +5052,7 @@ func NewUploadOrgFileRequest() (request *UploadOrgFileRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "UploadOrgFile")
+    
     
     return
 }
@@ -4817,6 +5076,7 @@ func (c *Client) UploadOrgFile(request *UploadOrgFileRequest) (response *UploadO
     if request == nil {
         request = NewUploadOrgFileRequest()
     }
+    
     response = NewUploadOrgFileResponse()
     err = c.Send(request, response)
     return
@@ -4827,6 +5087,7 @@ func NewUploadTaxListRequest() (request *UploadTaxListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "UploadTaxList")
+    
     
     return
 }
@@ -4851,6 +5112,7 @@ func (c *Client) UploadTaxList(request *UploadTaxListRequest) (response *UploadT
     if request == nil {
         request = NewUploadTaxListRequest()
     }
+    
     response = NewUploadTaxListResponse()
     err = c.Send(request, response)
     return
@@ -4861,6 +5123,7 @@ func NewUploadTaxPaymentRequest() (request *UploadTaxPaymentRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "UploadTaxPayment")
+    
     
     return
 }
@@ -4886,6 +5149,7 @@ func (c *Client) UploadTaxPayment(request *UploadTaxPaymentRequest) (response *U
     if request == nil {
         request = NewUploadTaxPaymentRequest()
     }
+    
     response = NewUploadTaxPaymentResponse()
     err = c.Send(request, response)
     return
@@ -4896,6 +5160,7 @@ func NewViewContractRequest() (request *ViewContractRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "ViewContract")
+    
     
     return
 }
@@ -4921,6 +5186,7 @@ func (c *Client) ViewContract(request *ViewContractRequest) (response *ViewContr
     if request == nil {
         request = NewViewContractRequest()
     }
+    
     response = NewViewContractResponse()
     err = c.Send(request, response)
     return
@@ -4931,6 +5197,7 @@ func NewViewMerchantRequest() (request *ViewMerchantRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "ViewMerchant")
+    
     
     return
 }
@@ -4956,6 +5223,7 @@ func (c *Client) ViewMerchant(request *ViewMerchantRequest) (response *ViewMerch
     if request == nil {
         request = NewViewMerchantRequest()
     }
+    
     response = NewViewMerchantResponse()
     err = c.Send(request, response)
     return
@@ -4966,6 +5234,7 @@ func NewViewShopRequest() (request *ViewShopRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "ViewShop")
+    
     
     return
 }
@@ -4991,6 +5260,7 @@ func (c *Client) ViewShop(request *ViewShopRequest) (response *ViewShopResponse,
     if request == nil {
         request = NewViewShopRequest()
     }
+    
     response = NewViewShopResponse()
     err = c.Send(request, response)
     return
@@ -5001,6 +5271,7 @@ func NewWithdrawCashMembershipRequest() (request *WithdrawCashMembershipRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cpdp", APIVersion, "WithdrawCashMembership")
+    
     
     return
 }
@@ -5029,6 +5300,7 @@ func (c *Client) WithdrawCashMembership(request *WithdrawCashMembershipRequest) 
     if request == nil {
         request = NewWithdrawCashMembershipRequest()
     }
+    
     response = NewWithdrawCashMembershipResponse()
     err = c.Send(request, response)
     return

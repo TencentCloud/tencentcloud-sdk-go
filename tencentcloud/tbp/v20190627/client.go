@@ -49,6 +49,7 @@ func NewTextProcessRequest() (request *TextProcessRequest) {
     }
     request.Init().WithApiInfo("tbp", APIVersion, "TextProcess")
     
+    
     return
 }
 
@@ -74,6 +75,7 @@ func (c *Client) TextProcess(request *TextProcessRequest) (response *TextProcess
     if request == nil {
         request = NewTextProcessRequest()
     }
+    
     response = NewTextProcessResponse()
     err = c.Send(request, response)
     return
@@ -84,6 +86,7 @@ func NewTextResetRequest() (request *TextResetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbp", APIVersion, "TextReset")
+    
     
     return
 }
@@ -110,6 +113,7 @@ func (c *Client) TextReset(request *TextResetRequest) (response *TextResetRespon
     if request == nil {
         request = NewTextResetRequest()
     }
+    
     response = NewTextResetResponse()
     err = c.Send(request, response)
     return

@@ -49,6 +49,7 @@ func NewCreateAccountRequest() (request *CreateAccountRequest) {
     }
     request.Init().WithApiInfo("youmall", APIVersion, "CreateAccount")
     
+    
     return
 }
 
@@ -75,6 +76,7 @@ func (c *Client) CreateAccount(request *CreateAccountRequest) (response *CreateA
     if request == nil {
         request = NewCreateAccountRequest()
     }
+    
     response = NewCreateAccountResponse()
     err = c.Send(request, response)
     return
@@ -85,6 +87,7 @@ func NewCreateFacePictureRequest() (request *CreateFacePictureRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "CreateFacePicture")
+    
     
     return
 }
@@ -112,6 +115,7 @@ func (c *Client) CreateFacePicture(request *CreateFacePictureRequest) (response 
     if request == nil {
         request = NewCreateFacePictureRequest()
     }
+    
     response = NewCreateFacePictureResponse()
     err = c.Send(request, response)
     return
@@ -122,6 +126,7 @@ func NewDeletePersonFeatureRequest() (request *DeletePersonFeatureRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DeletePersonFeature")
+    
     
     return
 }
@@ -158,6 +163,7 @@ func (c *Client) DeletePersonFeature(request *DeletePersonFeatureRequest) (respo
     if request == nil {
         request = NewDeletePersonFeatureRequest()
     }
+    
     response = NewDeletePersonFeatureResponse()
     err = c.Send(request, response)
     return
@@ -168,6 +174,7 @@ func NewDescribeCameraPersonRequest() (request *DescribeCameraPersonRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeCameraPerson")
+    
     
     return
 }
@@ -190,6 +197,7 @@ func (c *Client) DescribeCameraPerson(request *DescribeCameraPersonRequest) (res
     if request == nil {
         request = NewDescribeCameraPersonRequest()
     }
+    
     response = NewDescribeCameraPersonResponse()
     err = c.Send(request, response)
     return
@@ -200,6 +208,7 @@ func NewDescribeClusterPersonArrivedMallRequest() (request *DescribeClusterPerso
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeClusterPersonArrivedMall")
+    
     
     return
 }
@@ -228,6 +237,7 @@ func (c *Client) DescribeClusterPersonArrivedMall(request *DescribeClusterPerson
     if request == nil {
         request = NewDescribeClusterPersonArrivedMallRequest()
     }
+    
     response = NewDescribeClusterPersonArrivedMallResponse()
     err = c.Send(request, response)
     return
@@ -238,6 +248,7 @@ func NewDescribeClusterPersonTraceRequest() (request *DescribeClusterPersonTrace
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeClusterPersonTrace")
+    
     
     return
 }
@@ -266,6 +277,7 @@ func (c *Client) DescribeClusterPersonTrace(request *DescribeClusterPersonTraceR
     if request == nil {
         request = NewDescribeClusterPersonTraceRequest()
     }
+    
     response = NewDescribeClusterPersonTraceResponse()
     err = c.Send(request, response)
     return
@@ -276,6 +288,7 @@ func NewDescribeFaceIdByTempIdRequest() (request *DescribeFaceIdByTempIdRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeFaceIdByTempId")
+    
     
     return
 }
@@ -308,6 +321,7 @@ func (c *Client) DescribeFaceIdByTempId(request *DescribeFaceIdByTempIdRequest) 
     if request == nil {
         request = NewDescribeFaceIdByTempIdRequest()
     }
+    
     response = NewDescribeFaceIdByTempIdResponse()
     err = c.Send(request, response)
     return
@@ -318,6 +332,7 @@ func NewDescribeHistoryNetworkInfoRequest() (request *DescribeHistoryNetworkInfo
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeHistoryNetworkInfo")
+    
     
     return
 }
@@ -342,6 +357,7 @@ func (c *Client) DescribeHistoryNetworkInfo(request *DescribeHistoryNetworkInfoR
     if request == nil {
         request = NewDescribeHistoryNetworkInfoRequest()
     }
+    
     response = NewDescribeHistoryNetworkInfoResponse()
     err = c.Send(request, response)
     return
@@ -352,6 +368,7 @@ func NewDescribeNetworkInfoRequest() (request *DescribeNetworkInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeNetworkInfo")
+    
     
     return
 }
@@ -376,6 +393,7 @@ func (c *Client) DescribeNetworkInfo(request *DescribeNetworkInfoRequest) (respo
     if request == nil {
         request = NewDescribeNetworkInfoRequest()
     }
+    
     response = NewDescribeNetworkInfoResponse()
     err = c.Send(request, response)
     return
@@ -386,6 +404,7 @@ func NewDescribePersonRequest() (request *DescribePersonRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribePerson")
+    
     
     return
 }
@@ -415,6 +434,7 @@ func (c *Client) DescribePerson(request *DescribePersonRequest) (response *Descr
     if request == nil {
         request = NewDescribePersonRequest()
     }
+    
     response = NewDescribePersonResponse()
     err = c.Send(request, response)
     return
@@ -425,6 +445,7 @@ func NewDescribePersonArrivedMallRequest() (request *DescribePersonArrivedMallRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribePersonArrivedMall")
+    
     
     return
 }
@@ -456,6 +477,7 @@ func (c *Client) DescribePersonArrivedMall(request *DescribePersonArrivedMallReq
     if request == nil {
         request = NewDescribePersonArrivedMallRequest()
     }
+    
     response = NewDescribePersonArrivedMallResponse()
     err = c.Send(request, response)
     return
@@ -466,6 +488,7 @@ func NewDescribePersonInfoRequest() (request *DescribePersonInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribePersonInfo")
+    
     
     return
 }
@@ -490,6 +513,7 @@ func (c *Client) DescribePersonInfo(request *DescribePersonInfoRequest) (respons
     if request == nil {
         request = NewDescribePersonInfoRequest()
     }
+    
     response = NewDescribePersonInfoResponse()
     err = c.Send(request, response)
     return
@@ -500,6 +524,7 @@ func NewDescribePersonInfoByFacePictureRequest() (request *DescribePersonInfoByF
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribePersonInfoByFacePicture")
+    
     
     return
 }
@@ -536,6 +561,7 @@ func (c *Client) DescribePersonInfoByFacePicture(request *DescribePersonInfoByFa
     if request == nil {
         request = NewDescribePersonInfoByFacePictureRequest()
     }
+    
     response = NewDescribePersonInfoByFacePictureResponse()
     err = c.Send(request, response)
     return
@@ -546,6 +572,7 @@ func NewDescribePersonTraceRequest() (request *DescribePersonTraceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribePersonTrace")
+    
     
     return
 }
@@ -575,6 +602,7 @@ func (c *Client) DescribePersonTrace(request *DescribePersonTraceRequest) (respo
     if request == nil {
         request = NewDescribePersonTraceRequest()
     }
+    
     response = NewDescribePersonTraceResponse()
     err = c.Send(request, response)
     return
@@ -585,6 +613,7 @@ func NewDescribePersonTraceDetailRequest() (request *DescribePersonTraceDetailRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribePersonTraceDetail")
+    
     
     return
 }
@@ -613,6 +642,7 @@ func (c *Client) DescribePersonTraceDetail(request *DescribePersonTraceDetailReq
     if request == nil {
         request = NewDescribePersonTraceDetailRequest()
     }
+    
     response = NewDescribePersonTraceDetailResponse()
     err = c.Send(request, response)
     return
@@ -623,6 +653,7 @@ func NewDescribePersonVisitInfoRequest() (request *DescribePersonVisitInfoReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribePersonVisitInfo")
+    
     
     return
 }
@@ -646,6 +677,7 @@ func (c *Client) DescribePersonVisitInfo(request *DescribePersonVisitInfoRequest
     if request == nil {
         request = NewDescribePersonVisitInfoRequest()
     }
+    
     response = NewDescribePersonVisitInfoResponse()
     err = c.Send(request, response)
     return
@@ -656,6 +688,7 @@ func NewDescribeShopHourTrafficInfoRequest() (request *DescribeShopHourTrafficIn
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeShopHourTrafficInfo")
+    
     
     return
 }
@@ -680,6 +713,7 @@ func (c *Client) DescribeShopHourTrafficInfo(request *DescribeShopHourTrafficInf
     if request == nil {
         request = NewDescribeShopHourTrafficInfoRequest()
     }
+    
     response = NewDescribeShopHourTrafficInfoResponse()
     err = c.Send(request, response)
     return
@@ -690,6 +724,7 @@ func NewDescribeShopInfoRequest() (request *DescribeShopInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeShopInfo")
+    
     
     return
 }
@@ -714,6 +749,7 @@ func (c *Client) DescribeShopInfo(request *DescribeShopInfoRequest) (response *D
     if request == nil {
         request = NewDescribeShopInfoRequest()
     }
+    
     response = NewDescribeShopInfoResponse()
     err = c.Send(request, response)
     return
@@ -724,6 +760,7 @@ func NewDescribeShopTrafficInfoRequest() (request *DescribeShopTrafficInfoReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeShopTrafficInfo")
+    
     
     return
 }
@@ -748,6 +785,7 @@ func (c *Client) DescribeShopTrafficInfo(request *DescribeShopTrafficInfoRequest
     if request == nil {
         request = NewDescribeShopTrafficInfoRequest()
     }
+    
     response = NewDescribeShopTrafficInfoResponse()
     err = c.Send(request, response)
     return
@@ -758,6 +796,7 @@ func NewDescribeTrajectoryDataRequest() (request *DescribeTrajectoryDataRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeTrajectoryData")
+    
     
     return
 }
@@ -784,6 +823,7 @@ func (c *Client) DescribeTrajectoryData(request *DescribeTrajectoryDataRequest) 
     if request == nil {
         request = NewDescribeTrajectoryDataRequest()
     }
+    
     response = NewDescribeTrajectoryDataResponse()
     err = c.Send(request, response)
     return
@@ -794,6 +834,7 @@ func NewDescribeZoneFlowAgeInfoByZoneIdRequest() (request *DescribeZoneFlowAgeIn
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeZoneFlowAgeInfoByZoneId")
+    
     
     return
 }
@@ -820,6 +861,7 @@ func (c *Client) DescribeZoneFlowAgeInfoByZoneId(request *DescribeZoneFlowAgeInf
     if request == nil {
         request = NewDescribeZoneFlowAgeInfoByZoneIdRequest()
     }
+    
     response = NewDescribeZoneFlowAgeInfoByZoneIdResponse()
     err = c.Send(request, response)
     return
@@ -830,6 +872,7 @@ func NewDescribeZoneFlowAndStayTimeRequest() (request *DescribeZoneFlowAndStayTi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeZoneFlowAndStayTime")
+    
     
     return
 }
@@ -856,6 +899,7 @@ func (c *Client) DescribeZoneFlowAndStayTime(request *DescribeZoneFlowAndStayTim
     if request == nil {
         request = NewDescribeZoneFlowAndStayTimeRequest()
     }
+    
     response = NewDescribeZoneFlowAndStayTimeResponse()
     err = c.Send(request, response)
     return
@@ -866,6 +910,7 @@ func NewDescribeZoneFlowDailyByZoneIdRequest() (request *DescribeZoneFlowDailyBy
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeZoneFlowDailyByZoneId")
+    
     
     return
 }
@@ -892,6 +937,7 @@ func (c *Client) DescribeZoneFlowDailyByZoneId(request *DescribeZoneFlowDailyByZ
     if request == nil {
         request = NewDescribeZoneFlowDailyByZoneIdRequest()
     }
+    
     response = NewDescribeZoneFlowDailyByZoneIdResponse()
     err = c.Send(request, response)
     return
@@ -902,6 +948,7 @@ func NewDescribeZoneFlowGenderAvrStayTimeByZoneIdRequest() (request *DescribeZon
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeZoneFlowGenderAvrStayTimeByZoneId")
+    
     
     return
 }
@@ -928,6 +975,7 @@ func (c *Client) DescribeZoneFlowGenderAvrStayTimeByZoneId(request *DescribeZone
     if request == nil {
         request = NewDescribeZoneFlowGenderAvrStayTimeByZoneIdRequest()
     }
+    
     response = NewDescribeZoneFlowGenderAvrStayTimeByZoneIdResponse()
     err = c.Send(request, response)
     return
@@ -938,6 +986,7 @@ func NewDescribeZoneFlowGenderInfoByZoneIdRequest() (request *DescribeZoneFlowGe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeZoneFlowGenderInfoByZoneId")
+    
     
     return
 }
@@ -964,6 +1013,7 @@ func (c *Client) DescribeZoneFlowGenderInfoByZoneId(request *DescribeZoneFlowGen
     if request == nil {
         request = NewDescribeZoneFlowGenderInfoByZoneIdRequest()
     }
+    
     response = NewDescribeZoneFlowGenderInfoByZoneIdResponse()
     err = c.Send(request, response)
     return
@@ -974,6 +1024,7 @@ func NewDescribeZoneFlowHourlyByZoneIdRequest() (request *DescribeZoneFlowHourly
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeZoneFlowHourlyByZoneId")
+    
     
     return
 }
@@ -1000,6 +1051,7 @@ func (c *Client) DescribeZoneFlowHourlyByZoneId(request *DescribeZoneFlowHourlyB
     if request == nil {
         request = NewDescribeZoneFlowHourlyByZoneIdRequest()
     }
+    
     response = NewDescribeZoneFlowHourlyByZoneIdResponse()
     err = c.Send(request, response)
     return
@@ -1010,6 +1062,7 @@ func NewDescribeZoneTrafficInfoRequest() (request *DescribeZoneTrafficInfoReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeZoneTrafficInfo")
+    
     
     return
 }
@@ -1034,6 +1087,7 @@ func (c *Client) DescribeZoneTrafficInfo(request *DescribeZoneTrafficInfoRequest
     if request == nil {
         request = NewDescribeZoneTrafficInfoRequest()
     }
+    
     response = NewDescribeZoneTrafficInfoResponse()
     err = c.Send(request, response)
     return
@@ -1044,6 +1098,7 @@ func NewModifyPersonFeatureInfoRequest() (request *ModifyPersonFeatureInfoReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "ModifyPersonFeatureInfo")
+    
     
     return
 }
@@ -1075,6 +1130,7 @@ func (c *Client) ModifyPersonFeatureInfo(request *ModifyPersonFeatureInfoRequest
     if request == nil {
         request = NewModifyPersonFeatureInfoRequest()
     }
+    
     response = NewModifyPersonFeatureInfoResponse()
     err = c.Send(request, response)
     return
@@ -1085,6 +1141,7 @@ func NewModifyPersonTagInfoRequest() (request *ModifyPersonTagInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "ModifyPersonTagInfo")
+    
     
     return
 }
@@ -1108,6 +1165,7 @@ func (c *Client) ModifyPersonTagInfo(request *ModifyPersonTagInfoRequest) (respo
     if request == nil {
         request = NewModifyPersonTagInfoRequest()
     }
+    
     response = NewModifyPersonTagInfoResponse()
     err = c.Send(request, response)
     return
@@ -1118,6 +1176,7 @@ func NewModifyPersonTypeRequest() (request *ModifyPersonTypeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "ModifyPersonType")
+    
     
     return
 }
@@ -1154,6 +1213,7 @@ func (c *Client) ModifyPersonType(request *ModifyPersonTypeRequest) (response *M
     if request == nil {
         request = NewModifyPersonTypeRequest()
     }
+    
     response = NewModifyPersonTypeResponse()
     err = c.Send(request, response)
     return
@@ -1164,6 +1224,7 @@ func NewRegisterCallbackRequest() (request *RegisterCallbackRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "RegisterCallback")
+    
     
     return
 }
@@ -1187,6 +1248,7 @@ func (c *Client) RegisterCallback(request *RegisterCallbackRequest) (response *R
     if request == nil {
         request = NewRegisterCallbackRequest()
     }
+    
     response = NewRegisterCallbackResponse()
     err = c.Send(request, response)
     return

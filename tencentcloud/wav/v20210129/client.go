@@ -49,6 +49,7 @@ func NewCreateChannelCodeRequest() (request *CreateChannelCodeRequest) {
     }
     request.Init().WithApiInfo("wav", APIVersion, "CreateChannelCode")
     
+    
     return
 }
 
@@ -65,6 +66,7 @@ func (c *Client) CreateChannelCode(request *CreateChannelCodeRequest) (response 
     if request == nil {
         request = NewCreateChannelCodeRequest()
     }
+    
     response = NewCreateChannelCodeResponse()
     err = c.Send(request, response)
     return
@@ -75,6 +77,7 @@ func NewCreateCorpTagRequest() (request *CreateCorpTagRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("wav", APIVersion, "CreateCorpTag")
+    
     
     return
 }
@@ -102,6 +105,7 @@ func (c *Client) CreateCorpTag(request *CreateCorpTagRequest) (response *CreateC
     if request == nil {
         request = NewCreateCorpTagRequest()
     }
+    
     response = NewCreateCorpTagResponse()
     err = c.Send(request, response)
     return
@@ -112,6 +116,7 @@ func NewQueryActivityJoinListRequest() (request *QueryActivityJoinListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("wav", APIVersion, "QueryActivityJoinList")
+    
     
     return
 }
@@ -135,6 +140,7 @@ func (c *Client) QueryActivityJoinList(request *QueryActivityJoinListRequest) (r
     if request == nil {
         request = NewQueryActivityJoinListRequest()
     }
+    
     response = NewQueryActivityJoinListResponse()
     err = c.Send(request, response)
     return
@@ -145,6 +151,7 @@ func NewQueryActivityListRequest() (request *QueryActivityListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("wav", APIVersion, "QueryActivityList")
+    
     
     return
 }
@@ -168,6 +175,7 @@ func (c *Client) QueryActivityList(request *QueryActivityListRequest) (response 
     if request == nil {
         request = NewQueryActivityListRequest()
     }
+    
     response = NewQueryActivityListResponse()
     err = c.Send(request, response)
     return
@@ -178,6 +186,7 @@ func NewQueryActivityLiveCodeListRequest() (request *QueryActivityLiveCodeListRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("wav", APIVersion, "QueryActivityLiveCodeList")
+    
     
     return
 }
@@ -200,6 +209,7 @@ func (c *Client) QueryActivityLiveCodeList(request *QueryActivityLiveCodeListReq
     if request == nil {
         request = NewQueryActivityLiveCodeListRequest()
     }
+    
     response = NewQueryActivityLiveCodeListResponse()
     err = c.Send(request, response)
     return
@@ -210,6 +220,7 @@ func NewQueryChannelCodeListRequest() (request *QueryChannelCodeListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("wav", APIVersion, "QueryChannelCodeList")
+    
     
     return
 }
@@ -232,6 +243,7 @@ func (c *Client) QueryChannelCodeList(request *QueryChannelCodeListRequest) (res
     if request == nil {
         request = NewQueryChannelCodeListRequest()
     }
+    
     response = NewQueryChannelCodeListResponse()
     err = c.Send(request, response)
     return
@@ -242,6 +254,7 @@ func NewQueryChatArchivingListRequest() (request *QueryChatArchivingListRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("wav", APIVersion, "QueryChatArchivingList")
+    
     
     return
 }
@@ -264,6 +277,7 @@ func (c *Client) QueryChatArchivingList(request *QueryChatArchivingListRequest) 
     if request == nil {
         request = NewQueryChatArchivingListRequest()
     }
+    
     response = NewQueryChatArchivingListResponse()
     err = c.Send(request, response)
     return
@@ -274,6 +288,7 @@ func NewQueryClueInfoListRequest() (request *QueryClueInfoListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("wav", APIVersion, "QueryClueInfoList")
+    
     
     return
 }
@@ -299,6 +314,7 @@ func (c *Client) QueryClueInfoList(request *QueryClueInfoListRequest) (response 
     if request == nil {
         request = NewQueryClueInfoListRequest()
     }
+    
     response = NewQueryClueInfoListResponse()
     err = c.Send(request, response)
     return
@@ -309,6 +325,7 @@ func NewQueryExternalContactDetailRequest() (request *QueryExternalContactDetail
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("wav", APIVersion, "QueryExternalContactDetail")
+    
     
     return
 }
@@ -337,6 +354,7 @@ func (c *Client) QueryExternalContactDetail(request *QueryExternalContactDetailR
     if request == nil {
         request = NewQueryExternalContactDetailRequest()
     }
+    
     response = NewQueryExternalContactDetailResponse()
     err = c.Send(request, response)
     return
@@ -347,6 +365,7 @@ func NewQueryExternalContactListRequest() (request *QueryExternalContactListRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("wav", APIVersion, "QueryExternalContactList")
+    
     
     return
 }
@@ -371,6 +390,7 @@ func (c *Client) QueryExternalContactList(request *QueryExternalContactListReque
     if request == nil {
         request = NewQueryExternalContactListRequest()
     }
+    
     response = NewQueryExternalContactListResponse()
     err = c.Send(request, response)
     return
@@ -381,6 +401,7 @@ func NewQueryExternalUserMappingInfoRequest() (request *QueryExternalUserMapping
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("wav", APIVersion, "QueryExternalUserMappingInfo")
+    
     
     return
 }
@@ -405,6 +426,7 @@ func (c *Client) QueryExternalUserMappingInfo(request *QueryExternalUserMappingI
     if request == nil {
         request = NewQueryExternalUserMappingInfoRequest()
     }
+    
     response = NewQueryExternalUserMappingInfoResponse()
     err = c.Send(request, response)
     return
@@ -415,6 +437,7 @@ func NewQueryLicenseInfoRequest() (request *QueryLicenseInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("wav", APIVersion, "QueryLicenseInfo")
+    
     
     return
 }
@@ -438,6 +461,7 @@ func (c *Client) QueryLicenseInfo(request *QueryLicenseInfoRequest) (response *Q
     if request == nil {
         request = NewQueryLicenseInfoRequest()
     }
+    
     response = NewQueryLicenseInfoResponse()
     err = c.Send(request, response)
     return
@@ -448,6 +472,7 @@ func NewQueryMiniAppCodeListRequest() (request *QueryMiniAppCodeListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("wav", APIVersion, "QueryMiniAppCodeList")
+    
     
     return
 }
@@ -475,6 +500,7 @@ func (c *Client) QueryMiniAppCodeList(request *QueryMiniAppCodeListRequest) (res
     if request == nil {
         request = NewQueryMiniAppCodeListRequest()
     }
+    
     response = NewQueryMiniAppCodeListResponse()
     err = c.Send(request, response)
     return

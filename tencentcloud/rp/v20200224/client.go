@@ -49,6 +49,7 @@ func NewQueryRegisterProtectionRequest() (request *QueryRegisterProtectionReques
     }
     request.Init().WithApiInfo("rp", APIVersion, "QueryRegisterProtection")
     
+    
     return
 }
 
@@ -88,6 +89,7 @@ func (c *Client) QueryRegisterProtection(request *QueryRegisterProtectionRequest
     if request == nil {
         request = NewQueryRegisterProtectionRequest()
     }
+    
     response = NewQueryRegisterProtectionResponse()
     err = c.Send(request, response)
     return

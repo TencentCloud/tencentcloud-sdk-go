@@ -49,6 +49,7 @@ func NewApplyParamsTemplateRequest() (request *ApplyParamsTemplateRequest) {
     }
     request.Init().WithApiInfo("redis", APIVersion, "ApplyParamsTemplate")
     
+    
     return
 }
 
@@ -80,6 +81,7 @@ func (c *Client) ApplyParamsTemplate(request *ApplyParamsTemplateRequest) (respo
     if request == nil {
         request = NewApplyParamsTemplateRequest()
     }
+    
     response = NewApplyParamsTemplateResponse()
     err = c.Send(request, response)
     return
@@ -90,6 +92,7 @@ func NewAssociateSecurityGroupsRequest() (request *AssociateSecurityGroupsReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "AssociateSecurityGroups")
+    
     
     return
 }
@@ -114,6 +117,7 @@ func (c *Client) AssociateSecurityGroups(request *AssociateSecurityGroupsRequest
     if request == nil {
         request = NewAssociateSecurityGroupsRequest()
     }
+    
     response = NewAssociateSecurityGroupsResponse()
     err = c.Send(request, response)
     return
@@ -124,6 +128,7 @@ func NewChangeReplicaToMasterRequest() (request *ChangeReplicaToMasterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "ChangeReplicaToMaster")
+    
     
     return
 }
@@ -153,6 +158,7 @@ func (c *Client) ChangeReplicaToMaster(request *ChangeReplicaToMasterRequest) (r
     if request == nil {
         request = NewChangeReplicaToMasterRequest()
     }
+    
     response = NewChangeReplicaToMasterResponse()
     err = c.Send(request, response)
     return
@@ -163,6 +169,7 @@ func NewCleanUpInstanceRequest() (request *CleanUpInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "CleanUpInstance")
+    
     
     return
 }
@@ -187,6 +194,7 @@ func (c *Client) CleanUpInstance(request *CleanUpInstanceRequest) (response *Cle
     if request == nil {
         request = NewCleanUpInstanceRequest()
     }
+    
     response = NewCleanUpInstanceResponse()
     err = c.Send(request, response)
     return
@@ -197,6 +205,7 @@ func NewClearInstanceRequest() (request *ClearInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "ClearInstance")
+    
     
     return
 }
@@ -222,6 +231,7 @@ func (c *Client) ClearInstance(request *ClearInstanceRequest) (response *ClearIn
     if request == nil {
         request = NewClearInstanceRequest()
     }
+    
     response = NewClearInstanceResponse()
     err = c.Send(request, response)
     return
@@ -232,6 +242,7 @@ func NewCreateInstanceAccountRequest() (request *CreateInstanceAccountRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "CreateInstanceAccount")
+    
     
     return
 }
@@ -255,6 +266,7 @@ func (c *Client) CreateInstanceAccount(request *CreateInstanceAccountRequest) (r
     if request == nil {
         request = NewCreateInstanceAccountRequest()
     }
+    
     response = NewCreateInstanceAccountResponse()
     err = c.Send(request, response)
     return
@@ -265,6 +277,7 @@ func NewCreateInstancesRequest() (request *CreateInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "CreateInstances")
+    
     
     return
 }
@@ -311,6 +324,7 @@ func (c *Client) CreateInstances(request *CreateInstancesRequest) (response *Cre
     if request == nil {
         request = NewCreateInstancesRequest()
     }
+    
     response = NewCreateInstancesResponse()
     err = c.Send(request, response)
     return
@@ -321,6 +335,7 @@ func NewCreateParamTemplateRequest() (request *CreateParamTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "CreateParamTemplate")
+    
     
     return
 }
@@ -344,6 +359,7 @@ func (c *Client) CreateParamTemplate(request *CreateParamTemplateRequest) (respo
     if request == nil {
         request = NewCreateParamTemplateRequest()
     }
+    
     response = NewCreateParamTemplateResponse()
     err = c.Send(request, response)
     return
@@ -354,6 +370,7 @@ func NewDeleteInstanceAccountRequest() (request *DeleteInstanceAccountRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DeleteInstanceAccount")
+    
     
     return
 }
@@ -378,6 +395,7 @@ func (c *Client) DeleteInstanceAccount(request *DeleteInstanceAccountRequest) (r
     if request == nil {
         request = NewDeleteInstanceAccountRequest()
     }
+    
     response = NewDeleteInstanceAccountResponse()
     err = c.Send(request, response)
     return
@@ -388,6 +406,7 @@ func NewDeleteParamTemplateRequest() (request *DeleteParamTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DeleteParamTemplate")
+    
     
     return
 }
@@ -411,6 +430,7 @@ func (c *Client) DeleteParamTemplate(request *DeleteParamTemplateRequest) (respo
     if request == nil {
         request = NewDeleteParamTemplateRequest()
     }
+    
     response = NewDeleteParamTemplateResponse()
     err = c.Send(request, response)
     return
@@ -421,6 +441,7 @@ func NewDescribeAutoBackupConfigRequest() (request *DescribeAutoBackupConfigRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeAutoBackupConfig")
+    
     
     return
 }
@@ -445,6 +466,7 @@ func (c *Client) DescribeAutoBackupConfig(request *DescribeAutoBackupConfigReque
     if request == nil {
         request = NewDescribeAutoBackupConfigRequest()
     }
+    
     response = NewDescribeAutoBackupConfigResponse()
     err = c.Send(request, response)
     return
@@ -455,6 +477,7 @@ func NewDescribeBackupUrlRequest() (request *DescribeBackupUrlRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeBackupUrl")
+    
     
     return
 }
@@ -485,6 +508,7 @@ func (c *Client) DescribeBackupUrl(request *DescribeBackupUrlRequest) (response 
     if request == nil {
         request = NewDescribeBackupUrlRequest()
     }
+    
     response = NewDescribeBackupUrlResponse()
     err = c.Send(request, response)
     return
@@ -495,6 +519,7 @@ func NewDescribeCommonDBInstancesRequest() (request *DescribeCommonDBInstancesRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeCommonDBInstances")
+    
     
     return
 }
@@ -520,6 +545,7 @@ func (c *Client) DescribeCommonDBInstances(request *DescribeCommonDBInstancesReq
     if request == nil {
         request = NewDescribeCommonDBInstancesRequest()
     }
+    
     response = NewDescribeCommonDBInstancesResponse()
     err = c.Send(request, response)
     return
@@ -530,6 +556,7 @@ func NewDescribeDBSecurityGroupsRequest() (request *DescribeDBSecurityGroupsRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeDBSecurityGroups")
+    
     
     return
 }
@@ -560,6 +587,7 @@ func (c *Client) DescribeDBSecurityGroups(request *DescribeDBSecurityGroupsReque
     if request == nil {
         request = NewDescribeDBSecurityGroupsRequest()
     }
+    
     response = NewDescribeDBSecurityGroupsResponse()
     err = c.Send(request, response)
     return
@@ -570,6 +598,7 @@ func NewDescribeInstanceAccountRequest() (request *DescribeInstanceAccountReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceAccount")
+    
     
     return
 }
@@ -593,6 +622,7 @@ func (c *Client) DescribeInstanceAccount(request *DescribeInstanceAccountRequest
     if request == nil {
         request = NewDescribeInstanceAccountRequest()
     }
+    
     response = NewDescribeInstanceAccountResponse()
     err = c.Send(request, response)
     return
@@ -603,6 +633,7 @@ func NewDescribeInstanceBackupsRequest() (request *DescribeInstanceBackupsReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceBackups")
+    
     
     return
 }
@@ -628,6 +659,7 @@ func (c *Client) DescribeInstanceBackups(request *DescribeInstanceBackupsRequest
     if request == nil {
         request = NewDescribeInstanceBackupsRequest()
     }
+    
     response = NewDescribeInstanceBackupsResponse()
     err = c.Send(request, response)
     return
@@ -638,6 +670,7 @@ func NewDescribeInstanceDTSInfoRequest() (request *DescribeInstanceDTSInfoReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceDTSInfo")
+    
     
     return
 }
@@ -659,6 +692,7 @@ func (c *Client) DescribeInstanceDTSInfo(request *DescribeInstanceDTSInfoRequest
     if request == nil {
         request = NewDescribeInstanceDTSInfoRequest()
     }
+    
     response = NewDescribeInstanceDTSInfoResponse()
     err = c.Send(request, response)
     return
@@ -669,6 +703,7 @@ func NewDescribeInstanceDealDetailRequest() (request *DescribeInstanceDealDetail
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceDealDetail")
+    
     
     return
 }
@@ -691,6 +726,7 @@ func (c *Client) DescribeInstanceDealDetail(request *DescribeInstanceDealDetailR
     if request == nil {
         request = NewDescribeInstanceDealDetailRequest()
     }
+    
     response = NewDescribeInstanceDealDetailResponse()
     err = c.Send(request, response)
     return
@@ -701,6 +737,7 @@ func NewDescribeInstanceMonitorBigKeyRequest() (request *DescribeInstanceMonitor
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceMonitorBigKey")
+    
     
     return
 }
@@ -721,6 +758,7 @@ func (c *Client) DescribeInstanceMonitorBigKey(request *DescribeInstanceMonitorB
     if request == nil {
         request = NewDescribeInstanceMonitorBigKeyRequest()
     }
+    
     response = NewDescribeInstanceMonitorBigKeyResponse()
     err = c.Send(request, response)
     return
@@ -731,6 +769,7 @@ func NewDescribeInstanceMonitorBigKeySizeDistRequest() (request *DescribeInstanc
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceMonitorBigKeySizeDist")
+    
     
     return
 }
@@ -751,6 +790,7 @@ func (c *Client) DescribeInstanceMonitorBigKeySizeDist(request *DescribeInstance
     if request == nil {
         request = NewDescribeInstanceMonitorBigKeySizeDistRequest()
     }
+    
     response = NewDescribeInstanceMonitorBigKeySizeDistResponse()
     err = c.Send(request, response)
     return
@@ -761,6 +801,7 @@ func NewDescribeInstanceMonitorBigKeyTypeDistRequest() (request *DescribeInstanc
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceMonitorBigKeyTypeDist")
+    
     
     return
 }
@@ -781,6 +822,7 @@ func (c *Client) DescribeInstanceMonitorBigKeyTypeDist(request *DescribeInstance
     if request == nil {
         request = NewDescribeInstanceMonitorBigKeyTypeDistRequest()
     }
+    
     response = NewDescribeInstanceMonitorBigKeyTypeDistResponse()
     err = c.Send(request, response)
     return
@@ -791,6 +833,7 @@ func NewDescribeInstanceMonitorHotKeyRequest() (request *DescribeInstanceMonitor
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceMonitorHotKey")
+    
     
     return
 }
@@ -811,6 +854,7 @@ func (c *Client) DescribeInstanceMonitorHotKey(request *DescribeInstanceMonitorH
     if request == nil {
         request = NewDescribeInstanceMonitorHotKeyRequest()
     }
+    
     response = NewDescribeInstanceMonitorHotKeyResponse()
     err = c.Send(request, response)
     return
@@ -821,6 +865,7 @@ func NewDescribeInstanceMonitorSIPRequest() (request *DescribeInstanceMonitorSIP
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceMonitorSIP")
+    
     
     return
 }
@@ -841,6 +886,7 @@ func (c *Client) DescribeInstanceMonitorSIP(request *DescribeInstanceMonitorSIPR
     if request == nil {
         request = NewDescribeInstanceMonitorSIPRequest()
     }
+    
     response = NewDescribeInstanceMonitorSIPResponse()
     err = c.Send(request, response)
     return
@@ -851,6 +897,7 @@ func NewDescribeInstanceMonitorTookDistRequest() (request *DescribeInstanceMonit
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceMonitorTookDist")
+    
     
     return
 }
@@ -871,6 +918,7 @@ func (c *Client) DescribeInstanceMonitorTookDist(request *DescribeInstanceMonito
     if request == nil {
         request = NewDescribeInstanceMonitorTookDistRequest()
     }
+    
     response = NewDescribeInstanceMonitorTookDistResponse()
     err = c.Send(request, response)
     return
@@ -881,6 +929,7 @@ func NewDescribeInstanceMonitorTopNCmdRequest() (request *DescribeInstanceMonito
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceMonitorTopNCmd")
+    
     
     return
 }
@@ -901,6 +950,7 @@ func (c *Client) DescribeInstanceMonitorTopNCmd(request *DescribeInstanceMonitor
     if request == nil {
         request = NewDescribeInstanceMonitorTopNCmdRequest()
     }
+    
     response = NewDescribeInstanceMonitorTopNCmdResponse()
     err = c.Send(request, response)
     return
@@ -911,6 +961,7 @@ func NewDescribeInstanceMonitorTopNCmdTookRequest() (request *DescribeInstanceMo
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceMonitorTopNCmdTook")
+    
     
     return
 }
@@ -931,6 +982,7 @@ func (c *Client) DescribeInstanceMonitorTopNCmdTook(request *DescribeInstanceMon
     if request == nil {
         request = NewDescribeInstanceMonitorTopNCmdTookRequest()
     }
+    
     response = NewDescribeInstanceMonitorTopNCmdTookResponse()
     err = c.Send(request, response)
     return
@@ -941,6 +993,7 @@ func NewDescribeInstanceNodeInfoRequest() (request *DescribeInstanceNodeInfoRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceNodeInfo")
+    
     
     return
 }
@@ -964,6 +1017,7 @@ func (c *Client) DescribeInstanceNodeInfo(request *DescribeInstanceNodeInfoReque
     if request == nil {
         request = NewDescribeInstanceNodeInfoRequest()
     }
+    
     response = NewDescribeInstanceNodeInfoResponse()
     err = c.Send(request, response)
     return
@@ -974,6 +1028,7 @@ func NewDescribeInstanceParamRecordsRequest() (request *DescribeInstanceParamRec
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceParamRecords")
+    
     
     return
 }
@@ -1001,6 +1056,7 @@ func (c *Client) DescribeInstanceParamRecords(request *DescribeInstanceParamReco
     if request == nil {
         request = NewDescribeInstanceParamRecordsRequest()
     }
+    
     response = NewDescribeInstanceParamRecordsResponse()
     err = c.Send(request, response)
     return
@@ -1011,6 +1067,7 @@ func NewDescribeInstanceParamsRequest() (request *DescribeInstanceParamsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceParams")
+    
     
     return
 }
@@ -1042,6 +1099,7 @@ func (c *Client) DescribeInstanceParams(request *DescribeInstanceParamsRequest) 
     if request == nil {
         request = NewDescribeInstanceParamsRequest()
     }
+    
     response = NewDescribeInstanceParamsResponse()
     err = c.Send(request, response)
     return
@@ -1052,6 +1110,7 @@ func NewDescribeInstanceSecurityGroupRequest() (request *DescribeInstanceSecurit
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceSecurityGroup")
+    
     
     return
 }
@@ -1078,6 +1137,7 @@ func (c *Client) DescribeInstanceSecurityGroup(request *DescribeInstanceSecurity
     if request == nil {
         request = NewDescribeInstanceSecurityGroupRequest()
     }
+    
     response = NewDescribeInstanceSecurityGroupResponse()
     err = c.Send(request, response)
     return
@@ -1088,6 +1148,7 @@ func NewDescribeInstanceShardsRequest() (request *DescribeInstanceShardsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceShards")
+    
     
     return
 }
@@ -1110,6 +1171,7 @@ func (c *Client) DescribeInstanceShards(request *DescribeInstanceShardsRequest) 
     if request == nil {
         request = NewDescribeInstanceShardsRequest()
     }
+    
     response = NewDescribeInstanceShardsResponse()
     err = c.Send(request, response)
     return
@@ -1120,6 +1182,7 @@ func NewDescribeInstanceZoneInfoRequest() (request *DescribeInstanceZoneInfoRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstanceZoneInfo")
+    
     
     return
 }
@@ -1148,6 +1211,7 @@ func (c *Client) DescribeInstanceZoneInfo(request *DescribeInstanceZoneInfoReque
     if request == nil {
         request = NewDescribeInstanceZoneInfoRequest()
     }
+    
     response = NewDescribeInstanceZoneInfoResponse()
     err = c.Send(request, response)
     return
@@ -1158,6 +1222,7 @@ func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeInstances")
+    
     
     return
 }
@@ -1185,6 +1250,7 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    
     response = NewDescribeInstancesResponse()
     err = c.Send(request, response)
     return
@@ -1195,6 +1261,7 @@ func NewDescribeMaintenanceWindowRequest() (request *DescribeMaintenanceWindowRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeMaintenanceWindow")
+    
     
     return
 }
@@ -1218,6 +1285,7 @@ func (c *Client) DescribeMaintenanceWindow(request *DescribeMaintenanceWindowReq
     if request == nil {
         request = NewDescribeMaintenanceWindowRequest()
     }
+    
     response = NewDescribeMaintenanceWindowResponse()
     err = c.Send(request, response)
     return
@@ -1228,6 +1296,7 @@ func NewDescribeParamTemplateInfoRequest() (request *DescribeParamTemplateInfoRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeParamTemplateInfo")
+    
     
     return
 }
@@ -1253,6 +1322,7 @@ func (c *Client) DescribeParamTemplateInfo(request *DescribeParamTemplateInfoReq
     if request == nil {
         request = NewDescribeParamTemplateInfoRequest()
     }
+    
     response = NewDescribeParamTemplateInfoResponse()
     err = c.Send(request, response)
     return
@@ -1263,6 +1333,7 @@ func NewDescribeParamTemplatesRequest() (request *DescribeParamTemplatesRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeParamTemplates")
+    
     
     return
 }
@@ -1286,6 +1357,7 @@ func (c *Client) DescribeParamTemplates(request *DescribeParamTemplatesRequest) 
     if request == nil {
         request = NewDescribeParamTemplatesRequest()
     }
+    
     response = NewDescribeParamTemplatesResponse()
     err = c.Send(request, response)
     return
@@ -1296,6 +1368,7 @@ func NewDescribeProductInfoRequest() (request *DescribeProductInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeProductInfo")
+    
     
     return
 }
@@ -1320,6 +1393,7 @@ func (c *Client) DescribeProductInfo(request *DescribeProductInfoRequest) (respo
     if request == nil {
         request = NewDescribeProductInfoRequest()
     }
+    
     response = NewDescribeProductInfoResponse()
     err = c.Send(request, response)
     return
@@ -1330,6 +1404,7 @@ func NewDescribeProjectSecurityGroupRequest() (request *DescribeProjectSecurityG
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeProjectSecurityGroup")
+    
     
     return
 }
@@ -1358,6 +1433,7 @@ func (c *Client) DescribeProjectSecurityGroup(request *DescribeProjectSecurityGr
     if request == nil {
         request = NewDescribeProjectSecurityGroupRequest()
     }
+    
     response = NewDescribeProjectSecurityGroupResponse()
     err = c.Send(request, response)
     return
@@ -1368,6 +1444,7 @@ func NewDescribeProjectSecurityGroupsRequest() (request *DescribeProjectSecurity
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeProjectSecurityGroups")
+    
     
     return
 }
@@ -1393,6 +1470,7 @@ func (c *Client) DescribeProjectSecurityGroups(request *DescribeProjectSecurityG
     if request == nil {
         request = NewDescribeProjectSecurityGroupsRequest()
     }
+    
     response = NewDescribeProjectSecurityGroupsResponse()
     err = c.Send(request, response)
     return
@@ -1403,6 +1481,7 @@ func NewDescribeProxySlowLogRequest() (request *DescribeProxySlowLogRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeProxySlowLog")
+    
     
     return
 }
@@ -1429,6 +1508,7 @@ func (c *Client) DescribeProxySlowLog(request *DescribeProxySlowLogRequest) (res
     if request == nil {
         request = NewDescribeProxySlowLogRequest()
     }
+    
     response = NewDescribeProxySlowLogResponse()
     err = c.Send(request, response)
     return
@@ -1439,6 +1519,7 @@ func NewDescribeSlowLogRequest() (request *DescribeSlowLogRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeSlowLog")
+    
     
     return
 }
@@ -1465,6 +1546,7 @@ func (c *Client) DescribeSlowLog(request *DescribeSlowLogRequest) (response *Des
     if request == nil {
         request = NewDescribeSlowLogRequest()
     }
+    
     response = NewDescribeSlowLogResponse()
     err = c.Send(request, response)
     return
@@ -1475,6 +1557,7 @@ func NewDescribeTaskInfoRequest() (request *DescribeTaskInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeTaskInfo")
+    
     
     return
 }
@@ -1497,6 +1580,7 @@ func (c *Client) DescribeTaskInfo(request *DescribeTaskInfoRequest) (response *D
     if request == nil {
         request = NewDescribeTaskInfoRequest()
     }
+    
     response = NewDescribeTaskInfoResponse()
     err = c.Send(request, response)
     return
@@ -1507,6 +1591,7 @@ func NewDescribeTaskListRequest() (request *DescribeTaskListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeTaskList")
+    
     
     return
 }
@@ -1530,6 +1615,7 @@ func (c *Client) DescribeTaskList(request *DescribeTaskListRequest) (response *D
     if request == nil {
         request = NewDescribeTaskListRequest()
     }
+    
     response = NewDescribeTaskListResponse()
     err = c.Send(request, response)
     return
@@ -1540,6 +1626,7 @@ func NewDescribeTendisSlowLogRequest() (request *DescribeTendisSlowLogRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DescribeTendisSlowLog")
+    
     
     return
 }
@@ -1561,6 +1648,7 @@ func (c *Client) DescribeTendisSlowLog(request *DescribeTendisSlowLogRequest) (r
     if request == nil {
         request = NewDescribeTendisSlowLogRequest()
     }
+    
     response = NewDescribeTendisSlowLogResponse()
     err = c.Send(request, response)
     return
@@ -1571,6 +1659,7 @@ func NewDestroyPostpaidInstanceRequest() (request *DestroyPostpaidInstanceReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DestroyPostpaidInstance")
+    
     
     return
 }
@@ -1601,6 +1690,7 @@ func (c *Client) DestroyPostpaidInstance(request *DestroyPostpaidInstanceRequest
     if request == nil {
         request = NewDestroyPostpaidInstanceRequest()
     }
+    
     response = NewDestroyPostpaidInstanceResponse()
     err = c.Send(request, response)
     return
@@ -1611,6 +1701,7 @@ func NewDestroyPrepaidInstanceRequest() (request *DestroyPrepaidInstanceRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DestroyPrepaidInstance")
+    
     
     return
 }
@@ -1643,6 +1734,7 @@ func (c *Client) DestroyPrepaidInstance(request *DestroyPrepaidInstanceRequest) 
     if request == nil {
         request = NewDestroyPrepaidInstanceRequest()
     }
+    
     response = NewDestroyPrepaidInstanceResponse()
     err = c.Send(request, response)
     return
@@ -1653,6 +1745,7 @@ func NewDisableReplicaReadonlyRequest() (request *DisableReplicaReadonlyRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DisableReplicaReadonly")
+    
     
     return
 }
@@ -1678,6 +1771,7 @@ func (c *Client) DisableReplicaReadonly(request *DisableReplicaReadonlyRequest) 
     if request == nil {
         request = NewDisableReplicaReadonlyRequest()
     }
+    
     response = NewDisableReplicaReadonlyResponse()
     err = c.Send(request, response)
     return
@@ -1688,6 +1782,7 @@ func NewDisassociateSecurityGroupsRequest() (request *DisassociateSecurityGroups
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "DisassociateSecurityGroups")
+    
     
     return
 }
@@ -1711,6 +1806,7 @@ func (c *Client) DisassociateSecurityGroups(request *DisassociateSecurityGroupsR
     if request == nil {
         request = NewDisassociateSecurityGroupsRequest()
     }
+    
     response = NewDisassociateSecurityGroupsResponse()
     err = c.Send(request, response)
     return
@@ -1721,6 +1817,7 @@ func NewEnableReplicaReadonlyRequest() (request *EnableReplicaReadonlyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "EnableReplicaReadonly")
+    
     
     return
 }
@@ -1747,6 +1844,7 @@ func (c *Client) EnableReplicaReadonly(request *EnableReplicaReadonlyRequest) (r
     if request == nil {
         request = NewEnableReplicaReadonlyRequest()
     }
+    
     response = NewEnableReplicaReadonlyResponse()
     err = c.Send(request, response)
     return
@@ -1757,6 +1855,7 @@ func NewInquiryPriceCreateInstanceRequest() (request *InquiryPriceCreateInstance
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "InquiryPriceCreateInstance")
+    
     
     return
 }
@@ -1781,6 +1880,7 @@ func (c *Client) InquiryPriceCreateInstance(request *InquiryPriceCreateInstanceR
     if request == nil {
         request = NewInquiryPriceCreateInstanceRequest()
     }
+    
     response = NewInquiryPriceCreateInstanceResponse()
     err = c.Send(request, response)
     return
@@ -1791,6 +1891,7 @@ func NewInquiryPriceRenewInstanceRequest() (request *InquiryPriceRenewInstanceRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "InquiryPriceRenewInstance")
+    
     
     return
 }
@@ -1818,6 +1919,7 @@ func (c *Client) InquiryPriceRenewInstance(request *InquiryPriceRenewInstanceReq
     if request == nil {
         request = NewInquiryPriceRenewInstanceRequest()
     }
+    
     response = NewInquiryPriceRenewInstanceResponse()
     err = c.Send(request, response)
     return
@@ -1828,6 +1930,7 @@ func NewInquiryPriceUpgradeInstanceRequest() (request *InquiryPriceUpgradeInstan
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "InquiryPriceUpgradeInstance")
+    
     
     return
 }
@@ -1853,6 +1956,7 @@ func (c *Client) InquiryPriceUpgradeInstance(request *InquiryPriceUpgradeInstanc
     if request == nil {
         request = NewInquiryPriceUpgradeInstanceRequest()
     }
+    
     response = NewInquiryPriceUpgradeInstanceResponse()
     err = c.Send(request, response)
     return
@@ -1863,6 +1967,7 @@ func NewKillMasterGroupRequest() (request *KillMasterGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "KillMasterGroup")
+    
     
     return
 }
@@ -1896,6 +2001,7 @@ func (c *Client) KillMasterGroup(request *KillMasterGroupRequest) (response *Kil
     if request == nil {
         request = NewKillMasterGroupRequest()
     }
+    
     response = NewKillMasterGroupResponse()
     err = c.Send(request, response)
     return
@@ -1906,6 +2012,7 @@ func NewManualBackupInstanceRequest() (request *ManualBackupInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "ManualBackupInstance")
+    
     
     return
 }
@@ -1934,6 +2041,7 @@ func (c *Client) ManualBackupInstance(request *ManualBackupInstanceRequest) (res
     if request == nil {
         request = NewManualBackupInstanceRequest()
     }
+    
     response = NewManualBackupInstanceResponse()
     err = c.Send(request, response)
     return
@@ -1944,6 +2052,7 @@ func NewModfiyInstancePasswordRequest() (request *ModfiyInstancePasswordRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "ModfiyInstancePassword")
+    
     
     return
 }
@@ -1973,6 +2082,7 @@ func (c *Client) ModfiyInstancePassword(request *ModfiyInstancePasswordRequest) 
     if request == nil {
         request = NewModfiyInstancePasswordRequest()
     }
+    
     response = NewModfiyInstancePasswordResponse()
     err = c.Send(request, response)
     return
@@ -1983,6 +2093,7 @@ func NewModifyAutoBackupConfigRequest() (request *ModifyAutoBackupConfigRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "ModifyAutoBackupConfig")
+    
     
     return
 }
@@ -2010,6 +2121,7 @@ func (c *Client) ModifyAutoBackupConfig(request *ModifyAutoBackupConfigRequest) 
     if request == nil {
         request = NewModifyAutoBackupConfigRequest()
     }
+    
     response = NewModifyAutoBackupConfigResponse()
     err = c.Send(request, response)
     return
@@ -2020,6 +2132,7 @@ func NewModifyConnectionConfigRequest() (request *ModifyConnectionConfigRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "ModifyConnectionConfig")
+    
     
     return
 }
@@ -2040,6 +2153,7 @@ func (c *Client) ModifyConnectionConfig(request *ModifyConnectionConfigRequest) 
     if request == nil {
         request = NewModifyConnectionConfigRequest()
     }
+    
     response = NewModifyConnectionConfigResponse()
     err = c.Send(request, response)
     return
@@ -2050,6 +2164,7 @@ func NewModifyDBInstanceSecurityGroupsRequest() (request *ModifyDBInstanceSecuri
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "ModifyDBInstanceSecurityGroups")
+    
     
     return
 }
@@ -2077,6 +2192,7 @@ func (c *Client) ModifyDBInstanceSecurityGroups(request *ModifyDBInstanceSecurit
     if request == nil {
         request = NewModifyDBInstanceSecurityGroupsRequest()
     }
+    
     response = NewModifyDBInstanceSecurityGroupsResponse()
     err = c.Send(request, response)
     return
@@ -2087,6 +2203,7 @@ func NewModifyInstanceRequest() (request *ModifyInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "ModifyInstance")
+    
     
     return
 }
@@ -2114,6 +2231,7 @@ func (c *Client) ModifyInstance(request *ModifyInstanceRequest) (response *Modif
     if request == nil {
         request = NewModifyInstanceRequest()
     }
+    
     response = NewModifyInstanceResponse()
     err = c.Send(request, response)
     return
@@ -2124,6 +2242,7 @@ func NewModifyInstanceAccountRequest() (request *ModifyInstanceAccountRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "ModifyInstanceAccount")
+    
     
     return
 }
@@ -2148,6 +2267,7 @@ func (c *Client) ModifyInstanceAccount(request *ModifyInstanceAccountRequest) (r
     if request == nil {
         request = NewModifyInstanceAccountRequest()
     }
+    
     response = NewModifyInstanceAccountResponse()
     err = c.Send(request, response)
     return
@@ -2158,6 +2278,7 @@ func NewModifyInstanceParamsRequest() (request *ModifyInstanceParamsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "ModifyInstanceParams")
+    
     
     return
 }
@@ -2190,6 +2311,7 @@ func (c *Client) ModifyInstanceParams(request *ModifyInstanceParamsRequest) (res
     if request == nil {
         request = NewModifyInstanceParamsRequest()
     }
+    
     response = NewModifyInstanceParamsResponse()
     err = c.Send(request, response)
     return
@@ -2200,6 +2322,7 @@ func NewModifyMaintenanceWindowRequest() (request *ModifyMaintenanceWindowReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "ModifyMaintenanceWindow")
+    
     
     return
 }
@@ -2224,6 +2347,7 @@ func (c *Client) ModifyMaintenanceWindow(request *ModifyMaintenanceWindowRequest
     if request == nil {
         request = NewModifyMaintenanceWindowRequest()
     }
+    
     response = NewModifyMaintenanceWindowResponse()
     err = c.Send(request, response)
     return
@@ -2234,6 +2358,7 @@ func NewModifyNetworkConfigRequest() (request *ModifyNetworkConfigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "ModifyNetworkConfig")
+    
     
     return
 }
@@ -2262,6 +2387,7 @@ func (c *Client) ModifyNetworkConfig(request *ModifyNetworkConfigRequest) (respo
     if request == nil {
         request = NewModifyNetworkConfigRequest()
     }
+    
     response = NewModifyNetworkConfigResponse()
     err = c.Send(request, response)
     return
@@ -2272,6 +2398,7 @@ func NewModifyParamTemplateRequest() (request *ModifyParamTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "ModifyParamTemplate")
+    
     
     return
 }
@@ -2295,6 +2422,7 @@ func (c *Client) ModifyParamTemplate(request *ModifyParamTemplateRequest) (respo
     if request == nil {
         request = NewModifyParamTemplateRequest()
     }
+    
     response = NewModifyParamTemplateResponse()
     err = c.Send(request, response)
     return
@@ -2305,6 +2433,7 @@ func NewRenewInstanceRequest() (request *RenewInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "RenewInstance")
+    
     
     return
 }
@@ -2333,6 +2462,7 @@ func (c *Client) RenewInstance(request *RenewInstanceRequest) (response *RenewIn
     if request == nil {
         request = NewRenewInstanceRequest()
     }
+    
     response = NewRenewInstanceResponse()
     err = c.Send(request, response)
     return
@@ -2343,6 +2473,7 @@ func NewResetPasswordRequest() (request *ResetPasswordRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "ResetPassword")
+    
     
     return
 }
@@ -2370,6 +2501,7 @@ func (c *Client) ResetPassword(request *ResetPasswordRequest) (response *ResetPa
     if request == nil {
         request = NewResetPasswordRequest()
     }
+    
     response = NewResetPasswordResponse()
     err = c.Send(request, response)
     return
@@ -2380,6 +2512,7 @@ func NewRestoreInstanceRequest() (request *RestoreInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "RestoreInstance")
+    
     
     return
 }
@@ -2411,6 +2544,7 @@ func (c *Client) RestoreInstance(request *RestoreInstanceRequest) (response *Res
     if request == nil {
         request = NewRestoreInstanceRequest()
     }
+    
     response = NewRestoreInstanceResponse()
     err = c.Send(request, response)
     return
@@ -2421,6 +2555,7 @@ func NewStartupInstanceRequest() (request *StartupInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "StartupInstance")
+    
     
     return
 }
@@ -2447,6 +2582,7 @@ func (c *Client) StartupInstance(request *StartupInstanceRequest) (response *Sta
     if request == nil {
         request = NewStartupInstanceRequest()
     }
+    
     response = NewStartupInstanceResponse()
     err = c.Send(request, response)
     return
@@ -2457,6 +2593,7 @@ func NewSwitchInstanceVipRequest() (request *SwitchInstanceVipRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "SwitchInstanceVip")
+    
     
     return
 }
@@ -2484,6 +2621,7 @@ func (c *Client) SwitchInstanceVip(request *SwitchInstanceVipRequest) (response 
     if request == nil {
         request = NewSwitchInstanceVipRequest()
     }
+    
     response = NewSwitchInstanceVipResponse()
     err = c.Send(request, response)
     return
@@ -2494,6 +2632,7 @@ func NewUpgradeInstanceRequest() (request *UpgradeInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "UpgradeInstance")
+    
     
     return
 }
@@ -2524,6 +2663,7 @@ func (c *Client) UpgradeInstance(request *UpgradeInstanceRequest) (response *Upg
     if request == nil {
         request = NewUpgradeInstanceRequest()
     }
+    
     response = NewUpgradeInstanceResponse()
     err = c.Send(request, response)
     return
@@ -2534,6 +2674,7 @@ func NewUpgradeInstanceVersionRequest() (request *UpgradeInstanceVersionRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "UpgradeInstanceVersion")
+    
     
     return
 }
@@ -2557,6 +2698,7 @@ func (c *Client) UpgradeInstanceVersion(request *UpgradeInstanceVersionRequest) 
     if request == nil {
         request = NewUpgradeInstanceVersionRequest()
     }
+    
     response = NewUpgradeInstanceVersionResponse()
     err = c.Send(request, response)
     return
@@ -2567,6 +2709,7 @@ func NewUpgradeVersionToMultiAvailabilityZonesRequest() (request *UpgradeVersion
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("redis", APIVersion, "UpgradeVersionToMultiAvailabilityZones")
+    
     
     return
 }
@@ -2587,6 +2730,7 @@ func (c *Client) UpgradeVersionToMultiAvailabilityZones(request *UpgradeVersionT
     if request == nil {
         request = NewUpgradeVersionToMultiAvailabilityZonesRequest()
     }
+    
     response = NewUpgradeVersionToMultiAvailabilityZonesResponse()
     err = c.Send(request, response)
     return

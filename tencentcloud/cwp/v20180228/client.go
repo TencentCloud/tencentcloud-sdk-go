@@ -49,6 +49,7 @@ func NewCancelIgnoreVulRequest() (request *CancelIgnoreVulRequest) {
     }
     request.Init().WithApiInfo("cwp", APIVersion, "CancelIgnoreVul")
     
+    
     return
 }
 
@@ -73,6 +74,7 @@ func (c *Client) CancelIgnoreVul(request *CancelIgnoreVulRequest) (response *Can
     if request == nil {
         request = NewCancelIgnoreVulRequest()
     }
+    
     response = NewCancelIgnoreVulResponse()
     err = c.Send(request, response)
     return
@@ -83,6 +85,7 @@ func NewChangeRuleEventsIgnoreStatusRequest() (request *ChangeRuleEventsIgnoreSt
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ChangeRuleEventsIgnoreStatus")
+    
     
     return
 }
@@ -108,6 +111,7 @@ func (c *Client) ChangeRuleEventsIgnoreStatus(request *ChangeRuleEventsIgnoreSta
     if request == nil {
         request = NewChangeRuleEventsIgnoreStatusRequest()
     }
+    
     response = NewChangeRuleEventsIgnoreStatusResponse()
     err = c.Send(request, response)
     return
@@ -118,6 +122,7 @@ func NewCheckBashRuleParamsRequest() (request *CheckBashRuleParamsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "CheckBashRuleParams")
+    
     
     return
 }
@@ -142,6 +147,7 @@ func (c *Client) CheckBashRuleParams(request *CheckBashRuleParamsRequest) (respo
     if request == nil {
         request = NewCheckBashRuleParamsRequest()
     }
+    
     response = NewCheckBashRuleParamsResponse()
     err = c.Send(request, response)
     return
@@ -152,6 +158,7 @@ func NewCloseProVersionRequest() (request *CloseProVersionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "CloseProVersion")
+    
     
     return
 }
@@ -182,6 +189,7 @@ func (c *Client) CloseProVersion(request *CloseProVersionRequest) (response *Clo
     if request == nil {
         request = NewCloseProVersionRequest()
     }
+    
     response = NewCloseProVersionResponse()
     err = c.Send(request, response)
     return
@@ -192,6 +200,7 @@ func NewCreateBaselineStrategyRequest() (request *CreateBaselineStrategyRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "CreateBaselineStrategy")
+    
     
     return
 }
@@ -222,6 +231,7 @@ func (c *Client) CreateBaselineStrategy(request *CreateBaselineStrategyRequest) 
     if request == nil {
         request = NewCreateBaselineStrategyRequest()
     }
+    
     response = NewCreateBaselineStrategyResponse()
     err = c.Send(request, response)
     return
@@ -232,6 +242,7 @@ func NewCreateEmergencyVulScanRequest() (request *CreateEmergencyVulScanRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "CreateEmergencyVulScan")
+    
     
     return
 }
@@ -260,6 +271,7 @@ func (c *Client) CreateEmergencyVulScan(request *CreateEmergencyVulScanRequest) 
     if request == nil {
         request = NewCreateEmergencyVulScanRequest()
     }
+    
     response = NewCreateEmergencyVulScanResponse()
     err = c.Send(request, response)
     return
@@ -270,6 +282,7 @@ func NewCreateProtectServerRequest() (request *CreateProtectServerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "CreateProtectServer")
+    
     
     return
 }
@@ -295,6 +308,7 @@ func (c *Client) CreateProtectServer(request *CreateProtectServerRequest) (respo
     if request == nil {
         request = NewCreateProtectServerRequest()
     }
+    
     response = NewCreateProtectServerResponse()
     err = c.Send(request, response)
     return
@@ -305,6 +319,7 @@ func NewCreateScanMalwareSettingRequest() (request *CreateScanMalwareSettingRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "CreateScanMalwareSetting")
+    
     
     return
 }
@@ -337,6 +352,7 @@ func (c *Client) CreateScanMalwareSetting(request *CreateScanMalwareSettingReque
     if request == nil {
         request = NewCreateScanMalwareSettingRequest()
     }
+    
     response = NewCreateScanMalwareSettingResponse()
     err = c.Send(request, response)
     return
@@ -347,6 +363,7 @@ func NewCreateSearchLogRequest() (request *CreateSearchLogRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "CreateSearchLog")
+    
     
     return
 }
@@ -370,6 +387,7 @@ func (c *Client) CreateSearchLog(request *CreateSearchLogRequest) (response *Cre
     if request == nil {
         request = NewCreateSearchLogRequest()
     }
+    
     response = NewCreateSearchLogResponse()
     err = c.Send(request, response)
     return
@@ -380,6 +398,7 @@ func NewCreateSearchTemplateRequest() (request *CreateSearchTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "CreateSearchTemplate")
+    
     
     return
 }
@@ -405,6 +424,7 @@ func (c *Client) CreateSearchTemplate(request *CreateSearchTemplateRequest) (res
     if request == nil {
         request = NewCreateSearchTemplateRequest()
     }
+    
     response = NewCreateSearchTemplateResponse()
     err = c.Send(request, response)
     return
@@ -415,6 +435,7 @@ func NewDeleteAttackLogsRequest() (request *DeleteAttackLogsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteAttackLogs")
+    
     
     return
 }
@@ -443,6 +464,7 @@ func (c *Client) DeleteAttackLogs(request *DeleteAttackLogsRequest) (response *D
     if request == nil {
         request = NewDeleteAttackLogsRequest()
     }
+    
     response = NewDeleteAttackLogsResponse()
     err = c.Send(request, response)
     return
@@ -453,6 +475,7 @@ func NewDeleteBaselineStrategyRequest() (request *DeleteBaselineStrategyRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteBaselineStrategy")
+    
     
     return
 }
@@ -479,6 +502,7 @@ func (c *Client) DeleteBaselineStrategy(request *DeleteBaselineStrategyRequest) 
     if request == nil {
         request = NewDeleteBaselineStrategyRequest()
     }
+    
     response = NewDeleteBaselineStrategyResponse()
     err = c.Send(request, response)
     return
@@ -489,6 +513,7 @@ func NewDeleteBashEventsRequest() (request *DeleteBashEventsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteBashEvents")
+    
     
     return
 }
@@ -518,6 +543,7 @@ func (c *Client) DeleteBashEvents(request *DeleteBashEventsRequest) (response *D
     if request == nil {
         request = NewDeleteBashEventsRequest()
     }
+    
     response = NewDeleteBashEventsResponse()
     err = c.Send(request, response)
     return
@@ -528,6 +554,7 @@ func NewDeleteBashRulesRequest() (request *DeleteBashRulesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteBashRules")
+    
     
     return
 }
@@ -557,6 +584,7 @@ func (c *Client) DeleteBashRules(request *DeleteBashRulesRequest) (response *Del
     if request == nil {
         request = NewDeleteBashRulesRequest()
     }
+    
     response = NewDeleteBashRulesResponse()
     err = c.Send(request, response)
     return
@@ -567,6 +595,7 @@ func NewDeleteBruteAttacksRequest() (request *DeleteBruteAttacksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteBruteAttacks")
+    
     
     return
 }
@@ -593,6 +622,7 @@ func (c *Client) DeleteBruteAttacks(request *DeleteBruteAttacksRequest) (respons
     if request == nil {
         request = NewDeleteBruteAttacksRequest()
     }
+    
     response = NewDeleteBruteAttacksResponse()
     err = c.Send(request, response)
     return
@@ -603,6 +633,7 @@ func NewDeleteLoginWhiteListRequest() (request *DeleteLoginWhiteListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteLoginWhiteList")
+    
     
     return
 }
@@ -629,6 +660,7 @@ func (c *Client) DeleteLoginWhiteList(request *DeleteLoginWhiteListRequest) (res
     if request == nil {
         request = NewDeleteLoginWhiteListRequest()
     }
+    
     response = NewDeleteLoginWhiteListResponse()
     err = c.Send(request, response)
     return
@@ -639,6 +671,7 @@ func NewDeleteMachineRequest() (request *DeleteMachineRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteMachine")
+    
     
     return
 }
@@ -669,6 +702,7 @@ func (c *Client) DeleteMachine(request *DeleteMachineRequest) (response *DeleteM
     if request == nil {
         request = NewDeleteMachineRequest()
     }
+    
     response = NewDeleteMachineResponse()
     err = c.Send(request, response)
     return
@@ -679,6 +713,7 @@ func NewDeleteMachineTagRequest() (request *DeleteMachineTagRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteMachineTag")
+    
     
     return
 }
@@ -705,6 +740,7 @@ func (c *Client) DeleteMachineTag(request *DeleteMachineTagRequest) (response *D
     if request == nil {
         request = NewDeleteMachineTagRequest()
     }
+    
     response = NewDeleteMachineTagResponse()
     err = c.Send(request, response)
     return
@@ -715,6 +751,7 @@ func NewDeleteMaliciousRequestsRequest() (request *DeleteMaliciousRequestsReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteMaliciousRequests")
+    
     
     return
 }
@@ -740,6 +777,7 @@ func (c *Client) DeleteMaliciousRequests(request *DeleteMaliciousRequestsRequest
     if request == nil {
         request = NewDeleteMaliciousRequestsRequest()
     }
+    
     response = NewDeleteMaliciousRequestsResponse()
     err = c.Send(request, response)
     return
@@ -750,6 +788,7 @@ func NewDeleteMalwareScanTaskRequest() (request *DeleteMalwareScanTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteMalwareScanTask")
+    
     
     return
 }
@@ -776,6 +815,7 @@ func (c *Client) DeleteMalwareScanTask(request *DeleteMalwareScanTaskRequest) (r
     if request == nil {
         request = NewDeleteMalwareScanTaskRequest()
     }
+    
     response = NewDeleteMalwareScanTaskResponse()
     err = c.Send(request, response)
     return
@@ -786,6 +826,7 @@ func NewDeleteMalwaresRequest() (request *DeleteMalwaresRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteMalwares")
+    
     
     return
 }
@@ -811,6 +852,7 @@ func (c *Client) DeleteMalwares(request *DeleteMalwaresRequest) (response *Delet
     if request == nil {
         request = NewDeleteMalwaresRequest()
     }
+    
     response = NewDeleteMalwaresResponse()
     err = c.Send(request, response)
     return
@@ -821,6 +863,7 @@ func NewDeleteNonlocalLoginPlacesRequest() (request *DeleteNonlocalLoginPlacesRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteNonlocalLoginPlaces")
+    
     
     return
 }
@@ -849,6 +892,7 @@ func (c *Client) DeleteNonlocalLoginPlaces(request *DeleteNonlocalLoginPlacesReq
     if request == nil {
         request = NewDeleteNonlocalLoginPlacesRequest()
     }
+    
     response = NewDeleteNonlocalLoginPlacesResponse()
     err = c.Send(request, response)
     return
@@ -859,6 +903,7 @@ func NewDeletePrivilegeEventsRequest() (request *DeletePrivilegeEventsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DeletePrivilegeEvents")
+    
     
     return
 }
@@ -886,6 +931,7 @@ func (c *Client) DeletePrivilegeEvents(request *DeletePrivilegeEventsRequest) (r
     if request == nil {
         request = NewDeletePrivilegeEventsRequest()
     }
+    
     response = NewDeletePrivilegeEventsResponse()
     err = c.Send(request, response)
     return
@@ -896,6 +942,7 @@ func NewDeletePrivilegeRulesRequest() (request *DeletePrivilegeRulesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DeletePrivilegeRules")
+    
     
     return
 }
@@ -927,6 +974,7 @@ func (c *Client) DeletePrivilegeRules(request *DeletePrivilegeRulesRequest) (res
     if request == nil {
         request = NewDeletePrivilegeRulesRequest()
     }
+    
     response = NewDeletePrivilegeRulesResponse()
     err = c.Send(request, response)
     return
@@ -937,6 +985,7 @@ func NewDeleteProtectDirRequest() (request *DeleteProtectDirRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteProtectDir")
+    
     
     return
 }
@@ -966,6 +1015,7 @@ func (c *Client) DeleteProtectDir(request *DeleteProtectDirRequest) (response *D
     if request == nil {
         request = NewDeleteProtectDirRequest()
     }
+    
     response = NewDeleteProtectDirResponse()
     err = c.Send(request, response)
     return
@@ -976,6 +1026,7 @@ func NewDeleteReverseShellEventsRequest() (request *DeleteReverseShellEventsRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteReverseShellEvents")
+    
     
     return
 }
@@ -1004,6 +1055,7 @@ func (c *Client) DeleteReverseShellEvents(request *DeleteReverseShellEventsReque
     if request == nil {
         request = NewDeleteReverseShellEventsRequest()
     }
+    
     response = NewDeleteReverseShellEventsResponse()
     err = c.Send(request, response)
     return
@@ -1014,6 +1066,7 @@ func NewDeleteReverseShellRulesRequest() (request *DeleteReverseShellRulesReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteReverseShellRules")
+    
     
     return
 }
@@ -1046,6 +1099,7 @@ func (c *Client) DeleteReverseShellRules(request *DeleteReverseShellRulesRequest
     if request == nil {
         request = NewDeleteReverseShellRulesRequest()
     }
+    
     response = NewDeleteReverseShellRulesResponse()
     err = c.Send(request, response)
     return
@@ -1056,6 +1110,7 @@ func NewDeleteSearchTemplateRequest() (request *DeleteSearchTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteSearchTemplate")
+    
     
     return
 }
@@ -1080,6 +1135,7 @@ func (c *Client) DeleteSearchTemplate(request *DeleteSearchTemplateRequest) (res
     if request == nil {
         request = NewDeleteSearchTemplateRequest()
     }
+    
     response = NewDeleteSearchTemplateResponse()
     err = c.Send(request, response)
     return
@@ -1090,6 +1146,7 @@ func NewDeleteTagsRequest() (request *DeleteTagsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteTags")
+    
     
     return
 }
@@ -1114,6 +1171,7 @@ func (c *Client) DeleteTags(request *DeleteTagsRequest) (response *DeleteTagsRes
     if request == nil {
         request = NewDeleteTagsRequest()
     }
+    
     response = NewDeleteTagsResponse()
     err = c.Send(request, response)
     return
@@ -1124,6 +1182,7 @@ func NewDeleteWebPageEventLogRequest() (request *DeleteWebPageEventLogRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteWebPageEventLog")
+    
     
     return
 }
@@ -1149,6 +1208,7 @@ func (c *Client) DeleteWebPageEventLog(request *DeleteWebPageEventLogRequest) (r
     if request == nil {
         request = NewDeleteWebPageEventLogRequest()
     }
+    
     response = NewDeleteWebPageEventLogResponse()
     err = c.Send(request, response)
     return
@@ -1159,6 +1219,7 @@ func NewDescribeAccountStatisticsRequest() (request *DescribeAccountStatisticsRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAccountStatistics")
+    
     
     return
 }
@@ -1185,6 +1246,7 @@ func (c *Client) DescribeAccountStatistics(request *DescribeAccountStatisticsReq
     if request == nil {
         request = NewDescribeAccountStatisticsRequest()
     }
+    
     response = NewDescribeAccountStatisticsResponse()
     err = c.Send(request, response)
     return
@@ -1195,6 +1257,7 @@ func NewDescribeAssetAppListRequest() (request *DescribeAssetAppListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetAppList")
+    
     
     return
 }
@@ -1222,6 +1285,7 @@ func (c *Client) DescribeAssetAppList(request *DescribeAssetAppListRequest) (res
     if request == nil {
         request = NewDescribeAssetAppListRequest()
     }
+    
     response = NewDescribeAssetAppListResponse()
     err = c.Send(request, response)
     return
@@ -1232,6 +1296,7 @@ func NewDescribeAssetAppProcessListRequest() (request *DescribeAssetAppProcessLi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetAppProcessList")
+    
     
     return
 }
@@ -1255,6 +1320,7 @@ func (c *Client) DescribeAssetAppProcessList(request *DescribeAssetAppProcessLis
     if request == nil {
         request = NewDescribeAssetAppProcessListRequest()
     }
+    
     response = NewDescribeAssetAppProcessListResponse()
     err = c.Send(request, response)
     return
@@ -1265,6 +1331,7 @@ func NewDescribeAssetCoreModuleInfoRequest() (request *DescribeAssetCoreModuleIn
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetCoreModuleInfo")
+    
     
     return
 }
@@ -1288,6 +1355,7 @@ func (c *Client) DescribeAssetCoreModuleInfo(request *DescribeAssetCoreModuleInf
     if request == nil {
         request = NewDescribeAssetCoreModuleInfoRequest()
     }
+    
     response = NewDescribeAssetCoreModuleInfoResponse()
     err = c.Send(request, response)
     return
@@ -1298,6 +1366,7 @@ func NewDescribeAssetCoreModuleListRequest() (request *DescribeAssetCoreModuleLi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetCoreModuleList")
+    
     
     return
 }
@@ -1325,6 +1394,7 @@ func (c *Client) DescribeAssetCoreModuleList(request *DescribeAssetCoreModuleLis
     if request == nil {
         request = NewDescribeAssetCoreModuleListRequest()
     }
+    
     response = NewDescribeAssetCoreModuleListResponse()
     err = c.Send(request, response)
     return
@@ -1335,6 +1405,7 @@ func NewDescribeAssetDatabaseInfoRequest() (request *DescribeAssetDatabaseInfoRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetDatabaseInfo")
+    
     
     return
 }
@@ -1358,6 +1429,7 @@ func (c *Client) DescribeAssetDatabaseInfo(request *DescribeAssetDatabaseInfoReq
     if request == nil {
         request = NewDescribeAssetDatabaseInfoRequest()
     }
+    
     response = NewDescribeAssetDatabaseInfoResponse()
     err = c.Send(request, response)
     return
@@ -1368,6 +1440,7 @@ func NewDescribeAssetDatabaseListRequest() (request *DescribeAssetDatabaseListRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetDatabaseList")
+    
     
     return
 }
@@ -1395,6 +1468,7 @@ func (c *Client) DescribeAssetDatabaseList(request *DescribeAssetDatabaseListReq
     if request == nil {
         request = NewDescribeAssetDatabaseListRequest()
     }
+    
     response = NewDescribeAssetDatabaseListResponse()
     err = c.Send(request, response)
     return
@@ -1405,6 +1479,7 @@ func NewDescribeAssetEnvListRequest() (request *DescribeAssetEnvListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetEnvList")
+    
     
     return
 }
@@ -1432,6 +1507,7 @@ func (c *Client) DescribeAssetEnvList(request *DescribeAssetEnvListRequest) (res
     if request == nil {
         request = NewDescribeAssetEnvListRequest()
     }
+    
     response = NewDescribeAssetEnvListResponse()
     err = c.Send(request, response)
     return
@@ -1442,6 +1518,7 @@ func NewDescribeAssetInfoRequest() (request *DescribeAssetInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetInfo")
+    
     
     return
 }
@@ -1465,6 +1542,7 @@ func (c *Client) DescribeAssetInfo(request *DescribeAssetInfoRequest) (response 
     if request == nil {
         request = NewDescribeAssetInfoRequest()
     }
+    
     response = NewDescribeAssetInfoResponse()
     err = c.Send(request, response)
     return
@@ -1475,6 +1553,7 @@ func NewDescribeAssetInitServiceListRequest() (request *DescribeAssetInitService
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetInitServiceList")
+    
     
     return
 }
@@ -1499,6 +1578,7 @@ func (c *Client) DescribeAssetInitServiceList(request *DescribeAssetInitServiceL
     if request == nil {
         request = NewDescribeAssetInitServiceListRequest()
     }
+    
     response = NewDescribeAssetInitServiceListResponse()
     err = c.Send(request, response)
     return
@@ -1509,6 +1589,7 @@ func NewDescribeAssetJarInfoRequest() (request *DescribeAssetJarInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetJarInfo")
+    
     
     return
 }
@@ -1532,6 +1613,7 @@ func (c *Client) DescribeAssetJarInfo(request *DescribeAssetJarInfoRequest) (res
     if request == nil {
         request = NewDescribeAssetJarInfoRequest()
     }
+    
     response = NewDescribeAssetJarInfoResponse()
     err = c.Send(request, response)
     return
@@ -1542,6 +1624,7 @@ func NewDescribeAssetJarListRequest() (request *DescribeAssetJarListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetJarList")
+    
     
     return
 }
@@ -1569,6 +1652,7 @@ func (c *Client) DescribeAssetJarList(request *DescribeAssetJarListRequest) (res
     if request == nil {
         request = NewDescribeAssetJarListRequest()
     }
+    
     response = NewDescribeAssetJarListResponse()
     err = c.Send(request, response)
     return
@@ -1579,6 +1663,7 @@ func NewDescribeAssetMachineDetailRequest() (request *DescribeAssetMachineDetail
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetMachineDetail")
+    
     
     return
 }
@@ -1602,6 +1687,7 @@ func (c *Client) DescribeAssetMachineDetail(request *DescribeAssetMachineDetailR
     if request == nil {
         request = NewDescribeAssetMachineDetailRequest()
     }
+    
     response = NewDescribeAssetMachineDetailResponse()
     err = c.Send(request, response)
     return
@@ -1612,6 +1698,7 @@ func NewDescribeAssetMachineListRequest() (request *DescribeAssetMachineListRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetMachineList")
+    
     
     return
 }
@@ -1636,6 +1723,7 @@ func (c *Client) DescribeAssetMachineList(request *DescribeAssetMachineListReque
     if request == nil {
         request = NewDescribeAssetMachineListRequest()
     }
+    
     response = NewDescribeAssetMachineListResponse()
     err = c.Send(request, response)
     return
@@ -1646,6 +1734,7 @@ func NewDescribeAssetPlanTaskListRequest() (request *DescribeAssetPlanTaskListRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetPlanTaskList")
+    
     
     return
 }
@@ -1673,6 +1762,7 @@ func (c *Client) DescribeAssetPlanTaskList(request *DescribeAssetPlanTaskListReq
     if request == nil {
         request = NewDescribeAssetPlanTaskListRequest()
     }
+    
     response = NewDescribeAssetPlanTaskListResponse()
     err = c.Send(request, response)
     return
@@ -1683,6 +1773,7 @@ func NewDescribeAssetPortInfoListRequest() (request *DescribeAssetPortInfoListRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetPortInfoList")
+    
     
     return
 }
@@ -1707,6 +1798,7 @@ func (c *Client) DescribeAssetPortInfoList(request *DescribeAssetPortInfoListReq
     if request == nil {
         request = NewDescribeAssetPortInfoListRequest()
     }
+    
     response = NewDescribeAssetPortInfoListResponse()
     err = c.Send(request, response)
     return
@@ -1717,6 +1809,7 @@ func NewDescribeAssetProcessInfoListRequest() (request *DescribeAssetProcessInfo
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetProcessInfoList")
+    
     
     return
 }
@@ -1741,6 +1834,7 @@ func (c *Client) DescribeAssetProcessInfoList(request *DescribeAssetProcessInfoL
     if request == nil {
         request = NewDescribeAssetProcessInfoListRequest()
     }
+    
     response = NewDescribeAssetProcessInfoListResponse()
     err = c.Send(request, response)
     return
@@ -1751,6 +1845,7 @@ func NewDescribeAssetRecentMachineInfoRequest() (request *DescribeAssetRecentMac
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetRecentMachineInfo")
+    
     
     return
 }
@@ -1777,6 +1872,7 @@ func (c *Client) DescribeAssetRecentMachineInfo(request *DescribeAssetRecentMach
     if request == nil {
         request = NewDescribeAssetRecentMachineInfoRequest()
     }
+    
     response = NewDescribeAssetRecentMachineInfoResponse()
     err = c.Send(request, response)
     return
@@ -1787,6 +1883,7 @@ func NewDescribeAssetSystemPackageListRequest() (request *DescribeAssetSystemPac
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetSystemPackageList")
+    
     
     return
 }
@@ -1810,6 +1907,7 @@ func (c *Client) DescribeAssetSystemPackageList(request *DescribeAssetSystemPack
     if request == nil {
         request = NewDescribeAssetSystemPackageListRequest()
     }
+    
     response = NewDescribeAssetSystemPackageListResponse()
     err = c.Send(request, response)
     return
@@ -1820,6 +1918,7 @@ func NewDescribeAssetUserInfoRequest() (request *DescribeAssetUserInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetUserInfo")
+    
     
     return
 }
@@ -1842,6 +1941,7 @@ func (c *Client) DescribeAssetUserInfo(request *DescribeAssetUserInfoRequest) (r
     if request == nil {
         request = NewDescribeAssetUserInfoRequest()
     }
+    
     response = NewDescribeAssetUserInfoResponse()
     err = c.Send(request, response)
     return
@@ -1852,6 +1952,7 @@ func NewDescribeAssetUserListRequest() (request *DescribeAssetUserListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetUserList")
+    
     
     return
 }
@@ -1876,6 +1977,7 @@ func (c *Client) DescribeAssetUserList(request *DescribeAssetUserListRequest) (r
     if request == nil {
         request = NewDescribeAssetUserListRequest()
     }
+    
     response = NewDescribeAssetUserListResponse()
     err = c.Send(request, response)
     return
@@ -1886,6 +1988,7 @@ func NewDescribeAssetWebAppListRequest() (request *DescribeAssetWebAppListReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetWebAppList")
+    
     
     return
 }
@@ -1910,6 +2013,7 @@ func (c *Client) DescribeAssetWebAppList(request *DescribeAssetWebAppListRequest
     if request == nil {
         request = NewDescribeAssetWebAppListRequest()
     }
+    
     response = NewDescribeAssetWebAppListResponse()
     err = c.Send(request, response)
     return
@@ -1920,6 +2024,7 @@ func NewDescribeAssetWebAppPluginListRequest() (request *DescribeAssetWebAppPlug
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetWebAppPluginList")
+    
     
     return
 }
@@ -1943,6 +2048,7 @@ func (c *Client) DescribeAssetWebAppPluginList(request *DescribeAssetWebAppPlugi
     if request == nil {
         request = NewDescribeAssetWebAppPluginListRequest()
     }
+    
     response = NewDescribeAssetWebAppPluginListResponse()
     err = c.Send(request, response)
     return
@@ -1953,6 +2059,7 @@ func NewDescribeAssetWebFrameListRequest() (request *DescribeAssetWebFrameListRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetWebFrameList")
+    
     
     return
 }
@@ -1976,6 +2083,7 @@ func (c *Client) DescribeAssetWebFrameList(request *DescribeAssetWebFrameListReq
     if request == nil {
         request = NewDescribeAssetWebFrameListRequest()
     }
+    
     response = NewDescribeAssetWebFrameListResponse()
     err = c.Send(request, response)
     return
@@ -1986,6 +2094,7 @@ func NewDescribeAssetWebLocationInfoRequest() (request *DescribeAssetWebLocation
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetWebLocationInfo")
+    
     
     return
 }
@@ -2009,6 +2118,7 @@ func (c *Client) DescribeAssetWebLocationInfo(request *DescribeAssetWebLocationI
     if request == nil {
         request = NewDescribeAssetWebLocationInfoRequest()
     }
+    
     response = NewDescribeAssetWebLocationInfoResponse()
     err = c.Send(request, response)
     return
@@ -2019,6 +2129,7 @@ func NewDescribeAssetWebLocationListRequest() (request *DescribeAssetWebLocation
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetWebLocationList")
+    
     
     return
 }
@@ -2042,6 +2153,7 @@ func (c *Client) DescribeAssetWebLocationList(request *DescribeAssetWebLocationL
     if request == nil {
         request = NewDescribeAssetWebLocationListRequest()
     }
+    
     response = NewDescribeAssetWebLocationListResponse()
     err = c.Send(request, response)
     return
@@ -2052,6 +2164,7 @@ func NewDescribeAssetWebServiceInfoListRequest() (request *DescribeAssetWebServi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetWebServiceInfoList")
+    
     
     return
 }
@@ -2079,6 +2192,7 @@ func (c *Client) DescribeAssetWebServiceInfoList(request *DescribeAssetWebServic
     if request == nil {
         request = NewDescribeAssetWebServiceInfoListRequest()
     }
+    
     response = NewDescribeAssetWebServiceInfoListResponse()
     err = c.Send(request, response)
     return
@@ -2089,6 +2203,7 @@ func NewDescribeAssetWebServiceProcessListRequest() (request *DescribeAssetWebSe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetWebServiceProcessList")
+    
     
     return
 }
@@ -2112,6 +2227,7 @@ func (c *Client) DescribeAssetWebServiceProcessList(request *DescribeAssetWebSer
     if request == nil {
         request = NewDescribeAssetWebServiceProcessListRequest()
     }
+    
     response = NewDescribeAssetWebServiceProcessListResponse()
     err = c.Send(request, response)
     return
@@ -2122,6 +2238,7 @@ func NewDescribeAttackLogInfoRequest() (request *DescribeAttackLogInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAttackLogInfo")
+    
     
     return
 }
@@ -2150,6 +2267,7 @@ func (c *Client) DescribeAttackLogInfo(request *DescribeAttackLogInfoRequest) (r
     if request == nil {
         request = NewDescribeAttackLogInfoRequest()
     }
+    
     response = NewDescribeAttackLogInfoResponse()
     err = c.Send(request, response)
     return
@@ -2160,6 +2278,7 @@ func NewDescribeAttackLogsRequest() (request *DescribeAttackLogsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAttackLogs")
+    
     
     return
 }
@@ -2187,6 +2306,7 @@ func (c *Client) DescribeAttackLogs(request *DescribeAttackLogsRequest) (respons
     if request == nil {
         request = NewDescribeAttackLogsRequest()
     }
+    
     response = NewDescribeAttackLogsResponse()
     err = c.Send(request, response)
     return
@@ -2197,6 +2317,7 @@ func NewDescribeAttackVulTypeListRequest() (request *DescribeAttackVulTypeListRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAttackVulTypeList")
+    
     
     return
 }
@@ -2217,6 +2338,7 @@ func (c *Client) DescribeAttackVulTypeList(request *DescribeAttackVulTypeListReq
     if request == nil {
         request = NewDescribeAttackVulTypeListRequest()
     }
+    
     response = NewDescribeAttackVulTypeListResponse()
     err = c.Send(request, response)
     return
@@ -2227,6 +2349,7 @@ func NewDescribeAvailableExpertServiceDetailRequest() (request *DescribeAvailabl
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAvailableExpertServiceDetail")
+    
     
     return
 }
@@ -2249,6 +2372,7 @@ func (c *Client) DescribeAvailableExpertServiceDetail(request *DescribeAvailable
     if request == nil {
         request = NewDescribeAvailableExpertServiceDetailRequest()
     }
+    
     response = NewDescribeAvailableExpertServiceDetailResponse()
     err = c.Send(request, response)
     return
@@ -2259,6 +2383,7 @@ func NewDescribeBanModeRequest() (request *DescribeBanModeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBanMode")
+    
     
     return
 }
@@ -2284,6 +2409,7 @@ func (c *Client) DescribeBanMode(request *DescribeBanModeRequest) (response *Des
     if request == nil {
         request = NewDescribeBanModeRequest()
     }
+    
     response = NewDescribeBanModeResponse()
     err = c.Send(request, response)
     return
@@ -2294,6 +2420,7 @@ func NewDescribeBanRegionsRequest() (request *DescribeBanRegionsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBanRegions")
+    
     
     return
 }
@@ -2318,6 +2445,7 @@ func (c *Client) DescribeBanRegions(request *DescribeBanRegionsRequest) (respons
     if request == nil {
         request = NewDescribeBanRegionsRequest()
     }
+    
     response = NewDescribeBanRegionsResponse()
     err = c.Send(request, response)
     return
@@ -2328,6 +2456,7 @@ func NewDescribeBanStatusRequest() (request *DescribeBanStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBanStatus")
+    
     
     return
 }
@@ -2355,6 +2484,7 @@ func (c *Client) DescribeBanStatus(request *DescribeBanStatusRequest) (response 
     if request == nil {
         request = NewDescribeBanStatusRequest()
     }
+    
     response = NewDescribeBanStatusResponse()
     err = c.Send(request, response)
     return
@@ -2365,6 +2495,7 @@ func NewDescribeBanWhiteListRequest() (request *DescribeBanWhiteListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBanWhiteList")
+    
     
     return
 }
@@ -2392,6 +2523,7 @@ func (c *Client) DescribeBanWhiteList(request *DescribeBanWhiteListRequest) (res
     if request == nil {
         request = NewDescribeBanWhiteListRequest()
     }
+    
     response = NewDescribeBanWhiteListResponse()
     err = c.Send(request, response)
     return
@@ -2402,6 +2534,7 @@ func NewDescribeBaselineAnalysisDataRequest() (request *DescribeBaselineAnalysis
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineAnalysisData")
+    
     
     return
 }
@@ -2427,6 +2560,7 @@ func (c *Client) DescribeBaselineAnalysisData(request *DescribeBaselineAnalysisD
     if request == nil {
         request = NewDescribeBaselineAnalysisDataRequest()
     }
+    
     response = NewDescribeBaselineAnalysisDataResponse()
     err = c.Send(request, response)
     return
@@ -2437,6 +2571,7 @@ func NewDescribeBaselineBasicInfoRequest() (request *DescribeBaselineBasicInfoRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineBasicInfo")
+    
     
     return
 }
@@ -2462,6 +2597,7 @@ func (c *Client) DescribeBaselineBasicInfo(request *DescribeBaselineBasicInfoReq
     if request == nil {
         request = NewDescribeBaselineBasicInfoRequest()
     }
+    
     response = NewDescribeBaselineBasicInfoResponse()
     err = c.Send(request, response)
     return
@@ -2472,6 +2608,7 @@ func NewDescribeBaselineDetailRequest() (request *DescribeBaselineDetailRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineDetail")
+    
     
     return
 }
@@ -2497,6 +2634,7 @@ func (c *Client) DescribeBaselineDetail(request *DescribeBaselineDetailRequest) 
     if request == nil {
         request = NewDescribeBaselineDetailRequest()
     }
+    
     response = NewDescribeBaselineDetailResponse()
     err = c.Send(request, response)
     return
@@ -2507,6 +2645,7 @@ func NewDescribeBaselineEffectHostListRequest() (request *DescribeBaselineEffect
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineEffectHostList")
+    
     
     return
 }
@@ -2532,6 +2671,7 @@ func (c *Client) DescribeBaselineEffectHostList(request *DescribeBaselineEffectH
     if request == nil {
         request = NewDescribeBaselineEffectHostListRequest()
     }
+    
     response = NewDescribeBaselineEffectHostListResponse()
     err = c.Send(request, response)
     return
@@ -2542,6 +2682,7 @@ func NewDescribeBaselineHostTopRequest() (request *DescribeBaselineHostTopReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineHostTop")
+    
     
     return
 }
@@ -2568,6 +2709,7 @@ func (c *Client) DescribeBaselineHostTop(request *DescribeBaselineHostTopRequest
     if request == nil {
         request = NewDescribeBaselineHostTopRequest()
     }
+    
     response = NewDescribeBaselineHostTopResponse()
     err = c.Send(request, response)
     return
@@ -2578,6 +2720,7 @@ func NewDescribeBaselineListRequest() (request *DescribeBaselineListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineList")
+    
     
     return
 }
@@ -2604,6 +2747,7 @@ func (c *Client) DescribeBaselineList(request *DescribeBaselineListRequest) (res
     if request == nil {
         request = NewDescribeBaselineListRequest()
     }
+    
     response = NewDescribeBaselineListResponse()
     err = c.Send(request, response)
     return
@@ -2614,6 +2758,7 @@ func NewDescribeBaselineRuleRequest() (request *DescribeBaselineRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineRule")
+    
     
     return
 }
@@ -2639,6 +2784,7 @@ func (c *Client) DescribeBaselineRule(request *DescribeBaselineRuleRequest) (res
     if request == nil {
         request = NewDescribeBaselineRuleRequest()
     }
+    
     response = NewDescribeBaselineRuleResponse()
     err = c.Send(request, response)
     return
@@ -2649,6 +2795,7 @@ func NewDescribeBaselineScanScheduleRequest() (request *DescribeBaselineScanSche
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineScanSchedule")
+    
     
     return
 }
@@ -2675,6 +2822,7 @@ func (c *Client) DescribeBaselineScanSchedule(request *DescribeBaselineScanSched
     if request == nil {
         request = NewDescribeBaselineScanScheduleRequest()
     }
+    
     response = NewDescribeBaselineScanScheduleResponse()
     err = c.Send(request, response)
     return
@@ -2685,6 +2833,7 @@ func NewDescribeBaselineStrategyDetailRequest() (request *DescribeBaselineStrate
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineStrategyDetail")
+    
     
     return
 }
@@ -2711,6 +2860,7 @@ func (c *Client) DescribeBaselineStrategyDetail(request *DescribeBaselineStrateg
     if request == nil {
         request = NewDescribeBaselineStrategyDetailRequest()
     }
+    
     response = NewDescribeBaselineStrategyDetailResponse()
     err = c.Send(request, response)
     return
@@ -2721,6 +2871,7 @@ func NewDescribeBaselineStrategyListRequest() (request *DescribeBaselineStrategy
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineStrategyList")
+    
     
     return
 }
@@ -2747,6 +2898,7 @@ func (c *Client) DescribeBaselineStrategyList(request *DescribeBaselineStrategyL
     if request == nil {
         request = NewDescribeBaselineStrategyListRequest()
     }
+    
     response = NewDescribeBaselineStrategyListResponse()
     err = c.Send(request, response)
     return
@@ -2757,6 +2909,7 @@ func NewDescribeBaselineTopRequest() (request *DescribeBaselineTopRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineTop")
+    
     
     return
 }
@@ -2783,6 +2936,7 @@ func (c *Client) DescribeBaselineTop(request *DescribeBaselineTopRequest) (respo
     if request == nil {
         request = NewDescribeBaselineTopRequest()
     }
+    
     response = NewDescribeBaselineTopResponse()
     err = c.Send(request, response)
     return
@@ -2793,6 +2947,7 @@ func NewDescribeBashEventsRequest() (request *DescribeBashEventsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBashEvents")
+    
     
     return
 }
@@ -2821,6 +2976,7 @@ func (c *Client) DescribeBashEvents(request *DescribeBashEventsRequest) (respons
     if request == nil {
         request = NewDescribeBashEventsRequest()
     }
+    
     response = NewDescribeBashEventsResponse()
     err = c.Send(request, response)
     return
@@ -2831,6 +2987,7 @@ func NewDescribeBashRulesRequest() (request *DescribeBashRulesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBashRules")
+    
     
     return
 }
@@ -2859,6 +3016,7 @@ func (c *Client) DescribeBashRules(request *DescribeBashRulesRequest) (response 
     if request == nil {
         request = NewDescribeBashRulesRequest()
     }
+    
     response = NewDescribeBashRulesResponse()
     err = c.Send(request, response)
     return
@@ -2869,6 +3027,7 @@ func NewDescribeBruteAttackListRequest() (request *DescribeBruteAttackListReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBruteAttackList")
+    
     
     return
 }
@@ -2895,6 +3054,7 @@ func (c *Client) DescribeBruteAttackList(request *DescribeBruteAttackListRequest
     if request == nil {
         request = NewDescribeBruteAttackListRequest()
     }
+    
     response = NewDescribeBruteAttackListResponse()
     err = c.Send(request, response)
     return
@@ -2905,6 +3065,7 @@ func NewDescribeBruteAttackRulesRequest() (request *DescribeBruteAttackRulesRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBruteAttackRules")
+    
     
     return
 }
@@ -2925,6 +3086,7 @@ func (c *Client) DescribeBruteAttackRules(request *DescribeBruteAttackRulesReque
     if request == nil {
         request = NewDescribeBruteAttackRulesRequest()
     }
+    
     response = NewDescribeBruteAttackRulesResponse()
     err = c.Send(request, response)
     return
@@ -2935,6 +3097,7 @@ func NewDescribeComponentStatisticsRequest() (request *DescribeComponentStatisti
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeComponentStatistics")
+    
     
     return
 }
@@ -2961,6 +3124,7 @@ func (c *Client) DescribeComponentStatistics(request *DescribeComponentStatistic
     if request == nil {
         request = NewDescribeComponentStatisticsRequest()
     }
+    
     response = NewDescribeComponentStatisticsResponse()
     err = c.Send(request, response)
     return
@@ -2971,6 +3135,7 @@ func NewDescribeESAggregationsRequest() (request *DescribeESAggregationsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeESAggregations")
+    
     
     return
 }
@@ -2995,6 +3160,7 @@ func (c *Client) DescribeESAggregations(request *DescribeESAggregationsRequest) 
     if request == nil {
         request = NewDescribeESAggregationsRequest()
     }
+    
     response = NewDescribeESAggregationsResponse()
     err = c.Send(request, response)
     return
@@ -3005,6 +3171,7 @@ func NewDescribeESHitsRequest() (request *DescribeESHitsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeESHits")
+    
     
     return
 }
@@ -3030,6 +3197,7 @@ func (c *Client) DescribeESHits(request *DescribeESHitsRequest) (response *Descr
     if request == nil {
         request = NewDescribeESHitsRequest()
     }
+    
     response = NewDescribeESHitsResponse()
     err = c.Send(request, response)
     return
@@ -3040,6 +3208,7 @@ func NewDescribeEmergencyResponseListRequest() (request *DescribeEmergencyRespon
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeEmergencyResponseList")
+    
     
     return
 }
@@ -3063,6 +3232,7 @@ func (c *Client) DescribeEmergencyResponseList(request *DescribeEmergencyRespons
     if request == nil {
         request = NewDescribeEmergencyResponseListRequest()
     }
+    
     response = NewDescribeEmergencyResponseListResponse()
     err = c.Send(request, response)
     return
@@ -3073,6 +3243,7 @@ func NewDescribeEmergencyVulListRequest() (request *DescribeEmergencyVulListRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeEmergencyVulList")
+    
     
     return
 }
@@ -3098,6 +3269,7 @@ func (c *Client) DescribeEmergencyVulList(request *DescribeEmergencyVulListReque
     if request == nil {
         request = NewDescribeEmergencyVulListRequest()
     }
+    
     response = NewDescribeEmergencyVulListResponse()
     err = c.Send(request, response)
     return
@@ -3108,6 +3280,7 @@ func NewDescribeExpertServiceListRequest() (request *DescribeExpertServiceListRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeExpertServiceList")
+    
     
     return
 }
@@ -3131,6 +3304,7 @@ func (c *Client) DescribeExpertServiceList(request *DescribeExpertServiceListReq
     if request == nil {
         request = NewDescribeExpertServiceListRequest()
     }
+    
     response = NewDescribeExpertServiceListResponse()
     err = c.Send(request, response)
     return
@@ -3141,6 +3315,7 @@ func NewDescribeExpertServiceOrderListRequest() (request *DescribeExpertServiceO
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeExpertServiceOrderList")
+    
     
     return
 }
@@ -3164,6 +3339,7 @@ func (c *Client) DescribeExpertServiceOrderList(request *DescribeExpertServiceOr
     if request == nil {
         request = NewDescribeExpertServiceOrderListRequest()
     }
+    
     response = NewDescribeExpertServiceOrderListResponse()
     err = c.Send(request, response)
     return
@@ -3174,6 +3350,7 @@ func NewDescribeExportMachinesRequest() (request *DescribeExportMachinesRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeExportMachines")
+    
     
     return
 }
@@ -3199,6 +3376,7 @@ func (c *Client) DescribeExportMachines(request *DescribeExportMachinesRequest) 
     if request == nil {
         request = NewDescribeExportMachinesRequest()
     }
+    
     response = NewDescribeExportMachinesResponse()
     err = c.Send(request, response)
     return
@@ -3209,6 +3387,7 @@ func NewDescribeGeneralStatRequest() (request *DescribeGeneralStatRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeGeneralStat")
+    
     
     return
 }
@@ -3234,6 +3413,7 @@ func (c *Client) DescribeGeneralStat(request *DescribeGeneralStatRequest) (respo
     if request == nil {
         request = NewDescribeGeneralStatRequest()
     }
+    
     response = NewDescribeGeneralStatResponse()
     err = c.Send(request, response)
     return
@@ -3244,6 +3424,7 @@ func NewDescribeHistoryAccountsRequest() (request *DescribeHistoryAccountsReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeHistoryAccounts")
+    
     
     return
 }
@@ -3270,6 +3451,7 @@ func (c *Client) DescribeHistoryAccounts(request *DescribeHistoryAccountsRequest
     if request == nil {
         request = NewDescribeHistoryAccountsRequest()
     }
+    
     response = NewDescribeHistoryAccountsResponse()
     err = c.Send(request, response)
     return
@@ -3280,6 +3462,7 @@ func NewDescribeHistoryServiceRequest() (request *DescribeHistoryServiceRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeHistoryService")
+    
     
     return
 }
@@ -3300,6 +3483,7 @@ func (c *Client) DescribeHistoryService(request *DescribeHistoryServiceRequest) 
     if request == nil {
         request = NewDescribeHistoryServiceRequest()
     }
+    
     response = NewDescribeHistoryServiceResponse()
     err = c.Send(request, response)
     return
@@ -3310,6 +3494,7 @@ func NewDescribeHostLoginListRequest() (request *DescribeHostLoginListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeHostLoginList")
+    
     
     return
 }
@@ -3336,6 +3521,7 @@ func (c *Client) DescribeHostLoginList(request *DescribeHostLoginListRequest) (r
     if request == nil {
         request = NewDescribeHostLoginListRequest()
     }
+    
     response = NewDescribeHostLoginListResponse()
     err = c.Send(request, response)
     return
@@ -3346,6 +3532,7 @@ func NewDescribeIgnoreBaselineRuleRequest() (request *DescribeIgnoreBaselineRule
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeIgnoreBaselineRule")
+    
     
     return
 }
@@ -3371,6 +3558,7 @@ func (c *Client) DescribeIgnoreBaselineRule(request *DescribeIgnoreBaselineRuleR
     if request == nil {
         request = NewDescribeIgnoreBaselineRuleRequest()
     }
+    
     response = NewDescribeIgnoreBaselineRuleResponse()
     err = c.Send(request, response)
     return
@@ -3381,6 +3569,7 @@ func NewDescribeIgnoreRuleEffectHostListRequest() (request *DescribeIgnoreRuleEf
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeIgnoreRuleEffectHostList")
+    
     
     return
 }
@@ -3407,6 +3596,7 @@ func (c *Client) DescribeIgnoreRuleEffectHostList(request *DescribeIgnoreRuleEff
     if request == nil {
         request = NewDescribeIgnoreRuleEffectHostListRequest()
     }
+    
     response = NewDescribeIgnoreRuleEffectHostListResponse()
     err = c.Send(request, response)
     return
@@ -3417,6 +3607,7 @@ func NewDescribeImportMachineInfoRequest() (request *DescribeImportMachineInfoRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeImportMachineInfo")
+    
     
     return
 }
@@ -3442,6 +3633,7 @@ func (c *Client) DescribeImportMachineInfo(request *DescribeImportMachineInfoReq
     if request == nil {
         request = NewDescribeImportMachineInfoRequest()
     }
+    
     response = NewDescribeImportMachineInfoResponse()
     err = c.Send(request, response)
     return
@@ -3452,6 +3644,7 @@ func NewDescribeIndexListRequest() (request *DescribeIndexListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeIndexList")
+    
     
     return
 }
@@ -3472,6 +3665,7 @@ func (c *Client) DescribeIndexList(request *DescribeIndexListRequest) (response 
     if request == nil {
         request = NewDescribeIndexListRequest()
     }
+    
     response = NewDescribeIndexListResponse()
     err = c.Send(request, response)
     return
@@ -3482,6 +3676,7 @@ func NewDescribeLogStorageStatisticRequest() (request *DescribeLogStorageStatist
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeLogStorageStatistic")
+    
     
     return
 }
@@ -3502,6 +3697,7 @@ func (c *Client) DescribeLogStorageStatistic(request *DescribeLogStorageStatisti
     if request == nil {
         request = NewDescribeLogStorageStatisticRequest()
     }
+    
     response = NewDescribeLogStorageStatisticResponse()
     err = c.Send(request, response)
     return
@@ -3512,6 +3708,7 @@ func NewDescribeLoginWhiteCombinedListRequest() (request *DescribeLoginWhiteComb
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeLoginWhiteCombinedList")
+    
     
     return
 }
@@ -3537,6 +3734,7 @@ func (c *Client) DescribeLoginWhiteCombinedList(request *DescribeLoginWhiteCombi
     if request == nil {
         request = NewDescribeLoginWhiteCombinedListRequest()
     }
+    
     response = NewDescribeLoginWhiteCombinedListResponse()
     err = c.Send(request, response)
     return
@@ -3547,6 +3745,7 @@ func NewDescribeLoginWhiteListRequest() (request *DescribeLoginWhiteListRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeLoginWhiteList")
+    
     
     return
 }
@@ -3572,6 +3771,7 @@ func (c *Client) DescribeLoginWhiteList(request *DescribeLoginWhiteListRequest) 
     if request == nil {
         request = NewDescribeLoginWhiteListRequest()
     }
+    
     response = NewDescribeLoginWhiteListResponse()
     err = c.Send(request, response)
     return
@@ -3582,6 +3782,7 @@ func NewDescribeMachineInfoRequest() (request *DescribeMachineInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeMachineInfo")
+    
     
     return
 }
@@ -3607,6 +3808,7 @@ func (c *Client) DescribeMachineInfo(request *DescribeMachineInfoRequest) (respo
     if request == nil {
         request = NewDescribeMachineInfoRequest()
     }
+    
     response = NewDescribeMachineInfoResponse()
     err = c.Send(request, response)
     return
@@ -3617,6 +3819,7 @@ func NewDescribeMachineListRequest() (request *DescribeMachineListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeMachineList")
+    
     
     return
 }
@@ -3644,6 +3847,7 @@ func (c *Client) DescribeMachineList(request *DescribeMachineListRequest) (respo
     if request == nil {
         request = NewDescribeMachineListRequest()
     }
+    
     response = NewDescribeMachineListResponse()
     err = c.Send(request, response)
     return
@@ -3654,6 +3858,7 @@ func NewDescribeMachineOsListRequest() (request *DescribeMachineOsListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeMachineOsList")
+    
     
     return
 }
@@ -3674,6 +3879,7 @@ func (c *Client) DescribeMachineOsList(request *DescribeMachineOsListRequest) (r
     if request == nil {
         request = NewDescribeMachineOsListRequest()
     }
+    
     response = NewDescribeMachineOsListResponse()
     err = c.Send(request, response)
     return
@@ -3684,6 +3890,7 @@ func NewDescribeMachineRegionsRequest() (request *DescribeMachineRegionsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeMachineRegions")
+    
     
     return
 }
@@ -3708,6 +3915,7 @@ func (c *Client) DescribeMachineRegions(request *DescribeMachineRegionsRequest) 
     if request == nil {
         request = NewDescribeMachineRegionsRequest()
     }
+    
     response = NewDescribeMachineRegionsResponse()
     err = c.Send(request, response)
     return
@@ -3718,6 +3926,7 @@ func NewDescribeMachinesRequest() (request *DescribeMachinesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeMachines")
+    
     
     return
 }
@@ -3744,6 +3953,7 @@ func (c *Client) DescribeMachines(request *DescribeMachinesRequest) (response *D
     if request == nil {
         request = NewDescribeMachinesRequest()
     }
+    
     response = NewDescribeMachinesResponse()
     err = c.Send(request, response)
     return
@@ -3754,6 +3964,7 @@ func NewDescribeMalWareListRequest() (request *DescribeMalWareListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeMalWareList")
+    
     
     return
 }
@@ -3781,6 +3992,7 @@ func (c *Client) DescribeMalWareList(request *DescribeMalWareListRequest) (respo
     if request == nil {
         request = NewDescribeMalWareListRequest()
     }
+    
     response = NewDescribeMalWareListResponse()
     err = c.Send(request, response)
     return
@@ -3791,6 +4003,7 @@ func NewDescribeMaliciousRequestWhiteListRequest() (request *DescribeMaliciousRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeMaliciousRequestWhiteList")
+    
     
     return
 }
@@ -3816,6 +4029,7 @@ func (c *Client) DescribeMaliciousRequestWhiteList(request *DescribeMaliciousReq
     if request == nil {
         request = NewDescribeMaliciousRequestWhiteListRequest()
     }
+    
     response = NewDescribeMaliciousRequestWhiteListResponse()
     err = c.Send(request, response)
     return
@@ -3826,6 +4040,7 @@ func NewDescribeMalwareFileRequest() (request *DescribeMalwareFileRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeMalwareFile")
+    
     
     return
 }
@@ -3854,6 +4069,7 @@ func (c *Client) DescribeMalwareFile(request *DescribeMalwareFileRequest) (respo
     if request == nil {
         request = NewDescribeMalwareFileRequest()
     }
+    
     response = NewDescribeMalwareFileResponse()
     err = c.Send(request, response)
     return
@@ -3864,6 +4080,7 @@ func NewDescribeMalwareInfoRequest() (request *DescribeMalwareInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeMalwareInfo")
+    
     
     return
 }
@@ -3892,6 +4109,7 @@ func (c *Client) DescribeMalwareInfo(request *DescribeMalwareInfoRequest) (respo
     if request == nil {
         request = NewDescribeMalwareInfoRequest()
     }
+    
     response = NewDescribeMalwareInfoResponse()
     err = c.Send(request, response)
     return
@@ -3902,6 +4120,7 @@ func NewDescribeMalwareRiskWarningRequest() (request *DescribeMalwareRiskWarning
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeMalwareRiskWarning")
+    
     
     return
 }
@@ -3922,6 +4141,7 @@ func (c *Client) DescribeMalwareRiskWarning(request *DescribeMalwareRiskWarningR
     if request == nil {
         request = NewDescribeMalwareRiskWarningRequest()
     }
+    
     response = NewDescribeMalwareRiskWarningResponse()
     err = c.Send(request, response)
     return
@@ -3932,6 +4152,7 @@ func NewDescribeMalwareTimingScanSettingRequest() (request *DescribeMalwareTimin
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeMalwareTimingScanSetting")
+    
     
     return
 }
@@ -3952,6 +4173,7 @@ func (c *Client) DescribeMalwareTimingScanSetting(request *DescribeMalwareTiming
     if request == nil {
         request = NewDescribeMalwareTimingScanSettingRequest()
     }
+    
     response = NewDescribeMalwareTimingScanSettingResponse()
     err = c.Send(request, response)
     return
@@ -3962,6 +4184,7 @@ func NewDescribeMonthInspectionReportRequest() (request *DescribeMonthInspection
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeMonthInspectionReport")
+    
     
     return
 }
@@ -3989,6 +4212,7 @@ func (c *Client) DescribeMonthInspectionReport(request *DescribeMonthInspectionR
     if request == nil {
         request = NewDescribeMonthInspectionReportRequest()
     }
+    
     response = NewDescribeMonthInspectionReportResponse()
     err = c.Send(request, response)
     return
@@ -3999,6 +4223,7 @@ func NewDescribeOpenPortStatisticsRequest() (request *DescribeOpenPortStatistics
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeOpenPortStatistics")
+    
     
     return
 }
@@ -4024,6 +4249,7 @@ func (c *Client) DescribeOpenPortStatistics(request *DescribeOpenPortStatisticsR
     if request == nil {
         request = NewDescribeOpenPortStatisticsRequest()
     }
+    
     response = NewDescribeOpenPortStatisticsResponse()
     err = c.Send(request, response)
     return
@@ -4034,6 +4260,7 @@ func NewDescribeOverviewStatisticsRequest() (request *DescribeOverviewStatistics
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeOverviewStatistics")
+    
     
     return
 }
@@ -4057,6 +4284,7 @@ func (c *Client) DescribeOverviewStatistics(request *DescribeOverviewStatisticsR
     if request == nil {
         request = NewDescribeOverviewStatisticsRequest()
     }
+    
     response = NewDescribeOverviewStatisticsResponse()
     err = c.Send(request, response)
     return
@@ -4067,6 +4295,7 @@ func NewDescribePrivilegeEventsRequest() (request *DescribePrivilegeEventsReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribePrivilegeEvents")
+    
     
     return
 }
@@ -4095,6 +4324,7 @@ func (c *Client) DescribePrivilegeEvents(request *DescribePrivilegeEventsRequest
     if request == nil {
         request = NewDescribePrivilegeEventsRequest()
     }
+    
     response = NewDescribePrivilegeEventsResponse()
     err = c.Send(request, response)
     return
@@ -4105,6 +4335,7 @@ func NewDescribePrivilegeRulesRequest() (request *DescribePrivilegeRulesRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribePrivilegeRules")
+    
     
     return
 }
@@ -4133,6 +4364,7 @@ func (c *Client) DescribePrivilegeRules(request *DescribePrivilegeRulesRequest) 
     if request == nil {
         request = NewDescribePrivilegeRulesRequest()
     }
+    
     response = NewDescribePrivilegeRulesResponse()
     err = c.Send(request, response)
     return
@@ -4143,6 +4375,7 @@ func NewDescribeProVersionInfoRequest() (request *DescribeProVersionInfoRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeProVersionInfo")
+    
     
     return
 }
@@ -4163,6 +4396,7 @@ func (c *Client) DescribeProVersionInfo(request *DescribeProVersionInfoRequest) 
     if request == nil {
         request = NewDescribeProVersionInfoRequest()
     }
+    
     response = NewDescribeProVersionInfoResponse()
     err = c.Send(request, response)
     return
@@ -4173,6 +4407,7 @@ func NewDescribeProVersionStatusRequest() (request *DescribeProVersionStatusRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeProVersionStatus")
+    
     
     return
 }
@@ -4199,6 +4434,7 @@ func (c *Client) DescribeProVersionStatus(request *DescribeProVersionStatusReque
     if request == nil {
         request = NewDescribeProVersionStatusRequest()
     }
+    
     response = NewDescribeProVersionStatusResponse()
     err = c.Send(request, response)
     return
@@ -4209,6 +4445,7 @@ func NewDescribeProcessStatisticsRequest() (request *DescribeProcessStatisticsRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeProcessStatistics")
+    
     
     return
 }
@@ -4234,6 +4471,7 @@ func (c *Client) DescribeProcessStatistics(request *DescribeProcessStatisticsReq
     if request == nil {
         request = NewDescribeProcessStatisticsRequest()
     }
+    
     response = NewDescribeProcessStatisticsResponse()
     err = c.Send(request, response)
     return
@@ -4244,6 +4482,7 @@ func NewDescribeProtectDirListRequest() (request *DescribeProtectDirListRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeProtectDirList")
+    
     
     return
 }
@@ -4270,6 +4509,7 @@ func (c *Client) DescribeProtectDirList(request *DescribeProtectDirListRequest) 
     if request == nil {
         request = NewDescribeProtectDirListRequest()
     }
+    
     response = NewDescribeProtectDirListResponse()
     err = c.Send(request, response)
     return
@@ -4280,6 +4520,7 @@ func NewDescribeProtectDirRelatedServerRequest() (request *DescribeProtectDirRel
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeProtectDirRelatedServer")
+    
     
     return
 }
@@ -4303,6 +4544,7 @@ func (c *Client) DescribeProtectDirRelatedServer(request *DescribeProtectDirRela
     if request == nil {
         request = NewDescribeProtectDirRelatedServerRequest()
     }
+    
     response = NewDescribeProtectDirRelatedServerResponse()
     err = c.Send(request, response)
     return
@@ -4313,6 +4555,7 @@ func NewDescribeProtectNetListRequest() (request *DescribeProtectNetListRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeProtectNetList")
+    
     
     return
 }
@@ -4336,6 +4579,7 @@ func (c *Client) DescribeProtectNetList(request *DescribeProtectNetListRequest) 
     if request == nil {
         request = NewDescribeProtectNetListRequest()
     }
+    
     response = NewDescribeProtectNetListResponse()
     err = c.Send(request, response)
     return
@@ -4346,6 +4590,7 @@ func NewDescribeReverseShellEventsRequest() (request *DescribeReverseShellEvents
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeReverseShellEvents")
+    
     
     return
 }
@@ -4374,6 +4619,7 @@ func (c *Client) DescribeReverseShellEvents(request *DescribeReverseShellEventsR
     if request == nil {
         request = NewDescribeReverseShellEventsRequest()
     }
+    
     response = NewDescribeReverseShellEventsResponse()
     err = c.Send(request, response)
     return
@@ -4384,6 +4630,7 @@ func NewDescribeReverseShellRulesRequest() (request *DescribeReverseShellRulesRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeReverseShellRules")
+    
     
     return
 }
@@ -4415,6 +4662,7 @@ func (c *Client) DescribeReverseShellRules(request *DescribeReverseShellRulesReq
     if request == nil {
         request = NewDescribeReverseShellRulesRequest()
     }
+    
     response = NewDescribeReverseShellRulesResponse()
     err = c.Send(request, response)
     return
@@ -4425,6 +4673,7 @@ func NewDescribeRiskDnsListRequest() (request *DescribeRiskDnsListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeRiskDnsList")
+    
     
     return
 }
@@ -4451,6 +4700,7 @@ func (c *Client) DescribeRiskDnsList(request *DescribeRiskDnsListRequest) (respo
     if request == nil {
         request = NewDescribeRiskDnsListRequest()
     }
+    
     response = NewDescribeRiskDnsListResponse()
     err = c.Send(request, response)
     return
@@ -4461,6 +4711,7 @@ func NewDescribeSaveOrUpdateWarningsRequest() (request *DescribeSaveOrUpdateWarn
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeSaveOrUpdateWarnings")
+    
     
     return
 }
@@ -4487,6 +4738,7 @@ func (c *Client) DescribeSaveOrUpdateWarnings(request *DescribeSaveOrUpdateWarni
     if request == nil {
         request = NewDescribeSaveOrUpdateWarningsRequest()
     }
+    
     response = NewDescribeSaveOrUpdateWarningsResponse()
     err = c.Send(request, response)
     return
@@ -4497,6 +4749,7 @@ func NewDescribeScanMalwareScheduleRequest() (request *DescribeScanMalwareSchedu
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeScanMalwareSchedule")
+    
     
     return
 }
@@ -4523,6 +4776,7 @@ func (c *Client) DescribeScanMalwareSchedule(request *DescribeScanMalwareSchedul
     if request == nil {
         request = NewDescribeScanMalwareScheduleRequest()
     }
+    
     response = NewDescribeScanMalwareScheduleResponse()
     err = c.Send(request, response)
     return
@@ -4533,6 +4787,7 @@ func NewDescribeScanScheduleRequest() (request *DescribeScanScheduleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeScanSchedule")
+    
     
     return
 }
@@ -4559,6 +4814,7 @@ func (c *Client) DescribeScanSchedule(request *DescribeScanScheduleRequest) (res
     if request == nil {
         request = NewDescribeScanScheduleRequest()
     }
+    
     response = NewDescribeScanScheduleResponse()
     err = c.Send(request, response)
     return
@@ -4569,6 +4825,7 @@ func NewDescribeScanStateRequest() (request *DescribeScanStateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeScanState")
+    
     
     return
 }
@@ -4597,6 +4854,7 @@ func (c *Client) DescribeScanState(request *DescribeScanStateRequest) (response 
     if request == nil {
         request = NewDescribeScanStateRequest()
     }
+    
     response = NewDescribeScanStateResponse()
     err = c.Send(request, response)
     return
@@ -4607,6 +4865,7 @@ func NewDescribeScanTaskDetailsRequest() (request *DescribeScanTaskDetailsReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeScanTaskDetails")
+    
     
     return
 }
@@ -4632,6 +4891,7 @@ func (c *Client) DescribeScanTaskDetails(request *DescribeScanTaskDetailsRequest
     if request == nil {
         request = NewDescribeScanTaskDetailsRequest()
     }
+    
     response = NewDescribeScanTaskDetailsResponse()
     err = c.Send(request, response)
     return
@@ -4642,6 +4902,7 @@ func NewDescribeScanTaskStatusRequest() (request *DescribeScanTaskStatusRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeScanTaskStatus")
+    
     
     return
 }
@@ -4668,6 +4929,7 @@ func (c *Client) DescribeScanTaskStatus(request *DescribeScanTaskStatusRequest) 
     if request == nil {
         request = NewDescribeScanTaskStatusRequest()
     }
+    
     response = NewDescribeScanTaskStatusResponse()
     err = c.Send(request, response)
     return
@@ -4678,6 +4940,7 @@ func NewDescribeScanVulSettingRequest() (request *DescribeScanVulSettingRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeScanVulSetting")
+    
     
     return
 }
@@ -4703,6 +4966,7 @@ func (c *Client) DescribeScanVulSetting(request *DescribeScanVulSettingRequest) 
     if request == nil {
         request = NewDescribeScanVulSettingRequest()
     }
+    
     response = NewDescribeScanVulSettingResponse()
     err = c.Send(request, response)
     return
@@ -4713,6 +4977,7 @@ func NewDescribeSearchExportListRequest() (request *DescribeSearchExportListRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeSearchExportList")
+    
     
     return
 }
@@ -4736,6 +5001,7 @@ func (c *Client) DescribeSearchExportList(request *DescribeSearchExportListReque
     if request == nil {
         request = NewDescribeSearchExportListRequest()
     }
+    
     response = NewDescribeSearchExportListResponse()
     err = c.Send(request, response)
     return
@@ -4746,6 +5012,7 @@ func NewDescribeSearchLogsRequest() (request *DescribeSearchLogsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeSearchLogs")
+    
     
     return
 }
@@ -4766,6 +5033,7 @@ func (c *Client) DescribeSearchLogs(request *DescribeSearchLogsRequest) (respons
     if request == nil {
         request = NewDescribeSearchLogsRequest()
     }
+    
     response = NewDescribeSearchLogsResponse()
     err = c.Send(request, response)
     return
@@ -4776,6 +5044,7 @@ func NewDescribeSearchTemplatesRequest() (request *DescribeSearchTemplatesReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeSearchTemplates")
+    
     
     return
 }
@@ -4799,6 +5068,7 @@ func (c *Client) DescribeSearchTemplates(request *DescribeSearchTemplatesRequest
     if request == nil {
         request = NewDescribeSearchTemplatesRequest()
     }
+    
     response = NewDescribeSearchTemplatesResponse()
     err = c.Send(request, response)
     return
@@ -4809,6 +5079,7 @@ func NewDescribeSecurityDynamicsRequest() (request *DescribeSecurityDynamicsRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeSecurityDynamics")
+    
     
     return
 }
@@ -4831,6 +5102,7 @@ func (c *Client) DescribeSecurityDynamics(request *DescribeSecurityDynamicsReque
     if request == nil {
         request = NewDescribeSecurityDynamicsRequest()
     }
+    
     response = NewDescribeSecurityDynamicsResponse()
     err = c.Send(request, response)
     return
@@ -4841,6 +5113,7 @@ func NewDescribeSecurityEventsCntRequest() (request *DescribeSecurityEventsCntRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeSecurityEventsCnt")
+    
     
     return
 }
@@ -4863,6 +5136,7 @@ func (c *Client) DescribeSecurityEventsCnt(request *DescribeSecurityEventsCntReq
     if request == nil {
         request = NewDescribeSecurityEventsCntRequest()
     }
+    
     response = NewDescribeSecurityEventsCntResponse()
     err = c.Send(request, response)
     return
@@ -4873,6 +5147,7 @@ func NewDescribeSecurityTrendsRequest() (request *DescribeSecurityTrendsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeSecurityTrends")
+    
     
     return
 }
@@ -4899,6 +5174,7 @@ func (c *Client) DescribeSecurityTrends(request *DescribeSecurityTrendsRequest) 
     if request == nil {
         request = NewDescribeSecurityTrendsRequest()
     }
+    
     response = NewDescribeSecurityTrendsResponse()
     err = c.Send(request, response)
     return
@@ -4909,6 +5185,7 @@ func NewDescribeServerRelatedDirInfoRequest() (request *DescribeServerRelatedDir
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeServerRelatedDirInfo")
+    
     
     return
 }
@@ -4932,6 +5209,7 @@ func (c *Client) DescribeServerRelatedDirInfo(request *DescribeServerRelatedDirI
     if request == nil {
         request = NewDescribeServerRelatedDirInfoRequest()
     }
+    
     response = NewDescribeServerRelatedDirInfoResponse()
     err = c.Send(request, response)
     return
@@ -4942,6 +5220,7 @@ func NewDescribeServersAndRiskAndFirstInfoRequest() (request *DescribeServersAnd
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeServersAndRiskAndFirstInfo")
+    
     
     return
 }
@@ -4962,6 +5241,7 @@ func (c *Client) DescribeServersAndRiskAndFirstInfo(request *DescribeServersAndR
     if request == nil {
         request = NewDescribeServersAndRiskAndFirstInfoRequest()
     }
+    
     response = NewDescribeServersAndRiskAndFirstInfoResponse()
     err = c.Send(request, response)
     return
@@ -4972,6 +5252,7 @@ func NewDescribeStrategyExistRequest() (request *DescribeStrategyExistRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeStrategyExist")
+    
     
     return
 }
@@ -4997,6 +5278,7 @@ func (c *Client) DescribeStrategyExist(request *DescribeStrategyExistRequest) (r
     if request == nil {
         request = NewDescribeStrategyExistRequest()
     }
+    
     response = NewDescribeStrategyExistResponse()
     err = c.Send(request, response)
     return
@@ -5007,6 +5289,7 @@ func NewDescribeTagMachinesRequest() (request *DescribeTagMachinesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeTagMachines")
+    
     
     return
 }
@@ -5032,6 +5315,7 @@ func (c *Client) DescribeTagMachines(request *DescribeTagMachinesRequest) (respo
     if request == nil {
         request = NewDescribeTagMachinesRequest()
     }
+    
     response = NewDescribeTagMachinesResponse()
     err = c.Send(request, response)
     return
@@ -5042,6 +5326,7 @@ func NewDescribeTagsRequest() (request *DescribeTagsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeTags")
+    
     
     return
 }
@@ -5070,6 +5355,7 @@ func (c *Client) DescribeTags(request *DescribeTagsRequest) (response *DescribeT
     if request == nil {
         request = NewDescribeTagsRequest()
     }
+    
     response = NewDescribeTagsResponse()
     err = c.Send(request, response)
     return
@@ -5080,6 +5366,7 @@ func NewDescribeUndoVulCountsRequest() (request *DescribeUndoVulCountsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeUndoVulCounts")
+    
     
     return
 }
@@ -5104,6 +5391,7 @@ func (c *Client) DescribeUndoVulCounts(request *DescribeUndoVulCountsRequest) (r
     if request == nil {
         request = NewDescribeUndoVulCountsRequest()
     }
+    
     response = NewDescribeUndoVulCountsResponse()
     err = c.Send(request, response)
     return
@@ -5114,6 +5402,7 @@ func NewDescribeUsualLoginPlacesRequest() (request *DescribeUsualLoginPlacesRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeUsualLoginPlaces")
+    
     
     return
 }
@@ -5141,6 +5430,7 @@ func (c *Client) DescribeUsualLoginPlaces(request *DescribeUsualLoginPlacesReque
     if request == nil {
         request = NewDescribeUsualLoginPlacesRequest()
     }
+    
     response = NewDescribeUsualLoginPlacesResponse()
     err = c.Send(request, response)
     return
@@ -5151,6 +5441,7 @@ func NewDescribeVersionStatisticsRequest() (request *DescribeVersionStatisticsRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeVersionStatistics")
+    
     
     return
 }
@@ -5177,6 +5468,7 @@ func (c *Client) DescribeVersionStatistics(request *DescribeVersionStatisticsReq
     if request == nil {
         request = NewDescribeVersionStatisticsRequest()
     }
+    
     response = NewDescribeVersionStatisticsResponse()
     err = c.Send(request, response)
     return
@@ -5187,6 +5479,7 @@ func NewDescribeVulCountByDatesRequest() (request *DescribeVulCountByDatesReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeVulCountByDates")
+    
     
     return
 }
@@ -5211,6 +5504,7 @@ func (c *Client) DescribeVulCountByDates(request *DescribeVulCountByDatesRequest
     if request == nil {
         request = NewDescribeVulCountByDatesRequest()
     }
+    
     response = NewDescribeVulCountByDatesResponse()
     err = c.Send(request, response)
     return
@@ -5221,6 +5515,7 @@ func NewDescribeVulEffectHostListRequest() (request *DescribeVulEffectHostListRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeVulEffectHostList")
+    
     
     return
 }
@@ -5248,6 +5543,7 @@ func (c *Client) DescribeVulEffectHostList(request *DescribeVulEffectHostListReq
     if request == nil {
         request = NewDescribeVulEffectHostListRequest()
     }
+    
     response = NewDescribeVulEffectHostListResponse()
     err = c.Send(request, response)
     return
@@ -5258,6 +5554,7 @@ func NewDescribeVulHostCountScanTimeRequest() (request *DescribeVulHostCountScan
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeVulHostCountScanTime")
+    
     
     return
 }
@@ -5278,6 +5575,7 @@ func (c *Client) DescribeVulHostCountScanTime(request *DescribeVulHostCountScanT
     if request == nil {
         request = NewDescribeVulHostCountScanTimeRequest()
     }
+    
     response = NewDescribeVulHostCountScanTimeResponse()
     err = c.Send(request, response)
     return
@@ -5288,6 +5586,7 @@ func NewDescribeVulHostTopRequest() (request *DescribeVulHostTopRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeVulHostTop")
+    
     
     return
 }
@@ -5314,6 +5613,7 @@ func (c *Client) DescribeVulHostTop(request *DescribeVulHostTopRequest) (respons
     if request == nil {
         request = NewDescribeVulHostTopRequest()
     }
+    
     response = NewDescribeVulHostTopResponse()
     err = c.Send(request, response)
     return
@@ -5324,6 +5624,7 @@ func NewDescribeVulInfoCvssRequest() (request *DescribeVulInfoCvssRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeVulInfoCvss")
+    
     
     return
 }
@@ -5351,6 +5652,7 @@ func (c *Client) DescribeVulInfoCvss(request *DescribeVulInfoCvssRequest) (respo
     if request == nil {
         request = NewDescribeVulInfoCvssRequest()
     }
+    
     response = NewDescribeVulInfoCvssResponse()
     err = c.Send(request, response)
     return
@@ -5361,6 +5663,7 @@ func NewDescribeVulLevelCountRequest() (request *DescribeVulLevelCountRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeVulLevelCount")
+    
     
     return
 }
@@ -5381,6 +5684,7 @@ func (c *Client) DescribeVulLevelCount(request *DescribeVulLevelCountRequest) (r
     if request == nil {
         request = NewDescribeVulLevelCountRequest()
     }
+    
     response = NewDescribeVulLevelCountResponse()
     err = c.Send(request, response)
     return
@@ -5391,6 +5695,7 @@ func NewDescribeVulListRequest() (request *DescribeVulListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeVulList")
+    
     
     return
 }
@@ -5416,6 +5721,7 @@ func (c *Client) DescribeVulList(request *DescribeVulListRequest) (response *Des
     if request == nil {
         request = NewDescribeVulListRequest()
     }
+    
     response = NewDescribeVulListResponse()
     err = c.Send(request, response)
     return
@@ -5426,6 +5732,7 @@ func NewDescribeVulTopRequest() (request *DescribeVulTopRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeVulTop")
+    
     
     return
 }
@@ -5452,6 +5759,7 @@ func (c *Client) DescribeVulTop(request *DescribeVulTopRequest) (response *Descr
     if request == nil {
         request = NewDescribeVulTopRequest()
     }
+    
     response = NewDescribeVulTopResponse()
     err = c.Send(request, response)
     return
@@ -5462,6 +5770,7 @@ func NewDescribeWarningListRequest() (request *DescribeWarningListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeWarningList")
+    
     
     return
 }
@@ -5482,6 +5791,7 @@ func (c *Client) DescribeWarningList(request *DescribeWarningListRequest) (respo
     if request == nil {
         request = NewDescribeWarningListRequest()
     }
+    
     response = NewDescribeWarningListResponse()
     err = c.Send(request, response)
     return
@@ -5492,6 +5802,7 @@ func NewDescribeWebPageEventListRequest() (request *DescribeWebPageEventListRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeWebPageEventList")
+    
     
     return
 }
@@ -5516,6 +5827,7 @@ func (c *Client) DescribeWebPageEventList(request *DescribeWebPageEventListReque
     if request == nil {
         request = NewDescribeWebPageEventListRequest()
     }
+    
     response = NewDescribeWebPageEventListResponse()
     err = c.Send(request, response)
     return
@@ -5526,6 +5838,7 @@ func NewDescribeWebPageGeneralizeRequest() (request *DescribeWebPageGeneralizeRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeWebPageGeneralize")
+    
     
     return
 }
@@ -5546,6 +5859,7 @@ func (c *Client) DescribeWebPageGeneralize(request *DescribeWebPageGeneralizeReq
     if request == nil {
         request = NewDescribeWebPageGeneralizeRequest()
     }
+    
     response = NewDescribeWebPageGeneralizeResponse()
     err = c.Send(request, response)
     return
@@ -5556,6 +5870,7 @@ func NewDescribeWebPageProtectStatRequest() (request *DescribeWebPageProtectStat
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeWebPageProtectStat")
+    
     
     return
 }
@@ -5576,6 +5891,7 @@ func (c *Client) DescribeWebPageProtectStat(request *DescribeWebPageProtectStatR
     if request == nil {
         request = NewDescribeWebPageProtectStatRequest()
     }
+    
     response = NewDescribeWebPageProtectStatResponse()
     err = c.Send(request, response)
     return
@@ -5586,6 +5902,7 @@ func NewDescribeWebPageServiceInfoRequest() (request *DescribeWebPageServiceInfo
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeWebPageServiceInfo")
+    
     
     return
 }
@@ -5606,6 +5923,7 @@ func (c *Client) DescribeWebPageServiceInfo(request *DescribeWebPageServiceInfoR
     if request == nil {
         request = NewDescribeWebPageServiceInfoRequest()
     }
+    
     response = NewDescribeWebPageServiceInfoResponse()
     err = c.Send(request, response)
     return
@@ -5616,6 +5934,7 @@ func NewEditBashRulesRequest() (request *EditBashRulesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "EditBashRules")
+    
     
     return
 }
@@ -5646,6 +5965,7 @@ func (c *Client) EditBashRules(request *EditBashRulesRequest) (response *EditBas
     if request == nil {
         request = NewEditBashRulesRequest()
     }
+    
     response = NewEditBashRulesResponse()
     err = c.Send(request, response)
     return
@@ -5656,6 +5976,7 @@ func NewEditTagsRequest() (request *EditTagsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "EditTags")
+    
     
     return
 }
@@ -5684,6 +6005,7 @@ func (c *Client) EditTags(request *EditTagsRequest) (response *EditTagsResponse,
     if request == nil {
         request = NewEditTagsRequest()
     }
+    
     response = NewEditTagsResponse()
     err = c.Send(request, response)
     return
@@ -5694,6 +6016,7 @@ func NewExportAssetCoreModuleListRequest() (request *ExportAssetCoreModuleListRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ExportAssetCoreModuleList")
+    
     
     return
 }
@@ -5721,6 +6044,7 @@ func (c *Client) ExportAssetCoreModuleList(request *ExportAssetCoreModuleListReq
     if request == nil {
         request = NewExportAssetCoreModuleListRequest()
     }
+    
     response = NewExportAssetCoreModuleListResponse()
     err = c.Send(request, response)
     return
@@ -5731,6 +6055,7 @@ func NewExportAssetWebServiceInfoListRequest() (request *ExportAssetWebServiceIn
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ExportAssetWebServiceInfoList")
+    
     
     return
 }
@@ -5757,6 +6082,7 @@ func (c *Client) ExportAssetWebServiceInfoList(request *ExportAssetWebServiceInf
     if request == nil {
         request = NewExportAssetWebServiceInfoListRequest()
     }
+    
     response = NewExportAssetWebServiceInfoListResponse()
     err = c.Send(request, response)
     return
@@ -5767,6 +6093,7 @@ func NewExportAttackLogsRequest() (request *ExportAttackLogsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ExportAttackLogs")
+    
     
     return
 }
@@ -5792,6 +6119,7 @@ func (c *Client) ExportAttackLogs(request *ExportAttackLogsRequest) (response *E
     if request == nil {
         request = NewExportAttackLogsRequest()
     }
+    
     response = NewExportAttackLogsResponse()
     err = c.Send(request, response)
     return
@@ -5802,6 +6130,7 @@ func NewExportBaselineEffectHostListRequest() (request *ExportBaselineEffectHost
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ExportBaselineEffectHostList")
+    
     
     return
 }
@@ -5827,6 +6156,7 @@ func (c *Client) ExportBaselineEffectHostList(request *ExportBaselineEffectHostL
     if request == nil {
         request = NewExportBaselineEffectHostListRequest()
     }
+    
     response = NewExportBaselineEffectHostListResponse()
     err = c.Send(request, response)
     return
@@ -5837,6 +6167,7 @@ func NewExportBaselineListRequest() (request *ExportBaselineListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ExportBaselineList")
+    
     
     return
 }
@@ -5863,6 +6194,7 @@ func (c *Client) ExportBaselineList(request *ExportBaselineListRequest) (respons
     if request == nil {
         request = NewExportBaselineListRequest()
     }
+    
     response = NewExportBaselineListResponse()
     err = c.Send(request, response)
     return
@@ -5873,6 +6205,7 @@ func NewExportBashEventsRequest() (request *ExportBashEventsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ExportBashEvents")
+    
     
     return
 }
@@ -5897,6 +6230,7 @@ func (c *Client) ExportBashEvents(request *ExportBashEventsRequest) (response *E
     if request == nil {
         request = NewExportBashEventsRequest()
     }
+    
     response = NewExportBashEventsResponse()
     err = c.Send(request, response)
     return
@@ -5907,6 +6241,7 @@ func NewExportBruteAttacksRequest() (request *ExportBruteAttacksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ExportBruteAttacks")
+    
     
     return
 }
@@ -5930,6 +6265,7 @@ func (c *Client) ExportBruteAttacks(request *ExportBruteAttacksRequest) (respons
     if request == nil {
         request = NewExportBruteAttacksRequest()
     }
+    
     response = NewExportBruteAttacksResponse()
     err = c.Send(request, response)
     return
@@ -5940,6 +6276,7 @@ func NewExportIgnoreBaselineRuleRequest() (request *ExportIgnoreBaselineRuleRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ExportIgnoreBaselineRule")
+    
     
     return
 }
@@ -5965,6 +6302,7 @@ func (c *Client) ExportIgnoreBaselineRule(request *ExportIgnoreBaselineRuleReque
     if request == nil {
         request = NewExportIgnoreBaselineRuleRequest()
     }
+    
     response = NewExportIgnoreBaselineRuleResponse()
     err = c.Send(request, response)
     return
@@ -5975,6 +6313,7 @@ func NewExportIgnoreRuleEffectHostListRequest() (request *ExportIgnoreRuleEffect
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ExportIgnoreRuleEffectHostList")
+    
     
     return
 }
@@ -6000,6 +6339,7 @@ func (c *Client) ExportIgnoreRuleEffectHostList(request *ExportIgnoreRuleEffectH
     if request == nil {
         request = NewExportIgnoreRuleEffectHostListRequest()
     }
+    
     response = NewExportIgnoreRuleEffectHostListResponse()
     err = c.Send(request, response)
     return
@@ -6010,6 +6350,7 @@ func NewExportMaliciousRequestsRequest() (request *ExportMaliciousRequestsReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ExportMaliciousRequests")
+    
     
     return
 }
@@ -6032,6 +6373,7 @@ func (c *Client) ExportMaliciousRequests(request *ExportMaliciousRequestsRequest
     if request == nil {
         request = NewExportMaliciousRequestsRequest()
     }
+    
     response = NewExportMaliciousRequestsResponse()
     err = c.Send(request, response)
     return
@@ -6042,6 +6384,7 @@ func NewExportMalwaresRequest() (request *ExportMalwaresRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ExportMalwares")
+    
     
     return
 }
@@ -6068,6 +6411,7 @@ func (c *Client) ExportMalwares(request *ExportMalwaresRequest) (response *Expor
     if request == nil {
         request = NewExportMalwaresRequest()
     }
+    
     response = NewExportMalwaresResponse()
     err = c.Send(request, response)
     return
@@ -6078,6 +6422,7 @@ func NewExportNonlocalLoginPlacesRequest() (request *ExportNonlocalLoginPlacesRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ExportNonlocalLoginPlaces")
+    
     
     return
 }
@@ -6102,6 +6447,7 @@ func (c *Client) ExportNonlocalLoginPlaces(request *ExportNonlocalLoginPlacesReq
     if request == nil {
         request = NewExportNonlocalLoginPlacesRequest()
     }
+    
     response = NewExportNonlocalLoginPlacesResponse()
     err = c.Send(request, response)
     return
@@ -6112,6 +6458,7 @@ func NewExportPrivilegeEventsRequest() (request *ExportPrivilegeEventsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ExportPrivilegeEvents")
+    
     
     return
 }
@@ -6135,6 +6482,7 @@ func (c *Client) ExportPrivilegeEvents(request *ExportPrivilegeEventsRequest) (r
     if request == nil {
         request = NewExportPrivilegeEventsRequest()
     }
+    
     response = NewExportPrivilegeEventsResponse()
     err = c.Send(request, response)
     return
@@ -6145,6 +6493,7 @@ func NewExportProtectDirListRequest() (request *ExportProtectDirListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ExportProtectDirList")
+    
     
     return
 }
@@ -6171,6 +6520,7 @@ func (c *Client) ExportProtectDirList(request *ExportProtectDirListRequest) (res
     if request == nil {
         request = NewExportProtectDirListRequest()
     }
+    
     response = NewExportProtectDirListResponse()
     err = c.Send(request, response)
     return
@@ -6181,6 +6531,7 @@ func NewExportReverseShellEventsRequest() (request *ExportReverseShellEventsRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ExportReverseShellEvents")
+    
     
     return
 }
@@ -6208,6 +6559,7 @@ func (c *Client) ExportReverseShellEvents(request *ExportReverseShellEventsReque
     if request == nil {
         request = NewExportReverseShellEventsRequest()
     }
+    
     response = NewExportReverseShellEventsResponse()
     err = c.Send(request, response)
     return
@@ -6218,6 +6570,7 @@ func NewExportScanTaskDetailsRequest() (request *ExportScanTaskDetailsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ExportScanTaskDetails")
+    
     
     return
 }
@@ -6242,6 +6595,7 @@ func (c *Client) ExportScanTaskDetails(request *ExportScanTaskDetailsRequest) (r
     if request == nil {
         request = NewExportScanTaskDetailsRequest()
     }
+    
     response = NewExportScanTaskDetailsResponse()
     err = c.Send(request, response)
     return
@@ -6252,6 +6606,7 @@ func NewExportSecurityTrendsRequest() (request *ExportSecurityTrendsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ExportSecurityTrends")
+    
     
     return
 }
@@ -6272,6 +6627,7 @@ func (c *Client) ExportSecurityTrends(request *ExportSecurityTrendsRequest) (res
     if request == nil {
         request = NewExportSecurityTrendsRequest()
     }
+    
     response = NewExportSecurityTrendsResponse()
     err = c.Send(request, response)
     return
@@ -6282,6 +6638,7 @@ func NewExportTasksRequest() (request *ExportTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ExportTasks")
+    
     
     return
 }
@@ -6303,6 +6660,7 @@ func (c *Client) ExportTasks(request *ExportTasksRequest) (response *ExportTasks
     if request == nil {
         request = NewExportTasksRequest()
     }
+    
     response = NewExportTasksResponse()
     err = c.Send(request, response)
     return
@@ -6313,6 +6671,7 @@ func NewExportVulDetectionExcelRequest() (request *ExportVulDetectionExcelReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ExportVulDetectionExcel")
+    
     
     return
 }
@@ -6337,6 +6696,7 @@ func (c *Client) ExportVulDetectionExcel(request *ExportVulDetectionExcelRequest
     if request == nil {
         request = NewExportVulDetectionExcelRequest()
     }
+    
     response = NewExportVulDetectionExcelResponse()
     err = c.Send(request, response)
     return
@@ -6347,6 +6707,7 @@ func NewExportVulDetectionReportRequest() (request *ExportVulDetectionReportRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ExportVulDetectionReport")
+    
     
     return
 }
@@ -6371,6 +6732,7 @@ func (c *Client) ExportVulDetectionReport(request *ExportVulDetectionReportReque
     if request == nil {
         request = NewExportVulDetectionReportRequest()
     }
+    
     response = NewExportVulDetectionReportResponse()
     err = c.Send(request, response)
     return
@@ -6381,6 +6743,7 @@ func NewExportVulEffectHostListRequest() (request *ExportVulEffectHostListReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ExportVulEffectHostList")
+    
     
     return
 }
@@ -6408,6 +6771,7 @@ func (c *Client) ExportVulEffectHostList(request *ExportVulEffectHostListRequest
     if request == nil {
         request = NewExportVulEffectHostListRequest()
     }
+    
     response = NewExportVulEffectHostListResponse()
     err = c.Send(request, response)
     return
@@ -6418,6 +6782,7 @@ func NewExportVulListRequest() (request *ExportVulListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ExportVulList")
+    
     
     return
 }
@@ -6442,6 +6807,7 @@ func (c *Client) ExportVulList(request *ExportVulListRequest) (response *ExportV
     if request == nil {
         request = NewExportVulListRequest()
     }
+    
     response = NewExportVulListResponse()
     err = c.Send(request, response)
     return
@@ -6452,6 +6818,7 @@ func NewExportWebPageEventListRequest() (request *ExportWebPageEventListRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ExportWebPageEventList")
+    
     
     return
 }
@@ -6476,6 +6843,7 @@ func (c *Client) ExportWebPageEventList(request *ExportWebPageEventListRequest) 
     if request == nil {
         request = NewExportWebPageEventListRequest()
     }
+    
     response = NewExportWebPageEventListResponse()
     err = c.Send(request, response)
     return
@@ -6486,6 +6854,7 @@ func NewIgnoreImpactedHostsRequest() (request *IgnoreImpactedHostsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "IgnoreImpactedHosts")
+    
     
     return
 }
@@ -6513,6 +6882,7 @@ func (c *Client) IgnoreImpactedHosts(request *IgnoreImpactedHostsRequest) (respo
     if request == nil {
         request = NewIgnoreImpactedHostsRequest()
     }
+    
     response = NewIgnoreImpactedHostsResponse()
     err = c.Send(request, response)
     return
@@ -6523,6 +6893,7 @@ func NewInquiryPriceOpenProVersionPrepaidRequest() (request *InquiryPriceOpenPro
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "InquiryPriceOpenProVersionPrepaid")
+    
     
     return
 }
@@ -6545,6 +6916,7 @@ func (c *Client) InquiryPriceOpenProVersionPrepaid(request *InquiryPriceOpenProV
     if request == nil {
         request = NewInquiryPriceOpenProVersionPrepaidRequest()
     }
+    
     response = NewInquiryPriceOpenProVersionPrepaidResponse()
     err = c.Send(request, response)
     return
@@ -6555,6 +6927,7 @@ func NewModifyAutoOpenProVersionConfigRequest() (request *ModifyAutoOpenProVersi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ModifyAutoOpenProVersionConfig")
+    
     
     return
 }
@@ -6579,6 +6952,7 @@ func (c *Client) ModifyAutoOpenProVersionConfig(request *ModifyAutoOpenProVersio
     if request == nil {
         request = NewModifyAutoOpenProVersionConfigRequest()
     }
+    
     response = NewModifyAutoOpenProVersionConfigResponse()
     err = c.Send(request, response)
     return
@@ -6589,6 +6963,7 @@ func NewModifyBanModeRequest() (request *ModifyBanModeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ModifyBanMode")
+    
     
     return
 }
@@ -6615,6 +6990,7 @@ func (c *Client) ModifyBanMode(request *ModifyBanModeRequest) (response *ModifyB
     if request == nil {
         request = NewModifyBanModeRequest()
     }
+    
     response = NewModifyBanModeResponse()
     err = c.Send(request, response)
     return
@@ -6625,6 +7001,7 @@ func NewModifyBanStatusRequest() (request *ModifyBanStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ModifyBanStatus")
+    
     
     return
 }
@@ -6651,6 +7028,7 @@ func (c *Client) ModifyBanStatus(request *ModifyBanStatusRequest) (response *Mod
     if request == nil {
         request = NewModifyBanStatusRequest()
     }
+    
     response = NewModifyBanStatusResponse()
     err = c.Send(request, response)
     return
@@ -6661,6 +7039,7 @@ func NewModifyBruteAttackRulesRequest() (request *ModifyBruteAttackRulesRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ModifyBruteAttackRules")
+    
     
     return
 }
@@ -6687,6 +7066,7 @@ func (c *Client) ModifyBruteAttackRules(request *ModifyBruteAttackRulesRequest) 
     if request == nil {
         request = NewModifyBruteAttackRulesRequest()
     }
+    
     response = NewModifyBruteAttackRulesResponse()
     err = c.Send(request, response)
     return
@@ -6697,6 +7077,7 @@ func NewModifyMalwareTimingScanSettingsRequest() (request *ModifyMalwareTimingSc
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ModifyMalwareTimingScanSettings")
+    
     
     return
 }
@@ -6728,6 +7109,7 @@ func (c *Client) ModifyMalwareTimingScanSettings(request *ModifyMalwareTimingSca
     if request == nil {
         request = NewModifyMalwareTimingScanSettingsRequest()
     }
+    
     response = NewModifyMalwareTimingScanSettingsResponse()
     err = c.Send(request, response)
     return
@@ -6738,6 +7120,7 @@ func NewModifyProVersionRenewFlagRequest() (request *ModifyProVersionRenewFlagRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ModifyProVersionRenewFlag")
+    
     
     return
 }
@@ -6763,6 +7146,7 @@ func (c *Client) ModifyProVersionRenewFlag(request *ModifyProVersionRenewFlagReq
     if request == nil {
         request = NewModifyProVersionRenewFlagRequest()
     }
+    
     response = NewModifyProVersionRenewFlagResponse()
     err = c.Send(request, response)
     return
@@ -6773,6 +7157,7 @@ func NewModifyWarningSettingRequest() (request *ModifyWarningSettingRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ModifyWarningSetting")
+    
     
     return
 }
@@ -6799,6 +7184,7 @@ func (c *Client) ModifyWarningSetting(request *ModifyWarningSettingRequest) (res
     if request == nil {
         request = NewModifyWarningSettingRequest()
     }
+    
     response = NewModifyWarningSettingResponse()
     err = c.Send(request, response)
     return
@@ -6809,6 +7195,7 @@ func NewModifyWebPageProtectDirRequest() (request *ModifyWebPageProtectDirReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ModifyWebPageProtectDir")
+    
     
     return
 }
@@ -6842,6 +7229,7 @@ func (c *Client) ModifyWebPageProtectDir(request *ModifyWebPageProtectDirRequest
     if request == nil {
         request = NewModifyWebPageProtectDirRequest()
     }
+    
     response = NewModifyWebPageProtectDirResponse()
     err = c.Send(request, response)
     return
@@ -6852,6 +7240,7 @@ func NewModifyWebPageProtectSettingRequest() (request *ModifyWebPageProtectSetti
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ModifyWebPageProtectSetting")
+    
     
     return
 }
@@ -6877,6 +7266,7 @@ func (c *Client) ModifyWebPageProtectSetting(request *ModifyWebPageProtectSettin
     if request == nil {
         request = NewModifyWebPageProtectSettingRequest()
     }
+    
     response = NewModifyWebPageProtectSettingResponse()
     err = c.Send(request, response)
     return
@@ -6887,6 +7277,7 @@ func NewModifyWebPageProtectSwitchRequest() (request *ModifyWebPageProtectSwitch
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ModifyWebPageProtectSwitch")
+    
     
     return
 }
@@ -6916,6 +7307,7 @@ func (c *Client) ModifyWebPageProtectSwitch(request *ModifyWebPageProtectSwitchR
     if request == nil {
         request = NewModifyWebPageProtectSwitchRequest()
     }
+    
     response = NewModifyWebPageProtectSwitchResponse()
     err = c.Send(request, response)
     return
@@ -6926,6 +7318,7 @@ func NewOpenProVersionRequest() (request *OpenProVersionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "OpenProVersion")
+    
     
     return
 }
@@ -6955,6 +7348,7 @@ func (c *Client) OpenProVersion(request *OpenProVersionRequest) (response *OpenP
     if request == nil {
         request = NewOpenProVersionRequest()
     }
+    
     response = NewOpenProVersionResponse()
     err = c.Send(request, response)
     return
@@ -6965,6 +7359,7 @@ func NewOpenProVersionPrepaidRequest() (request *OpenProVersionPrepaidRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "OpenProVersionPrepaid")
+    
     
     return
 }
@@ -6991,6 +7386,7 @@ func (c *Client) OpenProVersionPrepaid(request *OpenProVersionPrepaidRequest) (r
     if request == nil {
         request = NewOpenProVersionPrepaidRequest()
     }
+    
     response = NewOpenProVersionPrepaidResponse()
     err = c.Send(request, response)
     return
@@ -7001,6 +7397,7 @@ func NewRecoverMalwaresRequest() (request *RecoverMalwaresRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "RecoverMalwares")
+    
     
     return
 }
@@ -7029,6 +7426,7 @@ func (c *Client) RecoverMalwares(request *RecoverMalwaresRequest) (response *Rec
     if request == nil {
         request = NewRecoverMalwaresRequest()
     }
+    
     response = NewRecoverMalwaresResponse()
     err = c.Send(request, response)
     return
@@ -7039,6 +7437,7 @@ func NewRenewProVersionRequest() (request *RenewProVersionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "RenewProVersion")
+    
     
     return
 }
@@ -7062,6 +7461,7 @@ func (c *Client) RenewProVersion(request *RenewProVersionRequest) (response *Ren
     if request == nil {
         request = NewRenewProVersionRequest()
     }
+    
     response = NewRenewProVersionResponse()
     err = c.Send(request, response)
     return
@@ -7072,6 +7472,7 @@ func NewScanAssetRequest() (request *ScanAssetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ScanAsset")
+    
     
     return
 }
@@ -7101,6 +7502,7 @@ func (c *Client) ScanAsset(request *ScanAssetRequest) (response *ScanAssetRespon
     if request == nil {
         request = NewScanAssetRequest()
     }
+    
     response = NewScanAssetResponse()
     err = c.Send(request, response)
     return
@@ -7111,6 +7513,7 @@ func NewScanVulRequest() (request *ScanVulRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ScanVul")
+    
     
     return
 }
@@ -7142,6 +7545,7 @@ func (c *Client) ScanVul(request *ScanVulRequest) (response *ScanVulResponse, er
     if request == nil {
         request = NewScanVulRequest()
     }
+    
     response = NewScanVulResponse()
     err = c.Send(request, response)
     return
@@ -7152,6 +7556,7 @@ func NewScanVulAgainRequest() (request *ScanVulAgainRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ScanVulAgain")
+    
     
     return
 }
@@ -7182,6 +7587,7 @@ func (c *Client) ScanVulAgain(request *ScanVulAgainRequest) (response *ScanVulAg
     if request == nil {
         request = NewScanVulAgainRequest()
     }
+    
     response = NewScanVulAgainResponse()
     err = c.Send(request, response)
     return
@@ -7192,6 +7598,7 @@ func NewScanVulSettingRequest() (request *ScanVulSettingRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "ScanVulSetting")
+    
     
     return
 }
@@ -7218,6 +7625,7 @@ func (c *Client) ScanVulSetting(request *ScanVulSettingRequest) (response *ScanV
     if request == nil {
         request = NewScanVulSettingRequest()
     }
+    
     response = NewScanVulSettingResponse()
     err = c.Send(request, response)
     return
@@ -7228,6 +7636,7 @@ func NewSeparateMalwaresRequest() (request *SeparateMalwaresRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "SeparateMalwares")
+    
     
     return
 }
@@ -7256,6 +7665,7 @@ func (c *Client) SeparateMalwares(request *SeparateMalwaresRequest) (response *S
     if request == nil {
         request = NewSeparateMalwaresRequest()
     }
+    
     response = NewSeparateMalwaresResponse()
     err = c.Send(request, response)
     return
@@ -7266,6 +7676,7 @@ func NewSetBashEventsStatusRequest() (request *SetBashEventsStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "SetBashEventsStatus")
+    
     
     return
 }
@@ -7292,6 +7703,7 @@ func (c *Client) SetBashEventsStatus(request *SetBashEventsStatusRequest) (respo
     if request == nil {
         request = NewSetBashEventsStatusRequest()
     }
+    
     response = NewSetBashEventsStatusResponse()
     err = c.Send(request, response)
     return
@@ -7302,6 +7714,7 @@ func NewStopNoticeBanTipsRequest() (request *StopNoticeBanTipsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "StopNoticeBanTips")
+    
     
     return
 }
@@ -7322,6 +7735,7 @@ func (c *Client) StopNoticeBanTips(request *StopNoticeBanTipsRequest) (response 
     if request == nil {
         request = NewStopNoticeBanTipsRequest()
     }
+    
     response = NewStopNoticeBanTipsResponse()
     err = c.Send(request, response)
     return
@@ -7332,6 +7746,7 @@ func NewSwitchBashRulesRequest() (request *SwitchBashRulesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "SwitchBashRules")
+    
     
     return
 }
@@ -7363,6 +7778,7 @@ func (c *Client) SwitchBashRules(request *SwitchBashRulesRequest) (response *Swi
     if request == nil {
         request = NewSwitchBashRulesRequest()
     }
+    
     response = NewSwitchBashRulesResponse()
     err = c.Send(request, response)
     return
@@ -7373,6 +7789,7 @@ func NewSyncAssetScanRequest() (request *SyncAssetScanRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "SyncAssetScan")
+    
     
     return
 }
@@ -7398,6 +7815,7 @@ func (c *Client) SyncAssetScan(request *SyncAssetScanRequest) (response *SyncAss
     if request == nil {
         request = NewSyncAssetScanRequest()
     }
+    
     response = NewSyncAssetScanResponse()
     err = c.Send(request, response)
     return
@@ -7408,6 +7826,7 @@ func NewTrustMalwaresRequest() (request *TrustMalwaresRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "TrustMalwares")
+    
     
     return
 }
@@ -7435,6 +7854,7 @@ func (c *Client) TrustMalwares(request *TrustMalwaresRequest) (response *TrustMa
     if request == nil {
         request = NewTrustMalwaresRequest()
     }
+    
     response = NewTrustMalwaresResponse()
     err = c.Send(request, response)
     return
@@ -7445,6 +7865,7 @@ func NewUntrustMalwaresRequest() (request *UntrustMalwaresRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "UntrustMalwares")
+    
     
     return
 }
@@ -7472,6 +7893,7 @@ func (c *Client) UntrustMalwares(request *UntrustMalwaresRequest) (response *Unt
     if request == nil {
         request = NewUntrustMalwaresRequest()
     }
+    
     response = NewUntrustMalwaresResponse()
     err = c.Send(request, response)
     return
@@ -7482,6 +7904,7 @@ func NewUpdateBaselineStrategyRequest() (request *UpdateBaselineStrategyRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "UpdateBaselineStrategy")
+    
     
     return
 }
@@ -7509,6 +7932,7 @@ func (c *Client) UpdateBaselineStrategy(request *UpdateBaselineStrategyRequest) 
     if request == nil {
         request = NewUpdateBaselineStrategyRequest()
     }
+    
     response = NewUpdateBaselineStrategyResponse()
     err = c.Send(request, response)
     return
@@ -7519,6 +7943,7 @@ func NewUpdateMachineTagsRequest() (request *UpdateMachineTagsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cwp", APIVersion, "UpdateMachineTags")
+    
     
     return
 }
@@ -7544,6 +7969,7 @@ func (c *Client) UpdateMachineTags(request *UpdateMachineTagsRequest) (response 
     if request == nil {
         request = NewUpdateMachineTagsRequest()
     }
+    
     response = NewUpdateMachineTagsResponse()
     err = c.Send(request, response)
     return

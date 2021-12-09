@@ -49,6 +49,7 @@ func NewAttachCamRoleRequest() (request *AttachCamRoleRequest) {
     }
     request.Init().WithApiInfo("bm", APIVersion, "AttachCamRole")
     
+    
     return
 }
 
@@ -68,6 +69,7 @@ func (c *Client) AttachCamRole(request *AttachCamRoleRequest) (response *AttachC
     if request == nil {
         request = NewAttachCamRoleRequest()
     }
+    
     response = NewAttachCamRoleResponse()
     err = c.Send(request, response)
     return
@@ -78,6 +80,7 @@ func NewBindPsaTagRequest() (request *BindPsaTagRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "BindPsaTag")
+    
     
     return
 }
@@ -103,6 +106,7 @@ func (c *Client) BindPsaTag(request *BindPsaTagRequest) (response *BindPsaTagRes
     if request == nil {
         request = NewBindPsaTagRequest()
     }
+    
     response = NewBindPsaTagResponse()
     err = c.Send(request, response)
     return
@@ -113,6 +117,7 @@ func NewBuyDevicesRequest() (request *BuyDevicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "BuyDevices")
+    
     
     return
 }
@@ -140,6 +145,7 @@ func (c *Client) BuyDevices(request *BuyDevicesRequest) (response *BuyDevicesRes
     if request == nil {
         request = NewBuyDevicesRequest()
     }
+    
     response = NewBuyDevicesResponse()
     err = c.Send(request, response)
     return
@@ -150,6 +156,7 @@ func NewCreateCustomImageRequest() (request *CreateCustomImageRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "CreateCustomImage")
+    
     
     return
 }
@@ -177,6 +184,7 @@ func (c *Client) CreateCustomImage(request *CreateCustomImageRequest) (response 
     if request == nil {
         request = NewCreateCustomImageRequest()
     }
+    
     response = NewCreateCustomImageResponse()
     err = c.Send(request, response)
     return
@@ -187,6 +195,7 @@ func NewCreatePsaRegulationRequest() (request *CreatePsaRegulationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "CreatePsaRegulation")
+    
     
     return
 }
@@ -210,6 +219,7 @@ func (c *Client) CreatePsaRegulation(request *CreatePsaRegulationRequest) (respo
     if request == nil {
         request = NewCreatePsaRegulationRequest()
     }
+    
     response = NewCreatePsaRegulationResponse()
     err = c.Send(request, response)
     return
@@ -220,6 +230,7 @@ func NewCreateSpotDeviceRequest() (request *CreateSpotDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "CreateSpotDevice")
+    
     
     return
 }
@@ -242,6 +253,7 @@ func (c *Client) CreateSpotDevice(request *CreateSpotDeviceRequest) (response *C
     if request == nil {
         request = NewCreateSpotDeviceRequest()
     }
+    
     response = NewCreateSpotDeviceResponse()
     err = c.Send(request, response)
     return
@@ -252,6 +264,7 @@ func NewCreateUserCmdRequest() (request *CreateUserCmdRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "CreateUserCmd")
+    
     
     return
 }
@@ -276,6 +289,7 @@ func (c *Client) CreateUserCmd(request *CreateUserCmdRequest) (response *CreateU
     if request == nil {
         request = NewCreateUserCmdRequest()
     }
+    
     response = NewCreateUserCmdResponse()
     err = c.Send(request, response)
     return
@@ -286,6 +300,7 @@ func NewDeleteCustomImagesRequest() (request *DeleteCustomImagesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "DeleteCustomImages")
+    
     
     return
 }
@@ -310,6 +325,7 @@ func (c *Client) DeleteCustomImages(request *DeleteCustomImagesRequest) (respons
     if request == nil {
         request = NewDeleteCustomImagesRequest()
     }
+    
     response = NewDeleteCustomImagesResponse()
     err = c.Send(request, response)
     return
@@ -320,6 +336,7 @@ func NewDeletePsaRegulationRequest() (request *DeletePsaRegulationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "DeletePsaRegulation")
+    
     
     return
 }
@@ -342,6 +359,7 @@ func (c *Client) DeletePsaRegulation(request *DeletePsaRegulationRequest) (respo
     if request == nil {
         request = NewDeletePsaRegulationRequest()
     }
+    
     response = NewDeletePsaRegulationResponse()
     err = c.Send(request, response)
     return
@@ -352,6 +370,7 @@ func NewDeleteUserCmdsRequest() (request *DeleteUserCmdsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "DeleteUserCmds")
+    
     
     return
 }
@@ -374,6 +393,7 @@ func (c *Client) DeleteUserCmds(request *DeleteUserCmdsRequest) (response *Delet
     if request == nil {
         request = NewDeleteUserCmdsRequest()
     }
+    
     response = NewDeleteUserCmdsResponse()
     err = c.Send(request, response)
     return
@@ -384,6 +404,7 @@ func NewDescribeCustomImageProcessRequest() (request *DescribeCustomImageProcess
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "DescribeCustomImageProcess")
+    
     
     return
 }
@@ -406,6 +427,7 @@ func (c *Client) DescribeCustomImageProcess(request *DescribeCustomImageProcessR
     if request == nil {
         request = NewDescribeCustomImageProcessRequest()
     }
+    
     response = NewDescribeCustomImageProcessResponse()
     err = c.Send(request, response)
     return
@@ -416,6 +438,7 @@ func NewDescribeCustomImagesRequest() (request *DescribeCustomImagesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "DescribeCustomImages")
+    
     
     return
 }
@@ -440,6 +463,7 @@ func (c *Client) DescribeCustomImages(request *DescribeCustomImagesRequest) (res
     if request == nil {
         request = NewDescribeCustomImagesRequest()
     }
+    
     response = NewDescribeCustomImagesResponse()
     err = c.Send(request, response)
     return
@@ -450,6 +474,7 @@ func NewDescribeDeviceClassRequest() (request *DescribeDeviceClassRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "DescribeDeviceClass")
+    
     
     return
 }
@@ -474,6 +499,7 @@ func (c *Client) DescribeDeviceClass(request *DescribeDeviceClassRequest) (respo
     if request == nil {
         request = NewDescribeDeviceClassRequest()
     }
+    
     response = NewDescribeDeviceClassResponse()
     err = c.Send(request, response)
     return
@@ -484,6 +510,7 @@ func NewDescribeDeviceClassPartitionRequest() (request *DescribeDeviceClassParti
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "DescribeDeviceClassPartition")
+    
     
     return
 }
@@ -505,6 +532,7 @@ func (c *Client) DescribeDeviceClassPartition(request *DescribeDeviceClassPartit
     if request == nil {
         request = NewDescribeDeviceClassPartitionRequest()
     }
+    
     response = NewDescribeDeviceClassPartitionResponse()
     err = c.Send(request, response)
     return
@@ -515,6 +543,7 @@ func NewDescribeDeviceHardwareInfoRequest() (request *DescribeDeviceHardwareInfo
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "DescribeDeviceHardwareInfo")
+    
     
     return
 }
@@ -537,6 +566,7 @@ func (c *Client) DescribeDeviceHardwareInfo(request *DescribeDeviceHardwareInfoR
     if request == nil {
         request = NewDescribeDeviceHardwareInfoRequest()
     }
+    
     response = NewDescribeDeviceHardwareInfoResponse()
     err = c.Send(request, response)
     return
@@ -547,6 +577,7 @@ func NewDescribeDeviceInventoryRequest() (request *DescribeDeviceInventoryReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "DescribeDeviceInventory")
+    
     
     return
 }
@@ -568,6 +599,7 @@ func (c *Client) DescribeDeviceInventory(request *DescribeDeviceInventoryRequest
     if request == nil {
         request = NewDescribeDeviceInventoryRequest()
     }
+    
     response = NewDescribeDeviceInventoryResponse()
     err = c.Send(request, response)
     return
@@ -578,6 +610,7 @@ func NewDescribeDeviceOperationLogRequest() (request *DescribeDeviceOperationLog
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "DescribeDeviceOperationLog")
+    
     
     return
 }
@@ -600,6 +633,7 @@ func (c *Client) DescribeDeviceOperationLog(request *DescribeDeviceOperationLogR
     if request == nil {
         request = NewDescribeDeviceOperationLogRequest()
     }
+    
     response = NewDescribeDeviceOperationLogResponse()
     err = c.Send(request, response)
     return
@@ -610,6 +644,7 @@ func NewDescribeDevicePartitionRequest() (request *DescribeDevicePartitionReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "DescribeDevicePartition")
+    
     
     return
 }
@@ -632,6 +667,7 @@ func (c *Client) DescribeDevicePartition(request *DescribeDevicePartitionRequest
     if request == nil {
         request = NewDescribeDevicePartitionRequest()
     }
+    
     response = NewDescribeDevicePartitionResponse()
     err = c.Send(request, response)
     return
@@ -642,6 +678,7 @@ func NewDescribeDevicePositionRequest() (request *DescribeDevicePositionRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "DescribeDevicePosition")
+    
     
     return
 }
@@ -662,6 +699,7 @@ func (c *Client) DescribeDevicePosition(request *DescribeDevicePositionRequest) 
     if request == nil {
         request = NewDescribeDevicePositionRequest()
     }
+    
     response = NewDescribeDevicePositionResponse()
     err = c.Send(request, response)
     return
@@ -672,6 +710,7 @@ func NewDescribeDevicePriceInfoRequest() (request *DescribeDevicePriceInfoReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "DescribeDevicePriceInfo")
+    
     
     return
 }
@@ -694,6 +733,7 @@ func (c *Client) DescribeDevicePriceInfo(request *DescribeDevicePriceInfoRequest
     if request == nil {
         request = NewDescribeDevicePriceInfoRequest()
     }
+    
     response = NewDescribeDevicePriceInfoResponse()
     err = c.Send(request, response)
     return
@@ -704,6 +744,7 @@ func NewDescribeDevicesRequest() (request *DescribeDevicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "DescribeDevices")
+    
     
     return
 }
@@ -726,6 +767,7 @@ func (c *Client) DescribeDevices(request *DescribeDevicesRequest) (response *Des
     if request == nil {
         request = NewDescribeDevicesRequest()
     }
+    
     response = NewDescribeDevicesResponse()
     err = c.Send(request, response)
     return
@@ -736,6 +778,7 @@ func NewDescribeHardwareSpecificationRequest() (request *DescribeHardwareSpecifi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "DescribeHardwareSpecification")
+    
     
     return
 }
@@ -758,6 +801,7 @@ func (c *Client) DescribeHardwareSpecification(request *DescribeHardwareSpecific
     if request == nil {
         request = NewDescribeHardwareSpecificationRequest()
     }
+    
     response = NewDescribeHardwareSpecificationResponse()
     err = c.Send(request, response)
     return
@@ -768,6 +812,7 @@ func NewDescribeHostedDeviceOutBandInfoRequest() (request *DescribeHostedDeviceO
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "DescribeHostedDeviceOutBandInfo")
+    
     
     return
 }
@@ -791,6 +836,7 @@ func (c *Client) DescribeHostedDeviceOutBandInfo(request *DescribeHostedDeviceOu
     if request == nil {
         request = NewDescribeHostedDeviceOutBandInfoRequest()
     }
+    
     response = NewDescribeHostedDeviceOutBandInfoResponse()
     err = c.Send(request, response)
     return
@@ -801,6 +847,7 @@ func NewDescribeOperationResultRequest() (request *DescribeOperationResultReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "DescribeOperationResult")
+    
     
     return
 }
@@ -823,6 +870,7 @@ func (c *Client) DescribeOperationResult(request *DescribeOperationResultRequest
     if request == nil {
         request = NewDescribeOperationResultRequest()
     }
+    
     response = NewDescribeOperationResultResponse()
     err = c.Send(request, response)
     return
@@ -833,6 +881,7 @@ func NewDescribeOsInfoRequest() (request *DescribeOsInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "DescribeOsInfo")
+    
     
     return
 }
@@ -854,6 +903,7 @@ func (c *Client) DescribeOsInfo(request *DescribeOsInfoRequest) (response *Descr
     if request == nil {
         request = NewDescribeOsInfoRequest()
     }
+    
     response = NewDescribeOsInfoResponse()
     err = c.Send(request, response)
     return
@@ -864,6 +914,7 @@ func NewDescribePsaRegulationsRequest() (request *DescribePsaRegulationsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "DescribePsaRegulations")
+    
     
     return
 }
@@ -886,6 +937,7 @@ func (c *Client) DescribePsaRegulations(request *DescribePsaRegulationsRequest) 
     if request == nil {
         request = NewDescribePsaRegulationsRequest()
     }
+    
     response = NewDescribePsaRegulationsResponse()
     err = c.Send(request, response)
     return
@@ -896,6 +948,7 @@ func NewDescribeRegionsRequest() (request *DescribeRegionsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "DescribeRegions")
+    
     
     return
 }
@@ -918,6 +971,7 @@ func (c *Client) DescribeRegions(request *DescribeRegionsRequest) (response *Des
     if request == nil {
         request = NewDescribeRegionsRequest()
     }
+    
     response = NewDescribeRegionsResponse()
     err = c.Send(request, response)
     return
@@ -928,6 +982,7 @@ func NewDescribeRepairTaskConstantRequest() (request *DescribeRepairTaskConstant
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "DescribeRepairTaskConstant")
+    
     
     return
 }
@@ -950,6 +1005,7 @@ func (c *Client) DescribeRepairTaskConstant(request *DescribeRepairTaskConstantR
     if request == nil {
         request = NewDescribeRepairTaskConstantRequest()
     }
+    
     response = NewDescribeRepairTaskConstantResponse()
     err = c.Send(request, response)
     return
@@ -960,6 +1016,7 @@ func NewDescribeTaskInfoRequest() (request *DescribeTaskInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "DescribeTaskInfo")
+    
     
     return
 }
@@ -998,6 +1055,7 @@ func (c *Client) DescribeTaskInfo(request *DescribeTaskInfoRequest) (response *D
     if request == nil {
         request = NewDescribeTaskInfoRequest()
     }
+    
     response = NewDescribeTaskInfoResponse()
     err = c.Send(request, response)
     return
@@ -1008,6 +1066,7 @@ func NewDescribeTaskOperationLogRequest() (request *DescribeTaskOperationLogRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "DescribeTaskOperationLog")
+    
     
     return
 }
@@ -1030,6 +1089,7 @@ func (c *Client) DescribeTaskOperationLog(request *DescribeTaskOperationLogReque
     if request == nil {
         request = NewDescribeTaskOperationLogRequest()
     }
+    
     response = NewDescribeTaskOperationLogResponse()
     err = c.Send(request, response)
     return
@@ -1040,6 +1100,7 @@ func NewDescribeUserCmdTaskInfoRequest() (request *DescribeUserCmdTaskInfoReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "DescribeUserCmdTaskInfo")
+    
     
     return
 }
@@ -1062,6 +1123,7 @@ func (c *Client) DescribeUserCmdTaskInfo(request *DescribeUserCmdTaskInfoRequest
     if request == nil {
         request = NewDescribeUserCmdTaskInfoRequest()
     }
+    
     response = NewDescribeUserCmdTaskInfoResponse()
     err = c.Send(request, response)
     return
@@ -1072,6 +1134,7 @@ func NewDescribeUserCmdTasksRequest() (request *DescribeUserCmdTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "DescribeUserCmdTasks")
+    
     
     return
 }
@@ -1094,6 +1157,7 @@ func (c *Client) DescribeUserCmdTasks(request *DescribeUserCmdTasksRequest) (res
     if request == nil {
         request = NewDescribeUserCmdTasksRequest()
     }
+    
     response = NewDescribeUserCmdTasksResponse()
     err = c.Send(request, response)
     return
@@ -1104,6 +1168,7 @@ func NewDescribeUserCmdsRequest() (request *DescribeUserCmdsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "DescribeUserCmds")
+    
     
     return
 }
@@ -1127,6 +1192,7 @@ func (c *Client) DescribeUserCmds(request *DescribeUserCmdsRequest) (response *D
     if request == nil {
         request = NewDescribeUserCmdsRequest()
     }
+    
     response = NewDescribeUserCmdsResponse()
     err = c.Send(request, response)
     return
@@ -1137,6 +1203,7 @@ func NewDetachCamRoleRequest() (request *DetachCamRoleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "DetachCamRole")
+    
     
     return
 }
@@ -1157,6 +1224,7 @@ func (c *Client) DetachCamRole(request *DetachCamRoleRequest) (response *DetachC
     if request == nil {
         request = NewDetachCamRoleRequest()
     }
+    
     response = NewDetachCamRoleResponse()
     err = c.Send(request, response)
     return
@@ -1167,6 +1235,7 @@ func NewModifyCustomImageAttributeRequest() (request *ModifyCustomImageAttribute
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "ModifyCustomImageAttribute")
+    
     
     return
 }
@@ -1189,6 +1258,7 @@ func (c *Client) ModifyCustomImageAttribute(request *ModifyCustomImageAttributeR
     if request == nil {
         request = NewModifyCustomImageAttributeRequest()
     }
+    
     response = NewModifyCustomImageAttributeResponse()
     err = c.Send(request, response)
     return
@@ -1199,6 +1269,7 @@ func NewModifyDeviceAliasesRequest() (request *ModifyDeviceAliasesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "ModifyDeviceAliases")
+    
     
     return
 }
@@ -1221,6 +1292,7 @@ func (c *Client) ModifyDeviceAliases(request *ModifyDeviceAliasesRequest) (respo
     if request == nil {
         request = NewModifyDeviceAliasesRequest()
     }
+    
     response = NewModifyDeviceAliasesResponse()
     err = c.Send(request, response)
     return
@@ -1231,6 +1303,7 @@ func NewModifyDeviceAutoRenewFlagRequest() (request *ModifyDeviceAutoRenewFlagRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "ModifyDeviceAutoRenewFlag")
+    
     
     return
 }
@@ -1253,6 +1326,7 @@ func (c *Client) ModifyDeviceAutoRenewFlag(request *ModifyDeviceAutoRenewFlagReq
     if request == nil {
         request = NewModifyDeviceAutoRenewFlagRequest()
     }
+    
     response = NewModifyDeviceAutoRenewFlagResponse()
     err = c.Send(request, response)
     return
@@ -1263,6 +1337,7 @@ func NewModifyLanIpRequest() (request *ModifyLanIpRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "ModifyLanIp")
+    
     
     return
 }
@@ -1289,6 +1364,7 @@ func (c *Client) ModifyLanIp(request *ModifyLanIpRequest) (response *ModifyLanIp
     if request == nil {
         request = NewModifyLanIpRequest()
     }
+    
     response = NewModifyLanIpResponse()
     err = c.Send(request, response)
     return
@@ -1299,6 +1375,7 @@ func NewModifyPayModePre2PostRequest() (request *ModifyPayModePre2PostRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "ModifyPayModePre2Post")
+    
     
     return
 }
@@ -1322,6 +1399,7 @@ func (c *Client) ModifyPayModePre2Post(request *ModifyPayModePre2PostRequest) (r
     if request == nil {
         request = NewModifyPayModePre2PostRequest()
     }
+    
     response = NewModifyPayModePre2PostResponse()
     err = c.Send(request, response)
     return
@@ -1332,6 +1410,7 @@ func NewModifyPsaRegulationRequest() (request *ModifyPsaRegulationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "ModifyPsaRegulation")
+    
     
     return
 }
@@ -1354,6 +1433,7 @@ func (c *Client) ModifyPsaRegulation(request *ModifyPsaRegulationRequest) (respo
     if request == nil {
         request = NewModifyPsaRegulationRequest()
     }
+    
     response = NewModifyPsaRegulationResponse()
     err = c.Send(request, response)
     return
@@ -1364,6 +1444,7 @@ func NewModifyUserCmdRequest() (request *ModifyUserCmdRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "ModifyUserCmd")
+    
     
     return
 }
@@ -1388,6 +1469,7 @@ func (c *Client) ModifyUserCmd(request *ModifyUserCmdRequest) (response *ModifyU
     if request == nil {
         request = NewModifyUserCmdRequest()
     }
+    
     response = NewModifyUserCmdResponse()
     err = c.Send(request, response)
     return
@@ -1398,6 +1480,7 @@ func NewOfflineDevicesRequest() (request *OfflineDevicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "OfflineDevices")
+    
     
     return
 }
@@ -1420,6 +1503,7 @@ func (c *Client) OfflineDevices(request *OfflineDevicesRequest) (response *Offli
     if request == nil {
         request = NewOfflineDevicesRequest()
     }
+    
     response = NewOfflineDevicesResponse()
     err = c.Send(request, response)
     return
@@ -1430,6 +1514,7 @@ func NewRebootDevicesRequest() (request *RebootDevicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "RebootDevices")
+    
     
     return
 }
@@ -1452,6 +1537,7 @@ func (c *Client) RebootDevices(request *RebootDevicesRequest) (response *RebootD
     if request == nil {
         request = NewRebootDevicesRequest()
     }
+    
     response = NewRebootDevicesResponse()
     err = c.Send(request, response)
     return
@@ -1462,6 +1548,7 @@ func NewRecoverDevicesRequest() (request *RecoverDevicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "RecoverDevices")
+    
     
     return
 }
@@ -1483,6 +1570,7 @@ func (c *Client) RecoverDevices(request *RecoverDevicesRequest) (response *Recov
     if request == nil {
         request = NewRecoverDevicesRequest()
     }
+    
     response = NewRecoverDevicesResponse()
     err = c.Send(request, response)
     return
@@ -1493,6 +1581,7 @@ func NewReloadDeviceOsRequest() (request *ReloadDeviceOsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "ReloadDeviceOs")
+    
     
     return
 }
@@ -1516,6 +1605,7 @@ func (c *Client) ReloadDeviceOs(request *ReloadDeviceOsRequest) (response *Reloa
     if request == nil {
         request = NewReloadDeviceOsRequest()
     }
+    
     response = NewReloadDeviceOsResponse()
     err = c.Send(request, response)
     return
@@ -1526,6 +1616,7 @@ func NewRepairTaskControlRequest() (request *RepairTaskControlRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "RepairTaskControl")
+    
     
     return
 }
@@ -1592,6 +1683,7 @@ func (c *Client) RepairTaskControl(request *RepairTaskControlRequest) (response 
     if request == nil {
         request = NewRepairTaskControlRequest()
     }
+    
     response = NewRepairTaskControlResponse()
     err = c.Send(request, response)
     return
@@ -1602,6 +1694,7 @@ func NewResetDevicePasswordRequest() (request *ResetDevicePasswordRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "ResetDevicePassword")
+    
     
     return
 }
@@ -1625,6 +1718,7 @@ func (c *Client) ResetDevicePassword(request *ResetDevicePasswordRequest) (respo
     if request == nil {
         request = NewResetDevicePasswordRequest()
     }
+    
     response = NewResetDevicePasswordResponse()
     err = c.Send(request, response)
     return
@@ -1635,6 +1729,7 @@ func NewReturnDevicesRequest() (request *ReturnDevicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "ReturnDevices")
+    
     
     return
 }
@@ -1656,6 +1751,7 @@ func (c *Client) ReturnDevices(request *ReturnDevicesRequest) (response *ReturnD
     if request == nil {
         request = NewReturnDevicesRequest()
     }
+    
     response = NewReturnDevicesResponse()
     err = c.Send(request, response)
     return
@@ -1666,6 +1762,7 @@ func NewRunUserCmdRequest() (request *RunUserCmdRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "RunUserCmd")
+    
     
     return
 }
@@ -1688,6 +1785,7 @@ func (c *Client) RunUserCmd(request *RunUserCmdRequest) (response *RunUserCmdRes
     if request == nil {
         request = NewRunUserCmdRequest()
     }
+    
     response = NewRunUserCmdResponse()
     err = c.Send(request, response)
     return
@@ -1698,6 +1796,7 @@ func NewSetOutBandVpnAuthPasswordRequest() (request *SetOutBandVpnAuthPasswordRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "SetOutBandVpnAuthPassword")
+    
     
     return
 }
@@ -1721,6 +1820,7 @@ func (c *Client) SetOutBandVpnAuthPassword(request *SetOutBandVpnAuthPasswordReq
     if request == nil {
         request = NewSetOutBandVpnAuthPasswordRequest()
     }
+    
     response = NewSetOutBandVpnAuthPasswordResponse()
     err = c.Send(request, response)
     return
@@ -1731,6 +1831,7 @@ func NewShutdownDevicesRequest() (request *ShutdownDevicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "ShutdownDevices")
+    
     
     return
 }
@@ -1753,6 +1854,7 @@ func (c *Client) ShutdownDevices(request *ShutdownDevicesRequest) (response *Shu
     if request == nil {
         request = NewShutdownDevicesRequest()
     }
+    
     response = NewShutdownDevicesResponse()
     err = c.Send(request, response)
     return
@@ -1763,6 +1865,7 @@ func NewStartDevicesRequest() (request *StartDevicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "StartDevices")
+    
     
     return
 }
@@ -1785,6 +1888,7 @@ func (c *Client) StartDevices(request *StartDevicesRequest) (response *StartDevi
     if request == nil {
         request = NewStartDevicesRequest()
     }
+    
     response = NewStartDevicesResponse()
     err = c.Send(request, response)
     return
@@ -1795,6 +1899,7 @@ func NewUnbindPsaTagRequest() (request *UnbindPsaTagRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bm", APIVersion, "UnbindPsaTag")
+    
     
     return
 }
@@ -1817,6 +1922,7 @@ func (c *Client) UnbindPsaTag(request *UnbindPsaTagRequest) (response *UnbindPsa
     if request == nil {
         request = NewUnbindPsaTagRequest()
     }
+    
     response = NewUnbindPsaTagResponse()
     err = c.Send(request, response)
     return

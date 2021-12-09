@@ -49,6 +49,7 @@ func NewCreateProjectRequest() (request *CreateProjectRequest) {
     }
     request.Init().WithApiInfo("rum", APIVersion, "CreateProject")
     
+    
     return
 }
 
@@ -76,7 +77,61 @@ func (c *Client) CreateProject(request *CreateProjectRequest) (response *CreateP
     if request == nil {
         request = NewCreateProjectRequest()
     }
+    
     response = NewCreateProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDataEventUrlRequest() (request *DescribeDataEventUrlRequest) {
+    request = &DescribeDataEventUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeDataEventUrl")
+    
+    
+    return
+}
+
+func NewDescribeDataEventUrlResponse() (response *DescribeDataEventUrlResponse) {
+    response = &DescribeDataEventUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDataEventUrl
+// 获取DescribeDataEventUrl信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDataEventUrl(request *DescribeDataEventUrlRequest) (response *DescribeDataEventUrlResponse, err error) {
+    if request == nil {
+        request = NewDescribeDataEventUrlRequest()
+    }
+    
+    response = NewDescribeDataEventUrlResponse()
     err = c.Send(request, response)
     return
 }
@@ -86,6 +141,7 @@ func NewDescribeDataLogUrlStatisticsRequest() (request *DescribeDataLogUrlStatis
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("rum", APIVersion, "DescribeDataLogUrlStatistics")
+    
     
     return
 }
@@ -126,6 +182,7 @@ func (c *Client) DescribeDataLogUrlStatistics(request *DescribeDataLogUrlStatist
     if request == nil {
         request = NewDescribeDataLogUrlStatisticsRequest()
     }
+    
     response = NewDescribeDataLogUrlStatisticsResponse()
     err = c.Send(request, response)
     return
@@ -136,6 +193,7 @@ func NewDescribeDataPerformancePageRequest() (request *DescribeDataPerformancePa
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("rum", APIVersion, "DescribeDataPerformancePage")
+    
     
     return
 }
@@ -177,7 +235,61 @@ func (c *Client) DescribeDataPerformancePage(request *DescribeDataPerformancePag
     if request == nil {
         request = NewDescribeDataPerformancePageRequest()
     }
+    
     response = NewDescribeDataPerformancePageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDataPvUrlStatisticsRequest() (request *DescribeDataPvUrlStatisticsRequest) {
+    request = &DescribeDataPvUrlStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeDataPvUrlStatistics")
+    
+    
+    return
+}
+
+func NewDescribeDataPvUrlStatisticsResponse() (response *DescribeDataPvUrlStatisticsResponse) {
+    response = &DescribeDataPvUrlStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDataPvUrlStatistics
+// 获取DescribeDataPvUrlStatistics信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDataPvUrlStatistics(request *DescribeDataPvUrlStatisticsRequest) (response *DescribeDataPvUrlStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDataPvUrlStatisticsRequest()
+    }
+    
+    response = NewDescribeDataPvUrlStatisticsResponse()
     err = c.Send(request, response)
     return
 }
@@ -187,6 +299,7 @@ func NewDescribeErrorRequest() (request *DescribeErrorRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("rum", APIVersion, "DescribeError")
+    
     
     return
 }
@@ -226,6 +339,7 @@ func (c *Client) DescribeError(request *DescribeErrorRequest) (response *Describ
     if request == nil {
         request = NewDescribeErrorRequest()
     }
+    
     response = NewDescribeErrorResponse()
     err = c.Send(request, response)
     return
@@ -236,6 +350,7 @@ func NewDescribeLogListRequest() (request *DescribeLogListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("rum", APIVersion, "DescribeLogList")
+    
     
     return
 }
@@ -275,6 +390,7 @@ func (c *Client) DescribeLogList(request *DescribeLogListRequest) (response *Des
     if request == nil {
         request = NewDescribeLogListRequest()
     }
+    
     response = NewDescribeLogListResponse()
     err = c.Send(request, response)
     return
@@ -285,6 +401,7 @@ func NewDescribeProjectsRequest() (request *DescribeProjectsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("rum", APIVersion, "DescribeProjects")
+    
     
     return
 }
@@ -314,6 +431,7 @@ func (c *Client) DescribeProjects(request *DescribeProjectsRequest) (response *D
     if request == nil {
         request = NewDescribeProjectsRequest()
     }
+    
     response = NewDescribeProjectsResponse()
     err = c.Send(request, response)
     return
@@ -324,6 +442,7 @@ func NewDescribeScoresRequest() (request *DescribeScoresRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("rum", APIVersion, "DescribeScores")
+    
     
     return
 }
@@ -363,6 +482,7 @@ func (c *Client) DescribeScores(request *DescribeScoresRequest) (response *Descr
     if request == nil {
         request = NewDescribeScoresRequest()
     }
+    
     response = NewDescribeScoresResponse()
     err = c.Send(request, response)
     return

@@ -49,6 +49,7 @@ func NewCorrectMultiImageRequest() (request *CorrectMultiImageRequest) {
     }
     request.Init().WithApiInfo("ecc", APIVersion, "CorrectMultiImage")
     
+    
     return
 }
 
@@ -96,6 +97,7 @@ func (c *Client) CorrectMultiImage(request *CorrectMultiImageRequest) (response 
     if request == nil {
         request = NewCorrectMultiImageRequest()
     }
+    
     response = NewCorrectMultiImageResponse()
     err = c.Send(request, response)
     return
@@ -106,6 +108,7 @@ func NewDescribeTaskRequest() (request *DescribeTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ecc", APIVersion, "DescribeTask")
+    
     
     return
 }
@@ -149,6 +152,7 @@ func (c *Client) DescribeTask(request *DescribeTaskRequest) (response *DescribeT
     if request == nil {
         request = NewDescribeTaskRequest()
     }
+    
     response = NewDescribeTaskResponse()
     err = c.Send(request, response)
     return
@@ -159,6 +163,7 @@ func NewECCRequest() (request *ECCRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ecc", APIVersion, "ECC")
+    
     
     return
 }
@@ -184,6 +189,7 @@ func (c *Client) ECC(request *ECCRequest) (response *ECCResponse, err error) {
     if request == nil {
         request = NewECCRequest()
     }
+    
     response = NewECCResponse()
     err = c.Send(request, response)
     return
@@ -194,6 +200,7 @@ func NewEHOCRRequest() (request *EHOCRRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ecc", APIVersion, "EHOCR")
+    
     
     return
 }
@@ -242,6 +249,7 @@ func (c *Client) EHOCR(request *EHOCRRequest) (response *EHOCRResponse, err erro
     if request == nil {
         request = NewEHOCRRequest()
     }
+    
     response = NewEHOCRResponse()
     err = c.Send(request, response)
     return

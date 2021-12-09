@@ -49,6 +49,7 @@ func NewCallDeviceActionAsyncRequest() (request *CallDeviceActionAsyncRequest) {
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "CallDeviceActionAsync")
     
+    
     return
 }
 
@@ -80,6 +81,7 @@ func (c *Client) CallDeviceActionAsync(request *CallDeviceActionAsyncRequest) (r
     if request == nil {
         request = NewCallDeviceActionAsyncRequest()
     }
+    
     response = NewCallDeviceActionAsyncResponse()
     err = c.Send(request, response)
     return
@@ -90,6 +92,7 @@ func NewCallDeviceActionSyncRequest() (request *CallDeviceActionSyncRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "CallDeviceActionSync")
+    
     
     return
 }
@@ -124,6 +127,7 @@ func (c *Client) CallDeviceActionSync(request *CallDeviceActionSyncRequest) (res
     if request == nil {
         request = NewCallDeviceActionSyncRequest()
     }
+    
     response = NewCallDeviceActionSyncResponse()
     err = c.Send(request, response)
     return
@@ -134,6 +138,7 @@ func NewControlDeviceDataRequest() (request *ControlDeviceDataRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ControlDeviceData")
+    
     
     return
 }
@@ -171,6 +176,7 @@ func (c *Client) ControlDeviceData(request *ControlDeviceDataRequest) (response 
     if request == nil {
         request = NewControlDeviceDataRequest()
     }
+    
     response = NewControlDeviceDataResponse()
     err = c.Send(request, response)
     return
@@ -181,6 +187,7 @@ func NewCreateBatchProductionRequest() (request *CreateBatchProductionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateBatchProduction")
+    
     
     return
 }
@@ -217,6 +224,7 @@ func (c *Client) CreateBatchProduction(request *CreateBatchProductionRequest) (r
     if request == nil {
         request = NewCreateBatchProductionRequest()
     }
+    
     response = NewCreateBatchProductionResponse()
     err = c.Send(request, response)
     return
@@ -227,6 +235,7 @@ func NewCreateDeviceRequest() (request *CreateDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateDevice")
+    
     
     return
 }
@@ -262,6 +271,7 @@ func (c *Client) CreateDevice(request *CreateDeviceRequest) (response *CreateDev
     if request == nil {
         request = NewCreateDeviceRequest()
     }
+    
     response = NewCreateDeviceResponse()
     err = c.Send(request, response)
     return
@@ -272,6 +282,7 @@ func NewCreateFenceBindRequest() (request *CreateFenceBindRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateFenceBind")
+    
     
     return
 }
@@ -296,6 +307,7 @@ func (c *Client) CreateFenceBind(request *CreateFenceBindRequest) (response *Cre
     if request == nil {
         request = NewCreateFenceBindRequest()
     }
+    
     response = NewCreateFenceBindResponse()
     err = c.Send(request, response)
     return
@@ -306,6 +318,7 @@ func NewCreateLoRaFrequencyRequest() (request *CreateLoRaFrequencyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateLoRaFrequency")
+    
     
     return
 }
@@ -328,6 +341,7 @@ func (c *Client) CreateLoRaFrequency(request *CreateLoRaFrequencyRequest) (respo
     if request == nil {
         request = NewCreateLoRaFrequencyRequest()
     }
+    
     response = NewCreateLoRaFrequencyResponse()
     err = c.Send(request, response)
     return
@@ -338,6 +352,7 @@ func NewCreateLoRaGatewayRequest() (request *CreateLoRaGatewayRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateLoRaGateway")
+    
     
     return
 }
@@ -361,6 +376,7 @@ func (c *Client) CreateLoRaGateway(request *CreateLoRaGatewayRequest) (response 
     if request == nil {
         request = NewCreateLoRaGatewayRequest()
     }
+    
     response = NewCreateLoRaGatewayResponse()
     err = c.Send(request, response)
     return
@@ -371,6 +387,7 @@ func NewCreatePositionFenceRequest() (request *CreatePositionFenceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "CreatePositionFence")
+    
     
     return
 }
@@ -396,6 +413,7 @@ func (c *Client) CreatePositionFence(request *CreatePositionFenceRequest) (respo
     if request == nil {
         request = NewCreatePositionFenceRequest()
     }
+    
     response = NewCreatePositionFenceResponse()
     err = c.Send(request, response)
     return
@@ -406,6 +424,7 @@ func NewCreatePositionSpaceRequest() (request *CreatePositionSpaceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "CreatePositionSpace")
+    
     
     return
 }
@@ -432,6 +451,7 @@ func (c *Client) CreatePositionSpace(request *CreatePositionSpaceRequest) (respo
     if request == nil {
         request = NewCreatePositionSpaceRequest()
     }
+    
     response = NewCreatePositionSpaceResponse()
     err = c.Send(request, response)
     return
@@ -442,6 +462,7 @@ func NewCreateProjectRequest() (request *CreateProjectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateProject")
+    
     
     return
 }
@@ -481,6 +502,7 @@ func (c *Client) CreateProject(request *CreateProjectRequest) (response *CreateP
     if request == nil {
         request = NewCreateProjectRequest()
     }
+    
     response = NewCreateProjectResponse()
     err = c.Send(request, response)
     return
@@ -491,6 +513,7 @@ func NewCreateStudioProductRequest() (request *CreateStudioProductRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateStudioProduct")
+    
     
     return
 }
@@ -536,6 +559,7 @@ func (c *Client) CreateStudioProduct(request *CreateStudioProductRequest) (respo
     if request == nil {
         request = NewCreateStudioProductRequest()
     }
+    
     response = NewCreateStudioProductResponse()
     err = c.Send(request, response)
     return
@@ -546,6 +570,7 @@ func NewCreateTopicPolicyRequest() (request *CreateTopicPolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateTopicPolicy")
+    
     
     return
 }
@@ -570,6 +595,7 @@ func (c *Client) CreateTopicPolicy(request *CreateTopicPolicyRequest) (response 
     if request == nil {
         request = NewCreateTopicPolicyRequest()
     }
+    
     response = NewCreateTopicPolicyResponse()
     err = c.Send(request, response)
     return
@@ -580,6 +606,7 @@ func NewCreateTopicRuleRequest() (request *CreateTopicRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateTopicRule")
+    
     
     return
 }
@@ -607,6 +634,7 @@ func (c *Client) CreateTopicRule(request *CreateTopicRuleRequest) (response *Cre
     if request == nil {
         request = NewCreateTopicRuleRequest()
     }
+    
     response = NewCreateTopicRuleResponse()
     err = c.Send(request, response)
     return
@@ -617,6 +645,7 @@ func NewDeleteDeviceRequest() (request *DeleteDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteDevice")
+    
     
     return
 }
@@ -647,6 +676,7 @@ func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDev
     if request == nil {
         request = NewDeleteDeviceRequest()
     }
+    
     response = NewDeleteDeviceResponse()
     err = c.Send(request, response)
     return
@@ -657,6 +687,7 @@ func NewDeleteDevicesRequest() (request *DeleteDevicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteDevices")
+    
     
     return
 }
@@ -686,6 +717,7 @@ func (c *Client) DeleteDevices(request *DeleteDevicesRequest) (response *DeleteD
     if request == nil {
         request = NewDeleteDevicesRequest()
     }
+    
     response = NewDeleteDevicesResponse()
     err = c.Send(request, response)
     return
@@ -696,6 +728,7 @@ func NewDeleteFenceBindRequest() (request *DeleteFenceBindRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteFenceBind")
+    
     
     return
 }
@@ -721,6 +754,7 @@ func (c *Client) DeleteFenceBind(request *DeleteFenceBindRequest) (response *Del
     if request == nil {
         request = NewDeleteFenceBindRequest()
     }
+    
     response = NewDeleteFenceBindResponse()
     err = c.Send(request, response)
     return
@@ -731,6 +765,7 @@ func NewDeleteLoRaFrequencyRequest() (request *DeleteLoRaFrequencyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteLoRaFrequency")
+    
     
     return
 }
@@ -755,6 +790,7 @@ func (c *Client) DeleteLoRaFrequency(request *DeleteLoRaFrequencyRequest) (respo
     if request == nil {
         request = NewDeleteLoRaFrequencyRequest()
     }
+    
     response = NewDeleteLoRaFrequencyResponse()
     err = c.Send(request, response)
     return
@@ -765,6 +801,7 @@ func NewDeleteLoRaGatewayRequest() (request *DeleteLoRaGatewayRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteLoRaGateway")
+    
     
     return
 }
@@ -790,6 +827,7 @@ func (c *Client) DeleteLoRaGateway(request *DeleteLoRaGatewayRequest) (response 
     if request == nil {
         request = NewDeleteLoRaGatewayRequest()
     }
+    
     response = NewDeleteLoRaGatewayResponse()
     err = c.Send(request, response)
     return
@@ -800,6 +838,7 @@ func NewDeletePositionFenceRequest() (request *DeletePositionFenceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DeletePositionFence")
+    
     
     return
 }
@@ -827,6 +866,7 @@ func (c *Client) DeletePositionFence(request *DeletePositionFenceRequest) (respo
     if request == nil {
         request = NewDeletePositionFenceRequest()
     }
+    
     response = NewDeletePositionFenceResponse()
     err = c.Send(request, response)
     return
@@ -837,6 +877,7 @@ func NewDeletePositionSpaceRequest() (request *DeletePositionSpaceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DeletePositionSpace")
+    
     
     return
 }
@@ -862,6 +903,7 @@ func (c *Client) DeletePositionSpace(request *DeletePositionSpaceRequest) (respo
     if request == nil {
         request = NewDeletePositionSpaceRequest()
     }
+    
     response = NewDeletePositionSpaceResponse()
     err = c.Send(request, response)
     return
@@ -872,6 +914,7 @@ func NewDeleteProjectRequest() (request *DeleteProjectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteProject")
+    
     
     return
 }
@@ -896,6 +939,7 @@ func (c *Client) DeleteProject(request *DeleteProjectRequest) (response *DeleteP
     if request == nil {
         request = NewDeleteProjectRequest()
     }
+    
     response = NewDeleteProjectResponse()
     err = c.Send(request, response)
     return
@@ -906,6 +950,7 @@ func NewDeleteStudioProductRequest() (request *DeleteStudioProductRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteStudioProduct")
+    
     
     return
 }
@@ -935,6 +980,7 @@ func (c *Client) DeleteStudioProduct(request *DeleteStudioProductRequest) (respo
     if request == nil {
         request = NewDeleteStudioProductRequest()
     }
+    
     response = NewDeleteStudioProductResponse()
     err = c.Send(request, response)
     return
@@ -945,6 +991,7 @@ func NewDeleteTopicPolicyRequest() (request *DeleteTopicPolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteTopicPolicy")
+    
     
     return
 }
@@ -968,6 +1015,7 @@ func (c *Client) DeleteTopicPolicy(request *DeleteTopicPolicyRequest) (response 
     if request == nil {
         request = NewDeleteTopicPolicyRequest()
     }
+    
     response = NewDeleteTopicPolicyResponse()
     err = c.Send(request, response)
     return
@@ -978,6 +1026,7 @@ func NewDeleteTopicRuleRequest() (request *DeleteTopicRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteTopicRule")
+    
     
     return
 }
@@ -1002,6 +1051,7 @@ func (c *Client) DeleteTopicRule(request *DeleteTopicRuleRequest) (response *Del
     if request == nil {
         request = NewDeleteTopicRuleRequest()
     }
+    
     response = NewDeleteTopicRuleResponse()
     err = c.Send(request, response)
     return
@@ -1012,6 +1062,7 @@ func NewDescribeBatchProductionRequest() (request *DescribeBatchProductionReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeBatchProduction")
+    
     
     return
 }
@@ -1038,6 +1089,7 @@ func (c *Client) DescribeBatchProduction(request *DescribeBatchProductionRequest
     if request == nil {
         request = NewDescribeBatchProductionRequest()
     }
+    
     response = NewDescribeBatchProductionResponse()
     err = c.Send(request, response)
     return
@@ -1048,6 +1100,7 @@ func NewDescribeDeviceRequest() (request *DescribeDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeDevice")
+    
     
     return
 }
@@ -1075,6 +1128,7 @@ func (c *Client) DescribeDevice(request *DescribeDeviceRequest) (response *Descr
     if request == nil {
         request = NewDescribeDeviceRequest()
     }
+    
     response = NewDescribeDeviceResponse()
     err = c.Send(request, response)
     return
@@ -1085,6 +1139,7 @@ func NewDescribeDeviceDataRequest() (request *DescribeDeviceDataRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeDeviceData")
+    
     
     return
 }
@@ -1115,6 +1170,7 @@ func (c *Client) DescribeDeviceData(request *DescribeDeviceDataRequest) (respons
     if request == nil {
         request = NewDescribeDeviceDataRequest()
     }
+    
     response = NewDescribeDeviceDataResponse()
     err = c.Send(request, response)
     return
@@ -1125,6 +1181,7 @@ func NewDescribeDeviceDataHistoryRequest() (request *DescribeDeviceDataHistoryRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeDeviceDataHistory")
+    
     
     return
 }
@@ -1154,6 +1211,7 @@ func (c *Client) DescribeDeviceDataHistory(request *DescribeDeviceDataHistoryReq
     if request == nil {
         request = NewDescribeDeviceDataHistoryRequest()
     }
+    
     response = NewDescribeDeviceDataHistoryResponse()
     err = c.Send(request, response)
     return
@@ -1164,6 +1222,7 @@ func NewDescribeDevicePositionListRequest() (request *DescribeDevicePositionList
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeDevicePositionList")
+    
     
     return
 }
@@ -1184,6 +1243,7 @@ func (c *Client) DescribeDevicePositionList(request *DescribeDevicePositionListR
     if request == nil {
         request = NewDescribeDevicePositionListRequest()
     }
+    
     response = NewDescribeDevicePositionListResponse()
     err = c.Send(request, response)
     return
@@ -1194,6 +1254,7 @@ func NewDescribeFenceBindListRequest() (request *DescribeFenceBindListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeFenceBindList")
+    
     
     return
 }
@@ -1218,6 +1279,7 @@ func (c *Client) DescribeFenceBindList(request *DescribeFenceBindListRequest) (r
     if request == nil {
         request = NewDescribeFenceBindListRequest()
     }
+    
     response = NewDescribeFenceBindListResponse()
     err = c.Send(request, response)
     return
@@ -1228,6 +1290,7 @@ func NewDescribeFenceEventListRequest() (request *DescribeFenceEventListRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeFenceEventList")
+    
     
     return
 }
@@ -1254,6 +1317,7 @@ func (c *Client) DescribeFenceEventList(request *DescribeFenceEventListRequest) 
     if request == nil {
         request = NewDescribeFenceEventListRequest()
     }
+    
     response = NewDescribeFenceEventListResponse()
     err = c.Send(request, response)
     return
@@ -1264,6 +1328,7 @@ func NewDescribeFirmwareTaskRequest() (request *DescribeFirmwareTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeFirmwareTask")
+    
     
     return
 }
@@ -1286,6 +1351,7 @@ func (c *Client) DescribeFirmwareTask(request *DescribeFirmwareTaskRequest) (res
     if request == nil {
         request = NewDescribeFirmwareTaskRequest()
     }
+    
     response = NewDescribeFirmwareTaskResponse()
     err = c.Send(request, response)
     return
@@ -1296,6 +1362,7 @@ func NewDescribeLoRaFrequencyRequest() (request *DescribeLoRaFrequencyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeLoRaFrequency")
+    
     
     return
 }
@@ -1318,6 +1385,7 @@ func (c *Client) DescribeLoRaFrequency(request *DescribeLoRaFrequencyRequest) (r
     if request == nil {
         request = NewDescribeLoRaFrequencyRequest()
     }
+    
     response = NewDescribeLoRaFrequencyResponse()
     err = c.Send(request, response)
     return
@@ -1328,6 +1396,7 @@ func NewDescribeModelDefinitionRequest() (request *DescribeModelDefinitionReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeModelDefinition")
+    
     
     return
 }
@@ -1376,6 +1445,7 @@ func (c *Client) DescribeModelDefinition(request *DescribeModelDefinitionRequest
     if request == nil {
         request = NewDescribeModelDefinitionRequest()
     }
+    
     response = NewDescribeModelDefinitionResponse()
     err = c.Send(request, response)
     return
@@ -1386,6 +1456,7 @@ func NewDescribePositionFenceListRequest() (request *DescribePositionFenceListRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribePositionFenceList")
+    
     
     return
 }
@@ -1411,6 +1482,7 @@ func (c *Client) DescribePositionFenceList(request *DescribePositionFenceListReq
     if request == nil {
         request = NewDescribePositionFenceListRequest()
     }
+    
     response = NewDescribePositionFenceListResponse()
     err = c.Send(request, response)
     return
@@ -1421,6 +1493,7 @@ func NewDescribeProjectRequest() (request *DescribeProjectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeProject")
+    
     
     return
 }
@@ -1445,6 +1518,7 @@ func (c *Client) DescribeProject(request *DescribeProjectRequest) (response *Des
     if request == nil {
         request = NewDescribeProjectRequest()
     }
+    
     response = NewDescribeProjectResponse()
     err = c.Send(request, response)
     return
@@ -1455,6 +1529,7 @@ func NewDescribeSpaceFenceEventListRequest() (request *DescribeSpaceFenceEventLi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeSpaceFenceEventList")
+    
     
     return
 }
@@ -1480,6 +1555,7 @@ func (c *Client) DescribeSpaceFenceEventList(request *DescribeSpaceFenceEventLis
     if request == nil {
         request = NewDescribeSpaceFenceEventListRequest()
     }
+    
     response = NewDescribeSpaceFenceEventListResponse()
     err = c.Send(request, response)
     return
@@ -1490,6 +1566,7 @@ func NewDescribeStudioProductRequest() (request *DescribeStudioProductRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeStudioProduct")
+    
     
     return
 }
@@ -1513,6 +1590,7 @@ func (c *Client) DescribeStudioProduct(request *DescribeStudioProductRequest) (r
     if request == nil {
         request = NewDescribeStudioProductRequest()
     }
+    
     response = NewDescribeStudioProductResponse()
     err = c.Send(request, response)
     return
@@ -1523,6 +1601,7 @@ func NewDescribeTopicPolicyRequest() (request *DescribeTopicPolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeTopicPolicy")
+    
     
     return
 }
@@ -1546,6 +1625,7 @@ func (c *Client) DescribeTopicPolicy(request *DescribeTopicPolicyRequest) (respo
     if request == nil {
         request = NewDescribeTopicPolicyRequest()
     }
+    
     response = NewDescribeTopicPolicyResponse()
     err = c.Send(request, response)
     return
@@ -1556,6 +1636,7 @@ func NewDescribeTopicRuleRequest() (request *DescribeTopicRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeTopicRule")
+    
     
     return
 }
@@ -1583,6 +1664,7 @@ func (c *Client) DescribeTopicRule(request *DescribeTopicRuleRequest) (response 
     if request == nil {
         request = NewDescribeTopicRuleRequest()
     }
+    
     response = NewDescribeTopicRuleResponse()
     err = c.Send(request, response)
     return
@@ -1593,6 +1675,7 @@ func NewDirectBindDeviceInFamilyRequest() (request *DirectBindDeviceInFamilyRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DirectBindDeviceInFamily")
+    
     
     return
 }
@@ -1622,6 +1705,7 @@ func (c *Client) DirectBindDeviceInFamily(request *DirectBindDeviceInFamilyReque
     if request == nil {
         request = NewDirectBindDeviceInFamilyRequest()
     }
+    
     response = NewDirectBindDeviceInFamilyResponse()
     err = c.Send(request, response)
     return
@@ -1632,6 +1716,7 @@ func NewDisableTopicRuleRequest() (request *DisableTopicRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DisableTopicRule")
+    
     
     return
 }
@@ -1659,6 +1744,7 @@ func (c *Client) DisableTopicRule(request *DisableTopicRuleRequest) (response *D
     if request == nil {
         request = NewDisableTopicRuleRequest()
     }
+    
     response = NewDisableTopicRuleResponse()
     err = c.Send(request, response)
     return
@@ -1669,6 +1755,7 @@ func NewEnableTopicRuleRequest() (request *EnableTopicRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "EnableTopicRule")
+    
     
     return
 }
@@ -1698,6 +1785,7 @@ func (c *Client) EnableTopicRule(request *EnableTopicRuleRequest) (response *Ena
     if request == nil {
         request = NewEnableTopicRuleRequest()
     }
+    
     response = NewEnableTopicRuleResponse()
     err = c.Send(request, response)
     return
@@ -1708,6 +1796,7 @@ func NewGenSingleDeviceSignatureOfPublicRequest() (request *GenSingleDeviceSigna
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "GenSingleDeviceSignatureOfPublic")
+    
     
     return
 }
@@ -1740,6 +1829,7 @@ func (c *Client) GenSingleDeviceSignatureOfPublic(request *GenSingleDeviceSignat
     if request == nil {
         request = NewGenSingleDeviceSignatureOfPublicRequest()
     }
+    
     response = NewGenSingleDeviceSignatureOfPublicResponse()
     err = c.Send(request, response)
     return
@@ -1750,6 +1840,7 @@ func NewGetBatchProductionsListRequest() (request *GetBatchProductionsListReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "GetBatchProductionsList")
+    
     
     return
 }
@@ -1775,6 +1866,7 @@ func (c *Client) GetBatchProductionsList(request *GetBatchProductionsListRequest
     if request == nil {
         request = NewGetBatchProductionsListRequest()
     }
+    
     response = NewGetBatchProductionsListResponse()
     err = c.Send(request, response)
     return
@@ -1785,6 +1877,7 @@ func NewGetCOSURLRequest() (request *GetCOSURLRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "GetCOSURL")
+    
     
     return
 }
@@ -1808,6 +1901,7 @@ func (c *Client) GetCOSURL(request *GetCOSURLRequest) (response *GetCOSURLRespon
     if request == nil {
         request = NewGetCOSURLRequest()
     }
+    
     response = NewGetCOSURLResponse()
     err = c.Send(request, response)
     return
@@ -1818,6 +1912,7 @@ func NewGetDeviceListRequest() (request *GetDeviceListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "GetDeviceList")
+    
     
     return
 }
@@ -1847,6 +1942,7 @@ func (c *Client) GetDeviceList(request *GetDeviceListRequest) (response *GetDevi
     if request == nil {
         request = NewGetDeviceListRequest()
     }
+    
     response = NewGetDeviceListResponse()
     err = c.Send(request, response)
     return
@@ -1857,6 +1953,7 @@ func NewGetDeviceLocationHistoryRequest() (request *GetDeviceLocationHistoryRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "GetDeviceLocationHistory")
+    
     
     return
 }
@@ -1885,6 +1982,7 @@ func (c *Client) GetDeviceLocationHistory(request *GetDeviceLocationHistoryReque
     if request == nil {
         request = NewGetDeviceLocationHistoryRequest()
     }
+    
     response = NewGetDeviceLocationHistoryResponse()
     err = c.Send(request, response)
     return
@@ -1895,6 +1993,7 @@ func NewGetLoRaGatewayListRequest() (request *GetLoRaGatewayListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "GetLoRaGatewayList")
+    
     
     return
 }
@@ -1920,6 +2019,7 @@ func (c *Client) GetLoRaGatewayList(request *GetLoRaGatewayListRequest) (respons
     if request == nil {
         request = NewGetLoRaGatewayListRequest()
     }
+    
     response = NewGetLoRaGatewayListResponse()
     err = c.Send(request, response)
     return
@@ -1930,6 +2030,7 @@ func NewGetPositionSpaceListRequest() (request *GetPositionSpaceListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "GetPositionSpaceList")
+    
     
     return
 }
@@ -1954,6 +2055,7 @@ func (c *Client) GetPositionSpaceList(request *GetPositionSpaceListRequest) (res
     if request == nil {
         request = NewGetPositionSpaceListRequest()
     }
+    
     response = NewGetPositionSpaceListResponse()
     err = c.Send(request, response)
     return
@@ -1964,6 +2066,7 @@ func NewGetProjectListRequest() (request *GetProjectListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "GetProjectList")
+    
     
     return
 }
@@ -1990,6 +2093,7 @@ func (c *Client) GetProjectList(request *GetProjectListRequest) (response *GetPr
     if request == nil {
         request = NewGetProjectListRequest()
     }
+    
     response = NewGetProjectListResponse()
     err = c.Send(request, response)
     return
@@ -2000,6 +2104,7 @@ func NewGetStudioProductListRequest() (request *GetStudioProductListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "GetStudioProductList")
+    
     
     return
 }
@@ -2022,6 +2127,7 @@ func (c *Client) GetStudioProductList(request *GetStudioProductListRequest) (res
     if request == nil {
         request = NewGetStudioProductListRequest()
     }
+    
     response = NewGetStudioProductListResponse()
     err = c.Send(request, response)
     return
@@ -2032,6 +2138,7 @@ func NewGetTopicRuleListRequest() (request *GetTopicRuleListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "GetTopicRuleList")
+    
     
     return
 }
@@ -2056,6 +2163,7 @@ func (c *Client) GetTopicRuleList(request *GetTopicRuleListRequest) (response *G
     if request == nil {
         request = NewGetTopicRuleListRequest()
     }
+    
     response = NewGetTopicRuleListResponse()
     err = c.Send(request, response)
     return
@@ -2066,6 +2174,7 @@ func NewListEventHistoryRequest() (request *ListEventHistoryRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ListEventHistory")
+    
     
     return
 }
@@ -2101,6 +2210,7 @@ func (c *Client) ListEventHistory(request *ListEventHistoryRequest) (response *L
     if request == nil {
         request = NewListEventHistoryRequest()
     }
+    
     response = NewListEventHistoryResponse()
     err = c.Send(request, response)
     return
@@ -2111,6 +2221,7 @@ func NewListFirmwaresRequest() (request *ListFirmwaresRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ListFirmwares")
+    
     
     return
 }
@@ -2135,6 +2246,7 @@ func (c *Client) ListFirmwares(request *ListFirmwaresRequest) (response *ListFir
     if request == nil {
         request = NewListFirmwaresRequest()
     }
+    
     response = NewListFirmwaresResponse()
     err = c.Send(request, response)
     return
@@ -2145,6 +2257,7 @@ func NewListTopicPolicyRequest() (request *ListTopicPolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ListTopicPolicy")
+    
     
     return
 }
@@ -2167,6 +2280,7 @@ func (c *Client) ListTopicPolicy(request *ListTopicPolicyRequest) (response *Lis
     if request == nil {
         request = NewListTopicPolicyRequest()
     }
+    
     response = NewListTopicPolicyResponse()
     err = c.Send(request, response)
     return
@@ -2177,6 +2291,7 @@ func NewModifyFenceBindRequest() (request *ModifyFenceBindRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyFenceBind")
+    
     
     return
 }
@@ -2201,6 +2316,7 @@ func (c *Client) ModifyFenceBind(request *ModifyFenceBindRequest) (response *Mod
     if request == nil {
         request = NewModifyFenceBindRequest()
     }
+    
     response = NewModifyFenceBindResponse()
     err = c.Send(request, response)
     return
@@ -2211,6 +2327,7 @@ func NewModifyLoRaFrequencyRequest() (request *ModifyLoRaFrequencyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyLoRaFrequency")
+    
     
     return
 }
@@ -2238,6 +2355,7 @@ func (c *Client) ModifyLoRaFrequency(request *ModifyLoRaFrequencyRequest) (respo
     if request == nil {
         request = NewModifyLoRaFrequencyRequest()
     }
+    
     response = NewModifyLoRaFrequencyResponse()
     err = c.Send(request, response)
     return
@@ -2248,6 +2366,7 @@ func NewModifyLoRaGatewayRequest() (request *ModifyLoRaGatewayRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyLoRaGateway")
+    
     
     return
 }
@@ -2273,6 +2392,7 @@ func (c *Client) ModifyLoRaGateway(request *ModifyLoRaGatewayRequest) (response 
     if request == nil {
         request = NewModifyLoRaGatewayRequest()
     }
+    
     response = NewModifyLoRaGatewayResponse()
     err = c.Send(request, response)
     return
@@ -2283,6 +2403,7 @@ func NewModifyModelDefinitionRequest() (request *ModifyModelDefinitionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyModelDefinition")
+    
     
     return
 }
@@ -2350,6 +2471,7 @@ func (c *Client) ModifyModelDefinition(request *ModifyModelDefinitionRequest) (r
     if request == nil {
         request = NewModifyModelDefinitionRequest()
     }
+    
     response = NewModifyModelDefinitionResponse()
     err = c.Send(request, response)
     return
@@ -2360,6 +2482,7 @@ func NewModifyPositionFenceRequest() (request *ModifyPositionFenceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyPositionFence")
+    
     
     return
 }
@@ -2385,6 +2508,7 @@ func (c *Client) ModifyPositionFence(request *ModifyPositionFenceRequest) (respo
     if request == nil {
         request = NewModifyPositionFenceRequest()
     }
+    
     response = NewModifyPositionFenceResponse()
     err = c.Send(request, response)
     return
@@ -2395,6 +2519,7 @@ func NewModifyPositionSpaceRequest() (request *ModifyPositionSpaceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyPositionSpace")
+    
     
     return
 }
@@ -2420,6 +2545,7 @@ func (c *Client) ModifyPositionSpace(request *ModifyPositionSpaceRequest) (respo
     if request == nil {
         request = NewModifyPositionSpaceRequest()
     }
+    
     response = NewModifyPositionSpaceResponse()
     err = c.Send(request, response)
     return
@@ -2430,6 +2556,7 @@ func NewModifyProjectRequest() (request *ModifyProjectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyProject")
+    
     
     return
 }
@@ -2456,6 +2583,7 @@ func (c *Client) ModifyProject(request *ModifyProjectRequest) (response *ModifyP
     if request == nil {
         request = NewModifyProjectRequest()
     }
+    
     response = NewModifyProjectResponse()
     err = c.Send(request, response)
     return
@@ -2466,6 +2594,7 @@ func NewModifySpacePropertyRequest() (request *ModifySpacePropertyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifySpaceProperty")
+    
     
     return
 }
@@ -2491,6 +2620,7 @@ func (c *Client) ModifySpaceProperty(request *ModifySpacePropertyRequest) (respo
     if request == nil {
         request = NewModifySpacePropertyRequest()
     }
+    
     response = NewModifySpacePropertyResponse()
     err = c.Send(request, response)
     return
@@ -2501,6 +2631,7 @@ func NewModifyStudioProductRequest() (request *ModifyStudioProductRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyStudioProduct")
+    
     
     return
 }
@@ -2538,6 +2669,7 @@ func (c *Client) ModifyStudioProduct(request *ModifyStudioProductRequest) (respo
     if request == nil {
         request = NewModifyStudioProductRequest()
     }
+    
     response = NewModifyStudioProductResponse()
     err = c.Send(request, response)
     return
@@ -2548,6 +2680,7 @@ func NewModifyTopicPolicyRequest() (request *ModifyTopicPolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyTopicPolicy")
+    
     
     return
 }
@@ -2573,6 +2706,7 @@ func (c *Client) ModifyTopicPolicy(request *ModifyTopicPolicyRequest) (response 
     if request == nil {
         request = NewModifyTopicPolicyRequest()
     }
+    
     response = NewModifyTopicPolicyResponse()
     err = c.Send(request, response)
     return
@@ -2583,6 +2717,7 @@ func NewModifyTopicRuleRequest() (request *ModifyTopicRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyTopicRule")
+    
     
     return
 }
@@ -2614,6 +2749,7 @@ func (c *Client) ModifyTopicRule(request *ModifyTopicRuleRequest) (response *Mod
     if request == nil {
         request = NewModifyTopicRuleRequest()
     }
+    
     response = NewModifyTopicRuleResponse()
     err = c.Send(request, response)
     return
@@ -2624,6 +2760,7 @@ func NewPublishMessageRequest() (request *PublishMessageRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "PublishMessage")
+    
     
     return
 }
@@ -2655,7 +2792,47 @@ func (c *Client) PublishMessage(request *PublishMessageRequest) (response *Publi
     if request == nil {
         request = NewPublishMessageRequest()
     }
+    
     response = NewPublishMessageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPublishRRPCMessageRequest() (request *PublishRRPCMessageRequest) {
+    request = &PublishRRPCMessageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "PublishRRPCMessage")
+    
+    
+    return
+}
+
+func NewPublishRRPCMessageResponse() (response *PublishRRPCMessageResponse) {
+    response = &PublishRRPCMessageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// PublishRRPCMessage
+// 下发RRPC消息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DEVICENOSUBSCRIPTION = "FailedOperation.DeviceNoSubscription"
+//  FAILEDOPERATION_DEVICEOFFLINE = "FailedOperation.DeviceOffline"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) PublishRRPCMessage(request *PublishRRPCMessageRequest) (response *PublishRRPCMessageResponse, err error) {
+    if request == nil {
+        request = NewPublishRRPCMessageRequest()
+    }
+    
+    response = NewPublishRRPCMessageResponse()
     err = c.Send(request, response)
     return
 }
@@ -2665,6 +2842,7 @@ func NewReleaseStudioProductRequest() (request *ReleaseStudioProductRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ReleaseStudioProduct")
+    
     
     return
 }
@@ -2689,6 +2867,7 @@ func (c *Client) ReleaseStudioProduct(request *ReleaseStudioProductRequest) (res
     if request == nil {
         request = NewReleaseStudioProductRequest()
     }
+    
     response = NewReleaseStudioProductResponse()
     err = c.Send(request, response)
     return
@@ -2699,6 +2878,7 @@ func NewSearchPositionSpaceRequest() (request *SearchPositionSpaceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "SearchPositionSpace")
+    
     
     return
 }
@@ -2722,6 +2902,7 @@ func (c *Client) SearchPositionSpace(request *SearchPositionSpaceRequest) (respo
     if request == nil {
         request = NewSearchPositionSpaceRequest()
     }
+    
     response = NewSearchPositionSpaceResponse()
     err = c.Send(request, response)
     return
@@ -2732,6 +2913,7 @@ func NewSearchStudioProductRequest() (request *SearchStudioProductRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "SearchStudioProduct")
+    
     
     return
 }
@@ -2754,6 +2936,7 @@ func (c *Client) SearchStudioProduct(request *SearchStudioProductRequest) (respo
     if request == nil {
         request = NewSearchStudioProductRequest()
     }
+    
     response = NewSearchStudioProductResponse()
     err = c.Send(request, response)
     return
@@ -2764,6 +2947,7 @@ func NewSearchTopicRuleRequest() (request *SearchTopicRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "SearchTopicRule")
+    
     
     return
 }
@@ -2787,6 +2971,7 @@ func (c *Client) SearchTopicRule(request *SearchTopicRuleRequest) (response *Sea
     if request == nil {
         request = NewSearchTopicRuleRequest()
     }
+    
     response = NewSearchTopicRuleResponse()
     err = c.Send(request, response)
     return
@@ -2797,6 +2982,7 @@ func NewUpdateDevicesEnableStateRequest() (request *UpdateDevicesEnableStateRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "UpdateDevicesEnableState")
+    
     
     return
 }
@@ -2826,6 +3012,7 @@ func (c *Client) UpdateDevicesEnableState(request *UpdateDevicesEnableStateReque
     if request == nil {
         request = NewUpdateDevicesEnableStateRequest()
     }
+    
     response = NewUpdateDevicesEnableStateResponse()
     err = c.Send(request, response)
     return
@@ -2836,6 +3023,7 @@ func NewUpdateFirmwareRequest() (request *UpdateFirmwareRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "UpdateFirmware")
+    
     
     return
 }
@@ -2867,6 +3055,7 @@ func (c *Client) UpdateFirmware(request *UpdateFirmwareRequest) (response *Updat
     if request == nil {
         request = NewUpdateFirmwareRequest()
     }
+    
     response = NewUpdateFirmwareResponse()
     err = c.Send(request, response)
     return
@@ -2877,6 +3066,7 @@ func NewUploadFirmwareRequest() (request *UploadFirmwareRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotexplorer", APIVersion, "UploadFirmware")
+    
     
     return
 }
@@ -2903,6 +3093,7 @@ func (c *Client) UploadFirmware(request *UploadFirmwareRequest) (response *Uploa
     if request == nil {
         request = NewUploadFirmwareRequest()
     }
+    
     response = NewUploadFirmwareResponse()
     err = c.Send(request, response)
     return

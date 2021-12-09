@@ -49,6 +49,7 @@ func NewBindStaffSkillGroupListRequest() (request *BindStaffSkillGroupListReques
     }
     request.Init().WithApiInfo("ccc", APIVersion, "BindStaffSkillGroupList")
     
+    
     return
 }
 
@@ -71,6 +72,7 @@ func (c *Client) BindStaffSkillGroupList(request *BindStaffSkillGroupListRequest
     if request == nil {
         request = NewBindStaffSkillGroupListRequest()
     }
+    
     response = NewBindStaffSkillGroupListResponse()
     err = c.Send(request, response)
     return
@@ -81,6 +83,7 @@ func NewCreateSDKLoginTokenRequest() (request *CreateSDKLoginTokenRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "CreateSDKLoginToken")
+    
     
     return
 }
@@ -105,6 +108,7 @@ func (c *Client) CreateSDKLoginToken(request *CreateSDKLoginTokenRequest) (respo
     if request == nil {
         request = NewCreateSDKLoginTokenRequest()
     }
+    
     response = NewCreateSDKLoginTokenResponse()
     err = c.Send(request, response)
     return
@@ -115,6 +119,7 @@ func NewCreateStaffRequest() (request *CreateStaffRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "CreateStaff")
+    
     
     return
 }
@@ -141,6 +146,7 @@ func (c *Client) CreateStaff(request *CreateStaffRequest) (response *CreateStaff
     if request == nil {
         request = NewCreateStaffRequest()
     }
+    
     response = NewCreateStaffResponse()
     err = c.Send(request, response)
     return
@@ -151,6 +157,7 @@ func NewCreateUserSigRequest() (request *CreateUserSigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "CreateUserSig")
+    
     
     return
 }
@@ -174,6 +181,7 @@ func (c *Client) CreateUserSig(request *CreateUserSigRequest) (response *CreateU
     if request == nil {
         request = NewCreateUserSigRequest()
     }
+    
     response = NewCreateUserSigResponse()
     err = c.Send(request, response)
     return
@@ -184,6 +192,7 @@ func NewDeleteStaffRequest() (request *DeleteStaffRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "DeleteStaff")
+    
     
     return
 }
@@ -205,6 +214,7 @@ func (c *Client) DeleteStaff(request *DeleteStaffRequest) (response *DeleteStaff
     if request == nil {
         request = NewDeleteStaffRequest()
     }
+    
     response = NewDeleteStaffResponse()
     err = c.Send(request, response)
     return
@@ -215,6 +225,7 @@ func NewDescribeCCCBuyInfoListRequest() (request *DescribeCCCBuyInfoListRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeCCCBuyInfoList")
+    
     
     return
 }
@@ -239,6 +250,7 @@ func (c *Client) DescribeCCCBuyInfoList(request *DescribeCCCBuyInfoListRequest) 
     if request == nil {
         request = NewDescribeCCCBuyInfoListRequest()
     }
+    
     response = NewDescribeCCCBuyInfoListResponse()
     err = c.Send(request, response)
     return
@@ -249,6 +261,7 @@ func NewDescribeCallInMetricsRequest() (request *DescribeCallInMetricsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeCallInMetrics")
+    
     
     return
 }
@@ -273,6 +286,7 @@ func (c *Client) DescribeCallInMetrics(request *DescribeCallInMetricsRequest) (r
     if request == nil {
         request = NewDescribeCallInMetricsRequest()
     }
+    
     response = NewDescribeCallInMetricsResponse()
     err = c.Send(request, response)
     return
@@ -283,6 +297,7 @@ func NewDescribeChatMessagesRequest() (request *DescribeChatMessagesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeChatMessages")
+    
     
     return
 }
@@ -307,6 +322,7 @@ func (c *Client) DescribeChatMessages(request *DescribeChatMessagesRequest) (res
     if request == nil {
         request = NewDescribeChatMessagesRequest()
     }
+    
     response = NewDescribeChatMessagesResponse()
     err = c.Send(request, response)
     return
@@ -317,6 +333,7 @@ func NewDescribeIMCdrsRequest() (request *DescribeIMCdrsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeIMCdrs")
+    
     
     return
 }
@@ -338,6 +355,7 @@ func (c *Client) DescribeIMCdrs(request *DescribeIMCdrsRequest) (response *Descr
     if request == nil {
         request = NewDescribeIMCdrsRequest()
     }
+    
     response = NewDescribeIMCdrsResponse()
     err = c.Send(request, response)
     return
@@ -348,6 +366,7 @@ func NewDescribePSTNActiveSessionListRequest() (request *DescribePSTNActiveSessi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "DescribePSTNActiveSessionList")
+    
     
     return
 }
@@ -369,6 +388,7 @@ func (c *Client) DescribePSTNActiveSessionList(request *DescribePSTNActiveSessio
     if request == nil {
         request = NewDescribePSTNActiveSessionListRequest()
     }
+    
     response = NewDescribePSTNActiveSessionListResponse()
     err = c.Send(request, response)
     return
@@ -379,6 +399,7 @@ func NewDescribeSeatUserListRequest() (request *DescribeSeatUserListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeSeatUserList")
+    
     
     return
 }
@@ -406,6 +427,7 @@ func (c *Client) DescribeSeatUserList(request *DescribeSeatUserListRequest) (res
     if request == nil {
         request = NewDescribeSeatUserListRequest()
     }
+    
     response = NewDescribeSeatUserListResponse()
     err = c.Send(request, response)
     return
@@ -416,6 +438,7 @@ func NewDescribeSkillGroupInfoListRequest() (request *DescribeSkillGroupInfoList
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeSkillGroupInfoList")
+    
     
     return
 }
@@ -440,6 +463,7 @@ func (c *Client) DescribeSkillGroupInfoList(request *DescribeSkillGroupInfoListR
     if request == nil {
         request = NewDescribeSkillGroupInfoListRequest()
     }
+    
     response = NewDescribeSkillGroupInfoListResponse()
     err = c.Send(request, response)
     return
@@ -450,6 +474,7 @@ func NewDescribeStaffInfoListRequest() (request *DescribeStaffInfoListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeStaffInfoList")
+    
     
     return
 }
@@ -473,6 +498,7 @@ func (c *Client) DescribeStaffInfoList(request *DescribeStaffInfoListRequest) (r
     if request == nil {
         request = NewDescribeStaffInfoListRequest()
     }
+    
     response = NewDescribeStaffInfoListResponse()
     err = c.Send(request, response)
     return
@@ -483,6 +509,7 @@ func NewDescribeStaffStatusMetricsRequest() (request *DescribeStaffStatusMetrics
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeStaffStatusMetrics")
+    
     
     return
 }
@@ -506,6 +533,7 @@ func (c *Client) DescribeStaffStatusMetrics(request *DescribeStaffStatusMetricsR
     if request == nil {
         request = NewDescribeStaffStatusMetricsRequest()
     }
+    
     response = NewDescribeStaffStatusMetricsResponse()
     err = c.Send(request, response)
     return
@@ -516,6 +544,7 @@ func NewDescribeTelCallInfoRequest() (request *DescribeTelCallInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeTelCallInfo")
+    
     
     return
 }
@@ -539,6 +568,7 @@ func (c *Client) DescribeTelCallInfo(request *DescribeTelCallInfoRequest) (respo
     if request == nil {
         request = NewDescribeTelCallInfoRequest()
     }
+    
     response = NewDescribeTelCallInfoResponse()
     err = c.Send(request, response)
     return
@@ -549,6 +579,7 @@ func NewDescribeTelCdrRequest() (request *DescribeTelCdrRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeTelCdr")
+    
     
     return
 }
@@ -573,6 +604,7 @@ func (c *Client) DescribeTelCdr(request *DescribeTelCdrRequest) (response *Descr
     if request == nil {
         request = NewDescribeTelCdrRequest()
     }
+    
     response = NewDescribeTelCdrResponse()
     err = c.Send(request, response)
     return
@@ -583,6 +615,7 @@ func NewDescribeTelSessionRequest() (request *DescribeTelSessionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeTelSession")
+    
     
     return
 }
@@ -605,6 +638,7 @@ func (c *Client) DescribeTelSession(request *DescribeTelSessionRequest) (respons
     if request == nil {
         request = NewDescribeTelSessionRequest()
     }
+    
     response = NewDescribeTelSessionResponse()
     err = c.Send(request, response)
     return
@@ -615,6 +649,7 @@ func NewUnbindStaffSkillGroupListRequest() (request *UnbindStaffSkillGroupListRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ccc", APIVersion, "UnbindStaffSkillGroupList")
+    
     
     return
 }
@@ -638,6 +673,7 @@ func (c *Client) UnbindStaffSkillGroupList(request *UnbindStaffSkillGroupListReq
     if request == nil {
         request = NewUnbindStaffSkillGroupListRequest()
     }
+    
     response = NewUnbindStaffSkillGroupListResponse()
     err = c.Send(request, response)
     return

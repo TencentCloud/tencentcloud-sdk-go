@@ -49,6 +49,7 @@ func NewAcceptAttachCcnInstancesRequest() (request *AcceptAttachCcnInstancesRequ
     }
     request.Init().WithApiInfo("vpc", APIVersion, "AcceptAttachCcnInstances")
     
+    
     return
 }
 
@@ -78,6 +79,7 @@ func (c *Client) AcceptAttachCcnInstances(request *AcceptAttachCcnInstancesReque
     if request == nil {
         request = NewAcceptAttachCcnInstancesRequest()
     }
+    
     response = NewAcceptAttachCcnInstancesResponse()
     err = c.Send(request, response)
     return
@@ -88,6 +90,7 @@ func NewAddBandwidthPackageResourcesRequest() (request *AddBandwidthPackageResou
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "AddBandwidthPackageResources")
+    
     
     return
 }
@@ -118,6 +121,7 @@ func (c *Client) AddBandwidthPackageResources(request *AddBandwidthPackageResour
     if request == nil {
         request = NewAddBandwidthPackageResourcesRequest()
     }
+    
     response = NewAddBandwidthPackageResourcesResponse()
     err = c.Send(request, response)
     return
@@ -128,6 +132,7 @@ func NewAddIp6RulesRequest() (request *AddIp6RulesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "AddIp6Rules")
+    
     
     return
 }
@@ -154,6 +159,7 @@ func (c *Client) AddIp6Rules(request *AddIp6RulesRequest) (response *AddIp6Rules
     if request == nil {
         request = NewAddIp6RulesRequest()
     }
+    
     response = NewAddIp6RulesResponse()
     err = c.Send(request, response)
     return
@@ -164,6 +170,7 @@ func NewAddTemplateMemberRequest() (request *AddTemplateMemberRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "AddTemplateMember")
+    
     
     return
 }
@@ -187,6 +194,7 @@ func (c *Client) AddTemplateMember(request *AddTemplateMemberRequest) (response 
     if request == nil {
         request = NewAddTemplateMemberRequest()
     }
+    
     response = NewAddTemplateMemberResponse()
     err = c.Send(request, response)
     return
@@ -197,6 +205,7 @@ func NewAllocateAddressesRequest() (request *AllocateAddressesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "AllocateAddresses")
+    
     
     return
 }
@@ -239,6 +248,7 @@ func (c *Client) AllocateAddresses(request *AllocateAddressesRequest) (response 
     if request == nil {
         request = NewAllocateAddressesRequest()
     }
+    
     response = NewAllocateAddressesResponse()
     err = c.Send(request, response)
     return
@@ -249,6 +259,7 @@ func NewAllocateIp6AddressesBandwidthRequest() (request *AllocateIp6AddressesBan
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "AllocateIp6AddressesBandwidth")
+    
     
     return
 }
@@ -274,6 +285,7 @@ func (c *Client) AllocateIp6AddressesBandwidth(request *AllocateIp6AddressesBand
     if request == nil {
         request = NewAllocateIp6AddressesBandwidthRequest()
     }
+    
     response = NewAllocateIp6AddressesBandwidthResponse()
     err = c.Send(request, response)
     return
@@ -284,6 +296,7 @@ func NewAssignIpv6AddressesRequest() (request *AssignIpv6AddressesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "AssignIpv6Addresses")
+    
     
     return
 }
@@ -322,6 +335,7 @@ func (c *Client) AssignIpv6Addresses(request *AssignIpv6AddressesRequest) (respo
     if request == nil {
         request = NewAssignIpv6AddressesRequest()
     }
+    
     response = NewAssignIpv6AddressesResponse()
     err = c.Send(request, response)
     return
@@ -332,6 +346,7 @@ func NewAssignIpv6CidrBlockRequest() (request *AssignIpv6CidrBlockRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "AssignIpv6CidrBlock")
+    
     
     return
 }
@@ -360,6 +375,7 @@ func (c *Client) AssignIpv6CidrBlock(request *AssignIpv6CidrBlockRequest) (respo
     if request == nil {
         request = NewAssignIpv6CidrBlockRequest()
     }
+    
     response = NewAssignIpv6CidrBlockResponse()
     err = c.Send(request, response)
     return
@@ -370,6 +386,7 @@ func NewAssignIpv6SubnetCidrBlockRequest() (request *AssignIpv6SubnetCidrBlockRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "AssignIpv6SubnetCidrBlock")
+    
     
     return
 }
@@ -400,6 +417,7 @@ func (c *Client) AssignIpv6SubnetCidrBlock(request *AssignIpv6SubnetCidrBlockReq
     if request == nil {
         request = NewAssignIpv6SubnetCidrBlockRequest()
     }
+    
     response = NewAssignIpv6SubnetCidrBlockResponse()
     err = c.Send(request, response)
     return
@@ -410,6 +428,7 @@ func NewAssignPrivateIpAddressesRequest() (request *AssignPrivateIpAddressesRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "AssignPrivateIpAddresses")
+    
     
     return
 }
@@ -451,6 +470,7 @@ func (c *Client) AssignPrivateIpAddresses(request *AssignPrivateIpAddressesReque
     if request == nil {
         request = NewAssignPrivateIpAddressesRequest()
     }
+    
     response = NewAssignPrivateIpAddressesResponse()
     err = c.Send(request, response)
     return
@@ -461,6 +481,7 @@ func NewAssociateAddressRequest() (request *AssociateAddressRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "AssociateAddress")
+    
     
     return
 }
@@ -517,6 +538,7 @@ func (c *Client) AssociateAddress(request *AssociateAddressRequest) (response *A
     if request == nil {
         request = NewAssociateAddressRequest()
     }
+    
     response = NewAssociateAddressResponse()
     err = c.Send(request, response)
     return
@@ -527,6 +549,7 @@ func NewAssociateDhcpIpWithAddressIpRequest() (request *AssociateDhcpIpWithAddre
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "AssociateDhcpIpWithAddressIp")
+    
     
     return
 }
@@ -554,6 +577,7 @@ func (c *Client) AssociateDhcpIpWithAddressIp(request *AssociateDhcpIpWithAddres
     if request == nil {
         request = NewAssociateDhcpIpWithAddressIpRequest()
     }
+    
     response = NewAssociateDhcpIpWithAddressIpResponse()
     err = c.Send(request, response)
     return
@@ -564,6 +588,7 @@ func NewAssociateDirectConnectGatewayNatGatewayRequest() (request *AssociateDire
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "AssociateDirectConnectGatewayNatGateway")
+    
     
     return
 }
@@ -589,6 +614,7 @@ func (c *Client) AssociateDirectConnectGatewayNatGateway(request *AssociateDirec
     if request == nil {
         request = NewAssociateDirectConnectGatewayNatGatewayRequest()
     }
+    
     response = NewAssociateDirectConnectGatewayNatGatewayResponse()
     err = c.Send(request, response)
     return
@@ -599,6 +625,7 @@ func NewAssociateNatGatewayAddressRequest() (request *AssociateNatGatewayAddress
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "AssociateNatGatewayAddress")
+    
     
     return
 }
@@ -629,6 +656,7 @@ func (c *Client) AssociateNatGatewayAddress(request *AssociateNatGatewayAddressR
     if request == nil {
         request = NewAssociateNatGatewayAddressRequest()
     }
+    
     response = NewAssociateNatGatewayAddressResponse()
     err = c.Send(request, response)
     return
@@ -639,6 +667,7 @@ func NewAssociateNetworkAclSubnetsRequest() (request *AssociateNetworkAclSubnets
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "AssociateNetworkAclSubnets")
+    
     
     return
 }
@@ -663,6 +692,7 @@ func (c *Client) AssociateNetworkAclSubnets(request *AssociateNetworkAclSubnetsR
     if request == nil {
         request = NewAssociateNetworkAclSubnetsRequest()
     }
+    
     response = NewAssociateNetworkAclSubnetsResponse()
     err = c.Send(request, response)
     return
@@ -673,6 +703,7 @@ func NewAssociateNetworkInterfaceSecurityGroupsRequest() (request *AssociateNetw
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "AssociateNetworkInterfaceSecurityGroups")
+    
     
     return
 }
@@ -697,6 +728,7 @@ func (c *Client) AssociateNetworkInterfaceSecurityGroups(request *AssociateNetwo
     if request == nil {
         request = NewAssociateNetworkInterfaceSecurityGroupsRequest()
     }
+    
     response = NewAssociateNetworkInterfaceSecurityGroupsResponse()
     err = c.Send(request, response)
     return
@@ -707,6 +739,7 @@ func NewAttachCcnInstancesRequest() (request *AttachCcnInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "AttachCcnInstances")
+    
     
     return
 }
@@ -744,6 +777,7 @@ func (c *Client) AttachCcnInstances(request *AttachCcnInstancesRequest) (respons
     if request == nil {
         request = NewAttachCcnInstancesRequest()
     }
+    
     response = NewAttachCcnInstancesResponse()
     err = c.Send(request, response)
     return
@@ -754,6 +788,7 @@ func NewAttachClassicLinkVpcRequest() (request *AttachClassicLinkVpcRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "AttachClassicLinkVpc")
+    
     
     return
 }
@@ -788,6 +823,7 @@ func (c *Client) AttachClassicLinkVpc(request *AttachClassicLinkVpcRequest) (res
     if request == nil {
         request = NewAttachClassicLinkVpcRequest()
     }
+    
     response = NewAttachClassicLinkVpcResponse()
     err = c.Send(request, response)
     return
@@ -798,6 +834,7 @@ func NewAttachNetworkInterfaceRequest() (request *AttachNetworkInterfaceRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "AttachNetworkInterface")
+    
     
     return
 }
@@ -838,6 +875,7 @@ func (c *Client) AttachNetworkInterface(request *AttachNetworkInterfaceRequest) 
     if request == nil {
         request = NewAttachNetworkInterfaceRequest()
     }
+    
     response = NewAttachNetworkInterfaceResponse()
     err = c.Send(request, response)
     return
@@ -848,6 +886,7 @@ func NewAuditCrossBorderComplianceRequest() (request *AuditCrossBorderCompliance
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "AuditCrossBorderCompliance")
+    
     
     return
 }
@@ -873,6 +912,7 @@ func (c *Client) AuditCrossBorderCompliance(request *AuditCrossBorderComplianceR
     if request == nil {
         request = NewAuditCrossBorderComplianceRequest()
     }
+    
     response = NewAuditCrossBorderComplianceResponse()
     err = c.Send(request, response)
     return
@@ -883,6 +923,7 @@ func NewCheckAssistantCidrRequest() (request *CheckAssistantCidrRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CheckAssistantCidr")
+    
     
     return
 }
@@ -915,6 +956,7 @@ func (c *Client) CheckAssistantCidr(request *CheckAssistantCidrRequest) (respons
     if request == nil {
         request = NewCheckAssistantCidrRequest()
     }
+    
     response = NewCheckAssistantCidrResponse()
     err = c.Send(request, response)
     return
@@ -925,6 +967,7 @@ func NewCheckDefaultSubnetRequest() (request *CheckDefaultSubnetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CheckDefaultSubnet")
+    
     
     return
 }
@@ -946,6 +989,7 @@ func (c *Client) CheckDefaultSubnet(request *CheckDefaultSubnetRequest) (respons
     if request == nil {
         request = NewCheckDefaultSubnetRequest()
     }
+    
     response = NewCheckDefaultSubnetResponse()
     err = c.Send(request, response)
     return
@@ -956,6 +1000,7 @@ func NewCheckNetDetectStateRequest() (request *CheckNetDetectStateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CheckNetDetectState")
+    
     
     return
 }
@@ -987,6 +1032,7 @@ func (c *Client) CheckNetDetectState(request *CheckNetDetectStateRequest) (respo
     if request == nil {
         request = NewCheckNetDetectStateRequest()
     }
+    
     response = NewCheckNetDetectStateResponse()
     err = c.Send(request, response)
     return
@@ -997,6 +1043,7 @@ func NewCloneSecurityGroupRequest() (request *CloneSecurityGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CloneSecurityGroup")
+    
     
     return
 }
@@ -1021,6 +1068,7 @@ func (c *Client) CloneSecurityGroup(request *CloneSecurityGroupRequest) (respons
     if request == nil {
         request = NewCloneSecurityGroupRequest()
     }
+    
     response = NewCloneSecurityGroupResponse()
     err = c.Send(request, response)
     return
@@ -1031,6 +1079,7 @@ func NewCreateAddressTemplateRequest() (request *CreateAddressTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateAddressTemplate")
+    
     
     return
 }
@@ -1055,6 +1104,7 @@ func (c *Client) CreateAddressTemplate(request *CreateAddressTemplateRequest) (r
     if request == nil {
         request = NewCreateAddressTemplateRequest()
     }
+    
     response = NewCreateAddressTemplateResponse()
     err = c.Send(request, response)
     return
@@ -1065,6 +1115,7 @@ func NewCreateAddressTemplateGroupRequest() (request *CreateAddressTemplateGroup
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateAddressTemplateGroup")
+    
     
     return
 }
@@ -1088,6 +1139,7 @@ func (c *Client) CreateAddressTemplateGroup(request *CreateAddressTemplateGroupR
     if request == nil {
         request = NewCreateAddressTemplateGroupRequest()
     }
+    
     response = NewCreateAddressTemplateGroupResponse()
     err = c.Send(request, response)
     return
@@ -1098,6 +1150,7 @@ func NewCreateAndAttachNetworkInterfaceRequest() (request *CreateAndAttachNetwor
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateAndAttachNetworkInterface")
+    
     
     return
 }
@@ -1143,6 +1196,7 @@ func (c *Client) CreateAndAttachNetworkInterface(request *CreateAndAttachNetwork
     if request == nil {
         request = NewCreateAndAttachNetworkInterfaceRequest()
     }
+    
     response = NewCreateAndAttachNetworkInterfaceResponse()
     err = c.Send(request, response)
     return
@@ -1153,6 +1207,7 @@ func NewCreateAssistantCidrRequest() (request *CreateAssistantCidrRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateAssistantCidr")
+    
     
     return
 }
@@ -1180,6 +1235,7 @@ func (c *Client) CreateAssistantCidr(request *CreateAssistantCidrRequest) (respo
     if request == nil {
         request = NewCreateAssistantCidrRequest()
     }
+    
     response = NewCreateAssistantCidrResponse()
     err = c.Send(request, response)
     return
@@ -1190,6 +1246,7 @@ func NewCreateBandwidthPackageRequest() (request *CreateBandwidthPackageRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateBandwidthPackage")
+    
     
     return
 }
@@ -1218,6 +1275,7 @@ func (c *Client) CreateBandwidthPackage(request *CreateBandwidthPackageRequest) 
     if request == nil {
         request = NewCreateBandwidthPackageRequest()
     }
+    
     response = NewCreateBandwidthPackageResponse()
     err = c.Send(request, response)
     return
@@ -1228,6 +1286,7 @@ func NewCreateCcnRequest() (request *CreateCcnRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateCcn")
+    
     
     return
 }
@@ -1262,6 +1321,7 @@ func (c *Client) CreateCcn(request *CreateCcnRequest) (response *CreateCcnRespon
     if request == nil {
         request = NewCreateCcnRequest()
     }
+    
     response = NewCreateCcnResponse()
     err = c.Send(request, response)
     return
@@ -1272,6 +1332,7 @@ func NewCreateCustomerGatewayRequest() (request *CreateCustomerGatewayRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateCustomerGateway")
+    
     
     return
 }
@@ -1294,6 +1355,7 @@ func (c *Client) CreateCustomerGateway(request *CreateCustomerGatewayRequest) (r
     if request == nil {
         request = NewCreateCustomerGatewayRequest()
     }
+    
     response = NewCreateCustomerGatewayResponse()
     err = c.Send(request, response)
     return
@@ -1304,6 +1366,7 @@ func NewCreateDefaultSecurityGroupRequest() (request *CreateDefaultSecurityGroup
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateDefaultSecurityGroup")
+    
     
     return
 }
@@ -1332,6 +1395,7 @@ func (c *Client) CreateDefaultSecurityGroup(request *CreateDefaultSecurityGroupR
     if request == nil {
         request = NewCreateDefaultSecurityGroupRequest()
     }
+    
     response = NewCreateDefaultSecurityGroupResponse()
     err = c.Send(request, response)
     return
@@ -1342,6 +1406,7 @@ func NewCreateDefaultVpcRequest() (request *CreateDefaultVpcRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateDefaultVpc")
+    
     
     return
 }
@@ -1381,6 +1446,7 @@ func (c *Client) CreateDefaultVpc(request *CreateDefaultVpcRequest) (response *C
     if request == nil {
         request = NewCreateDefaultVpcRequest()
     }
+    
     response = NewCreateDefaultVpcResponse()
     err = c.Send(request, response)
     return
@@ -1391,6 +1457,7 @@ func NewCreateDhcpIpRequest() (request *CreateDhcpIpRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateDhcpIp")
+    
     
     return
 }
@@ -1418,6 +1485,7 @@ func (c *Client) CreateDhcpIp(request *CreateDhcpIpRequest) (response *CreateDhc
     if request == nil {
         request = NewCreateDhcpIpRequest()
     }
+    
     response = NewCreateDhcpIpResponse()
     err = c.Send(request, response)
     return
@@ -1428,6 +1496,7 @@ func NewCreateDirectConnectGatewayRequest() (request *CreateDirectConnectGateway
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateDirectConnectGateway")
+    
     
     return
 }
@@ -1451,6 +1520,7 @@ func (c *Client) CreateDirectConnectGateway(request *CreateDirectConnectGatewayR
     if request == nil {
         request = NewCreateDirectConnectGatewayRequest()
     }
+    
     response = NewCreateDirectConnectGatewayResponse()
     err = c.Send(request, response)
     return
@@ -1461,6 +1531,7 @@ func NewCreateDirectConnectGatewayCcnRoutesRequest() (request *CreateDirectConne
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateDirectConnectGatewayCcnRoutes")
+    
     
     return
 }
@@ -1483,6 +1554,7 @@ func (c *Client) CreateDirectConnectGatewayCcnRoutes(request *CreateDirectConnec
     if request == nil {
         request = NewCreateDirectConnectGatewayCcnRoutesRequest()
     }
+    
     response = NewCreateDirectConnectGatewayCcnRoutesResponse()
     err = c.Send(request, response)
     return
@@ -1493,6 +1565,7 @@ func NewCreateFlowLogRequest() (request *CreateFlowLogRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateFlowLog")
+    
     
     return
 }
@@ -1519,6 +1592,7 @@ func (c *Client) CreateFlowLog(request *CreateFlowLogRequest) (response *CreateF
     if request == nil {
         request = NewCreateFlowLogRequest()
     }
+    
     response = NewCreateFlowLogResponse()
     err = c.Send(request, response)
     return
@@ -1529,6 +1603,7 @@ func NewCreateHaVipRequest() (request *CreateHaVipRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateHaVip")
+    
     
     return
 }
@@ -1556,6 +1631,7 @@ func (c *Client) CreateHaVip(request *CreateHaVipRequest) (response *CreateHaVip
     if request == nil {
         request = NewCreateHaVipRequest()
     }
+    
     response = NewCreateHaVipResponse()
     err = c.Send(request, response)
     return
@@ -1566,6 +1642,7 @@ func NewCreateIp6TranslatorsRequest() (request *CreateIp6TranslatorsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateIp6Translators")
+    
     
     return
 }
@@ -1588,6 +1665,7 @@ func (c *Client) CreateIp6Translators(request *CreateIp6TranslatorsRequest) (res
     if request == nil {
         request = NewCreateIp6TranslatorsRequest()
     }
+    
     response = NewCreateIp6TranslatorsResponse()
     err = c.Send(request, response)
     return
@@ -1598,6 +1676,7 @@ func NewCreateLocalGatewayRequest() (request *CreateLocalGatewayRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateLocalGateway")
+    
     
     return
 }
@@ -1624,6 +1703,7 @@ func (c *Client) CreateLocalGateway(request *CreateLocalGatewayRequest) (respons
     if request == nil {
         request = NewCreateLocalGatewayRequest()
     }
+    
     response = NewCreateLocalGatewayResponse()
     err = c.Send(request, response)
     return
@@ -1634,6 +1714,7 @@ func NewCreateNatGatewayRequest() (request *CreateNatGatewayRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateNatGateway")
+    
     
     return
 }
@@ -1679,6 +1760,7 @@ func (c *Client) CreateNatGateway(request *CreateNatGatewayRequest) (response *C
     if request == nil {
         request = NewCreateNatGatewayRequest()
     }
+    
     response = NewCreateNatGatewayResponse()
     err = c.Send(request, response)
     return
@@ -1689,6 +1771,7 @@ func NewCreateNatGatewayDestinationIpPortTranslationNatRuleRequest() (request *C
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateNatGatewayDestinationIpPortTranslationNatRule")
+    
     
     return
 }
@@ -1732,6 +1815,7 @@ func (c *Client) CreateNatGatewayDestinationIpPortTranslationNatRule(request *Cr
     if request == nil {
         request = NewCreateNatGatewayDestinationIpPortTranslationNatRuleRequest()
     }
+    
     response = NewCreateNatGatewayDestinationIpPortTranslationNatRuleResponse()
     err = c.Send(request, response)
     return
@@ -1742,6 +1826,7 @@ func NewCreateNatGatewaySourceIpTranslationNatRuleRequest() (request *CreateNatG
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateNatGatewaySourceIpTranslationNatRule")
+    
     
     return
 }
@@ -1769,6 +1854,7 @@ func (c *Client) CreateNatGatewaySourceIpTranslationNatRule(request *CreateNatGa
     if request == nil {
         request = NewCreateNatGatewaySourceIpTranslationNatRuleRequest()
     }
+    
     response = NewCreateNatGatewaySourceIpTranslationNatRuleResponse()
     err = c.Send(request, response)
     return
@@ -1779,6 +1865,7 @@ func NewCreateNetDetectRequest() (request *CreateNetDetectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateNetDetect")
+    
     
     return
 }
@@ -1810,6 +1897,7 @@ func (c *Client) CreateNetDetect(request *CreateNetDetectRequest) (response *Cre
     if request == nil {
         request = NewCreateNetDetectRequest()
     }
+    
     response = NewCreateNetDetectResponse()
     err = c.Send(request, response)
     return
@@ -1820,6 +1908,7 @@ func NewCreateNetworkAclRequest() (request *CreateNetworkAclRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateNetworkAcl")
+    
     
     return
 }
@@ -1846,6 +1935,7 @@ func (c *Client) CreateNetworkAcl(request *CreateNetworkAclRequest) (response *C
     if request == nil {
         request = NewCreateNetworkAclRequest()
     }
+    
     response = NewCreateNetworkAclResponse()
     err = c.Send(request, response)
     return
@@ -1856,6 +1946,7 @@ func NewCreateNetworkInterfaceRequest() (request *CreateNetworkInterfaceRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateNetworkInterface")
+    
     
     return
 }
@@ -1901,6 +1992,7 @@ func (c *Client) CreateNetworkInterface(request *CreateNetworkInterfaceRequest) 
     if request == nil {
         request = NewCreateNetworkInterfaceRequest()
     }
+    
     response = NewCreateNetworkInterfaceResponse()
     err = c.Send(request, response)
     return
@@ -1911,6 +2003,7 @@ func NewCreateRouteTableRequest() (request *CreateRouteTableRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateRouteTable")
+    
     
     return
 }
@@ -1941,6 +2034,7 @@ func (c *Client) CreateRouteTable(request *CreateRouteTableRequest) (response *C
     if request == nil {
         request = NewCreateRouteTableRequest()
     }
+    
     response = NewCreateRouteTableResponse()
     err = c.Send(request, response)
     return
@@ -1951,6 +2045,7 @@ func NewCreateRoutesRequest() (request *CreateRoutesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateRoutes")
+    
     
     return
 }
@@ -1988,6 +2083,7 @@ func (c *Client) CreateRoutes(request *CreateRoutesRequest) (response *CreateRou
     if request == nil {
         request = NewCreateRoutesRequest()
     }
+    
     response = NewCreateRoutesResponse()
     err = c.Send(request, response)
     return
@@ -1998,6 +2094,7 @@ func NewCreateSecurityGroupRequest() (request *CreateSecurityGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateSecurityGroup")
+    
     
     return
 }
@@ -2030,6 +2127,7 @@ func (c *Client) CreateSecurityGroup(request *CreateSecurityGroupRequest) (respo
     if request == nil {
         request = NewCreateSecurityGroupRequest()
     }
+    
     response = NewCreateSecurityGroupResponse()
     err = c.Send(request, response)
     return
@@ -2040,6 +2138,7 @@ func NewCreateSecurityGroupPoliciesRequest() (request *CreateSecurityGroupPolici
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateSecurityGroupPolicies")
+    
     
     return
 }
@@ -2100,6 +2199,7 @@ func (c *Client) CreateSecurityGroupPolicies(request *CreateSecurityGroupPolicie
     if request == nil {
         request = NewCreateSecurityGroupPoliciesRequest()
     }
+    
     response = NewCreateSecurityGroupPoliciesResponse()
     err = c.Send(request, response)
     return
@@ -2110,6 +2210,7 @@ func NewCreateSecurityGroupWithPoliciesRequest() (request *CreateSecurityGroupWi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateSecurityGroupWithPolicies")
+    
     
     return
 }
@@ -2162,6 +2263,7 @@ func (c *Client) CreateSecurityGroupWithPolicies(request *CreateSecurityGroupWit
     if request == nil {
         request = NewCreateSecurityGroupWithPoliciesRequest()
     }
+    
     response = NewCreateSecurityGroupWithPoliciesResponse()
     err = c.Send(request, response)
     return
@@ -2172,6 +2274,7 @@ func NewCreateServiceTemplateRequest() (request *CreateServiceTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateServiceTemplate")
+    
     
     return
 }
@@ -2194,6 +2297,7 @@ func (c *Client) CreateServiceTemplate(request *CreateServiceTemplateRequest) (r
     if request == nil {
         request = NewCreateServiceTemplateRequest()
     }
+    
     response = NewCreateServiceTemplateResponse()
     err = c.Send(request, response)
     return
@@ -2204,6 +2308,7 @@ func NewCreateServiceTemplateGroupRequest() (request *CreateServiceTemplateGroup
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateServiceTemplateGroup")
+    
     
     return
 }
@@ -2228,6 +2333,7 @@ func (c *Client) CreateServiceTemplateGroup(request *CreateServiceTemplateGroupR
     if request == nil {
         request = NewCreateServiceTemplateGroupRequest()
     }
+    
     response = NewCreateServiceTemplateGroupResponse()
     err = c.Send(request, response)
     return
@@ -2238,6 +2344,7 @@ func NewCreateSubnetRequest() (request *CreateSubnetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateSubnet")
+    
     
     return
 }
@@ -2282,6 +2389,7 @@ func (c *Client) CreateSubnet(request *CreateSubnetRequest) (response *CreateSub
     if request == nil {
         request = NewCreateSubnetRequest()
     }
+    
     response = NewCreateSubnetResponse()
     err = c.Send(request, response)
     return
@@ -2292,6 +2400,7 @@ func NewCreateSubnetsRequest() (request *CreateSubnetsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateSubnets")
+    
     
     return
 }
@@ -2335,6 +2444,7 @@ func (c *Client) CreateSubnets(request *CreateSubnetsRequest) (response *CreateS
     if request == nil {
         request = NewCreateSubnetsRequest()
     }
+    
     response = NewCreateSubnetsResponse()
     err = c.Send(request, response)
     return
@@ -2345,6 +2455,7 @@ func NewCreateVpcRequest() (request *CreateVpcRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateVpc")
+    
     
     return
 }
@@ -2378,6 +2489,7 @@ func (c *Client) CreateVpc(request *CreateVpcRequest) (response *CreateVpcRespon
     if request == nil {
         request = NewCreateVpcRequest()
     }
+    
     response = NewCreateVpcResponse()
     err = c.Send(request, response)
     return
@@ -2388,6 +2500,7 @@ func NewCreateVpcEndPointRequest() (request *CreateVpcEndPointRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateVpcEndPoint")
+    
     
     return
 }
@@ -2420,6 +2533,7 @@ func (c *Client) CreateVpcEndPoint(request *CreateVpcEndPointRequest) (response 
     if request == nil {
         request = NewCreateVpcEndPointRequest()
     }
+    
     response = NewCreateVpcEndPointResponse()
     err = c.Send(request, response)
     return
@@ -2430,6 +2544,7 @@ func NewCreateVpcEndPointServiceRequest() (request *CreateVpcEndPointServiceRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateVpcEndPointService")
+    
     
     return
 }
@@ -2458,6 +2573,7 @@ func (c *Client) CreateVpcEndPointService(request *CreateVpcEndPointServiceReque
     if request == nil {
         request = NewCreateVpcEndPointServiceRequest()
     }
+    
     response = NewCreateVpcEndPointServiceResponse()
     err = c.Send(request, response)
     return
@@ -2468,6 +2584,7 @@ func NewCreateVpcEndPointServiceWhiteListRequest() (request *CreateVpcEndPointSe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateVpcEndPointServiceWhiteList")
+    
     
     return
 }
@@ -2491,6 +2608,7 @@ func (c *Client) CreateVpcEndPointServiceWhiteList(request *CreateVpcEndPointSer
     if request == nil {
         request = NewCreateVpcEndPointServiceWhiteListRequest()
     }
+    
     response = NewCreateVpcEndPointServiceWhiteListResponse()
     err = c.Send(request, response)
     return
@@ -2501,6 +2619,7 @@ func NewCreateVpnConnectionRequest() (request *CreateVpnConnectionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateVpnConnection")
+    
     
     return
 }
@@ -2534,6 +2653,7 @@ func (c *Client) CreateVpnConnection(request *CreateVpnConnectionRequest) (respo
     if request == nil {
         request = NewCreateVpnConnectionRequest()
     }
+    
     response = NewCreateVpnConnectionResponse()
     err = c.Send(request, response)
     return
@@ -2544,6 +2664,7 @@ func NewCreateVpnGatewayRequest() (request *CreateVpnGatewayRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateVpnGateway")
+    
     
     return
 }
@@ -2573,6 +2694,7 @@ func (c *Client) CreateVpnGateway(request *CreateVpnGatewayRequest) (response *C
     if request == nil {
         request = NewCreateVpnGatewayRequest()
     }
+    
     response = NewCreateVpnGatewayResponse()
     err = c.Send(request, response)
     return
@@ -2583,6 +2705,7 @@ func NewCreateVpnGatewayRoutesRequest() (request *CreateVpnGatewayRoutesRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "CreateVpnGatewayRoutes")
+    
     
     return
 }
@@ -2610,6 +2733,7 @@ func (c *Client) CreateVpnGatewayRoutes(request *CreateVpnGatewayRoutesRequest) 
     if request == nil {
         request = NewCreateVpnGatewayRoutesRequest()
     }
+    
     response = NewCreateVpnGatewayRoutesResponse()
     err = c.Send(request, response)
     return
@@ -2620,6 +2744,7 @@ func NewDeleteAddressTemplateRequest() (request *DeleteAddressTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteAddressTemplate")
+    
     
     return
 }
@@ -2642,6 +2767,7 @@ func (c *Client) DeleteAddressTemplate(request *DeleteAddressTemplateRequest) (r
     if request == nil {
         request = NewDeleteAddressTemplateRequest()
     }
+    
     response = NewDeleteAddressTemplateResponse()
     err = c.Send(request, response)
     return
@@ -2652,6 +2778,7 @@ func NewDeleteAddressTemplateGroupRequest() (request *DeleteAddressTemplateGroup
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteAddressTemplateGroup")
+    
     
     return
 }
@@ -2674,6 +2801,7 @@ func (c *Client) DeleteAddressTemplateGroup(request *DeleteAddressTemplateGroupR
     if request == nil {
         request = NewDeleteAddressTemplateGroupRequest()
     }
+    
     response = NewDeleteAddressTemplateGroupResponse()
     err = c.Send(request, response)
     return
@@ -2684,6 +2812,7 @@ func NewDeleteAssistantCidrRequest() (request *DeleteAssistantCidrRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteAssistantCidr")
+    
     
     return
 }
@@ -2709,6 +2838,7 @@ func (c *Client) DeleteAssistantCidr(request *DeleteAssistantCidrRequest) (respo
     if request == nil {
         request = NewDeleteAssistantCidrRequest()
     }
+    
     response = NewDeleteAssistantCidrResponse()
     err = c.Send(request, response)
     return
@@ -2719,6 +2849,7 @@ func NewDeleteBandwidthPackageRequest() (request *DeleteBandwidthPackageRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteBandwidthPackage")
+    
     
     return
 }
@@ -2743,6 +2874,7 @@ func (c *Client) DeleteBandwidthPackage(request *DeleteBandwidthPackageRequest) 
     if request == nil {
         request = NewDeleteBandwidthPackageRequest()
     }
+    
     response = NewDeleteBandwidthPackageResponse()
     err = c.Send(request, response)
     return
@@ -2753,6 +2885,7 @@ func NewDeleteCcnRequest() (request *DeleteCcnRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteCcn")
+    
     
     return
 }
@@ -2782,6 +2915,7 @@ func (c *Client) DeleteCcn(request *DeleteCcnRequest) (response *DeleteCcnRespon
     if request == nil {
         request = NewDeleteCcnRequest()
     }
+    
     response = NewDeleteCcnResponse()
     err = c.Send(request, response)
     return
@@ -2792,6 +2926,7 @@ func NewDeleteCustomerGatewayRequest() (request *DeleteCustomerGatewayRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteCustomerGateway")
+    
     
     return
 }
@@ -2814,6 +2949,7 @@ func (c *Client) DeleteCustomerGateway(request *DeleteCustomerGatewayRequest) (r
     if request == nil {
         request = NewDeleteCustomerGatewayRequest()
     }
+    
     response = NewDeleteCustomerGatewayResponse()
     err = c.Send(request, response)
     return
@@ -2824,6 +2960,7 @@ func NewDeleteDhcpIpRequest() (request *DeleteDhcpIpRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteDhcpIp")
+    
     
     return
 }
@@ -2851,6 +2988,7 @@ func (c *Client) DeleteDhcpIp(request *DeleteDhcpIpRequest) (response *DeleteDhc
     if request == nil {
         request = NewDeleteDhcpIpRequest()
     }
+    
     response = NewDeleteDhcpIpResponse()
     err = c.Send(request, response)
     return
@@ -2861,6 +2999,7 @@ func NewDeleteDirectConnectGatewayRequest() (request *DeleteDirectConnectGateway
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteDirectConnectGateway")
+    
     
     return
 }
@@ -2890,6 +3029,7 @@ func (c *Client) DeleteDirectConnectGateway(request *DeleteDirectConnectGatewayR
     if request == nil {
         request = NewDeleteDirectConnectGatewayRequest()
     }
+    
     response = NewDeleteDirectConnectGatewayResponse()
     err = c.Send(request, response)
     return
@@ -2900,6 +3040,7 @@ func NewDeleteDirectConnectGatewayCcnRoutesRequest() (request *DeleteDirectConne
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteDirectConnectGatewayCcnRoutes")
+    
     
     return
 }
@@ -2921,6 +3062,7 @@ func (c *Client) DeleteDirectConnectGatewayCcnRoutes(request *DeleteDirectConnec
     if request == nil {
         request = NewDeleteDirectConnectGatewayCcnRoutesRequest()
     }
+    
     response = NewDeleteDirectConnectGatewayCcnRoutesResponse()
     err = c.Send(request, response)
     return
@@ -2931,6 +3073,7 @@ func NewDeleteFlowLogRequest() (request *DeleteFlowLogRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteFlowLog")
+    
     
     return
 }
@@ -2953,6 +3096,7 @@ func (c *Client) DeleteFlowLog(request *DeleteFlowLogRequest) (response *DeleteF
     if request == nil {
         request = NewDeleteFlowLogRequest()
     }
+    
     response = NewDeleteFlowLogResponse()
     err = c.Send(request, response)
     return
@@ -2963,6 +3107,7 @@ func NewDeleteHaVipRequest() (request *DeleteHaVipRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteHaVip")
+    
     
     return
 }
@@ -2989,6 +3134,7 @@ func (c *Client) DeleteHaVip(request *DeleteHaVipRequest) (response *DeleteHaVip
     if request == nil {
         request = NewDeleteHaVipRequest()
     }
+    
     response = NewDeleteHaVipResponse()
     err = c.Send(request, response)
     return
@@ -2999,6 +3145,7 @@ func NewDeleteIp6TranslatorsRequest() (request *DeleteIp6TranslatorsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteIp6Translators")
+    
     
     return
 }
@@ -3022,6 +3169,7 @@ func (c *Client) DeleteIp6Translators(request *DeleteIp6TranslatorsRequest) (res
     if request == nil {
         request = NewDeleteIp6TranslatorsRequest()
     }
+    
     response = NewDeleteIp6TranslatorsResponse()
     err = c.Send(request, response)
     return
@@ -3032,6 +3180,7 @@ func NewDeleteLocalGatewayRequest() (request *DeleteLocalGatewayRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteLocalGateway")
+    
     
     return
 }
@@ -3057,6 +3206,7 @@ func (c *Client) DeleteLocalGateway(request *DeleteLocalGatewayRequest) (respons
     if request == nil {
         request = NewDeleteLocalGatewayRequest()
     }
+    
     response = NewDeleteLocalGatewayResponse()
     err = c.Send(request, response)
     return
@@ -3067,6 +3217,7 @@ func NewDeleteNatGatewayRequest() (request *DeleteNatGatewayRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteNatGateway")
+    
     
     return
 }
@@ -3092,6 +3243,7 @@ func (c *Client) DeleteNatGateway(request *DeleteNatGatewayRequest) (response *D
     if request == nil {
         request = NewDeleteNatGatewayRequest()
     }
+    
     response = NewDeleteNatGatewayResponse()
     err = c.Send(request, response)
     return
@@ -3102,6 +3254,7 @@ func NewDeleteNatGatewayDestinationIpPortTranslationNatRuleRequest() (request *D
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteNatGatewayDestinationIpPortTranslationNatRule")
+    
     
     return
 }
@@ -3125,6 +3278,7 @@ func (c *Client) DeleteNatGatewayDestinationIpPortTranslationNatRule(request *De
     if request == nil {
         request = NewDeleteNatGatewayDestinationIpPortTranslationNatRuleRequest()
     }
+    
     response = NewDeleteNatGatewayDestinationIpPortTranslationNatRuleResponse()
     err = c.Send(request, response)
     return
@@ -3135,6 +3289,7 @@ func NewDeleteNatGatewaySourceIpTranslationNatRuleRequest() (request *DeleteNatG
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteNatGatewaySourceIpTranslationNatRule")
+    
     
     return
 }
@@ -3157,6 +3312,7 @@ func (c *Client) DeleteNatGatewaySourceIpTranslationNatRule(request *DeleteNatGa
     if request == nil {
         request = NewDeleteNatGatewaySourceIpTranslationNatRuleRequest()
     }
+    
     response = NewDeleteNatGatewaySourceIpTranslationNatRuleResponse()
     err = c.Send(request, response)
     return
@@ -3167,6 +3323,7 @@ func NewDeleteNetDetectRequest() (request *DeleteNetDetectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteNetDetect")
+    
     
     return
 }
@@ -3189,6 +3346,7 @@ func (c *Client) DeleteNetDetect(request *DeleteNetDetectRequest) (response *Del
     if request == nil {
         request = NewDeleteNetDetectRequest()
     }
+    
     response = NewDeleteNetDetectResponse()
     err = c.Send(request, response)
     return
@@ -3199,6 +3357,7 @@ func NewDeleteNetworkAclRequest() (request *DeleteNetworkAclRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteNetworkAcl")
+    
     
     return
 }
@@ -3221,6 +3380,7 @@ func (c *Client) DeleteNetworkAcl(request *DeleteNetworkAclRequest) (response *D
     if request == nil {
         request = NewDeleteNetworkAclRequest()
     }
+    
     response = NewDeleteNetworkAclResponse()
     err = c.Send(request, response)
     return
@@ -3231,6 +3391,7 @@ func NewDeleteNetworkInterfaceRequest() (request *DeleteNetworkInterfaceRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteNetworkInterface")
+    
     
     return
 }
@@ -3263,6 +3424,7 @@ func (c *Client) DeleteNetworkInterface(request *DeleteNetworkInterfaceRequest) 
     if request == nil {
         request = NewDeleteNetworkInterfaceRequest()
     }
+    
     response = NewDeleteNetworkInterfaceResponse()
     err = c.Send(request, response)
     return
@@ -3273,6 +3435,7 @@ func NewDeleteRouteTableRequest() (request *DeleteRouteTableRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteRouteTable")
+    
     
     return
 }
@@ -3294,6 +3457,7 @@ func (c *Client) DeleteRouteTable(request *DeleteRouteTableRequest) (response *D
     if request == nil {
         request = NewDeleteRouteTableRequest()
     }
+    
     response = NewDeleteRouteTableResponse()
     err = c.Send(request, response)
     return
@@ -3304,6 +3468,7 @@ func NewDeleteRoutesRequest() (request *DeleteRoutesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteRoutes")
+    
     
     return
 }
@@ -3329,6 +3494,7 @@ func (c *Client) DeleteRoutes(request *DeleteRoutesRequest) (response *DeleteRou
     if request == nil {
         request = NewDeleteRoutesRequest()
     }
+    
     response = NewDeleteRoutesResponse()
     err = c.Send(request, response)
     return
@@ -3339,6 +3505,7 @@ func NewDeleteSecurityGroupRequest() (request *DeleteSecurityGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteSecurityGroup")
+    
     
     return
 }
@@ -3370,6 +3537,7 @@ func (c *Client) DeleteSecurityGroup(request *DeleteSecurityGroupRequest) (respo
     if request == nil {
         request = NewDeleteSecurityGroupRequest()
     }
+    
     response = NewDeleteSecurityGroupResponse()
     err = c.Send(request, response)
     return
@@ -3380,6 +3548,7 @@ func NewDeleteSecurityGroupPoliciesRequest() (request *DeleteSecurityGroupPolici
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteSecurityGroupPolicies")
+    
     
     return
 }
@@ -3406,6 +3575,7 @@ func (c *Client) DeleteSecurityGroupPolicies(request *DeleteSecurityGroupPolicie
     if request == nil {
         request = NewDeleteSecurityGroupPoliciesRequest()
     }
+    
     response = NewDeleteSecurityGroupPoliciesResponse()
     err = c.Send(request, response)
     return
@@ -3416,6 +3586,7 @@ func NewDeleteServiceTemplateRequest() (request *DeleteServiceTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteServiceTemplate")
+    
     
     return
 }
@@ -3438,6 +3609,7 @@ func (c *Client) DeleteServiceTemplate(request *DeleteServiceTemplateRequest) (r
     if request == nil {
         request = NewDeleteServiceTemplateRequest()
     }
+    
     response = NewDeleteServiceTemplateResponse()
     err = c.Send(request, response)
     return
@@ -3448,6 +3620,7 @@ func NewDeleteServiceTemplateGroupRequest() (request *DeleteServiceTemplateGroup
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteServiceTemplateGroup")
+    
     
     return
 }
@@ -3470,6 +3643,7 @@ func (c *Client) DeleteServiceTemplateGroup(request *DeleteServiceTemplateGroupR
     if request == nil {
         request = NewDeleteServiceTemplateGroupRequest()
     }
+    
     response = NewDeleteServiceTemplateGroupResponse()
     err = c.Send(request, response)
     return
@@ -3480,6 +3654,7 @@ func NewDeleteSubnetRequest() (request *DeleteSubnetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteSubnet")
+    
     
     return
 }
@@ -3504,6 +3679,7 @@ func (c *Client) DeleteSubnet(request *DeleteSubnetRequest) (response *DeleteSub
     if request == nil {
         request = NewDeleteSubnetRequest()
     }
+    
     response = NewDeleteSubnetResponse()
     err = c.Send(request, response)
     return
@@ -3514,6 +3690,7 @@ func NewDeleteTemplateMemberRequest() (request *DeleteTemplateMemberRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteTemplateMember")
+    
     
     return
 }
@@ -3537,6 +3714,7 @@ func (c *Client) DeleteTemplateMember(request *DeleteTemplateMemberRequest) (res
     if request == nil {
         request = NewDeleteTemplateMemberRequest()
     }
+    
     response = NewDeleteTemplateMemberResponse()
     err = c.Send(request, response)
     return
@@ -3547,6 +3725,7 @@ func NewDeleteVpcRequest() (request *DeleteVpcRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpc")
+    
     
     return
 }
@@ -3574,6 +3753,7 @@ func (c *Client) DeleteVpc(request *DeleteVpcRequest) (response *DeleteVpcRespon
     if request == nil {
         request = NewDeleteVpcRequest()
     }
+    
     response = NewDeleteVpcResponse()
     err = c.Send(request, response)
     return
@@ -3584,6 +3764,7 @@ func NewDeleteVpcEndPointRequest() (request *DeleteVpcEndPointRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpcEndPoint")
+    
     
     return
 }
@@ -3607,6 +3788,7 @@ func (c *Client) DeleteVpcEndPoint(request *DeleteVpcEndPointRequest) (response 
     if request == nil {
         request = NewDeleteVpcEndPointRequest()
     }
+    
     response = NewDeleteVpcEndPointResponse()
     err = c.Send(request, response)
     return
@@ -3617,6 +3799,7 @@ func NewDeleteVpcEndPointServiceRequest() (request *DeleteVpcEndPointServiceRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpcEndPointService")
+    
     
     return
 }
@@ -3642,6 +3825,7 @@ func (c *Client) DeleteVpcEndPointService(request *DeleteVpcEndPointServiceReque
     if request == nil {
         request = NewDeleteVpcEndPointServiceRequest()
     }
+    
     response = NewDeleteVpcEndPointServiceResponse()
     err = c.Send(request, response)
     return
@@ -3652,6 +3836,7 @@ func NewDeleteVpcEndPointServiceWhiteListRequest() (request *DeleteVpcEndPointSe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpcEndPointServiceWhiteList")
+    
     
     return
 }
@@ -3674,6 +3859,7 @@ func (c *Client) DeleteVpcEndPointServiceWhiteList(request *DeleteVpcEndPointSer
     if request == nil {
         request = NewDeleteVpcEndPointServiceWhiteListRequest()
     }
+    
     response = NewDeleteVpcEndPointServiceWhiteListResponse()
     err = c.Send(request, response)
     return
@@ -3684,6 +3870,7 @@ func NewDeleteVpnConnectionRequest() (request *DeleteVpnConnectionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpnConnection")
+    
     
     return
 }
@@ -3707,6 +3894,7 @@ func (c *Client) DeleteVpnConnection(request *DeleteVpnConnectionRequest) (respo
     if request == nil {
         request = NewDeleteVpnConnectionRequest()
     }
+    
     response = NewDeleteVpnConnectionResponse()
     err = c.Send(request, response)
     return
@@ -3717,6 +3905,7 @@ func NewDeleteVpnGatewayRequest() (request *DeleteVpnGatewayRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpnGateway")
+    
     
     return
 }
@@ -3741,6 +3930,7 @@ func (c *Client) DeleteVpnGateway(request *DeleteVpnGatewayRequest) (response *D
     if request == nil {
         request = NewDeleteVpnGatewayRequest()
     }
+    
     response = NewDeleteVpnGatewayResponse()
     err = c.Send(request, response)
     return
@@ -3751,6 +3941,7 @@ func NewDeleteVpnGatewayRoutesRequest() (request *DeleteVpnGatewayRoutesRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpnGatewayRoutes")
+    
     
     return
 }
@@ -3773,6 +3964,7 @@ func (c *Client) DeleteVpnGatewayRoutes(request *DeleteVpnGatewayRoutesRequest) 
     if request == nil {
         request = NewDeleteVpnGatewayRoutesRequest()
     }
+    
     response = NewDeleteVpnGatewayRoutesResponse()
     err = c.Send(request, response)
     return
@@ -3783,6 +3975,7 @@ func NewDescribeAccountAttributesRequest() (request *DescribeAccountAttributesRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeAccountAttributes")
+    
     
     return
 }
@@ -3805,6 +3998,7 @@ func (c *Client) DescribeAccountAttributes(request *DescribeAccountAttributesReq
     if request == nil {
         request = NewDescribeAccountAttributesRequest()
     }
+    
     response = NewDescribeAccountAttributesResponse()
     err = c.Send(request, response)
     return
@@ -3815,6 +4009,7 @@ func NewDescribeAddressQuotaRequest() (request *DescribeAddressQuotaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeAddressQuota")
+    
     
     return
 }
@@ -3835,6 +4030,7 @@ func (c *Client) DescribeAddressQuota(request *DescribeAddressQuotaRequest) (res
     if request == nil {
         request = NewDescribeAddressQuotaRequest()
     }
+    
     response = NewDescribeAddressQuotaResponse()
     err = c.Send(request, response)
     return
@@ -3845,6 +4041,7 @@ func NewDescribeAddressTemplateGroupsRequest() (request *DescribeAddressTemplate
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeAddressTemplateGroups")
+    
     
     return
 }
@@ -3867,6 +4064,7 @@ func (c *Client) DescribeAddressTemplateGroups(request *DescribeAddressTemplateG
     if request == nil {
         request = NewDescribeAddressTemplateGroupsRequest()
     }
+    
     response = NewDescribeAddressTemplateGroupsResponse()
     err = c.Send(request, response)
     return
@@ -3877,6 +4075,7 @@ func NewDescribeAddressTemplatesRequest() (request *DescribeAddressTemplatesRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeAddressTemplates")
+    
     
     return
 }
@@ -3900,6 +4099,7 @@ func (c *Client) DescribeAddressTemplates(request *DescribeAddressTemplatesReque
     if request == nil {
         request = NewDescribeAddressTemplatesRequest()
     }
+    
     response = NewDescribeAddressTemplatesResponse()
     err = c.Send(request, response)
     return
@@ -3910,6 +4110,7 @@ func NewDescribeAddressesRequest() (request *DescribeAddressesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeAddresses")
+    
     
     return
 }
@@ -3934,6 +4135,7 @@ func (c *Client) DescribeAddresses(request *DescribeAddressesRequest) (response 
     if request == nil {
         request = NewDescribeAddressesRequest()
     }
+    
     response = NewDescribeAddressesResponse()
     err = c.Send(request, response)
     return
@@ -3944,6 +4146,7 @@ func NewDescribeAssistantCidrRequest() (request *DescribeAssistantCidrRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeAssistantCidr")
+    
     
     return
 }
@@ -3967,6 +4170,7 @@ func (c *Client) DescribeAssistantCidr(request *DescribeAssistantCidrRequest) (r
     if request == nil {
         request = NewDescribeAssistantCidrRequest()
     }
+    
     response = NewDescribeAssistantCidrResponse()
     err = c.Send(request, response)
     return
@@ -3977,6 +4181,7 @@ func NewDescribeBandwidthPackageBillUsageRequest() (request *DescribeBandwidthPa
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeBandwidthPackageBillUsage")
+    
     
     return
 }
@@ -3998,6 +4203,7 @@ func (c *Client) DescribeBandwidthPackageBillUsage(request *DescribeBandwidthPac
     if request == nil {
         request = NewDescribeBandwidthPackageBillUsageRequest()
     }
+    
     response = NewDescribeBandwidthPackageBillUsageResponse()
     err = c.Send(request, response)
     return
@@ -4008,6 +4214,7 @@ func NewDescribeBandwidthPackageQuotaRequest() (request *DescribeBandwidthPackag
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeBandwidthPackageQuota")
+    
     
     return
 }
@@ -4029,6 +4236,7 @@ func (c *Client) DescribeBandwidthPackageQuota(request *DescribeBandwidthPackage
     if request == nil {
         request = NewDescribeBandwidthPackageQuotaRequest()
     }
+    
     response = NewDescribeBandwidthPackageQuotaResponse()
     err = c.Send(request, response)
     return
@@ -4039,6 +4247,7 @@ func NewDescribeBandwidthPackageResourcesRequest() (request *DescribeBandwidthPa
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeBandwidthPackageResources")
+    
     
     return
 }
@@ -4061,6 +4270,7 @@ func (c *Client) DescribeBandwidthPackageResources(request *DescribeBandwidthPac
     if request == nil {
         request = NewDescribeBandwidthPackageResourcesRequest()
     }
+    
     response = NewDescribeBandwidthPackageResourcesResponse()
     err = c.Send(request, response)
     return
@@ -4071,6 +4281,7 @@ func NewDescribeBandwidthPackagesRequest() (request *DescribeBandwidthPackagesRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeBandwidthPackages")
+    
     
     return
 }
@@ -4091,6 +4302,7 @@ func (c *Client) DescribeBandwidthPackages(request *DescribeBandwidthPackagesReq
     if request == nil {
         request = NewDescribeBandwidthPackagesRequest()
     }
+    
     response = NewDescribeBandwidthPackagesResponse()
     err = c.Send(request, response)
     return
@@ -4101,6 +4313,7 @@ func NewDescribeCcnAttachedInstancesRequest() (request *DescribeCcnAttachedInsta
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeCcnAttachedInstances")
+    
     
     return
 }
@@ -4126,6 +4339,7 @@ func (c *Client) DescribeCcnAttachedInstances(request *DescribeCcnAttachedInstan
     if request == nil {
         request = NewDescribeCcnAttachedInstancesRequest()
     }
+    
     response = NewDescribeCcnAttachedInstancesResponse()
     err = c.Send(request, response)
     return
@@ -4136,6 +4350,7 @@ func NewDescribeCcnRegionBandwidthLimitsRequest() (request *DescribeCcnRegionBan
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeCcnRegionBandwidthLimits")
+    
     
     return
 }
@@ -4156,6 +4371,7 @@ func (c *Client) DescribeCcnRegionBandwidthLimits(request *DescribeCcnRegionBand
     if request == nil {
         request = NewDescribeCcnRegionBandwidthLimitsRequest()
     }
+    
     response = NewDescribeCcnRegionBandwidthLimitsResponse()
     err = c.Send(request, response)
     return
@@ -4166,6 +4382,7 @@ func NewDescribeCcnRoutesRequest() (request *DescribeCcnRoutesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeCcnRoutes")
+    
     
     return
 }
@@ -4189,6 +4406,7 @@ func (c *Client) DescribeCcnRoutes(request *DescribeCcnRoutesRequest) (response 
     if request == nil {
         request = NewDescribeCcnRoutesRequest()
     }
+    
     response = NewDescribeCcnRoutesResponse()
     err = c.Send(request, response)
     return
@@ -4199,6 +4417,7 @@ func NewDescribeCcnsRequest() (request *DescribeCcnsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeCcns")
+    
     
     return
 }
@@ -4227,6 +4446,7 @@ func (c *Client) DescribeCcns(request *DescribeCcnsRequest) (response *DescribeC
     if request == nil {
         request = NewDescribeCcnsRequest()
     }
+    
     response = NewDescribeCcnsResponse()
     err = c.Send(request, response)
     return
@@ -4237,6 +4457,7 @@ func NewDescribeClassicLinkInstancesRequest() (request *DescribeClassicLinkInsta
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeClassicLinkInstances")
+    
     
     return
 }
@@ -4259,6 +4480,7 @@ func (c *Client) DescribeClassicLinkInstances(request *DescribeClassicLinkInstan
     if request == nil {
         request = NewDescribeClassicLinkInstancesRequest()
     }
+    
     response = NewDescribeClassicLinkInstancesResponse()
     err = c.Send(request, response)
     return
@@ -4269,6 +4491,7 @@ func NewDescribeCrossBorderComplianceRequest() (request *DescribeCrossBorderComp
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeCrossBorderCompliance")
+    
     
     return
 }
@@ -4292,6 +4515,7 @@ func (c *Client) DescribeCrossBorderCompliance(request *DescribeCrossBorderCompl
     if request == nil {
         request = NewDescribeCrossBorderComplianceRequest()
     }
+    
     response = NewDescribeCrossBorderComplianceResponse()
     err = c.Send(request, response)
     return
@@ -4302,6 +4526,7 @@ func NewDescribeCustomerGatewayVendorsRequest() (request *DescribeCustomerGatewa
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeCustomerGatewayVendors")
+    
     
     return
 }
@@ -4323,6 +4548,7 @@ func (c *Client) DescribeCustomerGatewayVendors(request *DescribeCustomerGateway
     if request == nil {
         request = NewDescribeCustomerGatewayVendorsRequest()
     }
+    
     response = NewDescribeCustomerGatewayVendorsResponse()
     err = c.Send(request, response)
     return
@@ -4333,6 +4559,7 @@ func NewDescribeCustomerGatewaysRequest() (request *DescribeCustomerGatewaysRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeCustomerGateways")
+    
     
     return
 }
@@ -4354,6 +4581,7 @@ func (c *Client) DescribeCustomerGateways(request *DescribeCustomerGatewaysReque
     if request == nil {
         request = NewDescribeCustomerGatewaysRequest()
     }
+    
     response = NewDescribeCustomerGatewaysResponse()
     err = c.Send(request, response)
     return
@@ -4364,6 +4592,7 @@ func NewDescribeDhcpIpsRequest() (request *DescribeDhcpIpsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeDhcpIps")
+    
     
     return
 }
@@ -4388,6 +4617,7 @@ func (c *Client) DescribeDhcpIps(request *DescribeDhcpIpsRequest) (response *Des
     if request == nil {
         request = NewDescribeDhcpIpsRequest()
     }
+    
     response = NewDescribeDhcpIpsResponse()
     err = c.Send(request, response)
     return
@@ -4398,6 +4628,7 @@ func NewDescribeDirectConnectGatewayCcnRoutesRequest() (request *DescribeDirectC
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeDirectConnectGatewayCcnRoutes")
+    
     
     return
 }
@@ -4419,6 +4650,7 @@ func (c *Client) DescribeDirectConnectGatewayCcnRoutes(request *DescribeDirectCo
     if request == nil {
         request = NewDescribeDirectConnectGatewayCcnRoutesRequest()
     }
+    
     response = NewDescribeDirectConnectGatewayCcnRoutesResponse()
     err = c.Send(request, response)
     return
@@ -4429,6 +4661,7 @@ func NewDescribeDirectConnectGatewaysRequest() (request *DescribeDirectConnectGa
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeDirectConnectGateways")
+    
     
     return
 }
@@ -4455,6 +4688,7 @@ func (c *Client) DescribeDirectConnectGateways(request *DescribeDirectConnectGat
     if request == nil {
         request = NewDescribeDirectConnectGatewaysRequest()
     }
+    
     response = NewDescribeDirectConnectGatewaysResponse()
     err = c.Send(request, response)
     return
@@ -4465,6 +4699,7 @@ func NewDescribeFlowLogRequest() (request *DescribeFlowLogRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeFlowLog")
+    
     
     return
 }
@@ -4486,6 +4721,7 @@ func (c *Client) DescribeFlowLog(request *DescribeFlowLogRequest) (response *Des
     if request == nil {
         request = NewDescribeFlowLogRequest()
     }
+    
     response = NewDescribeFlowLogResponse()
     err = c.Send(request, response)
     return
@@ -4496,6 +4732,7 @@ func NewDescribeFlowLogsRequest() (request *DescribeFlowLogsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeFlowLogs")
+    
     
     return
 }
@@ -4518,6 +4755,7 @@ func (c *Client) DescribeFlowLogs(request *DescribeFlowLogsRequest) (response *D
     if request == nil {
         request = NewDescribeFlowLogsRequest()
     }
+    
     response = NewDescribeFlowLogsResponse()
     err = c.Send(request, response)
     return
@@ -4528,6 +4766,7 @@ func NewDescribeGatewayFlowMonitorDetailRequest() (request *DescribeGatewayFlowM
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeGatewayFlowMonitorDetail")
+    
     
     return
 }
@@ -4554,6 +4793,7 @@ func (c *Client) DescribeGatewayFlowMonitorDetail(request *DescribeGatewayFlowMo
     if request == nil {
         request = NewDescribeGatewayFlowMonitorDetailRequest()
     }
+    
     response = NewDescribeGatewayFlowMonitorDetailResponse()
     err = c.Send(request, response)
     return
@@ -4564,6 +4804,7 @@ func NewDescribeGatewayFlowQosRequest() (request *DescribeGatewayFlowQosRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeGatewayFlowQos")
+    
     
     return
 }
@@ -4586,6 +4827,7 @@ func (c *Client) DescribeGatewayFlowQos(request *DescribeGatewayFlowQosRequest) 
     if request == nil {
         request = NewDescribeGatewayFlowQosRequest()
     }
+    
     response = NewDescribeGatewayFlowQosResponse()
     err = c.Send(request, response)
     return
@@ -4596,6 +4838,7 @@ func NewDescribeHaVipsRequest() (request *DescribeHaVipsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeHaVips")
+    
     
     return
 }
@@ -4619,6 +4862,7 @@ func (c *Client) DescribeHaVips(request *DescribeHaVipsRequest) (response *Descr
     if request == nil {
         request = NewDescribeHaVipsRequest()
     }
+    
     response = NewDescribeHaVipsResponse()
     err = c.Send(request, response)
     return
@@ -4629,6 +4873,7 @@ func NewDescribeIp6AddressesRequest() (request *DescribeIp6AddressesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeIp6Addresses")
+    
     
     return
 }
@@ -4655,6 +4900,7 @@ func (c *Client) DescribeIp6Addresses(request *DescribeIp6AddressesRequest) (res
     if request == nil {
         request = NewDescribeIp6AddressesRequest()
     }
+    
     response = NewDescribeIp6AddressesResponse()
     err = c.Send(request, response)
     return
@@ -4665,6 +4911,7 @@ func NewDescribeIp6TranslatorQuotaRequest() (request *DescribeIp6TranslatorQuota
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeIp6TranslatorQuota")
+    
     
     return
 }
@@ -4685,6 +4932,7 @@ func (c *Client) DescribeIp6TranslatorQuota(request *DescribeIp6TranslatorQuotaR
     if request == nil {
         request = NewDescribeIp6TranslatorQuotaRequest()
     }
+    
     response = NewDescribeIp6TranslatorQuotaResponse()
     err = c.Send(request, response)
     return
@@ -4695,6 +4943,7 @@ func NewDescribeIp6TranslatorsRequest() (request *DescribeIp6TranslatorsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeIp6Translators")
+    
     
     return
 }
@@ -4718,6 +4967,7 @@ func (c *Client) DescribeIp6Translators(request *DescribeIp6TranslatorsRequest) 
     if request == nil {
         request = NewDescribeIp6TranslatorsRequest()
     }
+    
     response = NewDescribeIp6TranslatorsResponse()
     err = c.Send(request, response)
     return
@@ -4728,6 +4978,7 @@ func NewDescribeIpGeolocationDatabaseUrlRequest() (request *DescribeIpGeolocatio
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeIpGeolocationDatabaseUrl")
+    
     
     return
 }
@@ -4751,6 +5002,7 @@ func (c *Client) DescribeIpGeolocationDatabaseUrl(request *DescribeIpGeolocation
     if request == nil {
         request = NewDescribeIpGeolocationDatabaseUrlRequest()
     }
+    
     response = NewDescribeIpGeolocationDatabaseUrlResponse()
     err = c.Send(request, response)
     return
@@ -4761,6 +5013,7 @@ func NewDescribeIpGeolocationInfosRequest() (request *DescribeIpGeolocationInfos
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeIpGeolocationInfos")
+    
     
     return
 }
@@ -4787,6 +5040,7 @@ func (c *Client) DescribeIpGeolocationInfos(request *DescribeIpGeolocationInfosR
     if request == nil {
         request = NewDescribeIpGeolocationInfosRequest()
     }
+    
     response = NewDescribeIpGeolocationInfosResponse()
     err = c.Send(request, response)
     return
@@ -4797,6 +5051,7 @@ func NewDescribeLocalGatewayRequest() (request *DescribeLocalGatewayRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeLocalGateway")
+    
     
     return
 }
@@ -4822,6 +5077,7 @@ func (c *Client) DescribeLocalGateway(request *DescribeLocalGatewayRequest) (res
     if request == nil {
         request = NewDescribeLocalGatewayRequest()
     }
+    
     response = NewDescribeLocalGatewayResponse()
     err = c.Send(request, response)
     return
@@ -4832,6 +5088,7 @@ func NewDescribeNatGatewayDestinationIpPortTranslationNatRulesRequest() (request
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeNatGatewayDestinationIpPortTranslationNatRules")
+    
     
     return
 }
@@ -4860,6 +5117,7 @@ func (c *Client) DescribeNatGatewayDestinationIpPortTranslationNatRules(request 
     if request == nil {
         request = NewDescribeNatGatewayDestinationIpPortTranslationNatRulesRequest()
     }
+    
     response = NewDescribeNatGatewayDestinationIpPortTranslationNatRulesResponse()
     err = c.Send(request, response)
     return
@@ -4870,6 +5128,7 @@ func NewDescribeNatGatewayDirectConnectGatewayRouteRequest() (request *DescribeN
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeNatGatewayDirectConnectGatewayRoute")
+    
     
     return
 }
@@ -4893,6 +5152,7 @@ func (c *Client) DescribeNatGatewayDirectConnectGatewayRoute(request *DescribeNa
     if request == nil {
         request = NewDescribeNatGatewayDirectConnectGatewayRouteRequest()
     }
+    
     response = NewDescribeNatGatewayDirectConnectGatewayRouteResponse()
     err = c.Send(request, response)
     return
@@ -4903,6 +5163,7 @@ func NewDescribeNatGatewaySourceIpTranslationNatRulesRequest() (request *Describ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeNatGatewaySourceIpTranslationNatRules")
+    
     
     return
 }
@@ -4929,6 +5190,7 @@ func (c *Client) DescribeNatGatewaySourceIpTranslationNatRules(request *Describe
     if request == nil {
         request = NewDescribeNatGatewaySourceIpTranslationNatRulesRequest()
     }
+    
     response = NewDescribeNatGatewaySourceIpTranslationNatRulesResponse()
     err = c.Send(request, response)
     return
@@ -4939,6 +5201,7 @@ func NewDescribeNatGatewaysRequest() (request *DescribeNatGatewaysRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeNatGateways")
+    
     
     return
 }
@@ -4961,6 +5224,7 @@ func (c *Client) DescribeNatGateways(request *DescribeNatGatewaysRequest) (respo
     if request == nil {
         request = NewDescribeNatGatewaysRequest()
     }
+    
     response = NewDescribeNatGatewaysResponse()
     err = c.Send(request, response)
     return
@@ -4971,6 +5235,7 @@ func NewDescribeNetDetectStatesRequest() (request *DescribeNetDetectStatesReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeNetDetectStates")
+    
     
     return
 }
@@ -4997,6 +5262,7 @@ func (c *Client) DescribeNetDetectStates(request *DescribeNetDetectStatesRequest
     if request == nil {
         request = NewDescribeNetDetectStatesRequest()
     }
+    
     response = NewDescribeNetDetectStatesResponse()
     err = c.Send(request, response)
     return
@@ -5007,6 +5273,7 @@ func NewDescribeNetDetectsRequest() (request *DescribeNetDetectsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeNetDetects")
+    
     
     return
 }
@@ -5031,6 +5298,7 @@ func (c *Client) DescribeNetDetects(request *DescribeNetDetectsRequest) (respons
     if request == nil {
         request = NewDescribeNetDetectsRequest()
     }
+    
     response = NewDescribeNetDetectsResponse()
     err = c.Send(request, response)
     return
@@ -5041,6 +5309,7 @@ func NewDescribeNetworkAclsRequest() (request *DescribeNetworkAclsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeNetworkAcls")
+    
     
     return
 }
@@ -5067,6 +5336,7 @@ func (c *Client) DescribeNetworkAcls(request *DescribeNetworkAclsRequest) (respo
     if request == nil {
         request = NewDescribeNetworkAclsRequest()
     }
+    
     response = NewDescribeNetworkAclsResponse()
     err = c.Send(request, response)
     return
@@ -5077,6 +5347,7 @@ func NewDescribeNetworkInterfaceLimitRequest() (request *DescribeNetworkInterfac
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeNetworkInterfaceLimit")
+    
     
     return
 }
@@ -5100,6 +5371,7 @@ func (c *Client) DescribeNetworkInterfaceLimit(request *DescribeNetworkInterface
     if request == nil {
         request = NewDescribeNetworkInterfaceLimitRequest()
     }
+    
     response = NewDescribeNetworkInterfaceLimitResponse()
     err = c.Send(request, response)
     return
@@ -5110,6 +5382,7 @@ func NewDescribeNetworkInterfacesRequest() (request *DescribeNetworkInterfacesRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeNetworkInterfaces")
+    
     
     return
 }
@@ -5136,6 +5409,7 @@ func (c *Client) DescribeNetworkInterfaces(request *DescribeNetworkInterfacesReq
     if request == nil {
         request = NewDescribeNetworkInterfacesRequest()
     }
+    
     response = NewDescribeNetworkInterfacesResponse()
     err = c.Send(request, response)
     return
@@ -5146,6 +5420,7 @@ func NewDescribeProductQuotaRequest() (request *DescribeProductQuotaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeProductQuota")
+    
     
     return
 }
@@ -5167,6 +5442,7 @@ func (c *Client) DescribeProductQuota(request *DescribeProductQuotaRequest) (res
     if request == nil {
         request = NewDescribeProductQuotaRequest()
     }
+    
     response = NewDescribeProductQuotaResponse()
     err = c.Send(request, response)
     return
@@ -5177,6 +5453,7 @@ func NewDescribeRouteConflictsRequest() (request *DescribeRouteConflictsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeRouteConflicts")
+    
     
     return
 }
@@ -5197,6 +5474,7 @@ func (c *Client) DescribeRouteConflicts(request *DescribeRouteConflictsRequest) 
     if request == nil {
         request = NewDescribeRouteConflictsRequest()
     }
+    
     response = NewDescribeRouteConflictsResponse()
     err = c.Send(request, response)
     return
@@ -5207,6 +5485,7 @@ func NewDescribeRouteTablesRequest() (request *DescribeRouteTablesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeRouteTables")
+    
     
     return
 }
@@ -5233,6 +5512,7 @@ func (c *Client) DescribeRouteTables(request *DescribeRouteTablesRequest) (respo
     if request == nil {
         request = NewDescribeRouteTablesRequest()
     }
+    
     response = NewDescribeRouteTablesResponse()
     err = c.Send(request, response)
     return
@@ -5243,6 +5523,7 @@ func NewDescribeSecurityGroupAssociationStatisticsRequest() (request *DescribeSe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeSecurityGroupAssociationStatistics")
+    
     
     return
 }
@@ -5265,6 +5546,7 @@ func (c *Client) DescribeSecurityGroupAssociationStatistics(request *DescribeSec
     if request == nil {
         request = NewDescribeSecurityGroupAssociationStatisticsRequest()
     }
+    
     response = NewDescribeSecurityGroupAssociationStatisticsResponse()
     err = c.Send(request, response)
     return
@@ -5275,6 +5557,7 @@ func NewDescribeSecurityGroupLimitsRequest() (request *DescribeSecurityGroupLimi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeSecurityGroupLimits")
+    
     
     return
 }
@@ -5297,6 +5580,7 @@ func (c *Client) DescribeSecurityGroupLimits(request *DescribeSecurityGroupLimit
     if request == nil {
         request = NewDescribeSecurityGroupLimitsRequest()
     }
+    
     response = NewDescribeSecurityGroupLimitsResponse()
     err = c.Send(request, response)
     return
@@ -5307,6 +5591,7 @@ func NewDescribeSecurityGroupPoliciesRequest() (request *DescribeSecurityGroupPo
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeSecurityGroupPolicies")
+    
     
     return
 }
@@ -5328,6 +5613,7 @@ func (c *Client) DescribeSecurityGroupPolicies(request *DescribeSecurityGroupPol
     if request == nil {
         request = NewDescribeSecurityGroupPoliciesRequest()
     }
+    
     response = NewDescribeSecurityGroupPoliciesResponse()
     err = c.Send(request, response)
     return
@@ -5338,6 +5624,7 @@ func NewDescribeSecurityGroupReferencesRequest() (request *DescribeSecurityGroup
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeSecurityGroupReferences")
+    
     
     return
 }
@@ -5360,6 +5647,7 @@ func (c *Client) DescribeSecurityGroupReferences(request *DescribeSecurityGroupR
     if request == nil {
         request = NewDescribeSecurityGroupReferencesRequest()
     }
+    
     response = NewDescribeSecurityGroupReferencesResponse()
     err = c.Send(request, response)
     return
@@ -5370,6 +5658,7 @@ func NewDescribeSecurityGroupsRequest() (request *DescribeSecurityGroupsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeSecurityGroups")
+    
     
     return
 }
@@ -5397,6 +5686,7 @@ func (c *Client) DescribeSecurityGroups(request *DescribeSecurityGroupsRequest) 
     if request == nil {
         request = NewDescribeSecurityGroupsRequest()
     }
+    
     response = NewDescribeSecurityGroupsResponse()
     err = c.Send(request, response)
     return
@@ -5407,6 +5697,7 @@ func NewDescribeServiceTemplateGroupsRequest() (request *DescribeServiceTemplate
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeServiceTemplateGroups")
+    
     
     return
 }
@@ -5429,6 +5720,7 @@ func (c *Client) DescribeServiceTemplateGroups(request *DescribeServiceTemplateG
     if request == nil {
         request = NewDescribeServiceTemplateGroupsRequest()
     }
+    
     response = NewDescribeServiceTemplateGroupsResponse()
     err = c.Send(request, response)
     return
@@ -5439,6 +5731,7 @@ func NewDescribeServiceTemplatesRequest() (request *DescribeServiceTemplatesRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeServiceTemplates")
+    
     
     return
 }
@@ -5460,6 +5753,7 @@ func (c *Client) DescribeServiceTemplates(request *DescribeServiceTemplatesReque
     if request == nil {
         request = NewDescribeServiceTemplatesRequest()
     }
+    
     response = NewDescribeServiceTemplatesResponse()
     err = c.Send(request, response)
     return
@@ -5470,6 +5764,7 @@ func NewDescribeSubnetsRequest() (request *DescribeSubnetsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeSubnets")
+    
     
     return
 }
@@ -5498,6 +5793,7 @@ func (c *Client) DescribeSubnets(request *DescribeSubnetsRequest) (response *Des
     if request == nil {
         request = NewDescribeSubnetsRequest()
     }
+    
     response = NewDescribeSubnetsResponse()
     err = c.Send(request, response)
     return
@@ -5508,6 +5804,7 @@ func NewDescribeTaskResultRequest() (request *DescribeTaskResultRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeTaskResult")
+    
     
     return
 }
@@ -5530,6 +5827,7 @@ func (c *Client) DescribeTaskResult(request *DescribeTaskResultRequest) (respons
     if request == nil {
         request = NewDescribeTaskResultRequest()
     }
+    
     response = NewDescribeTaskResultResponse()
     err = c.Send(request, response)
     return
@@ -5540,6 +5838,7 @@ func NewDescribeTemplateLimitsRequest() (request *DescribeTemplateLimitsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeTemplateLimits")
+    
     
     return
 }
@@ -5562,6 +5861,7 @@ func (c *Client) DescribeTemplateLimits(request *DescribeTemplateLimitsRequest) 
     if request == nil {
         request = NewDescribeTemplateLimitsRequest()
     }
+    
     response = NewDescribeTemplateLimitsResponse()
     err = c.Send(request, response)
     return
@@ -5572,6 +5872,7 @@ func NewDescribeVpcEndPointRequest() (request *DescribeVpcEndPointRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpcEndPoint")
+    
     
     return
 }
@@ -5596,6 +5897,7 @@ func (c *Client) DescribeVpcEndPoint(request *DescribeVpcEndPointRequest) (respo
     if request == nil {
         request = NewDescribeVpcEndPointRequest()
     }
+    
     response = NewDescribeVpcEndPointResponse()
     err = c.Send(request, response)
     return
@@ -5606,6 +5908,7 @@ func NewDescribeVpcEndPointServiceRequest() (request *DescribeVpcEndPointService
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpcEndPointService")
+    
     
     return
 }
@@ -5631,6 +5934,7 @@ func (c *Client) DescribeVpcEndPointService(request *DescribeVpcEndPointServiceR
     if request == nil {
         request = NewDescribeVpcEndPointServiceRequest()
     }
+    
     response = NewDescribeVpcEndPointServiceResponse()
     err = c.Send(request, response)
     return
@@ -5641,6 +5945,7 @@ func NewDescribeVpcEndPointServiceWhiteListRequest() (request *DescribeVpcEndPoi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpcEndPointServiceWhiteList")
+    
     
     return
 }
@@ -5662,6 +5967,7 @@ func (c *Client) DescribeVpcEndPointServiceWhiteList(request *DescribeVpcEndPoin
     if request == nil {
         request = NewDescribeVpcEndPointServiceWhiteListRequest()
     }
+    
     response = NewDescribeVpcEndPointServiceWhiteListResponse()
     err = c.Send(request, response)
     return
@@ -5672,6 +5978,7 @@ func NewDescribeVpcInstancesRequest() (request *DescribeVpcInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpcInstances")
+    
     
     return
 }
@@ -5696,6 +6003,7 @@ func (c *Client) DescribeVpcInstances(request *DescribeVpcInstancesRequest) (res
     if request == nil {
         request = NewDescribeVpcInstancesRequest()
     }
+    
     response = NewDescribeVpcInstancesResponse()
     err = c.Send(request, response)
     return
@@ -5706,6 +6014,7 @@ func NewDescribeVpcIpv6AddressesRequest() (request *DescribeVpcIpv6AddressesRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpcIpv6Addresses")
+    
     
     return
 }
@@ -5729,6 +6038,7 @@ func (c *Client) DescribeVpcIpv6Addresses(request *DescribeVpcIpv6AddressesReque
     if request == nil {
         request = NewDescribeVpcIpv6AddressesRequest()
     }
+    
     response = NewDescribeVpcIpv6AddressesResponse()
     err = c.Send(request, response)
     return
@@ -5739,6 +6049,7 @@ func NewDescribeVpcLimitsRequest() (request *DescribeVpcLimitsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpcLimits")
+    
     
     return
 }
@@ -5817,6 +6128,7 @@ func (c *Client) DescribeVpcLimits(request *DescribeVpcLimitsRequest) (response 
     if request == nil {
         request = NewDescribeVpcLimitsRequest()
     }
+    
     response = NewDescribeVpcLimitsResponse()
     err = c.Send(request, response)
     return
@@ -5827,6 +6139,7 @@ func NewDescribeVpcPrivateIpAddressesRequest() (request *DescribeVpcPrivateIpAdd
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpcPrivateIpAddresses")
+    
     
     return
 }
@@ -5852,6 +6165,7 @@ func (c *Client) DescribeVpcPrivateIpAddresses(request *DescribeVpcPrivateIpAddr
     if request == nil {
         request = NewDescribeVpcPrivateIpAddressesRequest()
     }
+    
     response = NewDescribeVpcPrivateIpAddressesResponse()
     err = c.Send(request, response)
     return
@@ -5862,6 +6176,7 @@ func NewDescribeVpcResourceDashboardRequest() (request *DescribeVpcResourceDashb
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpcResourceDashboard")
+    
     
     return
 }
@@ -5883,6 +6198,7 @@ func (c *Client) DescribeVpcResourceDashboard(request *DescribeVpcResourceDashbo
     if request == nil {
         request = NewDescribeVpcResourceDashboardRequest()
     }
+    
     response = NewDescribeVpcResourceDashboardResponse()
     err = c.Send(request, response)
     return
@@ -5893,6 +6209,7 @@ func NewDescribeVpcTaskResultRequest() (request *DescribeVpcTaskResultRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpcTaskResult")
+    
     
     return
 }
@@ -5916,6 +6233,7 @@ func (c *Client) DescribeVpcTaskResult(request *DescribeVpcTaskResultRequest) (r
     if request == nil {
         request = NewDescribeVpcTaskResultRequest()
     }
+    
     response = NewDescribeVpcTaskResultResponse()
     err = c.Send(request, response)
     return
@@ -5926,6 +6244,7 @@ func NewDescribeVpcsRequest() (request *DescribeVpcsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpcs")
+    
     
     return
 }
@@ -5952,6 +6271,7 @@ func (c *Client) DescribeVpcs(request *DescribeVpcsRequest) (response *DescribeV
     if request == nil {
         request = NewDescribeVpcsRequest()
     }
+    
     response = NewDescribeVpcsResponse()
     err = c.Send(request, response)
     return
@@ -5962,6 +6282,7 @@ func NewDescribeVpnConnectionsRequest() (request *DescribeVpnConnectionsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpnConnections")
+    
     
     return
 }
@@ -5985,6 +6306,7 @@ func (c *Client) DescribeVpnConnections(request *DescribeVpnConnectionsRequest) 
     if request == nil {
         request = NewDescribeVpnConnectionsRequest()
     }
+    
     response = NewDescribeVpnConnectionsResponse()
     err = c.Send(request, response)
     return
@@ -5995,6 +6317,7 @@ func NewDescribeVpnGatewayCcnRoutesRequest() (request *DescribeVpnGatewayCcnRout
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpnGatewayCcnRoutes")
+    
     
     return
 }
@@ -6017,6 +6340,7 @@ func (c *Client) DescribeVpnGatewayCcnRoutes(request *DescribeVpnGatewayCcnRoute
     if request == nil {
         request = NewDescribeVpnGatewayCcnRoutesRequest()
     }
+    
     response = NewDescribeVpnGatewayCcnRoutesResponse()
     err = c.Send(request, response)
     return
@@ -6027,6 +6351,7 @@ func NewDescribeVpnGatewayRoutesRequest() (request *DescribeVpnGatewayRoutesRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpnGatewayRoutes")
+    
     
     return
 }
@@ -6054,6 +6379,7 @@ func (c *Client) DescribeVpnGatewayRoutes(request *DescribeVpnGatewayRoutesReque
     if request == nil {
         request = NewDescribeVpnGatewayRoutesRequest()
     }
+    
     response = NewDescribeVpnGatewayRoutesResponse()
     err = c.Send(request, response)
     return
@@ -6064,6 +6390,7 @@ func NewDescribeVpnGatewaysRequest() (request *DescribeVpnGatewaysRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpnGateways")
+    
     
     return
 }
@@ -6091,6 +6418,7 @@ func (c *Client) DescribeVpnGateways(request *DescribeVpnGatewaysRequest) (respo
     if request == nil {
         request = NewDescribeVpnGatewaysRequest()
     }
+    
     response = NewDescribeVpnGatewaysResponse()
     err = c.Send(request, response)
     return
@@ -6101,6 +6429,7 @@ func NewDetachCcnInstancesRequest() (request *DetachCcnInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DetachCcnInstances")
+    
     
     return
 }
@@ -6126,6 +6455,7 @@ func (c *Client) DetachCcnInstances(request *DetachCcnInstancesRequest) (respons
     if request == nil {
         request = NewDetachCcnInstancesRequest()
     }
+    
     response = NewDetachCcnInstancesResponse()
     err = c.Send(request, response)
     return
@@ -6136,6 +6466,7 @@ func NewDetachClassicLinkVpcRequest() (request *DetachClassicLinkVpcRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DetachClassicLinkVpc")
+    
     
     return
 }
@@ -6161,6 +6492,7 @@ func (c *Client) DetachClassicLinkVpc(request *DetachClassicLinkVpcRequest) (res
     if request == nil {
         request = NewDetachClassicLinkVpcRequest()
     }
+    
     response = NewDetachClassicLinkVpcResponse()
     err = c.Send(request, response)
     return
@@ -6171,6 +6503,7 @@ func NewDetachNetworkInterfaceRequest() (request *DetachNetworkInterfaceRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DetachNetworkInterface")
+    
     
     return
 }
@@ -6196,6 +6529,7 @@ func (c *Client) DetachNetworkInterface(request *DetachNetworkInterfaceRequest) 
     if request == nil {
         request = NewDetachNetworkInterfaceRequest()
     }
+    
     response = NewDetachNetworkInterfaceResponse()
     err = c.Send(request, response)
     return
@@ -6206,6 +6540,7 @@ func NewDisableCcnRoutesRequest() (request *DisableCcnRoutesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DisableCcnRoutes")
+    
     
     return
 }
@@ -6227,6 +6562,7 @@ func (c *Client) DisableCcnRoutes(request *DisableCcnRoutesRequest) (response *D
     if request == nil {
         request = NewDisableCcnRoutesRequest()
     }
+    
     response = NewDisableCcnRoutesResponse()
     err = c.Send(request, response)
     return
@@ -6237,6 +6573,7 @@ func NewDisableGatewayFlowMonitorRequest() (request *DisableGatewayFlowMonitorRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DisableGatewayFlowMonitor")
+    
     
     return
 }
@@ -6259,6 +6596,7 @@ func (c *Client) DisableGatewayFlowMonitor(request *DisableGatewayFlowMonitorReq
     if request == nil {
         request = NewDisableGatewayFlowMonitorRequest()
     }
+    
     response = NewDisableGatewayFlowMonitorResponse()
     err = c.Send(request, response)
     return
@@ -6269,6 +6607,7 @@ func NewDisableRoutesRequest() (request *DisableRoutesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DisableRoutes")
+    
     
     return
 }
@@ -6296,6 +6635,7 @@ func (c *Client) DisableRoutes(request *DisableRoutesRequest) (response *Disable
     if request == nil {
         request = NewDisableRoutesRequest()
     }
+    
     response = NewDisableRoutesResponse()
     err = c.Send(request, response)
     return
@@ -6306,6 +6646,7 @@ func NewDisassociateAddressRequest() (request *DisassociateAddressRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DisassociateAddress")
+    
     
     return
 }
@@ -6342,6 +6683,7 @@ func (c *Client) DisassociateAddress(request *DisassociateAddressRequest) (respo
     if request == nil {
         request = NewDisassociateAddressRequest()
     }
+    
     response = NewDisassociateAddressResponse()
     err = c.Send(request, response)
     return
@@ -6352,6 +6694,7 @@ func NewDisassociateDhcpIpWithAddressIpRequest() (request *DisassociateDhcpIpWit
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DisassociateDhcpIpWithAddressIp")
+    
     
     return
 }
@@ -6379,6 +6722,7 @@ func (c *Client) DisassociateDhcpIpWithAddressIp(request *DisassociateDhcpIpWith
     if request == nil {
         request = NewDisassociateDhcpIpWithAddressIpRequest()
     }
+    
     response = NewDisassociateDhcpIpWithAddressIpResponse()
     err = c.Send(request, response)
     return
@@ -6389,6 +6733,7 @@ func NewDisassociateDirectConnectGatewayNatGatewayRequest() (request *Disassocia
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DisassociateDirectConnectGatewayNatGateway")
+    
     
     return
 }
@@ -6413,6 +6758,7 @@ func (c *Client) DisassociateDirectConnectGatewayNatGateway(request *Disassociat
     if request == nil {
         request = NewDisassociateDirectConnectGatewayNatGatewayRequest()
     }
+    
     response = NewDisassociateDirectConnectGatewayNatGatewayResponse()
     err = c.Send(request, response)
     return
@@ -6423,6 +6769,7 @@ func NewDisassociateNatGatewayAddressRequest() (request *DisassociateNatGatewayA
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DisassociateNatGatewayAddress")
+    
     
     return
 }
@@ -6446,6 +6793,7 @@ func (c *Client) DisassociateNatGatewayAddress(request *DisassociateNatGatewayAd
     if request == nil {
         request = NewDisassociateNatGatewayAddressRequest()
     }
+    
     response = NewDisassociateNatGatewayAddressResponse()
     err = c.Send(request, response)
     return
@@ -6456,6 +6804,7 @@ func NewDisassociateNetworkAclSubnetsRequest() (request *DisassociateNetworkAclS
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DisassociateNetworkAclSubnets")
+    
     
     return
 }
@@ -6479,6 +6828,7 @@ func (c *Client) DisassociateNetworkAclSubnets(request *DisassociateNetworkAclSu
     if request == nil {
         request = NewDisassociateNetworkAclSubnetsRequest()
     }
+    
     response = NewDisassociateNetworkAclSubnetsResponse()
     err = c.Send(request, response)
     return
@@ -6489,6 +6839,7 @@ func NewDisassociateNetworkInterfaceSecurityGroupsRequest() (request *Disassocia
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DisassociateNetworkInterfaceSecurityGroups")
+    
     
     return
 }
@@ -6511,6 +6862,7 @@ func (c *Client) DisassociateNetworkInterfaceSecurityGroups(request *Disassociat
     if request == nil {
         request = NewDisassociateNetworkInterfaceSecurityGroupsRequest()
     }
+    
     response = NewDisassociateNetworkInterfaceSecurityGroupsResponse()
     err = c.Send(request, response)
     return
@@ -6521,6 +6873,7 @@ func NewDisassociateVpcEndPointSecurityGroupsRequest() (request *DisassociateVpc
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DisassociateVpcEndPointSecurityGroups")
+    
     
     return
 }
@@ -6544,6 +6897,7 @@ func (c *Client) DisassociateVpcEndPointSecurityGroups(request *DisassociateVpcE
     if request == nil {
         request = NewDisassociateVpcEndPointSecurityGroupsRequest()
     }
+    
     response = NewDisassociateVpcEndPointSecurityGroupsResponse()
     err = c.Send(request, response)
     return
@@ -6554,6 +6908,7 @@ func NewDownloadCustomerGatewayConfigurationRequest() (request *DownloadCustomer
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "DownloadCustomerGatewayConfiguration")
+    
     
     return
 }
@@ -6575,6 +6930,7 @@ func (c *Client) DownloadCustomerGatewayConfiguration(request *DownloadCustomerG
     if request == nil {
         request = NewDownloadCustomerGatewayConfigurationRequest()
     }
+    
     response = NewDownloadCustomerGatewayConfigurationResponse()
     err = c.Send(request, response)
     return
@@ -6585,6 +6941,7 @@ func NewEnableCcnRoutesRequest() (request *EnableCcnRoutesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "EnableCcnRoutes")
+    
     
     return
 }
@@ -6608,6 +6965,7 @@ func (c *Client) EnableCcnRoutes(request *EnableCcnRoutesRequest) (response *Ena
     if request == nil {
         request = NewEnableCcnRoutesRequest()
     }
+    
     response = NewEnableCcnRoutesResponse()
     err = c.Send(request, response)
     return
@@ -6618,6 +6976,7 @@ func NewEnableGatewayFlowMonitorRequest() (request *EnableGatewayFlowMonitorRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "EnableGatewayFlowMonitor")
+    
     
     return
 }
@@ -6640,6 +6999,7 @@ func (c *Client) EnableGatewayFlowMonitor(request *EnableGatewayFlowMonitorReque
     if request == nil {
         request = NewEnableGatewayFlowMonitorRequest()
     }
+    
     response = NewEnableGatewayFlowMonitorResponse()
     err = c.Send(request, response)
     return
@@ -6650,6 +7010,7 @@ func NewEnableRoutesRequest() (request *EnableRoutesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "EnableRoutes")
+    
     
     return
 }
@@ -6683,6 +7044,7 @@ func (c *Client) EnableRoutes(request *EnableRoutesRequest) (response *EnableRou
     if request == nil {
         request = NewEnableRoutesRequest()
     }
+    
     response = NewEnableRoutesResponse()
     err = c.Send(request, response)
     return
@@ -6693,6 +7055,7 @@ func NewEnableVpcEndPointConnectRequest() (request *EnableVpcEndPointConnectRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "EnableVpcEndPointConnect")
+    
     
     return
 }
@@ -6716,6 +7079,7 @@ func (c *Client) EnableVpcEndPointConnect(request *EnableVpcEndPointConnectReque
     if request == nil {
         request = NewEnableVpcEndPointConnectRequest()
     }
+    
     response = NewEnableVpcEndPointConnectResponse()
     err = c.Send(request, response)
     return
@@ -6726,6 +7090,7 @@ func NewGetCcnRegionBandwidthLimitsRequest() (request *GetCcnRegionBandwidthLimi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "GetCcnRegionBandwidthLimits")
+    
     
     return
 }
@@ -6748,6 +7113,7 @@ func (c *Client) GetCcnRegionBandwidthLimits(request *GetCcnRegionBandwidthLimit
     if request == nil {
         request = NewGetCcnRegionBandwidthLimitsRequest()
     }
+    
     response = NewGetCcnRegionBandwidthLimitsResponse()
     err = c.Send(request, response)
     return
@@ -6758,6 +7124,7 @@ func NewHaVipAssociateAddressIpRequest() (request *HaVipAssociateAddressIpReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "HaVipAssociateAddressIp")
+    
     
     return
 }
@@ -6783,6 +7150,7 @@ func (c *Client) HaVipAssociateAddressIp(request *HaVipAssociateAddressIpRequest
     if request == nil {
         request = NewHaVipAssociateAddressIpRequest()
     }
+    
     response = NewHaVipAssociateAddressIpResponse()
     err = c.Send(request, response)
     return
@@ -6793,6 +7161,7 @@ func NewHaVipDisassociateAddressIpRequest() (request *HaVipDisassociateAddressIp
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "HaVipDisassociateAddressIp")
+    
     
     return
 }
@@ -6819,6 +7188,7 @@ func (c *Client) HaVipDisassociateAddressIp(request *HaVipDisassociateAddressIpR
     if request == nil {
         request = NewHaVipDisassociateAddressIpRequest()
     }
+    
     response = NewHaVipDisassociateAddressIpResponse()
     err = c.Send(request, response)
     return
@@ -6829,6 +7199,7 @@ func NewInquirePriceCreateDirectConnectGatewayRequest() (request *InquirePriceCr
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "InquirePriceCreateDirectConnectGateway")
+    
     
     return
 }
@@ -6853,6 +7224,7 @@ func (c *Client) InquirePriceCreateDirectConnectGateway(request *InquirePriceCre
     if request == nil {
         request = NewInquirePriceCreateDirectConnectGatewayRequest()
     }
+    
     response = NewInquirePriceCreateDirectConnectGatewayResponse()
     err = c.Send(request, response)
     return
@@ -6863,6 +7235,7 @@ func NewInquiryPriceCreateVpnGatewayRequest() (request *InquiryPriceCreateVpnGat
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "InquiryPriceCreateVpnGateway")
+    
     
     return
 }
@@ -6883,6 +7256,7 @@ func (c *Client) InquiryPriceCreateVpnGateway(request *InquiryPriceCreateVpnGate
     if request == nil {
         request = NewInquiryPriceCreateVpnGatewayRequest()
     }
+    
     response = NewInquiryPriceCreateVpnGatewayResponse()
     err = c.Send(request, response)
     return
@@ -6893,6 +7267,7 @@ func NewInquiryPriceRenewVpnGatewayRequest() (request *InquiryPriceRenewVpnGatew
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "InquiryPriceRenewVpnGateway")
+    
     
     return
 }
@@ -6915,6 +7290,7 @@ func (c *Client) InquiryPriceRenewVpnGateway(request *InquiryPriceRenewVpnGatewa
     if request == nil {
         request = NewInquiryPriceRenewVpnGatewayRequest()
     }
+    
     response = NewInquiryPriceRenewVpnGatewayResponse()
     err = c.Send(request, response)
     return
@@ -6925,6 +7301,7 @@ func NewInquiryPriceResetVpnGatewayInternetMaxBandwidthRequest() (request *Inqui
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "InquiryPriceResetVpnGatewayInternetMaxBandwidth")
+    
     
     return
 }
@@ -6947,6 +7324,7 @@ func (c *Client) InquiryPriceResetVpnGatewayInternetMaxBandwidth(request *Inquir
     if request == nil {
         request = NewInquiryPriceResetVpnGatewayInternetMaxBandwidthRequest()
     }
+    
     response = NewInquiryPriceResetVpnGatewayInternetMaxBandwidthResponse()
     err = c.Send(request, response)
     return
@@ -6957,6 +7335,7 @@ func NewMigrateNetworkInterfaceRequest() (request *MigrateNetworkInterfaceReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "MigrateNetworkInterface")
+    
     
     return
 }
@@ -6982,6 +7361,7 @@ func (c *Client) MigrateNetworkInterface(request *MigrateNetworkInterfaceRequest
     if request == nil {
         request = NewMigrateNetworkInterfaceRequest()
     }
+    
     response = NewMigrateNetworkInterfaceResponse()
     err = c.Send(request, response)
     return
@@ -6992,6 +7372,7 @@ func NewMigratePrivateIpAddressRequest() (request *MigratePrivateIpAddressReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "MigratePrivateIpAddress")
+    
     
     return
 }
@@ -7025,6 +7406,7 @@ func (c *Client) MigratePrivateIpAddress(request *MigratePrivateIpAddressRequest
     if request == nil {
         request = NewMigratePrivateIpAddressRequest()
     }
+    
     response = NewMigratePrivateIpAddressResponse()
     err = c.Send(request, response)
     return
@@ -7035,6 +7417,7 @@ func NewModifyAddressAttributeRequest() (request *ModifyAddressAttributeRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyAddressAttribute")
+    
     
     return
 }
@@ -7060,6 +7443,7 @@ func (c *Client) ModifyAddressAttribute(request *ModifyAddressAttributeRequest) 
     if request == nil {
         request = NewModifyAddressAttributeRequest()
     }
+    
     response = NewModifyAddressAttributeResponse()
     err = c.Send(request, response)
     return
@@ -7070,6 +7454,7 @@ func NewModifyAddressInternetChargeTypeRequest() (request *ModifyAddressInternet
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyAddressInternetChargeType")
+    
     
     return
 }
@@ -7106,6 +7491,7 @@ func (c *Client) ModifyAddressInternetChargeType(request *ModifyAddressInternetC
     if request == nil {
         request = NewModifyAddressInternetChargeTypeRequest()
     }
+    
     response = NewModifyAddressInternetChargeTypeResponse()
     err = c.Send(request, response)
     return
@@ -7116,6 +7502,7 @@ func NewModifyAddressTemplateAttributeRequest() (request *ModifyAddressTemplateA
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyAddressTemplateAttribute")
+    
     
     return
 }
@@ -7141,6 +7528,7 @@ func (c *Client) ModifyAddressTemplateAttribute(request *ModifyAddressTemplateAt
     if request == nil {
         request = NewModifyAddressTemplateAttributeRequest()
     }
+    
     response = NewModifyAddressTemplateAttributeResponse()
     err = c.Send(request, response)
     return
@@ -7151,6 +7539,7 @@ func NewModifyAddressTemplateGroupAttributeRequest() (request *ModifyAddressTemp
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyAddressTemplateGroupAttribute")
+    
     
     return
 }
@@ -7176,6 +7565,7 @@ func (c *Client) ModifyAddressTemplateGroupAttribute(request *ModifyAddressTempl
     if request == nil {
         request = NewModifyAddressTemplateGroupAttributeRequest()
     }
+    
     response = NewModifyAddressTemplateGroupAttributeResponse()
     err = c.Send(request, response)
     return
@@ -7186,6 +7576,7 @@ func NewModifyAddressesBandwidthRequest() (request *ModifyAddressesBandwidthRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyAddressesBandwidth")
+    
     
     return
 }
@@ -7218,6 +7609,7 @@ func (c *Client) ModifyAddressesBandwidth(request *ModifyAddressesBandwidthReque
     if request == nil {
         request = NewModifyAddressesBandwidthRequest()
     }
+    
     response = NewModifyAddressesBandwidthResponse()
     err = c.Send(request, response)
     return
@@ -7228,6 +7620,7 @@ func NewModifyAssistantCidrRequest() (request *ModifyAssistantCidrRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyAssistantCidr")
+    
     
     return
 }
@@ -7257,6 +7650,7 @@ func (c *Client) ModifyAssistantCidr(request *ModifyAssistantCidrRequest) (respo
     if request == nil {
         request = NewModifyAssistantCidrRequest()
     }
+    
     response = NewModifyAssistantCidrResponse()
     err = c.Send(request, response)
     return
@@ -7267,6 +7661,7 @@ func NewModifyBandwidthPackageAttributeRequest() (request *ModifyBandwidthPackag
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyBandwidthPackageAttribute")
+    
     
     return
 }
@@ -7289,6 +7684,7 @@ func (c *Client) ModifyBandwidthPackageAttribute(request *ModifyBandwidthPackage
     if request == nil {
         request = NewModifyBandwidthPackageAttributeRequest()
     }
+    
     response = NewModifyBandwidthPackageAttributeResponse()
     err = c.Send(request, response)
     return
@@ -7299,6 +7695,7 @@ func NewModifyCcnAttachedInstancesAttributeRequest() (request *ModifyCcnAttached
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyCcnAttachedInstancesAttribute")
+    
     
     return
 }
@@ -7324,6 +7721,7 @@ func (c *Client) ModifyCcnAttachedInstancesAttribute(request *ModifyCcnAttachedI
     if request == nil {
         request = NewModifyCcnAttachedInstancesAttributeRequest()
     }
+    
     response = NewModifyCcnAttachedInstancesAttributeResponse()
     err = c.Send(request, response)
     return
@@ -7334,6 +7732,7 @@ func NewModifyCcnAttributeRequest() (request *ModifyCcnAttributeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyCcnAttribute")
+    
     
     return
 }
@@ -7355,6 +7754,7 @@ func (c *Client) ModifyCcnAttribute(request *ModifyCcnAttributeRequest) (respons
     if request == nil {
         request = NewModifyCcnAttributeRequest()
     }
+    
     response = NewModifyCcnAttributeResponse()
     err = c.Send(request, response)
     return
@@ -7365,6 +7765,7 @@ func NewModifyCcnRegionBandwidthLimitsTypeRequest() (request *ModifyCcnRegionBan
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyCcnRegionBandwidthLimitsType")
+    
     
     return
 }
@@ -7389,6 +7790,7 @@ func (c *Client) ModifyCcnRegionBandwidthLimitsType(request *ModifyCcnRegionBand
     if request == nil {
         request = NewModifyCcnRegionBandwidthLimitsTypeRequest()
     }
+    
     response = NewModifyCcnRegionBandwidthLimitsTypeResponse()
     err = c.Send(request, response)
     return
@@ -7399,6 +7801,7 @@ func NewModifyCustomerGatewayAttributeRequest() (request *ModifyCustomerGatewayA
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyCustomerGatewayAttribute")
+    
     
     return
 }
@@ -7420,6 +7823,7 @@ func (c *Client) ModifyCustomerGatewayAttribute(request *ModifyCustomerGatewayAt
     if request == nil {
         request = NewModifyCustomerGatewayAttributeRequest()
     }
+    
     response = NewModifyCustomerGatewayAttributeResponse()
     err = c.Send(request, response)
     return
@@ -7430,6 +7834,7 @@ func NewModifyDhcpIpAttributeRequest() (request *ModifyDhcpIpAttributeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyDhcpIpAttribute")
+    
     
     return
 }
@@ -7453,6 +7858,7 @@ func (c *Client) ModifyDhcpIpAttribute(request *ModifyDhcpIpAttributeRequest) (r
     if request == nil {
         request = NewModifyDhcpIpAttributeRequest()
     }
+    
     response = NewModifyDhcpIpAttributeResponse()
     err = c.Send(request, response)
     return
@@ -7463,6 +7869,7 @@ func NewModifyDirectConnectGatewayAttributeRequest() (request *ModifyDirectConne
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyDirectConnectGatewayAttribute")
+    
     
     return
 }
@@ -7488,6 +7895,7 @@ func (c *Client) ModifyDirectConnectGatewayAttribute(request *ModifyDirectConnec
     if request == nil {
         request = NewModifyDirectConnectGatewayAttributeRequest()
     }
+    
     response = NewModifyDirectConnectGatewayAttributeResponse()
     err = c.Send(request, response)
     return
@@ -7498,6 +7906,7 @@ func NewModifyFlowLogAttributeRequest() (request *ModifyFlowLogAttributeRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyFlowLogAttribute")
+    
     
     return
 }
@@ -7519,6 +7928,7 @@ func (c *Client) ModifyFlowLogAttribute(request *ModifyFlowLogAttributeRequest) 
     if request == nil {
         request = NewModifyFlowLogAttributeRequest()
     }
+    
     response = NewModifyFlowLogAttributeResponse()
     err = c.Send(request, response)
     return
@@ -7529,6 +7939,7 @@ func NewModifyGatewayFlowQosRequest() (request *ModifyGatewayFlowQosRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyGatewayFlowQos")
+    
     
     return
 }
@@ -7551,6 +7962,7 @@ func (c *Client) ModifyGatewayFlowQos(request *ModifyGatewayFlowQosRequest) (res
     if request == nil {
         request = NewModifyGatewayFlowQosRequest()
     }
+    
     response = NewModifyGatewayFlowQosResponse()
     err = c.Send(request, response)
     return
@@ -7561,6 +7973,7 @@ func NewModifyHaVipAttributeRequest() (request *ModifyHaVipAttributeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyHaVipAttribute")
+    
     
     return
 }
@@ -7585,6 +7998,7 @@ func (c *Client) ModifyHaVipAttribute(request *ModifyHaVipAttributeRequest) (res
     if request == nil {
         request = NewModifyHaVipAttributeRequest()
     }
+    
     response = NewModifyHaVipAttributeResponse()
     err = c.Send(request, response)
     return
@@ -7595,6 +8009,7 @@ func NewModifyIp6AddressesBandwidthRequest() (request *ModifyIp6AddressesBandwid
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyIp6AddressesBandwidth")
+    
     
     return
 }
@@ -7629,6 +8044,7 @@ func (c *Client) ModifyIp6AddressesBandwidth(request *ModifyIp6AddressesBandwidt
     if request == nil {
         request = NewModifyIp6AddressesBandwidthRequest()
     }
+    
     response = NewModifyIp6AddressesBandwidthResponse()
     err = c.Send(request, response)
     return
@@ -7639,6 +8055,7 @@ func NewModifyIp6RuleRequest() (request *ModifyIp6RuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyIp6Rule")
+    
     
     return
 }
@@ -7661,6 +8078,7 @@ func (c *Client) ModifyIp6Rule(request *ModifyIp6RuleRequest) (response *ModifyI
     if request == nil {
         request = NewModifyIp6RuleRequest()
     }
+    
     response = NewModifyIp6RuleResponse()
     err = c.Send(request, response)
     return
@@ -7671,6 +8089,7 @@ func NewModifyIp6TranslatorRequest() (request *ModifyIp6TranslatorRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyIp6Translator")
+    
     
     return
 }
@@ -7692,6 +8111,7 @@ func (c *Client) ModifyIp6Translator(request *ModifyIp6TranslatorRequest) (respo
     if request == nil {
         request = NewModifyIp6TranslatorRequest()
     }
+    
     response = NewModifyIp6TranslatorResponse()
     err = c.Send(request, response)
     return
@@ -7702,6 +8122,7 @@ func NewModifyIpv6AddressesAttributeRequest() (request *ModifyIpv6AddressesAttri
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyIpv6AddressesAttribute")
+    
     
     return
 }
@@ -7725,6 +8146,7 @@ func (c *Client) ModifyIpv6AddressesAttribute(request *ModifyIpv6AddressesAttrib
     if request == nil {
         request = NewModifyIpv6AddressesAttributeRequest()
     }
+    
     response = NewModifyIpv6AddressesAttributeResponse()
     err = c.Send(request, response)
     return
@@ -7735,6 +8157,7 @@ func NewModifyLocalGatewayRequest() (request *ModifyLocalGatewayRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyLocalGateway")
+    
     
     return
 }
@@ -7760,6 +8183,7 @@ func (c *Client) ModifyLocalGateway(request *ModifyLocalGatewayRequest) (respons
     if request == nil {
         request = NewModifyLocalGatewayRequest()
     }
+    
     response = NewModifyLocalGatewayResponse()
     err = c.Send(request, response)
     return
@@ -7770,6 +8194,7 @@ func NewModifyNatGatewayAttributeRequest() (request *ModifyNatGatewayAttributeRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyNatGatewayAttribute")
+    
     
     return
 }
@@ -7794,6 +8219,7 @@ func (c *Client) ModifyNatGatewayAttribute(request *ModifyNatGatewayAttributeReq
     if request == nil {
         request = NewModifyNatGatewayAttributeRequest()
     }
+    
     response = NewModifyNatGatewayAttributeResponse()
     err = c.Send(request, response)
     return
@@ -7804,6 +8230,7 @@ func NewModifyNatGatewayDestinationIpPortTranslationNatRuleRequest() (request *M
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyNatGatewayDestinationIpPortTranslationNatRule")
+    
     
     return
 }
@@ -7828,6 +8255,7 @@ func (c *Client) ModifyNatGatewayDestinationIpPortTranslationNatRule(request *Mo
     if request == nil {
         request = NewModifyNatGatewayDestinationIpPortTranslationNatRuleRequest()
     }
+    
     response = NewModifyNatGatewayDestinationIpPortTranslationNatRuleResponse()
     err = c.Send(request, response)
     return
@@ -7838,6 +8266,7 @@ func NewModifyNatGatewaySourceIpTranslationNatRuleRequest() (request *ModifyNatG
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyNatGatewaySourceIpTranslationNatRule")
+    
     
     return
 }
@@ -7863,6 +8292,7 @@ func (c *Client) ModifyNatGatewaySourceIpTranslationNatRule(request *ModifyNatGa
     if request == nil {
         request = NewModifyNatGatewaySourceIpTranslationNatRuleRequest()
     }
+    
     response = NewModifyNatGatewaySourceIpTranslationNatRuleResponse()
     err = c.Send(request, response)
     return
@@ -7873,6 +8303,7 @@ func NewModifyNetDetectRequest() (request *ModifyNetDetectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyNetDetect")
+    
     
     return
 }
@@ -7901,6 +8332,7 @@ func (c *Client) ModifyNetDetect(request *ModifyNetDetectRequest) (response *Mod
     if request == nil {
         request = NewModifyNetDetectRequest()
     }
+    
     response = NewModifyNetDetectResponse()
     err = c.Send(request, response)
     return
@@ -7911,6 +8343,7 @@ func NewModifyNetworkAclAttributeRequest() (request *ModifyNetworkAclAttributeRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyNetworkAclAttribute")
+    
     
     return
 }
@@ -7934,6 +8367,7 @@ func (c *Client) ModifyNetworkAclAttribute(request *ModifyNetworkAclAttributeReq
     if request == nil {
         request = NewModifyNetworkAclAttributeRequest()
     }
+    
     response = NewModifyNetworkAclAttributeResponse()
     err = c.Send(request, response)
     return
@@ -7944,6 +8378,7 @@ func NewModifyNetworkAclEntriesRequest() (request *ModifyNetworkAclEntriesReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyNetworkAclEntries")
+    
     
     return
 }
@@ -7974,6 +8409,7 @@ func (c *Client) ModifyNetworkAclEntries(request *ModifyNetworkAclEntriesRequest
     if request == nil {
         request = NewModifyNetworkAclEntriesRequest()
     }
+    
     response = NewModifyNetworkAclEntriesResponse()
     err = c.Send(request, response)
     return
@@ -7984,6 +8420,7 @@ func NewModifyNetworkInterfaceAttributeRequest() (request *ModifyNetworkInterfac
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyNetworkInterfaceAttribute")
+    
     
     return
 }
@@ -8008,6 +8445,7 @@ func (c *Client) ModifyNetworkInterfaceAttribute(request *ModifyNetworkInterface
     if request == nil {
         request = NewModifyNetworkInterfaceAttributeRequest()
     }
+    
     response = NewModifyNetworkInterfaceAttributeResponse()
     err = c.Send(request, response)
     return
@@ -8018,6 +8456,7 @@ func NewModifyNetworkInterfaceQosRequest() (request *ModifyNetworkInterfaceQosRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyNetworkInterfaceQos")
+    
     
     return
 }
@@ -8041,6 +8480,7 @@ func (c *Client) ModifyNetworkInterfaceQos(request *ModifyNetworkInterfaceQosReq
     if request == nil {
         request = NewModifyNetworkInterfaceQosRequest()
     }
+    
     response = NewModifyNetworkInterfaceQosResponse()
     err = c.Send(request, response)
     return
@@ -8051,6 +8491,7 @@ func NewModifyPrivateIpAddressesAttributeRequest() (request *ModifyPrivateIpAddr
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyPrivateIpAddressesAttribute")
+    
     
     return
 }
@@ -8073,6 +8514,7 @@ func (c *Client) ModifyPrivateIpAddressesAttribute(request *ModifyPrivateIpAddre
     if request == nil {
         request = NewModifyPrivateIpAddressesAttributeRequest()
     }
+    
     response = NewModifyPrivateIpAddressesAttributeResponse()
     err = c.Send(request, response)
     return
@@ -8083,6 +8525,7 @@ func NewModifyRouteTableAttributeRequest() (request *ModifyRouteTableAttributeRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyRouteTableAttribute")
+    
     
     return
 }
@@ -8104,6 +8547,7 @@ func (c *Client) ModifyRouteTableAttribute(request *ModifyRouteTableAttributeReq
     if request == nil {
         request = NewModifyRouteTableAttributeRequest()
     }
+    
     response = NewModifyRouteTableAttributeResponse()
     err = c.Send(request, response)
     return
@@ -8114,6 +8558,7 @@ func NewModifySecurityGroupAttributeRequest() (request *ModifySecurityGroupAttri
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifySecurityGroupAttribute")
+    
     
     return
 }
@@ -8137,6 +8582,7 @@ func (c *Client) ModifySecurityGroupAttribute(request *ModifySecurityGroupAttrib
     if request == nil {
         request = NewModifySecurityGroupAttributeRequest()
     }
+    
     response = NewModifySecurityGroupAttributeResponse()
     err = c.Send(request, response)
     return
@@ -8147,6 +8593,7 @@ func NewModifySecurityGroupPoliciesRequest() (request *ModifySecurityGroupPolici
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifySecurityGroupPolicies")
+    
     
     return
 }
@@ -8203,6 +8650,7 @@ func (c *Client) ModifySecurityGroupPolicies(request *ModifySecurityGroupPolicie
     if request == nil {
         request = NewModifySecurityGroupPoliciesRequest()
     }
+    
     response = NewModifySecurityGroupPoliciesResponse()
     err = c.Send(request, response)
     return
@@ -8213,6 +8661,7 @@ func NewModifyServiceTemplateAttributeRequest() (request *ModifyServiceTemplateA
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyServiceTemplateAttribute")
+    
     
     return
 }
@@ -8236,6 +8685,7 @@ func (c *Client) ModifyServiceTemplateAttribute(request *ModifyServiceTemplateAt
     if request == nil {
         request = NewModifyServiceTemplateAttributeRequest()
     }
+    
     response = NewModifyServiceTemplateAttributeResponse()
     err = c.Send(request, response)
     return
@@ -8246,6 +8696,7 @@ func NewModifyServiceTemplateGroupAttributeRequest() (request *ModifyServiceTemp
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyServiceTemplateGroupAttribute")
+    
     
     return
 }
@@ -8268,6 +8719,7 @@ func (c *Client) ModifyServiceTemplateGroupAttribute(request *ModifyServiceTempl
     if request == nil {
         request = NewModifyServiceTemplateGroupAttributeRequest()
     }
+    
     response = NewModifyServiceTemplateGroupAttributeResponse()
     err = c.Send(request, response)
     return
@@ -8278,6 +8730,7 @@ func NewModifySubnetAttributeRequest() (request *ModifySubnetAttributeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifySubnetAttribute")
+    
     
     return
 }
@@ -8299,6 +8752,7 @@ func (c *Client) ModifySubnetAttribute(request *ModifySubnetAttributeRequest) (r
     if request == nil {
         request = NewModifySubnetAttributeRequest()
     }
+    
     response = NewModifySubnetAttributeResponse()
     err = c.Send(request, response)
     return
@@ -8309,6 +8763,7 @@ func NewModifyTemplateMemberRequest() (request *ModifyTemplateMemberRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyTemplateMember")
+    
     
     return
 }
@@ -8332,6 +8787,7 @@ func (c *Client) ModifyTemplateMember(request *ModifyTemplateMemberRequest) (res
     if request == nil {
         request = NewModifyTemplateMemberRequest()
     }
+    
     response = NewModifyTemplateMemberResponse()
     err = c.Send(request, response)
     return
@@ -8342,6 +8798,7 @@ func NewModifyVpcAttributeRequest() (request *ModifyVpcAttributeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpcAttribute")
+    
     
     return
 }
@@ -8365,6 +8822,7 @@ func (c *Client) ModifyVpcAttribute(request *ModifyVpcAttributeRequest) (respons
     if request == nil {
         request = NewModifyVpcAttributeRequest()
     }
+    
     response = NewModifyVpcAttributeResponse()
     err = c.Send(request, response)
     return
@@ -8375,6 +8833,7 @@ func NewModifyVpcEndPointAttributeRequest() (request *ModifyVpcEndPointAttribute
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpcEndPointAttribute")
+    
     
     return
 }
@@ -8401,6 +8860,7 @@ func (c *Client) ModifyVpcEndPointAttribute(request *ModifyVpcEndPointAttributeR
     if request == nil {
         request = NewModifyVpcEndPointAttributeRequest()
     }
+    
     response = NewModifyVpcEndPointAttributeResponse()
     err = c.Send(request, response)
     return
@@ -8411,6 +8871,7 @@ func NewModifyVpcEndPointServiceAttributeRequest() (request *ModifyVpcEndPointSe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpcEndPointServiceAttribute")
+    
     
     return
 }
@@ -8438,6 +8899,7 @@ func (c *Client) ModifyVpcEndPointServiceAttribute(request *ModifyVpcEndPointSer
     if request == nil {
         request = NewModifyVpcEndPointServiceAttributeRequest()
     }
+    
     response = NewModifyVpcEndPointServiceAttributeResponse()
     err = c.Send(request, response)
     return
@@ -8448,6 +8910,7 @@ func NewModifyVpcEndPointServiceWhiteListRequest() (request *ModifyVpcEndPointSe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpcEndPointServiceWhiteList")
+    
     
     return
 }
@@ -8471,6 +8934,7 @@ func (c *Client) ModifyVpcEndPointServiceWhiteList(request *ModifyVpcEndPointSer
     if request == nil {
         request = NewModifyVpcEndPointServiceWhiteListRequest()
     }
+    
     response = NewModifyVpcEndPointServiceWhiteListResponse()
     err = c.Send(request, response)
     return
@@ -8481,6 +8945,7 @@ func NewModifyVpnConnectionAttributeRequest() (request *ModifyVpnConnectionAttri
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpnConnectionAttribute")
+    
     
     return
 }
@@ -8503,6 +8968,7 @@ func (c *Client) ModifyVpnConnectionAttribute(request *ModifyVpnConnectionAttrib
     if request == nil {
         request = NewModifyVpnConnectionAttributeRequest()
     }
+    
     response = NewModifyVpnConnectionAttributeResponse()
     err = c.Send(request, response)
     return
@@ -8513,6 +8979,7 @@ func NewModifyVpnGatewayAttributeRequest() (request *ModifyVpnGatewayAttributeRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpnGatewayAttribute")
+    
     
     return
 }
@@ -8535,6 +9002,7 @@ func (c *Client) ModifyVpnGatewayAttribute(request *ModifyVpnGatewayAttributeReq
     if request == nil {
         request = NewModifyVpnGatewayAttributeRequest()
     }
+    
     response = NewModifyVpnGatewayAttributeResponse()
     err = c.Send(request, response)
     return
@@ -8545,6 +9013,7 @@ func NewModifyVpnGatewayCcnRoutesRequest() (request *ModifyVpnGatewayCcnRoutesRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpnGatewayCcnRoutes")
+    
     
     return
 }
@@ -8566,6 +9035,7 @@ func (c *Client) ModifyVpnGatewayCcnRoutes(request *ModifyVpnGatewayCcnRoutesReq
     if request == nil {
         request = NewModifyVpnGatewayCcnRoutesRequest()
     }
+    
     response = NewModifyVpnGatewayCcnRoutesResponse()
     err = c.Send(request, response)
     return
@@ -8576,6 +9046,7 @@ func NewModifyVpnGatewayRoutesRequest() (request *ModifyVpnGatewayRoutesRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpnGatewayRoutes")
+    
     
     return
 }
@@ -8601,6 +9072,7 @@ func (c *Client) ModifyVpnGatewayRoutes(request *ModifyVpnGatewayRoutesRequest) 
     if request == nil {
         request = NewModifyVpnGatewayRoutesRequest()
     }
+    
     response = NewModifyVpnGatewayRoutesResponse()
     err = c.Send(request, response)
     return
@@ -8611,6 +9083,7 @@ func NewNotifyRoutesRequest() (request *NotifyRoutesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "NotifyRoutes")
+    
     
     return
 }
@@ -8639,6 +9112,7 @@ func (c *Client) NotifyRoutes(request *NotifyRoutesRequest) (response *NotifyRou
     if request == nil {
         request = NewNotifyRoutesRequest()
     }
+    
     response = NewNotifyRoutesResponse()
     err = c.Send(request, response)
     return
@@ -8649,6 +9123,7 @@ func NewRefreshDirectConnectGatewayRouteToNatGatewayRequest() (request *RefreshD
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "RefreshDirectConnectGatewayRouteToNatGateway")
+    
     
     return
 }
@@ -8672,6 +9147,7 @@ func (c *Client) RefreshDirectConnectGatewayRouteToNatGateway(request *RefreshDi
     if request == nil {
         request = NewRefreshDirectConnectGatewayRouteToNatGatewayRequest()
     }
+    
     response = NewRefreshDirectConnectGatewayRouteToNatGatewayResponse()
     err = c.Send(request, response)
     return
@@ -8682,6 +9158,7 @@ func NewRejectAttachCcnInstancesRequest() (request *RejectAttachCcnInstancesRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "RejectAttachCcnInstances")
+    
     
     return
 }
@@ -8708,6 +9185,7 @@ func (c *Client) RejectAttachCcnInstances(request *RejectAttachCcnInstancesReque
     if request == nil {
         request = NewRejectAttachCcnInstancesRequest()
     }
+    
     response = NewRejectAttachCcnInstancesResponse()
     err = c.Send(request, response)
     return
@@ -8718,6 +9196,7 @@ func NewReleaseAddressesRequest() (request *ReleaseAddressesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ReleaseAddresses")
+    
     
     return
 }
@@ -8746,6 +9225,7 @@ func (c *Client) ReleaseAddresses(request *ReleaseAddressesRequest) (response *R
     if request == nil {
         request = NewReleaseAddressesRequest()
     }
+    
     response = NewReleaseAddressesResponse()
     err = c.Send(request, response)
     return
@@ -8756,6 +9236,7 @@ func NewReleaseIp6AddressesBandwidthRequest() (request *ReleaseIp6AddressesBandw
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ReleaseIp6AddressesBandwidth")
+    
     
     return
 }
@@ -8781,6 +9262,7 @@ func (c *Client) ReleaseIp6AddressesBandwidth(request *ReleaseIp6AddressesBandwi
     if request == nil {
         request = NewReleaseIp6AddressesBandwidthRequest()
     }
+    
     response = NewReleaseIp6AddressesBandwidthResponse()
     err = c.Send(request, response)
     return
@@ -8791,6 +9273,7 @@ func NewRemoveBandwidthPackageResourcesRequest() (request *RemoveBandwidthPackag
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "RemoveBandwidthPackageResources")
+    
     
     return
 }
@@ -8816,6 +9299,7 @@ func (c *Client) RemoveBandwidthPackageResources(request *RemoveBandwidthPackage
     if request == nil {
         request = NewRemoveBandwidthPackageResourcesRequest()
     }
+    
     response = NewRemoveBandwidthPackageResourcesResponse()
     err = c.Send(request, response)
     return
@@ -8826,6 +9310,7 @@ func NewRemoveIp6RulesRequest() (request *RemoveIp6RulesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "RemoveIp6Rules")
+    
     
     return
 }
@@ -8849,6 +9334,7 @@ func (c *Client) RemoveIp6Rules(request *RemoveIp6RulesRequest) (response *Remov
     if request == nil {
         request = NewRemoveIp6RulesRequest()
     }
+    
     response = NewRemoveIp6RulesResponse()
     err = c.Send(request, response)
     return
@@ -8859,6 +9345,7 @@ func NewRenewAddressesRequest() (request *RenewAddressesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "RenewAddresses")
+    
     
     return
 }
@@ -8879,6 +9366,7 @@ func (c *Client) RenewAddresses(request *RenewAddressesRequest) (response *Renew
     if request == nil {
         request = NewRenewAddressesRequest()
     }
+    
     response = NewRenewAddressesResponse()
     err = c.Send(request, response)
     return
@@ -8889,6 +9377,7 @@ func NewRenewVpnGatewayRequest() (request *RenewVpnGatewayRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "RenewVpnGateway")
+    
     
     return
 }
@@ -8910,6 +9399,7 @@ func (c *Client) RenewVpnGateway(request *RenewVpnGatewayRequest) (response *Ren
     if request == nil {
         request = NewRenewVpnGatewayRequest()
     }
+    
     response = NewRenewVpnGatewayResponse()
     err = c.Send(request, response)
     return
@@ -8920,6 +9410,7 @@ func NewReplaceDirectConnectGatewayCcnRoutesRequest() (request *ReplaceDirectCon
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ReplaceDirectConnectGatewayCcnRoutes")
+    
     
     return
 }
@@ -8941,6 +9432,7 @@ func (c *Client) ReplaceDirectConnectGatewayCcnRoutes(request *ReplaceDirectConn
     if request == nil {
         request = NewReplaceDirectConnectGatewayCcnRoutesRequest()
     }
+    
     response = NewReplaceDirectConnectGatewayCcnRoutesResponse()
     err = c.Send(request, response)
     return
@@ -8951,6 +9443,7 @@ func NewReplaceRouteTableAssociationRequest() (request *ReplaceRouteTableAssocia
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ReplaceRouteTableAssociation")
+    
     
     return
 }
@@ -8975,6 +9468,7 @@ func (c *Client) ReplaceRouteTableAssociation(request *ReplaceRouteTableAssociat
     if request == nil {
         request = NewReplaceRouteTableAssociationRequest()
     }
+    
     response = NewReplaceRouteTableAssociationResponse()
     err = c.Send(request, response)
     return
@@ -8985,6 +9479,7 @@ func NewReplaceRoutesRequest() (request *ReplaceRoutesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ReplaceRoutes")
+    
     
     return
 }
@@ -9018,6 +9513,7 @@ func (c *Client) ReplaceRoutes(request *ReplaceRoutesRequest) (response *Replace
     if request == nil {
         request = NewReplaceRoutesRequest()
     }
+    
     response = NewReplaceRoutesResponse()
     err = c.Send(request, response)
     return
@@ -9028,6 +9524,7 @@ func NewReplaceSecurityGroupPolicyRequest() (request *ReplaceSecurityGroupPolicy
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ReplaceSecurityGroupPolicy")
+    
     
     return
 }
@@ -9059,6 +9556,7 @@ func (c *Client) ReplaceSecurityGroupPolicy(request *ReplaceSecurityGroupPolicyR
     if request == nil {
         request = NewReplaceSecurityGroupPolicyRequest()
     }
+    
     response = NewReplaceSecurityGroupPolicyResponse()
     err = c.Send(request, response)
     return
@@ -9069,6 +9567,7 @@ func NewResetAttachCcnInstancesRequest() (request *ResetAttachCcnInstancesReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ResetAttachCcnInstances")
+    
     
     return
 }
@@ -9090,6 +9589,7 @@ func (c *Client) ResetAttachCcnInstances(request *ResetAttachCcnInstancesRequest
     if request == nil {
         request = NewResetAttachCcnInstancesRequest()
     }
+    
     response = NewResetAttachCcnInstancesResponse()
     err = c.Send(request, response)
     return
@@ -9100,6 +9600,7 @@ func NewResetNatGatewayConnectionRequest() (request *ResetNatGatewayConnectionRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ResetNatGatewayConnection")
+    
     
     return
 }
@@ -9121,6 +9622,7 @@ func (c *Client) ResetNatGatewayConnection(request *ResetNatGatewayConnectionReq
     if request == nil {
         request = NewResetNatGatewayConnectionRequest()
     }
+    
     response = NewResetNatGatewayConnectionResponse()
     err = c.Send(request, response)
     return
@@ -9131,6 +9633,7 @@ func NewResetRoutesRequest() (request *ResetRoutesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ResetRoutes")
+    
     
     return
 }
@@ -9160,6 +9663,7 @@ func (c *Client) ResetRoutes(request *ResetRoutesRequest) (response *ResetRoutes
     if request == nil {
         request = NewResetRoutesRequest()
     }
+    
     response = NewResetRoutesResponse()
     err = c.Send(request, response)
     return
@@ -9170,6 +9674,7 @@ func NewResetVpnConnectionRequest() (request *ResetVpnConnectionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ResetVpnConnection")
+    
     
     return
 }
@@ -9191,6 +9696,7 @@ func (c *Client) ResetVpnConnection(request *ResetVpnConnectionRequest) (respons
     if request == nil {
         request = NewResetVpnConnectionRequest()
     }
+    
     response = NewResetVpnConnectionResponse()
     err = c.Send(request, response)
     return
@@ -9201,6 +9707,7 @@ func NewResetVpnGatewayInternetMaxBandwidthRequest() (request *ResetVpnGatewayIn
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "ResetVpnGatewayInternetMaxBandwidth")
+    
     
     return
 }
@@ -9224,6 +9731,7 @@ func (c *Client) ResetVpnGatewayInternetMaxBandwidth(request *ResetVpnGatewayInt
     if request == nil {
         request = NewResetVpnGatewayInternetMaxBandwidthRequest()
     }
+    
     response = NewResetVpnGatewayInternetMaxBandwidthResponse()
     err = c.Send(request, response)
     return
@@ -9234,6 +9742,7 @@ func NewSetCcnRegionBandwidthLimitsRequest() (request *SetCcnRegionBandwidthLimi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "SetCcnRegionBandwidthLimits")
+    
     
     return
 }
@@ -9256,6 +9765,7 @@ func (c *Client) SetCcnRegionBandwidthLimits(request *SetCcnRegionBandwidthLimit
     if request == nil {
         request = NewSetCcnRegionBandwidthLimitsRequest()
     }
+    
     response = NewSetCcnRegionBandwidthLimitsResponse()
     err = c.Send(request, response)
     return
@@ -9266,6 +9776,7 @@ func NewTransformAddressRequest() (request *TransformAddressRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "TransformAddress")
+    
     
     return
 }
@@ -9297,6 +9808,7 @@ func (c *Client) TransformAddress(request *TransformAddressRequest) (response *T
     if request == nil {
         request = NewTransformAddressRequest()
     }
+    
     response = NewTransformAddressResponse()
     err = c.Send(request, response)
     return
@@ -9307,6 +9819,7 @@ func NewUnassignIpv6AddressesRequest() (request *UnassignIpv6AddressesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "UnassignIpv6Addresses")
+    
     
     return
 }
@@ -9334,6 +9847,7 @@ func (c *Client) UnassignIpv6Addresses(request *UnassignIpv6AddressesRequest) (r
     if request == nil {
         request = NewUnassignIpv6AddressesRequest()
     }
+    
     response = NewUnassignIpv6AddressesResponse()
     err = c.Send(request, response)
     return
@@ -9344,6 +9858,7 @@ func NewUnassignIpv6CidrBlockRequest() (request *UnassignIpv6CidrBlockRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "UnassignIpv6CidrBlock")
+    
     
     return
 }
@@ -9367,6 +9882,7 @@ func (c *Client) UnassignIpv6CidrBlock(request *UnassignIpv6CidrBlockRequest) (r
     if request == nil {
         request = NewUnassignIpv6CidrBlockRequest()
     }
+    
     response = NewUnassignIpv6CidrBlockResponse()
     err = c.Send(request, response)
     return
@@ -9377,6 +9893,7 @@ func NewUnassignIpv6SubnetCidrBlockRequest() (request *UnassignIpv6SubnetCidrBlo
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "UnassignIpv6SubnetCidrBlock")
+    
     
     return
 }
@@ -9401,6 +9918,7 @@ func (c *Client) UnassignIpv6SubnetCidrBlock(request *UnassignIpv6SubnetCidrBloc
     if request == nil {
         request = NewUnassignIpv6SubnetCidrBlockRequest()
     }
+    
     response = NewUnassignIpv6SubnetCidrBlockResponse()
     err = c.Send(request, response)
     return
@@ -9411,6 +9929,7 @@ func NewUnassignPrivateIpAddressesRequest() (request *UnassignPrivateIpAddresses
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "UnassignPrivateIpAddresses")
+    
     
     return
 }
@@ -9443,6 +9962,7 @@ func (c *Client) UnassignPrivateIpAddresses(request *UnassignPrivateIpAddressesR
     if request == nil {
         request = NewUnassignPrivateIpAddressesRequest()
     }
+    
     response = NewUnassignPrivateIpAddressesResponse()
     err = c.Send(request, response)
     return
@@ -9453,6 +9973,7 @@ func NewWithdrawNotifyRoutesRequest() (request *WithdrawNotifyRoutesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("vpc", APIVersion, "WithdrawNotifyRoutes")
+    
     
     return
 }
@@ -9480,6 +10001,7 @@ func (c *Client) WithdrawNotifyRoutes(request *WithdrawNotifyRoutesRequest) (res
     if request == nil {
         request = NewWithdrawNotifyRoutesRequest()
     }
+    
     response = NewWithdrawNotifyRoutesResponse()
     err = c.Send(request, response)
     return

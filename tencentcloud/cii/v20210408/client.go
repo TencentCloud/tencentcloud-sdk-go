@@ -49,6 +49,7 @@ func NewCreateStructureTaskRequest() (request *CreateStructureTaskRequest) {
     }
     request.Init().WithApiInfo("cii", APIVersion, "CreateStructureTask")
     
+    
     return
 }
 
@@ -74,6 +75,7 @@ func (c *Client) CreateStructureTask(request *CreateStructureTaskRequest) (respo
     if request == nil {
         request = NewCreateStructureTaskRequest()
     }
+    
     response = NewCreateStructureTaskResponse()
     err = c.Send(request, response)
     return
@@ -84,6 +86,7 @@ func NewCreateUnderwriteTaskByIdRequest() (request *CreateUnderwriteTaskByIdRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cii", APIVersion, "CreateUnderwriteTaskById")
+    
     
     return
 }
@@ -110,6 +113,7 @@ func (c *Client) CreateUnderwriteTaskById(request *CreateUnderwriteTaskByIdReque
     if request == nil {
         request = NewCreateUnderwriteTaskByIdRequest()
     }
+    
     response = NewCreateUnderwriteTaskByIdResponse()
     err = c.Send(request, response)
     return
@@ -120,6 +124,7 @@ func NewDescribeMachineUnderwriteRequest() (request *DescribeMachineUnderwriteRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cii", APIVersion, "DescribeMachineUnderwrite")
+    
     
     return
 }
@@ -144,6 +149,7 @@ func (c *Client) DescribeMachineUnderwrite(request *DescribeMachineUnderwriteReq
     if request == nil {
         request = NewDescribeMachineUnderwriteRequest()
     }
+    
     response = NewDescribeMachineUnderwriteResponse()
     err = c.Send(request, response)
     return
@@ -154,6 +160,7 @@ func NewDescribeStructCompareDataRequest() (request *DescribeStructCompareDataRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cii", APIVersion, "DescribeStructCompareData")
+    
     
     return
 }
@@ -176,6 +183,7 @@ func (c *Client) DescribeStructCompareData(request *DescribeStructCompareDataReq
     if request == nil {
         request = NewDescribeStructCompareDataRequest()
     }
+    
     response = NewDescribeStructCompareDataResponse()
     err = c.Send(request, response)
     return
@@ -186,6 +194,7 @@ func NewDescribeStructureDifferenceRequest() (request *DescribeStructureDifferen
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cii", APIVersion, "DescribeStructureDifference")
+    
     
     return
 }
@@ -208,6 +217,7 @@ func (c *Client) DescribeStructureDifference(request *DescribeStructureDifferenc
     if request == nil {
         request = NewDescribeStructureDifferenceRequest()
     }
+    
     response = NewDescribeStructureDifferenceResponse()
     err = c.Send(request, response)
     return
@@ -218,6 +228,7 @@ func NewDescribeStructureResultRequest() (request *DescribeStructureResultReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cii", APIVersion, "DescribeStructureResult")
+    
     
     return
 }
@@ -244,6 +255,7 @@ func (c *Client) DescribeStructureResult(request *DescribeStructureResultRequest
     if request == nil {
         request = NewDescribeStructureResultRequest()
     }
+    
     response = NewDescribeStructureResultResponse()
     err = c.Send(request, response)
     return
@@ -254,6 +266,7 @@ func NewDescribeStructureTaskResultRequest() (request *DescribeStructureTaskResu
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cii", APIVersion, "DescribeStructureTaskResult")
+    
     
     return
 }
@@ -279,6 +292,7 @@ func (c *Client) DescribeStructureTaskResult(request *DescribeStructureTaskResul
     if request == nil {
         request = NewDescribeStructureTaskResultRequest()
     }
+    
     response = NewDescribeStructureTaskResultResponse()
     err = c.Send(request, response)
     return
@@ -289,6 +303,7 @@ func NewUploadMedicalFileRequest() (request *UploadMedicalFileRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cii", APIVersion, "UploadMedicalFile")
+    
     
     return
 }
@@ -315,6 +330,7 @@ func (c *Client) UploadMedicalFile(request *UploadMedicalFileRequest) (response 
     if request == nil {
         request = NewUploadMedicalFileRequest()
     }
+    
     response = NewUploadMedicalFileResponse()
     err = c.Send(request, response)
     return

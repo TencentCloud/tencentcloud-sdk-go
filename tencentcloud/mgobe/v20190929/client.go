@@ -49,6 +49,7 @@ func NewDismissRoomRequest() (request *DismissRoomRequest) {
     }
     request.Init().WithApiInfo("mgobe", APIVersion, "DismissRoom")
     
+    
     return
 }
 
@@ -377,6 +378,7 @@ func (c *Client) DismissRoom(request *DismissRoomRequest) (response *DismissRoom
     if request == nil {
         request = NewDismissRoomRequest()
     }
+    
     response = NewDismissRoomResponse()
     err = c.Send(request, response)
     return

@@ -49,6 +49,7 @@ func NewImageModerationRequest() (request *ImageModerationRequest) {
     }
     request.Init().WithApiInfo("ims", APIVersion, "ImageModeration")
     
+    
     return
 }
 
@@ -169,6 +170,7 @@ func (c *Client) ImageModeration(request *ImageModerationRequest) (response *Ima
     if request == nil {
         request = NewImageModerationRequest()
     }
+    
     response = NewImageModerationResponse()
     err = c.Send(request, response)
     return

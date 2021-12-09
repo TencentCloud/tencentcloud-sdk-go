@@ -49,6 +49,7 @@ func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
     }
     request.Init().WithApiInfo("memcached", APIVersion, "DescribeInstances")
     
+    
     return
 }
 
@@ -74,6 +75,7 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    
     response = NewDescribeInstancesResponse()
     err = c.Send(request, response)
     return

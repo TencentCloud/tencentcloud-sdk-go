@@ -1,35 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+## 语音识别(asr) 版本：2019-06-14
 
-### 第 26 次发布
+### 第 16 次发布
 
-发布时间：2021-12-07 11:23:56
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateInstancePre](https://cloud.tencent.com/document/api/597/45847)
-
-	* 新增出参：Result, RequestId
-
-	* <font color="#dd0000">**删除出参**：</font>ReturnCode, ReturnMessage, Data, DeleteRouteTimestamp
-
-
-新增数据结构：
-
-* [CreateInstancePreResp](https://cloud.tencent.com/document/api/597/40861#CreateInstancePreResp)
-
-
-
-## 弹性 MapReduce(emr) 版本：2019-01-03
-
-### 第 24 次发布
-
-发布时间：2021-12-08 08:10:26
+发布时间：2021-12-09 08:01:20
 
 本次发布包含了以下内容：
 
@@ -37,18 +12,41 @@
 
 修改数据结构：
 
-* [ClusterInstancesInfo](https://cloud.tencent.com/document/api/589/33981#ClusterInstancesInfo)
+* [TaskStatus](https://cloud.tencent.com/document/api/1093/37824#TaskStatus)
 
-	* 新增成员：SceneName, SceneServiceClass, SceneEmrVersion, DisplayName, VpcName, SubnetName
-
-
+	* 新增成员：AudioDuration
 
 
-## 人像变换(ft) 版本：2020-03-04
 
-### 第 6 次发布
 
-发布时间：2021-12-08 08:10:45
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 89 次发布
+
+发布时间：2021-12-09 08:02:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [AdvanceHttps](https://cloud.tencent.com/document/api/228/30987#AdvanceHttps)
+
+修改数据结构：
+
+* [Origin](https://cloud.tencent.com/document/api/228/30987#Origin)
+
+	* 新增成员：AdvanceHttps
+
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 53 次发布
+
+发布时间：2021-12-09 08:03:47
 
 本次发布包含了以下内容：
 
@@ -56,39 +54,25 @@
 
 修改接口：
 
-* [QueryFaceMorphJob](https://cloud.tencent.com/document/api/1202/47936)
+* [UnifiedTlinxOrder](https://cloud.tencent.com/document/api/1122/62611)
 
-	* 新增出参：JobStatusCode
-
-
+	* 新增入参：Jsapi, SubAppId, SubOpenId
 
 
-## 云数据库 Redis(redis) 版本：2018-04-12
+修改数据结构：
 
-### 第 38 次发布
+* [PayOrderResult](https://cloud.tencent.com/document/api/1122/40683#PayOrderResult)
 
-发布时间：2021-12-07 13:09:58
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DisableReplicaReadonly](https://cloud.tencent.com/document/api/239/34438)
-
-	* 新增出参：TaskId
-
-	* <font color="#dd0000">**删除出参**：</font>Status
+	* 新增成员：WechatAppId, WechatTimeStamp, WechatNonceStr, WechatSignType, WechatPackage, WechatPaySign
 
 
 
 
-## 云函数(scf) 版本：2018-04-16
+## DNSPod(dnspod) 版本：2021-03-23
 
-### 第 41 次发布
+### 第 3 次发布
 
-发布时间：2021-12-08 08:14:03
+发布时间：2021-12-09 08:05:19
 
 本次发布包含了以下内容：
 
@@ -96,52 +80,223 @@
 
 新增接口：
 
-* [GetAsyncEventStatus](https://cloud.tencent.com/document/api/583/65704)
+* [DescribeDomainAliasList](https://cloud.tencent.com/document/api/1427/65766)
 
 新增数据结构：
 
-* [AsyncEventStatus](https://cloud.tencent.com/document/api/583/17244#AsyncEventStatus)
+* [DomainAliasInfo](https://cloud.tencent.com/document/api/1427/56185#DomainAliasInfo)
 
 
 
-## 容器安全服务(tcss) 版本：2020-11-01
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
-### 第 2 次发布
+### 第 38 次发布
 
-发布时间：2021-12-08 08:15:31
+发布时间：2021-12-09 08:07:14
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [DescribeAssetHostDetail](https://cloud.tencent.com/document/api/1285/65508)
+* [PublishRRPCMessage](https://cloud.tencent.com/document/api/1081/65767)
 
-	* 新增出参：IsContainerd, MachineType, PublicIp
 
+
+## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 15 次发布
+
+发布时间：2021-12-09 08:08:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 修改数据结构：
 
-* [ContainerInfo](https://cloud.tencent.com/document/api/1285/65614#ContainerInfo)
+* [ClientConnection](https://cloud.tencent.com/document/api/240/38576#ClientConnection)
 
-	* 新增成员：PublicIp
+	* 新增成员：InternalService
 
-* [HostInfo](https://cloud.tencent.com/document/api/1285/65614#HostInfo)
 
-	* 新增成员：IsContainerd, MachineType, PublicIp, Uuid
 
-* [PortInfo](https://cloud.tencent.com/document/api/1285/65614#PortInfo)
 
-	* 新增成员：HostName, PublicIp
+## 云数据库 MongoDB(mongodb) 版本：2018-04-08
 
-* [ProcessInfo](https://cloud.tencent.com/document/api/1285/65614#ProcessInfo)
 
-	* 新增成员：HostName, PublicIp
 
-* [ServiceInfo](https://cloud.tencent.com/document/api/1285/65614#ServiceInfo)
+## 前端性能监控(rum) 版本：2021-06-22
 
-	* 新增成员：HostName, PublicIp
+### 第 8 次发布
+
+发布时间：2021-12-09 08:09:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDataEventUrl](https://cloud.tencent.com/document/api/1464/65769)
+* [DescribeDataPvUrlStatistics](https://cloud.tencent.com/document/api/1464/65768)
+
+
+
+## 云函数(scf) 版本：2018-04-16
+
+### 第 42 次发布
+
+发布时间：2021-12-09 08:09:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FunctionVersion](https://cloud.tencent.com/document/api/583/17244#FunctionVersion)
+
+	* 新增成员：Status
+
+
+
+
+## 腾讯云自动化助手(tat) 版本：2020-10-28
+
+### 第 17 次发布
+
+发布时间：2021-12-09 08:10:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CancelInvocation](https://cloud.tencent.com/document/api/1340/65770)
+
+
+
+## 弹性微服务(tem) 版本：2021-07-01
+
+### 第 6 次发布
+
+发布时间：2021-12-09 08:11:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyApplicationReplicas](https://cloud.tencent.com/document/api/1371/65772)
+
+
+
+## 弹性微服务(tem) 版本：2020-12-21
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 81 次发布
+
+发布时间：2021-12-09 08:12:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [EksCi](https://cloud.tencent.com/document/api/457/31866#EksCi)
+
+	* 新增成员：PersistStatus
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 93 次发布
+
+发布时间：2021-12-09 08:12:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [RestoreMediaTask](https://cloud.tencent.com/document/api/266/31773#RestoreMediaTask)
+
+修改数据结构：
+
+* [AiAnalysisTaskClassificationOutput](https://cloud.tencent.com/document/api/266/31773#AiAnalysisTaskClassificationOutput)
+
+	* 新增成员：ClassificationSetFileUrl, ClassificationSetFileUrlExpireTime
+
+* [AiAnalysisTaskCoverOutput](https://cloud.tencent.com/document/api/266/31773#AiAnalysisTaskCoverOutput)
+
+	* 新增成员：CoverSetFileUrl, CoverSetFileUrlExpireTime
+
+* [AiAnalysisTaskFrameTagOutput](https://cloud.tencent.com/document/api/266/31773#AiAnalysisTaskFrameTagOutput)
+
+	* 新增成员：SegmentSetFileUrl, SegmentSetFileUrlExpireTime
+
+* [AiAnalysisTaskHighlightOutput](https://cloud.tencent.com/document/api/266/31773#AiAnalysisTaskHighlightOutput)
+
+	* 新增成员：HighlightSetFileUrl, HighlightSetFileUrlExpireTime
+
+* [AiAnalysisTaskTagOutput](https://cloud.tencent.com/document/api/266/31773#AiAnalysisTaskTagOutput)
+
+	* 新增成员：TagSetFileUrl, TagSetFileUrlExpireTime
+
+* [AiReviewPoliticalAsrTaskOutput](https://cloud.tencent.com/document/api/266/31773#AiReviewPoliticalAsrTaskOutput)
+
+	* 新增成员：SegmentSetFileUrl, SegmentSetFileUrlExpireTime
+
+* [AiReviewPoliticalOcrTaskOutput](https://cloud.tencent.com/document/api/266/31773#AiReviewPoliticalOcrTaskOutput)
+
+	* 新增成员：SegmentSetFileUrl, SegmentSetFileUrlExpireTime
+
+* [AiReviewPoliticalTaskOutput](https://cloud.tencent.com/document/api/266/31773#AiReviewPoliticalTaskOutput)
+
+	* 新增成员：SegmentSetFileUrl, SegmentSetFileUrlExpireTime
+
+* [AiReviewPornAsrTaskOutput](https://cloud.tencent.com/document/api/266/31773#AiReviewPornAsrTaskOutput)
+
+	* 新增成员：SegmentSetFileUrl, SegmentSetFileUrlExpireTime
+
+* [AiReviewPornOcrTaskOutput](https://cloud.tencent.com/document/api/266/31773#AiReviewPornOcrTaskOutput)
+
+	* 新增成员：SegmentSetFileUrl, SegmentSetFileUrlExpireTime
+
+* [AiReviewPornTaskOutput](https://cloud.tencent.com/document/api/266/31773#AiReviewPornTaskOutput)
+
+	* 新增成员：SegmentSetFileUrl, SegmentSetFileUrlExpireTime
+
+* [AiReviewProhibitedAsrTaskOutput](https://cloud.tencent.com/document/api/266/31773#AiReviewProhibitedAsrTaskOutput)
+
+	* 新增成员：SegmentSetFileUrl, SegmentSetFileUrlExpireTime
+
+* [AiReviewProhibitedOcrTaskOutput](https://cloud.tencent.com/document/api/266/31773#AiReviewProhibitedOcrTaskOutput)
+
+	* 新增成员：SegmentSetFileUrl, SegmentSetFileUrlExpireTime
+
+* [AiReviewTerrorismOcrTaskOutput](https://cloud.tencent.com/document/api/266/31773#AiReviewTerrorismOcrTaskOutput)
+
+	* 新增成员：SegmentSetFileUrl, SegmentSetFileUrlExpireTime
+
+* [AiReviewTerrorismTaskOutput](https://cloud.tencent.com/document/api/266/31773#AiReviewTerrorismTaskOutput)
+
+	* 新增成员：SegmentSetFileUrl, SegmentSetFileUrlExpireTime
+
+* [EventContent](https://cloud.tencent.com/document/api/266/31773#EventContent)
+
+	* 新增成员：RestoreMediaCompleteEvent
 
 
 
@@ -3200,6 +3355,21 @@
 
 
 ## 语音识别(asr) 版本：2019-06-14
+
+### 第 16 次发布
+
+发布时间：2021-12-09 08:01:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TaskStatus](https://cloud.tencent.com/document/api/1093/37824#TaskStatus)
+
+	* 新增成员：AudioDuration
+
 
 ### 第 15 次发布
 
@@ -9956,6 +10126,25 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 89 次发布
+
+发布时间：2021-12-09 08:02:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[AdvanceHttps](https://cloud.tencent.com/document/api/228/30987#AdvanceHttps)](https://cloud.tencent.com/document/api/228/30987#[AdvanceHttps](https://cloud.tencent.com/document/api/228/30987#AdvanceHttps))
+
+修改数据结构：
+
+* [Origin](https://cloud.tencent.com/document/api/228/30987#Origin)
+
+	* 新增成员：AdvanceHttps
+
+
 ### 第 88 次发布
 
 发布时间：2021-12-06 08:02:38
@@ -12995,7 +13184,7 @@
 
 新增数据结构：
 
-* [[CreateInstancePreResp](https://cloud.tencent.com/document/api/597/40861#CreateInstancePreResp)](https://cloud.tencent.com/document/api/597/40861#[CreateInstancePreResp](https://cloud.tencent.com/document/api/597/40861#CreateInstancePreResp))
+* [CreateInstancePreResp](https://cloud.tencent.com/document/api/597/40861#CreateInstancePreResp)
 
 ### 第 25 次发布
 
@@ -16876,6 +17065,28 @@
 
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 53 次发布
+
+发布时间：2021-12-09 08:03:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UnifiedTlinxOrder](https://cloud.tencent.com/document/api/1122/62611)
+
+	* 新增入参：Jsapi, SubAppId, SubOpenId
+
+
+修改数据结构：
+
+* [PayOrderResult](https://cloud.tencent.com/document/api/1122/40683#PayOrderResult)
+
+	* 新增成员：WechatAppId, WechatTimeStamp, WechatNonceStr, WechatSignType, WechatPackage, WechatPaySign
+
 
 ### 第 52 次发布
 
@@ -23553,6 +23764,22 @@
 
 
 ## DNSPod(dnspod) 版本：2021-03-23
+
+### 第 3 次发布
+
+发布时间：2021-12-09 08:05:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDomainAliasList](https://cloud.tencent.com/document/api/1427/65766)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DomainAliasInfo](https://cloud.tencent.com/document/api/1427/56185#DomainAliasInfo)](https://cloud.tencent.com/document/api/1427/56185#[DomainAliasInfo](https://cloud.tencent.com/document/api/1427/56185#DomainAliasInfo))
 
 ### 第 2 次发布
 
@@ -33002,6 +33229,18 @@
 
 ## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
+### 第 38 次发布
+
+发布时间：2021-12-09 08:07:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[PublishRRPCMessage](https://cloud.tencent.com/document/api/1081/65767)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 37 次发布
 
 发布时间：2021-12-06 08:07:14
@@ -38306,6 +38545,21 @@
 
 
 ## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 15 次发布
+
+发布时间：2021-12-09 08:08:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClientConnection](https://cloud.tencent.com/document/api/240/38576#ClientConnection)
+
+	* 新增成员：InternalService
+
 
 ### 第 14 次发布
 
@@ -44787,6 +45041,19 @@
 
 ## 前端性能监控(rum) 版本：2021-06-22
 
+### 第 8 次发布
+
+发布时间：2021-12-09 08:09:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDataEventUrl](https://cloud.tencent.com/document/api/1464/65769)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDataPvUrlStatistics](https://cloud.tencent.com/document/api/1464/65768)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 7 次发布
 
 发布时间：2021-09-27 08:15:19
@@ -44885,6 +45152,21 @@
 
 ## 云函数(scf) 版本：2018-04-16
 
+### 第 42 次发布
+
+发布时间：2021-12-09 08:09:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FunctionVersion](https://cloud.tencent.com/document/api/583/17244#FunctionVersion)
+
+	* 新增成员：Status
+
+
 ### 第 41 次发布
 
 发布时间：2021-12-08 08:14:03
@@ -44895,11 +45177,11 @@
 
 新增接口：
 
-* [[GetAsyncEventStatus](https://cloud.tencent.com/document/api/583/65704)](https://cloud.tencent.com/document/api/#/#)
+* [GetAsyncEventStatus](https://cloud.tencent.com/document/api/583/65704)
 
 新增数据结构：
 
-* [[AsyncEventStatus](https://cloud.tencent.com/document/api/583/17244#AsyncEventStatus)](https://cloud.tencent.com/document/api/583/17244#[AsyncEventStatus](https://cloud.tencent.com/document/api/583/17244#AsyncEventStatus))
+* [AsyncEventStatus](https://cloud.tencent.com/document/api/583/17244#AsyncEventStatus)
 
 ### 第 40 次发布
 
@@ -48237,6 +48519,18 @@
 
 
 ## 腾讯云自动化助手(tat) 版本：2020-10-28
+
+### 第 17 次发布
+
+发布时间：2021-12-09 08:10:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CancelInvocation](https://cloud.tencent.com/document/api/1340/65770)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 16 次发布
 
@@ -53303,6 +53597,18 @@
 
 ## 弹性微服务(tem) 版本：2021-07-01
 
+### 第 6 次发布
+
+发布时间：2021-12-09 08:11:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyApplicationReplicas](https://cloud.tencent.com/document/api/1371/65772)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 5 次发布
 
 发布时间：2021-10-29 08:10:14
@@ -55069,6 +55375,21 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 81 次发布
+
+发布时间：2021-12-09 08:12:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [EksCi](https://cloud.tencent.com/document/api/457/31866#EksCi)
+
+	* 新增成员：PersistStatus
+
 
 ### 第 80 次发布
 
@@ -59743,6 +60064,85 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 93 次发布
+
+发布时间：2021-12-09 08:12:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[RestoreMediaTask](https://cloud.tencent.com/document/api/266/31773#RestoreMediaTask)](https://cloud.tencent.com/document/api/266/31773#[RestoreMediaTask](https://cloud.tencent.com/document/api/266/31773#RestoreMediaTask))
+
+修改数据结构：
+
+* [AiAnalysisTaskClassificationOutput](https://cloud.tencent.com/document/api/266/31773#AiAnalysisTaskClassificationOutput)
+
+	* 新增成员：ClassificationSetFileUrl, ClassificationSetFileUrlExpireTime
+
+* [AiAnalysisTaskCoverOutput](https://cloud.tencent.com/document/api/266/31773#AiAnalysisTaskCoverOutput)
+
+	* 新增成员：CoverSetFileUrl, CoverSetFileUrlExpireTime
+
+* [AiAnalysisTaskFrameTagOutput](https://cloud.tencent.com/document/api/266/31773#AiAnalysisTaskFrameTagOutput)
+
+	* 新增成员：SegmentSetFileUrl, SegmentSetFileUrlExpireTime
+
+* [AiAnalysisTaskHighlightOutput](https://cloud.tencent.com/document/api/266/31773#AiAnalysisTaskHighlightOutput)
+
+	* 新增成员：HighlightSetFileUrl, HighlightSetFileUrlExpireTime
+
+* [AiAnalysisTaskTagOutput](https://cloud.tencent.com/document/api/266/31773#AiAnalysisTaskTagOutput)
+
+	* 新增成员：TagSetFileUrl, TagSetFileUrlExpireTime
+
+* [AiReviewPoliticalAsrTaskOutput](https://cloud.tencent.com/document/api/266/31773#AiReviewPoliticalAsrTaskOutput)
+
+	* 新增成员：SegmentSetFileUrl, SegmentSetFileUrlExpireTime
+
+* [AiReviewPoliticalOcrTaskOutput](https://cloud.tencent.com/document/api/266/31773#AiReviewPoliticalOcrTaskOutput)
+
+	* 新增成员：SegmentSetFileUrl, SegmentSetFileUrlExpireTime
+
+* [AiReviewPoliticalTaskOutput](https://cloud.tencent.com/document/api/266/31773#AiReviewPoliticalTaskOutput)
+
+	* 新增成员：SegmentSetFileUrl, SegmentSetFileUrlExpireTime
+
+* [AiReviewPornAsrTaskOutput](https://cloud.tencent.com/document/api/266/31773#AiReviewPornAsrTaskOutput)
+
+	* 新增成员：SegmentSetFileUrl, SegmentSetFileUrlExpireTime
+
+* [AiReviewPornOcrTaskOutput](https://cloud.tencent.com/document/api/266/31773#AiReviewPornOcrTaskOutput)
+
+	* 新增成员：SegmentSetFileUrl, SegmentSetFileUrlExpireTime
+
+* [AiReviewPornTaskOutput](https://cloud.tencent.com/document/api/266/31773#AiReviewPornTaskOutput)
+
+	* 新增成员：SegmentSetFileUrl, SegmentSetFileUrlExpireTime
+
+* [AiReviewProhibitedAsrTaskOutput](https://cloud.tencent.com/document/api/266/31773#AiReviewProhibitedAsrTaskOutput)
+
+	* 新增成员：SegmentSetFileUrl, SegmentSetFileUrlExpireTime
+
+* [AiReviewProhibitedOcrTaskOutput](https://cloud.tencent.com/document/api/266/31773#AiReviewProhibitedOcrTaskOutput)
+
+	* 新增成员：SegmentSetFileUrl, SegmentSetFileUrlExpireTime
+
+* [AiReviewTerrorismOcrTaskOutput](https://cloud.tencent.com/document/api/266/31773#AiReviewTerrorismOcrTaskOutput)
+
+	* 新增成员：SegmentSetFileUrl, SegmentSetFileUrlExpireTime
+
+* [AiReviewTerrorismTaskOutput](https://cloud.tencent.com/document/api/266/31773#AiReviewTerrorismTaskOutput)
+
+	* 新增成员：SegmentSetFileUrl, SegmentSetFileUrlExpireTime
+
+* [EventContent](https://cloud.tencent.com/document/api/266/31773#EventContent)
+
+	* 新增成员：RestoreMediaCompleteEvent
+
 
 ### 第 92 次发布
 

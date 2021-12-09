@@ -49,6 +49,7 @@ func NewCreateGroupRequest() (request *CreateGroupRequest) {
     }
     request.Init().WithApiInfo("bda", APIVersion, "CreateGroup")
     
+    
     return
 }
 
@@ -97,6 +98,7 @@ func (c *Client) CreateGroup(request *CreateGroupRequest) (response *CreateGroup
     if request == nil {
         request = NewCreateGroupRequest()
     }
+    
     response = NewCreateGroupResponse()
     err = c.Send(request, response)
     return
@@ -107,6 +109,7 @@ func NewCreatePersonRequest() (request *CreatePersonRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "CreatePerson")
+    
     
     return
 }
@@ -163,6 +166,7 @@ func (c *Client) CreatePerson(request *CreatePersonRequest) (response *CreatePer
     if request == nil {
         request = NewCreatePersonRequest()
     }
+    
     response = NewCreatePersonResponse()
     err = c.Send(request, response)
     return
@@ -173,6 +177,7 @@ func NewCreateSegmentationTaskRequest() (request *CreateSegmentationTaskRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "CreateSegmentationTask")
+    
     
     return
 }
@@ -202,6 +207,7 @@ func (c *Client) CreateSegmentationTask(request *CreateSegmentationTaskRequest) 
     if request == nil {
         request = NewCreateSegmentationTaskRequest()
     }
+    
     response = NewCreateSegmentationTaskResponse()
     err = c.Send(request, response)
     return
@@ -212,6 +218,7 @@ func NewCreateTraceRequest() (request *CreateTraceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "CreateTrace")
+    
     
     return
 }
@@ -263,6 +270,7 @@ func (c *Client) CreateTrace(request *CreateTraceRequest) (response *CreateTrace
     if request == nil {
         request = NewCreateTraceRequest()
     }
+    
     response = NewCreateTraceResponse()
     err = c.Send(request, response)
     return
@@ -273,6 +281,7 @@ func NewDeleteGroupRequest() (request *DeleteGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "DeleteGroup")
+    
     
     return
 }
@@ -303,6 +312,7 @@ func (c *Client) DeleteGroup(request *DeleteGroupRequest) (response *DeleteGroup
     if request == nil {
         request = NewDeleteGroupRequest()
     }
+    
     response = NewDeleteGroupResponse()
     err = c.Send(request, response)
     return
@@ -313,6 +323,7 @@ func NewDeletePersonRequest() (request *DeletePersonRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "DeletePerson")
+    
     
     return
 }
@@ -342,6 +353,7 @@ func (c *Client) DeletePerson(request *DeletePersonRequest) (response *DeletePer
     if request == nil {
         request = NewDeletePersonRequest()
     }
+    
     response = NewDeletePersonResponse()
     err = c.Send(request, response)
     return
@@ -352,6 +364,7 @@ func NewDescribeSegmentationTaskRequest() (request *DescribeSegmentationTaskRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "DescribeSegmentationTask")
+    
     
     return
 }
@@ -378,6 +391,7 @@ func (c *Client) DescribeSegmentationTask(request *DescribeSegmentationTaskReque
     if request == nil {
         request = NewDescribeSegmentationTaskRequest()
     }
+    
     response = NewDescribeSegmentationTaskResponse()
     err = c.Send(request, response)
     return
@@ -388,6 +402,7 @@ func NewDetectBodyRequest() (request *DetectBodyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "DetectBody")
+    
     
     return
 }
@@ -426,6 +441,7 @@ func (c *Client) DetectBody(request *DetectBodyRequest) (response *DetectBodyRes
     if request == nil {
         request = NewDetectBodyRequest()
     }
+    
     response = NewDetectBodyResponse()
     err = c.Send(request, response)
     return
@@ -436,6 +452,7 @@ func NewDetectBodyJointsRequest() (request *DetectBodyJointsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "DetectBodyJoints")
+    
     
     return
 }
@@ -476,6 +493,7 @@ func (c *Client) DetectBodyJoints(request *DetectBodyJointsRequest) (response *D
     if request == nil {
         request = NewDetectBodyJointsRequest()
     }
+    
     response = NewDetectBodyJointsResponse()
     err = c.Send(request, response)
     return
@@ -486,6 +504,7 @@ func NewGetGroupListRequest() (request *GetGroupListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "GetGroupList")
+    
     
     return
 }
@@ -515,6 +534,7 @@ func (c *Client) GetGroupList(request *GetGroupListRequest) (response *GetGroupL
     if request == nil {
         request = NewGetGroupListRequest()
     }
+    
     response = NewGetGroupListResponse()
     err = c.Send(request, response)
     return
@@ -525,6 +545,7 @@ func NewGetPersonListRequest() (request *GetPersonListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "GetPersonList")
+    
     
     return
 }
@@ -555,6 +576,7 @@ func (c *Client) GetPersonList(request *GetPersonListRequest) (response *GetPers
     if request == nil {
         request = NewGetPersonListRequest()
     }
+    
     response = NewGetPersonListResponse()
     err = c.Send(request, response)
     return
@@ -565,6 +587,7 @@ func NewGetSummaryInfoRequest() (request *GetSummaryInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "GetSummaryInfo")
+    
     
     return
 }
@@ -594,6 +617,7 @@ func (c *Client) GetSummaryInfo(request *GetSummaryInfoRequest) (response *GetSu
     if request == nil {
         request = NewGetSummaryInfoRequest()
     }
+    
     response = NewGetSummaryInfoResponse()
     err = c.Send(request, response)
     return
@@ -604,6 +628,7 @@ func NewModifyGroupRequest() (request *ModifyGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "ModifyGroup")
+    
     
     return
 }
@@ -636,6 +661,7 @@ func (c *Client) ModifyGroup(request *ModifyGroupRequest) (response *ModifyGroup
     if request == nil {
         request = NewModifyGroupRequest()
     }
+    
     response = NewModifyGroupResponse()
     err = c.Send(request, response)
     return
@@ -646,6 +672,7 @@ func NewModifyPersonInfoRequest() (request *ModifyPersonInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "ModifyPersonInfo")
+    
     
     return
 }
@@ -675,6 +702,7 @@ func (c *Client) ModifyPersonInfo(request *ModifyPersonInfoRequest) (response *M
     if request == nil {
         request = NewModifyPersonInfoRequest()
     }
+    
     response = NewModifyPersonInfoResponse()
     err = c.Send(request, response)
     return
@@ -685,6 +713,7 @@ func NewSearchTraceRequest() (request *SearchTraceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "SearchTrace")
+    
     
     return
 }
@@ -739,6 +768,7 @@ func (c *Client) SearchTrace(request *SearchTraceRequest) (response *SearchTrace
     if request == nil {
         request = NewSearchTraceRequest()
     }
+    
     response = NewSearchTraceResponse()
     err = c.Send(request, response)
     return
@@ -749,6 +779,7 @@ func NewSegmentCustomizedPortraitPicRequest() (request *SegmentCustomizedPortrai
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "SegmentCustomizedPortraitPic")
+    
     
     return
 }
@@ -787,6 +818,7 @@ func (c *Client) SegmentCustomizedPortraitPic(request *SegmentCustomizedPortrait
     if request == nil {
         request = NewSegmentCustomizedPortraitPicRequest()
     }
+    
     response = NewSegmentCustomizedPortraitPicResponse()
     err = c.Send(request, response)
     return
@@ -797,6 +829,7 @@ func NewSegmentPortraitPicRequest() (request *SegmentPortraitPicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "SegmentPortraitPic")
+    
     
     return
 }
@@ -836,6 +869,7 @@ func (c *Client) SegmentPortraitPic(request *SegmentPortraitPicRequest) (respons
     if request == nil {
         request = NewSegmentPortraitPicRequest()
     }
+    
     response = NewSegmentPortraitPicResponse()
     err = c.Send(request, response)
     return
@@ -846,6 +880,7 @@ func NewTerminateSegmentationTaskRequest() (request *TerminateSegmentationTaskRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bda", APIVersion, "TerminateSegmentationTask")
+    
     
     return
 }
@@ -869,6 +904,7 @@ func (c *Client) TerminateSegmentationTask(request *TerminateSegmentationTaskReq
     if request == nil {
         request = NewTerminateSegmentationTaskRequest()
     }
+    
     response = NewTerminateSegmentationTaskResponse()
     err = c.Send(request, response)
     return

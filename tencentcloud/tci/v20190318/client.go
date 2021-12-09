@@ -49,6 +49,7 @@ func NewAIAssistantRequest() (request *AIAssistantRequest) {
     }
     request.Init().WithApiInfo("tci", APIVersion, "AIAssistant")
     
+    
     return
 }
 
@@ -72,6 +73,7 @@ func (c *Client) AIAssistant(request *AIAssistantRequest) (response *AIAssistant
     if request == nil {
         request = NewAIAssistantRequest()
     }
+    
     response = NewAIAssistantResponse()
     err = c.Send(request, response)
     return
@@ -82,6 +84,7 @@ func NewCancelTaskRequest() (request *CancelTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "CancelTask")
+    
     
     return
 }
@@ -103,6 +106,7 @@ func (c *Client) CancelTask(request *CancelTaskRequest) (response *CancelTaskRes
     if request == nil {
         request = NewCancelTaskRequest()
     }
+    
     response = NewCancelTaskResponse()
     err = c.Send(request, response)
     return
@@ -113,6 +117,7 @@ func NewCheckFacePhotoRequest() (request *CheckFacePhotoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "CheckFacePhoto")
+    
     
     return
 }
@@ -134,6 +139,7 @@ func (c *Client) CheckFacePhoto(request *CheckFacePhotoRequest) (response *Check
     if request == nil {
         request = NewCheckFacePhotoRequest()
     }
+    
     response = NewCheckFacePhotoResponse()
     err = c.Send(request, response)
     return
@@ -144,6 +150,7 @@ func NewCreateFaceRequest() (request *CreateFaceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "CreateFace")
+    
     
     return
 }
@@ -165,6 +172,7 @@ func (c *Client) CreateFace(request *CreateFaceRequest) (response *CreateFaceRes
     if request == nil {
         request = NewCreateFaceRequest()
     }
+    
     response = NewCreateFaceResponse()
     err = c.Send(request, response)
     return
@@ -175,6 +183,7 @@ func NewCreateLibraryRequest() (request *CreateLibraryRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "CreateLibrary")
+    
     
     return
 }
@@ -196,6 +205,7 @@ func (c *Client) CreateLibrary(request *CreateLibraryRequest) (response *CreateL
     if request == nil {
         request = NewCreateLibraryRequest()
     }
+    
     response = NewCreateLibraryResponse()
     err = c.Send(request, response)
     return
@@ -206,6 +216,7 @@ func NewCreatePersonRequest() (request *CreatePersonRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "CreatePerson")
+    
     
     return
 }
@@ -227,6 +238,7 @@ func (c *Client) CreatePerson(request *CreatePersonRequest) (response *CreatePer
     if request == nil {
         request = NewCreatePersonRequest()
     }
+    
     response = NewCreatePersonResponse()
     err = c.Send(request, response)
     return
@@ -237,6 +249,7 @@ func NewCreateVocabRequest() (request *CreateVocabRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "CreateVocab")
+    
     
     return
 }
@@ -260,6 +273,7 @@ func (c *Client) CreateVocab(request *CreateVocabRequest) (response *CreateVocab
     if request == nil {
         request = NewCreateVocabRequest()
     }
+    
     response = NewCreateVocabResponse()
     err = c.Send(request, response)
     return
@@ -270,6 +284,7 @@ func NewCreateVocabLibRequest() (request *CreateVocabLibRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "CreateVocabLib")
+    
     
     return
 }
@@ -293,6 +308,7 @@ func (c *Client) CreateVocabLib(request *CreateVocabLibRequest) (response *Creat
     if request == nil {
         request = NewCreateVocabLibRequest()
     }
+    
     response = NewCreateVocabLibResponse()
     err = c.Send(request, response)
     return
@@ -303,6 +319,7 @@ func NewDeleteFaceRequest() (request *DeleteFaceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "DeleteFace")
+    
     
     return
 }
@@ -325,6 +342,7 @@ func (c *Client) DeleteFace(request *DeleteFaceRequest) (response *DeleteFaceRes
     if request == nil {
         request = NewDeleteFaceRequest()
     }
+    
     response = NewDeleteFaceResponse()
     err = c.Send(request, response)
     return
@@ -335,6 +353,7 @@ func NewDeleteLibraryRequest() (request *DeleteLibraryRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "DeleteLibrary")
+    
     
     return
 }
@@ -357,6 +376,7 @@ func (c *Client) DeleteLibrary(request *DeleteLibraryRequest) (response *DeleteL
     if request == nil {
         request = NewDeleteLibraryRequest()
     }
+    
     response = NewDeleteLibraryResponse()
     err = c.Send(request, response)
     return
@@ -367,6 +387,7 @@ func NewDeletePersonRequest() (request *DeletePersonRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "DeletePerson")
+    
     
     return
 }
@@ -389,6 +410,7 @@ func (c *Client) DeletePerson(request *DeletePersonRequest) (response *DeletePer
     if request == nil {
         request = NewDeletePersonRequest()
     }
+    
     response = NewDeletePersonResponse()
     err = c.Send(request, response)
     return
@@ -399,6 +421,7 @@ func NewDeleteVocabRequest() (request *DeleteVocabRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "DeleteVocab")
+    
     
     return
 }
@@ -422,6 +445,7 @@ func (c *Client) DeleteVocab(request *DeleteVocabRequest) (response *DeleteVocab
     if request == nil {
         request = NewDeleteVocabRequest()
     }
+    
     response = NewDeleteVocabResponse()
     err = c.Send(request, response)
     return
@@ -432,6 +456,7 @@ func NewDeleteVocabLibRequest() (request *DeleteVocabLibRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "DeleteVocabLib")
+    
     
     return
 }
@@ -455,6 +480,7 @@ func (c *Client) DeleteVocabLib(request *DeleteVocabLibRequest) (response *Delet
     if request == nil {
         request = NewDeleteVocabLibRequest()
     }
+    
     response = NewDeleteVocabLibResponse()
     err = c.Send(request, response)
     return
@@ -465,6 +491,7 @@ func NewDescribeAITaskResultRequest() (request *DescribeAITaskResultRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "DescribeAITaskResult")
+    
     
     return
 }
@@ -488,6 +515,7 @@ func (c *Client) DescribeAITaskResult(request *DescribeAITaskResultRequest) (res
     if request == nil {
         request = NewDescribeAITaskResultRequest()
     }
+    
     response = NewDescribeAITaskResultResponse()
     err = c.Send(request, response)
     return
@@ -498,6 +526,7 @@ func NewDescribeAttendanceResultRequest() (request *DescribeAttendanceResultRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "DescribeAttendanceResult")
+    
     
     return
 }
@@ -527,6 +556,7 @@ func (c *Client) DescribeAttendanceResult(request *DescribeAttendanceResultReque
     if request == nil {
         request = NewDescribeAttendanceResultRequest()
     }
+    
     response = NewDescribeAttendanceResultResponse()
     err = c.Send(request, response)
     return
@@ -537,6 +567,7 @@ func NewDescribeAudioTaskRequest() (request *DescribeAudioTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "DescribeAudioTask")
+    
     
     return
 }
@@ -559,6 +590,7 @@ func (c *Client) DescribeAudioTask(request *DescribeAudioTaskRequest) (response 
     if request == nil {
         request = NewDescribeAudioTaskRequest()
     }
+    
     response = NewDescribeAudioTaskResponse()
     err = c.Send(request, response)
     return
@@ -569,6 +601,7 @@ func NewDescribeConversationTaskRequest() (request *DescribeConversationTaskRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "DescribeConversationTask")
+    
     
     return
 }
@@ -591,6 +624,7 @@ func (c *Client) DescribeConversationTask(request *DescribeConversationTaskReque
     if request == nil {
         request = NewDescribeConversationTaskRequest()
     }
+    
     response = NewDescribeConversationTaskResponse()
     err = c.Send(request, response)
     return
@@ -601,6 +635,7 @@ func NewDescribeHighlightResultRequest() (request *DescribeHighlightResultReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "DescribeHighlightResult")
+    
     
     return
 }
@@ -675,6 +710,7 @@ func (c *Client) DescribeHighlightResult(request *DescribeHighlightResultRequest
     if request == nil {
         request = NewDescribeHighlightResultRequest()
     }
+    
     response = NewDescribeHighlightResultResponse()
     err = c.Send(request, response)
     return
@@ -685,6 +721,7 @@ func NewDescribeImageTaskRequest() (request *DescribeImageTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "DescribeImageTask")
+    
     
     return
 }
@@ -707,6 +744,7 @@ func (c *Client) DescribeImageTask(request *DescribeImageTaskRequest) (response 
     if request == nil {
         request = NewDescribeImageTaskRequest()
     }
+    
     response = NewDescribeImageTaskResponse()
     err = c.Send(request, response)
     return
@@ -717,6 +755,7 @@ func NewDescribeImageTaskStatisticRequest() (request *DescribeImageTaskStatistic
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "DescribeImageTaskStatistic")
+    
     
     return
 }
@@ -739,6 +778,7 @@ func (c *Client) DescribeImageTaskStatistic(request *DescribeImageTaskStatisticR
     if request == nil {
         request = NewDescribeImageTaskStatisticRequest()
     }
+    
     response = NewDescribeImageTaskStatisticResponse()
     err = c.Send(request, response)
     return
@@ -749,6 +789,7 @@ func NewDescribeLibrariesRequest() (request *DescribeLibrariesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "DescribeLibraries")
+    
     
     return
 }
@@ -770,6 +811,7 @@ func (c *Client) DescribeLibraries(request *DescribeLibrariesRequest) (response 
     if request == nil {
         request = NewDescribeLibrariesRequest()
     }
+    
     response = NewDescribeLibrariesResponse()
     err = c.Send(request, response)
     return
@@ -780,6 +822,7 @@ func NewDescribePersonRequest() (request *DescribePersonRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "DescribePerson")
+    
     
     return
 }
@@ -802,6 +845,7 @@ func (c *Client) DescribePerson(request *DescribePersonRequest) (response *Descr
     if request == nil {
         request = NewDescribePersonRequest()
     }
+    
     response = NewDescribePersonResponse()
     err = c.Send(request, response)
     return
@@ -812,6 +856,7 @@ func NewDescribePersonsRequest() (request *DescribePersonsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "DescribePersons")
+    
     
     return
 }
@@ -834,6 +879,7 @@ func (c *Client) DescribePersons(request *DescribePersonsRequest) (response *Des
     if request == nil {
         request = NewDescribePersonsRequest()
     }
+    
     response = NewDescribePersonsResponse()
     err = c.Send(request, response)
     return
@@ -844,6 +890,7 @@ func NewDescribeVocabRequest() (request *DescribeVocabRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "DescribeVocab")
+    
     
     return
 }
@@ -867,6 +914,7 @@ func (c *Client) DescribeVocab(request *DescribeVocabRequest) (response *Describ
     if request == nil {
         request = NewDescribeVocabRequest()
     }
+    
     response = NewDescribeVocabResponse()
     err = c.Send(request, response)
     return
@@ -877,6 +925,7 @@ func NewDescribeVocabLibRequest() (request *DescribeVocabLibRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "DescribeVocabLib")
+    
     
     return
 }
@@ -900,6 +949,7 @@ func (c *Client) DescribeVocabLib(request *DescribeVocabLibRequest) (response *D
     if request == nil {
         request = NewDescribeVocabLibRequest()
     }
+    
     response = NewDescribeVocabLibResponse()
     err = c.Send(request, response)
     return
@@ -910,6 +960,7 @@ func NewModifyLibraryRequest() (request *ModifyLibraryRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "ModifyLibrary")
+    
     
     return
 }
@@ -932,6 +983,7 @@ func (c *Client) ModifyLibrary(request *ModifyLibraryRequest) (response *ModifyL
     if request == nil {
         request = NewModifyLibraryRequest()
     }
+    
     response = NewModifyLibraryResponse()
     err = c.Send(request, response)
     return
@@ -942,6 +994,7 @@ func NewModifyPersonRequest() (request *ModifyPersonRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "ModifyPerson")
+    
     
     return
 }
@@ -964,6 +1017,7 @@ func (c *Client) ModifyPerson(request *ModifyPersonRequest) (response *ModifyPer
     if request == nil {
         request = NewModifyPersonRequest()
     }
+    
     response = NewModifyPersonResponse()
     err = c.Send(request, response)
     return
@@ -974,6 +1028,7 @@ func NewSubmitAudioTaskRequest() (request *SubmitAudioTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "SubmitAudioTask")
+    
     
     return
 }
@@ -996,6 +1051,7 @@ func (c *Client) SubmitAudioTask(request *SubmitAudioTaskRequest) (response *Sub
     if request == nil {
         request = NewSubmitAudioTaskRequest()
     }
+    
     response = NewSubmitAudioTaskResponse()
     err = c.Send(request, response)
     return
@@ -1006,6 +1062,7 @@ func NewSubmitCheckAttendanceTaskRequest() (request *SubmitCheckAttendanceTaskRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "SubmitCheckAttendanceTask")
+    
     
     return
 }
@@ -1061,6 +1118,7 @@ func (c *Client) SubmitCheckAttendanceTask(request *SubmitCheckAttendanceTaskReq
     if request == nil {
         request = NewSubmitCheckAttendanceTaskRequest()
     }
+    
     response = NewSubmitCheckAttendanceTaskResponse()
     err = c.Send(request, response)
     return
@@ -1071,6 +1129,7 @@ func NewSubmitCheckAttendanceTaskPlusRequest() (request *SubmitCheckAttendanceTa
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "SubmitCheckAttendanceTaskPlus")
+    
     
     return
 }
@@ -1099,6 +1158,7 @@ func (c *Client) SubmitCheckAttendanceTaskPlus(request *SubmitCheckAttendanceTas
     if request == nil {
         request = NewSubmitCheckAttendanceTaskPlusRequest()
     }
+    
     response = NewSubmitCheckAttendanceTaskPlusResponse()
     err = c.Send(request, response)
     return
@@ -1109,6 +1169,7 @@ func NewSubmitConversationTaskRequest() (request *SubmitConversationTaskRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "SubmitConversationTask")
+    
     
     return
 }
@@ -1131,6 +1192,7 @@ func (c *Client) SubmitConversationTask(request *SubmitConversationTaskRequest) 
     if request == nil {
         request = NewSubmitConversationTaskRequest()
     }
+    
     response = NewSubmitConversationTaskResponse()
     err = c.Send(request, response)
     return
@@ -1141,6 +1203,7 @@ func NewSubmitDoubleVideoHighlightsRequest() (request *SubmitDoubleVideoHighligh
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "SubmitDoubleVideoHighlights")
+    
     
     return
 }
@@ -1177,6 +1240,7 @@ func (c *Client) SubmitDoubleVideoHighlights(request *SubmitDoubleVideoHighlight
     if request == nil {
         request = NewSubmitDoubleVideoHighlightsRequest()
     }
+    
     response = NewSubmitDoubleVideoHighlightsResponse()
     err = c.Send(request, response)
     return
@@ -1187,6 +1251,7 @@ func NewSubmitFullBodyClassTaskRequest() (request *SubmitFullBodyClassTaskReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "SubmitFullBodyClassTask")
+    
     
     return
 }
@@ -1278,6 +1343,7 @@ func (c *Client) SubmitFullBodyClassTask(request *SubmitFullBodyClassTaskRequest
     if request == nil {
         request = NewSubmitFullBodyClassTaskRequest()
     }
+    
     response = NewSubmitFullBodyClassTaskResponse()
     err = c.Send(request, response)
     return
@@ -1288,6 +1354,7 @@ func NewSubmitHighlightsRequest() (request *SubmitHighlightsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "SubmitHighlights")
+    
     
     return
 }
@@ -1360,6 +1427,7 @@ func (c *Client) SubmitHighlights(request *SubmitHighlightsRequest) (response *S
     if request == nil {
         request = NewSubmitHighlightsRequest()
     }
+    
     response = NewSubmitHighlightsResponse()
     err = c.Send(request, response)
     return
@@ -1370,6 +1438,7 @@ func NewSubmitImageTaskRequest() (request *SubmitImageTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "SubmitImageTask")
+    
     
     return
 }
@@ -1392,6 +1461,7 @@ func (c *Client) SubmitImageTask(request *SubmitImageTaskRequest) (response *Sub
     if request == nil {
         request = NewSubmitImageTaskRequest()
     }
+    
     response = NewSubmitImageTaskResponse()
     err = c.Send(request, response)
     return
@@ -1402,6 +1472,7 @@ func NewSubmitImageTaskPlusRequest() (request *SubmitImageTaskPlusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "SubmitImageTaskPlus")
+    
     
     return
 }
@@ -1492,6 +1563,7 @@ func (c *Client) SubmitImageTaskPlus(request *SubmitImageTaskPlusRequest) (respo
     if request == nil {
         request = NewSubmitImageTaskPlusRequest()
     }
+    
     response = NewSubmitImageTaskPlusResponse()
     err = c.Send(request, response)
     return
@@ -1502,6 +1574,7 @@ func NewSubmitOneByOneClassTaskRequest() (request *SubmitOneByOneClassTaskReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "SubmitOneByOneClassTask")
+    
     
     return
 }
@@ -1595,6 +1668,7 @@ func (c *Client) SubmitOneByOneClassTask(request *SubmitOneByOneClassTaskRequest
     if request == nil {
         request = NewSubmitOneByOneClassTaskRequest()
     }
+    
     response = NewSubmitOneByOneClassTaskResponse()
     err = c.Send(request, response)
     return
@@ -1605,6 +1679,7 @@ func NewSubmitOpenClassTaskRequest() (request *SubmitOpenClassTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "SubmitOpenClassTask")
+    
     
     return
 }
@@ -1697,6 +1772,7 @@ func (c *Client) SubmitOpenClassTask(request *SubmitOpenClassTaskRequest) (respo
     if request == nil {
         request = NewSubmitOpenClassTaskRequest()
     }
+    
     response = NewSubmitOpenClassTaskResponse()
     err = c.Send(request, response)
     return
@@ -1707,6 +1783,7 @@ func NewSubmitPartialBodyClassTaskRequest() (request *SubmitPartialBodyClassTask
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "SubmitPartialBodyClassTask")
+    
     
     return
 }
@@ -1799,6 +1876,7 @@ func (c *Client) SubmitPartialBodyClassTask(request *SubmitPartialBodyClassTaskR
     if request == nil {
         request = NewSubmitPartialBodyClassTaskRequest()
     }
+    
     response = NewSubmitPartialBodyClassTaskResponse()
     err = c.Send(request, response)
     return
@@ -1809,6 +1887,7 @@ func NewSubmitTraditionalClassTaskRequest() (request *SubmitTraditionalClassTask
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "SubmitTraditionalClassTask")
+    
     
     return
 }
@@ -1904,6 +1983,7 @@ func (c *Client) SubmitTraditionalClassTask(request *SubmitTraditionalClassTaskR
     if request == nil {
         request = NewSubmitTraditionalClassTaskRequest()
     }
+    
     response = NewSubmitTraditionalClassTaskResponse()
     err = c.Send(request, response)
     return
@@ -1914,6 +1994,7 @@ func NewTransmitAudioStreamRequest() (request *TransmitAudioStreamRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tci", APIVersion, "TransmitAudioStream")
+    
     
     return
 }
@@ -1944,6 +2025,7 @@ func (c *Client) TransmitAudioStream(request *TransmitAudioStreamRequest) (respo
     if request == nil {
         request = NewTransmitAudioStreamRequest()
     }
+    
     response = NewTransmitAudioStreamResponse()
     err = c.Send(request, response)
     return

@@ -49,6 +49,7 @@ func NewCreateInstanceRequest() (request *CreateInstanceRequest) {
     }
     request.Init().WithApiInfo("es", APIVersion, "CreateInstance")
     
+    
     return
 }
 
@@ -77,6 +78,7 @@ func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *Creat
     if request == nil {
         request = NewCreateInstanceRequest()
     }
+    
     response = NewCreateInstanceResponse()
     err = c.Send(request, response)
     return
@@ -87,6 +89,7 @@ func NewDeleteInstanceRequest() (request *DeleteInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("es", APIVersion, "DeleteInstance")
+    
     
     return
 }
@@ -110,6 +113,7 @@ func (c *Client) DeleteInstance(request *DeleteInstanceRequest) (response *Delet
     if request == nil {
         request = NewDeleteInstanceRequest()
     }
+    
     response = NewDeleteInstanceResponse()
     err = c.Send(request, response)
     return
@@ -120,6 +124,7 @@ func NewDescribeInstanceLogsRequest() (request *DescribeInstanceLogsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("es", APIVersion, "DescribeInstanceLogs")
+    
     
     return
 }
@@ -141,6 +146,7 @@ func (c *Client) DescribeInstanceLogs(request *DescribeInstanceLogsRequest) (res
     if request == nil {
         request = NewDescribeInstanceLogsRequest()
     }
+    
     response = NewDescribeInstanceLogsResponse()
     err = c.Send(request, response)
     return
@@ -151,6 +157,7 @@ func NewDescribeInstanceOperationsRequest() (request *DescribeInstanceOperations
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("es", APIVersion, "DescribeInstanceOperations")
+    
     
     return
 }
@@ -173,6 +180,7 @@ func (c *Client) DescribeInstanceOperations(request *DescribeInstanceOperationsR
     if request == nil {
         request = NewDescribeInstanceOperationsRequest()
     }
+    
     response = NewDescribeInstanceOperationsResponse()
     err = c.Send(request, response)
     return
@@ -183,6 +191,7 @@ func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("es", APIVersion, "DescribeInstances")
+    
     
     return
 }
@@ -205,6 +214,7 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    
     response = NewDescribeInstancesResponse()
     err = c.Send(request, response)
     return
@@ -215,6 +225,7 @@ func NewDiagnoseInstanceRequest() (request *DiagnoseInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("es", APIVersion, "DiagnoseInstance")
+    
     
     return
 }
@@ -240,6 +251,7 @@ func (c *Client) DiagnoseInstance(request *DiagnoseInstanceRequest) (response *D
     if request == nil {
         request = NewDiagnoseInstanceRequest()
     }
+    
     response = NewDiagnoseInstanceResponse()
     err = c.Send(request, response)
     return
@@ -250,6 +262,7 @@ func NewGetRequestTargetNodeTypesRequest() (request *GetRequestTargetNodeTypesRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("es", APIVersion, "GetRequestTargetNodeTypes")
+    
     
     return
 }
@@ -272,6 +285,7 @@ func (c *Client) GetRequestTargetNodeTypes(request *GetRequestTargetNodeTypesReq
     if request == nil {
         request = NewGetRequestTargetNodeTypesRequest()
     }
+    
     response = NewGetRequestTargetNodeTypesResponse()
     err = c.Send(request, response)
     return
@@ -282,6 +296,7 @@ func NewRestartInstanceRequest() (request *RestartInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("es", APIVersion, "RestartInstance")
+    
     
     return
 }
@@ -304,6 +319,7 @@ func (c *Client) RestartInstance(request *RestartInstanceRequest) (response *Res
     if request == nil {
         request = NewRestartInstanceRequest()
     }
+    
     response = NewRestartInstanceResponse()
     err = c.Send(request, response)
     return
@@ -314,6 +330,7 @@ func NewRestartKibanaRequest() (request *RestartKibanaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("es", APIVersion, "RestartKibana")
+    
     
     return
 }
@@ -336,6 +353,7 @@ func (c *Client) RestartKibana(request *RestartKibanaRequest) (response *Restart
     if request == nil {
         request = NewRestartKibanaRequest()
     }
+    
     response = NewRestartKibanaResponse()
     err = c.Send(request, response)
     return
@@ -346,6 +364,7 @@ func NewRestartNodesRequest() (request *RestartNodesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("es", APIVersion, "RestartNodes")
+    
     
     return
 }
@@ -370,6 +389,7 @@ func (c *Client) RestartNodes(request *RestartNodesRequest) (response *RestartNo
     if request == nil {
         request = NewRestartNodesRequest()
     }
+    
     response = NewRestartNodesResponse()
     err = c.Send(request, response)
     return
@@ -380,6 +400,7 @@ func NewUpdateDiagnoseSettingsRequest() (request *UpdateDiagnoseSettingsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("es", APIVersion, "UpdateDiagnoseSettings")
+    
     
     return
 }
@@ -405,6 +426,7 @@ func (c *Client) UpdateDiagnoseSettings(request *UpdateDiagnoseSettingsRequest) 
     if request == nil {
         request = NewUpdateDiagnoseSettingsRequest()
     }
+    
     response = NewUpdateDiagnoseSettingsResponse()
     err = c.Send(request, response)
     return
@@ -415,6 +437,7 @@ func NewUpdateInstanceRequest() (request *UpdateInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("es", APIVersion, "UpdateInstance")
+    
     
     return
 }
@@ -460,6 +483,7 @@ func (c *Client) UpdateInstance(request *UpdateInstanceRequest) (response *Updat
     if request == nil {
         request = NewUpdateInstanceRequest()
     }
+    
     response = NewUpdateInstanceResponse()
     err = c.Send(request, response)
     return
@@ -470,6 +494,7 @@ func NewUpdateJdkRequest() (request *UpdateJdkRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("es", APIVersion, "UpdateJdk")
+    
     
     return
 }
@@ -502,6 +527,7 @@ func (c *Client) UpdateJdk(request *UpdateJdkRequest) (response *UpdateJdkRespon
     if request == nil {
         request = NewUpdateJdkRequest()
     }
+    
     response = NewUpdateJdkResponse()
     err = c.Send(request, response)
     return
@@ -512,6 +538,7 @@ func NewUpdatePluginsRequest() (request *UpdatePluginsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("es", APIVersion, "UpdatePlugins")
+    
     
     return
 }
@@ -540,6 +567,7 @@ func (c *Client) UpdatePlugins(request *UpdatePluginsRequest) (response *UpdateP
     if request == nil {
         request = NewUpdatePluginsRequest()
     }
+    
     response = NewUpdatePluginsResponse()
     err = c.Send(request, response)
     return
@@ -550,6 +578,7 @@ func NewUpdateRequestTargetNodeTypesRequest() (request *UpdateRequestTargetNodeT
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("es", APIVersion, "UpdateRequestTargetNodeTypes")
+    
     
     return
 }
@@ -575,6 +604,7 @@ func (c *Client) UpdateRequestTargetNodeTypes(request *UpdateRequestTargetNodeTy
     if request == nil {
         request = NewUpdateRequestTargetNodeTypesRequest()
     }
+    
     response = NewUpdateRequestTargetNodeTypesResponse()
     err = c.Send(request, response)
     return
@@ -585,6 +615,7 @@ func NewUpgradeInstanceRequest() (request *UpgradeInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("es", APIVersion, "UpgradeInstance")
+    
     
     return
 }
@@ -613,6 +644,7 @@ func (c *Client) UpgradeInstance(request *UpgradeInstanceRequest) (response *Upg
     if request == nil {
         request = NewUpgradeInstanceRequest()
     }
+    
     response = NewUpgradeInstanceResponse()
     err = c.Send(request, response)
     return
@@ -623,6 +655,7 @@ func NewUpgradeLicenseRequest() (request *UpgradeLicenseRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("es", APIVersion, "UpgradeLicense")
+    
     
     return
 }
@@ -649,6 +682,7 @@ func (c *Client) UpgradeLicense(request *UpgradeLicenseRequest) (response *Upgra
     if request == nil {
         request = NewUpgradeLicenseRequest()
     }
+    
     response = NewUpgradeLicenseResponse()
     err = c.Send(request, response)
     return

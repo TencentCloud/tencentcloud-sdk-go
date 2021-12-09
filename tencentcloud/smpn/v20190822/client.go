@@ -49,6 +49,7 @@ func NewCreateSmpnEpaRequest() (request *CreateSmpnEpaRequest) {
     }
     request.Init().WithApiInfo("smpn", APIVersion, "CreateSmpnEpa")
     
+    
     return
 }
 
@@ -71,6 +72,7 @@ func (c *Client) CreateSmpnEpa(request *CreateSmpnEpaRequest) (response *CreateS
     if request == nil {
         request = NewCreateSmpnEpaRequest()
     }
+    
     response = NewCreateSmpnEpaResponse()
     err = c.Send(request, response)
     return
@@ -81,6 +83,7 @@ func NewDescribeSmpnChpRequest() (request *DescribeSmpnChpRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("smpn", APIVersion, "DescribeSmpnChp")
+    
     
     return
 }
@@ -103,6 +106,7 @@ func (c *Client) DescribeSmpnChp(request *DescribeSmpnChpRequest) (response *Des
     if request == nil {
         request = NewDescribeSmpnChpRequest()
     }
+    
     response = NewDescribeSmpnChpResponse()
     err = c.Send(request, response)
     return
@@ -113,6 +117,7 @@ func NewDescribeSmpnFnrRequest() (request *DescribeSmpnFnrRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("smpn", APIVersion, "DescribeSmpnFnr")
+    
     
     return
 }
@@ -135,6 +140,7 @@ func (c *Client) DescribeSmpnFnr(request *DescribeSmpnFnrRequest) (response *Des
     if request == nil {
         request = NewDescribeSmpnFnrRequest()
     }
+    
     response = NewDescribeSmpnFnrResponse()
     err = c.Send(request, response)
     return
@@ -145,6 +151,7 @@ func NewDescribeSmpnMhmRequest() (request *DescribeSmpnMhmRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("smpn", APIVersion, "DescribeSmpnMhm")
+    
     
     return
 }
@@ -167,6 +174,7 @@ func (c *Client) DescribeSmpnMhm(request *DescribeSmpnMhmRequest) (response *Des
     if request == nil {
         request = NewDescribeSmpnMhmRequest()
     }
+    
     response = NewDescribeSmpnMhmResponse()
     err = c.Send(request, response)
     return
@@ -177,6 +185,7 @@ func NewDescribeSmpnMrlRequest() (request *DescribeSmpnMrlRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("smpn", APIVersion, "DescribeSmpnMrl")
+    
     
     return
 }
@@ -199,6 +208,7 @@ func (c *Client) DescribeSmpnMrl(request *DescribeSmpnMrlRequest) (response *Des
     if request == nil {
         request = NewDescribeSmpnMrlRequest()
     }
+    
     response = NewDescribeSmpnMrlResponse()
     err = c.Send(request, response)
     return

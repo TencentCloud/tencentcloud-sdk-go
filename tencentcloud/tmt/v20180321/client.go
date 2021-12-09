@@ -49,6 +49,7 @@ func NewImageTranslateRequest() (request *ImageTranslateRequest) {
     }
     request.Init().WithApiInfo("tmt", APIVersion, "ImageTranslate")
     
+    
     return
 }
 
@@ -86,6 +87,7 @@ func (c *Client) ImageTranslate(request *ImageTranslateRequest) (response *Image
     if request == nil {
         request = NewImageTranslateRequest()
     }
+    
     response = NewImageTranslateResponse()
     err = c.Send(request, response)
     return
@@ -96,6 +98,7 @@ func NewLanguageDetectRequest() (request *LanguageDetectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tmt", APIVersion, "LanguageDetect")
+    
     
     return
 }
@@ -133,6 +136,7 @@ func (c *Client) LanguageDetect(request *LanguageDetectRequest) (response *Langu
     if request == nil {
         request = NewLanguageDetectRequest()
     }
+    
     response = NewLanguageDetectResponse()
     err = c.Send(request, response)
     return
@@ -143,6 +147,7 @@ func NewSpeechTranslateRequest() (request *SpeechTranslateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tmt", APIVersion, "SpeechTranslate")
+    
     
     return
 }
@@ -187,6 +192,7 @@ func (c *Client) SpeechTranslate(request *SpeechTranslateRequest) (response *Spe
     if request == nil {
         request = NewSpeechTranslateRequest()
     }
+    
     response = NewSpeechTranslateResponse()
     err = c.Send(request, response)
     return
@@ -197,6 +203,7 @@ func NewTextTranslateRequest() (request *TextTranslateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tmt", APIVersion, "TextTranslate")
+    
     
     return
 }
@@ -236,6 +243,7 @@ func (c *Client) TextTranslate(request *TextTranslateRequest) (response *TextTra
     if request == nil {
         request = NewTextTranslateRequest()
     }
+    
     response = NewTextTranslateResponse()
     err = c.Send(request, response)
     return
@@ -246,6 +254,7 @@ func NewTextTranslateBatchRequest() (request *TextTranslateBatchRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tmt", APIVersion, "TextTranslateBatch")
+    
     
     return
 }
@@ -282,6 +291,7 @@ func (c *Client) TextTranslateBatch(request *TextTranslateBatchRequest) (respons
     if request == nil {
         request = NewTextTranslateBatchRequest()
     }
+    
     response = NewTextTranslateBatchResponse()
     err = c.Send(request, response)
     return

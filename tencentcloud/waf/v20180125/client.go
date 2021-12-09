@@ -49,6 +49,7 @@ func NewAddCustomRuleRequest() (request *AddCustomRuleRequest) {
     }
     request.Init().WithApiInfo("waf", APIVersion, "AddCustomRule")
     
+    
     return
 }
 
@@ -68,6 +69,7 @@ func (c *Client) AddCustomRule(request *AddCustomRuleRequest) (response *AddCust
     if request == nil {
         request = NewAddCustomRuleRequest()
     }
+    
     response = NewAddCustomRuleResponse()
     err = c.Send(request, response)
     return
@@ -78,6 +80,7 @@ func NewCreateAccessExportRequest() (request *CreateAccessExportRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "CreateAccessExport")
+    
     
     return
 }
@@ -117,6 +120,7 @@ func (c *Client) CreateAccessExport(request *CreateAccessExportRequest) (respons
     if request == nil {
         request = NewCreateAccessExportRequest()
     }
+    
     response = NewCreateAccessExportResponse()
     err = c.Send(request, response)
     return
@@ -127,6 +131,7 @@ func NewCreateAttackDownloadTaskRequest() (request *CreateAttackDownloadTaskRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "CreateAttackDownloadTask")
+    
     
     return
 }
@@ -147,6 +152,7 @@ func (c *Client) CreateAttackDownloadTask(request *CreateAttackDownloadTaskReque
     if request == nil {
         request = NewCreateAttackDownloadTaskRequest()
     }
+    
     response = NewCreateAttackDownloadTaskResponse()
     err = c.Send(request, response)
     return
@@ -157,6 +163,7 @@ func NewDeleteAccessExportRequest() (request *DeleteAccessExportRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "DeleteAccessExport")
+    
     
     return
 }
@@ -196,6 +203,7 @@ func (c *Client) DeleteAccessExport(request *DeleteAccessExportRequest) (respons
     if request == nil {
         request = NewDeleteAccessExportRequest()
     }
+    
     response = NewDeleteAccessExportResponse()
     err = c.Send(request, response)
     return
@@ -206,6 +214,7 @@ func NewDeleteAttackDownloadRecordRequest() (request *DeleteAttackDownloadRecord
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "DeleteAttackDownloadRecord")
+    
     
     return
 }
@@ -227,6 +236,7 @@ func (c *Client) DeleteAttackDownloadRecord(request *DeleteAttackDownloadRecordR
     if request == nil {
         request = NewDeleteAttackDownloadRecordRequest()
     }
+    
     response = NewDeleteAttackDownloadRecordResponse()
     err = c.Send(request, response)
     return
@@ -237,6 +247,7 @@ func NewDeleteDownloadRecordRequest() (request *DeleteDownloadRecordRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "DeleteDownloadRecord")
+    
     
     return
 }
@@ -257,6 +268,7 @@ func (c *Client) DeleteDownloadRecord(request *DeleteDownloadRecordRequest) (res
     if request == nil {
         request = NewDeleteDownloadRecordRequest()
     }
+    
     response = NewDeleteDownloadRecordResponse()
     err = c.Send(request, response)
     return
@@ -267,6 +279,7 @@ func NewDeleteSessionRequest() (request *DeleteSessionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "DeleteSession")
+    
     
     return
 }
@@ -287,6 +300,7 @@ func (c *Client) DeleteSession(request *DeleteSessionRequest) (response *DeleteS
     if request == nil {
         request = NewDeleteSessionRequest()
     }
+    
     response = NewDeleteSessionResponse()
     err = c.Send(request, response)
     return
@@ -297,6 +311,7 @@ func NewDescribeAccessExportsRequest() (request *DescribeAccessExportsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "DescribeAccessExports")
+    
     
     return
 }
@@ -336,6 +351,7 @@ func (c *Client) DescribeAccessExports(request *DescribeAccessExportsRequest) (r
     if request == nil {
         request = NewDescribeAccessExportsRequest()
     }
+    
     response = NewDescribeAccessExportsResponse()
     err = c.Send(request, response)
     return
@@ -346,6 +362,7 @@ func NewDescribeAccessFastAnalysisRequest() (request *DescribeAccessFastAnalysis
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "DescribeAccessFastAnalysis")
+    
     
     return
 }
@@ -385,6 +402,7 @@ func (c *Client) DescribeAccessFastAnalysis(request *DescribeAccessFastAnalysisR
     if request == nil {
         request = NewDescribeAccessFastAnalysisRequest()
     }
+    
     response = NewDescribeAccessFastAnalysisResponse()
     err = c.Send(request, response)
     return
@@ -395,6 +413,7 @@ func NewDescribeAccessIndexRequest() (request *DescribeAccessIndexRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "DescribeAccessIndex")
+    
     
     return
 }
@@ -434,6 +453,7 @@ func (c *Client) DescribeAccessIndex(request *DescribeAccessIndexRequest) (respo
     if request == nil {
         request = NewDescribeAccessIndexRequest()
     }
+    
     response = NewDescribeAccessIndexResponse()
     err = c.Send(request, response)
     return
@@ -444,6 +464,7 @@ func NewDescribeCustomRulesRequest() (request *DescribeCustomRulesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "DescribeCustomRules")
+    
     
     return
 }
@@ -464,6 +485,7 @@ func (c *Client) DescribeCustomRules(request *DescribeCustomRulesRequest) (respo
     if request == nil {
         request = NewDescribeCustomRulesRequest()
     }
+    
     response = NewDescribeCustomRulesResponse()
     err = c.Send(request, response)
     return
@@ -474,6 +496,7 @@ func NewDescribeFlowTrendRequest() (request *DescribeFlowTrendRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "DescribeFlowTrend")
+    
     
     return
 }
@@ -497,6 +520,7 @@ func (c *Client) DescribeFlowTrend(request *DescribeFlowTrendRequest) (response 
     if request == nil {
         request = NewDescribeFlowTrendRequest()
     }
+    
     response = NewDescribeFlowTrendResponse()
     err = c.Send(request, response)
     return
@@ -507,6 +531,7 @@ func NewDescribeUserClbWafRegionsRequest() (request *DescribeUserClbWafRegionsRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "DescribeUserClbWafRegions")
+    
     
     return
 }
@@ -541,6 +566,7 @@ func (c *Client) DescribeUserClbWafRegions(request *DescribeUserClbWafRegionsReq
     if request == nil {
         request = NewDescribeUserClbWafRegionsRequest()
     }
+    
     response = NewDescribeUserClbWafRegionsResponse()
     err = c.Send(request, response)
     return
@@ -551,6 +577,7 @@ func NewModifyAccessPeriodRequest() (request *ModifyAccessPeriodRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "ModifyAccessPeriod")
+    
     
     return
 }
@@ -590,6 +617,7 @@ func (c *Client) ModifyAccessPeriod(request *ModifyAccessPeriodRequest) (respons
     if request == nil {
         request = NewModifyAccessPeriodRequest()
     }
+    
     response = NewModifyAccessPeriodResponse()
     err = c.Send(request, response)
     return
@@ -600,6 +628,7 @@ func NewModifyCustomRuleStatusRequest() (request *ModifyCustomRuleStatusRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "ModifyCustomRuleStatus")
+    
     
     return
 }
@@ -620,6 +649,7 @@ func (c *Client) ModifyCustomRuleStatus(request *ModifyCustomRuleStatusRequest) 
     if request == nil {
         request = NewModifyCustomRuleStatusRequest()
     }
+    
     response = NewModifyCustomRuleStatusResponse()
     err = c.Send(request, response)
     return
@@ -630,6 +660,7 @@ func NewSearchAccessLogRequest() (request *SearchAccessLogRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("waf", APIVersion, "SearchAccessLog")
+    
     
     return
 }
@@ -669,6 +700,7 @@ func (c *Client) SearchAccessLog(request *SearchAccessLogRequest) (response *Sea
     if request == nil {
         request = NewSearchAccessLogRequest()
     }
+    
     response = NewSearchAccessLogResponse()
     err = c.Send(request, response)
     return

@@ -49,6 +49,7 @@ func NewDescribeBRIRequest() (request *DescribeBRIRequest) {
     }
     request.Init().WithApiInfo("bri", APIVersion, "DescribeBRI")
     
+    
     return
 }
 
@@ -113,6 +114,7 @@ func (c *Client) DescribeBRI(request *DescribeBRIRequest) (response *DescribeBRI
     if request == nil {
         request = NewDescribeBRIRequest()
     }
+    
     response = NewDescribeBRIResponse()
     err = c.Send(request, response)
     return

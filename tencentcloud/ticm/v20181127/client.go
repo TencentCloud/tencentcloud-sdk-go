@@ -49,6 +49,7 @@ func NewDescribeVideoTaskRequest() (request *DescribeVideoTaskRequest) {
     }
     request.Init().WithApiInfo("ticm", APIVersion, "DescribeVideoTask")
     
+    
     return
 }
 
@@ -68,6 +69,7 @@ func (c *Client) DescribeVideoTask(request *DescribeVideoTaskRequest) (response 
     if request == nil {
         request = NewDescribeVideoTaskRequest()
     }
+    
     response = NewDescribeVideoTaskResponse()
     err = c.Send(request, response)
     return
@@ -78,6 +80,7 @@ func NewImageModerationRequest() (request *ImageModerationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ticm", APIVersion, "ImageModeration")
+    
     
     return
 }
@@ -104,6 +107,7 @@ func (c *Client) ImageModeration(request *ImageModerationRequest) (response *Ima
     if request == nil {
         request = NewImageModerationRequest()
     }
+    
     response = NewImageModerationResponse()
     err = c.Send(request, response)
     return
@@ -114,6 +118,7 @@ func NewVideoModerationRequest() (request *VideoModerationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ticm", APIVersion, "VideoModeration")
+    
     
     return
 }
@@ -135,6 +140,7 @@ func (c *Client) VideoModeration(request *VideoModerationRequest) (response *Vid
     if request == nil {
         request = NewVideoModerationRequest()
     }
+    
     response = NewVideoModerationResponse()
     err = c.Send(request, response)
     return

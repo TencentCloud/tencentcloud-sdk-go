@@ -49,6 +49,7 @@ func NewCreateClusterRequest() (request *CreateClusterRequest) {
     }
     request.Init().WithApiInfo("thpc", APIVersion, "CreateCluster")
     
+    
     return
 }
 
@@ -71,6 +72,7 @@ func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateC
     if request == nil {
         request = NewCreateClusterRequest()
     }
+    
     response = NewCreateClusterResponse()
     err = c.Send(request, response)
     return
@@ -81,6 +83,7 @@ func NewDeleteClusterRequest() (request *DeleteClusterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("thpc", APIVersion, "DeleteCluster")
+    
     
     return
 }
@@ -102,6 +105,7 @@ func (c *Client) DeleteCluster(request *DeleteClusterRequest) (response *DeleteC
     if request == nil {
         request = NewDeleteClusterRequest()
     }
+    
     response = NewDeleteClusterResponse()
     err = c.Send(request, response)
     return

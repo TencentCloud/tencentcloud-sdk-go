@@ -49,6 +49,7 @@ func NewCreatePictureRequest() (request *CreatePictureRequest) {
     }
     request.Init().WithApiInfo("trtc", APIVersion, "CreatePicture")
     
+    
     return
 }
 
@@ -73,6 +74,7 @@ func (c *Client) CreatePicture(request *CreatePictureRequest) (response *CreateP
     if request == nil {
         request = NewCreatePictureRequest()
     }
+    
     response = NewCreatePictureResponse()
     err = c.Send(request, response)
     return
@@ -83,6 +85,7 @@ func NewCreateTroubleInfoRequest() (request *CreateTroubleInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "CreateTroubleInfo")
+    
     
     return
 }
@@ -109,6 +112,7 @@ func (c *Client) CreateTroubleInfo(request *CreateTroubleInfoRequest) (response 
     if request == nil {
         request = NewCreateTroubleInfoRequest()
     }
+    
     response = NewCreateTroubleInfoResponse()
     err = c.Send(request, response)
     return
@@ -119,6 +123,7 @@ func NewDeletePictureRequest() (request *DeletePictureRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "DeletePicture")
+    
     
     return
 }
@@ -143,6 +148,7 @@ func (c *Client) DeletePicture(request *DeletePictureRequest) (response *DeleteP
     if request == nil {
         request = NewDeletePictureRequest()
     }
+    
     response = NewDeletePictureResponse()
     err = c.Send(request, response)
     return
@@ -153,6 +159,7 @@ func NewDescribeAbnormalEventRequest() (request *DescribeAbnormalEventRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "DescribeAbnormalEvent")
+    
     
     return
 }
@@ -190,6 +197,7 @@ func (c *Client) DescribeAbnormalEvent(request *DescribeAbnormalEventRequest) (r
     if request == nil {
         request = NewDescribeAbnormalEventRequest()
     }
+    
     response = NewDescribeAbnormalEventResponse()
     err = c.Send(request, response)
     return
@@ -200,6 +208,7 @@ func NewDescribeCallDetailRequest() (request *DescribeCallDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "DescribeCallDetail")
+    
     
     return
 }
@@ -241,6 +250,7 @@ func (c *Client) DescribeCallDetail(request *DescribeCallDetailRequest) (respons
     if request == nil {
         request = NewDescribeCallDetailRequest()
     }
+    
     response = NewDescribeCallDetailResponse()
     err = c.Send(request, response)
     return
@@ -251,6 +261,7 @@ func NewDescribeDetailEventRequest() (request *DescribeDetailEventRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "DescribeDetailEvent")
+    
     
     return
 }
@@ -290,6 +301,7 @@ func (c *Client) DescribeDetailEvent(request *DescribeDetailEventRequest) (respo
     if request == nil {
         request = NewDescribeDetailEventRequest()
     }
+    
     response = NewDescribeDetailEventResponse()
     err = c.Send(request, response)
     return
@@ -300,6 +312,7 @@ func NewDescribeHistoryScaleRequest() (request *DescribeHistoryScaleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "DescribeHistoryScale")
+    
     
     return
 }
@@ -333,6 +346,7 @@ func (c *Client) DescribeHistoryScale(request *DescribeHistoryScaleRequest) (res
     if request == nil {
         request = NewDescribeHistoryScaleRequest()
     }
+    
     response = NewDescribeHistoryScaleResponse()
     err = c.Send(request, response)
     return
@@ -343,6 +357,7 @@ func NewDescribePictureRequest() (request *DescribePictureRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "DescribePicture")
+    
     
     return
 }
@@ -368,6 +383,7 @@ func (c *Client) DescribePicture(request *DescribePictureRequest) (response *Des
     if request == nil {
         request = NewDescribePictureRequest()
     }
+    
     response = NewDescribePictureResponse()
     err = c.Send(request, response)
     return
@@ -378,6 +394,7 @@ func NewDescribeRecordStatisticRequest() (request *DescribeRecordStatisticReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "DescribeRecordStatistic")
+    
     
     return
 }
@@ -413,6 +430,7 @@ func (c *Client) DescribeRecordStatistic(request *DescribeRecordStatisticRequest
     if request == nil {
         request = NewDescribeRecordStatisticRequest()
     }
+    
     response = NewDescribeRecordStatisticResponse()
     err = c.Send(request, response)
     return
@@ -423,6 +441,7 @@ func NewDescribeRoomInformationRequest() (request *DescribeRoomInformationReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "DescribeRoomInformation")
+    
     
     return
 }
@@ -466,6 +485,7 @@ func (c *Client) DescribeRoomInformation(request *DescribeRoomInformationRequest
     if request == nil {
         request = NewDescribeRoomInformationRequest()
     }
+    
     response = NewDescribeRoomInformationResponse()
     err = c.Send(request, response)
     return
@@ -476,6 +496,7 @@ func NewDescribeTrtcInteractiveTimeRequest() (request *DescribeTrtcInteractiveTi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "DescribeTrtcInteractiveTime")
+    
     
     return
 }
@@ -507,6 +528,7 @@ func (c *Client) DescribeTrtcInteractiveTime(request *DescribeTrtcInteractiveTim
     if request == nil {
         request = NewDescribeTrtcInteractiveTimeRequest()
     }
+    
     response = NewDescribeTrtcInteractiveTimeResponse()
     err = c.Send(request, response)
     return
@@ -517,6 +539,7 @@ func NewDescribeTrtcMcuTranscodeTimeRequest() (request *DescribeTrtcMcuTranscode
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "DescribeTrtcMcuTranscodeTime")
+    
     
     return
 }
@@ -548,6 +571,7 @@ func (c *Client) DescribeTrtcMcuTranscodeTime(request *DescribeTrtcMcuTranscodeT
     if request == nil {
         request = NewDescribeTrtcMcuTranscodeTimeRequest()
     }
+    
     response = NewDescribeTrtcMcuTranscodeTimeResponse()
     err = c.Send(request, response)
     return
@@ -558,6 +582,7 @@ func NewDescribeUserInformationRequest() (request *DescribeUserInformationReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "DescribeUserInformation")
+    
     
     return
 }
@@ -597,6 +622,7 @@ func (c *Client) DescribeUserInformation(request *DescribeUserInformationRequest
     if request == nil {
         request = NewDescribeUserInformationRequest()
     }
+    
     response = NewDescribeUserInformationResponse()
     err = c.Send(request, response)
     return
@@ -607,6 +633,7 @@ func NewDismissRoomRequest() (request *DismissRoomRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "DismissRoom")
+    
     
     return
 }
@@ -636,6 +663,7 @@ func (c *Client) DismissRoom(request *DismissRoomRequest) (response *DismissRoom
     if request == nil {
         request = NewDismissRoomRequest()
     }
+    
     response = NewDismissRoomResponse()
     err = c.Send(request, response)
     return
@@ -646,6 +674,7 @@ func NewDismissRoomByStrRoomIdRequest() (request *DismissRoomByStrRoomIdRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "DismissRoomByStrRoomId")
+    
     
     return
 }
@@ -674,6 +703,7 @@ func (c *Client) DismissRoomByStrRoomId(request *DismissRoomByStrRoomIdRequest) 
     if request == nil {
         request = NewDismissRoomByStrRoomIdRequest()
     }
+    
     response = NewDismissRoomByStrRoomIdResponse()
     err = c.Send(request, response)
     return
@@ -684,6 +714,7 @@ func NewModifyPictureRequest() (request *ModifyPictureRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "ModifyPicture")
+    
     
     return
 }
@@ -709,6 +740,7 @@ func (c *Client) ModifyPicture(request *ModifyPictureRequest) (response *ModifyP
     if request == nil {
         request = NewModifyPictureRequest()
     }
+    
     response = NewModifyPictureResponse()
     err = c.Send(request, response)
     return
@@ -719,6 +751,7 @@ func NewRemoveUserRequest() (request *RemoveUserRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "RemoveUser")
+    
     
     return
 }
@@ -750,6 +783,7 @@ func (c *Client) RemoveUser(request *RemoveUserRequest) (response *RemoveUserRes
     if request == nil {
         request = NewRemoveUserRequest()
     }
+    
     response = NewRemoveUserResponse()
     err = c.Send(request, response)
     return
@@ -760,6 +794,7 @@ func NewRemoveUserByStrRoomIdRequest() (request *RemoveUserByStrRoomIdRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "RemoveUserByStrRoomId")
+    
     
     return
 }
@@ -790,6 +825,7 @@ func (c *Client) RemoveUserByStrRoomId(request *RemoveUserByStrRoomIdRequest) (r
     if request == nil {
         request = NewRemoveUserByStrRoomIdRequest()
     }
+    
     response = NewRemoveUserByStrRoomIdResponse()
     err = c.Send(request, response)
     return
@@ -800,6 +836,7 @@ func NewStartMCUMixTranscodeRequest() (request *StartMCUMixTranscodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "StartMCUMixTranscode")
+    
     
     return
 }
@@ -891,6 +928,7 @@ func (c *Client) StartMCUMixTranscode(request *StartMCUMixTranscodeRequest) (res
     if request == nil {
         request = NewStartMCUMixTranscodeRequest()
     }
+    
     response = NewStartMCUMixTranscodeResponse()
     err = c.Send(request, response)
     return
@@ -901,6 +939,7 @@ func NewStartMCUMixTranscodeByStrRoomIdRequest() (request *StartMCUMixTranscodeB
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "StartMCUMixTranscodeByStrRoomId")
+    
     
     return
 }
@@ -988,6 +1027,7 @@ func (c *Client) StartMCUMixTranscodeByStrRoomId(request *StartMCUMixTranscodeBy
     if request == nil {
         request = NewStartMCUMixTranscodeByStrRoomIdRequest()
     }
+    
     response = NewStartMCUMixTranscodeByStrRoomIdResponse()
     err = c.Send(request, response)
     return
@@ -998,6 +1038,7 @@ func NewStopMCUMixTranscodeRequest() (request *StopMCUMixTranscodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "StopMCUMixTranscode")
+    
     
     return
 }
@@ -1029,6 +1070,7 @@ func (c *Client) StopMCUMixTranscode(request *StopMCUMixTranscodeRequest) (respo
     if request == nil {
         request = NewStopMCUMixTranscodeRequest()
     }
+    
     response = NewStopMCUMixTranscodeResponse()
     err = c.Send(request, response)
     return
@@ -1039,6 +1081,7 @@ func NewStopMCUMixTranscodeByStrRoomIdRequest() (request *StopMCUMixTranscodeByS
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("trtc", APIVersion, "StopMCUMixTranscodeByStrRoomId")
+    
     
     return
 }
@@ -1070,6 +1113,7 @@ func (c *Client) StopMCUMixTranscodeByStrRoomId(request *StopMCUMixTranscodeBySt
     if request == nil {
         request = NewStopMCUMixTranscodeByStrRoomIdRequest()
     }
+    
     response = NewStopMCUMixTranscodeByStrRoomIdResponse()
     err = c.Send(request, response)
     return

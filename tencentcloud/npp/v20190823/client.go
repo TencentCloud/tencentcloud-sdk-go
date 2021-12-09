@@ -49,6 +49,7 @@ func NewCreateCallBackRequest() (request *CreateCallBackRequest) {
     }
     request.Init().WithApiInfo("npp", APIVersion, "CreateCallBack")
     
+    
     return
 }
 
@@ -65,6 +66,7 @@ func (c *Client) CreateCallBack(request *CreateCallBackRequest) (response *Creat
     if request == nil {
         request = NewCreateCallBackRequest()
     }
+    
     response = NewCreateCallBackResponse()
     err = c.Send(request, response)
     return
@@ -75,6 +77,7 @@ func NewDelVirtualNumRequest() (request *DelVirtualNumRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("npp", APIVersion, "DelVirtualNum")
+    
     
     return
 }
@@ -92,6 +95,7 @@ func (c *Client) DelVirtualNum(request *DelVirtualNumRequest) (response *DelVirt
     if request == nil {
         request = NewDelVirtualNumRequest()
     }
+    
     response = NewDelVirtualNumResponse()
     err = c.Send(request, response)
     return
@@ -102,6 +106,7 @@ func NewDeleteCallBackRequest() (request *DeleteCallBackRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("npp", APIVersion, "DeleteCallBack")
+    
     
     return
 }
@@ -119,6 +124,7 @@ func (c *Client) DeleteCallBack(request *DeleteCallBackRequest) (response *Delet
     if request == nil {
         request = NewDeleteCallBackRequest()
     }
+    
     response = NewDeleteCallBackResponse()
     err = c.Send(request, response)
     return
@@ -129,6 +135,7 @@ func NewDescribeCallBackCdrRequest() (request *DescribeCallBackCdrRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("npp", APIVersion, "DescribeCallBackCdr")
+    
     
     return
 }
@@ -146,6 +153,7 @@ func (c *Client) DescribeCallBackCdr(request *DescribeCallBackCdrRequest) (respo
     if request == nil {
         request = NewDescribeCallBackCdrRequest()
     }
+    
     response = NewDescribeCallBackCdrResponse()
     err = c.Send(request, response)
     return
@@ -156,6 +164,7 @@ func NewDescribeCallBackStatusRequest() (request *DescribeCallBackStatusRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("npp", APIVersion, "DescribeCallBackStatus")
+    
     
     return
 }
@@ -173,6 +182,7 @@ func (c *Client) DescribeCallBackStatus(request *DescribeCallBackStatusRequest) 
     if request == nil {
         request = NewDescribeCallBackStatusRequest()
     }
+    
     response = NewDescribeCallBackStatusResponse()
     err = c.Send(request, response)
     return
@@ -183,6 +193,7 @@ func NewDescribeCallerDisplayListRequest() (request *DescribeCallerDisplayListRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("npp", APIVersion, "DescribeCallerDisplayList")
+    
     
     return
 }
@@ -200,6 +211,7 @@ func (c *Client) DescribeCallerDisplayList(request *DescribeCallerDisplayListReq
     if request == nil {
         request = NewDescribeCallerDisplayListRequest()
     }
+    
     response = NewDescribeCallerDisplayListResponse()
     err = c.Send(request, response)
     return
@@ -210,6 +222,7 @@ func NewGet400CdrRequest() (request *Get400CdrRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("npp", APIVersion, "Get400Cdr")
+    
     
     return
 }
@@ -227,6 +240,7 @@ func (c *Client) Get400Cdr(request *Get400CdrRequest) (response *Get400CdrRespon
     if request == nil {
         request = NewGet400CdrRequest()
     }
+    
     response = NewGet400CdrResponse()
     err = c.Send(request, response)
     return
@@ -237,6 +251,7 @@ func NewGetVirtualNumRequest() (request *GetVirtualNumRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("npp", APIVersion, "GetVirtualNum")
+    
     
     return
 }
@@ -254,6 +269,7 @@ func (c *Client) GetVirtualNum(request *GetVirtualNumRequest) (response *GetVirt
     if request == nil {
         request = NewGetVirtualNumRequest()
     }
+    
     response = NewGetVirtualNumResponse()
     err = c.Send(request, response)
     return

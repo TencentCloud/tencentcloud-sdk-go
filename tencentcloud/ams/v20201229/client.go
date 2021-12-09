@@ -49,6 +49,7 @@ func NewCancelTaskRequest() (request *CancelTaskRequest) {
     }
     request.Init().WithApiInfo("ams", APIVersion, "CancelTask")
     
+    
     return
 }
 
@@ -83,6 +84,7 @@ func (c *Client) CancelTask(request *CancelTaskRequest) (response *CancelTaskRes
     if request == nil {
         request = NewCancelTaskRequest()
     }
+    
     response = NewCancelTaskResponse()
     err = c.Send(request, response)
     return
@@ -93,6 +95,7 @@ func NewCreateAudioModerationSyncTaskRequest() (request *CreateAudioModerationSy
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ams", APIVersion, "CreateAudioModerationSyncTask")
+    
     
     return
 }
@@ -165,6 +168,7 @@ func (c *Client) CreateAudioModerationSyncTask(request *CreateAudioModerationSyn
     if request == nil {
         request = NewCreateAudioModerationSyncTaskRequest()
     }
+    
     response = NewCreateAudioModerationSyncTaskResponse()
     err = c.Send(request, response)
     return
@@ -175,6 +179,7 @@ func NewCreateAudioModerationTaskRequest() (request *CreateAudioModerationTaskRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ams", APIVersion, "CreateAudioModerationTask")
+    
     
     return
 }
@@ -259,6 +264,7 @@ func (c *Client) CreateAudioModerationTask(request *CreateAudioModerationTaskReq
     if request == nil {
         request = NewCreateAudioModerationTaskRequest()
     }
+    
     response = NewCreateAudioModerationTaskResponse()
     err = c.Send(request, response)
     return
@@ -269,6 +275,7 @@ func NewDescribeTaskDetailRequest() (request *DescribeTaskDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ams", APIVersion, "DescribeTaskDetail")
+    
     
     return
 }
@@ -305,6 +312,7 @@ func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (respons
     if request == nil {
         request = NewDescribeTaskDetailRequest()
     }
+    
     response = NewDescribeTaskDetailResponse()
     err = c.Send(request, response)
     return
@@ -315,6 +323,7 @@ func NewDescribeTasksRequest() (request *DescribeTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ams", APIVersion, "DescribeTasks")
+    
     
     return
 }
@@ -350,6 +359,7 @@ func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *Describ
     if request == nil {
         request = NewDescribeTasksRequest()
     }
+    
     response = NewDescribeTasksResponse()
     err = c.Send(request, response)
     return

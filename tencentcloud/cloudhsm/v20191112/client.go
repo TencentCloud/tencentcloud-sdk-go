@@ -49,6 +49,7 @@ func NewDescribeHSMBySubnetIdRequest() (request *DescribeHSMBySubnetIdRequest) {
     }
     request.Init().WithApiInfo("cloudhsm", APIVersion, "DescribeHSMBySubnetId")
     
+    
     return
 }
 
@@ -71,6 +72,7 @@ func (c *Client) DescribeHSMBySubnetId(request *DescribeHSMBySubnetIdRequest) (r
     if request == nil {
         request = NewDescribeHSMBySubnetIdRequest()
     }
+    
     response = NewDescribeHSMBySubnetIdResponse()
     err = c.Send(request, response)
     return
@@ -81,6 +83,7 @@ func NewDescribeHSMByVpcIdRequest() (request *DescribeHSMByVpcIdRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudhsm", APIVersion, "DescribeHSMByVpcId")
+    
     
     return
 }
@@ -104,6 +107,7 @@ func (c *Client) DescribeHSMByVpcId(request *DescribeHSMByVpcIdRequest) (respons
     if request == nil {
         request = NewDescribeHSMByVpcIdRequest()
     }
+    
     response = NewDescribeHSMByVpcIdResponse()
     err = c.Send(request, response)
     return
@@ -114,6 +118,7 @@ func NewDescribeSubnetRequest() (request *DescribeSubnetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudhsm", APIVersion, "DescribeSubnet")
+    
     
     return
 }
@@ -137,6 +142,7 @@ func (c *Client) DescribeSubnet(request *DescribeSubnetRequest) (response *Descr
     if request == nil {
         request = NewDescribeSubnetRequest()
     }
+    
     response = NewDescribeSubnetResponse()
     err = c.Send(request, response)
     return
@@ -147,6 +153,7 @@ func NewDescribeSupportedHsmRequest() (request *DescribeSupportedHsmRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudhsm", APIVersion, "DescribeSupportedHsm")
+    
     
     return
 }
@@ -169,6 +176,7 @@ func (c *Client) DescribeSupportedHsm(request *DescribeSupportedHsmRequest) (res
     if request == nil {
         request = NewDescribeSupportedHsmRequest()
     }
+    
     response = NewDescribeSupportedHsmResponse()
     err = c.Send(request, response)
     return
@@ -179,6 +187,7 @@ func NewDescribeUsgRequest() (request *DescribeUsgRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudhsm", APIVersion, "DescribeUsg")
+    
     
     return
 }
@@ -202,6 +211,7 @@ func (c *Client) DescribeUsg(request *DescribeUsgRequest) (response *DescribeUsg
     if request == nil {
         request = NewDescribeUsgRequest()
     }
+    
     response = NewDescribeUsgResponse()
     err = c.Send(request, response)
     return
@@ -212,6 +222,7 @@ func NewDescribeUsgRuleRequest() (request *DescribeUsgRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudhsm", APIVersion, "DescribeUsgRule")
+    
     
     return
 }
@@ -235,6 +246,7 @@ func (c *Client) DescribeUsgRule(request *DescribeUsgRuleRequest) (response *Des
     if request == nil {
         request = NewDescribeUsgRuleRequest()
     }
+    
     response = NewDescribeUsgRuleResponse()
     err = c.Send(request, response)
     return
@@ -245,6 +257,7 @@ func NewDescribeVpcRequest() (request *DescribeVpcRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudhsm", APIVersion, "DescribeVpc")
+    
     
     return
 }
@@ -268,6 +281,7 @@ func (c *Client) DescribeVpc(request *DescribeVpcRequest) (response *DescribeVpc
     if request == nil {
         request = NewDescribeVpcRequest()
     }
+    
     response = NewDescribeVpcResponse()
     err = c.Send(request, response)
     return
@@ -278,6 +292,7 @@ func NewDescribeVsmAttributesRequest() (request *DescribeVsmAttributesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudhsm", APIVersion, "DescribeVsmAttributes")
+    
     
     return
 }
@@ -301,6 +316,7 @@ func (c *Client) DescribeVsmAttributes(request *DescribeVsmAttributesRequest) (r
     if request == nil {
         request = NewDescribeVsmAttributesRequest()
     }
+    
     response = NewDescribeVsmAttributesResponse()
     err = c.Send(request, response)
     return
@@ -311,6 +327,7 @@ func NewDescribeVsmsRequest() (request *DescribeVsmsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudhsm", APIVersion, "DescribeVsms")
+    
     
     return
 }
@@ -334,6 +351,7 @@ func (c *Client) DescribeVsms(request *DescribeVsmsRequest) (response *DescribeV
     if request == nil {
         request = NewDescribeVsmsRequest()
     }
+    
     response = NewDescribeVsmsResponse()
     err = c.Send(request, response)
     return
@@ -344,6 +362,7 @@ func NewInquiryPriceBuyVsmRequest() (request *InquiryPriceBuyVsmRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudhsm", APIVersion, "InquiryPriceBuyVsm")
+    
     
     return
 }
@@ -367,6 +386,7 @@ func (c *Client) InquiryPriceBuyVsm(request *InquiryPriceBuyVsmRequest) (respons
     if request == nil {
         request = NewInquiryPriceBuyVsmRequest()
     }
+    
     response = NewInquiryPriceBuyVsmResponse()
     err = c.Send(request, response)
     return
@@ -377,6 +397,7 @@ func NewModifyVsmAttributesRequest() (request *ModifyVsmAttributesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudhsm", APIVersion, "ModifyVsmAttributes")
+    
     
     return
 }
@@ -400,6 +421,7 @@ func (c *Client) ModifyVsmAttributes(request *ModifyVsmAttributesRequest) (respo
     if request == nil {
         request = NewModifyVsmAttributesRequest()
     }
+    
     response = NewModifyVsmAttributesResponse()
     err = c.Send(request, response)
     return

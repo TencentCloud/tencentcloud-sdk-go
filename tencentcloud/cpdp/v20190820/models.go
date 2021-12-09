@@ -7129,6 +7129,30 @@ type PayOrderResult struct {
 	// 二维码字符串
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TradeQrcode *string `json:"TradeQrcode,omitempty" name:"TradeQrcode"`
+
+	// 微信返回调起小程序/原生JS支付的appid参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WechatAppId *string `json:"WechatAppId,omitempty" name:"WechatAppId"`
+
+	// 微信返回调起小程序/原生JS支付的timeStamp参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WechatTimeStamp *string `json:"WechatTimeStamp,omitempty" name:"WechatTimeStamp"`
+
+	// 微信返回调起小程序/原生JS支付的nonceStr参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WechatNonceStr *string `json:"WechatNonceStr,omitempty" name:"WechatNonceStr"`
+
+	// 微信返回调起小程序/原生JS支付的signType参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WechatSignType *string `json:"WechatSignType,omitempty" name:"WechatSignType"`
+
+	// 微信返回调起小程序/原生JS支付的package参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WechatPackage *string `json:"WechatPackage,omitempty" name:"WechatPackage"`
+
+	// 微信返回调起小程序/原生JS支付的paySign参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WechatPaySign *string `json:"WechatPaySign,omitempty" name:"WechatPaySign"`
 }
 
 type QueryAcctBindingRequest struct {
@@ -14607,6 +14631,17 @@ type UnifiedTlinxOrderRequest struct {
 
 	// 0-不分账，1-需分账。为1时标记为待分账订单，待分账订单不会进行清算。不传默认为不分账。
 	Royalty *string `json:"Royalty,omitempty" name:"Royalty"`
+
+	// 小程序支付参数：填默认值 1
+	Jsapi *string `json:"Jsapi,omitempty" name:"Jsapi"`
+
+	// 小程序支付参数：
+	// 当前调起支付的小程序APPID
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 小程序支付参数:
+	// 用户在子商户appid下的唯一标识。
+	SubOpenId *string `json:"SubOpenId,omitempty" name:"SubOpenId"`
 }
 
 func (r *UnifiedTlinxOrderRequest) ToJsonString() string {
@@ -14641,6 +14676,9 @@ func (r *UnifiedTlinxOrderRequest) FromJsonString(s string) error {
 	delete(f, "DiscountAmount")
 	delete(f, "PayName")
 	delete(f, "Royalty")
+	delete(f, "Jsapi")
+	delete(f, "SubAppId")
+	delete(f, "SubOpenId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnifiedTlinxOrderRequest has unknown keys!", "")
 	}

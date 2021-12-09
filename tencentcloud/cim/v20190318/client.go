@@ -49,6 +49,7 @@ func NewDescribeSdkAppidRequest() (request *DescribeSdkAppidRequest) {
     }
     request.Init().WithApiInfo("cim", APIVersion, "DescribeSdkAppid")
     
+    
     return
 }
 
@@ -70,6 +71,7 @@ func (c *Client) DescribeSdkAppid(request *DescribeSdkAppidRequest) (response *D
     if request == nil {
         request = NewDescribeSdkAppidRequest()
     }
+    
     response = NewDescribeSdkAppidResponse()
     err = c.Send(request, response)
     return

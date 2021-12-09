@@ -49,6 +49,7 @@ func NewDescribeTransactionsRequest() (request *DescribeTransactionsRequest) {
     }
     request.Init().WithApiInfo("dtf", APIVersion, "DescribeTransactions")
     
+    
     return
 }
 
@@ -69,6 +70,7 @@ func (c *Client) DescribeTransactions(request *DescribeTransactionsRequest) (res
     if request == nil {
         request = NewDescribeTransactionsRequest()
     }
+    
     response = NewDescribeTransactionsResponse()
     err = c.Send(request, response)
     return

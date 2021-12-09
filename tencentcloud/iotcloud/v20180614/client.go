@@ -49,6 +49,7 @@ func NewBatchUpdateFirmwareRequest() (request *BatchUpdateFirmwareRequest) {
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "BatchUpdateFirmware")
     
+    
     return
 }
 
@@ -71,6 +72,7 @@ func (c *Client) BatchUpdateFirmware(request *BatchUpdateFirmwareRequest) (respo
     if request == nil {
         request = NewBatchUpdateFirmwareRequest()
     }
+    
     response = NewBatchUpdateFirmwareResponse()
     err = c.Send(request, response)
     return
@@ -81,6 +83,7 @@ func NewBindDevicesRequest() (request *BindDevicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "BindDevices")
+    
     
     return
 }
@@ -108,6 +111,7 @@ func (c *Client) BindDevices(request *BindDevicesRequest) (response *BindDevices
     if request == nil {
         request = NewBindDevicesRequest()
     }
+    
     response = NewBindDevicesResponse()
     err = c.Send(request, response)
     return
@@ -118,6 +122,7 @@ func NewCancelDeviceFirmwareTaskRequest() (request *CancelDeviceFirmwareTaskRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "CancelDeviceFirmwareTask")
+    
     
     return
 }
@@ -140,6 +145,7 @@ func (c *Client) CancelDeviceFirmwareTask(request *CancelDeviceFirmwareTaskReque
     if request == nil {
         request = NewCancelDeviceFirmwareTaskRequest()
     }
+    
     response = NewCancelDeviceFirmwareTaskResponse()
     err = c.Send(request, response)
     return
@@ -150,6 +156,7 @@ func NewCancelTaskRequest() (request *CancelTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "CancelTask")
+    
     
     return
 }
@@ -173,6 +180,7 @@ func (c *Client) CancelTask(request *CancelTaskRequest) (response *CancelTaskRes
     if request == nil {
         request = NewCancelTaskRequest()
     }
+    
     response = NewCancelTaskResponse()
     err = c.Send(request, response)
     return
@@ -183,6 +191,7 @@ func NewCreateDeviceRequest() (request *CreateDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "CreateDevice")
+    
     
     return
 }
@@ -214,6 +223,7 @@ func (c *Client) CreateDevice(request *CreateDeviceRequest) (response *CreateDev
     if request == nil {
         request = NewCreateDeviceRequest()
     }
+    
     response = NewCreateDeviceResponse()
     err = c.Send(request, response)
     return
@@ -224,6 +234,7 @@ func NewCreateLoraDeviceRequest() (request *CreateLoraDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "CreateLoraDevice")
+    
     
     return
 }
@@ -245,6 +256,7 @@ func (c *Client) CreateLoraDevice(request *CreateLoraDeviceRequest) (response *C
     if request == nil {
         request = NewCreateLoraDeviceRequest()
     }
+    
     response = NewCreateLoraDeviceResponse()
     err = c.Send(request, response)
     return
@@ -255,6 +267,7 @@ func NewCreateMultiDeviceRequest() (request *CreateMultiDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "CreateMultiDevice")
+    
     
     return
 }
@@ -277,6 +290,7 @@ func (c *Client) CreateMultiDevice(request *CreateMultiDeviceRequest) (response 
     if request == nil {
         request = NewCreateMultiDeviceRequest()
     }
+    
     response = NewCreateMultiDeviceResponse()
     err = c.Send(request, response)
     return
@@ -287,6 +301,7 @@ func NewCreateMultiDevicesTaskRequest() (request *CreateMultiDevicesTaskRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "CreateMultiDevicesTask")
+    
     
     return
 }
@@ -310,6 +325,7 @@ func (c *Client) CreateMultiDevicesTask(request *CreateMultiDevicesTaskRequest) 
     if request == nil {
         request = NewCreateMultiDevicesTaskRequest()
     }
+    
     response = NewCreateMultiDevicesTaskResponse()
     err = c.Send(request, response)
     return
@@ -320,6 +336,7 @@ func NewCreateProductRequest() (request *CreateProductRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "CreateProduct")
+    
     
     return
 }
@@ -347,6 +364,7 @@ func (c *Client) CreateProduct(request *CreateProductRequest) (response *CreateP
     if request == nil {
         request = NewCreateProductRequest()
     }
+    
     response = NewCreateProductResponse()
     err = c.Send(request, response)
     return
@@ -357,6 +375,7 @@ func NewCreateTaskRequest() (request *CreateTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "CreateTask")
+    
     
     return
 }
@@ -380,6 +399,7 @@ func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskRes
     if request == nil {
         request = NewCreateTaskRequest()
     }
+    
     response = NewCreateTaskResponse()
     err = c.Send(request, response)
     return
@@ -390,6 +410,7 @@ func NewCreateTaskFileUrlRequest() (request *CreateTaskFileUrlRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "CreateTaskFileUrl")
+    
     
     return
 }
@@ -411,6 +432,7 @@ func (c *Client) CreateTaskFileUrl(request *CreateTaskFileUrlRequest) (response 
     if request == nil {
         request = NewCreateTaskFileUrlRequest()
     }
+    
     response = NewCreateTaskFileUrlResponse()
     err = c.Send(request, response)
     return
@@ -421,6 +443,7 @@ func NewCreateTopicPolicyRequest() (request *CreateTopicPolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "CreateTopicPolicy")
+    
     
     return
 }
@@ -446,6 +469,7 @@ func (c *Client) CreateTopicPolicy(request *CreateTopicPolicyRequest) (response 
     if request == nil {
         request = NewCreateTopicPolicyRequest()
     }
+    
     response = NewCreateTopicPolicyResponse()
     err = c.Send(request, response)
     return
@@ -456,6 +480,7 @@ func NewCreateTopicRuleRequest() (request *CreateTopicRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "CreateTopicRule")
+    
     
     return
 }
@@ -485,6 +510,7 @@ func (c *Client) CreateTopicRule(request *CreateTopicRuleRequest) (response *Cre
     if request == nil {
         request = NewCreateTopicRuleRequest()
     }
+    
     response = NewCreateTopicRuleResponse()
     err = c.Send(request, response)
     return
@@ -495,6 +521,7 @@ func NewDeleteDeviceRequest() (request *DeleteDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DeleteDevice")
+    
     
     return
 }
@@ -521,6 +548,7 @@ func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDev
     if request == nil {
         request = NewDeleteDeviceRequest()
     }
+    
     response = NewDeleteDeviceResponse()
     err = c.Send(request, response)
     return
@@ -531,6 +559,7 @@ func NewDeleteLoraDeviceRequest() (request *DeleteLoraDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DeleteLoraDevice")
+    
     
     return
 }
@@ -552,6 +581,7 @@ func (c *Client) DeleteLoraDevice(request *DeleteLoraDeviceRequest) (response *D
     if request == nil {
         request = NewDeleteLoraDeviceRequest()
     }
+    
     response = NewDeleteLoraDeviceResponse()
     err = c.Send(request, response)
     return
@@ -562,6 +592,7 @@ func NewDeleteProductRequest() (request *DeleteProductRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DeleteProduct")
+    
     
     return
 }
@@ -588,6 +619,7 @@ func (c *Client) DeleteProduct(request *DeleteProductRequest) (response *DeleteP
     if request == nil {
         request = NewDeleteProductRequest()
     }
+    
     response = NewDeleteProductResponse()
     err = c.Send(request, response)
     return
@@ -598,6 +630,7 @@ func NewDeleteTopicRuleRequest() (request *DeleteTopicRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DeleteTopicRule")
+    
     
     return
 }
@@ -620,6 +653,7 @@ func (c *Client) DeleteTopicRule(request *DeleteTopicRuleRequest) (response *Del
     if request == nil {
         request = NewDeleteTopicRuleRequest()
     }
+    
     response = NewDeleteTopicRuleResponse()
     err = c.Send(request, response)
     return
@@ -630,6 +664,7 @@ func NewDescribeAllDevicesRequest() (request *DescribeAllDevicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeAllDevices")
+    
     
     return
 }
@@ -652,6 +687,7 @@ func (c *Client) DescribeAllDevices(request *DescribeAllDevicesRequest) (respons
     if request == nil {
         request = NewDescribeAllDevicesRequest()
     }
+    
     response = NewDescribeAllDevicesResponse()
     err = c.Send(request, response)
     return
@@ -662,6 +698,7 @@ func NewDescribeDeviceRequest() (request *DescribeDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeDevice")
+    
     
     return
 }
@@ -685,6 +722,7 @@ func (c *Client) DescribeDevice(request *DescribeDeviceRequest) (response *Descr
     if request == nil {
         request = NewDescribeDeviceRequest()
     }
+    
     response = NewDescribeDeviceResponse()
     err = c.Send(request, response)
     return
@@ -695,6 +733,7 @@ func NewDescribeDeviceClientKeyRequest() (request *DescribeDeviceClientKeyReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeDeviceClientKey")
+    
     
     return
 }
@@ -720,6 +759,7 @@ func (c *Client) DescribeDeviceClientKey(request *DescribeDeviceClientKeyRequest
     if request == nil {
         request = NewDescribeDeviceClientKeyRequest()
     }
+    
     response = NewDescribeDeviceClientKeyResponse()
     err = c.Send(request, response)
     return
@@ -730,6 +770,7 @@ func NewDescribeDeviceResourceRequest() (request *DescribeDeviceResourceRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeDeviceResource")
+    
     
     return
 }
@@ -753,6 +794,7 @@ func (c *Client) DescribeDeviceResource(request *DescribeDeviceResourceRequest) 
     if request == nil {
         request = NewDescribeDeviceResourceRequest()
     }
+    
     response = NewDescribeDeviceResourceResponse()
     err = c.Send(request, response)
     return
@@ -763,6 +805,7 @@ func NewDescribeDeviceResourcesRequest() (request *DescribeDeviceResourcesReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeDeviceResources")
+    
     
     return
 }
@@ -785,6 +828,7 @@ func (c *Client) DescribeDeviceResources(request *DescribeDeviceResourcesRequest
     if request == nil {
         request = NewDescribeDeviceResourcesRequest()
     }
+    
     response = NewDescribeDeviceResourcesResponse()
     err = c.Send(request, response)
     return
@@ -795,6 +839,7 @@ func NewDescribeDeviceShadowRequest() (request *DescribeDeviceShadowRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeDeviceShadow")
+    
     
     return
 }
@@ -819,6 +864,7 @@ func (c *Client) DescribeDeviceShadow(request *DescribeDeviceShadowRequest) (res
     if request == nil {
         request = NewDescribeDeviceShadowRequest()
     }
+    
     response = NewDescribeDeviceShadowResponse()
     err = c.Send(request, response)
     return
@@ -829,6 +875,7 @@ func NewDescribeDevicesRequest() (request *DescribeDevicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeDevices")
+    
     
     return
 }
@@ -851,6 +898,7 @@ func (c *Client) DescribeDevices(request *DescribeDevicesRequest) (response *Des
     if request == nil {
         request = NewDescribeDevicesRequest()
     }
+    
     response = NewDescribeDevicesResponse()
     err = c.Send(request, response)
     return
@@ -861,6 +909,7 @@ func NewDescribeFirmwareRequest() (request *DescribeFirmwareRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeFirmware")
+    
     
     return
 }
@@ -881,6 +930,7 @@ func (c *Client) DescribeFirmware(request *DescribeFirmwareRequest) (response *D
     if request == nil {
         request = NewDescribeFirmwareRequest()
     }
+    
     response = NewDescribeFirmwareResponse()
     err = c.Send(request, response)
     return
@@ -891,6 +941,7 @@ func NewDescribeFirmwareTaskRequest() (request *DescribeFirmwareTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeFirmwareTask")
+    
     
     return
 }
@@ -911,6 +962,7 @@ func (c *Client) DescribeFirmwareTask(request *DescribeFirmwareTaskRequest) (res
     if request == nil {
         request = NewDescribeFirmwareTaskRequest()
     }
+    
     response = NewDescribeFirmwareTaskResponse()
     err = c.Send(request, response)
     return
@@ -921,6 +973,7 @@ func NewDescribeFirmwareTaskDevicesRequest() (request *DescribeFirmwareTaskDevic
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeFirmwareTaskDevices")
+    
     
     return
 }
@@ -941,6 +994,7 @@ func (c *Client) DescribeFirmwareTaskDevices(request *DescribeFirmwareTaskDevice
     if request == nil {
         request = NewDescribeFirmwareTaskDevicesRequest()
     }
+    
     response = NewDescribeFirmwareTaskDevicesResponse()
     err = c.Send(request, response)
     return
@@ -951,6 +1005,7 @@ func NewDescribeFirmwareTaskDistributionRequest() (request *DescribeFirmwareTask
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeFirmwareTaskDistribution")
+    
     
     return
 }
@@ -971,6 +1026,7 @@ func (c *Client) DescribeFirmwareTaskDistribution(request *DescribeFirmwareTaskD
     if request == nil {
         request = NewDescribeFirmwareTaskDistributionRequest()
     }
+    
     response = NewDescribeFirmwareTaskDistributionResponse()
     err = c.Send(request, response)
     return
@@ -981,6 +1037,7 @@ func NewDescribeFirmwareTaskStatisticsRequest() (request *DescribeFirmwareTaskSt
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeFirmwareTaskStatistics")
+    
     
     return
 }
@@ -1001,6 +1058,7 @@ func (c *Client) DescribeFirmwareTaskStatistics(request *DescribeFirmwareTaskSta
     if request == nil {
         request = NewDescribeFirmwareTaskStatisticsRequest()
     }
+    
     response = NewDescribeFirmwareTaskStatisticsResponse()
     err = c.Send(request, response)
     return
@@ -1011,6 +1069,7 @@ func NewDescribeFirmwareTasksRequest() (request *DescribeFirmwareTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeFirmwareTasks")
+    
     
     return
 }
@@ -1031,6 +1090,7 @@ func (c *Client) DescribeFirmwareTasks(request *DescribeFirmwareTasksRequest) (r
     if request == nil {
         request = NewDescribeFirmwareTasksRequest()
     }
+    
     response = NewDescribeFirmwareTasksResponse()
     err = c.Send(request, response)
     return
@@ -1041,6 +1101,7 @@ func NewDescribeLoraDeviceRequest() (request *DescribeLoraDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeLoraDevice")
+    
     
     return
 }
@@ -1067,6 +1128,7 @@ func (c *Client) DescribeLoraDevice(request *DescribeLoraDeviceRequest) (respons
     if request == nil {
         request = NewDescribeLoraDeviceRequest()
     }
+    
     response = NewDescribeLoraDeviceResponse()
     err = c.Send(request, response)
     return
@@ -1077,6 +1139,7 @@ func NewDescribeMultiDevTaskRequest() (request *DescribeMultiDevTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeMultiDevTask")
+    
     
     return
 }
@@ -1102,6 +1165,7 @@ func (c *Client) DescribeMultiDevTask(request *DescribeMultiDevTaskRequest) (res
     if request == nil {
         request = NewDescribeMultiDevTaskRequest()
     }
+    
     response = NewDescribeMultiDevTaskResponse()
     err = c.Send(request, response)
     return
@@ -1112,6 +1176,7 @@ func NewDescribeMultiDevicesRequest() (request *DescribeMultiDevicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeMultiDevices")
+    
     
     return
 }
@@ -1139,6 +1204,7 @@ func (c *Client) DescribeMultiDevices(request *DescribeMultiDevicesRequest) (res
     if request == nil {
         request = NewDescribeMultiDevicesRequest()
     }
+    
     response = NewDescribeMultiDevicesResponse()
     err = c.Send(request, response)
     return
@@ -1149,6 +1215,7 @@ func NewDescribeProductResourceRequest() (request *DescribeProductResourceReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeProductResource")
+    
     
     return
 }
@@ -1172,6 +1239,7 @@ func (c *Client) DescribeProductResource(request *DescribeProductResourceRequest
     if request == nil {
         request = NewDescribeProductResourceRequest()
     }
+    
     response = NewDescribeProductResourceResponse()
     err = c.Send(request, response)
     return
@@ -1182,6 +1250,7 @@ func NewDescribeProductResourcesRequest() (request *DescribeProductResourcesRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeProductResources")
+    
     
     return
 }
@@ -1206,6 +1275,7 @@ func (c *Client) DescribeProductResources(request *DescribeProductResourcesReque
     if request == nil {
         request = NewDescribeProductResourcesRequest()
     }
+    
     response = NewDescribeProductResourcesResponse()
     err = c.Send(request, response)
     return
@@ -1216,6 +1286,7 @@ func NewDescribeProductTaskRequest() (request *DescribeProductTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeProductTask")
+    
     
     return
 }
@@ -1239,6 +1310,7 @@ func (c *Client) DescribeProductTask(request *DescribeProductTaskRequest) (respo
     if request == nil {
         request = NewDescribeProductTaskRequest()
     }
+    
     response = NewDescribeProductTaskResponse()
     err = c.Send(request, response)
     return
@@ -1249,6 +1321,7 @@ func NewDescribeProductTasksRequest() (request *DescribeProductTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeProductTasks")
+    
     
     return
 }
@@ -1270,6 +1343,7 @@ func (c *Client) DescribeProductTasks(request *DescribeProductTasksRequest) (res
     if request == nil {
         request = NewDescribeProductTasksRequest()
     }
+    
     response = NewDescribeProductTasksResponse()
     err = c.Send(request, response)
     return
@@ -1280,6 +1354,7 @@ func NewDescribeProductsRequest() (request *DescribeProductsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeProducts")
+    
     
     return
 }
@@ -1301,6 +1376,7 @@ func (c *Client) DescribeProducts(request *DescribeProductsRequest) (response *D
     if request == nil {
         request = NewDescribeProductsRequest()
     }
+    
     response = NewDescribeProductsResponse()
     err = c.Send(request, response)
     return
@@ -1311,6 +1387,7 @@ func NewDescribePushResourceTaskStatisticsRequest() (request *DescribePushResour
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribePushResourceTaskStatistics")
+    
     
     return
 }
@@ -1331,6 +1408,7 @@ func (c *Client) DescribePushResourceTaskStatistics(request *DescribePushResourc
     if request == nil {
         request = NewDescribePushResourceTaskStatisticsRequest()
     }
+    
     response = NewDescribePushResourceTaskStatisticsResponse()
     err = c.Send(request, response)
     return
@@ -1341,6 +1419,7 @@ func NewDescribeResourceTasksRequest() (request *DescribeResourceTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeResourceTasks")
+    
     
     return
 }
@@ -1361,6 +1440,7 @@ func (c *Client) DescribeResourceTasks(request *DescribeResourceTasksRequest) (r
     if request == nil {
         request = NewDescribeResourceTasksRequest()
     }
+    
     response = NewDescribeResourceTasksResponse()
     err = c.Send(request, response)
     return
@@ -1371,6 +1451,7 @@ func NewDescribeTaskRequest() (request *DescribeTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeTask")
+    
     
     return
 }
@@ -1393,6 +1474,7 @@ func (c *Client) DescribeTask(request *DescribeTaskRequest) (response *DescribeT
     if request == nil {
         request = NewDescribeTaskRequest()
     }
+    
     response = NewDescribeTaskResponse()
     err = c.Send(request, response)
     return
@@ -1403,6 +1485,7 @@ func NewDescribeTasksRequest() (request *DescribeTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeTasks")
+    
     
     return
 }
@@ -1424,6 +1507,7 @@ func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *Describ
     if request == nil {
         request = NewDescribeTasksRequest()
     }
+    
     response = NewDescribeTasksResponse()
     err = c.Send(request, response)
     return
@@ -1434,6 +1518,7 @@ func NewDisableTopicRuleRequest() (request *DisableTopicRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "DisableTopicRule")
+    
     
     return
 }
@@ -1460,6 +1545,7 @@ func (c *Client) DisableTopicRule(request *DisableTopicRuleRequest) (response *D
     if request == nil {
         request = NewDisableTopicRuleRequest()
     }
+    
     response = NewDisableTopicRuleResponse()
     err = c.Send(request, response)
     return
@@ -1470,6 +1556,7 @@ func NewEditFirmwareRequest() (request *EditFirmwareRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "EditFirmware")
+    
     
     return
 }
@@ -1490,6 +1577,7 @@ func (c *Client) EditFirmware(request *EditFirmwareRequest) (response *EditFirmw
     if request == nil {
         request = NewEditFirmwareRequest()
     }
+    
     response = NewEditFirmwareResponse()
     err = c.Send(request, response)
     return
@@ -1500,6 +1588,7 @@ func NewEnableTopicRuleRequest() (request *EnableTopicRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "EnableTopicRule")
+    
     
     return
 }
@@ -1533,6 +1622,7 @@ func (c *Client) EnableTopicRule(request *EnableTopicRuleRequest) (response *Ena
     if request == nil {
         request = NewEnableTopicRuleRequest()
     }
+    
     response = NewEnableTopicRuleResponse()
     err = c.Send(request, response)
     return
@@ -1543,6 +1633,7 @@ func NewGetCOSURLRequest() (request *GetCOSURLRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "GetCOSURL")
+    
     
     return
 }
@@ -1564,6 +1655,7 @@ func (c *Client) GetCOSURL(request *GetCOSURLRequest) (response *GetCOSURLRespon
     if request == nil {
         request = NewGetCOSURLRequest()
     }
+    
     response = NewGetCOSURLResponse()
     err = c.Send(request, response)
     return
@@ -1574,6 +1666,7 @@ func NewGetUserResourceInfoRequest() (request *GetUserResourceInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "GetUserResourceInfo")
+    
     
     return
 }
@@ -1596,6 +1689,7 @@ func (c *Client) GetUserResourceInfo(request *GetUserResourceInfoRequest) (respo
     if request == nil {
         request = NewGetUserResourceInfoRequest()
     }
+    
     response = NewGetUserResourceInfoResponse()
     err = c.Send(request, response)
     return
@@ -1606,6 +1700,7 @@ func NewPublishAsDeviceRequest() (request *PublishAsDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "PublishAsDevice")
+    
     
     return
 }
@@ -1626,6 +1721,7 @@ func (c *Client) PublishAsDevice(request *PublishAsDeviceRequest) (response *Pub
     if request == nil {
         request = NewPublishAsDeviceRequest()
     }
+    
     response = NewPublishAsDeviceResponse()
     err = c.Send(request, response)
     return
@@ -1636,6 +1732,7 @@ func NewPublishBroadcastMessageRequest() (request *PublishBroadcastMessageReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "PublishBroadcastMessage")
+    
     
     return
 }
@@ -1657,6 +1754,7 @@ func (c *Client) PublishBroadcastMessage(request *PublishBroadcastMessageRequest
     if request == nil {
         request = NewPublishBroadcastMessageRequest()
     }
+    
     response = NewPublishBroadcastMessageResponse()
     err = c.Send(request, response)
     return
@@ -1667,6 +1765,7 @@ func NewPublishMessageRequest() (request *PublishMessageRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "PublishMessage")
+    
     
     return
 }
@@ -1700,6 +1799,7 @@ func (c *Client) PublishMessage(request *PublishMessageRequest) (response *Publi
     if request == nil {
         request = NewPublishMessageRequest()
     }
+    
     response = NewPublishMessageResponse()
     err = c.Send(request, response)
     return
@@ -1710,6 +1810,7 @@ func NewPublishRRPCMessageRequest() (request *PublishRRPCMessageRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "PublishRRPCMessage")
+    
     
     return
 }
@@ -1736,6 +1837,7 @@ func (c *Client) PublishRRPCMessage(request *PublishRRPCMessageRequest) (respons
     if request == nil {
         request = NewPublishRRPCMessageRequest()
     }
+    
     response = NewPublishRRPCMessageResponse()
     err = c.Send(request, response)
     return
@@ -1746,6 +1848,7 @@ func NewPublishToDeviceRequest() (request *PublishToDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "PublishToDevice")
+    
     
     return
 }
@@ -1766,6 +1869,7 @@ func (c *Client) PublishToDevice(request *PublishToDeviceRequest) (response *Pub
     if request == nil {
         request = NewPublishToDeviceRequest()
     }
+    
     response = NewPublishToDeviceResponse()
     err = c.Send(request, response)
     return
@@ -1776,6 +1880,7 @@ func NewReplaceTopicRuleRequest() (request *ReplaceTopicRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "ReplaceTopicRule")
+    
     
     return
 }
@@ -1809,6 +1914,7 @@ func (c *Client) ReplaceTopicRule(request *ReplaceTopicRuleRequest) (response *R
     if request == nil {
         request = NewReplaceTopicRuleRequest()
     }
+    
     response = NewReplaceTopicRuleResponse()
     err = c.Send(request, response)
     return
@@ -1819,6 +1925,7 @@ func NewResetDeviceStateRequest() (request *ResetDeviceStateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "ResetDeviceState")
+    
     
     return
 }
@@ -1842,6 +1949,7 @@ func (c *Client) ResetDeviceState(request *ResetDeviceStateRequest) (response *R
     if request == nil {
         request = NewResetDeviceStateRequest()
     }
+    
     response = NewResetDeviceStateResponse()
     err = c.Send(request, response)
     return
@@ -1852,6 +1960,7 @@ func NewRetryDeviceFirmwareTaskRequest() (request *RetryDeviceFirmwareTaskReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "RetryDeviceFirmwareTask")
+    
     
     return
 }
@@ -1874,6 +1983,7 @@ func (c *Client) RetryDeviceFirmwareTask(request *RetryDeviceFirmwareTaskRequest
     if request == nil {
         request = NewRetryDeviceFirmwareTaskRequest()
     }
+    
     response = NewRetryDeviceFirmwareTaskResponse()
     err = c.Send(request, response)
     return
@@ -1884,6 +1994,7 @@ func NewSetProductsForbiddenStatusRequest() (request *SetProductsForbiddenStatus
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "SetProductsForbiddenStatus")
+    
     
     return
 }
@@ -1906,6 +2017,7 @@ func (c *Client) SetProductsForbiddenStatus(request *SetProductsForbiddenStatusR
     if request == nil {
         request = NewSetProductsForbiddenStatusRequest()
     }
+    
     response = NewSetProductsForbiddenStatusResponse()
     err = c.Send(request, response)
     return
@@ -1916,6 +2028,7 @@ func NewUnbindDevicesRequest() (request *UnbindDevicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "UnbindDevices")
+    
     
     return
 }
@@ -1938,6 +2051,7 @@ func (c *Client) UnbindDevices(request *UnbindDevicesRequest) (response *UnbindD
     if request == nil {
         request = NewUnbindDevicesRequest()
     }
+    
     response = NewUnbindDevicesResponse()
     err = c.Send(request, response)
     return
@@ -1948,6 +2062,7 @@ func NewUpdateDeviceAvailableStateRequest() (request *UpdateDeviceAvailableState
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "UpdateDeviceAvailableState")
+    
     
     return
 }
@@ -1971,6 +2086,7 @@ func (c *Client) UpdateDeviceAvailableState(request *UpdateDeviceAvailableStateR
     if request == nil {
         request = NewUpdateDeviceAvailableStateRequest()
     }
+    
     response = NewUpdateDeviceAvailableStateResponse()
     err = c.Send(request, response)
     return
@@ -1981,6 +2097,7 @@ func NewUpdateDeviceShadowRequest() (request *UpdateDeviceShadowRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "UpdateDeviceShadow")
+    
     
     return
 }
@@ -2009,6 +2126,7 @@ func (c *Client) UpdateDeviceShadow(request *UpdateDeviceShadowRequest) (respons
     if request == nil {
         request = NewUpdateDeviceShadowRequest()
     }
+    
     response = NewUpdateDeviceShadowResponse()
     err = c.Send(request, response)
     return
@@ -2019,6 +2137,7 @@ func NewUpdateDevicesEnableStateRequest() (request *UpdateDevicesEnableStateRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "UpdateDevicesEnableState")
+    
     
     return
 }
@@ -2043,6 +2162,7 @@ func (c *Client) UpdateDevicesEnableState(request *UpdateDevicesEnableStateReque
     if request == nil {
         request = NewUpdateDevicesEnableStateRequest()
     }
+    
     response = NewUpdateDevicesEnableStateResponse()
     err = c.Send(request, response)
     return
@@ -2053,6 +2173,7 @@ func NewUpdateTopicPolicyRequest() (request *UpdateTopicPolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "UpdateTopicPolicy")
+    
     
     return
 }
@@ -2076,6 +2197,7 @@ func (c *Client) UpdateTopicPolicy(request *UpdateTopicPolicyRequest) (response 
     if request == nil {
         request = NewUpdateTopicPolicyRequest()
     }
+    
     response = NewUpdateTopicPolicyResponse()
     err = c.Send(request, response)
     return
@@ -2086,6 +2208,7 @@ func NewUploadFirmwareRequest() (request *UploadFirmwareRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotcloud", APIVersion, "UploadFirmware")
+    
     
     return
 }
@@ -2109,6 +2232,7 @@ func (c *Client) UploadFirmware(request *UploadFirmwareRequest) (response *Uploa
     if request == nil {
         request = NewUploadFirmwareRequest()
     }
+    
     response = NewUploadFirmwareResponse()
     err = c.Send(request, response)
     return

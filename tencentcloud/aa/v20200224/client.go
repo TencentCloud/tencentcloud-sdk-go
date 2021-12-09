@@ -49,6 +49,7 @@ func NewManageMarketingRiskRequest() (request *ManageMarketingRiskRequest) {
     }
     request.Init().WithApiInfo("aa", APIVersion, "ManageMarketingRisk")
     
+    
     return
 }
 
@@ -94,6 +95,7 @@ func (c *Client) ManageMarketingRisk(request *ManageMarketingRiskRequest) (respo
     if request == nil {
         request = NewManageMarketingRiskRequest()
     }
+    
     response = NewManageMarketingRiskResponse()
     err = c.Send(request, response)
     return
@@ -104,6 +106,7 @@ func NewQueryActivityAntiRushRequest() (request *QueryActivityAntiRushRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("aa", APIVersion, "QueryActivityAntiRush")
+    
     
     return
 }
@@ -144,6 +147,7 @@ func (c *Client) QueryActivityAntiRush(request *QueryActivityAntiRushRequest) (r
     if request == nil {
         request = NewQueryActivityAntiRushRequest()
     }
+    
     response = NewQueryActivityAntiRushResponse()
     err = c.Send(request, response)
     return
@@ -154,6 +158,7 @@ func NewQueryActivityAntiRushAdvancedRequest() (request *QueryActivityAntiRushAd
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("aa", APIVersion, "QueryActivityAntiRushAdvanced")
+    
     
     return
 }
@@ -200,6 +205,7 @@ func (c *Client) QueryActivityAntiRushAdvanced(request *QueryActivityAntiRushAdv
     if request == nil {
         request = NewQueryActivityAntiRushAdvancedRequest()
     }
+    
     response = NewQueryActivityAntiRushAdvancedResponse()
     err = c.Send(request, response)
     return

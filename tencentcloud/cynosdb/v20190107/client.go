@@ -49,6 +49,7 @@ func NewAddInstancesRequest() (request *AddInstancesRequest) {
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "AddInstances")
     
+    
     return
 }
 
@@ -87,6 +88,7 @@ func (c *Client) AddInstances(request *AddInstancesRequest) (response *AddInstan
     if request == nil {
         request = NewAddInstancesRequest()
     }
+    
     response = NewAddInstancesResponse()
     err = c.Send(request, response)
     return
@@ -97,6 +99,7 @@ func NewCreateClustersRequest() (request *CreateClustersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "CreateClusters")
+    
     
     return
 }
@@ -138,6 +141,7 @@ func (c *Client) CreateClusters(request *CreateClustersRequest) (response *Creat
     if request == nil {
         request = NewCreateClustersRequest()
     }
+    
     response = NewCreateClustersResponse()
     err = c.Send(request, response)
     return
@@ -148,6 +152,7 @@ func NewDescribeAccountsRequest() (request *DescribeAccountsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeAccounts")
+    
     
     return
 }
@@ -175,6 +180,7 @@ func (c *Client) DescribeAccounts(request *DescribeAccountsRequest) (response *D
     if request == nil {
         request = NewDescribeAccountsRequest()
     }
+    
     response = NewDescribeAccountsResponse()
     err = c.Send(request, response)
     return
@@ -185,6 +191,7 @@ func NewDescribeBackupConfigRequest() (request *DescribeBackupConfigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeBackupConfig")
+    
     
     return
 }
@@ -212,6 +219,7 @@ func (c *Client) DescribeBackupConfig(request *DescribeBackupConfigRequest) (res
     if request == nil {
         request = NewDescribeBackupConfigRequest()
     }
+    
     response = NewDescribeBackupConfigResponse()
     err = c.Send(request, response)
     return
@@ -222,6 +230,7 @@ func NewDescribeBackupListRequest() (request *DescribeBackupListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeBackupList")
+    
     
     return
 }
@@ -249,6 +258,7 @@ func (c *Client) DescribeBackupList(request *DescribeBackupListRequest) (respons
     if request == nil {
         request = NewDescribeBackupListRequest()
     }
+    
     response = NewDescribeBackupListResponse()
     err = c.Send(request, response)
     return
@@ -259,6 +269,7 @@ func NewDescribeClusterDetailRequest() (request *DescribeClusterDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeClusterDetail")
+    
     
     return
 }
@@ -291,6 +302,7 @@ func (c *Client) DescribeClusterDetail(request *DescribeClusterDetailRequest) (r
     if request == nil {
         request = NewDescribeClusterDetailRequest()
     }
+    
     response = NewDescribeClusterDetailResponse()
     err = c.Send(request, response)
     return
@@ -301,6 +313,7 @@ func NewDescribeClusterInstanceGrpsRequest() (request *DescribeClusterInstanceGr
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeClusterInstanceGrps")
+    
     
     return
 }
@@ -325,6 +338,7 @@ func (c *Client) DescribeClusterInstanceGrps(request *DescribeClusterInstanceGrp
     if request == nil {
         request = NewDescribeClusterInstanceGrpsRequest()
     }
+    
     response = NewDescribeClusterInstanceGrpsResponse()
     err = c.Send(request, response)
     return
@@ -335,6 +349,7 @@ func NewDescribeClustersRequest() (request *DescribeClustersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeClusters")
+    
     
     return
 }
@@ -362,6 +377,7 @@ func (c *Client) DescribeClusters(request *DescribeClustersRequest) (response *D
     if request == nil {
         request = NewDescribeClustersRequest()
     }
+    
     response = NewDescribeClustersResponse()
     err = c.Send(request, response)
     return
@@ -372,6 +388,7 @@ func NewDescribeDBSecurityGroupsRequest() (request *DescribeDBSecurityGroupsRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeDBSecurityGroups")
+    
     
     return
 }
@@ -394,6 +411,7 @@ func (c *Client) DescribeDBSecurityGroups(request *DescribeDBSecurityGroupsReque
     if request == nil {
         request = NewDescribeDBSecurityGroupsRequest()
     }
+    
     response = NewDescribeDBSecurityGroupsResponse()
     err = c.Send(request, response)
     return
@@ -404,6 +422,7 @@ func NewDescribeInstanceDetailRequest() (request *DescribeInstanceDetailRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeInstanceDetail")
+    
     
     return
 }
@@ -431,6 +450,7 @@ func (c *Client) DescribeInstanceDetail(request *DescribeInstanceDetailRequest) 
     if request == nil {
         request = NewDescribeInstanceDetailRequest()
     }
+    
     response = NewDescribeInstanceDetailResponse()
     err = c.Send(request, response)
     return
@@ -441,6 +461,7 @@ func NewDescribeInstanceSpecsRequest() (request *DescribeInstanceSpecsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeInstanceSpecs")
+    
     
     return
 }
@@ -463,6 +484,7 @@ func (c *Client) DescribeInstanceSpecs(request *DescribeInstanceSpecsRequest) (r
     if request == nil {
         request = NewDescribeInstanceSpecsRequest()
     }
+    
     response = NewDescribeInstanceSpecsResponse()
     err = c.Send(request, response)
     return
@@ -473,6 +495,7 @@ func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeInstances")
+    
     
     return
 }
@@ -504,6 +527,7 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    
     response = NewDescribeInstancesResponse()
     err = c.Send(request, response)
     return
@@ -514,6 +538,7 @@ func NewDescribeMaintainPeriodRequest() (request *DescribeMaintainPeriodRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeMaintainPeriod")
+    
     
     return
 }
@@ -538,6 +563,7 @@ func (c *Client) DescribeMaintainPeriod(request *DescribeMaintainPeriodRequest) 
     if request == nil {
         request = NewDescribeMaintainPeriodRequest()
     }
+    
     response = NewDescribeMaintainPeriodResponse()
     err = c.Send(request, response)
     return
@@ -548,6 +574,7 @@ func NewDescribeProjectSecurityGroupsRequest() (request *DescribeProjectSecurity
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeProjectSecurityGroups")
+    
     
     return
 }
@@ -571,6 +598,7 @@ func (c *Client) DescribeProjectSecurityGroups(request *DescribeProjectSecurityG
     if request == nil {
         request = NewDescribeProjectSecurityGroupsRequest()
     }
+    
     response = NewDescribeProjectSecurityGroupsResponse()
     err = c.Send(request, response)
     return
@@ -581,6 +609,7 @@ func NewDescribeResourcesByDealNameRequest() (request *DescribeResourcesByDealNa
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeResourcesByDealName")
+    
     
     return
 }
@@ -606,6 +635,7 @@ func (c *Client) DescribeResourcesByDealName(request *DescribeResourcesByDealNam
     if request == nil {
         request = NewDescribeResourcesByDealNameRequest()
     }
+    
     response = NewDescribeResourcesByDealNameResponse()
     err = c.Send(request, response)
     return
@@ -616,6 +646,7 @@ func NewDescribeRollbackTimeRangeRequest() (request *DescribeRollbackTimeRangeRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeRollbackTimeRange")
+    
     
     return
 }
@@ -642,6 +673,7 @@ func (c *Client) DescribeRollbackTimeRange(request *DescribeRollbackTimeRangeReq
     if request == nil {
         request = NewDescribeRollbackTimeRangeRequest()
     }
+    
     response = NewDescribeRollbackTimeRangeResponse()
     err = c.Send(request, response)
     return
@@ -652,6 +684,7 @@ func NewDescribeRollbackTimeValidityRequest() (request *DescribeRollbackTimeVali
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeRollbackTimeValidity")
+    
     
     return
 }
@@ -675,6 +708,7 @@ func (c *Client) DescribeRollbackTimeValidity(request *DescribeRollbackTimeValid
     if request == nil {
         request = NewDescribeRollbackTimeValidityRequest()
     }
+    
     response = NewDescribeRollbackTimeValidityResponse()
     err = c.Send(request, response)
     return
@@ -685,6 +719,7 @@ func NewIsolateClusterRequest() (request *IsolateClusterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "IsolateCluster")
+    
     
     return
 }
@@ -717,6 +752,7 @@ func (c *Client) IsolateCluster(request *IsolateClusterRequest) (response *Isola
     if request == nil {
         request = NewIsolateClusterRequest()
     }
+    
     response = NewIsolateClusterResponse()
     err = c.Send(request, response)
     return
@@ -727,6 +763,7 @@ func NewIsolateInstanceRequest() (request *IsolateInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "IsolateInstance")
+    
     
     return
 }
@@ -756,6 +793,7 @@ func (c *Client) IsolateInstance(request *IsolateInstanceRequest) (response *Iso
     if request == nil {
         request = NewIsolateInstanceRequest()
     }
+    
     response = NewIsolateInstanceResponse()
     err = c.Send(request, response)
     return
@@ -766,6 +804,7 @@ func NewModifyBackupConfigRequest() (request *ModifyBackupConfigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "ModifyBackupConfig")
+    
     
     return
 }
@@ -791,6 +830,7 @@ func (c *Client) ModifyBackupConfig(request *ModifyBackupConfigRequest) (respons
     if request == nil {
         request = NewModifyBackupConfigRequest()
     }
+    
     response = NewModifyBackupConfigResponse()
     err = c.Send(request, response)
     return
@@ -801,6 +841,7 @@ func NewModifyClusterParamRequest() (request *ModifyClusterParamRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "ModifyClusterParam")
+    
     
     return
 }
@@ -828,6 +869,7 @@ func (c *Client) ModifyClusterParam(request *ModifyClusterParamRequest) (respons
     if request == nil {
         request = NewModifyClusterParamRequest()
     }
+    
     response = NewModifyClusterParamResponse()
     err = c.Send(request, response)
     return
@@ -838,6 +880,7 @@ func NewModifyDBInstanceSecurityGroupsRequest() (request *ModifyDBInstanceSecuri
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "ModifyDBInstanceSecurityGroups")
+    
     
     return
 }
@@ -862,6 +905,7 @@ func (c *Client) ModifyDBInstanceSecurityGroups(request *ModifyDBInstanceSecurit
     if request == nil {
         request = NewModifyDBInstanceSecurityGroupsRequest()
     }
+    
     response = NewModifyDBInstanceSecurityGroupsResponse()
     err = c.Send(request, response)
     return
@@ -872,6 +916,7 @@ func NewModifyMaintainPeriodConfigRequest() (request *ModifyMaintainPeriodConfig
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "ModifyMaintainPeriodConfig")
+    
     
     return
 }
@@ -896,6 +941,7 @@ func (c *Client) ModifyMaintainPeriodConfig(request *ModifyMaintainPeriodConfigR
     if request == nil {
         request = NewModifyMaintainPeriodConfigRequest()
     }
+    
     response = NewModifyMaintainPeriodConfigResponse()
     err = c.Send(request, response)
     return
@@ -906,6 +952,7 @@ func NewOfflineClusterRequest() (request *OfflineClusterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "OfflineCluster")
+    
     
     return
 }
@@ -933,6 +980,7 @@ func (c *Client) OfflineCluster(request *OfflineClusterRequest) (response *Offli
     if request == nil {
         request = NewOfflineClusterRequest()
     }
+    
     response = NewOfflineClusterResponse()
     err = c.Send(request, response)
     return
@@ -943,6 +991,7 @@ func NewOfflineInstanceRequest() (request *OfflineInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "OfflineInstance")
+    
     
     return
 }
@@ -972,6 +1021,7 @@ func (c *Client) OfflineInstance(request *OfflineInstanceRequest) (response *Off
     if request == nil {
         request = NewOfflineInstanceRequest()
     }
+    
     response = NewOfflineInstanceResponse()
     err = c.Send(request, response)
     return
@@ -982,6 +1032,7 @@ func NewSetRenewFlagRequest() (request *SetRenewFlagRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "SetRenewFlag")
+    
     
     return
 }
@@ -1016,6 +1067,7 @@ func (c *Client) SetRenewFlag(request *SetRenewFlagRequest) (response *SetRenewF
     if request == nil {
         request = NewSetRenewFlagRequest()
     }
+    
     response = NewSetRenewFlagResponse()
     err = c.Send(request, response)
     return
@@ -1026,6 +1078,7 @@ func NewUpgradeInstanceRequest() (request *UpgradeInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cynosdb", APIVersion, "UpgradeInstance")
+    
     
     return
 }
@@ -1055,6 +1108,7 @@ func (c *Client) UpgradeInstance(request *UpgradeInstanceRequest) (response *Upg
     if request == nil {
         request = NewUpgradeInstanceRequest()
     }
+    
     response = NewUpgradeInstanceResponse()
     err = c.Send(request, response)
     return

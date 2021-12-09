@@ -49,6 +49,7 @@ func NewDescribeStatusRequest() (request *DescribeStatusRequest) {
     }
     request.Init().WithApiInfo("habo", APIVersion, "DescribeStatus")
     
+    
     return
 }
 
@@ -65,6 +66,7 @@ func (c *Client) DescribeStatus(request *DescribeStatusRequest) (response *Descr
     if request == nil {
         request = NewDescribeStatusRequest()
     }
+    
     response = NewDescribeStatusResponse()
     err = c.Send(request, response)
     return
@@ -75,6 +77,7 @@ func NewStartAnalyseRequest() (request *StartAnalyseRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("habo", APIVersion, "StartAnalyse")
+    
     
     return
 }
@@ -92,6 +95,7 @@ func (c *Client) StartAnalyse(request *StartAnalyseRequest) (response *StartAnal
     if request == nil {
         request = NewStartAnalyseRequest()
     }
+    
     response = NewStartAnalyseResponse()
     err = c.Send(request, response)
     return

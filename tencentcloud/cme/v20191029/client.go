@@ -49,6 +49,7 @@ func NewAddTeamMemberRequest() (request *AddTeamMemberRequest) {
     }
     request.Init().WithApiInfo("cme", APIVersion, "AddTeamMember")
     
+    
     return
 }
 
@@ -73,6 +74,7 @@ func (c *Client) AddTeamMember(request *AddTeamMemberRequest) (response *AddTeam
     if request == nil {
         request = NewAddTeamMemberRequest()
     }
+    
     response = NewAddTeamMemberResponse()
     err = c.Send(request, response)
     return
@@ -83,6 +85,7 @@ func NewCopyProjectRequest() (request *CopyProjectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "CopyProject")
+    
     
     return
 }
@@ -108,6 +111,7 @@ func (c *Client) CopyProject(request *CopyProjectRequest) (response *CopyProject
     if request == nil {
         request = NewCopyProjectRequest()
     }
+    
     response = NewCopyProjectResponse()
     err = c.Send(request, response)
     return
@@ -118,6 +122,7 @@ func NewCreateClassRequest() (request *CreateClassRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "CreateClass")
+    
     
     return
 }
@@ -144,6 +149,7 @@ func (c *Client) CreateClass(request *CreateClassRequest) (response *CreateClass
     if request == nil {
         request = NewCreateClassRequest()
     }
+    
     response = NewCreateClassResponse()
     err = c.Send(request, response)
     return
@@ -154,6 +160,7 @@ func NewCreateLinkRequest() (request *CreateLinkRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "CreateLink")
+    
     
     return
 }
@@ -185,6 +192,7 @@ func (c *Client) CreateLink(request *CreateLinkRequest) (response *CreateLinkRes
     if request == nil {
         request = NewCreateLinkRequest()
     }
+    
     response = NewCreateLinkResponse()
     err = c.Send(request, response)
     return
@@ -195,6 +203,7 @@ func NewCreateProjectRequest() (request *CreateProjectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "CreateProject")
+    
     
     return
 }
@@ -243,6 +252,7 @@ func (c *Client) CreateProject(request *CreateProjectRequest) (response *CreateP
     if request == nil {
         request = NewCreateProjectRequest()
     }
+    
     response = NewCreateProjectResponse()
     err = c.Send(request, response)
     return
@@ -253,6 +263,7 @@ func NewCreateTeamRequest() (request *CreateTeamRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "CreateTeam")
+    
     
     return
 }
@@ -279,6 +290,7 @@ func (c *Client) CreateTeam(request *CreateTeamRequest) (response *CreateTeamRes
     if request == nil {
         request = NewCreateTeamRequest()
     }
+    
     response = NewCreateTeamResponse()
     err = c.Send(request, response)
     return
@@ -289,6 +301,7 @@ func NewCreateVideoEncodingPresetRequest() (request *CreateVideoEncodingPresetRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "CreateVideoEncodingPreset")
+    
     
     return
 }
@@ -310,6 +323,7 @@ func (c *Client) CreateVideoEncodingPreset(request *CreateVideoEncodingPresetReq
     if request == nil {
         request = NewCreateVideoEncodingPresetRequest()
     }
+    
     response = NewCreateVideoEncodingPresetResponse()
     err = c.Send(request, response)
     return
@@ -320,6 +334,7 @@ func NewDeleteClassRequest() (request *DeleteClassRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DeleteClass")
+    
     
     return
 }
@@ -349,6 +364,7 @@ func (c *Client) DeleteClass(request *DeleteClassRequest) (response *DeleteClass
     if request == nil {
         request = NewDeleteClassRequest()
     }
+    
     response = NewDeleteClassResponse()
     err = c.Send(request, response)
     return
@@ -359,6 +375,7 @@ func NewDeleteLoginStatusRequest() (request *DeleteLoginStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DeleteLoginStatus")
+    
     
     return
 }
@@ -380,6 +397,7 @@ func (c *Client) DeleteLoginStatus(request *DeleteLoginStatusRequest) (response 
     if request == nil {
         request = NewDeleteLoginStatusRequest()
     }
+    
     response = NewDeleteLoginStatusResponse()
     err = c.Send(request, response)
     return
@@ -390,6 +408,7 @@ func NewDeleteMaterialRequest() (request *DeleteMaterialRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DeleteMaterial")
+    
     
     return
 }
@@ -414,6 +433,7 @@ func (c *Client) DeleteMaterial(request *DeleteMaterialRequest) (response *Delet
     if request == nil {
         request = NewDeleteMaterialRequest()
     }
+    
     response = NewDeleteMaterialResponse()
     err = c.Send(request, response)
     return
@@ -424,6 +444,7 @@ func NewDeleteProjectRequest() (request *DeleteProjectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DeleteProject")
+    
     
     return
 }
@@ -450,6 +471,7 @@ func (c *Client) DeleteProject(request *DeleteProjectRequest) (response *DeleteP
     if request == nil {
         request = NewDeleteProjectRequest()
     }
+    
     response = NewDeleteProjectResponse()
     err = c.Send(request, response)
     return
@@ -460,6 +482,7 @@ func NewDeleteTeamRequest() (request *DeleteTeamRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DeleteTeam")
+    
     
     return
 }
@@ -488,6 +511,7 @@ func (c *Client) DeleteTeam(request *DeleteTeamRequest) (response *DeleteTeamRes
     if request == nil {
         request = NewDeleteTeamRequest()
     }
+    
     response = NewDeleteTeamResponse()
     err = c.Send(request, response)
     return
@@ -498,6 +522,7 @@ func NewDeleteTeamMembersRequest() (request *DeleteTeamMembersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DeleteTeamMembers")
+    
     
     return
 }
@@ -521,6 +546,7 @@ func (c *Client) DeleteTeamMembers(request *DeleteTeamMembersRequest) (response 
     if request == nil {
         request = NewDeleteTeamMembersRequest()
     }
+    
     response = NewDeleteTeamMembersResponse()
     err = c.Send(request, response)
     return
@@ -531,6 +557,7 @@ func NewDeleteVideoEncodingPresetRequest() (request *DeleteVideoEncodingPresetRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DeleteVideoEncodingPreset")
+    
     
     return
 }
@@ -552,6 +579,7 @@ func (c *Client) DeleteVideoEncodingPreset(request *DeleteVideoEncodingPresetReq
     if request == nil {
         request = NewDeleteVideoEncodingPresetRequest()
     }
+    
     response = NewDeleteVideoEncodingPresetResponse()
     err = c.Send(request, response)
     return
@@ -562,6 +590,7 @@ func NewDescribeAccountsRequest() (request *DescribeAccountsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DescribeAccounts")
+    
     
     return
 }
@@ -594,6 +623,7 @@ func (c *Client) DescribeAccounts(request *DescribeAccountsRequest) (response *D
     if request == nil {
         request = NewDescribeAccountsRequest()
     }
+    
     response = NewDescribeAccountsResponse()
     err = c.Send(request, response)
     return
@@ -604,6 +634,7 @@ func NewDescribeClassRequest() (request *DescribeClassRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DescribeClass")
+    
     
     return
 }
@@ -628,6 +659,7 @@ func (c *Client) DescribeClass(request *DescribeClassRequest) (response *Describ
     if request == nil {
         request = NewDescribeClassRequest()
     }
+    
     response = NewDescribeClassResponse()
     err = c.Send(request, response)
     return
@@ -638,6 +670,7 @@ func NewDescribeJoinTeamsRequest() (request *DescribeJoinTeamsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DescribeJoinTeams")
+    
     
     return
 }
@@ -663,6 +696,7 @@ func (c *Client) DescribeJoinTeams(request *DescribeJoinTeamsRequest) (response 
     if request == nil {
         request = NewDescribeJoinTeamsRequest()
     }
+    
     response = NewDescribeJoinTeamsResponse()
     err = c.Send(request, response)
     return
@@ -673,6 +707,7 @@ func NewDescribeLoginStatusRequest() (request *DescribeLoginStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DescribeLoginStatus")
+    
     
     return
 }
@@ -695,6 +730,7 @@ func (c *Client) DescribeLoginStatus(request *DescribeLoginStatusRequest) (respo
     if request == nil {
         request = NewDescribeLoginStatusRequest()
     }
+    
     response = NewDescribeLoginStatusResponse()
     err = c.Send(request, response)
     return
@@ -705,6 +741,7 @@ func NewDescribeMaterialsRequest() (request *DescribeMaterialsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DescribeMaterials")
+    
     
     return
 }
@@ -730,6 +767,7 @@ func (c *Client) DescribeMaterials(request *DescribeMaterialsRequest) (response 
     if request == nil {
         request = NewDescribeMaterialsRequest()
     }
+    
     response = NewDescribeMaterialsResponse()
     err = c.Send(request, response)
     return
@@ -740,6 +778,7 @@ func NewDescribePlatformsRequest() (request *DescribePlatformsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DescribePlatforms")
+    
     
     return
 }
@@ -771,6 +810,7 @@ func (c *Client) DescribePlatforms(request *DescribePlatformsRequest) (response 
     if request == nil {
         request = NewDescribePlatformsRequest()
     }
+    
     response = NewDescribePlatformsResponse()
     err = c.Send(request, response)
     return
@@ -781,6 +821,7 @@ func NewDescribeProjectsRequest() (request *DescribeProjectsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DescribeProjects")
+    
     
     return
 }
@@ -812,6 +853,7 @@ func (c *Client) DescribeProjects(request *DescribeProjectsRequest) (response *D
     if request == nil {
         request = NewDescribeProjectsRequest()
     }
+    
     response = NewDescribeProjectsResponse()
     err = c.Send(request, response)
     return
@@ -822,6 +864,7 @@ func NewDescribeResourceAuthorizationRequest() (request *DescribeResourceAuthori
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DescribeResourceAuthorization")
+    
     
     return
 }
@@ -847,6 +890,7 @@ func (c *Client) DescribeResourceAuthorization(request *DescribeResourceAuthoriz
     if request == nil {
         request = NewDescribeResourceAuthorizationRequest()
     }
+    
     response = NewDescribeResourceAuthorizationResponse()
     err = c.Send(request, response)
     return
@@ -857,6 +901,7 @@ func NewDescribeSharedSpaceRequest() (request *DescribeSharedSpaceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DescribeSharedSpace")
+    
     
     return
 }
@@ -879,6 +924,7 @@ func (c *Client) DescribeSharedSpace(request *DescribeSharedSpaceRequest) (respo
     if request == nil {
         request = NewDescribeSharedSpaceRequest()
     }
+    
     response = NewDescribeSharedSpaceResponse()
     err = c.Send(request, response)
     return
@@ -889,6 +935,7 @@ func NewDescribeTaskDetailRequest() (request *DescribeTaskDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DescribeTaskDetail")
+    
     
     return
 }
@@ -917,6 +964,7 @@ func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (respons
     if request == nil {
         request = NewDescribeTaskDetailRequest()
     }
+    
     response = NewDescribeTaskDetailResponse()
     err = c.Send(request, response)
     return
@@ -927,6 +975,7 @@ func NewDescribeTasksRequest() (request *DescribeTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DescribeTasks")
+    
     
     return
 }
@@ -950,6 +999,7 @@ func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *Describ
     if request == nil {
         request = NewDescribeTasksRequest()
     }
+    
     response = NewDescribeTasksResponse()
     err = c.Send(request, response)
     return
@@ -960,6 +1010,7 @@ func NewDescribeTeamMembersRequest() (request *DescribeTeamMembersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DescribeTeamMembers")
+    
     
     return
 }
@@ -988,6 +1039,7 @@ func (c *Client) DescribeTeamMembers(request *DescribeTeamMembersRequest) (respo
     if request == nil {
         request = NewDescribeTeamMembersRequest()
     }
+    
     response = NewDescribeTeamMembersResponse()
     err = c.Send(request, response)
     return
@@ -998,6 +1050,7 @@ func NewDescribeTeamsRequest() (request *DescribeTeamsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DescribeTeams")
+    
     
     return
 }
@@ -1024,6 +1077,7 @@ func (c *Client) DescribeTeams(request *DescribeTeamsRequest) (response *Describ
     if request == nil {
         request = NewDescribeTeamsRequest()
     }
+    
     response = NewDescribeTeamsResponse()
     err = c.Send(request, response)
     return
@@ -1034,6 +1088,7 @@ func NewDescribeVideoEncodingPresetsRequest() (request *DescribeVideoEncodingPre
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "DescribeVideoEncodingPresets")
+    
     
     return
 }
@@ -1055,6 +1110,7 @@ func (c *Client) DescribeVideoEncodingPresets(request *DescribeVideoEncodingPres
     if request == nil {
         request = NewDescribeVideoEncodingPresetsRequest()
     }
+    
     response = NewDescribeVideoEncodingPresetsResponse()
     err = c.Send(request, response)
     return
@@ -1065,6 +1121,7 @@ func NewExportVideoByEditorTrackDataRequest() (request *ExportVideoByEditorTrack
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "ExportVideoByEditorTrackData")
+    
     
     return
 }
@@ -1101,6 +1158,7 @@ func (c *Client) ExportVideoByEditorTrackData(request *ExportVideoByEditorTrackD
     if request == nil {
         request = NewExportVideoByEditorTrackDataRequest()
     }
+    
     response = NewExportVideoByEditorTrackDataResponse()
     err = c.Send(request, response)
     return
@@ -1111,6 +1169,7 @@ func NewExportVideoByTemplateRequest() (request *ExportVideoByTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "ExportVideoByTemplate")
+    
     
     return
 }
@@ -1149,6 +1208,7 @@ func (c *Client) ExportVideoByTemplate(request *ExportVideoByTemplateRequest) (r
     if request == nil {
         request = NewExportVideoByTemplateRequest()
     }
+    
     response = NewExportVideoByTemplateResponse()
     err = c.Send(request, response)
     return
@@ -1159,6 +1219,7 @@ func NewExportVideoByVideoSegmentationDataRequest() (request *ExportVideoByVideo
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "ExportVideoByVideoSegmentationData")
+    
     
     return
 }
@@ -1186,6 +1247,7 @@ func (c *Client) ExportVideoByVideoSegmentationData(request *ExportVideoByVideoS
     if request == nil {
         request = NewExportVideoByVideoSegmentationDataRequest()
     }
+    
     response = NewExportVideoByVideoSegmentationDataResponse()
     err = c.Send(request, response)
     return
@@ -1196,6 +1258,7 @@ func NewExportVideoEditProjectRequest() (request *ExportVideoEditProjectRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "ExportVideoEditProject")
+    
     
     return
 }
@@ -1233,6 +1296,7 @@ func (c *Client) ExportVideoEditProject(request *ExportVideoEditProjectRequest) 
     if request == nil {
         request = NewExportVideoEditProjectRequest()
     }
+    
     response = NewExportVideoEditProjectResponse()
     err = c.Send(request, response)
     return
@@ -1243,6 +1307,7 @@ func NewFlattenListMediaRequest() (request *FlattenListMediaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "FlattenListMedia")
+    
     
     return
 }
@@ -1270,6 +1335,7 @@ func (c *Client) FlattenListMedia(request *FlattenListMediaRequest) (response *F
     if request == nil {
         request = NewFlattenListMediaRequest()
     }
+    
     response = NewFlattenListMediaResponse()
     err = c.Send(request, response)
     return
@@ -1280,6 +1346,7 @@ func NewGenerateVideoSegmentationSchemeByAiRequest() (request *GenerateVideoSegm
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "GenerateVideoSegmentationSchemeByAi")
+    
     
     return
 }
@@ -1309,6 +1376,7 @@ func (c *Client) GenerateVideoSegmentationSchemeByAi(request *GenerateVideoSegme
     if request == nil {
         request = NewGenerateVideoSegmentationSchemeByAiRequest()
     }
+    
     response = NewGenerateVideoSegmentationSchemeByAiResponse()
     err = c.Send(request, response)
     return
@@ -1319,6 +1387,7 @@ func NewGrantResourceAuthorizationRequest() (request *GrantResourceAuthorization
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "GrantResourceAuthorization")
+    
     
     return
 }
@@ -1343,6 +1412,7 @@ func (c *Client) GrantResourceAuthorization(request *GrantResourceAuthorizationR
     if request == nil {
         request = NewGrantResourceAuthorizationRequest()
     }
+    
     response = NewGrantResourceAuthorizationResponse()
     err = c.Send(request, response)
     return
@@ -1353,6 +1423,7 @@ func NewHandleStreamConnectProjectRequest() (request *HandleStreamConnectProject
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "HandleStreamConnectProject")
+    
     
     return
 }
@@ -1416,6 +1487,7 @@ func (c *Client) HandleStreamConnectProject(request *HandleStreamConnectProjectR
     if request == nil {
         request = NewHandleStreamConnectProjectRequest()
     }
+    
     response = NewHandleStreamConnectProjectResponse()
     err = c.Send(request, response)
     return
@@ -1426,6 +1498,7 @@ func NewImportMaterialRequest() (request *ImportMaterialRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "ImportMaterial")
+    
     
     return
 }
@@ -1461,6 +1534,7 @@ func (c *Client) ImportMaterial(request *ImportMaterialRequest) (response *Impor
     if request == nil {
         request = NewImportMaterialRequest()
     }
+    
     response = NewImportMaterialResponse()
     err = c.Send(request, response)
     return
@@ -1471,6 +1545,7 @@ func NewImportMediaToProjectRequest() (request *ImportMediaToProjectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "ImportMediaToProject")
+    
     
     return
 }
@@ -1502,6 +1577,7 @@ func (c *Client) ImportMediaToProject(request *ImportMediaToProjectRequest) (res
     if request == nil {
         request = NewImportMediaToProjectRequest()
     }
+    
     response = NewImportMediaToProjectResponse()
     err = c.Send(request, response)
     return
@@ -1512,6 +1588,7 @@ func NewListMediaRequest() (request *ListMediaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "ListMedia")
+    
     
     return
 }
@@ -1540,6 +1617,7 @@ func (c *Client) ListMedia(request *ListMediaRequest) (response *ListMediaRespon
     if request == nil {
         request = NewListMediaRequest()
     }
+    
     response = NewListMediaResponse()
     err = c.Send(request, response)
     return
@@ -1550,6 +1628,7 @@ func NewModifyMaterialRequest() (request *ModifyMaterialRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "ModifyMaterial")
+    
     
     return
 }
@@ -1575,6 +1654,7 @@ func (c *Client) ModifyMaterial(request *ModifyMaterialRequest) (response *Modif
     if request == nil {
         request = NewModifyMaterialRequest()
     }
+    
     response = NewModifyMaterialResponse()
     err = c.Send(request, response)
     return
@@ -1585,6 +1665,7 @@ func NewModifyProjectRequest() (request *ModifyProjectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "ModifyProject")
+    
     
     return
 }
@@ -1614,6 +1695,7 @@ func (c *Client) ModifyProject(request *ModifyProjectRequest) (response *ModifyP
     if request == nil {
         request = NewModifyProjectRequest()
     }
+    
     response = NewModifyProjectResponse()
     err = c.Send(request, response)
     return
@@ -1624,6 +1706,7 @@ func NewModifyTeamRequest() (request *ModifyTeamRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "ModifyTeam")
+    
     
     return
 }
@@ -1651,6 +1734,7 @@ func (c *Client) ModifyTeam(request *ModifyTeamRequest) (response *ModifyTeamRes
     if request == nil {
         request = NewModifyTeamRequest()
     }
+    
     response = NewModifyTeamResponse()
     err = c.Send(request, response)
     return
@@ -1661,6 +1745,7 @@ func NewModifyTeamMemberRequest() (request *ModifyTeamMemberRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "ModifyTeamMember")
+    
     
     return
 }
@@ -1687,6 +1772,7 @@ func (c *Client) ModifyTeamMember(request *ModifyTeamMemberRequest) (response *M
     if request == nil {
         request = NewModifyTeamMemberRequest()
     }
+    
     response = NewModifyTeamMemberResponse()
     err = c.Send(request, response)
     return
@@ -1697,6 +1783,7 @@ func NewModifyVideoEncodingPresetRequest() (request *ModifyVideoEncodingPresetRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "ModifyVideoEncodingPreset")
+    
     
     return
 }
@@ -1723,6 +1810,7 @@ func (c *Client) ModifyVideoEncodingPreset(request *ModifyVideoEncodingPresetReq
     if request == nil {
         request = NewModifyVideoEncodingPresetRequest()
     }
+    
     response = NewModifyVideoEncodingPresetResponse()
     err = c.Send(request, response)
     return
@@ -1733,6 +1821,7 @@ func NewMoveClassRequest() (request *MoveClassRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "MoveClass")
+    
     
     return
 }
@@ -1765,6 +1854,7 @@ func (c *Client) MoveClass(request *MoveClassRequest) (response *MoveClassRespon
     if request == nil {
         request = NewMoveClassRequest()
     }
+    
     response = NewMoveClassResponse()
     err = c.Send(request, response)
     return
@@ -1775,6 +1865,7 @@ func NewMoveResourceRequest() (request *MoveResourceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "MoveResource")
+    
     
     return
 }
@@ -1810,6 +1901,7 @@ func (c *Client) MoveResource(request *MoveResourceRequest) (response *MoveResou
     if request == nil {
         request = NewMoveResourceRequest()
     }
+    
     response = NewMoveResourceResponse()
     err = c.Send(request, response)
     return
@@ -1820,6 +1912,7 @@ func NewParseEventRequest() (request *ParseEventRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "ParseEvent")
+    
     
     return
 }
@@ -1843,6 +1936,7 @@ func (c *Client) ParseEvent(request *ParseEventRequest) (response *ParseEventRes
     if request == nil {
         request = NewParseEventRequest()
     }
+    
     response = NewParseEventResponse()
     err = c.Send(request, response)
     return
@@ -1853,6 +1947,7 @@ func NewRevokeResourceAuthorizationRequest() (request *RevokeResourceAuthorizati
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "RevokeResourceAuthorization")
+    
     
     return
 }
@@ -1876,6 +1971,7 @@ func (c *Client) RevokeResourceAuthorization(request *RevokeResourceAuthorizatio
     if request == nil {
         request = NewRevokeResourceAuthorizationRequest()
     }
+    
     response = NewRevokeResourceAuthorizationResponse()
     err = c.Send(request, response)
     return
@@ -1886,6 +1982,7 @@ func NewSearchMaterialRequest() (request *SearchMaterialRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cme", APIVersion, "SearchMaterial")
+    
     
     return
 }
@@ -1914,6 +2011,7 @@ func (c *Client) SearchMaterial(request *SearchMaterialRequest) (response *Searc
     if request == nil {
         request = NewSearchMaterialRequest()
     }
+    
     response = NewSearchMaterialResponse()
     err = c.Send(request, response)
     return

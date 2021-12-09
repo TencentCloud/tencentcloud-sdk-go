@@ -49,6 +49,7 @@ func NewTextModerationRequest() (request *TextModerationRequest) {
     }
     request.Init().WithApiInfo("tms", APIVersion, "TextModeration")
     
+    
     return
 }
 
@@ -106,6 +107,7 @@ func (c *Client) TextModeration(request *TextModerationRequest) (response *TextM
     if request == nil {
         request = NewTextModerationRequest()
     }
+    
     response = NewTextModerationResponse()
     err = c.Send(request, response)
     return

@@ -49,6 +49,7 @@ func NewActivateSubscribeRequest() (request *ActivateSubscribeRequest) {
     }
     request.Init().WithApiInfo("dts", APIVersion, "ActivateSubscribe")
     
+    
     return
 }
 
@@ -75,6 +76,7 @@ func (c *Client) ActivateSubscribe(request *ActivateSubscribeRequest) (response 
     if request == nil {
         request = NewActivateSubscribeRequest()
     }
+    
     response = NewActivateSubscribeResponse()
     err = c.Send(request, response)
     return
@@ -85,6 +87,7 @@ func NewCompleteMigrateJobRequest() (request *CompleteMigrateJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "CompleteMigrateJob")
+    
     
     return
 }
@@ -116,6 +119,7 @@ func (c *Client) CompleteMigrateJob(request *CompleteMigrateJobRequest) (respons
     if request == nil {
         request = NewCompleteMigrateJobRequest()
     }
+    
     response = NewCompleteMigrateJobResponse()
     err = c.Send(request, response)
     return
@@ -126,6 +130,7 @@ func NewCreateMigrateCheckJobRequest() (request *CreateMigrateCheckJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "CreateMigrateCheckJob")
+    
     
     return
 }
@@ -161,6 +166,7 @@ func (c *Client) CreateMigrateCheckJob(request *CreateMigrateCheckJobRequest) (r
     if request == nil {
         request = NewCreateMigrateCheckJobRequest()
     }
+    
     response = NewCreateMigrateCheckJobResponse()
     err = c.Send(request, response)
     return
@@ -171,6 +177,7 @@ func NewCreateMigrateJobRequest() (request *CreateMigrateJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "CreateMigrateJob")
+    
     
     return
 }
@@ -201,6 +208,7 @@ func (c *Client) CreateMigrateJob(request *CreateMigrateJobRequest) (response *C
     if request == nil {
         request = NewCreateMigrateJobRequest()
     }
+    
     response = NewCreateMigrateJobResponse()
     err = c.Send(request, response)
     return
@@ -211,6 +219,7 @@ func NewCreateSubscribeRequest() (request *CreateSubscribeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "CreateSubscribe")
+    
     
     return
 }
@@ -234,6 +243,7 @@ func (c *Client) CreateSubscribe(request *CreateSubscribeRequest) (response *Cre
     if request == nil {
         request = NewCreateSubscribeRequest()
     }
+    
     response = NewCreateSubscribeResponse()
     err = c.Send(request, response)
     return
@@ -244,6 +254,7 @@ func NewDeleteMigrateJobRequest() (request *DeleteMigrateJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "DeleteMigrateJob")
+    
     
     return
 }
@@ -270,6 +281,7 @@ func (c *Client) DeleteMigrateJob(request *DeleteMigrateJobRequest) (response *D
     if request == nil {
         request = NewDeleteMigrateJobRequest()
     }
+    
     response = NewDeleteMigrateJobResponse()
     err = c.Send(request, response)
     return
@@ -280,6 +292,7 @@ func NewDescribeAsyncRequestInfoRequest() (request *DescribeAsyncRequestInfoRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "DescribeAsyncRequestInfo")
+    
     
     return
 }
@@ -304,6 +317,7 @@ func (c *Client) DescribeAsyncRequestInfo(request *DescribeAsyncRequestInfoReque
     if request == nil {
         request = NewDescribeAsyncRequestInfoRequest()
     }
+    
     response = NewDescribeAsyncRequestInfoResponse()
     err = c.Send(request, response)
     return
@@ -314,6 +328,7 @@ func NewDescribeMigrateCheckJobRequest() (request *DescribeMigrateCheckJobReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "DescribeMigrateCheckJob")
+    
     
     return
 }
@@ -342,6 +357,7 @@ func (c *Client) DescribeMigrateCheckJob(request *DescribeMigrateCheckJobRequest
     if request == nil {
         request = NewDescribeMigrateCheckJobRequest()
     }
+    
     response = NewDescribeMigrateCheckJobResponse()
     err = c.Send(request, response)
     return
@@ -352,6 +368,7 @@ func NewDescribeMigrateJobsRequest() (request *DescribeMigrateJobsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "DescribeMigrateJobs")
+    
     
     return
 }
@@ -378,6 +395,7 @@ func (c *Client) DescribeMigrateJobs(request *DescribeMigrateJobsRequest) (respo
     if request == nil {
         request = NewDescribeMigrateJobsRequest()
     }
+    
     response = NewDescribeMigrateJobsResponse()
     err = c.Send(request, response)
     return
@@ -388,6 +406,7 @@ func NewDescribeRegionConfRequest() (request *DescribeRegionConfRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "DescribeRegionConf")
+    
     
     return
 }
@@ -410,6 +429,7 @@ func (c *Client) DescribeRegionConf(request *DescribeRegionConfRequest) (respons
     if request == nil {
         request = NewDescribeRegionConfRequest()
     }
+    
     response = NewDescribeRegionConfResponse()
     err = c.Send(request, response)
     return
@@ -420,6 +440,7 @@ func NewDescribeSubscribeConfRequest() (request *DescribeSubscribeConfRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "DescribeSubscribeConf")
+    
     
     return
 }
@@ -444,6 +465,7 @@ func (c *Client) DescribeSubscribeConf(request *DescribeSubscribeConfRequest) (r
     if request == nil {
         request = NewDescribeSubscribeConfRequest()
     }
+    
     response = NewDescribeSubscribeConfResponse()
     err = c.Send(request, response)
     return
@@ -454,6 +476,7 @@ func NewDescribeSubscribesRequest() (request *DescribeSubscribesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "DescribeSubscribes")
+    
     
     return
 }
@@ -475,6 +498,7 @@ func (c *Client) DescribeSubscribes(request *DescribeSubscribesRequest) (respons
     if request == nil {
         request = NewDescribeSubscribesRequest()
     }
+    
     response = NewDescribeSubscribesResponse()
     err = c.Send(request, response)
     return
@@ -485,6 +509,7 @@ func NewIsolateSubscribeRequest() (request *IsolateSubscribeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "IsolateSubscribe")
+    
     
     return
 }
@@ -507,6 +532,7 @@ func (c *Client) IsolateSubscribe(request *IsolateSubscribeRequest) (response *I
     if request == nil {
         request = NewIsolateSubscribeRequest()
     }
+    
     response = NewIsolateSubscribeResponse()
     err = c.Send(request, response)
     return
@@ -517,6 +543,7 @@ func NewModifyMigrateJobRequest() (request *ModifyMigrateJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "ModifyMigrateJob")
+    
     
     return
 }
@@ -549,6 +576,7 @@ func (c *Client) ModifyMigrateJob(request *ModifyMigrateJobRequest) (response *M
     if request == nil {
         request = NewModifyMigrateJobRequest()
     }
+    
     response = NewModifyMigrateJobResponse()
     err = c.Send(request, response)
     return
@@ -559,6 +587,7 @@ func NewModifySubscribeAutoRenewFlagRequest() (request *ModifySubscribeAutoRenew
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "ModifySubscribeAutoRenewFlag")
+    
     
     return
 }
@@ -581,6 +610,7 @@ func (c *Client) ModifySubscribeAutoRenewFlag(request *ModifySubscribeAutoRenewF
     if request == nil {
         request = NewModifySubscribeAutoRenewFlagRequest()
     }
+    
     response = NewModifySubscribeAutoRenewFlagResponse()
     err = c.Send(request, response)
     return
@@ -591,6 +621,7 @@ func NewModifySubscribeConsumeTimeRequest() (request *ModifySubscribeConsumeTime
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "ModifySubscribeConsumeTime")
+    
     
     return
 }
@@ -615,6 +646,7 @@ func (c *Client) ModifySubscribeConsumeTime(request *ModifySubscribeConsumeTimeR
     if request == nil {
         request = NewModifySubscribeConsumeTimeRequest()
     }
+    
     response = NewModifySubscribeConsumeTimeResponse()
     err = c.Send(request, response)
     return
@@ -625,6 +657,7 @@ func NewModifySubscribeNameRequest() (request *ModifySubscribeNameRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "ModifySubscribeName")
+    
     
     return
 }
@@ -647,6 +680,7 @@ func (c *Client) ModifySubscribeName(request *ModifySubscribeNameRequest) (respo
     if request == nil {
         request = NewModifySubscribeNameRequest()
     }
+    
     response = NewModifySubscribeNameResponse()
     err = c.Send(request, response)
     return
@@ -657,6 +691,7 @@ func NewModifySubscribeObjectsRequest() (request *ModifySubscribeObjectsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "ModifySubscribeObjects")
+    
     
     return
 }
@@ -681,6 +716,7 @@ func (c *Client) ModifySubscribeObjects(request *ModifySubscribeObjectsRequest) 
     if request == nil {
         request = NewModifySubscribeObjectsRequest()
     }
+    
     response = NewModifySubscribeObjectsResponse()
     err = c.Send(request, response)
     return
@@ -691,6 +727,7 @@ func NewModifySubscribeVipVportRequest() (request *ModifySubscribeVipVportReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "ModifySubscribeVipVport")
+    
     
     return
 }
@@ -714,6 +751,7 @@ func (c *Client) ModifySubscribeVipVport(request *ModifySubscribeVipVportRequest
     if request == nil {
         request = NewModifySubscribeVipVportRequest()
     }
+    
     response = NewModifySubscribeVipVportResponse()
     err = c.Send(request, response)
     return
@@ -724,6 +762,7 @@ func NewOfflineIsolatedSubscribeRequest() (request *OfflineIsolatedSubscribeRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "OfflineIsolatedSubscribe")
+    
     
     return
 }
@@ -747,6 +786,7 @@ func (c *Client) OfflineIsolatedSubscribe(request *OfflineIsolatedSubscribeReque
     if request == nil {
         request = NewOfflineIsolatedSubscribeRequest()
     }
+    
     response = NewOfflineIsolatedSubscribeResponse()
     err = c.Send(request, response)
     return
@@ -757,6 +797,7 @@ func NewResetSubscribeRequest() (request *ResetSubscribeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "ResetSubscribe")
+    
     
     return
 }
@@ -781,6 +822,7 @@ func (c *Client) ResetSubscribe(request *ResetSubscribeRequest) (response *Reset
     if request == nil {
         request = NewResetSubscribeRequest()
     }
+    
     response = NewResetSubscribeResponse()
     err = c.Send(request, response)
     return
@@ -791,6 +833,7 @@ func NewStartMigrateJobRequest() (request *StartMigrateJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "StartMigrateJob")
+    
     
     return
 }
@@ -823,6 +866,7 @@ func (c *Client) StartMigrateJob(request *StartMigrateJobRequest) (response *Sta
     if request == nil {
         request = NewStartMigrateJobRequest()
     }
+    
     response = NewStartMigrateJobResponse()
     err = c.Send(request, response)
     return
@@ -833,6 +877,7 @@ func NewStopMigrateJobRequest() (request *StopMigrateJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("dts", APIVersion, "StopMigrateJob")
+    
     
     return
 }
@@ -861,6 +906,7 @@ func (c *Client) StopMigrateJob(request *StopMigrateJobRequest) (response *StopM
     if request == nil {
         request = NewStopMigrateJobRequest()
     }
+    
     response = NewStopMigrateJobResponse()
     err = c.Send(request, response)
     return

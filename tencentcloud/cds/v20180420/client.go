@@ -49,6 +49,7 @@ func NewDescribeDasbImageIdsRequest() (request *DescribeDasbImageIdsRequest) {
     }
     request.Init().WithApiInfo("cds", APIVersion, "DescribeDasbImageIds")
     
+    
     return
 }
 
@@ -65,6 +66,7 @@ func (c *Client) DescribeDasbImageIds(request *DescribeDasbImageIdsRequest) (res
     if request == nil {
         request = NewDescribeDasbImageIdsRequest()
     }
+    
     response = NewDescribeDasbImageIdsResponse()
     err = c.Send(request, response)
     return
@@ -75,6 +77,7 @@ func NewDescribeDbauditInstanceTypeRequest() (request *DescribeDbauditInstanceTy
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cds", APIVersion, "DescribeDbauditInstanceType")
+    
     
     return
 }
@@ -92,6 +95,7 @@ func (c *Client) DescribeDbauditInstanceType(request *DescribeDbauditInstanceTyp
     if request == nil {
         request = NewDescribeDbauditInstanceTypeRequest()
     }
+    
     response = NewDescribeDbauditInstanceTypeResponse()
     err = c.Send(request, response)
     return
@@ -102,6 +106,7 @@ func NewDescribeDbauditInstancesRequest() (request *DescribeDbauditInstancesRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cds", APIVersion, "DescribeDbauditInstances")
+    
     
     return
 }
@@ -119,6 +124,7 @@ func (c *Client) DescribeDbauditInstances(request *DescribeDbauditInstancesReque
     if request == nil {
         request = NewDescribeDbauditInstancesRequest()
     }
+    
     response = NewDescribeDbauditInstancesResponse()
     err = c.Send(request, response)
     return
@@ -129,6 +135,7 @@ func NewDescribeDbauditUsedRegionsRequest() (request *DescribeDbauditUsedRegions
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cds", APIVersion, "DescribeDbauditUsedRegions")
+    
     
     return
 }
@@ -146,6 +153,7 @@ func (c *Client) DescribeDbauditUsedRegions(request *DescribeDbauditUsedRegionsR
     if request == nil {
         request = NewDescribeDbauditUsedRegionsRequest()
     }
+    
     response = NewDescribeDbauditUsedRegionsResponse()
     err = c.Send(request, response)
     return
@@ -156,6 +164,7 @@ func NewInquiryPriceDbauditInstanceRequest() (request *InquiryPriceDbauditInstan
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cds", APIVersion, "InquiryPriceDbauditInstance")
+    
     
     return
 }
@@ -173,6 +182,7 @@ func (c *Client) InquiryPriceDbauditInstance(request *InquiryPriceDbauditInstanc
     if request == nil {
         request = NewInquiryPriceDbauditInstanceRequest()
     }
+    
     response = NewInquiryPriceDbauditInstanceResponse()
     err = c.Send(request, response)
     return
@@ -183,6 +193,7 @@ func NewModifyDbauditInstancesRenewFlagRequest() (request *ModifyDbauditInstance
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cds", APIVersion, "ModifyDbauditInstancesRenewFlag")
+    
     
     return
 }
@@ -204,6 +215,7 @@ func (c *Client) ModifyDbauditInstancesRenewFlag(request *ModifyDbauditInstances
     if request == nil {
         request = NewModifyDbauditInstancesRenewFlagRequest()
     }
+    
     response = NewModifyDbauditInstancesRenewFlagResponse()
     err = c.Send(request, response)
     return

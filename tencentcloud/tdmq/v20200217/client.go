@@ -49,6 +49,7 @@ func NewAcknowledgeMessageRequest() (request *AcknowledgeMessageRequest) {
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "AcknowledgeMessage")
     
+    
     return
 }
 
@@ -77,6 +78,7 @@ func (c *Client) AcknowledgeMessage(request *AcknowledgeMessageRequest) (respons
     if request == nil {
         request = NewAcknowledgeMessageRequest()
     }
+    
     response = NewAcknowledgeMessageResponse()
     err = c.Send(request, response)
     return
@@ -87,6 +89,7 @@ func NewClearCmqQueueRequest() (request *ClearCmqQueueRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "ClearCmqQueue")
+    
     
     return
 }
@@ -116,6 +119,7 @@ func (c *Client) ClearCmqQueue(request *ClearCmqQueueRequest) (response *ClearCm
     if request == nil {
         request = NewClearCmqQueueRequest()
     }
+    
     response = NewClearCmqQueueResponse()
     err = c.Send(request, response)
     return
@@ -126,6 +130,7 @@ func NewClearCmqSubscriptionFilterTagsRequest() (request *ClearCmqSubscriptionFi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "ClearCmqSubscriptionFilterTags")
+    
     
     return
 }
@@ -155,6 +160,7 @@ func (c *Client) ClearCmqSubscriptionFilterTags(request *ClearCmqSubscriptionFil
     if request == nil {
         request = NewClearCmqSubscriptionFilterTagsRequest()
     }
+    
     response = NewClearCmqSubscriptionFilterTagsResponse()
     err = c.Send(request, response)
     return
@@ -165,6 +171,7 @@ func NewCreateAMQPClusterRequest() (request *CreateAMQPClusterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "CreateAMQPCluster")
+    
     
     return
 }
@@ -191,6 +198,7 @@ func (c *Client) CreateAMQPCluster(request *CreateAMQPClusterRequest) (response 
     if request == nil {
         request = NewCreateAMQPClusterRequest()
     }
+    
     response = NewCreateAMQPClusterResponse()
     err = c.Send(request, response)
     return
@@ -201,6 +209,7 @@ func NewCreateAMQPExchangeRequest() (request *CreateAMQPExchangeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "CreateAMQPExchange")
+    
     
     return
 }
@@ -226,6 +235,7 @@ func (c *Client) CreateAMQPExchange(request *CreateAMQPExchangeRequest) (respons
     if request == nil {
         request = NewCreateAMQPExchangeRequest()
     }
+    
     response = NewCreateAMQPExchangeResponse()
     err = c.Send(request, response)
     return
@@ -236,6 +246,7 @@ func NewCreateAMQPQueueRequest() (request *CreateAMQPQueueRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "CreateAMQPQueue")
+    
     
     return
 }
@@ -261,6 +272,7 @@ func (c *Client) CreateAMQPQueue(request *CreateAMQPQueueRequest) (response *Cre
     if request == nil {
         request = NewCreateAMQPQueueRequest()
     }
+    
     response = NewCreateAMQPQueueResponse()
     err = c.Send(request, response)
     return
@@ -271,6 +283,7 @@ func NewCreateAMQPRouteRelationRequest() (request *CreateAMQPRouteRelationReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "CreateAMQPRouteRelation")
+    
     
     return
 }
@@ -296,6 +309,7 @@ func (c *Client) CreateAMQPRouteRelation(request *CreateAMQPRouteRelationRequest
     if request == nil {
         request = NewCreateAMQPRouteRelationRequest()
     }
+    
     response = NewCreateAMQPRouteRelationResponse()
     err = c.Send(request, response)
     return
@@ -306,6 +320,7 @@ func NewCreateAMQPVHostRequest() (request *CreateAMQPVHostRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "CreateAMQPVHost")
+    
     
     return
 }
@@ -332,6 +347,7 @@ func (c *Client) CreateAMQPVHost(request *CreateAMQPVHostRequest) (response *Cre
     if request == nil {
         request = NewCreateAMQPVHostRequest()
     }
+    
     response = NewCreateAMQPVHostResponse()
     err = c.Send(request, response)
     return
@@ -342,6 +358,7 @@ func NewCreateClusterRequest() (request *CreateClusterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "CreateCluster")
+    
     
     return
 }
@@ -369,6 +386,7 @@ func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateC
     if request == nil {
         request = NewCreateClusterRequest()
     }
+    
     response = NewCreateClusterResponse()
     err = c.Send(request, response)
     return
@@ -379,6 +397,7 @@ func NewCreateCmqQueueRequest() (request *CreateCmqQueueRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "CreateCmqQueue")
+    
     
     return
 }
@@ -403,6 +422,7 @@ func (c *Client) CreateCmqQueue(request *CreateCmqQueueRequest) (response *Creat
     if request == nil {
         request = NewCreateCmqQueueRequest()
     }
+    
     response = NewCreateCmqQueueResponse()
     err = c.Send(request, response)
     return
@@ -413,6 +433,7 @@ func NewCreateCmqSubscribeRequest() (request *CreateCmqSubscribeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "CreateCmqSubscribe")
+    
     
     return
 }
@@ -433,6 +454,7 @@ func (c *Client) CreateCmqSubscribe(request *CreateCmqSubscribeRequest) (respons
     if request == nil {
         request = NewCreateCmqSubscribeRequest()
     }
+    
     response = NewCreateCmqSubscribeResponse()
     err = c.Send(request, response)
     return
@@ -443,6 +465,7 @@ func NewCreateCmqTopicRequest() (request *CreateCmqTopicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "CreateCmqTopic")
+    
     
     return
 }
@@ -464,6 +487,7 @@ func (c *Client) CreateCmqTopic(request *CreateCmqTopicRequest) (response *Creat
     if request == nil {
         request = NewCreateCmqTopicRequest()
     }
+    
     response = NewCreateCmqTopicResponse()
     err = c.Send(request, response)
     return
@@ -474,6 +498,7 @@ func NewCreateEnvironmentRequest() (request *CreateEnvironmentRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "CreateEnvironment")
+    
     
     return
 }
@@ -506,6 +531,7 @@ func (c *Client) CreateEnvironment(request *CreateEnvironmentRequest) (response 
     if request == nil {
         request = NewCreateEnvironmentRequest()
     }
+    
     response = NewCreateEnvironmentResponse()
     err = c.Send(request, response)
     return
@@ -516,6 +542,7 @@ func NewCreateEnvironmentRoleRequest() (request *CreateEnvironmentRoleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "CreateEnvironmentRole")
+    
     
     return
 }
@@ -544,6 +571,7 @@ func (c *Client) CreateEnvironmentRole(request *CreateEnvironmentRoleRequest) (r
     if request == nil {
         request = NewCreateEnvironmentRoleRequest()
     }
+    
     response = NewCreateEnvironmentRoleResponse()
     err = c.Send(request, response)
     return
@@ -554,6 +582,7 @@ func NewCreateRocketMQClusterRequest() (request *CreateRocketMQClusterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "CreateRocketMQCluster")
+    
     
     return
 }
@@ -580,6 +609,7 @@ func (c *Client) CreateRocketMQCluster(request *CreateRocketMQClusterRequest) (r
     if request == nil {
         request = NewCreateRocketMQClusterRequest()
     }
+    
     response = NewCreateRocketMQClusterResponse()
     err = c.Send(request, response)
     return
@@ -590,6 +620,7 @@ func NewCreateRocketMQGroupRequest() (request *CreateRocketMQGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "CreateRocketMQGroup")
+    
     
     return
 }
@@ -614,6 +645,7 @@ func (c *Client) CreateRocketMQGroup(request *CreateRocketMQGroupRequest) (respo
     if request == nil {
         request = NewCreateRocketMQGroupRequest()
     }
+    
     response = NewCreateRocketMQGroupResponse()
     err = c.Send(request, response)
     return
@@ -624,6 +656,7 @@ func NewCreateRocketMQNamespaceRequest() (request *CreateRocketMQNamespaceReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "CreateRocketMQNamespace")
+    
     
     return
 }
@@ -650,6 +683,7 @@ func (c *Client) CreateRocketMQNamespace(request *CreateRocketMQNamespaceRequest
     if request == nil {
         request = NewCreateRocketMQNamespaceRequest()
     }
+    
     response = NewCreateRocketMQNamespaceResponse()
     err = c.Send(request, response)
     return
@@ -660,6 +694,7 @@ func NewCreateRocketMQTopicRequest() (request *CreateRocketMQTopicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "CreateRocketMQTopic")
+    
     
     return
 }
@@ -685,6 +720,7 @@ func (c *Client) CreateRocketMQTopic(request *CreateRocketMQTopicRequest) (respo
     if request == nil {
         request = NewCreateRocketMQTopicRequest()
     }
+    
     response = NewCreateRocketMQTopicResponse()
     err = c.Send(request, response)
     return
@@ -695,6 +731,7 @@ func NewCreateRoleRequest() (request *CreateRoleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "CreateRole")
+    
     
     return
 }
@@ -725,6 +762,7 @@ func (c *Client) CreateRole(request *CreateRoleRequest) (response *CreateRoleRes
     if request == nil {
         request = NewCreateRoleRequest()
     }
+    
     response = NewCreateRoleResponse()
     err = c.Send(request, response)
     return
@@ -735,6 +773,7 @@ func NewCreateSubscriptionRequest() (request *CreateSubscriptionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "CreateSubscription")
+    
     
     return
 }
@@ -766,6 +805,7 @@ func (c *Client) CreateSubscription(request *CreateSubscriptionRequest) (respons
     if request == nil {
         request = NewCreateSubscriptionRequest()
     }
+    
     response = NewCreateSubscriptionResponse()
     err = c.Send(request, response)
     return
@@ -776,6 +816,7 @@ func NewCreateTopicRequest() (request *CreateTopicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "CreateTopic")
+    
     
     return
 }
@@ -807,6 +848,7 @@ func (c *Client) CreateTopic(request *CreateTopicRequest) (response *CreateTopic
     if request == nil {
         request = NewCreateTopicRequest()
     }
+    
     response = NewCreateTopicResponse()
     err = c.Send(request, response)
     return
@@ -817,6 +859,7 @@ func NewDeleteAMQPClusterRequest() (request *DeleteAMQPClusterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DeleteAMQPCluster")
+    
     
     return
 }
@@ -840,6 +883,7 @@ func (c *Client) DeleteAMQPCluster(request *DeleteAMQPClusterRequest) (response 
     if request == nil {
         request = NewDeleteAMQPClusterRequest()
     }
+    
     response = NewDeleteAMQPClusterResponse()
     err = c.Send(request, response)
     return
@@ -850,6 +894,7 @@ func NewDeleteAMQPExchangeRequest() (request *DeleteAMQPExchangeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DeleteAMQPExchange")
+    
     
     return
 }
@@ -874,6 +919,7 @@ func (c *Client) DeleteAMQPExchange(request *DeleteAMQPExchangeRequest) (respons
     if request == nil {
         request = NewDeleteAMQPExchangeRequest()
     }
+    
     response = NewDeleteAMQPExchangeResponse()
     err = c.Send(request, response)
     return
@@ -884,6 +930,7 @@ func NewDeleteAMQPQueueRequest() (request *DeleteAMQPQueueRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DeleteAMQPQueue")
+    
     
     return
 }
@@ -908,6 +955,7 @@ func (c *Client) DeleteAMQPQueue(request *DeleteAMQPQueueRequest) (response *Del
     if request == nil {
         request = NewDeleteAMQPQueueRequest()
     }
+    
     response = NewDeleteAMQPQueueResponse()
     err = c.Send(request, response)
     return
@@ -918,6 +966,7 @@ func NewDeleteAMQPRouteRelationRequest() (request *DeleteAMQPRouteRelationReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DeleteAMQPRouteRelation")
+    
     
     return
 }
@@ -941,6 +990,7 @@ func (c *Client) DeleteAMQPRouteRelation(request *DeleteAMQPRouteRelationRequest
     if request == nil {
         request = NewDeleteAMQPRouteRelationRequest()
     }
+    
     response = NewDeleteAMQPRouteRelationResponse()
     err = c.Send(request, response)
     return
@@ -951,6 +1001,7 @@ func NewDeleteAMQPVHostRequest() (request *DeleteAMQPVHostRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DeleteAMQPVHost")
+    
     
     return
 }
@@ -974,6 +1025,7 @@ func (c *Client) DeleteAMQPVHost(request *DeleteAMQPVHostRequest) (response *Del
     if request == nil {
         request = NewDeleteAMQPVHostRequest()
     }
+    
     response = NewDeleteAMQPVHostResponse()
     err = c.Send(request, response)
     return
@@ -984,6 +1036,7 @@ func NewDeleteClusterRequest() (request *DeleteClusterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DeleteCluster")
+    
     
     return
 }
@@ -1010,6 +1063,7 @@ func (c *Client) DeleteCluster(request *DeleteClusterRequest) (response *DeleteC
     if request == nil {
         request = NewDeleteClusterRequest()
     }
+    
     response = NewDeleteClusterResponse()
     err = c.Send(request, response)
     return
@@ -1020,6 +1074,7 @@ func NewDeleteCmqQueueRequest() (request *DeleteCmqQueueRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DeleteCmqQueue")
+    
     
     return
 }
@@ -1041,6 +1096,7 @@ func (c *Client) DeleteCmqQueue(request *DeleteCmqQueueRequest) (response *Delet
     if request == nil {
         request = NewDeleteCmqQueueRequest()
     }
+    
     response = NewDeleteCmqQueueResponse()
     err = c.Send(request, response)
     return
@@ -1051,6 +1107,7 @@ func NewDeleteCmqSubscribeRequest() (request *DeleteCmqSubscribeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DeleteCmqSubscribe")
+    
     
     return
 }
@@ -1071,6 +1128,7 @@ func (c *Client) DeleteCmqSubscribe(request *DeleteCmqSubscribeRequest) (respons
     if request == nil {
         request = NewDeleteCmqSubscribeRequest()
     }
+    
     response = NewDeleteCmqSubscribeResponse()
     err = c.Send(request, response)
     return
@@ -1081,6 +1139,7 @@ func NewDeleteCmqTopicRequest() (request *DeleteCmqTopicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DeleteCmqTopic")
+    
     
     return
 }
@@ -1101,6 +1160,7 @@ func (c *Client) DeleteCmqTopic(request *DeleteCmqTopicRequest) (response *Delet
     if request == nil {
         request = NewDeleteCmqTopicRequest()
     }
+    
     response = NewDeleteCmqTopicResponse()
     err = c.Send(request, response)
     return
@@ -1111,6 +1171,7 @@ func NewDeleteEnvironmentRolesRequest() (request *DeleteEnvironmentRolesRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DeleteEnvironmentRoles")
+    
     
     return
 }
@@ -1135,6 +1196,7 @@ func (c *Client) DeleteEnvironmentRoles(request *DeleteEnvironmentRolesRequest) 
     if request == nil {
         request = NewDeleteEnvironmentRolesRequest()
     }
+    
     response = NewDeleteEnvironmentRolesResponse()
     err = c.Send(request, response)
     return
@@ -1145,6 +1207,7 @@ func NewDeleteEnvironmentsRequest() (request *DeleteEnvironmentsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DeleteEnvironments")
+    
     
     return
 }
@@ -1175,6 +1238,7 @@ func (c *Client) DeleteEnvironments(request *DeleteEnvironmentsRequest) (respons
     if request == nil {
         request = NewDeleteEnvironmentsRequest()
     }
+    
     response = NewDeleteEnvironmentsResponse()
     err = c.Send(request, response)
     return
@@ -1185,6 +1249,7 @@ func NewDeleteRocketMQClusterRequest() (request *DeleteRocketMQClusterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DeleteRocketMQCluster")
+    
     
     return
 }
@@ -1209,6 +1274,7 @@ func (c *Client) DeleteRocketMQCluster(request *DeleteRocketMQClusterRequest) (r
     if request == nil {
         request = NewDeleteRocketMQClusterRequest()
     }
+    
     response = NewDeleteRocketMQClusterResponse()
     err = c.Send(request, response)
     return
@@ -1219,6 +1285,7 @@ func NewDeleteRocketMQGroupRequest() (request *DeleteRocketMQGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DeleteRocketMQGroup")
+    
     
     return
 }
@@ -1242,6 +1309,7 @@ func (c *Client) DeleteRocketMQGroup(request *DeleteRocketMQGroupRequest) (respo
     if request == nil {
         request = NewDeleteRocketMQGroupRequest()
     }
+    
     response = NewDeleteRocketMQGroupResponse()
     err = c.Send(request, response)
     return
@@ -1252,6 +1320,7 @@ func NewDeleteRocketMQNamespaceRequest() (request *DeleteRocketMQNamespaceReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DeleteRocketMQNamespace")
+    
     
     return
 }
@@ -1275,6 +1344,7 @@ func (c *Client) DeleteRocketMQNamespace(request *DeleteRocketMQNamespaceRequest
     if request == nil {
         request = NewDeleteRocketMQNamespaceRequest()
     }
+    
     response = NewDeleteRocketMQNamespaceResponse()
     err = c.Send(request, response)
     return
@@ -1285,6 +1355,7 @@ func NewDeleteRocketMQTopicRequest() (request *DeleteRocketMQTopicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DeleteRocketMQTopic")
+    
     
     return
 }
@@ -1308,6 +1379,7 @@ func (c *Client) DeleteRocketMQTopic(request *DeleteRocketMQTopicRequest) (respo
     if request == nil {
         request = NewDeleteRocketMQTopicRequest()
     }
+    
     response = NewDeleteRocketMQTopicResponse()
     err = c.Send(request, response)
     return
@@ -1318,6 +1390,7 @@ func NewDeleteRolesRequest() (request *DeleteRolesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DeleteRoles")
+    
     
     return
 }
@@ -1344,6 +1417,7 @@ func (c *Client) DeleteRoles(request *DeleteRolesRequest) (response *DeleteRoles
     if request == nil {
         request = NewDeleteRolesRequest()
     }
+    
     response = NewDeleteRolesResponse()
     err = c.Send(request, response)
     return
@@ -1354,6 +1428,7 @@ func NewDeleteSubscriptionsRequest() (request *DeleteSubscriptionsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DeleteSubscriptions")
+    
     
     return
 }
@@ -1385,6 +1460,7 @@ func (c *Client) DeleteSubscriptions(request *DeleteSubscriptionsRequest) (respo
     if request == nil {
         request = NewDeleteSubscriptionsRequest()
     }
+    
     response = NewDeleteSubscriptionsResponse()
     err = c.Send(request, response)
     return
@@ -1395,6 +1471,7 @@ func NewDeleteTopicsRequest() (request *DeleteTopicsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DeleteTopics")
+    
     
     return
 }
@@ -1424,6 +1501,7 @@ func (c *Client) DeleteTopics(request *DeleteTopicsRequest) (response *DeleteTop
     if request == nil {
         request = NewDeleteTopicsRequest()
     }
+    
     response = NewDeleteTopicsResponse()
     err = c.Send(request, response)
     return
@@ -1434,6 +1512,7 @@ func NewDescribeAMQPClusterRequest() (request *DescribeAMQPClusterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeAMQPCluster")
+    
     
     return
 }
@@ -1456,6 +1535,7 @@ func (c *Client) DescribeAMQPCluster(request *DescribeAMQPClusterRequest) (respo
     if request == nil {
         request = NewDescribeAMQPClusterRequest()
     }
+    
     response = NewDescribeAMQPClusterResponse()
     err = c.Send(request, response)
     return
@@ -1466,6 +1546,7 @@ func NewDescribeAMQPClustersRequest() (request *DescribeAMQPClustersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeAMQPClusters")
+    
     
     return
 }
@@ -1489,6 +1570,7 @@ func (c *Client) DescribeAMQPClusters(request *DescribeAMQPClustersRequest) (res
     if request == nil {
         request = NewDescribeAMQPClustersRequest()
     }
+    
     response = NewDescribeAMQPClustersResponse()
     err = c.Send(request, response)
     return
@@ -1499,6 +1581,7 @@ func NewDescribeAMQPCreateQuotaRequest() (request *DescribeAMQPCreateQuotaReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeAMQPCreateQuota")
+    
     
     return
 }
@@ -1524,6 +1607,7 @@ func (c *Client) DescribeAMQPCreateQuota(request *DescribeAMQPCreateQuotaRequest
     if request == nil {
         request = NewDescribeAMQPCreateQuotaRequest()
     }
+    
     response = NewDescribeAMQPCreateQuotaResponse()
     err = c.Send(request, response)
     return
@@ -1534,6 +1618,7 @@ func NewDescribeAMQPExchangesRequest() (request *DescribeAMQPExchangesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeAMQPExchanges")
+    
     
     return
 }
@@ -1557,6 +1642,7 @@ func (c *Client) DescribeAMQPExchanges(request *DescribeAMQPExchangesRequest) (r
     if request == nil {
         request = NewDescribeAMQPExchangesRequest()
     }
+    
     response = NewDescribeAMQPExchangesResponse()
     err = c.Send(request, response)
     return
@@ -1567,6 +1653,7 @@ func NewDescribeAMQPQueuesRequest() (request *DescribeAMQPQueuesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeAMQPQueues")
+    
     
     return
 }
@@ -1590,6 +1677,7 @@ func (c *Client) DescribeAMQPQueues(request *DescribeAMQPQueuesRequest) (respons
     if request == nil {
         request = NewDescribeAMQPQueuesRequest()
     }
+    
     response = NewDescribeAMQPQueuesResponse()
     err = c.Send(request, response)
     return
@@ -1600,6 +1688,7 @@ func NewDescribeAMQPRouteRelationsRequest() (request *DescribeAMQPRouteRelations
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeAMQPRouteRelations")
+    
     
     return
 }
@@ -1623,6 +1712,7 @@ func (c *Client) DescribeAMQPRouteRelations(request *DescribeAMQPRouteRelationsR
     if request == nil {
         request = NewDescribeAMQPRouteRelationsRequest()
     }
+    
     response = NewDescribeAMQPRouteRelationsResponse()
     err = c.Send(request, response)
     return
@@ -1633,6 +1723,7 @@ func NewDescribeAMQPVHostsRequest() (request *DescribeAMQPVHostsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeAMQPVHosts")
+    
     
     return
 }
@@ -1656,6 +1747,7 @@ func (c *Client) DescribeAMQPVHosts(request *DescribeAMQPVHostsRequest) (respons
     if request == nil {
         request = NewDescribeAMQPVHostsRequest()
     }
+    
     response = NewDescribeAMQPVHostsResponse()
     err = c.Send(request, response)
     return
@@ -1666,6 +1758,7 @@ func NewDescribeAllTenantsRequest() (request *DescribeAllTenantsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeAllTenants")
+    
     
     return
 }
@@ -1689,6 +1782,7 @@ func (c *Client) DescribeAllTenants(request *DescribeAllTenantsRequest) (respons
     if request == nil {
         request = NewDescribeAllTenantsRequest()
     }
+    
     response = NewDescribeAllTenantsResponse()
     err = c.Send(request, response)
     return
@@ -1699,6 +1793,7 @@ func NewDescribeBindClustersRequest() (request *DescribeBindClustersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeBindClusters")
+    
     
     return
 }
@@ -1725,6 +1820,7 @@ func (c *Client) DescribeBindClusters(request *DescribeBindClustersRequest) (res
     if request == nil {
         request = NewDescribeBindClustersRequest()
     }
+    
     response = NewDescribeBindClustersResponse()
     err = c.Send(request, response)
     return
@@ -1735,6 +1831,7 @@ func NewDescribeBindVpcsRequest() (request *DescribeBindVpcsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeBindVpcs")
+    
     
     return
 }
@@ -1760,6 +1857,7 @@ func (c *Client) DescribeBindVpcs(request *DescribeBindVpcsRequest) (response *D
     if request == nil {
         request = NewDescribeBindVpcsRequest()
     }
+    
     response = NewDescribeBindVpcsResponse()
     err = c.Send(request, response)
     return
@@ -1770,6 +1868,7 @@ func NewDescribeClusterDetailRequest() (request *DescribeClusterDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeClusterDetail")
+    
     
     return
 }
@@ -1795,6 +1894,7 @@ func (c *Client) DescribeClusterDetail(request *DescribeClusterDetailRequest) (r
     if request == nil {
         request = NewDescribeClusterDetailRequest()
     }
+    
     response = NewDescribeClusterDetailResponse()
     err = c.Send(request, response)
     return
@@ -1805,6 +1905,7 @@ func NewDescribeClustersRequest() (request *DescribeClustersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeClusters")
+    
     
     return
 }
@@ -1830,6 +1931,7 @@ func (c *Client) DescribeClusters(request *DescribeClustersRequest) (response *D
     if request == nil {
         request = NewDescribeClustersRequest()
     }
+    
     response = NewDescribeClustersResponse()
     err = c.Send(request, response)
     return
@@ -1840,6 +1942,7 @@ func NewDescribeCmqDeadLetterSourceQueuesRequest() (request *DescribeCmqDeadLett
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeCmqDeadLetterSourceQueues")
+    
     
     return
 }
@@ -1865,6 +1968,7 @@ func (c *Client) DescribeCmqDeadLetterSourceQueues(request *DescribeCmqDeadLette
     if request == nil {
         request = NewDescribeCmqDeadLetterSourceQueuesRequest()
     }
+    
     response = NewDescribeCmqDeadLetterSourceQueuesResponse()
     err = c.Send(request, response)
     return
@@ -1875,6 +1979,7 @@ func NewDescribeCmqQueueDetailRequest() (request *DescribeCmqQueueDetailRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeCmqQueueDetail")
+    
     
     return
 }
@@ -1895,6 +2000,7 @@ func (c *Client) DescribeCmqQueueDetail(request *DescribeCmqQueueDetailRequest) 
     if request == nil {
         request = NewDescribeCmqQueueDetailRequest()
     }
+    
     response = NewDescribeCmqQueueDetailResponse()
     err = c.Send(request, response)
     return
@@ -1905,6 +2011,7 @@ func NewDescribeCmqQueuesRequest() (request *DescribeCmqQueuesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeCmqQueues")
+    
     
     return
 }
@@ -1925,6 +2032,7 @@ func (c *Client) DescribeCmqQueues(request *DescribeCmqQueuesRequest) (response 
     if request == nil {
         request = NewDescribeCmqQueuesRequest()
     }
+    
     response = NewDescribeCmqQueuesResponse()
     err = c.Send(request, response)
     return
@@ -1935,6 +2043,7 @@ func NewDescribeCmqSubscriptionDetailRequest() (request *DescribeCmqSubscription
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeCmqSubscriptionDetail")
+    
     
     return
 }
@@ -1955,6 +2064,7 @@ func (c *Client) DescribeCmqSubscriptionDetail(request *DescribeCmqSubscriptionD
     if request == nil {
         request = NewDescribeCmqSubscriptionDetailRequest()
     }
+    
     response = NewDescribeCmqSubscriptionDetailResponse()
     err = c.Send(request, response)
     return
@@ -1965,6 +2075,7 @@ func NewDescribeCmqTopicDetailRequest() (request *DescribeCmqTopicDetailRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeCmqTopicDetail")
+    
     
     return
 }
@@ -1985,6 +2096,7 @@ func (c *Client) DescribeCmqTopicDetail(request *DescribeCmqTopicDetailRequest) 
     if request == nil {
         request = NewDescribeCmqTopicDetailRequest()
     }
+    
     response = NewDescribeCmqTopicDetailResponse()
     err = c.Send(request, response)
     return
@@ -1995,6 +2107,7 @@ func NewDescribeCmqTopicsRequest() (request *DescribeCmqTopicsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeCmqTopics")
+    
     
     return
 }
@@ -2015,6 +2128,7 @@ func (c *Client) DescribeCmqTopics(request *DescribeCmqTopicsRequest) (response 
     if request == nil {
         request = NewDescribeCmqTopicsRequest()
     }
+    
     response = NewDescribeCmqTopicsResponse()
     err = c.Send(request, response)
     return
@@ -2025,6 +2139,7 @@ func NewDescribeEnvironmentAttributesRequest() (request *DescribeEnvironmentAttr
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeEnvironmentAttributes")
+    
     
     return
 }
@@ -2052,6 +2167,7 @@ func (c *Client) DescribeEnvironmentAttributes(request *DescribeEnvironmentAttri
     if request == nil {
         request = NewDescribeEnvironmentAttributesRequest()
     }
+    
     response = NewDescribeEnvironmentAttributesResponse()
     err = c.Send(request, response)
     return
@@ -2062,6 +2178,7 @@ func NewDescribeEnvironmentRolesRequest() (request *DescribeEnvironmentRolesRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeEnvironmentRoles")
+    
     
     return
 }
@@ -2088,6 +2205,7 @@ func (c *Client) DescribeEnvironmentRoles(request *DescribeEnvironmentRolesReque
     if request == nil {
         request = NewDescribeEnvironmentRolesRequest()
     }
+    
     response = NewDescribeEnvironmentRolesResponse()
     err = c.Send(request, response)
     return
@@ -2098,6 +2216,7 @@ func NewDescribeEnvironmentsRequest() (request *DescribeEnvironmentsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeEnvironments")
+    
     
     return
 }
@@ -2122,6 +2241,7 @@ func (c *Client) DescribeEnvironments(request *DescribeEnvironmentsRequest) (res
     if request == nil {
         request = NewDescribeEnvironmentsRequest()
     }
+    
     response = NewDescribeEnvironmentsResponse()
     err = c.Send(request, response)
     return
@@ -2132,6 +2252,7 @@ func NewDescribeNamespaceBundlesOptRequest() (request *DescribeNamespaceBundlesO
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeNamespaceBundlesOpt")
+    
     
     return
 }
@@ -2156,6 +2277,7 @@ func (c *Client) DescribeNamespaceBundlesOpt(request *DescribeNamespaceBundlesOp
     if request == nil {
         request = NewDescribeNamespaceBundlesOptRequest()
     }
+    
     response = NewDescribeNamespaceBundlesOptResponse()
     err = c.Send(request, response)
     return
@@ -2166,6 +2288,7 @@ func NewDescribeNodeHealthOptRequest() (request *DescribeNodeHealthOptRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeNodeHealthOpt")
+    
     
     return
 }
@@ -2190,6 +2313,7 @@ func (c *Client) DescribeNodeHealthOpt(request *DescribeNodeHealthOptRequest) (r
     if request == nil {
         request = NewDescribeNodeHealthOptRequest()
     }
+    
     response = NewDescribeNodeHealthOptResponse()
     err = c.Send(request, response)
     return
@@ -2200,6 +2324,7 @@ func NewDescribeProducersRequest() (request *DescribeProducersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeProducers")
+    
     
     return
 }
@@ -2228,6 +2353,7 @@ func (c *Client) DescribeProducers(request *DescribeProducersRequest) (response 
     if request == nil {
         request = NewDescribeProducersRequest()
     }
+    
     response = NewDescribeProducersResponse()
     err = c.Send(request, response)
     return
@@ -2238,6 +2364,7 @@ func NewDescribeRocketMQClusterRequest() (request *DescribeRocketMQClusterReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQCluster")
+    
     
     return
 }
@@ -2260,6 +2387,7 @@ func (c *Client) DescribeRocketMQCluster(request *DescribeRocketMQClusterRequest
     if request == nil {
         request = NewDescribeRocketMQClusterRequest()
     }
+    
     response = NewDescribeRocketMQClusterResponse()
     err = c.Send(request, response)
     return
@@ -2270,6 +2398,7 @@ func NewDescribeRocketMQClustersRequest() (request *DescribeRocketMQClustersRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQClusters")
+    
     
     return
 }
@@ -2293,6 +2422,7 @@ func (c *Client) DescribeRocketMQClusters(request *DescribeRocketMQClustersReque
     if request == nil {
         request = NewDescribeRocketMQClustersRequest()
     }
+    
     response = NewDescribeRocketMQClustersResponse()
     err = c.Send(request, response)
     return
@@ -2303,6 +2433,7 @@ func NewDescribeRocketMQGroupsRequest() (request *DescribeRocketMQGroupsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQGroups")
+    
     
     return
 }
@@ -2326,6 +2457,7 @@ func (c *Client) DescribeRocketMQGroups(request *DescribeRocketMQGroupsRequest) 
     if request == nil {
         request = NewDescribeRocketMQGroupsRequest()
     }
+    
     response = NewDescribeRocketMQGroupsResponse()
     err = c.Send(request, response)
     return
@@ -2336,6 +2468,7 @@ func NewDescribeRocketMQNamespacesRequest() (request *DescribeRocketMQNamespaces
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQNamespaces")
+    
     
     return
 }
@@ -2359,6 +2492,7 @@ func (c *Client) DescribeRocketMQNamespaces(request *DescribeRocketMQNamespacesR
     if request == nil {
         request = NewDescribeRocketMQNamespacesRequest()
     }
+    
     response = NewDescribeRocketMQNamespacesResponse()
     err = c.Send(request, response)
     return
@@ -2369,6 +2503,7 @@ func NewDescribeRocketMQTopicsRequest() (request *DescribeRocketMQTopicsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQTopics")
+    
     
     return
 }
@@ -2392,6 +2527,7 @@ func (c *Client) DescribeRocketMQTopics(request *DescribeRocketMQTopicsRequest) 
     if request == nil {
         request = NewDescribeRocketMQTopicsRequest()
     }
+    
     response = NewDescribeRocketMQTopicsResponse()
     err = c.Send(request, response)
     return
@@ -2402,6 +2538,7 @@ func NewDescribeRolesRequest() (request *DescribeRolesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRoles")
+    
     
     return
 }
@@ -2427,6 +2564,7 @@ func (c *Client) DescribeRoles(request *DescribeRolesRequest) (response *Describ
     if request == nil {
         request = NewDescribeRolesRequest()
     }
+    
     response = NewDescribeRolesResponse()
     err = c.Send(request, response)
     return
@@ -2437,6 +2575,7 @@ func NewDescribeSubscriptionsRequest() (request *DescribeSubscriptionsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeSubscriptions")
+    
     
     return
 }
@@ -2466,6 +2605,7 @@ func (c *Client) DescribeSubscriptions(request *DescribeSubscriptionsRequest) (r
     if request == nil {
         request = NewDescribeSubscriptionsRequest()
     }
+    
     response = NewDescribeSubscriptionsResponse()
     err = c.Send(request, response)
     return
@@ -2476,6 +2616,7 @@ func NewDescribeTopicsRequest() (request *DescribeTopicsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "DescribeTopics")
+    
     
     return
 }
@@ -2502,6 +2643,7 @@ func (c *Client) DescribeTopics(request *DescribeTopicsRequest) (response *Descr
     if request == nil {
         request = NewDescribeTopicsRequest()
     }
+    
     response = NewDescribeTopicsResponse()
     err = c.Send(request, response)
     return
@@ -2512,6 +2654,7 @@ func NewModifyAMQPClusterRequest() (request *ModifyAMQPClusterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "ModifyAMQPCluster")
+    
     
     return
 }
@@ -2538,6 +2681,7 @@ func (c *Client) ModifyAMQPCluster(request *ModifyAMQPClusterRequest) (response 
     if request == nil {
         request = NewModifyAMQPClusterRequest()
     }
+    
     response = NewModifyAMQPClusterResponse()
     err = c.Send(request, response)
     return
@@ -2548,6 +2692,7 @@ func NewModifyAMQPExchangeRequest() (request *ModifyAMQPExchangeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "ModifyAMQPExchange")
+    
     
     return
 }
@@ -2573,6 +2718,7 @@ func (c *Client) ModifyAMQPExchange(request *ModifyAMQPExchangeRequest) (respons
     if request == nil {
         request = NewModifyAMQPExchangeRequest()
     }
+    
     response = NewModifyAMQPExchangeResponse()
     err = c.Send(request, response)
     return
@@ -2583,6 +2729,7 @@ func NewModifyAMQPQueueRequest() (request *ModifyAMQPQueueRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "ModifyAMQPQueue")
+    
     
     return
 }
@@ -2607,6 +2754,7 @@ func (c *Client) ModifyAMQPQueue(request *ModifyAMQPQueueRequest) (response *Mod
     if request == nil {
         request = NewModifyAMQPQueueRequest()
     }
+    
     response = NewModifyAMQPQueueResponse()
     err = c.Send(request, response)
     return
@@ -2617,6 +2765,7 @@ func NewModifyAMQPVHostRequest() (request *ModifyAMQPVHostRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "ModifyAMQPVHost")
+    
     
     return
 }
@@ -2643,6 +2792,7 @@ func (c *Client) ModifyAMQPVHost(request *ModifyAMQPVHostRequest) (response *Mod
     if request == nil {
         request = NewModifyAMQPVHostRequest()
     }
+    
     response = NewModifyAMQPVHostResponse()
     err = c.Send(request, response)
     return
@@ -2653,6 +2803,7 @@ func NewModifyClusterRequest() (request *ModifyClusterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "ModifyCluster")
+    
     
     return
 }
@@ -2675,6 +2826,7 @@ func (c *Client) ModifyCluster(request *ModifyClusterRequest) (response *ModifyC
     if request == nil {
         request = NewModifyClusterRequest()
     }
+    
     response = NewModifyClusterResponse()
     err = c.Send(request, response)
     return
@@ -2685,6 +2837,7 @@ func NewModifyCmqQueueAttributeRequest() (request *ModifyCmqQueueAttributeReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "ModifyCmqQueueAttribute")
+    
     
     return
 }
@@ -2705,6 +2858,7 @@ func (c *Client) ModifyCmqQueueAttribute(request *ModifyCmqQueueAttributeRequest
     if request == nil {
         request = NewModifyCmqQueueAttributeRequest()
     }
+    
     response = NewModifyCmqQueueAttributeResponse()
     err = c.Send(request, response)
     return
@@ -2715,6 +2869,7 @@ func NewModifyCmqSubscriptionAttributeRequest() (request *ModifyCmqSubscriptionA
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "ModifyCmqSubscriptionAttribute")
+    
     
     return
 }
@@ -2735,6 +2890,7 @@ func (c *Client) ModifyCmqSubscriptionAttribute(request *ModifyCmqSubscriptionAt
     if request == nil {
         request = NewModifyCmqSubscriptionAttributeRequest()
     }
+    
     response = NewModifyCmqSubscriptionAttributeResponse()
     err = c.Send(request, response)
     return
@@ -2745,6 +2901,7 @@ func NewModifyCmqTopicAttributeRequest() (request *ModifyCmqTopicAttributeReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "ModifyCmqTopicAttribute")
+    
     
     return
 }
@@ -2765,6 +2922,7 @@ func (c *Client) ModifyCmqTopicAttribute(request *ModifyCmqTopicAttributeRequest
     if request == nil {
         request = NewModifyCmqTopicAttributeRequest()
     }
+    
     response = NewModifyCmqTopicAttributeResponse()
     err = c.Send(request, response)
     return
@@ -2775,6 +2933,7 @@ func NewModifyEnvironmentAttributesRequest() (request *ModifyEnvironmentAttribut
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "ModifyEnvironmentAttributes")
+    
     
     return
 }
@@ -2805,6 +2964,7 @@ func (c *Client) ModifyEnvironmentAttributes(request *ModifyEnvironmentAttribute
     if request == nil {
         request = NewModifyEnvironmentAttributesRequest()
     }
+    
     response = NewModifyEnvironmentAttributesResponse()
     err = c.Send(request, response)
     return
@@ -2815,6 +2975,7 @@ func NewModifyEnvironmentRoleRequest() (request *ModifyEnvironmentRoleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "ModifyEnvironmentRole")
+    
     
     return
 }
@@ -2839,6 +3000,7 @@ func (c *Client) ModifyEnvironmentRole(request *ModifyEnvironmentRoleRequest) (r
     if request == nil {
         request = NewModifyEnvironmentRoleRequest()
     }
+    
     response = NewModifyEnvironmentRoleResponse()
     err = c.Send(request, response)
     return
@@ -2849,6 +3011,7 @@ func NewModifyRocketMQClusterRequest() (request *ModifyRocketMQClusterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "ModifyRocketMQCluster")
+    
     
     return
 }
@@ -2875,6 +3038,7 @@ func (c *Client) ModifyRocketMQCluster(request *ModifyRocketMQClusterRequest) (r
     if request == nil {
         request = NewModifyRocketMQClusterRequest()
     }
+    
     response = NewModifyRocketMQClusterResponse()
     err = c.Send(request, response)
     return
@@ -2885,6 +3049,7 @@ func NewModifyRocketMQGroupRequest() (request *ModifyRocketMQGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "ModifyRocketMQGroup")
+    
     
     return
 }
@@ -2908,6 +3073,7 @@ func (c *Client) ModifyRocketMQGroup(request *ModifyRocketMQGroupRequest) (respo
     if request == nil {
         request = NewModifyRocketMQGroupRequest()
     }
+    
     response = NewModifyRocketMQGroupResponse()
     err = c.Send(request, response)
     return
@@ -2918,6 +3084,7 @@ func NewModifyRocketMQNamespaceRequest() (request *ModifyRocketMQNamespaceReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "ModifyRocketMQNamespace")
+    
     
     return
 }
@@ -2944,6 +3111,7 @@ func (c *Client) ModifyRocketMQNamespace(request *ModifyRocketMQNamespaceRequest
     if request == nil {
         request = NewModifyRocketMQNamespaceRequest()
     }
+    
     response = NewModifyRocketMQNamespaceResponse()
     err = c.Send(request, response)
     return
@@ -2954,6 +3122,7 @@ func NewModifyRocketMQTopicRequest() (request *ModifyRocketMQTopicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "ModifyRocketMQTopic")
+    
     
     return
 }
@@ -2978,6 +3147,7 @@ func (c *Client) ModifyRocketMQTopic(request *ModifyRocketMQTopicRequest) (respo
     if request == nil {
         request = NewModifyRocketMQTopicRequest()
     }
+    
     response = NewModifyRocketMQTopicResponse()
     err = c.Send(request, response)
     return
@@ -2988,6 +3158,7 @@ func NewModifyRoleRequest() (request *ModifyRoleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "ModifyRole")
+    
     
     return
 }
@@ -3013,6 +3184,7 @@ func (c *Client) ModifyRole(request *ModifyRoleRequest) (response *ModifyRoleRes
     if request == nil {
         request = NewModifyRoleRequest()
     }
+    
     response = NewModifyRoleResponse()
     err = c.Send(request, response)
     return
@@ -3023,6 +3195,7 @@ func NewModifyTopicRequest() (request *ModifyTopicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "ModifyTopic")
+    
     
     return
 }
@@ -3050,6 +3223,7 @@ func (c *Client) ModifyTopic(request *ModifyTopicRequest) (response *ModifyTopic
     if request == nil {
         request = NewModifyTopicRequest()
     }
+    
     response = NewModifyTopicResponse()
     err = c.Send(request, response)
     return
@@ -3060,6 +3234,7 @@ func NewPublishCmqMsgRequest() (request *PublishCmqMsgRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "PublishCmqMsg")
+    
     
     return
 }
@@ -3080,6 +3255,7 @@ func (c *Client) PublishCmqMsg(request *PublishCmqMsgRequest) (response *Publish
     if request == nil {
         request = NewPublishCmqMsgRequest()
     }
+    
     response = NewPublishCmqMsgResponse()
     err = c.Send(request, response)
     return
@@ -3090,6 +3266,7 @@ func NewReceiveMessageRequest() (request *ReceiveMessageRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "ReceiveMessage")
+    
     
     return
 }
@@ -3120,6 +3297,7 @@ func (c *Client) ReceiveMessage(request *ReceiveMessageRequest) (response *Recei
     if request == nil {
         request = NewReceiveMessageRequest()
     }
+    
     response = NewReceiveMessageResponse()
     err = c.Send(request, response)
     return
@@ -3130,6 +3308,7 @@ func NewResetMsgSubOffsetByTimestampRequest() (request *ResetMsgSubOffsetByTimes
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "ResetMsgSubOffsetByTimestamp")
+    
     
     return
 }
@@ -3158,6 +3337,7 @@ func (c *Client) ResetMsgSubOffsetByTimestamp(request *ResetMsgSubOffsetByTimest
     if request == nil {
         request = NewResetMsgSubOffsetByTimestampRequest()
     }
+    
     response = NewResetMsgSubOffsetByTimestampResponse()
     err = c.Send(request, response)
     return
@@ -3168,6 +3348,7 @@ func NewRewindCmqQueueRequest() (request *RewindCmqQueueRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "RewindCmqQueue")
+    
     
     return
 }
@@ -3196,6 +3377,7 @@ func (c *Client) RewindCmqQueue(request *RewindCmqQueueRequest) (response *Rewin
     if request == nil {
         request = NewRewindCmqQueueRequest()
     }
+    
     response = NewRewindCmqQueueResponse()
     err = c.Send(request, response)
     return
@@ -3206,6 +3388,7 @@ func NewSendBatchMessagesRequest() (request *SendBatchMessagesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "SendBatchMessages")
+    
     
     return
 }
@@ -3240,6 +3423,7 @@ func (c *Client) SendBatchMessages(request *SendBatchMessagesRequest) (response 
     if request == nil {
         request = NewSendBatchMessagesRequest()
     }
+    
     response = NewSendBatchMessagesResponse()
     err = c.Send(request, response)
     return
@@ -3250,6 +3434,7 @@ func NewSendCmqMsgRequest() (request *SendCmqMsgRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "SendCmqMsg")
+    
     
     return
 }
@@ -3270,6 +3455,7 @@ func (c *Client) SendCmqMsg(request *SendCmqMsgRequest) (response *SendCmqMsgRes
     if request == nil {
         request = NewSendCmqMsgRequest()
     }
+    
     response = NewSendCmqMsgResponse()
     err = c.Send(request, response)
     return
@@ -3280,6 +3466,7 @@ func NewSendMessagesRequest() (request *SendMessagesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "SendMessages")
+    
     
     return
 }
@@ -3310,6 +3497,7 @@ func (c *Client) SendMessages(request *SendMessagesRequest) (response *SendMessa
     if request == nil {
         request = NewSendMessagesRequest()
     }
+    
     response = NewSendMessagesResponse()
     err = c.Send(request, response)
     return
@@ -3320,6 +3508,7 @@ func NewSendMsgRequest() (request *SendMsgRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "SendMsg")
+    
     
     return
 }
@@ -3347,6 +3536,7 @@ func (c *Client) SendMsg(request *SendMsgRequest) (response *SendMsgResponse, er
     if request == nil {
         request = NewSendMsgRequest()
     }
+    
     response = NewSendMsgResponse()
     err = c.Send(request, response)
     return
@@ -3357,6 +3547,7 @@ func NewUnbindCmqDeadLetterRequest() (request *UnbindCmqDeadLetterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tdmq", APIVersion, "UnbindCmqDeadLetter")
+    
     
     return
 }
@@ -3377,6 +3568,7 @@ func (c *Client) UnbindCmqDeadLetter(request *UnbindCmqDeadLetterRequest) (respo
     if request == nil {
         request = NewUnbindCmqDeadLetterRequest()
     }
+    
     response = NewUnbindCmqDeadLetterResponse()
     err = c.Send(request, response)
     return

@@ -49,6 +49,7 @@ func NewAddSmsSignRequest() (request *AddSmsSignRequest) {
     }
     request.Init().WithApiInfo("sms", APIVersion, "AddSmsSign")
     
+    
     return
 }
 
@@ -98,6 +99,7 @@ func (c *Client) AddSmsSign(request *AddSmsSignRequest) (response *AddSmsSignRes
     if request == nil {
         request = NewAddSmsSignRequest()
     }
+    
     response = NewAddSmsSignResponse()
     err = c.Send(request, response)
     return
@@ -108,6 +110,7 @@ func NewAddSmsTemplateRequest() (request *AddSmsTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("sms", APIVersion, "AddSmsTemplate")
+    
     
     return
 }
@@ -158,6 +161,7 @@ func (c *Client) AddSmsTemplate(request *AddSmsTemplateRequest) (response *AddSm
     if request == nil {
         request = NewAddSmsTemplateRequest()
     }
+    
     response = NewAddSmsTemplateResponse()
     err = c.Send(request, response)
     return
@@ -168,6 +172,7 @@ func NewCallbackStatusStatisticsRequest() (request *CallbackStatusStatisticsRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("sms", APIVersion, "CallbackStatusStatistics")
+    
     
     return
 }
@@ -216,6 +221,7 @@ func (c *Client) CallbackStatusStatistics(request *CallbackStatusStatisticsReque
     if request == nil {
         request = NewCallbackStatusStatisticsRequest()
     }
+    
     response = NewCallbackStatusStatisticsResponse()
     err = c.Send(request, response)
     return
@@ -226,6 +232,7 @@ func NewDeleteSmsSignRequest() (request *DeleteSmsSignRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("sms", APIVersion, "DeleteSmsSign")
+    
     
     return
 }
@@ -264,6 +271,7 @@ func (c *Client) DeleteSmsSign(request *DeleteSmsSignRequest) (response *DeleteS
     if request == nil {
         request = NewDeleteSmsSignRequest()
     }
+    
     response = NewDeleteSmsSignResponse()
     err = c.Send(request, response)
     return
@@ -274,6 +282,7 @@ func NewDeleteSmsTemplateRequest() (request *DeleteSmsTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("sms", APIVersion, "DeleteSmsTemplate")
+    
     
     return
 }
@@ -314,6 +323,7 @@ func (c *Client) DeleteSmsTemplate(request *DeleteSmsTemplateRequest) (response 
     if request == nil {
         request = NewDeleteSmsTemplateRequest()
     }
+    
     response = NewDeleteSmsTemplateResponse()
     err = c.Send(request, response)
     return
@@ -324,6 +334,7 @@ func NewDescribePhoneNumberInfoRequest() (request *DescribePhoneNumberInfoReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("sms", APIVersion, "DescribePhoneNumberInfo")
+    
     
     return
 }
@@ -348,6 +359,7 @@ func (c *Client) DescribePhoneNumberInfo(request *DescribePhoneNumberInfoRequest
     if request == nil {
         request = NewDescribePhoneNumberInfoRequest()
     }
+    
     response = NewDescribePhoneNumberInfoResponse()
     err = c.Send(request, response)
     return
@@ -358,6 +370,7 @@ func NewDescribeSmsSignListRequest() (request *DescribeSmsSignListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("sms", APIVersion, "DescribeSmsSignList")
+    
     
     return
 }
@@ -396,6 +409,7 @@ func (c *Client) DescribeSmsSignList(request *DescribeSmsSignListRequest) (respo
     if request == nil {
         request = NewDescribeSmsSignListRequest()
     }
+    
     response = NewDescribeSmsSignListResponse()
     err = c.Send(request, response)
     return
@@ -406,6 +420,7 @@ func NewDescribeSmsTemplateListRequest() (request *DescribeSmsTemplateListReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("sms", APIVersion, "DescribeSmsTemplateList")
+    
     
     return
 }
@@ -450,6 +465,7 @@ func (c *Client) DescribeSmsTemplateList(request *DescribeSmsTemplateListRequest
     if request == nil {
         request = NewDescribeSmsTemplateListRequest()
     }
+    
     response = NewDescribeSmsTemplateListResponse()
     err = c.Send(request, response)
     return
@@ -460,6 +476,7 @@ func NewModifySmsSignRequest() (request *ModifySmsSignRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("sms", APIVersion, "ModifySmsSign")
+    
     
     return
 }
@@ -513,6 +530,7 @@ func (c *Client) ModifySmsSign(request *ModifySmsSignRequest) (response *ModifyS
     if request == nil {
         request = NewModifySmsSignRequest()
     }
+    
     response = NewModifySmsSignResponse()
     err = c.Send(request, response)
     return
@@ -523,6 +541,7 @@ func NewModifySmsTemplateRequest() (request *ModifySmsTemplateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("sms", APIVersion, "ModifySmsTemplate")
+    
     
     return
 }
@@ -572,6 +591,7 @@ func (c *Client) ModifySmsTemplate(request *ModifySmsTemplateRequest) (response 
     if request == nil {
         request = NewModifySmsTemplateRequest()
     }
+    
     response = NewModifySmsTemplateResponse()
     err = c.Send(request, response)
     return
@@ -582,6 +602,7 @@ func NewPullSmsReplyStatusRequest() (request *PullSmsReplyStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("sms", APIVersion, "PullSmsReplyStatus")
+    
     
     return
 }
@@ -628,6 +649,7 @@ func (c *Client) PullSmsReplyStatus(request *PullSmsReplyStatusRequest) (respons
     if request == nil {
         request = NewPullSmsReplyStatusRequest()
     }
+    
     response = NewPullSmsReplyStatusResponse()
     err = c.Send(request, response)
     return
@@ -638,6 +660,7 @@ func NewPullSmsReplyStatusByPhoneNumberRequest() (request *PullSmsReplyStatusByP
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("sms", APIVersion, "PullSmsReplyStatusByPhoneNumber")
+    
     
     return
 }
@@ -685,6 +708,7 @@ func (c *Client) PullSmsReplyStatusByPhoneNumber(request *PullSmsReplyStatusByPh
     if request == nil {
         request = NewPullSmsReplyStatusByPhoneNumberRequest()
     }
+    
     response = NewPullSmsReplyStatusByPhoneNumberResponse()
     err = c.Send(request, response)
     return
@@ -695,6 +719,7 @@ func NewPullSmsSendStatusRequest() (request *PullSmsSendStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("sms", APIVersion, "PullSmsSendStatus")
+    
     
     return
 }
@@ -742,6 +767,7 @@ func (c *Client) PullSmsSendStatus(request *PullSmsSendStatusRequest) (response 
     if request == nil {
         request = NewPullSmsSendStatusRequest()
     }
+    
     response = NewPullSmsSendStatusResponse()
     err = c.Send(request, response)
     return
@@ -752,6 +778,7 @@ func NewPullSmsSendStatusByPhoneNumberRequest() (request *PullSmsSendStatusByPho
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("sms", APIVersion, "PullSmsSendStatusByPhoneNumber")
+    
     
     return
 }
@@ -802,6 +829,7 @@ func (c *Client) PullSmsSendStatusByPhoneNumber(request *PullSmsSendStatusByPhon
     if request == nil {
         request = NewPullSmsSendStatusByPhoneNumberRequest()
     }
+    
     response = NewPullSmsSendStatusByPhoneNumberResponse()
     err = c.Send(request, response)
     return
@@ -812,6 +840,7 @@ func NewSendSmsRequest() (request *SendSmsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("sms", APIVersion, "SendSms")
+    
     
     return
 }
@@ -879,6 +908,7 @@ func (c *Client) SendSms(request *SendSmsRequest) (response *SendSmsResponse, er
     if request == nil {
         request = NewSendSmsRequest()
     }
+    
     response = NewSendSmsResponse()
     err = c.Send(request, response)
     return
@@ -889,6 +919,7 @@ func NewSendStatusStatisticsRequest() (request *SendStatusStatisticsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("sms", APIVersion, "SendStatusStatistics")
+    
     
     return
 }
@@ -938,6 +969,7 @@ func (c *Client) SendStatusStatistics(request *SendStatusStatisticsRequest) (res
     if request == nil {
         request = NewSendStatusStatisticsRequest()
     }
+    
     response = NewSendStatusStatisticsResponse()
     err = c.Send(request, response)
     return
@@ -948,6 +980,7 @@ func NewSmsPackagesStatisticsRequest() (request *SmsPackagesStatisticsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("sms", APIVersion, "SmsPackagesStatistics")
+    
     
     return
 }
@@ -997,6 +1030,7 @@ func (c *Client) SmsPackagesStatistics(request *SmsPackagesStatisticsRequest) (r
     if request == nil {
         request = NewSmsPackagesStatisticsRequest()
     }
+    
     response = NewSmsPackagesStatisticsResponse()
     err = c.Send(request, response)
     return

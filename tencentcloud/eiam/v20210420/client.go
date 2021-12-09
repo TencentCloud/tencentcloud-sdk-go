@@ -49,6 +49,7 @@ func NewAddUserToUserGroupRequest() (request *AddUserToUserGroupRequest) {
     }
     request.Init().WithApiInfo("eiam", APIVersion, "AddUserToUserGroup")
     
+    
     return
 }
 
@@ -73,6 +74,7 @@ func (c *Client) AddUserToUserGroup(request *AddUserToUserGroupRequest) (respons
     if request == nil {
         request = NewAddUserToUserGroupRequest()
     }
+    
     response = NewAddUserToUserGroupResponse()
     err = c.Send(request, response)
     return
@@ -83,6 +85,7 @@ func NewCreateOrgNodeRequest() (request *CreateOrgNodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "CreateOrgNode")
+    
     
     return
 }
@@ -107,6 +110,7 @@ func (c *Client) CreateOrgNode(request *CreateOrgNodeRequest) (response *CreateO
     if request == nil {
         request = NewCreateOrgNodeRequest()
     }
+    
     response = NewCreateOrgNodeResponse()
     err = c.Send(request, response)
     return
@@ -117,6 +121,7 @@ func NewCreateUserRequest() (request *CreateUserRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "CreateUser")
+    
     
     return
 }
@@ -144,6 +149,7 @@ func (c *Client) CreateUser(request *CreateUserRequest) (response *CreateUserRes
     if request == nil {
         request = NewCreateUserRequest()
     }
+    
     response = NewCreateUserResponse()
     err = c.Send(request, response)
     return
@@ -154,6 +160,7 @@ func NewCreateUserGroupRequest() (request *CreateUserGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "CreateUserGroup")
+    
     
     return
 }
@@ -176,6 +183,7 @@ func (c *Client) CreateUserGroup(request *CreateUserGroupRequest) (response *Cre
     if request == nil {
         request = NewCreateUserGroupRequest()
     }
+    
     response = NewCreateUserGroupResponse()
     err = c.Send(request, response)
     return
@@ -186,6 +194,7 @@ func NewDeleteOrgNodeRequest() (request *DeleteOrgNodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "DeleteOrgNode")
+    
     
     return
 }
@@ -212,6 +221,7 @@ func (c *Client) DeleteOrgNode(request *DeleteOrgNodeRequest) (response *DeleteO
     if request == nil {
         request = NewDeleteOrgNodeRequest()
     }
+    
     response = NewDeleteOrgNodeResponse()
     err = c.Send(request, response)
     return
@@ -222,6 +232,7 @@ func NewDeleteUserRequest() (request *DeleteUserRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "DeleteUser")
+    
     
     return
 }
@@ -244,6 +255,7 @@ func (c *Client) DeleteUser(request *DeleteUserRequest) (response *DeleteUserRes
     if request == nil {
         request = NewDeleteUserRequest()
     }
+    
     response = NewDeleteUserResponse()
     err = c.Send(request, response)
     return
@@ -254,6 +266,7 @@ func NewDeleteUserGroupRequest() (request *DeleteUserGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "DeleteUserGroup")
+    
     
     return
 }
@@ -277,6 +290,7 @@ func (c *Client) DeleteUserGroup(request *DeleteUserGroupRequest) (response *Del
     if request == nil {
         request = NewDeleteUserGroupRequest()
     }
+    
     response = NewDeleteUserGroupResponse()
     err = c.Send(request, response)
     return
@@ -287,6 +301,7 @@ func NewDescribeApplicationRequest() (request *DescribeApplicationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "DescribeApplication")
+    
     
     return
 }
@@ -309,6 +324,7 @@ func (c *Client) DescribeApplication(request *DescribeApplicationRequest) (respo
     if request == nil {
         request = NewDescribeApplicationRequest()
     }
+    
     response = NewDescribeApplicationResponse()
     err = c.Send(request, response)
     return
@@ -319,6 +335,7 @@ func NewDescribeOrgNodeRequest() (request *DescribeOrgNodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "DescribeOrgNode")
+    
     
     return
 }
@@ -341,6 +358,7 @@ func (c *Client) DescribeOrgNode(request *DescribeOrgNodeRequest) (response *Des
     if request == nil {
         request = NewDescribeOrgNodeRequest()
     }
+    
     response = NewDescribeOrgNodeResponse()
     err = c.Send(request, response)
     return
@@ -351,6 +369,7 @@ func NewDescribeOrgResourcesAuthorizationRequest() (request *DescribeOrgResource
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "DescribeOrgResourcesAuthorization")
+    
     
     return
 }
@@ -374,6 +393,7 @@ func (c *Client) DescribeOrgResourcesAuthorization(request *DescribeOrgResources
     if request == nil {
         request = NewDescribeOrgResourcesAuthorizationRequest()
     }
+    
     response = NewDescribeOrgResourcesAuthorizationResponse()
     err = c.Send(request, response)
     return
@@ -384,6 +404,7 @@ func NewDescribePublicKeyRequest() (request *DescribePublicKeyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "DescribePublicKey")
+    
     
     return
 }
@@ -407,6 +428,7 @@ func (c *Client) DescribePublicKey(request *DescribePublicKeyRequest) (response 
     if request == nil {
         request = NewDescribePublicKeyRequest()
     }
+    
     response = NewDescribePublicKeyResponse()
     err = c.Send(request, response)
     return
@@ -417,6 +439,7 @@ func NewDescribeUserGroupRequest() (request *DescribeUserGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "DescribeUserGroup")
+    
     
     return
 }
@@ -439,6 +462,7 @@ func (c *Client) DescribeUserGroup(request *DescribeUserGroupRequest) (response 
     if request == nil {
         request = NewDescribeUserGroupRequest()
     }
+    
     response = NewDescribeUserGroupResponse()
     err = c.Send(request, response)
     return
@@ -449,6 +473,7 @@ func NewDescribeUserGroupResourcesAuthorizationRequest() (request *DescribeUserG
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "DescribeUserGroupResourcesAuthorization")
+    
     
     return
 }
@@ -472,6 +497,7 @@ func (c *Client) DescribeUserGroupResourcesAuthorization(request *DescribeUserGr
     if request == nil {
         request = NewDescribeUserGroupResourcesAuthorizationRequest()
     }
+    
     response = NewDescribeUserGroupResourcesAuthorizationResponse()
     err = c.Send(request, response)
     return
@@ -482,6 +508,7 @@ func NewDescribeUserInfoRequest() (request *DescribeUserInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "DescribeUserInfo")
+    
     
     return
 }
@@ -504,6 +531,7 @@ func (c *Client) DescribeUserInfo(request *DescribeUserInfoRequest) (response *D
     if request == nil {
         request = NewDescribeUserInfoRequest()
     }
+    
     response = NewDescribeUserInfoResponse()
     err = c.Send(request, response)
     return
@@ -514,6 +542,7 @@ func NewDescribeUserResourcesAuthorizationRequest() (request *DescribeUserResour
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "DescribeUserResourcesAuthorization")
+    
     
     return
 }
@@ -537,6 +566,7 @@ func (c *Client) DescribeUserResourcesAuthorization(request *DescribeUserResourc
     if request == nil {
         request = NewDescribeUserResourcesAuthorizationRequest()
     }
+    
     response = NewDescribeUserResourcesAuthorizationResponse()
     err = c.Send(request, response)
     return
@@ -547,6 +577,7 @@ func NewListApplicationAuthorizationsRequest() (request *ListApplicationAuthoriz
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "ListApplicationAuthorizations")
+    
     
     return
 }
@@ -571,6 +602,7 @@ func (c *Client) ListApplicationAuthorizations(request *ListApplicationAuthoriza
     if request == nil {
         request = NewListApplicationAuthorizationsRequest()
     }
+    
     response = NewListApplicationAuthorizationsResponse()
     err = c.Send(request, response)
     return
@@ -581,6 +613,7 @@ func NewListApplicationsRequest() (request *ListApplicationsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "ListApplications")
+    
     
     return
 }
@@ -604,6 +637,7 @@ func (c *Client) ListApplications(request *ListApplicationsRequest) (response *L
     if request == nil {
         request = NewListApplicationsRequest()
     }
+    
     response = NewListApplicationsResponse()
     err = c.Send(request, response)
     return
@@ -614,6 +648,7 @@ func NewListAuthorizedApplicationsToOrgNodeRequest() (request *ListAuthorizedApp
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "ListAuthorizedApplicationsToOrgNode")
+    
     
     return
 }
@@ -636,6 +671,7 @@ func (c *Client) ListAuthorizedApplicationsToOrgNode(request *ListAuthorizedAppl
     if request == nil {
         request = NewListAuthorizedApplicationsToOrgNodeRequest()
     }
+    
     response = NewListAuthorizedApplicationsToOrgNodeResponse()
     err = c.Send(request, response)
     return
@@ -646,6 +682,7 @@ func NewListAuthorizedApplicationsToUserRequest() (request *ListAuthorizedApplic
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "ListAuthorizedApplicationsToUser")
+    
     
     return
 }
@@ -669,6 +706,7 @@ func (c *Client) ListAuthorizedApplicationsToUser(request *ListAuthorizedApplica
     if request == nil {
         request = NewListAuthorizedApplicationsToUserRequest()
     }
+    
     response = NewListAuthorizedApplicationsToUserResponse()
     err = c.Send(request, response)
     return
@@ -679,6 +717,7 @@ func NewListAuthorizedApplicationsToUserGroupRequest() (request *ListAuthorizedA
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "ListAuthorizedApplicationsToUserGroup")
+    
     
     return
 }
@@ -701,6 +740,7 @@ func (c *Client) ListAuthorizedApplicationsToUserGroup(request *ListAuthorizedAp
     if request == nil {
         request = NewListAuthorizedApplicationsToUserGroupRequest()
     }
+    
     response = NewListAuthorizedApplicationsToUserGroupResponse()
     err = c.Send(request, response)
     return
@@ -711,6 +751,7 @@ func NewListUserGroupsRequest() (request *ListUserGroupsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "ListUserGroups")
+    
     
     return
 }
@@ -734,6 +775,7 @@ func (c *Client) ListUserGroups(request *ListUserGroupsRequest) (response *ListU
     if request == nil {
         request = NewListUserGroupsRequest()
     }
+    
     response = NewListUserGroupsResponse()
     err = c.Send(request, response)
     return
@@ -744,6 +786,7 @@ func NewListUserGroupsOfUserRequest() (request *ListUserGroupsOfUserRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "ListUserGroupsOfUser")
+    
     
     return
 }
@@ -766,6 +809,7 @@ func (c *Client) ListUserGroupsOfUser(request *ListUserGroupsOfUserRequest) (res
     if request == nil {
         request = NewListUserGroupsOfUserRequest()
     }
+    
     response = NewListUserGroupsOfUserResponse()
     err = c.Send(request, response)
     return
@@ -776,6 +820,7 @@ func NewListUsersRequest() (request *ListUsersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "ListUsers")
+    
     
     return
 }
@@ -801,6 +846,7 @@ func (c *Client) ListUsers(request *ListUsersRequest) (response *ListUsersRespon
     if request == nil {
         request = NewListUsersRequest()
     }
+    
     response = NewListUsersResponse()
     err = c.Send(request, response)
     return
@@ -811,6 +857,7 @@ func NewListUsersInOrgNodeRequest() (request *ListUsersInOrgNodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "ListUsersInOrgNode")
+    
     
     return
 }
@@ -833,6 +880,7 @@ func (c *Client) ListUsersInOrgNode(request *ListUsersInOrgNodeRequest) (respons
     if request == nil {
         request = NewListUsersInOrgNodeRequest()
     }
+    
     response = NewListUsersInOrgNodeResponse()
     err = c.Send(request, response)
     return
@@ -843,6 +891,7 @@ func NewListUsersInUserGroupRequest() (request *ListUsersInUserGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "ListUsersInUserGroup")
+    
     
     return
 }
@@ -866,6 +915,7 @@ func (c *Client) ListUsersInUserGroup(request *ListUsersInUserGroupRequest) (res
     if request == nil {
         request = NewListUsersInUserGroupRequest()
     }
+    
     response = NewListUsersInUserGroupResponse()
     err = c.Send(request, response)
     return
@@ -876,6 +926,7 @@ func NewModifyApplicationRequest() (request *ModifyApplicationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "ModifyApplication")
+    
     
     return
 }
@@ -898,6 +949,7 @@ func (c *Client) ModifyApplication(request *ModifyApplicationRequest) (response 
     if request == nil {
         request = NewModifyApplicationRequest()
     }
+    
     response = NewModifyApplicationResponse()
     err = c.Send(request, response)
     return
@@ -908,6 +960,7 @@ func NewModifyUserInfoRequest() (request *ModifyUserInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "ModifyUserInfo")
+    
     
     return
 }
@@ -935,6 +988,7 @@ func (c *Client) ModifyUserInfo(request *ModifyUserInfoRequest) (response *Modif
     if request == nil {
         request = NewModifyUserInfoRequest()
     }
+    
     response = NewModifyUserInfoResponse()
     err = c.Send(request, response)
     return
@@ -945,6 +999,7 @@ func NewRemoveUserFromUserGroupRequest() (request *RemoveUserFromUserGroupReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "RemoveUserFromUserGroup")
+    
     
     return
 }
@@ -971,6 +1026,7 @@ func (c *Client) RemoveUserFromUserGroup(request *RemoveUserFromUserGroupRequest
     if request == nil {
         request = NewRemoveUserFromUserGroupRequest()
     }
+    
     response = NewRemoveUserFromUserGroupResponse()
     err = c.Send(request, response)
     return
@@ -981,6 +1037,7 @@ func NewUpdateOrgNodeRequest() (request *UpdateOrgNodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("eiam", APIVersion, "UpdateOrgNode")
+    
     
     return
 }
@@ -1005,6 +1062,7 @@ func (c *Client) UpdateOrgNode(request *UpdateOrgNodeRequest) (response *UpdateO
     if request == nil {
         request = NewUpdateOrgNodeRequest()
     }
+    
     response = NewUpdateOrgNodeResponse()
     err = c.Send(request, response)
     return

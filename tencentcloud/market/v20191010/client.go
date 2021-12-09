@@ -49,6 +49,7 @@ func NewFlowProductRemindRequest() (request *FlowProductRemindRequest) {
     }
     request.Init().WithApiInfo("market", APIVersion, "FlowProductRemind")
     
+    
     return
 }
 
@@ -65,6 +66,7 @@ func (c *Client) FlowProductRemind(request *FlowProductRemindRequest) (response 
     if request == nil {
         request = NewFlowProductRemindRequest()
     }
+    
     response = NewFlowProductRemindResponse()
     err = c.Send(request, response)
     return
@@ -75,6 +77,7 @@ func NewGetUsagePlanUsageAmountRequest() (request *GetUsagePlanUsageAmountReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("market", APIVersion, "GetUsagePlanUsageAmount")
+    
     
     return
 }
@@ -96,6 +99,7 @@ func (c *Client) GetUsagePlanUsageAmount(request *GetUsagePlanUsageAmountRequest
     if request == nil {
         request = NewGetUsagePlanUsageAmountRequest()
     }
+    
     response = NewGetUsagePlanUsageAmountResponse()
     err = c.Send(request, response)
     return

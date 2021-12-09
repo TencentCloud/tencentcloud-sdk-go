@@ -49,6 +49,7 @@ func NewApplyStackRequest() (request *ApplyStackRequest) {
     }
     request.Init().WithApiInfo("tic", APIVersion, "ApplyStack")
     
+    
     return
 }
 
@@ -80,6 +81,7 @@ func (c *Client) ApplyStack(request *ApplyStackRequest) (response *ApplyStackRes
     if request == nil {
         request = NewApplyStackRequest()
     }
+    
     response = NewApplyStackResponse()
     err = c.Send(request, response)
     return
@@ -90,6 +92,7 @@ func NewCreateStackRequest() (request *CreateStackRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tic", APIVersion, "CreateStack")
+    
     
     return
 }
@@ -115,6 +118,7 @@ func (c *Client) CreateStack(request *CreateStackRequest) (response *CreateStack
     if request == nil {
         request = NewCreateStackRequest()
     }
+    
     response = NewCreateStackResponse()
     err = c.Send(request, response)
     return
@@ -125,6 +129,7 @@ func NewCreateStackVersionRequest() (request *CreateStackVersionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tic", APIVersion, "CreateStackVersion")
+    
     
     return
 }
@@ -153,6 +158,7 @@ func (c *Client) CreateStackVersion(request *CreateStackVersionRequest) (respons
     if request == nil {
         request = NewCreateStackVersionRequest()
     }
+    
     response = NewCreateStackVersionResponse()
     err = c.Send(request, response)
     return
@@ -163,6 +169,7 @@ func NewDeleteStackRequest() (request *DeleteStackRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tic", APIVersion, "DeleteStack")
+    
     
     return
 }
@@ -188,6 +195,7 @@ func (c *Client) DeleteStack(request *DeleteStackRequest) (response *DeleteStack
     if request == nil {
         request = NewDeleteStackRequest()
     }
+    
     response = NewDeleteStackResponse()
     err = c.Send(request, response)
     return
@@ -198,6 +206,7 @@ func NewDeleteStackVersionRequest() (request *DeleteStackVersionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tic", APIVersion, "DeleteStackVersion")
+    
     
     return
 }
@@ -223,6 +232,7 @@ func (c *Client) DeleteStackVersion(request *DeleteStackVersionRequest) (respons
     if request == nil {
         request = NewDeleteStackVersionRequest()
     }
+    
     response = NewDeleteStackVersionResponse()
     err = c.Send(request, response)
     return
@@ -233,6 +243,7 @@ func NewDescribeStackEventRequest() (request *DescribeStackEventRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tic", APIVersion, "DescribeStackEvent")
+    
     
     return
 }
@@ -258,6 +269,7 @@ func (c *Client) DescribeStackEvent(request *DescribeStackEventRequest) (respons
     if request == nil {
         request = NewDescribeStackEventRequest()
     }
+    
     response = NewDescribeStackEventResponse()
     err = c.Send(request, response)
     return
@@ -268,6 +280,7 @@ func NewDescribeStackEventsRequest() (request *DescribeStackEventsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tic", APIVersion, "DescribeStackEvents")
+    
     
     return
 }
@@ -300,6 +313,7 @@ func (c *Client) DescribeStackEvents(request *DescribeStackEventsRequest) (respo
     if request == nil {
         request = NewDescribeStackEventsRequest()
     }
+    
     response = NewDescribeStackEventsResponse()
     err = c.Send(request, response)
     return
@@ -310,6 +324,7 @@ func NewDescribeStackVersionsRequest() (request *DescribeStackVersionsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tic", APIVersion, "DescribeStackVersions")
+    
     
     return
 }
@@ -342,6 +357,7 @@ func (c *Client) DescribeStackVersions(request *DescribeStackVersionsRequest) (r
     if request == nil {
         request = NewDescribeStackVersionsRequest()
     }
+    
     response = NewDescribeStackVersionsResponse()
     err = c.Send(request, response)
     return
@@ -352,6 +368,7 @@ func NewDescribeStacksRequest() (request *DescribeStacksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tic", APIVersion, "DescribeStacks")
+    
     
     return
 }
@@ -382,6 +399,7 @@ func (c *Client) DescribeStacks(request *DescribeStacksRequest) (response *Descr
     if request == nil {
         request = NewDescribeStacksRequest()
     }
+    
     response = NewDescribeStacksResponse()
     err = c.Send(request, response)
     return
@@ -392,6 +410,7 @@ func NewDestroyStackRequest() (request *DestroyStackRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tic", APIVersion, "DestroyStack")
+    
     
     return
 }
@@ -418,6 +437,7 @@ func (c *Client) DestroyStack(request *DestroyStackRequest) (response *DestroySt
     if request == nil {
         request = NewDestroyStackRequest()
     }
+    
     response = NewDestroyStackResponse()
     err = c.Send(request, response)
     return
@@ -428,6 +448,7 @@ func NewPlanStackRequest() (request *PlanStackRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tic", APIVersion, "PlanStack")
+    
     
     return
 }
@@ -460,6 +481,7 @@ func (c *Client) PlanStack(request *PlanStackRequest) (response *PlanStackRespon
     if request == nil {
         request = NewPlanStackRequest()
     }
+    
     response = NewPlanStackResponse()
     err = c.Send(request, response)
     return
@@ -470,6 +492,7 @@ func NewUpdateStackRequest() (request *UpdateStackRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tic", APIVersion, "UpdateStack")
+    
     
     return
 }
@@ -494,6 +517,7 @@ func (c *Client) UpdateStack(request *UpdateStackRequest) (response *UpdateStack
     if request == nil {
         request = NewUpdateStackRequest()
     }
+    
     response = NewUpdateStackResponse()
     err = c.Send(request, response)
     return
@@ -504,6 +528,7 @@ func NewUpdateStackVersionRequest() (request *UpdateStackVersionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tic", APIVersion, "UpdateStackVersion")
+    
     
     return
 }
@@ -529,6 +554,7 @@ func (c *Client) UpdateStackVersion(request *UpdateStackVersionRequest) (respons
     if request == nil {
         request = NewUpdateStackVersionRequest()
     }
+    
     response = NewUpdateStackVersionResponse()
     err = c.Send(request, response)
     return

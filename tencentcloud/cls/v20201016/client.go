@@ -49,6 +49,7 @@ func NewApplyConfigToMachineGroupRequest() (request *ApplyConfigToMachineGroupRe
     }
     request.Init().WithApiInfo("cls", APIVersion, "ApplyConfigToMachineGroup")
     
+    
     return
 }
 
@@ -78,6 +79,7 @@ func (c *Client) ApplyConfigToMachineGroup(request *ApplyConfigToMachineGroupReq
     if request == nil {
         request = NewApplyConfigToMachineGroupRequest()
     }
+    
     response = NewApplyConfigToMachineGroupResponse()
     err = c.Send(request, response)
     return
@@ -88,6 +90,7 @@ func NewCreateAlarmRequest() (request *CreateAlarmRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "CreateAlarm")
+    
     
     return
 }
@@ -119,6 +122,7 @@ func (c *Client) CreateAlarm(request *CreateAlarmRequest) (response *CreateAlarm
     if request == nil {
         request = NewCreateAlarmRequest()
     }
+    
     response = NewCreateAlarmResponse()
     err = c.Send(request, response)
     return
@@ -129,6 +133,7 @@ func NewCreateAlarmNoticeRequest() (request *CreateAlarmNoticeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "CreateAlarmNotice")
+    
     
     return
 }
@@ -156,6 +161,7 @@ func (c *Client) CreateAlarmNotice(request *CreateAlarmNoticeRequest) (response 
     if request == nil {
         request = NewCreateAlarmNoticeRequest()
     }
+    
     response = NewCreateAlarmNoticeResponse()
     err = c.Send(request, response)
     return
@@ -166,6 +172,7 @@ func NewCreateAsyncContextTaskRequest() (request *CreateAsyncContextTaskRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "CreateAsyncContextTask")
+    
     
     return
 }
@@ -194,6 +201,7 @@ func (c *Client) CreateAsyncContextTask(request *CreateAsyncContextTaskRequest) 
     if request == nil {
         request = NewCreateAsyncContextTaskRequest()
     }
+    
     response = NewCreateAsyncContextTaskResponse()
     err = c.Send(request, response)
     return
@@ -204,6 +212,7 @@ func NewCreateAsyncSearchTaskRequest() (request *CreateAsyncSearchTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "CreateAsyncSearchTask")
+    
     
     return
 }
@@ -233,6 +242,7 @@ func (c *Client) CreateAsyncSearchTask(request *CreateAsyncSearchTaskRequest) (r
     if request == nil {
         request = NewCreateAsyncSearchTaskRequest()
     }
+    
     response = NewCreateAsyncSearchTaskResponse()
     err = c.Send(request, response)
     return
@@ -243,6 +253,7 @@ func NewCreateConfigRequest() (request *CreateConfigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "CreateConfig")
+    
     
     return
 }
@@ -275,6 +286,7 @@ func (c *Client) CreateConfig(request *CreateConfigRequest) (response *CreateCon
     if request == nil {
         request = NewCreateConfigRequest()
     }
+    
     response = NewCreateConfigResponse()
     err = c.Send(request, response)
     return
@@ -285,6 +297,7 @@ func NewCreateExportRequest() (request *CreateExportRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "CreateExport")
+    
     
     return
 }
@@ -314,6 +327,7 @@ func (c *Client) CreateExport(request *CreateExportRequest) (response *CreateExp
     if request == nil {
         request = NewCreateExportRequest()
     }
+    
     response = NewCreateExportResponse()
     err = c.Send(request, response)
     return
@@ -324,6 +338,7 @@ func NewCreateIndexRequest() (request *CreateIndexRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "CreateIndex")
+    
     
     return
 }
@@ -355,6 +370,7 @@ func (c *Client) CreateIndex(request *CreateIndexRequest) (response *CreateIndex
     if request == nil {
         request = NewCreateIndexRequest()
     }
+    
     response = NewCreateIndexResponse()
     err = c.Send(request, response)
     return
@@ -365,6 +381,7 @@ func NewCreateLogsetRequest() (request *CreateLogsetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "CreateLogset")
+    
     
     return
 }
@@ -397,6 +414,7 @@ func (c *Client) CreateLogset(request *CreateLogsetRequest) (response *CreateLog
     if request == nil {
         request = NewCreateLogsetRequest()
     }
+    
     response = NewCreateLogsetResponse()
     err = c.Send(request, response)
     return
@@ -407,6 +425,7 @@ func NewCreateMachineGroupRequest() (request *CreateMachineGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "CreateMachineGroup")
+    
     
     return
 }
@@ -441,6 +460,7 @@ func (c *Client) CreateMachineGroup(request *CreateMachineGroupRequest) (respons
     if request == nil {
         request = NewCreateMachineGroupRequest()
     }
+    
     response = NewCreateMachineGroupResponse()
     err = c.Send(request, response)
     return
@@ -451,6 +471,7 @@ func NewCreateShipperRequest() (request *CreateShipperRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "CreateShipper")
+    
     
     return
 }
@@ -484,6 +505,7 @@ func (c *Client) CreateShipper(request *CreateShipperRequest) (response *CreateS
     if request == nil {
         request = NewCreateShipperRequest()
     }
+    
     response = NewCreateShipperResponse()
     err = c.Send(request, response)
     return
@@ -494,6 +516,7 @@ func NewCreateTopicRequest() (request *CreateTopicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "CreateTopic")
+    
     
     return
 }
@@ -527,6 +550,7 @@ func (c *Client) CreateTopic(request *CreateTopicRequest) (response *CreateTopic
     if request == nil {
         request = NewCreateTopicRequest()
     }
+    
     response = NewCreateTopicResponse()
     err = c.Send(request, response)
     return
@@ -537,6 +561,7 @@ func NewDeleteAlarmRequest() (request *DeleteAlarmRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DeleteAlarm")
+    
     
     return
 }
@@ -564,6 +589,7 @@ func (c *Client) DeleteAlarm(request *DeleteAlarmRequest) (response *DeleteAlarm
     if request == nil {
         request = NewDeleteAlarmRequest()
     }
+    
     response = NewDeleteAlarmResponse()
     err = c.Send(request, response)
     return
@@ -574,6 +600,7 @@ func NewDeleteAlarmNoticeRequest() (request *DeleteAlarmNoticeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DeleteAlarmNotice")
+    
     
     return
 }
@@ -603,6 +630,7 @@ func (c *Client) DeleteAlarmNotice(request *DeleteAlarmNoticeRequest) (response 
     if request == nil {
         request = NewDeleteAlarmNoticeRequest()
     }
+    
     response = NewDeleteAlarmNoticeResponse()
     err = c.Send(request, response)
     return
@@ -613,6 +641,7 @@ func NewDeleteAsyncContextTaskRequest() (request *DeleteAsyncContextTaskRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DeleteAsyncContextTask")
+    
     
     return
 }
@@ -637,6 +666,7 @@ func (c *Client) DeleteAsyncContextTask(request *DeleteAsyncContextTaskRequest) 
     if request == nil {
         request = NewDeleteAsyncContextTaskRequest()
     }
+    
     response = NewDeleteAsyncContextTaskResponse()
     err = c.Send(request, response)
     return
@@ -647,6 +677,7 @@ func NewDeleteAsyncSearchTaskRequest() (request *DeleteAsyncSearchTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DeleteAsyncSearchTask")
+    
     
     return
 }
@@ -673,6 +704,7 @@ func (c *Client) DeleteAsyncSearchTask(request *DeleteAsyncSearchTaskRequest) (r
     if request == nil {
         request = NewDeleteAsyncSearchTaskRequest()
     }
+    
     response = NewDeleteAsyncSearchTaskResponse()
     err = c.Send(request, response)
     return
@@ -683,6 +715,7 @@ func NewDeleteConfigRequest() (request *DeleteConfigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DeleteConfig")
+    
     
     return
 }
@@ -714,6 +747,7 @@ func (c *Client) DeleteConfig(request *DeleteConfigRequest) (response *DeleteCon
     if request == nil {
         request = NewDeleteConfigRequest()
     }
+    
     response = NewDeleteConfigResponse()
     err = c.Send(request, response)
     return
@@ -724,6 +758,7 @@ func NewDeleteConfigFromMachineGroupRequest() (request *DeleteConfigFromMachineG
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DeleteConfigFromMachineGroup")
+    
     
     return
 }
@@ -754,6 +789,7 @@ func (c *Client) DeleteConfigFromMachineGroup(request *DeleteConfigFromMachineGr
     if request == nil {
         request = NewDeleteConfigFromMachineGroupRequest()
     }
+    
     response = NewDeleteConfigFromMachineGroupResponse()
     err = c.Send(request, response)
     return
@@ -764,6 +800,7 @@ func NewDeleteExportRequest() (request *DeleteExportRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DeleteExport")
+    
     
     return
 }
@@ -792,6 +829,7 @@ func (c *Client) DeleteExport(request *DeleteExportRequest) (response *DeleteExp
     if request == nil {
         request = NewDeleteExportRequest()
     }
+    
     response = NewDeleteExportResponse()
     err = c.Send(request, response)
     return
@@ -802,6 +840,7 @@ func NewDeleteIndexRequest() (request *DeleteIndexRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DeleteIndex")
+    
     
     return
 }
@@ -832,6 +871,7 @@ func (c *Client) DeleteIndex(request *DeleteIndexRequest) (response *DeleteIndex
     if request == nil {
         request = NewDeleteIndexRequest()
     }
+    
     response = NewDeleteIndexResponse()
     err = c.Send(request, response)
     return
@@ -842,6 +882,7 @@ func NewDeleteLogsetRequest() (request *DeleteLogsetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DeleteLogset")
+    
     
     return
 }
@@ -872,6 +913,7 @@ func (c *Client) DeleteLogset(request *DeleteLogsetRequest) (response *DeleteLog
     if request == nil {
         request = NewDeleteLogsetRequest()
     }
+    
     response = NewDeleteLogsetResponse()
     err = c.Send(request, response)
     return
@@ -882,6 +924,7 @@ func NewDeleteMachineGroupRequest() (request *DeleteMachineGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DeleteMachineGroup")
+    
     
     return
 }
@@ -912,6 +955,7 @@ func (c *Client) DeleteMachineGroup(request *DeleteMachineGroupRequest) (respons
     if request == nil {
         request = NewDeleteMachineGroupRequest()
     }
+    
     response = NewDeleteMachineGroupResponse()
     err = c.Send(request, response)
     return
@@ -922,6 +966,7 @@ func NewDeleteShipperRequest() (request *DeleteShipperRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DeleteShipper")
+    
     
     return
 }
@@ -953,6 +998,7 @@ func (c *Client) DeleteShipper(request *DeleteShipperRequest) (response *DeleteS
     if request == nil {
         request = NewDeleteShipperRequest()
     }
+    
     response = NewDeleteShipperResponse()
     err = c.Send(request, response)
     return
@@ -963,6 +1009,7 @@ func NewDeleteTopicRequest() (request *DeleteTopicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DeleteTopic")
+    
     
     return
 }
@@ -993,6 +1040,7 @@ func (c *Client) DeleteTopic(request *DeleteTopicRequest) (response *DeleteTopic
     if request == nil {
         request = NewDeleteTopicRequest()
     }
+    
     response = NewDeleteTopicResponse()
     err = c.Send(request, response)
     return
@@ -1003,6 +1051,7 @@ func NewDescribeAlarmNoticesRequest() (request *DescribeAlarmNoticesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeAlarmNotices")
+    
     
     return
 }
@@ -1030,6 +1079,7 @@ func (c *Client) DescribeAlarmNotices(request *DescribeAlarmNoticesRequest) (res
     if request == nil {
         request = NewDescribeAlarmNoticesRequest()
     }
+    
     response = NewDescribeAlarmNoticesResponse()
     err = c.Send(request, response)
     return
@@ -1040,6 +1090,7 @@ func NewDescribeAlarmsRequest() (request *DescribeAlarmsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeAlarms")
+    
     
     return
 }
@@ -1063,6 +1114,7 @@ func (c *Client) DescribeAlarms(request *DescribeAlarmsRequest) (response *Descr
     if request == nil {
         request = NewDescribeAlarmsRequest()
     }
+    
     response = NewDescribeAlarmsResponse()
     err = c.Send(request, response)
     return
@@ -1073,6 +1125,7 @@ func NewDescribeAsyncContextResultRequest() (request *DescribeAsyncContextResult
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeAsyncContextResult")
+    
     
     return
 }
@@ -1100,6 +1153,7 @@ func (c *Client) DescribeAsyncContextResult(request *DescribeAsyncContextResultR
     if request == nil {
         request = NewDescribeAsyncContextResultRequest()
     }
+    
     response = NewDescribeAsyncContextResultResponse()
     err = c.Send(request, response)
     return
@@ -1110,6 +1164,7 @@ func NewDescribeAsyncContextTasksRequest() (request *DescribeAsyncContextTasksRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeAsyncContextTasks")
+    
     
     return
 }
@@ -1133,6 +1188,7 @@ func (c *Client) DescribeAsyncContextTasks(request *DescribeAsyncContextTasksReq
     if request == nil {
         request = NewDescribeAsyncContextTasksRequest()
     }
+    
     response = NewDescribeAsyncContextTasksResponse()
     err = c.Send(request, response)
     return
@@ -1143,6 +1199,7 @@ func NewDescribeAsyncSearchResultRequest() (request *DescribeAsyncSearchResultRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeAsyncSearchResult")
+    
     
     return
 }
@@ -1170,6 +1227,7 @@ func (c *Client) DescribeAsyncSearchResult(request *DescribeAsyncSearchResultReq
     if request == nil {
         request = NewDescribeAsyncSearchResultRequest()
     }
+    
     response = NewDescribeAsyncSearchResultResponse()
     err = c.Send(request, response)
     return
@@ -1180,6 +1238,7 @@ func NewDescribeAsyncSearchTasksRequest() (request *DescribeAsyncSearchTasksRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeAsyncSearchTasks")
+    
     
     return
 }
@@ -1204,6 +1263,7 @@ func (c *Client) DescribeAsyncSearchTasks(request *DescribeAsyncSearchTasksReque
     if request == nil {
         request = NewDescribeAsyncSearchTasksRequest()
     }
+    
     response = NewDescribeAsyncSearchTasksResponse()
     err = c.Send(request, response)
     return
@@ -1214,6 +1274,7 @@ func NewDescribeConfigMachineGroupsRequest() (request *DescribeConfigMachineGrou
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeConfigMachineGroups")
+    
     
     return
 }
@@ -1245,6 +1306,7 @@ func (c *Client) DescribeConfigMachineGroups(request *DescribeConfigMachineGroup
     if request == nil {
         request = NewDescribeConfigMachineGroupsRequest()
     }
+    
     response = NewDescribeConfigMachineGroupsResponse()
     err = c.Send(request, response)
     return
@@ -1255,6 +1317,7 @@ func NewDescribeConfigsRequest() (request *DescribeConfigsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeConfigs")
+    
     
     return
 }
@@ -1284,6 +1347,7 @@ func (c *Client) DescribeConfigs(request *DescribeConfigsRequest) (response *Des
     if request == nil {
         request = NewDescribeConfigsRequest()
     }
+    
     response = NewDescribeConfigsResponse()
     err = c.Send(request, response)
     return
@@ -1294,6 +1358,7 @@ func NewDescribeExportsRequest() (request *DescribeExportsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeExports")
+    
     
     return
 }
@@ -1323,6 +1388,7 @@ func (c *Client) DescribeExports(request *DescribeExportsRequest) (response *Des
     if request == nil {
         request = NewDescribeExportsRequest()
     }
+    
     response = NewDescribeExportsResponse()
     err = c.Send(request, response)
     return
@@ -1333,6 +1399,7 @@ func NewDescribeIndexRequest() (request *DescribeIndexRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeIndex")
+    
     
     return
 }
@@ -1364,6 +1431,7 @@ func (c *Client) DescribeIndex(request *DescribeIndexRequest) (response *Describ
     if request == nil {
         request = NewDescribeIndexRequest()
     }
+    
     response = NewDescribeIndexResponse()
     err = c.Send(request, response)
     return
@@ -1374,6 +1442,7 @@ func NewDescribeLogContextRequest() (request *DescribeLogContextRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeLogContext")
+    
     
     return
 }
@@ -1407,6 +1476,7 @@ func (c *Client) DescribeLogContext(request *DescribeLogContextRequest) (respons
     if request == nil {
         request = NewDescribeLogContextRequest()
     }
+    
     response = NewDescribeLogContextResponse()
     err = c.Send(request, response)
     return
@@ -1417,6 +1487,7 @@ func NewDescribeLogsetsRequest() (request *DescribeLogsetsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeLogsets")
+    
     
     return
 }
@@ -1447,6 +1518,7 @@ func (c *Client) DescribeLogsets(request *DescribeLogsetsRequest) (response *Des
     if request == nil {
         request = NewDescribeLogsetsRequest()
     }
+    
     response = NewDescribeLogsetsResponse()
     err = c.Send(request, response)
     return
@@ -1457,6 +1529,7 @@ func NewDescribeMachineGroupConfigsRequest() (request *DescribeMachineGroupConfi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeMachineGroupConfigs")
+    
     
     return
 }
@@ -1486,6 +1559,7 @@ func (c *Client) DescribeMachineGroupConfigs(request *DescribeMachineGroupConfig
     if request == nil {
         request = NewDescribeMachineGroupConfigsRequest()
     }
+    
     response = NewDescribeMachineGroupConfigsResponse()
     err = c.Send(request, response)
     return
@@ -1496,6 +1570,7 @@ func NewDescribeMachineGroupsRequest() (request *DescribeMachineGroupsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeMachineGroups")
+    
     
     return
 }
@@ -1524,6 +1599,7 @@ func (c *Client) DescribeMachineGroups(request *DescribeMachineGroupsRequest) (r
     if request == nil {
         request = NewDescribeMachineGroupsRequest()
     }
+    
     response = NewDescribeMachineGroupsResponse()
     err = c.Send(request, response)
     return
@@ -1534,6 +1610,7 @@ func NewDescribeMachinesRequest() (request *DescribeMachinesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeMachines")
+    
     
     return
 }
@@ -1565,6 +1642,7 @@ func (c *Client) DescribeMachines(request *DescribeMachinesRequest) (response *D
     if request == nil {
         request = NewDescribeMachinesRequest()
     }
+    
     response = NewDescribeMachinesResponse()
     err = c.Send(request, response)
     return
@@ -1575,6 +1653,7 @@ func NewDescribePartitionsRequest() (request *DescribePartitionsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribePartitions")
+    
     
     return
 }
@@ -1605,6 +1684,7 @@ func (c *Client) DescribePartitions(request *DescribePartitionsRequest) (respons
     if request == nil {
         request = NewDescribePartitionsRequest()
     }
+    
     response = NewDescribePartitionsResponse()
     err = c.Send(request, response)
     return
@@ -1615,6 +1695,7 @@ func NewDescribeShipperTasksRequest() (request *DescribeShipperTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeShipperTasks")
+    
     
     return
 }
@@ -1646,6 +1727,7 @@ func (c *Client) DescribeShipperTasks(request *DescribeShipperTasksRequest) (res
     if request == nil {
         request = NewDescribeShipperTasksRequest()
     }
+    
     response = NewDescribeShipperTasksResponse()
     err = c.Send(request, response)
     return
@@ -1656,6 +1738,7 @@ func NewDescribeShippersRequest() (request *DescribeShippersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeShippers")
+    
     
     return
 }
@@ -1687,6 +1770,7 @@ func (c *Client) DescribeShippers(request *DescribeShippersRequest) (response *D
     if request == nil {
         request = NewDescribeShippersRequest()
     }
+    
     response = NewDescribeShippersResponse()
     err = c.Send(request, response)
     return
@@ -1697,6 +1781,7 @@ func NewDescribeTopicsRequest() (request *DescribeTopicsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "DescribeTopics")
+    
     
     return
 }
@@ -1727,6 +1812,7 @@ func (c *Client) DescribeTopics(request *DescribeTopicsRequest) (response *Descr
     if request == nil {
         request = NewDescribeTopicsRequest()
     }
+    
     response = NewDescribeTopicsResponse()
     err = c.Send(request, response)
     return
@@ -1737,6 +1823,7 @@ func NewGetAlarmLogRequest() (request *GetAlarmLogRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "GetAlarmLog")
+    
     
     return
 }
@@ -1772,6 +1859,7 @@ func (c *Client) GetAlarmLog(request *GetAlarmLogRequest) (response *GetAlarmLog
     if request == nil {
         request = NewGetAlarmLogRequest()
     }
+    
     response = NewGetAlarmLogResponse()
     err = c.Send(request, response)
     return
@@ -1782,6 +1870,7 @@ func NewMergePartitionRequest() (request *MergePartitionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "MergePartition")
+    
     
     return
 }
@@ -1814,6 +1903,7 @@ func (c *Client) MergePartition(request *MergePartitionRequest) (response *Merge
     if request == nil {
         request = NewMergePartitionRequest()
     }
+    
     response = NewMergePartitionResponse()
     err = c.Send(request, response)
     return
@@ -1824,6 +1914,7 @@ func NewModifyAlarmRequest() (request *ModifyAlarmRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "ModifyAlarm")
+    
     
     return
 }
@@ -1856,6 +1947,7 @@ func (c *Client) ModifyAlarm(request *ModifyAlarmRequest) (response *ModifyAlarm
     if request == nil {
         request = NewModifyAlarmRequest()
     }
+    
     response = NewModifyAlarmResponse()
     err = c.Send(request, response)
     return
@@ -1866,6 +1958,7 @@ func NewModifyAlarmNoticeRequest() (request *ModifyAlarmNoticeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "ModifyAlarmNotice")
+    
     
     return
 }
@@ -1896,6 +1989,7 @@ func (c *Client) ModifyAlarmNotice(request *ModifyAlarmNoticeRequest) (response 
     if request == nil {
         request = NewModifyAlarmNoticeRequest()
     }
+    
     response = NewModifyAlarmNoticeResponse()
     err = c.Send(request, response)
     return
@@ -1906,6 +2000,7 @@ func NewModifyConfigRequest() (request *ModifyConfigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "ModifyConfig")
+    
     
     return
 }
@@ -1938,6 +2033,7 @@ func (c *Client) ModifyConfig(request *ModifyConfigRequest) (response *ModifyCon
     if request == nil {
         request = NewModifyConfigRequest()
     }
+    
     response = NewModifyConfigResponse()
     err = c.Send(request, response)
     return
@@ -1948,6 +2044,7 @@ func NewModifyIndexRequest() (request *ModifyIndexRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "ModifyIndex")
+    
     
     return
 }
@@ -1979,6 +2076,7 @@ func (c *Client) ModifyIndex(request *ModifyIndexRequest) (response *ModifyIndex
     if request == nil {
         request = NewModifyIndexRequest()
     }
+    
     response = NewModifyIndexResponse()
     err = c.Send(request, response)
     return
@@ -1989,6 +2087,7 @@ func NewModifyLogsetRequest() (request *ModifyLogsetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "ModifyLogset")
+    
     
     return
 }
@@ -2021,6 +2120,7 @@ func (c *Client) ModifyLogset(request *ModifyLogsetRequest) (response *ModifyLog
     if request == nil {
         request = NewModifyLogsetRequest()
     }
+    
     response = NewModifyLogsetResponse()
     err = c.Send(request, response)
     return
@@ -2031,6 +2131,7 @@ func NewModifyMachineGroupRequest() (request *ModifyMachineGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "ModifyMachineGroup")
+    
     
     return
 }
@@ -2064,6 +2165,7 @@ func (c *Client) ModifyMachineGroup(request *ModifyMachineGroupRequest) (respons
     if request == nil {
         request = NewModifyMachineGroupRequest()
     }
+    
     response = NewModifyMachineGroupResponse()
     err = c.Send(request, response)
     return
@@ -2074,6 +2176,7 @@ func NewModifyShipperRequest() (request *ModifyShipperRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "ModifyShipper")
+    
     
     return
 }
@@ -2104,6 +2207,7 @@ func (c *Client) ModifyShipper(request *ModifyShipperRequest) (response *ModifyS
     if request == nil {
         request = NewModifyShipperRequest()
     }
+    
     response = NewModifyShipperResponse()
     err = c.Send(request, response)
     return
@@ -2114,6 +2218,7 @@ func NewModifyTopicRequest() (request *ModifyTopicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "ModifyTopic")
+    
     
     return
 }
@@ -2148,6 +2253,7 @@ func (c *Client) ModifyTopic(request *ModifyTopicRequest) (response *ModifyTopic
     if request == nil {
         request = NewModifyTopicRequest()
     }
+    
     response = NewModifyTopicResponse()
     err = c.Send(request, response)
     return
@@ -2158,6 +2264,7 @@ func NewRetryShipperTaskRequest() (request *RetryShipperTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "RetryShipperTask")
+    
     
     return
 }
@@ -2191,6 +2298,7 @@ func (c *Client) RetryShipperTask(request *RetryShipperTaskRequest) (response *R
     if request == nil {
         request = NewRetryShipperTaskRequest()
     }
+    
     response = NewRetryShipperTaskResponse()
     err = c.Send(request, response)
     return
@@ -2201,6 +2309,7 @@ func NewSearchLogRequest() (request *SearchLogRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "SearchLog")
+    
     
     return
 }
@@ -2235,6 +2344,7 @@ func (c *Client) SearchLog(request *SearchLogRequest) (response *SearchLogRespon
     if request == nil {
         request = NewSearchLogRequest()
     }
+    
     response = NewSearchLogResponse()
     err = c.Send(request, response)
     return
@@ -2245,6 +2355,7 @@ func NewSplitPartitionRequest() (request *SplitPartitionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "SplitPartition")
+    
     
     return
 }
@@ -2280,6 +2391,7 @@ func (c *Client) SplitPartition(request *SplitPartitionRequest) (response *Split
     if request == nil {
         request = NewSplitPartitionRequest()
     }
+    
     response = NewSplitPartitionResponse()
     err = c.Send(request, response)
     return
@@ -2290,6 +2402,7 @@ func NewUploadLogRequest() (request *UploadLogRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cls", APIVersion, "UploadLog")
+    request.SetContentType("application/octet-stream")
     
     return
 }
@@ -2621,11 +2734,12 @@ func NewUploadLogResponse() (response *UploadLogResponse) {
 //  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
 //  RESOURCENOTFOUND_PARTITIONNOTEXIST = "ResourceNotFound.PartitionNotExist"
 //  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
-func (c *Client) UploadLog(request *UploadLogRequest) (response *UploadLogResponse, err error) {
+func (c *Client) UploadLog(request *UploadLogRequest, data []byte) (response *UploadLogResponse, err error) {
     if request == nil {
         request = NewUploadLogRequest()
     }
+    request.SetBody(data)
     response = NewUploadLogResponse()
-    err = c.Send(request, response)
+    err = c.SendOctetStream(request, response)
     return
 }

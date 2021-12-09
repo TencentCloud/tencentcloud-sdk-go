@@ -49,6 +49,7 @@ func NewCancelTaskRequest() (request *CancelTaskRequest) {
     }
     request.Init().WithApiInfo("ams", APIVersion, "CancelTask")
     
+    
     return
 }
 
@@ -83,6 +84,7 @@ func (c *Client) CancelTask(request *CancelTaskRequest) (response *CancelTaskRes
     if request == nil {
         request = NewCancelTaskRequest()
     }
+    
     response = NewCancelTaskResponse()
     err = c.Send(request, response)
     return
@@ -93,6 +95,7 @@ func NewCreateAudioModerationTaskRequest() (request *CreateAudioModerationTaskRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ams", APIVersion, "CreateAudioModerationTask")
+    
     
     return
 }
@@ -175,6 +178,7 @@ func (c *Client) CreateAudioModerationTask(request *CreateAudioModerationTaskReq
     if request == nil {
         request = NewCreateAudioModerationTaskRequest()
     }
+    
     response = NewCreateAudioModerationTaskResponse()
     err = c.Send(request, response)
     return
@@ -185,6 +189,7 @@ func NewCreateBizConfigRequest() (request *CreateBizConfigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ams", APIVersion, "CreateBizConfig")
+    
     
     return
 }
@@ -229,6 +234,7 @@ func (c *Client) CreateBizConfig(request *CreateBizConfigRequest) (response *Cre
     if request == nil {
         request = NewCreateBizConfigRequest()
     }
+    
     response = NewCreateBizConfigResponse()
     err = c.Send(request, response)
     return
@@ -239,6 +245,7 @@ func NewDescribeAmsListRequest() (request *DescribeAmsListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ams", APIVersion, "DescribeAmsList")
+    
     
     return
 }
@@ -261,6 +268,7 @@ func (c *Client) DescribeAmsList(request *DescribeAmsListRequest) (response *Des
     if request == nil {
         request = NewDescribeAmsListRequest()
     }
+    
     response = NewDescribeAmsListResponse()
     err = c.Send(request, response)
     return
@@ -271,6 +279,7 @@ func NewDescribeAudioStatRequest() (request *DescribeAudioStatRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ams", APIVersion, "DescribeAudioStat")
+    
     
     return
 }
@@ -294,6 +303,7 @@ func (c *Client) DescribeAudioStat(request *DescribeAudioStatRequest) (response 
     if request == nil {
         request = NewDescribeAudioStatRequest()
     }
+    
     response = NewDescribeAudioStatResponse()
     err = c.Send(request, response)
     return
@@ -304,6 +314,7 @@ func NewDescribeBizConfigRequest() (request *DescribeBizConfigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ams", APIVersion, "DescribeBizConfig")
+    
     
     return
 }
@@ -340,6 +351,7 @@ func (c *Client) DescribeBizConfig(request *DescribeBizConfigRequest) (response 
     if request == nil {
         request = NewDescribeBizConfigRequest()
     }
+    
     response = NewDescribeBizConfigResponse()
     err = c.Send(request, response)
     return
@@ -350,6 +362,7 @@ func NewDescribeTaskDetailRequest() (request *DescribeTaskDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ams", APIVersion, "DescribeTaskDetail")
+    
     
     return
 }
@@ -386,6 +399,7 @@ func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (respons
     if request == nil {
         request = NewDescribeTaskDetailRequest()
     }
+    
     response = NewDescribeTaskDetailResponse()
     err = c.Send(request, response)
     return

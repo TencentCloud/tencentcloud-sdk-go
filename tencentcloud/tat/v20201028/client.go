@@ -43,11 +43,63 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCancelInvocationRequest() (request *CancelInvocationRequest) {
+    request = &CancelInvocationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tat", APIVersion, "CancelInvocation")
+    
+    
+    return
+}
+
+func NewCancelInvocationResponse() (response *CancelInvocationResponse) {
+    response = &CancelInvocationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CancelInvocation
+// 取消一台或多台CVM实例执行的命令
+//
+// 
+//
+// * 如果命令还未下发到agent，任务状态处于处于PENDING、DELIVERING、DELIVER_DELAYED，取消后任务状态是CANCELLED
+//
+// * 如果命令已下发到agent，任务状态处于RUNNING， 取消后任务状态是TERMINATED
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCEISNOTRELATEDTOINVOCATION = "InvalidParameterValue.InstanceIsNotRelatedToInvocation"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_INVOCATIONNOTFOUND = "ResourceNotFound.InvocationNotFound"
+//  UNAUTHORIZEDOPERATION_CAMAUTHFAILED = "UnauthorizedOperation.CamAuthFailed"
+//  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CancelInvocation(request *CancelInvocationRequest) (response *CancelInvocationResponse, err error) {
+    if request == nil {
+        request = NewCancelInvocationRequest()
+    }
+    
+    response = NewCancelInvocationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCommandRequest() (request *CreateCommandRequest) {
     request = &CreateCommandRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "CreateCommand")
+    
     
     return
 }
@@ -92,6 +144,7 @@ func (c *Client) CreateCommand(request *CreateCommandRequest) (response *CreateC
     if request == nil {
         request = NewCreateCommandRequest()
     }
+    
     response = NewCreateCommandResponse()
     err = c.Send(request, response)
     return
@@ -102,6 +155,7 @@ func NewCreateInvokerRequest() (request *CreateInvokerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "CreateInvoker")
+    
     
     return
 }
@@ -129,6 +183,7 @@ func (c *Client) CreateInvoker(request *CreateInvokerRequest) (response *CreateI
     if request == nil {
         request = NewCreateInvokerRequest()
     }
+    
     response = NewCreateInvokerResponse()
     err = c.Send(request, response)
     return
@@ -139,6 +194,7 @@ func NewDeleteCommandRequest() (request *DeleteCommandRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "DeleteCommand")
+    
     
     return
 }
@@ -170,6 +226,7 @@ func (c *Client) DeleteCommand(request *DeleteCommandRequest) (response *DeleteC
     if request == nil {
         request = NewDeleteCommandRequest()
     }
+    
     response = NewDeleteCommandResponse()
     err = c.Send(request, response)
     return
@@ -180,6 +237,7 @@ func NewDeleteInvokerRequest() (request *DeleteInvokerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "DeleteInvoker")
+    
     
     return
 }
@@ -201,6 +259,7 @@ func (c *Client) DeleteInvoker(request *DeleteInvokerRequest) (response *DeleteI
     if request == nil {
         request = NewDeleteInvokerRequest()
     }
+    
     response = NewDeleteInvokerResponse()
     err = c.Send(request, response)
     return
@@ -211,6 +270,7 @@ func NewDescribeAutomationAgentStatusRequest() (request *DescribeAutomationAgent
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "DescribeAutomationAgentStatus")
+    
     
     return
 }
@@ -241,6 +301,7 @@ func (c *Client) DescribeAutomationAgentStatus(request *DescribeAutomationAgentS
     if request == nil {
         request = NewDescribeAutomationAgentStatusRequest()
     }
+    
     response = NewDescribeAutomationAgentStatusResponse()
     err = c.Send(request, response)
     return
@@ -251,6 +312,7 @@ func NewDescribeCommandsRequest() (request *DescribeCommandsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "DescribeCommands")
+    
     
     return
 }
@@ -280,6 +342,7 @@ func (c *Client) DescribeCommands(request *DescribeCommandsRequest) (response *D
     if request == nil {
         request = NewDescribeCommandsRequest()
     }
+    
     response = NewDescribeCommandsResponse()
     err = c.Send(request, response)
     return
@@ -290,6 +353,7 @@ func NewDescribeInvocationTasksRequest() (request *DescribeInvocationTasksReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "DescribeInvocationTasks")
+    
     
     return
 }
@@ -320,6 +384,7 @@ func (c *Client) DescribeInvocationTasks(request *DescribeInvocationTasksRequest
     if request == nil {
         request = NewDescribeInvocationTasksRequest()
     }
+    
     response = NewDescribeInvocationTasksResponse()
     err = c.Send(request, response)
     return
@@ -330,6 +395,7 @@ func NewDescribeInvocationsRequest() (request *DescribeInvocationsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "DescribeInvocations")
+    
     
     return
 }
@@ -359,6 +425,7 @@ func (c *Client) DescribeInvocations(request *DescribeInvocationsRequest) (respo
     if request == nil {
         request = NewDescribeInvocationsRequest()
     }
+    
     response = NewDescribeInvocationsResponse()
     err = c.Send(request, response)
     return
@@ -369,6 +436,7 @@ func NewDescribeInvokerRecordsRequest() (request *DescribeInvokerRecordsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "DescribeInvokerRecords")
+    
     
     return
 }
@@ -390,6 +458,7 @@ func (c *Client) DescribeInvokerRecords(request *DescribeInvokerRecordsRequest) 
     if request == nil {
         request = NewDescribeInvokerRecordsRequest()
     }
+    
     response = NewDescribeInvokerRecordsResponse()
     err = c.Send(request, response)
     return
@@ -400,6 +469,7 @@ func NewDescribeInvokersRequest() (request *DescribeInvokersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "DescribeInvokers")
+    
     
     return
 }
@@ -423,6 +493,7 @@ func (c *Client) DescribeInvokers(request *DescribeInvokersRequest) (response *D
     if request == nil {
         request = NewDescribeInvokersRequest()
     }
+    
     response = NewDescribeInvokersResponse()
     err = c.Send(request, response)
     return
@@ -433,6 +504,7 @@ func NewDescribeRegionsRequest() (request *DescribeRegionsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "DescribeRegions")
+    
     
     return
 }
@@ -459,6 +531,7 @@ func (c *Client) DescribeRegions(request *DescribeRegionsRequest) (response *Des
     if request == nil {
         request = NewDescribeRegionsRequest()
     }
+    
     response = NewDescribeRegionsResponse()
     err = c.Send(request, response)
     return
@@ -469,6 +542,7 @@ func NewDisableInvokerRequest() (request *DisableInvokerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "DisableInvoker")
+    
     
     return
 }
@@ -490,6 +564,7 @@ func (c *Client) DisableInvoker(request *DisableInvokerRequest) (response *Disab
     if request == nil {
         request = NewDisableInvokerRequest()
     }
+    
     response = NewDisableInvokerResponse()
     err = c.Send(request, response)
     return
@@ -500,6 +575,7 @@ func NewEnableInvokerRequest() (request *EnableInvokerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "EnableInvoker")
+    
     
     return
 }
@@ -522,6 +598,7 @@ func (c *Client) EnableInvoker(request *EnableInvokerRequest) (response *EnableI
     if request == nil {
         request = NewEnableInvokerRequest()
     }
+    
     response = NewEnableInvokerResponse()
     err = c.Send(request, response)
     return
@@ -532,6 +609,7 @@ func NewInvokeCommandRequest() (request *InvokeCommandRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "InvokeCommand")
+    
     
     return
 }
@@ -590,6 +668,7 @@ func (c *Client) InvokeCommand(request *InvokeCommandRequest) (response *InvokeC
     if request == nil {
         request = NewInvokeCommandRequest()
     }
+    
     response = NewInvokeCommandResponse()
     err = c.Send(request, response)
     return
@@ -600,6 +679,7 @@ func NewModifyCommandRequest() (request *ModifyCommandRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "ModifyCommand")
+    
     
     return
 }
@@ -641,6 +721,7 @@ func (c *Client) ModifyCommand(request *ModifyCommandRequest) (response *ModifyC
     if request == nil {
         request = NewModifyCommandRequest()
     }
+    
     response = NewModifyCommandResponse()
     err = c.Send(request, response)
     return
@@ -651,6 +732,7 @@ func NewModifyInvokerRequest() (request *ModifyInvokerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "ModifyInvoker")
+    
     
     return
 }
@@ -679,6 +761,7 @@ func (c *Client) ModifyInvoker(request *ModifyInvokerRequest) (response *ModifyI
     if request == nil {
         request = NewModifyInvokerRequest()
     }
+    
     response = NewModifyInvokerResponse()
     err = c.Send(request, response)
     return
@@ -689,6 +772,7 @@ func NewPreviewReplacedCommandContentRequest() (request *PreviewReplacedCommandC
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "PreviewReplacedCommandContent")
+    
     
     return
 }
@@ -727,6 +811,7 @@ func (c *Client) PreviewReplacedCommandContent(request *PreviewReplacedCommandCo
     if request == nil {
         request = NewPreviewReplacedCommandContentRequest()
     }
+    
     response = NewPreviewReplacedCommandContentResponse()
     err = c.Send(request, response)
     return
@@ -737,6 +822,7 @@ func NewRunCommandRequest() (request *RunCommandRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tat", APIVersion, "RunCommand")
+    
     
     return
 }
@@ -802,6 +888,7 @@ func (c *Client) RunCommand(request *RunCommandRequest) (response *RunCommandRes
     if request == nil {
         request = NewRunCommandRequest()
     }
+    
     response = NewRunCommandResponse()
     err = c.Send(request, response)
     return

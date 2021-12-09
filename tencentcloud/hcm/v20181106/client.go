@@ -49,6 +49,7 @@ func NewEvaluationRequest() (request *EvaluationRequest) {
     }
     request.Init().WithApiInfo("hcm", APIVersion, "Evaluation")
     
+    
     return
 }
 
@@ -79,6 +80,7 @@ func (c *Client) Evaluation(request *EvaluationRequest) (response *EvaluationRes
     if request == nil {
         request = NewEvaluationRequest()
     }
+    
     response = NewEvaluationResponse()
     err = c.Send(request, response)
     return

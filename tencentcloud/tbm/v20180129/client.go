@@ -49,6 +49,7 @@ func NewDescribeBrandCommentCountRequest() (request *DescribeBrandCommentCountRe
     }
     request.Init().WithApiInfo("tbm", APIVersion, "DescribeBrandCommentCount")
     
+    
     return
 }
 
@@ -71,6 +72,7 @@ func (c *Client) DescribeBrandCommentCount(request *DescribeBrandCommentCountReq
     if request == nil {
         request = NewDescribeBrandCommentCountRequest()
     }
+    
     response = NewDescribeBrandCommentCountResponse()
     err = c.Send(request, response)
     return
@@ -81,6 +83,7 @@ func NewDescribeBrandExposureRequest() (request *DescribeBrandExposureRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbm", APIVersion, "DescribeBrandExposure")
+    
     
     return
 }
@@ -105,6 +108,7 @@ func (c *Client) DescribeBrandExposure(request *DescribeBrandExposureRequest) (r
     if request == nil {
         request = NewDescribeBrandExposureRequest()
     }
+    
     response = NewDescribeBrandExposureResponse()
     err = c.Send(request, response)
     return
@@ -115,6 +119,7 @@ func NewDescribeBrandMediaReportRequest() (request *DescribeBrandMediaReportRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbm", APIVersion, "DescribeBrandMediaReport")
+    
     
     return
 }
@@ -139,6 +144,7 @@ func (c *Client) DescribeBrandMediaReport(request *DescribeBrandMediaReportReque
     if request == nil {
         request = NewDescribeBrandMediaReportRequest()
     }
+    
     response = NewDescribeBrandMediaReportResponse()
     err = c.Send(request, response)
     return
@@ -149,6 +155,7 @@ func NewDescribeBrandNegCommentsRequest() (request *DescribeBrandNegCommentsRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbm", APIVersion, "DescribeBrandNegComments")
+    
     
     return
 }
@@ -171,6 +178,7 @@ func (c *Client) DescribeBrandNegComments(request *DescribeBrandNegCommentsReque
     if request == nil {
         request = NewDescribeBrandNegCommentsRequest()
     }
+    
     response = NewDescribeBrandNegCommentsResponse()
     err = c.Send(request, response)
     return
@@ -181,6 +189,7 @@ func NewDescribeBrandPosCommentsRequest() (request *DescribeBrandPosCommentsRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbm", APIVersion, "DescribeBrandPosComments")
+    
     
     return
 }
@@ -203,6 +212,7 @@ func (c *Client) DescribeBrandPosComments(request *DescribeBrandPosCommentsReque
     if request == nil {
         request = NewDescribeBrandPosCommentsRequest()
     }
+    
     response = NewDescribeBrandPosCommentsResponse()
     err = c.Send(request, response)
     return
@@ -213,6 +223,7 @@ func NewDescribeBrandSocialOpinionRequest() (request *DescribeBrandSocialOpinion
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbm", APIVersion, "DescribeBrandSocialOpinion")
+    
     
     return
 }
@@ -237,6 +248,7 @@ func (c *Client) DescribeBrandSocialOpinion(request *DescribeBrandSocialOpinionR
     if request == nil {
         request = NewDescribeBrandSocialOpinionRequest()
     }
+    
     response = NewDescribeBrandSocialOpinionResponse()
     err = c.Send(request, response)
     return
@@ -247,6 +259,7 @@ func NewDescribeBrandSocialReportRequest() (request *DescribeBrandSocialReportRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbm", APIVersion, "DescribeBrandSocialReport")
+    
     
     return
 }
@@ -271,6 +284,7 @@ func (c *Client) DescribeBrandSocialReport(request *DescribeBrandSocialReportReq
     if request == nil {
         request = NewDescribeBrandSocialReportRequest()
     }
+    
     response = NewDescribeBrandSocialReportResponse()
     err = c.Send(request, response)
     return
@@ -281,6 +295,7 @@ func NewDescribeIndustryNewsRequest() (request *DescribeIndustryNewsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbm", APIVersion, "DescribeIndustryNews")
+    
     
     return
 }
@@ -305,6 +320,7 @@ func (c *Client) DescribeIndustryNews(request *DescribeIndustryNewsRequest) (res
     if request == nil {
         request = NewDescribeIndustryNewsRequest()
     }
+    
     response = NewDescribeIndustryNewsResponse()
     err = c.Send(request, response)
     return
@@ -315,6 +331,7 @@ func NewDescribeUserPortraitRequest() (request *DescribeUserPortraitRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbm", APIVersion, "DescribeUserPortrait")
+    
     
     return
 }
@@ -339,6 +356,7 @@ func (c *Client) DescribeUserPortrait(request *DescribeUserPortraitRequest) (res
     if request == nil {
         request = NewDescribeUserPortraitRequest()
     }
+    
     response = NewDescribeUserPortraitResponse()
     err = c.Send(request, response)
     return

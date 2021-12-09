@@ -49,6 +49,7 @@ func NewApplyUserCertRequest() (request *ApplyUserCertRequest) {
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "ApplyUserCert")
     
+    
     return
 }
 
@@ -89,6 +90,7 @@ func (c *Client) ApplyUserCert(request *ApplyUserCertRequest) (response *ApplyUs
     if request == nil {
         request = NewApplyUserCertRequest()
     }
+    
     response = NewApplyUserCertResponse()
     err = c.Send(request, response)
     return
@@ -99,6 +101,7 @@ func NewBlockByNumberHandlerRequest() (request *BlockByNumberHandlerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "BlockByNumberHandler")
+    
     
     return
 }
@@ -160,6 +163,7 @@ func (c *Client) BlockByNumberHandler(request *BlockByNumberHandlerRequest) (res
     if request == nil {
         request = NewBlockByNumberHandlerRequest()
     }
+    
     response = NewBlockByNumberHandlerResponse()
     err = c.Send(request, response)
     return
@@ -170,6 +174,7 @@ func NewCreateChaincodeAndInstallForUserRequest() (request *CreateChaincodeAndIn
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "CreateChaincodeAndInstallForUser")
+    
     
     return
 }
@@ -209,6 +214,7 @@ func (c *Client) CreateChaincodeAndInstallForUser(request *CreateChaincodeAndIns
     if request == nil {
         request = NewCreateChaincodeAndInstallForUserRequest()
     }
+    
     response = NewCreateChaincodeAndInstallForUserResponse()
     err = c.Send(request, response)
     return
@@ -219,6 +225,7 @@ func NewDeployDynamicBcosContractRequest() (request *DeployDynamicBcosContractRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "DeployDynamicBcosContract")
+    
     
     return
 }
@@ -279,6 +286,7 @@ func (c *Client) DeployDynamicBcosContract(request *DeployDynamicBcosContractReq
     if request == nil {
         request = NewDeployDynamicBcosContractRequest()
     }
+    
     response = NewDeployDynamicBcosContractResponse()
     err = c.Send(request, response)
     return
@@ -289,6 +297,7 @@ func NewDeployDynamicContractHandlerRequest() (request *DeployDynamicContractHan
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "DeployDynamicContractHandler")
+    
     
     return
 }
@@ -353,6 +362,7 @@ func (c *Client) DeployDynamicContractHandler(request *DeployDynamicContractHand
     if request == nil {
         request = NewDeployDynamicContractHandlerRequest()
     }
+    
     response = NewDeployDynamicContractHandlerResponse()
     err = c.Send(request, response)
     return
@@ -363,6 +373,7 @@ func NewDownloadUserCertRequest() (request *DownloadUserCertRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "DownloadUserCert")
+    
     
     return
 }
@@ -403,6 +414,7 @@ func (c *Client) DownloadUserCert(request *DownloadUserCertRequest) (response *D
     if request == nil {
         request = NewDownloadUserCertRequest()
     }
+    
     response = NewDownloadUserCertResponse()
     err = c.Send(request, response)
     return
@@ -413,6 +425,7 @@ func NewGetBcosBlockByNumberRequest() (request *GetBcosBlockByNumberRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "GetBcosBlockByNumber")
+    
     
     return
 }
@@ -470,6 +483,7 @@ func (c *Client) GetBcosBlockByNumber(request *GetBcosBlockByNumberRequest) (res
     if request == nil {
         request = NewGetBcosBlockByNumberRequest()
     }
+    
     response = NewGetBcosBlockByNumberResponse()
     err = c.Send(request, response)
     return
@@ -480,6 +494,7 @@ func NewGetBcosBlockListRequest() (request *GetBcosBlockListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "GetBcosBlockList")
+    
     
     return
 }
@@ -538,6 +553,7 @@ func (c *Client) GetBcosBlockList(request *GetBcosBlockListRequest) (response *G
     if request == nil {
         request = NewGetBcosBlockListRequest()
     }
+    
     response = NewGetBcosBlockListResponse()
     err = c.Send(request, response)
     return
@@ -548,6 +564,7 @@ func NewGetBcosTransByHashRequest() (request *GetBcosTransByHashRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "GetBcosTransByHash")
+    
     
     return
 }
@@ -607,6 +624,7 @@ func (c *Client) GetBcosTransByHash(request *GetBcosTransByHashRequest) (respons
     if request == nil {
         request = NewGetBcosTransByHashRequest()
     }
+    
     response = NewGetBcosTransByHashResponse()
     err = c.Send(request, response)
     return
@@ -617,6 +635,7 @@ func NewGetBcosTransListRequest() (request *GetBcosTransListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "GetBcosTransList")
+    
     
     return
 }
@@ -677,6 +696,7 @@ func (c *Client) GetBcosTransList(request *GetBcosTransListRequest) (response *G
     if request == nil {
         request = NewGetBcosTransListRequest()
     }
+    
     response = NewGetBcosTransListResponse()
     err = c.Send(request, response)
     return
@@ -687,6 +707,7 @@ func NewGetBlockListRequest() (request *GetBlockListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "GetBlockList")
+    
     
     return
 }
@@ -719,6 +740,7 @@ func (c *Client) GetBlockList(request *GetBlockListRequest) (response *GetBlockL
     if request == nil {
         request = NewGetBlockListRequest()
     }
+    
     response = NewGetBlockListResponse()
     err = c.Send(request, response)
     return
@@ -729,6 +751,7 @@ func NewGetBlockListHandlerRequest() (request *GetBlockListHandlerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "GetBlockListHandler")
+    
     
     return
 }
@@ -790,6 +813,7 @@ func (c *Client) GetBlockListHandler(request *GetBlockListHandlerRequest) (respo
     if request == nil {
         request = NewGetBlockListHandlerRequest()
     }
+    
     response = NewGetBlockListHandlerResponse()
     err = c.Send(request, response)
     return
@@ -800,6 +824,7 @@ func NewGetBlockTransactionListForUserRequest() (request *GetBlockTransactionLis
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "GetBlockTransactionListForUser")
+    
     
     return
 }
@@ -837,6 +862,7 @@ func (c *Client) GetBlockTransactionListForUser(request *GetBlockTransactionList
     if request == nil {
         request = NewGetBlockTransactionListForUserRequest()
     }
+    
     response = NewGetBlockTransactionListForUserResponse()
     err = c.Send(request, response)
     return
@@ -847,6 +873,7 @@ func NewGetChaincodeCompileLogForUserRequest() (request *GetChaincodeCompileLogF
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "GetChaincodeCompileLogForUser")
+    
     
     return
 }
@@ -886,6 +913,7 @@ func (c *Client) GetChaincodeCompileLogForUser(request *GetChaincodeCompileLogFo
     if request == nil {
         request = NewGetChaincodeCompileLogForUserRequest()
     }
+    
     response = NewGetChaincodeCompileLogForUserResponse()
     err = c.Send(request, response)
     return
@@ -896,6 +924,7 @@ func NewGetChaincodeInitializeResultForUserRequest() (request *GetChaincodeIniti
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "GetChaincodeInitializeResultForUser")
+    
     
     return
 }
@@ -935,6 +964,7 @@ func (c *Client) GetChaincodeInitializeResultForUser(request *GetChaincodeInitia
     if request == nil {
         request = NewGetChaincodeInitializeResultForUserRequest()
     }
+    
     response = NewGetChaincodeInitializeResultForUserResponse()
     err = c.Send(request, response)
     return
@@ -945,6 +975,7 @@ func NewGetChaincodeLogForUserRequest() (request *GetChaincodeLogForUserRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "GetChaincodeLogForUser")
+    
     
     return
 }
@@ -984,6 +1015,7 @@ func (c *Client) GetChaincodeLogForUser(request *GetChaincodeLogForUserRequest) 
     if request == nil {
         request = NewGetChaincodeLogForUserRequest()
     }
+    
     response = NewGetChaincodeLogForUserResponse()
     err = c.Send(request, response)
     return
@@ -994,6 +1026,7 @@ func NewGetChannelListForUserRequest() (request *GetChannelListForUserRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "GetChannelListForUser")
+    
     
     return
 }
@@ -1033,6 +1066,7 @@ func (c *Client) GetChannelListForUser(request *GetChannelListForUserRequest) (r
     if request == nil {
         request = NewGetChannelListForUserRequest()
     }
+    
     response = NewGetChannelListForUserResponse()
     err = c.Send(request, response)
     return
@@ -1043,6 +1077,7 @@ func NewGetClusterListForUserRequest() (request *GetClusterListForUserRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "GetClusterListForUser")
+    
     
     return
 }
@@ -1082,6 +1117,7 @@ func (c *Client) GetClusterListForUser(request *GetClusterListForUserRequest) (r
     if request == nil {
         request = NewGetClusterListForUserRequest()
     }
+    
     response = NewGetClusterListForUserResponse()
     err = c.Send(request, response)
     return
@@ -1092,6 +1128,7 @@ func NewGetClusterSummaryRequest() (request *GetClusterSummaryRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "GetClusterSummary")
+    
     
     return
 }
@@ -1121,6 +1158,7 @@ func (c *Client) GetClusterSummary(request *GetClusterSummaryRequest) (response 
     if request == nil {
         request = NewGetClusterSummaryRequest()
     }
+    
     response = NewGetClusterSummaryResponse()
     err = c.Send(request, response)
     return
@@ -1131,6 +1169,7 @@ func NewGetInvokeTxRequest() (request *GetInvokeTxRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "GetInvokeTx")
+    
     
     return
 }
@@ -1164,6 +1203,7 @@ func (c *Client) GetInvokeTx(request *GetInvokeTxRequest) (response *GetInvokeTx
     if request == nil {
         request = NewGetInvokeTxRequest()
     }
+    
     response = NewGetInvokeTxResponse()
     err = c.Send(request, response)
     return
@@ -1174,6 +1214,7 @@ func NewGetLatesdTransactionListRequest() (request *GetLatesdTransactionListRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "GetLatesdTransactionList")
+    
     
     return
 }
@@ -1206,6 +1247,7 @@ func (c *Client) GetLatesdTransactionList(request *GetLatesdTransactionListReque
     if request == nil {
         request = NewGetLatesdTransactionListRequest()
     }
+    
     response = NewGetLatesdTransactionListResponse()
     err = c.Send(request, response)
     return
@@ -1216,6 +1258,7 @@ func NewGetPeerLogForUserRequest() (request *GetPeerLogForUserRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "GetPeerLogForUser")
+    
     
     return
 }
@@ -1255,6 +1298,7 @@ func (c *Client) GetPeerLogForUser(request *GetPeerLogForUserRequest) (response 
     if request == nil {
         request = NewGetPeerLogForUserRequest()
     }
+    
     response = NewGetPeerLogForUserResponse()
     err = c.Send(request, response)
     return
@@ -1265,6 +1309,7 @@ func NewGetTransByHashHandlerRequest() (request *GetTransByHashHandlerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "GetTransByHashHandler")
+    
     
     return
 }
@@ -1326,6 +1371,7 @@ func (c *Client) GetTransByHashHandler(request *GetTransByHashHandlerRequest) (r
     if request == nil {
         request = NewGetTransByHashHandlerRequest()
     }
+    
     response = NewGetTransByHashHandlerResponse()
     err = c.Send(request, response)
     return
@@ -1336,6 +1382,7 @@ func NewGetTransListHandlerRequest() (request *GetTransListHandlerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "GetTransListHandler")
+    
     
     return
 }
@@ -1398,6 +1445,7 @@ func (c *Client) GetTransListHandler(request *GetTransListHandlerRequest) (respo
     if request == nil {
         request = NewGetTransListHandlerRequest()
     }
+    
     response = NewGetTransListHandlerResponse()
     err = c.Send(request, response)
     return
@@ -1408,6 +1456,7 @@ func NewGetTransactionDetailForUserRequest() (request *GetTransactionDetailForUs
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "GetTransactionDetailForUser")
+    
     
     return
 }
@@ -1442,6 +1491,7 @@ func (c *Client) GetTransactionDetailForUser(request *GetTransactionDetailForUse
     if request == nil {
         request = NewGetTransactionDetailForUserRequest()
     }
+    
     response = NewGetTransactionDetailForUserResponse()
     err = c.Send(request, response)
     return
@@ -1452,6 +1502,7 @@ func NewInitializeChaincodeForUserRequest() (request *InitializeChaincodeForUser
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "InitializeChaincodeForUser")
+    
     
     return
 }
@@ -1491,6 +1542,7 @@ func (c *Client) InitializeChaincodeForUser(request *InitializeChaincodeForUserR
     if request == nil {
         request = NewInitializeChaincodeForUserRequest()
     }
+    
     response = NewInitializeChaincodeForUserResponse()
     err = c.Send(request, response)
     return
@@ -1501,6 +1553,7 @@ func NewInvokeRequest() (request *InvokeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "Invoke")
+    
     
     return
 }
@@ -1545,6 +1598,7 @@ func (c *Client) Invoke(request *InvokeRequest) (response *InvokeResponse, err e
     if request == nil {
         request = NewInvokeRequest()
     }
+    
     response = NewInvokeResponse()
     err = c.Send(request, response)
     return
@@ -1555,6 +1609,7 @@ func NewInvokeBcosTransRequest() (request *InvokeBcosTransRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "InvokeBcosTrans")
+    
     
     return
 }
@@ -1615,6 +1670,7 @@ func (c *Client) InvokeBcosTrans(request *InvokeBcosTransRequest) (response *Inv
     if request == nil {
         request = NewInvokeBcosTransRequest()
     }
+    
     response = NewInvokeBcosTransResponse()
     err = c.Send(request, response)
     return
@@ -1625,6 +1681,7 @@ func NewInvokeChainMakerContractRequest() (request *InvokeChainMakerContractRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "InvokeChainMakerContract")
+    
     
     return
 }
@@ -1685,6 +1742,7 @@ func (c *Client) InvokeChainMakerContract(request *InvokeChainMakerContractReque
     if request == nil {
         request = NewInvokeChainMakerContractRequest()
     }
+    
     response = NewInvokeChainMakerContractResponse()
     err = c.Send(request, response)
     return
@@ -1695,6 +1753,7 @@ func NewQueryRequest() (request *QueryRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "Query")
+    
     
     return
 }
@@ -1737,6 +1796,7 @@ func (c *Client) Query(request *QueryRequest) (response *QueryResponse, err erro
     if request == nil {
         request = NewQueryRequest()
     }
+    
     response = NewQueryResponse()
     err = c.Send(request, response)
     return
@@ -1747,6 +1807,7 @@ func NewQueryChainMakerBlockTransactionRequest() (request *QueryChainMakerBlockT
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "QueryChainMakerBlockTransaction")
+    
     
     return
 }
@@ -1807,6 +1868,7 @@ func (c *Client) QueryChainMakerBlockTransaction(request *QueryChainMakerBlockTr
     if request == nil {
         request = NewQueryChainMakerBlockTransactionRequest()
     }
+    
     response = NewQueryChainMakerBlockTransactionResponse()
     err = c.Send(request, response)
     return
@@ -1817,6 +1879,7 @@ func NewQueryChainMakerContractRequest() (request *QueryChainMakerContractReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "QueryChainMakerContract")
+    
     
     return
 }
@@ -1877,6 +1940,7 @@ func (c *Client) QueryChainMakerContract(request *QueryChainMakerContractRequest
     if request == nil {
         request = NewQueryChainMakerContractRequest()
     }
+    
     response = NewQueryChainMakerContractResponse()
     err = c.Send(request, response)
     return
@@ -1887,6 +1951,7 @@ func NewQueryChainMakerTransactionRequest() (request *QueryChainMakerTransaction
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "QueryChainMakerTransaction")
+    
     
     return
 }
@@ -1947,6 +2012,7 @@ func (c *Client) QueryChainMakerTransaction(request *QueryChainMakerTransactionR
     if request == nil {
         request = NewQueryChainMakerTransactionRequest()
     }
+    
     response = NewQueryChainMakerTransactionResponse()
     err = c.Send(request, response)
     return
@@ -1957,6 +2023,7 @@ func NewSendTransactionHandlerRequest() (request *SendTransactionHandlerRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "SendTransactionHandler")
+    
     
     return
 }
@@ -2019,6 +2086,7 @@ func (c *Client) SendTransactionHandler(request *SendTransactionHandlerRequest) 
     if request == nil {
         request = NewSendTransactionHandlerRequest()
     }
+    
     response = NewSendTransactionHandlerResponse()
     err = c.Send(request, response)
     return
@@ -2029,6 +2097,7 @@ func NewSrvInvokeRequest() (request *SrvInvokeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "SrvInvoke")
+    
     
     return
 }
@@ -2051,6 +2120,7 @@ func (c *Client) SrvInvoke(request *SrvInvokeRequest) (response *SrvInvokeRespon
     if request == nil {
         request = NewSrvInvokeRequest()
     }
+    
     response = NewSrvInvokeResponse()
     err = c.Send(request, response)
     return
@@ -2061,6 +2131,7 @@ func NewTransByDynamicContractHandlerRequest() (request *TransByDynamicContractH
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbaas", APIVersion, "TransByDynamicContractHandler")
+    
     
     return
 }
@@ -2125,6 +2196,7 @@ func (c *Client) TransByDynamicContractHandler(request *TransByDynamicContractHa
     if request == nil {
         request = NewTransByDynamicContractHandlerRequest()
     }
+    
     response = NewTransByDynamicContractHandlerResponse()
     err = c.Send(request, response)
     return

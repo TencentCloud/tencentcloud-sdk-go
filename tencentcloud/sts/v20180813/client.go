@@ -49,6 +49,7 @@ func NewAssumeRoleRequest() (request *AssumeRoleRequest) {
     }
     request.Init().WithApiInfo("sts", APIVersion, "AssumeRole")
     
+    
     return
 }
 
@@ -89,6 +90,7 @@ func (c *Client) AssumeRole(request *AssumeRoleRequest) (response *AssumeRoleRes
     if request == nil {
         request = NewAssumeRoleRequest()
     }
+    
     response = NewAssumeRoleResponse()
     err = c.Send(request, response)
     return
@@ -99,6 +101,7 @@ func NewAssumeRoleWithSAMLRequest() (request *AssumeRoleWithSAMLRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("sts", APIVersion, "AssumeRoleWithSAML")
+    
     
     return
 }
@@ -139,6 +142,7 @@ func (c *Client) AssumeRoleWithSAML(request *AssumeRoleWithSAMLRequest) (respons
     if request == nil {
         request = NewAssumeRoleWithSAMLRequest()
     }
+    
     response = NewAssumeRoleWithSAMLResponse()
     err = c.Send(request, response)
     return
@@ -149,6 +153,7 @@ func NewGetFederationTokenRequest() (request *GetFederationTokenRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("sts", APIVersion, "GetFederationToken")
+    
     
     return
 }
@@ -185,6 +190,7 @@ func (c *Client) GetFederationToken(request *GetFederationTokenRequest) (respons
     if request == nil {
         request = NewGetFederationTokenRequest()
     }
+    
     response = NewGetFederationTokenResponse()
     err = c.Send(request, response)
     return
@@ -195,6 +201,7 @@ func NewQueryApiKeyRequest() (request *QueryApiKeyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("sts", APIVersion, "QueryApiKey")
+    
     
     return
 }
@@ -217,6 +224,7 @@ func (c *Client) QueryApiKey(request *QueryApiKeyRequest) (response *QueryApiKey
     if request == nil {
         request = NewQueryApiKeyRequest()
     }
+    
     response = NewQueryApiKeyResponse()
     err = c.Send(request, response)
     return

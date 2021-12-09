@@ -49,6 +49,7 @@ func NewAnalyzeDenseLandmarksRequest() (request *AnalyzeDenseLandmarksRequest) {
     }
     request.Init().WithApiInfo("iai", APIVersion, "AnalyzeDenseLandmarks")
     
+    
     return
 }
 
@@ -88,6 +89,7 @@ func (c *Client) AnalyzeDenseLandmarks(request *AnalyzeDenseLandmarksRequest) (r
     if request == nil {
         request = NewAnalyzeDenseLandmarksRequest()
     }
+    
     response = NewAnalyzeDenseLandmarksResponse()
     err = c.Send(request, response)
     return
@@ -98,6 +100,7 @@ func NewAnalyzeFaceRequest() (request *AnalyzeFaceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "AnalyzeFace")
+    
     
     return
 }
@@ -192,6 +195,7 @@ func (c *Client) AnalyzeFace(request *AnalyzeFaceRequest) (response *AnalyzeFace
     if request == nil {
         request = NewAnalyzeFaceRequest()
     }
+    
     response = NewAnalyzeFaceResponse()
     err = c.Send(request, response)
     return
@@ -202,6 +206,7 @@ func NewCheckSimilarPersonRequest() (request *CheckSimilarPersonRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "CheckSimilarPerson")
+    
     
     return
 }
@@ -312,6 +317,7 @@ func (c *Client) CheckSimilarPerson(request *CheckSimilarPersonRequest) (respons
     if request == nil {
         request = NewCheckSimilarPersonRequest()
     }
+    
     response = NewCheckSimilarPersonResponse()
     err = c.Send(request, response)
     return
@@ -322,6 +328,7 @@ func NewCompareFaceRequest() (request *CompareFaceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "CompareFace")
+    
     
     return
 }
@@ -422,6 +429,7 @@ func (c *Client) CompareFace(request *CompareFaceRequest) (response *CompareFace
     if request == nil {
         request = NewCompareFaceRequest()
     }
+    
     response = NewCompareFaceResponse()
     err = c.Send(request, response)
     return
@@ -432,6 +440,7 @@ func NewCopyPersonRequest() (request *CopyPersonRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "CopyPerson")
+    
     
     return
 }
@@ -522,6 +531,7 @@ func (c *Client) CopyPerson(request *CopyPersonRequest) (response *CopyPersonRes
     if request == nil {
         request = NewCopyPersonRequest()
     }
+    
     response = NewCopyPersonResponse()
     err = c.Send(request, response)
     return
@@ -532,6 +542,7 @@ func NewCreateFaceRequest() (request *CreateFaceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "CreateFace")
+    
     
     return
 }
@@ -628,6 +639,7 @@ func (c *Client) CreateFace(request *CreateFaceRequest) (response *CreateFaceRes
     if request == nil {
         request = NewCreateFaceRequest()
     }
+    
     response = NewCreateFaceResponse()
     err = c.Send(request, response)
     return
@@ -638,6 +650,7 @@ func NewCreateGroupRequest() (request *CreateGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "CreateGroup")
+    
     
     return
 }
@@ -733,6 +746,7 @@ func (c *Client) CreateGroup(request *CreateGroupRequest) (response *CreateGroup
     if request == nil {
         request = NewCreateGroupRequest()
     }
+    
     response = NewCreateGroupResponse()
     err = c.Send(request, response)
     return
@@ -743,6 +757,7 @@ func NewCreatePersonRequest() (request *CreatePersonRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "CreatePerson")
+    
     
     return
 }
@@ -839,6 +854,7 @@ func (c *Client) CreatePerson(request *CreatePersonRequest) (response *CreatePer
     if request == nil {
         request = NewCreatePersonRequest()
     }
+    
     response = NewCreatePersonResponse()
     err = c.Send(request, response)
     return
@@ -849,6 +865,7 @@ func NewDeleteFaceRequest() (request *DeleteFaceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "DeleteFace")
+    
     
     return
 }
@@ -934,6 +951,7 @@ func (c *Client) DeleteFace(request *DeleteFaceRequest) (response *DeleteFaceRes
     if request == nil {
         request = NewDeleteFaceRequest()
     }
+    
     response = NewDeleteFaceResponse()
     err = c.Send(request, response)
     return
@@ -944,6 +962,7 @@ func NewDeleteGroupRequest() (request *DeleteGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "DeleteGroup")
+    
     
     return
 }
@@ -1028,6 +1047,7 @@ func (c *Client) DeleteGroup(request *DeleteGroupRequest) (response *DeleteGroup
     if request == nil {
         request = NewDeleteGroupRequest()
     }
+    
     response = NewDeleteGroupResponse()
     err = c.Send(request, response)
     return
@@ -1038,6 +1058,7 @@ func NewDeletePersonRequest() (request *DeletePersonRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "DeletePerson")
+    
     
     return
 }
@@ -1123,6 +1144,7 @@ func (c *Client) DeletePerson(request *DeletePersonRequest) (response *DeletePer
     if request == nil {
         request = NewDeletePersonRequest()
     }
+    
     response = NewDeletePersonResponse()
     err = c.Send(request, response)
     return
@@ -1133,6 +1155,7 @@ func NewDeletePersonFromGroupRequest() (request *DeletePersonFromGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "DeletePersonFromGroup")
+    
     
     return
 }
@@ -1218,6 +1241,7 @@ func (c *Client) DeletePersonFromGroup(request *DeletePersonFromGroupRequest) (r
     if request == nil {
         request = NewDeletePersonFromGroupRequest()
     }
+    
     response = NewDeletePersonFromGroupResponse()
     err = c.Send(request, response)
     return
@@ -1228,6 +1252,7 @@ func NewDetectFaceRequest() (request *DetectFaceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "DetectFace")
+    
     
     return
 }
@@ -1347,6 +1372,7 @@ func (c *Client) DetectFace(request *DetectFaceRequest) (response *DetectFaceRes
     if request == nil {
         request = NewDetectFaceRequest()
     }
+    
     response = NewDetectFaceResponse()
     err = c.Send(request, response)
     return
@@ -1357,6 +1383,7 @@ func NewDetectFaceAttributesRequest() (request *DetectFaceAttributesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "DetectFaceAttributes")
+    
     
     return
 }
@@ -1445,6 +1472,7 @@ func (c *Client) DetectFaceAttributes(request *DetectFaceAttributesRequest) (res
     if request == nil {
         request = NewDetectFaceAttributesRequest()
     }
+    
     response = NewDetectFaceAttributesResponse()
     err = c.Send(request, response)
     return
@@ -1455,6 +1483,7 @@ func NewDetectLiveFaceRequest() (request *DetectLiveFaceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "DetectLiveFace")
+    
     
     return
 }
@@ -1565,6 +1594,7 @@ func (c *Client) DetectLiveFace(request *DetectLiveFaceRequest) (response *Detec
     if request == nil {
         request = NewDetectLiveFaceRequest()
     }
+    
     response = NewDetectLiveFaceResponse()
     err = c.Send(request, response)
     return
@@ -1575,6 +1605,7 @@ func NewEstimateCheckSimilarPersonCostTimeRequest() (request *EstimateCheckSimil
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "EstimateCheckSimilarPersonCostTime")
+    
     
     return
 }
@@ -1667,6 +1698,7 @@ func (c *Client) EstimateCheckSimilarPersonCostTime(request *EstimateCheckSimila
     if request == nil {
         request = NewEstimateCheckSimilarPersonCostTimeRequest()
     }
+    
     response = NewEstimateCheckSimilarPersonCostTimeResponse()
     err = c.Send(request, response)
     return
@@ -1677,6 +1709,7 @@ func NewGetCheckSimilarPersonJobIdListRequest() (request *GetCheckSimilarPersonJ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "GetCheckSimilarPersonJobIdList")
+    
     
     return
 }
@@ -1721,6 +1754,7 @@ func (c *Client) GetCheckSimilarPersonJobIdList(request *GetCheckSimilarPersonJo
     if request == nil {
         request = NewGetCheckSimilarPersonJobIdListRequest()
     }
+    
     response = NewGetCheckSimilarPersonJobIdListResponse()
     err = c.Send(request, response)
     return
@@ -1731,6 +1765,7 @@ func NewGetGroupInfoRequest() (request *GetGroupInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "GetGroupInfo")
+    
     
     return
 }
@@ -1758,6 +1793,7 @@ func (c *Client) GetGroupInfo(request *GetGroupInfoRequest) (response *GetGroupI
     if request == nil {
         request = NewGetGroupInfoRequest()
     }
+    
     response = NewGetGroupInfoResponse()
     err = c.Send(request, response)
     return
@@ -1768,6 +1804,7 @@ func NewGetGroupListRequest() (request *GetGroupListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "GetGroupList")
+    
     
     return
 }
@@ -1852,6 +1889,7 @@ func (c *Client) GetGroupList(request *GetGroupListRequest) (response *GetGroupL
     if request == nil {
         request = NewGetGroupListRequest()
     }
+    
     response = NewGetGroupListResponse()
     err = c.Send(request, response)
     return
@@ -1862,6 +1900,7 @@ func NewGetPersonBaseInfoRequest() (request *GetPersonBaseInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "GetPersonBaseInfo")
+    
     
     return
 }
@@ -1946,6 +1985,7 @@ func (c *Client) GetPersonBaseInfo(request *GetPersonBaseInfoRequest) (response 
     if request == nil {
         request = NewGetPersonBaseInfoRequest()
     }
+    
     response = NewGetPersonBaseInfoResponse()
     err = c.Send(request, response)
     return
@@ -1956,6 +1996,7 @@ func NewGetPersonGroupInfoRequest() (request *GetPersonGroupInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "GetPersonGroupInfo")
+    
     
     return
 }
@@ -2040,6 +2081,7 @@ func (c *Client) GetPersonGroupInfo(request *GetPersonGroupInfoRequest) (respons
     if request == nil {
         request = NewGetPersonGroupInfoRequest()
     }
+    
     response = NewGetPersonGroupInfoResponse()
     err = c.Send(request, response)
     return
@@ -2050,6 +2092,7 @@ func NewGetPersonListRequest() (request *GetPersonListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "GetPersonList")
+    
     
     return
 }
@@ -2134,6 +2177,7 @@ func (c *Client) GetPersonList(request *GetPersonListRequest) (response *GetPers
     if request == nil {
         request = NewGetPersonListRequest()
     }
+    
     response = NewGetPersonListResponse()
     err = c.Send(request, response)
     return
@@ -2144,6 +2188,7 @@ func NewGetPersonListNumRequest() (request *GetPersonListNumRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "GetPersonListNum")
+    
     
     return
 }
@@ -2228,6 +2273,7 @@ func (c *Client) GetPersonListNum(request *GetPersonListNumRequest) (response *G
     if request == nil {
         request = NewGetPersonListNumRequest()
     }
+    
     response = NewGetPersonListNumResponse()
     err = c.Send(request, response)
     return
@@ -2238,6 +2284,7 @@ func NewGetSimilarPersonResultRequest() (request *GetSimilarPersonResultRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "GetSimilarPersonResult")
+    
     
     return
 }
@@ -2326,6 +2373,7 @@ func (c *Client) GetSimilarPersonResult(request *GetSimilarPersonResultRequest) 
     if request == nil {
         request = NewGetSimilarPersonResultRequest()
     }
+    
     response = NewGetSimilarPersonResultResponse()
     err = c.Send(request, response)
     return
@@ -2336,6 +2384,7 @@ func NewGetUpgradeGroupFaceModelVersionJobListRequest() (request *GetUpgradeGrou
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "GetUpgradeGroupFaceModelVersionJobList")
+    
     
     return
 }
@@ -2363,6 +2412,7 @@ func (c *Client) GetUpgradeGroupFaceModelVersionJobList(request *GetUpgradeGroup
     if request == nil {
         request = NewGetUpgradeGroupFaceModelVersionJobListRequest()
     }
+    
     response = NewGetUpgradeGroupFaceModelVersionJobListResponse()
     err = c.Send(request, response)
     return
@@ -2373,6 +2423,7 @@ func NewGetUpgradeGroupFaceModelVersionResultRequest() (request *GetUpgradeGroup
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "GetUpgradeGroupFaceModelVersionResult")
+    
     
     return
 }
@@ -2399,6 +2450,7 @@ func (c *Client) GetUpgradeGroupFaceModelVersionResult(request *GetUpgradeGroupF
     if request == nil {
         request = NewGetUpgradeGroupFaceModelVersionResultRequest()
     }
+    
     response = NewGetUpgradeGroupFaceModelVersionResultResponse()
     err = c.Send(request, response)
     return
@@ -2409,6 +2461,7 @@ func NewModifyGroupRequest() (request *ModifyGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "ModifyGroup")
+    
     
     return
 }
@@ -2493,6 +2546,7 @@ func (c *Client) ModifyGroup(request *ModifyGroupRequest) (response *ModifyGroup
     if request == nil {
         request = NewModifyGroupRequest()
     }
+    
     response = NewModifyGroupResponse()
     err = c.Send(request, response)
     return
@@ -2503,6 +2557,7 @@ func NewModifyPersonBaseInfoRequest() (request *ModifyPersonBaseInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "ModifyPersonBaseInfo")
+    
     
     return
 }
@@ -2587,6 +2642,7 @@ func (c *Client) ModifyPersonBaseInfo(request *ModifyPersonBaseInfoRequest) (res
     if request == nil {
         request = NewModifyPersonBaseInfoRequest()
     }
+    
     response = NewModifyPersonBaseInfoResponse()
     err = c.Send(request, response)
     return
@@ -2597,6 +2653,7 @@ func NewModifyPersonGroupInfoRequest() (request *ModifyPersonGroupInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "ModifyPersonGroupInfo")
+    
     
     return
 }
@@ -2681,6 +2738,7 @@ func (c *Client) ModifyPersonGroupInfo(request *ModifyPersonGroupInfoRequest) (r
     if request == nil {
         request = NewModifyPersonGroupInfoRequest()
     }
+    
     response = NewModifyPersonGroupInfoResponse()
     err = c.Send(request, response)
     return
@@ -2691,6 +2749,7 @@ func NewRevertGroupFaceModelVersionRequest() (request *RevertGroupFaceModelVersi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "RevertGroupFaceModelVersion")
+    
     
     return
 }
@@ -2722,6 +2781,7 @@ func (c *Client) RevertGroupFaceModelVersion(request *RevertGroupFaceModelVersio
     if request == nil {
         request = NewRevertGroupFaceModelVersionRequest()
     }
+    
     response = NewRevertGroupFaceModelVersionResponse()
     err = c.Send(request, response)
     return
@@ -2732,6 +2792,7 @@ func NewSearchFacesRequest() (request *SearchFacesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "SearchFaces")
+    
     
     return
 }
@@ -2846,6 +2907,7 @@ func (c *Client) SearchFaces(request *SearchFacesRequest) (response *SearchFaces
     if request == nil {
         request = NewSearchFacesRequest()
     }
+    
     response = NewSearchFacesResponse()
     err = c.Send(request, response)
     return
@@ -2856,6 +2918,7 @@ func NewSearchFacesReturnsByGroupRequest() (request *SearchFacesReturnsByGroupRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "SearchFacesReturnsByGroup")
+    
     
     return
 }
@@ -2970,6 +3033,7 @@ func (c *Client) SearchFacesReturnsByGroup(request *SearchFacesReturnsByGroupReq
     if request == nil {
         request = NewSearchFacesReturnsByGroupRequest()
     }
+    
     response = NewSearchFacesReturnsByGroupResponse()
     err = c.Send(request, response)
     return
@@ -2980,6 +3044,7 @@ func NewSearchPersonsRequest() (request *SearchPersonsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "SearchPersons")
+    
     
     return
 }
@@ -3057,6 +3122,7 @@ func (c *Client) SearchPersons(request *SearchPersonsRequest) (response *SearchP
     if request == nil {
         request = NewSearchPersonsRequest()
     }
+    
     response = NewSearchPersonsResponse()
     err = c.Send(request, response)
     return
@@ -3067,6 +3133,7 @@ func NewSearchPersonsReturnsByGroupRequest() (request *SearchPersonsReturnsByGro
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "SearchPersonsReturnsByGroup")
+    
     
     return
 }
@@ -3141,6 +3208,7 @@ func (c *Client) SearchPersonsReturnsByGroup(request *SearchPersonsReturnsByGrou
     if request == nil {
         request = NewSearchPersonsReturnsByGroupRequest()
     }
+    
     response = NewSearchPersonsReturnsByGroupResponse()
     err = c.Send(request, response)
     return
@@ -3151,6 +3219,7 @@ func NewUpgradeGroupFaceModelVersionRequest() (request *UpgradeGroupFaceModelVer
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "UpgradeGroupFaceModelVersion")
+    
     
     return
 }
@@ -3183,6 +3252,7 @@ func (c *Client) UpgradeGroupFaceModelVersion(request *UpgradeGroupFaceModelVers
     if request == nil {
         request = NewUpgradeGroupFaceModelVersionRequest()
     }
+    
     response = NewUpgradeGroupFaceModelVersionResponse()
     err = c.Send(request, response)
     return
@@ -3193,6 +3263,7 @@ func NewVerifyFaceRequest() (request *VerifyFaceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "VerifyFace")
+    
     
     return
 }
@@ -3296,6 +3367,7 @@ func (c *Client) VerifyFace(request *VerifyFaceRequest) (response *VerifyFaceRes
     if request == nil {
         request = NewVerifyFaceRequest()
     }
+    
     response = NewVerifyFaceResponse()
     err = c.Send(request, response)
     return
@@ -3306,6 +3378,7 @@ func NewVerifyPersonRequest() (request *VerifyPersonRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iai", APIVersion, "VerifyPerson")
+    
     
     return
 }
@@ -3371,6 +3444,7 @@ func (c *Client) VerifyPerson(request *VerifyPersonRequest) (response *VerifyPer
     if request == nil {
         request = NewVerifyPersonRequest()
     }
+    
     response = NewVerifyPersonResponse()
     err = c.Send(request, response)
     return

@@ -49,6 +49,7 @@ func NewCreateAuditRequest() (request *CreateAuditRequest) {
     }
     request.Init().WithApiInfo("cloudaudit", APIVersion, "CreateAudit")
     
+    
     return
 }
 
@@ -97,6 +98,7 @@ func (c *Client) CreateAudit(request *CreateAuditRequest) (response *CreateAudit
     if request == nil {
         request = NewCreateAuditRequest()
     }
+    
     response = NewCreateAuditResponse()
     err = c.Send(request, response)
     return
@@ -107,6 +109,7 @@ func NewDeleteAuditRequest() (request *DeleteAuditRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudaudit", APIVersion, "DeleteAudit")
+    
     
     return
 }
@@ -128,6 +131,7 @@ func (c *Client) DeleteAudit(request *DeleteAuditRequest) (response *DeleteAudit
     if request == nil {
         request = NewDeleteAuditRequest()
     }
+    
     response = NewDeleteAuditResponse()
     err = c.Send(request, response)
     return
@@ -138,6 +142,7 @@ func NewDescribeAuditRequest() (request *DescribeAuditRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudaudit", APIVersion, "DescribeAudit")
+    
     
     return
 }
@@ -159,6 +164,7 @@ func (c *Client) DescribeAudit(request *DescribeAuditRequest) (response *Describ
     if request == nil {
         request = NewDescribeAuditRequest()
     }
+    
     response = NewDescribeAuditResponse()
     err = c.Send(request, response)
     return
@@ -169,6 +175,7 @@ func NewDescribeEventsRequest() (request *DescribeEventsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudaudit", APIVersion, "DescribeEvents")
+    
     
     return
 }
@@ -190,6 +197,7 @@ func (c *Client) DescribeEvents(request *DescribeEventsRequest) (response *Descr
     if request == nil {
         request = NewDescribeEventsRequest()
     }
+    
     response = NewDescribeEventsResponse()
     err = c.Send(request, response)
     return
@@ -200,6 +208,7 @@ func NewGetAttributeKeyRequest() (request *GetAttributeKeyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudaudit", APIVersion, "GetAttributeKey")
+    
     
     return
 }
@@ -220,6 +229,7 @@ func (c *Client) GetAttributeKey(request *GetAttributeKeyRequest) (response *Get
     if request == nil {
         request = NewGetAttributeKeyRequest()
     }
+    
     response = NewGetAttributeKeyResponse()
     err = c.Send(request, response)
     return
@@ -230,6 +240,7 @@ func NewInquireAuditCreditRequest() (request *InquireAuditCreditRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudaudit", APIVersion, "InquireAuditCredit")
+    
     
     return
 }
@@ -250,6 +261,7 @@ func (c *Client) InquireAuditCredit(request *InquireAuditCreditRequest) (respons
     if request == nil {
         request = NewInquireAuditCreditRequest()
     }
+    
     response = NewInquireAuditCreditResponse()
     err = c.Send(request, response)
     return
@@ -260,6 +272,7 @@ func NewListAuditsRequest() (request *ListAuditsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudaudit", APIVersion, "ListAudits")
+    
     
     return
 }
@@ -280,6 +293,7 @@ func (c *Client) ListAudits(request *ListAuditsRequest) (response *ListAuditsRes
     if request == nil {
         request = NewListAuditsRequest()
     }
+    
     response = NewListAuditsResponse()
     err = c.Send(request, response)
     return
@@ -290,6 +304,7 @@ func NewListCmqEnableRegionRequest() (request *ListCmqEnableRegionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudaudit", APIVersion, "ListCmqEnableRegion")
+    
     
     return
 }
@@ -310,6 +325,7 @@ func (c *Client) ListCmqEnableRegion(request *ListCmqEnableRegionRequest) (respo
     if request == nil {
         request = NewListCmqEnableRegionRequest()
     }
+    
     response = NewListCmqEnableRegionResponse()
     err = c.Send(request, response)
     return
@@ -320,6 +336,7 @@ func NewListCosEnableRegionRequest() (request *ListCosEnableRegionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudaudit", APIVersion, "ListCosEnableRegion")
+    
     
     return
 }
@@ -340,6 +357,7 @@ func (c *Client) ListCosEnableRegion(request *ListCosEnableRegionRequest) (respo
     if request == nil {
         request = NewListCosEnableRegionRequest()
     }
+    
     response = NewListCosEnableRegionResponse()
     err = c.Send(request, response)
     return
@@ -350,6 +368,7 @@ func NewListKeyAliasByRegionRequest() (request *ListKeyAliasByRegionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudaudit", APIVersion, "ListKeyAliasByRegion")
+    
     
     return
 }
@@ -370,6 +389,7 @@ func (c *Client) ListKeyAliasByRegion(request *ListKeyAliasByRegionRequest) (res
     if request == nil {
         request = NewListKeyAliasByRegionRequest()
     }
+    
     response = NewListKeyAliasByRegionResponse()
     err = c.Send(request, response)
     return
@@ -380,6 +400,7 @@ func NewLookUpEventsRequest() (request *LookUpEventsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudaudit", APIVersion, "LookUpEvents")
+    
     
     return
 }
@@ -405,6 +426,7 @@ func (c *Client) LookUpEvents(request *LookUpEventsRequest) (response *LookUpEve
     if request == nil {
         request = NewLookUpEventsRequest()
     }
+    
     response = NewLookUpEventsResponse()
     err = c.Send(request, response)
     return
@@ -415,6 +437,7 @@ func NewStartLoggingRequest() (request *StartLoggingRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudaudit", APIVersion, "StartLogging")
+    
     
     return
 }
@@ -436,6 +459,7 @@ func (c *Client) StartLogging(request *StartLoggingRequest) (response *StartLogg
     if request == nil {
         request = NewStartLoggingRequest()
     }
+    
     response = NewStartLoggingResponse()
     err = c.Send(request, response)
     return
@@ -446,6 +470,7 @@ func NewStopLoggingRequest() (request *StopLoggingRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudaudit", APIVersion, "StopLogging")
+    
     
     return
 }
@@ -467,6 +492,7 @@ func (c *Client) StopLogging(request *StopLoggingRequest) (response *StopLogging
     if request == nil {
         request = NewStopLoggingRequest()
     }
+    
     response = NewStopLoggingResponse()
     err = c.Send(request, response)
     return
@@ -477,6 +503,7 @@ func NewUpdateAuditRequest() (request *UpdateAuditRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cloudaudit", APIVersion, "UpdateAudit")
+    
     
     return
 }
@@ -515,6 +542,7 @@ func (c *Client) UpdateAudit(request *UpdateAuditRequest) (response *UpdateAudit
     if request == nil {
         request = NewUpdateAuditRequest()
     }
+    
     response = NewUpdateAuditResponse()
     err = c.Send(request, response)
     return

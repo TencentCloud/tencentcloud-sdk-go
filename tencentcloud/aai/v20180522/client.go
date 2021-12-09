@@ -49,6 +49,7 @@ func NewChatRequest() (request *ChatRequest) {
     }
     request.Init().WithApiInfo("aai", APIVersion, "Chat")
     
+    
     return
 }
 
@@ -81,6 +82,7 @@ func (c *Client) Chat(request *ChatRequest) (response *ChatResponse, err error) 
     if request == nil {
         request = NewChatRequest()
     }
+    
     response = NewChatResponse()
     err = c.Send(request, response)
     return
@@ -91,6 +93,7 @@ func NewSentenceRecognitionRequest() (request *SentenceRecognitionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("aai", APIVersion, "SentenceRecognition")
+    
     
     return
 }
@@ -138,6 +141,7 @@ func (c *Client) SentenceRecognition(request *SentenceRecognitionRequest) (respo
     if request == nil {
         request = NewSentenceRecognitionRequest()
     }
+    
     response = NewSentenceRecognitionResponse()
     err = c.Send(request, response)
     return
@@ -148,6 +152,7 @@ func NewSimultaneousInterpretingRequest() (request *SimultaneousInterpretingRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("aai", APIVersion, "SimultaneousInterpreting")
+    
     
     return
 }
@@ -188,6 +193,7 @@ func (c *Client) SimultaneousInterpreting(request *SimultaneousInterpretingReque
     if request == nil {
         request = NewSimultaneousInterpretingRequest()
     }
+    
     response = NewSimultaneousInterpretingResponse()
     err = c.Send(request, response)
     return
@@ -198,6 +204,7 @@ func NewTextToVoiceRequest() (request *TextToVoiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("aai", APIVersion, "TextToVoice")
+    
     
     return
 }
@@ -227,6 +234,7 @@ func (c *Client) TextToVoice(request *TextToVoiceRequest) (response *TextToVoice
     if request == nil {
         request = NewTextToVoiceRequest()
     }
+    
     response = NewTextToVoiceResponse()
     err = c.Send(request, response)
     return

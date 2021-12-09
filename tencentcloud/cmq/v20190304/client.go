@@ -49,6 +49,7 @@ func NewClearQueueRequest() (request *ClearQueueRequest) {
     }
     request.Init().WithApiInfo("cmq", APIVersion, "ClearQueue")
     
+    
     return
 }
 
@@ -77,6 +78,7 @@ func (c *Client) ClearQueue(request *ClearQueueRequest) (response *ClearQueueRes
     if request == nil {
         request = NewClearQueueRequest()
     }
+    
     response = NewClearQueueResponse()
     err = c.Send(request, response)
     return
@@ -87,6 +89,7 @@ func NewClearSubscriptionFilterTagsRequest() (request *ClearSubscriptionFilterTa
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "ClearSubscriptionFilterTags")
+    
     
     return
 }
@@ -116,6 +119,7 @@ func (c *Client) ClearSubscriptionFilterTags(request *ClearSubscriptionFilterTag
     if request == nil {
         request = NewClearSubscriptionFilterTagsRequest()
     }
+    
     response = NewClearSubscriptionFilterTagsResponse()
     err = c.Send(request, response)
     return
@@ -126,6 +130,7 @@ func NewCreateQueueRequest() (request *CreateQueueRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "CreateQueue")
+    
     
     return
 }
@@ -151,6 +156,7 @@ func (c *Client) CreateQueue(request *CreateQueueRequest) (response *CreateQueue
     if request == nil {
         request = NewCreateQueueRequest()
     }
+    
     response = NewCreateQueueResponse()
     err = c.Send(request, response)
     return
@@ -161,6 +167,7 @@ func NewCreateSubscribeRequest() (request *CreateSubscribeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "CreateSubscribe")
+    
     
     return
 }
@@ -190,6 +197,7 @@ func (c *Client) CreateSubscribe(request *CreateSubscribeRequest) (response *Cre
     if request == nil {
         request = NewCreateSubscribeRequest()
     }
+    
     response = NewCreateSubscribeResponse()
     err = c.Send(request, response)
     return
@@ -200,6 +208,7 @@ func NewCreateTopicRequest() (request *CreateTopicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "CreateTopic")
+    
     
     return
 }
@@ -228,6 +237,7 @@ func (c *Client) CreateTopic(request *CreateTopicRequest) (response *CreateTopic
     if request == nil {
         request = NewCreateTopicRequest()
     }
+    
     response = NewCreateTopicResponse()
     err = c.Send(request, response)
     return
@@ -238,6 +248,7 @@ func NewDeleteQueueRequest() (request *DeleteQueueRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "DeleteQueue")
+    
     
     return
 }
@@ -263,6 +274,7 @@ func (c *Client) DeleteQueue(request *DeleteQueueRequest) (response *DeleteQueue
     if request == nil {
         request = NewDeleteQueueRequest()
     }
+    
     response = NewDeleteQueueResponse()
     err = c.Send(request, response)
     return
@@ -273,6 +285,7 @@ func NewDeleteSubscribeRequest() (request *DeleteSubscribeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "DeleteSubscribe")
+    
     
     return
 }
@@ -301,6 +314,7 @@ func (c *Client) DeleteSubscribe(request *DeleteSubscribeRequest) (response *Del
     if request == nil {
         request = NewDeleteSubscribeRequest()
     }
+    
     response = NewDeleteSubscribeResponse()
     err = c.Send(request, response)
     return
@@ -311,6 +325,7 @@ func NewDeleteTopicRequest() (request *DeleteTopicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "DeleteTopic")
+    
     
     return
 }
@@ -339,6 +354,7 @@ func (c *Client) DeleteTopic(request *DeleteTopicRequest) (response *DeleteTopic
     if request == nil {
         request = NewDeleteTopicRequest()
     }
+    
     response = NewDeleteTopicResponse()
     err = c.Send(request, response)
     return
@@ -349,6 +365,7 @@ func NewDescribeDeadLetterSourceQueuesRequest() (request *DescribeDeadLetterSour
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "DescribeDeadLetterSourceQueues")
+    
     
     return
 }
@@ -377,6 +394,7 @@ func (c *Client) DescribeDeadLetterSourceQueues(request *DescribeDeadLetterSourc
     if request == nil {
         request = NewDescribeDeadLetterSourceQueuesRequest()
     }
+    
     response = NewDescribeDeadLetterSourceQueuesResponse()
     err = c.Send(request, response)
     return
@@ -387,6 +405,7 @@ func NewDescribeQueueDetailRequest() (request *DescribeQueueDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "DescribeQueueDetail")
+    
     
     return
 }
@@ -415,6 +434,7 @@ func (c *Client) DescribeQueueDetail(request *DescribeQueueDetailRequest) (respo
     if request == nil {
         request = NewDescribeQueueDetailRequest()
     }
+    
     response = NewDescribeQueueDetailResponse()
     err = c.Send(request, response)
     return
@@ -425,6 +445,7 @@ func NewDescribeSubscriptionDetailRequest() (request *DescribeSubscriptionDetail
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "DescribeSubscriptionDetail")
+    
     
     return
 }
@@ -454,6 +475,7 @@ func (c *Client) DescribeSubscriptionDetail(request *DescribeSubscriptionDetailR
     if request == nil {
         request = NewDescribeSubscriptionDetailRequest()
     }
+    
     response = NewDescribeSubscriptionDetailResponse()
     err = c.Send(request, response)
     return
@@ -464,6 +486,7 @@ func NewDescribeTopicDetailRequest() (request *DescribeTopicDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "DescribeTopicDetail")
+    
     
     return
 }
@@ -493,6 +516,7 @@ func (c *Client) DescribeTopicDetail(request *DescribeTopicDetailRequest) (respo
     if request == nil {
         request = NewDescribeTopicDetailRequest()
     }
+    
     response = NewDescribeTopicDetailResponse()
     err = c.Send(request, response)
     return
@@ -503,6 +527,7 @@ func NewModifyQueueAttributeRequest() (request *ModifyQueueAttributeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "ModifyQueueAttribute")
+    
     
     return
 }
@@ -532,6 +557,7 @@ func (c *Client) ModifyQueueAttribute(request *ModifyQueueAttributeRequest) (res
     if request == nil {
         request = NewModifyQueueAttributeRequest()
     }
+    
     response = NewModifyQueueAttributeResponse()
     err = c.Send(request, response)
     return
@@ -542,6 +568,7 @@ func NewModifySubscriptionAttributeRequest() (request *ModifySubscriptionAttribu
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "ModifySubscriptionAttribute")
+    
     
     return
 }
@@ -571,6 +598,7 @@ func (c *Client) ModifySubscriptionAttribute(request *ModifySubscriptionAttribut
     if request == nil {
         request = NewModifySubscriptionAttributeRequest()
     }
+    
     response = NewModifySubscriptionAttributeResponse()
     err = c.Send(request, response)
     return
@@ -581,6 +609,7 @@ func NewModifyTopicAttributeRequest() (request *ModifyTopicAttributeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "ModifyTopicAttribute")
+    
     
     return
 }
@@ -609,6 +638,7 @@ func (c *Client) ModifyTopicAttribute(request *ModifyTopicAttributeRequest) (res
     if request == nil {
         request = NewModifyTopicAttributeRequest()
     }
+    
     response = NewModifyTopicAttributeResponse()
     err = c.Send(request, response)
     return
@@ -619,6 +649,7 @@ func NewRewindQueueRequest() (request *RewindQueueRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "RewindQueue")
+    
     
     return
 }
@@ -647,6 +678,7 @@ func (c *Client) RewindQueue(request *RewindQueueRequest) (response *RewindQueue
     if request == nil {
         request = NewRewindQueueRequest()
     }
+    
     response = NewRewindQueueResponse()
     err = c.Send(request, response)
     return
@@ -657,6 +689,7 @@ func NewUnbindDeadLetterRequest() (request *UnbindDeadLetterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cmq", APIVersion, "UnbindDeadLetter")
+    
     
     return
 }
@@ -686,6 +719,7 @@ func (c *Client) UnbindDeadLetter(request *UnbindDeadLetterRequest) (response *U
     if request == nil {
         request = NewUnbindDeadLetterRequest()
     }
+    
     response = NewUnbindDeadLetterResponse()
     err = c.Send(request, response)
     return

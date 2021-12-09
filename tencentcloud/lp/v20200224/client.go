@@ -49,6 +49,7 @@ func NewQueryLoginProtectionRequest() (request *QueryLoginProtectionRequest) {
     }
     request.Init().WithApiInfo("lp", APIVersion, "QueryLoginProtection")
     
+    
     return
 }
 
@@ -88,6 +89,7 @@ func (c *Client) QueryLoginProtection(request *QueryLoginProtectionRequest) (res
     if request == nil {
         request = NewQueryLoginProtectionRequest()
     }
+    
     response = NewQueryLoginProtectionResponse()
     err = c.Send(request, response)
     return

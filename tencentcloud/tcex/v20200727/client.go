@@ -49,6 +49,7 @@ func NewDescribeInvocationResultRequest() (request *DescribeInvocationResultRequ
     }
     request.Init().WithApiInfo("tcex", APIVersion, "DescribeInvocationResult")
     
+    
     return
 }
 
@@ -73,6 +74,7 @@ func (c *Client) DescribeInvocationResult(request *DescribeInvocationResultReque
     if request == nil {
         request = NewDescribeInvocationResultRequest()
     }
+    
     response = NewDescribeInvocationResultResponse()
     err = c.Send(request, response)
     return
@@ -83,6 +85,7 @@ func NewInvokeServiceRequest() (request *InvokeServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcex", APIVersion, "InvokeService")
+    
     
     return
 }
@@ -112,6 +115,7 @@ func (c *Client) InvokeService(request *InvokeServiceRequest) (response *InvokeS
     if request == nil {
         request = NewInvokeServiceRequest()
     }
+    
     response = NewInvokeServiceResponse()
     err = c.Send(request, response)
     return

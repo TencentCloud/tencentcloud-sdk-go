@@ -49,6 +49,7 @@ func NewCreatePrivateDNSAccountRequest() (request *CreatePrivateDNSAccountReques
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "CreatePrivateDNSAccount")
     
+    
     return
 }
 
@@ -90,6 +91,7 @@ func (c *Client) CreatePrivateDNSAccount(request *CreatePrivateDNSAccountRequest
     if request == nil {
         request = NewCreatePrivateDNSAccountRequest()
     }
+    
     response = NewCreatePrivateDNSAccountResponse()
     err = c.Send(request, response)
     return
@@ -100,6 +102,7 @@ func NewCreatePrivateZoneRequest() (request *CreatePrivateZoneRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "CreatePrivateZone")
+    
     
     return
 }
@@ -152,6 +155,7 @@ func (c *Client) CreatePrivateZone(request *CreatePrivateZoneRequest) (response 
     if request == nil {
         request = NewCreatePrivateZoneRequest()
     }
+    
     response = NewCreatePrivateZoneResponse()
     err = c.Send(request, response)
     return
@@ -162,6 +166,7 @@ func NewCreatePrivateZoneRecordRequest() (request *CreatePrivateZoneRecordReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "CreatePrivateZoneRecord")
+    
     
     return
 }
@@ -217,6 +222,7 @@ func (c *Client) CreatePrivateZoneRecord(request *CreatePrivateZoneRecordRequest
     if request == nil {
         request = NewCreatePrivateZoneRecordRequest()
     }
+    
     response = NewCreatePrivateZoneRecordResponse()
     err = c.Send(request, response)
     return
@@ -227,6 +233,7 @@ func NewDeletePrivateDNSAccountRequest() (request *DeletePrivateDNSAccountReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "DeletePrivateDNSAccount")
+    
     
     return
 }
@@ -267,6 +274,7 @@ func (c *Client) DeletePrivateDNSAccount(request *DeletePrivateDNSAccountRequest
     if request == nil {
         request = NewDeletePrivateDNSAccountRequest()
     }
+    
     response = NewDeletePrivateDNSAccountResponse()
     err = c.Send(request, response)
     return
@@ -277,6 +285,7 @@ func NewDeletePrivateZoneRequest() (request *DeletePrivateZoneRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "DeletePrivateZone")
+    
     
     return
 }
@@ -318,6 +327,7 @@ func (c *Client) DeletePrivateZone(request *DeletePrivateZoneRequest) (response 
     if request == nil {
         request = NewDeletePrivateZoneRequest()
     }
+    
     response = NewDeletePrivateZoneResponse()
     err = c.Send(request, response)
     return
@@ -328,6 +338,7 @@ func NewDeletePrivateZoneRecordRequest() (request *DeletePrivateZoneRecordReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "DeletePrivateZoneRecord")
+    
     
     return
 }
@@ -370,6 +381,7 @@ func (c *Client) DeletePrivateZoneRecord(request *DeletePrivateZoneRecordRequest
     if request == nil {
         request = NewDeletePrivateZoneRecordRequest()
     }
+    
     response = NewDeletePrivateZoneRecordResponse()
     err = c.Send(request, response)
     return
@@ -380,6 +392,7 @@ func NewDescribeAccountVpcListRequest() (request *DescribeAccountVpcListRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "DescribeAccountVpcList")
+    
     
     return
 }
@@ -421,6 +434,7 @@ func (c *Client) DescribeAccountVpcList(request *DescribeAccountVpcListRequest) 
     if request == nil {
         request = NewDescribeAccountVpcListRequest()
     }
+    
     response = NewDescribeAccountVpcListResponse()
     err = c.Send(request, response)
     return
@@ -431,6 +445,7 @@ func NewDescribeAuditLogRequest() (request *DescribeAuditLogRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "DescribeAuditLog")
+    
     
     return
 }
@@ -468,6 +483,7 @@ func (c *Client) DescribeAuditLog(request *DescribeAuditLogRequest) (response *D
     if request == nil {
         request = NewDescribeAuditLogRequest()
     }
+    
     response = NewDescribeAuditLogResponse()
     err = c.Send(request, response)
     return
@@ -478,6 +494,7 @@ func NewDescribeDashboardRequest() (request *DescribeDashboardRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "DescribeDashboard")
+    
     
     return
 }
@@ -518,6 +535,7 @@ func (c *Client) DescribeDashboard(request *DescribeDashboardRequest) (response 
     if request == nil {
         request = NewDescribeDashboardRequest()
     }
+    
     response = NewDescribeDashboardResponse()
     err = c.Send(request, response)
     return
@@ -528,6 +546,7 @@ func NewDescribePrivateDNSAccountListRequest() (request *DescribePrivateDNSAccou
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "DescribePrivateDNSAccountList")
+    
     
     return
 }
@@ -567,6 +586,7 @@ func (c *Client) DescribePrivateDNSAccountList(request *DescribePrivateDNSAccoun
     if request == nil {
         request = NewDescribePrivateDNSAccountListRequest()
     }
+    
     response = NewDescribePrivateDNSAccountListResponse()
     err = c.Send(request, response)
     return
@@ -577,6 +597,7 @@ func NewDescribePrivateZoneRequest() (request *DescribePrivateZoneRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "DescribePrivateZone")
+    
     
     return
 }
@@ -618,6 +639,7 @@ func (c *Client) DescribePrivateZone(request *DescribePrivateZoneRequest) (respo
     if request == nil {
         request = NewDescribePrivateZoneRequest()
     }
+    
     response = NewDescribePrivateZoneResponse()
     err = c.Send(request, response)
     return
@@ -628,6 +650,7 @@ func NewDescribePrivateZoneListRequest() (request *DescribePrivateZoneListReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "DescribePrivateZoneList")
+    
     
     return
 }
@@ -667,6 +690,7 @@ func (c *Client) DescribePrivateZoneList(request *DescribePrivateZoneListRequest
     if request == nil {
         request = NewDescribePrivateZoneListRequest()
     }
+    
     response = NewDescribePrivateZoneListResponse()
     err = c.Send(request, response)
     return
@@ -677,6 +701,7 @@ func NewDescribePrivateZoneRecordListRequest() (request *DescribePrivateZoneReco
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "DescribePrivateZoneRecordList")
+    
     
     return
 }
@@ -708,6 +733,7 @@ func (c *Client) DescribePrivateZoneRecordList(request *DescribePrivateZoneRecor
     if request == nil {
         request = NewDescribePrivateZoneRecordListRequest()
     }
+    
     response = NewDescribePrivateZoneRecordListResponse()
     err = c.Send(request, response)
     return
@@ -718,6 +744,7 @@ func NewDescribePrivateZoneServiceRequest() (request *DescribePrivateZoneService
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "DescribePrivateZoneService")
+    
     
     return
 }
@@ -756,6 +783,7 @@ func (c *Client) DescribePrivateZoneService(request *DescribePrivateZoneServiceR
     if request == nil {
         request = NewDescribePrivateZoneServiceRequest()
     }
+    
     response = NewDescribePrivateZoneServiceResponse()
     err = c.Send(request, response)
     return
@@ -766,6 +794,7 @@ func NewDescribeRequestDataRequest() (request *DescribeRequestDataRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "DescribeRequestData")
+    
     
     return
 }
@@ -788,6 +817,7 @@ func (c *Client) DescribeRequestData(request *DescribeRequestDataRequest) (respo
     if request == nil {
         request = NewDescribeRequestDataRequest()
     }
+    
     response = NewDescribeRequestDataResponse()
     err = c.Send(request, response)
     return
@@ -798,6 +828,7 @@ func NewModifyPrivateZoneRequest() (request *ModifyPrivateZoneRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "ModifyPrivateZone")
+    
     
     return
 }
@@ -839,6 +870,7 @@ func (c *Client) ModifyPrivateZone(request *ModifyPrivateZoneRequest) (response 
     if request == nil {
         request = NewModifyPrivateZoneRequest()
     }
+    
     response = NewModifyPrivateZoneResponse()
     err = c.Send(request, response)
     return
@@ -849,6 +881,7 @@ func NewModifyPrivateZoneRecordRequest() (request *ModifyPrivateZoneRecordReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "ModifyPrivateZoneRecord")
+    
     
     return
 }
@@ -907,6 +940,7 @@ func (c *Client) ModifyPrivateZoneRecord(request *ModifyPrivateZoneRecordRequest
     if request == nil {
         request = NewModifyPrivateZoneRecordRequest()
     }
+    
     response = NewModifyPrivateZoneRecordResponse()
     err = c.Send(request, response)
     return
@@ -917,6 +951,7 @@ func NewModifyPrivateZoneVpcRequest() (request *ModifyPrivateZoneVpcRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "ModifyPrivateZoneVpc")
+    
     
     return
 }
@@ -963,6 +998,7 @@ func (c *Client) ModifyPrivateZoneVpc(request *ModifyPrivateZoneVpcRequest) (res
     if request == nil {
         request = NewModifyPrivateZoneVpcRequest()
     }
+    
     response = NewModifyPrivateZoneVpcResponse()
     err = c.Send(request, response)
     return
@@ -973,6 +1009,7 @@ func NewSubscribePrivateZoneServiceRequest() (request *SubscribePrivateZoneServi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("privatedns", APIVersion, "SubscribePrivateZoneService")
+    
     
     return
 }
@@ -1011,6 +1048,7 @@ func (c *Client) SubscribePrivateZoneService(request *SubscribePrivateZoneServic
     if request == nil {
         request = NewSubscribePrivateZoneServiceRequest()
     }
+    
     response = NewSubscribePrivateZoneServiceResponse()
     err = c.Send(request, response)
     return

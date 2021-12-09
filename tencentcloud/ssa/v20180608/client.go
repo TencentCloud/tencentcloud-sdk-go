@@ -49,6 +49,7 @@ func NewDescribeAssetDetailRequest() (request *DescribeAssetDetailRequest) {
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeAssetDetail")
     
+    
     return
 }
 
@@ -69,6 +70,7 @@ func (c *Client) DescribeAssetDetail(request *DescribeAssetDetailRequest) (respo
     if request == nil {
         request = NewDescribeAssetDetailRequest()
     }
+    
     response = NewDescribeAssetDetailResponse()
     err = c.Send(request, response)
     return
@@ -79,6 +81,7 @@ func NewDescribeAssetListRequest() (request *DescribeAssetListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeAssetList")
+    
     
     return
 }
@@ -101,6 +104,7 @@ func (c *Client) DescribeAssetList(request *DescribeAssetListRequest) (response 
     if request == nil {
         request = NewDescribeAssetListRequest()
     }
+    
     response = NewDescribeAssetListResponse()
     err = c.Send(request, response)
     return
@@ -111,6 +115,7 @@ func NewDescribeAssetsMappingListRequest() (request *DescribeAssetsMappingListRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeAssetsMappingList")
+    
     
     return
 }
@@ -134,6 +139,7 @@ func (c *Client) DescribeAssetsMappingList(request *DescribeAssetsMappingListReq
     if request == nil {
         request = NewDescribeAssetsMappingListRequest()
     }
+    
     response = NewDescribeAssetsMappingListResponse()
     err = c.Send(request, response)
     return
@@ -144,6 +150,7 @@ func NewDescribeCheckConfigAssetListRequest() (request *DescribeCheckConfigAsset
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeCheckConfigAssetList")
+    
     
     return
 }
@@ -167,6 +174,7 @@ func (c *Client) DescribeCheckConfigAssetList(request *DescribeCheckConfigAssetL
     if request == nil {
         request = NewDescribeCheckConfigAssetListRequest()
     }
+    
     response = NewDescribeCheckConfigAssetListResponse()
     err = c.Send(request, response)
     return
@@ -177,6 +185,7 @@ func NewDescribeCheckConfigDetailRequest() (request *DescribeCheckConfigDetailRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeCheckConfigDetail")
+    
     
     return
 }
@@ -200,6 +209,7 @@ func (c *Client) DescribeCheckConfigDetail(request *DescribeCheckConfigDetailReq
     if request == nil {
         request = NewDescribeCheckConfigDetailRequest()
     }
+    
     response = NewDescribeCheckConfigDetailResponse()
     err = c.Send(request, response)
     return
@@ -210,6 +220,7 @@ func NewDescribeComplianceAssetListRequest() (request *DescribeComplianceAssetLi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeComplianceAssetList")
+    
     
     return
 }
@@ -232,6 +243,7 @@ func (c *Client) DescribeComplianceAssetList(request *DescribeComplianceAssetLis
     if request == nil {
         request = NewDescribeComplianceAssetListRequest()
     }
+    
     response = NewDescribeComplianceAssetListResponse()
     err = c.Send(request, response)
     return
@@ -242,6 +254,7 @@ func NewDescribeComplianceDetailRequest() (request *DescribeComplianceDetailRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeComplianceDetail")
+    
     
     return
 }
@@ -265,6 +278,7 @@ func (c *Client) DescribeComplianceDetail(request *DescribeComplianceDetailReque
     if request == nil {
         request = NewDescribeComplianceDetailRequest()
     }
+    
     response = NewDescribeComplianceDetailResponse()
     err = c.Send(request, response)
     return
@@ -275,6 +289,7 @@ func NewDescribeComplianceListRequest() (request *DescribeComplianceListRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeComplianceList")
+    
     
     return
 }
@@ -299,6 +314,7 @@ func (c *Client) DescribeComplianceList(request *DescribeComplianceListRequest) 
     if request == nil {
         request = NewDescribeComplianceListRequest()
     }
+    
     response = NewDescribeComplianceListResponse()
     err = c.Send(request, response)
     return
@@ -309,6 +325,7 @@ func NewDescribeConfigListRequest() (request *DescribeConfigListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeConfigList")
+    
     
     return
 }
@@ -331,6 +348,7 @@ func (c *Client) DescribeConfigList(request *DescribeConfigListRequest) (respons
     if request == nil {
         request = NewDescribeConfigListRequest()
     }
+    
     response = NewDescribeConfigListResponse()
     err = c.Send(request, response)
     return
@@ -341,6 +359,7 @@ func NewDescribeEventDetailRequest() (request *DescribeEventDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeEventDetail")
+    
     
     return
 }
@@ -361,6 +380,7 @@ func (c *Client) DescribeEventDetail(request *DescribeEventDetailRequest) (respo
     if request == nil {
         request = NewDescribeEventDetailRequest()
     }
+    
     response = NewDescribeEventDetailResponse()
     err = c.Send(request, response)
     return
@@ -371,6 +391,7 @@ func NewDescribeLeakDetectionListRequest() (request *DescribeLeakDetectionListRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeLeakDetectionList")
+    
     
     return
 }
@@ -392,6 +413,7 @@ func (c *Client) DescribeLeakDetectionList(request *DescribeLeakDetectionListReq
     if request == nil {
         request = NewDescribeLeakDetectionListRequest()
     }
+    
     response = NewDescribeLeakDetectionListResponse()
     err = c.Send(request, response)
     return
@@ -402,6 +424,7 @@ func NewDescribeSafetyEventListRequest() (request *DescribeSafetyEventListReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeSafetyEventList")
+    
     
     return
 }
@@ -424,6 +447,7 @@ func (c *Client) DescribeSafetyEventList(request *DescribeSafetyEventListRequest
     if request == nil {
         request = NewDescribeSafetyEventListRequest()
     }
+    
     response = NewDescribeSafetyEventListResponse()
     err = c.Send(request, response)
     return
@@ -434,6 +458,7 @@ func NewDescribeSocAlertDetailsRequest() (request *DescribeSocAlertDetailsReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeSocAlertDetails")
+    
     
     return
 }
@@ -456,6 +481,7 @@ func (c *Client) DescribeSocAlertDetails(request *DescribeSocAlertDetailsRequest
     if request == nil {
         request = NewDescribeSocAlertDetailsRequest()
     }
+    
     response = NewDescribeSocAlertDetailsResponse()
     err = c.Send(request, response)
     return
@@ -466,6 +492,7 @@ func NewDescribeSocAlertListRequest() (request *DescribeSocAlertListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeSocAlertList")
+    
     
     return
 }
@@ -488,6 +515,7 @@ func (c *Client) DescribeSocAlertList(request *DescribeSocAlertListRequest) (res
     if request == nil {
         request = NewDescribeSocAlertListRequest()
     }
+    
     response = NewDescribeSocAlertListResponse()
     err = c.Send(request, response)
     return
@@ -498,6 +526,7 @@ func NewDescribeSocCspmComplianceRequest() (request *DescribeSocCspmComplianceRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeSocCspmCompliance")
+    
     
     return
 }
@@ -538,6 +567,7 @@ func (c *Client) DescribeSocCspmCompliance(request *DescribeSocCspmComplianceReq
     if request == nil {
         request = NewDescribeSocCspmComplianceRequest()
     }
+    
     response = NewDescribeSocCspmComplianceResponse()
     err = c.Send(request, response)
     return
@@ -548,6 +578,7 @@ func NewDescribeVulDetailRequest() (request *DescribeVulDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeVulDetail")
+    
     
     return
 }
@@ -568,6 +599,7 @@ func (c *Client) DescribeVulDetail(request *DescribeVulDetailRequest) (response 
     if request == nil {
         request = NewDescribeVulDetailRequest()
     }
+    
     response = NewDescribeVulDetailResponse()
     err = c.Send(request, response)
     return
@@ -578,6 +610,7 @@ func NewDescribeVulListRequest() (request *DescribeVulListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeVulList")
+    
     
     return
 }
@@ -600,6 +633,7 @@ func (c *Client) DescribeVulList(request *DescribeVulListRequest) (response *Des
     if request == nil {
         request = NewDescribeVulListRequest()
     }
+    
     response = NewDescribeVulListResponse()
     err = c.Send(request, response)
     return
@@ -610,6 +644,7 @@ func NewSaDivulgeDataQueryPubRequest() (request *SaDivulgeDataQueryPubRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssa", APIVersion, "SaDivulgeDataQueryPub")
+    
     
     return
 }
@@ -632,6 +667,7 @@ func (c *Client) SaDivulgeDataQueryPub(request *SaDivulgeDataQueryPubRequest) (r
     if request == nil {
         request = NewSaDivulgeDataQueryPubRequest()
     }
+    
     response = NewSaDivulgeDataQueryPubResponse()
     err = c.Send(request, response)
     return

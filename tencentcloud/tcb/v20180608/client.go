@@ -49,6 +49,7 @@ func NewBindEnvGatewayRequest() (request *BindEnvGatewayRequest) {
     }
     request.Init().WithApiInfo("tcb", APIVersion, "BindEnvGateway")
     
+    
     return
 }
 
@@ -72,6 +73,7 @@ func (c *Client) BindEnvGateway(request *BindEnvGatewayRequest) (response *BindE
     if request == nil {
         request = NewBindEnvGatewayRequest()
     }
+    
     response = NewBindEnvGatewayResponse()
     err = c.Send(request, response)
     return
@@ -82,6 +84,7 @@ func NewCheckTcbServiceRequest() (request *CheckTcbServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "CheckTcbService")
+    
     
     return
 }
@@ -105,6 +108,7 @@ func (c *Client) CheckTcbService(request *CheckTcbServiceRequest) (response *Che
     if request == nil {
         request = NewCheckTcbServiceRequest()
     }
+    
     response = NewCheckTcbServiceResponse()
     err = c.Send(request, response)
     return
@@ -115,6 +119,7 @@ func NewCommonServiceAPIRequest() (request *CommonServiceAPIRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "CommonServiceAPI")
+    
     
     return
 }
@@ -137,6 +142,7 @@ func (c *Client) CommonServiceAPI(request *CommonServiceAPIRequest) (response *C
     if request == nil {
         request = NewCommonServiceAPIRequest()
     }
+    
     response = NewCommonServiceAPIResponse()
     err = c.Send(request, response)
     return
@@ -147,6 +153,7 @@ func NewCreateAndDeployCloudBaseProjectRequest() (request *CreateAndDeployCloudB
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "CreateAndDeployCloudBaseProject")
+    
     
     return
 }
@@ -173,6 +180,7 @@ func (c *Client) CreateAndDeployCloudBaseProject(request *CreateAndDeployCloudBa
     if request == nil {
         request = NewCreateAndDeployCloudBaseProjectRequest()
     }
+    
     response = NewCreateAndDeployCloudBaseProjectResponse()
     err = c.Send(request, response)
     return
@@ -183,6 +191,7 @@ func NewCreateAuthDomainRequest() (request *CreateAuthDomainRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "CreateAuthDomain")
+    
     
     return
 }
@@ -208,6 +217,7 @@ func (c *Client) CreateAuthDomain(request *CreateAuthDomainRequest) (response *C
     if request == nil {
         request = NewCreateAuthDomainRequest()
     }
+    
     response = NewCreateAuthDomainResponse()
     err = c.Send(request, response)
     return
@@ -218,6 +228,7 @@ func NewCreateCloudBaseRunResourceRequest() (request *CreateCloudBaseRunResource
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "CreateCloudBaseRunResource")
+    
     
     return
 }
@@ -241,6 +252,7 @@ func (c *Client) CreateCloudBaseRunResource(request *CreateCloudBaseRunResourceR
     if request == nil {
         request = NewCreateCloudBaseRunResourceRequest()
     }
+    
     response = NewCreateCloudBaseRunResourceResponse()
     err = c.Send(request, response)
     return
@@ -251,6 +263,7 @@ func NewCreateCloudBaseRunServerVersionRequest() (request *CreateCloudBaseRunSer
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "CreateCloudBaseRunServerVersion")
+    
     
     return
 }
@@ -275,6 +288,7 @@ func (c *Client) CreateCloudBaseRunServerVersion(request *CreateCloudBaseRunServ
     if request == nil {
         request = NewCreateCloudBaseRunServerVersionRequest()
     }
+    
     response = NewCreateCloudBaseRunServerVersionResponse()
     err = c.Send(request, response)
     return
@@ -285,6 +299,7 @@ func NewCreateHostingDomainRequest() (request *CreateHostingDomainRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "CreateHostingDomain")
+    
     
     return
 }
@@ -312,6 +327,7 @@ func (c *Client) CreateHostingDomain(request *CreateHostingDomainRequest) (respo
     if request == nil {
         request = NewCreateHostingDomainRequest()
     }
+    
     response = NewCreateHostingDomainResponse()
     err = c.Send(request, response)
     return
@@ -322,6 +338,7 @@ func NewCreatePostpayPackageRequest() (request *CreatePostpayPackageRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "CreatePostpayPackage")
+    
     
     return
 }
@@ -346,6 +363,7 @@ func (c *Client) CreatePostpayPackage(request *CreatePostpayPackageRequest) (res
     if request == nil {
         request = NewCreatePostpayPackageRequest()
     }
+    
     response = NewCreatePostpayPackageResponse()
     err = c.Send(request, response)
     return
@@ -356,6 +374,7 @@ func NewCreateStandaloneGatewayRequest() (request *CreateStandaloneGatewayReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "CreateStandaloneGateway")
+    
     
     return
 }
@@ -384,6 +403,7 @@ func (c *Client) CreateStandaloneGateway(request *CreateStandaloneGatewayRequest
     if request == nil {
         request = NewCreateStandaloneGatewayRequest()
     }
+    
     response = NewCreateStandaloneGatewayResponse()
     err = c.Send(request, response)
     return
@@ -394,6 +414,7 @@ func NewCreateStaticStoreRequest() (request *CreateStaticStoreRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "CreateStaticStore")
+    
     
     return
 }
@@ -416,6 +437,7 @@ func (c *Client) CreateStaticStore(request *CreateStaticStoreRequest) (response 
     if request == nil {
         request = NewCreateStaticStoreRequest()
     }
+    
     response = NewCreateStaticStoreResponse()
     err = c.Send(request, response)
     return
@@ -426,6 +448,7 @@ func NewCreateWxCloudBaseRunEnvRequest() (request *CreateWxCloudBaseRunEnvReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "CreateWxCloudBaseRunEnv")
+    
     
     return
 }
@@ -455,6 +478,7 @@ func (c *Client) CreateWxCloudBaseRunEnv(request *CreateWxCloudBaseRunEnvRequest
     if request == nil {
         request = NewCreateWxCloudBaseRunEnvRequest()
     }
+    
     response = NewCreateWxCloudBaseRunEnvResponse()
     err = c.Send(request, response)
     return
@@ -465,6 +489,7 @@ func NewCreateWxCloudBaseRunServerDBClusterRequest() (request *CreateWxCloudBase
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "CreateWxCloudBaseRunServerDBCluster")
+    
     
     return
 }
@@ -494,6 +519,7 @@ func (c *Client) CreateWxCloudBaseRunServerDBCluster(request *CreateWxCloudBaseR
     if request == nil {
         request = NewCreateWxCloudBaseRunServerDBClusterRequest()
     }
+    
     response = NewCreateWxCloudBaseRunServerDBClusterResponse()
     err = c.Send(request, response)
     return
@@ -504,6 +530,7 @@ func NewDeleteCloudBaseProjectLatestVersionRequest() (request *DeleteCloudBasePr
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DeleteCloudBaseProjectLatestVersion")
+    
     
     return
 }
@@ -526,6 +553,7 @@ func (c *Client) DeleteCloudBaseProjectLatestVersion(request *DeleteCloudBasePro
     if request == nil {
         request = NewDeleteCloudBaseProjectLatestVersionRequest()
     }
+    
     response = NewDeleteCloudBaseProjectLatestVersionResponse()
     err = c.Send(request, response)
     return
@@ -536,6 +564,7 @@ func NewDeleteCloudBaseRunServerVersionRequest() (request *DeleteCloudBaseRunSer
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DeleteCloudBaseRunServerVersion")
+    
     
     return
 }
@@ -560,6 +589,7 @@ func (c *Client) DeleteCloudBaseRunServerVersion(request *DeleteCloudBaseRunServ
     if request == nil {
         request = NewDeleteCloudBaseRunServerVersionRequest()
     }
+    
     response = NewDeleteCloudBaseRunServerVersionResponse()
     err = c.Send(request, response)
     return
@@ -570,6 +600,7 @@ func NewDeleteEndUserRequest() (request *DeleteEndUserRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DeleteEndUser")
+    
     
     return
 }
@@ -592,6 +623,7 @@ func (c *Client) DeleteEndUser(request *DeleteEndUserRequest) (response *DeleteE
     if request == nil {
         request = NewDeleteEndUserRequest()
     }
+    
     response = NewDeleteEndUserResponse()
     err = c.Send(request, response)
     return
@@ -602,6 +634,7 @@ func NewDeleteWxGatewayRouteRequest() (request *DeleteWxGatewayRouteRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DeleteWxGatewayRoute")
+    
     
     return
 }
@@ -626,6 +659,7 @@ func (c *Client) DeleteWxGatewayRoute(request *DeleteWxGatewayRouteRequest) (res
     if request == nil {
         request = NewDeleteWxGatewayRouteRequest()
     }
+    
     response = NewDeleteWxGatewayRouteResponse()
     err = c.Send(request, response)
     return
@@ -636,6 +670,7 @@ func NewDescribeActivityInfoRequest() (request *DescribeActivityInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeActivityInfo")
+    
     
     return
 }
@@ -659,6 +694,7 @@ func (c *Client) DescribeActivityInfo(request *DescribeActivityInfoRequest) (res
     if request == nil {
         request = NewDescribeActivityInfoRequest()
     }
+    
     response = NewDescribeActivityInfoResponse()
     err = c.Send(request, response)
     return
@@ -669,6 +705,7 @@ func NewDescribeActivityRecordRequest() (request *DescribeActivityRecordRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeActivityRecord")
+    
     
     return
 }
@@ -692,6 +729,7 @@ func (c *Client) DescribeActivityRecord(request *DescribeActivityRecordRequest) 
     if request == nil {
         request = NewDescribeActivityRecordRequest()
     }
+    
     response = NewDescribeActivityRecordResponse()
     err = c.Send(request, response)
     return
@@ -702,6 +740,7 @@ func NewDescribeAuthDomainsRequest() (request *DescribeAuthDomainsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeAuthDomains")
+    
     
     return
 }
@@ -724,6 +763,7 @@ func (c *Client) DescribeAuthDomains(request *DescribeAuthDomainsRequest) (respo
     if request == nil {
         request = NewDescribeAuthDomainsRequest()
     }
+    
     response = NewDescribeAuthDomainsResponse()
     err = c.Send(request, response)
     return
@@ -734,6 +774,7 @@ func NewDescribeCloudBaseBuildServiceRequest() (request *DescribeCloudBaseBuildS
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseBuildService")
+    
     
     return
 }
@@ -756,6 +797,7 @@ func (c *Client) DescribeCloudBaseBuildService(request *DescribeCloudBaseBuildSe
     if request == nil {
         request = NewDescribeCloudBaseBuildServiceRequest()
     }
+    
     response = NewDescribeCloudBaseBuildServiceResponse()
     err = c.Send(request, response)
     return
@@ -766,6 +808,7 @@ func NewDescribeCloudBaseProjectLatestVersionListRequest() (request *DescribeClo
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseProjectLatestVersionList")
+    
     
     return
 }
@@ -789,6 +832,7 @@ func (c *Client) DescribeCloudBaseProjectLatestVersionList(request *DescribeClou
     if request == nil {
         request = NewDescribeCloudBaseProjectLatestVersionListRequest()
     }
+    
     response = NewDescribeCloudBaseProjectLatestVersionListResponse()
     err = c.Send(request, response)
     return
@@ -799,6 +843,7 @@ func NewDescribeCloudBaseProjectVersionListRequest() (request *DescribeCloudBase
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseProjectVersionList")
+    
     
     return
 }
@@ -819,6 +864,7 @@ func (c *Client) DescribeCloudBaseProjectVersionList(request *DescribeCloudBaseP
     if request == nil {
         request = NewDescribeCloudBaseProjectVersionListRequest()
     }
+    
     response = NewDescribeCloudBaseProjectVersionListResponse()
     err = c.Send(request, response)
     return
@@ -829,6 +875,7 @@ func NewDescribeCloudBaseRunAllVpcsRequest() (request *DescribeCloudBaseRunAllVp
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseRunAllVpcs")
+    
     
     return
 }
@@ -850,6 +897,7 @@ func (c *Client) DescribeCloudBaseRunAllVpcs(request *DescribeCloudBaseRunAllVpc
     if request == nil {
         request = NewDescribeCloudBaseRunAllVpcsRequest()
     }
+    
     response = NewDescribeCloudBaseRunAllVpcsResponse()
     err = c.Send(request, response)
     return
@@ -860,6 +908,7 @@ func NewDescribeCloudBaseRunConfForGateWayRequest() (request *DescribeCloudBaseR
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseRunConfForGateWay")
+    
     
     return
 }
@@ -883,6 +932,7 @@ func (c *Client) DescribeCloudBaseRunConfForGateWay(request *DescribeCloudBaseRu
     if request == nil {
         request = NewDescribeCloudBaseRunConfForGateWayRequest()
     }
+    
     response = NewDescribeCloudBaseRunConfForGateWayResponse()
     err = c.Send(request, response)
     return
@@ -893,6 +943,7 @@ func NewDescribeCloudBaseRunOneClickTaskExternalRequest() (request *DescribeClou
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseRunOneClickTaskExternal")
+    
     
     return
 }
@@ -916,6 +967,7 @@ func (c *Client) DescribeCloudBaseRunOneClickTaskExternal(request *DescribeCloud
     if request == nil {
         request = NewDescribeCloudBaseRunOneClickTaskExternalRequest()
     }
+    
     response = NewDescribeCloudBaseRunOneClickTaskExternalResponse()
     err = c.Send(request, response)
     return
@@ -926,6 +978,7 @@ func NewDescribeCloudBaseRunOperationTypesRequest() (request *DescribeCloudBaseR
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseRunOperationTypes")
+    
     
     return
 }
@@ -947,6 +1000,7 @@ func (c *Client) DescribeCloudBaseRunOperationTypes(request *DescribeCloudBaseRu
     if request == nil {
         request = NewDescribeCloudBaseRunOperationTypesRequest()
     }
+    
     response = NewDescribeCloudBaseRunOperationTypesResponse()
     err = c.Send(request, response)
     return
@@ -957,6 +1011,7 @@ func NewDescribeCloudBaseRunPodListRequest() (request *DescribeCloudBaseRunPodLi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseRunPodList")
+    
     
     return
 }
@@ -980,6 +1035,7 @@ func (c *Client) DescribeCloudBaseRunPodList(request *DescribeCloudBaseRunPodLis
     if request == nil {
         request = NewDescribeCloudBaseRunPodListRequest()
     }
+    
     response = NewDescribeCloudBaseRunPodListResponse()
     err = c.Send(request, response)
     return
@@ -990,6 +1046,7 @@ func NewDescribeCloudBaseRunResourceRequest() (request *DescribeCloudBaseRunReso
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseRunResource")
+    
     
     return
 }
@@ -1011,6 +1068,7 @@ func (c *Client) DescribeCloudBaseRunResource(request *DescribeCloudBaseRunResou
     if request == nil {
         request = NewDescribeCloudBaseRunResourceRequest()
     }
+    
     response = NewDescribeCloudBaseRunResourceResponse()
     err = c.Send(request, response)
     return
@@ -1021,6 +1079,7 @@ func NewDescribeCloudBaseRunResourceForExtendRequest() (request *DescribeCloudBa
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseRunResourceForExtend")
+    
     
     return
 }
@@ -1042,6 +1101,7 @@ func (c *Client) DescribeCloudBaseRunResourceForExtend(request *DescribeCloudBas
     if request == nil {
         request = NewDescribeCloudBaseRunResourceForExtendRequest()
     }
+    
     response = NewDescribeCloudBaseRunResourceForExtendResponse()
     err = c.Send(request, response)
     return
@@ -1052,6 +1112,7 @@ func NewDescribeCloudBaseRunServerRequest() (request *DescribeCloudBaseRunServer
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseRunServer")
+    
     
     return
 }
@@ -1074,6 +1135,7 @@ func (c *Client) DescribeCloudBaseRunServer(request *DescribeCloudBaseRunServerR
     if request == nil {
         request = NewDescribeCloudBaseRunServerRequest()
     }
+    
     response = NewDescribeCloudBaseRunServerResponse()
     err = c.Send(request, response)
     return
@@ -1084,6 +1146,7 @@ func NewDescribeCloudBaseRunServerDomainNameRequest() (request *DescribeCloudBas
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseRunServerDomainName")
+    
     
     return
 }
@@ -1107,6 +1170,7 @@ func (c *Client) DescribeCloudBaseRunServerDomainName(request *DescribeCloudBase
     if request == nil {
         request = NewDescribeCloudBaseRunServerDomainNameRequest()
     }
+    
     response = NewDescribeCloudBaseRunServerDomainNameResponse()
     err = c.Send(request, response)
     return
@@ -1117,6 +1181,7 @@ func NewDescribeCloudBaseRunServerVersionRequest() (request *DescribeCloudBaseRu
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseRunServerVersion")
+    
     
     return
 }
@@ -1141,6 +1206,7 @@ func (c *Client) DescribeCloudBaseRunServerVersion(request *DescribeCloudBaseRun
     if request == nil {
         request = NewDescribeCloudBaseRunServerVersionRequest()
     }
+    
     response = NewDescribeCloudBaseRunServerVersionResponse()
     err = c.Send(request, response)
     return
@@ -1151,6 +1217,7 @@ func NewDescribeCloudBaseRunVersionRequest() (request *DescribeCloudBaseRunVersi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseRunVersion")
+    
     
     return
 }
@@ -1175,6 +1242,7 @@ func (c *Client) DescribeCloudBaseRunVersion(request *DescribeCloudBaseRunVersio
     if request == nil {
         request = NewDescribeCloudBaseRunVersionRequest()
     }
+    
     response = NewDescribeCloudBaseRunVersionResponse()
     err = c.Send(request, response)
     return
@@ -1185,6 +1253,7 @@ func NewDescribeCloudBaseRunVersionRsByConditionRequest() (request *DescribeClou
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseRunVersionRsByCondition")
+    
     
     return
 }
@@ -1208,6 +1277,7 @@ func (c *Client) DescribeCloudBaseRunVersionRsByCondition(request *DescribeCloud
     if request == nil {
         request = NewDescribeCloudBaseRunVersionRsByConditionRequest()
     }
+    
     response = NewDescribeCloudBaseRunVersionRsByConditionResponse()
     err = c.Send(request, response)
     return
@@ -1218,6 +1288,7 @@ func NewDescribeCloudBaseRunVersionSnapshotRequest() (request *DescribeCloudBase
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseRunVersionSnapshot")
+    
     
     return
 }
@@ -1241,6 +1312,7 @@ func (c *Client) DescribeCloudBaseRunVersionSnapshot(request *DescribeCloudBaseR
     if request == nil {
         request = NewDescribeCloudBaseRunVersionSnapshotRequest()
     }
+    
     response = NewDescribeCloudBaseRunVersionSnapshotResponse()
     err = c.Send(request, response)
     return
@@ -1251,6 +1323,7 @@ func NewDescribeCurveDataRequest() (request *DescribeCurveDataRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeCurveData")
+    
     
     return
 }
@@ -1277,6 +1350,7 @@ func (c *Client) DescribeCurveData(request *DescribeCurveDataRequest) (response 
     if request == nil {
         request = NewDescribeCurveDataRequest()
     }
+    
     response = NewDescribeCurveDataResponse()
     err = c.Send(request, response)
     return
@@ -1287,6 +1361,7 @@ func NewDescribeDatabaseACLRequest() (request *DescribeDatabaseACLRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeDatabaseACL")
+    
     
     return
 }
@@ -1310,6 +1385,7 @@ func (c *Client) DescribeDatabaseACL(request *DescribeDatabaseACLRequest) (respo
     if request == nil {
         request = NewDescribeDatabaseACLRequest()
     }
+    
     response = NewDescribeDatabaseACLResponse()
     err = c.Send(request, response)
     return
@@ -1320,6 +1396,7 @@ func NewDescribeDownloadFileRequest() (request *DescribeDownloadFileRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeDownloadFile")
+    
     
     return
 }
@@ -1344,6 +1421,7 @@ func (c *Client) DescribeDownloadFile(request *DescribeDownloadFileRequest) (res
     if request == nil {
         request = NewDescribeDownloadFileRequest()
     }
+    
     response = NewDescribeDownloadFileResponse()
     err = c.Send(request, response)
     return
@@ -1354,6 +1432,7 @@ func NewDescribeEndUserLoginStatisticRequest() (request *DescribeEndUserLoginSta
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeEndUserLoginStatistic")
+    
     
     return
 }
@@ -1382,6 +1461,7 @@ func (c *Client) DescribeEndUserLoginStatistic(request *DescribeEndUserLoginStat
     if request == nil {
         request = NewDescribeEndUserLoginStatisticRequest()
     }
+    
     response = NewDescribeEndUserLoginStatisticResponse()
     err = c.Send(request, response)
     return
@@ -1392,6 +1472,7 @@ func NewDescribeEndUserStatisticRequest() (request *DescribeEndUserStatisticRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeEndUserStatistic")
+    
     
     return
 }
@@ -1420,6 +1501,7 @@ func (c *Client) DescribeEndUserStatistic(request *DescribeEndUserStatisticReque
     if request == nil {
         request = NewDescribeEndUserStatisticRequest()
     }
+    
     response = NewDescribeEndUserStatisticResponse()
     err = c.Send(request, response)
     return
@@ -1430,6 +1512,7 @@ func NewDescribeEndUsersRequest() (request *DescribeEndUsersRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeEndUsers")
+    
     
     return
 }
@@ -1452,6 +1535,7 @@ func (c *Client) DescribeEndUsers(request *DescribeEndUsersRequest) (response *D
     if request == nil {
         request = NewDescribeEndUsersRequest()
     }
+    
     response = NewDescribeEndUsersResponse()
     err = c.Send(request, response)
     return
@@ -1462,6 +1546,7 @@ func NewDescribeEnvDealRegionRequest() (request *DescribeEnvDealRegionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeEnvDealRegion")
+    
     
     return
 }
@@ -1489,6 +1574,7 @@ func (c *Client) DescribeEnvDealRegion(request *DescribeEnvDealRegionRequest) (r
     if request == nil {
         request = NewDescribeEnvDealRegionRequest()
     }
+    
     response = NewDescribeEnvDealRegionResponse()
     err = c.Send(request, response)
     return
@@ -1499,6 +1585,7 @@ func NewDescribeEnvFreeQuotaRequest() (request *DescribeEnvFreeQuotaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeEnvFreeQuota")
+    
     
     return
 }
@@ -1523,6 +1610,7 @@ func (c *Client) DescribeEnvFreeQuota(request *DescribeEnvFreeQuotaRequest) (res
     if request == nil {
         request = NewDescribeEnvFreeQuotaRequest()
     }
+    
     response = NewDescribeEnvFreeQuotaResponse()
     err = c.Send(request, response)
     return
@@ -1533,6 +1621,7 @@ func NewDescribeEnvLimitRequest() (request *DescribeEnvLimitRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeEnvLimit")
+    
     
     return
 }
@@ -1556,6 +1645,7 @@ func (c *Client) DescribeEnvLimit(request *DescribeEnvLimitRequest) (response *D
     if request == nil {
         request = NewDescribeEnvLimitRequest()
     }
+    
     response = NewDescribeEnvLimitResponse()
     err = c.Send(request, response)
     return
@@ -1566,6 +1656,7 @@ func NewDescribeEnvPostpaidDeductRequest() (request *DescribeEnvPostpaidDeductRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeEnvPostpaidDeduct")
+    
     
     return
 }
@@ -1589,6 +1680,7 @@ func (c *Client) DescribeEnvPostpaidDeduct(request *DescribeEnvPostpaidDeductReq
     if request == nil {
         request = NewDescribeEnvPostpaidDeductRequest()
     }
+    
     response = NewDescribeEnvPostpaidDeductResponse()
     err = c.Send(request, response)
     return
@@ -1599,6 +1691,7 @@ func NewDescribeEnvsRequest() (request *DescribeEnvsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeEnvs")
+    
     
     return
 }
@@ -1626,6 +1719,7 @@ func (c *Client) DescribeEnvs(request *DescribeEnvsRequest) (response *DescribeE
     if request == nil {
         request = NewDescribeEnvsRequest()
     }
+    
     response = NewDescribeEnvsResponse()
     err = c.Send(request, response)
     return
@@ -1636,6 +1730,7 @@ func NewDescribeExtensionUploadInfoRequest() (request *DescribeExtensionUploadIn
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeExtensionUploadInfo")
+    
     
     return
 }
@@ -1657,6 +1752,7 @@ func (c *Client) DescribeExtensionUploadInfo(request *DescribeExtensionUploadInf
     if request == nil {
         request = NewDescribeExtensionUploadInfoRequest()
     }
+    
     response = NewDescribeExtensionUploadInfoResponse()
     err = c.Send(request, response)
     return
@@ -1667,6 +1763,7 @@ func NewDescribeExtraPkgBillingInfoRequest() (request *DescribeExtraPkgBillingIn
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeExtraPkgBillingInfo")
+    
     
     return
 }
@@ -1691,6 +1788,7 @@ func (c *Client) DescribeExtraPkgBillingInfo(request *DescribeExtraPkgBillingInf
     if request == nil {
         request = NewDescribeExtraPkgBillingInfoRequest()
     }
+    
     response = NewDescribeExtraPkgBillingInfoResponse()
     err = c.Send(request, response)
     return
@@ -1701,6 +1799,7 @@ func NewDescribeHostingDomainTaskRequest() (request *DescribeHostingDomainTaskRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeHostingDomainTask")
+    
     
     return
 }
@@ -1726,6 +1825,7 @@ func (c *Client) DescribeHostingDomainTask(request *DescribeHostingDomainTaskReq
     if request == nil {
         request = NewDescribeHostingDomainTaskRequest()
     }
+    
     response = NewDescribeHostingDomainTaskResponse()
     err = c.Send(request, response)
     return
@@ -1736,6 +1836,7 @@ func NewDescribePostpayFreeQuotasRequest() (request *DescribePostpayFreeQuotasRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribePostpayFreeQuotas")
+    
     
     return
 }
@@ -1759,6 +1860,7 @@ func (c *Client) DescribePostpayFreeQuotas(request *DescribePostpayFreeQuotasReq
     if request == nil {
         request = NewDescribePostpayFreeQuotasRequest()
     }
+    
     response = NewDescribePostpayFreeQuotasResponse()
     err = c.Send(request, response)
     return
@@ -1769,6 +1871,7 @@ func NewDescribePostpayPackageFreeQuotasRequest() (request *DescribePostpayPacka
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribePostpayPackageFreeQuotas")
+    
     
     return
 }
@@ -1798,6 +1901,7 @@ func (c *Client) DescribePostpayPackageFreeQuotas(request *DescribePostpayPackag
     if request == nil {
         request = NewDescribePostpayPackageFreeQuotasRequest()
     }
+    
     response = NewDescribePostpayPackageFreeQuotasResponse()
     err = c.Send(request, response)
     return
@@ -1808,6 +1912,7 @@ func NewDescribeQuotaDataRequest() (request *DescribeQuotaDataRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeQuotaData")
+    
     
     return
 }
@@ -1834,6 +1939,7 @@ func (c *Client) DescribeQuotaData(request *DescribeQuotaDataRequest) (response 
     if request == nil {
         request = NewDescribeQuotaDataRequest()
     }
+    
     response = NewDescribeQuotaDataResponse()
     err = c.Send(request, response)
     return
@@ -1844,6 +1950,7 @@ func NewDescribeSmsQuotasRequest() (request *DescribeSmsQuotasRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeSmsQuotas")
+    
     
     return
 }
@@ -1873,6 +1980,7 @@ func (c *Client) DescribeSmsQuotas(request *DescribeSmsQuotasRequest) (response 
     if request == nil {
         request = NewDescribeSmsQuotasRequest()
     }
+    
     response = NewDescribeSmsQuotasResponse()
     err = c.Send(request, response)
     return
@@ -1883,6 +1991,7 @@ func NewDescribeSpecialCostItemsRequest() (request *DescribeSpecialCostItemsRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeSpecialCostItems")
+    
     
     return
 }
@@ -1906,6 +2015,7 @@ func (c *Client) DescribeSpecialCostItems(request *DescribeSpecialCostItemsReque
     if request == nil {
         request = NewDescribeSpecialCostItemsRequest()
     }
+    
     response = NewDescribeSpecialCostItemsResponse()
     err = c.Send(request, response)
     return
@@ -1916,6 +2026,7 @@ func NewDescribeStandaloneGatewayRequest() (request *DescribeStandaloneGatewayRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeStandaloneGateway")
+    
     
     return
 }
@@ -1943,6 +2054,7 @@ func (c *Client) DescribeStandaloneGateway(request *DescribeStandaloneGatewayReq
     if request == nil {
         request = NewDescribeStandaloneGatewayRequest()
     }
+    
     response = NewDescribeStandaloneGatewayResponse()
     err = c.Send(request, response)
     return
@@ -1953,6 +2065,7 @@ func NewDescribeStandaloneGatewayPackageRequest() (request *DescribeStandaloneGa
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeStandaloneGatewayPackage")
+    
     
     return
 }
@@ -1979,6 +2092,7 @@ func (c *Client) DescribeStandaloneGatewayPackage(request *DescribeStandaloneGat
     if request == nil {
         request = NewDescribeStandaloneGatewayPackageRequest()
     }
+    
     response = NewDescribeStandaloneGatewayPackageResponse()
     err = c.Send(request, response)
     return
@@ -1989,6 +2103,7 @@ func NewDescribeUserActivityInfoRequest() (request *DescribeUserActivityInfoRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeUserActivityInfo")
+    
     
     return
 }
@@ -2012,6 +2127,7 @@ func (c *Client) DescribeUserActivityInfo(request *DescribeUserActivityInfoReque
     if request == nil {
         request = NewDescribeUserActivityInfoRequest()
     }
+    
     response = NewDescribeUserActivityInfoResponse()
     err = c.Send(request, response)
     return
@@ -2022,6 +2138,7 @@ func NewDescribeWxCloudBaseRunEnvsRequest() (request *DescribeWxCloudBaseRunEnvs
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeWxCloudBaseRunEnvs")
+    
     
     return
 }
@@ -2050,6 +2167,7 @@ func (c *Client) DescribeWxCloudBaseRunEnvs(request *DescribeWxCloudBaseRunEnvsR
     if request == nil {
         request = NewDescribeWxCloudBaseRunEnvsRequest()
     }
+    
     response = NewDescribeWxCloudBaseRunEnvsResponse()
     err = c.Send(request, response)
     return
@@ -2060,6 +2178,7 @@ func NewDescribeWxCloudBaseRunSubNetsRequest() (request *DescribeWxCloudBaseRunS
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DescribeWxCloudBaseRunSubNets")
+    
     
     return
 }
@@ -2088,6 +2207,7 @@ func (c *Client) DescribeWxCloudBaseRunSubNets(request *DescribeWxCloudBaseRunSu
     if request == nil {
         request = NewDescribeWxCloudBaseRunSubNetsRequest()
     }
+    
     response = NewDescribeWxCloudBaseRunSubNetsResponse()
     err = c.Send(request, response)
     return
@@ -2098,6 +2218,7 @@ func NewDestroyEnvRequest() (request *DestroyEnvRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DestroyEnv")
+    
     
     return
 }
@@ -2125,6 +2246,7 @@ func (c *Client) DestroyEnv(request *DestroyEnvRequest) (response *DestroyEnvRes
     if request == nil {
         request = NewDestroyEnvRequest()
     }
+    
     response = NewDestroyEnvResponse()
     err = c.Send(request, response)
     return
@@ -2135,6 +2257,7 @@ func NewDestroyStandaloneGatewayRequest() (request *DestroyStandaloneGatewayRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DestroyStandaloneGateway")
+    
     
     return
 }
@@ -2160,6 +2283,7 @@ func (c *Client) DestroyStandaloneGateway(request *DestroyStandaloneGatewayReque
     if request == nil {
         request = NewDestroyStandaloneGatewayRequest()
     }
+    
     response = NewDestroyStandaloneGatewayResponse()
     err = c.Send(request, response)
     return
@@ -2170,6 +2294,7 @@ func NewDestroyStaticStoreRequest() (request *DestroyStaticStoreRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "DestroyStaticStore")
+    
     
     return
 }
@@ -2191,6 +2316,7 @@ func (c *Client) DestroyStaticStore(request *DestroyStaticStoreRequest) (respons
     if request == nil {
         request = NewDestroyStaticStoreRequest()
     }
+    
     response = NewDestroyStaticStoreResponse()
     err = c.Send(request, response)
     return
@@ -2201,6 +2327,7 @@ func NewEstablishCloudBaseRunServerRequest() (request *EstablishCloudBaseRunServ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "EstablishCloudBaseRunServer")
+    
     
     return
 }
@@ -2227,6 +2354,7 @@ func (c *Client) EstablishCloudBaseRunServer(request *EstablishCloudBaseRunServe
     if request == nil {
         request = NewEstablishCloudBaseRunServerRequest()
     }
+    
     response = NewEstablishCloudBaseRunServerResponse()
     err = c.Send(request, response)
     return
@@ -2237,6 +2365,7 @@ func NewEstablishWxGatewayRouteRequest() (request *EstablishWxGatewayRouteReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "EstablishWxGatewayRoute")
+    
     
     return
 }
@@ -2263,6 +2392,7 @@ func (c *Client) EstablishWxGatewayRoute(request *EstablishWxGatewayRouteRequest
     if request == nil {
         request = NewEstablishWxGatewayRouteRequest()
     }
+    
     response = NewEstablishWxGatewayRouteResponse()
     err = c.Send(request, response)
     return
@@ -2273,6 +2403,7 @@ func NewModifyCloudBaseRunServerFlowConfRequest() (request *ModifyCloudBaseRunSe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "ModifyCloudBaseRunServerFlowConf")
+    
     
     return
 }
@@ -2295,6 +2426,7 @@ func (c *Client) ModifyCloudBaseRunServerFlowConf(request *ModifyCloudBaseRunSer
     if request == nil {
         request = NewModifyCloudBaseRunServerFlowConfRequest()
     }
+    
     response = NewModifyCloudBaseRunServerFlowConfResponse()
     err = c.Send(request, response)
     return
@@ -2305,6 +2437,7 @@ func NewModifyCloudBaseRunServerVersionRequest() (request *ModifyCloudBaseRunSer
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "ModifyCloudBaseRunServerVersion")
+    
     
     return
 }
@@ -2328,6 +2461,7 @@ func (c *Client) ModifyCloudBaseRunServerVersion(request *ModifyCloudBaseRunServ
     if request == nil {
         request = NewModifyCloudBaseRunServerVersionRequest()
     }
+    
     response = NewModifyCloudBaseRunServerVersionResponse()
     err = c.Send(request, response)
     return
@@ -2338,6 +2472,7 @@ func NewModifyDatabaseACLRequest() (request *ModifyDatabaseACLRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "ModifyDatabaseACL")
+    
     
     return
 }
@@ -2361,6 +2496,7 @@ func (c *Client) ModifyDatabaseACL(request *ModifyDatabaseACLRequest) (response 
     if request == nil {
         request = NewModifyDatabaseACLRequest()
     }
+    
     response = NewModifyDatabaseACLResponse()
     err = c.Send(request, response)
     return
@@ -2371,6 +2507,7 @@ func NewModifyEndUserRequest() (request *ModifyEndUserRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "ModifyEndUser")
+    
     
     return
 }
@@ -2394,6 +2531,7 @@ func (c *Client) ModifyEndUser(request *ModifyEndUserRequest) (response *ModifyE
     if request == nil {
         request = NewModifyEndUserRequest()
     }
+    
     response = NewModifyEndUserResponse()
     err = c.Send(request, response)
     return
@@ -2404,6 +2542,7 @@ func NewModifyEnvRequest() (request *ModifyEnvRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "ModifyEnv")
+    
     
     return
 }
@@ -2428,6 +2567,7 @@ func (c *Client) ModifyEnv(request *ModifyEnvRequest) (response *ModifyEnvRespon
     if request == nil {
         request = NewModifyEnvRequest()
     }
+    
     response = NewModifyEnvResponse()
     err = c.Send(request, response)
     return
@@ -2438,6 +2578,7 @@ func NewReinstateEnvRequest() (request *ReinstateEnvRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "ReinstateEnv")
+    
     
     return
 }
@@ -2463,6 +2604,7 @@ func (c *Client) ReinstateEnv(request *ReinstateEnvRequest) (response *Reinstate
     if request == nil {
         request = NewReinstateEnvRequest()
     }
+    
     response = NewReinstateEnvResponse()
     err = c.Send(request, response)
     return
@@ -2473,6 +2615,7 @@ func NewReplaceActivityRecordRequest() (request *ReplaceActivityRecordRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "ReplaceActivityRecord")
+    
     
     return
 }
@@ -2497,6 +2640,7 @@ func (c *Client) ReplaceActivityRecord(request *ReplaceActivityRecordRequest) (r
     if request == nil {
         request = NewReplaceActivityRecordRequest()
     }
+    
     response = NewReplaceActivityRecordResponse()
     err = c.Send(request, response)
     return
@@ -2507,6 +2651,7 @@ func NewRollUpdateCloudBaseRunServerVersionRequest() (request *RollUpdateCloudBa
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "RollUpdateCloudBaseRunServerVersion")
+    
     
     return
 }
@@ -2529,6 +2674,7 @@ func (c *Client) RollUpdateCloudBaseRunServerVersion(request *RollUpdateCloudBas
     if request == nil {
         request = NewRollUpdateCloudBaseRunServerVersionRequest()
     }
+    
     response = NewRollUpdateCloudBaseRunServerVersionResponse()
     err = c.Send(request, response)
     return
@@ -2539,6 +2685,7 @@ func NewTurnOffStandaloneGatewayRequest() (request *TurnOffStandaloneGatewayRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "TurnOffStandaloneGateway")
+    
     
     return
 }
@@ -2566,6 +2713,7 @@ func (c *Client) TurnOffStandaloneGateway(request *TurnOffStandaloneGatewayReque
     if request == nil {
         request = NewTurnOffStandaloneGatewayRequest()
     }
+    
     response = NewTurnOffStandaloneGatewayResponse()
     err = c.Send(request, response)
     return
@@ -2576,6 +2724,7 @@ func NewTurnOnStandaloneGatewayRequest() (request *TurnOnStandaloneGatewayReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tcb", APIVersion, "TurnOnStandaloneGateway")
+    
     
     return
 }
@@ -2602,6 +2751,7 @@ func (c *Client) TurnOnStandaloneGateway(request *TurnOnStandaloneGatewayRequest
     if request == nil {
         request = NewTurnOnStandaloneGatewayRequest()
     }
+    
     response = NewTurnOnStandaloneGatewayResponse()
     err = c.Send(request, response)
     return

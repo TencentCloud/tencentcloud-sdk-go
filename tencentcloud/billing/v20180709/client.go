@@ -49,6 +49,7 @@ func NewDescribeAccountBalanceRequest() (request *DescribeAccountBalanceRequest)
     }
     request.Init().WithApiInfo("billing", APIVersion, "DescribeAccountBalance")
     
+    
     return
 }
 
@@ -72,6 +73,7 @@ func (c *Client) DescribeAccountBalance(request *DescribeAccountBalanceRequest) 
     if request == nil {
         request = NewDescribeAccountBalanceRequest()
     }
+    
     response = NewDescribeAccountBalanceResponse()
     err = c.Send(request, response)
     return
@@ -82,6 +84,7 @@ func NewDescribeBillDetailRequest() (request *DescribeBillDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("billing", APIVersion, "DescribeBillDetail")
+    
     
     return
 }
@@ -106,6 +109,7 @@ func (c *Client) DescribeBillDetail(request *DescribeBillDetailRequest) (respons
     if request == nil {
         request = NewDescribeBillDetailRequest()
     }
+    
     response = NewDescribeBillDetailResponse()
     err = c.Send(request, response)
     return
@@ -116,6 +120,7 @@ func NewDescribeBillListRequest() (request *DescribeBillListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("billing", APIVersion, "DescribeBillList")
+    
     
     return
 }
@@ -139,6 +144,7 @@ func (c *Client) DescribeBillList(request *DescribeBillListRequest) (response *D
     if request == nil {
         request = NewDescribeBillListRequest()
     }
+    
     response = NewDescribeBillListResponse()
     err = c.Send(request, response)
     return
@@ -149,6 +155,7 @@ func NewDescribeBillResourceSummaryRequest() (request *DescribeBillResourceSumma
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("billing", APIVersion, "DescribeBillResourceSummary")
+    
     
     return
 }
@@ -170,6 +177,7 @@ func (c *Client) DescribeBillResourceSummary(request *DescribeBillResourceSummar
     if request == nil {
         request = NewDescribeBillResourceSummaryRequest()
     }
+    
     response = NewDescribeBillResourceSummaryResponse()
     err = c.Send(request, response)
     return
@@ -180,6 +188,7 @@ func NewDescribeBillSummaryByPayModeRequest() (request *DescribeBillSummaryByPay
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("billing", APIVersion, "DescribeBillSummaryByPayMode")
+    
     
     return
 }
@@ -203,6 +212,7 @@ func (c *Client) DescribeBillSummaryByPayMode(request *DescribeBillSummaryByPayM
     if request == nil {
         request = NewDescribeBillSummaryByPayModeRequest()
     }
+    
     response = NewDescribeBillSummaryByPayModeResponse()
     err = c.Send(request, response)
     return
@@ -213,6 +223,7 @@ func NewDescribeBillSummaryByProductRequest() (request *DescribeBillSummaryByPro
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("billing", APIVersion, "DescribeBillSummaryByProduct")
+    
     
     return
 }
@@ -237,6 +248,7 @@ func (c *Client) DescribeBillSummaryByProduct(request *DescribeBillSummaryByProd
     if request == nil {
         request = NewDescribeBillSummaryByProductRequest()
     }
+    
     response = NewDescribeBillSummaryByProductResponse()
     err = c.Send(request, response)
     return
@@ -247,6 +259,7 @@ func NewDescribeBillSummaryByProjectRequest() (request *DescribeBillSummaryByPro
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("billing", APIVersion, "DescribeBillSummaryByProject")
+    
     
     return
 }
@@ -270,6 +283,7 @@ func (c *Client) DescribeBillSummaryByProject(request *DescribeBillSummaryByProj
     if request == nil {
         request = NewDescribeBillSummaryByProjectRequest()
     }
+    
     response = NewDescribeBillSummaryByProjectResponse()
     err = c.Send(request, response)
     return
@@ -280,6 +294,7 @@ func NewDescribeBillSummaryByRegionRequest() (request *DescribeBillSummaryByRegi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("billing", APIVersion, "DescribeBillSummaryByRegion")
+    
     
     return
 }
@@ -303,6 +318,7 @@ func (c *Client) DescribeBillSummaryByRegion(request *DescribeBillSummaryByRegio
     if request == nil {
         request = NewDescribeBillSummaryByRegionRequest()
     }
+    
     response = NewDescribeBillSummaryByRegionResponse()
     err = c.Send(request, response)
     return
@@ -313,6 +329,7 @@ func NewDescribeBillSummaryByTagRequest() (request *DescribeBillSummaryByTagRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("billing", APIVersion, "DescribeBillSummaryByTag")
+    
     
     return
 }
@@ -337,6 +354,7 @@ func (c *Client) DescribeBillSummaryByTag(request *DescribeBillSummaryByTagReque
     if request == nil {
         request = NewDescribeBillSummaryByTagRequest()
     }
+    
     response = NewDescribeBillSummaryByTagResponse()
     err = c.Send(request, response)
     return
@@ -347,6 +365,7 @@ func NewDescribeCostDetailRequest() (request *DescribeCostDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("billing", APIVersion, "DescribeCostDetail")
+    
     
     return
 }
@@ -371,6 +390,7 @@ func (c *Client) DescribeCostDetail(request *DescribeCostDetailRequest) (respons
     if request == nil {
         request = NewDescribeCostDetailRequest()
     }
+    
     response = NewDescribeCostDetailResponse()
     err = c.Send(request, response)
     return
@@ -381,6 +401,7 @@ func NewDescribeCostSummaryByProductRequest() (request *DescribeCostSummaryByPro
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("billing", APIVersion, "DescribeCostSummaryByProduct")
+    
     
     return
 }
@@ -405,6 +426,7 @@ func (c *Client) DescribeCostSummaryByProduct(request *DescribeCostSummaryByProd
     if request == nil {
         request = NewDescribeCostSummaryByProductRequest()
     }
+    
     response = NewDescribeCostSummaryByProductResponse()
     err = c.Send(request, response)
     return
@@ -415,6 +437,7 @@ func NewDescribeCostSummaryByProjectRequest() (request *DescribeCostSummaryByPro
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("billing", APIVersion, "DescribeCostSummaryByProject")
+    
     
     return
 }
@@ -439,6 +462,7 @@ func (c *Client) DescribeCostSummaryByProject(request *DescribeCostSummaryByProj
     if request == nil {
         request = NewDescribeCostSummaryByProjectRequest()
     }
+    
     response = NewDescribeCostSummaryByProjectResponse()
     err = c.Send(request, response)
     return
@@ -449,6 +473,7 @@ func NewDescribeCostSummaryByRegionRequest() (request *DescribeCostSummaryByRegi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("billing", APIVersion, "DescribeCostSummaryByRegion")
+    
     
     return
 }
@@ -473,6 +498,7 @@ func (c *Client) DescribeCostSummaryByRegion(request *DescribeCostSummaryByRegio
     if request == nil {
         request = NewDescribeCostSummaryByRegionRequest()
     }
+    
     response = NewDescribeCostSummaryByRegionResponse()
     err = c.Send(request, response)
     return
@@ -483,6 +509,7 @@ func NewDescribeCostSummaryByResourceRequest() (request *DescribeCostSummaryByRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("billing", APIVersion, "DescribeCostSummaryByResource")
+    
     
     return
 }
@@ -507,6 +534,7 @@ func (c *Client) DescribeCostSummaryByResource(request *DescribeCostSummaryByRes
     if request == nil {
         request = NewDescribeCostSummaryByResourceRequest()
     }
+    
     response = NewDescribeCostSummaryByResourceResponse()
     err = c.Send(request, response)
     return
@@ -517,6 +545,7 @@ func NewDescribeDealsByCondRequest() (request *DescribeDealsByCondRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("billing", APIVersion, "DescribeDealsByCond")
+    
     
     return
 }
@@ -537,6 +566,7 @@ func (c *Client) DescribeDealsByCond(request *DescribeDealsByCondRequest) (respo
     if request == nil {
         request = NewDescribeDealsByCondRequest()
     }
+    
     response = NewDescribeDealsByCondResponse()
     err = c.Send(request, response)
     return
@@ -547,6 +577,7 @@ func NewDescribeDosageCosDetailByDateRequest() (request *DescribeDosageCosDetail
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("billing", APIVersion, "DescribeDosageCosDetailByDate")
+    
     
     return
 }
@@ -567,6 +598,7 @@ func (c *Client) DescribeDosageCosDetailByDate(request *DescribeDosageCosDetailB
     if request == nil {
         request = NewDescribeDosageCosDetailByDateRequest()
     }
+    
     response = NewDescribeDosageCosDetailByDateResponse()
     err = c.Send(request, response)
     return
@@ -577,6 +609,7 @@ func NewDescribeDosageDetailByDateRequest() (request *DescribeDosageDetailByDate
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("billing", APIVersion, "DescribeDosageDetailByDate")
+    
     
     return
 }
@@ -597,6 +630,7 @@ func (c *Client) DescribeDosageDetailByDate(request *DescribeDosageDetailByDateR
     if request == nil {
         request = NewDescribeDosageDetailByDateRequest()
     }
+    
     response = NewDescribeDosageDetailByDateResponse()
     err = c.Send(request, response)
     return
@@ -607,6 +641,7 @@ func NewPayDealsRequest() (request *PayDealsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("billing", APIVersion, "PayDeals")
+    
     
     return
 }
@@ -640,6 +675,7 @@ func (c *Client) PayDeals(request *PayDealsRequest) (response *PayDealsResponse,
     if request == nil {
         request = NewPayDealsRequest()
     }
+    
     response = NewPayDealsResponse()
     err = c.Send(request, response)
     return

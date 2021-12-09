@@ -49,6 +49,7 @@ func NewMarketingValueJudgementRequest() (request *MarketingValueJudgementReques
     }
     request.Init().WithApiInfo("mvj", APIVersion, "MarketingValueJudgement")
     
+    
     return
 }
 
@@ -76,6 +77,7 @@ func (c *Client) MarketingValueJudgement(request *MarketingValueJudgementRequest
     if request == nil {
         request = NewMarketingValueJudgementRequest()
     }
+    
     response = NewMarketingValueJudgementResponse()
     err = c.Send(request, response)
     return

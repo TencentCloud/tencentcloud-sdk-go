@@ -49,6 +49,7 @@ func NewDetectFraudKOLRequest() (request *DetectFraudKOLRequest) {
     }
     request.Init().WithApiInfo("taf", APIVersion, "DetectFraudKOL")
     
+    
     return
 }
 
@@ -101,6 +102,7 @@ func (c *Client) DetectFraudKOL(request *DetectFraudKOLRequest) (response *Detec
     if request == nil {
         request = NewDetectFraudKOLRequest()
     }
+    
     response = NewDetectFraudKOLResponse()
     err = c.Send(request, response)
     return
@@ -111,6 +113,7 @@ func NewEnhanceTaDegreeRequest() (request *EnhanceTaDegreeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("taf", APIVersion, "EnhanceTaDegree")
+    
     
     return
 }
@@ -164,6 +167,7 @@ func (c *Client) EnhanceTaDegree(request *EnhanceTaDegreeRequest) (response *Enh
     if request == nil {
         request = NewEnhanceTaDegreeRequest()
     }
+    
     response = NewEnhanceTaDegreeResponse()
     err = c.Send(request, response)
     return
@@ -174,6 +178,7 @@ func NewRecognizeCustomizedAudienceRequest() (request *RecognizeCustomizedAudien
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("taf", APIVersion, "RecognizeCustomizedAudience")
+    
     
     return
 }
@@ -227,6 +232,7 @@ func (c *Client) RecognizeCustomizedAudience(request *RecognizeCustomizedAudienc
     if request == nil {
         request = NewRecognizeCustomizedAudienceRequest()
     }
+    
     response = NewRecognizeCustomizedAudienceResponse()
     err = c.Send(request, response)
     return
@@ -237,6 +243,7 @@ func NewRecognizeEffectiveFlowRequest() (request *RecognizeEffectiveFlowRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("taf", APIVersion, "RecognizeEffectiveFlow")
+    
     
     return
 }
@@ -278,6 +285,7 @@ func (c *Client) RecognizeEffectiveFlow(request *RecognizeEffectiveFlowRequest) 
     if request == nil {
         request = NewRecognizeEffectiveFlowRequest()
     }
+    
     response = NewRecognizeEffectiveFlowResponse()
     err = c.Send(request, response)
     return
@@ -288,6 +296,7 @@ func NewRecognizePreciseTargetAudienceRequest() (request *RecognizePreciseTarget
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("taf", APIVersion, "RecognizePreciseTargetAudience")
+    
     
     return
 }
@@ -341,6 +350,7 @@ func (c *Client) RecognizePreciseTargetAudience(request *RecognizePreciseTargetA
     if request == nil {
         request = NewRecognizePreciseTargetAudienceRequest()
     }
+    
     response = NewRecognizePreciseTargetAudienceResponse()
     err = c.Send(request, response)
     return
@@ -351,6 +361,7 @@ func NewRecognizeTargetAudienceRequest() (request *RecognizeTargetAudienceReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("taf", APIVersion, "RecognizeTargetAudience")
+    
     
     return
 }
@@ -422,6 +433,7 @@ func (c *Client) RecognizeTargetAudience(request *RecognizeTargetAudienceRequest
     if request == nil {
         request = NewRecognizeTargetAudienceRequest()
     }
+    
     response = NewRecognizeTargetAudienceResponse()
     err = c.Send(request, response)
     return
@@ -432,6 +444,7 @@ func NewSendTrafficSecuritySmsMessageRequest() (request *SendTrafficSecuritySmsM
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("taf", APIVersion, "SendTrafficSecuritySmsMessage")
+    
     
     return
 }
@@ -485,6 +498,7 @@ func (c *Client) SendTrafficSecuritySmsMessage(request *SendTrafficSecuritySmsMe
     if request == nil {
         request = NewSendTrafficSecuritySmsMessageRequest()
     }
+    
     response = NewSendTrafficSecuritySmsMessageResponse()
     err = c.Send(request, response)
     return

@@ -49,6 +49,7 @@ func NewDeregisterMigrationTaskRequest() (request *DeregisterMigrationTaskReques
     }
     request.Init().WithApiInfo("msp", APIVersion, "DeregisterMigrationTask")
     
+    
     return
 }
 
@@ -69,6 +70,7 @@ func (c *Client) DeregisterMigrationTask(request *DeregisterMigrationTaskRequest
     if request == nil {
         request = NewDeregisterMigrationTaskRequest()
     }
+    
     response = NewDeregisterMigrationTaskResponse()
     err = c.Send(request, response)
     return
@@ -79,6 +81,7 @@ func NewDescribeMigrationTaskRequest() (request *DescribeMigrationTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("msp", APIVersion, "DescribeMigrationTask")
+    
     
     return
 }
@@ -99,6 +102,7 @@ func (c *Client) DescribeMigrationTask(request *DescribeMigrationTaskRequest) (r
     if request == nil {
         request = NewDescribeMigrationTaskRequest()
     }
+    
     response = NewDescribeMigrationTaskResponse()
     err = c.Send(request, response)
     return
@@ -109,6 +113,7 @@ func NewListMigrationProjectRequest() (request *ListMigrationProjectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("msp", APIVersion, "ListMigrationProject")
+    
     
     return
 }
@@ -129,6 +134,7 @@ func (c *Client) ListMigrationProject(request *ListMigrationProjectRequest) (res
     if request == nil {
         request = NewListMigrationProjectRequest()
     }
+    
     response = NewListMigrationProjectResponse()
     err = c.Send(request, response)
     return
@@ -139,6 +145,7 @@ func NewListMigrationTaskRequest() (request *ListMigrationTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("msp", APIVersion, "ListMigrationTask")
+    
     
     return
 }
@@ -159,6 +166,7 @@ func (c *Client) ListMigrationTask(request *ListMigrationTaskRequest) (response 
     if request == nil {
         request = NewListMigrationTaskRequest()
     }
+    
     response = NewListMigrationTaskResponse()
     err = c.Send(request, response)
     return
@@ -169,6 +177,7 @@ func NewModifyMigrationTaskBelongToProjectRequest() (request *ModifyMigrationTas
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("msp", APIVersion, "ModifyMigrationTaskBelongToProject")
+    
     
     return
 }
@@ -190,6 +199,7 @@ func (c *Client) ModifyMigrationTaskBelongToProject(request *ModifyMigrationTask
     if request == nil {
         request = NewModifyMigrationTaskBelongToProjectRequest()
     }
+    
     response = NewModifyMigrationTaskBelongToProjectResponse()
     err = c.Send(request, response)
     return
@@ -200,6 +210,7 @@ func NewModifyMigrationTaskStatusRequest() (request *ModifyMigrationTaskStatusRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("msp", APIVersion, "ModifyMigrationTaskStatus")
+    
     
     return
 }
@@ -220,6 +231,7 @@ func (c *Client) ModifyMigrationTaskStatus(request *ModifyMigrationTaskStatusReq
     if request == nil {
         request = NewModifyMigrationTaskStatusRequest()
     }
+    
     response = NewModifyMigrationTaskStatusResponse()
     err = c.Send(request, response)
     return
@@ -230,6 +242,7 @@ func NewRegisterMigrationTaskRequest() (request *RegisterMigrationTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("msp", APIVersion, "RegisterMigrationTask")
+    
     
     return
 }
@@ -251,6 +264,7 @@ func (c *Client) RegisterMigrationTask(request *RegisterMigrationTaskRequest) (r
     if request == nil {
         request = NewRegisterMigrationTaskRequest()
     }
+    
     response = NewRegisterMigrationTaskResponse()
     err = c.Send(request, response)
     return

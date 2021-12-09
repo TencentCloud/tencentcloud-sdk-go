@@ -49,6 +49,7 @@ func NewBatchCreateAclRequest() (request *BatchCreateAclRequest) {
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "BatchCreateAcl")
     
+    
     return
 }
 
@@ -69,6 +70,7 @@ func (c *Client) BatchCreateAcl(request *BatchCreateAclRequest) (response *Batch
     if request == nil {
         request = NewBatchCreateAclRequest()
     }
+    
     response = NewBatchCreateAclResponse()
     err = c.Send(request, response)
     return
@@ -79,6 +81,7 @@ func NewCreateAclRequest() (request *CreateAclRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "CreateAcl")
+    
     
     return
 }
@@ -111,6 +114,7 @@ func (c *Client) CreateAcl(request *CreateAclRequest) (response *CreateAclRespon
     if request == nil {
         request = NewCreateAclRequest()
     }
+    
     response = NewCreateAclResponse()
     err = c.Send(request, response)
     return
@@ -121,6 +125,7 @@ func NewCreateInstancePreRequest() (request *CreateInstancePreRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "CreateInstancePre")
+    
     
     return
 }
@@ -153,6 +158,7 @@ func (c *Client) CreateInstancePre(request *CreateInstancePreRequest) (response 
     if request == nil {
         request = NewCreateInstancePreRequest()
     }
+    
     response = NewCreateInstancePreResponse()
     err = c.Send(request, response)
     return
@@ -163,6 +169,7 @@ func NewCreatePartitionRequest() (request *CreatePartitionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "CreatePartition")
+    
     
     return
 }
@@ -195,6 +202,7 @@ func (c *Client) CreatePartition(request *CreatePartitionRequest) (response *Cre
     if request == nil {
         request = NewCreatePartitionRequest()
     }
+    
     response = NewCreatePartitionResponse()
     err = c.Send(request, response)
     return
@@ -205,6 +213,7 @@ func NewCreateTopicRequest() (request *CreateTopicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "CreateTopic")
+    
     
     return
 }
@@ -237,6 +246,7 @@ func (c *Client) CreateTopic(request *CreateTopicRequest) (response *CreateTopic
     if request == nil {
         request = NewCreateTopicRequest()
     }
+    
     response = NewCreateTopicResponse()
     err = c.Send(request, response)
     return
@@ -247,6 +257,7 @@ func NewCreateTopicIpWhiteListRequest() (request *CreateTopicIpWhiteListRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "CreateTopicIpWhiteList")
+    
     
     return
 }
@@ -279,6 +290,7 @@ func (c *Client) CreateTopicIpWhiteList(request *CreateTopicIpWhiteListRequest) 
     if request == nil {
         request = NewCreateTopicIpWhiteListRequest()
     }
+    
     response = NewCreateTopicIpWhiteListResponse()
     err = c.Send(request, response)
     return
@@ -289,6 +301,7 @@ func NewCreateUserRequest() (request *CreateUserRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "CreateUser")
+    
     
     return
 }
@@ -321,6 +334,7 @@ func (c *Client) CreateUser(request *CreateUserRequest) (response *CreateUserRes
     if request == nil {
         request = NewCreateUserRequest()
     }
+    
     response = NewCreateUserResponse()
     err = c.Send(request, response)
     return
@@ -331,6 +345,7 @@ func NewDeleteAclRequest() (request *DeleteAclRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "DeleteAcl")
+    
     
     return
 }
@@ -363,6 +378,7 @@ func (c *Client) DeleteAcl(request *DeleteAclRequest) (response *DeleteAclRespon
     if request == nil {
         request = NewDeleteAclRequest()
     }
+    
     response = NewDeleteAclResponse()
     err = c.Send(request, response)
     return
@@ -373,6 +389,7 @@ func NewDeleteAclRuleRequest() (request *DeleteAclRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "DeleteAclRule")
+    
     
     return
 }
@@ -407,6 +424,7 @@ func (c *Client) DeleteAclRule(request *DeleteAclRuleRequest) (response *DeleteA
     if request == nil {
         request = NewDeleteAclRuleRequest()
     }
+    
     response = NewDeleteAclRuleResponse()
     err = c.Send(request, response)
     return
@@ -417,6 +435,7 @@ func NewDeleteRouteTriggerTimeRequest() (request *DeleteRouteTriggerTimeRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "DeleteRouteTriggerTime")
+    
     
     return
 }
@@ -441,6 +460,7 @@ func (c *Client) DeleteRouteTriggerTime(request *DeleteRouteTriggerTimeRequest) 
     if request == nil {
         request = NewDeleteRouteTriggerTimeRequest()
     }
+    
     response = NewDeleteRouteTriggerTimeResponse()
     err = c.Send(request, response)
     return
@@ -451,6 +471,7 @@ func NewDeleteTopicRequest() (request *DeleteTopicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "DeleteTopic")
+    
     
     return
 }
@@ -484,6 +505,7 @@ func (c *Client) DeleteTopic(request *DeleteTopicRequest) (response *DeleteTopic
     if request == nil {
         request = NewDeleteTopicRequest()
     }
+    
     response = NewDeleteTopicResponse()
     err = c.Send(request, response)
     return
@@ -494,6 +516,7 @@ func NewDeleteTopicIpWhiteListRequest() (request *DeleteTopicIpWhiteListRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "DeleteTopicIpWhiteList")
+    
     
     return
 }
@@ -526,6 +549,7 @@ func (c *Client) DeleteTopicIpWhiteList(request *DeleteTopicIpWhiteListRequest) 
     if request == nil {
         request = NewDeleteTopicIpWhiteListRequest()
     }
+    
     response = NewDeleteTopicIpWhiteListResponse()
     err = c.Send(request, response)
     return
@@ -536,6 +560,7 @@ func NewDeleteUserRequest() (request *DeleteUserRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "DeleteUser")
+    
     
     return
 }
@@ -568,6 +593,7 @@ func (c *Client) DeleteUser(request *DeleteUserRequest) (response *DeleteUserRes
     if request == nil {
         request = NewDeleteUserRequest()
     }
+    
     response = NewDeleteUserResponse()
     err = c.Send(request, response)
     return
@@ -578,6 +604,7 @@ func NewDescribeACLRequest() (request *DescribeACLRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeACL")
+    
     
     return
 }
@@ -610,6 +637,7 @@ func (c *Client) DescribeACL(request *DescribeACLRequest) (response *DescribeACL
     if request == nil {
         request = NewDescribeACLRequest()
     }
+    
     response = NewDescribeACLResponse()
     err = c.Send(request, response)
     return
@@ -620,6 +648,7 @@ func NewDescribeAppInfoRequest() (request *DescribeAppInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeAppInfo")
+    
     
     return
 }
@@ -652,6 +681,7 @@ func (c *Client) DescribeAppInfo(request *DescribeAppInfoRequest) (response *Des
     if request == nil {
         request = NewDescribeAppInfoRequest()
     }
+    
     response = NewDescribeAppInfoResponse()
     err = c.Send(request, response)
     return
@@ -662,6 +692,7 @@ func NewDescribeCkafkaZoneRequest() (request *DescribeCkafkaZoneRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeCkafkaZone")
+    
     
     return
 }
@@ -694,6 +725,7 @@ func (c *Client) DescribeCkafkaZone(request *DescribeCkafkaZoneRequest) (respons
     if request == nil {
         request = NewDescribeCkafkaZoneRequest()
     }
+    
     response = NewDescribeCkafkaZoneResponse()
     err = c.Send(request, response)
     return
@@ -704,6 +736,7 @@ func NewDescribeConsumerGroupRequest() (request *DescribeConsumerGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeConsumerGroup")
+    
     
     return
 }
@@ -736,6 +769,7 @@ func (c *Client) DescribeConsumerGroup(request *DescribeConsumerGroupRequest) (r
     if request == nil {
         request = NewDescribeConsumerGroupRequest()
     }
+    
     response = NewDescribeConsumerGroupResponse()
     err = c.Send(request, response)
     return
@@ -746,6 +780,7 @@ func NewDescribeGroupRequest() (request *DescribeGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeGroup")
+    
     
     return
 }
@@ -778,6 +813,7 @@ func (c *Client) DescribeGroup(request *DescribeGroupRequest) (response *Describ
     if request == nil {
         request = NewDescribeGroupRequest()
     }
+    
     response = NewDescribeGroupResponse()
     err = c.Send(request, response)
     return
@@ -788,6 +824,7 @@ func NewDescribeGroupInfoRequest() (request *DescribeGroupInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeGroupInfo")
+    
     
     return
 }
@@ -820,6 +857,7 @@ func (c *Client) DescribeGroupInfo(request *DescribeGroupInfoRequest) (response 
     if request == nil {
         request = NewDescribeGroupInfoRequest()
     }
+    
     response = NewDescribeGroupInfoResponse()
     err = c.Send(request, response)
     return
@@ -830,6 +868,7 @@ func NewDescribeGroupOffsetsRequest() (request *DescribeGroupOffsetsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeGroupOffsets")
+    
     
     return
 }
@@ -862,6 +901,7 @@ func (c *Client) DescribeGroupOffsets(request *DescribeGroupOffsetsRequest) (res
     if request == nil {
         request = NewDescribeGroupOffsetsRequest()
     }
+    
     response = NewDescribeGroupOffsetsResponse()
     err = c.Send(request, response)
     return
@@ -872,6 +912,7 @@ func NewDescribeInstanceAttributesRequest() (request *DescribeInstanceAttributes
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeInstanceAttributes")
+    
     
     return
 }
@@ -904,6 +945,7 @@ func (c *Client) DescribeInstanceAttributes(request *DescribeInstanceAttributesR
     if request == nil {
         request = NewDescribeInstanceAttributesRequest()
     }
+    
     response = NewDescribeInstanceAttributesResponse()
     err = c.Send(request, response)
     return
@@ -914,6 +956,7 @@ func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeInstances")
+    
     
     return
 }
@@ -942,6 +985,7 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    
     response = NewDescribeInstancesResponse()
     err = c.Send(request, response)
     return
@@ -952,6 +996,7 @@ func NewDescribeInstancesDetailRequest() (request *DescribeInstancesDetailReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeInstancesDetail")
+    
     
     return
 }
@@ -984,6 +1029,7 @@ func (c *Client) DescribeInstancesDetail(request *DescribeInstancesDetailRequest
     if request == nil {
         request = NewDescribeInstancesDetailRequest()
     }
+    
     response = NewDescribeInstancesDetailResponse()
     err = c.Send(request, response)
     return
@@ -994,6 +1040,7 @@ func NewDescribeRegionRequest() (request *DescribeRegionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeRegion")
+    
     
     return
 }
@@ -1026,6 +1073,7 @@ func (c *Client) DescribeRegion(request *DescribeRegionRequest) (response *Descr
     if request == nil {
         request = NewDescribeRegionRequest()
     }
+    
     response = NewDescribeRegionResponse()
     err = c.Send(request, response)
     return
@@ -1036,6 +1084,7 @@ func NewDescribeRouteRequest() (request *DescribeRouteRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeRoute")
+    
     
     return
 }
@@ -1068,6 +1117,7 @@ func (c *Client) DescribeRoute(request *DescribeRouteRequest) (response *Describ
     if request == nil {
         request = NewDescribeRouteRequest()
     }
+    
     response = NewDescribeRouteResponse()
     err = c.Send(request, response)
     return
@@ -1078,6 +1128,7 @@ func NewDescribeTopicRequest() (request *DescribeTopicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeTopic")
+    
     
     return
 }
@@ -1112,6 +1163,7 @@ func (c *Client) DescribeTopic(request *DescribeTopicRequest) (response *Describ
     if request == nil {
         request = NewDescribeTopicRequest()
     }
+    
     response = NewDescribeTopicResponse()
     err = c.Send(request, response)
     return
@@ -1122,6 +1174,7 @@ func NewDescribeTopicAttributesRequest() (request *DescribeTopicAttributesReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeTopicAttributes")
+    
     
     return
 }
@@ -1154,6 +1207,7 @@ func (c *Client) DescribeTopicAttributes(request *DescribeTopicAttributesRequest
     if request == nil {
         request = NewDescribeTopicAttributesRequest()
     }
+    
     response = NewDescribeTopicAttributesResponse()
     err = c.Send(request, response)
     return
@@ -1164,6 +1218,7 @@ func NewDescribeTopicDetailRequest() (request *DescribeTopicDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeTopicDetail")
+    
     
     return
 }
@@ -1192,6 +1247,7 @@ func (c *Client) DescribeTopicDetail(request *DescribeTopicDetailRequest) (respo
     if request == nil {
         request = NewDescribeTopicDetailRequest()
     }
+    
     response = NewDescribeTopicDetailResponse()
     err = c.Send(request, response)
     return
@@ -1202,6 +1258,7 @@ func NewDescribeTopicSubscribeGroupRequest() (request *DescribeTopicSubscribeGro
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeTopicSubscribeGroup")
+    
     
     return
 }
@@ -1240,6 +1297,7 @@ func (c *Client) DescribeTopicSubscribeGroup(request *DescribeTopicSubscribeGrou
     if request == nil {
         request = NewDescribeTopicSubscribeGroupRequest()
     }
+    
     response = NewDescribeTopicSubscribeGroupResponse()
     err = c.Send(request, response)
     return
@@ -1250,6 +1308,7 @@ func NewDescribeTopicSyncReplicaRequest() (request *DescribeTopicSyncReplicaRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeTopicSyncReplica")
+    
     
     return
 }
@@ -1273,6 +1332,7 @@ func (c *Client) DescribeTopicSyncReplica(request *DescribeTopicSyncReplicaReque
     if request == nil {
         request = NewDescribeTopicSyncReplicaRequest()
     }
+    
     response = NewDescribeTopicSyncReplicaResponse()
     err = c.Send(request, response)
     return
@@ -1283,6 +1343,7 @@ func NewDescribeUserRequest() (request *DescribeUserRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeUser")
+    
     
     return
 }
@@ -1315,6 +1376,7 @@ func (c *Client) DescribeUser(request *DescribeUserRequest) (response *DescribeU
     if request == nil {
         request = NewDescribeUserRequest()
     }
+    
     response = NewDescribeUserResponse()
     err = c.Send(request, response)
     return
@@ -1325,6 +1387,7 @@ func NewFetchMessageByOffsetRequest() (request *FetchMessageByOffsetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "FetchMessageByOffset")
+    
     
     return
 }
@@ -1345,6 +1408,7 @@ func (c *Client) FetchMessageByOffset(request *FetchMessageByOffsetRequest) (res
     if request == nil {
         request = NewFetchMessageByOffsetRequest()
     }
+    
     response = NewFetchMessageByOffsetResponse()
     err = c.Send(request, response)
     return
@@ -1355,6 +1419,7 @@ func NewModifyGroupOffsetsRequest() (request *ModifyGroupOffsetsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "ModifyGroupOffsets")
+    
     
     return
 }
@@ -1387,6 +1452,7 @@ func (c *Client) ModifyGroupOffsets(request *ModifyGroupOffsetsRequest) (respons
     if request == nil {
         request = NewModifyGroupOffsetsRequest()
     }
+    
     response = NewModifyGroupOffsetsResponse()
     err = c.Send(request, response)
     return
@@ -1397,6 +1463,7 @@ func NewModifyInstanceAttributesRequest() (request *ModifyInstanceAttributesRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "ModifyInstanceAttributes")
+    
     
     return
 }
@@ -1429,6 +1496,7 @@ func (c *Client) ModifyInstanceAttributes(request *ModifyInstanceAttributesReque
     if request == nil {
         request = NewModifyInstanceAttributesRequest()
     }
+    
     response = NewModifyInstanceAttributesResponse()
     err = c.Send(request, response)
     return
@@ -1439,6 +1507,7 @@ func NewModifyPasswordRequest() (request *ModifyPasswordRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "ModifyPassword")
+    
     
     return
 }
@@ -1471,6 +1540,7 @@ func (c *Client) ModifyPassword(request *ModifyPasswordRequest) (response *Modif
     if request == nil {
         request = NewModifyPasswordRequest()
     }
+    
     response = NewModifyPasswordResponse()
     err = c.Send(request, response)
     return
@@ -1481,6 +1551,7 @@ func NewModifyTopicAttributesRequest() (request *ModifyTopicAttributesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ckafka", APIVersion, "ModifyTopicAttributes")
+    
     
     return
 }
@@ -1513,6 +1584,7 @@ func (c *Client) ModifyTopicAttributes(request *ModifyTopicAttributesRequest) (r
     if request == nil {
         request = NewModifyTopicAttributesRequest()
     }
+    
     response = NewModifyTopicAttributesResponse()
     err = c.Send(request, response)
     return

@@ -49,6 +49,7 @@ func NewCreateAudioDepositRequest() (request *CreateAudioDepositRequest) {
     }
     request.Init().WithApiInfo("btoe", APIVersion, "CreateAudioDeposit")
     
+    
     return
 }
 
@@ -81,6 +82,7 @@ func (c *Client) CreateAudioDeposit(request *CreateAudioDepositRequest) (respons
     if request == nil {
         request = NewCreateAudioDepositRequest()
     }
+    
     response = NewCreateAudioDepositResponse()
     err = c.Send(request, response)
     return
@@ -91,6 +93,7 @@ func NewCreateDataDepositRequest() (request *CreateDataDepositRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("btoe", APIVersion, "CreateDataDeposit")
+    
     
     return
 }
@@ -126,6 +129,7 @@ func (c *Client) CreateDataDeposit(request *CreateDataDepositRequest) (response 
     if request == nil {
         request = NewCreateDataDepositRequest()
     }
+    
     response = NewCreateDataDepositResponse()
     err = c.Send(request, response)
     return
@@ -136,6 +140,7 @@ func NewCreateDocDepositRequest() (request *CreateDocDepositRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("btoe", APIVersion, "CreateDocDeposit")
+    
     
     return
 }
@@ -171,6 +176,7 @@ func (c *Client) CreateDocDeposit(request *CreateDocDepositRequest) (response *C
     if request == nil {
         request = NewCreateDocDepositRequest()
     }
+    
     response = NewCreateDocDepositResponse()
     err = c.Send(request, response)
     return
@@ -181,6 +187,7 @@ func NewCreateHashDepositRequest() (request *CreateHashDepositRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("btoe", APIVersion, "CreateHashDeposit")
+    
     
     return
 }
@@ -211,6 +218,7 @@ func (c *Client) CreateHashDeposit(request *CreateHashDepositRequest) (response 
     if request == nil {
         request = NewCreateHashDepositRequest()
     }
+    
     response = NewCreateHashDepositResponse()
     err = c.Send(request, response)
     return
@@ -221,6 +229,7 @@ func NewCreateHashDepositNoCertRequest() (request *CreateHashDepositNoCertReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("btoe", APIVersion, "CreateHashDepositNoCert")
+    
     
     return
 }
@@ -250,6 +259,7 @@ func (c *Client) CreateHashDepositNoCert(request *CreateHashDepositNoCertRequest
     if request == nil {
         request = NewCreateHashDepositNoCertRequest()
     }
+    
     response = NewCreateHashDepositNoCertResponse()
     err = c.Send(request, response)
     return
@@ -260,6 +270,7 @@ func NewCreateHashDepositNoSealRequest() (request *CreateHashDepositNoSealReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("btoe", APIVersion, "CreateHashDepositNoSeal")
+    
     
     return
 }
@@ -289,6 +300,7 @@ func (c *Client) CreateHashDepositNoSeal(request *CreateHashDepositNoSealRequest
     if request == nil {
         request = NewCreateHashDepositNoSealRequest()
     }
+    
     response = NewCreateHashDepositNoSealResponse()
     err = c.Send(request, response)
     return
@@ -299,6 +311,7 @@ func NewCreateImageDepositRequest() (request *CreateImageDepositRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("btoe", APIVersion, "CreateImageDeposit")
+    
     
     return
 }
@@ -334,6 +347,7 @@ func (c *Client) CreateImageDeposit(request *CreateImageDepositRequest) (respons
     if request == nil {
         request = NewCreateImageDepositRequest()
     }
+    
     response = NewCreateImageDepositResponse()
     err = c.Send(request, response)
     return
@@ -344,6 +358,7 @@ func NewCreateVideoDepositRequest() (request *CreateVideoDepositRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("btoe", APIVersion, "CreateVideoDeposit")
+    
     
     return
 }
@@ -380,6 +395,7 @@ func (c *Client) CreateVideoDeposit(request *CreateVideoDepositRequest) (respons
     if request == nil {
         request = NewCreateVideoDepositRequest()
     }
+    
     response = NewCreateVideoDepositResponse()
     err = c.Send(request, response)
     return
@@ -390,6 +406,7 @@ func NewCreateWebpageDepositRequest() (request *CreateWebpageDepositRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("btoe", APIVersion, "CreateWebpageDeposit")
+    
     
     return
 }
@@ -421,6 +438,7 @@ func (c *Client) CreateWebpageDeposit(request *CreateWebpageDepositRequest) (res
     if request == nil {
         request = NewCreateWebpageDepositRequest()
     }
+    
     response = NewCreateWebpageDepositResponse()
     err = c.Send(request, response)
     return
@@ -431,6 +449,7 @@ func NewGetDepositCertRequest() (request *GetDepositCertRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("btoe", APIVersion, "GetDepositCert")
+    
     
     return
 }
@@ -460,6 +479,7 @@ func (c *Client) GetDepositCert(request *GetDepositCertRequest) (response *GetDe
     if request == nil {
         request = NewGetDepositCertRequest()
     }
+    
     response = NewGetDepositCertResponse()
     err = c.Send(request, response)
     return
@@ -470,6 +490,7 @@ func NewGetDepositFileRequest() (request *GetDepositFileRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("btoe", APIVersion, "GetDepositFile")
+    
     
     return
 }
@@ -513,6 +534,7 @@ func (c *Client) GetDepositFile(request *GetDepositFileRequest) (response *GetDe
     if request == nil {
         request = NewGetDepositFileRequest()
     }
+    
     response = NewGetDepositFileResponse()
     err = c.Send(request, response)
     return
@@ -523,6 +545,7 @@ func NewGetDepositInfoRequest() (request *GetDepositInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("btoe", APIVersion, "GetDepositInfo")
+    
     
     return
 }
@@ -557,6 +580,7 @@ func (c *Client) GetDepositInfo(request *GetDepositInfoRequest) (response *GetDe
     if request == nil {
         request = NewGetDepositInfoRequest()
     }
+    
     response = NewGetDepositInfoResponse()
     err = c.Send(request, response)
     return

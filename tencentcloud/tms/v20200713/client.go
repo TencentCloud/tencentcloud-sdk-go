@@ -49,6 +49,7 @@ func NewAccountTipoffAccessRequest() (request *AccountTipoffAccessRequest) {
     }
     request.Init().WithApiInfo("tms", APIVersion, "AccountTipoffAccess")
     
+    
     return
 }
 
@@ -79,6 +80,7 @@ func (c *Client) AccountTipoffAccess(request *AccountTipoffAccessRequest) (respo
     if request == nil {
         request = NewAccountTipoffAccessRequest()
     }
+    
     response = NewAccountTipoffAccessResponse()
     err = c.Send(request, response)
     return
@@ -89,6 +91,7 @@ func NewDescribeTextLibRequest() (request *DescribeTextLibRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tms", APIVersion, "DescribeTextLib")
+    
     
     return
 }
@@ -116,6 +119,7 @@ func (c *Client) DescribeTextLib(request *DescribeTextLibRequest) (response *Des
     if request == nil {
         request = NewDescribeTextLibRequest()
     }
+    
     response = NewDescribeTextLibResponse()
     err = c.Send(request, response)
     return
@@ -126,6 +130,7 @@ func NewDescribeTextStatRequest() (request *DescribeTextStatRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tms", APIVersion, "DescribeTextStat")
+    
     
     return
 }
@@ -149,6 +154,7 @@ func (c *Client) DescribeTextStat(request *DescribeTextStatRequest) (response *D
     if request == nil {
         request = NewDescribeTextStatRequest()
     }
+    
     response = NewDescribeTextStatResponse()
     err = c.Send(request, response)
     return
@@ -159,6 +165,7 @@ func NewTextModerationRequest() (request *TextModerationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tms", APIVersion, "TextModeration")
+    
     
     return
 }
@@ -184,6 +191,7 @@ func (c *Client) TextModeration(request *TextModerationRequest) (response *TextM
     if request == nil {
         request = NewTextModerationRequest()
     }
+    
     response = NewTextModerationResponse()
     err = c.Send(request, response)
     return

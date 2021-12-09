@@ -49,6 +49,7 @@ func NewCreateProductSecretRequest() (request *CreateProductSecretRequest) {
     }
     request.Init().WithApiInfo("ssm", APIVersion, "CreateProductSecret")
     
+    
     return
 }
 
@@ -94,6 +95,7 @@ func (c *Client) CreateProductSecret(request *CreateProductSecretRequest) (respo
     if request == nil {
         request = NewCreateProductSecretRequest()
     }
+    
     response = NewCreateProductSecretResponse()
     err = c.Send(request, response)
     return
@@ -104,6 +106,7 @@ func NewCreateSSHKeyPairSecretRequest() (request *CreateSSHKeyPairSecretRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssm", APIVersion, "CreateSSHKeyPairSecret")
+    
     
     return
 }
@@ -140,6 +143,7 @@ func (c *Client) CreateSSHKeyPairSecret(request *CreateSSHKeyPairSecretRequest) 
     if request == nil {
         request = NewCreateSSHKeyPairSecretRequest()
     }
+    
     response = NewCreateSSHKeyPairSecretResponse()
     err = c.Send(request, response)
     return
@@ -150,6 +154,7 @@ func NewCreateSecretRequest() (request *CreateSecretRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssm", APIVersion, "CreateSecret")
+    
     
     return
 }
@@ -178,6 +183,7 @@ func (c *Client) CreateSecret(request *CreateSecretRequest) (response *CreateSec
     if request == nil {
         request = NewCreateSecretRequest()
     }
+    
     response = NewCreateSecretResponse()
     err = c.Send(request, response)
     return
@@ -188,6 +194,7 @@ func NewDeleteSecretRequest() (request *DeleteSecretRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssm", APIVersion, "DeleteSecret")
+    
     
     return
 }
@@ -214,6 +221,7 @@ func (c *Client) DeleteSecret(request *DeleteSecretRequest) (response *DeleteSec
     if request == nil {
         request = NewDeleteSecretRequest()
     }
+    
     response = NewDeleteSecretResponse()
     err = c.Send(request, response)
     return
@@ -224,6 +232,7 @@ func NewDeleteSecretVersionRequest() (request *DeleteSecretVersionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssm", APIVersion, "DeleteSecretVersion")
+    
     
     return
 }
@@ -252,6 +261,7 @@ func (c *Client) DeleteSecretVersion(request *DeleteSecretVersionRequest) (respo
     if request == nil {
         request = NewDeleteSecretVersionRequest()
     }
+    
     response = NewDeleteSecretVersionResponse()
     err = c.Send(request, response)
     return
@@ -262,6 +272,7 @@ func NewDescribeAsyncRequestInfoRequest() (request *DescribeAsyncRequestInfoRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssm", APIVersion, "DescribeAsyncRequestInfo")
+    
     
     return
 }
@@ -310,6 +321,7 @@ func (c *Client) DescribeAsyncRequestInfo(request *DescribeAsyncRequestInfoReque
     if request == nil {
         request = NewDescribeAsyncRequestInfoRequest()
     }
+    
     response = NewDescribeAsyncRequestInfoResponse()
     err = c.Send(request, response)
     return
@@ -320,6 +332,7 @@ func NewDescribeRotationDetailRequest() (request *DescribeRotationDetailRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssm", APIVersion, "DescribeRotationDetail")
+    
     
     return
 }
@@ -370,6 +383,7 @@ func (c *Client) DescribeRotationDetail(request *DescribeRotationDetailRequest) 
     if request == nil {
         request = NewDescribeRotationDetailRequest()
     }
+    
     response = NewDescribeRotationDetailResponse()
     err = c.Send(request, response)
     return
@@ -380,6 +394,7 @@ func NewDescribeRotationHistoryRequest() (request *DescribeRotationHistoryReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssm", APIVersion, "DescribeRotationHistory")
+    
     
     return
 }
@@ -430,6 +445,7 @@ func (c *Client) DescribeRotationHistory(request *DescribeRotationHistoryRequest
     if request == nil {
         request = NewDescribeRotationHistoryRequest()
     }
+    
     response = NewDescribeRotationHistoryResponse()
     err = c.Send(request, response)
     return
@@ -440,6 +456,7 @@ func NewDescribeSecretRequest() (request *DescribeSecretRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssm", APIVersion, "DescribeSecret")
+    
     
     return
 }
@@ -465,6 +482,7 @@ func (c *Client) DescribeSecret(request *DescribeSecretRequest) (response *Descr
     if request == nil {
         request = NewDescribeSecretRequest()
     }
+    
     response = NewDescribeSecretResponse()
     err = c.Send(request, response)
     return
@@ -475,6 +493,7 @@ func NewDescribeSupportedProductsRequest() (request *DescribeSupportedProductsRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssm", APIVersion, "DescribeSupportedProducts")
+    
     
     return
 }
@@ -523,6 +542,7 @@ func (c *Client) DescribeSupportedProducts(request *DescribeSupportedProductsReq
     if request == nil {
         request = NewDescribeSupportedProductsRequest()
     }
+    
     response = NewDescribeSupportedProductsResponse()
     err = c.Send(request, response)
     return
@@ -533,6 +553,7 @@ func NewDisableSecretRequest() (request *DisableSecretRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssm", APIVersion, "DisableSecret")
+    
     
     return
 }
@@ -559,6 +580,7 @@ func (c *Client) DisableSecret(request *DisableSecretRequest) (response *Disable
     if request == nil {
         request = NewDisableSecretRequest()
     }
+    
     response = NewDisableSecretResponse()
     err = c.Send(request, response)
     return
@@ -569,6 +591,7 @@ func NewEnableSecretRequest() (request *EnableSecretRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssm", APIVersion, "EnableSecret")
+    
     
     return
 }
@@ -595,6 +618,7 @@ func (c *Client) EnableSecret(request *EnableSecretRequest) (response *EnableSec
     if request == nil {
         request = NewEnableSecretRequest()
     }
+    
     response = NewEnableSecretResponse()
     err = c.Send(request, response)
     return
@@ -605,6 +629,7 @@ func NewGetRegionsRequest() (request *GetRegionsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssm", APIVersion, "GetRegions")
+    
     
     return
 }
@@ -626,6 +651,7 @@ func (c *Client) GetRegions(request *GetRegionsRequest) (response *GetRegionsRes
     if request == nil {
         request = NewGetRegionsRequest()
     }
+    
     response = NewGetRegionsResponse()
     err = c.Send(request, response)
     return
@@ -636,6 +662,7 @@ func NewGetSSHKeyPairValueRequest() (request *GetSSHKeyPairValueRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssm", APIVersion, "GetSSHKeyPairValue")
+    
     
     return
 }
@@ -671,6 +698,7 @@ func (c *Client) GetSSHKeyPairValue(request *GetSSHKeyPairValueRequest) (respons
     if request == nil {
         request = NewGetSSHKeyPairValueRequest()
     }
+    
     response = NewGetSSHKeyPairValueResponse()
     err = c.Send(request, response)
     return
@@ -681,6 +709,7 @@ func NewGetSecretValueRequest() (request *GetSecretValueRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssm", APIVersion, "GetSecretValue")
+    
     
     return
 }
@@ -712,6 +741,7 @@ func (c *Client) GetSecretValue(request *GetSecretValueRequest) (response *GetSe
     if request == nil {
         request = NewGetSecretValueRequest()
     }
+    
     response = NewGetSecretValueResponse()
     err = c.Send(request, response)
     return
@@ -722,6 +752,7 @@ func NewGetServiceStatusRequest() (request *GetServiceStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssm", APIVersion, "GetServiceStatus")
+    
     
     return
 }
@@ -743,6 +774,7 @@ func (c *Client) GetServiceStatus(request *GetServiceStatusRequest) (response *G
     if request == nil {
         request = NewGetServiceStatusRequest()
     }
+    
     response = NewGetServiceStatusResponse()
     err = c.Send(request, response)
     return
@@ -753,6 +785,7 @@ func NewListSecretVersionIdsRequest() (request *ListSecretVersionIdsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssm", APIVersion, "ListSecretVersionIds")
+    
     
     return
 }
@@ -778,6 +811,7 @@ func (c *Client) ListSecretVersionIds(request *ListSecretVersionIdsRequest) (res
     if request == nil {
         request = NewListSecretVersionIdsRequest()
     }
+    
     response = NewListSecretVersionIdsResponse()
     err = c.Send(request, response)
     return
@@ -788,6 +822,7 @@ func NewListSecretsRequest() (request *ListSecretsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssm", APIVersion, "ListSecrets")
+    
     
     return
 }
@@ -811,6 +846,7 @@ func (c *Client) ListSecrets(request *ListSecretsRequest) (response *ListSecrets
     if request == nil {
         request = NewListSecretsRequest()
     }
+    
     response = NewListSecretsResponse()
     err = c.Send(request, response)
     return
@@ -821,6 +857,7 @@ func NewPutSecretValueRequest() (request *PutSecretValueRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssm", APIVersion, "PutSecretValue")
+    
     
     return
 }
@@ -852,6 +889,7 @@ func (c *Client) PutSecretValue(request *PutSecretValueRequest) (response *PutSe
     if request == nil {
         request = NewPutSecretValueRequest()
     }
+    
     response = NewPutSecretValueResponse()
     err = c.Send(request, response)
     return
@@ -862,6 +900,7 @@ func NewRestoreSecretRequest() (request *RestoreSecretRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssm", APIVersion, "RestoreSecret")
+    
     
     return
 }
@@ -887,6 +926,7 @@ func (c *Client) RestoreSecret(request *RestoreSecretRequest) (response *Restore
     if request == nil {
         request = NewRestoreSecretRequest()
     }
+    
     response = NewRestoreSecretResponse()
     err = c.Send(request, response)
     return
@@ -897,6 +937,7 @@ func NewRotateProductSecretRequest() (request *RotateProductSecretRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssm", APIVersion, "RotateProductSecret")
+    
     
     return
 }
@@ -945,6 +986,7 @@ func (c *Client) RotateProductSecret(request *RotateProductSecretRequest) (respo
     if request == nil {
         request = NewRotateProductSecretRequest()
     }
+    
     response = NewRotateProductSecretResponse()
     err = c.Send(request, response)
     return
@@ -955,6 +997,7 @@ func NewUpdateDescriptionRequest() (request *UpdateDescriptionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssm", APIVersion, "UpdateDescription")
+    
     
     return
 }
@@ -979,6 +1022,7 @@ func (c *Client) UpdateDescription(request *UpdateDescriptionRequest) (response 
     if request == nil {
         request = NewUpdateDescriptionRequest()
     }
+    
     response = NewUpdateDescriptionResponse()
     err = c.Send(request, response)
     return
@@ -989,6 +1033,7 @@ func NewUpdateRotationStatusRequest() (request *UpdateRotationStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssm", APIVersion, "UpdateRotationStatus")
+    
     
     return
 }
@@ -1043,6 +1088,7 @@ func (c *Client) UpdateRotationStatus(request *UpdateRotationStatusRequest) (res
     if request == nil {
         request = NewUpdateRotationStatusRequest()
     }
+    
     response = NewUpdateRotationStatusResponse()
     err = c.Send(request, response)
     return
@@ -1053,6 +1099,7 @@ func NewUpdateSecretRequest() (request *UpdateSecretRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssm", APIVersion, "UpdateSecret")
+    
     
     return
 }
@@ -1082,6 +1129,7 @@ func (c *Client) UpdateSecret(request *UpdateSecretRequest) (response *UpdateSec
     if request == nil {
         request = NewUpdateSecretRequest()
     }
+    
     response = NewUpdateSecretResponse()
     err = c.Send(request, response)
     return

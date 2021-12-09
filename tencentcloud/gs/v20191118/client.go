@@ -49,6 +49,7 @@ func NewCreateSessionRequest() (request *CreateSessionRequest) {
     }
     request.Init().WithApiInfo("gs", APIVersion, "CreateSession")
     
+    
     return
 }
 
@@ -79,6 +80,7 @@ func (c *Client) CreateSession(request *CreateSessionRequest) (response *CreateS
     if request == nil {
         request = NewCreateSessionRequest()
     }
+    
     response = NewCreateSessionResponse()
     err = c.Send(request, response)
     return
@@ -89,6 +91,7 @@ func NewDescribeInstancesCountRequest() (request *DescribeInstancesCountRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gs", APIVersion, "DescribeInstancesCount")
+    
     
     return
 }
@@ -111,6 +114,7 @@ func (c *Client) DescribeInstancesCount(request *DescribeInstancesCountRequest) 
     if request == nil {
         request = NewDescribeInstancesCountRequest()
     }
+    
     response = NewDescribeInstancesCountResponse()
     err = c.Send(request, response)
     return
@@ -121,6 +125,7 @@ func NewSaveGameArchiveRequest() (request *SaveGameArchiveRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gs", APIVersion, "SaveGameArchive")
+    
     
     return
 }
@@ -147,6 +152,7 @@ func (c *Client) SaveGameArchive(request *SaveGameArchiveRequest) (response *Sav
     if request == nil {
         request = NewSaveGameArchiveRequest()
     }
+    
     response = NewSaveGameArchiveResponse()
     err = c.Send(request, response)
     return
@@ -157,6 +163,7 @@ func NewStopGameRequest() (request *StopGameRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gs", APIVersion, "StopGame")
+    
     
     return
 }
@@ -179,6 +186,7 @@ func (c *Client) StopGame(request *StopGameRequest) (response *StopGameResponse,
     if request == nil {
         request = NewStopGameRequest()
     }
+    
     response = NewStopGameResponse()
     err = c.Send(request, response)
     return
@@ -189,6 +197,7 @@ func NewSwitchGameArchiveRequest() (request *SwitchGameArchiveRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gs", APIVersion, "SwitchGameArchive")
+    
     
     return
 }
@@ -215,6 +224,7 @@ func (c *Client) SwitchGameArchive(request *SwitchGameArchiveRequest) (response 
     if request == nil {
         request = NewSwitchGameArchiveRequest()
     }
+    
     response = NewSwitchGameArchiveResponse()
     err = c.Send(request, response)
     return
@@ -225,6 +235,7 @@ func NewTrylockWorkerRequest() (request *TrylockWorkerRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("gs", APIVersion, "TrylockWorker")
+    
     
     return
 }
@@ -251,6 +262,7 @@ func (c *Client) TrylockWorker(request *TrylockWorkerRequest) (response *Trylock
     if request == nil {
         request = NewTrylockWorkerRequest()
     }
+    
     response = NewTrylockWorkerResponse()
     err = c.Send(request, response)
     return

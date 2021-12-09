@@ -49,6 +49,7 @@ func NewDescribeStrategiesRequest() (request *DescribeStrategiesRequest) {
     }
     request.Init().WithApiInfo("advisor", APIVersion, "DescribeStrategies")
     
+    
     return
 }
 
@@ -71,6 +72,7 @@ func (c *Client) DescribeStrategies(request *DescribeStrategiesRequest) (respons
     if request == nil {
         request = NewDescribeStrategiesRequest()
     }
+    
     response = NewDescribeStrategiesResponse()
     err = c.Send(request, response)
     return
@@ -81,6 +83,7 @@ func NewDescribeTaskStrategyRisksRequest() (request *DescribeTaskStrategyRisksRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("advisor", APIVersion, "DescribeTaskStrategyRisks")
+    
     
     return
 }
@@ -107,6 +110,7 @@ func (c *Client) DescribeTaskStrategyRisks(request *DescribeTaskStrategyRisksReq
     if request == nil {
         request = NewDescribeTaskStrategyRisksRequest()
     }
+    
     response = NewDescribeTaskStrategyRisksResponse()
     err = c.Send(request, response)
     return

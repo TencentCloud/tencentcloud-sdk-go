@@ -49,6 +49,7 @@ func NewCreateWeappQRUrlRequest() (request *CreateWeappQRUrlRequest) {
     }
     request.Init().WithApiInfo("ba", APIVersion, "CreateWeappQRUrl")
     
+    
     return
 }
 
@@ -70,6 +71,7 @@ func (c *Client) CreateWeappQRUrl(request *CreateWeappQRUrlRequest) (response *C
     if request == nil {
         request = NewCreateWeappQRUrlRequest()
     }
+    
     response = NewCreateWeappQRUrlResponse()
     err = c.Send(request, response)
     return
@@ -80,6 +82,7 @@ func NewDescribeGetAuthInfoRequest() (request *DescribeGetAuthInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ba", APIVersion, "DescribeGetAuthInfo")
+    
     
     return
 }
@@ -101,6 +104,7 @@ func (c *Client) DescribeGetAuthInfo(request *DescribeGetAuthInfoRequest) (respo
     if request == nil {
         request = NewDescribeGetAuthInfoRequest()
     }
+    
     response = NewDescribeGetAuthInfoResponse()
     err = c.Send(request, response)
     return
@@ -111,6 +115,7 @@ func NewSyncIcpOrderWebInfoRequest() (request *SyncIcpOrderWebInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ba", APIVersion, "SyncIcpOrderWebInfo")
+    
     
     return
 }
@@ -134,6 +139,7 @@ func (c *Client) SyncIcpOrderWebInfo(request *SyncIcpOrderWebInfoRequest) (respo
     if request == nil {
         request = NewSyncIcpOrderWebInfoRequest()
     }
+    
     response = NewSyncIcpOrderWebInfoResponse()
     err = c.Send(request, response)
     return

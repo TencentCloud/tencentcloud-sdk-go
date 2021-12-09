@@ -49,6 +49,7 @@ func NewBankCard2EVerificationRequest() (request *BankCard2EVerificationRequest)
     }
     request.Init().WithApiInfo("faceid", APIVersion, "BankCard2EVerification")
     
+    
     return
 }
 
@@ -77,6 +78,7 @@ func (c *Client) BankCard2EVerification(request *BankCard2EVerificationRequest) 
     if request == nil {
         request = NewBankCard2EVerificationRequest()
     }
+    
     response = NewBankCard2EVerificationResponse()
     err = c.Send(request, response)
     return
@@ -87,6 +89,7 @@ func NewBankCard4EVerificationRequest() (request *BankCard4EVerificationRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("faceid", APIVersion, "BankCard4EVerification")
+    
     
     return
 }
@@ -116,6 +119,7 @@ func (c *Client) BankCard4EVerification(request *BankCard4EVerificationRequest) 
     if request == nil {
         request = NewBankCard4EVerificationRequest()
     }
+    
     response = NewBankCard4EVerificationResponse()
     err = c.Send(request, response)
     return
@@ -126,6 +130,7 @@ func NewBankCardVerificationRequest() (request *BankCardVerificationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("faceid", APIVersion, "BankCardVerification")
+    
     
     return
 }
@@ -155,6 +160,7 @@ func (c *Client) BankCardVerification(request *BankCardVerificationRequest) (res
     if request == nil {
         request = NewBankCardVerificationRequest()
     }
+    
     response = NewBankCardVerificationResponse()
     err = c.Send(request, response)
     return
@@ -165,6 +171,7 @@ func NewCheckBankCardInformationRequest() (request *CheckBankCardInformationRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("faceid", APIVersion, "CheckBankCardInformation")
+    
     
     return
 }
@@ -192,6 +199,7 @@ func (c *Client) CheckBankCardInformation(request *CheckBankCardInformationReque
     if request == nil {
         request = NewCheckBankCardInformationRequest()
     }
+    
     response = NewCheckBankCardInformationResponse()
     err = c.Send(request, response)
     return
@@ -202,6 +210,7 @@ func NewCheckEidTokenStatusRequest() (request *CheckEidTokenStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("faceid", APIVersion, "CheckEidTokenStatus")
+    
     
     return
 }
@@ -226,6 +235,7 @@ func (c *Client) CheckEidTokenStatus(request *CheckEidTokenStatusRequest) (respo
     if request == nil {
         request = NewCheckEidTokenStatusRequest()
     }
+    
     response = NewCheckEidTokenStatusResponse()
     err = c.Send(request, response)
     return
@@ -236,6 +246,7 @@ func NewCheckIdCardInformationRequest() (request *CheckIdCardInformationRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("faceid", APIVersion, "CheckIdCardInformation")
+    
     
     return
 }
@@ -287,6 +298,7 @@ func (c *Client) CheckIdCardInformation(request *CheckIdCardInformationRequest) 
     if request == nil {
         request = NewCheckIdCardInformationRequest()
     }
+    
     response = NewCheckIdCardInformationResponse()
     err = c.Send(request, response)
     return
@@ -297,6 +309,7 @@ func NewCheckIdNameDateRequest() (request *CheckIdNameDateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("faceid", APIVersion, "CheckIdNameDate")
+    
     
     return
 }
@@ -325,6 +338,7 @@ func (c *Client) CheckIdNameDate(request *CheckIdNameDateRequest) (response *Che
     if request == nil {
         request = NewCheckIdNameDateRequest()
     }
+    
     response = NewCheckIdNameDateResponse()
     err = c.Send(request, response)
     return
@@ -335,6 +349,7 @@ func NewCheckPhoneAndNameRequest() (request *CheckPhoneAndNameRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("faceid", APIVersion, "CheckPhoneAndName")
+    
     
     return
 }
@@ -362,6 +377,7 @@ func (c *Client) CheckPhoneAndName(request *CheckPhoneAndNameRequest) (response 
     if request == nil {
         request = NewCheckPhoneAndNameRequest()
     }
+    
     response = NewCheckPhoneAndNameResponse()
     err = c.Send(request, response)
     return
@@ -372,6 +388,7 @@ func NewDetectAuthRequest() (request *DetectAuthRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("faceid", APIVersion, "DetectAuth")
+    
     
     return
 }
@@ -402,6 +419,7 @@ func (c *Client) DetectAuth(request *DetectAuthRequest) (response *DetectAuthRes
     if request == nil {
         request = NewDetectAuthRequest()
     }
+    
     response = NewDetectAuthResponse()
     err = c.Send(request, response)
     return
@@ -412,6 +430,7 @@ func NewEncryptedPhoneVerificationRequest() (request *EncryptedPhoneVerification
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("faceid", APIVersion, "EncryptedPhoneVerification")
+    
     
     return
 }
@@ -441,6 +460,7 @@ func (c *Client) EncryptedPhoneVerification(request *EncryptedPhoneVerificationR
     if request == nil {
         request = NewEncryptedPhoneVerificationRequest()
     }
+    
     response = NewEncryptedPhoneVerificationResponse()
     err = c.Send(request, response)
     return
@@ -451,6 +471,7 @@ func NewGetActionSequenceRequest() (request *GetActionSequenceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("faceid", APIVersion, "GetActionSequence")
+    
     
     return
 }
@@ -478,6 +499,7 @@ func (c *Client) GetActionSequence(request *GetActionSequenceRequest) (response 
     if request == nil {
         request = NewGetActionSequenceRequest()
     }
+    
     response = NewGetActionSequenceResponse()
     err = c.Send(request, response)
     return
@@ -488,6 +510,7 @@ func NewGetDetectInfoRequest() (request *GetDetectInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("faceid", APIVersion, "GetDetectInfo")
+    
     
     return
 }
@@ -516,6 +539,7 @@ func (c *Client) GetDetectInfo(request *GetDetectInfoRequest) (response *GetDete
     if request == nil {
         request = NewGetDetectInfoRequest()
     }
+    
     response = NewGetDetectInfoResponse()
     err = c.Send(request, response)
     return
@@ -526,6 +550,7 @@ func NewGetDetectInfoEnhancedRequest() (request *GetDetectInfoEnhancedRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("faceid", APIVersion, "GetDetectInfoEnhanced")
+    
     
     return
 }
@@ -555,6 +580,7 @@ func (c *Client) GetDetectInfoEnhanced(request *GetDetectInfoEnhancedRequest) (r
     if request == nil {
         request = NewGetDetectInfoEnhancedRequest()
     }
+    
     response = NewGetDetectInfoEnhancedResponse()
     err = c.Send(request, response)
     return
@@ -565,6 +591,7 @@ func NewGetEidResultRequest() (request *GetEidResultRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("faceid", APIVersion, "GetEidResult")
+    
     
     return
 }
@@ -595,6 +622,7 @@ func (c *Client) GetEidResult(request *GetEidResultRequest) (response *GetEidRes
     if request == nil {
         request = NewGetEidResultRequest()
     }
+    
     response = NewGetEidResultResponse()
     err = c.Send(request, response)
     return
@@ -605,6 +633,7 @@ func NewGetEidTokenRequest() (request *GetEidTokenRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("faceid", APIVersion, "GetEidToken")
+    
     
     return
 }
@@ -635,6 +664,7 @@ func (c *Client) GetEidToken(request *GetEidTokenRequest) (response *GetEidToken
     if request == nil {
         request = NewGetEidTokenRequest()
     }
+    
     response = NewGetEidTokenResponse()
     err = c.Send(request, response)
     return
@@ -645,6 +675,7 @@ func NewGetFaceIdResultRequest() (request *GetFaceIdResultRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("faceid", APIVersion, "GetFaceIdResult")
+    
     
     return
 }
@@ -669,6 +700,7 @@ func (c *Client) GetFaceIdResult(request *GetFaceIdResultRequest) (response *Get
     if request == nil {
         request = NewGetFaceIdResultRequest()
     }
+    
     response = NewGetFaceIdResultResponse()
     err = c.Send(request, response)
     return
@@ -679,6 +711,7 @@ func NewGetFaceIdTokenRequest() (request *GetFaceIdTokenRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("faceid", APIVersion, "GetFaceIdToken")
+    
     
     return
 }
@@ -702,6 +735,7 @@ func (c *Client) GetFaceIdToken(request *GetFaceIdTokenRequest) (response *GetFa
     if request == nil {
         request = NewGetFaceIdTokenRequest()
     }
+    
     response = NewGetFaceIdTokenResponse()
     err = c.Send(request, response)
     return
@@ -712,6 +746,7 @@ func NewGetLiveCodeRequest() (request *GetLiveCodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("faceid", APIVersion, "GetLiveCode")
+    
     
     return
 }
@@ -739,6 +774,7 @@ func (c *Client) GetLiveCode(request *GetLiveCodeRequest) (response *GetLiveCode
     if request == nil {
         request = NewGetLiveCodeRequest()
     }
+    
     response = NewGetLiveCodeResponse()
     err = c.Send(request, response)
     return
@@ -749,6 +785,7 @@ func NewGetRealNameAuthResultRequest() (request *GetRealNameAuthResultRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("faceid", APIVersion, "GetRealNameAuthResult")
+    
     
     return
 }
@@ -774,6 +811,7 @@ func (c *Client) GetRealNameAuthResult(request *GetRealNameAuthResultRequest) (r
     if request == nil {
         request = NewGetRealNameAuthResultRequest()
     }
+    
     response = NewGetRealNameAuthResultResponse()
     err = c.Send(request, response)
     return
@@ -784,6 +822,7 @@ func NewGetRealNameAuthTokenRequest() (request *GetRealNameAuthTokenRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("faceid", APIVersion, "GetRealNameAuthToken")
+    
     
     return
 }
@@ -810,6 +849,7 @@ func (c *Client) GetRealNameAuthToken(request *GetRealNameAuthTokenRequest) (res
     if request == nil {
         request = NewGetRealNameAuthTokenRequest()
     }
+    
     response = NewGetRealNameAuthTokenResponse()
     err = c.Send(request, response)
     return
@@ -820,6 +860,7 @@ func NewIdCardOCRVerificationRequest() (request *IdCardOCRVerificationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("faceid", APIVersion, "IdCardOCRVerification")
+    
     
     return
 }
@@ -855,6 +896,7 @@ func (c *Client) IdCardOCRVerification(request *IdCardOCRVerificationRequest) (r
     if request == nil {
         request = NewIdCardOCRVerificationRequest()
     }
+    
     response = NewIdCardOCRVerificationResponse()
     err = c.Send(request, response)
     return
@@ -865,6 +907,7 @@ func NewIdCardVerificationRequest() (request *IdCardVerificationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("faceid", APIVersion, "IdCardVerification")
+    
     
     return
 }
@@ -894,6 +937,7 @@ func (c *Client) IdCardVerification(request *IdCardVerificationRequest) (respons
     if request == nil {
         request = NewIdCardVerificationRequest()
     }
+    
     response = NewIdCardVerificationResponse()
     err = c.Send(request, response)
     return
@@ -904,6 +948,7 @@ func NewImageRecognitionRequest() (request *ImageRecognitionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("faceid", APIVersion, "ImageRecognition")
+    
     
     return
 }
@@ -950,6 +995,7 @@ func (c *Client) ImageRecognition(request *ImageRecognitionRequest) (response *I
     if request == nil {
         request = NewImageRecognitionRequest()
     }
+    
     response = NewImageRecognitionResponse()
     err = c.Send(request, response)
     return
@@ -960,6 +1006,7 @@ func NewLivenessRequest() (request *LivenessRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("faceid", APIVersion, "Liveness")
+    
     
     return
 }
@@ -1022,6 +1069,7 @@ func (c *Client) Liveness(request *LivenessRequest) (response *LivenessResponse,
     if request == nil {
         request = NewLivenessRequest()
     }
+    
     response = NewLivenessResponse()
     err = c.Send(request, response)
     return
@@ -1032,6 +1080,7 @@ func NewLivenessCompareRequest() (request *LivenessCompareRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("faceid", APIVersion, "LivenessCompare")
+    
     
     return
 }
@@ -1103,6 +1152,7 @@ func (c *Client) LivenessCompare(request *LivenessCompareRequest) (response *Liv
     if request == nil {
         request = NewLivenessCompareRequest()
     }
+    
     response = NewLivenessCompareResponse()
     err = c.Send(request, response)
     return
@@ -1113,6 +1163,7 @@ func NewLivenessRecognitionRequest() (request *LivenessRecognitionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("faceid", APIVersion, "LivenessRecognition")
+    
     
     return
 }
@@ -1186,6 +1237,7 @@ func (c *Client) LivenessRecognition(request *LivenessRecognitionRequest) (respo
     if request == nil {
         request = NewLivenessRecognitionRequest()
     }
+    
     response = NewLivenessRecognitionResponse()
     err = c.Send(request, response)
     return
@@ -1196,6 +1248,7 @@ func NewMinorsVerificationRequest() (request *MinorsVerificationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("faceid", APIVersion, "MinorsVerification")
+    
     
     return
 }
@@ -1224,6 +1277,7 @@ func (c *Client) MinorsVerification(request *MinorsVerificationRequest) (respons
     if request == nil {
         request = NewMinorsVerificationRequest()
     }
+    
     response = NewMinorsVerificationResponse()
     err = c.Send(request, response)
     return
@@ -1234,6 +1288,7 @@ func NewMobileNetworkTimeVerificationRequest() (request *MobileNetworkTimeVerifi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("faceid", APIVersion, "MobileNetworkTimeVerification")
+    
     
     return
 }
@@ -1265,6 +1320,7 @@ func (c *Client) MobileNetworkTimeVerification(request *MobileNetworkTimeVerific
     if request == nil {
         request = NewMobileNetworkTimeVerificationRequest()
     }
+    
     response = NewMobileNetworkTimeVerificationResponse()
     err = c.Send(request, response)
     return
@@ -1275,6 +1331,7 @@ func NewMobileStatusRequest() (request *MobileStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("faceid", APIVersion, "MobileStatus")
+    
     
     return
 }
@@ -1304,6 +1361,7 @@ func (c *Client) MobileStatus(request *MobileStatusRequest) (response *MobileSta
     if request == nil {
         request = NewMobileStatusRequest()
     }
+    
     response = NewMobileStatusResponse()
     err = c.Send(request, response)
     return
@@ -1314,6 +1372,7 @@ func NewPhoneVerificationRequest() (request *PhoneVerificationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("faceid", APIVersion, "PhoneVerification")
+    
     
     return
 }
@@ -1343,6 +1402,7 @@ func (c *Client) PhoneVerification(request *PhoneVerificationRequest) (response 
     if request == nil {
         request = NewPhoneVerificationRequest()
     }
+    
     response = NewPhoneVerificationResponse()
     err = c.Send(request, response)
     return

@@ -49,6 +49,7 @@ func NewApplyBlackListRequest() (request *ApplyBlackListRequest) {
     }
     request.Init().WithApiInfo("cr", APIVersion, "ApplyBlackList")
     
+    
     return
 }
 
@@ -70,6 +71,7 @@ func (c *Client) ApplyBlackList(request *ApplyBlackListRequest) (response *Apply
     if request == nil {
         request = NewApplyBlackListRequest()
     }
+    
     response = NewApplyBlackListResponse()
     err = c.Send(request, response)
     return
@@ -80,6 +82,7 @@ func NewApplyBlackListDataRequest() (request *ApplyBlackListDataRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cr", APIVersion, "ApplyBlackListData")
+    
     
     return
 }
@@ -103,6 +106,7 @@ func (c *Client) ApplyBlackListData(request *ApplyBlackListDataRequest) (respons
     if request == nil {
         request = NewApplyBlackListDataRequest()
     }
+    
     response = NewApplyBlackListDataResponse()
     err = c.Send(request, response)
     return
@@ -113,6 +117,7 @@ func NewApplyCreditAuditRequest() (request *ApplyCreditAuditRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cr", APIVersion, "ApplyCreditAudit")
+    
     
     return
 }
@@ -136,6 +141,7 @@ func (c *Client) ApplyCreditAudit(request *ApplyCreditAuditRequest) (response *A
     if request == nil {
         request = NewApplyCreditAuditRequest()
     }
+    
     response = NewApplyCreditAuditResponse()
     err = c.Send(request, response)
     return
@@ -146,6 +152,7 @@ func NewChangeBotCallStatusRequest() (request *ChangeBotCallStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cr", APIVersion, "ChangeBotCallStatus")
+    
     
     return
 }
@@ -172,6 +179,7 @@ func (c *Client) ChangeBotCallStatus(request *ChangeBotCallStatusRequest) (respo
     if request == nil {
         request = NewChangeBotCallStatusRequest()
     }
+    
     response = NewChangeBotCallStatusResponse()
     err = c.Send(request, response)
     return
@@ -182,6 +190,7 @@ func NewChangeBotTaskStatusRequest() (request *ChangeBotTaskStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cr", APIVersion, "ChangeBotTaskStatus")
+    
     
     return
 }
@@ -204,6 +213,7 @@ func (c *Client) ChangeBotTaskStatus(request *ChangeBotTaskStatusRequest) (respo
     if request == nil {
         request = NewChangeBotTaskStatusRequest()
     }
+    
     response = NewChangeBotTaskStatusResponse()
     err = c.Send(request, response)
     return
@@ -214,6 +224,7 @@ func NewCreateBotTaskRequest() (request *CreateBotTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cr", APIVersion, "CreateBotTask")
+    
     
     return
 }
@@ -237,6 +248,7 @@ func (c *Client) CreateBotTask(request *CreateBotTaskRequest) (response *CreateB
     if request == nil {
         request = NewCreateBotTaskRequest()
     }
+    
     response = NewCreateBotTaskResponse()
     err = c.Send(request, response)
     return
@@ -247,6 +259,7 @@ func NewDescribeBotFlowRequest() (request *DescribeBotFlowRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cr", APIVersion, "DescribeBotFlow")
+    
     
     return
 }
@@ -270,6 +283,7 @@ func (c *Client) DescribeBotFlow(request *DescribeBotFlowRequest) (response *Des
     if request == nil {
         request = NewDescribeBotFlowRequest()
     }
+    
     response = NewDescribeBotFlowResponse()
     err = c.Send(request, response)
     return
@@ -280,6 +294,7 @@ func NewDescribeCreditResultRequest() (request *DescribeCreditResultRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cr", APIVersion, "DescribeCreditResult")
+    
     
     return
 }
@@ -303,6 +318,7 @@ func (c *Client) DescribeCreditResult(request *DescribeCreditResultRequest) (res
     if request == nil {
         request = NewDescribeCreditResultRequest()
     }
+    
     response = NewDescribeCreditResultResponse()
     err = c.Send(request, response)
     return
@@ -313,6 +329,7 @@ func NewDescribeFileModelRequest() (request *DescribeFileModelRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cr", APIVersion, "DescribeFileModel")
+    
     
     return
 }
@@ -335,6 +352,7 @@ func (c *Client) DescribeFileModel(request *DescribeFileModelRequest) (response 
     if request == nil {
         request = NewDescribeFileModelRequest()
     }
+    
     response = NewDescribeFileModelResponse()
     err = c.Send(request, response)
     return
@@ -345,6 +363,7 @@ func NewDescribeRecordsRequest() (request *DescribeRecordsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cr", APIVersion, "DescribeRecords")
+    
     
     return
 }
@@ -367,6 +386,7 @@ func (c *Client) DescribeRecords(request *DescribeRecordsRequest) (response *Des
     if request == nil {
         request = NewDescribeRecordsRequest()
     }
+    
     response = NewDescribeRecordsResponse()
     err = c.Send(request, response)
     return
@@ -377,6 +397,7 @@ func NewDescribeTaskStatusRequest() (request *DescribeTaskStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cr", APIVersion, "DescribeTaskStatus")
+    
     
     return
 }
@@ -400,6 +421,7 @@ func (c *Client) DescribeTaskStatus(request *DescribeTaskStatusRequest) (respons
     if request == nil {
         request = NewDescribeTaskStatusRequest()
     }
+    
     response = NewDescribeTaskStatusResponse()
     err = c.Send(request, response)
     return
@@ -410,6 +432,7 @@ func NewDownloadBotRecordRequest() (request *DownloadBotRecordRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cr", APIVersion, "DownloadBotRecord")
+    
     
     return
 }
@@ -433,6 +456,7 @@ func (c *Client) DownloadBotRecord(request *DownloadBotRecordRequest) (response 
     if request == nil {
         request = NewDownloadBotRecordRequest()
     }
+    
     response = NewDownloadBotRecordResponse()
     err = c.Send(request, response)
     return
@@ -443,6 +467,7 @@ func NewDownloadDialogueTextRequest() (request *DownloadDialogueTextRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cr", APIVersion, "DownloadDialogueText")
+    
     
     return
 }
@@ -466,6 +491,7 @@ func (c *Client) DownloadDialogueText(request *DownloadDialogueTextRequest) (res
     if request == nil {
         request = NewDownloadDialogueTextRequest()
     }
+    
     response = NewDownloadDialogueTextResponse()
     err = c.Send(request, response)
     return
@@ -476,6 +502,7 @@ func NewDownloadRecordListRequest() (request *DownloadRecordListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cr", APIVersion, "DownloadRecordList")
+    
     
     return
 }
@@ -501,6 +528,7 @@ func (c *Client) DownloadRecordList(request *DownloadRecordListRequest) (respons
     if request == nil {
         request = NewDownloadRecordListRequest()
     }
+    
     response = NewDownloadRecordListResponse()
     err = c.Send(request, response)
     return
@@ -511,6 +539,7 @@ func NewDownloadReportRequest() (request *DownloadReportRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cr", APIVersion, "DownloadReport")
+    
     
     return
 }
@@ -535,6 +564,7 @@ func (c *Client) DownloadReport(request *DownloadReportRequest) (response *Downl
     if request == nil {
         request = NewDownloadReportRequest()
     }
+    
     response = NewDownloadReportResponse()
     err = c.Send(request, response)
     return
@@ -545,6 +575,7 @@ func NewExportBotDataRequest() (request *ExportBotDataRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cr", APIVersion, "ExportBotData")
+    
     
     return
 }
@@ -567,6 +598,7 @@ func (c *Client) ExportBotData(request *ExportBotDataRequest) (response *ExportB
     if request == nil {
         request = NewExportBotDataRequest()
     }
+    
     response = NewExportBotDataResponse()
     err = c.Send(request, response)
     return
@@ -577,6 +609,7 @@ func NewQueryBlackListDataRequest() (request *QueryBlackListDataRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cr", APIVersion, "QueryBlackListData")
+    
     
     return
 }
@@ -601,6 +634,7 @@ func (c *Client) QueryBlackListData(request *QueryBlackListDataRequest) (respons
     if request == nil {
         request = NewQueryBlackListDataRequest()
     }
+    
     response = NewQueryBlackListDataResponse()
     err = c.Send(request, response)
     return
@@ -611,6 +645,7 @@ func NewQueryBotListRequest() (request *QueryBotListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cr", APIVersion, "QueryBotList")
+    
     
     return
 }
@@ -631,6 +666,7 @@ func (c *Client) QueryBotList(request *QueryBotListRequest) (response *QueryBotL
     if request == nil {
         request = NewQueryBotListRequest()
     }
+    
     response = NewQueryBotListResponse()
     err = c.Send(request, response)
     return
@@ -641,6 +677,7 @@ func NewQueryCallListRequest() (request *QueryCallListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cr", APIVersion, "QueryCallList")
+    
     
     return
 }
@@ -665,6 +702,7 @@ func (c *Client) QueryCallList(request *QueryCallListRequest) (response *QueryCa
     if request == nil {
         request = NewQueryCallListRequest()
     }
+    
     response = NewQueryCallListResponse()
     err = c.Send(request, response)
     return
@@ -675,6 +713,7 @@ func NewQueryInstantDataRequest() (request *QueryInstantDataRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cr", APIVersion, "QueryInstantData")
+    
     
     return
 }
@@ -696,6 +735,7 @@ func (c *Client) QueryInstantData(request *QueryInstantDataRequest) (response *Q
     if request == nil {
         request = NewQueryInstantDataRequest()
     }
+    
     response = NewQueryInstantDataResponse()
     err = c.Send(request, response)
     return
@@ -706,6 +746,7 @@ func NewQueryProductsRequest() (request *QueryProductsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cr", APIVersion, "QueryProducts")
+    
     
     return
 }
@@ -729,6 +770,7 @@ func (c *Client) QueryProducts(request *QueryProductsRequest) (response *QueryPr
     if request == nil {
         request = NewQueryProductsRequest()
     }
+    
     response = NewQueryProductsResponse()
     err = c.Send(request, response)
     return
@@ -739,6 +781,7 @@ func NewQueryRecordListRequest() (request *QueryRecordListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cr", APIVersion, "QueryRecordList")
+    
     
     return
 }
@@ -759,6 +802,7 @@ func (c *Client) QueryRecordList(request *QueryRecordListRequest) (response *Que
     if request == nil {
         request = NewQueryRecordListRequest()
     }
+    
     response = NewQueryRecordListResponse()
     err = c.Send(request, response)
     return
@@ -769,6 +813,7 @@ func NewUpdateBotTaskRequest() (request *UpdateBotTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cr", APIVersion, "UpdateBotTask")
+    
     
     return
 }
@@ -792,6 +837,7 @@ func (c *Client) UpdateBotTask(request *UpdateBotTaskRequest) (response *UpdateB
     if request == nil {
         request = NewUpdateBotTaskRequest()
     }
+    
     response = NewUpdateBotTaskResponse()
     err = c.Send(request, response)
     return
@@ -802,6 +848,7 @@ func NewUploadBotDataRequest() (request *UploadBotDataRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cr", APIVersion, "UploadBotData")
+    
     
     return
 }
@@ -826,6 +873,7 @@ func (c *Client) UploadBotData(request *UploadBotDataRequest) (response *UploadB
     if request == nil {
         request = NewUploadBotDataRequest()
     }
+    
     response = NewUploadBotDataResponse()
     err = c.Send(request, response)
     return
@@ -836,6 +884,7 @@ func NewUploadBotFileRequest() (request *UploadBotFileRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cr", APIVersion, "UploadBotFile")
+    
     
     return
 }
@@ -859,6 +908,7 @@ func (c *Client) UploadBotFile(request *UploadBotFileRequest) (response *UploadB
     if request == nil {
         request = NewUploadBotFileRequest()
     }
+    
     response = NewUploadBotFileResponse()
     err = c.Send(request, response)
     return
@@ -869,6 +919,7 @@ func NewUploadDataFileRequest() (request *UploadDataFileRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cr", APIVersion, "UploadDataFile")
+    
     
     return
 }
@@ -892,6 +943,7 @@ func (c *Client) UploadDataFile(request *UploadDataFileRequest) (response *Uploa
     if request == nil {
         request = NewUploadDataFileRequest()
     }
+    
     response = NewUploadDataFileResponse()
     err = c.Send(request, response)
     return
@@ -902,6 +954,7 @@ func NewUploadDataJsonRequest() (request *UploadDataJsonRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cr", APIVersion, "UploadDataJson")
+    
     
     return
 }
@@ -924,6 +977,7 @@ func (c *Client) UploadDataJson(request *UploadDataJsonRequest) (response *Uploa
     if request == nil {
         request = NewUploadDataJsonRequest()
     }
+    
     response = NewUploadDataJsonResponse()
     err = c.Send(request, response)
     return
@@ -934,6 +988,7 @@ func NewUploadFileRequest() (request *UploadFileRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cr", APIVersion, "UploadFile")
+    
     
     return
 }
@@ -958,6 +1013,7 @@ func (c *Client) UploadFile(request *UploadFileRequest) (response *UploadFileRes
     if request == nil {
         request = NewUploadFileRequest()
     }
+    
     response = NewUploadFileResponse()
     err = c.Send(request, response)
     return

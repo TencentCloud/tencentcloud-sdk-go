@@ -49,6 +49,7 @@ func NewDescribeNewUserAcquisitionRequest() (request *DescribeNewUserAcquisition
     }
     request.Init().WithApiInfo("pds", APIVersion, "DescribeNewUserAcquisition")
     
+    
     return
 }
 
@@ -78,6 +79,7 @@ func (c *Client) DescribeNewUserAcquisition(request *DescribeNewUserAcquisitionR
     if request == nil {
         request = NewDescribeNewUserAcquisitionRequest()
     }
+    
     response = NewDescribeNewUserAcquisitionResponse()
     err = c.Send(request, response)
     return
@@ -88,6 +90,7 @@ func NewDescribeStockEstimationRequest() (request *DescribeStockEstimationReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("pds", APIVersion, "DescribeStockEstimation")
+    
     
     return
 }
@@ -118,6 +121,7 @@ func (c *Client) DescribeStockEstimation(request *DescribeStockEstimationRequest
     if request == nil {
         request = NewDescribeStockEstimationRequest()
     }
+    
     response = NewDescribeStockEstimationResponse()
     err = c.Send(request, response)
     return
