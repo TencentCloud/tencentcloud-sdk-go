@@ -1988,6 +1988,45 @@ func (c *Client) GetDeviceLocationHistory(request *GetDeviceLocationHistoryReque
     return
 }
 
+func NewGetFamilyDeviceUserListRequest() (request *GetFamilyDeviceUserListRequest) {
+    request = &GetFamilyDeviceUserListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "GetFamilyDeviceUserList")
+    
+    
+    return
+}
+
+func NewGetFamilyDeviceUserListResponse() (response *GetFamilyDeviceUserListResponse) {
+    response = &GetFamilyDeviceUserListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetFamilyDeviceUserList
+// 用于获取设备绑定的用户列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DEVICENAMEINVALID = "InvalidParameterValue.DeviceNameInvalid"
+//  INVALIDPARAMETERVALUE_DEVICENOTEXIST = "InvalidParameterValue.DeviceNotExist"
+//  INVALIDPARAMETERVALUE_PRODUCTIDINVALID = "InvalidParameterValue.ProductIDInvalid"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+func (c *Client) GetFamilyDeviceUserList(request *GetFamilyDeviceUserListRequest) (response *GetFamilyDeviceUserListResponse, err error) {
+    if request == nil {
+        request = NewGetFamilyDeviceUserListRequest()
+    }
+    
+    response = NewGetFamilyDeviceUserListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetLoRaGatewayListRequest() (request *GetLoRaGatewayListRequest) {
     request = &GetLoRaGatewayListRequest{
         BaseRequest: &tchttp.BaseRequest{},

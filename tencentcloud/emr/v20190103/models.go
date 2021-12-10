@@ -464,6 +464,13 @@ type CreateInstanceRequest struct {
 
 	// 自定义应用角色。
 	ApplicationRole *string `json:"ApplicationRole,omitempty" name:"ApplicationRole"`
+
+	// 场景化取值：
+	// Hadoop-Kudu
+	// Hadoop-Zookeeper
+	// Hadoop-Presto
+	// Hadoop-Hbase
+	SceneName *string `json:"SceneName,omitempty" name:"SceneName"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -505,6 +512,7 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "UnifyMetaInstanceId")
 	delete(f, "MetaDBInfo")
 	delete(f, "ApplicationRole")
+	delete(f, "SceneName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRequest has unknown keys!", "")
 	}
@@ -1186,6 +1194,13 @@ type InquiryPriceCreateInstanceRequest struct {
 	// <li>4：表示EMR-V2.1.0。</li>
 	// <li>7：表示EMR-V3.0.0。</li>
 	ProductId *uint64 `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 场景化取值：
+	// Hadoop-Kudu
+	// Hadoop-Zookeeper
+	// Hadoop-Presto
+	// Hadoop-Hbase
+	SceneName *string `json:"SceneName,omitempty" name:"SceneName"`
 }
 
 func (r *InquiryPriceCreateInstanceRequest) ToJsonString() string {
@@ -1213,6 +1228,7 @@ func (r *InquiryPriceCreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "UnifyMetaInstanceId")
 	delete(f, "MetaDBInfo")
 	delete(f, "ProductId")
+	delete(f, "SceneName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceCreateInstanceRequest has unknown keys!", "")
 	}

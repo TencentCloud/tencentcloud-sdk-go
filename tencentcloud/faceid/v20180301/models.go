@@ -703,6 +703,9 @@ type DetectAuthRequest struct {
 
 	// 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
 	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
+
+	// 意愿核身使用的文案，若未使用意愿核身功能，该字段无需传入。默认为空，最长可接受100的字符串长度。
+	IntentionVerifyText *string `json:"IntentionVerifyText,omitempty" name:"IntentionVerifyText"`
 }
 
 func (r *DetectAuthRequest) ToJsonString() string {
@@ -725,6 +728,7 @@ func (r *DetectAuthRequest) FromJsonString(s string) error {
 	delete(f, "Extra")
 	delete(f, "ImageBase64")
 	delete(f, "Encryption")
+	delete(f, "IntentionVerifyText")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectAuthRequest has unknown keys!", "")
 	}
@@ -1180,6 +1184,10 @@ type GetDetectInfoEnhancedResponse struct {
 		// 敏感数据加密信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
+
+		// 意愿核身相关信息。若未使用意愿核身功能，该字段返回值可以不处理。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IntentionVerifyData *IntentionVerifyData `json:"IntentionVerifyData,omitempty" name:"IntentionVerifyData"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2043,6 +2051,29 @@ func (r *ImageRecognitionResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ImageRecognitionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type IntentionVerifyData struct {
+
+	// 意愿确认环节中录制的视频（base64）。若不存在则为空字符串。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntentionVerifyVideo *string `json:"IntentionVerifyVideo,omitempty" name:"IntentionVerifyVideo"`
+
+	// 意愿确认环节中用户语音转文字的识别结果。若不存在则为空字符串。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsrResult *string `json:"AsrResult,omitempty" name:"AsrResult"`
+
+	// 意愿确认环节的结果码。当该结果码为0时，语音朗读的视频与语音识别结果才会返回。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorCode *int64 `json:"ErrorCode,omitempty" name:"ErrorCode"`
+
+	// 意愿确认环节的结果信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMessage *string `json:"ErrorMessage,omitempty" name:"ErrorMessage"`
+
+	// 意愿确认环节中录制视频的最佳帧（base64）。若不存在则为空字符串。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntentionVerifyBestFrame *string `json:"IntentionVerifyBestFrame,omitempty" name:"IntentionVerifyBestFrame"`
 }
 
 type LivenessCompareRequest struct {

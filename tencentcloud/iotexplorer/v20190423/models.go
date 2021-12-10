@@ -2669,6 +2669,15 @@ type DeviceSignatureInfo struct {
 	DeviceSignature *string `json:"DeviceSignature,omitempty" name:"DeviceSignature"`
 }
 
+type DeviceUser struct {
+
+	// 用户ID
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 用户角色 1所有者，0：其他分享者
+	Role *int64 `json:"Role,omitempty" name:"Role"`
+}
+
 type DevicesItem struct {
 
 	// 产品id
@@ -3271,6 +3280,60 @@ func (r *GetDeviceLocationHistoryResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetDeviceLocationHistoryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetFamilyDeviceUserListRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+}
+
+func (r *GetFamilyDeviceUserListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetFamilyDeviceUserListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetFamilyDeviceUserListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetFamilyDeviceUserListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 设备的用户列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		UserList []*DeviceUser `json:"UserList,omitempty" name:"UserList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetFamilyDeviceUserListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetFamilyDeviceUserListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

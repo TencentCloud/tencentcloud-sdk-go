@@ -430,6 +430,52 @@ func (c *Client) DeleteAclRule(request *DeleteAclRuleRequest) (response *DeleteA
     return
 }
 
+func NewDeleteInstancePreRequest() (request *DeleteInstancePreRequest) {
+    request = &DeleteInstancePreRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ckafka", APIVersion, "DeleteInstancePre")
+    
+    
+    return
+}
+
+func NewDeleteInstancePreResponse() (response *DeleteInstancePreResponse) {
+    response = &DeleteInstancePreResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteInstancePre
+// 删除预付费实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_REPETITIONVALUE = "InvalidParameterValue.RepetitionValue"
+//  INVALIDPARAMETERVALUE_SUBNETIDINVALID = "InvalidParameterValue.SubnetIdInvalid"
+//  INVALIDPARAMETERVALUE_SUBNETNOTBELONGTOZONE = "InvalidParameterValue.SubnetNotBelongToZone"
+//  INVALIDPARAMETERVALUE_VPCIDINVALID = "InvalidParameterValue.VpcIdInvalid"
+//  INVALIDPARAMETERVALUE_WRONGACTION = "InvalidParameterValue.WrongAction"
+//  INVALIDPARAMETERVALUE_ZONENOTSUPPORT = "InvalidParameterValue.ZoneNotSupport"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_BATCHDELINSTANCELIMIT = "UnsupportedOperation.BatchDelInstanceLimit"
+//  UNSUPPORTEDOPERATION_OSSREJECT = "UnsupportedOperation.OssReject"
+func (c *Client) DeleteInstancePre(request *DeleteInstancePreRequest) (response *DeleteInstancePreResponse, err error) {
+    if request == nil {
+        request = NewDeleteInstancePreRequest()
+    }
+    
+    response = NewDeleteInstancePreResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteRouteTriggerTimeRequest() (request *DeleteRouteTriggerTimeRequest) {
     request = &DeleteRouteTriggerTimeRequest{
         BaseRequest: &tchttp.BaseRequest{},

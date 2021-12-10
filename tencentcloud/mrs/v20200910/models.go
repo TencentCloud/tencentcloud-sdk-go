@@ -1482,6 +1482,10 @@ type Template struct {
 	// 免疫接种证明
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VaccineCertificate *VaccineCertificate `json:"VaccineCertificate,omitempty" name:"VaccineCertificate"`
+
+	// OCR文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OcrText *string `json:"OcrText,omitempty" name:"OcrText"`
 }
 
 type TextToClassRequest struct {

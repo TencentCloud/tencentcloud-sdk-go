@@ -1740,6 +1740,10 @@ type TelCdrInfo struct {
 	// 客户自定义数据（User-to-User Interface）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uui *string `json:"Uui,omitempty" name:"Uui"`
+
+	// IVR按键信息（e.g. [{"Key":"1","Label":"非常满意"}]）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IVRKeyPressedEx []*IVRKeyPressedElement `json:"IVRKeyPressedEx,omitempty" name:"IVRKeyPressedEx"`
 }
 
 type UnbindStaffSkillGroupListRequest struct {

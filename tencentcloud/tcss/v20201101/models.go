@@ -1567,7 +1567,7 @@ type ContainerInfo struct {
 	// 命令行
 	Cmd *string `json:"Cmd,omitempty" name:"Cmd"`
 
-	// cpu 使用率 *1000
+	// CPU使用率 *1000
 	CPUUsage *uint64 `json:"CPUUsage,omitempty" name:"CPUUsage"`
 
 	// 内存使用 kb
