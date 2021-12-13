@@ -43,6 +43,44 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateAutoClassifyStructureTaskRequest() (request *CreateAutoClassifyStructureTaskRequest) {
+    request = &CreateAutoClassifyStructureTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cii", APIVersion, "CreateAutoClassifyStructureTask")
+    
+    
+    return
+}
+
+func NewCreateAutoClassifyStructureTaskResponse() (response *CreateAutoClassifyStructureTaskResponse) {
+    response = &CreateAutoClassifyStructureTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateAutoClassifyStructureTask
+// 本接口(CreateAutoClassifyStructureTask)基于提供的客户及保单信息，创建并启动结构化识别任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateAutoClassifyStructureTask(request *CreateAutoClassifyStructureTaskRequest) (response *CreateAutoClassifyStructureTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateAutoClassifyStructureTaskRequest()
+    }
+    
+    response = NewCreateAutoClassifyStructureTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateStructureTaskRequest() (request *CreateStructureTaskRequest) {
     request = &CreateStructureTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},

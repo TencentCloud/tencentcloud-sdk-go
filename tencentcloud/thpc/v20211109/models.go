@@ -20,6 +20,21 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type CFSOption struct {
+
+	// 文件系统本地挂载路径
+	LocalPath *string `json:"LocalPath,omitempty" name:"LocalPath"`
+
+	// 文件系统远程挂载ip及路径
+	RemotePath *string `json:"RemotePath,omitempty" name:"RemotePath"`
+
+	// 文件系统协议类型，默认值NFS 3.0
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 文件系统存储类型，默认值SD
+	StorageType *string `json:"StorageType,omitempty" name:"StorageType"`
+}
+
 type ComputeNode struct {
 
 	// 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
@@ -97,6 +112,9 @@ type CreateClusterRequest struct {
 
 	// 集群显示名称。
 	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 集群存储选项
+	StorageOption *StorageOption `json:"StorageOption,omitempty" name:"StorageOption"`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
@@ -125,6 +143,7 @@ func (r *CreateClusterRequest) FromJsonString(s string) error {
 	delete(f, "DryRun")
 	delete(f, "AccountType")
 	delete(f, "ClusterName")
+	delete(f, "StorageOption")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterRequest has unknown keys!", "")
 	}
@@ -276,6 +295,12 @@ type Placement struct {
 
 	// 实例所属的可用区名称。该参数可以通过调用  [DescribeZones](https://cloud.tencent.com/document/product/213/15707) 的返回值中的Zone字段来获取。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
+}
+
+type StorageOption struct {
+
+	// 集群挂载CFS文件系统选项
+	CFSOptions []*CFSOption `json:"CFSOptions,omitempty" name:"CFSOptions"`
 }
 
 type SystemDisk struct {

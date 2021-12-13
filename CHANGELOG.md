@@ -1,48 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云呼叫中心(ccc) 版本：2020-02-10
+## 智能保险助手(cii) 版本：2021-04-08
 
-### 第 19 次发布
+### 第 8 次发布
 
-发布时间：2021-12-10 08:02:29
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [TelCdrInfo](https://cloud.tencent.com/document/api/679/47715#TelCdrInfo)
-
-	* 新增成员：IVRKeyPressedEx
-
-
-
-
-## 内容分发网络(cdn) 版本：2018-06-06
-
-### 第 90 次发布
-
-发布时间：2021-12-10 08:02:48
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [TrafficPackage](https://cloud.tencent.com/document/api/228/30987#TrafficPackage)
-
-	* 新增成员：ExtensionMode
-
-
-
-
-## 消息队列 Ckafka(ckafka) 版本：2019-08-19
-
-### 第 27 次发布
-
-发布时间：2021-12-10 08:03:21
+发布时间：2021-12-13 08:06:17
 
 本次发布包含了以下内容：
 
@@ -50,103 +12,23 @@
 
 新增接口：
 
-* [DeleteInstancePre](https://cloud.tencent.com/document/api/597/65806)
-
-
-
-## 主机安全(cwp) 版本：2018-02-28
-
-### 第 36 次发布
-
-发布时间：2021-12-10 08:04:29
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateScanMalwareSetting](https://cloud.tencent.com/document/api/296/58241)
-
-	* 新增入参：EngineType
-
-* [DescribeMalwareTimingScanSetting](https://cloud.tencent.com/document/api/296/58240)
-
-	* 新增出参：EngineType
-
-* [ModifyMalwareTimingScanSettings](https://cloud.tencent.com/document/api/296/52509)
-
-	* 新增入参：EngineType
-
-
-修改数据结构：
-
-* [MalWareList](https://cloud.tencent.com/document/api/296/19867#MalWareList)
-
-	* 新增成员：Level
-
-* [MalwareInfo](https://cloud.tencent.com/document/api/296/19867#MalwareInfo)
-
-	* 新增成员：Level
-
-
-
-
-## 弹性 MapReduce(emr) 版本：2019-01-03
-
-### 第 25 次发布
-
-发布时间：2021-12-10 08:06:20
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateInstance](https://cloud.tencent.com/document/api/589/34261)
-
-	* 新增入参：SceneName
-
-* [InquiryPriceCreateInstance](https://cloud.tencent.com/document/api/589/33980)
-
-	* 新增入参：SceneName
-
-
-
-
-## 人脸核身(faceid) 版本：2018-03-01
-
-### 第 34 次发布
-
-发布时间：2021-12-10 08:06:32
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DetectAuth](https://cloud.tencent.com/document/api/1007/31816)
-
-	* 新增入参：IntentionVerifyText
-
-* [GetDetectInfoEnhanced](https://cloud.tencent.com/document/api/1007/41957)
-
-	* 新增出参：IntentionVerifyData
-
+* [CreateAutoClassifyStructureTask](https://cloud.tencent.com/document/api/1368/65848)
 
 新增数据结构：
 
-* [IntentionVerifyData](https://cloud.tencent.com/document/api/1007/41958#IntentionVerifyData)
+* [CreateAutoClassifyStructureTaskInfo](https://cloud.tencent.com/document/api/1368/56853#CreateAutoClassifyStructureTaskInfo)
 
 
 
-## 物联网开发平台(iotexplorer) 版本：2019-04-23
+## 智能保险助手(cii) 版本：2020-12-10
 
-### 第 39 次发布
 
-发布时间：2021-12-10 08:07:35
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 60 次发布
+
+发布时间：2021-12-13 08:06:26
 
 本次发布包含了以下内容：
 
@@ -154,30 +36,47 @@
 
 新增接口：
 
-* [GetFamilyDeviceUserList](https://cloud.tencent.com/document/api/1081/65807)
-
-新增数据结构：
-
-* [DeviceUser](https://cloud.tencent.com/document/api/1081/34988#DeviceUser)
+* [MigrateClassicalLoadBalancers](https://cloud.tencent.com/document/api/214/65849)
 
 
 
-## 医疗报告结构化(mrs) 版本：2020-09-10
+## 云服务器(cvm) 版本：2017-03-12
 
-### 第 9 次发布
+### 第 65 次发布
 
-发布时间：2021-12-10 08:09:11
+发布时间：2021-12-13 08:07:20
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [Template](https://cloud.tencent.com/document/api/1314/56230#Template)
+* [ModifyInstanceDiskType](https://cloud.tencent.com/document/api/213/65850)
 
-	* 新增成员：OcrText
 
+
+## 高性能计算平台(thpc) 版本：2021-11-09
+
+### 第 2 次发布
+
+发布时间：2021-12-13 08:14:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCluster](https://cloud.tencent.com/document/api/1527/64905)
+
+	* 新增入参：StorageOption
+
+
+新增数据结构：
+
+* [CFSOption](https://cloud.tencent.com/document/api/1527/64906#CFSOption)
+* [StorageOption](https://cloud.tencent.com/document/api/1527/64906#StorageOption)
 
 
 
@@ -12880,6 +12779,22 @@
 
 ## 智能保险助手(cii) 版本：2021-04-08
 
+### 第 8 次发布
+
+发布时间：2021-12-13 08:06:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateAutoClassifyStructureTask](https://cloud.tencent.com/document/api/1368/65848)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CreateAutoClassifyStructureTaskInfo](https://cloud.tencent.com/document/api/1368/56853#CreateAutoClassifyStructureTaskInfo)](https://cloud.tencent.com/document/api/1368/56853#[CreateAutoClassifyStructureTaskInfo](https://cloud.tencent.com/document/api/1368/56853#CreateAutoClassifyStructureTaskInfo))
+
 ### 第 7 次发布
 
 发布时间：2021-11-23 08:04:46
@@ -13085,7 +13000,7 @@
 
 新增接口：
 
-* [[DeleteInstancePre](https://cloud.tencent.com/document/api/597/65806)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteInstancePre](https://cloud.tencent.com/document/api/597/65806)
 
 ### 第 26 次发布
 
@@ -13681,6 +13596,18 @@
 
 
 ## 负载均衡(clb) 版本：2018-03-17
+
+### 第 60 次发布
+
+发布时间：2021-12-13 08:06:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[MigrateClassicalLoadBalancers](https://cloud.tencent.com/document/api/214/65849)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 59 次发布
 
@@ -18568,6 +18495,18 @@
 
 
 ## 云服务器(cvm) 版本：2017-03-12
+
+### 第 65 次发布
+
+发布时间：2021-12-13 08:07:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyInstanceDiskType](https://cloud.tencent.com/document/api/213/65850)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 64 次发布
 
@@ -28098,7 +28037,7 @@
 
 新增数据结构：
 
-* [[IntentionVerifyData](https://cloud.tencent.com/document/api/1007/41958#IntentionVerifyData)](https://cloud.tencent.com/document/api/1007/41958#[IntentionVerifyData](https://cloud.tencent.com/document/api/1007/41958#IntentionVerifyData))
+* [IntentionVerifyData](https://cloud.tencent.com/document/api/1007/41958#IntentionVerifyData)
 
 ### 第 33 次发布
 
@@ -33237,11 +33176,11 @@
 
 新增接口：
 
-* [[GetFamilyDeviceUserList](https://cloud.tencent.com/document/api/1081/65807)](https://cloud.tencent.com/document/api/#/#)
+* [GetFamilyDeviceUserList](https://cloud.tencent.com/document/api/1081/65807)
 
 新增数据结构：
 
-* [[DeviceUser](https://cloud.tencent.com/document/api/1081/34988#DeviceUser)](https://cloud.tencent.com/document/api/1081/34988#[DeviceUser](https://cloud.tencent.com/document/api/1081/34988#DeviceUser))
+* [DeviceUser](https://cloud.tencent.com/document/api/1081/34988#DeviceUser)
 
 ### 第 38 次发布
 
@@ -53780,6 +53719,26 @@
 
 
 ## 高性能计算平台(thpc) 版本：2021-11-09
+
+### 第 2 次发布
+
+发布时间：2021-12-13 08:14:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCluster](https://cloud.tencent.com/document/api/1527/64905)
+
+	* 新增入参：StorageOption
+
+
+新增数据结构：
+
+* [[CFSOption](https://cloud.tencent.com/document/api/1527/64906#CFSOption)](https://cloud.tencent.com/document/api/1527/64906#[CFSOption](https://cloud.tencent.com/document/api/1527/64906#CFSOption))
+* [[StorageOption](https://cloud.tencent.com/document/api/1527/64906#StorageOption)](https://cloud.tencent.com/document/api/1527/64906#[StorageOption](https://cloud.tencent.com/document/api/1527/64906#StorageOption))
 
 ### 第 1 次发布
 

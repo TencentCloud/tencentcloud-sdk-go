@@ -68,6 +68,97 @@ type CompareMetricsData struct {
 	LongContentRecall *string `json:"LongContentRecall,omitempty" name:"LongContentRecall"`
 }
 
+type CreateAutoClassifyStructureTaskInfo struct {
+
+	// 报告文件上传的地址列表，需按顺序排列。如果使用ImageList参数，置为空数组即可
+	FileList []*string `json:"FileList,omitempty" name:"FileList"`
+
+	// 客户号
+	CustomerId *string `json:"CustomerId,omitempty" name:"CustomerId"`
+
+	// 客户姓名
+	CustomerName *string `json:"CustomerName,omitempty" name:"CustomerName"`
+
+	// 报告上传的图片内容数组，图片内容采用base64编码，需按顺序排列
+	ImageList []*string `json:"ImageList,omitempty" name:"ImageList"`
+}
+
+type CreateAutoClassifyStructureTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务类型
+	// Structured 仅结构化
+	// Underwrite 结构化+核保
+	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+
+	// 创建任务时可以上传多个报告，后台生成多个识别子任务，子任务的详细信息
+	TaskInfos []*CreateAutoClassifyStructureTaskInfo `json:"TaskInfos,omitempty" name:"TaskInfos"`
+
+	// 保单号
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 核保触发方式
+	// Auto 自动
+	// Manual 手动
+	TriggerType *string `json:"TriggerType,omitempty" name:"TriggerType"`
+
+	// 险种，如果是体检报告类型，此参数是必填，类型说明如下：
+	// CriticalDiseaseInsurance:重疾险
+	// LifeInsurance：寿险
+	// AccidentInsurance：意外险
+	InsuranceTypes []*string `json:"InsuranceTypes,omitempty" name:"InsuranceTypes"`
+
+	// 回调地址，接收Post请求传送结果
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+}
+
+func (r *CreateAutoClassifyStructureTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAutoClassifyStructureTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceType")
+	delete(f, "TaskInfos")
+	delete(f, "PolicyId")
+	delete(f, "TriggerType")
+	delete(f, "InsuranceTypes")
+	delete(f, "CallbackUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAutoClassifyStructureTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAutoClassifyStructureTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 创建的主任务号，用于查询结果
+		MainTaskId *string `json:"MainTaskId,omitempty" name:"MainTaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAutoClassifyStructureTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAutoClassifyStructureTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateStructureTaskInfo struct {
 
 	// 任务类型

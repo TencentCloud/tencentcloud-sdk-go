@@ -12873,12 +12873,6 @@ type ResourceTag struct {
 
 type RestoreMediaTask struct {
 
-	// 取回任务状态，0表示取回完成，其他值表示取回还未完成。
-	Status *int64 `json:"Status,omitempty" name:"Status"`
-
-	// 提示信息。
-	Message *string `json:"Message,omitempty" name:"Message"`
-
 	// 文件ID。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
@@ -12895,8 +12889,13 @@ type RestoreMediaTask struct {
 	RestoreTier *string `json:"RestoreTier,omitempty" name:"RestoreTier"`
 
 	// 临时取回副本有效期，单位：天。对于永久取回，取值为0。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RestoreDay *int64 `json:"RestoreDay,omitempty" name:"RestoreDay"`
+
+	// 该字段已废弃。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 该字段已废弃。
+	Message *string `json:"Message,omitempty" name:"Message"`
 }
 
 type SampleSnapshotTaskInput struct {

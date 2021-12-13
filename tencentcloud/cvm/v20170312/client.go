@@ -2289,6 +2289,57 @@ func (c *Client) ModifyImageSharePermission(request *ModifyImageSharePermissionR
     return
 }
 
+func NewModifyInstanceDiskTypeRequest() (request *ModifyInstanceDiskTypeRequest) {
+    request = &ModifyInstanceDiskTypeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "ModifyInstanceDiskType")
+    
+    
+    return
+}
+
+func NewModifyInstanceDiskTypeResponse() (response *ModifyInstanceDiskTypeResponse) {
+    response = &ModifyInstanceDiskTypeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyInstanceDiskType
+// 本接口 (ModifyInstanceDiskType) 用于修改实例硬盘介质类型。
+//
+// 
+//
+// * 只支持实例的本地系统盘、本地数据盘转化成指定云硬盘介质。
+//
+// * 只支持实例在关机状态下转换成指定云硬盘介质。
+//
+// * 不支持竞价实例类型。
+//
+// * 修改前请确保账户余额充足。可通过[`DescribeAccountBalance`](https://cloud.tencent.com/document/product/378/4397)接口查询账户余额。
+//
+// 可能返回的错误码:
+//  ACCOUNTQUALIFICATIONRESTRICTIONS = "AccountQualificationRestrictions"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCLOUDDISKSOLDOUT = "InvalidParameter.InvalidCloudDiskSoldOut"
+//  INVALIDPARAMETER_INVALIDINSTANCENOTSUPPORTED = "InvalidParameter.InvalidInstanceNotSupported"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LOCALDISKSIZERANGE = "InvalidParameterValue.LocalDiskSizeRange"
+//  INVALIDPERMISSION = "InvalidPermission"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT_CLOUDDISKSOLDOUT = "ResourceInsufficient.CloudDiskSoldOut"
+//  UNSUPPORTEDOPERATION_INSTANCESTATERUNNING = "UnsupportedOperation.InstanceStateRunning"
+func (c *Client) ModifyInstanceDiskType(request *ModifyInstanceDiskTypeRequest) (response *ModifyInstanceDiskTypeResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceDiskTypeRequest()
+    }
+    
+    response = NewModifyInstanceDiskTypeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyInstancesAttributeRequest() (request *ModifyInstancesAttributeRequest) {
     request = &ModifyInstancesAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
