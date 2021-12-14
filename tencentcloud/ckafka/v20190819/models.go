@@ -1798,7 +1798,7 @@ type DescribeInstancesRequest struct {
 	// 返回数量，不填则默认10，最大值100
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 匹配标签key值。
+	// 已废弃。匹配标签key值。
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
 }
 
@@ -2651,6 +2651,14 @@ type InstanceAttributesResponse struct {
 	// 时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeleteRouteTimestamp *string `json:"DeleteRouteTimestamp,omitempty" name:"DeleteRouteTimestamp"`
+
+	// 剩余创建分区数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemainingPartitions *int64 `json:"RemainingPartitions,omitempty" name:"RemainingPartitions"`
+
+	// 剩余创建主题数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemainingTopics *int64 `json:"RemainingTopics,omitempty" name:"RemainingTopics"`
 }
 
 type InstanceConfigDO struct {

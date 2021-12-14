@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 智能保险助手(cii) 版本：2021-04-08
+## 弹性伸缩(as) 版本：2018-04-19
 
-### 第 8 次发布
+### 第 43 次发布
 
-发布时间：2021-12-13 08:06:17
+发布时间：2021-12-14 08:05:13
 
 本次发布包含了以下内容：
 
@@ -12,39 +12,39 @@
 
 新增接口：
 
-* [CreateAutoClassifyStructureTask](https://cloud.tencent.com/document/api/1368/65848)
+* [DescribeAutoScalingAdvices](https://cloud.tencent.com/document/api/377/65901)
 
 新增数据结构：
 
-* [CreateAutoClassifyStructureTaskInfo](https://cloud.tencent.com/document/api/1368/56853#CreateAutoClassifyStructureTaskInfo)
+* [Advice](https://cloud.tencent.com/document/api/377/20453#Advice)
+* [AutoScalingAdvice](https://cloud.tencent.com/document/api/377/20453#AutoScalingAdvice)
 
 
 
-## 智能保险助手(cii) 版本：2020-12-10
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 28 次发布
+
+发布时间：2021-12-14 08:07:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceAttributesResponse](https://cloud.tencent.com/document/api/597/40861#InstanceAttributesResponse)
+
+	* 新增成员：RemainingPartitions, RemainingTopics
+
 
 
 
 ## 负载均衡(clb) 版本：2018-03-17
 
-### 第 60 次发布
+### 第 61 次发布
 
-发布时间：2021-12-13 08:06:26
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [MigrateClassicalLoadBalancers](https://cloud.tencent.com/document/api/214/65849)
-
-
-
-## 云服务器(cvm) 版本：2017-03-12
-
-### 第 65 次发布
-
-发布时间：2021-12-13 08:07:20
+发布时间：2021-12-14 08:07:15
 
 本次发布包含了以下内容：
 
@@ -52,15 +52,105 @@
 
 新增接口：
 
-* [ModifyInstanceDiskType](https://cloud.tencent.com/document/api/213/65850)
+* [DescribeCrossTargets](https://cloud.tencent.com/document/api/214/65902)
+
+新增数据结构：
+
+* [CrossTargets](https://cloud.tencent.com/document/api/214/30694#CrossTargets)
 
 
 
-## 高性能计算平台(thpc) 版本：2021-11-09
+## 多媒体创作引擎(cme) 版本：2019-10-29
 
-### 第 2 次发布
+### 第 45 次发布
 
-发布时间：2021-12-13 08:14:47
+发布时间：2021-12-14 08:07:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ExternalMediaInfo](https://cloud.tencent.com/document/api/1156/40360#ExternalMediaInfo)
+
+	* 新增成员：StorageId
+
+	* <font color="#dd0000">**修改成员**：</font>Definition
+
+
+
+
+## 数字身份管控平台（员工版）(eiam) 版本：2021-04-20
+
+### 第 10 次发布
+
+发布时间：2021-12-14 08:09:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [UserInfo](https://cloud.tencent.com/document/api/1442/57931#UserInfo)
+
+	* 新增成员：UserName, Phone, Email, Status, DataSource
+
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 16 次发布
+
+发布时间：2021-12-14 08:12:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeInstanceParams](https://cloud.tencent.com/document/api/240/65903)
+
+新增数据结构：
+
+* [InstanceEnumParam](https://cloud.tencent.com/document/api/240/38576#InstanceEnumParam)
+* [InstanceIntegerParam](https://cloud.tencent.com/document/api/240/38576#InstanceIntegerParam)
+* [InstanceMultiParam](https://cloud.tencent.com/document/api/240/38576#InstanceMultiParam)
+* [InstanceTextParam](https://cloud.tencent.com/document/api/240/38576#InstanceTextParam)
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2018-04-08
+
+
+
+## 医疗报告结构化(mrs) 版本：2020-09-10
+
+### 第 10 次发布
+
+发布时间：2021-12-14 08:12:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Template](https://cloud.tencent.com/document/api/1314/56230#Template)
+
+	* 新增成员：OcrResult
+
+
+
+
+## 前端性能监控(rum) 版本：2021-06-22
+
+### 第 9 次发布
+
+发布时间：2021-12-14 08:13:36
 
 本次发布包含了以下内容：
 
@@ -68,15 +158,64 @@
 
 修改接口：
 
-* [CreateCluster](https://cloud.tencent.com/document/api/1527/64905)
+* [DescribeDataEventUrl](https://cloud.tencent.com/document/api/1464/65769)
 
-	* 新增入参：StorageOption
+	* 新增入参：Env
+
+* [DescribeDataLogUrlStatistics](https://cloud.tencent.com/document/api/1464/60495)
+
+	* 新增入参：Env
+
+* [DescribeDataPerformancePage](https://cloud.tencent.com/document/api/1464/59944)
+
+	* 新增入参：Env
+
+* [DescribeDataPvUrlStatistics](https://cloud.tencent.com/document/api/1464/65768)
+
+	* 新增入参：Env
 
 
-新增数据结构：
 
-* [CFSOption](https://cloud.tencent.com/document/api/1527/64906#CFSOption)
-* [StorageOption](https://cloud.tencent.com/document/api/1527/64906#StorageOption)
+
+## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 25 次发布
+
+发布时间：2021-12-14 08:15:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRocketMQTopic](https://cloud.tencent.com/document/api/1179/63426)
+
+	* 新增入参：PartitionNum
+
+* [ModifyRocketMQTopic](https://cloud.tencent.com/document/api/1179/63414)
+
+	* 新增入参：PartitionNum
+
+
+
+
+## 腾讯云微服务引擎(tse) 版本：2020-12-07
+
+### 第 13 次发布
+
+发布时间：2021-12-14 08:16:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSREInstances](https://cloud.tencent.com/document/api/1364/54940)
+
+	* 新增入参：QuerySource
+
 
 
 
@@ -2146,6 +2285,23 @@
 
 
 ## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 43 次发布
+
+发布时间：2021-12-14 08:05:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeAutoScalingAdvices](https://cloud.tencent.com/document/api/377/65901)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Advice](https://cloud.tencent.com/document/api/377/20453#Advice)](https://cloud.tencent.com/document/api/377/20453#[Advice](https://cloud.tencent.com/document/api/377/20453#Advice))
+* [[AutoScalingAdvice](https://cloud.tencent.com/document/api/377/20453#AutoScalingAdvice)](https://cloud.tencent.com/document/api/377/20453#[AutoScalingAdvice](https://cloud.tencent.com/document/api/377/20453#AutoScalingAdvice))
 
 ### 第 42 次发布
 
@@ -12789,11 +12945,11 @@
 
 新增接口：
 
-* [[CreateAutoClassifyStructureTask](https://cloud.tencent.com/document/api/1368/65848)](https://cloud.tencent.com/document/api/#/#)
+* [CreateAutoClassifyStructureTask](https://cloud.tencent.com/document/api/1368/65848)
 
 新增数据结构：
 
-* [[CreateAutoClassifyStructureTaskInfo](https://cloud.tencent.com/document/api/1368/56853#CreateAutoClassifyStructureTaskInfo)](https://cloud.tencent.com/document/api/1368/56853#[CreateAutoClassifyStructureTaskInfo](https://cloud.tencent.com/document/api/1368/56853#CreateAutoClassifyStructureTaskInfo))
+* [CreateAutoClassifyStructureTaskInfo](https://cloud.tencent.com/document/api/1368/56853#CreateAutoClassifyStructureTaskInfo)
 
 ### 第 7 次发布
 
@@ -12989,6 +13145,21 @@
 
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 28 次发布
+
+发布时间：2021-12-14 08:07:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceAttributesResponse](https://cloud.tencent.com/document/api/597/40861#InstanceAttributesResponse)
+
+	* 新增成员：RemainingPartitions, RemainingTopics
+
 
 ### 第 27 次发布
 
@@ -13597,6 +13768,22 @@
 
 ## 负载均衡(clb) 版本：2018-03-17
 
+### 第 61 次发布
+
+发布时间：2021-12-14 08:07:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeCrossTargets](https://cloud.tencent.com/document/api/214/65902)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CrossTargets](https://cloud.tencent.com/document/api/214/30694#CrossTargets)](https://cloud.tencent.com/document/api/214/30694#[CrossTargets](https://cloud.tencent.com/document/api/214/30694#CrossTargets))
+
 ### 第 60 次发布
 
 发布时间：2021-12-13 08:06:26
@@ -13607,7 +13794,7 @@
 
 新增接口：
 
-* [[MigrateClassicalLoadBalancers](https://cloud.tencent.com/document/api/214/65849)](https://cloud.tencent.com/document/api/#/#)
+* [MigrateClassicalLoadBalancers](https://cloud.tencent.com/document/api/214/65849)
 
 ### 第 59 次发布
 
@@ -15511,6 +15698,23 @@
 
 
 ## 多媒体创作引擎(cme) 版本：2019-10-29
+
+### 第 45 次发布
+
+发布时间：2021-12-14 08:07:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ExternalMediaInfo](https://cloud.tencent.com/document/api/1156/40360#ExternalMediaInfo)
+
+	* 新增成员：StorageId
+
+	* <font color="#dd0000">**修改成员**：</font>Definition
+
 
 ### 第 44 次发布
 
@@ -18506,7 +18710,7 @@
 
 新增接口：
 
-* [[ModifyInstanceDiskType](https://cloud.tencent.com/document/api/213/65850)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyInstanceDiskType](https://cloud.tencent.com/document/api/213/65850)
 
 ### 第 64 次发布
 
@@ -26290,6 +26494,21 @@
 
 
 ## 数字身份管控平台（员工版）(eiam) 版本：2021-04-20
+
+### 第 10 次发布
+
+发布时间：2021-12-14 08:09:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [UserInfo](https://cloud.tencent.com/document/api/1442/57931#UserInfo)
+
+	* 新增成员：UserName, Phone, Email, Status, DataSource
+
 
 ### 第 9 次发布
 
@@ -38499,6 +38718,25 @@
 
 ## 云数据库 MongoDB(mongodb) 版本：2019-07-25
 
+### 第 16 次发布
+
+发布时间：2021-12-14 08:12:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeInstanceParams](https://cloud.tencent.com/document/api/240/65903)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[InstanceEnumParam](https://cloud.tencent.com/document/api/240/38576#InstanceEnumParam)](https://cloud.tencent.com/document/api/240/38576#[InstanceEnumParam](https://cloud.tencent.com/document/api/240/38576#InstanceEnumParam))
+* [[InstanceIntegerParam](https://cloud.tencent.com/document/api/240/38576#InstanceIntegerParam)](https://cloud.tencent.com/document/api/240/38576#[InstanceIntegerParam](https://cloud.tencent.com/document/api/240/38576#InstanceIntegerParam))
+* [[InstanceMultiParam](https://cloud.tencent.com/document/api/240/38576#InstanceMultiParam)](https://cloud.tencent.com/document/api/240/38576#[InstanceMultiParam](https://cloud.tencent.com/document/api/240/38576#InstanceMultiParam))
+* [[InstanceTextParam](https://cloud.tencent.com/document/api/240/38576#InstanceTextParam)](https://cloud.tencent.com/document/api/240/38576#[InstanceTextParam](https://cloud.tencent.com/document/api/240/38576#InstanceTextParam))
+
 ### 第 15 次发布
 
 发布时间：2021-12-09 08:08:23
@@ -40718,6 +40956,21 @@
 
 
 ## 医疗报告结构化(mrs) 版本：2020-09-10
+
+### 第 10 次发布
+
+发布时间：2021-12-14 08:12:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Template](https://cloud.tencent.com/document/api/1314/56230#Template)
+
+	* 新增成员：OcrResult
+
 
 ### 第 9 次发布
 
@@ -45008,6 +45261,33 @@
 
 
 ## 前端性能监控(rum) 版本：2021-06-22
+
+### 第 9 次发布
+
+发布时间：2021-12-14 08:13:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDataEventUrl](https://cloud.tencent.com/document/api/1464/65769)
+
+	* 新增入参：Env
+
+* [DescribeDataLogUrlStatistics](https://cloud.tencent.com/document/api/1464/60495)
+
+	* 新增入参：Env
+
+* [DescribeDataPerformancePage](https://cloud.tencent.com/document/api/1464/59944)
+
+	* 新增入参：Env
+
+* [DescribeDataPvUrlStatistics](https://cloud.tencent.com/document/api/1464/65768)
+
+	* 新增入参：Env
+
 
 ### 第 8 次发布
 
@@ -52699,6 +52979,25 @@
 
 ## 分布式消息队列(tdmq) 版本：2020-02-17
 
+### 第 25 次发布
+
+发布时间：2021-12-14 08:15:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRocketMQTopic](https://cloud.tencent.com/document/api/1179/63426)
+
+	* 新增入参：PartitionNum
+
+* [ModifyRocketMQTopic](https://cloud.tencent.com/document/api/1179/63414)
+
+	* 新增入参：PartitionNum
+
+
 ### 第 24 次发布
 
 发布时间：2021-12-03 08:11:41
@@ -53737,8 +54036,8 @@
 
 新增数据结构：
 
-* [[CFSOption](https://cloud.tencent.com/document/api/1527/64906#CFSOption)](https://cloud.tencent.com/document/api/1527/64906#[CFSOption](https://cloud.tencent.com/document/api/1527/64906#CFSOption))
-* [[StorageOption](https://cloud.tencent.com/document/api/1527/64906#StorageOption)](https://cloud.tencent.com/document/api/1527/64906#[StorageOption](https://cloud.tencent.com/document/api/1527/64906#StorageOption))
+* [CFSOption](https://cloud.tencent.com/document/api/1527/64906#CFSOption)
+* [StorageOption](https://cloud.tencent.com/document/api/1527/64906#StorageOption)
 
 ### 第 1 次发布
 
@@ -57694,6 +57993,21 @@
 
 
 ## 腾讯云微服务引擎(tse) 版本：2020-12-07
+
+### 第 13 次发布
+
+发布时间：2021-12-14 08:16:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSREInstances](https://cloud.tencent.com/document/api/1364/54940)
+
+	* 新增入参：QuerySource
+
 
 ### 第 12 次发布
 

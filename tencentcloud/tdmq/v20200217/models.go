@@ -1785,7 +1785,7 @@ type CreateRocketMQTopicRequest struct {
 	// 主题所在的命名空间，目前支持在单个命名空间下创建主题
 	Namespaces []*string `json:"Namespaces,omitempty" name:"Namespaces"`
 
-	// 主题类型，可选值为Normal, GlobalOrder, PartitionedOrder, Transaction
+	// 主题类型，可选值为Normal, GlobalOrder, PartitionedOrder
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 集群ID
@@ -1793,6 +1793,9 @@ type CreateRocketMQTopicRequest struct {
 
 	// 主题说明，最大128个字符
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 分区数，全局顺序无效
+	PartitionNum *int64 `json:"PartitionNum,omitempty" name:"PartitionNum"`
 }
 
 func (r *CreateRocketMQTopicRequest) ToJsonString() string {
@@ -1812,6 +1815,7 @@ func (r *CreateRocketMQTopicRequest) FromJsonString(s string) error {
 	delete(f, "Type")
 	delete(f, "ClusterId")
 	delete(f, "Remark")
+	delete(f, "PartitionNum")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRocketMQTopicRequest has unknown keys!", "")
 	}
@@ -6176,6 +6180,9 @@ type ModifyRocketMQTopicRequest struct {
 
 	// 说明信息，最大128个字符
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 分区数，全局类型无效，不可小于当前分区数
+	PartitionNum *int64 `json:"PartitionNum,omitempty" name:"PartitionNum"`
 }
 
 func (r *ModifyRocketMQTopicRequest) ToJsonString() string {
@@ -6194,6 +6201,7 @@ func (r *ModifyRocketMQTopicRequest) FromJsonString(s string) error {
 	delete(f, "NamespaceId")
 	delete(f, "Topic")
 	delete(f, "Remark")
+	delete(f, "PartitionNum")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRocketMQTopicRequest has unknown keys!", "")
 	}

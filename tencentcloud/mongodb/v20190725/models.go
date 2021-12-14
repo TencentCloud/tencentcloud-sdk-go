@@ -1196,6 +1196,67 @@ func (r *DescribeDBInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeInstanceParamsRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeInstanceParamsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceParamsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceParamsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceParamsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 值为枚举类型参数集合
+		InstanceEnumParam []*InstanceEnumParam `json:"InstanceEnumParam,omitempty" name:"InstanceEnumParam"`
+
+		// 值为integer类型参数集合
+		InstanceIntegerParam []*InstanceIntegerParam `json:"InstanceIntegerParam,omitempty" name:"InstanceIntegerParam"`
+
+		// 值为text类型的参数集合
+		InstanceTextParam []*InstanceTextParam `json:"InstanceTextParam,omitempty" name:"InstanceTextParam"`
+
+		// 值为混合类型的参数集合
+		InstanceMultiParam []*InstanceMultiParam `json:"InstanceMultiParam,omitempty" name:"InstanceMultiParam"`
+
+		// 当前实例支持修改的参数个数统计 如0
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInstanceParamsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceParamsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSecurityGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -1819,6 +1880,120 @@ type InstanceDetail struct {
 
 	// 实例对应的物理实例id，回档并替换过的实例有不同的InstanceId和RealInstanceId，从barad获取监控数据等场景下需要用物理id获取
 	RealInstanceId *string `json:"RealInstanceId,omitempty" name:"RealInstanceId"`
+}
+
+type InstanceEnumParam struct {
+
+	// 参数当前值
+	CurrentValue *string `json:"CurrentValue,omitempty" name:"CurrentValue"`
+
+	// 默认值
+	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
+
+	// 枚举值，所有支持的值
+	EnumValue []*string `json:"EnumValue,omitempty" name:"EnumValue"`
+
+	// 是否需要重启后生效，"1"需要，"0"无需重启
+	NeedRestart *string `json:"NeedRestart,omitempty" name:"NeedRestart"`
+
+	// 参数名称
+	ParamName *string `json:"ParamName,omitempty" name:"ParamName"`
+
+	// 中英文说明
+	Tips []*string `json:"Tips,omitempty" name:"Tips"`
+
+	// 参数值类型说明
+	ValueType *string `json:"ValueType,omitempty" name:"ValueType"`
+
+	// 是否获取到参数，1为获取，前端正常显示，0:前段显示loading
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+}
+
+type InstanceIntegerParam struct {
+
+	// 当前值
+	CurrentValue *string `json:"CurrentValue,omitempty" name:"CurrentValue"`
+
+	// 默认值
+	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
+
+	// 最大值
+	Max *string `json:"Max,omitempty" name:"Max"`
+
+	// 最小值
+	Min *string `json:"Min,omitempty" name:"Min"`
+
+	// 是否徐亚哦重启后生效 1:需要重启；0:无需重启
+	NeedRestart *string `json:"NeedRestart,omitempty" name:"NeedRestart"`
+
+	// 参数名称
+	ParamName *string `json:"ParamName,omitempty" name:"ParamName"`
+
+	// 参数说明
+	Tips []*string `json:"Tips,omitempty" name:"Tips"`
+
+	// 参数类型
+	ValueType *string `json:"ValueType,omitempty" name:"ValueType"`
+
+	// 是否正常获取到，1：未正常获取；0：正常获取，仅对前端有实际意义；
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 暂时未用到，前端使用redis侧代码，为了兼容，保留该参数
+	Unit *string `json:"Unit,omitempty" name:"Unit"`
+}
+
+type InstanceMultiParam struct {
+
+	// 当前值
+	CurrentValue *string `json:"CurrentValue,omitempty" name:"CurrentValue"`
+
+	// 默认值
+	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
+
+	// 指导值范围
+	EnumValue []*string `json:"EnumValue,omitempty" name:"EnumValue"`
+
+	// 是否需要重启
+	NeedRestart *string `json:"NeedRestart,omitempty" name:"NeedRestart"`
+
+	// 参数名称
+	ParamName *string `json:"ParamName,omitempty" name:"ParamName"`
+
+	// 状态值
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 参数说明
+	Tips []*string `json:"Tips,omitempty" name:"Tips"`
+
+	// 值类型，multi混合类型
+	ValueType *string `json:"ValueType,omitempty" name:"ValueType"`
+}
+
+type InstanceTextParam struct {
+
+	// 当前值(暂未使用)
+	CurrentValue *string `json:"CurrentValue,omitempty" name:"CurrentValue"`
+
+	// 默认值(暂未使用)
+	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
+
+	// 是否需要重启(暂未使用)
+	NeedRestart *string `json:"NeedRestart,omitempty" name:"NeedRestart"`
+
+	// 参数名称(暂未使用)
+	ParamName *string `json:"ParamName,omitempty" name:"ParamName"`
+
+	// text类型值(暂未使用)
+	TextValue *string `json:"TextValue,omitempty" name:"TextValue"`
+
+	// 说明(暂未使用)
+	Tips []*string `json:"Tips,omitempty" name:"Tips"`
+
+	// 值类型(暂未使用)
+	ValueType *string `json:"ValueType,omitempty" name:"ValueType"`
+
+	// 值获取状态(暂未使用)
+	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
 type IsolateDBInstanceRequest struct {

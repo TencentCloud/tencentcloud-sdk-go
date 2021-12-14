@@ -87,6 +87,18 @@ type ActivtyRelatedInstance struct {
 	InstanceStatus *string `json:"InstanceStatus,omitempty" name:"InstanceStatus"`
 }
 
+type Advice struct {
+
+	// 问题描述。
+	Problem *string `json:"Problem,omitempty" name:"Problem"`
+
+	// 问题详情。
+	Detail *string `json:"Detail,omitempty" name:"Detail"`
+
+	// 建议解决方案。
+	Solution *string `json:"Solution,omitempty" name:"Solution"`
+}
+
 type AttachInstancesRequest struct {
 	*tchttp.BaseRequest
 
@@ -138,6 +150,15 @@ func (r *AttachInstancesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *AttachInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type AutoScalingAdvice struct {
+
+	// 伸缩组ID。
+	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitempty" name:"AutoScalingGroupId"`
+
+	// 伸缩组配置建议集合。
+	Advices []*Advice `json:"Advices,omitempty" name:"Advices"`
 }
 
 type AutoScalingGroup struct {
@@ -1501,6 +1522,55 @@ func (r *DescribeAutoScalingActivitiesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAutoScalingActivitiesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAutoScalingAdvicesRequest struct {
+	*tchttp.BaseRequest
+
+	// 待查询的伸缩组列表，上限100。
+	AutoScalingGroupIds []*string `json:"AutoScalingGroupIds,omitempty" name:"AutoScalingGroupIds"`
+}
+
+func (r *DescribeAutoScalingAdvicesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAutoScalingAdvicesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AutoScalingGroupIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAutoScalingAdvicesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAutoScalingAdvicesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 伸缩组配置建议集合。
+		AutoScalingAdviceSet []*AutoScalingAdvice `json:"AutoScalingAdviceSet,omitempty" name:"AutoScalingAdviceSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAutoScalingAdvicesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAutoScalingAdvicesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

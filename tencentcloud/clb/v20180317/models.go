@@ -1418,6 +1418,35 @@ func (r *CreateTopicResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CrossTargets struct {
+
+	// 本地私有网络ID，即负载均衡的VpcId。
+	LocalVpcId *string `json:"LocalVpcId,omitempty" name:"LocalVpcId"`
+
+	// 子机或网卡所属的私有网络ID。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子机或网卡的IP地址
+	IP *string `json:"IP,omitempty" name:"IP"`
+
+	// 子机或网卡所属的私有网络名称。
+	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
+
+	// 子机的网卡ID。
+	EniId *string `json:"EniId,omitempty" name:"EniId"`
+
+	// 子机实例ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 子机实例名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 子机或者网卡所属的地域。
+	Region *string `json:"Region,omitempty" name:"Region"`
+}
+
 type DeleteListenerRequest struct {
 	*tchttp.BaseRequest
 
@@ -2390,6 +2419,70 @@ func (r *DescribeClusterResourcesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeClusterResourcesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCrossTargetsRequest struct {
+	*tchttp.BaseRequest
+
+	// 返回后端服务列表数目，默认20，最大值100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 返回后端服务列表起始偏移量，默认0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询跨域2.0版本云联网后端子机和网卡服务列表条件，详细的过滤条件如下：
+	// <li> vpc-id - String - 是否必填：否 - （过滤条件）按照 本地私有网络ID，即负载均衡的VpcId 过滤，如："vpc-12345678"。</li>
+	// <li> ip - String - 是否必填：否 - （过滤条件）按照 后端服务ip 过滤，如："192.168.0.1"。</li>
+	// <li> listener-id - String - 是否必填：否 - （过滤条件）按照 监听器ID 过滤，如："lbl-12345678"。</li>
+	// <li> location-id - String - 是否必填：否 - （过滤条件）按照 七层监听器规则ID 过滤，如："loc-12345678"。</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeCrossTargetsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCrossTargetsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCrossTargetsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCrossTargetsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 后端服务列表总数。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 后端服务列表。
+		CrossTargetSet []*CrossTargets `json:"CrossTargetSet,omitempty" name:"CrossTargetSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCrossTargetsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCrossTargetsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4752,7 +4845,7 @@ func (r *ModifyLoadBalancerAttributesResponse) FromJsonString(s string) error {
 type ModifyLoadBalancerSlaRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡性能保障实例ID和变配的目标规格
+	// 负载均衡实例信息
 	LoadBalancerSla []*SlaUpdateParam `json:"LoadBalancerSla,omitempty" name:"LoadBalancerSla"`
 }
 
@@ -5878,7 +5971,7 @@ type SlaUpdateParam struct {
 	// lb的字符串ID
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 需要变更的性能保障级别
+	// 变更为性能容量型，固定为SLA
 	SlaType *string `json:"SlaType,omitempty" name:"SlaType"`
 }
 

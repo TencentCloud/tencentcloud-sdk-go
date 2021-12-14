@@ -910,6 +910,39 @@ func (c *Client) DescribeAutoScalingActivities(request *DescribeAutoScalingActiv
     return
 }
 
+func NewDescribeAutoScalingAdvicesRequest() (request *DescribeAutoScalingAdvicesRequest) {
+    request = &DescribeAutoScalingAdvicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("as", APIVersion, "DescribeAutoScalingAdvices")
+    
+    
+    return
+}
+
+func NewDescribeAutoScalingAdvicesResponse() (response *DescribeAutoScalingAdvicesResponse) {
+    response = &DescribeAutoScalingAdvicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAutoScalingAdvices
+// 此接口用于查询伸缩组配置建议。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+func (c *Client) DescribeAutoScalingAdvices(request *DescribeAutoScalingAdvicesRequest) (response *DescribeAutoScalingAdvicesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAutoScalingAdvicesRequest()
+    }
+    
+    response = NewDescribeAutoScalingAdvicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAutoScalingGroupLastActivitiesRequest() (request *DescribeAutoScalingGroupLastActivitiesRequest) {
     request = &DescribeAutoScalingGroupLastActivitiesRequest{
         BaseRequest: &tchttp.BaseRequest{},

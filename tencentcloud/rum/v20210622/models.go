@@ -165,6 +165,9 @@ type DescribeDataEventUrlRequest struct {
 
 	// 筛选条件
 	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 环境
+	Env *string `json:"Env,omitempty" name:"Env"`
 }
 
 func (r *DescribeDataEventUrlRequest) ToJsonString() string {
@@ -200,6 +203,7 @@ func (r *DescribeDataEventUrlRequest) FromJsonString(s string) error {
 	delete(f, "Os")
 	delete(f, "Browser")
 	delete(f, "Name")
+	delete(f, "Env")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataEventUrlRequest has unknown keys!", "")
 	}
@@ -291,6 +295,9 @@ type DescribeDataLogUrlStatisticsRequest struct {
 
 	// 浏览器
 	Browser *string `json:"Browser,omitempty" name:"Browser"`
+
+	// 环境区分
+	Env *string `json:"Env,omitempty" name:"Env"`
 }
 
 func (r *DescribeDataLogUrlStatisticsRequest) ToJsonString() string {
@@ -325,6 +332,7 @@ func (r *DescribeDataLogUrlStatisticsRequest) FromJsonString(s string) error {
 	delete(f, "IsAbroad")
 	delete(f, "Os")
 	delete(f, "Browser")
+	delete(f, "Env")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataLogUrlStatisticsRequest has unknown keys!", "")
 	}
@@ -419,6 +427,9 @@ type DescribeDataPerformancePageRequest struct {
 
 	// 耗时计算方式
 	CostType *string `json:"CostType,omitempty" name:"CostType"`
+
+	// 环境变量
+	Env *string `json:"Env,omitempty" name:"Env"`
 }
 
 func (r *DescribeDataPerformancePageRequest) ToJsonString() string {
@@ -454,6 +465,7 @@ func (r *DescribeDataPerformancePageRequest) FromJsonString(s string) error {
 	delete(f, "Brand")
 	delete(f, "From")
 	delete(f, "CostType")
+	delete(f, "Env")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataPerformancePageRequest has unknown keys!", "")
 	}
@@ -545,6 +557,9 @@ type DescribeDataPvUrlStatisticsRequest struct {
 
 	// 浏览器
 	Browser *string `json:"Browser,omitempty" name:"Browser"`
+
+	// 环境
+	Env *string `json:"Env,omitempty" name:"Env"`
 }
 
 func (r *DescribeDataPvUrlStatisticsRequest) ToJsonString() string {
@@ -579,6 +594,7 @@ func (r *DescribeDataPvUrlStatisticsRequest) FromJsonString(s string) error {
 	delete(f, "IsAbroad")
 	delete(f, "Os")
 	delete(f, "Browser")
+	delete(f, "Env")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataPvUrlStatisticsRequest has unknown keys!", "")
 	}

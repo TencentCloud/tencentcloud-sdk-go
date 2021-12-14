@@ -1315,6 +1315,46 @@ func (c *Client) DescribeClusterResources(request *DescribeClusterResourcesReque
     return
 }
 
+func NewDescribeCrossTargetsRequest() (request *DescribeCrossTargetsRequest) {
+    request = &DescribeCrossTargetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "DescribeCrossTargets")
+    
+    
+    return
+}
+
+func NewDescribeCrossTargetsResponse() (response *DescribeCrossTargetsResponse) {
+    response = &DescribeCrossTargetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCrossTargets
+// 查询跨域2.0版本云联网后端子机和网卡信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeCrossTargets(request *DescribeCrossTargetsRequest) (response *DescribeCrossTargetsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCrossTargetsRequest()
+    }
+    
+    response = NewDescribeCrossTargetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCustomizedConfigAssociateListRequest() (request *DescribeCustomizedConfigAssociateListRequest) {
     request = &DescribeCustomizedConfigAssociateListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2360,7 +2400,7 @@ func NewModifyLoadBalancerSlaResponse() (response *ModifyLoadBalancerSlaResponse
 }
 
 // ModifyLoadBalancerSla
-// 升、降配接口。支持共享型clb升级到性能保障型clb。支持性能保障型提升等级。支持性能保障降低规格。（不支持性能保障降级到共享型）。
+// 支持共享型clb升级到性能容量型clb（不支持性能保障降级到共享型）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

@@ -115,6 +115,9 @@ type DescribeSREInstancesRequest struct {
 
 	// 查询类型
 	QueryType *string `json:"QueryType,omitempty" name:"QueryType"`
+
+	// 调用方来源
+	QuerySource *string `json:"QuerySource,omitempty" name:"QuerySource"`
 }
 
 func (r *DescribeSREInstancesRequest) ToJsonString() string {
@@ -133,6 +136,7 @@ func (r *DescribeSREInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "QueryType")
+	delete(f, "QuerySource")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSREInstancesRequest has unknown keys!", "")
 	}

@@ -2125,6 +2125,26 @@ type UserInfo struct {
 	// 昵称，长度限制：64个字符。 默认与用户名相同。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+
+	// 用户名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 用户手机号。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+
+	// 邮箱地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 用户状态。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 数据来源。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataSource *string `json:"DataSource,omitempty" name:"DataSource"`
 }
 
 type UserInformation struct {
