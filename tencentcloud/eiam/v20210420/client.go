@@ -43,6 +43,44 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAddAccountToAccountGroupRequest() (request *AddAccountToAccountGroupRequest) {
+    request = &AddAccountToAccountGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("eiam", APIVersion, "AddAccountToAccountGroup")
+    
+    
+    return
+}
+
+func NewAddAccountToAccountGroupResponse() (response *AddAccountToAccountGroupResponse) {
+    response = &AddAccountToAccountGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddAccountToAccountGroup
+// 账号组添加账号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTALREADYEXISTEDINACCOUNTGROUP = "FailedOperation.AccountAlreadyExistedInAccountGroup"
+//  FAILEDOPERATION_ACCOUNTGROUPNOTEXISTED = "FailedOperation.AccountGroupNotExisted"
+//  FAILEDOPERATION_ACCOUNTNOTEXISTED = "FailedOperation.AccountNotExisted"
+//  FAILEDOPERATION_APPNOTEXISTED = "FailedOperation.AppNotExisted"
+//  FAILEDOPERATION_ITEMSEXCEEDMAXNUMBER = "FailedOperation.ItemsExceedMaxNumber"
+//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+func (c *Client) AddAccountToAccountGroup(request *AddAccountToAccountGroupRequest) (response *AddAccountToAccountGroupResponse, err error) {
+    if request == nil {
+        request = NewAddAccountToAccountGroupRequest()
+    }
+    
+    response = NewAddAccountToAccountGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddUserToUserGroupRequest() (request *AddUserToUserGroupRequest) {
     request = &AddUserToUserGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -80,6 +118,77 @@ func (c *Client) AddUserToUserGroup(request *AddUserToUserGroupRequest) (respons
     return
 }
 
+func NewCreateAccountGroupRequest() (request *CreateAccountGroupRequest) {
+    request = &CreateAccountGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("eiam", APIVersion, "CreateAccountGroup")
+    
+    
+    return
+}
+
+func NewCreateAccountGroupResponse() (response *CreateAccountGroupResponse) {
+    response = &CreateAccountGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateAccountGroup
+// 创建账号组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTGROUPNAMEEXISTED = "FailedOperation.AccountGroupNameExisted"
+//  FAILEDOPERATION_APPNOTEXISTED = "FailedOperation.AppNotExisted"
+//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+func (c *Client) CreateAccountGroup(request *CreateAccountGroupRequest) (response *CreateAccountGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateAccountGroupRequest()
+    }
+    
+    response = NewCreateAccountGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateAppAccountRequest() (request *CreateAppAccountRequest) {
+    request = &CreateAppAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("eiam", APIVersion, "CreateAppAccount")
+    
+    
+    return
+}
+
+func NewCreateAppAccountResponse() (response *CreateAppAccountResponse) {
+    response = &CreateAppAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateAppAccount
+// 创建应用账号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTGROUPNOTEXISTED = "FailedOperation.AccountGroupNotExisted"
+//  FAILEDOPERATION_ACCOUNTNAMEEXISTED = "FailedOperation.AccountNameExisted"
+//  FAILEDOPERATION_APPNOTEXISTED = "FailedOperation.AppNotExisted"
+//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+func (c *Client) CreateAppAccount(request *CreateAppAccountRequest) (response *CreateAppAccountResponse, err error) {
+    if request == nil {
+        request = NewCreateAppAccountRequest()
+    }
+    
+    response = NewCreateAppAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateOrgNodeRequest() (request *CreateOrgNodeRequest) {
     request = &CreateOrgNodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -101,6 +210,7 @@ func NewCreateOrgNodeResponse() (response *CreateOrgNodeResponse) {
 // 新建一个机构节点
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CHILDORGNODENAMEEXISTS = "FailedOperation.ChildOrgNodeNameExists"
 //  FAILEDOPERATION_CREATEORGNODEFAILURE = "FailedOperation.CreateOrgNodeFailure"
 //  FAILEDOPERATION_CUSTOMIZEDPARENTORGNODEIDEXISTED = "FailedOperation.CustomizedParentOrgNodeIdExisted"
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
@@ -138,11 +248,13 @@ func NewCreateUserResponse() (response *CreateUserResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEUSERFAILURE = "FailedOperation.CreateUserFailure"
+//  FAILEDOPERATION_DESCRIBEORGNODEROOTFAILURE = "FailedOperation.DescribeOrgNodeRootFailure"
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
 //  FAILEDOPERATION_TIMEFORMATISILLEGAL = "FailedOperation.TimeFormatIsIllegal"
 //  FAILEDOPERATION_USEREXPRIATIONTIMEISILLEGAL = "FailedOperation.UserExpriationTimeIsIllegal"
 //  FAILEDOPERATION_USERNAMEEXISTED = "FailedOperation.UserNameExisted"
 //  FAILEDOPERATION_USERPHONEEXISTED = "FailedOperation.UserPhoneExisted"
+//  INVALIDPARAMETER_ATTRIBUTEVALUEVALIDFAILURE = "InvalidParameter.AttributeValueValidFailure"
 //  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
 //  INVALIDPARAMETER_PASSWORDISILLEGAL = "InvalidParameter.PasswordIsIllegal"
 func (c *Client) CreateUser(request *CreateUserRequest) (response *CreateUserResponse, err error) {
@@ -185,6 +297,79 @@ func (c *Client) CreateUserGroup(request *CreateUserGroupRequest) (response *Cre
     }
     
     response = NewCreateUserGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAccountGroupRequest() (request *DeleteAccountGroupRequest) {
+    request = &DeleteAccountGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("eiam", APIVersion, "DeleteAccountGroup")
+    
+    
+    return
+}
+
+func NewDeleteAccountGroupResponse() (response *DeleteAccountGroupResponse) {
+    response = &DeleteAccountGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteAccountGroup
+// 删除账号组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTGROUPNOTEXISTED = "FailedOperation.AccountGroupNotExisted"
+//  FAILEDOPERATION_ACCOUNTNOTEXISTED = "FailedOperation.AccountNotExisted"
+//  FAILEDOPERATION_APPNOTEXISTED = "FailedOperation.AppNotExisted"
+//  FAILEDOPERATION_ITEMSEXCEEDMAXNUMBER = "FailedOperation.ItemsExceedMaxNumber"
+//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+func (c *Client) DeleteAccountGroup(request *DeleteAccountGroupRequest) (response *DeleteAccountGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteAccountGroupRequest()
+    }
+    
+    response = NewDeleteAccountGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAppAccountRequest() (request *DeleteAppAccountRequest) {
+    request = &DeleteAppAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("eiam", APIVersion, "DeleteAppAccount")
+    
+    
+    return
+}
+
+func NewDeleteAppAccountResponse() (response *DeleteAppAccountResponse) {
+    response = &DeleteAppAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteAppAccount
+// 删除应用账号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTNOTEXISTED = "FailedOperation.AccountNotExisted"
+//  FAILEDOPERATION_APPNOTEXISTED = "FailedOperation.AppNotExisted"
+//  FAILEDOPERATION_ITEMSEXCEEDMAXNUMBER = "FailedOperation.ItemsExceedMaxNumber"
+//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+func (c *Client) DeleteAppAccount(request *DeleteAppAccountRequest) (response *DeleteAppAccountResponse, err error) {
+    if request == nil {
+        request = NewDeleteAppAccountRequest()
+    }
+    
+    response = NewDeleteAppAccountResponse()
     err = c.Send(request, response)
     return
 }
@@ -296,6 +481,107 @@ func (c *Client) DeleteUserGroup(request *DeleteUserGroupRequest) (response *Del
     return
 }
 
+func NewDeleteUsersRequest() (request *DeleteUsersRequest) {
+    request = &DeleteUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("eiam", APIVersion, "DeleteUsers")
+    
+    
+    return
+}
+
+func NewDeleteUsersResponse() (response *DeleteUsersResponse) {
+    response = &DeleteUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteUsers
+// 批量删除当前节点下的用户。如果出现个别用户删除错误，将不影响其余被勾选用户被删除的操作，同时提示未被删除的用户名称/用户ID。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+func (c *Client) DeleteUsers(request *DeleteUsersRequest) (response *DeleteUsersResponse, err error) {
+    if request == nil {
+        request = NewDeleteUsersRequest()
+    }
+    
+    response = NewDeleteUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAccountGroupRequest() (request *DescribeAccountGroupRequest) {
+    request = &DescribeAccountGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("eiam", APIVersion, "DescribeAccountGroup")
+    
+    
+    return
+}
+
+func NewDescribeAccountGroupResponse() (response *DescribeAccountGroupResponse) {
+    response = &DescribeAccountGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAccountGroup
+// 查询账号组列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPNOTEXISTED = "FailedOperation.AppNotExisted"
+//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+func (c *Client) DescribeAccountGroup(request *DescribeAccountGroupRequest) (response *DescribeAccountGroupResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccountGroupRequest()
+    }
+    
+    response = NewDescribeAccountGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAppAccountRequest() (request *DescribeAppAccountRequest) {
+    request = &DescribeAppAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("eiam", APIVersion, "DescribeAppAccount")
+    
+    
+    return
+}
+
+func NewDescribeAppAccountResponse() (response *DescribeAppAccountResponse) {
+    response = &DescribeAppAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAppAccount
+// 查询应用账号列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPNOTEXISTED = "FailedOperation.AppNotExisted"
+//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+func (c *Client) DescribeAppAccount(request *DescribeAppAccountRequest) (response *DescribeAppAccountResponse, err error) {
+    if request == nil {
+        request = NewDescribeAppAccountRequest()
+    }
+    
+    response = NewDescribeAppAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeApplicationRequest() (request *DescribeApplicationRequest) {
     request = &DescribeApplicationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -352,7 +638,9 @@ func NewDescribeOrgNodeResponse() (response *DescribeOrgNodeResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEORGNODEFAILURE = "FailedOperation.DescribeOrgNodeFailure"
+//  FAILEDOPERATION_DESCRIBEORGNODEROOTFAILURE = "FailedOperation.DescribeOrgNodeRootFailure"
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_ORGNODEIDNOTEXIST = "FailedOperation.OrgNodeIdNotExist"
 //  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
 func (c *Client) DescribeOrgNode(request *DescribeOrgNodeRequest) (response *DescribeOrgNodeResponse, err error) {
     if request == nil {
@@ -568,6 +856,77 @@ func (c *Client) DescribeUserResourcesAuthorization(request *DescribeUserResourc
     }
     
     response = NewDescribeUserResourcesAuthorizationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUserThirdPartyAccountInfoRequest() (request *DescribeUserThirdPartyAccountInfoRequest) {
+    request = &DescribeUserThirdPartyAccountInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("eiam", APIVersion, "DescribeUserThirdPartyAccountInfo")
+    
+    
+    return
+}
+
+func NewDescribeUserThirdPartyAccountInfoResponse() (response *DescribeUserThirdPartyAccountInfoResponse) {
+    response = &DescribeUserThirdPartyAccountInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeUserThirdPartyAccountInfo
+// 通过用户名或用户 id 获取用户的第三方账号绑定信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_USERNOTFOUND = "FailedOperation.UserNotFound"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  INVALIDPARAMETER_USERIDISNULL = "InvalidParameter.UserIDIsNull"
+//  INVALIDPARAMETER_USERNAMEISNULL = "InvalidParameter.UserNameIsNull"
+func (c *Client) DescribeUserThirdPartyAccountInfo(request *DescribeUserThirdPartyAccountInfoRequest) (response *DescribeUserThirdPartyAccountInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserThirdPartyAccountInfoRequest()
+    }
+    
+    response = NewDescribeUserThirdPartyAccountInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListAccountInAccountGroupRequest() (request *ListAccountInAccountGroupRequest) {
+    request = &ListAccountInAccountGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("eiam", APIVersion, "ListAccountInAccountGroup")
+    
+    
+    return
+}
+
+func NewListAccountInAccountGroupResponse() (response *ListAccountInAccountGroupResponse) {
+    response = &ListAccountInAccountGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListAccountInAccountGroup
+//  获取账号组中的账号列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTGROUPNOTEXISTED = "FailedOperation.AccountGroupNotExisted"
+//  FAILEDOPERATION_APPNOTEXISTED = "FailedOperation.AppNotExisted"
+//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+func (c *Client) ListAccountInAccountGroup(request *ListAccountInAccountGroupRequest) (response *ListAccountInAccountGroupResponse, err error) {
+    if request == nil {
+        request = NewListAccountInAccountGroupRequest()
+    }
+    
+    response = NewListAccountInAccountGroupResponse()
     err = c.Send(request, response)
     return
 }
@@ -804,6 +1163,8 @@ func NewListUserGroupsOfUserResponse() (response *ListUserGroupsOfUserResponse) 
 // 可能返回的错误码:
 //  FAILEDOPERATION_LISTUSERGROUPSOFUSERFAILURE = "FailedOperation.ListUserGroupsOfUserFailure"
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_USERINFOSORTKEYISILLEGAL = "FailedOperation.UserInfoSortKeyIsIllegal"
+//  FAILEDOPERATION_USERNOTFOUND = "FailedOperation.UserNotFound"
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
 func (c *Client) ListUserGroupsOfUser(request *ListUserGroupsOfUserRequest) (response *ListUserGroupsOfUserResponse, err error) {
     if request == nil {
@@ -873,8 +1234,12 @@ func NewListUsersInOrgNodeResponse() (response *ListUsersInOrgNodeResponse) {
 // 根据机构节点ID读取节点下用户
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEORGNODEROOTFAILURE = "FailedOperation.DescribeOrgNodeRootFailure"
 //  FAILEDOPERATION_LISTUSERSINORGNODEFAILURE = "FailedOperation.ListUsersInOrgNodeFailure"
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_ORGNODEIDNOTEXIST = "FailedOperation.OrgNodeIdNotExist"
+//  FAILEDOPERATION_SEARCHCRITERIAISILLEGAL = "FailedOperation.SearchCriteriaIsIllegal"
+//  FAILEDOPERATION_TIMEFORMATISILLEGAL = "FailedOperation.TimeFormatIsIllegal"
 //  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
 func (c *Client) ListUsersInOrgNode(request *ListUsersInOrgNodeRequest) (response *ListUsersInOrgNodeResponse, err error) {
     if request == nil {
@@ -917,6 +1282,77 @@ func (c *Client) ListUsersInUserGroup(request *ListUsersInUserGroupRequest) (res
     }
     
     response = NewListUsersInUserGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAccountGroupRequest() (request *ModifyAccountGroupRequest) {
+    request = &ModifyAccountGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("eiam", APIVersion, "ModifyAccountGroup")
+    
+    
+    return
+}
+
+func NewModifyAccountGroupResponse() (response *ModifyAccountGroupResponse) {
+    response = &ModifyAccountGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyAccountGroup
+// 修改账号组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTGROUPNOTEXISTED = "FailedOperation.AccountGroupNotExisted"
+//  FAILEDOPERATION_ACCOUNTNOTEXISTED = "FailedOperation.AccountNotExisted"
+//  FAILEDOPERATION_APPNOTEXISTED = "FailedOperation.AppNotExisted"
+//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+func (c *Client) ModifyAccountGroup(request *ModifyAccountGroupRequest) (response *ModifyAccountGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyAccountGroupRequest()
+    }
+    
+    response = NewModifyAccountGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAppAccountRequest() (request *ModifyAppAccountRequest) {
+    request = &ModifyAppAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("eiam", APIVersion, "ModifyAppAccount")
+    
+    
+    return
+}
+
+func NewModifyAppAccountResponse() (response *ModifyAppAccountResponse) {
+    response = &ModifyAppAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyAppAccount
+// 修改应用账号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTNOTEXISTED = "FailedOperation.AccountNotExisted"
+//  FAILEDOPERATION_APPNOTEXISTED = "FailedOperation.AppNotExisted"
+//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+func (c *Client) ModifyAppAccount(request *ModifyAppAccountRequest) (response *ModifyAppAccountResponse, err error) {
+    if request == nil {
+        request = NewModifyAppAccountRequest()
+    }
+    
+    response = NewModifyAppAccountResponse()
     err = c.Send(request, response)
     return
 }
@@ -976,20 +1412,64 @@ func NewModifyUserInfoResponse() (response *ModifyUserInfoResponse) {
 // 通过用户名或用户 id 冻结用户
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEORGNODEFAILURE = "FailedOperation.DescribeOrgNodeFailure"
+//  FAILEDOPERATION_DESCRIBEORGNODEROOTFAILURE = "FailedOperation.DescribeOrgNodeRootFailure"
+//  FAILEDOPERATION_NEWPASSWORDMUSTNOTBLANK = "FailedOperation.NewPasswordMustNotBlank"
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_ORGNODENOTEXIST = "FailedOperation.OrgNodeNotExist"
 //  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
 //  FAILEDOPERATION_TIMEFORMATISILLEGAL = "FailedOperation.TimeFormatIsIllegal"
+//  FAILEDOPERATION_USEREMAILEXISTED = "FailedOperation.UserEmailExisted"
 //  FAILEDOPERATION_USERPHONEEXISTED = "FailedOperation.UserPhoneExisted"
 //  FAILEDOPERATION_USERPHONEISEMPTY = "FailedOperation.UserPhoneIsEmpty"
 //  INVALIDPARAMETER_ATTRIBUTEVALUEVALIDFAILURE = "InvalidParameter.AttributeValueValidFailure"
 //  INVALIDPARAMETER_PARAMETEREXCEEDSLENGTHLIMIT = "InvalidParameter.ParameterExceedsLengthLimit"
 //  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  INVALIDPARAMETER_USERIDISNULL = "InvalidParameter.UserIDIsNull"
+//  INVALIDPARAMETER_USERNAMEISNULL = "InvalidParameter.UserNameIsNull"
 func (c *Client) ModifyUserInfo(request *ModifyUserInfoRequest) (response *ModifyUserInfoResponse, err error) {
     if request == nil {
         request = NewModifyUserInfoRequest()
     }
     
     response = NewModifyUserInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRemoveAccountFromAccountGroupRequest() (request *RemoveAccountFromAccountGroupRequest) {
+    request = &RemoveAccountFromAccountGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("eiam", APIVersion, "RemoveAccountFromAccountGroup")
+    
+    
+    return
+}
+
+func NewRemoveAccountFromAccountGroupResponse() (response *RemoveAccountFromAccountGroupResponse) {
+    response = &RemoveAccountFromAccountGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RemoveAccountFromAccountGroup
+// 从账号组中移除账号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTGROUPNOTEXISTED = "FailedOperation.AccountGroupNotExisted"
+//  FAILEDOPERATION_ACCOUNTNOTEXISTED = "FailedOperation.AccountNotExisted"
+//  FAILEDOPERATION_APPNOTEXISTED = "FailedOperation.AppNotExisted"
+//  FAILEDOPERATION_ITEMSEXCEEDMAXNUMBER = "FailedOperation.ItemsExceedMaxNumber"
+//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+func (c *Client) RemoveAccountFromAccountGroup(request *RemoveAccountFromAccountGroupRequest) (response *RemoveAccountFromAccountGroupResponse, err error) {
+    if request == nil {
+        request = NewRemoveAccountFromAccountGroupRequest()
+    }
+    
+    response = NewRemoveAccountFromAccountGroupResponse()
     err = c.Send(request, response)
     return
 }
@@ -1053,6 +1533,7 @@ func NewUpdateOrgNodeResponse() (response *UpdateOrgNodeResponse) {
 // 新建一个机构节点，
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CHILDORGNODENAMEEXISTS = "FailedOperation.ChildOrgNodeNameExists"
 //  FAILEDOPERATION_CUSTOMIZEDPARENTORGNODEIDEXISTED = "FailedOperation.CustomizedParentOrgNodeIdExisted"
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
 //  FAILEDOPERATION_ORGNODEIDNOTEXIST = "FailedOperation.OrgNodeIdNotExist"

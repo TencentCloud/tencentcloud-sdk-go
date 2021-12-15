@@ -161,7 +161,7 @@ func (r *CreateAutoClassifyStructureTaskResponse) FromJsonString(s string) error
 
 type CreateStructureTaskInfo struct {
 
-	// 任务类型
+	// 任务类型:HealthReport(体检报告); BUltraReport(B超报告);MedCheckReport(检查报告);LaboratoryReport(检验报告); PathologyReport(病理报告);AdmissionReport(入院记录);DischargeReport(出院记录); DischargeSummary(出院小结);DiagnosisReport(诊断证明); MedicalRecordFront(病案首页);OperationReport(手术记录);OutpatientMedicalRecord(门诊病历)
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
 	// 报告文件上传的地址列表，需按顺序排列。如果使用ImageList参数，置为空数组即可
@@ -646,7 +646,7 @@ func (r *DescribeStructureTaskResultResponse) FromJsonString(s string) error {
 
 type InsuranceResult struct {
 
-	// 险种
+	// 险种:CriticalDiseaseInsurance(重疾险);LifeInsurance(寿险);AccidentInsurance(意外险);MedicalInsurance(医疗险)
 	InsuranceType *string `json:"InsuranceType,omitempty" name:"InsuranceType"`
 
 	// 对应险种的机器核保结果
@@ -688,7 +688,7 @@ type PerStructDifference struct {
 	// 子任务ID
 	SubTaskId *string `json:"SubTaskId,omitempty" name:"SubTaskId"`
 
-	// 任务类型
+	// 任务类型:HealthReport(体检报告); BUltraReport(B超报告);MedCheckReport(检查报告);LaboratoryReport(检验报告); PathologyReport(病理报告);AdmissionReport(入院记录);DischargeReport(出院记录); DischargeSummary(出院小结);DiagnosisReport(诊断证明); MedicalRecordFront(病案首页);OperationReport(手术记录);OutpatientMedicalRecord(门诊病历)
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
 	// 修改的项
@@ -725,7 +725,7 @@ type ReviewDataTaskInfo struct {
 	// 任务名
 	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
 
-	// 任务类型
+	// 任务类型:HealthReport(体检报告); BUltraReport(B超报告);MedCheckReport(检查报告);LaboratoryReport(检验报告); PathologyReport(病理报告);AdmissionReport(入院记录);DischargeReport(出院记录); DischargeSummary(出院小结);DiagnosisReport(诊断证明); MedicalRecordFront(病案首页);OperationReport(手术记录);OutpatientMedicalRecord(门诊病历)
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 }
 
@@ -757,10 +757,10 @@ type StructureOneItem struct {
 
 type StructureResultObject struct {
 
-	// 0表示正常返回
+	// 0表示正常返回；1代表结果未生成；2代表任务执行失败
 	Code *uint64 `json:"Code,omitempty" name:"Code"`
 
-	// 报告类型
+	// 报告类型:HealthReport(体检报告); BUltraReport(B超报告);MedCheckReport(检查报告);LaboratoryReport(检验报告); PathologyReport(病理报告);AdmissionReport(入院记录);DischargeReport(出院记录); DischargeSummary(出院小结);DiagnosisReport(诊断证明); MedicalRecordFront(病案首页);OperationReport(手术记录);OutpatientMedicalRecord(门诊病历)
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
 	// 结构化结果

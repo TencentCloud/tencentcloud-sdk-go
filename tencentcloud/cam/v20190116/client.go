@@ -1596,6 +1596,7 @@ func NewListAccessKeysResponse() (response *ListAccessKeysResponse) {
 // 列出指定CAM用户的访问密钥
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION_ACCESSKEY = "FailedOperation.Accesskey"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"

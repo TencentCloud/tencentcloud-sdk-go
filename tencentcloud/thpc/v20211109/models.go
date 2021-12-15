@@ -228,6 +228,18 @@ func (r *DeleteClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type GooseFSOption struct {
+
+	// 文件系统本地挂载路径
+	LocalPath *string `json:"LocalPath,omitempty" name:"LocalPath"`
+
+	// 文件系统远程挂载路径
+	RemotePath *string `json:"RemotePath,omitempty" name:"RemotePath"`
+
+	// 文件系统master的ip和端口
+	Masters []*string `json:"Masters,omitempty" name:"Masters"`
+}
+
 type InstanceChargePrepaid struct {
 
 	// 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60。
@@ -301,6 +313,9 @@ type StorageOption struct {
 
 	// 集群挂载CFS文件系统选项
 	CFSOptions []*CFSOption `json:"CFSOptions,omitempty" name:"CFSOptions"`
+
+	// 集群挂在GooseFS文件系统选项
+	GooseFSOptions []*GooseFSOption `json:"GooseFSOptions,omitempty" name:"GooseFSOptions"`
 }
 
 type SystemDisk struct {

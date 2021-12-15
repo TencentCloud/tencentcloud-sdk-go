@@ -17,6 +17,9 @@ package v20190116
 const (
 	// 此产品的特有错误码
 
+	// 没有权限。
+	AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 

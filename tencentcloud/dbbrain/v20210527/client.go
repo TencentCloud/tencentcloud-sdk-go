@@ -485,6 +485,50 @@ func (c *Client) DescribeDBDiagEvent(request *DescribeDBDiagEventRequest) (respo
     return
 }
 
+func NewDescribeDBDiagEventsRequest() (request *DescribeDBDiagEventsRequest) {
+    request = &DescribeDBDiagEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeDBDiagEvents")
+    
+    
+    return
+}
+
+func NewDescribeDBDiagEventsResponse() (response *DescribeDBDiagEventsResponse) {
+    response = &DescribeDBDiagEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDBDiagEvents
+// 获取指定时间段内的诊断事件列表，支持依据风险等级、实例ID等条件过滤。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDBDiagEvents(request *DescribeDBDiagEventsRequest) (response *DescribeDBDiagEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBDiagEventsRequest()
+    }
+    
+    response = NewDescribeDBDiagEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBDiagHistoryRequest() (request *DescribeDBDiagHistoryRequest) {
     request = &DescribeDBDiagHistoryRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -1985,6 +1985,9 @@ type DescribeListBGPIPInstancesRequest struct {
 
 	// 是否只获取安全加速实例。填写时，只能填写1或者0。当填写1时，表示返回安全加速实例。当填写0时，表示返回非安全加速实例。
 	FilterDamDDoSStatus *int64 `json:"FilterDamDDoSStatus,omitempty" name:"FilterDamDDoSStatus"`
+
+	// 获取特定状态的资源，运行中填idle，攻击中填attacking，封堵中填blocking
+	FilterStatus *string `json:"FilterStatus,omitempty" name:"FilterStatus"`
 }
 
 func (r *DescribeListBGPIPInstancesRequest) ToJsonString() string {
@@ -2009,6 +2012,7 @@ func (r *DescribeListBGPIPInstancesRequest) FromJsonString(s string) error {
 	delete(f, "FilterEipType")
 	delete(f, "FilterEipEipAddressStatus")
 	delete(f, "FilterDamDDoSStatus")
+	delete(f, "FilterStatus")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeListBGPIPInstancesRequest has unknown keys!", "")
 	}
@@ -2064,6 +2068,12 @@ type DescribeListBGPInstancesRequest struct {
 
 	// 按照线路搜索, 1: BGP; 2: 三网
 	FilterLine *uint64 `json:"FilterLine,omitempty" name:"FilterLine"`
+
+	// 状态搜索，idle：允许中；attacking：攻击中；blocking：封堵中
+	FilterStatus *string `json:"FilterStatus,omitempty" name:"FilterStatus"`
+
+	// 高防包绑定状态搜索，bounding：绑定中； failed：绑定失败
+	FilterBoundStatus *string `json:"FilterBoundStatus,omitempty" name:"FilterBoundStatus"`
 }
 
 func (r *DescribeListBGPInstancesRequest) ToJsonString() string {
@@ -2085,6 +2095,8 @@ func (r *DescribeListBGPInstancesRequest) FromJsonString(s string) error {
 	delete(f, "FilterRegion")
 	delete(f, "FilterName")
 	delete(f, "FilterLine")
+	delete(f, "FilterStatus")
+	delete(f, "FilterBoundStatus")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeListBGPInstancesRequest has unknown keys!", "")
 	}

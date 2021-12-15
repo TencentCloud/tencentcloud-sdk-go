@@ -146,7 +146,7 @@ func NewCreateAlarmNoticeResponse() (response *CreateAlarmNoticeResponse) {
 }
 
 // CreateAlarmNotice
-// 该接口用户创建告警通知模板。
+// 该接口用户创建通知渠道组。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -613,7 +613,7 @@ func NewDeleteAlarmNoticeResponse() (response *DeleteAlarmNoticeResponse) {
 }
 
 // DeleteAlarmNotice
-// 该接口用于删除告警通知模板
+// 该接口用于删除通知渠道组
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1064,7 +1064,7 @@ func NewDescribeAlarmNoticesResponse() (response *DescribeAlarmNoticesResponse) 
 }
 
 // DescribeAlarmNotices
-// 该接口用于获取告警通知模板列表
+// 该接口用于获取通知渠道组列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1103,7 +1103,7 @@ func NewDescribeAlarmsResponse() (response *DescribeAlarmsResponse) {
 }
 
 // DescribeAlarms
-// 本接口用于获取告警策略。
+// 本接口用于获取告警策略列表。
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
@@ -1971,7 +1971,7 @@ func NewModifyAlarmNoticeResponse() (response *ModifyAlarmNoticeResponse) {
 }
 
 // ModifyAlarmNotice
-// 该接口用于修改告警通知模板。
+// 该接口用于修改通知渠道组
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2322,7 +2322,7 @@ func NewSearchLogResponse() (response *SearchLogResponse) {
 }
 
 // SearchLog
-// 本接口用于搜索日志
+// 本接口用于搜索日志, 该接口除受默认接口请求频率限制外，针对单个日志主题，并发数不能超过15
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
