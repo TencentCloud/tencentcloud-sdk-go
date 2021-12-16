@@ -196,7 +196,7 @@ func TestClient_withRegionBreaker(t *testing.T) {
 	cpf := profile.NewClientProfile()
 	//cpf.Debug =true
 	cpf.DisableRegionBreaker = false
-	cpf.BackupEndPoint = ""
+	cpf.BackupEndpoint = ""
 	c := (&Client{}).Init("")
 	c.WithProfile(cpf)
 	if c.rb.backupEndpoint != "ap-guangzhou.tencentcloudapi.com" {
@@ -205,4 +205,19 @@ func TestClient_withRegionBreaker(t *testing.T) {
 	if c.rb.maxFailNum != defaultMaxFailNum {
 		t.Errorf("want %d ,got %d", defaultMaxFailNum, c.rb.maxFailNum)
 	}
+}
+
+func TestClient_panicWithIncorrectBackupEndpointValue(t *testing.T) {
+	cpf := profile.NewClientProfile()
+	//cpf.Debug =true
+	cpf.DisableRegionBreaker = false
+	cpf.BackupEndpoint = "ap-guangzhou.tencentcloudapi.com1"
+	cpf.BackupEndPoint = "ap-guangzhou.tencentcloudapi.com2"
+	c := (&Client{}).Init("")
+	defer func() {
+		if r := recover(); r == nil {
+			t.Fail()
+		}
+	}()
+	c.WithProfile(cpf)
 }
