@@ -60,7 +60,7 @@ type BaseRequest struct {
 	action  string
 
 	contentType string
-	body []byte
+	body        []byte
 }
 
 func (r *BaseRequest) GetAction() string {
@@ -151,7 +151,7 @@ func (r *BaseRequest) SetHttpMethod(method string) {
 	}
 }
 
-func (r *BaseRequest) SetPath(path string) string {
+func (r *BaseRequest) SetPath(path string) {
 	r.path = path
 }
 
