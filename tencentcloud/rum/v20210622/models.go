@@ -689,7 +689,7 @@ type DescribeLogListRequest struct {
 	// 排序方式  desc  asc
 	Sort *string `json:"Sort,omitempty" name:"Sort"`
 
-	// searchlog   histogram
+	// searchlog  histogram
 	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
 
 	// 项目ID
@@ -698,13 +698,13 @@ type DescribeLogListRequest struct {
 	// 开始时间
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 限制
+	// 单次查询返回的原始日志条数，最大值为100
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 上下文
+	// 上下文，加载更多日志时使用，透传上次返回的 Context 值，获取后续的日志内容，总计最多可获取1万条原始日志。过期时间1小时
 	Context *string `json:"Context,omitempty" name:"Context"`
 
-	// 查询语句
+	// 查询语句，语句长度最大为4096
 	Query *string `json:"Query,omitempty" name:"Query"`
 
 	// 结束时间

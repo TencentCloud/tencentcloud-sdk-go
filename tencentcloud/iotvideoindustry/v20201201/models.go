@@ -513,6 +513,80 @@ func (r *CreateLiveRecordPlanResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateMessageForwardRequest struct {
+	*tchttp.BaseRequest
+
+	// 区域ID
+	RegionId *string `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 区域名称
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
+
+	// 实例ID
+	Instance *string `json:"Instance,omitempty" name:"Instance"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// json数组， 转发类型 1: 告警 2:GPS
+	MessageType *string `json:"MessageType,omitempty" name:"MessageType"`
+
+	// kafka topic id
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// kafka topic 名称
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+}
+
+func (r *CreateMessageForwardRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMessageForwardRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegionId")
+	delete(f, "RegionName")
+	delete(f, "Instance")
+	delete(f, "InstanceName")
+	delete(f, "MessageType")
+	delete(f, "TopicId")
+	delete(f, "TopicName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMessageForwardRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateMessageForwardResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 配置ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IntId *int64 `json:"IntId,omitempty" name:"IntId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateMessageForwardResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMessageForwardResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateRecordPlanRequest struct {
 	*tchttp.BaseRequest
 
@@ -989,6 +1063,52 @@ func (r *DeleteLiveVideoListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteLiveVideoListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteMessageForwardRequest struct {
+	*tchttp.BaseRequest
+
+	// 配置ID
+	IntId *int64 `json:"IntId,omitempty" name:"IntId"`
+}
+
+func (r *DeleteMessageForwardRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteMessageForwardRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IntId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteMessageForwardRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteMessageForwardResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteMessageForwardResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteMessageForwardResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2248,6 +2368,150 @@ func (r *DescribeLiveVideoListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeMessageForwardRequest struct {
+	*tchttp.BaseRequest
+
+	// 配置ID
+	IntId *int64 `json:"IntId,omitempty" name:"IntId"`
+}
+
+func (r *DescribeMessageForwardRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMessageForwardRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IntId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMessageForwardRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMessageForwardResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 区域ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RegionId *string `json:"RegionId,omitempty" name:"RegionId"`
+
+		// 区域名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
+
+		// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Instance *string `json:"Instance,omitempty" name:"Instance"`
+
+		// 实例名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+		// 配置ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IntId *int64 `json:"IntId,omitempty" name:"IntId"`
+
+		// json数组， 转发类型 1: 告警 2:GPS
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		MessageType *string `json:"MessageType,omitempty" name:"MessageType"`
+
+		// kafka topic id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+		// 配置创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+		// 用户Uin信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+		// kafka topic 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeMessageForwardResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMessageForwardResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMessageForwardsRequest struct {
+	*tchttp.BaseRequest
+
+	// 数量限制
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeMessageForwardsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMessageForwardsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMessageForwardsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMessageForwardsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 配置总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Total *int64 `json:"Total,omitempty" name:"Total"`
+
+		// 配置列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		List []*MessageForward `json:"List,omitempty" name:"List"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeMessageForwardsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMessageForwardsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeRecordDatesByLiveRequest struct {
 	*tchttp.BaseRequest
 
@@ -3502,6 +3766,53 @@ type LiveRecordPlanItem struct {
 	PlanName *string `json:"PlanName,omitempty" name:"PlanName"`
 }
 
+type MessageForward struct {
+
+	// 配置ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntId *int64 `json:"IntId,omitempty" name:"IntId"`
+
+	// 用户Uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// json数组， 转发类型 1: 告警 2:GPS
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MessageType *string `json:"MessageType,omitempty" name:"MessageType"`
+
+	// 区域ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionId *string `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 区域名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
+
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Instance *string `json:"Instance,omitempty" name:"Instance"`
+
+	// 实例名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// kafka topic id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// topic 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+}
+
 type ModifyBindPlanLiveChannelRequest struct {
 	*tchttp.BaseRequest
 
@@ -3761,6 +4072,56 @@ func (r *ModifyLiveVideoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyLiveVideoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyMessageForwardRequest struct {
+	*tchttp.BaseRequest
+
+	// 配置ID
+	IntId *int64 `json:"IntId,omitempty" name:"IntId"`
+
+	// json数组， 转发类型 1: 告警 2:GPS
+	MessageType *string `json:"MessageType,omitempty" name:"MessageType"`
+}
+
+func (r *ModifyMessageForwardRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMessageForwardRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IntId")
+	delete(f, "MessageType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMessageForwardRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyMessageForwardResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyMessageForwardResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMessageForwardResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

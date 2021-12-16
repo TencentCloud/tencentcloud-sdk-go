@@ -35,6 +35,9 @@ const (
 	// 访问用户TKE集群失败。
 	FAILEDOPERATION_ACCESSTKEFAIL = "FailedOperation.AccessTKEFail"
 
+	// 访问标签服务失败。
+	FAILEDOPERATION_ACCESSTAGFAIL = "FailedOperation.AccessTagFail"
+
 	// Agent版本不支持该操作，请升级Agent。
 	FAILEDOPERATION_AGENTVERSIONNOTSUPPORTED = "FailedOperation.AgentVersionNotSupported"
 
@@ -112,6 +115,9 @@ const (
 
 	// 资源不存在。
 	FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+
+	// 发送授权请求失败。
+	FAILEDOPERATION_SENDREQUEST = "FailedOperation.SendRequest"
 
 	// 服务未启用，开通服务后方可使用。
 	FAILEDOPERATION_SERVICENOTENABLED = "FailedOperation.ServiceNotEnabled"

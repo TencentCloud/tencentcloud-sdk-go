@@ -957,6 +957,79 @@ type DetectInfoVideoData struct {
 	LivenessVideo *string `json:"LivenessVideo,omitempty" name:"LivenessVideo"`
 }
 
+type DetectReflectLivenessAndCompareRequest struct {
+	*tchttp.BaseRequest
+
+	// SDK生成的数据包活体数据包的资源地址。
+	LiveDataUrl *string `json:"LiveDataUrl,omitempty" name:"LiveDataUrl"`
+
+	// SDK生成的数据包活体数据包的资源Md5。
+	LiveDataMd5 *string `json:"LiveDataMd5,omitempty" name:"LiveDataMd5"`
+
+	// 用于比对的目标图片的资源地址。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 用于比对的目标图片的资源Md5。
+	ImageMd5 *string `json:"ImageMd5,omitempty" name:"ImageMd5"`
+}
+
+func (r *DetectReflectLivenessAndCompareRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetectReflectLivenessAndCompareRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LiveDataUrl")
+	delete(f, "LiveDataMd5")
+	delete(f, "ImageUrl")
+	delete(f, "ImageMd5")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectReflectLivenessAndCompareRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DetectReflectLivenessAndCompareResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 验证通过后的视频最佳截图照片资源地址，jpg格式。
+		BestFrameUrl *string `json:"BestFrameUrl,omitempty" name:"BestFrameUrl"`
+
+		// 验证通过后的视频最佳截图照片资源Md5。
+		BestFrameMd5 *string `json:"BestFrameMd5,omitempty" name:"BestFrameMd5"`
+
+		// 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 业务结果描述。
+		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）。
+		Sim *float64 `json:"Sim,omitempty" name:"Sim"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DetectReflectLivenessAndCompareResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetectReflectLivenessAndCompareResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type EidInfo struct {
 
 	// 商户方 appeIDcode 的数字证书

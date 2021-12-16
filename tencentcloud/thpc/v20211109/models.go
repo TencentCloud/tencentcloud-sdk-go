@@ -20,6 +20,84 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type BindAutoScalingGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 弹性伸缩启动配置ID。
+	LaunchConfigurationId *string `json:"LaunchConfigurationId,omitempty" name:"LaunchConfigurationId"`
+
+	// 弹性伸缩组ID。
+	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitempty" name:"AutoScalingGroupId"`
+
+	// 任务连续等待时间，队列的任务处于连续等待的时间。单位秒。默认值120。
+	ExpansionBusyTime *int64 `json:"ExpansionBusyTime,omitempty" name:"ExpansionBusyTime"`
+
+	// 节点连续空闲（未运行作业）时间，一个节点连续处于空闲状态时间。单位秒。默认值300。
+	ShrinkIdleTime *int64 `json:"ShrinkIdleTime,omitempty" name:"ShrinkIdleTime"`
+
+	// 是否开启自动扩容，默认值true。
+	EnableAutoExpansion *bool `json:"EnableAutoExpansion,omitempty" name:"EnableAutoExpansion"`
+
+	// 是否开启自动缩容，默认值true。
+	EnableAutoShrink *bool `json:"EnableAutoShrink,omitempty" name:"EnableAutoShrink"`
+
+	// 是否只预检此次请求。
+	// true：发送检查请求，不会绑定弹性伸缩组。检查项包括是否填写了必需参数，请求格式，业务限制。
+	// 如果检查不通过，则返回对应错误码；
+	// 如果检查通过，则返回RequestId。
+	// false（默认）：发送正常请求，通过检查后直接绑定弹性伸缩组。
+	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
+}
+
+func (r *BindAutoScalingGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindAutoScalingGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "LaunchConfigurationId")
+	delete(f, "AutoScalingGroupId")
+	delete(f, "ExpansionBusyTime")
+	delete(f, "ShrinkIdleTime")
+	delete(f, "EnableAutoExpansion")
+	delete(f, "EnableAutoShrink")
+	delete(f, "DryRun")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindAutoScalingGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BindAutoScalingGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BindAutoScalingGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindAutoScalingGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CFSOption struct {
 
 	// 文件系统本地挂载路径

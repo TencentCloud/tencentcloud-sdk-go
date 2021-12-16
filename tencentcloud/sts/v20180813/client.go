@@ -148,6 +148,42 @@ func (c *Client) AssumeRoleWithSAML(request *AssumeRoleWithSAMLRequest) (respons
     return
 }
 
+func NewGetCallerIdentityRequest() (request *GetCallerIdentityRequest) {
+    request = &GetCallerIdentityRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sts", APIVersion, "GetCallerIdentity")
+    
+    
+    return
+}
+
+func NewGetCallerIdentityResponse() (response *GetCallerIdentityResponse) {
+    response = &GetCallerIdentityResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetCallerIdentity
+// 获取当前调用者的身份信息。
+//
+// 接口支持主账号，子账号长期密钥以及AssumeRole，GetFederationToken生成的临时凭据的身份获取。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_ACCESSKEYILLEGAL = "AuthFailure.AccessKeyIllegal"
+//  INTERNALERROR_GETSEEDTOKENERROR = "InternalError.GetSeedTokenError"
+//  INVALIDPARAMETER_ACCESSKEYNOTSUPPORT = "InvalidParameter.AccessKeyNotSupport"
+func (c *Client) GetCallerIdentity(request *GetCallerIdentityRequest) (response *GetCallerIdentityResponse, err error) {
+    if request == nil {
+        request = NewGetCallerIdentityRequest()
+    }
+    
+    response = NewGetCallerIdentityResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetFederationTokenRequest() (request *GetFederationTokenRequest) {
     request = &GetFederationTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -1369,6 +1369,54 @@ func (c *Client) DescribeProductList(request *DescribeProductListRequest) (respo
     return
 }
 
+func NewDescribePrometheusInstancesRequest() (request *DescribePrometheusInstancesRequest) {
+    request = &DescribePrometheusInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribePrometheusInstances")
+    
+    
+    return
+}
+
+func NewDescribePrometheusInstancesResponse() (response *DescribePrometheusInstancesResponse) {
+    response = &DescribePrometheusInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePrometheusInstances
+// 本接口 (DescribePrometheusInstances) 用于查询一个或多个实例的详细信息。
+//
+// <ul>
+//
+// <li>可以根据实例ID、实例名称或者实例状态等信息来查询实例的详细信息</li>
+//
+// <li>如果参数为空，返回当前用户一定数量（Limit所指定的数量，默认为20）的实例。</li>
+//
+// </ul>
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCESSTAGFAIL = "FailedOperation.AccessTagFail"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  FAILEDOPERATION_SENDREQUEST = "FailedOperation.SendRequest"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribePrometheusInstances(request *DescribePrometheusInstancesRequest) (response *DescribePrometheusInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribePrometheusInstancesRequest()
+    }
+    
+    response = NewDescribePrometheusInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeServiceDiscoveryRequest() (request *DescribeServiceDiscoveryRequest) {
     request = &DescribeServiceDiscoveryRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -658,7 +658,7 @@ type MachinePredict struct {
 	// 核保引擎名称
 	Title *string `json:"Title,omitempty" name:"Title"`
 
-	// 核保结论
+	// 核保结论：加费、承保、拒保、延期、除外、加费+除外
 	Conclusion *string `json:"Conclusion,omitempty" name:"Conclusion"`
 
 	// AI决策树解释

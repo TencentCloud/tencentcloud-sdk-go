@@ -218,8 +218,26 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
+	// 光线太暗。
+	INTERNALERROR_ACTIONLIGHTDARK = "InternalError.ActionLightDark"
+
+	// 光线太强。
+	INTERNALERROR_ACTIONLIGHTSTRONG = "InternalError.ActionLightStrong"
+
+	// 未能检测到完整人脸。
+	INTERNALERROR_ACTIONNODETECTFACE = "InternalError.ActionNodetectFace"
+
+	// 比对相似度未达到通过标准。
+	INTERNALERROR_COMPARELOWSIMILARITY = "InternalError.CompareLowSimilarity"
+
 	// 加密失败。
 	INTERNALERROR_ENCRYPTSYSTEMERROR = "InternalError.EncryptSystemError"
+
+	// 传入图片分辨率太低，请重新上传。
+	INTERNALERROR_LIFEPHOTOPOORQUALITY = "InternalError.LifePhotoPoorQuality"
+
+	// 传入图片过大或过小。
+	INTERNALERROR_LIFEPHOTOSIZEERROR = "InternalError.LifePhotoSizeError"
 
 	// 内部未知错误。
 	INTERNALERROR_UNKNOWN = "InternalError.UnKnown"

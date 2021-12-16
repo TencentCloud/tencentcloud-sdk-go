@@ -2182,7 +2182,7 @@ type DescribeDosageDetailByDateRequest struct {
 	ProductCode *string `json:"ProductCode,omitempty" name:"ProductCode"`
 
 	// 查询域名 例如 www.qq.com
-	// 非CDN业务查询时值为空
+	// 非CDN业务查询时传入空字符串，返回的值为空
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
 	// 1、如果为空，则返回EIP或CLB所有实例的明细；

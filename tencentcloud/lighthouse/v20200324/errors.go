@@ -17,6 +17,9 @@ package v20200324
 const (
 	// 此产品的特有错误码
 
+	// CAM签名/鉴权错误。
+	AUTHFAILURE = "AuthFailure"
+
 	// 创建镜像失败。
 	FAILEDOPERATION_CREATEBLUEPRINTFAILED = "FailedOperation.CreateBlueprintFailed"
 
@@ -43,6 +46,9 @@ const (
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
+
+	// 查询磁盘返回了不合法内容。
+	INTERNALERROR_DESCRIBEDISKSRETURNABLEERROR = "InternalError.DescribeDisksReturnableError"
 
 	// 查询实例状态失败，请稍后重试。
 	INTERNALERROR_DESCRIBEINSTANCESTATUS = "InternalError.DescribeInstanceStatus"
@@ -73,6 +79,9 @@ const (
 
 	// 价格获取失败。
 	INTERNALERROR_TRADEGETPRICEFAILED = "InternalError.TradeGetPriceFailed"
+
+	// 参数错误。
+	INVALIDPARAMETER = "InvalidParameter"
 
 	// 产品未定义的套餐 ID。
 	INVALIDPARAMETER_BUNDLEIDNOTFOUND = "InvalidParameter.BundleIdNotFound"
@@ -218,6 +227,9 @@ const (
 	// 非法的可用区。
 	INVALIDPARAMETERVALUE_ZONEINVALID = "InvalidParameterValue.ZoneInvalid"
 
+	// 实例挂载数据盘配额不足，无法挂载磁盘。
+	LIMITEXCEEDED_ATTACHDATADISKQUOTALIMITEXCEEDED = "LimitExceeded.AttachDataDiskQuotaLimitExceeded"
+
 	// 超过防火墙规则配额。
 	LIMITEXCEEDED_FIREWALLRULESLIMITEXCEEDED = "LimitExceeded.FirewallRulesLimitExceeded"
 
@@ -232,6 +244,15 @@ const (
 
 	// 该实例不支持升级套餐操作。
 	OPERATIONDENIED_BUNDLENOTSUPPORTMODIFY = "OperationDenied.BundleNotSupportModify"
+
+	// 磁盘处于创建过程中。
+	OPERATIONDENIED_DISKCREATING = "OperationDenied.DiskCreating"
+
+	// 磁盘正在操作过程中，请稍后重试。
+	OPERATIONDENIED_DISKOPERATIONINPROGRESS = "OperationDenied.DiskOperationInProgress"
+
+	// 磁盘的云盘类型不支持该操作。
+	OPERATIONDENIED_DISKUSAGENOTSUPPORTOPERATION = "OperationDenied.DiskUsageNotSupportOperation"
 
 	// 禁止对实例进行操作，实例在创建中，不允许进行该操作。
 	OPERATIONDENIED_INSTANCECREATING = "OperationDenied.InstanceCreating"
@@ -253,6 +274,9 @@ const (
 
 	// 指定的镜像不存在。请检查镜像的BlueprintId是否正确。
 	RESOURCENOTFOUND_BLUEPRINTNOTFOUND = "ResourceNotFound.BlueprintNotFound"
+
+	// 磁盘 ID 不存在。
+	RESOURCENOTFOUND_DISKIDNOTFOUND = "ResourceNotFound.DiskIdNotFound"
 
 	// 磁盘不存在。
 	RESOURCENOTFOUND_DISKNOTFOUND = "ResourceNotFound.DiskNotFound"
@@ -328,6 +352,9 @@ const (
 
 	// 实例已到期，不支持该操作。
 	UNSUPPORTEDOPERATION_INSTANCEEXPIRED = "UnsupportedOperation.InstanceExpired"
+
+	// 磁盘状态不支持该操作。
+	UNSUPPORTEDOPERATION_INVALIDDISKSTATE = "UnsupportedOperation.InvalidDiskState"
 
 	// 不支持的操作，实例状态不合法。
 	UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"

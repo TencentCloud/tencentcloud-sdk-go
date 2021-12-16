@@ -17,6 +17,9 @@ package v20180813
 const (
 	// 此产品的特有错误码
 
+	// 密钥不合法。
+	AUTHFAILURE_ACCESSKEYILLEGAL = "AuthFailure.AccessKeyIllegal"
+
 	// DB错误。
 	INTERNALERROR_DBERROR = "InternalError.DbError"
 
@@ -43,6 +46,9 @@ const (
 
 	// 未知错误。
 	INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+
+	// 不支持该类型密钥。
+	INVALIDPARAMETER_ACCESSKEYNOTSUPPORT = "InvalidParameter.AccessKeyNotSupport"
 
 	// 账号不存在或不可用。
 	INVALIDPARAMETER_ACCOUNTNOTAVALIABLE = "InvalidParameter.AccountNotAvaliable"

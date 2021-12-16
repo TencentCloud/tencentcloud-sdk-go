@@ -177,6 +177,7 @@ type CreateGroupRequest struct {
 	// 类型： 
 	// 1: 通用图库，以用户输入图提取特征。
 	// 2: 灰度图库，输入图和搜索图均转为灰度图提取特征。
+	// 3: 针对电商（通用品类）和logo优化。
 	GroupType *uint64 `json:"GroupType,omitempty" name:"GroupType"`
 }
 
@@ -1242,6 +1243,21 @@ type ImageInfo struct {
 	Score *int64 `json:"Score,omitempty" name:"Score"`
 }
 
+type ImageRect struct {
+
+	// 左上角横坐标。
+	X *int64 `json:"X,omitempty" name:"X"`
+
+	// 左上角纵坐标。
+	Y *int64 `json:"Y,omitempty" name:"Y"`
+
+	// 宽度。
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 高度。
+	Height *int64 `json:"Height,omitempty" name:"Height"`
+}
+
 type Labels struct {
 
 	// 公众人物身份标签的一级分类，例如体育明星、娱乐明星、政治人物等；
@@ -1450,6 +1466,9 @@ type SearchImageRequest struct {
 
 	// 针对入库时提交的Tags信息进行条件过滤。支持>、>=、 <、 <=、=，!=，多个条件之间支持AND和OR进行连接。
 	Filter *string `json:"Filter,omitempty" name:"Filter"`
+
+	// 图像主体区域。
+	ImageRect *ImageRect `json:"ImageRect,omitempty" name:"ImageRect"`
 }
 
 func (r *SearchImageRequest) ToJsonString() string {
@@ -1471,6 +1490,7 @@ func (r *SearchImageRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Filter")
+	delete(f, "ImageRect")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchImageRequest has unknown keys!", "")
 	}

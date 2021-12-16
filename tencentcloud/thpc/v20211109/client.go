@@ -43,6 +43,35 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewBindAutoScalingGroupRequest() (request *BindAutoScalingGroupRequest) {
+    request = &BindAutoScalingGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("thpc", APIVersion, "BindAutoScalingGroup")
+    
+    
+    return
+}
+
+func NewBindAutoScalingGroupResponse() (response *BindAutoScalingGroupResponse) {
+    response = &BindAutoScalingGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BindAutoScalingGroup
+// 本接口(BindAutoScalingGroup)用于为集群队列绑定弹性伸缩组
+func (c *Client) BindAutoScalingGroup(request *BindAutoScalingGroupRequest) (response *BindAutoScalingGroupResponse, err error) {
+    if request == nil {
+        request = NewBindAutoScalingGroupRequest()
+    }
+    
+    response = NewBindAutoScalingGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateClusterRequest() (request *CreateClusterRequest) {
     request = &CreateClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},

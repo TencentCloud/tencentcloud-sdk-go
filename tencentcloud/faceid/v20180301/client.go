@@ -425,6 +425,62 @@ func (c *Client) DetectAuth(request *DetectAuthRequest) (response *DetectAuthRes
     return
 }
 
+func NewDetectReflectLivenessAndCompareRequest() (request *DetectReflectLivenessAndCompareRequest) {
+    request = &DetectReflectLivenessAndCompareRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("faceid", APIVersion, "DetectReflectLivenessAndCompare")
+    
+    
+    return
+}
+
+func NewDetectReflectLivenessAndCompareResponse() (response *DetectReflectLivenessAndCompareResponse) {
+    response = &DetectReflectLivenessAndCompareResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DetectReflectLivenessAndCompare
+// 使用一闪SDK生成的数据包检测活体，并和用户传入的图片进行比对。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACTIONLIGHTDARK = "FailedOperation.ActionLightDark"
+//  FAILEDOPERATION_ACTIONLIGHTSTRONG = "FailedOperation.ActionLightStrong"
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_DOWNLOADTIMEOUTERROR = "FailedOperation.DownLoadTimeoutError"
+//  FAILEDOPERATION_IMAGEBLUR = "FailedOperation.ImageBlur"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_LIFEPHOTODETECTFAKE = "FailedOperation.LifePhotoDetectFake"
+//  FAILEDOPERATION_LIFEPHOTOSIZEERROR = "FailedOperation.LifePhotoSizeError"
+//  FAILEDOPERATION_LIVESSDETECTFAIL = "FailedOperation.LivessDetectFail"
+//  FAILEDOPERATION_LIVESSDETECTFAKE = "FailedOperation.LivessDetectFake"
+//  FAILEDOPERATION_LIVESSSYSTEMERROR = "FailedOperation.LivessSystemError"
+//  FAILEDOPERATION_LIVESSUNKNOWNERROR = "FailedOperation.LivessUnknownError"
+//  FAILEDOPERATION_SILENTDETECTFAIL = "FailedOperation.SilentDetectFail"
+//  FAILEDOPERATION_SILENTFACEDETECTFAIL = "FailedOperation.SilentFaceDetectFail"
+//  FAILEDOPERATION_SILENTFACEQUALITYFAIL = "FailedOperation.SilentFaceQualityFail"
+//  FAILEDOPERATION_SILENTMULTIFACEFAIL = "FailedOperation.SilentMultiFaceFail"
+//  FAILEDOPERATION_SILENTPICTURELIVEFAIL = "FailedOperation.SilentPictureLiveFail"
+//  FAILEDOPERATION_SILENTTHRESHOLD = "FailedOperation.SilentThreshold"
+//  INTERNALERROR_ACTIONLIGHTDARK = "InternalError.ActionLightDark"
+//  INTERNALERROR_ACTIONLIGHTSTRONG = "InternalError.ActionLightStrong"
+//  INTERNALERROR_ACTIONNODETECTFACE = "InternalError.ActionNodetectFace"
+//  INTERNALERROR_COMPARELOWSIMILARITY = "InternalError.CompareLowSimilarity"
+//  INTERNALERROR_LIFEPHOTOPOORQUALITY = "InternalError.LifePhotoPoorQuality"
+//  INTERNALERROR_LIFEPHOTOSIZEERROR = "InternalError.LifePhotoSizeError"
+func (c *Client) DetectReflectLivenessAndCompare(request *DetectReflectLivenessAndCompareRequest) (response *DetectReflectLivenessAndCompareResponse, err error) {
+    if request == nil {
+        request = NewDetectReflectLivenessAndCompareRequest()
+    }
+    
+    response = NewDetectReflectLivenessAndCompareResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEncryptedPhoneVerificationRequest() (request *EncryptedPhoneVerificationRequest) {
     request = &EncryptedPhoneVerificationRequest{
         BaseRequest: &tchttp.BaseRequest{},

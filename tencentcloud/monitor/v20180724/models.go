@@ -3598,6 +3598,97 @@ func (r *DescribeProductListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribePrometheusInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 按照一个或者多个实例ID查询。实例ID形如：prom-xxxxxxxx。请求的实例的上限为100。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 按照【实例状态】进行过滤。
+	// <ul>
+	// <li>1：正在创建</li>
+	// <li>2：运行中</li>
+	// <li>3：异常</li>
+	// <li>4：重建中</li>
+	// <li>5：销毁中</li>
+	// <li>6：已停服</li>
+	// <li>8：欠费停服中</li>
+	// <li>9：欠费已停服</li>
+	// </ul>
+	InstanceStatus []*int64 `json:"InstanceStatus,omitempty" name:"InstanceStatus"`
+
+	// 按照【实例名称】进行过滤。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 按照【可用区】进行过滤。可用区形如：ap-guangzhou-1。
+	Zones []*string `json:"Zones,omitempty" name:"Zones"`
+
+	// 按照【标签键值对】进行过滤。tag-key使用具体的标签键进行替换。
+	TagFilters []*PrometheusTag `json:"TagFilters,omitempty" name:"TagFilters"`
+
+	// 按照【实例的IPv4地址】进行过滤。
+	IPv4Address []*string `json:"IPv4Address,omitempty" name:"IPv4Address"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribePrometheusInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIds")
+	delete(f, "InstanceStatus")
+	delete(f, "InstanceName")
+	delete(f, "Zones")
+	delete(f, "TagFilters")
+	delete(f, "IPv4Address")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrometheusInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePrometheusInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例详细信息列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		InstanceSet []*PrometheusInstancesItem `json:"InstanceSet,omitempty" name:"InstanceSet"`
+
+		// 符合条件的实例数量。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePrometheusInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeServiceDiscoveryRequest struct {
 	*tchttp.BaseRequest
 
@@ -4562,6 +4653,166 @@ type ProductSimple struct {
 	ProductEnName *string `json:"ProductEnName,omitempty" name:"ProductEnName"`
 }
 
+type PrometheusInstanceGrantInfo struct {
+
+	// 是否有计费操作权限(1=有，2=无)
+	HasChargeOperation *int64 `json:"HasChargeOperation,omitempty" name:"HasChargeOperation"`
+
+	// 是否显示VPC信息的权限(1=有，2=无)
+	HasVpcDisplay *int64 `json:"HasVpcDisplay,omitempty" name:"HasVpcDisplay"`
+
+	// 是否可修改Grafana的状态(1=有，2=无)
+	HasGrafanaStatusChange *int64 `json:"HasGrafanaStatusChange,omitempty" name:"HasGrafanaStatusChange"`
+
+	// 是否有管理agent的权限(1=有，2=无)
+	HasAgentManage *int64 `json:"HasAgentManage,omitempty" name:"HasAgentManage"`
+
+	// 是否有管理TKE集成的权限(1=有，2=无)
+	HasTkeManage *int64 `json:"HasTkeManage,omitempty" name:"HasTkeManage"`
+
+	// 是否显示API等信息(1=有, 2=无)
+	HasApiOperation *int64 `json:"HasApiOperation,omitempty" name:"HasApiOperation"`
+}
+
+type PrometheusInstancesItem struct {
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例名称。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 实例计费模式。取值范围：
+	// <ul>
+	// <li>2：包年包月</li>
+	// <li>3：按量</li>
+	// </ul>
+	InstanceChargeType *int64 `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
+
+	// 地域 ID
+	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// VPC ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网 ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 存储周期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataRetentionTime *int64 `json:"DataRetentionTime,omitempty" name:"DataRetentionTime"`
+
+	// 实例业务状态。取值范围：
+	// <ul>
+	// <li>1：正在创建</li>
+	// <li>2：运行中</li>
+	// <li>3：异常</li>
+	// <li>4：重建中</li>
+	// <li>5：销毁中</li>
+	// <li>6：已停服</li>
+	// <li>8：欠费停服中</li>
+	// <li>9：欠费已停服</li>
+	// </ul>
+	InstanceStatus *int64 `json:"InstanceStatus,omitempty" name:"InstanceStatus"`
+
+	// Grafana 面板 URL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GrafanaURL *string `json:"GrafanaURL,omitempty" name:"GrafanaURL"`
+
+	// 创建时间
+	CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
+
+	// 是否开启 Grafana
+	// <li>0：不开启</li>
+	// <li>1：开启</li>
+	EnableGrafana *int64 `json:"EnableGrafana,omitempty" name:"EnableGrafana"`
+
+	// 实例IPV4地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IPv4Address *string `json:"IPv4Address,omitempty" name:"IPv4Address"`
+
+	// 实例关联的标签列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagSpecification []*PrometheusTag `json:"TagSpecification,omitempty" name:"TagSpecification"`
+
+	// 购买的实例过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 计费状态
+	// <ul>
+	// <li>1：正常</li>
+	// <li>2：过期</li>
+	// <li>3：销毁</li>
+	// <li>4：分配中</li>
+	// <li>5：分配失败</li>
+	// </ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChargeStatus *int64 `json:"ChargeStatus,omitempty" name:"ChargeStatus"`
+
+	// 规格名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpecName *string `json:"SpecName,omitempty" name:"SpecName"`
+
+	// 自动续费标记
+	// <ul>
+	// <li>0：不自动续费</li>
+	// <li>1：开启自动续费</li>
+	// <li>2：禁止自动续费</li>
+	// <li>-1：无效</ii>
+	// </ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 是否快过期
+	// <ul>
+	// <li>0：否</li>
+	// <li>1：快过期</li>
+	// </ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsNearExpire *int64 `json:"IsNearExpire,omitempty" name:"IsNearExpire"`
+
+	// 数据写入需要的 Token
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthToken *string `json:"AuthToken,omitempty" name:"AuthToken"`
+
+	// Prometheus Remote Write 的地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemoteWrite *string `json:"RemoteWrite,omitempty" name:"RemoteWrite"`
+
+	// Prometheus HTTP Api 根地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiRootPath *string `json:"ApiRootPath,omitempty" name:"ApiRootPath"`
+
+	// Proxy 的地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyAddress *string `json:"ProxyAddress,omitempty" name:"ProxyAddress"`
+
+	// Grafana 运行状态
+	// <ul>
+	// <li>1：正在创建</li>
+	// <li>2：运行中</li>
+	// <li>3：异常</li>
+	// <li>4：重启中</li>
+	// <li>5：销毁中</li>
+	// <li>6：已停机</li>
+	// <li>7：已删除</li>
+	// </ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GrafanaStatus *int64 `json:"GrafanaStatus,omitempty" name:"GrafanaStatus"`
+
+	// Grafana IP 白名单列表，使用英文分号分隔
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GrafanaIpWhiteList *string `json:"GrafanaIpWhiteList,omitempty" name:"GrafanaIpWhiteList"`
+
+	// 实例的授权信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Grant *PrometheusInstanceGrantInfo `json:"Grant,omitempty" name:"Grant"`
+}
+
 type PrometheusRuleKV struct {
 
 	// 键
@@ -4620,6 +4871,16 @@ type PrometheusRuleSet struct {
 	// 规则更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedAt *string `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
+}
+
+type PrometheusTag struct {
+
+	// 标签的健值
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 标签对应的值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type PutMonitorDataRequest struct {

@@ -192,6 +192,53 @@ func (c *Client) AttachCcn(request *AttachCcnRequest) (response *AttachCcnRespon
     return
 }
 
+func NewAttachDisksRequest() (request *AttachDisksRequest) {
+    request = &AttachDisksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "AttachDisks")
+    
+    
+    return
+}
+
+func NewAttachDisksResponse() (response *AttachDisksResponse) {
+    response = &AttachDisksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AttachDisks
+// 本接口（AttachDisks）用于挂载一个或多个弹性云盘。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = "InvalidParameterValue.InstanceIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
+//  LIMITEXCEEDED_ATTACHDATADISKQUOTALIMITEXCEEDED = "LimitExceeded.AttachDataDiskQuotaLimitExceeded"
+//  OPERATIONDENIED_DISKCREATING = "OperationDenied.DiskCreating"
+//  OPERATIONDENIED_DISKOPERATIONINPROGRESS = "OperationDenied.DiskOperationInProgress"
+//  OPERATIONDENIED_INSTANCECREATING = "OperationDenied.InstanceCreating"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  RESOURCENOTFOUND_DISKIDNOTFOUND = "ResourceNotFound.DiskIdNotFound"
+//  RESOURCENOTFOUND_DISKNOTFOUND = "ResourceNotFound.DiskNotFound"
+//  RESOURCENOTFOUND_INSTANCEIDNOTFOUND = "ResourceNotFound.InstanceIdNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNSUPPORTEDOPERATION_DISKLATESTOPERATIONUNFINISHED = "UnsupportedOperation.DiskLatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_INVALIDDISKSTATE = "UnsupportedOperation.InvalidDiskState"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) AttachDisks(request *AttachDisksRequest) (response *AttachDisksResponse, err error) {
+    if request == nil {
+        request = NewAttachDisksRequest()
+    }
+    
+    response = NewAttachDisksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBlueprintRequest() (request *CreateBlueprintRequest) {
     request = &CreateBlueprintRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -755,6 +802,180 @@ func (c *Client) DescribeCcnAttachedInstances(request *DescribeCcnAttachedInstan
     return
 }
 
+func NewDescribeDiskConfigsRequest() (request *DescribeDiskConfigsRequest) {
+    request = &DescribeDiskConfigsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeDiskConfigs")
+    
+    
+    return
+}
+
+func NewDescribeDiskConfigsResponse() (response *DescribeDiskConfigsResponse) {
+    response = &DescribeDiskConfigsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDiskConfigs
+// 本接口（DescribeDiskConfigs）用于查询磁盘配置。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDZONE = "InvalidParameterValue.InvalidZone"
+//  INVALIDPARAMETERVALUE_ZONEINVALID = "InvalidParameterValue.ZoneInvalid"
+func (c *Client) DescribeDiskConfigs(request *DescribeDiskConfigsRequest) (response *DescribeDiskConfigsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDiskConfigsRequest()
+    }
+    
+    response = NewDescribeDiskConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDiskDiscountRequest() (request *DescribeDiskDiscountRequest) {
+    request = &DescribeDiskDiscountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeDiskDiscount")
+    
+    
+    return
+}
+
+func NewDescribeDiskDiscountResponse() (response *DescribeDiskDiscountResponse) {
+    response = &DescribeDiskDiscountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDiskDiscount
+// 本接口(DescribeDiskDiscount)用于查询云硬盘折扣信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_TRADEGETPRICEFAILED = "InternalError.TradeGetPriceFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeDiskDiscount(request *DescribeDiskDiscountRequest) (response *DescribeDiskDiscountResponse, err error) {
+    if request == nil {
+        request = NewDescribeDiskDiscountRequest()
+    }
+    
+    response = NewDescribeDiskDiscountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDisksRequest() (request *DescribeDisksRequest) {
+    request = &DescribeDisksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeDisks")
+    
+    
+    return
+}
+
+func NewDescribeDisksResponse() (response *DescribeDisksResponse) {
+    response = &DescribeDisksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDisks
+// 本接口（DescribeDisks）用于查询磁盘信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER_FILTERVALUELIMITEXCEEDED = "InvalidParameter.FilterValueLimitExceeded"
+//  INVALIDPARAMETER_INVALIDFILTER = "InvalidParameter.InvalidFilter"
+//  INVALIDPARAMETER_INVALIDFILTERINVALIDKEY = "InvalidParameter.InvalidFilterInvalidKey"
+//  INVALIDPARAMETER_PARAMETERCONFLICT = "InvalidParameter.ParameterConflict"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+//  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDZONE = "InvalidParameterValue.InvalidZone"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_ZONEINVALID = "InvalidParameterValue.ZoneInvalid"
+//  RESOURCENOTFOUND_DISKIDNOTFOUND = "ResourceNotFound.DiskIdNotFound"
+func (c *Client) DescribeDisks(request *DescribeDisksRequest) (response *DescribeDisksResponse, err error) {
+    if request == nil {
+        request = NewDescribeDisksRequest()
+    }
+    
+    response = NewDescribeDisksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDisksDeniedActionsRequest() (request *DescribeDisksDeniedActionsRequest) {
+    request = &DescribeDisksDeniedActionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeDisksDeniedActions")
+    
+    
+    return
+}
+
+func NewDescribeDisksDeniedActionsResponse() (response *DescribeDisksDeniedActionsResponse) {
+    response = &DescribeDisksDeniedActionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDisksDeniedActions
+// 本接口（DescribeDisksDeniedActions）用于查询一个或多个磁盘的操作限制列表信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
+func (c *Client) DescribeDisksDeniedActions(request *DescribeDisksDeniedActionsRequest) (response *DescribeDisksDeniedActionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDisksDeniedActionsRequest()
+    }
+    
+    response = NewDescribeDisksDeniedActionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDisksReturnableRequest() (request *DescribeDisksReturnableRequest) {
+    request = &DescribeDisksReturnableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeDisksReturnable")
+    
+    
+    return
+}
+
+func NewDescribeDisksReturnableResponse() (response *DescribeDisksReturnableResponse) {
+    response = &DescribeDisksReturnableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDisksReturnable
+// 本接口（DescribeDisksReturnable）用于查询磁盘是否可退还。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DESCRIBEDISKSRETURNABLEERROR = "InternalError.DescribeDisksReturnableError"
+//  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
+func (c *Client) DescribeDisksReturnable(request *DescribeDisksReturnableRequest) (response *DescribeDisksReturnableResponse, err error) {
+    if request == nil {
+        request = NewDescribeDisksReturnableRequest()
+    }
+    
+    response = NewDescribeDisksReturnableResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFirewallRulesRequest() (request *DescribeFirewallRulesRequest) {
     request = &DescribeFirewallRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1035,6 +1256,41 @@ func (c *Client) DescribeInstancesDeniedActions(request *DescribeInstancesDenied
     }
     
     response = NewDescribeInstancesDeniedActionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstancesDiskNumRequest() (request *DescribeInstancesDiskNumRequest) {
+    request = &DescribeInstancesDiskNumRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeInstancesDiskNum")
+    
+    
+    return
+}
+
+func NewDescribeInstancesDiskNumResponse() (response *DescribeInstancesDiskNumResponse) {
+    response = &DescribeInstancesDiskNumResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeInstancesDiskNum
+// 本接口(DescribeInstancesDiskNum)用于查询实例挂载云盘数量。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = "InvalidParameterValue.InstanceIdMalformed"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  RESOURCENOTFOUND_INSTANCEIDNOTFOUND = "ResourceNotFound.InstanceIdNotFound"
+func (c *Client) DescribeInstancesDiskNum(request *DescribeInstancesDiskNumRequest) (response *DescribeInstancesDiskNumResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstancesDiskNumRequest()
+    }
+    
+    response = NewDescribeInstancesDiskNumResponse()
     err = c.Send(request, response)
     return
 }
@@ -1459,6 +1715,45 @@ func (c *Client) DetachCcn(request *DetachCcnRequest) (response *DetachCcnRespon
     return
 }
 
+func NewDetachDisksRequest() (request *DetachDisksRequest) {
+    request = &DetachDisksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DetachDisks")
+    
+    
+    return
+}
+
+func NewDetachDisksResponse() (response *DetachDisksResponse) {
+    response = &DetachDisksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DetachDisks
+// 本接口（DetachDisks）用于卸载一个或多个弹性云盘。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
+//  OPERATIONDENIED_DISKCREATING = "OperationDenied.DiskCreating"
+//  OPERATIONDENIED_DISKOPERATIONINPROGRESS = "OperationDenied.DiskOperationInProgress"
+//  OPERATIONDENIED_DISKUSAGENOTSUPPORTOPERATION = "OperationDenied.DiskUsageNotSupportOperation"
+//  RESOURCENOTFOUND_DISKIDNOTFOUND = "ResourceNotFound.DiskIdNotFound"
+//  RESOURCENOTFOUND_DISKNOTFOUND = "ResourceNotFound.DiskNotFound"
+//  UNSUPPORTEDOPERATION_INVALIDDISKSTATE = "UnsupportedOperation.InvalidDiskState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) DetachDisks(request *DetachDisksRequest) (response *DetachDisksResponse, err error) {
+    if request == nil {
+        request = NewDetachDisksRequest()
+    }
+    
+    response = NewDetachDisksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisassociateInstancesKeyPairsRequest() (request *DisassociateInstancesKeyPairsRequest) {
     request = &DisassociateInstancesKeyPairsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1590,6 +1885,39 @@ func (c *Client) InquirePriceCreateBlueprint(request *InquirePriceCreateBlueprin
     return
 }
 
+func NewInquirePriceCreateDisksRequest() (request *InquirePriceCreateDisksRequest) {
+    request = &InquirePriceCreateDisksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "InquirePriceCreateDisks")
+    
+    
+    return
+}
+
+func NewInquirePriceCreateDisksResponse() (response *InquirePriceCreateDisksResponse) {
+    response = &InquirePriceCreateDisksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// InquirePriceCreateDisks
+// 本接口（InquirePriceCreateDisks）用于新购磁盘询价。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_TRADEGETPRICEFAILED = "InternalError.TradeGetPriceFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) InquirePriceCreateDisks(request *InquirePriceCreateDisksRequest) (response *InquirePriceCreateDisksResponse, err error) {
+    if request == nil {
+        request = NewInquirePriceCreateDisksRequest()
+    }
+    
+    response = NewInquirePriceCreateDisksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInquirePriceCreateInstancesRequest() (request *InquirePriceCreateInstancesRequest) {
     request = &InquirePriceCreateInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1622,6 +1950,41 @@ func (c *Client) InquirePriceCreateInstances(request *InquirePriceCreateInstance
     }
     
     response = NewInquirePriceCreateInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInquirePriceRenewDisksRequest() (request *InquirePriceRenewDisksRequest) {
+    request = &InquirePriceRenewDisksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "InquirePriceRenewDisks")
+    
+    
+    return
+}
+
+func NewInquirePriceRenewDisksResponse() (response *InquirePriceRenewDisksResponse) {
+    response = &InquirePriceRenewDisksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// InquirePriceRenewDisks
+// 本接口（InquirePriceRenewDisks）用于续费磁盘询价。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  OPERATIONDENIED_DISKUSAGENOTSUPPORTOPERATION = "OperationDenied.DiskUsageNotSupportOperation"
+//  RESOURCENOTFOUND_DISKIDNOTFOUND = "ResourceNotFound.DiskIdNotFound"
+func (c *Client) InquirePriceRenewDisks(request *InquirePriceRenewDisksRequest) (response *InquirePriceRenewDisksResponse, err error) {
+    if request == nil {
+        request = NewInquirePriceRenewDisksRequest()
+    }
+    
+    response = NewInquirePriceRenewDisksResponse()
     err = c.Send(request, response)
     return
 }
@@ -1696,6 +2059,80 @@ func (c *Client) ModifyBlueprintAttribute(request *ModifyBlueprintAttributeReque
     }
     
     response = NewModifyBlueprintAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDisksAttributeRequest() (request *ModifyDisksAttributeRequest) {
+    request = &ModifyDisksAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "ModifyDisksAttribute")
+    
+    
+    return
+}
+
+func NewModifyDisksAttributeResponse() (response *ModifyDisksAttributeResponse) {
+    response = &ModifyDisksAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDisksAttribute
+// 本接口(ModifyDisksAttribute)用于修改磁盘属性
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
+//  OPERATIONDENIED_DISKOPERATIONINPROGRESS = "OperationDenied.DiskOperationInProgress"
+//  OPERATIONDENIED_DISKUSAGENOTSUPPORTOPERATION = "OperationDenied.DiskUsageNotSupportOperation"
+//  RESOURCENOTFOUND_DISKIDNOTFOUND = "ResourceNotFound.DiskIdNotFound"
+func (c *Client) ModifyDisksAttribute(request *ModifyDisksAttributeRequest) (response *ModifyDisksAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyDisksAttributeRequest()
+    }
+    
+    response = NewModifyDisksAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDisksRenewFlagRequest() (request *ModifyDisksRenewFlagRequest) {
+    request = &ModifyDisksRenewFlagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "ModifyDisksRenewFlag")
+    
+    
+    return
+}
+
+func NewModifyDisksRenewFlagResponse() (response *ModifyDisksRenewFlagResponse) {
+    response = &ModifyDisksRenewFlagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDisksRenewFlag
+// 本接口（ModifyDisksRenewFlag）用于修改磁盘续费标识。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
+//  OPERATIONDENIED_DISKCREATING = "OperationDenied.DiskCreating"
+//  OPERATIONDENIED_DISKOPERATIONINPROGRESS = "OperationDenied.DiskOperationInProgress"
+//  OPERATIONDENIED_DISKUSAGENOTSUPPORTOPERATION = "OperationDenied.DiskUsageNotSupportOperation"
+//  RESOURCENOTFOUND_DISKIDNOTFOUND = "ResourceNotFound.DiskIdNotFound"
+//  RESOURCENOTFOUND_DISKNOTFOUND = "ResourceNotFound.DiskNotFound"
+func (c *Client) ModifyDisksRenewFlag(request *ModifyDisksRenewFlagRequest) (response *ModifyDisksRenewFlagResponse, err error) {
+    if request == nil {
+        request = NewModifyDisksRenewFlagRequest()
+    }
+    
+    response = NewModifyDisksRenewFlagResponse()
     err = c.Send(request, response)
     return
 }
@@ -2291,6 +2728,42 @@ func (c *Client) StopInstances(request *StopInstancesRequest) (response *StopIns
     }
     
     response = NewStopInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTerminateDisksRequest() (request *TerminateDisksRequest) {
+    request = &TerminateDisksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "TerminateDisks")
+    
+    
+    return
+}
+
+func NewTerminateDisksResponse() (response *TerminateDisksResponse) {
+    response = &TerminateDisksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// TerminateDisks
+// 本接口（TerminateDisks）用于销毁一个或多个磁盘。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
+//  OPERATIONDENIED_DISKOPERATIONINPROGRESS = "OperationDenied.DiskOperationInProgress"
+//  OPERATIONDENIED_DISKUSAGENOTSUPPORTOPERATION = "OperationDenied.DiskUsageNotSupportOperation"
+//  RESOURCENOTFOUND_DISKIDNOTFOUND = "ResourceNotFound.DiskIdNotFound"
+func (c *Client) TerminateDisks(request *TerminateDisksRequest) (response *TerminateDisksResponse, err error) {
+    if request == nil {
+        request = NewTerminateDisksRequest()
+    }
+    
+    response = NewTerminateDisksResponse()
     err = c.Send(request, response)
     return
 }
