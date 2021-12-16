@@ -16,7 +16,7 @@ package v20190118
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -32,8 +32,18 @@ func (r *GetLocalEngineRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetLocalEngineRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Key")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetLocalEngineRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetLocalEngineResponse struct {
@@ -59,8 +69,10 @@ func (r *GetLocalEngineResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetLocalEngineResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetScanResultRequest struct {
@@ -78,8 +90,19 @@ func (r *GetScanResultRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetScanResultRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Key")
+	delete(f, "Md5")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetScanResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetScanResultResponse struct {
@@ -106,8 +129,10 @@ func (r *GetScanResultResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetScanResultResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ScanFileHashRequest struct {
@@ -131,8 +156,21 @@ func (r *ScanFileHashRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ScanFileHashRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Key")
+	delete(f, "Md5s")
+	delete(f, "WithCategory")
+	delete(f, "SensitiveLevel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScanFileHashRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ScanFileHashResponse struct {
@@ -160,8 +198,10 @@ func (r *ScanFileHashResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ScanFileHashResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ScanFileRequest struct {
@@ -182,8 +222,20 @@ func (r *ScanFileRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ScanFileRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Key")
+	delete(f, "Sample")
+	delete(f, "Md5")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScanFileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ScanFileResponse struct {
@@ -209,6 +261,8 @@ func (r *ScanFileResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ScanFileResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

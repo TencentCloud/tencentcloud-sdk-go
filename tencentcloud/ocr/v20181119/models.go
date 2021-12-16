@@ -16,7 +16,7 @@ package v20181119
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -24,12 +24,12 @@ type AdvertiseOCRRequest struct {
 	*tchttp.BaseRequest
 
 	// 图片的 Base64 值。
-	// 要求图片经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
+	// 要求图片经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
-	// 要求图片经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
+	// 要求图片经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
@@ -39,8 +39,19 @@ func (r *AdvertiseOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AdvertiseOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AdvertiseOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type AdvertiseOCRResponse struct {
@@ -48,7 +59,7 @@ type AdvertiseOCRResponse struct {
 	Response *struct {
 
 		// 检测到的文本信息，包括文本行内容、置信度、文本行坐标以及文本行旋转纠正后的坐标，具体内容请点击左侧链接。
-		TextDetections []*AdvertiseTextDetection `json:"TextDetections,omitempty" name:"TextDetections" list`
+		TextDetections []*AdvertiseTextDetection `json:"TextDetections,omitempty" name:"TextDetections"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -60,8 +71,10 @@ func (r *AdvertiseOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AdvertiseOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type AdvertiseTextDetection struct {
@@ -73,7 +86,7 @@ type AdvertiseTextDetection struct {
 	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// 文本行坐标，以四个顶点坐标表示
-	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon" list`
+	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon"`
 
 	// 此字段为扩展字段。
 	// GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
@@ -81,53 +94,6 @@ type AdvertiseTextDetection struct {
 }
 
 type ArithmeticOCRRequest struct {
-	*tchttp.BaseRequest
-
-	// 图片的 Base64 值。
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
-	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
-	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
-	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
-}
-
-func (r *ArithmeticOCRRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *ArithmeticOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type ArithmeticOCRResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 检测到的文本信息，具体内容请点击左侧链接。
-		TextDetections []*TextArithmetic `json:"TextDetections,omitempty" name:"TextDetections" list`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *ArithmeticOCRResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *ArithmeticOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type BankCardOCRRequest struct {
 	*tchttp.BaseRequest
 
 	// 图片的 Base64 值。
@@ -142,6 +108,106 @@ type BankCardOCRRequest struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 用于选择是否支持横屏拍摄。打开则支持横屏拍摄图片角度判断，角度信息在返回参数的angle中，默认值为true
+	SupportHorizontalImage *bool `json:"SupportHorizontalImage,omitempty" name:"SupportHorizontalImage"`
+
+	// 是否拒绝非速算图，打开则拒绝非速算图(注：非速算图是指风景人物等明显不是速算图片的图片)，默认值为false
+	RejectNonArithmeticPic *bool `json:"RejectNonArithmeticPic,omitempty" name:"RejectNonArithmeticPic"`
+
+	// 是否展开耦合算式中的竖式计算，默认值为false
+	EnableDispRelatedVertical *bool `json:"EnableDispRelatedVertical,omitempty" name:"EnableDispRelatedVertical"`
+
+	// 是否展示竖式算式的中间结果和格式控制字符，默认值为false
+	EnableDispMidResult *bool `json:"EnableDispMidResult,omitempty" name:"EnableDispMidResult"`
+
+	// 是否开启pdf识别，默认值为true
+	EnablePdfRecognize *bool `json:"EnablePdfRecognize,omitempty" name:"EnablePdfRecognize"`
+
+	// pdf页码，从0开始，默认为0
+	PdfPageIndex *int64 `json:"PdfPageIndex,omitempty" name:"PdfPageIndex"`
+}
+
+func (r *ArithmeticOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ArithmeticOCRRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "SupportHorizontalImage")
+	delete(f, "RejectNonArithmeticPic")
+	delete(f, "EnableDispRelatedVertical")
+	delete(f, "EnableDispMidResult")
+	delete(f, "EnablePdfRecognize")
+	delete(f, "PdfPageIndex")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ArithmeticOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ArithmeticOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 检测到的文本信息，具体内容请点击左侧链接。
+		TextDetections []*TextArithmetic `json:"TextDetections,omitempty" name:"TextDetections"`
+
+		// 图片横屏的角度(90度或270度)
+		Angle *float64 `json:"Angle,omitempty" name:"Angle"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ArithmeticOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ArithmeticOCRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BankCardOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
+	// 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否返回预处理（精确剪裁对齐）后的银行卡图片数据，默认false。
+	RetBorderCutImage *bool `json:"RetBorderCutImage,omitempty" name:"RetBorderCutImage"`
+
+	// 是否返回卡号的切图图片数据，默认false。
+	RetCardNoImage *bool `json:"RetCardNoImage,omitempty" name:"RetCardNoImage"`
+
+	// 复印件检测开关，如果输入的图片是银行卡复印件图片则返回告警，默认false。
+	EnableCopyCheck *bool `json:"EnableCopyCheck,omitempty" name:"EnableCopyCheck"`
+
+	// 翻拍检测开关，如果输入的图片是银行卡翻拍图片则返回告警，默认false。
+	EnableReshootCheck *bool `json:"EnableReshootCheck,omitempty" name:"EnableReshootCheck"`
+
+	// 边框遮挡检测开关，如果输入的图片是银行卡边框被遮挡则返回告警，默认false。
+	EnableBorderCheck *bool `json:"EnableBorderCheck,omitempty" name:"EnableBorderCheck"`
+
+	// 是否返回图片质量分数（图片质量分数是评价一个图片的模糊程度的标准），默认false。
+	EnableQualityValue *bool `json:"EnableQualityValue,omitempty" name:"EnableQualityValue"`
 }
 
 func (r *BankCardOCRRequest) ToJsonString() string {
@@ -149,8 +215,25 @@ func (r *BankCardOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BankCardOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "RetBorderCutImage")
+	delete(f, "RetCardNoImage")
+	delete(f, "EnableCopyCheck")
+	delete(f, "EnableReshootCheck")
+	delete(f, "EnableBorderCheck")
+	delete(f, "EnableQualityValue")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BankCardOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BankCardOCRResponse struct {
@@ -163,8 +246,36 @@ type BankCardOCRResponse struct {
 		// 银行信息
 		BankInfo *string `json:"BankInfo,omitempty" name:"BankInfo"`
 
-		// 有效期
+		// 有效期，格式如：07/2023
 		ValidDate *string `json:"ValidDate,omitempty" name:"ValidDate"`
+
+		// 卡类型
+		CardType *string `json:"CardType,omitempty" name:"CardType"`
+
+		// 卡名字
+		CardName *string `json:"CardName,omitempty" name:"CardName"`
+
+		// 切片图片数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		BorderCutImage *string `json:"BorderCutImage,omitempty" name:"BorderCutImage"`
+
+		// 卡号图片数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CardNoImage *string `json:"CardNoImage,omitempty" name:"CardNoImage"`
+
+		// WarningCode 告警码列表和释义：
+	// -9110:银行卡日期无效; 
+	// -9111:银行卡边框不完整; 
+	// -9112:银行卡图片反光;
+	// -9113:银行卡复印件;
+	// -9114:银行卡翻拍件
+	// （告警码可以同时存在多个）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		WarningCode []*int64 `json:"WarningCode,omitempty" name:"WarningCode"`
+
+		// 图片质量分数，请求EnableQualityValue时返回（取值范围：0-100，分数越低越模糊，建议阈值≥50）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		QualityValue *int64 `json:"QualityValue,omitempty" name:"QualityValue"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -176,8 +287,81 @@ func (r *BankCardOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BankCardOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BankSlipInfo struct {
+
+	// 识别出的字段名称(关键字)，支持以下字段：
+	// 付款开户行、收款开户行、付款账号、收款账号、回单类型、回单编号、币种、流水号、凭证号码、交易机构、交易金额、手续费、日期等字段信息。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 文本行在旋转纠正之后的图像中的像素坐标。
+	Rect *Rect `json:"Rect,omitempty" name:"Rect"`
+}
+
+type BankSlipOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。
+	// 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+func (r *BankSlipOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BankSlipOCRRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BankSlipOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BankSlipOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 银行回单识别结果，具体内容请点击左侧链接。
+		BankSlipInfos []*BankSlipInfo `json:"BankSlipInfos,omitempty" name:"BankSlipInfos"`
+
+		// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
+		Angle *float64 `json:"Angle,omitempty" name:"Angle"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BankSlipOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BankSlipOCRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BizLicenseOCRRequest struct {
@@ -202,8 +386,19 @@ func (r *BizLicenseOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BizLicenseOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BizLicenseOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BizLicenseOCRResponse struct {
@@ -243,12 +438,12 @@ type BizLicenseOCRResponse struct {
 		// Code 告警码列表和释义：
 	// -20001 非营业执照
 	// 注：告警码可以同时存在多个
-		RecognizeWarnCode []*int64 `json:"RecognizeWarnCode,omitempty" name:"RecognizeWarnCode" list`
+		RecognizeWarnCode []*int64 `json:"RecognizeWarnCode,omitempty" name:"RecognizeWarnCode"`
 
 		// 告警码说明：
 	// OCR_WARNING_TPYE_NOT_MATCH 非营业执照
 	// 注：告警信息可以同时存在多个
-		RecognizeWarnMsg []*string `json:"RecognizeWarnMsg,omitempty" name:"RecognizeWarnMsg" list`
+		RecognizeWarnMsg []*string `json:"RecognizeWarnMsg,omitempty" name:"RecognizeWarnMsg"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -260,8 +455,10 @@ func (r *BizLicenseOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BizLicenseOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BizLicenseVerifyResult struct {
@@ -283,7 +480,8 @@ type BizLicenseVerifyResult struct {
 
 type BusInvoiceInfo struct {
 
-	// 识别出的字段名称（关键字）。
+	// 识别出的字段名称(关键字)，支持以下字段：
+	// 发票代码、发票号码、日期、票价、始发地、目的地、姓名、时间、发票消费类型、身份证号、省、市、开票日期、乘车地点、检票口、客票类型、车型、座位号、车次。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
@@ -298,13 +496,13 @@ type BusInvoiceOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -315,8 +513,19 @@ func (r *BusInvoiceOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BusInvoiceOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BusInvoiceOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BusInvoiceOCRResponse struct {
@@ -324,7 +533,7 @@ type BusInvoiceOCRResponse struct {
 	Response *struct {
 
 		// 汽车票识别结果，具体内容请点击左侧链接。
-		BusInvoiceInfos []*BusInvoiceInfo `json:"BusInvoiceInfos,omitempty" name:"BusInvoiceInfos" list`
+		BusInvoiceInfos []*BusInvoiceInfo `json:"BusInvoiceInfos,omitempty" name:"BusInvoiceInfos"`
 
 		// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
 		Angle *float64 `json:"Angle,omitempty" name:"Angle"`
@@ -339,8 +548,10 @@ func (r *BusInvoiceOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BusInvoiceOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BusinessCardInfo struct {
@@ -389,8 +600,20 @@ func (r *BusinessCardOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BusinessCardOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "Config")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BusinessCardOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BusinessCardOCRResponse struct {
@@ -398,7 +621,7 @@ type BusinessCardOCRResponse struct {
 	Response *struct {
 
 		// 名片识别结果，具体内容请点击左侧链接。
-		BusinessCardInfos []*BusinessCardInfo `json:"BusinessCardInfos,omitempty" name:"BusinessCardInfos" list`
+		BusinessCardInfos []*BusinessCardInfo `json:"BusinessCardInfos,omitempty" name:"BusinessCardInfos"`
 
 		// 返回图像预处理后的图片，图像预处理未开启时返回内容为空。
 		RetImageBase64 *string `json:"RetImageBase64,omitempty" name:"RetImageBase64"`
@@ -416,19 +639,22 @@ func (r *BusinessCardOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BusinessCardOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CandWord struct {
 
 	// 候选字符集的单词信息（包括单词Character和单词置信度confidence）
-	CandWords []*Words `json:"CandWords,omitempty" name:"CandWords" list`
+	CandWords []*Words `json:"CandWords,omitempty" name:"CandWords"`
 }
 
 type CarInvoiceInfo struct {
 
-	// 识别出的字段名称（关键字）。
+	// 识别出的字段名称(关键字)，支持以下字段：
+	// 发票代码、 机打代码、 发票号码、 发动机号码、 合格证号、 机打号码、 价税合计(小写)、 销货单位名称、 身份证号码/组织机构代码、 购买方名称、 销售方纳税人识别号、 购买方纳税人识别号、主管税务机关、 主管税务机关代码、 开票日期、 不含税价(小写)、 吨位、增值税税率或征收率、 车辆识别代号/车架号码、 增值税税额、 厂牌型号、 省、 市、 发票消费类型、 销售方电话、 销售方账号、 产地、 进口证明书号、 车辆类型、 机器编号、备注、开票人、限乘人数、商检单号、销售方地址、销售方开户银行、价税合计、发票类型。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 识别出的字段名称对应的值，也就是字段name对应的字符串结果。
@@ -448,13 +674,13 @@ type CarInvoiceOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -465,8 +691,19 @@ func (r *CarInvoiceOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CarInvoiceOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CarInvoiceOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CarInvoiceOCRResponse struct {
@@ -474,7 +711,7 @@ type CarInvoiceOCRResponse struct {
 	Response *struct {
 
 		// 购车发票识别结果，具体内容请点击左侧链接。
-		CarInvoiceInfos []*CarInvoiceInfo `json:"CarInvoiceInfos,omitempty" name:"CarInvoiceInfos" list`
+		CarInvoiceInfos []*CarInvoiceInfo `json:"CarInvoiceInfos,omitempty" name:"CarInvoiceInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -486,8 +723,10 @@ func (r *CarInvoiceOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CarInvoiceOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CellContent struct {
@@ -503,7 +742,7 @@ type CellContent struct {
 
 type ClassifyDetectInfo struct {
 
-	// 分类名称
+	// 分类名称，包括：身份证、护照、名片、银行卡、行驶证、驾驶证、港澳台通行证、户口本、港澳台来往内地通行证、港澳台居住证、不动产证、营业执照
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 分类类型
@@ -549,7 +788,7 @@ type ClassifyDetectOCRRequest struct {
 	// HmtResidentPermitBack: 港澳台居住证背面
 	// EstateCert: 不动产证
 	// BizLicense: 营业执照
-	DiscernType []*string `json:"DiscernType,omitempty" name:"DiscernType" list`
+	DiscernType []*string `json:"DiscernType,omitempty" name:"DiscernType"`
 }
 
 func (r *ClassifyDetectOCRRequest) ToJsonString() string {
@@ -557,8 +796,20 @@ func (r *ClassifyDetectOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ClassifyDetectOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "DiscernType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ClassifyDetectOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ClassifyDetectOCRResponse struct {
@@ -566,7 +817,7 @@ type ClassifyDetectOCRResponse struct {
 	Response *struct {
 
 		// 智能卡证分类结果。当图片类型不支持分类识别或者识别出的类型不在请求参数DiscernType指定的范围内时，返回结果中的Type字段将为空字符串，Name字段将返回"其它"
-		ClassifyDetectInfos []*ClassifyDetectInfo `json:"ClassifyDetectInfos,omitempty" name:"ClassifyDetectInfos" list`
+		ClassifyDetectInfos []*ClassifyDetectInfo `json:"ClassifyDetectInfos,omitempty" name:"ClassifyDetectInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -578,8 +829,10 @@ func (r *ClassifyDetectOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ClassifyDetectOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Coord struct {
@@ -589,6 +842,30 @@ type Coord struct {
 
 	// 纵坐标
 	Y *int64 `json:"Y,omitempty" name:"Y"`
+}
+
+type Detail struct {
+
+	// 企业四要素核验结果状态码
+	Result *int64 `json:"Result,omitempty" name:"Result"`
+
+	// 企业四要素核验结果描述
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
+}
+
+type DetectedWordCoordPoint struct {
+
+	// 单字在原图中的坐标，以四个顶点坐标表示，以左上角为起点，顺时针返回。
+	WordCoordinate []*Coord `json:"WordCoordinate,omitempty" name:"WordCoordinate"`
+}
+
+type DetectedWords struct {
+
+	// 置信度 0 ~100
+	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 候选字Character
+	Character *string `json:"Character,omitempty" name:"Character"`
 }
 
 type DriverLicenseOCRRequest struct {
@@ -604,6 +881,7 @@ type DriverLicenseOCRRequest struct {
 
 	// FRONT 为驾驶证主页正面（有红色印章的一面），
 	// BACK 为驾驶证副页正面（有档案编号的一面）。
+	// 默认值为：FRONT。
 	CardSide *string `json:"CardSide,omitempty" name:"CardSide"`
 }
 
@@ -612,8 +890,20 @@ func (r *DriverLicenseOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DriverLicenseOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "CardSide")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DriverLicenseOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DriverLicenseOCRResponse struct {
@@ -632,19 +922,19 @@ type DriverLicenseOCRResponse struct {
 		// 住址
 		Address *string `json:"Address,omitempty" name:"Address"`
 
-		// 出生日期
+		// 出生日期（YYYY-MM-DD）
 		DateOfBirth *string `json:"DateOfBirth,omitempty" name:"DateOfBirth"`
 
-		// 初次领证日期
+		// 初次领证日期（YYYY-MM-DD）
 		DateOfFirstIssue *string `json:"DateOfFirstIssue,omitempty" name:"DateOfFirstIssue"`
 
 		// 准驾车型
 		Class *string `json:"Class,omitempty" name:"Class"`
 
-		// 有效期开始时间
+		// 有效期开始时间（YYYY-MM-DD）
 		StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
 
-		// 有效期截止时间
+		// 有效期截止时间（YYYY-MM-DD）
 		EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
 
 		// 证号
@@ -661,14 +951,17 @@ type DriverLicenseOCRResponse struct {
 	// -9103  翻拍件告警
 	// -9106  ps告警
 	// 注：告警码可以同时存在多个
-		RecognizeWarnCode []*int64 `json:"RecognizeWarnCode,omitempty" name:"RecognizeWarnCode" list`
+		RecognizeWarnCode []*int64 `json:"RecognizeWarnCode,omitempty" name:"RecognizeWarnCode"`
 
 		// 告警码说明：
 	// WARN_DRIVER_LICENSE_COPY_CARD 复印件告警
 	// WARN_DRIVER_LICENSE_SCREENED_CARD 翻拍件告警
 	// WARN_DRIVER_LICENSE_PS_CARD ps告警
 	// 注：告警信息可以同时存在多个
-		RecognizeWarnMsg []*string `json:"RecognizeWarnMsg,omitempty" name:"RecognizeWarnMsg" list`
+		RecognizeWarnMsg []*string `json:"RecognizeWarnMsg,omitempty" name:"RecognizeWarnMsg"`
+
+		// 发证单位
+		IssuingAuthority *string `json:"IssuingAuthority,omitempty" name:"IssuingAuthority"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -680,13 +973,16 @@ func (r *DriverLicenseOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DriverLicenseOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DutyPaidProofInfo struct {
 
-	// 识别出的字段名称（关键字）。
+	// 识别出的字段名称(关键字)，支持以下字段：
+	// 税号 、纳税人识别号 、纳税人名称 、金额合计大写 、金额合计小写 、填发日期 、税务机关 、填票人。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
@@ -701,13 +997,13 @@ type DutyPaidProofOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -718,8 +1014,19 @@ func (r *DutyPaidProofOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DutyPaidProofOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DutyPaidProofOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DutyPaidProofOCRResponse struct {
@@ -727,7 +1034,7 @@ type DutyPaidProofOCRResponse struct {
 	Response *struct {
 
 		// 完税证明识别结果，具体内容请点击左侧链接。
-		DutyPaidProofInfos []*DutyPaidProofInfo `json:"DutyPaidProofInfos,omitempty" name:"DutyPaidProofInfos" list`
+		DutyPaidProofInfos []*DutyPaidProofInfo `json:"DutyPaidProofInfos,omitempty" name:"DutyPaidProofInfos"`
 
 		// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
 		Angle *float64 `json:"Angle,omitempty" name:"Angle"`
@@ -742,8 +1049,10 @@ func (r *DutyPaidProofOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DutyPaidProofOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EduPaperOCRRequest struct {
@@ -751,25 +1060,23 @@ type EduPaperOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
 	// 扩展配置信息。
 	// 配置格式：{"option1":value1,"option2":value2}
-	// 可配置信息：
-	//       参数名称  是否必选   类型   可选值  默认值  描述
-	//       task_type  否  Int32  [0,1]  1  用于选择任务类型: 0: 关闭版式分析与处理 1: 开启版式分析处理
-	//       is_structuralization 否 Bool false\true true  用于选择是否结构化输出：false：返回包体返回通用输出 true：返回包体同时返回通用和结构化输出
-	//       if_readable_format 否 Bool false\true false 是否按照版式整合通用文本/公式输出结果
-	// 例子：
+	// 1. task_type：任务类型【0: 关闭版式分析与处理 1: 开启版式分析处理】可选参数，Int32类型，默认值为1
+	// 2. is_structuralization：是否结构化输出【true：返回包体同时返回通用和结构化输出  false：返回包体返回通用输出】 可选参数，Bool类型，默认值为true
+	// 3. if_readable_format：是否按照版式整合通用文本/公式输出结果 可选参数，Bool类型，默认值为false
+	// 示例：
 	// {"task_type": 1,"is_structuralization": true,"if_readable_format": true}
 	Config *string `json:"Config,omitempty" name:"Config"`
 }
@@ -779,8 +1086,20 @@ func (r *EduPaperOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EduPaperOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "Config")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EduPaperOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EduPaperOCRResponse struct {
@@ -788,13 +1107,13 @@ type EduPaperOCRResponse struct {
 	Response *struct {
 
 		// 检测到的文本信息，具体内容请点击左侧链接。
-		EduPaperInfos []*TextEduPaper `json:"EduPaperInfos,omitempty" name:"EduPaperInfos" list`
+		EduPaperInfos []*TextEduPaper `json:"EduPaperInfos,omitempty" name:"EduPaperInfos"`
 
 		// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。
 		Angle *int64 `json:"Angle,omitempty" name:"Angle"`
 
 		// 结构化方式输出，具体内容请点击左侧链接。
-		QuestionBlockInfos []*QuestionBlockObj `json:"QuestionBlockInfos,omitempty" name:"QuestionBlockInfos" list`
+		QuestionBlockInfos []*QuestionBlockObj `json:"QuestionBlockInfos,omitempty" name:"QuestionBlockInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -806,8 +1125,10 @@ func (r *EduPaperOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EduPaperOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EnglishOCRRequest struct {
@@ -815,13 +1136,13 @@ type EnglishOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -833,6 +1154,9 @@ type EnglishOCRRequest struct {
 	// 候选字开关，开启可返回识别时多个可能的候选字（每个候选字对应其置信度）。
 	// 该参数默认值为false。
 	EnableCandWord *bool `json:"EnableCandWord,omitempty" name:"EnableCandWord"`
+
+	// 预处理开关，功能是检测图片倾斜的角度，将原本倾斜的图片矫正。该参数默认值为true。
+	Preprocess *bool `json:"Preprocess,omitempty" name:"Preprocess"`
 }
 
 func (r *EnglishOCRRequest) ToJsonString() string {
@@ -840,8 +1164,22 @@ func (r *EnglishOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EnglishOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "EnableCoordPoint")
+	delete(f, "EnableCandWord")
+	delete(f, "Preprocess")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnglishOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EnglishOCRResponse struct {
@@ -849,7 +1187,10 @@ type EnglishOCRResponse struct {
 	Response *struct {
 
 		// 检测到的文本信息，具体内容请点击左侧链接。
-		TextDetections []*TextDetectionEn `json:"TextDetections,omitempty" name:"TextDetections" list`
+		TextDetections []*TextDetectionEn `json:"TextDetections,omitempty" name:"TextDetections"`
+
+		// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+		Angel *float64 `json:"Angel,omitempty" name:"Angel"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -861,13 +1202,16 @@ func (r *EnglishOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EnglishOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EnterpriseLicenseInfo struct {
 
-	// 识别出的字段名称。
+	// 识别出的字段名称（关键字），不同证件类型可能不同，证件类型包含企业登记证书、许可证书、企业执照、三证合一类证书；
+	// 支持以下字段：统一社会信用代码、法定代表人、公司名称、公司地址、注册资金、企业关型、经营范围、成立日期、有效期、开办资金、经费来源、举办单位等；
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
@@ -879,13 +1223,13 @@ type EnterpriseLicenseOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -896,8 +1240,19 @@ func (r *EnterpriseLicenseOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EnterpriseLicenseOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnterpriseLicenseOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EnterpriseLicenseOCRResponse struct {
@@ -905,7 +1260,7 @@ type EnterpriseLicenseOCRResponse struct {
 	Response *struct {
 
 		// 企业证照识别结果，具体内容请点击左侧链接。
-		EnterpriseLicenseInfos []*EnterpriseLicenseInfo `json:"EnterpriseLicenseInfos,omitempty" name:"EnterpriseLicenseInfos" list`
+		EnterpriseLicenseInfos []*EnterpriseLicenseInfo `json:"EnterpriseLicenseInfos,omitempty" name:"EnterpriseLicenseInfos"`
 
 		// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
 		Angle *float64 `json:"Angle,omitempty" name:"Angle"`
@@ -920,8 +1275,10 @@ func (r *EnterpriseLicenseOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EnterpriseLicenseOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EstateCertOCRRequest struct {
@@ -946,8 +1303,19 @@ func (r *EstateCertOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EstateCertOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EstateCertOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EstateCertOCRResponse struct {
@@ -1000,13 +1368,21 @@ func (r *EstateCertOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EstateCertOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FinanBillInfo struct {
 
-	// 识别出的字段名称。
+	// 识别出的字段名称(关键字)，支持以下字段：
+	// 【进账单】
+	// 日期、出票全称、出票账号、出票开户行、收款人全称、收款人账号、收款开户行、大写金额、小写金额、票据种类、票据张数、票据号码；
+	// 【支票】
+	// 开户银行、支票种类、凭证号码2、日期、大写金额、小写金额、付款行编号、密码、凭证号码1；
+	// 【银行承兑汇票】或【商业承兑汇票】
+	// 出票日期、行号1、行号2、出票人全称、出票人账号、付款行全称、收款人全称、收款人账号、收款人开户行、出票金额大写、出票金额小写、汇票到期日、付款行行号、付款行地址。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
@@ -1018,13 +1394,13 @@ type FinanBillOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -1035,8 +1411,19 @@ func (r *FinanBillOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FinanBillOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FinanBillOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FinanBillOCRResponse struct {
@@ -1044,7 +1431,7 @@ type FinanBillOCRResponse struct {
 	Response *struct {
 
 		// 金融票据整单识别结果，具体内容请点击左侧链接。
-		FinanBillInfos []*FinanBillInfo `json:"FinanBillInfos,omitempty" name:"FinanBillInfos" list`
+		FinanBillInfos []*FinanBillInfo `json:"FinanBillInfos,omitempty" name:"FinanBillInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1056,13 +1443,16 @@ func (r *FinanBillOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FinanBillOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FinanBillSliceInfo struct {
 
-	// 识别出的字段名称。
+	// 识别出的字段名称(关键字)，支持以下字段：
+	// 大写金额、小写金额、账号、票号1、票号2、收款人、大写日期、同城交换号、地址-省份、地址-城市、付款行全称、支票密码、支票用途。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
@@ -1091,8 +1481,19 @@ func (r *FinanBillSliceOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FinanBillSliceOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FinanBillSliceOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FinanBillSliceOCRResponse struct {
@@ -1100,7 +1501,7 @@ type FinanBillSliceOCRResponse struct {
 	Response *struct {
 
 		// 金融票据切片识别结果，具体内容请点击左侧链接。
-		FinanBillSliceInfos []*FinanBillSliceInfo `json:"FinanBillSliceInfos,omitempty" name:"FinanBillSliceInfos" list`
+		FinanBillSliceInfos []*FinanBillSliceInfo `json:"FinanBillSliceInfos,omitempty" name:"FinanBillSliceInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1112,17 +1513,23 @@ func (r *FinanBillSliceOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FinanBillSliceOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FlightInvoiceInfo struct {
 
-	// 识别出的字段名称（关键字）。
+	// 识别出的字段名称(关键字)，支持以下字段：
+	// 票价、合计金额、填开日期、有效身份证件号码、电子客票号码、验证码、旅客姓名、填开单位、其他税费、燃油附加费、民航发展基金、保险费、销售单位代号、始发地、目的地、航班号、时间、日期、座位等级、承运人、发票消费类型、国内国际标签、印刷序号、客票级别/类别、客票生效日期、有效期截止日期、免费行李。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 识别出的字段名称对应的值，也就是字段 Name 对应的字符串结果。
 	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 多个行程的字段所在行号，下标从0开始，非行字段或未能识别行号的该值返回-1。
+	Row *int64 `json:"Row,omitempty" name:"Row"`
 }
 
 type FlightInvoiceOCRRequest struct {
@@ -1130,13 +1537,13 @@ type FlightInvoiceOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -1147,8 +1554,19 @@ func (r *FlightInvoiceOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FlightInvoiceOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FlightInvoiceOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FlightInvoiceOCRResponse struct {
@@ -1156,7 +1574,7 @@ type FlightInvoiceOCRResponse struct {
 	Response *struct {
 
 		// 机票行程单识别结果，具体内容请点击左侧链接。
-		FlightInvoiceInfos []*FlightInvoiceInfo `json:"FlightInvoiceInfos,omitempty" name:"FlightInvoiceInfos" list`
+		FlightInvoiceInfos []*FlightInvoiceInfo `json:"FlightInvoiceInfos,omitempty" name:"FlightInvoiceInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1168,8 +1586,10 @@ func (r *FlightInvoiceOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FlightInvoiceOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FormulaOCRRequest struct {
@@ -1177,13 +1597,13 @@ type FormulaOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -1194,8 +1614,19 @@ func (r *FormulaOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FormulaOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FormulaOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FormulaOCRResponse struct {
@@ -1206,7 +1637,7 @@ type FormulaOCRResponse struct {
 		Angle *int64 `json:"Angle,omitempty" name:"Angle"`
 
 		// 检测到的文本信息，具体内容请点击左侧链接。
-		FormulaInfos []*TextFormula `json:"FormulaInfos,omitempty" name:"FormulaInfos" list`
+		FormulaInfos []*TextFormula `json:"FormulaInfos,omitempty" name:"FormulaInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1218,8 +1649,10 @@ func (r *FormulaOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FormulaOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GeneralAccurateOCRRequest struct {
@@ -1234,6 +1667,18 @@ type GeneralAccurateOCRRequest struct {
 	// 要求图片经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否返回单字信息，默认关
+	IsWords *bool `json:"IsWords,omitempty" name:"IsWords"`
+
+	// 是否开启原图切图检测功能，开启后可提升“整图面积大，但单字符占比面积小”（例如：试卷）场景下的识别效果，默认关
+	EnableDetectSplit *bool `json:"EnableDetectSplit,omitempty" name:"EnableDetectSplit"`
+
+	// 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *uint64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 func (r *GeneralAccurateOCRRequest) ToJsonString() string {
@@ -1241,8 +1686,23 @@ func (r *GeneralAccurateOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GeneralAccurateOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "IsWords")
+	delete(f, "EnableDetectSplit")
+	delete(f, "IsPdf")
+	delete(f, "PdfPageNumber")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GeneralAccurateOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GeneralAccurateOCRResponse struct {
@@ -1250,9 +1710,9 @@ type GeneralAccurateOCRResponse struct {
 	Response *struct {
 
 		// 检测到的文本信息，包括文本行内容、置信度、文本行坐标以及文本行旋转纠正后的坐标，具体内容请点击左侧链接。
-		TextDetections []*TextDetection `json:"TextDetections,omitempty" name:"TextDetections" list`
+		TextDetections []*TextDetection `json:"TextDetections,omitempty" name:"TextDetections"`
 
-		// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。
+		// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
 		Angel *float64 `json:"Angel,omitempty" name:"Angel"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1265,8 +1725,10 @@ func (r *GeneralAccurateOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GeneralAccurateOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GeneralBasicOCRRequest struct {
@@ -1288,18 +1750,29 @@ type GeneralBasicOCRRequest struct {
 	// 识别语言类型。
 	// 支持自动识别语言类型，同时支持自选语言种类，默认中英文混合(zh)，各种语言均支持与英文混合的文字识别。
 	// 可选值：
-	// zh\auto\jap\kor\
-	// spa\fre\ger\por\
-	// vie\may\rus\ita\
-	// hol\swe\fin\dan\
-	// nor\hun\tha\lat\ara
-	// 可选值分别表示：
-	// 中英文混合、自动识别、日语、韩语、
-	// 西班牙语、法语、德语、葡萄牙语、
-	// 越南语、马来语、俄语、意大利语、
-	// 荷兰语、瑞典语、芬兰语、丹麦语、
-	// 挪威语、匈牙利语、泰语、拉丁语系、
-	// 阿拉伯语。
+	// zh：中英混合
+	// zh_rare：支持英文、数字、中文生僻字、繁体字，特殊符号等
+	// auto：自动
+	// mix：混合语种
+	// jap：日语
+	// kor：韩语
+	// spa：西班牙语
+	// fre：法语
+	// ger：德语
+	// por：葡萄牙语
+	// vie：越语
+	// may：马来语
+	// rus：俄语
+	// ita：意大利语
+	// hol：荷兰语
+	// swe：瑞典语
+	// fin：芬兰语
+	// dan：丹麦语
+	// nor：挪威语
+	// hun：匈牙利语
+	// tha：泰语
+	// hi：印地语
+	// ara：阿拉伯语
 	LanguageType *string `json:"LanguageType,omitempty" name:"LanguageType"`
 
 	// 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
@@ -1307,6 +1780,9 @@ type GeneralBasicOCRRequest struct {
 
 	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
 	PdfPageNumber *uint64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
+
+	// 是否返回单字信息，默认关
+	IsWords *bool `json:"IsWords,omitempty" name:"IsWords"`
 }
 
 func (r *GeneralBasicOCRRequest) ToJsonString() string {
@@ -1314,8 +1790,24 @@ func (r *GeneralBasicOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GeneralBasicOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "Scene")
+	delete(f, "LanguageType")
+	delete(f, "IsPdf")
+	delete(f, "PdfPageNumber")
+	delete(f, "IsWords")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GeneralBasicOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GeneralBasicOCRResponse struct {
@@ -1323,7 +1815,7 @@ type GeneralBasicOCRResponse struct {
 	Response *struct {
 
 		// 检测到的文本信息，包括文本行内容、置信度、文本行坐标以及文本行旋转纠正后的坐标，具体内容请点击左侧链接。
-		TextDetections []*TextDetection `json:"TextDetections,omitempty" name:"TextDetections" list`
+		TextDetections []*TextDetection `json:"TextDetections,omitempty" name:"TextDetections"`
 
 		// 检测到的语言类型，目前支持的语言类型参考入参LanguageType说明。
 		Language *string `json:"Language,omitempty" name:"Language"`
@@ -1344,8 +1836,10 @@ func (r *GeneralBasicOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GeneralBasicOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GeneralEfficientOCRRequest struct {
@@ -1367,8 +1861,19 @@ func (r *GeneralEfficientOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GeneralEfficientOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GeneralEfficientOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GeneralEfficientOCRResponse struct {
@@ -1376,7 +1881,7 @@ type GeneralEfficientOCRResponse struct {
 	Response *struct {
 
 		// 检测到的文本信息，包括文本行内容、置信度、文本行坐标以及文本行旋转纠正后的坐标，具体内容请点击左侧链接。
-		TextDetections []*TextDetection `json:"TextDetections,omitempty" name:"TextDetections" list`
+		TextDetections []*TextDetection `json:"TextDetections,omitempty" name:"TextDetections"`
 
 		// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
 		Angel *float64 `json:"Angel,omitempty" name:"Angel"`
@@ -1391,8 +1896,10 @@ func (r *GeneralEfficientOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GeneralEfficientOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GeneralFastOCRRequest struct {
@@ -1400,16 +1907,22 @@ type GeneralFastOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *uint64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 func (r *GeneralFastOCRRequest) ToJsonString() string {
@@ -1417,8 +1930,21 @@ func (r *GeneralFastOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GeneralFastOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "IsPdf")
+	delete(f, "PdfPageNumber")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GeneralFastOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GeneralFastOCRResponse struct {
@@ -1426,7 +1952,7 @@ type GeneralFastOCRResponse struct {
 	Response *struct {
 
 		// 检测到的文本信息，具体内容请点击左侧链接。
-		TextDetections []*TextDetection `json:"TextDetections,omitempty" name:"TextDetections" list`
+		TextDetections []*TextDetection `json:"TextDetections,omitempty" name:"TextDetections"`
 
 		// 检测到的语言，目前支持的语种范围为：简体中文、繁体中文、英文、日文、韩文。未来将陆续新增对更多语种的支持。
 	// 返回结果含义为：zh - 中英混合，jap - 日文，kor - 韩文。
@@ -1434,6 +1960,9 @@ type GeneralFastOCRResponse struct {
 
 		// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负
 		Angel *float64 `json:"Angel,omitempty" name:"Angel"`
+
+		// 图片为PDF时，返回PDF的总页数，默认为0
+		PdfPageSize *int64 `json:"PdfPageSize,omitempty" name:"PdfPageSize"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1445,8 +1974,10 @@ func (r *GeneralFastOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GeneralFastOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GeneralHandwritingOCRRequest struct {
@@ -1454,13 +1985,13 @@ type GeneralHandwritingOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -1478,8 +2009,21 @@ func (r *GeneralHandwritingOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GeneralHandwritingOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "Scene")
+	delete(f, "EnableWordPolygon")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GeneralHandwritingOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GeneralHandwritingOCRResponse struct {
@@ -1487,7 +2031,10 @@ type GeneralHandwritingOCRResponse struct {
 	Response *struct {
 
 		// 检测到的文本信息，具体内容请点击左侧链接。
-		TextDetections []*TextGeneralHandwriting `json:"TextDetections,omitempty" name:"TextDetections" list`
+		TextDetections []*TextGeneralHandwriting `json:"TextDetections,omitempty" name:"TextDetections"`
+
+		// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+		Angel *float64 `json:"Angel,omitempty" name:"Angel"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1499,8 +2046,10 @@ func (r *GeneralHandwritingOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GeneralHandwritingOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type HKIDCardOCRRequest struct {
@@ -1514,7 +2063,7 @@ type HKIDCardOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
@@ -1530,8 +2079,21 @@ func (r *HKIDCardOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *HKIDCardOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DetectFake")
+	delete(f, "ReturnHeadImage")
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "HKIDCardOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type HKIDCardOCRResponse struct {
@@ -1587,7 +2149,7 @@ type HKIDCardOCRResponse struct {
 	// -9103：证照翻拍告警
 	// -9104：证照PS告警
 	// -9105：证照防伪告警
-		WarningCode []*int64 `json:"WarningCode,omitempty" name:"WarningCode" list`
+		WarningCode []*int64 `json:"WarningCode,omitempty" name:"WarningCode"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1599,8 +2161,10 @@ func (r *HKIDCardOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *HKIDCardOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type HmtResidentPermitOCRRequest struct {
@@ -1608,13 +2172,13 @@ type HmtResidentPermitOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -1630,8 +2194,20 @@ func (r *HmtResidentPermitOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *HmtResidentPermitOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "CardSide")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "HmtResidentPermitOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type HmtResidentPermitOCRResponse struct {
@@ -1663,6 +2239,12 @@ type HmtResidentPermitOCRResponse struct {
 		// 签发机关
 		Authority *string `json:"Authority,omitempty" name:"Authority"`
 
+		// 签发次数
+		VisaNum *string `json:"VisaNum,omitempty" name:"VisaNum"`
+
+		// 通行证号码
+		PassNo *string `json:"PassNo,omitempty" name:"PassNo"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -1673,8 +2255,10 @@ func (r *HmtResidentPermitOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *HmtResidentPermitOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type IDCardOCRRequest struct {
@@ -1718,8 +2302,21 @@ func (r *IDCardOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *IDCardOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "CardSide")
+	delete(f, "Config")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "IDCardOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type IDCardOCRResponse struct {
@@ -1754,8 +2351,8 @@ type IDCardOCRResponse struct {
 	// IdCard，裁剪后身份证照片的base64编码，请求 Config.CropIdCard 时返回；
 	// Portrait，身份证头像照片的base64编码，请求 Config.CropPortrait 时返回；
 	// 
-	// Quality，图片质量分数，请求 Config.Quality 时返回（取值范围：0~100，分数越低越模糊，建议阈值≥50）;
-	// BorderCodeValue，身份证边框不完整告警阈值分数，请求 Config.BorderCheckWarn时返回（取值范围：0~100，分数越低边框遮挡可能性越低，建议阈值≥50）;
+	// Quality，图片质量分数，请求 Config.Quality 时返回（取值范围：0 ~ 100，分数越低越模糊，建议阈值≥50）;
+	// BorderCodeValue，身份证边框不完整告警阈值分数，请求 Config.BorderCheckWarn时返回（取值范围：0 ~ 100，分数越低边框遮挡可能性越低，建议阈值≤50）;
 	// 
 	// WarnInfos，告警信息，Code 告警码列表和释义：
 	// -9100	身份证有效日期不合法告警，
@@ -1778,8 +2375,10 @@ func (r *IDCardOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *IDCardOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type InstitutionOCRRequest struct {
@@ -1787,13 +2386,13 @@ type InstitutionOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -1804,8 +2403,19 @@ func (r *InstitutionOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *InstitutionOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InstitutionOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type InstitutionOCRResponse struct {
@@ -1837,13 +2447,23 @@ func (r *InstitutionOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *InstitutionOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type InsuranceBillInfo struct {
 
-	// 识别出的字段名称（关键字）。
+	// 识别出的字段名称(关键字)，支持以下字段：
+	// 【病案首页】
+	// 姓名、性别、出生日期、出院诊断、疾病编码、入院病情等。
+	// 【费用清单】
+	// 医疗参保人员类别、身份证号、入院方式、结账日期、项目、金额等。
+	// 【结算单】
+	// 名称、单价、数量、金额、医保内、医保外等。
+	// 【医疗发票】
+	// 姓名、性别、住院时间、收费项目、金额、合计等。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
@@ -1855,13 +2475,13 @@ type InsuranceBillOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -1872,8 +2492,19 @@ func (r *InsuranceBillOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *InsuranceBillOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InsuranceBillOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type InsuranceBillOCRResponse struct {
@@ -1881,7 +2512,7 @@ type InsuranceBillOCRResponse struct {
 	Response *struct {
 
 		// 保险单据识别结果，具体内容请点击左侧链接。
-		InsuranceBillInfos []*InsuranceBillInfo `json:"InsuranceBillInfos,omitempty" name:"InsuranceBillInfos" list`
+		InsuranceBillInfos []*InsuranceBillInfo `json:"InsuranceBillInfos,omitempty" name:"InsuranceBillInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1893,8 +2524,10 @@ func (r *InsuranceBillOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *InsuranceBillOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type InvoiceDetectInfo struct {
@@ -1931,7 +2564,8 @@ type InvoiceDetectInfo struct {
 
 type InvoiceGeneralInfo struct {
 
-	// 识别出的字段名称（关键字）。
+	// 识别出的字段名称(关键字)，支持以下字段：
+	// 发票代码、发票号码、日期、合计金额(小写)、合计金额(大写)、购买方识别号、销售方识别号、校验码、购买方名称、销售方名称、时间、种类、发票消费类型、省、市、是否有公司印章。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
@@ -1946,13 +2580,13 @@ type InvoiceGeneralOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -1963,8 +2597,19 @@ func (r *InvoiceGeneralOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *InvoiceGeneralOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InvoiceGeneralOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type InvoiceGeneralOCRResponse struct {
@@ -1972,7 +2617,7 @@ type InvoiceGeneralOCRResponse struct {
 	Response *struct {
 
 		// 通用机打发票识别结果，具体内容请点击左侧链接。
-		InvoiceGeneralInfos []*InvoiceGeneralInfo `json:"InvoiceGeneralInfos,omitempty" name:"InvoiceGeneralInfos" list`
+		InvoiceGeneralInfos []*InvoiceGeneralInfo `json:"InvoiceGeneralInfos,omitempty" name:"InvoiceGeneralInfos"`
 
 		// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
 		Angle *float64 `json:"Angle,omitempty" name:"Angle"`
@@ -1987,8 +2632,10 @@ func (r *InvoiceGeneralOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *InvoiceGeneralOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ItemCoord struct {
@@ -2011,13 +2658,13 @@ type LicensePlateOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -2028,8 +2675,19 @@ func (r *LicensePlateOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *LicensePlateOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "LicensePlateOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type LicensePlateOCRResponse struct {
@@ -2055,8 +2713,10 @@ func (r *LicensePlateOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *LicensePlateOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MLIDCardOCRRequest struct {
@@ -2064,12 +2724,12 @@ type MLIDCardOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。( 中国地区之外不支持这个字段 )
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -2083,8 +2743,20 @@ func (r *MLIDCardOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *MLIDCardOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "RetImage")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MLIDCardOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MLIDCardOCRResponse struct {
@@ -2107,7 +2779,7 @@ type MLIDCardOCRResponse struct {
 	// -9103	证照翻拍告警
 	// -9102	证照复印件告警
 	// -9106       证件遮挡告警
-		Warn []*int64 `json:"Warn,omitempty" name:"Warn" list`
+		Warn []*int64 `json:"Warn,omitempty" name:"Warn"`
 
 		// 证件图片
 		Image *string `json:"Image,omitempty" name:"Image"`
@@ -2128,8 +2800,9 @@ type MLIDCardOCRResponse struct {
 	// MyPR    永居证
 	// MyTentera   军官证
 	// MyKAS    临时身份证
-	// POLIS  警察
+	// POLIS  警察证
 	// IKAD   劳工证
+	// MyKid 儿童卡
 		Type *string `json:"Type,omitempty" name:"Type"`
 
 		// 出生日期（目前该字段仅支持IKAD劳工证）
@@ -2145,8 +2818,10 @@ func (r *MLIDCardOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *MLIDCardOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MLIDPassportOCRRequest struct {
@@ -2164,8 +2839,19 @@ func (r *MLIDPassportOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *MLIDPassportOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "RetImage")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MLIDPassportOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MLIDPassportOCRResponse struct {
@@ -2197,7 +2883,7 @@ type MLIDPassportOCRResponse struct {
 	// -9103	证照翻拍告警
 	// -9102	证照复印件告警
 	// -9106       证件遮挡告警
-		Warn []*int64 `json:"Warn,omitempty" name:"Warn" list`
+		Warn []*int64 `json:"Warn,omitempty" name:"Warn"`
 
 		// 证件图片
 		Image *string `json:"Image,omitempty" name:"Image"`
@@ -2223,8 +2909,10 @@ func (r *MLIDPassportOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *MLIDPassportOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MainlandPermitOCRRequest struct {
@@ -2232,13 +2920,13 @@ type MainlandPermitOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -2252,8 +2940,20 @@ func (r *MainlandPermitOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *MainlandPermitOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "RetProfile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MainlandPermitOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MainlandPermitOCRResponse struct {
@@ -2303,8 +3003,10 @@ func (r *MainlandPermitOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *MainlandPermitOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MixedInvoiceDetectRequest struct {
@@ -2315,13 +3017,13 @@ type MixedInvoiceDetectRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -2332,8 +3034,20 @@ func (r *MixedInvoiceDetectRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *MixedInvoiceDetectRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ReturnImage")
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MixedInvoiceDetectRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MixedInvoiceDetectResponse struct {
@@ -2341,7 +3055,7 @@ type MixedInvoiceDetectResponse struct {
 	Response *struct {
 
 		// 检测出的票据类型列表，具体内容请点击左侧链接。
-		InvoiceDetectInfos []*InvoiceDetectInfo `json:"InvoiceDetectInfos,omitempty" name:"InvoiceDetectInfos" list`
+		InvoiceDetectInfos []*InvoiceDetectInfo `json:"InvoiceDetectInfos,omitempty" name:"InvoiceDetectInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2353,8 +3067,10 @@ func (r *MixedInvoiceDetectResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *MixedInvoiceDetectResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MixedInvoiceItem struct {
@@ -2387,20 +3103,20 @@ type MixedInvoiceItem struct {
 	Angle *float64 `json:"Angle,omitempty" name:"Angle"`
 
 	// 识别到的内容。
-	SingleInvoiceInfos []*SingleInvoiceInfo `json:"SingleInvoiceInfos,omitempty" name:"SingleInvoiceInfos" list`
+	SingleInvoiceInfos []*SingleInvoiceInfo `json:"SingleInvoiceInfos,omitempty" name:"SingleInvoiceInfos"`
 }
 
 type MixedInvoiceOCRRequest struct {
 	*tchttp.BaseRequest
 
 	// 图片的 Base64 值。
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
 	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
 	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
@@ -2418,7 +3134,7 @@ type MixedInvoiceOCRRequest struct {
 	// 11：增值税发票（卷票 ）
 	// 12：购车发票
 	// 13：过路过桥费发票
-	Types []*int64 `json:"Types,omitempty" name:"Types" list`
+	Types []*int64 `json:"Types,omitempty" name:"Types"`
 }
 
 func (r *MixedInvoiceOCRRequest) ToJsonString() string {
@@ -2426,8 +3142,20 @@ func (r *MixedInvoiceOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *MixedInvoiceOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "Types")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MixedInvoiceOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MixedInvoiceOCRResponse struct {
@@ -2435,7 +3163,7 @@ type MixedInvoiceOCRResponse struct {
 	Response *struct {
 
 		// 混贴票据识别结果，具体内容请点击左侧链接。
-		MixedInvoiceItems []*MixedInvoiceItem `json:"MixedInvoiceItems,omitempty" name:"MixedInvoiceItems" list`
+		MixedInvoiceItems []*MixedInvoiceItem `json:"MixedInvoiceItems,omitempty" name:"MixedInvoiceItems"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2447,8 +3175,20 @@ func (r *MixedInvoiceOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *MixedInvoiceOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type OnlineTaxiItineraryInfo struct {
+
+	// 识别出的字段名称(关键字)，支持以下字段：
+	// 发票代码、 机打代码、 发票号码、 发动机号码、 合格证号、 机打号码、 价税合计(小写)、 销货单位名称、 身份证号码/组织机构代码、 购买方名称、 销售方纳税人识别号、 购买方纳税人识别号、主管税务机关、 主管税务机关代码、 开票日期、 不含税价(小写)、 吨位、增值税税率或征收率、 车辆识别代号/车架号码、 增值税税额、 厂牌型号、 省、 市、 发票消费类型、 销售方电话、 销售方账号、 产地、 进口证明书号、 车辆类型、 机器编号、备注、开票人、限乘人数、商检单号、销售方地址、销售方开户银行、价税合计、发票类型。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 识别出的字段名称对应的值，也就是字段name对应的字符串结果。
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type OrgCodeCertOCRRequest struct {
@@ -2456,13 +3196,13 @@ type OrgCodeCertOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -2473,8 +3213,19 @@ func (r *OrgCodeCertOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *OrgCodeCertOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OrgCodeCertOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type OrgCodeCertOCRResponse struct {
@@ -2503,8 +3254,10 @@ func (r *OrgCodeCertOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *OrgCodeCertOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type PassportOCRRequest struct {
@@ -2528,8 +3281,20 @@ func (r *PassportOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *PassportOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PassportOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type PassportOCRResponse struct {
@@ -2591,8 +3356,10 @@ func (r *PassportOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *PassportOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type PermitOCRRequest struct {
@@ -2600,13 +3367,13 @@ type PermitOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -2617,8 +3384,19 @@ func (r *PermitOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *PermitOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PermitOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type PermitOCRResponse struct {
@@ -2659,8 +3437,10 @@ func (r *PermitOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *PermitOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Polygon struct {
@@ -2678,18 +3458,85 @@ type Polygon struct {
 	LeftBottom *Coord `json:"LeftBottom,omitempty" name:"LeftBottom"`
 }
 
+type ProductDataRecord struct {
+
+	// 产品名称
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 产品名称(英文)
+	EnName *string `json:"EnName,omitempty" name:"EnName"`
+
+	// 品牌名称
+	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
+
+	// 规格型号
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 宽度，单位毫米
+	Width *string `json:"Width,omitempty" name:"Width"`
+
+	// 高度，单位毫米
+	Height *string `json:"Height,omitempty" name:"Height"`
+
+	// 深度，单位毫米
+	Depth *string `json:"Depth,omitempty" name:"Depth"`
+
+	// 关键字
+	KeyWord *string `json:"KeyWord,omitempty" name:"KeyWord"`
+
+	// 简短描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 图片链接
+	ImageLink []*string `json:"ImageLink,omitempty" name:"ImageLink"`
+
+	// 厂家名称
+	ManufacturerName *string `json:"ManufacturerName,omitempty" name:"ManufacturerName"`
+
+	// 厂家地址
+	ManufacturerAddress *string `json:"ManufacturerAddress,omitempty" name:"ManufacturerAddress"`
+
+	// 企业社会信用代码
+	FirmCode *string `json:"FirmCode,omitempty" name:"FirmCode"`
+
+	// 表示数据查询状态
+	// checkResult	状态说明
+	// 1	 经查，该商品条码已在中国物品编码中心注册
+	// 2	经查，该厂商识别代码已在中国物品编码中心注册，但编码信息未按规定通报。
+	// 3	经查，该厂商识别代码已于xxxxx注销，请关注产品生产日期。
+	// 4	经查，该企业以及条码未经条码中心注册，属于违法使用
+	// -1	经查，该商品条码被冒用
+	// -2	经查，该厂商识别代码已在中国物品编码中心注册，但该产品已经下市
+	// S001                未找到该厂商识别代码的注册信息。
+	// S002		该厂商识别代码已经在GS1注册，但编码信息未通报
+	// S003		该商品条码已在GS1通报
+	// S004		该商品条码已注销
+	// S005		数字不正确。GS1前缀（3位国家/地区代码）用于特殊用途。
+	// E001		完整性失败：此GTIN的长度无效。
+	// E002		完整性失败：校验位不正确。
+	// E003		完整性失败：字符串包含字母数字字符。
+	// E004		数字不正确。GS1前缀（3位国家/地区代码）不存在。
+	// E005		数字不正确。GS1前缀（3位国家/地区代码）用于特殊用途。
+	// E006		数字不正确。尚未分配该GS1公司前缀。
+	// E008	        经查，该企业厂商识别代码以及条码尚未通报
+	CheckResult *string `json:"CheckResult,omitempty" name:"CheckResult"`
+
+	// UNSPSC分类码
+	CategoryCode *string `json:"CategoryCode,omitempty" name:"CategoryCode"`
+}
+
 type PropOwnerCertOCRRequest struct {
 	*tchttp.BaseRequest
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -2700,8 +3547,19 @@ func (r *PropOwnerCertOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *PropOwnerCertOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PropOwnerCertOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type PropOwnerCertOCRResponse struct {
@@ -2736,8 +3594,10 @@ func (r *PropOwnerCertOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *PropOwnerCertOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QrcodeImgSize struct {
@@ -2752,11 +3612,11 @@ type QrcodeImgSize struct {
 type QrcodeOCRRequest struct {
 	*tchttp.BaseRequest
 
-	// 图片的 Base64 值。要求图片经Base64编码后不超过 3M，支持PNG、JPG、JPEG格式。
+	// 图片的 Base64 值。要求图片经Base64编码后不超过 7M，支持PNG、JPG、JPEG格式。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。要求图片经Base64编码后不超过 3M，支持PNG、JPG、JPEG格式。
+	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，支持PNG、JPG、JPEG格式。
 	// 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
@@ -2766,8 +3626,19 @@ func (r *QrcodeOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QrcodeOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QrcodeOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QrcodeOCRResponse struct {
@@ -2775,7 +3646,7 @@ type QrcodeOCRResponse struct {
 	Response *struct {
 
 		// 二维码/条形码识别结果信息，具体内容请点击左侧链接。
-		CodeResults []*QrcodeResultsInfo `json:"CodeResults,omitempty" name:"CodeResults" list`
+		CodeResults []*QrcodeResultsInfo `json:"CodeResults,omitempty" name:"CodeResults"`
 
 		// 图片大小，具体内容请点击左侧链接。
 		ImgSize *QrcodeImgSize `json:"ImgSize,omitempty" name:"ImgSize"`
@@ -2790,8 +3661,10 @@ func (r *QrcodeOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QrcodeOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QrcodePositionObj struct {
@@ -2833,13 +3706,29 @@ func (r *QueryBarCodeRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryBarCodeRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BarCode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryBarCodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryBarCodeResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
+		// 条码
+		BarCode *string `json:"BarCode,omitempty" name:"BarCode"`
+
+		// 条码信息数组
+		ProductDataRecords []*ProductDataRecord `json:"ProductDataRecords,omitempty" name:"ProductDataRecords"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2851,14 +3740,19 @@ func (r *QueryBarCodeResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryBarCodeResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QuestionBlockObj struct {
 
 	// 数学试题识别结构化信息数组
-	QuestionArr []*QuestionObj `json:"QuestionArr,omitempty" name:"QuestionArr" list`
+	QuestionArr []*QuestionObj `json:"QuestionArr,omitempty" name:"QuestionArr"`
+
+	// 题目主体区域检测框在图片中的像素坐标
+	QuestionBboxCoord *Rect `json:"QuestionBboxCoord,omitempty" name:"QuestionBboxCoord"`
 }
 
 type QuestionObj struct {
@@ -2880,6 +3774,9 @@ type QuestionObj struct {
 
 	// 所有子题的question属性
 	QuestionSubquestion *string `json:"QuestionSubquestion,omitempty" name:"QuestionSubquestion"`
+
+	// 示意图检测框在的图片中的像素坐标
+	QuestionImageCoords []*Rect `json:"QuestionImageCoords,omitempty" name:"QuestionImageCoords"`
 }
 
 type QuotaInvoiceOCRRequest struct {
@@ -2904,8 +3801,19 @@ func (r *QuotaInvoiceOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QuotaInvoiceOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QuotaInvoiceOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QuotaInvoiceOCRResponse struct {
@@ -2949,8 +3857,170 @@ func (r *QuotaInvoiceOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QuotaInvoiceOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RecognizeContainerOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+func (r *RecognizeContainerOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeContainerOCRRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeContainerOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RecognizeContainerOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 集装箱箱号
+		ContainerId *string `json:"ContainerId,omitempty" name:"ContainerId"`
+
+		// 集装箱类型
+		ContainerType *string `json:"ContainerType,omitempty" name:"ContainerType"`
+
+		// 集装箱总重量，单位：千克（KG）
+		GrossKG *string `json:"GrossKG,omitempty" name:"GrossKG"`
+
+		// 集装箱总重量，单位：磅（LB）
+		GrossLB *string `json:"GrossLB,omitempty" name:"GrossLB"`
+
+		// 集装箱有效承重，单位：千克（KG）
+		PayloadKG *string `json:"PayloadKG,omitempty" name:"PayloadKG"`
+
+		// 集装箱有效承重，单位：磅（LB）
+		PayloadLB *string `json:"PayloadLB,omitempty" name:"PayloadLB"`
+
+		// 集装箱容量，单位：立方米
+		CapacityM3 *string `json:"CapacityM3,omitempty" name:"CapacityM3"`
+
+		// 集装箱容量，单位：立英尺
+		CapacityFT3 *string `json:"CapacityFT3,omitempty" name:"CapacityFT3"`
+
+		// 告警码
+	// -9926	集装箱箱号不完整或者不清晰
+	// -9927	集装箱类型不完整或者不清晰
+		Warn []*int64 `json:"Warn,omitempty" name:"Warn"`
+
+		// 集装箱自身重量，单位：千克（KG）
+		TareKG *string `json:"TareKG,omitempty" name:"TareKG"`
+
+		// 集装箱自身重量，单位：磅（LB）
+		TareLB *string `json:"TareLB,omitempty" name:"TareLB"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RecognizeContainerOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeContainerOCRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RecognizeOnlineTaxiItineraryOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *uint64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
+}
+
+func (r *RecognizeOnlineTaxiItineraryOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeOnlineTaxiItineraryOCRRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "IsPdf")
+	delete(f, "PdfPageNumber")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeOnlineTaxiItineraryOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RecognizeOnlineTaxiItineraryOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 网约车行程单识别结果，具体内容请点击左侧链接。
+		OnlineTaxiItineraryInfos []*OnlineTaxiItineraryInfo `json:"OnlineTaxiItineraryInfos,omitempty" name:"OnlineTaxiItineraryInfos"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RecognizeOnlineTaxiItineraryOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeOnlineTaxiItineraryOCRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RecognizeTableOCRRequest struct {
@@ -2971,6 +4041,9 @@ type RecognizeTableOCRRequest struct {
 
 	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
 	PdfPageNumber *uint64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
+
+	// 语言，zh：中英文（默认）jap：日文
+	TableLanguage *string `json:"TableLanguage,omitempty" name:"TableLanguage"`
 }
 
 func (r *RecognizeTableOCRRequest) ToJsonString() string {
@@ -2978,8 +4051,22 @@ func (r *RecognizeTableOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RecognizeTableOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "IsPdf")
+	delete(f, "PdfPageNumber")
+	delete(f, "TableLanguage")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeTableOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RecognizeTableOCRResponse struct {
@@ -2987,13 +4074,16 @@ type RecognizeTableOCRResponse struct {
 	Response *struct {
 
 		// 检测到的文本信息，具体内容请点击左侧链接。
-		TableDetections []*TableDetectInfo `json:"TableDetections,omitempty" name:"TableDetections" list`
+		TableDetections []*TableDetectInfo `json:"TableDetections,omitempty" name:"TableDetections"`
 
 		// Base64 编码后的 Excel 数据。
 		Data *string `json:"Data,omitempty" name:"Data"`
 
 		// 图片为PDF时，返回PDF的总页数，默认为0
 		PdfPageSize *int64 `json:"PdfPageSize,omitempty" name:"PdfPageSize"`
+
+		// 图片旋转角度（角度制），文本的水平方向为0°，统一以逆时针方向旋转，逆时针为负，角度范围为-360°至0°。
+		Angle *float64 `json:"Angle,omitempty" name:"Angle"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3005,8 +4095,10 @@ func (r *RecognizeTableOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RecognizeTableOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RecognizeThaiIDCardOCRRequest struct {
@@ -3026,8 +4118,19 @@ func (r *RecognizeThaiIDCardOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RecognizeThaiIDCardOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeThaiIDCardOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RecognizeThaiIDCardOCRResponse struct {
@@ -3068,8 +4171,10 @@ func (r *RecognizeThaiIDCardOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RecognizeThaiIDCardOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Rect struct {
@@ -3092,13 +4197,13 @@ type ResidenceBookletOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -3109,8 +4214,19 @@ func (r *ResidenceBookletOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ResidenceBookletOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResidenceBookletOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ResidenceBookletOCRResponse struct {
@@ -3153,6 +4269,54 @@ type ResidenceBookletOCRResponse struct {
 		// 住址
 		Address *string `json:"Address,omitempty" name:"Address"`
 
+		// 承办人签章文字
+		Signature *string `json:"Signature,omitempty" name:"Signature"`
+
+		// 签发日期
+		IssueDate *string `json:"IssueDate,omitempty" name:"IssueDate"`
+
+		// 户主页编号
+		HomePageNumber *string `json:"HomePageNumber,omitempty" name:"HomePageNumber"`
+
+		// 户主姓名
+		HouseholderName *string `json:"HouseholderName,omitempty" name:"HouseholderName"`
+
+		// 户主或与户主关系
+		Relationship *string `json:"Relationship,omitempty" name:"Relationship"`
+
+		// 本市（县）其他住址
+		OtherAddresses *string `json:"OtherAddresses,omitempty" name:"OtherAddresses"`
+
+		// 宗教信仰
+		ReligiousBelief *string `json:"ReligiousBelief,omitempty" name:"ReligiousBelief"`
+
+		// 身高
+		Height *string `json:"Height,omitempty" name:"Height"`
+
+		// 血型
+		BloodType *string `json:"BloodType,omitempty" name:"BloodType"`
+
+		// 婚姻状况
+		MaritalStatus *string `json:"MaritalStatus,omitempty" name:"MaritalStatus"`
+
+		// 兵役状况
+		VeteranStatus *string `json:"VeteranStatus,omitempty" name:"VeteranStatus"`
+
+		// 职业
+		Profession *string `json:"Profession,omitempty" name:"Profession"`
+
+		// 何时由何地迁来本市(县)
+		MoveToCityInformation *string `json:"MoveToCityInformation,omitempty" name:"MoveToCityInformation"`
+
+		// 何时由何地迁来本址
+		MoveToSiteInformation *string `json:"MoveToSiteInformation,omitempty" name:"MoveToSiteInformation"`
+
+		// 登记日期
+		RegistrationDate *string `json:"RegistrationDate,omitempty" name:"RegistrationDate"`
+
+		// 曾用名
+		FormerName *string `json:"FormerName,omitempty" name:"FormerName"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -3163,8 +4327,10 @@ func (r *ResidenceBookletOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ResidenceBookletOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RideHailingDriverLicenseOCRRequest struct {
@@ -3184,8 +4350,19 @@ func (r *RideHailingDriverLicenseOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RideHailingDriverLicenseOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RideHailingDriverLicenseOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RideHailingDriverLicenseOCRResponse struct {
@@ -3217,8 +4394,10 @@ func (r *RideHailingDriverLicenseOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RideHailingDriverLicenseOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RideHailingTransportLicenseOCRRequest struct {
@@ -3238,8 +4417,19 @@ func (r *RideHailingTransportLicenseOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RideHailingTransportLicenseOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RideHailingTransportLicenseOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RideHailingTransportLicenseOCRResponse struct {
@@ -3274,8 +4464,10 @@ func (r *RideHailingTransportLicenseOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RideHailingTransportLicenseOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SealOCRRequest struct {
@@ -3295,8 +4487,19 @@ func (r *SealOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SealOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SealOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SealOCRResponse struct {
@@ -3310,7 +4513,7 @@ type SealOCRResponse struct {
 		Location *Rect `json:"Location,omitempty" name:"Location"`
 
 		// 其它文本内容
-		OtherTexts []*string `json:"OtherTexts,omitempty" name:"OtherTexts" list`
+		OtherTexts []*string `json:"OtherTexts,omitempty" name:"OtherTexts"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3322,13 +4525,16 @@ func (r *SealOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SealOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ShipInvoiceInfo struct {
 
-	// 识别出的字段名称（关键字）。
+	// 识别出的字段名称(关键字)，支持以下字段：
+	// 发票代码、发票号码、日期、票价、始发地、目的地、姓名、时间、发票消费类型、省、市、币种。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
@@ -3343,13 +4549,13 @@ type ShipInvoiceOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -3360,8 +4566,19 @@ func (r *ShipInvoiceOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ShipInvoiceOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ShipInvoiceOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ShipInvoiceOCRResponse struct {
@@ -3369,7 +4586,7 @@ type ShipInvoiceOCRResponse struct {
 	Response *struct {
 
 		// 轮船票识别结果，具体内容请点击左侧链接。
-		ShipInvoiceInfos []*ShipInvoiceInfo `json:"ShipInvoiceInfos,omitempty" name:"ShipInvoiceInfos" list`
+		ShipInvoiceInfos []*ShipInvoiceInfo `json:"ShipInvoiceInfos,omitempty" name:"ShipInvoiceInfos"`
 
 		// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
 		Angle *float64 `json:"Angle,omitempty" name:"Angle"`
@@ -3384,8 +4601,10 @@ func (r *ShipInvoiceOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ShipInvoiceOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SingleInvoiceInfo struct {
@@ -3395,6 +4614,92 @@ type SingleInvoiceInfo struct {
 
 	// 识别出的字段名称对应的值，也就是字段name对应的字符串结果。
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type SmartStructuralOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 需返回的字段名称，例：
+	// 若客户只想返回姓名、性别两个字段的识别结果，则输入
+	// ItemNames=["姓名","性别"]
+	ItemNames []*string `json:"ItemNames,omitempty" name:"ItemNames"`
+}
+
+func (r *SmartStructuralOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SmartStructuralOCRRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	delete(f, "ItemNames")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SmartStructuralOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SmartStructuralOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 图片旋转角度(角度制)，文本的水平方向
+	// 为 0；顺时针为正，逆时针为负
+		Angle *float64 `json:"Angle,omitempty" name:"Angle"`
+
+		// 识别信息
+		StructuralItems []*StructuralItem `json:"StructuralItems,omitempty" name:"StructuralItems"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SmartStructuralOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SmartStructuralOCRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type StructuralItem struct {
+
+	// 识别出的字段名称(关键字)。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 识别出的字段名称对应的值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 置信度 0 ~100。
+	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 文本行在旋转纠正之后的图像中的像素
+	// 坐标。
+	ItemCoord *ItemCoord `json:"ItemCoord,omitempty" name:"ItemCoord"`
 }
 
 type TableCell struct {
@@ -3421,25 +4726,36 @@ type TableCell struct {
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// 单元格在图像中的四点坐标
-	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon" list`
+	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon"`
 
 	// 此字段为扩展字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdvancedInfo *string `json:"AdvancedInfo,omitempty" name:"AdvancedInfo"`
 
 	// 单元格文本属性
-	Contents []*CellContent `json:"Contents,omitempty" name:"Contents" list`
+	Contents []*CellContent `json:"Contents,omitempty" name:"Contents"`
 }
 
 type TableDetectInfo struct {
 
 	// 单元格内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Cells []*TableCell `json:"Cells,omitempty" name:"Cells" list`
+	Cells []*TableCell `json:"Cells,omitempty" name:"Cells"`
 
 	// 表格标题
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Titles []*TableTitle `json:"Titles,omitempty" name:"Titles" list`
+	Titles []*TableTitle `json:"Titles,omitempty" name:"Titles"`
+
+	// 图像中的文本块类型，0 为非表格文本，
+	// 1 为有线表格，2 为无线表格
+	// （接口暂不支持日文无线表格识别，若传入日文无线表格，返回0）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 表格主体四个顶点坐标（依次为左上角，
+	// 右上角，右下角，左下角）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableCoordPoint []*Coord `json:"TableCoordPoint,omitempty" name:"TableCoordPoint"`
 }
 
 type TableOCRRequest struct {
@@ -3464,16 +4780,27 @@ func (r *TableOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TableOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TableOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TableOCRResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 检测到的文本信息，具体内容请点击左侧链接。
-		TextDetections []*TextTable `json:"TextDetections,omitempty" name:"TextDetections" list`
+		// 检测到的文本信息，具体内容请点击左侧链接
+		TextDetections []*TextTable `json:"TextDetections,omitempty" name:"TextDetections"`
 
 		// Base64 编码后的 Excel 数据。
 		Data *string `json:"Data,omitempty" name:"Data"`
@@ -3488,8 +4815,10 @@ func (r *TableOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TableOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TableTitle struct {
@@ -3504,13 +4833,13 @@ type TaxiInvoiceOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -3521,8 +4850,19 @@ func (r *TaxiInvoiceOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TaxiInvoiceOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TaxiInvoiceOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TaxiInvoiceOCRResponse struct {
@@ -3577,8 +4917,10 @@ func (r *TaxiInvoiceOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TaxiInvoiceOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TextArithmetic struct {
@@ -3586,7 +4928,7 @@ type TextArithmetic struct {
 	// 识别出的文本行内容
 	DetectedText *string `json:"DetectedText,omitempty" name:"DetectedText"`
 
-	// 算式运算结果
+	// 算式运算结果，true-正确   false-错误或非法参数
 	Result *bool `json:"Result,omitempty" name:"Result"`
 
 	// 保留字段，暂不支持
@@ -3594,7 +4936,7 @@ type TextArithmetic struct {
 
 	// 原图文本行坐标，以四个顶点坐标表示（保留字段，暂不支持）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon" list`
+	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon"`
 
 	// 保留字段，暂不支持
 	AdvancedInfo *string `json:"AdvancedInfo,omitempty" name:"AdvancedInfo"`
@@ -3615,6 +4957,9 @@ type TextArithmetic struct {
 	// ‘10’: 脱式计算
 	// ‘11’: 解方程
 	ExpressionType *string `json:"ExpressionType,omitempty" name:"ExpressionType"`
+
+	// 错题推荐答案，算式运算结果正确返回为""，算式运算结果错误返回推荐答案 (注：暂不支持多个关系运算符（如1<10<7）、无关系运算符（如frac(1,2)+frac(2,3)）、单位换算（如1元=100角）错题的推荐答案返回)
+	Answer *string `json:"Answer,omitempty" name:"Answer"`
 }
 
 type TextDetectRequest struct {
@@ -3622,13 +4967,13 @@ type TextDetectRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -3639,8 +4984,19 @@ func (r *TextDetectRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TextDetectRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextDetectRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TextDetectResponse struct {
@@ -3660,8 +5016,10 @@ func (r *TextDetectResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TextDetectResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TextDetection struct {
@@ -3674,7 +5032,7 @@ type TextDetection struct {
 
 	// 文本行坐标，以四个顶点坐标表示
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon" list`
+	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon"`
 
 	// 此字段为扩展字段。
 	// GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
@@ -3682,6 +5040,12 @@ type TextDetection struct {
 
 	// 文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
 	ItemPolygon *ItemCoord `json:"ItemPolygon,omitempty" name:"ItemPolygon"`
+
+	// 识别出来的单字信息包括单字（包括单字Character和单字置信度confidence）， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR
+	Words []*DetectedWords `json:"Words,omitempty" name:"Words"`
+
+	// 单字在原图中的四点坐标， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR
+	WordCoordPoint []*DetectedWordCoordPoint `json:"WordCoordPoint,omitempty" name:"WordCoordPoint"`
 }
 
 type TextDetectionEn struct {
@@ -3692,21 +5056,21 @@ type TextDetectionEn struct {
 	// 置信度 0 ~100。
 	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
 
-	// 文本行坐标，以四个顶点坐标表示。
+	// 文本行在原图中的四点坐标。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon" list`
+	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon"`
 
 	// 此字段为扩展字段。目前EnglishOCR接口返回内容为空。
 	AdvancedInfo *string `json:"AdvancedInfo,omitempty" name:"AdvancedInfo"`
 
-	// 单词在原图中的四点坐标。
-	WordCoordPoint []*WordCoordPoint `json:"WordCoordPoint,omitempty" name:"WordCoordPoint" list`
+	// 英文单词在原图中的四点坐标。
+	WordCoordPoint []*WordCoordPoint `json:"WordCoordPoint,omitempty" name:"WordCoordPoint"`
 
 	// 候选字符集(包含候选字Character以及置信度Confidence)。
-	CandWord []*CandWord `json:"CandWord,omitempty" name:"CandWord" list`
+	CandWord []*CandWord `json:"CandWord,omitempty" name:"CandWord"`
 
 	// 识别出来的单词信息（包括单词Character和单词置信度confidence）
-	Words []*Words `json:"Words,omitempty" name:"Words" list`
+	Words []*Words `json:"Words,omitempty" name:"Words"`
 }
 
 type TextEduPaper struct {
@@ -3736,7 +5100,7 @@ type TextGeneralHandwriting struct {
 	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// 文本行坐标，以四个顶点坐标表示
-	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon" list`
+	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon"`
 
 	// 此字段为扩展字段。
 	// 能返回文本行的段落信息，例如：{\"Parag\":{\"ParagNo\":2}}，
@@ -3745,7 +5109,7 @@ type TextGeneralHandwriting struct {
 
 	// 字的坐标数组，以四个顶点坐标表示
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	WordPolygon []*Polygon `json:"WordPolygon,omitempty" name:"WordPolygon" list`
+	WordPolygon []*Polygon `json:"WordPolygon,omitempty" name:"WordPolygon"`
 }
 
 type TextTable struct {
@@ -3772,7 +5136,7 @@ type TextTable struct {
 	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// 文本行坐标，以四个顶点坐标表示
-	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon" list`
+	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon"`
 
 	// 此字段为扩展字段
 	AdvancedInfo *string `json:"AdvancedInfo,omitempty" name:"AdvancedInfo"`
@@ -3780,7 +5144,8 @@ type TextTable struct {
 
 type TextVatInvoice struct {
 
-	// 识别出的字段名称（关键字）。
+	// 识别出的字段名称（关键字）。支持以下字段的识别：
+	// 发票代码、 发票号码、 打印发票代码、 打印发票号码、 开票日期、 购买方识别号、 小写金额、 价税合计(大写)、 销售方识别号、 校验码、 购买方名称、 销售方名称、 税额、 复核、 联次名称、 备注、 联次、 密码区、 开票人、 收款人、 （货物或应税劳务、服务名称）、省、 市、 服务类型、 通行费标志、 是否代开、 是否收购、 合计金额、 是否有公司印章、 发票消费类型、 车船税、 机器编号、 成品油标志、 税率、 合计税额、 （购买方地址、电话）、 （销售方地址、电话）、 单价、 金额、 销售方开户行及账号、 购买方开户行及账号、 规格型号、 发票名称、 单位、 数量、 校验码备选、 校验码后六位备选、发票号码备选、车牌号、类型、通行日期起、通行日期止、发票类型。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
@@ -3908,7 +5273,8 @@ type TextWaybill struct {
 
 type TollInvoiceInfo struct {
 
-	// 识别出的字段名称（关键字）。
+	// 识别出的字段名称（关键字）。支持以下字段的识别：
+	// 发票代码、发票号码、日期、金额、入口、出口、时间、发票消费类型、高速标志。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
@@ -3923,13 +5289,13 @@ type TollInvoiceOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -3940,8 +5306,19 @@ func (r *TollInvoiceOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TollInvoiceOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TollInvoiceOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TollInvoiceOCRResponse struct {
@@ -3949,7 +5326,7 @@ type TollInvoiceOCRResponse struct {
 	Response *struct {
 
 		// 过路过桥费发票识别结果，具体内容请点击左侧链接。
-		TollInvoiceInfos []*TollInvoiceInfo `json:"TollInvoiceInfos,omitempty" name:"TollInvoiceInfos" list`
+		TollInvoiceInfos []*TollInvoiceInfo `json:"TollInvoiceInfos,omitempty" name:"TollInvoiceInfos"`
 
 		// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
 		Angle *float64 `json:"Angle,omitempty" name:"Angle"`
@@ -3964,8 +5341,10 @@ func (r *TollInvoiceOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TollInvoiceOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TrainTicketOCRRequest struct {
@@ -3973,13 +5352,13 @@ type TrainTicketOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -3990,8 +5369,19 @@ func (r *TrainTicketOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TrainTicketOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TrainTicketOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TrainTicketOCRResponse struct {
@@ -4028,11 +5418,35 @@ type TrainTicketOCRResponse struct {
 		// 身份证号
 		ID *string `json:"ID,omitempty" name:"ID"`
 
-		// 发票消费类型
+		// 发票消费类型：交通
 		InvoiceType *string `json:"InvoiceType,omitempty" name:"InvoiceType"`
 
 		// 序列号
 		SerialNumber *string `json:"SerialNumber,omitempty" name:"SerialNumber"`
+
+		// 加收票价
+		AdditionalCost *string `json:"AdditionalCost,omitempty" name:"AdditionalCost"`
+
+		// 手续费
+		HandlingFee *string `json:"HandlingFee,omitempty" name:"HandlingFee"`
+
+		// 大写金额（票面有大写金额该字段才有值）
+		LegalAmount *string `json:"LegalAmount,omitempty" name:"LegalAmount"`
+
+		// 售票站
+		TicketStation *string `json:"TicketStation,omitempty" name:"TicketStation"`
+
+		// 原票价（一般有手续费的才有原始票价字段）
+		OriginalPrice *string `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
+
+		// 发票类型：火车票、火车票补票、火车票退票凭证
+		InvoiceStyle *string `json:"InvoiceStyle,omitempty" name:"InvoiceStyle"`
+
+		// 收据号码
+		ReceiptNumber *string `json:"ReceiptNumber,omitempty" name:"ReceiptNumber"`
+
+		// 仅供报销使用：1为是，0为否
+		IsReceipt *string `json:"IsReceipt,omitempty" name:"IsReceipt"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4044,8 +5458,85 @@ func (r *TrainTicketOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TrainTicketOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UsedVehicleInvoiceInfo struct {
+
+	// 所属税局
+	TaxBureau *string `json:"TaxBureau,omitempty" name:"TaxBureau"`
+
+	// 买方单位/个人
+	Buyer *string `json:"Buyer,omitempty" name:"Buyer"`
+
+	// 买方单位代码/身份证号码
+	BuyerNo *string `json:"BuyerNo,omitempty" name:"BuyerNo"`
+
+	// 买方单位/个人地址
+	BuyerAddress *string `json:"BuyerAddress,omitempty" name:"BuyerAddress"`
+
+	// 买方单位电话
+	BuyerTel *string `json:"BuyerTel,omitempty" name:"BuyerTel"`
+
+	// 卖方单位/个人
+	Seller *string `json:"Seller,omitempty" name:"Seller"`
+
+	// 卖方单位代码/身份证号码
+	SellerNo *string `json:"SellerNo,omitempty" name:"SellerNo"`
+
+	// 卖方单位/个人地址
+	SellerAddress *string `json:"SellerAddress,omitempty" name:"SellerAddress"`
+
+	// 卖方单位电话
+	SellerTel *string `json:"SellerTel,omitempty" name:"SellerTel"`
+
+	// 车牌照号
+	VehicleLicenseNo *string `json:"VehicleLicenseNo,omitempty" name:"VehicleLicenseNo"`
+
+	// 登记证号
+	RegisterNo *string `json:"RegisterNo,omitempty" name:"RegisterNo"`
+
+	// 车架号/车辆识别代码
+	VehicleIdentifyNo *string `json:"VehicleIdentifyNo,omitempty" name:"VehicleIdentifyNo"`
+
+	// 转入地车辆管理所名称
+	ManagementOffice *string `json:"ManagementOffice,omitempty" name:"ManagementOffice"`
+
+	// 车价合计
+	VehicleTotalPrice *string `json:"VehicleTotalPrice,omitempty" name:"VehicleTotalPrice"`
+
+	// 经营、拍卖单位
+	Auctioneer *string `json:"Auctioneer,omitempty" name:"Auctioneer"`
+
+	// 经营、拍卖单位地址
+	AuctioneerAddress *string `json:"AuctioneerAddress,omitempty" name:"AuctioneerAddress"`
+
+	// 经营、拍卖单位纳税人识别号
+	AuctioneerTaxpayerNum *string `json:"AuctioneerTaxpayerNum,omitempty" name:"AuctioneerTaxpayerNum"`
+
+	// 经营、拍卖单位开户银行、账号
+	AuctioneerBankAccount *string `json:"AuctioneerBankAccount,omitempty" name:"AuctioneerBankAccount"`
+
+	// 经营、拍卖单位电话
+	AuctioneerTel *string `json:"AuctioneerTel,omitempty" name:"AuctioneerTel"`
+
+	// 二手车市场
+	Market *string `json:"Market,omitempty" name:"Market"`
+
+	// 二手车市场纳税人识别号
+	MarketTaxpayerNum *string `json:"MarketTaxpayerNum,omitempty" name:"MarketTaxpayerNum"`
+
+	// 二手车市场地址
+	MarketAddress *string `json:"MarketAddress,omitempty" name:"MarketAddress"`
+
+	// 二手车市场开户银行账号
+	MarketBankAccount *string `json:"MarketBankAccount,omitempty" name:"MarketBankAccount"`
+
+	// 二手车市场电话
+	MarketTel *string `json:"MarketTel,omitempty" name:"MarketTel"`
 }
 
 type VatInvoice struct {
@@ -4128,7 +5619,34 @@ type VatInvoice struct {
 	AmountWithTax *string `json:"AmountWithTax,omitempty" name:"AmountWithTax"`
 
 	// 项目明细
-	Items []*VatInvoiceItem `json:"Items,omitempty" name:"Items" list`
+	Items []*VatInvoiceItem `json:"Items,omitempty" name:"Items"`
+}
+
+type VatInvoiceGoodsInfo struct {
+
+	// 项目名称
+	Item *string `json:"Item,omitempty" name:"Item"`
+
+	// 规格型号
+	Specification *string `json:"Specification,omitempty" name:"Specification"`
+
+	// 单位
+	MeasurementDimension *string `json:"MeasurementDimension,omitempty" name:"MeasurementDimension"`
+
+	// 价格
+	Price *string `json:"Price,omitempty" name:"Price"`
+
+	// 数量
+	Quantity *string `json:"Quantity,omitempty" name:"Quantity"`
+
+	// 金额
+	Amount *string `json:"Amount,omitempty" name:"Amount"`
+
+	// 税率(如6%、免税)
+	TaxScheme *string `json:"TaxScheme,omitempty" name:"TaxScheme"`
+
+	// 税额
+	TaxAmount *string `json:"TaxAmount,omitempty" name:"TaxAmount"`
 }
 
 type VatInvoiceItem struct {
@@ -4166,13 +5684,13 @@ type VatInvoiceOCRRequest struct {
 
 	// 图片/PDF的 Base64 值。
 	// 支持的文件格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
-	// 支持的图片/PDF大小：所下载文件经Base64编码后不超过 3M。文件下载时间不超过 3 秒。
+	// 支持的图片/PDF大小：所下载文件经Base64编码后不超过 7M。文件下载时间不超过 3 秒。
 	// 输入参数 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片/PDF的 Url 地址。
 	// 支持的文件格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
-	// 支持的图片/PDF大小：所下载文件经 Base64 编码后不超过 3M。文件下载时间不超过 3 秒。
+	// 支持的图片/PDF大小：所下载文件经 Base64 编码后不超过 7M。文件下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -4189,8 +5707,21 @@ func (r *VatInvoiceOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VatInvoiceOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "IsPdf")
+	delete(f, "PdfPageNumber")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VatInvoiceOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VatInvoiceOCRResponse struct {
@@ -4198,13 +5729,16 @@ type VatInvoiceOCRResponse struct {
 	Response *struct {
 
 		// 检测到的文本信息，具体内容请点击左侧链接。
-		VatInvoiceInfos []*TextVatInvoice `json:"VatInvoiceInfos,omitempty" name:"VatInvoiceInfos" list`
+		VatInvoiceInfos []*TextVatInvoice `json:"VatInvoiceInfos,omitempty" name:"VatInvoiceInfos"`
 
 		// 明细条目。VatInvoiceInfos中关于明细项的具体条目。
-		Items []*VatInvoiceItem `json:"Items,omitempty" name:"Items" list`
+		Items []*VatInvoiceItem `json:"Items,omitempty" name:"Items"`
 
-		// 图片为PDF时，返回PDF的总页数，默认为0
+		// 默认值为0。如果图片为PDF时，返回PDF的总页数。
 		PdfPageSize *int64 `json:"PdfPageSize,omitempty" name:"PdfPageSize"`
+
+		// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+		Angle *float64 `json:"Angle,omitempty" name:"Angle"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4216,8 +5750,25 @@ func (r *VatInvoiceOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VatInvoiceOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type VatInvoiceUserInfo struct {
+
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 纳税人识别号
+	TaxId *string `json:"TaxId,omitempty" name:"TaxId"`
+
+	// 地 址、电 话
+	AddrTel *string `json:"AddrTel,omitempty" name:"AddrTel"`
+
+	// 开户行及账号
+	FinancialAccount *string `json:"FinancialAccount,omitempty" name:"FinancialAccount"`
 }
 
 type VatInvoiceVerifyRequest struct {
@@ -4232,11 +5783,18 @@ type VatInvoiceVerifyRequest struct {
 	// 开票日期（不支持当天发票查询，只支持一年以内），如：2019-12-20。
 	InvoiceDate *string `json:"InvoiceDate,omitempty" name:"InvoiceDate"`
 
-	// 金额/发票校验码后6位（根据票种传递对应值，如果报参数错误，请仔细检查每个票种对应的值）
+	// 根据票种传递对应值，如果报参数错误，请仔细检查每个票种对应的值
+	// 
 	// 增值税专用发票：开具金额（不含税）
+	// 
 	// 增值税普通发票、增值税电子普通发票（含通行费发票）、增值税普通发票（卷票）：校验码后6位
+	// 
+	// 区块链发票：不含税金额/校验码，例如：“285.01/856ab”
+	// 
 	// 机动车销售统一发票：不含税价
+	// 
 	// 货物运输业增值税专用发票：合计金额
+	// 
 	// 二手车销售统一发票：车价合计
 	Additional *string `json:"Additional,omitempty" name:"Additional"`
 }
@@ -4246,8 +5804,21 @@ func (r *VatInvoiceVerifyRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VatInvoiceVerifyRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InvoiceCode")
+	delete(f, "InvoiceNo")
+	delete(f, "InvoiceDate")
+	delete(f, "Additional")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VatInvoiceVerifyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VatInvoiceVerifyResponse struct {
@@ -4256,6 +5827,12 @@ type VatInvoiceVerifyResponse struct {
 
 		// 增值税发票信息，详情请点击左侧链接。
 		Invoice *VatInvoice `json:"Invoice,omitempty" name:"Invoice"`
+
+		// 机动车销售统一发票信息
+		VehicleInvoiceInfo *VehicleInvoiceInfo `json:"VehicleInvoiceInfo,omitempty" name:"VehicleInvoiceInfo"`
+
+		// 二手车销售统一发票信息
+		UsedVehicleInvoiceInfo *UsedVehicleInvoiceInfo `json:"UsedVehicleInvoiceInfo,omitempty" name:"UsedVehicleInvoiceInfo"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4267,13 +5844,16 @@ func (r *VatInvoiceVerifyResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VatInvoiceVerifyResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VatRollInvoiceInfo struct {
 
-	// 识别出的字段名称（关键字）。
+	// 识别出的字段名称(关键字)，支持以下字段：
+	// 发票代码、合计金额(小写)、合计金额(大写)、开票日期、发票号码、购买方识别号、销售方识别号、校验码、销售方名称、购买方名称、发票消费类型、省、市、是否有公司印章、服务类型、品名、种类。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
@@ -4288,13 +5868,13 @@ type VatRollInvoiceOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -4305,8 +5885,19 @@ func (r *VatRollInvoiceOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VatRollInvoiceOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VatRollInvoiceOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VatRollInvoiceOCRResponse struct {
@@ -4314,7 +5905,7 @@ type VatRollInvoiceOCRResponse struct {
 	Response *struct {
 
 		// 增值税发票（卷票）识别结果，具体内容请点击左侧链接。
-		VatRollInvoiceInfos []*VatRollInvoiceInfo `json:"VatRollInvoiceInfos,omitempty" name:"VatRollInvoiceInfos" list`
+		VatRollInvoiceInfos []*VatRollInvoiceInfo `json:"VatRollInvoiceInfos,omitempty" name:"VatRollInvoiceInfos"`
 
 		// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
 		Angle *float64 `json:"Angle,omitempty" name:"Angle"`
@@ -4329,8 +5920,61 @@ func (r *VatRollInvoiceOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VatRollInvoiceOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type VehicleInvoiceInfo struct {
+
+	// 车辆类型
+	CarType *string `json:"CarType,omitempty" name:"CarType"`
+
+	// 厂牌型号
+	PlateModel *string `json:"PlateModel,omitempty" name:"PlateModel"`
+
+	// 产地
+	ProduceAddress *string `json:"ProduceAddress,omitempty" name:"ProduceAddress"`
+
+	// 合格证号
+	CertificateNo *string `json:"CertificateNo,omitempty" name:"CertificateNo"`
+
+	// 进口证明书号
+	ImportNo *string `json:"ImportNo,omitempty" name:"ImportNo"`
+
+	// LSVCA2NP9HN0xxxxx
+	VinNo *string `json:"VinNo,omitempty" name:"VinNo"`
+
+	// 完税证书号
+	PayTaxesNo *string `json:"PayTaxesNo,omitempty" name:"PayTaxesNo"`
+
+	// 吨位
+	Tonnage *string `json:"Tonnage,omitempty" name:"Tonnage"`
+
+	// 限乘人数
+	LimitCount *string `json:"LimitCount,omitempty" name:"LimitCount"`
+
+	// 发动机号码
+	EngineNo *string `json:"EngineNo,omitempty" name:"EngineNo"`
+
+	// 商检单号
+	BizCheckFormNo *string `json:"BizCheckFormNo,omitempty" name:"BizCheckFormNo"`
+
+	// 主管税务机关代码
+	TaxtationOrgCode *string `json:"TaxtationOrgCode,omitempty" name:"TaxtationOrgCode"`
+
+	// 主管税务机关名称
+	TaxtationOrgName *string `json:"TaxtationOrgName,omitempty" name:"TaxtationOrgName"`
+
+	// 税率
+	MotorTaxRate *string `json:"MotorTaxRate,omitempty" name:"MotorTaxRate"`
+
+	// 开户行
+	MotorBankName *string `json:"MotorBankName,omitempty" name:"MotorBankName"`
+
+	// 账号
+	MotorBankAccount *string `json:"MotorBankAccount,omitempty" name:"MotorBankAccount"`
 }
 
 type VehicleLicenseOCRRequest struct {
@@ -4346,6 +5990,7 @@ type VehicleLicenseOCRRequest struct {
 
 	// FRONT 为行驶证主页正面（有红色印章的一面），
 	// BACK 为行驶证副页正面（有号码号牌的一面）。
+	// 默认值为：FRONT。
 	CardSide *string `json:"CardSide,omitempty" name:"CardSide"`
 }
 
@@ -4354,8 +5999,20 @@ func (r *VehicleLicenseOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VehicleLicenseOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "CardSide")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VehicleLicenseOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VehicleLicenseOCRResponse struct {
@@ -4375,14 +6032,14 @@ type VehicleLicenseOCRResponse struct {
 	// -9103 翻拍件告警
 	// -9106 ps告警
 	// 注：告警码可以同时存在多个
-		RecognizeWarnCode []*int64 `json:"RecognizeWarnCode,omitempty" name:"RecognizeWarnCode" list`
+		RecognizeWarnCode []*int64 `json:"RecognizeWarnCode,omitempty" name:"RecognizeWarnCode"`
 
 		// 告警码说明：
 	// WARN_DRIVER_LICENSE_COPY_CARD 复印件告警
 	// WARN_DRIVER_LICENSE_SCREENED_CARD 翻拍件告警
 	// WARN_DRIVER_LICENSE_PS_CARD ps告警
 	// 注：告警信息可以同时存在多个
-		RecognizeWarnMsg []*string `json:"RecognizeWarnMsg,omitempty" name:"RecognizeWarnMsg" list`
+		RecognizeWarnMsg []*string `json:"RecognizeWarnMsg,omitempty" name:"RecognizeWarnMsg"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4394,13 +6051,26 @@ func (r *VehicleLicenseOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VehicleLicenseOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VehicleRegCertInfo struct {
 
-	// 识别出的字段名称
+	// 识别出的字段名称(关键字)，支持以下字段：
+	// 【注册登记页】
+	// 车辆型号、车辆识别代号/车架号、发动机号、制造厂名称、轴距、轮胎数、总质量、外廓尺寸、轴数、车辆出厂日期、发证日期、使用性质、车辆获得方式、车辆类型、国产/进口、燃料种类、车身颜色、发动机型号、车辆品牌、编号、转向形式、
+	// 机动车所有人1、身份证明名称1、号码1、登记机关1、登记日期1
+	// 机动车所有人2、身份证明名称2、号码2、登记机关2、登记日期2
+	// 机动车所有人3、身份证明名称3、号码3、登记机关3、登记日期3
+	// 机动车所有人4、身份证明名称4、号码4、登记机关4、登记日期4
+	// 机动车所有人5、身份证明名称5、号码5、登记机关5、登记日期5
+	// 机动车所有人6、身份证明名称6、号码6、登记机关6、登记日期6
+	// 机动车所有人7、身份证明名称7、号码7、登记机关7、登记日期7
+	// 【抵押登记页】
+	// 机动车登记证书编号、身份证明名称/号码、抵押权人姓名/名称、抵押登记日期。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 识别出的字段名称对应的值，也就是字段name对应的字符串结果。
@@ -4412,13 +6082,13 @@ type VehicleRegCertOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -4429,8 +6099,19 @@ func (r *VehicleRegCertOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VehicleRegCertOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VehicleRegCertOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VehicleRegCertOCRResponse struct {
@@ -4438,7 +6119,7 @@ type VehicleRegCertOCRResponse struct {
 	Response *struct {
 
 		// 机动车登记证书识别结果，具体内容请点击左侧链接。
-		VehicleRegCertInfos []*VehicleRegCertInfo `json:"VehicleRegCertInfos,omitempty" name:"VehicleRegCertInfos" list`
+		VehicleRegCertInfos []*VehicleRegCertInfo `json:"VehicleRegCertInfos,omitempty" name:"VehicleRegCertInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4450,23 +6131,23 @@ func (r *VehicleRegCertOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VehicleRegCertOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VerifyBasicBizLicenseRequest struct {
 	*tchttp.BaseRequest
 
-	// 用于入参是营业执照图片的场景，ImageBase64和ImageUrl必选一个输入。
+	// 用于入参是营业执照图片的场景，ImageBase64和ImageUrl必须提供一个，如果都提供，只使用 ImageUrl。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
-	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
-	// 用于入参是营业执照图片的场景，ImageBase64和ImageUrl必选一个输入。
+	// 用于入参是营业执照图片的场景，ImageBase64和ImageUrl必须提供一个，如果都提供，只使用 ImageUrl。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
-	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
 	// 用于入参是营业执照图片的场景，表示需要校验的参数：RegNum（注册号或者统一社会信用代码），Name（企业名称），Address（经营地址）。选择后会返回相关参数校验结果。RegNum为必选，Name和Address可选。
@@ -4478,17 +6159,20 @@ type VerifyBasicBizLicenseRequest struct {
 	// Config = {"Name":true,"Address":true}
 	ImageConfig *string `json:"ImageConfig,omitempty" name:"ImageConfig"`
 
-	// 用于入参是文本的场景，RegNum表示注册号或者统一社会信用代码。RegNum为必选项。
+	// 用于入参是文本的场景，RegNum表示注册号或者统一社会信用代码。若没有传入营业执照图片，则RegNum为必选项，若图片和RegNum都传入，则只使用RegNum。
 	RegNum *string `json:"RegNum,omitempty" name:"RegNum"`
 
 	// 用于入参是文本的场景，Name表示企业名称。Name为可选项，填写后会返回Name的校验结果。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 用于入参是文本的场景，Address表示经营地址，填写后会返回Name的校验结果。
+	// 用于入参是文本的场景，Address表示经营地址。Address为可选项，填写后会返回Address的校验结果。
 	Address *string `json:"Address,omitempty" name:"Address"`
 
 	// 1表示输出注册资本字段（单位：万元），其他值表示不输出。默认不输出。
 	RegCapital *int64 `json:"RegCapital,omitempty" name:"RegCapital"`
+
+	// true表示展示成立/注册日期
+	EstablishTime *bool `json:"EstablishTime,omitempty" name:"EstablishTime"`
 }
 
 func (r *VerifyBasicBizLicenseRequest) ToJsonString() string {
@@ -4496,8 +6180,25 @@ func (r *VerifyBasicBizLicenseRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VerifyBasicBizLicenseRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "ImageConfig")
+	delete(f, "RegNum")
+	delete(f, "Name")
+	delete(f, "Address")
+	delete(f, "RegCapital")
+	delete(f, "EstablishTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyBasicBizLicenseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VerifyBasicBizLicenseResponse struct {
@@ -4519,13 +6220,13 @@ type VerifyBasicBizLicenseResponse struct {
 		// 法人姓名
 		Frname *string `json:"Frname,omitempty" name:"Frname"`
 
-		// 经营状态（在营、注销、吊销、其他）
+		// 经营状态，包括：成立、筹建、存续、在营、开业、在册、正常经营、开业登记中、登记成立、撤销、撤销登记、非正常户、告解、个体暂时吊销、个体转企业、吊销（未注销）、拟注销、已注销、（待）迁入、（待）迁出、停业、歇业、清算等。
 		Entstatus *string `json:"Entstatus,omitempty" name:"Entstatus"`
 
 		// 经营业务范围
 		Zsopscope *string `json:"Zsopscope,omitempty" name:"Zsopscope"`
 
-		// 状态信息
+		// 查询的状态信息
 		Reason *string `json:"Reason,omitempty" name:"Reason"`
 
 		// 原注册号
@@ -4555,6 +6256,9 @@ type VerifyBasicBizLicenseResponse struct {
 		// 注册资本（单位：万元）,只有输入参数regCapital为1的时候才输出
 		RegCapital *string `json:"RegCapital,omitempty" name:"RegCapital"`
 
+		// 成立/注册日期，只有输入参数EstablishTime为true时展示，默认为空
+		EstablishTime *string `json:"EstablishTime,omitempty" name:"EstablishTime"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -4565,23 +6269,23 @@ func (r *VerifyBasicBizLicenseResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VerifyBasicBizLicenseResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VerifyBizLicenseRequest struct {
 	*tchttp.BaseRequest
 
-	// 用于入参是营业执照图片的场景，ImageBase64和ImageUrl必选一个输入。
+	// 用于入参是营业执照图片的场景，ImageBase64和ImageUrl必须提供一个，如果都提供，只使用 ImageUrl。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
-	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
-	// 用于入参是营业执照图片的场景，ImageBase64和ImageUrl必选一个输入。
+	// 用于入参是营业执照图片的场景，ImageBase64和ImageUrl必须提供一个，如果都提供，只使用 ImageUrl。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
-	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
 	// 用于入参是营业执照图片的场景，表示需要校验的参数：RegNum（注册号或者统一社会信用代码），Name（企业名称），Address（经营地址）。选择后会返回相关参数校验结果。RegNum为必选，Name和Address可选。
@@ -4593,13 +6297,13 @@ type VerifyBizLicenseRequest struct {
 	// Config = {"Name":true,"Address":true}
 	ImageConfig *string `json:"ImageConfig,omitempty" name:"ImageConfig"`
 
-	// 用于入参是文本的场景，RegNum表示注册号或者统一社会信用代码。RegNum为必选项。
+	// 用于入参是文本的场景，RegNum表示注册号或者统一社会信用代码。若没有传入营业执照图片，则RegNum为必选项，若图片和RegNum都传入，则只使用RegNum。
 	RegNum *string `json:"RegNum,omitempty" name:"RegNum"`
 
 	// 用于入参是文本的场景，Name表示企业名称。Name为可选项，填写后会返回Name的校验结果。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 用于入参是文本的场景，Address表示经营地址，填写后会返回Name的校验结果。
+	// 用于入参是文本的场景，Address表示经营地址，填写后会返回Address的校验结果。
 	Address *string `json:"Address,omitempty" name:"Address"`
 }
 
@@ -4608,8 +6312,23 @@ func (r *VerifyBizLicenseRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VerifyBizLicenseRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "ImageConfig")
+	delete(f, "RegNum")
+	delete(f, "Name")
+	delete(f, "Address")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyBizLicenseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VerifyBizLicenseResponse struct {
@@ -4634,7 +6353,7 @@ type VerifyBizLicenseResponse struct {
 		// 法人姓名
 		FrName *string `json:"FrName,omitempty" name:"FrName"`
 
-		// 经营状态（在营、注销、吊销、其他）
+		// 经营状态，包括：成立、筹建、存续、在营、开业、在册、正常经营、开业登记中、登记成立、撤销、撤销登记、非正常户、告解、个体暂时吊销、个体转企业、吊销（未注销）、拟注销、已注销、（待）迁入、（待）迁出、停业、歇业、清算等。
 		EnterpriseStatus *string `json:"EnterpriseStatus,omitempty" name:"EnterpriseStatus"`
 
 		// 经营（业务）范围及方式
@@ -4670,28 +6389,28 @@ type VerifyBizLicenseResponse struct {
 		// 核准时间
 		ApprDate *string `json:"ApprDate,omitempty" name:"ApprDate"`
 
-		// 省
+		// 省（返回空值）
 		Province *string `json:"Province,omitempty" name:"Province"`
 
-		// 地级市
+		// 地级市（返回空值）
 		City *string `json:"City,omitempty" name:"City"`
 
-		// 区\县
+		// 区\县（返回空值）
 		County *string `json:"County,omitempty" name:"County"`
 
-		// 住所所在行政区划代码
+		// 住所所在行政区划代码（返回空值）
 		AreaCode *string `json:"AreaCode,omitempty" name:"AreaCode"`
 
-		// 行业门类代码
+		// 行业门类代码（返回空值）
 		IndustryPhyCode *string `json:"IndustryPhyCode,omitempty" name:"IndustryPhyCode"`
 
-		// 行业门类名称
+		// 行业门类名称（返回空值）
 		IndustryPhyName *string `json:"IndustryPhyName,omitempty" name:"IndustryPhyName"`
 
-		// 国民经济行业代码
+		// 国民经济行业代码（返回空值）
 		IndustryCode *string `json:"IndustryCode,omitempty" name:"IndustryCode"`
 
-		// 国民经济行业名称
+		// 国民经济行业名称（返回空值）
 		IndustryName *string `json:"IndustryName,omitempty" name:"IndustryName"`
 
 		// 经营（业务）范围
@@ -4728,8 +6447,180 @@ func (r *VerifyBizLicenseResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VerifyBizLicenseResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type VerifyEnterpriseFourFactorsRequest struct {
+	*tchttp.BaseRequest
+
+	// 姓名
+	RealName *string `json:"RealName,omitempty" name:"RealName"`
+
+	// 证件号码（公司注册证件号）
+	IdCard *string `json:"IdCard,omitempty" name:"IdCard"`
+
+	// 企业全称
+	EnterpriseName *string `json:"EnterpriseName,omitempty" name:"EnterpriseName"`
+
+	// 企业标识（注册号，统一社会信用代码）
+	EnterpriseMark *string `json:"EnterpriseMark,omitempty" name:"EnterpriseMark"`
+}
+
+func (r *VerifyEnterpriseFourFactorsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyEnterpriseFourFactorsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RealName")
+	delete(f, "IdCard")
+	delete(f, "EnterpriseName")
+	delete(f, "EnterpriseMark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyEnterpriseFourFactorsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type VerifyEnterpriseFourFactorsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 核验一致性（1:一致，2:不一致，3:查询无记录）
+		State *int64 `json:"State,omitempty" name:"State"`
+
+		// 核验结果明细，7：企业法人/负责人，6：企业股东，5：企
+	// 业管理人员，-21：企业名称与企业标识不符，-22：姓名不一致，-23：证件号码不一致，-24：企业名称不一致，-25：企业标识不一致
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Detail *Detail `json:"Detail,omitempty" name:"Detail"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *VerifyEnterpriseFourFactorsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyEnterpriseFourFactorsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type VerifyOfdVatInvoiceOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// OFD文件的 Url 地址。
+	OfdFileUrl *string `json:"OfdFileUrl,omitempty" name:"OfdFileUrl"`
+
+	// OFD文件的 Base64 值。
+	// OfdFileUrl 和 OfdFileBase64 必传其一，若两者都传，只解析OfdFileBase64。
+	OfdFileBase64 *string `json:"OfdFileBase64,omitempty" name:"OfdFileBase64"`
+}
+
+func (r *VerifyOfdVatInvoiceOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyOfdVatInvoiceOCRRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OfdFileUrl")
+	delete(f, "OfdFileBase64")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyOfdVatInvoiceOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type VerifyOfdVatInvoiceOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 发票类型
+	// 026:增值税电子普通发票
+	// 028:增值税电子专用发票
+		Type *string `json:"Type,omitempty" name:"Type"`
+
+		// 发票代码
+		InvoiceCode *string `json:"InvoiceCode,omitempty" name:"InvoiceCode"`
+
+		// 发票号码
+		InvoiceNumber *string `json:"InvoiceNumber,omitempty" name:"InvoiceNumber"`
+
+		// 开票日期
+		IssueDate *string `json:"IssueDate,omitempty" name:"IssueDate"`
+
+		// 验证码
+		InvoiceCheckCode *string `json:"InvoiceCheckCode,omitempty" name:"InvoiceCheckCode"`
+
+		// 机器编号
+		MachineNumber *string `json:"MachineNumber,omitempty" name:"MachineNumber"`
+
+		// 密码区
+		TaxControlCode *string `json:"TaxControlCode,omitempty" name:"TaxControlCode"`
+
+		// 购买方
+		Buyer *VatInvoiceUserInfo `json:"Buyer,omitempty" name:"Buyer"`
+
+		// 销售方
+		Seller *VatInvoiceUserInfo `json:"Seller,omitempty" name:"Seller"`
+
+		// 价税合计
+		TaxInclusiveTotalAmount *string `json:"TaxInclusiveTotalAmount,omitempty" name:"TaxInclusiveTotalAmount"`
+
+		// 开票人
+		InvoiceClerk *string `json:"InvoiceClerk,omitempty" name:"InvoiceClerk"`
+
+		// 收款人
+		Payee *string `json:"Payee,omitempty" name:"Payee"`
+
+		// 复核人
+		Checker *string `json:"Checker,omitempty" name:"Checker"`
+
+		// 税额
+		TaxTotalAmount *string `json:"TaxTotalAmount,omitempty" name:"TaxTotalAmount"`
+
+		// 不含税金额
+		TaxExclusiveTotalAmount *string `json:"TaxExclusiveTotalAmount,omitempty" name:"TaxExclusiveTotalAmount"`
+
+		// 备注
+		Note *string `json:"Note,omitempty" name:"Note"`
+
+		// 货物或服务清单
+		GoodsInfos []*VatInvoiceGoodsInfo `json:"GoodsInfos,omitempty" name:"GoodsInfos"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *VerifyOfdVatInvoiceOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyOfdVatInvoiceOCRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VinOCRRequest struct {
@@ -4737,13 +6628,13 @@ type VinOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -4754,8 +6645,19 @@ func (r *VinOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VinOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VinOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VinOCRResponse struct {
@@ -4775,8 +6677,10 @@ func (r *VinOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VinOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type WaybillOCRRequest struct {
@@ -4784,16 +6688,19 @@ type WaybillOCRRequest struct {
 
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 预检测开关，当待识别运单占整个输入图像的比例较小时，建议打开预检测开关。默认值为false。
+	EnablePreDetect *bool `json:"EnablePreDetect,omitempty" name:"EnablePreDetect"`
 }
 
 func (r *WaybillOCRRequest) ToJsonString() string {
@@ -4801,8 +6708,20 @@ func (r *WaybillOCRRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *WaybillOCRRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "EnablePreDetect")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "WaybillOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type WaybillOCRResponse struct {
@@ -4822,8 +6741,10 @@ func (r *WaybillOCRResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *WaybillOCRResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type WaybillObj struct {
@@ -4835,7 +6756,7 @@ type WaybillObj struct {
 type WordCoordPoint struct {
 
 	// 英文OCR识别出的每个单词在原图中的四点坐标。
-	WordCoordinate []*Coord `json:"WordCoordinate,omitempty" name:"WordCoordinate" list`
+	WordCoordinate []*Coord `json:"WordCoordinate,omitempty" name:"WordCoordinate"`
 }
 
 type Words struct {

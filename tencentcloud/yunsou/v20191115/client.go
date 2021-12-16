@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -48,6 +48,8 @@ func NewDataManipulationRequest() (request *DataManipulationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("yunsou", APIVersion, "DataManipulation")
+    
+    
     return
 }
 
@@ -58,11 +60,23 @@ func NewDataManipulationResponse() (response *DataManipulationResponse) {
     return
 }
 
+// DataManipulation
 // 上传云搜数据的API接口。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTINFO = "FailedOperation.AccountInfo"
+//  FAILEDOPERATION_APPINFO = "FailedOperation.AppInfo"
+//  FAILEDOPERATION_SEARCH = "FailedOperation.Search"
+//  FAILEDOPERATION_UPLOADDATAAPIFAIL = "FailedOperation.UploadDataApiFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATACONTENT = "InvalidParameter.DataContent"
+//  LIMITEXCEEDED_SEARCH = "LimitExceeded.Search"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DataManipulation(request *DataManipulationRequest) (response *DataManipulationResponse, err error) {
     if request == nil {
         request = NewDataManipulationRequest()
     }
+    
     response = NewDataManipulationResponse()
     err = c.Send(request, response)
     return
@@ -73,6 +87,8 @@ func NewDataSearchRequest() (request *DataSearchRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("yunsou", APIVersion, "DataSearch")
+    
+    
     return
 }
 
@@ -83,11 +99,23 @@ func NewDataSearchResponse() (response *DataSearchResponse) {
     return
 }
 
+// DataSearch
 // 用于检索云搜中的数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTINFO = "FailedOperation.AccountInfo"
+//  FAILEDOPERATION_APPINFO = "FailedOperation.AppInfo"
+//  FAILEDOPERATION_SEARCH = "FailedOperation.Search"
+//  FAILEDOPERATION_UPLOADDATAAPIFAIL = "FailedOperation.UploadDataApiFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATACONTENT = "InvalidParameter.DataContent"
+//  LIMITEXCEEDED_SEARCH = "LimitExceeded.Search"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DataSearch(request *DataSearchRequest) (response *DataSearchResponse, err error) {
     if request == nil {
         request = NewDataSearchRequest()
     }
+    
     response = NewDataSearchResponse()
     err = c.Send(request, response)
     return

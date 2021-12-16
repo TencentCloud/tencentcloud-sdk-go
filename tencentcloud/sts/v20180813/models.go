@@ -16,7 +16,7 @@ package v20180813
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -35,10 +35,15 @@ type ApiKey struct {
 type AssumeRoleRequest struct {
 	*tchttp.BaseRequest
 
-	// 角色的资源描述。例如：qcs::cam::uin/12345678:role/4611686018427397919、qcs::cam::uin/12345678:roleName/testRoleName
+	// 角色的资源描述，可在[访问管理](https://console.cloud.tencent.com/cam/role)，点击角色名获取。
+	// 普通角色：
+	// qcs::cam::uin/12345678:role/4611686018427397919、qcs::cam::uin/12345678:roleName/testRoleName
+	// 服务角色：
+	// qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::cam::uin/12345678:role/tencentcloudServiceRoleName/testServiceRoleName
 	RoleArn *string `json:"RoleArn,omitempty" name:"RoleArn"`
 
-	// 临时会话名称，由用户自定义名称
+	// 临时会话名称，由用户自定义名称。
+	// 长度在2到128之间，可包含大小写字符，数字以及特殊字符：=,.@_-。 正则为：[\w+=,.@_-]*
 	RoleSessionName *string `json:"RoleSessionName,omitempty" name:"RoleSessionName"`
 
 	// 指定临时证书的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
@@ -50,6 +55,10 @@ type AssumeRoleRequest struct {
 	// 2、策略语法参照[ CAM 策略语法](https://cloud.tencent.com/document/product/598/10603)。
 	// 3、策略中不能包含 principal 元素。
 	Policy *string `json:"Policy,omitempty" name:"Policy"`
+
+	// 角色外部ID，可在[访问管理](https://console.cloud.tencent.com/cam/role)，点击角色名获取。
+	// 长度在2到128之间，可包含大小写字符，数字以及特殊字符：=,.@:/-。 正则为：[\w+=,.@:\/-]*
+	ExternalId *string `json:"ExternalId,omitempty" name:"ExternalId"`
 }
 
 func (r *AssumeRoleRequest) ToJsonString() string {
@@ -57,8 +66,22 @@ func (r *AssumeRoleRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AssumeRoleRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoleArn")
+	delete(f, "RoleSessionName")
+	delete(f, "DurationSeconds")
+	delete(f, "Policy")
+	delete(f, "ExternalId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssumeRoleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type AssumeRoleResponse struct {
@@ -84,8 +107,10 @@ func (r *AssumeRoleResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AssumeRoleResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type AssumeRoleWithSAMLRequest struct {
@@ -112,8 +137,22 @@ func (r *AssumeRoleWithSAMLRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AssumeRoleWithSAMLRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SAMLAssertion")
+	delete(f, "PrincipalArn")
+	delete(f, "RoleArn")
+	delete(f, "RoleSessionName")
+	delete(f, "DurationSeconds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssumeRoleWithSAMLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type AssumeRoleWithSAMLResponse struct {
@@ -139,8 +178,10 @@ func (r *AssumeRoleWithSAMLResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AssumeRoleWithSAMLResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Credentials struct {
@@ -153,6 +194,68 @@ type Credentials struct {
 
 	// 临时证书密钥Key。最长不超过1024字节。
 	TmpSecretKey *string `json:"TmpSecretKey,omitempty" name:"TmpSecretKey"`
+}
+
+type GetCallerIdentityRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *GetCallerIdentityRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetCallerIdentityRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetCallerIdentityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetCallerIdentityResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 当前调用者ARN。
+		Arn *string `json:"Arn,omitempty" name:"Arn"`
+
+		// 当前调用者所属主账号Uin。
+		AccountId *string `json:"AccountId,omitempty" name:"AccountId"`
+
+		// 身份标识。
+	// 1. 调用者是云账号时，返回的是当前账号Uin
+	// 2. 调用者是角色时，返回的是roleId:roleSessionName
+	// 3. 调用者是联合身份时，返回的是uin:federatedUserName
+		UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+		// 密钥所属账号Uin。
+	// 1. 调用者是云账号，返回的当前账号Uin
+	// 2, 调用者是角色，返回的申请角色密钥的账号Uin
+		PrincipalId *string `json:"PrincipalId,omitempty" name:"PrincipalId"`
+
+		// 身份类型。
+		Type *string `json:"Type,omitempty" name:"Type"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetCallerIdentityResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetCallerIdentityResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetFederationTokenRequest struct {
@@ -177,8 +280,20 @@ func (r *GetFederationTokenRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetFederationTokenRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Policy")
+	delete(f, "DurationSeconds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetFederationTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetFederationTokenResponse struct {
@@ -205,8 +320,10 @@ func (r *GetFederationTokenResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetFederationTokenResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryApiKeyRequest struct {
@@ -221,8 +338,18 @@ func (r *QueryApiKeyRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryApiKeyRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TargetUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryApiKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryApiKeyResponse struct {
@@ -230,7 +357,7 @@ type QueryApiKeyResponse struct {
 	Response *struct {
 
 		// 密钥ID列表
-		IdKeys []*ApiKey `json:"IdKeys,omitempty" name:"IdKeys" list`
+		IdKeys []*ApiKey `json:"IdKeys,omitempty" name:"IdKeys"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -242,6 +369,8 @@ func (r *QueryApiKeyResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryApiKeyResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

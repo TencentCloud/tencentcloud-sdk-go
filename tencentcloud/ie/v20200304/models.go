@@ -16,7 +16,7 @@ package v20200304
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -29,9 +29,14 @@ type ArtifactReduction struct {
 	// edaf,
 	// wdaf，
 	// 默认edaf。
-	// 注意：edaf：速度快，去毛刺效果强，保护边缘效果较弱；
-	// wdaf：速度慢，保护边缘效果好
+	// 注意：此参数已经弃用
 	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
+}
+
+type AudioEnhance struct {
+
+	// 音效增强种类，可选项：normal
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 type AudioInfo struct {
@@ -51,35 +56,48 @@ type AudioInfo struct {
 
 	// 采样率，单位：Hz。可选项：32000，44100,48000
 	SampleRate *int64 `json:"SampleRate,omitempty" name:"SampleRate"`
+
+	// 音频降噪信息
+	Denoise *Denoise `json:"Denoise,omitempty" name:"Denoise"`
+
+	// 开启添加静音，可选项：
+	// 0：不开启，
+	// 1：开启，
+	// 默认不开启
+	EnableMuteAudio *int64 `json:"EnableMuteAudio,omitempty" name:"EnableMuteAudio"`
+
+	// 音频响度信息
+	LoudnessInfo *LoudnessInfo `json:"LoudnessInfo,omitempty" name:"LoudnessInfo"`
+
+	// 音频音效增强
+	AudioEnhance *AudioEnhance `json:"AudioEnhance,omitempty" name:"AudioEnhance"`
+
+	// 去除混音
+	RemoveReverb *RemoveReverb `json:"RemoveReverb,omitempty" name:"RemoveReverb"`
 }
 
 type AudioInfoResultItem struct {
 
-	// 音频流的流id
+	// 音频流的流id。
 	Stream *int64 `json:"Stream,omitempty" name:"Stream"`
 
 	// 音频采样率 。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Sample *int64 `json:"Sample,omitempty" name:"Sample"`
 
 	// 音频声道数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Channel *int64 `json:"Channel,omitempty" name:"Channel"`
 
 	// 编码格式，如aac, mp3等。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 
 	// 码率，单位：bps。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bitrate *int64 `json:"Bitrate,omitempty" name:"Bitrate"`
 
 	// 音频时长，单位：ms。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
 }
@@ -114,7 +132,7 @@ type ClassificationTaskResult struct {
 
 	// 视频分类识别结果集。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ItemSet []*ClassificationTaskResultItem `json:"ItemSet,omitempty" name:"ItemSet" list`
+	ItemSet []*ClassificationTaskResultItem `json:"ItemSet,omitempty" name:"ItemSet"`
 }
 
 type ClassificationTaskResultItem struct {
@@ -128,14 +146,19 @@ type ClassificationTaskResultItem struct {
 
 type ColorEnhance struct {
 
-	// 颜色增强类型，可选项：weak,strong。
+	// 颜色增强类型，可选项：
+	// 1.  tra；
+	// 2.  weak；
+	// 3.  normal;
+	// 4.  strong;
+	// 注意：tra不支持自适应调整，处理速度更快；weak,normal,strong支持基于画面颜色自适应，处理速度更慢。
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 type CosAuthMode struct {
 
 	// 授权类型，可选值： 
-	// 0：bucket授权，需要将对应bucket授权给本服务帐号（3020447271），否则会读写cos失败； 
+	// 0：bucket授权，需要将对应bucket授权给本服务帐号（3020447271和100012301793），否则会读写cos失败； 
 	// 1：key托管，把cos的账号id和key托管于本服务，本服务会提供一个托管id； 
 	// 3：临时key授权。
 	// 注意：目前智能编辑还不支持临时key授权；画质重生目前只支持bucket授权
@@ -195,7 +218,7 @@ type CoverTaskResult struct {
 
 	// 智能封面结果集。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ItemSet []*CoverTaskResultItem `json:"ItemSet,omitempty" name:"ItemSet" list`
+	ItemSet []*CoverTaskResultItem `json:"ItemSet,omitempty" name:"ItemSet"`
 }
 
 type CoverTaskResultItem struct {
@@ -228,8 +251,21 @@ func (r *CreateEditingTaskRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateEditingTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EditingInfo")
+	delete(f, "DownInfo")
+	delete(f, "SaveInfo")
+	delete(f, "CallbackInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEditingTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateEditingTaskResponse struct {
@@ -249,8 +285,72 @@ func (r *CreateEditingTaskResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateEditingTaskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateMediaProcessTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 编辑处理任务参数。
+	MediaProcessInfo *MediaProcessInfo `json:"MediaProcessInfo,omitempty" name:"MediaProcessInfo"`
+
+	// 编辑处理任务输入源列表。
+	SourceInfoSet []*MediaSourceInfo `json:"SourceInfoSet,omitempty" name:"SourceInfoSet"`
+
+	// 结果存储信息，对于涉及存储的请求必选。部子任务支持数组备份写，具体以对应任务文档为准。
+	SaveInfoSet []*SaveInfo `json:"SaveInfoSet,omitempty" name:"SaveInfoSet"`
+
+	// 任务结果回调地址信息。部子任务支持数组备份回调，具体以对应任务文档为准。
+	CallbackInfoSet []*CallbackInfo `json:"CallbackInfoSet,omitempty" name:"CallbackInfoSet"`
+}
+
+func (r *CreateMediaProcessTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMediaProcessTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MediaProcessInfo")
+	delete(f, "SourceInfoSet")
+	delete(f, "SaveInfoSet")
+	delete(f, "CallbackInfoSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMediaProcessTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateMediaProcessTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 编辑任务 ID，可以通过该 ID 查询任务状态和结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateMediaProcessTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMediaProcessTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateMediaQualityRestorationTaskRequest struct {
@@ -260,7 +360,7 @@ type CreateMediaQualityRestorationTaskRequest struct {
 	DownInfo *DownInfo `json:"DownInfo,omitempty" name:"DownInfo"`
 
 	// 画质重生任务参数信息。
-	TransInfo []*SubTaskTranscodeInfo `json:"TransInfo,omitempty" name:"TransInfo" list`
+	TransInfo []*SubTaskTranscodeInfo `json:"TransInfo,omitempty" name:"TransInfo"`
 
 	// 任务结束后文件存储信息。
 	SaveInfo *SaveInfo `json:"SaveInfo,omitempty" name:"SaveInfo"`
@@ -274,8 +374,21 @@ func (r *CreateMediaQualityRestorationTaskRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateMediaQualityRestorationTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DownInfo")
+	delete(f, "TransInfo")
+	delete(f, "SaveInfo")
+	delete(f, "CallbackInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMediaQualityRestorationTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateMediaQualityRestorationTaskResponse struct {
@@ -295,8 +408,10 @@ func (r *CreateMediaQualityRestorationTaskResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateMediaQualityRestorationTaskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateQualityControlTaskRequest struct {
@@ -317,8 +432,20 @@ func (r *CreateQualityControlTaskRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateQualityControlTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "QualityControlInfo")
+	delete(f, "DownInfo")
+	delete(f, "CallbackInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateQualityControlTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateQualityControlTaskResponse struct {
@@ -339,8 +466,10 @@ func (r *CreateQualityControlTaskResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateQualityControlTaskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DarInfo struct {
@@ -350,6 +479,16 @@ type DarInfo struct {
 	// 2：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“。
 	// 默认为2。
 	FillMode *uint64 `json:"FillMode,omitempty" name:"FillMode"`
+}
+
+type Denoise struct {
+
+	// 音频降噪强度，可选项：
+	// 1. weak
+	// 2.normal，
+	// 3.strong
+	// 默认为weak
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 type Denoising struct {
@@ -382,8 +521,18 @@ func (r *DescribeEditingTaskResultRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeEditingTaskResultRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEditingTaskResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeEditingTaskResultResponse struct {
@@ -403,8 +552,60 @@ func (r *DescribeEditingTaskResultResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeEditingTaskResultResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMediaProcessTaskResultRequest struct {
+	*tchttp.BaseRequest
+
+	// 编辑处理任务ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeMediaProcessTaskResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMediaProcessTaskResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMediaProcessTaskResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMediaProcessTaskResultResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务处理结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TaskResult *MediaProcessTaskResult `json:"TaskResult,omitempty" name:"TaskResult"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeMediaProcessTaskResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMediaProcessTaskResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeMediaQualityRestorationTaskRusultRequest struct {
@@ -419,8 +620,18 @@ func (r *DescribeMediaQualityRestorationTaskRusultRequest) ToJsonString() string
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeMediaQualityRestorationTaskRusultRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMediaQualityRestorationTaskRusultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeMediaQualityRestorationTaskRusultResponse struct {
@@ -440,8 +651,10 @@ func (r *DescribeMediaQualityRestorationTaskRusultResponse) ToJsonString() strin
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeMediaQualityRestorationTaskRusultResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeQualityControlTaskResultRequest struct {
@@ -456,8 +669,18 @@ func (r *DescribeQualityControlTaskResultRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeQualityControlTaskResultRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeQualityControlTaskResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeQualityControlTaskResultResponse struct {
@@ -477,8 +700,10 @@ func (r *DescribeQualityControlTaskResultResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeQualityControlTaskResultResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DownInfo struct {
@@ -568,34 +793,81 @@ type FaceProtect struct {
 type FileInfo struct {
 
 	// 任务结束后生成的文件大小。
-	// 注意：此字段可能返回 null，表示取不到有效值 。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileSize *int64 `json:"FileSize,omitempty" name:"FileSize"`
 
 	// 任务结束后生成的文件格式，例如：mp4,flv等等。
-	// 注意：此字段可能返回 null，表示取不到有效值 。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
 
 	// 任务结束后生成的文件整体码率，单位：bps。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bitrate *int64 `json:"Bitrate,omitempty" name:"Bitrate"`
 
 	// 任务结束后生成的文件时长，单位：ms。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
 
 	// 任务结束后生成的文件视频信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	VideoInfoResult []*VideoInfoResultItem `json:"VideoInfoResult,omitempty" name:"VideoInfoResult" list`
+	VideoInfoResult []*VideoInfoResultItem `json:"VideoInfoResult,omitempty" name:"VideoInfoResult"`
 
 	// 任务结束后生成的文件音频信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	AudioInfoResult []*AudioInfoResultItem `json:"AudioInfoResult,omitempty" name:"AudioInfoResult" list`
+	AudioInfoResult []*AudioInfoResultItem `json:"AudioInfoResult,omitempty" name:"AudioInfoResult"`
+}
+
+type FrameTagItem struct {
+
+	// 标签起始时间戳PTS(ms)
+	StartPts *uint64 `json:"StartPts,omitempty" name:"StartPts"`
+
+	// 语句结束时间戳PTS(ms)
+	EndPts *uint64 `json:"EndPts,omitempty" name:"EndPts"`
+
+	// 字符串形式的起始结束时间
+	Period *string `json:"Period,omitempty" name:"Period"`
+
+	// 标签数组
+	TagItems []*TagItem `json:"TagItems,omitempty" name:"TagItems"`
+}
+
+type FrameTagRec struct {
+
+	// 标签类型：
+	// "Common": 通用类型
+	// "Game":游戏类型
+	TagType *string `json:"TagType,omitempty" name:"TagType"`
+
+	// 游戏具体类型:
+	// "HonorOfKings_AnchorViews":王者荣耀主播视角
+	// "HonorOfKings_GameViews":王者荣耀比赛视角
+	// "LOL_AnchorViews":英雄联盟主播视角
+	// "LOL_GameViews":英雄联盟比赛视角
+	// "PUBG_AnchorViews":和平精英主播视角
+	// "PUBG_GameViews":和平精英比赛视角
+	GameExtendType *string `json:"GameExtendType,omitempty" name:"GameExtendType"`
+}
+
+type FrameTagResult struct {
+
+	// 帧标签结果数组
+	FrameTagItems []*FrameTagItem `json:"FrameTagItems,omitempty" name:"FrameTagItems"`
+}
+
+type HiddenMarkInfo struct {
+
+	// 数字水印路径,，如果不从Cos拉取水印，则必填
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 数字水印频率，可选值：[1,256]，默认值为30
+	Frequency *int64 `json:"Frequency,omitempty" name:"Frequency"`
+
+	// 数字水印强度，可选值：[32,128]，默认值为64
+	Strength *int64 `json:"Strength,omitempty" name:"Strength"`
+
+	// 数字水印的Cos 信息，从Cos上拉取图片水印时必填。
+	CosInfo *CosInfo `json:"CosInfo,omitempty" name:"CosInfo"`
 }
 
 type HighlightsEditingInfo struct {
@@ -622,7 +894,7 @@ type HighlightsTaskResult struct {
 
 	// 智能集锦结果集。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ItemSet []*HighlightsTaskResultItem `json:"ItemSet,omitempty" name:"ItemSet" list`
+	ItemSet []*HighlightsTaskResultItem `json:"ItemSet,omitempty" name:"ItemSet"`
 }
 
 type HighlightsTaskResultItem struct {
@@ -640,7 +912,7 @@ type HighlightsTaskResultItem struct {
 	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
 
 	// 智能集锦子片段结果集，集锦片段由这些子片段拼接生成。
-	SegmentSet []*HighlightsTaskResultItemSegment `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*HighlightsTaskResultItemSegment `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type HighlightsTaskResultItemSegment struct {
@@ -655,10 +927,194 @@ type HighlightsTaskResultItemSegment struct {
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 }
 
+type IntervalTime struct {
+
+	// 间隔周期，单位ms
+	Interval *int64 `json:"Interval,omitempty" name:"Interval"`
+
+	// 开始时间点，单位ms
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+}
+
+type LoudnessInfo struct {
+
+	// 音频整体响度
+	Loudness *float64 `json:"Loudness,omitempty" name:"Loudness"`
+
+	// 音频响度范围
+	LoudnessRange *float64 `json:"LoudnessRange,omitempty" name:"LoudnessRange"`
+}
+
 type LowLightEnhance struct {
 
 	// 低光照增强类型，可选项：normal。
 	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type MediaCuttingInfo struct {
+
+	// 截取时间信息。
+	TimeInfo *MediaCuttingTimeInfo `json:"TimeInfo,omitempty" name:"TimeInfo"`
+
+	// 输出结果信息。
+	TargetInfo *MediaTargetInfo `json:"TargetInfo,omitempty" name:"TargetInfo"`
+
+	// 截取结果形式信息。
+	OutForm *MediaCuttingOutForm `json:"OutForm,omitempty" name:"OutForm"`
+
+	// 列表文件形式，存储到用户存储服务中，可选值：
+	// UseSaveInfo：默认，结果列表和结果存储同一位置；
+	// NoListFile：不存储结果列表。
+	ResultListSaveType *string `json:"ResultListSaveType,omitempty" name:"ResultListSaveType"`
+}
+
+type MediaCuttingOutForm struct {
+
+	// 输出类型，可选值：
+	// Static：静态图；
+	// Dynamic：动态图；
+	// Sprite：雪碧图；
+	// Video：视频。
+	// 
+	// 注1：不同类型时，对应的 TargetInfo.Format 格式支持如下：
+	// Static：jpg、png；
+	// Dynamic：gif；
+	// Sprite：jpg、png；
+	// Video：mp4。
+	// 
+	// 注2：当 Type=Sprite时，TargetInfo指定的尺寸表示小图的大小，最终结果尺寸以输出为准。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 背景填充方式，可选值：
+	// White：白色填充；
+	// Black：黑色填充；
+	// Stretch：拉伸；
+	// Gaussian：高斯模糊；
+	// 默认White。
+	FillType *string `json:"FillType,omitempty" name:"FillType"`
+
+	// Type=Sprite时有效，表示雪碧图行数，范围为 [1,200]，默认100。
+	SpriteRowCount *int64 `json:"SpriteRowCount,omitempty" name:"SpriteRowCount"`
+
+	// Type=Sprite时有效，表示雪碧图列数，范围为 [1,200]，默认100。
+	SpriteColumnCount *int64 `json:"SpriteColumnCount,omitempty" name:"SpriteColumnCount"`
+}
+
+type MediaCuttingTaskResult struct {
+
+	// 如果ResultListType不为NoListFile时，结果（TaskResultFile）列表文件的存储位置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ListFile *TaskResultFile `json:"ListFile,omitempty" name:"ListFile"`
+
+	// 结果个数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultCount *int64 `json:"ResultCount,omitempty" name:"ResultCount"`
+
+	// 第一个结果文件。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FirstFile *TaskResultFile `json:"FirstFile,omitempty" name:"FirstFile"`
+
+	// 最后一个结果文件。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastFile *TaskResultFile `json:"LastFile,omitempty" name:"LastFile"`
+}
+
+type MediaCuttingTimeInfo struct {
+
+	// 时间类型，可选值：
+	// PointSet：时间点集合；
+	// IntervalPoint：周期采样点；
+	// SectionSet：时间片段集合。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 截取时间点集合，单位毫秒，Type=PointSet时必选。
+	PointSet []*int64 `json:"PointSet,omitempty" name:"PointSet"`
+
+	// 周期采样点信息，Type=IntervalPoint时必选。
+	IntervalPoint *IntervalTime `json:"IntervalPoint,omitempty" name:"IntervalPoint"`
+
+	// 时间区间集合信息，Type=SectionSet时必选。
+	SectionSet []*SectionTime `json:"SectionSet,omitempty" name:"SectionSet"`
+}
+
+type MediaJoiningInfo struct {
+
+	// 输出目标信息，拼接只采用FileName和Format，用于指定目标文件名和格式。
+	// 其中Format只支持mp4.
+	TargetInfo *MediaTargetInfo `json:"TargetInfo,omitempty" name:"TargetInfo"`
+}
+
+type MediaJoiningTaskResult struct {
+
+	// 拼接结果文件。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	File *TaskResultFile `json:"File,omitempty" name:"File"`
+}
+
+type MediaProcessInfo struct {
+
+	// 编辑处理任务类型，可选值：
+	// MediaEditing：媒体编辑（待上线）；
+	// MediaCutting：媒体剪切；
+	// MediaJoining：媒体拼接。
+	// MediaRecognition: 媒体识别。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 视频剪切任务参数，Type=MediaCutting时必选。
+	MediaCuttingInfo *MediaCuttingInfo `json:"MediaCuttingInfo,omitempty" name:"MediaCuttingInfo"`
+
+	// 视频拼接任务参数，Type=MediaJoining时必选。
+	MediaJoiningInfo *MediaJoiningInfo `json:"MediaJoiningInfo,omitempty" name:"MediaJoiningInfo"`
+
+	// 媒体识别任务参数，Type=MediaRecognition时必选
+	MediaRecognitionInfo *MediaRecognitionInfo `json:"MediaRecognitionInfo,omitempty" name:"MediaRecognitionInfo"`
+}
+
+type MediaProcessTaskResult struct {
+
+	// 编辑处理任务ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 编辑处理任务类型，取值：
+	// MediaEditing：视频编辑（待上线）；
+	// MediaCutting：视频剪切；
+	// MediaJoining：视频拼接。
+	// MediaRecognition：媒体识别；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 处理进度，范围：[0,100]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 任务状态：
+	// 1100：等待中；
+	// 1200：执行中；
+	// 2000：成功；
+	// 5000：失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 任务错误码。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 任务错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+
+	// 剪切任务处理结果，当Type=MediaCutting时才有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MediaCuttingTaskResult *MediaCuttingTaskResult `json:"MediaCuttingTaskResult,omitempty" name:"MediaCuttingTaskResult"`
+
+	// 拼接任务处理结果，当Type=MediaJoining时才有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MediaJoiningTaskResult *MediaJoiningTaskResult `json:"MediaJoiningTaskResult,omitempty" name:"MediaJoiningTaskResult"`
+
+	// 媒体识别任务处理结果，当Type=MediaRecognition时才有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MediaRecognitionTaskResult *MediaRecognitionTaskResult `json:"MediaRecognitionTaskResult,omitempty" name:"MediaRecognitionTaskResult"`
 }
 
 type MediaQualityRestorationTaskResult struct {
@@ -667,13 +1123,88 @@ type MediaQualityRestorationTaskResult struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 画质重生处理后文件的详细信息。
-	SubTaskResult []*SubTaskResultItem `json:"SubTaskResult,omitempty" name:"SubTaskResult" list`
+	SubTaskResult []*SubTaskResultItem `json:"SubTaskResult,omitempty" name:"SubTaskResult"`
+}
+
+type MediaRecognitionInfo struct {
+
+	// 帧标签识别
+	FrameTagRec *FrameTagRec `json:"FrameTagRec,omitempty" name:"FrameTagRec"`
+
+	// 语音字幕识别
+	SubtitleRec *SubtitleRec `json:"SubtitleRec,omitempty" name:"SubtitleRec"`
+}
+
+type MediaRecognitionTaskResult struct {
+
+	// 帧标签识别结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FrameTagResults *FrameTagResult `json:"FrameTagResults,omitempty" name:"FrameTagResults"`
+
+	// 语音字幕识别结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubtitleResults *SubtitleResult `json:"SubtitleResults,omitempty" name:"SubtitleResults"`
+}
+
+type MediaResultInfo struct {
+
+	// 媒体时长，单位：毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 视频流信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultVideoInfoSet []*ResultVideoInfo `json:"ResultVideoInfoSet,omitempty" name:"ResultVideoInfoSet"`
+
+	// 音频流信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultAudioInfoSet []*ResultAudioInfo `json:"ResultAudioInfoSet,omitempty" name:"ResultAudioInfoSet"`
+}
+
+type MediaSourceInfo struct {
+
+	// 媒体源资源下载信息。
+	DownInfo *DownInfo `json:"DownInfo,omitempty" name:"DownInfo"`
+
+	// 媒体源ID标记，用于多个输入源时，请内媒体源的定位，对于多输入的任务，一般要求必选。
+	// ID只能包含字母、数字、下划线、中划线，长读不能超过128。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 媒体源类型，具体类型如下：
+	// Video：视频
+	// Image：图片
+	// Audio：音频
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type MediaTargetInfo struct {
+
+	// 目标文件名，不能带特殊字符（如/等），无需后缀名，最长200字符。
+	// 
+	// 注1：部分子服务支持占位符，形式为： {parameter}
+	// 预设parameter有：
+	// index：序号；
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 媒体封装格式，最长5字符，具体格式支持根据子任务确定。
+	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// 视频流信息。
+	TargetVideoInfo *TargetVideoInfo `json:"TargetVideoInfo,omitempty" name:"TargetVideoInfo"`
+
+	// 【不再使用】 对于多输出任务，部分子服务推荐结果信息以列表文件形式，存储到用户存储服务中，可选值：
+	// UseSaveInfo：默认，结果列表和结果存储同一位置；
+	// NoListFile：不存储结果列表。
+	ResultListSaveType *string `json:"ResultListSaveType,omitempty" name:"ResultListSaveType"`
 }
 
 type MuxInfo struct {
 
 	// 删除流，可选项：video,audio。
 	DeleteStream *string `json:"DeleteStream,omitempty" name:"DeleteStream"`
+
+	// Flv 参数，目前支持add_keyframe_index
+	FlvFlags *string `json:"FlvFlags,omitempty" name:"FlvFlags"`
 }
 
 type OpeningEndingEditingInfo struct {
@@ -819,43 +1350,43 @@ type QualityControlInfoTaskResult struct {
 
 	// 视频画面无参考评分低于阈值的时间段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	QualityEvaluationResults []*QualityControlResultItems `json:"QualityEvaluationResults,omitempty" name:"QualityEvaluationResults" list`
+	QualityEvaluationResults []*QualityControlResultItems `json:"QualityEvaluationResults,omitempty" name:"QualityEvaluationResults"`
 
 	// 视频画面抖动时间段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	JitterResults []*QualityControlResultItems `json:"JitterResults,omitempty" name:"JitterResults" list`
+	JitterResults []*QualityControlResultItems `json:"JitterResults,omitempty" name:"JitterResults"`
 
 	// 视频画面模糊时间段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BlurResults []*QualityControlResultItems `json:"BlurResults,omitempty" name:"BlurResults" list`
+	BlurResults []*QualityControlResultItems `json:"BlurResults,omitempty" name:"BlurResults"`
 
 	// 视频画面低光、过曝时间段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AbnormalLightingResults []*QualityControlResultItems `json:"AbnormalLightingResults,omitempty" name:"AbnormalLightingResults" list`
+	AbnormalLightingResults []*QualityControlResultItems `json:"AbnormalLightingResults,omitempty" name:"AbnormalLightingResults"`
 
 	// 视频画面花屏时间段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CrashScreenResults []*QualityControlResultItems `json:"CrashScreenResults,omitempty" name:"CrashScreenResults" list`
+	CrashScreenResults []*QualityControlResultItems `json:"CrashScreenResults,omitempty" name:"CrashScreenResults"`
 
 	// 视频画面黑边、白边、黑屏、白屏、纯色屏时间段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BlackWhiteEdgeResults []*QualityControlResultItems `json:"BlackWhiteEdgeResults,omitempty" name:"BlackWhiteEdgeResults" list`
+	BlackWhiteEdgeResults []*QualityControlResultItems `json:"BlackWhiteEdgeResults,omitempty" name:"BlackWhiteEdgeResults"`
 
 	// 视频画面有噪点时间段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NoiseResults []*QualityControlResultItems `json:"NoiseResults,omitempty" name:"NoiseResults" list`
+	NoiseResults []*QualityControlResultItems `json:"NoiseResults,omitempty" name:"NoiseResults"`
 
 	// 视频画面有马赛克时间段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MosaicResults []*QualityControlResultItems `json:"MosaicResults,omitempty" name:"MosaicResults" list`
+	MosaicResults []*QualityControlResultItems `json:"MosaicResults,omitempty" name:"MosaicResults"`
 
 	// 视频画面有二维码的时间段，包括小程序码、条形码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	QRCodeResults []*QualityControlResultItems `json:"QRCodeResults,omitempty" name:"QRCodeResults" list`
+	QRCodeResults []*QualityControlResultItems `json:"QRCodeResults,omitempty" name:"QRCodeResults"`
 
 	// 视频音频异常时间段，包括静音、低音、爆音
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VoiceResults []*QualityControlResultItems `json:"VoiceResults,omitempty" name:"VoiceResults" list`
+	VoiceResults []*QualityControlResultItems `json:"VoiceResults,omitempty" name:"VoiceResults"`
 
 	// 任务错误码
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -880,7 +1411,7 @@ type QualityControlItem struct {
 
 	// 区域坐标(px)，即左上角坐标、右下角坐标
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AreaCoordsSet []*uint64 `json:"AreaCoordsSet,omitempty" name:"AreaCoordsSet" list`
+	AreaCoordsSet []*uint64 `json:"AreaCoordsSet,omitempty" name:"AreaCoordsSet"`
 }
 
 type QualityControlResultItems struct {
@@ -890,7 +1421,47 @@ type QualityControlResultItems struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 质检结果项
-	QualityControlItems []*QualityControlItem `json:"QualityControlItems,omitempty" name:"QualityControlItems" list`
+	QualityControlItems []*QualityControlItem `json:"QualityControlItems,omitempty" name:"QualityControlItems"`
+}
+
+type RemoveReverb struct {
+
+	// 去混响类型，可选项：normal
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type ResultAudioInfo struct {
+
+	// 流在媒体文件中的流ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StreamId *int64 `json:"StreamId,omitempty" name:"StreamId"`
+
+	// 流的时长，单位：毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+}
+
+type ResultVideoInfo struct {
+
+	// 流在媒体文件中的流ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StreamId *int64 `json:"StreamId,omitempty" name:"StreamId"`
+
+	// 流的时长，单位：毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 画面宽度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 画面高度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Height *int64 `json:"Height,omitempty" name:"Height"`
+
+	// 视频帧率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Fps *int64 `json:"Fps,omitempty" name:"Fps"`
 }
 
 type SaveInfo struct {
@@ -910,6 +1481,15 @@ type ScratchRepair struct {
 
 	// 去划痕强度， 可选项：0.0-1.0。小于0.0的默认为0.0，大于1.0的默认为1.0。
 	Ratio *float64 `json:"Ratio,omitempty" name:"Ratio"`
+}
+
+type SectionTime struct {
+
+	// 开始时间点，单位ms
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 时间区间时长，单位ms
+	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
 }
 
 type SegmentInfo struct {
@@ -935,6 +1515,52 @@ type Sharp struct {
 	Ratio *float64 `json:"Ratio,omitempty" name:"Ratio"`
 }
 
+type StopMediaProcessTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 编辑处理任务ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *StopMediaProcessTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopMediaProcessTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopMediaProcessTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type StopMediaProcessTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StopMediaProcessTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopMediaProcessTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type StopMediaQualityRestorationTaskRequest struct {
 	*tchttp.BaseRequest
 
@@ -947,8 +1573,18 @@ func (r *StopMediaQualityRestorationTaskRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *StopMediaQualityRestorationTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopMediaQualityRestorationTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type StopMediaQualityRestorationTaskResponse struct {
@@ -965,8 +1601,10 @@ func (r *StopMediaQualityRestorationTaskResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *StopMediaQualityRestorationTaskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type StripEditingInfo struct {
@@ -993,7 +1631,7 @@ type StripTaskResult struct {
 
 	// 智能拆条结果集。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ItemSet []*StripTaskResultItem `json:"ItemSet,omitempty" name:"ItemSet" list`
+	ItemSet []*StripTaskResultItem `json:"ItemSet,omitempty" name:"ItemSet"`
 }
 
 type StripTaskResultItem struct {
@@ -1018,7 +1656,6 @@ type SubTaskResultItem struct {
 
 	// 子任务名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
 
 	// 子任务状态。
@@ -1032,21 +1669,17 @@ type SubTaskResultItem struct {
 
 	// 子任务进度。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProgressRate *int64 `json:"ProgressRate,omitempty" name:"ProgressRate"`
 
 	// 画质重生处理后文件的下载地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
 
 	// 画质重生处理后文件的MD5。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Md5 *string `json:"Md5,omitempty" name:"Md5"`
 
 	// 画质重生处理后文件的详细信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileInfo *FileInfo `json:"FileInfo,omitempty" name:"FileInfo"`
 }
@@ -1072,6 +1705,58 @@ type SubTaskTranscodeInfo struct {
 	MuxInfo *MuxInfo `json:"MuxInfo,omitempty" name:"MuxInfo"`
 }
 
+type SubtitleItem struct {
+
+	// 语音识别结果
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 中文翻译结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zh *string `json:"Zh,omitempty" name:"Zh"`
+
+	// 英文翻译结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	En *string `json:"En,omitempty" name:"En"`
+
+	// 语句起始时间戳PTS(ms)
+	StartPts *uint64 `json:"StartPts,omitempty" name:"StartPts"`
+
+	// 语句结束时间戳PTS(ms)
+	EndPts *uint64 `json:"EndPts,omitempty" name:"EndPts"`
+
+	// 字符串形式的起始结束时间
+	Period *string `json:"Period,omitempty" name:"Period"`
+
+	// 结果的置信度（百分制）
+	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 当前语句是否结束
+	EndFlag *bool `json:"EndFlag,omitempty" name:"EndFlag"`
+
+	// 语句分割时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PuncEndTs *string `json:"PuncEndTs,omitempty" name:"PuncEndTs"`
+}
+
+type SubtitleRec struct {
+
+	// 语音识别：
+	// zh：中文
+	// en：英文
+	AsrDst *string `json:"AsrDst,omitempty" name:"AsrDst"`
+
+	// 翻译识别：
+	// zh：中文
+	// en：英文
+	TransDst *string `json:"TransDst,omitempty" name:"TransDst"`
+}
+
+type SubtitleResult struct {
+
+	// 语音字幕数组
+	SubtitleItems []*SubtitleItem `json:"SubtitleItems,omitempty" name:"SubtitleItems"`
+}
+
 type TagEditingInfo struct {
 
 	// 是否开启视频标签识别。0为关闭，1为开启。其他非0非1值默认为0。
@@ -1079,6 +1764,23 @@ type TagEditingInfo struct {
 
 	// 额外定制化服务参数。参数为序列化的Json字符串，例如：{"k1":"v1"}。
 	CustomInfo *string `json:"CustomInfo,omitempty" name:"CustomInfo"`
+}
+
+type TagItem struct {
+
+	// 标签内容
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 结果的置信度（百分制）
+	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 分级数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Categorys []*string `json:"Categorys,omitempty" name:"Categorys"`
+
+	// 标签备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ext *string `json:"Ext,omitempty" name:"Ext"`
 }
 
 type TagTaskResult struct {
@@ -1096,7 +1798,7 @@ type TagTaskResult struct {
 
 	// 视频标签识别结果集。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ItemSet []*TagTaskResultItem `json:"ItemSet,omitempty" name:"ItemSet" list`
+	ItemSet []*TagTaskResultItem `json:"ItemSet,omitempty" name:"ItemSet"`
 }
 
 type TagTaskResultItem struct {
@@ -1117,10 +1819,61 @@ type TargetInfo struct {
 	SegmentInfo *SegmentInfo `json:"SegmentInfo,omitempty" name:"SegmentInfo"`
 }
 
+type TargetVideoInfo struct {
+
+	// 视频宽度，单位像素
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 视频高度，单位像素
+	Height *int64 `json:"Height,omitempty" name:"Height"`
+
+	// 视频帧率，范围在1到120之间
+	FrameRate *int64 `json:"FrameRate,omitempty" name:"FrameRate"`
+}
+
+type TaskResultFile struct {
+
+	// 文件链接。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 文件大小，部分任务支持，单位：字节
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileSize *uint64 `json:"FileSize,omitempty" name:"FileSize"`
+
+	// 媒体信息，对于媒体文件，部分任务支持返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MediaInfo *MediaResultInfo `json:"MediaInfo,omitempty" name:"MediaInfo"`
+}
+
+type TextMarkInfoItem struct {
+
+	// 文字内容。
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 文字水印X坐标。
+	PosX *int64 `json:"PosX,omitempty" name:"PosX"`
+
+	// 文字水印Y坐标。
+	PosY *int64 `json:"PosY,omitempty" name:"PosY"`
+
+	// 文字大小
+	FontSize *int64 `json:"FontSize,omitempty" name:"FontSize"`
+
+	// 字体，可选项：hei,song，simkai,arial；默认hei(黑体）。
+	FontFile *string `json:"FontFile,omitempty" name:"FontFile"`
+
+	// 字体颜色，颜色见附录，不填默认black。
+	FontColor *string `json:"FontColor,omitempty" name:"FontColor"`
+
+	// 文字透明度，可选值0-1。0：不透明，1：全透明。默认为0
+	FontAlpha *float64 `json:"FontAlpha,omitempty" name:"FontAlpha"`
+}
+
 type UrlInfo struct {
 
-	// 视频 URL。音视频支持mp4、ts等格式；直播流支持flv、rtmp格式。
-	// 注意：目前智能编辑还不支持直播流场景。
+	// 视频 URL。
+	// 注意：编辑理解仅支持mp4、flv等格式的点播文件，不支持hls；
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 视频地址格式，可选值： 
@@ -1129,7 +1882,7 @@ type UrlInfo struct {
 	// 默认为0。其他非0非1值默认为0。画质重生任务只支持0。
 	Format *int64 `json:"Format,omitempty" name:"Format"`
 
-	// 指定请求资源时，HTTP头部host的值。
+	// 【不再支持】指定请求资源时，HTTP头部host的值。
 	Host *string `json:"Host,omitempty" name:"Host"`
 }
 
@@ -1148,6 +1901,7 @@ type VideoEnhance struct {
 	Sharp *Sharp `json:"Sharp,omitempty" name:"Sharp"`
 
 	// 超分参数，可选项：2，目前仅支持2倍超分。
+	// 注意：此参数已经弃用，超分可以使用VideoSuperResolution参数
 	WdSuperResolution *int64 `json:"WdSuperResolution,omitempty" name:"WdSuperResolution"`
 
 	// 人脸保护信息。
@@ -1162,6 +1916,12 @@ type VideoEnhance struct {
 
 	// 低光照增强参数
 	LowLightEnhance *LowLightEnhance `json:"LowLightEnhance,omitempty" name:"LowLightEnhance"`
+
+	// 视频超分参数
+	VideoSuperResolution *VideoSuperResolution `json:"VideoSuperResolution,omitempty" name:"VideoSuperResolution"`
+
+	// 视频画质修复参数
+	VideoRepair *VideoRepair `json:"VideoRepair,omitempty" name:"VideoRepair"`
 }
 
 type VideoInfo struct {
@@ -1213,13 +1973,12 @@ type VideoInfo struct {
 	// 编码器支持选项，可选值：
 	// h264,
 	// h265,
-	// av1
-	// 。
+	// av1。
 	// 不填默认h264。
 	VideoCodec *string `json:"VideoCodec,omitempty" name:"VideoCodec"`
 
 	// 图片水印。
-	PicMarkInfo []*PicMarkInfoItem `json:"PicMarkInfo,omitempty" name:"PicMarkInfo" list`
+	PicMarkInfo []*PicMarkInfoItem `json:"PicMarkInfo,omitempty" name:"PicMarkInfo"`
 
 	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。
 	DarInfo *DarInfo `json:"DarInfo,omitempty" name:"DarInfo"`
@@ -1232,6 +1991,12 @@ type VideoInfo struct {
 
 	// 画质增强参数信息。
 	VideoEnhance *VideoEnhance `json:"VideoEnhance,omitempty" name:"VideoEnhance"`
+
+	// 数字水印参数信息。
+	HiddenMarkInfo *HiddenMarkInfo `json:"HiddenMarkInfo,omitempty" name:"HiddenMarkInfo"`
+
+	// 文本水印参数信息。
+	TextMarkInfo []*TextMarkInfoItem `json:"TextMarkInfo,omitempty" name:"TextMarkInfo"`
 }
 
 type VideoInfoResultItem struct {
@@ -1241,41 +2006,53 @@ type VideoInfoResultItem struct {
 
 	// 视频宽度。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
 	// 视频高度。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 
 	// 视频码率，单位：bps。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bitrate *int64 `json:"Bitrate,omitempty" name:"Bitrate"`
 
 	// 视频帧率，用分数格式表示，如：25/1, 99/32等等。
-	// 注意：此字段可能返回 null，表示取不到有效值 。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Fps *string `json:"Fps,omitempty" name:"Fps"`
 
 	// 编码格式，如h264,h265等等 。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 
 	// 播放旋转角度，可选值0-360。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rotate *int64 `json:"Rotate,omitempty" name:"Rotate"`
 
 	// 视频时长，单位：ms 。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
 
 	// 颜色空间，如yuv420p，yuv444p等等。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PixFormat *string `json:"PixFormat,omitempty" name:"PixFormat"`
+}
+
+type VideoRepair struct {
+
+	// 画质修复类型，可选值：weak，normal，strong;
+	// 默认值: weak
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type VideoSuperResolution struct {
+
+	// 超分视频类型：可选值：lq,hq
+	// lq: 针对低清晰度有较多噪声视频的超分;
+	// hq: 针对高清晰度视频超分;
+	// 默认取值：lq。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 超分倍数，可选值：2。
+	// 注意：当前只支持两倍超分。
+	Size *int64 `json:"Size,omitempty" name:"Size"`
 }

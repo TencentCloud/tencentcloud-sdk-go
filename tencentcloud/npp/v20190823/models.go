@@ -16,7 +16,7 @@ package v20190823
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -138,8 +138,32 @@ func (r *CreateCallBackRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateCallBackRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BizAppId")
+	delete(f, "Src")
+	delete(f, "Dst")
+	delete(f, "SrcDisplayNum")
+	delete(f, "DstDisplayNum")
+	delete(f, "Record")
+	delete(f, "MaxAllowTime")
+	delete(f, "StatusFlag")
+	delete(f, "StatusUrl")
+	delete(f, "HangupUrl")
+	delete(f, "RecordUrl")
+	delete(f, "BizId")
+	delete(f, "LastCallId")
+	delete(f, "PreCallerHandle")
+	delete(f, "OrderId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCallBackRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateCallBackResponse struct {
@@ -175,8 +199,10 @@ func (r *CreateCallBackResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateCallBackResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DelVirtualNumRequest struct {
@@ -197,8 +223,20 @@ func (r *DelVirtualNumRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DelVirtualNumRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BizAppId")
+	delete(f, "BindId")
+	delete(f, "BizId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DelVirtualNumRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DelVirtualNumResponse struct {
@@ -230,8 +268,10 @@ func (r *DelVirtualNumResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DelVirtualNumResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteCallBackRequest struct {
@@ -252,8 +292,20 @@ func (r *DeleteCallBackRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteCallBackRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BizAppId")
+	delete(f, "CallId")
+	delete(f, "CancelFlag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCallBackRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteCallBackResponse struct {
@@ -281,8 +333,10 @@ func (r *DeleteCallBackResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteCallBackResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCallBackCdrRequest struct {
@@ -309,8 +363,22 @@ func (r *DescribeCallBackCdrRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCallBackCdrRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BizAppId")
+	delete(f, "CallId")
+	delete(f, "Src")
+	delete(f, "StartTimeStamp")
+	delete(f, "EndTimeStamp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCallBackCdrRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCallBackCdrResponse struct {
@@ -319,7 +387,7 @@ type DescribeCallBackCdrResponse struct {
 
 		// 话单列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Cdr []*CallBackCdr `json:"Cdr,omitempty" name:"Cdr" list`
+		Cdr []*CallBackCdr `json:"Cdr,omitempty" name:"Cdr"`
 
 		// 偏移
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -343,8 +411,10 @@ func (r *DescribeCallBackCdrResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCallBackCdrResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCallBackStatusRequest struct {
@@ -371,8 +441,22 @@ func (r *DescribeCallBackStatusRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCallBackStatusRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BizAppId")
+	delete(f, "CallId")
+	delete(f, "Src")
+	delete(f, "Dst")
+	delete(f, "CallStatus")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCallBackStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCallBackStatusResponse struct {
@@ -410,8 +494,10 @@ func (r *DescribeCallBackStatusResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCallBackStatusResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCallerDisplayListRequest struct {
@@ -426,8 +512,18 @@ func (r *DescribeCallerDisplayListRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCallerDisplayListRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BizAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCallerDisplayListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCallerDisplayListResponse struct {
@@ -440,7 +536,7 @@ type DescribeCallerDisplayListResponse struct {
 
 		// 主叫显号号码集合，codeList[0...*] 结构体数组，如果业务是主被叫互显，该字段为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		CodeList []*CallBackPhoneCode `json:"CodeList,omitempty" name:"CodeList" list`
+		CodeList []*CallBackPhoneCode `json:"CodeList,omitempty" name:"CodeList"`
 
 		// 错误码
 		ErrorCode *string `json:"ErrorCode,omitempty" name:"ErrorCode"`
@@ -459,8 +555,10 @@ func (r *DescribeCallerDisplayListResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCallerDisplayListResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Get400CdrRequest struct {
@@ -487,8 +585,22 @@ func (r *Get400CdrRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *Get400CdrRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BizAppId")
+	delete(f, "CallId")
+	delete(f, "Src")
+	delete(f, "StartTimeStamp")
+	delete(f, "EndTimeStamp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "Get400CdrRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Get400CdrResponse struct {
@@ -508,7 +620,7 @@ type Get400CdrResponse struct {
 
 		// 话单列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Cdr []*VirturalNumCdr `json:"Cdr,omitempty" name:"Cdr" list`
+		Cdr []*VirturalNumCdr `json:"Cdr,omitempty" name:"Cdr"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -520,8 +632,10 @@ func (r *Get400CdrResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *Get400CdrResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetVirtualNumRequest struct {
@@ -537,7 +651,7 @@ type GetVirtualNumRequest struct {
 	Src *string `json:"Src,omitempty" name:"Src"`
 
 	// {“accreditList”:[“008613631686024”,”008612345678910”]}，主要用于 N-1 场景，号码绑定非共享是独占型，指定了 dst 独占中间号绑定，accreditList 表示这个列表成员可以拨打 dst 绑 定的中间号，默认值为空，表示所有号码都可以拨打独占型中间号绑定，最大集合不允许超过 30 个，仅适用于xb模式
-	AccreditList []*string `json:"AccreditList,omitempty" name:"AccreditList" list`
+	AccreditList []*string `json:"AccreditList,omitempty" name:"AccreditList"`
 
 	// 指定中间号（格式：008617013541251），如果该中间号已被使用则返回绑定失败。如果不带该字段则由腾讯侧从号码池里自动分配
 	AssignVirtualNum *string `json:"AssignVirtualNum,omitempty" name:"AssignVirtualNum"`
@@ -588,8 +702,30 @@ func (r *GetVirtualNumRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetVirtualNumRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BizAppId")
+	delete(f, "Dst")
+	delete(f, "Src")
+	delete(f, "AccreditList")
+	delete(f, "AssignVirtualNum")
+	delete(f, "Record")
+	delete(f, "CityId")
+	delete(f, "BizId")
+	delete(f, "MaxAssignTime")
+	delete(f, "StatusFlag")
+	delete(f, "StatusUrl")
+	delete(f, "HangupUrl")
+	delete(f, "RecordUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetVirtualNumRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetVirtualNumResponse struct {
@@ -625,8 +761,10 @@ func (r *GetVirtualNumResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetVirtualNumResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type KeyList struct {
@@ -647,7 +785,7 @@ type RreCallerHandle struct {
 	InterruptPrompt *string `json:"InterruptPrompt,omitempty" name:"InterruptPrompt"`
 
 	// 对应按键操作,如果没有结构体里定义按键操作用户按键以后都从 interruptPrompt 重新播放
-	KeyList []*KeyList `json:"KeyList,omitempty" name:"KeyList" list`
+	KeyList []*KeyList `json:"KeyList,omitempty" name:"KeyList"`
 
 	// 最多重复播放次数，超过该次数拆线
 	RepeatTimes *string `json:"RepeatTimes,omitempty" name:"RepeatTimes"`

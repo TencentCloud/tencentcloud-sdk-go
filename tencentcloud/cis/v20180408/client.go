@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -48,6 +48,8 @@ func NewCreateContainerInstanceRequest() (request *CreateContainerInstanceReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cis", APIVersion, "CreateContainerInstance")
+    
+    
     return
 }
 
@@ -58,11 +60,17 @@ func NewCreateContainerInstanceResponse() (response *CreateContainerInstanceResp
     return
 }
 
+// CreateContainerInstance
 // 此接口（CreateContainerInstance）用于创建容器实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateContainerInstance(request *CreateContainerInstanceRequest) (response *CreateContainerInstanceResponse, err error) {
     if request == nil {
         request = NewCreateContainerInstanceRequest()
     }
+    
     response = NewCreateContainerInstanceResponse()
     err = c.Send(request, response)
     return
@@ -73,6 +81,8 @@ func NewDeleteContainerInstanceRequest() (request *DeleteContainerInstanceReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cis", APIVersion, "DeleteContainerInstance")
+    
+    
     return
 }
 
@@ -83,11 +93,17 @@ func NewDeleteContainerInstanceResponse() (response *DeleteContainerInstanceResp
     return
 }
 
+// DeleteContainerInstance
 // 此接口（DeleteContainerInstance）用于删除容器实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DeleteContainerInstance(request *DeleteContainerInstanceRequest) (response *DeleteContainerInstanceResponse, err error) {
     if request == nil {
         request = NewDeleteContainerInstanceRequest()
     }
+    
     response = NewDeleteContainerInstanceResponse()
     err = c.Send(request, response)
     return
@@ -98,6 +114,8 @@ func NewDescribeContainerInstanceRequest() (request *DescribeContainerInstanceRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cis", APIVersion, "DescribeContainerInstance")
+    
+    
     return
 }
 
@@ -108,11 +126,17 @@ func NewDescribeContainerInstanceResponse() (response *DescribeContainerInstance
     return
 }
 
+// DescribeContainerInstance
 // 此接口（DescribeContainerInstance）用于获取容器实例详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeContainerInstance(request *DescribeContainerInstanceRequest) (response *DescribeContainerInstanceResponse, err error) {
     if request == nil {
         request = NewDescribeContainerInstanceRequest()
     }
+    
     response = NewDescribeContainerInstanceResponse()
     err = c.Send(request, response)
     return
@@ -123,6 +147,8 @@ func NewDescribeContainerInstanceEventsRequest() (request *DescribeContainerInst
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cis", APIVersion, "DescribeContainerInstanceEvents")
+    
+    
     return
 }
 
@@ -133,11 +159,17 @@ func NewDescribeContainerInstanceEventsResponse() (response *DescribeContainerIn
     return
 }
 
+// DescribeContainerInstanceEvents
 // 此接口（DescribeContainerInstanceEvents）用于查询容器实例事件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeContainerInstanceEvents(request *DescribeContainerInstanceEventsRequest) (response *DescribeContainerInstanceEventsResponse, err error) {
     if request == nil {
         request = NewDescribeContainerInstanceEventsRequest()
     }
+    
     response = NewDescribeContainerInstanceEventsResponse()
     err = c.Send(request, response)
     return
@@ -148,6 +180,8 @@ func NewDescribeContainerInstancesRequest() (request *DescribeContainerInstances
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cis", APIVersion, "DescribeContainerInstances")
+    
+    
     return
 }
 
@@ -158,11 +192,17 @@ func NewDescribeContainerInstancesResponse() (response *DescribeContainerInstanc
     return
 }
 
+// DescribeContainerInstances
 // 此接口（DescribeContainerInstances）查询容器实例列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeContainerInstances(request *DescribeContainerInstancesRequest) (response *DescribeContainerInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeContainerInstancesRequest()
     }
+    
     response = NewDescribeContainerInstancesResponse()
     err = c.Send(request, response)
     return
@@ -173,6 +213,8 @@ func NewDescribeContainerLogRequest() (request *DescribeContainerLogRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cis", APIVersion, "DescribeContainerLog")
+    
+    
     return
 }
 
@@ -183,11 +225,17 @@ func NewDescribeContainerLogResponse() (response *DescribeContainerLogResponse) 
     return
 }
 
+// DescribeContainerLog
 // 此接口（DescribeContainerLog）用于获取容器日志信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeContainerLog(request *DescribeContainerLogRequest) (response *DescribeContainerLogResponse, err error) {
     if request == nil {
         request = NewDescribeContainerLogRequest()
     }
+    
     response = NewDescribeContainerLogResponse()
     err = c.Send(request, response)
     return
@@ -198,6 +246,8 @@ func NewInquiryPriceCreateCisRequest() (request *InquiryPriceCreateCisRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cis", APIVersion, "InquiryPriceCreateCis")
+    
+    
     return
 }
 
@@ -208,11 +258,17 @@ func NewInquiryPriceCreateCisResponse() (response *InquiryPriceCreateCisResponse
     return
 }
 
+// InquiryPriceCreateCis
 // 此接口（InquiryPriceCreateCis）用于查询容器实例价格
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) InquiryPriceCreateCis(request *InquiryPriceCreateCisRequest) (response *InquiryPriceCreateCisResponse, err error) {
     if request == nil {
         request = NewInquiryPriceCreateCisRequest()
     }
+    
     response = NewInquiryPriceCreateCisResponse()
     err = c.Send(request, response)
     return

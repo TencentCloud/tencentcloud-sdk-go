@@ -16,7 +16,7 @@ package v20180808
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -24,10 +24,15 @@ type BatchModifyDomainInfoRequest struct {
 	*tchttp.BaseRequest
 
 	// 批量修改的域名。
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 	// 模板ID。
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// true： 开启60天内禁止转移注册商锁定
+	// false：关闭60天内禁止转移注册商锁定
+	// 默认 true
+	LockTransfer *bool `json:"LockTransfer,omitempty" name:"LockTransfer"`
 }
 
 func (r *BatchModifyDomainInfoRequest) ToJsonString() string {
@@ -35,8 +40,20 @@ func (r *BatchModifyDomainInfoRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BatchModifyDomainInfoRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domains")
+	delete(f, "TemplateId")
+	delete(f, "LockTransfer")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchModifyDomainInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BatchModifyDomainInfoResponse struct {
@@ -56,8 +73,10 @@ func (r *BatchModifyDomainInfoResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BatchModifyDomainInfoResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BatchStatus struct {
@@ -116,7 +135,7 @@ type CheckBatchStatusRequest struct {
 	*tchttp.BaseRequest
 
 	// 操作日志 ID数组，最多 200 个
-	LogIds []*uint64 `json:"LogIds,omitempty" name:"LogIds" list`
+	LogIds []*uint64 `json:"LogIds,omitempty" name:"LogIds"`
 }
 
 func (r *CheckBatchStatusRequest) ToJsonString() string {
@@ -124,8 +143,18 @@ func (r *CheckBatchStatusRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CheckBatchStatusRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LogIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckBatchStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CheckBatchStatusResponse struct {
@@ -133,7 +162,7 @@ type CheckBatchStatusResponse struct {
 	Response *struct {
 
 		// 批量任务状态集
-		StatusSet []*BatchStatus `json:"StatusSet,omitempty" name:"StatusSet" list`
+		StatusSet []*BatchStatus `json:"StatusSet,omitempty" name:"StatusSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -145,8 +174,10 @@ func (r *CheckBatchStatusResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CheckBatchStatusResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CheckDomainRequest struct {
@@ -155,7 +186,7 @@ type CheckDomainRequest struct {
 	// 所查询域名名称
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
-	// 年限
+	// 年限。该参数为空时无法查询溢价词域名
 	Period *string `json:"Period,omitempty" name:"Period"`
 }
 
@@ -164,8 +195,19 @@ func (r *CheckDomainRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CheckDomainRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainName")
+	delete(f, "Period")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckDomainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CheckDomainResponse struct {
@@ -198,7 +240,7 @@ type CheckDomainResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		FeeRenew *uint64 `json:"FeeRenew,omitempty" name:"FeeRenew"`
 
-		// 域名真实价格
+		// 域名真实价格, 溢价词时价格跟年限有关，非溢价词时价格为1年的价格
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		RealPrice *uint64 `json:"RealPrice,omitempty" name:"RealPrice"`
 
@@ -225,8 +267,10 @@ func (r *CheckDomainResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CheckDomainResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ContactInfo struct {
@@ -283,17 +327,31 @@ type ContactInfo struct {
 type CreateDomainBatchRequest struct {
 	*tchttp.BaseRequest
 
-	// 模板ID
+	// 模板ID。详情请查看：[获取模板列表](https://cloud.tencent.com/document/product/242/48940)
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 购买域名的年限，可选值：[1-10]
 	Period *int64 `json:"Period,omitempty" name:"Period"`
 
 	// 批量购买的域名,最多为4000个
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
-	// 付费模式 0手动在线付费，1使用余额付费
+	// 付费模式 0手动在线付费，1使用余额付费，2使用特惠包
 	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 自动续费开关。有两个可选值：
+	// 0 表示关闭，不自动续费（默认值）
+	// 1 表示开启，将自动续费
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 使用的特惠包ID，PayMode为2时必填
+	PackageResourceId *string `json:"PackageResourceId,omitempty" name:"PackageResourceId"`
+
+	// 是否开启更新锁：0=默认不开启，1=开启
+	UpdateProhibition *int64 `json:"UpdateProhibition,omitempty" name:"UpdateProhibition"`
+
+	// 是否开启转移锁：0=默认不开启，1=开启
+	TransferProhibition *int64 `json:"TransferProhibition,omitempty" name:"TransferProhibition"`
 }
 
 func (r *CreateDomainBatchRequest) ToJsonString() string {
@@ -301,8 +359,25 @@ func (r *CreateDomainBatchRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateDomainBatchRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	delete(f, "Period")
+	delete(f, "Domains")
+	delete(f, "PayMode")
+	delete(f, "AutoRenewFlag")
+	delete(f, "PackageResourceId")
+	delete(f, "UpdateProhibition")
+	delete(f, "TransferProhibition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDomainBatchRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateDomainBatchResponse struct {
@@ -323,8 +398,64 @@ func (r *CreateDomainBatchResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateDomainBatchResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePhoneEmailRequest struct {
+	*tchttp.BaseRequest
+
+	// 手机号或者邮箱
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 1：手机   2：邮箱
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 验证码
+	VerifyCode *string `json:"VerifyCode,omitempty" name:"VerifyCode"`
+}
+
+func (r *CreatePhoneEmailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePhoneEmailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Code")
+	delete(f, "Type")
+	delete(f, "VerifyCode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePhoneEmailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePhoneEmailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreatePhoneEmailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePhoneEmailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateTemplateRequest struct {
@@ -342,8 +473,19 @@ func (r *CreateTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ContactInfo")
+	delete(f, "CertificateInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateTemplateResponse struct {
@@ -363,8 +505,60 @@ func (r *CreateTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePhoneEmailRequest struct {
+	*tchttp.BaseRequest
+
+	// 手机或者邮箱
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 1：手机  2：邮箱
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *DeletePhoneEmailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePhoneEmailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Code")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePhoneEmailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePhoneEmailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeletePhoneEmailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePhoneEmailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteTemplateRequest struct {
@@ -379,8 +573,18 @@ func (r *DeleteTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteTemplateResponse struct {
@@ -397,8 +601,10 @@ func (r *DeleteTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeBatchOperationLogDetailsRequest struct {
@@ -419,8 +625,20 @@ func (r *DescribeBatchOperationLogDetailsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeBatchOperationLogDetailsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LogId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBatchOperationLogDetailsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeBatchOperationLogDetailsResponse struct {
@@ -432,7 +650,7 @@ type DescribeBatchOperationLogDetailsResponse struct {
 
 		// 日志详情列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		DomainBatchDetailSet []*DomainBatchDetailSet `json:"DomainBatchDetailSet,omitempty" name:"DomainBatchDetailSet" list`
+		DomainBatchDetailSet []*DomainBatchDetailSet `json:"DomainBatchDetailSet,omitempty" name:"DomainBatchDetailSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -444,8 +662,10 @@ func (r *DescribeBatchOperationLogDetailsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeBatchOperationLogDetailsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeBatchOperationLogsRequest struct {
@@ -463,8 +683,19 @@ func (r *DescribeBatchOperationLogsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeBatchOperationLogsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBatchOperationLogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeBatchOperationLogsResponse struct {
@@ -476,7 +707,7 @@ type DescribeBatchOperationLogsResponse struct {
 
 		// 日志列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		DomainBatchLogSet []*DomainBatchLogSet `json:"DomainBatchLogSet,omitempty" name:"DomainBatchLogSet" list`
+		DomainBatchLogSet []*DomainBatchLogSet `json:"DomainBatchLogSet,omitempty" name:"DomainBatchLogSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -488,8 +719,10 @@ func (r *DescribeBatchOperationLogsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeBatchOperationLogsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeDomainBaseInfoRequest struct {
@@ -504,8 +737,18 @@ func (r *DescribeDomainBaseInfoRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeDomainBaseInfoRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDomainBaseInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeDomainBaseInfoResponse struct {
@@ -514,6 +757,10 @@ type DescribeDomainBaseInfoResponse struct {
 
 		// 域名信息
 		DomainInfo *DomainBaseInfo `json:"DomainInfo,omitempty" name:"DomainInfo"`
+
+		// 用户Uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Uin *string `json:"Uin,omitempty" name:"Uin"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -525,8 +772,10 @@ func (r *DescribeDomainBaseInfoResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeDomainBaseInfoResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeDomainNameListRequest struct {
@@ -544,8 +793,19 @@ func (r *DescribeDomainNameListRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeDomainNameListRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDomainNameListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeDomainNameListResponse struct {
@@ -554,7 +814,7 @@ type DescribeDomainNameListResponse struct {
 
 		// 域名信息集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		DomainSet []*DomainList `json:"DomainSet,omitempty" name:"DomainSet" list`
+		DomainSet []*DomainList `json:"DomainSet,omitempty" name:"DomainSet"`
 
 		// 域名总数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -569,21 +829,23 @@ func (r *DescribeDomainNameListResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeDomainNameListResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeDomainPriceListRequest struct {
 	*tchttp.BaseRequest
 
 	// 查询价格的后缀列表。默认则为全部后缀
-	TldList []*string `json:"TldList,omitempty" name:"TldList" list`
+	TldList []*string `json:"TldList,omitempty" name:"TldList"`
 
 	// 查询购买的年份，默认会列出所有年份的价格
-	Year []*int64 `json:"Year,omitempty" name:"Year" list`
+	Year []*int64 `json:"Year,omitempty" name:"Year"`
 
 	// 域名的购买类型：new  新购，renew 续费，redem 赎回，tran 转入
-	Operation []*string `json:"Operation,omitempty" name:"Operation" list`
+	Operation []*string `json:"Operation,omitempty" name:"Operation"`
 }
 
 func (r *DescribeDomainPriceListRequest) ToJsonString() string {
@@ -591,8 +853,20 @@ func (r *DescribeDomainPriceListRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeDomainPriceListRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TldList")
+	delete(f, "Year")
+	delete(f, "Operation")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDomainPriceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeDomainPriceListResponse struct {
@@ -600,7 +874,7 @@ type DescribeDomainPriceListResponse struct {
 	Response *struct {
 
 		// 域名价格列表
-		PriceList []*PriceInfo `json:"PriceList,omitempty" name:"PriceList" list`
+		PriceList []*PriceInfo `json:"PriceList,omitempty" name:"PriceList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -612,8 +886,74 @@ func (r *DescribeDomainPriceListResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeDomainPriceListResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePhoneEmailListRequest struct {
+	*tchttp.BaseRequest
+
+	// 0：所有类型  1：手机  2：邮箱，默认0
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，取值范围[1,200]
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 手机或者邮箱精确搜索
+	Code *string `json:"Code,omitempty" name:"Code"`
+}
+
+func (r *DescribePhoneEmailListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePhoneEmailListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Type")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Code")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePhoneEmailListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePhoneEmailListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 手机或者邮箱列表
+		PhoneEmailList []*PhoneEmailData `json:"PhoneEmailList,omitempty" name:"PhoneEmailList"`
+
+		// 总数量。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePhoneEmailListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePhoneEmailListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTemplateListRequest struct {
@@ -628,8 +968,11 @@ type DescribeTemplateListRequest struct {
 	// 用户注册类型，默认:all , 个人：I ,企业: E
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 认证状态：未实名认证:NotUpload, 实名审核中:InAudit，已实名认证:Approved，实名审核失败:Reject
+	// 认证状态：未实名审核:NotUpload, 实名审核中:InAudit，已实名审核:Approved，实名审核失败:Reject，更新手机邮箱:NotVerified。
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 域名所有者筛选
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
 }
 
 func (r *DescribeTemplateListRequest) ToJsonString() string {
@@ -637,8 +980,22 @@ func (r *DescribeTemplateListRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTemplateListRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Type")
+	delete(f, "Status")
+	delete(f, "Keyword")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTemplateListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTemplateListResponse struct {
@@ -649,7 +1006,7 @@ type DescribeTemplateListResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 模板详细信息列表。
-		TemplateSet []*TemplateInfo `json:"TemplateSet,omitempty" name:"TemplateSet" list`
+		TemplateSet []*TemplateInfo `json:"TemplateSet,omitempty" name:"TemplateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -661,8 +1018,59 @@ func (r *DescribeTemplateListResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTemplateListResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 模板ID
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+func (r *DescribeTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 模板信息
+		Template *TemplateInfo `json:"Template,omitempty" name:"Template"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DomainBaseInfo struct {
@@ -678,6 +1086,7 @@ type DomainBaseInfo struct {
 	// InAudit：实名审核中
 	// Approved：实名审核通过
 	// Reject：实名审核失败
+	// NoAudit: 无需实名认证
 	RealNameAuditStatus *string `json:"RealNameAuditStatus,omitempty" name:"RealNameAuditStatus"`
 
 	// 域名实名认证不通过原因。
@@ -716,7 +1125,7 @@ type DomainBaseInfo struct {
 	// clientTransferProhibited：注册商禁止转移
 	// clientUpdateProhibited：注册商禁止更新
 	// clientDeleteProhibited：注册商禁止删除
-	DomainStatus []*string `json:"DomainStatus,omitempty" name:"DomainStatus" list`
+	DomainStatus []*string `json:"DomainStatus,omitempty" name:"DomainStatus"`
 
 	// 域名购买状态。
 	// ok：正常
@@ -733,10 +1142,22 @@ type DomainBaseInfo struct {
 	// TransferFailed：转入失败
 	BuyStatus *string `json:"BuyStatus,omitempty" name:"BuyStatus"`
 
-	// 注册类型
-	// epp （腾讯云自有域名）
-	// xinnet (新网域名)
+	// 注册商类型
+	// epp: DNSPod, Inc.（烟台帝思普网络科技有限公司）
+	// qcloud: Tencent Cloud Computing (Beijing) Limited Liability Company（腾讯云计算（北京）有限责任公司）
+	// yunxun: Guangzhou Yunxun Information Technology Co., Ltd.（广州云讯信息科技有限公司）
+	// xinnet: Xin Net Technology Corporation（北京新网数码信息技术有限公司）
 	RegistrarType *string `json:"RegistrarType,omitempty" name:"RegistrarType"`
+
+	// 域名绑定的ns
+	NameServer []*string `json:"NameServer,omitempty" name:"NameServer"`
+
+	// true：开启锁定
+	// false：关闭锁定
+	LockTransfer *bool `json:"LockTransfer,omitempty" name:"LockTransfer"`
+
+	// 锁定结束时间
+	LockEndTime *string `json:"LockEndTime,omitempty" name:"LockEndTime"`
 }
 
 type DomainBatchDetailSet struct {
@@ -831,10 +1252,10 @@ type ModifyDomainDNSBatchRequest struct {
 	*tchttp.BaseRequest
 
 	// 批量操作的域名。
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 	// 域名DNS 数组。
-	Dns []*string `json:"Dns,omitempty" name:"Dns" list`
+	Dns []*string `json:"Dns,omitempty" name:"Dns"`
 }
 
 func (r *ModifyDomainDNSBatchRequest) ToJsonString() string {
@@ -842,8 +1263,19 @@ func (r *ModifyDomainDNSBatchRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyDomainDNSBatchRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domains")
+	delete(f, "Dns")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDomainDNSBatchRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyDomainDNSBatchResponse struct {
@@ -863,18 +1295,23 @@ func (r *ModifyDomainDNSBatchResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyDomainDNSBatchResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyDomainOwnerBatchRequest struct {
 	*tchttp.BaseRequest
 
 	// 要过户的域名。
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 	// 转入账户的uin。
 	NewOwnerUin *string `json:"NewOwnerUin,omitempty" name:"NewOwnerUin"`
+
+	// 是否同时转移对应的 DNS 解析域名，默认false
+	TransferDns *bool `json:"TransferDns,omitempty" name:"TransferDns"`
 }
 
 func (r *ModifyDomainOwnerBatchRequest) ToJsonString() string {
@@ -882,8 +1319,20 @@ func (r *ModifyDomainOwnerBatchRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyDomainOwnerBatchRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domains")
+	delete(f, "NewOwnerUin")
+	delete(f, "TransferDns")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDomainOwnerBatchRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyDomainOwnerBatchResponse struct {
@@ -903,8 +1352,25 @@ func (r *ModifyDomainOwnerBatchResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyDomainOwnerBatchResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type PhoneEmailData struct {
+
+	// 手机号或者邮箱
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 1：手机  2：邮箱
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 创建时间
+	CreatedOn *string `json:"CreatedOn,omitempty" name:"CreatedOn"`
+
+	// 1=控制台校验，2=第三方校验
+	CheckStatus *int64 `json:"CheckStatus,omitempty" name:"CheckStatus"`
 }
 
 type PriceInfo struct {
@@ -932,10 +1398,16 @@ type RenewDomainBatchRequest struct {
 	Period *int64 `json:"Period,omitempty" name:"Period"`
 
 	// 批量续费的域名。
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 	// 付费模式 0手动在线付费，1使用余额付费。
 	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 自动续费开关。有三个可选值：
+	// 0 表示关闭，不自动续费
+	// 1 表示开启，将自动续费
+	// 2 表示不处理，保留域名原有状态（默认值）
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 }
 
 func (r *RenewDomainBatchRequest) ToJsonString() string {
@@ -943,8 +1415,21 @@ func (r *RenewDomainBatchRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RenewDomainBatchRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Period")
+	delete(f, "Domains")
+	delete(f, "PayMode")
+	delete(f, "AutoRenewFlag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RenewDomainBatchRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RenewDomainBatchResponse struct {
@@ -964,8 +1449,60 @@ func (r *RenewDomainBatchResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RenewDomainBatchResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SendPhoneEmailCodeRequest struct {
+	*tchttp.BaseRequest
+
+	// 手机或者邮箱号。
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 1：手机  2：邮箱。
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *SendPhoneEmailCodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SendPhoneEmailCodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Code")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendPhoneEmailCodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SendPhoneEmailCodeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SendPhoneEmailCodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SendPhoneEmailCodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SetDomainAutoRenewRequest struct {
@@ -986,8 +1523,19 @@ func (r *SetDomainAutoRenewRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SetDomainAutoRenewRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainId")
+	delete(f, "AutoRenew")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetDomainAutoRenewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SetDomainAutoRenewResponse struct {
@@ -1004,8 +1552,10 @@ func (r *SetDomainAutoRenewResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SetDomainAutoRenewResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TemplateInfo struct {
@@ -1013,7 +1563,7 @@ type TemplateInfo struct {
 	// 模板ID
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
-	// 认证状态
+	// 认证状态：未实名认证:NotUpload, 实名审核中:InAudit，已实名认证:Approved，实名审核失败:Reject
 	AuditStatus *string `json:"AuditStatus,omitempty" name:"AuditStatus"`
 
 	// 创建时间
@@ -1025,7 +1575,7 @@ type TemplateInfo struct {
 	// 用户UIN
 	UserUin *string `json:"UserUin,omitempty" name:"UserUin"`
 
-	// 是否是默认模板
+	// 是否是默认模板: 是:yes，否:no
 	IsDefault *string `json:"IsDefault,omitempty" name:"IsDefault"`
 
 	// 认证失败原因
@@ -1048,16 +1598,32 @@ type TransferInDomainBatchRequest struct {
 	*tchttp.BaseRequest
 
 	// 转入的域名名称数组。
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 	// 域名转移码数组。
-	PassWords []*string `json:"PassWords,omitempty" name:"PassWords" list`
+	PassWords []*string `json:"PassWords,omitempty" name:"PassWords"`
 
 	// 模板ID。
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 付费模式 0手动在线付费，1使用余额付费。
 	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 自动续费开关。有两个可选值：
+	// 0 表示关闭，不自动续费（默认值）
+	// 1 表示开启，将自动续费
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// true： 开启60天内禁止转移注册商锁定
+	// false：关闭60天内禁止转移注册商锁定
+	// 默认 true
+	LockTransfer *bool `json:"LockTransfer,omitempty" name:"LockTransfer"`
+
+	// 是否开启更新锁：0=默认不开启，1=开启
+	UpdateProhibition *int64 `json:"UpdateProhibition,omitempty" name:"UpdateProhibition"`
+
+	// 是否开启转移锁：0=默认不开启，1=开启
+	TransferProhibition *int64 `json:"TransferProhibition,omitempty" name:"TransferProhibition"`
 }
 
 func (r *TransferInDomainBatchRequest) ToJsonString() string {
@@ -1065,8 +1631,25 @@ func (r *TransferInDomainBatchRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TransferInDomainBatchRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domains")
+	delete(f, "PassWords")
+	delete(f, "TemplateId")
+	delete(f, "PayMode")
+	delete(f, "AutoRenewFlag")
+	delete(f, "LockTransfer")
+	delete(f, "UpdateProhibition")
+	delete(f, "TransferProhibition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TransferInDomainBatchRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TransferInDomainBatchResponse struct {
@@ -1086,15 +1669,17 @@ func (r *TransferInDomainBatchResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TransferInDomainBatchResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TransferProhibitionBatchRequest struct {
 	*tchttp.BaseRequest
 
 	// 批量操作的域名。
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 	// 是否开启禁止域名转移。
 	// True: 开启禁止域名转移状态。
@@ -1107,8 +1692,19 @@ func (r *TransferProhibitionBatchRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TransferProhibitionBatchRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domains")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TransferProhibitionBatchRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TransferProhibitionBatchResponse struct {
@@ -1128,15 +1724,17 @@ func (r *TransferProhibitionBatchResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TransferProhibitionBatchResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateProhibitionBatchRequest struct {
 	*tchttp.BaseRequest
 
 	// 批量操作的域名。
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 	// 是否开启禁止域名更新。
 	// True:开启禁止域名更新状态。
@@ -1149,8 +1747,19 @@ func (r *UpdateProhibitionBatchRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateProhibitionBatchRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domains")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateProhibitionBatchRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateProhibitionBatchResponse struct {
@@ -1170,8 +1779,10 @@ func (r *UpdateProhibitionBatchResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateProhibitionBatchResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UploadImageRequest struct {
@@ -1186,8 +1797,18 @@ func (r *UploadImageRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UploadImageRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageFile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadImageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UploadImageResponse struct {
@@ -1207,6 +1828,8 @@ func (r *UploadImageResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UploadImageResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

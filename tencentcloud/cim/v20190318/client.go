@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -48,6 +48,8 @@ func NewDescribeSdkAppidRequest() (request *DescribeSdkAppidRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cim", APIVersion, "DescribeSdkAppid")
+    
+    
     return
 }
 
@@ -58,11 +60,18 @@ func NewDescribeSdkAppidResponse() (response *DescribeSdkAppidResponse) {
     return
 }
 
+// DescribeSdkAppid
 // 获取云通信IM中腾讯云账号对应的SDKAppID
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeSdkAppid(request *DescribeSdkAppidRequest) (response *DescribeSdkAppidResponse, err error) {
     if request == nil {
         request = NewDescribeSdkAppidRequest()
     }
+    
     response = NewDescribeSdkAppidResponse()
     err = c.Send(request, response)
     return

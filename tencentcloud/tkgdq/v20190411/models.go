@@ -16,7 +16,7 @@ package v20190411
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -32,8 +32,18 @@ func (r *DescribeEntityRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeEntityRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EntityName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEntityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeEntityResponse struct {
@@ -53,8 +63,10 @@ func (r *DescribeEntityResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeEntityResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeRelationRequest struct {
@@ -72,8 +84,19 @@ func (r *DescribeRelationRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeRelationRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LeftEntityName")
+	delete(f, "RightEntityName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRelationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeRelationResponse struct {
@@ -81,7 +104,7 @@ type DescribeRelationResponse struct {
 	Response *struct {
 
 		// 返回查询实体间的关系
-		Content []*EntityRelationContent `json:"Content,omitempty" name:"Content" list`
+		Content []*EntityRelationContent `json:"Content,omitempty" name:"Content"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -93,8 +116,10 @@ func (r *DescribeRelationResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeRelationResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTripleRequest struct {
@@ -109,8 +134,18 @@ func (r *DescribeTripleRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTripleRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TripleCondition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTripleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTripleResponse struct {
@@ -118,7 +153,7 @@ type DescribeTripleResponse struct {
 	Response *struct {
 
 		// 返回三元组信息
-		Content []*TripleContent `json:"Content,omitempty" name:"Content" list`
+		Content []*TripleContent `json:"Content,omitempty" name:"Content"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -130,17 +165,19 @@ func (r *DescribeTripleResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTripleResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EntityRelationContent struct {
 
 	// 实体关系查询返回关系的object
-	Object []*EntityRelationObject `json:"Object,omitempty" name:"Object" list`
+	Object []*EntityRelationObject `json:"Object,omitempty" name:"Object"`
 
 	// 实体关系查询返回关系的subject
-	Subject []*EntityRelationSubject `json:"Subject,omitempty" name:"Subject" list`
+	Subject []*EntityRelationSubject `json:"Subject,omitempty" name:"Subject"`
 
 	// 实体关系查询返回的关系名称
 	Relation *string `json:"Relation,omitempty" name:"Relation"`
@@ -149,25 +186,25 @@ type EntityRelationContent struct {
 type EntityRelationObject struct {
 
 	// object对应id
-	Id []*string `json:"Id,omitempty" name:"Id" list`
+	Id []*string `json:"Id,omitempty" name:"Id"`
 
 	// object对应name
-	Name []*string `json:"Name,omitempty" name:"Name" list`
+	Name []*string `json:"Name,omitempty" name:"Name"`
 
 	// object对应popular值
-	Popular []*int64 `json:"Popular,omitempty" name:"Popular" list`
+	Popular []*int64 `json:"Popular,omitempty" name:"Popular"`
 }
 
 type EntityRelationSubject struct {
 
 	// Subject对应id
-	Id []*string `json:"Id,omitempty" name:"Id" list`
+	Id []*string `json:"Id,omitempty" name:"Id"`
 
 	// Subject对应name
-	Name []*string `json:"Name,omitempty" name:"Name" list`
+	Name []*string `json:"Name,omitempty" name:"Name"`
 
 	// Subject对应popular
-	Popular []*int64 `json:"Popular,omitempty" name:"Popular" list`
+	Popular []*int64 `json:"Popular,omitempty" name:"Popular"`
 }
 
 type TripleContent struct {

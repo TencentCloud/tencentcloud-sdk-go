@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -48,6 +48,8 @@ func NewDescribeDasbImageIdsRequest() (request *DescribeDasbImageIdsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cds", APIVersion, "DescribeDasbImageIds")
+    
+    
     return
 }
 
@@ -58,11 +60,13 @@ func NewDescribeDasbImageIdsResponse() (response *DescribeDasbImageIdsResponse) 
     return
 }
 
+// DescribeDasbImageIds
 // 获取镜像列表
 func (c *Client) DescribeDasbImageIds(request *DescribeDasbImageIdsRequest) (response *DescribeDasbImageIdsResponse, err error) {
     if request == nil {
         request = NewDescribeDasbImageIdsRequest()
     }
+    
     response = NewDescribeDasbImageIdsResponse()
     err = c.Send(request, response)
     return
@@ -73,6 +77,8 @@ func NewDescribeDbauditInstanceTypeRequest() (request *DescribeDbauditInstanceTy
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cds", APIVersion, "DescribeDbauditInstanceType")
+    
+    
     return
 }
 
@@ -83,11 +89,13 @@ func NewDescribeDbauditInstanceTypeResponse() (response *DescribeDbauditInstance
     return
 }
 
+// DescribeDbauditInstanceType
 // 本接口 (DescribeDbauditInstanceType) 用于查询可售卖的产品规格列表。
 func (c *Client) DescribeDbauditInstanceType(request *DescribeDbauditInstanceTypeRequest) (response *DescribeDbauditInstanceTypeResponse, err error) {
     if request == nil {
         request = NewDescribeDbauditInstanceTypeRequest()
     }
+    
     response = NewDescribeDbauditInstanceTypeResponse()
     err = c.Send(request, response)
     return
@@ -98,6 +106,8 @@ func NewDescribeDbauditInstancesRequest() (request *DescribeDbauditInstancesRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cds", APIVersion, "DescribeDbauditInstances")
+    
+    
     return
 }
 
@@ -108,11 +118,13 @@ func NewDescribeDbauditInstancesResponse() (response *DescribeDbauditInstancesRe
     return
 }
 
+// DescribeDbauditInstances
 // 本接口 (DescribeDbauditInstances) 用于查询数据安全审计实例列表
 func (c *Client) DescribeDbauditInstances(request *DescribeDbauditInstancesRequest) (response *DescribeDbauditInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeDbauditInstancesRequest()
     }
+    
     response = NewDescribeDbauditInstancesResponse()
     err = c.Send(request, response)
     return
@@ -123,6 +135,8 @@ func NewDescribeDbauditUsedRegionsRequest() (request *DescribeDbauditUsedRegions
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cds", APIVersion, "DescribeDbauditUsedRegions")
+    
+    
     return
 }
 
@@ -133,11 +147,13 @@ func NewDescribeDbauditUsedRegionsResponse() (response *DescribeDbauditUsedRegio
     return
 }
 
+// DescribeDbauditUsedRegions
 // 本接口 (DescribeDbauditUsedRegions) 用于查询可售卖地域列表。
 func (c *Client) DescribeDbauditUsedRegions(request *DescribeDbauditUsedRegionsRequest) (response *DescribeDbauditUsedRegionsResponse, err error) {
     if request == nil {
         request = NewDescribeDbauditUsedRegionsRequest()
     }
+    
     response = NewDescribeDbauditUsedRegionsResponse()
     err = c.Send(request, response)
     return
@@ -148,6 +164,8 @@ func NewInquiryPriceDbauditInstanceRequest() (request *InquiryPriceDbauditInstan
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cds", APIVersion, "InquiryPriceDbauditInstance")
+    
+    
     return
 }
 
@@ -158,11 +176,13 @@ func NewInquiryPriceDbauditInstanceResponse() (response *InquiryPriceDbauditInst
     return
 }
 
+// InquiryPriceDbauditInstance
 // 用于查询数据安全审计产品实例价格
 func (c *Client) InquiryPriceDbauditInstance(request *InquiryPriceDbauditInstanceRequest) (response *InquiryPriceDbauditInstanceResponse, err error) {
     if request == nil {
         request = NewInquiryPriceDbauditInstanceRequest()
     }
+    
     response = NewInquiryPriceDbauditInstanceResponse()
     err = c.Send(request, response)
     return
@@ -173,6 +193,8 @@ func NewModifyDbauditInstancesRenewFlagRequest() (request *ModifyDbauditInstance
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cds", APIVersion, "ModifyDbauditInstancesRenewFlag")
+    
+    
     return
 }
 
@@ -183,11 +205,17 @@ func NewModifyDbauditInstancesRenewFlagResponse() (response *ModifyDbauditInstan
     return
 }
 
+// ModifyDbauditInstancesRenewFlag
 // 本接口 (ModifyDbauditInstancesRenewFlag) 用于修改数据安全审计产品实例续费标识
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) ModifyDbauditInstancesRenewFlag(request *ModifyDbauditInstancesRenewFlagRequest) (response *ModifyDbauditInstancesRenewFlagResponse, err error) {
     if request == nil {
         request = NewModifyDbauditInstancesRenewFlagRequest()
     }
+    
     response = NewModifyDbauditInstancesRenewFlagResponse()
     err = c.Send(request, response)
     return

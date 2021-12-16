@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -48,6 +48,8 @@ func NewCreateCfsFileSystemRequest() (request *CreateCfsFileSystemRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "CreateCfsFileSystem")
+    
+    
     return
 }
 
@@ -58,11 +60,63 @@ func NewCreateCfsFileSystemResponse() (response *CreateCfsFileSystemResponse) {
     return
 }
 
+// CreateCfsFileSystem
 // 用于添加新文件系统
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BINDRESOURCEPKGFAILED = "FailedOperation.BindResourcePkgFailed"
+//  FAILEDOPERATION_CLIENTTOKENINUSE = "FailedOperation.ClientTokenInUse"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CREATEFSFAILED = "InternalError.CreateFsFailed"
+//  INTERNALERROR_GETACCOUNTSTATUSFAILED = "InternalError.GetAccountStatusFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_CLIENTTOKENLIMITEXCEEDED = "InvalidParameterValue.ClientTokenLimitExceeded"
+//  INVALIDPARAMETERVALUE_FSNAMELIMITEXCEEDED = "InvalidParameterValue.FsNameLimitExceeded"
+//  INVALIDPARAMETERVALUE_INVALIDCLIENTTOKEN = "InvalidParameterValue.InvalidClientToken"
+//  INVALIDPARAMETERVALUE_INVALIDENCRYPTED = "InvalidParameterValue.InvalidEncrypted"
+//  INVALIDPARAMETERVALUE_INVALIDFSNAME = "InvalidParameterValue.InvalidFsName"
+//  INVALIDPARAMETERVALUE_INVALIDMOUNTTARGETIP = "InvalidParameterValue.InvalidMountTargetIp"
+//  INVALIDPARAMETERVALUE_INVALIDNETINTERFACE = "InvalidParameterValue.InvalidNetInterface"
+//  INVALIDPARAMETERVALUE_INVALIDPGROUPID = "InvalidParameterValue.InvalidPgroupId"
+//  INVALIDPARAMETERVALUE_INVALIDPROTOCOL = "InvalidParameterValue.InvalidProtocol"
+//  INVALIDPARAMETERVALUE_INVALIDREGIONZONEINFO = "InvalidParameterValue.InvalidRegionZoneInfo"
+//  INVALIDPARAMETERVALUE_INVALIDRESOURCETAGS = "InvalidParameterValue.InvalidResourceTags"
+//  INVALIDPARAMETERVALUE_INVALIDSTORAGERESOURCEPKG = "InvalidParameterValue.InvalidStorageResourcePkg"
+//  INVALIDPARAMETERVALUE_INVALIDSTORAGETYPE = "InvalidParameterValue.InvalidStorageType"
+//  INVALIDPARAMETERVALUE_INVALIDSUBNETID = "InvalidParameterValue.InvalidSubnetId"
+//  INVALIDPARAMETERVALUE_INVALIDTAGKEY = "InvalidParameterValue.InvalidTagKey"
+//  INVALIDPARAMETERVALUE_INVALIDVIP = "InvalidParameterValue.InvalidVip"
+//  INVALIDPARAMETERVALUE_INVALIDVPCID = "InvalidParameterValue.InvalidVpcId"
+//  INVALIDPARAMETERVALUE_INVALIDVPCPARAMETER = "InvalidParameterValue.InvalidVpcParameter"
+//  INVALIDPARAMETERVALUE_INVALIDZONEID = "InvalidParameterValue.InvalidZoneId"
+//  INVALIDPARAMETERVALUE_INVALIDZONEORZONEID = "InvalidParameterValue.InvalidZoneOrZoneId"
+//  INVALIDPARAMETERVALUE_MISSINGKMSKEYID = "InvalidParameterValue.MissingKmsKeyId"
+//  INVALIDPARAMETERVALUE_MISSINGSTORAGERESOURCEPKG = "InvalidParameterValue.MissingStorageResourcePkg"
+//  INVALIDPARAMETERVALUE_MISSINGSUBNETIDORUNSUBNETID = "InvalidParameterValue.MissingSubnetidOrUnsubnetid"
+//  INVALIDPARAMETERVALUE_MISSINGVPCPARAMETER = "InvalidParameterValue.MissingVpcParameter"
+//  INVALIDPARAMETERVALUE_MISSINGVPCIDORUNVPCID = "InvalidParameterValue.MissingVpcidOrUnvpcid"
+//  INVALIDPARAMETERVALUE_MISSINGZONEID = "InvalidParameterValue.MissingZoneId"
+//  INVALIDPARAMETERVALUE_MISSINGZONEORZONEID = "InvalidParameterValue.MissingZoneOrZoneId"
+//  INVALIDPARAMETERVALUE_TAGKEYLIMITEXCEEDED = "InvalidParameterValue.TagKeyLimitExceeded"
+//  INVALIDPARAMETERVALUE_TAGVALUELIMITEXCEEDED = "InvalidParameterValue.TagValueLimitExceeded"
+//  INVALIDPARAMETERVALUE_UNAVAILABLEREGION = "InvalidParameterValue.UnavailableRegion"
+//  INVALIDPARAMETERVALUE_UNAVAILABLEZONE = "InvalidParameterValue.UnavailableZone"
+//  INVALIDPARAMETERVALUE_ZONEIDREGIONNOTMATCH = "InvalidParameterValue.ZoneIdRegionNotMatch"
+//  RESOURCEINSUFFICIENT_FILESYSTEMLIMITEXCEEDED = "ResourceInsufficient.FileSystemLimitExceeded"
+//  RESOURCEINSUFFICIENT_REGIONSOLDOUT = "ResourceInsufficient.RegionSoldOut"
+//  RESOURCEINSUFFICIENT_SUBNETIPALLOCCUPIED = "ResourceInsufficient.SubnetIpAllOccupied"
+//  RESOURCEINSUFFICIENT_TAGLIMITEXCEEDED = "ResourceInsufficient.TagLimitExceeded"
+//  RESOURCENOTFOUND_PGROUPNOTFOUND = "ResourceNotFound.PgroupNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BASICNETINTERFACENOTSUPPORTED = "UnsupportedOperation.BasicNetInterfaceNotSupported"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) CreateCfsFileSystem(request *CreateCfsFileSystemRequest) (response *CreateCfsFileSystemResponse, err error) {
     if request == nil {
         request = NewCreateCfsFileSystemRequest()
     }
+    
     response = NewCreateCfsFileSystemResponse()
     err = c.Send(request, response)
     return
@@ -73,6 +127,8 @@ func NewCreateCfsPGroupRequest() (request *CreateCfsPGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "CreateCfsPGroup")
+    
+    
     return
 }
 
@@ -83,11 +139,24 @@ func NewCreateCfsPGroupResponse() (response *CreateCfsPGroupResponse) {
     return
 }
 
+// CreateCfsPGroup
 // 本接口（CreateCfsPGroup）用于创建权限组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_DUPLICATEDPGROUPNAME = "InvalidParameterValue.DuplicatedPgroupName"
+//  INVALIDPARAMETERVALUE_INVALIDPGROUPNAME = "InvalidParameterValue.InvalidPgroupName"
+//  INVALIDPARAMETERVALUE_MISSINGPGROUPNAME = "InvalidParameterValue.MissingPgroupName"
+//  INVALIDPARAMETERVALUE_PGROUPDESCINFOLIMITEXCEEDED = "InvalidParameterValue.PgroupDescinfoLimitExceeded"
+//  INVALIDPARAMETERVALUE_PGROUPNAMELIMITEXCEEDED = "InvalidParameterValue.PgroupNameLimitExceeded"
+//  RESOURCEINSUFFICIENT_PGROUPNUMBERLIMITEXCEEDED = "ResourceInsufficient.PgroupNumberLimitExceeded"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) CreateCfsPGroup(request *CreateCfsPGroupRequest) (response *CreateCfsPGroupResponse, err error) {
     if request == nil {
         request = NewCreateCfsPGroupRequest()
     }
+    
     response = NewCreateCfsPGroupResponse()
     err = c.Send(request, response)
     return
@@ -98,6 +167,8 @@ func NewCreateCfsRuleRequest() (request *CreateCfsRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "CreateCfsRule")
+    
+    
     return
 }
 
@@ -108,11 +179,32 @@ func NewCreateCfsRuleResponse() (response *CreateCfsRuleResponse) {
     return
 }
 
+// CreateCfsRule
 // 本接口（CreateCfsRule）用于创建权限组规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PGROUPINUSE = "FailedOperation.PgroupInUse"
+//  FAILEDOPERATION_PGROUPISUPDATING = "FailedOperation.PgroupIsUpdating"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETACCOUNTSTATUSFAILED = "InternalError.GetAccountStatusFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DUPLICATEDRULEAUTHCLIENTIP = "InvalidParameterValue.DuplicatedRuleAuthClientIp"
+//  INVALIDPARAMETERVALUE_INVALIDAUTHCLIENTIP = "InvalidParameterValue.InvalidAuthClientIp"
+//  INVALIDPARAMETERVALUE_INVALIDPGROUP = "InvalidParameterValue.InvalidPgroup"
+//  INVALIDPARAMETERVALUE_INVALIDPRIORITY = "InvalidParameterValue.InvalidPriority"
+//  INVALIDPARAMETERVALUE_INVALIDRWPERMISSION = "InvalidParameterValue.InvalidRwPermission"
+//  INVALIDPARAMETERVALUE_INVALIDUSERPERMISSION = "InvalidParameterValue.InvalidUserPermission"
+//  RESOURCEINSUFFICIENT_RULELIMITEXCEEDED = "ResourceInsufficient.RuleLimitExceeded"
+//  RESOURCENOTFOUND_PGROUPNOTFOUND = "ResourceNotFound.PgroupNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) CreateCfsRule(request *CreateCfsRuleRequest) (response *CreateCfsRuleResponse, err error) {
     if request == nil {
         request = NewCreateCfsRuleRequest()
     }
+    
     response = NewCreateCfsRuleResponse()
     err = c.Send(request, response)
     return
@@ -123,6 +215,8 @@ func NewDeleteCfsFileSystemRequest() (request *DeleteCfsFileSystemRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "DeleteCfsFileSystem")
+    
+    
     return
 }
 
@@ -133,11 +227,28 @@ func NewDeleteCfsFileSystemResponse() (response *DeleteCfsFileSystemResponse) {
     return
 }
 
+// DeleteCfsFileSystem
 // 用于删除文件系统
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MOUNTTARGETEXISTS = "FailedOperation.MountTargetExists"
+//  FAILEDOPERATION_UNTAGRESOURCEFAILED = "FailedOperation.UntagResourceFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETACCOUNTSTATUSFAILED = "InternalError.GetAccountStatusFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  INVALIDPARAMETERVALUE_INVALIDFSSTATUS = "InvalidParameterValue.InvalidFsStatus"
+//  INVALIDPARAMETERVALUE_INVALIDREGIONZONEINFO = "InvalidParameterValue.InvalidRegionZoneInfo"
+//  INVALIDPARAMETERVALUE_MISSINGFSPARAMETER = "InvalidParameterValue.MissingFsParameter"
+//  RESOURCENOTFOUND_FILESYSTEMNOTFOUND = "ResourceNotFound.FileSystemNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) DeleteCfsFileSystem(request *DeleteCfsFileSystemRequest) (response *DeleteCfsFileSystemResponse, err error) {
     if request == nil {
         request = NewDeleteCfsFileSystemRequest()
     }
+    
     response = NewDeleteCfsFileSystemResponse()
     err = c.Send(request, response)
     return
@@ -148,6 +259,8 @@ func NewDeleteCfsPGroupRequest() (request *DeleteCfsPGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "DeleteCfsPGroup")
+    
+    
     return
 }
 
@@ -158,11 +271,25 @@ func NewDeleteCfsPGroupResponse() (response *DeleteCfsPGroupResponse) {
     return
 }
 
+// DeleteCfsPGroup
 // 本接口（DeleteCfsPGroup）用于删除权限组。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PGROUPINUSE = "FailedOperation.PgroupInUse"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETACCOUNTSTATUSFAILED = "InternalError.GetAccountStatusFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPGROUP = "InvalidParameterValue.InvalidPgroup"
+//  RESOURCENOTFOUND_PGROUPNOTFOUND = "ResourceNotFound.PgroupNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) DeleteCfsPGroup(request *DeleteCfsPGroupRequest) (response *DeleteCfsPGroupResponse, err error) {
     if request == nil {
         request = NewDeleteCfsPGroupRequest()
     }
+    
     response = NewDeleteCfsPGroupResponse()
     err = c.Send(request, response)
     return
@@ -173,6 +300,8 @@ func NewDeleteCfsRuleRequest() (request *DeleteCfsRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "DeleteCfsRule")
+    
+    
     return
 }
 
@@ -183,11 +312,32 @@ func NewDeleteCfsRuleResponse() (response *DeleteCfsRuleResponse) {
     return
 }
 
+// DeleteCfsRule
 // 本接口（DeleteCfsRule）用于删除权限组规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PGROUPINUSE = "FailedOperation.PgroupInUse"
+//  FAILEDOPERATION_PGROUPISUPDATING = "FailedOperation.PgroupIsUpdating"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETACCOUNTSTATUSFAILED = "InternalError.GetAccountStatusFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DUPLICATEDRULEAUTHCLIENTIP = "InvalidParameterValue.DuplicatedRuleAuthClientIp"
+//  INVALIDPARAMETERVALUE_INVALIDAUTHCLIENTIP = "InvalidParameterValue.InvalidAuthClientIp"
+//  INVALIDPARAMETERVALUE_INVALIDPGROUP = "InvalidParameterValue.InvalidPgroup"
+//  INVALIDPARAMETERVALUE_INVALIDPRIORITY = "InvalidParameterValue.InvalidPriority"
+//  INVALIDPARAMETERVALUE_INVALIDRWPERMISSION = "InvalidParameterValue.InvalidRwPermission"
+//  INVALIDPARAMETERVALUE_INVALIDUSERPERMISSION = "InvalidParameterValue.InvalidUserPermission"
+//  RESOURCENOTFOUND_PGROUPNOTFOUND = "ResourceNotFound.PgroupNotFound"
+//  RESOURCENOTFOUND_RULENOTFOUND = "ResourceNotFound.RuleNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) DeleteCfsRule(request *DeleteCfsRuleRequest) (response *DeleteCfsRuleResponse, err error) {
     if request == nil {
         request = NewDeleteCfsRuleRequest()
     }
+    
     response = NewDeleteCfsRuleResponse()
     err = c.Send(request, response)
     return
@@ -198,6 +348,8 @@ func NewDeleteMountTargetRequest() (request *DeleteMountTargetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "DeleteMountTarget")
+    
+    
     return
 }
 
@@ -208,11 +360,26 @@ func NewDeleteMountTargetResponse() (response *DeleteMountTargetResponse) {
     return
 }
 
+// DeleteMountTarget
 // 本接口（DeleteMountTarget）用于删除挂载点
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETACCOUNTSTATUSFAILED = "InternalError.GetAccountStatusFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  INVALIDPARAMETERVALUE_INVALIDREGIONZONEINFO = "InvalidParameterValue.InvalidRegionZoneInfo"
+//  INVALIDPARAMETERVALUE_MISSINGFSPARAMETER = "InvalidParameterValue.MissingFsParameter"
+//  RESOURCENOTFOUND_FILESYSTEMNOTFOUND = "ResourceNotFound.FileSystemNotFound"
+//  RESOURCENOTFOUND_MOUNTTARGETNOTFOUND = "ResourceNotFound.MountTargetNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) DeleteMountTarget(request *DeleteMountTargetRequest) (response *DeleteMountTargetResponse, err error) {
     if request == nil {
         request = NewDeleteMountTargetRequest()
     }
+    
     response = NewDeleteMountTargetResponse()
     err = c.Send(request, response)
     return
@@ -223,6 +390,8 @@ func NewDescribeAvailableZoneInfoRequest() (request *DescribeAvailableZoneInfoRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "DescribeAvailableZoneInfo")
+    
+    
     return
 }
 
@@ -233,11 +402,19 @@ func NewDescribeAvailableZoneInfoResponse() (response *DescribeAvailableZoneInfo
     return
 }
 
+// DescribeAvailableZoneInfo
 // 本接口（DescribeAvailableZoneInfo）用于查询区域的可用情况。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETACCOUNTSTATUSFAILED = "InternalError.GetAccountStatusFailed"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) DescribeAvailableZoneInfo(request *DescribeAvailableZoneInfoRequest) (response *DescribeAvailableZoneInfoResponse, err error) {
     if request == nil {
         request = NewDescribeAvailableZoneInfoRequest()
     }
+    
     response = NewDescribeAvailableZoneInfoResponse()
     err = c.Send(request, response)
     return
@@ -248,6 +425,8 @@ func NewDescribeCfsFileSystemClientsRequest() (request *DescribeCfsFileSystemCli
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "DescribeCfsFileSystemClients")
+    
+    
     return
 }
 
@@ -258,11 +437,21 @@ func NewDescribeCfsFileSystemClientsResponse() (response *DescribeCfsFileSystemC
     return
 }
 
+// DescribeCfsFileSystemClients
 // 查询挂载该文件系统的客户端。此功能需要客户端安装CFS监控插件。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  INVALIDPARAMETERVALUE_MISSINGFILESYSTEMID = "InvalidParameterValue.MissingFileSystemId"
+//  RESOURCENOTFOUND_FILESYSTEMNOTFOUND = "ResourceNotFound.FileSystemNotFound"
+//  RESOURCENOTFOUND_MOUNTTARGETNOTFOUND = "ResourceNotFound.MountTargetNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCfsFileSystemClients(request *DescribeCfsFileSystemClientsRequest) (response *DescribeCfsFileSystemClientsResponse, err error) {
     if request == nil {
         request = NewDescribeCfsFileSystemClientsRequest()
     }
+    
     response = NewDescribeCfsFileSystemClientsResponse()
     err = c.Send(request, response)
     return
@@ -273,6 +462,8 @@ func NewDescribeCfsFileSystemsRequest() (request *DescribeCfsFileSystemsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "DescribeCfsFileSystems")
+    
+    
     return
 }
 
@@ -283,11 +474,27 @@ func NewDescribeCfsFileSystemsResponse() (response *DescribeCfsFileSystemsRespon
     return
 }
 
+// DescribeCfsFileSystems
 // 本接口（DescribeCfsFileSystems）用于查询文件系统
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETACCOUNTSTATUSFAILED = "InternalError.GetAccountStatusFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  INVALIDPARAMETERVALUE_MISSINGFILESYSTEMIDORREGION = "InvalidParameterValue.MissingFileSystemIdOrRegion"
+//  INVALIDPARAMETERVALUE_MISSINGFSPARAMETER = "InvalidParameterValue.MissingFsParameter"
+//  INVALIDPARAMETERVALUE_TAGKEYFILTERLIMITEXCEEDED = "InvalidParameterValue.TagKeyFilterLimitExceeded"
+//  INVALIDPARAMETERVALUE_TAGKEYLIMITEXCEEDED = "InvalidParameterValue.TagKeyLimitExceeded"
+//  INVALIDPARAMETERVALUE_UNAVAILABLEREGION = "InvalidParameterValue.UnavailableRegion"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) DescribeCfsFileSystems(request *DescribeCfsFileSystemsRequest) (response *DescribeCfsFileSystemsResponse, err error) {
     if request == nil {
         request = NewDescribeCfsFileSystemsRequest()
     }
+    
     response = NewDescribeCfsFileSystemsResponse()
     err = c.Send(request, response)
     return
@@ -298,6 +505,8 @@ func NewDescribeCfsPGroupsRequest() (request *DescribeCfsPGroupsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "DescribeCfsPGroups")
+    
+    
     return
 }
 
@@ -308,11 +517,18 @@ func NewDescribeCfsPGroupsResponse() (response *DescribeCfsPGroupsResponse) {
     return
 }
 
+// DescribeCfsPGroups
 // 本接口（DescribeCfsPGroups）用于查询权限组列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GETACCOUNTSTATUSFAILED = "InternalError.GetAccountStatusFailed"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) DescribeCfsPGroups(request *DescribeCfsPGroupsRequest) (response *DescribeCfsPGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeCfsPGroupsRequest()
     }
+    
     response = NewDescribeCfsPGroupsResponse()
     err = c.Send(request, response)
     return
@@ -323,6 +539,8 @@ func NewDescribeCfsRulesRequest() (request *DescribeCfsRulesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "DescribeCfsRules")
+    
+    
     return
 }
 
@@ -333,11 +551,20 @@ func NewDescribeCfsRulesResponse() (response *DescribeCfsRulesResponse) {
     return
 }
 
+// DescribeCfsRules
 // 本接口（DescribeCfsRules）用于查询权限组规则列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_GETACCOUNTSTATUSFAILED = "InternalError.GetAccountStatusFailed"
+//  INVALIDPARAMETERVALUE_INVALIDPGROUP = "InvalidParameterValue.InvalidPgroup"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) DescribeCfsRules(request *DescribeCfsRulesRequest) (response *DescribeCfsRulesResponse, err error) {
     if request == nil {
         request = NewDescribeCfsRulesRequest()
     }
+    
     response = NewDescribeCfsRulesResponse()
     err = c.Send(request, response)
     return
@@ -348,6 +575,8 @@ func NewDescribeCfsServiceStatusRequest() (request *DescribeCfsServiceStatusRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "DescribeCfsServiceStatus")
+    
+    
     return
 }
 
@@ -358,11 +587,20 @@ func NewDescribeCfsServiceStatusResponse() (response *DescribeCfsServiceStatusRe
     return
 }
 
+// DescribeCfsServiceStatus
 // 本接口（DescribeCfsServiceStatus）用于查询用户使用CFS的服务状态。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) DescribeCfsServiceStatus(request *DescribeCfsServiceStatusRequest) (response *DescribeCfsServiceStatusResponse, err error) {
     if request == nil {
         request = NewDescribeCfsServiceStatusRequest()
     }
+    
     response = NewDescribeCfsServiceStatusResponse()
     err = c.Send(request, response)
     return
@@ -373,6 +611,8 @@ func NewDescribeMountTargetsRequest() (request *DescribeMountTargetsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "DescribeMountTargets")
+    
+    
     return
 }
 
@@ -383,11 +623,25 @@ func NewDescribeMountTargetsResponse() (response *DescribeMountTargetsResponse) 
     return
 }
 
+// DescribeMountTargets
 // 本接口（DescribeMountTargets）用于查询文件系统挂载点信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  INVALIDPARAMETERVALUE_MISSINGFILESYSTEMID = "InvalidParameterValue.MissingFileSystemId"
+//  INVALIDPARAMETERVALUE_MISSINGFSPARAMETER = "InvalidParameterValue.MissingFsParameter"
+//  RESOURCENOTFOUND_FILESYSTEMNOTFOUND = "ResourceNotFound.FileSystemNotFound"
+//  RESOURCENOTFOUND_MOUNTTARGETNOTFOUND = "ResourceNotFound.MountTargetNotFound"
+//  RESOURCENOTFOUND_PGROUPNOTFOUND = "ResourceNotFound.PgroupNotFound"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) DescribeMountTargets(request *DescribeMountTargetsRequest) (response *DescribeMountTargetsResponse, err error) {
     if request == nil {
         request = NewDescribeMountTargetsRequest()
     }
+    
     response = NewDescribeMountTargetsResponse()
     err = c.Send(request, response)
     return
@@ -398,6 +652,8 @@ func NewSignUpCfsServiceRequest() (request *SignUpCfsServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "SignUpCfsService")
+    
+    
     return
 }
 
@@ -408,11 +664,20 @@ func NewSignUpCfsServiceResponse() (response *SignUpCfsServiceResponse) {
     return
 }
 
+// SignUpCfsService
 // 本接口（SignUpCfsService）用于开通CFS服务。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) SignUpCfsService(request *SignUpCfsServiceRequest) (response *SignUpCfsServiceResponse, err error) {
     if request == nil {
         request = NewSignUpCfsServiceRequest()
     }
+    
     response = NewSignUpCfsServiceResponse()
     err = c.Send(request, response)
     return
@@ -423,6 +688,8 @@ func NewUpdateCfsFileSystemNameRequest() (request *UpdateCfsFileSystemNameReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "UpdateCfsFileSystemName")
+    
+    
     return
 }
 
@@ -433,11 +700,28 @@ func NewUpdateCfsFileSystemNameResponse() (response *UpdateCfsFileSystemNameResp
     return
 }
 
+// UpdateCfsFileSystemName
 // 本接口（UpdateCfsFileSystemName）用于更新文件系统名
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETACCOUNTSTATUSFAILED = "InternalError.GetAccountStatusFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_FSNAMELIMITEXCEEDED = "InvalidParameterValue.FsNameLimitExceeded"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  INVALIDPARAMETERVALUE_INVALIDFSNAME = "InvalidParameterValue.InvalidFsName"
+//  INVALIDPARAMETERVALUE_INVALIDREGIONZONEINFO = "InvalidParameterValue.InvalidRegionZoneInfo"
+//  INVALIDPARAMETERVALUE_MISSINGFSPARAMETER = "InvalidParameterValue.MissingFsParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FILESYSTEMNOTFOUND = "ResourceNotFound.FileSystemNotFound"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) UpdateCfsFileSystemName(request *UpdateCfsFileSystemNameRequest) (response *UpdateCfsFileSystemNameResponse, err error) {
     if request == nil {
         request = NewUpdateCfsFileSystemNameRequest()
     }
+    
     response = NewUpdateCfsFileSystemNameResponse()
     err = c.Send(request, response)
     return
@@ -448,6 +732,8 @@ func NewUpdateCfsFileSystemPGroupRequest() (request *UpdateCfsFileSystemPGroupRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "UpdateCfsFileSystemPGroup")
+    
+    
     return
 }
 
@@ -458,11 +744,32 @@ func NewUpdateCfsFileSystemPGroupResponse() (response *UpdateCfsFileSystemPGroup
     return
 }
 
+// UpdateCfsFileSystemPGroup
 // 本接口（UpdateCfsFileSystemPGroup）用于更新文件系统所使用的权限组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PGROUPINUSE = "FailedOperation.PgroupInUse"
+//  FAILEDOPERATION_PGROUPISUPDATING = "FailedOperation.PgroupIsUpdating"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETACCOUNTSTATUSFAILED = "InternalError.GetAccountStatusFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  INVALIDPARAMETERVALUE_INVALIDPGROUP = "InvalidParameterValue.InvalidPgroup"
+//  INVALIDPARAMETERVALUE_INVALIDPGROUPID = "InvalidParameterValue.InvalidPgroupId"
+//  INVALIDPARAMETERVALUE_INVALIDREGIONZONEINFO = "InvalidParameterValue.InvalidRegionZoneInfo"
+//  INVALIDPARAMETERVALUE_MISSINGFSPARAMETER = "InvalidParameterValue.MissingFsParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FILESYSTEMNOTFOUND = "ResourceNotFound.FileSystemNotFound"
+//  RESOURCENOTFOUND_PGROUPNOTFOUND = "ResourceNotFound.PgroupNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) UpdateCfsFileSystemPGroup(request *UpdateCfsFileSystemPGroupRequest) (response *UpdateCfsFileSystemPGroupResponse, err error) {
     if request == nil {
         request = NewUpdateCfsFileSystemPGroupRequest()
     }
+    
     response = NewUpdateCfsFileSystemPGroupResponse()
     err = c.Send(request, response)
     return
@@ -473,6 +780,8 @@ func NewUpdateCfsFileSystemSizeLimitRequest() (request *UpdateCfsFileSystemSizeL
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "UpdateCfsFileSystemSizeLimit")
+    
+    
     return
 }
 
@@ -483,11 +792,28 @@ func NewUpdateCfsFileSystemSizeLimitResponse() (response *UpdateCfsFileSystemSiz
     return
 }
 
+// UpdateCfsFileSystemSizeLimit
 // 本接口（UpdateCfsFileSystemSizeLimit）用于更新文件系统存储容量限制。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETACCOUNTSTATUSFAILED = "InternalError.GetAccountStatusFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_FSSIZELIMITEXCEEDED = "InvalidParameterValue.FsSizeLimitExceeded"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  INVALIDPARAMETERVALUE_INVALIDFSSIZELIMIT = "InvalidParameterValue.InvalidFsSizeLimit"
+//  INVALIDPARAMETERVALUE_INVALIDREGIONZONEINFO = "InvalidParameterValue.InvalidRegionZoneInfo"
+//  INVALIDPARAMETERVALUE_MISSINGFSPARAMETER = "InvalidParameterValue.MissingFsParameter"
+//  RESOURCENOTFOUND_FILESYSTEMNOTFOUND = "ResourceNotFound.FileSystemNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) UpdateCfsFileSystemSizeLimit(request *UpdateCfsFileSystemSizeLimitRequest) (response *UpdateCfsFileSystemSizeLimitResponse, err error) {
     if request == nil {
         request = NewUpdateCfsFileSystemSizeLimitRequest()
     }
+    
     response = NewUpdateCfsFileSystemSizeLimitResponse()
     err = c.Send(request, response)
     return
@@ -498,6 +824,8 @@ func NewUpdateCfsPGroupRequest() (request *UpdateCfsPGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "UpdateCfsPGroup")
+    
+    
     return
 }
 
@@ -508,11 +836,29 @@ func NewUpdateCfsPGroupResponse() (response *UpdateCfsPGroupResponse) {
     return
 }
 
+// UpdateCfsPGroup
 // 本接口（UpdateCfsPGroup）更新权限组信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MOUNTTARGETEXISTS = "FailedOperation.MountTargetExists"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETACCOUNTSTATUSFAILED = "InternalError.GetAccountStatusFailed"
+//  INVALIDPARAMETERVALUE_DUPLICATEDPGROUPNAME = "InvalidParameterValue.DuplicatedPgroupName"
+//  INVALIDPARAMETERVALUE_INVALIDPGROUPNAME = "InvalidParameterValue.InvalidPgroupName"
+//  INVALIDPARAMETERVALUE_MISSINGNAMEORDESCINFO = "InvalidParameterValue.MissingNameOrDescinfo"
+//  INVALIDPARAMETERVALUE_MISSINGPGROUPNAME = "InvalidParameterValue.MissingPgroupName"
+//  INVALIDPARAMETERVALUE_PGROUPDESCINFOLIMITEXCEEDED = "InvalidParameterValue.PgroupDescinfoLimitExceeded"
+//  INVALIDPARAMETERVALUE_PGROUPNAMELIMITEXCEEDED = "InvalidParameterValue.PgroupNameLimitExceeded"
+//  RESOURCENOTFOUND_PGROUPNOTFOUND = "ResourceNotFound.PgroupNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) UpdateCfsPGroup(request *UpdateCfsPGroupRequest) (response *UpdateCfsPGroupResponse, err error) {
     if request == nil {
         request = NewUpdateCfsPGroupRequest()
     }
+    
     response = NewUpdateCfsPGroupResponse()
     err = c.Send(request, response)
     return
@@ -523,6 +869,8 @@ func NewUpdateCfsRuleRequest() (request *UpdateCfsRuleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cfs", APIVersion, "UpdateCfsRule")
+    
+    
     return
 }
 
@@ -533,11 +881,33 @@ func NewUpdateCfsRuleResponse() (response *UpdateCfsRuleResponse) {
     return
 }
 
+// UpdateCfsRule
 // 本接口（UpdateCfsRule）用于更新权限规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PGROUPINUSE = "FailedOperation.PgroupInUse"
+//  FAILEDOPERATION_PGROUPISUPDATING = "FailedOperation.PgroupIsUpdating"
+//  FAILEDOPERATION_PGROUPLINKCFSV10 = "FailedOperation.PgroupLinkCfsv10"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETACCOUNTSTATUSFAILED = "InternalError.GetAccountStatusFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DUPLICATEDRULEAUTHCLIENTIP = "InvalidParameterValue.DuplicatedRuleAuthClientIp"
+//  INVALIDPARAMETERVALUE_INVALIDAUTHCLIENTIP = "InvalidParameterValue.InvalidAuthClientIp"
+//  INVALIDPARAMETERVALUE_INVALIDPGROUP = "InvalidParameterValue.InvalidPgroup"
+//  INVALIDPARAMETERVALUE_INVALIDPRIORITY = "InvalidParameterValue.InvalidPriority"
+//  INVALIDPARAMETERVALUE_INVALIDRWPERMISSION = "InvalidParameterValue.InvalidRwPermission"
+//  INVALIDPARAMETERVALUE_INVALIDUSERPERMISSION = "InvalidParameterValue.InvalidUserPermission"
+//  INVALIDPARAMETERVALUE_RULENOTMATCHPGROUP = "InvalidParameterValue.RuleNotMatchPgroup"
+//  RESOURCENOTFOUND_PGROUPNOTFOUND = "ResourceNotFound.PgroupNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) UpdateCfsRule(request *UpdateCfsRuleRequest) (response *UpdateCfsRuleResponse, err error) {
     if request == nil {
         request = NewUpdateCfsRuleRequest()
     }
+    
     response = NewUpdateCfsRuleResponse()
     err = c.Send(request, response)
     return

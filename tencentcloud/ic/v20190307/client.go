@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -48,6 +48,8 @@ func NewDescribeAppRequest() (request *DescribeAppRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ic", APIVersion, "DescribeApp")
+    
+    
     return
 }
 
@@ -58,11 +60,18 @@ func NewDescribeAppResponse() (response *DescribeAppResponse) {
     return
 }
 
+// DescribeApp
 // 根据应用id查询物联卡应用详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeApp(request *DescribeAppRequest) (response *DescribeAppResponse, err error) {
     if request == nil {
         request = NewDescribeAppRequest()
     }
+    
     response = NewDescribeAppResponse()
     err = c.Send(request, response)
     return
@@ -73,6 +82,8 @@ func NewDescribeCardRequest() (request *DescribeCardRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ic", APIVersion, "DescribeCard")
+    
+    
     return
 }
 
@@ -83,11 +94,18 @@ func NewDescribeCardResponse() (response *DescribeCardResponse) {
     return
 }
 
+// DescribeCard
 // 查询卡片详细信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeCard(request *DescribeCardRequest) (response *DescribeCardResponse, err error) {
     if request == nil {
         request = NewDescribeCardRequest()
     }
+    
     response = NewDescribeCardResponse()
     err = c.Send(request, response)
     return
@@ -98,6 +116,8 @@ func NewDescribeCardsRequest() (request *DescribeCardsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ic", APIVersion, "DescribeCards")
+    
+    
     return
 }
 
@@ -108,12 +128,52 @@ func NewDescribeCardsResponse() (response *DescribeCardsResponse) {
     return
 }
 
+// DescribeCards
 // 查询卡片列表信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeCards(request *DescribeCardsRequest) (response *DescribeCardsResponse, err error) {
     if request == nil {
         request = NewDescribeCardsRequest()
     }
+    
     response = NewDescribeCardsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyUserCardRemarkRequest() (request *ModifyUserCardRemarkRequest) {
+    request = &ModifyUserCardRemarkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ic", APIVersion, "ModifyUserCardRemark")
+    
+    
+    return
+}
+
+func NewModifyUserCardRemarkResponse() (response *ModifyUserCardRemarkResponse) {
+    response = &ModifyUserCardRemarkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyUserCardRemark
+// 编辑卡片备注
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyUserCardRemark(request *ModifyUserCardRemarkRequest) (response *ModifyUserCardRemarkResponse, err error) {
+    if request == nil {
+        request = NewModifyUserCardRemarkRequest()
+    }
+    
+    response = NewModifyUserCardRemarkResponse()
     err = c.Send(request, response)
     return
 }
@@ -123,6 +183,8 @@ func NewRenewCardsRequest() (request *RenewCardsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ic", APIVersion, "RenewCards")
+    
+    
     return
 }
 
@@ -133,16 +195,29 @@ func NewRenewCardsResponse() (response *RenewCardsResponse) {
     return
 }
 
+// RenewCards
 // 批量为卡片续费，此接口建议调用至少间隔10s,如果出现返回deal lock failed相关的错误，请过10s再重试。
+//
 // 续费的必要条件：
+//
 // 1、单次续费的卡片不可以超过 100张。
+//
 // 2、接口只支持在控制台购买的卡片进行续费
+//
 // 3、销户和未激活的卡片不支持续费。
+//
 // 4、每张物联网卡，续费总周期不能超过24个月
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPNOTFOUND = "ResourceNotFound.AppNotFound"
 func (c *Client) RenewCards(request *RenewCardsRequest) (response *RenewCardsResponse, err error) {
     if request == nil {
         request = NewRenewCardsRequest()
     }
+    
     response = NewRenewCardsResponse()
     err = c.Send(request, response)
     return
@@ -153,6 +228,8 @@ func NewSendMultiSmsRequest() (request *SendMultiSmsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ic", APIVersion, "SendMultiSms")
+    
+    
     return
 }
 
@@ -163,11 +240,18 @@ func NewSendMultiSmsResponse() (response *SendMultiSmsResponse) {
     return
 }
 
+// SendMultiSms
 // 群发短信
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SendMultiSms(request *SendMultiSmsRequest) (response *SendMultiSmsResponse, err error) {
     if request == nil {
         request = NewSendMultiSmsRequest()
     }
+    
     response = NewSendMultiSmsResponse()
     err = c.Send(request, response)
     return
@@ -178,6 +262,8 @@ func NewSendSmsRequest() (request *SendSmsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ic", APIVersion, "SendSms")
+    
+    
     return
 }
 
@@ -188,11 +274,18 @@ func NewSendSmsResponse() (response *SendSmsResponse) {
     return
 }
 
+// SendSms
 // 发送短信息接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SendSms(request *SendSmsRequest) (response *SendSmsResponse, err error) {
     if request == nil {
         request = NewSendSmsRequest()
     }
+    
     response = NewSendSmsResponse()
     err = c.Send(request, response)
     return

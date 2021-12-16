@@ -16,7 +16,7 @@ package v20190307
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -148,6 +148,10 @@ type CardInfo struct {
 	// 实名认证 0:无 1:未实名 2:已实名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificationState *int64 `json:"CertificationState,omitempty" name:"CertificationState"`
+
+	// 其他流量信息,流量分离统计其他流量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OtherData *float64 `json:"OtherData,omitempty" name:"OtherData"`
 }
 
 type CardList struct {
@@ -157,7 +161,7 @@ type CardList struct {
 
 	// 卡片列表信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	List []*CardInfo `json:"List,omitempty" name:"List" list`
+	List []*CardInfo `json:"List,omitempty" name:"List"`
 }
 
 type DescribeAppRequest struct {
@@ -172,8 +176,18 @@ func (r *DescribeAppRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAppRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Sdkappid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAppRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAppResponse struct {
@@ -194,8 +208,10 @@ func (r *DescribeAppResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAppResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCardRequest struct {
@@ -213,8 +229,19 @@ func (r *DescribeCardRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCardRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Sdkappid")
+	delete(f, "Iccid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCardRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCardResponse struct {
@@ -235,8 +262,10 @@ func (r *DescribeCardResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCardResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCardsRequest struct {
@@ -257,8 +286,20 @@ func (r *DescribeCardsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCardsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Sdkappid")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCardsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCardsResponse struct {
@@ -278,8 +319,64 @@ func (r *DescribeCardsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCardsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyUserCardRemarkRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用ID
+	Sdkappid *int64 `json:"Sdkappid,omitempty" name:"Sdkappid"`
+
+	// 物联卡ICCID
+	Iccid *string `json:"Iccid,omitempty" name:"Iccid"`
+
+	// 备注信息，限50字
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *ModifyUserCardRemarkRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserCardRemarkRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Sdkappid")
+	delete(f, "Iccid")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserCardRemarkRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyUserCardRemarkResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyUserCardRemarkResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserCardRemarkResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RenewCardsRequest struct {
@@ -289,7 +386,7 @@ type RenewCardsRequest struct {
 	Sdkappid *uint64 `json:"Sdkappid,omitempty" name:"Sdkappid"`
 
 	// 续费的iccid
-	Iccids []*string `json:"Iccids,omitempty" name:"Iccids" list`
+	Iccids []*string `json:"Iccids,omitempty" name:"Iccids"`
 
 	// 续费的周期（单位：月）
 	RenewNum *uint64 `json:"RenewNum,omitempty" name:"RenewNum"`
@@ -300,8 +397,20 @@ func (r *RenewCardsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RenewCardsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Sdkappid")
+	delete(f, "Iccids")
+	delete(f, "RenewNum")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RenewCardsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RenewCardsResponse struct {
@@ -322,15 +431,17 @@ func (r *RenewCardsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RenewCardsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ResRenew struct {
 
 	// 每一张续费卡片的订单ID数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OrderIds []*string `json:"OrderIds,omitempty" name:"OrderIds" list`
+	OrderIds []*string `json:"OrderIds,omitempty" name:"OrderIds"`
 }
 
 type SendMultiSmsRequest struct {
@@ -340,7 +451,7 @@ type SendMultiSmsRequest struct {
 	Sdkappid *string `json:"Sdkappid,omitempty" name:"Sdkappid"`
 
 	// 卡片列表
-	Iccids []*string `json:"Iccids,omitempty" name:"Iccids" list`
+	Iccids []*string `json:"Iccids,omitempty" name:"Iccids"`
 
 	// 短信内容 长度限制 70
 	Content *string `json:"Content,omitempty" name:"Content"`
@@ -351,8 +462,20 @@ func (r *SendMultiSmsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SendMultiSmsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Sdkappid")
+	delete(f, "Iccids")
+	delete(f, "Content")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendMultiSmsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SendMultiSmsResponse struct {
@@ -361,7 +484,7 @@ type SendMultiSmsResponse struct {
 
 		// 短信流水数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*SmsRet `json:"Data,omitempty" name:"Data" list`
+		Data []*SmsRet `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -373,8 +496,10 @@ func (r *SendMultiSmsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SendMultiSmsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SendSmsRequest struct {
@@ -395,8 +520,20 @@ func (r *SendSmsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SendSmsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Sdkappid")
+	delete(f, "Iccid")
+	delete(f, "Content")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendSmsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SendSmsResponse struct {
@@ -417,8 +554,10 @@ func (r *SendSmsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SendSmsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SmsRet struct {

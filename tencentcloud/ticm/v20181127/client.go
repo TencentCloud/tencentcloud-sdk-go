@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -48,6 +48,8 @@ func NewDescribeVideoTaskRequest() (request *DescribeVideoTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ticm", APIVersion, "DescribeVideoTask")
+    
+    
     return
 }
 
@@ -58,11 +60,16 @@ func NewDescribeVideoTaskResponse() (response *DescribeVideoTaskResponse) {
     return
 }
 
+// DescribeVideoTask
 // 提交完视频审核任务后，可以通过本接口来获取当前处理的进度和结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 func (c *Client) DescribeVideoTask(request *DescribeVideoTaskRequest) (response *DescribeVideoTaskResponse, err error) {
     if request == nil {
         request = NewDescribeVideoTaskRequest()
     }
+    
     response = NewDescribeVideoTaskResponse()
     err = c.Send(request, response)
     return
@@ -73,6 +80,8 @@ func NewImageModerationRequest() (request *ImageModerationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ticm", APIVersion, "ImageModeration")
+    
+    
     return
 }
 
@@ -83,11 +92,22 @@ func NewImageModerationResponse() (response *ImageModerationResponse) {
     return
 }
 
+// ImageModeration
 // 本接口提供多种维度的图像审核能力，支持色情和性感内容识别，政治人物和涉政敏感场景识别，以及暴恐人物、场景、旗帜标识等违禁内容的识别。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_INVOKECHARGEERROR = "FailedOperation.InvokeChargeError"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ImageModeration(request *ImageModerationRequest) (response *ImageModerationResponse, err error) {
     if request == nil {
         request = NewImageModerationRequest()
     }
+    
     response = NewImageModerationResponse()
     err = c.Send(request, response)
     return
@@ -98,6 +118,8 @@ func NewVideoModerationRequest() (request *VideoModerationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ticm", APIVersion, "VideoModeration")
+    
+    
     return
 }
 
@@ -108,11 +130,17 @@ func NewVideoModerationResponse() (response *VideoModerationResponse) {
     return
 }
 
+// VideoModeration
 // 本接口提供多种维度的视频审核能力，支持色情和性感内容识别，政治人物和涉政敏感场景识别，以及暴恐人物、场景、旗帜标识等违禁内容的识别。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 func (c *Client) VideoModeration(request *VideoModerationRequest) (response *VideoModerationResponse, err error) {
     if request == nil {
         request = NewVideoModerationRequest()
     }
+    
     response = NewVideoModerationResponse()
     err = c.Send(request, response)
     return

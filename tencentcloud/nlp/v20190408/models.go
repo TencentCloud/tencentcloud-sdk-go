@@ -16,7 +16,7 @@ package v20190408
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -36,8 +36,19 @@ func (r *AutoSummarizationRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AutoSummarizationRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	delete(f, "Length")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AutoSummarizationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type AutoSummarizationResponse struct {
@@ -57,20 +68,22 @@ func (r *AutoSummarizationResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AutoSummarizationResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CCIToken struct {
+
+	// 错别字内容
+	Word *string `json:"Word,omitempty" name:"Word"`
 
 	// 错别字的起始位置，从0开始
 	BeginOffset *uint64 `json:"BeginOffset,omitempty" name:"BeginOffset"`
 
 	// 错别字纠错结果
 	CorrectWord *string `json:"CorrectWord,omitempty" name:"CorrectWord"`
-
-	// 错别字内容
-	Word *string `json:"Word,omitempty" name:"Word"`
 }
 
 type ChatBotRequest struct {
@@ -79,11 +92,11 @@ type ChatBotRequest struct {
 	// 用户请求的query
 	Query *string `json:"Query,omitempty" name:"Query"`
 
-	// 0: 通用闲聊, 1:儿童闲聊, 默认是通用闲聊
-	Flag *uint64 `json:"Flag,omitempty" name:"Flag"`
-
 	// 服务的id,  主要用于儿童闲聊接口，比如手Q的openid
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 0: 通用闲聊, 1:儿童闲聊, 默认是通用闲聊
+	Flag *uint64 `json:"Flag,omitempty" name:"Flag"`
 }
 
 func (r *ChatBotRequest) ToJsonString() string {
@@ -91,19 +104,31 @@ func (r *ChatBotRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ChatBotRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Query")
+	delete(f, "OpenId")
+	delete(f, "Flag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChatBotRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ChatBotResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 对于当前输出回复的自信度
-		Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
-
 		// 闲聊回复
 		Reply *string `json:"Reply,omitempty" name:"Reply"`
+
+		// 对于当前输出回复的自信度
+		Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -115,8 +140,10 @@ func (r *ChatBotResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ChatBotResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ClassificationResult struct {
@@ -124,14 +151,40 @@ type ClassificationResult struct {
 	// 一级分类名称
 	FirstClassName *string `json:"FirstClassName,omitempty" name:"FirstClassName"`
 
-	// 一级分类概率
-	FirstClassProbability *float64 `json:"FirstClassProbability,omitempty" name:"FirstClassProbability"`
-
 	// 二级分类名称
 	SecondClassName *string `json:"SecondClassName,omitempty" name:"SecondClassName"`
 
+	// 一级分类概率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FirstClassProbability *float64 `json:"FirstClassProbability,omitempty" name:"FirstClassProbability"`
+
 	// 二级分类概率
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecondClassProbability *float64 `json:"SecondClassProbability,omitempty" name:"SecondClassProbability"`
+
+	// 三级分类名称，仅有当新闻领域五分类可能出现，详情见文本分类文档
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ThirdClassName *string `json:"ThirdClassName,omitempty" name:"ThirdClassName"`
+
+	// 三级分类概率，仅有当新闻领域五分类可能出现，详情见文本分类文档
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ThirdClassProbability *float64 `json:"ThirdClassProbability,omitempty" name:"ThirdClassProbability"`
+
+	// 四级分类名称，仅有当新闻领域五分类可能出现，详情见文本分类文档
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FourthClassName *string `json:"FourthClassName,omitempty" name:"FourthClassName"`
+
+	// 四级分类概率，仅有当新闻领域五分类可能出现，详情见文本分类文档
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FourthClassProbability *float64 `json:"FourthClassProbability,omitempty" name:"FourthClassProbability"`
+
+	// 五级分类名称，仅有当新闻领域五分类可能出现，详情见文本分类文档
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FifthClassName *string `json:"FifthClassName,omitempty" name:"FifthClassName"`
+
+	// 五级分类概率，仅有当新闻领域五分类可能出现，详情见文本分类文档
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FifthClassProbability *float64 `json:"FifthClassProbability,omitempty" name:"FifthClassProbability"`
 }
 
 type CreateDictRequest struct {
@@ -149,8 +202,19 @@ func (r *CreateDictRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateDictRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDictRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateDictResponse struct {
@@ -158,6 +222,7 @@ type CreateDictResponse struct {
 	Response *struct {
 
 		// 创建的自定义词库ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		DictId *string `json:"DictId,omitempty" name:"DictId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -170,18 +235,20 @@ func (r *CreateDictResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateDictResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateWordItemsRequest struct {
 	*tchttp.BaseRequest
 
-	// 待添加的词条集合。
-	WordItems []*WordItem `json:"WordItems,omitempty" name:"WordItems" list`
-
 	// 自定义词库ID。
 	DictId *string `json:"DictId,omitempty" name:"DictId"`
+
+	// 待添加的词条集合。
+	WordItems []*WordItem `json:"WordItems,omitempty" name:"WordItems"`
 }
 
 func (r *CreateWordItemsRequest) ToJsonString() string {
@@ -189,8 +256,19 @@ func (r *CreateWordItemsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateWordItemsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DictId")
+	delete(f, "WordItems")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWordItemsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateWordItemsResponse struct {
@@ -207,8 +285,10 @@ func (r *CreateWordItemsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateWordItemsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteDictRequest struct {
@@ -223,8 +303,18 @@ func (r *DeleteDictRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteDictRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DictId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDictRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteDictResponse struct {
@@ -241,18 +331,20 @@ func (r *DeleteDictResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteDictResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteWordItemsRequest struct {
 	*tchttp.BaseRequest
 
-	// 待删除的词条集合。
-	WordItems []*WordItem `json:"WordItems,omitempty" name:"WordItems" list`
-
 	// 自定义词库ID。
 	DictId *string `json:"DictId,omitempty" name:"DictId"`
+
+	// 待删除的词条集合。
+	WordItems []*WordItem `json:"WordItems,omitempty" name:"WordItems"`
 }
 
 func (r *DeleteWordItemsRequest) ToJsonString() string {
@@ -260,8 +352,19 @@ func (r *DeleteWordItemsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteWordItemsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DictId")
+	delete(f, "WordItems")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteWordItemsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteWordItemsResponse struct {
@@ -278,8 +381,10 @@ func (r *DeleteWordItemsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteWordItemsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DependencyParsingRequest struct {
@@ -294,8 +399,18 @@ func (r *DependencyParsingRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DependencyParsingRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DependencyParsingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DependencyParsingResponse struct {
@@ -318,7 +433,7 @@ type DependencyParsingResponse struct {
 	// <li>独立结构，eg: 两个单句在结构上彼此独立
 	// <li>标点符号，eg: 。
 	// <li>核心关系，eg: 整个句子的核心
-		DpTokens []*DpToken `json:"DpTokens,omitempty" name:"DpTokens" list`
+		DpTokens []*DpToken `json:"DpTokens,omitempty" name:"DpTokens"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -330,8 +445,10 @@ func (r *DependencyParsingResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DependencyParsingResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeDictRequest struct {
@@ -349,8 +466,19 @@ func (r *DescribeDictRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeDictRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DictId")
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDictRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeDictResponse struct {
@@ -358,7 +486,8 @@ type DescribeDictResponse struct {
 	Response *struct {
 
 		// 查询到的词库信息列表。
-		Dicts []*DictInfo `json:"Dicts,omitempty" name:"Dicts" list`
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Dicts []*DictInfo `json:"Dicts,omitempty" name:"Dicts"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -370,8 +499,10 @@ func (r *DescribeDictResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeDictResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeDictsRequest struct {
@@ -389,19 +520,31 @@ func (r *DescribeDictsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeDictsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDictsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeDictsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 自定义词库信息列表。
-		Dicts []*DictInfo `json:"Dicts,omitempty" name:"Dicts" list`
-
 		// 记录总条数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 自定义词库信息列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Dicts []*DictInfo `json:"Dicts,omitempty" name:"Dicts"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -413,8 +556,10 @@ func (r *DescribeDictsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeDictsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeEntityRequest struct {
@@ -429,8 +574,18 @@ func (r *DescribeEntityRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeEntityRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EntityName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEntityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeEntityResponse struct {
@@ -450,8 +605,10 @@ func (r *DescribeEntityResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeEntityResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeRelationRequest struct {
@@ -469,8 +626,19 @@ func (r *DescribeRelationRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeRelationRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LeftEntityName")
+	delete(f, "RightEntityName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRelationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeRelationResponse struct {
@@ -478,7 +646,7 @@ type DescribeRelationResponse struct {
 	Response *struct {
 
 		// 返回查询实体间的关系
-		Content []*EntityRelationContent `json:"Content,omitempty" name:"Content" list`
+		Content []*EntityRelationContent `json:"Content,omitempty" name:"Content"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -490,8 +658,10 @@ func (r *DescribeRelationResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeRelationResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTripleRequest struct {
@@ -506,8 +676,18 @@ func (r *DescribeTripleRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTripleRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TripleCondition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTripleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTripleResponse struct {
@@ -515,7 +695,7 @@ type DescribeTripleResponse struct {
 	Response *struct {
 
 		// 返回三元组信息
-		Content []*TripleContent `json:"Content,omitempty" name:"Content" list`
+		Content []*TripleContent `json:"Content,omitempty" name:"Content"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -527,8 +707,10 @@ func (r *DescribeTripleResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTripleResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeWordItemsRequest struct {
@@ -537,11 +719,11 @@ type DescribeWordItemsRequest struct {
 	// 自定义词库ID。
 	DictId *string `json:"DictId,omitempty" name:"DictId"`
 
-	// 每页数据量，范围为1~100，默认为10。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
 	// 分页偏移量，从0开始，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页数据量，范围为1~100，默认为10。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 待检索的词条文本，支持模糊匹配。
 	Text *string `json:"Text,omitempty" name:"Text"`
@@ -552,19 +734,33 @@ func (r *DescribeWordItemsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeWordItemsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DictId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Text")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWordItemsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeWordItemsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 词条信息列表。
-		WordItems []*WordItem `json:"WordItems,omitempty" name:"WordItems" list`
-
 		// 词条记录总条数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 词条信息列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		WordItems []*WordItem `json:"WordItems,omitempty" name:"WordItems"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -576,77 +772,92 @@ func (r *DescribeWordItemsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeWordItemsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DictInfo struct {
 
-	// 自定义词库ID。
-	Id *string `json:"Id,omitempty" name:"Id"`
-
 	// 自定义词库名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 自定义词库创建时间，形式为:yyyy-mm-dd hh:mm:ss。
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	// 自定义词库ID。
+	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 自定义词库描述信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 自定义词库修改时间，形式为:yyyy-mm-dd hh:mm:ss。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 自定义词库创建时间，形式为:yyyy-mm-dd hh:mm:ss。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
 type DpToken struct {
 
-	// 当前词父节点的序号
-	HeadId *uint64 `json:"HeadId,omitempty" name:"HeadId"`
-
-	// 基础词的序号
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
-
 	// 句法依存关系的类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Relation *string `json:"Relation,omitempty" name:"Relation"`
 
+	// 当前词父节点的序号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HeadId *uint64 `json:"HeadId,omitempty" name:"HeadId"`
+
 	// 基础词
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Word *string `json:"Word,omitempty" name:"Word"`
+
+	// 基础词的序号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
 }
 
 type EntityRelationContent struct {
 
 	// 实体关系查询返回关系的object
-	Object []*EntityRelationObject `json:"Object,omitempty" name:"Object" list`
-
-	// 实体关系查询返回关系的subject
-	Subject []*EntityRelationSubject `json:"Subject,omitempty" name:"Subject" list`
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Object []*EntityRelationObject `json:"Object,omitempty" name:"Object"`
 
 	// 实体关系查询返回的关系名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Relation *string `json:"Relation,omitempty" name:"Relation"`
+
+	// 实体关系查询返回关系的subject
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Subject []*EntityRelationSubject `json:"Subject,omitempty" name:"Subject"`
 }
 
 type EntityRelationObject struct {
 
+	// object对应popular值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Popular []*int64 `json:"Popular,omitempty" name:"Popular"`
+
 	// object对应id
-	Id []*string `json:"Id,omitempty" name:"Id" list`
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id []*string `json:"Id,omitempty" name:"Id"`
 
 	// object对应name
-	Name []*string `json:"Name,omitempty" name:"Name" list`
-
-	// object对应popular值
-	Popular []*int64 `json:"Popular,omitempty" name:"Popular" list`
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name []*string `json:"Name,omitempty" name:"Name"`
 }
 
 type EntityRelationSubject struct {
 
+	// Subject对应popular
+	Popular []*int64 `json:"Popular,omitempty" name:"Popular"`
+
 	// Subject对应id
-	Id []*string `json:"Id,omitempty" name:"Id" list`
+	Id []*string `json:"Id,omitempty" name:"Id"`
 
 	// Subject对应name
-	Name []*string `json:"Name,omitempty" name:"Name" list`
-
-	// Subject对应popular
-	Popular []*int64 `json:"Popular,omitempty" name:"Popular" list`
+	Name []*string `json:"Name,omitempty" name:"Name"`
 }
 
 type Keyword struct {
@@ -661,7 +872,7 @@ type Keyword struct {
 type KeywordsExtractionRequest struct {
 	*tchttp.BaseRequest
 
-	// 待处理的文本（仅支持UTF-8格式，不超过10000字）
+	// 待处理的文本（仅支持UTF-8格式，不超过10000字符）
 	Text *string `json:"Text,omitempty" name:"Text"`
 
 	// 指定关键词个数上限（默认值为5）
@@ -673,8 +884,19 @@ func (r *KeywordsExtractionRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *KeywordsExtractionRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	delete(f, "Num")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "KeywordsExtractionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type KeywordsExtractionResponse struct {
@@ -682,7 +904,8 @@ type KeywordsExtractionResponse struct {
 	Response *struct {
 
 		// 关键词提取结果
-		Keywords []*Keyword `json:"Keywords,omitempty" name:"Keywords" list`
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Keywords []*Keyword `json:"Keywords,omitempty" name:"Keywords"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -694,8 +917,10 @@ func (r *KeywordsExtractionResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *KeywordsExtractionResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type LexicalAnalysisRequest struct {
@@ -718,8 +943,20 @@ func (r *LexicalAnalysisRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *LexicalAnalysisRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	delete(f, "DictId")
+	delete(f, "Flag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "LexicalAnalysisRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type LexicalAnalysisResponse struct {
@@ -731,10 +968,11 @@ type LexicalAnalysisResponse struct {
 	// <li>LOC：表示地名，如北京、华山</li>
 	// <li>ORG：表示机构团体名，如腾讯、最高人民法院、人大附中</li>
 	// <li>PRODUCTION：表示产品名，如QQ、微信、iPhone</li>
-		NerTokens []*NerToken `json:"NerTokens,omitempty" name:"NerTokens" list`
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		NerTokens []*NerToken `json:"NerTokens,omitempty" name:"NerTokens"`
 
 		// 分词&词性标注结果（词性表请参见附录）
-		PosTokens []*PosToken `json:"PosTokens,omitempty" name:"PosTokens" list`
+		PosTokens []*PosToken `json:"PosTokens,omitempty" name:"PosTokens"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -746,63 +984,67 @@ func (r *LexicalAnalysisResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *LexicalAnalysisResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type NerToken struct {
 
-	// 起始位置
-	BeginOffset *uint64 `json:"BeginOffset,omitempty" name:"BeginOffset"`
+	// 基础词
+	Word *string `json:"Word,omitempty" name:"Word"`
 
 	// 长度
-	Length *uint64 `json:"Length,omitempty" name:"Length"`
+	Length *int64 `json:"Length,omitempty" name:"Length"`
+
+	// 起始位置
+	BeginOffset *int64 `json:"BeginOffset,omitempty" name:"BeginOffset"`
 
 	// 命名实体类型
 	Type *string `json:"Type,omitempty" name:"Type"`
-
-	// 基础词
-	Word *string `json:"Word,omitempty" name:"Word"`
 }
 
 type PosToken struct {
 
-	// 起始位置
-	BeginOffset *uint64 `json:"BeginOffset,omitempty" name:"BeginOffset"`
+	// 基础词
+	Word *string `json:"Word,omitempty" name:"Word"`
 
 	// 长度
-	Length *uint64 `json:"Length,omitempty" name:"Length"`
+	Length *int64 `json:"Length,omitempty" name:"Length"`
+
+	// 起始位置
+	BeginOffset *int64 `json:"BeginOffset,omitempty" name:"BeginOffset"`
 
 	// 词性
 	Pos *string `json:"Pos,omitempty" name:"Pos"`
-
-	// 基础词
-	Word *string `json:"Word,omitempty" name:"Word"`
 }
 
 type SearchResult struct {
+
+	// 被搜索的词条文本。
+	Text *string `json:"Text,omitempty" name:"Text"`
 
 	// 0表示词条不存在，1表示存在。
 	IsExist *uint64 `json:"IsExist,omitempty" name:"IsExist"`
 
 	// 匹配到的词条文本。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MatchText *string `json:"MatchText,omitempty" name:"MatchText"`
 
-	// 被搜索的词条文本。
-	Text *string `json:"Text,omitempty" name:"Text"`
-
 	// 词条的词性。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Pos *string `json:"Pos,omitempty" name:"Pos"`
 }
 
 type SearchWordItemsRequest struct {
 	*tchttp.BaseRequest
 
-	// 待检索的词条集合。
-	WordItems []*WordItem `json:"WordItems,omitempty" name:"WordItems" list`
-
 	// 自定义词库ID。
 	DictId *string `json:"DictId,omitempty" name:"DictId"`
+
+	// 待检索的词条集合。
+	WordItems []*WordItem `json:"WordItems,omitempty" name:"WordItems"`
 }
 
 func (r *SearchWordItemsRequest) ToJsonString() string {
@@ -810,8 +1052,19 @@ func (r *SearchWordItemsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SearchWordItemsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DictId")
+	delete(f, "WordItems")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchWordItemsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SearchWordItemsResponse struct {
@@ -819,7 +1072,8 @@ type SearchWordItemsResponse struct {
 	Response *struct {
 
 		// 词条检索结果集合。
-		Results []*SearchResult `json:"Results,omitempty" name:"Results" list`
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Results []*SearchResult `json:"Results,omitempty" name:"Results"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -831,8 +1085,10 @@ func (r *SearchWordItemsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SearchWordItemsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SentenceEmbeddingRequest struct {
@@ -847,19 +1103,29 @@ func (r *SentenceEmbeddingRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SentenceEmbeddingRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SentenceEmbeddingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SentenceEmbeddingResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// 句向量数组
+		Vector []*float64 `json:"Vector,omitempty" name:"Vector"`
+
 		// 句向量的维度
 		Dimension *uint64 `json:"Dimension,omitempty" name:"Dimension"`
-
-		// 句向量数组
-		Vector []*float64 `json:"Vector,omitempty" name:"Vector" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -871,8 +1137,10 @@ func (r *SentenceEmbeddingResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SentenceEmbeddingResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SentimentAnalysisRequest struct {
@@ -899,22 +1167,35 @@ func (r *SentimentAnalysisRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SentimentAnalysisRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	delete(f, "Flag")
+	delete(f, "Mode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SentimentAnalysisRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SentimentAnalysisResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 负面情感概率
-		Negative *float64 `json:"Negative,omitempty" name:"Negative"`
-
-		// 中性情感概率，当输入参数Mode取值为3class时有效，否则值为空
-		Neutral *float64 `json:"Neutral,omitempty" name:"Neutral"`
-
 		// 正面情感概率
 		Positive *float64 `json:"Positive,omitempty" name:"Positive"`
+
+		// 中性情感概率，当输入参数Mode取值为3class时有效，否则值为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Neutral *float64 `json:"Neutral,omitempty" name:"Neutral"`
+
+		// 负面情感概率
+		Negative *float64 `json:"Negative,omitempty" name:"Negative"`
 
 		// 情感分类结果：
 	// 1、positive，表示正面情感
@@ -932,8 +1213,10 @@ func (r *SentimentAnalysisResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SentimentAnalysisResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SimilarWordsRequest struct {
@@ -951,8 +1234,19 @@ func (r *SimilarWordsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SimilarWordsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	delete(f, "WordNumber")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SimilarWordsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SimilarWordsResponse struct {
@@ -960,7 +1254,7 @@ type SimilarWordsResponse struct {
 	Response *struct {
 
 		// 相似词数组
-		SimilarWords []*string `json:"SimilarWords,omitempty" name:"SimilarWords" list`
+		SimilarWords []*string `json:"SimilarWords,omitempty" name:"SimilarWords"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -972,17 +1266,19 @@ func (r *SimilarWordsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SimilarWordsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Similarity struct {
 
-	// 相似度分数
-	Score *float64 `json:"Score,omitempty" name:"Score"`
-
 	// 目标文本句子
 	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 相似度分数
+	Score *float64 `json:"Score,omitempty" name:"Score"`
 }
 
 type TextClassificationRequest struct {
@@ -992,8 +1288,8 @@ type TextClassificationRequest struct {
 	Text *string `json:"Text,omitempty" name:"Text"`
 
 	// 领域分类体系（默认取1值）：
-	// 1、通用领域
-	// 2、新闻领域
+	// 1、通用领域，二分类
+	// 2、新闻领域，五分类。类别数据不一定全部返回，详情见类目映射表
 	Flag *uint64 `json:"Flag,omitempty" name:"Flag"`
 }
 
@@ -1002,8 +1298,19 @@ func (r *TextClassificationRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TextClassificationRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	delete(f, "Flag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextClassificationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TextClassificationResponse struct {
@@ -1011,7 +1318,7 @@ type TextClassificationResponse struct {
 	Response *struct {
 
 		// 文本分类结果（文本分类映射表请参见附录）
-		Classes []*ClassificationResult `json:"Classes,omitempty" name:"Classes" list`
+		Classes []*ClassificationResult `json:"Classes,omitempty" name:"Classes"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1023,14 +1330,16 @@ func (r *TextClassificationResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TextClassificationResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TextCorrectionRequest struct {
 	*tchttp.BaseRequest
 
-	// 待纠错的文本（仅支持UTF-8格式，不超过2000字）
+	// 待纠错的文本（仅支持UTF-8格式，不超过2000字符）
 	Text *string `json:"Text,omitempty" name:"Text"`
 }
 
@@ -1039,8 +1348,18 @@ func (r *TextCorrectionRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TextCorrectionRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextCorrectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TextCorrectionResponse struct {
@@ -1048,7 +1367,8 @@ type TextCorrectionResponse struct {
 	Response *struct {
 
 		// 纠错详情
-		CCITokens []*CCIToken `json:"CCITokens,omitempty" name:"CCITokens" list`
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CCITokens []*CCIToken `json:"CCITokens,omitempty" name:"CCITokens"`
 
 		// 纠错后的文本
 		ResultText *string `json:"ResultText,omitempty" name:"ResultText"`
@@ -1063,8 +1383,10 @@ func (r *TextCorrectionResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TextCorrectionResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TextSimilarityRequest struct {
@@ -1073,9 +1395,8 @@ type TextSimilarityRequest struct {
 	// 需要与目标句子计算相似度的源句子（仅支持UTF-8格式，不超过500字符）
 	SrcText *string `json:"SrcText,omitempty" name:"SrcText"`
 
-	// 需要与源句子计算相似度的一个或多个目标句子（仅支持UTF-8格式，目标句子的数量不超过100个，每个句子不超过500字符）
-	// 注意：每成功计算1个目标句子与源句子的相似度算1次调用
-	TargetText []*string `json:"TargetText,omitempty" name:"TargetText" list`
+	// 目标句子（以句子数量为单位消耗资源包）
+	TargetText []*string `json:"TargetText,omitempty" name:"TargetText"`
 }
 
 func (r *TextSimilarityRequest) ToJsonString() string {
@@ -1083,8 +1404,19 @@ func (r *TextSimilarityRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TextSimilarityRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SrcText")
+	delete(f, "TargetText")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextSimilarityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TextSimilarityResponse struct {
@@ -1092,7 +1424,7 @@ type TextSimilarityResponse struct {
 	Response *struct {
 
 		// 每个目标句子与源句子的相似度分值，按照分值降序排列
-		Similarity []*Similarity `json:"Similarity,omitempty" name:"Similarity" list`
+		Similarity []*Similarity `json:"Similarity,omitempty" name:"Similarity"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1104,23 +1436,29 @@ func (r *TextSimilarityResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TextSimilarityResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TripleContent struct {
 
-	// 实体id
-	Id *string `json:"Id,omitempty" name:"Id"`
+	// 实体流行度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Popular *int64 `json:"Popular,omitempty" name:"Popular"`
 
 	// 实体名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 实体order
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Order *int64 `json:"Order,omitempty" name:"Order"`
 
-	// 实体流行度
-	Popular *int64 `json:"Popular,omitempty" name:"Popular"`
+	// 实体id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitempty" name:"Id"`
 }
 
 type UpdateDictRequest struct {
@@ -1141,8 +1479,20 @@ func (r *UpdateDictRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateDictRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DictId")
+	delete(f, "Description")
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDictRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateDictResponse struct {
@@ -1159,8 +1509,10 @@ func (r *UpdateDictResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateDictResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type WordEmbeddingRequest struct {
@@ -1175,19 +1527,29 @@ func (r *WordEmbeddingRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *WordEmbeddingRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "WordEmbeddingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type WordEmbeddingResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// 词向量数组
+		Vector []*float64 `json:"Vector,omitempty" name:"Vector"`
+
 		// 词向量的维度
 		Dimension *uint64 `json:"Dimension,omitempty" name:"Dimension"`
-
-		// 词向量数组
-		Vector []*float64 `json:"Vector,omitempty" name:"Vector" list`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1199,8 +1561,10 @@ func (r *WordEmbeddingResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *WordEmbeddingResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type WordItem struct {
@@ -1212,6 +1576,7 @@ type WordItem struct {
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 词条的词性。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Pos *string `json:"Pos,omitempty" name:"Pos"`
 }
 
@@ -1230,8 +1595,19 @@ func (r *WordSimilarityRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *WordSimilarityRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SrcWord")
+	delete(f, "TargetWord")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "WordSimilarityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type WordSimilarityResponse struct {
@@ -1251,6 +1627,8 @@ func (r *WordSimilarityResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *WordSimilarityResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

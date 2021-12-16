@@ -16,7 +16,7 @@ package v20190304
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -32,8 +32,18 @@ func (r *ClearQueueRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ClearQueueRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "QueueName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ClearQueueRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ClearQueueResponse struct {
@@ -50,8 +60,10 @@ func (r *ClearQueueResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ClearQueueResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ClearSubscriptionFilterTagsRequest struct {
@@ -69,8 +81,19 @@ func (r *ClearSubscriptionFilterTagsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ClearSubscriptionFilterTagsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicName")
+	delete(f, "SubscriptionName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ClearSubscriptionFilterTagsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ClearSubscriptionFilterTagsResponse struct {
@@ -87,8 +110,10 @@ func (r *ClearSubscriptionFilterTagsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ClearSubscriptionFilterTagsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateQueueRequest struct {
@@ -145,8 +170,32 @@ func (r *CreateQueueRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateQueueRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "QueueName")
+	delete(f, "MaxMsgHeapNum")
+	delete(f, "PollingWaitSeconds")
+	delete(f, "VisibilityTimeout")
+	delete(f, "MaxMsgSize")
+	delete(f, "MsgRetentionSeconds")
+	delete(f, "RewindSeconds")
+	delete(f, "Transaction")
+	delete(f, "FirstQueryInterval")
+	delete(f, "MaxQueryCount")
+	delete(f, "DeadLetterQueueName")
+	delete(f, "Policy")
+	delete(f, "MaxReceiveCount")
+	delete(f, "MaxTimeToLive")
+	delete(f, "Trace")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateQueueRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateQueueResponse struct {
@@ -166,8 +215,10 @@ func (r *CreateQueueResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateQueueResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateSubscribeRequest struct {
@@ -189,10 +240,10 @@ type CreateSubscribeRequest struct {
 	NotifyStrategy *string `json:"NotifyStrategy,omitempty" name:"NotifyStrategy"`
 
 	// 消息正文。消息标签（用于消息过滤)。标签数量不能超过5个，每个标签不超过16个字符。与(Batch)PublishMessage的MsgTag参数配合使用，规则：1）如果FilterTag没有设置，则无论MsgTag是否有设置，订阅接收所有发布到Topic的消息；2）如果FilterTag数组有值，则只有数组中至少有一个值在MsgTag数组中也存在时（即FilterTag和MsgTag有交集），订阅才接收该发布到Topic的消息；3）如果FilterTag数组有值，但MsgTag没设置，则不接收任何发布到Topic的消息，可以认为是2）的一种特例，此时FilterTag和MsgTag没有交集。规则整体的设计思想是以订阅者的意愿为主。
-	FilterTag []*string `json:"FilterTag,omitempty" name:"FilterTag" list`
+	FilterTag []*string `json:"FilterTag,omitempty" name:"FilterTag"`
 
 	// BindingKey数量不超过5个， 每个BindingKey长度不超过64字节，该字段表示订阅接收消息的过滤策略，每个BindingKey最多含有15个“.”， 即最多16个词组。
-	BindingKey []*string `json:"BindingKey,omitempty" name:"BindingKey" list`
+	BindingKey []*string `json:"BindingKey,omitempty" name:"BindingKey"`
 
 	// 推送内容的格式。取值：1）JSON；2）SIMPLIFIED，即raw格式。如果Protocol是queue，则取值必须为SIMPLIFIED。如果Protocol是http，两个值均可以，默认值是JSON。
 	NotifyContentFormat *string `json:"NotifyContentFormat,omitempty" name:"NotifyContentFormat"`
@@ -203,8 +254,25 @@ func (r *CreateSubscribeRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateSubscribeRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicName")
+	delete(f, "SubscriptionName")
+	delete(f, "Protocol")
+	delete(f, "Endpoint")
+	delete(f, "NotifyStrategy")
+	delete(f, "FilterTag")
+	delete(f, "BindingKey")
+	delete(f, "NotifyContentFormat")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSubscribeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateSubscribeResponse struct {
@@ -224,8 +292,10 @@ func (r *CreateSubscribeResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateSubscribeResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateTopicRequest struct {
@@ -252,8 +322,22 @@ func (r *CreateTopicRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateTopicRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicName")
+	delete(f, "MaxMsgSize")
+	delete(f, "FilterType")
+	delete(f, "MsgRetentionSeconds")
+	delete(f, "Trace")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTopicRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateTopicResponse struct {
@@ -273,8 +357,10 @@ func (r *CreateTopicResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateTopicResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeadLetterPolicy struct {
@@ -323,8 +409,18 @@ func (r *DeleteQueueRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteQueueRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "QueueName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteQueueRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteQueueResponse struct {
@@ -341,8 +437,10 @@ func (r *DeleteQueueResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteQueueResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteSubscribeRequest struct {
@@ -360,8 +458,19 @@ func (r *DeleteSubscribeRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteSubscribeRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicName")
+	delete(f, "SubscriptionName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSubscribeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteSubscribeResponse struct {
@@ -378,8 +487,10 @@ func (r *DeleteSubscribeResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteSubscribeResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteTopicRequest struct {
@@ -394,8 +505,18 @@ func (r *DeleteTopicRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteTopicRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTopicRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteTopicResponse struct {
@@ -412,8 +533,10 @@ func (r *DeleteTopicResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteTopicResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeDeadLetterSourceQueuesRequest struct {
@@ -429,7 +552,7 @@ type DescribeDeadLetterSourceQueuesRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 过滤死信队列源队列名称，目前仅支持SourceQueueName过滤
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeDeadLetterSourceQueuesRequest) ToJsonString() string {
@@ -437,8 +560,21 @@ func (r *DescribeDeadLetterSourceQueuesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeDeadLetterSourceQueuesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeadLetterQueueName")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeadLetterSourceQueuesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeDeadLetterSourceQueuesResponse struct {
@@ -449,7 +585,7 @@ type DescribeDeadLetterSourceQueuesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 死信队列源队列
-		QueueSet []*DeadLetterSource `json:"QueueSet,omitempty" name:"QueueSet" list`
+		QueueSet []*DeadLetterSource `json:"QueueSet,omitempty" name:"QueueSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -461,8 +597,10 @@ func (r *DescribeDeadLetterSourceQueuesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeDeadLetterSourceQueuesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeQueueDetailRequest struct {
@@ -475,7 +613,7 @@ type DescribeQueueDetailRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 筛选参数，目前支持QueueName筛选，且仅支持一个关键字
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 标签搜索
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
@@ -489,8 +627,22 @@ func (r *DescribeQueueDetailRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeQueueDetailRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "TagKey")
+	delete(f, "QueueName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeQueueDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeQueueDetailResponse struct {
@@ -501,7 +653,7 @@ type DescribeQueueDetailResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 队列详情列表。
-		QueueSet []*QueueSet `json:"QueueSet,omitempty" name:"QueueSet" list`
+		QueueSet []*QueueSet `json:"QueueSet,omitempty" name:"QueueSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -513,8 +665,10 @@ func (r *DescribeQueueDetailResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeQueueDetailResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeSubscriptionDetailRequest struct {
@@ -530,7 +684,7 @@ type DescribeSubscriptionDetailRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 筛选参数，目前只支持SubscriptionName，且仅支持一个关键字。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeSubscriptionDetailRequest) ToJsonString() string {
@@ -538,8 +692,21 @@ func (r *DescribeSubscriptionDetailRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeSubscriptionDetailRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicName")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSubscriptionDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeSubscriptionDetailResponse struct {
@@ -551,7 +718,7 @@ type DescribeSubscriptionDetailResponse struct {
 
 		// Subscription属性集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SubscriptionSet []*Subscription `json:"SubscriptionSet,omitempty" name:"SubscriptionSet" list`
+		SubscriptionSet []*Subscription `json:"SubscriptionSet,omitempty" name:"SubscriptionSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -563,8 +730,10 @@ func (r *DescribeSubscriptionDetailResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeSubscriptionDetailResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTopicDetailRequest struct {
@@ -577,7 +746,7 @@ type DescribeTopicDetailRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 目前只支持过滤TopicName ， 且只能填一个过滤值。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 标签匹配。
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
@@ -591,8 +760,22 @@ func (r *DescribeTopicDetailRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTopicDetailRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "TagKey")
+	delete(f, "TopicName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopicDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTopicDetailResponse struct {
@@ -603,7 +786,7 @@ type DescribeTopicDetailResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 主题详情列表。
-		TopicSet []*TopicSet `json:"TopicSet,omitempty" name:"TopicSet" list`
+		TopicSet []*TopicSet `json:"TopicSet,omitempty" name:"TopicSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -615,8 +798,10 @@ func (r *DescribeTopicDetailResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTopicDetailResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Filter struct {
@@ -625,7 +810,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 数值
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type ModifyQueueAttributeRequest struct {
@@ -679,8 +864,31 @@ func (r *ModifyQueueAttributeRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyQueueAttributeRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "QueueName")
+	delete(f, "MaxMsgHeapNum")
+	delete(f, "PollingWaitSeconds")
+	delete(f, "VisibilityTimeout")
+	delete(f, "MaxMsgSize")
+	delete(f, "MsgRetentionSeconds")
+	delete(f, "RewindSeconds")
+	delete(f, "FirstQueryInterval")
+	delete(f, "MaxQueryCount")
+	delete(f, "DeadLetterQueueName")
+	delete(f, "MaxTimeToLive")
+	delete(f, "MaxReceiveCount")
+	delete(f, "Policy")
+	delete(f, "Trace")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyQueueAttributeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyQueueAttributeResponse struct {
@@ -697,8 +905,10 @@ func (r *ModifyQueueAttributeResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyQueueAttributeResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifySubscriptionAttributeRequest struct {
@@ -719,10 +929,10 @@ type ModifySubscriptionAttributeRequest struct {
 	NotifyContentFormat *string `json:"NotifyContentFormat,omitempty" name:"NotifyContentFormat"`
 
 	// 消息正文。消息标签（用于消息过滤)。标签数量不能超过5个，每个标签不超过16个字符。与(Batch)PublishMessage的MsgTag参数配合使用，规则：1）如果FilterTag没有设置，则无论MsgTag是否有设置，订阅接收所有发布到Topic的消息；2）如果FilterTag数组有值，则只有数组中至少有一个值在MsgTag数组中也存在时（即FilterTag和MsgTag有交集），订阅才接收该发布到Topic的消息；3）如果FilterTag数组有值，但MsgTag没设置，则不接收任何发布到Topic的消息，可以认为是2）的一种特例，此时FilterTag和MsgTag没有交集。规则整体的设计思想是以订阅者的意愿为主。
-	FilterTags []*string `json:"FilterTags,omitempty" name:"FilterTags" list`
+	FilterTags []*string `json:"FilterTags,omitempty" name:"FilterTags"`
 
 	// BindingKey数量不超过5个， 每个BindingKey长度不超过64字节，该字段表示订阅接收消息的过滤策略，每个BindingKey最多含有15个“.”， 即最多16个词组。
-	BindingKey []*string `json:"BindingKey,omitempty" name:"BindingKey" list`
+	BindingKey []*string `json:"BindingKey,omitempty" name:"BindingKey"`
 }
 
 func (r *ModifySubscriptionAttributeRequest) ToJsonString() string {
@@ -730,8 +940,23 @@ func (r *ModifySubscriptionAttributeRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifySubscriptionAttributeRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicName")
+	delete(f, "SubscriptionName")
+	delete(f, "NotifyStrategy")
+	delete(f, "NotifyContentFormat")
+	delete(f, "FilterTags")
+	delete(f, "BindingKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySubscriptionAttributeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifySubscriptionAttributeResponse struct {
@@ -748,8 +973,10 @@ func (r *ModifySubscriptionAttributeResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifySubscriptionAttributeResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyTopicAttributeRequest struct {
@@ -773,8 +1000,21 @@ func (r *ModifyTopicAttributeRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyTopicAttributeRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicName")
+	delete(f, "MaxMsgSize")
+	delete(f, "MsgRetentionSeconds")
+	delete(f, "Trace")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTopicAttributeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyTopicAttributeResponse struct {
@@ -791,8 +1031,10 @@ func (r *ModifyTopicAttributeResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyTopicAttributeResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueueSet struct {
@@ -873,7 +1115,7 @@ type QueueSet struct {
 
 	// 死信队列。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DeadLetterSource []*DeadLetterSource `json:"DeadLetterSource,omitempty" name:"DeadLetterSource" list`
+	DeadLetterSource []*DeadLetterSource `json:"DeadLetterSource,omitempty" name:"DeadLetterSource"`
 
 	// 死信队列策略。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -889,7 +1131,7 @@ type QueueSet struct {
 
 	// 关联的标签。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 消息轨迹。true表示开启，false表示不开启。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -911,8 +1153,19 @@ func (r *RewindQueueRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RewindQueueRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "QueueName")
+	delete(f, "StartConsumeTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RewindQueueRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RewindQueueResponse struct {
@@ -929,8 +1182,10 @@ func (r *RewindQueueResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RewindQueueResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Subscription struct {
@@ -961,7 +1216,7 @@ type Subscription struct {
 
 	// 表示订阅接收消息的过滤策略。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BindingKey []*string `json:"BindingKey,omitempty" name:"BindingKey" list`
+	BindingKey []*string `json:"BindingKey,omitempty" name:"BindingKey"`
 
 	// 接收通知的 endpoint，根据协议 protocol 区分：对于 HTTP，endpoint 必须以http://开头，host 可以是域名或 IP；对于 queue，则填 queueName。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -971,7 +1226,7 @@ type Subscription struct {
 	// filterType = 1表示用户使用 filterTag 标签过滤
 	// filterType = 2表示用户使用 bindingKey 过滤。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FilterTags []*string `json:"FilterTags,omitempty" name:"FilterTags" list`
+	FilterTags []*string `json:"FilterTags,omitempty" name:"FilterTags"`
 
 	// 订阅的协议，目前支持两种协议：HTTP、queue。使用 HTTP 协议，用户需自己搭建接受消息的 Web Server。使用 queue，消息会自动推送到 CMQ queue，用户可以并发地拉取消息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1045,7 +1300,7 @@ type TopicSet struct {
 
 	// 关联的标签。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 消息轨迹。true表示开启，false表示不开启。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1075,8 +1330,18 @@ func (r *UnbindDeadLetterRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UnbindDeadLetterRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "QueueName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnbindDeadLetterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UnbindDeadLetterResponse struct {
@@ -1093,6 +1358,8 @@ func (r *UnbindDeadLetterResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UnbindDeadLetterResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

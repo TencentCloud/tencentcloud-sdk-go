@@ -16,7 +16,7 @@ package v20200304
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -42,8 +42,18 @@ func (r *CancelFaceMorphJobRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CancelFaceMorphJobRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelFaceMorphJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CancelFaceMorphJobResponse struct {
@@ -60,8 +70,10 @@ func (r *CancelFaceMorphJobResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CancelFaceMorphJobResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ChangeAgePicRequest struct {
@@ -69,7 +81,7 @@ type ChangeAgePicRequest struct {
 
 	// 人脸变老变年轻信息。 
 	// 您可以输入最多3个 AgeInfo 来实现给一张图中的最多3张人脸变老变年轻。
-	AgeInfos []*AgeInfo `json:"AgeInfos,omitempty" name:"AgeInfos" list`
+	AgeInfos []*AgeInfo `json:"AgeInfos,omitempty" name:"AgeInfos"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -91,8 +103,21 @@ func (r *ChangeAgePicRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ChangeAgePicRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AgeInfos")
+	delete(f, "Image")
+	delete(f, "Url")
+	delete(f, "RspImgType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChangeAgePicRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ChangeAgePicResponse struct {
@@ -115,8 +140,10 @@ func (r *ChangeAgePicResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ChangeAgePicResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FaceCartoonPicRequest struct {
@@ -145,8 +172,21 @@ func (r *FaceCartoonPicRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FaceCartoonPicRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Image")
+	delete(f, "Url")
+	delete(f, "RspImgType")
+	delete(f, "DisableGlobalEffect")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FaceCartoonPicRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FaceCartoonPicResponse struct {
@@ -169,8 +209,10 @@ func (r *FaceCartoonPicResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FaceCartoonPicResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FaceMorphOutput struct {
@@ -190,11 +232,11 @@ type FaceMorphOutput struct {
 
 type FaceRect struct {
 
-	// 人脸框左上角横坐标。
-	X *int64 `json:"X,omitempty" name:"X"`
-
 	// 人脸框左上角纵坐标。
 	Y *int64 `json:"Y,omitempty" name:"Y"`
+
+	// 人脸框左上角横坐标。
+	X *int64 `json:"X,omitempty" name:"X"`
 
 	// 人脸框宽度。
 	Width *int64 `json:"Width,omitempty" name:"Width"`
@@ -230,7 +272,7 @@ type MorphFaceRequest struct {
 	// 人员人脸总数量至少2张，不可超过5张。 
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Images []*string `json:"Images,omitempty" name:"Images" list`
+	Images []*string `json:"Images,omitempty" name:"Images"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。 
 	// Url、Image必须提供一个，如果都提供，只使用 Url。图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
@@ -238,15 +280,15 @@ type MorphFaceRequest struct {
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。 
 	// 人员人脸总数量不可超过5张。 
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
-	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 
 	// 人脸渐变参数。可调整每张图片的展示时长、人像渐变的最长时间
-	GradientInfos []*GradientInfo `json:"GradientInfos,omitempty" name:"GradientInfos" list`
+	GradientInfos []*GradientInfo `json:"GradientInfos,omitempty" name:"GradientInfos"`
 
 	// 视频帧率，取值[1,25]。默认10
 	Fps *int64 `json:"Fps,omitempty" name:"Fps"`
 
-	// 视频类型，取值[0,2]，其中0为MP4，1为GIF，2为MOV。目前仅支持MP4格式，默认为MP4格式
+	// 视频类型，取值0。目前仅支持MP4格式，默认为MP4格式
 	OutputType *int64 `json:"OutputType,omitempty" name:"OutputType"`
 
 	// 视频宽度，取值[128,1280]。默认值720
@@ -261,8 +303,24 @@ func (r *MorphFaceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *MorphFaceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Images")
+	delete(f, "Urls")
+	delete(f, "GradientInfos")
+	delete(f, "Fps")
+	delete(f, "OutputType")
+	delete(f, "OutputWidth")
+	delete(f, "OutputHeight")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MorphFaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MorphFaceResponse struct {
@@ -285,8 +343,10 @@ func (r *MorphFaceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *MorphFaceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryFaceMorphJobRequest struct {
@@ -301,8 +361,18 @@ func (r *QueryFaceMorphJobRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryFaceMorphJobRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryFaceMorphJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryFaceMorphJobResponse struct {
@@ -316,6 +386,10 @@ type QueryFaceMorphJobResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		FaceMorphOutput *FaceMorphOutput `json:"FaceMorphOutput,omitempty" name:"FaceMorphOutput"`
 
+		// 当前任务状态码：1：排队中、3: 处理中、5: 处理失败、7:处理完成
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		JobStatusCode *int64 `json:"JobStatusCode,omitempty" name:"JobStatusCode"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -326,8 +400,10 @@ func (r *QueryFaceMorphJobResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryFaceMorphJobResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SwapGenderPicRequest struct {
@@ -335,7 +411,7 @@ type SwapGenderPicRequest struct {
 
 	// 人脸转化性别信息。 
 	// 您可以输入最多3个 GenderInfo 来实现给一张图中的最多3张人脸转换性别。
-	GenderInfos []*GenderInfo `json:"GenderInfos,omitempty" name:"GenderInfos" list`
+	GenderInfos []*GenderInfo `json:"GenderInfos,omitempty" name:"GenderInfos"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -357,8 +433,21 @@ func (r *SwapGenderPicRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SwapGenderPicRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GenderInfos")
+	delete(f, "Image")
+	delete(f, "Url")
+	delete(f, "RspImgType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SwapGenderPicRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SwapGenderPicResponse struct {
@@ -381,6 +470,8 @@ func (r *SwapGenderPicResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SwapGenderPicResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

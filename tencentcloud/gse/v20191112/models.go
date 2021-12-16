@@ -16,7 +16,7 @@ package v20191112
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -43,6 +43,10 @@ type Alias struct {
 
 	// 上次修改此数据对象的时间
 	LastUpdatedTime *string `json:"LastUpdatedTime,omitempty" name:"LastUpdatedTime"`
+
+	// 标签列表，最大长度50组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type Asset struct {
@@ -79,6 +83,16 @@ type Asset struct {
 
 	// 生成包支持的操作系统类型
 	OsType *string `json:"OsType,omitempty" name:"OsType"`
+
+	// 生成包资源类型，ASSET 或者 IMAGE；ASSET 代表是原有生成包类型，IMAGE 为扩充使用镜像类型
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 镜像资源共享类型，当 ResourceType 为 IMAGE 时该字段有意义，SHARED 表示共享、SHARED_IMAGE 表示未共享；ResourceType 为 ASSET 时这里返回 UNKNOWN_SHARED 用于占位
+	SharingStatus *string `json:"SharingStatus,omitempty" name:"SharingStatus"`
+
+	// 标签列表，最大长度50组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type AssetCredentials struct {
@@ -126,8 +140,20 @@ func (r *AttachCcnInstancesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AttachCcnInstancesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetId")
+	delete(f, "AccountId")
+	delete(f, "CcnId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AttachCcnInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type AttachCcnInstancesResponse struct {
@@ -144,8 +170,19 @@ func (r *AttachCcnInstancesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AttachCcnInstancesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CcnInfo struct {
+
+	// 云联网所属账号
+	AccountId *string `json:"AccountId,omitempty" name:"AccountId"`
+
+	// 云联网id
+	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
 }
 
 type CcnInstanceSets struct {
@@ -171,6 +208,135 @@ type CcnInstanceSets struct {
 	State *string `json:"State,omitempty" name:"State"`
 }
 
+type CopyFleetRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务器舰队 Id
+	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
+
+	// 复制数量，最小值1，最大值为剩余配额，可以根据[获取用户配额](https://cloud.tencent.com/document/product/1165/48732)接口获取。
+	CopyNumber *int64 `json:"CopyNumber,omitempty" name:"CopyNumber"`
+
+	// 生成包 Id
+	AssetId *string `json:"AssetId,omitempty" name:"AssetId"`
+
+	// 描述，最小长度0，最大长度100
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 网络配置
+	InboundPermissions []*InboundPermission `json:"InboundPermissions,omitempty" name:"InboundPermissions"`
+
+	// 服务器类型，参数根据[获取服务器实例类型列表](https://cloud.tencent.com/document/product/1165/48732)接口获取。
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 服务器舰队类型，目前只支持ON_DEMAND类型
+	FleetType *string `json:"FleetType,omitempty" name:"FleetType"`
+
+	// 服务器舰队名称，最小长度1，最大长度50
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 保护策略：不保护NoProtection、完全保护FullProtection、时限保护TimeLimitProtection
+	NewGameServerSessionProtectionPolicy *string `json:"NewGameServerSessionProtectionPolicy,omitempty" name:"NewGameServerSessionProtectionPolicy"`
+
+	// 资源创建限制策略
+	ResourceCreationLimitPolicy *ResourceCreationLimitPolicy `json:"ResourceCreationLimitPolicy,omitempty" name:"ResourceCreationLimitPolicy"`
+
+	// 进程配置
+	RuntimeConfiguration *RuntimeConfiguration `json:"RuntimeConfiguration,omitempty" name:"RuntimeConfiguration"`
+
+	// 时限保护超时时间，默认60分钟，最小值5，最大值1440；当NewGameSessionProtectionPolicy为TimeLimitProtection时参数有效
+	GameServerSessionProtectionTimeLimit *int64 `json:"GameServerSessionProtectionTimeLimit,omitempty" name:"GameServerSessionProtectionTimeLimit"`
+
+	// 是否选择扩缩容：SCALING_SELECTED 或者 SCALING_UNSELECTED；默认是 SCALING_UNSELECTED
+	SelectedScalingType *string `json:"SelectedScalingType,omitempty" name:"SelectedScalingType"`
+
+	// 是否选择云联网：CCN_SELECTED_BEFORE_CREATE（创建前关联）， CCN_SELECTED_AFTER_CREATE（创建后关联）或者 CCN_UNSELECTED（不关联）；默认是 CCN_UNSELECTED
+	SelectedCcnType *string `json:"SelectedCcnType,omitempty" name:"SelectedCcnType"`
+
+	// 标签列表，最大长度50组
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 系统盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-500GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，50-500GB；容量以1为单位
+	SystemDiskInfo *DiskInfo `json:"SystemDiskInfo,omitempty" name:"SystemDiskInfo"`
+
+	// 数据盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-32000GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，10-32000GB；容量以10为单位
+	DataDiskInfo []*DiskInfo `json:"DataDiskInfo,omitempty" name:"DataDiskInfo"`
+
+	// 是否选择复制定时器策略：TIMER_SELECTED 或者 TIMER_UNSELECTED；默认是 TIMER_UNSELECTED
+	SelectedTimerType *string `json:"SelectedTimerType,omitempty" name:"SelectedTimerType"`
+
+	// 云联网信息，包含对应的账号信息及所属id
+	CcnInfos []*CcnInfo `json:"CcnInfos,omitempty" name:"CcnInfos"`
+
+	// fleet公网出带宽最大值，默认100Mbps，范围1-200Mbps
+	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
+}
+
+func (r *CopyFleetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CopyFleetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetId")
+	delete(f, "CopyNumber")
+	delete(f, "AssetId")
+	delete(f, "Description")
+	delete(f, "InboundPermissions")
+	delete(f, "InstanceType")
+	delete(f, "FleetType")
+	delete(f, "Name")
+	delete(f, "NewGameServerSessionProtectionPolicy")
+	delete(f, "ResourceCreationLimitPolicy")
+	delete(f, "RuntimeConfiguration")
+	delete(f, "GameServerSessionProtectionTimeLimit")
+	delete(f, "SelectedScalingType")
+	delete(f, "SelectedCcnType")
+	delete(f, "Tags")
+	delete(f, "SystemDiskInfo")
+	delete(f, "DataDiskInfo")
+	delete(f, "SelectedTimerType")
+	delete(f, "CcnInfos")
+	delete(f, "InternetMaxBandwidthOut")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CopyFleetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CopyFleetResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 服务器舰队属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FleetAttributes []*FleetAttributes `json:"FleetAttributes,omitempty" name:"FleetAttributes"`
+
+		// 服务器舰队数量
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CopyFleetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CopyFleetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateAliasRequest struct {
 	*tchttp.BaseRequest
 
@@ -182,6 +348,9 @@ type CreateAliasRequest struct {
 
 	// 别名的可读说明，长度不小于1字符不超过1024字符
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 标签列表，最大长度50组
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateAliasRequest) ToJsonString() string {
@@ -189,8 +358,21 @@ func (r *CreateAliasRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateAliasRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "RoutingStrategy")
+	delete(f, "Description")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAliasRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateAliasResponse struct {
@@ -210,8 +392,10 @@ func (r *CreateAliasResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateAliasResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateAssetRequest struct {
@@ -229,11 +413,14 @@ type CreateAssetRequest struct {
 	// 生成包所在地域，详见产品支持的 [地域列表](https://cloud.tencent.com/document/api/1165/42053#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)
 	AssetRegion *string `json:"AssetRegion,omitempty" name:"AssetRegion"`
 
-	// 生成包可运行的操作系统，若传入参数为CentOS7.16则不需要传入ImageId字段，否则，需要传入Imageid字段（该方式是为了兼容之前的版本，后续建议使用ImageId来替代该字段）
+	// 生成包可运行的操作系统，若传入参数为CentOS7.16则不需要传入ImageId字段，否则，需要传入Imageid字段（该方式是为了兼容之前的版本，后续建议使用ImageId来替代该字段）。这里可通过[DescribeAssetSystems](https://cloud.tencent.com/document/product/1165/49191)接口获取asset支持的操作系统进行传入（使用AssetSupportSys的OsVersion字段）
 	OperateSystem *string `json:"OperateSystem,omitempty" name:"OperateSystem"`
 
 	// 生成包支持的操作系统镜像id，若传入OperateSystem字段的值是CentOS7.16，则不需要传入该值；如果不是，则需要通过[DescribeAssetSystems](https://cloud.tencent.com/document/product/1165/49191)接口获取asset支持的操作系统ImageId进行传入
 	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+	// 标签列表，最大长度50组
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateAssetRequest) ToJsonString() string {
@@ -241,8 +428,24 @@ func (r *CreateAssetRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateAssetRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BucketKey")
+	delete(f, "AssetName")
+	delete(f, "AssetVersion")
+	delete(f, "AssetRegion")
+	delete(f, "OperateSystem")
+	delete(f, "ImageId")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAssetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateAssetResponse struct {
@@ -265,8 +468,94 @@ func (r *CreateAssetResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateAssetResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAssetWithImageRequest struct {
+	*tchttp.BaseRequest
+
+	// 生成包名字，最小长度为1，最大长度为64
+	AssetName *string `json:"AssetName,omitempty" name:"AssetName"`
+
+	// 生成包版本，最小长度为1，最大长度为64
+	AssetVersion *string `json:"AssetVersion,omitempty" name:"AssetVersion"`
+
+	// 生成包所在地域，详见产品支持的 [地域列表](https://cloud.tencent.com/document/api/1165/42053#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)
+	AssetRegion *string `json:"AssetRegion,omitempty" name:"AssetRegion"`
+
+	// 生成包支持的操作系统镜像id
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+	// 操作系统镜像包大小，比如：40GB，支持单位 KB、MB、GB
+	ImageSize *string `json:"ImageSize,omitempty" name:"ImageSize"`
+
+	// 操作系统镜像包名称，最小长度为1，最大长度为64
+	ImageOs *string `json:"ImageOs,omitempty" name:"ImageOs"`
+
+	// 操作系统镜像包类型，CentOS 或者 Windows
+	OsType *string `json:"OsType,omitempty" name:"OsType"`
+
+	// 操作系统镜像包类型，当前只支持 SHARED_IMAGE
+	ImageType *string `json:"ImageType,omitempty" name:"ImageType"`
+
+	// 操作系统镜像包位数，32 或者 64
+	OsBit *uint64 `json:"OsBit,omitempty" name:"OsBit"`
+}
+
+func (r *CreateAssetWithImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAssetWithImageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AssetName")
+	delete(f, "AssetVersion")
+	delete(f, "AssetRegion")
+	delete(f, "ImageId")
+	delete(f, "ImageSize")
+	delete(f, "ImageOs")
+	delete(f, "OsType")
+	delete(f, "ImageType")
+	delete(f, "OsBit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAssetWithImageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAssetWithImageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 生成包ID
+		AssetId *string `json:"AssetId,omitempty" name:"AssetId"`
+
+		// 生成包的全局唯一资源标识符
+		AssetArn *string `json:"AssetArn,omitempty" name:"AssetArn"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAssetWithImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAssetWithImageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateFleetRequest struct {
@@ -279,7 +568,7 @@ type CreateFleetRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 网络配置
-	InboundPermissions []*InboundPermission `json:"InboundPermissions,omitempty" name:"InboundPermissions" list`
+	InboundPermissions []*InboundPermission `json:"InboundPermissions,omitempty" name:"InboundPermissions"`
 
 	// 服务器类型，参数根据[获取服务器实例类型列表](https://cloud.tencent.com/document/product/1165/48732)接口获取。
 	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
@@ -307,6 +596,21 @@ type CreateFleetRequest struct {
 
 	// 时限保护超时时间，默认60分钟，最小值5，最大值1440；当NewGameSessionProtectionPolicy为TimeLimitProtection时参数有效
 	GameServerSessionProtectionTimeLimit *int64 `json:"GameServerSessionProtectionTimeLimit,omitempty" name:"GameServerSessionProtectionTimeLimit"`
+
+	// 标签列表，最大长度50组
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 系统盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-500GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，50-500GB；容量以1为单位
+	SystemDiskInfo *DiskInfo `json:"SystemDiskInfo,omitempty" name:"SystemDiskInfo"`
+
+	// 数据盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-32000GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，10-32000GB；容量以10为单位
+	DataDiskInfo []*DiskInfo `json:"DataDiskInfo,omitempty" name:"DataDiskInfo"`
+
+	// 云联网信息，包含对应的账号信息及所属id
+	CcnInfos []*CcnInfo `json:"CcnInfos,omitempty" name:"CcnInfos"`
+
+	// fleet公网出带宽最大值，默认100Mbps，范围1-200Mbps
+	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
 }
 
 func (r *CreateFleetRequest) ToJsonString() string {
@@ -314,8 +618,34 @@ func (r *CreateFleetRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateFleetRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AssetId")
+	delete(f, "Description")
+	delete(f, "InboundPermissions")
+	delete(f, "InstanceType")
+	delete(f, "FleetType")
+	delete(f, "Name")
+	delete(f, "NewGameServerSessionProtectionPolicy")
+	delete(f, "PeerVpcId")
+	delete(f, "ResourceCreationLimitPolicy")
+	delete(f, "RuntimeConfiguration")
+	delete(f, "SubNetId")
+	delete(f, "GameServerSessionProtectionTimeLimit")
+	delete(f, "Tags")
+	delete(f, "SystemDiskInfo")
+	delete(f, "DataDiskInfo")
+	delete(f, "CcnInfos")
+	delete(f, "InternetMaxBandwidthOut")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFleetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateFleetResponse struct {
@@ -336,8 +666,10 @@ func (r *CreateFleetResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateFleetResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateGameServerSessionQueueRequest struct {
@@ -347,13 +679,16 @@ type CreateGameServerSessionQueueRequest struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 目的服务器舰队（可为别名）列表
-	Destinations []*GameServerSessionQueueDestination `json:"Destinations,omitempty" name:"Destinations" list`
+	Destinations []*GameServerSessionQueueDestination `json:"Destinations,omitempty" name:"Destinations"`
 
 	// 延迟策略集合
-	PlayerLatencyPolicies []*PlayerLatencyPolicy `json:"PlayerLatencyPolicies,omitempty" name:"PlayerLatencyPolicies" list`
+	PlayerLatencyPolicies []*PlayerLatencyPolicy `json:"PlayerLatencyPolicies,omitempty" name:"PlayerLatencyPolicies"`
 
 	// 超时时间（单位秒，默认值为600秒）
 	TimeoutInSeconds *uint64 `json:"TimeoutInSeconds,omitempty" name:"TimeoutInSeconds"`
+
+	// 标签列表，最大长度50组
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateGameServerSessionQueueRequest) ToJsonString() string {
@@ -361,8 +696,22 @@ func (r *CreateGameServerSessionQueueRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateGameServerSessionQueueRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Destinations")
+	delete(f, "PlayerLatencyPolicies")
+	delete(f, "TimeoutInSeconds")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateGameServerSessionQueueRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateGameServerSessionQueueResponse struct {
@@ -382,8 +731,10 @@ func (r *CreateGameServerSessionQueueResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateGameServerSessionQueueResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateGameServerSessionRequest struct {
@@ -402,7 +753,7 @@ type CreateGameServerSessionRequest struct {
 	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
 
 	// 游戏属性，最大长度不超过16组
-	GameProperties []*GameProperty `json:"GameProperties,omitempty" name:"GameProperties" list`
+	GameProperties []*GameProperty `json:"GameProperties,omitempty" name:"GameProperties"`
 
 	// 游戏服务器会话属性详情，最大长度不超过4096个ASCII字符
 	GameServerSessionData *string `json:"GameServerSessionData,omitempty" name:"GameServerSessionData"`
@@ -422,8 +773,26 @@ func (r *CreateGameServerSessionRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateGameServerSessionRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MaximumPlayerSessionCount")
+	delete(f, "AliasId")
+	delete(f, "CreatorId")
+	delete(f, "FleetId")
+	delete(f, "GameProperties")
+	delete(f, "GameServerSessionData")
+	delete(f, "GameServerSessionId")
+	delete(f, "IdempotencyToken")
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateGameServerSessionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateGameServerSessionResponse struct {
@@ -444,8 +813,10 @@ func (r *CreateGameServerSessionResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateGameServerSessionResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Credentials struct {
@@ -469,8 +840,18 @@ func (r *DeleteAliasRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteAliasRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AliasId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAliasRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteAliasResponse struct {
@@ -487,8 +868,10 @@ func (r *DeleteAliasResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteAliasResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteAssetRequest struct {
@@ -503,8 +886,18 @@ func (r *DeleteAssetRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteAssetRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AssetId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAssetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteAssetResponse struct {
@@ -521,8 +914,10 @@ func (r *DeleteAssetResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteAssetResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteFleetRequest struct {
@@ -537,8 +932,18 @@ func (r *DeleteFleetRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteFleetRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteFleetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteFleetResponse struct {
@@ -555,8 +960,10 @@ func (r *DeleteFleetResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteFleetResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteGameServerSessionQueueRequest struct {
@@ -571,8 +978,18 @@ func (r *DeleteGameServerSessionQueueRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteGameServerSessionQueueRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteGameServerSessionQueueRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteGameServerSessionQueueResponse struct {
@@ -589,8 +1006,10 @@ func (r *DeleteGameServerSessionQueueResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteGameServerSessionQueueResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteScalingPolicyRequest struct {
@@ -608,8 +1027,19 @@ func (r *DeleteScalingPolicyRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteScalingPolicyRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetId")
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteScalingPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteScalingPolicyResponse struct {
@@ -626,8 +1056,64 @@ func (r *DeleteScalingPolicyResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteScalingPolicyResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteTimerScalingPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 定时器ID, 进行encode
+	TimerId *string `json:"TimerId,omitempty" name:"TimerId"`
+
+	// 扩缩容配置服务器舰队ID
+	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
+
+	// 定时器名称
+	TimerName *string `json:"TimerName,omitempty" name:"TimerName"`
+}
+
+func (r *DeleteTimerScalingPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTimerScalingPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TimerId")
+	delete(f, "FleetId")
+	delete(f, "TimerName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTimerScalingPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteTimerScalingPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteTimerScalingPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTimerScalingPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAliasRequest struct {
@@ -642,8 +1128,18 @@ func (r *DescribeAliasRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAliasRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AliasId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAliasRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAliasResponse struct {
@@ -664,8 +1160,10 @@ func (r *DescribeAliasResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAliasResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAssetRequest struct {
@@ -680,8 +1178,18 @@ func (r *DescribeAssetRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAssetRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AssetId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAssetResponse struct {
@@ -701,8 +1209,10 @@ func (r *DescribeAssetResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAssetResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAssetSystemsRequest struct {
@@ -720,8 +1230,19 @@ func (r *DescribeAssetSystemsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAssetSystemsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OsType")
+	delete(f, "OsBit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetSystemsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAssetSystemsResponse struct {
@@ -729,7 +1250,7 @@ type DescribeAssetSystemsResponse struct {
 	Response *struct {
 
 		// 生成包支持的操作系统类型列表
-		AssetSupportSys []*AssetSupportSys `json:"AssetSupportSys,omitempty" name:"AssetSupportSys" list`
+		AssetSupportSys []*AssetSupportSys `json:"AssetSupportSys,omitempty" name:"AssetSupportSys"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -741,8 +1262,10 @@ func (r *DescribeAssetSystemsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAssetSystemsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAssetsRequest struct {
@@ -761,7 +1284,7 @@ type DescribeAssetsRequest struct {
 	Filter *string `json:"Filter,omitempty" name:"Filter"`
 
 	// 资源过滤字段，可以按照资源名称、资源ID和标签进行过滤- 资源名称过滤    - Key: 固定字符串 "resource:name"    - Values: 资源名称数组（生成包当前仅支持单个名称的过滤）- 资源ID过滤    - Key: 固定字符串 "resource:resourceId"    - Values: 生成包ID数组（生成包当前仅支持单个生成包ID的过滤）- 标签过滤    - 通过标签键过滤        - Key: 固定字符串 "tag:key"        - Values 不传    - 通过标签键值过滤        - Key: 固定字符串 "tag:key-value"        - Values: 标签键值对数组，例如 ["key1:value1", "key1:value2", "key2:value2"]
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeAssetsRequest) ToJsonString() string {
@@ -769,8 +1292,22 @@ func (r *DescribeAssetsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAssetsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AssetRegion")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filter")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAssetsResponse struct {
@@ -781,7 +1318,7 @@ type DescribeAssetsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 生成包列表
-		Assets []*Asset `json:"Assets,omitempty" name:"Assets" list`
+		Assets []*Asset `json:"Assets,omitempty" name:"Assets"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -793,8 +1330,10 @@ func (r *DescribeAssetsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAssetsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCcnInstancesRequest struct {
@@ -809,8 +1348,18 @@ func (r *DescribeCcnInstancesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCcnInstancesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCcnInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCcnInstancesResponse struct {
@@ -819,7 +1368,7 @@ type DescribeCcnInstancesResponse struct {
 
 		// 云联网实例信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		CcnInstanceSets []*CcnInstanceSets `json:"CcnInstanceSets,omitempty" name:"CcnInstanceSets" list`
+		CcnInstanceSets []*CcnInstanceSets `json:"CcnInstanceSets,omitempty" name:"CcnInstanceSets"`
 
 		// 云联网实例个数，最小值为0
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -834,15 +1383,17 @@ func (r *DescribeCcnInstancesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCcnInstancesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeFleetAttributesRequest struct {
 	*tchttp.BaseRequest
 
 	// 服务器舰队 Ids
-	FleetIds []*string `json:"FleetIds,omitempty" name:"FleetIds" list`
+	FleetIds []*string `json:"FleetIds,omitempty" name:"FleetIds"`
 
 	// 结果返回最大数量，默认值20，最大值100
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -856,8 +1407,20 @@ func (r *DescribeFleetAttributesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeFleetAttributesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetIds")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFleetAttributesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeFleetAttributesResponse struct {
@@ -866,7 +1429,7 @@ type DescribeFleetAttributesResponse struct {
 
 		// 服务器舰队属性
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		FleetAttributes []*FleetAttributes `json:"FleetAttributes,omitempty" name:"FleetAttributes" list`
+		FleetAttributes []*FleetAttributes `json:"FleetAttributes,omitempty" name:"FleetAttributes"`
 
 		// 服务器舰队总数，最小值0
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -881,15 +1444,17 @@ func (r *DescribeFleetAttributesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeFleetAttributesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeFleetCapacityRequest struct {
 	*tchttp.BaseRequest
 
 	// 服务器舰队ID列表
-	FleetIds []*string `json:"FleetIds,omitempty" name:"FleetIds" list`
+	FleetIds []*string `json:"FleetIds,omitempty" name:"FleetIds"`
 
 	// 结果返回最大数量，最大值 100
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -903,8 +1468,20 @@ func (r *DescribeFleetCapacityRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeFleetCapacityRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetIds")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFleetCapacityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeFleetCapacityResponse struct {
@@ -913,7 +1490,7 @@ type DescribeFleetCapacityResponse struct {
 
 		// 服务器舰队的容量配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		FleetCapacity []*FleetCapacity `json:"FleetCapacity,omitempty" name:"FleetCapacity" list`
+		FleetCapacity []*FleetCapacity `json:"FleetCapacity,omitempty" name:"FleetCapacity"`
 
 		// 结果返回最大数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -929,8 +1506,10 @@ func (r *DescribeFleetCapacityResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeFleetCapacityResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeFleetEventsRequest struct {
@@ -944,6 +1523,15 @@ type DescribeFleetEventsRequest struct {
 
 	// 分页时的数据偏移量，默认为0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 事件代码
+	EventCode *string `json:"EventCode,omitempty" name:"EventCode"`
+
+	// 发生事件的开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 发生事件的结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
 func (r *DescribeFleetEventsRequest) ToJsonString() string {
@@ -951,8 +1539,23 @@ func (r *DescribeFleetEventsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeFleetEventsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "EventCode")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFleetEventsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeFleetEventsResponse struct {
@@ -960,7 +1563,7 @@ type DescribeFleetEventsResponse struct {
 	Response *struct {
 
 		// 返回的事件列表
-		Events []*Event `json:"Events,omitempty" name:"Events" list`
+		Events []*Event `json:"Events,omitempty" name:"Events"`
 
 		// 返回的事件总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -975,8 +1578,10 @@ func (r *DescribeFleetEventsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeFleetEventsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeFleetPortSettingsRequest struct {
@@ -991,8 +1596,18 @@ func (r *DescribeFleetPortSettingsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeFleetPortSettingsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFleetPortSettingsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeFleetPortSettingsResponse struct {
@@ -1001,7 +1616,7 @@ type DescribeFleetPortSettingsResponse struct {
 
 		// 安全组信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		InboundPermissions []*InboundPermission `json:"InboundPermissions,omitempty" name:"InboundPermissions" list`
+		InboundPermissions []*InboundPermission `json:"InboundPermissions,omitempty" name:"InboundPermissions"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1013,8 +1628,60 @@ func (r *DescribeFleetPortSettingsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeFleetPortSettingsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFleetRelatedResourcesRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务器舰队 Id
+	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
+}
+
+func (r *DescribeFleetRelatedResourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFleetRelatedResourcesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFleetRelatedResourcesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFleetRelatedResourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 与服务器舰队关联的资源信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Resources []*FleetRelatedResource `json:"Resources,omitempty" name:"Resources"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeFleetRelatedResourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFleetRelatedResourcesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeFleetStatisticDetailsRequest struct {
@@ -1041,8 +1708,22 @@ func (r *DescribeFleetStatisticDetailsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeFleetStatisticDetailsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetId")
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFleetStatisticDetailsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeFleetStatisticDetailsResponse struct {
@@ -1051,7 +1732,7 @@ type DescribeFleetStatisticDetailsResponse struct {
 
 		// 服务部署统计详情列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		DetailList []*FleetStatisticDetail `json:"DetailList,omitempty" name:"DetailList" list`
+		DetailList []*FleetStatisticDetail `json:"DetailList,omitempty" name:"DetailList"`
 
 		// 记录总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1071,8 +1752,10 @@ func (r *DescribeFleetStatisticDetailsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeFleetStatisticDetailsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeFleetStatisticFlowsRequest struct {
@@ -1099,8 +1782,22 @@ func (r *DescribeFleetStatisticFlowsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeFleetStatisticFlowsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetId")
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFleetStatisticFlowsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeFleetStatisticFlowsResponse struct {
@@ -1109,11 +1806,11 @@ type DescribeFleetStatisticFlowsResponse struct {
 
 		// 流量统计列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		UsedFlowList []*FleetStatisticFlows `json:"UsedFlowList,omitempty" name:"UsedFlowList" list`
+		UsedFlowList []*FleetStatisticFlows `json:"UsedFlowList,omitempty" name:"UsedFlowList"`
 
 		// 时长统计列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		UsedTimeList []*FleetStatisticTimes `json:"UsedTimeList,omitempty" name:"UsedTimeList" list`
+		UsedTimeList []*FleetStatisticTimes `json:"UsedTimeList,omitempty" name:"UsedTimeList"`
 
 		// 记录总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1133,8 +1830,10 @@ func (r *DescribeFleetStatisticFlowsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeFleetStatisticFlowsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeFleetStatisticSummaryRequest struct {
@@ -1155,8 +1854,20 @@ func (r *DescribeFleetStatisticSummaryRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeFleetStatisticSummaryRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetId")
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFleetStatisticSummaryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeFleetStatisticSummaryResponse struct {
@@ -1181,15 +1892,17 @@ func (r *DescribeFleetStatisticSummaryResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeFleetStatisticSummaryResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeFleetUtilizationRequest struct {
 	*tchttp.BaseRequest
 
 	// 服务器舰队 Ids
-	FleetIds []*string `json:"FleetIds,omitempty" name:"FleetIds" list`
+	FleetIds []*string `json:"FleetIds,omitempty" name:"FleetIds"`
 }
 
 func (r *DescribeFleetUtilizationRequest) ToJsonString() string {
@@ -1197,8 +1910,18 @@ func (r *DescribeFleetUtilizationRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeFleetUtilizationRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFleetUtilizationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeFleetUtilizationResponse struct {
@@ -1207,7 +1930,7 @@ type DescribeFleetUtilizationResponse struct {
 
 		// 服务器舰队利用率
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		FleetUtilization []*FleetUtilization `json:"FleetUtilization,omitempty" name:"FleetUtilization" list`
+		FleetUtilization []*FleetUtilization `json:"FleetUtilization,omitempty" name:"FleetUtilization"`
 
 		// 总数，最小值0
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1222,8 +1945,10 @@ func (r *DescribeFleetUtilizationResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeFleetUtilizationResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeGameServerSessionDetailsRequest struct {
@@ -1253,8 +1978,23 @@ func (r *DescribeGameServerSessionDetailsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeGameServerSessionDetailsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AliasId")
+	delete(f, "FleetId")
+	delete(f, "GameServerSessionId")
+	delete(f, "Limit")
+	delete(f, "NextToken")
+	delete(f, "StatusFilter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGameServerSessionDetailsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeGameServerSessionDetailsResponse struct {
@@ -1263,7 +2003,7 @@ type DescribeGameServerSessionDetailsResponse struct {
 
 		// 游戏服务器会话详情列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		GameServerSessionDetails []*GameServerSessionDetail `json:"GameServerSessionDetails,omitempty" name:"GameServerSessionDetails" list`
+		GameServerSessionDetails []*GameServerSessionDetail `json:"GameServerSessionDetails,omitempty" name:"GameServerSessionDetails"`
 
 		// 页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1279,8 +2019,10 @@ func (r *DescribeGameServerSessionDetailsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeGameServerSessionDetailsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeGameServerSessionPlacementRequest struct {
@@ -1295,8 +2037,18 @@ func (r *DescribeGameServerSessionPlacementRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeGameServerSessionPlacementRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PlacementId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGameServerSessionPlacementRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeGameServerSessionPlacementResponse struct {
@@ -1316,15 +2068,17 @@ func (r *DescribeGameServerSessionPlacementResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeGameServerSessionPlacementResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeGameServerSessionQueuesRequest struct {
 	*tchttp.BaseRequest
 
 	// 游戏服务器会话队列名称数组，单个名字长度1~128
-	Names []*string `json:"Names,omitempty" name:"Names" list`
+	Names []*string `json:"Names,omitempty" name:"Names"`
 
 	// 结果返回最大数量，最小值0，最大值100
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -1333,7 +2087,7 @@ type DescribeGameServerSessionQueuesRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 资源过滤字段，可以按照资源名称、资源ID和标签进行过滤- 资源名称过滤    - Key: 固定字符串 "resource:name"    - Values: 资源名称数组（游戏服务器会话队列支持多个名称的过滤）- 标签过滤    - 通过标签键过滤        - Key: 固定字符串 "tag:key"        - Values 不传    - 通过标签键值过滤        - Key: 固定字符串 "tag:key-value"        - Values: 标签键值对数组，例如 ["key1:value1", "key1:value2", "key2:value2"]
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeGameServerSessionQueuesRequest) ToJsonString() string {
@@ -1341,8 +2095,21 @@ func (r *DescribeGameServerSessionQueuesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeGameServerSessionQueuesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Names")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGameServerSessionQueuesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeGameServerSessionQueuesResponse struct {
@@ -1351,7 +2118,7 @@ type DescribeGameServerSessionQueuesResponse struct {
 
 		// 游戏服务器会话队列数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		GameServerSessionQueues []*GameServerSessionQueue `json:"GameServerSessionQueues,omitempty" name:"GameServerSessionQueues" list`
+		GameServerSessionQueues []*GameServerSessionQueue `json:"GameServerSessionQueues,omitempty" name:"GameServerSessionQueues"`
 
 		// 游戏服务器会话队列总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1366,8 +2133,10 @@ func (r *DescribeGameServerSessionQueuesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeGameServerSessionQueuesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeGameServerSessionsRequest struct {
@@ -1397,8 +2166,23 @@ func (r *DescribeGameServerSessionsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeGameServerSessionsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AliasId")
+	delete(f, "FleetId")
+	delete(f, "GameServerSessionId")
+	delete(f, "Limit")
+	delete(f, "NextToken")
+	delete(f, "StatusFilter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGameServerSessionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeGameServerSessionsResponse struct {
@@ -1407,7 +2191,7 @@ type DescribeGameServerSessionsResponse struct {
 
 		// 游戏服务器会话列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		GameServerSessions []*GameServerSession `json:"GameServerSessions,omitempty" name:"GameServerSessions" list`
+		GameServerSessions []*GameServerSession `json:"GameServerSessions,omitempty" name:"GameServerSessions"`
 
 		// 页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1423,8 +2207,10 @@ func (r *DescribeGameServerSessionsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeGameServerSessionsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeInstanceLimitRequest struct {
@@ -1436,8 +2222,17 @@ func (r *DescribeInstanceLimitRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeInstanceLimitRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceLimitRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeInstanceLimitResponse struct {
@@ -1448,7 +2243,7 @@ type DescribeInstanceLimitResponse struct {
 		Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 		// 详细信息
-		ExtraInfos []*ExtraInfos `json:"ExtraInfos,omitempty" name:"ExtraInfos" list`
+		ExtraInfos []*ExtraInfos `json:"ExtraInfos,omitempty" name:"ExtraInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1460,8 +2255,10 @@ func (r *DescribeInstanceLimitResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeInstanceLimitResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeInstanceTypesRequest struct {
@@ -1473,8 +2270,17 @@ func (r *DescribeInstanceTypesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeInstanceTypesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceTypesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeInstanceTypesResponse struct {
@@ -1482,7 +2288,7 @@ type DescribeInstanceTypesResponse struct {
 	Response *struct {
 
 		// 服务器实例类型列表
-		InstanceTypeList []*InstanceTypeInfo `json:"InstanceTypeList,omitempty" name:"InstanceTypeList" list`
+		InstanceTypeList []*InstanceTypeInfo `json:"InstanceTypeList,omitempty" name:"InstanceTypeList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1494,8 +2300,10 @@ func (r *DescribeInstanceTypesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeInstanceTypesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeInstancesExtendRequest struct {
@@ -1509,6 +2317,9 @@ type DescribeInstancesExtendRequest struct {
 
 	// 结果返回最大数量，最小值0，最大值100
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// CVM实例公网IP
+	IpAddress *string `json:"IpAddress,omitempty" name:"IpAddress"`
 }
 
 func (r *DescribeInstancesExtendRequest) ToJsonString() string {
@@ -1516,8 +2327,21 @@ func (r *DescribeInstancesExtendRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeInstancesExtendRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "IpAddress")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesExtendRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeInstancesExtendResponse struct {
@@ -1526,7 +2350,7 @@ type DescribeInstancesExtendResponse struct {
 
 		// 实例信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Instances []*InstanceExtend `json:"Instances,omitempty" name:"Instances" list`
+		Instances []*InstanceExtend `json:"Instances,omitempty" name:"Instances"`
 
 		// 梳理信息总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1542,8 +2366,10 @@ func (r *DescribeInstancesExtendResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeInstancesExtendResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeInstancesRequest struct {
@@ -1560,6 +2386,9 @@ type DescribeInstancesRequest struct {
 
 	// 返回结果偏移，最小值0
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// CVM实例公网IP
+	IpAddress *string `json:"IpAddress,omitempty" name:"IpAddress"`
 }
 
 func (r *DescribeInstancesRequest) ToJsonString() string {
@@ -1567,8 +2396,22 @@ func (r *DescribeInstancesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeInstancesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetId")
+	delete(f, "InstanceId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "IpAddress")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeInstancesResponse struct {
@@ -1577,7 +2420,7 @@ type DescribeInstancesResponse struct {
 
 		// 实例信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Instances []*Instance `json:"Instances,omitempty" name:"Instances" list`
+		Instances []*Instance `json:"Instances,omitempty" name:"Instances"`
 
 		// 结果返回最大数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1593,8 +2436,10 @@ func (r *DescribeInstancesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeInstancesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribePlayerSessionsRequest struct {
@@ -1624,8 +2469,23 @@ func (r *DescribePlayerSessionsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribePlayerSessionsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GameServerSessionId")
+	delete(f, "Limit")
+	delete(f, "NextToken")
+	delete(f, "PlayerId")
+	delete(f, "PlayerSessionId")
+	delete(f, "PlayerSessionStatusFilter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePlayerSessionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribePlayerSessionsResponse struct {
@@ -1634,7 +2494,7 @@ type DescribePlayerSessionsResponse struct {
 
 		// 玩家会话列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		PlayerSessions []*PlayerSession `json:"PlayerSessions,omitempty" name:"PlayerSessions" list`
+		PlayerSessions []*PlayerSession `json:"PlayerSessions,omitempty" name:"PlayerSessions"`
 
 		// 页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1650,8 +2510,10 @@ func (r *DescribePlayerSessionsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribePlayerSessionsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeRuntimeConfigurationRequest struct {
@@ -1666,8 +2528,18 @@ func (r *DescribeRuntimeConfigurationRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeRuntimeConfigurationRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRuntimeConfigurationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeRuntimeConfigurationResponse struct {
@@ -1688,8 +2560,10 @@ func (r *DescribeRuntimeConfigurationResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeRuntimeConfigurationResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeScalingPoliciesRequest struct {
@@ -1713,8 +2587,21 @@ func (r *DescribeScalingPoliciesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeScalingPoliciesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetId")
+	delete(f, "StatusFilter")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScalingPoliciesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeScalingPoliciesResponse struct {
@@ -1723,7 +2610,7 @@ type DescribeScalingPoliciesResponse struct {
 
 		// 动态扩缩容配置策略数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ScalingPolicies []*ScalingPolicy `json:"ScalingPolicies,omitempty" name:"ScalingPolicies" list`
+		ScalingPolicies []*ScalingPolicy `json:"ScalingPolicies,omitempty" name:"ScalingPolicies"`
 
 		// 动态扩缩容配置策略总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1739,8 +2626,84 @@ func (r *DescribeScalingPoliciesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeScalingPoliciesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTimerScalingPoliciesRequest struct {
+	*tchttp.BaseRequest
+
+	// 扩缩容配置服务器舰队ID
+	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
+
+	// 定时器名称
+	TimerName *string `json:"TimerName,omitempty" name:"TimerName"`
+
+	// 定时器开始时间
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 定时器结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 页大小
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeTimerScalingPoliciesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTimerScalingPoliciesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetId")
+	delete(f, "TimerName")
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTimerScalingPoliciesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTimerScalingPoliciesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 定时器扩缩容策略配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TimerScalingPolicies []*TimerScalingPolicy `json:"TimerScalingPolicies,omitempty" name:"TimerScalingPolicies"`
+
+		// 定时器总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTimerScalingPoliciesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTimerScalingPoliciesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeUserQuotaRequest struct {
@@ -1755,8 +2718,18 @@ func (r *DescribeUserQuotaRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeUserQuotaRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserQuotaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeUserQuotaResponse struct {
@@ -1777,8 +2750,10 @@ func (r *DescribeUserQuotaResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeUserQuotaResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeUserQuotasRequest struct {
@@ -1790,8 +2765,17 @@ func (r *DescribeUserQuotasRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeUserQuotasRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserQuotasRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeUserQuotasResponse struct {
@@ -1800,7 +2784,7 @@ type DescribeUserQuotasResponse struct {
 
 		// 配额信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		QuotaResource []*QuotaResource `json:"QuotaResource,omitempty" name:"QuotaResource" list`
+		QuotaResource []*QuotaResource `json:"QuotaResource,omitempty" name:"QuotaResource"`
 
 		// 配额信息列表总数，最小值0
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
@@ -1815,8 +2799,10 @@ func (r *DescribeUserQuotasResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeUserQuotasResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DesiredPlayerSession struct {
@@ -1840,8 +2826,18 @@ func (r *DetachCcnInstancesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DetachCcnInstancesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetachCcnInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DetachCcnInstancesResponse struct {
@@ -1858,8 +2854,73 @@ func (r *DetachCcnInstancesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DetachCcnInstancesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DiskInfo struct {
+
+	// 磁盘类型，支持：高性能云硬盘（CLOUD_PREMIUM）、SSD云硬盘（CLOUD_SSD）
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 系统盘：可选硬盘容量，50-500GB，数字以1为单位，数据盘：可选硬盘容量：10-32000GB，数字以10为单位；当磁盘类型为SSD云硬盘（CLOUD_SSD）最小大小为 100GB
+	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
+}
+
+type EndGameServerSessionAndProcessRequest struct {
+	*tchttp.BaseRequest
+
+	// 游戏服务器会话ID，如果传入游戏服务器会话ID，结束对应进程以及游戏服务器会话和玩家会话。
+	GameServerSessionId *string `json:"GameServerSessionId,omitempty" name:"GameServerSessionId"`
+
+	// CVM的公网IP地址，需同时传入IpAddress和Port，结束IpAddress和Port对应的进程以及游戏服务器会话（如果存在）和玩家会话（如果存在），单独传入IpAddress不生效。
+	IpAddress *string `json:"IpAddress,omitempty" name:"IpAddress"`
+
+	// 端口号，取值范围1025-60000，需同时传入IpAddress和Port，结束IpAddress和Port对应的进程以及游戏服务器会话（如果存在）和玩家会话（如果存在），单独传入Port不生效。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+}
+
+func (r *EndGameServerSessionAndProcessRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EndGameServerSessionAndProcessRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GameServerSessionId")
+	delete(f, "IpAddress")
+	delete(f, "Port")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EndGameServerSessionAndProcessRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type EndGameServerSessionAndProcessResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EndGameServerSessionAndProcessResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EndGameServerSessionAndProcessResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Event struct {
@@ -1924,7 +2985,7 @@ type Filter struct {
 	Key *string `json:"Key,omitempty" name:"Key"`
 
 	// 过滤属性的 values 值
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type FleetAttributes struct {
@@ -1976,7 +3037,7 @@ type FleetAttributes struct {
 
 	// 服务器舰队停止状态，为空时表示自动扩缩容
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StoppedActions []*string `json:"StoppedActions,omitempty" name:"StoppedActions" list`
+	StoppedActions []*string `json:"StoppedActions,omitempty" name:"StoppedActions"`
 
 	// 服务器舰队终止时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1989,6 +3050,26 @@ type FleetAttributes struct {
 	// 计费状态：未开通、已开通、异常、欠费隔离、销毁、解冻
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingStatus *string `json:"BillingStatus,omitempty" name:"BillingStatus"`
+
+	// 标签列表，最大长度50组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 数据盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-32000GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，10-32000GB；容量以10为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataDiskInfo []*DiskInfo `json:"DataDiskInfo,omitempty" name:"DataDiskInfo"`
+
+	// 系统盘，储存类型为 SSD 云硬盘（CLOUD_SSD）时，100-500GB；储存类型为高性能云硬盘（CLOUD_PREMIUM）时，50-500GB；容量以1为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SystemDiskInfo *DiskInfo `json:"SystemDiskInfo,omitempty" name:"SystemDiskInfo"`
+
+	// 云联网相关信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RelatedCcnInfos []*RelatedCcnInfo `json:"RelatedCcnInfos,omitempty" name:"RelatedCcnInfos"`
+
+	// fleet公网出带宽最大值，默认100Mbps，范围1-200Mbps
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
 }
 
 type FleetCapacity struct {
@@ -2008,6 +3089,23 @@ type FleetCapacity struct {
 	// 服务器伸缩容间隔，单位分钟，最小值3，最大值30，默认值10
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScalingInterval *uint64 `json:"ScalingInterval,omitempty" name:"ScalingInterval"`
+}
+
+type FleetRelatedResource struct {
+
+	// 资源类型。
+	// - ALIAS：别名
+	// - QUEUE：队列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 资源ID，目前仅支持别名ID和队列名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 资源所在区域，如ap-shanghai、na-siliconvalley等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
 }
 
 type FleetStatisticDetail struct {
@@ -2116,7 +3214,7 @@ type GameServerSession struct {
 
 	// 游戏属性，最大长度不超过16组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GameProperties []*GameProperty `json:"GameProperties,omitempty" name:"GameProperties" list`
+	GameProperties []*GameProperty `json:"GameProperties,omitempty" name:"GameProperties"`
 
 	// 游戏服务器会话属性详情，最大长度不超过4096个ASCII字符
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2198,7 +3296,7 @@ type GameServerSessionPlacement struct {
 
 	// 玩家延迟
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PlayerLatencies []*PlayerLatency `json:"PlayerLatencies,omitempty" name:"PlayerLatencies" list`
+	PlayerLatencies []*PlayerLatency `json:"PlayerLatencies,omitempty" name:"PlayerLatencies"`
 
 	// 服务部署状态
 	Status *string `json:"Status,omitempty" name:"Status"`
@@ -2221,7 +3319,7 @@ type GameServerSessionPlacement struct {
 
 	// 游戏属性
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GameProperties []*GameProperty `json:"GameProperties,omitempty" name:"GameProperties" list`
+	GameProperties []*GameProperty `json:"GameProperties,omitempty" name:"GameProperties"`
 
 	// 游戏服务器允许同时连接到游戏会话的最大玩家数量，最小值1，最大值为玩家会话最大限额
 	MaximumPlayerSessionCount *uint64 `json:"MaximumPlayerSessionCount,omitempty" name:"MaximumPlayerSessionCount"`
@@ -2244,7 +3342,7 @@ type GameServerSessionPlacement struct {
 
 	// 部署的玩家游戏数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PlacedPlayerSessions []*PlacedPlayerSession `json:"PlacedPlayerSessions,omitempty" name:"PlacedPlayerSessions" list`
+	PlacedPlayerSessions []*PlacedPlayerSession `json:"PlacedPlayerSessions,omitempty" name:"PlacedPlayerSessions"`
 
 	// 开始时间
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
@@ -2264,14 +3362,18 @@ type GameServerSessionQueue struct {
 
 	// 目的fleet（可为别名）列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Destinations []*GameServerSessionQueueDestination `json:"Destinations,omitempty" name:"Destinations" list`
+	Destinations []*GameServerSessionQueueDestination `json:"Destinations,omitempty" name:"Destinations"`
 
 	// 延迟策略集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PlayerLatencyPolicies []*PlayerLatencyPolicy `json:"PlayerLatencyPolicies,omitempty" name:"PlayerLatencyPolicies" list`
+	PlayerLatencyPolicies []*PlayerLatencyPolicy `json:"PlayerLatencyPolicies,omitempty" name:"PlayerLatencyPolicies"`
 
 	// 超时时间
 	TimeoutInSeconds *uint64 `json:"TimeoutInSeconds,omitempty" name:"TimeoutInSeconds"`
+
+	// 标签列表，最大长度50组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type GameServerSessionQueueDestination struct {
@@ -2283,6 +3385,78 @@ type GameServerSessionQueueDestination struct {
 	// 服务部署组目的的状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FleetStatus *string `json:"FleetStatus,omitempty" name:"FleetStatus"`
+}
+
+type GetGameServerInstanceLogUrlRequest struct {
+	*tchttp.BaseRequest
+
+	// 游戏舰队ID
+	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例IP
+	ServerIp *string `json:"ServerIp,omitempty" name:"ServerIp"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每次条数
+	Size *uint64 `json:"Size,omitempty" name:"Size"`
+}
+
+func (r *GetGameServerInstanceLogUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetGameServerInstanceLogUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetId")
+	delete(f, "InstanceId")
+	delete(f, "ServerIp")
+	delete(f, "Offset")
+	delete(f, "Size")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetGameServerInstanceLogUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetGameServerInstanceLogUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 日志下载URL的数组，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PresignedUrls []*string `json:"PresignedUrls,omitempty" name:"PresignedUrls"`
+
+		// 总条数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 是否还有没拉取完的
+		HasNext *bool `json:"HasNext,omitempty" name:"HasNext"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetGameServerInstanceLogUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetGameServerInstanceLogUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetGameServerSessionLogUrlRequest struct {
@@ -2297,8 +3471,18 @@ func (r *GetGameServerSessionLogUrlRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetGameServerSessionLogUrlRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GameServerSessionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetGameServerSessionLogUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetGameServerSessionLogUrlResponse struct {
@@ -2319,8 +3503,10 @@ func (r *GetGameServerSessionLogUrlResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetGameServerSessionLogUrlResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetInstanceAccessRequest struct {
@@ -2338,8 +3524,19 @@ func (r *GetInstanceAccessRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetInstanceAccessRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetId")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetInstanceAccessRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetInstanceAccessResponse struct {
@@ -2359,8 +3556,10 @@ func (r *GetInstanceAccessResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetInstanceAccessResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetUploadCredentialsRequest struct {
@@ -2378,8 +3577,19 @@ func (r *GetUploadCredentialsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetUploadCredentialsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AssetRegion")
+	delete(f, "BucketKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetUploadCredentialsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetUploadCredentialsResponse struct {
@@ -2405,8 +3615,10 @@ func (r *GetUploadCredentialsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetUploadCredentialsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetUploadFederationTokenRequest struct {
@@ -2418,8 +3630,17 @@ func (r *GetUploadFederationTokenRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetUploadFederationTokenRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetUploadFederationTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetUploadFederationTokenResponse struct {
@@ -2442,8 +3663,10 @@ func (r *GetUploadFederationTokenResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetUploadFederationTokenResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type InboundPermission struct {
@@ -2524,6 +3747,18 @@ type Instance struct {
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 实例权重
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
+
+	// 实例是否保留, 1-保留，0-不保留,默认
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReserveValue *int64 `json:"ReserveValue,omitempty" name:"ReserveValue"`
+
+	// 实例的私有IP地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" name:"PrivateIpAddress"`
 }
 
 type InstanceAccess struct {
@@ -2635,7 +3870,7 @@ type JoinGameServerSessionBatchRequest struct {
 	GameServerSessionId *string `json:"GameServerSessionId,omitempty" name:"GameServerSessionId"`
 
 	// 玩家ID列表，最小1组，最大25组
-	PlayerIds []*string `json:"PlayerIds,omitempty" name:"PlayerIds" list`
+	PlayerIds []*string `json:"PlayerIds,omitempty" name:"PlayerIds"`
 
 	// 玩家自定义数据
 	PlayerDataMap *PlayerDataMap `json:"PlayerDataMap,omitempty" name:"PlayerDataMap"`
@@ -2646,8 +3881,20 @@ func (r *JoinGameServerSessionBatchRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *JoinGameServerSessionBatchRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GameServerSessionId")
+	delete(f, "PlayerIds")
+	delete(f, "PlayerDataMap")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "JoinGameServerSessionBatchRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type JoinGameServerSessionBatchResponse struct {
@@ -2656,7 +3903,7 @@ type JoinGameServerSessionBatchResponse struct {
 
 		// 玩家会话列表，最大25组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		PlayerSessions []*PlayerSession `json:"PlayerSessions,omitempty" name:"PlayerSessions" list`
+		PlayerSessions []*PlayerSession `json:"PlayerSessions,omitempty" name:"PlayerSessions"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2668,8 +3915,10 @@ func (r *JoinGameServerSessionBatchResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *JoinGameServerSessionBatchResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type JoinGameServerSessionRequest struct {
@@ -2690,8 +3939,20 @@ func (r *JoinGameServerSessionRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *JoinGameServerSessionRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GameServerSessionId")
+	delete(f, "PlayerId")
+	delete(f, "PlayerData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "JoinGameServerSessionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type JoinGameServerSessionResponse struct {
@@ -2712,8 +3973,10 @@ func (r *JoinGameServerSessionResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *JoinGameServerSessionResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ListAliasesRequest struct {
@@ -2738,7 +4001,7 @@ type ListAliasesRequest struct {
 	OrderWay *string `json:"OrderWay,omitempty" name:"OrderWay"`
 
 	// 资源过滤字段，可以按照资源名称和标签进行过滤- 资源名称过滤    - Key: 固定字符串 "resource:name"    - Values: 资源名称数组（舰队当前仅支持单个名称的过滤）- 标签过滤    - 通过标签键过滤        - Key: 固定字符串 "tag:key"        - Values 不传    - 通过标签键值过滤        - Key: 固定字符串 "tag:key-value"        - Values: 标签键值对数组，例如 ["key1:value1", "key1:value2", "key2:value2"]
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *ListAliasesRequest) ToJsonString() string {
@@ -2746,8 +4009,24 @@ func (r *ListAliasesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ListAliasesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "RoutingStrategyType")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "OrderBy")
+	delete(f, "OrderWay")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAliasesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ListAliasesResponse struct {
@@ -2756,7 +4035,7 @@ type ListAliasesResponse struct {
 
 		// 别名对象数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Aliases []*Alias `json:"Aliases,omitempty" name:"Aliases" list`
+		Aliases []*Alias `json:"Aliases,omitempty" name:"Aliases"`
 
 		// 总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2771,8 +4050,10 @@ func (r *ListAliasesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ListAliasesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ListFleetsRequest struct {
@@ -2788,7 +4069,7 @@ type ListFleetsRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 资源过滤字段，可以按照资源名称和标签进行过滤- 资源名称过滤    - Key: 固定字符串 "resource:name"    - Values: 资源名称数组（当前仅支持单个名称的过滤）- 标签过滤    - 通过标签键过滤        - Key: 固定字符串 "tag:key"        - Values 不传    - 通过标签键值过滤        - Key: 固定字符串 "tag:key-value"        - Values: 标签键值对数组，例如 ["key1:value1", "key1:value2", "key2:value2"]
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *ListFleetsRequest) ToJsonString() string {
@@ -2796,8 +4077,21 @@ func (r *ListFleetsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ListFleetsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AssetId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListFleetsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ListFleetsResponse struct {
@@ -2806,7 +4100,7 @@ type ListFleetsResponse struct {
 
 		// 服务器舰队 Id 列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		FleetIds []*string `json:"FleetIds,omitempty" name:"FleetIds" list`
+		FleetIds []*string `json:"FleetIds,omitempty" name:"FleetIds"`
 
 		// 服务器舰队 Id 总数，最小值0
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2821,8 +4115,10 @@ func (r *ListFleetsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ListFleetsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type PlacedPlayerSession struct {
@@ -2950,8 +4246,27 @@ func (r *PutScalingPolicyRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *PutScalingPolicyRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetId")
+	delete(f, "Name")
+	delete(f, "ScalingAdjustment")
+	delete(f, "ScalingAdjustmentType")
+	delete(f, "Threshold")
+	delete(f, "ComparisonOperator")
+	delete(f, "EvaluationPeriods")
+	delete(f, "MetricName")
+	delete(f, "PolicyType")
+	delete(f, "TargetConfiguration")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PutScalingPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type PutScalingPolicyResponse struct {
@@ -2972,8 +4287,56 @@ func (r *PutScalingPolicyResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *PutScalingPolicyResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type PutTimerScalingPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 定时器策略消息
+	TimerScalingPolicy *TimerScalingPolicy `json:"TimerScalingPolicy,omitempty" name:"TimerScalingPolicy"`
+}
+
+func (r *PutTimerScalingPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PutTimerScalingPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TimerScalingPolicy")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PutTimerScalingPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type PutTimerScalingPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PutTimerScalingPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PutTimerScalingPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QuotaResource struct {
@@ -2995,6 +4358,18 @@ type QuotaResource struct {
 	ExtraInfo *string `json:"ExtraInfo,omitempty" name:"ExtraInfo"`
 }
 
+type RelatedCcnInfo struct {
+
+	// 云联网所属账号
+	AccountId *string `json:"AccountId,omitempty" name:"AccountId"`
+
+	// 云联网 ID
+	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
+
+	// 关联云联网状态
+	AttachType *string `json:"AttachType,omitempty" name:"AttachType"`
+}
+
 type ResolveAliasRequest struct {
 	*tchttp.BaseRequest
 
@@ -3007,8 +4382,18 @@ func (r *ResolveAliasRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ResolveAliasRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AliasId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResolveAliasRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ResolveAliasResponse struct {
@@ -3029,8 +4414,10 @@ func (r *ResolveAliasResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ResolveAliasResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ResourceCreationLimitPolicy struct {
@@ -3065,7 +4452,7 @@ type RuntimeConfiguration struct {
 	MaxConcurrentGameServerSessionActivations *uint64 `json:"MaxConcurrentGameServerSessionActivations,omitempty" name:"MaxConcurrentGameServerSessionActivations"`
 
 	// 服务进程配置，至少有一个进程配置
-	ServerProcesses []*ServerProcesse `json:"ServerProcesses,omitempty" name:"ServerProcesses" list`
+	ServerProcesses []*ServerProcesse `json:"ServerProcesses,omitempty" name:"ServerProcesses"`
 }
 
 type ScalingPolicy struct {
@@ -3184,8 +4571,23 @@ func (r *SearchGameServerSessionsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SearchGameServerSessionsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AliasId")
+	delete(f, "FleetId")
+	delete(f, "Limit")
+	delete(f, "NextToken")
+	delete(f, "FilterExpression")
+	delete(f, "SortExpression")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchGameServerSessionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SearchGameServerSessionsResponse struct {
@@ -3194,7 +4596,7 @@ type SearchGameServerSessionsResponse struct {
 
 		// 游戏服务器会话列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		GameServerSessions []*GameServerSession `json:"GameServerSessions,omitempty" name:"GameServerSessions" list`
+		GameServerSessions []*GameServerSession `json:"GameServerSessions,omitempty" name:"GameServerSessions"`
 
 		// 页偏移，用于查询下一页，最小长度不小于1个ASCII字符，最大长度不超过1024个ASCII字符
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3210,8 +4612,10 @@ func (r *SearchGameServerSessionsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SearchGameServerSessionsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ServerProcesse struct {
@@ -3224,6 +4628,60 @@ type ServerProcesse struct {
 
 	// 启动参数，最小长度0，最大长度1024
 	Parameters *string `json:"Parameters,omitempty" name:"Parameters"`
+}
+
+type SetServerReservedRequest struct {
+	*tchttp.BaseRequest
+
+	// 扩缩容配置服务器舰队ID
+	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例是否保留, 1-保留，0-不保留,默认
+	ReserveValue *int64 `json:"ReserveValue,omitempty" name:"ReserveValue"`
+}
+
+func (r *SetServerReservedRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetServerReservedRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetId")
+	delete(f, "InstanceId")
+	delete(f, "ReserveValue")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetServerReservedRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SetServerReservedResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SetServerReservedResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetServerReservedResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SetServerWeightRequest struct {
@@ -3244,8 +4702,20 @@ func (r *SetServerWeightRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SetServerWeightRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetId")
+	delete(f, "InstanceId")
+	delete(f, "Weight")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetServerWeightRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SetServerWeightResponse struct {
@@ -3262,8 +4732,10 @@ func (r *SetServerWeightResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SetServerWeightResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type StartFleetActionsRequest struct {
@@ -3273,7 +4745,7 @@ type StartFleetActionsRequest struct {
 	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
 
 	// 服务器舰队扩展策略，值为["AUTO_SCALING"]
-	Actions []*string `json:"Actions,omitempty" name:"Actions" list`
+	Actions []*string `json:"Actions,omitempty" name:"Actions"`
 }
 
 func (r *StartFleetActionsRequest) ToJsonString() string {
@@ -3281,8 +4753,19 @@ func (r *StartFleetActionsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *StartFleetActionsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetId")
+	delete(f, "Actions")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartFleetActionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type StartFleetActionsResponse struct {
@@ -3303,8 +4786,10 @@ func (r *StartFleetActionsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *StartFleetActionsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type StartGameServerSessionPlacementRequest struct {
@@ -3320,10 +4805,10 @@ type StartGameServerSessionPlacementRequest struct {
 	MaximumPlayerSessionCount *uint64 `json:"MaximumPlayerSessionCount,omitempty" name:"MaximumPlayerSessionCount"`
 
 	// 玩家游戏会话信息
-	DesiredPlayerSessions []*DesiredPlayerSession `json:"DesiredPlayerSessions,omitempty" name:"DesiredPlayerSessions" list`
+	DesiredPlayerSessions []*DesiredPlayerSession `json:"DesiredPlayerSessions,omitempty" name:"DesiredPlayerSessions"`
 
 	// 玩家游戏会话属性
-	GameProperties []*GameProperty `json:"GameProperties,omitempty" name:"GameProperties" list`
+	GameProperties []*GameProperty `json:"GameProperties,omitempty" name:"GameProperties"`
 
 	// 游戏服务器会话数据，最大长度不超过4096个ASCII字符
 	GameServerSessionData *string `json:"GameServerSessionData,omitempty" name:"GameServerSessionData"`
@@ -3332,7 +4817,7 @@ type StartGameServerSessionPlacementRequest struct {
 	GameServerSessionName *string `json:"GameServerSessionName,omitempty" name:"GameServerSessionName"`
 
 	// 玩家延迟
-	PlayerLatencies []*PlayerLatency `json:"PlayerLatencies,omitempty" name:"PlayerLatencies" list`
+	PlayerLatencies []*PlayerLatency `json:"PlayerLatencies,omitempty" name:"PlayerLatencies"`
 }
 
 func (r *StartGameServerSessionPlacementRequest) ToJsonString() string {
@@ -3340,8 +4825,25 @@ func (r *StartGameServerSessionPlacementRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *StartGameServerSessionPlacementRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PlacementId")
+	delete(f, "GameServerSessionQueueName")
+	delete(f, "MaximumPlayerSessionCount")
+	delete(f, "DesiredPlayerSessions")
+	delete(f, "GameProperties")
+	delete(f, "GameServerSessionData")
+	delete(f, "GameServerSessionName")
+	delete(f, "PlayerLatencies")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartGameServerSessionPlacementRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type StartGameServerSessionPlacementResponse struct {
@@ -3361,8 +4863,10 @@ func (r *StartGameServerSessionPlacementResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *StartGameServerSessionPlacementResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type StopFleetActionsRequest struct {
@@ -3372,7 +4876,7 @@ type StopFleetActionsRequest struct {
 	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
 
 	// 服务器舰队扩展策略，值为["AUTO_SCALING"]
-	Actions []*string `json:"Actions,omitempty" name:"Actions" list`
+	Actions []*string `json:"Actions,omitempty" name:"Actions"`
 }
 
 func (r *StopFleetActionsRequest) ToJsonString() string {
@@ -3380,8 +4884,19 @@ func (r *StopFleetActionsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *StopFleetActionsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetId")
+	delete(f, "Actions")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopFleetActionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type StopFleetActionsResponse struct {
@@ -3402,8 +4917,10 @@ func (r *StopFleetActionsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *StopFleetActionsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type StopGameServerSessionPlacementRequest struct {
@@ -3418,8 +4935,18 @@ func (r *StopGameServerSessionPlacementRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *StopGameServerSessionPlacementRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PlacementId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopGameServerSessionPlacementRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type StopGameServerSessionPlacementResponse struct {
@@ -3439,8 +4966,19 @@ func (r *StopGameServerSessionPlacementResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *StopGameServerSessionPlacementResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type Tag struct {
+
+	// 标签键，最大长度127字节
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 标签值，最大长度255字节
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type TargetConfiguration struct {
@@ -3448,6 +4986,98 @@ type TargetConfiguration struct {
 	// 预留存率
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetValue *uint64 `json:"TargetValue,omitempty" name:"TargetValue"`
+}
+
+type TimerConfiguration struct {
+
+	// 定时器重复周期类型（未定义0，单次1、按天2、按月3、按周4）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimerType *int64 `json:"TimerType,omitempty" name:"TimerType"`
+
+	// 定时器取值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimerValue *TimerValue `json:"TimerValue,omitempty" name:"TimerValue"`
+
+	// 定时器开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 定时器结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+type TimerFleetCapacity struct {
+
+	// 扩缩容配置服务器舰队ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
+
+	// 期望实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DesiredInstances *int64 `json:"DesiredInstances,omitempty" name:"DesiredInstances"`
+
+	// 最小实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinSize *int64 `json:"MinSize,omitempty" name:"MinSize"`
+
+	// 最大实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxSize *int64 `json:"MaxSize,omitempty" name:"MaxSize"`
+
+	// 伸缩容间隔，单位：分钟
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScalingInterval *int64 `json:"ScalingInterval,omitempty" name:"ScalingInterval"`
+
+	// 扩缩容类型（手动1，自动2、未定义0）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScalingType *int64 `json:"ScalingType,omitempty" name:"ScalingType"`
+
+	// 基于目标的扩展策略的设置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetConfiguration *TargetConfiguration `json:"TargetConfiguration,omitempty" name:"TargetConfiguration"`
+}
+
+type TimerScalingPolicy struct {
+
+	// 定时器ID，进行encode，填写时更新
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimerId *string `json:"TimerId,omitempty" name:"TimerId"`
+
+	// 定时器名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimerName *string `json:"TimerName,omitempty" name:"TimerName"`
+
+	// 定时器状态(未定义0、未生效1、生效中2、已停止3、已过期4)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimerStatus *int64 `json:"TimerStatus,omitempty" name:"TimerStatus"`
+
+	// 定时器弹性伸缩策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimerFleetCapacity *TimerFleetCapacity `json:"TimerFleetCapacity,omitempty" name:"TimerFleetCapacity"`
+
+	// 重复周期配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimerConfiguration *TimerConfiguration `json:"TimerConfiguration,omitempty" name:"TimerConfiguration"`
+}
+
+type TimerValue struct {
+
+	// 每X天，执行一次(重复周期-按天/单次)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Day *int64 `json:"Day,omitempty" name:"Day"`
+
+	// 每月从第x天，执行一次(重复周期-按月)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FromDay *int64 `json:"FromDay,omitempty" name:"FromDay"`
+
+	// 每月到第x天，执行一次(重复周期-按月)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ToDay *int64 `json:"ToDay,omitempty" name:"ToDay"`
+
+	// 重复周期-按周，周几（多个值,取值周一(1,2,3,4,5,6,7)周日）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WeekDays []*int64 `json:"WeekDays,omitempty" name:"WeekDays"`
 }
 
 type UpdateAliasRequest struct {
@@ -3471,8 +5101,21 @@ func (r *UpdateAliasRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateAliasRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AliasId")
+	delete(f, "Name")
+	delete(f, "Description")
+	delete(f, "RoutingStrategy")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateAliasRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateAliasResponse struct {
@@ -3493,8 +5136,10 @@ func (r *UpdateAliasResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateAliasResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateAssetRequest struct {
@@ -3515,8 +5160,20 @@ func (r *UpdateAssetRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateAssetRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AssetId")
+	delete(f, "AssetName")
+	delete(f, "AssetVersion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateAssetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateAssetResponse struct {
@@ -3533,8 +5190,118 @@ func (r *UpdateAssetResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateAssetResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateBucketAccelerateOptRequest struct {
+	*tchttp.BaseRequest
+
+	// true为开启全球加速，false为关闭
+	Allowed *bool `json:"Allowed,omitempty" name:"Allowed"`
+}
+
+func (r *UpdateBucketAccelerateOptRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateBucketAccelerateOptRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Allowed")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateBucketAccelerateOptRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateBucketAccelerateOptResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateBucketAccelerateOptResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateBucketAccelerateOptResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateBucketCORSOptRequest struct {
+	*tchttp.BaseRequest
+
+	// 允许的访问来源;具体参见 [cos文档](https://cloud.tencent.com/document/product/436/8279)
+	AllowedOrigins []*string `json:"AllowedOrigins,omitempty" name:"AllowedOrigins"`
+
+	// 允许的 HTTP 操作方法;可以配置多个:PUT、GET、POST、HEAD。[cos文档](https://cloud.tencent.com/document/product/436/8279)
+	AllowedMethods []*string `json:"AllowedMethods,omitempty" name:"AllowedMethods"`
+
+	// 用于指定允许浏览器发送 CORS 请求时携带的自定义 HTTP 请求头部;可以配置*，代表允许所有头部，为了避免遗漏，推荐配置为*。[cos文档](https://cloud.tencent.com/document/product/436/8279)
+	AllowedHeaders []*string `json:"AllowedHeaders,omitempty" name:"AllowedHeaders"`
+
+	// 跨域资源共享配置的有效时间，单位为秒。[cos文档](https://cloud.tencent.com/document/product/436/8279)
+	MaxAgeSeconds *int64 `json:"MaxAgeSeconds,omitempty" name:"MaxAgeSeconds"`
+
+	// 允许浏览器获取的 CORS 请求响应中的头部，不区分大小写；默认情况下浏览器只能访问简单响应头部：Cache-Control、Content-Type、Expires、Last-Modified，如果需要访问其他响应头部，需要添加 ExposeHeader 配置。[cos文档](https://cloud.tencent.com/document/product/436/8279)
+	ExposeHeaders []*string `json:"ExposeHeaders,omitempty" name:"ExposeHeaders"`
+}
+
+func (r *UpdateBucketCORSOptRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateBucketCORSOptRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AllowedOrigins")
+	delete(f, "AllowedMethods")
+	delete(f, "AllowedHeaders")
+	delete(f, "MaxAgeSeconds")
+	delete(f, "ExposeHeaders")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateBucketCORSOptRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateBucketCORSOptResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateBucketCORSOptResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateBucketCORSOptResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateFleetAttributesRequest struct {
@@ -3564,8 +5331,23 @@ func (r *UpdateFleetAttributesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateFleetAttributesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetId")
+	delete(f, "Description")
+	delete(f, "Name")
+	delete(f, "NewGameSessionProtectionPolicy")
+	delete(f, "ResourceCreationLimitPolicy")
+	delete(f, "GameServerSessionProtectionTimeLimit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateFleetAttributesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateFleetAttributesResponse struct {
@@ -3586,8 +5368,10 @@ func (r *UpdateFleetAttributesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateFleetAttributesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateFleetCapacityRequest struct {
@@ -3614,8 +5398,22 @@ func (r *UpdateFleetCapacityRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateFleetCapacityRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetId")
+	delete(f, "DesiredInstances")
+	delete(f, "MinSize")
+	delete(f, "MaxSize")
+	delete(f, "ScalingInterval")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateFleetCapacityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateFleetCapacityResponse struct {
@@ -3636,8 +5434,10 @@ func (r *UpdateFleetCapacityResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateFleetCapacityResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateFleetNameRequest struct {
@@ -3655,8 +5455,19 @@ func (r *UpdateFleetNameRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateFleetNameRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetId")
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateFleetNameRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateFleetNameResponse struct {
@@ -3673,8 +5484,10 @@ func (r *UpdateFleetNameResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateFleetNameResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateFleetPortSettingsRequest struct {
@@ -3684,10 +5497,10 @@ type UpdateFleetPortSettingsRequest struct {
 	FleetId *string `json:"FleetId,omitempty" name:"FleetId"`
 
 	// 新增安全组
-	InboundPermissionAuthorizations []*InboundPermissionAuthorization `json:"InboundPermissionAuthorizations,omitempty" name:"InboundPermissionAuthorizations" list`
+	InboundPermissionAuthorizations []*InboundPermissionAuthorization `json:"InboundPermissionAuthorizations,omitempty" name:"InboundPermissionAuthorizations"`
 
 	// 移除安全组
-	InboundPermissionRevocations []*InboundPermissionRevocations `json:"InboundPermissionRevocations,omitempty" name:"InboundPermissionRevocations" list`
+	InboundPermissionRevocations []*InboundPermissionRevocations `json:"InboundPermissionRevocations,omitempty" name:"InboundPermissionRevocations"`
 }
 
 func (r *UpdateFleetPortSettingsRequest) ToJsonString() string {
@@ -3695,8 +5508,20 @@ func (r *UpdateFleetPortSettingsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateFleetPortSettingsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetId")
+	delete(f, "InboundPermissionAuthorizations")
+	delete(f, "InboundPermissionRevocations")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateFleetPortSettingsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateFleetPortSettingsResponse struct {
@@ -3717,8 +5542,10 @@ func (r *UpdateFleetPortSettingsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateFleetPortSettingsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateGameServerSessionQueueRequest struct {
@@ -3728,10 +5555,10 @@ type UpdateGameServerSessionQueueRequest struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 目的服务器舰队（可为别名）列表
-	Destinations []*GameServerSessionQueueDestination `json:"Destinations,omitempty" name:"Destinations" list`
+	Destinations []*GameServerSessionQueueDestination `json:"Destinations,omitempty" name:"Destinations"`
 
 	// 延迟策略集合
-	PlayerLatencyPolicies []*PlayerLatencyPolicy `json:"PlayerLatencyPolicies,omitempty" name:"PlayerLatencyPolicies" list`
+	PlayerLatencyPolicies []*PlayerLatencyPolicy `json:"PlayerLatencyPolicies,omitempty" name:"PlayerLatencyPolicies"`
 
 	// 超时时间
 	TimeoutInSeconds *uint64 `json:"TimeoutInSeconds,omitempty" name:"TimeoutInSeconds"`
@@ -3742,8 +5569,21 @@ func (r *UpdateGameServerSessionQueueRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateGameServerSessionQueueRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Destinations")
+	delete(f, "PlayerLatencyPolicies")
+	delete(f, "TimeoutInSeconds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateGameServerSessionQueueRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateGameServerSessionQueueResponse struct {
@@ -3763,8 +5603,10 @@ func (r *UpdateGameServerSessionQueueResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateGameServerSessionQueueResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateGameServerSessionRequest struct {
@@ -3791,8 +5633,22 @@ func (r *UpdateGameServerSessionRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateGameServerSessionRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GameServerSessionId")
+	delete(f, "MaximumPlayerSessionCount")
+	delete(f, "Name")
+	delete(f, "PlayerSessionCreationPolicy")
+	delete(f, "ProtectionPolicy")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateGameServerSessionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateGameServerSessionResponse struct {
@@ -3812,8 +5668,10 @@ func (r *UpdateGameServerSessionResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateGameServerSessionResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateRuntimeConfigurationRequest struct {
@@ -3831,8 +5689,19 @@ func (r *UpdateRuntimeConfigurationRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateRuntimeConfigurationRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FleetId")
+	delete(f, "RuntimeConfiguration")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateRuntimeConfigurationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateRuntimeConfigurationResponse struct {
@@ -3853,6 +5722,8 @@ func (r *UpdateRuntimeConfigurationResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateRuntimeConfigurationResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

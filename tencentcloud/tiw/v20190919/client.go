@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -43,11 +43,52 @@ func NewClient(credential *common.Credential, region string, clientProfile *prof
 }
 
 
+func NewCreateSnapshotTaskRequest() (request *CreateSnapshotTaskRequest) {
+    request = &CreateSnapshotTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiw", APIVersion, "CreateSnapshotTask")
+    
+    
+    return
+}
+
+func NewCreateSnapshotTaskResponse() (response *CreateSnapshotTaskResponse) {
+    response = &CreateSnapshotTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateSnapshotTask
+// 创建白板板书生成任务, 在任务结束后，如果提供了回调地址，将通过回调地址通知板书生成结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) CreateSnapshotTask(request *CreateSnapshotTaskRequest) (response *CreateSnapshotTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateSnapshotTaskRequest()
+    }
+    
+    response = NewCreateSnapshotTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTranscodeRequest() (request *CreateTranscodeRequest) {
     request = &CreateTranscodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "CreateTranscode")
+    
+    
     return
 }
 
@@ -58,11 +99,25 @@ func NewCreateTranscodeResponse() (response *CreateTranscodeResponse) {
     return
 }
 
+// CreateTranscode
 // 创建一个文档转码任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_TRANSCODE = "FailedOperation.Transcode"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_FILEFORMATUNSUPPORTED = "InvalidParameter.FileFormatUnsupported"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  INVALIDPARAMETER_TRANSCODEPARAMETER = "InvalidParameter.TranscodeParameter"
+//  LIMITEXCEEDED_TASKCONCURRENCY = "LimitExceeded.TaskConcurrency"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) CreateTranscode(request *CreateTranscodeRequest) (response *CreateTranscodeResponse, err error) {
     if request == nil {
         request = NewCreateTranscodeRequest()
     }
+    
     response = NewCreateTranscodeResponse()
     err = c.Send(request, response)
     return
@@ -73,6 +128,8 @@ func NewCreateVideoGenerationTaskRequest() (request *CreateVideoGenerationTaskRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "CreateVideoGenerationTask")
+    
+    
     return
 }
 
@@ -83,11 +140,25 @@ func NewCreateVideoGenerationTaskResponse() (response *CreateVideoGenerationTask
     return
 }
 
+// CreateVideoGenerationTask
 // 创建视频生成任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_INVALIDEXTRA = "InvalidParameter.InvalidExtra"
+//  INVALIDPARAMETER_RECORDPARAMETER = "InvalidParameter.RecordParameter"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  LIMITEXCEEDED_TASKCONCURRENCY = "LimitExceeded.TaskConcurrency"
+//  RESOURCEINUSE_RECORDUSERID = "ResourceInUse.RecordUserId"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) CreateVideoGenerationTask(request *CreateVideoGenerationTaskRequest) (response *CreateVideoGenerationTaskResponse, err error) {
     if request == nil {
         request = NewCreateVideoGenerationTaskRequest()
     }
+    
     response = NewCreateVideoGenerationTaskResponse()
     err = c.Send(request, response)
     return
@@ -98,6 +169,8 @@ func NewDescribeOnlineRecordRequest() (request *DescribeOnlineRecordRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "DescribeOnlineRecord")
+    
+    
     return
 }
 
@@ -108,11 +181,22 @@ func NewDescribeOnlineRecordResponse() (response *DescribeOnlineRecordResponse) 
     return
 }
 
+// DescribeOnlineRecord
 // 查询录制任务状态与结果
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_RECORD = "FailedOperation.Record"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_TASKNOTFOUND = "InvalidParameter.TaskNotFound"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) DescribeOnlineRecord(request *DescribeOnlineRecordRequest) (response *DescribeOnlineRecordResponse, err error) {
     if request == nil {
         request = NewDescribeOnlineRecordRequest()
     }
+    
     response = NewDescribeOnlineRecordResponse()
     err = c.Send(request, response)
     return
@@ -123,6 +207,8 @@ func NewDescribeOnlineRecordCallbackRequest() (request *DescribeOnlineRecordCall
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "DescribeOnlineRecordCallback")
+    
+    
     return
 }
 
@@ -133,12 +219,143 @@ func NewDescribeOnlineRecordCallbackResponse() (response *DescribeOnlineRecordCa
     return
 }
 
+// DescribeOnlineRecordCallback
 // 查询实时录制回调地址
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) DescribeOnlineRecordCallback(request *DescribeOnlineRecordCallbackRequest) (response *DescribeOnlineRecordCallbackResponse, err error) {
     if request == nil {
         request = NewDescribeOnlineRecordCallbackRequest()
     }
+    
     response = NewDescribeOnlineRecordCallbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeQualityMetricsRequest() (request *DescribeQualityMetricsRequest) {
+    request = &DescribeQualityMetricsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeQualityMetrics")
+    
+    
+    return
+}
+
+func NewDescribeQualityMetricsResponse() (response *DescribeQualityMetricsResponse) {
+    response = &DescribeQualityMetricsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeQualityMetrics
+// 查询互动白板质量数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeQualityMetrics(request *DescribeQualityMetricsRequest) (response *DescribeQualityMetricsResponse, err error) {
+    if request == nil {
+        request = NewDescribeQualityMetricsRequest()
+    }
+    
+    response = NewDescribeQualityMetricsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSnapshotTaskRequest() (request *DescribeSnapshotTaskRequest) {
+    request = &DescribeSnapshotTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeSnapshotTask")
+    
+    
+    return
+}
+
+func NewDescribeSnapshotTaskResponse() (response *DescribeSnapshotTaskResponse) {
+    response = &DescribeSnapshotTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSnapshotTask
+// 获取指定白板板书生成任务信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSnapshotTask(request *DescribeSnapshotTaskRequest) (response *DescribeSnapshotTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeSnapshotTaskRequest()
+    }
+    
+    response = NewDescribeSnapshotTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTIWDailyUsageRequest() (request *DescribeTIWDailyUsageRequest) {
+    request = &DescribeTIWDailyUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeTIWDailyUsage")
+    
+    
+    return
+}
+
+func NewDescribeTIWDailyUsageResponse() (response *DescribeTIWDailyUsageResponse) {
+    response = &DescribeTIWDailyUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTIWDailyUsage
+// 查询互动白板天维度计费用量。
+//
+// 1. 单次查询统计区间最多不能超过31天。
+//
+// 2. 由于统计延迟等原因，暂时不支持查询当天数据，建议在次日上午7点以后再来查询前一天的用量，例如在10月27日上午7点后，再来查询到10月26日整天的用量
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  INVALIDPARAMETER_TRANSCODEPARAMETER = "InvalidParameter.TranscodeParameter"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeTIWDailyUsage(request *DescribeTIWDailyUsageRequest) (response *DescribeTIWDailyUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribeTIWDailyUsageRequest()
+    }
+    
+    response = NewDescribeTIWDailyUsageResponse()
     err = c.Send(request, response)
     return
 }
@@ -148,6 +365,8 @@ func NewDescribeTranscodeRequest() (request *DescribeTranscodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "DescribeTranscode")
+    
+    
     return
 }
 
@@ -158,11 +377,31 @@ func NewDescribeTranscodeResponse() (response *DescribeTranscodeResponse) {
     return
 }
 
+// DescribeTranscode
 // 查询文档转码任务的执行进度与转码结果
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_FILEDOWNLOADFAIL = "FailedOperation.FileDownloadFail"
+//  FAILEDOPERATION_FILEFORMATERROR = "FailedOperation.FileFormatError"
+//  FAILEDOPERATION_FILEOPENFAIL = "FailedOperation.FileOpenFail"
+//  FAILEDOPERATION_FILEUPLOADFAIL = "FailedOperation.FileUploadFail"
+//  FAILEDOPERATION_TRANSCODE = "FailedOperation.Transcode"
+//  FAILEDOPERATION_TRANSCODESERVERERROR = "FailedOperation.TranscodeServerError"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_FILEFORMATUNSUPPORTED = "InvalidParameter.FileFormatUnsupported"
+//  INVALIDPARAMETER_TASKNOTFOUND = "InvalidParameter.TaskNotFound"
+//  INVALIDPARAMETER_TRANSCODEPARAMETER = "InvalidParameter.TranscodeParameter"
+//  INVALIDPARAMETER_URLFORMATERROR = "InvalidParameter.UrlFormatError"
+//  LIMITEXCEEDED_TRANSCODEPAGESLIMITATION = "LimitExceeded.TranscodePagesLimitation"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) DescribeTranscode(request *DescribeTranscodeRequest) (response *DescribeTranscodeResponse, err error) {
     if request == nil {
         request = NewDescribeTranscodeRequest()
     }
+    
     response = NewDescribeTranscodeResponse()
     err = c.Send(request, response)
     return
@@ -173,6 +412,8 @@ func NewDescribeTranscodeCallbackRequest() (request *DescribeTranscodeCallbackRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "DescribeTranscodeCallback")
+    
+    
     return
 }
 
@@ -183,11 +424,21 @@ func NewDescribeTranscodeCallbackResponse() (response *DescribeTranscodeCallback
     return
 }
 
+// DescribeTranscodeCallback
 // 查询文档转码回调地址
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) DescribeTranscodeCallback(request *DescribeTranscodeCallbackRequest) (response *DescribeTranscodeCallbackResponse, err error) {
     if request == nil {
         request = NewDescribeTranscodeCallbackRequest()
     }
+    
     response = NewDescribeTranscodeCallbackResponse()
     err = c.Send(request, response)
     return
@@ -198,6 +449,8 @@ func NewDescribeVideoGenerationTaskRequest() (request *DescribeVideoGenerationTa
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "DescribeVideoGenerationTask")
+    
+    
     return
 }
 
@@ -208,11 +461,22 @@ func NewDescribeVideoGenerationTaskResponse() (response *DescribeVideoGeneration
     return
 }
 
+// DescribeVideoGenerationTask
 // 查询录制视频生成任务状态与结果
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_RECORD = "FailedOperation.Record"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_TASKNOTFOUND = "InvalidParameter.TaskNotFound"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) DescribeVideoGenerationTask(request *DescribeVideoGenerationTaskRequest) (response *DescribeVideoGenerationTaskResponse, err error) {
     if request == nil {
         request = NewDescribeVideoGenerationTaskRequest()
     }
+    
     response = NewDescribeVideoGenerationTaskResponse()
     err = c.Send(request, response)
     return
@@ -223,6 +487,8 @@ func NewDescribeVideoGenerationTaskCallbackRequest() (request *DescribeVideoGene
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "DescribeVideoGenerationTaskCallback")
+    
+    
     return
 }
 
@@ -233,12 +499,97 @@ func NewDescribeVideoGenerationTaskCallbackResponse() (response *DescribeVideoGe
     return
 }
 
+// DescribeVideoGenerationTaskCallback
 // 查询录制视频生成回调地址
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) DescribeVideoGenerationTaskCallback(request *DescribeVideoGenerationTaskCallbackRequest) (response *DescribeVideoGenerationTaskCallbackResponse, err error) {
     if request == nil {
         request = NewDescribeVideoGenerationTaskCallbackRequest()
     }
+    
     response = NewDescribeVideoGenerationTaskCallbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWhiteboardPushRequest() (request *DescribeWhiteboardPushRequest) {
+    request = &DescribeWhiteboardPushRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeWhiteboardPush")
+    
+    
+    return
+}
+
+func NewDescribeWhiteboardPushResponse() (response *DescribeWhiteboardPushResponse) {
+    response = &DescribeWhiteboardPushResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeWhiteboardPush
+// 查询推流任务状态与结果
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_WHITEBOARDPUSH = "FailedOperation.WhiteboardPush"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_TASKNOTFOUND = "InvalidParameter.TaskNotFound"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeWhiteboardPush(request *DescribeWhiteboardPushRequest) (response *DescribeWhiteboardPushResponse, err error) {
+    if request == nil {
+        request = NewDescribeWhiteboardPushRequest()
+    }
+    
+    response = NewDescribeWhiteboardPushResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWhiteboardPushCallbackRequest() (request *DescribeWhiteboardPushCallbackRequest) {
+    request = &DescribeWhiteboardPushCallbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeWhiteboardPushCallback")
+    
+    
+    return
+}
+
+func NewDescribeWhiteboardPushCallbackResponse() (response *DescribeWhiteboardPushCallbackResponse) {
+    response = &DescribeWhiteboardPushCallbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeWhiteboardPushCallback
+// 查询白板推流回调地址
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeWhiteboardPushCallback(request *DescribeWhiteboardPushCallbackRequest) (response *DescribeWhiteboardPushCallbackResponse, err error) {
+    if request == nil {
+        request = NewDescribeWhiteboardPushCallbackRequest()
+    }
+    
+    response = NewDescribeWhiteboardPushCallbackResponse()
     err = c.Send(request, response)
     return
 }
@@ -248,6 +599,8 @@ func NewPauseOnlineRecordRequest() (request *PauseOnlineRecordRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "PauseOnlineRecord")
+    
+    
     return
 }
 
@@ -258,11 +611,23 @@ func NewPauseOnlineRecordResponse() (response *PauseOnlineRecordResponse) {
     return
 }
 
+// PauseOnlineRecord
 // 暂停实时录制
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_TASKNOTFOUND = "InvalidParameter.TaskNotFound"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+//  UNSUPPORTEDOPERATION_INVALIDTASKSTATUS = "UnsupportedOperation.InvalidTaskStatus"
+//  UNSUPPORTEDOPERATION_TASKHASALREADYSTOPPED = "UnsupportedOperation.TaskHasAlreadyStopped"
 func (c *Client) PauseOnlineRecord(request *PauseOnlineRecordRequest) (response *PauseOnlineRecordResponse, err error) {
     if request == nil {
         request = NewPauseOnlineRecordRequest()
     }
+    
     response = NewPauseOnlineRecordResponse()
     err = c.Send(request, response)
     return
@@ -273,6 +638,8 @@ func NewResumeOnlineRecordRequest() (request *ResumeOnlineRecordRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "ResumeOnlineRecord")
+    
+    
     return
 }
 
@@ -283,11 +650,23 @@ func NewResumeOnlineRecordResponse() (response *ResumeOnlineRecordResponse) {
     return
 }
 
+// ResumeOnlineRecord
 // 恢复实时录制
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_TASKNOTFOUND = "InvalidParameter.TaskNotFound"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+//  UNSUPPORTEDOPERATION_INVALIDTASKSTATUS = "UnsupportedOperation.InvalidTaskStatus"
+//  UNSUPPORTEDOPERATION_TASKHASALREADYSTOPPED = "UnsupportedOperation.TaskHasAlreadyStopped"
 func (c *Client) ResumeOnlineRecord(request *ResumeOnlineRecordRequest) (response *ResumeOnlineRecordResponse, err error) {
     if request == nil {
         request = NewResumeOnlineRecordRequest()
     }
+    
     response = NewResumeOnlineRecordResponse()
     err = c.Send(request, response)
     return
@@ -298,6 +677,8 @@ func NewSetOnlineRecordCallbackRequest() (request *SetOnlineRecordCallbackReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "SetOnlineRecordCallback")
+    
+    
     return
 }
 
@@ -308,11 +689,21 @@ func NewSetOnlineRecordCallbackResponse() (response *SetOnlineRecordCallbackResp
     return
 }
 
+// SetOnlineRecordCallback
 // 设置实时录制回调地址，回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40258
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_CALLBACKADDRESSFORMATERROR = "InvalidParameter.CallbackAddressFormatError"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) SetOnlineRecordCallback(request *SetOnlineRecordCallbackRequest) (response *SetOnlineRecordCallbackResponse, err error) {
     if request == nil {
         request = NewSetOnlineRecordCallbackRequest()
     }
+    
     response = NewSetOnlineRecordCallbackResponse()
     err = c.Send(request, response)
     return
@@ -323,6 +714,8 @@ func NewSetOnlineRecordCallbackKeyRequest() (request *SetOnlineRecordCallbackKey
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "SetOnlineRecordCallbackKey")
+    
+    
     return
 }
 
@@ -333,11 +726,21 @@ func NewSetOnlineRecordCallbackKeyResponse() (response *SetOnlineRecordCallbackK
     return
 }
 
+// SetOnlineRecordCallbackKey
 // 设置实时录制回调鉴权密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) SetOnlineRecordCallbackKey(request *SetOnlineRecordCallbackKeyRequest) (response *SetOnlineRecordCallbackKeyResponse, err error) {
     if request == nil {
         request = NewSetOnlineRecordCallbackKeyRequest()
     }
+    
     response = NewSetOnlineRecordCallbackKeyResponse()
     err = c.Send(request, response)
     return
@@ -348,6 +751,8 @@ func NewSetTranscodeCallbackRequest() (request *SetTranscodeCallbackRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "SetTranscodeCallback")
+    
+    
     return
 }
 
@@ -358,11 +763,21 @@ func NewSetTranscodeCallbackResponse() (response *SetTranscodeCallbackResponse) 
     return
 }
 
+// SetTranscodeCallback
 // 设置文档转码回调地址，回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40260
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_CALLBACKADDRESSFORMATERROR = "InvalidParameter.CallbackAddressFormatError"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) SetTranscodeCallback(request *SetTranscodeCallbackRequest) (response *SetTranscodeCallbackResponse, err error) {
     if request == nil {
         request = NewSetTranscodeCallbackRequest()
     }
+    
     response = NewSetTranscodeCallbackResponse()
     err = c.Send(request, response)
     return
@@ -373,6 +788,8 @@ func NewSetTranscodeCallbackKeyRequest() (request *SetTranscodeCallbackKeyReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "SetTranscodeCallbackKey")
+    
+    
     return
 }
 
@@ -383,11 +800,21 @@ func NewSetTranscodeCallbackKeyResponse() (response *SetTranscodeCallbackKeyResp
     return
 }
 
+// SetTranscodeCallbackKey
 // 设置文档转码回调鉴权密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) SetTranscodeCallbackKey(request *SetTranscodeCallbackKeyRequest) (response *SetTranscodeCallbackKeyResponse, err error) {
     if request == nil {
         request = NewSetTranscodeCallbackKeyRequest()
     }
+    
     response = NewSetTranscodeCallbackKeyResponse()
     err = c.Send(request, response)
     return
@@ -398,6 +825,8 @@ func NewSetVideoGenerationTaskCallbackRequest() (request *SetVideoGenerationTask
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "SetVideoGenerationTaskCallback")
+    
+    
     return
 }
 
@@ -408,11 +837,21 @@ func NewSetVideoGenerationTaskCallbackResponse() (response *SetVideoGenerationTa
     return
 }
 
+// SetVideoGenerationTaskCallback
 // 设置录制视频生成回调地址
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_CALLBACKADDRESSFORMATERROR = "InvalidParameter.CallbackAddressFormatError"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) SetVideoGenerationTaskCallback(request *SetVideoGenerationTaskCallbackRequest) (response *SetVideoGenerationTaskCallbackResponse, err error) {
     if request == nil {
         request = NewSetVideoGenerationTaskCallbackRequest()
     }
+    
     response = NewSetVideoGenerationTaskCallbackResponse()
     err = c.Send(request, response)
     return
@@ -423,6 +862,8 @@ func NewSetVideoGenerationTaskCallbackKeyRequest() (request *SetVideoGenerationT
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "SetVideoGenerationTaskCallbackKey")
+    
+    
     return
 }
 
@@ -433,12 +874,96 @@ func NewSetVideoGenerationTaskCallbackKeyResponse() (response *SetVideoGeneratio
     return
 }
 
+// SetVideoGenerationTaskCallbackKey
 // 设置视频生成回调鉴权密钥
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) SetVideoGenerationTaskCallbackKey(request *SetVideoGenerationTaskCallbackKeyRequest) (response *SetVideoGenerationTaskCallbackKeyResponse, err error) {
     if request == nil {
         request = NewSetVideoGenerationTaskCallbackKeyRequest()
     }
+    
     response = NewSetVideoGenerationTaskCallbackKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetWhiteboardPushCallbackRequest() (request *SetWhiteboardPushCallbackRequest) {
+    request = &SetWhiteboardPushCallbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiw", APIVersion, "SetWhiteboardPushCallback")
+    
+    
+    return
+}
+
+func NewSetWhiteboardPushCallbackResponse() (response *SetWhiteboardPushCallbackResponse) {
+    response = &SetWhiteboardPushCallbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SetWhiteboardPushCallback
+// 设置白板推流回调地址，回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40257
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_CALLBACKADDRESSFORMATERROR = "InvalidParameter.CallbackAddressFormatError"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) SetWhiteboardPushCallback(request *SetWhiteboardPushCallbackRequest) (response *SetWhiteboardPushCallbackResponse, err error) {
+    if request == nil {
+        request = NewSetWhiteboardPushCallbackRequest()
+    }
+    
+    response = NewSetWhiteboardPushCallbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetWhiteboardPushCallbackKeyRequest() (request *SetWhiteboardPushCallbackKeyRequest) {
+    request = &SetWhiteboardPushCallbackKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiw", APIVersion, "SetWhiteboardPushCallbackKey")
+    
+    
+    return
+}
+
+func NewSetWhiteboardPushCallbackKeyResponse() (response *SetWhiteboardPushCallbackKeyResponse) {
+    response = &SetWhiteboardPushCallbackKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SetWhiteboardPushCallbackKey
+// 设置白板推流回调鉴权密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) SetWhiteboardPushCallbackKey(request *SetWhiteboardPushCallbackKeyRequest) (response *SetWhiteboardPushCallbackKeyResponse, err error) {
+    if request == nil {
+        request = NewSetWhiteboardPushCallbackKeyRequest()
+    }
+    
+    response = NewSetWhiteboardPushCallbackKeyResponse()
     err = c.Send(request, response)
     return
 }
@@ -448,6 +973,8 @@ func NewStartOnlineRecordRequest() (request *StartOnlineRecordRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "StartOnlineRecord")
+    
+    
     return
 }
 
@@ -458,12 +985,67 @@ func NewStartOnlineRecordResponse() (response *StartOnlineRecordResponse) {
     return
 }
 
+// StartOnlineRecord
 // 发起一个实时录制任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_INVALIDEXTRA = "InvalidParameter.InvalidExtra"
+//  INVALIDPARAMETER_RECORDPARAMETER = "InvalidParameter.RecordParameter"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  LIMITEXCEEDED_TASKCONCURRENCY = "LimitExceeded.TaskConcurrency"
+//  RESOURCEINUSE_RECORDUSERID = "ResourceInUse.RecordUserId"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) StartOnlineRecord(request *StartOnlineRecordRequest) (response *StartOnlineRecordResponse, err error) {
     if request == nil {
         request = NewStartOnlineRecordRequest()
     }
+    
     response = NewStartOnlineRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStartWhiteboardPushRequest() (request *StartWhiteboardPushRequest) {
+    request = &StartWhiteboardPushRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiw", APIVersion, "StartWhiteboardPush")
+    
+    
+    return
+}
+
+func NewStartWhiteboardPushResponse() (response *StartWhiteboardPushResponse) {
+    response = &StartWhiteboardPushResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StartWhiteboardPush
+// 发起一个白板推流任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_INVALIDEXTRA = "InvalidParameter.InvalidExtra"
+//  INVALIDPARAMETER_RECORDPARAMETER = "InvalidParameter.RecordParameter"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  LIMITEXCEEDED_TASKCONCURRENCY = "LimitExceeded.TaskConcurrency"
+//  RESOURCEINUSE_RECORDUSERID = "ResourceInUse.RecordUserId"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) StartWhiteboardPush(request *StartWhiteboardPushRequest) (response *StartWhiteboardPushResponse, err error) {
+    if request == nil {
+        request = NewStartWhiteboardPushRequest()
+    }
+    
+    response = NewStartWhiteboardPushResponse()
     err = c.Send(request, response)
     return
 }
@@ -473,6 +1055,8 @@ func NewStopOnlineRecordRequest() (request *StopOnlineRecordRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiw", APIVersion, "StopOnlineRecord")
+    
+    
     return
 }
 
@@ -483,12 +1067,61 @@ func NewStopOnlineRecordResponse() (response *StopOnlineRecordResponse) {
     return
 }
 
+// StopOnlineRecord
 // 停止实时录制
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_TASKNOTFOUND = "InvalidParameter.TaskNotFound"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+//  UNSUPPORTEDOPERATION_TASKHASALREADYSTOPPED = "UnsupportedOperation.TaskHasAlreadyStopped"
 func (c *Client) StopOnlineRecord(request *StopOnlineRecordRequest) (response *StopOnlineRecordResponse, err error) {
     if request == nil {
         request = NewStopOnlineRecordRequest()
     }
+    
     response = NewStopOnlineRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopWhiteboardPushRequest() (request *StopWhiteboardPushRequest) {
+    request = &StopWhiteboardPushRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiw", APIVersion, "StopWhiteboardPush")
+    
+    
+    return
+}
+
+func NewStopWhiteboardPushResponse() (response *StopWhiteboardPushResponse) {
+    response = &StopWhiteboardPushResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StopWhiteboardPush
+// 停止白板推流任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  INVALIDPARAMETER_TASKNOTFOUND = "InvalidParameter.TaskNotFound"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+//  UNSUPPORTEDOPERATION_TASKHASALREADYSTOPPED = "UnsupportedOperation.TaskHasAlreadyStopped"
+func (c *Client) StopWhiteboardPush(request *StopWhiteboardPushRequest) (response *StopWhiteboardPushResponse, err error) {
+    if request == nil {
+        request = NewStopWhiteboardPushRequest()
+    }
+    
+    response = NewStopWhiteboardPushResponse()
     err = c.Send(request, response)
     return
 }

@@ -16,7 +16,7 @@ package v20191209
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -30,7 +30,7 @@ type DevInfoQ struct {
 
 	// 风险详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskInfo []*RiskDetail `json:"RiskInfo,omitempty" name:"RiskInfo" list`
+	RiskInfo []*RiskDetail `json:"RiskInfo,omitempty" name:"RiskInfo"`
 
 	// 概率值
 	Probability *float64 `json:"Probability,omitempty" name:"Probability"`
@@ -60,8 +60,22 @@ func (r *GetOpenIdRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetOpenIdRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceToken")
+	delete(f, "BusinessId")
+	delete(f, "BusinessUserId")
+	delete(f, "Platform")
+	delete(f, "Option")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetOpenIdRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetOpenIdResponse struct {
@@ -74,7 +88,7 @@ type GetOpenIdResponse struct {
 
 		// 设备风险
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		RiskInfo []*RiskInfo `json:"RiskInfo,omitempty" name:"RiskInfo" list`
+		RiskInfo []*RiskInfo `json:"RiskInfo,omitempty" name:"RiskInfo"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -86,8 +100,10 @@ func (r *GetOpenIdResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetOpenIdResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetTokenRequest struct {
@@ -117,8 +133,23 @@ func (r *GetTokenRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetTokenRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BusinessId")
+	delete(f, "Scene")
+	delete(f, "BusinessUserId")
+	delete(f, "AppClientIp")
+	delete(f, "ExpireTime")
+	delete(f, "OldToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetTokenResponse struct {
@@ -141,8 +172,10 @@ func (r *GetTokenResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetTokenResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryDevAndRiskRequest struct {
@@ -226,8 +259,41 @@ func (r *QueryDevAndRiskRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryDevAndRiskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DevType")
+	delete(f, "Imei")
+	delete(f, "Mac")
+	delete(f, "Aid")
+	delete(f, "Cid")
+	delete(f, "Imsi")
+	delete(f, "Df")
+	delete(f, "KernelVer")
+	delete(f, "Storage")
+	delete(f, "Dfp")
+	delete(f, "BootTime")
+	delete(f, "Resolution")
+	delete(f, "RingList")
+	delete(f, "FontList")
+	delete(f, "SensorList")
+	delete(f, "CpuType")
+	delete(f, "Battery")
+	delete(f, "Oaid")
+	delete(f, "Idfa")
+	delete(f, "Idfv")
+	delete(f, "DeviceName")
+	delete(f, "IphoneModel")
+	delete(f, "Fingerprint")
+	delete(f, "SerialId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryDevAndRiskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryDevAndRiskResponse struct {
@@ -243,7 +309,7 @@ type QueryDevAndRiskResponse struct {
 
 		// 匹配到的设备信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Matches []*DevInfoQ `json:"Matches,omitempty" name:"Matches" list`
+		Matches []*DevInfoQ `json:"Matches,omitempty" name:"Matches"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -255,8 +321,10 @@ func (r *QueryDevAndRiskResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryDevAndRiskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RiskDetail struct {

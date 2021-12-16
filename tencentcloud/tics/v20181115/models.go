@@ -16,7 +16,7 @@ package v20181115
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -35,8 +35,19 @@ func (r *DescribeDomainInfoRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeDomainInfoRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Key")
+	delete(f, "Option")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDomainInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeDomainInfoResponse struct {
@@ -69,13 +80,13 @@ type DescribeDomainInfoResponse struct {
 	// maleware site = 恶意站点
 	// malware IP = 恶意IP
 	// 等等
-		ThreatTypes []*string `json:"ThreatTypes,omitempty" name:"ThreatTypes" list`
+		ThreatTypes []*string `json:"ThreatTypes,omitempty" name:"ThreatTypes"`
 
 		// 恶意标签，对应的团伙，家族等信息。
-		Tags []*TagType `json:"Tags,omitempty" name:"Tags" list`
+		Tags []*TagType `json:"Tags,omitempty" name:"Tags"`
 
 		// 对应的历史上的威胁情报事件
-		Intelligences []*IntelligenceType `json:"Intelligences,omitempty" name:"Intelligences" list`
+		Intelligences []*IntelligenceType `json:"Intelligences,omitempty" name:"Intelligences"`
 
 		// 情报相关的上下文
 		Context *string `json:"Context,omitempty" name:"Context"`
@@ -90,8 +101,10 @@ func (r *DescribeDomainInfoResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeDomainInfoResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeFileInfoRequest struct {
@@ -109,8 +122,19 @@ func (r *DescribeFileInfoRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeFileInfoRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Key")
+	delete(f, "Option")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFileInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeFileInfoResponse struct {
@@ -129,13 +153,13 @@ type DescribeFileInfoResponse struct {
 		// 文件类型，文件hash
 	// （md5,sha1,sha256）,文件大小等等文件
 	// 基础信息
-		FileInfo []*FileInfoType `json:"FileInfo,omitempty" name:"FileInfo" list`
+		FileInfo []*FileInfoType `json:"FileInfo,omitempty" name:"FileInfo"`
 
 		// 恶意标签，对应的团伙，家族等信息。
-		Tags []*TagType `json:"Tags,omitempty" name:"Tags" list`
+		Tags []*TagType `json:"Tags,omitempty" name:"Tags"`
 
 		// 对应的历史上的威胁情报事件
-		Intelligences []*IntelligenceType `json:"Intelligences,omitempty" name:"Intelligences" list`
+		Intelligences []*IntelligenceType `json:"Intelligences,omitempty" name:"Intelligences"`
 
 		// 情报相关的上下文
 		Context *string `json:"Context,omitempty" name:"Context"`
@@ -150,8 +174,10 @@ func (r *DescribeFileInfoResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeFileInfoResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeIpInfoRequest struct {
@@ -169,8 +195,19 @@ func (r *DescribeIpInfoRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeIpInfoRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Key")
+	delete(f, "Option")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIpInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeIpInfoResponse struct {
@@ -203,13 +240,13 @@ type DescribeIpInfoResponse struct {
 	// maleware site = 恶意站点
 	// malware IP = 恶意IP
 	// 等等
-		ThreatTypes []*string `json:"ThreatTypes,omitempty" name:"ThreatTypes" list`
+		ThreatTypes []*string `json:"ThreatTypes,omitempty" name:"ThreatTypes"`
 
 		// 恶意标签，对应的团伙，家族等信息。
-		Tags []*TagType `json:"Tags,omitempty" name:"Tags" list`
+		Tags []*TagType `json:"Tags,omitempty" name:"Tags"`
 
 		// 对应的历史上的威胁情报事件
-		Intelligences []*IntelligenceType `json:"Intelligences,omitempty" name:"Intelligences" list`
+		Intelligences []*IntelligenceType `json:"Intelligences,omitempty" name:"Intelligences"`
 
 		// 情报相关的上下文
 		Context *string `json:"Context,omitempty" name:"Context"`
@@ -224,8 +261,10 @@ func (r *DescribeIpInfoResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeIpInfoResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeThreatInfoRequest struct {
@@ -246,8 +285,20 @@ func (r *DescribeThreatInfoRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeThreatInfoRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Key")
+	delete(f, "Type")
+	delete(f, "Option")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeThreatInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeThreatInfoResponse struct {
@@ -280,10 +331,10 @@ type DescribeThreatInfoResponse struct {
 	// maleware site = 恶意站点
 	// malware IP = 恶意IP
 	// 等等
-		ThreatTypes []*string `json:"ThreatTypes,omitempty" name:"ThreatTypes" list`
+		ThreatTypes []*string `json:"ThreatTypes,omitempty" name:"ThreatTypes"`
 
 		// 恶意标签，对应的团伙，家族等信息。
-		Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+		Tags []*string `json:"Tags,omitempty" name:"Tags"`
 
 		// 当前状态
 	// active = 活跃
@@ -307,8 +358,10 @@ func (r *DescribeThreatInfoResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeThreatInfoResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FileInfoType struct {

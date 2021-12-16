@@ -16,7 +16,7 @@ package v20190416
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -108,8 +108,31 @@ func (r *CreateJobRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateJobRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "ResourceGroupId")
+	delete(f, "Cpu")
+	delete(f, "Memory")
+	delete(f, "Cluster")
+	delete(f, "PredictInput")
+	delete(f, "Description")
+	delete(f, "WorkerCount")
+	delete(f, "ConfigId")
+	delete(f, "Gpu")
+	delete(f, "GpuMemory")
+	delete(f, "GpuType")
+	delete(f, "QuantizationInput")
+	delete(f, "LogTopicId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateJobResponse struct {
@@ -129,8 +152,10 @@ func (r *CreateJobResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateJobResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateRsgAsGroupRequest struct {
@@ -163,8 +188,24 @@ func (r *CreateRsgAsGroupRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateRsgAsGroupRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RsgId")
+	delete(f, "MaxSize")
+	delete(f, "MinSize")
+	delete(f, "InstanceType")
+	delete(f, "Cluster")
+	delete(f, "Name")
+	delete(f, "DesiredSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRsgAsGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateRsgAsGroupResponse struct {
@@ -184,8 +225,10 @@ func (r *CreateRsgAsGroupResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateRsgAsGroupResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateRuntimeRequest struct {
@@ -212,8 +255,22 @@ func (r *CreateRuntimeRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateRuntimeRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Image")
+	delete(f, "Framework")
+	delete(f, "Description")
+	delete(f, "HealthCheckOn")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRuntimeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateRuntimeResponse struct {
@@ -233,8 +290,10 @@ func (r *CreateRuntimeResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateRuntimeResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateServiceConfigRequest struct {
@@ -258,8 +317,21 @@ func (r *CreateServiceConfigRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateServiceConfigRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Runtime")
+	delete(f, "ModelUri")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateServiceConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateServiceConfigResponse struct {
@@ -279,8 +351,10 @@ func (r *CreateServiceConfigResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateServiceConfigResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateServiceRequest struct {
@@ -334,8 +408,31 @@ func (r *CreateServiceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateServiceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Scaler")
+	delete(f, "ServiceConfigId")
+	delete(f, "Name")
+	delete(f, "ScaleMode")
+	delete(f, "ResourceGroupId")
+	delete(f, "Cpu")
+	delete(f, "Memory")
+	delete(f, "Cluster")
+	delete(f, "Authentication")
+	delete(f, "Gpu")
+	delete(f, "GpuMemory")
+	delete(f, "Description")
+	delete(f, "GpuType")
+	delete(f, "LogTopicId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateServiceResponse struct {
@@ -355,8 +452,10 @@ func (r *CreateServiceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateServiceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteInstanceRequest struct {
@@ -371,8 +470,18 @@ func (r *DeleteInstanceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteInstanceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteInstanceResponse struct {
@@ -389,8 +498,10 @@ func (r *DeleteInstanceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteInstanceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteJobRequest struct {
@@ -405,8 +516,18 @@ func (r *DeleteJobRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteJobRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteJobResponse struct {
@@ -423,8 +544,10 @@ func (r *DeleteJobResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteJobResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteResourceGroupRequest struct {
@@ -439,8 +562,18 @@ func (r *DeleteResourceGroupRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteResourceGroupRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteResourceGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteResourceGroupResponse struct {
@@ -457,8 +590,10 @@ func (r *DeleteResourceGroupResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteResourceGroupResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteRsgAsGroupRequest struct {
@@ -473,8 +608,18 @@ func (r *DeleteRsgAsGroupRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteRsgAsGroupRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRsgAsGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteRsgAsGroupResponse struct {
@@ -491,8 +636,10 @@ func (r *DeleteRsgAsGroupResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteRsgAsGroupResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteRuntimeRequest struct {
@@ -507,8 +654,18 @@ func (r *DeleteRuntimeRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteRuntimeRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Runtime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRuntimeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteRuntimeResponse struct {
@@ -525,8 +682,10 @@ func (r *DeleteRuntimeResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteRuntimeResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteServiceConfigRequest struct {
@@ -544,8 +703,19 @@ func (r *DeleteServiceConfigRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteServiceConfigRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceConfigId")
+	delete(f, "ServiceConfigName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteServiceConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteServiceConfigResponse struct {
@@ -562,8 +732,10 @@ func (r *DeleteServiceConfigResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteServiceConfigResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteServiceRequest struct {
@@ -578,8 +750,18 @@ func (r *DeleteServiceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteServiceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteServiceResponse struct {
@@ -596,15 +778,17 @@ func (r *DeleteServiceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteServiceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
 
 	// 筛选选项
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -627,8 +811,23 @@ func (r *DescribeInstancesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeInstancesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Order")
+	delete(f, "OrderField")
+	delete(f, "ResourceGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeInstancesResponse struct {
@@ -639,7 +838,7 @@ type DescribeInstancesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 资源组下节点列表
-		Instances []*Instance `json:"Instances,omitempty" name:"Instances" list`
+		Instances []*Instance `json:"Instances,omitempty" name:"Instances"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -651,15 +850,17 @@ func (r *DescribeInstancesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeInstancesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeResourceGroupsRequest struct {
 	*tchttp.BaseRequest
 
 	// 筛选选项
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -679,8 +880,22 @@ func (r *DescribeResourceGroupsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeResourceGroupsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Order")
+	delete(f, "OrderField")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeResourceGroupsResponse struct {
@@ -692,7 +907,7 @@ type DescribeResourceGroupsResponse struct {
 
 		// 资源组列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ResourceGroups []*ResourceGroup `json:"ResourceGroups,omitempty" name:"ResourceGroups" list`
+		ResourceGroups []*ResourceGroup `json:"ResourceGroups,omitempty" name:"ResourceGroups"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -704,8 +919,10 @@ func (r *DescribeResourceGroupsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeResourceGroupsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeRsgAsGroupActivitiesRequest struct {
@@ -721,7 +938,7 @@ type DescribeRsgAsGroupActivitiesRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 筛选选项
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为 0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -741,8 +958,25 @@ func (r *DescribeRsgAsGroupActivitiesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeRsgAsGroupActivitiesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Order")
+	delete(f, "OrderField")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRsgAsGroupActivitiesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeRsgAsGroupActivitiesResponse struct {
@@ -751,7 +985,7 @@ type DescribeRsgAsGroupActivitiesResponse struct {
 
 		// 伸缩组活动数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		RsgAsGroupActivitySet []*RsgAsGroupActivity `json:"RsgAsGroupActivitySet,omitempty" name:"RsgAsGroupActivitySet" list`
+		RsgAsGroupActivitySet []*RsgAsGroupActivity `json:"RsgAsGroupActivitySet,omitempty" name:"RsgAsGroupActivitySet"`
 
 		// 所查询的伸缩组活动总数目
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -766,15 +1000,17 @@ func (r *DescribeRsgAsGroupActivitiesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeRsgAsGroupActivitiesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeRsgAsGroupsRequest struct {
 	*tchttp.BaseRequest
 
 	// 筛选选项
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为 0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -794,8 +1030,22 @@ func (r *DescribeRsgAsGroupsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeRsgAsGroupsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Order")
+	delete(f, "OrderField")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRsgAsGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeRsgAsGroupsResponse struct {
@@ -803,7 +1053,7 @@ type DescribeRsgAsGroupsResponse struct {
 	Response *struct {
 
 		// 所查询的伸缩组数组
-		RsgAsGroupSet []*RsgAsGroup `json:"RsgAsGroupSet,omitempty" name:"RsgAsGroupSet" list`
+		RsgAsGroupSet []*RsgAsGroup `json:"RsgAsGroupSet,omitempty" name:"RsgAsGroupSet"`
 
 		// 伸缩组数组总数目
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -818,8 +1068,10 @@ func (r *DescribeRsgAsGroupsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeRsgAsGroupsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeRuntimesRequest struct {
@@ -831,8 +1083,17 @@ func (r *DescribeRuntimesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeRuntimesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRuntimesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeRuntimesResponse struct {
@@ -840,7 +1101,7 @@ type DescribeRuntimesResponse struct {
 	Response *struct {
 
 		// TIEMS支持的运行环境列表
-		Runtimes []*Runtime `json:"Runtimes,omitempty" name:"Runtimes" list`
+		Runtimes []*Runtime `json:"Runtimes,omitempty" name:"Runtimes"`
 
 		// 用户对runtime对权限
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -856,15 +1117,17 @@ func (r *DescribeRuntimesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeRuntimesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeServiceConfigsRequest struct {
 	*tchttp.BaseRequest
 
 	// 筛选选项，支持按照name等进行筛选
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -887,8 +1150,23 @@ func (r *DescribeServiceConfigsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeServiceConfigsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Order")
+	delete(f, "OrderField")
+	delete(f, "PageByName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServiceConfigsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeServiceConfigsResponse struct {
@@ -896,7 +1174,7 @@ type DescribeServiceConfigsResponse struct {
 	Response *struct {
 
 		// 服务配置
-		ServiceConfigs []*Config `json:"ServiceConfigs,omitempty" name:"ServiceConfigs" list`
+		ServiceConfigs []*Config `json:"ServiceConfigs,omitempty" name:"ServiceConfigs"`
 
 		// 服务配置总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -911,15 +1189,17 @@ func (r *DescribeServiceConfigsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeServiceConfigsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeServicesRequest struct {
 	*tchttp.BaseRequest
 
 	// 筛选选项，支持筛选的字段：id, region, zone, cluster, status, runtime, rsg_id
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -939,8 +1219,22 @@ func (r *DescribeServicesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeServicesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Order")
+	delete(f, "OrderField")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServicesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeServicesResponse struct {
@@ -948,7 +1242,7 @@ type DescribeServicesResponse struct {
 	Response *struct {
 
 		// 服务列表
-		Services []*ModelService `json:"Services,omitempty" name:"Services" list`
+		Services []*ModelService `json:"Services,omitempty" name:"Services"`
 
 		// 服务总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -963,8 +1257,10 @@ func (r *DescribeServicesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeServicesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DisableRsgAsGroupRequest struct {
@@ -979,8 +1275,18 @@ func (r *DisableRsgAsGroupRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DisableRsgAsGroupRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableRsgAsGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DisableRsgAsGroupResponse struct {
@@ -997,8 +1303,10 @@ func (r *DisableRsgAsGroupResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DisableRsgAsGroupResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EnableRsgAsGroupRequest struct {
@@ -1013,8 +1321,18 @@ func (r *EnableRsgAsGroupRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EnableRsgAsGroupRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableRsgAsGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EnableRsgAsGroupResponse struct {
@@ -1031,8 +1349,10 @@ func (r *EnableRsgAsGroupResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EnableRsgAsGroupResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ExposeInfo struct {
@@ -1085,8 +1405,21 @@ func (r *ExposeServiceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ExposeServiceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	delete(f, "ExposeType")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExposeServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ExposeServiceResponse struct {
@@ -1106,8 +1439,10 @@ func (r *ExposeServiceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ExposeServiceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Filter struct {
@@ -1116,7 +1451,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 取值
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type Instance struct {
@@ -1296,11 +1631,11 @@ type JobStatus struct {
 
 	// 副本名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Replicas []*string `json:"Replicas,omitempty" name:"Replicas" list`
+	Replicas []*string `json:"Replicas,omitempty" name:"Replicas"`
 
 	// 副本实例
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReplicaInfos []*ReplicaInfo `json:"ReplicaInfos,omitempty" name:"ReplicaInfos" list`
+	ReplicaInfos []*ReplicaInfo `json:"ReplicaInfos,omitempty" name:"ReplicaInfos"`
 }
 
 type ModelService struct {
@@ -1371,7 +1706,7 @@ type ModelService struct {
 
 	// 暴露方式
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Exposes []*ExposeInfo `json:"Exposes,omitempty" name:"Exposes" list`
+	Exposes []*ExposeInfo `json:"Exposes,omitempty" name:"Exposes"`
 
 	// Region 名
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1538,7 +1873,7 @@ type ResourceGroup struct {
 
 	// Gpu类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GpuType []*string `json:"GpuType,omitempty" name:"GpuType" list`
+	GpuType []*string `json:"GpuType,omitempty" name:"GpuType"`
 
 	// 该资源组下是否有预付费资源
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1636,7 +1971,7 @@ type RsgAsGroupActivity struct {
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 活动相关联的节点
-	RsgAsActivityRelatedInstance []*RsgAsActivityRelatedInstance `json:"RsgAsActivityRelatedInstance,omitempty" name:"RsgAsActivityRelatedInstance" list`
+	RsgAsActivityRelatedInstance []*RsgAsActivityRelatedInstance `json:"RsgAsActivityRelatedInstance,omitempty" name:"RsgAsActivityRelatedInstance"`
 
 	// 简略的状态消息
 	StatusMessageSimplified *string `json:"StatusMessageSimplified,omitempty" name:"StatusMessageSimplified"`
@@ -1682,7 +2017,7 @@ type Scaler struct {
 	StartReplicas *uint64 `json:"StartReplicas,omitempty" name:"StartReplicas"`
 
 	// 扩缩容指标，选择自动扩缩容时至少需要选择一个指标，支持CPU-UTIL、MEMORY-UTIL
-	HpaMetrics []*Option `json:"HpaMetrics,omitempty" name:"HpaMetrics" list`
+	HpaMetrics []*Option `json:"HpaMetrics,omitempty" name:"HpaMetrics"`
 }
 
 type ServiceStatus struct {
@@ -1698,11 +2033,11 @@ type ServiceStatus struct {
 
 	// 服务处于当前状态的原因集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Conditions []*Conditions `json:"Conditions,omitempty" name:"Conditions" list`
+	Conditions []*Conditions `json:"Conditions,omitempty" name:"Conditions"`
 
 	// 副本名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Replicas []*string `json:"Replicas,omitempty" name:"Replicas" list`
+	Replicas []*string `json:"Replicas,omitempty" name:"Replicas"`
 
 	// 运行状态对额外信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1710,7 +2045,7 @@ type ServiceStatus struct {
 
 	// 副本信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReplicaInfos []*ReplicaInfo `json:"ReplicaInfos,omitempty" name:"ReplicaInfos" list`
+	ReplicaInfos []*ReplicaInfo `json:"ReplicaInfos,omitempty" name:"ReplicaInfos"`
 }
 
 type UpdateJobRequest struct {
@@ -1731,8 +2066,20 @@ func (r *UpdateJobRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateJobRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "JobAction")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateJobResponse struct {
@@ -1753,8 +2100,10 @@ func (r *UpdateJobResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateJobResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateRsgAsGroupRequest struct {
@@ -1781,8 +2130,22 @@ func (r *UpdateRsgAsGroupRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateRsgAsGroupRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Name")
+	delete(f, "MaxSize")
+	delete(f, "MinSize")
+	delete(f, "DesiredSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateRsgAsGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateRsgAsGroupResponse struct {
@@ -1802,8 +2165,10 @@ func (r *UpdateRsgAsGroupResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateRsgAsGroupResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateServiceRequest struct {
@@ -1848,8 +2213,28 @@ func (r *UpdateServiceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateServiceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	delete(f, "Scaler")
+	delete(f, "ServiceConfigId")
+	delete(f, "ScaleMode")
+	delete(f, "ServiceAction")
+	delete(f, "Description")
+	delete(f, "GpuType")
+	delete(f, "Cpu")
+	delete(f, "Memory")
+	delete(f, "Gpu")
+	delete(f, "LogTopicId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateServiceResponse struct {
@@ -1869,6 +2254,8 @@ func (r *UpdateServiceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateServiceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

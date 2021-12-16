@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -48,6 +48,8 @@ func NewBindEipAclsRequest() (request *BindEipAclsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "BindEipAcls")
+    
+    
     return
 }
 
@@ -58,11 +60,16 @@ func NewBindEipAclsResponse() (response *BindEipAclsResponse) {
     return
 }
 
+// BindEipAcls
 // 此接口用于为某个 EIP 关联 ACL。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) BindEipAcls(request *BindEipAclsRequest) (response *BindEipAclsResponse, err error) {
     if request == nil {
         request = NewBindEipAclsRequest()
     }
+    
     response = NewBindEipAclsResponse()
     err = c.Send(request, response)
     return
@@ -73,6 +80,8 @@ func NewBindHostedRequest() (request *BindHostedRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "BindHosted")
+    
+    
     return
 }
 
@@ -83,11 +92,18 @@ func NewBindHostedResponse() (response *BindHostedResponse) {
     return
 }
 
+// BindHosted
 // BindHosted接口用于绑定黑石弹性公网IP到黑石托管机器上
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) BindHosted(request *BindHostedRequest) (response *BindHostedResponse, err error) {
     if request == nil {
         request = NewBindHostedRequest()
     }
+    
     response = NewBindHostedResponse()
     err = c.Send(request, response)
     return
@@ -98,6 +114,8 @@ func NewBindRsRequest() (request *BindRsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "BindRs")
+    
+    
     return
 }
 
@@ -108,11 +126,18 @@ func NewBindRsResponse() (response *BindRsResponse) {
     return
 }
 
+// BindRs
 // 绑定黑石EIP
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) BindRs(request *BindRsRequest) (response *BindRsResponse, err error) {
     if request == nil {
         request = NewBindRsRequest()
     }
+    
     response = NewBindRsResponse()
     err = c.Send(request, response)
     return
@@ -123,6 +148,8 @@ func NewBindVpcIpRequest() (request *BindVpcIpRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "BindVpcIp")
+    
+    
     return
 }
 
@@ -133,11 +160,16 @@ func NewBindVpcIpResponse() (response *BindVpcIpResponse) {
     return
 }
 
+// BindVpcIp
 // 黑石EIP绑定VPCIP
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) BindVpcIp(request *BindVpcIpRequest) (response *BindVpcIpResponse, err error) {
     if request == nil {
         request = NewBindVpcIpRequest()
     }
+    
     response = NewBindVpcIpResponse()
     err = c.Send(request, response)
     return
@@ -148,6 +180,8 @@ func NewCreateEipRequest() (request *CreateEipRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "CreateEip")
+    
+    
     return
 }
 
@@ -158,11 +192,17 @@ func NewCreateEipResponse() (response *CreateEipResponse) {
     return
 }
 
+// CreateEip
 // 创建黑石弹性公网IP
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateEip(request *CreateEipRequest) (response *CreateEipResponse, err error) {
     if request == nil {
         request = NewCreateEipRequest()
     }
+    
     response = NewCreateEipResponse()
     err = c.Send(request, response)
     return
@@ -173,6 +213,8 @@ func NewCreateEipAclRequest() (request *CreateEipAclRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "CreateEipAcl")
+    
+    
     return
 }
 
@@ -183,11 +225,17 @@ func NewCreateEipAclResponse() (response *CreateEipAclResponse) {
     return
 }
 
+// CreateEipAcl
 // 创建黑石弹性公网 EIPACL
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateEipAcl(request *CreateEipAclRequest) (response *CreateEipAclResponse, err error) {
     if request == nil {
         request = NewCreateEipAclRequest()
     }
+    
     response = NewCreateEipAclResponse()
     err = c.Send(request, response)
     return
@@ -198,6 +246,8 @@ func NewDeleteEipRequest() (request *DeleteEipRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "DeleteEip")
+    
+    
     return
 }
 
@@ -208,11 +258,18 @@ func NewDeleteEipResponse() (response *DeleteEipResponse) {
     return
 }
 
+// DeleteEip
 // 释放黑石弹性公网IP
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteEip(request *DeleteEipRequest) (response *DeleteEipResponse, err error) {
     if request == nil {
         request = NewDeleteEipRequest()
     }
+    
     response = NewDeleteEipResponse()
     err = c.Send(request, response)
     return
@@ -223,6 +280,8 @@ func NewDeleteEipAclRequest() (request *DeleteEipAclRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "DeleteEipAcl")
+    
+    
     return
 }
 
@@ -233,11 +292,17 @@ func NewDeleteEipAclResponse() (response *DeleteEipAclResponse) {
     return
 }
 
+// DeleteEipAcl
 // 删除弹性公网IP ACL
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DeleteEipAcl(request *DeleteEipAclRequest) (response *DeleteEipAclResponse, err error) {
     if request == nil {
         request = NewDeleteEipAclRequest()
     }
+    
     response = NewDeleteEipAclResponse()
     err = c.Send(request, response)
     return
@@ -248,6 +313,8 @@ func NewDescribeEipAclsRequest() (request *DescribeEipAclsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "DescribeEipAcls")
+    
+    
     return
 }
 
@@ -258,11 +325,17 @@ func NewDescribeEipAclsResponse() (response *DescribeEipAclsResponse) {
     return
 }
 
+// DescribeEipAcls
 // 查询弹性公网IP ACL
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeEipAcls(request *DescribeEipAclsRequest) (response *DescribeEipAclsResponse, err error) {
     if request == nil {
         request = NewDescribeEipAclsRequest()
     }
+    
     response = NewDescribeEipAclsResponse()
     err = c.Send(request, response)
     return
@@ -273,6 +346,8 @@ func NewDescribeEipQuotaRequest() (request *DescribeEipQuotaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "DescribeEipQuota")
+    
+    
     return
 }
 
@@ -283,11 +358,16 @@ func NewDescribeEipQuotaResponse() (response *DescribeEipQuotaResponse) {
     return
 }
 
+// DescribeEipQuota
 // 查询黑石EIP 限额
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeEipQuota(request *DescribeEipQuotaRequest) (response *DescribeEipQuotaResponse, err error) {
     if request == nil {
         request = NewDescribeEipQuotaRequest()
     }
+    
     response = NewDescribeEipQuotaResponse()
     err = c.Send(request, response)
     return
@@ -298,6 +378,8 @@ func NewDescribeEipTaskRequest() (request *DescribeEipTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "DescribeEipTask")
+    
+    
     return
 }
 
@@ -308,11 +390,16 @@ func NewDescribeEipTaskResponse() (response *DescribeEipTaskResponse) {
     return
 }
 
+// DescribeEipTask
 // 黑石EIP查询任务状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeEipTask(request *DescribeEipTaskRequest) (response *DescribeEipTaskResponse, err error) {
     if request == nil {
         request = NewDescribeEipTaskRequest()
     }
+    
     response = NewDescribeEipTaskResponse()
     err = c.Send(request, response)
     return
@@ -323,6 +410,8 @@ func NewDescribeEipsRequest() (request *DescribeEipsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "DescribeEips")
+    
+    
     return
 }
 
@@ -333,11 +422,16 @@ func NewDescribeEipsResponse() (response *DescribeEipsResponse) {
     return
 }
 
+// DescribeEips
 // 黑石EIP查询接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeEips(request *DescribeEipsRequest) (response *DescribeEipsResponse, err error) {
     if request == nil {
         request = NewDescribeEipsRequest()
     }
+    
     response = NewDescribeEipsResponse()
     err = c.Send(request, response)
     return
@@ -348,6 +442,8 @@ func NewModifyEipAclRequest() (request *ModifyEipAclRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "ModifyEipAcl")
+    
+    
     return
 }
 
@@ -358,11 +454,17 @@ func NewModifyEipAclResponse() (response *ModifyEipAclResponse) {
     return
 }
 
+// ModifyEipAcl
 // 修改弹性公网IP ACL
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyEipAcl(request *ModifyEipAclRequest) (response *ModifyEipAclResponse, err error) {
     if request == nil {
         request = NewModifyEipAclRequest()
     }
+    
     response = NewModifyEipAclResponse()
     err = c.Send(request, response)
     return
@@ -373,6 +475,8 @@ func NewModifyEipChargeRequest() (request *ModifyEipChargeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "ModifyEipCharge")
+    
+    
     return
 }
 
@@ -383,11 +487,17 @@ func NewModifyEipChargeResponse() (response *ModifyEipChargeResponse) {
     return
 }
 
+// ModifyEipCharge
 // 黑石EIP修改计费方式
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyEipCharge(request *ModifyEipChargeRequest) (response *ModifyEipChargeResponse, err error) {
     if request == nil {
         request = NewModifyEipChargeRequest()
     }
+    
     response = NewModifyEipChargeResponse()
     err = c.Send(request, response)
     return
@@ -398,6 +508,8 @@ func NewModifyEipNameRequest() (request *ModifyEipNameRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "ModifyEipName")
+    
+    
     return
 }
 
@@ -408,11 +520,17 @@ func NewModifyEipNameResponse() (response *ModifyEipNameResponse) {
     return
 }
 
+// ModifyEipName
 // 更新黑石EIP名称
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyEipName(request *ModifyEipNameRequest) (response *ModifyEipNameResponse, err error) {
     if request == nil {
         request = NewModifyEipNameRequest()
     }
+    
     response = NewModifyEipNameResponse()
     err = c.Send(request, response)
     return
@@ -423,6 +541,8 @@ func NewUnbindEipAclsRequest() (request *UnbindEipAclsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "UnbindEipAcls")
+    
+    
     return
 }
 
@@ -433,11 +553,18 @@ func NewUnbindEipAclsResponse() (response *UnbindEipAclsResponse) {
     return
 }
 
+// UnbindEipAcls
 // 解绑弹性公网IP ACL
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UnbindEipAcls(request *UnbindEipAclsRequest) (response *UnbindEipAclsResponse, err error) {
     if request == nil {
         request = NewUnbindEipAclsRequest()
     }
+    
     response = NewUnbindEipAclsResponse()
     err = c.Send(request, response)
     return
@@ -448,6 +575,8 @@ func NewUnbindHostedRequest() (request *UnbindHostedRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "UnbindHosted")
+    
+    
     return
 }
 
@@ -458,11 +587,18 @@ func NewUnbindHostedResponse() (response *UnbindHostedResponse) {
     return
 }
 
+// UnbindHosted
 // UnbindHosted接口用于解绑托管机器上的EIP
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UnbindHosted(request *UnbindHostedRequest) (response *UnbindHostedResponse, err error) {
     if request == nil {
         request = NewUnbindHostedRequest()
     }
+    
     response = NewUnbindHostedResponse()
     err = c.Send(request, response)
     return
@@ -473,6 +609,8 @@ func NewUnbindRsRequest() (request *UnbindRsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "UnbindRs")
+    
+    
     return
 }
 
@@ -483,11 +621,16 @@ func NewUnbindRsResponse() (response *UnbindRsResponse) {
     return
 }
 
+// UnbindRs
 // 解绑黑石EIP
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UnbindRs(request *UnbindRsRequest) (response *UnbindRsResponse, err error) {
     if request == nil {
         request = NewUnbindRsRequest()
     }
+    
     response = NewUnbindRsResponse()
     err = c.Send(request, response)
     return
@@ -498,6 +641,8 @@ func NewUnbindRsListRequest() (request *UnbindRsListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "UnbindRsList")
+    
+    
     return
 }
 
@@ -508,11 +653,17 @@ func NewUnbindRsListResponse() (response *UnbindRsListResponse) {
     return
 }
 
+// UnbindRsList
 // 批量解绑物理机弹性公网IP接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) UnbindRsList(request *UnbindRsListRequest) (response *UnbindRsListResponse, err error) {
     if request == nil {
         request = NewUnbindRsListRequest()
     }
+    
     response = NewUnbindRsListResponse()
     err = c.Send(request, response)
     return
@@ -523,6 +674,8 @@ func NewUnbindVpcIpRequest() (request *UnbindVpcIpRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmeip", APIVersion, "UnbindVpcIp")
+    
+    
     return
 }
 
@@ -533,11 +686,16 @@ func NewUnbindVpcIpResponse() (response *UnbindVpcIpResponse) {
     return
 }
 
+// UnbindVpcIp
 // 黑石EIP解绑VPCIP
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UnbindVpcIp(request *UnbindVpcIpRequest) (response *UnbindVpcIpResponse, err error) {
     if request == nil {
         request = NewUnbindVpcIpRequest()
     }
+    
     response = NewUnbindVpcIpResponse()
     err = c.Send(request, response)
     return

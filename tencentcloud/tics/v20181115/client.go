@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -48,6 +48,8 @@ func NewDescribeDomainInfoRequest() (request *DescribeDomainInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tics", APIVersion, "DescribeDomainInfo")
+    
+    
     return
 }
 
@@ -58,11 +60,20 @@ func NewDescribeDomainInfoResponse() (response *DescribeDomainInfoResponse) {
     return
 }
 
+// DescribeDomainInfo
 // 提供域名相关的基础信息以及与攻击事件（团伙、家族）、恶意文件等相关联信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CACHEERR = "InternalError.CacheErr"
+//  INTERNALERROR_LOCALERR = "InternalError.LocalErr"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) DescribeDomainInfo(request *DescribeDomainInfoRequest) (response *DescribeDomainInfoResponse, err error) {
     if request == nil {
         request = NewDescribeDomainInfoRequest()
     }
+    
     response = NewDescribeDomainInfoResponse()
     err = c.Send(request, response)
     return
@@ -73,6 +84,8 @@ func NewDescribeFileInfoRequest() (request *DescribeFileInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tics", APIVersion, "DescribeFileInfo")
+    
+    
     return
 }
 
@@ -83,11 +96,20 @@ func NewDescribeFileInfoResponse() (response *DescribeFileInfoResponse) {
     return
 }
 
+// DescribeFileInfo
 // 提供文件相关的基础信息以及与攻击事件（团伙、家族）、恶意文件等相关联信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CACHEERR = "InternalError.CacheErr"
+//  INTERNALERROR_LOCALERR = "InternalError.LocalErr"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) DescribeFileInfo(request *DescribeFileInfoRequest) (response *DescribeFileInfoResponse, err error) {
     if request == nil {
         request = NewDescribeFileInfoRequest()
     }
+    
     response = NewDescribeFileInfoResponse()
     err = c.Send(request, response)
     return
@@ -98,6 +120,8 @@ func NewDescribeIpInfoRequest() (request *DescribeIpInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tics", APIVersion, "DescribeIpInfo")
+    
+    
     return
 }
 
@@ -108,11 +132,20 @@ func NewDescribeIpInfoResponse() (response *DescribeIpInfoResponse) {
     return
 }
 
+// DescribeIpInfo
 // 提供IP相关的基础信息以及与攻击事件（团伙、家族）、恶意文件等相关联信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CACHEERR = "InternalError.CacheErr"
+//  INTERNALERROR_LOCALERR = "InternalError.LocalErr"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) DescribeIpInfo(request *DescribeIpInfoRequest) (response *DescribeIpInfoResponse, err error) {
     if request == nil {
         request = NewDescribeIpInfoRequest()
     }
+    
     response = NewDescribeIpInfoResponse()
     err = c.Send(request, response)
     return
@@ -123,6 +156,8 @@ func NewDescribeThreatInfoRequest() (request *DescribeThreatInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tics", APIVersion, "DescribeThreatInfo")
+    
+    
     return
 }
 
@@ -133,11 +168,20 @@ func NewDescribeThreatInfoResponse() (response *DescribeThreatInfoResponse) {
     return
 }
 
+// DescribeThreatInfo
 // 提供IP和域名相关威胁情报信息查询，这些信息可以辅助检测失陷主机、帮助SIEM/SOC等系统做研判决策、帮助运营团队对设备报警的编排处理。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CACHEERR = "InternalError.CacheErr"
+//  INTERNALERROR_LOCALERR = "InternalError.LocalErr"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) DescribeThreatInfo(request *DescribeThreatInfoRequest) (response *DescribeThreatInfoResponse, err error) {
     if request == nil {
         request = NewDescribeThreatInfoRequest()
     }
+    
     response = NewDescribeThreatInfoResponse()
     err = c.Send(request, response)
     return

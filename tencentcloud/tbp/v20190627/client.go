@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -48,6 +48,8 @@ func NewTextProcessRequest() (request *TextProcessRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbp", APIVersion, "TextProcess")
+    
+    
     return
 }
 
@@ -58,11 +60,22 @@ func NewTextProcessResponse() (response *TextProcessResponse) {
     return
 }
 
+// TextProcess
 // 接收调用侧的文本输入，返回应答文本。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORMMS = "InternalError.ErrorMms"
+//  INTERNALERROR_ERRORNLU = "InternalError.ErrorNlu"
+//  INTERNALERROR_ERRORRPC = "InternalError.ErrorRpc"
+//  INTERNALERROR_ERRORWEBHOOK = "InternalError.ErrorWebHook"
+//  INTERNALERROR_NOAPPPRIVILEGE = "InternalError.NoAppPrivilege"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) TextProcess(request *TextProcessRequest) (response *TextProcessResponse, err error) {
     if request == nil {
         request = NewTextProcessRequest()
     }
+    
     response = NewTextProcessResponse()
     err = c.Send(request, response)
     return
@@ -73,6 +86,8 @@ func NewTextResetRequest() (request *TextResetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbp", APIVersion, "TextReset")
+    
+    
     return
 }
 
@@ -83,11 +98,22 @@ func NewTextResetResponse() (response *TextResetResponse) {
     return
 }
 
+// TextReset
 // 会话重置接口。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORMMS = "InternalError.ErrorMms"
+//  INTERNALERROR_ERRORNLU = "InternalError.ErrorNlu"
+//  INTERNALERROR_ERRORRPC = "InternalError.ErrorRpc"
+//  INTERNALERROR_ERRORWEBHOOK = "InternalError.ErrorWebHook"
+//  INTERNALERROR_NOAPPPRIVILEGE = "InternalError.NoAppPrivilege"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) TextReset(request *TextResetRequest) (response *TextResetResponse, err error) {
     if request == nil {
         request = NewTextResetRequest()
     }
+    
     response = NewTextResetResponse()
     err = c.Send(request, response)
     return

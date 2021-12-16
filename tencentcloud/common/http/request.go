@@ -31,15 +31,19 @@ type Request interface {
 	GetDomain() string
 	GetHttpMethod() string
 	GetParams() map[string]string
+	GetBody() []byte
 	GetPath() string
 	GetService() string
 	GetUrl() string
 	GetVersion() string
+	GetContentType() string
 	SetScheme(string)
 	SetRootDomain(string)
 	SetDomain(string)
 	SetHttpMethod(string)
 	SetPath(string)
+	SetContentType(string)
+	SetBody([]byte)
 }
 
 type BaseRequest struct {
@@ -54,6 +58,9 @@ type BaseRequest struct {
 	service string
 	version string
 	action  string
+
+	contentType string
+	body []byte
 }
 
 func (r *BaseRequest) GetAction() string {
@@ -91,6 +98,22 @@ func (r *BaseRequest) GetServiceDomain(service string) (domain string) {
 	}
 	domain = service + "." + rootDomain
 	return
+}
+
+func (r *BaseRequest) GetBody() []byte {
+	return r.body
+}
+
+func (r *BaseRequest) SetBody(body []byte) {
+	r.body = body
+}
+
+func (r *BaseRequest) GetContentType() string {
+	return r.contentType
+}
+
+func (r *BaseRequest) SetContentType(contentType string) {
+	r.contentType = contentType
 }
 
 func (r *BaseRequest) SetDomain(domain string) {
@@ -153,9 +176,7 @@ func (r *BaseRequest) GetVersion() string {
 func GetUrlQueriesEncoded(params map[string]string) string {
 	values := url.Values{}
 	for key, value := range params {
-		if value != "" {
-			values.Add(key, value)
-		}
+		values.Add(key, value)
 	}
 	return values.Encode()
 }
@@ -184,6 +205,11 @@ func (r *BaseRequest) WithApiInfo(service, version, action string) *BaseRequest 
 	return r
 }
 
+func (r *BaseRequest) WithContentType(contentType string) *BaseRequest {
+	r.contentType = contentType
+	return r
+}
+
 // Deprecated, use request.GetServiceDomain instead
 func GetServiceDomain(service string) (domain string) {
 	domain = service + "." + RootDomain
@@ -199,7 +225,7 @@ func CompleteCommonParams(request Request, region string) {
 	params["Action"] = request.GetAction()
 	params["Timestamp"] = strconv.FormatInt(time.Now().Unix(), 10)
 	params["Nonce"] = strconv.Itoa(rand.Int())
-	params["RequestClient"] = "SDK_GO_1.0.44"
+	params["RequestClient"] = "SDK_GO_1.0.314"
 }
 
 func ConstructParams(req Request) (err error) {

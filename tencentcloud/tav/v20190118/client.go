@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -48,6 +48,8 @@ func NewGetLocalEngineRequest() (request *GetLocalEngineRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tav", APIVersion, "GetLocalEngine")
+    
+    
     return
 }
 
@@ -58,11 +60,13 @@ func NewGetLocalEngineResponse() (response *GetLocalEngineResponse) {
     return
 }
 
+// GetLocalEngine
 // 获取TAV本地引擎
 func (c *Client) GetLocalEngine(request *GetLocalEngineRequest) (response *GetLocalEngineResponse, err error) {
     if request == nil {
         request = NewGetLocalEngineRequest()
     }
+    
     response = NewGetLocalEngineResponse()
     err = c.Send(request, response)
     return
@@ -73,6 +77,8 @@ func NewGetScanResultRequest() (request *GetScanResultRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tav", APIVersion, "GetScanResult")
+    
+    
     return
 }
 
@@ -83,11 +89,13 @@ func NewGetScanResultResponse() (response *GetScanResultResponse) {
     return
 }
 
+// GetScanResult
 // tav文件上传扫描结果查询
 func (c *Client) GetScanResult(request *GetScanResultRequest) (response *GetScanResultResponse, err error) {
     if request == nil {
         request = NewGetScanResultRequest()
     }
+    
     response = NewGetScanResultResponse()
     err = c.Send(request, response)
     return
@@ -98,6 +106,8 @@ func NewScanFileRequest() (request *ScanFileRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tav", APIVersion, "ScanFile")
+    
+    
     return
 }
 
@@ -108,11 +118,13 @@ func NewScanFileResponse() (response *ScanFileResponse) {
     return
 }
 
+// ScanFile
 // tav文件上传扫描
 func (c *Client) ScanFile(request *ScanFileRequest) (response *ScanFileResponse, err error) {
     if request == nil {
         request = NewScanFileRequest()
     }
+    
     response = NewScanFileResponse()
     err = c.Send(request, response)
     return
@@ -123,6 +135,8 @@ func NewScanFileHashRequest() (request *ScanFileHashRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tav", APIVersion, "ScanFileHash")
+    
+    
     return
 }
 
@@ -133,11 +147,13 @@ func NewScanFileHashResponse() (response *ScanFileHashResponse) {
     return
 }
 
+// ScanFileHash
 // 通过文件哈希值获取文件黑白属性
 func (c *Client) ScanFileHash(request *ScanFileHashRequest) (response *ScanFileHashResponse, err error) {
     if request == nil {
         request = NewScanFileHashRequest()
     }
+    
     response = NewScanFileHashResponse()
     err = c.Send(request, response)
     return

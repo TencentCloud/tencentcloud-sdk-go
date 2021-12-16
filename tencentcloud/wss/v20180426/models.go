@@ -16,7 +16,7 @@ package v20180426
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -35,8 +35,19 @@ func (r *DeleteCertRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteCertRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "ModuleType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCertRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteCertResponse struct {
@@ -53,8 +64,10 @@ func (r *DeleteCertResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteCertResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCertListRequest struct {
@@ -90,8 +103,25 @@ func (r *DescribeCertListRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCertListRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModuleType")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SearchKey")
+	delete(f, "CertType")
+	delete(f, "Id")
+	delete(f, "WithCert")
+	delete(f, "AltDomain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCertListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCertListResponse struct {
@@ -102,7 +132,7 @@ type DescribeCertListResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 列表。
-		CertificateSet []*SSLCertificate `json:"CertificateSet,omitempty" name:"CertificateSet" list`
+		CertificateSet []*SSLCertificate `json:"CertificateSet,omitempty" name:"CertificateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -114,8 +144,10 @@ func (r *DescribeCertListResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCertListResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SSLCertificate struct {
@@ -194,7 +226,7 @@ type SSLCertificate struct {
 
 	// 证书包含的多个域名（包含主域名）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubjectAltName []*string `json:"SubjectAltName,omitempty" name:"SubjectAltName" list`
+	SubjectAltName []*string `json:"SubjectAltName,omitempty" name:"SubjectAltName"`
 
 	// 证书类型名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -279,8 +311,23 @@ func (r *UploadCertRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UploadCertRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Cert")
+	delete(f, "CertType")
+	delete(f, "ProjectId")
+	delete(f, "ModuleType")
+	delete(f, "Key")
+	delete(f, "Alias")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadCertRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UploadCertResponse struct {
@@ -300,6 +347,8 @@ func (r *UploadCertResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UploadCertResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

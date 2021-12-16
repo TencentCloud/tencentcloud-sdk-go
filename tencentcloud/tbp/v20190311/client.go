@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -48,6 +48,8 @@ func NewCreateBotRequest() (request *CreateBotRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbp", APIVersion, "CreateBot")
+    
+    
     return
 }
 
@@ -58,11 +60,18 @@ func NewCreateBotResponse() (response *CreateBotResponse) {
     return
 }
 
+// CreateBot
 // 创建机器人
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CALLMMSFAILED = "InternalError.CallMMSFailed"
+//  INTERNALERROR_MMSINTERNALERROR = "InternalError.MMSInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateBot(request *CreateBotRequest) (response *CreateBotResponse, err error) {
     if request == nil {
         request = NewCreateBotRequest()
     }
+    
     response = NewCreateBotResponse()
     err = c.Send(request, response)
     return
@@ -73,6 +82,8 @@ func NewResetRequest() (request *ResetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbp", APIVersion, "Reset")
+    
+    
     return
 }
 
@@ -83,11 +94,21 @@ func NewResetResponse() (response *ResetResponse) {
     return
 }
 
+// Reset
 // 对当前机器人的会话状态进行复位
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ERRORASR = "InternalError.ErrorAsr"
+//  INTERNALERROR_ERRORMMS = "InternalError.ErrorMms"
+//  INTERNALERROR_ERRORRPC = "InternalError.ErrorRpc"
+//  INTERNALERROR_ERRORTTS = "InternalError.ErrorTts"
+//  INTERNALERROR_NOAPPPRIVILEGE = "InternalError.NoAppPrivilege"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) Reset(request *ResetRequest) (response *ResetResponse, err error) {
     if request == nil {
         request = NewResetRequest()
     }
+    
     response = NewResetResponse()
     err = c.Send(request, response)
     return
@@ -98,6 +119,8 @@ func NewTextProcessRequest() (request *TextProcessRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbp", APIVersion, "TextProcess")
+    
+    
     return
 }
 
@@ -108,11 +131,22 @@ func NewTextProcessResponse() (response *TextProcessResponse) {
     return
 }
 
+// TextProcess
 // 接收调用侧的文本输入，返回应答文本。已废弃，推荐使用最新版TextProcess接口。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORMMS = "InternalError.ErrorMms"
+//  INTERNALERROR_ERRORNLU = "InternalError.ErrorNlu"
+//  INTERNALERROR_ERRORRPC = "InternalError.ErrorRpc"
+//  INTERNALERROR_ERRORWEBHOOK = "InternalError.ErrorWebHook"
+//  INTERNALERROR_NOAPPPRIVILEGE = "InternalError.NoAppPrivilege"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) TextProcess(request *TextProcessRequest) (response *TextProcessResponse, err error) {
     if request == nil {
         request = NewTextProcessRequest()
     }
+    
     response = NewTextProcessResponse()
     err = c.Send(request, response)
     return
@@ -123,6 +157,8 @@ func NewTextResetRequest() (request *TextResetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tbp", APIVersion, "TextReset")
+    
+    
     return
 }
 
@@ -133,11 +169,22 @@ func NewTextResetResponse() (response *TextResetResponse) {
     return
 }
 
+// TextReset
 // 会话重置接口。已废弃，推荐使用最新版TextReset接口。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORMMS = "InternalError.ErrorMms"
+//  INTERNALERROR_ERRORNLU = "InternalError.ErrorNlu"
+//  INTERNALERROR_ERRORRPC = "InternalError.ErrorRpc"
+//  INTERNALERROR_ERRORWEBHOOK = "InternalError.ErrorWebHook"
+//  INTERNALERROR_NOAPPPRIVILEGE = "InternalError.NoAppPrivilege"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) TextReset(request *TextResetRequest) (response *TextResetResponse, err error) {
     if request == nil {
         request = NewTextResetRequest()
     }
+    
     response = NewTextResetResponse()
     err = c.Send(request, response)
     return

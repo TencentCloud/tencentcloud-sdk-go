@@ -16,7 +16,7 @@ package v20181115
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -49,8 +49,22 @@ func (r *AddFairPlayPemRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AddFairPlayPemRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Pem")
+	delete(f, "Ask")
+	delete(f, "PemDecryptKey")
+	delete(f, "BailorId")
+	delete(f, "Priority")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddFairPlayPemRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type AddFairPlayPemResponse struct {
@@ -75,8 +89,10 @@ func (r *AddFairPlayPemResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AddFairPlayPemResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateEncryptKeysRequest struct {
@@ -86,7 +102,7 @@ type CreateEncryptKeysRequest struct {
 	DrmType *string `json:"DrmType,omitempty" name:"DrmType"`
 
 	// 设置的加密密钥列表。
-	Keys []*KeyParam `json:"Keys,omitempty" name:"Keys" list`
+	Keys []*KeyParam `json:"Keys,omitempty" name:"Keys"`
 
 	// 一个加密内容的唯一标识。
 	ContentId *string `json:"ContentId,omitempty" name:"ContentId"`
@@ -100,8 +116,21 @@ func (r *CreateEncryptKeysRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateEncryptKeysRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DrmType")
+	delete(f, "Keys")
+	delete(f, "ContentId")
+	delete(f, "ContentType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEncryptKeysRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateEncryptKeysResponse struct {
@@ -118,8 +147,10 @@ func (r *CreateEncryptKeysResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateEncryptKeysResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateLicenseRequest struct {
@@ -136,7 +167,7 @@ type CreateLicenseRequest struct {
 
 	// 授权播放的Track列表。
 	// 该值为空时，默认授权所有track播放。
-	Tracks []*string `json:"Tracks,omitempty" name:"Tracks" list`
+	Tracks []*string `json:"Tracks,omitempty" name:"Tracks"`
 
 	// 播放策略参数。
 	PlaybackPolicy *PlaybackPolicy `json:"PlaybackPolicy,omitempty" name:"PlaybackPolicy"`
@@ -147,8 +178,22 @@ func (r *CreateLicenseRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateLicenseRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DrmType")
+	delete(f, "LicenseRequest")
+	delete(f, "ContentType")
+	delete(f, "Tracks")
+	delete(f, "PlaybackPolicy")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLicenseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateLicenseResponse struct {
@@ -171,8 +216,10 @@ func (r *CreateLicenseResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateLicenseResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteFairPlayPemRequest struct {
@@ -191,8 +238,19 @@ func (r *DeleteFairPlayPemRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteFairPlayPemRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BailorId")
+	delete(f, "FairPlayPemId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteFairPlayPemRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteFairPlayPemResponse struct {
@@ -209,8 +267,10 @@ func (r *DeleteFairPlayPemResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteFairPlayPemResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAllKeysRequest struct {
@@ -235,8 +295,21 @@ func (r *DescribeAllKeysRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAllKeysRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DrmType")
+	delete(f, "RsaPublicKey")
+	delete(f, "ContentId")
+	delete(f, "ContentType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAllKeysRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAllKeysResponse struct {
@@ -245,7 +318,7 @@ type DescribeAllKeysResponse struct {
 
 		// 加密密钥列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Keys []*Key `json:"Keys,omitempty" name:"Keys" list`
+		Keys []*Key `json:"Keys,omitempty" name:"Keys"`
 
 		// 用来加密密钥。
 	// 如果入参中带有RsaPublicKey，则SessionKey为使用Rsa公钥加密后的二进制数据，Base64编码字符串。
@@ -267,8 +340,10 @@ func (r *DescribeAllKeysResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAllKeysResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeFairPlayPemRequest struct {
@@ -287,8 +362,19 @@ func (r *DescribeFairPlayPemRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeFairPlayPemRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BailorId")
+	delete(f, "FairPlayPemId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFairPlayPemRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeFairPlayPemResponse struct {
@@ -297,7 +383,7 @@ type DescribeFairPlayPemResponse struct {
 
 		// 该账户下，所有设置的FairPlay私钥摘要信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		FairPlayPems []*FairPlayPemDigestInfo `json:"FairPlayPems,omitempty" name:"FairPlayPems" list`
+		FairPlayPems []*FairPlayPemDigestInfo `json:"FairPlayPems,omitempty" name:"FairPlayPems"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -309,8 +395,10 @@ func (r *DescribeFairPlayPemResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeFairPlayPemResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeKeysRequest struct {
@@ -320,7 +408,7 @@ type DescribeKeysRequest struct {
 	DrmType *string `json:"DrmType,omitempty" name:"DrmType"`
 
 	// 加密的track列表，接口取值VIDEO、AUDIO。
-	Tracks []*string `json:"Tracks,omitempty" name:"Tracks" list`
+	Tracks []*string `json:"Tracks,omitempty" name:"Tracks"`
 
 	// 内容类型。接口取值VodVideo,LiveVideo
 	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
@@ -339,8 +427,22 @@ func (r *DescribeKeysRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeKeysRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DrmType")
+	delete(f, "Tracks")
+	delete(f, "ContentType")
+	delete(f, "RsaPublicKey")
+	delete(f, "ContentId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKeysRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeKeysResponse struct {
@@ -348,7 +450,7 @@ type DescribeKeysResponse struct {
 	Response *struct {
 
 		// 加密密钥列表
-		Keys []*Key `json:"Keys,omitempty" name:"Keys" list`
+		Keys []*Key `json:"Keys,omitempty" name:"Keys"`
 
 		// 用来加密密钥。
 	// 如果入参中带有RsaPublicKey，则SessionKey为使用Rsa公钥加密后的二进制数据，Base64编码字符串。
@@ -372,8 +474,10 @@ func (r *DescribeKeysResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeKeysResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DrmOutputObject struct {
@@ -496,8 +600,23 @@ func (r *ModifyFairPlayPemRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyFairPlayPemRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Pem")
+	delete(f, "Ask")
+	delete(f, "FairPlayPemId")
+	delete(f, "PemDecryptKey")
+	delete(f, "BailorId")
+	delete(f, "Priority")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyFairPlayPemRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyFairPlayPemResponse struct {
@@ -522,8 +641,10 @@ func (r *ModifyFairPlayPemResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyFairPlayPemResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type PlaybackPolicy struct {
@@ -554,7 +675,7 @@ type StartEncryptionRequest struct {
 	SourceObject *DrmSourceObject `json:"SourceObject,omitempty" name:"SourceObject"`
 
 	// 加密后的内容存储到COS的对象
-	OutputObjects []*DrmOutputObject `json:"OutputObjects,omitempty" name:"OutputObjects" list`
+	OutputObjects []*DrmOutputObject `json:"OutputObjects,omitempty" name:"OutputObjects"`
 }
 
 func (r *StartEncryptionRequest) ToJsonString() string {
@@ -562,8 +683,23 @@ func (r *StartEncryptionRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *StartEncryptionRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CosEndPoint")
+	delete(f, "CosSecretId")
+	delete(f, "CosSecretKey")
+	delete(f, "DrmType")
+	delete(f, "SourceObject")
+	delete(f, "OutputObjects")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartEncryptionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type StartEncryptionResponse struct {
@@ -580,6 +716,8 @@ func (r *StartEncryptionResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *StartEncryptionResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

@@ -16,7 +16,7 @@ package v20180321
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -55,7 +55,7 @@ type AgentAuditedClient struct {
 	// 是否欠费,0：不欠费；1：欠费
 	HasOverdueBill *uint64 `json:"HasOverdueBill,omitempty" name:"HasOverdueBill"`
 
-	// 客户类型：可以为new(新拓)/assign(指定)/old(存量)/空
+	// 客户类型：可以为new(新拓)/assign(指定)/old(存量已关联)/old_newchecking(存量-新关联考核中)/old_newnotpass(存量-新关联未达标)/direct(直销)/direct_newopp(直销(新商机))/空
 	ClientType *string `json:"ClientType,omitempty" name:"ClientType"`
 
 	// 项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空
@@ -142,7 +142,7 @@ type AgentClientElem struct {
 	// 0表示不欠费，1表示欠费
 	HasOverdueBill *uint64 `json:"HasOverdueBill,omitempty" name:"HasOverdueBill"`
 
-	// 1:待代理商审核;2:待腾讯云审核
+	// 1:待代理商审核;2:待腾讯云审核4:待腾讯云渠道审批
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 业务员ID
@@ -152,6 +152,10 @@ type AgentClientElem struct {
 	// 业务员姓名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SalesName *string `json:"SalesName,omitempty" name:"SalesName"`
+
+	// 客户名称，此字段和控制台返回一致。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientName *string `json:"ClientName,omitempty" name:"ClientName"`
 }
 
 type AgentDealElem struct {
@@ -251,6 +255,129 @@ type AgentDealElem struct {
 	// 订单过期时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OverdueTime *string `json:"OverdueTime,omitempty" name:"OverdueTime"`
+
+	// 产品详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductInfo []*ProductInfoElem `json:"ProductInfo,omitempty" name:"ProductInfo"`
+
+	// 付款方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentMethod *string `json:"PaymentMethod,omitempty" name:"PaymentMethod"`
+
+	// 订单更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type AgentDealNewElem struct {
+
+	// 订单自增 ID
+	DealId *string `json:"DealId,omitempty" name:"DealId"`
+
+	// 订单号
+	DealName *string `json:"DealName,omitempty" name:"DealName"`
+
+	// 商品类型 ID
+	GoodsCategoryId *string `json:"GoodsCategoryId,omitempty" name:"GoodsCategoryId"`
+
+	// 订单所有者
+	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
+
+	// 订单所有者对应 appId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *string `json:"AppId,omitempty" name:"AppId"`
+
+	// 商品数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GoodsNum *string `json:"GoodsNum,omitempty" name:"GoodsNum"`
+
+	// 价格详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GoodsPrice *DealGoodsPriceNewElem `json:"GoodsPrice,omitempty" name:"GoodsPrice"`
+
+	// 下单人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Creater *string `json:"Creater,omitempty" name:"Creater"`
+
+	// 下单时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatTime *string `json:"CreatTime,omitempty" name:"CreatTime"`
+
+	// 支付结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayEndTime *string `json:"PayEndTime,omitempty" name:"PayEndTime"`
+
+	// 扣费流水号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillId *string `json:"BillId,omitempty" name:"BillId"`
+
+	// 支付人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Payer *string `json:"Payer,omitempty" name:"Payer"`
+
+	// 订单状态，中文描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DealStatus *string `json:"DealStatus,omitempty" name:"DealStatus"`
+
+	// 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 产品名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GoodsName *string `json:"GoodsName,omitempty" name:"GoodsName"`
+
+	// 客户备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientRemark *string `json:"ClientRemark,omitempty" name:"ClientRemark"`
+
+	// 订单操作类型，purchase（新购），renew（续费），modify（配置变更）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
+
+	// 代金券抵扣金额，单位分
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VoucherDecline *string `json:"VoucherDecline,omitempty" name:"VoucherDecline"`
+
+	// 大订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BigDealId *string `json:"BigDealId,omitempty" name:"BigDealId"`
+
+	// 客户类型（new：新拓；old：存量；assign：指派）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientType *string `json:"ClientType,omitempty" name:"ClientType"`
+
+	// 项目类型（self：自拓；repeat：直销；platform：官网合作）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectType *string `json:"ProjectType,omitempty" name:"ProjectType"`
+
+	// 业务员账号ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SalesUin *string `json:"SalesUin,omitempty" name:"SalesUin"`
+
+	// 支付方式，0：自付；1：代付
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayerMode *string `json:"PayerMode,omitempty" name:"PayerMode"`
+
+	// 活动ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActivityId *string `json:"ActivityId,omitempty" name:"ActivityId"`
+
+	// 订单过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OverdueTime *string `json:"OverdueTime,omitempty" name:"OverdueTime"`
+
+	// 产品详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductInfo []*ProductInfoElem `json:"ProductInfo,omitempty" name:"ProductInfo"`
+
+	// 付款方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentMethod *string `json:"PaymentMethod,omitempty" name:"PaymentMethod"`
+
+	// 订单更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type AgentPayDealsRequest struct {
@@ -263,7 +390,7 @@ type AgentPayDealsRequest struct {
 	AgentPay *uint64 `json:"AgentPay,omitempty" name:"AgentPay"`
 
 	// 订单号数组
-	DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
 }
 
 func (r *AgentPayDealsRequest) ToJsonString() string {
@@ -271,8 +398,20 @@ func (r *AgentPayDealsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AgentPayDealsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OwnerUin")
+	delete(f, "AgentPay")
+	delete(f, "DealNames")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AgentPayDealsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type AgentPayDealsResponse struct {
@@ -289,8 +428,10 @@ func (r *AgentPayDealsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AgentPayDealsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type AgentSalesmanElem struct {
@@ -323,8 +464,19 @@ func (r *AgentTransferMoneyRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AgentTransferMoneyRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClientUin")
+	delete(f, "Amount")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AgentTransferMoneyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type AgentTransferMoneyResponse struct {
@@ -341,8 +493,10 @@ func (r *AgentTransferMoneyResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AgentTransferMoneyResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type AuditApplyClientRequest struct {
@@ -363,8 +517,20 @@ func (r *AuditApplyClientRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AuditApplyClientRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClientUin")
+	delete(f, "AuditResult")
+	delete(f, "Note")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AuditApplyClientRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type AuditApplyClientResponse struct {
@@ -393,8 +559,10 @@ func (r *AuditApplyClientResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AuditApplyClientResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreatePayRelationForClientRequest struct {
@@ -409,8 +577,18 @@ func (r *CreatePayRelationForClientRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreatePayRelationForClientRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClientUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePayRelationForClientRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreatePayRelationForClientResponse struct {
@@ -427,14 +605,28 @@ func (r *CreatePayRelationForClientResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreatePayRelationForClientResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DealGoodsPriceElem struct {
 
-	// 实付金额
+	// 实付金额（单位：分）
 	RealTotalCost *uint64 `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
+
+	// 订单实际金额（不含折扣，单位：分）
+	OriginalTotalCost *int64 `json:"OriginalTotalCost,omitempty" name:"OriginalTotalCost"`
+}
+
+type DealGoodsPriceNewElem struct {
+
+	// 实付金额（单位：分）
+	RealTotalCost *int64 `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
+
+	// 原始金额（不含折扣，单位：分）
+	OriginalTotalCost *int64 `json:"OriginalTotalCost,omitempty" name:"OriginalTotalCost"`
 }
 
 type DescribeAgentAuditedClientsRequest struct {
@@ -453,7 +645,7 @@ type DescribeAgentAuditedClientsRequest struct {
 	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 
 	// 客户账号ID列表
-	ClientUins []*string `json:"ClientUins,omitempty" name:"ClientUins" list`
+	ClientUins []*string `json:"ClientUins,omitempty" name:"ClientUins"`
 
 	// 是否欠费。0：不欠费；1：欠费
 	HasOverdueBill *uint64 `json:"HasOverdueBill,omitempty" name:"HasOverdueBill"`
@@ -467,7 +659,7 @@ type DescribeAgentAuditedClientsRequest struct {
 	// 限制数目
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 客户类型：可以为new(新拓)/assign(指定)/old(存量)/空
+	// 客户类型：可以为new(新拓)/assign(指定)/old(存量已关联)/old_newchecking(存量-新关联考核中)/old_newnotpass(存量-新关联未达标)/direct(直销)/direct_newopp(直销(新商机))/空
 	ClientType *string `json:"ClientType,omitempty" name:"ClientType"`
 
 	// 项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空
@@ -485,8 +677,30 @@ func (r *DescribeAgentAuditedClientsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAgentAuditedClientsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClientUin")
+	delete(f, "ClientName")
+	delete(f, "ClientFlag")
+	delete(f, "OrderDirection")
+	delete(f, "ClientUins")
+	delete(f, "HasOverdueBill")
+	delete(f, "ClientRemark")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "ClientType")
+	delete(f, "ProjectType")
+	delete(f, "SalesUin")
+	delete(f, "SalesName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAgentAuditedClientsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAgentAuditedClientsResponse struct {
@@ -494,7 +708,7 @@ type DescribeAgentAuditedClientsResponse struct {
 	Response *struct {
 
 		// 已审核代客列表
-		AgentClientSet []*AgentAuditedClient `json:"AgentClientSet,omitempty" name:"AgentClientSet" list`
+		AgentClientSet []*AgentAuditedClient `json:"AgentClientSet,omitempty" name:"AgentClientSet"`
 
 		// 符合条件的代客总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -509,8 +723,10 @@ func (r *DescribeAgentAuditedClientsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAgentAuditedClientsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAgentBillsRequest struct {
@@ -543,8 +759,24 @@ func (r *DescribeAgentBillsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAgentBillsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SettleMonth")
+	delete(f, "ClientUin")
+	delete(f, "PayMode")
+	delete(f, "OrderId")
+	delete(f, "ClientRemark")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAgentBillsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAgentBillsResponse struct {
@@ -555,7 +787,7 @@ type DescribeAgentBillsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 业务明细列表
-		AgentBillSet []*AgentBillElem `json:"AgentBillSet,omitempty" name:"AgentBillSet" list`
+		AgentBillSet []*AgentBillElem `json:"AgentBillSet,omitempty" name:"AgentBillSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -567,8 +799,10 @@ func (r *DescribeAgentBillsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAgentBillsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAgentClientGradeRequest struct {
@@ -583,8 +817,18 @@ func (r *DescribeAgentClientGradeRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAgentClientGradeRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClientUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAgentClientGradeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAgentClientGradeResponse struct {
@@ -613,8 +857,10 @@ func (r *DescribeAgentClientGradeResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAgentClientGradeResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAgentClientsRequest struct {
@@ -650,8 +896,25 @@ func (r *DescribeAgentClientsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAgentClientsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClientUin")
+	delete(f, "ClientName")
+	delete(f, "ClientFlag")
+	delete(f, "OrderDirection")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SalesUin")
+	delete(f, "SalesName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAgentClientsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAgentClientsResponse struct {
@@ -659,7 +922,7 @@ type DescribeAgentClientsResponse struct {
 	Response *struct {
 
 		// 待审核代客列表
-		AgentClientSet []*AgentClientElem `json:"AgentClientSet,omitempty" name:"AgentClientSet" list`
+		AgentClientSet []*AgentClientElem `json:"AgentClientSet,omitempty" name:"AgentClientSet"`
 
 		// 符合条件的代客总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -674,8 +937,94 @@ func (r *DescribeAgentClientsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAgentClientsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAgentDealsByCacheRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 下单时间范围起始点
+	CreatTimeRangeStart *string `json:"CreatTimeRangeStart,omitempty" name:"CreatTimeRangeStart"`
+
+	// 下单时间范围终止点
+	CreatTimeRangeEnd *string `json:"CreatTimeRangeEnd,omitempty" name:"CreatTimeRangeEnd"`
+
+	// 0:下单时间降序；其他：下单时间升序
+	Order *uint64 `json:"Order,omitempty" name:"Order"`
+
+	// 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 下单人账号ID列表
+	OwnerUins []*string `json:"OwnerUins,omitempty" name:"OwnerUins"`
+
+	// 订单号列表
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
+
+	// 支付方式，0：自付；1：代付
+	PayerMode *uint64 `json:"PayerMode,omitempty" name:"PayerMode"`
+}
+
+func (r *DescribeAgentDealsByCacheRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAgentDealsByCacheRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "CreatTimeRangeStart")
+	delete(f, "CreatTimeRangeEnd")
+	delete(f, "Order")
+	delete(f, "Status")
+	delete(f, "OwnerUins")
+	delete(f, "DealNames")
+	delete(f, "PayerMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAgentDealsByCacheRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAgentDealsByCacheResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 订单数组
+		AgentDealSet []*AgentDealNewElem `json:"AgentDealSet,omitempty" name:"AgentDealSet"`
+
+		// 符合条件的订单总数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAgentDealsByCacheResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAgentDealsByCacheResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAgentDealsCacheRequest struct {
@@ -700,10 +1049,10 @@ type DescribeAgentDealsCacheRequest struct {
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 下单人账号ID列表
-	OwnerUins []*string `json:"OwnerUins,omitempty" name:"OwnerUins" list`
+	OwnerUins []*string `json:"OwnerUins,omitempty" name:"OwnerUins"`
 
 	// 订单号列表
-	DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
 
 	// 支付方式，0：自付；1：代付
 	PayerMode *uint64 `json:"PayerMode,omitempty" name:"PayerMode"`
@@ -714,8 +1063,26 @@ func (r *DescribeAgentDealsCacheRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAgentDealsCacheRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "CreatTimeRangeStart")
+	delete(f, "CreatTimeRangeEnd")
+	delete(f, "Order")
+	delete(f, "Status")
+	delete(f, "OwnerUins")
+	delete(f, "DealNames")
+	delete(f, "PayerMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAgentDealsCacheRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAgentDealsCacheResponse struct {
@@ -723,7 +1090,7 @@ type DescribeAgentDealsCacheResponse struct {
 	Response *struct {
 
 		// 订单数组
-		AgentDealSet []*AgentDealElem `json:"AgentDealSet,omitempty" name:"AgentDealSet" list`
+		AgentDealSet []*AgentDealElem `json:"AgentDealSet,omitempty" name:"AgentDealSet"`
 
 		// 符合条件的订单总数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -738,8 +1105,10 @@ func (r *DescribeAgentDealsCacheResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAgentDealsCacheResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAgentPayDealsRequest struct {
@@ -764,10 +1133,10 @@ type DescribeAgentPayDealsRequest struct {
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 下单人账号ID列表
-	OwnerUins []*string `json:"OwnerUins,omitempty" name:"OwnerUins" list`
+	OwnerUins []*string `json:"OwnerUins,omitempty" name:"OwnerUins"`
 
 	// 订单号列表
-	DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
 }
 
 func (r *DescribeAgentPayDealsRequest) ToJsonString() string {
@@ -775,8 +1144,25 @@ func (r *DescribeAgentPayDealsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAgentPayDealsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "CreatTimeRangeStart")
+	delete(f, "CreatTimeRangeEnd")
+	delete(f, "Order")
+	delete(f, "Status")
+	delete(f, "OwnerUins")
+	delete(f, "DealNames")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAgentPayDealsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAgentPayDealsResponse struct {
@@ -784,7 +1170,7 @@ type DescribeAgentPayDealsResponse struct {
 	Response *struct {
 
 		// 订单数组
-		AgentPayDealSet []*AgentDealElem `json:"AgentPayDealSet,omitempty" name:"AgentPayDealSet" list`
+		AgentPayDealSet []*AgentDealElem `json:"AgentPayDealSet,omitempty" name:"AgentPayDealSet"`
 
 		// 符合条件的订单总数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -799,8 +1185,90 @@ func (r *DescribeAgentPayDealsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAgentPayDealsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAgentPayDealsV2Request struct {
+	*tchttp.BaseRequest
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
+	CreatTimeRangeStart *string `json:"CreatTimeRangeStart,omitempty" name:"CreatTimeRangeStart"`
+
+	// 下单时间范围终止点
+	CreatTimeRangeEnd *string `json:"CreatTimeRangeEnd,omitempty" name:"CreatTimeRangeEnd"`
+
+	// 0:下单时间降序；其他：下单时间升序
+	Order *uint64 `json:"Order,omitempty" name:"Order"`
+
+	// 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 下单人账号ID列表
+	OwnerUins []*string `json:"OwnerUins,omitempty" name:"OwnerUins"`
+
+	// 订单号列表
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
+}
+
+func (r *DescribeAgentPayDealsV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAgentPayDealsV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "CreatTimeRangeStart")
+	delete(f, "CreatTimeRangeEnd")
+	delete(f, "Order")
+	delete(f, "Status")
+	delete(f, "OwnerUins")
+	delete(f, "DealNames")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAgentPayDealsV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAgentPayDealsV2Response struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 订单数组
+		AgentPayDealSet []*AgentDealNewElem `json:"AgentPayDealSet,omitempty" name:"AgentPayDealSet"`
+
+		// 符合条件的订单总数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAgentPayDealsV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAgentPayDealsV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAgentSelfPayDealsRequest struct {
@@ -828,7 +1296,7 @@ type DescribeAgentSelfPayDealsRequest struct {
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 订单号列表
-	DealNames []*string `json:"DealNames,omitempty" name:"DealNames" list`
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
 }
 
 func (r *DescribeAgentSelfPayDealsRequest) ToJsonString() string {
@@ -836,8 +1304,25 @@ func (r *DescribeAgentSelfPayDealsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAgentSelfPayDealsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OwnerUin")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "CreatTimeRangeStart")
+	delete(f, "CreatTimeRangeEnd")
+	delete(f, "Order")
+	delete(f, "Status")
+	delete(f, "DealNames")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAgentSelfPayDealsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAgentSelfPayDealsResponse struct {
@@ -845,7 +1330,7 @@ type DescribeAgentSelfPayDealsResponse struct {
 	Response *struct {
 
 		// 订单数组
-		AgentPayDealSet []*AgentDealElem `json:"AgentPayDealSet,omitempty" name:"AgentPayDealSet" list`
+		AgentPayDealSet []*AgentDealElem `json:"AgentPayDealSet,omitempty" name:"AgentPayDealSet"`
 
 		// 符合条件的订单总数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -860,8 +1345,142 @@ func (r *DescribeAgentSelfPayDealsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAgentSelfPayDealsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAgentSelfPayDealsV2Request struct {
+	*tchttp.BaseRequest
+
+	// 下单人账号ID
+	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
+	CreatTimeRangeStart *string `json:"CreatTimeRangeStart,omitempty" name:"CreatTimeRangeStart"`
+
+	// 下单时间范围终止点
+	CreatTimeRangeEnd *string `json:"CreatTimeRangeEnd,omitempty" name:"CreatTimeRangeEnd"`
+
+	// 0:下单时间降序；其他：下单时间升序
+	Order *uint64 `json:"Order,omitempty" name:"Order"`
+
+	// 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 订单号列表
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
+}
+
+func (r *DescribeAgentSelfPayDealsV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAgentSelfPayDealsV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OwnerUin")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "CreatTimeRangeStart")
+	delete(f, "CreatTimeRangeEnd")
+	delete(f, "Order")
+	delete(f, "Status")
+	delete(f, "DealNames")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAgentSelfPayDealsV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAgentSelfPayDealsV2Response struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 订单数组
+		AgentPayDealSet []*AgentDealNewElem `json:"AgentPayDealSet,omitempty" name:"AgentPayDealSet"`
+
+		// 符合条件的订单总数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAgentSelfPayDealsV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAgentSelfPayDealsV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClientBalanceNewRequest struct {
+	*tchttp.BaseRequest
+
+	// 客户(代客)账号ID
+	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
+}
+
+func (r *DescribeClientBalanceNewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClientBalanceNewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClientUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClientBalanceNewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClientBalanceNewResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 账户可用余额，单位分 （可用余额 = 现金余额 + 赠送金余额 - 欠费金额 - 冻结金额）
+		Balance *int64 `json:"Balance,omitempty" name:"Balance"`
+
+		// 账户现金余额，单位分
+		Cash *int64 `json:"Cash,omitempty" name:"Cash"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeClientBalanceNewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClientBalanceNewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeClientBalanceRequest struct {
@@ -876,16 +1495,29 @@ func (r *DescribeClientBalanceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeClientBalanceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClientUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClientBalanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeClientBalanceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 账户余额，单位分
+		// 账户可用余额，单位分 （可用余额 = 现金余额 - 冻结金额）
 		Balance *uint64 `json:"Balance,omitempty" name:"Balance"`
+
+		// 账户现金余额，单位分
+		Cash *int64 `json:"Cash,omitempty" name:"Cash"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -897,8 +1529,10 @@ func (r *DescribeClientBalanceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeClientBalanceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeRebateInfosRequest struct {
@@ -919,8 +1553,20 @@ func (r *DescribeRebateInfosRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeRebateInfosRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RebateMonth")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRebateInfosRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeRebateInfosResponse struct {
@@ -928,7 +1574,7 @@ type DescribeRebateInfosResponse struct {
 	Response *struct {
 
 		// 返佣信息列表
-		RebateInfoSet []*RebateInfoElem `json:"RebateInfoSet,omitempty" name:"RebateInfoSet" list`
+		RebateInfoSet []*RebateInfoElem `json:"RebateInfoSet,omitempty" name:"RebateInfoSet"`
 
 		// 符合查询条件返佣信息数目
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -943,8 +1589,10 @@ func (r *DescribeRebateInfosResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeRebateInfosResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeSalesmansRequest struct {
@@ -971,8 +1619,22 @@ func (r *DescribeSalesmansRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeSalesmansRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SalesName")
+	delete(f, "SalesUin")
+	delete(f, "OrderDirection")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSalesmansRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeSalesmansResponse struct {
@@ -980,7 +1642,7 @@ type DescribeSalesmansResponse struct {
 	Response *struct {
 
 		// 业务员列表
-		AgentSalesmanSet []*AgentSalesmanElem `json:"AgentSalesmanSet,omitempty" name:"AgentSalesmanSet" list`
+		AgentSalesmanSet []*AgentSalesmanElem `json:"AgentSalesmanSet,omitempty" name:"AgentSalesmanSet"`
 
 		// 符合条件的代客总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -995,8 +1657,86 @@ func (r *DescribeSalesmansResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeSalesmansResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUnbindClientListRequest struct {
+	*tchttp.BaseRequest
+
+	// 解绑状态：0:所有,1:审核中,2已解绑
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 解绑账号ID
+	UnbindUin *string `json:"UnbindUin,omitempty" name:"UnbindUin"`
+
+	// 解绑申请时间范围起始点
+	ApplyTimeStart *string `json:"ApplyTimeStart,omitempty" name:"ApplyTimeStart"`
+
+	// 解绑申请时间范围终止点
+	ApplyTimeEnd *string `json:"ApplyTimeEnd,omitempty" name:"ApplyTimeEnd"`
+
+	// 对申请时间的升序降序，值：asc，desc
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
+}
+
+func (r *DescribeUnbindClientListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUnbindClientListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Status")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "UnbindUin")
+	delete(f, "ApplyTimeStart")
+	delete(f, "ApplyTimeEnd")
+	delete(f, "OrderDirection")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUnbindClientListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUnbindClientListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的解绑客户数量
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 符合条件的解绑客户列表
+		UnbindClientList []*UnbindClientElem `json:"UnbindClientList,omitempty" name:"UnbindClientList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeUnbindClientListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUnbindClientListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyClientRemarkRequest struct {
@@ -1014,8 +1754,19 @@ func (r *ModifyClientRemarkRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyClientRemarkRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClientRemark")
+	delete(f, "ClientUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClientRemarkRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyClientRemarkResponse struct {
@@ -1032,8 +1783,19 @@ func (r *ModifyClientRemarkResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyClientRemarkResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ProductInfoElem struct {
+
+	// 产品属性
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 产品属性值
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type RebateInfoElem struct {
@@ -1069,8 +1831,18 @@ func (r *RemovePayRelationForClientRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RemovePayRelationForClientRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClientUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemovePayRelationForClientRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RemovePayRelationForClientResponse struct {
@@ -1087,6 +1859,28 @@ func (r *RemovePayRelationForClientResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RemovePayRelationForClientResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UnbindClientElem struct {
+
+	// 解绑账号ID
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 状态：0:审核中；1：已解绑；2：已撤销 3：关联撤销 4: 已驳回
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 申请时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplyTime *string `json:"ApplyTime,omitempty" name:"ApplyTime"`
+
+	// 解绑/撤销时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActionTime *string `json:"ActionTime,omitempty" name:"ActionTime"`
 }

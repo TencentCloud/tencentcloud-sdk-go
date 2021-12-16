@@ -16,7 +16,7 @@ package v20191205
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -65,8 +65,29 @@ func (r *ApplyCertificateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ApplyCertificateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DvAuthMethod")
+	delete(f, "DomainName")
+	delete(f, "ProjectId")
+	delete(f, "PackageType")
+	delete(f, "ContactEmail")
+	delete(f, "ContactPhone")
+	delete(f, "ValidityPeriod")
+	delete(f, "CsrEncryptAlgo")
+	delete(f, "CsrKeyParameter")
+	delete(f, "CsrKeyPassword")
+	delete(f, "Alias")
+	delete(f, "OldCertificateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyCertificateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ApplyCertificateResponse struct {
@@ -86,8 +107,10 @@ func (r *ApplyCertificateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ApplyCertificateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CancelCertificateOrderRequest struct {
@@ -102,8 +125,18 @@ func (r *CancelCertificateOrderRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CancelCertificateOrderRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelCertificateOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CancelCertificateOrderResponse struct {
@@ -123,8 +156,10 @@ func (r *CancelCertificateOrderResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CancelCertificateOrderResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CertificateExtra struct {
@@ -226,7 +261,7 @@ type Certificates struct {
 
 	// 证书包含的多个域名（包含主域名）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubjectAltName []*string `json:"SubjectAltName,omitempty" name:"SubjectAltName" list`
+	SubjectAltName []*string `json:"SubjectAltName,omitempty" name:"SubjectAltName"`
 
 	// 证书类型名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -262,11 +297,15 @@ type Certificates struct {
 
 	// 关联的云资源，暂不可用
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BoundResource []*string `json:"BoundResource,omitempty" name:"BoundResource" list`
+	BoundResource []*string `json:"BoundResource,omitempty" name:"BoundResource"`
 
 	// 是否可部署。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Deployable *bool `json:"Deployable,omitempty" name:"Deployable"`
+
+	// 标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tags `json:"Tags,omitempty" name:"Tags"`
 }
 
 type CheckCertificateChainRequest struct {
@@ -281,22 +320,32 @@ func (r *CheckCertificateChainRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CheckCertificateChainRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateChain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckCertificateChainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CheckCertificateChainResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 1为通过检查，0为未通过检查。
+		// true为通过检查，false为未通过检查。
 		IsValid *bool `json:"IsValid,omitempty" name:"IsValid"`
 
-		// 1为可信CA，0为不可信CA。
+		// true为可信CA，false为不可信CA。
 		IsTrustedCA *bool `json:"IsTrustedCA,omitempty" name:"IsTrustedCA"`
 
 		// 包含证书链中每一段证书的通用名称。
-		Chains []*string `json:"Chains,omitempty" name:"Chains" list`
+		Chains []*string `json:"Chains,omitempty" name:"Chains"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -308,8 +357,10 @@ func (r *CheckCertificateChainResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CheckCertificateChainResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CommitCertificateInformationRequest struct {
@@ -324,18 +375,28 @@ func (r *CommitCertificateInformationRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CommitCertificateInformationRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CommitCertificateInformationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CommitCertificateInformationResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 亚信订单号。
+		// CA机构侧订单号。
 		OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
 
-		// 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函。
+		// 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。
 		Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -348,8 +409,34 @@ func (r *CommitCertificateInformationResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CommitCertificateInformationResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CompanyInfo struct {
+
+	// 公司名称
+	CompanyName *string `json:"CompanyName,omitempty" name:"CompanyName"`
+
+	// 公司ID
+	CompanyId *int64 `json:"CompanyId,omitempty" name:"CompanyId"`
+
+	// 公司所在国家
+	CompanyCountry *string `json:"CompanyCountry,omitempty" name:"CompanyCountry"`
+
+	// 公司所在省份
+	CompanyProvince *string `json:"CompanyProvince,omitempty" name:"CompanyProvince"`
+
+	// 公司所在城市
+	CompanyCity *string `json:"CompanyCity,omitempty" name:"CompanyCity"`
+
+	// 公司所在详细地址
+	CompanyAddress *string `json:"CompanyAddress,omitempty" name:"CompanyAddress"`
+
+	// 公司电话
+	CompanyPhone *string `json:"CompanyPhone,omitempty" name:"CompanyPhone"`
 }
 
 type CompleteCertificateRequest struct {
@@ -364,8 +451,18 @@ func (r *CompleteCertificateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CompleteCertificateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CompleteCertificateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CompleteCertificateResponse struct {
@@ -385,14 +482,16 @@ func (r *CompleteCertificateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CompleteCertificateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateCertificateRequest struct {
 	*tchttp.BaseRequest
 
-	// 证书商品ID
+	// 证书商品ID，3 = SecureSite 增强型企业版（EV Pro）， 4 = SecureSite 增强型（EV）， 5 = SecureSite 企业型专业版（OV Pro）， 6 = SecureSite 企业型（OV）， 7 = SecureSite 企业型（OV）通配符， 8 = Geotrust 增强型（EV）， 9 = Geotrust 企业型（OV）， 10 = Geotrust 企业型（OV）通配符， 11 = TrustAsia 域名型多域名 SSL 证书， 12 = TrustAsia 域名型（DV）通配符， 13 = TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14 = TrustAsia 企业型（OV）SSL 证书（D3）， 15 = TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16 = TrustAsia 增强型 （EV）SSL 证书（D3）， 17 = TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18 = GlobalSign 企业型（OV）SSL 证书， 19 = GlobalSign 企业型通配符 （OV）SSL 证书， 20 = GlobalSign 增强型 （EV）SSL 证书， 21 = TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22 = GlobalSign 企业型多域名（OV）SSL 证书， 23 = GlobalSign 企业型通配符多域名（OV）SSL 证书， 24 = GlobalSign 增强型多域名（EV）SSL 证书，25 = Wotrus 域名型证书，26 = Wotrus 域名型多域名证书，27 = Wotrus 域名型通配符证书，28 = Wotrus 企业型证书，29 = Wotrus 企业型多域名证书，30 = Wotrus 企业型通配符证书，31 = Wotrus 增强型证书，32 = Wotrus 增强型多域名证书，33 = DNSPod 国密域名型证书，34 = DNSPod 国密域名型多域名证书，35 = DNSPod 国密域名型通配符证书，37 = DNSPod 国密企业型证书，38 = DNSPod 国密企业型多域名证书，39 = DNSPod 国密企业型通配符证书，40 = DNSPod 国密增强型证书，41 = DNSPod 国密增强型多域名证书，42 = TrustAsia 域名型通配符多域名证书。
 	ProductId *int64 `json:"ProductId,omitempty" name:"ProductId"`
 
 	// 证书包含的域名数量
@@ -407,8 +506,20 @@ func (r *CreateCertificateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateCertificateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DomainNum")
+	delete(f, "TimeSpan")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCertificateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateCertificateResponse struct {
@@ -416,10 +527,10 @@ type CreateCertificateResponse struct {
 	Response *struct {
 
 		// 证书ID列表
-		CertificateIds []*string `json:"CertificateIds,omitempty" name:"CertificateIds" list`
+		CertificateIds []*string `json:"CertificateIds,omitempty" name:"CertificateIds"`
 
-		// 子订单ID
-		DealIds []*string `json:"DealIds,omitempty" name:"DealIds" list`
+		// 订单号列表
+		DealIds []*string `json:"DealIds,omitempty" name:"DealIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -431,8 +542,10 @@ func (r *CreateCertificateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateCertificateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteCertificateRequest struct {
@@ -447,15 +560,25 @@ func (r *DeleteCertificateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteCertificateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCertificateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteCertificateResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 删除结果。
+		// 删除结果（true：删除成功，false：删除失败）
 		DeleteResult *bool `json:"DeleteResult,omitempty" name:"DeleteResult"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -468,8 +591,71 @@ func (r *DeleteCertificateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteCertificateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteManagerRequest struct {
+	*tchttp.BaseRequest
+
+	// 管理人ID
+	ManagerId *int64 `json:"ManagerId,omitempty" name:"ManagerId"`
+}
+
+func (r *DeleteManagerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteManagerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ManagerId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteManagerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteManagerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 管理人ID
+		ManagerId *int64 `json:"ManagerId,omitempty" name:"ManagerId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteManagerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteManagerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeployedResources struct {
+
+	// 证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 数量
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+
+	// 资源标识:clb,cdn,live,waf,antiddos
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 type DescribeCertificateDetailRequest struct {
@@ -484,8 +670,18 @@ func (r *DescribeCertificateDetailRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCertificateDetailRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCertificateDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCertificateDetailResponse struct {
@@ -508,7 +704,7 @@ type DescribeCertificateDetailResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		CertificateType *string `json:"CertificateType,omitempty" name:"CertificateType"`
 
-		// 证书套餐类型：1 = GeoTrust DV SSL CA - G3， 2 = TrustAsia TLS RSA CA， 3 = SecureSite 增强型企业版（EV Pro）， 4 = SecureSite 增强型（EV）， 5 = SecureSite 企业型专业版（OV Pro）， 6 = SecureSite 企业型（OV）， 7 = SecureSite 企业型（OV）通配符， 8 = Geotrust 增强型（EV）， 9 = Geotrust 企业型（OV）， 10 = Geotrust 企业型（OV）通配符， 11 = TrustAsia 域名型多域名 SSL 证书， 12 = TrustAsia 域名型（DV）通配符， 13 = TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14 = TrustAsia 企业型（OV）SSL 证书（D3）， 15 = TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16 = TrustAsia 增强型 （EV）SSL 证书（D3）， 17 = TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18 = GlobalSign 企业型（OV）SSL 证书， 19 = GlobalSign 企业型通配符 （OV）SSL 证书， 20 = GlobalSign 增强型 （EV）SSL 证书， 21 = TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22 = GlobalSign 企业型多域名（OV）SSL 证书， 23 = GlobalSign 企业型通配符多域名（OV）SSL 证书， 24 = GlobalSign 增强型多域名（EV）SSL 证书。
+		// 证书套餐类型：1 = GeoTrust DV SSL CA - G3， 2 = TrustAsia TLS RSA CA， 3 = SecureSite 增强型企业版（EV Pro）， 4 = SecureSite 增强型（EV）， 5 = SecureSite 企业型专业版（OV Pro）， 6 = SecureSite 企业型（OV）， 7 = SecureSite 企业型（OV）通配符， 8 = Geotrust 增强型（EV）， 9 = Geotrust 企业型（OV）， 10 = Geotrust 企业型（OV）通配符， 11 = TrustAsia 域名型多域名 SSL 证书， 12 = TrustAsia 域名型（DV）通配符， 13 = TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14 = TrustAsia 企业型（OV）SSL 证书（D3）， 15 = TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16 = TrustAsia 增强型 （EV）SSL 证书（D3）， 17 = TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18 = GlobalSign 企业型（OV）SSL 证书， 19 = GlobalSign 企业型通配符 （OV）SSL 证书， 20 = GlobalSign 增强型 （EV）SSL 证书， 21 = TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22 = GlobalSign 企业型多域名（OV）SSL 证书， 23 = GlobalSign 企业型通配符多域名（OV）SSL 证书， 24 = GlobalSign 增强型多域名（EV）SSL 证书，25 = Wotrus 域名型证书，26 = Wotrus 域名型多域名证书，27 = Wotrus 域名型通配符证书，28 = Wotrus 企业型证书，29 = Wotrus 企业型多域名证书，30 = Wotrus 企业型通配符证书，31 = Wotrus 增强型证书，32 = Wotrus 增强型多域名证书，33 = DNSPod 国密域名型证书，34 = DNSPod 国密域名型多域名证书，35 = DNSPod 国密域名型通配符证书，37 = DNSPod 国密企业型证书，38 = DNSPod 国密企业型多域名证书，39 = DNSPod 国密企业型通配符证书，40 = DNSPod 国密增强型证书，41 = DNSPod 国密增强型多域名证书，42 = TrustAsia 域名型通配符多域名证书。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 
@@ -524,7 +720,7 @@ type DescribeCertificateDetailResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Alias *string `json:"Alias,omitempty" name:"Alias"`
 
-		// 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函。
+		// 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Status *uint64 `json:"Status,omitempty" name:"Status"`
 
@@ -568,7 +764,7 @@ type DescribeCertificateDetailResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		CertificatePrivateKey *string `json:"CertificatePrivateKey,omitempty" name:"CertificatePrivateKey"`
 
-		// 证书公钥
+		// 证书公钥（即证书内容）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		CertificatePublicKey *string `json:"CertificatePublicKey,omitempty" name:"CertificatePublicKey"`
 
@@ -592,9 +788,9 @@ type DescribeCertificateDetailResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		StatusName *string `json:"StatusName,omitempty" name:"StatusName"`
 
-		// 证书包含的多个域名（包含主域名）
+		// 证书包含的多个域名（不包含主域名，主域名使用Domain字段）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SubjectAltName []*string `json:"SubjectAltName,omitempty" name:"SubjectAltName" list`
+		SubjectAltName []*string `json:"SubjectAltName,omitempty" name:"SubjectAltName"`
 
 		// 是否为 VIP 客户。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -624,6 +820,10 @@ type DescribeCertificateDetailResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Deployable *bool `json:"Deployable,omitempty" name:"Deployable"`
 
+		// 关联标签列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Tags []*Tags `json:"Tags,omitempty" name:"Tags"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -634,8 +834,10 @@ func (r *DescribeCertificateDetailResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCertificateDetailResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCertificateOperateLogsRequest struct {
@@ -659,8 +861,21 @@ func (r *DescribeCertificateOperateLogsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCertificateOperateLogsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCertificateOperateLogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCertificateOperateLogsResponse struct {
@@ -675,7 +890,7 @@ type DescribeCertificateOperateLogsResponse struct {
 
 		// 证书操作日志列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		OperateLogs []*OperationLog `json:"OperateLogs,omitempty" name:"OperateLogs" list`
+		OperateLogs []*OperationLog `json:"OperateLogs,omitempty" name:"OperateLogs"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -687,8 +902,10 @@ func (r *DescribeCertificateOperateLogsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCertificateOperateLogsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCertificateRequest struct {
@@ -703,8 +920,18 @@ func (r *DescribeCertificateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCertificateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCertificateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCertificateResponse struct {
@@ -805,7 +1032,7 @@ type DescribeCertificateResponse struct {
 
 		// 证书包含的多个域名（包含主域名）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SubjectAltName []*string `json:"SubjectAltName,omitempty" name:"SubjectAltName" list`
+		SubjectAltName []*string `json:"SubjectAltName,omitempty" name:"SubjectAltName"`
 
 		// 是否为 VIP 客户。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -835,6 +1062,10 @@ type DescribeCertificateResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Deployable *bool `json:"Deployable,omitempty" name:"Deployable"`
 
+		// 标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Tags []*Tags `json:"Tags,omitempty" name:"Tags"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -845,8 +1076,10 @@ func (r *DescribeCertificateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCertificateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCertificatesRequest struct {
@@ -871,10 +1104,16 @@ type DescribeCertificatesRequest struct {
 	ExpirationSort *string `json:"ExpirationSort,omitempty" name:"ExpirationSort"`
 
 	// 证书状态。
-	CertificateStatus []*uint64 `json:"CertificateStatus,omitempty" name:"CertificateStatus" list`
+	CertificateStatus []*uint64 `json:"CertificateStatus,omitempty" name:"CertificateStatus"`
 
 	// 是否可部署，可选值：1 = 可部署，0 =  不可部署。
 	Deployable *uint64 `json:"Deployable,omitempty" name:"Deployable"`
+
+	// 是否筛选上传托管的 1筛选，0不筛选
+	Upload *int64 `json:"Upload,omitempty" name:"Upload"`
+
+	// 是否筛选可续期证书 1筛选 0不筛选
+	Renew *int64 `json:"Renew,omitempty" name:"Renew"`
 }
 
 func (r *DescribeCertificatesRequest) ToJsonString() string {
@@ -882,8 +1121,27 @@ func (r *DescribeCertificatesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCertificatesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SearchKey")
+	delete(f, "CertificateType")
+	delete(f, "ProjectId")
+	delete(f, "ExpirationSort")
+	delete(f, "CertificateStatus")
+	delete(f, "Deployable")
+	delete(f, "Upload")
+	delete(f, "Renew")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCertificatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCertificatesResponse struct {
@@ -896,7 +1154,7 @@ type DescribeCertificatesResponse struct {
 
 		// 列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Certificates []*Certificates `json:"Certificates,omitempty" name:"Certificates" list`
+		Certificates []*Certificates `json:"Certificates,omitempty" name:"Certificates"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -908,8 +1166,256 @@ func (r *DescribeCertificatesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCertificatesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeployedResourcesRequest struct {
+	*tchttp.BaseRequest
+
+	// 证书ID
+	CertificateIds []*string `json:"CertificateIds,omitempty" name:"CertificateIds"`
+
+	// 资源类型:clb,cdn,live,waf,antiddos
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+}
+
+func (r *DescribeDeployedResourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeployedResourcesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateIds")
+	delete(f, "ResourceType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeployedResourcesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeployedResourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 资源详情
+		DeployedResources []*DeployedResources `json:"DeployedResources,omitempty" name:"DeployedResources"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDeployedResourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeployedResourcesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeManagerDetailRequest struct {
+	*tchttp.BaseRequest
+
+	// 管理人ID
+	ManagerId *int64 `json:"ManagerId,omitempty" name:"ManagerId"`
+
+	// 分页每页数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeManagerDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeManagerDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ManagerId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeManagerDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeManagerDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 状态: audit: 审核中 ok: 审核通过 invalid: 失效 expiring: 即将过期 expired: 已过期
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 管理人姓名
+		ManagerFirstName *string `json:"ManagerFirstName,omitempty" name:"ManagerFirstName"`
+
+		// 管理人邮箱
+		ManagerMail *string `json:"ManagerMail,omitempty" name:"ManagerMail"`
+
+		// 联系人姓名
+		ContactFirstName *string `json:"ContactFirstName,omitempty" name:"ContactFirstName"`
+
+		// 管理人姓名
+		ManagerLastName *string `json:"ManagerLastName,omitempty" name:"ManagerLastName"`
+
+		// 联系人职位
+		ContactPosition *string `json:"ContactPosition,omitempty" name:"ContactPosition"`
+
+		// 管理人职位
+		ManagerPosition *string `json:"ManagerPosition,omitempty" name:"ManagerPosition"`
+
+		// 核验通过时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VerifyTime *string `json:"VerifyTime,omitempty" name:"VerifyTime"`
+
+		// 创建时间
+		CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+		// 核验过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+		// 联系人姓名
+		ContactLastName *string `json:"ContactLastName,omitempty" name:"ContactLastName"`
+
+		// 管理人电话
+		ManagerPhone *string `json:"ManagerPhone,omitempty" name:"ManagerPhone"`
+
+		// 联系人电话
+		ContactPhone *string `json:"ContactPhone,omitempty" name:"ContactPhone"`
+
+		// 联系人邮箱
+		ContactMail *string `json:"ContactMail,omitempty" name:"ContactMail"`
+
+		// 管理人所属部门
+		ManagerDepartment *string `json:"ManagerDepartment,omitempty" name:"ManagerDepartment"`
+
+		// 管理人所属公司信息
+		CompanyInfo *CompanyInfo `json:"CompanyInfo,omitempty" name:"CompanyInfo"`
+
+		// 管理人公司ID
+		CompanyId *int64 `json:"CompanyId,omitempty" name:"CompanyId"`
+
+		// 管理人ID
+		ManagerId *int64 `json:"ManagerId,omitempty" name:"ManagerId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeManagerDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeManagerDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeManagersRequest struct {
+	*tchttp.BaseRequest
+
+	// 公司ID
+	CompanyId *int64 `json:"CompanyId,omitempty" name:"CompanyId"`
+
+	// 分页偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页每页数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 管理人姓名
+	ManagerName *string `json:"ManagerName,omitempty" name:"ManagerName"`
+
+	// 模糊查询管理人邮箱
+	ManagerMail *string `json:"ManagerMail,omitempty" name:"ManagerMail"`
+
+	// 根据管理人状态进行筛选，取值有
+	// 'none' 未提交审核
+	// 'audit', 亚信审核中
+	// 'CAaudit' CA审核中
+	// 'ok' 已审核
+	// 'invalid'  审核失败
+	// 'expiring'  即将过期
+	// 'expired' 已过期
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 管理人姓名/邮箱/部门精准匹配
+	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
+}
+
+func (r *DescribeManagersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeManagersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CompanyId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "ManagerName")
+	delete(f, "ManagerMail")
+	delete(f, "Status")
+	delete(f, "SearchKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeManagersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeManagersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 公司管理人列表
+		Managers []*ManagerInfo `json:"Managers,omitempty" name:"Managers"`
+
+		// 公司管理人总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeManagersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeManagersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DownloadCertificateRequest struct {
@@ -924,8 +1430,18 @@ func (r *DownloadCertificateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DownloadCertificateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DownloadCertificateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DownloadCertificateResponse struct {
@@ -950,8 +1466,10 @@ func (r *DownloadCertificateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DownloadCertificateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DvAuthDetail struct {
@@ -978,7 +1496,7 @@ type DvAuthDetail struct {
 
 	// DV 认证信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DvAuths []*DvAuths `json:"DvAuths,omitempty" name:"DvAuths" list`
+	DvAuths []*DvAuths `json:"DvAuths,omitempty" name:"DvAuths"`
 }
 
 type DvAuths struct {
@@ -1008,6 +1526,62 @@ type DvAuths struct {
 	DvAuthVerifyType *string `json:"DvAuthVerifyType,omitempty" name:"DvAuthVerifyType"`
 }
 
+type ManagerInfo struct {
+
+	// 状态: audit: 审核中 ok: 审核通过 invalid: 失效 expiring: 即将过期 expired: 已过期
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 管理人姓名
+	ManagerFirstName *string `json:"ManagerFirstName,omitempty" name:"ManagerFirstName"`
+
+	// 管理人姓名
+	ManagerLastName *string `json:"ManagerLastName,omitempty" name:"ManagerLastName"`
+
+	// 管理人职位
+	ManagerPosition *string `json:"ManagerPosition,omitempty" name:"ManagerPosition"`
+
+	// 管理人电话
+	ManagerPhone *string `json:"ManagerPhone,omitempty" name:"ManagerPhone"`
+
+	// 管理人邮箱
+	ManagerMail *string `json:"ManagerMail,omitempty" name:"ManagerMail"`
+
+	// 管理人所属部门
+	ManagerDepartment *string `json:"ManagerDepartment,omitempty" name:"ManagerDepartment"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 管理人域名数量
+	DomainCount *int64 `json:"DomainCount,omitempty" name:"DomainCount"`
+
+	// 管理人证书数量
+	CertCount *int64 `json:"CertCount,omitempty" name:"CertCount"`
+
+	// 管理人ID
+	ManagerId *int64 `json:"ManagerId,omitempty" name:"ManagerId"`
+
+	// 审核有效到期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 最近一次提交审核时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubmitAuditTime *string `json:"SubmitAuditTime,omitempty" name:"SubmitAuditTime"`
+
+	// 审核通过时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VerifyTime *string `json:"VerifyTime,omitempty" name:"VerifyTime"`
+
+	// 具体审核状态信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusInfo []*ManagerStatusInfo `json:"StatusInfo,omitempty" name:"StatusInfo"`
+}
+
+type ManagerStatusInfo struct {
+}
+
 type ModifyCertificateAliasRequest struct {
 	*tchttp.BaseRequest
 
@@ -1023,8 +1597,19 @@ func (r *ModifyCertificateAliasRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyCertificateAliasRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	delete(f, "Alias")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCertificateAliasRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyCertificateAliasResponse struct {
@@ -1044,15 +1629,17 @@ func (r *ModifyCertificateAliasResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyCertificateAliasResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyCertificateProjectRequest struct {
 	*tchttp.BaseRequest
 
 	// 需要修改所属项目的证书 ID 集合，最多100个证书。
-	CertificateIdList []*string `json:"CertificateIdList,omitempty" name:"CertificateIdList" list`
+	CertificateIdList []*string `json:"CertificateIdList,omitempty" name:"CertificateIdList"`
 
 	// 项目 ID。
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -1063,8 +1650,19 @@ func (r *ModifyCertificateProjectRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyCertificateProjectRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateIdList")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCertificateProjectRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyCertificateProjectResponse struct {
@@ -1073,11 +1671,11 @@ type ModifyCertificateProjectResponse struct {
 
 		// 修改所属项目成功的证书集合。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SuccessCertificates []*string `json:"SuccessCertificates,omitempty" name:"SuccessCertificates" list`
+		SuccessCertificates []*string `json:"SuccessCertificates,omitempty" name:"SuccessCertificates"`
 
 		// 修改所属项目失败的证书集合。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		FailCertificates []*string `json:"FailCertificates,omitempty" name:"FailCertificates" list`
+		FailCertificates []*string `json:"FailCertificates,omitempty" name:"FailCertificates"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1089,8 +1687,10 @@ func (r *ModifyCertificateProjectResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyCertificateProjectResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type OperationLog struct {
@@ -1135,7 +1735,7 @@ type ReplaceCertificateRequest struct {
 	// 证书 ID。
 	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
 
-	// 验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证。
+	// 验证类型：DNS_AUTO = 自动DNS验证（仅支持在腾讯云解析且解析状态正常的域名使用该验证类型），DNS = 手动DNS验证，FILE = 文件验证。
 	ValidType *string `json:"ValidType,omitempty" name:"ValidType"`
 
 	// 类型，默认 Original。可选项：Original = 原证书 CSR，Upload = 手动上传，Online = 在线生成。
@@ -1156,8 +1756,23 @@ func (r *ReplaceCertificateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ReplaceCertificateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	delete(f, "ValidType")
+	delete(f, "CsrType")
+	delete(f, "CsrContent")
+	delete(f, "CsrkeyPassword")
+	delete(f, "Reason")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReplaceCertificateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ReplaceCertificateResponse struct {
@@ -1177,8 +1792,10 @@ func (r *ReplaceCertificateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ReplaceCertificateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RevokeCertificateRequest struct {
@@ -1196,8 +1813,19 @@ func (r *RevokeCertificateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RevokeCertificateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	delete(f, "Reason")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RevokeCertificateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RevokeCertificateResponse struct {
@@ -1206,7 +1834,7 @@ type RevokeCertificateResponse struct {
 
 		// 吊销证书域名验证信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		RevokeDomainValidateAuths []*RevokeDomainValidateAuths `json:"RevokeDomainValidateAuths,omitempty" name:"RevokeDomainValidateAuths" list`
+		RevokeDomainValidateAuths []*RevokeDomainValidateAuths `json:"RevokeDomainValidateAuths,omitempty" name:"RevokeDomainValidateAuths"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1218,8 +1846,10 @@ func (r *RevokeCertificateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RevokeCertificateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RevokeDomainValidateAuths struct {
@@ -1241,6 +1871,55 @@ type RevokeDomainValidateAuths struct {
 	DomainValidateAuthDomain *string `json:"DomainValidateAuthDomain,omitempty" name:"DomainValidateAuthDomain"`
 }
 
+type SubmitAuditManagerRequest struct {
+	*tchttp.BaseRequest
+
+	// 管理人ID
+	ManagerId *int64 `json:"ManagerId,omitempty" name:"ManagerId"`
+}
+
+func (r *SubmitAuditManagerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitAuditManagerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ManagerId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitAuditManagerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SubmitAuditManagerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 管理人ID
+		ManagerId *int64 `json:"ManagerId,omitempty" name:"ManagerId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SubmitAuditManagerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitAuditManagerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type SubmitCertificateInformationRequest struct {
 	*tchttp.BaseRequest
 
@@ -1257,9 +1936,9 @@ type SubmitCertificateInformationRequest struct {
 	CertificateDomain *string `json:"CertificateDomain,omitempty" name:"CertificateDomain"`
 
 	// 上传的域名数组（多域名证书可以上传）。
-	DomainList []*string `json:"DomainList,omitempty" name:"DomainList" list`
+	DomainList []*string `json:"DomainList,omitempty" name:"DomainList"`
 
-	// 私钥密码。
+	// 私钥密码（非必填）。
 	KeyPassword *string `json:"KeyPassword,omitempty" name:"KeyPassword"`
 
 	// 公司名称。
@@ -1289,7 +1968,7 @@ type SubmitCertificateInformationRequest struct {
 	// 公司座机号码。
 	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
 
-	// 证书验证方式。
+	// 证书验证方式。验证类型：DNS_AUTO = 自动DNS验证（仅支持在腾讯云解析且解析状态正常的域名使用该验证类型），DNS = 手动DNS验证，FILE = 文件验证。
 	VerifyType *string `json:"VerifyType,omitempty" name:"VerifyType"`
 
 	// 管理人名。
@@ -1328,8 +2007,43 @@ func (r *SubmitCertificateInformationRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SubmitCertificateInformationRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	delete(f, "CsrType")
+	delete(f, "CsrContent")
+	delete(f, "CertificateDomain")
+	delete(f, "DomainList")
+	delete(f, "KeyPassword")
+	delete(f, "OrganizationName")
+	delete(f, "OrganizationDivision")
+	delete(f, "OrganizationAddress")
+	delete(f, "OrganizationCountry")
+	delete(f, "OrganizationCity")
+	delete(f, "OrganizationRegion")
+	delete(f, "PostalCode")
+	delete(f, "PhoneAreaCode")
+	delete(f, "PhoneNumber")
+	delete(f, "VerifyType")
+	delete(f, "AdminFirstName")
+	delete(f, "AdminLastName")
+	delete(f, "AdminPhoneNum")
+	delete(f, "AdminEmail")
+	delete(f, "AdminPosition")
+	delete(f, "ContactFirstName")
+	delete(f, "ContactLastName")
+	delete(f, "ContactEmail")
+	delete(f, "ContactNumber")
+	delete(f, "ContactPosition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitCertificateInformationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SubmitCertificateInformationResponse struct {
@@ -1349,8 +2063,10 @@ func (r *SubmitCertificateInformationResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SubmitCertificateInformationResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SubmittedData struct {
@@ -1369,7 +2085,7 @@ type SubmittedData struct {
 
 	// DNS 信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DomainList []*string `json:"DomainList,omitempty" name:"DomainList" list`
+	DomainList []*string `json:"DomainList,omitempty" name:"DomainList"`
 
 	// 私钥密码。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1456,10 +2172,19 @@ type SubmittedData struct {
 	VerifyType *string `json:"VerifyType,omitempty" name:"VerifyType"`
 }
 
+type Tags struct {
+
+	// 标签键
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+}
+
 type UploadCertificateRequest struct {
 	*tchttp.BaseRequest
 
-	// 证书公钥。
+	// 证书内容。
 	CertificatePublicKey *string `json:"CertificatePublicKey,omitempty" name:"CertificatePublicKey"`
 
 	// 私钥内容，证书类型为 SVR 时必填，为 CA 时可不填。
@@ -1473,6 +2198,9 @@ type UploadCertificateRequest struct {
 
 	// 项目 ID。
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 证书用途/证书来源。“CLB，CDN，WAF，LIVE，DDOS”
+	CertificateUse *string `json:"CertificateUse,omitempty" name:"CertificateUse"`
 }
 
 func (r *UploadCertificateRequest) ToJsonString() string {
@@ -1480,8 +2208,23 @@ func (r *UploadCertificateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UploadCertificateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificatePublicKey")
+	delete(f, "CertificatePrivateKey")
+	delete(f, "CertificateType")
+	delete(f, "Alias")
+	delete(f, "ProjectId")
+	delete(f, "CertificateUse")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadCertificateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UploadCertificateResponse struct {
@@ -1501,8 +2244,10 @@ func (r *UploadCertificateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UploadCertificateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UploadConfirmLetterRequest struct {
@@ -1520,8 +2265,19 @@ func (r *UploadConfirmLetterRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UploadConfirmLetterRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	delete(f, "ConfirmLetter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadConfirmLetterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UploadConfirmLetterResponse struct {
@@ -1544,8 +2300,10 @@ func (r *UploadConfirmLetterResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UploadConfirmLetterResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UploadRevokeLetterRequest struct {
@@ -1563,8 +2321,19 @@ func (r *UploadRevokeLetterRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UploadRevokeLetterRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	delete(f, "RevokeLetter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadRevokeLetterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UploadRevokeLetterResponse struct {
@@ -1587,6 +2356,57 @@ func (r *UploadRevokeLetterResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UploadRevokeLetterResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type VerifyManagerRequest struct {
+	*tchttp.BaseRequest
+
+	// 管理人ID
+	ManagerId *int64 `json:"ManagerId,omitempty" name:"ManagerId"`
+}
+
+func (r *VerifyManagerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyManagerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ManagerId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyManagerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type VerifyManagerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 管理人ID
+		ManagerId *int64 `json:"ManagerId,omitempty" name:"ManagerId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *VerifyManagerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyManagerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }

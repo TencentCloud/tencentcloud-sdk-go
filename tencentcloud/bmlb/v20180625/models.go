@@ -16,7 +16,7 @@ package v20180625
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -45,7 +45,7 @@ type BindL4BackendsRequest struct {
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
 	// 待绑定的主机信息。可以绑定多个主机端口。目前一个四层监听器下面最多允许绑定255个主机端口。
-	BackendSet []*BindL4Backend `json:"BackendSet,omitempty" name:"BackendSet" list`
+	BackendSet []*BindL4Backend `json:"BackendSet,omitempty" name:"BackendSet"`
 
 	// 绑定类型。0：物理机 1：虚拟机 2：半托管机器
 	BindType *int64 `json:"BindType,omitempty" name:"BindType"`
@@ -56,8 +56,21 @@ func (r *BindL4BackendsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BindL4BackendsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "ListenerId")
+	delete(f, "BackendSet")
+	delete(f, "BindType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindL4BackendsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BindL4BackendsResponse struct {
@@ -77,8 +90,10 @@ func (r *BindL4BackendsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BindL4BackendsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BindL7Backend struct {
@@ -109,7 +124,7 @@ type BindL7BackendsRequest struct {
 	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
 
 	// 待绑定的主机信息。可以绑定多个主机端口。目前一个七层转发路径下面最多允许绑定255个主机端口。
-	BackendSet []*BindL7Backend `json:"BackendSet,omitempty" name:"BackendSet" list`
+	BackendSet []*BindL7Backend `json:"BackendSet,omitempty" name:"BackendSet"`
 
 	// 绑定类型。0：物理机，1：虚拟机 2：半托管机器。
 	BindType *uint64 `json:"BindType,omitempty" name:"BindType"`
@@ -120,8 +135,23 @@ func (r *BindL7BackendsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BindL7BackendsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "ListenerId")
+	delete(f, "DomainId")
+	delete(f, "LocationId")
+	delete(f, "BackendSet")
+	delete(f, "BindType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindL7BackendsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BindL7BackendsResponse struct {
@@ -141,8 +171,10 @@ func (r *BindL7BackendsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BindL7BackendsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BindTrafficMirrorListenersRequest struct {
@@ -152,7 +184,7 @@ type BindTrafficMirrorListenersRequest struct {
 	TrafficMirrorId *string `json:"TrafficMirrorId,omitempty" name:"TrafficMirrorId"`
 
 	// 七层监听器实例ID数组，可通过接口DescribeL7Listeners查询。
-	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds" list`
+	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds"`
 }
 
 func (r *BindTrafficMirrorListenersRequest) ToJsonString() string {
@@ -160,8 +192,19 @@ func (r *BindTrafficMirrorListenersRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BindTrafficMirrorListenersRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrafficMirrorId")
+	delete(f, "ListenerIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindTrafficMirrorListenersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BindTrafficMirrorListenersResponse struct {
@@ -181,8 +224,10 @@ func (r *BindTrafficMirrorListenersResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BindTrafficMirrorListenersResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BindTrafficMirrorReceiver struct {
@@ -204,7 +249,7 @@ type BindTrafficMirrorReceiversRequest struct {
 	TrafficMirrorId *string `json:"TrafficMirrorId,omitempty" name:"TrafficMirrorId"`
 
 	// 待绑定的黑石物理机信息数组。
-	ReceiverSet []*BindTrafficMirrorReceiver `json:"ReceiverSet,omitempty" name:"ReceiverSet" list`
+	ReceiverSet []*BindTrafficMirrorReceiver `json:"ReceiverSet,omitempty" name:"ReceiverSet"`
 }
 
 func (r *BindTrafficMirrorReceiversRequest) ToJsonString() string {
@@ -212,8 +257,19 @@ func (r *BindTrafficMirrorReceiversRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BindTrafficMirrorReceiversRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrafficMirrorId")
+	delete(f, "ReceiverSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindTrafficMirrorReceiversRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BindTrafficMirrorReceiversResponse struct {
@@ -233,8 +289,10 @@ func (r *BindTrafficMirrorReceiversResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BindTrafficMirrorReceiversResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CertDetailLoadBalancer struct {
@@ -310,7 +368,7 @@ type CreateL4ListenersRequest struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
 	// 监听器信息数组，可以创建多个监听器。目前一个负载均衡下面最多允许创建50个监听器
-	ListenerSet []*CreateL4Listener `json:"ListenerSet,omitempty" name:"ListenerSet" list`
+	ListenerSet []*CreateL4Listener `json:"ListenerSet,omitempty" name:"ListenerSet"`
 }
 
 func (r *CreateL4ListenersRequest) ToJsonString() string {
@@ -318,8 +376,19 @@ func (r *CreateL4ListenersRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateL4ListenersRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "ListenerSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateL4ListenersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateL4ListenersResponse struct {
@@ -339,8 +408,10 @@ func (r *CreateL4ListenersResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateL4ListenersResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateL7Listener struct {
@@ -392,7 +463,7 @@ type CreateL7ListenersRequest struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
 	// 七层监听器信息数组，可以创建多个七层监听器。目前一个负载均衡下面最多允许创建50个七层监听器。
-	ListenerSet []*CreateL7Listener `json:"ListenerSet,omitempty" name:"ListenerSet" list`
+	ListenerSet []*CreateL7Listener `json:"ListenerSet,omitempty" name:"ListenerSet"`
 }
 
 func (r *CreateL7ListenersRequest) ToJsonString() string {
@@ -400,8 +471,19 @@ func (r *CreateL7ListenersRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateL7ListenersRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "ListenerSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateL7ListenersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateL7ListenersResponse struct {
@@ -409,7 +491,7 @@ type CreateL7ListenersResponse struct {
 	Response *struct {
 
 		// 新建的负载均衡七层监听器的唯一ID列表。
-		ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds" list`
+		ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -421,8 +503,10 @@ func (r *CreateL7ListenersResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateL7ListenersResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateL7Rule struct {
@@ -449,7 +533,7 @@ type CreateL7Rule struct {
 	UnhealthNum *int64 `json:"UnhealthNum,omitempty" name:"UnhealthNum"`
 
 	// 健康检查中认为健康的HTTP返回码的组合。可选值为1~5的集合，1表示HTTP返回码为1xx认为健康。2表示HTTP返回码为2xx认为健康。3表示HTTP返回码为3xx认为健康。4表示HTTP返回码为4xx认为健康。5表示HTTP返回码为5xx认为健康。
-	HttpCodes []*uint64 `json:"HttpCodes,omitempty" name:"HttpCodes" list`
+	HttpCodes []*uint64 `json:"HttpCodes,omitempty" name:"HttpCodes"`
 
 	// 健康检查检查路径。
 	HttpCheckPath *string `json:"HttpCheckPath,omitempty" name:"HttpCheckPath"`
@@ -471,7 +555,7 @@ type CreateL7RulesRequest struct {
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
 	// 七层转发规则信息数组，可以创建多个七层转发规则。目前一个七层监听器下面最多允许创建50个七层转发域名，而每一个转发域名下最多可以创建100个转发规则。目前只能单条创建，不能批量创建。
-	RuleSet []*CreateL7Rule `json:"RuleSet,omitempty" name:"RuleSet" list`
+	RuleSet []*CreateL7Rule `json:"RuleSet,omitempty" name:"RuleSet"`
 }
 
 func (r *CreateL7RulesRequest) ToJsonString() string {
@@ -479,8 +563,20 @@ func (r *CreateL7RulesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateL7RulesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "ListenerId")
+	delete(f, "RuleSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateL7RulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateL7RulesResponse struct {
@@ -500,8 +596,10 @@ func (r *CreateL7RulesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateL7RulesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateLoadBalancerBzConf struct {
@@ -544,7 +642,7 @@ type CreateLoadBalancersRequest struct {
 	Exclusive *int64 `json:"Exclusive,omitempty" name:"Exclusive"`
 
 	// 指定的VIP，如果指定，则数量必须与goodsNum一致。如果不指定，则由后台分配随机VIP。
-	SpecifiedVips []*string `json:"SpecifiedVips,omitempty" name:"SpecifiedVips" list`
+	SpecifiedVips []*string `json:"SpecifiedVips,omitempty" name:"SpecifiedVips"`
 
 	// （未全地域开放）保障型负载均衡设定参数，如果类别选择保障型则需传入此参数。
 	BzConf *CreateLoadBalancerBzConf `json:"BzConf,omitempty" name:"BzConf"`
@@ -558,8 +656,28 @@ func (r *CreateLoadBalancersRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateLoadBalancersRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VpcId")
+	delete(f, "LoadBalancerType")
+	delete(f, "SubnetId")
+	delete(f, "ProjectId")
+	delete(f, "GoodsNum")
+	delete(f, "PayMode")
+	delete(f, "TgwSetType")
+	delete(f, "Exclusive")
+	delete(f, "SpecifiedVips")
+	delete(f, "BzConf")
+	delete(f, "IpProtocolType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLoadBalancersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateLoadBalancersResponse struct {
@@ -567,7 +685,7 @@ type CreateLoadBalancersResponse struct {
 	Response *struct {
 
 		// 创建的黑石负载均衡实例ID。
-		LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds" list`
+		LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds"`
 
 		// 创建负载均衡的异步任务ID。
 		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
@@ -582,8 +700,10 @@ func (r *CreateLoadBalancersResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateLoadBalancersResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateTrafficMirrorRequest struct {
@@ -601,8 +721,19 @@ func (r *CreateTrafficMirrorRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateTrafficMirrorRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Alias")
+	delete(f, "VpcId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTrafficMirrorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateTrafficMirrorResponse struct {
@@ -622,8 +753,10 @@ func (r *CreateTrafficMirrorResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateTrafficMirrorResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteL7DomainsRequest struct {
@@ -636,7 +769,7 @@ type DeleteL7DomainsRequest struct {
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
 	// 转发域名实例ID列表，可通过接口DescribeL7Rules查询。
-	DomainIds []*string `json:"DomainIds,omitempty" name:"DomainIds" list`
+	DomainIds []*string `json:"DomainIds,omitempty" name:"DomainIds"`
 }
 
 func (r *DeleteL7DomainsRequest) ToJsonString() string {
@@ -644,8 +777,20 @@ func (r *DeleteL7DomainsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteL7DomainsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "ListenerId")
+	delete(f, "DomainIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteL7DomainsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteL7DomainsResponse struct {
@@ -665,8 +810,10 @@ func (r *DeleteL7DomainsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteL7DomainsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteL7RulesRequest struct {
@@ -682,7 +829,7 @@ type DeleteL7RulesRequest struct {
 	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
 
 	// 转发路径实例ID列表，可通过接口DescribeL7Rules查询。
-	LocationIds []*string `json:"LocationIds,omitempty" name:"LocationIds" list`
+	LocationIds []*string `json:"LocationIds,omitempty" name:"LocationIds"`
 }
 
 func (r *DeleteL7RulesRequest) ToJsonString() string {
@@ -690,8 +837,21 @@ func (r *DeleteL7RulesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteL7RulesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "ListenerId")
+	delete(f, "DomainId")
+	delete(f, "LocationIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteL7RulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteL7RulesResponse struct {
@@ -711,8 +871,10 @@ func (r *DeleteL7RulesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteL7RulesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteListenersRequest struct {
@@ -722,7 +884,7 @@ type DeleteListenersRequest struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
 	// 待删除的负载均衡四层和七层监听器ID列表，可通过接口DescribeL4Listeners和DescribeL7Listeners查询。目前同时只能删除一种类型的监听器，并且删除七层监听器的数量上限为一个。
-	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds" list`
+	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds"`
 }
 
 func (r *DeleteListenersRequest) ToJsonString() string {
@@ -730,8 +892,19 @@ func (r *DeleteListenersRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteListenersRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "ListenerIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteListenersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteListenersResponse struct {
@@ -751,8 +924,10 @@ func (r *DeleteListenersResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteListenersResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteLoadBalancerRequest struct {
@@ -767,8 +942,18 @@ func (r *DeleteLoadBalancerRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteLoadBalancerRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLoadBalancerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteLoadBalancerResponse struct {
@@ -788,15 +973,17 @@ func (r *DeleteLoadBalancerResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteLoadBalancerResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteTrafficMirrorRequest struct {
 	*tchttp.BaseRequest
 
 	// 流量镜像实例ID数组，可以批量删除，每次删除上限为20
-	TrafficMirrorIds []*string `json:"TrafficMirrorIds,omitempty" name:"TrafficMirrorIds" list`
+	TrafficMirrorIds []*string `json:"TrafficMirrorIds,omitempty" name:"TrafficMirrorIds"`
 }
 
 func (r *DeleteTrafficMirrorRequest) ToJsonString() string {
@@ -804,8 +991,18 @@ func (r *DeleteTrafficMirrorRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteTrafficMirrorRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrafficMirrorIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTrafficMirrorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteTrafficMirrorResponse struct {
@@ -825,8 +1022,10 @@ func (r *DeleteTrafficMirrorResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteTrafficMirrorResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCertDetailRequest struct {
@@ -841,8 +1040,18 @@ func (r *DescribeCertDetailRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCertDetailRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCertDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCertDetailResponse struct {
@@ -865,7 +1074,7 @@ type DescribeCertDetailResponse struct {
 		CertDomain *string `json:"CertDomain,omitempty" name:"CertDomain"`
 
 		// 证书子域名列表。
-		CertSubjectDomain []*string `json:"CertSubjectDomain,omitempty" name:"CertSubjectDomain" list`
+		CertSubjectDomain []*string `json:"CertSubjectDomain,omitempty" name:"CertSubjectDomain"`
 
 		// 证书上传时间。
 		CertUploadTime *string `json:"CertUploadTime,omitempty" name:"CertUploadTime"`
@@ -877,7 +1086,7 @@ type DescribeCertDetailResponse struct {
 		CertEndTime *string `json:"CertEndTime,omitempty" name:"CertEndTime"`
 
 		// 该证书关联的黑石负载均衡对象列表。
-		CertLoadBalancerSet []*CertDetailLoadBalancer `json:"CertLoadBalancerSet,omitempty" name:"CertLoadBalancerSet" list`
+		CertLoadBalancerSet []*CertDetailLoadBalancer `json:"CertLoadBalancerSet,omitempty" name:"CertLoadBalancerSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -889,8 +1098,10 @@ func (r *DescribeCertDetailResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCertDetailResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeDevicesBindInfoRequest struct {
@@ -900,7 +1111,7 @@ type DescribeDevicesBindInfoRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 主机ID或虚机IP列表，可用于获取绑定了该主机的负载均衡列表。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *DescribeDevicesBindInfoRequest) ToJsonString() string {
@@ -908,8 +1119,19 @@ func (r *DescribeDevicesBindInfoRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeDevicesBindInfoRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VpcId")
+	delete(f, "InstanceIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDevicesBindInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeDevicesBindInfoResponse struct {
@@ -917,7 +1139,7 @@ type DescribeDevicesBindInfoResponse struct {
 	Response *struct {
 
 		// 返回的负载均衡绑定信息。
-		LoadBalancerSet []*DevicesBindInfoLoadBalancer `json:"LoadBalancerSet,omitempty" name:"LoadBalancerSet" list`
+		LoadBalancerSet []*DevicesBindInfoLoadBalancer `json:"LoadBalancerSet,omitempty" name:"LoadBalancerSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -929,8 +1151,10 @@ func (r *DescribeDevicesBindInfoResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeDevicesBindInfoResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeL4Backend struct {
@@ -952,7 +1176,7 @@ type DescribeL4BackendsRequest struct {
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
 	// 待查询的主机信息。
-	BackendSet []*DescribeL4Backend `json:"BackendSet,omitempty" name:"BackendSet" list`
+	BackendSet []*DescribeL4Backend `json:"BackendSet,omitempty" name:"BackendSet"`
 }
 
 func (r *DescribeL4BackendsRequest) ToJsonString() string {
@@ -960,8 +1184,20 @@ func (r *DescribeL4BackendsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeL4BackendsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "ListenerId")
+	delete(f, "BackendSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeL4BackendsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeL4BackendsResponse struct {
@@ -969,7 +1205,7 @@ type DescribeL4BackendsResponse struct {
 	Response *struct {
 
 		// 返回的绑定关系列表。
-		BackendSet []*L4Backend `json:"BackendSet,omitempty" name:"BackendSet" list`
+		BackendSet []*L4Backend `json:"BackendSet,omitempty" name:"BackendSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -981,8 +1217,10 @@ func (r *DescribeL4BackendsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeL4BackendsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeL4ListenerInfoRequest struct {
@@ -995,7 +1233,7 @@ type DescribeL4ListenerInfoRequest struct {
 	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
 
 	// 主机ID或虚机IP列表，可用于获取绑定了该主机的监听器。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *DescribeL4ListenerInfoRequest) ToJsonString() string {
@@ -1003,8 +1241,20 @@ func (r *DescribeL4ListenerInfoRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeL4ListenerInfoRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "SearchKey")
+	delete(f, "InstanceIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeL4ListenerInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeL4ListenerInfoResponse struct {
@@ -1012,7 +1262,7 @@ type DescribeL4ListenerInfoResponse struct {
 	Response *struct {
 
 		// 返回的四层监听器列表。
-		ListenerSet []*L4ListenerInfo `json:"ListenerSet,omitempty" name:"ListenerSet" list`
+		ListenerSet []*L4ListenerInfo `json:"ListenerSet,omitempty" name:"ListenerSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1024,8 +1274,10 @@ func (r *DescribeL4ListenerInfoResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeL4ListenerInfoResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeL4ListenersRequest struct {
@@ -1035,7 +1287,7 @@ type DescribeL4ListenersRequest struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
 	// 四层监听器实例ID数组，可通过接口DescribeL4Listeners查询。
-	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds" list`
+	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds"`
 }
 
 func (r *DescribeL4ListenersRequest) ToJsonString() string {
@@ -1043,8 +1295,19 @@ func (r *DescribeL4ListenersRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeL4ListenersRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "ListenerIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeL4ListenersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeL4ListenersResponse struct {
@@ -1052,7 +1315,7 @@ type DescribeL4ListenersResponse struct {
 	Response *struct {
 
 		// 监听器信息数组。
-		ListenerSet []*L4Listener `json:"ListenerSet,omitempty" name:"ListenerSet" list`
+		ListenerSet []*L4Listener `json:"ListenerSet,omitempty" name:"ListenerSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1064,8 +1327,10 @@ func (r *DescribeL4ListenersResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeL4ListenersResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeL7BackendsRequest struct {
@@ -1092,8 +1357,22 @@ func (r *DescribeL7BackendsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeL7BackendsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "ListenerId")
+	delete(f, "DomainId")
+	delete(f, "LocationId")
+	delete(f, "QueryType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeL7BackendsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeL7BackendsResponse struct {
@@ -1101,7 +1380,7 @@ type DescribeL7BackendsResponse struct {
 	Response *struct {
 
 		// 返回的绑定关系列表。
-		BackendSet []*L7Backend `json:"BackendSet,omitempty" name:"BackendSet" list`
+		BackendSet []*L7Backend `json:"BackendSet,omitempty" name:"BackendSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1113,8 +1392,10 @@ func (r *DescribeL7BackendsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeL7BackendsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeL7ListenerInfoRequest struct {
@@ -1127,7 +1408,7 @@ type DescribeL7ListenerInfoRequest struct {
 	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
 
 	// 主机ID或虚机IP列表，可用于获取绑定了该主机的监听器。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 是否获取转发规则下的主机信息。默认为0，不获取。
 	IfGetBackendInfo *int64 `json:"IfGetBackendInfo,omitempty" name:"IfGetBackendInfo"`
@@ -1138,8 +1419,21 @@ func (r *DescribeL7ListenerInfoRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeL7ListenerInfoRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "SearchKey")
+	delete(f, "InstanceIds")
+	delete(f, "IfGetBackendInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeL7ListenerInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeL7ListenerInfoResponse struct {
@@ -1147,7 +1441,7 @@ type DescribeL7ListenerInfoResponse struct {
 	Response *struct {
 
 		// 返回的七层监听器列表。
-		ListenerSet []*L7ListenerInfo `json:"ListenerSet,omitempty" name:"ListenerSet" list`
+		ListenerSet []*L7ListenerInfo `json:"ListenerSet,omitempty" name:"ListenerSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1159,8 +1453,10 @@ func (r *DescribeL7ListenerInfoResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeL7ListenerInfoResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeL7ListenersExRequest struct {
@@ -1186,7 +1482,7 @@ type DescribeL7ListenersExRequest struct {
 	// ListenerName -  String - （过滤条件）监听器名称。
 	// Protocol -  String - （过滤条件）七层协议。
 	// LoadBalancerPort -  String - （过滤条件）监听器端口。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeL7ListenersExRequest) ToJsonString() string {
@@ -1194,8 +1490,22 @@ func (r *DescribeL7ListenersExRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeL7ListenersExRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrafficMirrorId")
+	delete(f, "VpcId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeL7ListenersExRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeL7ListenersExResponse struct {
@@ -1206,7 +1516,7 @@ type DescribeL7ListenersExResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 符合条件的监听器。
-		ListenerSet []*L7ExListener `json:"ListenerSet,omitempty" name:"ListenerSet" list`
+		ListenerSet []*L7ExListener `json:"ListenerSet,omitempty" name:"ListenerSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1218,8 +1528,10 @@ func (r *DescribeL7ListenersExResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeL7ListenersExResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeL7ListenersRequest struct {
@@ -1229,7 +1541,7 @@ type DescribeL7ListenersRequest struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
 	// 七层监听器实例ID列表，可通过接口DescribeL7Listeners查询。
-	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds" list`
+	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds"`
 }
 
 func (r *DescribeL7ListenersRequest) ToJsonString() string {
@@ -1237,8 +1549,19 @@ func (r *DescribeL7ListenersRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeL7ListenersRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "ListenerIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeL7ListenersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeL7ListenersResponse struct {
@@ -1246,7 +1569,7 @@ type DescribeL7ListenersResponse struct {
 	Response *struct {
 
 		// 返回的七层监听器列表。
-		ListenerSet []*L7Listener `json:"ListenerSet,omitempty" name:"ListenerSet" list`
+		ListenerSet []*L7Listener `json:"ListenerSet,omitempty" name:"ListenerSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1258,8 +1581,10 @@ func (r *DescribeL7ListenersResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeL7ListenersResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeL7RulesRequest struct {
@@ -1272,7 +1597,7 @@ type DescribeL7RulesRequest struct {
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
 	// 转发域名ID列表，可通过接口DescribeL7Rules查询。
-	DomainIds []*string `json:"DomainIds,omitempty" name:"DomainIds" list`
+	DomainIds []*string `json:"DomainIds,omitempty" name:"DomainIds"`
 }
 
 func (r *DescribeL7RulesRequest) ToJsonString() string {
@@ -1280,8 +1605,20 @@ func (r *DescribeL7RulesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeL7RulesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "ListenerId")
+	delete(f, "DomainIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeL7RulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeL7RulesResponse struct {
@@ -1289,7 +1626,7 @@ type DescribeL7RulesResponse struct {
 	Response *struct {
 
 		// 返回的转发规则列表。
-		RuleSet []*L7Rule `json:"RuleSet,omitempty" name:"RuleSet" list`
+		RuleSet []*L7Rule `json:"RuleSet,omitempty" name:"RuleSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1301,8 +1638,10 @@ func (r *DescribeL7RulesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeL7RulesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeLoadBalancerPortInfoRequest struct {
@@ -1317,8 +1656,18 @@ func (r *DescribeLoadBalancerPortInfoRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeLoadBalancerPortInfoRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLoadBalancerPortInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeLoadBalancerPortInfoResponse struct {
@@ -1326,7 +1675,7 @@ type DescribeLoadBalancerPortInfoResponse struct {
 	Response *struct {
 
 		// 返回的监听器列表（四层和七层）。
-		ListenerSet []*LoadBalancerPortInfoListener `json:"ListenerSet,omitempty" name:"ListenerSet" list`
+		ListenerSet []*LoadBalancerPortInfoListener `json:"ListenerSet,omitempty" name:"ListenerSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1338,8 +1687,10 @@ func (r *DescribeLoadBalancerPortInfoResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeLoadBalancerPortInfoResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeLoadBalancerTaskResultRequest struct {
@@ -1354,8 +1705,18 @@ func (r *DescribeLoadBalancerTaskResultRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeLoadBalancerTaskResultRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLoadBalancerTaskResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeLoadBalancerTaskResultResponse struct {
@@ -1375,15 +1736,17 @@ func (r *DescribeLoadBalancerTaskResultResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeLoadBalancerTaskResultResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeLoadBalancersRequest struct {
 	*tchttp.BaseRequest
 
 	// 负载均衡器ID数组
-	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds" list`
+	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds"`
 
 	// 负载均衡的类型 : open表示公网LB类型，internal表示内网LB类型
 	LoadBalancerType *string `json:"LoadBalancerType,omitempty" name:"LoadBalancerType"`
@@ -1395,7 +1758,7 @@ type DescribeLoadBalancersRequest struct {
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
 	// 负载均衡获得的公网IP地址,支持多个
-	LoadBalancerVips []*string `json:"LoadBalancerVips,omitempty" name:"LoadBalancerVips" list`
+	LoadBalancerVips []*string `json:"LoadBalancerVips,omitempty" name:"LoadBalancerVips"`
 
 	// 数据偏移量，默认为0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -1436,8 +1799,33 @@ func (r *DescribeLoadBalancersRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeLoadBalancersRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerIds")
+	delete(f, "LoadBalancerType")
+	delete(f, "LoadBalancerName")
+	delete(f, "Domain")
+	delete(f, "LoadBalancerVips")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SearchKey")
+	delete(f, "OrderBy")
+	delete(f, "OrderType")
+	delete(f, "ProjectId")
+	delete(f, "Exclusive")
+	delete(f, "TgwSetType")
+	delete(f, "VpcId")
+	delete(f, "QueryType")
+	delete(f, "ConfId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLoadBalancersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeLoadBalancersResponse struct {
@@ -1445,7 +1833,7 @@ type DescribeLoadBalancersResponse struct {
 	Response *struct {
 
 		// 返回负载均衡信息列表。
-		LoadBalancerSet []*LoadBalancer `json:"LoadBalancerSet,omitempty" name:"LoadBalancerSet" list`
+		LoadBalancerSet []*LoadBalancer `json:"LoadBalancerSet,omitempty" name:"LoadBalancerSet"`
 
 		// 符合条件的负载均衡总数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1460,8 +1848,10 @@ func (r *DescribeLoadBalancersResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeLoadBalancersResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTrafficMirrorListenersRequest struct {
@@ -1477,25 +1867,25 @@ type DescribeTrafficMirrorListenersRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 待搜索的负载均衡Id。
-	SearchLoadBalancerIds []*string `json:"SearchLoadBalancerIds,omitempty" name:"SearchLoadBalancerIds" list`
+	SearchLoadBalancerIds []*string `json:"SearchLoadBalancerIds,omitempty" name:"SearchLoadBalancerIds"`
 
 	// 待搜索的负载均衡名称。
-	SearchLoadBalancerNames []*string `json:"SearchLoadBalancerNames,omitempty" name:"SearchLoadBalancerNames" list`
+	SearchLoadBalancerNames []*string `json:"SearchLoadBalancerNames,omitempty" name:"SearchLoadBalancerNames"`
 
 	// 待搜索的Vip。
-	SearchVips []*string `json:"SearchVips,omitempty" name:"SearchVips" list`
+	SearchVips []*string `json:"SearchVips,omitempty" name:"SearchVips"`
 
 	// 待搜索的监听器ID。
-	SearchListenerIds []*string `json:"SearchListenerIds,omitempty" name:"SearchListenerIds" list`
+	SearchListenerIds []*string `json:"SearchListenerIds,omitempty" name:"SearchListenerIds"`
 
 	// 待搜索的监听器名称。
-	SearchListenerNames []*string `json:"SearchListenerNames,omitempty" name:"SearchListenerNames" list`
+	SearchListenerNames []*string `json:"SearchListenerNames,omitempty" name:"SearchListenerNames"`
 
 	// 待搜索的协议名称。
-	SearchProtocols []*string `json:"SearchProtocols,omitempty" name:"SearchProtocols" list`
+	SearchProtocols []*string `json:"SearchProtocols,omitempty" name:"SearchProtocols"`
 
 	// 待搜索的端口。
-	SearchLoadBalancerPorts []*uint64 `json:"SearchLoadBalancerPorts,omitempty" name:"SearchLoadBalancerPorts" list`
+	SearchLoadBalancerPorts []*uint64 `json:"SearchLoadBalancerPorts,omitempty" name:"SearchLoadBalancerPorts"`
 }
 
 func (r *DescribeTrafficMirrorListenersRequest) ToJsonString() string {
@@ -1503,8 +1893,27 @@ func (r *DescribeTrafficMirrorListenersRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTrafficMirrorListenersRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrafficMirrorId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SearchLoadBalancerIds")
+	delete(f, "SearchLoadBalancerNames")
+	delete(f, "SearchVips")
+	delete(f, "SearchListenerIds")
+	delete(f, "SearchListenerNames")
+	delete(f, "SearchProtocols")
+	delete(f, "SearchLoadBalancerPorts")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTrafficMirrorListenersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTrafficMirrorListenersResponse struct {
@@ -1512,7 +1921,7 @@ type DescribeTrafficMirrorListenersResponse struct {
 	Response *struct {
 
 		// 监听器列表。
-		ListenerSet []*TrafficMirrorListener `json:"ListenerSet,omitempty" name:"ListenerSet" list`
+		ListenerSet []*TrafficMirrorListener `json:"ListenerSet,omitempty" name:"ListenerSet"`
 
 		// 监听器总数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1527,8 +1936,10 @@ func (r *DescribeTrafficMirrorListenersResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTrafficMirrorListenersResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTrafficMirrorReceiver struct {
@@ -1547,7 +1958,7 @@ type DescribeTrafficMirrorReceiverHealthStatusRequest struct {
 	TrafficMirrorId *string `json:"TrafficMirrorId,omitempty" name:"TrafficMirrorId"`
 
 	// 流量镜像接收机实例ID和端口数组。
-	ReceiverSet []*DescribeTrafficMirrorReceiver `json:"ReceiverSet,omitempty" name:"ReceiverSet" list`
+	ReceiverSet []*DescribeTrafficMirrorReceiver `json:"ReceiverSet,omitempty" name:"ReceiverSet"`
 }
 
 func (r *DescribeTrafficMirrorReceiverHealthStatusRequest) ToJsonString() string {
@@ -1555,8 +1966,19 @@ func (r *DescribeTrafficMirrorReceiverHealthStatusRequest) ToJsonString() string
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTrafficMirrorReceiverHealthStatusRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrafficMirrorId")
+	delete(f, "ReceiverSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTrafficMirrorReceiverHealthStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTrafficMirrorReceiverHealthStatusResponse struct {
@@ -1564,7 +1986,7 @@ type DescribeTrafficMirrorReceiverHealthStatusResponse struct {
 	Response *struct {
 
 		// 内网IP和端口对应的状态。
-		ReceiversStatusSet []*TrafficMirrorReciversStatus `json:"ReceiversStatusSet,omitempty" name:"ReceiversStatusSet" list`
+		ReceiversStatusSet []*TrafficMirrorReciversStatus `json:"ReceiversStatusSet,omitempty" name:"ReceiversStatusSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1576,8 +1998,10 @@ func (r *DescribeTrafficMirrorReceiverHealthStatusResponse) ToJsonString() strin
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTrafficMirrorReceiverHealthStatusResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTrafficMirrorReceiversRequest struct {
@@ -1587,13 +2011,13 @@ type DescribeTrafficMirrorReceiversRequest struct {
 	TrafficMirrorId *string `json:"TrafficMirrorId,omitempty" name:"TrafficMirrorId"`
 
 	// 接收机黑石物理机实例ID数组。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 接收机接收端口数组。
-	Ports []*int64 `json:"Ports,omitempty" name:"Ports" list`
+	Ports []*int64 `json:"Ports,omitempty" name:"Ports"`
 
 	// 接收机实例权重数组。
-	Weights []*int64 `json:"Weights,omitempty" name:"Weights" list`
+	Weights []*int64 `json:"Weights,omitempty" name:"Weights"`
 
 	// 分页的偏移量，也即从第几条记录开始查询
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -1613,8 +2037,25 @@ func (r *DescribeTrafficMirrorReceiversRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTrafficMirrorReceiversRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrafficMirrorId")
+	delete(f, "InstanceIds")
+	delete(f, "Ports")
+	delete(f, "Weights")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "VagueStr")
+	delete(f, "VagueIp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTrafficMirrorReceiversRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTrafficMirrorReceiversResponse struct {
@@ -1622,7 +2063,7 @@ type DescribeTrafficMirrorReceiversResponse struct {
 	Response *struct {
 
 		// 接收机列表，具体结构描述如data结构所示。
-		ReceiverSet []*TrafficMirrorReceiver `json:"ReceiverSet,omitempty" name:"ReceiverSet" list`
+		ReceiverSet []*TrafficMirrorReceiver `json:"ReceiverSet,omitempty" name:"ReceiverSet"`
 
 		// 接收机总数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1637,21 +2078,23 @@ func (r *DescribeTrafficMirrorReceiversResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTrafficMirrorReceiversResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTrafficMirrorsRequest struct {
 	*tchttp.BaseRequest
 
 	// 流量镜像实例ID的数组，支持批量查询
-	TrafficMirrorIds []*string `json:"TrafficMirrorIds,omitempty" name:"TrafficMirrorIds" list`
+	TrafficMirrorIds []*string `json:"TrafficMirrorIds,omitempty" name:"TrafficMirrorIds"`
 
 	// 流量镜像实例别名数组。
-	Aliases []*string `json:"Aliases,omitempty" name:"Aliases" list`
+	Aliases []*string `json:"Aliases,omitempty" name:"Aliases"`
 
 	// 流量镜像实例所属的私有网络ID数组，形如：vpc-xxx。
-	VpcIds []*string `json:"VpcIds,omitempty" name:"VpcIds" list`
+	VpcIds []*string `json:"VpcIds,omitempty" name:"VpcIds"`
 
 	// 分页的偏移量，也即从第几条记录开始查询
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -1674,8 +2117,25 @@ func (r *DescribeTrafficMirrorsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTrafficMirrorsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrafficMirrorIds")
+	delete(f, "Aliases")
+	delete(f, "VpcIds")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "OrderField")
+	delete(f, "Order")
+	delete(f, "SearchKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTrafficMirrorsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTrafficMirrorsResponse struct {
@@ -1686,7 +2146,7 @@ type DescribeTrafficMirrorsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 对象数组。数组元素为流量镜像信息，具体结构描述如list结构所示。
-		TrafficMirrorSet []*TrafficMirror `json:"TrafficMirrorSet,omitempty" name:"TrafficMirrorSet" list`
+		TrafficMirrorSet []*TrafficMirror `json:"TrafficMirrorSet,omitempty" name:"TrafficMirrorSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1698,8 +2158,10 @@ func (r *DescribeTrafficMirrorsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTrafficMirrorsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DevicesBindInfoBackend struct {
@@ -1723,7 +2185,7 @@ type DevicesBindInfoL4Listener struct {
 	LoadBalancerPort *int64 `json:"LoadBalancerPort,omitempty" name:"LoadBalancerPort"`
 
 	// 该转发路径所绑定的主机列表。
-	BackendSet []*DevicesBindInfoBackend `json:"BackendSet,omitempty" name:"BackendSet" list`
+	BackendSet []*DevicesBindInfoBackend `json:"BackendSet,omitempty" name:"BackendSet"`
 }
 
 type DevicesBindInfoL7Listener struct {
@@ -1738,7 +2200,7 @@ type DevicesBindInfoL7Listener struct {
 	LoadBalancerPort *int64 `json:"LoadBalancerPort,omitempty" name:"LoadBalancerPort"`
 
 	// 返回的转发规则列表。
-	RuleSet []*DevicesBindInfoRule `json:"RuleSet,omitempty" name:"RuleSet" list`
+	RuleSet []*DevicesBindInfoRule `json:"RuleSet,omitempty" name:"RuleSet"`
 }
 
 type DevicesBindInfoLoadBalancer struct {
@@ -1765,10 +2227,10 @@ type DevicesBindInfoLoadBalancer struct {
 	Exclusive *int64 `json:"Exclusive,omitempty" name:"Exclusive"`
 
 	// 具有该绑定关系的四层监听器列表。
-	L4ListenerSet []*DevicesBindInfoL4Listener `json:"L4ListenerSet,omitempty" name:"L4ListenerSet" list`
+	L4ListenerSet []*DevicesBindInfoL4Listener `json:"L4ListenerSet,omitempty" name:"L4ListenerSet"`
 
 	// 具有该绑定关系的七层监听器列表。
-	L7ListenerSet []*DevicesBindInfoL7Listener `json:"L7ListenerSet,omitempty" name:"L7ListenerSet" list`
+	L7ListenerSet []*DevicesBindInfoL7Listener `json:"L7ListenerSet,omitempty" name:"L7ListenerSet"`
 }
 
 type DevicesBindInfoLocation struct {
@@ -1780,7 +2242,7 @@ type DevicesBindInfoLocation struct {
 	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
 
 	// 该转发路径所绑定的主机列表。
-	BackendSet []*DevicesBindInfoBackend `json:"BackendSet,omitempty" name:"BackendSet" list`
+	BackendSet []*DevicesBindInfoBackend `json:"BackendSet,omitempty" name:"BackendSet"`
 }
 
 type DevicesBindInfoRule struct {
@@ -1792,7 +2254,7 @@ type DevicesBindInfoRule struct {
 	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
 
 	// 转发路径列表。
-	LocationSet []*DevicesBindInfoLocation `json:"LocationSet,omitempty" name:"LocationSet" list`
+	LocationSet []*DevicesBindInfoLocation `json:"LocationSet,omitempty" name:"LocationSet"`
 }
 
 type Filter struct {
@@ -1801,7 +2263,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type L4Backend struct {
@@ -1828,7 +2290,7 @@ type L4Backend struct {
 	LanIp *string `json:"LanIp,omitempty" name:"LanIp"`
 
 	// 黑石物理机当前可以执行的操作。
-	Operates []*string `json:"Operates,omitempty" name:"Operates" list`
+	Operates []*string `json:"Operates,omitempty" name:"Operates"`
 
 	// 主机探测端口。
 	ProbePort *int64 `json:"ProbePort,omitempty" name:"ProbePort"`
@@ -1993,7 +2455,7 @@ type L7Backend struct {
 	MgtIp *string `json:"MgtIp,omitempty" name:"MgtIp"`
 
 	// 黑石物理机当前可以执行的操作。
-	Operates []*string `json:"Operates,omitempty" name:"Operates" list`
+	Operates []*string `json:"Operates,omitempty" name:"Operates"`
 }
 
 type L7ExListener struct {
@@ -2041,13 +2503,13 @@ type L7ExListener struct {
 	VpcCidrBlock *string `json:"VpcCidrBlock,omitempty" name:"VpcCidrBlock"`
 
 	// 负载均衡的VIP。
-	LoadBalancerVips []*string `json:"LoadBalancerVips,omitempty" name:"LoadBalancerVips" list`
+	LoadBalancerVips []*string `json:"LoadBalancerVips,omitempty" name:"LoadBalancerVips"`
 
 	// 负载均衡名称。
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" name:"LoadBalancerName"`
 
 	// 负载均衡IPV6的VIP。
-	LoadBalancerVipv6s []*string `json:"LoadBalancerVipv6s,omitempty" name:"LoadBalancerVipv6s" list`
+	LoadBalancerVipv6s []*string `json:"LoadBalancerVipv6s,omitempty" name:"LoadBalancerVipv6s"`
 
 	// 支持的IP协议类型。ipv4或者是ipv6。
 	IpProtocolType *string `json:"IpProtocolType,omitempty" name:"IpProtocolType"`
@@ -2131,7 +2593,7 @@ type L7ListenerInfo struct {
 	AddTimestamp *string `json:"AddTimestamp,omitempty" name:"AddTimestamp"`
 
 	// 返回的转发规则列表。
-	RuleSet []*L7ListenerInfoRule `json:"RuleSet,omitempty" name:"RuleSet" list`
+	RuleSet []*L7ListenerInfoRule `json:"RuleSet,omitempty" name:"RuleSet"`
 
 	// https转发类型。0：https。1：spdy。2：http2。3：spdy+http2。
 	ForwardProtocol *int64 `json:"ForwardProtocol,omitempty" name:"ForwardProtocol"`
@@ -2191,7 +2653,7 @@ type L7ListenerInfoLocation struct {
 	UnhealthNum *int64 `json:"UnhealthNum,omitempty" name:"UnhealthNum"`
 
 	// 健康检查中认为健康的HTTP返回码的组合。可选值为1~5的集合，1表示HTTP返回码为1xx认为健康。2表示HTTP返回码为2xx认为健康。3表示HTTP返回码为3xx认为健康。4表示HTTP返回码为4xx认为健康。5表示HTTP返回码为5xx认为健康。
-	HttpCodes []*uint64 `json:"HttpCodes,omitempty" name:"HttpCodes" list`
+	HttpCodes []*uint64 `json:"HttpCodes,omitempty" name:"HttpCodes"`
 
 	// 均衡方式。
 	BalanceMode *string `json:"BalanceMode,omitempty" name:"BalanceMode"`
@@ -2203,7 +2665,7 @@ type L7ListenerInfoLocation struct {
 	AddTimestamp *string `json:"AddTimestamp,omitempty" name:"AddTimestamp"`
 
 	// 该转发路径所绑定的主机列表。
-	BackendSet []*L7ListenerInfoBackend `json:"BackendSet,omitempty" name:"BackendSet" list`
+	BackendSet []*L7ListenerInfoBackend `json:"BackendSet,omitempty" name:"BackendSet"`
 }
 
 type L7ListenerInfoRule struct {
@@ -2221,7 +2683,7 @@ type L7ListenerInfoRule struct {
 	AddTimestamp *string `json:"AddTimestamp,omitempty" name:"AddTimestamp"`
 
 	// 该转发域名下面的转发路径列表。
-	LocationSet []*L7ListenerInfoLocation `json:"LocationSet,omitempty" name:"LocationSet" list`
+	LocationSet []*L7ListenerInfoLocation `json:"LocationSet,omitempty" name:"LocationSet"`
 }
 
 type L7Rule struct {
@@ -2239,7 +2701,7 @@ type L7Rule struct {
 	AddTimestamp *string `json:"AddTimestamp,omitempty" name:"AddTimestamp"`
 
 	// 该转发域名下面的转发路径列表。
-	LocationSet []*L7RulesLocation `json:"LocationSet,omitempty" name:"LocationSet" list`
+	LocationSet []*L7RulesLocation `json:"LocationSet,omitempty" name:"LocationSet"`
 }
 
 type L7RulesLocation struct {
@@ -2272,7 +2734,7 @@ type L7RulesLocation struct {
 	UnhealthNum *int64 `json:"UnhealthNum,omitempty" name:"UnhealthNum"`
 
 	// 健康检查中认为健康的HTTP返回码的组合。可选值为1~5的集合，1表示HTTP返回码为1xx认为健康。2表示HTTP返回码为2xx认为健康。3表示HTTP返回码为3xx认为健康。4表示HTTP返回码为4xx认为健康。5表示HTTP返回码为5xx认为健康。
-	HttpCodes []*uint64 `json:"HttpCodes,omitempty" name:"HttpCodes" list`
+	HttpCodes []*uint64 `json:"HttpCodes,omitempty" name:"HttpCodes"`
 
 	// 均衡方式。
 	BalanceMode *string `json:"BalanceMode,omitempty" name:"BalanceMode"`
@@ -2335,10 +2797,10 @@ type LoadBalancer struct {
 	VpcCidrBlock *string `json:"VpcCidrBlock,omitempty" name:"VpcCidrBlock"`
 
 	// 负载均衡的IPV4的VIP。
-	LoadBalancerVips []*string `json:"LoadBalancerVips,omitempty" name:"LoadBalancerVips" list`
+	LoadBalancerVips []*string `json:"LoadBalancerVips,omitempty" name:"LoadBalancerVips"`
 
 	// 无
-	SupportListenerTypes []*string `json:"SupportListenerTypes,omitempty" name:"SupportListenerTypes" list`
+	SupportListenerTypes []*string `json:"SupportListenerTypes,omitempty" name:"SupportListenerTypes"`
 
 	// 无
 	Bandwidth *uint64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
@@ -2350,7 +2812,7 @@ type LoadBalancer struct {
 	ConfName *string `json:"ConfName,omitempty" name:"ConfName"`
 
 	// 负载均衡的IPV6的VIP。
-	LoadBalancerVipv6s []*string `json:"LoadBalancerVipv6s,omitempty" name:"LoadBalancerVipv6s" list`
+	LoadBalancerVipv6s []*string `json:"LoadBalancerVipv6s,omitempty" name:"LoadBalancerVipv6s"`
 
 	// 负载均衡IP协议类型。ipv4或者ipv6。
 	IpProtocolType *string `json:"IpProtocolType,omitempty" name:"IpProtocolType"`
@@ -2369,7 +2831,7 @@ type LoadBalancer struct {
 
 	// 负载均衡的IPV6或者IPV4的VIP。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CurVips []*string `json:"CurVips,omitempty" name:"CurVips" list`
+	CurVips []*string `json:"CurVips,omitempty" name:"CurVips"`
 }
 
 type LoadBalancerPortInfoListener struct {
@@ -2423,8 +2885,23 @@ func (r *ModifyL4BackendPortRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyL4BackendPortRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "ListenerId")
+	delete(f, "InstanceId")
+	delete(f, "Port")
+	delete(f, "NewPort")
+	delete(f, "BindType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyL4BackendPortRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyL4BackendPortResponse struct {
@@ -2444,8 +2921,10 @@ func (r *ModifyL4BackendPortResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyL4BackendPortResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyL4BackendProbePortRequest struct {
@@ -2475,8 +2954,23 @@ func (r *ModifyL4BackendProbePortRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyL4BackendProbePortRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "ListenerId")
+	delete(f, "InstanceId")
+	delete(f, "Port")
+	delete(f, "ProbePort")
+	delete(f, "BindType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyL4BackendProbePortRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyL4BackendProbePortResponse struct {
@@ -2496,8 +2990,10 @@ func (r *ModifyL4BackendProbePortResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyL4BackendProbePortResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyL4BackendWeightRequest struct {
@@ -2527,8 +3023,23 @@ func (r *ModifyL4BackendWeightRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyL4BackendWeightRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "ListenerId")
+	delete(f, "InstanceId")
+	delete(f, "Weight")
+	delete(f, "Port")
+	delete(f, "BindType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyL4BackendWeightRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyL4BackendWeightResponse struct {
@@ -2548,8 +3059,10 @@ func (r *ModifyL4BackendWeightResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyL4BackendWeightResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyL4ListenerRequest struct {
@@ -2612,8 +3125,34 @@ func (r *ModifyL4ListenerRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyL4ListenerRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "ListenerId")
+	delete(f, "ListenerName")
+	delete(f, "SessionExpire")
+	delete(f, "HealthSwitch")
+	delete(f, "TimeOut")
+	delete(f, "IntervalTime")
+	delete(f, "HealthNum")
+	delete(f, "UnhealthNum")
+	delete(f, "Bandwidth")
+	delete(f, "CustomHealthSwitch")
+	delete(f, "InputType")
+	delete(f, "LineSeparatorType")
+	delete(f, "HealthRequest")
+	delete(f, "HealthResponse")
+	delete(f, "ToaFlag")
+	delete(f, "BalanceMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyL4ListenerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyL4ListenerResponse struct {
@@ -2633,8 +3172,10 @@ func (r *ModifyL4ListenerResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyL4ListenerResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyL7BackendPortRequest struct {
@@ -2670,8 +3211,25 @@ func (r *ModifyL7BackendPortRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyL7BackendPortRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "ListenerId")
+	delete(f, "DomainId")
+	delete(f, "LocationId")
+	delete(f, "InstanceId")
+	delete(f, "Port")
+	delete(f, "NewPort")
+	delete(f, "BindType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyL7BackendPortRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyL7BackendPortResponse struct {
@@ -2691,8 +3249,10 @@ func (r *ModifyL7BackendPortResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyL7BackendPortResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyL7BackendWeightRequest struct {
@@ -2728,8 +3288,25 @@ func (r *ModifyL7BackendWeightRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyL7BackendWeightRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "ListenerId")
+	delete(f, "DomainId")
+	delete(f, "LocationId")
+	delete(f, "InstanceId")
+	delete(f, "Weight")
+	delete(f, "Port")
+	delete(f, "BindType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyL7BackendWeightRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyL7BackendWeightResponse struct {
@@ -2749,8 +3326,10 @@ func (r *ModifyL7BackendWeightResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyL7BackendWeightResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyL7ListenerRequest struct {
@@ -2801,8 +3380,30 @@ func (r *ModifyL7ListenerRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyL7ListenerRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "ListenerId")
+	delete(f, "ListenerName")
+	delete(f, "SslMode")
+	delete(f, "CertId")
+	delete(f, "CertName")
+	delete(f, "CertContent")
+	delete(f, "CertKey")
+	delete(f, "CertCaId")
+	delete(f, "CertCaName")
+	delete(f, "CertCaContent")
+	delete(f, "Bandwidth")
+	delete(f, "ForwardProtocol")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyL7ListenerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyL7ListenerResponse struct {
@@ -2822,8 +3423,10 @@ func (r *ModifyL7ListenerResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyL7ListenerResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyL7LocationRule struct {
@@ -2853,7 +3456,7 @@ type ModifyL7LocationRule struct {
 	UnhealthNum *int64 `json:"UnhealthNum,omitempty" name:"UnhealthNum"`
 
 	// 健康检查中认为健康的HTTP返回码的组合。可选值为1~5的集合，1表示HTTP返回码为1xx认为健康。2表示HTTP返回码为2xx认为健康。3表示HTTP返回码为3xx认为健康。4表示HTTP返回码为4xx认为健康。5表示HTTP返回码为5xx认为健康。
-	HttpCodes []*uint64 `json:"HttpCodes,omitempty" name:"HttpCodes" list`
+	HttpCodes []*uint64 `json:"HttpCodes,omitempty" name:"HttpCodes"`
 
 	// 健康检查检查路径。
 	HttpCheckPath *string `json:"HttpCheckPath,omitempty" name:"HttpCheckPath"`
@@ -2878,7 +3481,7 @@ type ModifyL7LocationsRequest struct {
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
 	// 待更新的七层转发规则信息数组。
-	RuleSet []*ModifyL7LocationRule `json:"RuleSet,omitempty" name:"RuleSet" list`
+	RuleSet []*ModifyL7LocationRule `json:"RuleSet,omitempty" name:"RuleSet"`
 }
 
 func (r *ModifyL7LocationsRequest) ToJsonString() string {
@@ -2886,8 +3489,20 @@ func (r *ModifyL7LocationsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyL7LocationsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "ListenerId")
+	delete(f, "RuleSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyL7LocationsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyL7LocationsResponse struct {
@@ -2907,8 +3522,10 @@ func (r *ModifyL7LocationsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyL7LocationsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyLoadBalancerChargeModeListener struct {
@@ -2933,7 +3550,7 @@ type ModifyLoadBalancerChargeModeRequest struct {
 	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
 
 	// 监听器信息，当计费方式选为 bandwidth 且此负载均衡实例下存在监听器时需填入此字段，可以自定义每个监听器带宽上限。
-	ListenerSet []*ModifyLoadBalancerChargeModeListener `json:"ListenerSet,omitempty" name:"ListenerSet" list`
+	ListenerSet []*ModifyLoadBalancerChargeModeListener `json:"ListenerSet,omitempty" name:"ListenerSet"`
 }
 
 func (r *ModifyLoadBalancerChargeModeRequest) ToJsonString() string {
@@ -2941,8 +3558,20 @@ func (r *ModifyLoadBalancerChargeModeRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyLoadBalancerChargeModeRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "PayMode")
+	delete(f, "ListenerSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLoadBalancerChargeModeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyLoadBalancerChargeModeResponse struct {
@@ -2959,8 +3588,10 @@ func (r *ModifyLoadBalancerChargeModeResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyLoadBalancerChargeModeResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyLoadBalancerRequest struct {
@@ -2981,8 +3612,20 @@ func (r *ModifyLoadBalancerRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyLoadBalancerRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "LoadBalancerName")
+	delete(f, "DomainPrefix")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLoadBalancerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyLoadBalancerResponse struct {
@@ -3002,8 +3645,10 @@ func (r *ModifyLoadBalancerResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyLoadBalancerResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ReplaceCertRequest struct {
@@ -3030,8 +3675,22 @@ func (r *ReplaceCertRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ReplaceCertRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OldCertId")
+	delete(f, "NewCert")
+	delete(f, "NewAlias")
+	delete(f, "NewKey")
+	delete(f, "DeleteOld")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReplaceCertRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ReplaceCertResponse struct {
@@ -3054,8 +3713,10 @@ func (r *ReplaceCertResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ReplaceCertResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SetTrafficMirrorAliasRequest struct {
@@ -3073,8 +3734,19 @@ func (r *SetTrafficMirrorAliasRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SetTrafficMirrorAliasRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrafficMirrorId")
+	delete(f, "Alias")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetTrafficMirrorAliasRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SetTrafficMirrorAliasResponse struct {
@@ -3091,8 +3763,10 @@ func (r *SetTrafficMirrorAliasResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SetTrafficMirrorAliasResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SetTrafficMirrorHealthSwitchRequest struct {
@@ -3120,7 +3794,7 @@ type SetTrafficMirrorHealthSwitchRequest struct {
 	HttpCheckPath *string `json:"HttpCheckPath,omitempty" name:"HttpCheckPath"`
 
 	// 健康检查中认为健康的HTTP返回码的组合。可选值为1~5的集合，1表示HTTP返回码为1xx认为健康。2表示HTTP返回码为2xx认为健康。3表示HTTP返回码为3xx认为健康。4表示HTTP返回码为4xx认为健康。5表示HTTP返回码为5xx认为健康。
-	HttpCodes []*int64 `json:"HttpCodes,omitempty" name:"HttpCodes" list`
+	HttpCodes []*int64 `json:"HttpCodes,omitempty" name:"HttpCodes"`
 }
 
 func (r *SetTrafficMirrorHealthSwitchRequest) ToJsonString() string {
@@ -3128,8 +3802,25 @@ func (r *SetTrafficMirrorHealthSwitchRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SetTrafficMirrorHealthSwitchRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrafficMirrorId")
+	delete(f, "HealthSwitch")
+	delete(f, "HealthNum")
+	delete(f, "UnhealthNum")
+	delete(f, "IntervalTime")
+	delete(f, "HttpCheckDomain")
+	delete(f, "HttpCheckPath")
+	delete(f, "HttpCodes")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetTrafficMirrorHealthSwitchRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SetTrafficMirrorHealthSwitchResponse struct {
@@ -3149,8 +3840,10 @@ func (r *SetTrafficMirrorHealthSwitchResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SetTrafficMirrorHealthSwitchResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TrafficMirror struct {
@@ -3186,7 +3879,7 @@ type TrafficMirror struct {
 	HttpCheckPath *string `json:"HttpCheckPath,omitempty" name:"HttpCheckPath"`
 
 	// 健康检查返回码。 1：1xx，2：2xx，3：3xx，4：4xx，5：5xx。
-	HttpCodes []*int64 `json:"HttpCodes,omitempty" name:"HttpCodes" list`
+	HttpCodes []*int64 `json:"HttpCodes,omitempty" name:"HttpCodes"`
 
 	// 创建时间。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
@@ -3243,13 +3936,13 @@ type TrafficMirrorListener struct {
 	VpcCidrBlock *string `json:"VpcCidrBlock,omitempty" name:"VpcCidrBlock"`
 
 	// 负载均衡的VIP。
-	LoadBalancerVips []*string `json:"LoadBalancerVips,omitempty" name:"LoadBalancerVips" list`
+	LoadBalancerVips []*string `json:"LoadBalancerVips,omitempty" name:"LoadBalancerVips"`
 
 	// 负载均衡名称。
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" name:"LoadBalancerName"`
 
 	// 负载均衡的IPV6的VIP。
-	LoadBalancerVipv6s []*string `json:"LoadBalancerVipv6s,omitempty" name:"LoadBalancerVipv6s" list`
+	LoadBalancerVipv6s []*string `json:"LoadBalancerVipv6s,omitempty" name:"LoadBalancerVipv6s"`
 
 	// 支持的IP协议类型。ipv4或者是ipv6。
 	IpProtocolType *string `json:"IpProtocolType,omitempty" name:"IpProtocolType"`
@@ -3306,7 +3999,7 @@ type TrafficMirrorReceiver struct {
 	HealthStatus *string `json:"HealthStatus,omitempty" name:"HealthStatus"`
 
 	// 接收机的可以执行的操作集合。
-	Operates []*string `json:"Operates,omitempty" name:"Operates" list`
+	Operates []*string `json:"Operates,omitempty" name:"Operates"`
 }
 
 type TrafficMirrorReciversStatus struct {
@@ -3315,7 +4008,7 @@ type TrafficMirrorReciversStatus struct {
 	LanIp *string `json:"LanIp,omitempty" name:"LanIp"`
 
 	// 端口及对应的状态。
-	ReceiversPortStatusSet []*TrafficMirrorPortStatus `json:"ReceiversPortStatusSet,omitempty" name:"ReceiversPortStatusSet" list`
+	ReceiversPortStatusSet []*TrafficMirrorPortStatus `json:"ReceiversPortStatusSet,omitempty" name:"ReceiversPortStatusSet"`
 }
 
 type UnbindL4Backend struct {
@@ -3337,7 +4030,7 @@ type UnbindL4BackendsRequest struct {
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
 	// 待解绑的主机信息。可以绑定多个主机端口。目前一个四层监听器下面最多允许绑定255个主机端口。
-	BackendSet []*UnbindL4Backend `json:"BackendSet,omitempty" name:"BackendSet" list`
+	BackendSet []*UnbindL4Backend `json:"BackendSet,omitempty" name:"BackendSet"`
 
 	// 绑定类型。0：物理机 1：虚拟机 2：半托管机器
 	BindType *int64 `json:"BindType,omitempty" name:"BindType"`
@@ -3348,8 +4041,21 @@ func (r *UnbindL4BackendsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UnbindL4BackendsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "ListenerId")
+	delete(f, "BackendSet")
+	delete(f, "BindType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnbindL4BackendsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UnbindL4BackendsResponse struct {
@@ -3369,8 +4075,10 @@ func (r *UnbindL4BackendsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UnbindL4BackendsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UnbindL7Backend struct {
@@ -3398,7 +4106,7 @@ type UnbindL7BackendsRequest struct {
 	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
 
 	// 待绑定的主机信息。
-	BackendSet []*UnbindL7Backend `json:"BackendSet,omitempty" name:"BackendSet" list`
+	BackendSet []*UnbindL7Backend `json:"BackendSet,omitempty" name:"BackendSet"`
 
 	// 绑定类型。0：物理机  1：虚拟机 2：半托管机器
 	BindType *uint64 `json:"BindType,omitempty" name:"BindType"`
@@ -3409,8 +4117,23 @@ func (r *UnbindL7BackendsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UnbindL7BackendsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "ListenerId")
+	delete(f, "DomainId")
+	delete(f, "LocationId")
+	delete(f, "BackendSet")
+	delete(f, "BindType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnbindL7BackendsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UnbindL7BackendsResponse struct {
@@ -3430,8 +4153,10 @@ func (r *UnbindL7BackendsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UnbindL7BackendsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UnbindTrafficMirrorListenersRequest struct {
@@ -3441,7 +4166,7 @@ type UnbindTrafficMirrorListenersRequest struct {
 	TrafficMirrorId *string `json:"TrafficMirrorId,omitempty" name:"TrafficMirrorId"`
 
 	// 七层监听器实例ID数组，可通过接口DescribeL7Listeners查询。
-	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds" list`
+	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds"`
 }
 
 func (r *UnbindTrafficMirrorListenersRequest) ToJsonString() string {
@@ -3449,8 +4174,19 @@ func (r *UnbindTrafficMirrorListenersRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UnbindTrafficMirrorListenersRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrafficMirrorId")
+	delete(f, "ListenerIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnbindTrafficMirrorListenersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UnbindTrafficMirrorListenersResponse struct {
@@ -3470,8 +4206,10 @@ func (r *UnbindTrafficMirrorListenersResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UnbindTrafficMirrorListenersResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UnbindTrafficMirrorReceiver struct {
@@ -3490,7 +4228,7 @@ type UnbindTrafficMirrorReceiversRequest struct {
 	TrafficMirrorId *string `json:"TrafficMirrorId,omitempty" name:"TrafficMirrorId"`
 
 	// 待绑定的主机实例ID和端口数组。
-	ReceiverSet []*UnbindTrafficMirrorReceiver `json:"ReceiverSet,omitempty" name:"ReceiverSet" list`
+	ReceiverSet []*UnbindTrafficMirrorReceiver `json:"ReceiverSet,omitempty" name:"ReceiverSet"`
 }
 
 func (r *UnbindTrafficMirrorReceiversRequest) ToJsonString() string {
@@ -3498,8 +4236,19 @@ func (r *UnbindTrafficMirrorReceiversRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UnbindTrafficMirrorReceiversRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrafficMirrorId")
+	delete(f, "ReceiverSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnbindTrafficMirrorReceiversRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UnbindTrafficMirrorReceiversResponse struct {
@@ -3519,8 +4268,10 @@ func (r *UnbindTrafficMirrorReceiversResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UnbindTrafficMirrorReceiversResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UploadCertRequest struct {
@@ -3544,8 +4295,21 @@ func (r *UploadCertRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UploadCertRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertType")
+	delete(f, "Cert")
+	delete(f, "Alias")
+	delete(f, "Key")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadCertRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UploadCertResponse struct {
@@ -3565,6 +4329,8 @@ func (r *UploadCertResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UploadCertResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

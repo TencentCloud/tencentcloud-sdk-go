@@ -16,7 +16,7 @@ package v20190529
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -43,8 +43,19 @@ func (r *AssessQualityRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AssessQualityRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssessQualityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type AssessQualityResponse struct {
@@ -82,8 +93,29 @@ func (r *AssessQualityResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AssessQualityResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CarPlateContent struct {
+
+	// 车牌信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Plate *string `json:"Plate,omitempty" name:"Plate"`
+
+	// 车牌颜色。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Color *string `json:"Color,omitempty" name:"Color"`
+
+	// 车牌类型；渣土车车牌遮挡时,该值为枚举值“异常”。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 车牌在图片中的坐标信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PlateLocation []*Coord `json:"PlateLocation,omitempty" name:"PlateLocation"`
 }
 
 type CarTagItem struct {
@@ -107,7 +139,11 @@ type CarTagItem struct {
 	Year *int64 `json:"Year,omitempty" name:"Year"`
 
 	// 车辆在图片中的坐标信息
-	CarLocation []*Coord `json:"CarLocation,omitempty" name:"CarLocation" list`
+	CarLocation []*Coord `json:"CarLocation,omitempty" name:"CarLocation"`
+
+	// 车牌信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PlateContent *CarPlateContent `json:"PlateContent,omitempty" name:"PlateContent"`
 }
 
 type Coord struct {
@@ -117,6 +153,155 @@ type Coord struct {
 
 	// 纵坐标y
 	Y *int64 `json:"Y,omitempty" name:"Y"`
+}
+
+type CreateGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 图库ID，不可重复，仅支持字母、数字和下划线。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 图库名称描述。
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 该库的容量限制。
+	MaxCapacity *uint64 `json:"MaxCapacity,omitempty" name:"MaxCapacity"`
+
+	// 简介。
+	Brief *string `json:"Brief,omitempty" name:"Brief"`
+
+	// 该库的访问限频 ，默认10。
+	MaxQps *uint64 `json:"MaxQps,omitempty" name:"MaxQps"`
+
+	// 图库类型， 默认为通用。
+	// 类型： 
+	// 1: 通用图库，以用户输入图提取特征。
+	// 2: 灰度图库，输入图和搜索图均转为灰度图提取特征。
+	// 3: 针对电商（通用品类）和logo优化。
+	GroupType *uint64 `json:"GroupType,omitempty" name:"GroupType"`
+}
+
+func (r *CreateGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "GroupName")
+	delete(f, "MaxCapacity")
+	delete(f, "Brief")
+	delete(f, "MaxQps")
+	delete(f, "GroupType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateImageRequest struct {
+	*tchttp.BaseRequest
+
+	// 图库ID。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 物品ID，最多支持64个字符。 
+	// 若EntityId已存在，则对其追加图片。
+	EntityId *string `json:"EntityId,omitempty" name:"EntityId"`
+
+	// 图片名称，最多支持64个字符， 
+	// 同一个EntityId，最大支持5张图。如果图片名称已存在，则会更新库中的图片。
+	PicName *string `json:"PicName,omitempty" name:"PicName"`
+
+	// 图片的 Url 。对应图片 base64 编码后大小不可超过2M。  
+	// Url、Image必须提供一个，如果都提供，只使用 Url。 
+	// 图片分辨率不超过1920*1080。
+	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片 base64 数据，base64 编码后大小不可超过2M。 
+	// 图片分辨率不超过1920*1080。 
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 用户自定义的内容，最多支持4096个字符，查询时原样带回。
+	CustomContent *string `json:"CustomContent,omitempty" name:"CustomContent"`
+
+	// 图片自定义标签，最多不超过10个，格式为JSON。
+	Tags *string `json:"Tags,omitempty" name:"Tags"`
+}
+
+func (r *CreateImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateImageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "EntityId")
+	delete(f, "PicName")
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	delete(f, "CustomContent")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateImageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateImageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateImageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CropImageRequest struct {
@@ -152,8 +337,21 @@ func (r *CropImageRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CropImageRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Width")
+	delete(f, "Height")
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CropImageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CropImageResponse struct {
@@ -199,8 +397,185 @@ func (r *CropImageResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CropImageResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteImagesRequest struct {
+	*tchttp.BaseRequest
+
+	// 图库名称。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 物品ID。
+	EntityId *string `json:"EntityId,omitempty" name:"EntityId"`
+
+	// 图片名称，如果不指定本参数，则删除EntityId下所有的图片；否则删除指定的图。
+	PicName *string `json:"PicName,omitempty" name:"PicName"`
+}
+
+func (r *DeleteImagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteImagesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "EntityId")
+	delete(f, "PicName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteImagesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteImagesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteImagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteImagesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeGroupsRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始序号，默认值为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认值为10，最大值为100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 图库ID，如果不为空，则返回指定库信息。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+}
+
+func (r *DescribeGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "GroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 图库信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Groups []*GroupInfo `json:"Groups,omitempty" name:"Groups"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeImagesRequest struct {
+	*tchttp.BaseRequest
+
+	// 图库名称。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 物品ID。
+	EntityId *string `json:"EntityId,omitempty" name:"EntityId"`
+
+	// 图片名称。
+	PicName *string `json:"PicName,omitempty" name:"PicName"`
+}
+
+func (r *DescribeImagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImagesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "EntityId")
+	delete(f, "PicName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImagesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeImagesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 图库名称。
+		GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+		// 物品ID。
+		EntityId *string `json:"EntityId,omitempty" name:"EntityId"`
+
+		// 图片信息。
+		ImageInfos []*ImageInfo `json:"ImageInfos,omitempty" name:"ImageInfos"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeImagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImagesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DetectCelebrityRequest struct {
@@ -226,8 +601,19 @@ func (r *DetectCelebrityRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DetectCelebrityRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectCelebrityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DetectCelebrityResponse struct {
@@ -235,7 +621,7 @@ type DetectCelebrityResponse struct {
 	Response *struct {
 
 		// 公众人物识别结果数组。如果检测不到人脸，返回为空；最多可以返回10个人脸识别结果。
-		Faces []*Face `json:"Faces,omitempty" name:"Faces" list`
+		Faces []*Face `json:"Faces,omitempty" name:"Faces"`
 
 		// 本服务在不同误识率水平下（将图片中的人物识别错误的比例）的推荐阈值，可以用于控制识别结果的精度。 
 	// FalseRate1Percent, FalseRate5Permil, FalseRate1Permil分别代表误识率在百分之一、千分之五、千分之一情况下的推荐阈值。 
@@ -254,8 +640,10 @@ func (r *DetectCelebrityResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DetectCelebrityResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DetectDisgustRequest struct {
@@ -281,8 +669,19 @@ func (r *DetectDisgustRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DetectDisgustRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectDisgustRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DetectDisgustResponse struct {
@@ -305,8 +704,106 @@ func (r *DetectDisgustResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DetectDisgustResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DetectLabelBetaRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片URL地址。 
+	// 图片限制： 
+	// • 图片格式：PNG、JPG、JPEG。 
+	// • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
+	// 建议：
+	// • 图片像素：大于50*50像素，否则影响识别效果； 
+	// • 长宽比：长边：短边<5； 
+	// 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	// **注意：图片需要base64编码，并且要去掉编码头部。**
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 本次调用支持的识别场景，可选值如下：
+	// WEB，针对网络图片优化;
+	// CAMERA，针对手机摄像头拍摄图片优化;
+	// ALBUM，针对手机相册、网盘产品优化;
+	// NEWS，针对新闻、资讯、广电等行业优化；
+	// NONECAM，非实拍图；
+	// LOCATION，主体位置识别；
+	// 如果不传此参数，则默认为WEB。
+	// 
+	// 支持多场景（Scenes）一起检测。例如，使用 Scenes=["WEB", "CAMERA"]，即对一张图片使用两个模型同时检测，输出两套识别结果。
+	Scenes []*string `json:"Scenes,omitempty" name:"Scenes"`
+}
+
+func (r *DetectLabelBetaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetectLabelBetaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	delete(f, "Scenes")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectLabelBetaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DetectLabelBetaResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// Web网络版标签结果数组。如未选择WEB场景，则为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Labels []*DetectLabelItem `json:"Labels,omitempty" name:"Labels"`
+
+		// Camera摄像头版标签结果数组。如未选择CAMERA场景，则为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CameraLabels []*DetectLabelItem `json:"CameraLabels,omitempty" name:"CameraLabels"`
+
+		// Album相册版标签结果数组。如未选择ALBUM场景，则为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AlbumLabels []*DetectLabelItem `json:"AlbumLabels,omitempty" name:"AlbumLabels"`
+
+		// News新闻版标签结果数组。如未选择NEWS场景，则为空。
+	// 新闻版目前为测试阶段，暂不提供每个标签的一级、二级分类信息的输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		NewsLabels []*DetectLabelItem `json:"NewsLabels,omitempty" name:"NewsLabels"`
+
+		// 非实拍标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		NoneCamLabels []*DetectLabelItem `json:"NoneCamLabels,omitempty" name:"NoneCamLabels"`
+
+		// 识别结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		LocationLabels []*Product `json:"LocationLabels,omitempty" name:"LocationLabels"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DetectLabelBetaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetectLabelBetaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DetectLabelItem struct {
@@ -349,7 +846,7 @@ type DetectLabelRequest struct {
 	// 如果不传此参数，则默认为WEB。
 	// 
 	// 支持多场景（Scenes）一起检测。例如，使用 Scenes=["WEB", "CAMERA"]，即对一张图片使用两个模型同时检测，输出两套识别结果。
-	Scenes []*string `json:"Scenes,omitempty" name:"Scenes" list`
+	Scenes []*string `json:"Scenes,omitempty" name:"Scenes"`
 }
 
 func (r *DetectLabelRequest) ToJsonString() string {
@@ -357,8 +854,20 @@ func (r *DetectLabelRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DetectLabelRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	delete(f, "Scenes")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectLabelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DetectLabelResponse struct {
@@ -367,20 +876,20 @@ type DetectLabelResponse struct {
 
 		// Web网络版标签结果数组。如未选择WEB场景，则为空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Labels []*DetectLabelItem `json:"Labels,omitempty" name:"Labels" list`
+		Labels []*DetectLabelItem `json:"Labels,omitempty" name:"Labels"`
 
 		// Camera摄像头版标签结果数组。如未选择CAMERA场景，则为空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		CameraLabels []*DetectLabelItem `json:"CameraLabels,omitempty" name:"CameraLabels" list`
+		CameraLabels []*DetectLabelItem `json:"CameraLabels,omitempty" name:"CameraLabels"`
 
 		// Album相册版标签结果数组。如未选择ALBUM场景，则为空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		AlbumLabels []*DetectLabelItem `json:"AlbumLabels,omitempty" name:"AlbumLabels" list`
+		AlbumLabels []*DetectLabelItem `json:"AlbumLabels,omitempty" name:"AlbumLabels"`
 
 		// News新闻版标签结果数组。如未选择NEWS场景，则为空。
 	// 新闻版目前为测试阶段，暂不提供每个标签的一级、二级分类信息的输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		NewsLabels []*DetectLabelItem `json:"NewsLabels,omitempty" name:"NewsLabels" list`
+		NewsLabels []*DetectLabelItem `json:"NewsLabels,omitempty" name:"NewsLabels"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -392,8 +901,10 @@ func (r *DetectLabelResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DetectLabelResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DetectMisbehaviorRequest struct {
@@ -419,8 +930,19 @@ func (r *DetectMisbehaviorRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DetectMisbehaviorRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectMisbehaviorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DetectMisbehaviorResponse struct {
@@ -443,8 +965,10 @@ func (r *DetectMisbehaviorResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DetectMisbehaviorResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DetectProductBetaRequest struct {
@@ -457,6 +981,9 @@ type DetectProductBetaRequest struct {
 	// 图片经过base64编码的内容。最大不超过1M，分辨率在25万到100万之间。 
 	// 与ImageUrl同时存在时优先使用ImageUrl字段。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 是否需要百科信息 1：是，0: 否，默认是0
+	NeedLemma *int64 `json:"NeedLemma,omitempty" name:"NeedLemma"`
 }
 
 func (r *DetectProductBetaRequest) ToJsonString() string {
@@ -464,8 +991,20 @@ func (r *DetectProductBetaRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DetectProductBetaRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	delete(f, "NeedLemma")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectProductBetaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DetectProductBetaResponse struct {
@@ -475,11 +1014,15 @@ type DetectProductBetaResponse struct {
 		// 检测到的图片中的商品位置和品类预测。 
 	// 当图片中存在多个商品时，输出多组坐标，按照__显著性__排序（综合考虑面积、是否在中心、检测算法置信度）。 
 	// 最多可以输出__3组__检测结果。
-		RegionDetected []*RegionDetected `json:"RegionDetected,omitempty" name:"RegionDetected" list`
+		RegionDetected []*RegionDetected `json:"RegionDetected,omitempty" name:"RegionDetected"`
 
 		// 图像识别出的商品的详细信息。 
 	// 当图像中检测到多个物品时，会对显著性最高的进行识别。
 		ProductInfo *ProductInfo `json:"ProductInfo,omitempty" name:"ProductInfo"`
+
+		// 相似商品信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ProductInfoList []*ProductInfo `json:"ProductInfoList,omitempty" name:"ProductInfoList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -491,8 +1034,10 @@ func (r *DetectProductBetaResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DetectProductBetaResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DetectProductRequest struct {
@@ -518,8 +1063,19 @@ func (r *DetectProductRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DetectProductRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectProductRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DetectProductResponse struct {
@@ -527,7 +1083,7 @@ type DetectProductResponse struct {
 	Response *struct {
 
 		// 商品识别结果数组
-		Products []*Product `json:"Products,omitempty" name:"Products" list`
+		Products []*Product `json:"Products,omitempty" name:"Products"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -539,8 +1095,10 @@ func (r *DetectProductResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DetectProductResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EnhanceImageRequest struct {
@@ -566,8 +1124,19 @@ func (r *EnhanceImageRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EnhanceImageRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnhanceImageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EnhanceImageResponse struct {
@@ -587,8 +1156,10 @@ func (r *EnhanceImageResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EnhanceImageResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Face struct {
@@ -597,7 +1168,7 @@ type Face struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 公众人物身份标签的数组，一个公众人物可能有多个身份标签。
-	Labels []*Labels `json:"Labels,omitempty" name:"Labels" list`
+	Labels []*Labels `json:"Labels,omitempty" name:"Labels"`
 
 	// 对人物的简介。
 	BasicInfo *string `json:"BasicInfo,omitempty" name:"BasicInfo"`
@@ -622,6 +1193,71 @@ type Face struct {
 	ID *string `json:"ID,omitempty" name:"ID"`
 }
 
+type GroupInfo struct {
+
+	// 图库Id。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 图库名称。
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 图库简介。
+	Brief *string `json:"Brief,omitempty" name:"Brief"`
+
+	// 图库容量。
+	MaxCapacity *uint64 `json:"MaxCapacity,omitempty" name:"MaxCapacity"`
+
+	// 该库的访问限频 。
+	MaxQps *uint64 `json:"MaxQps,omitempty" name:"MaxQps"`
+
+	// 图库类型： 
+	// 1: 通用图库，以用户输入图提取特征。
+	// 2: 灰度图库，输入图和搜索图均转为灰度图提取特征。
+	GroupType *uint64 `json:"GroupType,omitempty" name:"GroupType"`
+
+	// 图库图片数量。
+	PicCount *uint64 `json:"PicCount,omitempty" name:"PicCount"`
+
+	// 图库创建时间。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 图库更新时间。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type ImageInfo struct {
+
+	// 图片名称。
+	EntityId *string `json:"EntityId,omitempty" name:"EntityId"`
+
+	// 用户自定义的内容。
+	CustomContent *string `json:"CustomContent,omitempty" name:"CustomContent"`
+
+	// 图片自定义标签，JSON格式。
+	Tags *string `json:"Tags,omitempty" name:"Tags"`
+
+	// 图片名称。
+	PicName *string `json:"PicName,omitempty" name:"PicName"`
+
+	// 相似度。
+	Score *int64 `json:"Score,omitempty" name:"Score"`
+}
+
+type ImageRect struct {
+
+	// 左上角横坐标。
+	X *int64 `json:"X,omitempty" name:"X"`
+
+	// 左上角纵坐标。
+	Y *int64 `json:"Y,omitempty" name:"Y"`
+
+	// 宽度。
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 高度。
+	Height *int64 `json:"Height,omitempty" name:"Height"`
+}
+
 type Labels struct {
 
 	// 公众人物身份标签的一级分类，例如体育明星、娱乐明星、政治人物等；
@@ -631,6 +1267,21 @@ type Labels struct {
 	// 公众人物身份标签的二级分类，例如歌手（对应一级标签为“娱乐明星”）；
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecondLabel *string `json:"SecondLabel,omitempty" name:"SecondLabel"`
+}
+
+type LemmaInfo struct {
+
+	// 词条
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LemmaTitle *string `json:"LemmaTitle,omitempty" name:"LemmaTitle"`
+
+	// 词条描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LemmaAbstract *string `json:"LemmaAbstract,omitempty" name:"LemmaAbstract"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tag *string `json:"Tag,omitempty" name:"Tag"`
 }
 
 type Location struct {
@@ -701,6 +1352,10 @@ type ProductInfo struct {
 
 	// 搜索到的商品配图URL。
 	Image *string `json:"Image,omitempty" name:"Image"`
+
+	// 百科词条列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LemmaInfoList []*LemmaInfo `json:"LemmaInfoList,omitempty" name:"LemmaInfoList"`
 }
 
 type RecognizeCarRequest struct {
@@ -727,8 +1382,19 @@ func (r *RecognizeCarRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RecognizeCarRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeCarRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RecognizeCarResponse struct {
@@ -736,10 +1402,10 @@ type RecognizeCarResponse struct {
 	Response *struct {
 
 		// 汽车的四个矩形顶点坐标，如果图片中存在多辆车，则输出最大车辆的坐标。
-		CarCoords []*Coord `json:"CarCoords,omitempty" name:"CarCoords" list`
+		CarCoords []*Coord `json:"CarCoords,omitempty" name:"CarCoords"`
 
 		// 车辆属性识别的结果数组，如果识别到多辆车，则会输出每辆车的top1结果。
-		CarTags []*CarTagItem `json:"CarTags,omitempty" name:"CarTags" list`
+		CarTags []*CarTagItem `json:"CarTags,omitempty" name:"CarTags"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -751,8 +1417,10 @@ func (r *RecognizeCarResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RecognizeCarResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RegionDetected struct {
@@ -766,6 +1434,94 @@ type RegionDetected struct {
 
 	// 检测到的主体在图片中的坐标，表示为矩形框的四个顶点坐标
 	Location *Location `json:"Location,omitempty" name:"Location"`
+}
+
+type SearchImageRequest struct {
+	*tchttp.BaseRequest
+
+	// 图库名称。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 图片的 Url 。对应图片 base64 编码后大小不可超过2M。 
+	// 图片分辨率不超过1920*1080。 
+	// Url、Image必须提供一个，如果都提供，只使用 Url。 
+	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片 base64 数据，base64 编码后大小不可超过2M。 
+	// 图片分辨率不超过1920*1080。 
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 出参Score中，只有超过MatchThreshold值的结果才会返回。默认为0
+	MatchThreshold *int64 `json:"MatchThreshold,omitempty" name:"MatchThreshold"`
+
+	// 起始序号，默认值为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认值为10，最大值为100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 针对入库时提交的Tags信息进行条件过滤。支持>、>=、 <、 <=、=，!=，多个条件之间支持AND和OR进行连接。
+	Filter *string `json:"Filter,omitempty" name:"Filter"`
+
+	// 图像主体区域。
+	ImageRect *ImageRect `json:"ImageRect,omitempty" name:"ImageRect"`
+}
+
+func (r *SearchImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchImageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	delete(f, "MatchThreshold")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filter")
+	delete(f, "ImageRect")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchImageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchImageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回结果数量。
+		Count *int64 `json:"Count,omitempty" name:"Count"`
+
+		// 图片信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ImageInfos []*ImageInfo `json:"ImageInfos,omitempty" name:"ImageInfos"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SearchImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchImageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Threshold struct {

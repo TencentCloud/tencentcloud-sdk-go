@@ -16,7 +16,7 @@ package v20191012
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -55,6 +55,12 @@ type AddEcdnDomainRequest struct {
 
 	// 访问协议强制跳转配置。
 	ForceRedirect *ForceRedirect `json:"ForceRedirect,omitempty" name:"ForceRedirect"`
+
+	// 域名绑定的标签
+	Tag []*Tag `json:"Tag,omitempty" name:"Tag"`
+
+	// WebSocket配置
+	WebSocket *WebSocket `json:"WebSocket,omitempty" name:"WebSocket"`
 }
 
 func (r *AddEcdnDomainRequest) ToJsonString() string {
@@ -62,8 +68,30 @@ func (r *AddEcdnDomainRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AddEcdnDomainRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Origin")
+	delete(f, "Area")
+	delete(f, "ProjectId")
+	delete(f, "IpFilter")
+	delete(f, "IpFreqLimit")
+	delete(f, "ResponseHeader")
+	delete(f, "CacheKey")
+	delete(f, "Cache")
+	delete(f, "Https")
+	delete(f, "ForceRedirect")
+	delete(f, "Tag")
+	delete(f, "WebSocket")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddEcdnDomainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type AddEcdnDomainResponse struct {
@@ -80,14 +108,16 @@ func (r *AddEcdnDomainResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AddEcdnDomainResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Cache struct {
 
 	// 缓存配置规则数组。
-	CacheRules []*CacheRule `json:"CacheRules,omitempty" name:"CacheRules" list`
+	CacheRules []*CacheRule `json:"CacheRules,omitempty" name:"CacheRules"`
 
 	// 遵循源站 Cache-Control: max-age 配置，白名单功能。
 	// on：开启
@@ -109,7 +139,7 @@ type CacheRule struct {
 	CacheType *string `json:"CacheType,omitempty" name:"CacheType"`
 
 	// 缓存内容列表。
-	CacheContents []*string `json:"CacheContents,omitempty" name:"CacheContents" list`
+	CacheContents []*string `json:"CacheContents,omitempty" name:"CacheContents"`
 
 	// 缓存时间，单位秒。
 	CacheTime *int64 `json:"CacheTime,omitempty" name:"CacheTime"`
@@ -134,6 +164,61 @@ type ClientCert struct {
 	DeployTime *string `json:"DeployTime,omitempty" name:"DeployTime"`
 }
 
+type CreateVerifyRecordRequest struct {
+	*tchttp.BaseRequest
+
+	// 要取回的域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+}
+
+func (r *CreateVerifyRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVerifyRecordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVerifyRecordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateVerifyRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 子解析
+		SubDomain *string `json:"SubDomain,omitempty" name:"SubDomain"`
+
+		// 解析值
+		Record *string `json:"Record,omitempty" name:"Record"`
+
+		// 解析类型
+		RecordType *string `json:"RecordType,omitempty" name:"RecordType"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateVerifyRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVerifyRecordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteEcdnDomainRequest struct {
 	*tchttp.BaseRequest
 
@@ -146,8 +231,18 @@ func (r *DeleteEcdnDomainRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteEcdnDomainRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteEcdnDomainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteEcdnDomainResponse struct {
@@ -164,8 +259,10 @@ func (r *DeleteEcdnDomainResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteEcdnDomainResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeDomainsConfigRequest struct {
@@ -178,7 +275,7 @@ type DescribeDomainsConfigRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 查询条件过滤器。
-	Filters []*DomainFilter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*DomainFilter `json:"Filters,omitempty" name:"Filters"`
 
 	// 查询结果排序规则。
 	Sort *Sort `json:"Sort,omitempty" name:"Sort"`
@@ -189,8 +286,21 @@ func (r *DescribeDomainsConfigRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeDomainsConfigRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "Sort")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDomainsConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeDomainsConfigResponse struct {
@@ -198,7 +308,7 @@ type DescribeDomainsConfigResponse struct {
 	Response *struct {
 
 		// 域名列表。
-		Domains []*DomainDetailInfo `json:"Domains,omitempty" name:"Domains" list`
+		Domains []*DomainDetailInfo `json:"Domains,omitempty" name:"Domains"`
 
 		// 符合查询条件的域名总数，用于分页查询。
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -213,8 +323,10 @@ func (r *DescribeDomainsConfigResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeDomainsConfigResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeDomainsRequest struct {
@@ -227,7 +339,7 @@ type DescribeDomainsRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 查询条件过滤器。
-	Filters []*DomainFilter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*DomainFilter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeDomainsRequest) ToJsonString() string {
@@ -235,8 +347,20 @@ func (r *DescribeDomainsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeDomainsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDomainsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeDomainsResponse struct {
@@ -244,7 +368,7 @@ type DescribeDomainsResponse struct {
 	Response *struct {
 
 		// 域名信息列表。
-		Domains []*DomainBriefInfo `json:"Domains,omitempty" name:"Domains" list`
+		Domains []*DomainBriefInfo `json:"Domains,omitempty" name:"Domains"`
 
 		// 域名总个数。
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -259,8 +383,10 @@ func (r *DescribeDomainsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeDomainsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeEcdnDomainLogsRequest struct {
@@ -287,8 +413,22 @@ func (r *DescribeEcdnDomainLogsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeEcdnDomainLogsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEcdnDomainLogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeEcdnDomainLogsResponse struct {
@@ -297,7 +437,7 @@ type DescribeEcdnDomainLogsResponse struct {
 
 		// 日志链接列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		DomainLogs []*DomainLogs `json:"DomainLogs,omitempty" name:"DomainLogs" list`
+		DomainLogs []*DomainLogs `json:"DomainLogs,omitempty" name:"DomainLogs"`
 
 		// 日志链接总条数。
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -312,8 +452,10 @@ func (r *DescribeEcdnDomainLogsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeEcdnDomainLogsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeEcdnDomainStatisticsRequest struct {
@@ -327,30 +469,31 @@ type DescribeEcdnDomainStatisticsRequest struct {
 	// 起止时间不超过90天。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 统计指标名称。flux：流量，单位为 byte
+	// 统计指标名称:
+	// flux：流量，单位为 byte
 	// bandwidth：带宽，单位为 bps
 	// request：请求数，单位为 次
-	// delay：响应时间，单位为ms
-	// static_request ： 静态请求数，单位为 次
-	// static_flux：静态流量，单位为 byte
-	// static_bandwidth ： 静态带宽，单位为 bps
-	// dynamic_request：动态请求数，单位为 次
-	// dynamic_flux：动态流量，单位为 byte
-	// dynamic_bandwidth：动态带宽，单位为 bps
-	Metrics []*string `json:"Metrics,omitempty" name:"Metrics" list`
+	Metrics []*string `json:"Metrics,omitempty" name:"Metrics"`
 
 	// 指定查询域名列表
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 	// 指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
 	// 未填充域名情况下，指定项目查询，若填充了具体域名信息，以域名为主
-	Projects []*int64 `json:"Projects,omitempty" name:"Projects" list`
+	Projects []*int64 `json:"Projects,omitempty" name:"Projects"`
 
 	// 列表分页起始地址，默认0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 列表分页记录条数，默认1000，最大3000。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 统计区域:
+	// mainland: 境内
+	// oversea: 境外
+	// global: 全部
+	// 默认 global
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *DescribeEcdnDomainStatisticsRequest) ToJsonString() string {
@@ -358,8 +501,25 @@ func (r *DescribeEcdnDomainStatisticsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeEcdnDomainStatisticsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Metrics")
+	delete(f, "Domains")
+	delete(f, "Projects")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Area")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEcdnDomainStatisticsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeEcdnDomainStatisticsResponse struct {
@@ -367,7 +527,7 @@ type DescribeEcdnDomainStatisticsResponse struct {
 	Response *struct {
 
 		// 域名数据
-		Data []*DomainData `json:"Data,omitempty" name:"Data" list`
+		Data []*DomainData `json:"Data,omitempty" name:"Data"`
 
 		// 数量
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -382,8 +542,10 @@ func (r *DescribeEcdnDomainStatisticsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeEcdnDomainStatisticsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeEcdnStatisticsRequest struct {
@@ -399,34 +561,34 @@ type DescribeEcdnStatisticsRequest struct {
 	// flux：流量，单位为 byte
 	// bandwidth：带宽，单位为 bps
 	// request：请求数，单位为 次
-	// delay：响应时间，单位为ms
 	// 2xx：返回 2xx 状态码汇总或者 2 开头状态码数据，单位为 个
 	// 3xx：返回 3xx 状态码汇总或者 3 开头状态码数据，单位为 个
 	// 4xx：返回 4xx 状态码汇总或者 4 开头状态码数据，单位为 个
 	// 5xx：返回 5xx 状态码汇总或者 5 开头状态码数据，单位为 个
-	// static_request ： 静态请求数，单位为 次
-	// static_flux：静态流量，单位为 byte
-	// static_bandwidth ： 静态带宽，单位为 bps
-	// dynamic_request：动态请求数，单位为 次
-	// dynamic_flux：动态流量，单位为 byte
-	// dynamic_bandwidth：动态带宽，单位为 bps
-	Metrics []*string `json:"Metrics,omitempty" name:"Metrics" list`
+	Metrics []*string `json:"Metrics,omitempty" name:"Metrics"`
 
 	// 时间粒度，支持以下几种模式：
 	// 1 天	 1，5，15，30，60，120，240，1440 
 	// 2 ~ 3 天	15，30，60，120，240，1440
 	// 4 ~ 7 天	30，60，120，240，1440
-	// 8 ~ 90 天	 60，120，240，1440
+	// 8 ~ 31 天	 60，120，240，1440
 	Interval *int64 `json:"Interval,omitempty" name:"Interval"`
 
 	// 指定查询域名列表
 	// 
 	// 最多可一次性查询30个加速域名。
-	Domains []*string `json:"Domains,omitempty" name:"Domains" list`
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 	// 指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
 	// 未填充域名情况下，指定项目查询，若填充了具体域名信息，以域名为主
-	Projects []*int64 `json:"Projects,omitempty" name:"Projects" list`
+	Projects []*int64 `json:"Projects,omitempty" name:"Projects"`
+
+	// 统计区域:
+	// mainland: 境内
+	// oversea: 境外
+	// global: 全部
+	// 默认 global
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *DescribeEcdnStatisticsRequest) ToJsonString() string {
@@ -434,8 +596,24 @@ func (r *DescribeEcdnStatisticsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeEcdnStatisticsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Metrics")
+	delete(f, "Interval")
+	delete(f, "Domains")
+	delete(f, "Projects")
+	delete(f, "Area")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEcdnStatisticsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeEcdnStatisticsResponse struct {
@@ -443,7 +621,7 @@ type DescribeEcdnStatisticsResponse struct {
 	Response *struct {
 
 		// 指定条件查询得到的数据明细
-		Data []*ResourceData `json:"Data,omitempty" name:"Data" list`
+		Data []*ResourceData `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -455,8 +633,10 @@ func (r *DescribeEcdnStatisticsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeEcdnStatisticsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeIpStatusRequest struct {
@@ -477,8 +657,19 @@ func (r *DescribeIpStatusRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeIpStatusRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Area")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIpStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeIpStatusResponse struct {
@@ -486,7 +677,7 @@ type DescribeIpStatusResponse struct {
 	Response *struct {
 
 		// 节点列表
-		Ips []*IpStatus `json:"Ips,omitempty" name:"Ips" list`
+		Ips []*IpStatus `json:"Ips,omitempty" name:"Ips"`
 
 		// 节点总个数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -501,8 +692,10 @@ func (r *DescribeIpStatusResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeIpStatusResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribePurgeQuotaRequest struct {
@@ -514,8 +707,17 @@ func (r *DescribePurgeQuotaRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribePurgeQuotaRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePurgeQuotaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribePurgeQuotaResponse struct {
@@ -538,8 +740,10 @@ func (r *DescribePurgeQuotaResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribePurgeQuotaResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribePurgeTasksRequest struct {
@@ -575,8 +779,25 @@ func (r *DescribePurgeTasksRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribePurgeTasksRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PurgeType")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "TaskId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Keyword")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePurgeTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribePurgeTasksResponse struct {
@@ -584,7 +805,7 @@ type DescribePurgeTasksResponse struct {
 	Response *struct {
 
 		// 刷新历史记录。
-		PurgeLogs []*PurgeTask `json:"PurgeLogs,omitempty" name:"PurgeLogs" list`
+		PurgeLogs []*PurgeTask `json:"PurgeLogs,omitempty" name:"PurgeLogs"`
 
 		// 任务总数，用于分页。
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -599,8 +820,10 @@ func (r *DescribePurgeTasksResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribePurgeTasksResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DetailData struct {
@@ -657,7 +880,7 @@ type DomainData struct {
 	Resource *string `json:"Resource,omitempty" name:"Resource"`
 
 	// 结果详情
-	DetailData []*DetailData `json:"DetailData,omitempty" name:"DetailData" list`
+	DetailData []*DetailData `json:"DetailData,omitempty" name:"DetailData"`
 }
 
 type DomainDetailInfo struct {
@@ -729,6 +952,14 @@ type DomainDetailInfo struct {
 	// 域名锁定状态，normal、global 分别表示未被锁定，全球锁定。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Readonly *string `json:"Readonly,omitempty" name:"Readonly"`
+
+	// 域名标签。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tag []*Tag `json:"Tag,omitempty" name:"Tag"`
+
+	// WebSocket配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WebSocket *WebSocket `json:"WebSocket,omitempty" name:"WebSocket"`
 }
 
 type DomainFilter struct {
@@ -744,10 +975,11 @@ type DomainFilter struct {
 	// - https：是否配置https，on，off或processing。
 	// - originPullProtocol：回源协议类型，支持http，follow或https。
 	// - area：加速区域，支持mainland，overseas或global。
+	// - tagKey：标签键。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 过滤字段值。
-	Value []*string `json:"Value,omitempty" name:"Value" list`
+	Value []*string `json:"Value,omitempty" name:"Value"`
 
 	// 是否启用模糊查询，仅支持过滤字段名为origin，domain。
 	Fuzzy *bool `json:"Fuzzy,omitempty" name:"Fuzzy"`
@@ -768,10 +1000,10 @@ type DomainLogs struct {
 type EcdnData struct {
 
 	// 查询指定的指标名称：Bandwidth，Flux，Request，Delay，状态码，LogBandwidth，LogFlux，LogRequest
-	Metrics []*string `json:"Metrics,omitempty" name:"Metrics" list`
+	Metrics []*string `json:"Metrics,omitempty" name:"Metrics"`
 
 	// 明细数据组合
-	DetailData []*TimestampData `json:"DetailData,omitempty" name:"DetailData" list`
+	DetailData []*TimestampData `json:"DetailData,omitempty" name:"DetailData"`
 }
 
 type ForceRedirect struct {
@@ -824,7 +1056,7 @@ type HttpHeaderPathRule struct {
 
 	// url路径或文件类型列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths" list`
+	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths"`
 }
 
 type Https struct {
@@ -877,7 +1109,7 @@ type IpFilter struct {
 
 	// IP黑白名单列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Filters []*string `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*string `json:"Filters,omitempty" name:"Filters"`
 }
 
 type IpFreqLimit struct {
@@ -908,13 +1140,15 @@ type IpStatus struct {
 	// online：上线状态，正常调度服务中
 	// offline：下线状态
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 节点 IP 添加时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
 type Origin struct {
 
-	// 主源站列表，默认格式为 ["ip1:port1", "ip2:port2"]。
-	// 支持在源站列表中配置权重，配置IP源站权重格式为 ["ip1:port1:weight1", "ip2:port2:weight2"]。
-	Origins []*string `json:"Origins,omitempty" name:"Origins" list`
+	// 主源站列表，IP与域名源站不可混填。配置源站端口["origin1:port1", "origin2:port2"]，配置回源权重["origin1::weight1", "origin2::weight2"]，同时配置端口与权重 ["origin1:port1:weight1", "origin2:port2:weight2"]，权重值有效范围为0-100。
+	Origins []*string `json:"Origins,omitempty" name:"Origins"`
 
 	// 主源站类型，支持domain，ip，分别表示域名源站，ip源站。
 	// 设置Origins时必须填写。
@@ -926,11 +1160,12 @@ type Origin struct {
 	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
 
 	// 回源协议类型，支持http，follow，https，分别表示强制http回源，协议跟随回源，https回源。
+	// 不传入的情况下默认为http回源.
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginPullProtocol *string `json:"OriginPullProtocol,omitempty" name:"OriginPullProtocol"`
 
 	// 备份源站列表。
-	BackupOrigins []*string `json:"BackupOrigins,omitempty" name:"BackupOrigins" list`
+	BackupOrigins []*string `json:"BackupOrigins,omitempty" name:"BackupOrigins"`
 
 	// 备份源站类型，同OriginType。
 	// 设置BackupOrigins时必须填写。
@@ -942,7 +1177,7 @@ type PurgePathCacheRequest struct {
 	*tchttp.BaseRequest
 
 	// 要刷新的目录列表，必须包含协议头部。
-	Paths []*string `json:"Paths,omitempty" name:"Paths" list`
+	Paths []*string `json:"Paths,omitempty" name:"Paths"`
 
 	// 刷新类型，flush 代表刷新有更新的资源，delete 表示刷新全部资源。
 	FlushType *string `json:"FlushType,omitempty" name:"FlushType"`
@@ -953,8 +1188,19 @@ func (r *PurgePathCacheRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *PurgePathCacheRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Paths")
+	delete(f, "FlushType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PurgePathCacheRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type PurgePathCacheResponse struct {
@@ -974,8 +1220,10 @@ func (r *PurgePathCacheResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *PurgePathCacheResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type PurgeTask struct {
@@ -1003,7 +1251,7 @@ type PurgeUrlsCacheRequest struct {
 	*tchttp.BaseRequest
 
 	// 要刷新的Url列表，必须包含协议头部。
-	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 }
 
 func (r *PurgeUrlsCacheRequest) ToJsonString() string {
@@ -1011,8 +1259,18 @@ func (r *PurgeUrlsCacheRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *PurgeUrlsCacheRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Urls")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PurgeUrlsCacheRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type PurgeUrlsCacheResponse struct {
@@ -1032,8 +1290,10 @@ func (r *PurgeUrlsCacheResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *PurgeUrlsCacheResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Quota struct {
@@ -1068,7 +1328,7 @@ type ResponseHeader struct {
 
 	// 自定义响应头规则数组。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HeaderRules []*HttpHeaderPathRule `json:"HeaderRules,omitempty" name:"HeaderRules" list`
+	HeaderRules []*HttpHeaderPathRule `json:"HeaderRules,omitempty" name:"HeaderRules"`
 }
 
 type ServerCert struct {
@@ -1125,8 +1385,18 @@ func (r *StartEcdnDomainRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *StartEcdnDomainRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartEcdnDomainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type StartEcdnDomainResponse struct {
@@ -1143,8 +1413,10 @@ func (r *StartEcdnDomainResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *StartEcdnDomainResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type StopEcdnDomainRequest struct {
@@ -1159,8 +1431,18 @@ func (r *StopEcdnDomainRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *StopEcdnDomainRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopEcdnDomainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type StopEcdnDomainResponse struct {
@@ -1177,8 +1459,21 @@ func (r *StopEcdnDomainResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *StopEcdnDomainResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type Tag struct {
+
+	// 标签键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
 type TimestampData struct {
@@ -1188,7 +1483,7 @@ type TimestampData struct {
 	Time *string `json:"Time,omitempty" name:"Time"`
 
 	// 数据值
-	Value []*float64 `json:"Value,omitempty" name:"Value" list`
+	Value []*float64 `json:"Value,omitempty" name:"Value"`
 }
 
 type UpdateDomainConfigRequest struct {
@@ -1226,6 +1521,9 @@ type UpdateDomainConfigRequest struct {
 
 	// 域名加速区域，mainland，overseas或global，分别表示中国境内加速，海外加速或全球加速。
 	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// WebSocket配置
+	WebSocket *WebSocket `json:"WebSocket,omitempty" name:"WebSocket"`
 }
 
 func (r *UpdateDomainConfigRequest) ToJsonString() string {
@@ -1233,8 +1531,29 @@ func (r *UpdateDomainConfigRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateDomainConfigRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Origin")
+	delete(f, "ProjectId")
+	delete(f, "IpFilter")
+	delete(f, "IpFreqLimit")
+	delete(f, "ResponseHeader")
+	delete(f, "CacheKey")
+	delete(f, "Cache")
+	delete(f, "Https")
+	delete(f, "ForceRedirect")
+	delete(f, "Area")
+	delete(f, "WebSocket")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDomainConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateDomainConfigResponse struct {
@@ -1251,6 +1570,20 @@ func (r *UpdateDomainConfigResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateDomainConfigResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type WebSocket struct {
+
+	// WebSocket 超时配置开关, 开关为off时，平台仍支持WebSocket连接，此时超时时间默认为15秒，若需要调整超时时间，将开关置为on.
+	// 
+	// * WebSocket 为内测功能,如需使用,请联系腾讯云工程师开白.
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 设置超时时间，单位为秒，最大超时时间65秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timeout *int64 `json:"Timeout,omitempty" name:"Timeout"`
 }

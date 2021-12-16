@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -48,6 +48,8 @@ func NewBindAlarmPolicyRequest() (request *BindAlarmPolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "BindAlarmPolicy")
+    
+    
     return
 }
 
@@ -58,11 +60,18 @@ func NewBindAlarmPolicyResponse() (response *BindAlarmPolicyResponse) {
     return
 }
 
+// BindAlarmPolicy
 // 绑定拨测任务和告警策略组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) BindAlarmPolicy(request *BindAlarmPolicyRequest) (response *BindAlarmPolicyResponse, err error) {
     if request == nil {
         request = NewBindAlarmPolicyRequest()
     }
+    
     response = NewBindAlarmPolicyResponse()
     err = c.Send(request, response)
     return
@@ -73,6 +82,8 @@ func NewCreateAgentGroupRequest() (request *CreateAgentGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "CreateAgentGroup")
+    
+    
     return
 }
 
@@ -83,11 +94,18 @@ func NewCreateAgentGroupResponse() (response *CreateAgentGroupResponse) {
     return
 }
 
+// CreateAgentGroup
 // 添加拨测分组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateAgentGroup(request *CreateAgentGroupRequest) (response *CreateAgentGroupResponse, err error) {
     if request == nil {
         request = NewCreateAgentGroupRequest()
     }
+    
     response = NewCreateAgentGroupResponse()
     err = c.Send(request, response)
     return
@@ -98,6 +116,8 @@ func NewCreateTaskExRequest() (request *CreateTaskExRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "CreateTaskEx")
+    
+    
     return
 }
 
@@ -108,11 +128,18 @@ func NewCreateTaskExResponse() (response *CreateTaskExResponse) {
     return
 }
 
+// CreateTaskEx
 // 创建拨测任务(扩展)
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateTaskEx(request *CreateTaskExRequest) (response *CreateTaskExResponse, err error) {
     if request == nil {
         request = NewCreateTaskExRequest()
     }
+    
     response = NewCreateTaskExResponse()
     err = c.Send(request, response)
     return
@@ -123,6 +150,8 @@ func NewDeleteAgentGroupRequest() (request *DeleteAgentGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "DeleteAgentGroup")
+    
+    
     return
 }
 
@@ -133,11 +162,18 @@ func NewDeleteAgentGroupResponse() (response *DeleteAgentGroupResponse) {
     return
 }
 
+// DeleteAgentGroup
 // 删除拨测分组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteAgentGroup(request *DeleteAgentGroupRequest) (response *DeleteAgentGroupResponse, err error) {
     if request == nil {
         request = NewDeleteAgentGroupRequest()
     }
+    
     response = NewDeleteAgentGroupResponse()
     err = c.Send(request, response)
     return
@@ -148,6 +184,8 @@ func NewDeleteTasksRequest() (request *DeleteTasksRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "DeleteTasks")
+    
+    
     return
 }
 
@@ -158,11 +196,18 @@ func NewDeleteTasksResponse() (response *DeleteTasksResponse) {
     return
 }
 
+// DeleteTasks
 // 删除多个拨测任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteTasks(request *DeleteTasksRequest) (response *DeleteTasksResponse, err error) {
     if request == nil {
         request = NewDeleteTasksRequest()
     }
+    
     response = NewDeleteTasksResponse()
     err = c.Send(request, response)
     return
@@ -173,6 +218,8 @@ func NewDescribeAgentGroupsRequest() (request *DescribeAgentGroupsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "DescribeAgentGroups")
+    
+    
     return
 }
 
@@ -183,11 +230,18 @@ func NewDescribeAgentGroupsResponse() (response *DescribeAgentGroupsResponse) {
     return
 }
 
+// DescribeAgentGroups
 // 查询拨测分组列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAgentGroups(request *DescribeAgentGroupsRequest) (response *DescribeAgentGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeAgentGroupsRequest()
     }
+    
     response = NewDescribeAgentGroupsResponse()
     err = c.Send(request, response)
     return
@@ -198,6 +252,8 @@ func NewDescribeAgentsRequest() (request *DescribeAgentsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "DescribeAgents")
+    
+    
     return
 }
 
@@ -208,11 +264,18 @@ func NewDescribeAgentsResponse() (response *DescribeAgentsResponse) {
     return
 }
 
+// DescribeAgents
 // 查询本用户可选的拨测点列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAgents(request *DescribeAgentsRequest) (response *DescribeAgentsResponse, err error) {
     if request == nil {
         request = NewDescribeAgentsRequest()
     }
+    
     response = NewDescribeAgentsResponse()
     err = c.Send(request, response)
     return
@@ -223,6 +286,8 @@ func NewDescribeAlarmTopicRequest() (request *DescribeAlarmTopicRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "DescribeAlarmTopic")
+    
+    
     return
 }
 
@@ -233,11 +298,18 @@ func NewDescribeAlarmTopicResponse() (response *DescribeAlarmTopicResponse) {
     return
 }
 
+// DescribeAlarmTopic
 // 查询用户的告警主题列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAlarmTopic(request *DescribeAlarmTopicRequest) (response *DescribeAlarmTopicResponse, err error) {
     if request == nil {
         request = NewDescribeAlarmTopicRequest()
     }
+    
     response = NewDescribeAlarmTopicResponse()
     err = c.Send(request, response)
     return
@@ -248,6 +320,8 @@ func NewDescribeAlarmsRequest() (request *DescribeAlarmsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "DescribeAlarms")
+    
+    
     return
 }
 
@@ -258,11 +332,17 @@ func NewDescribeAlarmsResponse() (response *DescribeAlarmsResponse) {
     return
 }
 
+// DescribeAlarms
 // 查询拨测告警列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeAlarms(request *DescribeAlarmsRequest) (response *DescribeAlarmsResponse, err error) {
     if request == nil {
         request = NewDescribeAlarmsRequest()
     }
+    
     response = NewDescribeAlarmsResponse()
     err = c.Send(request, response)
     return
@@ -273,6 +353,8 @@ func NewDescribeAlarmsByTaskRequest() (request *DescribeAlarmsByTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "DescribeAlarmsByTask")
+    
+    
     return
 }
 
@@ -283,11 +365,18 @@ func NewDescribeAlarmsByTaskResponse() (response *DescribeAlarmsByTaskResponse) 
     return
 }
 
+// DescribeAlarmsByTask
 // 按任务查询拨测告警列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAlarmsByTask(request *DescribeAlarmsByTaskRequest) (response *DescribeAlarmsByTaskResponse, err error) {
     if request == nil {
         request = NewDescribeAlarmsByTaskRequest()
     }
+    
     response = NewDescribeAlarmsByTaskResponse()
     err = c.Send(request, response)
     return
@@ -298,6 +387,8 @@ func NewDescribeCatLogsRequest() (request *DescribeCatLogsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "DescribeCatLogs")
+    
+    
     return
 }
 
@@ -308,11 +399,18 @@ func NewDescribeCatLogsResponse() (response *DescribeCatLogsResponse) {
     return
 }
 
+// DescribeCatLogs
 // 查询拨测流水
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeCatLogs(request *DescribeCatLogsRequest) (response *DescribeCatLogsResponse, err error) {
     if request == nil {
         request = NewDescribeCatLogsRequest()
     }
+    
     response = NewDescribeCatLogsResponse()
     err = c.Send(request, response)
     return
@@ -323,6 +421,8 @@ func NewDescribeTaskDetailRequest() (request *DescribeTaskDetailRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "DescribeTaskDetail")
+    
+    
     return
 }
 
@@ -333,11 +433,18 @@ func NewDescribeTaskDetailResponse() (response *DescribeTaskDetailResponse) {
     return
 }
 
+// DescribeTaskDetail
 // 查询拨测任务信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (response *DescribeTaskDetailResponse, err error) {
     if request == nil {
         request = NewDescribeTaskDetailRequest()
     }
+    
     response = NewDescribeTaskDetailResponse()
     err = c.Send(request, response)
     return
@@ -348,6 +455,8 @@ func NewDescribeTasksByTypeRequest() (request *DescribeTasksByTypeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "DescribeTasksByType")
+    
+    
     return
 }
 
@@ -358,11 +467,18 @@ func NewDescribeTasksByTypeResponse() (response *DescribeTasksByTypeResponse) {
     return
 }
 
+// DescribeTasksByType
 // 按类型查询拨测任务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTasksByType(request *DescribeTasksByTypeRequest) (response *DescribeTasksByTypeResponse, err error) {
     if request == nil {
         request = NewDescribeTasksByTypeRequest()
     }
+    
     response = NewDescribeTasksByTypeResponse()
     err = c.Send(request, response)
     return
@@ -373,6 +489,8 @@ func NewDescribeUserLimitRequest() (request *DescribeUserLimitRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "DescribeUserLimit")
+    
+    
     return
 }
 
@@ -383,11 +501,18 @@ func NewDescribeUserLimitResponse() (response *DescribeUserLimitResponse) {
     return
 }
 
+// DescribeUserLimit
 // 获取用户可用资源限制
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeUserLimit(request *DescribeUserLimitRequest) (response *DescribeUserLimitResponse, err error) {
     if request == nil {
         request = NewDescribeUserLimitRequest()
     }
+    
     response = NewDescribeUserLimitResponse()
     err = c.Send(request, response)
     return
@@ -398,6 +523,8 @@ func NewGetAvailRatioHistoryRequest() (request *GetAvailRatioHistoryRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "GetAvailRatioHistory")
+    
+    
     return
 }
 
@@ -408,11 +535,18 @@ func NewGetAvailRatioHistoryResponse() (response *GetAvailRatioHistoryResponse) 
     return
 }
 
+// GetAvailRatioHistory
 // 获取指定时刻的可用率地图信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetAvailRatioHistory(request *GetAvailRatioHistoryRequest) (response *GetAvailRatioHistoryResponse, err error) {
     if request == nil {
         request = NewGetAvailRatioHistoryRequest()
     }
+    
     response = NewGetAvailRatioHistoryResponse()
     err = c.Send(request, response)
     return
@@ -423,6 +557,8 @@ func NewGetDailyAvailRatioRequest() (request *GetDailyAvailRatioRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "GetDailyAvailRatio")
+    
+    
     return
 }
 
@@ -433,11 +569,18 @@ func NewGetDailyAvailRatioResponse() (response *GetDailyAvailRatioResponse) {
     return
 }
 
+// GetDailyAvailRatio
 // 获取一天的整体可用率信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetDailyAvailRatio(request *GetDailyAvailRatioRequest) (response *GetDailyAvailRatioResponse, err error) {
     if request == nil {
         request = NewGetDailyAvailRatioRequest()
     }
+    
     response = NewGetDailyAvailRatioResponse()
     err = c.Send(request, response)
     return
@@ -448,6 +591,8 @@ func NewGetRealAvailRatioRequest() (request *GetRealAvailRatioRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "GetRealAvailRatio")
+    
+    
     return
 }
 
@@ -458,11 +603,18 @@ func NewGetRealAvailRatioResponse() (response *GetRealAvailRatioResponse) {
     return
 }
 
+// GetRealAvailRatio
 // 获取实时可用率信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetRealAvailRatio(request *GetRealAvailRatioRequest) (response *GetRealAvailRatioResponse, err error) {
     if request == nil {
         request = NewGetRealAvailRatioRequest()
     }
+    
     response = NewGetRealAvailRatioResponse()
     err = c.Send(request, response)
     return
@@ -473,6 +625,8 @@ func NewGetRespTimeTrendExRequest() (request *GetRespTimeTrendExRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "GetRespTimeTrendEx")
+    
+    
     return
 }
 
@@ -483,11 +637,18 @@ func NewGetRespTimeTrendExResponse() (response *GetRespTimeTrendExResponse) {
     return
 }
 
+// GetRespTimeTrendEx
 // 查询拨测任务的走势数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetRespTimeTrendEx(request *GetRespTimeTrendExRequest) (response *GetRespTimeTrendExResponse, err error) {
     if request == nil {
         request = NewGetRespTimeTrendExRequest()
     }
+    
     response = NewGetRespTimeTrendExResponse()
     err = c.Send(request, response)
     return
@@ -498,6 +659,8 @@ func NewGetResultSummaryRequest() (request *GetResultSummaryRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "GetResultSummary")
+    
+    
     return
 }
 
@@ -508,11 +671,18 @@ func NewGetResultSummaryResponse() (response *GetResultSummaryResponse) {
     return
 }
 
+// GetResultSummary
 // 获取任务列表的实时数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetResultSummary(request *GetResultSummaryRequest) (response *GetResultSummaryResponse, err error) {
     if request == nil {
         request = NewGetResultSummaryRequest()
     }
+    
     response = NewGetResultSummaryResponse()
     err = c.Send(request, response)
     return
@@ -523,6 +693,8 @@ func NewGetReturnCodeHistoryRequest() (request *GetReturnCodeHistoryRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "GetReturnCodeHistory")
+    
+    
     return
 }
 
@@ -533,11 +705,18 @@ func NewGetReturnCodeHistoryResponse() (response *GetReturnCodeHistoryResponse) 
     return
 }
 
+// GetReturnCodeHistory
 // 查询拨测任务的历史返回码信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetReturnCodeHistory(request *GetReturnCodeHistoryRequest) (response *GetReturnCodeHistoryResponse, err error) {
     if request == nil {
         request = NewGetReturnCodeHistoryRequest()
     }
+    
     response = NewGetReturnCodeHistoryResponse()
     err = c.Send(request, response)
     return
@@ -548,6 +727,8 @@ func NewGetReturnCodeInfoRequest() (request *GetReturnCodeInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "GetReturnCodeInfo")
+    
+    
     return
 }
 
@@ -558,11 +739,18 @@ func NewGetReturnCodeInfoResponse() (response *GetReturnCodeInfoResponse) {
     return
 }
 
+// GetReturnCodeInfo
 // 查询拨测任务的返回码统计信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetReturnCodeInfo(request *GetReturnCodeInfoRequest) (response *GetReturnCodeInfoResponse, err error) {
     if request == nil {
         request = NewGetReturnCodeInfoRequest()
     }
+    
     response = NewGetReturnCodeInfoResponse()
     err = c.Send(request, response)
     return
@@ -573,6 +761,8 @@ func NewGetTaskTotalNumberRequest() (request *GetTaskTotalNumberRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "GetTaskTotalNumber")
+    
+    
     return
 }
 
@@ -583,11 +773,17 @@ func NewGetTaskTotalNumberResponse() (response *GetTaskTotalNumberResponse) {
     return
 }
 
+// GetTaskTotalNumber
 // 获取AppId下的拨测任务总数
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) GetTaskTotalNumber(request *GetTaskTotalNumberRequest) (response *GetTaskTotalNumberResponse, err error) {
     if request == nil {
         request = NewGetTaskTotalNumberRequest()
     }
+    
     response = NewGetTaskTotalNumberResponse()
     err = c.Send(request, response)
     return
@@ -598,6 +794,8 @@ func NewModifyAgentGroupRequest() (request *ModifyAgentGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "ModifyAgentGroup")
+    
+    
     return
 }
 
@@ -608,11 +806,18 @@ func NewModifyAgentGroupResponse() (response *ModifyAgentGroupResponse) {
     return
 }
 
+// ModifyAgentGroup
 // 修改拨测分组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyAgentGroup(request *ModifyAgentGroupRequest) (response *ModifyAgentGroupResponse, err error) {
     if request == nil {
         request = NewModifyAgentGroupRequest()
     }
+    
     response = NewModifyAgentGroupResponse()
     err = c.Send(request, response)
     return
@@ -623,6 +828,8 @@ func NewModifyTaskExRequest() (request *ModifyTaskExRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "ModifyTaskEx")
+    
+    
     return
 }
 
@@ -633,11 +840,18 @@ func NewModifyTaskExResponse() (response *ModifyTaskExResponse) {
     return
 }
 
+// ModifyTaskEx
 // 修改拨测任务(扩展)
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyTaskEx(request *ModifyTaskExRequest) (response *ModifyTaskExResponse, err error) {
     if request == nil {
         request = NewModifyTaskExRequest()
     }
+    
     response = NewModifyTaskExResponse()
     err = c.Send(request, response)
     return
@@ -648,6 +862,8 @@ func NewPauseTaskRequest() (request *PauseTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "PauseTask")
+    
+    
     return
 }
 
@@ -658,11 +874,18 @@ func NewPauseTaskResponse() (response *PauseTaskResponse) {
     return
 }
 
+// PauseTask
 // 暂停拨测任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) PauseTask(request *PauseTaskRequest) (response *PauseTaskResponse, err error) {
     if request == nil {
         request = NewPauseTaskRequest()
     }
+    
     response = NewPauseTaskResponse()
     err = c.Send(request, response)
     return
@@ -673,6 +896,8 @@ func NewRunTaskRequest() (request *RunTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "RunTask")
+    
+    
     return
 }
 
@@ -683,11 +908,18 @@ func NewRunTaskResponse() (response *RunTaskResponse) {
     return
 }
 
+// RunTask
 // 运行拨测任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) RunTask(request *RunTaskRequest) (response *RunTaskResponse, err error) {
     if request == nil {
         request = NewRunTaskRequest()
     }
+    
     response = NewRunTaskResponse()
     err = c.Send(request, response)
     return
@@ -698,6 +930,8 @@ func NewVerifyResultRequest() (request *VerifyResultRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("cat", APIVersion, "VerifyResult")
+    
+    
     return
 }
 
@@ -708,11 +942,18 @@ func NewVerifyResultResponse() (response *VerifyResultResponse) {
     return
 }
 
+// VerifyResult
 // 验证拨测任务，结果验证查询（验证成功的，才建议创建拨测任务）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) VerifyResult(request *VerifyResultRequest) (response *VerifyResultResponse, err error) {
     if request == nil {
         request = NewVerifyResultRequest()
     }
+    
     response = NewVerifyResultResponse()
     err = c.Send(request, response)
     return

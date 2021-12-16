@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -48,6 +48,8 @@ func NewCreateJobRequest() (request *CreateJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "CreateJob")
+    
+    
     return
 }
 
@@ -58,11 +60,21 @@ func NewCreateJobResponse() (response *CreateJobResponse) {
     return
 }
 
+// CreateJob
 // 创建任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ALREADYEXISTS = "FailedOperation.AlreadyExists"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateJob(request *CreateJobRequest) (response *CreateJobResponse, err error) {
     if request == nil {
         request = NewCreateJobRequest()
     }
+    
     response = NewCreateJobResponse()
     err = c.Send(request, response)
     return
@@ -73,6 +85,8 @@ func NewCreateRsgAsGroupRequest() (request *CreateRsgAsGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "CreateRsgAsGroup")
+    
+    
     return
 }
 
@@ -83,11 +97,22 @@ func NewCreateRsgAsGroupResponse() (response *CreateRsgAsGroupResponse) {
     return
 }
 
+// CreateRsgAsGroup
 // 创建资源组的伸缩组。当前一个资源组仅允许创建一个伸缩组。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ALREADYEXISTS = "FailedOperation.AlreadyExists"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateRsgAsGroup(request *CreateRsgAsGroupRequest) (response *CreateRsgAsGroupResponse, err error) {
     if request == nil {
         request = NewCreateRsgAsGroupRequest()
     }
+    
     response = NewCreateRsgAsGroupResponse()
     err = c.Send(request, response)
     return
@@ -98,6 +123,8 @@ func NewCreateRuntimeRequest() (request *CreateRuntimeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "CreateRuntime")
+    
+    
     return
 }
 
@@ -108,11 +135,21 @@ func NewCreateRuntimeResponse() (response *CreateRuntimeResponse) {
     return
 }
 
+// CreateRuntime
 // 创建运行环境
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ALREADYEXISTS = "FailedOperation.AlreadyExists"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateRuntime(request *CreateRuntimeRequest) (response *CreateRuntimeResponse, err error) {
     if request == nil {
         request = NewCreateRuntimeRequest()
     }
+    
     response = NewCreateRuntimeResponse()
     err = c.Send(request, response)
     return
@@ -123,6 +160,8 @@ func NewCreateServiceRequest() (request *CreateServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "CreateService")
+    
+    
     return
 }
 
@@ -133,11 +172,21 @@ func NewCreateServiceResponse() (response *CreateServiceResponse) {
     return
 }
 
+// CreateService
 // 创建服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ALREADYEXISTS = "FailedOperation.AlreadyExists"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateService(request *CreateServiceRequest) (response *CreateServiceResponse, err error) {
     if request == nil {
         request = NewCreateServiceRequest()
     }
+    
     response = NewCreateServiceResponse()
     err = c.Send(request, response)
     return
@@ -148,6 +197,8 @@ func NewCreateServiceConfigRequest() (request *CreateServiceConfigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "CreateServiceConfig")
+    
+    
     return
 }
 
@@ -158,11 +209,21 @@ func NewCreateServiceConfigResponse() (response *CreateServiceConfigResponse) {
     return
 }
 
+// CreateServiceConfig
 // 创建服务配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ALREADYEXISTS = "FailedOperation.AlreadyExists"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateServiceConfig(request *CreateServiceConfigRequest) (response *CreateServiceConfigResponse, err error) {
     if request == nil {
         request = NewCreateServiceConfigRequest()
     }
+    
     response = NewCreateServiceConfigResponse()
     err = c.Send(request, response)
     return
@@ -173,6 +234,8 @@ func NewDeleteInstanceRequest() (request *DeleteInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "DeleteInstance")
+    
+    
     return
 }
 
@@ -183,11 +246,20 @@ func NewDeleteInstanceResponse() (response *DeleteInstanceResponse) {
     return
 }
 
+// DeleteInstance
 // 删除资源组中的节点。目前仅支持删除已经到期的预付费节点，和按量付费节点。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteInstance(request *DeleteInstanceRequest) (response *DeleteInstanceResponse, err error) {
     if request == nil {
         request = NewDeleteInstanceRequest()
     }
+    
     response = NewDeleteInstanceResponse()
     err = c.Send(request, response)
     return
@@ -198,6 +270,8 @@ func NewDeleteJobRequest() (request *DeleteJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "DeleteJob")
+    
+    
     return
 }
 
@@ -208,11 +282,18 @@ func NewDeleteJobResponse() (response *DeleteJobResponse) {
     return
 }
 
+// DeleteJob
 // 删除任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteJob(request *DeleteJobRequest) (response *DeleteJobResponse, err error) {
     if request == nil {
         request = NewDeleteJobRequest()
     }
+    
     response = NewDeleteJobResponse()
     err = c.Send(request, response)
     return
@@ -223,6 +304,8 @@ func NewDeleteResourceGroupRequest() (request *DeleteResourceGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "DeleteResourceGroup")
+    
+    
     return
 }
 
@@ -233,11 +316,18 @@ func NewDeleteResourceGroupResponse() (response *DeleteResourceGroupResponse) {
     return
 }
 
+// DeleteResourceGroup
 // 删除资源组
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteResourceGroup(request *DeleteResourceGroupRequest) (response *DeleteResourceGroupResponse, err error) {
     if request == nil {
         request = NewDeleteResourceGroupRequest()
     }
+    
     response = NewDeleteResourceGroupResponse()
     err = c.Send(request, response)
     return
@@ -248,6 +338,8 @@ func NewDeleteRsgAsGroupRequest() (request *DeleteRsgAsGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "DeleteRsgAsGroup")
+    
+    
     return
 }
 
@@ -258,11 +350,19 @@ func NewDeleteRsgAsGroupResponse() (response *DeleteRsgAsGroupResponse) {
     return
 }
 
+// DeleteRsgAsGroup
 // 伸缩
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteRsgAsGroup(request *DeleteRsgAsGroupRequest) (response *DeleteRsgAsGroupResponse, err error) {
     if request == nil {
         request = NewDeleteRsgAsGroupRequest()
     }
+    
     response = NewDeleteRsgAsGroupResponse()
     err = c.Send(request, response)
     return
@@ -273,6 +373,8 @@ func NewDeleteRuntimeRequest() (request *DeleteRuntimeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "DeleteRuntime")
+    
+    
     return
 }
 
@@ -283,11 +385,21 @@ func NewDeleteRuntimeResponse() (response *DeleteRuntimeResponse) {
     return
 }
 
+// DeleteRuntime
 // 删除运行环境
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteRuntime(request *DeleteRuntimeRequest) (response *DeleteRuntimeResponse, err error) {
     if request == nil {
         request = NewDeleteRuntimeRequest()
     }
+    
     response = NewDeleteRuntimeResponse()
     err = c.Send(request, response)
     return
@@ -298,6 +410,8 @@ func NewDeleteServiceRequest() (request *DeleteServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "DeleteService")
+    
+    
     return
 }
 
@@ -308,11 +422,20 @@ func NewDeleteServiceResponse() (response *DeleteServiceResponse) {
     return
 }
 
+// DeleteService
 // 删除服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteService(request *DeleteServiceRequest) (response *DeleteServiceResponse, err error) {
     if request == nil {
         request = NewDeleteServiceRequest()
     }
+    
     response = NewDeleteServiceResponse()
     err = c.Send(request, response)
     return
@@ -323,6 +446,8 @@ func NewDeleteServiceConfigRequest() (request *DeleteServiceConfigRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "DeleteServiceConfig")
+    
+    
     return
 }
 
@@ -333,11 +458,20 @@ func NewDeleteServiceConfigResponse() (response *DeleteServiceConfigResponse) {
     return
 }
 
+// DeleteServiceConfig
 // 删除服务配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteServiceConfig(request *DeleteServiceConfigRequest) (response *DeleteServiceConfigResponse, err error) {
     if request == nil {
         request = NewDeleteServiceConfigRequest()
     }
+    
     response = NewDeleteServiceConfigResponse()
     err = c.Send(request, response)
     return
@@ -348,6 +482,8 @@ func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "DescribeInstances")
+    
+    
     return
 }
 
@@ -358,11 +494,19 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
     return
 }
 
+// DescribeInstances
 // 获取节点列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    
     response = NewDescribeInstancesResponse()
     err = c.Send(request, response)
     return
@@ -373,6 +517,8 @@ func NewDescribeResourceGroupsRequest() (request *DescribeResourceGroupsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "DescribeResourceGroups")
+    
+    
     return
 }
 
@@ -383,11 +529,19 @@ func NewDescribeResourceGroupsResponse() (response *DescribeResourceGroupsRespon
     return
 }
 
+// DescribeResourceGroups
 // 获取资源组列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeResourceGroups(request *DescribeResourceGroupsRequest) (response *DescribeResourceGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeResourceGroupsRequest()
     }
+    
     response = NewDescribeResourceGroupsResponse()
     err = c.Send(request, response)
     return
@@ -398,6 +552,8 @@ func NewDescribeRsgAsGroupActivitiesRequest() (request *DescribeRsgAsGroupActivi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "DescribeRsgAsGroupActivities")
+    
+    
     return
 }
 
@@ -408,11 +564,20 @@ func NewDescribeRsgAsGroupActivitiesResponse() (response *DescribeRsgAsGroupActi
     return
 }
 
+// DescribeRsgAsGroupActivities
 // 查询伸缩组活动
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRsgAsGroupActivities(request *DescribeRsgAsGroupActivitiesRequest) (response *DescribeRsgAsGroupActivitiesResponse, err error) {
     if request == nil {
         request = NewDescribeRsgAsGroupActivitiesRequest()
     }
+    
     response = NewDescribeRsgAsGroupActivitiesResponse()
     err = c.Send(request, response)
     return
@@ -423,6 +588,8 @@ func NewDescribeRsgAsGroupsRequest() (request *DescribeRsgAsGroupsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "DescribeRsgAsGroups")
+    
+    
     return
 }
 
@@ -433,11 +600,20 @@ func NewDescribeRsgAsGroupsResponse() (response *DescribeRsgAsGroupsResponse) {
     return
 }
 
+// DescribeRsgAsGroups
 // 查询资源组的伸缩组信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRsgAsGroups(request *DescribeRsgAsGroupsRequest) (response *DescribeRsgAsGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeRsgAsGroupsRequest()
     }
+    
     response = NewDescribeRsgAsGroupsResponse()
     err = c.Send(request, response)
     return
@@ -448,6 +624,8 @@ func NewDescribeRuntimesRequest() (request *DescribeRuntimesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "DescribeRuntimes")
+    
+    
     return
 }
 
@@ -458,11 +636,20 @@ func NewDescribeRuntimesResponse() (response *DescribeRuntimesResponse) {
     return
 }
 
+// DescribeRuntimes
 // 描述服务运行环境
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeRuntimes(request *DescribeRuntimesRequest) (response *DescribeRuntimesResponse, err error) {
     if request == nil {
         request = NewDescribeRuntimesRequest()
     }
+    
     response = NewDescribeRuntimesResponse()
     err = c.Send(request, response)
     return
@@ -473,6 +660,8 @@ func NewDescribeServiceConfigsRequest() (request *DescribeServiceConfigsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "DescribeServiceConfigs")
+    
+    
     return
 }
 
@@ -483,11 +672,20 @@ func NewDescribeServiceConfigsResponse() (response *DescribeServiceConfigsRespon
     return
 }
 
+// DescribeServiceConfigs
 // 描述服务配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeServiceConfigs(request *DescribeServiceConfigsRequest) (response *DescribeServiceConfigsResponse, err error) {
     if request == nil {
         request = NewDescribeServiceConfigsRequest()
     }
+    
     response = NewDescribeServiceConfigsResponse()
     err = c.Send(request, response)
     return
@@ -498,6 +696,8 @@ func NewDescribeServicesRequest() (request *DescribeServicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "DescribeServices")
+    
+    
     return
 }
 
@@ -508,11 +708,21 @@ func NewDescribeServicesResponse() (response *DescribeServicesResponse) {
     return
 }
 
+// DescribeServices
 // 描述服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ALREADYEXISTS = "FailedOperation.AlreadyExists"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeServices(request *DescribeServicesRequest) (response *DescribeServicesResponse, err error) {
     if request == nil {
         request = NewDescribeServicesRequest()
     }
+    
     response = NewDescribeServicesResponse()
     err = c.Send(request, response)
     return
@@ -523,6 +733,8 @@ func NewDisableRsgAsGroupRequest() (request *DisableRsgAsGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "DisableRsgAsGroup")
+    
+    
     return
 }
 
@@ -533,11 +745,20 @@ func NewDisableRsgAsGroupResponse() (response *DisableRsgAsGroupResponse) {
     return
 }
 
+// DisableRsgAsGroup
 // 停用资源组的伸缩组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DisableRsgAsGroup(request *DisableRsgAsGroupRequest) (response *DisableRsgAsGroupResponse, err error) {
     if request == nil {
         request = NewDisableRsgAsGroupRequest()
     }
+    
     response = NewDisableRsgAsGroupResponse()
     err = c.Send(request, response)
     return
@@ -548,6 +769,8 @@ func NewEnableRsgAsGroupRequest() (request *EnableRsgAsGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "EnableRsgAsGroup")
+    
+    
     return
 }
 
@@ -558,11 +781,20 @@ func NewEnableRsgAsGroupResponse() (response *EnableRsgAsGroupResponse) {
     return
 }
 
+// EnableRsgAsGroup
 // 启用资源组的伸缩组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) EnableRsgAsGroup(request *EnableRsgAsGroupRequest) (response *EnableRsgAsGroupResponse, err error) {
     if request == nil {
         request = NewEnableRsgAsGroupRequest()
     }
+    
     response = NewEnableRsgAsGroupResponse()
     err = c.Send(request, response)
     return
@@ -573,6 +805,8 @@ func NewExposeServiceRequest() (request *ExposeServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "ExposeService")
+    
+    
     return
 }
 
@@ -583,11 +817,21 @@ func NewExposeServiceResponse() (response *ExposeServiceResponse) {
     return
 }
 
+// ExposeService
 // 暴露服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ALREADYEXISTS = "FailedOperation.AlreadyExists"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ExposeService(request *ExposeServiceRequest) (response *ExposeServiceResponse, err error) {
     if request == nil {
         request = NewExposeServiceRequest()
     }
+    
     response = NewExposeServiceResponse()
     err = c.Send(request, response)
     return
@@ -598,6 +842,8 @@ func NewUpdateJobRequest() (request *UpdateJobRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "UpdateJob")
+    
+    
     return
 }
 
@@ -608,11 +854,20 @@ func NewUpdateJobResponse() (response *UpdateJobResponse) {
     return
 }
 
+// UpdateJob
 // 更新任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ALREADYEXISTS = "FailedOperation.AlreadyExists"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UpdateJob(request *UpdateJobRequest) (response *UpdateJobResponse, err error) {
     if request == nil {
         request = NewUpdateJobRequest()
     }
+    
     response = NewUpdateJobResponse()
     err = c.Send(request, response)
     return
@@ -623,6 +878,8 @@ func NewUpdateRsgAsGroupRequest() (request *UpdateRsgAsGroupRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "UpdateRsgAsGroup")
+    
+    
     return
 }
 
@@ -633,11 +890,20 @@ func NewUpdateRsgAsGroupResponse() (response *UpdateRsgAsGroupResponse) {
     return
 }
 
+// UpdateRsgAsGroup
 // 更新资源组的伸缩组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateRsgAsGroup(request *UpdateRsgAsGroupRequest) (response *UpdateRsgAsGroupResponse, err error) {
     if request == nil {
         request = NewUpdateRsgAsGroupRequest()
     }
+    
     response = NewUpdateRsgAsGroupResponse()
     err = c.Send(request, response)
     return
@@ -648,6 +914,8 @@ func NewUpdateServiceRequest() (request *UpdateServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tiems", APIVersion, "UpdateService")
+    
+    
     return
 }
 
@@ -658,11 +926,20 @@ func NewUpdateServiceResponse() (response *UpdateServiceResponse) {
     return
 }
 
+// UpdateService
 // 更新服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) UpdateService(request *UpdateServiceRequest) (response *UpdateServiceResponse, err error) {
     if request == nil {
         request = NewUpdateServiceRequest()
     }
+    
     response = NewUpdateServiceResponse()
     err = c.Send(request, response)
     return

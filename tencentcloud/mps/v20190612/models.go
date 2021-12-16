@@ -16,7 +16,7 @@ package v20190612
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -87,6 +87,14 @@ type AIRecognitionTemplateItem struct {
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
+type ActionConfigInfo struct {
+
+	// 动作识别任务开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
 type AdaptiveDynamicStreamingInfoItem struct {
 
 	// 转自适应码流规格。
@@ -108,7 +116,7 @@ type AdaptiveDynamicStreamingTaskInput struct {
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
-	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet" list`
+	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet"`
 
 	// 转自适应码流后文件的目标存储，不填则继承上层的 OutputStorage 值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -146,7 +154,7 @@ type AdaptiveDynamicStreamingTemplate struct {
 	Format *string `json:"Format,omitempty" name:"Format"`
 
 	// 转自适应码流输入流参数信息，最多输入10路流。
-	StreamInfos []*AdaptiveStreamTemplate `json:"StreamInfos,omitempty" name:"StreamInfos" list`
+	StreamInfos []*AdaptiveStreamTemplate `json:"StreamInfos,omitempty" name:"StreamInfos"`
 
 	// 是否禁止视频低码率转高码率，取值范围：
 	// <li>0：否，</li>
@@ -220,7 +228,7 @@ type AiAnalysisTaskClassificationInput struct {
 type AiAnalysisTaskClassificationOutput struct {
 
 	// 视频智能分类列表。
-	ClassificationSet []*MediaAiAnalysisClassificationItem `json:"ClassificationSet,omitempty" name:"ClassificationSet" list`
+	ClassificationSet []*MediaAiAnalysisClassificationItem `json:"ClassificationSet,omitempty" name:"ClassificationSet"`
 }
 
 type AiAnalysisTaskClassificationResult struct {
@@ -228,7 +236,10 @@ type AiAnalysisTaskClassificationResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -251,7 +262,7 @@ type AiAnalysisTaskCoverInput struct {
 type AiAnalysisTaskCoverOutput struct {
 
 	// 智能封面列表。
-	CoverSet []*MediaAiAnalysisCoverItem `json:"CoverSet,omitempty" name:"CoverSet" list`
+	CoverSet []*MediaAiAnalysisCoverItem `json:"CoverSet,omitempty" name:"CoverSet"`
 
 	// 智能封面的存储位置。
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitempty" name:"OutputStorage"`
@@ -262,7 +273,10 @@ type AiAnalysisTaskCoverResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -285,7 +299,7 @@ type AiAnalysisTaskFrameTagInput struct {
 type AiAnalysisTaskFrameTagOutput struct {
 
 	// 视频按帧标签列表。
-	SegmentSet []*MediaAiAnalysisFrameTagSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*MediaAiAnalysisFrameTagSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiAnalysisTaskFrameTagResult struct {
@@ -293,7 +307,10 @@ type AiAnalysisTaskFrameTagResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -322,7 +339,7 @@ type AiAnalysisTaskTagInput struct {
 type AiAnalysisTaskTagOutput struct {
 
 	// 视频智能标签列表。
-	TagSet []*MediaAiAnalysisTagItem `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*MediaAiAnalysisTagItem `json:"TagSet,omitempty" name:"TagSet"`
 }
 
 type AiAnalysisTaskTagResult struct {
@@ -330,7 +347,10 @@ type AiAnalysisTaskTagResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -453,7 +473,10 @@ type AiRecognitionTaskAsrFullTextResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -476,7 +499,7 @@ type AiRecognitionTaskAsrFullTextResultInput struct {
 type AiRecognitionTaskAsrFullTextResultOutput struct {
 
 	// 语音全文识别片段列表。
-	SegmentSet []*AiRecognitionTaskAsrFullTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*AiRecognitionTaskAsrFullTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 
 	// 字幕文件地址。
 	SubtitlePath *string `json:"SubtitlePath,omitempty" name:"SubtitlePath"`
@@ -505,7 +528,10 @@ type AiRecognitionTaskAsrWordsResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -531,13 +557,13 @@ type AiRecognitionTaskAsrWordsResultItem struct {
 	Word *string `json:"Word,omitempty" name:"Word"`
 
 	// 语音关键词出现的时间片段列表。
-	SegmentSet []*AiRecognitionTaskAsrWordsSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*AiRecognitionTaskAsrWordsSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiRecognitionTaskAsrWordsResultOutput struct {
 
 	// 语音关键词识别结果集。
-	ResultSet []*AiRecognitionTaskAsrWordsResultItem `json:"ResultSet,omitempty" name:"ResultSet" list`
+	ResultSet []*AiRecognitionTaskAsrWordsResultItem `json:"ResultSet,omitempty" name:"ResultSet"`
 }
 
 type AiRecognitionTaskAsrWordsSegmentItem struct {
@@ -557,7 +583,10 @@ type AiRecognitionTaskFaceResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -591,13 +620,13 @@ type AiRecognitionTaskFaceResultItem struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 人物出现的片段结果集。
-	SegmentSet []*AiRecognitionTaskFaceSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*AiRecognitionTaskFaceSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiRecognitionTaskFaceResultOutput struct {
 
 	// 智能人脸识别结果集。
-	ResultSet []*AiRecognitionTaskFaceResultItem `json:"ResultSet,omitempty" name:"ResultSet" list`
+	ResultSet []*AiRecognitionTaskFaceResultItem `json:"ResultSet,omitempty" name:"ResultSet"`
 }
 
 type AiRecognitionTaskFaceSegmentItem struct {
@@ -612,7 +641,7 @@ type AiRecognitionTaskFaceSegmentItem struct {
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
-	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet"`
 }
 
 type AiRecognitionTaskInput struct {
@@ -626,7 +655,10 @@ type AiRecognitionTaskOcrFullTextResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -649,7 +681,7 @@ type AiRecognitionTaskOcrFullTextResultInput struct {
 type AiRecognitionTaskOcrFullTextResultOutput struct {
 
 	// 文本全文识别结果集。
-	SegmentSet []*AiRecognitionTaskOcrFullTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*AiRecognitionTaskOcrFullTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiRecognitionTaskOcrFullTextSegmentItem struct {
@@ -661,7 +693,7 @@ type AiRecognitionTaskOcrFullTextSegmentItem struct {
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 
 	// 识别片段结果集。
-	TextSet []*AiRecognitionTaskOcrFullTextSegmentTextItem `json:"TextSet,omitempty" name:"TextSet" list`
+	TextSet []*AiRecognitionTaskOcrFullTextSegmentTextItem `json:"TextSet,omitempty" name:"TextSet"`
 }
 
 type AiRecognitionTaskOcrFullTextSegmentTextItem struct {
@@ -670,7 +702,7 @@ type AiRecognitionTaskOcrFullTextSegmentTextItem struct {
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
-	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet"`
 
 	// 识别文本。
 	Text *string `json:"Text,omitempty" name:"Text"`
@@ -681,7 +713,10 @@ type AiRecognitionTaskOcrWordsResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -707,13 +742,13 @@ type AiRecognitionTaskOcrWordsResultItem struct {
 	Word *string `json:"Word,omitempty" name:"Word"`
 
 	// 文本关键出现的片段列表。
-	SegmentSet []*AiRecognitionTaskOcrWordsSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*AiRecognitionTaskOcrWordsSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiRecognitionTaskOcrWordsResultOutput struct {
 
 	// 文本关键词识别结果集。
-	ResultSet []*AiRecognitionTaskOcrWordsResultItem `json:"ResultSet,omitempty" name:"ResultSet" list`
+	ResultSet []*AiRecognitionTaskOcrWordsResultItem `json:"ResultSet,omitempty" name:"ResultSet"`
 }
 
 type AiRecognitionTaskOcrWordsSegmentItem struct {
@@ -728,7 +763,7 @@ type AiRecognitionTaskOcrWordsSegmentItem struct {
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
-	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet"`
 }
 
 type AiReviewPoliticalAsrTaskInput struct {
@@ -749,7 +784,7 @@ type AiReviewPoliticalAsrTaskOutput struct {
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// Asr 文字有涉政、敏感嫌疑的视频片段列表。
-	SegmentSet []*MediaContentReviewAsrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*MediaContentReviewAsrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiReviewPoliticalOcrTaskInput struct {
@@ -770,7 +805,7 @@ type AiReviewPoliticalOcrTaskOutput struct {
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// Ocr 文字有涉政、敏感嫌疑的视频片段列表。
-	SegmentSet []*MediaContentReviewOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*MediaContentReviewOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiReviewPoliticalTaskInput struct {
@@ -798,7 +833,7 @@ type AiReviewPoliticalTaskOutput struct {
 	Label *string `json:"Label,omitempty" name:"Label"`
 
 	// 有涉政嫌疑的视频片段列表。
-	SegmentSet []*MediaContentReviewPoliticalSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*MediaContentReviewPoliticalSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiReviewPornAsrTaskInput struct {
@@ -819,7 +854,7 @@ type AiReviewPornAsrTaskOutput struct {
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// Asr 文字有涉黄嫌疑的视频片段列表。
-	SegmentSet []*MediaContentReviewAsrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*MediaContentReviewAsrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiReviewPornOcrTaskInput struct {
@@ -840,7 +875,7 @@ type AiReviewPornOcrTaskOutput struct {
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// Ocr 文字有涉黄嫌疑的视频片段列表。
-	SegmentSet []*MediaContentReviewOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*MediaContentReviewOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiReviewPornTaskInput struct {
@@ -868,7 +903,7 @@ type AiReviewPornTaskOutput struct {
 	Label *string `json:"Label,omitempty" name:"Label"`
 
 	// 有涉黄嫌疑的视频片段列表。
-	SegmentSet []*MediaContentReviewSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*MediaContentReviewSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiReviewProhibitedAsrTaskInput struct {
@@ -889,7 +924,7 @@ type AiReviewProhibitedAsrTaskOutput struct {
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// Asr 文字有涉违禁嫌疑的视频片段列表。
-	SegmentSet []*MediaContentReviewAsrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*MediaContentReviewAsrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiReviewProhibitedOcrTaskInput struct {
@@ -910,7 +945,7 @@ type AiReviewProhibitedOcrTaskOutput struct {
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// Ocr 文字有涉违禁嫌疑的视频片段列表。
-	SegmentSet []*MediaContentReviewOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*MediaContentReviewOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiReviewTaskPoliticalAsrResult struct {
@@ -918,7 +953,10 @@ type AiReviewTaskPoliticalAsrResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -934,10 +972,13 @@ type AiReviewTaskPoliticalAsrResult struct {
 
 type AiReviewTaskPoliticalOcrResult struct {
 
-	// 任务状态，有 PROCESSING，SUCCESS �� FAIL 三种。
+	// 任务状态，有 PROCESSING，SUCCESS，FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -956,7 +997,10 @@ type AiReviewTaskPoliticalResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -975,7 +1019,10 @@ type AiReviewTaskPornAsrResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -994,7 +1041,10 @@ type AiReviewTaskPornOcrResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -1013,7 +1063,10 @@ type AiReviewTaskPornResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -1032,10 +1085,10 @@ type AiReviewTaskProhibitedAsrResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0 表示成功，其他值表示失败：
-	// <li>40000：输入参数不合法，请检查输入参数；</li>
-	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
-	// <li>70000：内部服务错误，建议重试。</li>
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -1054,10 +1107,10 @@ type AiReviewTaskProhibitedOcrResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0 表示成功，其他值表示失败：
-	// <li>40000：输入参数不合法，请检查输入参数；</li>
-	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
-	// <li>70000：内部服务错误，建议重试。</li>
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -1076,10 +1129,10 @@ type AiReviewTaskTerrorismOcrResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0 表示成功，其他值表示失败：
-	// <li>40000：输入参数不合法，请检查输入参数；</li>
-	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
-	// <li>70000：内部服务错误，建议重试。</li>
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -1098,7 +1151,10 @@ type AiReviewTaskTerrorismResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -1130,7 +1186,7 @@ type AiReviewTerrorismOcrTaskOutput struct {
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// Ocr 文字有涉恐嫌疑的视频片段列表。
-	SegmentSet []*MediaContentReviewOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*MediaContentReviewOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiReviewTerrorismTaskInput struct {
@@ -1159,10 +1215,11 @@ type AiReviewTerrorismTaskOutput struct {
 	// <li>militant：武装分子。</li>
 	// <li>explosion：爆炸火灾。</li>
 	// <li>terrorists：暴恐人物。</li>
+	// <li>scenario：暴恐画面。</li>
 	Label *string `json:"Label,omitempty" name:"Label"`
 
 	// 有暴恐嫌疑的视频片段列表。
-	SegmentSet []*MediaContentReviewSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet" list`
+	SegmentSet []*MediaContentReviewSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type AiSampleFaceInfo struct {
@@ -1180,13 +1237,13 @@ type AiSampleFaceOperation struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 人脸 ID 集合，当 Type为delete 时，该字段必填。
-	FaceIds []*string `json:"FaceIds,omitempty" name:"FaceIds" list`
+	FaceIds []*string `json:"FaceIds,omitempty" name:"FaceIds"`
 
 	// 人脸图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串集合。
 	// <li>当 Type为add 或 reset 时，该字段必填；</li>
 	// <li>数组长度限制：5 张图片。</li>
 	// 注意：图片必须是单人像正面人脸较清晰的照片，像素不低于 200*200。
-	FaceContents []*string `json:"FaceContents,omitempty" name:"FaceContents" list`
+	FaceContents []*string `json:"FaceContents,omitempty" name:"FaceContents"`
 }
 
 type AiSampleFailFaceInfo struct {
@@ -1215,13 +1272,13 @@ type AiSamplePerson struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 人脸信息。
-	FaceInfoSet []*AiSampleFaceInfo `json:"FaceInfoSet,omitempty" name:"FaceInfoSet" list`
+	FaceInfoSet []*AiSampleFaceInfo `json:"FaceInfoSet,omitempty" name:"FaceInfoSet"`
 
 	// 人物标签。
-	TagSet []*string `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*string `json:"TagSet,omitempty" name:"TagSet"`
 
 	// 应用场景。
-	UsageSet []*string `json:"UsageSet,omitempty" name:"UsageSet" list`
+	UsageSet []*string `json:"UsageSet,omitempty" name:"UsageSet"`
 
 	// 创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
@@ -1236,7 +1293,7 @@ type AiSampleTagOperation struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 标签，长度限制：128 个字符。
-	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 }
 
 type AiSampleWord struct {
@@ -1245,10 +1302,10 @@ type AiSampleWord struct {
 	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
 
 	// 关键词标签。
-	TagSet []*string `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*string `json:"TagSet,omitempty" name:"TagSet"`
 
 	// 关键词应用场景。
-	UsageSet []*string `json:"UsageSet,omitempty" name:"UsageSet" list`
+	UsageSet []*string `json:"UsageSet,omitempty" name:"UsageSet"`
 
 	// 创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
@@ -1265,7 +1322,7 @@ type AiSampleWordInfo struct {
 	// 关键词标签
 	// <li>数组长度限制：20 个标签；</li>
 	// <li>单个标签长度限制：128 个字符。</li>
-	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 }
 
 type AnimatedGraphicTaskInput struct {
@@ -1374,7 +1431,7 @@ type AsrWordsConfigureInfo struct {
 
 	// 关键词过滤标签，指定需要返回的关键词的标签。如果未填或者为空，则全部结果都返回。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 }
 
 type AsrWordsConfigureInfoForUpdate struct {
@@ -1386,7 +1443,7 @@ type AsrWordsConfigureInfoForUpdate struct {
 
 	// 关键词过滤标签，指定需要返回的关键词的标签。如果未填或者为空，则全部结果都返回。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 }
 
 type AudioTemplateInfo struct {
@@ -1534,7 +1591,7 @@ type CosFileUploadTrigger struct {
 	Dir *string `json:"Dir,omitempty" name:"Dir"`
 
 	// 工作流允许触发的文件格式列表，如 ["mp4", "flv", "mov"]。不填代表所有格式的文件都可以触发工作流。
-	Formats []*string `json:"Formats,omitempty" name:"Formats" list`
+	Formats []*string `json:"Formats,omitempty" name:"Formats"`
 }
 
 type CosInputInfo struct {
@@ -1601,8 +1658,23 @@ func (r *CreateAIAnalysisTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateAIAnalysisTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Comment")
+	delete(f, "ClassificationConfigure")
+	delete(f, "TagConfigure")
+	delete(f, "CoverConfigure")
+	delete(f, "FrameTagConfigure")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAIAnalysisTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateAIAnalysisTemplateResponse struct {
@@ -1622,8 +1694,10 @@ func (r *CreateAIAnalysisTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateAIAnalysisTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateAIRecognitionTemplateRequest struct {
@@ -1656,8 +1730,24 @@ func (r *CreateAIRecognitionTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateAIRecognitionTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Comment")
+	delete(f, "FaceConfigure")
+	delete(f, "OcrFullTextConfigure")
+	delete(f, "OcrWordsConfigure")
+	delete(f, "AsrFullTextConfigure")
+	delete(f, "AsrWordsConfigure")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAIRecognitionTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateAIRecognitionTemplateResponse struct {
@@ -1677,8 +1767,10 @@ func (r *CreateAIRecognitionTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateAIRecognitionTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateAdaptiveDynamicStreamingTemplateRequest struct {
@@ -1691,7 +1783,7 @@ type CreateAdaptiveDynamicStreamingTemplateRequest struct {
 
 	// 转自适应码流输出子流参数信息，最多输出10路子流。
 	// 注意：各个子流的帧率必须保持一致；如果不一致，采用第一个子流的帧率作为输出帧率。
-	StreamInfos []*AdaptiveStreamTemplate `json:"StreamInfos,omitempty" name:"StreamInfos" list`
+	StreamInfos []*AdaptiveStreamTemplate `json:"StreamInfos,omitempty" name:"StreamInfos"`
 
 	// 模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -1717,8 +1809,23 @@ func (r *CreateAdaptiveDynamicStreamingTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateAdaptiveDynamicStreamingTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Format")
+	delete(f, "StreamInfos")
+	delete(f, "Name")
+	delete(f, "DisableHigherVideoBitrate")
+	delete(f, "DisableHigherVideoResolution")
+	delete(f, "Comment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAdaptiveDynamicStreamingTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateAdaptiveDynamicStreamingTemplateResponse struct {
@@ -1738,8 +1845,10 @@ func (r *CreateAdaptiveDynamicStreamingTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateAdaptiveDynamicStreamingTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateAnimatedGraphicsTemplateRequest struct {
@@ -1788,8 +1897,25 @@ func (r *CreateAnimatedGraphicsTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateAnimatedGraphicsTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Fps")
+	delete(f, "Width")
+	delete(f, "Height")
+	delete(f, "ResolutionAdaptive")
+	delete(f, "Format")
+	delete(f, "Quality")
+	delete(f, "Name")
+	delete(f, "Comment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAnimatedGraphicsTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateAnimatedGraphicsTemplateResponse struct {
@@ -1809,26 +1935,28 @@ func (r *CreateAnimatedGraphicsTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateAnimatedGraphicsTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateContentReviewTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// 内容审核模板名称，长度限制：64 个字符。
+	// 内容智能识别模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 内容审核模板描述信息，长度限制：256 个字符。
+	// 内容智能识别模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
-	// 鉴黄控制参数。
+	// 令人反感的信息的控制参数。
 	PornConfigure *PornConfigureInfo `json:"PornConfigure,omitempty" name:"PornConfigure"`
 
-	// 鉴恐控制参数。
+	// 令人不安全的信息的控制参数。
 	TerrorismConfigure *TerrorismConfigureInfo `json:"TerrorismConfigure,omitempty" name:"TerrorismConfigure"`
 
-	// 鉴政控制参数。
+	// 令人不适宜的信息的控制参数。
 	PoliticalConfigure *PoliticalConfigureInfo `json:"PoliticalConfigure,omitempty" name:"PoliticalConfigure"`
 
 	// 违禁控制参数。违禁内容包括：
@@ -1837,7 +1965,7 @@ type CreateContentReviewTemplateRequest struct {
 	// 注意：此参数尚未支持。
 	ProhibitedConfigure *ProhibitedConfigureInfo `json:"ProhibitedConfigure,omitempty" name:"ProhibitedConfigure"`
 
-	// 用户自定义内容审核控制参数。
+	// 用户自定义内容智能识别控制参数。
 	UserDefineConfigure *UserDefineConfigureInfo `json:"UserDefineConfigure,omitempty" name:"UserDefineConfigure"`
 }
 
@@ -1846,15 +1974,31 @@ func (r *CreateContentReviewTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateContentReviewTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Comment")
+	delete(f, "PornConfigure")
+	delete(f, "TerrorismConfigure")
+	delete(f, "PoliticalConfigure")
+	delete(f, "ProhibitedConfigure")
+	delete(f, "UserDefineConfigure")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateContentReviewTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateContentReviewTemplateResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 内容审核模板唯一标识。
+		// 内容智能识别模板唯一标识。
 		Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1867,8 +2011,10 @@ func (r *CreateContentReviewTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateContentReviewTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateImageSpriteTemplateRequest struct {
@@ -1930,8 +2076,27 @@ func (r *CreateImageSpriteTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateImageSpriteTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SampleType")
+	delete(f, "SampleInterval")
+	delete(f, "RowCount")
+	delete(f, "ColumnCount")
+	delete(f, "Name")
+	delete(f, "Width")
+	delete(f, "Height")
+	delete(f, "ResolutionAdaptive")
+	delete(f, "FillType")
+	delete(f, "Comment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateImageSpriteTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateImageSpriteTemplateResponse struct {
@@ -1951,33 +2116,35 @@ func (r *CreateImageSpriteTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateImageSpriteTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreatePersonSampleRequest struct {
 	*tchttp.BaseRequest
 
-	// 人物名称，长度限制：20 个字符。
+	// 素材名称，长度限制：20 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 人物应用场景，可选值：
+	// 素材应用场景，可选值：
 	// 1. Recognition：用于内容识别，等价于 Recognition.Face。
-	// 2. Review：用于内容审核，等价于 Review.Face。
-	// 3. All：用于内容识别、内容审核，等价于 1+2。
-	Usages []*string `json:"Usages,omitempty" name:"Usages" list`
+	// 2. Review：用于不适宜内容识别，等价于 Review.Face。
+	// 3. All：包含以上全部，等价于 1+2。
+	Usages []*string `json:"Usages,omitempty" name:"Usages"`
 
-	// 人物描述，长度限制：1024 个字符。
+	// 素材描述，长度限制：1024 个字符。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 人脸图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串，仅支持 jpeg、png 图片格式。数组长度限制：5 张图片。
-	// 注意：图片必须是单人像正面人脸较清晰的照片，像素不低于 200*200。
-	FaceContents []*string `json:"FaceContents,omitempty" name:"FaceContents" list`
+	// 素材图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串，仅支持 jpeg、png 图片格式。数组长度限制：5 张图片。
+	// 注意：图片必须是单人像五官较清晰的照片，像素不低于 200*200。
+	FaceContents []*string `json:"FaceContents,omitempty" name:"FaceContents"`
 
-	// 人物标签
+	// 素材标签
 	// <li>数组长度限制：20 个标签；</li>
 	// <li>单个标签长度限制：128 个字符。</li>
-	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreatePersonSampleRequest) ToJsonString() string {
@@ -1985,19 +2152,33 @@ func (r *CreatePersonSampleRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreatePersonSampleRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Usages")
+	delete(f, "Description")
+	delete(f, "FaceContents")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePersonSampleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreatePersonSampleResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 人物信息。
+		// 素材信息。
 		Person *AiSamplePerson `json:"Person,omitempty" name:"Person"`
 
-		// 处理失败的人脸信息。
-		FailFaceInfoSet []*AiSampleFailFaceInfo `json:"FailFaceInfoSet,omitempty" name:"FailFaceInfoSet" list`
+		// 处理失败的五官定位信息。
+		FailFaceInfoSet []*AiSampleFailFaceInfo `json:"FailFaceInfoSet,omitempty" name:"FailFaceInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2009,8 +2190,10 @@ func (r *CreatePersonSampleResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreatePersonSampleResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateSampleSnapshotTemplateRequest struct {
@@ -2071,8 +2254,26 @@ func (r *CreateSampleSnapshotTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateSampleSnapshotTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SampleType")
+	delete(f, "SampleInterval")
+	delete(f, "Name")
+	delete(f, "Width")
+	delete(f, "Height")
+	delete(f, "ResolutionAdaptive")
+	delete(f, "Format")
+	delete(f, "Comment")
+	delete(f, "FillType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSampleSnapshotTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateSampleSnapshotTemplateResponse struct {
@@ -2092,8 +2293,10 @@ func (r *CreateSampleSnapshotTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateSampleSnapshotTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateSnapshotByTimeOffsetTemplateRequest struct {
@@ -2144,8 +2347,24 @@ func (r *CreateSnapshotByTimeOffsetTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateSnapshotByTimeOffsetTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Width")
+	delete(f, "Height")
+	delete(f, "ResolutionAdaptive")
+	delete(f, "Format")
+	delete(f, "Comment")
+	delete(f, "FillType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSnapshotByTimeOffsetTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateSnapshotByTimeOffsetTemplateResponse struct {
@@ -2165,8 +2384,10 @@ func (r *CreateSnapshotByTimeOffsetTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateSnapshotByTimeOffsetTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateTranscodeTemplateRequest struct {
@@ -2208,8 +2429,25 @@ func (r *CreateTranscodeTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateTranscodeTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Container")
+	delete(f, "Name")
+	delete(f, "Comment")
+	delete(f, "RemoveVideo")
+	delete(f, "RemoveAudio")
+	delete(f, "VideoTemplate")
+	delete(f, "AudioTemplate")
+	delete(f, "TEHDConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTranscodeTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateTranscodeTemplateResponse struct {
@@ -2229,8 +2467,10 @@ func (r *CreateTranscodeTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateTranscodeTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateWatermarkTemplateRequest struct {
@@ -2283,8 +2523,26 @@ func (r *CreateWatermarkTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateWatermarkTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Type")
+	delete(f, "Name")
+	delete(f, "Comment")
+	delete(f, "CoordinateOrigin")
+	delete(f, "XPos")
+	delete(f, "YPos")
+	delete(f, "ImageTemplate")
+	delete(f, "TextTemplate")
+	delete(f, "SvgTemplate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWatermarkTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateWatermarkTemplateResponse struct {
@@ -2307,8 +2565,10 @@ func (r *CreateWatermarkTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateWatermarkTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateWordSamplesRequest struct {
@@ -2316,17 +2576,17 @@ type CreateWordSamplesRequest struct {
 
 	// <b>关键词应用场景，可选值：</b>
 	// 1. Recognition.Ocr：通过光学字符识别技术，进行内容识别；
-	// 2. Recognition.Asr：通过语音识别技术，进行内容识别；
-	// 3. Review.Ocr：通过光学字符识别技术，进行内容审核；
-	// 4. Review.Asr：通过语音识别技术，进行内容审核；
+	// 2. Recognition.Asr：通过音频识别技术，进行内容识别；
+	// 3. Review.Ocr：通过光学字符识别技术，进行不适宜内容识别；
+	// 4. Review.Asr：通过音频识别技术，进行不适宜内容识别；
 	// <b>可合并简写为：</b>
-	// 5. Recognition：通过光学字符识别技术、语音识别技术，进行内容识别，等价于 1+2；
-	// 6. Review：通过光学字符识别技术、语音识别技术，进行内容审核，等价于 3+4；
-	// 7. All：通过光学字符识别技术、语音识别技术，进行内容识别、内容审核，等价于 1+2+3+4。
-	Usages []*string `json:"Usages,omitempty" name:"Usages" list`
+	// 5. Recognition：通过光学字符识别技术、音频识别技术，进行内容识别，等价于 1+2；
+	// 6. Review：通过光学字符识别技术、音频识别技术，进行不适宜内容识别，等价于 3+4；
+	// 7. All：通过光学字符识别技术、音频识别技术，进行内容识别、不适宜内容识别，等价于 1+2+3+4。
+	Usages []*string `json:"Usages,omitempty" name:"Usages"`
 
 	// 关键词，数组长度限制：100。
-	Words []*AiSampleWordInfo `json:"Words,omitempty" name:"Words" list`
+	Words []*AiSampleWordInfo `json:"Words,omitempty" name:"Words"`
 }
 
 func (r *CreateWordSamplesRequest) ToJsonString() string {
@@ -2334,8 +2594,19 @@ func (r *CreateWordSamplesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateWordSamplesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Usages")
+	delete(f, "Words")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWordSamplesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateWordSamplesResponse struct {
@@ -2352,8 +2623,10 @@ func (r *CreateWordSamplesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateWordSamplesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateWorkflowRequest struct {
@@ -2395,8 +2668,27 @@ func (r *CreateWorkflowRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateWorkflowRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkflowName")
+	delete(f, "Trigger")
+	delete(f, "OutputStorage")
+	delete(f, "OutputDir")
+	delete(f, "MediaProcessTask")
+	delete(f, "AiContentReviewTask")
+	delete(f, "AiAnalysisTask")
+	delete(f, "AiRecognitionTask")
+	delete(f, "TaskNotifyConfig")
+	delete(f, "TaskPriority")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWorkflowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateWorkflowResponse struct {
@@ -2416,8 +2708,10 @@ func (r *CreateWorkflowResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateWorkflowResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteAIAnalysisTemplateRequest struct {
@@ -2432,8 +2726,18 @@ func (r *DeleteAIAnalysisTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteAIAnalysisTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAIAnalysisTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteAIAnalysisTemplateResponse struct {
@@ -2450,8 +2754,10 @@ func (r *DeleteAIAnalysisTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteAIAnalysisTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteAIRecognitionTemplateRequest struct {
@@ -2466,8 +2772,18 @@ func (r *DeleteAIRecognitionTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteAIRecognitionTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAIRecognitionTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteAIRecognitionTemplateResponse struct {
@@ -2484,8 +2800,10 @@ func (r *DeleteAIRecognitionTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteAIRecognitionTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteAdaptiveDynamicStreamingTemplateRequest struct {
@@ -2500,8 +2818,18 @@ func (r *DeleteAdaptiveDynamicStreamingTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteAdaptiveDynamicStreamingTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAdaptiveDynamicStreamingTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteAdaptiveDynamicStreamingTemplateResponse struct {
@@ -2518,8 +2846,10 @@ func (r *DeleteAdaptiveDynamicStreamingTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteAdaptiveDynamicStreamingTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteAnimatedGraphicsTemplateRequest struct {
@@ -2534,8 +2864,18 @@ func (r *DeleteAnimatedGraphicsTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteAnimatedGraphicsTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAnimatedGraphicsTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteAnimatedGraphicsTemplateResponse struct {
@@ -2552,14 +2892,16 @@ func (r *DeleteAnimatedGraphicsTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteAnimatedGraphicsTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteContentReviewTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// 内容审核模板唯一标识。
+	// 内容智能识别模板唯一标识。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 }
 
@@ -2568,8 +2910,18 @@ func (r *DeleteContentReviewTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteContentReviewTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteContentReviewTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteContentReviewTemplateResponse struct {
@@ -2586,8 +2938,10 @@ func (r *DeleteContentReviewTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteContentReviewTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteImageSpriteTemplateRequest struct {
@@ -2602,8 +2956,18 @@ func (r *DeleteImageSpriteTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteImageSpriteTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteImageSpriteTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteImageSpriteTemplateResponse struct {
@@ -2620,14 +2984,16 @@ func (r *DeleteImageSpriteTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteImageSpriteTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeletePersonSampleRequest struct {
 	*tchttp.BaseRequest
 
-	// 人物 ID。
+	// 素材 ID。
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 }
 
@@ -2636,8 +3002,18 @@ func (r *DeletePersonSampleRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeletePersonSampleRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PersonId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePersonSampleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeletePersonSampleResponse struct {
@@ -2654,8 +3030,10 @@ func (r *DeletePersonSampleResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeletePersonSampleResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteSampleSnapshotTemplateRequest struct {
@@ -2670,8 +3048,18 @@ func (r *DeleteSampleSnapshotTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteSampleSnapshotTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSampleSnapshotTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteSampleSnapshotTemplateResponse struct {
@@ -2688,8 +3076,10 @@ func (r *DeleteSampleSnapshotTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteSampleSnapshotTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteSnapshotByTimeOffsetTemplateRequest struct {
@@ -2704,8 +3094,18 @@ func (r *DeleteSnapshotByTimeOffsetTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteSnapshotByTimeOffsetTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSnapshotByTimeOffsetTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteSnapshotByTimeOffsetTemplateResponse struct {
@@ -2722,8 +3122,10 @@ func (r *DeleteSnapshotByTimeOffsetTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteSnapshotByTimeOffsetTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteTranscodeTemplateRequest struct {
@@ -2738,8 +3140,18 @@ func (r *DeleteTranscodeTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteTranscodeTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTranscodeTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteTranscodeTemplateResponse struct {
@@ -2756,8 +3168,10 @@ func (r *DeleteTranscodeTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteTranscodeTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteWatermarkTemplateRequest struct {
@@ -2772,8 +3186,18 @@ func (r *DeleteWatermarkTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteWatermarkTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteWatermarkTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteWatermarkTemplateResponse struct {
@@ -2790,15 +3214,17 @@ func (r *DeleteWatermarkTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteWatermarkTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteWordSamplesRequest struct {
 	*tchttp.BaseRequest
 
 	// 关键词，数组长度限制：100 个词。
-	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
 }
 
 func (r *DeleteWordSamplesRequest) ToJsonString() string {
@@ -2806,8 +3232,18 @@ func (r *DeleteWordSamplesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteWordSamplesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Keywords")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteWordSamplesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteWordSamplesResponse struct {
@@ -2824,8 +3260,10 @@ func (r *DeleteWordSamplesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteWordSamplesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteWorkflowRequest struct {
@@ -2840,8 +3278,18 @@ func (r *DeleteWorkflowRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteWorkflowRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkflowId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteWorkflowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteWorkflowResponse struct {
@@ -2858,15 +3306,17 @@ func (r *DeleteWorkflowResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteWorkflowResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAIAnalysisTemplatesRequest struct {
 	*tchttp.BaseRequest
 
 	// 视频内容分析模板唯一标识过滤条件，数组长度限制：10。
-	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions" list`
+	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -2880,8 +3330,20 @@ func (r *DescribeAIAnalysisTemplatesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAIAnalysisTemplatesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definitions")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAIAnalysisTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAIAnalysisTemplatesResponse struct {
@@ -2892,7 +3354,7 @@ type DescribeAIAnalysisTemplatesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 视频内容分析模板详情列表。
-		AIAnalysisTemplateSet []*AIAnalysisTemplateItem `json:"AIAnalysisTemplateSet,omitempty" name:"AIAnalysisTemplateSet" list`
+		AIAnalysisTemplateSet []*AIAnalysisTemplateItem `json:"AIAnalysisTemplateSet,omitempty" name:"AIAnalysisTemplateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2904,15 +3366,17 @@ func (r *DescribeAIAnalysisTemplatesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAIAnalysisTemplatesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAIRecognitionTemplatesRequest struct {
 	*tchttp.BaseRequest
 
 	// 视频内容识别模板唯一标识过滤条件，数组长度限制：10。
-	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions" list`
+	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -2926,8 +3390,20 @@ func (r *DescribeAIRecognitionTemplatesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAIRecognitionTemplatesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definitions")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAIRecognitionTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAIRecognitionTemplatesResponse struct {
@@ -2938,7 +3414,7 @@ type DescribeAIRecognitionTemplatesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 视频内容识别模板详情列表。
-		AIRecognitionTemplateSet []*AIRecognitionTemplateItem `json:"AIRecognitionTemplateSet,omitempty" name:"AIRecognitionTemplateSet" list`
+		AIRecognitionTemplateSet []*AIRecognitionTemplateItem `json:"AIRecognitionTemplateSet,omitempty" name:"AIRecognitionTemplateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2950,15 +3426,17 @@ func (r *DescribeAIRecognitionTemplatesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAIRecognitionTemplatesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAdaptiveDynamicStreamingTemplatesRequest struct {
 	*tchttp.BaseRequest
 
 	// 转自适应码流模板唯一标识过滤条件，数组长度限制：100。
-	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions" list`
+	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -2977,8 +3455,21 @@ func (r *DescribeAdaptiveDynamicStreamingTemplatesRequest) ToJsonString() string
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAdaptiveDynamicStreamingTemplatesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definitions")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAdaptiveDynamicStreamingTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAdaptiveDynamicStreamingTemplatesResponse struct {
@@ -2989,7 +3480,7 @@ type DescribeAdaptiveDynamicStreamingTemplatesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 转自适应码流模板详情列表。
-		AdaptiveDynamicStreamingTemplateSet []*AdaptiveDynamicStreamingTemplate `json:"AdaptiveDynamicStreamingTemplateSet,omitempty" name:"AdaptiveDynamicStreamingTemplateSet" list`
+		AdaptiveDynamicStreamingTemplateSet []*AdaptiveDynamicStreamingTemplate `json:"AdaptiveDynamicStreamingTemplateSet,omitempty" name:"AdaptiveDynamicStreamingTemplateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3001,15 +3492,17 @@ func (r *DescribeAdaptiveDynamicStreamingTemplatesResponse) ToJsonString() strin
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAdaptiveDynamicStreamingTemplatesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAnimatedGraphicsTemplatesRequest struct {
 	*tchttp.BaseRequest
 
 	// 转动图模板唯一标识过滤条件，数组长度限制：100。
-	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions" list`
+	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -3028,8 +3521,21 @@ func (r *DescribeAnimatedGraphicsTemplatesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAnimatedGraphicsTemplatesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definitions")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAnimatedGraphicsTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAnimatedGraphicsTemplatesResponse struct {
@@ -3040,7 +3546,7 @@ type DescribeAnimatedGraphicsTemplatesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 转动图模板详情列表。
-		AnimatedGraphicsTemplateSet []*AnimatedGraphicsTemplate `json:"AnimatedGraphicsTemplateSet,omitempty" name:"AnimatedGraphicsTemplateSet" list`
+		AnimatedGraphicsTemplateSet []*AnimatedGraphicsTemplate `json:"AnimatedGraphicsTemplateSet,omitempty" name:"AnimatedGraphicsTemplateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3052,15 +3558,17 @@ func (r *DescribeAnimatedGraphicsTemplatesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAnimatedGraphicsTemplatesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeContentReviewTemplatesRequest struct {
 	*tchttp.BaseRequest
 
-	// 内容审核模板唯一标识过滤条件，数组长度限制：50。
-	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions" list`
+	// 内容智能识别模板唯一标识过滤条件，数组长度限制：50。
+	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -3074,8 +3582,20 @@ func (r *DescribeContentReviewTemplatesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeContentReviewTemplatesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definitions")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeContentReviewTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeContentReviewTemplatesResponse struct {
@@ -3086,7 +3606,7 @@ type DescribeContentReviewTemplatesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 内容审核模板详情列表。
-		ContentReviewTemplateSet []*ContentReviewTemplateItem `json:"ContentReviewTemplateSet,omitempty" name:"ContentReviewTemplateSet" list`
+		ContentReviewTemplateSet []*ContentReviewTemplateItem `json:"ContentReviewTemplateSet,omitempty" name:"ContentReviewTemplateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3098,15 +3618,17 @@ func (r *DescribeContentReviewTemplatesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeContentReviewTemplatesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeImageSpriteTemplatesRequest struct {
 	*tchttp.BaseRequest
 
 	// 雪碧图模板唯一标识过滤条件，数组长度限制：100。
-	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions" list`
+	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -3125,8 +3647,21 @@ func (r *DescribeImageSpriteTemplatesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeImageSpriteTemplatesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definitions")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImageSpriteTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeImageSpriteTemplatesResponse struct {
@@ -3137,7 +3672,7 @@ type DescribeImageSpriteTemplatesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 雪碧图模板详情列表。
-		ImageSpriteTemplateSet []*ImageSpriteTemplate `json:"ImageSpriteTemplateSet,omitempty" name:"ImageSpriteTemplateSet" list`
+		ImageSpriteTemplateSet []*ImageSpriteTemplate `json:"ImageSpriteTemplateSet,omitempty" name:"ImageSpriteTemplateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3149,8 +3684,10 @@ func (r *DescribeImageSpriteTemplatesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeImageSpriteTemplatesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeMediaMetaDataRequest struct {
@@ -3165,8 +3702,18 @@ func (r *DescribeMediaMetaDataRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeMediaMetaDataRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InputInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMediaMetaDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeMediaMetaDataResponse struct {
@@ -3186,29 +3733,31 @@ func (r *DescribeMediaMetaDataResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeMediaMetaDataResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribePersonSamplesRequest struct {
 	*tchttp.BaseRequest
 
-	// 拉取的人物类型，可选值：
-	// <li>UserDefine：用户自定义人物库；</li>
-	// <li>Default：系统默认人物库。</li>
+	// 拉取的素材类型，可选值：
+	// <li>UserDefine：用户自定义素材库；</li>
+	// <li>Default：系统默认素材库。</li>
 	// 
-	// 默认值：UserDefine，拉取用户自定义人物库人物。
-	// 说明：如果是拉取系统默认人物库，只能使用人物名字或者人物 ID + 人物名字的方式进行拉取，且人脸图片只返回一张。
+	// 默认值：UserDefine，拉取用户自定义素材库素材。
+	// 说明：如果是拉取系统默认素材库，只能使用素材名字或者素材 ID + 素材名字的方式进行拉取，且人脸图片只返回一张。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 人物 ID，数组长度限制：100。
-	PersonIds []*string `json:"PersonIds,omitempty" name:"PersonIds" list`
+	// 素材 ID，数组长度限制：100。
+	PersonIds []*string `json:"PersonIds,omitempty" name:"PersonIds"`
 
-	// 人物名称，数组长度限制：20。
-	Names []*string `json:"Names,omitempty" name:"Names" list`
+	// 素材名称，数组长度限制：20。
+	Names []*string `json:"Names,omitempty" name:"Names"`
 
-	// 人物标签，数组长度限制：20。
-	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+	// 素材标签，数组长度限制：20。
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 
 	// 分页偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -3222,8 +3771,23 @@ func (r *DescribePersonSamplesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribePersonSamplesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Type")
+	delete(f, "PersonIds")
+	delete(f, "Names")
+	delete(f, "Tags")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePersonSamplesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribePersonSamplesResponse struct {
@@ -3233,8 +3797,8 @@ type DescribePersonSamplesResponse struct {
 		// 符合条件的记录总数。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 人物信息。
-		PersonSet []*AiSamplePerson `json:"PersonSet,omitempty" name:"PersonSet" list`
+		// 素材信息。
+		PersonSet []*AiSamplePerson `json:"PersonSet,omitempty" name:"PersonSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3246,15 +3810,17 @@ func (r *DescribePersonSamplesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribePersonSamplesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeSampleSnapshotTemplatesRequest struct {
 	*tchttp.BaseRequest
 
 	// 采样截图模板唯一标识过滤条件，数组长度限制：100。
-	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions" list`
+	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -3273,8 +3839,21 @@ func (r *DescribeSampleSnapshotTemplatesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeSampleSnapshotTemplatesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definitions")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSampleSnapshotTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeSampleSnapshotTemplatesResponse struct {
@@ -3285,7 +3864,7 @@ type DescribeSampleSnapshotTemplatesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 采样截图模板详情列表。
-		SampleSnapshotTemplateSet []*SampleSnapshotTemplate `json:"SampleSnapshotTemplateSet,omitempty" name:"SampleSnapshotTemplateSet" list`
+		SampleSnapshotTemplateSet []*SampleSnapshotTemplate `json:"SampleSnapshotTemplateSet,omitempty" name:"SampleSnapshotTemplateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3297,15 +3876,17 @@ func (r *DescribeSampleSnapshotTemplatesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeSampleSnapshotTemplatesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeSnapshotByTimeOffsetTemplatesRequest struct {
 	*tchttp.BaseRequest
 
 	// 指定时间点截图模板唯一标识过滤条件，数组长度限制：100。
-	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions" list`
+	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -3324,8 +3905,21 @@ func (r *DescribeSnapshotByTimeOffsetTemplatesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeSnapshotByTimeOffsetTemplatesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definitions")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSnapshotByTimeOffsetTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeSnapshotByTimeOffsetTemplatesResponse struct {
@@ -3336,7 +3930,7 @@ type DescribeSnapshotByTimeOffsetTemplatesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 指定时间点截图模板详情列表。
-		SnapshotByTimeOffsetTemplateSet []*SnapshotByTimeOffsetTemplate `json:"SnapshotByTimeOffsetTemplateSet,omitempty" name:"SnapshotByTimeOffsetTemplateSet" list`
+		SnapshotByTimeOffsetTemplateSet []*SnapshotByTimeOffsetTemplate `json:"SnapshotByTimeOffsetTemplateSet,omitempty" name:"SnapshotByTimeOffsetTemplateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3348,8 +3942,10 @@ func (r *DescribeSnapshotByTimeOffsetTemplatesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeSnapshotByTimeOffsetTemplatesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTaskDetailRequest struct {
@@ -3364,8 +3960,18 @@ func (r *DescribeTaskDetailRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTaskDetailRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTaskDetailResponse struct {
@@ -3431,8 +4037,10 @@ func (r *DescribeTaskDetailResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTaskDetailResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTasksRequest struct {
@@ -3453,8 +4061,20 @@ func (r *DescribeTasksRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTasksRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Status")
+	delete(f, "Limit")
+	delete(f, "ScrollToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTasksResponse struct {
@@ -3462,7 +4082,7 @@ type DescribeTasksResponse struct {
 	Response *struct {
 
 		// 任务概要列表。
-		TaskSet []*TaskSimpleInfo `json:"TaskSet,omitempty" name:"TaskSet" list`
+		TaskSet []*TaskSimpleInfo `json:"TaskSet,omitempty" name:"TaskSet"`
 
 		// 翻页标识，当请求未返回所有数据，该字段表示下一条记录的 ID。当该字段为空字符串，说明已无更多数据。
 		ScrollToken *string `json:"ScrollToken,omitempty" name:"ScrollToken"`
@@ -3477,15 +4097,17 @@ func (r *DescribeTasksResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTasksResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTranscodeTemplatesRequest struct {
 	*tchttp.BaseRequest
 
 	// 转码模板唯一标识过滤条件，数组长度限制：100。
-	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions" list`
+	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// 模板类型过滤条件，可选值：
 	// <li>Preset：系统预置模板；</li>
@@ -3514,8 +4136,23 @@ func (r *DescribeTranscodeTemplatesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTranscodeTemplatesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definitions")
+	delete(f, "Type")
+	delete(f, "ContainerType")
+	delete(f, "TEHDType")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTranscodeTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTranscodeTemplatesResponse struct {
@@ -3526,7 +4163,7 @@ type DescribeTranscodeTemplatesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 转码模板详情列表。
-		TranscodeTemplateSet []*TranscodeTemplate `json:"TranscodeTemplateSet,omitempty" name:"TranscodeTemplateSet" list`
+		TranscodeTemplateSet []*TranscodeTemplate `json:"TranscodeTemplateSet,omitempty" name:"TranscodeTemplateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3538,15 +4175,17 @@ func (r *DescribeTranscodeTemplatesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTranscodeTemplatesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeWatermarkTemplatesRequest struct {
 	*tchttp.BaseRequest
 
 	// 水印模板唯一标识过滤条件，数组长度限制：100。
-	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions" list`
+	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// 水印类型过滤条件，可选值：
 	// <li>image：图片水印；</li>
@@ -3567,8 +4206,21 @@ func (r *DescribeWatermarkTemplatesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeWatermarkTemplatesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definitions")
+	delete(f, "Type")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWatermarkTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeWatermarkTemplatesResponse struct {
@@ -3579,7 +4231,7 @@ type DescribeWatermarkTemplatesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 水印模板详情列表。
-		WatermarkTemplateSet []*WatermarkTemplate `json:"WatermarkTemplateSet,omitempty" name:"WatermarkTemplateSet" list`
+		WatermarkTemplateSet []*WatermarkTemplate `json:"WatermarkTemplateSet,omitempty" name:"WatermarkTemplateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3591,29 +4243,31 @@ func (r *DescribeWatermarkTemplatesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeWatermarkTemplatesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeWordSamplesRequest struct {
 	*tchttp.BaseRequest
 
+	// 关键词过滤条件，数组长度限制：100 个词。
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
+
 	// <b>关键词应用场景过滤条件，可选值：</b>
 	// 1. Recognition.Ocr：通过光学字符识别技术，进行内容识别；
-	// 2. Recognition.Asr：通过语音识别技术，进行内容识别；
-	// 3. Review.Ocr：通过光学字符识别技术，进行内容审核；
-	// 4. Review.Asr：通过语音识别技术，进行内容审核；
+	// 2. Recognition.Asr：通过音频识别技术，进行内容识别；
+	// 3. Review.Ocr：通过光学字符识别技术，进行不适宜内容的识别；
+	// 4. Review.Asr：通过音频识别技术，进行不适宜内容的识别；
 	// <b>可合并简写为：</b>
-	// 5. Recognition：通过光学字符识别技术、语音识别技术，进行内容识别，等价于 1+2；
-	// 6. Review：通过光学字符识别技术、语音识别技术，进行内容审核，等价于 3+4；
+	// 5. Recognition：通过光学字符识别技术、音频识别技术，进行内容识别，等价于 1+2；
+	// 6. Review：通过光学字符识别技术、音频识别技术，进行不适宜内容的识别，等价于 3+4；
 	// 可多选，元素间关系为 or，即关键词的应用场景包含该字段集合中任意元素的记录，均符合该条件。
-	Usages []*string `json:"Usages,omitempty" name:"Usages" list`
-
-	// 关键词过滤条件，数组长度限制：100 个词。
-	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+	Usages []*string `json:"Usages,omitempty" name:"Usages"`
 
 	// 标签过滤条件，数组长度限制：20 个词。
-	Tags []*string `json:"Tags,omitempty" name:"Tags" list`
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 
 	// 分页偏移量，默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -3627,8 +4281,22 @@ func (r *DescribeWordSamplesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeWordSamplesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Keywords")
+	delete(f, "Usages")
+	delete(f, "Tags")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWordSamplesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeWordSamplesResponse struct {
@@ -3641,7 +4309,7 @@ type DescribeWordSamplesResponse struct {
 
 		// 关键词信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		WordSet []*AiSampleWord `json:"WordSet,omitempty" name:"WordSet" list`
+		WordSet []*AiSampleWord `json:"WordSet,omitempty" name:"WordSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3653,15 +4321,17 @@ func (r *DescribeWordSamplesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeWordSamplesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeWorkflowsRequest struct {
 	*tchttp.BaseRequest
 
 	// 工作流 ID 过滤条件，数组长度限制：100。
-	WorkflowIds []*int64 `json:"WorkflowIds,omitempty" name:"WorkflowIds" list`
+	WorkflowIds []*int64 `json:"WorkflowIds,omitempty" name:"WorkflowIds"`
 
 	// 工作流状态，取值范围：
 	// <li>Enabled：已启用，</li>
@@ -3681,8 +4351,21 @@ func (r *DescribeWorkflowsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeWorkflowsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkflowIds")
+	delete(f, "Status")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWorkflowsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeWorkflowsResponse struct {
@@ -3693,7 +4376,7 @@ type DescribeWorkflowsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 工作流信息数组。
-		WorkflowInfoSet []*WorkflowInfo `json:"WorkflowInfoSet,omitempty" name:"WorkflowInfoSet" list`
+		WorkflowInfoSet []*WorkflowInfo `json:"WorkflowInfoSet,omitempty" name:"WorkflowInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3705,8 +4388,10 @@ func (r *DescribeWorkflowsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeWorkflowsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DisableWorkflowRequest struct {
@@ -3721,8 +4406,18 @@ func (r *DisableWorkflowRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DisableWorkflowRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkflowId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableWorkflowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DisableWorkflowResponse struct {
@@ -3739,8 +4434,10 @@ func (r *DisableWorkflowResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DisableWorkflowResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EditMediaFileInfo struct {
@@ -3755,17 +4452,26 @@ type EditMediaFileInfo struct {
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 }
 
+type EditMediaOutputConfig struct {
+
+	// 封装格式，可选值：mp4、hls、mov、flv、avi。默认是 mp4。
+	Container *string `json:"Container,omitempty" name:"Container"`
+}
+
 type EditMediaRequest struct {
 	*tchttp.BaseRequest
 
 	// 输入的视频文件信息。
-	FileInfos []*EditMediaFileInfo `json:"FileInfos,omitempty" name:"FileInfos" list`
+	FileInfos []*EditMediaFileInfo `json:"FileInfos,omitempty" name:"FileInfos"`
 
 	// 视频处理输出文件的目标存储。
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitempty" name:"OutputStorage"`
 
 	// 视频处理输出文件的目标路径。
 	OutputObjectPath *string `json:"OutputObjectPath,omitempty" name:"OutputObjectPath"`
+
+	// 编辑后生成的文件配置。
+	OutputConfig *EditMediaOutputConfig `json:"OutputConfig,omitempty" name:"OutputConfig"`
 
 	// 任务的事件通知信息，不填代表不获取事件通知。
 	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitempty" name:"TaskNotifyConfig"`
@@ -3785,8 +4491,25 @@ func (r *EditMediaRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EditMediaRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileInfos")
+	delete(f, "OutputStorage")
+	delete(f, "OutputObjectPath")
+	delete(f, "OutputConfig")
+	delete(f, "TaskNotifyConfig")
+	delete(f, "TasksPriority")
+	delete(f, "SessionId")
+	delete(f, "SessionContext")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EditMediaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EditMediaResponse struct {
@@ -3806,8 +4529,10 @@ func (r *EditMediaResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EditMediaResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EditMediaTask struct {
@@ -3839,7 +4564,7 @@ type EditMediaTask struct {
 type EditMediaTaskInput struct {
 
 	// 输入的视频文件信息。
-	FileInfoSet []*EditMediaFileInfo `json:"FileInfoSet,omitempty" name:"FileInfoSet" list`
+	FileInfoSet []*EditMediaFileInfo `json:"FileInfoSet,omitempty" name:"FileInfoSet"`
 }
 
 type EditMediaTaskOutput struct {
@@ -3863,8 +4588,18 @@ func (r *EnableWorkflowRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EnableWorkflowRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkflowId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableWorkflowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EnableWorkflowResponse struct {
@@ -3881,8 +4616,10 @@ func (r *EnableWorkflowResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EnableWorkflowResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ExecuteFunctionRequest struct {
@@ -3900,8 +4637,19 @@ func (r *ExecuteFunctionRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ExecuteFunctionRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FunctionName")
+	delete(f, "FunctionArg")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExecuteFunctionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ExecuteFunctionResponse struct {
@@ -3921,8 +4669,18 @@ func (r *ExecuteFunctionResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ExecuteFunctionResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ExpressionConfigInfo struct {
+
+	// 表情识别任务开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
 type FaceConfigureInfo struct {
@@ -3939,11 +4697,11 @@ type FaceConfigureInfo struct {
 	// <li>entertainment：娱乐明星；</li>
 	// <li>sport：体育明星；</li>
 	// <li>politician：政治人物。</li>
-	DefaultLibraryLabelSet []*string `json:"DefaultLibraryLabelSet,omitempty" name:"DefaultLibraryLabelSet" list`
+	DefaultLibraryLabelSet []*string `json:"DefaultLibraryLabelSet,omitempty" name:"DefaultLibraryLabelSet"`
 
 	// 用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。
-	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
-	UserDefineLibraryLabelSet []*string `json:"UserDefineLibraryLabelSet,omitempty" name:"UserDefineLibraryLabelSet" list`
+	// 标签个数最多 100 个，每个标签长度最多 16 个字符。
+	UserDefineLibraryLabelSet []*string `json:"UserDefineLibraryLabelSet,omitempty" name:"UserDefineLibraryLabelSet"`
 
 	// 人物库选择，可选值：
 	// <li>Default：使用默认人物库；</li>
@@ -3967,11 +4725,11 @@ type FaceConfigureInfoForUpdate struct {
 	// <li>entertainment：娱乐明星；</li>
 	// <li>sport：体育明星；</li>
 	// <li>politician：政治人物。</li>
-	DefaultLibraryLabelSet []*string `json:"DefaultLibraryLabelSet,omitempty" name:"DefaultLibraryLabelSet" list`
+	DefaultLibraryLabelSet []*string `json:"DefaultLibraryLabelSet,omitempty" name:"DefaultLibraryLabelSet"`
 
 	// 用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。
-	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
-	UserDefineLibraryLabelSet []*string `json:"UserDefineLibraryLabelSet,omitempty" name:"UserDefineLibraryLabelSet" list`
+	// 标签个数最多 100 个，每个标签长度最多 16 个字符。
+	UserDefineLibraryLabelSet []*string `json:"UserDefineLibraryLabelSet,omitempty" name:"UserDefineLibraryLabelSet"`
 
 	// 人物库选择，可选值：
 	// <li>Default：使用默认人物库；</li>
@@ -3994,6 +4752,15 @@ type FrameTagConfigureInfoForUpdate struct {
 	// <li>ON：开启智能按帧标签任务；</li>
 	// <li>OFF：关闭智能按帧标签任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
+type HeadTailParameter struct {
+
+	// 片头列表。
+	HeadSet []*MediaInputInfo `json:"HeadSet,omitempty" name:"HeadSet"`
+
+	// 片尾列表。
+	TailSet []*MediaInputInfo `json:"TailSet,omitempty" name:"TailSet"`
 }
 
 type ImageSpriteTaskInput struct {
@@ -4095,6 +4862,12 @@ type ImageWatermarkInput struct {
 	// <li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素。取值范围为0或[8, 4096]。</li>
 	// 默认值：0px，表示 Height 按照原始水印图片的宽高比缩放。
 	Height *string `json:"Height,omitempty" name:"Height"`
+
+	// 水印重复类型。使用场景：水印为动态图像。取值范围：
+	// <li>once：动态水印播放完后，不再出现；</li>
+	// <li>repeat_last_frame：水印播放完后，停留在最后一帧；</li>
+	// <li>repeat：水印循环播放，直到视频结束（默认值）。</li>
+	RepeatType *string `json:"RepeatType,omitempty" name:"RepeatType"`
 }
 
 type ImageWatermarkInputForUpdate struct {
@@ -4112,6 +4885,12 @@ type ImageWatermarkInputForUpdate struct {
 	// <li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素。取值范围为0或[8, 4096]。</li>
 	// 默认值：0px，表示 Height 按照原始水印图片的宽高比缩放。
 	Height *string `json:"Height,omitempty" name:"Height"`
+
+	// 水印重复类型。使用场景：水印为动态图像。取值范围：
+	// <li>once：动态水印播放完后，不再出现；</li>
+	// <li>repeat_last_frame：水印播放完后，停留在最后一帧；</li>
+	// <li>repeat：水印循环播放，直到视频结束。</li>
+	RepeatType *string `json:"RepeatType,omitempty" name:"RepeatType"`
 }
 
 type ImageWatermarkTemplate struct {
@@ -4129,12 +4908,18 @@ type ImageWatermarkTemplate struct {
 	// <li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素；</li>
 	// 0px：表示 Height 按照 Width 对视频宽度的比例缩放。
 	Height *string `json:"Height,omitempty" name:"Height"`
+
+	// 水印重复类型。使用场景：水印为动态图像。取值范围：
+	// <li>once：动态水印播放完后，不再出现；</li>
+	// <li>repeat_last_frame：水印播放完后，停留在最后一帧；</li>
+	// <li>repeat：水印循环播放，直到视频结束。</li>
+	RepeatType *string `json:"RepeatType,omitempty" name:"RepeatType"`
 }
 
 type LiveStreamAiRecognitionResultInfo struct {
 
 	// 内容识别结果列表。
-	ResultSet []*LiveStreamAiRecognitionResultItem `json:"ResultSet,omitempty" name:"ResultSet" list`
+	ResultSet []*LiveStreamAiRecognitionResultItem `json:"ResultSet,omitempty" name:"ResultSet"`
 }
 
 type LiveStreamAiRecognitionResultItem struct {
@@ -4149,23 +4934,23 @@ type LiveStreamAiRecognitionResultItem struct {
 
 	// 人脸识别结果，当 Type 为
 	// FaceRecognition 时有效。
-	FaceRecognitionResultSet []*LiveStreamFaceRecognitionResult `json:"FaceRecognitionResultSet,omitempty" name:"FaceRecognitionResultSet" list`
+	FaceRecognitionResultSet []*LiveStreamFaceRecognitionResult `json:"FaceRecognitionResultSet,omitempty" name:"FaceRecognitionResultSet"`
 
 	// 语音关键词识别结果，当 Type 为
 	// AsrWordsRecognition 时有效。
-	AsrWordsRecognitionResultSet []*LiveStreamAsrWordsRecognitionResult `json:"AsrWordsRecognitionResultSet,omitempty" name:"AsrWordsRecognitionResultSet" list`
+	AsrWordsRecognitionResultSet []*LiveStreamAsrWordsRecognitionResult `json:"AsrWordsRecognitionResultSet,omitempty" name:"AsrWordsRecognitionResultSet"`
 
 	// 文本关键词识别结果，当 Type 为
 	// OcrWordsRecognition 时有效。
-	OcrWordsRecognitionResultSet []*LiveStreamOcrWordsRecognitionResult `json:"OcrWordsRecognitionResultSet,omitempty" name:"OcrWordsRecognitionResultSet" list`
+	OcrWordsRecognitionResultSet []*LiveStreamOcrWordsRecognitionResult `json:"OcrWordsRecognitionResultSet,omitempty" name:"OcrWordsRecognitionResultSet"`
 
 	// 语音全文识别结果，当 Type 为
 	// AsrFullTextRecognition 时有效。
-	AsrFullTextRecognitionResultSet []*LiveStreamAsrFullTextRecognitionResult `json:"AsrFullTextRecognitionResultSet,omitempty" name:"AsrFullTextRecognitionResultSet" list`
+	AsrFullTextRecognitionResultSet []*LiveStreamAsrFullTextRecognitionResult `json:"AsrFullTextRecognitionResultSet,omitempty" name:"AsrFullTextRecognitionResultSet"`
 
 	// 文本全文识别结果，当 Type 为
 	// OcrFullTextRecognition 时有效。
-	OcrFullTextRecognitionResultSet []*LiveStreamOcrFullTextRecognitionResult `json:"OcrFullTextRecognitionResultSet,omitempty" name:"OcrFullTextRecognitionResultSet" list`
+	OcrFullTextRecognitionResultSet []*LiveStreamOcrFullTextRecognitionResult `json:"OcrFullTextRecognitionResultSet,omitempty" name:"OcrFullTextRecognitionResultSet"`
 }
 
 type LiveStreamAiReviewImagePoliticalResult struct {
@@ -4194,7 +4979,7 @@ type LiveStreamAiReviewImagePoliticalResult struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 涉政人物、违规图标出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
-	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet"`
 
 	// 嫌疑图片 URL （图片不会永久存储，到达
 	// PicUrlExpireTime 时间点后图片将被删除）。
@@ -4275,7 +5060,7 @@ type LiveStreamAiReviewImageTerrorismResult struct {
 type LiveStreamAiReviewResultInfo struct {
 
 	// 内容审核结果列表。
-	ResultSet []*LiveStreamAiReviewResultItem `json:"ResultSet,omitempty" name:"ResultSet" list`
+	ResultSet []*LiveStreamAiReviewResultItem `json:"ResultSet,omitempty" name:"ResultSet"`
 }
 
 type LiveStreamAiReviewResultItem struct {
@@ -4288,16 +5073,16 @@ type LiveStreamAiReviewResultItem struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 图片鉴黄的结果，当 Type 为 ImagePorn 时有效。
-	ImagePornResultSet []*LiveStreamAiReviewImagePornResult `json:"ImagePornResultSet,omitempty" name:"ImagePornResultSet" list`
+	ImagePornResultSet []*LiveStreamAiReviewImagePornResult `json:"ImagePornResultSet,omitempty" name:"ImagePornResultSet"`
 
 	// 图片鉴恐的结果，当 Type 为 ImageTerrorism 时有效。
-	ImageTerrorismResultSet []*LiveStreamAiReviewImageTerrorismResult `json:"ImageTerrorismResultSet,omitempty" name:"ImageTerrorismResultSet" list`
+	ImageTerrorismResultSet []*LiveStreamAiReviewImageTerrorismResult `json:"ImageTerrorismResultSet,omitempty" name:"ImageTerrorismResultSet"`
 
 	// 图片鉴政的结果，当 Type 为 ImagePolitical 时有效。
-	ImagePoliticalResultSet []*LiveStreamAiReviewImagePoliticalResult `json:"ImagePoliticalResultSet,omitempty" name:"ImagePoliticalResultSet" list`
+	ImagePoliticalResultSet []*LiveStreamAiReviewImagePoliticalResult `json:"ImagePoliticalResultSet,omitempty" name:"ImagePoliticalResultSet"`
 
 	// 声音鉴黄的结果，当 Type 为 PornVoice 时有效。
-	VoicePornResultSet []*LiveStreamAiReviewVoicePornResult `json:"VoicePornResultSet,omitempty" name:"VoicePornResultSet" list`
+	VoicePornResultSet []*LiveStreamAiReviewVoicePornResult `json:"VoicePornResultSet,omitempty" name:"VoicePornResultSet"`
 }
 
 type LiveStreamAiReviewVoicePornResult struct {
@@ -4374,7 +5159,7 @@ type LiveStreamFaceRecognitionResult struct {
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
-	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet"`
 }
 
 type LiveStreamOcrFullTextRecognitionResult struct {
@@ -4392,7 +5177,7 @@ type LiveStreamOcrFullTextRecognitionResult struct {
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
-	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet"`
 }
 
 type LiveStreamOcrWordsRecognitionResult struct {
@@ -4410,7 +5195,7 @@ type LiveStreamOcrWordsRecognitionResult struct {
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
-	AreaCoords []*int64 `json:"AreaCoords,omitempty" name:"AreaCoords" list`
+	AreaCoords []*int64 `json:"AreaCoords,omitempty" name:"AreaCoords"`
 }
 
 type LiveStreamProcessErrorInfo struct {
@@ -4457,13 +5242,23 @@ type LiveStreamTaskNotifyConfig struct {
 
 	// 当模型为 Topic 时有效，表示接收事件通知的 CMQ 的主题名。
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// 通知类型，默认CMQ，指定URL时HTTP回调推送到 NotifyUrl 指定的地址。
+	NotifyType *string `json:"NotifyType,omitempty" name:"NotifyType"`
+
+	// HTTP回调地址，NotifyType为URL时必填。
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
 }
 
 type ManageTaskRequest struct {
 	*tchttp.BaseRequest
 
 	// 操作类型，取值范围：
-	// <li>Abort：终止任务。</li>
+	// <ul>
+	// <li>Abort：终止任务。使用说明：
+	// <ul><li>若 [任务类型](/document/product/862/37614#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) 为直播流处理任务（LiveStreamProcessTask），支持终止 [任务状态](/document/product/862/37614#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) 为等待中（WAITING）或处理中（PROCESSING）的任务；</li>
+	// <li>否则，对于其他 [任务类型](/document/product/862/37614#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0)，只支持终止 [任务状态](/document/product/862/37614#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) 为等待中（WAITING）的任务。</li></ul>
+	// </li></ul>
 	OperationType *string `json:"OperationType,omitempty" name:"OperationType"`
 
 	// 视频处理的任务 ID。
@@ -4475,8 +5270,19 @@ func (r *ManageTaskRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ManageTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OperationType")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ManageTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ManageTaskResponse struct {
@@ -4493,8 +5299,10 @@ func (r *ManageTaskResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ManageTaskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MediaAiAnalysisClassificationItem struct {
@@ -4522,7 +5330,7 @@ type MediaAiAnalysisFrameTagItem struct {
 
 	// 按帧标签名称的分类列表，CategorySet.N 表示第 N+1级分类。
 	// 比如 Tag 为“塔楼”时，CategorySet 包含两个元素：CategorySet.0 为“场景”，CategorySet.1为 “建筑”，表示按帧标签为“塔楼”，且第1级分类是“场景”，第2级分类是“建筑”。
-	CategorySet []*string `json:"CategorySet,omitempty" name:"CategorySet" list`
+	CategorySet []*string `json:"CategorySet,omitempty" name:"CategorySet"`
 
 	// 按帧标签的可信度，取值范围是 0 到 100。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
@@ -4537,7 +5345,7 @@ type MediaAiAnalysisFrameTagSegmentItem struct {
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 
 	// 时间片段内的标签列表。
-	TagSet []*MediaAiAnalysisFrameTagItem `json:"TagSet,omitempty" name:"TagSet" list`
+	TagSet []*MediaAiAnalysisFrameTagItem `json:"TagSet,omitempty" name:"TagSet"`
 }
 
 type MediaAiAnalysisTagItem struct {
@@ -4595,6 +5403,10 @@ type MediaAudioStreamItem struct {
 
 	// 音频流的编码格式，例如 aac。
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
+
+	// 音频声道数，例如 2。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Channel *int64 `json:"Channel,omitempty" name:"Channel"`
 }
 
 type MediaContentReviewAsrTextSegmentItem struct {
@@ -4615,7 +5427,7 @@ type MediaContentReviewAsrTextSegmentItem struct {
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// 嫌疑关键词列表。
-	KeywordSet []*string `json:"KeywordSet,omitempty" name:"KeywordSet" list`
+	KeywordSet []*string `json:"KeywordSet,omitempty" name:"KeywordSet"`
 }
 
 type MediaContentReviewOcrTextSegmentItem struct {
@@ -4636,10 +5448,10 @@ type MediaContentReviewOcrTextSegmentItem struct {
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// 嫌疑关键词列表。
-	KeywordSet []*string `json:"KeywordSet,omitempty" name:"KeywordSet" list`
+	KeywordSet []*string `json:"KeywordSet,omitempty" name:"KeywordSet"`
 
 	// 嫌疑文字出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
-	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet"`
 
 	// 嫌疑图片 URL （图片不会永久存储，到达
 	// PicUrlExpireTime 时间点后图片将被删除）。
@@ -4700,7 +5512,7 @@ type MediaContentReviewPoliticalSegmentItem struct {
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 涉政人物、违规图标出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
-	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet" list`
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet"`
 
 	// 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
 	PicUrlExpireTime *string `json:"PicUrlExpireTime,omitempty" name:"PicUrlExpireTime"`
@@ -4749,7 +5561,7 @@ type MediaImageSpriteItem struct {
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 每一张雪碧图大图的路径。
-	ImagePathSet []*string `json:"ImagePathSet,omitempty" name:"ImagePathSet" list`
+	ImagePathSet []*string `json:"ImagePathSet,omitempty" name:"ImagePathSet"`
 
 	// 雪碧图子图位置与时间关系的 WebVtt 文件路径。WebVtt 文件表明了各个雪碧图小图对应的时间点，以及在雪碧大图里的坐标位置，一般被播放器用于实现预览。
 	WebVttPath *string `json:"WebVttPath,omitempty" name:"WebVttPath"`
@@ -4760,15 +5572,13 @@ type MediaImageSpriteItem struct {
 
 type MediaInputInfo struct {
 
-	// 输入来源对象的类型，目前仅支持 COS。
+	// 输入来源对象的类型，支持 COS 和 URL 两种。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 当 Type 为 COS 时有效，则该项为必填，表示视频处理 COS 对象信息。
 	CosInputInfo *CosInputInfo `json:"CosInputInfo,omitempty" name:"CosInputInfo"`
 
 	// 当 Type 为 URL 时有效，则该项为必填，表示视频处理 URL 对象信息。
-	// 
-	// 目前尚不支持 URL 输入，该能力将于近期支持。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UrlInputInfo *UrlInputInfo `json:"UrlInputInfo,omitempty" name:"UrlInputInfo"`
 }
@@ -4797,10 +5607,10 @@ type MediaMetaData struct {
 	Rotate *int64 `json:"Rotate,omitempty" name:"Rotate"`
 
 	// 视频流信息。
-	VideoStreamSet []*MediaVideoStreamItem `json:"VideoStreamSet,omitempty" name:"VideoStreamSet" list`
+	VideoStreamSet []*MediaVideoStreamItem `json:"VideoStreamSet,omitempty" name:"VideoStreamSet"`
 
 	// 音频流信息。
-	AudioStreamSet []*MediaAudioStreamItem `json:"AudioStreamSet,omitempty" name:"AudioStreamSet" list`
+	AudioStreamSet []*MediaAudioStreamItem `json:"AudioStreamSet,omitempty" name:"AudioStreamSet"`
 
 	// 视频时长，单位：秒。
 	VideoDuration *float64 `json:"VideoDuration,omitempty" name:"VideoDuration"`
@@ -4814,7 +5624,10 @@ type MediaProcessTaskAdaptiveDynamicStreamingResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0：成功，其他值：失败。
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -4833,10 +5646,10 @@ type MediaProcessTaskAnimatedGraphicResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0 表示成功，其他值表示失败：
-	// <li>40000：输入参数不合法，请检查输入参数；</li>
-	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
-	// <li>70000：内部服务错误，建议重试。</li>
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -4855,10 +5668,10 @@ type MediaProcessTaskImageSpriteResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0 表示成功，其他值表示失败：
-	// <li>40000：输入参数不合法，请检查输入参数；</li>
-	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
-	// <li>70000：内部服务错误，建议重试。</li>
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -4875,22 +5688,22 @@ type MediaProcessTaskImageSpriteResult struct {
 type MediaProcessTaskInput struct {
 
 	// 视频转码任务列表。
-	TranscodeTaskSet []*TranscodeTaskInput `json:"TranscodeTaskSet,omitempty" name:"TranscodeTaskSet" list`
+	TranscodeTaskSet []*TranscodeTaskInput `json:"TranscodeTaskSet,omitempty" name:"TranscodeTaskSet"`
 
 	// 视频转动图任务列表。
-	AnimatedGraphicTaskSet []*AnimatedGraphicTaskInput `json:"AnimatedGraphicTaskSet,omitempty" name:"AnimatedGraphicTaskSet" list`
+	AnimatedGraphicTaskSet []*AnimatedGraphicTaskInput `json:"AnimatedGraphicTaskSet,omitempty" name:"AnimatedGraphicTaskSet"`
 
 	// 对视频按时间点截图任务列表。
-	SnapshotByTimeOffsetTaskSet []*SnapshotByTimeOffsetTaskInput `json:"SnapshotByTimeOffsetTaskSet,omitempty" name:"SnapshotByTimeOffsetTaskSet" list`
+	SnapshotByTimeOffsetTaskSet []*SnapshotByTimeOffsetTaskInput `json:"SnapshotByTimeOffsetTaskSet,omitempty" name:"SnapshotByTimeOffsetTaskSet"`
 
 	// 对视频采样截图任务列表。
-	SampleSnapshotTaskSet []*SampleSnapshotTaskInput `json:"SampleSnapshotTaskSet,omitempty" name:"SampleSnapshotTaskSet" list`
+	SampleSnapshotTaskSet []*SampleSnapshotTaskInput `json:"SampleSnapshotTaskSet,omitempty" name:"SampleSnapshotTaskSet"`
 
 	// 对视频截雪碧图任务列表。
-	ImageSpriteTaskSet []*ImageSpriteTaskInput `json:"ImageSpriteTaskSet,omitempty" name:"ImageSpriteTaskSet" list`
+	ImageSpriteTaskSet []*ImageSpriteTaskInput `json:"ImageSpriteTaskSet,omitempty" name:"ImageSpriteTaskSet"`
 
 	// 转自适应码流任务列表。
-	AdaptiveDynamicStreamingTaskSet []*AdaptiveDynamicStreamingTaskInput `json:"AdaptiveDynamicStreamingTaskSet,omitempty" name:"AdaptiveDynamicStreamingTaskSet" list`
+	AdaptiveDynamicStreamingTaskSet []*AdaptiveDynamicStreamingTaskInput `json:"AdaptiveDynamicStreamingTaskSet,omitempty" name:"AdaptiveDynamicStreamingTaskSet"`
 }
 
 type MediaProcessTaskResult struct {
@@ -4935,10 +5748,10 @@ type MediaProcessTaskSampleSnapshotResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0 表示成功，其他值表示失败：
-	// <li>40000：输入参数不合法，请检查输入参数；</li>
-	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
-	// <li>70000：内部服务错误，建议重试。</li>
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -4957,10 +5770,10 @@ type MediaProcessTaskSnapshotByTimeOffsetResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0 表示成功，其他值表示失败：
-	// <li>40000：输入参数不合法，请检查输入参数；</li>
-	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
-	// <li>70000：内部服务错误，建议重试。</li>
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -4979,10 +5792,10 @@ type MediaProcessTaskTranscodeResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 错误码，0 表示成功，其他值表示失败：
-	// <li>40000：输入参数不合法，请检查输入参数；</li>
-	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
-	// <li>70000：内部服务错误，建议重试。</li>
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
 	// 错误信息。
@@ -4994,6 +5807,10 @@ type MediaProcessTaskTranscodeResult struct {
 	// 转码任务的输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *MediaTranscodeItem `json:"Output,omitempty" name:"Output"`
+
+	// 转码进度，取值范围 [0-100]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type MediaSampleSnapshotItem struct {
@@ -5015,10 +5832,10 @@ type MediaSampleSnapshotItem struct {
 	Storage *TaskOutputStorage `json:"Storage,omitempty" name:"Storage"`
 
 	// 生成的截图 path 列表。
-	ImagePathSet []*string `json:"ImagePathSet,omitempty" name:"ImagePathSet" list`
+	ImagePathSet []*string `json:"ImagePathSet,omitempty" name:"ImagePathSet"`
 
 	// 截图如果被打上了水印，被打水印的模板 ID 列表。
-	WaterMarkDefinition []*int64 `json:"WaterMarkDefinition,omitempty" name:"WaterMarkDefinition" list`
+	WaterMarkDefinition []*int64 `json:"WaterMarkDefinition,omitempty" name:"WaterMarkDefinition"`
 }
 
 type MediaSnapshotByTimeOffsetItem struct {
@@ -5027,7 +5844,7 @@ type MediaSnapshotByTimeOffsetItem struct {
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 同一规格的截图信息集合，每个元素代表一张截图。
-	PicInfoSet []*MediaSnapshotByTimePicInfoItem `json:"PicInfoSet,omitempty" name:"PicInfoSet" list`
+	PicInfoSet []*MediaSnapshotByTimePicInfoItem `json:"PicInfoSet,omitempty" name:"PicInfoSet"`
 
 	// 指定时间点截图文件的存储位置。
 	Storage *TaskOutputStorage `json:"Storage,omitempty" name:"Storage"`
@@ -5042,7 +5859,7 @@ type MediaSnapshotByTimePicInfoItem struct {
 	Path *string `json:"Path,omitempty" name:"Path"`
 
 	// 截图如果被打上了水印，被打水印的模板 ID 列表。
-	WaterMarkDefinition []*int64 `json:"WaterMarkDefinition,omitempty" name:"WaterMarkDefinition" list`
+	WaterMarkDefinition []*int64 `json:"WaterMarkDefinition,omitempty" name:"WaterMarkDefinition"`
 }
 
 type MediaTranscodeItem struct {
@@ -5078,10 +5895,10 @@ type MediaTranscodeItem struct {
 	Md5 *string `json:"Md5,omitempty" name:"Md5"`
 
 	// 音频流信息。
-	AudioStreamSet []*MediaAudioStreamItem `json:"AudioStreamSet,omitempty" name:"AudioStreamSet" list`
+	AudioStreamSet []*MediaAudioStreamItem `json:"AudioStreamSet,omitempty" name:"AudioStreamSet"`
 
 	// 视频流信息。
-	VideoStreamSet []*MediaVideoStreamItem `json:"VideoStreamSet,omitempty" name:"VideoStreamSet" list`
+	VideoStreamSet []*MediaVideoStreamItem `json:"VideoStreamSet,omitempty" name:"VideoStreamSet"`
 }
 
 type MediaVideoStreamItem struct {
@@ -5100,6 +5917,22 @@ type MediaVideoStreamItem struct {
 
 	// 帧率，单位：hz。
 	Fps *int64 `json:"Fps,omitempty" name:"Fps"`
+
+	// 色彩空间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColorPrimaries *string `json:"ColorPrimaries,omitempty" name:"ColorPrimaries"`
+
+	// 色彩空间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColorSpace *string `json:"ColorSpace,omitempty" name:"ColorSpace"`
+
+	// 色彩空间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColorTransfer *string `json:"ColorTransfer,omitempty" name:"ColorTransfer"`
+
+	// HDR类型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HdrType *string `json:"HdrType,omitempty" name:"HdrType"`
 }
 
 type ModifyAIAnalysisTemplateRequest struct {
@@ -5132,8 +5965,24 @@ func (r *ModifyAIAnalysisTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyAIAnalysisTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	delete(f, "Name")
+	delete(f, "Comment")
+	delete(f, "ClassificationConfigure")
+	delete(f, "TagConfigure")
+	delete(f, "CoverConfigure")
+	delete(f, "FrameTagConfigure")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAIAnalysisTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyAIAnalysisTemplateResponse struct {
@@ -5150,8 +5999,10 @@ func (r *ModifyAIAnalysisTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyAIAnalysisTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyAIRecognitionTemplateRequest struct {
@@ -5187,8 +6038,25 @@ func (r *ModifyAIRecognitionTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyAIRecognitionTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	delete(f, "Name")
+	delete(f, "Comment")
+	delete(f, "FaceConfigure")
+	delete(f, "OcrFullTextConfigure")
+	delete(f, "OcrWordsConfigure")
+	delete(f, "AsrFullTextConfigure")
+	delete(f, "AsrWordsConfigure")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAIRecognitionTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyAIRecognitionTemplateResponse struct {
@@ -5205,8 +6073,10 @@ func (r *ModifyAIRecognitionTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyAIRecognitionTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyAdaptiveDynamicStreamingTemplateRequest struct {
@@ -5235,7 +6105,7 @@ type ModifyAdaptiveDynamicStreamingTemplateRequest struct {
 
 	// 转自适应码流输入流参数信息，最多输入10路流。
 	// 注意：各个流的帧率必须保持一致；如果不一致，采用第一个流的帧率作为输出帧率。
-	StreamInfos []*AdaptiveStreamTemplate `json:"StreamInfos,omitempty" name:"StreamInfos" list`
+	StreamInfos []*AdaptiveStreamTemplate `json:"StreamInfos,omitempty" name:"StreamInfos"`
 
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
@@ -5246,8 +6116,24 @@ func (r *ModifyAdaptiveDynamicStreamingTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyAdaptiveDynamicStreamingTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	delete(f, "Name")
+	delete(f, "Format")
+	delete(f, "DisableHigherVideoBitrate")
+	delete(f, "DisableHigherVideoResolution")
+	delete(f, "StreamInfos")
+	delete(f, "Comment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAdaptiveDynamicStreamingTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyAdaptiveDynamicStreamingTemplateResponse struct {
@@ -5264,8 +6150,10 @@ func (r *ModifyAdaptiveDynamicStreamingTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyAdaptiveDynamicStreamingTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyAnimatedGraphicsTemplateRequest struct {
@@ -5317,8 +6205,26 @@ func (r *ModifyAnimatedGraphicsTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyAnimatedGraphicsTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	delete(f, "Name")
+	delete(f, "Width")
+	delete(f, "Height")
+	delete(f, "ResolutionAdaptive")
+	delete(f, "Format")
+	delete(f, "Fps")
+	delete(f, "Quality")
+	delete(f, "Comment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAnimatedGraphicsTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyAnimatedGraphicsTemplateResponse struct {
@@ -5335,29 +6241,31 @@ func (r *ModifyAnimatedGraphicsTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyAnimatedGraphicsTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyContentReviewTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// 内容审核模板唯一标识。
+	// 内容智能识别模板唯一标识。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
-	// 内容审核模板名称，长度限制：64 个字符。
+	// 内容智能识别模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 内容审核模板描述信息，长度限制：256 个字符。
+	// 内容智能识别模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
-	// 鉴黄控制参数。
+	// 令人反感的信息的控制参数。
 	PornConfigure *PornConfigureInfoForUpdate `json:"PornConfigure,omitempty" name:"PornConfigure"`
 
-	// 鉴恐控制参数。
+	// 令人不安全的信息的控制参数。
 	TerrorismConfigure *TerrorismConfigureInfoForUpdate `json:"TerrorismConfigure,omitempty" name:"TerrorismConfigure"`
 
-	// 鉴政控制参数。
+	// 令人不适宜的控制参数。
 	PoliticalConfigure *PoliticalConfigureInfoForUpdate `json:"PoliticalConfigure,omitempty" name:"PoliticalConfigure"`
 
 	// 违禁控制参数。违禁内容包括：
@@ -5366,7 +6274,7 @@ type ModifyContentReviewTemplateRequest struct {
 	// 注意：此参数尚未支持。
 	ProhibitedConfigure *ProhibitedConfigureInfoForUpdate `json:"ProhibitedConfigure,omitempty" name:"ProhibitedConfigure"`
 
-	// 用户自定义内容审核控制参数。
+	// 用户自定义内容智能识别控制参数。
 	UserDefineConfigure *UserDefineConfigureInfoForUpdate `json:"UserDefineConfigure,omitempty" name:"UserDefineConfigure"`
 }
 
@@ -5375,8 +6283,25 @@ func (r *ModifyContentReviewTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyContentReviewTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	delete(f, "Name")
+	delete(f, "Comment")
+	delete(f, "PornConfigure")
+	delete(f, "TerrorismConfigure")
+	delete(f, "PoliticalConfigure")
+	delete(f, "ProhibitedConfigure")
+	delete(f, "UserDefineConfigure")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyContentReviewTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyContentReviewTemplateResponse struct {
@@ -5393,8 +6318,10 @@ func (r *ModifyContentReviewTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyContentReviewTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyImageSpriteTemplateRequest struct {
@@ -5459,8 +6386,28 @@ func (r *ModifyImageSpriteTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyImageSpriteTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	delete(f, "Name")
+	delete(f, "Width")
+	delete(f, "Height")
+	delete(f, "ResolutionAdaptive")
+	delete(f, "SampleType")
+	delete(f, "SampleInterval")
+	delete(f, "RowCount")
+	delete(f, "ColumnCount")
+	delete(f, "FillType")
+	delete(f, "Comment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyImageSpriteTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyImageSpriteTemplateResponse struct {
@@ -5477,14 +6424,16 @@ func (r *ModifyImageSpriteTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyImageSpriteTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyPersonSampleRequest struct {
 	*tchttp.BaseRequest
 
-	// 人物 ID。
+	// 素材 ID。
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
 	// 名称，长度限制：128 个字符。
@@ -5493,13 +6442,13 @@ type ModifyPersonSampleRequest struct {
 	// 描述，长度限制：1024 个字符。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 人物应用场景，可选值：
+	// 素材应用场景，可选值：
 	// 1. Recognition：用于内容识别，等价于 Recognition.Face。
-	// 2. Review：用于内容审核，等价于 Review.Face。
-	// 3. All：用于内容识别、内容审核，等价于 1+2。
-	Usages []*string `json:"Usages,omitempty" name:"Usages" list`
+	// 2. Review：用于不适宜的内容识别，等价于 Review.Face。
+	// 3. All：用于内容识别、不适宜的内容识别，等价于 1+2。
+	Usages []*string `json:"Usages,omitempty" name:"Usages"`
 
-	// 人脸操作信息。
+	// 五官操作信息。
 	FaceOperationInfo *AiSampleFaceOperation `json:"FaceOperationInfo,omitempty" name:"FaceOperationInfo"`
 
 	// 标签操作信息。
@@ -5511,20 +6460,35 @@ func (r *ModifyPersonSampleRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyPersonSampleRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PersonId")
+	delete(f, "Name")
+	delete(f, "Description")
+	delete(f, "Usages")
+	delete(f, "FaceOperationInfo")
+	delete(f, "TagOperationInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPersonSampleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyPersonSampleResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 人物信息。
+		// 素材信息。
 		Person *AiSamplePerson `json:"Person,omitempty" name:"Person"`
 
-		// 处理失败的人脸信息。
+		// 处理失败的五官信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		FailFaceInfoSet []*AiSampleFailFaceInfo `json:"FailFaceInfoSet,omitempty" name:"FailFaceInfoSet" list`
+		FailFaceInfoSet []*AiSampleFailFaceInfo `json:"FailFaceInfoSet,omitempty" name:"FailFaceInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5536,8 +6500,10 @@ func (r *ModifyPersonSampleResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyPersonSampleResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifySampleSnapshotTemplateRequest struct {
@@ -5601,8 +6567,27 @@ func (r *ModifySampleSnapshotTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifySampleSnapshotTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	delete(f, "Name")
+	delete(f, "Width")
+	delete(f, "Height")
+	delete(f, "ResolutionAdaptive")
+	delete(f, "SampleType")
+	delete(f, "SampleInterval")
+	delete(f, "Format")
+	delete(f, "Comment")
+	delete(f, "FillType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySampleSnapshotTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifySampleSnapshotTemplateResponse struct {
@@ -5619,8 +6604,10 @@ func (r *ModifySampleSnapshotTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifySampleSnapshotTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifySnapshotByTimeOffsetTemplateRequest struct {
@@ -5674,8 +6661,25 @@ func (r *ModifySnapshotByTimeOffsetTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifySnapshotByTimeOffsetTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	delete(f, "Name")
+	delete(f, "Width")
+	delete(f, "Height")
+	delete(f, "ResolutionAdaptive")
+	delete(f, "Format")
+	delete(f, "Comment")
+	delete(f, "FillType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySnapshotByTimeOffsetTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifySnapshotByTimeOffsetTemplateResponse struct {
@@ -5692,8 +6696,10 @@ func (r *ModifySnapshotByTimeOffsetTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifySnapshotByTimeOffsetTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyTranscodeTemplateRequest struct {
@@ -5736,8 +6742,26 @@ func (r *ModifyTranscodeTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyTranscodeTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	delete(f, "Container")
+	delete(f, "Name")
+	delete(f, "Comment")
+	delete(f, "RemoveVideo")
+	delete(f, "RemoveAudio")
+	delete(f, "VideoTemplate")
+	delete(f, "AudioTemplate")
+	delete(f, "TEHDConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTranscodeTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyTranscodeTemplateResponse struct {
@@ -5754,8 +6778,10 @@ func (r *ModifyTranscodeTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyTranscodeTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyWatermarkTemplateRequest struct {
@@ -5802,8 +6828,26 @@ func (r *ModifyWatermarkTemplateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyWatermarkTemplateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	delete(f, "Name")
+	delete(f, "Comment")
+	delete(f, "CoordinateOrigin")
+	delete(f, "XPos")
+	delete(f, "YPos")
+	delete(f, "ImageTemplate")
+	delete(f, "TextTemplate")
+	delete(f, "SvgTemplate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyWatermarkTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyWatermarkTemplateResponse struct {
@@ -5823,8 +6867,10 @@ func (r *ModifyWatermarkTemplateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyWatermarkTemplateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyWordSampleRequest struct {
@@ -5835,14 +6881,14 @@ type ModifyWordSampleRequest struct {
 
 	// <b>关键词应用场景，可选值：</b>
 	// 1. Recognition.Ocr：通过光学字符识别技术，进行内容识别；
-	// 2. Recognition.Asr：通过语音识别技术，进行内容识别；
-	// 3. Review.Ocr：通过光学字符识别技术，进行内容审核；
-	// 4. Review.Asr：通过语音识别技术，进行内容审核；
+	// 2. Recognition.Asr：通过音频识别技术，进行内容识别；
+	// 3. Review.Ocr：通过光学字符识别技术，进行不适宜的内容识别；
+	// 4. Review.Asr：通过音频识别技术，进行不适宜的音频识别；
 	// <b>可合并简写为：</b>
-	// 5. Recognition：通过光学字符识别技术、语音识别技术，进行内容识别，等价于 1+2；
-	// 6. Review：通过光学字符识别技术、语音识别技术，进行内容审核，等价于 3+4；
-	// 7. All：通过光学字符识别技术、语音识别技术，进行内容识别、内容审核，等价于 1+2+3+4。
-	Usages []*string `json:"Usages,omitempty" name:"Usages" list`
+	// 5. Recognition：通过光学字符识别技术、音频识别技术，进行内容识别，等价于 1+2；
+	// 6. Review：通过光学字符识别技术、音频识别技术，进行不适宜的内容识别，等价于 3+4；
+	// 7. All：包含以上全部，等价于 1+2+3+4。
+	Usages []*string `json:"Usages,omitempty" name:"Usages"`
 
 	// 标签操作信息。
 	TagOperationInfo *AiSampleTagOperation `json:"TagOperationInfo,omitempty" name:"TagOperationInfo"`
@@ -5853,8 +6899,20 @@ func (r *ModifyWordSampleRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyWordSampleRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Keyword")
+	delete(f, "Usages")
+	delete(f, "TagOperationInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyWordSampleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyWordSampleResponse struct {
@@ -5871,8 +6929,10 @@ func (r *ModifyWordSampleResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyWordSampleResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MosaicInput struct {
@@ -5959,7 +7019,7 @@ type OcrWordsConfigureInfo struct {
 
 	// 关键词过滤标签，指定需要返回的关键词的标签。如果未填或者为空，则全部结果都返回。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 }
 
 type OcrWordsConfigureInfoForUpdate struct {
@@ -5971,7 +7031,32 @@ type OcrWordsConfigureInfoForUpdate struct {
 
 	// 关键词过滤标签，指定需要返回的关键词的标签。如果未填或者为空，则全部结果都返回。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
+}
+
+type OverrideTranscodeParameter struct {
+
+	// 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
+	Container *string `json:"Container,omitempty" name:"Container"`
+
+	// 是否去除视频数据，取值：
+	// <li>0：保留；</li>
+	// <li>1：去除。</li>
+	RemoveVideo *uint64 `json:"RemoveVideo,omitempty" name:"RemoveVideo"`
+
+	// 是否去除音频数据，取值：
+	// <li>0：保留；</li>
+	// <li>1：去除。</li>
+	RemoveAudio *uint64 `json:"RemoveAudio,omitempty" name:"RemoveAudio"`
+
+	// 视频流配置参数。
+	VideoTemplate *VideoTemplateInfoForUpdate `json:"VideoTemplate,omitempty" name:"VideoTemplate"`
+
+	// 音频流配置参数。
+	AudioTemplate *AudioTemplateInfoForUpdate `json:"AudioTemplate,omitempty" name:"AudioTemplate"`
+
+	// 极速高清转码参数。
+	TEHDConfig *TEHDConfigForUpdate `json:"TEHDConfig,omitempty" name:"TEHDConfig"`
 }
 
 type ParseLiveStreamProcessNotificationRequest struct {
@@ -5986,8 +7071,18 @@ func (r *ParseLiveStreamProcessNotificationRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ParseLiveStreamProcessNotificationRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Content")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ParseLiveStreamProcessNotificationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ParseLiveStreamProcessNotificationResponse struct {
@@ -6031,8 +7126,10 @@ func (r *ParseLiveStreamProcessNotificationResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ParseLiveStreamProcessNotificationResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ParseNotificationRequest struct {
@@ -6047,8 +7144,18 @@ func (r *ParseNotificationRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ParseNotificationRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Content")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ParseNotificationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ParseNotificationResponse struct {
@@ -6084,8 +7191,10 @@ func (r *ParseNotificationResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ParseNotificationResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type PoliticalAsrReviewTemplateInfo struct {
@@ -6156,7 +7265,7 @@ type PoliticalImgReviewTemplateInfo struct {
 	// <li>scholar：教育学者；</li>
 	// <li>celebrity：知名人物；</li>
 	// <li>military：军事人物。</li>
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
 	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
@@ -6181,7 +7290,7 @@ type PoliticalImgReviewTemplateInfoForUpdate struct {
 	// <li>scholar：教育学者；</li>
 	// <li>celebrity：知名人物；</li>
 	// <li>military：军事人物。</li>
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
 	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
@@ -6282,7 +7391,7 @@ type PornImgReviewTemplateInfo struct {
 	// <li>vulgar：低俗；</li>
 	// <li>intimacy：亲密行为；</li>
 	// <li>sexy：性感。</li>
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
 	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
@@ -6303,7 +7412,7 @@ type PornImgReviewTemplateInfoForUpdate struct {
 	// <li>vulgar：低俗；</li>
 	// <li>intimacy：亲密行为；</li>
 	// <li>sexy：性感。</li>
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
 	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
@@ -6373,8 +7482,25 @@ func (r *ProcessLiveStreamRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ProcessLiveStreamRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Url")
+	delete(f, "TaskNotifyConfig")
+	delete(f, "OutputStorage")
+	delete(f, "OutputDir")
+	delete(f, "AiContentReviewTask")
+	delete(f, "AiRecognitionTask")
+	delete(f, "SessionId")
+	delete(f, "SessionContext")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ProcessLiveStreamRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ProcessLiveStreamResponse struct {
@@ -6394,8 +7520,10 @@ func (r *ProcessLiveStreamResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ProcessLiveStreamResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ProcessMediaRequest struct {
@@ -6440,8 +7568,28 @@ func (r *ProcessMediaRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ProcessMediaRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InputInfo")
+	delete(f, "OutputStorage")
+	delete(f, "OutputDir")
+	delete(f, "MediaProcessTask")
+	delete(f, "AiContentReviewTask")
+	delete(f, "AiAnalysisTask")
+	delete(f, "AiRecognitionTask")
+	delete(f, "TaskNotifyConfig")
+	delete(f, "TasksPriority")
+	delete(f, "SessionId")
+	delete(f, "SessionContext")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ProcessMediaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ProcessMediaResponse struct {
@@ -6461,8 +7609,10 @@ func (r *ProcessMediaResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ProcessMediaResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ProhibitedAsrReviewTemplateInfo struct {
@@ -6557,6 +7707,12 @@ type RawImageWatermarkInput struct {
 	// <li>当字符串以 px 结尾，表示水印 Height 单位为像素，如 100px 表示 Height 为 100 像素。</li>
 	// 默认值：0px，表示 Height 按照原始水印图片的宽高比缩放。
 	Height *string `json:"Height,omitempty" name:"Height"`
+
+	// 水印重复类型。使用场景：水印为动态图像。取值范围：
+	// <li>once：动态水印播放完后，不再出现；</li>
+	// <li>repeat_last_frame：水印播放完后，停留在最后一帧；</li>
+	// <li>repeat：水印循环播放，直到视频结束（默认值）。</li>
+	RepeatType *string `json:"RepeatType,omitempty" name:"RepeatType"`
 }
 
 type RawTranscodeParameter struct {
@@ -6613,6 +7769,63 @@ type RawWatermarkParameter struct {
 	ImageTemplate *RawImageWatermarkInput `json:"ImageTemplate,omitempty" name:"ImageTemplate"`
 }
 
+type RecognizeMediaForZhiXueRequest struct {
+	*tchttp.BaseRequest
+
+	// 输入媒体文件存储信息。
+	InputInfo *MediaInputInfo `json:"InputInfo,omitempty" name:"InputInfo"`
+
+	// 表情识别参数配置。默认开启。
+	ExpressionConfig *ExpressionConfigInfo `json:"ExpressionConfig,omitempty" name:"ExpressionConfig"`
+
+	// 动作识别参数配置。默认开启。
+	ActionConfig *ActionConfigInfo `json:"ActionConfig,omitempty" name:"ActionConfig"`
+}
+
+func (r *RecognizeMediaForZhiXueRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeMediaForZhiXueRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InputInfo")
+	delete(f, "ExpressionConfig")
+	delete(f, "ActionConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeMediaForZhiXueRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RecognizeMediaForZhiXueResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务 ID，可以通过该 ID 查询任务状态和结果。
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RecognizeMediaForZhiXueResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeMediaForZhiXueResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ResetWorkflowRequest struct {
 	*tchttp.BaseRequest
 
@@ -6655,8 +7868,28 @@ func (r *ResetWorkflowRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ResetWorkflowRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkflowId")
+	delete(f, "WorkflowName")
+	delete(f, "Trigger")
+	delete(f, "OutputStorage")
+	delete(f, "OutputDir")
+	delete(f, "MediaProcessTask")
+	delete(f, "AiContentReviewTask")
+	delete(f, "AiAnalysisTask")
+	delete(f, "AiRecognitionTask")
+	delete(f, "TaskPriority")
+	delete(f, "TaskNotifyConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetWorkflowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ResetWorkflowResponse struct {
@@ -6673,8 +7906,10 @@ func (r *ResetWorkflowResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ResetWorkflowResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SampleSnapshotTaskInput struct {
@@ -6683,7 +7918,7 @@ type SampleSnapshotTaskInput struct {
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
-	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet" list`
+	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet"`
 
 	// 采样截图后文件的目标存储，不填则继承上层的 OutputStorage 值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6767,13 +8002,13 @@ type SnapshotByTimeOffsetTaskInput struct {
 	// 截图时间点列表，时间点支持 s、% 两种格式：
 	// <li>当字符串以 s 结尾，表示时间点单位为秒，如 3.5s 表示时间点为第3.5秒；</li>
 	// <li>当字符串以 % 结尾，表示时间点为视频时长的百分比大小，如10%表示时间点为视频前第10%的时间。</li>
-	ExtTimeOffsetSet []*string `json:"ExtTimeOffsetSet,omitempty" name:"ExtTimeOffsetSet" list`
+	ExtTimeOffsetSet []*string `json:"ExtTimeOffsetSet,omitempty" name:"ExtTimeOffsetSet"`
 
 	// 截图时间点列表，单位为<font color=red>秒</font>。此参数已不再建议使用，建议您使用 ExtTimeOffsetSet 参数。
-	TimeOffsetSet []*float64 `json:"TimeOffsetSet,omitempty" name:"TimeOffsetSet" list`
+	TimeOffsetSet []*float64 `json:"TimeOffsetSet,omitempty" name:"TimeOffsetSet"`
 
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
-	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet" list`
+	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet"`
 
 	// 时间点截图后文件的目标存储，不填则继承上层的 OutputStorage 值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6948,6 +8183,12 @@ type TaskNotifyConfig struct {
 
 	// 工作流通知的模式，可取值有 Finish 和 Change，不填代表 Finish。
 	NotifyMode *string `json:"NotifyMode,omitempty" name:"NotifyMode"`
+
+	// 通知类型，默认CMQ，指定URL时HTTP回调推送到 NotifyUrl 指定的地址。
+	NotifyType *string `json:"NotifyType,omitempty" name:"NotifyType"`
+
+	// HTTP回调地址，NotifyType为URL时必填。
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
 }
 
 type TaskOutputStorage struct {
@@ -7014,8 +8255,9 @@ type TerrorismImgReviewTemplateInfo struct {
 	// <li>banners：暴恐旗帜；</li>
 	// <li>militant：武装分子；</li>
 	// <li>explosion：爆炸火灾；</li>
-	// <li>terrorists：暴恐人物。</li>
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	// <li>terrorists：暴恐人物；</li>
+	// <li>scenario：暴恐画面。</li>
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
 	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
@@ -7039,8 +8281,9 @@ type TerrorismImgReviewTemplateInfoForUpdate struct {
 	// <li>banners：暴恐旗帜；</li>
 	// <li>militant：武装分子；</li>
 	// <li>explosion：爆炸火灾；</li>
-	// <li>terrorists：暴恐人物。</li>
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	// <li>terrorists：暴恐人物；</li>
+	// <li>scenario：暴恐画面。</li>
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
 	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
@@ -7126,12 +8369,30 @@ type TranscodeTaskInput struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RawParameter *RawTranscodeParameter `json:"RawParameter,omitempty" name:"RawParameter"`
 
+	// 视频转码自定义参数，当 Definition 不填 0 时有效。
+	// 当填写了该结构中的部分转码参数时，将使用填写的参数覆盖转码模板中的参数。
+	// 该参数用于高度定制场景，建议您仅使用 Definition 指定转码参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OverrideParameter *OverrideTranscodeParameter `json:"OverrideParameter,omitempty" name:"OverrideParameter"`
+
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet" list`
+	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitempty" name:"WatermarkSet"`
 
 	// 马赛克列表，最大可支持 10 张。
-	MosaicSet []*MosaicInput `json:"MosaicSet,omitempty" name:"MosaicSet" list`
+	MosaicSet []*MosaicInput `json:"MosaicSet,omitempty" name:"MosaicSet"`
+
+	// 转码后的视频的起始时间偏移，单位：秒。
+	// <li>不填或填0，表示转码后的视频从原始视频的起始位置开始；</li>
+	// <li>当数值大于0时（假设为 n），表示转码后的视频从原始视频的第 n 秒位置开始；</li>
+	// <li>当数值小于0时（假设为 -n），表示转码后的视频从原始视频结束 n 秒前的位置开始。</li>
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 转码后视频的终止时间偏移，单位：秒。
+	// <li>不填或填0，表示转码后的视频持续到原始视频的末尾终止；</li>
+	// <li>当数值大于0时（假设为 n），表示转码后的视频持续到原始视频第 n 秒时终止；</li>
+	// <li>当数值小于0时（假设为 -n），表示转码后的视频持续到原始视频结束 n 秒前终止。</li>
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 
 	// 转码后文件的目标存储，不填则继承上层的 OutputStorage 值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -7146,6 +8407,10 @@ type TranscodeTaskInput struct {
 	// 转码后输出路径中的`{number}`变量的规则。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectNumberFormat *NumberFormat `json:"ObjectNumberFormat,omitempty" name:"ObjectNumberFormat"`
+
+	// 片头片尾参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HeadTailParameter *HeadTailParameter `json:"HeadTailParameter,omitempty" name:"HeadTailParameter"`
 }
 
 type TranscodeTemplate struct {
@@ -7214,7 +8479,7 @@ type UserDefineAsrTextReviewTemplateInfo struct {
 
 	// 用户自定义语音过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义语音关键词素材时需要添加对应标签。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
 	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
@@ -7232,7 +8497,7 @@ type UserDefineAsrTextReviewTemplateInfoForUpdate struct {
 
 	// 用户自定义语音过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义语音关键词素材时需要添加对应标签。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
 	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
@@ -7274,7 +8539,7 @@ type UserDefineFaceReviewTemplateInfo struct {
 
 	// 用户自定义人物过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义人物库的时，需要添加对应人物标签。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
 	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
@@ -7292,7 +8557,7 @@ type UserDefineFaceReviewTemplateInfoForUpdate struct {
 
 	// 用户自定义人物过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义人物库的时，需要添加对应人物标签。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
 	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
@@ -7310,7 +8575,7 @@ type UserDefineOcrTextReviewTemplateInfo struct {
 
 	// 用户自定义文本过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义文本关键词素材时需要添加对应标签。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
-	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet" list`
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
 	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
@@ -7343,14 +8608,13 @@ type VideoTemplateInfo struct {
 	// <li>libx264：H.264 编码</li>
 	// <li>libx265：H.265 编码</li>
 	// <li>av1：AOMedia Video 1 编码</li>
-	// 目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。av1 编码容器目前只支持 mp4 。
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 
 	// 视频帧率，取值范围：[0, 100]，单位：Hz。
 	// 当取值为 0，表示帧率和原始视频保持一致。
 	Fps *uint64 `json:"Fps,omitempty" name:"Fps"`
 
-	// 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
+	// 视频流的码率，取值范围：0 和 [75, 35000]，单位：kbps。
 	// 当取值为 0，表示视频码率和原始视频保持一致。
 	Bitrate *uint64 `json:"Bitrate,omitempty" name:"Bitrate"`
 
@@ -7602,16 +8866,16 @@ type WorkflowTask struct {
 	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
 
 	// 视频处理任务的执行状态与结果。
-	MediaProcessResultSet []*MediaProcessTaskResult `json:"MediaProcessResultSet,omitempty" name:"MediaProcessResultSet" list`
+	MediaProcessResultSet []*MediaProcessTaskResult `json:"MediaProcessResultSet,omitempty" name:"MediaProcessResultSet"`
 
 	// 视频内容审核任务的执行状态与结果。
-	AiContentReviewResultSet []*AiContentReviewResult `json:"AiContentReviewResultSet,omitempty" name:"AiContentReviewResultSet" list`
+	AiContentReviewResultSet []*AiContentReviewResult `json:"AiContentReviewResultSet,omitempty" name:"AiContentReviewResultSet"`
 
 	// 视频内容分析任务的执行状态与结果。
-	AiAnalysisResultSet []*AiAnalysisResult `json:"AiAnalysisResultSet,omitempty" name:"AiAnalysisResultSet" list`
+	AiAnalysisResultSet []*AiAnalysisResult `json:"AiAnalysisResultSet,omitempty" name:"AiAnalysisResultSet"`
 
 	// 视频内容识别任务的执行状态与结果。
-	AiRecognitionResultSet []*AiRecognitionResult `json:"AiRecognitionResultSet,omitempty" name:"AiRecognitionResultSet" list`
+	AiRecognitionResultSet []*AiRecognitionResult `json:"AiRecognitionResultSet,omitempty" name:"AiRecognitionResultSet"`
 }
 
 type WorkflowTrigger struct {

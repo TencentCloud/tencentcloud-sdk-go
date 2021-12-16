@@ -16,7 +16,7 @@ package v20190311
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -35,8 +35,19 @@ func (r *CreateBotRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateBotRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BotName")
+	delete(f, "BotCnName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBotRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateBotResponse struct {
@@ -59,8 +70,10 @@ func (r *CreateBotResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateBotResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ResetRequest struct {
@@ -84,8 +97,21 @@ func (r *ResetRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ResetRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BotId")
+	delete(f, "UserId")
+	delete(f, "BotVersion")
+	delete(f, "BotEnv")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ResetResponse struct {
@@ -109,7 +135,7 @@ type ResetResponse struct {
 
 		// 语义解析的槽位结果列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SlotInfoList []*SlotInfo `json:"SlotInfoList,omitempty" name:"SlotInfoList" list`
+		SlotInfoList []*SlotInfo `json:"SlotInfoList,omitempty" name:"SlotInfoList"`
 
 		// 透传字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -137,8 +163,10 @@ func (r *ResetResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ResetResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SlotInfo struct {
@@ -176,8 +204,22 @@ func (r *TextProcessRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TextProcessRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BotId")
+	delete(f, "TerminalId")
+	delete(f, "InputText")
+	delete(f, "BotEnv")
+	delete(f, "SessionAttributes")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextProcessRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TextProcessResponse struct {
@@ -198,7 +240,7 @@ type TextProcessResponse struct {
 
 		// 槽位信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SlotInfoList []*SlotInfo `json:"SlotInfoList,omitempty" name:"SlotInfoList" list`
+		SlotInfoList []*SlotInfo `json:"SlotInfoList,omitempty" name:"SlotInfoList"`
 
 		// 原始的用户说法。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -222,8 +264,10 @@ func (r *TextProcessResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TextProcessResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TextResetRequest struct {
@@ -244,8 +288,20 @@ func (r *TextResetRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TextResetRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BotId")
+	delete(f, "TerminalId")
+	delete(f, "BotEnv")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextResetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TextResetResponse struct {
@@ -266,7 +322,7 @@ type TextResetResponse struct {
 
 		// 槽位信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SlotInfoList []*SlotInfo `json:"SlotInfoList,omitempty" name:"SlotInfoList" list`
+		SlotInfoList []*SlotInfo `json:"SlotInfoList,omitempty" name:"SlotInfoList"`
 
 		// 原始的用户说法。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -290,6 +346,8 @@ func (r *TextResetResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TextResetResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

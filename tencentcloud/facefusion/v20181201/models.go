@@ -16,7 +16,7 @@ package v20181201
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -41,8 +41,21 @@ func (r *DescribeMaterialListRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeMaterialListRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ActivityId")
+	delete(f, "MaterialId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMaterialListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeMaterialListResponse struct {
@@ -50,7 +63,7 @@ type DescribeMaterialListResponse struct {
 	Response *struct {
 
 		// 素材列表数据
-		MaterialInfos []*PublicMaterialInfos `json:"MaterialInfos,omitempty" name:"MaterialInfos" list`
+		MaterialInfos []*PublicMaterialInfos `json:"MaterialInfos,omitempty" name:"MaterialInfos"`
 
 		// 素材条数
 		Count *int64 `json:"Count,omitempty" name:"Count"`
@@ -65,8 +78,10 @@ func (r *DescribeMaterialListResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeMaterialListResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FaceFusionLiteRequest struct {
@@ -79,7 +94,7 @@ type FaceFusionLiteRequest struct {
 	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
 
 	// 用户人脸图片、素材模板图的人脸位置信息。
-	MergeInfos []*MergeInfo `json:"MergeInfos,omitempty" name:"MergeInfos" list`
+	MergeInfos []*MergeInfo `json:"MergeInfos,omitempty" name:"MergeInfos"`
 
 	// 返回图像方式（url 或 base64) ，二选一。默认url, url有效期为30天。
 	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
@@ -96,8 +111,23 @@ func (r *FaceFusionLiteRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FaceFusionLiteRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "ModelId")
+	delete(f, "MergeInfos")
+	delete(f, "RspImgType")
+	delete(f, "CelebrityIdentify")
+	delete(f, "Engine")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FaceFusionLiteRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FaceFusionLiteResponse struct {
@@ -109,7 +139,7 @@ type FaceFusionLiteResponse struct {
 
 		// 鉴政结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ReviewResultSet []*FuseFaceReviewResult `json:"ReviewResultSet,omitempty" name:"ReviewResultSet" list`
+		ReviewResultSet []*FuseFaceReviewResult `json:"ReviewResultSet,omitempty" name:"ReviewResultSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -121,8 +151,10 @@ func (r *FaceFusionLiteResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FaceFusionLiteResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FaceFusionRequest struct {
@@ -134,18 +166,21 @@ type FaceFusionRequest struct {
 	// 素材 ID，请在人脸融合控制台查看。
 	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
 
+	// 返回图像方式（url 或 base64) ，二选一。url有效期为7天。
+	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
+
 	// 图片 base64 数据。请确保人脸为正脸，无旋转。若某些手机拍摄后人脸被旋转，请使用图片的 EXIF 信息对图片进行旋转处理；请勿在 base64 数据中包含头部，如“data:image/jpeg;base64,”。
 	Image *string `json:"Image,omitempty" name:"Image"`
-
-	// 返回图像方式（url 或 base64) ，二选一。url有效期为30天。
-	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
 
 	// 历史遗留字段，无需填写。因为融合只需提取人脸特征，不需要鉴黄。
 	PornDetect *int64 `json:"PornDetect,omitempty" name:"PornDetect"`
 
-	// 0表示不需要鉴政，1表示需要鉴政。默认值为0。
-	// 请注意，鉴政服务开启后，您需要根据返回结果自行判断是否调整您的业务逻辑。例如提示您的用户图片非法，请更换图片。
+	// 0表示不需要不适宜内容识别，1表示需要不适宜内容识别。默认值为0。
+	// 请注意，不适宜内容识别服务开启后，您需要根据返回结果自行判断是否调整您的业务逻辑。例如提示您的用户图片非法，请更换图片。
 	CelebrityIdentify *int64 `json:"CelebrityIdentify,omitempty" name:"CelebrityIdentify"`
+
+	// 图片Url地址
+	Url *string `json:"Url,omitempty" name:"Url"`
 }
 
 func (r *FaceFusionRequest) ToJsonString() string {
@@ -153,8 +188,24 @@ func (r *FaceFusionRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FaceFusionRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "ModelId")
+	delete(f, "RspImgType")
+	delete(f, "Image")
+	delete(f, "PornDetect")
+	delete(f, "CelebrityIdentify")
+	delete(f, "Url")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FaceFusionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FaceFusionResponse struct {
@@ -164,8 +215,8 @@ type FaceFusionResponse struct {
 		// RspImgType 为 url 时，返回结果的 url， RspImgType 为 base64 时返回 base64 数据。
 		Image *string `json:"Image,omitempty" name:"Image"`
 
-		// 鉴政结果
-		ReviewResultSet []*FuseFaceReviewResult `json:"ReviewResultSet,omitempty" name:"ReviewResultSet" list`
+		// 不适宜内容识别结果
+		ReviewResultSet []*FuseFaceReviewResult `json:"ReviewResultSet,omitempty" name:"ReviewResultSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -177,8 +228,10 @@ func (r *FaceFusionResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FaceFusionResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FaceInfo struct {
@@ -220,11 +273,11 @@ type FuseFaceRequest struct {
 	// 素材 ID，请在人脸融合控制台查看。
 	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
 
-	// 返回图像方式（url 或 base64) ，二选一。url有效期为30天。
+	// 返回图像方式（url 或 base64) ，二选一。url有效期为7天。
 	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
 
 	// 用户人脸图片、素材模板图的人脸位置信息。
-	MergeInfos []*MergeInfo `json:"MergeInfos,omitempty" name:"MergeInfos" list`
+	MergeInfos []*MergeInfo `json:"MergeInfos,omitempty" name:"MergeInfos"`
 
 	// 脸型融合比例，数值越高，融合后的脸型越像素材人物。取值范围[0,100] 
 	// 若此参数不填写，则使用人脸融合控制台中脸型参数数值。（换脸版算法暂不支持此参数调整）
@@ -234,8 +287,8 @@ type FuseFaceRequest struct {
 	// 若此参数不填写，则使用人脸融合控制台中五官参数数值。（换脸版算法暂不支持此参数调整）
 	FuseFaceDegree *int64 `json:"FuseFaceDegree,omitempty" name:"FuseFaceDegree"`
 
-	// 0表示不需要鉴政，1表示需要鉴政。默认值为0。
-	// 请注意，鉴政服务开启后，您需要根据返回结果自行判断是否调整您的业务逻辑。例如提示您的用户图片非法，请更换图片。
+	// 0表示不需要不适宜内容识别，1表示需要不适宜内容识别。默认值为0。
+	// 请注意，不适宜内容识别服务开启后，您需要根据返回结果自行判断是否调整您的业务逻辑。例如提示您的用户图片非法，请更换图片。
 	CelebrityIdentify *int64 `json:"CelebrityIdentify,omitempty" name:"CelebrityIdentify"`
 }
 
@@ -244,8 +297,24 @@ func (r *FuseFaceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FuseFaceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "ModelId")
+	delete(f, "RspImgType")
+	delete(f, "MergeInfos")
+	delete(f, "FuseProfileDegree")
+	delete(f, "FuseFaceDegree")
+	delete(f, "CelebrityIdentify")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FuseFaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FuseFaceResponse struct {
@@ -255,9 +324,9 @@ type FuseFaceResponse struct {
 		// RspImgType 为 url 时，返回结果的 url， RspImgType 为 base64 时返回 base64 数据。
 		FusedImage *string `json:"FusedImage,omitempty" name:"FusedImage"`
 
-		// 鉴政结果。该数组的顺序和请求中mergeinfo的顺序一致，一一对应
+		// 不适宜内容识别结果。该数组的顺序和请求中mergeinfo的顺序一致，一一对应
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ReviewResultSet []*FuseFaceReviewResult `json:"ReviewResultSet,omitempty" name:"ReviewResultSet" list`
+		ReviewResultSet []*FuseFaceReviewResult `json:"ReviewResultSet,omitempty" name:"ReviewResultSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -269,8 +338,10 @@ func (r *FuseFaceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *FuseFaceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FuseFaceReviewDetail struct {
@@ -312,7 +383,7 @@ type FuseFaceReviewResult struct {
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// 审核详细内容
-	DetailSet []*FuseFaceReviewDetail `json:"DetailSet,omitempty" name:"DetailSet" list`
+	DetailSet []*FuseFaceReviewDetail `json:"DetailSet,omitempty" name:"DetailSet"`
 }
 
 type MaterialFaceList struct {
@@ -369,5 +440,5 @@ type PublicMaterialInfos struct {
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
 	// 人脸信息
-	MaterialFaceList []*MaterialFaceList `json:"MaterialFaceList,omitempty" name:"MaterialFaceList" list`
+	MaterialFaceList []*MaterialFaceList `json:"MaterialFaceList,omitempty" name:"MaterialFaceList"`
 }

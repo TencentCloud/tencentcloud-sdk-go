@@ -16,7 +16,7 @@ package v20200210
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -25,6 +25,9 @@ type DetectFraudKOLRequest struct {
 
 	// 业务数据
 	BspData *InputKolBspData `json:"BspData,omitempty" name:"BspData"`
+
+	// 业务加密数据
+	BusinessEncryptData *InputBusinessEncryptData `json:"BusinessEncryptData,omitempty" name:"BusinessEncryptData"`
 }
 
 func (r *DetectFraudKOLRequest) ToJsonString() string {
@@ -32,8 +35,19 @@ func (r *DetectFraudKOLRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DetectFraudKOLRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BspData")
+	delete(f, "BusinessEncryptData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectFraudKOLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DetectFraudKOLResponse struct {
@@ -54,8 +68,10 @@ func (r *DetectFraudKOLResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DetectFraudKOLResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EnhanceTaDegreeRequest struct {
@@ -63,6 +79,9 @@ type EnhanceTaDegreeRequest struct {
 
 	// 业务数据
 	BspData *InputTaBspData `json:"BspData,omitempty" name:"BspData"`
+
+	// 业务加密数据
+	BusinessEncryptData *InputBusinessEncryptData `json:"BusinessEncryptData,omitempty" name:"BusinessEncryptData"`
 }
 
 func (r *EnhanceTaDegreeRequest) ToJsonString() string {
@@ -70,8 +89,19 @@ func (r *EnhanceTaDegreeRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EnhanceTaDegreeRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BspData")
+	delete(f, "BusinessEncryptData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnhanceTaDegreeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EnhanceTaDegreeResponse struct {
@@ -92,14 +122,19 @@ func (r *EnhanceTaDegreeResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EnhanceTaDegreeResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type InputBusinessEncryptData struct {
 }
 
 type InputKolBspData struct {
 
 	// BspData
-	DataList []*InputKolDataList `json:"DataList,omitempty" name:"DataList" list`
+	DataList []*InputKolDataList `json:"DataList,omitempty" name:"DataList"`
 }
 
 type InputKolDataList struct {
@@ -118,6 +153,12 @@ type InputKolDataList struct {
 
 	// 代理商名称
 	AgentInfo *string `json:"AgentInfo,omitempty" name:"AgentInfo"`
+
+	// 是否授权
+	IsAuthorized *uint64 `json:"IsAuthorized,omitempty" name:"IsAuthorized"`
+}
+
+type InputRecognizeEffectiveFlow struct {
 }
 
 type InputRecognizeTargetAudience struct {
@@ -129,7 +170,7 @@ type InputRecognizeTargetAudience struct {
 	AccountType *int64 `json:"AccountType,omitempty" name:"AccountType"`
 
 	// 模型ID列表
-	ModelIdList []*int64 `json:"ModelIdList,omitempty" name:"ModelIdList" list`
+	ModelIdList []*int64 `json:"ModelIdList,omitempty" name:"ModelIdList"`
 
 	// 用户IP
 	Ip *string `json:"Ip,omitempty" name:"Ip"`
@@ -227,14 +268,17 @@ type InputRecognizeTargetAudience struct {
 	// ad_type
 	AdType *int64 `json:"AdType,omitempty" name:"AdType"`
 
-	// app name
+	// app名称
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
-	// appVer
+	// app版本描述
 	AppVer *string `json:"AppVer,omitempty" name:"AppVer"`
 
 	// 竞价模式1：rtb 2:pd
 	ReqType *int64 `json:"ReqType,omitempty" name:"ReqType"`
+
+	// 用户是否授权,1为授权，0为未授权
+	IsAuthorized *uint64 `json:"IsAuthorized,omitempty" name:"IsAuthorized"`
 }
 
 type InputSendTrafficSecuritySmsMsg struct {
@@ -243,7 +287,22 @@ type InputSendTrafficSecuritySmsMsg struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 手机号码列表（号码量<=200）
-	Mobiles []*string `json:"Mobiles,omitempty" name:"Mobiles" list`
+	Mobiles []*string `json:"Mobiles,omitempty" name:"Mobiles"`
+
+	// 是否授权，1：已授权
+	IsAuthorized *int64 `json:"IsAuthorized,omitempty" name:"IsAuthorized"`
+
+	// 加密方式，0：AES加密；1：DES加密
+	EncryptMethod *int64 `json:"EncryptMethod,omitempty" name:"EncryptMethod"`
+
+	// 加密算法中的块处理模式，0：ECB模式；1：CBC模式；2：CTR模式；3：CFB模式；4：OFB模式；
+	EncryptMode *int64 `json:"EncryptMode,omitempty" name:"EncryptMode"`
+
+	// 填充模式，0：ZeroPadding；1：PKCS5Padding；2：PKCS7Padding；
+	PaddingType *int64 `json:"PaddingType,omitempty" name:"PaddingType"`
+
+	// 加密数据
+	EncryptData *string `json:"EncryptData,omitempty" name:"EncryptData"`
 }
 
 type InputTaBspData struct {
@@ -263,7 +322,7 @@ type InputTaBspData struct {
 	// 性别[1：男；2：女]
 	Gender *int64 `json:"Gender,omitempty" name:"Gender"`
 
-	// 用户操作时间
+	// 用户操作时间,uinux时间戳，精确到秒
 	UserTime *int64 `json:"UserTime,omitempty" name:"UserTime"`
 
 	// Imei [在(Imei|ImeiMd5|Idfa|IdfaMd5)里面4选1]
@@ -322,6 +381,9 @@ type InputTaBspData struct {
 
 	// 辅助区分信息
 	Context *string `json:"Context,omitempty" name:"Context"`
+
+	// 是否授权
+	IsAuthorized *uint64 `json:"IsAuthorized,omitempty" name:"IsAuthorized"`
 }
 
 type OutputKolData struct {
@@ -336,7 +398,7 @@ type OutputKolData struct {
 
 	// 业务返回数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value []*OutputKolValue `json:"Value,omitempty" name:"Value" list`
+	Value []*OutputKolValue `json:"Value,omitempty" name:"Value"`
 }
 
 type OutputKolValue struct {
@@ -358,6 +420,32 @@ type OutputKolValue struct {
 	EvilPScore *int64 `json:"EvilPScore,omitempty" name:"EvilPScore"`
 }
 
+type OutputRecognizeEffectiveFlow struct {
+
+	// 返回码。0表示成功，非0标识失败错误码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *int64 `json:"Code,omitempty" name:"Code"`
+
+	// UTF-8编码，出错消息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 业务入参
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *OutputRecognizeEffectiveFlowValue `json:"Value,omitempty" name:"Value"`
+}
+
+type OutputRecognizeEffectiveFlowValue struct {
+
+	// 返回标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Lable *string `json:"Lable,omitempty" name:"Lable"`
+
+	// 返回分值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Score *float64 `json:"Score,omitempty" name:"Score"`
+}
+
 type OutputRecognizeTargetAudience struct {
 
 	// 返回码（0，成功，其他失败）
@@ -369,7 +457,7 @@ type OutputRecognizeTargetAudience struct {
 
 	// 返回模型结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value []*OutputRecognizeTargetAudienceValue `json:"Value,omitempty" name:"Value" list`
+	Value []*OutputRecognizeTargetAudienceValue `json:"Value,omitempty" name:"Value"`
 }
 
 type OutputRecognizeTargetAudienceValue struct {
@@ -398,7 +486,7 @@ type OutputSendTrafficSecuritySmsMsg struct {
 
 	// 发送失败的号码列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value []*string `json:"Value,omitempty" name:"Value" list`
+	Value []*string `json:"Value,omitempty" name:"Value"`
 }
 
 type OutputTaData struct {
@@ -438,8 +526,18 @@ func (r *RecognizeCustomizedAudienceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RecognizeCustomizedAudienceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BspData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeCustomizedAudienceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RecognizeCustomizedAudienceResponse struct {
@@ -460,8 +558,59 @@ func (r *RecognizeCustomizedAudienceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RecognizeCustomizedAudienceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RecognizeEffectiveFlowRequest struct {
+	*tchttp.BaseRequest
+
+	// 业务入参
+	BusinessSecurityData *InputRecognizeEffectiveFlow `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
+}
+
+func (r *RecognizeEffectiveFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeEffectiveFlowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BusinessSecurityData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeEffectiveFlowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RecognizeEffectiveFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务出参
+		Data *OutputRecognizeEffectiveFlow `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RecognizeEffectiveFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeEffectiveFlowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RecognizePreciseTargetAudienceRequest struct {
@@ -476,8 +625,18 @@ func (r *RecognizePreciseTargetAudienceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RecognizePreciseTargetAudienceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BspData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizePreciseTargetAudienceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RecognizePreciseTargetAudienceResponse struct {
@@ -498,8 +657,10 @@ func (r *RecognizePreciseTargetAudienceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RecognizePreciseTargetAudienceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RecognizeTargetAudienceRequest struct {
@@ -507,6 +668,9 @@ type RecognizeTargetAudienceRequest struct {
 
 	// 业务数据
 	BspData *InputRecognizeTargetAudience `json:"BspData,omitempty" name:"BspData"`
+
+	// 业务加密数据
+	BusinessEncryptData *InputBusinessEncryptData `json:"BusinessEncryptData,omitempty" name:"BusinessEncryptData"`
 }
 
 func (r *RecognizeTargetAudienceRequest) ToJsonString() string {
@@ -514,8 +678,19 @@ func (r *RecognizeTargetAudienceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RecognizeTargetAudienceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BspData")
+	delete(f, "BusinessEncryptData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeTargetAudienceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RecognizeTargetAudienceResponse struct {
@@ -536,8 +711,10 @@ func (r *RecognizeTargetAudienceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RecognizeTargetAudienceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SendTrafficSecuritySmsMessageRequest struct {
@@ -552,8 +729,18 @@ func (r *SendTrafficSecuritySmsMessageRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SendTrafficSecuritySmsMessageRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BspData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendTrafficSecuritySmsMessageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SendTrafficSecuritySmsMessageResponse struct {
@@ -574,6 +761,8 @@ func (r *SendTrafficSecuritySmsMessageResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SendTrafficSecuritySmsMessageResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

@@ -16,9 +16,57 @@ package v20200608
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
+
+type AmsDetailInfo struct {
+
+	// 标签
+	Label []*string `json:"Label,omitempty" name:"Label"`
+
+	// 时长(秒/s)
+	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 任务名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 任务ID，创建任务后返回的TaskId字段
+	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+
+	// 插入时间
+	InsertTime *string `json:"InsertTime,omitempty" name:"InsertTime"`
+
+	// 数据来源 0机审，其他为自主审核
+	DataForm *int64 `json:"DataForm,omitempty" name:"DataForm"`
+
+	// 操作人
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 原始命中标签
+	OriginalLabel []*string `json:"OriginalLabel,omitempty" name:"OriginalLabel"`
+
+	// 操作时间
+	OperateTime *string `json:"OperateTime,omitempty" name:"OperateTime"`
+
+	// 视频原始地址
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 封面图地址
+	Thumbnail *string `json:"Thumbnail,omitempty" name:"Thumbnail"`
+
+	// 短音频内容
+	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 短音频个数
+	DetailCount *int64 `json:"DetailCount,omitempty" name:"DetailCount"`
+
+	// 音频审核的请求 id
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+
+	// 音频机审状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
 
 type AudioResult struct {
 
@@ -28,21 +76,13 @@ type AudioResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HitFlag *int64 `json:"HitFlag,omitempty" name:"HitFlag"`
 
-	// 命中的标签
-	// Porn 色情
-	// Polity 政治
-	// Illegal 违法
-	// Abuse 谩骂
-	// Terror 暴恐
-	// Ad 广告
-	// Moan 呻吟
+	// 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+	// 以及令人反感、不安全或不适宜的内容类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitempty" name:"Label"`
 
-	// 审核建议，可选值：
-	// Pass 通过，
-	// Review 建议人审，
-	// Block 确认违规
+	// 建议您拿到判断结果后的执行操作。
+	// 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
@@ -64,19 +104,19 @@ type AudioResult struct {
 	// 拓展字段
 	Extra *string `json:"Extra,omitempty" name:"Extra"`
 
-	// 文本审核结果
-	TextResults []*AudioResultDetailTextResult `json:"TextResults,omitempty" name:"TextResults" list`
+	// 文本识别结果
+	TextResults []*AudioResultDetailTextResult `json:"TextResults,omitempty" name:"TextResults"`
 
-	// 音频呻吟审核结果
-	MoanResults []*AudioResultDetailMoanResult `json:"MoanResults,omitempty" name:"MoanResults" list`
+	// 音频呻吟检测结果
+	MoanResults []*AudioResultDetailMoanResult `json:"MoanResults,omitempty" name:"MoanResults"`
 
-	// 音频语种检测结果
-	LanguageResults []*AudioResultDetailLanguageResult `json:"LanguageResults,omitempty" name:"LanguageResults" list`
+	// 音频语言检测结果
+	LanguageResults []*AudioResultDetailLanguageResult `json:"LanguageResults,omitempty" name:"LanguageResults"`
 }
 
 type AudioResultDetailLanguageResult struct {
 
-	// 语种
+	// 语言信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitempty" name:"Label"`
 
@@ -99,7 +139,7 @@ type AudioResultDetailLanguageResult struct {
 
 type AudioResultDetailMoanResult struct {
 
-	// 固定为Moan
+	// 固定为Moan（呻吟）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitempty" name:"Label"`
 
@@ -124,7 +164,7 @@ type AudioResultDetailTextResult struct {
 
 	// 命中的关键词
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
 
 	// 命中的LibId
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -183,8 +223,18 @@ func (r *CancelTaskRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CancelTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CancelTaskResponse struct {
@@ -201,8 +251,10 @@ func (r *CancelTaskResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CancelTaskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateAudioModerationTaskRequest struct {
@@ -221,7 +273,7 @@ type CreateAudioModerationTaskRequest struct {
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
 	// 输入的任务信息，最多可以同时创建10个任务
-	Tasks []*TaskInput `json:"Tasks,omitempty" name:"Tasks" list`
+	Tasks []*TaskInput `json:"Tasks,omitempty" name:"Tasks"`
 }
 
 func (r *CreateAudioModerationTaskRequest) ToJsonString() string {
@@ -229,8 +281,22 @@ func (r *CreateAudioModerationTaskRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateAudioModerationTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BizType")
+	delete(f, "Type")
+	delete(f, "Seed")
+	delete(f, "CallbackUrl")
+	delete(f, "Tasks")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAudioModerationTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateAudioModerationTaskResponse struct {
@@ -239,7 +305,7 @@ type CreateAudioModerationTaskResponse struct {
 
 		// 任务创建结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Results []*TaskResult `json:"Results,omitempty" name:"Results" list`
+		Results []*TaskResult `json:"Results,omitempty" name:"Results"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -251,8 +317,10 @@ func (r *CreateAudioModerationTaskResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateAudioModerationTaskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateBizConfigRequest struct {
@@ -268,7 +336,7 @@ type CreateBizConfigRequest struct {
 	BizName *string `json:"BizName,omitempty" name:"BizName"`
 
 	// 审核内容，可选：Polity (政治); Porn (色情); Illegal(违法);Abuse (谩骂); Terror (暴恐); Ad (广告);
-	ModerationCategories []*string `json:"ModerationCategories,omitempty" name:"ModerationCategories" list`
+	ModerationCategories []*string `json:"ModerationCategories,omitempty" name:"ModerationCategories"`
 }
 
 func (r *CreateBizConfigRequest) ToJsonString() string {
@@ -276,8 +344,21 @@ func (r *CreateBizConfigRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateBizConfigRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BizType")
+	delete(f, "MediaModeration")
+	delete(f, "BizName")
+	delete(f, "ModerationCategories")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBizConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateBizConfigResponse struct {
@@ -294,8 +375,136 @@ func (r *CreateBizConfigResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateBizConfigResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAmsListRequest struct {
+	*tchttp.BaseRequest
+
+	// 页码
+	PageToken *string `json:"PageToken,omitempty" name:"PageToken"`
+
+	// 过滤条件
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询方向
+	PageDirection *string `json:"PageDirection,omitempty" name:"PageDirection"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeAmsListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAmsListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageToken")
+	delete(f, "Limit")
+	delete(f, "PageDirection")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAmsListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAmsListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回列表数据----非必选，该参数暂未对外开放
+		AmsDetailSet []*AmsDetailInfo `json:"AmsDetailSet,omitempty" name:"AmsDetailSet"`
+
+		// 总条数
+		Total *int64 `json:"Total,omitempty" name:"Total"`
+
+		// 分页 token
+		PageToken *string `json:"PageToken,omitempty" name:"PageToken"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAmsListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAmsListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAudioStatRequest struct {
+	*tchttp.BaseRequest
+
+	// 审核类型 1: 机器审核; 2: 人工审核
+	AuditType *int64 `json:"AuditType,omitempty" name:"AuditType"`
+
+	// 查询条件
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeAudioStatRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAudioStatRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AuditType")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAudioStatRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAudioStatResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 识别结果统计
+		Overview *Overview `json:"Overview,omitempty" name:"Overview"`
+
+		// 识别量统计
+		TrendCount []*TrendCount `json:"TrendCount,omitempty" name:"TrendCount"`
+
+		// 违规数据分布
+		EvilCount []*EvilCount `json:"EvilCount,omitempty" name:"EvilCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAudioStatResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAudioStatResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeBizConfigRequest struct {
@@ -310,8 +519,18 @@ func (r *DescribeBizConfigRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeBizConfigRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BizType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBizConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeBizConfigResponse struct {
@@ -326,7 +545,7 @@ type DescribeBizConfigResponse struct {
 		BizName *string `json:"BizName,omitempty" name:"BizName"`
 
 		// 审核范围
-		ModerationCategories []*string `json:"ModerationCategories,omitempty" name:"ModerationCategories" list`
+		ModerationCategories []*string `json:"ModerationCategories,omitempty" name:"ModerationCategories"`
 
 		// 多媒体审核配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -348,8 +567,10 @@ func (r *DescribeBizConfigResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeBizConfigResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTaskDetailRequest struct {
@@ -367,8 +588,19 @@ func (r *DescribeTaskDetailRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTaskDetailRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "ShowAllSegments")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTaskDetailResponse struct {
@@ -415,7 +647,7 @@ type DescribeTaskDetailResponse struct {
 		// 智能审核服务对于内容违规类型的判断，详见返回值列表
 	// 如：Label：Porn（色情）；
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Labels []*TaskLabel `json:"Labels,omitempty" name:"Labels" list`
+		Labels []*TaskLabel `json:"Labels,omitempty" name:"Labels"`
 
 		// 传入媒体的解码信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -439,11 +671,11 @@ type DescribeTaskDetailResponse struct {
 
 		// 视频/音频审核中的音频结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		AudioSegments []*AudioSegments `json:"AudioSegments,omitempty" name:"AudioSegments" list`
+		AudioSegments []*AudioSegments `json:"AudioSegments,omitempty" name:"AudioSegments"`
 
 		// 视频审核中的图片结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ImageSegments []*ImageSegments `json:"ImageSegments,omitempty" name:"ImageSegments" list`
+		ImageSegments []*ImageSegments `json:"ImageSegments,omitempty" name:"ImageSegments"`
 
 		// 音频识别总文本
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -459,8 +691,19 @@ func (r *DescribeTaskDetailResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTaskDetailResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type EvilCount struct {
+
+	// ----非必选，该参数功能暂未对外开放
+	EvilType *string `json:"EvilType,omitempty" name:"EvilType"`
+
+	// 分布类型总量
+	Count *int64 `json:"Count,omitempty" name:"Count"`
 }
 
 type FileOutput struct {
@@ -475,6 +718,27 @@ type FileOutput struct {
 	ObjectPrefix *string `json:"ObjectPrefix,omitempty" name:"ObjectPrefix"`
 }
 
+type Filter struct {
+
+	// 过滤键的名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 一个或者多个过滤值。
+	Values []*string `json:"Values,omitempty" name:"Values"`
+}
+
+type Filters struct {
+
+	// 查询字段：
+	// 策略BizType
+	// 子账号SubUin
+	// 日期区间DateRange
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 查询值
+	Values []*string `json:"Values,omitempty" name:"Values"`
+}
+
 type ImageResult struct {
 
 	// 违规标志
@@ -483,28 +747,20 @@ type ImageResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HitFlag *int64 `json:"HitFlag,omitempty" name:"HitFlag"`
 
-	// 命中的标签
-	// Porn 色情
-	// Sexy 性感
-	// Polity 政治
-	// Illegal 违法
-	// Abuse 谩骂
-	// Terror 暴恐
-	// Ad 广告
+	// 建议您拿到判断结果后的执行操作。
+	// 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+	// 以及令人反感、不安全或不适宜的内容类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitempty" name:"Label"`
-
-	// 审核建议，可选值：
-	// Pass 通过，
-	// Review 建议人审，
-	// Block 确认违规
-	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// 得分
 	Score *int64 `json:"Score,omitempty" name:"Score"`
 
 	// 画面截帧图片结果集
-	Results []*ImageResultResult `json:"Results,omitempty" name:"Results" list`
+	Results []*ImageResultResult `json:"Results,omitempty" name:"Results"`
 
 	// 图片URL地址
 	Url *string `json:"Url,omitempty" name:"Url"`
@@ -518,11 +774,9 @@ type ImageResultResult struct {
 	// 场景
 	// Porn 色情
 	// Sexy 性感
-	// Polity 政治
-	// Illegal 违法
 	// Abuse 谩骂
-	// Terror 暴恐
 	// Ad 广告
+	// 等多个识别场景
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scene *string `json:"Scene,omitempty" name:"Scene"`
 
@@ -532,10 +786,8 @@ type ImageResultResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HitFlag *int64 `json:"HitFlag,omitempty" name:"HitFlag"`
 
-	// 审核建议，可选值：
-	// Pass 通过，
-	// Review 建议人审，
-	// Block 确认违规
+	// 建议您拿到判断结果后的执行操作。
+	// 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
@@ -552,21 +804,21 @@ type ImageResultResult struct {
 	Score *int64 `json:"Score,omitempty" name:"Score"`
 
 	// 如果命中场景为涉政，则该数据为人物姓名列表，否则null
-	Names []*string `json:"Names,omitempty" name:"Names" list`
+	Names []*string `json:"Names,omitempty" name:"Names"`
 
 	// 图片OCR文本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Text *string `json:"Text,omitempty" name:"Text"`
 
 	// 其他详情
-	Details []*ImageResultsResultDetail `json:"Details,omitempty" name:"Details" list`
+	Details []*ImageResultsResultDetail `json:"Details,omitempty" name:"Details"`
 }
 
 type ImageResultsResultDetail struct {
 
 	// 位置信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Location []*ImageResultsResultDetailLocation `json:"Location,omitempty" name:"Location" list`
+	Location []*ImageResultsResultDetailLocation `json:"Location,omitempty" name:"Location"`
 
 	// 任务名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -589,7 +841,7 @@ type ImageResultsResultDetail struct {
 
 	// 命中的关键词
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
 
 	// 建议
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -667,6 +919,9 @@ type MediaInfo struct {
 
 	// 高，单位为像素
 	Height *int64 `json:"Height,omitempty" name:"Height"`
+
+	// 缩略图
+	Thumbnail *string `json:"Thumbnail,omitempty" name:"Thumbnail"`
 }
 
 type MediaModerationConfig struct {
@@ -688,6 +943,33 @@ type MediaModerationConfig struct {
 
 	// 是否使用音频。（音频场景下，该值永远为true）
 	UseAudio *bool `json:"UseAudio,omitempty" name:"UseAudio"`
+}
+
+type Overview struct {
+
+	// 总调用量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 总调用时长
+	TotalHour *int64 `json:"TotalHour,omitempty" name:"TotalHour"`
+
+	// 通过量
+	PassCount *int64 `json:"PassCount,omitempty" name:"PassCount"`
+
+	// 通过时长
+	PassHour *int64 `json:"PassHour,omitempty" name:"PassHour"`
+
+	// 违规量
+	EvilCount *int64 `json:"EvilCount,omitempty" name:"EvilCount"`
+
+	// 违规时长
+	EvilHour *int64 `json:"EvilHour,omitempty" name:"EvilHour"`
+
+	// 疑似违规量
+	SuspectCount *int64 `json:"SuspectCount,omitempty" name:"SuspectCount"`
+
+	// 疑似违规时长
+	SuspectHour *int64 `json:"SuspectHour,omitempty" name:"SuspectHour"`
 }
 
 type StorageInfo struct {
@@ -718,21 +1000,13 @@ type TaskInput struct {
 
 type TaskLabel struct {
 
-	// 命中的标签
-	// Porn 色情
-	// Sexy 性感
-	// Polity 政治
-	// Illegal 违法
-	// Abuse 谩骂
-	// Terror 暴恐
-	// Ad 广告
+	// 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+	// 以及令人反感、不安全或不适宜的内容类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitempty" name:"Label"`
 
-	// 审核建议，可选值：
-	// Pass 通过，
-	// Review 建议人审，
-	// Block 确认违规
+	// 建议您拿到判断结果后的执行操作。
+	// 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
@@ -758,4 +1032,34 @@ type TaskResult struct {
 	// 如果错误，该字段表示错误详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
+}
+
+type TrendCount struct {
+
+	// 总调用量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 总调用时长
+	TotalHour *int64 `json:"TotalHour,omitempty" name:"TotalHour"`
+
+	// 通过量
+	PassCount *int64 `json:"PassCount,omitempty" name:"PassCount"`
+
+	// 通过时长
+	PassHour *int64 `json:"PassHour,omitempty" name:"PassHour"`
+
+	// 违规量
+	EvilCount *int64 `json:"EvilCount,omitempty" name:"EvilCount"`
+
+	// 违规时长
+	EvilHour *int64 `json:"EvilHour,omitempty" name:"EvilHour"`
+
+	// 疑似违规量
+	SuspectCount *int64 `json:"SuspectCount,omitempty" name:"SuspectCount"`
+
+	// 疑似违规时长
+	SuspectHour *int64 `json:"SuspectHour,omitempty" name:"SuspectHour"`
+
+	// 日期
+	Date *string `json:"Date,omitempty" name:"Date"`
 }

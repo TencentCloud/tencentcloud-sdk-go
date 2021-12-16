@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -48,6 +48,8 @@ func NewCreateSmpnEpaRequest() (request *CreateSmpnEpaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("smpn", APIVersion, "CreateSmpnEpa")
+    
+    
     return
 }
 
@@ -58,11 +60,19 @@ func NewCreateSmpnEpaResponse() (response *CreateSmpnEpaResponse) {
     return
 }
 
+// CreateSmpnEpa
 // 企业号码认证
+//
+// 可能返回的错误码:
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_PHONENUMBER = "InvalidParameter.PhoneNumber"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateSmpnEpa(request *CreateSmpnEpaRequest) (response *CreateSmpnEpaResponse, err error) {
     if request == nil {
         request = NewCreateSmpnEpaRequest()
     }
+    
     response = NewCreateSmpnEpaResponse()
     err = c.Send(request, response)
     return
@@ -73,6 +83,8 @@ func NewDescribeSmpnChpRequest() (request *DescribeSmpnChpRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("smpn", APIVersion, "DescribeSmpnChp")
+    
+    
     return
 }
 
@@ -83,11 +95,18 @@ func NewDescribeSmpnChpResponse() (response *DescribeSmpnChpResponse) {
     return
 }
 
+// DescribeSmpnChp
 // 查询号码的标记和标记次数
+//
+// 可能返回的错误码:
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER_PHONENUMBER = "InvalidParameter.PhoneNumber"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeSmpnChp(request *DescribeSmpnChpRequest) (response *DescribeSmpnChpResponse, err error) {
     if request == nil {
         request = NewDescribeSmpnChpRequest()
     }
+    
     response = NewDescribeSmpnChpResponse()
     err = c.Send(request, response)
     return
@@ -98,6 +117,8 @@ func NewDescribeSmpnFnrRequest() (request *DescribeSmpnFnrRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("smpn", APIVersion, "DescribeSmpnFnr")
+    
+    
     return
 }
 
@@ -108,11 +129,18 @@ func NewDescribeSmpnFnrResponse() (response *DescribeSmpnFnrResponse) {
     return
 }
 
+// DescribeSmpnFnr
 // 虚假号码识别
+//
+// 可能返回的错误码:
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER_PHONENUMBER = "InvalidParameter.PhoneNumber"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeSmpnFnr(request *DescribeSmpnFnrRequest) (response *DescribeSmpnFnrResponse, err error) {
     if request == nil {
         request = NewDescribeSmpnFnrRequest()
     }
+    
     response = NewDescribeSmpnFnrResponse()
     err = c.Send(request, response)
     return
@@ -123,6 +151,8 @@ func NewDescribeSmpnMhmRequest() (request *DescribeSmpnMhmRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("smpn", APIVersion, "DescribeSmpnMhm")
+    
+    
     return
 }
 
@@ -133,11 +163,18 @@ func NewDescribeSmpnMhmResponse() (response *DescribeSmpnMhmResponse) {
     return
 }
 
+// DescribeSmpnMhm
 // 号码营销监控
+//
+// 可能返回的错误码:
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER_PHONENUMBER = "InvalidParameter.PhoneNumber"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeSmpnMhm(request *DescribeSmpnMhmRequest) (response *DescribeSmpnMhmResponse, err error) {
     if request == nil {
         request = NewDescribeSmpnMhmRequest()
     }
+    
     response = NewDescribeSmpnMhmResponse()
     err = c.Send(request, response)
     return
@@ -148,6 +185,8 @@ func NewDescribeSmpnMrlRequest() (request *DescribeSmpnMrlRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("smpn", APIVersion, "DescribeSmpnMrl")
+    
+    
     return
 }
 
@@ -158,11 +197,18 @@ func NewDescribeSmpnMrlResponse() (response *DescribeSmpnMrlResponse) {
     return
 }
 
+// DescribeSmpnMrl
 // 查询号码恶意标记等级
+//
+// 可能返回的错误码:
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER_PHONENUMBER = "InvalidParameter.PhoneNumber"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeSmpnMrl(request *DescribeSmpnMrlRequest) (response *DescribeSmpnMrlResponse, err error) {
     if request == nil {
         request = NewDescribeSmpnMrlRequest()
     }
+    
     response = NewDescribeSmpnMrlResponse()
     err = c.Send(request, response)
     return

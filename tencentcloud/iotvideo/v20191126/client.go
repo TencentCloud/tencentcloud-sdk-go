@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -48,6 +48,8 @@ func NewClearDeviceActiveCodeRequest() (request *ClearDeviceActiveCodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "ClearDeviceActiveCode")
+    
+    
     return
 }
 
@@ -58,11 +60,37 @@ func NewClearDeviceActiveCodeResponse() (response *ClearDeviceActiveCodeResponse
     return
 }
 
+// ClearDeviceActiveCode
 // 清除设备激活码
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ClearDeviceActiveCode(request *ClearDeviceActiveCodeRequest) (response *ClearDeviceActiveCodeResponse, err error) {
     if request == nil {
         request = NewClearDeviceActiveCodeRequest()
     }
+    
     response = NewClearDeviceActiveCodeResponse()
     err = c.Send(request, response)
     return
@@ -73,6 +101,8 @@ func NewCreateAnonymousAccessTokenRequest() (request *CreateAnonymousAccessToken
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateAnonymousAccessToken")
+    
+    
     return
 }
 
@@ -83,11 +113,37 @@ func NewCreateAnonymousAccessTokenResponse() (response *CreateAnonymousAccessTok
     return
 }
 
+// CreateAnonymousAccessToken
 // 创建匿名访问Token
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateAnonymousAccessToken(request *CreateAnonymousAccessTokenRequest) (response *CreateAnonymousAccessTokenResponse, err error) {
     if request == nil {
         request = NewCreateAnonymousAccessTokenRequest()
     }
+    
     response = NewCreateAnonymousAccessTokenResponse()
     err = c.Send(request, response)
     return
@@ -98,6 +154,8 @@ func NewCreateAppUsrRequest() (request *CreateAppUsrRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateAppUsr")
+    
+    
     return
 }
 
@@ -108,11 +166,37 @@ func NewCreateAppUsrResponse() (response *CreateAppUsrResponse) {
     return
 }
 
+// CreateAppUsr
 // 本接口（CreateAppUsr）用于接收由厂商云发送过来的注册请求,建立厂商云终端用户与IoT Video终端用户的映射关系。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateAppUsr(request *CreateAppUsrRequest) (response *CreateAppUsrResponse, err error) {
     if request == nil {
         request = NewCreateAppUsrRequest()
     }
+    
     response = NewCreateAppUsrResponse()
     err = c.Send(request, response)
     return
@@ -123,6 +207,8 @@ func NewCreateBindingRequest() (request *CreateBindingRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateBinding")
+    
+    
     return
 }
 
@@ -133,12 +219,39 @@ func NewCreateBindingResponse() (response *CreateBindingResponse) {
     return
 }
 
+// CreateBinding
 // 本接口（CreateBinding）用于终端用户和设备进行绑定，具体的应用场景如下：
+//
 //     终端用户与设备具有“强关联”关系。用户与设备绑定之后，用户终端即具备了该设备的访问权限,访问或操作设备时，无需获取设备访问Token。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateBinding(request *CreateBindingRequest) (response *CreateBindingResponse, err error) {
     if request == nil {
         request = NewCreateBindingRequest()
     }
+    
     response = NewCreateBindingResponse()
     err = c.Send(request, response)
     return
@@ -149,6 +262,8 @@ func NewCreateDevTokenRequest() (request *CreateDevTokenRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateDevToken")
+    
+    
     return
 }
 
@@ -159,14 +274,43 @@ func NewCreateDevTokenResponse() (response *CreateDevTokenResponse) {
     return
 }
 
+// CreateDevToken
 // 本接口（CreateDevToken）用于以下场景：
+//
 // 终端用户与设备没有强绑定关联关系;
+//
 // 允许终端用户短时或一次性临时访问设备;
+//
 // 当终端用户与设备有强绑定关系时，可以不用调用此接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateDevToken(request *CreateDevTokenRequest) (response *CreateDevTokenResponse, err error) {
     if request == nil {
         request = NewCreateDevTokenRequest()
     }
+    
     response = NewCreateDevTokenResponse()
     err = c.Send(request, response)
     return
@@ -177,6 +321,8 @@ func NewCreateDevicesRequest() (request *CreateDevicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateDevices")
+    
+    
     return
 }
 
@@ -187,12 +333,39 @@ func NewCreateDevicesResponse() (response *CreateDevicesResponse) {
     return
 }
 
+// CreateDevices
 // 本接口（CreateDevices）用于批量创建新的物联网视频通信设备。
+//
 // 注意：腾讯云不会对设备私钥进行保存，请自行保管好您的设备私钥。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateDevices(request *CreateDevicesRequest) (response *CreateDevicesResponse, err error) {
     if request == nil {
         request = NewCreateDevicesRequest()
     }
+    
     response = NewCreateDevicesResponse()
     err = c.Send(request, response)
     return
@@ -203,6 +376,8 @@ func NewCreateGencodeRequest() (request *CreateGencodeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateGencode")
+    
+    
     return
 }
 
@@ -213,11 +388,37 @@ func NewCreateGencodeResponse() (response *CreateGencodeResponse) {
     return
 }
 
+// CreateGencode
 // 本接口（CreateGencode）用于生成设备物模型源代码
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateGencode(request *CreateGencodeRequest) (response *CreateGencodeResponse, err error) {
     if request == nil {
         request = NewCreateGencodeRequest()
     }
+    
     response = NewCreateGencodeResponse()
     err = c.Send(request, response)
     return
@@ -228,6 +429,8 @@ func NewCreateIotDataTypeRequest() (request *CreateIotDataTypeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateIotDataType")
+    
+    
     return
 }
 
@@ -238,11 +441,37 @@ func NewCreateIotDataTypeResponse() (response *CreateIotDataTypeResponse) {
     return
 }
 
+// CreateIotDataType
 // 本接口（CreateIotDataType）用于创建自定义物模型数据类型。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateIotDataType(request *CreateIotDataTypeRequest) (response *CreateIotDataTypeResponse, err error) {
     if request == nil {
         request = NewCreateIotDataTypeRequest()
     }
+    
     response = NewCreateIotDataTypeResponse()
     err = c.Send(request, response)
     return
@@ -253,6 +482,8 @@ func NewCreateIotModelRequest() (request *CreateIotModelRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateIotModel")
+    
+    
     return
 }
 
@@ -263,12 +494,39 @@ func NewCreateIotModelResponse() (response *CreateIotModelResponse) {
     return
 }
 
+// CreateIotModel
 // 本接口（CreateIotModel）用于定义的物模型提交。
+//
 // 该接口实现了物模型草稿箱的功能，保存用户最后一次编辑的物模型数据。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateIotModel(request *CreateIotModelRequest) (response *CreateIotModelResponse, err error) {
     if request == nil {
         request = NewCreateIotModelRequest()
     }
+    
     response = NewCreateIotModelResponse()
     err = c.Send(request, response)
     return
@@ -279,6 +537,8 @@ func NewCreateProductRequest() (request *CreateProductRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateProduct")
+    
+    
     return
 }
 
@@ -289,11 +549,37 @@ func NewCreateProductResponse() (response *CreateProductResponse) {
     return
 }
 
+// CreateProduct
 // 本接口（CreateProduct）用于创建一个新的物联网智能视频产品。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateProduct(request *CreateProductRequest) (response *CreateProductResponse, err error) {
     if request == nil {
         request = NewCreateProductRequest()
     }
+    
     response = NewCreateProductResponse()
     err = c.Send(request, response)
     return
@@ -304,6 +590,8 @@ func NewCreateStorageRequest() (request *CreateStorageRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateStorage")
+    
+    
     return
 }
 
@@ -314,11 +602,37 @@ func NewCreateStorageResponse() (response *CreateStorageResponse) {
     return
 }
 
-// 本接口（CreateStorage）用于购买云存套餐。
+// CreateStorage
+// 该接口已经停止维护，请勿使用
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateStorage(request *CreateStorageRequest) (response *CreateStorageResponse, err error) {
     if request == nil {
         request = NewCreateStorageRequest()
     }
+    
     response = NewCreateStorageResponse()
     err = c.Send(request, response)
     return
@@ -329,6 +643,8 @@ func NewCreateStorageServiceRequest() (request *CreateStorageServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateStorageService")
+    
+    
     return
 }
 
@@ -339,11 +655,37 @@ func NewCreateStorageServiceResponse() (response *CreateStorageServiceResponse) 
     return
 }
 
+// CreateStorageService
 // 购买云存服务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateStorageService(request *CreateStorageServiceRequest) (response *CreateStorageServiceResponse, err error) {
     if request == nil {
         request = NewCreateStorageServiceRequest()
     }
+    
     response = NewCreateStorageServiceResponse()
     err = c.Send(request, response)
     return
@@ -354,6 +696,8 @@ func NewCreateTraceIdsRequest() (request *CreateTraceIdsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateTraceIds")
+    
+    
     return
 }
 
@@ -364,11 +708,37 @@ func NewCreateTraceIdsResponse() (response *CreateTraceIdsResponse) {
     return
 }
 
+// CreateTraceIds
 // 本接口（CreateTraceIds）用于将设备加到日志跟踪白名单。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateTraceIds(request *CreateTraceIdsRequest) (response *CreateTraceIdsResponse, err error) {
     if request == nil {
         request = NewCreateTraceIdsRequest()
     }
+    
     response = NewCreateTraceIdsResponse()
     err = c.Send(request, response)
     return
@@ -379,6 +749,8 @@ func NewCreateUploadPathRequest() (request *CreateUploadPathRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateUploadPath")
+    
+    
     return
 }
 
@@ -389,11 +761,37 @@ func NewCreateUploadPathResponse() (response *CreateUploadPathResponse) {
     return
 }
 
+// CreateUploadPath
 // 本接口（CreateUploadPath）用于获取固件上传路径。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateUploadPath(request *CreateUploadPathRequest) (response *CreateUploadPathResponse, err error) {
     if request == nil {
         request = NewCreateUploadPathRequest()
     }
+    
     response = NewCreateUploadPathResponse()
     err = c.Send(request, response)
     return
@@ -404,6 +802,8 @@ func NewCreateUsrTokenRequest() (request *CreateUsrTokenRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateUsrToken")
+    
+    
     return
 }
 
@@ -414,11 +814,37 @@ func NewCreateUsrTokenResponse() (response *CreateUsrTokenResponse) {
     return
 }
 
+// CreateUsrToken
 // 本接口（CreateUsrToken）用于终端用户获取IoT Video平台的accessToken，初始化SDK,连接到IoT Video接入服务器。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateUsrToken(request *CreateUsrTokenRequest) (response *CreateUsrTokenResponse, err error) {
     if request == nil {
         request = NewCreateUsrTokenRequest()
     }
+    
     response = NewCreateUsrTokenResponse()
     err = c.Send(request, response)
     return
@@ -429,6 +855,8 @@ func NewDeleteAppUsrRequest() (request *DeleteAppUsrRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteAppUsr")
+    
+    
     return
 }
 
@@ -439,11 +867,37 @@ func NewDeleteAppUsrResponse() (response *DeleteAppUsrResponse) {
     return
 }
 
+// DeleteAppUsr
 // 本接口（DeleteAppUsr）用于删除终端用户。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteAppUsr(request *DeleteAppUsrRequest) (response *DeleteAppUsrResponse, err error) {
     if request == nil {
         request = NewDeleteAppUsrRequest()
     }
+    
     response = NewDeleteAppUsrResponse()
     err = c.Send(request, response)
     return
@@ -454,6 +908,8 @@ func NewDeleteBindingRequest() (request *DeleteBindingRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteBinding")
+    
+    
     return
 }
 
@@ -464,11 +920,37 @@ func NewDeleteBindingResponse() (response *DeleteBindingResponse) {
     return
 }
 
+// DeleteBinding
 // 本接口（DeleteBinding）用于终端用户和设备进行解绑定。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteBinding(request *DeleteBindingRequest) (response *DeleteBindingResponse, err error) {
     if request == nil {
         request = NewDeleteBindingRequest()
     }
+    
     response = NewDeleteBindingResponse()
     err = c.Send(request, response)
     return
@@ -479,6 +961,8 @@ func NewDeleteDeviceRequest() (request *DeleteDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteDevice")
+    
+    
     return
 }
 
@@ -489,11 +973,37 @@ func NewDeleteDeviceResponse() (response *DeleteDeviceResponse) {
     return
 }
 
+// DeleteDevice
 // 本接口（DeleteDevice）用于删除设备，可进行批量操作，每次操作最多100台设备。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDeviceResponse, err error) {
     if request == nil {
         request = NewDeleteDeviceRequest()
     }
+    
     response = NewDeleteDeviceResponse()
     err = c.Send(request, response)
     return
@@ -504,6 +1014,8 @@ func NewDeleteIotDataTypeRequest() (request *DeleteIotDataTypeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteIotDataType")
+    
+    
     return
 }
 
@@ -514,11 +1026,37 @@ func NewDeleteIotDataTypeResponse() (response *DeleteIotDataTypeResponse) {
     return
 }
 
+// DeleteIotDataType
 // 本接口（DeleteIotDataType）用于删除自定义物模型数据类型。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteIotDataType(request *DeleteIotDataTypeRequest) (response *DeleteIotDataTypeResponse, err error) {
     if request == nil {
         request = NewDeleteIotDataTypeRequest()
     }
+    
     response = NewDeleteIotDataTypeResponse()
     err = c.Send(request, response)
     return
@@ -529,6 +1067,8 @@ func NewDeleteMessageQueueRequest() (request *DeleteMessageQueueRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteMessageQueue")
+    
+    
     return
 }
 
@@ -539,11 +1079,37 @@ func NewDeleteMessageQueueResponse() (response *DeleteMessageQueueResponse) {
     return
 }
 
+// DeleteMessageQueue
 // 本接口（DeleteMessageQueue）用于删除物联网智能视频产品的转发消息配置信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteMessageQueue(request *DeleteMessageQueueRequest) (response *DeleteMessageQueueResponse, err error) {
     if request == nil {
         request = NewDeleteMessageQueueRequest()
     }
+    
     response = NewDeleteMessageQueueResponse()
     err = c.Send(request, response)
     return
@@ -554,6 +1120,8 @@ func NewDeleteOtaVersionRequest() (request *DeleteOtaVersionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteOtaVersion")
+    
+    
     return
 }
 
@@ -564,11 +1132,37 @@ func NewDeleteOtaVersionResponse() (response *DeleteOtaVersionResponse) {
     return
 }
 
+// DeleteOtaVersion
 // 本接口（DeleteOtaVersion）用于删除固件版本信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteOtaVersion(request *DeleteOtaVersionRequest) (response *DeleteOtaVersionResponse, err error) {
     if request == nil {
         request = NewDeleteOtaVersionRequest()
     }
+    
     response = NewDeleteOtaVersionResponse()
     err = c.Send(request, response)
     return
@@ -579,6 +1173,8 @@ func NewDeleteProductRequest() (request *DeleteProductRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteProduct")
+    
+    
     return
 }
 
@@ -589,11 +1185,37 @@ func NewDeleteProductResponse() (response *DeleteProductResponse) {
     return
 }
 
+// DeleteProduct
 // 本接口（DeleteProduct）用于删除一个物联网智能视频产品。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteProduct(request *DeleteProductRequest) (response *DeleteProductResponse, err error) {
     if request == nil {
         request = NewDeleteProductRequest()
     }
+    
     response = NewDeleteProductResponse()
     err = c.Send(request, response)
     return
@@ -604,6 +1226,8 @@ func NewDeleteTraceIdsRequest() (request *DeleteTraceIdsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteTraceIds")
+    
+    
     return
 }
 
@@ -614,11 +1238,37 @@ func NewDeleteTraceIdsResponse() (response *DeleteTraceIdsResponse) {
     return
 }
 
+// DeleteTraceIds
 // 本接口（DeleteTraceIds）用于将设备从日志跟踪白名单中删除，该接口可批量操作，最多支持同时操作100台设备。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteTraceIds(request *DeleteTraceIdsRequest) (response *DeleteTraceIdsResponse, err error) {
     if request == nil {
         request = NewDeleteTraceIdsRequest()
     }
+    
     response = NewDeleteTraceIdsResponse()
     err = c.Send(request, response)
     return
@@ -629,6 +1279,8 @@ func NewDeliverStorageServiceRequest() (request *DeliverStorageServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeliverStorageService")
+    
+    
     return
 }
 
@@ -639,12 +1291,91 @@ func NewDeliverStorageServiceResponse() (response *DeliverStorageServiceResponse
     return
 }
 
+// DeliverStorageService
 // 将已购买的云存服务转移到另一设备
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeliverStorageService(request *DeliverStorageServiceRequest) (response *DeliverStorageServiceResponse, err error) {
     if request == nil {
         request = NewDeliverStorageServiceRequest()
     }
+    
     response = NewDeliverStorageServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAccountBalanceRequest() (request *DescribeAccountBalanceRequest) {
+    request = &DescribeAccountBalanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeAccountBalance")
+    
+    
+    return
+}
+
+func NewDescribeAccountBalanceResponse() (response *DescribeAccountBalanceResponse) {
+    response = &DescribeAccountBalanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAccountBalance
+// 客户可通过本接口获取账户余额信息, 默认接口请求频率限制：1次/秒
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAccountBalance(request *DescribeAccountBalanceRequest) (response *DescribeAccountBalanceResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccountBalanceRequest()
+    }
+    
+    response = NewDescribeAccountBalanceResponse()
     err = c.Send(request, response)
     return
 }
@@ -654,6 +1385,8 @@ func NewDescribeBindDevRequest() (request *DescribeBindDevRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeBindDev")
+    
+    
     return
 }
 
@@ -664,11 +1397,37 @@ func NewDescribeBindDevResponse() (response *DescribeBindDevResponse) {
     return
 }
 
+// DescribeBindDev
 // 本接口（DescribeBindDev）用于查询终端用户绑定的设备列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBindDev(request *DescribeBindDevRequest) (response *DescribeBindDevResponse, err error) {
     if request == nil {
         request = NewDescribeBindDevRequest()
     }
+    
     response = NewDescribeBindDevResponse()
     err = c.Send(request, response)
     return
@@ -679,6 +1438,8 @@ func NewDescribeBindUsrRequest() (request *DescribeBindUsrRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeBindUsr")
+    
+    
     return
 }
 
@@ -689,11 +1450,37 @@ func NewDescribeBindUsrResponse() (response *DescribeBindUsrResponse) {
     return
 }
 
+// DescribeBindUsr
 // 本接口（DescribeBindUsr）用于查询设备被分享的所有用户列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBindUsr(request *DescribeBindUsrRequest) (response *DescribeBindUsrResponse, err error) {
     if request == nil {
         request = NewDescribeBindUsrRequest()
     }
+    
     response = NewDescribeBindUsrResponse()
     err = c.Send(request, response)
     return
@@ -704,6 +1491,8 @@ func NewDescribeDeviceRequest() (request *DescribeDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeDevice")
+    
+    
     return
 }
 
@@ -714,11 +1503,37 @@ func NewDescribeDeviceResponse() (response *DescribeDeviceResponse) {
     return
 }
 
+// DescribeDevice
 // 本接口（DescribeDevice）获取设备信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDevice(request *DescribeDeviceRequest) (response *DescribeDeviceResponse, err error) {
     if request == nil {
         request = NewDescribeDeviceRequest()
     }
+    
     response = NewDescribeDeviceResponse()
     err = c.Send(request, response)
     return
@@ -729,6 +1544,8 @@ func NewDescribeDeviceModelRequest() (request *DescribeDeviceModelRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeDeviceModel")
+    
+    
     return
 }
 
@@ -739,11 +1556,37 @@ func NewDescribeDeviceModelResponse() (response *DescribeDeviceModelResponse) {
     return
 }
 
+// DescribeDeviceModel
 // 本接口（DescribeDeviceModel）用于获取设备物模型。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDeviceModel(request *DescribeDeviceModelRequest) (response *DescribeDeviceModelResponse, err error) {
     if request == nil {
         request = NewDescribeDeviceModelRequest()
     }
+    
     response = NewDescribeDeviceModelResponse()
     err = c.Send(request, response)
     return
@@ -754,6 +1597,8 @@ func NewDescribeDevicesRequest() (request *DescribeDevicesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeDevices")
+    
+    
     return
 }
 
@@ -764,11 +1609,37 @@ func NewDescribeDevicesResponse() (response *DescribeDevicesResponse) {
     return
 }
 
+// DescribeDevices
 // 本接口（DescribeDevices）用于获取设备信息列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDevices(request *DescribeDevicesRequest) (response *DescribeDevicesResponse, err error) {
     if request == nil {
         request = NewDescribeDevicesRequest()
     }
+    
     response = NewDescribeDevicesResponse()
     err = c.Send(request, response)
     return
@@ -779,6 +1650,8 @@ func NewDescribeIotDataTypeRequest() (request *DescribeIotDataTypeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeIotDataType")
+    
+    
     return
 }
 
@@ -789,11 +1662,37 @@ func NewDescribeIotDataTypeResponse() (response *DescribeIotDataTypeResponse) {
     return
 }
 
+// DescribeIotDataType
 // 本接口（DescribeIotDataType）用于查询自定义的物模型数据类型。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeIotDataType(request *DescribeIotDataTypeRequest) (response *DescribeIotDataTypeResponse, err error) {
     if request == nil {
         request = NewDescribeIotDataTypeRequest()
     }
+    
     response = NewDescribeIotDataTypeResponse()
     err = c.Send(request, response)
     return
@@ -804,6 +1703,8 @@ func NewDescribeIotModelRequest() (request *DescribeIotModelRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeIotModel")
+    
+    
     return
 }
 
@@ -814,11 +1715,37 @@ func NewDescribeIotModelResponse() (response *DescribeIotModelResponse) {
     return
 }
 
+// DescribeIotModel
 // 本接口（DescribeIotModel）用于获取物模型定义详情。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeIotModel(request *DescribeIotModelRequest) (response *DescribeIotModelResponse, err error) {
     if request == nil {
         request = NewDescribeIotModelRequest()
     }
+    
     response = NewDescribeIotModelResponse()
     err = c.Send(request, response)
     return
@@ -829,6 +1756,8 @@ func NewDescribeIotModelsRequest() (request *DescribeIotModelsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeIotModels")
+    
+    
     return
 }
 
@@ -839,11 +1768,37 @@ func NewDescribeIotModelsResponse() (response *DescribeIotModelsResponse) {
     return
 }
 
+// DescribeIotModels
 // 本接口（DescribeIotModels）用于列出物模型历史版本列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeIotModels(request *DescribeIotModelsRequest) (response *DescribeIotModelsResponse, err error) {
     if request == nil {
         request = NewDescribeIotModelsRequest()
     }
+    
     response = NewDescribeIotModelsResponse()
     err = c.Send(request, response)
     return
@@ -854,6 +1809,8 @@ func NewDescribeLogsRequest() (request *DescribeLogsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeLogs")
+    
+    
     return
 }
 
@@ -864,12 +1821,39 @@ func NewDescribeLogsResponse() (response *DescribeLogsResponse) {
     return
 }
 
+// DescribeLogs
 // 本接口（DescribeLogs）用于查询设备日志列表。
+//
 // 设备日志最长保留时长为15天,超期自动清除。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeLogs(request *DescribeLogsRequest) (response *DescribeLogsResponse, err error) {
     if request == nil {
         request = NewDescribeLogsRequest()
     }
+    
     response = NewDescribeLogsResponse()
     err = c.Send(request, response)
     return
@@ -880,6 +1864,8 @@ func NewDescribeMessageQueueRequest() (request *DescribeMessageQueueRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeMessageQueue")
+    
+    
     return
 }
 
@@ -890,11 +1876,37 @@ func NewDescribeMessageQueueResponse() (response *DescribeMessageQueueResponse) 
     return
 }
 
+// DescribeMessageQueue
 // 本接口（DescribeMessageQueue）用于查询物联网智能视频产品转发消息配置。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeMessageQueue(request *DescribeMessageQueueRequest) (response *DescribeMessageQueueResponse, err error) {
     if request == nil {
         request = NewDescribeMessageQueueRequest()
     }
+    
     response = NewDescribeMessageQueueResponse()
     err = c.Send(request, response)
     return
@@ -905,6 +1917,8 @@ func NewDescribeModelDataRetRequest() (request *DescribeModelDataRetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeModelDataRet")
+    
+    
     return
 }
 
@@ -915,11 +1929,37 @@ func NewDescribeModelDataRetResponse() (response *DescribeModelDataRetResponse) 
     return
 }
 
+// DescribeModelDataRet
 // 本接口（DescribeModelDataRet）用于根据TaskId获取对设备物模型操作最终响应的结果。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeModelDataRet(request *DescribeModelDataRetRequest) (response *DescribeModelDataRetResponse, err error) {
     if request == nil {
         request = NewDescribeModelDataRetRequest()
     }
+    
     response = NewDescribeModelDataRetResponse()
     err = c.Send(request, response)
     return
@@ -930,6 +1970,8 @@ func NewDescribeOsListRequest() (request *DescribeOsListRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeOsList")
+    
+    
     return
 }
 
@@ -940,11 +1982,37 @@ func NewDescribeOsListResponse() (response *DescribeOsListResponse) {
     return
 }
 
+// DescribeOsList
 // 查看操作系统支持的芯片列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeOsList(request *DescribeOsListRequest) (response *DescribeOsListResponse, err error) {
     if request == nil {
         request = NewDescribeOsListRequest()
     }
+    
     response = NewDescribeOsListResponse()
     err = c.Send(request, response)
     return
@@ -955,6 +2023,8 @@ func NewDescribeOtaVersionsRequest() (request *DescribeOtaVersionsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeOtaVersions")
+    
+    
     return
 }
 
@@ -965,11 +2035,37 @@ func NewDescribeOtaVersionsResponse() (response *DescribeOtaVersionsResponse) {
     return
 }
 
+// DescribeOtaVersions
 // 本接口（DescribeOtaVersions）用于查询固件版本信息列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeOtaVersions(request *DescribeOtaVersionsRequest) (response *DescribeOtaVersionsResponse, err error) {
     if request == nil {
         request = NewDescribeOtaVersionsRequest()
     }
+    
     response = NewDescribeOtaVersionsResponse()
     err = c.Send(request, response)
     return
@@ -980,6 +2076,8 @@ func NewDescribeProductRequest() (request *DescribeProductRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeProduct")
+    
+    
     return
 }
 
@@ -990,11 +2088,37 @@ func NewDescribeProductResponse() (response *DescribeProductResponse) {
     return
 }
 
+// DescribeProduct
 // 本接口（DescribeProduct）用于获取单个产品的详细信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeProduct(request *DescribeProductRequest) (response *DescribeProductResponse, err error) {
     if request == nil {
         request = NewDescribeProductRequest()
     }
+    
     response = NewDescribeProductResponse()
     err = c.Send(request, response)
     return
@@ -1005,6 +2129,8 @@ func NewDescribeProductsRequest() (request *DescribeProductsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeProducts")
+    
+    
     return
 }
 
@@ -1015,11 +2141,37 @@ func NewDescribeProductsResponse() (response *DescribeProductsResponse) {
     return
 }
 
+// DescribeProducts
 // 本接口（DescribeProducts）用于列出用户账号下的物联网智能视频产品列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeProducts(request *DescribeProductsRequest) (response *DescribeProductsResponse, err error) {
     if request == nil {
         request = NewDescribeProductsRequest()
     }
+    
     response = NewDescribeProductsResponse()
     err = c.Send(request, response)
     return
@@ -1030,6 +2182,8 @@ func NewDescribePubVersionsRequest() (request *DescribePubVersionsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribePubVersions")
+    
+    
     return
 }
 
@@ -1040,12 +2194,91 @@ func NewDescribePubVersionsResponse() (response *DescribePubVersionsResponse) {
     return
 }
 
+// DescribePubVersions
 // 本接口（DescribePubVersions）用于获取某一产品发布过的全部固件版本。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribePubVersions(request *DescribePubVersionsRequest) (response *DescribePubVersionsResponse, err error) {
     if request == nil {
         request = NewDescribePubVersionsRequest()
     }
+    
     response = NewDescribePubVersionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRechargeRecordsRequest() (request *DescribeRechargeRecordsRequest) {
+    request = &DescribeRechargeRecordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeRechargeRecords")
+    
+    
+    return
+}
+
+func NewDescribeRechargeRecordsResponse() (response *DescribeRechargeRecordsResponse) {
+    response = &DescribeRechargeRecordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRechargeRecords
+// 客户可通过本接口获取充值记录信息, 一次最多返回50条记录。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRechargeRecords(request *DescribeRechargeRecordsRequest) (response *DescribeRechargeRecordsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRechargeRecordsRequest()
+    }
+    
+    response = NewDescribeRechargeRecordsResponse()
     err = c.Send(request, response)
     return
 }
@@ -1055,6 +2288,8 @@ func NewDescribeRegistrationStatusRequest() (request *DescribeRegistrationStatus
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeRegistrationStatus")
+    
+    
     return
 }
 
@@ -1065,11 +2300,37 @@ func NewDescribeRegistrationStatusResponse() (response *DescribeRegistrationStat
     return
 }
 
+// DescribeRegistrationStatus
 // 本接口（DescribeRegistrationStatus）用于查询终端用户的注册状态。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRegistrationStatus(request *DescribeRegistrationStatusRequest) (response *DescribeRegistrationStatusResponse, err error) {
     if request == nil {
         request = NewDescribeRegistrationStatusRequest()
     }
+    
     response = NewDescribeRegistrationStatusResponse()
     err = c.Send(request, response)
     return
@@ -1080,6 +2341,8 @@ func NewDescribeRunLogRequest() (request *DescribeRunLogRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeRunLog")
+    
+    
     return
 }
 
@@ -1090,11 +2353,37 @@ func NewDescribeRunLogResponse() (response *DescribeRunLogResponse) {
     return
 }
 
+// DescribeRunLog
 // 本接口（DescribeRunLog）用于获取设备运行日志。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRunLog(request *DescribeRunLogRequest) (response *DescribeRunLogResponse, err error) {
     if request == nil {
         request = NewDescribeRunLogRequest()
     }
+    
     response = NewDescribeRunLogResponse()
     err = c.Send(request, response)
     return
@@ -1105,6 +2394,8 @@ func NewDescribeStorageServiceRequest() (request *DescribeStorageServiceRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeStorageService")
+    
+    
     return
 }
 
@@ -1115,12 +2406,99 @@ func NewDescribeStorageServiceResponse() (response *DescribeStorageServiceRespon
     return
 }
 
+// DescribeStorageService
 // 查询云存服务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeStorageService(request *DescribeStorageServiceRequest) (response *DescribeStorageServiceResponse, err error) {
     if request == nil {
         request = NewDescribeStorageServiceRequest()
     }
+    
     response = NewDescribeStorageServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStreamRequest() (request *DescribeStreamRequest) {
+    request = &DescribeStreamRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeStream")
+    
+    
+    return
+}
+
+func NewDescribeStreamResponse() (response *DescribeStreamResponse) {
+    response = &DescribeStreamResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeStream
+// 请求设备直播流地址
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DEVICEFIRMWARETASKALREADDONE = "FailedOperation.DeviceFirmwareTaskAlreadDone"
+//  FAILEDOPERATION_DEVICEISUPDATING = "FailedOperation.DeviceIsUpdating"
+//  FAILEDOPERATION_DEVICERUNNINGOTHEROTATASK = "FailedOperation.DeviceRunningOtherOtaTask"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FIRMWAREALREADYEXIST = "InvalidParameterValue.FirmwareAlreadyExist"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DEVICEFIRMWARETASKNOTEXIST = "ResourceNotFound.DeviceFirmwareTaskNotExist"
+//  RESOURCENOTFOUND_DEVICEHASNOFIRMWARE = "ResourceNotFound.DeviceHasNoFirmware"
+//  RESOURCENOTFOUND_FIRMWARENOTEXIST = "ResourceNotFound.FirmwareNotExist"
+//  RESOURCENOTFOUND_FIRMWARETASKNOTEXIST = "ResourceNotFound.FirmwareTaskNotExist"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeStream(request *DescribeStreamRequest) (response *DescribeStreamResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamRequest()
+    }
+    
+    response = NewDescribeStreamResponse()
     err = c.Send(request, response)
     return
 }
@@ -1130,6 +2508,8 @@ func NewDescribeTraceIdsRequest() (request *DescribeTraceIdsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeTraceIds")
+    
+    
     return
 }
 
@@ -1140,11 +2520,37 @@ func NewDescribeTraceIdsResponse() (response *DescribeTraceIdsResponse) {
     return
 }
 
+// DescribeTraceIds
 // 本接口（DescribeTraceIds）用于查询设备日志跟踪白名单。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTraceIds(request *DescribeTraceIdsRequest) (response *DescribeTraceIdsResponse, err error) {
     if request == nil {
         request = NewDescribeTraceIdsRequest()
     }
+    
     response = NewDescribeTraceIdsResponse()
     err = c.Send(request, response)
     return
@@ -1155,6 +2561,8 @@ func NewDescribeTraceStatusRequest() (request *DescribeTraceStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeTraceStatus")
+    
+    
     return
 }
 
@@ -1165,11 +2573,37 @@ func NewDescribeTraceStatusResponse() (response *DescribeTraceStatusResponse) {
     return
 }
 
+// DescribeTraceStatus
 // 本接口（DescribeTraceStatus）用于查询指定设备是否在白名单中。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTraceStatus(request *DescribeTraceStatusRequest) (response *DescribeTraceStatusResponse, err error) {
     if request == nil {
         request = NewDescribeTraceStatusRequest()
     }
+    
     response = NewDescribeTraceStatusResponse()
     err = c.Send(request, response)
     return
@@ -1180,6 +2614,8 @@ func NewDisableDeviceRequest() (request *DisableDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DisableDevice")
+    
+    
     return
 }
 
@@ -1190,11 +2626,37 @@ func NewDisableDeviceResponse() (response *DisableDeviceResponse) {
     return
 }
 
+// DisableDevice
 // 本接口（DisableDevice）用于禁用设备，可进行批量操作，每次操作最多100台设备。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DisableDevice(request *DisableDeviceRequest) (response *DisableDeviceResponse, err error) {
     if request == nil {
         request = NewDisableDeviceRequest()
     }
+    
     response = NewDisableDeviceResponse()
     err = c.Send(request, response)
     return
@@ -1205,6 +2667,8 @@ func NewDisableDeviceStreamRequest() (request *DisableDeviceStreamRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DisableDeviceStream")
+    
+    
     return
 }
 
@@ -1215,11 +2679,37 @@ func NewDisableDeviceStreamResponse() (response *DisableDeviceStreamResponse) {
     return
 }
 
+// DisableDeviceStream
 // 本接口（DisableDeviceStream）用于停止设备推流，可进行批量操作，每次操作最多100台设备。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DisableDeviceStream(request *DisableDeviceStreamRequest) (response *DisableDeviceStreamResponse, err error) {
     if request == nil {
         request = NewDisableDeviceStreamRequest()
     }
+    
     response = NewDisableDeviceStreamResponse()
     err = c.Send(request, response)
     return
@@ -1230,6 +2720,8 @@ func NewDisableOtaVersionRequest() (request *DisableOtaVersionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "DisableOtaVersion")
+    
+    
     return
 }
 
@@ -1240,12 +2732,72 @@ func NewDisableOtaVersionResponse() (response *DisableOtaVersionResponse) {
     return
 }
 
+// DisableOtaVersion
 // 本接口（DisableOtaVersion）用于禁用固件版本。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DisableOtaVersion(request *DisableOtaVersionRequest) (response *DisableOtaVersionResponse, err error) {
     if request == nil {
         request = NewDisableOtaVersionRequest()
     }
+    
     response = NewDisableOtaVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDeviceRequest() (request *ModifyDeviceRequest) {
+    request = &ModifyDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "ModifyDevice")
+    
+    
+    return
+}
+
+func NewModifyDeviceResponse() (response *ModifyDeviceResponse) {
+    response = &ModifyDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDevice
+// 修改设备信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDevice(request *ModifyDeviceRequest) (response *ModifyDeviceResponse, err error) {
+    if request == nil {
+        request = NewModifyDeviceRequest()
+    }
+    
+    response = NewModifyDeviceResponse()
     err = c.Send(request, response)
     return
 }
@@ -1255,6 +2807,8 @@ func NewModifyDeviceActionRequest() (request *ModifyDeviceActionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "ModifyDeviceAction")
+    
+    
     return
 }
 
@@ -1265,17 +2819,49 @@ func NewModifyDeviceActionResponse() (response *ModifyDeviceActionResponse) {
     return
 }
 
+// ModifyDeviceAction
 // 本接口（ModifyDeviceAction）用于修改设备物模型的行为（Action）。
+//
 // 
+//
 // 可对ctlVal数据属性进行写入,如:Action.takePhoto.ctlVal,设备在线且成功发送到设备才返回,物模型写入数据时,不需要传入时标信息,平台以当前时标作为数据的时标更新物模型中的时标信息。
+//
 // 注意:
+//
 //   1.若设备当前不在线,会直接返回错误
+//
 //   2.若设备网络出现异常时,消息发送可能超时,超时等待最长时间为3秒
+//
 //   3.value的内容必须与实际物模型的定义一致
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyDeviceAction(request *ModifyDeviceActionRequest) (response *ModifyDeviceActionResponse, err error) {
     if request == nil {
         request = NewModifyDeviceActionRequest()
     }
+    
     response = NewModifyDeviceActionResponse()
     err = c.Send(request, response)
     return
@@ -1286,6 +2872,8 @@ func NewModifyDevicePropertyRequest() (request *ModifyDevicePropertyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "ModifyDeviceProperty")
+    
+    
     return
 }
 
@@ -1296,17 +2884,49 @@ func NewModifyDevicePropertyResponse() (response *ModifyDevicePropertyResponse) 
     return
 }
 
+// ModifyDeviceProperty
 // 本接口（ModifyDeviceProperty）用于修改设备物模型的属性（ProWritable）。
+//
 // 可对setVal数据属性进行写入,如:
+//
 // ProWritable.Pos.setVal
+//
 // 对于嵌套类型的可写属性，可以仅对其部分数据内容进行写入，如:
+//
 // ProWritable.Pos.setVal.x;
+//
 // 可写属性云端写入成功即返回;云端向设备端发布属性变更参数;若当前设备不在线,在设备下次上线时会自动更新这些属性参数;
+//
 // 物模型写入数据时,不需要传入时标信息,平台以当前时标作为数据的时标更新物模型中的时标信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyDeviceProperty(request *ModifyDevicePropertyRequest) (response *ModifyDevicePropertyResponse, err error) {
     if request == nil {
         request = NewModifyDevicePropertyRequest()
     }
+    
     response = NewModifyDevicePropertyResponse()
     err = c.Send(request, response)
     return
@@ -1317,6 +2937,8 @@ func NewModifyProductRequest() (request *ModifyProductRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "ModifyProduct")
+    
+    
     return
 }
 
@@ -1327,11 +2949,37 @@ func NewModifyProductResponse() (response *ModifyProductResponse) {
     return
 }
 
+// ModifyProduct
 // 本接口（ModifyProduct）用于编辑物联网智能视频产品的相关信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyProduct(request *ModifyProductRequest) (response *ModifyProductResponse, err error) {
     if request == nil {
         request = NewModifyProductRequest()
     }
+    
     response = NewModifyProductResponse()
     err = c.Send(request, response)
     return
@@ -1342,6 +2990,8 @@ func NewModifyVerContentRequest() (request *ModifyVerContentRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "ModifyVerContent")
+    
+    
     return
 }
 
@@ -1352,11 +3002,37 @@ func NewModifyVerContentResponse() (response *ModifyVerContentResponse) {
     return
 }
 
+// ModifyVerContent
 // 编辑版本描述信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyVerContent(request *ModifyVerContentRequest) (response *ModifyVerContentResponse, err error) {
     if request == nil {
         request = NewModifyVerContentRequest()
     }
+    
     response = NewModifyVerContentResponse()
     err = c.Send(request, response)
     return
@@ -1367,6 +3043,8 @@ func NewRefundStorageServiceRequest() (request *RefundStorageServiceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "RefundStorageService")
+    
+    
     return
 }
 
@@ -1377,11 +3055,45 @@ func NewRefundStorageServiceResponse() (response *RefundStorageServiceResponse) 
     return
 }
 
-// 退订已购买的云存服务
+// RefundStorageService
+// 本接口（RefundStorageService）用于退订已购买的云存服务。
+//
+// 退订时，云存服务对应订单的处理方式 : 
+//
+// 1. 未开始的订单自动回到已付费订单池
+//
+// 2. 已开始的订单自动失效
+//
+// 3. 购买云存接口,优先从已付费订单池中分配订单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) RefundStorageService(request *RefundStorageServiceRequest) (response *RefundStorageServiceResponse, err error) {
     if request == nil {
         request = NewRefundStorageServiceRequest()
     }
+    
     response = NewRefundStorageServiceResponse()
     err = c.Send(request, response)
     return
@@ -1392,6 +3104,8 @@ func NewRunDeviceRequest() (request *RunDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "RunDevice")
+    
+    
     return
 }
 
@@ -1402,11 +3116,37 @@ func NewRunDeviceResponse() (response *RunDeviceResponse) {
     return
 }
 
+// RunDevice
 // 本接口（RunDevice）用于启用设备，可进行批量操作，每次操作最多100台设备。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) RunDevice(request *RunDeviceRequest) (response *RunDeviceResponse, err error) {
     if request == nil {
         request = NewRunDeviceRequest()
     }
+    
     response = NewRunDeviceResponse()
     err = c.Send(request, response)
     return
@@ -1417,6 +3157,8 @@ func NewRunDeviceStreamRequest() (request *RunDeviceStreamRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "RunDeviceStream")
+    
+    
     return
 }
 
@@ -1427,11 +3169,37 @@ func NewRunDeviceStreamResponse() (response *RunDeviceStreamResponse) {
     return
 }
 
+// RunDeviceStream
 // 本接口（RunDeviceStream）用于开启设备推流，可进行批量操作，每次操作最多100台设备。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) RunDeviceStream(request *RunDeviceStreamRequest) (response *RunDeviceStreamResponse, err error) {
     if request == nil {
         request = NewRunDeviceStreamRequest()
     }
+    
     response = NewRunDeviceStreamResponse()
     err = c.Send(request, response)
     return
@@ -1442,6 +3210,8 @@ func NewRunIotModelRequest() (request *RunIotModelRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "RunIotModel")
+    
+    
     return
 }
 
@@ -1452,11 +3222,37 @@ func NewRunIotModelResponse() (response *RunIotModelResponse) {
     return
 }
 
+// RunIotModel
 // 本接口（RunIotModel）用于对定义的物模型进行发布。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) RunIotModel(request *RunIotModelRequest) (response *RunIotModelResponse, err error) {
     if request == nil {
         request = NewRunIotModelRequest()
     }
+    
     response = NewRunIotModelResponse()
     err = c.Send(request, response)
     return
@@ -1467,6 +3263,8 @@ func NewRunOtaVersionRequest() (request *RunOtaVersionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "RunOtaVersion")
+    
+    
     return
 }
 
@@ -1477,11 +3275,37 @@ func NewRunOtaVersionResponse() (response *RunOtaVersionResponse) {
     return
 }
 
+// RunOtaVersion
 // 本接口（RunOtaVersion）用于固件版本正式发布。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) RunOtaVersion(request *RunOtaVersionRequest) (response *RunOtaVersionResponse, err error) {
     if request == nil {
         request = NewRunOtaVersionRequest()
     }
+    
     response = NewRunOtaVersionResponse()
     err = c.Send(request, response)
     return
@@ -1492,6 +3316,8 @@ func NewRunTestOtaVersionRequest() (request *RunTestOtaVersionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "RunTestOtaVersion")
+    
+    
     return
 }
 
@@ -1502,11 +3328,37 @@ func NewRunTestOtaVersionResponse() (response *RunTestOtaVersionResponse) {
     return
 }
 
+// RunTestOtaVersion
 // 本接口（RunTestOtaVersion）用于固件版本测试发布。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) RunTestOtaVersion(request *RunTestOtaVersionRequest) (response *RunTestOtaVersionResponse, err error) {
     if request == nil {
         request = NewRunTestOtaVersionRequest()
     }
+    
     response = NewRunTestOtaVersionResponse()
     err = c.Send(request, response)
     return
@@ -1517,6 +3369,8 @@ func NewSendOnlineMsgRequest() (request *SendOnlineMsgRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "SendOnlineMsg")
+    
+    
     return
 }
 
@@ -1527,14 +3381,43 @@ func NewSendOnlineMsgResponse() (response *SendOnlineMsgResponse) {
     return
 }
 
+// SendOnlineMsg
 // 本接口（SendOnlineMsg）用于向设备发送在线消息。
+//
 // 注意：
+//
 // 若设备当前不在线,会直接返回错误;
+//
 // 若设备网络出现异常时,消息发送可能超时,超时等待最长时间为3秒.waitresp非0情况下,会导致本接口阻塞3秒。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SendOnlineMsg(request *SendOnlineMsgRequest) (response *SendOnlineMsgResponse, err error) {
     if request == nil {
         request = NewSendOnlineMsgRequest()
     }
+    
     response = NewSendOnlineMsgResponse()
     err = c.Send(request, response)
     return
@@ -1545,6 +3428,8 @@ func NewSetMessageQueueRequest() (request *SetMessageQueueRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "SetMessageQueue")
+    
+    
     return
 }
 
@@ -1555,11 +3440,37 @@ func NewSetMessageQueueResponse() (response *SetMessageQueueResponse) {
     return
 }
 
+// SetMessageQueue
 // 本接口（SetMessageQueue）用于配置物联网智能视频产品的转发消息队列。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SetMessageQueue(request *SetMessageQueueRequest) (response *SetMessageQueueResponse, err error) {
     if request == nil {
         request = NewSetMessageQueueRequest()
     }
+    
     response = NewSetMessageQueueResponse()
     err = c.Send(request, response)
     return
@@ -1570,6 +3481,8 @@ func NewUpgradeDeviceRequest() (request *UpgradeDeviceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "UpgradeDevice")
+    
+    
     return
 }
 
@@ -1580,13 +3493,41 @@ func NewUpgradeDeviceResponse() (response *UpgradeDeviceResponse) {
     return
 }
 
+// UpgradeDevice
 // 本接口（UpgradeDevice）用于对设备进行固件升级。
+//
 // 该接口向指定的设备下发固件更新指令,可将固件升级到任意版本(可实现固件降级)。
+//
 // 警告:使能UpgradeNow参数存在一定的风险性！建议仅在debug场景下使用!
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpgradeDevice(request *UpgradeDeviceRequest) (response *UpgradeDeviceResponse, err error) {
     if request == nil {
         request = NewUpgradeDeviceRequest()
     }
+    
     response = NewUpgradeDeviceResponse()
     err = c.Send(request, response)
     return
@@ -1597,6 +3538,8 @@ func NewUploadOtaVersionRequest() (request *UploadOtaVersionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("iotvideo", APIVersion, "UploadOtaVersion")
+    
+    
     return
 }
 
@@ -1607,11 +3550,37 @@ func NewUploadOtaVersionResponse() (response *UploadOtaVersionResponse) {
     return
 }
 
+// UploadOtaVersion
 // 本接口（UploadOtaVersion）接收上传到控制台的固件版本信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UploadOtaVersion(request *UploadOtaVersionRequest) (response *UploadOtaVersionResponse, err error) {
     if request == nil {
         request = NewUploadOtaVersionRequest()
     }
+    
     response = NewUploadOtaVersionResponse()
     err = c.Send(request, response)
     return

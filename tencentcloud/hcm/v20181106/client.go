@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -48,6 +48,8 @@ func NewEvaluationRequest() (request *EvaluationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("hcm", APIVersion, "Evaluation")
+    
+    
     return
 }
 
@@ -58,11 +60,27 @@ func NewEvaluationResponse() (response *EvaluationResponse) {
     return
 }
 
+// Evaluation
 // 速算题目批改接口，根据用户上传的图片或图片的URL识别图片中的数学算式，进而给出算式的正确性评估。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INITIALPARAMETERERROR = "InternalError.InitialParameterError"
+//  INTERNALERROR_SERVERINTERNALERROR = "InternalError.ServerInternalError"
+//  INVALIDPARAMETERVALUE_CANNOTFINDIMAGEERROR = "InvalidParameterValue.CannotFindImageError"
+//  INVALIDPARAMETERVALUE_CANNOTFINDSESSION = "InvalidParameterValue.CannotFindSession"
+//  INVALIDPARAMETERVALUE_EMPTYIMAGEERROR = "InvalidParameterValue.EmptyImageError"
+//  INVALIDPARAMETERVALUE_EMPTYINPUTERROR = "InvalidParameterValue.EmptyInputError"
+//  INVALIDPARAMETERVALUE_EXCEEDDOWNLOADIMAGESIZEERROR = "InvalidParameterValue.ExceedDownloadImageSizeError"
+//  INVALIDPARAMETERVALUE_FAILDECODEERROR = "InvalidParameterValue.FailDecodeError"
+//  INVALIDPARAMETERVALUE_FAILDOWNLOADIMAGEERROR = "InvalidParameterValue.FailDownloadImageError"
+//  INVALIDPARAMETERVALUE_FAILRECOGNIZEERROR = "InvalidParameterValue.FailRecognizeError"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEERROR = "InvalidParameterValue.InvalidImageError"
+//  RESOURCENOTFOUND_CANNOTFINDUSER = "ResourceNotFound.CannotFindUser"
 func (c *Client) Evaluation(request *EvaluationRequest) (response *EvaluationResponse, err error) {
     if request == nil {
         request = NewEvaluationRequest()
     }
+    
     response = NewEvaluationResponse()
     err = c.Send(request, response)
     return

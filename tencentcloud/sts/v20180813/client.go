@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -48,6 +48,8 @@ func NewAssumeRoleRequest() (request *AssumeRoleRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("sts", APIVersion, "AssumeRole")
+    
+    
     return
 }
 
@@ -58,11 +60,37 @@ func NewAssumeRoleResponse() (response *AssumeRoleResponse) {
     return
 }
 
+// AssumeRole
 // 申请扮演角色
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ENCRYPTERROR = "InternalError.EncryptError"
+//  INTERNALERROR_GETAPPIDERROR = "InternalError.GetAppIdError"
+//  INTERNALERROR_GETROLEERROR = "InternalError.GetRoleError"
+//  INTERNALERROR_GETSEEDTOKENERROR = "InternalError.GetSeedTokenError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INTERNALERROR_PBSERIALIZEERROR = "InternalError.PbSerializeError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_ACCOUNTNOTAVALIABLE = "InvalidParameter.AccountNotAvaliable"
+//  INVALIDPARAMETER_EXTENDSTRATEGYOVERSIZE = "InvalidParameter.ExtendStrategyOverSize"
+//  INVALIDPARAMETER_GRANTOTHERRESOURCE = "InvalidParameter.GrantOtherResource"
+//  INVALIDPARAMETER_OVERLIMIT = "InvalidParameter.OverLimit"
+//  INVALIDPARAMETER_OVERTIMEERROR = "InvalidParameter.OverTimeError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYTOOLONG = "InvalidParameter.PolicyTooLong"
+//  INVALIDPARAMETER_RESOUCEERROR = "InvalidParameter.ResouceError"
+//  INVALIDPARAMETER_STRATEGYFORMATERROR = "InvalidParameter.StrategyFormatError"
+//  INVALIDPARAMETER_STRATEGYINVALID = "InvalidParameter.StrategyInvalid"
+//  INVALIDPARAMETER_TEMPCODENOTAVALIABLE = "InvalidParameter.TempCodeNotAvaliable"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) AssumeRole(request *AssumeRoleRequest) (response *AssumeRoleResponse, err error) {
     if request == nil {
         request = NewAssumeRoleRequest()
     }
+    
     response = NewAssumeRoleResponse()
     err = c.Send(request, response)
     return
@@ -73,6 +101,8 @@ func NewAssumeRoleWithSAMLRequest() (request *AssumeRoleWithSAMLRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("sts", APIVersion, "AssumeRoleWithSAML")
+    
+    
     return
 }
 
@@ -83,12 +113,73 @@ func NewAssumeRoleWithSAMLResponse() (response *AssumeRoleWithSAMLResponse) {
     return
 }
 
+// AssumeRoleWithSAML
 // 本接口（AssumeRoleWithSAML）用于根据 SAML 断言申请角色临时凭证。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ENCRYPTERROR = "InternalError.EncryptError"
+//  INTERNALERROR_GETAPPIDERROR = "InternalError.GetAppIdError"
+//  INTERNALERROR_GETROLEERROR = "InternalError.GetRoleError"
+//  INTERNALERROR_GETSEEDTOKENERROR = "InternalError.GetSeedTokenError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INTERNALERROR_PBSERIALIZEERROR = "InternalError.PbSerializeError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_ACCOUNTNOTAVALIABLE = "InvalidParameter.AccountNotAvaliable"
+//  INVALIDPARAMETER_EXTENDSTRATEGYOVERSIZE = "InvalidParameter.ExtendStrategyOverSize"
+//  INVALIDPARAMETER_GRANTOTHERRESOURCE = "InvalidParameter.GrantOtherResource"
+//  INVALIDPARAMETER_OVERTIMEERROR = "InvalidParameter.OverTimeError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYTOOLONG = "InvalidParameter.PolicyTooLong"
+//  INVALIDPARAMETER_RESOUCEERROR = "InvalidParameter.ResouceError"
+//  INVALIDPARAMETER_STRATEGYFORMATERROR = "InvalidParameter.StrategyFormatError"
+//  INVALIDPARAMETER_STRATEGYINVALID = "InvalidParameter.StrategyInvalid"
+//  INVALIDPARAMETER_TEMPCODENOTAVALIABLE = "InvalidParameter.TempCodeNotAvaliable"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) AssumeRoleWithSAML(request *AssumeRoleWithSAMLRequest) (response *AssumeRoleWithSAMLResponse, err error) {
     if request == nil {
         request = NewAssumeRoleWithSAMLRequest()
     }
+    
     response = NewAssumeRoleWithSAMLResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetCallerIdentityRequest() (request *GetCallerIdentityRequest) {
+    request = &GetCallerIdentityRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sts", APIVersion, "GetCallerIdentity")
+    
+    
+    return
+}
+
+func NewGetCallerIdentityResponse() (response *GetCallerIdentityResponse) {
+    response = &GetCallerIdentityResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetCallerIdentity
+// 获取当前调用者的身份信息。
+//
+// 接口支持主账号，子账号长期密钥以及AssumeRole，GetFederationToken生成的临时凭据的身份获取。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_ACCESSKEYILLEGAL = "AuthFailure.AccessKeyIllegal"
+//  INTERNALERROR_GETSEEDTOKENERROR = "InternalError.GetSeedTokenError"
+//  INVALIDPARAMETER_ACCESSKEYNOTSUPPORT = "InvalidParameter.AccessKeyNotSupport"
+func (c *Client) GetCallerIdentity(request *GetCallerIdentityRequest) (response *GetCallerIdentityResponse, err error) {
+    if request == nil {
+        request = NewGetCallerIdentityRequest()
+    }
+    
+    response = NewGetCallerIdentityResponse()
     err = c.Send(request, response)
     return
 }
@@ -98,6 +189,8 @@ func NewGetFederationTokenRequest() (request *GetFederationTokenRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("sts", APIVersion, "GetFederationToken")
+    
+    
     return
 }
 
@@ -108,11 +201,32 @@ func NewGetFederationTokenResponse() (response *GetFederationTokenResponse) {
     return
 }
 
+// GetFederationToken
 // 获取联合身份临时访问凭证
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ENCRYPTERROR = "InternalError.EncryptError"
+//  INTERNALERROR_GETAPPIDERROR = "InternalError.GetAppIdError"
+//  INTERNALERROR_GETSEEDTOKENERROR = "InternalError.GetSeedTokenError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_ACCOUNTNOTAVALIABLE = "InvalidParameter.AccountNotAvaliable"
+//  INVALIDPARAMETER_EXTENDSTRATEGYOVERSIZE = "InvalidParameter.ExtendStrategyOverSize"
+//  INVALIDPARAMETER_GRANTOTHERRESOURCE = "InvalidParameter.GrantOtherResource"
+//  INVALIDPARAMETER_OVERTIMEERROR = "InvalidParameter.OverTimeError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYTOOLONG = "InvalidParameter.PolicyTooLong"
+//  INVALIDPARAMETER_RESOUCEERROR = "InvalidParameter.ResouceError"
+//  INVALIDPARAMETER_STRATEGYFORMATERROR = "InvalidParameter.StrategyFormatError"
+//  INVALIDPARAMETER_STRATEGYINVALID = "InvalidParameter.StrategyInvalid"
+//  INVALIDPARAMETER_TEMPCODENOTAVALIABLE = "InvalidParameter.TempCodeNotAvaliable"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) GetFederationToken(request *GetFederationTokenRequest) (response *GetFederationTokenResponse, err error) {
     if request == nil {
         request = NewGetFederationTokenRequest()
     }
+    
     response = NewGetFederationTokenResponse()
     err = c.Send(request, response)
     return
@@ -123,6 +237,8 @@ func NewQueryApiKeyRequest() (request *QueryApiKeyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("sts", APIVersion, "QueryApiKey")
+    
+    
     return
 }
 
@@ -133,11 +249,18 @@ func NewQueryApiKeyResponse() (response *QueryApiKeyResponse) {
     return
 }
 
+// QueryApiKey
 // 拉取API密钥列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) QueryApiKey(request *QueryApiKeyRequest) (response *QueryApiKeyResponse, err error) {
     if request == nil {
         request = NewQueryApiKeyRequest()
     }
+    
     response = NewQueryApiKeyResponse()
     err = c.Send(request, response)
     return

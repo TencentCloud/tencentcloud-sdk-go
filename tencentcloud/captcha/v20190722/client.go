@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -48,6 +48,8 @@ func NewDescribeCaptchaAppIdInfoRequest() (request *DescribeCaptchaAppIdInfoRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaAppIdInfo")
+    
+    
     return
 }
 
@@ -58,11 +60,19 @@ func NewDescribeCaptchaAppIdInfoResponse() (response *DescribeCaptchaAppIdInfoRe
     return
 }
 
+// DescribeCaptchaAppIdInfo
 // 查询安全验证码应用APPId信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) DescribeCaptchaAppIdInfo(request *DescribeCaptchaAppIdInfoRequest) (response *DescribeCaptchaAppIdInfoResponse, err error) {
     if request == nil {
         request = NewDescribeCaptchaAppIdInfoRequest()
     }
+    
     response = NewDescribeCaptchaAppIdInfoResponse()
     err = c.Send(request, response)
     return
@@ -73,6 +83,8 @@ func NewDescribeCaptchaDataRequest() (request *DescribeCaptchaDataRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaData")
+    
+    
     return
 }
 
@@ -83,11 +95,19 @@ func NewDescribeCaptchaDataResponse() (response *DescribeCaptchaDataResponse) {
     return
 }
 
+// DescribeCaptchaData
 // 安全验证码分类查询数据接口，请求量type=0、通过量type=1、验证量type=2、拦截量type=3  分钟级查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) DescribeCaptchaData(request *DescribeCaptchaDataRequest) (response *DescribeCaptchaDataResponse, err error) {
     if request == nil {
         request = NewDescribeCaptchaDataRequest()
     }
+    
     response = NewDescribeCaptchaDataResponse()
     err = c.Send(request, response)
     return
@@ -98,6 +118,8 @@ func NewDescribeCaptchaDataSumRequest() (request *DescribeCaptchaDataSumRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaDataSum")
+    
+    
     return
 }
 
@@ -108,11 +130,19 @@ func NewDescribeCaptchaDataSumResponse() (response *DescribeCaptchaDataSumRespon
     return
 }
 
+// DescribeCaptchaDataSum
 // 安全验证码查询请求数据概况，例如：按照时间段查询数据  昨日请求量、昨日恶意比例、昨日验证量、昨日通过量、昨日恶意拦截量……
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) DescribeCaptchaDataSum(request *DescribeCaptchaDataSumRequest) (response *DescribeCaptchaDataSumResponse, err error) {
     if request == nil {
         request = NewDescribeCaptchaDataSumRequest()
     }
+    
     response = NewDescribeCaptchaDataSumResponse()
     err = c.Send(request, response)
     return
@@ -123,6 +153,8 @@ func NewDescribeCaptchaMiniDataRequest() (request *DescribeCaptchaMiniDataReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaMiniData")
+    
+    
     return
 }
 
@@ -133,11 +165,19 @@ func NewDescribeCaptchaMiniDataResponse() (response *DescribeCaptchaMiniDataResp
     return
 }
 
+// DescribeCaptchaMiniData
 // 安全验证码小程序插件分类查询数据接口，请求量type=0、通过量type=1、验证量type=2、拦截量type=3 小时级查询（五小时左右延迟）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) DescribeCaptchaMiniData(request *DescribeCaptchaMiniDataRequest) (response *DescribeCaptchaMiniDataResponse, err error) {
     if request == nil {
         request = NewDescribeCaptchaMiniDataRequest()
     }
+    
     response = NewDescribeCaptchaMiniDataResponse()
     err = c.Send(request, response)
     return
@@ -148,6 +188,8 @@ func NewDescribeCaptchaMiniDataSumRequest() (request *DescribeCaptchaMiniDataSum
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaMiniDataSum")
+    
+    
     return
 }
 
@@ -158,11 +200,19 @@ func NewDescribeCaptchaMiniDataSumResponse() (response *DescribeCaptchaMiniDataS
     return
 }
 
+// DescribeCaptchaMiniDataSum
 // 安全验证码小程序插件查询请求数据概况
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) DescribeCaptchaMiniDataSum(request *DescribeCaptchaMiniDataSumRequest) (response *DescribeCaptchaMiniDataSumResponse, err error) {
     if request == nil {
         request = NewDescribeCaptchaMiniDataSumRequest()
     }
+    
     response = NewDescribeCaptchaMiniDataSumResponse()
     err = c.Send(request, response)
     return
@@ -173,6 +223,8 @@ func NewDescribeCaptchaMiniOperDataRequest() (request *DescribeCaptchaMiniOperDa
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaMiniOperData")
+    
+    
     return
 }
 
@@ -183,11 +235,19 @@ func NewDescribeCaptchaMiniOperDataResponse() (response *DescribeCaptchaMiniOper
     return
 }
 
+// DescribeCaptchaMiniOperData
 // 安全验证码小程序插件用户操作数据查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) DescribeCaptchaMiniOperData(request *DescribeCaptchaMiniOperDataRequest) (response *DescribeCaptchaMiniOperDataResponse, err error) {
     if request == nil {
         request = NewDescribeCaptchaMiniOperDataRequest()
     }
+    
     response = NewDescribeCaptchaMiniOperDataResponse()
     err = c.Send(request, response)
     return
@@ -198,6 +258,8 @@ func NewDescribeCaptchaMiniResultRequest() (request *DescribeCaptchaMiniResultRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaMiniResult")
+    
+    
     return
 }
 
@@ -208,12 +270,55 @@ func NewDescribeCaptchaMiniResultResponse() (response *DescribeCaptchaMiniResult
     return
 }
 
+// DescribeCaptchaMiniResult
 // 核查验证码小程序插件票据结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) DescribeCaptchaMiniResult(request *DescribeCaptchaMiniResultRequest) (response *DescribeCaptchaMiniResultResponse, err error) {
     if request == nil {
         request = NewDescribeCaptchaMiniResultRequest()
     }
+    
     response = NewDescribeCaptchaMiniResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCaptchaMiniRiskResultRequest() (request *DescribeCaptchaMiniRiskResultRequest) {
+    request = &DescribeCaptchaMiniRiskResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaMiniRiskResult")
+    
+    
+    return
+}
+
+func NewDescribeCaptchaMiniRiskResultResponse() (response *DescribeCaptchaMiniRiskResultResponse) {
+    response = &DescribeCaptchaMiniRiskResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCaptchaMiniRiskResult
+// 核查验证码小程序插件票据接入风控结果(Beta)
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
+func (c *Client) DescribeCaptchaMiniRiskResult(request *DescribeCaptchaMiniRiskResultRequest) (response *DescribeCaptchaMiniRiskResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeCaptchaMiniRiskResultRequest()
+    }
+    
+    response = NewDescribeCaptchaMiniRiskResultResponse()
     err = c.Send(request, response)
     return
 }
@@ -223,6 +328,8 @@ func NewDescribeCaptchaOperDataRequest() (request *DescribeCaptchaOperDataReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaOperData")
+    
+    
     return
 }
 
@@ -233,11 +340,19 @@ func NewDescribeCaptchaOperDataResponse() (response *DescribeCaptchaOperDataResp
     return
 }
 
+// DescribeCaptchaOperData
 // 安全验证码用户操作数据查询，验证码加载耗时type = 1 、拦截情况type = 2、 一周通过平均尝试次数 type = 3、尝试次数分布 type = 4
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) DescribeCaptchaOperData(request *DescribeCaptchaOperDataRequest) (response *DescribeCaptchaOperDataResponse, err error) {
     if request == nil {
         request = NewDescribeCaptchaOperDataRequest()
     }
+    
     response = NewDescribeCaptchaOperDataResponse()
     err = c.Send(request, response)
     return
@@ -248,6 +363,8 @@ func NewDescribeCaptchaResultRequest() (request *DescribeCaptchaResultRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaResult")
+    
+    
     return
 }
 
@@ -258,11 +375,19 @@ func NewDescribeCaptchaResultResponse() (response *DescribeCaptchaResultResponse
     return
 }
 
+// DescribeCaptchaResult
 // 核查验证码票据结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) DescribeCaptchaResult(request *DescribeCaptchaResultRequest) (response *DescribeCaptchaResultResponse, err error) {
     if request == nil {
         request = NewDescribeCaptchaResultRequest()
     }
+    
     response = NewDescribeCaptchaResultResponse()
     err = c.Send(request, response)
     return
@@ -273,6 +398,8 @@ func NewDescribeCaptchaTicketDataRequest() (request *DescribeCaptchaTicketDataRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaTicketData")
+    
+    
     return
 }
 
@@ -283,11 +410,19 @@ func NewDescribeCaptchaTicketDataResponse() (response *DescribeCaptchaTicketData
     return
 }
 
+// DescribeCaptchaTicketData
 // 安全验证码用户操作票据数据查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) DescribeCaptchaTicketData(request *DescribeCaptchaTicketDataRequest) (response *DescribeCaptchaTicketDataResponse, err error) {
     if request == nil {
         request = NewDescribeCaptchaTicketDataRequest()
     }
+    
     response = NewDescribeCaptchaTicketDataResponse()
     err = c.Send(request, response)
     return
@@ -298,6 +433,8 @@ func NewDescribeCaptchaUserAllAppIdRequest() (request *DescribeCaptchaUserAllApp
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaUserAllAppId")
+    
+    
     return
 }
 
@@ -308,11 +445,19 @@ func NewDescribeCaptchaUserAllAppIdResponse() (response *DescribeCaptchaUserAllA
     return
 }
 
+// DescribeCaptchaUserAllAppId
 // 安全验证码获取用户注册所有APPId和应用名称
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) DescribeCaptchaUserAllAppId(request *DescribeCaptchaUserAllAppIdRequest) (response *DescribeCaptchaUserAllAppIdResponse, err error) {
     if request == nil {
         request = NewDescribeCaptchaUserAllAppIdRequest()
     }
+    
     response = NewDescribeCaptchaUserAllAppIdResponse()
     err = c.Send(request, response)
     return
@@ -323,6 +468,8 @@ func NewUpdateCaptchaAppIdInfoRequest() (request *UpdateCaptchaAppIdInfoRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("captcha", APIVersion, "UpdateCaptchaAppIdInfo")
+    
+    
     return
 }
 
@@ -333,11 +480,19 @@ func NewUpdateCaptchaAppIdInfoResponse() (response *UpdateCaptchaAppIdInfoRespon
     return
 }
 
+// UpdateCaptchaAppIdInfo
 // 更新验证码应用APPId信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) UpdateCaptchaAppIdInfo(request *UpdateCaptchaAppIdInfoRequest) (response *UpdateCaptchaAppIdInfoResponse, err error) {
     if request == nil {
         request = NewUpdateCaptchaAppIdInfoRequest()
     }
+    
     response = NewUpdateCaptchaAppIdInfoResponse()
     err = c.Send(request, response)
     return

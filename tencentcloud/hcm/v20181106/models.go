@@ -16,7 +16,7 @@ package v20181106
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -58,6 +58,9 @@ type EvaluationRequest struct {
 
 	// 是否返回LaTex，默认为0返回普通格式，设置成1返回LaTex格式
 	LaTex *int64 `json:"LaTex,omitempty" name:"LaTex"`
+
+	// 用于选择是否拒绝模糊题 目。打开则丢弃模糊题目， 不进行后续的判题返回结 果。
+	RejectVagueArithmetic *bool `json:"RejectVagueArithmetic,omitempty" name:"RejectVagueArithmetic"`
 }
 
 func (r *EvaluationRequest) ToJsonString() string {
@@ -65,8 +68,30 @@ func (r *EvaluationRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EvaluationRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SessionId")
+	delete(f, "Image")
+	delete(f, "HcmAppid")
+	delete(f, "Url")
+	delete(f, "SupportHorizontalImage")
+	delete(f, "RejectNonArithmeticImage")
+	delete(f, "IsAsync")
+	delete(f, "EnableDispRelatedVertical")
+	delete(f, "EnableDispMidresult")
+	delete(f, "EnablePdfRecognize")
+	delete(f, "PdfPageIndex")
+	delete(f, "LaTex")
+	delete(f, "RejectVagueArithmetic")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EvaluationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EvaluationResponse struct {
@@ -78,7 +103,7 @@ type EvaluationResponse struct {
 
 		// 识别出的算式信息；
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Items []*Item `json:"Items,omitempty" name:"Items" list`
+		Items []*Item `json:"Items,omitempty" name:"Items"`
 
 		// 任务 id，用于查询接口
 		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
@@ -93,22 +118,24 @@ func (r *EvaluationResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EvaluationResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Item struct {
 
-	// 识别的算式是否正确
+	// 识别的算式是否正确，算式运算结果: ‘YES’:正确 ‘NO’: 错误 ‘NA’: 非法参数
 	Item *string `json:"Item,omitempty" name:"Item"`
 
-	// 识别的算式
+	// 识别出的算式，识别出的文本行字符串
 	ItemString *string `json:"ItemString,omitempty" name:"ItemString"`
 
-	// 识别的算式在图片上的位置信息
+	// 识别的算式在图片上的位置信息，文本行在旋转纠正之后的图像中的像素坐 标，表示为(左上角 x, 左上角 y，宽 width， 高 height)
 	ItemCoord *ItemCoord `json:"ItemCoord,omitempty" name:"ItemCoord"`
 
-	// 推荐的答案，暂不支持多个关系运算符、无关系运算符、单位换算错题的推荐答案返回。
+	// 错题推荐答案，算式运算结果正确返回为 ""，算式运算结果错误返回推荐答案 (注:暂不支持多个关系运算符(如 1<10<7)、 无关系运算符(如 frac(1,2)+frac(2,3))、单 位换算(如 1 元=100 角)错题的推荐答案 返回)
 	Answer *string `json:"Answer,omitempty" name:"Answer"`
 
 	// 算式题型编号，如加减乘除四则题型，具体题型及编号如下：1 加减乘除四则 2 加减乘除已知结果求运算因子3 判断大小 4 约等于估算 5 带余数除法 6 分数四则运算 7 单位换算 8 竖式加减法 9 竖式乘除法 10 脱式计算 11 解方程
@@ -118,6 +145,10 @@ type Item struct {
 	// 文本行置信度
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ItemConf *float64 `json:"ItemConf,omitempty" name:"ItemConf"`
+
+	// 用于标识题目 id，如果有若干算式属于同一 题，则其对应的 id 相同。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QuestionId *string `json:"QuestionId,omitempty" name:"QuestionId"`
 }
 
 type ItemCoord struct {

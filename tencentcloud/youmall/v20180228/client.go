@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -48,6 +48,8 @@ func NewCreateAccountRequest() (request *CreateAccountRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "CreateAccount")
+    
+    
     return
 }
 
@@ -58,11 +60,23 @@ func NewCreateAccountResponse() (response *CreateAccountResponse) {
     return
 }
 
+// CreateAccount
 // 创建集团门店管理员账号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTEXIST = "FailedOperation.AccountExist"
+//  FAILEDOPERATION_NEEDGRANTROLEFIRST = "FailedOperation.NeedGrantRoleFirst"
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  FAILEDOPERATION_NOTMATCHSHOPCODE = "FailedOperation.NotMatchShopCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) CreateAccount(request *CreateAccountRequest) (response *CreateAccountResponse, err error) {
     if request == nil {
         request = NewCreateAccountRequest()
     }
+    
     response = NewCreateAccountResponse()
     err = c.Send(request, response)
     return
@@ -73,6 +87,8 @@ func NewCreateFacePictureRequest() (request *CreateFacePictureRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "CreateFacePicture")
+    
+    
     return
 }
 
@@ -83,11 +99,23 @@ func NewCreateFacePictureResponse() (response *CreateFacePictureResponse) {
     return
 }
 
+// CreateFacePicture
 // 通过上传指定规格的人脸图片，创建黑名单用户或者白名单用户。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTEXIST = "FailedOperation.AccountExist"
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  FAILEDOPERATION_NOTMATCHSHOPCODE = "FailedOperation.NotMatchShopCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateFacePicture(request *CreateFacePictureRequest) (response *CreateFacePictureResponse, err error) {
     if request == nil {
         request = NewCreateFacePictureRequest()
     }
+    
     response = NewCreateFacePictureResponse()
     err = c.Send(request, response)
     return
@@ -98,6 +126,8 @@ func NewDeletePersonFeatureRequest() (request *DeletePersonFeatureRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DeletePersonFeature")
+    
+    
     return
 }
 
@@ -108,11 +138,32 @@ func NewDeletePersonFeatureResponse() (response *DeletePersonFeatureResponse) {
     return
 }
 
+// DeletePersonFeature
 // 删除顾客特征，仅支持删除黑名单或者白名单用户特征。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTEXIST = "FailedOperation.AccountExist"
+//  FAILEDOPERATION_NEEDGRANTROLEFIRST = "FailedOperation.NeedGrantRoleFirst"
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NOPERSON = "FailedOperation.NoPerson"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  FAILEDOPERATION_NOTMATCHSHOPCODE = "FailedOperation.NotMatchShopCode"
+//  FAILEDOPERATION_PARAMETERERROR = "FailedOperation.ParameterError"
+//  FAILEDOPERATION_PROCESSFAIL = "FailedOperation.ProcessFail"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATAERROR = "InternalError.DataError"
+//  INTERNALERROR_DATAHASEXISTS = "InternalError.DataHasExists"
+//  INTERNALERROR_INNERSERVERFAILED = "InternalError.InnerServerFailed"
+//  INTERNALERROR_METADATAOPFAILED = "InternalError.MetaDataOpFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_JSONPARSEERR = "InvalidParameterValue.JsonParseErr"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeletePersonFeature(request *DeletePersonFeatureRequest) (response *DeletePersonFeatureResponse, err error) {
     if request == nil {
         request = NewDeletePersonFeatureRequest()
     }
+    
     response = NewDeletePersonFeatureResponse()
     err = c.Send(request, response)
     return
@@ -123,6 +174,8 @@ func NewDescribeCameraPersonRequest() (request *DescribeCameraPersonRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeCameraPerson")
+    
+    
     return
 }
 
@@ -133,11 +186,18 @@ func NewDescribeCameraPersonResponse() (response *DescribeCameraPersonResponse) 
     return
 }
 
+// DescribeCameraPerson
 // 通过指定设备ID和指定时段，获取该时段内中收银台摄像设备抓取到顾客头像及身份ID
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_PARAMETERERROR = "FailedOperation.ParameterError"
+//  FAILEDOPERATION_PROCESSFAIL = "FailedOperation.ProcessFail"
 func (c *Client) DescribeCameraPerson(request *DescribeCameraPersonRequest) (response *DescribeCameraPersonResponse, err error) {
     if request == nil {
         request = NewDescribeCameraPersonRequest()
     }
+    
     response = NewDescribeCameraPersonResponse()
     err = c.Send(request, response)
     return
@@ -148,6 +208,8 @@ func NewDescribeClusterPersonArrivedMallRequest() (request *DescribeClusterPerso
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeClusterPersonArrivedMall")
+    
+    
     return
 }
 
@@ -158,11 +220,24 @@ func NewDescribeClusterPersonArrivedMallResponse() (response *DescribeClusterPer
     return
 }
 
+// DescribeClusterPersonArrivedMall
 // 输出开始时间到结束时间段内的进出场数据。按天聚合的情况下，每天多次进出场算一次，以最初进场时间为进场时间，最后离场时间为离场时间。停留时间为多次进出场的停留时间之和。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATAERROR = "InternalError.DataError"
+//  INTERNALERROR_DATAHASEXISTS = "InternalError.DataHasExists"
+//  INTERNALERROR_INNERSERVERFAILED = "InternalError.InnerServerFailed"
+//  INTERNALERROR_METADATAOPFAILED = "InternalError.MetaDataOpFailed"
+//  INTERNALERROR_USERNOTEXIST = "InternalError.UserNotExist"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeClusterPersonArrivedMall(request *DescribeClusterPersonArrivedMallRequest) (response *DescribeClusterPersonArrivedMallResponse, err error) {
     if request == nil {
         request = NewDescribeClusterPersonArrivedMallRequest()
     }
+    
     response = NewDescribeClusterPersonArrivedMallResponse()
     err = c.Send(request, response)
     return
@@ -173,6 +248,8 @@ func NewDescribeClusterPersonTraceRequest() (request *DescribeClusterPersonTrace
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeClusterPersonTrace")
+    
+    
     return
 }
 
@@ -183,11 +260,24 @@ func NewDescribeClusterPersonTraceResponse() (response *DescribeClusterPersonTra
     return
 }
 
+// DescribeClusterPersonTrace
 // 输出开始时间到结束时间段内的进出场数据。按天聚合的情况下，每天多次进出场算一次，以最初进场时间为进场时间，最后离场时间为离场时间。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATAERROR = "InternalError.DataError"
+//  INTERNALERROR_DATAHASEXISTS = "InternalError.DataHasExists"
+//  INTERNALERROR_INNERSERVERFAILED = "InternalError.InnerServerFailed"
+//  INTERNALERROR_METADATAOPFAILED = "InternalError.MetaDataOpFailed"
+//  INTERNALERROR_USERNOTEXIST = "InternalError.UserNotExist"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeClusterPersonTrace(request *DescribeClusterPersonTraceRequest) (response *DescribeClusterPersonTraceResponse, err error) {
     if request == nil {
         request = NewDescribeClusterPersonTraceRequest()
     }
+    
     response = NewDescribeClusterPersonTraceResponse()
     err = c.Send(request, response)
     return
@@ -198,6 +288,8 @@ func NewDescribeFaceIdByTempIdRequest() (request *DescribeFaceIdByTempIdRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeFaceIdByTempId")
+    
+    
     return
 }
 
@@ -208,11 +300,28 @@ func NewDescribeFaceIdByTempIdResponse() (response *DescribeFaceIdByTempIdRespon
     return
 }
 
+// DescribeFaceIdByTempId
 // 通过DescribeCameraPerson接口上报的收银台身份ID查询顾客的FaceID。查询最佳时间为收银台上报的次日1点后。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_PARAMETERERROR = "FailedOperation.ParameterError"
+//  FAILEDOPERATION_PROCESSFAIL = "FailedOperation.ProcessFail"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATAERROR = "InternalError.DataError"
+//  INTERNALERROR_DATAHASEXISTS = "InternalError.DataHasExists"
+//  INTERNALERROR_INNERSERVERFAILED = "InternalError.InnerServerFailed"
+//  INTERNALERROR_METADATAOPFAILED = "InternalError.MetaDataOpFailed"
+//  INTERNALERROR_USERNOTEXIST = "InternalError.UserNotExist"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_JSONPARSEERR = "InvalidParameterValue.JsonParseErr"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeFaceIdByTempId(request *DescribeFaceIdByTempIdRequest) (response *DescribeFaceIdByTempIdResponse, err error) {
     if request == nil {
         request = NewDescribeFaceIdByTempIdRequest()
     }
+    
     response = NewDescribeFaceIdByTempIdResponse()
     err = c.Send(request, response)
     return
@@ -223,6 +332,8 @@ func NewDescribeHistoryNetworkInfoRequest() (request *DescribeHistoryNetworkInfo
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeHistoryNetworkInfo")
+    
+    
     return
 }
 
@@ -233,11 +344,20 @@ func NewDescribeHistoryNetworkInfoResponse() (response *DescribeHistoryNetworkIn
     return
 }
 
+// DescribeHistoryNetworkInfo
 // 返回当前门店历史网络状态数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  FAILEDOPERATION_PARAMETERERROR = "FailedOperation.ParameterError"
+//  FAILEDOPERATION_PROCESSFAIL = "FailedOperation.ProcessFail"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeHistoryNetworkInfo(request *DescribeHistoryNetworkInfoRequest) (response *DescribeHistoryNetworkInfoResponse, err error) {
     if request == nil {
         request = NewDescribeHistoryNetworkInfoRequest()
     }
+    
     response = NewDescribeHistoryNetworkInfoResponse()
     err = c.Send(request, response)
     return
@@ -248,6 +368,8 @@ func NewDescribeNetworkInfoRequest() (request *DescribeNetworkInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeNetworkInfo")
+    
+    
     return
 }
 
@@ -258,11 +380,20 @@ func NewDescribeNetworkInfoResponse() (response *DescribeNetworkInfoResponse) {
     return
 }
 
+// DescribeNetworkInfo
 // 返回当前门店最新网络状态数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  FAILEDOPERATION_PARAMETERERROR = "FailedOperation.ParameterError"
+//  FAILEDOPERATION_PROCESSFAIL = "FailedOperation.ProcessFail"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeNetworkInfo(request *DescribeNetworkInfoRequest) (response *DescribeNetworkInfoResponse, err error) {
     if request == nil {
         request = NewDescribeNetworkInfoRequest()
     }
+    
     response = NewDescribeNetworkInfoResponse()
     err = c.Send(request, response)
     return
@@ -273,6 +404,8 @@ func NewDescribePersonRequest() (request *DescribePersonRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribePerson")
+    
+    
     return
 }
 
@@ -283,11 +416,25 @@ func NewDescribePersonResponse() (response *DescribePersonResponse) {
     return
 }
 
+// DescribePerson
 // 查询指定某一卖场的用户信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTEXIST = "FailedOperation.AccountExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATAERROR = "InternalError.DataError"
+//  INTERNALERROR_DATAHASEXISTS = "InternalError.DataHasExists"
+//  INTERNALERROR_INNERSERVERFAILED = "InternalError.InnerServerFailed"
+//  INTERNALERROR_METADATAOPFAILED = "InternalError.MetaDataOpFailed"
+//  INTERNALERROR_USERNOTEXIST = "InternalError.UserNotExist"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribePerson(request *DescribePersonRequest) (response *DescribePersonResponse, err error) {
     if request == nil {
         request = NewDescribePersonRequest()
     }
+    
     response = NewDescribePersonResponse()
     err = c.Send(request, response)
     return
@@ -298,6 +445,8 @@ func NewDescribePersonArrivedMallRequest() (request *DescribePersonArrivedMallRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribePersonArrivedMall")
+    
+    
     return
 }
 
@@ -308,12 +457,27 @@ func NewDescribePersonArrivedMallResponse() (response *DescribePersonArrivedMall
     return
 }
 
+// DescribePersonArrivedMall
 // 输出开始时间到结束时间段内的进出场数据。不做按天聚合的情况下，每次进出场，产生一条进出场数据。
+//
 // 
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATAERROR = "InternalError.DataError"
+//  INTERNALERROR_DATAHASEXISTS = "InternalError.DataHasExists"
+//  INTERNALERROR_INNERSERVERFAILED = "InternalError.InnerServerFailed"
+//  INTERNALERROR_METADATAOPFAILED = "InternalError.MetaDataOpFailed"
+//  INTERNALERROR_USERNOTEXIST = "InternalError.UserNotExist"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribePersonArrivedMall(request *DescribePersonArrivedMallRequest) (response *DescribePersonArrivedMallResponse, err error) {
     if request == nil {
         request = NewDescribePersonArrivedMallRequest()
     }
+    
     response = NewDescribePersonArrivedMallResponse()
     err = c.Send(request, response)
     return
@@ -324,6 +488,8 @@ func NewDescribePersonInfoRequest() (request *DescribePersonInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribePersonInfo")
+    
+    
     return
 }
 
@@ -334,11 +500,20 @@ func NewDescribePersonInfoResponse() (response *DescribePersonInfoResponse) {
     return
 }
 
+// DescribePersonInfo
 // 指定门店获取所有顾客详情列表，包含客户ID、图片、年龄、性别
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribePersonInfo(request *DescribePersonInfoRequest) (response *DescribePersonInfoResponse, err error) {
     if request == nil {
         request = NewDescribePersonInfoRequest()
     }
+    
     response = NewDescribePersonInfoResponse()
     err = c.Send(request, response)
     return
@@ -349,6 +524,8 @@ func NewDescribePersonInfoByFacePictureRequest() (request *DescribePersonInfoByF
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribePersonInfoByFacePicture")
+    
+    
     return
 }
 
@@ -359,11 +536,32 @@ func NewDescribePersonInfoByFacePictureResponse() (response *DescribePersonInfoB
     return
 }
 
+// DescribePersonInfoByFacePicture
 // 通过上传人脸图片检索系统face id、顾客身份信息及底图
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BADFACEQUALITY = "FailedOperation.BadFaceQuality"
+//  FAILEDOPERATION_FACENOTFOUND = "FailedOperation.FaceNotFound"
+//  FAILEDOPERATION_FACESIZEERROR = "FailedOperation.FaceSizeError"
+//  FAILEDOPERATION_MULTIFACEDETECTED = "FailedOperation.MultiFaceDetected"
+//  FAILEDOPERATION_NEEDGRANTROLEFIRST = "FailedOperation.NeedGrantRoleFirst"
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NOPERSON = "FailedOperation.NoPerson"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  FAILEDOPERATION_NOTMATCHSHOPCODE = "FailedOperation.NotMatchShopCode"
+//  FAILEDOPERATION_OTHERS = "FailedOperation.Others"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATAERROR = "InternalError.DataError"
+//  INTERNALERROR_INNERSERVERFAILED = "InternalError.InnerServerFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_JSONPARSEERR = "InvalidParameterValue.JsonParseErr"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribePersonInfoByFacePicture(request *DescribePersonInfoByFacePictureRequest) (response *DescribePersonInfoByFacePictureResponse, err error) {
     if request == nil {
         request = NewDescribePersonInfoByFacePictureRequest()
     }
+    
     response = NewDescribePersonInfoByFacePictureResponse()
     err = c.Send(request, response)
     return
@@ -374,6 +572,8 @@ func NewDescribePersonTraceRequest() (request *DescribePersonTraceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribePersonTrace")
+    
+    
     return
 }
 
@@ -384,11 +584,25 @@ func NewDescribePersonTraceResponse() (response *DescribePersonTraceResponse) {
     return
 }
 
+// DescribePersonTrace
 // 输出开始时间到结束时间段内的进出场数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATAERROR = "InternalError.DataError"
+//  INTERNALERROR_DATAHASEXISTS = "InternalError.DataHasExists"
+//  INTERNALERROR_INNERSERVERFAILED = "InternalError.InnerServerFailed"
+//  INTERNALERROR_METADATAOPFAILED = "InternalError.MetaDataOpFailed"
+//  INTERNALERROR_USERNOTEXIST = "InternalError.UserNotExist"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribePersonTrace(request *DescribePersonTraceRequest) (response *DescribePersonTraceResponse, err error) {
     if request == nil {
         request = NewDescribePersonTraceRequest()
     }
+    
     response = NewDescribePersonTraceResponse()
     err = c.Send(request, response)
     return
@@ -399,6 +613,8 @@ func NewDescribePersonTraceDetailRequest() (request *DescribePersonTraceDetailRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribePersonTraceDetail")
+    
+    
     return
 }
 
@@ -409,11 +625,24 @@ func NewDescribePersonTraceDetailResponse() (response *DescribePersonTraceDetail
     return
 }
 
+// DescribePersonTraceDetail
 // 查询客户单次到场轨迹明细
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATAERROR = "InternalError.DataError"
+//  INTERNALERROR_DATAHASEXISTS = "InternalError.DataHasExists"
+//  INTERNALERROR_INNERSERVERFAILED = "InternalError.InnerServerFailed"
+//  INTERNALERROR_METADATAOPFAILED = "InternalError.MetaDataOpFailed"
+//  INTERNALERROR_USERNOTEXIST = "InternalError.UserNotExist"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribePersonTraceDetail(request *DescribePersonTraceDetailRequest) (response *DescribePersonTraceDetailResponse, err error) {
     if request == nil {
         request = NewDescribePersonTraceDetailRequest()
     }
+    
     response = NewDescribePersonTraceDetailResponse()
     err = c.Send(request, response)
     return
@@ -424,6 +653,8 @@ func NewDescribePersonVisitInfoRequest() (request *DescribePersonVisitInfoReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribePersonVisitInfo")
+    
+    
     return
 }
 
@@ -434,11 +665,19 @@ func NewDescribePersonVisitInfoResponse() (response *DescribePersonVisitInfoResp
     return
 }
 
+// DescribePersonVisitInfo
 // 获取门店指定时间范围内的所有用户到访信息记录，支持的时间范围：过去365天，含当天。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribePersonVisitInfo(request *DescribePersonVisitInfoRequest) (response *DescribePersonVisitInfoResponse, err error) {
     if request == nil {
         request = NewDescribePersonVisitInfoRequest()
     }
+    
     response = NewDescribePersonVisitInfoResponse()
     err = c.Send(request, response)
     return
@@ -449,6 +688,8 @@ func NewDescribeShopHourTrafficInfoRequest() (request *DescribeShopHourTrafficIn
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeShopHourTrafficInfo")
+    
+    
     return
 }
 
@@ -459,11 +700,20 @@ func NewDescribeShopHourTrafficInfoResponse() (response *DescribeShopHourTraffic
     return
 }
 
+// DescribeShopHourTrafficInfo
 // 按小时提供查询日期范围内门店的每天每小时累计客流人数数据，支持的时间范围：过去365天，含当天。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeShopHourTrafficInfo(request *DescribeShopHourTrafficInfoRequest) (response *DescribeShopHourTrafficInfoResponse, err error) {
     if request == nil {
         request = NewDescribeShopHourTrafficInfoRequest()
     }
+    
     response = NewDescribeShopHourTrafficInfoResponse()
     err = c.Send(request, response)
     return
@@ -474,6 +724,8 @@ func NewDescribeShopInfoRequest() (request *DescribeShopInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeShopInfo")
+    
+    
     return
 }
 
@@ -484,11 +736,20 @@ func NewDescribeShopInfoResponse() (response *DescribeShopInfoResponse) {
     return
 }
 
+// DescribeShopInfo
 // 根据客户身份标识获取客户下所有的门店信息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeShopInfo(request *DescribeShopInfoRequest) (response *DescribeShopInfoResponse, err error) {
     if request == nil {
         request = NewDescribeShopInfoRequest()
     }
+    
     response = NewDescribeShopInfoResponse()
     err = c.Send(request, response)
     return
@@ -499,6 +760,8 @@ func NewDescribeShopTrafficInfoRequest() (request *DescribeShopTrafficInfoReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeShopTrafficInfo")
+    
+    
     return
 }
 
@@ -509,11 +772,20 @@ func NewDescribeShopTrafficInfoResponse() (response *DescribeShopTrafficInfoResp
     return
 }
 
+// DescribeShopTrafficInfo
 // 按天提供查询日期范围内门店的单日累计客流人数，支持的时间范围：过去365天，含当天。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeShopTrafficInfo(request *DescribeShopTrafficInfoRequest) (response *DescribeShopTrafficInfoResponse, err error) {
     if request == nil {
         request = NewDescribeShopTrafficInfoRequest()
     }
+    
     response = NewDescribeShopTrafficInfoResponse()
     err = c.Send(request, response)
     return
@@ -524,6 +796,8 @@ func NewDescribeTrajectoryDataRequest() (request *DescribeTrajectoryDataRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeTrajectoryData")
+    
+    
     return
 }
 
@@ -534,11 +808,22 @@ func NewDescribeTrajectoryDataResponse() (response *DescribeTrajectoryDataRespon
     return
 }
 
+// DescribeTrajectoryData
 // 获取动线轨迹信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTEXIST = "FailedOperation.AccountExist"
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  FAILEDOPERATION_NOTMATCHSHOPCODE = "FailedOperation.NotMatchShopCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeTrajectoryData(request *DescribeTrajectoryDataRequest) (response *DescribeTrajectoryDataResponse, err error) {
     if request == nil {
         request = NewDescribeTrajectoryDataRequest()
     }
+    
     response = NewDescribeTrajectoryDataResponse()
     err = c.Send(request, response)
     return
@@ -549,6 +834,8 @@ func NewDescribeZoneFlowAgeInfoByZoneIdRequest() (request *DescribeZoneFlowAgeIn
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeZoneFlowAgeInfoByZoneId")
+    
+    
     return
 }
 
@@ -559,11 +846,22 @@ func NewDescribeZoneFlowAgeInfoByZoneIdResponse() (response *DescribeZoneFlowAge
     return
 }
 
+// DescribeZoneFlowAgeInfoByZoneId
 // 获取指定区域人流各年龄占比
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTEXIST = "FailedOperation.AccountExist"
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  FAILEDOPERATION_NOTMATCHSHOPCODE = "FailedOperation.NotMatchShopCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeZoneFlowAgeInfoByZoneId(request *DescribeZoneFlowAgeInfoByZoneIdRequest) (response *DescribeZoneFlowAgeInfoByZoneIdResponse, err error) {
     if request == nil {
         request = NewDescribeZoneFlowAgeInfoByZoneIdRequest()
     }
+    
     response = NewDescribeZoneFlowAgeInfoByZoneIdResponse()
     err = c.Send(request, response)
     return
@@ -574,6 +872,8 @@ func NewDescribeZoneFlowAndStayTimeRequest() (request *DescribeZoneFlowAndStayTi
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeZoneFlowAndStayTime")
+    
+    
     return
 }
 
@@ -584,11 +884,22 @@ func NewDescribeZoneFlowAndStayTimeResponse() (response *DescribeZoneFlowAndStay
     return
 }
 
+// DescribeZoneFlowAndStayTime
 // 获取区域人流和停留时间
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTEXIST = "FailedOperation.AccountExist"
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  FAILEDOPERATION_NOTMATCHSHOPCODE = "FailedOperation.NotMatchShopCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeZoneFlowAndStayTime(request *DescribeZoneFlowAndStayTimeRequest) (response *DescribeZoneFlowAndStayTimeResponse, err error) {
     if request == nil {
         request = NewDescribeZoneFlowAndStayTimeRequest()
     }
+    
     response = NewDescribeZoneFlowAndStayTimeResponse()
     err = c.Send(request, response)
     return
@@ -599,6 +910,8 @@ func NewDescribeZoneFlowDailyByZoneIdRequest() (request *DescribeZoneFlowDailyBy
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeZoneFlowDailyByZoneId")
+    
+    
     return
 }
 
@@ -609,11 +922,22 @@ func NewDescribeZoneFlowDailyByZoneIdResponse() (response *DescribeZoneFlowDaily
     return
 }
 
+// DescribeZoneFlowDailyByZoneId
 // 获取指定区域每日客流量
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTEXIST = "FailedOperation.AccountExist"
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  FAILEDOPERATION_NOTMATCHSHOPCODE = "FailedOperation.NotMatchShopCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeZoneFlowDailyByZoneId(request *DescribeZoneFlowDailyByZoneIdRequest) (response *DescribeZoneFlowDailyByZoneIdResponse, err error) {
     if request == nil {
         request = NewDescribeZoneFlowDailyByZoneIdRequest()
     }
+    
     response = NewDescribeZoneFlowDailyByZoneIdResponse()
     err = c.Send(request, response)
     return
@@ -624,6 +948,8 @@ func NewDescribeZoneFlowGenderAvrStayTimeByZoneIdRequest() (request *DescribeZon
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeZoneFlowGenderAvrStayTimeByZoneId")
+    
+    
     return
 }
 
@@ -634,11 +960,22 @@ func NewDescribeZoneFlowGenderAvrStayTimeByZoneIdResponse() (response *DescribeZ
     return
 }
 
+// DescribeZoneFlowGenderAvrStayTimeByZoneId
 // 获取指定区域不同年龄段男女平均停留时间
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTEXIST = "FailedOperation.AccountExist"
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  FAILEDOPERATION_NOTMATCHSHOPCODE = "FailedOperation.NotMatchShopCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeZoneFlowGenderAvrStayTimeByZoneId(request *DescribeZoneFlowGenderAvrStayTimeByZoneIdRequest) (response *DescribeZoneFlowGenderAvrStayTimeByZoneIdResponse, err error) {
     if request == nil {
         request = NewDescribeZoneFlowGenderAvrStayTimeByZoneIdRequest()
     }
+    
     response = NewDescribeZoneFlowGenderAvrStayTimeByZoneIdResponse()
     err = c.Send(request, response)
     return
@@ -649,6 +986,8 @@ func NewDescribeZoneFlowGenderInfoByZoneIdRequest() (request *DescribeZoneFlowGe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeZoneFlowGenderInfoByZoneId")
+    
+    
     return
 }
 
@@ -659,11 +998,22 @@ func NewDescribeZoneFlowGenderInfoByZoneIdResponse() (response *DescribeZoneFlow
     return
 }
 
+// DescribeZoneFlowGenderInfoByZoneId
 // 获取指定区域性别占比
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTEXIST = "FailedOperation.AccountExist"
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  FAILEDOPERATION_NOTMATCHSHOPCODE = "FailedOperation.NotMatchShopCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeZoneFlowGenderInfoByZoneId(request *DescribeZoneFlowGenderInfoByZoneIdRequest) (response *DescribeZoneFlowGenderInfoByZoneIdResponse, err error) {
     if request == nil {
         request = NewDescribeZoneFlowGenderInfoByZoneIdRequest()
     }
+    
     response = NewDescribeZoneFlowGenderInfoByZoneIdResponse()
     err = c.Send(request, response)
     return
@@ -674,6 +1024,8 @@ func NewDescribeZoneFlowHourlyByZoneIdRequest() (request *DescribeZoneFlowHourly
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeZoneFlowHourlyByZoneId")
+    
+    
     return
 }
 
@@ -684,11 +1036,22 @@ func NewDescribeZoneFlowHourlyByZoneIdResponse() (response *DescribeZoneFlowHour
     return
 }
 
+// DescribeZoneFlowHourlyByZoneId
 // 获取指定区域分时客流量
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTEXIST = "FailedOperation.AccountExist"
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  FAILEDOPERATION_NOTMATCHSHOPCODE = "FailedOperation.NotMatchShopCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeZoneFlowHourlyByZoneId(request *DescribeZoneFlowHourlyByZoneIdRequest) (response *DescribeZoneFlowHourlyByZoneIdResponse, err error) {
     if request == nil {
         request = NewDescribeZoneFlowHourlyByZoneIdRequest()
     }
+    
     response = NewDescribeZoneFlowHourlyByZoneIdResponse()
     err = c.Send(request, response)
     return
@@ -699,6 +1062,8 @@ func NewDescribeZoneTrafficInfoRequest() (request *DescribeZoneTrafficInfoReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeZoneTrafficInfo")
+    
+    
     return
 }
 
@@ -709,11 +1074,20 @@ func NewDescribeZoneTrafficInfoResponse() (response *DescribeZoneTrafficInfoResp
     return
 }
 
+// DescribeZoneTrafficInfo
 // 按天提供查询日期范围内，客户指定门店下的所有区域（优Mall部署时已配置区域）的累计客流人次和平均停留时间。支持的时间范围：过去365天，含当天。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeZoneTrafficInfo(request *DescribeZoneTrafficInfoRequest) (response *DescribeZoneTrafficInfoResponse, err error) {
     if request == nil {
         request = NewDescribeZoneTrafficInfoRequest()
     }
+    
     response = NewDescribeZoneTrafficInfoResponse()
     err = c.Send(request, response)
     return
@@ -724,6 +1098,8 @@ func NewModifyPersonFeatureInfoRequest() (request *ModifyPersonFeatureInfoReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "ModifyPersonFeatureInfo")
+    
+    
     return
 }
 
@@ -734,11 +1110,27 @@ func NewModifyPersonFeatureInfoResponse() (response *ModifyPersonFeatureInfoResp
     return
 }
 
+// ModifyPersonFeatureInfo
 // 支持修改黑白名单类型的顾客特征
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BADFACEQUALITY = "FailedOperation.BadFaceQuality"
+//  FAILEDOPERATION_EXTRACTFEATUREERROR = "FailedOperation.ExtractFeatureError"
+//  FAILEDOPERATION_FACENOTFOUND = "FailedOperation.FaceNotFound"
+//  FAILEDOPERATION_FACESIZEERROR = "FailedOperation.FaceSizeError"
+//  FAILEDOPERATION_HASEXISTPERSON = "FailedOperation.HasExistPerson"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_MULTIFACEDETECTED = "FailedOperation.MultiFaceDetected"
+//  FAILEDOPERATION_NOPERSON = "FailedOperation.NoPerson"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATAERROR = "InternalError.DataError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyPersonFeatureInfo(request *ModifyPersonFeatureInfoRequest) (response *ModifyPersonFeatureInfoResponse, err error) {
     if request == nil {
         request = NewModifyPersonFeatureInfoRequest()
     }
+    
     response = NewModifyPersonFeatureInfoResponse()
     err = c.Send(request, response)
     return
@@ -749,6 +1141,8 @@ func NewModifyPersonTagInfoRequest() (request *ModifyPersonTagInfoRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "ModifyPersonTagInfo")
+    
+    
     return
 }
 
@@ -759,11 +1153,19 @@ func NewModifyPersonTagInfoResponse() (response *ModifyPersonTagInfoResponse) {
     return
 }
 
+// ModifyPersonTagInfo
 // 标记到店顾客的身份类型，例如黑名单、白名单等
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyPersonTagInfo(request *ModifyPersonTagInfoRequest) (response *ModifyPersonTagInfoResponse, err error) {
     if request == nil {
         request = NewModifyPersonTagInfoRequest()
     }
+    
     response = NewModifyPersonTagInfoResponse()
     err = c.Send(request, response)
     return
@@ -774,6 +1176,8 @@ func NewModifyPersonTypeRequest() (request *ModifyPersonTypeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "ModifyPersonType")
+    
+    
     return
 }
 
@@ -784,11 +1188,32 @@ func NewModifyPersonTypeResponse() (response *ModifyPersonTypeResponse) {
     return
 }
 
+// ModifyPersonType
 // 修改顾客身份类型接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTEXIST = "FailedOperation.AccountExist"
+//  FAILEDOPERATION_NEEDGRANTROLEFIRST = "FailedOperation.NeedGrantRoleFirst"
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  FAILEDOPERATION_NOTMATCHSHOPCODE = "FailedOperation.NotMatchShopCode"
+//  FAILEDOPERATION_PARAMETERERROR = "FailedOperation.ParameterError"
+//  FAILEDOPERATION_PROCESSFAIL = "FailedOperation.ProcessFail"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATAERROR = "InternalError.DataError"
+//  INTERNALERROR_DATAHASEXISTS = "InternalError.DataHasExists"
+//  INTERNALERROR_INNERSERVERFAILED = "InternalError.InnerServerFailed"
+//  INTERNALERROR_METADATAOPFAILED = "InternalError.MetaDataOpFailed"
+//  INTERNALERROR_USERNOTEXIST = "InternalError.UserNotExist"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_JSONPARSEERR = "InvalidParameterValue.JsonParseErr"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyPersonType(request *ModifyPersonTypeRequest) (response *ModifyPersonTypeResponse, err error) {
     if request == nil {
         request = NewModifyPersonTypeRequest()
     }
+    
     response = NewModifyPersonTypeResponse()
     err = c.Send(request, response)
     return
@@ -799,6 +1224,8 @@ func NewRegisterCallbackRequest() (request *RegisterCallbackRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("youmall", APIVersion, "RegisterCallback")
+    
+    
     return
 }
 
@@ -809,11 +1236,19 @@ func NewRegisterCallbackResponse() (response *RegisterCallbackResponse) {
     return
 }
 
+// RegisterCallback
 // 调用本接口在优Mall中注册自己集团的到店通知回调接口地址，接口协议为HTTP或HTTPS。注册后，若集团有特殊身份（例如老客）到店通知，优Mall后台将主动将到店信息push给该接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_PROCESSFAIL = "FailedOperation.ProcessFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_JSONPARSEERR = "InvalidParameterValue.JsonParseErr"
 func (c *Client) RegisterCallback(request *RegisterCallbackRequest) (response *RegisterCallbackResponse, err error) {
     if request == nil {
         request = NewRegisterCallbackRequest()
     }
+    
     response = NewRegisterCallbackResponse()
     err = c.Send(request, response)
     return

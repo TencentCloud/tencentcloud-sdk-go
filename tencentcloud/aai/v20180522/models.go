@@ -16,7 +16,7 @@ package v20180522
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -38,8 +38,20 @@ func (r *ChatRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ChatRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	delete(f, "ProjectId")
+	delete(f, "User")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChatRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ChatResponse struct {
@@ -59,8 +71,10 @@ func (r *ChatResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ChatResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SentenceRecognitionRequest struct {
@@ -99,8 +113,26 @@ func (r *SentenceRecognitionRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SentenceRecognitionRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "SubServiceType")
+	delete(f, "EngSerViceType")
+	delete(f, "SourceType")
+	delete(f, "VoiceFormat")
+	delete(f, "UsrAudioKey")
+	delete(f, "Url")
+	delete(f, "Data")
+	delete(f, "DataLen")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SentenceRecognitionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SentenceRecognitionResponse struct {
@@ -120,8 +152,10 @@ func (r *SentenceRecognitionResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SentenceRecognitionResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SimultaneousInterpretingRequest struct {
@@ -169,8 +203,29 @@ func (r *SimultaneousInterpretingRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SimultaneousInterpretingRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "SubServiceType")
+	delete(f, "RecEngineModelType")
+	delete(f, "Data")
+	delete(f, "DataLen")
+	delete(f, "VoiceId")
+	delete(f, "IsEnd")
+	delete(f, "VoiceFormat")
+	delete(f, "OpenTranslate")
+	delete(f, "SourceLanguage")
+	delete(f, "TargetLanguage")
+	delete(f, "Seq")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SimultaneousInterpretingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SimultaneousInterpretingResponse struct {
@@ -193,8 +248,10 @@ func (r *SimultaneousInterpretingResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SimultaneousInterpretingResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TextToVoiceRequest struct {
@@ -238,8 +295,27 @@ func (r *TextToVoiceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TextToVoiceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	delete(f, "SessionId")
+	delete(f, "ModelType")
+	delete(f, "Volume")
+	delete(f, "Speed")
+	delete(f, "ProjectId")
+	delete(f, "VoiceType")
+	delete(f, "PrimaryLanguage")
+	delete(f, "SampleRate")
+	delete(f, "Codec")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextToVoiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TextToVoiceResponse struct {
@@ -262,6 +338,8 @@ func (r *TextToVoiceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TextToVoiceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

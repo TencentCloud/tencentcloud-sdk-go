@@ -16,7 +16,7 @@ package v20180625
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -24,7 +24,7 @@ type BindEipAclsRequest struct {
 	*tchttp.BaseRequest
 
 	// 待关联的 EIP 与 ACL关系列表
-	EipIdAclIdList []*EipAclMap `json:"EipIdAclIdList,omitempty" name:"EipIdAclIdList" list`
+	EipIdAclIdList []*EipAclMap `json:"EipIdAclIdList,omitempty" name:"EipIdAclIdList"`
 }
 
 func (r *BindEipAclsRequest) ToJsonString() string {
@@ -32,8 +32,18 @@ func (r *BindEipAclsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BindEipAclsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EipIdAclIdList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindEipAclsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BindEipAclsResponse struct {
@@ -50,8 +60,10 @@ func (r *BindEipAclsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BindEipAclsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BindHostedRequest struct {
@@ -69,8 +81,19 @@ func (r *BindHostedRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BindHostedRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EipId")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindHostedRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BindHostedResponse struct {
@@ -90,8 +113,10 @@ func (r *BindHostedResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BindHostedResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BindRsRequest struct {
@@ -109,8 +134,19 @@ func (r *BindRsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BindRsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EipId")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindRsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BindRsResponse struct {
@@ -130,8 +166,10 @@ func (r *BindRsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BindRsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BindVpcIpRequest struct {
@@ -152,8 +190,20 @@ func (r *BindVpcIpRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BindVpcIpRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EipId")
+	delete(f, "VpcId")
+	delete(f, "VpcIp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindVpcIpRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BindVpcIpResponse struct {
@@ -173,8 +223,10 @@ func (r *BindVpcIpResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BindVpcIpResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateEipAclRequest struct {
@@ -192,8 +244,19 @@ func (r *CreateEipAclRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateEipAclRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AclName")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEipAclRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateEipAclResponse struct {
@@ -222,8 +285,10 @@ func (r *CreateEipAclResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateEipAclResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateEipRequest struct {
@@ -248,7 +313,7 @@ type CreateEipRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 指定申请的IP列表
-	IpList []*string `json:"IpList,omitempty" name:"IpList" list`
+	IpList []*string `json:"IpList,omitempty" name:"IpList"`
 }
 
 func (r *CreateEipRequest) ToJsonString() string {
@@ -256,8 +321,24 @@ func (r *CreateEipRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateEipRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GoodsNum")
+	delete(f, "PayMode")
+	delete(f, "Bandwidth")
+	delete(f, "SetType")
+	delete(f, "Exclusive")
+	delete(f, "VpcId")
+	delete(f, "IpList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEipRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateEipResponse struct {
@@ -265,7 +346,7 @@ type CreateEipResponse struct {
 	Response *struct {
 
 		// EIP列表
-		EipIds []*string `json:"EipIds,omitempty" name:"EipIds" list`
+		EipIds []*string `json:"EipIds,omitempty" name:"EipIds"`
 
 		// 任务ID
 		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
@@ -280,8 +361,10 @@ func (r *CreateEipResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateEipResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteEipAclRequest struct {
@@ -296,8 +379,18 @@ func (r *DeleteEipAclRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteEipAclRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AclId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteEipAclRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteEipAclResponse struct {
@@ -314,15 +407,17 @@ func (r *DeleteEipAclResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteEipAclResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteEipRequest struct {
 	*tchttp.BaseRequest
 
 	// Eip实例ID列表
-	EipIds []*string `json:"EipIds,omitempty" name:"EipIds" list`
+	EipIds []*string `json:"EipIds,omitempty" name:"EipIds"`
 }
 
 func (r *DeleteEipRequest) ToJsonString() string {
@@ -330,8 +425,18 @@ func (r *DeleteEipRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteEipRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EipIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteEipRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteEipResponse struct {
@@ -351,8 +456,10 @@ func (r *DeleteEipResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteEipResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeEipAclsRequest struct {
@@ -362,7 +469,7 @@ type DescribeEipAclsRequest struct {
 	AclName *string `json:"AclName,omitempty" name:"AclName"`
 
 	// ACL 实例 ID 列表，数组下标从 0 开始
-	AclIds []*string `json:"AclIds,omitempty" name:"AclIds" list`
+	AclIds []*string `json:"AclIds,omitempty" name:"AclIds"`
 
 	// 分页参数。偏移量，默认为 0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -371,13 +478,13 @@ type DescribeEipAclsRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// EIP实例ID列表
-	EipIds []*string `json:"EipIds,omitempty" name:"EipIds" list`
+	EipIds []*string `json:"EipIds,omitempty" name:"EipIds"`
 
 	// EIP IP地址列表
-	EipIps []*string `json:"EipIps,omitempty" name:"EipIps" list`
+	EipIps []*string `json:"EipIps,omitempty" name:"EipIps"`
 
 	// EIP名称列表
-	EipNames []*string `json:"EipNames,omitempty" name:"EipNames" list`
+	EipNames []*string `json:"EipNames,omitempty" name:"EipNames"`
 
 	// 排序字段
 	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
@@ -386,7 +493,7 @@ type DescribeEipAclsRequest struct {
 	Order *uint64 `json:"Order,omitempty" name:"Order"`
 
 	// ACL名称列表，支持模糊查找
-	AclNames []*string `json:"AclNames,omitempty" name:"AclNames" list`
+	AclNames []*string `json:"AclNames,omitempty" name:"AclNames"`
 }
 
 func (r *DescribeEipAclsRequest) ToJsonString() string {
@@ -394,8 +501,27 @@ func (r *DescribeEipAclsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeEipAclsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AclName")
+	delete(f, "AclIds")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "EipIds")
+	delete(f, "EipIps")
+	delete(f, "EipNames")
+	delete(f, "OrderField")
+	delete(f, "Order")
+	delete(f, "AclNames")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEipAclsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeEipAclsResponse struct {
@@ -406,7 +532,7 @@ type DescribeEipAclsResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// EIPACL列表
-		EipAclList []*EipAcl `json:"EipAclList,omitempty" name:"EipAclList" list`
+		EipAclList []*EipAcl `json:"EipAclList,omitempty" name:"EipAclList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -418,8 +544,10 @@ func (r *DescribeEipAclsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeEipAclsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeEipQuotaRequest struct {
@@ -431,8 +559,17 @@ func (r *DescribeEipQuotaRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeEipQuotaRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEipQuotaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeEipQuotaResponse struct {
@@ -464,8 +601,10 @@ func (r *DescribeEipQuotaResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeEipQuotaResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeEipTaskRequest struct {
@@ -480,8 +619,18 @@ func (r *DescribeEipTaskRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeEipTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEipTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeEipTaskResponse struct {
@@ -501,27 +650,29 @@ func (r *DescribeEipTaskResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeEipTaskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeEipsRequest struct {
 	*tchttp.BaseRequest
 
 	// EIP实例ID列表
-	EipIds []*string `json:"EipIds,omitempty" name:"EipIds" list`
+	EipIds []*string `json:"EipIds,omitempty" name:"EipIds"`
 
 	// EIP IP 列表
-	Eips []*string `json:"Eips,omitempty" name:"Eips" list`
+	Eips []*string `json:"Eips,omitempty" name:"Eips"`
 
 	// 主机实例ID 列表
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds" list`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// EIP名称,模糊匹配
 	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
 
 	// 状态列表, 默认所有
-	Status []*int64 `json:"Status,omitempty" name:"Status" list`
+	Status []*int64 `json:"Status,omitempty" name:"Status"`
 
 	// 偏移量，默认为0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -542,7 +693,7 @@ type DescribeEipsRequest struct {
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 绑定类型，-1：未绑定，0：物理机，1：nat网关，2：虚拟IP, 3:托管机器
-	BindTypes []*int64 `json:"BindTypes,omitempty" name:"BindTypes" list`
+	BindTypes []*int64 `json:"BindTypes,omitempty" name:"BindTypes"`
 
 	// 独占标志，0：共享，1：独占
 	ExclusiveTag *int64 `json:"ExclusiveTag,omitempty" name:"ExclusiveTag"`
@@ -559,8 +710,32 @@ func (r *DescribeEipsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeEipsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EipIds")
+	delete(f, "Eips")
+	delete(f, "InstanceIds")
+	delete(f, "SearchKey")
+	delete(f, "Status")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "OrderField")
+	delete(f, "Order")
+	delete(f, "PayMode")
+	delete(f, "VpcId")
+	delete(f, "BindTypes")
+	delete(f, "ExclusiveTag")
+	delete(f, "AclId")
+	delete(f, "BindAcl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEipsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeEipsResponse struct {
@@ -568,7 +743,7 @@ type DescribeEipsResponse struct {
 	Response *struct {
 
 		// 返回EIP信息数组
-		EipSet []*EipInfo `json:"EipSet,omitempty" name:"EipSet" list`
+		EipSet []*EipInfo `json:"EipSet,omitempty" name:"EipSet"`
 
 		// 返回EIP数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -583,8 +758,10 @@ func (r *DescribeEipsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeEipsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EipAcl struct {
@@ -605,10 +782,10 @@ type EipAcl struct {
 	EipNum *int64 `json:"EipNum,omitempty" name:"EipNum"`
 
 	// 出站规则
-	OutRules []*EipAclRule `json:"OutRules,omitempty" name:"OutRules" list`
+	OutRules []*EipAclRule `json:"OutRules,omitempty" name:"OutRules"`
 
 	// 入站规则
-	InRules []*EipAclRule `json:"InRules,omitempty" name:"InRules" list`
+	InRules []*EipAclRule `json:"InRules,omitempty" name:"InRules"`
 }
 
 type EipAclMap struct {
@@ -750,7 +927,7 @@ type ModifyEipAclRequest struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// ACL规则列表
-	Rules []*EipAclRule `json:"Rules,omitempty" name:"Rules" list`
+	Rules []*EipAclRule `json:"Rules,omitempty" name:"Rules"`
 }
 
 func (r *ModifyEipAclRequest) ToJsonString() string {
@@ -758,8 +935,22 @@ func (r *ModifyEipAclRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyEipAclRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AclId")
+	delete(f, "AclName")
+	delete(f, "Status")
+	delete(f, "Type")
+	delete(f, "Rules")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyEipAclRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyEipAclResponse struct {
@@ -776,8 +967,10 @@ func (r *ModifyEipAclResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyEipAclResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyEipChargeRequest struct {
@@ -787,7 +980,7 @@ type ModifyEipChargeRequest struct {
 	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
 
 	// Eip实例ID列表
-	EipIds []*string `json:"EipIds,omitempty" name:"EipIds" list`
+	EipIds []*string `json:"EipIds,omitempty" name:"EipIds"`
 
 	// 带宽设定值（只在带宽计费时生效）
 	Bandwidth *uint64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
@@ -798,8 +991,20 @@ func (r *ModifyEipChargeRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyEipChargeRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PayMode")
+	delete(f, "EipIds")
+	delete(f, "Bandwidth")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyEipChargeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyEipChargeResponse struct {
@@ -819,8 +1024,10 @@ func (r *ModifyEipChargeResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyEipChargeResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyEipNameRequest struct {
@@ -838,8 +1045,19 @@ func (r *ModifyEipNameRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyEipNameRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EipId")
+	delete(f, "EipName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyEipNameRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyEipNameResponse struct {
@@ -856,15 +1074,17 @@ func (r *ModifyEipNameResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyEipNameResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UnbindEipAclsRequest struct {
 	*tchttp.BaseRequest
 
 	// 待解关联的 EIP 与 ACL列表
-	EipIdAclIdList []*EipAclMap `json:"EipIdAclIdList,omitempty" name:"EipIdAclIdList" list`
+	EipIdAclIdList []*EipAclMap `json:"EipIdAclIdList,omitempty" name:"EipIdAclIdList"`
 }
 
 func (r *UnbindEipAclsRequest) ToJsonString() string {
@@ -872,8 +1092,18 @@ func (r *UnbindEipAclsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UnbindEipAclsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EipIdAclIdList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnbindEipAclsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UnbindEipAclsResponse struct {
@@ -890,8 +1120,10 @@ func (r *UnbindEipAclsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UnbindEipAclsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UnbindHostedRequest struct {
@@ -912,8 +1144,20 @@ func (r *UnbindHostedRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UnbindHostedRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "EipId")
+	delete(f, "Eip")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnbindHostedRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UnbindHostedResponse struct {
@@ -933,15 +1177,17 @@ func (r *UnbindHostedResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UnbindHostedResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UnbindRsListRequest struct {
 	*tchttp.BaseRequest
 
 	// 物理机绑定的EIP列表
-	EipRsList []*EipRsMap `json:"EipRsList,omitempty" name:"EipRsList" list`
+	EipRsList []*EipRsMap `json:"EipRsList,omitempty" name:"EipRsList"`
 }
 
 func (r *UnbindRsListRequest) ToJsonString() string {
@@ -949,8 +1195,18 @@ func (r *UnbindRsListRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UnbindRsListRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EipRsList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnbindRsListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UnbindRsListResponse struct {
@@ -970,8 +1226,10 @@ func (r *UnbindRsListResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UnbindRsListResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UnbindRsRequest struct {
@@ -989,8 +1247,19 @@ func (r *UnbindRsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UnbindRsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EipId")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnbindRsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UnbindRsResponse struct {
@@ -1010,8 +1279,10 @@ func (r *UnbindRsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UnbindRsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UnbindVpcIpRequest struct {
@@ -1032,8 +1303,20 @@ func (r *UnbindVpcIpRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UnbindVpcIpRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EipId")
+	delete(f, "VpcId")
+	delete(f, "VpcIp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnbindVpcIpRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UnbindVpcIpResponse struct {
@@ -1053,6 +1336,8 @@ func (r *UnbindVpcIpResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UnbindVpcIpResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

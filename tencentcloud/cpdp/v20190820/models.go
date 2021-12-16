@@ -16,7 +16,7 @@ package v20190820
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -49,6 +49,641 @@ type Acct struct {
 	// STRING(8)，维护日期
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaintenanceDate *string `json:"MaintenanceDate,omitempty" name:"MaintenanceDate"`
+}
+
+type AddContractRequest struct {
+	*tchttp.BaseRequest
+
+	// 签约扣率百分比（如：0.32）
+	Fee *string `json:"Fee,omitempty" name:"Fee"`
+
+	// 机构合同主键（系统有唯一性校验），建议使用合同表的主键ID，防止重复添加合同
+	OutContractId *string `json:"OutContractId,omitempty" name:"OutContractId"`
+
+	// 封顶值（分为单位，无封顶填0）
+	PaymentClassificationLimit *string `json:"PaymentClassificationLimit,omitempty" name:"PaymentClassificationLimit"`
+
+	// 联系人电话
+	ContactTelephone *string `json:"ContactTelephone,omitempty" name:"ContactTelephone"`
+
+	// 支付方式编号
+	PaymentId *string `json:"PaymentId,omitempty" name:"PaymentId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 合同生效日期（yyyy-mm-dd）
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 合同过期日期（yyyy-mm-dd）
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+	// 合同签约人
+	SignMan *string `json:"SignMan,omitempty" name:"SignMan"`
+
+	// 签购单名称，建议使用商户招牌名称
+	SignName *string `json:"SignName,omitempty" name:"SignName"`
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 商户编号
+	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+
+	// 合同照片【私密区】
+	PictureOne *string `json:"PictureOne,omitempty" name:"PictureOne"`
+
+	// 联系人
+	Contact *string `json:"Contact,omitempty" name:"Contact"`
+
+	// 合同签署日期（yyyy-mm-dd）
+	SignDate *string `json:"SignDate,omitempty" name:"SignDate"`
+
+	// 合同编号（系统有唯一性校验）
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 是否自动续签（1是，0否）
+	AutoSign *string `json:"AutoSign,omitempty" name:"AutoSign"`
+
+	// 支付方式行业分类编号
+	PaymentClassificationId *string `json:"PaymentClassificationId,omitempty" name:"PaymentClassificationId"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 合同照片【私密区】
+	PictureTwo *string `json:"PictureTwo,omitempty" name:"PictureTwo"`
+
+	// 合同选项8
+	PaymentOptionTen *string `json:"PaymentOptionTen,omitempty" name:"PaymentOptionTen"`
+
+	// 合同选项7（不同支付方式规则不一样，请以支付方式规定的格式传值）
+	PaymentOptionNine *string `json:"PaymentOptionNine,omitempty" name:"PaymentOptionNine"`
+
+	// 合同选项6（不同支付方式规则不一样，请以支付方式规定的格式传值）
+	PaymentOptionOther *string `json:"PaymentOptionOther,omitempty" name:"PaymentOptionOther"`
+
+	// 合同证书选项1（不同支付方式规则不一样，请以支付方式规定的格式传值）
+	PaymentOptionFive *string `json:"PaymentOptionFive,omitempty" name:"PaymentOptionFive"`
+
+	// 合同选项4（不同支付方式规则不一样，请以支付方式规定的格式传值）
+	PaymentOptionFour *string `json:"PaymentOptionFour,omitempty" name:"PaymentOptionFour"`
+
+	// 合同选项5（不同支付方式规则不一样，请以支付方式规定的格式传值）
+	PaymentOptionSeven *string `json:"PaymentOptionSeven,omitempty" name:"PaymentOptionSeven"`
+
+	// 合同证书选项2（不同支付方式规则不一样，请以支付方式规定的格式传值）
+	PaymentOptionSix *string `json:"PaymentOptionSix,omitempty" name:"PaymentOptionSix"`
+
+	// 合同选项1（不同支付方式规则不一样，请以支付方式规定的格式传值）
+	PaymentOptionOne *string `json:"PaymentOptionOne,omitempty" name:"PaymentOptionOne"`
+
+	// 合同选项3（不同支付方式规则不一样，请以支付方式规定的格式传值）
+	PaymentOptionThree *string `json:"PaymentOptionThree,omitempty" name:"PaymentOptionThree"`
+
+	// 合同选项2（不同支付方式规则不一样，请以支付方式规定的格式传值）
+	PaymentOptionTwo *string `json:"PaymentOptionTwo,omitempty" name:"PaymentOptionTwo"`
+
+	// 渠道扩展字段，json格式
+	ChannelExtJson *string `json:"ChannelExtJson,omitempty" name:"ChannelExtJson"`
+}
+
+func (r *AddContractRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddContractRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Fee")
+	delete(f, "OutContractId")
+	delete(f, "PaymentClassificationLimit")
+	delete(f, "ContactTelephone")
+	delete(f, "PaymentId")
+	delete(f, "OpenKey")
+	delete(f, "StartDate")
+	delete(f, "EndDate")
+	delete(f, "SignMan")
+	delete(f, "SignName")
+	delete(f, "OpenId")
+	delete(f, "MerchantNo")
+	delete(f, "PictureOne")
+	delete(f, "Contact")
+	delete(f, "SignDate")
+	delete(f, "Code")
+	delete(f, "AutoSign")
+	delete(f, "PaymentClassificationId")
+	delete(f, "Profile")
+	delete(f, "PictureTwo")
+	delete(f, "PaymentOptionTen")
+	delete(f, "PaymentOptionNine")
+	delete(f, "PaymentOptionOther")
+	delete(f, "PaymentOptionFive")
+	delete(f, "PaymentOptionFour")
+	delete(f, "PaymentOptionSeven")
+	delete(f, "PaymentOptionSix")
+	delete(f, "PaymentOptionOne")
+	delete(f, "PaymentOptionThree")
+	delete(f, "PaymentOptionTwo")
+	delete(f, "ChannelExtJson")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddContractRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddContractResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 添加合同响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *AddContractResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AddContractResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddContractResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddContractResult struct {
+
+	// 合同主键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractId *string `json:"ContractId,omitempty" name:"ContractId"`
+}
+
+type AddMerchantRequest struct {
+	*tchttp.BaseRequest
+
+	// 法人姓名
+	BossName *string `json:"BossName,omitempty" name:"BossName"`
+
+	// 营业执照图片【私密区】（系统返回的图片路径），（小微商户不效验，随意传要有值，公司/个体户必传）
+	BusinessLicensePicture *string `json:"BusinessLicensePicture,omitempty" name:"BusinessLicensePicture"`
+
+	// 招牌名称
+	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 营业执照过期时间（yyyy-mm-dd）
+	BusinessLicenseEndDate *string `json:"BusinessLicenseEndDate,omitempty" name:"BusinessLicenseEndDate"`
+
+	// 法人证件生效时间（yyyy-mm-dd）
+	BossStartDate *string `json:"BossStartDate,omitempty" name:"BossStartDate"`
+
+	// 清算联行号，开户行行号
+	BankNo *string `json:"BankNo,omitempty" name:"BankNo"`
+
+	// 开户行名称
+	BankName *string `json:"BankName,omitempty" name:"BankName"`
+
+	// 营业执照类型（1三证合一，2非三证合一）
+	BusinessLicenseType *string `json:"BusinessLicenseType,omitempty" name:"BusinessLicenseType"`
+
+	// 法人证件过期时间（yyyy-mm-dd）
+	BossEndDate *string `json:"BossEndDate,omitempty" name:"BossEndDate"`
+
+	// 营业执照编号（系统有唯一性校验），（小微商户不效验，随意传要有值，公司/个体户必传）
+	BusinessLicenseNo *string `json:"BusinessLicenseNo,omitempty" name:"BusinessLicenseNo"`
+
+	// 营业执照生效时间（yyyy-mm-dd），（小微商户不效验，随意传要有值，公司/个体户必传）
+	BusinessLicenseStartDate *string `json:"BusinessLicenseStartDate,omitempty" name:"BusinessLicenseStartDate"`
+
+	// 法人证件类型（1居民身份证,2临时居民身份证,3居民户口簿,4护照,5港澳居民来往内地通行证,6回乡证,7军人证,8武警身份证,9其他法定文件）
+	BossIdType *string `json:"BossIdType,omitempty" name:"BossIdType"`
+
+	// 详细地址，不含省市区县名称，长度需要大于5。
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 法人证件国别/地区（中国CHN，香港HKG，澳门MAC，台湾CTN）
+	BossIdCountry *string `json:"BossIdCountry,omitempty" name:"BossIdCountry"`
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 商户名称，小微商户命名要符合“”商户_名字” （例如：商户_张三）
+	MerchantName *string `json:"MerchantName,omitempty" name:"MerchantName"`
+
+	// 法人性别（1男，2女）
+	BossSex *string `json:"BossSex,omitempty" name:"BossSex"`
+
+	// 行业分类编号列表（第一个分类编号为主分类，后面的为二级分类）
+	ClassificationIds []*string `json:"ClassificationIds,omitempty" name:"ClassificationIds"`
+
+	// 法人证件号码
+	BossIdNo *string `json:"BossIdNo,omitempty" name:"BossIdNo"`
+
+	// 许可证图片【私密区】，（小微商户不效验，随意传要有值，公司/个体户必传）
+	LicencePicture *string `json:"LicencePicture,omitempty" name:"LicencePicture"`
+
+	// 营业时间，多个以小写逗号分开(9:00-12:00,13:00-18:00)
+	OpenHours *string `json:"OpenHours,omitempty" name:"OpenHours"`
+
+	// 银行户名
+	AccountName *string `json:"AccountName,omitempty" name:"AccountName"`
+
+	// 银行账号
+	AccountNo *string `json:"AccountNo,omitempty" name:"AccountNo"`
+
+	// 结算账户类型（2对私，1对公）
+	AccountType *string `json:"AccountType,omitempty" name:"AccountType"`
+
+	// 联系电话
+	Telephone *string `json:"Telephone,omitempty" name:"Telephone"`
+
+	// 法人身份证正面【私密区】（系统返回的图片路径）
+	BossPositive *string `json:"BossPositive,omitempty" name:"BossPositive"`
+
+	// 城市编号
+	CityId *string `json:"CityId,omitempty" name:"CityId"`
+
+	// 法人身份证背面【私密区】（系统返回的图片路径）
+	BossBack *string `json:"BossBack,omitempty" name:"BossBack"`
+
+	// 机构商户主键（系统有唯一性校验），建议使用商户表的主键ID，防止重复添加商户
+	OutMerchantId *string `json:"OutMerchantId,omitempty" name:"OutMerchantId"`
+
+	// 组织机构代码证生效时间（yyyy-mm-dd）
+	OrganizationStartDate *string `json:"OrganizationStartDate,omitempty" name:"OrganizationStartDate"`
+
+	// 法人亲属证件号码
+	AccountIdNo *string `json:"AccountIdNo,omitempty" name:"AccountIdNo"`
+
+	// 财务联系人
+	FinancialContact *string `json:"FinancialContact,omitempty" name:"FinancialContact"`
+
+	// 法人亲属证件类型（1居民身份证,2临时居民身份证,3居民户口簿,4护照,5港澳居民来往内地通行证,6回乡证,7军人证,8武警身份证,9其他法定文件）结算账户人身份为法人亲属时必填
+	AccountIdType *string `json:"AccountIdType,omitempty" name:"AccountIdType"`
+
+	// 组织机构代码证号
+	OrganizationNo *string `json:"OrganizationNo,omitempty" name:"OrganizationNo"`
+
+	// 其他资料1
+	OtherPictureOne *string `json:"OtherPictureOne,omitempty" name:"OtherPictureOne"`
+
+	// 财务联系人电话
+	FinancialTelephone *string `json:"FinancialTelephone,omitempty" name:"FinancialTelephone"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 组织机构代码证图片【私密区】
+	OrganizationPicture *string `json:"OrganizationPicture,omitempty" name:"OrganizationPicture"`
+
+	// 税务登记证生效时间（yyyy-mm-dd）
+	TaxRegistrationStartDate *string `json:"TaxRegistrationStartDate,omitempty" name:"TaxRegistrationStartDate"`
+
+	// 商户标记，自定义参数
+	Tag *string `json:"Tag,omitempty" name:"Tag"`
+
+	// 结算账户人身份（1法人，2法人亲属），结算帐户为对私时必填
+	AccountBoss *string `json:"AccountBoss,omitempty" name:"AccountBoss"`
+
+	// 法人电话
+	BossTelephone *string `json:"BossTelephone,omitempty" name:"BossTelephone"`
+
+	// 税务登记证图片【私密区】
+	TaxRegistrationPicture *string `json:"TaxRegistrationPicture,omitempty" name:"TaxRegistrationPicture"`
+
+	// 组织机构代码证过期时间（yyyy-mm-dd）
+	OrganizationEndDate *string `json:"OrganizationEndDate,omitempty" name:"OrganizationEndDate"`
+
+	// 法人职业
+	BossJob *string `json:"BossJob,omitempty" name:"BossJob"`
+
+	// 其他资料3
+	OtherPictureThree *string `json:"OtherPictureThree,omitempty" name:"OtherPictureThree"`
+
+	// 授权文件【私密区】
+	LicencePictureTwo *string `json:"LicencePictureTwo,omitempty" name:"LicencePictureTwo"`
+
+	// 商户logo【公共区】
+	Logo *string `json:"Logo,omitempty" name:"Logo"`
+
+	// 法人住址
+	BossAddress *string `json:"BossAddress,omitempty" name:"BossAddress"`
+
+	// 法人邮箱
+	BossEmail *string `json:"BossEmail,omitempty" name:"BossEmail"`
+
+	// 其他资料2
+	OtherPictureTwo *string `json:"OtherPictureTwo,omitempty" name:"OtherPictureTwo"`
+
+	// 商户简介
+	Intro *string `json:"Intro,omitempty" name:"Intro"`
+
+	// 客户经理姓名，必须为系统后台的管理员真实姓名
+	AccountManagerName *string `json:"AccountManagerName,omitempty" name:"AccountManagerName"`
+
+	// 税务登记证过期时间（yyyy-mm-dd）
+	TaxRegistrationEndDate *string `json:"TaxRegistrationEndDate,omitempty" name:"TaxRegistrationEndDate"`
+
+	// 其他资料4
+	OtherPictureFour *string `json:"OtherPictureFour,omitempty" name:"OtherPictureFour"`
+
+	// 税务登记证号
+	TaxRegistrationNo *string `json:"TaxRegistrationNo,omitempty" name:"TaxRegistrationNo"`
+
+	// 商户类型：1-个人，2-小微，3-企事业。不传默认为2-小微商户。
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *AddMerchantRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddMerchantRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BossName")
+	delete(f, "BusinessLicensePicture")
+	delete(f, "BrandName")
+	delete(f, "OpenKey")
+	delete(f, "BusinessLicenseEndDate")
+	delete(f, "BossStartDate")
+	delete(f, "BankNo")
+	delete(f, "BankName")
+	delete(f, "BusinessLicenseType")
+	delete(f, "BossEndDate")
+	delete(f, "BusinessLicenseNo")
+	delete(f, "BusinessLicenseStartDate")
+	delete(f, "BossIdType")
+	delete(f, "Address")
+	delete(f, "BossIdCountry")
+	delete(f, "OpenId")
+	delete(f, "MerchantName")
+	delete(f, "BossSex")
+	delete(f, "ClassificationIds")
+	delete(f, "BossIdNo")
+	delete(f, "LicencePicture")
+	delete(f, "OpenHours")
+	delete(f, "AccountName")
+	delete(f, "AccountNo")
+	delete(f, "AccountType")
+	delete(f, "Telephone")
+	delete(f, "BossPositive")
+	delete(f, "CityId")
+	delete(f, "BossBack")
+	delete(f, "OutMerchantId")
+	delete(f, "OrganizationStartDate")
+	delete(f, "AccountIdNo")
+	delete(f, "FinancialContact")
+	delete(f, "AccountIdType")
+	delete(f, "OrganizationNo")
+	delete(f, "OtherPictureOne")
+	delete(f, "FinancialTelephone")
+	delete(f, "Profile")
+	delete(f, "OrganizationPicture")
+	delete(f, "TaxRegistrationStartDate")
+	delete(f, "Tag")
+	delete(f, "AccountBoss")
+	delete(f, "BossTelephone")
+	delete(f, "TaxRegistrationPicture")
+	delete(f, "OrganizationEndDate")
+	delete(f, "BossJob")
+	delete(f, "OtherPictureThree")
+	delete(f, "LicencePictureTwo")
+	delete(f, "Logo")
+	delete(f, "BossAddress")
+	delete(f, "BossEmail")
+	delete(f, "OtherPictureTwo")
+	delete(f, "Intro")
+	delete(f, "AccountManagerName")
+	delete(f, "TaxRegistrationEndDate")
+	delete(f, "OtherPictureFour")
+	delete(f, "TaxRegistrationNo")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddMerchantRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddMerchantResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 添加商户响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *AddMerchantResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AddMerchantResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddMerchantResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddMerchantResult struct {
+
+	// 系统商户号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+}
+
+type AddShopRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 门店简称（例如：南山店）
+	ShopName *string `json:"ShopName,omitempty" name:"ShopName"`
+
+	// 商户编号
+	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+
+	// 整体门面（含招牌）图片【公共区】
+	PictureTwo *string `json:"PictureTwo,omitempty" name:"PictureTwo"`
+
+	// 店内环境图片【公共区】
+	PictureThree *string `json:"PictureThree,omitempty" name:"PictureThree"`
+
+	// 整体门面（含招牌）图片【公共区】
+	PictureOne *string `json:"PictureOne,omitempty" name:"PictureOne"`
+
+	// 门店电话
+	Telephone *string `json:"Telephone,omitempty" name:"Telephone"`
+
+	// 机构门店主键（系统有唯一性校验），建议使用门店表的主键ID，防止重复添加门店
+	OutShopId *string `json:"OutShopId,omitempty" name:"OutShopId"`
+
+	// 门店所在的城市编码
+	CityId *string `json:"CityId,omitempty" name:"CityId"`
+
+	// 门店全称（例如：江山小厨（南山店））
+	ShopFullName *string `json:"ShopFullName,omitempty" name:"ShopFullName"`
+
+	// 营业时间，多个以小写逗号分开(9:00-12:00,13:00-18:00)
+	OpenHours *string `json:"OpenHours,omitempty" name:"OpenHours"`
+
+	// 门店详细地址，不含省市区县名称
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 高德地图纬度
+	LatitudeTwo *string `json:"LatitudeTwo,omitempty" name:"LatitudeTwo"`
+
+	// 其他照片【公共区】
+	OtherPicture *string `json:"OtherPicture,omitempty" name:"OtherPicture"`
+
+	// 高德地图经度
+	LongitudeTwo *string `json:"LongitudeTwo,omitempty" name:"LongitudeTwo"`
+
+	// 门店负责人
+	Contact *string `json:"Contact,omitempty" name:"Contact"`
+
+	// 百度地图经度
+	Longitude *string `json:"Longitude,omitempty" name:"Longitude"`
+
+	// 百度地图纬度
+	Latitude *string `json:"Latitude,omitempty" name:"Latitude"`
+
+	// 负责人手机号码
+	FinancialTelephone *string `json:"FinancialTelephone,omitempty" name:"FinancialTelephone"`
+}
+
+func (r *AddShopRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddShopRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "ShopName")
+	delete(f, "MerchantNo")
+	delete(f, "PictureTwo")
+	delete(f, "PictureThree")
+	delete(f, "PictureOne")
+	delete(f, "Telephone")
+	delete(f, "OutShopId")
+	delete(f, "CityId")
+	delete(f, "ShopFullName")
+	delete(f, "OpenHours")
+	delete(f, "Address")
+	delete(f, "OpenKey")
+	delete(f, "Profile")
+	delete(f, "LatitudeTwo")
+	delete(f, "OtherPicture")
+	delete(f, "LongitudeTwo")
+	delete(f, "Contact")
+	delete(f, "Longitude")
+	delete(f, "Latitude")
+	delete(f, "FinancialTelephone")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddShopRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddShopResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 添加申请响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *AddShopResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AddShopResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddShopResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddShopResult struct {
+
+	// 门店编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopNo *string `json:"ShopNo,omitempty" name:"ShopNo"`
+}
+
+type AgencyClientInfo struct {
+
+	// 经办人姓名，存在经办人必输
+	AgencyClientName *string `json:"AgencyClientName,omitempty" name:"AgencyClientName"`
+
+	// 经办人证件类型，存在经办人必输
+	AgencyClientGlobalType *string `json:"AgencyClientGlobalType,omitempty" name:"AgencyClientGlobalType"`
+
+	// 经办人证件号，存在经办人必输
+	AgencyClientGlobalId *string `json:"AgencyClientGlobalId,omitempty" name:"AgencyClientGlobalId"`
+
+	// 经办人手机号，存在经办人必输
+	AgencyClientMobile *string `json:"AgencyClientMobile,omitempty" name:"AgencyClientMobile"`
 }
 
 type AgentTaxPayment struct {
@@ -123,6 +758,21 @@ type AnchorContractInfo struct {
 	IdNo *string `json:"IdNo,omitempty" name:"IdNo"`
 }
 
+type AnchorExtendInfo struct {
+
+	// 扩展信息类型
+	// __id_card_no__:身份证号码
+	// __id_card_name__:身份证姓名
+	// __id_card_front__:身份证图片正面
+	// __id_card_back__:身份证图片反面
+	// __tax_type__:完税类型:0-自然人,1-个体工商户
+	// __channel_account__:渠道账号(_敏感信息_ 使用 __AES128-CBC-PKCS#7__ 加密)
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 扩展信息
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type ApplyApplicationMaterialRequest struct {
 	*tchttp.BaseRequest
 
@@ -162,8 +812,27 @@ func (r *ApplyApplicationMaterialRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ApplyApplicationMaterialRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TransactionId")
+	delete(f, "DeclareId")
+	delete(f, "PayerId")
+	delete(f, "SourceCurrency")
+	delete(f, "TargetCurrency")
+	delete(f, "TradeCode")
+	delete(f, "OriginalDeclareId")
+	delete(f, "SourceAmount")
+	delete(f, "TargetAmount")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyApplicationMaterialRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ApplyApplicationMaterialResponse struct {
@@ -183,8 +852,10 @@ func (r *ApplyApplicationMaterialResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ApplyApplicationMaterialResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ApplyDeclareData struct {
@@ -301,8 +972,37 @@ func (r *ApplyOutwardOrderRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ApplyOutwardOrderRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TransactionId")
+	delete(f, "PricingCurrency")
+	delete(f, "SourceCurrency")
+	delete(f, "TargetCurrency")
+	delete(f, "PayeeType")
+	delete(f, "PayeeAccount")
+	delete(f, "SourceAmount")
+	delete(f, "TargetAmount")
+	delete(f, "PayeeName")
+	delete(f, "PayeeAddress")
+	delete(f, "PayeeBankAccountType")
+	delete(f, "PayeeCountryCode")
+	delete(f, "PayeeBankName")
+	delete(f, "PayeeBankAddress")
+	delete(f, "PayeeBankDistrict")
+	delete(f, "PayeeBankSwiftCode")
+	delete(f, "PayeeBankType")
+	delete(f, "PayeeBankCode")
+	delete(f, "ReferenceForBeneficiary")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyOutwardOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ApplyOutwardOrderResponse struct {
@@ -322,8 +1022,10 @@ func (r *ApplyOutwardOrderResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ApplyOutwardOrderResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ApplyOutwardOrderResult struct {
@@ -374,8 +1076,27 @@ func (r *ApplyPayerInfoRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ApplyPayerInfoRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PayerId")
+	delete(f, "PayerType")
+	delete(f, "PayerName")
+	delete(f, "PayerIdType")
+	delete(f, "PayerIdNo")
+	delete(f, "PayerCountryCode")
+	delete(f, "PayerContactName")
+	delete(f, "PayerContactNumber")
+	delete(f, "PayerEmailAddress")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyPayerInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ApplyPayerInfoResponse struct {
@@ -395,8 +1116,10 @@ func (r *ApplyPayerInfoResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ApplyPayerInfoResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ApplyPayerinfoData struct {
@@ -455,8 +1178,23 @@ func (r *ApplyReWithdrawalRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ApplyReWithdrawalRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BusinessType")
+	delete(f, "MidasSecretId")
+	delete(f, "MidasSignature")
+	delete(f, "Body")
+	delete(f, "MidasAppId")
+	delete(f, "MidasEnvironment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyReWithdrawalRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ApplyReWithdrawalResponse struct {
@@ -476,8 +1214,10 @@ func (r *ApplyReWithdrawalResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ApplyReWithdrawalResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ApplyTradeData struct {
@@ -557,8 +1297,32 @@ func (r *ApplyTradeRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ApplyTradeRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TradeFileId")
+	delete(f, "TradeOrderId")
+	delete(f, "PayerId")
+	delete(f, "PayeeName")
+	delete(f, "PayeeCountryCode")
+	delete(f, "TradeType")
+	delete(f, "TradeTime")
+	delete(f, "TradeCurrency")
+	delete(f, "TradeAmount")
+	delete(f, "TradeName")
+	delete(f, "TradeCount")
+	delete(f, "GoodsCarrier")
+	delete(f, "ServiceDetail")
+	delete(f, "ServiceTime")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyTradeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ApplyTradeResponse struct {
@@ -578,8 +1342,10 @@ func (r *ApplyTradeResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ApplyTradeResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ApplyTradeResult struct {
@@ -658,8 +1424,33 @@ func (r *ApplyWithdrawalRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ApplyWithdrawalRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MidasAppId")
+	delete(f, "SubAppId")
+	delete(f, "SettleAcctNo")
+	delete(f, "SettleAcctName")
+	delete(f, "CurrencyType")
+	delete(f, "CurrencyUnit")
+	delete(f, "CurrencyAmt")
+	delete(f, "TranWebName")
+	delete(f, "IdType")
+	delete(f, "IdCode")
+	delete(f, "MidasSecretId")
+	delete(f, "MidasSignature")
+	delete(f, "EncryptType")
+	delete(f, "MidasEnvironment")
+	delete(f, "CommissionAmount")
+	delete(f, "WithdrawOrderId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyWithdrawalRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ApplyWithdrawalResponse struct {
@@ -676,8 +1467,25 @@ func (r *ApplyWithdrawalResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ApplyWithdrawalResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AssignmentData struct {
+
+	// 主播ID
+	AnchorId *string `json:"AnchorId,omitempty" name:"AnchorId"`
+
+	// 主播名称
+	AnchorName *string `json:"AnchorName,omitempty" name:"AnchorName"`
+
+	// 代理商ID
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+
+	// 代理商名称
+	AgentName *string `json:"AgentName,omitempty" name:"AgentName"`
 }
 
 type BankCardItem struct {
@@ -723,6 +1531,79 @@ type BankCardItem struct {
 	// 证件号码
 	// <敏感信息>
 	IdCode *string `json:"IdCode,omitempty" name:"IdCode"`
+}
+
+type BindAccountRequest struct {
+	*tchttp.BaseRequest
+
+	// 主播Id
+	AnchorId *string `json:"AnchorId,omitempty" name:"AnchorId"`
+
+	// 1 微信企业付款 
+	// 2 支付宝转账 
+	// 3 平安银企直连代发转账
+	TransferType *int64 `json:"TransferType,omitempty" name:"TransferType"`
+
+	// 收款方标识。
+	// 微信为open_id；
+	// 支付宝为会员alipay_user_id;
+	// 平安为收款方银行账号;
+	AccountNo *string `json:"AccountNo,omitempty" name:"AccountNo"`
+
+	// 手机号
+	PhoneNum *string `json:"PhoneNum,omitempty" name:"PhoneNum"`
+}
+
+func (r *BindAccountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AnchorId")
+	delete(f, "TransferType")
+	delete(f, "AccountNo")
+	delete(f, "PhoneNum")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BindAccountResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。响应成功："SUCCESS"，其他为不成功。
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 响应消息。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 该字段为null。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BindAccountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindAccountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BindAcctRequest struct {
@@ -794,6 +1675,9 @@ type BindAcctRequest struct {
 	// development: 开发环境
 	// 缺省: release
 	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+
+	// 经办人信息
+	AgencyClientInfo *AgencyClientInfo `json:"AgencyClientInfo,omitempty" name:"AgencyClientInfo"`
 }
 
 func (r *BindAcctRequest) ToJsonString() string {
@@ -801,8 +1685,34 @@ func (r *BindAcctRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BindAcctRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MidasAppId")
+	delete(f, "SubAppId")
+	delete(f, "BindType")
+	delete(f, "SettleAcctNo")
+	delete(f, "SettleAcctName")
+	delete(f, "SettleAcctType")
+	delete(f, "IdType")
+	delete(f, "IdCode")
+	delete(f, "AcctBranchName")
+	delete(f, "MidasSecretId")
+	delete(f, "MidasSignature")
+	delete(f, "Mobile")
+	delete(f, "CnapsBranchId")
+	delete(f, "EiconBankBranchId")
+	delete(f, "EncryptType")
+	delete(f, "MidasEnvironment")
+	delete(f, "AgencyClientInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindAcctRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BindAcctResponse struct {
@@ -819,8 +1729,10 @@ func (r *BindAcctResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BindAcctResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BindRelateAccReUnionPayRequest struct {
@@ -850,8 +1762,23 @@ func (r *BindRelateAccReUnionPayRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BindRelateAccReUnionPayRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MrchCode")
+	delete(f, "TranNetMemberCode")
+	delete(f, "MemberAcctNo")
+	delete(f, "MessageCheckCode")
+	delete(f, "ReservedMsg")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindRelateAccReUnionPayRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BindRelateAccReUnionPayResponse struct {
@@ -885,8 +1812,10 @@ func (r *BindRelateAccReUnionPayResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BindRelateAccReUnionPayResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BindRelateAcctSmallAmountRequest struct {
@@ -937,8 +1866,30 @@ func (r *BindRelateAcctSmallAmountRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BindRelateAcctSmallAmountRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MrchCode")
+	delete(f, "TranNetMemberCode")
+	delete(f, "MemberName")
+	delete(f, "MemberGlobalType")
+	delete(f, "MemberGlobalId")
+	delete(f, "MemberAcctNo")
+	delete(f, "BankType")
+	delete(f, "AcctOpenBranchName")
+	delete(f, "Mobile")
+	delete(f, "CnapsBranchId")
+	delete(f, "EiconBankBranchId")
+	delete(f, "ReservedMsg")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindRelateAcctSmallAmountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BindRelateAcctSmallAmountResponse struct {
@@ -968,8 +1919,10 @@ func (r *BindRelateAcctSmallAmountResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BindRelateAcctSmallAmountResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BindRelateAcctUnionPayRequest struct {
@@ -1020,8 +1973,30 @@ func (r *BindRelateAcctUnionPayRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BindRelateAcctUnionPayRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TranNetMemberCode")
+	delete(f, "MemberName")
+	delete(f, "MemberGlobalType")
+	delete(f, "MemberGlobalId")
+	delete(f, "MemberAcctNo")
+	delete(f, "BankType")
+	delete(f, "AcctOpenBranchName")
+	delete(f, "Mobile")
+	delete(f, "MrchCode")
+	delete(f, "CnapsBranchId")
+	delete(f, "EiconBankBranchId")
+	delete(f, "ReservedMsg")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindRelateAcctUnionPayRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BindRelateAcctUnionPayResponse struct {
@@ -1051,8 +2026,32 @@ func (r *BindRelateAcctUnionPayResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BindRelateAcctUnionPayResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ChannelContractInfo struct {
+
+	// 外部合约协议号
+	OutContractCode *string `json:"OutContractCode,omitempty" name:"OutContractCode"`
+
+	// 米大师内部生成的合约协议号
+	ChannelContractCode *string `json:"ChannelContractCode,omitempty" name:"ChannelContractCode"`
+}
+
+type ChannelReturnContractInfo struct {
+
+	// 平台合约状态
+	// 协议状态，枚举值：
+	// CONTRACT_STATUS_SIGNED：已签约
+	// CONTRACT_STATUS_TERMINATED：未签约
+	// CONTRACT_STATUS_PENDING：签约进行中
+	ContractStatus *string `json:"ContractStatus,omitempty" name:"ContractStatus"`
+
+	// 米大师内部存放的合约信息
+	ChannelContractInfo *ChannelContractInfo `json:"ChannelContractInfo,omitempty" name:"ChannelContractInfo"`
 }
 
 type CheckAcctRequest struct {
@@ -1079,8 +2078,8 @@ type CheckAcctRequest struct {
 	// 按照聚鑫安全密钥计算的签名
 	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
 
-	// 短信验证码
-	// BindType==2必填
+	// 短信验证码或指令号
+	// BindType==2必填，平安渠道必填
 	CheckCode *string `json:"CheckCode,omitempty" name:"CheckCode"`
 
 	// 币种 RMB
@@ -1115,8 +2114,29 @@ func (r *CheckAcctRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CheckAcctRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MidasAppId")
+	delete(f, "SubAppId")
+	delete(f, "BindType")
+	delete(f, "SettleAcctNo")
+	delete(f, "MidasSecretId")
+	delete(f, "MidasSignature")
+	delete(f, "CheckCode")
+	delete(f, "CurrencyType")
+	delete(f, "CurrencyUnit")
+	delete(f, "CurrencyAmt")
+	delete(f, "EncryptType")
+	delete(f, "MidasEnvironment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckAcctRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CheckAcctResponse struct {
@@ -1136,8 +2156,10 @@ func (r *CheckAcctResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CheckAcctResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CheckAmountRequest struct {
@@ -1170,8 +2192,24 @@ func (r *CheckAmountRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CheckAmountRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MrchCode")
+	delete(f, "TranNetMemberCode")
+	delete(f, "TakeCashAcctNo")
+	delete(f, "AuthAmt")
+	delete(f, "Ccy")
+	delete(f, "ReservedMsg")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckAmountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CheckAmountResponse struct {
@@ -1203,8 +2241,29 @@ func (r *CheckAmountResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CheckAmountResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CityCodeResult struct {
+
+	// 城市编码cityid，数字与字母的结合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CityId *string `json:"CityId,omitempty" name:"CityId"`
+
+	// 省份
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Province *string `json:"Province,omitempty" name:"Province"`
+
+	// 县区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	District *string `json:"District,omitempty" name:"District"`
+
+	// 城市
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	City *string `json:"City,omitempty" name:"City"`
 }
 
 type ClearItem struct {
@@ -1272,8 +2331,24 @@ func (r *CloseOrderRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CloseOrderRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MidasAppId")
+	delete(f, "UserId")
+	delete(f, "MidasSecretId")
+	delete(f, "MidasSignature")
+	delete(f, "OutTradeNo")
+	delete(f, "TransactionId")
+	delete(f, "MidasEnvironment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CloseOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CloseOrderResponse struct {
@@ -1290,8 +2365,434 @@ func (r *CloseOrderResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CloseOrderResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ConfirmOrderRequest struct {
+	*tchttp.BaseRequest
+
+	// 分配给商户的AppId
+	MerchantAppId *string `json:"MerchantAppId,omitempty" name:"MerchantAppId"`
+
+	// 平台流水号。消费订单发起成功后，返回的平台唯一订单号。
+	OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
+}
+
+func (r *ConfirmOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ConfirmOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MerchantAppId")
+	delete(f, "OrderNo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ConfirmOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ConfirmOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 分配给商户的AppId
+		MerchantAppId *string `json:"MerchantAppId,omitempty" name:"MerchantAppId"`
+
+		// 平台流水号。消费订单发起成功后，返回的平台唯一订单号。
+		OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
+
+		// 订单确认状态。0-确认失败
+	// 1-确认成功 
+	// 2-可疑状态
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 订单确认状态描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ConfirmOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ConfirmOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ContractInfo struct {
+
+	// 米大师内部签约商户号
+	ChannelContractMerchantId *string `json:"ChannelContractMerchantId,omitempty" name:"ChannelContractMerchantId"`
+
+	// 米大师内部签约子商户号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelContractSubMerchantId *string `json:"ChannelContractSubMerchantId,omitempty" name:"ChannelContractSubMerchantId"`
+
+	// 米大师内部签约应用ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelContractAppId *string `json:"ChannelContractAppId,omitempty" name:"ChannelContractAppId"`
+
+	// 米大师内部签约子应用ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelContractSubAppId *string `json:"ChannelContractSubAppId,omitempty" name:"ChannelContractSubAppId"`
+
+	// 业务合约协议号
+	OutContractCode *string `json:"OutContractCode,omitempty" name:"OutContractCode"`
+
+	// 第三方渠道用户信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalContractUserInfoList []*ExternalContractUserInfo `json:"ExternalContractUserInfoList,omitempty" name:"ExternalContractUserInfoList"`
+
+	// 签约方式，如 wechat_app ，使用app方式下的微信签
+	ContractMethod *string `json:"ContractMethod,omitempty" name:"ContractMethod"`
+
+	// 合约场景id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractSceneId *string `json:"ContractSceneId,omitempty" name:"ContractSceneId"`
+
+	// 用户信息
+	UserInfo *ContractUserInfo `json:"UserInfo,omitempty" name:"UserInfo"`
+
+	// 第三方渠道签约数据
+	ExternalContractData *string `json:"ExternalContractData,omitempty" name:"ExternalContractData"`
+}
+
+type ContractOrderInSubOrder struct {
+
+	// 子订单结算应收金额，单位： 分
+	SubMchIncome *int64 `json:"SubMchIncome,omitempty" name:"SubMchIncome"`
+
+	// 子订单平台应收金额，单位：分
+	PlatformIncome *int64 `json:"PlatformIncome,omitempty" name:"PlatformIncome"`
+
+	// 子订单商品详情
+	ProductDetail *string `json:"ProductDetail,omitempty" name:"ProductDetail"`
+
+	// 子订单商品名称
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 聚鑫计费SubAppId，代表子商户
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 子订单号
+	SubOutTradeNo *string `json:"SubOutTradeNo,omitempty" name:"SubOutTradeNo"`
+
+	// 子订单支付金额
+	Amt *int64 `json:"Amt,omitempty" name:"Amt"`
+
+	// 子订单原始金额
+	OriginalAmt *int64 `json:"OriginalAmt,omitempty" name:"OriginalAmt"`
+
+	// 发货标识，由业务在调用聚鑫下单接口的 时候下发
+	Metadata *string `json:"Metadata,omitempty" name:"Metadata"`
+}
+
+type ContractOrderRequest struct {
+	*tchttp.BaseRequest
+
+	// ISO 货币代码，CNY
+	CurrencyType *string `json:"CurrencyType,omitempty" name:"CurrencyType"`
+
+	// 聚鑫分配的支付主MidasAppId
+	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
+
+	// 支付订单号，仅支持数字、字母、下划线（_）、横杠字符（-）、点（.）的组合
+	OutTradeNo *string `json:"OutTradeNo,omitempty" name:"OutTradeNo"`
+
+	// 商品详情，需要URL编码
+	ProductDetail *string `json:"ProductDetail,omitempty" name:"ProductDetail"`
+
+	// 商品ID，仅支持数字、字母、下划线（_）、横杠字符（-）、点（.）的组合
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 商品名称，需要URL编码
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 支付金额，单位： 分
+	TotalAmt *int64 `json:"TotalAmt,omitempty" name:"TotalAmt"`
+
+	// 用户ID，长度不小于5位，仅支持字母和数字的组合
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 银行真实渠道.如:bank_pingan
+	RealChannel *string `json:"RealChannel,omitempty" name:"RealChannel"`
+
+	// 原始金额
+	OriginalAmt *int64 `json:"OriginalAmt,omitempty" name:"OriginalAmt"`
+
+	// 聚鑫分配的安全ID
+	MidasSecretId *string `json:"MidasSecretId,omitempty" name:"MidasSecretId"`
+
+	// 按照聚鑫安全密钥计算的签名
+	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
+
+	// 签约通知地址
+	ContractNotifyUrl *string `json:"ContractNotifyUrl,omitempty" name:"ContractNotifyUrl"`
+
+	// Web端回调地址
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 指定支付渠道：  wechat：微信支付  qqwallet：QQ钱包 
+	//  bank：网银支付  只有一个渠道时需要指定
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
+
+	// 透传字段，支付成功回调透传给应用，用于业务透传自定义内容
+	Metadata *string `json:"Metadata,omitempty" name:"Metadata"`
+
+	// 购买数量，不传默认为1
+	Quantity *int64 `json:"Quantity,omitempty" name:"Quantity"`
+
+	// 聚鑫计费SubAppId，代表子商户
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 子订单信息列表，格式：子订单号、子应用ID、金额。 压缩后最长不可超过65535字节(去除空格，换行，制表符等无意义字符)
+	// 注：接入银行或其他支付渠道服务商模式下，必传
+	SubOrderList []*ContractOrderInSubOrder `json:"SubOrderList,omitempty" name:"SubOrderList"`
+
+	// 结算应收金额，单位：分
+	TotalMchIncome *int64 `json:"TotalMchIncome,omitempty" name:"TotalMchIncome"`
+
+	// 平台应收金额，单位：分
+	TotalPlatformIncome *int64 `json:"TotalPlatformIncome,omitempty" name:"TotalPlatformIncome"`
+
+	// 微信公众号/小程序支付时为必选，需要传微信下的openid
+	WxOpenId *string `json:"WxOpenId,omitempty" name:"WxOpenId"`
+
+	// 在服务商模式下，微信公众号/小程序支付时wx_sub_openid和wx_openid二选一
+	WxSubOpenId *string `json:"WxSubOpenId,omitempty" name:"WxSubOpenId"`
+
+	// 环境名:
+	// release: 现网环境
+	// sandbox: 沙箱环境
+	// development: 开发环境
+	// 缺省: release
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+
+	// 微信商户应用ID
+	WxAppId *string `json:"WxAppId,omitempty" name:"WxAppId"`
+
+	// 微信商户子应用ID
+	WxSubAppId *string `json:"WxSubAppId,omitempty" name:"WxSubAppId"`
+
+	// 支付通知地址
+	PaymentNotifyUrl *string `json:"PaymentNotifyUrl,omitempty" name:"PaymentNotifyUrl"`
+
+	// 传入调用方在Midas注册签约信息时获得的ContractSceneId。若未在Midas注册签约信息，则传入ExternalContractData。注意：ContractSceneId与ExternalContractData必须二选一传入其中一个
+	ContractSceneId *string `json:"ContractSceneId,omitempty" name:"ContractSceneId"`
+
+	// 需要按照各个渠道的扩展签约信息规范组装好该字段。若未在Midas注册签约信息，则传入该字段。注意：ContractSceneId与ExternalContractData必须二选一传入其中一个
+	ExternalContractData *string `json:"ExternalContractData,omitempty" name:"ExternalContractData"`
+
+	// 外部签约协议号，唯一标记一个签约关系。仅支持数字、字母、下划线（_）、横杠字符（-）、点（.）的组合
+	OutContractCode *string `json:"OutContractCode,omitempty" name:"OutContractCode"`
+
+	// 透传给第三方渠道的附加数据
+	AttachData *string `json:"AttachData,omitempty" name:"AttachData"`
+
+	// 展示用的签约用户名称，若不传入时，默认取UserId
+	ContractDisplayName *string `json:"ContractDisplayName,omitempty" name:"ContractDisplayName"`
+}
+
+func (r *ContractOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ContractOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CurrencyType")
+	delete(f, "MidasAppId")
+	delete(f, "OutTradeNo")
+	delete(f, "ProductDetail")
+	delete(f, "ProductId")
+	delete(f, "ProductName")
+	delete(f, "TotalAmt")
+	delete(f, "UserId")
+	delete(f, "RealChannel")
+	delete(f, "OriginalAmt")
+	delete(f, "MidasSecretId")
+	delete(f, "MidasSignature")
+	delete(f, "ContractNotifyUrl")
+	delete(f, "CallbackUrl")
+	delete(f, "Channel")
+	delete(f, "Metadata")
+	delete(f, "Quantity")
+	delete(f, "SubAppId")
+	delete(f, "SubOrderList")
+	delete(f, "TotalMchIncome")
+	delete(f, "TotalPlatformIncome")
+	delete(f, "WxOpenId")
+	delete(f, "WxSubOpenId")
+	delete(f, "MidasEnvironment")
+	delete(f, "WxAppId")
+	delete(f, "WxSubAppId")
+	delete(f, "PaymentNotifyUrl")
+	delete(f, "ContractSceneId")
+	delete(f, "ExternalContractData")
+	delete(f, "OutContractCode")
+	delete(f, "AttachData")
+	delete(f, "ContractDisplayName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ContractOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ContractOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 支付金额，单位： 分
+		TotalAmt *int64 `json:"TotalAmt,omitempty" name:"TotalAmt"`
+
+		// 应用支付订单号
+		OutTradeNo *string `json:"OutTradeNo,omitempty" name:"OutTradeNo"`
+
+		// 支付参数透传给聚鑫SDK（原文透传给SDK即可，不需要解码）
+		PayInfo *string `json:"PayInfo,omitempty" name:"PayInfo"`
+
+		// 聚鑫的交易订单号
+		TransactionId *string `json:"TransactionId,omitempty" name:"TransactionId"`
+
+		// 外部签约协议号
+		OutContractCode *string `json:"OutContractCode,omitempty" name:"OutContractCode"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ContractOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ContractOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ContractPayListResult struct {
+
+	// 支付标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentTag *string `json:"PaymentTag,omitempty" name:"PaymentTag"`
+
+	// 支付方式图片url路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentIcon *string `json:"PaymentIcon,omitempty" name:"PaymentIcon"`
+
+	// 支付方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionSix *string `json:"PaymentOptionSix,omitempty" name:"PaymentOptionSix"`
+
+	// 付款方式名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentName *string `json:"PaymentName,omitempty" name:"PaymentName"`
+
+	// 支付方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionSeven *string `json:"PaymentOptionSeven,omitempty" name:"PaymentOptionSeven"`
+
+	// 支付方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionTwo *string `json:"PaymentOptionTwo,omitempty" name:"PaymentOptionTwo"`
+
+	// 支付方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionOne *string `json:"PaymentOptionOne,omitempty" name:"PaymentOptionOne"`
+
+	// 支付方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionOther *string `json:"PaymentOptionOther,omitempty" name:"PaymentOptionOther"`
+
+	// 支持的交易类型（多个以小写逗号分开，0现金，1刷卡，2主扫，3被扫，4JSPAY，5预授权）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentType *string `json:"PaymentType,omitempty" name:"PaymentType"`
+
+	// 支付方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionFive *string `json:"PaymentOptionFive,omitempty" name:"PaymentOptionFive"`
+
+	// 支付方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionNine *string `json:"PaymentOptionNine,omitempty" name:"PaymentOptionNine"`
+
+	// 支付方式编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentId *string `json:"PaymentId,omitempty" name:"PaymentId"`
+
+	// 支付方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionThree *string `json:"PaymentOptionThree,omitempty" name:"PaymentOptionThree"`
+
+	// 付款方式名称（内部名称）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentInternalName *string `json:"PaymentInternalName,omitempty" name:"PaymentInternalName"`
+
+	// 支付方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionFour *string `json:"PaymentOptionFour,omitempty" name:"PaymentOptionFour"`
+
+	// 支付方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionTen *string `json:"PaymentOptionTen,omitempty" name:"PaymentOptionTen"`
+}
+
+type ContractSyncInfo struct {
+
+	// 第三方渠道合约信息
+	ExternalReturnContractInfo *ExternalReturnContractInfo `json:"ExternalReturnContractInfo,omitempty" name:"ExternalReturnContractInfo"`
+
+	// 第三方渠道用户信息
+	ExternalContractUserInfo []*ExternalContractUserInfo `json:"ExternalContractUserInfo,omitempty" name:"ExternalContractUserInfo"`
+
+	// 签约方式，枚举值，
+	// <br/>CONTRACT_METHOD_WECHAT_INVALID: 无效
+	// CONTRACT_METHOD_WECHAT_APP: 微信APP
+	// CONTRACT_METHOD_WECHAT_PUBLIC: 微信公众号
+	// CONTRACT_METHOD_WECHAT_MINIPROGRAM: 微信小程序
+	// CONTRACT_METHOD_WECHAT_H5: 微信H5
+	ContractMethod *string `json:"ContractMethod,omitempty" name:"ContractMethod"`
+
+	// 在米大师侧分配的场景id
+	ContractSceneId *string `json:"ContractSceneId,omitempty" name:"ContractSceneId"`
+
+	// 调用方从第三方渠道查询到的签约数据，由各个渠道定义
+	ExternalReturnContractData *string `json:"ExternalReturnContractData,omitempty" name:"ExternalReturnContractData"`
+}
+
+type ContractUserInfo struct {
+
+	// USER_ID: 用户ID
+	// ANONYMOUS: 匿名类型用户ID
+	UserType *string `json:"UserType,omitempty" name:"UserType"`
+
+	// 用户类型
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
 }
 
 type CreateAcctRequest struct {
@@ -1330,6 +2831,7 @@ type CreateAcctRequest struct {
 	// 子商户类型：
 	// 个人: personal
 	// 企业: enterprise
+	// 个体工商户: individual
 	// 缺省: enterprise
 	SubMchType *string `json:"SubMchType,omitempty" name:"SubMchType"`
 
@@ -1365,6 +2867,13 @@ type CreateAcctRequest struct {
 	// development: 开发环境
 	// 缺省: release
 	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+
+	// 店铺名称
+	// 企业、个体工商户必输
+	SubMerchantStoreName *string `json:"SubMerchantStoreName,omitempty" name:"SubMerchantStoreName"`
+
+	// 公司信息
+	OrganizationInfo *OrganizationInfo `json:"OrganizationInfo,omitempty" name:"OrganizationInfo"`
 }
 
 func (r *CreateAcctRequest) ToJsonString() string {
@@ -1372,8 +2881,36 @@ func (r *CreateAcctRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateAcctRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MidasAppId")
+	delete(f, "SubMchId")
+	delete(f, "SubMchName")
+	delete(f, "Address")
+	delete(f, "Contact")
+	delete(f, "Mobile")
+	delete(f, "Email")
+	delete(f, "MidasSecretId")
+	delete(f, "MidasSignature")
+	delete(f, "SubMchType")
+	delete(f, "ShortName")
+	delete(f, "SubMerchantMemberType")
+	delete(f, "SubMerchantKey")
+	delete(f, "SubMerchantPrivateKey")
+	delete(f, "EncryptType")
+	delete(f, "SubAcctNo")
+	delete(f, "MidasEnvironment")
+	delete(f, "SubMerchantStoreName")
+	delete(f, "OrganizationInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAcctRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateAcctResponse struct {
@@ -1396,8 +2933,10 @@ func (r *CreateAcctResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateAcctResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateAgentTaxPaymentInfosRequest struct {
@@ -1419,7 +2958,7 @@ type CreateAgentTaxPaymentInfosRequest struct {
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
 	// 完税信息
-	AgentTaxPaymentInfos []*AgentTaxPayment `json:"AgentTaxPaymentInfos,omitempty" name:"AgentTaxPaymentInfos" list`
+	AgentTaxPaymentInfos []*AgentTaxPayment `json:"AgentTaxPaymentInfos,omitempty" name:"AgentTaxPaymentInfos"`
 
 	// 接入环境。沙箱环境填sandbox
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
@@ -1430,8 +2969,24 @@ func (r *CreateAgentTaxPaymentInfosRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateAgentTaxPaymentInfosRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AgentId")
+	delete(f, "Channel")
+	delete(f, "Type")
+	delete(f, "RawElectronicCertUrl")
+	delete(f, "FileName")
+	delete(f, "AgentTaxPaymentInfos")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAgentTaxPaymentInfosRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateAgentTaxPaymentInfosResponse struct {
@@ -1451,8 +3006,234 @@ func (r *CreateAgentTaxPaymentInfosResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateAgentTaxPaymentInfosResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAnchorRequest struct {
+	*tchttp.BaseRequest
+
+	// 主播业务ID，唯一
+	AnchorUid *string `json:"AnchorUid,omitempty" name:"AnchorUid"`
+
+	// 主播姓名
+	AnchorName *string `json:"AnchorName,omitempty" name:"AnchorName"`
+
+	// 主播电话
+	// _敏感信息_ 使用 __AES128-CBC-PKCS#7__ 加密
+	AnchorPhone *string `json:"AnchorPhone,omitempty" name:"AnchorPhone"`
+
+	// 主播邮箱
+	// _敏感信息_ 使用 __AES128-CBC-PKCS#7__ 加密
+	AnchorEmail *string `json:"AnchorEmail,omitempty" name:"AnchorEmail"`
+
+	// 主播地址
+	// _敏感信息_ 使用 __AES128-CBC-PKCS#7__ 加密
+	AnchorAddress *string `json:"AnchorAddress,omitempty" name:"AnchorAddress"`
+
+	// 主播身份证号
+	// _敏感信息_ 使用 __AES128-CBC-PKCS#7__ 加密
+	AnchorIdNo *string `json:"AnchorIdNo,omitempty" name:"AnchorIdNo"`
+
+	// 主播类型
+	// __KMusic__:全民K歌
+	// __QMusic__:QQ音乐
+	// __WeChat__:微信视频号
+	AnchorType *string `json:"AnchorType,omitempty" name:"AnchorType"`
+
+	// 主播扩展信息
+	AnchorExtendInfo []*AnchorExtendInfo `json:"AnchorExtendInfo,omitempty" name:"AnchorExtendInfo"`
+}
+
+func (r *CreateAnchorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAnchorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AnchorUid")
+	delete(f, "AnchorName")
+	delete(f, "AnchorPhone")
+	delete(f, "AnchorEmail")
+	delete(f, "AnchorAddress")
+	delete(f, "AnchorIdNo")
+	delete(f, "AnchorType")
+	delete(f, "AnchorExtendInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAnchorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAnchorResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 主播ID
+		AnchorId *string `json:"AnchorId,omitempty" name:"AnchorId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAnchorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAnchorResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateBatchPaymentBatchData struct {
+
+	// 订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 交易流水号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeSerialNo *string `json:"TradeSerialNo,omitempty" name:"TradeSerialNo"`
+
+	// 交易状态。
+	// 0 处理中  
+	// 1 预占成功 
+	// 2 交易成功 
+	// 3 交易失败 
+	// 4 未知渠道异常 
+	// 5 预占额度失败
+	// 6 提交成功
+	// 7 提交失败
+	// 8 订单重复提交
+	// 99 未知系统异常
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 状态描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
+
+	// 代理商ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+
+	// 代理商名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentName *string `json:"AgentName,omitempty" name:"AgentName"`
+}
+
+type CreateBatchPaymentData struct {
+
+	// 批次号
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 批次列表详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BatchInfoList []*CreateBatchPaymentBatchData `json:"BatchInfoList,omitempty" name:"BatchInfoList"`
+}
+
+type CreateBatchPaymentRecipient struct {
+
+	// 转账金额
+	TransferAmount *int64 `json:"TransferAmount,omitempty" name:"TransferAmount"`
+
+	// 订单号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 主播ID（与主播业务ID不能同时为空，两者都填取主播ID）
+	AnchorId *string `json:"AnchorId,omitempty" name:"AnchorId"`
+
+	// 主播业务ID（与主播业务ID不能同时为空，两者都填取主播ID）
+	Uid *string `json:"Uid,omitempty" name:"Uid"`
+
+	// 主播名称。如果该字段填入，则会对AnchorName和AnchorId/Uid进行校验。
+	AnchorName *string `json:"AnchorName,omitempty" name:"AnchorName"`
+
+	// 业务备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 子单请求预留字段
+	ReqReserved *string `json:"ReqReserved,omitempty" name:"ReqReserved"`
+}
+
+type CreateBatchPaymentRequest struct {
+	*tchttp.BaseRequest
+
+	// 1 微信企业付款 
+	// 2 支付宝转账 
+	// 3 平安银企直连代发转账
+	TransferType *int64 `json:"TransferType,omitempty" name:"TransferType"`
+
+	// 转账详情
+	RecipientList []*CreateBatchPaymentRecipient `json:"RecipientList,omitempty" name:"RecipientList"`
+
+	// 请求预留字段
+	ReqReserved *string `json:"ReqReserved,omitempty" name:"ReqReserved"`
+
+	// 回调Url
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+}
+
+func (r *CreateBatchPaymentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchPaymentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TransferType")
+	delete(f, "RecipientList")
+	delete(f, "ReqReserved")
+	delete(f, "NotifyUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchPaymentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateBatchPaymentResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。响应成功："SUCCESS"，其他为不成功。
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 响应消息。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回响应
+		Result *CreateBatchPaymentData `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateBatchPaymentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchPaymentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateCustAcctIdRequest struct {
@@ -1509,8 +3290,32 @@ func (r *CreateCustAcctIdRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateCustAcctIdRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FunctionFlag")
+	delete(f, "FundSummaryAcctNo")
+	delete(f, "TranNetMemberCode")
+	delete(f, "MemberProperty")
+	delete(f, "Mobile")
+	delete(f, "MrchCode")
+	delete(f, "SelfBusiness")
+	delete(f, "ContactName")
+	delete(f, "SubAcctName")
+	delete(f, "SubAcctShortName")
+	delete(f, "SubAcctType")
+	delete(f, "UserNickname")
+	delete(f, "Email")
+	delete(f, "ReservedMsg")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCustAcctIdRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateCustAcctIdResponse struct {
@@ -1544,8 +3349,92 @@ func (r *CreateCustAcctIdResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateCustAcctIdResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateExternalAnchorData struct {
+
+	// 主播Id
+	AnchorId *string `json:"AnchorId,omitempty" name:"AnchorId"`
+}
+
+type CreateExternalAnchorRequest struct {
+	*tchttp.BaseRequest
+
+	// 平台业务系统唯一标示的主播id
+	Uid *string `json:"Uid,omitempty" name:"Uid"`
+
+	// 主播名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 身份证号
+	IdNo *string `json:"IdNo,omitempty" name:"IdNo"`
+
+	// 身份证正面图片下载链接
+	IdCardFront *string `json:"IdCardFront,omitempty" name:"IdCardFront"`
+
+	// 身份证反面图片下载链接
+	IdCardReverse *string `json:"IdCardReverse,omitempty" name:"IdCardReverse"`
+
+	// 指定分配的代理商ID
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+}
+
+func (r *CreateExternalAnchorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateExternalAnchorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Uid")
+	delete(f, "Name")
+	delete(f, "IdNo")
+	delete(f, "IdCardFront")
+	delete(f, "IdCardReverse")
+	delete(f, "AgentId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateExternalAnchorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateExternalAnchorResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。响应成功："SUCCESS"，其他为不成功。
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 响应消息。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回响应
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *CreateExternalAnchorData `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateExternalAnchorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateExternalAnchorResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateInvoiceItem struct {
@@ -1695,7 +3584,7 @@ type CreateInvoiceRequest struct {
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
 	// 项目商品明细
-	Items []*CreateInvoiceItem `json:"Items,omitempty" name:"Items" list`
+	Items []*CreateInvoiceItem `json:"Items,omitempty" name:"Items"`
 
 	// 接入环境。沙箱环境填sandbox。
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
@@ -1712,7 +3601,7 @@ type CreateInvoiceRequest struct {
 	// 门店编码
 	StoreNo *string `json:"StoreNo,omitempty" name:"StoreNo"`
 
-	// 开票渠道。0：线上渠道，1：线下渠道。不填默认为线上渠道
+	// 开票渠道。0：APP渠道，1：线下渠道，2：小程序渠道。不填默认为APP渠道
 	InvoiceChannel *int64 `json:"InvoiceChannel,omitempty" name:"InvoiceChannel"`
 }
 
@@ -1721,8 +3610,53 @@ func (r *CreateInvoiceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateInvoiceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InvoicePlatformId")
+	delete(f, "TitleType")
+	delete(f, "BuyerTitle")
+	delete(f, "OrderId")
+	delete(f, "AmountHasTax")
+	delete(f, "TaxAmount")
+	delete(f, "AmountWithoutTax")
+	delete(f, "SellerTaxpayerNum")
+	delete(f, "SellerName")
+	delete(f, "SellerAddress")
+	delete(f, "SellerPhone")
+	delete(f, "SellerBankName")
+	delete(f, "SellerBankAccount")
+	delete(f, "BuyerTaxpayerNum")
+	delete(f, "BuyerAddress")
+	delete(f, "BuyerBankName")
+	delete(f, "BuyerBankAccount")
+	delete(f, "BuyerPhone")
+	delete(f, "BuyerEmail")
+	delete(f, "TakerPhone")
+	delete(f, "InvoiceType")
+	delete(f, "CallbackUrl")
+	delete(f, "Drawer")
+	delete(f, "Payee")
+	delete(f, "Checker")
+	delete(f, "TerminalCode")
+	delete(f, "LevyMethod")
+	delete(f, "Deduction")
+	delete(f, "Remark")
+	delete(f, "Items")
+	delete(f, "Profile")
+	delete(f, "UndoPart")
+	delete(f, "OrderDate")
+	delete(f, "Discount")
+	delete(f, "StoreNo")
+	delete(f, "InvoiceChannel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInvoiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateInvoiceResponse struct {
@@ -1742,8 +3676,10 @@ func (r *CreateInvoiceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateInvoiceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateInvoiceResult struct {
@@ -1769,6 +3705,214 @@ type CreateInvoiceResultData struct {
 
 	// 业务开票号
 	OrderSn *string `json:"OrderSn,omitempty" name:"OrderSn"`
+}
+
+type CreateInvoiceResultV2 struct {
+
+	// 发票ID
+	InvoiceId *string `json:"InvoiceId,omitempty" name:"InvoiceId"`
+}
+
+type CreateInvoiceV2Request struct {
+	*tchttp.BaseRequest
+
+	// 开票平台ID。0：高灯，1：票易通
+	InvoicePlatformId *int64 `json:"InvoicePlatformId,omitempty" name:"InvoicePlatformId"`
+
+	// 抬头类型：1：个人/政府事业单位；2：企业
+	TitleType *int64 `json:"TitleType,omitempty" name:"TitleType"`
+
+	// 购方名称
+	BuyerTitle *string `json:"BuyerTitle,omitempty" name:"BuyerTitle"`
+
+	// 业务开票号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 含税总金额（单位为分）
+	AmountHasTax *int64 `json:"AmountHasTax,omitempty" name:"AmountHasTax"`
+
+	// 总税额（单位为分）
+	TaxAmount *int64 `json:"TaxAmount,omitempty" name:"TaxAmount"`
+
+	// 不含税总金额（单位为分）。InvoicePlatformId 为1时，传默认值-1
+	AmountWithoutTax *int64 `json:"AmountWithoutTax,omitempty" name:"AmountWithoutTax"`
+
+	// 销方纳税人识别号
+	SellerTaxpayerNum *string `json:"SellerTaxpayerNum,omitempty" name:"SellerTaxpayerNum"`
+
+	// 销方名称。（不填默认读取商户注册时输入的信息）
+	SellerName *string `json:"SellerName,omitempty" name:"SellerName"`
+
+	// 销方地址。（不填默认读取商户注册时输入的信息）
+	SellerAddress *string `json:"SellerAddress,omitempty" name:"SellerAddress"`
+
+	// 销方电话。（不填默认读取商户注册时输入的信息）
+	SellerPhone *string `json:"SellerPhone,omitempty" name:"SellerPhone"`
+
+	// 销方银行名称。（不填默认读取商户注册时输入的信息）
+	SellerBankName *string `json:"SellerBankName,omitempty" name:"SellerBankName"`
+
+	// 销方银行账号。（不填默认读取商户注册时输入的信息）
+	SellerBankAccount *string `json:"SellerBankAccount,omitempty" name:"SellerBankAccount"`
+
+	// 购方纳税人识别号（购方票面信息）,若抬头类型为2时，必传
+	BuyerTaxpayerNum *string `json:"BuyerTaxpayerNum,omitempty" name:"BuyerTaxpayerNum"`
+
+	// 购方地址。开具专用发票时必填
+	BuyerAddress *string `json:"BuyerAddress,omitempty" name:"BuyerAddress"`
+
+	// 购方银行名称。开具专用发票时必填
+	BuyerBankName *string `json:"BuyerBankName,omitempty" name:"BuyerBankName"`
+
+	// 购方银行账号。开具专用发票时必填
+	BuyerBankAccount *string `json:"BuyerBankAccount,omitempty" name:"BuyerBankAccount"`
+
+	// 购方电话。开具专用发票时必填
+	BuyerPhone *string `json:"BuyerPhone,omitempty" name:"BuyerPhone"`
+
+	// 收票人邮箱。若填入，会收到发票推送邮件
+	BuyerEmail *string `json:"BuyerEmail,omitempty" name:"BuyerEmail"`
+
+	// 收票人手机号。若填入，会收到发票推送短信
+	TakerPhone *string `json:"TakerPhone,omitempty" name:"TakerPhone"`
+
+	// 开票类型：
+	// 1：增值税专用发票；
+	// 2：增值税普通发票；
+	// 3：增值税电子发票；
+	// 4：增值税卷式发票；
+	// 5：区块链电子发票。
+	// 若该字段不填，或值不为1-5，则认为开具”增值税电子发票”
+	InvoiceType *int64 `json:"InvoiceType,omitempty" name:"InvoiceType"`
+
+	// 发票结果回传地址
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 开票人姓名。（不填默认读取商户注册时输入的信息）
+	Drawer *string `json:"Drawer,omitempty" name:"Drawer"`
+
+	// 收款人姓名。（不填默认读取商户注册时输入的信息）
+	Payee *string `json:"Payee,omitempty" name:"Payee"`
+
+	// 复核人姓名。（不填默认读取商户注册时输入的信息）
+	Checker *string `json:"Checker,omitempty" name:"Checker"`
+
+	// 税盘号
+	TerminalCode *string `json:"TerminalCode,omitempty" name:"TerminalCode"`
+
+	// 征收方式。开具差额征税发票时必填2。开具普通征税发票时为空
+	LevyMethod *string `json:"LevyMethod,omitempty" name:"LevyMethod"`
+
+	// 差额征税扣除额（单位为分）
+	Deduction *int64 `json:"Deduction,omitempty" name:"Deduction"`
+
+	// 备注（票面信息）
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 项目商品明细
+	Items []*CreateInvoiceItem `json:"Items,omitempty" name:"Items"`
+
+	// 接入环境。沙箱环境填sandbox。
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 撤销部分商品。0-不撤销，1-撤销
+	UndoPart *int64 `json:"UndoPart,omitempty" name:"UndoPart"`
+
+	// 订单下单时间（格式 YYYYMMDD）
+	OrderDate *string `json:"OrderDate,omitempty" name:"OrderDate"`
+
+	// 订单级别折扣（单位为分）
+	Discount *int64 `json:"Discount,omitempty" name:"Discount"`
+
+	// 门店编码
+	StoreNo *string `json:"StoreNo,omitempty" name:"StoreNo"`
+
+	// 开票渠道。0：APP渠道，1：线下渠道，2：小程序渠道。不填默认为APP渠道
+	InvoiceChannel *int64 `json:"InvoiceChannel,omitempty" name:"InvoiceChannel"`
+}
+
+func (r *CreateInvoiceV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateInvoiceV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InvoicePlatformId")
+	delete(f, "TitleType")
+	delete(f, "BuyerTitle")
+	delete(f, "OrderId")
+	delete(f, "AmountHasTax")
+	delete(f, "TaxAmount")
+	delete(f, "AmountWithoutTax")
+	delete(f, "SellerTaxpayerNum")
+	delete(f, "SellerName")
+	delete(f, "SellerAddress")
+	delete(f, "SellerPhone")
+	delete(f, "SellerBankName")
+	delete(f, "SellerBankAccount")
+	delete(f, "BuyerTaxpayerNum")
+	delete(f, "BuyerAddress")
+	delete(f, "BuyerBankName")
+	delete(f, "BuyerBankAccount")
+	delete(f, "BuyerPhone")
+	delete(f, "BuyerEmail")
+	delete(f, "TakerPhone")
+	delete(f, "InvoiceType")
+	delete(f, "CallbackUrl")
+	delete(f, "Drawer")
+	delete(f, "Payee")
+	delete(f, "Checker")
+	delete(f, "TerminalCode")
+	delete(f, "LevyMethod")
+	delete(f, "Deduction")
+	delete(f, "Remark")
+	delete(f, "Items")
+	delete(f, "Profile")
+	delete(f, "UndoPart")
+	delete(f, "OrderDate")
+	delete(f, "Discount")
+	delete(f, "StoreNo")
+	delete(f, "InvoiceChannel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInvoiceV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateInvoiceV2Response struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 发票开具结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *CreateInvoiceResultV2 `json:"Result,omitempty" name:"Result"`
+
+		// 错误码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 错误消息
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateInvoiceV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateInvoiceV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateMerchantRequest struct {
@@ -1847,8 +3991,38 @@ func (r *CreateMerchantRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateMerchantRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InvoicePlatformId")
+	delete(f, "TaxpayerName")
+	delete(f, "TaxpayerNum")
+	delete(f, "LegalPersonName")
+	delete(f, "ContactsName")
+	delete(f, "Phone")
+	delete(f, "Address")
+	delete(f, "RegionCode")
+	delete(f, "CityName")
+	delete(f, "Drawer")
+	delete(f, "TaxRegistrationCertificate")
+	delete(f, "Email")
+	delete(f, "BusinessMobile")
+	delete(f, "BankName")
+	delete(f, "BankAccount")
+	delete(f, "Reviewer")
+	delete(f, "Payee")
+	delete(f, "RegisterCode")
+	delete(f, "State")
+	delete(f, "CallbackUrl")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMerchantRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateMerchantResponse struct {
@@ -1868,8 +4042,10 @@ func (r *CreateMerchantResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateMerchantResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateMerchantResult struct {
@@ -1897,6 +4073,150 @@ type CreateMerchantResultData struct {
 	TaxpayerNum *string `json:"TaxpayerNum,omitempty" name:"TaxpayerNum"`
 }
 
+type CreateOrderRequest struct {
+	*tchttp.BaseRequest
+
+	// 渠道编号。ZSB2B：招商银行B2B。
+	ChannelCode *string `json:"ChannelCode,omitempty" name:"ChannelCode"`
+
+	// 进件成功后返给商户方的 AppId。
+	MerchantAppId *string `json:"MerchantAppId,omitempty" name:"MerchantAppId"`
+
+	// 交易金额。单位：元
+	Amount *string `json:"Amount,omitempty" name:"Amount"`
+
+	// 商户流水号。商户唯一订单号由字母或数字组成。
+	TraceNo *string `json:"TraceNo,omitempty" name:"TraceNo"`
+
+	// 通知地址。商户接收交易结果的通知地址。
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+
+	// 返回地址。支付成功后，页面将跳 转返回到商户的该地址。
+	ReturnUrl *string `json:"ReturnUrl,omitempty" name:"ReturnUrl"`
+}
+
+func (r *CreateOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelCode")
+	delete(f, "MerchantAppId")
+	delete(f, "Amount")
+	delete(f, "TraceNo")
+	delete(f, "NotifyUrl")
+	delete(f, "ReturnUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 进件成功后返给商户方的AppId。
+		MerchantAppId *string `json:"MerchantAppId,omitempty" name:"MerchantAppId"`
+
+		// 商户流水号，商户唯一订单号由字母或数字组成。
+		TraceNo *string `json:"TraceNo,omitempty" name:"TraceNo"`
+
+		// 平台流水号，若下单成功则返回。
+		OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
+
+		// 支付页面跳转地址，若下单成功则返回。
+		PayUrl *string `json:"PayUrl,omitempty" name:"PayUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePayMerchantRequest struct {
+	*tchttp.BaseRequest
+
+	// 平台编号
+	PlatformCode *string `json:"PlatformCode,omitempty" name:"PlatformCode"`
+
+	// 渠道方收款商户编号，由渠道方(银行)提 供。
+	ChannelMerchantNo *string `json:"ChannelMerchantNo,omitempty" name:"ChannelMerchantNo"`
+
+	// 是否需要向渠道进行 商户信息验证 1:验证
+	// 0:不验证
+	ChannelCheckFlag *string `json:"ChannelCheckFlag,omitempty" name:"ChannelCheckFlag"`
+
+	// 收款商户名称
+	MerchantName *string `json:"MerchantName,omitempty" name:"MerchantName"`
+
+	// 是否开通 B2B 支付 1:开通 0:不开通 缺省:1
+	BusinessPayFlag *string `json:"BusinessPayFlag,omitempty" name:"BusinessPayFlag"`
+}
+
+func (r *CreatePayMerchantRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePayMerchantRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PlatformCode")
+	delete(f, "ChannelMerchantNo")
+	delete(f, "ChannelCheckFlag")
+	delete(f, "MerchantName")
+	delete(f, "BusinessPayFlag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePayMerchantRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePayMerchantResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 分配给商户的 AppId。该 AppId 为后续各项 交易的商户标识。
+		MerchantAppId *string `json:"MerchantAppId,omitempty" name:"MerchantAppId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreatePayMerchantResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePayMerchantResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateRedInvoiceItem struct {
 
 	// 订单号
@@ -1922,7 +4242,7 @@ type CreateRedInvoiceRequest struct {
 	InvoicePlatformId *int64 `json:"InvoicePlatformId,omitempty" name:"InvoicePlatformId"`
 
 	// 红冲明细
-	Invoices []*CreateRedInvoiceItem `json:"Invoices,omitempty" name:"Invoices" list`
+	Invoices []*CreateRedInvoiceItem `json:"Invoices,omitempty" name:"Invoices"`
 
 	// 接入环境。沙箱环境填 sandbox。
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
@@ -1936,8 +4256,21 @@ func (r *CreateRedInvoiceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateRedInvoiceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InvoicePlatformId")
+	delete(f, "Invoices")
+	delete(f, "Profile")
+	delete(f, "InvoiceChannel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRedInvoiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateRedInvoiceResponse struct {
@@ -1957,8 +4290,10 @@ func (r *CreateRedInvoiceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateRedInvoiceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateRedInvoiceResult struct {
@@ -1971,7 +4306,7 @@ type CreateRedInvoiceResult struct {
 
 	// 红票数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data []*CreateRedInvoiceResultData `json:"Data,omitempty" name:"Data" list`
+	Data []*CreateRedInvoiceResultData `json:"Data,omitempty" name:"Data"`
 }
 
 type CreateRedInvoiceResultData struct {
@@ -1987,6 +4322,80 @@ type CreateRedInvoiceResultData struct {
 
 	// 业务开票号
 	OrderSn *string `json:"OrderSn,omitempty" name:"OrderSn"`
+}
+
+type CreateRedInvoiceResultV2 struct {
+
+	// 红票ID
+	InvoiceId *string `json:"InvoiceId,omitempty" name:"InvoiceId"`
+}
+
+type CreateRedInvoiceV2Request struct {
+	*tchttp.BaseRequest
+
+	// 开票平台ID
+	InvoicePlatformId *int64 `json:"InvoicePlatformId,omitempty" name:"InvoicePlatformId"`
+
+	// 订单号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 接入环境。沙箱环境填 sandbox。
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 开票渠道。0：线上渠道，1：线下渠道。不填默认为线上渠道
+	InvoiceChannel *int64 `json:"InvoiceChannel,omitempty" name:"InvoiceChannel"`
+}
+
+func (r *CreateRedInvoiceV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRedInvoiceV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InvoicePlatformId")
+	delete(f, "OrderId")
+	delete(f, "Profile")
+	delete(f, "InvoiceChannel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRedInvoiceV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateRedInvoiceV2Response struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 红冲结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *CreateRedInvoiceResultV2 `json:"Result,omitempty" name:"Result"`
+
+		// 错误码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 错误消息
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateRedInvoiceV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRedInvoiceV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateSinglePayRequest struct {
@@ -2052,8 +4461,35 @@ func (r *CreateSinglePayRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateSinglePayRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SerialNumber")
+	delete(f, "PayAccountNumber")
+	delete(f, "PayAccountName")
+	delete(f, "Amount")
+	delete(f, "RecvAccountNumber")
+	delete(f, "RecvAccountName")
+	delete(f, "PayBankCnaps")
+	delete(f, "PayBankType")
+	delete(f, "PayBankProvince")
+	delete(f, "PayBankCity")
+	delete(f, "RecvBankCnaps")
+	delete(f, "RecvBankType")
+	delete(f, "RecvBankProvince")
+	delete(f, "RecvBankCity")
+	delete(f, "RecvCertType")
+	delete(f, "RecvCertNo")
+	delete(f, "Summary")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSinglePayRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateSinglePayResponse struct {
@@ -2073,8 +4509,10 @@ func (r *CreateSinglePayResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateSinglePayResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateSinglePayResult struct {
@@ -2106,6 +4544,100 @@ type CreateSinglePayResult struct {
 	BankRetMsg *string `json:"BankRetMsg,omitempty" name:"BankRetMsg"`
 }
 
+type CreateSinglePaymentData struct {
+
+	// 平台交易流水号，唯一
+	TradeSerialNo *string `json:"TradeSerialNo,omitempty" name:"TradeSerialNo"`
+}
+
+type CreateSinglePaymentRequest struct {
+	*tchttp.BaseRequest
+
+	// 转账类型
+	TransferType *uint64 `json:"TransferType,omitempty" name:"TransferType"`
+
+	// 订单流水号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 转账金额
+	TransferAmount *uint64 `json:"TransferAmount,omitempty" name:"TransferAmount"`
+
+	// 主播ID（与主播业务ID不能同时为空，两者都填取主播ID）
+	AnchorId *string `json:"AnchorId,omitempty" name:"AnchorId"`
+
+	// 请求预留字段，原样透传返回
+	ReqReserved *string `json:"ReqReserved,omitempty" name:"ReqReserved"`
+
+	// 业务备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 主播名称。如果该字段填入，则会对AnchorName和AnchorId/Uid进行校验。
+	AnchorName *string `json:"AnchorName,omitempty" name:"AnchorName"`
+
+	// 主播业务ID（与主播ID不能同时为空，两者都填取主播ID）
+	Uid *string `json:"Uid,omitempty" name:"Uid"`
+
+	// 转账结果回调通知URL。若不填，则不进行回调。
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+}
+
+func (r *CreateSinglePaymentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSinglePaymentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TransferType")
+	delete(f, "OrderId")
+	delete(f, "TransferAmount")
+	delete(f, "AnchorId")
+	delete(f, "ReqReserved")
+	delete(f, "Remark")
+	delete(f, "AnchorName")
+	delete(f, "Uid")
+	delete(f, "NotifyUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSinglePaymentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSinglePaymentResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 响应消息
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *CreateSinglePaymentData `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateSinglePaymentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSinglePaymentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateTransferBatchRequest struct {
 	*tchttp.BaseRequest
 
@@ -2115,7 +4647,7 @@ type CreateTransferBatchRequest struct {
 
 	// 转账明细列表。
 	// 发起批量转账的明细列表，最多三千笔
-	TransferDetails []*TransferDetailRequest `json:"TransferDetails,omitempty" name:"TransferDetails" list`
+	TransferDetails []*TransferDetailRequest `json:"TransferDetails,omitempty" name:"TransferDetails"`
 
 	// 直连商户appId。
 	// 即商户号绑定的appid。
@@ -2160,8 +4692,26 @@ func (r *CreateTransferBatchRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateTransferBatchRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MerchantId")
+	delete(f, "TransferDetails")
+	delete(f, "MerchantAppId")
+	delete(f, "MerchantBatchNo")
+	delete(f, "BatchName")
+	delete(f, "BatchRemark")
+	delete(f, "TotalAmount")
+	delete(f, "TotalNum")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTransferBatchRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateTransferBatchResponse struct {
@@ -2192,8 +4742,74 @@ func (r *CreateTransferBatchResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateTransferBatchResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeduceQuotaRequest struct {
+	*tchttp.BaseRequest
+
+	// 主播ID
+	AnchorId *string `json:"AnchorId,omitempty" name:"AnchorId"`
+
+	// 提现金额，单位为"分"
+	Amount *int64 `json:"Amount,omitempty" name:"Amount"`
+
+	// 外部业务订单号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+}
+
+func (r *DeduceQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeduceQuotaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AnchorId")
+	delete(f, "Amount")
+	delete(f, "OrderId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeduceQuotaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeduceQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。响应成功："SUCCESS"，其他为不成功。
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 响应消息
+		ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+
+		// 返回响应
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *AssignmentData `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeduceQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeduceQuotaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteAgentTaxPaymentInfoRequest struct {
@@ -2211,8 +4827,19 @@ func (r *DeleteAgentTaxPaymentInfoRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteAgentTaxPaymentInfoRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BatchNum")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAgentTaxPaymentInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteAgentTaxPaymentInfoResponse struct {
@@ -2229,8 +4856,10 @@ func (r *DeleteAgentTaxPaymentInfoResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteAgentTaxPaymentInfoResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteAgentTaxPaymentInfosRequest struct {
@@ -2245,8 +4874,18 @@ func (r *DeleteAgentTaxPaymentInfosRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteAgentTaxPaymentInfosRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BatchNum")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAgentTaxPaymentInfosRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteAgentTaxPaymentInfosResponse struct {
@@ -2263,8 +4902,10 @@ func (r *DeleteAgentTaxPaymentInfosResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteAgentTaxPaymentInfosResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeChargeDetailRequest struct {
@@ -2318,8 +4959,31 @@ func (r *DescribeChargeDetailRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeChargeDetailRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RequestType")
+	delete(f, "MerchantCode")
+	delete(f, "PayChannel")
+	delete(f, "PayChannelSubId")
+	delete(f, "OrderId")
+	delete(f, "BankAccountNumber")
+	delete(f, "AcquiringChannelType")
+	delete(f, "PlatformShortNumber")
+	delete(f, "MidasSecretId")
+	delete(f, "MidasAppId")
+	delete(f, "MidasSignature")
+	delete(f, "TransSequenceNumber")
+	delete(f, "MidasEnvironment")
+	delete(f, "ReservedMessage")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeChargeDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeChargeDetailResponse struct {
@@ -2375,8 +5039,10 @@ func (r *DescribeChargeDetailResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeChargeDetailResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeOrderStatusRequest struct {
@@ -2436,8 +5102,33 @@ func (r *DescribeOrderStatusRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeOrderStatusRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RequestType")
+	delete(f, "MerchantCode")
+	delete(f, "PayChannel")
+	delete(f, "PayChannelSubId")
+	delete(f, "OrderId")
+	delete(f, "BankAccountNumber")
+	delete(f, "PlatformShortNumber")
+	delete(f, "QueryType")
+	delete(f, "TransSequenceNumber")
+	delete(f, "MidasSignature")
+	delete(f, "MidasAppId")
+	delete(f, "MidasSecretId")
+	delete(f, "MidasEnvironment")
+	delete(f, "ReservedMessage")
+	delete(f, "BankSubAccountNumber")
+	delete(f, "TransDate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrderStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeOrderStatusResponse struct {
@@ -2481,8 +5172,692 @@ func (r *DescribeOrderStatusResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeOrderStatusResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeAccreditQueryRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *DistributeAccreditQueryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeAccreditQueryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DistributeAccreditQueryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeAccreditQueryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 查询授权申请结果响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *DistributeAccreditQueryResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DistributeAccreditQueryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeAccreditQueryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeAccreditQueryResult struct {
+
+	// 状态（0-未开通，1-已开通，2-商户主动关闭，3-待审核，4-冻结，5-注销，6-待签合同）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 合同h5地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractUrl *string `json:"ContractUrl,omitempty" name:"ContractUrl"`
+
+	// 说明
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+type DistributeAccreditResult struct {
+
+	// 合同h5地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractUrl *string `json:"ContractUrl,omitempty" name:"ContractUrl"`
+
+	// 系统商户号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+}
+
+type DistributeAccreditTlinxRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 验证方式，传1手机验证(验证码时效60S)传2结算卡验证(时效6小时)，多种方式用逗号隔开
+	AuthType *string `json:"AuthType,omitempty" name:"AuthType"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 分账比例（500=5%）不传默认百分之10
+	Percent *string `json:"Percent,omitempty" name:"Percent"`
+
+	// 营业执照商户全称
+	FullName *string `json:"FullName,omitempty" name:"FullName"`
+}
+
+func (r *DistributeAccreditTlinxRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeAccreditTlinxRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "AuthType")
+	delete(f, "OpenKey")
+	delete(f, "Profile")
+	delete(f, "Percent")
+	delete(f, "FullName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DistributeAccreditTlinxRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeAccreditTlinxResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 授权申请响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *DistributeAccreditResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DistributeAccreditTlinxResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeAccreditTlinxResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeAddReceiverRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 商户编号
+	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *DistributeAddReceiverRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeAddReceiverRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "MerchantNo")
+	delete(f, "Profile")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DistributeAddReceiverRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeAddReceiverResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 添加分账接收方响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *DistributeReceiverResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DistributeAddReceiverResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeAddReceiverResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeApplyRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 商户分账单号
+	OutDistributeNo *string `json:"OutDistributeNo,omitempty" name:"OutDistributeNo"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 分账明细
+	Details []*MultiApplyDetail `json:"Details,omitempty" name:"Details"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 说明
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 商户交易订单号，和OrderNo二者传其一
+	DeveloperNo *string `json:"DeveloperNo,omitempty" name:"DeveloperNo"`
+
+	// 平台交易订单号，和DeveloperNo二者传其一
+	OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
+}
+
+func (r *DistributeApplyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeApplyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OutDistributeNo")
+	delete(f, "OpenKey")
+	delete(f, "Details")
+	delete(f, "Profile")
+	delete(f, "Remark")
+	delete(f, "DeveloperNo")
+	delete(f, "OrderNo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DistributeApplyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeApplyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 分账申请响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *DistributeMultiApplyResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DistributeApplyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeApplyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeCancelRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 平台交易订单号
+	OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 平台分账单号，type为2时，和OutDistributeNo二者传其一
+	DistributeNo *string `json:"DistributeNo,omitempty" name:"DistributeNo"`
+
+	// 商户分账单号，type为2时，和DistributeNo二者传其一
+	OutDistributeNo *string `json:"OutDistributeNo,omitempty" name:"OutDistributeNo"`
+}
+
+func (r *DistributeCancelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeCancelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "OrderNo")
+	delete(f, "Profile")
+	delete(f, "DistributeNo")
+	delete(f, "OutDistributeNo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DistributeCancelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeCancelResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 分账撤销响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *DistributeCancelResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DistributeCancelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeCancelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeCancelResult struct {
+
+	// 分账订单状态（0初始1成功2失败3撤销）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 平台交易订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
+
+	// 商户分账单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutDistributeNo *string `json:"OutDistributeNo,omitempty" name:"OutDistributeNo"`
+
+	// 平台分账单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DistributeNo *string `json:"DistributeNo,omitempty" name:"DistributeNo"`
+}
+
+type DistributeMultiApplyResult struct {
+
+	// 分账状态（0分账初始 1分账成功 2分账失败）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 平台分账单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DistributeNo *string `json:"DistributeNo,omitempty" name:"DistributeNo"`
+
+	// 入账日期，yyyy-MM-dd格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InDate *string `json:"InDate,omitempty" name:"InDate"`
+
+	// 分账金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Amount *string `json:"Amount,omitempty" name:"Amount"`
+
+	// 商户分账单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutDistributeNo *string `json:"OutDistributeNo,omitempty" name:"OutDistributeNo"`
+
+	// 平台支付单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
+}
+
+type DistributeQueryReceiverRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *DistributeQueryReceiverRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeQueryReceiverRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DistributeQueryReceiverRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeQueryReceiverResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 查询询已添加分账接收方响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *DistributeReceiverResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DistributeQueryReceiverResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeQueryReceiverResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeQueryRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 查询类型（1-全部，2-单笔）
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 平台分账单号，type为2时，和OutDistributeNo二者传其一
+	DistributeNo *string `json:"DistributeNo,omitempty" name:"DistributeNo"`
+
+	// 商户分账单号，type为2时，和DistributeNo二者传其一
+	OutDistributeNo *string `json:"OutDistributeNo,omitempty" name:"OutDistributeNo"`
+
+	// 平台交易订单号
+	OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
+}
+
+func (r *DistributeQueryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeQueryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "Type")
+	delete(f, "Profile")
+	delete(f, "DistributeNo")
+	delete(f, "OutDistributeNo")
+	delete(f, "OrderNo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DistributeQueryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeQueryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 分账结果响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *DistributeQueryResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DistributeQueryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeQueryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeQueryResult struct {
+
+	// 分账订单列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Orders []*MultiApplyOrder `json:"Orders,omitempty" name:"Orders"`
+}
+
+type DistributeReceiverResult struct {
+
+	// 商户编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+}
+
+type DistributeRemoveReceiverRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 商户编号
+	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *DistributeRemoveReceiverRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeRemoveReceiverRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "MerchantNo")
+	delete(f, "Profile")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DistributeRemoveReceiverRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributeRemoveReceiverResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 解除分账接收方响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *DistributeReceiverResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DistributeRemoveReceiverResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeRemoveReceiverResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DownloadBillRequest struct {
@@ -2513,8 +5888,22 @@ func (r *DownloadBillRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DownloadBillRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StateDate")
+	delete(f, "MidasAppId")
+	delete(f, "MidasSecretId")
+	delete(f, "MidasSignature")
+	delete(f, "MidasEnvironment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DownloadBillRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DownloadBillResponse struct {
@@ -2540,8 +5929,162 @@ func (r *DownloadBillResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DownloadBillResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DownloadFileResult struct {
+
+	// 文件内容（base64加密的二进制内容）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 存储区域（0私密区，1公共区），请严格按文件要求，上传到不同的区域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Storage *string `json:"Storage,omitempty" name:"Storage"`
+}
+
+type DownloadOrgFileRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 存储区域（0私密区，1公共区），请严格按文件要求，上传到不同的区域
+	Storage *string `json:"Storage,omitempty" name:"Storage"`
+
+	// 文件路径
+	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
+}
+
+func (r *DownloadOrgFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DownloadOrgFileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "Profile")
+	delete(f, "Storage")
+	delete(f, "FilePath")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DownloadOrgFileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DownloadOrgFileResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 下载机构文件响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *DownloadFileResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DownloadOrgFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DownloadOrgFileResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DownloadReconciliationUrlRequest struct {
+	*tchttp.BaseRequest
+
+	// 平台应用ID
+	MainAppId *string `json:"MainAppId,omitempty" name:"MainAppId"`
+
+	// 平台代码
+	AppCode *string `json:"AppCode,omitempty" name:"AppCode"`
+
+	// 账单日期，yyyy-MM-dd
+	BillDate *string `json:"BillDate,omitempty" name:"BillDate"`
+
+	// 商户或者代理商ID
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DownloadReconciliationUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DownloadReconciliationUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MainAppId")
+	delete(f, "AppCode")
+	delete(f, "BillDate")
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DownloadReconciliationUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DownloadReconciliationUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 下载地址
+		DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+
+		// hash类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		HashType *string `json:"HashType,omitempty" name:"HashType"`
+
+		// hash值
+		HashValue *string `json:"HashValue,omitempty" name:"HashValue"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DownloadReconciliationUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DownloadReconciliationUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ExecuteMemberTransactionRequest struct {
@@ -2632,8 +6175,41 @@ func (r *ExecuteMemberTransactionRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ExecuteMemberTransactionRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RequestType")
+	delete(f, "MerchantCode")
+	delete(f, "PayChannel")
+	delete(f, "PayChannelSubId")
+	delete(f, "OutTransNetMemberCode")
+	delete(f, "OutSubAccountName")
+	delete(f, "InSubAccountName")
+	delete(f, "OutSubAccountNumber")
+	delete(f, "InSubAccountNumber")
+	delete(f, "BankAccountNumber")
+	delete(f, "CurrencyUnit")
+	delete(f, "CurrencyType")
+	delete(f, "CurrencyAmount")
+	delete(f, "OrderId")
+	delete(f, "MidasAppId")
+	delete(f, "MidasSecretId")
+	delete(f, "MidasSignature")
+	delete(f, "TransSequenceNumber")
+	delete(f, "InTransNetMemberCode")
+	delete(f, "MidasEnvironment")
+	delete(f, "PlatformShortNumber")
+	delete(f, "TransType")
+	delete(f, "TransFee")
+	delete(f, "ReservedMessage")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExecuteMemberTransactionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ExecuteMemberTransactionResponse struct {
@@ -2660,8 +6236,66 @@ func (r *ExecuteMemberTransactionResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ExecuteMemberTransactionResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ExternalContractUserInfo struct {
+
+	// 第三方用户类型，例如:  WX_OPENID, WX_SUB_OPENID,WX_PAYER_OPENID
+	ExternalUserType *string `json:"ExternalUserType,omitempty" name:"ExternalUserType"`
+
+	// 第三方用户ID
+	ExternalUserId *string `json:"ExternalUserId,omitempty" name:"ExternalUserId"`
+}
+
+type ExternalReturnContractInfo struct {
+
+	// 第三方渠道协议id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnAgreementId *string `json:"ExternalReturnAgreementId,omitempty" name:"ExternalReturnAgreementId"`
+
+	// 第三方渠道协议生效时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnContractEffectiveTimestamp *string `json:"ExternalReturnContractEffectiveTimestamp,omitempty" name:"ExternalReturnContractEffectiveTimestamp"`
+
+	// 第三方渠道协议解约时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnContractTerminationTimestamp *string `json:"ExternalReturnContractTerminationTimestamp,omitempty" name:"ExternalReturnContractTerminationTimestamp"`
+
+	// 平台合约状态
+	// 协议状态，枚举值：
+	// CONTRACT_STATUS_SIGNED：已签约
+	// CONTRACT_STATUS_TERMINATED：未签约
+	// CONTRACT_STATUS_PENDING：签约进行中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnContractStatus *string `json:"ExternalReturnContractStatus,omitempty" name:"ExternalReturnContractStatus"`
+
+	// 第三方渠道请求序列号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnRequestId *string `json:"ExternalReturnRequestId,omitempty" name:"ExternalReturnRequestId"`
+
+	// 第三方渠道协议签署时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnContractSignedTimestamp *string `json:"ExternalReturnContractSignedTimestamp,omitempty" name:"ExternalReturnContractSignedTimestamp"`
+
+	// 第三方渠道协议到期时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnContractExpiredTimestamp *string `json:"ExternalReturnContractExpiredTimestamp,omitempty" name:"ExternalReturnContractExpiredTimestamp"`
+
+	// 第三方渠道返回的合约数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnContractData *string `json:"ExternalReturnContractData,omitempty" name:"ExternalReturnContractData"`
+
+	// 第三方渠道解约备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnContractTerminationRemark *string `json:"ExternalReturnContractTerminationRemark,omitempty" name:"ExternalReturnContractTerminationRemark"`
+
+	// 第三方渠道协议解约方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnContractTerminationMode *string `json:"ExternalReturnContractTerminationMode,omitempty" name:"ExternalReturnContractTerminationMode"`
 }
 
 type FileItem struct {
@@ -2681,6 +6315,18 @@ type FileItem struct {
 	// STRING(64)，提取码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DrawCode *string `json:"DrawCode,omitempty" name:"DrawCode"`
+}
+
+type MerchantClassificationId struct {
+
+	// 分类编号
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 分类名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 父级编号（0为一级编号，大于0为父级分类编号）
+	Parent *string `json:"Parent,omitempty" name:"Parent"`
 }
 
 type MerchantManagementList struct {
@@ -2704,7 +6350,57 @@ type MerchantManagementResult struct {
 	Total *int64 `json:"Total,omitempty" name:"Total"`
 
 	// 商户列表。
-	List []*MerchantManagementList `json:"List,omitempty" name:"List" list`
+	List []*MerchantManagementList `json:"List,omitempty" name:"List"`
+}
+
+type MerchantPayWayData struct {
+
+	// 支付币种
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayCurrency *string `json:"PayCurrency,omitempty" name:"PayCurrency"`
+
+	// 支付图标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayIcon *string `json:"PayIcon,omitempty" name:"PayIcon"`
+
+	// 支付名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayInternalName *string `json:"PayInternalName,omitempty" name:"PayInternalName"`
+
+	// 支付简称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayName *string `json:"PayName,omitempty" name:"PayName"`
+
+	// 是否支持退款
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaySplitRefund *string `json:"PaySplitRefund,omitempty" name:"PaySplitRefund"`
+
+	// 支付标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayTag *string `json:"PayTag,omitempty" name:"PayTag"`
+
+	// 支付凭证图标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayTicketIcon *string `json:"PayTicketIcon,omitempty" name:"PayTicketIcon"`
+
+	// 支付类型，逗号分隔
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayType *string `json:"PayType,omitempty" name:"PayType"`
+
+	// 凭证名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TicketName *string `json:"TicketName,omitempty" name:"TicketName"`
+}
+
+type MerchantRiskInfo struct {
+
+	// 恶意注册等级，0-9级，9级最高
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskLevel *int64 `json:"RiskLevel,omitempty" name:"RiskLevel"`
+
+	// 恶意注册代码，代码以|分割，如"G001|T002"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskTypes *string `json:"RiskTypes,omitempty" name:"RiskTypes"`
 }
 
 type MigrateOrderRefundQueryRequest struct {
@@ -2731,8 +6427,22 @@ func (r *MigrateOrderRefundQueryRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *MigrateOrderRefundQueryRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MerchantId")
+	delete(f, "PayChannel")
+	delete(f, "RefundOrderId")
+	delete(f, "TradeSerialNo")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MigrateOrderRefundQueryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MigrateOrderRefundQueryResponse struct {
@@ -2765,8 +6475,10 @@ func (r *MigrateOrderRefundQueryResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *MigrateOrderRefundQueryResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MigrateOrderRefundRequest struct {
@@ -2805,8 +6517,26 @@ func (r *MigrateOrderRefundRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *MigrateOrderRefundRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MerchantId")
+	delete(f, "PayChannel")
+	delete(f, "PayOrderId")
+	delete(f, "RefundOrderId")
+	delete(f, "RefundAmt")
+	delete(f, "ThirdChannelOrderId")
+	delete(f, "PayAmt")
+	delete(f, "Profile")
+	delete(f, "RefundReason")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MigrateOrderRefundRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MigrateOrderRefundResponse struct {
@@ -2832,8 +6562,10 @@ func (r *MigrateOrderRefundResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *MigrateOrderRefundResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyAgentTaxPaymentInfoRequest struct {
@@ -2857,8 +6589,21 @@ func (r *ModifyAgentTaxPaymentInfoRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyAgentTaxPaymentInfoRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BatchNum")
+	delete(f, "RawElectronicCertUrl")
+	delete(f, "FileName")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAgentTaxPaymentInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyAgentTaxPaymentInfoResponse struct {
@@ -2878,8 +6623,137 @@ func (r *ModifyAgentTaxPaymentInfoResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyAgentTaxPaymentInfoResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyBindedAccountRequest struct {
+	*tchttp.BaseRequest
+
+	// 主播Id
+	AnchorId *string `json:"AnchorId,omitempty" name:"AnchorId"`
+
+	// 1 微信企业付款 
+	// 2 支付宝转账 
+	// 3 平安银企直连代发转账
+	TransferType *int64 `json:"TransferType,omitempty" name:"TransferType"`
+
+	// 收款方标识。
+	// 微信为open_id；
+	// 支付宝为会员alipay_user_id;
+	// 平安为收款方银行账号;
+	AccountNo *string `json:"AccountNo,omitempty" name:"AccountNo"`
+
+	// 手机号
+	PhoneNum *string `json:"PhoneNum,omitempty" name:"PhoneNum"`
+}
+
+func (r *ModifyBindedAccountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBindedAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AnchorId")
+	delete(f, "TransferType")
+	delete(f, "AccountNo")
+	delete(f, "PhoneNum")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBindedAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyBindedAccountResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。响应成功："SUCCESS"，其他为不成功。
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 响应消息。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 该字段为null。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyBindedAccountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBindedAccountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyMerchantRequest struct {
+	*tchttp.BaseRequest
+
+	// 进件成功后返给商户的AppId
+	MerchantAppId *string `json:"MerchantAppId,omitempty" name:"MerchantAppId"`
+
+	// 收款商户名称
+	MerchantName *string `json:"MerchantName,omitempty" name:"MerchantName"`
+
+	// B2B 支付标志。是否开通 B2B支付， 1:开通 0:不开通。
+	BusinessPayFlag *string `json:"BusinessPayFlag,omitempty" name:"BusinessPayFlag"`
+}
+
+func (r *ModifyMerchantRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMerchantRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MerchantAppId")
+	delete(f, "MerchantName")
+	delete(f, "BusinessPayFlag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMerchantRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyMerchantResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyMerchantResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMerchantResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyMntMbrBindRelateAcctBankCodeRequest struct {
@@ -2915,8 +6789,25 @@ func (r *ModifyMntMbrBindRelateAcctBankCodeRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyMntMbrBindRelateAcctBankCodeRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MrchCode")
+	delete(f, "SubAcctNo")
+	delete(f, "MemberBindAcctNo")
+	delete(f, "AcctOpenBranchName")
+	delete(f, "CnapsBranchId")
+	delete(f, "EiconBankBranchId")
+	delete(f, "ReservedMsg")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMntMbrBindRelateAcctBankCodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyMntMbrBindRelateAcctBankCodeResponse struct {
@@ -2946,8 +6837,53 @@ func (r *ModifyMntMbrBindRelateAcctBankCodeResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyMntMbrBindRelateAcctBankCodeResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type MultiApplyDetail struct {
+
+	// 商户编号
+	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+
+	// 分账金额
+	Amount *string `json:"Amount,omitempty" name:"Amount"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+type MultiApplyOrder struct {
+
+	// 商户分账单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutDistributeNo *string `json:"OutDistributeNo,omitempty" name:"OutDistributeNo"`
+
+	// 平台分账单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DistributeNo *string `json:"DistributeNo,omitempty" name:"DistributeNo"`
+
+	// 平台交易订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
+
+	// 分账订单状态（0初始1成功2失败3撤销）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 入账日期，格式yyyy-MM-dd
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InDate *string `json:"InDate,omitempty" name:"InDate"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 分账明细
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Details []*MultiApplyDetail `json:"Details,omitempty" name:"Details"`
 }
 
 type Order struct {
@@ -2990,7 +6926,7 @@ type Order struct {
 
 	// 明细
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Items []*OrderItem `json:"Items,omitempty" name:"Items" list`
+	Items []*OrderItem `json:"Items,omitempty" name:"Items"`
 }
 
 type OrderItem struct {
@@ -3032,6 +6968,193 @@ type OrderItem struct {
 	TaxCode *string `json:"TaxCode,omitempty" name:"TaxCode"`
 }
 
+type OrganizationInfo struct {
+
+	// 公司名称，个体工商户必输
+	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
+
+	// 公司证件类型，个体工商户必输，证件类型仅支持73
+	OrganizationType *string `json:"OrganizationType,omitempty" name:"OrganizationType"`
+
+	// 公司证件号码，个体工商户必输
+	OrganizationCode *string `json:"OrganizationCode,omitempty" name:"OrganizationCode"`
+
+	// 法人名称，如果SubMchName不是法人，需要另外送入法人信息（企业必输）
+	// <敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
+	LegalPersonName *string `json:"LegalPersonName,omitempty" name:"LegalPersonName"`
+
+	// 法人证件类型，如果SubMchName不是法人，需要另外送入法人信息（企业必输）
+	LegalPersonIdType *string `json:"LegalPersonIdType,omitempty" name:"LegalPersonIdType"`
+
+	// 法人证件号码，如果SubMchName不是法人，需要另外送入法人信息（企业必输）
+	// <敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
+	LegalPersonIdCode *string `json:"LegalPersonIdCode,omitempty" name:"LegalPersonIdCode"`
+}
+
+type PayDataResult struct {
+
+	// 支付标签（唯一性）
+	PaymentTag *string `json:"PaymentTag,omitempty" name:"PaymentTag"`
+
+	// 添加合同时需要隐藏的选项（多个以小写逗号分开）
+	PaymentOptionHide *string `json:"PaymentOptionHide,omitempty" name:"PaymentOptionHide"`
+
+	// 支付方式图片url路径
+	PaymentIcon *string `json:"PaymentIcon,omitempty" name:"PaymentIcon"`
+
+	// 合同选项名称6
+	PaymentOptionSix *string `json:"PaymentOptionSix,omitempty" name:"PaymentOptionSix"`
+
+	// 付款方式名称
+	PaymentName *string `json:"PaymentName,omitempty" name:"PaymentName"`
+
+	// 合同选项名称7
+	PaymentOptionSeven *string `json:"PaymentOptionSeven,omitempty" name:"PaymentOptionSeven"`
+
+	// 合同选项名称8
+	PaymentOptionOther *string `json:"PaymentOptionOther,omitempty" name:"PaymentOptionOther"`
+
+	// 合同选项名称2
+	PaymentOptionTwo *string `json:"PaymentOptionTwo,omitempty" name:"PaymentOptionTwo"`
+
+	// 合同选项名称1
+	PaymentOptionOne *string `json:"PaymentOptionOne,omitempty" name:"PaymentOptionOne"`
+
+	// 是否开启智能扣率（1是，0否）
+	PaymentDiscountFee *string `json:"PaymentDiscountFee,omitempty" name:"PaymentDiscountFee"`
+
+	// 支持的交易类型（多个以小写逗号分开，0现金，1刷卡，2主扫，3被扫，4JSPAY，5预授权）
+	PaymentType *string `json:"PaymentType,omitempty" name:"PaymentType"`
+
+	// 合同选项名称5
+	PaymentOptionFive *string `json:"PaymentOptionFive,omitempty" name:"PaymentOptionFive"`
+
+	// 合同选项名称9
+	PaymentOptionNine *string `json:"PaymentOptionNine,omitempty" name:"PaymentOptionNine"`
+
+	// 支付方式编号
+	PaymentId *string `json:"PaymentId,omitempty" name:"PaymentId"`
+
+	// 合同选项名称3
+	PaymentOptionThree *string `json:"PaymentOptionThree,omitempty" name:"PaymentOptionThree"`
+
+	// 付款方式名称（内部名称）
+	PaymentInternalName *string `json:"PaymentInternalName,omitempty" name:"PaymentInternalName"`
+
+	// 合同选项名称4
+	PaymentOptionFour *string `json:"PaymentOptionFour,omitempty" name:"PaymentOptionFour"`
+
+	// 合同选项名称10
+	PaymentOptionTen *string `json:"PaymentOptionTen,omitempty" name:"PaymentOptionTen"`
+}
+
+type PayFeeDataResult struct {
+
+	// 机构的分佣扣率扣率
+	OrganizationFee *string `json:"OrganizationFee,omitempty" name:"OrganizationFee"`
+
+	// 商户手续费封顶值，0为不限封顶
+	PaymentClassificationLimit *string `json:"PaymentClassificationLimit,omitempty" name:"PaymentClassificationLimit"`
+
+	// 机构的分佣扣率类型(1按签约扣率，2按收单收益)
+	OrganizationFeeType *string `json:"OrganizationFeeType,omitempty" name:"OrganizationFeeType"`
+
+	// 商户扣率最大值
+	PaymentClassificationMaxFee *string `json:"PaymentClassificationMaxFee,omitempty" name:"PaymentClassificationMaxFee"`
+
+	// 商户扣率最小值
+	PaymentClassificationMinFee *string `json:"PaymentClassificationMinFee,omitempty" name:"PaymentClassificationMinFee"`
+
+	// 行业会类编号
+	PaymentClassificationId *string `json:"PaymentClassificationId,omitempty" name:"PaymentClassificationId"`
+
+	// 行业分类名称
+	PaymentClassificationName *string `json:"PaymentClassificationName,omitempty" name:"PaymentClassificationName"`
+}
+
+type PayOrderResult struct {
+
+	// 付款订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
+
+	// 开发者流水号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeveloperNo *string `json:"DeveloperNo,omitempty" name:"DeveloperNo"`
+
+	// 交易优惠金额（免充值券）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeDiscountAmount *string `json:"TradeDiscountAmount,omitempty" name:"TradeDiscountAmount"`
+
+	// 付款方式名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayName *string `json:"PayName,omitempty" name:"PayName"`
+
+	// 商户流水号（从1开始自增长不重复）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderMerchantId *string `json:"OrderMerchantId,omitempty" name:"OrderMerchantId"`
+
+	// 交易帐号（银行卡号、支付宝帐号、微信帐号等，某些收单机构没有此数据）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeAccount *string `json:"TradeAccount,omitempty" name:"TradeAccount"`
+
+	// 实际交易金额（以分为单位，没有小数点）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeAmount *string `json:"TradeAmount,omitempty" name:"TradeAmount"`
+
+	// 币种签名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrencySign *string `json:"CurrencySign,omitempty" name:"CurrencySign"`
+
+	// 付款完成时间（以收单机构为准）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradePayTime *string `json:"TradePayTime,omitempty" name:"TradePayTime"`
+
+	// 门店流水号（从1开始自增长不重复）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopOrderId *string `json:"ShopOrderId,omitempty" name:"ShopOrderId"`
+
+	// 支付标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayTag *string `json:"PayTag,omitempty" name:"PayTag"`
+
+	// 订单状态（1交易成功，2待支付，4已取消，9等待用户输入密码确认
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 币种代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderCurrency *string `json:"OrderCurrency,omitempty" name:"OrderCurrency"`
+
+	// 二维码字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeQrcode *string `json:"TradeQrcode,omitempty" name:"TradeQrcode"`
+
+	// 微信返回调起小程序/原生JS支付的appid参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WechatAppId *string `json:"WechatAppId,omitempty" name:"WechatAppId"`
+
+	// 微信返回调起小程序/原生JS支付的timeStamp参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WechatTimeStamp *string `json:"WechatTimeStamp,omitempty" name:"WechatTimeStamp"`
+
+	// 微信返回调起小程序/原生JS支付的nonceStr参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WechatNonceStr *string `json:"WechatNonceStr,omitempty" name:"WechatNonceStr"`
+
+	// 微信返回调起小程序/原生JS支付的signType参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WechatSignType *string `json:"WechatSignType,omitempty" name:"WechatSignType"`
+
+	// 微信返回调起小程序/原生JS支付的package参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WechatPackage *string `json:"WechatPackage,omitempty" name:"WechatPackage"`
+
+	// 微信返回调起小程序/原生JS支付的paySign参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WechatPaySign *string `json:"WechatPaySign,omitempty" name:"WechatPaySign"`
+}
+
 type QueryAcctBindingRequest struct {
 	*tchttp.BaseRequest
 
@@ -3066,8 +7189,23 @@ func (r *QueryAcctBindingRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryAcctBindingRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MidasAppId")
+	delete(f, "SubAppId")
+	delete(f, "MidasSecretId")
+	delete(f, "MidasSignature")
+	delete(f, "EncryptType")
+	delete(f, "MidasEnvironment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryAcctBindingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryAcctBindingResponse struct {
@@ -3078,7 +7216,7 @@ type QueryAcctBindingResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 银行卡信息列表
-		BankCardItems []*BankCardItem `json:"BankCardItems,omitempty" name:"BankCardItems" list`
+		BankCardItems []*BankCardItem `json:"BankCardItems,omitempty" name:"BankCardItems"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3090,8 +7228,10 @@ func (r *QueryAcctBindingResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryAcctBindingResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryAcctInfoListRequest struct {
@@ -3134,8 +7274,25 @@ func (r *QueryAcctInfoListRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryAcctInfoListRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MidasAppId")
+	delete(f, "QueryAcctBeginTime")
+	delete(f, "QueryAcctEndTime")
+	delete(f, "PageOffset")
+	delete(f, "MidasSecretId")
+	delete(f, "MidasSignature")
+	delete(f, "EncryptType")
+	delete(f, "MidasEnvironment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryAcctInfoListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryAcctInfoListResponse struct {
@@ -3149,7 +7306,7 @@ type QueryAcctInfoListResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 查询结果项 [object,object]
-		QueryAcctItems []*QueryAcctItem `json:"QueryAcctItems,omitempty" name:"QueryAcctItems" list`
+		QueryAcctItems []*QueryAcctItem `json:"QueryAcctItems,omitempty" name:"QueryAcctItems"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3161,8 +7318,10 @@ func (r *QueryAcctInfoListResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryAcctInfoListResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryAcctInfoRequest struct {
@@ -3199,8 +7358,23 @@ func (r *QueryAcctInfoRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryAcctInfoRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MidasAppId")
+	delete(f, "SubMchId")
+	delete(f, "MidasSecretId")
+	delete(f, "MidasSignature")
+	delete(f, "EncryptType")
+	delete(f, "MidasEnvironment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryAcctInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryAcctInfoResponse struct {
@@ -3260,8 +7434,10 @@ func (r *QueryAcctInfoResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryAcctInfoResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryAcctItem struct {
@@ -3326,8 +7502,19 @@ func (r *QueryAgentStatementsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryAgentStatementsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Date")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryAgentStatementsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryAgentStatementsResponse struct {
@@ -3348,8 +7535,10 @@ func (r *QueryAgentStatementsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryAgentStatementsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryAgentTaxPaymentBatchRequest struct {
@@ -3367,8 +7556,19 @@ func (r *QueryAgentTaxPaymentBatchRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryAgentTaxPaymentBatchRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BatchNum")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryAgentTaxPaymentBatchRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryAgentTaxPaymentBatchResponse struct {
@@ -3388,8 +7588,10 @@ func (r *QueryAgentTaxPaymentBatchResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryAgentTaxPaymentBatchResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryAnchorContractInfoRequest struct {
@@ -3407,8 +7609,19 @@ func (r *QueryAnchorContractInfoRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryAnchorContractInfoRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryAnchorContractInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryAnchorContractInfoResponse struct {
@@ -3416,7 +7629,7 @@ type QueryAnchorContractInfoResponse struct {
 	Response *struct {
 
 		// 签约主播数据
-		AnchorContractInfoList []*AnchorContractInfo `json:"AnchorContractInfoList,omitempty" name:"AnchorContractInfoList" list`
+		AnchorContractInfoList []*AnchorContractInfo `json:"AnchorContractInfoList,omitempty" name:"AnchorContractInfoList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3428,8 +7641,10 @@ func (r *QueryAnchorContractInfoResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryAnchorContractInfoResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryApplicationMaterialRequest struct {
@@ -3447,8 +7662,19 @@ func (r *QueryApplicationMaterialRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryApplicationMaterialRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeclareId")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryApplicationMaterialRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryApplicationMaterialResponse struct {
@@ -3468,8 +7694,66 @@ func (r *QueryApplicationMaterialResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryApplicationMaterialResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryAssignmentRequest struct {
+	*tchttp.BaseRequest
+
+	// 主播ID
+	AnchorId *string `json:"AnchorId,omitempty" name:"AnchorId"`
+}
+
+func (r *QueryAssignmentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryAssignmentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AnchorId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryAssignmentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryAssignmentResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。响应成功："SUCCESS"，其他为不成功。
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 响应消息
+		ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+
+		// 返回响应
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *AssignmentData `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryAssignmentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryAssignmentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryBalanceRequest struct {
@@ -3507,8 +7791,24 @@ func (r *QueryBalanceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryBalanceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MidasAppId")
+	delete(f, "SubAppId")
+	delete(f, "QueryFlag")
+	delete(f, "PageOffset")
+	delete(f, "MidasSecretId")
+	delete(f, "MidasSignature")
+	delete(f, "MidasEnvironment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryBalanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryBalanceResponse struct {
@@ -3528,7 +7828,7 @@ type QueryBalanceResponse struct {
 		TotalCount *string `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 查询结果项
-		QueryItems []*QueryItem `json:"QueryItems,omitempty" name:"QueryItems" list`
+		QueryItems []*QueryItem `json:"QueryItems,omitempty" name:"QueryItems"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3540,8 +7840,10 @@ func (r *QueryBalanceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryBalanceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryBankClearRequest struct {
@@ -3574,8 +7876,24 @@ func (r *QueryBankClearRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryBankClearRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MrchCode")
+	delete(f, "FunctionFlag")
+	delete(f, "PageNum")
+	delete(f, "StartDate")
+	delete(f, "EndDate")
+	delete(f, "ReservedMsg")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryBankClearRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryBankClearResponse struct {
@@ -3609,7 +7927,7 @@ type QueryBankClearResponse struct {
 
 		// 交易信息数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TranItemArray []*ClearItem `json:"TranItemArray,omitempty" name:"TranItemArray" list`
+		TranItemArray []*ClearItem `json:"TranItemArray,omitempty" name:"TranItemArray"`
 
 		// STRING(1027)，保留域
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3625,8 +7943,10 @@ func (r *QueryBankClearResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryBankClearResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryBankTransactionDetailsRequest struct {
@@ -3665,8 +7985,26 @@ func (r *QueryBankTransactionDetailsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryBankTransactionDetailsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MrchCode")
+	delete(f, "FunctionFlag")
+	delete(f, "SubAcctNo")
+	delete(f, "QueryFlag")
+	delete(f, "PageNum")
+	delete(f, "StartDate")
+	delete(f, "EndDate")
+	delete(f, "ReservedMsg")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryBankTransactionDetailsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryBankTransactionDetailsResponse struct {
@@ -3700,7 +8038,7 @@ type QueryBankTransactionDetailsResponse struct {
 
 		// 交易信息数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TranItemArray []*TransactionItem `json:"TranItemArray,omitempty" name:"TranItemArray" list`
+		TranItemArray []*TransactionItem `json:"TranItemArray,omitempty" name:"TranItemArray"`
 
 		// STRING(1027)，保留域
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3716,8 +8054,10 @@ func (r *QueryBankTransactionDetailsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryBankTransactionDetailsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryBankWithdrawCashDetailsRequest struct {
@@ -3756,8 +8096,26 @@ func (r *QueryBankWithdrawCashDetailsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryBankWithdrawCashDetailsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MrchCode")
+	delete(f, "FunctionFlag")
+	delete(f, "SubAcctNo")
+	delete(f, "QueryFlag")
+	delete(f, "PageNum")
+	delete(f, "BeginDate")
+	delete(f, "EndDate")
+	delete(f, "ReservedMsg")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryBankWithdrawCashDetailsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryBankWithdrawCashDetailsResponse struct {
@@ -3791,7 +8149,7 @@ type QueryBankWithdrawCashDetailsResponse struct {
 
 		// 交易信息数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TranItemArray []*WithdrawItem `json:"TranItemArray,omitempty" name:"TranItemArray" list`
+		TranItemArray []*WithdrawItem `json:"TranItemArray,omitempty" name:"TranItemArray"`
 
 		// STRING(1027)，保留域
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3807,8 +8165,276 @@ func (r *QueryBankWithdrawCashDetailsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryBankWithdrawCashDetailsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryBatchPaymentResultData struct {
+
+	// 批次号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 批次总额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalAmount *int64 `json:"TotalAmount,omitempty" name:"TotalAmount"`
+
+	// 批次总量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 批次预留字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReqReserved *string `json:"ReqReserved,omitempty" name:"ReqReserved"`
+
+	// 批次备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 渠道类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransferType *int64 `json:"TransferType,omitempty" name:"TransferType"`
+
+	// 转账明细
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransferInfoList []*QueryBatchPaymentResultDataInfo `json:"TransferInfoList,omitempty" name:"TransferInfoList"`
+}
+
+type QueryBatchPaymentResultDataInfo struct {
+
+	// 订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 代理商ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+
+	// 代理商名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentName *string `json:"AgentName,omitempty" name:"AgentName"`
+
+	// 交易状态。
+	// 0 处理中  
+	// 1 预占成功 
+	// 2 交易成功 
+	// 3 交易失败 
+	// 4 未知渠道异常 
+	// 5 预占额度失败
+	// 6 提交成功
+	// 7 提交失败
+	// 8 订单重复提交
+	// 99 未知系统异常
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 状态描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
+
+	// 转账金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransferAmount *int64 `json:"TransferAmount,omitempty" name:"TransferAmount"`
+}
+
+type QueryBatchPaymentResultRequest struct {
+	*tchttp.BaseRequest
+
+	// 批次号
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+}
+
+func (r *QueryBatchPaymentResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryBatchPaymentResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BatchId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryBatchPaymentResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryBatchPaymentResultResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。响应成功："SUCCESS"，其他为不成功。
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 响应消息。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回响应
+		Result *QueryBatchPaymentResultData `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryBatchPaymentResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryBatchPaymentResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryBillDownloadURLData struct {
+
+	// 统一对账单下载链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillDownloadURL *string `json:"BillDownloadURL,omitempty" name:"BillDownloadURL"`
+
+	// 渠道原始对账单下载链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalBillDownloadURL *string `json:"OriginalBillDownloadURL,omitempty" name:"OriginalBillDownloadURL"`
+}
+
+type QueryBillDownloadURLRequest struct {
+	*tchttp.BaseRequest
+
+	// 商户号
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 代发类型：
+	// 1、 微信企业付款 
+	// 2、 支付宝转账 
+	// 3、 平安银企直联代发转账
+	TransferType *int64 `json:"TransferType,omitempty" name:"TransferType"`
+
+	// 账单日期，格式yyyy-MM-dd
+	BillDate *string `json:"BillDate,omitempty" name:"BillDate"`
+}
+
+func (r *QueryBillDownloadURLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryBillDownloadURLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MerchantId")
+	delete(f, "TransferType")
+	delete(f, "BillDate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryBillDownloadURLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryBillDownloadURLResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。响应成功："SUCCESS"，其他为不成功
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 响应消息
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *QueryBillDownloadURLData `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryBillDownloadURLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryBillDownloadURLResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryCityCodeRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QueryCityCodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryCityCodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryCityCodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryCityCodeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 查询城市编码响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result []*CityCodeResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryCityCodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryCityCodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryCommonTransferRechargeRequest struct {
@@ -3841,8 +8467,24 @@ func (r *QueryCommonTransferRechargeRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryCommonTransferRechargeRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MrchCode")
+	delete(f, "FunctionFlag")
+	delete(f, "StartDate")
+	delete(f, "EndDate")
+	delete(f, "PageNum")
+	delete(f, "ReservedMsg")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryCommonTransferRechargeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryCommonTransferRechargeResponse struct {
@@ -3876,7 +8518,7 @@ type QueryCommonTransferRechargeResponse struct {
 
 		// 交易信息数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TranItemArray []*TransferItem `json:"TranItemArray,omitempty" name:"TranItemArray" list`
+		TranItemArray []*TransferItem `json:"TranItemArray,omitempty" name:"TranItemArray"`
 
 		// STRING(1027)，保留域
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3892,8 +8534,399 @@ func (r *QueryCommonTransferRechargeResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryCommonTransferRechargeResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryContractPayFeeRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 支付方式编号
+	PaymentId *string `json:"PaymentId,omitempty" name:"PaymentId"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QueryContractPayFeeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryContractPayFeeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "PaymentId")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryContractPayFeeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryContractPayFeeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 查询支付方式费率及自定义表单项响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *QueryContractPayFeeResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryContractPayFeeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryContractPayFeeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryContractPayFeeResult struct {
+
+	// pay支付方式json数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pay *PayDataResult `json:"Pay,omitempty" name:"Pay"`
+
+	// 合同扩展自定义字段
+	ExtraInput []*string `json:"ExtraInput,omitempty" name:"ExtraInput"`
+
+	// pay_fee支付方式行业分类费率json数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayFee []*PayFeeDataResult `json:"PayFee,omitempty" name:"PayFee"`
+}
+
+type QueryContractPayWayListRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QueryContractPayWayListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryContractPayWayListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryContractPayWayListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryContractPayWayListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 查询合同支付方式响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result []*ContractPayListResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryContractPayWayListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryContractPayWayListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryContractRelateShopRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 合同主键
+	ContractId *string `json:"ContractId,omitempty" name:"ContractId"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QueryContractRelateShopRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryContractRelateShopRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "ContractId")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryContractRelateShopRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryContractRelateShopResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 查询合同可关联门店响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result []*QueryContractRelateShopResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryContractRelateShopResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryContractRelateShopResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryContractRelateShopResult struct {
+
+	// 省份
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Province *string `json:"Province,omitempty" name:"Province"`
+
+	// 城市编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CityId *string `json:"CityId,omitempty" name:"CityId"`
+
+	// 门店简称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopName *string `json:"ShopName,omitempty" name:"ShopName"`
+
+	// 终端数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TerminalCount *string `json:"TerminalCount,omitempty" name:"TerminalCount"`
+
+	// 城市
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 门店状态（0未审核，1已审核，2审核未通过，3待审核，4已删除，5初审通过）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopStatus *string `json:"ShopStatus,omitempty" name:"ShopStatus"`
+
+	// 若是支付宝合同，支付宝上线状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AliPayOnline *string `json:"AliPayOnline,omitempty" name:"AliPayOnline"`
+
+	// 门店编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopNo *string `json:"ShopNo,omitempty" name:"ShopNo"`
+
+	// 县/区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Country *string `json:"Country,omitempty" name:"Country"`
+
+	// 若是支付宝合同，支付宝审核状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AliPayStatus *string `json:"AliPayStatus,omitempty" name:"AliPayStatus"`
+
+	// 为空或者0表示未关联，大于0表示已关联
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsChecked *string `json:"IsChecked,omitempty" name:"IsChecked"`
+
+	// 详细地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 若是支付宝合同，支付宝审核描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AliPayDesc *string `json:"AliPayDesc,omitempty" name:"AliPayDesc"`
+}
+
+type QueryContractRequest struct {
+	*tchttp.BaseRequest
+
+	// 聚鑫分配的支付主MidasAppId
+	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
+
+	// 用户ID，长度不小于5位，仅支持字母和数字的组合
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 指定渠道：  wechat：微信支付  qqwallet：QQ钱包 
+	//  bank：网银支付  只有一个渠道时需要指定
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
+
+	// 枚举值：
+	// CONTRACT_QUERY_MODE_BY_OUT_CONTRACT_CODE：按 OutContractCode + ContractSceneId 查询
+	// CONTRACT_QUERY_MODE_BY_CHANNEL_CONTRACT_CODE：按ChannelContractCode查询
+	ContractQueryMode *string `json:"ContractQueryMode,omitempty" name:"ContractQueryMode"`
+
+	// 按照聚鑫安全密钥计算的签名
+	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
+
+	// 聚鑫分配的安全ID
+	MidasSecretId *string `json:"MidasSecretId,omitempty" name:"MidasSecretId"`
+
+	// 聚鑫计费SubAppId，代表子商户
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 业务签约合同协议号 当 ContractQueryMode=CONTRACT_QUERY_MODE_BY_OUT_CONTRACT_CODE 时 ，必填
+	OutContractCode *string `json:"OutContractCode,omitempty" name:"OutContractCode"`
+
+	// 签约场景ID，当 ContractQueryMode=CONTRACT_QUERY_MODE_BY_OUT_CONTRACT_CODE 时 必填，在米大师侧托管后生成
+	ContractSceneId *string `json:"ContractSceneId,omitempty" name:"ContractSceneId"`
+
+	// 米大师生成的协议号 ，当 ContractQueryMode=CONTRACT_QUERY_MODE_BY_CHANNEL_CONTRACT_CODE 时必填
+	ChannelContractCode *string `json:"ChannelContractCode,omitempty" name:"ChannelContractCode"`
+
+	// 第三方渠道合约数据，为json字符串，与特定渠道有关
+	ExternalContractData *string `json:"ExternalContractData,omitempty" name:"ExternalContractData"`
+
+	// 环境名:
+	// release: 现网环境
+	// sandbox: 沙箱环境
+	// development: 开发环境
+	// 缺省: release
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+
+	// USER_ID: 用户ID
+	// ANONYMOUS: 匿名类型 USER_ID
+	// 默认值为 USER_ID
+	UserType *string `json:"UserType,omitempty" name:"UserType"`
+
+	// 签约代扣穿透查询存量数据迁移模式
+	MigrateMode *string `json:"MigrateMode,omitempty" name:"MigrateMode"`
+
+	// 签约方式
+	ContractMethod *string `json:"ContractMethod,omitempty" name:"ContractMethod"`
+}
+
+func (r *QueryContractRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryContractRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MidasAppId")
+	delete(f, "UserId")
+	delete(f, "Channel")
+	delete(f, "ContractQueryMode")
+	delete(f, "MidasSignature")
+	delete(f, "MidasSecretId")
+	delete(f, "SubAppId")
+	delete(f, "OutContractCode")
+	delete(f, "ContractSceneId")
+	delete(f, "ChannelContractCode")
+	delete(f, "ExternalContractData")
+	delete(f, "MidasEnvironment")
+	delete(f, "UserType")
+	delete(f, "MigrateMode")
+	delete(f, "ContractMethod")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryContractRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryContractResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 签约数据
+		ContractData *ResponseQueryContract `json:"ContractData,omitempty" name:"ContractData"`
+
+		// 请求处理信息
+		Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryContractResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryContractResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryCustAcctIdBalanceRequest struct {
@@ -3923,8 +8956,23 @@ func (r *QueryCustAcctIdBalanceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryCustAcctIdBalanceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MrchCode")
+	delete(f, "QueryFlag")
+	delete(f, "PageNum")
+	delete(f, "SubAcctNo")
+	delete(f, "ReservedMsg")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryCustAcctIdBalanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryCustAcctIdBalanceResponse struct {
@@ -3958,7 +9006,7 @@ type QueryCustAcctIdBalanceResponse struct {
 
 		// 账户信息数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		AcctArray []*Acct `json:"AcctArray,omitempty" name:"AcctArray" list`
+		AcctArray []*Acct `json:"AcctArray,omitempty" name:"AcctArray"`
 
 		// STRING(1027)，保留域
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3974,8 +9022,10 @@ func (r *QueryCustAcctIdBalanceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryCustAcctIdBalanceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryDeclareData struct {
@@ -4027,6 +9077,66 @@ type QueryDeclareResult struct {
 	Code *string `json:"Code,omitempty" name:"Code"`
 }
 
+type QueryDownloadBillURLRequest struct {
+	*tchttp.BaseRequest
+
+	// 分配给商户的AppId。进件成功后返给商户方的AppId。
+	MerchantAppId *string `json:"MerchantAppId,omitempty" name:"MerchantAppId"`
+
+	// 渠道编号。固定值：ZSB2B
+	ChannelCode *string `json:"ChannelCode,omitempty" name:"ChannelCode"`
+
+	// 对账单日期，格式yyyyMMdd
+	BillDate *string `json:"BillDate,omitempty" name:"BillDate"`
+}
+
+func (r *QueryDownloadBillURLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryDownloadBillURLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MerchantAppId")
+	delete(f, "ChannelCode")
+	delete(f, "BillDate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryDownloadBillURLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryDownloadBillURLResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 分配给商户的AppId。进件成功后返给商户方的AppId。
+		MerchantAppId *string `json:"MerchantAppId,omitempty" name:"MerchantAppId"`
+
+		// 对账单下载地址。
+		DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryDownloadBillURLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryDownloadBillURLResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type QueryExchangeRateRequest struct {
 	*tchttp.BaseRequest
 
@@ -4045,8 +9155,20 @@ func (r *QueryExchangeRateRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryExchangeRateRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SourceCurrency")
+	delete(f, "TargetCurrency")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryExchangeRateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryExchangeRateResponse struct {
@@ -4066,8 +9188,10 @@ func (r *QueryExchangeRateResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryExchangeRateResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryExchangerateData struct {
@@ -4094,7 +9218,7 @@ type QueryExchangerateResult struct {
 	Code *string `json:"Code,omitempty" name:"Code"`
 
 	// 查询汇率数据数组
-	Data []*QueryExchangerateData `json:"Data,omitempty" name:"Data" list`
+	Data []*QueryExchangerateData `json:"Data,omitempty" name:"Data"`
 }
 
 type QueryInvoiceRequest struct {
@@ -4129,8 +9253,24 @@ func (r *QueryInvoiceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryInvoiceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InvoicePlatformId")
+	delete(f, "OrderId")
+	delete(f, "OrderSn")
+	delete(f, "IsRed")
+	delete(f, "Profile")
+	delete(f, "InvoiceChannel")
+	delete(f, "SellerTaxpayerNum")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryInvoiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryInvoiceResponse struct {
@@ -4150,8 +9290,10 @@ func (r *QueryInvoiceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryInvoiceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryInvoiceResult struct {
@@ -4211,6 +9353,88 @@ type QueryInvoiceResultData struct {
 
 	// pdf地址
 	PdfUrl *string `json:"PdfUrl,omitempty" name:"PdfUrl"`
+
+	// png地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+type QueryInvoiceV2Request struct {
+	*tchttp.BaseRequest
+
+	// 开票平台ID
+	InvoicePlatformId *int64 `json:"InvoicePlatformId,omitempty" name:"InvoicePlatformId"`
+
+	// 订单号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 发票种类：
+	// 0：蓝票
+	// 1：红票【该字段默认为0， 如果需要查询红票信息，本字段必须传1，否则可能查询不到需要的发票信息】。
+	IsRed *int64 `json:"IsRed,omitempty" name:"IsRed"`
+
+	// 接入环境。沙箱环境填sandbox。
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 开票渠道。0：线上渠道，1：线下渠道。不填默认为线上渠道
+	InvoiceChannel *int64 `json:"InvoiceChannel,omitempty" name:"InvoiceChannel"`
+
+	// 当渠道为线下渠道时，必填
+	SellerTaxpayerNum *string `json:"SellerTaxpayerNum,omitempty" name:"SellerTaxpayerNum"`
+}
+
+func (r *QueryInvoiceV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryInvoiceV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InvoicePlatformId")
+	delete(f, "OrderId")
+	delete(f, "IsRed")
+	delete(f, "Profile")
+	delete(f, "InvoiceChannel")
+	delete(f, "SellerTaxpayerNum")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryInvoiceV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryInvoiceV2Response struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 发票查询结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *QueryInvoiceResultData `json:"Result,omitempty" name:"Result"`
+
+		// 错误码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 错误消息
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryInvoiceV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryInvoiceV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryItem struct {
@@ -4242,6 +9466,106 @@ type QueryItem struct {
 	MaintenanceDate *string `json:"MaintenanceDate,omitempty" name:"MaintenanceDate"`
 }
 
+type QueryMaliciousRegistrationRequest struct {
+	*tchttp.BaseRequest
+
+	// 商户ID，调用方使用的商户号信息，与商户主体一一对应
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 商户名称
+	MerchantName *string `json:"MerchantName,omitempty" name:"MerchantName"`
+
+	// 企业工商注册标准名称
+	CompanyName *string `json:"CompanyName,omitempty" name:"CompanyName"`
+
+	// 注册地址
+	RegAddress *string `json:"RegAddress,omitempty" name:"RegAddress"`
+
+	// 商户进件Unix时间，单位秒（非企业注册工商时间)
+	RegTime *uint64 `json:"RegTime,omitempty" name:"RegTime"`
+
+	// 统一社会信用代码
+	USCI *string `json:"USCI,omitempty" name:"USCI"`
+
+	// 工商注册码，匹配优先级为Usci>RegNumber>CompanyName
+	RegNumber *string `json:"RegNumber,omitempty" name:"RegNumber"`
+
+	// 手机号码32位MD5加密结果，全大写，格式为0086-13812345678
+	EncryptedPhoneNumber *string `json:"EncryptedPhoneNumber,omitempty" name:"EncryptedPhoneNumber"`
+
+	// 邮箱32位MD5加密结果，全大写
+	EncryptedEmailAddress *string `json:"EncryptedEmailAddress,omitempty" name:"EncryptedEmailAddress"`
+
+	// 身份证MD5加密结果，最后一位x大写
+	EncryptedPersonId *string `json:"EncryptedPersonId,omitempty" name:"EncryptedPersonId"`
+
+	// 填写信息设备的IP地址
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 进件渠道号，客户自行编码即可
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
+}
+
+func (r *QueryMaliciousRegistrationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryMaliciousRegistrationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MerchantId")
+	delete(f, "MerchantName")
+	delete(f, "CompanyName")
+	delete(f, "RegAddress")
+	delete(f, "RegTime")
+	delete(f, "USCI")
+	delete(f, "RegNumber")
+	delete(f, "EncryptedPhoneNumber")
+	delete(f, "EncryptedEmailAddress")
+	delete(f, "EncryptedPersonId")
+	delete(f, "Ip")
+	delete(f, "Channel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryMaliciousRegistrationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryMaliciousRegistrationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 错误消息
+		ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+
+		// 商户风险信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *MerchantRiskInfo `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryMaliciousRegistrationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryMaliciousRegistrationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type QueryMemberBindRequest struct {
 	*tchttp.BaseRequest
 
@@ -4269,8 +9593,23 @@ func (r *QueryMemberBindRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryMemberBindRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MrchCode")
+	delete(f, "QueryFlag")
+	delete(f, "PageNum")
+	delete(f, "SubAcctNo")
+	delete(f, "ReservedMsg")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryMemberBindRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryMemberBindResponse struct {
@@ -4295,7 +9634,7 @@ type QueryMemberBindResponse struct {
 
 		// 交易信息数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TranItemArray []*TranItem `json:"TranItemArray,omitempty" name:"TranItemArray" list`
+		TranItemArray []*TranItem `json:"TranItemArray,omitempty" name:"TranItemArray"`
 
 		// STRING(1027)，保留域
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4320,8 +9659,10 @@ func (r *QueryMemberBindResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryMemberBindResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryMemberTransactionRequest struct {
@@ -4387,8 +9728,35 @@ func (r *QueryMemberTransactionRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryMemberTransactionRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MrchCode")
+	delete(f, "FunctionFlag")
+	delete(f, "OutSubAcctNo")
+	delete(f, "OutMemberCode")
+	delete(f, "OutSubAcctName")
+	delete(f, "InSubAcctNo")
+	delete(f, "InMemberCode")
+	delete(f, "InSubAcctName")
+	delete(f, "TranAmt")
+	delete(f, "TranFee")
+	delete(f, "TranType")
+	delete(f, "Ccy")
+	delete(f, "OrderNo")
+	delete(f, "OrderContent")
+	delete(f, "Remark")
+	delete(f, "ReservedMsg")
+	delete(f, "WebSign")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryMemberTransactionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryMemberTransactionResponse struct {
@@ -4422,8 +9790,10 @@ func (r *QueryMemberTransactionResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryMemberTransactionResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryMerchantBalanceData struct {
@@ -4453,8 +9823,19 @@ func (r *QueryMerchantBalanceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryMerchantBalanceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Currency")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryMerchantBalanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryMerchantBalanceResponse struct {
@@ -4474,8 +9855,10 @@ func (r *QueryMerchantBalanceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryMerchantBalanceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryMerchantBalanceResult struct {
@@ -4485,6 +9868,71 @@ type QueryMerchantBalanceResult struct {
 
 	// 对接账户余额查询数据
 	Data *QueryMerchantBalanceData `json:"Data,omitempty" name:"Data"`
+}
+
+type QueryMerchantClassificationRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QueryMerchantClassificationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryMerchantClassificationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryMerchantClassificationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryMerchantClassificationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 查询商户分类响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result []*MerchantClassificationId `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryMerchantClassificationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryMerchantClassificationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryMerchantInfoForManagementRequest struct {
@@ -4508,8 +9956,21 @@ func (r *QueryMerchantInfoForManagementRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryMerchantInfoForManagementRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InvoicePlatformId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryMerchantInfoForManagementRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryMerchantInfoForManagementResponse struct {
@@ -4530,8 +9991,193 @@ func (r *QueryMerchantInfoForManagementResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryMerchantInfoForManagementResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryMerchantOrderRequest struct {
+	*tchttp.BaseRequest
+
+	// 进件成功后返给商户方的AppId。
+	MerchantAppId *string `json:"MerchantAppId,omitempty" name:"MerchantAppId"`
+
+	// 平台流水号。平台唯一订单号。
+	OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
+}
+
+func (r *QueryMerchantOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryMerchantOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MerchantAppId")
+	delete(f, "OrderNo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryMerchantOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryMerchantOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 进件成功后返给商户方的AppId。
+		MerchantAppId *string `json:"MerchantAppId,omitempty" name:"MerchantAppId"`
+
+		// 平台流水号。平台唯一订单号。
+		OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
+
+		// 订单支付状态。0-下单失败 1-下单成功未支付 2-支付成功 3-支付失败 4-退款中 5-退款成功 6-退款失败 7-待付款 8-待确认。
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryMerchantOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryMerchantOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryMerchantPayWayListRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 支付类型，逗号分隔。1-现金，2-主扫，3-被扫，4-JSAPI。
+	PayType *string `json:"PayType,omitempty" name:"PayType"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QueryMerchantPayWayListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryMerchantPayWayListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "PayType")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryMerchantPayWayListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryMerchantPayWayListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 查询商户支付方式列表结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result []*MerchantPayWayData `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryMerchantPayWayListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryMerchantPayWayListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryMerchantRequest struct {
+	*tchttp.BaseRequest
+
+	// 进件成功后返给商户方的 AppId
+	MerchantAppId *string `json:"MerchantAppId,omitempty" name:"MerchantAppId"`
+}
+
+func (r *QueryMerchantRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryMerchantRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MerchantAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryMerchantRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryMerchantResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 分配给商户的 AppId，该 AppId 为后续各项 交易的商户标识。
+		MerchantAppId *string `json:"MerchantAppId,omitempty" name:"MerchantAppId"`
+
+		// 收款商户名称。
+		MerchantName *string `json:"MerchantName,omitempty" name:"MerchantName"`
+
+		// B2B 支付标志。是否开通 B2B 支付， 1:开通 0:不开通。
+		BusinessPayFlag *string `json:"BusinessPayFlag,omitempty" name:"BusinessPayFlag"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryMerchantResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryMerchantResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryOrderOutOrderList struct {
@@ -4606,7 +10252,7 @@ type QueryOrderOutOrderList struct {
 	ChannelOrderId *string `json:"ChannelOrderId,omitempty" name:"ChannelOrderId"`
 
 	// 调用下单接口传进来的 SubOutTradeNoList
-	SubOrderList []*QueryOrderOutSubOrderList `json:"SubOrderList,omitempty" name:"SubOrderList" list`
+	SubOrderList []*QueryOrderOutSubOrderList `json:"SubOrderList,omitempty" name:"SubOrderList"`
 
 	// 支付机构订单号
 	ChannelExternalOrderId *string `json:"ChannelExternalOrderId,omitempty" name:"ChannelExternalOrderId"`
@@ -4695,8 +10341,29 @@ func (r *QueryOrderRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryOrderRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MidasAppId")
+	delete(f, "UserId")
+	delete(f, "Type")
+	delete(f, "MidasSecretId")
+	delete(f, "MidasSignature")
+	delete(f, "Count")
+	delete(f, "Offset")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "OutTradeNo")
+	delete(f, "TransactionId")
+	delete(f, "MidasEnvironment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryOrderResponse struct {
@@ -4707,7 +10374,7 @@ type QueryOrderResponse struct {
 		TotalNum *int64 `json:"TotalNum,omitempty" name:"TotalNum"`
 
 		// 查询结果的订单列表
-		OrderList []*QueryOrderOutOrderList `json:"OrderList,omitempty" name:"OrderList" list`
+		OrderList []*QueryOrderOutOrderList `json:"OrderList,omitempty" name:"OrderList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4719,8 +10386,214 @@ func (r *QueryOrderResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryOrderResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryOrderStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 开发者流水号
+	DeveloperNo *string `json:"DeveloperNo,omitempty" name:"DeveloperNo"`
+
+	// 付款订单号
+	OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QueryOrderStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryOrderStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "DeveloperNo")
+	delete(f, "OrderNo")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryOrderStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryOrderStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 查询订单付款状态结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *QueryOrderStatusResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryOrderStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryOrderStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryOrderStatusResult struct {
+
+	// 付款订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
+
+	// 开发者流水号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeveloperNo *string `json:"DeveloperNo,omitempty" name:"DeveloperNo"`
+
+	// 交易优惠金额（免充值券）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeDiscountAmount *string `json:"TradeDiscountAmount,omitempty" name:"TradeDiscountAmount"`
+
+	// 付款方式名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayName *string `json:"PayName,omitempty" name:"PayName"`
+
+	// 商户流水号（从1开始自增长不重复）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderMerchantId *string `json:"OrderMerchantId,omitempty" name:"OrderMerchantId"`
+
+	// 交易帐号（银行卡号、支付宝帐号、微信帐号等，某些收单机构没有此数据）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeAccount *string `json:"TradeAccount,omitempty" name:"TradeAccount"`
+
+	// 实际交易金额（以分为单位，没有小数点）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeAmount *string `json:"TradeAmount,omitempty" name:"TradeAmount"`
+
+	// 币种签名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrencySign *string `json:"CurrencySign,omitempty" name:"CurrencySign"`
+
+	// 付款完成时间（以收单机构为准）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradePayTime *string `json:"TradePayTime,omitempty" name:"TradePayTime"`
+
+	// 门店流水号（从1开始自增长不重复）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopOrderId *string `json:"ShopOrderId,omitempty" name:"ShopOrderId"`
+
+	// 支付标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayTag *string `json:"PayTag,omitempty" name:"PayTag"`
+
+	// 订单状态（1交易成功，2待支付，4已取消，9等待用户输入密码确认
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 币种代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderCurrency *string `json:"OrderCurrency,omitempty" name:"OrderCurrency"`
+
+	// 二维码字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeQrcode *string `json:"TradeQrcode,omitempty" name:"TradeQrcode"`
+
+	// 开始交易时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeTime *string `json:"TradeTime,omitempty" name:"TradeTime"`
+
+	// 折扣金额（以分为单位，没有小数点）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiscountAmount *string `json:"DiscountAmount,omitempty" name:"DiscountAmount"`
+
+	// 商户号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+
+	// 订单备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 订单标题
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderName *string `json:"OrderName,omitempty" name:"OrderName"`
+
+	// 原始金额（以分为单位，没有小数点）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalAmount *string `json:"OriginalAmount,omitempty" name:"OriginalAmount"`
+
+	// 门店编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopNo *string `json:"ShopNo,omitempty" name:"ShopNo"`
+
+	// 收单机构原始交易数据，如果返回非标准json数据，请自行转换
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeResult *string `json:"TradeResult,omitempty" name:"TradeResult"`
+
+	// 订单流水号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 订单类型（1消费，2辙单）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderType *string `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 收单机构交易号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeNo *string `json:"TradeNo,omitempty" name:"TradeNo"`
+
+	// 原始订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalOrderNo *string `json:"OriginalOrderNo,omitempty" name:"OriginalOrderNo"`
+
+	// 订单标记，订单附加数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tag *string `json:"Tag,omitempty" name:"Tag"`
+
+	// 下单时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddTime *string `json:"AddTime,omitempty" name:"AddTime"`
+
+	// 收银员编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CashierId *string `json:"CashierId,omitempty" name:"CashierId"`
+
+	// 收银员名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CashierRealName *string `json:"CashierRealName,omitempty" name:"CashierRealName"`
+
+	// 店铺全称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopFullName *string `json:"ShopFullName,omitempty" name:"ShopFullName"`
+
+	// 店铺名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopName *string `json:"ShopName,omitempty" name:"ShopName"`
 }
 
 type QueryOutwardOrderData struct {
@@ -4790,8 +10663,19 @@ func (r *QueryOutwardOrderRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryOutwardOrderRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TransactionId")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryOutwardOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryOutwardOrderResponse struct {
@@ -4811,8 +10695,10 @@ func (r *QueryOutwardOrderResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryOutwardOrderResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryOutwardOrderResult struct {
@@ -4839,8 +10725,19 @@ func (r *QueryPayerInfoRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryPayerInfoRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PayerId")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryPayerInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryPayerInfoResponse struct {
@@ -4860,8 +10757,10 @@ func (r *QueryPayerInfoResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryPayerInfoResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryPayerinfoData struct {
@@ -4940,8 +10839,22 @@ func (r *QueryReconciliationDocumentRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryReconciliationDocumentRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MrchCode")
+	delete(f, "FileType")
+	delete(f, "FileDate")
+	delete(f, "ReservedMsg")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryReconciliationDocumentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryReconciliationDocumentResponse struct {
@@ -4963,7 +10876,7 @@ type QueryReconciliationDocumentResponse struct {
 
 		// 交易信息数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TranItemArray []*FileItem `json:"TranItemArray,omitempty" name:"TranItemArray" list`
+		TranItemArray []*FileItem `json:"TranItemArray,omitempty" name:"TranItemArray"`
 
 		// STRING(1027)，保留域
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4979,8 +10892,10 @@ func (r *QueryReconciliationDocumentResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryReconciliationDocumentResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryRefundRequest struct {
@@ -5014,8 +10929,23 @@ func (r *QueryRefundRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryRefundRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserId")
+	delete(f, "RefundId")
+	delete(f, "MidasAppId")
+	delete(f, "MidasSecretId")
+	delete(f, "MidasSignature")
+	delete(f, "MidasEnvironment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryRefundRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryRefundResponse struct {
@@ -5035,8 +10965,138 @@ func (r *QueryRefundResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryRefundResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryShopOpenIdRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 门店编号
+	ShopNo *string `json:"ShopNo,omitempty" name:"ShopNo"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QueryShopOpenIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryShopOpenIdRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "ShopNo")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryShopOpenIdRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryShopOpenIdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 获取门店OpenId响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *QueryShopOpenIdResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryShopOpenIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryShopOpenIdResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryShopOpenIdResult struct {
+
+	// 省份
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Province *string `json:"Province,omitempty" name:"Province"`
+
+	// 城市
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 门店简称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopName *string `json:"ShopName,omitempty" name:"ShopName"`
+
+	// 商户编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+
+	// 城市编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CityId *string `json:"CityId,omitempty" name:"CityId"`
+
+	// open_id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 门店电话
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Telephone *string `json:"Telephone,omitempty" name:"Telephone"`
+
+	// 门店编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopNo *string `json:"ShopNo,omitempty" name:"ShopNo"`
+
+	// 县/区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	County *string `json:"County,omitempty" name:"County"`
+
+	// 门店全称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopFullName *string `json:"ShopFullName,omitempty" name:"ShopFullName"`
+
+	// 品牌名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
+
+	// 详细地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// open_key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 商户名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantName *string `json:"MerchantName,omitempty" name:"MerchantName"`
 }
 
 type QuerySinglePayItem struct {
@@ -5073,8 +11133,19 @@ func (r *QuerySinglePayRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QuerySinglePayRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SerialNumber")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QuerySinglePayRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QuerySinglePayResponse struct {
@@ -5094,8 +11165,10 @@ func (r *QuerySinglePayResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QuerySinglePayResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QuerySinglePayResult struct {
@@ -5112,7 +11185,112 @@ type QuerySinglePayResult struct {
 
 	// 支付明细
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Items []*QuerySinglePayItem `json:"Items,omitempty" name:"Items" list`
+	Items []*QuerySinglePayItem `json:"Items,omitempty" name:"Items"`
+}
+
+type QuerySinglePaymentResultData struct {
+
+	// 平台交易流水号，唯一
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeSerialNo *string `json:"TradeSerialNo,omitempty" name:"TradeSerialNo"`
+
+	// 订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 交易状态。
+	// 0 处理中  
+	// 1 预占成功 
+	// 2 交易成功 
+	// 3 交易失败 
+	// 4 未知渠道异常 
+	// 5 预占额度失败
+	// 6 提交成功
+	// 7 提交失败
+	// 8 订单重复提交
+	// 99 未知系统异常
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeStatus *int64 `json:"TradeStatus,omitempty" name:"TradeStatus"`
+
+	// 业务备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 代理商ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+
+	// 代理商名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentName *string `json:"AgentName,omitempty" name:"AgentName"`
+
+	// 交易状态描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeStatusDesc *string `json:"TradeStatusDesc,omitempty" name:"TradeStatusDesc"`
+}
+
+type QuerySinglePaymentResultRequest struct {
+	*tchttp.BaseRequest
+
+	// 转账类型
+	TransferType *int64 `json:"TransferType,omitempty" name:"TransferType"`
+
+	// 交易流水流水号，唯一
+	TradeSerialNo *string `json:"TradeSerialNo,omitempty" name:"TradeSerialNo"`
+
+	// 订单号，与TradeSerialNo不能同时为空
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+}
+
+func (r *QuerySinglePaymentResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QuerySinglePaymentResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TransferType")
+	delete(f, "TradeSerialNo")
+	delete(f, "OrderId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QuerySinglePaymentResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QuerySinglePaymentResultResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。响应成功："SUCCESS"，其他为不成功
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 响应消息。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回响应
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *QuerySinglePaymentResultData `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QuerySinglePaymentResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QuerySinglePaymentResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QuerySingleTransactionStatusRequest struct {
@@ -5145,8 +11323,24 @@ func (r *QuerySingleTransactionStatusRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QuerySingleTransactionStatusRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MrchCode")
+	delete(f, "FunctionFlag")
+	delete(f, "TranNetSeqNo")
+	delete(f, "SubAcctNo")
+	delete(f, "TranDate")
+	delete(f, "ReservedMsg")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QuerySingleTransactionStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QuerySingleTransactionStatusResponse struct {
@@ -5208,8 +11402,10 @@ func (r *QuerySingleTransactionStatusResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QuerySingleTransactionStatusResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QuerySmallAmountTransferRequest struct {
@@ -5236,8 +11432,22 @@ func (r *QuerySmallAmountTransferRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QuerySmallAmountTransferRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MrchCode")
+	delete(f, "OldTranSeqNo")
+	delete(f, "TranDate")
+	delete(f, "ReservedMsg")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QuerySmallAmountTransferRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QuerySmallAmountTransferResponse struct {
@@ -5275,8 +11485,10 @@ func (r *QuerySmallAmountTransferResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QuerySmallAmountTransferResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryTradeData struct {
@@ -5352,8 +11564,19 @@ func (r *QueryTradeRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryTradeRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TradeFileId")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryTradeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryTradeResponse struct {
@@ -5373,8 +11596,10 @@ func (r *QueryTradeResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryTradeResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryTradeResult struct {
@@ -5440,8 +11665,25 @@ func (r *QueryTransferBatchRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryTransferBatchRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MerchantId")
+	delete(f, "NeedQueryDetail")
+	delete(f, "MerchantBatchNo")
+	delete(f, "BatchId")
+	delete(f, "Profile")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "DetailStatus")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryTransferBatchRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryTransferBatchResponse struct {
@@ -5530,7 +11772,7 @@ type QueryTransferBatchResponse struct {
 		// 转账明细列表。
 	// 返回明细详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TransferDetails []*TransferDetailResponse `json:"TransferDetails,omitempty" name:"TransferDetails" list`
+		TransferDetails []*TransferDetailResponse `json:"TransferDetails,omitempty" name:"TransferDetails"`
 
 		// 批次类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5554,8 +11796,10 @@ func (r *QueryTransferBatchResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryTransferBatchResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryTransferDetailRequest struct {
@@ -5599,8 +11843,23 @@ func (r *QueryTransferDetailRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryTransferDetailRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MerchantId")
+	delete(f, "MerchantBatchNo")
+	delete(f, "MerchantDetailNo")
+	delete(f, "BatchId")
+	delete(f, "DetailId")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryTransferDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryTransferDetailResponse struct {
@@ -5703,8 +11962,110 @@ func (r *QueryTransferDetailResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryTransferDetailResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryTransferResultData struct {
+
+	// 平台交易流水号
+	TradeSerialNo *string `json:"TradeSerialNo,omitempty" name:"TradeSerialNo"`
+
+	// 订单号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 交易状态。
+	// 0 处理中  
+	// 1 提交成功 
+	// 2 交易成功 
+	// 3 交易失败 
+	// 4 未知渠道异常 
+	// 99 未知系统异常
+	TradeStatus *int64 `json:"TradeStatus,omitempty" name:"TradeStatus"`
+
+	// 业务备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+type QueryTransferResultRequest struct {
+	*tchttp.BaseRequest
+
+	// 商户号
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 申请商户号的appid或者商户号绑定的appid
+	MerchantAppId *string `json:"MerchantAppId,omitempty" name:"MerchantAppId"`
+
+	// 1、 微信企业付款 
+	// 2、 支付宝转账 
+	// 3、 平安银企直联代发转账
+	TransferType *int64 `json:"TransferType,omitempty" name:"TransferType"`
+
+	// 交易流水流水号（与 OrderId 不能同时为空）
+	TradeSerialNo *string `json:"TradeSerialNo,omitempty" name:"TradeSerialNo"`
+
+	// 订单号（与 TradeSerialNo 不能同时为空）
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 接入环境。沙箱环境填sandbox。
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QueryTransferResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryTransferResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MerchantId")
+	delete(f, "MerchantAppId")
+	delete(f, "TransferType")
+	delete(f, "TradeSerialNo")
+	delete(f, "OrderId")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryTransferResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryTransferResultResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。响应成功："SUCCESS"，其他为不成功
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 响应消息
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *QueryTransferResultData `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryTransferResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryTransferResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RechargeByThirdPayRequest struct {
@@ -5785,8 +12146,40 @@ func (r *RechargeByThirdPayRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RechargeByThirdPayRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RequestType")
+	delete(f, "MerchantCode")
+	delete(f, "PayChannel")
+	delete(f, "PayChannelSubId")
+	delete(f, "OrderId")
+	delete(f, "BankAccountNumber")
+	delete(f, "PlatformShortNumber")
+	delete(f, "MidasSecretId")
+	delete(f, "MidasAppId")
+	delete(f, "MidasSignature")
+	delete(f, "TransSequenceNumber")
+	delete(f, "BankSubAccountNumber")
+	delete(f, "TransFee")
+	delete(f, "ThirdPayChannel")
+	delete(f, "ThirdPayChannelMerchantCode")
+	delete(f, "ThirdPayChannelOrderId")
+	delete(f, "CurrencyAmount")
+	delete(f, "CurrencyUnit")
+	delete(f, "CurrencyType")
+	delete(f, "TransNetMemberCode")
+	delete(f, "MidasEnvironment")
+	delete(f, "ReservedMessage")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RechargeByThirdPayRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RechargeByThirdPayResponse struct {
@@ -5814,8 +12207,10 @@ func (r *RechargeByThirdPayResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RechargeByThirdPayResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RechargeMemberThirdPayRequest struct {
@@ -5875,8 +12270,32 @@ func (r *RechargeMemberThirdPayRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RechargeMemberThirdPayRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TranNetMemberCode")
+	delete(f, "MemberFillAmt")
+	delete(f, "Commission")
+	delete(f, "Ccy")
+	delete(f, "PayChannelType")
+	delete(f, "PayChannelAssignMerNo")
+	delete(f, "PayChannelTranSeqNo")
+	delete(f, "EjzbOrderNo")
+	delete(f, "MrchCode")
+	delete(f, "EjzbOrderContent")
+	delete(f, "Remark")
+	delete(f, "ReservedMsgOne")
+	delete(f, "ReservedMsgTwo")
+	delete(f, "ReservedMsgThree")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RechargeMemberThirdPayRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RechargeMemberThirdPayResponse struct {
@@ -5918,8 +12337,10 @@ func (r *RechargeMemberThirdPayResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RechargeMemberThirdPayResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RefundMemberTransactionRequest struct {
@@ -6004,8 +12425,41 @@ func (r *RefundMemberTransactionRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RefundMemberTransactionRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OutSubAccountName")
+	delete(f, "InSubAccountName")
+	delete(f, "PayChannelSubId")
+	delete(f, "OutSubAccountNumber")
+	delete(f, "MidasSignature")
+	delete(f, "InSubAccountNumber")
+	delete(f, "MidasSecretId")
+	delete(f, "BankAccountNumber")
+	delete(f, "OldTransSequenceNumber")
+	delete(f, "MerchantCode")
+	delete(f, "RequestType")
+	delete(f, "CurrencyAmount")
+	delete(f, "TransSequenceNumber")
+	delete(f, "PayChannel")
+	delete(f, "OldOrderId")
+	delete(f, "MidasAppId")
+	delete(f, "OrderId")
+	delete(f, "MidasEnvironment")
+	delete(f, "OutTransNetMemberCode")
+	delete(f, "InTransNetMemberCode")
+	delete(f, "ReservedMessage")
+	delete(f, "PlatformShortNumber")
+	delete(f, "TransType")
+	delete(f, "TransFee")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RefundMemberTransactionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RefundMemberTransactionResponse struct {
@@ -6031,8 +12485,138 @@ func (r *RefundMemberTransactionResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RefundMemberTransactionResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RefundOrderRequest struct {
+	*tchttp.BaseRequest
+
+	// 进件成功后返给商户方的AppId
+	MerchantAppId *string `json:"MerchantAppId,omitempty" name:"MerchantAppId"`
+
+	// 平台流水号。消费订单发起成功后，返回的平台唯一订单号。
+	OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
+}
+
+func (r *RefundOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RefundOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MerchantAppId")
+	delete(f, "OrderNo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RefundOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RefundOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 进件成功后返给商户方的AppId
+		MerchantAppId *string `json:"MerchantAppId,omitempty" name:"MerchantAppId"`
+
+		// 平台流水号。消费订单发起成功后，返回的平台唯一订单号。
+		OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
+
+		// 订单退款状态。0-退款失败
+	// 1-退款成功 
+	// 2-可疑状态
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 订单退款状态描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RefundOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RefundOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RefundOrderResult struct {
+
+	// 付款订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
+
+	// 开发者流水号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeveloperNo *string `json:"DeveloperNo,omitempty" name:"DeveloperNo"`
+
+	// 交易优惠金额（免充值券）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeDiscountAmount *string `json:"TradeDiscountAmount,omitempty" name:"TradeDiscountAmount"`
+
+	// 付款方式名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayName *string `json:"PayName,omitempty" name:"PayName"`
+
+	// 商户流水号（从1开始自增长不重复）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderMerchantId *string `json:"OrderMerchantId,omitempty" name:"OrderMerchantId"`
+
+	// 实际交易金额（以分为单位，没有小数点）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeAmount *string `json:"TradeAmount,omitempty" name:"TradeAmount"`
+
+	// 币种签名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrencySign *string `json:"CurrencySign,omitempty" name:"CurrencySign"`
+
+	// 付款完成时间（以收单机构为准）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradePayTime *string `json:"TradePayTime,omitempty" name:"TradePayTime"`
+
+	// 门店流水号（从1开始自增长不重复）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopOrderId *string `json:"ShopOrderId,omitempty" name:"ShopOrderId"`
+
+	// 支付标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayTag *string `json:"PayTag,omitempty" name:"PayTag"`
+
+	// 订单状态（1交易成功，2待支付，4已取消，9等待用户输入密码确认
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 币种代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderCurrency *string `json:"OrderCurrency,omitempty" name:"OrderCurrency"`
+
+	// 开始交易时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeTime *string `json:"TradeTime,omitempty" name:"TradeTime"`
+
+	// 折扣金额（以分为单位，没有小数点）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiscountAmount *string `json:"DiscountAmount,omitempty" name:"DiscountAmount"`
+
+	// 原始订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalOrderNo *string `json:"OriginalOrderNo,omitempty" name:"OriginalOrderNo"`
 }
 
 type RefundOutSubOrderRefundList struct {
@@ -6087,7 +12671,7 @@ type RefundRequest struct {
 	PlatformRefundAmt *int64 `json:"PlatformRefundAmt,omitempty" name:"PlatformRefundAmt"`
 
 	// 支持多个子订单批量退款单 个子订单退款支持传 SubOutTradeNo ，也支持传 SubOutTradeNoList ，都传的时候以 SubOutTradeNoList 为准。  如果传了子单退款细节，外 部不需要再传退款金额，平 台应退，商户应退金额，我 们可以直接根据子单退款算出来总和。
-	SubOrderRefundList []*RefundOutSubOrderRefundList `json:"SubOrderRefundList,omitempty" name:"SubOrderRefundList" list`
+	SubOrderRefundList []*RefundOutSubOrderRefundList `json:"SubOrderRefundList,omitempty" name:"SubOrderRefundList"`
 
 	// 环境名:
 	// release: 现网环境
@@ -6102,8 +12686,29 @@ func (r *RefundRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RefundRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserId")
+	delete(f, "RefundId")
+	delete(f, "MidasAppId")
+	delete(f, "TotalRefundAmt")
+	delete(f, "MidasSecretId")
+	delete(f, "MidasSignature")
+	delete(f, "OutTradeNo")
+	delete(f, "MchRefundAmt")
+	delete(f, "TransactionId")
+	delete(f, "PlatformRefundAmt")
+	delete(f, "SubOrderRefundList")
+	delete(f, "MidasEnvironment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RefundRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RefundResponse struct {
@@ -6120,8 +12725,207 @@ func (r *RefundResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RefundResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RefundTlinxOrderRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 原始订单的开发者交易流水号
+	DeveloperNo *string `json:"DeveloperNo,omitempty" name:"DeveloperNo"`
+
+	// 新退款订单的开发者流水号，同一门店内唯一
+	RefundOutNo *string `json:"RefundOutNo,omitempty" name:"RefundOutNo"`
+
+	// 退款订单名称，可以为空
+	RefundOrderName *string `json:"RefundOrderName,omitempty" name:"RefundOrderName"`
+
+	// 退款金额（以分为单位，没有小数点）
+	RefundAmount *string `json:"RefundAmount,omitempty" name:"RefundAmount"`
+
+	// 主管密码，对密码进行sha1加密，默认为123456
+	ShopPassword *string `json:"ShopPassword,omitempty" name:"ShopPassword"`
+
+	// 退款备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *RefundTlinxOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RefundTlinxOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "DeveloperNo")
+	delete(f, "RefundOutNo")
+	delete(f, "RefundOrderName")
+	delete(f, "RefundAmount")
+	delete(f, "ShopPassword")
+	delete(f, "Remark")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RefundTlinxOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RefundTlinxOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 退款响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *RefundOrderResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RefundTlinxOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RefundTlinxOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RegisterBehaviorRequest struct {
+	*tchttp.BaseRequest
+
+	// 聚鑫分配的支付主MidasAppId
+	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
+
+	// 聚鑫计费SubAppId，代表子商户
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 聚鑫分配的安全ID
+	MidasSecretId *string `json:"MidasSecretId,omitempty" name:"MidasSecretId"`
+
+	// 按照聚鑫安全密钥计算的签名
+	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
+
+	// 功能标志
+	// 1：登记行为记录信息
+	// 2：查询补录信息
+	FunctionFlag *int64 `json:"FunctionFlag,omitempty" name:"FunctionFlag"`
+
+	// 环境名:
+	// release: 现网环境
+	// sandbox: 沙箱环境
+	// development: 开发环境
+	// 缺省: release
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+
+	// 操作点击时间
+	// yyyyMMddHHmmss
+	// 功能标志FunctionFlag=1时必输
+	OperationClickTime *string `json:"OperationClickTime,omitempty" name:"OperationClickTime"`
+
+	// IP地址
+	// 功能标志FunctionFlag=1时必输
+	IpAddress *string `json:"IpAddress,omitempty" name:"IpAddress"`
+
+	// MAC地址
+	// 功能标志FunctionFlag=1时必输
+	MacAddress *string `json:"MacAddress,omitempty" name:"MacAddress"`
+
+	// 签约渠道
+	// 1:  App
+	// 2:  平台H5网页
+	// 3：公众号
+	// 4：小程序
+	// 功能标志FunctionFlag=1时必输
+	SignChannel *int64 `json:"SignChannel,omitempty" name:"SignChannel"`
+}
+
+func (r *RegisterBehaviorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RegisterBehaviorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MidasAppId")
+	delete(f, "SubAppId")
+	delete(f, "MidasSecretId")
+	delete(f, "MidasSignature")
+	delete(f, "FunctionFlag")
+	delete(f, "MidasEnvironment")
+	delete(f, "OperationClickTime")
+	delete(f, "IpAddress")
+	delete(f, "MacAddress")
+	delete(f, "SignChannel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RegisterBehaviorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RegisterBehaviorResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 补录是否成功标志
+	// 功能标志为2时存在。
+	// S：成功
+	// F：失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ReplenishSuccessFlag *string `json:"ReplenishSuccessFlag,omitempty" name:"ReplenishSuccessFlag"`
+
+		// 签约信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RegisterInfo *RegisterInfo `json:"RegisterInfo,omitempty" name:"RegisterInfo"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RegisterBehaviorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RegisterBehaviorResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RegisterBillRequest struct {
@@ -6190,8 +12994,36 @@ func (r *RegisterBillRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RegisterBillRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RequestType")
+	delete(f, "MerchantCode")
+	delete(f, "PayChannel")
+	delete(f, "PayChannelSubId")
+	delete(f, "OrderId")
+	delete(f, "BankAccountNo")
+	delete(f, "PlatformShortNo")
+	delete(f, "MidasSecretId")
+	delete(f, "MidasAppId")
+	delete(f, "MidasSignature")
+	delete(f, "TransSeqNo")
+	delete(f, "TranFee")
+	delete(f, "OrderAmt")
+	delete(f, "BankSubAccountNo")
+	delete(f, "TranNetMemberCode")
+	delete(f, "TranType")
+	delete(f, "ReservedMessage")
+	delete(f, "Remark")
+	delete(f, "MidasEnvironment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RegisterBillRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RegisterBillResponse struct {
@@ -6217,8 +13049,10 @@ func (r *RegisterBillResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RegisterBillResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RegisterBillSupportWithdrawRequest struct {
@@ -6260,8 +13094,27 @@ func (r *RegisterBillSupportWithdrawRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RegisterBillSupportWithdrawRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TranNetMemberCode")
+	delete(f, "OrderNo")
+	delete(f, "SuspendAmt")
+	delete(f, "TranFee")
+	delete(f, "MrchCode")
+	delete(f, "Remark")
+	delete(f, "ReservedMsgOne")
+	delete(f, "ReservedMsgTwo")
+	delete(f, "ReservedMsgThree")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RegisterBillSupportWithdrawRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RegisterBillSupportWithdrawResponse struct {
@@ -6296,8 +13149,104 @@ func (r *RegisterBillSupportWithdrawResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RegisterBillSupportWithdrawResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RegisterInfo struct {
+
+	// 法人证件号码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LegalPersonIdCode *string `json:"LegalPersonIdCode,omitempty" name:"LegalPersonIdCode"`
+
+	// 法人证件类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LegalPersonIdType *string `json:"LegalPersonIdType,omitempty" name:"LegalPersonIdType"`
+
+	// 法人名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LegalPersonName *string `json:"LegalPersonName,omitempty" name:"LegalPersonName"`
+
+	// 公司证件号码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrganizationCode *string `json:"OrganizationCode,omitempty" name:"OrganizationCode"`
+
+	// 公司名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
+
+	// 公司证件类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrganizationType *string `json:"OrganizationType,omitempty" name:"OrganizationType"`
+}
+
+type ResponseQueryContract struct {
+
+	// 第三方渠道错误码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnCode *string `json:"ExternalReturnCode,omitempty" name:"ExternalReturnCode"`
+
+	// 第三方渠道错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnMessage *string `json:"ExternalReturnMessage,omitempty" name:"ExternalReturnMessage"`
+
+	// 第三方渠道返回的原始数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnData *string `json:"ExternalReturnData,omitempty" name:"ExternalReturnData"`
+
+	// 米大师内部商户号
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 米大师内部子商户号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelSubMerchantId *string `json:"ChannelSubMerchantId,omitempty" name:"ChannelSubMerchantId"`
+
+	// 米大师内部应用ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelAppId *string `json:"ChannelAppId,omitempty" name:"ChannelAppId"`
+
+	// 米大师内部子应用ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelSubAppId *string `json:"ChannelSubAppId,omitempty" name:"ChannelSubAppId"`
+
+	// 渠道名称
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 返回的合约信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReturnContractInfo *ReturnContractInfo `json:"ReturnContractInfo,omitempty" name:"ReturnContractInfo"`
+
+	// 签约通知地址
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+}
+
+type ResponseTerminateContract struct {
+
+	// 第三方渠道错误码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnCode *string `json:"ExternalReturnCode,omitempty" name:"ExternalReturnCode"`
+
+	// 第三方渠道错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnMessage *string `json:"ExternalReturnMessage,omitempty" name:"ExternalReturnMessage"`
+
+	// 第三方渠道返回的原始数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnData *string `json:"ExternalReturnData,omitempty" name:"ExternalReturnData"`
+}
+
+type ReturnContractInfo struct {
+
+	// 合约信息
+	ContractInfo *ContractInfo `json:"ContractInfo,omitempty" name:"ContractInfo"`
+
+	// 米大师内部生成的合约信息
+	ChannelReturnContractInfo *ChannelReturnContractInfo `json:"ChannelReturnContractInfo,omitempty" name:"ChannelReturnContractInfo"`
+
+	// 第三方渠道合约信息
+	ExternalReturnContractInfo *ExternalReturnContractInfo `json:"ExternalReturnContractInfo,omitempty" name:"ExternalReturnContractInfo"`
 }
 
 type RevResigterBillSupportWithdrawRequest struct {
@@ -6339,8 +13288,27 @@ func (r *RevResigterBillSupportWithdrawRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RevResigterBillSupportWithdrawRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MrchCode")
+	delete(f, "TranNetMemberCode")
+	delete(f, "OldOrderNo")
+	delete(f, "CancelAmt")
+	delete(f, "TranFee")
+	delete(f, "Remark")
+	delete(f, "ReservedMsgOne")
+	delete(f, "ReservedMsgTwo")
+	delete(f, "ReservedMsgThree")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RevResigterBillSupportWithdrawRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RevResigterBillSupportWithdrawResponse struct {
@@ -6374,8 +13342,10 @@ func (r *RevResigterBillSupportWithdrawResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RevResigterBillSupportWithdrawResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ReviseMbrPropertyRequest struct {
@@ -6402,8 +13372,22 @@ func (r *ReviseMbrPropertyRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ReviseMbrPropertyRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MrchCode")
+	delete(f, "SubAcctNo")
+	delete(f, "MemberProperty")
+	delete(f, "ReservedMsg")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReviseMbrPropertyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ReviseMbrPropertyResponse struct {
@@ -6433,8 +13417,10 @@ func (r *ReviseMbrPropertyResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ReviseMbrPropertyResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RevokeMemberRechargeThirdPayRequest struct {
@@ -6482,8 +13468,29 @@ func (r *RevokeMemberRechargeThirdPayRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RevokeMemberRechargeThirdPayRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OldFillFrontSeqNo")
+	delete(f, "OldFillPayChannelType")
+	delete(f, "OldPayChannelTranSeqNo")
+	delete(f, "OldFillEjzbOrderNo")
+	delete(f, "ApplyCancelMemberAmt")
+	delete(f, "ApplyCancelCommission")
+	delete(f, "MrchCode")
+	delete(f, "Remark")
+	delete(f, "ReservedMsgOne")
+	delete(f, "ReservedMsgTwo")
+	delete(f, "ReservedMsgThree")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RevokeMemberRechargeThirdPayRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RevokeMemberRechargeThirdPayResponse struct {
@@ -6521,8 +13528,10 @@ func (r *RevokeMemberRechargeThirdPayResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RevokeMemberRechargeThirdPayResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RevokeRechargeByThirdPayRequest struct {
@@ -6597,8 +13606,38 @@ func (r *RevokeRechargeByThirdPayRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RevokeRechargeByThirdPayRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RequestType")
+	delete(f, "MerchantCode")
+	delete(f, "PayChannel")
+	delete(f, "PayChannelSubId")
+	delete(f, "OrderId")
+	delete(f, "BankAccountNumber")
+	delete(f, "PlatformShortNumber")
+	delete(f, "MidasSecretId")
+	delete(f, "MidasAppId")
+	delete(f, "MidasSignature")
+	delete(f, "TransSequenceNumber")
+	delete(f, "TransFee")
+	delete(f, "ThirdPayChannel")
+	delete(f, "ThirdPayChannelOrderId")
+	delete(f, "OldFrontSequenceNumber")
+	delete(f, "CurrencyAmount")
+	delete(f, "CurrencyUnit")
+	delete(f, "CurrencyType")
+	delete(f, "MidasEnvironment")
+	delete(f, "ReservedMessage")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RevokeRechargeByThirdPayRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RevokeRechargeByThirdPayResponse struct {
@@ -6625,8 +13664,251 @@ func (r *RevokeRechargeByThirdPayResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RevokeRechargeByThirdPayResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SceneInfo struct {
+
+	// 语言代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocaleCode *string `json:"LocaleCode,omitempty" name:"LocaleCode"`
+
+	// 地区代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionCode *string `json:"RegionCode,omitempty" name:"RegionCode"`
+
+	// 用户IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserClientIp *string `json:"UserClientIp,omitempty" name:"UserClientIp"`
+}
+
+type SyncContractDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 聚鑫分配的支付主MidasAppId
+	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
+
+	// 用户ID，长度不小于5位，仅支持字母和数字的组合
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 签约使用的渠道
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
+
+	// 业务签约合同协议号
+	OutContractCode *string `json:"OutContractCode,omitempty" name:"OutContractCode"`
+
+	// 签约状态，枚举值
+	// CONTRACT_STATUS_INVALID=无效状态
+	// CONTRACT_STATUS_SIGNED=已签约
+	// CONTRACT_STATUS_TERMINATED=已解约
+	// CONTRACT_STATUS_PENDING=签约进行中
+	ContractStatus *string `json:"ContractStatus,omitempty" name:"ContractStatus"`
+
+	// 签约同步信息
+	ContractSyncInfo *ContractSyncInfo `json:"ContractSyncInfo,omitempty" name:"ContractSyncInfo"`
+
+	// 按照聚鑫安全密钥计算的签名
+	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
+
+	// 聚鑫分配的安全ID
+	MidasSecretId *string `json:"MidasSecretId,omitempty" name:"MidasSecretId"`
+
+	// 聚鑫计费SubAppId，代表子商户
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 用户类型，枚举值
+	// USER_ID: 用户ID
+	// ANONYMOUS: 匿名类型 USER_ID
+	// 默认值为 USER_ID
+	UserType *string `json:"UserType,omitempty" name:"UserType"`
+
+	// 场景信息
+	SceneInfo *SceneInfo `json:"SceneInfo,omitempty" name:"SceneInfo"`
+
+	// 环境名:
+	// release: 现网环境
+	// sandbox: 沙箱环境
+	// development: 开发环境
+	// 缺省: release
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+}
+
+func (r *SyncContractDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SyncContractDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MidasAppId")
+	delete(f, "UserId")
+	delete(f, "Channel")
+	delete(f, "OutContractCode")
+	delete(f, "ContractStatus")
+	delete(f, "ContractSyncInfo")
+	delete(f, "MidasSignature")
+	delete(f, "MidasSecretId")
+	delete(f, "SubAppId")
+	delete(f, "UserType")
+	delete(f, "SceneInfo")
+	delete(f, "MidasEnvironment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SyncContractDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SyncContractDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 请求处理信息
+		Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SyncContractDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SyncContractDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type TerminateContractRequest struct {
+	*tchttp.BaseRequest
+
+	// 聚鑫分配的支付主MidasAppId
+	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
+
+	// 用户ID，长度不小于5位，仅支持字母和数字的组合
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 指定渠道：  wechat：微信支付  qqwallet：QQ钱包 
+	//  bank：网银支付  只有一个渠道时需要指定
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
+
+	// 枚举值：
+	// CONTRACT_TERMINATION_MODE_BY_OUT_CONTRACT_CODE: 按OutContractCode+ContractSceneId解约
+	// CONTRACT_TERMINATION_MODE_BY_CHANNEL_CONTRACT_CODE：按ChannelContractCode解约
+	TerminateMode *string `json:"TerminateMode,omitempty" name:"TerminateMode"`
+
+	// 聚鑫分配的安全ID
+	MidasSecretId *string `json:"MidasSecretId,omitempty" name:"MidasSecretId"`
+
+	// 按照聚鑫安全密钥计算的签名
+	MidasSignature *string `json:"MidasSignature,omitempty" name:"MidasSignature"`
+
+	// 聚鑫计费SubAppId，代表子商户
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 业务签约合同协议号 当TerminateMode=CONTRACT_TERMINATION_MODE_BY_OUT_CONTRACT_CODE 时 必填
+	OutContractCode *string `json:"OutContractCode,omitempty" name:"OutContractCode"`
+
+	// 签约场景ID，当 TerminateMode=CONTRACT_TERMINATION_MODE_BY_OUT_CONTRACT_CODE 时 必填，在米大师侧托管后生成
+	ContractSceneId *string `json:"ContractSceneId,omitempty" name:"ContractSceneId"`
+
+	// 米大师生成的协议号 当 TerminateMode=CONTRACT_TERMINATION_MODE_BY_CHANNEL_CONTRACT_CODE 时 必填
+	ChannelContractCode *string `json:"ChannelContractCode,omitempty" name:"ChannelContractCode"`
+
+	// 第三方渠道合约数据，json字符串，与特定渠道有关
+	ExternalContractData *string `json:"ExternalContractData,omitempty" name:"ExternalContractData"`
+
+	// 终止合约原因
+	TerminationReason *string `json:"TerminationReason,omitempty" name:"TerminationReason"`
+
+	// 环境名:
+	// release: 现网环境
+	// sandbox: 沙箱环境
+	// development: 开发环境
+	// 缺省: release
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+
+	// USER_ID: 用户ID
+	// ANONYMOUS: 匿名类型 USER_ID
+	// 默认值为 USER_ID
+	UserType *string `json:"UserType,omitempty" name:"UserType"`
+
+	// 签约方式
+	ContractMethod *string `json:"ContractMethod,omitempty" name:"ContractMethod"`
+
+	// 签约代扣穿透查询存量数据迁移模式
+	MigrateMode *string `json:"MigrateMode,omitempty" name:"MigrateMode"`
+}
+
+func (r *TerminateContractRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TerminateContractRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MidasAppId")
+	delete(f, "UserId")
+	delete(f, "Channel")
+	delete(f, "TerminateMode")
+	delete(f, "MidasSecretId")
+	delete(f, "MidasSignature")
+	delete(f, "SubAppId")
+	delete(f, "OutContractCode")
+	delete(f, "ContractSceneId")
+	delete(f, "ChannelContractCode")
+	delete(f, "ExternalContractData")
+	delete(f, "TerminationReason")
+	delete(f, "MidasEnvironment")
+	delete(f, "UserType")
+	delete(f, "ContractMethod")
+	delete(f, "MigrateMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TerminateContractRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type TerminateContractResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 解约数据
+		ContractTerminateData *ResponseTerminateContract `json:"ContractTerminateData,omitempty" name:"ContractTerminateData"`
+
+		// 请求处理信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *TerminateContractResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TerminateContractResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TranItem struct {
@@ -6817,6 +14099,121 @@ type TransferItem struct {
 	FrontSeqNo *string `json:"FrontSeqNo,omitempty" name:"FrontSeqNo"`
 }
 
+type TransferSinglePayData struct {
+
+	// 平台交易流水号，唯一
+	TradeSerialNo *string `json:"TradeSerialNo,omitempty" name:"TradeSerialNo"`
+}
+
+type TransferSinglePayRequest struct {
+	*tchttp.BaseRequest
+
+	// 商户号
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 微信申请商户号的appid或者商户号绑定的appid
+	// 支付宝、平安填入MerchantId
+	MerchantAppId *string `json:"MerchantAppId,omitempty" name:"MerchantAppId"`
+
+	// 1、 微信企业付款 
+	// 2、 支付宝转账 
+	// 3、 平安银企直联代发转账
+	TransferType *int64 `json:"TransferType,omitempty" name:"TransferType"`
+
+	// 订单流水号，唯一，不能包含特殊字符，长度最大限制64位，推荐使用字母，数字组合，"_","-"组合
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 转账金额，单位分
+	TransferAmount *int64 `json:"TransferAmount,omitempty" name:"TransferAmount"`
+
+	// 收款方标识。
+	// 微信为open_id；
+	// 支付宝为会员alipay_user_id;
+	// 平安为收款方银行账号
+	PayeeId *string `json:"PayeeId,omitempty" name:"PayeeId"`
+
+	// 收款方姓名。支付宝可选；微信，平安模式下必传
+	PayeeName *string `json:"PayeeName,omitempty" name:"PayeeName"`
+
+	// 收款方附加信息，平安接入使用。需要以JSON格式提供以下字段：
+	// PayeeBankName：收款人开户行名称
+	//  CcyCode：货币类型（RMB-人民币）
+	//  UnionFlag：行内跨行标志（1：行内转账，0：跨行转账）。
+	PayeeExtends *string `json:"PayeeExtends,omitempty" name:"PayeeExtends"`
+
+	// 请求预留字段，原样透传返回
+	ReqReserved *string `json:"ReqReserved,omitempty" name:"ReqReserved"`
+
+	// 业务备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 转账结果回调通知URL。若不填，则不进行回调。
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+
+	// 接入环境。沙箱环境填sandbox。
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *TransferSinglePayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TransferSinglePayRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MerchantId")
+	delete(f, "MerchantAppId")
+	delete(f, "TransferType")
+	delete(f, "OrderId")
+	delete(f, "TransferAmount")
+	delete(f, "PayeeId")
+	delete(f, "PayeeName")
+	delete(f, "PayeeExtends")
+	delete(f, "ReqReserved")
+	delete(f, "Remark")
+	delete(f, "NotifyUrl")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TransferSinglePayRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type TransferSinglePayResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。响应成功："SUCCESS"，其他为不成功
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 响应消息
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *TransferSinglePayData `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *TransferSinglePayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TransferSinglePayResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type UnBindAcctRequest struct {
 	*tchttp.BaseRequest
 
@@ -6855,8 +14252,24 @@ func (r *UnBindAcctRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UnBindAcctRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MidasAppId")
+	delete(f, "SubAppId")
+	delete(f, "SettleAcctNo")
+	delete(f, "MidasSecretId")
+	delete(f, "MidasSignature")
+	delete(f, "EncryptType")
+	delete(f, "MidasEnvironment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnBindAcctRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UnBindAcctResponse struct {
@@ -6873,8 +14286,10 @@ func (r *UnBindAcctResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UnBindAcctResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UnbindRelateAcctRequest struct {
@@ -6904,8 +14319,23 @@ func (r *UnbindRelateAcctRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UnbindRelateAcctRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MrchCode")
+	delete(f, "FunctionFlag")
+	delete(f, "TranNetMemberCode")
+	delete(f, "MemberAcctNo")
+	delete(f, "ReservedMsg")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnbindRelateAcctRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UnbindRelateAcctResponse struct {
@@ -6939,8 +14369,10 @@ func (r *UnbindRelateAcctResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UnbindRelateAcctResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UnifiedOrderInSubOrderList struct {
@@ -7030,7 +14462,7 @@ type UnifiedOrderRequest struct {
 
 	// 子订单信息列表，格式：子订单号、子应用ID、金额。 压缩后最长不可超过65535字节(去除空格，换行，制表符等无意义字符)
 	// 注：接入银行或其他支付渠道服务商模式下，必传
-	SubOrderList []*UnifiedOrderInSubOrderList `json:"SubOrderList,omitempty" name:"SubOrderList" list`
+	SubOrderList []*UnifiedOrderInSubOrderList `json:"SubOrderList,omitempty" name:"SubOrderList"`
 
 	// 结算应收金额，单位：分
 	TotalMchIncome *int64 `json:"TotalMchIncome,omitempty" name:"TotalMchIncome"`
@@ -7056,6 +14488,9 @@ type UnifiedOrderRequest struct {
 
 	// 微信商户子应用ID
 	WxSubAppId *string `json:"WxSubAppId,omitempty" name:"WxSubAppId"`
+
+	// 支付通知地址
+	PaymentNotifyUrl *string `json:"PaymentNotifyUrl,omitempty" name:"PaymentNotifyUrl"`
 }
 
 func (r *UnifiedOrderRequest) ToJsonString() string {
@@ -7063,8 +14498,43 @@ func (r *UnifiedOrderRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UnifiedOrderRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CurrencyType")
+	delete(f, "MidasAppId")
+	delete(f, "OutTradeNo")
+	delete(f, "ProductDetail")
+	delete(f, "ProductId")
+	delete(f, "ProductName")
+	delete(f, "TotalAmt")
+	delete(f, "UserId")
+	delete(f, "RealChannel")
+	delete(f, "OriginalAmt")
+	delete(f, "MidasSecretId")
+	delete(f, "MidasSignature")
+	delete(f, "CallbackUrl")
+	delete(f, "Channel")
+	delete(f, "Metadata")
+	delete(f, "Quantity")
+	delete(f, "SubAppId")
+	delete(f, "SubOrderList")
+	delete(f, "TotalMchIncome")
+	delete(f, "TotalPlatformIncome")
+	delete(f, "WxOpenId")
+	delete(f, "WxSubOpenId")
+	delete(f, "MidasEnvironment")
+	delete(f, "WxAppId")
+	delete(f, "WxSubAppId")
+	delete(f, "PaymentNotifyUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnifiedOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UnifiedOrderResponse struct {
@@ -7093,8 +14563,1361 @@ func (r *UnifiedOrderResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UnifiedOrderResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UnifiedTlinxOrderRequest struct {
+	*tchttp.BaseRequest
+
+	// 开发者流水号
+	DeveloperNo *string `json:"DeveloperNo,omitempty" name:"DeveloperNo"`
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 交易结果异步通知url地址
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 支付标签
+	PayTag *string `json:"PayTag,omitempty" name:"PayTag"`
+
+	// 实际交易金额（以分为单位，没有小数点）
+	TradeAmount *string `json:"TradeAmount,omitempty" name:"TradeAmount"`
+
+	// 订单备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 订单标记，订单附加数据。
+	Tag *string `json:"Tag,omitempty" name:"Tag"`
+
+	// 抹零金额（以分为单位，没有小数点）
+	IgnoreAmount *string `json:"IgnoreAmount,omitempty" name:"IgnoreAmount"`
+
+	// 条码支付的授权码（条码抢扫手机扫到的一串数字）
+	AuthCode *string `json:"AuthCode,omitempty" name:"AuthCode"`
+
+	// 原始交易金额（以分为单位，没有小数点）
+	OriginalAmount *string `json:"OriginalAmount,omitempty" name:"OriginalAmount"`
+
+	// 订单名称（描述）
+	OrderName *string `json:"OrderName,omitempty" name:"OrderName"`
+
+	// 公众号支付时，支付成功后跳转url地址
+	JumpUrl *string `json:"JumpUrl,omitempty" name:"JumpUrl"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 收单机构原始交易报文，请转换为json
+	TradeResult *string `json:"TradeResult,omitempty" name:"TradeResult"`
+
+	// 交易帐号（银行卡号）
+	TradeAccount *string `json:"TradeAccount,omitempty" name:"TradeAccount"`
+
+	// 交易号（收单机构交易号）
+	TradeNo *string `json:"TradeNo,omitempty" name:"TradeNo"`
+
+	// 折扣金额（以分为单位，没有小数点）
+	DiscountAmount *string `json:"DiscountAmount,omitempty" name:"DiscountAmount"`
+
+	// 付款方式名称(当PayTag为Diy时，PayName不能为空)
+	PayName *string `json:"PayName,omitempty" name:"PayName"`
+
+	// 0-不分账，1-需分账。为1时标记为待分账订单，待分账订单不会进行清算。不传默认为不分账。
+	Royalty *string `json:"Royalty,omitempty" name:"Royalty"`
+
+	// 小程序支付参数：填默认值 1
+	Jsapi *string `json:"Jsapi,omitempty" name:"Jsapi"`
+
+	// 小程序支付参数：
+	// 当前调起支付的小程序APPID
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 小程序支付参数:
+	// 用户在子商户appid下的唯一标识。
+	SubOpenId *string `json:"SubOpenId,omitempty" name:"SubOpenId"`
+}
+
+func (r *UnifiedTlinxOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnifiedTlinxOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeveloperNo")
+	delete(f, "OpenId")
+	delete(f, "NotifyUrl")
+	delete(f, "OpenKey")
+	delete(f, "PayTag")
+	delete(f, "TradeAmount")
+	delete(f, "Remark")
+	delete(f, "Tag")
+	delete(f, "IgnoreAmount")
+	delete(f, "AuthCode")
+	delete(f, "OriginalAmount")
+	delete(f, "OrderName")
+	delete(f, "JumpUrl")
+	delete(f, "Profile")
+	delete(f, "TradeResult")
+	delete(f, "TradeAccount")
+	delete(f, "TradeNo")
+	delete(f, "DiscountAmount")
+	delete(f, "PayName")
+	delete(f, "Royalty")
+	delete(f, "Jsapi")
+	delete(f, "SubAppId")
+	delete(f, "SubOpenId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnifiedTlinxOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UnifiedTlinxOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 统一下单响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *PayOrderResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UnifiedTlinxOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnifiedTlinxOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadExternalAnchorInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 主播Id
+	AnchorId *string `json:"AnchorId,omitempty" name:"AnchorId"`
+
+	// 身份证正面图片下载链接
+	IdCardFront *string `json:"IdCardFront,omitempty" name:"IdCardFront"`
+
+	// 身份证反面图片下载链接
+	IdCardReverse *string `json:"IdCardReverse,omitempty" name:"IdCardReverse"`
+}
+
+func (r *UploadExternalAnchorInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadExternalAnchorInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AnchorId")
+	delete(f, "IdCardFront")
+	delete(f, "IdCardReverse")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadExternalAnchorInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadExternalAnchorInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。响应成功："SUCCESS"，其他为不成功。
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 响应消息。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 该字段为null。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UploadExternalAnchorInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadExternalAnchorInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadFileRequest struct {
+	*tchttp.BaseRequest
+
+	// 文件名
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 文件类型
+	// __IdCard__:身份证
+	// __IdCardCheck__:身份证加验证(只支持人像面)
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 文件链接
+	// __FileUrl和FileContent二选一__
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+
+	// 文件内容，Base64编码
+	// __FileUrl和FileContent二选一__
+	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
+
+	// 文件扩展信息
+	FileExtendInfo []*AnchorExtendInfo `json:"FileExtendInfo,omitempty" name:"FileExtendInfo"`
+}
+
+func (r *UploadFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadFileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileName")
+	delete(f, "FileType")
+	delete(f, "FileUrl")
+	delete(f, "FileContent")
+	delete(f, "FileExtendInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadFileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadFileResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 文件ID
+		FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UploadFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadFileResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadFileResult struct {
+
+	// 存储区域（0私密区，1公共区），请严格按文件要求，上传到不同的区域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Storage *string `json:"Storage,omitempty" name:"Storage"`
+
+	// 文件路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
+}
+
+type UploadOrgFileRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 存储区域（0私密区，1公共区），请严格按文件要求，上传到不同的区域
+	Storage *string `json:"Storage,omitempty" name:"Storage"`
+
+	// 文件的md5值（为防止平台多次上传重复文件，文件名为文件md5,且不会覆盖，重复上传返回第一次上传成功的文件路径）
+	FileMd5 *string `json:"FileMd5,omitempty" name:"FileMd5"`
+
+	// 文件内容（先将图片转换成二进制，再进行base64加密）
+	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
+
+	// 文件扩展名（png,jpg,gif）
+	FileExtension *string `json:"FileExtension,omitempty" name:"FileExtension"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *UploadOrgFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadOrgFileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "Storage")
+	delete(f, "FileMd5")
+	delete(f, "FileContent")
+	delete(f, "FileExtension")
+	delete(f, "OpenKey")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadOrgFileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadOrgFileResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 上传机构文件响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *UploadFileResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UploadOrgFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadOrgFileResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadTaxListRequest struct {
+	*tchttp.BaseRequest
+
+	// 平台渠道
+	Channel *int64 `json:"Channel,omitempty" name:"Channel"`
+
+	// 起始月份，YYYY-MM
+	BeginMonth *string `json:"BeginMonth,omitempty" name:"BeginMonth"`
+
+	// 结束月份。如果只上传一个月，结束月份等于起始月份
+	EndMonth *string `json:"EndMonth,omitempty" name:"EndMonth"`
+
+	// 完税列表下载地址
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+}
+
+func (r *UploadTaxListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadTaxListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Channel")
+	delete(f, "BeginMonth")
+	delete(f, "EndMonth")
+	delete(f, "FileUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadTaxListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadTaxListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 完税ID
+		TaxId *string `json:"TaxId,omitempty" name:"TaxId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UploadTaxListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadTaxListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadTaxPaymentRequest struct {
+	*tchttp.BaseRequest
+
+	// 平台渠道
+	Channel *int64 `json:"Channel,omitempty" name:"Channel"`
+
+	// 完税ID
+	TaxId *string `json:"TaxId,omitempty" name:"TaxId"`
+
+	// 完税列表下载地址
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+}
+
+func (r *UploadTaxPaymentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadTaxPaymentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Channel")
+	delete(f, "TaxId")
+	delete(f, "FileUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadTaxPaymentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadTaxPaymentResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UploadTaxPaymentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadTaxPaymentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ViewContractRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 外部合同主键编号（ContractId或OutContractId必须传一个）
+	OutContractId *string `json:"OutContractId,omitempty" name:"OutContractId"`
+
+	// 合同主键（ContractId或OutContractId必须传一个）
+	ContractId *string `json:"ContractId,omitempty" name:"ContractId"`
+}
+
+func (r *ViewContractRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ViewContractRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "Profile")
+	delete(f, "OutContractId")
+	delete(f, "ContractId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ViewContractRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ViewContractResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 合同明细响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *ViewContractResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ViewContractResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ViewContractResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ViewContractResult struct {
+
+	// 支付标签（唯一性）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentTag *string `json:"PaymentTag,omitempty" name:"PaymentTag"`
+
+	// 城市
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 机构编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentNo *string `json:"AgentNo,omitempty" name:"AgentNo"`
+
+	// 合同选项值4
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractOptionFour *string `json:"ContractOptionFour,omitempty" name:"ContractOptionFour"`
+
+	// 合同选项值2
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractOptionTwo *string `json:"ContractOptionTwo,omitempty" name:"ContractOptionTwo"`
+
+	// 合同状态（0未审核，1已审核，2审核未通过，3待审核，4已删除，5初审通过）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 支付方式编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentId *string `json:"PaymentId,omitempty" name:"PaymentId"`
+
+	// 商户签约扣率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Fee *string `json:"Fee,omitempty" name:"Fee"`
+
+	// 合同选项名称5
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionFive *string `json:"PaymentOptionFive,omitempty" name:"PaymentOptionFive"`
+
+	// 机构合同主键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutContractId *string `json:"OutContractId,omitempty" name:"OutContractId"`
+
+	// 不同的支付方式对于进件有不同的个性化需求，支付方式字段都是以双下划写开头的字段名称，请以支付方式规定的格式传值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelExtJson *string `json:"ChannelExtJson,omitempty" name:"ChannelExtJson"`
+
+	// 合同选项值5
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractOptionFive *string `json:"ContractOptionFive,omitempty" name:"ContractOptionFive"`
+
+	// 省份
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Province *string `json:"Province,omitempty" name:"Province"`
+
+	// 生效日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 详细地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 过期日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+	// 合同选项值6
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractOptionSix *string `json:"ContractOptionSix,omitempty" name:"ContractOptionSix"`
+
+	// 合同选项名称7
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionSeven *string `json:"PaymentOptionSeven,omitempty" name:"PaymentOptionSeven"`
+
+	// 合同照片补充【私密区】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PictureTwo *string `json:"PictureTwo,omitempty" name:"PictureTwo"`
+
+	// 商户编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+
+	// 机构名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentName *string `json:"AgentName,omitempty" name:"AgentName"`
+
+	// 合同选项值8
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractOptionOther *string `json:"ContractOptionOther,omitempty" name:"ContractOptionOther"`
+
+	// 合同选项值3
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractOptionThree *string `json:"ContractOptionThree,omitempty" name:"ContractOptionThree"`
+
+	// 县/区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Country *string `json:"Country,omitempty" name:"Country"`
+
+	// 合同关联的门店数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopCount *string `json:"ShopCount,omitempty" name:"ShopCount"`
+
+	// 合同选项名称3
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionThree *string `json:"PaymentOptionThree,omitempty" name:"PaymentOptionThree"`
+
+	// 支付方式行业名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentClassificationName *string `json:"PaymentClassificationName,omitempty" name:"PaymentClassificationName"`
+
+	// 合同选项值7
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractOptionSeven *string `json:"ContractOptionSeven,omitempty" name:"ContractOptionSeven"`
+
+	// 合同选项名称4
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionFour *string `json:"PaymentOptionFour,omitempty" name:"PaymentOptionFour"`
+
+	// 商户签约扣率封顶值（分为单位）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentClassificationLimit *string `json:"PaymentClassificationLimit,omitempty" name:"PaymentClassificationLimit"`
+
+	// 审核备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 合同选项名称6
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionSix *string `json:"PaymentOptionSix,omitempty" name:"PaymentOptionSix"`
+
+	// 品牌名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantName *string `json:"MerchantName,omitempty" name:"MerchantName"`
+
+	// 合同选项值1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractOptionOne *string `json:"ContractOptionOne,omitempty" name:"ContractOptionOne"`
+
+	// 合同选项名称8
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionOther *string `json:"PaymentOptionOther,omitempty" name:"PaymentOptionOther"`
+
+	// 合同选项名称2
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionTwo *string `json:"PaymentOptionTwo,omitempty" name:"PaymentOptionTwo"`
+
+	// 合同选项名称1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionOne *string `json:"PaymentOptionOne,omitempty" name:"PaymentOptionOne"`
+
+	// 更新时间（yyyy-mm-dd hh:ii:ss）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 联系人电话
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContactTelephone *string `json:"ContactTelephone,omitempty" name:"ContactTelephone"`
+
+	// 联系人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Contact *string `json:"Contact,omitempty" name:"Contact"`
+
+	// 签约日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SignDate *string `json:"SignDate,omitempty" name:"SignDate"`
+
+	// 合同选项名称9
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionNine *string `json:"PaymentOptionNine,omitempty" name:"PaymentOptionNine"`
+
+	// 付款方式名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentName *string `json:"PaymentName,omitempty" name:"PaymentName"`
+
+	// 付款方式名称（内部名称）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentInternalName *string `json:"PaymentInternalName,omitempty" name:"PaymentInternalName"`
+
+	// 合同选项值10
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractOptionTen *string `json:"ContractOptionTen,omitempty" name:"ContractOptionTen"`
+
+	// 合同编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 合同照片【私密区】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PictureOne *string `json:"PictureOne,omitempty" name:"PictureOne"`
+
+	// 签约人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SignMan *string `json:"SignMan,omitempty" name:"SignMan"`
+
+	// 渠道号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelNo *string `json:"ChannelNo,omitempty" name:"ChannelNo"`
+
+	// 添加时间（yyyy-mm-dd hh:ii:ss）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddTime *string `json:"AddTime,omitempty" name:"AddTime"`
+
+	// 是否自动续签（1是，0否）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoSign *string `json:"AutoSign,omitempty" name:"AutoSign"`
+
+	// 合同选项值9
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractOptionNine *string `json:"ContractOptionNine,omitempty" name:"ContractOptionNine"`
+
+	// 城市编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CityId *string `json:"CityId,omitempty" name:"CityId"`
+
+	// 交易类型（多个以小写逗号分开，0现金，1刷卡，2主扫，3被扫，4JSPAY，5预授权）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentType *string `json:"PaymentType,omitempty" name:"PaymentType"`
+
+	// 支付方式行业编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentClassificationId *string `json:"PaymentClassificationId,omitempty" name:"PaymentClassificationId"`
+
+	// 品牌名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
+
+	// 合同选项名称10
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionTen *string `json:"PaymentOptionTen,omitempty" name:"PaymentOptionTen"`
+
+	// 合同主键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractId *string `json:"ContractId,omitempty" name:"ContractId"`
+}
+
+type ViewMerchantRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 外部商户主键编号（MerchantNo或OutMerchantId必须传一个）
+	OutMerchantId *string `json:"OutMerchantId,omitempty" name:"OutMerchantId"`
+
+	// 商户编号（MerchantNo或OutMerchantId必须传一个）
+	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+}
+
+func (r *ViewMerchantRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ViewMerchantRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "Profile")
+	delete(f, "OutMerchantId")
+	delete(f, "MerchantNo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ViewMerchantRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ViewMerchantResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 商户明细响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *ViewMerchantResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ViewMerchantResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ViewMerchantResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ViewMerchantResult struct {
+
+	// 城市
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 税务登记证图片【私密区】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaxCollectionPicture *string `json:"TaxCollectionPicture,omitempty" name:"TaxCollectionPicture"`
+
+	// 法人证件号码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BossIdNo *string `json:"BossIdNo,omitempty" name:"BossIdNo"`
+
+	// 法人亲属证件号码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountIdNo *string `json:"AccountIdNo,omitempty" name:"AccountIdNo"`
+
+	// 其他资料3
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OtherPictureThree *string `json:"OtherPictureThree,omitempty" name:"OtherPictureThree"`
+
+	// 法人亲属证件类型（1居民身份证,2临时居民身份证,3居民户口簿,4护照,5港澳居民来往内地通行证,6回乡证,7军人证,8武警身份证,9其他法定文件）结算账户人身份为法人亲属时必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountIdType *string `json:"AccountIdType,omitempty" name:"AccountIdType"`
+
+	// 商户状态（0未审核，1已审核，2审核未通过，3待审核，4已删除，5初审通过）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 营业执照图片【私密区】（系统返回的图片路径）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessLicensePicture *string `json:"BusinessLicensePicture,omitempty" name:"BusinessLicensePicture"`
+
+	// 品牌名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
+
+	// 法人身份证正面【私密区】（系统返回的图片路径）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BossPositive *string `json:"BossPositive,omitempty" name:"BossPositive"`
+
+	// 开通应用数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppCount *string `json:"AppCount,omitempty" name:"AppCount"`
+
+	// 法人身份证背面【私密区】（系统返回的图片路径）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BossBack *string `json:"BossBack,omitempty" name:"BossBack"`
+
+	// 组织机构代码证图片【私密区】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrganizationCodePicture *string `json:"OrganizationCodePicture,omitempty" name:"OrganizationCodePicture"`
+
+	// 营业执照过期时间（yyyy-mm-dd）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessLicenseEndDate *string `json:"BusinessLicenseEndDate,omitempty" name:"BusinessLicenseEndDate"`
+
+	// 组织机构代码证号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrganizationCodeNo *string `json:"OrganizationCodeNo,omitempty" name:"OrganizationCodeNo"`
+
+	// 机构编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentNo *string `json:"AgentNo,omitempty" name:"AgentNo"`
+
+	// 省份
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Province *string `json:"Province,omitempty" name:"Province"`
+
+	// 法人证件生效时间（yyyy-mm-dd）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BossStartDate *string `json:"BossStartDate,omitempty" name:"BossStartDate"`
+
+	// 更新时间（yyyy-mm-dd hh:ii:ss）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 清算联行号，开户行行号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BankNo *string `json:"BankNo,omitempty" name:"BankNo"`
+
+	// 税务登记证生效时间（yyyy-mm-dd）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaxCollectionStartDate *string `json:"TaxCollectionStartDate,omitempty" name:"TaxCollectionStartDate"`
+
+	// 营业执照生效时间（yyyy-mm-dd）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessLicenseStartDate *string `json:"BusinessLicenseStartDate,omitempty" name:"BusinessLicenseStartDate"`
+
+	// 客户经理用户编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountManagerId *string `json:"AccountManagerId,omitempty" name:"AccountManagerId"`
+
+	// 分类编号(多个以小写逗号分开)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClassificationIds *string `json:"ClassificationIds,omitempty" name:"ClassificationIds"`
+
+	// 营业执照类型（1三证合一，2非三证合一）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessLicenseType *string `json:"BusinessLicenseType,omitempty" name:"BusinessLicenseType"`
+
+	// 法人证件过期时间（yyyy-mm-dd）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BossEndDate *string `json:"BossEndDate,omitempty" name:"BossEndDate"`
+
+	// 营业执照编号（系统有唯一性校验）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessLicenseNo *string `json:"BusinessLicenseNo,omitempty" name:"BusinessLicenseNo"`
+
+	// 机构名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentName *string `json:"AgentName,omitempty" name:"AgentName"`
+
+	// 商户简介
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Intro *string `json:"Intro,omitempty" name:"Intro"`
+
+	// 法人证件类型（1居民身份证,2临时居民身份证,3居民户口簿,4护照,5港澳居民来往内地通行证,6回乡证,7军人证,8武警身份证,9其他法定文件）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BossIdType *string `json:"BossIdType,omitempty" name:"BossIdType"`
+
+	// 添加时间（yyyy-mm-dd hh:ii:ss）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddTime *string `json:"AddTime,omitempty" name:"AddTime"`
+
+	// 门店数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopCount *string `json:"ShopCount,omitempty" name:"ShopCount"`
+
+	// 结算账户人身份（1法人，2法人亲属），结算帐户为对私时必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountBoss *string `json:"AccountBoss,omitempty" name:"AccountBoss"`
+
+	// 分类名称(多个以小写逗号分开)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClassificationNames *string `json:"ClassificationNames,omitempty" name:"ClassificationNames"`
+
+	// 法人电话
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BossTelephone *string `json:"BossTelephone,omitempty" name:"BossTelephone"`
+
+	// 客户经理姓名，必须为系统后台的管理员真实姓名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountManagerName *string `json:"AccountManagerName,omitempty" name:"AccountManagerName"`
+
+	// 终端数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TerminalCount *string `json:"TerminalCount,omitempty" name:"TerminalCount"`
+
+	// 审核备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 财务联系人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinancialContact *string `json:"FinancialContact,omitempty" name:"FinancialContact"`
+
+	// 商户名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantName *string `json:"MerchantName,omitempty" name:"MerchantName"`
+
+	// 法人性别（1男，2女）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BossSex *string `json:"BossSex,omitempty" name:"BossSex"`
+
+	// 商户编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+
+	// 法人住址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BossAddress *string `json:"BossAddress,omitempty" name:"BossAddress"`
+
+	// 县/区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Country *string `json:"Country,omitempty" name:"Country"`
+
+	// 详细地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 法人职业
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BossJob *string `json:"BossJob,omitempty" name:"BossJob"`
+
+	// 许可证图片【私密区】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LicencePicture *string `json:"LicencePicture,omitempty" name:"LicencePicture"`
+
+	// 组织机构代码证过期时间（yyyy-mm-dd）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrganizationCodeEndDate *string `json:"OrganizationCodeEndDate,omitempty" name:"OrganizationCodeEndDate"`
+
+	// 营业时间，多个以小写逗号分开(9:00-12:00,13:00-18:00)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OpenHours *string `json:"OpenHours,omitempty" name:"OpenHours"`
+
+	// 其他资料2
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OtherPictureTwo *string `json:"OtherPictureTwo,omitempty" name:"OtherPictureTwo"`
+
+	// 其他资料1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OtherPictureOne *string `json:"OtherPictureOne,omitempty" name:"OtherPictureOne"`
+
+	// 银行户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountName *string `json:"AccountName,omitempty" name:"AccountName"`
+
+	// 合同数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractCount *string `json:"ContractCount,omitempty" name:"ContractCount"`
+
+	// 授权文件【私密区】（当结算帐户身份为法人亲属时必传）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LicencePictureTwo *string `json:"LicencePictureTwo,omitempty" name:"LicencePictureTwo"`
+
+	// 银行账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountNo *string `json:"AccountNo,omitempty" name:"AccountNo"`
+
+	// 法人邮箱
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BossEmail *string `json:"BossEmail,omitempty" name:"BossEmail"`
+
+	// 结算账户类型（2对私，1对公）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountType *string `json:"AccountType,omitempty" name:"AccountType"`
+
+	// 税务登记证过期时间（yyyy-mm-dd）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaxCollectionEndDate *string `json:"TaxCollectionEndDate,omitempty" name:"TaxCollectionEndDate"`
+
+	// 开户行名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BankName *string `json:"BankName,omitempty" name:"BankName"`
+
+	// 联系电话
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Telephone *string `json:"Telephone,omitempty" name:"Telephone"`
+
+	// 外部商户主键编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutMerchantId *string `json:"OutMerchantId,omitempty" name:"OutMerchantId"`
+
+	// 城市编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CityId *string `json:"CityId,omitempty" name:"CityId"`
+
+	// 法人证件国别/地区（中国CHN，香港HKG，澳门MAC，台湾CTN）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BossIdCount *string `json:"BossIdCount,omitempty" name:"BossIdCount"`
+
+	// 商户标记，自定义参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tag *string `json:"Tag,omitempty" name:"Tag"`
+
+	// 财务联系人电话
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinancialTelephone *string `json:"FinancialTelephone,omitempty" name:"FinancialTelephone"`
+
+	// 法人姓名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BossName *string `json:"BossName,omitempty" name:"BossName"`
+
+	// 组织机构代码证生效时间（yyyy-mm-dd）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrganizationCodeStartDate *string `json:"OrganizationCodeStartDate,omitempty" name:"OrganizationCodeStartDate"`
+
+	// 商户logo【公共区】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Logo *string `json:"Logo,omitempty" name:"Logo"`
+
+	// 其他资料4
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OtherPictureFour *string `json:"OtherPictureFour,omitempty" name:"OtherPictureFour"`
+
+	// 税务登记证号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaxCollectionNo *string `json:"TaxCollectionNo,omitempty" name:"TaxCollectionNo"`
+}
+
+type ViewShopRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+
+	// 外部商户主键编号（ShopNo或OutShopId必须传一个）
+	OutShopId *string `json:"OutShopId,omitempty" name:"OutShopId"`
+
+	// 门店编号（ShopNo或OutShopId必须传一个）
+	ShopNo *string `json:"ShopNo,omitempty" name:"ShopNo"`
+}
+
+func (r *ViewShopRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ViewShopRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "Profile")
+	delete(f, "OutShopId")
+	delete(f, "ShopNo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ViewShopRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ViewShopResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 门店明细响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *ViewShopResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ViewShopResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ViewShopResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ViewShopResult struct {
+
+	// 城市
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 门店简称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopName *string `json:"ShopName,omitempty" name:"ShopName"`
+
+	// 百度地图纬度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Latitude *string `json:"Latitude,omitempty" name:"Latitude"`
+
+	// 品牌名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
+
+	// 开通应用数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppCount *string `json:"AppCount,omitempty" name:"AppCount"`
+
+	// 负责人手机号码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContactTelephone *string `json:"ContactTelephone,omitempty" name:"ContactTelephone"`
+
+	// 商户名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantName *string `json:"MerchantName,omitempty" name:"MerchantName"`
+
+	// 省份
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Province *string `json:"Province,omitempty" name:"Province"`
+
+	// 县/区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	County *string `json:"County,omitempty" name:"County"`
+
+	// 更新时间（yyyy-mm-dd hh:ii:ss）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 终端数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TerminalCount *string `json:"TerminalCount,omitempty" name:"TerminalCount"`
+
+	// 收银台图片【公共区】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PictureTwo *string `json:"PictureTwo,omitempty" name:"PictureTwo"`
+
+	// 高德地图纬度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LatitudeTwo *string `json:"LatitudeTwo,omitempty" name:"LatitudeTwo"`
+
+	// 机构名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentName *string `json:"AgentName,omitempty" name:"AgentName"`
+
+	// 其他照片【公共区】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PictureFour *string `json:"PictureFour,omitempty" name:"PictureFour"`
+
+	// 高德地图经度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LongitudeTwo *string `json:"LongitudeTwo,omitempty" name:"LongitudeTwo"`
+
+	// 门店状态（0未审核，1已审核，2审核未通过，3待审核，4已删除，5初审通过）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 审核备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 机构编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentNo *string `json:"AgentNo,omitempty" name:"AgentNo"`
+
+	// 商户编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+
+	// 添加时间（yyyy-mm-dd hh:ii:ss）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddTime *string `json:"AddTime,omitempty" name:"AddTime"`
+
+	// 详细地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 百度地图经度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Longitude *string `json:"Longitude,omitempty" name:"Longitude"`
+
+	// 门店编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopNo *string `json:"ShopNo,omitempty" name:"ShopNo"`
+
+	// 门店全称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopFullName *string `json:"ShopFullName,omitempty" name:"ShopFullName"`
+
+	// 门店负责人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Contact *string `json:"Contact,omitempty" name:"Contact"`
+
+	// 店内环境图片【公共区】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PictureThree *string `json:"PictureThree,omitempty" name:"PictureThree"`
+
+	// 整体门面（含招牌）图片【公共区】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PictureOne *string `json:"PictureOne,omitempty" name:"PictureOne"`
+
+	// 门店电话
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Telephone *string `json:"Telephone,omitempty" name:"Telephone"`
+
+	// 机构门店主键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutShopId *string `json:"OutShopId,omitempty" name:"OutShopId"`
+
+	// 城市编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CityId *string `json:"CityId,omitempty" name:"CityId"`
 }
 
 type WithdrawBill struct {
@@ -7175,8 +15998,31 @@ func (r *WithdrawCashMembershipRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *WithdrawCashMembershipRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MrchCode")
+	delete(f, "TranWebName")
+	delete(f, "MemberGlobalType")
+	delete(f, "MemberGlobalId")
+	delete(f, "TranNetMemberCode")
+	delete(f, "MemberName")
+	delete(f, "TakeCashAcctNo")
+	delete(f, "OutAmtAcctName")
+	delete(f, "Ccy")
+	delete(f, "CashAmt")
+	delete(f, "Remark")
+	delete(f, "ReservedMsg")
+	delete(f, "WebSign")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "WithdrawCashMembershipRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type WithdrawCashMembershipResponse struct {
@@ -7214,8 +16060,10 @@ func (r *WithdrawCashMembershipResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *WithdrawCashMembershipResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type WithdrawItem struct {

@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -48,6 +48,8 @@ func NewCreateBindInstanceRequest() (request *CreateBindInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ms", APIVersion, "CreateBindInstance")
+    
+    
     return
 }
 
@@ -58,11 +60,19 @@ func NewCreateBindInstanceResponse() (response *CreateBindInstanceResponse) {
     return
 }
 
+// CreateBindInstance
 // 将应用和资源进行绑定
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
 func (c *Client) CreateBindInstance(request *CreateBindInstanceRequest) (response *CreateBindInstanceResponse, err error) {
     if request == nil {
         request = NewCreateBindInstanceRequest()
     }
+    
     response = NewCreateBindInstanceResponse()
     err = c.Send(request, response)
     return
@@ -73,6 +83,8 @@ func NewCreateCosSecKeyInstanceRequest() (request *CreateCosSecKeyInstanceReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ms", APIVersion, "CreateCosSecKeyInstance")
+    
+    
     return
 }
 
@@ -83,11 +95,18 @@ func NewCreateCosSecKeyInstanceResponse() (response *CreateCosSecKeyInstanceResp
     return
 }
 
+// CreateCosSecKeyInstance
 // 获取云COS文件存储临时密钥，密钥仅限于临时上传文件，有访问限制和时效性。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateCosSecKeyInstance(request *CreateCosSecKeyInstanceRequest) (response *CreateCosSecKeyInstanceResponse, err error) {
     if request == nil {
         request = NewCreateCosSecKeyInstanceRequest()
     }
+    
     response = NewCreateCosSecKeyInstanceResponse()
     err = c.Send(request, response)
     return
@@ -98,6 +117,8 @@ func NewCreateResourceInstancesRequest() (request *CreateResourceInstancesReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ms", APIVersion, "CreateResourceInstances")
+    
+    
     return
 }
 
@@ -108,11 +129,22 @@ func NewCreateResourceInstancesResponse() (response *CreateResourceInstancesResp
     return
 }
 
+// CreateResourceInstances
 // 用户可以使用该接口自建资源，只支持白名单用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
 func (c *Client) CreateResourceInstances(request *CreateResourceInstancesRequest) (response *CreateResourceInstancesResponse, err error) {
     if request == nil {
         request = NewCreateResourceInstancesRequest()
     }
+    
     response = NewCreateResourceInstancesResponse()
     err = c.Send(request, response)
     return
@@ -123,6 +155,8 @@ func NewCreateScanInstancesRequest() (request *CreateScanInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ms", APIVersion, "CreateScanInstances")
+    
+    
     return
 }
 
@@ -133,11 +167,19 @@ func NewCreateScanInstancesResponse() (response *CreateScanInstancesResponse) {
     return
 }
 
+// CreateScanInstances
 // 用户通过该接口批量提交应用进行应用扫描，扫描后需通过DescribeScanResults接口查询扫描结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER_MISSINGAPPINFO = "MissingParameter.MissingAppInfo"
 func (c *Client) CreateScanInstances(request *CreateScanInstancesRequest) (response *CreateScanInstancesResponse, err error) {
     if request == nil {
         request = NewCreateScanInstancesRequest()
     }
+    
     response = NewCreateScanInstancesResponse()
     err = c.Send(request, response)
     return
@@ -148,6 +190,8 @@ func NewCreateShieldInstanceRequest() (request *CreateShieldInstanceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ms", APIVersion, "CreateShieldInstance")
+    
+    
     return
 }
 
@@ -158,11 +202,24 @@ func NewCreateShieldInstanceResponse() (response *CreateShieldInstanceResponse) 
     return
 }
 
+// CreateShieldInstance
 // 用户通过该接口提交应用进行应用加固，加固后需通过DescribeShieldResult接口查询加固结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETER_MISSINGSERVICEINFO = "InvalidParameter.MissingServiceInfo"
+//  INVALIDPARAMETER_PLANIDNOTFOUND = "InvalidParameter.PlanIdNotFound"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER_MISSINGAPPINFO = "MissingParameter.MissingAppInfo"
+//  RESOURCENOTFOUND_PLANIDNOTFOUND = "ResourceNotFound.PlanIdNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateShieldInstance(request *CreateShieldInstanceRequest) (response *CreateShieldInstanceResponse, err error) {
     if request == nil {
         request = NewCreateShieldInstanceRequest()
     }
+    
     response = NewCreateShieldInstanceResponse()
     err = c.Send(request, response)
     return
@@ -173,6 +230,8 @@ func NewCreateShieldPlanInstanceRequest() (request *CreateShieldPlanInstanceRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ms", APIVersion, "CreateShieldPlanInstance")
+    
+    
     return
 }
 
@@ -183,11 +242,20 @@ func NewCreateShieldPlanInstanceResponse() (response *CreateShieldPlanInstanceRe
     return
 }
 
+// CreateShieldPlanInstance
 // 对资源进行策略新增
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateShieldPlanInstance(request *CreateShieldPlanInstanceRequest) (response *CreateShieldPlanInstanceResponse, err error) {
     if request == nil {
         request = NewCreateShieldPlanInstanceRequest()
     }
+    
     response = NewCreateShieldPlanInstanceResponse()
     err = c.Send(request, response)
     return
@@ -198,6 +266,8 @@ func NewDeleteScanInstancesRequest() (request *DeleteScanInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ms", APIVersion, "DeleteScanInstances")
+    
+    
     return
 }
 
@@ -208,11 +278,18 @@ func NewDeleteScanInstancesResponse() (response *DeleteScanInstancesResponse) {
     return
 }
 
+// DeleteScanInstances
 // 删除一个或者多个app扫描信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) DeleteScanInstances(request *DeleteScanInstancesRequest) (response *DeleteScanInstancesResponse, err error) {
     if request == nil {
         request = NewDeleteScanInstancesRequest()
     }
+    
     response = NewDeleteScanInstancesResponse()
     err = c.Send(request, response)
     return
@@ -223,6 +300,8 @@ func NewDeleteShieldInstancesRequest() (request *DeleteShieldInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ms", APIVersion, "DeleteShieldInstances")
+    
+    
     return
 }
 
@@ -233,11 +312,19 @@ func NewDeleteShieldInstancesResponse() (response *DeleteShieldInstancesResponse
     return
 }
 
+// DeleteShieldInstances
 // 删除一个或者多个app加固信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETERVALUE_INVALIDITEMIDS = "InvalidParameterValue.InvalidItemIds"
+//  MISSINGPARAMETER_MISSINGITEMIDS = "MissingParameter.MissingItemIds"
+//  RESOURCENOTFOUND_ITEMIDNOTFOUND = "ResourceNotFound.ItemIdNotFound"
 func (c *Client) DeleteShieldInstances(request *DeleteShieldInstancesRequest) (response *DeleteShieldInstancesResponse, err error) {
     if request == nil {
         request = NewDeleteShieldInstancesRequest()
     }
+    
     response = NewDeleteShieldInstancesResponse()
     err = c.Send(request, response)
     return
@@ -248,6 +335,8 @@ func NewDescribeResourceInstancesRequest() (request *DescribeResourceInstancesRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ms", APIVersion, "DescribeResourceInstances")
+    
+    
     return
 }
 
@@ -258,11 +347,23 @@ func NewDescribeResourceInstancesResponse() (response *DescribeResourceInstances
     return
 }
 
+// DescribeResourceInstances
 // 获取某个用户的所有资源信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDLIMIT = "InvalidParameterValue.InvalidLimit"
+//  INVALIDPARAMETERVALUE_INVALIDOFFSET = "InvalidParameterValue.InvalidOffset"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeResourceInstances(request *DescribeResourceInstancesRequest) (response *DescribeResourceInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeResourceInstancesRequest()
     }
+    
     response = NewDescribeResourceInstancesResponse()
     err = c.Send(request, response)
     return
@@ -273,6 +374,8 @@ func NewDescribeScanInstancesRequest() (request *DescribeScanInstancesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ms", APIVersion, "DescribeScanInstances")
+    
+    
     return
 }
 
@@ -283,12 +386,25 @@ func NewDescribeScanInstancesResponse() (response *DescribeScanInstancesResponse
     return
 }
 
+// DescribeScanInstances
 // 本接口用于查看app列表。
+//
 // 可以通过指定任务唯一标识ItemId来查询指定app的详细信息，或通过设定过滤器来查询满足过滤条件的app的详细信息。 指定偏移(Offset)和限制(Limit)来选择结果中的一部分，默认返回满足条件的前20个app信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDITEMIDS = "InvalidParameterValue.InvalidItemIds"
+//  INVALIDPARAMETERVALUE_INVALIDLIMIT = "InvalidParameterValue.InvalidLimit"
+//  INVALIDPARAMETERVALUE_INVALIDOFFSET = "InvalidParameterValue.InvalidOffset"
+//  INVALIDPARAMETERVALUE_INVALIDORDERFIELD = "InvalidParameterValue.InvalidOrderField"
+//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) DescribeScanInstances(request *DescribeScanInstancesRequest) (response *DescribeScanInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeScanInstancesRequest()
     }
+    
     response = NewDescribeScanInstancesResponse()
     err = c.Send(request, response)
     return
@@ -299,6 +415,8 @@ func NewDescribeScanResultsRequest() (request *DescribeScanResultsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ms", APIVersion, "DescribeScanResults")
+    
+    
     return
 }
 
@@ -309,11 +427,19 @@ func NewDescribeScanResultsResponse() (response *DescribeScanResultsResponse) {
     return
 }
 
+// DescribeScanResults
 // 用户通过CreateScanInstances接口提交应用进行风险批量扫描后，用此接口批量获取风险详细信息,包含漏洞信息，广告信息，插件信息和病毒信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  MISSINGPARAMETER_MISSINGITEMID = "MissingParameter.MissingItemId"
+//  RESOURCENOTFOUND_ITEMIDNOTFOUND = "ResourceNotFound.ItemIdNotFound"
 func (c *Client) DescribeScanResults(request *DescribeScanResultsRequest) (response *DescribeScanResultsResponse, err error) {
     if request == nil {
         request = NewDescribeScanResultsRequest()
     }
+    
     response = NewDescribeScanResultsResponse()
     err = c.Send(request, response)
     return
@@ -324,6 +450,8 @@ func NewDescribeShieldInstancesRequest() (request *DescribeShieldInstancesReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ms", APIVersion, "DescribeShieldInstances")
+    
+    
     return
 }
 
@@ -334,12 +462,25 @@ func NewDescribeShieldInstancesResponse() (response *DescribeShieldInstancesResp
     return
 }
 
+// DescribeShieldInstances
 // 本接口用于查看app列表。
+//
 // 可以通过指定任务唯一标识ItemId来查询指定app的详细信息，或通过设定过滤器来查询满足过滤条件的app的详细信息。 指定偏移(Offset)和限制(Limit)来选择结果中的一部分，默认返回满足条件的前20个app信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETERVALUE_INVALIDCOEXISTITEMIDSFILTERS = "InvalidParameterValue.InvalidCoexistItemIdsFilters"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDITEMIDS = "InvalidParameterValue.InvalidItemIds"
+//  INVALIDPARAMETERVALUE_INVALIDLIMIT = "InvalidParameterValue.InvalidLimit"
+//  INVALIDPARAMETERVALUE_INVALIDOFFSET = "InvalidParameterValue.InvalidOffset"
+//  INVALIDPARAMETERVALUE_INVALIDORDERDIRECTION = "InvalidParameterValue.InvalidOrderDirection"
+//  INVALIDPARAMETERVALUE_INVALIDORDERFIELD = "InvalidParameterValue.InvalidOrderField"
 func (c *Client) DescribeShieldInstances(request *DescribeShieldInstancesRequest) (response *DescribeShieldInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeShieldInstancesRequest()
     }
+    
     response = NewDescribeShieldInstancesResponse()
     err = c.Send(request, response)
     return
@@ -350,6 +491,8 @@ func NewDescribeShieldPlanInstanceRequest() (request *DescribeShieldPlanInstance
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ms", APIVersion, "DescribeShieldPlanInstance")
+    
+    
     return
 }
 
@@ -360,11 +503,19 @@ func NewDescribeShieldPlanInstanceResponse() (response *DescribeShieldPlanInstan
     return
 }
 
+// DescribeShieldPlanInstance
 // 查询加固策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  RESOURCEUNAVAILABLE_NOTBIND = "ResourceUnavailable.NotBind"
+//  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
 func (c *Client) DescribeShieldPlanInstance(request *DescribeShieldPlanInstanceRequest) (response *DescribeShieldPlanInstanceResponse, err error) {
     if request == nil {
         request = NewDescribeShieldPlanInstanceRequest()
     }
+    
     response = NewDescribeShieldPlanInstanceResponse()
     err = c.Send(request, response)
     return
@@ -375,6 +526,8 @@ func NewDescribeShieldResultRequest() (request *DescribeShieldResultRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ms", APIVersion, "DescribeShieldResult")
+    
+    
     return
 }
 
@@ -385,11 +538,18 @@ func NewDescribeShieldResultResponse() (response *DescribeShieldResultResponse) 
     return
 }
 
+// DescribeShieldResult
 // 通过唯一标识获取加固的结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  MISSINGPARAMETER_MISSINGITEMID = "MissingParameter.MissingItemId"
+//  RESOURCENOTFOUND_ITEMIDNOTFOUND = "ResourceNotFound.ItemIdNotFound"
 func (c *Client) DescribeShieldResult(request *DescribeShieldResultRequest) (response *DescribeShieldResultResponse, err error) {
     if request == nil {
         request = NewDescribeShieldResultRequest()
     }
+    
     response = NewDescribeShieldResultResponse()
     err = c.Send(request, response)
     return
@@ -400,6 +560,8 @@ func NewDescribeUserBaseInfoInstanceRequest() (request *DescribeUserBaseInfoInst
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ms", APIVersion, "DescribeUserBaseInfoInstance")
+    
+    
     return
 }
 
@@ -410,11 +572,18 @@ func NewDescribeUserBaseInfoInstanceResponse() (response *DescribeUserBaseInfoIn
     return
 }
 
+// DescribeUserBaseInfoInstance
 // 获取用户基础信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  MISSINGPARAMETER_MISSINGITEMID = "MissingParameter.MissingItemId"
+//  RESOURCENOTFOUND_ITEMIDNOTFOUND = "ResourceNotFound.ItemIdNotFound"
 func (c *Client) DescribeUserBaseInfoInstance(request *DescribeUserBaseInfoInstanceRequest) (response *DescribeUserBaseInfoInstanceResponse, err error) {
     if request == nil {
         request = NewDescribeUserBaseInfoInstanceRequest()
     }
+    
     response = NewDescribeUserBaseInfoInstanceResponse()
     err = c.Send(request, response)
     return

@@ -1,16 +1,15 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 
+	ame "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ame/v20190916"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
-	ame "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ame/v20190916"
 )
 
-func main()  {
+func main() {
 	// 必要步骤：
 	// 实例化一个认证对象，入参需要传入腾讯云账户密钥对secretId，secretKey。
 	// 这里采用的是从环境变量读取的方式，需要在环境变量中先设置这两个值。
@@ -27,14 +26,22 @@ func main()  {
 	cpf.SignMethod = "HmacSHA1"
 
 	client, _ := ame.NewClient(credential, "ap-guangzhou", cpf)
-	// 获取分类
-	request := ame.NewDescribeStationsRequest()
-	request.Limit = common.Uint64Ptr(30)
-	request.Offset = common.Uint64Ptr(0)
 
-	// get response structure
-	response, err := client.DescribeStations(request)
-	// API errors
+	// 云音乐相关接口调用示例
+	CloudMusicDemo(client)
+
+	// 曲库包相关接口调用示例
+	PackageMusicDemo(client)
+}
+
+// 云音乐相关接口调用示例
+func CloudMusicDemo(client *ame.Client) {
+	// 1. 获取授权项目列表
+	request := ame.NewDescribeAuthInfoRequest()
+	request.Limit = common.Int64Ptr(10)
+	request.Offset = common.Int64Ptr(0)
+
+	response, err := client.DescribeAuthInfo(request)
 	if _, ok := err.(*errors.TencentCloudSDKError); ok {
 		fmt.Printf("An API error has returned: %s", err)
 		return
@@ -44,48 +51,94 @@ func main()  {
 		panic(err)
 	}
 
-	b, _ := json.Marshal(response.Response)
-	fmt.Printf("%s\n", b)
+	println(response.ToJsonString())
+	if len(response.Response.AuthInfo) <= 0 {
+		println("暂未创建授权项目")
+		return
+	}
 
-	// 获取分类音乐列表
-	itemReq := ame.NewDescribeItemsRequest()
-	itemReq.Limit = common.Uint64Ptr(10)
-	// Offset计算方法：Offset = Offset + Limit
-	itemReq.Offset = common.Uint64Ptr(0)
-	// 这里只是例子，取其中一个CategoryID
-	itemReq.CategoryId = response.Response.Stations[0].CategoryID
-	itemRsp, err := client.DescribeItems(itemReq)
+	// 2. 获取授权项目已购云音乐列表
+	authInfoId := response.Response.AuthInfo[0].Id
+	request1 := ame.NewDescribeCloudMusicPurchasedRequest()
+	request1.AuthInfoId = authInfoId
+	response1, err := client.DescribeCloudMusicPurchased(request1)
 	if err != nil {
 		panic(err)
 	}
-	b, _ = json.Marshal(itemRsp.Response)
-	fmt.Printf("%s\n", b)
-	
-	// 歌曲ID，这里取一个做示例
-	itemID := itemRsp.Response.Items[0].ItemID
 
-	// 获取歌曲信息
-	musicReq := ame.NewDescribeMusicRequest()
-	// 这里只是例子，取其中一个ItemID
-	musicReq.ItemId = itemID
+	println(response1.ToJsonString())
+	if len(response1.Response.MusicOpenDetail) <= 0 {
+		println("授权项目下暂无购买音乐")
+		return
+	}
+
+	// 3. 获取云音乐播放信息
+	musicId := response1.Response.MusicOpenDetail[0].MusicId
+	request2 := ame.NewDescribeCloudMusicRequest()
+	request2.MusicId = musicId
+	// 该值为固定值，必填，不填返回带水印的试听音乐播放链接
+	request2.MusicType = common.StringPtr("MP3-320K-FTD")
+	response2, err := client.DescribeCloudMusic(request2)
+	if err != nil {
+		panic(err)
+	}
+	// 打印音乐播放链接
+	println(*response2.Response.MusicUrl)
+}
+
+// 曲库包相关接口调用示例
+func PackageMusicDemo(client *ame.Client) {
+	// 1. 获取已购曲库包列表
+	request := ame.NewDescribePackagesRequest()
+	request.Length = common.Uint64Ptr(10)
+	request.Offset = common.Uint64Ptr(0)
+	response, err := client.DescribePackages(request)
+	if err != nil {
+		panic(err)
+	}
+	println(response.ToJsonString())
+	if len(response.Response.Packages) <= 0 {
+		println("暂未购买任何曲库包")
+		return
+	}
+
+	// 2. 获取曲库包已核销歌曲列表
+	request1 := ame.NewDescribePackageItemsRequest()
+	request1.Length = common.Uint64Ptr(10)
+	request1.Offset = common.Uint64Ptr(0)
+	request1.OrderId = response.Response.Packages[0].OrderId
+	response1, err := client.DescribePackageItems(request1)
+	if err != nil {
+		panic(err)
+	}
+	println(response1.ToJsonString())
+	if len(response1.Response.PackageItems) <= 0 {
+		println("曲库包下未核销任何歌曲")
+		return
+	}
+
+	// 3. 获取曲库包歌曲播放信息
+	itemId := response1.Response.PackageItems[0].ItemID
+	request2 := ame.NewDescribeMusicRequest()
+	request2.ItemId = itemId
+	// 该值为固定值
+	request2.SubItemType = common.StringPtr("MP3-320K-FTD")
 	// 在应用前端播放音乐C端用户的唯一标识。无需是账户信息，用户唯一标识即可。
-	userId := "xcd323dasd1"
-	musicReq.IdentityId = common.StringPtr(userId)
-	musicRsp, err := client.DescribeMusic(musicReq)
+	request2.IdentityId = common.StringPtr("userid")
+	request2.Ssl = common.StringPtr("Y")
+	response2, err := client.DescribeMusic(request2)
 	if err != nil {
 		panic(err)
 	}
-	// 获取音乐播放路径，前提是您已经在腾讯云AME控制台添加过域名
-	// 添加域名：https://console.cloud.tencent.com/ame/acc
-	println(*musicRsp.Response.Music.FullUrl)
+	println(*response2.Response.Music.FullUrl)
 
-	// 获取歌词信息
-	lyricReq := ame.NewDescribeLyricRequest()
-	lyricReq.ItemId = itemID
-	lyricRsp, err := client.DescribeLyric(lyricReq)
+	// 4. 获取歌词信息
+	request3 := ame.NewDescribeLyricRequest()
+	request3.ItemId = itemId
+	request3.SubItemType = common.StringPtr("LRC-LRC")
+	response3, err := client.DescribeLyric(request3)
 	if err != nil {
 		panic(err)
 	}
-	b, _ = json.Marshal(lyricRsp.Response)
-	fmt.Printf("%s\n", b)
+	println(*response3.Response.Lyric.Url)
 }

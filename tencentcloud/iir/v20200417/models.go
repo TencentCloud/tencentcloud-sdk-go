@@ -16,7 +16,7 @@ package v20200417
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -84,8 +84,19 @@ func (r *RecognizeProductRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RecognizeProductRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeProductRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RecognizeProductResponse struct {
@@ -95,7 +106,7 @@ type RecognizeProductResponse struct {
 		// 检测到的图片中的商品位置和品类预测。 
 	// 当图片中存在多个商品时，输出多组坐标，按照__显著性__排序（综合考虑面积、是否在中心、检测算法置信度）。 
 	// 最多可以输出__3组__检测结果。
-		RegionDetected []*RegionDetected `json:"RegionDetected,omitempty" name:"RegionDetected" list`
+		RegionDetected []*RegionDetected `json:"RegionDetected,omitempty" name:"RegionDetected"`
 
 		// 图像识别出的商品的详细信息。 
 	// 当图像中检测到多个物品时，会对显著性最高的进行识别。
@@ -111,8 +122,10 @@ func (r *RecognizeProductResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RecognizeProductResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RegionDetected struct {

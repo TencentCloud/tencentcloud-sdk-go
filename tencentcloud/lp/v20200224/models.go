@@ -16,7 +16,7 @@ package v20200224
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -144,8 +144,48 @@ func (r *QueryLoginProtectionRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryLoginProtectionRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoginIp")
+	delete(f, "Uid")
+	delete(f, "LoginTime")
+	delete(f, "AccountType")
+	delete(f, "AppIdU")
+	delete(f, "AssociateAccount")
+	delete(f, "NickName")
+	delete(f, "PhoneNumber")
+	delete(f, "EmailAddress")
+	delete(f, "RegisterTime")
+	delete(f, "Address")
+	delete(f, "CookieHash")
+	delete(f, "LoginSource")
+	delete(f, "LoginType")
+	delete(f, "Referer")
+	delete(f, "JumpUrl")
+	delete(f, "UserAgent")
+	delete(f, "XForwardedFor")
+	delete(f, "MouseClickCount")
+	delete(f, "KeyboardClickCount")
+	delete(f, "Result")
+	delete(f, "Reason")
+	delete(f, "LoginSpend")
+	delete(f, "MacAddress")
+	delete(f, "VendorId")
+	delete(f, "AppVersion")
+	delete(f, "Imei")
+	delete(f, "BusinessId")
+	delete(f, "WxSubType")
+	delete(f, "RandNum")
+	delete(f, "WxToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryLoginProtectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryLoginProtectionResponse struct {
@@ -196,7 +236,7 @@ type QueryLoginProtectionResponse struct {
 		Level *int64 `json:"Level,omitempty" name:"Level"`
 
 		// 风险类型。
-		RiskType []*int64 `json:"RiskType,omitempty" name:"RiskType" list`
+		RiskType []*int64 `json:"RiskType,omitempty" name:"RiskType"`
 
 		// accountType 是 QQ 或微信开放账号时，用于标识 QQ 或微信用户登录后关联业务自身的账号 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -212,6 +252,8 @@ func (r *QueryLoginProtectionResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryLoginProtectionResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

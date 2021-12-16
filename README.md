@@ -1,38 +1,77 @@
+<p align="center">
+<a href="https://cloud.tencent.com/"><img src="https://imgcache.qq.com/qcloud/tcloud_dtc/static/static_source_business/eec00e38-a178-479f-83d4-853a18575ac4.png" height="100" ></a>
+</p>
+<h1 align="center">Tencent Cloud SDK for Go</h1>
+
 # 简介
 
-欢迎使用腾讯云开发者工具套件（SDK）3.0，SDK3.0 是云 API3.0 平台的配套工具。后续所有的云服务产品都会接入进来。新版 SDK实 现了统一化，具有各个语言版本的 SDK 使用方法相同，接口调用方式相同，统一的错误码和返回包格式这些优点。
-
-为方便 GO 开发者调试和接入腾讯云产品 API，这里向您介绍适用于 GO 的腾讯云开发工具包，并提供首次使用开发工具包的简单示例。让您快速获取腾讯云 GO SDK 并开始调用。
+欢迎使用腾讯云开发者工具套件（SDK），此 SDK 是云 API 3.0 平台的配套开发工具。
 
 # 依赖环境
 
-1. Go 1.9 版本及以上（如使用go mod需要 Go 1.14），并设置好 GOPATH 等必须的环境变量。
-2. 使用相关产品前需要在腾讯云控制台已开通相应产品。
-3. 在腾讯云控制台[访问管理](https://console.cloud.tencent.com/cam/capi)页面获取 SecretID 和 SecretKey 。
+1. Go 1.9 版本及以上（如使用 go mod 需要 Go 1.14）。
+2. 部分产品需要在腾讯云控制台开通后，才能正常调用此产品的接口。
+3. 在腾讯云控制台 [访问管理](https://console.cloud.tencent.com/cam/capi) 页面获取密钥 SecretID 和 SecretKey，请务必妥善保管，或者使用更安全的临时安全凭证。
 
 # 获取安装
 
-安装 Go SDK 前，先获取安全凭证。在第一次使用云 API 之前，用户首先需要在腾讯云控制台上申请安全凭证，安全凭证包括 SecretID 和 SecretKey, SecretID 是用于标识 API 调用者的身份，SecretKey 是用于加密签名字符串和服务器端验证签名字符串的密钥。SecretKey 必须严格保管，避免泄露。
-
 ## 通过go get安装（推荐）
-
-推荐使用语言自带的工具安装 SDK ：
-
-    go get github.com/tencentcloud/tencentcloud-sdk-go@latest
 
 推荐使用腾讯云镜像加速下载：
 
+1. Linux 或 MacOS:
+
+    ```bash
     export GOPROXY=https://mirrors.tencent.com/go/
+    ```
+
+2. Windows:
+
+    ```cmd
+    set GOPROXY=https://mirrors.tencent.com/go/
+    ```
+
+### 按需安装（推荐）
+
+注意：此安装方式仅支持使用 **Go Modules** 模式进行依赖管理，即环境变量 `GO111MODULE=auto`或者`GO111MODULE=on`, 并且在您的项目中执行了 `go mod init xxx`.
+
+如果您使用 GOPATH, 请参考下节： 全部安装
+
+v1.0.170后可以按照产品下载，您只需下载基础包和对应的产品包(如cvm)即可，不需要下载全部的产品，从而加快您构建镜像或者编译的速度：
+
+1. 安装公共基础包：
+
+    ```bash
+    go get -v -u github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    ```
+
+2. 安装对应的产品包(如cvm):
+
+    ```bash
+    go get -v -u github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm
+    ```
+
+### 全部安装
+
+此模式支持 GOPATH 和 Go Modules
+
+此方式会一次性下载腾讯云所有产品的包：
+
+```bash
+go get -v -u github.com/tencentcloud/tencentcloud-sdk-go
+```
+
+注意：为了支持 go mod，SDK 版本号从 v3.x 降到了 v1.x。并于2021.05.10移除了所有`v3.0.*`和`3.0.*`的tag，如需追溯以前的tag，请参考项目根目录下的 `commit2tag` 文件。
 
 ## 通过源码安装
 
-前往 [Github 代码托管地址](https://github.com/tencentcloud/tencentcloud-sdk-go) 下载最新代码，解压后安装到 $GOPATH/src/github.com/tencentcloud 目录下。
+前往代码托管地址 [Github](https://github.com/tencentcloud/tencentcloud-sdk-go) 或者 [Gitee](https://gitee.com/tencentcloud/tencentcloud-sdk-go) 下载最新代码，解压后安装到 $GOPATH/src/github.com/tencentcloud 目录下。
 
-# 示例
+# 快速开始
 
 每个接口都有一个对应的 Request 结构和一个 Response 结构。例如云服务器的查询实例列表接口 DescribeInstances 有对应的请求结构体 DescribeInstancesRequest 和返回结构体 DescribeInstancesResponse 。
 
-下面以云服务器查询实例列表接口为例，介绍 SDK 的基础用法。出于演示的目的，有一些非必要的内容也加上去了，以尽量展示 SDK 常用的功能，但也显得臃肿。在实际编写代码使用 SDK 的时候，应尽量简化。
+下面以云服务器查询实例列表接口为例，介绍 SDK 的基础用法。
 
 ## 简化版
 
@@ -40,47 +79,47 @@
 package main
 
 import (
-    "fmt"
-
-    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
-    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
-    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
-    cvm "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm/v20170312"
+	"fmt"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
+	cvm "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm/v20170312"
 )
 
 func main() {
-    credential := common.NewCredential("secretId", "secretKey")
-    client, _ := cvm.NewClient(credential, regions.Guangzhou)
+	credential := common.NewCredential("secretId", "secretKey")
+	client, _ := cvm.NewClient(credential, regions.Guangzhou, profile.NewClientProfile())
 
-    request := cvm.NewDescribeInstancesRequest()
-    response, err := client.DescribeInstances(request)
+	request := cvm.NewDescribeInstancesRequest()
+	response, err := client.DescribeInstances(request)
 
-    if _, ok := err.(*errors.TencentCloudSDKError); ok {
-        fmt.Printf("An API error has returned: %s", err)
-        return
-    }
-    if err != nil {
-        panic(err)
-    }
-    fmt.Printf("%s\n", response.ToJsonString())
+	if _, ok := err.(*errors.TencentCloudSDKError); ok {
+		fmt.Printf("An API error has returned: %s", err)
+		return
+	}
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("%s\n", response.ToJsonString())
 }
 ```
 
+## 详细版
 
-
-
+出于演示的目的，有一些非必要的代码，例如对默认配置的修改，以尽量展示 SDK 的功能。在实际编写代码使用 SDK 的时候，建议尽量使用默认配置，酌情修改。
 
 ```go
 package main
 
 import (
-        "fmt"
+	"fmt"
 
-        "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
-        "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
-        "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
-        "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
-        cvm "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm/v20170312"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
+	cvm "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm/v20170312"
 )
 
 func main() {
@@ -103,9 +142,9 @@ func main() {
         // SDK会自动指定域名。通常是不需要特地指定域名的，但是如果你访问的是金融区的服务，
         // 则必须手动指定域名，例如云服务器的上海金融区域名： cvm.ap-shanghai-fsi.tencentcloudapi.com
         cpf.HttpProfile.Endpoint = "cvm.tencentcloudapi.com"
-        // SDK默认用HmacSHA256进行签名，它更安全但是会轻微降低性能。
+        // SDK默认用TC3-HMAC-SHA256进行签名，它更安全但是会轻微降低性能。
         // 如非必要请不要修改默认设置。
-        cpf.SignMethod = "HmacSHA1"
+        cpf.SignMethod = "TC3-HMAC-SHA256"
         // SDK 默认用 zh-CN 调用返回中文。此外还可以设置 en-US 返回全英文。
         // 但大部分产品或接口并不支持全英文的返回。
         // 如非必要请不要修改默认设置。
@@ -158,13 +197,110 @@ func main() {
 }
 ```
 
-更多示例参见 [examples](https://github.com/TencentCloud/tencentcloud-sdk-go/tree/master/examples) 目录。对于复杂接口的 Request 初始化例子，可以参考 examples/cvm/v20170312/run_instances.go 。对于使用json字符串初始化 Request 的例子，可以参考 examples/cvm/v20170312/describe_instances.go 。
+更多示例参见 [examples](https://github.com/TencentCloud/tencentcloud-sdk-go/tree/master/examples) 目录。对于复杂接口的 Request 初始化例子，可以参考 [例一](examples/cvm/v20170312/run_instances.go) 。对于使用json字符串初始化 Request 的例子，可以参考 [例二](examples/cvm/v20170312/describe_instances.go) 。
 
 # 相关配置
 
+**如无特殊需要，建议您使用默认配置。**
+
+在创建客户端前，如有需要，您可以通过修改`profile.ClientProfile`中字段的值进行一些配置。
+
+```go
+// 非必要步骤
+// 实例化一个客户端配置对象，可以指定超时时间等配置
+cpf := profile.NewClientProfile()
+```
+
+具体的配置项说明如下：
+
+## 请求方式
+
+SDK默认使用POST方法。 如果你一定要使用GET方法，可以在这里设置。**GET方法无法处理一些较大的请求**。
+
+```go
+cpf.HttpProfile.ReqMethod = "POST"
+```
+
+## 超时时间
+
+SDK有默认的超时时间，如非必要请不要修改默认设置。
+如有需要请在代码中查阅以获取最新的默认值。  
+单位：秒
+
+```go
+cpf.HttpProfile.ReqTimeout = 30
+```
+
+## 指定域名
+
+SDK会自动指定域名。通常是不需要特地指定域名的，但是如果你访问的是金融区的服务，
+则必须手动指定域名，例如云服务器的上海金融区域名： cvm.ap-shanghai-fsi.tencentcloudapi.com
+
+```go
+cpf.HttpProfile.Endpoint = "cvm.tencentcloudapi.com"
+```
+
+## 签名方式
+
+SDK默认用 `TC3-HMAC-SHA256` 进行签名，它更安全但是会轻微降低性能。
+
+```go
+cpf.SignMethod = "HmacSHA1"
+```
+
+## DEBUG模式
+
+DEBUG模式会打印更详细的日志，当您需要进行详细的排查错误时可以开启。  
+默认为 `false`
+
+```go
+cpf.Debug = true
+```
+
+## 禁用长连接(Keep-alive)
+
+SDK 的每一个 client 默认使用长连接模式，即请求的头部 Connection 字段的值为 keep-alive.
+
+如果您需要使用短连接，可以按照以下方式进行设置：
+
+```go
+...
+    client, _ := cvm.NewClient(credential, regions.Guangzhou, cpf)
+    tp := &http.Transport{
+        DisableKeepAlives: true,
+    }
+    client.WithHttpTransport(tp)
+...
+```
+
+则此 client 发出的每个请求头部的 Connection 字段的值为 close
+
+## 地域容灾
+
+从 `v1.0.227`开始，腾讯云 GO SDK 支持地域容灾功能：
+
+当请求满足以下条件时：
+
+1. 失败次数 >= 5 次
+2. 失败率 >= 75%
+
+SDK 会自动将您请求的地域设置为备选地域。
+
+相关设置如下：
+
+```golang
+    // 开启
+    cpf.DisableRegionBreaker = false
+    // 设置备用请求地址，不需要指定服务，SDK 会自动在头部加上服务名(如cvm)
+    // 例如，设置为 ap-guangzhou.tencentcloudapi.com，则最终的请求为 cvm.ap-guangzhou.tencentcloudapi.com
+    cpf.BackupEndpoint = "ap-guangzhou.tencentcloudapi.com"
+```
+
+此功能仅支持单个客户端的同步请求。
+
 ## 代理
 
-如果是有代理的环境下，需要设置系统环境变量 `https_proxy` ，否则可能无法正常调用，抛出连接超时的异常。
+如果是有代理的环境下，需要设置系统环境变量 `https_proxy` ，否则可能无法正常调用，抛出连接超时的异常。或者自定义 Transport 指定代理，通过 client.WithHttpTransport 覆盖默认配置。
 
 ## 开启 DNS 缓存
 
@@ -176,7 +312,7 @@ func main() {
 但是某些极端情况下，例如测试时，你可能会需要忽略自签名的服务器证书。
 以下是其中一种可能的方法：
 
-```
+```golang
 import "crypto/tls"
 ...
     client, _ := cvm.NewClient(credential, regions.Guangzhou, cpf)
@@ -187,127 +323,230 @@ import "crypto/tls"
 ...
 ```
 
-再次强调，除非你知道自己在做什么，并明白由此带来的风险，否则不要尝试关闭服务器证书校验。
+**再次强调，除非你知道自己在做什么，并明白由此带来的风险，否则不要尝试关闭服务器证书校验。**
+
+# 凭证管理
+
+从版本 `v1.0.217` 开始，腾讯云 GO SDK 支持以下几种方式进行凭证管理：
+
+1. 环境变量
+
+    默认读取环境变量 `TENCENTCLOUD_SECRET_ID` 和 `TENCENTCLOUD_SECRET_KEY` 获取 secretId 和 secretKey.
+    相关代码如下：
+
+    ```go
+    provider := common.DefaultEnvProvider()
+    credential, err := p.GetCredential()
+    ```
+
+2. 配置文件
+
+    配置文件路径为：
+   1. 环境变量 `TENCENTCLOUD_CREDENTIALS_FILE` 所指定的路径
+   2. Linux or MacOS: `~/.tencentcloud/credentials`
+   3. Windows: `c:\Users\NAME\.tencentcloud\credentials`
+
+    配置文件格式如下：
+
+    ```ini
+    [default]
+    secret_id = xxxxx
+    secret_key = xxxxx
+    ```
+
+    相关代码如下：
+
+    ```go
+    provider := common.DefaultProfileProvider()
+    credentail, err := provider.GetCredential()
+    ```
+
+3. 角色扮演
+
+    有关角色扮演的相关概念请参阅：[腾讯云角色概述](https://cloud.tencent.com/document/product/598/19420)
+
+    要使用此种方式，您必须在腾讯云访问管理控制台上创建了一个角色，具体创建过程请参阅：[腾讯云角色创建](https://cloud.tencent.com/document/product/598/19381)
+
+    在您拥有角色后，可以通过如下方式获取凭证：
+
+    ```go
+    provider := common.DefaultRoleArnProvider(secretId, secretKey, roleArn)
+    credentail, err := provider.GetCredential()
+    ```
+
+4. 实例角色
+
+    有关实例角色的相关概念请参阅：[腾讯云实例角色](https://cloud.tencent.com/document/product/213/47668)  
+
+    在您为实例绑定角色后，您可以在实例中访问相关元数据接口获取临时凭证。相关代码如下：
+
+    ```go
+    provider := common.DefaultCvmRoleProvider()
+    credentail, err := provider.GetCredential()
+    ```
+
+5. 凭证提供链
+
+    腾讯云 GO SDK 提供了 凭证提供链，它会默认以 `环境变量->配置文件->实例角色` 的顺序尝试获取凭证，并返回第一个获取到的凭证。相关代码如下：
+
+    ```go
+    provider := common.DefaultProviderChain()
+    credentail, err := provider.GetCredential()
+    ```
+
+    您也可以自定义自己的凭证提供链，从而改变其调用顺序：
+
+    ```go
+    provider1 := common.DefaultCvmRoleProvider()
+    provider2 := common.DefaultEnvProvider()
+    customProviderChain := []common.Provider{provider1, provider2}
+    provider := common.NewProviderChain(customProviderChain)
+    credentail, err := provider.GetCredential()
+    ```
+
+    更详细的使用方式请参考示例：[使用ProviderChain](https://github.com/TencentCloud/tencentcloud-sdk-go/blob/master/testing/integration/provider_chain_test.go)
+
+# 错误处理
+
+从 `v1.0.181` 开始，腾讯云 GO SDK 会将各个产品的返回的错误码定义为常量，您可以直接调用处理，无需手动定义。如果您使用 IDE (如 Goland )进行开发，可以使用他们的代码提示功能直接选择。例如：
+
+```go
+...//Your other go code
+
+// Handling errors
+response, err := client.DescribeInstances(request)
+if terr, ok := err.(*errors.TencentCloudSDKError); ok {
+    code := terr.GetCode()
+    if code == cvm.FAILEDOPERATION_ILLEGALTAGKEY{
+        fmt.Printf("Handling error: FailedOperation.IllegalTagKey,%s", err)
+    }else if code == cvm.UNAUTHORIZEDOPERATION{
+        fmt.Printf("Handling error: UnauthorizedOperation,%s", err)
+    }else{
+        fmt.Printf("An API error has returned: %s", err)
+    }
+    return
+}
+...
+```
+
+同时，各个接口函数的注释部分也列出了此接口可能会返回的错误码，方便您进行处理：
+
+```go
+// DescribeInstances
+// 本接口 (DescribeInstances) 用于查询一个或多个实例的详细信息。
+//
+// 
+//
+// * 可以根据实例`ID`、实例名称或者实例计费模式等信息来查询实例的详细信息。过滤信息详细请见过滤器`Filter`。
+//
+// * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的实例。
+//
+// * 支持查询实例的最新操作（LatestOperation）以及最新操作状态(LatestOperationState)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ILLEGALTAGKEY = "FailedOperation.IllegalTagKey"
+//  FAILEDOPERATION_ILLEGALTAGVALUE = "FailedOperation.IllegalTagValue"
+//  FAILEDOPERATION_TAGKEYRESERVED = "FailedOperation.TagKeyReserved"
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDFILTERVALUE_LIMITEXCEEDED = "InvalidFilterValue.LimitExceeded"
+//  INVALIDHOSTID_MALFORMED = "InvalidHostId.Malformed"
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_IPADDRESSMALFORMED = "InvalidParameterValue.IPAddressMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDIPFORMAT = "InvalidParameterValue.InvalidIpFormat"
+//  INVALIDPARAMETERVALUE_INVALIDVAGUENAME = "InvalidParameterValue.InvalidVagueName"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_SUBNETIDMALFORMED = "InvalidParameterValue.SubnetIdMalformed"
+//  INVALIDPARAMETERVALUE_TAGKEYNOTFOUND = "InvalidParameterValue.TagKeyNotFound"
+//  INVALIDPARAMETERVALUE_VPCIDMALFORMED = "InvalidParameterValue.VpcIdMalformed"
+//  INVALIDSECURITYGROUPID_NOTFOUND = "InvalidSecurityGroupId.NotFound"
+//  INVALIDSGID_MALFORMED = "InvalidSgId.Malformed"
+//  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
+//  RESOURCENOTFOUND_HPCCLUSTER = "ResourceNotFound.HpcCluster"
+//  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
+func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error){
+    ...
+}
+```
+
+# Common Client
+
+从 `v1.0.189`开始，腾讯云 GO SDK 支持使用 `泛用型的API调用方式(Common Client)` 进行请求。您只需安装 `common` 包, 即可向任何产品发起调用。
+
+**注意，您必须明确知道您调用接口的参数内容，否则会调用失败。**
+
+目前仅支持使用 POST 方式发送请求，且签名方法必须使用 签名方法 v3。
+
+详细使用请参阅示例：[使用 Common Client 进行调用](https://github.com/TencentCloud/tencentcloud-sdk-go/blob/master/examples/common/common_client.go)
+
+# 请求重试
+
+## 网络错误重试
+
+当发生临时网络错误或超时时，SDK可以被配置为自动重试。默认不开启。
+通过 `ClientProfile` 配置重试次数和重试间隔时间。
+
+> 通过反射检查 `Request` 结构体是否存在 `ClientToken` 字段，存在该字段则认为是幂等请求。
+> 幂等请求才会在网络错误时自动重试，非幂等请求会抛出异常，防止请求多次重放造成结果不一致。
+
+```golang
+package main
+
+import (
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
+	cvm "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm/v20170312"
+)
+
+func main() {
+	credential := common.NewCredential("secretId", "secretKey")
+	prof := profile.NewClientProfile()
+	prof.NetworkFailureMaxRetries = 3                               // 定义最大重试次数
+	prof.NetworkFailureRetryDuration = profile.ExponentialBackoff   // 定义重试间隔时间
+	client, _ := cvm.NewClient(credential, regions.Guangzhou, prof)
+
+	// ...
+}
+```
+
+更多用法参考[测试文件](https://github.com/TencentCloud/tencentcloud-sdk-go/tree/master/tencentcloud/common/netretry_test.go)
+
+## 限频重试
+
+当发生API限频时，SDK可以被配置为自动重试。默认不开启。
+通过 `ClientProfile` 配置重试次数和重试间隔时间。
+
+```golang
+package main
+
+import (
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
+	cvm "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm/v20170312"
+)
+
+func main() {
+	credential := common.NewCredential("secretId", "secretKey")
+	prof := profile.NewClientProfile()
+	prof.RateLimitExceededMaxRetries = 3                               // 定义最大重试次数
+	prof.RateLimitExceededRetryDuration = profile.ExponentialBackoff   // 定义重试建个时间
+	client, _ := cvm.NewClient(credential, regions.Guangzhou, prof)
+
+	// ...
+}
+```
+
+## 幂等标识符
+
+当网络超时重试或限频重试开启时，会自动向请求中注入 `ClientToken` 参数（如果请求存在`ClientToken`字段且为空）。
+当用户手动指定 `ClientToken` 时，会跳过注入流程。
+
+> 注入的 `ClientToken` 在 `100000/s` 并发量以下提供全局唯一性。
 
 # 支持产品列表
 
-| 包名 | 产品中文名 |
-|------------|------|
-| aai | 智能语音服务，不推荐 |
-| ame | 正版曲库直通车 |
-| as | 弹性伸缩 |
-| asr | 语音识别 |
-| batch | 批量计算 |
-| billing | 计费相关 |
-| bizlive | 小程序·云直播 |
-| bm | 黑石物理服务器 |
-| bmeip | 黑石弹性公网IP |
-| bmlb | 黑石负载均衡 |
-| bmvpc | 黑石私有网络 |
-| bri | 业务风险情报 |
-| cam | 访问管理 |
-| captcha | 验证码 |
-| cat | 云拨测 |
-| cbs | 云硬盘 |
-| cdb | 云数据库 MySQL |
-| cdn | 内容分发网络 |
-| cds | 数盾 |
-| cfs | 文件存储 |
-| chdfs | 云 HDFS |
-| cim | 云通信，不推荐 |
-| cis | 容器实例服务，不推荐 |
-| ckafka | 消息队列 Ckafka |
-| clb | 负载均衡 |
-| cloudaudit | 云审计 |
-| cloudhsm | 数据加密服务 |
-| cme | 腾讯云剪 |
-| cmq | 消息队列 CMQ |
-| cms | 内容安全 |
-| cpdp | 企业收付平台 |
-| cr | 金融联络机器人 |
-| cvm | 云服务器 |
-| cws | 漏洞扫描服务 |
-| dayu | 大禹网络安全 |
-| dbbrain | 数据库智能管家 |
-| dc | 专线接入 |
-| dcdb | 分布式数据库 TDSQL |
-| domain | 域名注册 |
-| drm | 数字版权管理 |
-| ds | 电子合同服务 |
-| dts | 数据传输服务 DTS |
-| ecc | 英语作文批改 |
-| ecdn | 全站加速网络 |
-| ecm | 边缘计算模块 |
-| emr | 弹性 MapReduce |
-| es | Elasticsearch服务 |
-| facefusion | 人脸融合 |
-| faceid | 人脸核身（云智慧眼） |
-| fmu | 人脸试妆 |
-| ft | 人像变换 |
-| gaap | 全球应用加速 |
-| gme | 游戏多媒体引擎 |
-| gs | 云游戏解决方案 |
-| gse | 游戏服务器引擎 |
-| habo | 样本智能分析平台 |
-| hcm | 数学作业批改 |
-| iai | 人脸识别 |
-| ic | 物联卡 |
-| iot | 加速物联网套件，不推荐 |
-| iotcloud | 物联网通信 |
-| iotexplorer | 物联网开发平台 |
-| iottid | 物联网设备身份认证TID |
-| iotvideo | 物联网智能视频服务 |
-| kms | 密钥管理系统 |
-| live | 直播 |
-| mariadb | 云数据库 MariaDB |
-| memcached | 云数据库 Memcached |
-| mongodb | 云数据库 MongoDB |
-| monitor | 云监控 |
-| mps | 视频处理 |
-| ms | 应用安全 |
-| msp | 迁移服务平台 |
-| mvj | 营销价值判断，不推荐 |
-| nlp | 腾讯知文自然语言处理 |
-| npp | 号码保护 |
-| ocr | 文字识别 |
-| organization | 企业组织 |
-| partners | 渠道合作伙伴 |
-| postgres | 云数据库 PostgreSQL |
-| redis | 云数据库 Redis |
-| scf | 云函数 |
-| smpn | 营销号码安全 |
-| sms | 短信 |
-| soe | 智聆口语评测 |
-| solar | 智汇零售，不推荐 |
-| sqlserver | 云数据库 SQL Server |
-| ssl | 证书 |
-| ssm | 凭据管理服务 |
-| sts | 安全凭证服务 |
-| tag | 标签 |
-| tav | 文件检测，不推荐 |
-| tbaas | TBaaS |
-| tbm | 腾讯优评 |
-| tbp | 腾讯智能对话平台 |
-| tcaplusdb | 游戏数据库 TcaplusDB |
-| tcb | 云开发 |
-| tci | 腾讯智学课堂分析 |
-| tcr | 容器镜像服务 |
-| tia | 智能钛机器学习，不推荐 |
-| ticm | 智能鉴黄，不推荐 |
-| tics | 威胁情报云查 |
-| tiems | 智能钛弹性模型服务 |
-| tiia | 图像分析 |
-| tione | 智能钛机器学习平台 |
-| tiw | 互动白板 |
-| tke | 容器服务 |
-| tkgdq | 腾讯知识图谱数据查询 |
-| tmt | 机器翻译 |
-| trtc | 实时音视频 |
-| tsf | 腾讯分布式服务框架 |
-| tts | 语音合成 |
-| vod | 点播 |
-| vpc | 私有网络 |
-| wss | SSL证书管理服务 |
-| youmall | 腾讯优Mall，不推荐 |
-| yunjing | 主机安全 |
-| yunsou | 云搜 |
+参见[产品列表文档](./products.md)

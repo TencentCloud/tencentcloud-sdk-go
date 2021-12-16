@@ -35,6 +35,8 @@ const (
 	Seoul = "ap-seoul"
 	// 上海
 	Shanghai = "ap-shanghai"
+	// 南京
+	Nanjing = "ap-nanjing"
 	// 上海金融
 	ShanghaiFSI = "ap-shanghai-fsi"
 	// 深圳金融

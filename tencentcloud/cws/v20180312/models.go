@@ -16,7 +16,7 @@ package v20180312
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -24,7 +24,7 @@ type CreateMonitorsRequest struct {
 	*tchttp.BaseRequest
 
 	// 站点的url列表
-	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 
 	// 任务名称
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -47,8 +47,23 @@ func (r *CreateMonitorsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateMonitorsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Urls")
+	delete(f, "Name")
+	delete(f, "ScannerType")
+	delete(f, "Crontab")
+	delete(f, "RateLimit")
+	delete(f, "FirstScanStartTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMonitorsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateMonitorsResponse struct {
@@ -65,15 +80,17 @@ func (r *CreateMonitorsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateMonitorsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateSitesRequest struct {
 	*tchttp.BaseRequest
 
 	// 站点的url列表
-	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 
 	// 访问网站的客户端标识
 	UserAgent *string `json:"UserAgent,omitempty" name:"UserAgent"`
@@ -84,8 +101,19 @@ func (r *CreateSitesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateSitesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Urls")
+	delete(f, "UserAgent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSitesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateSitesResponse struct {
@@ -96,7 +124,7 @@ type CreateSitesResponse struct {
 		Number *uint64 `json:"Number,omitempty" name:"Number"`
 
 		// 站点数组
-		Sites []*MiniSite `json:"Sites,omitempty" name:"Sites" list`
+		Sites []*MiniSite `json:"Sites,omitempty" name:"Sites"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -108,15 +136,17 @@ func (r *CreateSitesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateSitesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateSitesScansRequest struct {
 	*tchttp.BaseRequest
 
 	// 站点的ID列表
-	SiteIds []*uint64 `json:"SiteIds,omitempty" name:"SiteIds" list`
+	SiteIds []*uint64 `json:"SiteIds,omitempty" name:"SiteIds"`
 
 	// 扫描模式，normal-正常扫描；deep-深度扫描
 	ScannerType *string `json:"ScannerType,omitempty" name:"ScannerType"`
@@ -130,8 +160,20 @@ func (r *CreateSitesScansRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateSitesScansRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SiteIds")
+	delete(f, "ScannerType")
+	delete(f, "RateLimit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSitesScansRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateSitesScansResponse struct {
@@ -148,15 +190,17 @@ func (r *CreateSitesScansResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateSitesScansResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateVulsMisinformationRequest struct {
 	*tchttp.BaseRequest
 
 	// 漏洞ID列表
-	VulIds []*uint64 `json:"VulIds,omitempty" name:"VulIds" list`
+	VulIds []*uint64 `json:"VulIds,omitempty" name:"VulIds"`
 }
 
 func (r *CreateVulsMisinformationRequest) ToJsonString() string {
@@ -164,8 +208,18 @@ func (r *CreateVulsMisinformationRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateVulsMisinformationRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VulIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVulsMisinformationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateVulsMisinformationResponse struct {
@@ -182,8 +236,10 @@ func (r *CreateVulsMisinformationResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateVulsMisinformationResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateVulsReportRequest struct {
@@ -201,8 +257,19 @@ func (r *CreateVulsReportRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateVulsReportRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SiteId")
+	delete(f, "MonitorId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVulsReportRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateVulsReportResponse struct {
@@ -222,15 +289,17 @@ func (r *CreateVulsReportResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateVulsReportResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteMonitorsRequest struct {
 	*tchttp.BaseRequest
 
 	// 监控任务ID列表
-	MonitorIds []*uint64 `json:"MonitorIds,omitempty" name:"MonitorIds" list`
+	MonitorIds []*uint64 `json:"MonitorIds,omitempty" name:"MonitorIds"`
 }
 
 func (r *DeleteMonitorsRequest) ToJsonString() string {
@@ -238,8 +307,18 @@ func (r *DeleteMonitorsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteMonitorsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MonitorIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteMonitorsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteMonitorsResponse struct {
@@ -256,15 +335,17 @@ func (r *DeleteMonitorsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteMonitorsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteSitesRequest struct {
 	*tchttp.BaseRequest
 
 	// 站点ID列表
-	SiteIds []*uint64 `json:"SiteIds,omitempty" name:"SiteIds" list`
+	SiteIds []*uint64 `json:"SiteIds,omitempty" name:"SiteIds"`
 }
 
 func (r *DeleteSitesRequest) ToJsonString() string {
@@ -272,8 +353,18 @@ func (r *DeleteSitesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteSitesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SiteIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSitesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteSitesResponse struct {
@@ -290,8 +381,10 @@ func (r *DeleteSitesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteSitesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeConfigRequest struct {
@@ -303,8 +396,17 @@ func (r *DescribeConfigRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeConfigRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeConfigResponse struct {
@@ -339,18 +441,20 @@ func (r *DescribeConfigResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeConfigResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeMonitorsRequest struct {
 	*tchttp.BaseRequest
 
 	// 监控任务ID列表
-	MonitorIds []*uint64 `json:"MonitorIds,omitempty" name:"MonitorIds" list`
+	MonitorIds []*uint64 `json:"MonitorIds,omitempty" name:"MonitorIds"`
 
 	// 过滤条件
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -364,8 +468,21 @@ func (r *DescribeMonitorsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeMonitorsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MonitorIds")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMonitorsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeMonitorsResponse struct {
@@ -373,7 +490,7 @@ type DescribeMonitorsResponse struct {
 	Response *struct {
 
 		// 监控任务列表。
-		Monitors []*MonitorsDetail `json:"Monitors,omitempty" name:"Monitors" list`
+		Monitors []*MonitorsDetail `json:"Monitors,omitempty" name:"Monitors"`
 
 		// 监控任务数量。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -388,8 +505,10 @@ func (r *DescribeMonitorsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeMonitorsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeSiteQuotaRequest struct {
@@ -401,8 +520,17 @@ func (r *DescribeSiteQuotaRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeSiteQuotaRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSiteQuotaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeSiteQuotaResponse struct {
@@ -428,18 +556,20 @@ func (r *DescribeSiteQuotaResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeSiteQuotaResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeSitesRequest struct {
 	*tchttp.BaseRequest
 
 	// 站点ID列表
-	SiteIds []*uint64 `json:"SiteIds,omitempty" name:"SiteIds" list`
+	SiteIds []*uint64 `json:"SiteIds,omitempty" name:"SiteIds"`
 
 	// 过滤条件
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -453,8 +583,21 @@ func (r *DescribeSitesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeSitesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SiteIds")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSitesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeSitesResponse struct {
@@ -465,7 +608,7 @@ type DescribeSitesResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 站点信息列表。
-		Sites []*Site `json:"Sites,omitempty" name:"Sites" list`
+		Sites []*Site `json:"Sites,omitempty" name:"Sites"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -477,15 +620,17 @@ func (r *DescribeSitesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeSitesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeSitesVerificationRequest struct {
 	*tchttp.BaseRequest
 
 	// 站点的url列表
-	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 }
 
 func (r *DescribeSitesVerificationRequest) ToJsonString() string {
@@ -493,8 +638,18 @@ func (r *DescribeSitesVerificationRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeSitesVerificationRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Urls")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSitesVerificationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeSitesVerificationResponse struct {
@@ -505,7 +660,7 @@ type DescribeSitesVerificationResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 验证信息列表。
-		SitesVerification []*SitesVerification `json:"SitesVerification,omitempty" name:"SitesVerification" list`
+		SitesVerification []*SitesVerification `json:"SitesVerification,omitempty" name:"SitesVerification"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -517,8 +672,10 @@ func (r *DescribeSitesVerificationResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeSitesVerificationResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeVulsNumberRequest struct {
@@ -530,8 +687,17 @@ func (r *DescribeVulsNumberRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeVulsNumberRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulsNumberRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeVulsNumberResponse struct {
@@ -560,10 +726,10 @@ type DescribeVulsNumberResponse struct {
 		PageCount *uint64 `json:"PageCount,omitempty" name:"PageCount"`
 
 		// 已验证的网站列表。
-		Sites []*MonitorMiniSite `json:"Sites,omitempty" name:"Sites" list`
+		Sites []*MonitorMiniSite `json:"Sites,omitempty" name:"Sites"`
 
 		// 受影响的网站列表。
-		ImpactSites []*MonitorMiniSite `json:"ImpactSites,omitempty" name:"ImpactSites" list`
+		ImpactSites []*MonitorMiniSite `json:"ImpactSites,omitempty" name:"ImpactSites"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -575,8 +741,10 @@ func (r *DescribeVulsNumberResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeVulsNumberResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeVulsNumberTimelineRequest struct {
@@ -588,8 +756,17 @@ func (r *DescribeVulsNumberTimelineRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeVulsNumberTimelineRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulsNumberTimelineRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeVulsNumberTimelineResponse struct {
@@ -600,7 +777,7 @@ type DescribeVulsNumberTimelineResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 用户漏洞数随时间变化统计数据。
-		VulsTimeline []*VulsTimeline `json:"VulsTimeline,omitempty" name:"VulsTimeline" list`
+		VulsTimeline []*VulsTimeline `json:"VulsTimeline,omitempty" name:"VulsTimeline"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -612,8 +789,10 @@ func (r *DescribeVulsNumberTimelineResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeVulsNumberTimelineResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeVulsRequest struct {
@@ -626,7 +805,7 @@ type DescribeVulsRequest struct {
 	MonitorId *uint64 `json:"MonitorId,omitempty" name:"MonitorId"`
 
 	// 过滤条件
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -640,8 +819,22 @@ func (r *DescribeVulsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeVulsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SiteId")
+	delete(f, "MonitorId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeVulsResponse struct {
@@ -652,7 +845,7 @@ type DescribeVulsResponse struct {
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 漏洞信息列表。
-		Vuls []*Vul `json:"Vuls,omitempty" name:"Vuls" list`
+		Vuls []*Vul `json:"Vuls,omitempty" name:"Vuls"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -664,8 +857,10 @@ func (r *DescribeVulsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeVulsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Filter struct {
@@ -674,7 +869,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 一个或者多个过滤值。
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type MiniSite struct {
@@ -698,8 +893,18 @@ func (r *ModifyConfigAttributeRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyConfigAttributeRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NoticeLevel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyConfigAttributeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyConfigAttributeResponse struct {
@@ -716,8 +921,10 @@ func (r *ModifyConfigAttributeResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyConfigAttributeResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyMonitorAttributeRequest struct {
@@ -727,7 +934,7 @@ type ModifyMonitorAttributeRequest struct {
 	MonitorId *uint64 `json:"MonitorId,omitempty" name:"MonitorId"`
 
 	// 站点的url列表
-	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 
 	// 任务名称
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -753,8 +960,25 @@ func (r *ModifyMonitorAttributeRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyMonitorAttributeRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MonitorId")
+	delete(f, "Urls")
+	delete(f, "Name")
+	delete(f, "ScannerType")
+	delete(f, "Crontab")
+	delete(f, "RateLimit")
+	delete(f, "FirstScanStartTime")
+	delete(f, "MonitorStatus")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMonitorAttributeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyMonitorAttributeResponse struct {
@@ -771,8 +995,10 @@ func (r *ModifyMonitorAttributeResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyMonitorAttributeResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifySiteAttributeRequest struct {
@@ -805,8 +1031,24 @@ func (r *ModifySiteAttributeRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifySiteAttributeRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SiteId")
+	delete(f, "Name")
+	delete(f, "NeedLogin")
+	delete(f, "LoginCookie")
+	delete(f, "LoginCheckUrl")
+	delete(f, "LoginCheckKw")
+	delete(f, "ScanDisallow")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySiteAttributeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifySiteAttributeResponse struct {
@@ -823,8 +1065,10 @@ func (r *ModifySiteAttributeResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifySiteAttributeResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Monitor struct {
@@ -890,13 +1134,13 @@ type MonitorsDetail struct {
 	Basic *Monitor `json:"Basic,omitempty" name:"Basic"`
 
 	// 监控任务包含的站点列表。
-	Sites []*MonitorMiniSite `json:"Sites,omitempty" name:"Sites" list`
+	Sites []*MonitorMiniSite `json:"Sites,omitempty" name:"Sites"`
 
 	// 监控任务包含的站点列表数量。
 	SiteNumber *uint64 `json:"SiteNumber,omitempty" name:"SiteNumber"`
 
 	// 监控任务包含的受漏洞威胁的站点列表。
-	ImpactSites []*MonitorMiniSite `json:"ImpactSites,omitempty" name:"ImpactSites" list`
+	ImpactSites []*MonitorMiniSite `json:"ImpactSites,omitempty" name:"ImpactSites"`
 
 	// 监控任务包含的受漏洞威胁的站点列表数量。
 	ImpactSiteNumber *uint64 `json:"ImpactSiteNumber,omitempty" name:"ImpactSiteNumber"`
@@ -1068,7 +1312,7 @@ type VerifySitesRequest struct {
 	*tchttp.BaseRequest
 
 	// 站点的url列表
-	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 }
 
 func (r *VerifySitesRequest) ToJsonString() string {
@@ -1076,8 +1320,18 @@ func (r *VerifySitesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VerifySitesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Urls")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifySitesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VerifySitesResponse struct {
@@ -1100,8 +1354,10 @@ func (r *VerifySitesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VerifySitesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Vul struct {

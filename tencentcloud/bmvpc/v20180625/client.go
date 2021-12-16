@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -48,6 +48,8 @@ func NewAcceptVpcPeerConnectionRequest() (request *AcceptVpcPeerConnectionReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "AcceptVpcPeerConnection")
+    
+    
     return
 }
 
@@ -58,11 +60,22 @@ func NewAcceptVpcPeerConnectionResponse() (response *AcceptVpcPeerConnectionResp
     return
 }
 
+// AcceptVpcPeerConnection
 // 接受黑石对等连接
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_VPCNOTEXIST = "ResourceNotFound.VpcNotExist"
+//  RESOURCENOTFOUND_VPCPEERNOTEXIST = "ResourceNotFound.VpcPeerNotExist"
+//  UNSUPPORTEDOPERATION_INVALIDVPCPEERSTATE = "UnsupportedOperation.InvalidVpcPeerState"
+//  UNSUPPORTEDOPERATION_VPCCIDRCONFICT = "UnsupportedOperation.VpcCidrConfict"
+//  UNSUPPORTEDOPERATION_VPCPEEREXIST = "UnsupportedOperation.VpcPeerExist"
 func (c *Client) AcceptVpcPeerConnection(request *AcceptVpcPeerConnectionRequest) (response *AcceptVpcPeerConnectionResponse, err error) {
     if request == nil {
         request = NewAcceptVpcPeerConnectionRequest()
     }
+    
     response = NewAcceptVpcPeerConnectionResponse()
     err = c.Send(request, response)
     return
@@ -73,6 +86,8 @@ func NewAsyncRegisterIpsRequest() (request *AsyncRegisterIpsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "AsyncRegisterIps")
+    
+    
     return
 }
 
@@ -83,11 +98,16 @@ func NewAsyncRegisterIpsResponse() (response *AsyncRegisterIpsResponse) {
     return
 }
 
+// AsyncRegisterIps
 // 批量注册虚拟IP，异步接口。通过接口来查询任务进度。每次请求最多注册256个IP
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) AsyncRegisterIps(request *AsyncRegisterIpsRequest) (response *AsyncRegisterIpsResponse, err error) {
     if request == nil {
         request = NewAsyncRegisterIpsRequest()
     }
+    
     response = NewAsyncRegisterIpsResponse()
     err = c.Send(request, response)
     return
@@ -98,6 +118,8 @@ func NewBindEipsToNatGatewayRequest() (request *BindEipsToNatGatewayRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "BindEipsToNatGateway")
+    
+    
     return
 }
 
@@ -108,11 +130,19 @@ func NewBindEipsToNatGatewayResponse() (response *BindEipsToNatGatewayResponse) 
     return
 }
 
+// BindEipsToNatGateway
 // NAT网关绑定EIP接口，可将EIP绑定到NAT网关，该EIP作为访问外网的源IP地址，将流量发送到Internet
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) BindEipsToNatGateway(request *BindEipsToNatGatewayRequest) (response *BindEipsToNatGatewayResponse, err error) {
     if request == nil {
         request = NewBindEipsToNatGatewayRequest()
     }
+    
     response = NewBindEipsToNatGatewayResponse()
     err = c.Send(request, response)
     return
@@ -123,6 +153,8 @@ func NewBindIpsToNatGatewayRequest() (request *BindIpsToNatGatewayRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "BindIpsToNatGateway")
+    
+    
     return
 }
 
@@ -133,11 +165,20 @@ func NewBindIpsToNatGatewayResponse() (response *BindIpsToNatGatewayResponse) {
     return
 }
 
+// BindIpsToNatGateway
 // 可用于将子网的部分IP绑定到NAT网关
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) BindIpsToNatGateway(request *BindIpsToNatGatewayRequest) (response *BindIpsToNatGatewayResponse, err error) {
     if request == nil {
         request = NewBindIpsToNatGatewayRequest()
     }
+    
     response = NewBindIpsToNatGatewayResponse()
     err = c.Send(request, response)
     return
@@ -148,6 +189,8 @@ func NewBindSubnetsToNatGatewayRequest() (request *BindSubnetsToNatGatewayReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "BindSubnetsToNatGateway")
+    
+    
     return
 }
 
@@ -158,11 +201,20 @@ func NewBindSubnetsToNatGatewayResponse() (response *BindSubnetsToNatGatewayResp
     return
 }
 
+// BindSubnetsToNatGateway
 // NAT网关绑定子网后，该子网内全部IP可出公网
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) BindSubnetsToNatGateway(request *BindSubnetsToNatGatewayRequest) (response *BindSubnetsToNatGatewayResponse, err error) {
     if request == nil {
         request = NewBindSubnetsToNatGatewayRequest()
     }
+    
     response = NewBindSubnetsToNatGatewayResponse()
     err = c.Send(request, response)
     return
@@ -173,6 +225,8 @@ func NewCreateCustomerGatewayRequest() (request *CreateCustomerGatewayRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "CreateCustomerGateway")
+    
+    
     return
 }
 
@@ -183,11 +237,21 @@ func NewCreateCustomerGatewayResponse() (response *CreateCustomerGatewayResponse
     return
 }
 
+// CreateCustomerGateway
 // 本接口（CreateCustomerGateway）用于创建对端网关。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_CUSTOMERGATEWAYNOTEXIST = "ResourceNotFound.CustomerGatewayNotExist"
+//  UNSUPPORTEDOPERATION_CUSTOMERGATEWAYADDREXIST = "UnsupportedOperation.CustomerGatewayAddrExist"
+//  UNSUPPORTEDOPERATION_CUSTOMERGATEWAYADDRINVALID = "UnsupportedOperation.CustomerGatewayAddrInvalid"
+//  UNSUPPORTEDOPERATION_VPNCONNINUSE = "UnsupportedOperation.VpnConnInUse"
 func (c *Client) CreateCustomerGateway(request *CreateCustomerGatewayRequest) (response *CreateCustomerGatewayResponse, err error) {
     if request == nil {
         request = NewCreateCustomerGatewayRequest()
     }
+    
     response = NewCreateCustomerGatewayResponse()
     err = c.Send(request, response)
     return
@@ -198,6 +262,8 @@ func NewCreateDockerSubnetWithVlanRequest() (request *CreateDockerSubnetWithVlan
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "CreateDockerSubnetWithVlan")
+    
+    
     return
 }
 
@@ -208,11 +274,17 @@ func NewCreateDockerSubnetWithVlanResponse() (response *CreateDockerSubnetWithVl
     return
 }
 
+// CreateDockerSubnetWithVlan
 // 创建黑石Docker子网， 如果不指定VlanId，将会分配2000--2999范围的VlanId; 子网会关闭分布式网关
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateDockerSubnetWithVlan(request *CreateDockerSubnetWithVlanRequest) (response *CreateDockerSubnetWithVlanResponse, err error) {
     if request == nil {
         request = NewCreateDockerSubnetWithVlanRequest()
     }
+    
     response = NewCreateDockerSubnetWithVlanResponse()
     err = c.Send(request, response)
     return
@@ -223,6 +295,8 @@ func NewCreateHostedInterfaceRequest() (request *CreateHostedInterfaceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "CreateHostedInterface")
+    
+    
     return
 }
 
@@ -233,15 +307,26 @@ func NewCreateHostedInterfaceResponse() (response *CreateHostedInterfaceResponse
     return
 }
 
+// CreateHostedInterface
 // 本接口（CreateHostedInterface）用于黑石托管机器加入带VLANID不为5的子网。
+//
 // 
+//
 // 1) 不能加入vlanId 为5的子网，只能加入VLANID范围为2000-2999的子网。
+//
 // 2) 每台托管机器最多可以加入20个子网。
+//
 // 3) 每次调用最多能支持传入10台托管机器。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateHostedInterface(request *CreateHostedInterfaceRequest) (response *CreateHostedInterfaceResponse, err error) {
     if request == nil {
         request = NewCreateHostedInterfaceRequest()
     }
+    
     response = NewCreateHostedInterfaceResponse()
     err = c.Send(request, response)
     return
@@ -252,6 +337,8 @@ func NewCreateInterfacesRequest() (request *CreateInterfacesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "CreateInterfaces")
+    
+    
     return
 }
 
@@ -262,11 +349,20 @@ func NewCreateInterfacesResponse() (response *CreateInterfacesResponse) {
     return
 }
 
+// CreateInterfaces
 // 物理机加入子网
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateInterfaces(request *CreateInterfacesRequest) (response *CreateInterfacesResponse, err error) {
     if request == nil {
         request = NewCreateInterfacesRequest()
     }
+    
     response = NewCreateInterfacesResponse()
     err = c.Send(request, response)
     return
@@ -277,6 +373,8 @@ func NewCreateNatGatewayRequest() (request *CreateNatGatewayRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "CreateNatGateway")
+    
+    
     return
 }
 
@@ -287,11 +385,21 @@ func NewCreateNatGatewayResponse() (response *CreateNatGatewayResponse) {
     return
 }
 
+// CreateNatGateway
 // 创建NAT网关接口，可针对网段方式、子网全部IP、子网部分IP这三种方式创建NAT网关
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateNatGateway(request *CreateNatGatewayRequest) (response *CreateNatGatewayResponse, err error) {
     if request == nil {
         request = NewCreateNatGatewayRequest()
     }
+    
     response = NewCreateNatGatewayResponse()
     err = c.Send(request, response)
     return
@@ -302,6 +410,8 @@ func NewCreateRoutePoliciesRequest() (request *CreateRoutePoliciesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "CreateRoutePolicies")
+    
+    
     return
 }
 
@@ -312,11 +422,21 @@ func NewCreateRoutePoliciesResponse() (response *CreateRoutePoliciesResponse) {
     return
 }
 
+// CreateRoutePolicies
 // 创建黑石路由表的路由规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateRoutePolicies(request *CreateRoutePoliciesRequest) (response *CreateRoutePoliciesResponse, err error) {
     if request == nil {
         request = NewCreateRoutePoliciesRequest()
     }
+    
     response = NewCreateRoutePoliciesResponse()
     err = c.Send(request, response)
     return
@@ -327,6 +447,8 @@ func NewCreateSubnetRequest() (request *CreateSubnetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "CreateSubnet")
+    
+    
     return
 }
 
@@ -337,12 +459,21 @@ func NewCreateSubnetResponse() (response *CreateSubnetResponse) {
     return
 }
 
+// CreateSubnet
 // 创建黑石私有网络的子网
+//
 // 访问管理: 用户可以对VpcId进行授权操作。例如设置资源为["qcs::bmvpc:::unVpc/vpc-xxxxx"]
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateSubnet(request *CreateSubnetRequest) (response *CreateSubnetResponse, err error) {
     if request == nil {
         request = NewCreateSubnetRequest()
     }
+    
     response = NewCreateSubnetResponse()
     err = c.Send(request, response)
     return
@@ -353,6 +484,8 @@ func NewCreateVirtualSubnetWithVlanRequest() (request *CreateVirtualSubnetWithVl
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "CreateVirtualSubnetWithVlan")
+    
+    
     return
 }
 
@@ -363,11 +496,17 @@ func NewCreateVirtualSubnetWithVlanResponse() (response *CreateVirtualSubnetWith
     return
 }
 
+// CreateVirtualSubnetWithVlan
 // 创建黑石虚拟子网， 虚拟子网用于在黑石上创建虚拟网络，与黑石子网要做好规划。虚拟子网会分配2000-2999的VlanId。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateVirtualSubnetWithVlan(request *CreateVirtualSubnetWithVlanRequest) (response *CreateVirtualSubnetWithVlanResponse, err error) {
     if request == nil {
         request = NewCreateVirtualSubnetWithVlanRequest()
     }
+    
     response = NewCreateVirtualSubnetWithVlanResponse()
     err = c.Send(request, response)
     return
@@ -378,6 +517,8 @@ func NewCreateVpcRequest() (request *CreateVpcRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "CreateVpc")
+    
+    
     return
 }
 
@@ -388,11 +529,18 @@ func NewCreateVpcResponse() (response *CreateVpcResponse) {
     return
 }
 
+// CreateVpc
 // 创建黑石私有网络
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) CreateVpc(request *CreateVpcRequest) (response *CreateVpcResponse, err error) {
     if request == nil {
         request = NewCreateVpcRequest()
     }
+    
     response = NewCreateVpcResponse()
     err = c.Send(request, response)
     return
@@ -403,6 +551,8 @@ func NewCreateVpcPeerConnectionRequest() (request *CreateVpcPeerConnectionReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "CreateVpcPeerConnection")
+    
+    
     return
 }
 
@@ -413,11 +563,23 @@ func NewCreateVpcPeerConnectionResponse() (response *CreateVpcPeerConnectionResp
     return
 }
 
+// CreateVpcPeerConnection
 // 创建对等连接
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND_VPCNOTEXIST = "ResourceNotFound.VpcNotExist"
+//  RESOURCENOTFOUND_VPCPEERNOTEXIST = "ResourceNotFound.VpcPeerNotExist"
+//  UNSUPPORTEDOPERATION_INVALIDVPCPEERSTATE = "UnsupportedOperation.InvalidVpcPeerState"
+//  UNSUPPORTEDOPERATION_VPCCIDRCONFICT = "UnsupportedOperation.VpcCidrConfict"
+//  UNSUPPORTEDOPERATION_VPCPEEREXIST = "UnsupportedOperation.VpcPeerExist"
 func (c *Client) CreateVpcPeerConnection(request *CreateVpcPeerConnectionRequest) (response *CreateVpcPeerConnectionResponse, err error) {
     if request == nil {
         request = NewCreateVpcPeerConnectionRequest()
     }
+    
     response = NewCreateVpcPeerConnectionResponse()
     err = c.Send(request, response)
     return
@@ -428,6 +590,8 @@ func NewDeleteCustomerGatewayRequest() (request *DeleteCustomerGatewayRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DeleteCustomerGateway")
+    
+    
     return
 }
 
@@ -438,11 +602,21 @@ func NewDeleteCustomerGatewayResponse() (response *DeleteCustomerGatewayResponse
     return
 }
 
+// DeleteCustomerGateway
 // 本接口（DeleteCustomerGateway）用于删除对端网关。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CUSTOMERGATEWAYNOTEXIST = "ResourceNotFound.CustomerGatewayNotExist"
+//  UNSUPPORTEDOPERATION_CUSTOMERGATEWAYADDREXIST = "UnsupportedOperation.CustomerGatewayAddrExist"
+//  UNSUPPORTEDOPERATION_CUSTOMERGATEWAYADDRINVALID = "UnsupportedOperation.CustomerGatewayAddrInvalid"
+//  UNSUPPORTEDOPERATION_VPNCONNINUSE = "UnsupportedOperation.VpnConnInUse"
 func (c *Client) DeleteCustomerGateway(request *DeleteCustomerGatewayRequest) (response *DeleteCustomerGatewayResponse, err error) {
     if request == nil {
         request = NewDeleteCustomerGatewayRequest()
     }
+    
     response = NewDeleteCustomerGatewayResponse()
     err = c.Send(request, response)
     return
@@ -453,6 +627,8 @@ func NewDeleteHostedInterfaceRequest() (request *DeleteHostedInterfaceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DeleteHostedInterface")
+    
+    
     return
 }
 
@@ -463,13 +639,22 @@ func NewDeleteHostedInterfaceResponse() (response *DeleteHostedInterfaceResponse
     return
 }
 
+// DeleteHostedInterface
 // 本接口用于托管机器从VLANID不为5的子网中移除。
+//
 // 1) 不能从vlanId 为5的子网中移除。
+//
 // 2) 每次调用最多能支持传入10台物理机。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteHostedInterface(request *DeleteHostedInterfaceRequest) (response *DeleteHostedInterfaceResponse, err error) {
     if request == nil {
         request = NewDeleteHostedInterfaceRequest()
     }
+    
     response = NewDeleteHostedInterfaceResponse()
     err = c.Send(request, response)
     return
@@ -480,6 +665,8 @@ func NewDeleteHostedInterfacesRequest() (request *DeleteHostedInterfacesRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DeleteHostedInterfaces")
+    
+    
     return
 }
 
@@ -490,11 +677,19 @@ func NewDeleteHostedInterfacesResponse() (response *DeleteHostedInterfacesRespon
     return
 }
 
+// DeleteHostedInterfaces
 // 托管机器移除子网批量接口，传入一台托管机器和多个子网，批量移除这些子网。异步接口，接口返回TaskId。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteHostedInterfaces(request *DeleteHostedInterfacesRequest) (response *DeleteHostedInterfacesResponse, err error) {
     if request == nil {
         request = NewDeleteHostedInterfacesRequest()
     }
+    
     response = NewDeleteHostedInterfacesResponse()
     err = c.Send(request, response)
     return
@@ -505,6 +700,8 @@ func NewDeleteInterfacesRequest() (request *DeleteInterfacesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DeleteInterfaces")
+    
+    
     return
 }
 
@@ -515,11 +712,19 @@ func NewDeleteInterfacesResponse() (response *DeleteInterfacesResponse) {
     return
 }
 
+// DeleteInterfaces
 // 物理机移除子网批量接口，传入一台物理机和多个子网，批量移除这些子网。异步接口，接口返回TaskId。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteInterfaces(request *DeleteInterfacesRequest) (response *DeleteInterfacesResponse, err error) {
     if request == nil {
         request = NewDeleteInterfacesRequest()
     }
+    
     response = NewDeleteInterfacesResponse()
     err = c.Send(request, response)
     return
@@ -530,6 +735,8 @@ func NewDeleteNatGatewayRequest() (request *DeleteNatGatewayRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DeleteNatGateway")
+    
+    
     return
 }
 
@@ -540,11 +747,19 @@ func NewDeleteNatGatewayResponse() (response *DeleteNatGatewayResponse) {
     return
 }
 
+// DeleteNatGateway
 // 删除NAT网关
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteNatGateway(request *DeleteNatGatewayRequest) (response *DeleteNatGatewayResponse, err error) {
     if request == nil {
         request = NewDeleteNatGatewayRequest()
     }
+    
     response = NewDeleteNatGatewayResponse()
     err = c.Send(request, response)
     return
@@ -555,6 +770,8 @@ func NewDeleteRoutePolicyRequest() (request *DeleteRoutePolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DeleteRoutePolicy")
+    
+    
     return
 }
 
@@ -565,11 +782,20 @@ func NewDeleteRoutePolicyResponse() (response *DeleteRoutePolicyResponse) {
     return
 }
 
+// DeleteRoutePolicy
 // 删除黑石路由表路由规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteRoutePolicy(request *DeleteRoutePolicyRequest) (response *DeleteRoutePolicyResponse, err error) {
     if request == nil {
         request = NewDeleteRoutePolicyRequest()
     }
+    
     response = NewDeleteRoutePolicyResponse()
     err = c.Send(request, response)
     return
@@ -580,6 +806,8 @@ func NewDeleteSubnetRequest() (request *DeleteSubnetRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DeleteSubnet")
+    
+    
     return
 }
 
@@ -590,12 +818,22 @@ func NewDeleteSubnetResponse() (response *DeleteSubnetResponse) {
     return
 }
 
+// DeleteSubnet
 // 本接口（DeleteSubnet）用于删除黑石私有网络子网。
+//
 // 删除子网前，请清理该子网下所有资源，包括物理机、负载均衡、黑石数据库、弹性IP、NAT网关等资源
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteSubnet(request *DeleteSubnetRequest) (response *DeleteSubnetResponse, err error) {
     if request == nil {
         request = NewDeleteSubnetRequest()
     }
+    
     response = NewDeleteSubnetResponse()
     err = c.Send(request, response)
     return
@@ -606,6 +844,8 @@ func NewDeleteVirtualIpRequest() (request *DeleteVirtualIpRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DeleteVirtualIp")
+    
+    
     return
 }
 
@@ -616,11 +856,19 @@ func NewDeleteVirtualIpResponse() (response *DeleteVirtualIpResponse) {
     return
 }
 
+// DeleteVirtualIp
 // 退还虚拟IP。此接口只能退还虚拟IP，物理机IP不能退还。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteVirtualIp(request *DeleteVirtualIpRequest) (response *DeleteVirtualIpResponse, err error) {
     if request == nil {
         request = NewDeleteVirtualIpRequest()
     }
+    
     response = NewDeleteVirtualIpResponse()
     err = c.Send(request, response)
     return
@@ -631,6 +879,8 @@ func NewDeleteVpcRequest() (request *DeleteVpcRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DeleteVpc")
+    
+    
     return
 }
 
@@ -641,13 +891,25 @@ func NewDeleteVpcResponse() (response *DeleteVpcResponse) {
     return
 }
 
+// DeleteVpc
 // 本接口(DeleteVpc)用于删除黑石私有网络(VPC)。
+//
 // 
+//
 // 删除私有网络前，请清理该私有网络下所有资源，包括子网、负载均衡、弹性 IP、对等连接、NAT 网关、专线通道、SSLVPN 等资源。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteVpc(request *DeleteVpcRequest) (response *DeleteVpcResponse, err error) {
     if request == nil {
         request = NewDeleteVpcRequest()
     }
+    
     response = NewDeleteVpcResponse()
     err = c.Send(request, response)
     return
@@ -658,6 +920,8 @@ func NewDeleteVpcPeerConnectionRequest() (request *DeleteVpcPeerConnectionReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DeleteVpcPeerConnection")
+    
+    
     return
 }
 
@@ -668,11 +932,22 @@ func NewDeleteVpcPeerConnectionResponse() (response *DeleteVpcPeerConnectionResp
     return
 }
 
+// DeleteVpcPeerConnection
 // 删除黑石对等连接
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_VPCNOTEXIST = "ResourceNotFound.VpcNotExist"
+//  RESOURCENOTFOUND_VPCPEERNOTEXIST = "ResourceNotFound.VpcPeerNotExist"
+//  UNSUPPORTEDOPERATION_INVALIDVPCPEERSTATE = "UnsupportedOperation.InvalidVpcPeerState"
+//  UNSUPPORTEDOPERATION_VPCCIDRCONFICT = "UnsupportedOperation.VpcCidrConfict"
+//  UNSUPPORTEDOPERATION_VPCPEEREXIST = "UnsupportedOperation.VpcPeerExist"
 func (c *Client) DeleteVpcPeerConnection(request *DeleteVpcPeerConnectionRequest) (response *DeleteVpcPeerConnectionResponse, err error) {
     if request == nil {
         request = NewDeleteVpcPeerConnectionRequest()
     }
+    
     response = NewDeleteVpcPeerConnectionResponse()
     err = c.Send(request, response)
     return
@@ -683,6 +958,8 @@ func NewDeleteVpnConnectionRequest() (request *DeleteVpnConnectionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DeleteVpnConnection")
+    
+    
     return
 }
 
@@ -693,11 +970,26 @@ func NewDeleteVpnConnectionResponse() (response *DeleteVpnConnectionResponse) {
     return
 }
 
+// DeleteVpnConnection
 // 本接口(DeleteVpnConnection)用于删除VPN通道。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_SPDACLLIMIT = "LimitExceeded.SpdAclLimit"
+//  LIMITEXCEEDED_SPDDNETLIMIT = "LimitExceeded.SpdDnetLimit"
+//  LIMITEXCEEDED_SPDSNETLIMIT = "LimitExceeded.SpdSnetLimit"
+//  RESOURCENOTFOUND_NOTAVAIBLE = "ResourceNotFound.NotAvaible"
+//  RESOURCENOTFOUND_VPNCONNNOTEXIST = "ResourceNotFound.VpnConnNotExist"
+//  UNSUPPORTEDOPERATION_INVALIDVPNCONNSTATE = "UnsupportedOperation.InvalidVpnConnState"
+//  UNSUPPORTEDOPERATION_SPDACLCIDRINVALID = "UnsupportedOperation.SpdAclCidrInvalid"
+//  UNSUPPORTEDOPERATION_SPDSNETNOTINCIDR = "UnsupportedOperation.SpdSnetNotInCidr"
+//  UNSUPPORTEDOPERATION_VPNCONNEXIST = "UnsupportedOperation.VpnConnExist"
 func (c *Client) DeleteVpnConnection(request *DeleteVpnConnectionRequest) (response *DeleteVpnConnectionResponse, err error) {
     if request == nil {
         request = NewDeleteVpnConnectionRequest()
     }
+    
     response = NewDeleteVpnConnectionResponse()
     err = c.Send(request, response)
     return
@@ -708,6 +1000,8 @@ func NewDeleteVpnGatewayRequest() (request *DeleteVpnGatewayRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DeleteVpnGateway")
+    
+    
     return
 }
 
@@ -718,11 +1012,19 @@ func NewDeleteVpnGatewayResponse() (response *DeleteVpnGatewayResponse) {
     return
 }
 
+// DeleteVpnGateway
 // 本接口（DeleteVpnGateway）用于删除VPN网关。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_VPNGWNOTEXIST = "ResourceNotFound.VpnGwNotExist"
+//  UNSUPPORTEDOPERATION_VPNCONNINUSE = "UnsupportedOperation.VpnConnInUse"
 func (c *Client) DeleteVpnGateway(request *DeleteVpnGatewayRequest) (response *DeleteVpnGatewayResponse, err error) {
     if request == nil {
         request = NewDeleteVpnGatewayRequest()
     }
+    
     response = NewDeleteVpnGatewayResponse()
     err = c.Send(request, response)
     return
@@ -733,6 +1035,8 @@ func NewDeregisterIpsRequest() (request *DeregisterIpsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DeregisterIps")
+    
+    
     return
 }
 
@@ -743,11 +1047,19 @@ func NewDeregisterIpsResponse() (response *DeregisterIpsResponse) {
     return
 }
 
+// DeregisterIps
 // 注销私有网络IP为空闲
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeregisterIps(request *DeregisterIpsRequest) (response *DeregisterIpsResponse, err error) {
     if request == nil {
         request = NewDeregisterIpsRequest()
     }
+    
     response = NewDeregisterIpsResponse()
     err = c.Send(request, response)
     return
@@ -758,6 +1070,8 @@ func NewDescribeCustomerGatewaysRequest() (request *DescribeCustomerGatewaysRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeCustomerGateways")
+    
+    
     return
 }
 
@@ -768,11 +1082,17 @@ func NewDescribeCustomerGatewaysResponse() (response *DescribeCustomerGatewaysRe
     return
 }
 
+// DescribeCustomerGateways
 // 本接口（DescribeCustomerGateways）用于查询对端网关列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeCustomerGateways(request *DescribeCustomerGatewaysRequest) (response *DescribeCustomerGatewaysResponse, err error) {
     if request == nil {
         request = NewDescribeCustomerGatewaysRequest()
     }
+    
     response = NewDescribeCustomerGatewaysResponse()
     err = c.Send(request, response)
     return
@@ -783,6 +1103,8 @@ func NewDescribeNatGatewaysRequest() (request *DescribeNatGatewaysRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeNatGateways")
+    
+    
     return
 }
 
@@ -793,11 +1115,19 @@ func NewDescribeNatGatewaysResponse() (response *DescribeNatGatewaysResponse) {
     return
 }
 
+// DescribeNatGateways
 // 获取NAT网关信息，包括NAT网关 ID、网关名称、私有网络、网关并发连接上限、绑定EIP列表等
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeNatGateways(request *DescribeNatGatewaysRequest) (response *DescribeNatGatewaysResponse, err error) {
     if request == nil {
         request = NewDescribeNatGatewaysRequest()
     }
+    
     response = NewDescribeNatGatewaysResponse()
     err = c.Send(request, response)
     return
@@ -808,6 +1138,8 @@ func NewDescribeNatSubnetsRequest() (request *DescribeNatSubnetsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeNatSubnets")
+    
+    
     return
 }
 
@@ -818,11 +1150,19 @@ func NewDescribeNatSubnetsResponse() (response *DescribeNatSubnetsResponse) {
     return
 }
 
+// DescribeNatSubnets
 // 可获取NAT网关绑定的子网信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeNatSubnets(request *DescribeNatSubnetsRequest) (response *DescribeNatSubnetsResponse, err error) {
     if request == nil {
         request = NewDescribeNatSubnetsRequest()
     }
+    
     response = NewDescribeNatSubnetsResponse()
     err = c.Send(request, response)
     return
@@ -833,6 +1173,8 @@ func NewDescribeRoutePoliciesRequest() (request *DescribeRoutePoliciesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeRoutePolicies")
+    
+    
     return
 }
 
@@ -843,11 +1185,19 @@ func NewDescribeRoutePoliciesResponse() (response *DescribeRoutePoliciesResponse
     return
 }
 
+// DescribeRoutePolicies
 // 本接口（DescribeRoutePolicies）用于查询路由表条目。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeRoutePolicies(request *DescribeRoutePoliciesRequest) (response *DescribeRoutePoliciesResponse, err error) {
     if request == nil {
         request = NewDescribeRoutePoliciesRequest()
     }
+    
     response = NewDescribeRoutePoliciesResponse()
     err = c.Send(request, response)
     return
@@ -858,6 +1208,8 @@ func NewDescribeRouteTablesRequest() (request *DescribeRouteTablesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeRouteTables")
+    
+    
     return
 }
 
@@ -868,11 +1220,18 @@ func NewDescribeRouteTablesResponse() (response *DescribeRouteTablesResponse) {
     return
 }
 
+// DescribeRouteTables
 // 本接口（DescribeRouteTables）用于查询路由表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeRouteTables(request *DescribeRouteTablesRequest) (response *DescribeRouteTablesResponse, err error) {
     if request == nil {
         request = NewDescribeRouteTablesRequest()
     }
+    
     response = NewDescribeRouteTablesResponse()
     err = c.Send(request, response)
     return
@@ -883,6 +1242,8 @@ func NewDescribeSubnetAvailableIpsRequest() (request *DescribeSubnetAvailableIps
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeSubnetAvailableIps")
+    
+    
     return
 }
 
@@ -893,11 +1254,17 @@ func NewDescribeSubnetAvailableIpsResponse() (response *DescribeSubnetAvailableI
     return
 }
 
+// DescribeSubnetAvailableIps
 // 获取子网内可用IP列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeSubnetAvailableIps(request *DescribeSubnetAvailableIpsRequest) (response *DescribeSubnetAvailableIpsResponse, err error) {
     if request == nil {
         request = NewDescribeSubnetAvailableIpsRequest()
     }
+    
     response = NewDescribeSubnetAvailableIpsResponse()
     err = c.Send(request, response)
     return
@@ -908,6 +1275,8 @@ func NewDescribeSubnetByDeviceRequest() (request *DescribeSubnetByDeviceRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeSubnetByDevice")
+    
+    
     return
 }
 
@@ -918,11 +1287,17 @@ func NewDescribeSubnetByDeviceResponse() (response *DescribeSubnetByDeviceRespon
     return
 }
 
+// DescribeSubnetByDevice
 // 物理机可以加入物理机子网，虚拟子网，DOCKER子网，通过此接口可以查询物理机加入的子网。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeSubnetByDevice(request *DescribeSubnetByDeviceRequest) (response *DescribeSubnetByDeviceResponse, err error) {
     if request == nil {
         request = NewDescribeSubnetByDeviceRequest()
     }
+    
     response = NewDescribeSubnetByDeviceResponse()
     err = c.Send(request, response)
     return
@@ -933,6 +1308,8 @@ func NewDescribeSubnetByHostedDeviceRequest() (request *DescribeSubnetByHostedDe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeSubnetByHostedDevice")
+    
+    
     return
 }
 
@@ -943,11 +1320,17 @@ func NewDescribeSubnetByHostedDeviceResponse() (response *DescribeSubnetByHosted
     return
 }
 
+// DescribeSubnetByHostedDevice
 // 托管可以加入物理机子网，虚拟子网，DOCKER子网，通过此接口可以查询托管加入的子网。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeSubnetByHostedDevice(request *DescribeSubnetByHostedDeviceRequest) (response *DescribeSubnetByHostedDeviceResponse, err error) {
     if request == nil {
         request = NewDescribeSubnetByHostedDeviceRequest()
     }
+    
     response = NewDescribeSubnetByHostedDeviceResponse()
     err = c.Send(request, response)
     return
@@ -958,6 +1341,8 @@ func NewDescribeSubnetsRequest() (request *DescribeSubnetsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeSubnets")
+    
+    
     return
 }
 
@@ -968,11 +1353,18 @@ func NewDescribeSubnetsResponse() (response *DescribeSubnetsResponse) {
     return
 }
 
+// DescribeSubnets
 // 本接口（DescribeSubnets）用于查询黑石子网列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeSubnets(request *DescribeSubnetsRequest) (response *DescribeSubnetsResponse, err error) {
     if request == nil {
         request = NewDescribeSubnetsRequest()
     }
+    
     response = NewDescribeSubnetsResponse()
     err = c.Send(request, response)
     return
@@ -983,6 +1375,8 @@ func NewDescribeTaskStatusRequest() (request *DescribeTaskStatusRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeTaskStatus")
+    
+    
     return
 }
 
@@ -993,11 +1387,18 @@ func NewDescribeTaskStatusResponse() (response *DescribeTaskStatusResponse) {
     return
 }
 
+// DescribeTaskStatus
 // 根据任务ID，获取任务的执行状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeTaskStatus(request *DescribeTaskStatusRequest) (response *DescribeTaskStatusResponse, err error) {
     if request == nil {
         request = NewDescribeTaskStatusRequest()
     }
+    
     response = NewDescribeTaskStatusResponse()
     err = c.Send(request, response)
     return
@@ -1008,6 +1409,8 @@ func NewDescribeVpcPeerConnectionsRequest() (request *DescribeVpcPeerConnections
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeVpcPeerConnections")
+    
+    
     return
 }
 
@@ -1018,11 +1421,17 @@ func NewDescribeVpcPeerConnectionsResponse() (response *DescribeVpcPeerConnectio
     return
 }
 
+// DescribeVpcPeerConnections
 // 获取对等连接列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeVpcPeerConnections(request *DescribeVpcPeerConnectionsRequest) (response *DescribeVpcPeerConnectionsResponse, err error) {
     if request == nil {
         request = NewDescribeVpcPeerConnectionsRequest()
     }
+    
     response = NewDescribeVpcPeerConnectionsResponse()
     err = c.Send(request, response)
     return
@@ -1033,6 +1442,8 @@ func NewDescribeVpcQuotaRequest() (request *DescribeVpcQuotaRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeVpcQuota")
+    
+    
     return
 }
 
@@ -1043,11 +1454,18 @@ func NewDescribeVpcQuotaResponse() (response *DescribeVpcQuotaResponse) {
     return
 }
 
+// DescribeVpcQuota
 // 本接口（DescribeVpcQuota）用于查询用户VPC相关配额限制。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeVpcQuota(request *DescribeVpcQuotaRequest) (response *DescribeVpcQuotaResponse, err error) {
     if request == nil {
         request = NewDescribeVpcQuotaRequest()
     }
+    
     response = NewDescribeVpcQuotaResponse()
     err = c.Send(request, response)
     return
@@ -1058,6 +1476,8 @@ func NewDescribeVpcResourceRequest() (request *DescribeVpcResourceRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeVpcResource")
+    
+    
     return
 }
 
@@ -1068,11 +1488,18 @@ func NewDescribeVpcResourceResponse() (response *DescribeVpcResourceResponse) {
     return
 }
 
+// DescribeVpcResource
 // 查询黑石私有网络关联资源
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeVpcResource(request *DescribeVpcResourceRequest) (response *DescribeVpcResourceResponse, err error) {
     if request == nil {
         request = NewDescribeVpcResourceRequest()
     }
+    
     response = NewDescribeVpcResourceResponse()
     err = c.Send(request, response)
     return
@@ -1083,6 +1510,8 @@ func NewDescribeVpcViewRequest() (request *DescribeVpcViewRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeVpcView")
+    
+    
     return
 }
 
@@ -1093,11 +1522,19 @@ func NewDescribeVpcViewResponse() (response *DescribeVpcViewResponse) {
     return
 }
 
+// DescribeVpcView
 // 本接口（DescribeVpcView）用于查询VPC网络拓扑视图。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeVpcView(request *DescribeVpcViewRequest) (response *DescribeVpcViewResponse, err error) {
     if request == nil {
         request = NewDescribeVpcViewRequest()
     }
+    
     response = NewDescribeVpcViewResponse()
     err = c.Send(request, response)
     return
@@ -1108,6 +1545,8 @@ func NewDescribeVpcsRequest() (request *DescribeVpcsRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeVpcs")
+    
+    
     return
 }
 
@@ -1118,12 +1557,19 @@ func NewDescribeVpcsResponse() (response *DescribeVpcsResponse) {
     return
 }
 
+// DescribeVpcs
 // 本接口（DescribeVpcs）用于查询私有网络列表。
+//
 // 本接口不传参数时，返回默认排序下的前20条VPC信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeVpcs(request *DescribeVpcsRequest) (response *DescribeVpcsResponse, err error) {
     if request == nil {
         request = NewDescribeVpcsRequest()
     }
+    
     response = NewDescribeVpcsResponse()
     err = c.Send(request, response)
     return
@@ -1134,6 +1580,8 @@ func NewDescribeVpnConnectionsRequest() (request *DescribeVpnConnectionsRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeVpnConnections")
+    
+    
     return
 }
 
@@ -1144,11 +1592,17 @@ func NewDescribeVpnConnectionsResponse() (response *DescribeVpnConnectionsRespon
     return
 }
 
+// DescribeVpnConnections
 //  本接口（DescribeVpnConnections）查询VPN通道列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeVpnConnections(request *DescribeVpnConnectionsRequest) (response *DescribeVpnConnectionsResponse, err error) {
     if request == nil {
         request = NewDescribeVpnConnectionsRequest()
     }
+    
     response = NewDescribeVpnConnectionsResponse()
     err = c.Send(request, response)
     return
@@ -1159,6 +1613,8 @@ func NewDescribeVpnGatewaysRequest() (request *DescribeVpnGatewaysRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeVpnGateways")
+    
+    
     return
 }
 
@@ -1169,11 +1625,17 @@ func NewDescribeVpnGatewaysResponse() (response *DescribeVpnGatewaysResponse) {
     return
 }
 
+// DescribeVpnGateways
 // 本接口（DescribeVpnGateways）用于查询VPN网关列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeVpnGateways(request *DescribeVpnGatewaysRequest) (response *DescribeVpnGatewaysResponse, err error) {
     if request == nil {
         request = NewDescribeVpnGatewaysRequest()
     }
+    
     response = NewDescribeVpnGatewaysResponse()
     err = c.Send(request, response)
     return
@@ -1184,6 +1646,8 @@ func NewDownloadCustomerGatewayConfigurationRequest() (request *DownloadCustomer
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "DownloadCustomerGatewayConfiguration")
+    
+    
     return
 }
 
@@ -1194,11 +1658,18 @@ func NewDownloadCustomerGatewayConfigurationResponse() (response *DownloadCustom
     return
 }
 
+// DownloadCustomerGatewayConfiguration
 // 本接口(DownloadCustomerGatewayConfiguration)用于下载VPN通道配置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_VPNCONNNOTEXIST = "ResourceNotFound.VpnConnNotExist"
 func (c *Client) DownloadCustomerGatewayConfiguration(request *DownloadCustomerGatewayConfigurationRequest) (response *DownloadCustomerGatewayConfigurationResponse, err error) {
     if request == nil {
         request = NewDownloadCustomerGatewayConfigurationRequest()
     }
+    
     response = NewDownloadCustomerGatewayConfigurationResponse()
     err = c.Send(request, response)
     return
@@ -1209,6 +1680,8 @@ func NewModifyCustomerGatewayAttributeRequest() (request *ModifyCustomerGatewayA
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "ModifyCustomerGatewayAttribute")
+    
+    
     return
 }
 
@@ -1219,11 +1692,21 @@ func NewModifyCustomerGatewayAttributeResponse() (response *ModifyCustomerGatewa
     return
 }
 
+// ModifyCustomerGatewayAttribute
 // 本接口（ModifyCustomerGatewayAttribute）用于修改对端网关信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CUSTOMERGATEWAYNOTEXIST = "ResourceNotFound.CustomerGatewayNotExist"
+//  UNSUPPORTEDOPERATION_CUSTOMERGATEWAYADDREXIST = "UnsupportedOperation.CustomerGatewayAddrExist"
+//  UNSUPPORTEDOPERATION_CUSTOMERGATEWAYADDRINVALID = "UnsupportedOperation.CustomerGatewayAddrInvalid"
+//  UNSUPPORTEDOPERATION_VPNCONNINUSE = "UnsupportedOperation.VpnConnInUse"
 func (c *Client) ModifyCustomerGatewayAttribute(request *ModifyCustomerGatewayAttributeRequest) (response *ModifyCustomerGatewayAttributeResponse, err error) {
     if request == nil {
         request = NewModifyCustomerGatewayAttributeRequest()
     }
+    
     response = NewModifyCustomerGatewayAttributeResponse()
     err = c.Send(request, response)
     return
@@ -1234,6 +1717,8 @@ func NewModifyRoutePolicyRequest() (request *ModifyRoutePolicyRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "ModifyRoutePolicy")
+    
+    
     return
 }
 
@@ -1244,11 +1729,20 @@ func NewModifyRoutePolicyResponse() (response *ModifyRoutePolicyResponse) {
     return
 }
 
+// ModifyRoutePolicy
 // 修改自定义路由
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyRoutePolicy(request *ModifyRoutePolicyRequest) (response *ModifyRoutePolicyResponse, err error) {
     if request == nil {
         request = NewModifyRoutePolicyRequest()
     }
+    
     response = NewModifyRoutePolicyResponse()
     err = c.Send(request, response)
     return
@@ -1259,6 +1753,8 @@ func NewModifyRouteTableRequest() (request *ModifyRouteTableRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "ModifyRouteTable")
+    
+    
     return
 }
 
@@ -1269,11 +1765,19 @@ func NewModifyRouteTableResponse() (response *ModifyRouteTableResponse) {
     return
 }
 
+// ModifyRouteTable
 // 修改路由表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyRouteTable(request *ModifyRouteTableRequest) (response *ModifyRouteTableResponse, err error) {
     if request == nil {
         request = NewModifyRouteTableRequest()
     }
+    
     response = NewModifyRouteTableResponse()
     err = c.Send(request, response)
     return
@@ -1284,6 +1788,8 @@ func NewModifySubnetAttributeRequest() (request *ModifySubnetAttributeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "ModifySubnetAttribute")
+    
+    
     return
 }
 
@@ -1294,11 +1800,19 @@ func NewModifySubnetAttributeResponse() (response *ModifySubnetAttributeResponse
     return
 }
 
+// ModifySubnetAttribute
 // 修改子网属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifySubnetAttribute(request *ModifySubnetAttributeRequest) (response *ModifySubnetAttributeResponse, err error) {
     if request == nil {
         request = NewModifySubnetAttributeRequest()
     }
+    
     response = NewModifySubnetAttributeResponse()
     err = c.Send(request, response)
     return
@@ -1309,6 +1823,8 @@ func NewModifySubnetDHCPRelayRequest() (request *ModifySubnetDHCPRelayRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "ModifySubnetDHCPRelay")
+    
+    
     return
 }
 
@@ -1319,11 +1835,19 @@ func NewModifySubnetDHCPRelayResponse() (response *ModifySubnetDHCPRelayResponse
     return
 }
 
+// ModifySubnetDHCPRelay
 // 修改子网DHCP Relay属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifySubnetDHCPRelay(request *ModifySubnetDHCPRelayRequest) (response *ModifySubnetDHCPRelayResponse, err error) {
     if request == nil {
         request = NewModifySubnetDHCPRelayRequest()
     }
+    
     response = NewModifySubnetDHCPRelayResponse()
     err = c.Send(request, response)
     return
@@ -1334,6 +1858,8 @@ func NewModifyVpcAttributeRequest() (request *ModifyVpcAttributeRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "ModifyVpcAttribute")
+    
+    
     return
 }
 
@@ -1344,11 +1870,19 @@ func NewModifyVpcAttributeResponse() (response *ModifyVpcAttributeResponse) {
     return
 }
 
+// ModifyVpcAttribute
 // 本接口（ModifyVpcAttribute）用于修改VPC的标识名称和控制VPC的监控起停。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyVpcAttribute(request *ModifyVpcAttributeRequest) (response *ModifyVpcAttributeResponse, err error) {
     if request == nil {
         request = NewModifyVpcAttributeRequest()
     }
+    
     response = NewModifyVpcAttributeResponse()
     err = c.Send(request, response)
     return
@@ -1359,6 +1893,8 @@ func NewModifyVpcPeerConnectionRequest() (request *ModifyVpcPeerConnectionReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "ModifyVpcPeerConnection")
+    
+    
     return
 }
 
@@ -1369,11 +1905,22 @@ func NewModifyVpcPeerConnectionResponse() (response *ModifyVpcPeerConnectionResp
     return
 }
 
+// ModifyVpcPeerConnection
 // 修改黑石对等连接
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_VPCNOTEXIST = "ResourceNotFound.VpcNotExist"
+//  RESOURCENOTFOUND_VPCPEERNOTEXIST = "ResourceNotFound.VpcPeerNotExist"
+//  UNSUPPORTEDOPERATION_INVALIDVPCPEERSTATE = "UnsupportedOperation.InvalidVpcPeerState"
+//  UNSUPPORTEDOPERATION_VPCCIDRCONFICT = "UnsupportedOperation.VpcCidrConfict"
+//  UNSUPPORTEDOPERATION_VPCPEEREXIST = "UnsupportedOperation.VpcPeerExist"
 func (c *Client) ModifyVpcPeerConnection(request *ModifyVpcPeerConnectionRequest) (response *ModifyVpcPeerConnectionResponse, err error) {
     if request == nil {
         request = NewModifyVpcPeerConnectionRequest()
     }
+    
     response = NewModifyVpcPeerConnectionResponse()
     err = c.Send(request, response)
     return
@@ -1384,6 +1931,8 @@ func NewModifyVpnConnectionAttributeRequest() (request *ModifyVpnConnectionAttri
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "ModifyVpnConnectionAttribute")
+    
+    
     return
 }
 
@@ -1394,11 +1943,27 @@ func NewModifyVpnConnectionAttributeResponse() (response *ModifyVpnConnectionAtt
     return
 }
 
+// ModifyVpnConnectionAttribute
 // 本接口（ModifyVpnConnectionAttribute）用于修改VPN通道。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_SPDACLLIMIT = "LimitExceeded.SpdAclLimit"
+//  LIMITEXCEEDED_SPDDNETLIMIT = "LimitExceeded.SpdDnetLimit"
+//  LIMITEXCEEDED_SPDSNETLIMIT = "LimitExceeded.SpdSnetLimit"
+//  RESOURCENOTFOUND_NOTAVAIBLE = "ResourceNotFound.NotAvaible"
+//  RESOURCENOTFOUND_VPCNOTEXIST = "ResourceNotFound.VpcNotExist"
+//  RESOURCENOTFOUND_VPNCONNNOTEXIST = "ResourceNotFound.VpnConnNotExist"
+//  UNSUPPORTEDOPERATION_INVALIDVPNCONNSTATE = "UnsupportedOperation.InvalidVpnConnState"
+//  UNSUPPORTEDOPERATION_SPDACLCIDRINVALID = "UnsupportedOperation.SpdAclCidrInvalid"
+//  UNSUPPORTEDOPERATION_SPDSNETNOTINCIDR = "UnsupportedOperation.SpdSnetNotInCidr"
 func (c *Client) ModifyVpnConnectionAttribute(request *ModifyVpnConnectionAttributeRequest) (response *ModifyVpnConnectionAttributeResponse, err error) {
     if request == nil {
         request = NewModifyVpnConnectionAttributeRequest()
     }
+    
     response = NewModifyVpnConnectionAttributeResponse()
     err = c.Send(request, response)
     return
@@ -1409,6 +1974,8 @@ func NewModifyVpnGatewayAttributeRequest() (request *ModifyVpnGatewayAttributeRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "ModifyVpnGatewayAttribute")
+    
+    
     return
 }
 
@@ -1419,11 +1986,19 @@ func NewModifyVpnGatewayAttributeResponse() (response *ModifyVpnGatewayAttribute
     return
 }
 
+// ModifyVpnGatewayAttribute
 // 本接口（ModifyVpnGatewayAttribute）用于修改VPN网关属性。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_VPNGWNOTEXIST = "ResourceNotFound.VpnGwNotExist"
+//  UNSUPPORTEDOPERATION_VPNCONNINUSE = "UnsupportedOperation.VpnConnInUse"
 func (c *Client) ModifyVpnGatewayAttribute(request *ModifyVpnGatewayAttributeRequest) (response *ModifyVpnGatewayAttributeResponse, err error) {
     if request == nil {
         request = NewModifyVpnGatewayAttributeRequest()
     }
+    
     response = NewModifyVpnGatewayAttributeResponse()
     err = c.Send(request, response)
     return
@@ -1434,6 +2009,8 @@ func NewRejectVpcPeerConnectionRequest() (request *RejectVpcPeerConnectionReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "RejectVpcPeerConnection")
+    
+    
     return
 }
 
@@ -1444,11 +2021,23 @@ func NewRejectVpcPeerConnectionResponse() (response *RejectVpcPeerConnectionResp
     return
 }
 
+// RejectVpcPeerConnection
 // 拒绝黑石对等连接申请
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_VPCNOTEXIST = "ResourceNotFound.VpcNotExist"
+//  RESOURCENOTFOUND_VPCPEERNOTEXIST = "ResourceNotFound.VpcPeerNotExist"
+//  UNSUPPORTEDOPERATION_INVALIDVPCPEERSTATE = "UnsupportedOperation.InvalidVpcPeerState"
+//  UNSUPPORTEDOPERATION_VPCCIDRCONFICT = "UnsupportedOperation.VpcCidrConfict"
+//  UNSUPPORTEDOPERATION_VPCPEEREXIST = "UnsupportedOperation.VpcPeerExist"
 func (c *Client) RejectVpcPeerConnection(request *RejectVpcPeerConnectionRequest) (response *RejectVpcPeerConnectionResponse, err error) {
     if request == nil {
         request = NewRejectVpcPeerConnectionRequest()
     }
+    
     response = NewRejectVpcPeerConnectionResponse()
     err = c.Send(request, response)
     return
@@ -1459,6 +2048,8 @@ func NewResetVpnConnectionRequest() (request *ResetVpnConnectionRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "ResetVpnConnection")
+    
+    
     return
 }
 
@@ -1469,11 +2060,20 @@ func NewResetVpnConnectionResponse() (response *ResetVpnConnectionResponse) {
     return
 }
 
+// ResetVpnConnection
 // 本接口(ResetVpnConnection)用于重置VPN通道。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_NOTAVAIBLE = "ResourceNotFound.NotAvaible"
+//  RESOURCENOTFOUND_VPCNOTEXIST = "ResourceNotFound.VpcNotExist"
+//  RESOURCENOTFOUND_VPNCONNNOTEXIST = "ResourceNotFound.VpnConnNotExist"
 func (c *Client) ResetVpnConnection(request *ResetVpnConnectionRequest) (response *ResetVpnConnectionResponse, err error) {
     if request == nil {
         request = NewResetVpnConnectionRequest()
     }
+    
     response = NewResetVpnConnectionResponse()
     err = c.Send(request, response)
     return
@@ -1484,6 +2084,8 @@ func NewUnbindEipsFromNatGatewayRequest() (request *UnbindEipsFromNatGatewayRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "UnbindEipsFromNatGateway")
+    
+    
     return
 }
 
@@ -1494,11 +2096,20 @@ func NewUnbindEipsFromNatGatewayResponse() (response *UnbindEipsFromNatGatewayRe
     return
 }
 
+// UnbindEipsFromNatGateway
 // NAT网关解绑该EIP后，NAT网关将不会使用该EIP作为访问外网的源IP地址
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UnbindEipsFromNatGateway(request *UnbindEipsFromNatGatewayRequest) (response *UnbindEipsFromNatGatewayResponse, err error) {
     if request == nil {
         request = NewUnbindEipsFromNatGatewayRequest()
     }
+    
     response = NewUnbindEipsFromNatGatewayResponse()
     err = c.Send(request, response)
     return
@@ -1509,6 +2120,8 @@ func NewUnbindIpsFromNatGatewayRequest() (request *UnbindIpsFromNatGatewayReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "UnbindIpsFromNatGateway")
+    
+    
     return
 }
 
@@ -1519,11 +2132,19 @@ func NewUnbindIpsFromNatGatewayResponse() (response *UnbindIpsFromNatGatewayResp
     return
 }
 
+// UnbindIpsFromNatGateway
 // NAT网关解绑IP接口，可将子网的部分IP从NAT网关中解绑
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UnbindIpsFromNatGateway(request *UnbindIpsFromNatGatewayRequest) (response *UnbindIpsFromNatGatewayResponse, err error) {
     if request == nil {
         request = NewUnbindIpsFromNatGatewayRequest()
     }
+    
     response = NewUnbindIpsFromNatGatewayResponse()
     err = c.Send(request, response)
     return
@@ -1534,6 +2155,8 @@ func NewUnbindSubnetsFromNatGatewayRequest() (request *UnbindSubnetsFromNatGatew
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "UnbindSubnetsFromNatGateway")
+    
+    
     return
 }
 
@@ -1544,11 +2167,19 @@ func NewUnbindSubnetsFromNatGatewayResponse() (response *UnbindSubnetsFromNatGat
     return
 }
 
+// UnbindSubnetsFromNatGateway
 // NAT网关解绑子网接口，可将子网解绑NAT网关
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UnbindSubnetsFromNatGateway(request *UnbindSubnetsFromNatGatewayRequest) (response *UnbindSubnetsFromNatGatewayResponse, err error) {
     if request == nil {
         request = NewUnbindSubnetsFromNatGatewayRequest()
     }
+    
     response = NewUnbindSubnetsFromNatGatewayResponse()
     err = c.Send(request, response)
     return
@@ -1559,6 +2190,8 @@ func NewUpgradeNatGatewayRequest() (request *UpgradeNatGatewayRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("bmvpc", APIVersion, "UpgradeNatGateway")
+    
+    
     return
 }
 
@@ -1569,11 +2202,19 @@ func NewUpgradeNatGatewayResponse() (response *UpgradeNatGatewayResponse) {
     return
 }
 
+// UpgradeNatGateway
 // 升级NAT网关接口，可NAT网关修改为小型NAT网关、中型NAT网关、以及大型NAT网关
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpgradeNatGateway(request *UpgradeNatGatewayRequest) (response *UpgradeNatGatewayResponse, err error) {
     if request == nil {
         request = NewUpgradeNatGatewayRequest()
     }
+    
     response = NewUpgradeNatGatewayResponse()
     err = c.Send(request, response)
     return

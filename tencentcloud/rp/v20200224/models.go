@@ -16,7 +16,7 @@ package v20200224
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -134,8 +134,46 @@ func (r *QueryRegisterProtectionRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryRegisterProtectionRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegisterIp")
+	delete(f, "Uid")
+	delete(f, "RegisterTime")
+	delete(f, "AccountType")
+	delete(f, "AppIdU")
+	delete(f, "AssociateAccount")
+	delete(f, "NickName")
+	delete(f, "PhoneNumber")
+	delete(f, "EmailAddress")
+	delete(f, "Address")
+	delete(f, "CookieHash")
+	delete(f, "RegisterSource")
+	delete(f, "Referer")
+	delete(f, "JumpUrl")
+	delete(f, "UserAgent")
+	delete(f, "XForwardedFor")
+	delete(f, "MouseClickCount")
+	delete(f, "KeyboardClickCount")
+	delete(f, "Result")
+	delete(f, "Reason")
+	delete(f, "RegisterSpend")
+	delete(f, "MacAddress")
+	delete(f, "VendorId")
+	delete(f, "AppVersion")
+	delete(f, "Imei")
+	delete(f, "BusinessId")
+	delete(f, "WxSubType")
+	delete(f, "RandNum")
+	delete(f, "WxToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryRegisterProtectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryRegisterProtectionResponse struct {
@@ -167,7 +205,7 @@ type QueryRegisterProtectionResponse struct {
 		Level *int64 `json:"Level,omitempty" name:"Level"`
 
 		// 风险类型。
-		RiskType []*int64 `json:"RiskType,omitempty" name:"RiskType" list`
+		RiskType []*int64 `json:"RiskType,omitempty" name:"RiskType"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -179,6 +217,8 @@ func (r *QueryRegisterProtectionResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryRegisterProtectionResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

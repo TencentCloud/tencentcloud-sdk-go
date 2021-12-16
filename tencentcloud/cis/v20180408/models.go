@@ -16,7 +16,7 @@ package v20180408
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -26,10 +26,10 @@ type Container struct {
 	Command *string `json:"Command,omitempty" name:"Command"`
 
 	// 容器启动参数
-	Args []*string `json:"Args,omitempty" name:"Args" list`
+	Args []*string `json:"Args,omitempty" name:"Args"`
 
 	// 容器环境变量
-	EnvironmentVars []*EnvironmentVar `json:"EnvironmentVars,omitempty" name:"EnvironmentVars" list`
+	EnvironmentVars []*EnvironmentVar `json:"EnvironmentVars,omitempty" name:"EnvironmentVars"`
 
 	// 镜像
 	Image *string `json:"Image,omitempty" name:"Image"`
@@ -77,7 +77,7 @@ type ContainerInstance struct {
 	State *string `json:"State,omitempty" name:"State"`
 
 	// 容器列表
-	Containers []*Container `json:"Containers,omitempty" name:"Containers" list`
+	Containers []*Container `json:"Containers,omitempty" name:"Containers"`
 
 	// 重启策略
 	RestartPolicy *string `json:"RestartPolicy,omitempty" name:"RestartPolicy"`
@@ -156,7 +156,7 @@ type CreateContainerInstanceRequest struct {
 	RestartPolicy *string `json:"RestartPolicy,omitempty" name:"RestartPolicy"`
 
 	// 容器列表
-	Containers []*Container `json:"Containers,omitempty" name:"Containers" list`
+	Containers []*Container `json:"Containers,omitempty" name:"Containers"`
 }
 
 func (r *CreateContainerInstanceRequest) ToJsonString() string {
@@ -164,8 +164,23 @@ func (r *CreateContainerInstanceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateContainerInstanceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Zone")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "InstanceName")
+	delete(f, "RestartPolicy")
+	delete(f, "Containers")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateContainerInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateContainerInstanceResponse struct {
@@ -185,8 +200,10 @@ func (r *CreateContainerInstanceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateContainerInstanceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteContainerInstanceRequest struct {
@@ -201,8 +218,18 @@ func (r *DeleteContainerInstanceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteContainerInstanceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteContainerInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteContainerInstanceResponse struct {
@@ -222,8 +249,10 @@ func (r *DeleteContainerInstanceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteContainerInstanceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeContainerInstanceEventsRequest struct {
@@ -238,8 +267,18 @@ func (r *DescribeContainerInstanceEventsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeContainerInstanceEventsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeContainerInstanceEventsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeContainerInstanceEventsResponse struct {
@@ -247,7 +286,7 @@ type DescribeContainerInstanceEventsResponse struct {
 	Response *struct {
 
 		// 容器实例事件列表
-		EventList []*Event `json:"EventList,omitempty" name:"EventList" list`
+		EventList []*Event `json:"EventList,omitempty" name:"EventList"`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -259,8 +298,10 @@ func (r *DescribeContainerInstanceEventsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeContainerInstanceEventsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeContainerInstanceRequest struct {
@@ -275,8 +316,18 @@ func (r *DescribeContainerInstanceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeContainerInstanceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeContainerInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeContainerInstanceResponse struct {
@@ -296,8 +347,10 @@ func (r *DescribeContainerInstanceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeContainerInstanceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeContainerInstancesRequest struct {
@@ -313,7 +366,7 @@ type DescribeContainerInstancesRequest struct {
 	// - Zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。
 	// - VpcId - String - 是否必填：否 -（过滤条件）按照VpcId过滤。
 	// - InstanceName - String - 是否必填：否 -（过滤条件）按照容器实例名称做模糊查询。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeContainerInstancesRequest) ToJsonString() string {
@@ -321,8 +374,20 @@ func (r *DescribeContainerInstancesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeContainerInstancesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeContainerInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeContainerInstancesResponse struct {
@@ -330,7 +395,7 @@ type DescribeContainerInstancesResponse struct {
 	Response *struct {
 
 		// 容器实例列表
-		ContainerInstanceList []*ContainerInstance `json:"ContainerInstanceList,omitempty" name:"ContainerInstanceList" list`
+		ContainerInstanceList []*ContainerInstance `json:"ContainerInstanceList,omitempty" name:"ContainerInstanceList"`
 
 		// 容器实例总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -345,8 +410,10 @@ func (r *DescribeContainerInstancesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeContainerInstancesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeContainerLogRequest struct {
@@ -370,8 +437,21 @@ func (r *DescribeContainerLogRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeContainerLogRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceName")
+	delete(f, "ContainerName")
+	delete(f, "Tail")
+	delete(f, "SinceTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeContainerLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeContainerLogResponse struct {
@@ -379,7 +459,7 @@ type DescribeContainerLogResponse struct {
 	Response *struct {
 
 		// 容器日志数组
-		ContainerLogList []*ContainerLog `json:"ContainerLogList,omitempty" name:"ContainerLogList" list`
+		ContainerLogList []*ContainerLog `json:"ContainerLogList,omitempty" name:"ContainerLogList"`
 
 		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -391,8 +471,10 @@ func (r *DescribeContainerLogResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeContainerLogResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EnvironmentVar struct {
@@ -431,7 +513,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 过滤值列表
-	ValueList []*string `json:"ValueList,omitempty" name:"ValueList" list`
+	ValueList []*string `json:"ValueList,omitempty" name:"ValueList"`
 }
 
 type InquiryPriceCreateCisRequest struct {
@@ -452,8 +534,20 @@ func (r *InquiryPriceCreateCisRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *InquiryPriceCreateCisRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Zone")
+	delete(f, "Cpu")
+	delete(f, "Memory")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceCreateCisRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type InquiryPriceCreateCisResponse struct {
@@ -473,8 +567,10 @@ func (r *InquiryPriceCreateCisResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *InquiryPriceCreateCisResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Price struct {

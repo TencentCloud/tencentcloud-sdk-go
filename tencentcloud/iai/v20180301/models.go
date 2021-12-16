@@ -16,7 +16,7 @@ package v20180301
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -53,8 +53,22 @@ func (r *AnalyzeDenseLandmarksRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AnalyzeDenseLandmarksRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Mode")
+	delete(f, "Image")
+	delete(f, "Url")
+	delete(f, "FaceModelVersion")
+	delete(f, "NeedRotateDetection")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AnalyzeDenseLandmarksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type AnalyzeDenseLandmarksResponse struct {
@@ -68,7 +82,7 @@ type AnalyzeDenseLandmarksResponse struct {
 		ImageHeight *int64 `json:"ImageHeight,omitempty" name:"ImageHeight"`
 
 		// 稠密人脸关键点具体信息。
-		DenseFaceShapeSet []*DenseFaceShape `json:"DenseFaceShapeSet,omitempty" name:"DenseFaceShapeSet" list`
+		DenseFaceShapeSet []*DenseFaceShape `json:"DenseFaceShapeSet,omitempty" name:"DenseFaceShapeSet"`
 
 		// 人脸识别服务所用的算法模型版本。本接口仅支持 “3.0“ 输入。
 		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
@@ -83,8 +97,10 @@ func (r *AnalyzeDenseLandmarksResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AnalyzeDenseLandmarksResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type AnalyzeFaceRequest struct {
@@ -104,9 +120,15 @@ type AnalyzeFaceRequest struct {
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
-	// 人脸识别服务所用的算法模型版本。目前入参支持 “2.0”和“3.0“ 两个输入。  
-	// 2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。  
-	// 不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用最新版本。
+	// 人脸识别服务所用的算法模型版本。
+	// 
+	// 目前入参支持 “2.0”和“3.0“ 两个输入。
+	// 
+	// 2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。
+	// 
+	// 2020年11月26日后开通服务的账号仅支持输入“3.0”。
+	// 
+	// 不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用“3.0”版本。
 	FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
 
 	// 是否开启图片旋转识别支持。0为不开启，1为开启。默认为0。本参数的作用为，当图片中的人脸被旋转且图片没有exif信息时，如果不开启图片旋转识别支持则无法正确检测、识别图片中的人脸。若您确认图片包含exif信息或者您确认输入图中人脸不会出现被旋转情况，请不要开启本参数。开启后，整体耗时将可能增加数百毫秒。
@@ -118,8 +140,22 @@ func (r *AnalyzeFaceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AnalyzeFaceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Mode")
+	delete(f, "Image")
+	delete(f, "Url")
+	delete(f, "FaceModelVersion")
+	delete(f, "NeedRotateDetection")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AnalyzeFaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type AnalyzeFaceResponse struct {
@@ -133,7 +169,7 @@ type AnalyzeFaceResponse struct {
 		ImageHeight *uint64 `json:"ImageHeight,omitempty" name:"ImageHeight"`
 
 		// 五官定位（人脸关键点）具体信息。
-		FaceShapeSet []*FaceShape `json:"FaceShapeSet,omitempty" name:"FaceShapeSet" list`
+		FaceShapeSet []*FaceShape `json:"FaceShapeSet,omitempty" name:"FaceShapeSet"`
 
 		// 人脸识别所用的算法模型版本。
 		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
@@ -148,8 +184,10 @@ func (r *AnalyzeFaceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AnalyzeFaceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type AttributeItem struct {
@@ -188,7 +226,7 @@ type Candidate struct {
 
 	// 包含此人员的人员库及描述字段内容列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PersonGroupInfos []*PersonGroupInfo `json:"PersonGroupInfos,omitempty" name:"PersonGroupInfos" list`
+	PersonGroupInfos []*PersonGroupInfo `json:"PersonGroupInfos,omitempty" name:"PersonGroupInfos"`
 }
 
 type CheckSimilarPersonRequest struct {
@@ -196,7 +234,7 @@ type CheckSimilarPersonRequest struct {
 
 	// 待整理的人员库列表。 
 	// 人员库总人数不可超过200万，人员库个数不可超过10个。
-	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
 
 	// 人员查重整理力度的控制。
 	// 1：力度较高的档案整理，能够消除更多的重复身份，对应稍高的非重复身份误清除率；
@@ -209,8 +247,19 @@ func (r *CheckSimilarPersonRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CheckSimilarPersonRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupIds")
+	delete(f, "UniquePersonControl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckSimilarPersonRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CheckSimilarPersonResponse struct {
@@ -230,8 +279,10 @@ func (r *CheckSimilarPersonResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CheckSimilarPersonResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CompareFaceRequest struct {
@@ -263,8 +314,14 @@ type CompareFaceRequest struct {
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	UrlB *string `json:"UrlB,omitempty" name:"UrlB"`
 
-	// 人脸识别服务所用的算法模型版本。目前入参支持 “2.0”和“3.0“ 两个输入。 
-	// 2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。 
+	// 人脸识别服务所用的算法模型版本。
+	// 
+	// 目前入参支持 “2.0”和“3.0“ 两个输入。
+	// 
+	// 2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。
+	// 
+	// 2020年11月26日后开通服务的账号仅支持输入“3.0”。
+	// 
 	// 不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用“3.0”版本。
 	FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
 
@@ -287,8 +344,24 @@ func (r *CompareFaceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CompareFaceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageA")
+	delete(f, "ImageB")
+	delete(f, "UrlA")
+	delete(f, "UrlB")
+	delete(f, "FaceModelVersion")
+	delete(f, "QualityControl")
+	delete(f, "NeedRotateDetection")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CompareFaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CompareFaceResponse struct {
@@ -315,8 +388,10 @@ func (r *CompareFaceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CompareFaceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CopyPersonRequest struct {
@@ -326,7 +401,7 @@ type CopyPersonRequest struct {
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
 	// 待加入的人员库列表
-	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
 }
 
 func (r *CopyPersonRequest) ToJsonString() string {
@@ -334,8 +409,19 @@ func (r *CopyPersonRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CopyPersonRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PersonId")
+	delete(f, "GroupIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CopyPersonRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CopyPersonResponse struct {
@@ -346,7 +432,7 @@ type CopyPersonResponse struct {
 		SucGroupNum *uint64 `json:"SucGroupNum,omitempty" name:"SucGroupNum"`
 
 		// 成功加入的人员库列表
-		SucGroupIds []*string `json:"SucGroupIds,omitempty" name:"SucGroupIds" list`
+		SucGroupIds []*string `json:"SucGroupIds,omitempty" name:"SucGroupIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -358,8 +444,10 @@ func (r *CopyPersonResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CopyPersonResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateFaceRequest struct {
@@ -372,7 +460,7 @@ type CreateFaceRequest struct {
 	// 人员人脸总数量不可超过5张。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	Images []*string `json:"Images,omitempty" name:"Images" list`
+	Images []*string `json:"Images,omitempty" name:"Images"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。  
@@ -381,7 +469,7 @@ type CreateFaceRequest struct {
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	// 人员人脸总数量不可超过5张。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
-	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 
 	// 只有和该人员已有的人脸相似度超过FaceMatchThreshold值的人脸，才能增加人脸成功。 
 	// 默认值60分。取值范围[0,100] 。
@@ -406,8 +494,23 @@ func (r *CreateFaceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateFaceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PersonId")
+	delete(f, "Images")
+	delete(f, "Urls")
+	delete(f, "FaceMatchThreshold")
+	delete(f, "QualityControl")
+	delete(f, "NeedRotateDetection")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateFaceResponse struct {
@@ -418,20 +521,20 @@ type CreateFaceResponse struct {
 		SucFaceNum *uint64 `json:"SucFaceNum,omitempty" name:"SucFaceNum"`
 
 		// 加入成功的人脸ID列表
-		SucFaceIds []*string `json:"SucFaceIds,omitempty" name:"SucFaceIds" list`
+		SucFaceIds []*string `json:"SucFaceIds,omitempty" name:"SucFaceIds"`
 
 		// 每张人脸图片添加结果，-1101 代表未检测到人脸，-1102 代表图片解码失败， 
 	// -1601代表不符合图片质量控制要求, -1604 代表人脸相似度没有超过FaceMatchThreshold。 
 	// 其他非 0 值代表算法服务异常。 
 	// RetCode的顺序和入参中 Images 或 Urls 的顺序一致。
-		RetCode []*int64 `json:"RetCode,omitempty" name:"RetCode" list`
+		RetCode []*int64 `json:"RetCode,omitempty" name:"RetCode"`
 
 		// 加入成功的人脸索引。索引顺序和入参中 Images 或 Urls 的顺序一致。 
 	// 例， Urls 中 有 3 个 url，第二个 url 失败，则 SucIndexes 值为 [0,2] 。
-		SucIndexes []*uint64 `json:"SucIndexes,omitempty" name:"SucIndexes" list`
+		SucIndexes []*uint64 `json:"SucIndexes,omitempty" name:"SucIndexes"`
 
 		// 加入成功的人脸框位置。顺序和入参中 Images 或 Urls 的顺序一致。
-		SucFaceRects []*FaceRect `json:"SucFaceRects,omitempty" name:"SucFaceRects" list`
+		SucFaceRects []*FaceRect `json:"SucFaceRects,omitempty" name:"SucFaceRects"`
 
 		// 人脸识别所用的算法模型版本。
 		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
@@ -446,8 +549,10 @@ func (r *CreateFaceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateFaceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateGroupRequest struct {
@@ -466,13 +571,19 @@ type CreateGroupRequest struct {
 	// 例： 设置某人员库“自定义描述字段”为["学号","工号","手机号"]， 
 	// 则该人员库下所有人员将拥有名为“学号”、“工号”、“手机号”的描述字段， 
 	// 可在对应人员描述字段中填写内容，登记该人员的学号、工号、手机号等信息。
-	GroupExDescriptions []*string `json:"GroupExDescriptions,omitempty" name:"GroupExDescriptions" list`
+	GroupExDescriptions []*string `json:"GroupExDescriptions,omitempty" name:"GroupExDescriptions"`
 
 	// 人员库信息备注，[0，40]个字符。
 	Tag *string `json:"Tag,omitempty" name:"Tag"`
 
-	// 人脸识别服务所用的算法模型版本。目前入参支持 “2.0”和“3.0“ 两个输入。
-	// 2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。 
+	// 人脸识别服务所用的算法模型版本。
+	// 
+	// 目前入参支持 “2.0”和“3.0“ 两个输入。
+	// 
+	// 2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。
+	// 
+	// 2020年11月26日后开通服务的账号仅支持输入“3.0”。
+	// 
 	// 不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用“3.0”版本。
 	FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
 }
@@ -482,8 +593,22 @@ func (r *CreateGroupRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateGroupRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupName")
+	delete(f, "GroupId")
+	delete(f, "GroupExDescriptions")
+	delete(f, "Tag")
+	delete(f, "FaceModelVersion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateGroupResponse struct {
@@ -503,8 +628,10 @@ func (r *CreateGroupResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateGroupResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreatePersonRequest struct {
@@ -523,7 +650,7 @@ type CreatePersonRequest struct {
 	Gender *int64 `json:"Gender,omitempty" name:"Gender"`
 
 	// 人员描述字段内容，key-value。[0，60]个字符，可修改，可重复。
-	PersonExDescriptionInfos []*PersonExDescriptionInfo `json:"PersonExDescriptionInfos,omitempty" name:"PersonExDescriptionInfos" list`
+	PersonExDescriptionInfos []*PersonExDescriptionInfo `json:"PersonExDescriptionInfos,omitempty" name:"PersonExDescriptionInfos"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -567,8 +694,27 @@ func (r *CreatePersonRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreatePersonRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "PersonName")
+	delete(f, "PersonId")
+	delete(f, "Gender")
+	delete(f, "PersonExDescriptionInfos")
+	delete(f, "Image")
+	delete(f, "Url")
+	delete(f, "UniquePersonControl")
+	delete(f, "QualityControl")
+	delete(f, "NeedRotateDetection")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePersonRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreatePersonResponse struct {
@@ -599,8 +745,10 @@ func (r *CreatePersonResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreatePersonResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteFaceRequest struct {
@@ -610,7 +758,7 @@ type DeleteFaceRequest struct {
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
 	// 待删除的人脸ID列表
-	FaceIds []*string `json:"FaceIds,omitempty" name:"FaceIds" list`
+	FaceIds []*string `json:"FaceIds,omitempty" name:"FaceIds"`
 }
 
 func (r *DeleteFaceRequest) ToJsonString() string {
@@ -618,8 +766,19 @@ func (r *DeleteFaceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteFaceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PersonId")
+	delete(f, "FaceIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteFaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteFaceResponse struct {
@@ -630,7 +789,7 @@ type DeleteFaceResponse struct {
 		SucDeletedNum *uint64 `json:"SucDeletedNum,omitempty" name:"SucDeletedNum"`
 
 		// 删除成功的人脸ID列表
-		SucFaceIds []*string `json:"SucFaceIds,omitempty" name:"SucFaceIds" list`
+		SucFaceIds []*string `json:"SucFaceIds,omitempty" name:"SucFaceIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -642,8 +801,10 @@ func (r *DeleteFaceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteFaceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteGroupRequest struct {
@@ -658,8 +819,18 @@ func (r *DeleteGroupRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteGroupRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteGroupResponse struct {
@@ -676,8 +847,10 @@ func (r *DeleteGroupResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteGroupResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeletePersonFromGroupRequest struct {
@@ -695,8 +868,19 @@ func (r *DeletePersonFromGroupRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeletePersonFromGroupRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PersonId")
+	delete(f, "GroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePersonFromGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeletePersonFromGroupResponse struct {
@@ -713,8 +897,10 @@ func (r *DeletePersonFromGroupResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeletePersonFromGroupResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeletePersonRequest struct {
@@ -729,8 +915,18 @@ func (r *DeletePersonRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeletePersonRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PersonId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePersonRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeletePersonResponse struct {
@@ -747,8 +943,10 @@ func (r *DeletePersonResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeletePersonResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DenseFaceShape struct {
@@ -766,46 +964,46 @@ type DenseFaceShape struct {
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 
 	// 描述左侧眼睛轮廓的 XX 点。
-	LeftEye []*Point `json:"LeftEye,omitempty" name:"LeftEye" list`
+	LeftEye []*Point `json:"LeftEye,omitempty" name:"LeftEye"`
 
 	// 描述右侧眼睛轮廓的 XX 点。
-	RightEye []*Point `json:"RightEye,omitempty" name:"RightEye" list`
+	RightEye []*Point `json:"RightEye,omitempty" name:"RightEye"`
 
 	// 描述左侧眉毛轮廓的 XX 点。
-	LeftEyeBrow []*Point `json:"LeftEyeBrow,omitempty" name:"LeftEyeBrow" list`
+	LeftEyeBrow []*Point `json:"LeftEyeBrow,omitempty" name:"LeftEyeBrow"`
 
 	// 描述右侧眉毛轮廓的 XX 点。
-	RightEyeBrow []*Point `json:"RightEyeBrow,omitempty" name:"RightEyeBrow" list`
+	RightEyeBrow []*Point `json:"RightEyeBrow,omitempty" name:"RightEyeBrow"`
 
 	// 描述外嘴巴轮廓的 XX 点， 从左侧开始逆时针返回。
-	MouthOutside []*Point `json:"MouthOutside,omitempty" name:"MouthOutside" list`
+	MouthOutside []*Point `json:"MouthOutside,omitempty" name:"MouthOutside"`
 
 	// 描述内嘴巴轮廓的 XX 点，从左侧开始逆时针返回。
-	MouthInside []*Point `json:"MouthInside,omitempty" name:"MouthInside" list`
+	MouthInside []*Point `json:"MouthInside,omitempty" name:"MouthInside"`
 
 	// 描述鼻子轮廓的 XX 点。
-	Nose []*Point `json:"Nose,omitempty" name:"Nose" list`
+	Nose []*Point `json:"Nose,omitempty" name:"Nose"`
 
 	// 左瞳孔轮廓的 XX 个点。
-	LeftPupil []*Point `json:"LeftPupil,omitempty" name:"LeftPupil" list`
+	LeftPupil []*Point `json:"LeftPupil,omitempty" name:"LeftPupil"`
 
 	// 右瞳孔轮廓的 XX 个点。
-	RightPupil []*Point `json:"RightPupil,omitempty" name:"RightPupil" list`
+	RightPupil []*Point `json:"RightPupil,omitempty" name:"RightPupil"`
 
 	// 中轴线轮廓的 XX 个点。
-	CentralAxis []*Point `json:"CentralAxis,omitempty" name:"CentralAxis" list`
+	CentralAxis []*Point `json:"CentralAxis,omitempty" name:"CentralAxis"`
 
 	// 下巴轮廓的 XX 个点。
-	Chin []*Point `json:"Chin,omitempty" name:"Chin" list`
+	Chin []*Point `json:"Chin,omitempty" name:"Chin"`
 
 	// 左眼袋的 XX 个点。
-	LeftEyeBags []*Point `json:"LeftEyeBags,omitempty" name:"LeftEyeBags" list`
+	LeftEyeBags []*Point `json:"LeftEyeBags,omitempty" name:"LeftEyeBags"`
 
 	// 右眼袋的 XX 个点。
-	RightEyeBags []*Point `json:"RightEyeBags,omitempty" name:"RightEyeBags" list`
+	RightEyeBags []*Point `json:"RightEyeBags,omitempty" name:"RightEyeBags"`
 
 	// 额头的 XX 个点。
-	Forehead []*Point `json:"Forehead,omitempty" name:"Forehead" list`
+	Forehead []*Point `json:"Forehead,omitempty" name:"Forehead"`
 }
 
 type DetectFaceAttributesRequest struct {
@@ -851,8 +1049,23 @@ func (r *DetectFaceAttributesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DetectFaceAttributesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MaxFaceNum")
+	delete(f, "Image")
+	delete(f, "Url")
+	delete(f, "FaceAttributesType")
+	delete(f, "NeedRotateDetection")
+	delete(f, "FaceModelVersion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectFaceAttributesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DetectFaceAttributesResponse struct {
@@ -866,7 +1079,7 @@ type DetectFaceAttributesResponse struct {
 		ImageHeight *uint64 `json:"ImageHeight,omitempty" name:"ImageHeight"`
 
 		// 人脸信息列表。
-		FaceDetailInfos []*FaceDetailInfo `json:"FaceDetailInfos,omitempty" name:"FaceDetailInfos" list`
+		FaceDetailInfos []*FaceDetailInfo `json:"FaceDetailInfos,omitempty" name:"FaceDetailInfos"`
 
 		// 人脸识别所用的算法模型版本。
 		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
@@ -881,8 +1094,10 @@ func (r *DetectFaceAttributesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DetectFaceAttributesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DetectFaceRequest struct {
@@ -934,8 +1149,25 @@ func (r *DetectFaceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DetectFaceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MaxFaceNum")
+	delete(f, "MinFaceSize")
+	delete(f, "Image")
+	delete(f, "Url")
+	delete(f, "NeedFaceAttributes")
+	delete(f, "NeedQualityDetection")
+	delete(f, "FaceModelVersion")
+	delete(f, "NeedRotateDetection")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectFaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DetectFaceResponse struct {
@@ -949,9 +1181,17 @@ type DetectFaceResponse struct {
 		ImageHeight *int64 `json:"ImageHeight,omitempty" name:"ImageHeight"`
 
 		// 人脸信息列表。包含人脸坐标信息、属性信息（若需要）、质量分信息（若需要）。
-		FaceInfos []*FaceInfo `json:"FaceInfos,omitempty" name:"FaceInfos" list`
+		FaceInfos []*FaceInfo `json:"FaceInfos,omitempty" name:"FaceInfos"`
 
-		// 人脸识别所用的算法模型版本。
+		// 人脸识别服务所用的算法模型版本。
+	// 
+	// 目前入参支持 “2.0”和“3.0“ 两个输入。
+	// 
+	// 2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。
+	// 
+	// 2020年11月26日后开通服务的账号仅支持输入“3.0”。
+	// 
+	// 不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用“3.0”版本。
 		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -964,8 +1204,10 @@ func (r *DetectFaceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DetectFaceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DetectLiveFaceRequest struct {
@@ -983,8 +1225,14 @@ type DetectLiveFaceRequest struct {
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
-	// 人脸识别服务所用的算法模型版本。目前入参支持 “2.0”和“3.0“ 两个输入。  
-	// 2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。 
+	// 人脸识别服务所用的算法模型版本。
+	// 
+	// 目前入参支持 “2.0”和“3.0“ 两个输入。
+	// 
+	// 2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。
+	// 
+	// 2020年11月26日后开通服务的账号仅支持输入“3.0”。
+	// 
 	// 不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用“3.0”版本。
 	FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
 }
@@ -994,8 +1242,20 @@ func (r *DetectLiveFaceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DetectLiveFaceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Image")
+	delete(f, "Url")
+	delete(f, "FaceModelVersion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectLiveFaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DetectLiveFaceResponse struct {
@@ -1023,8 +1283,10 @@ func (r *DetectLiveFaceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DetectLiveFaceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EstimateCheckSimilarPersonCostTimeRequest struct {
@@ -1032,7 +1294,7 @@ type EstimateCheckSimilarPersonCostTimeRequest struct {
 
 	// 待整理的人员库列表。 
 	// 人员库总人数不可超过200万，人员库个数不可超过10个。
-	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
 }
 
 func (r *EstimateCheckSimilarPersonCostTimeRequest) ToJsonString() string {
@@ -1040,8 +1302,18 @@ func (r *EstimateCheckSimilarPersonCostTimeRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EstimateCheckSimilarPersonCostTimeRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EstimateCheckSimilarPersonCostTimeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EstimateCheckSimilarPersonCostTimeResponse struct {
@@ -1061,8 +1333,10 @@ func (r *EstimateCheckSimilarPersonCostTimeResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *EstimateCheckSimilarPersonCostTimeResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Eye struct {
@@ -1355,31 +1629,31 @@ type FaceRect struct {
 type FaceShape struct {
 
 	// 描述脸型轮廓的 21 点。
-	FaceProfile []*Point `json:"FaceProfile,omitempty" name:"FaceProfile" list`
+	FaceProfile []*Point `json:"FaceProfile,omitempty" name:"FaceProfile"`
 
 	// 描述左侧眼睛轮廓的 8 点。
-	LeftEye []*Point `json:"LeftEye,omitempty" name:"LeftEye" list`
+	LeftEye []*Point `json:"LeftEye,omitempty" name:"LeftEye"`
 
 	// 描述右侧眼睛轮廓的 8 点。
-	RightEye []*Point `json:"RightEye,omitempty" name:"RightEye" list`
+	RightEye []*Point `json:"RightEye,omitempty" name:"RightEye"`
 
 	// 描述左侧眉毛轮廓的 8 点。
-	LeftEyeBrow []*Point `json:"LeftEyeBrow,omitempty" name:"LeftEyeBrow" list`
+	LeftEyeBrow []*Point `json:"LeftEyeBrow,omitempty" name:"LeftEyeBrow"`
 
 	// 描述右侧眉毛轮廓的 8 点。
-	RightEyeBrow []*Point `json:"RightEyeBrow,omitempty" name:"RightEyeBrow" list`
+	RightEyeBrow []*Point `json:"RightEyeBrow,omitempty" name:"RightEyeBrow"`
 
 	// 描述嘴巴轮廓的 22 点。
-	Mouth []*Point `json:"Mouth,omitempty" name:"Mouth" list`
+	Mouth []*Point `json:"Mouth,omitempty" name:"Mouth"`
 
 	// 描述鼻子轮廓的 13 点。
-	Nose []*Point `json:"Nose,omitempty" name:"Nose" list`
+	Nose []*Point `json:"Nose,omitempty" name:"Nose"`
 
 	// 左瞳孔轮廓的 1 个点。
-	LeftPupil []*Point `json:"LeftPupil,omitempty" name:"LeftPupil" list`
+	LeftPupil []*Point `json:"LeftPupil,omitempty" name:"LeftPupil"`
 
 	// 右瞳孔轮廓的 1 个点。
-	RightPupil []*Point `json:"RightPupil,omitempty" name:"RightPupil" list`
+	RightPupil []*Point `json:"RightPupil,omitempty" name:"RightPupil"`
 }
 
 type GetCheckSimilarPersonJobIdListRequest struct {
@@ -1397,8 +1671,19 @@ func (r *GetCheckSimilarPersonJobIdListRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetCheckSimilarPersonJobIdListRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetCheckSimilarPersonJobIdListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetCheckSimilarPersonJobIdListResponse struct {
@@ -1406,7 +1691,7 @@ type GetCheckSimilarPersonJobIdListResponse struct {
 	Response *struct {
 
 		// 人员查重任务信息列表。
-		JobIdInfos []*JobIdInfo `json:"JobIdInfos,omitempty" name:"JobIdInfos" list`
+		JobIdInfos []*JobIdInfo `json:"JobIdInfos,omitempty" name:"JobIdInfos"`
 
 		// 查重任务总数量。
 		JobIdNum *uint64 `json:"JobIdNum,omitempty" name:"JobIdNum"`
@@ -1421,8 +1706,10 @@ func (r *GetCheckSimilarPersonJobIdListResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetCheckSimilarPersonJobIdListResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetGroupInfoRequest struct {
@@ -1437,8 +1724,18 @@ func (r *GetGroupInfoRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetGroupInfoRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetGroupInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetGroupInfoResponse struct {
@@ -1452,7 +1749,7 @@ type GetGroupInfoResponse struct {
 		GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
 		// 人员库自定义描述字段
-		GroupExDescriptions []*string `json:"GroupExDescriptions,omitempty" name:"GroupExDescriptions" list`
+		GroupExDescriptions []*string `json:"GroupExDescriptions,omitempty" name:"GroupExDescriptions"`
 
 		// 人员库信息备注
 		Tag *string `json:"Tag,omitempty" name:"Tag"`
@@ -1473,8 +1770,10 @@ func (r *GetGroupInfoResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetGroupInfoResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetGroupListRequest struct {
@@ -1492,8 +1791,19 @@ func (r *GetGroupListRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetGroupListRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetGroupListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetGroupListResponse struct {
@@ -1501,7 +1811,7 @@ type GetGroupListResponse struct {
 	Response *struct {
 
 		// 返回的人员库信息
-		GroupInfos []*GroupInfo `json:"GroupInfos,omitempty" name:"GroupInfos" list`
+		GroupInfos []*GroupInfo `json:"GroupInfos,omitempty" name:"GroupInfos"`
 
 		// 人员库总数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1517,8 +1827,10 @@ func (r *GetGroupListResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetGroupListResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetPersonBaseInfoRequest struct {
@@ -1533,8 +1845,18 @@ func (r *GetPersonBaseInfoRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetPersonBaseInfoRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PersonId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetPersonBaseInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetPersonBaseInfoResponse struct {
@@ -1548,7 +1870,7 @@ type GetPersonBaseInfoResponse struct {
 		Gender *int64 `json:"Gender,omitempty" name:"Gender"`
 
 		// 包含的人脸 ID 列表
-		FaceIds []*string `json:"FaceIds,omitempty" name:"FaceIds" list`
+		FaceIds []*string `json:"FaceIds,omitempty" name:"FaceIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1560,8 +1882,10 @@ func (r *GetPersonBaseInfoResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetPersonBaseInfoResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetPersonGroupInfoRequest struct {
@@ -1582,8 +1906,20 @@ func (r *GetPersonGroupInfoRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetPersonGroupInfoRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PersonId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetPersonGroupInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetPersonGroupInfoResponse struct {
@@ -1591,7 +1927,7 @@ type GetPersonGroupInfoResponse struct {
 	Response *struct {
 
 		// 包含此人员的人员库及描述字段内容列表
-		PersonGroupInfos []*PersonGroupInfo `json:"PersonGroupInfos,omitempty" name:"PersonGroupInfos" list`
+		PersonGroupInfos []*PersonGroupInfo `json:"PersonGroupInfos,omitempty" name:"PersonGroupInfos"`
 
 		// 人员库总数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1611,8 +1947,10 @@ func (r *GetPersonGroupInfoResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetPersonGroupInfoResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetPersonListNumRequest struct {
@@ -1627,8 +1965,18 @@ func (r *GetPersonListNumRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetPersonListNumRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetPersonListNumRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetPersonListNumResponse struct {
@@ -1651,8 +1999,10 @@ func (r *GetPersonListNumResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetPersonListNumResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetPersonListRequest struct {
@@ -1673,8 +2023,20 @@ func (r *GetPersonListRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetPersonListRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetPersonListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetPersonListResponse struct {
@@ -1682,7 +2044,7 @@ type GetPersonListResponse struct {
 	Response *struct {
 
 		// 返回的人员信息
-		PersonInfos []*PersonInfo `json:"PersonInfos,omitempty" name:"PersonInfos" list`
+		PersonInfos []*PersonInfo `json:"PersonInfos,omitempty" name:"PersonInfos"`
 
 		// 该人员库的人员数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1706,8 +2068,10 @@ func (r *GetPersonListResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetPersonListResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetSimilarPersonResultRequest struct {
@@ -1722,8 +2086,18 @@ func (r *GetSimilarPersonResultRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetSimilarPersonResultRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetSimilarPersonResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetSimilarPersonResultResponse struct {
@@ -1747,8 +2121,10 @@ func (r *GetSimilarPersonResultResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetSimilarPersonResultResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetUpgradeGroupFaceModelVersionJobListRequest struct {
@@ -1766,8 +2142,19 @@ func (r *GetUpgradeGroupFaceModelVersionJobListRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetUpgradeGroupFaceModelVersionJobListRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetUpgradeGroupFaceModelVersionJobListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetUpgradeGroupFaceModelVersionJobListResponse struct {
@@ -1775,7 +2162,7 @@ type GetUpgradeGroupFaceModelVersionJobListResponse struct {
 	Response *struct {
 
 		// 人员库升级任务信息列表。
-		JobInfos []*UpgradeJobInfo `json:"JobInfos,omitempty" name:"JobInfos" list`
+		JobInfos []*UpgradeJobInfo `json:"JobInfos,omitempty" name:"JobInfos"`
 
 		// 升级任务总数量。
 		JobNum *uint64 `json:"JobNum,omitempty" name:"JobNum"`
@@ -1790,8 +2177,10 @@ func (r *GetUpgradeGroupFaceModelVersionJobListResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetUpgradeGroupFaceModelVersionJobListResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetUpgradeGroupFaceModelVersionResultRequest struct {
@@ -1806,8 +2195,18 @@ func (r *GetUpgradeGroupFaceModelVersionResultRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetUpgradeGroupFaceModelVersionResultRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetUpgradeGroupFaceModelVersionResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetUpgradeGroupFaceModelVersionResultResponse struct {
@@ -1840,7 +2239,7 @@ type GetUpgradeGroupFaceModelVersionResultResponse struct {
 		// 人员库ID。
 		GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
-		// 无法升级的人脸Id信息，文件格式
+		// 无法升级的人脸Id信息，文件格式为json。半小时有效
 		FailedFacesUrl *string `json:"FailedFacesUrl,omitempty" name:"FailedFacesUrl"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1853,8 +2252,10 @@ func (r *GetUpgradeGroupFaceModelVersionResultResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetUpgradeGroupFaceModelVersionResultResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GroupCandidate struct {
@@ -1863,7 +2264,7 @@ type GroupCandidate struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 识别出的最相似候选人。
-	Candidates []*Candidate `json:"Candidates,omitempty" name:"Candidates" list`
+	Candidates []*Candidate `json:"Candidates,omitempty" name:"Candidates"`
 }
 
 type GroupExDescriptionInfo struct {
@@ -1886,7 +2287,7 @@ type GroupInfo struct {
 
 	// 人员库自定义描述字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GroupExDescriptions []*string `json:"GroupExDescriptions,omitempty" name:"GroupExDescriptions" list`
+	GroupExDescriptions []*string `json:"GroupExDescriptions,omitempty" name:"GroupExDescriptions"`
 
 	// 人员库信息备注
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1965,7 +2366,7 @@ type ModifyGroupRequest struct {
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 
 	// 需要修改的人员库自定义描述字段，key-value
-	GroupExDescriptionInfos []*GroupExDescriptionInfo `json:"GroupExDescriptionInfos,omitempty" name:"GroupExDescriptionInfos" list`
+	GroupExDescriptionInfos []*GroupExDescriptionInfo `json:"GroupExDescriptionInfos,omitempty" name:"GroupExDescriptionInfos"`
 
 	// 人员库信息备注
 	Tag *string `json:"Tag,omitempty" name:"Tag"`
@@ -1976,8 +2377,21 @@ func (r *ModifyGroupRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyGroupRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "GroupName")
+	delete(f, "GroupExDescriptionInfos")
+	delete(f, "Tag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyGroupResponse struct {
@@ -1994,8 +2408,10 @@ func (r *ModifyGroupResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyGroupResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyPersonBaseInfoRequest struct {
@@ -2016,8 +2432,20 @@ func (r *ModifyPersonBaseInfoRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyPersonBaseInfoRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PersonId")
+	delete(f, "PersonName")
+	delete(f, "Gender")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPersonBaseInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyPersonBaseInfoResponse struct {
@@ -2034,8 +2462,10 @@ func (r *ModifyPersonBaseInfoResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyPersonBaseInfoResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyPersonGroupInfoRequest struct {
@@ -2048,7 +2478,7 @@ type ModifyPersonGroupInfoRequest struct {
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
 	// 需要修改的人员描述字段内容，key-value
-	PersonExDescriptionInfos []*PersonExDescriptionInfo `json:"PersonExDescriptionInfos,omitempty" name:"PersonExDescriptionInfos" list`
+	PersonExDescriptionInfos []*PersonExDescriptionInfo `json:"PersonExDescriptionInfos,omitempty" name:"PersonExDescriptionInfos"`
 }
 
 func (r *ModifyPersonGroupInfoRequest) ToJsonString() string {
@@ -2056,8 +2486,20 @@ func (r *ModifyPersonGroupInfoRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyPersonGroupInfoRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "PersonId")
+	delete(f, "PersonExDescriptionInfos")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPersonGroupInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyPersonGroupInfoResponse struct {
@@ -2074,8 +2516,10 @@ func (r *ModifyPersonGroupInfoResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyPersonGroupInfoResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Mouth struct {
@@ -2101,7 +2545,7 @@ type PersonGroupInfo struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 人员描述字段内容
-	PersonExDescriptions []*string `json:"PersonExDescriptions,omitempty" name:"PersonExDescriptions" list`
+	PersonExDescriptions []*string `json:"PersonExDescriptions,omitempty" name:"PersonExDescriptions"`
 }
 
 type PersonInfo struct {
@@ -2116,10 +2560,10 @@ type PersonInfo struct {
 	Gender *int64 `json:"Gender,omitempty" name:"Gender"`
 
 	// 人员描述字段内容
-	PersonExDescriptions []*string `json:"PersonExDescriptions,omitempty" name:"PersonExDescriptions" list`
+	PersonExDescriptions []*string `json:"PersonExDescriptions,omitempty" name:"PersonExDescriptions"`
 
 	// 包含的人脸照片列表
-	FaceIds []*string `json:"FaceIds,omitempty" name:"FaceIds" list`
+	FaceIds []*string `json:"FaceIds,omitempty" name:"FaceIds"`
 
 	// 人员的创建时间和日期 CreationTimestamp。CreationTimestamp 的值是自 Unix 纪元时间到Group创建时间的毫秒数。 
 	// Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。有关更多信息，请参阅 Unix 时间。
@@ -2138,7 +2582,7 @@ type Point struct {
 type Result struct {
 
 	// 识别出的最相似候选人
-	Candidates []*Candidate `json:"Candidates,omitempty" name:"Candidates" list`
+	Candidates []*Candidate `json:"Candidates,omitempty" name:"Candidates"`
 
 	// 检测出的人脸框位置
 	FaceRect *FaceRect `json:"FaceRect,omitempty" name:"FaceRect"`
@@ -2154,7 +2598,7 @@ type ResultsReturnsByGroup struct {
 	FaceRect *FaceRect `json:"FaceRect,omitempty" name:"FaceRect"`
 
 	// 识别结果。
-	GroupCandidates []*GroupCandidate `json:"GroupCandidates,omitempty" name:"GroupCandidates" list`
+	GroupCandidates []*GroupCandidate `json:"GroupCandidates,omitempty" name:"GroupCandidates"`
 
 	// 检测出的人脸图片状态返回码。0 表示正常。 
 	// -1601代表不符合图片质量控制要求，此时Candidate内容为空。
@@ -2173,8 +2617,18 @@ func (r *RevertGroupFaceModelVersionRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RevertGroupFaceModelVersionRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RevertGroupFaceModelVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RevertGroupFaceModelVersionResponse struct {
@@ -2191,15 +2645,17 @@ func (r *RevertGroupFaceModelVersionResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *RevertGroupFaceModelVersionResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SearchFacesRequest struct {
 	*tchttp.BaseRequest
 
 	// 希望搜索的人员库列表，上限100个。
-	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -2250,8 +2706,27 @@ func (r *SearchFacesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SearchFacesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupIds")
+	delete(f, "Image")
+	delete(f, "Url")
+	delete(f, "MaxFaceNum")
+	delete(f, "MinFaceSize")
+	delete(f, "MaxPersonNum")
+	delete(f, "NeedPersonInfo")
+	delete(f, "QualityControl")
+	delete(f, "FaceMatchThreshold")
+	delete(f, "NeedRotateDetection")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchFacesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SearchFacesResponse struct {
@@ -2259,7 +2734,7 @@ type SearchFacesResponse struct {
 	Response *struct {
 
 		// 识别结果。
-		Results []*Result `json:"Results,omitempty" name:"Results" list`
+		Results []*Result `json:"Results,omitempty" name:"Results"`
 
 		// 搜索的人员库中包含的人脸数。
 		FaceNum *uint64 `json:"FaceNum,omitempty" name:"FaceNum"`
@@ -2277,15 +2752,17 @@ func (r *SearchFacesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SearchFacesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SearchFacesReturnsByGroupRequest struct {
 	*tchttp.BaseRequest
 
 	// 希望搜索的人员库列表，上限60个。
-	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -2337,8 +2814,27 @@ func (r *SearchFacesReturnsByGroupRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SearchFacesReturnsByGroupRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupIds")
+	delete(f, "Image")
+	delete(f, "Url")
+	delete(f, "MaxFaceNum")
+	delete(f, "MinFaceSize")
+	delete(f, "MaxPersonNumPerGroup")
+	delete(f, "NeedPersonInfo")
+	delete(f, "QualityControl")
+	delete(f, "FaceMatchThreshold")
+	delete(f, "NeedRotateDetection")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchFacesReturnsByGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SearchFacesReturnsByGroupResponse struct {
@@ -2349,7 +2845,7 @@ type SearchFacesReturnsByGroupResponse struct {
 		FaceNum *uint64 `json:"FaceNum,omitempty" name:"FaceNum"`
 
 		// 识别结果。
-		ResultsReturnsByGroup []*ResultsReturnsByGroup `json:"ResultsReturnsByGroup,omitempty" name:"ResultsReturnsByGroup" list`
+		ResultsReturnsByGroup []*ResultsReturnsByGroup `json:"ResultsReturnsByGroup,omitempty" name:"ResultsReturnsByGroup"`
 
 		// 人脸识别所用的算法模型版本。
 		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
@@ -2364,15 +2860,17 @@ func (r *SearchFacesReturnsByGroupResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SearchFacesReturnsByGroupResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SearchPersonsRequest struct {
 	*tchttp.BaseRequest
 
 	// 希望搜索的人员库列表，上限100个。
-	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
@@ -2424,8 +2922,27 @@ func (r *SearchPersonsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SearchPersonsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupIds")
+	delete(f, "Image")
+	delete(f, "Url")
+	delete(f, "MaxFaceNum")
+	delete(f, "MinFaceSize")
+	delete(f, "MaxPersonNum")
+	delete(f, "QualityControl")
+	delete(f, "FaceMatchThreshold")
+	delete(f, "NeedPersonInfo")
+	delete(f, "NeedRotateDetection")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchPersonsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SearchPersonsResponse struct {
@@ -2433,7 +2950,7 @@ type SearchPersonsResponse struct {
 	Response *struct {
 
 		// 识别结果。
-		Results []*Result `json:"Results,omitempty" name:"Results" list`
+		Results []*Result `json:"Results,omitempty" name:"Results"`
 
 		// 搜索的人员库中包含的人员数。若输入图片中所有人脸均不符合质量要求，则返回0。
 		PersonNum *uint64 `json:"PersonNum,omitempty" name:"PersonNum"`
@@ -2452,15 +2969,17 @@ func (r *SearchPersonsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SearchPersonsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SearchPersonsReturnsByGroupRequest struct {
 	*tchttp.BaseRequest
 
 	// 希望搜索的人员库列表，上限60个。
-	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds" list`
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -2510,8 +3029,27 @@ func (r *SearchPersonsReturnsByGroupRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SearchPersonsReturnsByGroupRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupIds")
+	delete(f, "Image")
+	delete(f, "Url")
+	delete(f, "MaxFaceNum")
+	delete(f, "MinFaceSize")
+	delete(f, "MaxPersonNumPerGroup")
+	delete(f, "QualityControl")
+	delete(f, "FaceMatchThreshold")
+	delete(f, "NeedPersonInfo")
+	delete(f, "NeedRotateDetection")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchPersonsReturnsByGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SearchPersonsReturnsByGroupResponse struct {
@@ -2522,7 +3060,7 @@ type SearchPersonsReturnsByGroupResponse struct {
 		PersonNum *uint64 `json:"PersonNum,omitempty" name:"PersonNum"`
 
 		// 识别结果。
-		ResultsReturnsByGroup []*ResultsReturnsByGroup `json:"ResultsReturnsByGroup,omitempty" name:"ResultsReturnsByGroup" list`
+		ResultsReturnsByGroup []*ResultsReturnsByGroup `json:"ResultsReturnsByGroup,omitempty" name:"ResultsReturnsByGroup"`
 
 		// 人脸识别所用的算法模型版本。
 		FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
@@ -2537,8 +3075,10 @@ func (r *SearchPersonsReturnsByGroupResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SearchPersonsReturnsByGroupResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpgradeGroupFaceModelVersionRequest struct {
@@ -2547,7 +3087,7 @@ type UpgradeGroupFaceModelVersionRequest struct {
 	// 需要升级的人员库ID。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
-	// 需要升级至的算法模型版本。默认为最新版本。
+	// 需要升级至的算法模型版本。默认为最新版本。不可逆向升级
 	FaceModelVersion *string `json:"FaceModelVersion,omitempty" name:"FaceModelVersion"`
 }
 
@@ -2556,8 +3096,19 @@ func (r *UpgradeGroupFaceModelVersionRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpgradeGroupFaceModelVersionRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "FaceModelVersion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeGroupFaceModelVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpgradeGroupFaceModelVersionResponse struct {
@@ -2577,8 +3128,10 @@ func (r *UpgradeGroupFaceModelVersionResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpgradeGroupFaceModelVersionResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpgradeJobInfo struct {
@@ -2643,8 +3196,22 @@ func (r *VerifyFaceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VerifyFaceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PersonId")
+	delete(f, "Image")
+	delete(f, "Url")
+	delete(f, "QualityControl")
+	delete(f, "NeedRotateDetection")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyFaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VerifyFaceResponse struct {
@@ -2674,12 +3241,17 @@ func (r *VerifyFaceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VerifyFaceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VerifyPersonRequest struct {
 	*tchttp.BaseRequest
+
+	// 待验证的人员ID。人员ID具体信息请参考人员库管理相关接口。
+	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
 	// 图片 base64 数据。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
@@ -2692,9 +3264,6 @@ type VerifyPersonRequest struct {
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Url *string `json:"Url,omitempty" name:"Url"`
-
-	// 待验证的人员ID。人员ID具体信息请参考人员库管理相关接口。
-	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
 	// 图片质量控制。 
 	// 0: 不进行控制； 
@@ -2715,8 +3284,22 @@ func (r *VerifyPersonRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VerifyPersonRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PersonId")
+	delete(f, "Image")
+	delete(f, "Url")
+	delete(f, "QualityControl")
+	delete(f, "NeedRotateDetection")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyPersonRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VerifyPersonResponse struct {
@@ -2742,6 +3325,8 @@ func (r *VerifyPersonResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *VerifyPersonResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

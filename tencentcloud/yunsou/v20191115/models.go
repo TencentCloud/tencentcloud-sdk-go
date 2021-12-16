@@ -16,7 +16,7 @@ package v20191115
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -41,8 +41,21 @@ func (r *DataManipulationRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DataManipulationRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpType")
+	delete(f, "Encoding")
+	delete(f, "Contents")
+	delete(f, "ResourceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DataManipulationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DataManipulationResponse struct {
@@ -62,8 +75,10 @@ func (r *DataManipulationResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DataManipulationResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DataManipulationResult struct {
@@ -79,7 +94,7 @@ type DataManipulationResult struct {
 
 	// 操作结果明细
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result []*DataManipulationResultItem `json:"Result,omitempty" name:"Result" list`
+	Result []*DataManipulationResultItem `json:"Result,omitempty" name:"Result"`
 
 	// 异常信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -168,7 +183,7 @@ type DataSearchRequest struct {
 	Latitude *float64 `json:"Latitude,omitempty" name:"Latitude"`
 
 	// 分类过滤并集
-	MultiFilter []*string `json:"MultiFilter,omitempty" name:"MultiFilter" list`
+	MultiFilter []*string `json:"MultiFilter,omitempty" name:"MultiFilter"`
 }
 
 func (r *DataSearchRequest) ToJsonString() string {
@@ -176,8 +191,40 @@ func (r *DataSearchRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DataSearchRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceId")
+	delete(f, "SearchQuery")
+	delete(f, "PageId")
+	delete(f, "NumPerPage")
+	delete(f, "SearchId")
+	delete(f, "QueryEncode")
+	delete(f, "RankType")
+	delete(f, "NumFilter")
+	delete(f, "ClFilter")
+	delete(f, "Extra")
+	delete(f, "SourceId")
+	delete(f, "SecondSearch")
+	delete(f, "MaxDocReturn")
+	delete(f, "IsSmartbox")
+	delete(f, "EnableAbsHighlight")
+	delete(f, "QcBid")
+	delete(f, "GroupBy")
+	delete(f, "Distinct")
+	delete(f, "L4RankExpression")
+	delete(f, "MatchValue")
+	delete(f, "Longitude")
+	delete(f, "Latitude")
+	delete(f, "MultiFilter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DataSearchRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DataSearchResponse struct {
@@ -197,8 +244,10 @@ func (r *DataSearchResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DataSearchResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SearchResult struct {
@@ -220,11 +269,11 @@ type SearchResult struct {
 
 	// 检索结果列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResultList []*SearchResultItem `json:"ResultList,omitempty" name:"ResultList" list`
+	ResultList []*SearchResultItem `json:"ResultList,omitempty" name:"ResultList"`
 
 	// 检索的分词结果，array类型，可包含多个
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SegList []*SearchResultSeg `json:"SegList,omitempty" name:"SegList" list`
+	SegList []*SearchResultSeg `json:"SegList,omitempty" name:"SegList"`
 }
 
 type SearchResultItem struct {

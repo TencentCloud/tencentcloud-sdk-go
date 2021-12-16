@@ -16,7 +16,7 @@ package v20190318
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -33,7 +33,7 @@ type AIAssistantRequest struct {
 	Lang *int64 `json:"Lang,omitempty" name:"Lang"`
 
 	// 查询人员库列表
-	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
+	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet"`
 
 	// 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
@@ -42,7 +42,7 @@ type AIAssistantRequest struct {
 	Template *int64 `json:"Template,omitempty" name:"Template"`
 
 	// 识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
-	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList" list`
+	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList"`
 
 	// 语音编码类型 1:pcm
 	VoiceEncodeType *int64 `json:"VoiceEncodeType,omitempty" name:"VoiceEncodeType"`
@@ -56,8 +56,26 @@ func (r *AIAssistantRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AIAssistantRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileContent")
+	delete(f, "FileType")
+	delete(f, "Lang")
+	delete(f, "LibrarySet")
+	delete(f, "MaxVideoDuration")
+	delete(f, "Template")
+	delete(f, "VocabLibNameList")
+	delete(f, "VoiceEncodeType")
+	delete(f, "VoiceFileType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AIAssistantRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type AIAssistantResponse struct {
@@ -65,7 +83,7 @@ type AIAssistantResponse struct {
 	Response *struct {
 
 		// 图像任务直接返回结果
-		ImageResults []*ImageTaskResult `json:"ImageResults,omitempty" name:"ImageResults" list`
+		ImageResults []*ImageTaskResult `json:"ImageResults,omitempty" name:"ImageResults"`
 
 		// 任务ID
 		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
@@ -80,8 +98,10 @@ func (r *AIAssistantResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AIAssistantResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ASRStat struct {
@@ -180,13 +200,13 @@ type ActionInfo struct {
 type ActionStatistic struct {
 
 	// 数量统计
-	ActionCount []*ActionCountStatistic `json:"ActionCount,omitempty" name:"ActionCount" list`
+	ActionCount []*ActionCountStatistic `json:"ActionCount,omitempty" name:"ActionCount"`
 
 	// 时长统计
-	ActionDuration []*ActionDurationStatistic `json:"ActionDuration,omitempty" name:"ActionDuration" list`
+	ActionDuration []*ActionDurationStatistic `json:"ActionDuration,omitempty" name:"ActionDuration"`
 
 	// 时长比例统计
-	ActionDurationRatio []*ActionDurationRatioStatistic `json:"ActionDurationRatio,omitempty" name:"ActionDurationRatio" list`
+	ActionDurationRatio []*ActionDurationRatioStatistic `json:"ActionDurationRatio,omitempty" name:"ActionDurationRatio"`
 }
 
 type ActionType struct {
@@ -201,7 +221,7 @@ type ActionType struct {
 type AllMuteSlice struct {
 
 	// 所有静音片段。
-	MuteSlice []*MuteSlice `json:"MuteSlice,omitempty" name:"MuteSlice" list`
+	MuteSlice []*MuteSlice `json:"MuteSlice,omitempty" name:"MuteSlice"`
 
 	// 静音时长占比。
 	MuteRatio *float64 `json:"MuteRatio,omitempty" name:"MuteRatio"`
@@ -256,8 +276,18 @@ func (r *CancelTaskRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CancelTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CancelTaskResponse struct {
@@ -277,8 +307,10 @@ func (r *CancelTaskResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CancelTaskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CheckFacePhotoRequest struct {
@@ -296,8 +328,19 @@ func (r *CheckFacePhotoRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CheckFacePhotoRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileContent")
+	delete(f, "FileType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckFacePhotoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CheckFacePhotoResponse struct {
@@ -317,8 +360,10 @@ func (r *CheckFacePhotoResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CheckFacePhotoResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateFaceRequest struct {
@@ -328,13 +373,13 @@ type CreateFaceRequest struct {
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
 	// 图片数据 base64 字符串，与 Urls 参数选择一个输入
-	Images []*string `json:"Images,omitempty" name:"Images" list`
+	Images []*string `json:"Images,omitempty" name:"Images"`
 
 	// 人员库唯一标识符
 	LibraryId *string `json:"LibraryId,omitempty" name:"LibraryId"`
 
 	// 图片下载地址，与 Images 参数选择一个输入
-	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 }
 
 func (r *CreateFaceRequest) ToJsonString() string {
@@ -342,8 +387,21 @@ func (r *CreateFaceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateFaceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PersonId")
+	delete(f, "Images")
+	delete(f, "LibraryId")
+	delete(f, "Urls")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateFaceResponse struct {
@@ -351,7 +409,7 @@ type CreateFaceResponse struct {
 	Response *struct {
 
 		// 人脸操作结果信息
-		FaceInfoSet []*FaceInfo `json:"FaceInfoSet,omitempty" name:"FaceInfoSet" list`
+		FaceInfoSet []*FaceInfo `json:"FaceInfoSet,omitempty" name:"FaceInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -363,8 +421,10 @@ func (r *CreateFaceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateFaceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateLibraryRequest struct {
@@ -382,8 +442,19 @@ func (r *CreateLibraryRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateLibraryRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LibraryName")
+	delete(f, "LibraryId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLibraryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateLibraryResponse struct {
@@ -406,8 +477,10 @@ func (r *CreateLibraryResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateLibraryResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreatePersonRequest struct {
@@ -420,7 +493,7 @@ type CreatePersonRequest struct {
 	PersonName *string `json:"PersonName,omitempty" name:"PersonName"`
 
 	// 图片数据 base64 字符串，与 Urls 参数选择一个输入
-	Images []*string `json:"Images,omitempty" name:"Images" list`
+	Images []*string `json:"Images,omitempty" name:"Images"`
 
 	// 人员工作号码
 	JobNumber *string `json:"JobNumber,omitempty" name:"JobNumber"`
@@ -441,7 +514,7 @@ type CreatePersonRequest struct {
 	StudentNumber *string `json:"StudentNumber,omitempty" name:"StudentNumber"`
 
 	// 图片下载地址，与 Images 参数选择一个输入
-	Urls []*string `json:"Urls,omitempty" name:"Urls" list`
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 }
 
 func (r *CreatePersonRequest) ToJsonString() string {
@@ -449,8 +522,27 @@ func (r *CreatePersonRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreatePersonRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LibraryId")
+	delete(f, "PersonName")
+	delete(f, "Images")
+	delete(f, "JobNumber")
+	delete(f, "Mail")
+	delete(f, "Male")
+	delete(f, "PersonId")
+	delete(f, "PhoneNumber")
+	delete(f, "StudentNumber")
+	delete(f, "Urls")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePersonRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreatePersonResponse struct {
@@ -458,7 +550,7 @@ type CreatePersonResponse struct {
 	Response *struct {
 
 		// 人脸操作结果信息
-		FaceInfoSet []*FaceInfo `json:"FaceInfoSet,omitempty" name:"FaceInfoSet" list`
+		FaceInfoSet []*FaceInfo `json:"FaceInfoSet,omitempty" name:"FaceInfoSet"`
 
 		// 人员库唯一标识符
 		LibraryId *string `json:"LibraryId,omitempty" name:"LibraryId"`
@@ -479,8 +571,10 @@ func (r *CreatePersonResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreatePersonResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateVocabLibRequest struct {
@@ -495,8 +589,18 @@ func (r *CreateVocabLibRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateVocabLibRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VocabLibName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVocabLibRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateVocabLibResponse struct {
@@ -513,8 +617,10 @@ func (r *CreateVocabLibResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateVocabLibResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateVocabRequest struct {
@@ -524,7 +630,7 @@ type CreateVocabRequest struct {
 	VocabLibName *string `json:"VocabLibName,omitempty" name:"VocabLibName"`
 
 	// 要添加的词汇列表
-	VocabList []*string `json:"VocabList,omitempty" name:"VocabList" list`
+	VocabList []*string `json:"VocabList,omitempty" name:"VocabList"`
 }
 
 func (r *CreateVocabRequest) ToJsonString() string {
@@ -532,8 +638,19 @@ func (r *CreateVocabRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateVocabRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VocabLibName")
+	delete(f, "VocabList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVocabRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateVocabResponse struct {
@@ -550,15 +667,17 @@ func (r *CreateVocabResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateVocabResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteFaceRequest struct {
 	*tchttp.BaseRequest
 
 	// 人脸标识符数组
-	FaceIdSet []*string `json:"FaceIdSet,omitempty" name:"FaceIdSet" list`
+	FaceIdSet []*string `json:"FaceIdSet,omitempty" name:"FaceIdSet"`
 
 	// 人员唯一标识符
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
@@ -572,8 +691,20 @@ func (r *DeleteFaceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteFaceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FaceIdSet")
+	delete(f, "PersonId")
+	delete(f, "LibraryId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteFaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteFaceResponse struct {
@@ -581,7 +712,7 @@ type DeleteFaceResponse struct {
 	Response *struct {
 
 		// 人脸操作结果
-		FaceInfoSet []*FaceInfo `json:"FaceInfoSet,omitempty" name:"FaceInfoSet" list`
+		FaceInfoSet []*FaceInfo `json:"FaceInfoSet,omitempty" name:"FaceInfoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -593,8 +724,10 @@ func (r *DeleteFaceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteFaceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteLibraryRequest struct {
@@ -609,8 +742,18 @@ func (r *DeleteLibraryRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteLibraryRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LibraryId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLibraryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteLibraryResponse struct {
@@ -633,8 +776,10 @@ func (r *DeleteLibraryResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteLibraryResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeletePersonRequest struct {
@@ -652,8 +797,19 @@ func (r *DeletePersonRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeletePersonRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LibraryId")
+	delete(f, "PersonId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePersonRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeletePersonResponse struct {
@@ -661,7 +817,7 @@ type DeletePersonResponse struct {
 	Response *struct {
 
 		// 人脸信息
-		FaceInfoSet []*FaceInfo `json:"FaceInfoSet,omitempty" name:"FaceInfoSet" list`
+		FaceInfoSet []*FaceInfo `json:"FaceInfoSet,omitempty" name:"FaceInfoSet"`
 
 		// 人员库唯一标识符
 		LibraryId *string `json:"LibraryId,omitempty" name:"LibraryId"`
@@ -682,8 +838,10 @@ func (r *DeletePersonResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeletePersonResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteVocabLibRequest struct {
@@ -698,8 +856,18 @@ func (r *DeleteVocabLibRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteVocabLibRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VocabLibName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteVocabLibRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteVocabLibResponse struct {
@@ -716,8 +884,10 @@ func (r *DeleteVocabLibResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteVocabLibResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteVocabRequest struct {
@@ -727,7 +897,7 @@ type DeleteVocabRequest struct {
 	VocabLibName *string `json:"VocabLibName,omitempty" name:"VocabLibName"`
 
 	// 要删除的词汇列表
-	VocabList []*string `json:"VocabList,omitempty" name:"VocabList" list`
+	VocabList []*string `json:"VocabList,omitempty" name:"VocabList"`
 }
 
 func (r *DeleteVocabRequest) ToJsonString() string {
@@ -735,8 +905,19 @@ func (r *DeleteVocabRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteVocabRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VocabLibName")
+	delete(f, "VocabList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteVocabRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteVocabResponse struct {
@@ -753,8 +934,10 @@ func (r *DeleteVocabResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteVocabResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAITaskResultRequest struct {
@@ -775,8 +958,20 @@ func (r *DescribeAITaskResultRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAITaskResultRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAITaskResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAITaskResultResponse struct {
@@ -808,8 +1003,10 @@ func (r *DescribeAITaskResultResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAITaskResultResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAttendanceResultRequest struct {
@@ -824,8 +1021,18 @@ func (r *DescribeAttendanceResultRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAttendanceResultRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAttendanceResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAttendanceResultResponse struct {
@@ -833,16 +1040,16 @@ type DescribeAttendanceResultResponse struct {
 	Response *struct {
 
 		// 缺失人员的ID列表(只针对请求中的libids字段)
-		AbsenceSetInLibs []*AbsenceInfo `json:"AbsenceSetInLibs,omitempty" name:"AbsenceSetInLibs" list`
+		AbsenceSetInLibs []*AbsenceInfo `json:"AbsenceSetInLibs,omitempty" name:"AbsenceSetInLibs"`
 
 		// 确定出勤人员列表
-		AttendanceSet []*AttendanceInfo `json:"AttendanceSet,omitempty" name:"AttendanceSet" list`
+		AttendanceSet []*AttendanceInfo `json:"AttendanceSet,omitempty" name:"AttendanceSet"`
 
 		// 疑似出勤人员列表
-		SuspectedSet []*SuspectedInfo `json:"SuspectedSet,omitempty" name:"SuspectedSet" list`
+		SuspectedSet []*SuspectedInfo `json:"SuspectedSet,omitempty" name:"SuspectedSet"`
 
 		// 缺失人员的ID列表(只针对请求中的personids字段)
-		AbsenceSet []*string `json:"AbsenceSet,omitempty" name:"AbsenceSet" list`
+		AbsenceSet []*string `json:"AbsenceSet,omitempty" name:"AbsenceSet"`
 
 		// 请求处理进度
 		Progress *int64 `json:"Progress,omitempty" name:"Progress"`
@@ -857,8 +1064,10 @@ func (r *DescribeAttendanceResultResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAttendanceResultResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAudioTaskRequest struct {
@@ -879,8 +1088,20 @@ func (r *DescribeAudioTaskRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAudioTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAudioTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAudioTaskResponse struct {
@@ -894,13 +1115,13 @@ type DescribeAudioTaskResponse struct {
 		AsrStat *ASRStat `json:"AsrStat,omitempty" name:"AsrStat"`
 
 		// 返回当前音频流的详细信息，如果是流模式，返回的是对应流的详细信息，如果是 URL模式，返回的是查询的那一段seq对应的音频的详细信息。
-		Texts []*WholeTextItem `json:"Texts,omitempty" name:"Texts" list`
+		Texts []*WholeTextItem `json:"Texts,omitempty" name:"Texts"`
 
 		// 返回词汇库中的单词出现的详细时间信息。
-		VocabAnalysisDetailInfo []*VocabDetailInfomation `json:"VocabAnalysisDetailInfo,omitempty" name:"VocabAnalysisDetailInfo" list`
+		VocabAnalysisDetailInfo []*VocabDetailInfomation `json:"VocabAnalysisDetailInfo,omitempty" name:"VocabAnalysisDetailInfo"`
 
 		// 返回词汇库中的单词出现的次数信息。
-		VocabAnalysisStatInfo []*VocabStatInfomation `json:"VocabAnalysisStatInfo,omitempty" name:"VocabAnalysisStatInfo" list`
+		VocabAnalysisStatInfo []*VocabStatInfomation `json:"VocabAnalysisStatInfo,omitempty" name:"VocabAnalysisStatInfo"`
 
 		// 返回音频全部文本。
 		AllTexts *string `json:"AllTexts,omitempty" name:"AllTexts"`
@@ -924,8 +1145,10 @@ func (r *DescribeAudioTaskResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeAudioTaskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeConversationTaskRequest struct {
@@ -949,8 +1172,21 @@ func (r *DescribeConversationTaskRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeConversationTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "Identity")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConversationTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeConversationTaskResponse struct {
@@ -961,13 +1197,13 @@ type DescribeConversationTaskResponse struct {
 		AsrStat *ASRStat `json:"AsrStat,omitempty" name:"AsrStat"`
 
 		// 返回当前音频流的详细信息，如果是流模式，返回的是对应流的详细信息，如果是 URL模式，返回的是查询的那一段seq对应的音频的详细信息。
-		Texts []*WholeTextItem `json:"Texts,omitempty" name:"Texts" list`
+		Texts []*WholeTextItem `json:"Texts,omitempty" name:"Texts"`
 
 		// 返回词汇库中的单词出现的详细时间信息。
-		VocabAnalysisDetailInfo []*VocabDetailInfomation `json:"VocabAnalysisDetailInfo,omitempty" name:"VocabAnalysisDetailInfo" list`
+		VocabAnalysisDetailInfo []*VocabDetailInfomation `json:"VocabAnalysisDetailInfo,omitempty" name:"VocabAnalysisDetailInfo"`
 
 		// 返回词汇库中的单词出现的次数信息。
-		VocabAnalysisStatInfo []*VocabStatInfomation `json:"VocabAnalysisStatInfo,omitempty" name:"VocabAnalysisStatInfo" list`
+		VocabAnalysisStatInfo []*VocabStatInfomation `json:"VocabAnalysisStatInfo,omitempty" name:"VocabAnalysisStatInfo"`
 
 		// 整个音频流的全部文本
 		AllTexts *string `json:"AllTexts,omitempty" name:"AllTexts"`
@@ -991,8 +1227,10 @@ func (r *DescribeConversationTaskResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeConversationTaskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeHighlightResultRequest struct {
@@ -1007,8 +1245,18 @@ func (r *DescribeHighlightResultRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeHighlightResultRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHighlightResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeHighlightResultResponse struct {
@@ -1016,7 +1264,7 @@ type DescribeHighlightResultResponse struct {
 	Response *struct {
 
 		// 精彩集锦详细信息。
-		HighlightsInfo []*HighlightsInfomation `json:"HighlightsInfo,omitempty" name:"HighlightsInfo" list`
+		HighlightsInfo []*HighlightsInfomation `json:"HighlightsInfo,omitempty" name:"HighlightsInfo"`
 
 		// 精彩集锦任务唯一id。在URL方式时提交请求后会返回一个JobId，后续查询该url的结果时使用这个JobId进行查询。
 		JobId *int64 `json:"JobId,omitempty" name:"JobId"`
@@ -1034,8 +1282,10 @@ func (r *DescribeHighlightResultResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeHighlightResultResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeImageTaskRequest struct {
@@ -1056,8 +1306,20 @@ func (r *DescribeImageTaskRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeImageTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImageTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeImageTaskResponse struct {
@@ -1065,7 +1327,7 @@ type DescribeImageTaskResponse struct {
 	Response *struct {
 
 		// 任务处理结果
-		ResultSet []*ImageTaskResult `json:"ResultSet,omitempty" name:"ResultSet" list`
+		ResultSet []*ImageTaskResult `json:"ResultSet,omitempty" name:"ResultSet"`
 
 		// 任务唯一标识
 		JobId *int64 `json:"JobId,omitempty" name:"JobId"`
@@ -1086,8 +1348,10 @@ func (r *DescribeImageTaskResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeImageTaskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeImageTaskStatisticRequest struct {
@@ -1102,8 +1366,18 @@ func (r *DescribeImageTaskStatisticRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeImageTaskStatisticRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImageTaskStatisticRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeImageTaskStatisticResponse struct {
@@ -1126,8 +1400,10 @@ func (r *DescribeImageTaskStatisticResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeImageTaskStatisticResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeLibrariesRequest struct {
@@ -1139,8 +1415,17 @@ func (r *DescribeLibrariesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeLibrariesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLibrariesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeLibrariesResponse struct {
@@ -1148,7 +1433,7 @@ type DescribeLibrariesResponse struct {
 	Response *struct {
 
 		// 人员库列表
-		LibrarySet []*Library `json:"LibrarySet,omitempty" name:"LibrarySet" list`
+		LibrarySet []*Library `json:"LibrarySet,omitempty" name:"LibrarySet"`
 
 		// 人员库总数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1163,8 +1448,10 @@ func (r *DescribeLibrariesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeLibrariesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribePersonRequest struct {
@@ -1182,8 +1469,19 @@ func (r *DescribePersonRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribePersonRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LibraryId")
+	delete(f, "PersonId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePersonRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribePersonResponse struct {
@@ -1191,7 +1489,7 @@ type DescribePersonResponse struct {
 	Response *struct {
 
 		// 人员人脸列表
-		FaceSet []*Face `json:"FaceSet,omitempty" name:"FaceSet" list`
+		FaceSet []*Face `json:"FaceSet,omitempty" name:"FaceSet"`
 
 		// 创建时间
 		CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
@@ -1233,8 +1531,10 @@ func (r *DescribePersonResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribePersonResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribePersonsRequest struct {
@@ -1255,8 +1555,20 @@ func (r *DescribePersonsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribePersonsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LibraryId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePersonsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribePersonsResponse struct {
@@ -1264,7 +1576,7 @@ type DescribePersonsResponse struct {
 	Response *struct {
 
 		// 人员列表
-		PersonSet []*Person `json:"PersonSet,omitempty" name:"PersonSet" list`
+		PersonSet []*Person `json:"PersonSet,omitempty" name:"PersonSet"`
 
 		// 人员总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1279,8 +1591,10 @@ func (r *DescribePersonsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribePersonsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeVocabLibRequest struct {
@@ -1292,8 +1606,17 @@ func (r *DescribeVocabLibRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeVocabLibRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVocabLibRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeVocabLibResponse struct {
@@ -1301,7 +1624,7 @@ type DescribeVocabLibResponse struct {
 	Response *struct {
 
 		// 返回该appid下的所有词汇库名
-		VocabLibNameSet []*string `json:"VocabLibNameSet,omitempty" name:"VocabLibNameSet" list`
+		VocabLibNameSet []*string `json:"VocabLibNameSet,omitempty" name:"VocabLibNameSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1313,8 +1636,10 @@ func (r *DescribeVocabLibResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeVocabLibResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeVocabRequest struct {
@@ -1329,8 +1654,18 @@ func (r *DescribeVocabRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeVocabRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VocabLibName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVocabRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeVocabResponse struct {
@@ -1338,7 +1673,7 @@ type DescribeVocabResponse struct {
 	Response *struct {
 
 		// 词汇列表
-		VocabNameSet []*string `json:"VocabNameSet,omitempty" name:"VocabNameSet" list`
+		VocabNameSet []*string `json:"VocabNameSet,omitempty" name:"VocabNameSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1350,14 +1685,16 @@ func (r *DescribeVocabResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeVocabResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DetailInfo struct {
 
 	// 单词出现在该音频中的那个句子的时间戳，出现了几次， 就返回对应次数的起始和结束时间戳
-	Value []*WordTimePair `json:"Value,omitempty" name:"Value" list`
+	Value []*WordTimePair `json:"Value,omitempty" name:"Value"`
 
 	// 词汇库中的单词
 	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
@@ -1438,7 +1775,7 @@ type FaceExpressStatistic struct {
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
 	// 表情统计结果
-	ExpressRatio []*ExpressRatioStatistic `json:"ExpressRatio,omitempty" name:"ExpressRatio" list`
+	ExpressRatio []*ExpressRatioStatistic `json:"ExpressRatio,omitempty" name:"ExpressRatio"`
 }
 
 type FaceExpressionResult struct {
@@ -1633,10 +1970,10 @@ type HandTrackingResult struct {
 type HighlightsInfomation struct {
 
 	// 专注的起始与终止时间信息。
-	Concentration []*TimeType `json:"Concentration,omitempty" name:"Concentration" list`
+	Concentration []*TimeType `json:"Concentration,omitempty" name:"Concentration"`
 
 	// 微笑的起始与终止时间信息。
-	Smile []*TimeType `json:"Smile,omitempty" name:"Smile" list`
+	Smile []*TimeType `json:"Smile,omitempty" name:"Smile"`
 
 	// 高光集锦视频地址，保存剪辑好的视频地址。
 	HighlightsUrl *string `json:"HighlightsUrl,omitempty" name:"HighlightsUrl"`
@@ -1723,13 +2060,13 @@ type ImageTaskResult struct {
 type ImageTaskStatistic struct {
 
 	// 人员检测统计信息
-	FaceDetect []*FaceDetectStatistic `json:"FaceDetect,omitempty" name:"FaceDetect" list`
+	FaceDetect []*FaceDetectStatistic `json:"FaceDetect,omitempty" name:"FaceDetect"`
 
 	// 人脸表情统计信息
-	FaceExpression []*FaceExpressStatistic `json:"FaceExpression,omitempty" name:"FaceExpression" list`
+	FaceExpression []*FaceExpressStatistic `json:"FaceExpression,omitempty" name:"FaceExpression"`
 
 	// 人脸检索统计信息
-	FaceIdentify []*FaceIdentifyStatistic `json:"FaceIdentify,omitempty" name:"FaceIdentify" list`
+	FaceIdentify []*FaceIdentifyStatistic `json:"FaceIdentify,omitempty" name:"FaceIdentify"`
 
 	// 姿势识别统计信息
 	Gesture *ActionStatistic `json:"Gesture,omitempty" name:"Gesture"`
@@ -1798,16 +2135,16 @@ type LightStandard struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 范围
-	Range []*float64 `json:"Range,omitempty" name:"Range" list`
+	Range []*float64 `json:"Range,omitempty" name:"Range"`
 }
 
 type LightStatistic struct {
 
 	// 各个时间点的光线值
-	LightDistribution []*LightDistributionStatistic `json:"LightDistribution,omitempty" name:"LightDistribution" list`
+	LightDistribution []*LightDistributionStatistic `json:"LightDistribution,omitempty" name:"LightDistribution"`
 
 	// 光照程度比例统计结果
-	LightLevelRatio []*LightLevelRatioStatistic `json:"LightLevelRatio,omitempty" name:"LightLevelRatio" list`
+	LightLevelRatio []*LightLevelRatioStatistic `json:"LightLevelRatio,omitempty" name:"LightLevelRatio"`
 }
 
 type ModifyLibraryRequest struct {
@@ -1825,8 +2162,19 @@ func (r *ModifyLibraryRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyLibraryRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LibraryId")
+	delete(f, "LibraryName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLibraryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyLibraryResponse struct {
@@ -1849,8 +2197,10 @@ func (r *ModifyLibraryResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyLibraryResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyPersonRequest struct {
@@ -1886,8 +2236,25 @@ func (r *ModifyPersonRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyPersonRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LibraryId")
+	delete(f, "PersonId")
+	delete(f, "JobNumber")
+	delete(f, "Mail")
+	delete(f, "Male")
+	delete(f, "PersonName")
+	delete(f, "PhoneNumber")
+	delete(f, "StudentNumber")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPersonRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyPersonResponse struct {
@@ -1895,7 +2262,7 @@ type ModifyPersonResponse struct {
 	Response *struct {
 
 		// 人脸信息
-		FaceInfoSet []*FaceInfo `json:"FaceInfoSet,omitempty" name:"FaceInfoSet" list`
+		FaceInfoSet []*FaceInfo `json:"FaceInfoSet,omitempty" name:"FaceInfoSet"`
 
 		// 人员所属人员库标识符
 		LibraryId *string `json:"LibraryId,omitempty" name:"LibraryId"`
@@ -1916,8 +2283,10 @@ func (r *ModifyPersonResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *ModifyPersonResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MuteSlice struct {
@@ -1980,13 +2349,13 @@ type StandardAudioResult struct {
 	AsrStat *ASRStat `json:"AsrStat,omitempty" name:"AsrStat"`
 
 	// 返回当前音频流的详细信息，如果是流模式，返回的是对应流的详细信息，如果是 URL模式，返回的是查询的那一段seq对应的音频的详细信息。
-	Texts []*WholeTextItem `json:"Texts,omitempty" name:"Texts" list`
+	Texts []*WholeTextItem `json:"Texts,omitempty" name:"Texts"`
 
 	// 返回词汇库中的单词出现的详细时间信息。
-	VocabAnalysisDetailInfo []*VocabDetailInfomation `json:"VocabAnalysisDetailInfo,omitempty" name:"VocabAnalysisDetailInfo" list`
+	VocabAnalysisDetailInfo []*VocabDetailInfomation `json:"VocabAnalysisDetailInfo,omitempty" name:"VocabAnalysisDetailInfo"`
 
 	// 返回词汇库中的单词出现的次数信息。
-	VocabAnalysisStatInfo []*VocabStatInfomation `json:"VocabAnalysisStatInfo,omitempty" name:"VocabAnalysisStatInfo" list`
+	VocabAnalysisStatInfo []*VocabStatInfomation `json:"VocabAnalysisStatInfo,omitempty" name:"VocabAnalysisStatInfo"`
 
 	// 状态描述
 	Message *string `json:"Message,omitempty" name:"Message"`
@@ -2001,7 +2370,7 @@ type StandardAudioResult struct {
 type StandardImageResult struct {
 
 	// 详细结果
-	ResultSet []*ImageTaskResult `json:"ResultSet,omitempty" name:"ResultSet" list`
+	ResultSet []*ImageTaskResult `json:"ResultSet,omitempty" name:"ResultSet"`
 
 	// 分析完成后的统计结果
 	Statistic *ImageTaskStatistic `json:"Statistic,omitempty" name:"Statistic"`
@@ -2019,7 +2388,7 @@ type StandardImageResult struct {
 type StandardVideoResult struct {
 
 	// 分析完成后的统计结果
-	HighlightsInfo []*HighlightsInfomation `json:"HighlightsInfo,omitempty" name:"HighlightsInfo" list`
+	HighlightsInfo []*HighlightsInfomation `json:"HighlightsInfo,omitempty" name:"HighlightsInfo"`
 
 	// 状态描述
 	Message *string `json:"Message,omitempty" name:"Message"`
@@ -2095,7 +2464,7 @@ type SubmitAudioTaskRequest struct {
 	MuteThreshold *int64 `json:"MuteThreshold,omitempty" name:"MuteThreshold"`
 
 	// 识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
-	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList" list`
+	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList"`
 }
 
 func (r *SubmitAudioTaskRequest) ToJsonString() string {
@@ -2103,8 +2472,25 @@ func (r *SubmitAudioTaskRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SubmitAudioTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Lang")
+	delete(f, "Url")
+	delete(f, "VoiceEncodeType")
+	delete(f, "VoiceFileType")
+	delete(f, "Functions")
+	delete(f, "FileType")
+	delete(f, "MuteThreshold")
+	delete(f, "VocabLibNameList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitAudioTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SubmitAudioTaskResponse struct {
@@ -2124,21 +2510,23 @@ func (r *SubmitAudioTaskResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SubmitAudioTaskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SubmitCheckAttendanceTaskPlusRequest struct {
 	*tchttp.BaseRequest
 
 	// 输入数据
-	FileContent []*string `json:"FileContent,omitempty" name:"FileContent" list`
+	FileContent []*string `json:"FileContent,omitempty" name:"FileContent"`
 
 	// 视频流类型，vod_url表示点播URL，live_url表示直播URL，默认vod_url
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
 
 	// 人员库 ID列表
-	LibraryIds []*string `json:"LibraryIds,omitempty" name:"LibraryIds" list`
+	LibraryIds []*string `json:"LibraryIds,omitempty" name:"LibraryIds"`
 
 	// 确定出勤阈值；默认为0.92
 	AttendanceThreshold *float64 `json:"AttendanceThreshold,omitempty" name:"AttendanceThreshold"`
@@ -2166,8 +2554,26 @@ func (r *SubmitCheckAttendanceTaskPlusRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SubmitCheckAttendanceTaskPlusRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileContent")
+	delete(f, "FileType")
+	delete(f, "LibraryIds")
+	delete(f, "AttendanceThreshold")
+	delete(f, "EnableStranger")
+	delete(f, "EndTime")
+	delete(f, "NoticeUrl")
+	delete(f, "StartTime")
+	delete(f, "Threshold")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitCheckAttendanceTaskPlusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SubmitCheckAttendanceTaskPlusResponse struct {
@@ -2190,8 +2596,10 @@ func (r *SubmitCheckAttendanceTaskPlusResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SubmitCheckAttendanceTaskPlusResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SubmitCheckAttendanceTaskRequest struct {
@@ -2204,7 +2612,7 @@ type SubmitCheckAttendanceTaskRequest struct {
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
 
 	// 人员库 ID列表
-	LibraryIds []*string `json:"LibraryIds,omitempty" name:"LibraryIds" list`
+	LibraryIds []*string `json:"LibraryIds,omitempty" name:"LibraryIds"`
 
 	// 确定出勤阈值；默认为0.92
 	AttendanceThreshold *float64 `json:"AttendanceThreshold,omitempty" name:"AttendanceThreshold"`
@@ -2232,8 +2640,26 @@ func (r *SubmitCheckAttendanceTaskRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SubmitCheckAttendanceTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileContent")
+	delete(f, "FileType")
+	delete(f, "LibraryIds")
+	delete(f, "AttendanceThreshold")
+	delete(f, "EnableStranger")
+	delete(f, "EndTime")
+	delete(f, "NoticeUrl")
+	delete(f, "StartTime")
+	delete(f, "Threshold")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitCheckAttendanceTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SubmitCheckAttendanceTaskResponse struct {
@@ -2244,7 +2670,7 @@ type SubmitCheckAttendanceTaskResponse struct {
 		JobId *int64 `json:"JobId,omitempty" name:"JobId"`
 
 		// 没有注册的人的ID列表
-		NotRegisteredSet []*string `json:"NotRegisteredSet,omitempty" name:"NotRegisteredSet" list`
+		NotRegisteredSet []*string `json:"NotRegisteredSet,omitempty" name:"NotRegisteredSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2256,8 +2682,10 @@ func (r *SubmitCheckAttendanceTaskResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SubmitCheckAttendanceTaskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SubmitConversationTaskRequest struct {
@@ -2282,7 +2710,7 @@ type SubmitConversationTaskRequest struct {
 	Functions *Function `json:"Functions,omitempty" name:"Functions"`
 
 	// 识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
-	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList" list`
+	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList"`
 }
 
 func (r *SubmitConversationTaskRequest) ToJsonString() string {
@@ -2290,8 +2718,24 @@ func (r *SubmitConversationTaskRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SubmitConversationTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Lang")
+	delete(f, "StudentUrl")
+	delete(f, "TeacherUrl")
+	delete(f, "VoiceEncodeType")
+	delete(f, "VoiceFileType")
+	delete(f, "Functions")
+	delete(f, "VocabLibNameList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitConversationTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SubmitConversationTaskResponse struct {
@@ -2311,8 +2755,10 @@ func (r *SubmitConversationTaskResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SubmitConversationTaskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SubmitDoubleVideoHighlightsRequest struct {
@@ -2322,19 +2768,19 @@ type SubmitDoubleVideoHighlightsRequest struct {
 	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
 
 	// 需要检索的人脸合集库，不在库中的人脸将不参与精彩集锦；目前仅支持输入一个人脸库。
-	LibIds []*string `json:"LibIds,omitempty" name:"LibIds" list`
+	LibIds []*string `json:"LibIds,omitempty" name:"LibIds"`
 
 	// 详细功能开关配置项
 	Functions *DoubleVideoFunction `json:"Functions,omitempty" name:"Functions"`
 
 	// 需要匹配的人员信息列表。
-	PersonInfoList []*PersonInfo `json:"PersonInfoList,omitempty" name:"PersonInfoList" list`
+	PersonInfoList []*PersonInfo `json:"PersonInfoList,omitempty" name:"PersonInfoList"`
 
 	// 视频处理的抽帧间隔，单位毫秒。建议留空。
 	FrameInterval *int64 `json:"FrameInterval,omitempty" name:"FrameInterval"`
 
 	// 旧版本需要匹配的人员信息列表。
-	PersonIds []*string `json:"PersonIds,omitempty" name:"PersonIds" list`
+	PersonIds []*string `json:"PersonIds,omitempty" name:"PersonIds"`
 
 	// 人脸检索的相似度阈值，默认值0.89。建议留空。
 	SimThreshold *float64 `json:"SimThreshold,omitempty" name:"SimThreshold"`
@@ -2348,8 +2794,25 @@ func (r *SubmitDoubleVideoHighlightsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SubmitDoubleVideoHighlightsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileContent")
+	delete(f, "LibIds")
+	delete(f, "Functions")
+	delete(f, "PersonInfoList")
+	delete(f, "FrameInterval")
+	delete(f, "PersonIds")
+	delete(f, "SimThreshold")
+	delete(f, "TeacherFileContent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitDoubleVideoHighlightsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SubmitDoubleVideoHighlightsResponse struct {
@@ -2360,7 +2823,7 @@ type SubmitDoubleVideoHighlightsResponse struct {
 		JobId *int64 `json:"JobId,omitempty" name:"JobId"`
 
 		// 未注册的人员ID列表。若出现此项，代表评估出现了问题，输入的PersonId中有不在库中的人员ID。
-		NotRegistered []*string `json:"NotRegistered,omitempty" name:"NotRegistered" list`
+		NotRegistered []*string `json:"NotRegistered,omitempty" name:"NotRegistered"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2372,8 +2835,10 @@ func (r *SubmitDoubleVideoHighlightsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SubmitDoubleVideoHighlightsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SubmitFullBodyClassTaskRequest struct {
@@ -2389,13 +2854,13 @@ type SubmitFullBodyClassTaskRequest struct {
 	Lang *int64 `json:"Lang,omitempty" name:"Lang"`
 
 	// 查询人员库列表，可填写老师的注册照所在人员库
-	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
+	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet"`
 
 	// 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
 
 	// 识别词库名列表，这些词汇库用来维护关键词，评估老师授课过程中，对这些关键词的使用情况
-	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList" list`
+	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList"`
 
 	// 语音编码类型 1:pcm，当FileType为vod_url或live_url时为必填
 	VoiceEncodeType *int64 `json:"VoiceEncodeType,omitempty" name:"VoiceEncodeType"`
@@ -2409,8 +2874,25 @@ func (r *SubmitFullBodyClassTaskRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SubmitFullBodyClassTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileContent")
+	delete(f, "FileType")
+	delete(f, "Lang")
+	delete(f, "LibrarySet")
+	delete(f, "MaxVideoDuration")
+	delete(f, "VocabLibNameList")
+	delete(f, "VoiceEncodeType")
+	delete(f, "VoiceFileType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitFullBodyClassTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SubmitFullBodyClassTaskResponse struct {
@@ -2418,7 +2900,7 @@ type SubmitFullBodyClassTaskResponse struct {
 	Response *struct {
 
 		// 图像任务直接返回结果，包括： FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、 TeacherBodyMovement、TimeInfo
-		ImageResults []*ImageTaskResult `json:"ImageResults,omitempty" name:"ImageResults" list`
+		ImageResults []*ImageTaskResult `json:"ImageResults,omitempty" name:"ImageResults"`
 
 		// 任务ID
 		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
@@ -2433,8 +2915,10 @@ func (r *SubmitFullBodyClassTaskResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SubmitFullBodyClassTaskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SubmitHighlightsRequest struct {
@@ -2450,7 +2934,7 @@ type SubmitHighlightsRequest struct {
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
 
 	// 需要检索的人脸合集库，不在库中的人脸将不参与精彩集锦。
-	LibIds []*string `json:"LibIds,omitempty" name:"LibIds" list`
+	LibIds []*string `json:"LibIds,omitempty" name:"LibIds"`
 
 	// 视频处理的抽帧间隔，单位毫秒。建议留空。
 	FrameInterval *int64 `json:"FrameInterval,omitempty" name:"FrameInterval"`
@@ -2459,7 +2943,7 @@ type SubmitHighlightsRequest struct {
 	KeywordsLanguage *int64 `json:"KeywordsLanguage,omitempty" name:"KeywordsLanguage"`
 
 	// 关键词数组，当且仅当Funtions中的EnableKeywordWonderfulTime为true时有意义，匹配相应的关键字。
-	KeywordsStrings []*string `json:"KeywordsStrings,omitempty" name:"KeywordsStrings" list`
+	KeywordsStrings []*string `json:"KeywordsStrings,omitempty" name:"KeywordsStrings"`
 
 	// 处理视频的总时长，单位毫秒。该值为0或未设置时，默认值两小时生效；当该值大于视频实际时长时，视频实际时长生效；当该值小于视频实际时长时，该值生效；当获取视频实际时长失败时，若该值设置则生效，否则默认值生效。建议留空。
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
@@ -2473,8 +2957,26 @@ func (r *SubmitHighlightsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SubmitHighlightsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Functions")
+	delete(f, "FileContent")
+	delete(f, "FileType")
+	delete(f, "LibIds")
+	delete(f, "FrameInterval")
+	delete(f, "KeywordsLanguage")
+	delete(f, "KeywordsStrings")
+	delete(f, "MaxVideoDuration")
+	delete(f, "SimThreshold")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitHighlightsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SubmitHighlightsResponse struct {
@@ -2494,15 +2996,17 @@ func (r *SubmitHighlightsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SubmitHighlightsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SubmitImageTaskPlusRequest struct {
 	*tchttp.BaseRequest
 
 	// 输入分析对象内容，输入数据格式参考FileType参数释义
-	FileContent []*string `json:"FileContent,omitempty" name:"FileContent" list`
+	FileContent []*string `json:"FileContent,omitempty" name:"FileContent"`
 
 	// 输入分析对象类型，picture：二进制图片的 base64 编码字符串，picture_url:图片地址，vod_url：视频地址，live_url：直播地址
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
@@ -2511,13 +3015,13 @@ type SubmitImageTaskPlusRequest struct {
 	Functions *ImageTaskFunction `json:"Functions,omitempty" name:"Functions"`
 
 	// 光照标准列表
-	LightStandardSet []*LightStandard `json:"LightStandardSet,omitempty" name:"LightStandardSet" list`
+	LightStandardSet []*LightStandard `json:"LightStandardSet,omitempty" name:"LightStandardSet"`
 
 	// 抽帧的时间间隔，单位毫秒，默认值1000，保留字段，当前不支持填写。
 	FrameInterval *int64 `json:"FrameInterval,omitempty" name:"FrameInterval"`
 
 	// 查询人员库列表
-	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
+	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet"`
 
 	// 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
@@ -2531,8 +3035,25 @@ func (r *SubmitImageTaskPlusRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SubmitImageTaskPlusRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileContent")
+	delete(f, "FileType")
+	delete(f, "Functions")
+	delete(f, "LightStandardSet")
+	delete(f, "FrameInterval")
+	delete(f, "LibrarySet")
+	delete(f, "MaxVideoDuration")
+	delete(f, "SimThreshold")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitImageTaskPlusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SubmitImageTaskPlusResponse struct {
@@ -2540,7 +3061,7 @@ type SubmitImageTaskPlusResponse struct {
 	Response *struct {
 
 		// 识别结果
-		ResultSet []*ImageTaskResult `json:"ResultSet,omitempty" name:"ResultSet" list`
+		ResultSet []*ImageTaskResult `json:"ResultSet,omitempty" name:"ResultSet"`
 
 		// 任务标识符
 		JobId *int64 `json:"JobId,omitempty" name:"JobId"`
@@ -2561,8 +3082,10 @@ func (r *SubmitImageTaskPlusResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SubmitImageTaskPlusResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SubmitImageTaskRequest struct {
@@ -2578,7 +3101,7 @@ type SubmitImageTaskRequest struct {
 	Functions *ImageTaskFunction `json:"Functions,omitempty" name:"Functions"`
 
 	// 光照标准列表
-	LightStandardSet []*LightStandard `json:"LightStandardSet,omitempty" name:"LightStandardSet" list`
+	LightStandardSet []*LightStandard `json:"LightStandardSet,omitempty" name:"LightStandardSet"`
 
 	// 结果更新回调地址。
 	EventsCallBack *string `json:"EventsCallBack,omitempty" name:"EventsCallBack"`
@@ -2587,7 +3110,7 @@ type SubmitImageTaskRequest struct {
 	FrameInterval *int64 `json:"FrameInterval,omitempty" name:"FrameInterval"`
 
 	// 查询人员库列表
-	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
+	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet"`
 
 	// 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
@@ -2601,8 +3124,26 @@ func (r *SubmitImageTaskRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SubmitImageTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileContent")
+	delete(f, "FileType")
+	delete(f, "Functions")
+	delete(f, "LightStandardSet")
+	delete(f, "EventsCallBack")
+	delete(f, "FrameInterval")
+	delete(f, "LibrarySet")
+	delete(f, "MaxVideoDuration")
+	delete(f, "SimThreshold")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitImageTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SubmitImageTaskResponse struct {
@@ -2610,7 +3151,7 @@ type SubmitImageTaskResponse struct {
 	Response *struct {
 
 		// 识别结果
-		ResultSet []*ImageTaskResult `json:"ResultSet,omitempty" name:"ResultSet" list`
+		ResultSet []*ImageTaskResult `json:"ResultSet,omitempty" name:"ResultSet"`
 
 		// 任务标识符
 		JobId *int64 `json:"JobId,omitempty" name:"JobId"`
@@ -2631,8 +3172,10 @@ func (r *SubmitImageTaskResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SubmitImageTaskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SubmitOneByOneClassTaskRequest struct {
@@ -2648,13 +3191,13 @@ type SubmitOneByOneClassTaskRequest struct {
 	Lang *int64 `json:"Lang,omitempty" name:"Lang"`
 
 	// 查询人员库列表，可填写学生的注册照所在人员库
-	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
+	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet"`
 
 	// 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
 
 	// 识别词库名列表，这些词汇库用来维护关键词，评估学生对这些关键词的使用情况
-	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList" list`
+	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList"`
 
 	// 语音编码类型 1:pcm，当FileType为vod_url或live_url时为必填
 	VoiceEncodeType *int64 `json:"VoiceEncodeType,omitempty" name:"VoiceEncodeType"`
@@ -2668,8 +3211,25 @@ func (r *SubmitOneByOneClassTaskRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SubmitOneByOneClassTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileContent")
+	delete(f, "FileType")
+	delete(f, "Lang")
+	delete(f, "LibrarySet")
+	delete(f, "MaxVideoDuration")
+	delete(f, "VocabLibNameList")
+	delete(f, "VoiceEncodeType")
+	delete(f, "VoiceFileType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitOneByOneClassTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SubmitOneByOneClassTaskResponse struct {
@@ -2677,7 +3237,7 @@ type SubmitOneByOneClassTaskResponse struct {
 	Response *struct {
 
 		// 图像任务直接返回结果，包括：FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、TimeInfo
-		ImageResults []*ImageTaskResult `json:"ImageResults,omitempty" name:"ImageResults" list`
+		ImageResults []*ImageTaskResult `json:"ImageResults,omitempty" name:"ImageResults"`
 
 		// 任务ID
 		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
@@ -2692,8 +3252,10 @@ func (r *SubmitOneByOneClassTaskResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SubmitOneByOneClassTaskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SubmitOpenClassTaskRequest struct {
@@ -2706,7 +3268,7 @@ type SubmitOpenClassTaskRequest struct {
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
 
 	// 查询人员库列表，可填写学生们的注册照所在人员库
-	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
+	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet"`
 
 	// 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
@@ -2717,8 +3279,21 @@ func (r *SubmitOpenClassTaskRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SubmitOpenClassTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileContent")
+	delete(f, "FileType")
+	delete(f, "LibrarySet")
+	delete(f, "MaxVideoDuration")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitOpenClassTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SubmitOpenClassTaskResponse struct {
@@ -2726,7 +3301,7 @@ type SubmitOpenClassTaskResponse struct {
 	Response *struct {
 
 		// 图像任务直接返回结果，包括：FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、 StudentBodyMovement、TimeInfo
-		ImageResults []*ImageTaskResult `json:"ImageResults,omitempty" name:"ImageResults" list`
+		ImageResults []*ImageTaskResult `json:"ImageResults,omitempty" name:"ImageResults"`
 
 		// 任务ID
 		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
@@ -2741,8 +3316,10 @@ func (r *SubmitOpenClassTaskResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SubmitOpenClassTaskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SubmitPartialBodyClassTaskRequest struct {
@@ -2758,13 +3335,13 @@ type SubmitPartialBodyClassTaskRequest struct {
 	Lang *int64 `json:"Lang,omitempty" name:"Lang"`
 
 	// 查询人员库列表，可填写老师的注册照所在人员库
-	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
+	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet"`
 
 	// 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
 
 	// 识别词库名列表，这些词汇库用来维护关键词，评估老师授课过程中，对这些关键词的使用情况
-	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList" list`
+	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList"`
 
 	// 语音编码类型 1:pcm，当FileType为vod_url或live_url时为必填
 	VoiceEncodeType *int64 `json:"VoiceEncodeType,omitempty" name:"VoiceEncodeType"`
@@ -2778,8 +3355,25 @@ func (r *SubmitPartialBodyClassTaskRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SubmitPartialBodyClassTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileContent")
+	delete(f, "FileType")
+	delete(f, "Lang")
+	delete(f, "LibrarySet")
+	delete(f, "MaxVideoDuration")
+	delete(f, "VocabLibNameList")
+	delete(f, "VoiceEncodeType")
+	delete(f, "VoiceFileType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitPartialBodyClassTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SubmitPartialBodyClassTaskResponse struct {
@@ -2787,7 +3381,7 @@ type SubmitPartialBodyClassTaskResponse struct {
 	Response *struct {
 
 		// 图像任务直接返回结果，包括： FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、 Gesture 、 Light、 TimeInfo
-		ImageResults []*ImageTaskResult `json:"ImageResults,omitempty" name:"ImageResults" list`
+		ImageResults []*ImageTaskResult `json:"ImageResults,omitempty" name:"ImageResults"`
 
 		// 任务ID
 		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
@@ -2802,8 +3396,10 @@ func (r *SubmitPartialBodyClassTaskResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SubmitPartialBodyClassTaskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SubmitTraditionalClassTaskRequest struct {
@@ -2816,7 +3412,7 @@ type SubmitTraditionalClassTaskRequest struct {
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
 
 	// 查询人员库列表，可填写学生们的注册照所在人员库
-	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet" list`
+	LibrarySet []*string `json:"LibrarySet,omitempty" name:"LibrarySet"`
 
 	// 视频评估时间，单位秒，点播场景默认值为2小时（无法探测长度时）或完整视频，直播场景默认值为10分钟或直播提前结束
 	MaxVideoDuration *int64 `json:"MaxVideoDuration,omitempty" name:"MaxVideoDuration"`
@@ -2827,8 +3423,21 @@ func (r *SubmitTraditionalClassTaskRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SubmitTraditionalClassTaskRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileContent")
+	delete(f, "FileType")
+	delete(f, "LibrarySet")
+	delete(f, "MaxVideoDuration")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitTraditionalClassTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SubmitTraditionalClassTaskResponse struct {
@@ -2836,7 +3445,7 @@ type SubmitTraditionalClassTaskResponse struct {
 	Response *struct {
 
 		// 图像任务直接返回结果，包括： ActionInfo、FaceAttr、 FaceExpression、 FaceIdentify、 FaceInfo、 FacePose、 TimeInfo
-		ImageResults []*ImageTaskResult `json:"ImageResults,omitempty" name:"ImageResults" list`
+		ImageResults []*ImageTaskResult `json:"ImageResults,omitempty" name:"ImageResults"`
 
 		// 任务ID
 		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
@@ -2851,14 +3460,16 @@ func (r *SubmitTraditionalClassTaskResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *SubmitTraditionalClassTaskResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SuspectedInfo struct {
 
 	// TopN匹配信息列表
-	FaceSet []*FrameInfo `json:"FaceSet,omitempty" name:"FaceSet" list`
+	FaceSet []*FrameInfo `json:"FaceSet,omitempty" name:"FaceSet"`
 
 	// 识别到的人员id
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
@@ -2886,7 +3497,7 @@ type TeacherOutScreenResult struct {
 type TextItem struct {
 
 	// 当前句子包含的所有单词信息
-	Words []*Word `json:"Words,omitempty" name:"Words" list`
+	Words []*Word `json:"Words,omitempty" name:"Words"`
 
 	// 当前句子的置信度
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
@@ -2959,7 +3570,7 @@ type TransmitAudioStreamRequest struct {
 	StorageMode *int64 `json:"StorageMode,omitempty" name:"StorageMode"`
 
 	// 识别词库名列表，评估过程使用这些词汇库中的词汇进行词汇使用行为分析
-	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList" list`
+	VocabLibNameList []*string `json:"VocabLibNameList,omitempty" name:"VocabLibNameList"`
 }
 
 func (r *TransmitAudioStreamRequest) ToJsonString() string {
@@ -2967,8 +3578,27 @@ func (r *TransmitAudioStreamRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TransmitAudioStreamRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Functions")
+	delete(f, "SeqId")
+	delete(f, "SessionId")
+	delete(f, "UserVoiceData")
+	delete(f, "VoiceEncodeType")
+	delete(f, "VoiceFileType")
+	delete(f, "IsEnd")
+	delete(f, "Lang")
+	delete(f, "StorageMode")
+	delete(f, "VocabLibNameList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TransmitAudioStreamRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TransmitAudioStreamResponse struct {
@@ -2979,13 +3609,13 @@ type TransmitAudioStreamResponse struct {
 		AsrStat *ASRStat `json:"AsrStat,omitempty" name:"AsrStat"`
 
 		// 返回当前音频流的详细信息，如果是流模式，返回的是对应流的详细信息，如果是 URL模式，返回的是查询的那一段seq对应的音频的详细信息。
-		Texts []*WholeTextItem `json:"Texts,omitempty" name:"Texts" list`
+		Texts []*WholeTextItem `json:"Texts,omitempty" name:"Texts"`
 
 		// 返回词汇库中的单词出现的详细时间信息。
-		VocabAnalysisDetailInfo []*VocabDetailInfomation `json:"VocabAnalysisDetailInfo,omitempty" name:"VocabAnalysisDetailInfo" list`
+		VocabAnalysisDetailInfo []*VocabDetailInfomation `json:"VocabAnalysisDetailInfo,omitempty" name:"VocabAnalysisDetailInfo"`
 
 		// 返回词汇库中的单词出现的次数信息。
-		VocabAnalysisStatInfo []*VocabStatInfomation `json:"VocabAnalysisStatInfo,omitempty" name:"VocabAnalysisStatInfo" list`
+		VocabAnalysisStatInfo []*VocabStatInfomation `json:"VocabAnalysisStatInfo,omitempty" name:"VocabAnalysisStatInfo"`
 
 		// 音频全部文本。
 		AllTexts *string `json:"AllTexts,omitempty" name:"AllTexts"`
@@ -3003,14 +3633,16 @@ func (r *TransmitAudioStreamResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TransmitAudioStreamResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VocabDetailInfomation struct {
 
 	// 词汇库中的单词出现在该音频中的那个句子的时间戳，出现了几次，就返回对应次数的起始和结束时间戳
-	VocabDetailInfo []*DetailInfo `json:"VocabDetailInfo,omitempty" name:"VocabDetailInfo" list`
+	VocabDetailInfo []*DetailInfo `json:"VocabDetailInfo,omitempty" name:"VocabDetailInfo"`
 
 	// 词汇库名
 	VocabLibName *string `json:"VocabLibName,omitempty" name:"VocabLibName"`
@@ -3019,7 +3651,7 @@ type VocabDetailInfomation struct {
 type VocabStatInfomation struct {
 
 	// 单词出现在该音频中总次数
-	VocabDetailInfo []*StatInfo `json:"VocabDetailInfo,omitempty" name:"VocabDetailInfo" list`
+	VocabDetailInfo []*StatInfo `json:"VocabDetailInfo,omitempty" name:"VocabDetailInfo"`
 
 	// 词汇库名称
 	VocabLibName *string `json:"VocabLibName,omitempty" name:"VocabLibName"`

@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -48,6 +48,8 @@ func NewApplyCertificateRequest() (request *ApplyCertificateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "ApplyCertificate")
+    
+    
     return
 }
 
@@ -58,11 +60,38 @@ func NewApplyCertificateResponse() (response *ApplyCertificateResponse) {
     return
 }
 
+// ApplyCertificate
 // 本接口（ApplyCertificate）用于免费证书申请。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CANCELORDERFAILED = "FailedOperation.CancelOrderFailed"
+//  FAILEDOPERATION_CANNOTBEDELETEDISSUED = "FailedOperation.CannotBeDeletedIssued"
+//  FAILEDOPERATION_CANNOTBEDELETEDWITHINHOUR = "FailedOperation.CannotBeDeletedWithinHour"
+//  FAILEDOPERATION_CANNOTGETORDER = "FailedOperation.CannotGetOrder"
+//  FAILEDOPERATION_CERTIFICATEINVALID = "FailedOperation.CertificateInvalid"
+//  FAILEDOPERATION_CERTIFICATEMISMATCH = "FailedOperation.CertificateMismatch"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_EXCEEDSFREELIMIT = "FailedOperation.ExceedsFreeLimit"
+//  FAILEDOPERATION_INVALIDCERTIFICATESTATUSCODE = "FailedOperation.InvalidCertificateStatusCode"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_MAINDOMAINCERTIFICATECOUNTLIMIT = "FailedOperation.MainDomainCertificateCountLimit"
+//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ORDERALREADYREPLACED = "FailedOperation.OrderAlreadyReplaced"
+//  FAILEDOPERATION_ORDERREPLACEFAILED = "FailedOperation.OrderReplaceFailed"
+//  FAILEDOPERATION_PACKAGECOUNTLIMIT = "FailedOperation.PackageCountLimit"
+//  FAILEDOPERATION_PACKAGEEXPIRED = "FailedOperation.PackageExpired"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PACKAGEIDSINVALID = "InvalidParameter.PackageIdsInvalid"
 func (c *Client) ApplyCertificate(request *ApplyCertificateRequest) (response *ApplyCertificateResponse, err error) {
     if request == nil {
         request = NewApplyCertificateRequest()
     }
+    
     response = NewApplyCertificateResponse()
     err = c.Send(request, response)
     return
@@ -73,6 +102,8 @@ func NewCancelCertificateOrderRequest() (request *CancelCertificateOrderRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "CancelCertificateOrder")
+    
+    
     return
 }
 
@@ -83,11 +114,23 @@ func NewCancelCertificateOrderResponse() (response *CancelCertificateOrderRespon
     return
 }
 
+// CancelCertificateOrder
 // 取消证书订单。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CANCELORDERFAILED = "FailedOperation.CancelOrderFailed"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDCERTIFICATESTATUSCODE = "FailedOperation.InvalidCertificateStatusCode"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  INTERNALERROR = "InternalError"
 func (c *Client) CancelCertificateOrder(request *CancelCertificateOrderRequest) (response *CancelCertificateOrderResponse, err error) {
     if request == nil {
         request = NewCancelCertificateOrderRequest()
     }
+    
     response = NewCancelCertificateOrderResponse()
     err = c.Send(request, response)
     return
@@ -98,6 +141,8 @@ func NewCheckCertificateChainRequest() (request *CheckCertificateChainRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "CheckCertificateChain")
+    
+    
     return
 }
 
@@ -108,11 +153,16 @@ func NewCheckCertificateChainResponse() (response *CheckCertificateChainResponse
     return
 }
 
+// CheckCertificateChain
 // 本接口（CheckCertificateChain）用于检查证书链是否完整。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CERTIFICATEINVALID = "FailedOperation.CertificateInvalid"
 func (c *Client) CheckCertificateChain(request *CheckCertificateChainRequest) (response *CheckCertificateChainResponse, err error) {
     if request == nil {
         request = NewCheckCertificateChainRequest()
     }
+    
     response = NewCheckCertificateChainResponse()
     err = c.Send(request, response)
     return
@@ -123,6 +173,8 @@ func NewCommitCertificateInformationRequest() (request *CommitCertificateInforma
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "CommitCertificateInformation")
+    
+    
     return
 }
 
@@ -133,11 +185,24 @@ func NewCommitCertificateInformationResponse() (response *CommitCertificateInfor
     return
 }
 
+// CommitCertificateInformation
 // 提交证书订单。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEINVALID = "FailedOperation.CertificateInvalid"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDCERTIFICATESTATUSCODE = "FailedOperation.InvalidCertificateStatusCode"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  INTERNALERROR = "InternalError"
 func (c *Client) CommitCertificateInformation(request *CommitCertificateInformationRequest) (response *CommitCertificateInformationResponse, err error) {
     if request == nil {
         request = NewCommitCertificateInformationRequest()
     }
+    
     response = NewCommitCertificateInformationResponse()
     err = c.Send(request, response)
     return
@@ -148,6 +213,8 @@ func NewCompleteCertificateRequest() (request *CompleteCertificateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "CompleteCertificate")
+    
+    
     return
 }
 
@@ -158,11 +225,18 @@ func NewCompleteCertificateResponse() (response *CompleteCertificateResponse) {
     return
 }
 
-// 本接口（CompleteCertificate）用于主动触发证书验证。
+// CompleteCertificate
+// 本接口（CompleteCertificate）用于主动触发证书验证。仅非DNSPod和Wotrus品牌证书支持使用此接口。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  INTERNALERROR = "InternalError"
 func (c *Client) CompleteCertificate(request *CompleteCertificateRequest) (response *CompleteCertificateResponse, err error) {
     if request == nil {
         request = NewCompleteCertificateRequest()
     }
+    
     response = NewCompleteCertificateResponse()
     err = c.Send(request, response)
     return
@@ -173,6 +247,8 @@ func NewCreateCertificateRequest() (request *CreateCertificateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "CreateCertificate")
+    
+    
     return
 }
 
@@ -183,11 +259,22 @@ func NewCreateCertificateResponse() (response *CreateCertificateResponse) {
     return
 }
 
+// CreateCertificate
 // 本接口（CreateCertificate）用于创建付费证书。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CANNOTGETORDER = "FailedOperation.CannotGetOrder"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateCertificate(request *CreateCertificateRequest) (response *CreateCertificateResponse, err error) {
     if request == nil {
         request = NewCreateCertificateRequest()
     }
+    
     response = NewCreateCertificateResponse()
     err = c.Send(request, response)
     return
@@ -198,6 +285,8 @@ func NewDeleteCertificateRequest() (request *DeleteCertificateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "DeleteCertificate")
+    
+    
     return
 }
 
@@ -208,12 +297,69 @@ func NewDeleteCertificateResponse() (response *DeleteCertificateResponse) {
     return
 }
 
+// DeleteCertificate
 // 本接口（DeleteCertificate）用于删除证书。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CANCELORDERFAILED = "FailedOperation.CancelOrderFailed"
+//  FAILEDOPERATION_CANNOTBEDELETEDISSUED = "FailedOperation.CannotBeDeletedIssued"
+//  FAILEDOPERATION_CANNOTBEDELETEDWITHINHOUR = "FailedOperation.CannotBeDeletedWithinHour"
+//  FAILEDOPERATION_CANNOTGETORDER = "FailedOperation.CannotGetOrder"
+//  FAILEDOPERATION_CERTIFICATEINVALID = "FailedOperation.CertificateInvalid"
+//  FAILEDOPERATION_CERTIFICATEMISMATCH = "FailedOperation.CertificateMismatch"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_DELETERESOURCEFAILED = "FailedOperation.DeleteResourceFailed"
+//  FAILEDOPERATION_EXCEEDSFREELIMIT = "FailedOperation.ExceedsFreeLimit"
+//  FAILEDOPERATION_INVALIDCERTIFICATESTATUSCODE = "FailedOperation.InvalidCertificateStatusCode"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ORDERALREADYREPLACED = "FailedOperation.OrderAlreadyReplaced"
+//  FAILEDOPERATION_ORDERREPLACEFAILED = "FailedOperation.OrderReplaceFailed"
+//  INTERNALERROR = "InternalError"
 func (c *Client) DeleteCertificate(request *DeleteCertificateRequest) (response *DeleteCertificateResponse, err error) {
     if request == nil {
         request = NewDeleteCertificateRequest()
     }
+    
     response = NewDeleteCertificateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteManagerRequest() (request *DeleteManagerRequest) {
+    request = &DeleteManagerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ssl", APIVersion, "DeleteManager")
+    
+    
+    return
+}
+
+func NewDeleteManagerResponse() (response *DeleteManagerResponse) {
+    response = &DeleteManagerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteManager
+// 删除管理人
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_MANAGER = "ResourceNotFound.Manager"
+func (c *Client) DeleteManager(request *DeleteManagerRequest) (response *DeleteManagerResponse, err error) {
+    if request == nil {
+        request = NewDeleteManagerRequest()
+    }
+    
+    response = NewDeleteManagerResponse()
     err = c.Send(request, response)
     return
 }
@@ -223,6 +369,8 @@ func NewDescribeCertificateRequest() (request *DescribeCertificateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "DescribeCertificate")
+    
+    
     return
 }
 
@@ -233,11 +381,34 @@ func NewDescribeCertificateResponse() (response *DescribeCertificateResponse) {
     return
 }
 
+// DescribeCertificate
 // 本接口（DescribeCertificate）用于获取证书信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CANCELORDERFAILED = "FailedOperation.CancelOrderFailed"
+//  FAILEDOPERATION_CANNOTBEDELETEDISSUED = "FailedOperation.CannotBeDeletedIssued"
+//  FAILEDOPERATION_CANNOTBEDELETEDWITHINHOUR = "FailedOperation.CannotBeDeletedWithinHour"
+//  FAILEDOPERATION_CANNOTGETORDER = "FailedOperation.CannotGetOrder"
+//  FAILEDOPERATION_CERTIFICATEINVALID = "FailedOperation.CertificateInvalid"
+//  FAILEDOPERATION_CERTIFICATEMISMATCH = "FailedOperation.CertificateMismatch"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_EXCEEDSFREELIMIT = "FailedOperation.ExceedsFreeLimit"
+//  FAILEDOPERATION_INVALIDCERTIFICATESTATUSCODE = "FailedOperation.InvalidCertificateStatusCode"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ORDERALREADYREPLACED = "FailedOperation.OrderAlreadyReplaced"
+//  FAILEDOPERATION_ORDERREPLACEFAILED = "FailedOperation.OrderReplaceFailed"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
 func (c *Client) DescribeCertificate(request *DescribeCertificateRequest) (response *DescribeCertificateResponse, err error) {
     if request == nil {
         request = NewDescribeCertificateRequest()
     }
+    
     response = NewDescribeCertificateResponse()
     err = c.Send(request, response)
     return
@@ -248,6 +419,8 @@ func NewDescribeCertificateDetailRequest() (request *DescribeCertificateDetailRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "DescribeCertificateDetail")
+    
+    
     return
 }
 
@@ -258,11 +431,23 @@ func NewDescribeCertificateDetailResponse() (response *DescribeCertificateDetail
     return
 }
 
+// DescribeCertificateDetail
 // 获取证书详情。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
 func (c *Client) DescribeCertificateDetail(request *DescribeCertificateDetailRequest) (response *DescribeCertificateDetailResponse, err error) {
     if request == nil {
         request = NewDescribeCertificateDetailRequest()
     }
+    
     response = NewDescribeCertificateDetailResponse()
     err = c.Send(request, response)
     return
@@ -273,6 +458,8 @@ func NewDescribeCertificateOperateLogsRequest() (request *DescribeCertificateOpe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "DescribeCertificateOperateLogs")
+    
+    
     return
 }
 
@@ -283,11 +470,20 @@ func NewDescribeCertificateOperateLogsResponse() (response *DescribeCertificateO
     return
 }
 
+// DescribeCertificateOperateLogs
 // 获取用户账号下有关证书的操作日志。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeCertificateOperateLogs(request *DescribeCertificateOperateLogsRequest) (response *DescribeCertificateOperateLogsResponse, err error) {
     if request == nil {
         request = NewDescribeCertificateOperateLogsRequest()
     }
+    
     response = NewDescribeCertificateOperateLogsResponse()
     err = c.Send(request, response)
     return
@@ -298,6 +494,8 @@ func NewDescribeCertificatesRequest() (request *DescribeCertificatesRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "DescribeCertificates")
+    
+    
     return
 }
 
@@ -308,12 +506,140 @@ func NewDescribeCertificatesResponse() (response *DescribeCertificatesResponse) 
     return
 }
 
+// DescribeCertificates
 // 本接口（DescribeCertificates）用于获取证书列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CANCELORDERFAILED = "FailedOperation.CancelOrderFailed"
+//  FAILEDOPERATION_CANNOTBEDELETEDISSUED = "FailedOperation.CannotBeDeletedIssued"
+//  FAILEDOPERATION_CANNOTBEDELETEDWITHINHOUR = "FailedOperation.CannotBeDeletedWithinHour"
+//  FAILEDOPERATION_CANNOTGETORDER = "FailedOperation.CannotGetOrder"
+//  FAILEDOPERATION_CERTIFICATEINVALID = "FailedOperation.CertificateInvalid"
+//  FAILEDOPERATION_CERTIFICATEMISMATCH = "FailedOperation.CertificateMismatch"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_EXCEEDSFREELIMIT = "FailedOperation.ExceedsFreeLimit"
+//  FAILEDOPERATION_INVALIDCERTIFICATESTATUSCODE = "FailedOperation.InvalidCertificateStatusCode"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ORDERALREADYREPLACED = "FailedOperation.OrderAlreadyReplaced"
+//  FAILEDOPERATION_ORDERREPLACEFAILED = "FailedOperation.OrderReplaceFailed"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
 func (c *Client) DescribeCertificates(request *DescribeCertificatesRequest) (response *DescribeCertificatesResponse, err error) {
     if request == nil {
         request = NewDescribeCertificatesRequest()
     }
+    
     response = NewDescribeCertificatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDeployedResourcesRequest() (request *DescribeDeployedResourcesRequest) {
+    request = &DescribeDeployedResourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ssl", APIVersion, "DescribeDeployedResources")
+    
+    
+    return
+}
+
+func NewDescribeDeployedResourcesResponse() (response *DescribeDeployedResourcesResponse) {
+    response = &DescribeDeployedResourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDeployedResources
+// 证书查询关联资源
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CERTIFICATEIDNUMBERLIMIT = "InvalidParameter.CertificateIdNumberLimit"
+//  INVALIDPARAMETER_CONTAINSINVALIDCERTIFICATEID = "InvalidParameter.ContainsInvalidCertificateId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeDeployedResources(request *DescribeDeployedResourcesRequest) (response *DescribeDeployedResourcesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeployedResourcesRequest()
+    }
+    
+    response = NewDescribeDeployedResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeManagerDetailRequest() (request *DescribeManagerDetailRequest) {
+    request = &DescribeManagerDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ssl", APIVersion, "DescribeManagerDetail")
+    
+    
+    return
+}
+
+func NewDescribeManagerDetailResponse() (response *DescribeManagerDetailResponse) {
+    response = &DescribeManagerDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeManagerDetail
+// 查询管理人详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_MANAGER = "ResourceNotFound.Manager"
+func (c *Client) DescribeManagerDetail(request *DescribeManagerDetailRequest) (response *DescribeManagerDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeManagerDetailRequest()
+    }
+    
+    response = NewDescribeManagerDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeManagersRequest() (request *DescribeManagersRequest) {
+    request = &DescribeManagersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ssl", APIVersion, "DescribeManagers")
+    
+    
+    return
+}
+
+func NewDescribeManagersResponse() (response *DescribeManagersResponse) {
+    response = &DescribeManagersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeManagers
+// 查询管理人列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeManagers(request *DescribeManagersRequest) (response *DescribeManagersResponse, err error) {
+    if request == nil {
+        request = NewDescribeManagersRequest()
+    }
+    
+    response = NewDescribeManagersResponse()
     err = c.Send(request, response)
     return
 }
@@ -323,6 +649,8 @@ func NewDownloadCertificateRequest() (request *DownloadCertificateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "DownloadCertificate")
+    
+    
     return
 }
 
@@ -333,11 +661,32 @@ func NewDownloadCertificateResponse() (response *DownloadCertificateResponse) {
     return
 }
 
+// DownloadCertificate
 // 本接口（DownloadCertificate）用于下载证书。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CANCELORDERFAILED = "FailedOperation.CancelOrderFailed"
+//  FAILEDOPERATION_CANNOTBEDELETEDISSUED = "FailedOperation.CannotBeDeletedIssued"
+//  FAILEDOPERATION_CANNOTBEDELETEDWITHINHOUR = "FailedOperation.CannotBeDeletedWithinHour"
+//  FAILEDOPERATION_CANNOTGETORDER = "FailedOperation.CannotGetOrder"
+//  FAILEDOPERATION_CERTIFICATEINVALID = "FailedOperation.CertificateInvalid"
+//  FAILEDOPERATION_CERTIFICATEMISMATCH = "FailedOperation.CertificateMismatch"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_EXCEEDSFREELIMIT = "FailedOperation.ExceedsFreeLimit"
+//  FAILEDOPERATION_INVALIDCERTIFICATESTATUSCODE = "FailedOperation.InvalidCertificateStatusCode"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ORDERALREADYREPLACED = "FailedOperation.OrderAlreadyReplaced"
+//  FAILEDOPERATION_ORDERREPLACEFAILED = "FailedOperation.OrderReplaceFailed"
+//  INTERNALERROR = "InternalError"
 func (c *Client) DownloadCertificate(request *DownloadCertificateRequest) (response *DownloadCertificateResponse, err error) {
     if request == nil {
         request = NewDownloadCertificateRequest()
     }
+    
     response = NewDownloadCertificateResponse()
     err = c.Send(request, response)
     return
@@ -348,6 +697,8 @@ func NewModifyCertificateAliasRequest() (request *ModifyCertificateAliasRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "ModifyCertificateAlias")
+    
+    
     return
 }
 
@@ -358,11 +709,22 @@ func NewModifyCertificateAliasResponse() (response *ModifyCertificateAliasRespon
     return
 }
 
+// ModifyCertificateAlias
 // 用户传入证书id和备注来修改证书备注。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyCertificateAlias(request *ModifyCertificateAliasRequest) (response *ModifyCertificateAliasResponse, err error) {
     if request == nil {
         request = NewModifyCertificateAliasRequest()
     }
+    
     response = NewModifyCertificateAliasResponse()
     err = c.Send(request, response)
     return
@@ -373,6 +735,8 @@ func NewModifyCertificateProjectRequest() (request *ModifyCertificateProjectRequ
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "ModifyCertificateProject")
+    
+    
     return
 }
 
@@ -383,11 +747,20 @@ func NewModifyCertificateProjectResponse() (response *ModifyCertificateProjectRe
     return
 }
 
+// ModifyCertificateProject
 // 批量修改证书所属项目。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  INTERNALERROR = "InternalError"
 func (c *Client) ModifyCertificateProject(request *ModifyCertificateProjectRequest) (response *ModifyCertificateProjectResponse, err error) {
     if request == nil {
         request = NewModifyCertificateProjectRequest()
     }
+    
     response = NewModifyCertificateProjectResponse()
     err = c.Send(request, response)
     return
@@ -398,6 +771,8 @@ func NewReplaceCertificateRequest() (request *ReplaceCertificateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "ReplaceCertificate")
+    
+    
     return
 }
 
@@ -408,11 +783,32 @@ func NewReplaceCertificateResponse() (response *ReplaceCertificateResponse) {
     return
 }
 
+// ReplaceCertificate
 // 本接口（ReplaceCertificate）用于重颁发证书。已申请的免费证书仅支持 RSA 算法、密钥对参数为2048的证书重颁发，并且目前仅支持1次重颁发。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CANCELORDERFAILED = "FailedOperation.CancelOrderFailed"
+//  FAILEDOPERATION_CANNOTBEDELETEDISSUED = "FailedOperation.CannotBeDeletedIssued"
+//  FAILEDOPERATION_CANNOTBEDELETEDWITHINHOUR = "FailedOperation.CannotBeDeletedWithinHour"
+//  FAILEDOPERATION_CANNOTGETORDER = "FailedOperation.CannotGetOrder"
+//  FAILEDOPERATION_CERTIFICATEINVALID = "FailedOperation.CertificateInvalid"
+//  FAILEDOPERATION_CERTIFICATEMISMATCH = "FailedOperation.CertificateMismatch"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_EXCEEDSFREELIMIT = "FailedOperation.ExceedsFreeLimit"
+//  FAILEDOPERATION_INVALIDCERTIFICATESTATUSCODE = "FailedOperation.InvalidCertificateStatusCode"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ORDERALREADYREPLACED = "FailedOperation.OrderAlreadyReplaced"
+//  FAILEDOPERATION_ORDERREPLACEFAILED = "FailedOperation.OrderReplaceFailed"
+//  INTERNALERROR = "InternalError"
 func (c *Client) ReplaceCertificate(request *ReplaceCertificateRequest) (response *ReplaceCertificateResponse, err error) {
     if request == nil {
         request = NewReplaceCertificateRequest()
     }
+    
     response = NewReplaceCertificateResponse()
     err = c.Send(request, response)
     return
@@ -423,6 +819,8 @@ func NewRevokeCertificateRequest() (request *RevokeCertificateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "RevokeCertificate")
+    
+    
     return
 }
 
@@ -433,12 +831,59 @@ func NewRevokeCertificateResponse() (response *RevokeCertificateResponse) {
     return
 }
 
+// RevokeCertificate
 // 本接口（RevokeCertificate）用于吊销证书。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CANNOTGETORDER = "FailedOperation.CannotGetOrder"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDCERTIFICATESTATUSCODE = "FailedOperation.InvalidCertificateStatusCode"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_REVOKEFAILED = "FailedOperation.RevokeFailed"
+//  FAILEDOPERATION_REVOKERESOURCEFAILED = "FailedOperation.RevokeResourceFailed"
+//  INTERNALERROR = "InternalError"
 func (c *Client) RevokeCertificate(request *RevokeCertificateRequest) (response *RevokeCertificateResponse, err error) {
     if request == nil {
         request = NewRevokeCertificateRequest()
     }
+    
     response = NewRevokeCertificateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitAuditManagerRequest() (request *SubmitAuditManagerRequest) {
+    request = &SubmitAuditManagerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ssl", APIVersion, "SubmitAuditManager")
+    
+    
+    return
+}
+
+func NewSubmitAuditManagerResponse() (response *SubmitAuditManagerResponse) {
+    response = &SubmitAuditManagerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SubmitAuditManager
+// 重新提交审核管理人
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_MANAGER = "ResourceNotFound.Manager"
+func (c *Client) SubmitAuditManager(request *SubmitAuditManagerRequest) (response *SubmitAuditManagerResponse, err error) {
+    if request == nil {
+        request = NewSubmitAuditManagerRequest()
+    }
+    
+    response = NewSubmitAuditManagerResponse()
     err = c.Send(request, response)
     return
 }
@@ -448,6 +893,8 @@ func NewSubmitCertificateInformationRequest() (request *SubmitCertificateInforma
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "SubmitCertificateInformation")
+    
+    
     return
 }
 
@@ -458,11 +905,23 @@ func NewSubmitCertificateInformationResponse() (response *SubmitCertificateInfor
     return
 }
 
-// 提交证书资料。
+// SubmitCertificateInformation
+// 提交证书资料。输入参数信息可以分多次提交，但提交的证书资料应最低限度保持完整。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_EXCEEDSFREELIMIT = "FailedOperation.ExceedsFreeLimit"
+//  FAILEDOPERATION_INVALIDCERTIFICATESTATUSCODE = "FailedOperation.InvalidCertificateStatusCode"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  INTERNALERROR = "InternalError"
 func (c *Client) SubmitCertificateInformation(request *SubmitCertificateInformationRequest) (response *SubmitCertificateInformationResponse, err error) {
     if request == nil {
         request = NewSubmitCertificateInformationRequest()
     }
+    
     response = NewSubmitCertificateInformationResponse()
     err = c.Send(request, response)
     return
@@ -473,6 +932,8 @@ func NewUploadCertificateRequest() (request *UploadCertificateRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "UploadCertificate")
+    
+    
     return
 }
 
@@ -483,11 +944,33 @@ func NewUploadCertificateResponse() (response *UploadCertificateResponse) {
     return
 }
 
+// UploadCertificate
 // 本接口（UploadCertificate）用于上传证书。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CANCELORDERFAILED = "FailedOperation.CancelOrderFailed"
+//  FAILEDOPERATION_CANNOTBEDELETEDISSUED = "FailedOperation.CannotBeDeletedIssued"
+//  FAILEDOPERATION_CANNOTBEDELETEDWITHINHOUR = "FailedOperation.CannotBeDeletedWithinHour"
+//  FAILEDOPERATION_CANNOTGETORDER = "FailedOperation.CannotGetOrder"
+//  FAILEDOPERATION_CERTIFICATEEXISTS = "FailedOperation.CertificateExists"
+//  FAILEDOPERATION_CERTIFICATEINVALID = "FailedOperation.CertificateInvalid"
+//  FAILEDOPERATION_CERTIFICATEMISMATCH = "FailedOperation.CertificateMismatch"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_EXCEEDSFREELIMIT = "FailedOperation.ExceedsFreeLimit"
+//  FAILEDOPERATION_INVALIDCERTIFICATESTATUSCODE = "FailedOperation.InvalidCertificateStatusCode"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ORDERALREADYREPLACED = "FailedOperation.OrderAlreadyReplaced"
+//  FAILEDOPERATION_ORDERREPLACEFAILED = "FailedOperation.OrderReplaceFailed"
+//  INTERNALERROR = "InternalError"
 func (c *Client) UploadCertificate(request *UploadCertificateRequest) (response *UploadCertificateResponse, err error) {
     if request == nil {
         request = NewUploadCertificateRequest()
     }
+    
     response = NewUploadCertificateResponse()
     err = c.Send(request, response)
     return
@@ -498,6 +981,8 @@ func NewUploadConfirmLetterRequest() (request *UploadConfirmLetterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "UploadConfirmLetter")
+    
+    
     return
 }
 
@@ -508,11 +993,26 @@ func NewUploadConfirmLetterResponse() (response *UploadConfirmLetterResponse) {
     return
 }
 
+// UploadConfirmLetter
 // 本接口（UploadConfirmLetter）用于上传证书确认函。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CERTIFICATEINVALID = "FailedOperation.CertificateInvalid"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_CONFIRMLETTERTOOLARGE = "FailedOperation.ConfirmLetterTooLarge"
+//  FAILEDOPERATION_CONFIRMLETTERTOOSMALL = "FailedOperation.ConfirmLetterTooSmall"
+//  FAILEDOPERATION_INVALIDCERTIFICATESOURCE = "FailedOperation.InvalidCertificateSource"
+//  FAILEDOPERATION_INVALIDCERTIFICATESTATUSCODE = "FailedOperation.InvalidCertificateStatusCode"
+//  FAILEDOPERATION_INVALIDCONFIRMLETTERFORMAT = "FailedOperation.InvalidConfirmLetterFormat"
+//  FAILEDOPERATION_INVALIDCONFIRMLETTERFORMATWOSIGN = "FailedOperation.InvalidConfirmLetterFormatWosign"
+//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
+//  INTERNALERROR = "InternalError"
 func (c *Client) UploadConfirmLetter(request *UploadConfirmLetterRequest) (response *UploadConfirmLetterResponse, err error) {
     if request == nil {
         request = NewUploadConfirmLetterRequest()
     }
+    
     response = NewUploadConfirmLetterResponse()
     err = c.Send(request, response)
     return
@@ -523,6 +1023,8 @@ func NewUploadRevokeLetterRequest() (request *UploadRevokeLetterRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("ssl", APIVersion, "UploadRevokeLetter")
+    
+    
     return
 }
 
@@ -533,12 +1035,66 @@ func NewUploadRevokeLetterResponse() (response *UploadRevokeLetterResponse) {
     return
 }
 
+// UploadRevokeLetter
 // 本接口（UploadRevokeLetter）用于上传证书吊销确认函。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEINVALID = "FailedOperation.CertificateInvalid"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_CONFIRMLETTERTOOLARGE = "FailedOperation.ConfirmLetterTooLarge"
+//  FAILEDOPERATION_CONFIRMLETTERTOOSMALL = "FailedOperation.ConfirmLetterTooSmall"
+//  FAILEDOPERATION_FILETOOLARGE = "FailedOperation.FileTooLarge"
+//  FAILEDOPERATION_FILETOOSMALL = "FailedOperation.FileTooSmall"
+//  FAILEDOPERATION_INVALIDCERTIFICATESTATUSCODE = "FailedOperation.InvalidCertificateStatusCode"
+//  FAILEDOPERATION_INVALIDFILETYPE = "FailedOperation.InvalidFileType"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) UploadRevokeLetter(request *UploadRevokeLetterRequest) (response *UploadRevokeLetterResponse, err error) {
     if request == nil {
         request = NewUploadRevokeLetterRequest()
     }
+    
     response = NewUploadRevokeLetterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVerifyManagerRequest() (request *VerifyManagerRequest) {
+    request = &VerifyManagerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ssl", APIVersion, "VerifyManager")
+    
+    
+    return
+}
+
+func NewVerifyManagerResponse() (response *VerifyManagerResponse) {
+    response = &VerifyManagerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// VerifyManager
+// 重新核验管理人
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_MANAGER = "ResourceNotFound.Manager"
+func (c *Client) VerifyManager(request *VerifyManagerRequest) (response *VerifyManagerResponse, err error) {
+    if request == nil {
+        request = NewVerifyManagerRequest()
+    }
+    
+    response = NewVerifyManagerResponse()
     err = c.Send(request, response)
     return
 }

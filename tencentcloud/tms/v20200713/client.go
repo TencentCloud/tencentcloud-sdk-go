@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -48,6 +48,8 @@ func NewAccountTipoffAccessRequest() (request *AccountTipoffAccessRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tms", APIVersion, "AccountTipoffAccess")
+    
+    
     return
 }
 
@@ -58,12 +60,102 @@ func NewAccountTipoffAccessResponse() (response *AccountTipoffAccessResponse) {
     return
 }
 
+// AccountTipoffAccess
 // 举报恶意账号
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ERRACTION = "InvalidParameter.ErrAction"
+//  INVALIDPARAMETER_INVALIDPARAMETERCONTENT = "InvalidParameter.InvalidParameterContent"
+//  INVALIDPARAMETERVALUE_INVALIDEVILCONTENT = "InvalidParameterValue.InvalidEvilContent"
+//  INVALIDPARAMETERVALUE_INVALIDEVILTYPE = "InvalidParameterValue.InvalidEvilType"
+//  INVALIDPARAMETERVALUE_INVALIDREPORTEDACCOUNT = "InvalidParameterValue.InvalidReportedAccount"
+//  INVALIDPARAMETERVALUE_INVALIDREPORTEDACCOUNTLENGTH = "InvalidParameterValue.InvalidReportedAccountLength"
+//  INVALIDPARAMETERVALUE_INVALIDREPORTEDACCOUNTTYPE = "InvalidParameterValue.InvalidReportedAccountType"
+//  INVALIDPARAMETERVALUE_INVALIDSENDERACCOUNT = "InvalidParameterValue.InvalidSenderAccount"
+//  INVALIDPARAMETERVALUE_INVALIDSENDERACCOUNTLENGTH = "InvalidParameterValue.InvalidSenderAccountLength"
+//  INVALIDPARAMETERVALUE_INVALIDSENDERACCOUNTTYPE = "InvalidParameterValue.InvalidSenderAccountType"
+//  INVALIDPARAMETERVALUE_INVALIDSENDERIP = "InvalidParameterValue.InvalidSenderIP"
 func (c *Client) AccountTipoffAccess(request *AccountTipoffAccessRequest) (response *AccountTipoffAccessResponse, err error) {
     if request == nil {
         request = NewAccountTipoffAccessRequest()
     }
+    
     response = NewAccountTipoffAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTextLibRequest() (request *DescribeTextLibRequest) {
+    request = &DescribeTextLibRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tms", APIVersion, "DescribeTextLib")
+    
+    
+    return
+}
+
+func NewDescribeTextLibResponse() (response *DescribeTextLibResponse) {
+    response = &DescribeTextLibResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTextLib
+// 控制台获取用户词库列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTextLib(request *DescribeTextLibRequest) (response *DescribeTextLibResponse, err error) {
+    if request == nil {
+        request = NewDescribeTextLibRequest()
+    }
+    
+    response = NewDescribeTextLibResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTextStatRequest() (request *DescribeTextStatRequest) {
+    request = &DescribeTextStatRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tms", APIVersion, "DescribeTextStat")
+    
+    
+    return
+}
+
+func NewDescribeTextStatResponse() (response *DescribeTextStatResponse) {
+    response = &DescribeTextStatResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTextStat
+// 控制台识别统计
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRTEXTTIMEOUT = "InternalError.ErrTextTimeOut"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRTEXTCONTENTTYPE = "InvalidParameter.ErrTextContentType"
+func (c *Client) DescribeTextStat(request *DescribeTextStatRequest) (response *DescribeTextStatResponse, err error) {
+    if request == nil {
+        request = NewDescribeTextStatRequest()
+    }
+    
+    response = NewDescribeTextStatResponse()
     err = c.Send(request, response)
     return
 }
@@ -73,6 +165,8 @@ func NewTextModerationRequest() (request *TextModerationRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("tms", APIVersion, "TextModeration")
+    
+    
     return
 }
 
@@ -83,11 +177,21 @@ func NewTextModerationResponse() (response *TextModerationResponse) {
     return
 }
 
-// 文本内容检测（Text Moderation）服务使用了深度学习技术，识别涉黄、涉政、涉恐等有害内容，同时支持用户配置词库，打击自定义的违规文本。
+// TextModeration
+// 文本内容检测（Text Moderation）服务使用了深度学习技术，识别可能令人反感、不安全或不适宜的文本内容，同时支持用户配置词库黑白名单，打击自定义识别类型的图片。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ERRTEXTTIMEOUT = "InternalError.ErrTextTimeOut"
+//  INVALIDPARAMETER_ERRACTION = "InvalidParameter.ErrAction"
+//  INVALIDPARAMETER_ERRTEXTCONTENTLEN = "InvalidParameter.ErrTextContentLen"
+//  INVALIDPARAMETER_ERRTEXTCONTENTTYPE = "InvalidParameter.ErrTextContentType"
+//  INVALIDPARAMETERVALUE_ERRTEXTCONTENTTYPE = "InvalidParameterValue.ErrTextContentType"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) TextModeration(request *TextModerationRequest) (response *TextModerationResponse, err error) {
     if request == nil {
         request = NewTextModerationRequest()
     }
+    
     response = NewTextModerationResponse()
     err = c.Send(request, response)
     return

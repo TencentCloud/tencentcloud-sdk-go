@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -48,6 +48,8 @@ func NewCreateCallBackRequest() (request *CreateCallBackRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("npp", APIVersion, "CreateCallBack")
+    
+    
     return
 }
 
@@ -58,11 +60,13 @@ func NewCreateCallBackResponse() (response *CreateCallBackResponse) {
     return
 }
 
+// CreateCallBack
 // 回拨呼叫请求
 func (c *Client) CreateCallBack(request *CreateCallBackRequest) (response *CreateCallBackResponse, err error) {
     if request == nil {
         request = NewCreateCallBackRequest()
     }
+    
     response = NewCreateCallBackResponse()
     err = c.Send(request, response)
     return
@@ -73,6 +77,8 @@ func NewDelVirtualNumRequest() (request *DelVirtualNumRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("npp", APIVersion, "DelVirtualNum")
+    
+    
     return
 }
 
@@ -83,11 +89,13 @@ func NewDelVirtualNumResponse() (response *DelVirtualNumResponse) {
     return
 }
 
+// DelVirtualNum
 // 直拨解绑中间号
 func (c *Client) DelVirtualNum(request *DelVirtualNumRequest) (response *DelVirtualNumResponse, err error) {
     if request == nil {
         request = NewDelVirtualNumRequest()
     }
+    
     response = NewDelVirtualNumResponse()
     err = c.Send(request, response)
     return
@@ -98,6 +106,8 @@ func NewDeleteCallBackRequest() (request *DeleteCallBackRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("npp", APIVersion, "DeleteCallBack")
+    
+    
     return
 }
 
@@ -108,11 +118,13 @@ func NewDeleteCallBackResponse() (response *DeleteCallBackResponse) {
     return
 }
 
+// DeleteCallBack
 // 回拨呼叫取消
 func (c *Client) DeleteCallBack(request *DeleteCallBackRequest) (response *DeleteCallBackResponse, err error) {
     if request == nil {
         request = NewDeleteCallBackRequest()
     }
+    
     response = NewDeleteCallBackResponse()
     err = c.Send(request, response)
     return
@@ -123,6 +135,8 @@ func NewDescribeCallBackCdrRequest() (request *DescribeCallBackCdrRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("npp", APIVersion, "DescribeCallBackCdr")
+    
+    
     return
 }
 
@@ -133,11 +147,13 @@ func NewDescribeCallBackCdrResponse() (response *DescribeCallBackCdrResponse) {
     return
 }
 
+// DescribeCallBackCdr
 // 回拨话单获取接口
 func (c *Client) DescribeCallBackCdr(request *DescribeCallBackCdrRequest) (response *DescribeCallBackCdrResponse, err error) {
     if request == nil {
         request = NewDescribeCallBackCdrRequest()
     }
+    
     response = NewDescribeCallBackCdrResponse()
     err = c.Send(request, response)
     return
@@ -148,6 +164,8 @@ func NewDescribeCallBackStatusRequest() (request *DescribeCallBackStatusRequest)
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("npp", APIVersion, "DescribeCallBackStatus")
+    
+    
     return
 }
 
@@ -158,11 +176,13 @@ func NewDescribeCallBackStatusResponse() (response *DescribeCallBackStatusRespon
     return
 }
 
+// DescribeCallBackStatus
 // 回拨通话状态获取
 func (c *Client) DescribeCallBackStatus(request *DescribeCallBackStatusRequest) (response *DescribeCallBackStatusResponse, err error) {
     if request == nil {
         request = NewDescribeCallBackStatusRequest()
     }
+    
     response = NewDescribeCallBackStatusResponse()
     err = c.Send(request, response)
     return
@@ -173,6 +193,8 @@ func NewDescribeCallerDisplayListRequest() (request *DescribeCallerDisplayListRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("npp", APIVersion, "DescribeCallerDisplayList")
+    
+    
     return
 }
 
@@ -183,11 +205,13 @@ func NewDescribeCallerDisplayListResponse() (response *DescribeCallerDisplayList
     return
 }
 
+// DescribeCallerDisplayList
 // 回拨拉取主叫显号号码集合
 func (c *Client) DescribeCallerDisplayList(request *DescribeCallerDisplayListRequest) (response *DescribeCallerDisplayListResponse, err error) {
     if request == nil {
         request = NewDescribeCallerDisplayListRequest()
     }
+    
     response = NewDescribeCallerDisplayListResponse()
     err = c.Send(request, response)
     return
@@ -198,6 +222,8 @@ func NewGet400CdrRequest() (request *Get400CdrRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("npp", APIVersion, "Get400Cdr")
+    
+    
     return
 }
 
@@ -208,11 +234,13 @@ func NewGet400CdrResponse() (response *Get400CdrResponse) {
     return
 }
 
+// Get400Cdr
 // 直拨话单获取接口
 func (c *Client) Get400Cdr(request *Get400CdrRequest) (response *Get400CdrResponse, err error) {
     if request == nil {
         request = NewGet400CdrRequest()
     }
+    
     response = NewGet400CdrResponse()
     err = c.Send(request, response)
     return
@@ -223,6 +251,8 @@ func NewGetVirtualNumRequest() (request *GetVirtualNumRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("npp", APIVersion, "GetVirtualNum")
+    
+    
     return
 }
 
@@ -233,11 +263,13 @@ func NewGetVirtualNumResponse() (response *GetVirtualNumResponse) {
     return
 }
 
+// GetVirtualNum
 // 直拨获取中间号（App 使用方发起）
 func (c *Client) GetVirtualNum(request *GetVirtualNumRequest) (response *GetVirtualNumResponse, err error) {
     if request == nil {
         request = NewGetVirtualNumRequest()
     }
+    
     response = NewGetVirtualNumResponse()
     err = c.Send(request, response)
     return

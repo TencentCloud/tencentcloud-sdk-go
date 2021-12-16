@@ -16,7 +16,7 @@ package v20191022
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -118,8 +118,20 @@ func (r *CreateCodeRepositoryRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateCodeRepositoryRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CodeRepositoryName")
+	delete(f, "GitConfig")
+	delete(f, "GitSecret")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCodeRepositoryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateCodeRepositoryResponse struct {
@@ -139,8 +151,10 @@ func (r *CreateCodeRepositoryResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateCodeRepositoryResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateNotebookInstanceRequest struct {
@@ -182,7 +196,7 @@ type CreateNotebookInstanceRequest struct {
 	// 其他存储库列表
 	// 每个元素可以是已创建的存储库名称或者已https://开头的公共git库
 	// 参考https://cloud.tencent.com/document/product/851/43139
-	AdditionalCodeRepositories []*string `json:"AdditionalCodeRepositories,omitempty" name:"AdditionalCodeRepositories" list`
+	AdditionalCodeRepositories []*string `json:"AdditionalCodeRepositories,omitempty" name:"AdditionalCodeRepositories"`
 
 	// 已弃用，请使用ClsConfig配置。
 	// 是否开启CLS日志服务，可取值Enabled/Disabled，默认为Disabled
@@ -207,8 +221,30 @@ func (r *CreateNotebookInstanceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateNotebookInstanceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NotebookInstanceName")
+	delete(f, "InstanceType")
+	delete(f, "VolumeSizeInGB")
+	delete(f, "DirectInternetAccess")
+	delete(f, "RootAccess")
+	delete(f, "SubnetId")
+	delete(f, "LifecycleScriptsName")
+	delete(f, "DefaultCodeRepository")
+	delete(f, "AdditionalCodeRepositories")
+	delete(f, "ClsAccess")
+	delete(f, "StoppingCondition")
+	delete(f, "AutoStopping")
+	delete(f, "ClsConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNotebookInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateNotebookInstanceResponse struct {
@@ -228,8 +264,10 @@ func (r *CreateNotebookInstanceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateNotebookInstanceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateNotebookLifecycleScriptRequest struct {
@@ -252,8 +290,20 @@ func (r *CreateNotebookLifecycleScriptRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateNotebookLifecycleScriptRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NotebookLifecycleScriptsName")
+	delete(f, "CreateScript")
+	delete(f, "StartScript")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNotebookLifecycleScriptRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateNotebookLifecycleScriptResponse struct {
@@ -273,8 +323,10 @@ func (r *CreateNotebookLifecycleScriptResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateNotebookLifecycleScriptResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreatePresignedNotebookInstanceUrlRequest struct {
@@ -293,8 +345,19 @@ func (r *CreatePresignedNotebookInstanceUrlRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreatePresignedNotebookInstanceUrlRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NotebookInstanceName")
+	delete(f, "SessionExpirationDurationInSeconds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePresignedNotebookInstanceUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreatePresignedNotebookInstanceUrlResponse struct {
@@ -314,8 +377,10 @@ func (r *CreatePresignedNotebookInstanceUrlResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreatePresignedNotebookInstanceUrlResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateTrainingJobRequest struct {
@@ -334,7 +399,7 @@ type CreateTrainingJobRequest struct {
 	TrainingJobName *string `json:"TrainingJobName,omitempty" name:"TrainingJobName"`
 
 	// 输入数据配置
-	InputDataConfig []*InputDataConfig `json:"InputDataConfig,omitempty" name:"InputDataConfig" list`
+	InputDataConfig []*InputDataConfig `json:"InputDataConfig,omitempty" name:"InputDataConfig"`
 
 	// 中止条件
 	StoppingCondition *StoppingCondition `json:"StoppingCondition,omitempty" name:"StoppingCondition"`
@@ -346,7 +411,7 @@ type CreateTrainingJobRequest struct {
 	HyperParameters *string `json:"HyperParameters,omitempty" name:"HyperParameters"`
 
 	// 环境变量配置
-	EnvConfig []*EnvConfig `json:"EnvConfig,omitempty" name:"EnvConfig" list`
+	EnvConfig []*EnvConfig `json:"EnvConfig,omitempty" name:"EnvConfig"`
 
 	// 角色名称
 	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
@@ -361,8 +426,28 @@ func (r *CreateTrainingJobRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateTrainingJobRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AlgorithmSpecification")
+	delete(f, "OutputDataConfig")
+	delete(f, "ResourceConfig")
+	delete(f, "TrainingJobName")
+	delete(f, "InputDataConfig")
+	delete(f, "StoppingCondition")
+	delete(f, "VpcConfig")
+	delete(f, "HyperParameters")
+	delete(f, "EnvConfig")
+	delete(f, "RoleName")
+	delete(f, "RetryWhenResourceInsufficient")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTrainingJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateTrainingJobResponse struct {
@@ -382,8 +467,10 @@ func (r *CreateTrainingJobResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateTrainingJobResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DataSource struct {
@@ -409,8 +496,18 @@ func (r *DeleteCodeRepositoryRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteCodeRepositoryRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CodeRepositoryName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCodeRepositoryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteCodeRepositoryResponse struct {
@@ -430,8 +527,10 @@ func (r *DeleteCodeRepositoryResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteCodeRepositoryResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteNotebookInstanceRequest struct {
@@ -446,8 +545,18 @@ func (r *DeleteNotebookInstanceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteNotebookInstanceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NotebookInstanceName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteNotebookInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteNotebookInstanceResponse struct {
@@ -464,8 +573,10 @@ func (r *DeleteNotebookInstanceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteNotebookInstanceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteNotebookLifecycleScriptRequest struct {
@@ -483,8 +594,19 @@ func (r *DeleteNotebookLifecycleScriptRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteNotebookLifecycleScriptRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NotebookLifecycleScriptsName")
+	delete(f, "Forcible")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteNotebookLifecycleScriptRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteNotebookLifecycleScriptResponse struct {
@@ -501,8 +623,10 @@ func (r *DeleteNotebookLifecycleScriptResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteNotebookLifecycleScriptResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCodeRepositoriesRequest struct {
@@ -517,7 +641,7 @@ type DescribeCodeRepositoriesRequest struct {
 	// 过滤条件。
 	// instance-name - String - 是否必填：否 -（过滤条件）按照名称过滤。
 	// search-by-name - String - 是否必填：否 -（过滤条件）按照名称检索，模糊匹配。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序规则。默认取Descending
 	// Descending 按更新时间降序
@@ -530,8 +654,21 @@ func (r *DescribeCodeRepositoriesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCodeRepositoriesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "SortOrder")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCodeRepositoriesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCodeRepositoriesResponse struct {
@@ -543,7 +680,7 @@ type DescribeCodeRepositoriesResponse struct {
 
 		// 存储库列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		CodeRepoSet []*CodeRepoSummary `json:"CodeRepoSet,omitempty" name:"CodeRepoSet" list`
+		CodeRepoSet []*CodeRepoSummary `json:"CodeRepoSet,omitempty" name:"CodeRepoSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -555,8 +692,10 @@ func (r *DescribeCodeRepositoriesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCodeRepositoriesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCodeRepositoryRequest struct {
@@ -571,8 +710,18 @@ func (r *DescribeCodeRepositoryRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCodeRepositoryRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CodeRepositoryName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCodeRepositoryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCodeRepositoryResponse struct {
@@ -604,8 +753,10 @@ func (r *DescribeCodeRepositoryResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeCodeRepositoryResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeNotebookInstanceRequest struct {
@@ -621,8 +772,18 @@ func (r *DescribeNotebookInstanceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeNotebookInstanceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NotebookInstanceName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNotebookInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeNotebookInstanceResponse struct {
@@ -698,7 +859,7 @@ type DescribeNotebookInstanceResponse struct {
 		// 其他存储库列表
 	// 每个元素可以是已创建的存储库名称或者已https://开头的公共git库
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		AdditionalCodeRepositories []*string `json:"AdditionalCodeRepositories,omitempty" name:"AdditionalCodeRepositories" list`
+		AdditionalCodeRepositories []*string `json:"AdditionalCodeRepositories,omitempty" name:"AdditionalCodeRepositories"`
 
 		// 是否开启CLS日志服务
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -730,8 +891,10 @@ func (r *DescribeNotebookInstanceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeNotebookInstanceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeNotebookInstancesRequest struct {
@@ -757,7 +920,7 @@ type DescribeNotebookInstancesRequest struct {
 	// billing-status - String - 是否必填：否 - （过滤条件）按照计费状态过滤，可取以下值
 	//    StorageOnly：仅存储计费的实例
 	//    Computing：计算和存储都计费的实例
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 【废弃字段】排序字段
 	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
@@ -768,8 +931,22 @@ func (r *DescribeNotebookInstancesRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeNotebookInstancesRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SortOrder")
+	delete(f, "Filters")
+	delete(f, "SortBy")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNotebookInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeNotebookInstancesResponse struct {
@@ -777,7 +954,7 @@ type DescribeNotebookInstancesResponse struct {
 	Response *struct {
 
 		// Notebook实例列表
-		NotebookInstanceSet []*NotebookInstanceSummary `json:"NotebookInstanceSet,omitempty" name:"NotebookInstanceSet" list`
+		NotebookInstanceSet []*NotebookInstanceSummary `json:"NotebookInstanceSet,omitempty" name:"NotebookInstanceSet"`
 
 		// Notebook实例总数目
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -792,8 +969,10 @@ func (r *DescribeNotebookInstancesResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeNotebookInstancesResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeNotebookLifecycleScriptRequest struct {
@@ -808,8 +987,18 @@ func (r *DescribeNotebookLifecycleScriptRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeNotebookLifecycleScriptRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NotebookLifecycleScriptsName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNotebookLifecycleScriptRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeNotebookLifecycleScriptResponse struct {
@@ -843,8 +1032,10 @@ func (r *DescribeNotebookLifecycleScriptResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeNotebookLifecycleScriptResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeNotebookLifecycleScriptsRequest struct {
@@ -859,7 +1050,7 @@ type DescribeNotebookLifecycleScriptsRequest struct {
 	// 过滤条件。
 	// instance-name - String - 是否必填：否 -（过滤条件）按照名称过滤。
 	// search-by-name - String - 是否必填：否 -（过滤条件）按照名称检索，模糊匹配。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序规则。默认取Descending
 	// Descending 按更新时间降序
@@ -872,8 +1063,21 @@ func (r *DescribeNotebookLifecycleScriptsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeNotebookLifecycleScriptsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "SortOrder")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNotebookLifecycleScriptsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeNotebookLifecycleScriptsResponse struct {
@@ -881,7 +1085,7 @@ type DescribeNotebookLifecycleScriptsResponse struct {
 	Response *struct {
 
 		// Notebook生命周期脚本列表
-		NotebookLifecycleScriptsSet []*NotebookLifecycleScriptsSummary `json:"NotebookLifecycleScriptsSet,omitempty" name:"NotebookLifecycleScriptsSet" list`
+		NotebookLifecycleScriptsSet []*NotebookLifecycleScriptsSummary `json:"NotebookLifecycleScriptsSet,omitempty" name:"NotebookLifecycleScriptsSet"`
 
 		// Notebook生命周期脚本总数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -896,8 +1100,10 @@ func (r *DescribeNotebookLifecycleScriptsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeNotebookLifecycleScriptsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeNotebookSummaryRequest struct {
@@ -909,8 +1115,17 @@ func (r *DescribeNotebookSummaryRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeNotebookSummaryRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNotebookSummaryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeNotebookSummaryResponse struct {
@@ -939,8 +1154,10 @@ func (r *DescribeNotebookSummaryResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeNotebookSummaryResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTrainingJobRequest struct {
@@ -955,8 +1172,18 @@ func (r *DescribeTrainingJobRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTrainingJobRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrainingJobName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTrainingJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTrainingJobResponse struct {
@@ -974,7 +1201,7 @@ type DescribeTrainingJobResponse struct {
 		HyperParameters *string `json:"HyperParameters,omitempty" name:"HyperParameters"`
 
 		// 输入数据配置
-		InputDataConfig []*InputDataConfig `json:"InputDataConfig,omitempty" name:"InputDataConfig" list`
+		InputDataConfig []*InputDataConfig `json:"InputDataConfig,omitempty" name:"InputDataConfig"`
 
 		// 输出数据配置
 		OutputDataConfig *OutputDataConfig `json:"OutputDataConfig,omitempty" name:"OutputDataConfig"`
@@ -1023,7 +1250,7 @@ type DescribeTrainingJobResponse struct {
 
 		// 详细状态事件记录
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		SecondaryStatusTransitions []*SecondaryStatusTransition `json:"SecondaryStatusTransitions,omitempty" name:"SecondaryStatusTransitions" list`
+		SecondaryStatusTransitions []*SecondaryStatusTransition `json:"SecondaryStatusTransitions,omitempty" name:"SecondaryStatusTransitions"`
 
 		// 角色名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1054,8 +1281,10 @@ func (r *DescribeTrainingJobResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTrainingJobResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTrainingJobsRequest struct {
@@ -1082,7 +1311,7 @@ type DescribeTrainingJobsRequest struct {
 	// 过滤条件。
 	// instance-name - String - 是否必填：否 -（过滤条件）按照名称过滤。
 	// search-by-name - String - 是否必填：否 -（过滤条件）按照名称检索，模糊匹配。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters" list`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeTrainingJobsRequest) ToJsonString() string {
@@ -1090,8 +1319,24 @@ func (r *DescribeTrainingJobsRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTrainingJobsRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "CreationTimeAfter")
+	delete(f, "CreationTimeBefore")
+	delete(f, "NameContains")
+	delete(f, "StatusEquals")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTrainingJobsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeTrainingJobsResponse struct {
@@ -1099,7 +1344,7 @@ type DescribeTrainingJobsResponse struct {
 	Response *struct {
 
 		// 训练任务列表
-		TrainingJobSet []*TrainingJobSummary `json:"TrainingJobSet,omitempty" name:"TrainingJobSet" list`
+		TrainingJobSet []*TrainingJobSummary `json:"TrainingJobSet,omitempty" name:"TrainingJobSet"`
 
 		// 训练任务总数目
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -1114,8 +1359,10 @@ func (r *DescribeTrainingJobsResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DescribeTrainingJobsResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EnvConfig struct {
@@ -1152,7 +1399,7 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 过滤字段取值
-	Values []*string `json:"Values,omitempty" name:"Values" list`
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type GitConfig struct {
@@ -1343,8 +1590,20 @@ func (r *StartNotebookInstanceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *StartNotebookInstanceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NotebookInstanceName")
+	delete(f, "AutoStopping")
+	delete(f, "StoppingCondition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartNotebookInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type StartNotebookInstanceResponse struct {
@@ -1361,8 +1620,10 @@ func (r *StartNotebookInstanceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *StartNotebookInstanceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type StopNotebookInstanceRequest struct {
@@ -1377,8 +1638,18 @@ func (r *StopNotebookInstanceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *StopNotebookInstanceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NotebookInstanceName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopNotebookInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type StopNotebookInstanceResponse struct {
@@ -1395,8 +1666,10 @@ func (r *StopNotebookInstanceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *StopNotebookInstanceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type StopTrainingJobRequest struct {
@@ -1411,8 +1684,18 @@ func (r *StopTrainingJobRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *StopTrainingJobRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrainingJobName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopTrainingJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type StopTrainingJobResponse struct {
@@ -1429,8 +1712,10 @@ func (r *StopTrainingJobResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *StopTrainingJobResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type StoppingCondition struct {
@@ -1495,8 +1780,19 @@ func (r *UpdateCodeRepositoryRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateCodeRepositoryRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CodeRepositoryName")
+	delete(f, "GitSecret")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateCodeRepositoryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateCodeRepositoryResponse struct {
@@ -1516,8 +1812,10 @@ func (r *UpdateCodeRepositoryResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateCodeRepositoryResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateNotebookInstanceRequest struct {
@@ -1552,7 +1850,7 @@ type UpdateNotebookInstanceRequest struct {
 
 	// 其他存储库列表
 	// 每个元素可以是已创建的存储库名称或者已https://开头的公共git库
-	AdditionalCodeRepositories []*string `json:"AdditionalCodeRepositories,omitempty" name:"AdditionalCodeRepositories" list`
+	AdditionalCodeRepositories []*string `json:"AdditionalCodeRepositories,omitempty" name:"AdditionalCodeRepositories"`
 
 	// 是否取消关联默认存储库，默认false
 	// 该值为true时，DefaultCodeRepository将被忽略
@@ -1582,8 +1880,32 @@ func (r *UpdateNotebookInstanceRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateNotebookInstanceRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NotebookInstanceName")
+	delete(f, "RoleArn")
+	delete(f, "RootAccess")
+	delete(f, "VolumeSizeInGB")
+	delete(f, "InstanceType")
+	delete(f, "LifecycleScriptsName")
+	delete(f, "DisassociateLifecycleScript")
+	delete(f, "DefaultCodeRepository")
+	delete(f, "AdditionalCodeRepositories")
+	delete(f, "DisassociateDefaultCodeRepository")
+	delete(f, "DisassociateAdditionalCodeRepositories")
+	delete(f, "ClsAccess")
+	delete(f, "AutoStopping")
+	delete(f, "StoppingCondition")
+	delete(f, "ClsConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateNotebookInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateNotebookInstanceResponse struct {
@@ -1600,8 +1922,10 @@ func (r *UpdateNotebookInstanceResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateNotebookInstanceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateNotebookLifecycleScriptRequest struct {
@@ -1624,8 +1948,20 @@ func (r *UpdateNotebookLifecycleScriptRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateNotebookLifecycleScriptRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NotebookLifecycleScriptsName")
+	delete(f, "CreateScript")
+	delete(f, "StartScript")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateNotebookLifecycleScriptRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateNotebookLifecycleScriptResponse struct {
@@ -1642,15 +1978,17 @@ func (r *UpdateNotebookLifecycleScriptResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *UpdateNotebookLifecycleScriptResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VpcConfig struct {
 
 	// 安全组id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds" list`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 
 	// 子网id
 	// 注意：此字段可能返回 null，表示取不到有效值。

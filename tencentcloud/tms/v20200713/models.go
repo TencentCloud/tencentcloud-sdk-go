@@ -16,7 +16,7 @@ package v20200713
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -50,8 +50,24 @@ func (r *AccountTipoffAccessRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AccountTipoffAccessRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ReportedAccount")
+	delete(f, "ReportedAccountType")
+	delete(f, "EvilType")
+	delete(f, "SenderAccount")
+	delete(f, "SenderAccountType")
+	delete(f, "SenderIP")
+	delete(f, "EvilContent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AccountTipoffAccessRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type AccountTipoffAccessResponse struct {
@@ -72,36 +88,149 @@ func (r *AccountTipoffAccessResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *AccountTipoffAccessResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTextLibRequest struct {
+	*tchttp.BaseRequest
+
+	// 内容类型 text: 1; image: 2; audio: 3; video: 4
+	StrategyType *int64 `json:"StrategyType,omitempty" name:"StrategyType"`
+}
+
+func (r *DescribeTextLibRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTextLibRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StrategyType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTextLibRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTextLibResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 文本库id和name列表
+		TextLib []*TextLib `json:"TextLib,omitempty" name:"TextLib"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTextLibResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTextLibResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTextStatRequest struct {
+	*tchttp.BaseRequest
+
+	// 审核类型 1: 机器审核; 2: 人工审核
+	AuditType *int64 `json:"AuditType,omitempty" name:"AuditType"`
+
+	// 查询条件
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeTextStatRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTextStatRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AuditType")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTextStatRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTextStatResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 识别结果统计
+		Overview *Overview `json:"Overview,omitempty" name:"Overview"`
+
+		// 识别量统计
+		TrendCount []*TrendCount `json:"TrendCount,omitempty" name:"TrendCount"`
+
+		// 违规数据分布
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		EvilCount []*EvilCount `json:"EvilCount,omitempty" name:"EvilCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTextStatResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTextStatResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DetailResults struct {
 
-	// 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义关键词
+	// 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+	// 以及令人反感、不安全或不适宜的内容类型。
 	Label *string `json:"Label,omitempty" name:"Label"`
 
-	// 建议值,Block：打击,Review：待复审,Pass：正常
+	// 建议您拿到判断结果后的执行操作。
+	// 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 	// 该标签下命中的关键词
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
 
 	// 该标签模型命中的分值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Score *int64 `json:"Score,omitempty" name:"Score"`
 
-	// 仅当Lable为Custom自定义关键词时有效，表示自定义关键词库类型，1:黑白库，2：自定义库
+	// 仅当Label为Custom自定义关键词时有效，表示自定义关键词库类型，1:黑白库，2：自定义库
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LibType *int64 `json:"LibType,omitempty" name:"LibType"`
 
-	// 仅当Lable为Custom自定义关键词时有效，表示自定义库id
+	// 仅当Label为Custom自定义关键词时有效，表示自定义库id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LibId *string `json:"LibId,omitempty" name:"LibId"`
 
-	// 仅当Lable为Custom自定义关键词时有效，表示自定义库名称
+	// 仅当Labe为Custom自定义关键词时有效，表示自定义库名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LibName *string `json:"LibName,omitempty" name:"LibName"`
 }
@@ -130,6 +259,54 @@ type Device struct {
 	IDFV *string `json:"IDFV,omitempty" name:"IDFV"`
 }
 
+type EvilCount struct {
+
+	// ----非必选，该参数功能暂未对外开放
+	EvilType *string `json:"EvilType,omitempty" name:"EvilType"`
+
+	// 分布类型总量
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+}
+
+type Filters struct {
+
+	// 查询字段：
+	// 策略BizType
+	// 子账号SubUin
+	// 日期区间DateRange
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 查询值
+	Values []*string `json:"Values,omitempty" name:"Values"`
+}
+
+type Overview struct {
+
+	// 总调用量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 总调用时长
+	TotalHour *int64 `json:"TotalHour,omitempty" name:"TotalHour"`
+
+	// 通过量
+	PassCount *int64 `json:"PassCount,omitempty" name:"PassCount"`
+
+	// 通过时长
+	PassHour *int64 `json:"PassHour,omitempty" name:"PassHour"`
+
+	// 违规量
+	EvilCount *int64 `json:"EvilCount,omitempty" name:"EvilCount"`
+
+	// 违规时长
+	EvilHour *int64 `json:"EvilHour,omitempty" name:"EvilHour"`
+
+	// 疑似违规量
+	SuspectCount *int64 `json:"SuspectCount,omitempty" name:"SuspectCount"`
+
+	// 疑似违规时长
+	SuspectHour *int64 `json:"SuspectHour,omitempty" name:"SuspectHour"`
+}
+
 type RiskDetails struct {
 
 	// 风险类别，RiskAccount，RiskIP, RiskIMEI
@@ -139,22 +316,31 @@ type RiskDetails struct {
 	Level *int64 `json:"Level,omitempty" name:"Level"`
 }
 
+type TextLib struct {
+
+	// 库id
+	LibId *int64 `json:"LibId,omitempty" name:"LibId"`
+
+	// 库名
+	LibName *string `json:"LibName,omitempty" name:"LibName"`
+}
+
 type TextModerationRequest struct {
 	*tchttp.BaseRequest
 
-	// 文本内容Base64编码。原文长度需小于15000字节，即5000个汉字以内。
+	// 文本内容Base64编码。限制原文长度不能超过10000个unicode字符
 	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略
+	BizType *string `json:"BizType,omitempty" name:"BizType"`
 
 	// 数据ID，英文字母、下划线、-组成，不超过64个字符
 	DataId *string `json:"DataId,omitempty" name:"DataId"`
 
-	// 该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略。 -- 该字段暂未开放。
-	BizType *string `json:"BizType,omitempty" name:"BizType"`
-
-	// 账号相关信息字段，填入后可识别违规风险账号。
+	// 账号相关信息字段，填入后可识别违规风险账号
 	User *User `json:"User,omitempty" name:"User"`
 
-	// 设备相关信息字段，填入后可识别违规风险设备。
+	// 设备相关信息字段，填入后可识别违规风险设备
 	Device *Device `json:"Device,omitempty" name:"Device"`
 }
 
@@ -163,49 +349,65 @@ func (r *TextModerationRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TextModerationRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Content")
+	delete(f, "BizType")
+	delete(f, "DataId")
+	delete(f, "User")
+	delete(f, "Device")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextModerationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TextModerationResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 您在入参时所填入的Biztype参数。 -- 该字段暂未开放。
+		// 您在入参时所填入的Biztype参数
 		BizType *string `json:"BizType,omitempty" name:"BizType"`
 
-		// 数据是否属于恶意类型。
-	//  0：正常 1：可疑
+		// 数据是否属于恶意类型，0：正常 1：可疑
 		EvilFlag *int64 `json:"EvilFlag,omitempty" name:"EvilFlag"`
 
-		// 机器识别后判断违规所属类型。
-	// Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义关键词
+		// 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库，以及令人反感、不安全或不适宜的内容类型
 		Label *string `json:"Label,omitempty" name:"Label"`
 
-		// 建议您拿到判断结果后的执行操作。
-	// Block：建议打击，Review：建议复审，Normal：建议通过。
+		// 建议您拿到判断结果后的执行操作
+	// 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
 		Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
 		// 文本命中的关键词信息，用于提示您文本违规的具体原因，可能会返回多个命中的关键词。（如：加我微信）
-	// 如返回值为空，Score不为空，即识别结果（Label）是来自于语义模型判断的返回值。
+	// 如返回值为空，Score不为空，即识别结果（Label）是来自于语义模型判断的返回值
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Keywords []*string `json:"Keywords,omitempty" name:"Keywords" list`
+		Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
 
 		// 机器判断当前分类的置信度，取值范围：0.00~100.00。分数越高，表示越有可能属于当前分类。
 	// （如：色情 99.99，则该样本属于色情的置信度非常高。）
 		Score *int64 `json:"Score,omitempty" name:"Score"`
 
-		// 接口识别样本后返回的详细结果。
+		// 接口识别样本后返回的详细结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		DetailResults []*DetailResults `json:"DetailResults,omitempty" name:"DetailResults" list`
+		DetailResults []*DetailResults `json:"DetailResults,omitempty" name:"DetailResults"`
 
-		// 接口识别样本中存在违规账号风险的检测结果。
+		// 接口识别样本中存在违规账号风险的检测结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		RiskDetails []*RiskDetails `json:"RiskDetails,omitempty" name:"RiskDetails" list`
+		RiskDetails []*RiskDetails `json:"RiskDetails,omitempty" name:"RiskDetails"`
 
-		// 扩展字段，用于特定信息返回，不同客户/Biztype下返回信息不同。
+		// 扩展字段，用于特定信息返回，不同客户/Biztype下返回信息不同
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Extra *string `json:"Extra,omitempty" name:"Extra"`
+
+		// 请求参数中的DataId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DataId *string `json:"DataId,omitempty" name:"DataId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -217,8 +419,10 @@ func (r *TextModerationResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TextModerationResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TipoffResponse struct {
@@ -228,6 +432,45 @@ type TipoffResponse struct {
 
 	// 结果描述
 	ResultMsg *string `json:"ResultMsg,omitempty" name:"ResultMsg"`
+}
+
+type TrendCount struct {
+
+	// 总调用量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 总调用时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalHour *int64 `json:"TotalHour,omitempty" name:"TotalHour"`
+
+	// 通过量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PassCount *int64 `json:"PassCount,omitempty" name:"PassCount"`
+
+	// 通过时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PassHour *int64 `json:"PassHour,omitempty" name:"PassHour"`
+
+	// 违规量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EvilCount *int64 `json:"EvilCount,omitempty" name:"EvilCount"`
+
+	// 违规时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EvilHour *int64 `json:"EvilHour,omitempty" name:"EvilHour"`
+
+	// 疑似违规量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuspectCount *int64 `json:"SuspectCount,omitempty" name:"SuspectCount"`
+
+	// 疑似违规时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuspectHour *int64 `json:"SuspectHour,omitempty" name:"SuspectHour"`
+
+	// 日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Date *string `json:"Date,omitempty" name:"Date"`
 }
 
 type User struct {

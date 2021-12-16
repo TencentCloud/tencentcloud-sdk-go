@@ -16,7 +16,7 @@ package v20191213
 
 import (
     "encoding/json"
-
+    tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -55,8 +55,24 @@ func (r *BeautifyPicRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BeautifyPicRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Image")
+	delete(f, "Url")
+	delete(f, "Whitening")
+	delete(f, "Smoothing")
+	delete(f, "FaceLifting")
+	delete(f, "EyeEnlarging")
+	delete(f, "RspImgType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BeautifyPicRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BeautifyPicResponse struct {
@@ -79,8 +95,10 @@ func (r *BeautifyPicResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BeautifyPicResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BeautifyVideoOutput struct {
@@ -121,7 +139,7 @@ type BeautifyVideoRequest struct {
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 美颜参数 - 美白、平滑、大眼和瘦脸。参数值范围[0, 100]。参数值为0，则不做美颜。参数默认值为0。目前默认取数组第一个元素是对所有人脸美颜。
-	BeautyParam []*BeautyParam `json:"BeautyParam,omitempty" name:"BeautyParam" list`
+	BeautyParam []*BeautyParam `json:"BeautyParam,omitempty" name:"BeautyParam"`
 
 	// 目前只支持mp4
 	OutputVideoType *string `json:"OutputVideoType,omitempty" name:"OutputVideoType"`
@@ -132,8 +150,20 @@ func (r *BeautifyVideoRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BeautifyVideoRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Url")
+	delete(f, "BeautyParam")
+	delete(f, "OutputVideoType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BeautifyVideoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BeautifyVideoResponse struct {
@@ -156,8 +186,10 @@ func (r *BeautifyVideoResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *BeautifyVideoResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type BeautyParam struct {
@@ -187,8 +219,18 @@ func (r *CancelBeautifyVideoJobRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CancelBeautifyVideoJobRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelBeautifyVideoJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CancelBeautifyVideoJobResponse struct {
@@ -205,14 +247,16 @@ func (r *CancelBeautifyVideoJobResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CancelBeautifyVideoJobResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateModelRequest struct {
 	*tchttp.BaseRequest
 
-	// 用于试唇色，要求必须是LUT 格式的cube文件转换成512*512的PNG图片。查看 [LUT文件的使用说明](https://cloud.tencent.com/document/product/1172/41701)。了解 [cube文件转png图片小工具](http://yyb.gtimg.com/aiplat/static/qcloud-cube-to-png.html)。
+	// 图片base64数据，用于试唇色，要求必须是LUT 格式的cube文件转换成512*512的PNG图片。查看 [LUT文件的使用说明](https://cloud.tencent.com/document/product/1172/41701)。了解 [cube文件转png图片小工具](http://yyb.gtimg.com/aiplat/static/qcloud-cube-to-png.html)。
 	LUTFile *string `json:"LUTFile,omitempty" name:"LUTFile"`
 
 	// 文件描述信息，可用于备注。
@@ -224,8 +268,19 @@ func (r *CreateModelRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateModelRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LUTFile")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateModelResponse struct {
@@ -245,8 +300,10 @@ func (r *CreateModelResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *CreateModelResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteModelRequest struct {
@@ -261,8 +318,18 @@ func (r *DeleteModelRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteModelRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteModelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteModelResponse struct {
@@ -279,8 +346,10 @@ func (r *DeleteModelResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *DeleteModelResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FaceRect struct {
@@ -313,8 +382,19 @@ func (r *GetModelListRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetModelListRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetModelListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetModelListResponse struct {
@@ -326,7 +406,7 @@ type GetModelListResponse struct {
 
 		// 素材数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ModelInfos []*ModelInfo `json:"ModelInfos,omitempty" name:"ModelInfos" list`
+		ModelInfos []*ModelInfo `json:"ModelInfos,omitempty" name:"ModelInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -338,8 +418,10 @@ func (r *GetModelListResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *GetModelListResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type LipColorInfo struct {
@@ -383,8 +465,18 @@ func (r *QueryBeautifyVideoJobRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryBeautifyVideoJobRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryBeautifyVideoJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryBeautifyVideoJobResponse struct {
@@ -408,8 +500,10 @@ func (r *QueryBeautifyVideoJobResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *QueryBeautifyVideoJobResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RGBAInfo struct {
@@ -427,12 +521,164 @@ type RGBAInfo struct {
 	A *int64 `json:"A,omitempty" name:"A"`
 }
 
+type StyleImageProRequest struct {
+	*tchttp.BaseRequest
+
+	// 滤镜类型，取值如下： 
+	// 1.白茶；2 白皙；3.初夏；4.东京；5.告白；6.暖阳；7.蔷薇；8.清澄；9.清透；10.甜薄荷；11.默认；12.心动；13.哑灰；14.樱桃布丁；15.自然；16.清逸；17.黑白；18.水果；19.爱情；20.冬日；21.相片；22.夏日；23.香氛；24.魅惑；25.悸动；26.沙滩；27.街拍；28.甜美；29.初吻；30.午后；31.活力；32.朦胧；33.悦动；34.时尚；35.气泡；36.柠檬；37.棉花糖；38.小溪；39.丽人；40.咖啡；41.嫩芽；42.热情；43.渐暖；44.早餐；45.白茶；46.白嫩；47.圣代；48.森林；49.冲浪；50.奶咖；51.清澈；52.微风；53.日落；54.水光；55.日系；56.星光；57.阳光；58.落叶；59.生机；60.甜心；61.清逸；62.春意；63.罗马；64.青涩；65.清风；66.暖心；67.海水；68.神秘；69.旧调1；70.旧调2；71.雪顶；72.日光；73.浮云；74.流彩；75.胶片；76.回味；77.奶酪；78.蝴蝶。
+	FilterType *int64 `json:"FilterType,omitempty" name:"FilterType"`
+
+	// 图片 base64 数据，base64 编码后大小不可超过5M。 
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	Image *string `json:"Image,omitempty" name:"Image"`
+
+	// 图片的 Url ，对应图片 base64 编码后大小不可超过5M。 
+	// 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。  
+	// 图片存储于腾讯云的 Url 可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
+	// 非腾讯云存储的Url速度和稳定性可能受一定影响。  
+	// 支持PNG、JPG、JPEG、BMP 等图片格式，不支持 GIF 图片。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 滤镜效果，取值[0,100]，0表示无效果，100表示满滤镜效果。默认值为80。
+	FilterDegree *int64 `json:"FilterDegree,omitempty" name:"FilterDegree"`
+
+	// 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
+	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
+}
+
+func (r *StyleImageProRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StyleImageProRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FilterType")
+	delete(f, "Image")
+	delete(f, "Url")
+	delete(f, "FilterDegree")
+	delete(f, "RspImgType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StyleImageProRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type StyleImageProResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// RspImgType 为 base64 时，返回处理后的图片 base64 数据。默认返回base64
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ResultImage *string `json:"ResultImage,omitempty" name:"ResultImage"`
+
+		// RspImgType 为 url 时，返回处理后的图片 url 数据。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ResultUrl *string `json:"ResultUrl,omitempty" name:"ResultUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StyleImageProResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StyleImageProResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type StyleImageRequest struct {
+	*tchttp.BaseRequest
+
+	// 滤镜类型，取值如下： 
+	// 1.白茶；2 白皙；3.初夏；4.东京；5.告白；6.暖阳；7.蔷薇；8.清澄；9.清透；10.甜薄荷；11.默认；12.心动；13.哑灰；14.樱桃布丁；15.自然；16.清逸；17.黑白；18.水果；19.爱情；20.冬日；21.相片；22.夏日；23.香氛；24.魅惑；25.悸动；26.沙滩；27.街拍；28.甜美；29.初吻；30.午后。
+	FilterType *int64 `json:"FilterType,omitempty" name:"FilterType"`
+
+	// 图片 base64 数据，base64 编码后大小不可超过5M。 
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	Image *string `json:"Image,omitempty" name:"Image"`
+
+	// 图片的 Url ，对应图片 base64 编码后大小不可超过5M。 
+	// 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。  
+	// 图片存储于腾讯云的 Url 可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
+	// 非腾讯云存储的Url速度和稳定性可能受一定影响。  
+	// 支持PNG、JPG、JPEG、BMP 等图片格式，不支持 GIF 图片。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 滤镜效果，取值[0,100]，0表示无效果，100表示满滤镜效果。默认值为80。
+	FilterDegree *int64 `json:"FilterDegree,omitempty" name:"FilterDegree"`
+
+	// 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
+	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
+}
+
+func (r *StyleImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StyleImageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FilterType")
+	delete(f, "Image")
+	delete(f, "Url")
+	delete(f, "FilterDegree")
+	delete(f, "RspImgType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StyleImageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type StyleImageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// RspImgType 为 base64 时，返回处理后的图片 base64 数据。默认返回base64
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ResultImage *string `json:"ResultImage,omitempty" name:"ResultImage"`
+
+		// RspImgType 为 url 时，返回处理后的图片 url 数据。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ResultUrl *string `json:"ResultUrl,omitempty" name:"ResultUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StyleImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StyleImageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type TryLipstickPicRequest struct {
 	*tchttp.BaseRequest
 
 	// 唇色信息。 
 	// 您可以输入最多3个 LipColorInfo 来实现给一张图中的最多3张人脸试唇色。
-	LipColorInfos []*LipColorInfo `json:"LipColorInfos,omitempty" name:"LipColorInfos" list`
+	LipColorInfos []*LipColorInfo `json:"LipColorInfos,omitempty" name:"LipColorInfos"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过6M。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
@@ -454,8 +700,21 @@ func (r *TryLipstickPicRequest) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TryLipstickPicRequest) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LipColorInfos")
+	delete(f, "Image")
+	delete(f, "Url")
+	delete(f, "RspImgType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TryLipstickPicRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TryLipstickPicResponse struct {
@@ -478,6 +737,8 @@ func (r *TryLipstickPicResponse) ToJsonString() string {
     return string(b)
 }
 
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
 func (r *TryLipstickPicResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
+	return json.Unmarshal([]byte(s), &r)
 }

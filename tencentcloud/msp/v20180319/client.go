@@ -34,7 +34,7 @@ func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, 
     return
 }
 
-func NewClient(credential *common.Credential, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
     client = &Client{}
     client.Init(region).
         WithCredential(credential).
@@ -48,6 +48,8 @@ func NewDeregisterMigrationTaskRequest() (request *DeregisterMigrationTaskReques
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("msp", APIVersion, "DeregisterMigrationTask")
+    
+    
     return
 }
 
@@ -58,11 +60,17 @@ func NewDeregisterMigrationTaskResponse() (response *DeregisterMigrationTaskResp
     return
 }
 
+// DeregisterMigrationTask
 // 取消注册迁移任务
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DeregisterMigrationTask(request *DeregisterMigrationTaskRequest) (response *DeregisterMigrationTaskResponse, err error) {
     if request == nil {
         request = NewDeregisterMigrationTaskRequest()
     }
+    
     response = NewDeregisterMigrationTaskResponse()
     err = c.Send(request, response)
     return
@@ -73,6 +81,8 @@ func NewDescribeMigrationTaskRequest() (request *DescribeMigrationTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("msp", APIVersion, "DescribeMigrationTask")
+    
+    
     return
 }
 
@@ -83,11 +93,16 @@ func NewDescribeMigrationTaskResponse() (response *DescribeMigrationTaskResponse
     return
 }
 
+// DescribeMigrationTask
 // 获取指定迁移任务详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeMigrationTask(request *DescribeMigrationTaskRequest) (response *DescribeMigrationTaskResponse, err error) {
     if request == nil {
         request = NewDescribeMigrationTaskRequest()
     }
+    
     response = NewDescribeMigrationTaskResponse()
     err = c.Send(request, response)
     return
@@ -98,6 +113,8 @@ func NewListMigrationProjectRequest() (request *ListMigrationProjectRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("msp", APIVersion, "ListMigrationProject")
+    
+    
     return
 }
 
@@ -108,11 +125,16 @@ func NewListMigrationProjectResponse() (response *ListMigrationProjectResponse) 
     return
 }
 
+// ListMigrationProject
 // 获取迁移项目名称列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) ListMigrationProject(request *ListMigrationProjectRequest) (response *ListMigrationProjectResponse, err error) {
     if request == nil {
         request = NewListMigrationProjectRequest()
     }
+    
     response = NewListMigrationProjectResponse()
     err = c.Send(request, response)
     return
@@ -123,6 +145,8 @@ func NewListMigrationTaskRequest() (request *ListMigrationTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("msp", APIVersion, "ListMigrationTask")
+    
+    
     return
 }
 
@@ -133,11 +157,16 @@ func NewListMigrationTaskResponse() (response *ListMigrationTaskResponse) {
     return
 }
 
+// ListMigrationTask
 // 获取迁移任务列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) ListMigrationTask(request *ListMigrationTaskRequest) (response *ListMigrationTaskResponse, err error) {
     if request == nil {
         request = NewListMigrationTaskRequest()
     }
+    
     response = NewListMigrationTaskResponse()
     err = c.Send(request, response)
     return
@@ -148,6 +177,8 @@ func NewModifyMigrationTaskBelongToProjectRequest() (request *ModifyMigrationTas
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("msp", APIVersion, "ModifyMigrationTaskBelongToProject")
+    
+    
     return
 }
 
@@ -158,11 +189,17 @@ func NewModifyMigrationTaskBelongToProjectResponse() (response *ModifyMigrationT
     return
 }
 
+// ModifyMigrationTaskBelongToProject
 // 更改迁移任务所属项目
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyMigrationTaskBelongToProject(request *ModifyMigrationTaskBelongToProjectRequest) (response *ModifyMigrationTaskBelongToProjectResponse, err error) {
     if request == nil {
         request = NewModifyMigrationTaskBelongToProjectRequest()
     }
+    
     response = NewModifyMigrationTaskBelongToProjectResponse()
     err = c.Send(request, response)
     return
@@ -173,6 +210,8 @@ func NewModifyMigrationTaskStatusRequest() (request *ModifyMigrationTaskStatusRe
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("msp", APIVersion, "ModifyMigrationTaskStatus")
+    
+    
     return
 }
 
@@ -183,11 +222,16 @@ func NewModifyMigrationTaskStatusResponse() (response *ModifyMigrationTaskStatus
     return
 }
 
+// ModifyMigrationTaskStatus
 // 更新迁移任务状态
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) ModifyMigrationTaskStatus(request *ModifyMigrationTaskStatusRequest) (response *ModifyMigrationTaskStatusResponse, err error) {
     if request == nil {
         request = NewModifyMigrationTaskStatusRequest()
     }
+    
     response = NewModifyMigrationTaskStatusResponse()
     err = c.Send(request, response)
     return
@@ -198,6 +242,8 @@ func NewRegisterMigrationTaskRequest() (request *RegisterMigrationTaskRequest) {
         BaseRequest: &tchttp.BaseRequest{},
     }
     request.Init().WithApiInfo("msp", APIVersion, "RegisterMigrationTask")
+    
+    
     return
 }
 
@@ -208,11 +254,17 @@ func NewRegisterMigrationTaskResponse() (response *RegisterMigrationTaskResponse
     return
 }
 
+// RegisterMigrationTask
 // 注册迁移任务
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) RegisterMigrationTask(request *RegisterMigrationTaskRequest) (response *RegisterMigrationTaskResponse, err error) {
     if request == nil {
         request = NewRegisterMigrationTaskRequest()
     }
+    
     response = NewRegisterMigrationTaskResponse()
     err = c.Send(request, response)
     return
