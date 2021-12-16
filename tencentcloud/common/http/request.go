@@ -41,6 +41,7 @@ type Request interface {
 	SetRootDomain(string)
 	SetDomain(string)
 	SetHttpMethod(string)
+	SetPath(string)
 	SetContentType(string)
 	SetBody([]byte)
 }
@@ -148,6 +149,10 @@ func (r *BaseRequest) SetHttpMethod(method string) {
 			r.httpMethod = GET
 		}
 	}
+}
+
+func (r *BaseRequest) SetPath(path string) string {
+	r.path = path
 }
 
 func (r *BaseRequest) GetService() string {
