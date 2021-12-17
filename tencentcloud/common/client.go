@@ -359,11 +359,6 @@ func (c *Client) WithProvider(provider Provider) (*Client, error) {
 }
 
 func (c *Client) withRegionBreaker() *Client {
-	// 二者都赋值是一个错误的做法，因为这样用户会感到意外为何自己对BackupEndPoint的赋值没有生效
-	if c.profile.BackupEndpoint != "" && c.profile.BackupEndPoint != "" {
-		panic("can not set value of both BackupEndpoint and BackupEndPoint")
-	}
-
 	rb := defaultRegionBreaker()
 	if c.profile.BackupEndpoint != "" {
 		rb.backupEndpoint = c.profile.BackupEndpoint
