@@ -20,11 +20,20 @@ const (
 	// CAM签名/鉴权错误。
 	AUTHFAILURE = "AuthFailure"
 
+	// 查询对象存储失败。
+	FAILEDOPERATION_COSERROR = "FailedOperation.CosError"
+
 	// 获取上传配置信息错误。
 	FAILEDOPERATION_COSPROPERTIESERROR = "FailedOperation.CosPropertiesError"
 
 	// 创建订单失败。
 	FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+
+	// 数据库错误。
+	FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+
+	// 操作失败或者网络超时。
+	FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 
 	// 获取VPC网络信息失败。
 	FAILEDOPERATION_GETVPCFAILED = "FailedOperation.GetVpcFailed"
@@ -163,6 +172,9 @@ const (
 
 	// 可选参数[enable, disable]。
 	INVALIDPARAMETERVALUE_MODIFYTYPEVALUEINVALID = "InvalidParameterValue.ModifyTypeValueInvalid"
+
+	// 是CVM类型。
+	INVALIDPARAMETERVALUE_ONCVMTYPENOTSUPPORTED = "InvalidParameterValue.OnCvmTypeNotSupported"
 
 	// 参数类型错误。
 	INVALIDPARAMETERVALUE_PARAMETERTYPEERROR = "InvalidParameterValue.ParameterTypeError"

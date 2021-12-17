@@ -140,6 +140,18 @@ func (r *AttachDisksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AutoMountConfiguration struct {
+
+	// 要挂载到的实例ID。
+	InstanceId []*string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 子机内的挂载点。
+	MountPoint []*string `json:"MountPoint,omitempty" name:"MountPoint"`
+
+	// 文件系统类型，支持的有 ext4、xfs。
+	FileSystemType *string `json:"FileSystemType,omitempty" name:"FileSystemType"`
+}
+
 type AutoSnapshotPolicy struct {
 
 	// 定期快照策略ID。
@@ -378,6 +390,9 @@ type CreateDisksRequest struct {
 
 	// 销毁云盘时删除关联的非永久保留快照。0 表示非永久快照不随云盘销毁而销毁，1表示非永久快照随云盘销毁而销毁，默认取0。快照是否永久保留可以通过DescribeSnapshots接口返回的快照详情的IsPermanent字段来判断，true表示永久快照，false表示非永久快照。
 	DeleteSnapshot *int64 `json:"DeleteSnapshot,omitempty" name:"DeleteSnapshot"`
+
+	// 创建云盘时指定自动挂载并初始化该数据盘。
+	AutoMountConfiguration *AutoMountConfiguration `json:"AutoMountConfiguration,omitempty" name:"AutoMountConfiguration"`
 }
 
 func (r *CreateDisksRequest) ToJsonString() string {
@@ -406,6 +421,7 @@ func (r *CreateDisksRequest) FromJsonString(s string) error {
 	delete(f, "Encrypt")
 	delete(f, "DiskChargePrepaid")
 	delete(f, "DeleteSnapshot")
+	delete(f, "AutoMountConfiguration")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDisksRequest has unknown keys!", "")
 	}

@@ -111,6 +111,46 @@ func (c *Client) CreateAgentGroup(request *CreateAgentGroupRequest) (response *C
     return
 }
 
+func NewCreateProbeTasksRequest() (request *CreateProbeTasksRequest) {
+    request = &CreateProbeTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cat", APIVersion, "CreateProbeTasks")
+    
+    
+    return
+}
+
+func NewCreateProbeTasksResponse() (response *CreateProbeTasksResponse) {
+    response = &CreateProbeTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateProbeTasks
+// 批量创建探测任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_NOVALIDNODES = "FailedOperation.NoValidNodes"
+//  FAILEDOPERATION_ORDEROUTOFCREDIT = "FailedOperation.OrderOutOfCredit"
+//  FAILEDOPERATION_TASKTYPENOTSAME = "FailedOperation.TaskTypeNotSame"
+//  FAILEDOPERATION_TRIALTASKEXCEED = "FailedOperation.TrialTaskExceed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateProbeTasks(request *CreateProbeTasksRequest) (response *CreateProbeTasksResponse, err error) {
+    if request == nil {
+        request = NewCreateProbeTasksRequest()
+    }
+    
+    response = NewCreateProbeTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTaskExRequest() (request *CreateTaskExRequest) {
     request = &CreateTaskExRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -175,6 +215,48 @@ func (c *Client) DeleteAgentGroup(request *DeleteAgentGroupRequest) (response *D
     }
     
     response = NewDeleteAgentGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteProbeTaskRequest() (request *DeleteProbeTaskRequest) {
+    request = &DeleteProbeTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cat", APIVersion, "DeleteProbeTask")
+    
+    
+    return
+}
+
+func NewDeleteProbeTaskResponse() (response *DeleteProbeTaskResponse) {
+    response = &DeleteProbeTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteProbeTask
+// 删除拨测任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_NOVALIDNODES = "FailedOperation.NoValidNodes"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  FAILEDOPERATION_TASKNOTRUNNING = "FailedOperation.TaskNotRunning"
+//  FAILEDOPERATION_TASKNOTSUSPENDED = "FailedOperation.TaskNotSuspended"
+//  FAILEDOPERATION_TASKOPERATIONNOTALLOW = "FailedOperation.TaskOperationNotAllow"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteProbeTask(request *DeleteProbeTaskRequest) (response *DeleteProbeTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteProbeTaskRequest()
+    }
+    
+    response = NewDeleteProbeTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -412,6 +494,117 @@ func (c *Client) DescribeCatLogs(request *DescribeCatLogsRequest) (response *Des
     }
     
     response = NewDescribeCatLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDetailedSingleProbeDataRequest() (request *DescribeDetailedSingleProbeDataRequest) {
+    request = &DescribeDetailedSingleProbeDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cat", APIVersion, "DescribeDetailedSingleProbeData")
+    
+    
+    return
+}
+
+func NewDescribeDetailedSingleProbeDataResponse() (response *DescribeDetailedSingleProbeDataResponse) {
+    response = &DescribeDetailedSingleProbeDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDetailedSingleProbeData
+// 根据时间范围、任务ID、运营商等条件查询单次拨测详情数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_ESQUERYERROR = "FailedOperation.ESQueryError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeDetailedSingleProbeData(request *DescribeDetailedSingleProbeDataRequest) (response *DescribeDetailedSingleProbeDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeDetailedSingleProbeDataRequest()
+    }
+    
+    response = NewDescribeDetailedSingleProbeDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeProbeNodesRequest() (request *DescribeProbeNodesRequest) {
+    request = &DescribeProbeNodesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cat", APIVersion, "DescribeProbeNodes")
+    
+    
+    return
+}
+
+func NewDescribeProbeNodesResponse() (response *DescribeProbeNodesResponse) {
+    response = &DescribeProbeNodesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeProbeNodes
+// 查询拨测节点
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeProbeNodes(request *DescribeProbeNodesRequest) (response *DescribeProbeNodesResponse, err error) {
+    if request == nil {
+        request = NewDescribeProbeNodesRequest()
+    }
+    
+    response = NewDescribeProbeNodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeProbeTasksRequest() (request *DescribeProbeTasksRequest) {
+    request = &DescribeProbeTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cat", APIVersion, "DescribeProbeTasks")
+    
+    
+    return
+}
+
+func NewDescribeProbeTasksResponse() (response *DescribeProbeTasksResponse) {
+    response = &DescribeProbeTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeProbeTasks
+// 查询探测任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_NOVALIDNODES = "FailedOperation.NoValidNodes"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeProbeTasks(request *DescribeProbeTasksRequest) (response *DescribeProbeTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeProbeTasksRequest()
+    }
+    
+    response = NewDescribeProbeTasksResponse()
     err = c.Send(request, response)
     return
 }
@@ -891,6 +1084,48 @@ func (c *Client) PauseTask(request *PauseTaskRequest) (response *PauseTaskRespon
     return
 }
 
+func NewResumeProbeTaskRequest() (request *ResumeProbeTaskRequest) {
+    request = &ResumeProbeTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cat", APIVersion, "ResumeProbeTask")
+    
+    
+    return
+}
+
+func NewResumeProbeTaskResponse() (response *ResumeProbeTaskResponse) {
+    response = &ResumeProbeTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ResumeProbeTask
+// 恢复拨测任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_NOVALIDNODES = "FailedOperation.NoValidNodes"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  FAILEDOPERATION_TASKNOTRUNNING = "FailedOperation.TaskNotRunning"
+//  FAILEDOPERATION_TASKNOTSUSPENDED = "FailedOperation.TaskNotSuspended"
+//  FAILEDOPERATION_TASKOPERATIONNOTALLOW = "FailedOperation.TaskOperationNotAllow"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ResumeProbeTask(request *ResumeProbeTaskRequest) (response *ResumeProbeTaskResponse, err error) {
+    if request == nil {
+        request = NewResumeProbeTaskRequest()
+    }
+    
+    response = NewResumeProbeTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRunTaskRequest() (request *RunTaskRequest) {
     request = &RunTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -921,6 +1156,90 @@ func (c *Client) RunTask(request *RunTaskRequest) (response *RunTaskResponse, er
     }
     
     response = NewRunTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSuspendProbeTaskRequest() (request *SuspendProbeTaskRequest) {
+    request = &SuspendProbeTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cat", APIVersion, "SuspendProbeTask")
+    
+    
+    return
+}
+
+func NewSuspendProbeTaskResponse() (response *SuspendProbeTaskResponse) {
+    response = &SuspendProbeTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SuspendProbeTask
+// 暂停拨测任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  FAILEDOPERATION_TASKNOTRUNNING = "FailedOperation.TaskNotRunning"
+//  FAILEDOPERATION_TASKNOTSUSPENDED = "FailedOperation.TaskNotSuspended"
+//  FAILEDOPERATION_TASKOPERATIONNOTALLOW = "FailedOperation.TaskOperationNotAllow"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) SuspendProbeTask(request *SuspendProbeTaskRequest) (response *SuspendProbeTaskResponse, err error) {
+    if request == nil {
+        request = NewSuspendProbeTaskRequest()
+    }
+    
+    response = NewSuspendProbeTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateProbeTaskConfigurationListRequest() (request *UpdateProbeTaskConfigurationListRequest) {
+    request = &UpdateProbeTaskConfigurationListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cat", APIVersion, "UpdateProbeTaskConfigurationList")
+    
+    
+    return
+}
+
+func NewUpdateProbeTaskConfigurationListResponse() (response *UpdateProbeTaskConfigurationListResponse) {
+    response = &UpdateProbeTaskConfigurationListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateProbeTaskConfigurationList
+// 批量更新拨测任务配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_NOVALIDNODES = "FailedOperation.NoValidNodes"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  FAILEDOPERATION_TASKNOTRUNNING = "FailedOperation.TaskNotRunning"
+//  FAILEDOPERATION_TASKNOTSUSPENDED = "FailedOperation.TaskNotSuspended"
+//  FAILEDOPERATION_TASKOPERATIONNOTALLOW = "FailedOperation.TaskOperationNotAllow"
+//  FAILEDOPERATION_TASKTYPENOTSAME = "FailedOperation.TaskTypeNotSame"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) UpdateProbeTaskConfigurationList(request *UpdateProbeTaskConfigurationListRequest) (response *UpdateProbeTaskConfigurationListResponse, err error) {
+    if request == nil {
+        request = NewUpdateProbeTaskConfigurationListRequest()
+    }
+    
+    response = NewUpdateProbeTaskConfigurationListResponse()
     err = c.Send(request, response)
     return
 }

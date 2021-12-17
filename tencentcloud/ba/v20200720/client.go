@@ -98,6 +98,7 @@ func NewDescribeGetAuthInfoResponse() (response *DescribeGetAuthInfoResponse) {
 // 获取实名认证信息
 //
 // 可能返回的错误码:
+//  INTERNALERROR_RESOURCENOTFOUND = "InternalError.ResourceNotFound"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeGetAuthInfo(request *DescribeGetAuthInfoRequest) (response *DescribeGetAuthInfoResponse, err error) {
@@ -133,6 +134,7 @@ func NewSyncIcpOrderWebInfoResponse() (response *SyncIcpOrderWebInfoResponse) {
 // 只有指定的网站信息字段能被同步
 //
 // 可能返回的错误码:
+//  INTERNALERROR_RESOURCENOTFOUND = "InternalError.ResourceNotFound"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) SyncIcpOrderWebInfo(request *SyncIcpOrderWebInfoRequest) (response *SyncIcpOrderWebInfoResponse, err error) {

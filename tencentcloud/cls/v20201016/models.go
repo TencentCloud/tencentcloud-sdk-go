@@ -304,6 +304,27 @@ type CallBackInfo struct {
 	Headers []*string `json:"Headers,omitempty" name:"Headers"`
 }
 
+type Ckafka struct {
+
+	// Ckafka 的 Vip
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// Ckafka 的 Vport
+	Vport *string `json:"Vport,omitempty" name:"Vport"`
+
+	// Ckafka 的 InstanceId
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// Ckafka 的 InstanceName
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// Ckafka 的 TopicId
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// Ckafka 的 TopicName
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+}
+
 type Column struct {
 
 	// 列的名字
@@ -357,6 +378,17 @@ type ConfigInfo struct {
 	// 用户自定义解析字符串
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserDefineRule *string `json:"UserDefineRule,omitempty" name:"UserDefineRule"`
+}
+
+type ConsumerContent struct {
+
+	// 是否投递 TAG 信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableTag *bool `json:"EnableTag,omitempty" name:"EnableTag"`
+
+	// 需要投递的元数据列表，目前仅支持：__SOURCE__，__FILENAME__和__TIMESTAMP__
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetaFields []*string `json:"MetaFields,omitempty" name:"MetaFields"`
 }
 
 type ContentInfo struct {
@@ -731,6 +763,64 @@ func (r *CreateConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateConsumerRequest struct {
+	*tchttp.BaseRequest
+
+	// 投递任务绑定的日志主题 ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 是否投递日志的元数据信息，默认为 true
+	NeedContent *bool `json:"NeedContent,omitempty" name:"NeedContent"`
+
+	// 如果需要投递元数据信息，元数据信息的描述
+	Content *ConsumerContent `json:"Content,omitempty" name:"Content"`
+
+	// CKafka的描述
+	Ckafka *Ckafka `json:"Ckafka,omitempty" name:"Ckafka"`
+}
+
+func (r *CreateConsumerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateConsumerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "NeedContent")
+	delete(f, "Content")
+	delete(f, "Ckafka")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConsumerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateConsumerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateConsumerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateConsumerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1453,6 +1543,52 @@ func (r *DeleteConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteConsumerRequest struct {
+	*tchttp.BaseRequest
+
+	// 投递任务绑定的日志主题 ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+}
+
+func (r *DeleteConsumerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteConsumerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteConsumerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteConsumerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteConsumerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteConsumerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2341,6 +2477,65 @@ func (r *DescribeConfigsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeConfigsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeConsumerRequest struct {
+	*tchttp.BaseRequest
+
+	// 投递任务绑定的日志主题 ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+}
+
+func (r *DescribeConsumerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConsumerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConsumerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeConsumerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 投递任务是否生效
+		Effective *bool `json:"Effective,omitempty" name:"Effective"`
+
+		// 是否投递日志的元数据信息
+		NeedContent *bool `json:"NeedContent,omitempty" name:"NeedContent"`
+
+		// 如果需要投递元数据信息，元数据信息的描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Content *ConsumerContent `json:"Content,omitempty" name:"Content"`
+
+		// CKafka的描述
+		Ckafka *Ckafka `json:"Ckafka,omitempty" name:"Ckafka"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeConsumerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConsumerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3820,6 +4015,68 @@ func (r *ModifyConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyConsumerRequest struct {
+	*tchttp.BaseRequest
+
+	// 投递任务绑定的日志主题 ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 投递任务是否生效
+	Effective *bool `json:"Effective,omitempty" name:"Effective"`
+
+	// 是否投递日志的元数据信息，默认为 false
+	NeedContent *bool `json:"NeedContent,omitempty" name:"NeedContent"`
+
+	// 如果需要投递元数据信息，元数据信息的描述
+	Content *ConsumerContent `json:"Content,omitempty" name:"Content"`
+
+	// CKafka的描述
+	Ckafka *Ckafka `json:"Ckafka,omitempty" name:"Ckafka"`
+}
+
+func (r *ModifyConsumerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyConsumerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "Effective")
+	delete(f, "NeedContent")
+	delete(f, "Content")
+	delete(f, "Ckafka")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyConsumerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyConsumerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyConsumerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyConsumerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

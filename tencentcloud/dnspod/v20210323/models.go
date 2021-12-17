@@ -28,29 +28,29 @@ type AddRecordBatch struct {
 	// 记录值。
 	Value *string `json:"Value,omitempty" name:"Value"`
 
-	// 子域名(主机记录)。
+	// 子域名(主机记录)，默认为@。
 	SubDomain *string `json:"SubDomain,omitempty" name:"SubDomain"`
 
-	// 解析记录的线路，详见 DescribeRecordLineList 接口。
+	// 解析记录的线路，详见 DescribeRecordLineList 接口，RecordLine和RecordLineId都未填时，默认为「默认」线路。
 	RecordLine *string `json:"RecordLine,omitempty" name:"RecordLine"`
 
-	// 解析记录的线路 ID，RecordLine和RecordLineId都有时，系统优先取 RecordLineId
+	// 解析记录的线路 ID，RecordLine和RecordLineId都有时，系统优先取 RecordLineId。
 	RecordLineId *string `json:"RecordLineId,omitempty" name:"RecordLineId"`
 
-	// 记录权重值。
+	// 记录权重值(暂未支持)。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weight *uint64 `json:"Weight,omitempty" name:"Weight"`
 
-	// 记录的 MX 记录值，非 MX 记录类型，默认为 0，MX记录则必选
+	// 记录的 MX 记录值，非 MX 记录类型，默认为 0，MX记录则必选。
 	MX *uint64 `json:"MX,omitempty" name:"MX"`
 
-	// 记录的 TTL 值，默认600
+	// 记录的 TTL 值，默认600。
 	TTL *uint64 `json:"TTL,omitempty" name:"TTL"`
 
-	// 记录状态。0表示禁用，1表示启用，默认启用
+	// 记录状态(暂未支持)。0表示禁用，1表示启用。默认启用。
 	Enabled *uint64 `json:"Enabled,omitempty" name:"Enabled"`
 
-	// 记录别名
+	// 记录备注(暂未支持)。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 

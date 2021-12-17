@@ -2281,6 +2281,63 @@ func (r *DescribeDcnDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeFileDownloadUrlRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例分片ID
+	ShardId *string `json:"ShardId,omitempty" name:"ShardId"`
+
+	// 不带签名的文件路径
+	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
+}
+
+func (r *DescribeFileDownloadUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFileDownloadUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ShardId")
+	delete(f, "FilePath")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFileDownloadUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFileDownloadUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 带签名的下载连接
+		PreSignedUrl *string `json:"PreSignedUrl,omitempty" name:"PreSignedUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeFileDownloadUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFileDownloadUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeFlowRequest struct {
 	*tchttp.BaseRequest
 

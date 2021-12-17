@@ -533,7 +533,9 @@ func NewAssociateAddressResponse() (response *AssociateAddressResponse) {
 //  UNSUPPORTEDOPERATION_ACTIONNOTFOUND = "UnsupportedOperation.ActionNotFound"
 //  UNSUPPORTEDOPERATION_ADDRESSSTATUSNOTPERMIT = "UnsupportedOperation.AddressStatusNotPermit"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTSUPPORTED = "UnsupportedOperation.InstanceStateNotSupported"
+//  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 //  UNSUPPORTEDOPERATION_INVALIDADDRESSINTERNETCHARGETYPE = "UnsupportedOperation.InvalidAddressInternetChargeType"
+//  UNSUPPORTEDOPERATION_ISPNOTSUPPORTED = "UnsupportedOperation.IspNotSupported"
 func (c *Client) AssociateAddress(request *AssociateAddressRequest) (response *AssociateAddressResponse, err error) {
     if request == nil {
         request = NewAssociateAddressRequest()
@@ -1512,6 +1514,7 @@ func NewCreateDirectConnectGatewayResponse() (response *CreateDirectConnectGatew
 // 本接口（CreateDirectConnectGateway）用于创建专线网关。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_VPGHAGROUPNOTFOUND = "InvalidParameter.VpgHaGroupNotFound"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -1661,6 +1664,7 @@ func NewCreateIp6TranslatorsResponse() (response *CreateIp6TranslatorsResponse) 
 //
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
+//  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) CreateIp6Translators(request *CreateIp6TranslatorsRequest) (response *CreateIp6TranslatorsResponse, err error) {
     if request == nil {
         request = NewCreateIp6TranslatorsRequest()
@@ -2911,6 +2915,7 @@ func NewDeleteCcnResponse() (response *DeleteCcnResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_BANDWIDTHNOTEXPIRED = "UnsupportedOperation.BandwidthNotExpired"
+//  UNSUPPORTEDOPERATION_CCNHASFLOWLOG = "UnsupportedOperation.CcnHasFlowLog"
 func (c *Client) DeleteCcn(request *DeleteCcnRequest) (response *DeleteCcnResponse, err error) {
     if request == nil {
         request = NewDeleteCcnRequest()
@@ -6679,6 +6684,7 @@ func NewDisassociateAddressResponse() (response *DisassociateAddressResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_ADDRESSNOTFOUND = "InvalidParameterValue.AddressNotFound"
 //  INVALIDPARAMETERVALUE_ONLYSUPPORTEDFORMASTERNETWORKCARD = "InvalidParameterValue.OnlySupportedForMasterNetworkCard"
+//  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) DisassociateAddress(request *DisassociateAddressRequest) (response *DisassociateAddressResponse, err error) {
     if request == nil {
         request = NewDisassociateAddressRequest()
@@ -7484,9 +7490,12 @@ func NewModifyAddressInternetChargeTypeResponse() (response *ModifyAddressIntern
 //  INVALIDPARAMETERVALUE_ADDRESSIDMALFORMED = "InvalidParameterValue.AddressIdMalformed"
 //  INVALIDPARAMETERVALUE_ADDRESSNOTCALCIP = "InvalidParameterValue.AddressNotCalcIP"
 //  INVALIDPARAMETERVALUE_ADDRESSNOTFOUND = "InvalidParameterValue.AddressNotFound"
+//  INVALIDPARAMETERVALUE_INTERNETCHARGETYPENOTCHANGED = "InvalidParameterValue.InternetChargeTypeNotChanged"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNSUPPORTEDOPERATION_ADDRESSSTATUSNOTPERMIT = "UnsupportedOperation.AddressStatusNotPermit"
+//  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
+//  UNSUPPORTEDOPERATION_NATNOTSUPPORTED = "UnsupportedOperation.NatNotSupported"
 func (c *Client) ModifyAddressInternetChargeType(request *ModifyAddressInternetChargeTypeRequest) (response *ModifyAddressInternetChargeTypeResponse, err error) {
     if request == nil {
         request = NewModifyAddressInternetChargeTypeRequest()
@@ -8073,6 +8082,7 @@ func NewModifyIp6RuleResponse() (response *ModifyIp6RuleResponse) {
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_IPV6RULENOTCHANGE = "InvalidParameterValue.IPv6RuleNotChange"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 func (c *Client) ModifyIp6Rule(request *ModifyIp6RuleRequest) (response *ModifyIp6RuleResponse, err error) {
     if request == nil {

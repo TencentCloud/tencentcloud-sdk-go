@@ -708,6 +708,9 @@ type ClusterBasicSettings struct {
 
 	// 是否开启节点的默认安全组(默认: 否，Aphla特性)
 	NeedWorkSecurityGroup *bool `json:"NeedWorkSecurityGroup,omitempty" name:"NeedWorkSecurityGroup"`
+
+	// 当选择Cilium Overlay网络插件时，TKE会从该子网获取2个IP用来创建内网负载均衡
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }
 
 type ClusterCIDRSettings struct {
@@ -1326,7 +1329,7 @@ type CreateClusterRequest struct {
 	// 节点高级配置信息
 	InstanceAdvancedSettings *InstanceAdvancedSettings `json:"InstanceAdvancedSettings,omitempty" name:"InstanceAdvancedSettings"`
 
-	// 已存在实例的配置信息。所有实例必须在同一个VPC中，最大数量不超过100。
+	// 已存在实例的配置信息。所有实例必须在同一个VPC中，最大数量不超过100，不支持添加竞价实例。
 	ExistedInstancesForNode []*ExistedInstancesForNode `json:"ExistedInstancesForNode,omitempty" name:"ExistedInstancesForNode"`
 
 	// CVM类型和其对应的数据盘挂载配置信息

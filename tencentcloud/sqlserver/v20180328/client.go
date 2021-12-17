@@ -102,9 +102,10 @@ func NewCloneDBResponse() (response *CloneDBResponse) {
 // 本接口（CloneDB）用于克隆数据库，只支持克隆到本实例，克隆时必须指定新库名称。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INTERNALERROR_CREATEFLOWFAILED = "InternalError.CreateFlowFailed"
 //  INTERNALERROR_DBCONNECTERROR = "InternalError.DBConnectError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
@@ -538,10 +539,11 @@ func NewCreateMigrationResponse() (response *CreateMigrationResponse) {
 // 本接口（CreateMigration）作用是创建一个迁移任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CREATEFLOWFAILED = "InternalError.CreateFlowFailed"
 //  INTERNALERROR_DBCONNECTERROR = "InternalError.DBConnectError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -550,6 +552,7 @@ func NewCreateMigrationResponse() (response *CreateMigrationResponse) {
 //  INVALIDPARAMETERVALUE_DBCHARILLEGAL = "InvalidParameterValue.DBCharIllegal"
 //  INVALIDPARAMETERVALUE_DBEXIST = "InvalidParameterValue.DBExist"
 //  INVALIDPARAMETERVALUE_MIGRATIONNAMEISILLEGAL = "InvalidParameterValue.MigrationNameIsIllegal"
+//  INVALIDPARAMETERVALUE_ONCVMTYPENOTSUPPORTED = "InvalidParameterValue.OnCvmTypeNotSupported"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCEUNAVAILABLE_INSTANCEMIGRATEREGIONILLEGAL = "ResourceUnavailable.InstanceMigrateRegionIllegal"
 //  RESOURCEUNAVAILABLE_INSTANCEMIGRATESTATUSINVALID = "ResourceUnavailable.InstanceMigrateStatusInvalid"
@@ -936,8 +939,8 @@ func NewDescribeAccountsResponse() (response *DescribeAccountsResponse) {
 // 本接口（DescribeAccounts）用于拉取实例账户列表。
 //
 // 可能返回的错误码:
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_GCSERROR = "InternalError.GcsError"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
@@ -1159,10 +1162,10 @@ func NewDescribeBackupsResponse() (response *DescribeBackupsResponse) {
 // 本接口(DescribeBackups)用于查询备份列表。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COSERROR = "FailedOperation.CosError"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_COSERROR = "InternalError.CosError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_GCSERROR = "InternalError.GcsError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1282,10 +1285,9 @@ func NewDescribeDBInstancesResponse() (response *DescribeDBInstancesResponse) {
 // 本接口(DescribeDBInstances)用于查询实例列表。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_GETVPCFAILED = "FailedOperation.GetVpcFailed"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_GCSERROR = "InternalError.GcsError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1324,8 +1326,9 @@ func NewDescribeDBSecurityGroupsResponse() (response *DescribeDBSecurityGroupsRe
 // 本接口(DescribeDBSecurityGroups)用于查询实例的安全组详情。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  FAILEDOPERATION_SECURITYGROUPOPERATIONERROR = "FailedOperation.SecurityGroupOperationError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
@@ -1360,7 +1363,8 @@ func NewDescribeDBsResponse() (response *DescribeDBsResponse) {
 // 本接口（DescribeDBs）用于查询数据库列表。
 //
 // 可能返回的错误码:
-//  INTERNALERROR_GCSERROR = "InternalError.GcsError"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
@@ -1776,7 +1780,8 @@ func NewDescribeProductConfigResponse() (response *DescribeProductConfigResponse
 // 本接口 (DescribeProductConfig) 用于查询售卖规格配置。
 //
 // 可能返回的错误码:
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
@@ -2394,7 +2399,8 @@ func NewModifyAccountPrivilegeResponse() (response *ModifyAccountPrivilegeRespon
 // 本接口（ModifyAccountPrivilege）用于修改实例账户权限。
 //
 // 可能返回的错误码:
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"

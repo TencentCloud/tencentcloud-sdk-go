@@ -422,6 +422,78 @@ func (r *CreateAgentGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateProbeTasksRequest struct {
+	*tchttp.BaseRequest
+
+	// 批量任务名-地址
+	BatchTasks []*ProbeTaskBasicConfiguration `json:"BatchTasks,omitempty" name:"BatchTasks"`
+
+	// 任务类型
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 探测节点
+	Nodes []*string `json:"Nodes,omitempty" name:"Nodes"`
+
+	// 探测间隔
+	Interval *int64 `json:"Interval,omitempty" name:"Interval"`
+
+	// 探测参数
+	Parameters *string `json:"Parameters,omitempty" name:"Parameters"`
+
+	// 任务分类
+	// <li>1 = PC</li>
+	// <li> 2 = Mobile </li>
+	TaskCategory *int64 `json:"TaskCategory,omitempty" name:"TaskCategory"`
+
+	// 定时任务cron表达式
+	Cron *string `json:"Cron,omitempty" name:"Cron"`
+}
+
+func (r *CreateProbeTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateProbeTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BatchTasks")
+	delete(f, "TaskType")
+	delete(f, "Nodes")
+	delete(f, "Interval")
+	delete(f, "Parameters")
+	delete(f, "TaskCategory")
+	delete(f, "Cron")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProbeTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateProbeTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateProbeTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateProbeTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateTaskExRequest struct {
 	*tchttp.BaseRequest
 
@@ -647,6 +719,63 @@ func (r *DeleteAgentGroupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteAgentGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteProbeTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务 ID
+	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds"`
+}
+
+func (r *DeleteProbeTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteProbeTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteProbeTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteProbeTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务总量
+		Total *int64 `json:"Total,omitempty" name:"Total"`
+
+		// 任务成功量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SuccessCount *int64 `json:"SuccessCount,omitempty" name:"SuccessCount"`
+
+		// 任务执行结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Results []*TaskResult `json:"Results,omitempty" name:"Results"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteProbeTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteProbeTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1080,6 +1209,277 @@ func (r *DescribeCatLogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDetailedSingleProbeDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始时间戳（毫秒级）
+	BeginTime *uint64 `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 结束时间戳（毫秒级）
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 任务类型
+	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 待排序字段
+	SortField *string `json:"SortField,omitempty" name:"SortField"`
+
+	// true表示升序
+	Ascending *bool `json:"Ascending,omitempty" name:"Ascending"`
+
+	// 选中字段
+	SelectedFields []*string `json:"SelectedFields,omitempty" name:"SelectedFields"`
+
+	// 起始取数位置
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 取数数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 任务ID
+	TaskID []*string `json:"TaskID,omitempty" name:"TaskID"`
+
+	// 拨测点运营商
+	Operators []*string `json:"Operators,omitempty" name:"Operators"`
+
+	// 拨测点地区
+	Districts []*string `json:"Districts,omitempty" name:"Districts"`
+
+	// 错误类型
+	ErrorTypes []*string `json:"ErrorTypes,omitempty" name:"ErrorTypes"`
+}
+
+func (r *DescribeDetailedSingleProbeDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDetailedSingleProbeDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	delete(f, "TaskType")
+	delete(f, "SortField")
+	delete(f, "Ascending")
+	delete(f, "SelectedFields")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "TaskID")
+	delete(f, "Operators")
+	delete(f, "Districts")
+	delete(f, "ErrorTypes")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDetailedSingleProbeDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDetailedSingleProbeDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 单次详情数据
+		DataSet []*DetailedSingleDataDefine `json:"DataSet,omitempty" name:"DataSet"`
+
+		// 符合条件的数据总数
+		TotalNumber *int64 `json:"TotalNumber,omitempty" name:"TotalNumber"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDetailedSingleProbeDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDetailedSingleProbeDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProbeNodesRequest struct {
+	*tchttp.BaseRequest
+
+	// 节点类型
+	// <li> 1 = IDC </li>
+	// <li> 2 = LastMile </li>
+	// <li> 3 = Mobile </li>
+	NodeType *int64 `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 节点区域
+	// <li> 1 = 中国大陆 </li>
+	// <li> 2 = 港澳台 </li>
+	// <li> 3 = 海外 </li>
+	Location *int64 `json:"Location,omitempty" name:"Location"`
+
+	// 是否IPv6
+	IsIPv6 *bool `json:"IsIPv6,omitempty" name:"IsIPv6"`
+
+	// 名字模糊搜索
+	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+
+	// 付费模式
+	// <li>1 = 试用版本</li>
+	// <li> 2 = 付费版本 </li>
+	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+}
+
+func (r *DescribeProbeNodesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProbeNodesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NodeType")
+	delete(f, "Location")
+	delete(f, "IsIPv6")
+	delete(f, "NodeName")
+	delete(f, "PayMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProbeNodesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProbeNodesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 节点列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		NodeSet []*NodeDefine `json:"NodeSet,omitempty" name:"NodeSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeProbeNodesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProbeNodesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProbeTasksRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务 ID  列表
+	TaskIDs []*string `json:"TaskIDs,omitempty" name:"TaskIDs"`
+
+	// 任务名
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 探测目标
+	TargetAddress *string `json:"TargetAddress,omitempty" name:"TargetAddress"`
+
+	// 任务状态列表
+	TaskStatus []*int64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
+
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 付费模式
+	// <li>1 = 试用版本</li>
+	// <li> 2 = 付费版本 </li>
+	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 订单状态
+	// <li>1 = 正常</li>
+	// <li> 2 = 欠费 </li>
+	OrderState *int64 `json:"OrderState,omitempty" name:"OrderState"`
+
+	// 拨测类型
+	TaskType []*int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 节点类型
+	TaskCategory []*int64 `json:"TaskCategory,omitempty" name:"TaskCategory"`
+
+	// 排序的列
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 是否正序
+	Ascend *bool `json:"Ascend,omitempty" name:"Ascend"`
+}
+
+func (r *DescribeProbeTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProbeTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskIDs")
+	delete(f, "TaskName")
+	delete(f, "TargetAddress")
+	delete(f, "TaskStatus")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "PayMode")
+	delete(f, "OrderState")
+	delete(f, "TaskType")
+	delete(f, "TaskCategory")
+	delete(f, "OrderBy")
+	delete(f, "Ascend")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProbeTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProbeTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TaskSet []*ProbeTask `json:"TaskSet,omitempty" name:"TaskSet"`
+
+		// 任务总数
+		Total *int64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeProbeTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProbeTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeTaskDetailRequest struct {
 	*tchttp.BaseRequest
 
@@ -1243,6 +1643,18 @@ func (r *DescribeUserLimitResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DetailedSingleDataDefine struct {
+
+	// 拨测时间戳
+	ProbeTime *uint64 `json:"ProbeTime,omitempty" name:"ProbeTime"`
+
+	// 储存所有string类型字段
+	Labels []*Label `json:"Labels,omitempty" name:"Labels"`
+
+	// 储存所有float类型字段
+	Fields []*Field `json:"Fields,omitempty" name:"Fields"`
+}
+
 type DimensionsDetail struct {
 
 	// 运营商列表
@@ -1250,6 +1662,18 @@ type DimensionsDetail struct {
 
 	// 省份列表
 	Province []*string `json:"Province,omitempty" name:"Province"`
+}
+
+type Field struct {
+
+	// 自定义字段编号
+	ID *uint64 `json:"ID,omitempty" name:"ID"`
+
+	// 自定义字段名称/说明
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 字段值
+	Value *float64 `json:"Value,omitempty" name:"Value"`
 }
 
 type GetAvailRatioHistoryRequest struct {
@@ -1811,6 +2235,18 @@ type IspDetail struct {
 	AvgTime *float64 `json:"AvgTime,omitempty" name:"AvgTime"`
 }
 
+type Label struct {
+
+	// 自定义字段编号
+	ID *uint64 `json:"ID,omitempty" name:"ID"`
+
+	// 自定义字段名称/说明
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 字段值
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type ModifyAgentGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -2026,6 +2462,43 @@ func (r *ModifyTaskExResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type NodeDefine struct {
+
+	// 节点名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 节点代码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 节点类型
+	// <li> 1 = IDC </li>
+	// <li> 2 = LastMile </li>
+	// <li> 3 = Mobile </li>
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 网络服务商
+	NetService *string `json:"NetService,omitempty" name:"NetService"`
+
+	// 区域
+	District *string `json:"District,omitempty" name:"District"`
+
+	// 城市
+	City *string `json:"City,omitempty" name:"City"`
+
+	// IP 类型
+	// <li> 1 = IPv4 </li>
+	// <li> 2 = IPv6 </li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IPType *int64 `json:"IPType,omitempty" name:"IPType"`
+
+	// 区域
+	// <li> 1 = 中国大陆 </li>
+	// <li> 2 = 港澳台 </li>
+	// <li> 3 = 国外 </li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Location *int64 `json:"Location,omitempty" name:"Location"`
+}
+
 type PauseTaskRequest struct {
 	*tchttp.BaseRequest
 
@@ -2072,6 +2545,69 @@ func (r *PauseTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ProbeTask struct {
+
+	// 任务名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 任务 ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务类型
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 探测节点列表
+	Nodes []*string `json:"Nodes,omitempty" name:"Nodes"`
+
+	// 探测间隔
+	Interval *int64 `json:"Interval,omitempty" name:"Interval"`
+
+	// 探测参数
+	Parameters *string `json:"Parameters,omitempty" name:"Parameters"`
+
+	// 任务状态
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 目标地址
+	TargetAddress *string `json:"TargetAddress,omitempty" name:"TargetAddress"`
+
+	// 付费模式
+	// <li>1 = 试用版本</li>
+	// <li> 2 = 付费版本 </li>
+	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 订单状态
+	// <li>1 = 正常</li>
+	// <li> 2 = 欠费 </li>
+	OrderState *int64 `json:"OrderState,omitempty" name:"OrderState"`
+
+	// 任务分类
+	// <li>1 = PC</li>
+	// <li> 2 = Mobile </li>
+	TaskCategory *int64 `json:"TaskCategory,omitempty" name:"TaskCategory"`
+
+	// 创建时间
+	CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
+
+	// 定时任务cron表达式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cron *string `json:"Cron,omitempty" name:"Cron"`
+
+	// 定时任务启动状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CronState *int64 `json:"CronState,omitempty" name:"CronState"`
+}
+
+type ProbeTaskBasicConfiguration struct {
+
+	// 拨测任务名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 拨测目标地址
+	TargetAddress *string `json:"TargetAddress,omitempty" name:"TargetAddress"`
+}
+
 type ProvinceDetail struct {
 
 	// 可用率
@@ -2109,6 +2645,63 @@ type ResultSummary struct {
 
 	// 实时响应时间
 	ReponseTime *float64 `json:"ReponseTime,omitempty" name:"ReponseTime"`
+}
+
+type ResumeProbeTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务 ID
+	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds"`
+}
+
+func (r *ResumeProbeTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResumeProbeTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResumeProbeTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ResumeProbeTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务总量
+		Total *int64 `json:"Total,omitempty" name:"Total"`
+
+		// 任务成功量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SuccessCount *int64 `json:"SuccessCount,omitempty" name:"SuccessCount"`
+
+		// 任务执行详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Results []*TaskResult `json:"Results,omitempty" name:"Results"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ResumeProbeTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResumeProbeTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RunTaskRequest struct {
@@ -2157,6 +2750,63 @@ func (r *RunTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type SuspendProbeTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务 ID
+	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds"`
+}
+
+func (r *SuspendProbeTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SuspendProbeTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SuspendProbeTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SuspendProbeTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务总量
+		Total *int64 `json:"Total,omitempty" name:"Total"`
+
+		// 任务成功量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SuccessCount *int64 `json:"SuccessCount,omitempty" name:"SuccessCount"`
+
+		// 任务执行结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Results []*TaskResult `json:"Results,omitempty" name:"Results"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SuspendProbeTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SuspendProbeTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type TaskAlarm struct {
 
 	// 任务ID
@@ -2188,6 +2838,82 @@ type TaskAlarm struct {
 
 	// 任务更新时间
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type TaskResult struct {
+
+	// 任务 ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 是否成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Success *bool `json:"Success,omitempty" name:"Success"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMessage *string `json:"ErrorMessage,omitempty" name:"ErrorMessage"`
+}
+
+type UpdateProbeTaskConfigurationListRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务 ID
+	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds"`
+
+	// 拨测节点
+	Nodes []*string `json:"Nodes,omitempty" name:"Nodes"`
+
+	// 拨测间隔
+	Interval *int64 `json:"Interval,omitempty" name:"Interval"`
+
+	// 拨测参数
+	Parameters *string `json:"Parameters,omitempty" name:"Parameters"`
+
+	// 定时任务cron表达式
+	Cron *string `json:"Cron,omitempty" name:"Cron"`
+}
+
+func (r *UpdateProbeTaskConfigurationListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateProbeTaskConfigurationListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskIds")
+	delete(f, "Nodes")
+	delete(f, "Interval")
+	delete(f, "Parameters")
+	delete(f, "Cron")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateProbeTaskConfigurationListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateProbeTaskConfigurationListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateProbeTaskConfigurationListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateProbeTaskConfigurationListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VerifyResultRequest struct {

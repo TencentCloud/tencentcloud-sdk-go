@@ -181,13 +181,13 @@ type AttachDetail struct {
 type AttachDisksRequest struct {
 	*tchttp.BaseRequest
 
-	// 磁盘ID列表
+	// 云硬盘ID列表。
 	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 
-	// 实例ID
+	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 续费标识
+	// 续费标识。
 	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
 }
 
@@ -1174,10 +1174,10 @@ func (r *DescribeDiskConfigsResponse) FromJsonString(s string) error {
 type DescribeDiskDiscountRequest struct {
 	*tchttp.BaseRequest
 
-	// 磁盘类型, 取值: "CLOUD_PREMIUM"
+	// 云硬盘类型, 取值: "CLOUD_PREMIUM"。
 	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
 
-	// 磁盘大小
+	// 云硬盘大小。
 	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
 }
 
@@ -1230,7 +1230,7 @@ func (r *DescribeDiskDiscountResponse) FromJsonString(s string) error {
 type DescribeDisksDeniedActionsRequest struct {
 	*tchttp.BaseRequest
 
-	// 磁盘ID列表
+	// 云硬盘ID列表。
 	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 }
 
@@ -1257,7 +1257,7 @@ type DescribeDisksDeniedActionsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 磁盘操作限制列表详细信息。
+		// 云硬盘操作限制列表详细信息。
 		DiskDeniedActionSet []*DiskDeniedActions `json:"DiskDeniedActionSet,omitempty" name:"DiskDeniedActionSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1279,12 +1279,12 @@ func (r *DescribeDisksDeniedActionsResponse) FromJsonString(s string) error {
 type DescribeDisksRequest struct {
 	*tchttp.BaseRequest
 
-	// 磁盘ID列表
+	// 云硬盘ID列表。
 	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 
 	// 过滤器列表。
 	// disk-id
-	// 按照【磁盘 ID】进行过滤。
+	// 按照【云硬盘 ID】进行过滤。
 	// 类型：String
 	// 必选：否
 	// instance-id
@@ -1292,7 +1292,7 @@ type DescribeDisksRequest struct {
 	// 类型：String
 	// 必选：否
 	// disk-name
-	// 按照【磁盘名称】进行过滤。
+	// 按照【云硬盘名称】进行过滤。
 	// 类型：String
 	// 必选：否
 	// zone
@@ -1300,11 +1300,11 @@ type DescribeDisksRequest struct {
 	// 类型：String
 	// 必选：否
 	// disk-usage
-	// 按照【磁盘类型】进行过滤。
+	// 按照【云硬盘类型】进行过滤。
 	// 类型：String
 	// 必选：否
 	// disk-state
-	// 按照【磁盘状态】进行过滤。
+	// 按照【云硬盘状态】进行过滤。
 	// 类型：String
 	// 必选：否
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 DiskIds 和 Filters。
@@ -1313,13 +1313,13 @@ type DescribeDisksRequest struct {
 	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 云盘列表排序的依据字段。取值范围："CREATED_TIME"：依据云盘的创建时间排序。 "EXPIRED_TIME"：依据云盘的到期时间排序。"DISK_SIZE"：依据云盘的大小排序。默认按云盘创建时间排序。
+	// 云硬盘列表排序的依据字段。取值范围："CREATED_TIME"：依据云硬盘的创建时间排序。 "EXPIRED_TIME"：依据云硬盘的到期时间排序。"DISK_SIZE"：依据云硬盘的大小排序。默认按云硬盘创建时间排序。
 	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
 
-	// 输出云盘列表的排列顺序。取值范围："ASC"：升序排列。 "DESC"：降序排列。默认按降序排列
+	// 输出云硬盘列表的排列顺序。取值范围："ASC"：升序排列。 "DESC"：降序排列。默认按降序排列。
 	Order *string `json:"Order,omitempty" name:"Order"`
 }
 
@@ -1351,10 +1351,10 @@ type DescribeDisksResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 磁盘信息列表
+		// 云硬盘信息列表。
 		DiskSet []*Disk `json:"DiskSet,omitempty" name:"DiskSet"`
 
-		// 符合条件的磁盘信息数量
+		// 符合条件的云硬盘信息数量。
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1376,7 +1376,7 @@ func (r *DescribeDisksResponse) FromJsonString(s string) error {
 type DescribeDisksReturnableRequest struct {
 	*tchttp.BaseRequest
 
-	// 磁盘ID列表
+	// 云硬盘ID列表。
 	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 
 	// 返回数量，默认为20，最大值为100。
@@ -1411,10 +1411,10 @@ type DescribeDisksReturnableResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 可退还磁盘详细信息列表。
+		// 可退还云硬盘详细信息列表。
 		DiskReturnableSet []*DiskReturnable `json:"DiskReturnableSet,omitempty" name:"DiskReturnableSet"`
 
-		// 符合条件的磁盘数量。
+		// 符合条件的云硬盘数量。
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1743,7 +1743,7 @@ func (r *DescribeInstancesDeniedActionsResponse) FromJsonString(s string) error 
 type DescribeInstancesDiskNumRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例ID列表
+	// 实例ID列表。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
@@ -2490,7 +2490,7 @@ func (r *DetachCcnResponse) FromJsonString(s string) error {
 type DetachDisksRequest struct {
 	*tchttp.BaseRequest
 
-	// 磁盘ID列表
+	// 云硬盘ID列表。
 	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 }
 
@@ -2665,73 +2665,73 @@ type Disk struct {
 
 type DiskChargePrepaid struct {
 
-	// 新购周期
+	// 新购周期。
 	Period *int64 `json:"Period,omitempty" name:"Period"`
 
-	// 续费标识
+	// 续费标识。
 	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
 
-	// 新购单位. 默认值: "m"
+	// 新购单位. 默认值: "m"。
 	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
 }
 
 type DiskConfig struct {
 
-	// 可用区
+	// 可用区。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 磁盘类型
+	// 云硬盘类型。
 	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
 
-	// 磁盘可售卖状态
+	// 云硬盘可售卖状态。
 	DiskSalesState *string `json:"DiskSalesState,omitempty" name:"DiskSalesState"`
 
-	// 最大磁盘大小
+	// 最大云硬盘大小。
 	MaxDiskSize *int64 `json:"MaxDiskSize,omitempty" name:"MaxDiskSize"`
 
-	// 最小磁盘大小
+	// 最小云硬盘大小。
 	MinDiskSize *int64 `json:"MinDiskSize,omitempty" name:"MinDiskSize"`
 
-	// 磁盘步长
+	// 云硬盘步长。
 	DiskStepSize *int64 `json:"DiskStepSize,omitempty" name:"DiskStepSize"`
 }
 
 type DiskDeniedActions struct {
 
-	// 磁盘ID
+	// 云硬盘ID。
 	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
 
-	// 操作限制列表
+	// 操作限制列表。
 	DeniedActions []*DeniedAction `json:"DeniedActions,omitempty" name:"DeniedActions"`
 }
 
 type DiskPrice struct {
 
-	// 磁盘单价
+	// 云硬盘单价。
 	OriginalDiskPrice *float64 `json:"OriginalDiskPrice,omitempty" name:"OriginalDiskPrice"`
 
-	// 磁盘总价
+	// 云硬盘总价。
 	OriginalPrice *float64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
 
-	// 折扣
+	// 折扣。
 	Discount *float64 `json:"Discount,omitempty" name:"Discount"`
 
-	// 折后总价
+	// 折后总价。
 	DiscountPrice *float64 `json:"DiscountPrice,omitempty" name:"DiscountPrice"`
 }
 
 type DiskReturnable struct {
 
-	// 磁盘ID
+	// 云硬盘ID。
 	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
 
-	// 磁盘是否可退还。
+	// 云硬盘是否可退还。
 	IsReturnable *bool `json:"IsReturnable,omitempty" name:"IsReturnable"`
 
-	// 实例退还失败错误码。
+	// 云硬盘退还失败错误码。
 	ReturnFailCode *int64 `json:"ReturnFailCode,omitempty" name:"ReturnFailCode"`
 
-	// 实例退还失败错误信息。
+	// 云硬盘退还失败错误信息。
 	ReturnFailMessage *string `json:"ReturnFailMessage,omitempty" name:"ReturnFailMessage"`
 }
 
@@ -3022,10 +3022,10 @@ func (r *InquirePriceCreateInstancesResponse) FromJsonString(s string) error {
 type InquirePriceRenewDisksRequest struct {
 	*tchttp.BaseRequest
 
-	// 磁盘ID列表
+	// 云硬盘ID列表。
 	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 
-	// 续费磁盘包年包月相关参数设置
+	// 续费云硬盘包年包月相关参数设置。
 	RenewDiskChargePrepaid *RenewDiskChargePrepaid `json:"RenewDiskChargePrepaid,omitempty" name:"RenewDiskChargePrepaid"`
 }
 
@@ -3053,7 +3053,7 @@ type InquirePriceRenewDisksResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 磁盘价格
+		// 云硬盘价格。
 		DiskPrice *DiskPrice `json:"DiskPrice,omitempty" name:"DiskPrice"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3394,10 +3394,10 @@ type ModifyBundle struct {
 type ModifyDisksAttributeRequest struct {
 	*tchttp.BaseRequest
 
-	// 磁盘ID列表
+	// 云硬盘ID列表。
 	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 
-	// 磁盘名称
+	// 云硬盘名称。
 	DiskName *string `json:"DiskName,omitempty" name:"DiskName"`
 }
 
@@ -3444,10 +3444,10 @@ func (r *ModifyDisksAttributeResponse) FromJsonString(s string) error {
 type ModifyDisksRenewFlagRequest struct {
 	*tchttp.BaseRequest
 
-	// 磁盘ID列表
+	// 云硬盘ID列表。
 	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 
-	// 续费标识
+	// 续费标识。
 	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
 }
 
@@ -3880,16 +3880,16 @@ type RegionInfo struct {
 
 type RenewDiskChargePrepaid struct {
 
-	// 新购周期
+	// 新购周期。
 	Period *int64 `json:"Period,omitempty" name:"Period"`
 
-	// 续费标识
+	// 续费标识。
 	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
 
-	// 周期单位. 默认值: "m"
+	// 周期单位. 默认值: "m"。
 	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
 
-	// 当前实例到期时间
+	// 当前实例到期时间。
 	CurInstanceDeadline *string `json:"CurInstanceDeadline,omitempty" name:"CurInstanceDeadline"`
 }
 
@@ -4253,7 +4253,7 @@ type SystemDisk struct {
 type TerminateDisksRequest struct {
 	*tchttp.BaseRequest
 
-	// 磁盘ID列表
+	// 云硬盘ID列表。
 	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 }
 

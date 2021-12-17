@@ -210,7 +210,7 @@ func NewAttachDisksResponse() (response *AttachDisksResponse) {
 }
 
 // AttachDisks
-// 本接口（AttachDisks）用于挂载一个或多个弹性云盘。
+// 本接口（AttachDisks）用于挂载一个或多个云硬盘。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -853,7 +853,7 @@ func NewDescribeDiskDiscountResponse() (response *DescribeDiskDiscountResponse) 
 }
 
 // DescribeDiskDiscount
-// 本接口(DescribeDiskDiscount)用于查询云硬盘折扣信息
+// 本接口(DescribeDiskDiscount)用于查询云硬盘折扣信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_TRADEGETPRICEFAILED = "InternalError.TradeGetPriceFailed"
@@ -886,7 +886,7 @@ func NewDescribeDisksResponse() (response *DescribeDisksResponse) {
 }
 
 // DescribeDisks
-// 本接口（DescribeDisks）用于查询磁盘信息。
+// 本接口（DescribeDisks）用于查询云硬盘信息。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -929,7 +929,7 @@ func NewDescribeDisksDeniedActionsResponse() (response *DescribeDisksDeniedActio
 }
 
 // DescribeDisksDeniedActions
-// 本接口（DescribeDisksDeniedActions）用于查询一个或多个磁盘的操作限制列表信息
+// 本接口（DescribeDisksDeniedActions）用于查询一个或多个云硬盘的操作限制列表信息。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
@@ -961,7 +961,7 @@ func NewDescribeDisksReturnableResponse() (response *DescribeDisksReturnableResp
 }
 
 // DescribeDisksReturnable
-// 本接口（DescribeDisksReturnable）用于查询磁盘是否可退还。
+// 本接口（DescribeDisksReturnable）用于查询云硬盘是否可退还。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DESCRIBEDISKSRETURNABLEERROR = "InternalError.DescribeDisksReturnableError"
@@ -1278,7 +1278,7 @@ func NewDescribeInstancesDiskNumResponse() (response *DescribeInstancesDiskNumRe
 }
 
 // DescribeInstancesDiskNum
-// 本接口(DescribeInstancesDiskNum)用于查询实例挂载云盘数量。
+// 本接口(DescribeInstancesDiskNum)用于查询实例挂载云硬盘数量。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1733,7 +1733,7 @@ func NewDetachDisksResponse() (response *DetachDisksResponse) {
 }
 
 // DetachDisks
-// 本接口（DetachDisks）用于卸载一个或多个弹性云盘。
+// 本接口（DetachDisks）用于卸载一个或多个云硬盘。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
@@ -1972,7 +1972,7 @@ func NewInquirePriceRenewDisksResponse() (response *InquirePriceRenewDisksRespon
 }
 
 // InquirePriceRenewDisks
-// 本接口（InquirePriceRenewDisks）用于续费磁盘询价。
+// 本接口（InquirePriceRenewDisks）用于续费云硬盘询价。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -2081,7 +2081,7 @@ func NewModifyDisksAttributeResponse() (response *ModifyDisksAttributeResponse) 
 }
 
 // ModifyDisksAttribute
-// 本接口(ModifyDisksAttribute)用于修改磁盘属性
+// 本接口(ModifyDisksAttribute)用于修改云硬盘属性。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -2117,7 +2117,7 @@ func NewModifyDisksRenewFlagResponse() (response *ModifyDisksRenewFlagResponse) 
 }
 
 // ModifyDisksRenewFlag
-// 本接口（ModifyDisksRenewFlag）用于修改磁盘续费标识。
+// 本接口（ModifyDisksRenewFlag）用于修改云硬盘续费标识。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -2750,7 +2750,7 @@ func NewTerminateDisksResponse() (response *TerminateDisksResponse) {
 }
 
 // TerminateDisks
-// 本接口（TerminateDisks）用于销毁一个或多个磁盘。
+// 本接口（TerminateDisks）用于销毁一个或多个云硬盘。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

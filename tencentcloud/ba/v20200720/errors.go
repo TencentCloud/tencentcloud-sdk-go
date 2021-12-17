@@ -20,6 +20,9 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
+	// 资源未找到。
+	INTERNALERROR_RESOURCENOTFOUND = "InternalError.ResourceNotFound"
+
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 

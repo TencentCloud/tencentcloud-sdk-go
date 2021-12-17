@@ -2578,6 +2578,9 @@ type CreateDirectConnectGatewayRequest struct {
 
 	// 专线网关可用区
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 专线网关高可用区容灾组ID
+	HaZoneGroupId *string `json:"HaZoneGroupId,omitempty" name:"HaZoneGroupId"`
 }
 
 func (r *CreateDirectConnectGatewayRequest) ToJsonString() string {
@@ -2598,6 +2601,7 @@ func (r *CreateDirectConnectGatewayRequest) FromJsonString(s string) error {
 	delete(f, "GatewayType")
 	delete(f, "ModeType")
 	delete(f, "Zone")
+	delete(f, "HaZoneGroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDirectConnectGatewayRequest has unknown keys!", "")
 	}
@@ -10653,6 +10657,33 @@ type DirectConnectGateway struct {
 	// 专线网关所在可用区
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 网关流控明细启用状态：
+	// 0：关闭
+	// 1：开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableFlowDetails *uint64 `json:"EnableFlowDetails,omitempty" name:"EnableFlowDetails"`
+
+	// 开启、关闭网关流控明细时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowDetailsUpdateTime *string `json:"FlowDetailsUpdateTime,omitempty" name:"FlowDetailsUpdateTime"`
+
+	// 是否支持开启网关流控明细
+	// 0：不支持
+	// 1：支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NewAfc *uint64 `json:"NewAfc,omitempty" name:"NewAfc"`
+
+	// 专线网关接入网络类型：
+	// <li>`VXLAN` - VXLAN类型。</li>
+	// <li>`MPLS` - MPLS类型。</li>
+	// <li>`Hybrid` - Hybrid类型。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessNetworkType *string `json:"AccessNetworkType,omitempty" name:"AccessNetworkType"`
+
+	// 跨可用区容灾专线网关的可用区列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HaZoneList []*string `json:"HaZoneList,omitempty" name:"HaZoneList"`
 }
 
 type DirectConnectGatewayCcnRoute struct {
@@ -10665,6 +10696,12 @@ type DirectConnectGatewayCcnRoute struct {
 
 	// `BGP`的`AS-Path`属性。
 	ASPath []*string `json:"ASPath,omitempty" name:"ASPath"`
+
+	// 备注
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 最后更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type DirectConnectSubnet struct {

@@ -311,6 +311,18 @@ type Column struct {
 	// 是否为null
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Nullable *string `json:"Nullable,omitempty" name:"Nullable"`
+
+	// 字段位置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Position *int64 `json:"Position,omitempty" name:"Position"`
+
+	// 字段创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 字段修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifiedTime *string `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
 }
 
 type CreateDatabaseRequest struct {
@@ -319,7 +331,7 @@ type CreateDatabaseRequest struct {
 	// 数据库基础信息
 	DatabaseInfo *DatabaseInfo `json:"DatabaseInfo,omitempty" name:"DatabaseInfo"`
 
-	// 数据源名称，默认为CosDataCatalog
+	// 数据源名称，默认为DataLakeCatalog
 	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
 }
 
@@ -530,6 +542,9 @@ type CreateTaskRequest struct {
 
 	// 默认数据源名称。
 	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
+
+	// 数据引擎名称，不填提交到默认集群
+	DataEngineName *string `json:"DataEngineName,omitempty" name:"DataEngineName"`
 }
 
 func (r *CreateTaskRequest) ToJsonString() string {
@@ -547,6 +562,7 @@ func (r *CreateTaskRequest) FromJsonString(s string) error {
 	delete(f, "Task")
 	delete(f, "DatabaseName")
 	delete(f, "DatasourceConnectionName")
+	delete(f, "DataEngineName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTaskRequest has unknown keys!", "")
 	}
@@ -646,8 +662,11 @@ type CreateTasksRequest struct {
 	// SQL任务信息
 	Tasks *TasksInfo `json:"Tasks,omitempty" name:"Tasks"`
 
-	// 数据源名称，默认为COSDataCatalog
+	// 数据源名称，默认为DataLakeCatalog
 	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
+
+	// 计算引擎名称，不填任务提交到默认集群
+	DataEngineName *string `json:"DataEngineName,omitempty" name:"DataEngineName"`
 }
 
 func (r *CreateTasksRequest) ToJsonString() string {
@@ -665,6 +684,7 @@ func (r *CreateTasksRequest) FromJsonString(s string) error {
 	delete(f, "DatabaseName")
 	delete(f, "Tasks")
 	delete(f, "DatasourceConnectionName")
+	delete(f, "DataEngineName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTasksRequest has unknown keys!", "")
 	}
@@ -837,16 +857,20 @@ type DataFormat struct {
 
 type DatabaseInfo struct {
 
-	// 数据库名称。
+	// 数据库名称，长度0~128，支持数字、字母下划线，不允许数字大头，统一转换为小写。
 	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
 
-	// 数据库描述信息，长度 0~256。
+	// 数据库描述信息，长度 0~500。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 数据库属性列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Properties []*Property `json:"Properties,omitempty" name:"Properties"`
+
+	// 数据库cos路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Location *string `json:"Location,omitempty" name:"Location"`
 }
 
 type DatabaseResponseInfo struct {
@@ -858,7 +882,7 @@ type DatabaseResponseInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
-	// 数据库属性列表。
+	// 允许针对数据库的属性元数据信息进行指定。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Properties []*Property `json:"Properties,omitempty" name:"Properties"`
 
@@ -1070,8 +1094,14 @@ type DescribeDatabasesRequest struct {
 	// 模糊匹配，库名关键字。
 	KeyWord *string `json:"KeyWord,omitempty" name:"KeyWord"`
 
-	// 数据源唯名称，该名称可以通过DescribeDatasourceConnection接口查询到。默认为CosDataCatalog
+	// 数据源唯名称，该名称可以通过DescribeDatasourceConnection接口查询到。默认为DataLakeCatalog
 	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
+
+	// 排序字段，当前版本仅支持按库名排序
+	Sort *string `json:"Sort,omitempty" name:"Sort"`
+
+	// 排序类型：false：降序（默认）、true：升序
+	Asc *bool `json:"Asc,omitempty" name:"Asc"`
 }
 
 func (r *DescribeDatabasesRequest) ToJsonString() string {
@@ -1090,6 +1120,8 @@ func (r *DescribeDatabasesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "KeyWord")
 	delete(f, "DatasourceConnectionName")
+	delete(f, "Sort")
+	delete(f, "Asc")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatabasesRequest has unknown keys!", "")
 	}
@@ -1313,8 +1345,23 @@ type DescribeTablesRequest struct {
 	// table-id - String - （过滤条件）table id形如：12342。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 指定查询的数据源名称，默认为CosDataCatalog
+	// 指定查询的数据源名称，默认为DataLakeCatalog
 	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
+
+	// 起始时间：用于对更新时间的筛选
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 终止时间：用于对更新时间的筛选
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 排序字段，支持：ModifiedTime（默认）；CreateTime
+	Sort *string `json:"Sort,omitempty" name:"Sort"`
+
+	// 排序字段，false：降序（默认）；true
+	Asc *bool `json:"Asc,omitempty" name:"Asc"`
+
+	// table type，表类型查询,可用值:EXTERNAL_TABLE,INDEX_TABLE,MANAGED_TABLE,MATERIALIZED_VIEW,TABLE,VIEW,VIRTUAL_VIEW
+	TableType *string `json:"TableType,omitempty" name:"TableType"`
 }
 
 func (r *DescribeTablesRequest) ToJsonString() string {
@@ -1334,6 +1381,11 @@ func (r *DescribeTablesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Filters")
 	delete(f, "DatasourceConnectionName")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Sort")
+	delete(f, "Asc")
+	delete(f, "TableType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTablesRequest has unknown keys!", "")
 	}
@@ -1379,9 +1431,11 @@ type DescribeTasksRequest struct {
 	// task-id - String - （任务ID准确过滤）task-id取值形如：e386471f-139a-4e59-877f-50ece8135b99。
 	// task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)。
 	// task-sql-keyword - String - （SQL语句关键字模糊过滤）取值形如：DROP TABLE。
+	// task-operator- string （子uin过滤）
+	// task-type -string （任务类型过滤）分导入任务和sql任务
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 排序字段，支持如下字段类型，create-time
+	// 排序字段，支持如下字段类型，create-time（创建时间，默认）、update-time（更新时间）
 	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
 
 	// 排序方式，desc表示正序，asc表示反序， 默认为asc。
@@ -1392,6 +1446,9 @@ type DescribeTasksRequest struct {
 
 	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 支持计算资源名字筛选
+	DataEngineName *string `json:"DataEngineName,omitempty" name:"DataEngineName"`
 }
 
 func (r *DescribeTasksRequest) ToJsonString() string {
@@ -1413,6 +1470,7 @@ func (r *DescribeTasksRequest) FromJsonString(s string) error {
 	delete(f, "Sorting")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
+	delete(f, "DataEngineName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTasksRequest has unknown keys!", "")
 	}
@@ -1532,6 +1590,18 @@ type DescribeViewsRequest struct {
 
 	// 数据库所属的数据源名称
 	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
+
+	// 排序字段
+	Sort *string `json:"Sort,omitempty" name:"Sort"`
+
+	// 排序规则
+	Asc *bool `json:"Asc,omitempty" name:"Asc"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
 func (r *DescribeViewsRequest) ToJsonString() string {
@@ -1551,6 +1621,10 @@ func (r *DescribeViewsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Filters")
 	delete(f, "DatasourceConnectionName")
+	delete(f, "Sort")
+	delete(f, "Asc")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeViewsRequest has unknown keys!", "")
 	}
@@ -1973,6 +2047,18 @@ type TableBaseInfo struct {
 	// 该数据表所属数据源名字
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
+
+	// 该数据表备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableComment *string `json:"TableComment,omitempty" name:"TableComment"`
+
+	// 具体类型，表or视图
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 数据格式类型，hive，iceberg等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableFormat *string `json:"TableFormat,omitempty" name:"TableFormat"`
 }
 
 type TableInfo struct {
@@ -2090,6 +2176,38 @@ type TaskResponseInfo struct {
 	// 任务进度明细
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProgressDetail *string `json:"ProgressDetail,omitempty" name:"ProgressDetail"`
+
+	// 任务结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 计算资源id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataEngineId *string `json:"DataEngineId,omitempty" name:"DataEngineId"`
+
+	// 执行sql的子uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperateUin *string `json:"OperateUin,omitempty" name:"OperateUin"`
+
+	// 计算资源名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataEngineName *string `json:"DataEngineName,omitempty" name:"DataEngineName"`
+
+	// 导入类型是本地导入还是cos
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputType *string `json:"InputType,omitempty" name:"InputType"`
+
+	// 导入配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputConf *string `json:"InputConf,omitempty" name:"InputConf"`
+
+	// 数据条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataNumber *int64 `json:"DataNumber,omitempty" name:"DataNumber"`
+
+	// 查询数据能不能下载
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CanDownload *bool `json:"CanDownload,omitempty" name:"CanDownload"`
 }
 
 type TasksInfo struct {
