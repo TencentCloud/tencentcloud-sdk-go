@@ -2011,7 +2011,7 @@ func (r *CreateClusterCheckTaskResponse) FromJsonString(s string) error {
 type CreateComplianceTaskRequest struct {
 	*tchttp.BaseRequest
 
-	// 指定要扫描的资产类型列表。若不填，对所有资产触发扫描。
+	// 指定要扫描的资产类型列表。
 	// ASSET_CONTAINER, 容器
 	// ASSET_IMAGE, 镜像
 	// ASSET_HOST, 主机
@@ -6740,7 +6740,7 @@ func (r *DescribeComplianceAssetListResponse) FromJsonString(s string) error {
 type DescribeComplianceAssetPolicyItemListRequest struct {
 	*tchttp.BaseRequest
 
-	// 资产的ID。
+	// 客户资产的ID。
 	CustomerAssetId *uint64 `json:"CustomerAssetId,omitempty" name:"CustomerAssetId"`
 
 	// 起始偏移量，默认为0。
@@ -6805,9 +6805,7 @@ func (r *DescribeComplianceAssetPolicyItemListResponse) FromJsonString(s string)
 type DescribeCompliancePeriodTaskListRequest struct {
 	*tchttp.BaseRequest
 
-	// 资产的类型，传入时，只查询此类型资产的定时任务；不传，则返回所有定时任务。
-	// 
-	// 取值为：
+	// 资产的类型，取值为：
 	// ASSET_CONTAINER, 容器
 	// ASSET_IMAGE, 镜像
 	// ASSET_HOST, 主机
@@ -6987,6 +6985,10 @@ type DescribeComplianceScanFailedAssetListRequest struct {
 	*tchttp.BaseRequest
 
 	// 资产类型列表。
+	// ASSET_CONTAINER, 容器
+	// ASSET_IMAGE, 镜像
+	// ASSET_HOST, 主机
+	// ASSET_K8S, K8S资产
 	AssetTypeSet []*string `json:"AssetTypeSet,omitempty" name:"AssetTypeSet"`
 
 	// 起始偏移量，默认为0。

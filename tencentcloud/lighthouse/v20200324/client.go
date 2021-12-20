@@ -820,7 +820,7 @@ func NewDescribeDiskConfigsResponse() (response *DescribeDiskConfigsResponse) {
 }
 
 // DescribeDiskConfigs
-// 本接口（DescribeDiskConfigs）用于查询磁盘配置。
+// 本接口（DescribeDiskConfigs）用于查询云硬盘配置。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDZONE = "InvalidParameterValue.InvalidZone"
@@ -1903,7 +1903,7 @@ func NewInquirePriceCreateDisksResponse() (response *InquirePriceCreateDisksResp
 }
 
 // InquirePriceCreateDisks
-// 本接口（InquirePriceCreateDisks）用于新购磁盘询价。
+// 本接口（InquirePriceCreateDisks）用于新购云硬盘询价。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_TRADEGETPRICEFAILED = "InternalError.TradeGetPriceFailed"

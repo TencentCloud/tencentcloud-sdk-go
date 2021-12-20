@@ -92,6 +92,9 @@ const (
 	// 表示当前创建的实例个数超过了该账户允许购买的剩余配额数。
 	INSTANCESQUOTALIMITEXCEEDED = "InstancesQuotaLimitExceeded"
 
+	// 内部错误。
+	INTERNALERROR = "InternalError"
+
 	// 内部错误
 	INTERNALERROR_TRADEUNKNOWNERROR = "InternalError.TradeUnknownError"
 
@@ -242,6 +245,9 @@ const (
 	// 不支持同时指定密钥登陆和保持镜像登陆方式。
 	INVALIDPARAMETER_PARAMETERCONFLICT = "InvalidParameter.ParameterConflict"
 
+	// 不支持设置登陆密码。
+	INVALIDPARAMETER_PASSWORDNOTSUPPORTED = "InvalidParameter.PasswordNotSupported"
+
 	// 指定的快照不存在。
 	INVALIDPARAMETER_SNAPSHOTNOTFOUND = "InvalidParameter.SnapshotNotFound"
 
@@ -332,6 +338,15 @@ const (
 	// IP地址不符合规范
 	INVALIDPARAMETERVALUE_INVALIDIPFORMAT = "InvalidParameterValue.InvalidIpFormat"
 
+	// 实例启动模板描述格式错误。
+	INVALIDPARAMETERVALUE_INVALIDLAUNCHTEMPLATEDESCRIPTION = "InvalidParameterValue.InvalidLaunchTemplateDescription"
+
+	// 实例启动模板名称格式错误。
+	INVALIDPARAMETERVALUE_INVALIDLAUNCHTEMPLATENAME = "InvalidParameterValue.InvalidLaunchTemplateName"
+
+	// 实例启动模板描述格式错误。
+	INVALIDPARAMETERVALUE_INVALIDLAUNCHTEMPLATEVERSIONDESCRIPTION = "InvalidParameterValue.InvalidLaunchTemplateVersionDescription"
+
 	// 参数值错误。
 	INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 
@@ -350,8 +365,20 @@ const (
 	// 指定的密钥不支持当前操作。
 	INVALIDPARAMETERVALUE_KEYPAIRNOTSUPPORTED = "InvalidParameterValue.KeyPairNotSupported"
 
+	// 实例启动模板ID格式错误。
+	INVALIDPARAMETERVALUE_LAUNCHTEMPLATEIDMALFORMED = "InvalidParameterValue.LaunchTemplateIdMalformed"
+
 	// 实例启动模板ID不存在。
 	INVALIDPARAMETERVALUE_LAUNCHTEMPLATEIDNOTEXISTED = "InvalidParameterValue.LaunchTemplateIdNotExisted"
+
+	// 实例启动模板和版本ID组合不存在。
+	INVALIDPARAMETERVALUE_LAUNCHTEMPLATEIDVERNOTEXISTED = "InvalidParameterValue.LaunchTemplateIdVerNotExisted"
+
+	// 实例启动模板未找到。
+	INVALIDPARAMETERVALUE_LAUNCHTEMPLATENOTFOUND = "InvalidParameterValue.LaunchTemplateNotFound"
+
+	// 无效的实例启动模板版本号。
+	INVALIDPARAMETERVALUE_LAUNCHTEMPLATEVERSION = "InvalidParameterValue.LaunchTemplateVersion"
 
 	// 参数值数量超过限制。
 	INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
@@ -457,6 +484,12 @@ const (
 
 	// 目标实例规格不支持当前规格的外网带宽上限，不支持调整。具体可参考[公网网络带宽上限](https://cloud.tencent.com/document/product/213/12523)。
 	LIMITEXCEEDED_INSTANCETYPEBANDWIDTH = "LimitExceeded.InstanceTypeBandwidth"
+
+	// 实例启动模板数量超限。
+	LIMITEXCEEDED_LAUNCHTEMPLATEQUOTA = "LimitExceeded.LaunchTemplateQuota"
+
+	// 实例启动模板版本数量超限。
+	LIMITEXCEEDED_LAUNCHTEMPLATEVERSIONQUOTA = "LimitExceeded.LaunchTemplateVersionQuota"
 
 	// 预付费实例已购买数量已达到最大配额，请提升配额后重试。
 	LIMITEXCEEDED_PREPAYQUOTA = "LimitExceeded.PrepayQuota"
@@ -568,6 +601,12 @@ const (
 
 	// 无权操作指定的资源，请正确配置CAM策略。
 	UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+
+	// 未知参数错误。
+	UNKNOWNPARAMETER = "UnknownParameter"
+
+	// 操作不支持。
+	UNSUPPORTEDOPERATION = "UnsupportedOperation"
 
 	// 指定的实例付费模式或者网络付费模式不支持共享带宽包
 	UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = "UnsupportedOperation.BandwidthPackageIdNotSupported"

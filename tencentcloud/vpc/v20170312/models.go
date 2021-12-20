@@ -4106,6 +4106,18 @@ type CreateVpnConnectionRequest struct {
 
 	// 通道类型, 例如:["STATIC", "StaticRoute", "Policy"]
 	RouteType *string `json:"RouteType,omitempty" name:"RouteType"`
+
+	// 协商类型，默认为active（主动协商）。可选值：active（主动协商），passive（被动协商），flowTrigger（流量协商）
+	NegotiationType *string `json:"NegotiationType,omitempty" name:"NegotiationType"`
+
+	// DPD探测开关。默认为0，表示关闭DPD探测。可选值：0（关闭），1（开启）
+	DpdEnable *int64 `json:"DpdEnable,omitempty" name:"DpdEnable"`
+
+	// DPD超时时间。即探测确认对端不存在需要的时间。dpdEnable为1（开启）时有效。默认30，单位为秒
+	DpdTimeout *string `json:"DpdTimeout,omitempty" name:"DpdTimeout"`
+
+	// DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）
+	DpdAction *string `json:"DpdAction,omitempty" name:"DpdAction"`
 }
 
 func (r *CreateVpnConnectionRequest) ToJsonString() string {
@@ -4133,6 +4145,10 @@ func (r *CreateVpnConnectionRequest) FromJsonString(s string) error {
 	delete(f, "HealthCheckLocalIp")
 	delete(f, "HealthCheckRemoteIp")
 	delete(f, "RouteType")
+	delete(f, "NegotiationType")
+	delete(f, "DpdEnable")
+	delete(f, "DpdTimeout")
+	delete(f, "DpdAction")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVpnConnectionRequest has unknown keys!", "")
 	}
@@ -14773,6 +14789,18 @@ type ModifyVpnConnectionAttributeRequest struct {
 
 	// 对端通道探测ip
 	HealthCheckRemoteIp *string `json:"HealthCheckRemoteIp,omitempty" name:"HealthCheckRemoteIp"`
+
+	// 协商类型，默认为active（主动协商）。可选值：active（主动协商），passive（被动协商），flowTrigger（流量协商）
+	NegotiationType *string `json:"NegotiationType,omitempty" name:"NegotiationType"`
+
+	// DPD探测开关。默认为0，表示关闭DPD探测。可选值：0（关闭），1（开启）
+	DpdEnable *int64 `json:"DpdEnable,omitempty" name:"DpdEnable"`
+
+	// DPD超时时间。即探测确认对端不存在需要的时间。dpdEnable为1（开启）时有效。默认30，单位为秒
+	DpdTimeout *string `json:"DpdTimeout,omitempty" name:"DpdTimeout"`
+
+	// DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）
+	DpdAction *string `json:"DpdAction,omitempty" name:"DpdAction"`
 }
 
 func (r *ModifyVpnConnectionAttributeRequest) ToJsonString() string {
@@ -14796,6 +14824,10 @@ func (r *ModifyVpnConnectionAttributeRequest) FromJsonString(s string) error {
 	delete(f, "EnableHealthCheck")
 	delete(f, "HealthCheckLocalIp")
 	delete(f, "HealthCheckRemoteIp")
+	delete(f, "NegotiationType")
+	delete(f, "DpdEnable")
+	delete(f, "DpdTimeout")
+	delete(f, "DpdAction")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVpnConnectionAttributeRequest has unknown keys!", "")
 	}

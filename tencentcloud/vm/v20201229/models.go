@@ -66,6 +66,11 @@ type AudioResult struct {
 	// 该字段用于返回音频小语种检测的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LanguageResults []*AudioResultDetailLanguageResult `json:"LanguageResults,omitempty" name:"LanguageResults"`
+
+	// 该字段用于返回当前标签（Lable）下的二级标签。
+	// 注意：此字段可能返回null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubLabel *string `json:"SubLabel,omitempty" name:"SubLabel"`
 }
 
 type AudioResultDetailLanguageResult struct {
@@ -108,6 +113,11 @@ type AudioResultDetailMoanResult struct {
 
 	// *内测中，敬请期待*
 	SubLabelCode *string `json:"SubLabelCode,omitempty" name:"SubLabelCode"`
+
+	// 该字段用于返回当前标签（Lable）下的二级标签。
+	// 注意：此字段可能返回null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubLabel *string `json:"SubLabel,omitempty" name:"SubLabel"`
 }
 
 type AudioResultDetailTextResult struct {
@@ -140,6 +150,11 @@ type AudioResultDetailTextResult struct {
 	// 该字段用于返回自定义关键词对应的词库类型，取值为**1**（黑白库）和**2**（自定义关键词库），若未配置自定义关键词库,则默认值为1（黑白库匹配）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LibType *int64 `json:"LibType,omitempty" name:"LibType"`
+
+	// 该字段用于返回当前标签（Lable）下的二级标签。
+	// 注意：此字段可能返回null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubLabel *string `json:"SubLabel,omitempty" name:"SubLabel"`
 }
 
 type AudioSegments struct {
@@ -503,6 +518,11 @@ type ImageResult struct {
 	// 该字段用于返回输入参数中的额外附加信息（Extra），如未配置则默认返回值为空。<br>备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitempty" name:"Extra"`
+
+	// 该字段用于返回当前标签（Lable）下的二级标签。
+	// 注意：此字段可能返回null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubLabel *string `json:"SubLabel,omitempty" name:"SubLabel"`
 }
 
 type ImageResultResult struct {
@@ -740,6 +760,11 @@ type TaskLabel struct {
 	// 该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容；*色情 0*，则表明该文本不属于色情内容。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Score *int64 `json:"Score,omitempty" name:"Score"`
+
+	// 该字段用于返回当前标签（Lable）下的二级标签。
+	// 注意：此字段可能返回null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubLabel *string `json:"SubLabel,omitempty" name:"SubLabel"`
 }
 
 type TaskResult struct {

@@ -608,6 +608,24 @@ func (r *CreateKeyPairResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DataDiskPrice struct {
+
+	// 云硬盘ID。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
+
+	// 云硬盘单价。
+	OriginalDiskPrice *float64 `json:"OriginalDiskPrice,omitempty" name:"OriginalDiskPrice"`
+
+	// 云硬盘总价。
+	OriginalPrice *float64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
+
+	// 折扣。
+	Discount *float64 `json:"Discount,omitempty" name:"Discount"`
+
+	// 折后总价。
+	DiscountPrice *float64 `json:"DiscountPrice,omitempty" name:"DiscountPrice"`
+}
+
 type DeleteBlueprintsRequest struct {
 	*tchttp.BaseRequest
 
@@ -1124,8 +1142,10 @@ func (r *DescribeCcnAttachedInstancesResponse) FromJsonString(s string) error {
 type DescribeDiskConfigsRequest struct {
 	*tchttp.BaseRequest
 
-	// - zone:
-	// 可用区
+	// 过滤器列表。
+	// <li>zone</li>按照【可用区】进行过滤。
+	// 类型：String
+	// 必选：否
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -1152,7 +1172,7 @@ type DescribeDiskConfigsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 磁盘配置列表
+		// 云硬盘配置列表。
 		DiskConfigSet []*DiskConfig `json:"DiskConfigSet,omitempty" name:"DiskConfigSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2900,16 +2920,16 @@ func (r *InquirePriceCreateBlueprintResponse) FromJsonString(s string) error {
 type InquirePriceCreateDisksRequest struct {
 	*tchttp.BaseRequest
 
-	// 磁盘大小
+	// 云硬盘大小, 单位: GB。
 	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
 
-	// 硬盘介质类型
+	// 云硬盘介质类型。取值: "CLOUD_PREMIUM"(高性能云盘), "CLOUD_SSD"(SSD云硬盘)。
 	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
 
-	// 新购磁盘包年包月相关参数设置
+	// 新购云硬盘包年包月相关参数设置。
 	DiskChargePrepaid *DiskChargePrepaid `json:"DiskChargePrepaid,omitempty" name:"DiskChargePrepaid"`
 
-	// 磁盘个数, 默认值: 1
+	// 云硬盘个数, 默认值: 1。
 	DiskCount *int64 `json:"DiskCount,omitempty" name:"DiskCount"`
 }
 
@@ -2939,7 +2959,7 @@ type InquirePriceCreateDisksResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 磁盘价格
+		// 云硬盘价格。
 		DiskPrice *DiskPrice `json:"DiskPrice,omitempty" name:"DiskPrice"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3080,6 +3100,12 @@ type InquirePriceRenewInstancesRequest struct {
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
+
+	// 是否续费数据盘
+	RenewDataDisk *bool `json:"RenewDataDisk,omitempty" name:"RenewDataDisk"`
+
+	// 数据盘是否对齐实例到期时间
+	AlignInstanceExpiredTime *bool `json:"AlignInstanceExpiredTime,omitempty" name:"AlignInstanceExpiredTime"`
 }
 
 func (r *InquirePriceRenewInstancesRequest) ToJsonString() string {
@@ -3096,6 +3122,8 @@ func (r *InquirePriceRenewInstancesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceIds")
 	delete(f, "InstanceChargePrepaid")
+	delete(f, "RenewDataDisk")
+	delete(f, "AlignInstanceExpiredTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquirePriceRenewInstancesRequest has unknown keys!", "")
 	}
@@ -3108,6 +3136,10 @@ type InquirePriceRenewInstancesResponse struct {
 
 		// 询价信息。
 		Price *Price `json:"Price,omitempty" name:"Price"`
+
+		// 数据盘价格信息列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DataDiskPriceSet []*DataDiskPrice `json:"DataDiskPriceSet,omitempty" name:"DataDiskPriceSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

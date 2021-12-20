@@ -76,6 +76,80 @@ func (c *Client) BatchCreateAcl(request *BatchCreateAclRequest) (response *Batch
     return
 }
 
+func NewBatchModifyGroupOffsetsRequest() (request *BatchModifyGroupOffsetsRequest) {
+    request = &BatchModifyGroupOffsetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ckafka", APIVersion, "BatchModifyGroupOffsets")
+    
+    
+    return
+}
+
+func NewBatchModifyGroupOffsetsResponse() (response *BatchModifyGroupOffsetsResponse) {
+    response = &BatchModifyGroupOffsetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BatchModifyGroupOffsets
+// 批量修改消费组offset
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_REPETITIONVALUE = "InvalidParameterValue.RepetitionValue"
+//  INVALIDPARAMETERVALUE_WRONGACTION = "InvalidParameterValue.WrongAction"
+func (c *Client) BatchModifyGroupOffsets(request *BatchModifyGroupOffsetsRequest) (response *BatchModifyGroupOffsetsResponse, err error) {
+    if request == nil {
+        request = NewBatchModifyGroupOffsetsRequest()
+    }
+    
+    response = NewBatchModifyGroupOffsetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewBatchModifyTopicAttributesRequest() (request *BatchModifyTopicAttributesRequest) {
+    request = &BatchModifyTopicAttributesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ckafka", APIVersion, "BatchModifyTopicAttributes")
+    
+    
+    return
+}
+
+func NewBatchModifyTopicAttributesResponse() (response *BatchModifyTopicAttributesResponse) {
+    response = &BatchModifyTopicAttributesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BatchModifyTopicAttributes
+// 批量设置主题属性
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_REPETITIONVALUE = "InvalidParameterValue.RepetitionValue"
+//  INVALIDPARAMETERVALUE_WRONGACTION = "InvalidParameterValue.WrongAction"
+//  INVALIDPARAMETERVALUE_ZONENOTSUPPORT = "InvalidParameterValue.ZoneNotSupport"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) BatchModifyTopicAttributes(request *BatchModifyTopicAttributesRequest) (response *BatchModifyTopicAttributesResponse, err error) {
+    if request == nil {
+        request = NewBatchModifyTopicAttributesRequest()
+    }
+    
+    response = NewBatchModifyTopicAttributesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAclRequest() (request *CreateAclRequest) {
     request = &CreateAclRequest{
         BaseRequest: &tchttp.BaseRequest{},

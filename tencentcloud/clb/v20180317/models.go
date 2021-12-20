@@ -4626,10 +4626,10 @@ func (r *ModifyDomainAttributesResponse) FromJsonString(s string) error {
 type ModifyDomainRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡实例 ID
+	// 负载均衡实例 ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 负载均衡监听器 ID
+	// 负载均衡监听器 ID。
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
 	// 监听器下的某个旧域名。

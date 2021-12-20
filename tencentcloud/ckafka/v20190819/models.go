@@ -204,6 +204,174 @@ func (r *BatchCreateAclResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type BatchModifyGroupOffsetsRequest struct {
+	*tchttp.BaseRequest
+
+	// 消费分组名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 实例名称
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// partition信息
+	Partitions []*Partitions `json:"Partitions,omitempty" name:"Partitions"`
+
+	// 指定topic，默认所有topic
+	TopicName []*string `json:"TopicName,omitempty" name:"TopicName"`
+}
+
+func (r *BatchModifyGroupOffsetsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchModifyGroupOffsetsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupName")
+	delete(f, "InstanceId")
+	delete(f, "Partitions")
+	delete(f, "TopicName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchModifyGroupOffsetsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BatchModifyGroupOffsetsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回结果
+		Result *JgwOperateResponse `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BatchModifyGroupOffsetsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchModifyGroupOffsetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BatchModifyTopicAttributesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 主题属性列表
+	Topic []*BatchModifyTopicInfo `json:"Topic,omitempty" name:"Topic"`
+}
+
+func (r *BatchModifyTopicAttributesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchModifyTopicAttributesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Topic")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchModifyTopicAttributesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BatchModifyTopicAttributesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回结果
+		Result []*BatchModifyTopicResultDTO `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BatchModifyTopicAttributesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchModifyTopicAttributesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BatchModifyTopicInfo struct {
+
+	// topic名称
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// 分区数
+	PartitionNum *int64 `json:"PartitionNum,omitempty" name:"PartitionNum"`
+
+	// 备注
+	Note *string `json:"Note,omitempty" name:"Note"`
+
+	// 副本数
+	ReplicaNum *int64 `json:"ReplicaNum,omitempty" name:"ReplicaNum"`
+
+	// 消息删除策略，可以选择delete 或者compact
+	CleanUpPolicy *string `json:"CleanUpPolicy,omitempty" name:"CleanUpPolicy"`
+
+	// 当producer设置request.required.acks为-1时，min.insync.replicas指定replicas的最小数目
+	MinInsyncReplicas *int64 `json:"MinInsyncReplicas,omitempty" name:"MinInsyncReplicas"`
+
+	// 是否允许非ISR的副本成为Leader
+	UncleanLeaderElectionEnable *bool `json:"UncleanLeaderElectionEnable,omitempty" name:"UncleanLeaderElectionEnable"`
+
+	// topic维度的消息保留时间（毫秒）范围1 分钟到90 天
+	RetentionMs *int64 `json:"RetentionMs,omitempty" name:"RetentionMs"`
+
+	// topic维度的消息保留大小，范围1 MB到1024 GB
+	RetentionBytes *int64 `json:"RetentionBytes,omitempty" name:"RetentionBytes"`
+
+	// Segment分片滚动的时长（毫秒），范围1 到90 天
+	SegmentMs *int64 `json:"SegmentMs,omitempty" name:"SegmentMs"`
+
+	// 批次的消息大小，范围1 KB到12 MB
+	MaxMessageBytes *int64 `json:"MaxMessageBytes,omitempty" name:"MaxMessageBytes"`
+}
+
+type BatchModifyTopicResultDTO struct {
+
+	// 实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// topic名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// 状态码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReturnCode *string `json:"ReturnCode,omitempty" name:"ReturnCode"`
+
+	// 状态消息
+	Message *string `json:"Message,omitempty" name:"Message"`
+}
+
 type ClusterInfo struct {
 
 	// 集群Id
@@ -3146,6 +3314,15 @@ type PartitionOffset struct {
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
+type Partitions struct {
+
+	// 分区
+	Partition *int64 `json:"Partition,omitempty" name:"Partition"`
+
+	// partition 消费位移
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
 type Price struct {
 
 	// 折扣价
@@ -3579,4 +3756,12 @@ type ZoneResponse struct {
 	// 购买物理独占版配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Physical *string `json:"Physical,omitempty" name:"Physical"`
+
+	// 公网带宽
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicNetwork *string `json:"PublicNetwork,omitempty" name:"PublicNetwork"`
+
+	// 公网带宽配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicNetworkLimit *string `json:"PublicNetworkLimit,omitempty" name:"PublicNetworkLimit"`
 }
