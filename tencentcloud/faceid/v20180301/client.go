@@ -443,7 +443,9 @@ func NewDetectReflectLivenessAndCompareResponse() (response *DetectReflectLivene
 }
 
 // DetectReflectLivenessAndCompare
-// 使用一闪SDK生成的数据包检测活体，并和用户传入的图片进行比对。
+// 使用活体比对（光线）SDK生成的数据包检测活体，并和传入的图片进行比对。
+//
+// 图片和SDK生成的数据内容必须存储在腾讯云COS，COS Bucket所在的Region需要和本接口请求的Region保持一致，推荐使用生成上传链接接口来完成资源传递。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ACTIONLIGHTDARK = "FailedOperation.ActionLightDark"

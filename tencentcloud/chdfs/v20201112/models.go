@@ -226,7 +226,7 @@ type CreateFileSystemRequest struct {
 	// 文件系统名称
 	FileSystemName *string `json:"FileSystemName,omitempty" name:"FileSystemName"`
 
-	// 文件系统容量（byte），下限为1G，上限为1P，且必须是1G的整数倍
+	// 文件系统容量（byte），下限为1GB，上限为1PB，且必须是1GB的整数倍
 	CapacityQuota *uint64 `json:"CapacityQuota,omitempty" name:"CapacityQuota"`
 
 	// 是否校验POSIX ACL
@@ -243,6 +243,12 @@ type CreateFileSystemRequest struct {
 
 	// 根目录Inode组名，默认为supergroup
 	RootInodeGroup *string `json:"RootInodeGroup,omitempty" name:"RootInodeGroup"`
+
+	// 是否打开Ranger地址校验
+	EnableRanger *bool `json:"EnableRanger,omitempty" name:"EnableRanger"`
+
+	// Ranger地址列表，默认为空数组
+	RangerServiceAddresses []*string `json:"RangerServiceAddresses,omitempty" name:"RangerServiceAddresses"`
 }
 
 func (r *CreateFileSystemRequest) ToJsonString() string {
@@ -264,6 +270,8 @@ func (r *CreateFileSystemRequest) FromJsonString(s string) error {
 	delete(f, "SuperUsers")
 	delete(f, "RootInodeUser")
 	delete(f, "RootInodeGroup")
+	delete(f, "EnableRanger")
+	delete(f, "RangerServiceAddresses")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFileSystemRequest has unknown keys!", "")
 	}
@@ -865,13 +873,21 @@ type DescribeFileSystemResponse struct {
 		// 文件系统
 		FileSystem *FileSystem `json:"FileSystem,omitempty" name:"FileSystem"`
 
-		// 已使用容量（byte），包括标准和归档存储
+		// 文件系统已使用容量（byte）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		CapacityUsed *uint64 `json:"CapacityUsed,omitempty" name:"CapacityUsed"`
 
-		// 已使用归档存储容量（byte）
+		// 已使用COS归档存储容量（byte）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ArchiveCapacityUsed *uint64 `json:"ArchiveCapacityUsed,omitempty" name:"ArchiveCapacityUsed"`
+
+		// 已使用COS标准存储容量（byte）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		StandardCapacityUsed *uint64 `json:"StandardCapacityUsed,omitempty" name:"StandardCapacityUsed"`
+
+		// 已使用COS低频存储容量（byte）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DegradeCapacityUsed *uint64 `json:"DegradeCapacityUsed,omitempty" name:"DegradeCapacityUsed"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1272,6 +1288,14 @@ type FileSystem struct {
 
 	// POSIX权限控制
 	PosixAcl *bool `json:"PosixAcl,omitempty" name:"PosixAcl"`
+
+	// 是否打开Ranger地址校验
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableRanger *bool `json:"EnableRanger,omitempty" name:"EnableRanger"`
+
+	// Ranger地址列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RangerServiceAddresses []*string `json:"RangerServiceAddresses,omitempty" name:"RangerServiceAddresses"`
 }
 
 type LifeCycleRule struct {
@@ -1407,7 +1431,7 @@ type ModifyFileSystemRequest struct {
 	// 文件系统描述
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 文件系统容量（byte），下限为1G，上限为1P，且必须是1G的整数倍
+	// 文件系统容量（byte），下限为1GB，上限为1PB，且必须是1GB的整数倍
 	// 注意：修改的文件系统容量不能小于当前使用量
 	CapacityQuota *uint64 `json:"CapacityQuota,omitempty" name:"CapacityQuota"`
 
@@ -1416,6 +1440,12 @@ type ModifyFileSystemRequest struct {
 
 	// 是否校验POSIX ACL
 	PosixAcl *bool `json:"PosixAcl,omitempty" name:"PosixAcl"`
+
+	// 是否打开Ranger地址校验
+	EnableRanger *bool `json:"EnableRanger,omitempty" name:"EnableRanger"`
+
+	// Ranger地址列表，可以为空数组
+	RangerServiceAddresses []*string `json:"RangerServiceAddresses,omitempty" name:"RangerServiceAddresses"`
 }
 
 func (r *ModifyFileSystemRequest) ToJsonString() string {
@@ -1436,6 +1466,8 @@ func (r *ModifyFileSystemRequest) FromJsonString(s string) error {
 	delete(f, "CapacityQuota")
 	delete(f, "SuperUsers")
 	delete(f, "PosixAcl")
+	delete(f, "EnableRanger")
+	delete(f, "RangerServiceAddresses")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyFileSystemRequest has unknown keys!", "")
 	}
@@ -1641,7 +1673,7 @@ type RestoreTask struct {
 	// 回热任务文件路径
 	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
 
-	// 回热任务类型（1：标准；2：极速；3：批量）
+	// 回热任务类型（1：标准；2：极速；3：批量，暂时仅支持极速）
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
 	// 指定恢复出的临时副本的有效时长（单位天）
@@ -1668,6 +1700,6 @@ type Transition struct {
 	// 触发时间（单位天）
 	Days *uint64 `json:"Days,omitempty" name:"Days"`
 
-	// 转换类型（1：归档；2：删除）
+	// 转换类型（1：归档；2：删除；3：低频）
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 }

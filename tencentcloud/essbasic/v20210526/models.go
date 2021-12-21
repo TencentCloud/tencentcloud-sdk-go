@@ -38,6 +38,15 @@ type Agent struct {
 	ProxyOrganizationOpenId *string `json:"ProxyOrganizationOpenId,omitempty" name:"ProxyOrganizationOpenId"`
 }
 
+type AuthFailMessage struct {
+
+	// 合作企业Id
+	ProxyOrganizationOpenId *string `json:"ProxyOrganizationOpenId,omitempty" name:"ProxyOrganizationOpenId"`
+
+	// 出错信息
+	Message *string `json:"Message,omitempty" name:"Message"`
+}
+
 type Component struct {
 
 	// 控件编号
@@ -526,6 +535,15 @@ func (r *DescribeUsageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DownloadFlowInfo struct {
+
+	// 文件夹名称
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 合同（流程）的标识数组
+	FlowIdList []*string `json:"FlowIdList,omitempty" name:"FlowIdList"`
+}
+
 type FlowApproverInfo struct {
 
 	// 签署人姓名
@@ -551,6 +569,9 @@ type FlowApproverInfo struct {
 
 	// 用户侧第三方id
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 合同的强制预览时间：3~300s，未指定则按合同页数计算
+	PreReadTime *int64 `json:"PreReadTime,omitempty" name:"PreReadTime"`
 }
 
 type FlowInfo struct {
@@ -610,6 +631,154 @@ type FormField struct {
 	// 控件的名字，跟ComponentId二选一，不能全为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComponentName *string `json:"ComponentName,omitempty" name:"ComponentName"`
+}
+
+type GetDownloadFlowUrlRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用信息
+	// 此接口Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 文件夹数组，合同（流程）总数不能超过50个，一个文件夹下，不能超过20个合同（流程），
+	DownLoadFlows []*DownloadFlowInfo `json:"DownLoadFlows,omitempty" name:"DownLoadFlows"`
+}
+
+func (r *GetDownloadFlowUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetDownloadFlowUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "Operator")
+	delete(f, "DownLoadFlows")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetDownloadFlowUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetDownloadFlowUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 进入合同（流程）下载确认页面链接
+		DownLoadUrl *string `json:"DownLoadUrl,omitempty" name:"DownLoadUrl"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetDownloadFlowUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetDownloadFlowUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type OperateChannelTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 渠道方模板库模板唯一标识
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 操作类型，查询:"SELECT"，删除:"DELETE"，更新:"UPDATE"
+	OperateType *string `json:"OperateType,omitempty" name:"OperateType"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 模板可见性, 全部可见-"all", 部分可见-"part"
+	AuthTag *string `json:"AuthTag,omitempty" name:"AuthTag"`
+
+	// 合作企业方第三方机构唯一标识数据
+	ProxyOrganizationOpenIds *string `json:"ProxyOrganizationOpenIds,omitempty" name:"ProxyOrganizationOpenIds"`
+}
+
+func (r *OperateChannelTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OperateChannelTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "TemplateId")
+	delete(f, "OperateType")
+	delete(f, "Operator")
+	delete(f, "AuthTag")
+	delete(f, "ProxyOrganizationOpenIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OperateChannelTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type OperateChannelTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 腾讯电子签颁发给渠道的应用ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AppId *string `json:"AppId,omitempty" name:"AppId"`
+
+		// 渠道方模板库模板唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+		// 全部成功-"all-success",部分成功-"part-success", 全部失败-"fail"失败的会在FailMessageList中展示
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OperateResult *string `json:"OperateResult,omitempty" name:"OperateResult"`
+
+		// 模板可见性, 全部可见-"all", 部分可见-"part"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AuthTag *string `json:"AuthTag,omitempty" name:"AuthTag"`
+
+		// 合作企业方第三方机构唯一标识数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ProxyOrganizationOpenIds []*string `json:"ProxyOrganizationOpenIds,omitempty" name:"ProxyOrganizationOpenIds"`
+
+		// 操作失败信息数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FailMessageList []*AuthFailMessage `json:"FailMessageList,omitempty" name:"FailMessageList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *OperateChannelTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OperateChannelTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type PrepareFlowsRequest struct {

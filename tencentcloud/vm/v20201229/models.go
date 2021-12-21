@@ -68,7 +68,6 @@ type AudioResult struct {
 	LanguageResults []*AudioResultDetailLanguageResult `json:"LanguageResults,omitempty" name:"LanguageResults"`
 
 	// 该字段用于返回当前标签（Lable）下的二级标签。
-	// 注意：此字段可能返回null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubLabel *string `json:"SubLabel,omitempty" name:"SubLabel"`
 }
@@ -115,7 +114,6 @@ type AudioResultDetailMoanResult struct {
 	SubLabelCode *string `json:"SubLabelCode,omitempty" name:"SubLabelCode"`
 
 	// 该字段用于返回当前标签（Lable）下的二级标签。
-	// 注意：此字段可能返回null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubLabel *string `json:"SubLabel,omitempty" name:"SubLabel"`
 }
@@ -152,7 +150,6 @@ type AudioResultDetailTextResult struct {
 	LibType *int64 `json:"LibType,omitempty" name:"LibType"`
 
 	// 该字段用于返回当前标签（Lable）下的二级标签。
-	// 注意：此字段可能返回null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubLabel *string `json:"SubLabel,omitempty" name:"SubLabel"`
 }
@@ -520,7 +517,6 @@ type ImageResult struct {
 	Extra *string `json:"Extra,omitempty" name:"Extra"`
 
 	// 该字段用于返回当前标签（Lable）下的二级标签。
-	// 注意：此字段可能返回null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubLabel *string `json:"SubLabel,omitempty" name:"SubLabel"`
 }
@@ -762,7 +758,6 @@ type TaskLabel struct {
 	Score *int64 `json:"Score,omitempty" name:"Score"`
 
 	// 该字段用于返回当前标签（Lable）下的二级标签。
-	// 注意：此字段可能返回null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubLabel *string `json:"SubLabel,omitempty" name:"SubLabel"`
 }

@@ -206,7 +206,7 @@ type CreateMigrateJobRequest struct {
 	// 迁移任务配置选项
 	MigrateOption *MigrateOption `json:"MigrateOption,omitempty" name:"MigrateOption"`
 
-	// 源实例数据库类型，目前支持：mysql，redis，mongodb，postgresql，mariadb，percona。不同地域数据库类型的具体支持情况，请参考控制台创建迁移页面。
+	// 源实例数据库类型，目前支持：mysql，redis，mongodb，postgresql，mariadb，percona，sqlserver 不同地域数据库类型的具体支持情况，请参考控制台创建迁移页面。
 	SrcDatabaseType *string `json:"SrcDatabaseType,omitempty" name:"SrcDatabaseType"`
 
 	// 源实例接入类型，值包括：extranet(外网),cvm(CVM自建实例),dcg(专线接入的实例),vpncloud(云VPN接入的实例),cdb(腾讯云数据库实例),ccn(云联网实例)
@@ -215,7 +215,7 @@ type CreateMigrateJobRequest struct {
 	// 源实例信息，具体内容跟迁移任务类型相关
 	SrcInfo *SrcInfo `json:"SrcInfo,omitempty" name:"SrcInfo"`
 
-	// 目标实例数据库类型，目前支持：mysql，redis，mongodb，postgresql，mariadb，percona。不同地域数据库类型的具体支持情况，请参考控制台创建迁移页面。
+	// 目标实例数据库类型，目前支持：mysql，redis，mongodb，postgresql，mariadb，percona，sqlserver，cynosdbmysql。不同地域数据库类型的具体支持情况，请参考控制台创建迁移页面。
 	DstDatabaseType *string `json:"DstDatabaseType,omitempty" name:"DstDatabaseType"`
 
 	// 目标实例接入类型，目前支持：cdb（腾讯云数据库实例）
@@ -226,14 +226,13 @@ type CreateMigrateJobRequest struct {
 
 	// 需要迁移的源数据库表信息，用json格式的字符串描述。当MigrateOption.MigrateObject配置为2（指定库表迁移）时必填。
 	// 对于database-table两级结构的数据库：
-	// [{Database:db1,Table:[table1,table2]},{Database:db2}]
+	// [{"Database":"db1","Table":["table1","table2"]},{"Database":"db2"}]
 	// 对于database-schema-table三级结构：
-	// [{Database:db1,Schema:s1
-	// Table:[table1,table2]},{Database:db1,Schema:s2
-	// Table:[table1,table2]},{Database:db2,Schema:s1
-	// Table:[table1,table2]},{Database:db3},{Database:db4
-	// Schema:s1}]
+	// [{"Database":"db1","Schema":"s1","Table":["table1","table2"]},{"Database":"db1","Schema":"s2","Table":["table1","table2"]},{"Database":"db2","Schema":"s1","Table":["table1","table2"]},{"Database":"db3"},{"Database":"db4","Schema":"s1"}]
 	DatabaseInfo *string `json:"DatabaseInfo,omitempty" name:"DatabaseInfo"`
+
+	// 迁移实例的tag
+	Tags []*TagItem `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateMigrateJobRequest) ToJsonString() string {
@@ -257,6 +256,7 @@ func (r *CreateMigrateJobRequest) FromJsonString(s string) error {
 	delete(f, "DstAccessType")
 	delete(f, "DstInfo")
 	delete(f, "DatabaseInfo")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMigrateJobRequest has unknown keys!", "")
 	}

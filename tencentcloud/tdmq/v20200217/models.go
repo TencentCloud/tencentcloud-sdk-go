@@ -4590,6 +4590,153 @@ func (r *DescribeProducersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribePublisherSummaryRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 命名空间名称
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 主题名称
+	Topic *string `json:"Topic,omitempty" name:"Topic"`
+}
+
+func (r *DescribePublisherSummaryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePublisherSummaryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Namespace")
+	delete(f, "Topic")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePublisherSummaryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePublisherSummaryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 生产速率（条/秒）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		MsgRateIn *float64 `json:"MsgRateIn,omitempty" name:"MsgRateIn"`
+
+		// 生产速率（字节/秒）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		MsgThroughputIn *float64 `json:"MsgThroughputIn,omitempty" name:"MsgThroughputIn"`
+
+		// 生产者数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PublisherCount *int64 `json:"PublisherCount,omitempty" name:"PublisherCount"`
+
+		// 消息存储大小，以字节为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		StorageSize *int64 `json:"StorageSize,omitempty" name:"StorageSize"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePublisherSummaryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePublisherSummaryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePublishersRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 命名空间名称
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 主题名称
+	Topic *string `json:"Topic,omitempty" name:"Topic"`
+
+	// 参数过滤器，支持ProducerName，Address字段
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 查询偏移量，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询条数，默认为20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序器
+	Sort *Sort `json:"Sort,omitempty" name:"Sort"`
+}
+
+func (r *DescribePublishersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePublishersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Namespace")
+	delete(f, "Topic")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Sort")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePublishersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePublishersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总条数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 生产者信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Publishers []*Publisher `json:"Publishers,omitempty" name:"Publishers"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePublishersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePublishersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeRocketMQClusterRequest struct {
 	*tchttp.BaseRequest
 
@@ -6488,6 +6635,45 @@ func (r *PublishCmqMsgResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Publisher struct {
+
+	// 生产者id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProducerId *int64 `json:"ProducerId,omitempty" name:"ProducerId"`
+
+	// 生产者名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProducerName *string `json:"ProducerName,omitempty" name:"ProducerName"`
+
+	// 生产者地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 客户端版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientVersion *string `json:"ClientVersion,omitempty" name:"ClientVersion"`
+
+	// 消息生产速率（条/秒）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MsgRateIn *float64 `json:"MsgRateIn,omitempty" name:"MsgRateIn"`
+
+	// 消息生产吞吐速率（字节/秒）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MsgThroughputIn *float64 `json:"MsgThroughputIn,omitempty" name:"MsgThroughputIn"`
+
+	// 平均消息大小（字节）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AverageMsgSize *float64 `json:"AverageMsgSize,omitempty" name:"AverageMsgSize"`
+
+	// 连接时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConnectedSince *string `json:"ConnectedSince,omitempty" name:"ConnectedSince"`
+
+	// 生产者连接的主题分区号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Partition *int64 `json:"Partition,omitempty" name:"Partition"`
+}
+
 type ReceiveMessageRequest struct {
 	*tchttp.BaseRequest
 
@@ -7145,6 +7331,15 @@ func (r *SendMsgResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SendMsgResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Sort struct {
+
+	// 排序字段
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 升序ASC，降序DESC
+	Order *string `json:"Order,omitempty" name:"Order"`
 }
 
 type Subscription struct {

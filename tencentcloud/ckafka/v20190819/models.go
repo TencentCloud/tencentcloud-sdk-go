@@ -896,6 +896,9 @@ type CreateTopicRequest struct {
 
 	// 可选, 保留文件大小. 默认为-1,单位bytes, 当前最小值为1048576B
 	RetentionBytes *int64 `json:"RetentionBytes,omitempty" name:"RetentionBytes"`
+
+	// 标签列表
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateTopicRequest) ToJsonString() string {
@@ -925,6 +928,7 @@ func (r *CreateTopicRequest) FromJsonString(s string) error {
 	delete(f, "EnableAclRule")
 	delete(f, "AclRuleName")
 	delete(f, "RetentionBytes")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTopicRequest has unknown keys!", "")
 	}

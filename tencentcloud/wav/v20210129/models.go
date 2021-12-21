@@ -425,6 +425,123 @@ func (r *CreateCorpTagResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateLeadRequest struct {
+	*tchttp.BaseRequest
+
+	// 来源ID
+	ChannelId *uint64 `json:"ChannelId,omitempty" name:"ChannelId"`
+
+	// 来源名称
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 创建时间， 单位毫秒
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 线索类型：1-400呼入，2-常规留资
+	SourceType *int64 `json:"SourceType,omitempty" name:"SourceType"`
+
+	// 经销商id
+	DealerId *uint64 `json:"DealerId,omitempty" name:"DealerId"`
+
+	// 品牌id
+	BrandId *uint64 `json:"BrandId,omitempty" name:"BrandId"`
+
+	// 车系id
+	SeriesId *uint64 `json:"SeriesId,omitempty" name:"SeriesId"`
+
+	// 客户姓名
+	CustomerName *string `json:"CustomerName,omitempty" name:"CustomerName"`
+
+	// 客户手机号
+	CustomerPhone *string `json:"CustomerPhone,omitempty" name:"CustomerPhone"`
+
+	// 车型id
+	ModelId *uint64 `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 客户性别: 0-未知, 1-男, 2-女
+	CustomerSex *int64 `json:"CustomerSex,omitempty" name:"CustomerSex"`
+
+	// 销售姓名
+	SalesName *string `json:"SalesName,omitempty" name:"SalesName"`
+
+	// 销售手机号
+	SalesPhone *string `json:"SalesPhone,omitempty" name:"SalesPhone"`
+
+	// Cc坐席姓名
+	CcName *string `json:"CcName,omitempty" name:"CcName"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *CreateLeadRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLeadRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelId")
+	delete(f, "ChannelName")
+	delete(f, "CreateTime")
+	delete(f, "SourceType")
+	delete(f, "DealerId")
+	delete(f, "BrandId")
+	delete(f, "SeriesId")
+	delete(f, "CustomerName")
+	delete(f, "CustomerPhone")
+	delete(f, "ModelId")
+	delete(f, "CustomerSex")
+	delete(f, "SalesName")
+	delete(f, "SalesPhone")
+	delete(f, "CcName")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLeadRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateLeadResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 线索处理状态码： 0-表示创建成功， 1-表示线索合并，2-表示线索重复
+		BusinessCode *int64 `json:"BusinessCode,omitempty" name:"BusinessCode"`
+
+		// 线索处理结果描述
+		BusinessMsg *string `json:"BusinessMsg,omitempty" name:"BusinessMsg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateLeadResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLeadResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DealerInfo struct {
+
+	// 企微SaaS平台经销商id
+	DealerId *uint64 `json:"DealerId,omitempty" name:"DealerId"`
+
+	// 经销商名称
+	DealerName *string `json:"DealerName,omitempty" name:"DealerName"`
+}
+
 type ExternalContact struct {
 
 	// 外部联系人的userId
@@ -966,6 +1083,68 @@ func (r *QueryClueInfoListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type QueryDealerInfoListRequest struct {
+	*tchttp.BaseRequest
+
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *QueryDealerInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryDealerInfoListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Cursor")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryDealerInfoListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryDealerInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 经销商信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PageData []*DealerInfo `json:"PageData,omitempty" name:"PageData"`
+
+		// 分页游标，下次调用带上该值，则从当前的位置继续往后拉取新增的数据，以实现增量拉取。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
+
+		// 是否还有更多数据。0-否；1-是。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		HasMore *uint64 `json:"HasMore,omitempty" name:"HasMore"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryDealerInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryDealerInfoListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type QueryExternalContactDetailRequest struct {
 	*tchttp.BaseRequest
 
@@ -1248,6 +1427,68 @@ func (r *QueryMiniAppCodeListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type QueryVehicleInfoListRequest struct {
+	*tchttp.BaseRequest
+
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *QueryVehicleInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryVehicleInfoListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Cursor")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryVehicleInfoListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryVehicleInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 车系车型信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PageData []*VehicleInfo `json:"PageData,omitempty" name:"PageData"`
+
+		// 分页游标，下次调用带上该值，则从当前的位置继续往后拉取新增的数据，以实现增量拉取。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
+
+		// 是否还有更多数据。0-否；1-是。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		HasMore *uint64 `json:"HasMore,omitempty" name:"HasMore"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryVehicleInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryVehicleInfoListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type TagDetailInfo struct {
 
 	// 标签名称
@@ -1294,6 +1535,27 @@ type TagInfo struct {
 
 	// 标签组排序,值越大,排序越靠前
 	Sort *uint64 `json:"Sort,omitempty" name:"Sort"`
+}
+
+type VehicleInfo struct {
+
+	// 品牌id
+	BrandId *uint64 `json:"BrandId,omitempty" name:"BrandId"`
+
+	// 品牌名称
+	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
+
+	// 车系id
+	SeriesId *uint64 `json:"SeriesId,omitempty" name:"SeriesId"`
+
+	// 车系名称
+	SeriesName *string `json:"SeriesName,omitempty" name:"SeriesName"`
+
+	// 车型id
+	ModelId *uint64 `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 车型名称
+	ModelName *string `json:"ModelName,omitempty" name:"ModelName"`
 }
 
 type WeComTagDetail struct {

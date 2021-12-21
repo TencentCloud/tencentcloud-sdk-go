@@ -4091,12 +4091,72 @@ type KeyPair struct {
 }
 
 type LaunchTemplate struct {
+
+	// 实例启动模板ID，通过该参数可使用实例模板中的预设参数创建实例。
+	LaunchTemplateId *string `json:"LaunchTemplateId,omitempty" name:"LaunchTemplateId"`
+
+	// 实例启动模板版本号，若给定，新实例启动模板将基于给定的版本号创建
+	LaunchTemplateVersion *uint64 `json:"LaunchTemplateVersion,omitempty" name:"LaunchTemplateVersion"`
 }
 
 type LaunchTemplateInfo struct {
+
+	// 实例启动模版本号。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LatestVersionNumber *uint64 `json:"LatestVersionNumber,omitempty" name:"LatestVersionNumber"`
+
+	// 实例启动模板ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LaunchTemplateId *string `json:"LaunchTemplateId,omitempty" name:"LaunchTemplateId"`
+
+	// 实例启动模板名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LaunchTemplateName *string `json:"LaunchTemplateName,omitempty" name:"LaunchTemplateName"`
+
+	// 实例启动模板默认版本号。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultVersionNumber *uint64 `json:"DefaultVersionNumber,omitempty" name:"DefaultVersionNumber"`
+
+	// 实例启动模板包含的版本总数量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LaunchTemplateVersionCount *uint64 `json:"LaunchTemplateVersionCount,omitempty" name:"LaunchTemplateVersionCount"`
+
+	// 创建该模板的用户UIN。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedBy *string `json:"CreatedBy,omitempty" name:"CreatedBy"`
+
+	// 创建该模板的时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreationTime *string `json:"CreationTime,omitempty" name:"CreationTime"`
+}
+
+type LaunchTemplateVersionData struct {
 }
 
 type LaunchTemplateVersionInfo struct {
+
+	// 实例启动模板版本号。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LaunchTemplateVersion *uint64 `json:"LaunchTemplateVersion,omitempty" name:"LaunchTemplateVersion"`
+
+	// 实例启动模板版本数据详情。
+	LaunchTemplateVersionData *LaunchTemplateVersionData `json:"LaunchTemplateVersionData,omitempty" name:"LaunchTemplateVersionData"`
+
+	// 实例启动模板版本创建时间。
+	CreationTime *string `json:"CreationTime,omitempty" name:"CreationTime"`
+
+	// 实例启动模板ID。
+	LaunchTemplateId *string `json:"LaunchTemplateId,omitempty" name:"LaunchTemplateId"`
+
+	// 是否为默认启动模板版本。
+	IsDefaultVersion *bool `json:"IsDefaultVersion,omitempty" name:"IsDefaultVersion"`
+
+	// 实例启动模板版本描述信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LaunchTemplateVersionDescription *string `json:"LaunchTemplateVersionDescription,omitempty" name:"LaunchTemplateVersionDescription"`
+
+	// 创建者。
+	CreatedBy *string `json:"CreatedBy,omitempty" name:"CreatedBy"`
 }
 
 type LocalDiskType struct {

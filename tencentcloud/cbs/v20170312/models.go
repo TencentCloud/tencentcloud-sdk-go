@@ -28,6 +28,12 @@ type ApplySnapshotRequest struct {
 
 	// 快照原云硬盘ID，可通过[DescribeDisks](/document/product/362/16315)接口查询。
 	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
+
+	// 回滚前是否执行自动关机
+	AutoStopInstance *bool `json:"AutoStopInstance,omitempty" name:"AutoStopInstance"`
+
+	// 回滚完成后是否自动开机
+	AutoStartInstance *bool `json:"AutoStartInstance,omitempty" name:"AutoStartInstance"`
 }
 
 func (r *ApplySnapshotRequest) ToJsonString() string {
@@ -44,6 +50,8 @@ func (r *ApplySnapshotRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SnapshotId")
 	delete(f, "DiskId")
+	delete(f, "AutoStopInstance")
+	delete(f, "AutoStartInstance")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplySnapshotRequest has unknown keys!", "")
 	}

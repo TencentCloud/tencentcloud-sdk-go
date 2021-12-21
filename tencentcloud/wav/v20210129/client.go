@@ -111,6 +111,49 @@ func (c *Client) CreateCorpTag(request *CreateCorpTagRequest) (response *CreateC
     return
 }
 
+func NewCreateLeadRequest() (request *CreateLeadRequest) {
+    request = &CreateLeadRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("wav", APIVersion, "CreateLead")
+    
+    
+    return
+}
+
+func NewCreateLeadResponse() (response *CreateLeadResponse) {
+    response = &CreateLeadResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateLead
+// 线索回收接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_OPENPLATFORMERROR = "FailedOperation.OpenPlatformError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateLead(request *CreateLeadRequest) (response *CreateLeadResponse, err error) {
+    if request == nil {
+        request = NewCreateLeadRequest()
+    }
+    
+    response = NewCreateLeadResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryActivityJoinListRequest() (request *QueryActivityJoinListRequest) {
     request = &QueryActivityJoinListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -320,6 +363,43 @@ func (c *Client) QueryClueInfoList(request *QueryClueInfoListRequest) (response 
     return
 }
 
+func NewQueryDealerInfoListRequest() (request *QueryDealerInfoListRequest) {
+    request = &QueryDealerInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("wav", APIVersion, "QueryDealerInfoList")
+    
+    
+    return
+}
+
+func NewQueryDealerInfoListResponse() (response *QueryDealerInfoListResponse) {
+    response = &QueryDealerInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryDealerInfoList
+// 企业可通过此接口获取录入在企微SaaS平台上的经销商信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) QueryDealerInfoList(request *QueryDealerInfoListRequest) (response *QueryDealerInfoListResponse, err error) {
+    if request == nil {
+        request = NewQueryDealerInfoListRequest()
+    }
+    
+    response = NewQueryDealerInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryExternalContactDetailRequest() (request *QueryExternalContactDetailRequest) {
     request = &QueryExternalContactDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -502,6 +582,43 @@ func (c *Client) QueryMiniAppCodeList(request *QueryMiniAppCodeListRequest) (res
     }
     
     response = NewQueryMiniAppCodeListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryVehicleInfoListRequest() (request *QueryVehicleInfoListRequest) {
+    request = &QueryVehicleInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("wav", APIVersion, "QueryVehicleInfoList")
+    
+    
+    return
+}
+
+func NewQueryVehicleInfoListResponse() (response *QueryVehicleInfoListResponse) {
+    response = &QueryVehicleInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryVehicleInfoList
+// 企业可通过此接口获取企微SaaS平台上的车系车型信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) QueryVehicleInfoList(request *QueryVehicleInfoListRequest) (response *QueryVehicleInfoListResponse, err error) {
+    if request == nil {
+        request = NewQueryVehicleInfoListRequest()
+    }
+    
+    response = NewQueryVehicleInfoListResponse()
     err = c.Send(request, response)
     return
 }

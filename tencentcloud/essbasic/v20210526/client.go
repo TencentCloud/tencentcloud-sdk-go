@@ -313,6 +313,128 @@ func (c *Client) DescribeUsage(request *DescribeUsageRequest) (response *Describ
     return
 }
 
+func NewGetDownloadFlowUrlRequest() (request *GetDownloadFlowUrlRequest) {
+    request = &GetDownloadFlowUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("essbasic", APIVersion, "GetDownloadFlowUrl")
+    
+    
+    return
+}
+
+func NewGetDownloadFlowUrlResponse() (response *GetDownloadFlowUrlResponse) {
+    response = &GetDownloadFlowUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetDownloadFlowUrl
+// 此接口（GetDownloadFlowUrl）用于创建电子签批量下载确认页面链接，支持客户合同（流程）归类打包下载。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BANNEDAPPLICATION = "OperationDenied.BannedApplication"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetDownloadFlowUrl(request *GetDownloadFlowUrlRequest) (response *GetDownloadFlowUrlResponse, err error) {
+    if request == nil {
+        request = NewGetDownloadFlowUrlRequest()
+    }
+    
+    response = NewGetDownloadFlowUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewOperateChannelTemplateRequest() (request *OperateChannelTemplateRequest) {
+    request = &OperateChannelTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("essbasic", APIVersion, "OperateChannelTemplate")
+    
+    
+    return
+}
+
+func NewOperateChannelTemplateResponse() (response *OperateChannelTemplateResponse) {
+    response = &OperateChannelTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// OperateChannelTemplate
+// 此接口（OperateChannelTemplate）用于渠道侧将模板库中的模板对合作企业进行查询和设置, 其中包括可见性的修改以及对合作企业的指定.
+//
+// 1、同步标识=select时：
+//
+// 输入规则：“可见标识”、“指定合作企业列表”为空。
+//
+// 处理规则：返回指定模版的可见标识、指定合作企业列表。
+//
+// 2、同步标识=update时：
+//
+// 输入规则：“可见标识”、“指定合作企业列表”非必填输入。
+//
+// 处理规则：
+//
+// 若“可见标识”=空，不做处理，返回当前的可见标识。
+//
+// 若“可见标识”=所有合作企业，不取“指定合作企业列表”的值处理。
+//
+// 若“可见标识”=指定合作企业，取“指定合作企业列表”的值进行更新/插入。
+//
+// 3、同步标识=delete时：
+//
+// 输入规则：“可见标识”、“指定合作企业列表”非必填输入。
+//
+// 处理规则：
+//
+// 仅取“指定合作企业列表”的值进行删除处理，为空时不做处。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_STAFFALREADYVERIFY = "FailedOperation.StaffAlreadyVerify"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INTERNALERROR_DBUPDATE = "InternalError.DbUpdate"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOAPIAUTH = "OperationDenied.NoApiAuth"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) OperateChannelTemplate(request *OperateChannelTemplateRequest) (response *OperateChannelTemplateResponse, err error) {
+    if request == nil {
+        request = NewOperateChannelTemplateRequest()
+    }
+    
+    response = NewOperateChannelTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPrepareFlowsRequest() (request *PrepareFlowsRequest) {
     request = &PrepareFlowsRequest{
         BaseRequest: &tchttp.BaseRequest{},

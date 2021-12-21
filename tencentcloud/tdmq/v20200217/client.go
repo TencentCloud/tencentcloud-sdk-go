@@ -2359,6 +2359,86 @@ func (c *Client) DescribeProducers(request *DescribeProducersRequest) (response 
     return
 }
 
+func NewDescribePublisherSummaryRequest() (request *DescribePublisherSummaryRequest) {
+    request = &DescribePublisherSummaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribePublisherSummary")
+    
+    
+    return
+}
+
+func NewDescribePublisherSummaryResponse() (response *DescribePublisherSummaryResponse) {
+    response = &DescribePublisherSummaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePublisherSummary
+// 获取消息生产概览信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DESCRIBEPRODUCERS = "FailedOperation.DescribeProducers"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+func (c *Client) DescribePublisherSummary(request *DescribePublisherSummaryRequest) (response *DescribePublisherSummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribePublisherSummaryRequest()
+    }
+    
+    response = NewDescribePublisherSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePublishersRequest() (request *DescribePublishersRequest) {
+    request = &DescribePublishersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribePublishers")
+    
+    
+    return
+}
+
+func NewDescribePublishersResponse() (response *DescribePublishersResponse) {
+    response = &DescribePublishersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePublishers
+// 获取生产者信息列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DESCRIBEPRODUCERS = "FailedOperation.DescribeProducers"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+func (c *Client) DescribePublishers(request *DescribePublishersRequest) (response *DescribePublishersResponse, err error) {
+    if request == nil {
+        request = NewDescribePublishersRequest()
+    }
+    
+    response = NewDescribePublishersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRocketMQClusterRequest() (request *DescribeRocketMQClusterRequest) {
     request = &DescribeRocketMQClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},

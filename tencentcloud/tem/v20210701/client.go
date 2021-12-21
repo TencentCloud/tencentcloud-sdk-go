@@ -695,3 +695,35 @@ func (c *Client) RevertDeployApplication(request *RevertDeployApplicationRequest
     err = c.Send(request, response)
     return
 }
+
+func NewRollingUpdateApplicationByVersionRequest() (request *RollingUpdateApplicationByVersionRequest) {
+    request = &RollingUpdateApplicationByVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tem", APIVersion, "RollingUpdateApplicationByVersion")
+    
+    
+    return
+}
+
+func NewRollingUpdateApplicationByVersionResponse() (response *RollingUpdateApplicationByVersionResponse) {
+    response = &RollingUpdateApplicationByVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RollingUpdateApplicationByVersion
+// 更新应用部署版本
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+func (c *Client) RollingUpdateApplicationByVersion(request *RollingUpdateApplicationByVersionRequest) (response *RollingUpdateApplicationByVersionResponse, err error) {
+    if request == nil {
+        request = NewRollingUpdateApplicationByVersionRequest()
+    }
+    
+    response = NewRollingUpdateApplicationByVersionResponse()
+    err = c.Send(request, response)
+    return
+}

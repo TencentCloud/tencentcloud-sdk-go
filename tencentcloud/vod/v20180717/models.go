@@ -464,62 +464,62 @@ type AiAnalysisTaskTagResult struct {
 type AiContentReviewResult struct {
 
 	// 任务的类型，可以取的值有：
-	// <li>Porn：图片鉴黄</li>
-	// <li>Terrorism：图片鉴恐</li>
-	// <li>Political：图片鉴政</li>
-	// <li>Porn.Asr：Asr 文字（ 音频中的文字）鉴黄</li>
-	// <li>Porn.Ocr：Ocr 文字鉴黄</li>
-	// <li>Political.Asr：Asr 文字（ 音频中的文字）鉴政</li>
-	// <li>Political.Ocr：Ocr 文字鉴政</li>
-	// <li>Terrorism.Ocr：Ocr 文字鉴恐</li>
+	// <li>Porn：图片鉴别是否涉及令人反感的信息</li>
+	// <li>Terrorism：图片鉴别是否涉及令人不安全的信息</li>
+	// <li>Political：图片鉴别是否涉及令人不适宜的信息</li>
+	// <li>Porn.Asr：Asr 文字（ 音频中的文字）鉴别是否涉及令人反感的信息</li>
+	// <li>Porn.Ocr：Ocr 文字鉴别是否涉及令人反感的信息</li>
+	// <li>Political.Asr：Asr 文字（ 音频中的文字）鉴别是否涉及令人不适宜的信息</li>
+	// <li>Political.Ocr：Ocr 文字鉴别是否涉及令人不适宜的信息</li>
+	// <li>Terrorism.Ocr：Ocr 文字鉴别是否涉及令人不安全的信息</li>
 	// <li>Prohibited.Asr：Asr 文字（ 音频中的文字）鉴违禁</li>
 	// <li>Prohibited.Ocr：Ocr 文字鉴违禁</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 视频内容审核智能画面鉴黄任务的查询结果，当任务类型为 Porn 时有效。
+	// 视频智能识别任务（画面涉及令人反感的信息）的查询结果，当任务类型为 Porn 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PornTask *AiReviewTaskPornResult `json:"PornTask,omitempty" name:"PornTask"`
 
-	// 视频内容审核智能画面鉴恐任务的查询结果，当任务类型为 Terrorism 时有效。
+	// 视频智能识别任务（画面涉及令人不安全的信息）的查询结果，当任务类型为 Terrorism 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TerrorismTask *AiReviewTaskTerrorismResult `json:"TerrorismTask,omitempty" name:"TerrorismTask"`
 
-	// 视频内容审核智能画面鉴政任务的查询结果，当任务类型为 Political 时有效。
+	// 视频智能识别任务（画面涉及令人不适宜的信息）的查询结果，当任务类型为 Political 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PoliticalTask *AiReviewTaskPoliticalResult `json:"PoliticalTask,omitempty" name:"PoliticalTask"`
 
-	// 视频内容审核 Asr 文字鉴黄任务的查询结果，当任务类型为 Porn.Asr 时有效。
+	// 视频智能识别任务（Asr 文字涉及令人反感的信息）的查询结果，当任务类型为 Porn.Asr 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PornAsrTask *AiReviewTaskPornAsrResult `json:"PornAsrTask,omitempty" name:"PornAsrTask"`
 
-	// 视频内容审核 Ocr 文字鉴黄任务的查询结果，当任务类型为 Porn.Ocr 时有效。
+	// 视频智能识别任务（Ocr 文字涉及令人反感的信息）的查询结果，当任务类型为 Porn.Ocr 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PornOcrTask *AiReviewTaskPornOcrResult `json:"PornOcrTask,omitempty" name:"PornOcrTask"`
 
-	// 视频内容审核 Asr 文字鉴政任务的查询结果，当任务类型为 Political.Asr 时有效。
+	// 视频智能识别任务（Asr 文字涉及令人不适宜的信息）的查询结果，当任务类型为 Political.Asr 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PoliticalAsrTask *AiReviewTaskPoliticalAsrResult `json:"PoliticalAsrTask,omitempty" name:"PoliticalAsrTask"`
 
-	// 视频内容审核 Ocr 文字鉴政任务的查询结果，当任务类型为 Political.Ocr 时有效。
+	// 视频智能识别任务（Ocr 文字涉及令人不适宜的信息）的查询结果，当任务类型为 Political.Ocr 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PoliticalOcrTask *AiReviewTaskPoliticalOcrResult `json:"PoliticalOcrTask,omitempty" name:"PoliticalOcrTask"`
 
-	// 视频内容审核 Ocr 文字鉴恐任务的查询结果，当任务类型为 Terrorism.Ocr 时有效。
+	// 视频智能识别任务（ Ocr 文字涉及令人不安全的信息）的查询结果，当任务类型为 Terrorism.Ocr 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TerrorismOcrTask *AiReviewTaskTerrorismOcrResult `json:"TerrorismOcrTask,omitempty" name:"TerrorismOcrTask"`
 
-	// 视频内容审核 Asr 文字鉴违禁任务的查询结果，当任务类型为 Prohibited.Asr 时有效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProhibitedAsrTask *AiReviewTaskProhibitedAsrResult `json:"ProhibitedAsrTask,omitempty" name:"ProhibitedAsrTask"`
-
-	// 视频内容审核 Ocr 文字鉴违禁任务的查询结果，当任务类型为 Prohibited.Ocr 时有效。
+	// 视频智能识别 Ocr 文字鉴违禁任务的查询结果，当任务类型为 Prohibited.Ocr 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProhibitedOcrTask *AiReviewTaskProhibitedOcrResult `json:"ProhibitedOcrTask,omitempty" name:"ProhibitedOcrTask"`
+
+	// 视频智能识别 Asr 文字鉴违禁任务的查询结果，当任务类型为 Prohibited.Asr 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProhibitedAsrTask *AiReviewTaskProhibitedAsrResult `json:"ProhibitedAsrTask,omitempty" name:"ProhibitedAsrTask"`
 }
 
 type AiContentReviewTaskInput struct {
 
-	// 视频内容审核模板 ID。
+	// 智能识别模板 ID。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 }
 
@@ -1082,183 +1082,183 @@ type AiRecognitionTaskSegmentSegmentItem struct {
 
 type AiReviewPoliticalAsrTaskInput struct {
 
-	// 鉴政模板 ID。
+	// 鉴别涉及令人不适宜信息的模板 ID。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 }
 
 type AiReviewPoliticalAsrTaskOutput struct {
 
-	// Asr 文字涉政、敏感评分，分值为0到100。
+	// Asr 文字涉及令人不适宜的信息、违规评分，分值为0到100。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
-	// Asr 文字涉政、敏感结果建议，取值范围：
+	// Asr 文字涉及令人不适宜的信息、违规结果建议，取值范围：
 	// <li>pass。</li>
 	// <li>review。</li>
 	// <li>block。</li>
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
-	// Asr 文字有涉政、敏感嫌疑的视频片段列表。
+	// Asr 文字有涉及令人不适宜的信息、违规嫌疑的视频片段列表。
 	// <font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
 	SegmentSet []*MediaContentReviewAsrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 
-	// Asr 文字有涉政、敏感嫌疑的视频片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达 SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+	// Asr 文字有涉及令人不适宜的信息、违规嫌疑的视频片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达 SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
 	SegmentSetFileUrl *string `json:"SegmentSetFileUrl,omitempty" name:"SegmentSetFileUrl"`
 
-	// Asr 文字有涉政、敏感嫌疑的视频片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	// Asr 文字有涉及令人不适宜的信息、违规嫌疑的视频片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	SegmentSetFileUrlExpireTime *string `json:"SegmentSetFileUrlExpireTime,omitempty" name:"SegmentSetFileUrlExpireTime"`
 }
 
 type AiReviewPoliticalOcrTaskInput struct {
 
-	// 鉴政模板 ID。
+	// 鉴别涉及令人不适宜信息的模板 ID。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 }
 
 type AiReviewPoliticalOcrTaskOutput struct {
 
-	// Ocr 文字涉政、敏感评分，分值为0到100。
+	// Ocr 文字涉及令人不适宜的信息、违规评分，分值为0到100。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
-	// Ocr 文字涉政、敏感结果建议，取值范围：
+	// Ocr 文字涉及令人不适宜的信息、违规结果建议，取值范围：
 	// <li>pass。</li>
 	// <li>review。</li>
 	// <li>block。</li>
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
-	// Ocr 文字有涉政、敏感嫌疑的视频片段列表。
+	// Ocr 文字有涉及令人不适宜的信息、违规嫌疑的视频片段列表。
 	// <font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
 	SegmentSet []*MediaContentReviewOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 
-	// Ocr 文字有涉政、敏感嫌疑的视频片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达 SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+	// Ocr 文字有涉及令人不适宜的信息、违规嫌疑的视频片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达 SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
 	SegmentSetFileUrl *string `json:"SegmentSetFileUrl,omitempty" name:"SegmentSetFileUrl"`
 
-	// Ocr 文字有涉政、敏感嫌疑的视频片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	// Ocr 文字有涉及令人不适宜的信息、违规嫌疑的视频片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	SegmentSetFileUrlExpireTime *string `json:"SegmentSetFileUrlExpireTime,omitempty" name:"SegmentSetFileUrlExpireTime"`
 }
 
 type AiReviewPoliticalTaskInput struct {
 
-	// 鉴政模板 ID。
+	// 鉴别涉及令人不适宜信息的模板 ID。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 }
 
 type AiReviewPoliticalTaskOutput struct {
 
-	// 视频涉政评分，分值为0到100。
+	// 视频涉及令人不适宜信息的评分，分值为0到100。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
-	// 涉政结果建议，取值范围：
+	// 涉及令人不适宜信息的结果建议，取值范围：
 	// <li>pass。</li>
 	// <li>review。</li>
 	// <li>block。</li>
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
-	// 视频鉴政结果标签。内容审核模板[画面鉴政任务控制参数](https://cloud.tencent.com/document/api/266/31773#PoliticalImgReviewTemplateInfo)里 LabelSet 参数与此参数取值范围的对应关系：
+	// 视频涉及令人不适宜信息的结果标签。智能识别模板[画面鉴政任务控制参数](https://cloud.tencent.com/document/api/266/31773#PoliticalImgReviewTemplateInfo)里 LabelSet 参数与此参数取值范围的对应关系：
 	// violation_photo：
 	// <li>violation_photo：违规图标。</li>
 	// 其他（即 politician/entertainment/sport/entrepreneur/scholar/celebrity/military）：
-	// <li>politician：政治人物。</li>
+	// <li>politician：相关人物。</li>
 	Label *string `json:"Label,omitempty" name:"Label"`
 
-	// 有涉政嫌疑的视频片段列表。
+	// 有涉及令人不适宜信息嫌疑的视频片段列表。
 	// <font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
 	SegmentSet []*MediaContentReviewPoliticalSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 
-	// 涉政嫌疑的视频片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达 SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+	// 有涉及令人不适宜的信息嫌疑的视频片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达 SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
 	SegmentSetFileUrl *string `json:"SegmentSetFileUrl,omitempty" name:"SegmentSetFileUrl"`
 
-	// 涉政嫌疑的视频片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	// 有涉及令人不适宜的信息嫌疑的视频片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	SegmentSetFileUrlExpireTime *string `json:"SegmentSetFileUrlExpireTime,omitempty" name:"SegmentSetFileUrlExpireTime"`
 }
 
 type AiReviewPornAsrTaskInput struct {
 
-	// 鉴黄模板 ID。
+	// 鉴别涉及令人反感的信息的模板 ID。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 }
 
 type AiReviewPornAsrTaskOutput struct {
 
-	// Asr 文字涉黄评分，分值为0到100。
+	// Asr 文字涉及令人反感的信息的评分，分值为0到100。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
-	// Asr 文字涉黄结果建议，取值范围：
+	// Asr 文字涉及令人反感的信息的结果建议，取值范围：
 	// <li>pass。</li>
 	// <li>review。</li>
 	// <li>block。</li>
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
-	// Asr 文字有涉黄嫌疑的视频片段列表。
+	// Asr 文字有涉及令人反感的信息的嫌疑的视频片段列表。
 	// <font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
 	SegmentSet []*MediaContentReviewAsrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 
-	// Asr 文字有涉黄嫌疑的视频片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达 SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+	// Asr 文字有涉及令人反感的信息的嫌疑的视频片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达 SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
 	SegmentSetFileUrl *string `json:"SegmentSetFileUrl,omitempty" name:"SegmentSetFileUrl"`
 
-	// Asr 文字有涉黄嫌疑的视频片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	// Asr 文字有涉及令人反感的信息的嫌疑的视频片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	SegmentSetFileUrlExpireTime *string `json:"SegmentSetFileUrlExpireTime,omitempty" name:"SegmentSetFileUrlExpireTime"`
 }
 
 type AiReviewPornOcrTaskInput struct {
 
-	// 鉴黄模板 ID。
+	// 鉴别涉及令人反感的信息的模板 ID。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 }
 
 type AiReviewPornOcrTaskOutput struct {
 
-	// Ocr 文字涉黄评分，分值为0到100。
+	// Ocr 文字涉及令人反感的信息的评分，分值为0到100。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
-	// Ocr 文字涉黄结果建议，取值范围：
+	// Ocr 文字涉及令人反感的信息的结果建议，取值范围：
 	// <li>pass。</li>
 	// <li>review。</li>
 	// <li>block。</li>
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
-	// Ocr 文字有涉黄嫌疑的视频片段列表。
+	// Ocr 文字有涉及令人反感的信息的嫌疑的视频片段列表。
 	// <font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
 	SegmentSet []*MediaContentReviewOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 
-	// Ocr 文字有涉黄嫌疑的视频片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达 SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+	// Ocr 文字有涉及令人反感的信息的嫌疑的视频片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达 SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
 	SegmentSetFileUrl *string `json:"SegmentSetFileUrl,omitempty" name:"SegmentSetFileUrl"`
 
-	// Ocr 文字有涉黄嫌疑的视频片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	// Ocr 文字有涉及令人反感的信息的嫌疑的视频片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	SegmentSetFileUrlExpireTime *string `json:"SegmentSetFileUrlExpireTime,omitempty" name:"SegmentSetFileUrlExpireTime"`
 }
 
 type AiReviewPornTaskInput struct {
 
-	// 鉴黄模板 ID。
+	// 鉴别涉及令人反感的信息的模板 ID。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 }
 
 type AiReviewPornTaskOutput struct {
 
-	// 视频鉴黄评分，分值为0到100。
+	// 视频鉴别涉及令人反感的信息的评分，分值为0到100。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
-	// 鉴黄结果建议，取值范围：
+	// 鉴别涉及令人反感的信息的结果建议，取值范围：
 	// <li>pass。</li>
 	// <li>review。</li>
 	// <li>block。</li>
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
-	// 视频鉴黄结果标签，取值范围：
+	// 视频鉴别涉及令人反感的信息的结果标签，取值范围：
 	// <li>porn：色情。</li>
 	// <li>sexy：性感。</li>
 	// <li>vulgar：低俗。</li>
 	// <li>intimacy：亲密行为。</li>
 	Label *string `json:"Label,omitempty" name:"Label"`
 
-	// 有涉黄嫌疑的视频片段列表。
+	// 有涉及令人反感的信息的嫌疑的视频片段列表。
 	// <font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
 	SegmentSet []*MediaContentReviewSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 
-	// 涉黄嫌疑的视频片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+	// 涉及令人反感的信息的嫌疑的视频片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
 	SegmentSetFileUrl *string `json:"SegmentSetFileUrl,omitempty" name:"SegmentSetFileUrl"`
 
-	// 涉黄嫌疑的视频片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	// 涉及令人反感的信息的嫌疑的视频片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	SegmentSetFileUrlExpireTime *string `json:"SegmentSetFileUrlExpireTime,omitempty" name:"SegmentSetFileUrlExpireTime"`
 }
 
@@ -1332,10 +1332,10 @@ type AiReviewTaskPoliticalAsrResult struct {
 	// 错误信息。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
-	// 内容审核 Asr 文字鉴政任务输入。
+	// 智能识别 Asr 文字涉及令人不适宜信息的任务输入。
 	Input *AiReviewPoliticalAsrTaskInput `json:"Input,omitempty" name:"Input"`
 
-	// 内容审核 Asr 文字鉴政任务输出。
+	// 智能识别 Asr 文字涉及令人不适宜信息的任务输出。
 	Output *AiReviewPoliticalAsrTaskOutput `json:"Output,omitempty" name:"Output"`
 }
 
@@ -1353,10 +1353,10 @@ type AiReviewTaskPoliticalOcrResult struct {
 	// 错误信息。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
-	// 内容审核 Ocr 文字鉴政任务输入。
+	// 智能识别 Ocr 文字涉及令人不适宜信息的任务输入。
 	Input *AiReviewPoliticalOcrTaskInput `json:"Input,omitempty" name:"Input"`
 
-	// 内容审核 Ocr 文字鉴政任务输出。
+	// 智能识别 Ocr 文字涉及令人不适宜信息的任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewPoliticalOcrTaskOutput `json:"Output,omitempty" name:"Output"`
 }
@@ -1375,10 +1375,10 @@ type AiReviewTaskPoliticalResult struct {
 	// 错误信息。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
-	// 内容审核鉴政任务输入。
+	// 智能识别涉及令人不适宜信息的任务输入。
 	Input *AiReviewPoliticalTaskInput `json:"Input,omitempty" name:"Input"`
 
-	// 内容审核鉴政任务输出。
+	// 智能识别涉及令人不适宜信息的任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewPoliticalTaskOutput `json:"Output,omitempty" name:"Output"`
 }
@@ -1397,10 +1397,10 @@ type AiReviewTaskPornAsrResult struct {
 	// 错误信息。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
-	// 内容审核 Asr 文字鉴黄任务输入。
+	// 智能识别 Asr 文字涉及令人反感的信息的任务输入。
 	Input *AiReviewPornAsrTaskInput `json:"Input,omitempty" name:"Input"`
 
-	// 内容审核 Asr 文字鉴黄任务输出。
+	// 智能识别 Asr 文字涉及令人反感的信息的任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewPornAsrTaskOutput `json:"Output,omitempty" name:"Output"`
 }
@@ -1419,10 +1419,10 @@ type AiReviewTaskPornOcrResult struct {
 	// 错误信息。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
-	// 内容审核 Ocr 文字鉴黄任务输入。
+	// 智能识别 Ocr 文字涉及令人反感的信息的任务输入。
 	Input *AiReviewPornOcrTaskInput `json:"Input,omitempty" name:"Input"`
 
-	// 内容审核 Ocr 文字鉴黄任务输出。
+	// Ocr 文字智能识别涉及令人反感的信息的任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewPornOcrTaskOutput `json:"Output,omitempty" name:"Output"`
 }
@@ -1441,10 +1441,10 @@ type AiReviewTaskPornResult struct {
 	// 错误信息。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
-	// 内容审核鉴黄任务输入。
+	// 智能识别涉及令人反感的信息的任务输入。
 	Input *AiReviewPornTaskInput `json:"Input,omitempty" name:"Input"`
 
-	// 内容审核鉴黄任务输出。
+	// 智能识别涉及令人反感的信息的任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewPornTaskOutput `json:"Output,omitempty" name:"Output"`
 }
@@ -1463,10 +1463,10 @@ type AiReviewTaskProhibitedAsrResult struct {
 	// 错误信息。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
-	// 内容审核 Asr 文字鉴违禁任务输入。
+	// 智能识别 Asr 文字鉴违禁任务输入。
 	Input *AiReviewProhibitedAsrTaskInput `json:"Input,omitempty" name:"Input"`
 
-	// 内容审核 Asr 文字鉴违禁任务输出。
+	// 智能识别 Asr 文字鉴违禁任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewProhibitedAsrTaskOutput `json:"Output,omitempty" name:"Output"`
 }
@@ -1485,10 +1485,10 @@ type AiReviewTaskProhibitedOcrResult struct {
 	// 错误信息。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
-	// 内容审核 Ocr 文字鉴违禁任务输入。
+	// 智能识别 Ocr 文字鉴违禁任务输入。
 	Input *AiReviewProhibitedOcrTaskInput `json:"Input,omitempty" name:"Input"`
 
-	// 内容审核 Ocr 文字鉴违禁任务输出。
+	// 智能识别 Ocr 文字鉴违禁任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewProhibitedOcrTaskOutput `json:"Output,omitempty" name:"Output"`
 }
@@ -1507,10 +1507,10 @@ type AiReviewTaskTerrorismOcrResult struct {
 	// 错误信息。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
-	// 内容审核 Ocr 文字鉴恐任务输入。
+	// 智能识别 Ocr 文字涉及令人不安全的信息的任务输入。
 	Input *AiReviewTerrorismOcrTaskInput `json:"Input,omitempty" name:"Input"`
 
-	// 内容审核 Ocr 文字鉴恐任务输出。
+	// 智能识别 Ocr 文字涉及令人不安全的信息的任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewTerrorismOcrTaskOutput `json:"Output,omitempty" name:"Output"`
 }
@@ -1529,45 +1529,45 @@ type AiReviewTaskTerrorismResult struct {
 	// 错误信息。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
-	// 内容审核鉴恐任务输入。
+	// 智能识别涉及令人不安全的信息的任务输入。
 	Input *AiReviewTerrorismTaskInput `json:"Input,omitempty" name:"Input"`
 
-	// 内容审核鉴恐任务输出。
+	// 智能识别涉及令人不安全的信息的任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewTerrorismTaskOutput `json:"Output,omitempty" name:"Output"`
 }
 
 type AiReviewTerrorismOcrTaskInput struct {
 
-	// 鉴恐模板 ID。
+	// 鉴别涉及令人不安全的信息的模板 ID。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 }
 
 type AiReviewTerrorismOcrTaskOutput struct {
 
-	// Ocr 文字涉恐评分，分值为0到100。
+	// Ocr 文字有涉及令人不安全信息的评分，分值为0到100。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
-	// Ocr 文字涉恐结果建议，取值范围：
+	// Ocr 文字有涉及令人不安全信息的结果建议，取值范围：
 	// <li>pass。</li>
 	// <li>review。</li>
 	// <li>block。</li>
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
-	// Ocr 文字有涉恐嫌疑的视频片段列表。
+	// Ocr 文字有涉及令人不安全信息嫌疑的视频片段列表。
 	// <font color=red>注意</font> ：该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
 	SegmentSet []*MediaContentReviewOcrTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 
-	// Ocr 文字有涉恐嫌疑的视频片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达 SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+	// Ocr 文字有涉及令人不安全信息嫌疑的视频片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达 SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
 	SegmentSetFileUrl *string `json:"SegmentSetFileUrl,omitempty" name:"SegmentSetFileUrl"`
 
-	// Ocr 文字有涉恐嫌疑的视频片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	// Ocr 文字有涉及令人不安全信息嫌疑的视频片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	SegmentSetFileUrlExpireTime *string `json:"SegmentSetFileUrlExpireTime,omitempty" name:"SegmentSetFileUrlExpireTime"`
 }
 
 type AiReviewTerrorismTaskInput struct {
 
-	// 鉴恐模板 ID。
+	// 鉴别涉及令人不安全的信息的模板 ID。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 }
 
@@ -2534,24 +2534,24 @@ func (r *ConfirmEventsResponse) FromJsonString(s string) error {
 
 type ContentReviewTemplateItem struct {
 
-	// 内容审核模板唯一标识。
+	// 智能识别模板唯一标识。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
-	// 内容审核模板名称，长度限制：64 个字符。
+	// 智能识别模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 内容审核模板描述信息，长度限制：256 个字符。
+	// 智能识别模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
-	// 鉴黄控制参数。
+	// 鉴别涉及令人反感的信息的控制参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PornConfigure *PornConfigureInfo `json:"PornConfigure,omitempty" name:"PornConfigure"`
 
-	// 鉴恐控制参数。
+	// 鉴别涉及令人不安全的信息的控制参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TerrorismConfigure *TerrorismConfigureInfo `json:"TerrorismConfigure,omitempty" name:"TerrorismConfigure"`
 
-	// 鉴政控制参数。
+	// 鉴别涉及令人不适宜的信息的控制参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PoliticalConfigure *PoliticalConfigureInfo `json:"PoliticalConfigure,omitempty" name:"PoliticalConfigure"`
 
@@ -2561,11 +2561,11 @@ type ContentReviewTemplateItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProhibitedConfigure *ProhibitedConfigureInfo `json:"ProhibitedConfigure,omitempty" name:"ProhibitedConfigure"`
 
-	// 用户自定义内容审核控制参数。
+	// 用户自定义智能识别控制参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserDefineConfigure *UserDefineConfigureInfo `json:"UserDefineConfigure,omitempty" name:"UserDefineConfigure"`
 
-	// 审核结果是否进入审核墙（对审核结果进行人工复核）的开关。
+	// 智能识别结果是否进入智能识别墙（对智能识别结果进行人工复核）的开关。
 	// <li>ON：是；</li>
 	// <li>OFF：否。</li>
 	ReviewWallSwitch *string `json:"ReviewWallSwitch,omitempty" name:"ReviewWallSwitch"`
@@ -3482,7 +3482,7 @@ type CreateProcedureTemplateRequest struct {
 	// 视频处理类型任务参数。
 	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitempty" name:"MediaProcessTask"`
 
-	// AI 智能内容审核类型任务参数。
+	// AI 智能识别类型任务参数。
 	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitempty" name:"AiContentReviewTask"`
 
 	// AI 智能内容分析类型任务参数。
@@ -8158,7 +8158,7 @@ type FaceConfigureInfo struct {
 	// 默认人物过滤标签，指定需要返回的默认人物的标签。如果未填或者为空，则全部默认人物结果都返回。标签可选值：
 	// <li>entertainment：娱乐明星；</li>
 	// <li>sport：体育明星；</li>
-	// <li>politician：政治人物。</li>
+	// <li>politician：相关人物。</li>
 	DefaultLibraryLabelSet []*string `json:"DefaultLibraryLabelSet,omitempty" name:"DefaultLibraryLabelSet"`
 
 	// 用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。
@@ -8186,7 +8186,7 @@ type FaceConfigureInfoForUpdate struct {
 	// 默认人物过滤标签，指定需要返回的默认人物的标签。如果未填或者为空，则全部默认人物结果都返回。标签可选值：
 	// <li>entertainment：娱乐明星；</li>
 	// <li>sport：体育明星；</li>
-	// <li>politician：政治人物。</li>
+	// <li>politician：相关人物。</li>
 	DefaultLibraryLabelSet []*string `json:"DefaultLibraryLabelSet,omitempty" name:"DefaultLibraryLabelSet"`
 
 	// 用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。
@@ -8995,7 +8995,7 @@ type MediaContentReviewAsrTextSegmentItem struct {
 	// 嫌疑片段置信度。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
-	// 嫌疑片段审核结果建议，取值范围：
+	// 嫌疑片段智能识别的结果建议，取值范围：
 	// <li>pass。</li>
 	// <li>review。</li>
 	// <li>block。</li>
@@ -9016,7 +9016,7 @@ type MediaContentReviewOcrTextSegmentItem struct {
 	// 嫌疑片段置信度。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
-	// 嫌疑片段审核结果建议，取值范围：
+	// 嫌疑片段智能识别的结果建议，取值范围：
 	// <li>pass。</li>
 	// <li>review。</li>
 	// <li>block。</li>
@@ -9044,19 +9044,19 @@ type MediaContentReviewPoliticalSegmentItem struct {
 	// 嫌疑片段结束的偏移时间，单位：秒。
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 
-	// 嫌疑片段涉政分数。
+	// 嫌疑片段分数。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
-	// 嫌疑片段鉴政结果建议，取值范围：
+	// 嫌疑片段涉及令人不适宜的信息的结果建议，取值范围：
 	// <li>pass。</li>
 	// <li>review。</li>
 	// <li>block。</li>
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
-	// 涉政人物、违规图标名字。
+	// 涉及令人不适宜的信息、违规图标名字。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 嫌疑片段鉴政结果标签。内容审核模板[画面鉴政任务控制参数](https://cloud.tencent.com/document/api/266/31773#PoliticalImgReviewTemplateInfo)里 LabelSet 参数与此参数取值范围的对应关系：
+	// 嫌疑片段涉及令人不适宜的信息的结果标签。智能识别模板[画面涉及令人不适宜的信息的任务控制参数](https://cloud.tencent.com/document/api/266/31773#PoliticalImgReviewTemplateInfo)里 LabelSet 参数与此参数取值范围的对应关系：
 	// violation_photo：
 	// <li>violation_photo：违规图标。</li>
 	// politician：
@@ -9065,28 +9065,28 @@ type MediaContentReviewPoliticalSegmentItem struct {
 	// <li>bureau_politician：厅局级领导人；</li>
 	// <li>county_politician：县处级领导人；</li>
 	// <li>rural_politician：乡科级领导人；</li>
-	// <li>sensitive_politician：敏感政治人物；</li>
+	// <li>sensitive_politician：违规相关人物；</li>
 	// <li>foreign_politician：国外领导人。</li>
 	// entertainment：
-	// <li>sensitive_entertainment：敏感娱乐人物。</li>
+	// <li>sensitive_entertainment：违规娱乐人物。</li>
 	// sport：
-	// <li>sensitive_sport：敏感体育人物。</li>
+	// <li>sensitive_sport：违规体育人物。</li>
 	// entrepreneur：
-	// <li>sensitive_entrepreneur：敏感商业人物。</li>
+	// <li>sensitive_entrepreneur：违规商业人物。</li>
 	// scholar：
-	// <li>sensitive_scholar：敏感教育学者。</li>
+	// <li>sensitive_scholar：违规教育学者。</li>
 	// celebrity：
-	// <li>sensitive_celebrity：敏感知名人物；</li>
+	// <li>sensitive_celebrity：违规知名人物；</li>
 	// <li>historical_celebrity：历史知名人物。</li>
 	// military：
-	// <li>sensitive_military：敏感军事人物。</li>
+	// <li>sensitive_military：违规相关人物。</li>
 	Label *string `json:"Label,omitempty" name:"Label"`
 
 	// 嫌疑图片 URL （图片不会永久存储，到达
 	//  PicUrlExpireTime 时间点后图片将被删除）。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
-	// 涉政人物、违规图标出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+	// 涉及令人不适宜的信息、违规图标出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
 	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet"`
 
 	// 该字段已废弃，请使用 PicUrlExpireTime。
@@ -9104,13 +9104,13 @@ type MediaContentReviewSegmentItem struct {
 	// 嫌疑片段结束的偏移时间，单位：秒。
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 
-	// 嫌疑片段涉黄分数。
+	// 嫌疑片段涉及令人反感的信息的分数。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
-	// 嫌疑片段鉴黄结果标签。
+	// 嫌疑片段涉及令人反感的信息的结果标签。
 	Label *string `json:"Label,omitempty" name:"Label"`
 
-	// 嫌疑片段鉴黄结果建议，取值范围：
+	// 嫌疑片段鉴别涉及令人反感的信息的结果建议，取值范围：
 	// <li>pass。</li>
 	// <li>review。</li>
 	// <li>block。</li>
@@ -9282,29 +9282,29 @@ type MediaMetaData struct {
 
 type MediaMiniProgramReviewElem struct {
 
-	// 审核类型。 
-	// <li>Porn：画面涉黄，</li>
-	// <li>Porn.Ocr：文字涉黄，</li>
-	// <li>Porn.Asr：声音涉黄，</li>
-	// <li>Terrorism：画面涉暴恐，</li>
-	// <li>Political：画面涉政，</li>
-	// <li>Political.Ocr：文字涉政，</li>
-	// <li>Political.Asr：声音涉政。</li>
+	// 智能识别类型。 
+	// <li>Porn：画面涉及令人反感的信息，</li>
+	// <li>Porn.Ocr：文字涉及令人反感的信息，</li>
+	// <li>Porn.Asr：声音涉及令人反感的信息，</li>
+	// <li>Terrorism：画面涉及令人不安全的信息，</li>
+	// <li>Political：画面涉及令人不适宜的信息，</li>
+	// <li>Political.Ocr：文字涉及令人不适宜的信息，</li>
+	// <li>Political.Asr：声音涉及令人不适宜的信息。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 审核意见。
+	// 智能识别意见。
 	// <li>pass：确认正常，</li>
 	// <li>block：确认违规，</li>
 	// <li>review：疑似违规。</li>
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
-	// 审核结果置信度。取值 0~100。
+	// 智能识别结果置信度。取值 0~100。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 }
 
 type MediaMiniProgramReviewInfo struct {
 
-	// 审核信息列表。
+	// 智能识别信息列表。
 	MiniProgramReviewList []*MediaMiniProgramReviewInfoItem `json:"MiniProgramReviewList,omitempty" name:"MiniProgramReviewList"`
 }
 
@@ -9316,7 +9316,7 @@ type MediaMiniProgramReviewInfoItem struct {
 	// 视频元信息。
 	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
 
-	// 小程序审核视频播放地址。
+	// 小程序智能识别视频播放地址。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 小程序视频发布状态：
@@ -9324,7 +9324,7 @@ type MediaMiniProgramReviewInfoItem struct {
 	// <li>Rejected：未通过。</li>
 	ReviewResult *string `json:"ReviewResult,omitempty" name:"ReviewResult"`
 
-	// 小程序审核元素。
+	// 小程序智能识别元素。
 	ReviewSummary []*MediaMiniProgramReviewElem `json:"ReviewSummary,omitempty" name:"ReviewSummary"`
 }
 
@@ -11766,253 +11766,253 @@ type PlayerConfig struct {
 
 type PoliticalAsrReviewTemplateInfo struct {
 
-	// 语音鉴政任务开关，可选值：
-	// <li>ON：开启语音鉴政任务；</li>
-	// <li>OFF：关闭语音鉴政任务。</li>
+	// 语音鉴别涉及令人不适宜的信息的任务开关，可选值：
+	// <li>ON：开启语音鉴别涉及令人不适宜的信息的任务；</li>
+	// <li>OFF：关闭语音鉴别的涉及令人不适宜的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
-	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
-
-	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
+
+	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 }
 
 type PoliticalAsrReviewTemplateInfoForUpdate struct {
 
-	// 语音鉴政任务开关，可选值：
-	// <li>ON：开启语音鉴政任务；</li>
-	// <li>OFF：关闭语音鉴政任务。</li>
+	// 语音鉴别涉及令人不适宜的信息的任务开关，可选值：
+	// <li>ON：开启语音鉴别涉及令人不适宜的信息的任务；</li>
+	// <li>OFF：关闭语音鉴别涉及令人不适宜的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
 type PoliticalConfigureInfo struct {
 
-	// 画面鉴政控制参数。
+	// 画面鉴别涉及令人不适宜的信息的控制参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImgReviewInfo *PoliticalImgReviewTemplateInfo `json:"ImgReviewInfo,omitempty" name:"ImgReviewInfo"`
 
-	// 语音鉴政控制参数。
+	// 语音鉴别涉及令人不适宜的信息的控制参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsrReviewInfo *PoliticalAsrReviewTemplateInfo `json:"AsrReviewInfo,omitempty" name:"AsrReviewInfo"`
 
-	// 文本鉴政控制参数。
+	// 文本鉴别涉及令人不适宜的信息的控制参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OcrReviewInfo *PoliticalOcrReviewTemplateInfo `json:"OcrReviewInfo,omitempty" name:"OcrReviewInfo"`
 }
 
 type PoliticalConfigureInfoForUpdate struct {
 
-	// 画面鉴政控制参数。
+	// 画面鉴别涉及令人不适宜的信息的控制参数。
 	ImgReviewInfo *PoliticalImgReviewTemplateInfoForUpdate `json:"ImgReviewInfo,omitempty" name:"ImgReviewInfo"`
 
-	// 语音鉴政控制参数。
+	// 语音鉴别涉及令人不适宜的信息的控制参数。
 	AsrReviewInfo *PoliticalAsrReviewTemplateInfoForUpdate `json:"AsrReviewInfo,omitempty" name:"AsrReviewInfo"`
 
-	// 文本鉴政控制参数。
+	// 文本鉴别涉及令人不适宜的信息的控制参数。
 	OcrReviewInfo *PoliticalOcrReviewTemplateInfoForUpdate `json:"OcrReviewInfo,omitempty" name:"OcrReviewInfo"`
 }
 
 type PoliticalImgReviewTemplateInfo struct {
 
-	// 画面鉴政任务开关，可选值：
-	// <li>ON：开启画面鉴政任务；</li>
-	// <li>OFF：关闭画面鉴政任务。</li>
+	// 画面鉴别涉及令人不适宜的信息的任务开关，可选值：
+	// <li>ON：开启画面鉴别涉及令人不适宜的信息的任务；</li>
+	// <li>OFF：关闭画面鉴别涉及令人不适宜的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 画面鉴政过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+	// 画面鉴别涉及令人不适宜的信息的过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则智能识别结果全部返回，可选值为：
 	// <li>violation_photo：违规图标；</li>
-	// <li>politician：政治人物；</li>
+	// <li>politician：相关人物；</li>
 	// <li>entertainment：娱乐人物；</li>
 	// <li>sport：体育人物；</li>
 	// <li>entrepreneur：商业人物；</li>
 	// <li>scholar：教育学者；</li>
 	// <li>celebrity：知名人物；</li>
-	// <li>military：军事人物。</li>
+	// <li>military：相关人物。</li>
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
-	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 95 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 95 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
 type PoliticalImgReviewTemplateInfoForUpdate struct {
 
-	// 画面鉴政任务开关，可选值：
-	// <li>ON：开启画面鉴政任务；</li>
-	// <li>OFF：关闭画面鉴政任务。</li>
+	// 画面鉴别涉及令人不适宜的信息的任务开关，可选值：
+	// <li>ON：开启画面鉴别涉及令人不适宜的信息的任务；</li>
+	// <li>OFF：关闭画面鉴别涉及令人不适宜的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 画面鉴政过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+	// 画面鉴别涉及令人不适宜的信息的过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则智能识别结果全部返回，可选值为：
 	// <li>violation_photo：违规图标；</li>
-	// <li>politician：政治人物；</li>
+	// <li>politician：相关人物；</li>
 	// <li>entertainment：娱乐人物；</li>
 	// <li>sport：体育人物；</li>
 	// <li>entrepreneur：商业人物；</li>
 	// <li>scholar：教育学者；</li>
 	// <li>celebrity：知名人物；</li>
-	// <li>military：军事人物。</li>
+	// <li>military：相关人物。</li>
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
-	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
 type PoliticalOcrReviewTemplateInfo struct {
 
-	// 文本鉴政任务开关，可选值：
-	// <li>ON：开启文本鉴政任务；</li>
-	// <li>OFF：关闭文本鉴政任务。</li>
+	// 文本鉴别涉及令人不适宜的信息的任务开关，可选值：
+	// <li>ON：开启文本鉴别涉及令人不适宜的信息的任务；</li>
+	// <li>OFF：关闭文本鉴别涉及令人不适宜的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
 type PoliticalOcrReviewTemplateInfoForUpdate struct {
 
-	// 文本鉴政任务开关，可选值：
-	// <li>ON：开启文本鉴政任务；</li>
-	// <li>OFF：关闭文本鉴政任务。</li>
+	// 文本鉴别涉及令人不适宜的信息的任务开关，可选值：
+	// <li>ON：开启文本鉴别涉及令人不适宜的信息的任务；</li>
+	// <li>OFF：关闭文本鉴别涉及令人不适宜的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
 type PornAsrReviewTemplateInfo struct {
 
-	// 语音鉴黄任务开关，可选值：
-	// <li>ON：开启语音鉴黄任务；</li>
-	// <li>OFF：关闭语音鉴黄任务。</li>
+	// 语音鉴别涉及令人反感的信息的任务开关，可选值：
+	// <li>ON：开启语音鉴别涉及令人反感的信息的任务；</li>
+	// <li>OFF：关闭语音鉴别涉及令人反感的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
 type PornAsrReviewTemplateInfoForUpdate struct {
 
-	// 语音鉴黄任务开关，可选值：
-	// <li>ON：开启语音鉴黄任务；</li>
-	// <li>OFF：关闭语音鉴黄任务。</li>
+	// 语音鉴别涉及令人反感的信息的任务开关，可选值：
+	// <li>ON：开启语音鉴别涉及令人反感的信息的任务；</li>
+	// <li>OFF：关闭语音鉴别涉及令人反感的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
 type PornConfigureInfo struct {
 
-	// 画面鉴黄控制参数。
+	// 画面鉴别涉及令人反感的信息的控制参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImgReviewInfo *PornImgReviewTemplateInfo `json:"ImgReviewInfo,omitempty" name:"ImgReviewInfo"`
 
-	// 语音鉴黄控制参数。
+	// 语音鉴别涉及令人反感的信息的控制参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsrReviewInfo *PornAsrReviewTemplateInfo `json:"AsrReviewInfo,omitempty" name:"AsrReviewInfo"`
 
-	// 文本鉴黄控制参数。
+	// 文本鉴别涉及令人反感的信息的控制参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OcrReviewInfo *PornOcrReviewTemplateInfo `json:"OcrReviewInfo,omitempty" name:"OcrReviewInfo"`
 }
 
 type PornConfigureInfoForUpdate struct {
 
-	// 画面鉴黄控制参数。
+	// 画面鉴别涉及令人反感的信息的控制参数。
 	ImgReviewInfo *PornImgReviewTemplateInfoForUpdate `json:"ImgReviewInfo,omitempty" name:"ImgReviewInfo"`
 
-	// 语音鉴黄控制参数。
+	// 语音鉴别涉及令人反感的信息的控制参数。
 	AsrReviewInfo *PornAsrReviewTemplateInfoForUpdate `json:"AsrReviewInfo,omitempty" name:"AsrReviewInfo"`
 
-	// 文本鉴黄控制参数。
+	// 文本鉴别涉及令人反感的信息的控制参数。
 	OcrReviewInfo *PornOcrReviewTemplateInfoForUpdate `json:"OcrReviewInfo,omitempty" name:"OcrReviewInfo"`
 }
 
 type PornImgReviewTemplateInfo struct {
 
-	// 画面鉴黄任务开关，可选值：
-	// <li>ON：开启画面鉴黄任务；</li>
-	// <li>OFF：关闭画面鉴黄任务。</li>
+	// 画面鉴别涉及令人反感的信息的任务开关，可选值：
+	// <li>ON：开启画面鉴别涉及令人反感的信息的任务；</li>
+	// <li>OFF：关闭画面鉴别涉及令人反感的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 画面鉴黄过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+	// 画面鉴别涉及令人反感的信息的过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则智能识别结果全部返回，可选值为：
 	// <li>porn：色情；</li>
 	// <li>vulgar：低俗；</li>
 	// <li>intimacy：亲密行为；</li>
 	// <li>sexy：性感。</li>
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
-	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 0 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 0 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
 type PornImgReviewTemplateInfoForUpdate struct {
 
-	// 画面鉴黄任务开关，可选值：
-	// <li>ON：开启画面鉴黄任务；</li>
-	// <li>OFF：关闭画面鉴黄任务。</li>
+	// 画面鉴别涉及令人反感的信息的任务开关，可选值：
+	// <li>ON：开启画面鉴别涉及令人反感的信息的任务；</li>
+	// <li>OFF：关闭画面鉴别涉及令人反感的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 画面鉴黄过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+	// 画面鉴别涉及令人反感的信息的过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则智能识别结果全部返回，可选值为：
 	// <li>porn：色情；</li>
 	// <li>vulgar：低俗；</li>
 	// <li>intimacy：亲密行为；</li>
 	// <li>sexy：性感。</li>
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
-	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
 type PornOcrReviewTemplateInfo struct {
 
-	// 文本鉴黄任务开关，可选值：
-	// <li>ON：开启文本鉴黄任务；</li>
-	// <li>OFF：关闭文本鉴黄任务。</li>
+	// 文本鉴别涉及令人反感的信息的任务开关，可选值：
+	// <li>ON：开启文本鉴别涉及令人反感的信息的任务；</li>
+	// <li>OFF：关闭文本鉴别涉及令人反感的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
 type PornOcrReviewTemplateInfoForUpdate struct {
 
-	// 文本鉴黄任务开关，可选值：
-	// <li>ON：开启文本鉴黄任务；</li>
-	// <li>OFF：关闭文本鉴黄任务。</li>
+	// 文本鉴别涉及令人反感的信息的任务开关，可选值：
+	// <li>ON：开启文本鉴别涉及令人反感的信息的任务；</li>
+	// <li>OFF：关闭文本鉴别涉及令人反感的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
 	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
@@ -12060,7 +12060,7 @@ type ProcedureTask struct {
 	// 视频处理任务的执行状态与结果。
 	MediaProcessResultSet []*MediaProcessTaskResult `json:"MediaProcessResultSet,omitempty" name:"MediaProcessResultSet"`
 
-	// 视频内容审核任务的执行状态与结果。
+	// 视频智能识别任务的执行状态与结果。
 	AiContentReviewResultSet []*AiContentReviewResult `json:"AiContentReviewResultSet,omitempty" name:"AiContentReviewResultSet"`
 
 	// 视频内容分析任务的执行状态与结果。
@@ -12102,7 +12102,7 @@ type ProcedureTemplate struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitempty" name:"MediaProcessTask"`
 
-	// AI 智能内容审核类型任务参数。
+	// AI 智能识别类型任务参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitempty" name:"AiContentReviewTask"`
 
@@ -12296,7 +12296,7 @@ type ProcessMediaRequest struct {
 	// 视频处理类型任务参数。
 	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitempty" name:"MediaProcessTask"`
 
-	// 视频内容审核类型任务参数。
+	// 视频智能识别类型任务参数。
 	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitempty" name:"AiContentReviewTask"`
 
 	// 视频内容分析类型任务参数。
@@ -12422,13 +12422,13 @@ type ProductInstanceRecource struct {
 	// <li>Traffic：流量资源包。</li>
 	// <li>Transcode：普通转码资源包。</li>
 	// <li>TESHD：极速高清转码资源包。</li>
-	// <li>Review：视频审核转码资源包。</li>
+	// <li>Review：视频智能识别转码资源包。</li>
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 资源包额度。
 	// <li>视频存储资源包，单位为字节。</li>
 	// <li>视频转码资源包，单位为秒。</li>
-	// <li>视频审核资源包，单位为秒。</li>
+	// <li>视频智能识别资源包，单位为秒。</li>
 	// <li>视频极速高清资源包，单位为秒。</li>
 	// <li>视频加速资源包，单位为字节。</li>
 	Amount *int64 `json:"Amount,omitempty" name:"Amount"`
@@ -12436,7 +12436,7 @@ type ProductInstanceRecource struct {
 	// 资源包余量。
 	// <li>视频存储资源包，单位为字节。</li>
 	// <li>视频转码资源包，单位为秒。</li>
-	// <li>视频审核资源包，单位为秒。</li>
+	// <li>视频智能识别资源包，单位为秒。</li>
 	// <li>视频极速高清资源包，单位为秒。</li>
 	// <li>视频加速资源包，单位为字节。</li>
 	Left *int64 `json:"Left,omitempty" name:"Left"`
@@ -12449,10 +12449,10 @@ type ProhibitedAsrReviewTemplateInfo struct {
 	// <li>OFF：关闭语音违禁任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
@@ -12463,10 +12463,10 @@ type ProhibitedAsrReviewTemplateInfoForUpdate struct {
 	// <li>OFF：关闭语音违禁任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
@@ -12497,10 +12497,10 @@ type ProhibitedOcrReviewTemplateInfo struct {
 	// <li>OFF：关闭文本违禁任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
@@ -12511,10 +12511,10 @@ type ProhibitedOcrReviewTemplateInfoForUpdate struct {
 	// <li>OFF：关闭文本违禁任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
@@ -13893,32 +13893,32 @@ type TempCertificate struct {
 
 type TerrorismConfigureInfo struct {
 
-	// 画面鉴恐任务控制参数。
+	// 画面鉴别涉及令人不安全的信息的任务控制参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImgReviewInfo *TerrorismImgReviewTemplateInfo `json:"ImgReviewInfo,omitempty" name:"ImgReviewInfo"`
 
-	// 文字鉴恐任务控制参数。
+	// 文字鉴别涉及令人不安全的信息的任务控制参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OcrReviewInfo *TerrorismOcrReviewTemplateInfo `json:"OcrReviewInfo,omitempty" name:"OcrReviewInfo"`
 }
 
 type TerrorismConfigureInfoForUpdate struct {
 
-	// 画面鉴恐任务控制参数。
+	// 画面鉴别涉及令人不安全的信息的任务控制参数。
 	ImgReviewInfo *TerrorismImgReviewTemplateInfoForUpdate `json:"ImgReviewInfo,omitempty" name:"ImgReviewInfo"`
 
-	// 文本鉴恐任务控制参数。
+	// 文本鉴别涉及令人不安全的信息的任务控制参数。
 	OcrReviewInfo *TerrorismOcrReviewTemplateInfoForUpdate `json:"OcrReviewInfo,omitempty" name:"OcrReviewInfo"`
 }
 
 type TerrorismImgReviewTemplateInfo struct {
 
-	// 画面鉴恐任务开关，可选值：
-	// <li>ON：开启画面鉴恐任务；</li>
-	// <li>OFF：关闭画面鉴恐任务。</li>
+	// 画面鉴别涉及令人不安全的信息的任务开关，可选值：
+	// <li>ON：开启画面鉴别涉及令人不安全的信息的任务；</li>
+	// <li>OFF：关闭画面鉴别涉及令人不安全的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 画面鉴恐过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+	// 画面鉴别涉及令人不安全的信息的过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则智能识别结果全部返回，可选值为：
 	// <li>guns：武器枪支；</li>
 	// <li>crowd：人群聚集；</li>
 	// <li>bloody：血腥画面；</li>
@@ -13930,21 +13930,21 @@ type TerrorismImgReviewTemplateInfo struct {
 	// <li>scenario：暴恐画面。</li>
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
-	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 80 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 80 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
 type TerrorismImgReviewTemplateInfoForUpdate struct {
 
-	// 画面鉴恐任务开关，可选值：
-	// <li>ON：开启画面鉴恐任务；</li>
-	// <li>OFF：关闭画面鉴恐任务。</li>
+	// 画面鉴别涉及令人不安全的信息的任务开关，可选值：
+	// <li>ON：开启画面鉴别涉及令人不安全的信息的任务；</li>
+	// <li>OFF：关闭画面鉴别涉及令人不安全的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 画面鉴恐过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+	// 画面鉴别涉及令人不安全的信息的过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
 	// <li>guns：武器枪支；</li>
 	// <li>crowd：人群聚集；</li>
 	// <li>bloody：血腥画面；</li>
@@ -13956,38 +13956,38 @@ type TerrorismImgReviewTemplateInfoForUpdate struct {
 	// <li>scenario：暴恐画面。</li>
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
-	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
 type TerrorismOcrReviewTemplateInfo struct {
 
-	// 文本鉴恐任务开关，可选值：
-	// <li>ON：开启文本鉴恐任务；</li>
-	// <li>OFF：关闭文本鉴恐任务。</li>
+	// 文本鉴别涉及令人不安全的信息的任务开关，可选值：
+	// <li>ON：开启文本鉴别涉及令人不安全的信息的任务；</li>
+	// <li>OFF：关闭文本鉴别涉及令人不安全的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
 type TerrorismOcrReviewTemplateInfoForUpdate struct {
 
-	// 文本鉴恐任务开关，可选值：
-	// <li>ON：开启文本鉴恐任务；</li>
-	// <li>OFF：关闭文本鉴恐任务。</li>
+	// 文本鉴别涉及令人不安全的信息的任务开关，可选值：
+	// <li>ON：开启文本鉴别涉及令人不安全的信息的任务；</li>
+	// <li>OFF：关闭文本鉴别涉及令人不安全的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
@@ -14234,136 +14234,136 @@ type UrlSignatureAuthPolicy struct {
 
 type UserDefineAsrTextReviewTemplateInfo struct {
 
-	// 用户自定语音审核任务开关，可选值：
-	// <li>ON：开启自定义语音审核任务；</li>
-	// <li>OFF：关闭自定义语音审核任务。</li>
+	// 用户自定语音智能识别任务开关，可选值：
+	// <li>ON：开启自定义语音智能识别任务；</li>
+	// <li>OFF：关闭自定义语音智能识别任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 用户自定义语音过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义语音关键词素材时需要添加对应标签。
+	// 用户自定义语音过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义语音关键词素材时需要添加对应标签。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
-	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当智能智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
 type UserDefineAsrTextReviewTemplateInfoForUpdate struct {
 
-	// 用户自定语音审核任务开关，可选值：
-	// <li>ON：开启自定义语音审核任务；</li>
-	// <li>OFF：关闭自定义语音审核任务。</li>
+	// 用户自定语音智能识别任务开关，可选值：
+	// <li>ON：开启自定义语音智能识别任务；</li>
+	// <li>OFF：关闭自定义语音智能识别任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 用户自定义语音过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义语音关键词素材时需要添加对应标签。
+	// 用户自定义语音过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则智能识别结果全部返回。如果要使用标签过滤功能，添加自定义语音关键词素材时需要添加对应标签。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
-	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
 type UserDefineConfigureInfo struct {
 
-	// 用户自定义人物审核控制参数。
+	// 用户自定义人物智能识别控制参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FaceReviewInfo *UserDefineFaceReviewTemplateInfo `json:"FaceReviewInfo,omitempty" name:"FaceReviewInfo"`
 
-	// 用户自定义语音审核控制参数。
+	// 用户自定义语音智能识别控制参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsrReviewInfo *UserDefineAsrTextReviewTemplateInfo `json:"AsrReviewInfo,omitempty" name:"AsrReviewInfo"`
 
-	// 用户自定义文本审核控制参数。
+	// 用户自定义文本智能识别控制参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OcrReviewInfo *UserDefineOcrTextReviewTemplateInfo `json:"OcrReviewInfo,omitempty" name:"OcrReviewInfo"`
 }
 
 type UserDefineConfigureInfoForUpdate struct {
 
-	// 用户自定义人物审核控制参数。
+	// 用户自定义人物智能识别控制参数。
 	FaceReviewInfo *UserDefineFaceReviewTemplateInfoForUpdate `json:"FaceReviewInfo,omitempty" name:"FaceReviewInfo"`
 
-	// 用户自定义语音审核控制参数。
+	// 用户自定义语音智能识别控制参数。
 	AsrReviewInfo *UserDefineAsrTextReviewTemplateInfoForUpdate `json:"AsrReviewInfo,omitempty" name:"AsrReviewInfo"`
 
-	// 用户自定义文本审核控制参数。
+	// 用户自定义文本智能识别控制参数。
 	OcrReviewInfo *UserDefineOcrTextReviewTemplateInfoForUpdate `json:"OcrReviewInfo,omitempty" name:"OcrReviewInfo"`
 }
 
 type UserDefineFaceReviewTemplateInfo struct {
 
-	// 用户自定义人物审核任务开关，可选值：
-	// <li>ON：开启自定义人物审核任务；</li>
-	// <li>OFF：关闭自定义人物审核任务。</li>
+	// 用户自定义人物智能识别任务开关，可选值：
+	// <li>ON：开启自定义人物智能识别任务；</li>
+	// <li>OFF：关闭自定义人物智能识别任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 用户自定义人物过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义人物库的时，需要添加对应人物标签。
+	// 用户自定义人物过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义人物库的时，需要添加对应人物标签。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
-	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当智能智能识别达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 95 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 95 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
 type UserDefineFaceReviewTemplateInfoForUpdate struct {
 
-	// 用户自定义人物审核任务开关，可选值：
-	// <li>ON：开启自定义人物审核任务；</li>
-	// <li>OFF：关闭自定义人物审核任务。</li>
+	// 用户自定义人物智能识别任务开关，可选值：
+	// <li>ON：开启自定义人物智能识别任务；</li>
+	// <li>OFF：关闭自定义人物智能识别任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 用户自定义人物过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义人物库的时，需要添加对应人物标签。
+	// 用户自定义人物过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则智能识别结果全部返回。如果要使用标签过滤功能，添加自定义人物库的时，需要添加对应人物标签。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
-	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
 type UserDefineOcrTextReviewTemplateInfo struct {
 
-	// 用户自定文本审核任务开关，可选值：
-	// <li>ON：开启自定义文本审核任务；</li>
-	// <li>OFF：关闭自定义文本审核任务。</li>
+	// 用户自定文本智能识别任务开关，可选值：
+	// <li>ON：开启自定义文本智能识别任务；</li>
+	// <li>OFF：关闭自定义文本智能识别任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 用户自定义文本过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义文本关键词素材时需要添加对应标签。
+	// 用户自定义文本过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则智能识别结果全部返回。如果要使用标签过滤功能，添加自定义文本关键词素材时需要添加对应标签。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
-	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
 type UserDefineOcrTextReviewTemplateInfoForUpdate struct {
 
-	// 用户自定文本审核任务开关，可选值：
-	// <li>ON：开启自定义文本审核任务；</li>
-	// <li>OFF：关闭自定义文本审核任务。</li>
+	// 用户自定文本智能识别任务开关，可选值：
+	// <li>ON：开启自定义文本智能识别任务；</li>
+	// <li>OFF：关闭自定义文本智能识别任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 用户自定义文本过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义文本关键词素材时需要添加对应标签。
+	// 用户自定义文本过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则智能识别结果全部返回。如果要使用标签过滤功能，添加自定义文本关键词素材时需要添加对应标签。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
-	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
@@ -14702,7 +14702,7 @@ type WechatMiniProgramPublishTask struct {
 	// 微信小程序视频发布状态，取值：
 	// <li>Pass：发布成功；</li>
 	// <li>Failed：发布失败；</li>
-	// <li>Rejected：审核未通过。</li>
+	// <li>Rejected：智能识别未通过。</li>
 	PublishResult *string `json:"PublishResult,omitempty" name:"PublishResult"`
 }
 
