@@ -129,7 +129,7 @@ func NewCreateProbeTasksResponse() (response *CreateProbeTasksResponse) {
 }
 
 // CreateProbeTasks
-// 批量创建探测任务
+// 批量创建拨测任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -137,6 +137,7 @@ func NewCreateProbeTasksResponse() (response *CreateProbeTasksResponse) {
 //  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
 //  FAILEDOPERATION_NOVALIDNODES = "FailedOperation.NoValidNodes"
 //  FAILEDOPERATION_ORDEROUTOFCREDIT = "FailedOperation.OrderOutOfCredit"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 //  FAILEDOPERATION_TASKTYPENOTSAME = "FailedOperation.TaskTypeNotSame"
 //  FAILEDOPERATION_TRIALTASKEXCEED = "FailedOperation.TrialTaskExceed"
 //  INTERNALERROR = "InternalError"
@@ -588,7 +589,7 @@ func NewDescribeProbeTasksResponse() (response *DescribeProbeTasksResponse) {
 }
 
 // DescribeProbeTasks
-// 查询探测任务列表
+// 查询拨测任务列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

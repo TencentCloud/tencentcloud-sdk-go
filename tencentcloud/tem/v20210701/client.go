@@ -175,6 +175,44 @@ func (c *Client) CreateResource(request *CreateResourceRequest) (response *Creat
     return
 }
 
+func NewDeleteApplicationRequest() (request *DeleteApplicationRequest) {
+    request = &DeleteApplicationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tem", APIVersion, "DeleteApplication")
+    
+    
+    return
+}
+
+func NewDeleteApplicationResponse() (response *DeleteApplicationResponse) {
+    response = &DeleteApplicationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteApplication
+// 服务删除
+//
+//   - 停止当前运行服务
+//
+//   - 删除服务相关资源
+//
+//   - 删除服务
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_VERSIONROUTERATENOTZERO = "InvalidParameterValue.VersionRouteRateNotZero"
+func (c *Client) DeleteApplication(request *DeleteApplicationRequest) (response *DeleteApplicationResponse, err error) {
+    if request == nil {
+        request = NewDeleteApplicationRequest()
+    }
+    
+    response = NewDeleteApplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteIngressRequest() (request *DeleteIngressRequest) {
     request = &DeleteIngressRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -196,8 +234,7 @@ func NewDeleteIngressResponse() (response *DeleteIngressResponse) {
 // 删除 Ingress 规则
 //
 // 可能返回的错误码:
-//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
-//  INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = "InvalidParameterValue.ServiceNameDuplicateError"
+//  INVALIDPARAMETERVALUE_VERSIONROUTERATENOTZERO = "InvalidParameterValue.VersionRouteRateNotZero"
 func (c *Client) DeleteIngress(request *DeleteIngressRequest) (response *DeleteIngressResponse, err error) {
     if request == nil {
         request = NewDeleteIngressRequest()
@@ -229,8 +266,7 @@ func NewDeployApplicationResponse() (response *DeployApplicationResponse) {
 // 应用部署
 //
 // 可能返回的错误码:
-//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
-//  INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = "InvalidParameterValue.ServiceNameDuplicateError"
+//  INVALIDPARAMETERVALUE_VERSIONROUTERATENOTZERO = "InvalidParameterValue.VersionRouteRateNotZero"
 func (c *Client) DeployApplication(request *DeployApplicationRequest) (response *DeployApplicationResponse, err error) {
     if request == nil {
         request = NewDeployApplicationRequest()
@@ -262,8 +298,7 @@ func NewDescribeApplicationPodsResponse() (response *DescribeApplicationPodsResp
 // 获取应用实例列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
-//  INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = "InvalidParameterValue.ServiceNameDuplicateError"
+//  INVALIDPARAMETERVALUE_VERSIONROUTERATENOTZERO = "InvalidParameterValue.VersionRouteRateNotZero"
 func (c *Client) DescribeApplicationPods(request *DescribeApplicationPodsRequest) (response *DescribeApplicationPodsResponse, err error) {
     if request == nil {
         request = NewDescribeApplicationPodsRequest()
@@ -295,8 +330,7 @@ func NewDescribeDeployApplicationDetailResponse() (response *DescribeDeployAppli
 // 获取分批发布详情
 //
 // 可能返回的错误码:
-//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
-//  INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = "InvalidParameterValue.ServiceNameDuplicateError"
+//  INVALIDPARAMETERVALUE_VERSIONROUTERATENOTZERO = "InvalidParameterValue.VersionRouteRateNotZero"
 func (c *Client) DescribeDeployApplicationDetail(request *DescribeDeployApplicationDetailRequest) (response *DescribeDeployApplicationDetailResponse, err error) {
     if request == nil {
         request = NewDescribeDeployApplicationDetailRequest()
@@ -328,8 +362,7 @@ func NewDescribeEnvironmentsResponse() (response *DescribeEnvironmentsResponse) 
 // 获取租户环境列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
-//  INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = "InvalidParameterValue.ServiceNameDuplicateError"
+//  INVALIDPARAMETERVALUE_VERSIONROUTERATENOTZERO = "InvalidParameterValue.VersionRouteRateNotZero"
 func (c *Client) DescribeEnvironments(request *DescribeEnvironmentsRequest) (response *DescribeEnvironmentsResponse, err error) {
     if request == nil {
         request = NewDescribeEnvironmentsRequest()
@@ -361,8 +394,7 @@ func NewDescribeIngressResponse() (response *DescribeIngressResponse) {
 // 查询 Ingress 规则
 //
 // 可能返回的错误码:
-//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
-//  INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = "InvalidParameterValue.ServiceNameDuplicateError"
+//  INVALIDPARAMETERVALUE_VERSIONROUTERATENOTZERO = "InvalidParameterValue.VersionRouteRateNotZero"
 func (c *Client) DescribeIngress(request *DescribeIngressRequest) (response *DescribeIngressResponse, err error) {
     if request == nil {
         request = NewDescribeIngressRequest()
@@ -394,8 +426,7 @@ func NewDescribeIngressesResponse() (response *DescribeIngressesResponse) {
 // 查询 Ingress 规则列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
-//  INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = "InvalidParameterValue.ServiceNameDuplicateError"
+//  INVALIDPARAMETERVALUE_VERSIONROUTERATENOTZERO = "InvalidParameterValue.VersionRouteRateNotZero"
 func (c *Client) DescribeIngresses(request *DescribeIngressesRequest) (response *DescribeIngressesResponse, err error) {
     if request == nil {
         request = NewDescribeIngressesRequest()
@@ -427,8 +458,7 @@ func NewDescribeRelatedIngressesResponse() (response *DescribeRelatedIngressesRe
 // 查询应用关联的 Ingress 规则列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
-//  INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = "InvalidParameterValue.ServiceNameDuplicateError"
+//  INVALIDPARAMETERVALUE_VERSIONROUTERATENOTZERO = "InvalidParameterValue.VersionRouteRateNotZero"
 func (c *Client) DescribeRelatedIngresses(request *DescribeRelatedIngressesRequest) (response *DescribeRelatedIngressesResponse, err error) {
     if request == nil {
         request = NewDescribeRelatedIngressesRequest()
@@ -460,8 +490,7 @@ func NewGenerateApplicationPackageDownloadUrlResponse() (response *GenerateAppli
 // 生成应用程序包预签名下载链接
 //
 // 可能返回的错误码:
-//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
-//  INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = "InvalidParameterValue.ServiceNameDuplicateError"
+//  INVALIDPARAMETERVALUE_VERSIONROUTERATENOTZERO = "InvalidParameterValue.VersionRouteRateNotZero"
 func (c *Client) GenerateApplicationPackageDownloadUrl(request *GenerateApplicationPackageDownloadUrlRequest) (response *GenerateApplicationPackageDownloadUrlResponse, err error) {
     if request == nil {
         request = NewGenerateApplicationPackageDownloadUrlRequest()

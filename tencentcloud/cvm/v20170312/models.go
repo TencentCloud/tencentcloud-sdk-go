@@ -4131,6 +4131,98 @@ type LaunchTemplateInfo struct {
 }
 
 type LaunchTemplateVersionData struct {
+
+	// 实例所在的位置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Placement *Placement `json:"Placement,omitempty" name:"Placement"`
+
+	// 实例机型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 实例名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 实例计费模式。取值范围：<br><li>`PREPAID`：表示预付费，即包年包月<br><li>`POSTPAID_BY_HOUR`：表示后付费，即按量计费<br><li>`CDHPAID`：`CDH`付费，即只对`CDH`计费，不对`CDH`上的实例计费。<br><li>`SPOTPAID`：表示竞价实例付费。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
+
+	// 实例系统盘信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SystemDisk *SystemDisk `json:"SystemDisk,omitempty" name:"SystemDisk"`
+
+	// 实例数据盘信息。只包含随实例购买的数据盘。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataDisks []*DataDisk `json:"DataDisks,omitempty" name:"DataDisks"`
+
+	// 实例带宽信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternetAccessible *InternetAccessible `json:"InternetAccessible,omitempty" name:"InternetAccessible"`
+
+	// 实例所属虚拟私有网络信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VirtualPrivateCloud *VirtualPrivateCloud `json:"VirtualPrivateCloud,omitempty" name:"VirtualPrivateCloud"`
+
+	// 生产实例所使用的镜像`ID`。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+	// 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
+
+	// 实例登录设置。目前只返回实例所关联的密钥。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoginSettings *LoginSettings `json:"LoginSettings,omitempty" name:"LoginSettings"`
+
+	// CAM角色名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CamRoleName *string `json:"CamRoleName,omitempty" name:"CamRoleName"`
+
+	// 高性能计算集群`ID`。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HpcClusterId *string `json:"HpcClusterId,omitempty" name:"HpcClusterId"`
+
+	// 购买实例数量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceCount *uint64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
+
+	// 增强服务。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnhancedService *EnhancedService `json:"EnhancedService,omitempty" name:"EnhancedService"`
+
+	// 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserData *string `json:"UserData,omitempty" name:"UserData"`
+
+	// 置放群组id，仅支持指定一个。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds,omitempty" name:"DisasterRecoverGroupIds"`
+
+	// 定时任务。通过该参数可以为实例指定定时任务，目前仅支持定时销毁。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActionTimer *ActionTimer `json:"ActionTimer,omitempty" name:"ActionTimer"`
+
+	// 实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceMarketOptions *InstanceMarketOptionsRequest `json:"InstanceMarketOptions,omitempty" name:"InstanceMarketOptions"`
+
+	// 云服务器的主机名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostName *string `json:"HostName,omitempty" name:"HostName"`
+
+	// 用于保证请求幂等性的字符串。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
+
+	// 预付费模式，即包年包月相关参数设置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
+
+	// 标签描述列表。通过指定该参数可以同时绑定标签到相应的云服务器、云硬盘实例。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagSpecification []*TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification"`
 }
 
 type LaunchTemplateVersionInfo struct {

@@ -1418,6 +1418,64 @@ func (r *DescribeTablesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeTaskResultRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务唯一ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 上一次请求响应返回的分页信息。第一次可以不带，从头开始返回数据，每次返回1000行数据。
+	NextToken *string `json:"NextToken,omitempty" name:"NextToken"`
+
+	// 返回结果的最大行数，范围0~1000，默认为1000.
+	MaxResults *int64 `json:"MaxResults,omitempty" name:"MaxResults"`
+}
+
+func (r *DescribeTaskResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "NextToken")
+	delete(f, "MaxResults")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTaskResultResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 查询的任务信息，返回为空表示输入任务ID对应的任务不存在。只有当任务状态为成功（2）的时候，才会返回任务的结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TaskInfo *TaskResultInfo `json:"TaskInfo,omitempty" name:"TaskInfo"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTaskResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeTasksRequest struct {
 	*tchttp.BaseRequest
 
@@ -2208,6 +2266,67 @@ type TaskResponseInfo struct {
 	// 查询数据能不能下载
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CanDownload *bool `json:"CanDownload,omitempty" name:"CanDownload"`
+}
+
+type TaskResultInfo struct {
+
+	// 任务唯一ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 数据源名称，当前任务执行时候选中的默认数据源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
+
+	// 数据库名称，当前任务执行时候选中的默认数据库
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
+
+	// 当前执行的SQL，一个任务包含一个SQL
+	SQL *string `json:"SQL,omitempty" name:"SQL"`
+
+	// 执行任务的类型，现在分为DDL、DML、DQL
+	SQLType *string `json:"SQLType,omitempty" name:"SQLType"`
+
+	// 任务当前的状态，0：初始化 1：任务运行中 2：任务执行成功 -1：任务执行失败 -3：用户手动终止。只有任务执行成功的情况下，才会返回任务执行的结果
+	State *int64 `json:"State,omitempty" name:"State"`
+
+	// 扫描的数据量，单位byte
+	DataAmount *int64 `json:"DataAmount,omitempty" name:"DataAmount"`
+
+	// 任务执行耗时，单位秒
+	UsedTime *int64 `json:"UsedTime,omitempty" name:"UsedTime"`
+
+	// 任务结果输出的COS桶地址
+	OutputPath *string `json:"OutputPath,omitempty" name:"OutputPath"`
+
+	// 任务创建时间，时间戳
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 任务执行信息，成功时返回success，失败时返回失败原因
+	OutputMessage *string `json:"OutputMessage,omitempty" name:"OutputMessage"`
+
+	// 被影响的行数
+	RowAffectInfo *string `json:"RowAffectInfo,omitempty" name:"RowAffectInfo"`
+
+	// 结果的schema信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultSchema []*Column `json:"ResultSchema,omitempty" name:"ResultSchema"`
+
+	// 结果信息，反转义后，外层数组的每个元素为一行数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultSet *string `json:"ResultSet,omitempty" name:"ResultSet"`
+
+	// 分页信息，如果没有更多结果数据，nextToken为空
+	NextToken *string `json:"NextToken,omitempty" name:"NextToken"`
+
+	// 任务执行进度num/100(%)
+	Percentage *int64 `json:"Percentage,omitempty" name:"Percentage"`
+
+	// 任务进度明细
+	ProgressDetail *string `json:"ProgressDetail,omitempty" name:"ProgressDetail"`
+
+	// 控制台展示格式。table：表格展示 text：文本展示
+	DisplayFormat *string `json:"DisplayFormat,omitempty" name:"DisplayFormat"`
 }
 
 type TasksInfo struct {

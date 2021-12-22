@@ -22,4 +22,7 @@ const (
 
 	// 应用名已存在。
 	INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = "InvalidParameterValue.ServiceNameDuplicateError"
+
+	// 版本的路由流量不为0。
+	INVALIDPARAMETERVALUE_VERSIONROUTERATENOTZERO = "InvalidParameterValue.VersionRouteRateNotZero"
 )

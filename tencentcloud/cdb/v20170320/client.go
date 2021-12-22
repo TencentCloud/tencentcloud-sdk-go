@@ -2389,6 +2389,7 @@ func NewDescribeErrorLogDataResponse() (response *DescribeErrorLogDataResponse) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_QUERYLOGERROR = "FailedOperation.QueryLogError"
+//  FAILEDOPERATION_TIMEOUTERROR = "FailedOperation.TimeoutError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
@@ -2755,6 +2756,7 @@ func NewDescribeSlowLogDataResponse() (response *DescribeSlowLogDataResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_QUERYLOGERROR = "FailedOperation.QueryLogError"
+//  FAILEDOPERATION_TIMEOUTERROR = "FailedOperation.TimeoutError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
@@ -3987,7 +3989,7 @@ func NewModifyRoGroupInfoResponse() (response *ModifyRoGroupInfoResponse) {
 }
 
 // ModifyRoGroupInfo
-// 本接口（ModifyRoGroupInfo）用于更新云数据库只读组的信息。包括设置实例延迟超限剔除策略，设置只读实例读权重等。
+// 本接口（ModifyRoGroupInfo）用于更新云数据库只读组的信息。包括设置实例延迟超限剔除策略，设置只读实例读权重，设置复制延迟时间等。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
@@ -3998,6 +4000,7 @@ func NewModifyRoGroupInfoResponse() (response *ModifyRoGroupInfoResponse) {
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  MISSINGPARAMETER_MISSINGPARAMERROR = "MissingParameter.MissingParamError"
+//  OPERATIONDENIED_CONFLICTROSTATUS = "OperationDenied.ConflictRoStatus"
 //  OPERATIONDENIED_DELAYREPLICATIONRUNNING = "OperationDenied.DelayReplicationRunning"
 func (c *Client) ModifyRoGroupInfo(request *ModifyRoGroupInfoRequest) (response *ModifyRoGroupInfoResponse, err error) {
     if request == nil {
@@ -4005,45 +4008,6 @@ func (c *Client) ModifyRoGroupInfo(request *ModifyRoGroupInfoRequest) (response 
     }
     
     response = NewModifyRoGroupInfoResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewModifyRoReplicationDelayRequest() (request *ModifyRoReplicationDelayRequest) {
-    request = &ModifyRoReplicationDelayRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cdb", APIVersion, "ModifyRoReplicationDelay")
-    
-    
-    return
-}
-
-func NewModifyRoReplicationDelayResponse() (response *ModifyRoReplicationDelayResponse) {
-    response = &ModifyRoReplicationDelayResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// ModifyRoReplicationDelay
-// 修改延迟只读实例的延迟复制时间。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_NOTDELAYRO = "FailedOperation.NotDelayRo"
-//  FAILEDOPERATION_OPERATIONREPLICATIONERROR = "FailedOperation.OperationReplicationError"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE_DUETIMEWRONG = "InvalidParameterValue.DueTimeWrong"
-//  INVALIDPARAMETERVALUE_SRCTYPEEQUALDSTTYPE = "InvalidParameterValue.SrcTypeEqualDstType"
-//  INVALIDPARAMETERVALUE_SRCTYPENOTEQUALDSTTYPE = "InvalidParameterValue.SrcTypeNotEqualDstType"
-//  OPERATIONDENIED_DELAYREPLICATIONRUNNING = "OperationDenied.DelayReplicationRunning"
-//  OPERATIONDENIED_INSTANCETASKRUNNING = "OperationDenied.InstanceTaskRunning"
-func (c *Client) ModifyRoReplicationDelay(request *ModifyRoReplicationDelayRequest) (response *ModifyRoReplicationDelayResponse, err error) {
-    if request == nil {
-        request = NewModifyRoReplicationDelayRequest()
-    }
-    
-    response = NewModifyRoReplicationDelayResponse()
     err = c.Send(request, response)
     return
 }
@@ -4362,46 +4326,6 @@ func (c *Client) StartBatchRollback(request *StartBatchRollbackRequest) (respons
     return
 }
 
-func NewStartDelayReplicationRequest() (request *StartDelayReplicationRequest) {
-    request = &StartDelayReplicationRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cdb", APIVersion, "StartDelayReplication")
-    
-    
-    return
-}
-
-func NewStartDelayReplicationResponse() (response *StartDelayReplicationResponse) {
-    response = &StartDelayReplicationResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// StartDelayReplication
-// 启动延迟只读实例的延迟复制。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_NOTDELAYRO = "FailedOperation.NotDelayRo"
-//  FAILEDOPERATION_OPERATIONREPLICATIONERROR = "FailedOperation.OperationReplicationError"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE_DUETIMEWRONG = "InvalidParameterValue.DueTimeWrong"
-//  INVALIDPARAMETERVALUE_SRCTYPEEQUALDSTTYPE = "InvalidParameterValue.SrcTypeEqualDstType"
-//  INVALIDPARAMETERVALUE_SRCTYPENOTEQUALDSTTYPE = "InvalidParameterValue.SrcTypeNotEqualDstType"
-//  OPERATIONDENIED_DELAYREPLICATIONRUNNING = "OperationDenied.DelayReplicationRunning"
-//  OPERATIONDENIED_INSTANCETASKRUNNING = "OperationDenied.InstanceTaskRunning"
-//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
-func (c *Client) StartDelayReplication(request *StartDelayReplicationRequest) (response *StartDelayReplicationResponse, err error) {
-    if request == nil {
-        request = NewStartDelayReplicationRequest()
-    }
-    
-    response = NewStartDelayReplicationResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewStopDBImportJobRequest() (request *StopDBImportJobRequest) {
     request = &StopDBImportJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4433,45 +4357,6 @@ func (c *Client) StopDBImportJob(request *StopDBImportJobRequest) (response *Sto
     }
     
     response = NewStopDBImportJobResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewStopDelayReplicationRequest() (request *StopDelayReplicationRequest) {
-    request = &StopDelayReplicationRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cdb", APIVersion, "StopDelayReplication")
-    
-    
-    return
-}
-
-func NewStopDelayReplicationResponse() (response *StopDelayReplicationResponse) {
-    response = &StopDelayReplicationResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// StopDelayReplication
-// 停止延迟只读实例的延迟复制。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_NOTDELAYRO = "FailedOperation.NotDelayRo"
-//  FAILEDOPERATION_OPERATIONREPLICATIONERROR = "FailedOperation.OperationReplicationError"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE_DUETIMEWRONG = "InvalidParameterValue.DueTimeWrong"
-//  INVALIDPARAMETERVALUE_SRCTYPEEQUALDSTTYPE = "InvalidParameterValue.SrcTypeEqualDstType"
-//  INVALIDPARAMETERVALUE_SRCTYPENOTEQUALDSTTYPE = "InvalidParameterValue.SrcTypeNotEqualDstType"
-//  OPERATIONDENIED_DELAYREPLICATIONRUNNING = "OperationDenied.DelayReplicationRunning"
-//  OPERATIONDENIED_INSTANCETASKRUNNING = "OperationDenied.InstanceTaskRunning"
-func (c *Client) StopDelayReplication(request *StopDelayReplicationRequest) (response *StopDelayReplicationResponse, err error) {
-    if request == nil {
-        request = NewStopDelayReplicationRequest()
-    }
-    
-    response = NewStopDelayReplicationResponse()
     err = c.Send(request, response)
     return
 }

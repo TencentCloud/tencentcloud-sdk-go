@@ -431,13 +431,13 @@ type CreateProbeTasksRequest struct {
 	// 任务类型
 	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
 
-	// 探测节点
+	// 拨测节点
 	Nodes []*string `json:"Nodes,omitempty" name:"Nodes"`
 
-	// 探测间隔
+	// 拨测间隔
 	Interval *int64 `json:"Interval,omitempty" name:"Interval"`
 
-	// 探测参数
+	// 拨测参数
 	Parameters *string `json:"Parameters,omitempty" name:"Parameters"`
 
 	// 任务分类
@@ -447,6 +447,9 @@ type CreateProbeTasksRequest struct {
 
 	// 定时任务cron表达式
 	Cron *string `json:"Cron,omitempty" name:"Cron"`
+
+	// 资源标签值
+	Tag []*Tag `json:"Tag,omitempty" name:"Tag"`
 }
 
 func (r *CreateProbeTasksRequest) ToJsonString() string {
@@ -468,6 +471,7 @@ func (r *CreateProbeTasksRequest) FromJsonString(s string) error {
 	delete(f, "Parameters")
 	delete(f, "TaskCategory")
 	delete(f, "Cron")
+	delete(f, "Tag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProbeTasksRequest has unknown keys!", "")
 	}
@@ -1388,7 +1392,7 @@ type DescribeProbeTasksRequest struct {
 	// 任务名
 	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
 
-	// 探测目标
+	// 拨测目标
 	TargetAddress *string `json:"TargetAddress,omitempty" name:"TargetAddress"`
 
 	// 任务状态列表
@@ -1421,6 +1425,9 @@ type DescribeProbeTasksRequest struct {
 
 	// 是否正序
 	Ascend *bool `json:"Ascend,omitempty" name:"Ascend"`
+
+	// 资源标签值
+	TagFilters []*KeyValuePair `json:"TagFilters,omitempty" name:"TagFilters"`
 }
 
 func (r *DescribeProbeTasksRequest) ToJsonString() string {
@@ -1447,6 +1454,7 @@ func (r *DescribeProbeTasksRequest) FromJsonString(s string) error {
 	delete(f, "TaskCategory")
 	delete(f, "OrderBy")
 	delete(f, "Ascend")
+	delete(f, "TagFilters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProbeTasksRequest has unknown keys!", "")
 	}
@@ -2235,6 +2243,15 @@ type IspDetail struct {
 	AvgTime *float64 `json:"AvgTime,omitempty" name:"AvgTime"`
 }
 
+type KeyValuePair struct {
+
+	// 健
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 值
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type Label struct {
 
 	// 自定义字段编号
@@ -2557,13 +2574,13 @@ type ProbeTask struct {
 	// 任务类型
 	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
 
-	// 探测节点列表
+	// 拨测节点列表
 	Nodes []*string `json:"Nodes,omitempty" name:"Nodes"`
 
-	// 探测间隔
+	// 拨测间隔
 	Interval *int64 `json:"Interval,omitempty" name:"Interval"`
 
-	// 探测参数
+	// 拨测参数
 	Parameters *string `json:"Parameters,omitempty" name:"Parameters"`
 
 	// 任务状态
@@ -2597,6 +2614,10 @@ type ProbeTask struct {
 	// 定时任务启动状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CronState *int64 `json:"CronState,omitempty" name:"CronState"`
+
+	// 任务当前绑定的标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagInfoList []*KeyValuePair `json:"TagInfoList,omitempty" name:"TagInfoList"`
 }
 
 type ProbeTaskBasicConfiguration struct {
@@ -2805,6 +2826,15 @@ func (r *SuspendProbeTaskResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SuspendProbeTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Tag struct {
+
+	// key
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// value
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
 type TaskAlarm struct {

@@ -713,9 +713,15 @@ const (
 	// Cos操作不支持。
 	UNSUPPORTEDOPERATION_COS = "UnsupportedOperation.Cos"
 
+	// 指定的配置EipFixed暂不支持。
+	UNSUPPORTEDOPERATION_EIPFIXED = "UnsupportedOperation.EipFixed"
+
 	// 不支持此地域。
 	UNSUPPORTEDOPERATION_REGION = "UnsupportedOperation.Region"
 
 	// Trigger操作不支持。
 	UNSUPPORTEDOPERATION_TRIGGER = "UnsupportedOperation.Trigger"
+
+	// 指定的配置VpcConfig暂不支持。
+	UNSUPPORTEDOPERATION_VPCCONFIG = "UnsupportedOperation.VpcConfig"
 )

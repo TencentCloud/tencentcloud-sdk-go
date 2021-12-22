@@ -158,28 +158,28 @@ type Code struct {
 	// 如果是从TempCos创建的话，需要传入TempCosObjectName
 	TempCosObjectName *string `json:"TempCosObjectName,omitempty" name:"TempCosObjectName"`
 
-	// Git地址
+	// Git地址。该功能已下线。
 	GitUrl *string `json:"GitUrl,omitempty" name:"GitUrl"`
 
-	// Git用户名
+	// Git用户名。该功能已下线。
 	GitUserName *string `json:"GitUserName,omitempty" name:"GitUserName"`
 
-	// Git密码
+	// Git密码。该功能已下线。
 	GitPassword *string `json:"GitPassword,omitempty" name:"GitPassword"`
 
-	// 加密后的Git密码，一般无需指定
+	// 加密后的Git密码，一般无需指定。该功能已下线。
 	GitPasswordSecret *string `json:"GitPasswordSecret,omitempty" name:"GitPasswordSecret"`
 
-	// Git分支
+	// Git分支。该功能已下线。
 	GitBranch *string `json:"GitBranch,omitempty" name:"GitBranch"`
 
-	// 代码在Git仓库中的路径
+	// 代码在Git仓库中的路径。该功能已下线。
 	GitDirectory *string `json:"GitDirectory,omitempty" name:"GitDirectory"`
 
-	// 指定要拉取的版本
+	// 指定要拉取的版本。该功能已下线。
 	GitCommitId *string `json:"GitCommitId,omitempty" name:"GitCommitId"`
 
-	// 加密后的Git用户名，一般无需指定
+	// 加密后的Git用户名，一般无需指定。该功能已下线。
 	GitUserNameSecret *string `json:"GitUserNameSecret,omitempty" name:"GitUserNameSecret"`
 
 	// 镜像部署时配置TCR镜像信息
@@ -2021,11 +2021,11 @@ type ImageConfig struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EntryPoint *string `json:"EntryPoint,omitempty" name:"EntryPoint"`
 
-	// entrypoint执行命令
+	// 容器的启动命令。该参数为可选参数，如果不填写，则默认使用 Dockerfile 中的 Entrypoint。传入规范，填写可运行的指令，例如 python
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Command *string `json:"Command,omitempty" name:"Command"`
 
-	// 命令参数
+	// 容器的启动参数。该参数为可选参数，如果不填写，则默认使用 Dockerfile 中的 CMD。传入规范，以“空格”作为参数的分割标识，例如 -u app.py
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Args *string `json:"Args,omitempty" name:"Args"`
 }

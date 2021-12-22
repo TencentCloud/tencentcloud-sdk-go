@@ -828,6 +828,41 @@ func (c *Client) DescribeTables(request *DescribeTablesRequest) (response *Descr
     return
 }
 
+func NewDescribeTaskResultRequest() (request *DescribeTaskResultRequest) {
+    request = &DescribeTaskResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeTaskResult")
+    
+    
+    return
+}
+
+func NewDescribeTaskResultResponse() (response *DescribeTaskResultResponse) {
+    response = &DescribeTaskResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTaskResult
+// 查询任务结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
+func (c *Client) DescribeTaskResult(request *DescribeTaskResultRequest) (response *DescribeTaskResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskResultRequest()
+    }
+    
+    response = NewDescribeTaskResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTasksRequest() (request *DescribeTasksRequest) {
     request = &DescribeTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},

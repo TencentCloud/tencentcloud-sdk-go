@@ -9449,6 +9449,14 @@ type DescribeVirusDetailResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		SubStatus *string `json:"SubStatus,omitempty" name:"SubStatus"`
 
+		// 内网ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+
+		// 外网ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ClientIP *string `json:"ClientIP,omitempty" name:"ClientIP"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -12268,6 +12276,14 @@ type RunTimeEventBaseInfo struct {
 
 	// 最近生成时间
 	LatestFoundTime *string `json:"LatestFoundTime,omitempty" name:"LatestFoundTime"`
+
+	// 内网ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+
+	// 外网ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientIP *string `json:"ClientIP,omitempty" name:"ClientIP"`
 }
 
 type RunTimeFilters struct {

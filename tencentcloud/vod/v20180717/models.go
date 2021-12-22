@@ -13819,7 +13819,7 @@ type TaskStatData struct {
 	// <li> Transcoding-TESHD: 极速高清转码</li>
 	// <li> Editing: 视频编辑</li>
 	// <li> AdaptiveBitrateStreaming: 自适应码流</li>
-	// <li> ContentAudit: 内容审核</li>
+	// <li> ContentAudit: 智能识别</li>
 	// <li>Transcode: 转码，包含普通转码、极速高清和视频编辑（不推荐使用）</li>
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 

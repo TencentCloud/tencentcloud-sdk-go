@@ -1045,7 +1045,7 @@ func NewDescribeInstanceAttributesResponse() (response *DescribeInstanceAttribut
 }
 
 // DescribeInstanceAttributes
-// 获取实例属性
+// 获取实例属性 
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

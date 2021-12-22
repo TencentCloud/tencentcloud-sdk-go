@@ -47,6 +47,12 @@ type AuthFailMessage struct {
 	Message *string `json:"Message,omitempty" name:"Message"`
 }
 
+type CcInfo struct {
+
+	// 被抄送人手机号
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+}
+
 type Component struct {
 
 	// 控件编号
@@ -606,6 +612,9 @@ type FlowInfo struct {
 
 	// 渠道的业务信息，限制1024字符
 	CustomerData *string `json:"CustomerData,omitempty" name:"CustomerData"`
+
+	// 被抄送人的信息列表
+	CcInfos []*CcInfo `json:"CcInfos,omitempty" name:"CcInfos"`
 }
 
 type FlowResourceUrlInfo struct {
@@ -1129,6 +1138,9 @@ type TemplateInfo struct {
 
 	// 模板中的流程参与人信息
 	Recipients []*Recipient `json:"Recipients,omitempty" name:"Recipients"`
+
+	// 是否是发起人
+	IsPromoter *bool `json:"IsPromoter,omitempty" name:"IsPromoter"`
 }
 
 type UsageDetail struct {

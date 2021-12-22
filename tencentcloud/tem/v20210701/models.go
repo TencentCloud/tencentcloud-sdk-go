@@ -385,6 +385,67 @@ type CronHorizontalAutoscalerSchedule struct {
 	TargetReplicas *int64 `json:"TargetReplicas,omitempty" name:"TargetReplicas"`
 }
 
+type DeleteApplicationRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务Id
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 环境ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// 当服务没有任何运行版本时，是否删除此服务
+	DeleteApplicationIfNoRunningVersion *bool `json:"DeleteApplicationIfNoRunningVersion,omitempty" name:"DeleteApplicationIfNoRunningVersion"`
+}
+
+func (r *DeleteApplicationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteApplicationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApplicationId")
+	delete(f, "EnvironmentId")
+	delete(f, "SourceChannel")
+	delete(f, "DeleteApplicationIfNoRunningVersion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteApplicationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteApplicationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回结果
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteApplicationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteApplicationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteIngressRequest struct {
 	*tchttp.BaseRequest
 

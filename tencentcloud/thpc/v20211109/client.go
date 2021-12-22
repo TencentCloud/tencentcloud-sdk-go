@@ -139,3 +139,36 @@ func (c *Client) DeleteCluster(request *DeleteClusterRequest) (response *DeleteC
     err = c.Send(request, response)
     return
 }
+
+func NewDescribeClustersRequest() (request *DescribeClustersRequest) {
+    request = &DescribeClustersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("thpc", APIVersion, "DescribeClusters")
+    
+    
+    return
+}
+
+func NewDescribeClustersResponse() (response *DescribeClustersResponse) {
+    response = &DescribeClustersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeClusters
+// 本接口（DescribeClusters）用于查询集群列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+func (c *Client) DescribeClusters(request *DescribeClustersRequest) (response *DescribeClustersResponse, err error) {
+    if request == nil {
+        request = NewDescribeClustersRequest()
+    }
+    
+    response = NewDescribeClustersResponse()
+    err = c.Send(request, response)
+    return
+}

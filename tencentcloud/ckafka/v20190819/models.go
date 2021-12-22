@@ -2499,6 +2499,25 @@ func (r *DescribeUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DynamicDiskConfig struct {
+
+	// 动态硬盘扩容配置开关（0: 关闭，1: 开启）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
+
+	// 每次磁盘动态扩容大小百分比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StepForwardPercentage *int64 `json:"StepForwardPercentage,omitempty" name:"StepForwardPercentage"`
+
+	// 磁盘配额百分比触发条件，即消息达到此值触发硬盘自动扩容事件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskQuotaPercentage *int64 `json:"DiskQuotaPercentage,omitempty" name:"DiskQuotaPercentage"`
+
+	// 最大扩容硬盘大小，以 GB 为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxDiskSpace *int64 `json:"MaxDiskSpace,omitempty" name:"MaxDiskSpace"`
+}
+
 type DynamicRetentionTime struct {
 
 	// 动态消息保留时间配置开关（0: 关闭，1: 开启）
@@ -2831,6 +2850,10 @@ type InstanceAttributesResponse struct {
 	// 剩余创建主题数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemainingTopics *int64 `json:"RemainingTopics,omitempty" name:"RemainingTopics"`
+
+	// 动态硬盘扩容策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DynamicDiskConfig *DynamicDiskConfig `json:"DynamicDiskConfig,omitempty" name:"DynamicDiskConfig"`
 }
 
 type InstanceConfigDO struct {
@@ -3082,6 +3105,9 @@ type ModifyInstanceAttributesRequest struct {
 
 	// 时间戳
 	PublicNetwork *int64 `json:"PublicNetwork,omitempty" name:"PublicNetwork"`
+
+	// 动态硬盘扩容策略配置
+	DynamicDiskConfig *DynamicDiskConfig `json:"DynamicDiskConfig,omitempty" name:"DynamicDiskConfig"`
 }
 
 func (r *ModifyInstanceAttributesRequest) ToJsonString() string {
@@ -3103,6 +3129,7 @@ func (r *ModifyInstanceAttributesRequest) FromJsonString(s string) error {
 	delete(f, "DynamicRetentionConfig")
 	delete(f, "RebalanceTime")
 	delete(f, "PublicNetwork")
+	delete(f, "DynamicDiskConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceAttributesRequest has unknown keys!", "")
 	}
@@ -3237,6 +3264,9 @@ type ModifyTopicAttributesRequest struct {
 
 	// 可选, 保留文件大小. 默认为-1,单位bytes, 当前最小值为1048576B
 	RetentionBytes *int64 `json:"RetentionBytes,omitempty" name:"RetentionBytes"`
+
+	// 标签列表
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *ModifyTopicAttributesRequest) ToJsonString() string {
@@ -3265,6 +3295,7 @@ func (r *ModifyTopicAttributesRequest) FromJsonString(s string) error {
 	delete(f, "EnableAclRule")
 	delete(f, "AclRuleName")
 	delete(f, "RetentionBytes")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTopicAttributesRequest has unknown keys!", "")
 	}

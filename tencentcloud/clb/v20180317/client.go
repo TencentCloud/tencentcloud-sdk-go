@@ -282,7 +282,31 @@ func NewCloneLoadBalancerResponse() (response *CloneLoadBalancerResponse) {
 }
 
 // CloneLoadBalancer
-// 克隆负载均衡实例，根据指定的负载均衡实例，复制出相同规则和绑定关系的负载均衡实例。
+// 克隆负载均衡实例，根据指定的负载均衡实例，复制出相同规则和绑定关系的负载均衡实例。克隆接口为异步操作，克隆的数据以调用CloneLoadBalancer时为准，如果调用CloneLoadBalancer后克隆CLB发生变化，变化规则不会克隆。
+//
+// 
+//
+// 限制说明：
+//
+// 不支持基础网络和传统型负载均衡、IPv6和NAT64
+//
+// 不支持包年包月CLB
+//
+// 不支持监听器为 QUIC、端口段
+//
+// 不支持后端类型为 目标组、SCF云函数
+//
+// 个性化配置、重定向配置、安全组默认放通开关 将不会被克隆，须手工配置
+//
+// 
+//
+// 通过接口调用：
+//
+// BGP带宽包必须传带宽包id
+//
+// 独占集群克隆必须传对应的参数，否则按共享创创建
+//
+// 功能内测中，[提单开通](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20CLB&step=1)。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
