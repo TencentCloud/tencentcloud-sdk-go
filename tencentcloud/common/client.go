@@ -113,7 +113,7 @@ func (c *Client) sendWithSignatureV1(request tchttp.Request, response tchttp.Res
 	if err != nil {
 		return err
 	}
-	httpRequest, err := http.NewRequest(request.GetHttpMethod(), request.GetUrl(), request.GetBodyReader())
+	httpRequest, err := http.NewRequestWithContext(request.GetContext(), request.GetHttpMethod(), request.GetUrl(), request.GetBodyReader())
 	if err != nil {
 		return err
 	}
@@ -268,7 +268,7 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 	if canonicalQueryString != "" {
 		url = url + "?" + canonicalQueryString
 	}
-	httpRequest, err := http.NewRequest(httpRequestMethod, url, strings.NewReader(requestPayload))
+	httpRequest, err := http.NewRequestWithContext(request.GetContext(), httpRequestMethod, url, strings.NewReader(requestPayload))
 	if err != nil {
 		return err
 	}
