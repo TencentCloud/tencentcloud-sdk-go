@@ -93,6 +93,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iai v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ic v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ie v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iecp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iir v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ims v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iot v0.0.0
@@ -284,6 +285,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iai => ../tencentcloud/iai
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ic => ../tencentcloud/ic
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ie => ../tencentcloud/ie
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iecp => ../tencentcloud/iecp
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iir => ../tencentcloud/iir
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ims => ../tencentcloud/ims
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iot => ../tencentcloud/iot

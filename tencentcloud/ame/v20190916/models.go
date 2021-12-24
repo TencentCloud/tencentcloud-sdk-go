@@ -1443,10 +1443,12 @@ type SearchKTVMusicsRequest struct {
 	// 搜索关键词
 	KeyWord *string `json:"KeyWord,omitempty" name:"KeyWord"`
 
-	// 分页游标
+	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+	// 取值范围：Offset + Limit 不超过5000。取值范围：小于5000
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 分页页长
+	// 分页返回的起始偏移量，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
+	// 取值范围：Offset + Limit 不超过5000。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 

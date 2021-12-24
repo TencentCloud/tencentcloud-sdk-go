@@ -1709,3 +1709,39 @@ func (c *Client) ModifyTopicAttributes(request *ModifyTopicAttributesRequest) (r
     err = c.Send(request, response)
     return
 }
+
+func NewSendMessageRequest() (request *SendMessageRequest) {
+    request = &SendMessageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ckafka", APIVersion, "SendMessage")
+    
+    
+    return
+}
+
+func NewSendMessageResponse() (response *SendMessageResponse) {
+    response = &SendMessageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SendMessage
+// 通过HTTP接入层发送消息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) SendMessage(request *SendMessageRequest) (response *SendMessageResponse, err error) {
+    if request == nil {
+        request = NewSendMessageRequest()
+    }
+    
+    response = NewSendMessageResponse()
+    err = c.Send(request, response)
+    return
+}

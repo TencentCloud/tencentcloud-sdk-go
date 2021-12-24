@@ -220,6 +220,40 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
     return
 }
 
+func NewDescribeViewsRequest() (request *DescribeViewsRequest) {
+    request = &DescribeViewsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("es", APIVersion, "DescribeViews")
+    
+    
+    return
+}
+
+func NewDescribeViewsResponse() (response *DescribeViewsResponse) {
+    response = &DescribeViewsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeViews
+// 查询集群各视图数据，包括集群维度、节点维度、Kibana维度
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+func (c *Client) DescribeViews(request *DescribeViewsRequest) (response *DescribeViewsResponse, err error) {
+    if request == nil {
+        request = NewDescribeViewsRequest()
+    }
+    
+    response = NewDescribeViewsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDiagnoseInstanceRequest() (request *DiagnoseInstanceRequest) {
     request = &DiagnoseInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},

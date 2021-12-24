@@ -304,9 +304,9 @@ func NewCloneLoadBalancerResponse() (response *CloneLoadBalancerResponse) {
 //
 // BGP带宽包必须传带宽包id
 //
-// 独占集群克隆必须传对应的参数，否则按共享创创建
+// 独占集群克隆必须传对应的参数，否则按共享型创建
 //
-// 功能内测中，[提单开通](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20CLB&step=1)。
+// 功能内测中，[申请开通](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20CLB&step=1)。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

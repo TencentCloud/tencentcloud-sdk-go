@@ -679,7 +679,7 @@ type DeleteFunctionRequest struct {
 	// 函数所属命名空间
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
-	// 函数版本，如果删除版本的话传入版本号，不传入改字段删除函数下的所有版本
+	// 填写需要删除的版本号，不填默认删除函数下全部版本。
 	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
 }
 
@@ -3337,7 +3337,7 @@ type TerminateAsyncEventRequest struct {
 	// 命名空间
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
-	// 该参数已下线
+	// true，向指定请求[发送 SIGTERM 终止信号](https://cloud.tencent.com/document/product/583/63969#.E5.8F.91.E9.80.81.E7.BB.88.E6.AD.A2.E4.BF.A1.E5.8F.B7]， ，默认值为 false。
 	GraceShutdown *bool `json:"GraceShutdown,omitempty" name:"GraceShutdown"`
 }
 

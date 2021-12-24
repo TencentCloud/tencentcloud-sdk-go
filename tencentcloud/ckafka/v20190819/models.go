@@ -143,6 +143,15 @@ type Assignment struct {
 	Topics []*GroupInfoTopics `json:"Topics,omitempty" name:"Topics"`
 }
 
+type BatchContent struct {
+
+	// 发送的消息体
+	Body *string `json:"Body,omitempty" name:"Body"`
+
+	// 发送消息的键名
+	Key *string `json:"Key,omitempty" name:"Key"`
+}
+
 type BatchCreateAclRequest struct {
 	*tchttp.BaseRequest
 
@@ -3454,6 +3463,59 @@ type SaleInfo struct {
 	// 售罄标志：true售罄
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SoldOut *bool `json:"SoldOut,omitempty" name:"SoldOut"`
+}
+
+type SendMessageRequest struct {
+	*tchttp.BaseRequest
+
+	// DataHub接入ID
+	DataHubId *string `json:"DataHubId,omitempty" name:"DataHubId"`
+
+	// 发送消息内容
+	Message []*BatchContent `json:"Message,omitempty" name:"Message"`
+}
+
+func (r *SendMessageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SendMessageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataHubId")
+	delete(f, "Message")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendMessageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SendMessageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 消息ID列表
+		MessageId []*string `json:"MessageId,omitempty" name:"MessageId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SendMessageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SendMessageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SubscribedInfo struct {

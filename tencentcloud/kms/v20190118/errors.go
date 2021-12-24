@@ -29,6 +29,9 @@ const (
 	// 解密失败。
 	FAILEDOPERATION_DECRYPTERROR = "FailedOperation.DecryptError"
 
+	// 加密操作失败。
+	FAILEDOPERATION_ENCRYPTIONERROR = "FailedOperation.EncryptionError"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
@@ -115,6 +118,9 @@ const (
 
 	// 密钥已被禁用。
 	RESOURCEUNAVAILABLE_KEYDISABLED = "ResourceUnavailable.KeyDisabled"
+
+	// 不可用密钥：密钥待删除。
+	RESOURCEUNAVAILABLE_KEYPENDINGDELETE = "ResourceUnavailable.KeyPendingDelete"
 
 	// 白盒密钥服务尚未开通。
 	RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"

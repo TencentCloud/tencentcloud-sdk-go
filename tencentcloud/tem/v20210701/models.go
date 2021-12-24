@@ -1812,6 +1812,63 @@ func (r *RestartApplicationPodResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type RestartApplicationRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务id
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// 环境ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+}
+
+func (r *RestartApplicationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestartApplicationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApplicationId")
+	delete(f, "SourceChannel")
+	delete(f, "EnvironmentId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestartApplicationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RestartApplicationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回结果
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RestartApplicationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestartApplicationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ResumeDeployApplicationRequest struct {
 	*tchttp.BaseRequest
 
@@ -2019,6 +2076,63 @@ type RunVersionPod struct {
 	// 容器状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerState *string `json:"ContainerState,omitempty" name:"ContainerState"`
+}
+
+type StopApplicationRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务id
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// 环境ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+}
+
+func (r *StopApplicationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopApplicationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApplicationId")
+	delete(f, "SourceChannel")
+	delete(f, "EnvironmentId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopApplicationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type StopApplicationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回结果
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StopApplicationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopApplicationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type StorageConf struct {

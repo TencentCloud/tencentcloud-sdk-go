@@ -4326,6 +4326,39 @@ func (c *Client) StartBatchRollback(request *StartBatchRollbackRequest) (respons
     return
 }
 
+func NewStartReplicationRequest() (request *StartReplicationRequest) {
+    request = &StartReplicationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "StartReplication")
+    
+    
+    return
+}
+
+func NewStartReplicationResponse() (response *StartReplicationResponse) {
+    response = &StartReplicationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StartReplication
+// 开启 RO 复制，从主实例同步数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) StartReplication(request *StartReplicationRequest) (response *StartReplicationResponse, err error) {
+    if request == nil {
+        request = NewStartReplicationRequest()
+    }
+    
+    response = NewStartReplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopDBImportJobRequest() (request *StopDBImportJobRequest) {
     request = &StopDBImportJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4357,6 +4390,39 @@ func (c *Client) StopDBImportJob(request *StopDBImportJobRequest) (response *Sto
     }
     
     response = NewStopDBImportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopReplicationRequest() (request *StopReplicationRequest) {
+    request = &StopReplicationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "StopReplication")
+    
+    
+    return
+}
+
+func NewStopReplicationResponse() (response *StopReplicationResponse) {
+    response = &StopReplicationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StopReplication
+// 停止 RO 复制，中断从主实例同步数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) StopReplication(request *StopReplicationRequest) (response *StopReplicationResponse, err error) {
+    if request == nil {
+        request = NewStopReplicationRequest()
+    }
+    
+    response = NewStopReplicationResponse()
     err = c.Send(request, response)
     return
 }

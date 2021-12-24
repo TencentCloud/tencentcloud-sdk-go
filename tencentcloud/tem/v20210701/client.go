@@ -629,6 +629,38 @@ func (c *Client) ModifyIngress(request *ModifyIngressRequest) (response *ModifyI
     return
 }
 
+func NewRestartApplicationRequest() (request *RestartApplicationRequest) {
+    request = &RestartApplicationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tem", APIVersion, "RestartApplication")
+    
+    
+    return
+}
+
+func NewRestartApplicationResponse() (response *RestartApplicationResponse) {
+    response = &RestartApplicationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RestartApplication
+// 服务重启
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+func (c *Client) RestartApplication(request *RestartApplicationRequest) (response *RestartApplicationResponse, err error) {
+    if request == nil {
+        request = NewRestartApplicationRequest()
+    }
+    
+    response = NewRestartApplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRestartApplicationPodRequest() (request *RestartApplicationPodRequest) {
     request = &RestartApplicationPodRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -753,6 +785,38 @@ func (c *Client) RollingUpdateApplicationByVersion(request *RollingUpdateApplica
     }
     
     response = NewRollingUpdateApplicationByVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopApplicationRequest() (request *StopApplicationRequest) {
+    request = &StopApplicationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tem", APIVersion, "StopApplication")
+    
+    
+    return
+}
+
+func NewStopApplicationResponse() (response *StopApplicationResponse) {
+    response = &StopApplicationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StopApplication
+// 服务停止
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+func (c *Client) StopApplication(request *StopApplicationRequest) (response *StopApplicationResponse, err error) {
+    if request == nil {
+        request = NewStopApplicationRequest()
+    }
+    
+    response = NewStopApplicationResponse()
     err = c.Send(request, response)
     return
 }

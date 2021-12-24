@@ -245,9 +245,6 @@ type CreateDBInstancesRequest struct {
 	// 售卖规格ID。该参数可以通过调用DescribeProductConfig的返回值中的SpecCode字段来获取。
 	SpecCode *string `json:"SpecCode,omitempty" name:"SpecCode"`
 
-	// PostgreSQL内核版本，目前支持以下版本：9.3.5、9.5.4、10.4、11.8、12.4 。
-	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
-
 	// 实例容量大小，单位：GB。
 	Storage *uint64 `json:"Storage,omitempty" name:"Storage"`
 
@@ -262,6 +259,9 @@ type CreateDBInstancesRequest struct {
 
 	// 项目ID。
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// PostgreSQL版本。当输入该参数时，会基于此版本创建对应的最新内核版本号实例。
+	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
 
 	// 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
@@ -295,6 +295,12 @@ type CreateDBInstancesRequest struct {
 
 	// 安全组id
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
+
+	// PostgreSQL主要版本。目前支持10，11，12，13这几个版本。当输入该参数时，会基于此版本创建对应的最新内核版本号实例。
+	DBMajorVersion *string `json:"DBMajorVersion,omitempty" name:"DBMajorVersion"`
+
+	// PostgreSQL内核版本。当输入该参数时，会创建该内核版本号实例。
+	DBKernelVersion *string `json:"DBKernelVersion,omitempty" name:"DBKernelVersion"`
 }
 
 func (r *CreateDBInstancesRequest) ToJsonString() string {
@@ -310,12 +316,12 @@ func (r *CreateDBInstancesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "SpecCode")
-	delete(f, "DBVersion")
 	delete(f, "Storage")
 	delete(f, "InstanceCount")
 	delete(f, "Period")
 	delete(f, "Zone")
 	delete(f, "ProjectId")
+	delete(f, "DBVersion")
 	delete(f, "InstanceChargeType")
 	delete(f, "AutoVoucher")
 	delete(f, "VoucherIds")
@@ -327,6 +333,8 @@ func (r *CreateDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "NeedSupportIpv6")
 	delete(f, "TagList")
 	delete(f, "SecurityGroupIds")
+	delete(f, "DBMajorVersion")
+	delete(f, "DBKernelVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBInstancesRequest has unknown keys!", "")
 	}
@@ -368,9 +376,6 @@ type CreateInstancesRequest struct {
 	// 售卖规格ID。该参数可以通过调用DescribeProductConfig的返回值中的SpecCode字段来获取。
 	SpecCode *string `json:"SpecCode,omitempty" name:"SpecCode"`
 
-	// PostgreSQL主版本，目前支持：9.3、9.5、10、11、12、13以及9.3.5、9.5.4、10.4、11.8、12.4版本。
-	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
-
 	// 实例容量大小，单位：GB。
 	Storage *uint64 `json:"Storage,omitempty" name:"Storage"`
 
@@ -394,6 +399,9 @@ type CreateInstancesRequest struct {
 
 	// 项目ID。
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// PostgreSQL版本。当输入该参数时，会基于此版本创建对应的最新内核版本号实例
+	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
 
 	// 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
@@ -427,6 +435,12 @@ type CreateInstancesRequest struct {
 
 	// 安全组ID。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
+
+	// PostgreSQL主要版本。目前支持10，11，12，13这几个版本。当输入该参数时，会基于此版本创建对应的最新内核版本号实例
+	DBMajorVersion *string `json:"DBMajorVersion,omitempty" name:"DBMajorVersion"`
+
+	// PostgreSQL内核版本。当输入该参数时，会创建该内核版本号实例
+	DBKernelVersion *string `json:"DBKernelVersion,omitempty" name:"DBKernelVersion"`
 }
 
 func (r *CreateInstancesRequest) ToJsonString() string {
@@ -442,7 +456,6 @@ func (r *CreateInstancesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "SpecCode")
-	delete(f, "DBVersion")
 	delete(f, "Storage")
 	delete(f, "InstanceCount")
 	delete(f, "Period")
@@ -451,6 +464,7 @@ func (r *CreateInstancesRequest) FromJsonString(s string) error {
 	delete(f, "AdminName")
 	delete(f, "AdminPassword")
 	delete(f, "ProjectId")
+	delete(f, "DBVersion")
 	delete(f, "InstanceChargeType")
 	delete(f, "AutoVoucher")
 	delete(f, "VoucherIds")
@@ -462,6 +476,8 @@ func (r *CreateInstancesRequest) FromJsonString(s string) error {
 	delete(f, "NeedSupportIpv6")
 	delete(f, "TagList")
 	delete(f, "SecurityGroupIds")
+	delete(f, "DBMajorVersion")
+	delete(f, "DBKernelVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstancesRequest has unknown keys!", "")
 	}
@@ -881,7 +897,7 @@ type DBInstance struct {
 	// 实例DB字符集
 	DBCharset *string `json:"DBCharset,omitempty" name:"DBCharset"`
 
-	// PostgreSQL主版本
+	// PostgreSQL版本
 	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
 
 	// 实例创建时间
@@ -944,6 +960,10 @@ type DBInstance struct {
 	// 实例网络信息列表（此字段已废弃）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkAccessList []*NetworkAccess `json:"NetworkAccessList,omitempty" name:"NetworkAccessList"`
+
+	// PostgreSQL主要版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DBMajorVersion *string `json:"DBMajorVersion,omitempty" name:"DBMajorVersion"`
 }
 
 type DBInstanceNetInfo struct {
@@ -3923,6 +3943,10 @@ type ServerlessDBInstance struct {
 	// 数据库内核版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DBKernelVersion *string `json:"DBKernelVersion,omitempty" name:"DBKernelVersion"`
+
+	// 数据库主要版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DBMajorVersion *string `json:"DBMajorVersion,omitempty" name:"DBMajorVersion"`
 }
 
 type ServerlessDBInstanceNetInfo struct {
@@ -4030,7 +4054,7 @@ type SpecItemInfo struct {
 	// 规格ID
 	SpecCode *string `json:"SpecCode,omitempty" name:"SpecCode"`
 
-	// PostgreSQL的内核版本编号
+	// PostgreSQL的版本编号
 	Version *string `json:"Version,omitempty" name:"Version"`
 
 	// 内核编号对应的完整版本名称
@@ -4056,6 +4080,14 @@ type SpecItemInfo struct {
 
 	// 机器类型
 	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// PostgreSQL的主要版本编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MajorVersion *string `json:"MajorVersion,omitempty" name:"MajorVersion"`
+
+	// PostgreSQL的内核版本编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KernelVersion *string `json:"KernelVersion,omitempty" name:"KernelVersion"`
 }
 
 type Tag struct {

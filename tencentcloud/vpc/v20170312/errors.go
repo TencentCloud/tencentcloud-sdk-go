@@ -170,6 +170,9 @@ const (
 	// 无效的带宽包计费方式。
 	INVALIDPARAMETERVALUE_INVALIDBANDWIDTHPACKAGECHARGETYPE = "InvalidParameterValue.InvalidBandwidthPackageChargeType"
 
+	// 参数的值不存在或不支持。
+	INVALIDPARAMETERVALUE_INVALIDBUSINESS = "InvalidParameterValue.InvalidBusiness"
+
 	// 传入的DedicatedClusterId有误。
 	INVALIDPARAMETERVALUE_INVALIDDEDICATEDCLUSTERID = "InvalidParameterValue.InvalidDedicatedClusterId"
 
@@ -200,6 +203,12 @@ const (
 	// NAT网关的SNAT规则已经存在。
 	INVALIDPARAMETERVALUE_NATSNATRULEEXISTS = "InvalidParameterValue.NatSnatRuleExists"
 
+	// 探测目的IP和网络探测在同一个VPC内。
+	INVALIDPARAMETERVALUE_NETDETECTINVPC = "InvalidParameterValue.NetDetectInVpc"
+
+	// 探测目的IP在云联网的路由表中找不到匹配的下一跳。
+	INVALIDPARAMETERVALUE_NETDETECTNOTFOUNDIP = "InvalidParameterValue.NetDetectNotFoundIp"
+
 	// 探测目的IP与同一个私有网络内的同一个子网下的其他网络探测的探测目的IP相同。
 	INVALIDPARAMETERVALUE_NETDETECTSAMEIP = "InvalidParameterValue.NetDetectSameIp"
 
@@ -226,6 +235,9 @@ const (
 
 	// 未查询到该资源。
 	INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+
+	// 该资源不支持此操作。
+	INVALIDPARAMETERVALUE_RESOURCENOTSUPPORT = "InvalidParameterValue.ResourceNotSupport"
 
 	// 子网CIDR冲突。
 	INVALIDPARAMETERVALUE_SUBNETCONFLICT = "InvalidParameterValue.SubnetConflict"
@@ -329,8 +341,14 @@ const (
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
 
+	// Svc不存在。
+	RESOURCENOTFOUND_SVCNOTEXIST = "ResourceNotFound.SvcNotExist"
+
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"
+
+	// 当前用户不在指定终端节点服务的白名单内。
+	RESOURCEUNAVAILABLE_SERVICEWHITELISTNOTADDED = "ResourceUnavailable.ServiceWhiteListNotAdded"
 
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -373,6 +391,9 @@ const (
 
 	// 资源不在指定的AppId下。
 	UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
+
+	// APPId不存在。
+	UNSUPPORTEDOPERATION_APPIDNOTFOUND = "UnsupportedOperation.AppIdNotFound"
 
 	// 绑定关系已存在。
 	UNSUPPORTEDOPERATION_ATTACHMENTALREADYEXISTS = "UnsupportedOperation.AttachmentAlreadyExists"
@@ -437,6 +458,9 @@ const (
 	// 和用户自定义的路由形成ECMP。
 	UNSUPPORTEDOPERATION_ECMPWITHUSERROUTE = "UnsupportedOperation.EcmpWithUserRoute"
 
+	// 终端节点服务本身不能是终端节点。
+	UNSUPPORTEDOPERATION_ENDPOINTSERVICE = "UnsupportedOperation.EndPointService"
+
 	// 用户配置的实例和路由表不匹配。
 	UNSUPPORTEDOPERATION_INSTANCEANDRTBNOTMATCH = "UnsupportedOperation.InstanceAndRtbNotMatch"
 
@@ -474,7 +498,7 @@ const (
 	UNSUPPORTEDOPERATION_ISPNOTSUPPORTED = "UnsupportedOperation.IspNotSupported"
 
 	// 指定的CDC已存在本地网关。
-	UNSUPPORTEDOPERATION_LOCALGATEWAYALREADYEXISTS = "UnsupportedOperation.LocalGateWayAlreadyExists"
+	UNSUPPORTEDOPERATION_LOCALGATEWAYALREADYEXISTS = "UnsupportedOperation.LocalGatewayAlreadyExists"
 
 	// 资源互斥操作任务正在执行。
 	UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"

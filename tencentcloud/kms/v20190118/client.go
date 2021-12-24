@@ -380,6 +380,7 @@ func NewDecryptResponse() (response *DecryptResponse) {
 // 本接口用于解密密文，得到明文数据。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ENCRYPTIONERROR = "FailedOperation.EncryptionError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDCIPHERTEXT = "InvalidParameterValue.InvalidCiphertext"
@@ -1198,11 +1199,13 @@ func NewGenerateDataKeyResponse() (response *GenerateDataKeyResponse) {
 // 本接口生成一个数据密钥，您可以用这个密钥进行本地数据的加密。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ENCRYPTIONERROR = "FailedOperation.EncryptionError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
 //  RESOURCEUNAVAILABLE_CMKDISABLED = "ResourceUnavailable.CmkDisabled"
 //  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_KEYPENDINGDELETE = "ResourceUnavailable.KeyPendingDelete"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) GenerateDataKey(request *GenerateDataKeyRequest) (response *GenerateDataKeyResponse, err error) {
     if request == nil {
@@ -1376,7 +1379,7 @@ func NewGetRegionsResponse() (response *GetRegionsResponse) {
 }
 
 // GetRegions
-// 获取支持的地域列表
+// 获取可以提供KMS服务的地域列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

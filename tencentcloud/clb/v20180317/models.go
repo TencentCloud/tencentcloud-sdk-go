@@ -3279,13 +3279,13 @@ func (r *DescribeRewriteResponse) FromJsonString(s string) error {
 type DescribeTargetGroupInstancesRequest struct {
 	*tchttp.BaseRequest
 
-	// 过滤条件，当前仅支持TargetGroupId，BindIP，InstanceId过滤
+	// 过滤条件，当前仅支持TargetGroupId，BindIP，InstanceId过滤。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 显示数量限制，默认20
+	// 显示数量限制，默认20。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 显示的偏移量，默认为0
+	// 显示的偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
@@ -3314,13 +3314,13 @@ type DescribeTargetGroupInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 本次查询的结果数量
+		// 本次查询的结果数量。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 绑定的服务器信息
+		// 绑定的服务器信息。
 		TargetGroupInstanceSet []*TargetGroupBackend `json:"TargetGroupInstanceSet,omitempty" name:"TargetGroupInstanceSet"`
 
-		// 实际统计数量，不受Limit，Offset，CAM的影响
+		// 实际统计数量，不受Limit、Offset、CAM的影响。
 		RealCount *uint64 `json:"RealCount,omitempty" name:"RealCount"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

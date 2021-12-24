@@ -179,6 +179,46 @@ func (c *Client) CreateSignUrls(request *CreateSignUrlsRequest) (response *Creat
     return
 }
 
+func NewDescribeFlowDetailInfoRequest() (request *DescribeFlowDetailInfoRequest) {
+    request = &DescribeFlowDetailInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("essbasic", APIVersion, "DescribeFlowDetailInfo")
+    
+    
+    return
+}
+
+func NewDescribeFlowDetailInfoResponse() (response *DescribeFlowDetailInfoResponse) {
+    response = &DescribeFlowDetailInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeFlowDetailInfo
+// 此接口（DescribeFlowDetailInfo）用于查询合同(流程)的详细信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeFlowDetailInfo(request *DescribeFlowDetailInfoRequest) (response *DescribeFlowDetailInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeFlowDetailInfoRequest()
+    }
+    
+    response = NewDescribeFlowDetailInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeResourceUrlsByFlowsRequest() (request *DescribeResourceUrlsByFlowsRequest) {
     request = &DescribeResourceUrlsByFlowsRequest{
         BaseRequest: &tchttp.BaseRequest{},

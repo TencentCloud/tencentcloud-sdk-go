@@ -4150,14 +4150,19 @@ type SlotInfo struct {
 	// 卡槽 Id。
 	Id *int64 `json:"Id,omitempty" name:"Id"`
 
-	// 素材类型，同素材素材，可取值有：
-	// <li> AUDIO :音频;</li>
-	// <li> VIDEO :视频;</li>
-	// <li> IMAGE :图片。</li>
+	// 卡槽类型，可取值有：
+	// <li> AUDIO：音频卡槽，可替换素材类型为 AUDIO 的音频素材;</li>
+	// <li> VIDEO：视频卡槽，可替换素材类型为 VIDEO 的视频素材;</li>
+	// <li> IMAGE：图片卡槽，可替换素材类型为 IMAGE 的图片素材;</li>
+	// <li> TEXT：文本卡槽，可替换文本内容。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 默认素材 Id。
+	// 默认素材ID。当卡槽类型为 AUDIO，VIDEO，或 IMAGE 中的一种时有效。
 	DefaultMaterialId *string `json:"DefaultMaterialId,omitempty" name:"DefaultMaterialId"`
+
+	// 默认文本卡槽信息。当卡槽类型为 TEXT 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultTextSlotInfo *TextSlotInfo `json:"DefaultTextSlotInfo,omitempty" name:"DefaultTextSlotInfo"`
 
 	// 素材时长，单位秒。
 	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
@@ -4407,6 +4412,12 @@ type TeamMemberInfo struct {
 type TextReplacementInfo struct {
 
 	// 替换的文本信息。
+	Text *string `json:"Text,omitempty" name:"Text"`
+}
+
+type TextSlotInfo struct {
+
+	// 文本内容。
 	Text *string `json:"Text,omitempty" name:"Text"`
 }
 

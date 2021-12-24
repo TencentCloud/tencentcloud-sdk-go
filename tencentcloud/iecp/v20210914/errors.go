@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package v20180711
+package v20210914
 
 const (
 	// 此产品的特有错误码
@@ -26,50 +26,41 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
-	// 登录态过期。
-	FAILEDOPERATION_LOGINFAILED = "FailedOperation.LoginFailed"
-
-	// 欠费不可操作。
-	FAILEDOPERATION_USERFEENEGATIVE = "FailedOperation.UserFeeNegative"
-
 	// 内部错误。
 	INTERNALERROR = "InternalError"
+
+	// 数据库异常。
+	INTERNALERROR_DBERROR = "InternalError.DBError"
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
-	// 回调地址不正确
-	INVALIDPARAMETER_CALLBACKADDRESS = "InvalidParameter.CallbackAddress"
+	// 参数取值错误。
+	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
-	// 日期无效。
-	INVALIDPARAMETER_DATEINVALID = "InvalidParameter.DateInvalid"
+	// 名字冲突。
+	INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
 
-	// 标签不正确
-	INVALIDPARAMETER_TAGKEY = "InvalidParameter.TagKey"
+	// 超过配额限制。
+	LIMITEXCEEDED = "LimitExceeded"
 
-	// 查询时间范围错误。
-	INVALIDPARAMETER_TIMERANGEERROR = "InvalidParameter.TimeRangeError"
-
-	// 创建应用数已达上限。
-	LIMITEXCEEDED_APPLICATION = "LimitExceeded.Application"
-
-	// 缺少参数。
-	MISSINGPARAMETER_ = "MissingParameter."
+	// 缺少参数错误。
+	MISSINGPARAMETER = "MissingParameter"
 
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
+
+	// 请求的次数超过了频率限制。
+	REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+
+	// 资源被占用。
+	RESOURCEINUSE = "ResourceInUse"
 
 	// 资源不足。
 	RESOURCEINSUFFICIENT = "ResourceInsufficient"
 
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
-
-	// 应用ID不正确
-	RESOURCENOTFOUND_BIZIDISNOTFOUND = "ResourceNotFound.BizidIsNotFound"
-
-	// 任务ID不正确
-	RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
 
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"
@@ -79,12 +70,6 @@ const (
 
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-
-	// 创建应用不被授权。
-	UNAUTHORIZEDOPERATION_CREATEAPPDENIED = "UnauthorizedOperation.CreateAppDenied"
-
-	// 该用户未进行实名认证。
-	UNAUTHORIZEDOPERATION_UNREALNAMEAUTH = "UnauthorizedOperation.UnRealNameAuth"
 
 	// 未知参数错误。
 	UNKNOWNPARAMETER = "UnknownParameter"
