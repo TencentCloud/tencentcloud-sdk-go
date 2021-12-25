@@ -6,8 +6,8 @@ type CredentialIface interface {
 	GetSecretId() string
 	GetToken() string
 	GetSecretKey() string
-	needRefresh() bool
-	refresh()
+	// needRefresh() bool
+	// refresh()
 }
 
 type Credential struct {
