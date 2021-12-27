@@ -1,3 +1,43 @@
+# Release v1.0.320
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 59 次发布
+
+发布时间：2021-12-27 08:08:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GeneralHandwritingOCR](https://cloud.tencent.com/document/api/866/36212)
+
+	* 新增入参：EnableDetectText
+
+
+
+
+## 互动白板(tiw) 版本：2019-09-19
+
+### 第 24 次发布
+
+发布时间：2021-12-27 08:11:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSnapshotTask](https://cloud.tencent.com/document/api/1137/59004)
+
+	* 新增入参：SnapshotMode
+
+
+
+
 # Release v1.0.319
 
 ## 访问管理(cam) 版本：2019-01-16

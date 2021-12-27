@@ -13,7 +13,7 @@
 | api | [云 API](https://cloud.tencent.com/document/product/546) | 2021-04-25 10:09:57 |
 | apigateway | [API网关](https://cloud.tencent.com/document/product/628) | 2021-12-08 08:05:34 |
 | apm | [应用性能观测](https://cloud.tencent.com/document/product/1463) | 2021-12-02 08:02:32 |
-| as | [弹性伸缩](https://cloud.tencent.com/document/product/377) | 2021-12-14 08:05:13 |
+| as | [弹性伸缩](https://cloud.tencent.com/document/product/377) | 2021-12-27 08:00:45 |
 | asr | [语音识别](https://cloud.tencent.com/document/product/1093) | 2021-12-22 08:06:39 |
 | asw | [应用与服务编排工作流](https://cloud.tencent.com/document/product/1272) | 2021-11-29 08:03:58 |
 | ba | [网站备案](https://cloud.tencent.com/document/product/243) | 2021-11-10 08:02:33 |
@@ -117,7 +117,7 @@
 | nlp | [自然语言处理](https://cloud.tencent.com/document/product/271) | 2021-12-21 16:54:01 |
 | npp | [号码保护](https://cloud.tencent.com/document/product) | 2020-04-22 08:00:22 |
 | oceanus | [流计算 Oceanus](https://cloud.tencent.com/document/product/849) | 2021-12-21 08:08:44 |
-| ocr | [文字识别](https://cloud.tencent.com/document/product/866) | 2021-12-16 08:12:30 |
+| ocr | [文字识别](https://cloud.tencent.com/document/product/866) | 2021-12-27 08:08:41 |
 | organization | [企业组织](https://cloud.tencent.com/document/product/850) | 2021-11-10 08:09:46 |
 | partners | [渠道合作伙伴](https://cloud.tencent.com/document/product/563) | 2021-11-18 08:11:02 |
 | pds | [私域安全](https://cloud.tencent.com/document/product/1473) | 2021-11-10 08:09:50 |
@@ -157,7 +157,7 @@
 | tdid | [分布式身份](https://cloud.tencent.com/document/product/1439) | 2021-11-10 08:11:24 |
 | tdmq | [分布式消息队列](https://cloud.tencent.com/document/product/1179) | 2021-12-21 08:11:07 |
 | tem | [弹性微服务](https://cloud.tencent.com/document/product/1371) | 2021-12-23 08:16:03 |
-| thpc | [高性能计算平台](https://cloud.tencent.com/document/product/1527) | 2021-12-22 08:17:26 |
+| thpc | [高性能计算平台](https://cloud.tencent.com/document/product/1527) | 2021-12-27 08:11:18 |
 | tia | [智能钛机器学习](https://cloud.tencent.com/document/product/851) | 2021-10-21 11:12:52 |
 | tic | [腾讯云IaC平台](https://cloud.tencent.com/document/product/1213) | 2021-11-10 08:11:35 |
 | ticm | [智能鉴黄](https://cloud.tencent.com/document/product/864) | 2021-01-07 08:08:15 |
@@ -165,7 +165,7 @@
 | tiems | [智能钛弹性模型服务](https://cloud.tencent.com/document/product/1120) | 2021-11-10 08:11:38 |
 | tiia | [图像分析](https://cloud.tencent.com/document/product/865) | 2021-12-22 08:17:35 |
 | tione | [智能钛机器学习平台](https://cloud.tencent.com/document/product/851) | 2021-11-10 08:11:45 |
-| tiw | [互动白板](https://cloud.tencent.com/document/product/1137) | 2021-12-15 08:14:01 |
+| tiw | [互动白板](https://cloud.tencent.com/document/product/1137) | 2021-12-27 08:11:32 |
 | tke | [容器服务](https://cloud.tencent.com/document/product/457) | 2021-12-24 08:16:08 |
 | tkgdq | [腾讯知识图谱数据查询](https://cloud.tencent.com/document/product) | 2020-03-10 00:51:44 |
 | tms | [文本内容安全](https://cloud.tencent.com/document/product/1124) | 2021-12-24 08:16:25 |

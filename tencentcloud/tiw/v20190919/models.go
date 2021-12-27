@@ -45,7 +45,7 @@ type CreateSnapshotTaskRequest struct {
 	// 白板相关参数
 	Whiteboard *SnapshotWhiteboard `json:"Whiteboard,omitempty" name:"Whiteboard"`
 
-	// 白板房间SdkAppId
+	// 白板房间 `SdkAppId`
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
 	// 白板房间号
@@ -54,8 +54,17 @@ type CreateSnapshotTaskRequest struct {
 	// 白板板书生成结果通知回调地址
 	CallbackURL *string `json:"CallbackURL,omitempty" name:"CallbackURL"`
 
-	// 白板板书文件COS存储参数， 不填默认存储在公共存储桶，公共存储桶的数据仅保存3天
+	// 白板板书文件 `COS` 存储参数， 不填默认存储在公共存储桶，公共存储桶的数据仅保存3天
 	COS *SnapshotCOS `json:"COS,omitempty" name:"COS"`
+
+	// 白板板书生成模式，默认为 `AllMarks`。取值说明如下：
+	// 
+	// `AllMarks` - 全量模式，即对于客户端每一次调用 `addSnapshotMark` 接口打上的白板板书生成标志全部都会生成对应的白板板书图片。
+	// 
+	// `LatestMarksOnly` - 单页去重模式，即对于客户端在同一页白板上多次调用 `addSnapshotMark` 打上的白板板书生成标志仅保留最新一次标志来生成对应白板页的白板板书图片。
+	// 
+	// （**注意：`LatestMarksOnly` 模式只有客户端使用v2.6.8及以上版本的白板SDK调用 `addSnapshotMark` 时才生效，否则即使在调用本API是指定了 `LatestMarksOnly` 模式，服务后台会使用默认的 `AllMarks` 模式生成白板板书**）
+	SnapshotMode *string `json:"SnapshotMode,omitempty" name:"SnapshotMode"`
 }
 
 func (r *CreateSnapshotTaskRequest) ToJsonString() string {
@@ -75,6 +84,7 @@ func (r *CreateSnapshotTaskRequest) FromJsonString(s string) error {
 	delete(f, "RoomId")
 	delete(f, "CallbackURL")
 	delete(f, "COS")
+	delete(f, "SnapshotMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSnapshotTaskRequest has unknown keys!", "")
 	}
