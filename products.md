@@ -118,7 +118,7 @@
 | npp | [号码保护](https://cloud.tencent.com/document/product) | 2020-04-22 08:00:22 |
 | oceanus | [流计算 Oceanus](https://cloud.tencent.com/document/product/849) | 2021-12-21 08:08:44 |
 | ocr | [文字识别](https://cloud.tencent.com/document/product/866) | 2021-12-27 08:08:41 |
-| organization | [企业组织](https://cloud.tencent.com/document/product/850) | 2021-11-10 08:09:46 |
+| organization | [企业组织](https://cloud.tencent.com/document/product/850) | 2021-12-28 08:09:51 |
 | partners | [渠道合作伙伴](https://cloud.tencent.com/document/product/563) | 2021-11-18 08:11:02 |
 | pds | [私域安全](https://cloud.tencent.com/document/product/1473) | 2021-11-10 08:09:50 |
 | postgres | [云数据库 PostgreSQL](https://cloud.tencent.com/document/product/409) | 2021-12-24 08:13:26 |

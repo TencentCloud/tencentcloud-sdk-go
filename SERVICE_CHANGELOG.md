@@ -1,40 +1,26 @@
 # 本版本更新包含以下内容：
 
-## 文字识别(ocr) 版本：2018-11-19
+## 企业组织(organization) 版本：2021-03-31
 
-### 第 59 次发布
+### 第 3 次发布
 
-发布时间：2021-12-27 08:08:41
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [GeneralHandwritingOCR](https://cloud.tencent.com/document/api/866/36212)
-
-	* 新增入参：EnableDetectText
-
-
-
-
-## 互动白板(tiw) 版本：2019-09-19
-
-### 第 24 次发布
-
-发布时间：2021-12-27 08:11:32
+发布时间：2021-12-28 08:09:51
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [CreateSnapshotTask](https://cloud.tencent.com/document/api/1137/59004)
+* [DescribeOrganization](https://cloud.tencent.com/document/api/850/67059)
 
-	* 新增入参：SnapshotMode
+新增数据结构：
 
+* [OrgPermission](https://cloud.tencent.com/document/api/850/67060#OrgPermission)
+
+
+
+## 企业组织(organization) 版本：2018-12-25
 
 
 
@@ -44248,6 +44234,22 @@
 
 
 ## 企业组织(organization) 版本：2021-03-31
+
+### 第 3 次发布
+
+发布时间：2021-12-28 08:09:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeOrganization](https://cloud.tencent.com/document/api/850/67059)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[OrgPermission](https://cloud.tencent.com/document/api/850/67060#OrgPermission)](https://cloud.tencent.com/document/api/850/67060#[OrgPermission](https://cloud.tencent.com/document/api/850/67060#OrgPermission))
 
 ### 第 2 次发布
 

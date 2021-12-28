@@ -1,3 +1,29 @@
+# Release v1.0.321
+
+## 企业组织(organization) 版本：2021-03-31
+
+### 第 3 次发布
+
+发布时间：2021-12-28 08:09:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeOrganization](https://cloud.tencent.com/document/api/850/67059)
+
+新增数据结构：
+
+* [OrgPermission](https://cloud.tencent.com/document/api/850/67060#OrgPermission)
+
+
+
+## 企业组织(organization) 版本：2018-12-25
+
+
+
 # Release v1.0.320
 
 ## 文字识别(ocr) 版本：2018-11-19
