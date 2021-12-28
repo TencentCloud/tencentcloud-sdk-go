@@ -22,8 +22,7 @@ var (
 	errOpenState = errors.New("circuit breaker is open")
 )
 
-// counter use atomic operations to ensure consistency
-// Atomic operations perform better than mutex
+// counter is not thread-safe. need be protected by a lock.
 type counter struct {
 	failures             int
 	all                  int

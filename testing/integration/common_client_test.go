@@ -2,14 +2,13 @@ package integration
 
 import (
 	"fmt"
-	"io/ioutil"
-	"testing"
-
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 	tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
+	"io/ioutil"
+	"testing"
 )
 
 func getCredential() common.CredentialIface {
