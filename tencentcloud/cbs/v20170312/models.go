@@ -28,6 +28,12 @@ type ApplySnapshotRequest struct {
 
 	// 快照原云硬盘ID，可通过[DescribeDisks](/document/product/362/16315)接口查询。
 	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
+
+	// 回滚前是否执行自动关机
+	AutoStopInstance *bool `json:"AutoStopInstance,omitempty" name:"AutoStopInstance"`
+
+	// 回滚完成后是否自动开机
+	AutoStartInstance *bool `json:"AutoStartInstance,omitempty" name:"AutoStartInstance"`
 }
 
 func (r *ApplySnapshotRequest) ToJsonString() string {
@@ -44,6 +50,8 @@ func (r *ApplySnapshotRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SnapshotId")
 	delete(f, "DiskId")
+	delete(f, "AutoStopInstance")
+	delete(f, "AutoStartInstance")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplySnapshotRequest has unknown keys!", "")
 	}
@@ -138,6 +146,18 @@ func (r *AttachDisksResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *AttachDisksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type AutoMountConfiguration struct {
+
+	// 要挂载到的实例ID。
+	InstanceId []*string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 子机内的挂载点。
+	MountPoint []*string `json:"MountPoint,omitempty" name:"MountPoint"`
+
+	// 文件系统类型，支持的有 ext4、xfs。
+	FileSystemType *string `json:"FileSystemType,omitempty" name:"FileSystemType"`
 }
 
 type AutoSnapshotPolicy struct {
@@ -378,6 +398,9 @@ type CreateDisksRequest struct {
 
 	// 销毁云盘时删除关联的非永久保留快照。0 表示非永久快照不随云盘销毁而销毁，1表示非永久快照随云盘销毁而销毁，默认取0。快照是否永久保留可以通过DescribeSnapshots接口返回的快照详情的IsPermanent字段来判断，true表示永久快照，false表示非永久快照。
 	DeleteSnapshot *int64 `json:"DeleteSnapshot,omitempty" name:"DeleteSnapshot"`
+
+	// 创建云盘时指定自动挂载并初始化该数据盘。
+	AutoMountConfiguration *AutoMountConfiguration `json:"AutoMountConfiguration,omitempty" name:"AutoMountConfiguration"`
 }
 
 func (r *CreateDisksRequest) ToJsonString() string {
@@ -406,6 +429,7 @@ func (r *CreateDisksRequest) FromJsonString(s string) error {
 	delete(f, "Encrypt")
 	delete(f, "DiskChargePrepaid")
 	delete(f, "DeleteSnapshot")
+	delete(f, "AutoMountConfiguration")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDisksRequest has unknown keys!", "")
 	}

@@ -20,6 +20,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 权限组被绑定。
+	FAILEDOPERATION_ACCESSGROUPBOUND = "FailedOperation.AccessGroupBound"
+
 	// 文件系统非空。
 	FAILEDOPERATION_FILESYSTEMNOTEMPTY = "FailedOperation.FileSystemNotEmpty"
 

@@ -292,6 +292,47 @@ func (c *Client) CreateConfig(request *CreateConfigRequest) (response *CreateCon
     return
 }
 
+func NewCreateConsumerRequest() (request *CreateConsumerRequest) {
+    request = &CreateConsumerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cls", APIVersion, "CreateConsumer")
+    
+    
+    return
+}
+
+func NewCreateConsumerResponse() (response *CreateConsumerResponse) {
+    response = &CreateConsumerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateConsumer
+// 本接口用于创建投递任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) CreateConsumer(request *CreateConsumerRequest) (response *CreateConsumerResponse, err error) {
+    if request == nil {
+        request = NewCreateConsumerRequest()
+    }
+    
+    response = NewCreateConsumerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateExportRequest() (request *CreateExportRequest) {
     request = &CreateExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -791,6 +832,46 @@ func (c *Client) DeleteConfigFromMachineGroup(request *DeleteConfigFromMachineGr
     }
     
     response = NewDeleteConfigFromMachineGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteConsumerRequest() (request *DeleteConsumerRequest) {
+    request = &DeleteConsumerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cls", APIVersion, "DeleteConsumer")
+    
+    
+    return
+}
+
+func NewDeleteConsumerResponse() (response *DeleteConsumerResponse) {
+    response = &DeleteConsumerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteConsumer
+// 本接口用于删除投递配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DeleteConsumer(request *DeleteConsumerRequest) (response *DeleteConsumerResponse, err error) {
+    if request == nil {
+        request = NewDeleteConsumerRequest()
+    }
+    
+    response = NewDeleteConsumerResponse()
     err = c.Send(request, response)
     return
 }
@@ -1349,6 +1430,46 @@ func (c *Client) DescribeConfigs(request *DescribeConfigsRequest) (response *Des
     }
     
     response = NewDescribeConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConsumerRequest() (request *DescribeConsumerRequest) {
+    request = &DescribeConsumerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeConsumer")
+    
+    
+    return
+}
+
+func NewDescribeConsumerResponse() (response *DescribeConsumerResponse) {
+    response = &DescribeConsumerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeConsumer
+// 本接口用于获取投递配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DescribeConsumer(request *DescribeConsumerRequest) (response *DescribeConsumerResponse, err error) {
+    if request == nil {
+        request = NewDescribeConsumerRequest()
+    }
+    
+    response = NewDescribeConsumerResponse()
     err = c.Send(request, response)
     return
 }
@@ -2035,6 +2156,46 @@ func (c *Client) ModifyConfig(request *ModifyConfigRequest) (response *ModifyCon
     }
     
     response = NewModifyConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyConsumerRequest() (request *ModifyConsumerRequest) {
+    request = &ModifyConsumerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cls", APIVersion, "ModifyConsumer")
+    
+    
+    return
+}
+
+func NewModifyConsumerResponse() (response *ModifyConsumerResponse) {
+    response = &ModifyConsumerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyConsumer
+// 本接口用于修改投递任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) ModifyConsumer(request *ModifyConsumerRequest) (response *ModifyConsumerResponse, err error) {
+    if request == nil {
+        request = NewModifyConsumerRequest()
+    }
+    
+    response = NewModifyConsumerResponse()
     err = c.Send(request, response)
     return
 }

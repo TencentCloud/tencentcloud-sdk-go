@@ -2011,7 +2011,7 @@ func (r *CreateClusterCheckTaskResponse) FromJsonString(s string) error {
 type CreateComplianceTaskRequest struct {
 	*tchttp.BaseRequest
 
-	// 指定要扫描的资产类型列表。若不填，对所有资产触发扫描。
+	// 指定要扫描的资产类型列表。
 	// ASSET_CONTAINER, 容器
 	// ASSET_IMAGE, 镜像
 	// ASSET_HOST, 主机
@@ -6740,7 +6740,7 @@ func (r *DescribeComplianceAssetListResponse) FromJsonString(s string) error {
 type DescribeComplianceAssetPolicyItemListRequest struct {
 	*tchttp.BaseRequest
 
-	// 资产的ID。
+	// 客户资产的ID。
 	CustomerAssetId *uint64 `json:"CustomerAssetId,omitempty" name:"CustomerAssetId"`
 
 	// 起始偏移量，默认为0。
@@ -6805,9 +6805,7 @@ func (r *DescribeComplianceAssetPolicyItemListResponse) FromJsonString(s string)
 type DescribeCompliancePeriodTaskListRequest struct {
 	*tchttp.BaseRequest
 
-	// 资产的类型，传入时，只查询此类型资产的定时任务；不传，则返回所有定时任务。
-	// 
-	// 取值为：
+	// 资产的类型，取值为：
 	// ASSET_CONTAINER, 容器
 	// ASSET_IMAGE, 镜像
 	// ASSET_HOST, 主机
@@ -6987,6 +6985,10 @@ type DescribeComplianceScanFailedAssetListRequest struct {
 	*tchttp.BaseRequest
 
 	// 资产类型列表。
+	// ASSET_CONTAINER, 容器
+	// ASSET_IMAGE, 镜像
+	// ASSET_HOST, 主机
+	// ASSET_K8S, K8S资产
 	AssetTypeSet []*string `json:"AssetTypeSet,omitempty" name:"AssetTypeSet"`
 
 	// 起始偏移量，默认为0。
@@ -9446,6 +9448,14 @@ type DescribeVirusDetailResponse struct {
 	// CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		SubStatus *string `json:"SubStatus,omitempty" name:"SubStatus"`
+
+		// 内网ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+
+		// 外网ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ClientIP *string `json:"ClientIP,omitempty" name:"ClientIP"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -12266,6 +12276,14 @@ type RunTimeEventBaseInfo struct {
 
 	// 最近生成时间
 	LatestFoundTime *string `json:"LatestFoundTime,omitempty" name:"LatestFoundTime"`
+
+	// 内网ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+
+	// 外网ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientIP *string `json:"ClientIP,omitempty" name:"ClientIP"`
 }
 
 type RunTimeFilters struct {

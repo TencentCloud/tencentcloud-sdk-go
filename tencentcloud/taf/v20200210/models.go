@@ -74,6 +74,15 @@ func (r *DetectFraudKOLResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Device struct {
+
+	// 业务入参id
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 业务入参类型
+	DeviceType *int64 `json:"DeviceType,omitempty" name:"DeviceType"`
+}
+
 type EnhanceTaDegreeRequest struct {
 	*tchttp.BaseRequest
 
@@ -279,6 +288,9 @@ type InputRecognizeTargetAudience struct {
 
 	// 用户是否授权,1为授权，0为未授权
 	IsAuthorized *uint64 `json:"IsAuthorized,omitempty" name:"IsAuthorized"`
+
+	// 设备信息
+	DeviceList []*Device `json:"DeviceList,omitempty" name:"DeviceList"`
 }
 
 type InputSendTrafficSecuritySmsMsg struct {

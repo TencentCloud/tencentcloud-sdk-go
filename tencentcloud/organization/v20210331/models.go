@@ -143,3 +143,106 @@ func (r *CreateOrganizationMemberResponse) ToJsonString() string {
 func (r *CreateOrganizationMemberResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
+type DescribeOrganizationRequest struct {
+	*tchttp.BaseRequest
+
+	// 国际站：en，国内站：zh
+	Lang *string `json:"Lang,omitempty" name:"Lang"`
+}
+
+func (r *DescribeOrganizationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrganizationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Lang")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrganizationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOrganizationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 企业组织ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OrgId *int64 `json:"OrgId,omitempty" name:"OrgId"`
+
+		// 创建者UIN
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		HostUin *int64 `json:"HostUin,omitempty" name:"HostUin"`
+
+		// 创建者昵称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		NickName *string `json:"NickName,omitempty" name:"NickName"`
+
+		// 企业组织类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OrgType *int64 `json:"OrgType,omitempty" name:"OrgType"`
+
+		// 组织管理员：true，组织成员：false
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IsManager *bool `json:"IsManager,omitempty" name:"IsManager"`
+
+		// 策略类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OrgPolicyType *string `json:"OrgPolicyType,omitempty" name:"OrgPolicyType"`
+
+		// 策略名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OrgPolicyName *string `json:"OrgPolicyName,omitempty" name:"OrgPolicyName"`
+
+		// 策略权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OrgPermission []*OrgPermission `json:"OrgPermission,omitempty" name:"OrgPermission"`
+
+		// 根节点ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RootNodeId *int64 `json:"RootNodeId,omitempty" name:"RootNodeId"`
+
+		// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+		// 成员加入时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		JoinTime *string `json:"JoinTime,omitempty" name:"JoinTime"`
+
+		// 是否允许退出。允许：Allow，不允许：Denied。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IsAllowQuit *string `json:"IsAllowQuit,omitempty" name:"IsAllowQuit"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeOrganizationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrganizationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type OrgPermission struct {
+
+	// 权限Id
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 权限名
+	Name *string `json:"Name,omitempty" name:"Name"`
+}

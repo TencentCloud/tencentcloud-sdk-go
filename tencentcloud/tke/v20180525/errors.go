@@ -245,6 +245,9 @@ const (
 	// 下一跳地址已关联CIDR。
 	INVALIDPARAMETER_GATEWAYALREADYASSOCIATEDCIDR = "InvalidParameter.GatewayAlreadyAssociatedCidr"
 
+	// 无效的私有CIDR网段。
+	INVALIDPARAMETER_INVALIDPRIVATENETWORKCIDR = "InvalidParameter.InvalidPrivateNetworkCIDR"
+
 	// 参数错误。
 	INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 

@@ -1269,6 +1269,12 @@ type RunJobDescription struct {
 
 	// 当前作业的某个版本
 	JobConfigVersion *uint64 `json:"JobConfigVersion,omitempty" name:"JobConfigVersion"`
+
+	// Savepoint路径
+	SavepointPath *string `json:"SavepointPath,omitempty" name:"SavepointPath"`
+
+	// Savepoint的Id
+	SavepointId *string `json:"SavepointId,omitempty" name:"SavepointId"`
 }
 
 type RunJobsRequest struct {

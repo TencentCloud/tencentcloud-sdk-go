@@ -48,6 +48,10 @@ type DetailResults struct {
 	// 该字段**仅当Label为Custom：自定义关键词时该参数有效**,用于返回自定义库的名称,以方便自定义库管理和配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LibName *string `json:"LibName,omitempty" name:"LibName"`
+
+	// 该字段用于返回当前标签（Label）下的二级标签。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubLabel *string `json:"SubLabel,omitempty" name:"SubLabel"`
 }
 
 type Device struct {
@@ -88,7 +92,7 @@ type RiskDetails struct {
 type TextModerationRequest struct {
 	*tchttp.BaseRequest
 
-	// 文本内容Base64编码，限制原文长度不能超过10000个unicode字符
+	// 该字段表示待检测对象的文本内容，文本需要按utf-8格式编码，长度不能超过10000（按unicode编码计算），并进行 Base64加密
 	Content *string `json:"Content,omitempty" name:"Content"`
 
 	// 该字段表示策略的具体编号，用于接口调度，在内容安全控制台中可配置。若不传入Biztype参数（留空），则代表采用默认的识别策略；传入则会在审核时根据业务场景采取不同的审核策略。<br>备注：Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype
@@ -162,6 +166,10 @@ type TextModerationResponse struct {
 		// 该字段用于返回检测对象对应请求参数中的DataId，与输入的DataId字段中的内容对应
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		DataId *string `json:"DataId,omitempty" name:"DataId"`
+
+		// 该字段用于返回当前标签（Label）下的二级标签。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SubLabel *string `json:"SubLabel,omitempty" name:"SubLabel"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

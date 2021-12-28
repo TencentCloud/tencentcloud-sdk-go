@@ -1038,7 +1038,7 @@ type ScanVoiceRequest struct {
 	// 应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
-	// 语音检测场景，参数值目前要求为 default。 预留场景设置： 谩骂、色情、涉政、广告、暴恐、违禁等场景，<a href="#Label_Value">具体取值见上述 Label 说明。</a>
+	// 语音检测场景，参数值目前要求为 default。 预留场景设置： 谩骂、色情、广告、违禁等场景，<a href="#Label_Value">具体取值见上述 Label 说明。</a>
 	Scenes []*string `json:"Scenes,omitempty" name:"Scenes"`
 
 	// 是否为直播流。值为 false 时表示普通语音文件检测；为 true 时表示语音流检测。
@@ -1051,6 +1051,9 @@ type ScanVoiceRequest struct {
 
 	// 异步检测结果回调地址，具体见上述<a href="#Callback_Declare">回调相关说明</a>。（说明：该字段为空时，必须通过接口(查询语音检测结果)获取检测结果）。
 	Callback *string `json:"Callback,omitempty" name:"Callback"`
+
+	// 语言，目前jp代表日语
+	Lang *string `json:"Lang,omitempty" name:"Lang"`
 }
 
 func (r *ScanVoiceRequest) ToJsonString() string {
@@ -1070,6 +1073,7 @@ func (r *ScanVoiceRequest) FromJsonString(s string) error {
 	delete(f, "Live")
 	delete(f, "Tasks")
 	delete(f, "Callback")
+	delete(f, "Lang")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScanVoiceRequest has unknown keys!", "")
 	}
@@ -1146,7 +1150,7 @@ type Task struct {
 
 type VoiceFilter struct {
 
-	// 过滤类型，1：政治，2：色情，3：涉毒，4：谩骂
+	// 过滤类型，1：色情，2：涉毒，3：谩骂
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 

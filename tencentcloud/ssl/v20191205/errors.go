@@ -122,6 +122,9 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
+	// 后端服务响应错误。
+	INTERNALERROR_BACKENDRESPONSEERROR = "InternalError.BackendResponseError"
+
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 

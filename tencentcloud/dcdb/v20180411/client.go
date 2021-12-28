@@ -1102,6 +1102,42 @@ func (c *Client) DescribeDcnDetail(request *DescribeDcnDetailRequest) (response 
     return
 }
 
+func NewDescribeFileDownloadUrlRequest() (request *DescribeFileDownloadUrlRequest) {
+    request = &DescribeFileDownloadUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dcdb", APIVersion, "DescribeFileDownloadUrl")
+    
+    
+    return
+}
+
+func NewDescribeFileDownloadUrlResponse() (response *DescribeFileDownloadUrlResponse) {
+    response = &DescribeFileDownloadUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeFileDownloadUrl
+// 本接口(DescribeFileDownloadUrl)用于获取数据库指定备份或日志文件的下载连接。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_COSSIGNURL = "InternalError.CosSignUrl"
+//  INTERNALERROR_GETINSTANCEINFOFAILED = "InternalError.GetInstanceInfoFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+func (c *Client) DescribeFileDownloadUrl(request *DescribeFileDownloadUrlRequest) (response *DescribeFileDownloadUrlResponse, err error) {
+    if request == nil {
+        request = NewDescribeFileDownloadUrlRequest()
+    }
+    
+    response = NewDescribeFileDownloadUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFlowRequest() (request *DescribeFlowRequest) {
     request = &DescribeFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},

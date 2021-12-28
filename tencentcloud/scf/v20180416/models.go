@@ -158,28 +158,28 @@ type Code struct {
 	// 如果是从TempCos创建的话，需要传入TempCosObjectName
 	TempCosObjectName *string `json:"TempCosObjectName,omitempty" name:"TempCosObjectName"`
 
-	// Git地址
+	// Git地址。该功能已下线。
 	GitUrl *string `json:"GitUrl,omitempty" name:"GitUrl"`
 
-	// Git用户名
+	// Git用户名。该功能已下线。
 	GitUserName *string `json:"GitUserName,omitempty" name:"GitUserName"`
 
-	// Git密码
+	// Git密码。该功能已下线。
 	GitPassword *string `json:"GitPassword,omitempty" name:"GitPassword"`
 
-	// 加密后的Git密码，一般无需指定
+	// 加密后的Git密码，一般无需指定。该功能已下线。
 	GitPasswordSecret *string `json:"GitPasswordSecret,omitempty" name:"GitPasswordSecret"`
 
-	// Git分支
+	// Git分支。该功能已下线。
 	GitBranch *string `json:"GitBranch,omitempty" name:"GitBranch"`
 
-	// 代码在Git仓库中的路径
+	// 代码在Git仓库中的路径。该功能已下线。
 	GitDirectory *string `json:"GitDirectory,omitempty" name:"GitDirectory"`
 
-	// 指定要拉取的版本
+	// 指定要拉取的版本。该功能已下线。
 	GitCommitId *string `json:"GitCommitId,omitempty" name:"GitCommitId"`
 
-	// 加密后的Git用户名，一般无需指定
+	// 加密后的Git用户名，一般无需指定。该功能已下线。
 	GitUserNameSecret *string `json:"GitUserNameSecret,omitempty" name:"GitUserNameSecret"`
 
 	// 镜像部署时配置TCR镜像信息
@@ -679,7 +679,7 @@ type DeleteFunctionRequest struct {
 	// 函数所属命名空间
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
-	// 函数版本，如果删除版本的话传入版本号，不传入改字段删除函数下的所有版本
+	// 填写需要删除的版本号，不填默认删除函数下全部版本。
 	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
 }
 
@@ -1893,7 +1893,7 @@ type GetRequestStatusRequest struct {
 	// 函数的所在的命名空间
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
-	// 查询的开始时间，例如：2017-05-16 20:00:00，不填默认为当前时间 - 24小时
+	// 查询的开始时间，例如：2017-05-16 20:00:00，不填默认为当前时间 - 15min
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 查询的结束时间，例如：2017-05-16 20:59:59，不填默认为当前时间。EndTime 需要晚于 StartTime。
@@ -2021,11 +2021,11 @@ type ImageConfig struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EntryPoint *string `json:"EntryPoint,omitempty" name:"EntryPoint"`
 
-	// entrypoint执行命令
+	// 容器的启动命令。该参数为可选参数，如果不填写，则默认使用 Dockerfile 中的 Entrypoint。传入规范，填写可运行的指令，例如 python
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Command *string `json:"Command,omitempty" name:"Command"`
 
-	// 命令参数
+	// 容器的启动参数。该参数为可选参数，如果不填写，则默认使用 Dockerfile 中的 CMD。传入规范，以“空格”作为参数的分割标识，例如 -u app.py
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Args *string `json:"Args,omitempty" name:"Args"`
 }
@@ -3337,7 +3337,7 @@ type TerminateAsyncEventRequest struct {
 	// 命名空间
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
-	// 该参数已下线
+	// true，向指定请求[发送 SIGTERM 终止信号](https://cloud.tencent.com/document/product/583/63969#.E5.8F.91.E9.80.81.E7.BB.88.E6.AD.A2.E4.BF.A1.E5.8F.B7]， ，默认值为 false。
 	GraceShutdown *bool `json:"GraceShutdown,omitempty" name:"GraceShutdown"`
 }
 

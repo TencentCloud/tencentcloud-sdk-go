@@ -243,6 +243,40 @@ func (c *Client) CreateDDoSAI(request *CreateDDoSAIRequest) (response *CreateDDo
     return
 }
 
+func NewCreateDDoSBlackWhiteIpListRequest() (request *CreateDDoSBlackWhiteIpListRequest) {
+    request = &CreateDDoSBlackWhiteIpListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("antiddos", APIVersion, "CreateDDoSBlackWhiteIpList")
+    
+    
+    return
+}
+
+func NewCreateDDoSBlackWhiteIpListResponse() (response *CreateDDoSBlackWhiteIpListResponse) {
+    response = &CreateDDoSBlackWhiteIpListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateDDoSBlackWhiteIpList
+// 添加DDoS防护的IP网段黑白名单
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDDoSBlackWhiteIpList(request *CreateDDoSBlackWhiteIpListRequest) (response *CreateDDoSBlackWhiteIpListResponse, err error) {
+    if request == nil {
+        request = NewCreateDDoSBlackWhiteIpListRequest()
+    }
+    
+    response = NewCreateDDoSBlackWhiteIpListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDDoSGeoIPBlockConfigRequest() (request *CreateDDoSGeoIPBlockConfigRequest) {
     request = &CreateDDoSGeoIPBlockConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -614,6 +648,39 @@ func (c *Client) DeleteBlackWhiteIpList(request *DeleteBlackWhiteIpListRequest) 
     return
 }
 
+func NewDeleteDDoSBlackWhiteIpListRequest() (request *DeleteDDoSBlackWhiteIpListRequest) {
+    request = &DeleteDDoSBlackWhiteIpListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("antiddos", APIVersion, "DeleteDDoSBlackWhiteIpList")
+    
+    
+    return
+}
+
+func NewDeleteDDoSBlackWhiteIpListResponse() (response *DeleteDDoSBlackWhiteIpListResponse) {
+    response = &DeleteDDoSBlackWhiteIpListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteDDoSBlackWhiteIpList
+// 删除DDoS防护的IP网段黑白名单
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteDDoSBlackWhiteIpList(request *DeleteDDoSBlackWhiteIpListRequest) (response *DeleteDDoSBlackWhiteIpListResponse, err error) {
+    if request == nil {
+        request = NewDeleteDDoSBlackWhiteIpListRequest()
+    }
+    
+    response = NewDeleteDDoSBlackWhiteIpListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteDDoSGeoIPBlockConfigRequest() (request *DeleteDDoSGeoIPBlockConfigRequest) {
     request = &DeleteDDoSGeoIPBlockConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -939,6 +1006,54 @@ func (c *Client) DescribeCCTrend(request *DescribeCCTrendRequest) (response *Des
     }
     
     response = NewDescribeCCTrendResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDDoSBlackWhiteIpListRequest() (request *DescribeDDoSBlackWhiteIpListRequest) {
+    request = &DescribeDDoSBlackWhiteIpListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("antiddos", APIVersion, "DescribeDDoSBlackWhiteIpList")
+    
+    
+    return
+}
+
+func NewDescribeDDoSBlackWhiteIpListResponse() (response *DescribeDDoSBlackWhiteIpListResponse) {
+    response = &DescribeDDoSBlackWhiteIpListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDDoSBlackWhiteIpList
+// 获取DDoS防护的IP网段黑白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDDoSBlackWhiteIpList(request *DescribeDDoSBlackWhiteIpListRequest) (response *DescribeDDoSBlackWhiteIpListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDDoSBlackWhiteIpListRequest()
+    }
+    
+    response = NewDescribeDDoSBlackWhiteIpListResponse()
     err = c.Send(request, response)
     return
 }

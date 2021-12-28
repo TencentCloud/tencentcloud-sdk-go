@@ -104,6 +104,7 @@ import (
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iai"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ic"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ie"
+	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iecp"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iir"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ims"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ims"

@@ -4046,6 +4046,12 @@ type DeployContainerGroupRequest struct {
 
 	// tcr或者不填
 	RepoType *string `json:"RepoType,omitempty" name:"RepoType"`
+
+	// 数据卷信息
+	VolumeInfos *VolumeInfo `json:"VolumeInfos,omitempty" name:"VolumeInfos"`
+
+	// 数据卷挂载点信息
+	VolumeMountInfos *VolumeMountInfo `json:"VolumeMountInfos,omitempty" name:"VolumeMountInfos"`
 }
 
 func (r *DeployContainerGroupRequest) ToJsonString() string {
@@ -4091,6 +4097,8 @@ func (r *DeployContainerGroupRequest) FromJsonString(s string) error {
 	delete(f, "SchedulingStrategy")
 	delete(f, "IncrementalDeployment")
 	delete(f, "RepoType")
+	delete(f, "VolumeInfos")
+	delete(f, "VolumeMountInfos")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployContainerGroupRequest has unknown keys!", "")
 	}
@@ -6887,6 +6895,9 @@ type DescribeMicroservicesRequest struct {
 
 	// IdList
 	MicroserviceIdList []*string `json:"MicroserviceIdList,omitempty" name:"MicroserviceIdList"`
+
+	// 搜索的服务名列表
+	MicroserviceNameList []*string `json:"MicroserviceNameList,omitempty" name:"MicroserviceNameList"`
 }
 
 func (r *DescribeMicroservicesRequest) ToJsonString() string {
@@ -6909,6 +6920,7 @@ func (r *DescribeMicroservicesRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Status")
 	delete(f, "MicroserviceIdList")
+	delete(f, "MicroserviceNameList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMicroservicesRequest has unknown keys!", "")
 	}
@@ -14565,4 +14577,31 @@ type VmGroupSimple struct {
 	// 部署组备注
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Alias *string `json:"Alias,omitempty" name:"Alias"`
+}
+
+type VolumeInfo struct {
+
+	// 数据卷类型
+	VolumeType *string `json:"VolumeType,omitempty" name:"VolumeType"`
+
+	// 数据卷名称
+	VolumeName *string `json:"VolumeName,omitempty" name:"VolumeName"`
+
+	// 数据卷配置
+	VolumeConfig *string `json:"VolumeConfig,omitempty" name:"VolumeConfig"`
+}
+
+type VolumeMountInfo struct {
+
+	// 挂载数据卷名称
+	VolumeMountName *string `json:"VolumeMountName,omitempty" name:"VolumeMountName"`
+
+	// 挂载路径
+	VolumeMountPath *string `json:"VolumeMountPath,omitempty" name:"VolumeMountPath"`
+
+	// 挂载子路径
+	VolumeMountSubPath *string `json:"VolumeMountSubPath,omitempty" name:"VolumeMountSubPath"`
+
+	// 读写，1：读 2：读写
+	ReadOrWrite *string `json:"ReadOrWrite,omitempty" name:"ReadOrWrite"`
 }

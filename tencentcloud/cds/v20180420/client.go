@@ -210,6 +210,7 @@ func NewModifyDbauditInstancesRenewFlagResponse() (response *ModifyDbauditInstan
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETER_RESOURCEIDERROR = "InvalidParameter.ResourceIdError"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) ModifyDbauditInstancesRenewFlag(request *ModifyDbauditInstancesRenewFlagRequest) (response *ModifyDbauditInstancesRenewFlagResponse, err error) {
     if request == nil {

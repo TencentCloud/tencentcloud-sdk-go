@@ -7149,6 +7149,9 @@ type ModifyRoGroupInfoRequest struct {
 
 	// 是否重新均衡 RO 组内的 RO 实例的负载。支持值包括：1 - 重新均衡负载；0 - 不重新均衡负载。默认值为 0。注意，设置为重新均衡负载时，RO 组内 RO 实例会有一次数据库连接瞬断，请确保应用程序能重连数据库。
 	IsBalanceRoLoad *int64 `json:"IsBalanceRoLoad,omitempty" name:"IsBalanceRoLoad"`
+
+	// 废弃参数，无意义。
+	ReplicationDelayTime *int64 `json:"ReplicationDelayTime,omitempty" name:"ReplicationDelayTime"`
 }
 
 func (r *ModifyRoGroupInfoRequest) ToJsonString() string {
@@ -7167,6 +7170,7 @@ func (r *ModifyRoGroupInfoRequest) FromJsonString(s string) error {
 	delete(f, "RoGroupInfo")
 	delete(f, "RoWeightValues")
 	delete(f, "IsBalanceRoLoad")
+	delete(f, "ReplicationDelayTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRoGroupInfoRequest has unknown keys!", "")
 	}
@@ -7176,6 +7180,10 @@ func (r *ModifyRoGroupInfoRequest) FromJsonString(s string) error {
 type ModifyRoGroupInfoResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
+		// 异步任务 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -7190,56 +7198,6 @@ func (r *ModifyRoGroupInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyRoGroupInfoResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type ModifyRoReplicationDelayRequest struct {
-	*tchttp.BaseRequest
-
-	// 实例 ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-	// 延迟时间（s）。最小值1，最大值259200。
-	ReplicationDelay *int64 `json:"ReplicationDelay,omitempty" name:"ReplicationDelay"`
-}
-
-func (r *ModifyRoReplicationDelayRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ModifyRoReplicationDelayRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "InstanceId")
-	delete(f, "ReplicationDelay")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRoReplicationDelayRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type ModifyRoReplicationDelayResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *ModifyRoReplicationDelayResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ModifyRoReplicationDelayResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7781,6 +7739,10 @@ type RoGroup struct {
 	// 只读组所在的可用区。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoGroupZone *string `json:"RoGroupZone,omitempty" name:"RoGroupZone"`
+
+	// 延迟复制时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DelayReplicationTime *int64 `json:"DelayReplicationTime,omitempty" name:"DelayReplicationTime"`
 }
 
 type RoGroupAttr struct {
@@ -7799,6 +7761,9 @@ type RoGroupAttr struct {
 
 	// 权重模式。支持值包括："system" - 系统自动分配； "custom" - 用户自定义设置。注意，若设置 "custom" 模式，则必须设置 RO 实例权重配置（RoWeightValues）参数。
 	WeightMode *string `json:"WeightMode,omitempty" name:"WeightMode"`
+
+	// 延迟复制时间。
+	ReplicationDelayTime *int64 `json:"ReplicationDelayTime,omitempty" name:"ReplicationDelayTime"`
 }
 
 type RoInstanceInfo struct {
@@ -8246,49 +8211,37 @@ func (r *StartBatchRollbackResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type StartDelayReplicationRequest struct {
+type StartReplicationRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例 ID。
+	// 实例 ID。仅支持只读实例。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-	// 延迟复制类型。可选值 DEFAULT（按照延迟复制时间进行复制）、GTID（回放到指定GTID）、DUE_TIME（回放到指定时间点）。
-	DelayReplicationType *string `json:"DelayReplicationType,omitempty" name:"DelayReplicationType"`
-
-	// 指定时间点，默认为0，最大值不能超过当前时间。
-	DueTime *int64 `json:"DueTime,omitempty" name:"DueTime"`
-
-	// 指定GITD。回放到指定GTID时必传。
-	Gtid *string `json:"Gtid,omitempty" name:"Gtid"`
 }
 
-func (r *StartDelayReplicationRequest) ToJsonString() string {
+func (r *StartReplicationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
-func (r *StartDelayReplicationRequest) FromJsonString(s string) error {
+func (r *StartReplicationRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
 	delete(f, "InstanceId")
-	delete(f, "DelayReplicationType")
-	delete(f, "DueTime")
-	delete(f, "Gtid")
 	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartDelayReplicationRequest has unknown keys!", "")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartReplicationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type StartDelayReplicationResponse struct {
+type StartReplicationResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 延迟复制任务 ID。DelayReplicationType不为DEFAULT时返回，可用来查询回放任务状态。
+		// 异步任务 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
 
@@ -8297,14 +8250,14 @@ type StartDelayReplicationResponse struct {
 	} `json:"Response"`
 }
 
-func (r *StartDelayReplicationResponse) ToJsonString() string {
+func (r *StartReplicationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
-func (r *StartDelayReplicationResponse) FromJsonString(s string) error {
+func (r *StartReplicationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8354,49 +8307,53 @@ func (r *StopDBImportJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type StopDelayReplicationRequest struct {
+type StopReplicationRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例 ID。
+	// 实例 ID。仅支持只读实例。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
-func (r *StopDelayReplicationRequest) ToJsonString() string {
+func (r *StopReplicationRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
-func (r *StopDelayReplicationRequest) FromJsonString(s string) error {
+func (r *StopReplicationRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
 	delete(f, "InstanceId")
 	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopDelayReplicationRequest has unknown keys!", "")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopReplicationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type StopDelayReplicationResponse struct {
+type StopReplicationResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
+		// 异步任务 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
 }
 
-func (r *StopDelayReplicationResponse) ToJsonString() string {
+func (r *StopReplicationResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
-func (r *StopDelayReplicationResponse) FromJsonString(s string) error {
+func (r *StopReplicationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8825,6 +8782,12 @@ type UpgradeDBInstanceRequest struct {
 
 	// 延迟阈值。取值范围1~10，默认值为10。
 	MaxDelayTime *int64 `json:"MaxDelayTime,omitempty" name:"MaxDelayTime"`
+
+	// 是否跨区迁移。0-普通迁移，1-跨区迁移，默认值为0。该值为1时支持变更实例主节点可用区。
+	CrossCluster *int64 `json:"CrossCluster,omitempty" name:"CrossCluster"`
+
+	// 主节点可用区，该值仅在跨区迁移时生效。仅支持同地域下的可用区进行迁移。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 }
 
 func (r *UpgradeDBInstanceRequest) ToJsonString() string {
@@ -8853,6 +8816,8 @@ func (r *UpgradeDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "Cpu")
 	delete(f, "FastUpgrade")
 	delete(f, "MaxDelayTime")
+	delete(f, "CrossCluster")
+	delete(f, "ZoneId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeDBInstanceRequest has unknown keys!", "")
 	}

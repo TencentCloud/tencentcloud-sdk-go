@@ -564,7 +564,7 @@ func NewScanVoiceResponse() (response *ScanVoiceResponse) {
 //
 // <li>支持设置回调地址 Callback 获取检测结果，同时支持通过接口(查询语音检测结果)主动轮询获取检测结果。</li>
 //
-// <li>支持场景输入，包括：谩骂、色情、涉政等场景</li>
+// <li>支持场景输入，包括：谩骂、色情等场景</li>
 //
 // <li>支持批量提交检测任务。检测任务列表最多支持100个。</li>
 //
@@ -626,13 +626,9 @@ func NewScanVoiceResponse() (response *ScanVoiceResponse) {
 //
 // <p>porn:色情</p>
 //
-// <p>politics:涉政</p>
-//
 // <p>abuse:谩骂</p>
 //
 // <p>ad :广告</p>
-//
-// <p>terrorism:暴恐</p>
 //
 // <p>contraband :违禁</p>
 //
@@ -824,6 +820,7 @@ func NewScanVoiceResponse() (response *ScanVoiceResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CALLBACKADDRESS = "InvalidParameter.CallbackAddress"
 //  MISSINGPARAMETER_ = "MissingParameter."
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"

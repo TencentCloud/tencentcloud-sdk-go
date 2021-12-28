@@ -194,11 +194,12 @@ func NewCancelTaskResponse() (response *CancelTaskResponse) {
 }
 
 // CancelTask
-// 取消任务执行
+// 本接口（CancelTask），用于取消任务执行
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ANOTHERREQUESTPROCESSING = "FailedOperation.AnotherRequestProcessing"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_TASKALREADYFINISHED = "InvalidParameter.TaskAlreadyFinished"
 func (c *Client) CancelTask(request *CancelTaskRequest) (response *CancelTaskResponse, err error) {
     if request == nil {
         request = NewCancelTaskRequest()
@@ -370,6 +371,7 @@ func NewCreateTaskResponse() (response *CreateTaskResponse) {
 //  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
 //  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = "ResourceUnavailable.BalanceInsufficient"
 func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskResponse, err error) {
     if request == nil {
         request = NewCreateTaskRequest()
@@ -398,14 +400,16 @@ func NewCreateTasksResponse() (response *CreateTasksResponse) {
 }
 
 // CreateTasks
-// 批量创建任务
+// 本接口（CreateTasks），用于批量创建任务
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDFAILURETOLERANCE = "InvalidParameter.InvalidFailureTolerance"
 //  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  INVALIDPARAMETER_INVALIDSQLNUM = "InvalidParameter.InvalidSQLNum"
 //  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
+//  RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = "ResourceUnavailable.BalanceInsufficient"
 func (c *Client) CreateTasks(request *CreateTasksRequest) (response *CreateTasksResponse, err error) {
     if request == nil {
         request = NewCreateTasksRequest()
@@ -771,7 +775,7 @@ func NewDescribeTableResponse() (response *DescribeTableResponse) {
 }
 
 // DescribeTable
-// 查询单个表的详细信息。
+// 本接口（DescribeTable），用于查询单个表的详细信息。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -808,7 +812,7 @@ func NewDescribeTablesResponse() (response *DescribeTablesResponse) {
 }
 
 // DescribeTables
-// 本接口（DescribleTables）用于查询数据表列表。
+// 本接口（DescribeTables）用于查询数据表列表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -820,6 +824,41 @@ func (c *Client) DescribeTables(request *DescribeTablesRequest) (response *Descr
     }
     
     response = NewDescribeTablesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTaskResultRequest() (request *DescribeTaskResultRequest) {
+    request = &DescribeTaskResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeTaskResult")
+    
+    
+    return
+}
+
+func NewDescribeTaskResultResponse() (response *DescribeTaskResultResponse) {
+    response = &DescribeTaskResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTaskResult
+// 查询任务结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
+func (c *Client) DescribeTaskResult(request *DescribeTaskResultRequest) (response *DescribeTaskResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskResultRequest()
+    }
+    
+    response = NewDescribeTaskResultResponse()
     err = c.Send(request, response)
     return
 }

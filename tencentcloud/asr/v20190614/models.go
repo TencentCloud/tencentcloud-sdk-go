@@ -180,6 +180,9 @@ type CreateAsyncRecognitionTaskRequest struct {
 
 	// 热词id。用于调用对应的热词表，如果在调用语音识别服务时，不进行单独的热词id设置，自动生效默认热词；如果进行了单独的热词id设置，那么将生效单独设置的热词id。
 	HotwordId *string `json:"HotwordId,omitempty" name:"HotwordId"`
+
+	// 回调数据中，是否需要对应音频数据。
+	AudioData *bool `json:"AudioData,omitempty" name:"AudioData"`
 }
 
 func (r *CreateAsyncRecognitionTaskRequest) ToJsonString() string {
@@ -204,6 +207,7 @@ func (r *CreateAsyncRecognitionTaskRequest) FromJsonString(s string) error {
 	delete(f, "ConvertNumMode")
 	delete(f, "WordInfo")
 	delete(f, "HotwordId")
+	delete(f, "AudioData")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAsyncRecognitionTaskRequest has unknown keys!", "")
 	}

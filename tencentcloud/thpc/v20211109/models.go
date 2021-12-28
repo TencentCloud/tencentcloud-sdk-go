@@ -109,8 +109,41 @@ type CFSOption struct {
 	// 文件系统协议类型，默认值NFS 3.0
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
-	// 文件系统存储类型，默认值SD
+	// 文件系统存储类型，默认值SD；其中 SD 为通用标准型标准型存储， HP为通用性能型存储， TB为turbo标准型， TP 为turbo性能型。
 	StorageType *string `json:"StorageType,omitempty" name:"StorageType"`
+}
+
+type ClusterOverview struct {
+
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群状态。取值范围：<br><li>PENDING：创建中<br><li>INITING：初始化中<br><li>INIT_FAILED：初始化失败<br><li>RUNNING：运行中<br><li>TERMINATING：销毁中
+	ClusterStatus *string `json:"ClusterStatus,omitempty" name:"ClusterStatus"`
+
+	// 集群名称。
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 集群位置信息。
+	Placement *Placement `json:"Placement,omitempty" name:"Placement"`
+
+	// 集群创建时间。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 集群调度器。
+	SchedulerType *string `json:"SchedulerType,omitempty" name:"SchedulerType"`
+
+	// 计算节点数量。
+	ComputeNodeCount *int64 `json:"ComputeNodeCount,omitempty" name:"ComputeNodeCount"`
+
+	// 计算节点概览。
+	ComputeNodeSet []*ComputeNodeOverview `json:"ComputeNodeSet,omitempty" name:"ComputeNodeSet"`
+
+	// 管控节点数量。
+	ManagerNodeCount *int64 `json:"ManagerNodeCount,omitempty" name:"ManagerNodeCount"`
+
+	// 管控节点概览。
+	ManagerNodeSet []*ManagerNodeOverview `json:"ManagerNodeSet,omitempty" name:"ManagerNodeSet"`
 }
 
 type ComputeNode struct {
@@ -142,6 +175,13 @@ type ComputeNode struct {
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 }
 
+type ComputeNodeOverview struct {
+
+	// 计算节点ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeId *string `json:"NodeId,omitempty" name:"NodeId"`
+}
+
 type CreateClusterRequest struct {
 	*tchttp.BaseRequest
 
@@ -160,7 +200,7 @@ type CreateClusterRequest struct {
 	// 指定计算节点的数量。默认取值：0。
 	ComputeNodeCount *int64 `json:"ComputeNodeCount,omitempty" name:"ComputeNodeCount"`
 
-	// 调度器类型。目前仅支持SGE调度器。
+	// 调度器类型。<br><li>SGE：SGE调度器。
 	SchedulerType *string `json:"SchedulerType,omitempty" name:"SchedulerType"`
 
 	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜像和自定义镜像。
@@ -185,7 +225,7 @@ type CreateClusterRequest struct {
 	// false（默认）：发送正常请求，通过检查后直接创建实例
 	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
 
-	// 域名字服务类型。目前仅支持NIS域名字服务。
+	// 域名字服务类型。<br><li>NIS：NIS域名字服务。
 	AccountType *string `json:"AccountType,omitempty" name:"AccountType"`
 
 	// 集群显示名称。
@@ -233,6 +273,7 @@ type CreateClusterResponse struct {
 	Response *struct {
 
 		// 集群ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -303,6 +344,66 @@ func (r *DeleteClusterResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteClusterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClustersRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID列表。通过该参数可以指定需要查询信息的集群列表。<br>如果您不指定该参数，则返回Limit数量以内的集群信息。
+	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeClustersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClustersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterIds")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClustersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClustersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 集群概览信息列表。
+		ClusterSet []*ClusterOverview `json:"ClusterSet,omitempty" name:"ClusterSet"`
+
+		// 集群数量。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeClustersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClustersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -379,6 +480,13 @@ type ManagerNode struct {
 	// 购买多个节点，如果不指定模式串，则在节点显示名称添加后缀`1、2...n`，其中`n`表示购买节点的数量，例如`server_`，购买2个时，节点显示名称分别为`server_1`，`server_2`。</li><li>
 	// 最多支持60个字符（包含模式串）。
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+}
+
+type ManagerNodeOverview struct {
+
+	// 管控节点ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeId *string `json:"NodeId,omitempty" name:"NodeId"`
 }
 
 type Placement struct {

@@ -175,6 +175,7 @@ func NewCreateInvokerResponse() (response *CreateInvokerResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDCOMMANDID = "InvalidParameterValue.InvalidCommandId"
+//  INVALIDPARAMETERVALUE_INVALIDCRONEXPRESSION = "InvalidParameterValue.InvalidCronExpression"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
 //  INVALIDPARAMETERVALUE_PARAMETERINVALIDJSONFORMAT = "InvalidParameterValue.ParameterInvalidJsonFormat"
 //  RESOURCENOTFOUND_COMMANDNOTFOUND = "ResourceNotFound.CommandNotFound"
@@ -637,6 +638,8 @@ func NewInvokeCommandResponse() (response *InvokeCommandResponse) {
 // * 不可同时指定 CVM 和 Lighthouse
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CVMERROR = "FailedOperation.CVMError"
+//  FAILEDOPERATION_LIGHTHOUSEERROR = "FailedOperation.LighthouseError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

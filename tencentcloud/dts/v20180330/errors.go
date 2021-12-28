@@ -17,6 +17,9 @@ package v20180330
 const (
 	// 此产品的特有错误码
 
+	// 鉴权失败，当前用户不允许执行该操作。
+	AUTHFAILURE_UNAUTHORIZEDOPERATIONERROR = "AuthFailure.UnauthorizedOperationError"
+
 	// 禁止该操作。
 	FAILEDOPERATION_NOTALLOWOPERATION = "FailedOperation.NotAllowOperation"
 
@@ -50,8 +53,14 @@ const (
 	// 通信协议错误。
 	INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
 
+	// 未知的内部错误。
+	INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
+
+	// 参数值错误。
+	INVALIDPARAMETER_BIZINVALIDPARAMETERVALUEERROR = "InvalidParameter.BizInvalidParameterValueError"
 
 	// 实例不存在。
 	INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
@@ -76,6 +85,9 @@ const (
 
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
+
+	// 未找到资源。
+	RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
 
 	// 迁移任务不存在。
 	RESOURCENOTFOUND_JOBNOTEXIST = "ResourceNotFound.JobNotExist"

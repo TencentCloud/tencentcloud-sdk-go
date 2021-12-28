@@ -53,17 +53,26 @@ const (
 	// SQL解析失败。
 	INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
 
+	// SQL数量不符合规范。
+	INVALIDPARAMETER_INVALIDSQLNUM = "InvalidParameter.InvalidSQLNum"
+
 	// 不支持的排序类型。
 	INVALIDPARAMETER_INVALIDSORTBYTYPE = "InvalidParameter.InvalidSortByType"
 
 	// 存储位置错误。
 	INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
 
+	// 无效的taskid。
+	INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
+
 	// 无效的用户名。
 	INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
 
 	// 无效的工作组名。
 	INVALIDPARAMETER_INVALIDWORKGROUPNAME = "InvalidParameter.InvalidWorkGroupName"
+
+	// 任务已经结束，不能取消。
+	INVALIDPARAMETER_TASKALREADYFINISHED = "InvalidParameter.TaskAlreadyFinished"
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -76,6 +85,9 @@ const (
 
 	// 指定数据源连接没有找到。
 	RESOURCENOTFOUND_DATASOURCENOTFOUND = "ResourceNotFound.DatasourceNotFound"
+
+	// 账号余额不足，无法执行SQL任务。
+	RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = "ResourceUnavailable.BalanceInsufficient"
 
 	// 无法修改主账号。
 	UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"

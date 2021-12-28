@@ -617,11 +617,11 @@ type CloneLoadBalancerRequest struct {
 	// 注意：如果名称与系统中已有负载均衡实例的名称相同，则系统将会自动生成此次创建的负载均衡实例的名称。
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" name:"LoadBalancerName"`
 
-	// 负载均衡实例所属的项目 ID，可以通过 DescribeProject 接口获取。不传此参数则视为默认项目。
+	// 负载均衡实例所属的项目 ID，可以通过 [DescribeProject](https://cloud.tencent.com/document/product/378/4400) 接口获取。不传此参数则视为默认项目。
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 仅适用于公网负载均衡。设置跨可用区容灾时的主可用区ID，例如 100001 或 ap-guangzhou-1
-	// 注：主可用区是需要承载流量的可用区，备可用区默认不承载流量，主可用区不可用时才使用备可用区，平台将为您自动选择最佳备可用区。可通过 DescribeMasterZones 接口查询一个地域的主可用区的列表。
+	// 注：主可用区是需要承载流量的可用区，备可用区默认不承载流量，主可用区不可用时才使用备可用区，平台将为您自动选择最佳备可用区。
 	MasterZoneId *string `json:"MasterZoneId,omitempty" name:"MasterZoneId"`
 
 	// 仅适用于公网负载均衡。设置跨可用区容灾时的备可用区ID，例如 100001 或 ap-guangzhou-1
@@ -3279,13 +3279,13 @@ func (r *DescribeRewriteResponse) FromJsonString(s string) error {
 type DescribeTargetGroupInstancesRequest struct {
 	*tchttp.BaseRequest
 
-	// 过滤条件，当前仅支持TargetGroupId，BindIP，InstanceId过滤
+	// 过滤条件，当前仅支持TargetGroupId，BindIP，InstanceId过滤。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 显示数量限制，默认20
+	// 显示数量限制，默认20。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 显示的偏移量，默认为0
+	// 显示的偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
@@ -3314,13 +3314,13 @@ type DescribeTargetGroupInstancesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 本次查询的结果数量
+		// 本次查询的结果数量。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 绑定的服务器信息
+		// 绑定的服务器信息。
 		TargetGroupInstanceSet []*TargetGroupBackend `json:"TargetGroupInstanceSet,omitempty" name:"TargetGroupInstanceSet"`
 
-		// 实际统计数量，不受Limit，Offset，CAM的影响
+		// 实际统计数量，不受Limit、Offset、CAM的影响。
 		RealCount *uint64 `json:"RealCount,omitempty" name:"RealCount"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4626,10 +4626,10 @@ func (r *ModifyDomainAttributesResponse) FromJsonString(s string) error {
 type ModifyDomainRequest struct {
 	*tchttp.BaseRequest
 
-	// 负载均衡实例 ID
+	// 负载均衡实例 ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 负载均衡监听器 ID
+	// 负载均衡监听器 ID。
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
 	// 监听器下的某个旧域名。

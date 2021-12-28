@@ -1442,6 +1442,41 @@ func (c *Client) GetRole(request *GetRoleRequest) (response *GetRoleResponse, er
     return
 }
 
+func NewGetRolePermissionBoundaryRequest() (request *GetRolePermissionBoundaryRequest) {
+    request = &GetRolePermissionBoundaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "GetRolePermissionBoundary")
+    
+    
+    return
+}
+
+func NewGetRolePermissionBoundaryResponse() (response *GetRolePermissionBoundaryResponse) {
+    response = &GetRolePermissionBoundaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetRolePermissionBoundary
+// 获取角色权限边界
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
+//  RESOURCENOTFOUND_POLICYIDNOTFOUND = "ResourceNotFound.PolicyIdNotFound"
+func (c *Client) GetRolePermissionBoundary(request *GetRolePermissionBoundaryRequest) (response *GetRolePermissionBoundaryResponse, err error) {
+    if request == nil {
+        request = NewGetRolePermissionBoundaryRequest()
+    }
+    
+    response = NewGetRolePermissionBoundaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetSAMLProviderRequest() (request *GetSAMLProviderRequest) {
     request = &GetSAMLProviderRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1571,6 +1606,41 @@ func (c *Client) GetUser(request *GetUserRequest) (response *GetUserResponse, er
     }
     
     response = NewGetUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetUserPermissionBoundaryRequest() (request *GetUserPermissionBoundaryRequest) {
+    request = &GetUserPermissionBoundaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "GetUserPermissionBoundary")
+    
+    
+    return
+}
+
+func NewGetUserPermissionBoundaryResponse() (response *GetUserPermissionBoundaryResponse) {
+    response = &GetUserPermissionBoundaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetUserPermissionBoundary
+// 获取用户权限边界
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
+//  RESOURCENOTFOUND_POLICYIDNOTFOUND = "ResourceNotFound.PolicyIdNotFound"
+func (c *Client) GetUserPermissionBoundary(request *GetUserPermissionBoundaryRequest) (response *GetUserPermissionBoundaryResponse, err error) {
+    if request == nil {
+        request = NewGetUserPermissionBoundaryRequest()
+    }
+    
+    response = NewGetUserPermissionBoundaryResponse()
     err = c.Send(request, response)
     return
 }

@@ -559,6 +559,60 @@ func (r *CreateDDoSAIResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateDDoSBlackWhiteIpListRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// IP列表
+	IpList []*IpSegment `json:"IpList,omitempty" name:"IpList"`
+
+	// IP类型，取值[black(黑名单IP), white(白名单IP)]
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *CreateDDoSBlackWhiteIpListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDDoSBlackWhiteIpListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "IpList")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDDoSBlackWhiteIpListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDDoSBlackWhiteIpListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateDDoSBlackWhiteIpListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDDoSBlackWhiteIpListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateDDoSGeoIPBlockConfigRequest struct {
 	*tchttp.BaseRequest
 
@@ -1201,6 +1255,60 @@ func (r *DeleteBlackWhiteIpListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteDDoSBlackWhiteIpListRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// IP列表
+	IpList []*IpSegment `json:"IpList,omitempty" name:"IpList"`
+
+	// IP类型，取值[black(黑名单IP), white(白名单IP)]
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *DeleteDDoSBlackWhiteIpListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDDoSBlackWhiteIpListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "IpList")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDDoSBlackWhiteIpListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteDDoSBlackWhiteIpListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteDDoSBlackWhiteIpListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDDoSBlackWhiteIpListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteDDoSGeoIPBlockConfigRequest struct {
 	*tchttp.BaseRequest
 
@@ -1734,6 +1842,58 @@ func (r *DescribeCCTrendResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCCTrendResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSBlackWhiteIpListRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeDDoSBlackWhiteIpListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDDoSBlackWhiteIpListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDDoSBlackWhiteIpListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSBlackWhiteIpListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 黑名单IP列表
+		BlackIpList []*IpSegment `json:"BlackIpList,omitempty" name:"BlackIpList"`
+
+		// 白名单IP列表
+		WhiteIpList []*IpSegment `json:"WhiteIpList,omitempty" name:"WhiteIpList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDDoSBlackWhiteIpListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDDoSBlackWhiteIpListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3014,6 +3174,15 @@ type InstanceRelation struct {
 
 	// 资源实例的ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type IpSegment struct {
+
+	// ip地址
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// ip掩码，如果为32位ip，填0
+	Mask *uint64 `json:"Mask,omitempty" name:"Mask"`
 }
 
 type KeyValue struct {

@@ -2002,6 +2002,10 @@ type GeneralHandwritingOCRRequest struct {
 
 	// 是否开启单字的四点定位坐标输出，默认值为false。
 	EnableWordPolygon *bool `json:"EnableWordPolygon,omitempty" name:"EnableWordPolygon"`
+
+	// 文本检测开关，默认值为true。
+	// 设置为false表示直接进行单行识别，可适用于识别单行手写体签名场景。
+	EnableDetectText *bool `json:"EnableDetectText,omitempty" name:"EnableDetectText"`
 }
 
 func (r *GeneralHandwritingOCRRequest) ToJsonString() string {
@@ -2020,6 +2024,7 @@ func (r *GeneralHandwritingOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "Scene")
 	delete(f, "EnableWordPolygon")
+	delete(f, "EnableDetectText")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GeneralHandwritingOCRRequest has unknown keys!", "")
 	}

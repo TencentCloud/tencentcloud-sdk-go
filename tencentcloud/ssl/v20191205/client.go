@@ -267,6 +267,7 @@ func NewCreateCertificateResponse() (response *CreateCertificateResponse) {
 //  FAILEDOPERATION_CANNOTGETORDER = "FailedOperation.CannotGetOrder"
 //  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_BACKENDRESPONSEERROR = "InternalError.BackendResponseError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"

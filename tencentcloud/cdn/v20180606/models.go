@@ -1137,6 +1137,10 @@ type BotRecord struct {
 
 	// BOT记录唯一ID，用于查询访问详情
 	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
 }
 
 type BotSortBy struct {
@@ -4355,6 +4359,9 @@ type DescribeScdnBotRecordsRequest struct {
 
 	// 过滤的IP
 	FilterIp *string `json:"FilterIp,omitempty" name:"FilterIp"`
+
+	// 域名列表，为空表示查询AppID维度数据
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 }
 
 func (r *DescribeScdnBotRecordsRequest) ToJsonString() string {
@@ -4380,6 +4387,7 @@ func (r *DescribeScdnBotRecordsRequest) FromJsonString(s string) error {
 	delete(f, "FilterName")
 	delete(f, "FilterAction")
 	delete(f, "FilterIp")
+	delete(f, "Domains")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScdnBotRecordsRequest has unknown keys!", "")
 	}

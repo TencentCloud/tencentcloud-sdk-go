@@ -264,6 +264,8 @@ func NewCreateFunctionResponse() (response *CreateFunctionResponse) {
 //  UNAUTHORIZEDOPERATION_ROLE = "UnauthorizedOperation.Role"
 //  UNAUTHORIZEDOPERATION_TEMPCOSAPPID = "UnauthorizedOperation.TempCosAppid"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_EIPFIXED = "UnsupportedOperation.EipFixed"
+//  UNSUPPORTEDOPERATION_VPCCONFIG = "UnsupportedOperation.VpcConfig"
 func (c *Client) CreateFunction(request *CreateFunctionRequest) (response *CreateFunctionResponse, err error) {
     if request == nil {
         request = NewCreateFunctionRequest()
@@ -972,7 +974,7 @@ func NewGetFunctionLogsResponse() (response *GetFunctionLogsResponse) {
 }
 
 // GetFunctionLogs
-// 该接口根据指定的日志查询条件返回函数运行日志。
+// 该接口根据指定的日志查询条件返回函数运行日志。该接口已下线，查询函数请求运行的返回信息，请使用 [GetRequestStatus](https://cloud.tencent.com/document/product/583/65348)。查询函数运行日志，请参考[日志检索教程](https://cloud.tencent.com/document/product/583/52637)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2011,6 +2013,8 @@ func NewUpdateFunctionConfigurationResponse() (response *UpdateFunctionConfigura
 //  RESOURCENOTFOUND_VPC = "ResourceNotFound.Vpc"
 //  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_EIPFIXED = "UnsupportedOperation.EipFixed"
+//  UNSUPPORTEDOPERATION_VPCCONFIG = "UnsupportedOperation.VpcConfig"
 func (c *Client) UpdateFunctionConfiguration(request *UpdateFunctionConfigurationRequest) (response *UpdateFunctionConfigurationResponse, err error) {
     if request == nil {
         request = NewUpdateFunctionConfigurationRequest()
@@ -2059,6 +2063,8 @@ func NewUpdateFunctionEventInvokeConfigResponse() (response *UpdateFunctionEvent
 //  RESOURCENOTFOUND_FUNCTIONVERSION = "ResourceNotFound.FunctionVersion"
 //  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_EIPFIXED = "UnsupportedOperation.EipFixed"
+//  UNSUPPORTEDOPERATION_VPCCONFIG = "UnsupportedOperation.VpcConfig"
 func (c *Client) UpdateFunctionEventInvokeConfig(request *UpdateFunctionEventInvokeConfigRequest) (response *UpdateFunctionEventInvokeConfigResponse, err error) {
     if request == nil {
         request = NewUpdateFunctionEventInvokeConfigRequest()

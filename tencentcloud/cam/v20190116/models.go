@@ -2077,6 +2077,72 @@ func (r *GetPolicyVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type GetRolePermissionBoundaryRequest struct {
+	*tchttp.BaseRequest
+
+	// 角色ID
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+}
+
+func (r *GetRolePermissionBoundaryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetRolePermissionBoundaryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoleId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetRolePermissionBoundaryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetRolePermissionBoundaryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 策略ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+		// 策略名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+
+		// 策略语法
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PolicyDocument *string `json:"PolicyDocument,omitempty" name:"PolicyDocument"`
+
+		// 策略类型：1.自定义策略，2.预设策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PolicyType *int64 `json:"PolicyType,omitempty" name:"PolicyType"`
+
+		// 创建方式：1.按产品功能或项目权限创建，2.按策略语法创建，3.按策略生成器创建，4.按标签授权创建，5.按权限边界规则创建
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CreateMode *int64 `json:"CreateMode,omitempty" name:"CreateMode"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetRolePermissionBoundaryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetRolePermissionBoundaryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type GetRoleRequest struct {
 	*tchttp.BaseRequest
 
@@ -2297,6 +2363,72 @@ func (r *GetServiceLinkedRoleDeletionStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetServiceLinkedRoleDeletionStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetUserPermissionBoundaryRequest struct {
+	*tchttp.BaseRequest
+
+	// 子账号Uin
+	TargetUin *int64 `json:"TargetUin,omitempty" name:"TargetUin"`
+}
+
+func (r *GetUserPermissionBoundaryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetUserPermissionBoundaryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TargetUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetUserPermissionBoundaryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetUserPermissionBoundaryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 策略ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+		// 策略名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+
+		// 策略语法
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PolicyDocument *string `json:"PolicyDocument,omitempty" name:"PolicyDocument"`
+
+		// 策略类型：1.自定义策略，2.预设策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PolicyType *int64 `json:"PolicyType,omitempty" name:"PolicyType"`
+
+		// 创建方式：1.按产品功能或项目权限创建，2.按策略语法创建，3.按策略生成器创建，4.按标签授权创建，5.按权限边界规则创建
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CreateMode *int64 `json:"CreateMode,omitempty" name:"CreateMode"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetUserPermissionBoundaryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetUserPermissionBoundaryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

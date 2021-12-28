@@ -2578,6 +2578,9 @@ type CreateDirectConnectGatewayRequest struct {
 
 	// 专线网关可用区
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 专线网关高可用区容灾组ID
+	HaZoneGroupId *string `json:"HaZoneGroupId,omitempty" name:"HaZoneGroupId"`
 }
 
 func (r *CreateDirectConnectGatewayRequest) ToJsonString() string {
@@ -2598,6 +2601,7 @@ func (r *CreateDirectConnectGatewayRequest) FromJsonString(s string) error {
 	delete(f, "GatewayType")
 	delete(f, "ModeType")
 	delete(f, "Zone")
+	delete(f, "HaZoneGroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDirectConnectGatewayRequest has unknown keys!", "")
 	}
@@ -4102,6 +4106,18 @@ type CreateVpnConnectionRequest struct {
 
 	// 通道类型, 例如:["STATIC", "StaticRoute", "Policy"]
 	RouteType *string `json:"RouteType,omitempty" name:"RouteType"`
+
+	// 协商类型，默认为active（主动协商）。可选值：active（主动协商），passive（被动协商），flowTrigger（流量协商）
+	NegotiationType *string `json:"NegotiationType,omitempty" name:"NegotiationType"`
+
+	// DPD探测开关。默认为0，表示关闭DPD探测。可选值：0（关闭），1（开启）
+	DpdEnable *int64 `json:"DpdEnable,omitempty" name:"DpdEnable"`
+
+	// DPD超时时间。即探测确认对端不存在需要的时间。dpdEnable为1（开启）时有效。默认30，单位为秒
+	DpdTimeout *string `json:"DpdTimeout,omitempty" name:"DpdTimeout"`
+
+	// DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）
+	DpdAction *string `json:"DpdAction,omitempty" name:"DpdAction"`
 }
 
 func (r *CreateVpnConnectionRequest) ToJsonString() string {
@@ -4129,6 +4145,10 @@ func (r *CreateVpnConnectionRequest) FromJsonString(s string) error {
 	delete(f, "HealthCheckLocalIp")
 	delete(f, "HealthCheckRemoteIp")
 	delete(f, "RouteType")
+	delete(f, "NegotiationType")
+	delete(f, "DpdEnable")
+	delete(f, "DpdTimeout")
+	delete(f, "DpdAction")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVpnConnectionRequest has unknown keys!", "")
 	}
@@ -10653,6 +10673,33 @@ type DirectConnectGateway struct {
 	// 专线网关所在可用区
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 网关流控明细启用状态：
+	// 0：关闭
+	// 1：开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableFlowDetails *uint64 `json:"EnableFlowDetails,omitempty" name:"EnableFlowDetails"`
+
+	// 开启、关闭网关流控明细时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowDetailsUpdateTime *string `json:"FlowDetailsUpdateTime,omitempty" name:"FlowDetailsUpdateTime"`
+
+	// 是否支持开启网关流控明细
+	// 0：不支持
+	// 1：支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NewAfc *uint64 `json:"NewAfc,omitempty" name:"NewAfc"`
+
+	// 专线网关接入网络类型：
+	// <li>`VXLAN` - VXLAN类型。</li>
+	// <li>`MPLS` - MPLS类型。</li>
+	// <li>`Hybrid` - Hybrid类型。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessNetworkType *string `json:"AccessNetworkType,omitempty" name:"AccessNetworkType"`
+
+	// 跨可用区容灾专线网关的可用区列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HaZoneList []*string `json:"HaZoneList,omitempty" name:"HaZoneList"`
 }
 
 type DirectConnectGatewayCcnRoute struct {
@@ -10665,6 +10712,12 @@ type DirectConnectGatewayCcnRoute struct {
 
 	// `BGP`的`AS-Path`属性。
 	ASPath []*string `json:"ASPath,omitempty" name:"ASPath"`
+
+	// 备注
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 最后更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type DirectConnectSubnet struct {
@@ -14736,6 +14789,18 @@ type ModifyVpnConnectionAttributeRequest struct {
 
 	// 对端通道探测ip
 	HealthCheckRemoteIp *string `json:"HealthCheckRemoteIp,omitempty" name:"HealthCheckRemoteIp"`
+
+	// 协商类型，默认为active（主动协商）。可选值：active（主动协商），passive（被动协商），flowTrigger（流量协商）
+	NegotiationType *string `json:"NegotiationType,omitempty" name:"NegotiationType"`
+
+	// DPD探测开关。默认为0，表示关闭DPD探测。可选值：0（关闭），1（开启）
+	DpdEnable *int64 `json:"DpdEnable,omitempty" name:"DpdEnable"`
+
+	// DPD超时时间。即探测确认对端不存在需要的时间。dpdEnable为1（开启）时有效。默认30，单位为秒
+	DpdTimeout *string `json:"DpdTimeout,omitempty" name:"DpdTimeout"`
+
+	// DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）
+	DpdAction *string `json:"DpdAction,omitempty" name:"DpdAction"`
 }
 
 func (r *ModifyVpnConnectionAttributeRequest) ToJsonString() string {
@@ -14759,6 +14824,10 @@ func (r *ModifyVpnConnectionAttributeRequest) FromJsonString(s string) error {
 	delete(f, "EnableHealthCheck")
 	delete(f, "HealthCheckLocalIp")
 	delete(f, "HealthCheckRemoteIp")
+	delete(f, "NegotiationType")
+	delete(f, "DpdEnable")
+	delete(f, "DpdTimeout")
+	delete(f, "DpdAction")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVpnConnectionAttributeRequest has unknown keys!", "")
 	}

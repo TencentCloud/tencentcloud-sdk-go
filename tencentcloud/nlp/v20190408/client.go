@@ -406,7 +406,7 @@ func NewDescribeEntityResponse() (response *DescribeEntityResponse) {
 }
 
 // DescribeEntity
-// 输入实体名称，返回实体相关的信息如实体别名、实体英文名、实体详细信息、相关实体等。
+// 此接口正在维护升级，后续上线另行通知。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -459,7 +459,7 @@ func NewDescribeRelationResponse() (response *DescribeRelationResponse) {
 }
 
 // DescribeRelation
-// 输入两个实体，返回两个实体间的关系，例如马化腾与腾讯公司不仅是相关实体，二者还存在隶属关系（马化腾属于腾讯公司）。
+// 此接口正在维护升级，后续上线另行通知。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -511,7 +511,7 @@ func NewDescribeTripleResponse() (response *DescribeTripleResponse) {
 }
 
 // DescribeTriple
-// 三元组查询，主要分为两类，SP查询和PO查询。SP查询表示已知主语和谓语查询宾语，PO查询表示已知宾语和谓语查询主语。每一个SP或PO查询都是一个可独立执行的查询，TQL支持SP查询的嵌套查询，即主语可以是一个嵌套的子查询。其他复杂的三元组查询方法，请参考官网API文档示例。
+// 此接口正在维护升级，后续上线另行通知。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -868,7 +868,7 @@ func NewTextClassificationResponse() (response *TextClassificationResponse) {
 //
 // 
 //
-// - 通用领域分类体系，二级分类，包括15个分类类目，分别是汽车、科技、健康、体育、旅行、教育、职业、文化、军事、房产、娱乐、女性、奥运、财经以及其他，适用于通用的场景。
+// - 通用领域分类体系，二级分类，包括14个分类类目，分别是汽车、科技、健康、体育、旅行、教育、职业、文化、房产、娱乐、女性、奥运、财经以及其他，适用于通用的场景。
 //
 // 
 //

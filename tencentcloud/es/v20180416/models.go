@@ -20,6 +20,66 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type ClusterView struct {
+
+	// 集群健康状态
+	Health *float64 `json:"Health,omitempty" name:"Health"`
+
+	// 集群是否可见
+	Visible *float64 `json:"Visible,omitempty" name:"Visible"`
+
+	// 集群是否熔断
+	Break *float64 `json:"Break,omitempty" name:"Break"`
+
+	// 平均磁盘使用率
+	AvgDiskUsage *float64 `json:"AvgDiskUsage,omitempty" name:"AvgDiskUsage"`
+
+	// 平均内存使用率
+	AvgMemUsage *float64 `json:"AvgMemUsage,omitempty" name:"AvgMemUsage"`
+
+	// 平均cpu使用率
+	AvgCpuUsage *float64 `json:"AvgCpuUsage,omitempty" name:"AvgCpuUsage"`
+
+	// 集群总存储大小
+	TotalDiskSize *uint64 `json:"TotalDiskSize,omitempty" name:"TotalDiskSize"`
+
+	// 客户端请求节点
+	TargetNodeTypes []*string `json:"TargetNodeTypes,omitempty" name:"TargetNodeTypes"`
+
+	// 在线节点数
+	NodeNum *int64 `json:"NodeNum,omitempty" name:"NodeNum"`
+
+	// 总节点数
+	TotalNodeNum *int64 `json:"TotalNodeNum,omitempty" name:"TotalNodeNum"`
+
+	// 数据节点数
+	DataNodeNum *int64 `json:"DataNodeNum,omitempty" name:"DataNodeNum"`
+
+	// 索引数
+	IndexNum *int64 `json:"IndexNum,omitempty" name:"IndexNum"`
+
+	// 文档数
+	DocNum *int64 `json:"DocNum,omitempty" name:"DocNum"`
+
+	// 磁盘已使用字节数
+	DiskUsedInBytes *int64 `json:"DiskUsedInBytes,omitempty" name:"DiskUsedInBytes"`
+
+	// 分片个数
+	ShardNum *int64 `json:"ShardNum,omitempty" name:"ShardNum"`
+
+	// 主分片个数
+	PrimaryShardNum *int64 `json:"PrimaryShardNum,omitempty" name:"PrimaryShardNum"`
+
+	// 迁移中的分片个数
+	RelocatingShardNum *int64 `json:"RelocatingShardNum,omitempty" name:"RelocatingShardNum"`
+
+	// 初始化中的分片个数
+	InitializingShardNum *int64 `json:"InitializingShardNum,omitempty" name:"InitializingShardNum"`
+
+	// 未分配的分片个数
+	UnassignedShardNum *int64 `json:"UnassignedShardNum,omitempty" name:"UnassignedShardNum"`
+}
+
 type CosBackup struct {
 
 	// 是否开启cos自动备份
@@ -486,6 +546,64 @@ func (r *DescribeInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeViewsRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeViewsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeViewsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeViewsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeViewsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 集群维度视图
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ClusterView *ClusterView `json:"ClusterView,omitempty" name:"ClusterView"`
+
+		// 节点维度视图
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		NodesView []*NodeView `json:"NodesView,omitempty" name:"NodesView"`
+
+		// Kibana维度视图
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		KibanasView []*KibanaView `json:"KibanasView,omitempty" name:"KibanasView"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeViewsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeViewsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DiagnoseInstanceRequest struct {
 	*tchttp.BaseRequest
 
@@ -885,6 +1003,33 @@ type KibanaNodeInfo struct {
 	KibanaNodeDiskSize *uint64 `json:"KibanaNodeDiskSize,omitempty" name:"KibanaNodeDiskSize"`
 }
 
+type KibanaView struct {
+
+	// Kibana节点IP
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 节点总磁盘大小
+	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 磁盘使用率
+	DiskUsage *float64 `json:"DiskUsage,omitempty" name:"DiskUsage"`
+
+	// 节点内存大小
+	MemSize *int64 `json:"MemSize,omitempty" name:"MemSize"`
+
+	// 内存使用率
+	MemUsage *float64 `json:"MemUsage,omitempty" name:"MemUsage"`
+
+	// 节点cpu个数
+	CpuNum *int64 `json:"CpuNum,omitempty" name:"CpuNum"`
+
+	// cpu使用率
+	CpuUsage *float64 `json:"CpuUsage,omitempty" name:"CpuUsage"`
+
+	// 可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+}
+
 type LocalDiskInfo struct {
 
 	// 本地盘类型<li>LOCAL_SATA：大数据型</li><li>NVME_SSD：高IO型</li>
@@ -950,6 +1095,60 @@ type NodeInfo struct {
 
 	// 节点磁盘是否加密 0: 不加密，1: 加密；默认不加密
 	DiskEncrypt *uint64 `json:"DiskEncrypt,omitempty" name:"DiskEncrypt"`
+}
+
+type NodeView struct {
+
+	// 节点ID
+	NodeId *string `json:"NodeId,omitempty" name:"NodeId"`
+
+	// 节点IP
+	NodeIp *string `json:"NodeIp,omitempty" name:"NodeIp"`
+
+	// 节点是否可见
+	Visible *float64 `json:"Visible,omitempty" name:"Visible"`
+
+	// 是否熔断
+	Break *float64 `json:"Break,omitempty" name:"Break"`
+
+	// 节点总磁盘大小
+	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 磁盘使用率
+	DiskUsage *float64 `json:"DiskUsage,omitempty" name:"DiskUsage"`
+
+	// 节点内存大小，单位GB
+	MemSize *int64 `json:"MemSize,omitempty" name:"MemSize"`
+
+	// 内存使用率
+	MemUsage *float64 `json:"MemUsage,omitempty" name:"MemUsage"`
+
+	// 节点cpu个数
+	CpuNum *int64 `json:"CpuNum,omitempty" name:"CpuNum"`
+
+	// cpu使用率
+	CpuUsage *float64 `json:"CpuUsage,omitempty" name:"CpuUsage"`
+
+	// 可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 节点角色
+	NodeRole *string `json:"NodeRole,omitempty" name:"NodeRole"`
+
+	// 节点HTTP IP
+	NodeHttpIp *string `json:"NodeHttpIp,omitempty" name:"NodeHttpIp"`
+
+	// JVM内存使用率
+	JvmMemUsage *float64 `json:"JvmMemUsage,omitempty" name:"JvmMemUsage"`
+
+	// 节点分片数
+	ShardNum *int64 `json:"ShardNum,omitempty" name:"ShardNum"`
+
+	// 节点上磁盘ID列表
+	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
+
+	// 是否为隐藏可用区
+	Hidden *bool `json:"Hidden,omitempty" name:"Hidden"`
 }
 
 type Operation struct {

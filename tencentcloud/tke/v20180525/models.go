@@ -708,6 +708,9 @@ type ClusterBasicSettings struct {
 
 	// 是否开启节点的默认安全组(默认: 否，Aphla特性)
 	NeedWorkSecurityGroup *bool `json:"NeedWorkSecurityGroup,omitempty" name:"NeedWorkSecurityGroup"`
+
+	// 当选择Cilium Overlay网络插件时，TKE会从该子网获取2个IP用来创建内网负载均衡
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }
 
 type ClusterCIDRSettings struct {
@@ -820,6 +823,9 @@ type ClusterPublicLB struct {
 
 	// 外网访问相关的扩展参数，格式为json
 	ExtraParam *string `json:"ExtraParam,omitempty" name:"ExtraParam"`
+
+	// 新内外网功能，需要传递安全组
+	SecurityGroup *string `json:"SecurityGroup,omitempty" name:"SecurityGroup"`
 }
 
 type ClusterVersion struct {
@@ -1326,7 +1332,7 @@ type CreateClusterRequest struct {
 	// 节点高级配置信息
 	InstanceAdvancedSettings *InstanceAdvancedSettings `json:"InstanceAdvancedSettings,omitempty" name:"InstanceAdvancedSettings"`
 
-	// 已存在实例的配置信息。所有实例必须在同一个VPC中，最大数量不超过100。
+	// 已存在实例的配置信息。所有实例必须在同一个VPC中，最大数量不超过100，不支持添加竞价实例。
 	ExistedInstancesForNode []*ExistedInstancesForNode `json:"ExistedInstancesForNode,omitempty" name:"ExistedInstancesForNode"`
 
 	// CVM类型和其对应的数据盘挂载配置信息
@@ -3591,6 +3597,9 @@ type DescribeEKSClusterCredentialResponse struct {
 
 		// 集群的内网访问信息
 		InternalLB *ClusterInternalLB `json:"InternalLB,omitempty" name:"InternalLB"`
+
+		// 标记是否新的内外网功能
+		ProxyLB *bool `json:"ProxyLB,omitempty" name:"ProxyLB"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -7762,6 +7771,9 @@ type UpdateEKSClusterRequest struct {
 
 	// 将来删除集群时是否要删除cbs。默认为 FALSE
 	NeedDeleteCbs *bool `json:"NeedDeleteCbs,omitempty" name:"NeedDeleteCbs"`
+
+	// 标记是否是新的内外网。默认为false
+	ProxyLB *bool `json:"ProxyLB,omitempty" name:"ProxyLB"`
 }
 
 func (r *UpdateEKSClusterRequest) ToJsonString() string {
@@ -7786,6 +7798,7 @@ func (r *UpdateEKSClusterRequest) FromJsonString(s string) error {
 	delete(f, "DnsServers")
 	delete(f, "ClearDnsServer")
 	delete(f, "NeedDeleteCbs")
+	delete(f, "ProxyLB")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateEKSClusterRequest has unknown keys!", "")
 	}

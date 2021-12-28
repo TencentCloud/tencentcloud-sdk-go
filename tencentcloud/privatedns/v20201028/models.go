@@ -755,7 +755,7 @@ type DescribePrivateZoneRecordListRequest struct {
 	// 私有域ID: zone-xxxxxx
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 过滤参数
+	// 过滤参数（支持使用Value、RecordType过滤）
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 分页偏移量，从0开始
