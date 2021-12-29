@@ -108,7 +108,7 @@
 | mgobe | [游戏联机对战引擎](https://cloud.tencent.com/document/product/1038) | 2021-11-10 08:08:55 |
 | mna | [移动网络加速](https://cloud.tencent.com/document/product/1385) | 2021-11-10 08:08:55 |
 | mongodb | [云数据库 MongoDB](https://cloud.tencent.com/document/product/240) | 2021-12-14 08:12:21 |
-| monitor | [云监控](https://cloud.tencent.com/document/product/248) | 2021-12-16 08:11:56 |
+| monitor | [云监控](https://cloud.tencent.com/document/product/248) | 2021-12-29 08:10:29 |
 | mps | [视频处理](https://cloud.tencent.com/document/product/862) | 2021-11-24 08:11:23 |
 | mrs | [医疗报告结构化](https://cloud.tencent.com/document/product/1314) | 2021-12-14 08:12:50 |
 | ms | [移动应用安全](https://cloud.tencent.com/document/product) | 2020-06-05 08:13:52 |
@@ -123,7 +123,7 @@
 | pds | [私域安全](https://cloud.tencent.com/document/product/1473) | 2021-11-10 08:09:50 |
 | postgres | [云数据库 PostgreSQL](https://cloud.tencent.com/document/product/409) | 2021-12-24 08:13:26 |
 | privatedns | [私有域解析 Private DNS](https://cloud.tencent.com/document/product/1338) | 2021-12-23 08:13:49 |
-| rce | [全栈式风控引擎](https://cloud.tencent.com/document/product/1343) | 2021-11-10 08:10:02 |
+| rce | [全栈式风控引擎](https://cloud.tencent.com/document/product/1343) | 2021-12-29 08:11:26 |
 | redis | [云数据库 Redis](https://cloud.tencent.com/document/product/239) | 2021-12-07 13:09:58 |
 | rkp | [风险探针](https://cloud.tencent.com/document/product/1169) | 2021-11-10 08:10:03 |
 | rp | [注册保护](https://cloud.tencent.com/document/product/1191) | 2021-11-10 08:10:04 |
@@ -155,7 +155,7 @@
 | tcr | [容器镜像服务](https://cloud.tencent.com/document/product/1141) | 2021-12-24 08:15:03 |
 | tcss | [容器安全服务](https://cloud.tencent.com/document/product/1285) | 2021-12-22 08:16:46 |
 | tdid | [分布式身份](https://cloud.tencent.com/document/product/1439) | 2021-11-10 08:11:24 |
-| tdmq | [分布式消息队列](https://cloud.tencent.com/document/product/1179) | 2021-12-21 08:11:07 |
+| tdmq | [分布式消息队列](https://cloud.tencent.com/document/product/1179) | 2021-12-29 08:13:22 |
 | tem | [弹性微服务](https://cloud.tencent.com/document/product/1371) | 2021-12-23 08:16:03 |
 | thpc | [高性能计算平台](https://cloud.tencent.com/document/product/1527) | 2021-12-27 08:11:18 |
 | tia | [智能钛机器学习](https://cloud.tencent.com/document/product/851) | 2021-10-21 11:12:52 |

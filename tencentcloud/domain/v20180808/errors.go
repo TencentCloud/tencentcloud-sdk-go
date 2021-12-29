@@ -62,7 +62,7 @@ const (
 	// 修改 DNS 失败，请输入正确的 DNS 服务器地址。
 	FAILEDOPERATION_SETDOMAINDNSFAILED = "FailedOperation.SetDomainDnsFailed"
 
-	// 模板数量超过最大值50个。
+	// 模板数量超过最大值2000个。
 	FAILEDOPERATION_TEMPLATEMAXNUMFAILED = "FailedOperation.TemplateMaxNumFailed"
 
 	// 上传图片操作失败。

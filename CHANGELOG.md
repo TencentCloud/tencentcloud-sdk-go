@@ -1,3 +1,69 @@
+# Release v1.0.322
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 34 次发布
+
+发布时间：2021-12-29 08:10:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PrometheusInstancesItem](https://cloud.tencent.com/document/api/248/30354#PrometheusInstancesItem)
+
+	* 新增成员：GrafanaInstanceId
+
+
+
+
+## 全栈式风控引擎(rce) 版本：2020-11-03
+
+### 第 4 次发布
+
+发布时间：2021-12-29 08:11:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeRiskAssessment](https://cloud.tencent.com/document/api/1343/67099)
+* [DescribeRiskTrends](https://cloud.tencent.com/document/api/1343/67098)
+
+新增数据结构：
+
+* [InputFrontRisk](https://cloud.tencent.com/document/api/1343/52566#InputFrontRisk)
+* [OutputFrontRisk](https://cloud.tencent.com/document/api/1343/52566#OutputFrontRisk)
+* [OutputFrontRiskData](https://cloud.tencent.com/document/api/1343/52566#OutputFrontRiskData)
+* [OutputFrontRiskValue](https://cloud.tencent.com/document/api/1343/52566#OutputFrontRiskValue)
+
+
+
+## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 27 次发布
+
+发布时间：2021-12-29 08:13:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeProducers
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* Connection
+* Producer
+
+
+
 # Release v1.0.321
 
 ## 企业组织(organization) 版本：2021-03-31

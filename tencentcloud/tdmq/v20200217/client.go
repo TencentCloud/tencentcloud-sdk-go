@@ -2319,46 +2319,6 @@ func (c *Client) DescribeNodeHealthOpt(request *DescribeNodeHealthOptRequest) (r
     return
 }
 
-func NewDescribeProducersRequest() (request *DescribeProducersRequest) {
-    request = &DescribeProducersRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeProducers")
-    
-    
-    return
-}
-
-func NewDescribeProducersResponse() (response *DescribeProducersResponse) {
-    response = &DescribeProducersResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeProducers
-// 获取生产者列表，仅显示在线的生产者
-//
-// 可能返回的错误码:
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION_DESCRIBEPRODUCERS = "FailedOperation.DescribeProducers"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
-//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
-//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
-//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
-//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
-//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
-func (c *Client) DescribeProducers(request *DescribeProducersRequest) (response *DescribeProducersResponse, err error) {
-    if request == nil {
-        request = NewDescribeProducersRequest()
-    }
-    
-    response = NewDescribeProducersResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribePublisherSummaryRequest() (request *DescribePublisherSummaryRequest) {
     request = &DescribePublisherSummaryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2381,14 +2341,10 @@ func NewDescribePublisherSummaryResponse() (response *DescribePublisherSummaryRe
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION_DESCRIBEPRODUCERS = "FailedOperation.DescribeProducers"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
-//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
-//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
-//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) DescribePublisherSummary(request *DescribePublisherSummaryRequest) (response *DescribePublisherSummaryResponse, err error) {
     if request == nil {
         request = NewDescribePublisherSummaryRequest()
@@ -2421,14 +2377,10 @@ func NewDescribePublishersResponse() (response *DescribePublishersResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION_DESCRIBEPRODUCERS = "FailedOperation.DescribeProducers"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
-//  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
-//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
-//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) DescribePublishers(request *DescribePublishersRequest) (response *DescribePublishersResponse, err error) {
     if request == nil {
         request = NewDescribePublishersRequest()

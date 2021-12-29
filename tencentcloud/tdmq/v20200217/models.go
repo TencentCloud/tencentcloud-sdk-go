@@ -758,37 +758,6 @@ type CmqTransactionPolicy struct {
 	MaxQueryCount *uint64 `json:"MaxQueryCount,omitempty" name:"MaxQueryCount"`
 }
 
-type Connection struct {
-
-	// 生产者地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Address *string `json:"Address,omitempty" name:"Address"`
-
-	// 主题分区。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Partitions *int64 `json:"Partitions,omitempty" name:"Partitions"`
-
-	// 生产者版本。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClientVersion *string `json:"ClientVersion,omitempty" name:"ClientVersion"`
-
-	// 生产者名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProducerName *string `json:"ProducerName,omitempty" name:"ProducerName"`
-
-	// 生产者ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProducerId *string `json:"ProducerId,omitempty" name:"ProducerId"`
-
-	// 消息平均大小(byte)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	AverageMsgSize *string `json:"AverageMsgSize,omitempty" name:"AverageMsgSize"`
-
-	// 生成速率(byte/秒)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	MsgThroughputIn *string `json:"MsgThroughputIn,omitempty" name:"MsgThroughputIn"`
-}
-
 type Consumer struct {
 
 	// 消费者开始连接的时间。
@@ -4518,78 +4487,6 @@ func (r *DescribeNodeHealthOptResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeProducersRequest struct {
-	*tchttp.BaseRequest
-
-	// 环境（命名空间）名称。
-	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
-
-	// 主题名。
-	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
-
-	// 起始下标，不填默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 返回数量，不填则默认为10，最大值为20。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 生产者名称，模糊匹配。
-	ProducerName *string `json:"ProducerName,omitempty" name:"ProducerName"`
-
-	// Pulsar 集群的ID
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
-}
-
-func (r *DescribeProducersRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeProducersRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "EnvironmentId")
-	delete(f, "TopicName")
-	delete(f, "Offset")
-	delete(f, "Limit")
-	delete(f, "ProducerName")
-	delete(f, "ClusterId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProducersRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeProducersResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 生产者集合数组。
-		ProducerSets []*Producer `json:"ProducerSets,omitempty" name:"ProducerSets"`
-
-		// 记录总数。
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *DescribeProducersResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeProducersResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribePublisherSummaryRequest struct {
 	*tchttp.BaseRequest
 
@@ -6556,23 +6453,6 @@ type PartitionsTopic struct {
 	// topic类型描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicType *uint64 `json:"TopicType,omitempty" name:"TopicType"`
-}
-
-type Producer struct {
-
-	// 环境（命名空间）名称。
-	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
-
-	// 主题名称。
-	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
-
-	// 连接数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CountConnect *int64 `json:"CountConnect,omitempty" name:"CountConnect"`
-
-	// 连接集合。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ConnectionSets []*Connection `json:"ConnectionSets,omitempty" name:"ConnectionSets"`
 }
 
 type PublishCmqMsgRequest struct {
