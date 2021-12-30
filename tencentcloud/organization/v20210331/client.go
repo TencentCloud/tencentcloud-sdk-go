@@ -162,3 +162,37 @@ func (c *Client) DescribeOrganization(request *DescribeOrganizationRequest) (res
     err = c.Send(request, response)
     return
 }
+
+func NewDescribeOrganizationMembersRequest() (request *DescribeOrganizationMembersRequest) {
+    request = &DescribeOrganizationMembersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("organization", APIVersion, "DescribeOrganizationMembers")
+    
+    
+    return
+}
+
+func NewDescribeOrganizationMembersResponse() (response *DescribeOrganizationMembersResponse) {
+    response = &DescribeOrganizationMembersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeOrganizationMembers
+// 获取企业组织成员列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) DescribeOrganizationMembers(request *DescribeOrganizationMembersRequest) (response *DescribeOrganizationMembersResponse, err error) {
+    if request == nil {
+        request = NewDescribeOrganizationMembersRequest()
+    }
+    
+    response = NewDescribeOrganizationMembersResponse()
+    err = c.Send(request, response)
+    return
+}

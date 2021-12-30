@@ -2648,6 +2648,46 @@ func (c *Client) DescribeContainerEvents(request *DescribeContainerEventsRequest
     return
 }
 
+func NewDescribeContainerGroupDeployInfoRequest() (request *DescribeContainerGroupDeployInfoRequest) {
+    request = &DescribeContainerGroupDeployInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeContainerGroupDeployInfo")
+    
+    
+    return
+}
+
+func NewDescribeContainerGroupDeployInfoResponse() (response *DescribeContainerGroupDeployInfoResponse) {
+    response = &DescribeContainerGroupDeployInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeContainerGroupDeployInfo
+//  获取部署组详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INTERNALERROR_CONTAINERGROUPSQLFAILED = "InternalError.ContainergroupSqlFailed"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPGROUPIDNULL = "InvalidParameterValue.ContainergroupGroupidNull"
+//  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
+//  RESOURCENOTFOUND_CONTAINERGROUPGROUPNOTFOUND = "ResourceNotFound.ContainergroupGroupNotFound"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DescribeContainerGroupDeployInfo(request *DescribeContainerGroupDeployInfoRequest) (response *DescribeContainerGroupDeployInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeContainerGroupDeployInfoRequest()
+    }
+    
+    response = NewDescribeContainerGroupDeployInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeContainerGroupDetailRequest() (request *DescribeContainerGroupDetailRequest) {
     request = &DescribeContainerGroupDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},

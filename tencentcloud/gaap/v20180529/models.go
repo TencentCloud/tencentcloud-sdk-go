@@ -397,7 +397,7 @@ type CheckProxyCreateRequest struct {
 	// 网络类型，可取值：normal、cn2，默认值normal
 	NetworkType *string `json:"NetworkType,omitempty" name:"NetworkType"`
 
-	// 通道组类型。Thunder表示标准通道组，Accelerator表示游戏加速器通道。
+	// 通道套餐类型。Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
 	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 }
 
@@ -1200,8 +1200,11 @@ type CreateProxyRequest struct {
 	// IP版本，可取值：IPv4、IPv6，默认值IPv4
 	IPAddressVersion *string `json:"IPAddressVersion,omitempty" name:"IPAddressVersion"`
 
-	// 网络类型，可取值：normal、cn2，默认值normal
+	// 网络类型，normal表示常规BGP，cn2表示精品BGP，triple表示三网
 	NetworkType *string `json:"NetworkType,omitempty" name:"NetworkType"`
+
+	// 通道套餐类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
+	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 }
 
 func (r *CreateProxyRequest) ToJsonString() string {
@@ -1229,6 +1232,7 @@ func (r *CreateProxyRequest) FromJsonString(s string) error {
 	delete(f, "BillingType")
 	delete(f, "IPAddressVersion")
 	delete(f, "NetworkType")
+	delete(f, "PackageType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProxyRequest has unknown keys!", "")
 	}
@@ -2050,7 +2054,7 @@ type DescribeAccessRegionsByDestRegionRequest struct {
 	// IP版本，可取值：IPv4、IPv6，默认值IPv4
 	IPAddressVersion *string `json:"IPAddressVersion,omitempty" name:"IPAddressVersion"`
 
-	// 通道组类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道。
+	// 通道套餐类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
 	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 }
 
@@ -2973,6 +2977,7 @@ type DescribeProxiesRequest struct {
 	// RealServerRegion - String - 是否必填：否 - （过滤条件）按照源站地域过滤。
 	// GroupId - String - 是否必填：否 - （过滤条件）按照通道组ID过滤。
 	// IPAddressVersion - String - 是否必填：否 - （过滤条件）按照IP版本过滤。
+	// PackageType - String - 是否必填：否 - （过滤条件）按照通道套餐类型过滤。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// （新参数，替代InstanceIds）按照一个或者多个实例ID查询。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。
@@ -3684,7 +3689,7 @@ type DescribeRegionAndPriceRequest struct {
 	// IP版本，可取值：IPv4、IPv6，默认值IPv4
 	IPAddressVersion *string `json:"IPAddressVersion,omitempty" name:"IPAddressVersion"`
 
-	// 通道组类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道。
+	// 通道套餐类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
 	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 }
 
@@ -4624,7 +4629,7 @@ type InquiryPriceCreateProxyRequest struct {
 	// 网络类型，可取值：normal、cn2，默认值normal
 	NetworkType *string `json:"NetworkType,omitempty" name:"NetworkType"`
 
-	// 通道组类型。Thunder表示标准通道组，Accelerator表示游戏加速器通道。
+	// 通道套餐类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
 	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 }
 
@@ -6107,7 +6112,8 @@ type ProxyInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkType *string `json:"NetworkType,omitempty" name:"NetworkType"`
 
-	// 通道套餐类型：Thunder表示标准通道，Accelerator表示游戏加速器通道。
+	// 通道套餐类型：Thunder表示标准通道，Accelerator表示游戏加速器通道，
+	// CrossBorder表示跨境通道。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 

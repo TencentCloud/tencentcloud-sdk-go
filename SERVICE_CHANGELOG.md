@@ -1,29 +1,75 @@
 # 本版本更新包含以下内容：
 
-## 云监控(monitor) 版本：2018-07-24
+## Elasticsearch Service(es) 版本：2018-04-16
 
-### 第 34 次发布
+### 第 22 次发布
 
-发布时间：2021-12-29 08:10:29
+发布时间：2021-12-30 08:09:09
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+修改接口：
+
+* [CreateInstance](https://cloud.tencent.com/document/api/845/30633)
+
+	* 新增出参：DealName
+
+* [DescribeInstances](https://cloud.tencent.com/document/api/845/30631)
+
+	* 新增入参：ZoneList
+
+* [UpdateInstance](https://cloud.tencent.com/document/api/845/30629)
+
+	* 新增出参：DealName
+
+* [UpdatePlugins](https://cloud.tencent.com/document/api/845/46048)
+
+	* 新增入参：PluginType
+
+* [UpgradeLicense](https://cloud.tencent.com/document/api/845/36269)
+
+	* 新增出参：DealName
+
+
 修改数据结构：
 
-* [PrometheusInstancesItem](https://cloud.tencent.com/document/api/248/30354#PrometheusInstancesItem)
+* [ClusterView](https://cloud.tencent.com/document/api/845/30634#ClusterView)
 
-	* 新增成员：GrafanaInstanceId
+	* 新增成员：TotalCosStorage, SearchableSnapshotCosBucket, SearchableSnapshotCosAppId
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/845/30634#InstanceInfo)
+
+	* 新增成员：ColdNodeType, ColdNodeNum, ColdCpuNum, ColdMemSize, ColdDiskType, ColdDiskSize, FrozenNodeType, FrozenNodeNum, FrozenCpuNum, FrozenMemSize, FrozenDiskType, FrozenDiskSize
 
 
 
 
-## 全栈式风控引擎(rce) 版本：2020-11-03
+## 全球应用加速(gaap) 版本：2018-05-29
 
-### 第 4 次发布
+### 第 26 次发布
 
-发布时间：2021-12-29 08:11:26
+发布时间：2021-12-30 08:09:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateProxy](https://cloud.tencent.com/document/api/608/36971)
+
+	* 新增入参：PackageType
+
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 35 次发布
+
+发布时间：2021-12-30 08:11:53
 
 本次发布包含了以下内容：
 
@@ -31,36 +77,55 @@
 
 新增接口：
 
-* [DescribeRiskAssessment](https://cloud.tencent.com/document/api/1343/67099)
-* [DescribeRiskTrends](https://cloud.tencent.com/document/api/1343/67098)
+* [BindingPolicyTag](https://cloud.tencent.com/document/api/248/67219)
 
 新增数据结构：
 
-* [InputFrontRisk](https://cloud.tencent.com/document/api/1343/52566#InputFrontRisk)
-* [OutputFrontRisk](https://cloud.tencent.com/document/api/1343/52566#OutputFrontRisk)
-* [OutputFrontRiskData](https://cloud.tencent.com/document/api/1343/52566#OutputFrontRiskData)
-* [OutputFrontRiskValue](https://cloud.tencent.com/document/api/1343/52566#OutputFrontRiskValue)
+* [PolicyTag](https://cloud.tencent.com/document/api/248/30354#PolicyTag)
 
 
 
-## 分布式消息队列(tdmq) 版本：2020-02-17
+## 企业组织(organization) 版本：2021-03-31
 
-### 第 27 次发布
+### 第 4 次发布
 
-发布时间：2021-12-29 08:13:22
+发布时间：2021-12-30 08:12:38
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口**：</font>
+新增接口：
 
-* DescribeProducers
+* [DescribeOrganizationMembers](https://cloud.tencent.com/document/api/850/67220)
 
-<font color="#dd0000">**删除数据结构**：</font>
+新增数据结构：
 
-* Connection
-* Producer
+* [OrgMember](https://cloud.tencent.com/document/api/850/67060#OrgMember)
+
+
+
+## 企业组织(organization) 版本：2018-12-25
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 64 次发布
+
+发布时间：2021-12-30 08:15:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeContainerGroupDeployInfo](https://cloud.tencent.com/document/api/649/67221)
+
+新增数据结构：
+
+* [ContainerGroupDeploy](https://cloud.tencent.com/document/api/649/36099#ContainerGroupDeploy)
 
 
 
@@ -27973,6 +28038,48 @@
 
 ## Elasticsearch Service(es) 版本：2018-04-16
 
+### 第 22 次发布
+
+发布时间：2021-12-30 08:09:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstance](https://cloud.tencent.com/document/api/845/30633)
+
+	* 新增出参：DealName
+
+* [DescribeInstances](https://cloud.tencent.com/document/api/845/30631)
+
+	* 新增入参：ZoneList
+
+* [UpdateInstance](https://cloud.tencent.com/document/api/845/30629)
+
+	* 新增出参：DealName
+
+* [UpdatePlugins](https://cloud.tencent.com/document/api/845/46048)
+
+	* 新增入参：PluginType
+
+* [UpgradeLicense](https://cloud.tencent.com/document/api/845/36269)
+
+	* 新增出参：DealName
+
+
+修改数据结构：
+
+* [ClusterView](https://cloud.tencent.com/document/api/845/30634#ClusterView)
+
+	* 新增成员：TotalCosStorage, SearchableSnapshotCosBucket, SearchableSnapshotCosAppId
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/845/30634#InstanceInfo)
+
+	* 新增成员：ColdNodeType, ColdNodeNum, ColdCpuNum, ColdMemSize, ColdDiskType, ColdDiskSize, FrozenNodeType, FrozenNodeNum, FrozenCpuNum, FrozenMemSize, FrozenDiskType, FrozenDiskSize
+
+
 ### 第 21 次发布
 
 发布时间：2021-12-22 16:41:08
@@ -29699,6 +29806,21 @@
 
 
 ## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 26 次发布
+
+发布时间：2021-12-30 08:09:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateProxy](https://cloud.tencent.com/document/api/608/36971)
+
+	* 新增入参：PackageType
+
 
 ### 第 25 次发布
 
@@ -40020,6 +40142,22 @@
 
 ## 云监控(monitor) 版本：2018-07-24
 
+### 第 35 次发布
+
+发布时间：2021-12-30 08:11:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[BindingPolicyTag](https://cloud.tencent.com/document/api/248/67219)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[PolicyTag](https://cloud.tencent.com/document/api/248/30354#PolicyTag)](https://cloud.tencent.com/document/api/248/30354#[PolicyTag](https://cloud.tencent.com/document/api/248/30354#PolicyTag))
+
 ### 第 34 次发布
 
 发布时间：2021-12-29 08:10:29
@@ -44290,6 +44428,22 @@
 
 ## 企业组织(organization) 版本：2021-03-31
 
+### 第 4 次发布
+
+发布时间：2021-12-30 08:12:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeOrganizationMembers](https://cloud.tencent.com/document/api/850/67220)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[OrgMember](https://cloud.tencent.com/document/api/850/67060#OrgMember)](https://cloud.tencent.com/document/api/850/67060#[OrgMember](https://cloud.tencent.com/document/api/850/67060#OrgMember))
+
 ### 第 3 次发布
 
 发布时间：2021-12-28 08:09:51
@@ -45459,15 +45613,15 @@
 
 新增接口：
 
-* [[DescribeRiskAssessment](https://cloud.tencent.com/document/api/1343/67099)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeRiskTrends](https://cloud.tencent.com/document/api/1343/67098)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeRiskAssessment](https://cloud.tencent.com/document/api/1343/67099)
+* [DescribeRiskTrends](https://cloud.tencent.com/document/api/1343/67098)
 
 新增数据结构：
 
-* [[InputFrontRisk](https://cloud.tencent.com/document/api/1343/52566#InputFrontRisk)](https://cloud.tencent.com/document/api/1343/52566#[InputFrontRisk](https://cloud.tencent.com/document/api/1343/52566#InputFrontRisk))
-* [[OutputFrontRisk](https://cloud.tencent.com/document/api/1343/52566#OutputFrontRisk)](https://cloud.tencent.com/document/api/1343/52566#[OutputFrontRisk](https://cloud.tencent.com/document/api/1343/52566#OutputFrontRisk))
-* [[OutputFrontRiskData](https://cloud.tencent.com/document/api/1343/52566#OutputFrontRiskData)](https://cloud.tencent.com/document/api/1343/52566#[OutputFrontRiskData](https://cloud.tencent.com/document/api/1343/52566#OutputFrontRiskData))
-* [[OutputFrontRiskValue](https://cloud.tencent.com/document/api/1343/52566#OutputFrontRiskValue)](https://cloud.tencent.com/document/api/1343/52566#[OutputFrontRiskValue](https://cloud.tencent.com/document/api/1343/52566#OutputFrontRiskValue))
+* [InputFrontRisk](https://cloud.tencent.com/document/api/1343/52566#InputFrontRisk)
+* [OutputFrontRisk](https://cloud.tencent.com/document/api/1343/52566#OutputFrontRisk)
+* [OutputFrontRiskData](https://cloud.tencent.com/document/api/1343/52566#OutputFrontRiskData)
+* [OutputFrontRiskValue](https://cloud.tencent.com/document/api/1343/52566#OutputFrontRiskValue)
 
 ### 第 3 次发布
 
@@ -59666,6 +59820,22 @@
 
 
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 64 次发布
+
+发布时间：2021-12-30 08:15:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeContainerGroupDeployInfo](https://cloud.tencent.com/document/api/649/67221)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ContainerGroupDeploy](https://cloud.tencent.com/document/api/649/36099#ContainerGroupDeploy)](https://cloud.tencent.com/document/api/649/36099#[ContainerGroupDeploy](https://cloud.tencent.com/document/api/649/36099#ContainerGroupDeploy))
 
 ### 第 63 次发布
 

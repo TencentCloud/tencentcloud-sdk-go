@@ -476,6 +476,72 @@ func (r *BindingPolicyObjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type BindingPolicyTagRequest struct {
+	*tchttp.BaseRequest
+
+	// 固定取值 monitor
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 策略ID
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 用于实例、实例组绑定和解绑接口（BindingPolicyObject、UnBindingAllPolicyObject、UnBindingPolicyObject）的策略 ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 策略标签
+	Tag *PolicyTag `json:"Tag,omitempty" name:"Tag"`
+
+	// 产品类型
+	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+
+	// 实例分组ID
+	InstanceGroupId *int64 `json:"InstanceGroupId,omitempty" name:"InstanceGroupId"`
+}
+
+func (r *BindingPolicyTagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindingPolicyTagRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Module")
+	delete(f, "PolicyId")
+	delete(f, "GroupId")
+	delete(f, "Tag")
+	delete(f, "ServiceType")
+	delete(f, "InstanceGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindingPolicyTagRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BindingPolicyTagResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BindingPolicyTagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindingPolicyTagResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CommonNamespace struct {
 
 	// 命名空间标示
@@ -4638,6 +4704,15 @@ type Point struct {
 	// 监控数据点的值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *float64 `json:"Value,omitempty" name:"Value"`
+}
+
+type PolicyTag struct {
+
+	// 标签Key
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 标签Value
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type ProductSimple struct {

@@ -144,6 +144,70 @@ func (r *CreateOrganizationMemberResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeOrganizationMembersRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 国际站：en，国内站：zh
+	Lang *string `json:"Lang,omitempty" name:"Lang"`
+
+	// 成员名或者成员ID搜索
+	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
+}
+
+func (r *DescribeOrganizationMembersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrganizationMembersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Lang")
+	delete(f, "SearchKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrganizationMembersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOrganizationMembersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成员列表
+		Items []*OrgMember `json:"Items,omitempty" name:"Items"`
+
+		// 总数目
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeOrganizationMembersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrganizationMembersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeOrganizationRequest struct {
 	*tchttp.BaseRequest
 
@@ -236,6 +300,57 @@ func (r *DescribeOrganizationResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeOrganizationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type OrgMember struct {
+
+	// 成员Uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemberUin *int64 `json:"MemberUin,omitempty" name:"MemberUin"`
+
+	// 成员名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 成员类型，邀请：Invite， 创建：Create
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemberType *string `json:"MemberType,omitempty" name:"MemberType"`
+
+	// 关系策略类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrgPolicyType *string `json:"OrgPolicyType,omitempty" name:"OrgPolicyType"`
+
+	// 关系策略名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrgPolicyName *string `json:"OrgPolicyName,omitempty" name:"OrgPolicyName"`
+
+	// 关系策略权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrgPermission []*OrgPermission `json:"OrgPermission,omitempty" name:"OrgPermission"`
+
+	// 所属节点ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeId *int64 `json:"NodeId,omitempty" name:"NodeId"`
+
+	// 所属节点名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 是否允许成员退出。允许：Allow，不允许：Denied。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsAllowQuit *string `json:"IsAllowQuit,omitempty" name:"IsAllowQuit"`
 }
 
 type OrgPermission struct {

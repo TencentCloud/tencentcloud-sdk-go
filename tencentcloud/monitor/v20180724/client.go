@@ -76,6 +76,40 @@ func (c *Client) BindingPolicyObject(request *BindingPolicyObjectRequest) (respo
     return
 }
 
+func NewBindingPolicyTagRequest() (request *BindingPolicyTagRequest) {
+    request = &BindingPolicyTagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "BindingPolicyTag")
+    
+    
+    return
+}
+
+func NewBindingPolicyTagResponse() (response *BindingPolicyTagResponse) {
+    response = &BindingPolicyTagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BindingPolicyTag
+// 策略绑定标签
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) BindingPolicyTag(request *BindingPolicyTagRequest) (response *BindingPolicyTagResponse, err error) {
+    if request == nil {
+        request = NewBindingPolicyTagRequest()
+    }
+    
+    response = NewBindingPolicyTagResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAlarmNoticeRequest() (request *CreateAlarmNoticeRequest) {
     request = &CreateAlarmNoticeRequest{
         BaseRequest: &tchttp.BaseRequest{},

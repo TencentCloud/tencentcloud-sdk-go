@@ -1,3 +1,134 @@
+# Release v1.0.323
+
+## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 22 次发布
+
+发布时间：2021-12-30 08:09:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstance](https://cloud.tencent.com/document/api/845/30633)
+
+	* 新增出参：DealName
+
+* [DescribeInstances](https://cloud.tencent.com/document/api/845/30631)
+
+	* 新增入参：ZoneList
+
+* [UpdateInstance](https://cloud.tencent.com/document/api/845/30629)
+
+	* 新增出参：DealName
+
+* [UpdatePlugins](https://cloud.tencent.com/document/api/845/46048)
+
+	* 新增入参：PluginType
+
+* [UpgradeLicense](https://cloud.tencent.com/document/api/845/36269)
+
+	* 新增出参：DealName
+
+
+修改数据结构：
+
+* [ClusterView](https://cloud.tencent.com/document/api/845/30634#ClusterView)
+
+	* 新增成员：TotalCosStorage, SearchableSnapshotCosBucket, SearchableSnapshotCosAppId
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/845/30634#InstanceInfo)
+
+	* 新增成员：ColdNodeType, ColdNodeNum, ColdCpuNum, ColdMemSize, ColdDiskType, ColdDiskSize, FrozenNodeType, FrozenNodeNum, FrozenCpuNum, FrozenMemSize, FrozenDiskType, FrozenDiskSize
+
+
+
+
+## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 26 次发布
+
+发布时间：2021-12-30 08:09:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateProxy](https://cloud.tencent.com/document/api/608/36971)
+
+	* 新增入参：PackageType
+
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 35 次发布
+
+发布时间：2021-12-30 08:11:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BindingPolicyTag](https://cloud.tencent.com/document/api/248/67219)
+
+新增数据结构：
+
+* [PolicyTag](https://cloud.tencent.com/document/api/248/30354#PolicyTag)
+
+
+
+## 企业组织(organization) 版本：2021-03-31
+
+### 第 4 次发布
+
+发布时间：2021-12-30 08:12:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeOrganizationMembers](https://cloud.tencent.com/document/api/850/67220)
+
+新增数据结构：
+
+* [OrgMember](https://cloud.tencent.com/document/api/850/67060#OrgMember)
+
+
+
+## 企业组织(organization) 版本：2018-12-25
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 64 次发布
+
+发布时间：2021-12-30 08:15:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeContainerGroupDeployInfo](https://cloud.tencent.com/document/api/649/67221)
+
+新增数据结构：
+
+* [ContainerGroupDeploy](https://cloud.tencent.com/document/api/649/36099#ContainerGroupDeploy)
+
+
+
 # Release v1.0.322
 
 ## 云监控(monitor) 版本：2018-07-24
