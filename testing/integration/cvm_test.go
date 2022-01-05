@@ -17,7 +17,6 @@ package integration
 import (
 	"fmt"
 	"os"
-	"strings"
 	"testing"
 
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
@@ -57,15 +56,15 @@ func TestDescribeInstancesSignV1Get(t *testing.T) {
 }
 
 func TestEmptyStringGetSignV1HmacSHA1(t *testing.T) {
-	testEmptyStringGet(t, "HmacSHA1")
+    testEmptyStringGet(t, "HmacSHA1")
 }
 
 func TestEmptyStringGetSignV1HmacSHA256(t *testing.T) {
-	testEmptyStringGet(t, "HmacSHA256")
+    testEmptyStringGet(t, "HmacSHA256")
 }
 
 func TestEmptyStringGetSignV3(t *testing.T) {
-	testEmptyStringGet(t, "TC3-HMAC-SHA256")
+    testEmptyStringGet(t, "TC3-HMAC-SHA256")
 }
 
 func testEmptyStringGet(t *testing.T, method string) {
@@ -120,66 +119,5 @@ func TestDescribeInstances(t *testing.T) {
 	}
 	if *response.Response.TotalCount != (int64)(len(response.Response.InstanceSet)) {
 		t.Errorf("response item count inconsisitent!")
-	}
-}
-
-// Payload limit
-// GET: 32 KB
-// POST + HmacSHA1: 1 MB
-// POST + HmacSHA256: 1 MB
-// POST + TC3-HMAC-SHA256: 10 MB
-func TestPayloadLimit(t *testing.T) {
-	const (
-		KB = 1024
-		MB = 1024 * KB
-	)
-	testCases := []struct {
-		reqMethod  string
-		signMethod string
-		payload    int
-		pass       bool
-	}{
-		{reqMethod: "GET", signMethod: "HmacSHA256", payload: 32 * KB, pass: true},
-		{reqMethod: "GET", signMethod: "HmacSHA256", payload: 33 * KB, pass: false},
-		{reqMethod: "POST", signMethod: "HmacSHA1", payload: 10 * MB, pass: true},
-		{reqMethod: "POST", signMethod: "HmacSHA1", payload: 1*MB + 10*KB, pass: false},
-		{reqMethod: "POST", signMethod: "HmacSHA256", payload: 1 * MB, pass: true},
-		{reqMethod: "POST", signMethod: "HmacSHA256", payload: 1*MB + 10*KB, pass: false},
-		{reqMethod: "POST", signMethod: "TC3-HMAC-SHA256", payload: 9 * MB, pass: true},
-		{reqMethod: "POST", signMethod: "TC3-HMAC-SHA256", payload: 11 * MB, pass: false},
-	}
-
-	for _, tc := range testCases {
-		cpf := profile.NewClientProfile()
-		cpf.HttpProfile.ReqMethod = tc.reqMethod
-		cpf.SignMethod = tc.signMethod
-		client, err := cvm.NewClient(getCredential(), regions.Guangzhou, cpf)
-		if err != nil {
-			t.Fatalf("fail to init client: %v", err)
-		}
-
-		req := cvm.NewDescribeInstancesRequest()
-		req.InstanceIds = []*string{
-			common.StringPtr(strings.Repeat("A", tc.payload)),
-		}
-		_, err = client.DescribeInstances(req)
-
-		if err == nil {
-			t.Fatalf("expect return error ")
-		}
-
-		tcErr, ok := err.(*errors.TencentCloudSDKError)
-		if !ok {
-			t.Fatalf("expect return TencentCloudSDKError, got %t", err)
-		}
-
-		isLimitError := tcErr.Code == "AuthFailure.SignatureFailure" ||
-			tcErr.Code == "RequestSizeLimitExceeded" ||
-			tcErr.Code == "ClientError.ParseJsonError"
-
-		if !tc.pass && !isLimitError {
-			t.Fatalf("test fail, reqMethod: %s, signMethod: %s, payload: %d, err: %s",
-				tc.reqMethod, tc.signMethod, tc.payload, err)
-		}
 	}
 }
