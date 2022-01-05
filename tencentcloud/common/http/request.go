@@ -1,6 +1,7 @@
 package common
 
 import (
+	"context"
 	"io"
 	//"log"
 	"math/rand"
@@ -37,6 +38,7 @@ type Request interface {
 	GetUrl() string
 	GetVersion() string
 	GetContentType() string
+	GetContext() context.Context
 	SetScheme(string)
 	SetRootDomain(string)
 	SetDomain(string)
@@ -44,9 +46,11 @@ type Request interface {
 	SetPath(string)
 	SetContentType(string)
 	SetBody([]byte)
+	SetContext(context.Context)
 }
 
 type BaseRequest struct {
+	context    context.Context
 	httpMethod string
 	scheme     string
 	rootDomain string
@@ -171,6 +175,17 @@ func (r *BaseRequest) GetUrl() string {
 
 func (r *BaseRequest) GetVersion() string {
 	return r.version
+}
+
+func (r *BaseRequest) GetContext() context.Context {
+	if r.context == nil {
+		return context.Background()
+	}
+	return r.context
+}
+
+func (r *BaseRequest) SetContext(ctx context.Context) {
+	r.context = ctx
 }
 
 func GetUrlQueriesEncoded(params map[string]string) string {
