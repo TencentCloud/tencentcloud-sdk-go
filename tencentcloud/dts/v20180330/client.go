@@ -15,6 +15,7 @@
 package v20180330
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -82,6 +83,29 @@ func (c *Client) ActivateSubscribe(request *ActivateSubscribeRequest) (response 
     return
 }
 
+// ActivateSubscribe
+// 本接口用于配置数据订阅，只有在未配置状态的订阅实例才能调用此接口。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ActivateSubscribeWithContext(ctx context.Context, request *ActivateSubscribeRequest) (response *ActivateSubscribeResponse, err error) {
+    if request == nil {
+        request = NewActivateSubscribeRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewActivateSubscribeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCompleteMigrateJobRequest() (request *CompleteMigrateJobRequest) {
     request = &CompleteMigrateJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -113,12 +137,41 @@ func NewCompleteMigrateJobResponse() (response *CompleteMigrateJobResponse) {
 //  INTERNALERROR_DUPLICATEJOB = "InternalError.DuplicateJob"
 //  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED_JOBOPERATIONDENIEDERROR = "OperationDenied.JobOperationDeniedError"
 //  RESOURCENOTFOUND_JOBNOTEXIST = "ResourceNotFound.JobNotExist"
 //  UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = "UnauthorizedOperation.NotEnoughPrivileges"
 func (c *Client) CompleteMigrateJob(request *CompleteMigrateJobRequest) (response *CompleteMigrateJobResponse, err error) {
     if request == nil {
         request = NewCompleteMigrateJobRequest()
     }
+    
+    response = NewCompleteMigrateJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CompleteMigrateJob
+// 本接口（CompleteMigrateJob）用于完成数据迁移任务。
+//
+// 选择采用增量迁移方式的任务, 需要在迁移进度进入准备完成阶段后, 调用本接口, 停止迁移增量数据。
+//
+// 通过DescribeMigrateJobs接口查询到任务的状态为准备完成（status=8）时，此时可以调用本接口完成迁移任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTALLOWOPERATION = "FailedOperation.NotAllowOperation"
+//  FAILEDOPERATION_STATUSINCONFLICT = "FailedOperation.StatusInConflict"
+//  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
+//  INTERNALERROR_DUPLICATEJOB = "InternalError.DuplicateJob"
+//  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED_JOBOPERATIONDENIEDERROR = "OperationDenied.JobOperationDeniedError"
+//  RESOURCENOTFOUND_JOBNOTEXIST = "ResourceNotFound.JobNotExist"
+//  UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = "UnauthorizedOperation.NotEnoughPrivileges"
+func (c *Client) CompleteMigrateJobWithContext(ctx context.Context, request *CompleteMigrateJobRequest) (response *CompleteMigrateJobResponse, err error) {
+    if request == nil {
+        request = NewCompleteMigrateJobRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCompleteMigrateJobResponse()
     err = c.Send(request, response)
@@ -172,6 +225,37 @@ func (c *Client) CreateMigrateCheckJob(request *CreateMigrateCheckJobRequest) (r
     return
 }
 
+// CreateMigrateCheckJob
+// 创建校验迁移任务
+//
+// 在开始迁移前, 必须调用本接口创建校验, 且校验成功后才能开始迁移. 校验的结果可以通过DescribeMigrateCheckJob查看.
+//
+// 校验成功后,迁移任务若有修改, 则必须重新创建校验并通过后, 才能开始迁移.
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTALLOWOPERATION = "FailedOperation.NotAllowOperation"
+//  INTERNALERROR_ADDTASKERROR = "InternalError.AddTaskError"
+//  INTERNALERROR_CGWSYSTEMERROR = "InternalError.CgwSystemError"
+//  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
+//  INTERNALERROR_DUPLICATEJOB = "InternalError.DuplicateJob"
+//  INTERNALERROR_LOCKERROR = "InternalError.LockError"
+//  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  LIMITEXCEEDED_MAXUNUSEDJOBS = "LimitExceeded.MaxUnusedJobs"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_JOBNOTEXIST = "ResourceNotFound.JobNotExist"
+func (c *Client) CreateMigrateCheckJobWithContext(ctx context.Context, request *CreateMigrateCheckJobRequest) (response *CreateMigrateCheckJobResponse, err error) {
+    if request == nil {
+        request = NewCreateMigrateCheckJobRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateMigrateCheckJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateMigrateJobRequest() (request *CreateMigrateJobRequest) {
     request = &CreateMigrateJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -217,6 +301,35 @@ func (c *Client) CreateMigrateJob(request *CreateMigrateJobRequest) (response *C
     return
 }
 
+// CreateMigrateJob
+// 本接口（CreateMigrateJob）用于创建数据迁移任务。
+//
+// 
+//
+// 如果是金融区链路, 请使用域名: dts.ap-shenzhen-fsi.tencentcloudapi.com
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATIONERROR = "AuthFailure.UnauthorizedOperationError"
+//  FAILEDOPERATION_NOTALLOWOPERATION = "FailedOperation.NotAllowOperation"
+//  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
+//  INTERNALERROR_DUPLICATEJOB = "InternalError.DuplicateJob"
+//  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BIZINVALIDPARAMETERVALUEERROR = "InvalidParameter.BizInvalidParameterValueError"
+//  LIMITEXCEEDED_MAXUNUSEDJOBS = "LimitExceeded.MaxUnusedJobs"
+//  UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = "UnauthorizedOperation.NotEnoughPrivileges"
+func (c *Client) CreateMigrateJobWithContext(ctx context.Context, request *CreateMigrateJobRequest) (response *CreateMigrateJobResponse, err error) {
+    if request == nil {
+        request = NewCreateMigrateJobRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateMigrateJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSubscribeRequest() (request *CreateSubscribeRequest) {
     request = &CreateSubscribeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -252,6 +365,25 @@ func (c *Client) CreateSubscribe(request *CreateSubscribeRequest) (response *Cre
     return
 }
 
+// CreateSubscribe
+// 本接口(CreateSubscribe)用于创建一个数据订阅实例。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
+func (c *Client) CreateSubscribeWithContext(ctx context.Context, request *CreateSubscribeRequest) (response *CreateSubscribeResponse, err error) {
+    if request == nil {
+        request = NewCreateSubscribeRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateSubscribeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteMigrateJobRequest() (request *DeleteMigrateJobRequest) {
     request = &DeleteMigrateJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -280,6 +412,7 @@ func NewDeleteMigrateJobResponse() (response *DeleteMigrateJobResponse) {
 //  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
 //  INTERNALERROR_DUPLICATEJOB = "InternalError.DuplicateJob"
 //  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  OPERATIONDENIED_JOBOPERATIONDENIEDERROR = "OperationDenied.JobOperationDeniedError"
@@ -291,6 +424,36 @@ func (c *Client) DeleteMigrateJob(request *DeleteMigrateJobRequest) (response *D
     if request == nil {
         request = NewDeleteMigrateJobRequest()
     }
+    
+    response = NewDeleteMigrateJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteMigrateJob
+// 本接口（DeleteMigrationJob）用于删除数据迁移任务。当通过DescribeMigrateJobs接口查询到任务的状态为：检验中（status=3）、运行中（status=7）、准备完成（status=8）、撤销中（status=11）或者完成中（status=12）时，不允许删除任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTALLOWOPERATION = "FailedOperation.NotAllowOperation"
+//  FAILEDOPERATION_STATUSINCONFLICT = "FailedOperation.StatusInConflict"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CELERYERROR = "InternalError.CeleryError"
+//  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
+//  INTERNALERROR_DUPLICATEJOB = "InternalError.DuplicateJob"
+//  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED_JOBOPERATIONDENIEDERROR = "OperationDenied.JobOperationDeniedError"
+//  OPERATIONDENIED_MIGRATESERVICESUPPORTERROR = "OperationDenied.MigrateServiceSupportError"
+//  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
+//  RESOURCENOTFOUND_JOBNOTEXIST = "ResourceNotFound.JobNotExist"
+//  UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = "UnauthorizedOperation.NotEnoughPrivileges"
+func (c *Client) DeleteMigrateJobWithContext(ctx context.Context, request *DeleteMigrateJobRequest) (response *DeleteMigrateJobResponse, err error) {
+    if request == nil {
+        request = NewDeleteMigrateJobRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteMigrateJobResponse()
     err = c.Send(request, response)
@@ -327,6 +490,26 @@ func (c *Client) DescribeAsyncRequestInfo(request *DescribeAsyncRequestInfoReque
     if request == nil {
         request = NewDescribeAsyncRequestInfoRequest()
     }
+    
+    response = NewDescribeAsyncRequestInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAsyncRequestInfo
+// 本接口（DescribeAsyncRequestInfo）用于查询任务执行结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAsyncRequestInfoWithContext(ctx context.Context, request *DescribeAsyncRequestInfoRequest) (response *DescribeAsyncRequestInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeAsyncRequestInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAsyncRequestInfoResponse()
     err = c.Send(request, response)
@@ -373,6 +556,30 @@ func (c *Client) DescribeMigrateCheckJob(request *DescribeMigrateCheckJobRequest
     return
 }
 
+// DescribeMigrateCheckJob
+// 本接口用于创建校验后,获取校验的结果. 能查询到当前校验的状态和进度. 
+//
+// 若通过校验, 则可调用'StartMigrateJob' 开始迁移.
+//
+// 若未通过校验, 则能查询到校验失败的原因. 请按照报错, 通过'ModifyMigrateJob'修改迁移配置或是调整源/目标实例的相关参数.
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTALLOWOPERATION = "FailedOperation.NotAllowOperation"
+//  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
+//  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_JOBNOTEXIST = "ResourceNotFound.JobNotExist"
+func (c *Client) DescribeMigrateCheckJobWithContext(ctx context.Context, request *DescribeMigrateCheckJobRequest) (response *DescribeMigrateCheckJobResponse, err error) {
+    if request == nil {
+        request = NewDescribeMigrateCheckJobRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeMigrateCheckJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMigrateJobsRequest() (request *DescribeMigrateJobsRequest) {
     request = &DescribeMigrateJobsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -413,6 +620,30 @@ func (c *Client) DescribeMigrateJobs(request *DescribeMigrateJobsRequest) (respo
     return
 }
 
+// DescribeMigrateJobs
+// 查询数据迁移任务.
+//
+// 如果是金融区链路, 请使用域名: https://dts.ap-shenzhen-fsi.tencentcloudapi.com
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATIONERROR = "AuthFailure.UnauthorizedOperationError"
+//  FAILEDOPERATION_NOTALLOWOPERATION = "FailedOperation.NotAllowOperation"
+//  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
+//  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = "UnauthorizedOperation.NotEnoughPrivileges"
+func (c *Client) DescribeMigrateJobsWithContext(ctx context.Context, request *DescribeMigrateJobsRequest) (response *DescribeMigrateJobsResponse, err error) {
+    if request == nil {
+        request = NewDescribeMigrateJobsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeMigrateJobsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRegionConfRequest() (request *DescribeRegionConfRequest) {
     request = &DescribeRegionConfRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -441,6 +672,24 @@ func (c *Client) DescribeRegionConf(request *DescribeRegionConfRequest) (respons
     if request == nil {
         request = NewDescribeRegionConfRequest()
     }
+    
+    response = NewDescribeRegionConfResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeRegionConf
+// 本接口（DescribeRegionConf）用于查询可售卖订阅实例的地域
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRegionConfWithContext(ctx context.Context, request *DescribeRegionConfRequest) (response *DescribeRegionConfResponse, err error) {
+    if request == nil {
+        request = NewDescribeRegionConfRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeRegionConfResponse()
     err = c.Send(request, response)
@@ -483,6 +732,26 @@ func (c *Client) DescribeSubscribeConf(request *DescribeSubscribeConfRequest) (r
     return
 }
 
+// DescribeSubscribeConf
+// 本接口（DescribeSubscribeConf）用于查询订阅实例配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+func (c *Client) DescribeSubscribeConfWithContext(ctx context.Context, request *DescribeSubscribeConfRequest) (response *DescribeSubscribeConfResponse, err error) {
+    if request == nil {
+        request = NewDescribeSubscribeConfRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeSubscribeConfResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSubscribesRequest() (request *DescribeSubscribesRequest) {
     request = &DescribeSubscribesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -504,12 +773,31 @@ func NewDescribeSubscribesResponse() (response *DescribeSubscribesResponse) {
 // 本接口(DescribeSubscribes)获取数据订阅实例信息列表，默认分页，每次返回20条
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATIONERROR = "AuthFailure.UnauthorizedOperationError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeSubscribes(request *DescribeSubscribesRequest) (response *DescribeSubscribesResponse, err error) {
     if request == nil {
         request = NewDescribeSubscribesRequest()
     }
+    
+    response = NewDescribeSubscribesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeSubscribes
+// 本接口(DescribeSubscribes)获取数据订阅实例信息列表，默认分页，每次返回20条
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATIONERROR = "AuthFailure.UnauthorizedOperationError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeSubscribesWithContext(ctx context.Context, request *DescribeSubscribesRequest) (response *DescribeSubscribesResponse, err error) {
+    if request == nil {
+        request = NewDescribeSubscribesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeSubscribesResponse()
     err = c.Send(request, response)
@@ -546,6 +834,26 @@ func (c *Client) IsolateSubscribe(request *IsolateSubscribeRequest) (response *I
     if request == nil {
         request = NewIsolateSubscribeRequest()
     }
+    
+    response = NewIsolateSubscribeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// IsolateSubscribe
+// 本接口（IsolateSubscribe）用于隔离小时计费的订阅实例。调用后，订阅实例将不能使用，同时停止计费。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BIZINVALIDPARAMETERVALUEERROR = "InvalidParameter.BizInvalidParameterValueError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) IsolateSubscribeWithContext(ctx context.Context, request *IsolateSubscribeRequest) (response *IsolateSubscribeResponse, err error) {
+    if request == nil {
+        request = NewIsolateSubscribeRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewIsolateSubscribeResponse()
     err = c.Send(request, response)
@@ -596,6 +904,34 @@ func (c *Client) ModifyMigrateJob(request *ModifyMigrateJobRequest) (response *M
     return
 }
 
+// ModifyMigrateJob
+// 本接口（ModifyMigrateJob）用于修改数据迁移任务。
+//
+// 当迁移任务处于下述状态时，允许调用本接口修改迁移任务：迁移创建中（status=1）、 校验成功(status=4)、校验失败(status=5)、迁移失败(status=10)。但源实例、目标实例类型和目标实例地域不允许修改。
+//
+// 
+//
+// 如果是金融区链路, 请使用域名: dts.ap-shenzhen-fsi.tencentcloudapi.com
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTALLOWOPERATION = "FailedOperation.NotAllowOperation"
+//  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
+//  INTERNALERROR_DUPLICATEJOB = "InternalError.DuplicateJob"
+//  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_JOBNOTEXIST = "ResourceNotFound.JobNotExist"
+//  UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = "UnauthorizedOperation.NotEnoughPrivileges"
+func (c *Client) ModifyMigrateJobWithContext(ctx context.Context, request *ModifyMigrateJobRequest) (response *ModifyMigrateJobResponse, err error) {
+    if request == nil {
+        request = NewModifyMigrateJobRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyMigrateJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifySubscribeAutoRenewFlagRequest() (request *ModifySubscribeAutoRenewFlagRequest) {
     request = &ModifySubscribeAutoRenewFlagRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -624,6 +960,24 @@ func (c *Client) ModifySubscribeAutoRenewFlag(request *ModifySubscribeAutoRenewF
     if request == nil {
         request = NewModifySubscribeAutoRenewFlagRequest()
     }
+    
+    response = NewModifySubscribeAutoRenewFlagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifySubscribeAutoRenewFlag
+// 修改订阅实例自动续费标识
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifySubscribeAutoRenewFlagWithContext(ctx context.Context, request *ModifySubscribeAutoRenewFlagRequest) (response *ModifySubscribeAutoRenewFlagResponse, err error) {
+    if request == nil {
+        request = NewModifySubscribeAutoRenewFlagRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifySubscribeAutoRenewFlagResponse()
     err = c.Send(request, response)
@@ -666,6 +1020,26 @@ func (c *Client) ModifySubscribeConsumeTime(request *ModifySubscribeConsumeTimeR
     return
 }
 
+// ModifySubscribeConsumeTime
+// 本接口(ModifySubscribeConsumeTime)用于修改数据订阅通道的消费时间点
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STATUSINCONFLICT = "FailedOperation.StatusInConflict"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifySubscribeConsumeTimeWithContext(ctx context.Context, request *ModifySubscribeConsumeTimeRequest) (response *ModifySubscribeConsumeTimeResponse, err error) {
+    if request == nil {
+        request = NewModifySubscribeConsumeTimeRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifySubscribeConsumeTimeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifySubscribeNameRequest() (request *ModifySubscribeNameRequest) {
     request = &ModifySubscribeNameRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -694,6 +1068,24 @@ func (c *Client) ModifySubscribeName(request *ModifySubscribeNameRequest) (respo
     if request == nil {
         request = NewModifySubscribeNameRequest()
     }
+    
+    response = NewModifySubscribeNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifySubscribeName
+// 本接口(ModifySubscribeName)用于修改数据订阅实例的名称
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifySubscribeNameWithContext(ctx context.Context, request *ModifySubscribeNameRequest) (response *ModifySubscribeNameResponse, err error) {
+    if request == nil {
+        request = NewModifySubscribeNameRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifySubscribeNameResponse()
     err = c.Send(request, response)
@@ -736,6 +1128,26 @@ func (c *Client) ModifySubscribeObjects(request *ModifySubscribeObjectsRequest) 
     return
 }
 
+// ModifySubscribeObjects
+// 本接口(ModifySubscribeObjects)用于修改数据订阅通道的订阅规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STATUSINCONFLICT = "FailedOperation.StatusInConflict"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifySubscribeObjectsWithContext(ctx context.Context, request *ModifySubscribeObjectsRequest) (response *ModifySubscribeObjectsResponse, err error) {
+    if request == nil {
+        request = NewModifySubscribeObjectsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifySubscribeObjectsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifySubscribeVipVportRequest() (request *ModifySubscribeVipVportRequest) {
     request = &ModifySubscribeVipVportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -771,6 +1183,25 @@ func (c *Client) ModifySubscribeVipVport(request *ModifySubscribeVipVportRequest
     return
 }
 
+// ModifySubscribeVipVport
+// 本接口(ModifySubscribeVipVport)用于修改数据订阅实例的IP和端口号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STATUSINCONFLICT = "FailedOperation.StatusInConflict"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifySubscribeVipVportWithContext(ctx context.Context, request *ModifySubscribeVipVportRequest) (response *ModifySubscribeVipVportResponse, err error) {
+    if request == nil {
+        request = NewModifySubscribeVipVportRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifySubscribeVipVportResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewOfflineIsolatedSubscribeRequest() (request *OfflineIsolatedSubscribeRequest) {
     request = &OfflineIsolatedSubscribeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -800,6 +1231,25 @@ func (c *Client) OfflineIsolatedSubscribe(request *OfflineIsolatedSubscribeReque
     if request == nil {
         request = NewOfflineIsolatedSubscribeRequest()
     }
+    
+    response = NewOfflineIsolatedSubscribeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// OfflineIsolatedSubscribe
+// 本接口（OfflineIsolatedSubscribe）用于下线已隔离的数据订阅实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STATUSINCONFLICT = "FailedOperation.StatusInConflict"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) OfflineIsolatedSubscribeWithContext(ctx context.Context, request *OfflineIsolatedSubscribeRequest) (response *OfflineIsolatedSubscribeResponse, err error) {
+    if request == nil {
+        request = NewOfflineIsolatedSubscribeRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewOfflineIsolatedSubscribeResponse()
     err = c.Send(request, response)
@@ -842,6 +1292,26 @@ func (c *Client) ResetSubscribe(request *ResetSubscribeRequest) (response *Reset
     return
 }
 
+// ResetSubscribe
+// 本接口(ResetSubscribe)用于重置数据订阅实例，已经激活的数据订阅实例，重置后可以使用ActivateSubscribe接口绑定其他的数据库实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STATUSINCONFLICT = "FailedOperation.StatusInConflict"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ResetSubscribeWithContext(ctx context.Context, request *ResetSubscribeRequest) (response *ResetSubscribeResponse, err error) {
+    if request == nil {
+        request = NewResetSubscribeRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewResetSubscribeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStartMigrateJobRequest() (request *StartMigrateJobRequest) {
     request = &StartMigrateJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -875,11 +1345,41 @@ func NewStartMigrateJobResponse() (response *StartMigrateJobResponse) {
 //  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED_MAXUNUSEDJOBS = "LimitExceeded.MaxUnusedJobs"
+//  OPERATIONDENIED_JOBOPERATIONDENIEDERROR = "OperationDenied.JobOperationDeniedError"
 //  RESOURCENOTFOUND_JOBNOTEXIST = "ResourceNotFound.JobNotExist"
 func (c *Client) StartMigrateJob(request *StartMigrateJobRequest) (response *StartMigrateJobResponse, err error) {
     if request == nil {
         request = NewStartMigrateJobRequest()
     }
+    
+    response = NewStartMigrateJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// StartMigrateJob
+// 本接口（StartMigrationJob）用于启动迁移任务。非定时迁移任务会在调用后立即开始迁移，定时任务则会开始倒计时。
+//
+// 调用此接口前，请务必先使用CreateMigrateCheckJob校验数据迁移任务，并通过DescribeMigrateJobs接口查询到任务状态为校验通过（status=4）时，才能启动数据迁移任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTALLOWOPERATION = "FailedOperation.NotAllowOperation"
+//  FAILEDOPERATION_STARTJOBFAILED = "FailedOperation.StartJobFailed"
+//  FAILEDOPERATION_STATUSINCONFLICT = "FailedOperation.StatusInConflict"
+//  INTERNALERROR_ADDTASKERROR = "InternalError.AddTaskError"
+//  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
+//  INTERNALERROR_DUPLICATEJOB = "InternalError.DuplicateJob"
+//  INTERNALERROR_LOCKERROR = "InternalError.LockError"
+//  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_MAXUNUSEDJOBS = "LimitExceeded.MaxUnusedJobs"
+//  OPERATIONDENIED_JOBOPERATIONDENIEDERROR = "OperationDenied.JobOperationDeniedError"
+//  RESOURCENOTFOUND_JOBNOTEXIST = "ResourceNotFound.JobNotExist"
+func (c *Client) StartMigrateJobWithContext(ctx context.Context, request *StartMigrateJobRequest) (response *StartMigrateJobResponse, err error) {
+    if request == nil {
+        request = NewStartMigrateJobRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewStartMigrateJobResponse()
     err = c.Send(request, response)
@@ -915,11 +1415,37 @@ func NewStopMigrateJobResponse() (response *StopMigrateJobResponse) {
 //  INTERNALERROR_DUPLICATEJOB = "InternalError.DuplicateJob"
 //  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED_JOBOPERATIONDENIEDERROR = "OperationDenied.JobOperationDeniedError"
 //  RESOURCENOTFOUND_JOBNOTEXIST = "ResourceNotFound.JobNotExist"
 func (c *Client) StopMigrateJob(request *StopMigrateJobRequest) (response *StopMigrateJobResponse, err error) {
     if request == nil {
         request = NewStopMigrateJobRequest()
     }
+    
+    response = NewStopMigrateJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// StopMigrateJob
+// 本接口（StopMigrateJob）用于撤销数据迁移任务。
+//
+// 在迁移过程中允许调用该接口撤销迁移, 撤销迁移的任务会失败。通过DescribeMigrateJobs接口查询到任务状态为运行中（status=7）或准备完成（status=8）时，才能撤销数据迁移任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTALLOWOPERATION = "FailedOperation.NotAllowOperation"
+//  FAILEDOPERATION_STATUSINCONFLICT = "FailedOperation.StatusInConflict"
+//  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
+//  INTERNALERROR_DUPLICATEJOB = "InternalError.DuplicateJob"
+//  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED_JOBOPERATIONDENIEDERROR = "OperationDenied.JobOperationDeniedError"
+//  RESOURCENOTFOUND_JOBNOTEXIST = "ResourceNotFound.JobNotExist"
+func (c *Client) StopMigrateJobWithContext(ctx context.Context, request *StopMigrateJobRequest) (response *StopMigrateJobResponse, err error) {
+    if request == nil {
+        request = NewStopMigrateJobRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewStopMigrateJobResponse()
     err = c.Send(request, response)

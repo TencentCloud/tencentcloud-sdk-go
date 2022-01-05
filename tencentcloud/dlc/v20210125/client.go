@@ -15,6 +15,7 @@
 package v20210125
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -77,6 +78,24 @@ func (c *Client) AddUsersToWorkGroup(request *AddUsersToWorkGroupRequest) (respo
     return
 }
 
+// AddUsersToWorkGroup
+// 添加用户到工作组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDGROUPID = "InvalidParameter.InvalidGroupId"
+//  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
+func (c *Client) AddUsersToWorkGroupWithContext(ctx context.Context, request *AddUsersToWorkGroupRequest) (response *AddUsersToWorkGroupResponse, err error) {
+    if request == nil {
+        request = NewAddUsersToWorkGroupRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewAddUsersToWorkGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAttachUserPolicyRequest() (request *AttachUserPolicyRequest) {
     request = &AttachUserPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -110,6 +129,23 @@ func (c *Client) AttachUserPolicy(request *AttachUserPolicyRequest) (response *A
     return
 }
 
+// AttachUserPolicy
+// 绑定鉴权策略到用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
+func (c *Client) AttachUserPolicyWithContext(ctx context.Context, request *AttachUserPolicyRequest) (response *AttachUserPolicyResponse, err error) {
+    if request == nil {
+        request = NewAttachUserPolicyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewAttachUserPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAttachWorkGroupPolicyRequest() (request *AttachWorkGroupPolicyRequest) {
     request = &AttachWorkGroupPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -136,6 +172,22 @@ func (c *Client) AttachWorkGroupPolicy(request *AttachWorkGroupPolicyRequest) (r
     if request == nil {
         request = NewAttachWorkGroupPolicyRequest()
     }
+    
+    response = NewAttachWorkGroupPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// AttachWorkGroupPolicy
+// 绑定鉴权策略到工作组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) AttachWorkGroupPolicyWithContext(ctx context.Context, request *AttachWorkGroupPolicyRequest) (response *AttachWorkGroupPolicyResponse, err error) {
+    if request == nil {
+        request = NewAttachWorkGroupPolicyRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewAttachWorkGroupPolicyResponse()
     err = c.Send(request, response)
@@ -176,6 +228,24 @@ func (c *Client) BindWorkGroupsToUser(request *BindWorkGroupsToUserRequest) (res
     return
 }
 
+// BindWorkGroupsToUser
+// 绑定工作组到用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
+//  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
+func (c *Client) BindWorkGroupsToUserWithContext(ctx context.Context, request *BindWorkGroupsToUserRequest) (response *BindWorkGroupsToUserResponse, err error) {
+    if request == nil {
+        request = NewBindWorkGroupsToUserRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewBindWorkGroupsToUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCancelTaskRequest() (request *CancelTaskRequest) {
     request = &CancelTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -210,6 +280,24 @@ func (c *Client) CancelTask(request *CancelTaskRequest) (response *CancelTaskRes
     return
 }
 
+// CancelTask
+// 本接口（CancelTask），用于取消任务执行
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ANOTHERREQUESTPROCESSING = "FailedOperation.AnotherRequestProcessing"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_TASKALREADYFINISHED = "InvalidParameter.TaskAlreadyFinished"
+func (c *Client) CancelTaskWithContext(ctx context.Context, request *CancelTaskRequest) (response *CancelTaskResponse, err error) {
+    if request == nil {
+        request = NewCancelTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCancelTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDatabaseRequest() (request *CreateDatabaseRequest) {
     request = &CreateDatabaseRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -237,6 +325,23 @@ func (c *Client) CreateDatabase(request *CreateDatabaseRequest) (response *Creat
     if request == nil {
         request = NewCreateDatabaseRequest()
     }
+    
+    response = NewCreateDatabaseResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateDatabase
+// 本接口（CreateDatabase）用于生成建库SQL语句。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateDatabaseWithContext(ctx context.Context, request *CreateDatabaseRequest) (response *CreateDatabaseResponse, err error) {
+    if request == nil {
+        request = NewCreateDatabaseRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateDatabaseResponse()
     err = c.Send(request, response)
@@ -277,6 +382,24 @@ func (c *Client) CreateScript(request *CreateScriptRequest) (response *CreateScr
     return
 }
 
+// CreateScript
+// 该接口（CreateScript）用于创建sql脚本。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateScriptWithContext(ctx context.Context, request *CreateScriptRequest) (response *CreateScriptResponse, err error) {
+    if request == nil {
+        request = NewCreateScriptRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateScriptResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateStoreLocationRequest() (request *CreateStoreLocationRequest) {
     request = &CreateStoreLocationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -311,6 +434,24 @@ func (c *Client) CreateStoreLocation(request *CreateStoreLocationRequest) (respo
     return
 }
 
+// CreateStoreLocation
+// 该接口（CreateStoreLocation）新增或覆盖计算结果存储位置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
+func (c *Client) CreateStoreLocationWithContext(ctx context.Context, request *CreateStoreLocationRequest) (response *CreateStoreLocationResponse, err error) {
+    if request == nil {
+        request = NewCreateStoreLocationRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateStoreLocationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTableRequest() (request *CreateTableRequest) {
     request = &CreateTableRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -339,6 +480,24 @@ func (c *Client) CreateTable(request *CreateTableRequest) (response *CreateTable
     if request == nil {
         request = NewCreateTableRequest()
     }
+    
+    response = NewCreateTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateTable
+// 本接口（CreateTable）用于生成建表SQL。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateTableWithContext(ctx context.Context, request *CreateTableRequest) (response *CreateTableResponse, err error) {
+    if request == nil {
+        request = NewCreateTableRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateTableResponse()
     err = c.Send(request, response)
@@ -382,6 +541,27 @@ func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskRes
     return
 }
 
+// CreateTask
+// 本接口（CreateTask）用于创建sql查询任务。（推荐使用CreateTasks接口）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = "ResourceUnavailable.BalanceInsufficient"
+func (c *Client) CreateTaskWithContext(ctx context.Context, request *CreateTaskRequest) (response *CreateTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTasksRequest() (request *CreateTasksRequest) {
     request = &CreateTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -405,6 +585,7 @@ func NewCreateTasksResponse() (response *CreateTasksResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
 //  INVALIDPARAMETER_INVALIDFAILURETOLERANCE = "InvalidParameter.InvalidFailureTolerance"
 //  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
 //  INVALIDPARAMETER_INVALIDSQLNUM = "InvalidParameter.InvalidSQLNum"
@@ -414,6 +595,29 @@ func (c *Client) CreateTasks(request *CreateTasksRequest) (response *CreateTasks
     if request == nil {
         request = NewCreateTasksRequest()
     }
+    
+    response = NewCreateTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateTasks
+// 本接口（CreateTasks），用于批量创建任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
+//  INVALIDPARAMETER_INVALIDFAILURETOLERANCE = "InvalidParameter.InvalidFailureTolerance"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  INVALIDPARAMETER_INVALIDSQLNUM = "InvalidParameter.InvalidSQLNum"
+//  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
+//  RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = "ResourceUnavailable.BalanceInsufficient"
+func (c *Client) CreateTasksWithContext(ctx context.Context, request *CreateTasksRequest) (response *CreateTasksResponse, err error) {
+    if request == nil {
+        request = NewCreateTasksRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateTasksResponse()
     err = c.Send(request, response)
@@ -455,6 +659,25 @@ func (c *Client) CreateTasksInOrder(request *CreateTasksInOrderRequest) (respons
     return
 }
 
+// CreateTasksInOrder
+// 按顺序创建任务（已经废弃，后期不再维护，请使用接口CreateTasks）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
+func (c *Client) CreateTasksInOrderWithContext(ctx context.Context, request *CreateTasksInOrderRequest) (response *CreateTasksInOrderResponse, err error) {
+    if request == nil {
+        request = NewCreateTasksInOrderRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateTasksInOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateUserRequest() (request *CreateUserRequest) {
     request = &CreateUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -484,6 +707,25 @@ func (c *Client) CreateUser(request *CreateUserRequest) (response *CreateUserRes
     if request == nil {
         request = NewCreateUserRequest()
     }
+    
+    response = NewCreateUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateUser
+// 创建用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DUPLICATEUSERNAME = "InvalidParameter.DuplicateUserName"
+//  INVALIDPARAMETER_INVALIDDESCRIPTION = "InvalidParameter.InvalidDescription"
+//  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
+func (c *Client) CreateUserWithContext(ctx context.Context, request *CreateUserRequest) (response *CreateUserResponse, err error) {
+    if request == nil {
+        request = NewCreateUserRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateUserResponse()
     err = c.Send(request, response)
@@ -525,6 +767,25 @@ func (c *Client) CreateWorkGroup(request *CreateWorkGroupRequest) (response *Cre
     return
 }
 
+// CreateWorkGroup
+// 创建工作组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DUPLICATEGROUPNAME = "InvalidParameter.DuplicateGroupName"
+//  INVALIDPARAMETER_INVALIDDESCRIPTION = "InvalidParameter.InvalidDescription"
+//  INVALIDPARAMETER_INVALIDWORKGROUPNAME = "InvalidParameter.InvalidWorkGroupName"
+func (c *Client) CreateWorkGroupWithContext(ctx context.Context, request *CreateWorkGroupRequest) (response *CreateWorkGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateWorkGroupRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateWorkGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteScriptRequest() (request *DeleteScriptRequest) {
     request = &DeleteScriptRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -552,6 +813,23 @@ func (c *Client) DeleteScript(request *DeleteScriptRequest) (response *DeleteScr
     if request == nil {
         request = NewDeleteScriptRequest()
     }
+    
+    response = NewDeleteScriptResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteScript
+// 该接口（DeleteScript）用于删除sql脚本。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteScriptWithContext(ctx context.Context, request *DeleteScriptRequest) (response *DeleteScriptResponse, err error) {
+    if request == nil {
+        request = NewDeleteScriptRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteScriptResponse()
     err = c.Send(request, response)
@@ -592,6 +870,24 @@ func (c *Client) DeleteUser(request *DeleteUserRequest) (response *DeleteUserRes
     return
 }
 
+// DeleteUser
+// 删除用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
+//  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
+func (c *Client) DeleteUserWithContext(ctx context.Context, request *DeleteUserRequest) (response *DeleteUserResponse, err error) {
+    if request == nil {
+        request = NewDeleteUserRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteUsersFromWorkGroupRequest() (request *DeleteUsersFromWorkGroupRequest) {
     request = &DeleteUsersFromWorkGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -625,6 +921,23 @@ func (c *Client) DeleteUsersFromWorkGroup(request *DeleteUsersFromWorkGroupReque
     return
 }
 
+// DeleteUsersFromWorkGroup
+// 从工作组中删除用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDGROUPID = "InvalidParameter.InvalidGroupId"
+func (c *Client) DeleteUsersFromWorkGroupWithContext(ctx context.Context, request *DeleteUsersFromWorkGroupRequest) (response *DeleteUsersFromWorkGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteUsersFromWorkGroupRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteUsersFromWorkGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteWorkGroupRequest() (request *DeleteWorkGroupRequest) {
     request = &DeleteWorkGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -651,6 +964,22 @@ func (c *Client) DeleteWorkGroup(request *DeleteWorkGroupRequest) (response *Del
     if request == nil {
         request = NewDeleteWorkGroupRequest()
     }
+    
+    response = NewDeleteWorkGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteWorkGroup
+// 删除工作组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DeleteWorkGroupWithContext(ctx context.Context, request *DeleteWorkGroupRequest) (response *DeleteWorkGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteWorkGroupRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteWorkGroupResponse()
     err = c.Send(request, response)
@@ -691,6 +1020,24 @@ func (c *Client) DescribeDatabases(request *DescribeDatabasesRequest) (response 
     return
 }
 
+// DescribeDatabases
+// 本接口（DescribeDatabases）用于查询数据库列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DATASOURCENOTFOUND = "ResourceNotFound.DatasourceNotFound"
+func (c *Client) DescribeDatabasesWithContext(ctx context.Context, request *DescribeDatabasesRequest) (response *DescribeDatabasesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDatabasesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDatabasesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeScriptsRequest() (request *DescribeScriptsRequest) {
     request = &DescribeScriptsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -724,6 +1071,23 @@ func (c *Client) DescribeScripts(request *DescribeScriptsRequest) (response *Des
     return
 }
 
+// DescribeScripts
+// 该接口（DescribeScripts）用于获取所有SQL查询。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeScriptsWithContext(ctx context.Context, request *DescribeScriptsRequest) (response *DescribeScriptsResponse, err error) {
+    if request == nil {
+        request = NewDescribeScriptsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeScriptsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeStoreLocationRequest() (request *DescribeStoreLocationRequest) {
     request = &DescribeStoreLocationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -751,6 +1115,23 @@ func (c *Client) DescribeStoreLocation(request *DescribeStoreLocationRequest) (r
     if request == nil {
         request = NewDescribeStoreLocationRequest()
     }
+    
+    response = NewDescribeStoreLocationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeStoreLocation
+// 查询计算结果存储位置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeStoreLocationWithContext(ctx context.Context, request *DescribeStoreLocationRequest) (response *DescribeStoreLocationResponse, err error) {
+    if request == nil {
+        request = NewDescribeStoreLocationRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeStoreLocationResponse()
     err = c.Send(request, response)
@@ -794,6 +1175,27 @@ func (c *Client) DescribeTable(request *DescribeTableRequest) (response *Describ
     return
 }
 
+// DescribeTable
+// 本接口（DescribeTable），用于查询单个表的详细信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DATASOURCENOTFOUND = "ResourceNotFound.DatasourceNotFound"
+func (c *Client) DescribeTableWithContext(ctx context.Context, request *DescribeTableRequest) (response *DescribeTableResponse, err error) {
+    if request == nil {
+        request = NewDescribeTableRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTablesRequest() (request *DescribeTablesRequest) {
     request = &DescribeTablesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -822,6 +1224,24 @@ func (c *Client) DescribeTables(request *DescribeTablesRequest) (response *Descr
     if request == nil {
         request = NewDescribeTablesRequest()
     }
+    
+    response = NewDescribeTablesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeTables
+// 本接口（DescribeTables）用于查询数据表列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DATASOURCENOTFOUND = "ResourceNotFound.DatasourceNotFound"
+func (c *Client) DescribeTablesWithContext(ctx context.Context, request *DescribeTablesRequest) (response *DescribeTablesResponse, err error) {
+    if request == nil {
+        request = NewDescribeTablesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeTablesResponse()
     err = c.Send(request, response)
@@ -863,6 +1283,25 @@ func (c *Client) DescribeTaskResult(request *DescribeTaskResultRequest) (respons
     return
 }
 
+// DescribeTaskResult
+// 查询任务结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
+func (c *Client) DescribeTaskResultWithContext(ctx context.Context, request *DescribeTaskResultRequest) (response *DescribeTaskResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskResultRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeTaskResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTasksRequest() (request *DescribeTasksRequest) {
     request = &DescribeTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -891,6 +1330,24 @@ func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *Describ
     if request == nil {
         request = NewDescribeTasksRequest()
     }
+    
+    response = NewDescribeTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeTasks
+// 该接口（DescribleTasks）用于查询任务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeTasksWithContext(ctx context.Context, request *DescribeTasksRequest) (response *DescribeTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeTasksRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeTasksResponse()
     err = c.Send(request, response)
@@ -931,6 +1388,24 @@ func (c *Client) DescribeUsers(request *DescribeUsersRequest) (response *Describ
     return
 }
 
+// DescribeUsers
+// 获取用户列表信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDOFFSET = "InvalidParameter.InvalidOffset"
+//  INVALIDPARAMETER_INVALIDSORTBYTYPE = "InvalidParameter.InvalidSortByType"
+func (c *Client) DescribeUsersWithContext(ctx context.Context, request *DescribeUsersRequest) (response *DescribeUsersResponse, err error) {
+    if request == nil {
+        request = NewDescribeUsersRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeViewsRequest() (request *DescribeViewsRequest) {
     request = &DescribeViewsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -959,6 +1434,24 @@ func (c *Client) DescribeViews(request *DescribeViewsRequest) (response *Describ
     if request == nil {
         request = NewDescribeViewsRequest()
     }
+    
+    response = NewDescribeViewsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeViews
+// 本接口（DescribeViews）用于查询数据视图列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DATASOURCENOTFOUND = "ResourceNotFound.DatasourceNotFound"
+func (c *Client) DescribeViewsWithContext(ctx context.Context, request *DescribeViewsRequest) (response *DescribeViewsResponse, err error) {
+    if request == nil {
+        request = NewDescribeViewsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeViewsResponse()
     err = c.Send(request, response)
@@ -999,6 +1492,24 @@ func (c *Client) DescribeWorkGroups(request *DescribeWorkGroupsRequest) (respons
     return
 }
 
+// DescribeWorkGroups
+// 获取工作组列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDOFFSET = "InvalidParameter.InvalidOffset"
+//  INVALIDPARAMETER_INVALIDSORTBYTYPE = "InvalidParameter.InvalidSortByType"
+func (c *Client) DescribeWorkGroupsWithContext(ctx context.Context, request *DescribeWorkGroupsRequest) (response *DescribeWorkGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeWorkGroupsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeWorkGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDetachUserPolicyRequest() (request *DetachUserPolicyRequest) {
     request = &DetachUserPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1032,6 +1543,23 @@ func (c *Client) DetachUserPolicy(request *DetachUserPolicyRequest) (response *D
     return
 }
 
+// DetachUserPolicy
+// 解绑用户鉴权策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
+func (c *Client) DetachUserPolicyWithContext(ctx context.Context, request *DetachUserPolicyRequest) (response *DetachUserPolicyResponse, err error) {
+    if request == nil {
+        request = NewDetachUserPolicyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDetachUserPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDetachWorkGroupPolicyRequest() (request *DetachWorkGroupPolicyRequest) {
     request = &DetachWorkGroupPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1058,6 +1586,22 @@ func (c *Client) DetachWorkGroupPolicy(request *DetachWorkGroupPolicyRequest) (r
     if request == nil {
         request = NewDetachWorkGroupPolicyRequest()
     }
+    
+    response = NewDetachWorkGroupPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DetachWorkGroupPolicy
+// 解绑工作组鉴权策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DetachWorkGroupPolicyWithContext(ctx context.Context, request *DetachWorkGroupPolicyRequest) (response *DetachWorkGroupPolicyResponse, err error) {
+    if request == nil {
+        request = NewDetachWorkGroupPolicyRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDetachWorkGroupPolicyResponse()
     err = c.Send(request, response)
@@ -1097,6 +1641,23 @@ func (c *Client) ModifyUser(request *ModifyUserRequest) (response *ModifyUserRes
     return
 }
 
+// ModifyUser
+// 修改用户信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
+func (c *Client) ModifyUserWithContext(ctx context.Context, request *ModifyUserRequest) (response *ModifyUserResponse, err error) {
+    if request == nil {
+        request = NewModifyUserRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyWorkGroupRequest() (request *ModifyWorkGroupRequest) {
     request = &ModifyWorkGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1123,6 +1684,22 @@ func (c *Client) ModifyWorkGroup(request *ModifyWorkGroupRequest) (response *Mod
     if request == nil {
         request = NewModifyWorkGroupRequest()
     }
+    
+    response = NewModifyWorkGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyWorkGroup
+// 修改工作组信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ModifyWorkGroupWithContext(ctx context.Context, request *ModifyWorkGroupRequest) (response *ModifyWorkGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyWorkGroupRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyWorkGroupResponse()
     err = c.Send(request, response)
@@ -1156,6 +1733,23 @@ func (c *Client) UnbindWorkGroupsFromUser(request *UnbindWorkGroupsFromUserReque
     if request == nil {
         request = NewUnbindWorkGroupsFromUserRequest()
     }
+    
+    response = NewUnbindWorkGroupsFromUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UnbindWorkGroupsFromUser
+// 解绑用户上的用户组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DUPLICATEUSERNAME = "InvalidParameter.DuplicateUserName"
+func (c *Client) UnbindWorkGroupsFromUserWithContext(ctx context.Context, request *UnbindWorkGroupsFromUserRequest) (response *UnbindWorkGroupsFromUserResponse, err error) {
+    if request == nil {
+        request = NewUnbindWorkGroupsFromUserRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUnbindWorkGroupsFromUserResponse()
     err = c.Send(request, response)

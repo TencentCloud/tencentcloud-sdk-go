@@ -15,6 +15,7 @@
 package v20210119
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -88,6 +89,35 @@ func (c *Client) CreateQos(request *CreateQosRequest) (response *CreateQosRespon
     return
 }
 
+// CreateQos
+// 移动网络发起Qos加速过程
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_VENDORNOTFOUND = "InvalidParameterValue.VendorNotFound"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_CTCCTOKENEXPIRED = "OperationDenied.CTCCTokenExpired"
+//  OPERATIONDENIED_CREATEQOSEXCEEDLIMIT = "OperationDenied.CreateQosExceedLimit"
+//  OPERATIONDENIED_REQUESTQOSTIMEOUT = "OperationDenied.RequestQosTimeout"
+//  OPERATIONDENIED_USEROUTOFCOVERAGE = "OperationDenied.UserOutOfCoverage"
+//  OPERATIONDENIED_VENDORRETURNERROR = "OperationDenied.VendorReturnError"
+//  OPERATIONDENIED_VENDORSERVERERROR = "OperationDenied.VendorServerError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateQosWithContext(ctx context.Context, request *CreateQosRequest) (response *CreateQosResponse, err error) {
+    if request == nil {
+        request = NewCreateQosRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateQosResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteQosRequest() (request *DeleteQosRequest) {
     request = &DeleteQosRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -117,12 +147,39 @@ func NewDeleteQosResponse() (response *DeleteQosResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_REQUESTQOSTIMEOUT = "OperationDenied.RequestQosTimeout"
 //  OPERATIONDENIED_USERNONACCELERATED = "OperationDenied.UserNonAccelerated"
+//  OPERATIONDENIED_USEROUTOFCOVERAGE = "OperationDenied.UserOutOfCoverage"
 //  OPERATIONDENIED_VENDORRETURNERROR = "OperationDenied.VendorReturnError"
 //  OPERATIONDENIED_VENDORSERVERERROR = "OperationDenied.VendorServerError"
 func (c *Client) DeleteQos(request *DeleteQosRequest) (response *DeleteQosResponse, err error) {
     if request == nil {
         request = NewDeleteQosRequest()
     }
+    
+    response = NewDeleteQosResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteQos
+// 移动网络停止Qos加速过程
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_REQUESTQOSTIMEOUT = "OperationDenied.RequestQosTimeout"
+//  OPERATIONDENIED_USERNONACCELERATED = "OperationDenied.UserNonAccelerated"
+//  OPERATIONDENIED_USEROUTOFCOVERAGE = "OperationDenied.UserOutOfCoverage"
+//  OPERATIONDENIED_VENDORRETURNERROR = "OperationDenied.VendorReturnError"
+//  OPERATIONDENIED_VENDORSERVERERROR = "OperationDenied.VendorServerError"
+func (c *Client) DeleteQosWithContext(ctx context.Context, request *DeleteQosRequest) (response *DeleteQosResponse, err error) {
+    if request == nil {
+        request = NewDeleteQosRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteQosResponse()
     err = c.Send(request, response)
@@ -156,6 +213,23 @@ func (c *Client) DescribeQos(request *DescribeQosRequest) (response *DescribeQos
     if request == nil {
         request = NewDescribeQosRequest()
     }
+    
+    response = NewDescribeQosResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeQos
+// 获取Qos加速状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeQosWithContext(ctx context.Context, request *DescribeQosRequest) (response *DescribeQosResponse, err error) {
+    if request == nil {
+        request = NewDescribeQosRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeQosResponse()
     err = c.Send(request, response)

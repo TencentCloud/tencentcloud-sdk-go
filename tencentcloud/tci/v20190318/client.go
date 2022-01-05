@@ -15,6 +15,7 @@
 package v20190318
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -79,6 +80,26 @@ func (c *Client) AIAssistant(request *AIAssistantRequest) (response *AIAssistant
     return
 }
 
+// AIAssistant
+// 提供 AI 助教基础版本功能接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_LIBHAVENOPERSON = "InvalidParameter.LibHaveNoPerson"
+//  INVALIDPARAMETER_LIBISEMPTY = "InvalidParameter.LibIsEmpty"
+//  INVALIDPARAMETER_PROCESSUNREADY = "InvalidParameter.ProcessUnReady"
+//  INVALIDPARAMETER_STATUSJOBFAILED = "InvalidParameter.StatusJobFailed"
+//  INVALIDPARAMETER_STATUSJOBUNFINISHED = "InvalidParameter.StatusJobUnfinished"
+func (c *Client) AIAssistantWithContext(ctx context.Context, request *AIAssistantRequest) (response *AIAssistantResponse, err error) {
+    if request == nil {
+        request = NewAIAssistantRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewAIAssistantResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCancelTaskRequest() (request *CancelTaskRequest) {
     request = &CancelTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -106,6 +127,23 @@ func (c *Client) CancelTask(request *CancelTaskRequest) (response *CancelTaskRes
     if request == nil {
         request = NewCancelTaskRequest()
     }
+    
+    response = NewCancelTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CancelTask
+// 用于取消已经提交的任务，目前只支持图像任务。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_STATUSJOBFAILED = "InvalidParameter.StatusJobFailed"
+//  RESOURCENOTFOUND_HLJOBIDNOTFOUND = "ResourceNotFound.HLJobIdNotFound"
+func (c *Client) CancelTaskWithContext(ctx context.Context, request *CancelTaskRequest) (response *CancelTaskResponse, err error) {
+    if request == nil {
+        request = NewCancelTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCancelTaskResponse()
     err = c.Send(request, response)
@@ -145,6 +183,23 @@ func (c *Client) CheckFacePhoto(request *CheckFacePhotoRequest) (response *Check
     return
 }
 
+// CheckFacePhoto
+// 检查人脸图片是否合法
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_STATUSJOBFAILED = "InvalidParameter.StatusJobFailed"
+//  RESOURCENOTFOUND_HLJOBIDNOTFOUND = "ResourceNotFound.HLJobIdNotFound"
+func (c *Client) CheckFacePhotoWithContext(ctx context.Context, request *CheckFacePhotoRequest) (response *CheckFacePhotoResponse, err error) {
+    if request == nil {
+        request = NewCheckFacePhotoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCheckFacePhotoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateFaceRequest() (request *CreateFaceRequest) {
     request = &CreateFaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -172,6 +227,23 @@ func (c *Client) CreateFace(request *CreateFaceRequest) (response *CreateFaceRes
     if request == nil {
         request = NewCreateFaceRequest()
     }
+    
+    response = NewCreateFaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateFace
+// 创建人脸
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateFaceWithContext(ctx context.Context, request *CreateFaceRequest) (response *CreateFaceResponse, err error) {
+    if request == nil {
+        request = NewCreateFaceRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateFaceResponse()
     err = c.Send(request, response)
@@ -211,6 +283,23 @@ func (c *Client) CreateLibrary(request *CreateLibraryRequest) (response *CreateL
     return
 }
 
+// CreateLibrary
+// 创建人员库
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateLibraryWithContext(ctx context.Context, request *CreateLibraryRequest) (response *CreateLibraryResponse, err error) {
+    if request == nil {
+        request = NewCreateLibraryRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateLibraryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePersonRequest() (request *CreatePersonRequest) {
     request = &CreatePersonRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -238,6 +327,23 @@ func (c *Client) CreatePerson(request *CreatePersonRequest) (response *CreatePer
     if request == nil {
         request = NewCreatePersonRequest()
     }
+    
+    response = NewCreatePersonResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreatePerson
+// 创建人员
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreatePersonWithContext(ctx context.Context, request *CreatePersonRequest) (response *CreatePersonResponse, err error) {
+    if request == nil {
+        request = NewCreatePersonRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreatePersonResponse()
     err = c.Send(request, response)
@@ -279,6 +385,25 @@ func (c *Client) CreateVocab(request *CreateVocabRequest) (response *CreateVocab
     return
 }
 
+// CreateVocab
+// 创建词汇
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCENAMEDUPLICATE = "InvalidParameter.ResourceNameDuplicate"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateVocabWithContext(ctx context.Context, request *CreateVocabRequest) (response *CreateVocabResponse, err error) {
+    if request == nil {
+        request = NewCreateVocabRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateVocabResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateVocabLibRequest() (request *CreateVocabLibRequest) {
     request = &CreateVocabLibRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -308,6 +433,25 @@ func (c *Client) CreateVocabLib(request *CreateVocabLibRequest) (response *Creat
     if request == nil {
         request = NewCreateVocabLibRequest()
     }
+    
+    response = NewCreateVocabLibResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateVocabLib
+// 建立词汇库
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCENAMEDUPLICATE = "InvalidParameter.ResourceNameDuplicate"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateVocabLibWithContext(ctx context.Context, request *CreateVocabLibRequest) (response *CreateVocabLibResponse, err error) {
+    if request == nil {
+        request = NewCreateVocabLibRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateVocabLibResponse()
     err = c.Send(request, response)
@@ -348,6 +492,24 @@ func (c *Client) DeleteFace(request *DeleteFaceRequest) (response *DeleteFaceRes
     return
 }
 
+// DeleteFace
+// 删除人脸
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteFaceWithContext(ctx context.Context, request *DeleteFaceRequest) (response *DeleteFaceResponse, err error) {
+    if request == nil {
+        request = NewDeleteFaceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteFaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteLibraryRequest() (request *DeleteLibraryRequest) {
     request = &DeleteLibraryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -382,6 +544,24 @@ func (c *Client) DeleteLibrary(request *DeleteLibraryRequest) (response *DeleteL
     return
 }
 
+// DeleteLibrary
+// 删除人员库
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteLibraryWithContext(ctx context.Context, request *DeleteLibraryRequest) (response *DeleteLibraryResponse, err error) {
+    if request == nil {
+        request = NewDeleteLibraryRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteLibraryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeletePersonRequest() (request *DeletePersonRequest) {
     request = &DeletePersonRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -410,6 +590,24 @@ func (c *Client) DeletePerson(request *DeletePersonRequest) (response *DeletePer
     if request == nil {
         request = NewDeletePersonRequest()
     }
+    
+    response = NewDeletePersonResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeletePerson
+// 删除人员
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeletePersonWithContext(ctx context.Context, request *DeletePersonRequest) (response *DeletePersonResponse, err error) {
+    if request == nil {
+        request = NewDeletePersonRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeletePersonResponse()
     err = c.Send(request, response)
@@ -451,6 +649,25 @@ func (c *Client) DeleteVocab(request *DeleteVocabRequest) (response *DeleteVocab
     return
 }
 
+// DeleteVocab
+// 删除词汇
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCENAMEDUPLICATE = "InvalidParameter.ResourceNameDuplicate"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteVocabWithContext(ctx context.Context, request *DeleteVocabRequest) (response *DeleteVocabResponse, err error) {
+    if request == nil {
+        request = NewDeleteVocabRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteVocabResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteVocabLibRequest() (request *DeleteVocabLibRequest) {
     request = &DeleteVocabLibRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -486,6 +703,25 @@ func (c *Client) DeleteVocabLib(request *DeleteVocabLibRequest) (response *Delet
     return
 }
 
+// DeleteVocabLib
+// 删除词汇库
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCENAMEDUPLICATE = "InvalidParameter.ResourceNameDuplicate"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteVocabLibWithContext(ctx context.Context, request *DeleteVocabLibRequest) (response *DeleteVocabLibResponse, err error) {
+    if request == nil {
+        request = NewDeleteVocabLibRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteVocabLibResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAITaskResultRequest() (request *DescribeAITaskResultRequest) {
     request = &DescribeAITaskResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -515,6 +751,25 @@ func (c *Client) DescribeAITaskResult(request *DescribeAITaskResultRequest) (res
     if request == nil {
         request = NewDescribeAITaskResultRequest()
     }
+    
+    response = NewDescribeAITaskResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAITaskResult
+// 获取标准化接口任务结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR_STATUSQUERYFACELIBFAILED = "InternalError.StatusQueryFaceLibFailed"
+//  INVALIDPARAMETER_STATUSJOBFAILED = "InvalidParameter.StatusJobFailed"
+//  INVALIDPARAMETER_STATUSJOBUNFINISHED = "InvalidParameter.StatusJobUnfinished"
+//  RESOURCENOTFOUND_HLJOBIDNOTFOUND = "ResourceNotFound.HLJobIdNotFound"
+func (c *Client) DescribeAITaskResultWithContext(ctx context.Context, request *DescribeAITaskResultRequest) (response *DescribeAITaskResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeAITaskResultRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAITaskResultResponse()
     err = c.Send(request, response)
@@ -562,6 +817,31 @@ func (c *Client) DescribeAttendanceResult(request *DescribeAttendanceResultReque
     return
 }
 
+// DescribeAttendanceResult
+// 人脸考勤查询结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FACENOTEXISTED = "InvalidParameter.FaceNotExisted"
+//  INVALIDPARAMETER_FILECONTENTEMPTY = "InvalidParameter.FileContentEmpty"
+//  INVALIDPARAMETER_INVALIDRESOURCENAME = "InvalidParameter.InvalidResourceName"
+//  INVALIDPARAMETER_JOBNOTVALID = "InvalidParameter.JobNotValid"
+//  INVALIDPARAMETER_NOTATTENDANCEJOB = "InvalidParameter.NotAttendanceJob"
+//  INVALIDPARAMETER_PERSONNOTREGISTERED = "InvalidParameter.PersonNotRegistered"
+//  INVALIDPARAMETER_RESOURCENAMEDUPLICATE = "InvalidParameter.ResourceNameDuplicate"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAttendanceResultWithContext(ctx context.Context, request *DescribeAttendanceResultRequest) (response *DescribeAttendanceResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeAttendanceResultRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAttendanceResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAudioTaskRequest() (request *DescribeAudioTaskRequest) {
     request = &DescribeAudioTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -596,6 +876,24 @@ func (c *Client) DescribeAudioTask(request *DescribeAudioTaskRequest) (response 
     return
 }
 
+// DescribeAudioTask
+// 音频评估任务信息查询接口，异步查询客户提交的请求的结果。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAudioTaskWithContext(ctx context.Context, request *DescribeAudioTaskRequest) (response *DescribeAudioTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeAudioTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAudioTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeConversationTaskRequest() (request *DescribeConversationTaskRequest) {
     request = &DescribeConversationTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -624,6 +922,24 @@ func (c *Client) DescribeConversationTask(request *DescribeConversationTaskReque
     if request == nil {
         request = NewDescribeConversationTaskRequest()
     }
+    
+    response = NewDescribeConversationTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeConversationTask
+// 音频对话任务评估任务信息查询接口，异步查询客户提交的请求的结果。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeConversationTaskWithContext(ctx context.Context, request *DescribeConversationTaskRequest) (response *DescribeConversationTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeConversationTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeConversationTaskResponse()
     err = c.Send(request, response)
@@ -716,6 +1032,76 @@ func (c *Client) DescribeHighlightResult(request *DescribeHighlightResultRequest
     return
 }
 
+// DescribeHighlightResult
+// 视频精彩集锦结果查询接口，异步查询客户提交的请求的结果。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_JOBCANCELED = "InternalError.JobCanceled"
+//  INTERNALERROR_JOBREACHMAXRETRYTIMES = "InternalError.JobReachMaxRetryTimes"
+//  INTERNALERROR_STATUSQUERYFACELIBFAILED = "InternalError.StatusQueryFaceLibFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYRETRIEVALFAILED = "InvalidParameter.BodyRetrievalFailed"
+//  INVALIDPARAMETER_CANNOTFINDFACEINPICTURE = "InvalidParameter.CannotFindFaceInPicture"
+//  INVALIDPARAMETER_CLIPPINGFRAMEFAILED = "InvalidParameter.ClippingFrameFailed"
+//  INVALIDPARAMETER_COMPUTATIONALSIMILARITYFAILED = "InvalidParameter.ComputationalSimilarityFailed"
+//  INVALIDPARAMETER_CREATEFACEFAILED = "InvalidParameter.CreateFaceFailed"
+//  INVALIDPARAMETER_CREATEPERSONFAILED = "InvalidParameter.CreatePersonFailed"
+//  INVALIDPARAMETER_FACEDETECTEDFAILED = "InvalidParameter.FaceDetectedFailed"
+//  INVALIDPARAMETER_FACENOTEXIST = "InvalidParameter.FaceNotExist"
+//  INVALIDPARAMETER_FACENOTEXISTED = "InvalidParameter.FaceNotExisted"
+//  INVALIDPARAMETER_FACENUMBEREXCEEDLIMITOFSINGLEDETECTION = "InvalidParameter.FaceNumberExceedLimitOfSingleDetection"
+//  INVALIDPARAMETER_FACENUMBERLIMIT = "InvalidParameter.FaceNumberLimit"
+//  INVALIDPARAMETER_FACEREGISTRATIONFAILED = "InvalidParameter.FaceRegistrationFailed"
+//  INVALIDPARAMETER_FACERETRIEVALFAILED = "InvalidParameter.FaceRetrievalFailed"
+//  INVALIDPARAMETER_FACETOOSMALL = "InvalidParameter.FaceTooSmall"
+//  INVALIDPARAMETER_FAILEDTODECODEIMAGE = "InvalidParameter.FailedToDecodeImage"
+//  INVALIDPARAMETER_FEATUREEXTRACTIONFAILED = "InvalidParameter.FeatureExtractionFailed"
+//  INVALIDPARAMETER_FILECONTENTEMPTY = "InvalidParameter.FileContentEmpty"
+//  INVALIDPARAMETER_IMAGEDECODEFAILED = "InvalidParameter.ImageDecodeFailed"
+//  INVALIDPARAMETER_IMAGETOOLARGE = "InvalidParameter.ImageTooLarge"
+//  INVALIDPARAMETER_IMAGETOOSMALL = "InvalidParameter.ImageTooSmall"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  INVALIDPARAMETER_INVALIDLANG = "InvalidParameter.InvalidLang"
+//  INVALIDPARAMETER_INVALIDRESOURCENAME = "InvalidParameter.InvalidResourceName"
+//  INVALIDPARAMETER_INVALIDSEQID = "InvalidParameter.InvalidSeqId"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidUrl"
+//  INVALIDPARAMETER_JOBNOTVALID = "InvalidParameter.JobNotValid"
+//  INVALIDPARAMETER_LIBRARYNOTEXISTED = "InvalidParameter.LibraryNotExisted"
+//  INVALIDPARAMETER_LOWQUALITYPICTURE = "InvalidParameter.LowQualityPicture"
+//  INVALIDPARAMETER_NOSUCHSERVICE = "InvalidParameter.NoSuchService"
+//  INVALIDPARAMETER_NOTATTENDANCEJOB = "InvalidParameter.NotAttendanceJob"
+//  INVALIDPARAMETER_NOTVALIDPITCH = "InvalidParameter.NotValidPitch"
+//  INVALIDPARAMETER_NOTVALIDROW = "InvalidParameter.NotValidRow"
+//  INVALIDPARAMETER_NOTVALIDYAW = "InvalidParameter.NotValidYaw"
+//  INVALIDPARAMETER_PERSONEXISTED = "InvalidParameter.PersonExisted"
+//  INVALIDPARAMETER_PERSONIDNOTVALID = "InvalidParameter.PersonIdNotValid"
+//  INVALIDPARAMETER_PERSONNOTEXIST = "InvalidParameter.PersonNotExist"
+//  INVALIDPARAMETER_PERSONNOTEXISTED = "InvalidParameter.PersonNotExisted"
+//  INVALIDPARAMETER_PERSONNOTREGISTERED = "InvalidParameter.PersonNotRegistered"
+//  INVALIDPARAMETER_PROCESSUNREADY = "InvalidParameter.ProcessUnReady"
+//  INVALIDPARAMETER_RESOURCENAMEDUPLICATE = "InvalidParameter.ResourceNameDuplicate"
+//  INVALIDPARAMETER_STATUSJOBFAILED = "InvalidParameter.StatusJobFailed"
+//  INVALIDPARAMETER_STATUSJOBNOTFOUND = "InvalidParameter.StatusJobNotFound"
+//  INVALIDPARAMETER_STATUSJOBUNFINISHED = "InvalidParameter.StatusJobUnfinished"
+//  INVALIDPARAMETER_STATUSNOCAMERAFOUND = "InvalidParameter.StatusNoCameraFound"
+//  INVALIDPARAMETER_TOOMANYFACE = "InvalidParameter.TooManyFace"
+//  INVALIDPARAMETER_TRACKINGFAILED = "InvalidParameter.TrackingFailed"
+//  LIMITEXCEEDED_STATUSCAMERACOUNTOVERMAX = "LimitExceeded.StatusCameraCountOverMax"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_HLJOBIDNOTFOUND = "ResourceNotFound.HLJobIdNotFound"
+//  RESOURCEUNAVAILABLE_STATUSQUERYSTREAMFAILED = "ResourceUnavailable.StatusQueryStreamFailed"
+func (c *Client) DescribeHighlightResultWithContext(ctx context.Context, request *DescribeHighlightResultRequest) (response *DescribeHighlightResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeHighlightResultRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeHighlightResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeImageTaskRequest() (request *DescribeImageTaskRequest) {
     request = &DescribeImageTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -744,6 +1130,24 @@ func (c *Client) DescribeImageTask(request *DescribeImageTaskRequest) (response 
     if request == nil {
         request = NewDescribeImageTaskRequest()
     }
+    
+    response = NewDescribeImageTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeImageTask
+// 拉取任务详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeImageTaskWithContext(ctx context.Context, request *DescribeImageTaskRequest) (response *DescribeImageTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeImageTaskResponse()
     err = c.Send(request, response)
@@ -784,6 +1188,24 @@ func (c *Client) DescribeImageTaskStatistic(request *DescribeImageTaskStatisticR
     return
 }
 
+// DescribeImageTaskStatistic
+// 获取图像任务统计信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeImageTaskStatisticWithContext(ctx context.Context, request *DescribeImageTaskStatisticRequest) (response *DescribeImageTaskStatisticResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageTaskStatisticRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageTaskStatisticResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLibrariesRequest() (request *DescribeLibrariesRequest) {
     request = &DescribeLibrariesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -811,6 +1233,23 @@ func (c *Client) DescribeLibraries(request *DescribeLibrariesRequest) (response 
     if request == nil {
         request = NewDescribeLibrariesRequest()
     }
+    
+    response = NewDescribeLibrariesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeLibraries
+// 获取人员库列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeLibrariesWithContext(ctx context.Context, request *DescribeLibrariesRequest) (response *DescribeLibrariesResponse, err error) {
+    if request == nil {
+        request = NewDescribeLibrariesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeLibrariesResponse()
     err = c.Send(request, response)
@@ -851,6 +1290,24 @@ func (c *Client) DescribePerson(request *DescribePersonRequest) (response *Descr
     return
 }
 
+// DescribePerson
+// 获取人员详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribePersonWithContext(ctx context.Context, request *DescribePersonRequest) (response *DescribePersonResponse, err error) {
+    if request == nil {
+        request = NewDescribePersonRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribePersonResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePersonsRequest() (request *DescribePersonsRequest) {
     request = &DescribePersonsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -879,6 +1336,24 @@ func (c *Client) DescribePersons(request *DescribePersonsRequest) (response *Des
     if request == nil {
         request = NewDescribePersonsRequest()
     }
+    
+    response = NewDescribePersonsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribePersons
+// 拉取人员列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribePersonsWithContext(ctx context.Context, request *DescribePersonsRequest) (response *DescribePersonsResponse, err error) {
+    if request == nil {
+        request = NewDescribePersonsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribePersonsResponse()
     err = c.Send(request, response)
@@ -920,6 +1395,25 @@ func (c *Client) DescribeVocab(request *DescribeVocabRequest) (response *Describ
     return
 }
 
+// DescribeVocab
+// 查询词汇
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCENAMEDUPLICATE = "InvalidParameter.ResourceNameDuplicate"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVocabWithContext(ctx context.Context, request *DescribeVocabRequest) (response *DescribeVocabResponse, err error) {
+    if request == nil {
+        request = NewDescribeVocabRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeVocabResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVocabLibRequest() (request *DescribeVocabLibRequest) {
     request = &DescribeVocabLibRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -949,6 +1443,25 @@ func (c *Client) DescribeVocabLib(request *DescribeVocabLibRequest) (response *D
     if request == nil {
         request = NewDescribeVocabLibRequest()
     }
+    
+    response = NewDescribeVocabLibResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeVocabLib
+// 查询词汇库
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCENAMEDUPLICATE = "InvalidParameter.ResourceNameDuplicate"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVocabLibWithContext(ctx context.Context, request *DescribeVocabLibRequest) (response *DescribeVocabLibResponse, err error) {
+    if request == nil {
+        request = NewDescribeVocabLibRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeVocabLibResponse()
     err = c.Send(request, response)
@@ -989,6 +1502,24 @@ func (c *Client) ModifyLibrary(request *ModifyLibraryRequest) (response *ModifyL
     return
 }
 
+// ModifyLibrary
+// 修改人员库信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyLibraryWithContext(ctx context.Context, request *ModifyLibraryRequest) (response *ModifyLibraryResponse, err error) {
+    if request == nil {
+        request = NewModifyLibraryRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyLibraryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyPersonRequest() (request *ModifyPersonRequest) {
     request = &ModifyPersonRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1023,6 +1554,24 @@ func (c *Client) ModifyPerson(request *ModifyPersonRequest) (response *ModifyPer
     return
 }
 
+// ModifyPerson
+// 修改人员信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyPersonWithContext(ctx context.Context, request *ModifyPersonRequest) (response *ModifyPersonResponse, err error) {
+    if request == nil {
+        request = NewModifyPersonRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyPersonResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSubmitAudioTaskRequest() (request *SubmitAudioTaskRequest) {
     request = &SubmitAudioTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1051,6 +1600,24 @@ func (c *Client) SubmitAudioTask(request *SubmitAudioTaskRequest) (response *Sub
     if request == nil {
         request = NewSubmitAudioTaskRequest()
     }
+    
+    response = NewSubmitAudioTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SubmitAudioTask
+// 音频任务提交接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) SubmitAudioTaskWithContext(ctx context.Context, request *SubmitAudioTaskRequest) (response *SubmitAudioTaskResponse, err error) {
+    if request == nil {
+        request = NewSubmitAudioTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewSubmitAudioTaskResponse()
     err = c.Send(request, response)
@@ -1124,6 +1691,57 @@ func (c *Client) SubmitCheckAttendanceTask(request *SubmitCheckAttendanceTaskReq
     return
 }
 
+// SubmitCheckAttendanceTask
+// 提交人员考勤任务，支持包括点播和直播资源；支持通过DescribeAttendanceResult查询结果，也支持通过NoticeUrl设置考勤回调结果，回调结果结构如下：
+//
+// ##### 回调事件结构
+//
+//  | 参数名称 | 类型 | 描述 | 
+//
+//  | ----  | ---  | ------  |
+//
+//  | jobid | Integer | 任务ID | 
+//
+//  | person_info | array of PersonInfo | 识别到的人员列表 | 
+//
+// #####子结构PersonInfo
+//
+//  | 参数名称 | 类型 | 描述 | 
+//
+//  | ----  | ---  | ------  |
+//
+//  | traceid | String | 可用于区分同一路视频流下的不同陌生人 | 
+//
+//  | personid | String | 识别到的人员ID，如果是陌生人则返回空串 | 
+//
+//  | libid | String | 识别到的人员所在的库ID，如果是陌生人则返回空串 | 
+//
+//  | timestamp | uint64 | 识别到人脸的绝对时间戳，单位ms | 
+//
+//  | image_url | string | 识别到人脸的事件抓图的下载地址，不长期保存，需要请及时下载 | 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FACENOTEXISTED = "InvalidParameter.FaceNotExisted"
+//  INVALIDPARAMETER_FILECONTENTEMPTY = "InvalidParameter.FileContentEmpty"
+//  INVALIDPARAMETER_INVALIDRESOURCENAME = "InvalidParameter.InvalidResourceName"
+//  INVALIDPARAMETER_JOBNOTVALID = "InvalidParameter.JobNotValid"
+//  INVALIDPARAMETER_NOTATTENDANCEJOB = "InvalidParameter.NotAttendanceJob"
+//  INVALIDPARAMETER_PERSONNOTREGISTERED = "InvalidParameter.PersonNotRegistered"
+//  INVALIDPARAMETER_RESOURCENAMEDUPLICATE = "InvalidParameter.ResourceNameDuplicate"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) SubmitCheckAttendanceTaskWithContext(ctx context.Context, request *SubmitCheckAttendanceTaskRequest) (response *SubmitCheckAttendanceTaskResponse, err error) {
+    if request == nil {
+        request = NewSubmitCheckAttendanceTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewSubmitCheckAttendanceTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSubmitCheckAttendanceTaskPlusRequest() (request *SubmitCheckAttendanceTaskPlusRequest) {
     request = &SubmitCheckAttendanceTaskPlusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1164,6 +1782,30 @@ func (c *Client) SubmitCheckAttendanceTaskPlus(request *SubmitCheckAttendanceTas
     return
 }
 
+// SubmitCheckAttendanceTaskPlus
+// 支持多路视频流，提交高级人员考勤任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_FACENOTEXISTED = "InvalidParameter.FaceNotExisted"
+//  INVALIDPARAMETER_FILECONTENTEMPTY = "InvalidParameter.FileContentEmpty"
+//  INVALIDPARAMETER_INVALIDRESOURCENAME = "InvalidParameter.InvalidResourceName"
+//  INVALIDPARAMETER_JOBNOTVALID = "InvalidParameter.JobNotValid"
+//  INVALIDPARAMETER_NOTATTENDANCEJOB = "InvalidParameter.NotAttendanceJob"
+//  INVALIDPARAMETER_PERSONNOTREGISTERED = "InvalidParameter.PersonNotRegistered"
+//  INVALIDPARAMETER_RESOURCENAMEDUPLICATE = "InvalidParameter.ResourceNameDuplicate"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) SubmitCheckAttendanceTaskPlusWithContext(ctx context.Context, request *SubmitCheckAttendanceTaskPlusRequest) (response *SubmitCheckAttendanceTaskPlusResponse, err error) {
+    if request == nil {
+        request = NewSubmitCheckAttendanceTaskPlusRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewSubmitCheckAttendanceTaskPlusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSubmitConversationTaskRequest() (request *SubmitConversationTaskRequest) {
     request = &SubmitConversationTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1192,6 +1834,24 @@ func (c *Client) SubmitConversationTask(request *SubmitConversationTaskRequest) 
     if request == nil {
         request = NewSubmitConversationTaskRequest()
     }
+    
+    response = NewSubmitConversationTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SubmitConversationTask
+// 对话任务分析接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) SubmitConversationTaskWithContext(ctx context.Context, request *SubmitConversationTaskRequest) (response *SubmitConversationTaskResponse, err error) {
+    if request == nil {
+        request = NewSubmitConversationTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewSubmitConversationTaskResponse()
     err = c.Send(request, response)
@@ -1240,6 +1900,38 @@ func (c *Client) SubmitDoubleVideoHighlights(request *SubmitDoubleVideoHighlight
     if request == nil {
         request = NewSubmitDoubleVideoHighlightsRequest()
     }
+    
+    response = NewSubmitDoubleVideoHighlightsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SubmitDoubleVideoHighlights
+// 发起双路视频生成精彩集锦接口。该接口可以通过客户传入的学生音视频及老师视频两路Url，自动生成一堂课程的精彩集锦。需要通过DescribeHighlightResult
+//
+// 接口获取生成结果。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_CLIPPINGFRAMEFAILED = "InvalidParameter.ClippingFrameFailed"
+//  INVALIDPARAMETER_FACEDETECTEDFAILED = "InvalidParameter.FaceDetectedFailed"
+//  INVALIDPARAMETER_FACENOTEXISTED = "InvalidParameter.FaceNotExisted"
+//  INVALIDPARAMETER_FACEREGISTRATIONFAILED = "InvalidParameter.FaceRegistrationFailed"
+//  INVALIDPARAMETER_FAILEDTODECODEIMAGE = "InvalidParameter.FailedToDecodeImage"
+//  INVALIDPARAMETER_FEATUREEXTRACTIONFAILED = "InvalidParameter.FeatureExtractionFailed"
+//  INVALIDPARAMETER_FILECONTENTEMPTY = "InvalidParameter.FileContentEmpty"
+//  INVALIDPARAMETER_IMAGEDECODEFAILED = "InvalidParameter.ImageDecodeFailed"
+//  INVALIDPARAMETER_INVALIDRESOURCENAME = "InvalidParameter.InvalidResourceName"
+//  INVALIDPARAMETER_JOBNOTVALID = "InvalidParameter.JobNotValid"
+//  INVALIDPARAMETER_NOSUCHSERVICE = "InvalidParameter.NoSuchService"
+//  INVALIDPARAMETER_NOTATTENDANCEJOB = "InvalidParameter.NotAttendanceJob"
+//  INVALIDPARAMETER_PERSONNOTREGISTERED = "InvalidParameter.PersonNotRegistered"
+//  INVALIDPARAMETER_RESOURCENAMEDUPLICATE = "InvalidParameter.ResourceNameDuplicate"
+func (c *Client) SubmitDoubleVideoHighlightsWithContext(ctx context.Context, request *SubmitDoubleVideoHighlightsRequest) (response *SubmitDoubleVideoHighlightsResponse, err error) {
+    if request == nil {
+        request = NewSubmitDoubleVideoHighlightsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewSubmitDoubleVideoHighlightsResponse()
     err = c.Send(request, response)
@@ -1349,6 +2041,93 @@ func (c *Client) SubmitFullBodyClassTask(request *SubmitFullBodyClassTaskRequest
     return
 }
 
+// SubmitFullBodyClassTask
+// **传统课堂授课任务**：在此场景中，老师为站立授课，有白板或投影供老师展示课程内容，摄像头可以拍摄到老师的半身或者全身。拍摄视频为一路全局画面，且背景不动，要求画面稳定清晰。通过此接口可分析老师授课的行为及语音，以支持AI评教。  
+//
+//   
+//
+// **提供的功能接口有：**老师人脸识别、老师表情识别、老师肢体动作识别、语音识别。  可分析的指标维度包括：身份识别、正脸、侧脸、人脸坐标、人脸尺寸、高兴、中性、高兴、中性、惊讶、厌恶、恐惧、愤怒、蔑视、悲伤、正面讲解、写板书、指黑板、语音转文字、发音时长、非发音时长、音量、语速、指定关键词的使用等
+//
+//   
+//
+// **对场景的要求为：**真实场景老师1人出现在画面中，全局画面且背景不动；人脸上下角度在20度以内，左右角度在15度以内，歪头角度在15度以内；光照均匀，无遮挡，人脸清晰可见；像素最好在 100X100 像素以上，但是图像整体质量不能超过1080p。
+//
+//     
+//
+// **结果查询方式：**图像任务直接返回结果，点播及直播任务通过DescribeAITaskResult查询结果。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_JOBCANCELED = "InternalError.JobCanceled"
+//  INTERNALERROR_JOBREACHMAXRETRYTIMES = "InternalError.JobReachMaxRetryTimes"
+//  INTERNALERROR_STATUSQUERYFACELIBFAILED = "InternalError.StatusQueryFaceLibFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYRETRIEVALFAILED = "InvalidParameter.BodyRetrievalFailed"
+//  INVALIDPARAMETER_CANNOTFINDFACEINPICTURE = "InvalidParameter.CannotFindFaceInPicture"
+//  INVALIDPARAMETER_CLIPPINGFRAMEFAILED = "InvalidParameter.ClippingFrameFailed"
+//  INVALIDPARAMETER_COMPUTATIONALSIMILARITYFAILED = "InvalidParameter.ComputationalSimilarityFailed"
+//  INVALIDPARAMETER_CREATEFACEFAILED = "InvalidParameter.CreateFaceFailed"
+//  INVALIDPARAMETER_CREATEPERSONFAILED = "InvalidParameter.CreatePersonFailed"
+//  INVALIDPARAMETER_FACEDETECTEDFAILED = "InvalidParameter.FaceDetectedFailed"
+//  INVALIDPARAMETER_FACENOTEXIST = "InvalidParameter.FaceNotExist"
+//  INVALIDPARAMETER_FACENOTEXISTED = "InvalidParameter.FaceNotExisted"
+//  INVALIDPARAMETER_FACENUMBEREXCEEDLIMITOFSINGLEDETECTION = "InvalidParameter.FaceNumberExceedLimitOfSingleDetection"
+//  INVALIDPARAMETER_FACENUMBERLIMIT = "InvalidParameter.FaceNumberLimit"
+//  INVALIDPARAMETER_FACEREGISTRATIONFAILED = "InvalidParameter.FaceRegistrationFailed"
+//  INVALIDPARAMETER_FACERETRIEVALFAILED = "InvalidParameter.FaceRetrievalFailed"
+//  INVALIDPARAMETER_FACETOOSMALL = "InvalidParameter.FaceTooSmall"
+//  INVALIDPARAMETER_FAILEDTODECODEIMAGE = "InvalidParameter.FailedToDecodeImage"
+//  INVALIDPARAMETER_FEATUREEXTRACTIONFAILED = "InvalidParameter.FeatureExtractionFailed"
+//  INVALIDPARAMETER_FILECONTENTEMPTY = "InvalidParameter.FileContentEmpty"
+//  INVALIDPARAMETER_IMAGEDECODEFAILED = "InvalidParameter.ImageDecodeFailed"
+//  INVALIDPARAMETER_IMAGETOOLARGE = "InvalidParameter.ImageTooLarge"
+//  INVALIDPARAMETER_IMAGETOOSMALL = "InvalidParameter.ImageTooSmall"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  INVALIDPARAMETER_INVALIDLANG = "InvalidParameter.InvalidLang"
+//  INVALIDPARAMETER_INVALIDRESOURCEIDENTIFY = "InvalidParameter.InvalidResourceIdentify"
+//  INVALIDPARAMETER_INVALIDRESOURCENAME = "InvalidParameter.InvalidResourceName"
+//  INVALIDPARAMETER_INVALIDSEQID = "InvalidParameter.InvalidSeqId"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidUrl"
+//  INVALIDPARAMETER_JOBNOTVALID = "InvalidParameter.JobNotValid"
+//  INVALIDPARAMETER_LIBRARYNOTEXISTED = "InvalidParameter.LibraryNotExisted"
+//  INVALIDPARAMETER_LOWQUALITYPICTURE = "InvalidParameter.LowQualityPicture"
+//  INVALIDPARAMETER_NOSUCHSERVICE = "InvalidParameter.NoSuchService"
+//  INVALIDPARAMETER_NOTATTENDANCEJOB = "InvalidParameter.NotAttendanceJob"
+//  INVALIDPARAMETER_NOTVALIDPITCH = "InvalidParameter.NotValidPitch"
+//  INVALIDPARAMETER_NOTVALIDROW = "InvalidParameter.NotValidRow"
+//  INVALIDPARAMETER_NOTVALIDYAW = "InvalidParameter.NotValidYaw"
+//  INVALIDPARAMETER_PERSONEXISTED = "InvalidParameter.PersonExisted"
+//  INVALIDPARAMETER_PERSONIDNOTVALID = "InvalidParameter.PersonIdNotValid"
+//  INVALIDPARAMETER_PERSONNOTEXIST = "InvalidParameter.PersonNotExist"
+//  INVALIDPARAMETER_PERSONNOTEXISTED = "InvalidParameter.PersonNotExisted"
+//  INVALIDPARAMETER_PERSONNOTREGISTERED = "InvalidParameter.PersonNotRegistered"
+//  INVALIDPARAMETER_PROCESSUNREADY = "InvalidParameter.ProcessUnReady"
+//  INVALIDPARAMETER_RESOURCENAMEDUPLICATE = "InvalidParameter.ResourceNameDuplicate"
+//  INVALIDPARAMETER_STATUSJOBFAILED = "InvalidParameter.StatusJobFailed"
+//  INVALIDPARAMETER_STATUSJOBNOTFOUND = "InvalidParameter.StatusJobNotFound"
+//  INVALIDPARAMETER_STATUSJOBUNFINISHED = "InvalidParameter.StatusJobUnfinished"
+//  INVALIDPARAMETER_STATUSNOCAMERAFOUND = "InvalidParameter.StatusNoCameraFound"
+//  INVALIDPARAMETER_TOOMANYFACE = "InvalidParameter.TooManyFace"
+//  INVALIDPARAMETER_TRACKINGFAILED = "InvalidParameter.TrackingFailed"
+//  INVALIDPARAMETERVALUE_GROUPEXDESCRIPTIONSEXCEED = "InvalidParameterValue.GroupExDescriptionsExceed"
+//  INVALIDPARAMETERVALUE_GROUPEXDESCRIPTIONSNAMEIDENTICAL = "InvalidParameterValue.GroupExDescriptionsNameIdentical"
+//  INVALIDPARAMETERVALUE_GROUPEXDESCRIPTIONSNAMEILLEGAL = "InvalidParameterValue.GroupExDescriptionsNameIllegal"
+//  INVALIDPARAMETERVALUE_GROUPEXDESCRIPTIONSNAMETOOLONG = "InvalidParameterValue.GroupExDescriptionsNameTooLong"
+//  LIMITEXCEEDED_STATUSCAMERACOUNTOVERMAX = "LimitExceeded.StatusCameraCountOverMax"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_HLJOBIDNOTFOUND = "ResourceNotFound.HLJobIdNotFound"
+//  RESOURCEUNAVAILABLE_STATUSQUERYSTREAMFAILED = "ResourceUnavailable.StatusQueryStreamFailed"
+func (c *Client) SubmitFullBodyClassTaskWithContext(ctx context.Context, request *SubmitFullBodyClassTaskRequest) (response *SubmitFullBodyClassTaskResponse, err error) {
+    if request == nil {
+        request = NewSubmitFullBodyClassTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewSubmitFullBodyClassTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSubmitHighlightsRequest() (request *SubmitHighlightsRequest) {
     request = &SubmitHighlightsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1433,6 +2212,74 @@ func (c *Client) SubmitHighlights(request *SubmitHighlightsRequest) (response *S
     return
 }
 
+// SubmitHighlights
+// 发起视频生成精彩集锦接口。该接口可以通过客户传入的课程音频数据及相关策略（如微笑抽取，专注抽取等），自动生成一堂课程的精彩集锦。需要通过QueryHighlightResult接口获取生成结果。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_JOBCANCELED = "InternalError.JobCanceled"
+//  INTERNALERROR_JOBREACHMAXRETRYTIMES = "InternalError.JobReachMaxRetryTimes"
+//  INTERNALERROR_STATUSQUERYFACELIBFAILED = "InternalError.StatusQueryFaceLibFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYRETRIEVALFAILED = "InvalidParameter.BodyRetrievalFailed"
+//  INVALIDPARAMETER_CANNOTFINDFACEINPICTURE = "InvalidParameter.CannotFindFaceInPicture"
+//  INVALIDPARAMETER_CLIPPINGFRAMEFAILED = "InvalidParameter.ClippingFrameFailed"
+//  INVALIDPARAMETER_COMPUTATIONALSIMILARITYFAILED = "InvalidParameter.ComputationalSimilarityFailed"
+//  INVALIDPARAMETER_CREATEFACEFAILED = "InvalidParameter.CreateFaceFailed"
+//  INVALIDPARAMETER_CREATEPERSONFAILED = "InvalidParameter.CreatePersonFailed"
+//  INVALIDPARAMETER_FACEDETECTEDFAILED = "InvalidParameter.FaceDetectedFailed"
+//  INVALIDPARAMETER_FACENOTEXIST = "InvalidParameter.FaceNotExist"
+//  INVALIDPARAMETER_FACENOTEXISTED = "InvalidParameter.FaceNotExisted"
+//  INVALIDPARAMETER_FACENUMBEREXCEEDLIMITOFSINGLEDETECTION = "InvalidParameter.FaceNumberExceedLimitOfSingleDetection"
+//  INVALIDPARAMETER_FACENUMBERLIMIT = "InvalidParameter.FaceNumberLimit"
+//  INVALIDPARAMETER_FACEREGISTRATIONFAILED = "InvalidParameter.FaceRegistrationFailed"
+//  INVALIDPARAMETER_FACERETRIEVALFAILED = "InvalidParameter.FaceRetrievalFailed"
+//  INVALIDPARAMETER_FACETOOSMALL = "InvalidParameter.FaceTooSmall"
+//  INVALIDPARAMETER_FAILEDTODECODEIMAGE = "InvalidParameter.FailedToDecodeImage"
+//  INVALIDPARAMETER_FEATUREEXTRACTIONFAILED = "InvalidParameter.FeatureExtractionFailed"
+//  INVALIDPARAMETER_FILECONTENTEMPTY = "InvalidParameter.FileContentEmpty"
+//  INVALIDPARAMETER_IMAGEDECODEFAILED = "InvalidParameter.ImageDecodeFailed"
+//  INVALIDPARAMETER_IMAGETOOLARGE = "InvalidParameter.ImageTooLarge"
+//  INVALIDPARAMETER_IMAGETOOSMALL = "InvalidParameter.ImageTooSmall"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  INVALIDPARAMETER_INVALIDLANG = "InvalidParameter.InvalidLang"
+//  INVALIDPARAMETER_INVALIDRESOURCENAME = "InvalidParameter.InvalidResourceName"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidUrl"
+//  INVALIDPARAMETER_JOBNOTVALID = "InvalidParameter.JobNotValid"
+//  INVALIDPARAMETER_LIBRARYNOTEXISTED = "InvalidParameter.LibraryNotExisted"
+//  INVALIDPARAMETER_LOWQUALITYPICTURE = "InvalidParameter.LowQualityPicture"
+//  INVALIDPARAMETER_NOSUCHSERVICE = "InvalidParameter.NoSuchService"
+//  INVALIDPARAMETER_NOTATTENDANCEJOB = "InvalidParameter.NotAttendanceJob"
+//  INVALIDPARAMETER_NOTVALIDPITCH = "InvalidParameter.NotValidPitch"
+//  INVALIDPARAMETER_NOTVALIDROW = "InvalidParameter.NotValidRow"
+//  INVALIDPARAMETER_NOTVALIDYAW = "InvalidParameter.NotValidYaw"
+//  INVALIDPARAMETER_PERSONEXISTED = "InvalidParameter.PersonExisted"
+//  INVALIDPARAMETER_PERSONIDNOTVALID = "InvalidParameter.PersonIdNotValid"
+//  INVALIDPARAMETER_PERSONNOTEXIST = "InvalidParameter.PersonNotExist"
+//  INVALIDPARAMETER_PERSONNOTEXISTED = "InvalidParameter.PersonNotExisted"
+//  INVALIDPARAMETER_PERSONNOTREGISTERED = "InvalidParameter.PersonNotRegistered"
+//  INVALIDPARAMETER_PROCESSUNREADY = "InvalidParameter.ProcessUnReady"
+//  INVALIDPARAMETER_RESOURCENAMEDUPLICATE = "InvalidParameter.ResourceNameDuplicate"
+//  INVALIDPARAMETER_STATUSJOBFAILED = "InvalidParameter.StatusJobFailed"
+//  INVALIDPARAMETER_STATUSJOBNOTFOUND = "InvalidParameter.StatusJobNotFound"
+//  INVALIDPARAMETER_STATUSJOBUNFINISHED = "InvalidParameter.StatusJobUnfinished"
+//  INVALIDPARAMETER_STATUSNOCAMERAFOUND = "InvalidParameter.StatusNoCameraFound"
+//  INVALIDPARAMETER_TOOMANYFACE = "InvalidParameter.TooManyFace"
+//  INVALIDPARAMETER_TRACKINGFAILED = "InvalidParameter.TrackingFailed"
+//  LIMITEXCEEDED_STATUSCAMERACOUNTOVERMAX = "LimitExceeded.StatusCameraCountOverMax"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_STATUSQUERYSTREAMFAILED = "ResourceUnavailable.StatusQueryStreamFailed"
+func (c *Client) SubmitHighlightsWithContext(ctx context.Context, request *SubmitHighlightsRequest) (response *SubmitHighlightsResponse, err error) {
+    if request == nil {
+        request = NewSubmitHighlightsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewSubmitHighlightsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSubmitImageTaskRequest() (request *SubmitImageTaskRequest) {
     request = &SubmitImageTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1461,6 +2308,24 @@ func (c *Client) SubmitImageTask(request *SubmitImageTaskRequest) (response *Sub
     if request == nil {
         request = NewSubmitImageTaskRequest()
     }
+    
+    response = NewSubmitImageTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SubmitImageTask
+// 提交图像分析任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_UNSUPPORTEDFILETYPEMOV = "InvalidParameter.UnsupportedFileTypeMov"
+//  INVALIDPARAMETER_UNSUPPORTEDVIDEOSIZE = "InvalidParameter.UnsupportedVideoSize"
+func (c *Client) SubmitImageTaskWithContext(ctx context.Context, request *SubmitImageTaskRequest) (response *SubmitImageTaskResponse, err error) {
+    if request == nil {
+        request = NewSubmitImageTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewSubmitImageTaskResponse()
     err = c.Send(request, response)
@@ -1563,6 +2428,92 @@ func (c *Client) SubmitImageTaskPlus(request *SubmitImageTaskPlusRequest) (respo
     if request == nil {
         request = NewSubmitImageTaskPlusRequest()
     }
+    
+    response = NewSubmitImageTaskPlusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SubmitImageTaskPlus
+// 高级图像分析任务，开放了图像任务里的所有开关，可以根据场景深度定制图像分析任务。支持的图像类别有，图片链接、图片二进制数据、点播链接和直播链接。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTSUPPORTEDFUNCTIONERROR = "FailedOperation.NotSupportedFunctionError"
+//  INTERNALERROR_JOBCANCELED = "InternalError.JobCanceled"
+//  INTERNALERROR_JOBREACHMAXRETRYTIMES = "InternalError.JobReachMaxRetryTimes"
+//  INTERNALERROR_STATUSQUERYFACELIBFAILED = "InternalError.StatusQueryFaceLibFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYRETRIEVALFAILED = "InvalidParameter.BodyRetrievalFailed"
+//  INVALIDPARAMETER_CANNOTFINDFACEERROR = "InvalidParameter.CannotFindFaceError"
+//  INVALIDPARAMETER_CANNOTFINDFACEINPICTURE = "InvalidParameter.CannotFindFaceInPicture"
+//  INVALIDPARAMETER_CANNOTREADVIDEOFROMURLERROR = "InvalidParameter.CannotReadVideoFromUrlError"
+//  INVALIDPARAMETER_CLIPPINGFRAMEFAILED = "InvalidParameter.ClippingFrameFailed"
+//  INVALIDPARAMETER_COMPUTATIONALSIMILARITYFAILED = "InvalidParameter.ComputationalSimilarityFailed"
+//  INVALIDPARAMETER_CREATEFACEFAILED = "InvalidParameter.CreateFaceFailed"
+//  INVALIDPARAMETER_CREATEPERSONFAILED = "InvalidParameter.CreatePersonFailed"
+//  INVALIDPARAMETER_FACEDETECTEDFAILED = "InvalidParameter.FaceDetectedFailed"
+//  INVALIDPARAMETER_FACENOTEXIST = "InvalidParameter.FaceNotExist"
+//  INVALIDPARAMETER_FACENOTEXISTED = "InvalidParameter.FaceNotExisted"
+//  INVALIDPARAMETER_FACENUMBEREXCEEDLIMITOFSINGLEDETECTION = "InvalidParameter.FaceNumberExceedLimitOfSingleDetection"
+//  INVALIDPARAMETER_FACENUMBERLIMIT = "InvalidParameter.FaceNumberLimit"
+//  INVALIDPARAMETER_FACEREGISTRATIONFAILED = "InvalidParameter.FaceRegistrationFailed"
+//  INVALIDPARAMETER_FACERETRIEVALFAILED = "InvalidParameter.FaceRetrievalFailed"
+//  INVALIDPARAMETER_FACETOOSMALL = "InvalidParameter.FaceTooSmall"
+//  INVALIDPARAMETER_FAILEDTODECODEIMAGE = "InvalidParameter.FailedToDecodeImage"
+//  INVALIDPARAMETER_FEATUREEXTRACTIONFAILED = "InvalidParameter.FeatureExtractionFailed"
+//  INVALIDPARAMETER_FILECONTENTEMPTY = "InvalidParameter.FileContentEmpty"
+//  INVALIDPARAMETER_IMAGEDECODEFAILED = "InvalidParameter.ImageDecodeFailed"
+//  INVALIDPARAMETER_IMAGETOOLARGE = "InvalidParameter.ImageTooLarge"
+//  INVALIDPARAMETER_IMAGETOOSMALL = "InvalidParameter.ImageTooSmall"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  INVALIDPARAMETER_INVALIDLANG = "InvalidParameter.InvalidLang"
+//  INVALIDPARAMETER_INVALIDRESOURCEIDENTIFY = "InvalidParameter.InvalidResourceIdentify"
+//  INVALIDPARAMETER_INVALIDRESOURCENAME = "InvalidParameter.InvalidResourceName"
+//  INVALIDPARAMETER_INVALIDSEQID = "InvalidParameter.InvalidSeqId"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidUrl"
+//  INVALIDPARAMETER_JOBNOTVALID = "InvalidParameter.JobNotValid"
+//  INVALIDPARAMETER_LIBHAVENOPERSON = "InvalidParameter.LibHaveNoPerson"
+//  INVALIDPARAMETER_LIBISEMPTY = "InvalidParameter.LibIsEmpty"
+//  INVALIDPARAMETER_LIBRARYNOTEXISTED = "InvalidParameter.LibraryNotExisted"
+//  INVALIDPARAMETER_LOWQUALITYPICTURE = "InvalidParameter.LowQualityPicture"
+//  INVALIDPARAMETER_NOSUCHSERVICE = "InvalidParameter.NoSuchService"
+//  INVALIDPARAMETER_NOTATTENDANCEJOB = "InvalidParameter.NotAttendanceJob"
+//  INVALIDPARAMETER_NOTVALIDPITCH = "InvalidParameter.NotValidPitch"
+//  INVALIDPARAMETER_NOTVALIDROW = "InvalidParameter.NotValidRow"
+//  INVALIDPARAMETER_NOTVALIDYAW = "InvalidParameter.NotValidYaw"
+//  INVALIDPARAMETER_PERSONEXISTED = "InvalidParameter.PersonExisted"
+//  INVALIDPARAMETER_PERSONIDNOTVALID = "InvalidParameter.PersonIdNotValid"
+//  INVALIDPARAMETER_PERSONNOTEXIST = "InvalidParameter.PersonNotExist"
+//  INVALIDPARAMETER_PERSONNOTEXISTED = "InvalidParameter.PersonNotExisted"
+//  INVALIDPARAMETER_PERSONNOTREGISTERED = "InvalidParameter.PersonNotRegistered"
+//  INVALIDPARAMETER_PROCESSUNREADY = "InvalidParameter.ProcessUnReady"
+//  INVALIDPARAMETER_RESOURCENAMEDUPLICATE = "InvalidParameter.ResourceNameDuplicate"
+//  INVALIDPARAMETER_STATUSJOBFAILED = "InvalidParameter.StatusJobFailed"
+//  INVALIDPARAMETER_STATUSJOBNOTFOUND = "InvalidParameter.StatusJobNotFound"
+//  INVALIDPARAMETER_STATUSJOBUNFINISHED = "InvalidParameter.StatusJobUnfinished"
+//  INVALIDPARAMETER_STATUSNOCAMERAFOUND = "InvalidParameter.StatusNoCameraFound"
+//  INVALIDPARAMETER_TOOMANYFACE = "InvalidParameter.TooManyFace"
+//  INVALIDPARAMETER_TRACKINGFAILED = "InvalidParameter.TrackingFailed"
+//  INVALIDPARAMETER_VIDEOALREDYPROCESSEDERROR = "InvalidParameter.VideoAlredyProcessedError"
+//  INVALIDPARAMETERVALUE_GETHTTPBODYERROR = "InvalidParameterValue.GetHttpBodyError"
+//  INVALIDPARAMETERVALUE_GROUPEXDESCRIPTIONSEXCEED = "InvalidParameterValue.GroupExDescriptionsExceed"
+//  INVALIDPARAMETERVALUE_GROUPEXDESCRIPTIONSNAMEIDENTICAL = "InvalidParameterValue.GroupExDescriptionsNameIdentical"
+//  INVALIDPARAMETERVALUE_GROUPEXDESCRIPTIONSNAMEILLEGAL = "InvalidParameterValue.GroupExDescriptionsNameIllegal"
+//  INVALIDPARAMETERVALUE_GROUPEXDESCRIPTIONSNAMETOOLONG = "InvalidParameterValue.GroupExDescriptionsNameTooLong"
+//  INVALIDPARAMETERVALUE_IMAGEILLEGAL = "InvalidParameterValue.ImageIllegal"
+//  INVALIDPARAMETERVALUE_INVALIDSEQID = "InvalidParameterValue.InvalidSeqId"
+//  INVALIDPARAMETERVALUE_NOTSUPPORTEDFUNCTIONERROR = "InvalidParameterValue.NotSupportedFunctionError"
+//  INVALIDPARAMETERVALUE_PERSONEXDESCRIPTIONINFOSEXCEED = "InvalidParameterValue.PersonExDescriptionInfosExceed"
+//  LIMITEXCEEDED_STATUSCAMERACOUNTOVERMAX = "LimitExceeded.StatusCameraCountOverMax"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_HLJOBIDNOTFOUND = "ResourceNotFound.HLJobIdNotFound"
+//  RESOURCEUNAVAILABLE_CANNOTFINDSESSION = "ResourceUnavailable.CannotFindSession"
+//  RESOURCEUNAVAILABLE_STATUSQUERYSTREAMFAILED = "ResourceUnavailable.StatusQueryStreamFailed"
+func (c *Client) SubmitImageTaskPlusWithContext(ctx context.Context, request *SubmitImageTaskPlusRequest) (response *SubmitImageTaskPlusResponse, err error) {
+    if request == nil {
+        request = NewSubmitImageTaskPlusRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewSubmitImageTaskPlusResponse()
     err = c.Send(request, response)
@@ -1674,6 +2625,95 @@ func (c *Client) SubmitOneByOneClassTask(request *SubmitOneByOneClassTaskRequest
     return
 }
 
+// SubmitOneByOneClassTask
+// **提交在线1对1课堂任务**  
+//
+// 对于在线1对1课堂，老师通过视频向学生授课，并且学生人数为1人。通过上传学生端的图像信息，可以获取学生的听课情况分析。 具体指一路全局画面且背景不动，有1位学生的头像或上半身的画面，要求画面稳定清晰。
+//
+//   
+//
+// **提供的功能接口有：**学生人脸识别、学生表情识别、语音识别。可分析的指标维度包括：学生身份识别、正脸、侧脸、抬头、低头、人脸坐标、人脸尺寸、高兴、中性、高兴、中性、惊讶、厌恶、恐惧、愤怒、蔑视、悲伤、语音转文字、发音时长、非发音时长、音量、语速等。
+//
+//   
+//
+// **对场景的要求为：**真实常规1v1授课场景，学生2人以下，全局画面且背景不动；人脸上下角度在20度以内，左右角度在15度以内，歪头角度在15度以内；光照均匀，无遮挡，人脸清晰可见；像素最好在 100X100 像素以上，但是图像整体质量不能超过1080p。
+//
+//     
+//
+// **结果查询方式：**图像任务直接返回结果，点播及直播任务通过DescribeAITaskResult查询结果。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_JOBCANCELED = "InternalError.JobCanceled"
+//  INTERNALERROR_JOBREACHMAXRETRYTIMES = "InternalError.JobReachMaxRetryTimes"
+//  INTERNALERROR_STATUSQUERYFACELIBFAILED = "InternalError.StatusQueryFaceLibFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYRETRIEVALFAILED = "InvalidParameter.BodyRetrievalFailed"
+//  INVALIDPARAMETER_CANNOTFINDFACEINPICTURE = "InvalidParameter.CannotFindFaceInPicture"
+//  INVALIDPARAMETER_CLIPPINGFRAMEFAILED = "InvalidParameter.ClippingFrameFailed"
+//  INVALIDPARAMETER_COMPUTATIONALSIMILARITYFAILED = "InvalidParameter.ComputationalSimilarityFailed"
+//  INVALIDPARAMETER_CREATEFACEFAILED = "InvalidParameter.CreateFaceFailed"
+//  INVALIDPARAMETER_CREATEPERSONFAILED = "InvalidParameter.CreatePersonFailed"
+//  INVALIDPARAMETER_FACEDETECTEDFAILED = "InvalidParameter.FaceDetectedFailed"
+//  INVALIDPARAMETER_FACENOTEXIST = "InvalidParameter.FaceNotExist"
+//  INVALIDPARAMETER_FACENOTEXISTED = "InvalidParameter.FaceNotExisted"
+//  INVALIDPARAMETER_FACENUMBEREXCEEDLIMITOFSINGLEDETECTION = "InvalidParameter.FaceNumberExceedLimitOfSingleDetection"
+//  INVALIDPARAMETER_FACENUMBERLIMIT = "InvalidParameter.FaceNumberLimit"
+//  INVALIDPARAMETER_FACEREGISTRATIONFAILED = "InvalidParameter.FaceRegistrationFailed"
+//  INVALIDPARAMETER_FACERETRIEVALFAILED = "InvalidParameter.FaceRetrievalFailed"
+//  INVALIDPARAMETER_FACETOOSMALL = "InvalidParameter.FaceTooSmall"
+//  INVALIDPARAMETER_FAILEDTODECODEIMAGE = "InvalidParameter.FailedToDecodeImage"
+//  INVALIDPARAMETER_FEATUREEXTRACTIONFAILED = "InvalidParameter.FeatureExtractionFailed"
+//  INVALIDPARAMETER_FILECONTENTEMPTY = "InvalidParameter.FileContentEmpty"
+//  INVALIDPARAMETER_IMAGEDECODEFAILED = "InvalidParameter.ImageDecodeFailed"
+//  INVALIDPARAMETER_IMAGETOOLARGE = "InvalidParameter.ImageTooLarge"
+//  INVALIDPARAMETER_IMAGETOOSMALL = "InvalidParameter.ImageTooSmall"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  INVALIDPARAMETER_INVALIDLANG = "InvalidParameter.InvalidLang"
+//  INVALIDPARAMETER_INVALIDRESOURCEIDENTIFY = "InvalidParameter.InvalidResourceIdentify"
+//  INVALIDPARAMETER_INVALIDRESOURCENAME = "InvalidParameter.InvalidResourceName"
+//  INVALIDPARAMETER_INVALIDSEQID = "InvalidParameter.InvalidSeqId"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidUrl"
+//  INVALIDPARAMETER_JOBNOTVALID = "InvalidParameter.JobNotValid"
+//  INVALIDPARAMETER_LIBRARYNOTEXISTED = "InvalidParameter.LibraryNotExisted"
+//  INVALIDPARAMETER_LOWQUALITYPICTURE = "InvalidParameter.LowQualityPicture"
+//  INVALIDPARAMETER_NOSUCHSERVICE = "InvalidParameter.NoSuchService"
+//  INVALIDPARAMETER_NOTATTENDANCEJOB = "InvalidParameter.NotAttendanceJob"
+//  INVALIDPARAMETER_NOTVALIDPITCH = "InvalidParameter.NotValidPitch"
+//  INVALIDPARAMETER_NOTVALIDROW = "InvalidParameter.NotValidRow"
+//  INVALIDPARAMETER_NOTVALIDYAW = "InvalidParameter.NotValidYaw"
+//  INVALIDPARAMETER_PERSONEXISTED = "InvalidParameter.PersonExisted"
+//  INVALIDPARAMETER_PERSONIDNOTVALID = "InvalidParameter.PersonIdNotValid"
+//  INVALIDPARAMETER_PERSONNOTEXIST = "InvalidParameter.PersonNotExist"
+//  INVALIDPARAMETER_PERSONNOTEXISTED = "InvalidParameter.PersonNotExisted"
+//  INVALIDPARAMETER_PERSONNOTREGISTERED = "InvalidParameter.PersonNotRegistered"
+//  INVALIDPARAMETER_PROCESSUNREADY = "InvalidParameter.ProcessUnReady"
+//  INVALIDPARAMETER_RESOURCENAMEDUPLICATE = "InvalidParameter.ResourceNameDuplicate"
+//  INVALIDPARAMETER_STATUSJOBFAILED = "InvalidParameter.StatusJobFailed"
+//  INVALIDPARAMETER_STATUSJOBNOTFOUND = "InvalidParameter.StatusJobNotFound"
+//  INVALIDPARAMETER_STATUSJOBUNFINISHED = "InvalidParameter.StatusJobUnfinished"
+//  INVALIDPARAMETER_STATUSNOCAMERAFOUND = "InvalidParameter.StatusNoCameraFound"
+//  INVALIDPARAMETER_TOOMANYFACE = "InvalidParameter.TooManyFace"
+//  INVALIDPARAMETER_TRACKINGFAILED = "InvalidParameter.TrackingFailed"
+//  INVALIDPARAMETERVALUE_GROUPEXDESCRIPTIONSEXCEED = "InvalidParameterValue.GroupExDescriptionsExceed"
+//  INVALIDPARAMETERVALUE_GROUPEXDESCRIPTIONSNAMEIDENTICAL = "InvalidParameterValue.GroupExDescriptionsNameIdentical"
+//  INVALIDPARAMETERVALUE_GROUPEXDESCRIPTIONSNAMEILLEGAL = "InvalidParameterValue.GroupExDescriptionsNameIllegal"
+//  INVALIDPARAMETERVALUE_GROUPEXDESCRIPTIONSNAMETOOLONG = "InvalidParameterValue.GroupExDescriptionsNameTooLong"
+//  LIMITEXCEEDED_STATUSCAMERACOUNTOVERMAX = "LimitExceeded.StatusCameraCountOverMax"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_HLJOBIDNOTFOUND = "ResourceNotFound.HLJobIdNotFound"
+//  RESOURCEUNAVAILABLE_STATUSQUERYSTREAMFAILED = "ResourceUnavailable.StatusQueryStreamFailed"
+func (c *Client) SubmitOneByOneClassTaskWithContext(ctx context.Context, request *SubmitOneByOneClassTaskRequest) (response *SubmitOneByOneClassTaskResponse, err error) {
+    if request == nil {
+        request = NewSubmitOneByOneClassTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewSubmitOneByOneClassTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSubmitOpenClassTaskRequest() (request *SubmitOpenClassTaskRequest) {
     request = &SubmitOpenClassTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1778,6 +2818,94 @@ func (c *Client) SubmitOpenClassTask(request *SubmitOpenClassTaskRequest) (respo
     return
 }
 
+// SubmitOpenClassTask
+// **提交线下小班（无课桌）课任务**  
+//
+// 线下小班课是指有学生无课桌的课堂，满座15人以下，全局画面且背景不动，能清晰看到。  
+//
+//   
+//
+// **提供的功能接口有：**学生人脸识别、学生表情识别、学生肢体动作识别。  可分析的指标维度包括：身份识别、正脸、侧脸、抬头、低头、高兴、中性、高兴、中性、惊讶、厌恶、恐惧、愤怒、蔑视、悲伤、站立、举手、坐着等。
+//
+//   
+//
+// **对场景的要求为：**真实常规教室，满座15人以下，全局画面且背景不动；人脸上下角度在20度以内，左右角度在15度以内，歪头角度在15度以内；光照均匀，无遮挡，人脸清晰可见；像素最好在 100X100 像素以上但是图像整体质量不能超过1080p。
+//
+//     
+//
+// **结果查询方式：**图像任务直接返回结果，点播及直播任务通过DescribeAITaskResult查询结果。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_JOBCANCELED = "InternalError.JobCanceled"
+//  INTERNALERROR_JOBREACHMAXRETRYTIMES = "InternalError.JobReachMaxRetryTimes"
+//  INTERNALERROR_STATUSQUERYFACELIBFAILED = "InternalError.StatusQueryFaceLibFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYRETRIEVALFAILED = "InvalidParameter.BodyRetrievalFailed"
+//  INVALIDPARAMETER_CANNOTFINDFACEINPICTURE = "InvalidParameter.CannotFindFaceInPicture"
+//  INVALIDPARAMETER_CLIPPINGFRAMEFAILED = "InvalidParameter.ClippingFrameFailed"
+//  INVALIDPARAMETER_COMPUTATIONALSIMILARITYFAILED = "InvalidParameter.ComputationalSimilarityFailed"
+//  INVALIDPARAMETER_CREATEFACEFAILED = "InvalidParameter.CreateFaceFailed"
+//  INVALIDPARAMETER_CREATEPERSONFAILED = "InvalidParameter.CreatePersonFailed"
+//  INVALIDPARAMETER_FACEDETECTEDFAILED = "InvalidParameter.FaceDetectedFailed"
+//  INVALIDPARAMETER_FACENOTEXIST = "InvalidParameter.FaceNotExist"
+//  INVALIDPARAMETER_FACENOTEXISTED = "InvalidParameter.FaceNotExisted"
+//  INVALIDPARAMETER_FACENUMBEREXCEEDLIMITOFSINGLEDETECTION = "InvalidParameter.FaceNumberExceedLimitOfSingleDetection"
+//  INVALIDPARAMETER_FACENUMBERLIMIT = "InvalidParameter.FaceNumberLimit"
+//  INVALIDPARAMETER_FACEREGISTRATIONFAILED = "InvalidParameter.FaceRegistrationFailed"
+//  INVALIDPARAMETER_FACERETRIEVALFAILED = "InvalidParameter.FaceRetrievalFailed"
+//  INVALIDPARAMETER_FACETOOSMALL = "InvalidParameter.FaceTooSmall"
+//  INVALIDPARAMETER_FAILEDTODECODEIMAGE = "InvalidParameter.FailedToDecodeImage"
+//  INVALIDPARAMETER_FEATUREEXTRACTIONFAILED = "InvalidParameter.FeatureExtractionFailed"
+//  INVALIDPARAMETER_FILECONTENTEMPTY = "InvalidParameter.FileContentEmpty"
+//  INVALIDPARAMETER_IMAGEDECODEFAILED = "InvalidParameter.ImageDecodeFailed"
+//  INVALIDPARAMETER_IMAGETOOLARGE = "InvalidParameter.ImageTooLarge"
+//  INVALIDPARAMETER_IMAGETOOSMALL = "InvalidParameter.ImageTooSmall"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  INVALIDPARAMETER_INVALIDLANG = "InvalidParameter.InvalidLang"
+//  INVALIDPARAMETER_INVALIDRESOURCEIDENTIFY = "InvalidParameter.InvalidResourceIdentify"
+//  INVALIDPARAMETER_INVALIDRESOURCENAME = "InvalidParameter.InvalidResourceName"
+//  INVALIDPARAMETER_INVALIDSEQID = "InvalidParameter.InvalidSeqId"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidUrl"
+//  INVALIDPARAMETER_JOBNOTVALID = "InvalidParameter.JobNotValid"
+//  INVALIDPARAMETER_LIBRARYNOTEXISTED = "InvalidParameter.LibraryNotExisted"
+//  INVALIDPARAMETER_LOWQUALITYPICTURE = "InvalidParameter.LowQualityPicture"
+//  INVALIDPARAMETER_NOSUCHSERVICE = "InvalidParameter.NoSuchService"
+//  INVALIDPARAMETER_NOTATTENDANCEJOB = "InvalidParameter.NotAttendanceJob"
+//  INVALIDPARAMETER_NOTVALIDPITCH = "InvalidParameter.NotValidPitch"
+//  INVALIDPARAMETER_NOTVALIDROW = "InvalidParameter.NotValidRow"
+//  INVALIDPARAMETER_NOTVALIDYAW = "InvalidParameter.NotValidYaw"
+//  INVALIDPARAMETER_PERSONEXISTED = "InvalidParameter.PersonExisted"
+//  INVALIDPARAMETER_PERSONIDNOTVALID = "InvalidParameter.PersonIdNotValid"
+//  INVALIDPARAMETER_PERSONNOTEXIST = "InvalidParameter.PersonNotExist"
+//  INVALIDPARAMETER_PERSONNOTEXISTED = "InvalidParameter.PersonNotExisted"
+//  INVALIDPARAMETER_PERSONNOTREGISTERED = "InvalidParameter.PersonNotRegistered"
+//  INVALIDPARAMETER_PROCESSUNREADY = "InvalidParameter.ProcessUnReady"
+//  INVALIDPARAMETER_RESOURCENAMEDUPLICATE = "InvalidParameter.ResourceNameDuplicate"
+//  INVALIDPARAMETER_STATUSJOBFAILED = "InvalidParameter.StatusJobFailed"
+//  INVALIDPARAMETER_STATUSJOBNOTFOUND = "InvalidParameter.StatusJobNotFound"
+//  INVALIDPARAMETER_STATUSJOBUNFINISHED = "InvalidParameter.StatusJobUnfinished"
+//  INVALIDPARAMETER_STATUSNOCAMERAFOUND = "InvalidParameter.StatusNoCameraFound"
+//  INVALIDPARAMETER_TOOMANYFACE = "InvalidParameter.TooManyFace"
+//  INVALIDPARAMETER_TRACKINGFAILED = "InvalidParameter.TrackingFailed"
+//  INVALIDPARAMETERVALUE_GROUPEXDESCRIPTIONSEXCEED = "InvalidParameterValue.GroupExDescriptionsExceed"
+//  INVALIDPARAMETERVALUE_GROUPEXDESCRIPTIONSNAMEIDENTICAL = "InvalidParameterValue.GroupExDescriptionsNameIdentical"
+//  INVALIDPARAMETERVALUE_GROUPEXDESCRIPTIONSNAMEILLEGAL = "InvalidParameterValue.GroupExDescriptionsNameIllegal"
+//  INVALIDPARAMETERVALUE_GROUPEXDESCRIPTIONSNAMETOOLONG = "InvalidParameterValue.GroupExDescriptionsNameTooLong"
+//  LIMITEXCEEDED_STATUSCAMERACOUNTOVERMAX = "LimitExceeded.StatusCameraCountOverMax"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_HLJOBIDNOTFOUND = "ResourceNotFound.HLJobIdNotFound"
+//  RESOURCEUNAVAILABLE_STATUSQUERYSTREAMFAILED = "ResourceUnavailable.StatusQueryStreamFailed"
+func (c *Client) SubmitOpenClassTaskWithContext(ctx context.Context, request *SubmitOpenClassTaskRequest) (response *SubmitOpenClassTaskResponse, err error) {
+    if request == nil {
+        request = NewSubmitOpenClassTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewSubmitOpenClassTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSubmitPartialBodyClassTaskRequest() (request *SubmitPartialBodyClassTaskRequest) {
     request = &SubmitPartialBodyClassTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1876,6 +3004,94 @@ func (c *Client) SubmitPartialBodyClassTask(request *SubmitPartialBodyClassTaskR
     if request == nil {
         request = NewSubmitPartialBodyClassTaskRequest()
     }
+    
+    response = NewSubmitPartialBodyClassTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SubmitPartialBodyClassTask
+// **在线小班课任务**：此场景是在线授课场景，老师一般为坐着授课，摄像头可以拍摄到老师的头部及上半身。拍摄视频为一路全局画面，且背景不动，要求画面稳定清晰。通过此接口可分析老师授课的行为及语音，以支持AI评教。    
+//
+//   
+//
+// **提供的功能接口有：**老师人脸识别、老师表情识别、老师手势识别、光线识别、语音识别。 可分析的指标维度包括：身份识别、正脸、侧脸、人脸坐标、人脸尺寸、高兴、中性、高兴、中性、惊讶、厌恶、恐惧、愤怒、蔑视、悲伤、点赞手势、听你说手势、听我说手势、拿教具行为、语音转文字、发音时长、非发音时长、音量、语速、指定关键词的使用等 
+//
+//   
+//
+// **对场景的要求为：**在线常规授课场景，全局画面且背景不动；人脸上下角度在20度以内，左右角度在15度以内，歪头角度在15度以内；光照均匀，无遮挡，人脸清晰可见；像素最好在 100X100 像素以上，但是图像整体质量不能超过1080p。
+//
+//     
+//
+// **结果查询方式：**图像任务直接返回结果，点播及直播任务通过DescribeAITaskResult查询结果。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_JOBCANCELED = "InternalError.JobCanceled"
+//  INTERNALERROR_JOBREACHMAXRETRYTIMES = "InternalError.JobReachMaxRetryTimes"
+//  INTERNALERROR_STATUSQUERYFACELIBFAILED = "InternalError.StatusQueryFaceLibFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYRETRIEVALFAILED = "InvalidParameter.BodyRetrievalFailed"
+//  INVALIDPARAMETER_CANNOTFINDFACEINPICTURE = "InvalidParameter.CannotFindFaceInPicture"
+//  INVALIDPARAMETER_CLIPPINGFRAMEFAILED = "InvalidParameter.ClippingFrameFailed"
+//  INVALIDPARAMETER_COMPUTATIONALSIMILARITYFAILED = "InvalidParameter.ComputationalSimilarityFailed"
+//  INVALIDPARAMETER_CREATEFACEFAILED = "InvalidParameter.CreateFaceFailed"
+//  INVALIDPARAMETER_CREATEPERSONFAILED = "InvalidParameter.CreatePersonFailed"
+//  INVALIDPARAMETER_FACEDETECTEDFAILED = "InvalidParameter.FaceDetectedFailed"
+//  INVALIDPARAMETER_FACENOTEXIST = "InvalidParameter.FaceNotExist"
+//  INVALIDPARAMETER_FACENOTEXISTED = "InvalidParameter.FaceNotExisted"
+//  INVALIDPARAMETER_FACENUMBEREXCEEDLIMITOFSINGLEDETECTION = "InvalidParameter.FaceNumberExceedLimitOfSingleDetection"
+//  INVALIDPARAMETER_FACENUMBERLIMIT = "InvalidParameter.FaceNumberLimit"
+//  INVALIDPARAMETER_FACEREGISTRATIONFAILED = "InvalidParameter.FaceRegistrationFailed"
+//  INVALIDPARAMETER_FACERETRIEVALFAILED = "InvalidParameter.FaceRetrievalFailed"
+//  INVALIDPARAMETER_FACETOOSMALL = "InvalidParameter.FaceTooSmall"
+//  INVALIDPARAMETER_FAILEDTODECODEIMAGE = "InvalidParameter.FailedToDecodeImage"
+//  INVALIDPARAMETER_FEATUREEXTRACTIONFAILED = "InvalidParameter.FeatureExtractionFailed"
+//  INVALIDPARAMETER_FILECONTENTEMPTY = "InvalidParameter.FileContentEmpty"
+//  INVALIDPARAMETER_IMAGEDECODEFAILED = "InvalidParameter.ImageDecodeFailed"
+//  INVALIDPARAMETER_IMAGETOOLARGE = "InvalidParameter.ImageTooLarge"
+//  INVALIDPARAMETER_IMAGETOOSMALL = "InvalidParameter.ImageTooSmall"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  INVALIDPARAMETER_INVALIDLANG = "InvalidParameter.InvalidLang"
+//  INVALIDPARAMETER_INVALIDRESOURCEIDENTIFY = "InvalidParameter.InvalidResourceIdentify"
+//  INVALIDPARAMETER_INVALIDRESOURCENAME = "InvalidParameter.InvalidResourceName"
+//  INVALIDPARAMETER_INVALIDSEQID = "InvalidParameter.InvalidSeqId"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidUrl"
+//  INVALIDPARAMETER_JOBNOTVALID = "InvalidParameter.JobNotValid"
+//  INVALIDPARAMETER_LIBRARYNOTEXISTED = "InvalidParameter.LibraryNotExisted"
+//  INVALIDPARAMETER_LOWQUALITYPICTURE = "InvalidParameter.LowQualityPicture"
+//  INVALIDPARAMETER_NOSUCHSERVICE = "InvalidParameter.NoSuchService"
+//  INVALIDPARAMETER_NOTATTENDANCEJOB = "InvalidParameter.NotAttendanceJob"
+//  INVALIDPARAMETER_NOTVALIDPITCH = "InvalidParameter.NotValidPitch"
+//  INVALIDPARAMETER_NOTVALIDROW = "InvalidParameter.NotValidRow"
+//  INVALIDPARAMETER_NOTVALIDYAW = "InvalidParameter.NotValidYaw"
+//  INVALIDPARAMETER_PERSONEXISTED = "InvalidParameter.PersonExisted"
+//  INVALIDPARAMETER_PERSONIDNOTVALID = "InvalidParameter.PersonIdNotValid"
+//  INVALIDPARAMETER_PERSONNOTEXIST = "InvalidParameter.PersonNotExist"
+//  INVALIDPARAMETER_PERSONNOTEXISTED = "InvalidParameter.PersonNotExisted"
+//  INVALIDPARAMETER_PERSONNOTREGISTERED = "InvalidParameter.PersonNotRegistered"
+//  INVALIDPARAMETER_PROCESSUNREADY = "InvalidParameter.ProcessUnReady"
+//  INVALIDPARAMETER_RESOURCENAMEDUPLICATE = "InvalidParameter.ResourceNameDuplicate"
+//  INVALIDPARAMETER_STATUSJOBFAILED = "InvalidParameter.StatusJobFailed"
+//  INVALIDPARAMETER_STATUSJOBNOTFOUND = "InvalidParameter.StatusJobNotFound"
+//  INVALIDPARAMETER_STATUSJOBUNFINISHED = "InvalidParameter.StatusJobUnfinished"
+//  INVALIDPARAMETER_STATUSNOCAMERAFOUND = "InvalidParameter.StatusNoCameraFound"
+//  INVALIDPARAMETER_TOOMANYFACE = "InvalidParameter.TooManyFace"
+//  INVALIDPARAMETER_TRACKINGFAILED = "InvalidParameter.TrackingFailed"
+//  INVALIDPARAMETERVALUE_GROUPEXDESCRIPTIONSEXCEED = "InvalidParameterValue.GroupExDescriptionsExceed"
+//  INVALIDPARAMETERVALUE_GROUPEXDESCRIPTIONSNAMEIDENTICAL = "InvalidParameterValue.GroupExDescriptionsNameIdentical"
+//  INVALIDPARAMETERVALUE_GROUPEXDESCRIPTIONSNAMEILLEGAL = "InvalidParameterValue.GroupExDescriptionsNameIllegal"
+//  INVALIDPARAMETERVALUE_GROUPEXDESCRIPTIONSNAMETOOLONG = "InvalidParameterValue.GroupExDescriptionsNameTooLong"
+//  INVALIDPARAMETERVALUE_IMAGEILLEGAL = "InvalidParameterValue.ImageIllegal"
+//  INVALIDPARAMETERVALUE_PERSONEXDESCRIPTIONINFOSEXCEED = "InvalidParameterValue.PersonExDescriptionInfosExceed"
+//  LIMITEXCEEDED_STATUSCAMERACOUNTOVERMAX = "LimitExceeded.StatusCameraCountOverMax"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_HLJOBIDNOTFOUND = "ResourceNotFound.HLJobIdNotFound"
+//  RESOURCEUNAVAILABLE_STATUSQUERYSTREAMFAILED = "ResourceUnavailable.StatusQueryStreamFailed"
+func (c *Client) SubmitPartialBodyClassTaskWithContext(ctx context.Context, request *SubmitPartialBodyClassTaskRequest) (response *SubmitPartialBodyClassTaskResponse, err error) {
+    if request == nil {
+        request = NewSubmitPartialBodyClassTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewSubmitPartialBodyClassTaskResponse()
     err = c.Send(request, response)
@@ -1989,6 +3205,97 @@ func (c *Client) SubmitTraditionalClassTask(request *SubmitTraditionalClassTaskR
     return
 }
 
+// SubmitTraditionalClassTask
+// **提交线下传统面授大班课（含课桌）任务。**  
+//
+// 传统教室课堂是指有学生课堂有课桌的课堂，满座20-50人，全局画面且背景不动。  
+//
+//   
+//
+// **提供的功能接口有：**学生人脸识别、学生表情识别、学生肢体动作识别。可分析的指标维度包括：学生身份识别、正脸、侧脸、抬头、低头、高兴、中性、高兴、中性、惊讶、厌恶、恐惧、愤怒、蔑视、悲伤、举手、站立、坐着、趴桌子、玩手机等  
+//
+//   
+//
+// **对场景的要求为：**传统的学生上课教室，满座20-50人，全局画面且背景不动；人脸上下角度在20度以内，左右角度在15度以内，歪头角度在15度以内；光照均匀，无遮挡，人脸清晰可见；像素最好在 100X100 像素以上，但是图像整体质量不能超过1080p。
+//
+//     
+//
+// **结果查询方式：**图像任务直接返回结果，点播及直播任务通过DescribeAITaskResult查询结果。
+//
+//   
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_JOBCANCELED = "InternalError.JobCanceled"
+//  INTERNALERROR_JOBREACHMAXRETRYTIMES = "InternalError.JobReachMaxRetryTimes"
+//  INTERNALERROR_STATUSQUERYFACELIBFAILED = "InternalError.StatusQueryFaceLibFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYRETRIEVALFAILED = "InvalidParameter.BodyRetrievalFailed"
+//  INVALIDPARAMETER_CANNOTFINDFACEINPICTURE = "InvalidParameter.CannotFindFaceInPicture"
+//  INVALIDPARAMETER_CLIPPINGFRAMEFAILED = "InvalidParameter.ClippingFrameFailed"
+//  INVALIDPARAMETER_COMPUTATIONALSIMILARITYFAILED = "InvalidParameter.ComputationalSimilarityFailed"
+//  INVALIDPARAMETER_CREATEFACEFAILED = "InvalidParameter.CreateFaceFailed"
+//  INVALIDPARAMETER_CREATEPERSONFAILED = "InvalidParameter.CreatePersonFailed"
+//  INVALIDPARAMETER_FACEDETECTEDFAILED = "InvalidParameter.FaceDetectedFailed"
+//  INVALIDPARAMETER_FACENOTEXIST = "InvalidParameter.FaceNotExist"
+//  INVALIDPARAMETER_FACENOTEXISTED = "InvalidParameter.FaceNotExisted"
+//  INVALIDPARAMETER_FACENUMBEREXCEEDLIMITOFSINGLEDETECTION = "InvalidParameter.FaceNumberExceedLimitOfSingleDetection"
+//  INVALIDPARAMETER_FACENUMBERLIMIT = "InvalidParameter.FaceNumberLimit"
+//  INVALIDPARAMETER_FACEREGISTRATIONFAILED = "InvalidParameter.FaceRegistrationFailed"
+//  INVALIDPARAMETER_FACERETRIEVALFAILED = "InvalidParameter.FaceRetrievalFailed"
+//  INVALIDPARAMETER_FACETOOSMALL = "InvalidParameter.FaceTooSmall"
+//  INVALIDPARAMETER_FAILEDTODECODEIMAGE = "InvalidParameter.FailedToDecodeImage"
+//  INVALIDPARAMETER_FEATUREEXTRACTIONFAILED = "InvalidParameter.FeatureExtractionFailed"
+//  INVALIDPARAMETER_FILECONTENTEMPTY = "InvalidParameter.FileContentEmpty"
+//  INVALIDPARAMETER_IMAGEDECODEFAILED = "InvalidParameter.ImageDecodeFailed"
+//  INVALIDPARAMETER_IMAGETOOLARGE = "InvalidParameter.ImageTooLarge"
+//  INVALIDPARAMETER_IMAGETOOSMALL = "InvalidParameter.ImageTooSmall"
+//  INVALIDPARAMETER_INVALIDFILETYPE = "InvalidParameter.InvalidFileType"
+//  INVALIDPARAMETER_INVALIDLANG = "InvalidParameter.InvalidLang"
+//  INVALIDPARAMETER_INVALIDRESOURCEIDENTIFY = "InvalidParameter.InvalidResourceIdentify"
+//  INVALIDPARAMETER_INVALIDRESOURCENAME = "InvalidParameter.InvalidResourceName"
+//  INVALIDPARAMETER_INVALIDSEQID = "InvalidParameter.InvalidSeqId"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidUrl"
+//  INVALIDPARAMETER_JOBNOTVALID = "InvalidParameter.JobNotValid"
+//  INVALIDPARAMETER_LIBRARYNOTEXISTED = "InvalidParameter.LibraryNotExisted"
+//  INVALIDPARAMETER_LOWQUALITYPICTURE = "InvalidParameter.LowQualityPicture"
+//  INVALIDPARAMETER_NOSUCHSERVICE = "InvalidParameter.NoSuchService"
+//  INVALIDPARAMETER_NOTATTENDANCEJOB = "InvalidParameter.NotAttendanceJob"
+//  INVALIDPARAMETER_NOTVALIDPITCH = "InvalidParameter.NotValidPitch"
+//  INVALIDPARAMETER_NOTVALIDROW = "InvalidParameter.NotValidRow"
+//  INVALIDPARAMETER_NOTVALIDYAW = "InvalidParameter.NotValidYaw"
+//  INVALIDPARAMETER_PERSONEXISTED = "InvalidParameter.PersonExisted"
+//  INVALIDPARAMETER_PERSONIDNOTVALID = "InvalidParameter.PersonIdNotValid"
+//  INVALIDPARAMETER_PERSONNOTEXIST = "InvalidParameter.PersonNotExist"
+//  INVALIDPARAMETER_PERSONNOTEXISTED = "InvalidParameter.PersonNotExisted"
+//  INVALIDPARAMETER_PERSONNOTREGISTERED = "InvalidParameter.PersonNotRegistered"
+//  INVALIDPARAMETER_PROCESSUNREADY = "InvalidParameter.ProcessUnReady"
+//  INVALIDPARAMETER_RESOURCENAMEDUPLICATE = "InvalidParameter.ResourceNameDuplicate"
+//  INVALIDPARAMETER_STATUSJOBFAILED = "InvalidParameter.StatusJobFailed"
+//  INVALIDPARAMETER_STATUSJOBNOTFOUND = "InvalidParameter.StatusJobNotFound"
+//  INVALIDPARAMETER_STATUSJOBUNFINISHED = "InvalidParameter.StatusJobUnfinished"
+//  INVALIDPARAMETER_STATUSNOCAMERAFOUND = "InvalidParameter.StatusNoCameraFound"
+//  INVALIDPARAMETER_TOOMANYFACE = "InvalidParameter.TooManyFace"
+//  INVALIDPARAMETER_TRACKINGFAILED = "InvalidParameter.TrackingFailed"
+//  INVALIDPARAMETERVALUE_GROUPEXDESCRIPTIONSEXCEED = "InvalidParameterValue.GroupExDescriptionsExceed"
+//  INVALIDPARAMETERVALUE_GROUPEXDESCRIPTIONSNAMEIDENTICAL = "InvalidParameterValue.GroupExDescriptionsNameIdentical"
+//  INVALIDPARAMETERVALUE_GROUPEXDESCRIPTIONSNAMEILLEGAL = "InvalidParameterValue.GroupExDescriptionsNameIllegal"
+//  INVALIDPARAMETERVALUE_GROUPEXDESCRIPTIONSNAMETOOLONG = "InvalidParameterValue.GroupExDescriptionsNameTooLong"
+//  LIMITEXCEEDED_STATUSCAMERACOUNTOVERMAX = "LimitExceeded.StatusCameraCountOverMax"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_HLJOBIDNOTFOUND = "ResourceNotFound.HLJobIdNotFound"
+//  RESOURCEUNAVAILABLE_STATUSQUERYSTREAMFAILED = "ResourceUnavailable.StatusQueryStreamFailed"
+func (c *Client) SubmitTraditionalClassTaskWithContext(ctx context.Context, request *SubmitTraditionalClassTaskRequest) (response *SubmitTraditionalClassTaskResponse, err error) {
+    if request == nil {
+        request = NewSubmitTraditionalClassTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewSubmitTraditionalClassTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTransmitAudioStreamRequest() (request *TransmitAudioStreamRequest) {
     request = &TransmitAudioStreamRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2025,6 +3332,32 @@ func (c *Client) TransmitAudioStream(request *TransmitAudioStreamRequest) (respo
     if request == nil {
         request = NewTransmitAudioStreamRequest()
     }
+    
+    response = NewTransmitAudioStreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// TransmitAudioStream
+// 分析音频信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_STATUSQUERYFACELIBFAILED = "InternalError.StatusQueryFaceLibFailed"
+//  INVALIDPARAMETER_INVALIDLANG = "InvalidParameter.InvalidLang"
+//  INVALIDPARAMETER_INVALIDSEQID = "InvalidParameter.InvalidSeqId"
+//  INVALIDPARAMETER_PROCESSUNREADY = "InvalidParameter.ProcessUnReady"
+//  INVALIDPARAMETER_STATUSJOBFAILED = "InvalidParameter.StatusJobFailed"
+//  INVALIDPARAMETER_STATUSJOBNOTFOUND = "InvalidParameter.StatusJobNotFound"
+//  INVALIDPARAMETER_STATUSJOBUNFINISHED = "InvalidParameter.StatusJobUnfinished"
+//  INVALIDPARAMETER_STATUSNOCAMERAFOUND = "InvalidParameter.StatusNoCameraFound"
+//  LIMITEXCEEDED_STATUSCAMERACOUNTOVERMAX = "LimitExceeded.StatusCameraCountOverMax"
+//  RESOURCENOTFOUND_HLJOBIDNOTFOUND = "ResourceNotFound.HLJobIdNotFound"
+//  RESOURCEUNAVAILABLE_STATUSQUERYSTREAMFAILED = "ResourceUnavailable.StatusQueryStreamFailed"
+func (c *Client) TransmitAudioStreamWithContext(ctx context.Context, request *TransmitAudioStreamRequest) (response *TransmitAudioStreamResponse, err error) {
+    if request == nil {
+        request = NewTransmitAudioStreamRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewTransmitAudioStreamResponse()
     err = c.Send(request, response)

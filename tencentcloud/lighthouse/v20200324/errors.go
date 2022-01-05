@@ -77,6 +77,9 @@ const (
 	// 请求出现错误。
 	INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
 
+	// 调用计费网关服务失败。
+	INTERNALERROR_TRADECALLBILLINGGATEWAYFAILED = "InternalError.TradeCallBillingGatewayFailed"
+
 	// 价格获取失败。
 	INTERNALERROR_TRADEGETPRICEFAILED = "InternalError.TradeGetPriceFailed"
 

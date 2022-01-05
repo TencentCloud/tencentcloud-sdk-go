@@ -26,6 +26,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 非内网vpc。
+	FAILEDOPERATION_NOTINNERVPC = "FailedOperation.NotInnerVPC"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 

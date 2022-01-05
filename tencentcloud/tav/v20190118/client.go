@@ -15,6 +15,7 @@
 package v20190118
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -72,6 +73,19 @@ func (c *Client) GetLocalEngine(request *GetLocalEngineRequest) (response *GetLo
     return
 }
 
+// GetLocalEngine
+// 获取TAV本地引擎
+func (c *Client) GetLocalEngineWithContext(ctx context.Context, request *GetLocalEngineRequest) (response *GetLocalEngineResponse, err error) {
+    if request == nil {
+        request = NewGetLocalEngineRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewGetLocalEngineResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetScanResultRequest() (request *GetScanResultRequest) {
     request = &GetScanResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -95,6 +109,19 @@ func (c *Client) GetScanResult(request *GetScanResultRequest) (response *GetScan
     if request == nil {
         request = NewGetScanResultRequest()
     }
+    
+    response = NewGetScanResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// GetScanResult
+// tav文件上传扫描结果查询
+func (c *Client) GetScanResultWithContext(ctx context.Context, request *GetScanResultRequest) (response *GetScanResultResponse, err error) {
+    if request == nil {
+        request = NewGetScanResultRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewGetScanResultResponse()
     err = c.Send(request, response)
@@ -130,6 +157,19 @@ func (c *Client) ScanFile(request *ScanFileRequest) (response *ScanFileResponse,
     return
 }
 
+// ScanFile
+// tav文件上传扫描
+func (c *Client) ScanFileWithContext(ctx context.Context, request *ScanFileRequest) (response *ScanFileResponse, err error) {
+    if request == nil {
+        request = NewScanFileRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewScanFileResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewScanFileHashRequest() (request *ScanFileHashRequest) {
     request = &ScanFileHashRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -153,6 +193,19 @@ func (c *Client) ScanFileHash(request *ScanFileHashRequest) (response *ScanFileH
     if request == nil {
         request = NewScanFileHashRequest()
     }
+    
+    response = NewScanFileHashResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ScanFileHash
+// 通过文件哈希值获取文件黑白属性
+func (c *Client) ScanFileHashWithContext(ctx context.Context, request *ScanFileHashRequest) (response *ScanFileHashResponse, err error) {
+    if request == nil {
+        request = NewScanFileHashRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewScanFileHashResponse()
     err = c.Send(request, response)

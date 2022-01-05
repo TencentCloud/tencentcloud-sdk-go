@@ -15,6 +15,7 @@
 package v20180801
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -93,6 +94,40 @@ func (c *Client) AddDelayLiveStream(request *AddDelayLiveStreamRequest) (respons
     return
 }
 
+// AddDelayLiveStream
+// 针对大型活动直播，通过对直播流设置延时来控制现场与观众播放画面的时间间隔，避免突发状况造成影响。
+//
+// 
+//
+// 注意：如果在推流前设置延播，需要提前5分钟设置，目前该接口只支持流粒度。
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLOTHERSVRERROR = "InternalError.CallOtherSvrError"
+//  INTERNALERROR_CONFIGNOTEXIST = "InternalError.ConfigNotExist"
+//  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
+//  INTERNALERROR_GETSTREAMINFOERROR = "InternalError.GetStreamInfoError"
+//  INTERNALERROR_NOTPERMMITOPERAT = "InternalError.NotPermmitOperat"
+//  INTERNALERROR_STREAMSTATUSERROR = "InternalError.StreamStatusError"
+//  INTERNALERROR_UPDATEDATAERROR = "InternalError.UpdateDataError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) AddDelayLiveStreamWithContext(ctx context.Context, request *AddDelayLiveStreamRequest) (response *AddDelayLiveStreamResponse, err error) {
+    if request == nil {
+        request = NewAddDelayLiveStreamRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewAddDelayLiveStreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddLiveDomainRequest() (request *AddLiveDomainRequest) {
     request = &AddLiveDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -152,6 +187,49 @@ func (c *Client) AddLiveDomain(request *AddLiveDomainRequest) (response *AddLive
     return
 }
 
+// AddLiveDomain
+// 添加域名，一次只能提交一个域名。域名必须已备案。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  FAILEDOPERATION_DELETEDOMAININLOCKEDTIME = "FailedOperation.DeleteDomainInLockedTime"
+//  FAILEDOPERATION_HOSTOUTLIMIT = "FailedOperation.HostOutLimit"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CHINESECHARACTERDETECTED = "InternalError.ChineseCharacterDetected"
+//  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_DOMAINALREADYEXIST = "InternalError.DomainAlreadyExist"
+//  INTERNALERROR_DOMAINFORMATERROR = "InternalError.DomainFormatError"
+//  INTERNALERROR_DOMAINGSLBFAIL = "InternalError.DomainGslbFail"
+//  INTERNALERROR_DOMAINISFAMOUS = "InternalError.DomainIsFamous"
+//  INTERNALERROR_DOMAINISLIMITED = "InternalError.DomainIsLimited"
+//  INTERNALERROR_DOMAINNORECORD = "InternalError.DomainNoRecord"
+//  INTERNALERROR_DOMAINTOOLONG = "InternalError.DomainTooLong"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_INVALIDUSER = "InternalError.InvalidUser"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INVALIDPARAMETER_DOMAINALREADYEXIST = "InvalidParameter.DomainAlreadyExist"
+//  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
+//  INVALIDPARAMETER_DOMAINHITBLACKLIST = "InvalidParameter.DomainHitBlackList"
+//  INVALIDPARAMETER_DOMAINISFAMOUS = "InvalidParameter.DomainIsFamous"
+//  INVALIDPARAMETER_DOMAINISLIMITED = "InvalidParameter.DomainIsLimited"
+//  INVALIDPARAMETER_DOMAINTOOLONG = "InvalidParameter.DomainTooLong"
+//  INVALIDPARAMETER_MPHOSTDELETE = "InvalidParameter.MpHostDelete"
+//  INVALIDPARAMETER_MPPLUGINNOUSE = "InvalidParameter.MpPluginNoUse"
+//  RESOURCENOTFOUND_DOMAINNORECORD = "ResourceNotFound.DomainNoRecord"
+//  RESOURCENOTFOUND_INVALIDUSER = "ResourceNotFound.InvalidUser"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+func (c *Client) AddLiveDomainWithContext(ctx context.Context, request *AddLiveDomainRequest) (response *AddLiveDomainResponse, err error) {
+    if request == nil {
+        request = NewAddLiveDomainRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewAddLiveDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddLiveWatermarkRequest() (request *AddLiveWatermarkRequest) {
     request = &AddLiveWatermarkRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -184,6 +262,28 @@ func (c *Client) AddLiveWatermark(request *AddLiveWatermarkRequest) (response *A
     if request == nil {
         request = NewAddLiveWatermarkRequest()
     }
+    
+    response = NewAddLiveWatermarkResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// AddLiveWatermark
+// 添加水印，成功返回水印 ID 后，需要调用[CreateLiveWatermarkRule](/document/product/267/32629)接口将水印 ID 绑定到流使用。
+//
+// 水印数量上限 100，超过后需要先删除，再添加。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_WATERMARKADDERROR = "InternalError.WatermarkAddError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_USERNOTFOUNT = "ResourceNotFound.UserNotFount"
+func (c *Client) AddLiveWatermarkWithContext(ctx context.Context, request *AddLiveWatermarkRequest) (response *AddLiveWatermarkResponse, err error) {
+    if request == nil {
+        request = NewAddLiveWatermarkRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewAddLiveWatermarkResponse()
     err = c.Send(request, response)
@@ -230,6 +330,30 @@ func (c *Client) BindLiveDomainCert(request *BindLiveDomainCertRequest) (respons
     return
 }
 
+// BindLiveDomainCert
+// 域名绑定证书。
+//
+// 注意：需先调用添加证书接口进行证书添加。获取到证书Id后再调用该接口进行绑定。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CRTDATEINUSING = "InvalidParameter.CrtDateInUsing"
+//  INVALIDPARAMETER_CRTDATENOTLEGAL = "InvalidParameter.CrtDateNotLegal"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
+func (c *Client) BindLiveDomainCertWithContext(ctx context.Context, request *BindLiveDomainCertRequest) (response *BindLiveDomainCertResponse, err error) {
+    if request == nil {
+        request = NewBindLiveDomainCertRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewBindLiveDomainCertResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCancelCommonMixStreamRequest() (request *CancelCommonMixStreamRequest) {
     request = &CancelCommonMixStreamRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -263,6 +387,29 @@ func (c *Client) CancelCommonMixStream(request *CancelCommonMixStreamRequest) (r
     if request == nil {
         request = NewCancelCommonMixStreamRequest()
     }
+    
+    response = NewCancelCommonMixStreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CancelCommonMixStream
+// 该接口用来取消混流。用法与 mix_streamv2.cancel_mix_stream 基本一致。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLOTHERSVRERROR = "FailedOperation.CallOtherSvrError"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  FAILEDOPERATION_CANCELSESSIONNOTEXIST = "FailedOperation.CancelSessionNotExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CANCELSESSIONNOTEXIST = "InvalidParameter.CancelSessionNotExist"
+//  INVALIDPARAMETER_OTHERERROR = "InvalidParameter.OtherError"
+func (c *Client) CancelCommonMixStreamWithContext(ctx context.Context, request *CancelCommonMixStreamRequest) (response *CancelCommonMixStreamResponse, err error) {
+    if request == nil {
+        request = NewCancelCommonMixStreamRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCancelCommonMixStreamResponse()
     err = c.Send(request, response)
@@ -327,6 +474,48 @@ func (c *Client) CreateCommonMixStream(request *CreateCommonMixStreamRequest) (r
     return
 }
 
+// CreateCommonMixStream
+// 该接口用来创建通用混流。用法与旧接口 mix_streamv2.start_mix_stream_advanced 基本一致。
+//
+// 注意：当前最多支持16路混流。
+//
+// 最佳实践：https://cloud.tencent.com/document/product/267/45566
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLOTHERSVRERROR = "FailedOperation.CallOtherSvrError"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  FAILEDOPERATION_GETPICTUREURLERROR = "FailedOperation.GetPictureUrlError"
+//  FAILEDOPERATION_GETSTREAMRESOLUTIONERROR = "FailedOperation.GetStreamResolutionError"
+//  FAILEDOPERATION_PROCESSMIXERROR = "FailedOperation.ProcessMixError"
+//  FAILEDOPERATION_STREAMNOTEXIST = "FailedOperation.StreamNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_JIFEIOTHERERROR = "InternalError.JiFeiOtherError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CANCELSESSIONNOTEXIST = "InvalidParameter.CancelSessionNotExist"
+//  INVALIDPARAMETER_INPUTNUMLIMITEXCEEDED = "InvalidParameter.InputNumLimitExceeded"
+//  INVALIDPARAMETER_INVALIDBACKGROUDRESOLUTION = "InvalidParameter.InvalidBackgroudResolution"
+//  INVALIDPARAMETER_INVALIDBITRATE = "InvalidParameter.InvalidBitrate"
+//  INVALIDPARAMETER_INVALIDCROPPARAM = "InvalidParameter.InvalidCropParam"
+//  INVALIDPARAMETER_INVALIDLAYERPARAM = "InvalidParameter.InvalidLayerParam"
+//  INVALIDPARAMETER_INVALIDOUTPUTSTREAMID = "InvalidParameter.InvalidOutputStreamID"
+//  INVALIDPARAMETER_INVALIDOUTPUTTYPE = "InvalidParameter.InvalidOutputType"
+//  INVALIDPARAMETER_INVALIDPICTUREID = "InvalidParameter.InvalidPictureID"
+//  INVALIDPARAMETER_INVALIDROUNDRECTRADIUS = "InvalidParameter.InvalidRoundRectRadius"
+//  INVALIDPARAMETER_OTHERERROR = "InvalidParameter.OtherError"
+//  INVALIDPARAMETER_SESSIONOUTPUTSTREAMCHANGED = "InvalidParameter.SessionOutputStreamChanged"
+//  INVALIDPARAMETER_TEMPLATENOTMATCHINPUTNUM = "InvalidParameter.TemplateNotMatchInputNum"
+func (c *Client) CreateCommonMixStreamWithContext(ctx context.Context, request *CreateCommonMixStreamRequest) (response *CreateCommonMixStreamResponse, err error) {
+    if request == nil {
+        request = NewCreateCommonMixStreamRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateCommonMixStreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateLiveCallbackRuleRequest() (request *CreateLiveCallbackRuleRequest) {
     request = &CreateLiveCallbackRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -361,6 +550,30 @@ func (c *Client) CreateLiveCallbackRule(request *CreateLiveCallbackRuleRequest) 
     if request == nil {
         request = NewCreateLiveCallbackRuleRequest()
     }
+    
+    response = NewCreateLiveCallbackRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateLiveCallbackRule
+// 创建回调规则，需要先调用[CreateLiveCallbackTemplate](/document/product/267/32637)接口创建回调模板，将返回的模板id绑定到域名/路径进行使用。
+//
+// <br>回调协议相关文档：[事件消息通知](/document/product/267/32744)。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
+func (c *Client) CreateLiveCallbackRuleWithContext(ctx context.Context, request *CreateLiveCallbackRuleRequest) (response *CreateLiveCallbackRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateLiveCallbackRuleRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateLiveCallbackRuleResponse()
     err = c.Send(request, response)
@@ -422,6 +635,45 @@ func (c *Client) CreateLiveCallbackTemplate(request *CreateLiveCallbackTemplateR
     return
 }
 
+// CreateLiveCallbackTemplate
+// 创建回调模板，成功返回模板id后，需要调用[CreateLiveCallbackRule](/document/product/267/32638)接口将模板 ID 绑定到域名/路径使用。
+//
+// <br>回调协议相关文档：[事件消息通知](/document/product/267/32744)。
+//
+// 注意：至少填写一个回调 URL。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFINUSED = "FailedOperation.ConfInUsed"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ARGSNOTMATCH = "InvalidParameter.ArgsNotMatch"
+//  INVALIDPARAMETER_COSCUSTOMFILENAMEERROR = "InvalidParameter.COSCustomFileNameError"
+//  INVALIDPARAMETER_INVALIDVODFILENAME = "InvalidParameter.InvalidVodFileName"
+//  INVALIDPARAMETER_URLNOTSAFE = "InvalidParameter.UrlNotSafe"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
+func (c *Client) CreateLiveCallbackTemplateWithContext(ctx context.Context, request *CreateLiveCallbackTemplateRequest) (response *CreateLiveCallbackTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateLiveCallbackTemplateRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateLiveCallbackTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateLiveCertRequest() (request *CreateLiveCertRequest) {
     request = &CreateLiveCertRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -462,6 +714,36 @@ func (c *Client) CreateLiveCert(request *CreateLiveCertRequest) (response *Creat
     if request == nil {
         request = NewCreateLiveCertRequest()
     }
+    
+    response = NewCreateLiveCertResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateLiveCert
+// 添加证书
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CRTDATENOTLEGAL = "InternalError.CrtDateNotLegal"
+//  INTERNALERROR_CRTDATEOVERDUE = "InternalError.CrtDateOverdue"
+//  INTERNALERROR_CRTKEYNOTMATCH = "InternalError.CrtKeyNotMatch"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CLOUDCRTIDERROR = "InvalidParameter.CloudCrtIdError"
+//  INVALIDPARAMETER_CRTDATENOTLEGAL = "InvalidParameter.CrtDateNotLegal"
+//  INVALIDPARAMETER_CRTDATEOVERDUE = "InvalidParameter.CrtDateOverdue"
+//  INVALIDPARAMETER_CRTKEYNOTMATCH = "InvalidParameter.CrtKeyNotMatch"
+//  INVALIDPARAMETER_CRTORKEYNOTEXIST = "InvalidParameter.CrtOrKeyNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreateLiveCertWithContext(ctx context.Context, request *CreateLiveCertRequest) (response *CreateLiveCertResponse, err error) {
+    if request == nil {
+        request = NewCreateLiveCertRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateLiveCertResponse()
     err = c.Send(request, response)
@@ -520,6 +802,48 @@ func (c *Client) CreateLivePullStreamTask(request *CreateLivePullStreamTaskReque
     if request == nil {
         request = NewCreateLivePullStreamTaskRequest()
     }
+    
+    response = NewCreateLivePullStreamTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateLivePullStreamTask
+// 创建直播拉流任务。支持将外部已有的点播文件，或者直播源拉取过来转推到直播系统。
+//
+// 注意：
+//
+// 1. 默认支持任务数上限20个，如有特殊需求，可通过提单到售后进行评估增加上限。
+//
+// 2. 目前仅支持推流到腾讯云直播，暂不支持推到第三方。
+//
+// 3. 源流视频编码目前只支持: H264, H265。其他编码格式建议先进行转码处理。
+//
+// 4. 源流音频编码目前只支持: AAC。其他编码格式建议先进行转码处理。
+//
+// 5. 过期不用的任务需自行清理，未清理的过期任务也会占用上限额度，如需要自动清理过期任务，可提单给售后进行配置。
+//
+// 6. 拉流转推功能为计费增值服务，计费规则详情可参见[计费文档](https://cloud.tencent.com/document/product/267/53308)。
+//
+// 7. 拉流转推功能仅提供内容拉取与推送服务，请确保内容已获得授权并符合内容传播相关的法律法规。若内容有侵权或违规相关问题，云直播会停止相关的功能服务并保留追究法律责任的权利。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCALLBACKURL = "InvalidParameter.InvalidCallbackUrl"
+//  INVALIDPARAMETER_INVALIDSOURCEURL = "InvalidParameter.InvalidSourceUrl"
+//  INVALIDPARAMETER_INVALIDTASKTIME = "InvalidParameter.InvalidTaskTime"
+//  INVALIDPARAMETER_INVALIDTOURL = "InvalidParameter.InvalidToUrl"
+//  INVALIDPARAMETER_TASKNOTEXIST = "InvalidParameter.TaskNotExist"
+//  INVALIDPARAMETER_TASKNUMMORETHANLIMIT = "InvalidParameter.TaskNumMoreThanLimit"
+//  INVALIDPARAMETER_TOURLNOPERMISSION = "InvalidParameter.ToUrlNoPermission"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) CreateLivePullStreamTaskWithContext(ctx context.Context, request *CreateLivePullStreamTaskRequest) (response *CreateLivePullStreamTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateLivePullStreamTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateLivePullStreamTaskResponse()
     err = c.Send(request, response)
@@ -597,6 +921,61 @@ func (c *Client) CreateLiveRecord(request *CreateLiveRecordRequest) (response *C
     return
 }
 
+// CreateLiveRecord
+// - 使用前提
+//
+//   1. 录制文件存放于点播平台，所以用户如需使用录制功能，需首先自行开通点播服务。
+//
+//   2. 录制文件存放后相关费用（含存储以及下行播放流量）按照点播平台计费方式收取，具体请参考 [对应文档](https://cloud.tencent.com/document/product/266/2838)。
+//
+// 
+//
+// - 模式说明
+//
+//   该接口支持两种录制模式：
+//
+//   1. 定时录制模式【默认模式】。
+//
+//     需要传入开始时间与结束时间，录制任务根据起止时间自动开始与结束。在所设置结束时间过期之前（且未调用StopLiveRecord提前终止任务），录制任务都是有效的，期间多次断流然后重推都会启动录制任务。
+//
+//   2. 实时视频录制模式。
+//
+//     忽略传入的开始时间，在录制任务创建后立即开始录制，录制时长支持最大为30分钟，如果传入的结束时间与当前时间差大于30分钟，则按30分钟计算，实时视频录制主要用于录制精彩视频场景，时长建议控制在5分钟以内。
+//
+// 
+//
+// - 注意事项
+//
+//   1. 调用接口超时设置应大于3秒，小于3秒重试以及按不同起止时间调用都有可能产生重复录制任务，进而导致额外录制费用。
+//
+//   2. 受限于音视频文件格式（FLV/MP4/HLS）对编码类型的支持，视频编码类型支持 H.264，音频编码类型支持 AAC。
+//
+//   3. 为避免恶意或非主观的频繁 API 请求，对定时录制模式最大创建任务数做了限制：其中，当天可以创建的最大任务数不超过4000（不含已删除的任务）；当前时刻并发运行的任务数不超过400。有超出此限制的需要提工单申请。
+//
+//   4. 此调用方式暂时不支持海外推流录制。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETCONFIGERROR = "InternalError.GetConfigError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_MAXIMUMRUNNINGTASK = "LimitExceeded.MaximumRunningTask"
+//  LIMITEXCEEDED_MAXIMUMTASK = "LimitExceeded.MaximumTask"
+//  RESOURCENOTFOUND_CHANNELNOTEXIST = "ResourceNotFound.ChannelNotExist"
+//  RESOURCEUNAVAILABLE_INVALIDVODSTATUS = "ResourceUnavailable.InvalidVodStatus"
+//  RESOURCEUNAVAILABLE_STREAMNOTEXIST = "ResourceUnavailable.StreamNotExist"
+func (c *Client) CreateLiveRecordWithContext(ctx context.Context, request *CreateLiveRecordRequest) (response *CreateLiveRecordResponse, err error) {
+    if request == nil {
+        request = NewCreateLiveRecordRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateLiveRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateLiveRecordRuleRequest() (request *CreateLiveRecordRuleRequest) {
     request = &CreateLiveRecordRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -637,6 +1016,36 @@ func (c *Client) CreateLiveRecordRule(request *CreateLiveRecordRuleRequest) (res
     if request == nil {
         request = NewCreateLiveRecordRuleRequest()
     }
+    
+    response = NewCreateLiveRecordRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateLiveRecordRule
+// 创建录制规则，需要先调用[CreateLiveRecordTemplate](/document/product/267/32614)接口创建录制模板，将返回的模板id绑定到流使用。
+//
+// <br>录制相关文档：[直播录制](/document/product/267/32739)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RULEALREADYEXIST = "FailedOperation.RuleAlreadyExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreateLiveRecordRuleWithContext(ctx context.Context, request *CreateLiveRecordRuleRequest) (response *CreateLiveRecordRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateLiveRecordRuleRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateLiveRecordRuleResponse()
     err = c.Send(request, response)
@@ -692,6 +1101,39 @@ func (c *Client) CreateLiveRecordTemplate(request *CreateLiveRecordTemplateReque
     return
 }
 
+// CreateLiveRecordTemplate
+// 创建录制模板，数量上限：50，成功返回模板id后，需要调用[CreateLiveRecordRule](/document/product/267/32615)接口，将模板id绑定到流进行使用。
+//
+// <br>录制相关文档：[直播录制](/document/product/267/32739)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDVODFILENAME = "InvalidParameter.InvalidVodFileName"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
+func (c *Client) CreateLiveRecordTemplateWithContext(ctx context.Context, request *CreateLiveRecordTemplateRequest) (response *CreateLiveRecordTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateLiveRecordTemplateRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateLiveRecordTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateLiveSnapshotRuleRequest() (request *CreateLiveSnapshotRuleRequest) {
     request = &CreateLiveSnapshotRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -735,6 +1177,39 @@ func (c *Client) CreateLiveSnapshotRule(request *CreateLiveSnapshotRuleRequest) 
     if request == nil {
         request = NewCreateLiveSnapshotRuleRequest()
     }
+    
+    response = NewCreateLiveSnapshotRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateLiveSnapshotRule
+// 创建截图规则，需要先调用[CreateLiveSnapshotTemplate](/document/product/267/32624)接口创建截图模板，然后将返回的模板 ID 绑定到流进行使用。
+//
+// <br>截图相关文档：[直播截图](/document/product/267/32737)。
+//
+// 注意：单个域名仅支持关联一个截图模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RULEALREADYEXIST = "FailedOperation.RuleAlreadyExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreateLiveSnapshotRuleWithContext(ctx context.Context, request *CreateLiveSnapshotRuleRequest) (response *CreateLiveSnapshotRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateLiveSnapshotRuleRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateLiveSnapshotRuleResponse()
     err = c.Send(request, response)
@@ -789,6 +1264,38 @@ func (c *Client) CreateLiveSnapshotTemplate(request *CreateLiveSnapshotTemplateR
     return
 }
 
+// CreateLiveSnapshotTemplate
+// 创建截图模板，成功返回模板id后，需要调用[CreateLiveSnapshotRule](/document/product/267/32625)接口，将模板id绑定到流使用。
+//
+// <br>截图相关文档：[直播截图](/document/product/267/32737)。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_COSCUSTOMFILENAMEERROR = "InvalidParameter.COSCustomFileNameError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
+func (c *Client) CreateLiveSnapshotTemplateWithContext(ctx context.Context, request *CreateLiveSnapshotTemplateRequest) (response *CreateLiveSnapshotTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateLiveSnapshotTemplateRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateLiveSnapshotTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateLiveTranscodeRuleRequest() (request *CreateLiveTranscodeRuleRequest) {
     request = &CreateLiveTranscodeRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -832,6 +1339,39 @@ func (c *Client) CreateLiveTranscodeRule(request *CreateLiveTranscodeRuleRequest
     if request == nil {
         request = NewCreateLiveTranscodeRuleRequest()
     }
+    
+    response = NewCreateLiveTranscodeRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateLiveTranscodeRule
+// 创建转码规则，需要先调用[CreateLiveTranscodeTemplate](/document/product/267/32646)接口创建转码模板，将返回的模板id绑定到流使用。
+//
+// <br>转码相关文档：[直播转封装及转码](/document/product/267/32736)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RULEALREADYEXIST = "FailedOperation.RuleAlreadyExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
+func (c *Client) CreateLiveTranscodeRuleWithContext(ctx context.Context, request *CreateLiveTranscodeRuleRequest) (response *CreateLiveTranscodeRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateLiveTranscodeRuleRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateLiveTranscodeRuleResponse()
     err = c.Send(request, response)
@@ -888,6 +1428,40 @@ func (c *Client) CreateLiveTranscodeTemplate(request *CreateLiveTranscodeTemplat
     return
 }
 
+// CreateLiveTranscodeTemplate
+// 创建转码模板，成功返回模板id后，需要调用[CreateLiveTranscodeRule](/document/product/267/32647)接口，将返回的模板id绑定到流使用。
+//
+// <br>转码相关文档：[直播转封装及转码](/document/product/267/32736)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AITRANSCODEOPTIONFAIL = "FailedOperation.AiTranscodeOptionFail"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_PROCESSORALREADYEXIST = "InternalError.ProcessorAlreadyExist"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ARGSNOTMATCH = "InvalidParameter.ArgsNotMatch"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
+func (c *Client) CreateLiveTranscodeTemplateWithContext(ctx context.Context, request *CreateLiveTranscodeTemplateRequest) (response *CreateLiveTranscodeTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateLiveTranscodeTemplateRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateLiveTranscodeTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateLiveWatermarkRuleRequest() (request *CreateLiveWatermarkRuleRequest) {
     request = &CreateLiveWatermarkRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -928,6 +1502,36 @@ func (c *Client) CreateLiveWatermarkRule(request *CreateLiveWatermarkRuleRequest
     if request == nil {
         request = NewCreateLiveWatermarkRuleRequest()
     }
+    
+    response = NewCreateLiveWatermarkRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateLiveWatermarkRule
+// 创建水印规则，需要先调用[AddLiveWatermark](/document/product/267/30154)接口添加水印，将返回的水印id绑定到流使用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RULEALREADYEXIST = "FailedOperation.RuleAlreadyExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
+func (c *Client) CreateLiveWatermarkRuleWithContext(ctx context.Context, request *CreateLiveWatermarkRuleRequest) (response *CreateLiveWatermarkRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateLiveWatermarkRuleRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateLiveWatermarkRuleResponse()
     err = c.Send(request, response)
@@ -976,6 +1580,38 @@ func (c *Client) CreatePullStreamConfig(request *CreatePullStreamConfigRequest) 
     if request == nil {
         request = NewCreatePullStreamConfigRequest()
     }
+    
+    response = NewCreatePullStreamConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreatePullStreamConfig
+// 创建临时拉流转推任务，目前限制添加10条任务。
+//
+// 
+//
+// 注意：该接口用于创建临时拉流转推任务，
+//
+// 拉流源地址即 FromUrl 可以是腾讯或非腾讯数据源，
+//
+// 但转推目标地址即 ToUrl 目前限制为已注册的腾讯直播域名。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLOTHERSVRERROR = "InternalError.CallOtherSvrError"
+//  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) CreatePullStreamConfigWithContext(ctx context.Context, request *CreatePullStreamConfigRequest) (response *CreatePullStreamConfigResponse, err error) {
+    if request == nil {
+        request = NewCreatePullStreamConfigRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreatePullStreamConfigResponse()
     err = c.Send(request, response)
@@ -1038,6 +1674,46 @@ func (c *Client) CreateRecordTask(request *CreateRecordTaskRequest) (response *C
     return
 }
 
+// CreateRecordTask
+// 创建一个在指定时间启动、结束的录制任务，并使用指定录制模板ID对应的配置进行录制。
+//
+// - 使用前提
+//
+// 1. 录制文件存放于点播平台，所以用户如需使用录制功能，需首先自行开通点播服务。
+//
+// 2. 录制文件存放后相关费用（含存储以及下行播放流量）按照点播平台计费方式收取，具体请参考 [对应文档](https://cloud.tencent.com/document/product/266/2837)。
+//
+// - 注意事项
+//
+// 1. 断流会结束当前录制并生成录制文件。在结束时间到达之前任务仍然有效，期间只要正常推流都会正常录制，与是否多次推、断流无关。
+//
+// 2. 使用上避免创建时间段相互重叠的录制任务。若同一条流当前存在多个时段重叠的任务，为避免重复录制系统将启动最多3个录制任务。
+//
+// 3. 创建的录制任务记录在平台侧只保留3个月。
+//
+// 4. 当前录制任务管理API（CreateRecordTask/StopRecordTask/DeleteRecordTask）与旧API（CreateLiveRecord/StopLiveRecord/DeleteLiveRecord）不兼容，两套接口不能混用。
+//
+// 5. 避免 创建录制任务 与 推流 操作同时进行，可能导致因录制任务未生效而引起任务延迟启动问题，两者操作间隔建议大于3秒。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETCONFIGERROR = "InternalError.GetConfigError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_MAXIMUMRUNNINGTASK = "LimitExceeded.MaximumRunningTask"
+//  RESOURCEUNAVAILABLE_INVALIDVODSTATUS = "ResourceUnavailable.InvalidVodStatus"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateRecordTaskWithContext(ctx context.Context, request *CreateRecordTaskRequest) (response *CreateRecordTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateRecordTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateRecordTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteLiveCallbackRuleRequest() (request *DeleteLiveCallbackRuleRequest) {
     request = &DeleteLiveCallbackRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1069,6 +1745,27 @@ func (c *Client) DeleteLiveCallbackRule(request *DeleteLiveCallbackRuleRequest) 
     if request == nil {
         request = NewDeleteLiveCallbackRuleRequest()
     }
+    
+    response = NewDeleteLiveCallbackRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteLiveCallbackRule
+// 删除回调规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DeleteLiveCallbackRuleWithContext(ctx context.Context, request *DeleteLiveCallbackRuleRequest) (response *DeleteLiveCallbackRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteLiveCallbackRuleRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteLiveCallbackRuleResponse()
     err = c.Send(request, response)
@@ -1122,6 +1819,37 @@ func (c *Client) DeleteLiveCallbackTemplate(request *DeleteLiveCallbackTemplateR
     return
 }
 
+// DeleteLiveCallbackTemplate
+// 删除回调模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFINUSED = "FailedOperation.ConfInUsed"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_COSCUSTOMFILENAMEERROR = "InvalidParameter.COSCustomFileNameError"
+//  INVALIDPARAMETER_INVALIDVODFILENAME = "InvalidParameter.InvalidVodFileName"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DeleteLiveCallbackTemplateWithContext(ctx context.Context, request *DeleteLiveCallbackTemplateRequest) (response *DeleteLiveCallbackTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteLiveCallbackTemplateRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteLiveCallbackTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteLiveCertRequest() (request *DeleteLiveCertRequest) {
     request = &DeleteLiveCertRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1155,6 +1883,29 @@ func (c *Client) DeleteLiveCert(request *DeleteLiveCertRequest) (response *Delet
     if request == nil {
         request = NewDeleteLiveCertRequest()
     }
+    
+    response = NewDeleteLiveCertResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteLiveCert
+// 删除域名对应的证书
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVOKEVIDEOAPIFAIL = "FailedOperation.InvokeVideoApiFail"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CRTDATEINUSING = "InternalError.CrtDateInUsing"
+//  INTERNALERROR_CRTDATENOTFOUND = "InternalError.CrtDateNotFound"
+//  INTERNALERROR_CRTDATENOTLEGAL = "InternalError.CrtDateNotLegal"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INVALIDPARAMETER_CRTDATEINUSING = "InvalidParameter.CrtDateInUsing"
+func (c *Client) DeleteLiveCertWithContext(ctx context.Context, request *DeleteLiveCertRequest) (response *DeleteLiveCertResponse, err error) {
+    if request == nil {
+        request = NewDeleteLiveCertRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteLiveCertResponse()
     err = c.Send(request, response)
@@ -1196,6 +1947,31 @@ func (c *Client) DeleteLiveDomain(request *DeleteLiveDomainRequest) (response *D
     if request == nil {
         request = NewDeleteLiveDomainRequest()
     }
+    
+    response = NewDeleteLiveDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteLiveDomain
+// 删除已添加的直播域名
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DELETEDOMAININLOCKEDTIME = "FailedOperation.DeleteDomainInLockedTime"
+//  FAILEDOPERATION_JIFEINOENOUGHFUND = "FailedOperation.JiFeiNoEnoughFund"
+//  FAILEDOPERATION_TAGUNBINDERROR = "FailedOperation.TagUnbindError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_DOMAINISLIMITED = "InvalidParameter.DomainIsLimited"
+//  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+func (c *Client) DeleteLiveDomainWithContext(ctx context.Context, request *DeleteLiveDomainRequest) (response *DeleteLiveDomainResponse, err error) {
+    if request == nil {
+        request = NewDeleteLiveDomainRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteLiveDomainResponse()
     err = c.Send(request, response)
@@ -1245,6 +2021,33 @@ func (c *Client) DeleteLivePullStreamTask(request *DeleteLivePullStreamTaskReque
     return
 }
 
+// DeleteLivePullStreamTask
+// 删除接口 CreateLivePullStreamTask 创建的拉流任务。
+//
+// 注意：
+//
+// 1. 入参中的 TaskId 为 CreateLivePullStreamTask 接口创建时返回的TaskId。
+//
+// 2. 也可通过 DescribeLivePullStreamTasks 进行查询创建的任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INVALIDPARAMETER_TASKNOTEXIST = "InvalidParameter.TaskNotExist"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DeleteLivePullStreamTaskWithContext(ctx context.Context, request *DeleteLivePullStreamTaskRequest) (response *DeleteLivePullStreamTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteLivePullStreamTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteLivePullStreamTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteLiveRecordRequest() (request *DeleteLiveRecordRequest) {
     request = &DeleteLiveRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1279,6 +2082,30 @@ func (c *Client) DeleteLiveRecord(request *DeleteLiveRecordRequest) (response *D
     if request == nil {
         request = NewDeleteLiveRecordRequest()
     }
+    
+    response = NewDeleteLiveRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteLiveRecord
+// 注：DeleteLiveRecord 接口仅用于删除录制任务记录，不具备停止录制的功能，也不能删除正在进行中的录制。如果需要停止录制任务，请使用终止录制[StopLiveRecord](/document/product/267/30146) 接口。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ALTERTASKSTATE = "FailedOperation.AlterTaskState"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETCONFIGERROR = "InternalError.GetConfigError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_CHANNELNOTEXIST = "ResourceNotFound.ChannelNotExist"
+//  RESOURCENOTFOUND_TASKID = "ResourceNotFound.TaskId"
+func (c *Client) DeleteLiveRecordWithContext(ctx context.Context, request *DeleteLiveRecordRequest) (response *DeleteLiveRecordResponse, err error) {
+    if request == nil {
+        request = NewDeleteLiveRecordRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteLiveRecordResponse()
     err = c.Send(request, response)
@@ -1330,6 +2157,35 @@ func (c *Client) DeleteLiveRecordRule(request *DeleteLiveRecordRuleRequest) (res
     return
 }
 
+// DeleteLiveRecordRule
+// 删除录制规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DeleteLiveRecordRuleWithContext(ctx context.Context, request *DeleteLiveRecordRuleRequest) (response *DeleteLiveRecordRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteLiveRecordRuleRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteLiveRecordRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteLiveRecordTemplateRequest() (request *DeleteLiveRecordTemplateRequest) {
     request = &DeleteLiveRecordTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1368,6 +2224,34 @@ func (c *Client) DeleteLiveRecordTemplate(request *DeleteLiveRecordTemplateReque
     if request == nil {
         request = NewDeleteLiveRecordTemplateRequest()
     }
+    
+    response = NewDeleteLiveRecordTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteLiveRecordTemplate
+// 删除录制模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFINUSED = "FailedOperation.ConfInUsed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DeleteLiveRecordTemplateWithContext(ctx context.Context, request *DeleteLiveRecordTemplateRequest) (response *DeleteLiveRecordTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteLiveRecordTemplateRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteLiveRecordTemplateResponse()
     err = c.Send(request, response)
@@ -1419,6 +2303,35 @@ func (c *Client) DeleteLiveSnapshotRule(request *DeleteLiveSnapshotRuleRequest) 
     return
 }
 
+// DeleteLiveSnapshotRule
+// 删除截图规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DeleteLiveSnapshotRuleWithContext(ctx context.Context, request *DeleteLiveSnapshotRuleRequest) (response *DeleteLiveSnapshotRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteLiveSnapshotRuleRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteLiveSnapshotRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteLiveSnapshotTemplateRequest() (request *DeleteLiveSnapshotTemplateRequest) {
     request = &DeleteLiveSnapshotTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1457,6 +2370,34 @@ func (c *Client) DeleteLiveSnapshotTemplate(request *DeleteLiveSnapshotTemplateR
     if request == nil {
         request = NewDeleteLiveSnapshotTemplateRequest()
     }
+    
+    response = NewDeleteLiveSnapshotTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteLiveSnapshotTemplate
+// 删除截图模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFINUSED = "FailedOperation.ConfInUsed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DeleteLiveSnapshotTemplateWithContext(ctx context.Context, request *DeleteLiveSnapshotTemplateRequest) (response *DeleteLiveSnapshotTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteLiveSnapshotTemplateRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteLiveSnapshotTemplateResponse()
     err = c.Send(request, response)
@@ -1510,6 +2451,37 @@ func (c *Client) DeleteLiveTranscodeRule(request *DeleteLiveTranscodeRuleRequest
     return
 }
 
+// DeleteLiveTranscodeRule
+// 删除转码规则。
+//
+// DomainName+AppName+StreamName+TemplateId唯一标识单个转码规则，如需删除需要强匹配。其中TemplateId必填，其余参数为空时也需要传空字符串进行强匹配。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DeleteLiveTranscodeRuleWithContext(ctx context.Context, request *DeleteLiveTranscodeRuleRequest) (response *DeleteLiveTranscodeRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteLiveTranscodeRuleRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteLiveTranscodeRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteLiveTranscodeTemplateRequest() (request *DeleteLiveTranscodeTemplateRequest) {
     request = &DeleteLiveTranscodeTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1556,6 +2528,36 @@ func (c *Client) DeleteLiveTranscodeTemplate(request *DeleteLiveTranscodeTemplat
     return
 }
 
+// DeleteLiveTranscodeTemplate
+// 删除转码模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AITRANSCODEOPTIONFAIL = "FailedOperation.AiTranscodeOptionFail"
+//  FAILEDOPERATION_CONFINUSED = "FailedOperation.ConfInUsed"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DeleteLiveTranscodeTemplateWithContext(ctx context.Context, request *DeleteLiveTranscodeTemplateRequest) (response *DeleteLiveTranscodeTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteLiveTranscodeTemplateRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteLiveTranscodeTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteLiveWatermarkRequest() (request *DeleteLiveWatermarkRequest) {
     request = &DeleteLiveWatermarkRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1587,6 +2589,27 @@ func (c *Client) DeleteLiveWatermark(request *DeleteLiveWatermarkRequest) (respo
     if request == nil {
         request = NewDeleteLiveWatermarkRequest()
     }
+    
+    response = NewDeleteLiveWatermarkResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteLiveWatermark
+// 删除水印。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
+//  INTERNALERROR_GETWATERMARKERROR = "InternalError.GetWatermarkError"
+//  INTERNALERROR_WATERMARKNOTEXIST = "InternalError.WatermarkNotExist"
+//  RESOURCENOTFOUND_WATERMARKNOTEXIST = "ResourceNotFound.WatermarkNotExist"
+func (c *Client) DeleteLiveWatermarkWithContext(ctx context.Context, request *DeleteLiveWatermarkRequest) (response *DeleteLiveWatermarkResponse, err error) {
+    if request == nil {
+        request = NewDeleteLiveWatermarkRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteLiveWatermarkResponse()
     err = c.Send(request, response)
@@ -1638,6 +2661,35 @@ func (c *Client) DeleteLiveWatermarkRule(request *DeleteLiveWatermarkRuleRequest
     return
 }
 
+// DeleteLiveWatermarkRule
+// 删除水印规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DeleteLiveWatermarkRuleWithContext(ctx context.Context, request *DeleteLiveWatermarkRuleRequest) (response *DeleteLiveWatermarkRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteLiveWatermarkRuleRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteLiveWatermarkRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeletePullStreamConfigRequest() (request *DeletePullStreamConfigRequest) {
     request = &DeletePullStreamConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1670,6 +2722,28 @@ func (c *Client) DeletePullStreamConfig(request *DeletePullStreamConfigRequest) 
     if request == nil {
         request = NewDeletePullStreamConfigRequest()
     }
+    
+    response = NewDeletePullStreamConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeletePullStreamConfig
+// 删除直播拉流配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLOTHERSVRERROR = "InternalError.CallOtherSvrError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DeletePullStreamConfigWithContext(ctx context.Context, request *DeletePullStreamConfigRequest) (response *DeletePullStreamConfigResponse, err error) {
+    if request == nil {
+        request = NewDeletePullStreamConfigRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeletePullStreamConfigResponse()
     err = c.Send(request, response)
@@ -1713,6 +2787,27 @@ func (c *Client) DeleteRecordTask(request *DeleteRecordTaskRequest) (response *D
     return
 }
 
+// DeleteRecordTask
+// 删除录制任务配置。删除操作不影响正在运行当中的任务，仅对删除之后新的推流有效。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETCONFIGERROR = "InternalError.GetConfigError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE_INVALIDVODSTATUS = "ResourceUnavailable.InvalidVodStatus"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteRecordTaskWithContext(ctx context.Context, request *DeleteRecordTaskRequest) (response *DeleteRecordTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteRecordTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteRecordTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAllStreamPlayInfoListRequest() (request *DescribeAllStreamPlayInfoListRequest) {
     request = &DescribeAllStreamPlayInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1742,6 +2837,25 @@ func (c *Client) DescribeAllStreamPlayInfoList(request *DescribeAllStreamPlayInf
     if request == nil {
         request = NewDescribeAllStreamPlayInfoListRequest()
     }
+    
+    response = NewDescribeAllStreamPlayInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAllStreamPlayInfoList
+// 输入某个时间点（1分钟维度），查询该时间点所有流的下行信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAllStreamPlayInfoListWithContext(ctx context.Context, request *DescribeAllStreamPlayInfoListRequest) (response *DescribeAllStreamPlayInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAllStreamPlayInfoListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAllStreamPlayInfoListResponse()
     err = c.Send(request, response)
@@ -1782,6 +2896,24 @@ func (c *Client) DescribeAreaBillBandwidthAndFluxList(request *DescribeAreaBillB
     return
 }
 
+// DescribeAreaBillBandwidthAndFluxList
+// 海外分区直播计费带宽和流量数据查询。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAreaBillBandwidthAndFluxListWithContext(ctx context.Context, request *DescribeAreaBillBandwidthAndFluxListRequest) (response *DescribeAreaBillBandwidthAndFluxListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAreaBillBandwidthAndFluxListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAreaBillBandwidthAndFluxListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBillBandwidthAndFluxListRequest() (request *DescribeBillBandwidthAndFluxListRequest) {
     request = &DescribeBillBandwidthAndFluxListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1816,6 +2948,24 @@ func (c *Client) DescribeBillBandwidthAndFluxList(request *DescribeBillBandwidth
     return
 }
 
+// DescribeBillBandwidthAndFluxList
+// 直播计费带宽和流量数据查询。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeBillBandwidthAndFluxListWithContext(ctx context.Context, request *DescribeBillBandwidthAndFluxListRequest) (response *DescribeBillBandwidthAndFluxListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBillBandwidthAndFluxListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeBillBandwidthAndFluxListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCallbackRecordsListRequest() (request *DescribeCallbackRecordsListRequest) {
     request = &DescribeCallbackRecordsListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1844,6 +2994,24 @@ func (c *Client) DescribeCallbackRecordsList(request *DescribeCallbackRecordsLis
     if request == nil {
         request = NewDescribeCallbackRecordsListRequest()
     }
+    
+    response = NewDescribeCallbackRecordsListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCallbackRecordsList
+// 用于查询回调事件。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeCallbackRecordsListWithContext(ctx context.Context, request *DescribeCallbackRecordsListRequest) (response *DescribeCallbackRecordsListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCallbackRecordsListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeCallbackRecordsListResponse()
     err = c.Send(request, response)
@@ -1885,6 +3053,25 @@ func (c *Client) DescribeConcurrentRecordStreamNum(request *DescribeConcurrentRe
     return
 }
 
+// DescribeConcurrentRecordStreamNum
+// 查询并发录制路数，对慢直播和普通直播适用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeConcurrentRecordStreamNumWithContext(ctx context.Context, request *DescribeConcurrentRecordStreamNumRequest) (response *DescribeConcurrentRecordStreamNumResponse, err error) {
+    if request == nil {
+        request = NewDescribeConcurrentRecordStreamNumRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeConcurrentRecordStreamNumResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeliverBandwidthListRequest() (request *DescribeDeliverBandwidthListRequest) {
     request = &DescribeDeliverBandwidthListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1920,6 +3107,25 @@ func (c *Client) DescribeDeliverBandwidthList(request *DescribeDeliverBandwidthL
     return
 }
 
+// DescribeDeliverBandwidthList
+// 查询直播转推计费带宽，查询时间范围最大支持3个月内的数据，时间跨度最长31天。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDeliverBandwidthListWithContext(ctx context.Context, request *DescribeDeliverBandwidthListRequest) (response *DescribeDeliverBandwidthListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeliverBandwidthListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeliverBandwidthListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeGroupProIspPlayInfoListRequest() (request *DescribeGroupProIspPlayInfoListRequest) {
     request = &DescribeGroupProIspPlayInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1949,6 +3155,25 @@ func (c *Client) DescribeGroupProIspPlayInfoList(request *DescribeGroupProIspPla
     if request == nil {
         request = NewDescribeGroupProIspPlayInfoListRequest()
     }
+    
+    response = NewDescribeGroupProIspPlayInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeGroupProIspPlayInfoList
+// 查询按省份和运营商分组的下行播放数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeGroupProIspPlayInfoListWithContext(ctx context.Context, request *DescribeGroupProIspPlayInfoListRequest) (response *DescribeGroupProIspPlayInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeGroupProIspPlayInfoListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeGroupProIspPlayInfoListResponse()
     err = c.Send(request, response)
@@ -1991,6 +3216,26 @@ func (c *Client) DescribeHttpStatusInfoList(request *DescribeHttpStatusInfoListR
     return
 }
 
+// DescribeHttpStatusInfoList
+// 查询某段时间内5分钟粒度的各播放http状态码的个数。
+//
+// 备注：数据延迟1小时，如10:00-10:59点的数据12点才能查到。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeHttpStatusInfoListWithContext(ctx context.Context, request *DescribeHttpStatusInfoListRequest) (response *DescribeHttpStatusInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeHttpStatusInfoListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeHttpStatusInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveCallbackRulesRequest() (request *DescribeLiveCallbackRulesRequest) {
     request = &DescribeLiveCallbackRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2021,6 +3266,26 @@ func (c *Client) DescribeLiveCallbackRules(request *DescribeLiveCallbackRulesReq
     if request == nil {
         request = NewDescribeLiveCallbackRulesRequest()
     }
+    
+    response = NewDescribeLiveCallbackRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeLiveCallbackRules
+// 获取回调规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
+func (c *Client) DescribeLiveCallbackRulesWithContext(ctx context.Context, request *DescribeLiveCallbackRulesRequest) (response *DescribeLiveCallbackRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveCallbackRulesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeLiveCallbackRulesResponse()
     err = c.Send(request, response)
@@ -2076,6 +3341,39 @@ func (c *Client) DescribeLiveCallbackTemplate(request *DescribeLiveCallbackTempl
     return
 }
 
+// DescribeLiveCallbackTemplate
+// 获取单个回调模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFINUSED = "FailedOperation.ConfInUsed"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_COSCUSTOMFILENAMEERROR = "InvalidParameter.COSCustomFileNameError"
+//  INVALIDPARAMETER_INVALIDVODFILENAME = "InvalidParameter.InvalidVodFileName"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeLiveCallbackTemplateWithContext(ctx context.Context, request *DescribeLiveCallbackTemplateRequest) (response *DescribeLiveCallbackTemplateResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveCallbackTemplateRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveCallbackTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveCallbackTemplatesRequest() (request *DescribeLiveCallbackTemplatesRequest) {
     request = &DescribeLiveCallbackTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2124,6 +3422,38 @@ func (c *Client) DescribeLiveCallbackTemplates(request *DescribeLiveCallbackTemp
     return
 }
 
+// DescribeLiveCallbackTemplates
+// 获取回调模板列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFINUSED = "FailedOperation.ConfInUsed"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_COSCUSTOMFILENAMEERROR = "InvalidParameter.COSCustomFileNameError"
+//  INVALIDPARAMETER_INVALIDVODFILENAME = "InvalidParameter.InvalidVodFileName"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
+func (c *Client) DescribeLiveCallbackTemplatesWithContext(ctx context.Context, request *DescribeLiveCallbackTemplatesRequest) (response *DescribeLiveCallbackTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveCallbackTemplatesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveCallbackTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveCertRequest() (request *DescribeLiveCertRequest) {
     request = &DescribeLiveCertRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2155,6 +3485,27 @@ func (c *Client) DescribeLiveCert(request *DescribeLiveCertRequest) (response *D
     if request == nil {
         request = NewDescribeLiveCertRequest()
     }
+    
+    response = NewDescribeLiveCertResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeLiveCert
+// 获取证书信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVOKEVIDEOAPIFAIL = "FailedOperation.InvokeVideoApiFail"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CRTDOMAINNOTFOUND = "InternalError.CrtDomainNotFound"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  RESOURCENOTFOUND_CRTDOMAINNOTFOUND = "ResourceNotFound.CrtDomainNotFound"
+func (c *Client) DescribeLiveCertWithContext(ctx context.Context, request *DescribeLiveCertRequest) (response *DescribeLiveCertResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveCertRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeLiveCertResponse()
     err = c.Send(request, response)
@@ -2198,6 +3549,27 @@ func (c *Client) DescribeLiveCerts(request *DescribeLiveCertsRequest) (response 
     return
 }
 
+// DescribeLiveCerts
+// 获取证书信息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVOKEVIDEOAPIFAIL = "FailedOperation.InvokeVideoApiFail"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_CRTDOMAINNOTFOUND = "ResourceNotFound.CrtDomainNotFound"
+func (c *Client) DescribeLiveCertsWithContext(ctx context.Context, request *DescribeLiveCertsRequest) (response *DescribeLiveCertsResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveCertsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveCertsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveDelayInfoListRequest() (request *DescribeLiveDelayInfoListRequest) {
     request = &DescribeLiveDelayInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2228,6 +3600,26 @@ func (c *Client) DescribeLiveDelayInfoList(request *DescribeLiveDelayInfoListReq
     if request == nil {
         request = NewDescribeLiveDelayInfoListRequest()
     }
+    
+    response = NewDescribeLiveDelayInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeLiveDelayInfoList
+// 获取直播延播列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DescribeLiveDelayInfoListWithContext(ctx context.Context, request *DescribeLiveDelayInfoListRequest) (response *DescribeLiveDelayInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveDelayInfoListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeLiveDelayInfoListResponse()
     err = c.Send(request, response)
@@ -2273,6 +3665,29 @@ func (c *Client) DescribeLiveDomain(request *DescribeLiveDomainRequest) (respons
     return
 }
 
+// DescribeLiveDomain
+// 查询直播域名信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_DOMAINNOTEXIST = "InternalError.DomainNotExist"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
+func (c *Client) DescribeLiveDomainWithContext(ctx context.Context, request *DescribeLiveDomainRequest) (response *DescribeLiveDomainResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveDomainRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveDomainCertRequest() (request *DescribeLiveDomainCertRequest) {
     request = &DescribeLiveDomainCertRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2310,6 +3725,27 @@ func (c *Client) DescribeLiveDomainCert(request *DescribeLiveDomainCertRequest) 
     return
 }
 
+// DescribeLiveDomainCert
+// 获取域名证书信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVOKEVIDEOAPIFAIL = "FailedOperation.InvokeVideoApiFail"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_CRTDOMAINNOTFOUND = "ResourceNotFound.CrtDomainNotFound"
+func (c *Client) DescribeLiveDomainCertWithContext(ctx context.Context, request *DescribeLiveDomainCertRequest) (response *DescribeLiveDomainCertResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveDomainCertRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveDomainCertResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveDomainPlayInfoListRequest() (request *DescribeLiveDomainPlayInfoListRequest) {
     request = &DescribeLiveDomainPlayInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2338,6 +3774,24 @@ func (c *Client) DescribeLiveDomainPlayInfoList(request *DescribeLiveDomainPlayI
     if request == nil {
         request = NewDescribeLiveDomainPlayInfoListRequest()
     }
+    
+    response = NewDescribeLiveDomainPlayInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeLiveDomainPlayInfoList
+// 查询实时的域名维度下行播放数据，由于数据处理有耗时，接口默认查询4分钟前的准实时数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeLiveDomainPlayInfoListWithContext(ctx context.Context, request *DescribeLiveDomainPlayInfoListRequest) (response *DescribeLiveDomainPlayInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveDomainPlayInfoListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeLiveDomainPlayInfoListResponse()
     err = c.Send(request, response)
@@ -2385,6 +3839,31 @@ func (c *Client) DescribeLiveDomainReferer(request *DescribeLiveDomainRefererReq
     return
 }
 
+// DescribeLiveDomainReferer
+// 查询直播域名 Referer 黑白名单配置。
+//
+// 由于 Referer 信息包含在 http 协议中，在开启配置后，播放协议为 rtmp 或 WebRTC 不会校验 Referer 配置，仍可正常播放。如需配置 Referer 鉴权建议使用 http-flv 或 http-hls 协议播放。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_DOMAINNOTEXIST = "InternalError.DomainNotExist"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
+func (c *Client) DescribeLiveDomainRefererWithContext(ctx context.Context, request *DescribeLiveDomainRefererRequest) (response *DescribeLiveDomainRefererResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveDomainRefererRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveDomainRefererResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveDomainsRequest() (request *DescribeLiveDomainsRequest) {
     request = &DescribeLiveDomainsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2415,6 +3894,26 @@ func (c *Client) DescribeLiveDomains(request *DescribeLiveDomainsRequest) (respo
     if request == nil {
         request = NewDescribeLiveDomainsRequest()
     }
+    
+    response = NewDescribeLiveDomainsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeLiveDomains
+// 根据域名状态、类型等信息查询用户的域名信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
+//  RESOURCENOTFOUND_INVALIDUSER = "ResourceNotFound.InvalidUser"
+func (c *Client) DescribeLiveDomainsWithContext(ctx context.Context, request *DescribeLiveDomainsRequest) (response *DescribeLiveDomainsResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveDomainsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeLiveDomainsResponse()
     err = c.Send(request, response)
@@ -2462,6 +3961,31 @@ func (c *Client) DescribeLiveForbidStreamList(request *DescribeLiveForbidStreamL
     return
 }
 
+// DescribeLiveForbidStreamList
+// 获取禁推流列表。
+//
+// 
+//
+// 注意：该接口仅作为直播辅助查询接口，重要业务场景不可强依赖该接口。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DescribeLiveForbidStreamListWithContext(ctx context.Context, request *DescribeLiveForbidStreamListRequest) (response *DescribeLiveForbidStreamListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveForbidStreamListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveForbidStreamListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLivePackageInfoRequest() (request *DescribeLivePackageInfoRequest) {
     request = &DescribeLivePackageInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2493,6 +4017,27 @@ func (c *Client) DescribeLivePackageInfo(request *DescribeLivePackageInfoRequest
     if request == nil {
         request = NewDescribeLivePackageInfoRequest()
     }
+    
+    response = NewDescribeLivePackageInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeLivePackageInfo
+// 查询用户套餐包总量、使用量、剩余量、包状态、购买时间和过期时间等。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeLivePackageInfoWithContext(ctx context.Context, request *DescribeLivePackageInfoRequest) (response *DescribeLivePackageInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeLivePackageInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeLivePackageInfoResponse()
     err = c.Send(request, response)
@@ -2538,6 +4083,29 @@ func (c *Client) DescribeLivePlayAuthKey(request *DescribeLivePlayAuthKeyRequest
     return
 }
 
+// DescribeLivePlayAuthKey
+// 查询播放鉴权key。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_PLAYDOMAINNORECORD = "InternalError.PlayDomainNoRecord"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_PLAYDOMAINNORECORD = "ResourceNotFound.PlayDomainNoRecord"
+func (c *Client) DescribeLivePlayAuthKeyWithContext(ctx context.Context, request *DescribeLivePlayAuthKeyRequest) (response *DescribeLivePlayAuthKeyResponse, err error) {
+    if request == nil {
+        request = NewDescribeLivePlayAuthKeyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeLivePlayAuthKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLivePullStreamTasksRequest() (request *DescribeLivePullStreamTasksRequest) {
     request = &DescribeLivePullStreamTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2569,6 +4137,27 @@ func (c *Client) DescribeLivePullStreamTasks(request *DescribeLivePullStreamTask
     if request == nil {
         request = NewDescribeLivePullStreamTasksRequest()
     }
+    
+    response = NewDescribeLivePullStreamTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeLivePullStreamTasks
+// 查询使用 CreateLivePullStreamTask 接口创建的直播拉流任务。
+//
+// 排序方式：默认按更新时间 倒序排列。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DescribeLivePullStreamTasksWithContext(ctx context.Context, request *DescribeLivePullStreamTasksRequest) (response *DescribeLivePullStreamTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeLivePullStreamTasksRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeLivePullStreamTasksResponse()
     err = c.Send(request, response)
@@ -2614,6 +4203,29 @@ func (c *Client) DescribeLivePushAuthKey(request *DescribeLivePushAuthKeyRequest
     return
 }
 
+// DescribeLivePushAuthKey
+// 查询直播推流鉴权key
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_PUSHDOMAINNORECORD = "InternalError.PushDomainNoRecord"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_PUSHDOMAINNORECORD = "ResourceNotFound.PushDomainNoRecord"
+func (c *Client) DescribeLivePushAuthKeyWithContext(ctx context.Context, request *DescribeLivePushAuthKeyRequest) (response *DescribeLivePushAuthKeyResponse, err error) {
+    if request == nil {
+        request = NewDescribeLivePushAuthKeyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeLivePushAuthKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveRecordRulesRequest() (request *DescribeLiveRecordRulesRequest) {
     request = &DescribeLiveRecordRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2651,6 +4263,33 @@ func (c *Client) DescribeLiveRecordRules(request *DescribeLiveRecordRulesRequest
     if request == nil {
         request = NewDescribeLiveRecordRulesRequest()
     }
+    
+    response = NewDescribeLiveRecordRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeLiveRecordRules
+// 获取录制规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeLiveRecordRulesWithContext(ctx context.Context, request *DescribeLiveRecordRulesRequest) (response *DescribeLiveRecordRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveRecordRulesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeLiveRecordRulesResponse()
     err = c.Send(request, response)
@@ -2701,6 +4340,34 @@ func (c *Client) DescribeLiveRecordTemplate(request *DescribeLiveRecordTemplateR
     return
 }
 
+// DescribeLiveRecordTemplate
+// 获取单个录制模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeLiveRecordTemplateWithContext(ctx context.Context, request *DescribeLiveRecordTemplateRequest) (response *DescribeLiveRecordTemplateResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveRecordTemplateRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveRecordTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveRecordTemplatesRequest() (request *DescribeLiveRecordTemplatesRequest) {
     request = &DescribeLiveRecordTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2744,6 +4411,33 @@ func (c *Client) DescribeLiveRecordTemplates(request *DescribeLiveRecordTemplate
     return
 }
 
+// DescribeLiveRecordTemplates
+// 获取录制模板列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeLiveRecordTemplatesWithContext(ctx context.Context, request *DescribeLiveRecordTemplatesRequest) (response *DescribeLiveRecordTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveRecordTemplatesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveRecordTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveSnapshotRulesRequest() (request *DescribeLiveSnapshotRulesRequest) {
     request = &DescribeLiveSnapshotRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2781,6 +4475,33 @@ func (c *Client) DescribeLiveSnapshotRules(request *DescribeLiveSnapshotRulesReq
     if request == nil {
         request = NewDescribeLiveSnapshotRulesRequest()
     }
+    
+    response = NewDescribeLiveSnapshotRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeLiveSnapshotRules
+// 获取截图规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeLiveSnapshotRulesWithContext(ctx context.Context, request *DescribeLiveSnapshotRulesRequest) (response *DescribeLiveSnapshotRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveSnapshotRulesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeLiveSnapshotRulesResponse()
     err = c.Send(request, response)
@@ -2833,6 +4554,36 @@ func (c *Client) DescribeLiveSnapshotTemplate(request *DescribeLiveSnapshotTempl
     return
 }
 
+// DescribeLiveSnapshotTemplate
+// 获取单个截图模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeLiveSnapshotTemplateWithContext(ctx context.Context, request *DescribeLiveSnapshotTemplateRequest) (response *DescribeLiveSnapshotTemplateResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveSnapshotTemplateRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveSnapshotTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveSnapshotTemplatesRequest() (request *DescribeLiveSnapshotTemplatesRequest) {
     request = &DescribeLiveSnapshotTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2871,6 +4622,34 @@ func (c *Client) DescribeLiveSnapshotTemplates(request *DescribeLiveSnapshotTemp
     if request == nil {
         request = NewDescribeLiveSnapshotTemplatesRequest()
     }
+    
+    response = NewDescribeLiveSnapshotTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeLiveSnapshotTemplates
+// 获取截图模板列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
+func (c *Client) DescribeLiveSnapshotTemplatesWithContext(ctx context.Context, request *DescribeLiveSnapshotTemplatesRequest) (response *DescribeLiveSnapshotTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveSnapshotTemplatesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeLiveSnapshotTemplatesResponse()
     err = c.Send(request, response)
@@ -2916,6 +4695,35 @@ func (c *Client) DescribeLiveStreamEventList(request *DescribeLiveStreamEventLis
     if request == nil {
         request = NewDescribeLiveStreamEventListRequest()
     }
+    
+    response = NewDescribeLiveStreamEventListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeLiveStreamEventList
+// 用于查询推断流事件。<br>
+//
+// 
+//
+// 注意：
+//
+// 1. 该接口提供离线推断流记录查询功能，不可作为重要业务场景强依赖接口。
+//
+// 2. 该接口可通过使用IsFilter进行过滤，返回推流历史记录。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DescribeLiveStreamEventListWithContext(ctx context.Context, request *DescribeLiveStreamEventListRequest) (response *DescribeLiveStreamEventListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveStreamEventListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeLiveStreamEventListResponse()
     err = c.Send(request, response)
@@ -2975,6 +4783,43 @@ func (c *Client) DescribeLiveStreamOnlineList(request *DescribeLiveStreamOnlineL
     return
 }
 
+// DescribeLiveStreamOnlineList
+// 返回正在直播中的流列表。适用于推流成功后查询在线流信息。
+//
+// 
+//
+// 注意：
+//
+// 1. 该接口仅提供辅助查询在线流列表功能，业务重要场景不可强依赖该接口。
+//
+// 2. 该接口仅适用于流数少于2万路的情况，对于流数较大用户请联系售后。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLOTHERSVRERROR = "InternalError.CallOtherSvrError"
+//  INTERNALERROR_CONFIGNOTEXIST = "InternalError.ConfigNotExist"
+//  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
+//  INTERNALERROR_GETSTREAMINFOERROR = "InternalError.GetStreamInfoError"
+//  INTERNALERROR_GETUPSTREAMINFOERROR = "InternalError.GetUpstreamInfoError"
+//  INTERNALERROR_NOTPERMMITOPERAT = "InternalError.NotPermmitOperat"
+//  INTERNALERROR_STREAMSTATUSERROR = "InternalError.StreamStatusError"
+//  INTERNALERROR_UPDATEDATAERROR = "InternalError.UpdateDataError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DescribeLiveStreamOnlineListWithContext(ctx context.Context, request *DescribeLiveStreamOnlineListRequest) (response *DescribeLiveStreamOnlineListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveStreamOnlineListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveStreamOnlineListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveStreamPublishedListRequest() (request *DescribeLiveStreamPublishedListRequest) {
     request = &DescribeLiveStreamPublishedListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3023,6 +4868,38 @@ func (c *Client) DescribeLiveStreamPublishedList(request *DescribeLiveStreamPubl
     return
 }
 
+// DescribeLiveStreamPublishedList
+// 返回已经推过流的流列表。<br>
+//
+// 注意：分页最多支持查询1万条记录，可通过调整查询时间范围来获取更多数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLOTHERSVRERROR = "InternalError.CallOtherSvrError"
+//  INTERNALERROR_CONFIGNOTEXIST = "InternalError.ConfigNotExist"
+//  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
+//  INTERNALERROR_GETSTREAMINFOERROR = "InternalError.GetStreamInfoError"
+//  INTERNALERROR_GETUPSTREAMINFOERROR = "InternalError.GetUpstreamInfoError"
+//  INTERNALERROR_NOTPERMMITOPERAT = "InternalError.NotPermmitOperat"
+//  INTERNALERROR_STREAMSTATUSERROR = "InternalError.StreamStatusError"
+//  INTERNALERROR_UPDATEDATAERROR = "InternalError.UpdateDataError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DescribeLiveStreamPublishedListWithContext(ctx context.Context, request *DescribeLiveStreamPublishedListRequest) (response *DescribeLiveStreamPublishedListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveStreamPublishedListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveStreamPublishedListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveStreamPushInfoListRequest() (request *DescribeLiveStreamPushInfoListRequest) {
     request = &DescribeLiveStreamPushInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3062,6 +4939,29 @@ func (c *Client) DescribeLiveStreamPushInfoList(request *DescribeLiveStreamPushI
     return
 }
 
+// DescribeLiveStreamPushInfoList
+// 查询所有实时流的推流信息，包括客户端IP，服务端IP，帧率，码率，域名，开始推流时间。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_HASNOTLIVINGSTREAM = "FailedOperation.HasNotLivingStream"
+//  FAILEDOPERATION_QUERYUPLOADINFOFAILED = "FailedOperation.QueryUploadInfoFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INVALIDREQUEST = "InternalError.InvalidRequest"
+//  INTERNALERROR_QUERYPROISPPLAYINFOERROR = "InternalError.QueryProIspPlayInfoError"
+//  INTERNALERROR_QUERYUPLOADINFOFAILED = "InternalError.QueryUploadInfoFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeLiveStreamPushInfoListWithContext(ctx context.Context, request *DescribeLiveStreamPushInfoListRequest) (response *DescribeLiveStreamPushInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveStreamPushInfoListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveStreamPushInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveStreamStateRequest() (request *DescribeLiveStreamStateRequest) {
     request = &DescribeLiveStreamStateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3082,21 +4982,23 @@ func NewDescribeLiveStreamStateResponse() (response *DescribeLiveStreamStateResp
 // DescribeLiveStreamState
 // 返回直播中、无推流或者禁播等状态。
 //
-// 注意：该接口仅提供辅助查询流状态功能，业务重要场景不要强依赖该接口！
-//
 // 
 //
 // 使用建议：
 //
-// 1. 去除将该接口的返回结果作为开播、关播等重要业务场景的依赖。
+// 该接口提供实时流状态查询功能，鉴于网络抖动等一些不可抗因素，使用该接口作为判断主播是否开播等重要业务场景时，请参考以下使用建议。
 //
-// 2. 如业务需要该状态,可通过[推断流事件通知](/document/product/267/47025)进行存储维护直播间状态。
+// 1. 优先使用业务自身的房间开关播逻辑，判断主播是否在线，譬如客户端开播信令和主播在线心跳等。
 //
-// 3. 自行维护的直播间状态,可通过定时(>1 min)[查询直播中的流接口](/document/product/267/20472),进行状态校准。
+// 2. 对于没有房间管理的直播场景，可以结合以下方案综合判断。
 //
-// 4. 如使用了流状态查询接口查询到流不活跃,可通过上述多种方案综合判定流状态。
+// 2.1 根据[推断流事件通知](/document/product/267/20388) 判断主播在线状态。
 //
-// 5. 接口查询时,如发生访问异常或解析异常等,可默认为活跃,减少对业务影响。
+// 2.2 通过定时（间隔>1min）查询[直播中的流接口](/document/api/267/20472)，判断主播是否在线。
+//
+// 2.3 通过 本接口 查询直播流状态，判断主播是否在线。
+//
+// 2.4 以上任一方式判断为在线，都认为主播开播中，并且接口查询超时或解析异常时，也默认为在线，减少对业务的影响。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3118,6 +5020,54 @@ func (c *Client) DescribeLiveStreamState(request *DescribeLiveStreamStateRequest
     if request == nil {
         request = NewDescribeLiveStreamStateRequest()
     }
+    
+    response = NewDescribeLiveStreamStateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeLiveStreamState
+// 返回直播中、无推流或者禁播等状态。
+//
+// 
+//
+// 使用建议：
+//
+// 该接口提供实时流状态查询功能，鉴于网络抖动等一些不可抗因素，使用该接口作为判断主播是否开播等重要业务场景时，请参考以下使用建议。
+//
+// 1. 优先使用业务自身的房间开关播逻辑，判断主播是否在线，譬如客户端开播信令和主播在线心跳等。
+//
+// 2. 对于没有房间管理的直播场景，可以结合以下方案综合判断。
+//
+// 2.1 根据[推断流事件通知](/document/product/267/20388) 判断主播在线状态。
+//
+// 2.2 通过定时（间隔>1min）查询[直播中的流接口](/document/api/267/20472)，判断主播是否在线。
+//
+// 2.3 通过 本接口 查询直播流状态，判断主播是否在线。
+//
+// 2.4 以上任一方式判断为在线，都认为主播开播中，并且接口查询超时或解析异常时，也默认为在线，减少对业务的影响。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLOTHERSVRERROR = "InternalError.CallOtherSvrError"
+//  INTERNALERROR_CONFIGNOTEXIST = "InternalError.ConfigNotExist"
+//  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
+//  INTERNALERROR_GETSTREAMINFOERROR = "InternalError.GetStreamInfoError"
+//  INTERNALERROR_GETUPSTREAMINFOERROR = "InternalError.GetUpstreamInfoError"
+//  INTERNALERROR_NOTPERMMITOPERAT = "InternalError.NotPermmitOperat"
+//  INTERNALERROR_STREAMSTATUSERROR = "InternalError.StreamStatusError"
+//  INTERNALERROR_UPDATEDATAERROR = "InternalError.UpdateDataError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DescribeLiveStreamStateWithContext(ctx context.Context, request *DescribeLiveStreamStateRequest) (response *DescribeLiveStreamStateResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveStreamStateRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeLiveStreamStateResponse()
     err = c.Send(request, response)
@@ -3152,6 +5102,24 @@ func (c *Client) DescribeLiveTranscodeDetailInfo(request *DescribeLiveTranscodeD
     if request == nil {
         request = NewDescribeLiveTranscodeDetailInfoRequest()
     }
+    
+    response = NewDescribeLiveTranscodeDetailInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeLiveTranscodeDetailInfo
+// 支持查询某天或某段时间的转码详细信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeLiveTranscodeDetailInfoWithContext(ctx context.Context, request *DescribeLiveTranscodeDetailInfoRequest) (response *DescribeLiveTranscodeDetailInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveTranscodeDetailInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeLiveTranscodeDetailInfoResponse()
     err = c.Send(request, response)
@@ -3195,6 +5163,33 @@ func (c *Client) DescribeLiveTranscodeRules(request *DescribeLiveTranscodeRulesR
     if request == nil {
         request = NewDescribeLiveTranscodeRulesRequest()
     }
+    
+    response = NewDescribeLiveTranscodeRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeLiveTranscodeRules
+// 获取转码规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeLiveTranscodeRulesWithContext(ctx context.Context, request *DescribeLiveTranscodeRulesRequest) (response *DescribeLiveTranscodeRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveTranscodeRulesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeLiveTranscodeRulesResponse()
     err = c.Send(request, response)
@@ -3246,6 +5241,35 @@ func (c *Client) DescribeLiveTranscodeTemplate(request *DescribeLiveTranscodeTem
     return
 }
 
+// DescribeLiveTranscodeTemplate
+// 获取单个转码模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
+func (c *Client) DescribeLiveTranscodeTemplateWithContext(ctx context.Context, request *DescribeLiveTranscodeTemplateRequest) (response *DescribeLiveTranscodeTemplateResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveTranscodeTemplateRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveTranscodeTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveTranscodeTemplatesRequest() (request *DescribeLiveTranscodeTemplatesRequest) {
     request = &DescribeLiveTranscodeTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3290,6 +5314,34 @@ func (c *Client) DescribeLiveTranscodeTemplates(request *DescribeLiveTranscodeTe
     return
 }
 
+// DescribeLiveTranscodeTemplates
+// 获取转码模板列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
+func (c *Client) DescribeLiveTranscodeTemplatesWithContext(ctx context.Context, request *DescribeLiveTranscodeTemplatesRequest) (response *DescribeLiveTranscodeTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveTranscodeTemplatesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveTranscodeTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveTranscodeTotalInfoRequest() (request *DescribeLiveTranscodeTotalInfoRequest) {
     request = &DescribeLiveTranscodeTotalInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3324,6 +5376,30 @@ func (c *Client) DescribeLiveTranscodeTotalInfo(request *DescribeLiveTranscodeTo
     if request == nil {
         request = NewDescribeLiveTranscodeTotalInfoRequest()
     }
+    
+    response = NewDescribeLiveTranscodeTotalInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeLiveTranscodeTotalInfo
+// 查询转码总量数据，可查询近30天内数据。
+//
+// 注意：
+//
+// 如果是查询某一天内，则返回5分钟粒度数据；
+//
+// 如果是查询跨天或指定域名， 则返回1小时粒度数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeLiveTranscodeTotalInfoWithContext(ctx context.Context, request *DescribeLiveTranscodeTotalInfoRequest) (response *DescribeLiveTranscodeTotalInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveTranscodeTotalInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeLiveTranscodeTotalInfoResponse()
     err = c.Send(request, response)
@@ -3374,6 +5450,34 @@ func (c *Client) DescribeLiveWatermark(request *DescribeLiveWatermarkRequest) (r
     return
 }
 
+// DescribeLiveWatermark
+// 获取单个水印信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeLiveWatermarkWithContext(ctx context.Context, request *DescribeLiveWatermarkRequest) (response *DescribeLiveWatermarkResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveWatermarkRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveWatermarkResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveWatermarkRulesRequest() (request *DescribeLiveWatermarkRulesRequest) {
     request = &DescribeLiveWatermarkRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3411,6 +5515,33 @@ func (c *Client) DescribeLiveWatermarkRules(request *DescribeLiveWatermarkRulesR
     if request == nil {
         request = NewDescribeLiveWatermarkRulesRequest()
     }
+    
+    response = NewDescribeLiveWatermarkRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeLiveWatermarkRules
+// 获取水印规则列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeLiveWatermarkRulesWithContext(ctx context.Context, request *DescribeLiveWatermarkRulesRequest) (response *DescribeLiveWatermarkRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveWatermarkRulesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeLiveWatermarkRulesResponse()
     err = c.Send(request, response)
@@ -3460,6 +5591,33 @@ func (c *Client) DescribeLiveWatermarks(request *DescribeLiveWatermarksRequest) 
     return
 }
 
+// DescribeLiveWatermarks
+// 查询水印列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeLiveWatermarksWithContext(ctx context.Context, request *DescribeLiveWatermarksRequest) (response *DescribeLiveWatermarksResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveWatermarksRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveWatermarksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLogDownloadListRequest() (request *DescribeLogDownloadListRequest) {
     request = &DescribeLogDownloadListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3492,6 +5650,28 @@ func (c *Client) DescribeLogDownloadList(request *DescribeLogDownloadListRequest
     if request == nil {
         request = NewDescribeLogDownloadListRequest()
     }
+    
+    response = NewDescribeLogDownloadListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeLogDownloadList
+// 批量获取日志URL。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVOKECDNAPIFAIL = "FailedOperation.InvokeCdnApiFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_CDNLOGEMPTY = "ResourceNotFound.CdnLogEmpty"
+//  RESOURCENOTFOUND_CDNTHEMEEMPTY = "ResourceNotFound.CdnThemeEmpty"
+//  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
+func (c *Client) DescribeLogDownloadListWithContext(ctx context.Context, request *DescribeLogDownloadListRequest) (response *DescribeLogDownloadListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLogDownloadListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeLogDownloadListResponse()
     err = c.Send(request, response)
@@ -3534,6 +5714,26 @@ func (c *Client) DescribePlayErrorCodeDetailInfoList(request *DescribePlayErrorC
     return
 }
 
+// DescribePlayErrorCodeDetailInfoList
+// 查询下行播放错误码信息，某段时间内1分钟粒度的各http错误码出现的次数，包括4xx，5xx。
+//
+// 
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribePlayErrorCodeDetailInfoListWithContext(ctx context.Context, request *DescribePlayErrorCodeDetailInfoListRequest) (response *DescribePlayErrorCodeDetailInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribePlayErrorCodeDetailInfoListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribePlayErrorCodeDetailInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePlayErrorCodeSumInfoListRequest() (request *DescribePlayErrorCodeSumInfoListRequest) {
     request = &DescribePlayErrorCodeSumInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3562,6 +5762,24 @@ func (c *Client) DescribePlayErrorCodeSumInfoList(request *DescribePlayErrorCode
     if request == nil {
         request = NewDescribePlayErrorCodeSumInfoListRequest()
     }
+    
+    response = NewDescribePlayErrorCodeSumInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribePlayErrorCodeSumInfoList
+// 查询下行播放错误码信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribePlayErrorCodeSumInfoListWithContext(ctx context.Context, request *DescribePlayErrorCodeSumInfoListRequest) (response *DescribePlayErrorCodeSumInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribePlayErrorCodeSumInfoListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribePlayErrorCodeSumInfoListResponse()
     err = c.Send(request, response)
@@ -3602,6 +5820,24 @@ func (c *Client) DescribeProIspPlaySumInfoList(request *DescribeProIspPlaySumInf
     return
 }
 
+// DescribeProIspPlaySumInfoList
+// 查询某段时间内每个国家地区每个省份每个运营商的平均每秒流量，总流量，总请求数信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeProIspPlaySumInfoListWithContext(ctx context.Context, request *DescribeProIspPlaySumInfoListRequest) (response *DescribeProIspPlaySumInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeProIspPlaySumInfoListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeProIspPlaySumInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProvinceIspPlayInfoListRequest() (request *DescribeProvinceIspPlayInfoListRequest) {
     request = &DescribeProvinceIspPlayInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3635,6 +5871,29 @@ func (c *Client) DescribeProvinceIspPlayInfoList(request *DescribeProvinceIspPla
     if request == nil {
         request = NewDescribeProvinceIspPlayInfoListRequest()
     }
+    
+    response = NewDescribeProvinceIspPlayInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeProvinceIspPlayInfoList
+// 查询某省份某运营商下行播放数据，包括带宽，流量，请求数，并发连接数信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_HASNOTLIVINGSTREAM = "InternalError.HasNotLivingStream"
+//  INTERNALERROR_INVALIDREQUEST = "InternalError.InvalidRequest"
+//  INTERNALERROR_QUERYPROISPPLAYINFOERROR = "InternalError.QueryProIspPlayInfoError"
+//  INTERNALERROR_QUERYUPLOADINFOFAILED = "InternalError.QueryUploadInfoFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeProvinceIspPlayInfoListWithContext(ctx context.Context, request *DescribeProvinceIspPlayInfoListRequest) (response *DescribeProvinceIspPlayInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeProvinceIspPlayInfoListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeProvinceIspPlayInfoListResponse()
     err = c.Send(request, response)
@@ -3681,6 +5940,30 @@ func (c *Client) DescribePullStreamConfigs(request *DescribePullStreamConfigsReq
     return
 }
 
+// DescribePullStreamConfigs
+// 查询直播拉流配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_INVALIDUSER = "InternalError.InvalidUser"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DescribePullStreamConfigsWithContext(ctx context.Context, request *DescribePullStreamConfigsRequest) (response *DescribePullStreamConfigsResponse, err error) {
+    if request == nil {
+        request = NewDescribePullStreamConfigsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribePullStreamConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePushBandwidthAndFluxListRequest() (request *DescribePushBandwidthAndFluxListRequest) {
     request = &DescribePushBandwidthAndFluxListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3711,6 +5994,26 @@ func (c *Client) DescribePushBandwidthAndFluxList(request *DescribePushBandwidth
     if request == nil {
         request = NewDescribePushBandwidthAndFluxListRequest()
     }
+    
+    response = NewDescribePushBandwidthAndFluxListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribePushBandwidthAndFluxList
+// 直播推流带宽和流量数据查询。
+//
+// 推流计费会先取全球推流用量和全球播放用量进行比较，满足计费条件后再按各地区用量出账。详情参见[计费文档](https://cloud.tencent.com/document/product/267/34175)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribePushBandwidthAndFluxListWithContext(ctx context.Context, request *DescribePushBandwidthAndFluxListRequest) (response *DescribePushBandwidthAndFluxListResponse, err error) {
+    if request == nil {
+        request = NewDescribePushBandwidthAndFluxListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribePushBandwidthAndFluxListResponse()
     err = c.Send(request, response)
@@ -3759,6 +6062,32 @@ func (c *Client) DescribeRecordTask(request *DescribeRecordTaskRequest) (respons
     return
 }
 
+// DescribeRecordTask
+// 查询指定时间段范围内启动和结束的录制任务列表。
+//
+// - 使用前提
+//
+// 1. 仅用于查询由 CreateRecordTask 接口创建的录制任务。
+//
+// 2. 不能查询被 DeleteRecordTask 接口删除以及已过期（平台侧保留3个月）的录制任务。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETCONFIGERROR = "InternalError.GetConfigError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRecordTaskWithContext(ctx context.Context, request *DescribeRecordTaskRequest) (response *DescribeRecordTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeRecordTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeRecordTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeScreenShotSheetNumListRequest() (request *DescribeScreenShotSheetNumListRequest) {
     request = &DescribeScreenShotSheetNumListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3795,6 +6124,26 @@ func (c *Client) DescribeScreenShotSheetNumList(request *DescribeScreenShotSheet
     return
 }
 
+// DescribeScreenShotSheetNumList
+// 接口用来查询直播增值业务--截图的张数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeScreenShotSheetNumListWithContext(ctx context.Context, request *DescribeScreenShotSheetNumListRequest) (response *DescribeScreenShotSheetNumListResponse, err error) {
+    if request == nil {
+        request = NewDescribeScreenShotSheetNumListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeScreenShotSheetNumListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeStreamDayPlayInfoListRequest() (request *DescribeStreamDayPlayInfoListRequest) {
     request = &DescribeStreamDayPlayInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3824,6 +6173,25 @@ func (c *Client) DescribeStreamDayPlayInfoList(request *DescribeStreamDayPlayInf
     if request == nil {
         request = NewDescribeStreamDayPlayInfoListRequest()
     }
+    
+    response = NewDescribeStreamDayPlayInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeStreamDayPlayInfoList
+// 查询天维度每条流的播放数据，包括总流量等。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeStreamDayPlayInfoListWithContext(ctx context.Context, request *DescribeStreamDayPlayInfoListRequest) (response *DescribeStreamDayPlayInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamDayPlayInfoListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeStreamDayPlayInfoListResponse()
     err = c.Send(request, response)
@@ -3868,6 +6236,28 @@ func (c *Client) DescribeStreamPlayInfoList(request *DescribeStreamPlayInfoListR
     return
 }
 
+// DescribeStreamPlayInfoList
+// 查询播放数据，支持按流名称查询详细播放数据，也可按播放域名查询详细总数据，数据延迟4分钟左右。
+//
+// 注意：按AppName查询请先联系工单申请，开通后配置生效预计需要5个工作日左右，具体时间以最终回复为准。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeStreamPlayInfoListWithContext(ctx context.Context, request *DescribeStreamPlayInfoListRequest) (response *DescribeStreamPlayInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamPlayInfoListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeStreamPlayInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeStreamPushInfoListRequest() (request *DescribeStreamPushInfoListRequest) {
     request = &DescribeStreamPushInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3896,6 +6286,24 @@ func (c *Client) DescribeStreamPushInfoList(request *DescribeStreamPushInfoListR
     if request == nil {
         request = NewDescribeStreamPushInfoListRequest()
     }
+    
+    response = NewDescribeStreamPushInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeStreamPushInfoList
+// 查询流id的上行推流质量数据，包括音视频的帧率，码率，流逝时间，编码格式等。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeStreamPushInfoListWithContext(ctx context.Context, request *DescribeStreamPushInfoListRequest) (response *DescribeStreamPushInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamPushInfoListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeStreamPushInfoListResponse()
     err = c.Send(request, response)
@@ -3936,6 +6344,24 @@ func (c *Client) DescribeTopClientIpSumInfoList(request *DescribeTopClientIpSumI
     return
 }
 
+// DescribeTopClientIpSumInfoList
+// 查询某段时间top n客户端ip汇总信息（暂支持top 1000）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeTopClientIpSumInfoListWithContext(ctx context.Context, request *DescribeTopClientIpSumInfoListRequest) (response *DescribeTopClientIpSumInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopClientIpSumInfoListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeTopClientIpSumInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUploadStreamNumsRequest() (request *DescribeUploadStreamNumsRequest) {
     request = &DescribeUploadStreamNumsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3964,6 +6390,24 @@ func (c *Client) DescribeUploadStreamNums(request *DescribeUploadStreamNumsReque
     if request == nil {
         request = NewDescribeUploadStreamNumsRequest()
     }
+    
+    response = NewDescribeUploadStreamNumsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeUploadStreamNums
+// 直播上行路数查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeUploadStreamNumsWithContext(ctx context.Context, request *DescribeUploadStreamNumsRequest) (response *DescribeUploadStreamNumsResponse, err error) {
+    if request == nil {
+        request = NewDescribeUploadStreamNumsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeUploadStreamNumsResponse()
     err = c.Send(request, response)
@@ -3999,6 +6443,25 @@ func (c *Client) DescribeVisitTopSumInfoList(request *DescribeVisitTopSumInfoLis
     if request == nil {
         request = NewDescribeVisitTopSumInfoListRequest()
     }
+    
+    response = NewDescribeVisitTopSumInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeVisitTopSumInfoList
+// 查询某时间段top n的域名或流id信息（暂支持top 1000）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeVisitTopSumInfoListWithContext(ctx context.Context, request *DescribeVisitTopSumInfoListRequest) (response *DescribeVisitTopSumInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeVisitTopSumInfoListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeVisitTopSumInfoListResponse()
     err = c.Send(request, response)
@@ -4052,6 +6515,37 @@ func (c *Client) DropLiveStream(request *DropLiveStreamRequest) (response *DropL
     return
 }
 
+// DropLiveStream
+// 断开推流连接，但可以重新推流。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLOTHERSVRERROR = "InternalError.CallOtherSvrError"
+//  INTERNALERROR_CONFIGNOTEXIST = "InternalError.ConfigNotExist"
+//  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
+//  INTERNALERROR_GETSTREAMINFOERROR = "InternalError.GetStreamInfoError"
+//  INTERNALERROR_GETUPSTREAMINFOERROR = "InternalError.GetUpstreamInfoError"
+//  INTERNALERROR_NOTPERMMITOPERAT = "InternalError.NotPermmitOperat"
+//  INTERNALERROR_STREAMSTATUSERROR = "InternalError.StreamStatusError"
+//  INTERNALERROR_UPDATEDATAERROR = "InternalError.UpdateDataError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_STREAMNOTALIVE = "ResourceNotFound.StreamNotAlive"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DropLiveStreamWithContext(ctx context.Context, request *DropLiveStreamRequest) (response *DropLiveStreamResponse, err error) {
+    if request == nil {
+        request = NewDropLiveStreamRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDropLiveStreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEnableLiveDomainRequest() (request *EnableLiveDomainRequest) {
     request = &EnableLiveDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4091,6 +6585,29 @@ func (c *Client) EnableLiveDomain(request *EnableLiveDomainRequest) (response *E
     return
 }
 
+// EnableLiveDomain
+// 启用状态为停用的直播域名。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SDKNOPACKAGE = "FailedOperation.SdkNoPackage"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_CLOUDDOMAINISSTOP = "InvalidParameter.CloudDomainIsStop"
+//  INVALIDPARAMETER_DOMAINHITBLACKLIST = "InvalidParameter.DomainHitBlackList"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_INVALIDUSER = "ResourceNotFound.InvalidUser"
+func (c *Client) EnableLiveDomainWithContext(ctx context.Context, request *EnableLiveDomainRequest) (response *EnableLiveDomainResponse, err error) {
+    if request == nil {
+        request = NewEnableLiveDomainRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewEnableLiveDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewForbidLiveDomainRequest() (request *ForbidLiveDomainRequest) {
     request = &ForbidLiveDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4120,6 +6637,25 @@ func (c *Client) ForbidLiveDomain(request *ForbidLiveDomainRequest) (response *F
     if request == nil {
         request = NewForbidLiveDomainRequest()
     }
+    
+    response = NewForbidLiveDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ForbidLiveDomain
+// 停止使用某个直播域名。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ForbidLiveDomainWithContext(ctx context.Context, request *ForbidLiveDomainRequest) (response *ForbidLiveDomainResponse, err error) {
+    if request == nil {
+        request = NewForbidLiveDomainRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewForbidLiveDomainResponse()
     err = c.Send(request, response)
@@ -4166,6 +6702,36 @@ func (c *Client) ForbidLiveStream(request *ForbidLiveStreamRequest) (response *F
     if request == nil {
         request = NewForbidLiveStreamRequest()
     }
+    
+    response = NewForbidLiveStreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ForbidLiveStream
+// 禁止某条流的推送，可以预设某个时刻将流恢复。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLOTHERSVRERROR = "InternalError.CallOtherSvrError"
+//  INTERNALERROR_CONFIGNOTEXIST = "InternalError.ConfigNotExist"
+//  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
+//  INTERNALERROR_GETSTREAMINFOERROR = "InternalError.GetStreamInfoError"
+//  INTERNALERROR_GETUPSTREAMINFOERROR = "InternalError.GetUpstreamInfoError"
+//  INTERNALERROR_NOTPERMMITOPERAT = "InternalError.NotPermmitOperat"
+//  INTERNALERROR_STREAMSTATUSERROR = "InternalError.StreamStatusError"
+//  INTERNALERROR_UPDATEDATAERROR = "InternalError.UpdateDataError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) ForbidLiveStreamWithContext(ctx context.Context, request *ForbidLiveStreamRequest) (response *ForbidLiveStreamResponse, err error) {
+    if request == nil {
+        request = NewForbidLiveStreamRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewForbidLiveStreamResponse()
     err = c.Send(request, response)
@@ -4222,6 +6788,40 @@ func (c *Client) ModifyLiveCallbackTemplate(request *ModifyLiveCallbackTemplateR
     return
 }
 
+// ModifyLiveCallbackTemplate
+// 修改回调模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFINUSED = "FailedOperation.ConfInUsed"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ARGSNOTMATCH = "InvalidParameter.ArgsNotMatch"
+//  INVALIDPARAMETER_COSCUSTOMFILENAMEERROR = "InvalidParameter.COSCustomFileNameError"
+//  INVALIDPARAMETER_INVALIDVODFILENAME = "InvalidParameter.InvalidVodFileName"
+//  INVALIDPARAMETER_URLNOTSAFE = "InvalidParameter.UrlNotSafe"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
+func (c *Client) ModifyLiveCallbackTemplateWithContext(ctx context.Context, request *ModifyLiveCallbackTemplateRequest) (response *ModifyLiveCallbackTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyLiveCallbackTemplateRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyLiveCallbackTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyLiveCertRequest() (request *ModifyLiveCertRequest) {
     request = &ModifyLiveCertRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4263,6 +6863,31 @@ func (c *Client) ModifyLiveCert(request *ModifyLiveCertRequest) (response *Modif
     return
 }
 
+// ModifyLiveCert
+// 修改证书
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CRTDATEINUSING = "InternalError.CrtDateInUsing"
+//  INTERNALERROR_CRTDATEOVERDUE = "InternalError.CrtDateOverdue"
+//  INTERNALERROR_CRTKEYNOTMATCH = "InternalError.CrtKeyNotMatch"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_CRTDATEINUSING = "InvalidParameter.CrtDateInUsing"
+//  INVALIDPARAMETER_CRTDATEOVERDUE = "InvalidParameter.CrtDateOverdue"
+//  INVALIDPARAMETER_CRTKEYNOTMATCH = "InvalidParameter.CrtKeyNotMatch"
+func (c *Client) ModifyLiveCertWithContext(ctx context.Context, request *ModifyLiveCertRequest) (response *ModifyLiveCertResponse, err error) {
+    if request == nil {
+        request = NewModifyLiveCertRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyLiveCertResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyLiveDomainCertRequest() (request *ModifyLiveDomainCertRequest) {
     request = &ModifyLiveDomainCertRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4296,6 +6921,29 @@ func (c *Client) ModifyLiveDomainCert(request *ModifyLiveDomainCertRequest) (res
     if request == nil {
         request = NewModifyLiveDomainCertRequest()
     }
+    
+    response = NewModifyLiveDomainCertResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyLiveDomainCert
+// 修改域名和证书绑定信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CRTDATENOTFOUND = "InternalError.CrtDateNotFound"
+//  INTERNALERROR_CRTDOMAINNOTFOUND = "InternalError.CrtDomainNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CRTDATENOTLEGAL = "InvalidParameter.CrtDateNotLegal"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_CRTDOMAINNOTFOUND = "ResourceNotFound.CrtDomainNotFound"
+func (c *Client) ModifyLiveDomainCertWithContext(ctx context.Context, request *ModifyLiveDomainCertRequest) (response *ModifyLiveDomainCertResponse, err error) {
+    if request == nil {
+        request = NewModifyLiveDomainCertRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyLiveDomainCertResponse()
     err = c.Send(request, response)
@@ -4343,6 +6991,31 @@ func (c *Client) ModifyLiveDomainReferer(request *ModifyLiveDomainRefererRequest
     return
 }
 
+// ModifyLiveDomainReferer
+// 设置直播域名 Referer 黑白名单。
+//
+// 由于 Referer 信息包含在 http 协议中，在开启配置后，播放协议为 rtmp 或 WebRTC 不会校验 Referer 配置，仍可正常播放。如需配置 Referer 鉴权建议使用 http-flv 或 http-hls 协议播放。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_DOMAINNOTEXIST = "InternalError.DomainNotExist"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
+func (c *Client) ModifyLiveDomainRefererWithContext(ctx context.Context, request *ModifyLiveDomainRefererRequest) (response *ModifyLiveDomainRefererResponse, err error) {
+    if request == nil {
+        request = NewModifyLiveDomainRefererRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyLiveDomainRefererResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyLivePlayAuthKeyRequest() (request *ModifyLivePlayAuthKeyRequest) {
     request = &ModifyLivePlayAuthKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4374,6 +7047,27 @@ func (c *Client) ModifyLivePlayAuthKey(request *ModifyLivePlayAuthKeyRequest) (r
     if request == nil {
         request = NewModifyLivePlayAuthKeyRequest()
     }
+    
+    response = NewModifyLivePlayAuthKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyLivePlayAuthKey
+// 修改播放鉴权key
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_PLAYDOMAINNORECORD = "InternalError.PlayDomainNoRecord"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_PLAYDOMAINNORECORD = "ResourceNotFound.PlayDomainNoRecord"
+func (c *Client) ModifyLivePlayAuthKeyWithContext(ctx context.Context, request *ModifyLivePlayAuthKeyRequest) (response *ModifyLivePlayAuthKeyResponse, err error) {
+    if request == nil {
+        request = NewModifyLivePlayAuthKeyRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyLivePlayAuthKeyResponse()
     err = c.Send(request, response)
@@ -4413,6 +7107,29 @@ func (c *Client) ModifyLivePlayDomain(request *ModifyLivePlayDomainRequest) (res
     if request == nil {
         request = NewModifyLivePlayDomainRequest()
     }
+    
+    response = NewModifyLivePlayDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyLivePlayDomain
+// 修改播放域名信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INVALIDPARAMETER_DOMAINHITBLACKLIST = "InvalidParameter.DomainHitBlackList"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DOMAINNORECORD = "ResourceNotFound.DomainNoRecord"
+//  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
+func (c *Client) ModifyLivePlayDomainWithContext(ctx context.Context, request *ModifyLivePlayDomainRequest) (response *ModifyLivePlayDomainResponse, err error) {
+    if request == nil {
+        request = NewModifyLivePlayDomainRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyLivePlayDomainResponse()
     err = c.Send(request, response)
@@ -4465,6 +7182,36 @@ func (c *Client) ModifyLivePullStreamTask(request *ModifyLivePullStreamTaskReque
     return
 }
 
+// ModifyLivePullStreamTask
+// 更新直播拉流任务。 
+//
+// 1. 不支持修改目标地址，如需推到新地址，请创建新任务。
+//
+// 2. 不支持修改拉流源类型，如需更换，请创建新任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCALLBACKURL = "InvalidParameter.InvalidCallbackUrl"
+//  INVALIDPARAMETER_INVALIDSOURCEURL = "InvalidParameter.InvalidSourceUrl"
+//  INVALIDPARAMETER_INVALIDTASKTIME = "InvalidParameter.InvalidTaskTime"
+//  INVALIDPARAMETER_INVALIDTOURL = "InvalidParameter.InvalidToUrl"
+//  INVALIDPARAMETER_TASKNOTEXIST = "InvalidParameter.TaskNotExist"
+//  INVALIDPARAMETER_TOURLNOPERMISSION = "InvalidParameter.ToUrlNoPermission"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) ModifyLivePullStreamTaskWithContext(ctx context.Context, request *ModifyLivePullStreamTaskRequest) (response *ModifyLivePullStreamTaskResponse, err error) {
+    if request == nil {
+        request = NewModifyLivePullStreamTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyLivePullStreamTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyLivePushAuthKeyRequest() (request *ModifyLivePushAuthKeyRequest) {
     request = &ModifyLivePushAuthKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4498,6 +7245,29 @@ func (c *Client) ModifyLivePushAuthKey(request *ModifyLivePushAuthKeyRequest) (r
     if request == nil {
         request = NewModifyLivePushAuthKeyRequest()
     }
+    
+    response = NewModifyLivePushAuthKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyLivePushAuthKey
+// 修改直播推流鉴权key
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_PUSHDOMAINNORECORD = "InternalError.PushDomainNoRecord"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_PUSHDOMAINNORECORD = "ResourceNotFound.PushDomainNoRecord"
+func (c *Client) ModifyLivePushAuthKeyWithContext(ctx context.Context, request *ModifyLivePushAuthKeyRequest) (response *ModifyLivePushAuthKeyResponse, err error) {
+    if request == nil {
+        request = NewModifyLivePushAuthKeyRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyLivePushAuthKeyResponse()
     err = c.Send(request, response)
@@ -4549,6 +7319,35 @@ func (c *Client) ModifyLiveRecordTemplate(request *ModifyLiveRecordTemplateReque
     return
 }
 
+// ModifyLiveRecordTemplate
+// 修改录制模板配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDVODFILENAME = "InvalidParameter.InvalidVodFileName"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyLiveRecordTemplateWithContext(ctx context.Context, request *ModifyLiveRecordTemplateRequest) (response *ModifyLiveRecordTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyLiveRecordTemplateRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyLiveRecordTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyLiveSnapshotTemplateRequest() (request *ModifyLiveSnapshotTemplateRequest) {
     request = &ModifyLiveSnapshotTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4588,6 +7387,35 @@ func (c *Client) ModifyLiveSnapshotTemplate(request *ModifyLiveSnapshotTemplateR
     if request == nil {
         request = NewModifyLiveSnapshotTemplateRequest()
     }
+    
+    response = NewModifyLiveSnapshotTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyLiveSnapshotTemplate
+// 修改截图模板配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_COSCUSTOMFILENAMEERROR = "InvalidParameter.COSCustomFileNameError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyLiveSnapshotTemplateWithContext(ctx context.Context, request *ModifyLiveSnapshotTemplateRequest) (response *ModifyLiveSnapshotTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyLiveSnapshotTemplateRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyLiveSnapshotTemplateResponse()
     err = c.Send(request, response)
@@ -4639,6 +7467,35 @@ func (c *Client) ModifyLiveTranscodeTemplate(request *ModifyLiveTranscodeTemplat
     return
 }
 
+// ModifyLiveTranscodeTemplate
+// 修改转码模板配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AITRANSCODEOPTIONFAIL = "FailedOperation.AiTranscodeOptionFail"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyLiveTranscodeTemplateWithContext(ctx context.Context, request *ModifyLiveTranscodeTemplateRequest) (response *ModifyLiveTranscodeTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyLiveTranscodeTemplateRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyLiveTranscodeTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyPullStreamConfigRequest() (request *ModifyPullStreamConfigRequest) {
     request = &ModifyPullStreamConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4679,6 +7536,30 @@ func (c *Client) ModifyPullStreamConfig(request *ModifyPullStreamConfigRequest) 
     return
 }
 
+// ModifyPullStreamConfig
+// 更新拉流配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLOTHERSVRERROR = "InternalError.CallOtherSvrError"
+//  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
+//  INTERNALERROR_INVALIDUSER = "InternalError.InvalidUser"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) ModifyPullStreamConfigWithContext(ctx context.Context, request *ModifyPullStreamConfigRequest) (response *ModifyPullStreamConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyPullStreamConfigRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyPullStreamConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyPullStreamStatusRequest() (request *ModifyPullStreamStatusRequest) {
     request = &ModifyPullStreamStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4712,6 +7593,29 @@ func (c *Client) ModifyPullStreamStatus(request *ModifyPullStreamStatusRequest) 
     if request == nil {
         request = NewModifyPullStreamStatusRequest()
     }
+    
+    response = NewModifyPullStreamStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyPullStreamStatus
+// 修改直播拉流配置的状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLOTHERSVRERROR = "InternalError.CallOtherSvrError"
+//  INTERNALERROR_INVALIDUSER = "InternalError.InvalidUser"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) ModifyPullStreamStatusWithContext(ctx context.Context, request *ModifyPullStreamStatusRequest) (response *ModifyPullStreamStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyPullStreamStatusRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyPullStreamStatusResponse()
     err = c.Send(request, response)
@@ -4771,6 +7675,43 @@ func (c *Client) ResumeDelayLiveStream(request *ResumeDelayLiveStreamRequest) (r
     return
 }
 
+// ResumeDelayLiveStream
+// 取消直播流设置的延时配置，恢复实时直播画面。
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLOTHERSVRERROR = "InternalError.CallOtherSvrError"
+//  INTERNALERROR_CONFIGNOTEXIST = "InternalError.ConfigNotExist"
+//  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
+//  INTERNALERROR_GETSTREAMINFOERROR = "InternalError.GetStreamInfoError"
+//  INTERNALERROR_GETUPSTREAMINFOERROR = "InternalError.GetUpstreamInfoError"
+//  INTERNALERROR_NOTPERMMITOPERAT = "InternalError.NotPermmitOperat"
+//  INTERNALERROR_STREAMSTATUSERROR = "InternalError.StreamStatusError"
+//  INTERNALERROR_UPDATEDATAERROR = "InternalError.UpdateDataError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ResumeDelayLiveStreamWithContext(ctx context.Context, request *ResumeDelayLiveStreamRequest) (response *ResumeDelayLiveStreamResponse, err error) {
+    if request == nil {
+        request = NewResumeDelayLiveStreamRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewResumeDelayLiveStreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResumeLiveStreamRequest() (request *ResumeLiveStreamRequest) {
     request = &ResumeLiveStreamRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4817,6 +7758,36 @@ func (c *Client) ResumeLiveStream(request *ResumeLiveStreamRequest) (response *R
     return
 }
 
+// ResumeLiveStream
+// 恢复某条流的推流。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLOTHERSVRERROR = "InternalError.CallOtherSvrError"
+//  INTERNALERROR_CONFIGNOTEXIST = "InternalError.ConfigNotExist"
+//  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
+//  INTERNALERROR_GETSTREAMINFOERROR = "InternalError.GetStreamInfoError"
+//  INTERNALERROR_GETUPSTREAMINFOERROR = "InternalError.GetUpstreamInfoError"
+//  INTERNALERROR_NOTPERMMITOPERAT = "InternalError.NotPermmitOperat"
+//  INTERNALERROR_STREAMSTATUSERROR = "InternalError.StreamStatusError"
+//  INTERNALERROR_UPDATEDATAERROR = "InternalError.UpdateDataError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) ResumeLiveStreamWithContext(ctx context.Context, request *ResumeLiveStreamRequest) (response *ResumeLiveStreamResponse, err error) {
+    if request == nil {
+        request = NewResumeLiveStreamRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewResumeLiveStreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopLiveRecordRequest() (request *StopLiveRecordRequest) {
     request = &StopLiveRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4850,6 +7821,29 @@ func (c *Client) StopLiveRecord(request *StopLiveRecordRequest) (response *StopL
     if request == nil {
         request = NewStopLiveRecordRequest()
     }
+    
+    response = NewStopLiveRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// StopLiveRecord
+// 说明：录制后的文件存放于点播平台。用户如需使用录制功能，需首先自行开通点播账号并确保账号可用。录制文件存放后，相关费用（含存储以及下行播放流量）按照点播平台计费方式收取，请参考对应文档。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETCONFIGERROR = "InternalError.GetConfigError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_CHANNELNOTEXIST = "ResourceNotFound.ChannelNotExist"
+//  RESOURCENOTFOUND_TASKID = "ResourceNotFound.TaskId"
+func (c *Client) StopLiveRecordWithContext(ctx context.Context, request *StopLiveRecordRequest) (response *StopLiveRecordResponse, err error) {
+    if request == nil {
+        request = NewStopLiveRecordRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewStopLiveRecordResponse()
     err = c.Send(request, response)
@@ -4894,6 +7888,28 @@ func (c *Client) StopRecordTask(request *StopRecordTaskRequest) (response *StopR
     return
 }
 
+// StopRecordTask
+// 提前结束录制，中止运行中的录制任务并生成录制文件。任务被成功终止后，本次任务将不再启动。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETCONFIGERROR = "InternalError.GetConfigError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE_INVALIDVODSTATUS = "ResourceUnavailable.InvalidVodStatus"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) StopRecordTaskWithContext(ctx context.Context, request *StopRecordTaskRequest) (response *StopRecordTaskResponse, err error) {
+    if request == nil {
+        request = NewStopRecordTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewStopRecordTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUnBindLiveDomainCertRequest() (request *UnBindLiveDomainCertRequest) {
     request = &UnBindLiveDomainCertRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4923,6 +7939,25 @@ func (c *Client) UnBindLiveDomainCert(request *UnBindLiveDomainCertRequest) (res
     if request == nil {
         request = NewUnBindLiveDomainCertRequest()
     }
+    
+    response = NewUnBindLiveDomainCertResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UnBindLiveDomainCert
+// 解绑域名证书
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) UnBindLiveDomainCertWithContext(ctx context.Context, request *UnBindLiveDomainCertRequest) (response *UnBindLiveDomainCertResponse, err error) {
+    if request == nil {
+        request = NewUnBindLiveDomainCertRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUnBindLiveDomainCertResponse()
     err = c.Send(request, response)
@@ -4960,6 +7995,27 @@ func (c *Client) UpdateLiveWatermark(request *UpdateLiveWatermarkRequest) (respo
     if request == nil {
         request = NewUpdateLiveWatermarkRequest()
     }
+    
+    response = NewUpdateLiveWatermarkResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UpdateLiveWatermark
+// 更新水印。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
+//  INTERNALERROR_WATERMARKEDITERROR = "InternalError.WatermarkEditError"
+//  INTERNALERROR_WATERMARKNOTEXIST = "InternalError.WatermarkNotExist"
+//  RESOURCENOTFOUND_WATERMARKNOTEXIST = "ResourceNotFound.WatermarkNotExist"
+func (c *Client) UpdateLiveWatermarkWithContext(ctx context.Context, request *UpdateLiveWatermarkRequest) (response *UpdateLiveWatermarkResponse, err error) {
+    if request == nil {
+        request = NewUpdateLiveWatermarkRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUpdateLiveWatermarkResponse()
     err = c.Send(request, response)

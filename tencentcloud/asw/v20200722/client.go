@@ -15,6 +15,7 @@
 package v20200722
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -78,6 +79,25 @@ func (c *Client) CreateFlowService(request *CreateFlowServiceRequest) (response 
     return
 }
 
+// CreateFlowService
+// 该接口用于生成状态机服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateFlowServiceWithContext(ctx context.Context, request *CreateFlowServiceRequest) (response *CreateFlowServiceResponse, err error) {
+    if request == nil {
+        request = NewCreateFlowServiceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateFlowServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeExecutionRequest() (request *DescribeExecutionRequest) {
     request = &DescribeExecutionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -107,6 +127,25 @@ func (c *Client) DescribeExecution(request *DescribeExecutionRequest) (response 
     if request == nil {
         request = NewDescribeExecutionRequest()
     }
+    
+    response = NewDescribeExecutionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeExecution
+// 查询执行详细信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeExecutionWithContext(ctx context.Context, request *DescribeExecutionRequest) (response *DescribeExecutionResponse, err error) {
+    if request == nil {
+        request = NewDescribeExecutionRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeExecutionResponse()
     err = c.Send(request, response)
@@ -148,6 +187,25 @@ func (c *Client) DescribeExecutionHistory(request *DescribeExecutionHistoryReque
     return
 }
 
+// DescribeExecutionHistory
+// 一次执行会有很多步骤，经过很多节点，这个接口描述某一次执行的事件的历史
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeExecutionHistoryWithContext(ctx context.Context, request *DescribeExecutionHistoryRequest) (response *DescribeExecutionHistoryResponse, err error) {
+    if request == nil {
+        request = NewDescribeExecutionHistoryRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeExecutionHistoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeExecutionsRequest() (request *DescribeExecutionsRequest) {
     request = &DescribeExecutionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -176,6 +234,24 @@ func (c *Client) DescribeExecutions(request *DescribeExecutionsRequest) (respons
     if request == nil {
         request = NewDescribeExecutionsRequest()
     }
+    
+    response = NewDescribeExecutionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeExecutions
+// 对状态机的执行历史进行描述.
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeExecutionsWithContext(ctx context.Context, request *DescribeExecutionsRequest) (response *DescribeExecutionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeExecutionsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeExecutionsResponse()
     err = c.Send(request, response)
@@ -218,6 +294,26 @@ func (c *Client) DescribeFlowServiceDetail(request *DescribeFlowServiceDetailReq
     return
 }
 
+// DescribeFlowServiceDetail
+// 查询该用户指定状态机下的详情数据。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeFlowServiceDetailWithContext(ctx context.Context, request *DescribeFlowServiceDetailRequest) (response *DescribeFlowServiceDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeFlowServiceDetailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeFlowServiceDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFlowServicesRequest() (request *DescribeFlowServicesRequest) {
     request = &DescribeFlowServicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -247,6 +343,25 @@ func (c *Client) DescribeFlowServices(request *DescribeFlowServicesRequest) (res
     if request == nil {
         request = NewDescribeFlowServicesRequest()
     }
+    
+    response = NewDescribeFlowServicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeFlowServices
+// 查询指定用户下所有状态机，以列表形式返回
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeFlowServicesWithContext(ctx context.Context, request *DescribeFlowServicesRequest) (response *DescribeFlowServicesResponse, err error) {
+    if request == nil {
+        request = NewDescribeFlowServicesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeFlowServicesResponse()
     err = c.Send(request, response)
@@ -288,6 +403,25 @@ func (c *Client) ModifyFlowService(request *ModifyFlowServiceRequest) (response 
     return
 }
 
+// ModifyFlowService
+// 该接口用于修改状态机
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyFlowServiceWithContext(ctx context.Context, request *ModifyFlowServiceRequest) (response *ModifyFlowServiceResponse, err error) {
+    if request == nil {
+        request = NewModifyFlowServiceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyFlowServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStartExecutionRequest() (request *StartExecutionRequest) {
     request = &StartExecutionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -323,6 +457,25 @@ func (c *Client) StartExecution(request *StartExecutionRequest) (response *Start
     return
 }
 
+// StartExecution
+// 为指定的状态机启动一次执行
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) StartExecutionWithContext(ctx context.Context, request *StartExecutionRequest) (response *StartExecutionResponse, err error) {
+    if request == nil {
+        request = NewStartExecutionRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewStartExecutionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopExecutionRequest() (request *StopExecutionRequest) {
     request = &StopExecutionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -350,6 +503,23 @@ func (c *Client) StopExecution(request *StopExecutionRequest) (response *StopExe
     if request == nil {
         request = NewStopExecutionRequest()
     }
+    
+    response = NewStopExecutionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// StopExecution
+// 终止某个状态机
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) StopExecutionWithContext(ctx context.Context, request *StopExecutionRequest) (response *StopExecutionResponse, err error) {
+    if request == nil {
+        request = NewStopExecutionRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewStopExecutionResponse()
     err = c.Send(request, response)

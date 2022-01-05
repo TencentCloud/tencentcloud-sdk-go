@@ -15,6 +15,7 @@
 package v20191112
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -78,6 +79,25 @@ func (c *Client) DescribeHSMBySubnetId(request *DescribeHSMBySubnetIdRequest) (r
     return
 }
 
+// DescribeHSMBySubnetId
+// 通过SubnetId获取Hsm资源数
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeHSMBySubnetIdWithContext(ctx context.Context, request *DescribeHSMBySubnetIdRequest) (response *DescribeHSMBySubnetIdResponse, err error) {
+    if request == nil {
+        request = NewDescribeHSMBySubnetIdRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeHSMBySubnetIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeHSMByVpcIdRequest() (request *DescribeHSMByVpcIdRequest) {
     request = &DescribeHSMByVpcIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -107,6 +127,25 @@ func (c *Client) DescribeHSMByVpcId(request *DescribeHSMByVpcIdRequest) (respons
     if request == nil {
         request = NewDescribeHSMByVpcIdRequest()
     }
+    
+    response = NewDescribeHSMByVpcIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeHSMByVpcId
+// 通过VpcId获取Hsm资源数
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeHSMByVpcIdWithContext(ctx context.Context, request *DescribeHSMByVpcIdRequest) (response *DescribeHSMByVpcIdResponse, err error) {
+    if request == nil {
+        request = NewDescribeHSMByVpcIdRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeHSMByVpcIdResponse()
     err = c.Send(request, response)
@@ -148,6 +187,25 @@ func (c *Client) DescribeSubnet(request *DescribeSubnetRequest) (response *Descr
     return
 }
 
+// DescribeSubnet
+// 查询子网列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeSubnetWithContext(ctx context.Context, request *DescribeSubnetRequest) (response *DescribeSubnetResponse, err error) {
+    if request == nil {
+        request = NewDescribeSubnetRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeSubnetResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSupportedHsmRequest() (request *DescribeSupportedHsmRequest) {
     request = &DescribeSupportedHsmRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -176,6 +234,24 @@ func (c *Client) DescribeSupportedHsm(request *DescribeSupportedHsmRequest) (res
     if request == nil {
         request = NewDescribeSupportedHsmRequest()
     }
+    
+    response = NewDescribeSupportedHsmResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeSupportedHsm
+// 获取当前地域所支持的设备列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeSupportedHsmWithContext(ctx context.Context, request *DescribeSupportedHsmRequest) (response *DescribeSupportedHsmResponse, err error) {
+    if request == nil {
+        request = NewDescribeSupportedHsmRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeSupportedHsmResponse()
     err = c.Send(request, response)
@@ -217,6 +293,25 @@ func (c *Client) DescribeUsg(request *DescribeUsgRequest) (response *DescribeUsg
     return
 }
 
+// DescribeUsg
+// 根据用户的AppId获取用户安全组列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeUsgWithContext(ctx context.Context, request *DescribeUsgRequest) (response *DescribeUsgResponse, err error) {
+    if request == nil {
+        request = NewDescribeUsgRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeUsgResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUsgRuleRequest() (request *DescribeUsgRuleRequest) {
     request = &DescribeUsgRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -246,6 +341,25 @@ func (c *Client) DescribeUsgRule(request *DescribeUsgRuleRequest) (response *Des
     if request == nil {
         request = NewDescribeUsgRuleRequest()
     }
+    
+    response = NewDescribeUsgRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeUsgRule
+// 获取安全组详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeUsgRuleWithContext(ctx context.Context, request *DescribeUsgRuleRequest) (response *DescribeUsgRuleResponse, err error) {
+    if request == nil {
+        request = NewDescribeUsgRuleRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeUsgRuleResponse()
     err = c.Send(request, response)
@@ -287,6 +401,25 @@ func (c *Client) DescribeVpc(request *DescribeVpcRequest) (response *DescribeVpc
     return
 }
 
+// DescribeVpc
+// 查询用户的私有网络列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeVpcWithContext(ctx context.Context, request *DescribeVpcRequest) (response *DescribeVpcResponse, err error) {
+    if request == nil {
+        request = NewDescribeVpcRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeVpcResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVsmAttributesRequest() (request *DescribeVsmAttributesRequest) {
     request = &DescribeVsmAttributesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -316,6 +449,25 @@ func (c *Client) DescribeVsmAttributes(request *DescribeVsmAttributesRequest) (r
     if request == nil {
         request = NewDescribeVsmAttributesRequest()
     }
+    
+    response = NewDescribeVsmAttributesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeVsmAttributes
+// 获取VSM属性
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeVsmAttributesWithContext(ctx context.Context, request *DescribeVsmAttributesRequest) (response *DescribeVsmAttributesResponse, err error) {
+    if request == nil {
+        request = NewDescribeVsmAttributesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeVsmAttributesResponse()
     err = c.Send(request, response)
@@ -357,6 +509,25 @@ func (c *Client) DescribeVsms(request *DescribeVsmsRequest) (response *DescribeV
     return
 }
 
+// DescribeVsms
+// 获取用户VSM列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeVsmsWithContext(ctx context.Context, request *DescribeVsmsRequest) (response *DescribeVsmsResponse, err error) {
+    if request == nil {
+        request = NewDescribeVsmsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeVsmsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInquiryPriceBuyVsmRequest() (request *InquiryPriceBuyVsmRequest) {
     request = &InquiryPriceBuyVsmRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -392,6 +563,25 @@ func (c *Client) InquiryPriceBuyVsm(request *InquiryPriceBuyVsmRequest) (respons
     return
 }
 
+// InquiryPriceBuyVsm
+// 购买询价接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) InquiryPriceBuyVsmWithContext(ctx context.Context, request *InquiryPriceBuyVsmRequest) (response *InquiryPriceBuyVsmResponse, err error) {
+    if request == nil {
+        request = NewInquiryPriceBuyVsmRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewInquiryPriceBuyVsmResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyVsmAttributesRequest() (request *ModifyVsmAttributesRequest) {
     request = &ModifyVsmAttributesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -421,6 +611,25 @@ func (c *Client) ModifyVsmAttributes(request *ModifyVsmAttributesRequest) (respo
     if request == nil {
         request = NewModifyVsmAttributesRequest()
     }
+    
+    response = NewModifyVsmAttributesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyVsmAttributes
+// 修改VSM属性
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyVsmAttributesWithContext(ctx context.Context, request *ModifyVsmAttributesRequest) (response *ModifyVsmAttributesResponse, err error) {
+    if request == nil {
+        request = NewModifyVsmAttributesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyVsmAttributesResponse()
     err = c.Send(request, response)

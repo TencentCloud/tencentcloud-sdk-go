@@ -15,6 +15,7 @@
 package v20181127
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -75,6 +76,22 @@ func (c *Client) DescribeVideoTask(request *DescribeVideoTaskRequest) (response 
     return
 }
 
+// DescribeVideoTask
+// 提交完视频审核任务后，可以通过本接口来获取当前处理的进度和结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+func (c *Client) DescribeVideoTaskWithContext(ctx context.Context, request *DescribeVideoTaskRequest) (response *DescribeVideoTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeVideoTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeVideoTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewImageModerationRequest() (request *ImageModerationRequest) {
     request = &ImageModerationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -113,6 +130,28 @@ func (c *Client) ImageModeration(request *ImageModerationRequest) (response *Ima
     return
 }
 
+// ImageModeration
+// 本接口提供多种维度的图像审核能力，支持色情和性感内容识别，政治人物和涉政敏感场景识别，以及暴恐人物、场景、旗帜标识等违禁内容的识别。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_INVOKECHARGEERROR = "FailedOperation.InvokeChargeError"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) ImageModerationWithContext(ctx context.Context, request *ImageModerationRequest) (response *ImageModerationResponse, err error) {
+    if request == nil {
+        request = NewImageModerationRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewImageModerationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewVideoModerationRequest() (request *VideoModerationRequest) {
     request = &VideoModerationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -140,6 +179,23 @@ func (c *Client) VideoModeration(request *VideoModerationRequest) (response *Vid
     if request == nil {
         request = NewVideoModerationRequest()
     }
+    
+    response = NewVideoModerationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// VideoModeration
+// 本接口提供多种维度的视频审核能力，支持色情和性感内容识别，政治人物和涉政敏感场景识别，以及暴恐人物、场景、旗帜标识等违禁内容的识别。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+func (c *Client) VideoModerationWithContext(ctx context.Context, request *VideoModerationRequest) (response *VideoModerationResponse, err error) {
+    if request == nil {
+        request = NewVideoModerationRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewVideoModerationResponse()
     err = c.Send(request, response)

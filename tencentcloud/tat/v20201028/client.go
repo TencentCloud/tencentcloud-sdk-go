@@ -15,6 +15,7 @@
 package v20201028
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -94,6 +95,41 @@ func (c *Client) CancelInvocation(request *CancelInvocationRequest) (response *C
     return
 }
 
+// CancelInvocation
+// 取消一台或多台CVM实例执行的命令
+//
+// 
+//
+// * 如果命令还未下发到agent，任务状态处于处于PENDING、DELIVERING、DELIVER_DELAYED，取消后任务状态是CANCELLED
+//
+// * 如果命令已下发到agent，任务状态处于RUNNING， 取消后任务状态是TERMINATED
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCEISNOTRELATEDTOINVOCATION = "InvalidParameterValue.InstanceIsNotRelatedToInvocation"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_INVOCATIONNOTFOUND = "ResourceNotFound.InvocationNotFound"
+//  UNAUTHORIZEDOPERATION_CAMAUTHFAILED = "UnauthorizedOperation.CamAuthFailed"
+//  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CancelInvocationWithContext(ctx context.Context, request *CancelInvocationRequest) (response *CancelInvocationResponse, err error) {
+    if request == nil {
+        request = NewCancelInvocationRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCancelInvocationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCommandRequest() (request *CreateCommandRequest) {
     request = &CreateCommandRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -150,6 +186,46 @@ func (c *Client) CreateCommand(request *CreateCommandRequest) (response *CreateC
     return
 }
 
+// CreateCommand
+// 此接口用于创建命令。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_COMMANDCONTENTINVALID = "InvalidParameterValue.CommandContentInvalid"
+//  INVALIDPARAMETERVALUE_COMMANDNAMEDUPLICATED = "InvalidParameterValue.CommandNameDuplicated"
+//  INVALIDPARAMETERVALUE_INVALIDCOMMANDNAME = "InvalidParameterValue.InvalidCommandName"
+//  INVALIDPARAMETERVALUE_INVALIDCONTENT = "InvalidParameterValue.InvalidContent"
+//  INVALIDPARAMETERVALUE_INVALIDOUTPUTCOSBUCKETURL = "InvalidParameterValue.InvalidOutputCOSBucketUrl"
+//  INVALIDPARAMETERVALUE_INVALIDOUTPUTCOSKEYPREFIX = "InvalidParameterValue.InvalidOutputCOSKeyPrefix"
+//  INVALIDPARAMETERVALUE_INVALIDWORKINGDIRECTORY = "InvalidParameterValue.InvalidWorkingDirectory"
+//  INVALIDPARAMETERVALUE_PARAMETERDISABLED = "InvalidParameterValue.ParameterDisabled"
+//  INVALIDPARAMETERVALUE_PARAMETERINVALIDJSONFORMAT = "InvalidParameterValue.ParameterInvalidJsonFormat"
+//  INVALIDPARAMETERVALUE_PARAMETERKEYCONTAINSINVALIDCHAR = "InvalidParameterValue.ParameterKeyContainsInvalidChar"
+//  INVALIDPARAMETERVALUE_PARAMETERKEYDUPLICATED = "InvalidParameterValue.ParameterKeyDuplicated"
+//  INVALIDPARAMETERVALUE_PARAMETERKEYLENEXCEEDED = "InvalidParameterValue.ParameterKeyLenExceeded"
+//  INVALIDPARAMETERVALUE_PARAMETERNUMBEREXCEEDED = "InvalidParameterValue.ParameterNumberExceeded"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUENOTSTRING = "InvalidParameterValue.ParameterValueNotString"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_SUPPORTPARAMETERSONLYIFENABLEPARAMETER = "InvalidParameterValue.SupportParametersOnlyIfEnableParameter"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_CAMAUTHFAILED = "UnauthorizedOperation.CamAuthFailed"
+//  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+func (c *Client) CreateCommandWithContext(ctx context.Context, request *CreateCommandRequest) (response *CreateCommandResponse, err error) {
+    if request == nil {
+        request = NewCreateCommandRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateCommandResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateInvokerRequest() (request *CreateInvokerRequest) {
     request = &CreateInvokerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -184,6 +260,30 @@ func (c *Client) CreateInvoker(request *CreateInvokerRequest) (response *CreateI
     if request == nil {
         request = NewCreateInvokerRequest()
     }
+    
+    response = NewCreateInvokerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateInvoker
+// 此接口用于创建执行器。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDCOMMANDID = "InvalidParameterValue.InvalidCommandId"
+//  INVALIDPARAMETERVALUE_INVALIDCRONEXPRESSION = "InvalidParameterValue.InvalidCronExpression"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
+//  INVALIDPARAMETERVALUE_PARAMETERINVALIDJSONFORMAT = "InvalidParameterValue.ParameterInvalidJsonFormat"
+//  RESOURCENOTFOUND_COMMANDNOTFOUND = "ResourceNotFound.CommandNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) CreateInvokerWithContext(ctx context.Context, request *CreateInvokerRequest) (response *CreateInvokerResponse, err error) {
+    if request == nil {
+        request = NewCreateInvokerRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateInvokerResponse()
     err = c.Send(request, response)
@@ -233,6 +333,33 @@ func (c *Client) DeleteCommand(request *DeleteCommandRequest) (response *DeleteC
     return
 }
 
+// DeleteCommand
+// 此接口用于删除命令。
+//
+// 如果命令与执行器关联，则无法被删除。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDCOMMANDID = "InvalidParameterValue.InvalidCommandId"
+//  RESOURCENOTFOUND_COMMANDNOTFOUND = "ResourceNotFound.CommandNotFound"
+//  RESOURCEUNAVAILABLE_COMMANDINEXECUTING = "ResourceUnavailable.CommandInExecuting"
+//  RESOURCEUNAVAILABLE_COMMANDININVOKER = "ResourceUnavailable.CommandInInvoker"
+//  UNAUTHORIZEDOPERATION_CAMAUTHFAILED = "UnauthorizedOperation.CamAuthFailed"
+//  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+func (c *Client) DeleteCommandWithContext(ctx context.Context, request *DeleteCommandRequest) (response *DeleteCommandResponse, err error) {
+    if request == nil {
+        request = NewDeleteCommandRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteCommandResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteInvokerRequest() (request *DeleteInvokerRequest) {
     request = &DeleteInvokerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -260,6 +387,23 @@ func (c *Client) DeleteInvoker(request *DeleteInvokerRequest) (response *DeleteI
     if request == nil {
         request = NewDeleteInvokerRequest()
     }
+    
+    response = NewDeleteInvokerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteInvoker
+// 此接口用于删除执行器。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteInvokerWithContext(ctx context.Context, request *DeleteInvokerRequest) (response *DeleteInvokerResponse, err error) {
+    if request == nil {
+        request = NewDeleteInvokerRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteInvokerResponse()
     err = c.Send(request, response)
@@ -308,6 +452,32 @@ func (c *Client) DescribeAutomationAgentStatus(request *DescribeAutomationAgentS
     return
 }
 
+// DescribeAutomationAgentStatus
+// 此接口用于查询自动化助手客户端的状态。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONFLICTPARAMETER = "InvalidParameter.ConflictParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  UNAUTHORIZEDOPERATION_CAMAUTHFAILED = "UnauthorizedOperation.CamAuthFailed"
+//  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+func (c *Client) DescribeAutomationAgentStatusWithContext(ctx context.Context, request *DescribeAutomationAgentStatusRequest) (response *DescribeAutomationAgentStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeAutomationAgentStatusRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAutomationAgentStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCommandsRequest() (request *DescribeCommandsRequest) {
     request = &DescribeCommandsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -343,6 +513,31 @@ func (c *Client) DescribeCommands(request *DescribeCommandsRequest) (response *D
     if request == nil {
         request = NewDescribeCommandsRequest()
     }
+    
+    response = NewDescribeCommandsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCommands
+// 此接口用于查询命令详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONFLICTPARAMETER = "InvalidParameter.ConflictParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDCOMMANDID = "InvalidParameterValue.InvalidCommandId"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  UNAUTHORIZEDOPERATION_CAMAUTHFAILED = "UnauthorizedOperation.CamAuthFailed"
+//  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+func (c *Client) DescribeCommandsWithContext(ctx context.Context, request *DescribeCommandsRequest) (response *DescribeCommandsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCommandsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeCommandsResponse()
     err = c.Send(request, response)
@@ -391,6 +586,32 @@ func (c *Client) DescribeInvocationTasks(request *DescribeInvocationTasksRequest
     return
 }
 
+// DescribeInvocationTasks
+// 此接口用于查询执行任务详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONFLICTPARAMETER = "InvalidParameter.ConflictParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDINVOCATIONID = "InvalidParameterValue.InvalidInvocationId"
+//  INVALIDPARAMETERVALUE_INVALIDINVOCATIONTASKID = "InvalidParameterValue.InvalidInvocationTaskId"
+//  UNAUTHORIZEDOPERATION_CAMAUTHFAILED = "UnauthorizedOperation.CamAuthFailed"
+//  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+func (c *Client) DescribeInvocationTasksWithContext(ctx context.Context, request *DescribeInvocationTasksRequest) (response *DescribeInvocationTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeInvocationTasksRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeInvocationTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInvocationsRequest() (request *DescribeInvocationsRequest) {
     request = &DescribeInvocationsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -432,6 +653,31 @@ func (c *Client) DescribeInvocations(request *DescribeInvocationsRequest) (respo
     return
 }
 
+// DescribeInvocations
+// 此接口用于查询执行活动详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONFLICTPARAMETER = "InvalidParameter.ConflictParameter"
+//  INVALIDPARAMETERVALUE_INVALIDCOMMANDID = "InvalidParameterValue.InvalidCommandId"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDINVOCATIONID = "InvalidParameterValue.InvalidInvocationId"
+//  UNAUTHORIZEDOPERATION_CAMAUTHFAILED = "UnauthorizedOperation.CamAuthFailed"
+//  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+func (c *Client) DescribeInvocationsWithContext(ctx context.Context, request *DescribeInvocationsRequest) (response *DescribeInvocationsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInvocationsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeInvocationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInvokerRecordsRequest() (request *DescribeInvokerRecordsRequest) {
     request = &DescribeInvokerRecordsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -465,6 +711,23 @@ func (c *Client) DescribeInvokerRecords(request *DescribeInvokerRecordsRequest) 
     return
 }
 
+// DescribeInvokerRecords
+// 此接口用于查询执行器的执行记录。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeInvokerRecordsWithContext(ctx context.Context, request *DescribeInvokerRecordsRequest) (response *DescribeInvokerRecordsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInvokerRecordsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeInvokerRecordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInvokersRequest() (request *DescribeInvokersRequest) {
     request = &DescribeInvokersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -490,10 +753,31 @@ func NewDescribeInvokersResponse() (response *DescribeInvokersResponse) {
 //  INVALIDPARAMETER_CONFLICTPARAMETER = "InvalidParameter.ConflictParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDINVOKERID = "InvalidParameterValue.InvalidInvokerId"
 func (c *Client) DescribeInvokers(request *DescribeInvokersRequest) (response *DescribeInvokersResponse, err error) {
     if request == nil {
         request = NewDescribeInvokersRequest()
     }
+    
+    response = NewDescribeInvokersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeInvokers
+// 此接口用于查询执行器信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER_CONFLICTPARAMETER = "InvalidParameter.ConflictParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDINVOKERID = "InvalidParameterValue.InvalidInvokerId"
+func (c *Client) DescribeInvokersWithContext(ctx context.Context, request *DescribeInvokersRequest) (response *DescribeInvokersResponse, err error) {
+    if request == nil {
+        request = NewDescribeInvokersRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeInvokersResponse()
     err = c.Send(request, response)
@@ -538,6 +822,28 @@ func (c *Client) DescribeRegions(request *DescribeRegionsRequest) (response *Des
     return
 }
 
+// DescribeRegions
+// 此接口用于查询 TAT 产品后台地域列表。
+//
+// RegionState 为 AVAILABLE，代表该地域的 TAT 后台服务已经可用；未返回，代表该地域的 TAT 后台服务尚不可用。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNAUTHORIZEDOPERATION_CAMAUTHFAILED = "UnauthorizedOperation.CamAuthFailed"
+//  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *DescribeRegionsRequest) (response *DescribeRegionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRegionsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeRegionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisableInvokerRequest() (request *DisableInvokerRequest) {
     request = &DisableInvokerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -565,6 +871,23 @@ func (c *Client) DisableInvoker(request *DisableInvokerRequest) (response *Disab
     if request == nil {
         request = NewDisableInvokerRequest()
     }
+    
+    response = NewDisableInvokerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DisableInvoker
+// 此接口用于停止执行器。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DisableInvokerWithContext(ctx context.Context, request *DisableInvokerRequest) (response *DisableInvokerResponse, err error) {
+    if request == nil {
+        request = NewDisableInvokerRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDisableInvokerResponse()
     err = c.Send(request, response)
@@ -599,6 +922,24 @@ func (c *Client) EnableInvoker(request *EnableInvokerRequest) (response *EnableI
     if request == nil {
         request = NewEnableInvokerRequest()
     }
+    
+    response = NewEnableInvokerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// EnableInvoker
+// 此接口用于启用执行器。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETERVALUE_INVALIDINVOKERID = "InvalidParameterValue.InvalidInvokerId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) EnableInvokerWithContext(ctx context.Context, request *EnableInvokerRequest) (response *EnableInvokerResponse, err error) {
+    if request == nil {
+        request = NewEnableInvokerRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewEnableInvokerResponse()
     err = c.Send(request, response)
@@ -677,6 +1018,62 @@ func (c *Client) InvokeCommand(request *InvokeCommandRequest) (response *InvokeC
     return
 }
 
+// InvokeCommand
+// 在指定的实例上触发命令，调用成功返回执行活动ID（inv-xxxxxxxx），每个执行活动内部有一个或多个执行任务（invt-xxxxxxxx），每个执行任务代表命令在一台 CVM 或一台 Lighthouse 上的执行记录。
+//
+// 
+//
+// * 如果指定实例未安装 agent，或 agent 不在线，返回失败
+//
+// * 如果命令类型与 agent 运行环境不符，返回失败
+//
+// * 指定的实例需要处于 VPC 网络
+//
+// * 指定的实例需要处于 RUNNING 状态
+//
+// * 不可同时指定 CVM 和 Lighthouse
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CVMERROR = "FailedOperation.CVMError"
+//  FAILEDOPERATION_LIGHTHOUSEERROR = "FailedOperation.LighthouseError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_AGENTUNSUPPORTEDCOMMANDTYPE = "InvalidParameterValue.AgentUnsupportedCommandType"
+//  INVALIDPARAMETERVALUE_INCONSISTENTINSTANCE = "InvalidParameterValue.InconsistentInstance"
+//  INVALIDPARAMETERVALUE_INVALIDCOMMANDID = "InvalidParameterValue.InvalidCommandId"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
+//  INVALIDPARAMETERVALUE_INVALIDOUTPUTCOSBUCKETURL = "InvalidParameterValue.InvalidOutputCOSBucketUrl"
+//  INVALIDPARAMETERVALUE_INVALIDOUTPUTCOSKEYPREFIX = "InvalidParameterValue.InvalidOutputCOSKeyPrefix"
+//  INVALIDPARAMETERVALUE_LACKOFPARAMETERINFO = "InvalidParameterValue.LackOfParameterInfo"
+//  INVALIDPARAMETERVALUE_PARAMETERDISABLED = "InvalidParameterValue.ParameterDisabled"
+//  INVALIDPARAMETERVALUE_PARAMETERINVALIDJSONFORMAT = "InvalidParameterValue.ParameterInvalidJsonFormat"
+//  INVALIDPARAMETERVALUE_PARAMETERKEYCONTAINSINVALIDCHAR = "InvalidParameterValue.ParameterKeyContainsInvalidChar"
+//  INVALIDPARAMETERVALUE_PARAMETERKEYDUPLICATED = "InvalidParameterValue.ParameterKeyDuplicated"
+//  INVALIDPARAMETERVALUE_PARAMETERKEYLENEXCEEDED = "InvalidParameterValue.ParameterKeyLenExceeded"
+//  INVALIDPARAMETERVALUE_PARAMETERNUMBEREXCEEDED = "InvalidParameterValue.ParameterNumberExceeded"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUENOTSTRING = "InvalidParameterValue.ParameterValueNotString"
+//  INVALIDPARAMETERVALUE_SUPPORTPARAMETERSONLYIFENABLEPARAMETER = "InvalidParameterValue.SupportParametersOnlyIfEnableParameter"
+//  RESOURCENOTFOUND_COMMANDNOTFOUND = "ResourceNotFound.CommandNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_AGENTNOTINSTALLED = "ResourceUnavailable.AgentNotInstalled"
+//  RESOURCEUNAVAILABLE_AGENTSTATUSNOTONLINE = "ResourceUnavailable.AgentStatusNotOnline"
+//  RESOURCEUNAVAILABLE_INSTANCESTATENOTRUNNING = "ResourceUnavailable.InstanceStateNotRunning"
+//  UNAUTHORIZEDOPERATION_CAMAUTHFAILED = "UnauthorizedOperation.CamAuthFailed"
+//  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+func (c *Client) InvokeCommandWithContext(ctx context.Context, request *InvokeCommandRequest) (response *InvokeCommandResponse, err error) {
+    if request == nil {
+        request = NewInvokeCommandRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewInvokeCommandResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyCommandRequest() (request *ModifyCommandRequest) {
     request = &ModifyCommandRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -730,6 +1127,43 @@ func (c *Client) ModifyCommand(request *ModifyCommandRequest) (response *ModifyC
     return
 }
 
+// ModifyCommand
+// 此接口用于修改命令。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_COMMANDCONTENTINVALID = "InvalidParameterValue.CommandContentInvalid"
+//  INVALIDPARAMETERVALUE_COMMANDNAMEDUPLICATED = "InvalidParameterValue.CommandNameDuplicated"
+//  INVALIDPARAMETERVALUE_INVALIDCOMMANDID = "InvalidParameterValue.InvalidCommandId"
+//  INVALIDPARAMETERVALUE_INVALIDCOMMANDNAME = "InvalidParameterValue.InvalidCommandName"
+//  INVALIDPARAMETERVALUE_INVALIDOUTPUTCOSBUCKETURL = "InvalidParameterValue.InvalidOutputCOSBucketUrl"
+//  INVALIDPARAMETERVALUE_INVALIDOUTPUTCOSKEYPREFIX = "InvalidParameterValue.InvalidOutputCOSKeyPrefix"
+//  INVALIDPARAMETERVALUE_PARAMETERINVALIDJSONFORMAT = "InvalidParameterValue.ParameterInvalidJsonFormat"
+//  INVALIDPARAMETERVALUE_PARAMETERKEYCONTAINSINVALIDCHAR = "InvalidParameterValue.ParameterKeyContainsInvalidChar"
+//  INVALIDPARAMETERVALUE_PARAMETERKEYDUPLICATED = "InvalidParameterValue.ParameterKeyDuplicated"
+//  INVALIDPARAMETERVALUE_PARAMETERKEYLENEXCEEDED = "InvalidParameterValue.ParameterKeyLenExceeded"
+//  INVALIDPARAMETERVALUE_PARAMETERNUMBEREXCEEDED = "InvalidParameterValue.ParameterNumberExceeded"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUENOTSTRING = "InvalidParameterValue.ParameterValueNotString"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_SUPPORTPARAMETERSONLYIFENABLEPARAMETER = "InvalidParameterValue.SupportParametersOnlyIfEnableParameter"
+//  RESOURCENOTFOUND_COMMANDNOTFOUND = "ResourceNotFound.CommandNotFound"
+//  UNAUTHORIZEDOPERATION_CAMAUTHFAILED = "UnauthorizedOperation.CamAuthFailed"
+//  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+func (c *Client) ModifyCommandWithContext(ctx context.Context, request *ModifyCommandRequest) (response *ModifyCommandResponse, err error) {
+    if request == nil {
+        request = NewModifyCommandRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyCommandResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyInvokerRequest() (request *ModifyInvokerRequest) {
     request = &ModifyInvokerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -764,6 +1198,30 @@ func (c *Client) ModifyInvoker(request *ModifyInvokerRequest) (response *ModifyI
     if request == nil {
         request = NewModifyInvokerRequest()
     }
+    
+    response = NewModifyInvokerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyInvoker
+// 此接口用于修改执行器。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INCONSISTENTINSTANCE = "InvalidParameterValue.InconsistentInstance"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
+//  INVALIDPARAMETERVALUE_PARAMETERDISABLED = "InvalidParameterValue.ParameterDisabled"
+//  INVALIDPARAMETERVALUE_PARAMETERINVALIDJSONFORMAT = "InvalidParameterValue.ParameterInvalidJsonFormat"
+//  RESOURCENOTFOUND_COMMANDNOTFOUND = "ResourceNotFound.CommandNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_AGENTNOTINSTALLED = "ResourceUnavailable.AgentNotInstalled"
+func (c *Client) ModifyInvokerWithContext(ctx context.Context, request *ModifyInvokerRequest) (response *ModifyInvokerResponse, err error) {
+    if request == nil {
+        request = NewModifyInvokerRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyInvokerResponse()
     err = c.Send(request, response)
@@ -820,6 +1278,40 @@ func (c *Client) PreviewReplacedCommandContent(request *PreviewReplacedCommandCo
     return
 }
 
+// PreviewReplacedCommandContent
+// 此接口用于预览自定义参数替换后的命令内容。不会触发真实执行。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_CONFLICTPARAMETER = "InvalidParameter.ConflictParameter"
+//  INVALIDPARAMETERVALUE_COMMANDCONTENTINVALID = "InvalidParameterValue.CommandContentInvalid"
+//  INVALIDPARAMETERVALUE_INVALIDCOMMANDID = "InvalidParameterValue.InvalidCommandId"
+//  INVALIDPARAMETERVALUE_LACKOFPARAMETERINFO = "InvalidParameterValue.LackOfParameterInfo"
+//  INVALIDPARAMETERVALUE_LACKOFPARAMETERS = "InvalidParameterValue.LackOfParameters"
+//  INVALIDPARAMETERVALUE_PARAMETERDISABLED = "InvalidParameterValue.ParameterDisabled"
+//  INVALIDPARAMETERVALUE_PARAMETERINVALIDJSONFORMAT = "InvalidParameterValue.ParameterInvalidJsonFormat"
+//  INVALIDPARAMETERVALUE_PARAMETERKEYCONTAINSINVALIDCHAR = "InvalidParameterValue.ParameterKeyContainsInvalidChar"
+//  INVALIDPARAMETERVALUE_PARAMETERKEYDUPLICATED = "InvalidParameterValue.ParameterKeyDuplicated"
+//  INVALIDPARAMETERVALUE_PARAMETERKEYLENEXCEEDED = "InvalidParameterValue.ParameterKeyLenExceeded"
+//  INVALIDPARAMETERVALUE_PARAMETERNUMBEREXCEEDED = "InvalidParameterValue.ParameterNumberExceeded"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUENOTSTRING = "InvalidParameterValue.ParameterValueNotString"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_SUPPORTPARAMETERSONLYIFENABLEPARAMETER = "InvalidParameterValue.SupportParametersOnlyIfEnableParameter"
+//  RESOURCENOTFOUND_COMMANDNOTFOUND = "ResourceNotFound.CommandNotFound"
+//  UNAUTHORIZEDOPERATION_CAMAUTHFAILED = "UnauthorizedOperation.CamAuthFailed"
+//  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+func (c *Client) PreviewReplacedCommandContentWithContext(ctx context.Context, request *PreviewReplacedCommandContentRequest) (response *PreviewReplacedCommandContentResponse, err error) {
+    if request == nil {
+        request = NewPreviewReplacedCommandContentRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewPreviewReplacedCommandContentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRunCommandRequest() (request *RunCommandRequest) {
     request = &RunCommandRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -858,6 +1350,7 @@ func NewRunCommandResponse() (response *RunCommandResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_AGENTUNSUPPORTEDCOMMANDTYPE = "InvalidParameterValue.AgentUnsupportedCommandType"
 //  INVALIDPARAMETERVALUE_COMMANDCONTENTINVALID = "InvalidParameterValue.CommandContentInvalid"
 //  INVALIDPARAMETERVALUE_COMMANDNAMEDUPLICATED = "InvalidParameterValue.CommandNameDuplicated"
 //  INVALIDPARAMETERVALUE_INCONSISTENTINSTANCE = "InvalidParameterValue.InconsistentInstance"
@@ -891,6 +1384,68 @@ func (c *Client) RunCommand(request *RunCommandRequest) (response *RunCommandRes
     if request == nil {
         request = NewRunCommandRequest()
     }
+    
+    response = NewRunCommandResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// RunCommand
+// 执行命令，调用成功返回执行活动ID（inv-xxxxxxxx），每个执行活动内部有一个或多个执行任务（invt-xxxxxxxx），每个执行任务代表命令在一台 CVM 或一台 Lighthouse 上的执行记录。
+//
+// 
+//
+// * 如果指定实例未安装 agent，或 agent 不在线，返回失败
+//
+// * 如果命令类型与 agent 运行环境不符，返回失败
+//
+// * 指定的实例需要处于 VPC 网络
+//
+// * 指定的实例需要处于 `RUNNING` 状态
+//
+// * 不可同时指定 CVM 和 Lighthouse
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CVMERROR = "FailedOperation.CVMError"
+//  FAILEDOPERATION_LIGHTHOUSEERROR = "FailedOperation.LighthouseError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_AGENTUNSUPPORTEDCOMMANDTYPE = "InvalidParameterValue.AgentUnsupportedCommandType"
+//  INVALIDPARAMETERVALUE_COMMANDCONTENTINVALID = "InvalidParameterValue.CommandContentInvalid"
+//  INVALIDPARAMETERVALUE_COMMANDNAMEDUPLICATED = "InvalidParameterValue.CommandNameDuplicated"
+//  INVALIDPARAMETERVALUE_INCONSISTENTINSTANCE = "InvalidParameterValue.InconsistentInstance"
+//  INVALIDPARAMETERVALUE_INVALIDCOMMANDNAME = "InvalidParameterValue.InvalidCommandName"
+//  INVALIDPARAMETERVALUE_INVALIDCONTENT = "InvalidParameterValue.InvalidContent"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
+//  INVALIDPARAMETERVALUE_INVALIDOUTPUTCOSBUCKETURL = "InvalidParameterValue.InvalidOutputCOSBucketUrl"
+//  INVALIDPARAMETERVALUE_INVALIDOUTPUTCOSKEYPREFIX = "InvalidParameterValue.InvalidOutputCOSKeyPrefix"
+//  INVALIDPARAMETERVALUE_INVALIDWORKINGDIRECTORY = "InvalidParameterValue.InvalidWorkingDirectory"
+//  INVALIDPARAMETERVALUE_LACKOFPARAMETERINFO = "InvalidParameterValue.LackOfParameterInfo"
+//  INVALIDPARAMETERVALUE_PARAMETERDISABLED = "InvalidParameterValue.ParameterDisabled"
+//  INVALIDPARAMETERVALUE_PARAMETERINVALIDJSONFORMAT = "InvalidParameterValue.ParameterInvalidJsonFormat"
+//  INVALIDPARAMETERVALUE_PARAMETERKEYCONTAINSINVALIDCHAR = "InvalidParameterValue.ParameterKeyContainsInvalidChar"
+//  INVALIDPARAMETERVALUE_PARAMETERKEYDUPLICATED = "InvalidParameterValue.ParameterKeyDuplicated"
+//  INVALIDPARAMETERVALUE_PARAMETERKEYLENEXCEEDED = "InvalidParameterValue.ParameterKeyLenExceeded"
+//  INVALIDPARAMETERVALUE_PARAMETERNUMBEREXCEEDED = "InvalidParameterValue.ParameterNumberExceeded"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUENOTSTRING = "InvalidParameterValue.ParameterValueNotString"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_SUPPORTPARAMETERSONLYIFENABLEPARAMETER = "InvalidParameterValue.SupportParametersOnlyIfEnableParameter"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_AGENTNOTINSTALLED = "ResourceUnavailable.AgentNotInstalled"
+//  RESOURCEUNAVAILABLE_AGENTSTATUSNOTONLINE = "ResourceUnavailable.AgentStatusNotOnline"
+//  RESOURCEUNAVAILABLE_INSTANCESTATENOTRUNNING = "ResourceUnavailable.InstanceStateNotRunning"
+//  UNAUTHORIZEDOPERATION_CAMAUTHFAILED = "UnauthorizedOperation.CamAuthFailed"
+//  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+func (c *Client) RunCommandWithContext(ctx context.Context, request *RunCommandRequest) (response *RunCommandResponse, err error) {
+    if request == nil {
+        request = NewRunCommandRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewRunCommandResponse()
     err = c.Send(request, response)

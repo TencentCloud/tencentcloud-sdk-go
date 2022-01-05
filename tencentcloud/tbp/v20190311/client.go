@@ -15,6 +15,7 @@
 package v20190311
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -77,6 +78,24 @@ func (c *Client) CreateBot(request *CreateBotRequest) (response *CreateBotRespon
     return
 }
 
+// CreateBot
+// 创建机器人
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CALLMMSFAILED = "InternalError.CallMMSFailed"
+//  INTERNALERROR_MMSINTERNALERROR = "InternalError.MMSInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateBotWithContext(ctx context.Context, request *CreateBotRequest) (response *CreateBotResponse, err error) {
+    if request == nil {
+        request = NewCreateBotRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateBotResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResetRequest() (request *ResetRequest) {
     request = &ResetRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -108,6 +127,27 @@ func (c *Client) Reset(request *ResetRequest) (response *ResetResponse, err erro
     if request == nil {
         request = NewResetRequest()
     }
+    
+    response = NewResetResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// Reset
+// 对当前机器人的会话状态进行复位
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ERRORASR = "InternalError.ErrorAsr"
+//  INTERNALERROR_ERRORMMS = "InternalError.ErrorMms"
+//  INTERNALERROR_ERRORRPC = "InternalError.ErrorRpc"
+//  INTERNALERROR_ERRORTTS = "InternalError.ErrorTts"
+//  INTERNALERROR_NOAPPPRIVILEGE = "InternalError.NoAppPrivilege"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ResetWithContext(ctx context.Context, request *ResetRequest) (response *ResetResponse, err error) {
+    if request == nil {
+        request = NewResetRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewResetResponse()
     err = c.Send(request, response)
@@ -152,6 +192,28 @@ func (c *Client) TextProcess(request *TextProcessRequest) (response *TextProcess
     return
 }
 
+// TextProcess
+// 接收调用侧的文本输入，返回应答文本。已废弃，推荐使用最新版TextProcess接口。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORMMS = "InternalError.ErrorMms"
+//  INTERNALERROR_ERRORNLU = "InternalError.ErrorNlu"
+//  INTERNALERROR_ERRORRPC = "InternalError.ErrorRpc"
+//  INTERNALERROR_ERRORWEBHOOK = "InternalError.ErrorWebHook"
+//  INTERNALERROR_NOAPPPRIVILEGE = "InternalError.NoAppPrivilege"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) TextProcessWithContext(ctx context.Context, request *TextProcessRequest) (response *TextProcessResponse, err error) {
+    if request == nil {
+        request = NewTextProcessRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewTextProcessResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTextResetRequest() (request *TextResetRequest) {
     request = &TextResetRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -184,6 +246,28 @@ func (c *Client) TextReset(request *TextResetRequest) (response *TextResetRespon
     if request == nil {
         request = NewTextResetRequest()
     }
+    
+    response = NewTextResetResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// TextReset
+// 会话重置接口。已废弃，推荐使用最新版TextReset接口。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORMMS = "InternalError.ErrorMms"
+//  INTERNALERROR_ERRORNLU = "InternalError.ErrorNlu"
+//  INTERNALERROR_ERRORRPC = "InternalError.ErrorRpc"
+//  INTERNALERROR_ERRORWEBHOOK = "InternalError.ErrorWebHook"
+//  INTERNALERROR_NOAPPPRIVILEGE = "InternalError.NoAppPrivilege"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) TextResetWithContext(ctx context.Context, request *TextResetRequest) (response *TextResetResponse, err error) {
+    if request == nil {
+        request = NewTextResetRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewTextResetResponse()
     err = c.Send(request, response)

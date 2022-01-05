@@ -15,6 +15,7 @@
 package v20201127
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -85,6 +86,32 @@ func (c *Client) GetTaskDetail(request *GetTaskDetailRequest) (response *GetTask
     return
 }
 
+// GetTaskDetail
+// 查询画像洞察任务详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALINVOKEFAILURE = "InternalError.InternalInvokeFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetTaskDetailWithContext(ctx context.Context, request *GetTaskDetailRequest) (response *GetTaskDetailResponse, err error) {
+    if request == nil {
+        request = NewGetTaskDetailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewGetTaskDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetTaskListRequest() (request *GetTaskListRequest) {
     request = &GetTaskListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -118,6 +145,29 @@ func (c *Client) GetTaskList(request *GetTaskListRequest) (response *GetTaskList
     if request == nil {
         request = NewGetTaskListRequest()
     }
+    
+    response = NewGetTaskListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// GetTaskList
+// 查询当前账号AppID下的画像洞察任务列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALINVOKEFAILURE = "InternalError.InternalInvokeFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetTaskListWithContext(ctx context.Context, request *GetTaskListRequest) (response *GetTaskListResponse, err error) {
+    if request == nil {
+        request = NewGetTaskListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewGetTaskListResponse()
     err = c.Send(request, response)
@@ -164,6 +214,30 @@ func (c *Client) PredictRating(request *PredictRatingRequest) (response *Predict
     return
 }
 
+// PredictRating
+// 根据传入的设备号（IMEI、IDFA、手机号、手机号MD5），返回意向评级结果
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALINVOKEFAILURE = "InternalError.InternalInvokeFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) PredictRatingWithContext(ctx context.Context, request *PredictRatingRequest) (response *PredictRatingResponse, err error) {
+    if request == nil {
+        request = NewPredictRatingRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewPredictRatingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryCallDetailsRequest() (request *QueryCallDetailsRequest) {
     request = &QueryCallDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -193,6 +267,25 @@ func (c *Client) QueryCallDetails(request *QueryCallDetailsRequest) (response *Q
     if request == nil {
         request = NewQueryCallDetailsRequest()
     }
+    
+    response = NewQueryCallDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// QueryCallDetails
+// 查询调用明细
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) QueryCallDetailsWithContext(ctx context.Context, request *QueryCallDetailsRequest) (response *QueryCallDetailsResponse, err error) {
+    if request == nil {
+        request = NewQueryCallDetailsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewQueryCallDetailsResponse()
     err = c.Send(request, response)
@@ -233,6 +326,24 @@ func (c *Client) QueryCallStat(request *QueryCallStatRequest) (response *QueryCa
     return
 }
 
+// QueryCallStat
+// 按时间维度获取调用量统计
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) QueryCallStatWithContext(ctx context.Context, request *QueryCallStatRequest) (response *QueryCallStatResponse, err error) {
+    if request == nil {
+        request = NewQueryCallStatRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewQueryCallStatResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryGeneralStatRequest() (request *QueryGeneralStatRequest) {
     request = &QueryGeneralStatRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -261,6 +372,24 @@ func (c *Client) QueryGeneralStat(request *QueryGeneralStatRequest) (response *Q
     if request == nil {
         request = NewQueryGeneralStatRequest()
     }
+    
+    response = NewQueryGeneralStatResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// QueryGeneralStat
+// 获取日/月/周/总调用量统计数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) QueryGeneralStatWithContext(ctx context.Context, request *QueryGeneralStatRequest) (response *QueryGeneralStatResponse, err error) {
+    if request == nil {
+        request = NewQueryGeneralStatRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewQueryGeneralStatResponse()
     err = c.Send(request, response)
@@ -301,6 +430,30 @@ func (c *Client) UploadId(request *UploadIdRequest) (response *UploadIdResponse,
     if request == nil {
         request = NewUploadIdRequest()
     }
+    
+    response = NewUploadIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UploadId
+// 上传群体画像的ID列表（支持的ID类型：0:imei 7:IDFA 8:MD5(imei)），后台返回生成的画像分析任务ID
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALINVOKEFAILURE = "InternalError.InternalInvokeFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UploadIdWithContext(ctx context.Context, request *UploadIdRequest) (response *UploadIdResponse, err error) {
+    if request == nil {
+        request = NewUploadIdRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUploadIdResponse()
     err = c.Send(request, response)

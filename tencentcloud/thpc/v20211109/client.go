@@ -15,6 +15,7 @@
 package v20211109
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -72,6 +73,19 @@ func (c *Client) BindAutoScalingGroup(request *BindAutoScalingGroupRequest) (res
     return
 }
 
+// BindAutoScalingGroup
+// 本接口(BindAutoScalingGroup)用于为集群队列绑定弹性伸缩组
+func (c *Client) BindAutoScalingGroupWithContext(ctx context.Context, request *BindAutoScalingGroupRequest) (response *BindAutoScalingGroupResponse, err error) {
+    if request == nil {
+        request = NewBindAutoScalingGroupRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewBindAutoScalingGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateClusterRequest() (request *CreateClusterRequest) {
     request = &CreateClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -93,6 +107,7 @@ func NewCreateClusterResponse() (response *CreateClusterResponse) {
 // 本接口 (CreateCluster) 用于创建并启动集群。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
@@ -101,6 +116,26 @@ func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateC
     if request == nil {
         request = NewCreateClusterRequest()
     }
+    
+    response = NewCreateClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateCluster
+// 本接口 (CreateCluster) 用于创建并启动集群。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+func (c *Client) CreateClusterWithContext(ctx context.Context, request *CreateClusterRequest) (response *CreateClusterResponse, err error) {
+    if request == nil {
+        request = NewCreateClusterRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateClusterResponse()
     err = c.Send(request, response)
@@ -140,6 +175,23 @@ func (c *Client) DeleteCluster(request *DeleteClusterRequest) (response *DeleteC
     return
 }
 
+// DeleteCluster
+// 本接口（DeleteCluster）用于删除一个指定的集群。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+func (c *Client) DeleteClusterWithContext(ctx context.Context, request *DeleteClusterRequest) (response *DeleteClusterResponse, err error) {
+    if request == nil {
+        request = NewDeleteClusterRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClustersRequest() (request *DescribeClustersRequest) {
     request = &DescribeClustersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -167,6 +219,23 @@ func (c *Client) DescribeClusters(request *DescribeClustersRequest) (response *D
     if request == nil {
         request = NewDescribeClustersRequest()
     }
+    
+    response = NewDescribeClustersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeClusters
+// 本接口（DescribeClusters）用于查询集群列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+func (c *Client) DescribeClustersWithContext(ctx context.Context, request *DescribeClustersRequest) (response *DescribeClustersResponse, err error) {
+    if request == nil {
+        request = NewDescribeClustersRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeClustersResponse()
     err = c.Send(request, response)

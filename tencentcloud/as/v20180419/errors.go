@@ -86,6 +86,9 @@ const (
 	// 无效的参数组合。
 	INVALIDPARAMETER_INVALIDCOMBINATION = "InvalidParameter.InvalidCombination"
 
+	// 指定的负载均衡器在当前伸缩组中没有找到。
+	INVALIDPARAMETER_LOADBALANCERNOTINAUTOSCALINGGROUP = "InvalidParameter.LoadBalancerNotInAutoScalingGroup"
+
 	// 参数缺失，两种参数之中必须指定其中一个。
 	INVALIDPARAMETER_MUSTONEPARAMETER = "InvalidParameter.MustOneParameter"
 
@@ -245,6 +248,9 @@ const (
 	// 子网信息不合法。
 	INVALIDPARAMETERVALUE_SUBNETIDS = "InvalidParameterValue.SubnetIds"
 
+	// 负载均衡器四层监听器的后端端口重复。
+	INVALIDPARAMETERVALUE_TARGETPORTDUPLICATED = "InvalidParameterValue.TargetPortDuplicated"
+
 	// 指定的阈值不在有效范围。
 	INVALIDPARAMETERVALUE_THRESHOLDOUTOFRANGE = "InvalidParameterValue.ThresholdOutOfRange"
 
@@ -253,6 +259,9 @@ const (
 
 	// 取值过多。
 	INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+
+	// 输入参数值的长度小于最小值。
+	INVALIDPARAMETERVALUE_TOOSHORT = "InvalidParameterValue.TooShort"
 
 	// UserData格式错误。
 	INVALIDPARAMETERVALUE_USERDATAFORMATERROR = "InvalidParameterValue.UserDataFormatError"
@@ -271,6 +280,9 @@ const (
 
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
+
+	// 绑定指定的负载均衡器后，伸缩组绑定的负载均衡器总数超过了最大值。
+	LIMITEXCEEDED_AFTERATTACHLBLIMITEXCEEDED = "LimitExceeded.AfterAttachLbLimitExceeded"
 
 	// 伸缩组数量超过限制。
 	LIMITEXCEEDED_AUTOSCALINGGROUPLIMITEXCEEDED = "LimitExceeded.AutoScalingGroupLimitExceeded"
@@ -403,6 +415,9 @@ const (
 
 	// CLB实例的后端地域与AS服务所在地域不一致。
 	RESOURCEUNAVAILABLE_LBBACKENDREGIONINCONSISTENT = "ResourceUnavailable.LbBackendRegionInconsistent"
+
+	// 负载均衡器项目不一致。
+	RESOURCEUNAVAILABLE_LBPROJECTINCONSISTENT = "ResourceUnavailable.LbProjectInconsistent"
 
 	// 负载均衡器VPC与伸缩组不一致。
 	RESOURCEUNAVAILABLE_LBVPCINCONSISTENT = "ResourceUnavailable.LbVpcInconsistent"

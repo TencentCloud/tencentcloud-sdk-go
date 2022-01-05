@@ -15,6 +15,7 @@
 package v20200924
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -66,6 +67,19 @@ func (c *Client) DescribeAgentShell(request *DescribeAgentShellRequest) (respons
     if request == nil {
         request = NewDescribeAgentShellRequest()
     }
+    
+    response = NewDescribeAgentShellResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAgentShell
+// 获取服务接入信息
+func (c *Client) DescribeAgentShellWithContext(ctx context.Context, request *DescribeAgentShellRequest) (response *DescribeAgentShellResponse, err error) {
+    if request == nil {
+        request = NewDescribeAgentShellRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAgentShellResponse()
     err = c.Send(request, response)

@@ -4178,11 +4178,17 @@ type DeployContainerGroupRequest struct {
 	// tcr或者不填
 	RepoType *string `json:"RepoType,omitempty" name:"RepoType"`
 
-	// 数据卷信息
+	// 数据卷信息-废弃，请用VolumeInfoList参数
 	VolumeInfos *VolumeInfo `json:"VolumeInfos,omitempty" name:"VolumeInfos"`
 
-	// 数据卷挂载点信息
+	// 数据卷挂载点信息-废弃，请用VolumeMountInfoList参数
 	VolumeMountInfos *VolumeMountInfo `json:"VolumeMountInfos,omitempty" name:"VolumeMountInfos"`
+
+	// 数据卷信息，list
+	VolumeInfoList []*VolumeInfo `json:"VolumeInfoList,omitempty" name:"VolumeInfoList"`
+
+	// 数据卷挂载点信息，list
+	VolumeMountInfoList []*VolumeMountInfo `json:"VolumeMountInfoList,omitempty" name:"VolumeMountInfoList"`
 }
 
 func (r *DeployContainerGroupRequest) ToJsonString() string {
@@ -4230,6 +4236,8 @@ func (r *DeployContainerGroupRequest) FromJsonString(s string) error {
 	delete(f, "RepoType")
 	delete(f, "VolumeInfos")
 	delete(f, "VolumeMountInfos")
+	delete(f, "VolumeInfoList")
+	delete(f, "VolumeMountInfoList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployContainerGroupRequest has unknown keys!", "")
 	}

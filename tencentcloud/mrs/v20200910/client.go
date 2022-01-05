@@ -15,6 +15,7 @@
 package v20200910
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -97,6 +98,44 @@ func (c *Client) ImageToClass(request *ImageToClassRequest) (response *ImageToCl
     return
 }
 
+// ImageToClass
+// 图片分类
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_PUSHUSAGEMESSAGEERROR = "FailedOperation.PushUsageMessageError"
+//  FAILEDOPERATION_SERVICENOTOPEN = "FailedOperation.ServiceNotOpen"
+//  FAILEDOPERATION_UNKNOWNERROR = "FailedOperation.UnknownError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_IMAGEOCRERROR = "InternalError.ImageOcrError"
+//  INTERNALERROR_IMAGEPROCESSERROR = "InternalError.ImageProcessError"
+//  INTERNALERROR_SERVERTIMEOUTERROR = "InternalError.ServerTimeOutError"
+//  INTERNALERROR_STRUCTIONERROR = "InternalError.StructionError"
+//  INTERNALERROR_TEXTCLASSIFYERROR = "InternalError.TextClassifyError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_AUTOFITDIRECTION = "InvalidParameter.AutoFitDirection"
+//  INVALIDPARAMETER_IMAGEINFOLIST = "InvalidParameter.ImageInfoList"
+//  INVALIDPARAMETER_IMAGEORIGINALSIZE = "InvalidParameter.ImageOriginalSize"
+//  INVALIDPARAMETER_INVALIDACTION = "InvalidParameter.InvalidAction"
+//  INVALIDPARAMETER_OCRENGINETYPE = "InvalidParameter.OcrEngineType"
+//  INVALIDPARAMETER_ROTATETHEANGLE = "InvalidParameter.RotateTheAngle"
+//  INVALIDPARAMETER_TEXT = "InvalidParameter.Text"
+//  INVALIDPARAMETERVALUE_IMAGECODEINVALID = "InvalidParameterValue.ImageCodeInvalid"
+//  INVALIDPARAMETERVALUE_IMAGEURLINVALID = "InvalidParameterValue.ImageURLInvalid"
+//  OPERATIONDENIED_UNSUPPORTTHISTYPE = "OperationDenied.UnSupportThisType"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIEDERROR = "UnauthorizedOperation.PermissionDeniedError"
+//  UNSUPPORTEDOPERATION_UNSUPPORTTHISTYPE = "UnsupportedOperation.UnSupportThisType"
+func (c *Client) ImageToClassWithContext(ctx context.Context, request *ImageToClassRequest) (response *ImageToClassResponse, err error) {
+    if request == nil {
+        request = NewImageToClassRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewImageToClassResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewImageToObjectRequest() (request *ImageToObjectRequest) {
     request = &ImageToObjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -145,6 +184,44 @@ func (c *Client) ImageToObject(request *ImageToObjectRequest) (response *ImageTo
     if request == nil {
         request = NewImageToObjectRequest()
     }
+    
+    response = NewImageToObjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ImageToObject
+// 图片转结构化对象
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_PUSHUSAGEMESSAGEERROR = "FailedOperation.PushUsageMessageError"
+//  FAILEDOPERATION_SERVICENOTOPEN = "FailedOperation.ServiceNotOpen"
+//  FAILEDOPERATION_UNKNOWNERROR = "FailedOperation.UnknownError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_IMAGEOCRERROR = "InternalError.ImageOcrError"
+//  INTERNALERROR_IMAGEPROCESSERROR = "InternalError.ImageProcessError"
+//  INTERNALERROR_SERVERTIMEOUTERROR = "InternalError.ServerTimeOutError"
+//  INTERNALERROR_STRUCTIONERROR = "InternalError.StructionError"
+//  INTERNALERROR_TEXTCLASSIFYERROR = "InternalError.TextClassifyError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_AUTOFITDIRECTION = "InvalidParameter.AutoFitDirection"
+//  INVALIDPARAMETER_IMAGEINFOLIST = "InvalidParameter.ImageInfoList"
+//  INVALIDPARAMETER_IMAGEORIGINALSIZE = "InvalidParameter.ImageOriginalSize"
+//  INVALIDPARAMETER_INVALIDACTION = "InvalidParameter.InvalidAction"
+//  INVALIDPARAMETER_OCRENGINETYPE = "InvalidParameter.OcrEngineType"
+//  INVALIDPARAMETER_ROTATETHEANGLE = "InvalidParameter.RotateTheAngle"
+//  INVALIDPARAMETER_TEXT = "InvalidParameter.Text"
+//  INVALIDPARAMETERVALUE_IMAGECODEINVALID = "InvalidParameterValue.ImageCodeInvalid"
+//  INVALIDPARAMETERVALUE_IMAGEISNOTEXT = "InvalidParameterValue.ImageIsNoText"
+//  INVALIDPARAMETERVALUE_IMAGEURLINVALID = "InvalidParameterValue.ImageURLInvalid"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIEDERROR = "UnauthorizedOperation.PermissionDeniedError"
+//  UNSUPPORTEDOPERATION_UNSUPPORTTHISTYPE = "UnsupportedOperation.UnSupportThisType"
+func (c *Client) ImageToObjectWithContext(ctx context.Context, request *ImageToObjectRequest) (response *ImageToObjectResponse, err error) {
+    if request == nil {
+        request = NewImageToObjectRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewImageToObjectResponse()
     err = c.Send(request, response)
@@ -204,6 +281,43 @@ func (c *Client) TextToClass(request *TextToClassRequest) (response *TextToClass
     return
 }
 
+// TextToClass
+// 文本分类
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_PUSHUSAGEMESSAGEERROR = "FailedOperation.PushUsageMessageError"
+//  FAILEDOPERATION_SERVICENOTOPEN = "FailedOperation.ServiceNotOpen"
+//  FAILEDOPERATION_UNKNOWNERROR = "FailedOperation.UnknownError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_IMAGEOCRERROR = "InternalError.ImageOcrError"
+//  INTERNALERROR_IMAGEPROCESSERROR = "InternalError.ImageProcessError"
+//  INTERNALERROR_SERVERTIMEOUTERROR = "InternalError.ServerTimeOutError"
+//  INTERNALERROR_STRUCTIONERROR = "InternalError.StructionError"
+//  INTERNALERROR_TEXTCLASSIFYERROR = "InternalError.TextClassifyError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_AUTOFITDIRECTION = "InvalidParameter.AutoFitDirection"
+//  INVALIDPARAMETER_IMAGEINFOLIST = "InvalidParameter.ImageInfoList"
+//  INVALIDPARAMETER_IMAGEORIGINALSIZE = "InvalidParameter.ImageOriginalSize"
+//  INVALIDPARAMETER_INVALIDACTION = "InvalidParameter.InvalidAction"
+//  INVALIDPARAMETER_OCRENGINETYPE = "InvalidParameter.OcrEngineType"
+//  INVALIDPARAMETER_ROTATETHEANGLE = "InvalidParameter.RotateTheAngle"
+//  INVALIDPARAMETER_TEXT = "InvalidParameter.Text"
+//  INVALIDPARAMETERVALUE_IMAGECODEINVALID = "InvalidParameterValue.ImageCodeInvalid"
+//  INVALIDPARAMETERVALUE_IMAGEURLINVALID = "InvalidParameterValue.ImageURLInvalid"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIEDERROR = "UnauthorizedOperation.PermissionDeniedError"
+//  UNSUPPORTEDOPERATION_UNSUPPORTTHISTYPE = "UnsupportedOperation.UnSupportThisType"
+func (c *Client) TextToClassWithContext(ctx context.Context, request *TextToClassRequest) (response *TextToClassResponse, err error) {
+    if request == nil {
+        request = NewTextToClassRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewTextToClassResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTextToObjectRequest() (request *TextToObjectRequest) {
     request = &TextToObjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -251,6 +365,43 @@ func (c *Client) TextToObject(request *TextToObjectRequest) (response *TextToObj
     if request == nil {
         request = NewTextToObjectRequest()
     }
+    
+    response = NewTextToObjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// TextToObject
+// 文本转结构化对象
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_PUSHUSAGEMESSAGEERROR = "FailedOperation.PushUsageMessageError"
+//  FAILEDOPERATION_SERVICENOTOPEN = "FailedOperation.ServiceNotOpen"
+//  FAILEDOPERATION_UNKNOWNERROR = "FailedOperation.UnknownError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_IMAGEOCRERROR = "InternalError.ImageOcrError"
+//  INTERNALERROR_IMAGEPROCESSERROR = "InternalError.ImageProcessError"
+//  INTERNALERROR_SERVERTIMEOUTERROR = "InternalError.ServerTimeOutError"
+//  INTERNALERROR_STRUCTIONERROR = "InternalError.StructionError"
+//  INTERNALERROR_TEXTCLASSIFYERROR = "InternalError.TextClassifyError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_AUTOFITDIRECTION = "InvalidParameter.AutoFitDirection"
+//  INVALIDPARAMETER_IMAGEINFOLIST = "InvalidParameter.ImageInfoList"
+//  INVALIDPARAMETER_IMAGEORIGINALSIZE = "InvalidParameter.ImageOriginalSize"
+//  INVALIDPARAMETER_INVALIDACTION = "InvalidParameter.InvalidAction"
+//  INVALIDPARAMETER_OCRENGINETYPE = "InvalidParameter.OcrEngineType"
+//  INVALIDPARAMETER_ROTATETHEANGLE = "InvalidParameter.RotateTheAngle"
+//  INVALIDPARAMETER_TEXT = "InvalidParameter.Text"
+//  INVALIDPARAMETERVALUE_IMAGECODEINVALID = "InvalidParameterValue.ImageCodeInvalid"
+//  INVALIDPARAMETERVALUE_IMAGEURLINVALID = "InvalidParameterValue.ImageURLInvalid"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIEDERROR = "UnauthorizedOperation.PermissionDeniedError"
+//  UNSUPPORTEDOPERATION_UNSUPPORTTHISTYPE = "UnsupportedOperation.UnSupportThisType"
+func (c *Client) TextToObjectWithContext(ctx context.Context, request *TextToObjectRequest) (response *TextToObjectResponse, err error) {
+    if request == nil {
+        request = NewTextToObjectRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewTextToObjectResponse()
     err = c.Send(request, response)

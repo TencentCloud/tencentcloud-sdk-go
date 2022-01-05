@@ -15,6 +15,7 @@
 package v20180423
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -75,6 +76,22 @@ func (c *Client) AttachCamRole(request *AttachCamRoleRequest) (response *AttachC
     return
 }
 
+// AttachCamRole
+// 服务器绑定CAM角色，该角色授权访问黑石物理服务器服务，为黑石物理服务器提供了访问资源的权限，如请求服务器的临时证书
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AttachCamRoleWithContext(ctx context.Context, request *AttachCamRoleRequest) (response *AttachCamRoleResponse, err error) {
+    if request == nil {
+        request = NewAttachCamRoleRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewAttachCamRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindPsaTagRequest() (request *BindPsaTagRequest) {
     request = &BindPsaTagRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -106,6 +123,27 @@ func (c *Client) BindPsaTag(request *BindPsaTagRequest) (response *BindPsaTagRes
     if request == nil {
         request = NewBindPsaTagRequest()
     }
+    
+    response = NewBindPsaTagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// BindPsaTag
+// 为预授权规则绑定标签
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) BindPsaTagWithContext(ctx context.Context, request *BindPsaTagRequest) (response *BindPsaTagResponse, err error) {
+    if request == nil {
+        request = NewBindPsaTagRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewBindPsaTagResponse()
     err = c.Send(request, response)
@@ -151,6 +189,29 @@ func (c *Client) BuyDevices(request *BuyDevicesRequest) (response *BuyDevicesRes
     return
 }
 
+// BuyDevices
+// 购买黑石物理机
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE_FLOWBUSY = "ResourceInUse.FlowBusy"
+//  RESOURCEINSUFFICIENT_DEVICEINSUFFICIENT = "ResourceInsufficient.DeviceInsufficient"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_FUNDINSUFFICIENT = "UnsupportedOperation.FundInsufficient"
+func (c *Client) BuyDevicesWithContext(ctx context.Context, request *BuyDevicesRequest) (response *BuyDevicesResponse, err error) {
+    if request == nil {
+        request = NewBuyDevicesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewBuyDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCustomImageRequest() (request *CreateCustomImageRequest) {
     request = &CreateCustomImageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -184,6 +245,29 @@ func (c *Client) CreateCustomImage(request *CreateCustomImageRequest) (response 
     if request == nil {
         request = NewCreateCustomImageRequest()
     }
+    
+    response = NewCreateCustomImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateCustomImage
+// 创建自定义镜像<br>
+//
+// 每个AppId在每个可用区最多保留20个自定义镜像
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCustomImageWithContext(ctx context.Context, request *CreateCustomImageRequest) (response *CreateCustomImageResponse, err error) {
+    if request == nil {
+        request = NewCreateCustomImageRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateCustomImageResponse()
     err = c.Send(request, response)
@@ -225,6 +309,25 @@ func (c *Client) CreatePsaRegulation(request *CreatePsaRegulationRequest) (respo
     return
 }
 
+// CreatePsaRegulation
+// 创建预授权规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreatePsaRegulationWithContext(ctx context.Context, request *CreatePsaRegulationRequest) (response *CreatePsaRegulationResponse, err error) {
+    if request == nil {
+        request = NewCreatePsaRegulationRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreatePsaRegulationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSpotDeviceRequest() (request *CreateSpotDeviceRequest) {
     request = &CreateSpotDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -253,6 +356,24 @@ func (c *Client) CreateSpotDevice(request *CreateSpotDeviceRequest) (response *C
     if request == nil {
         request = NewCreateSpotDeviceRequest()
     }
+    
+    response = NewCreateSpotDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateSpotDevice
+// 创建黑石竞价实例
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+func (c *Client) CreateSpotDeviceWithContext(ctx context.Context, request *CreateSpotDeviceRequest) (response *CreateSpotDeviceResponse, err error) {
+    if request == nil {
+        request = NewCreateSpotDeviceRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateSpotDeviceResponse()
     err = c.Send(request, response)
@@ -295,6 +416,26 @@ func (c *Client) CreateUserCmd(request *CreateUserCmdRequest) (response *CreateU
     return
 }
 
+// CreateUserCmd
+// 创建自定义脚本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_USERCMDCOUNT = "LimitExceeded.UserCmdCount"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateUserCmdWithContext(ctx context.Context, request *CreateUserCmdRequest) (response *CreateUserCmdResponse, err error) {
+    if request == nil {
+        request = NewCreateUserCmdRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateUserCmdResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCustomImagesRequest() (request *DeleteCustomImagesRequest) {
     request = &DeleteCustomImagesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -325,6 +466,26 @@ func (c *Client) DeleteCustomImages(request *DeleteCustomImagesRequest) (respons
     if request == nil {
         request = NewDeleteCustomImagesRequest()
     }
+    
+    response = NewDeleteCustomImagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteCustomImages
+// 删除自定义镜像<br>
+//
+// 正用于部署或重装中的镜像被删除后，镜像文件将保留一段时间，直到部署或重装结束
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteCustomImagesWithContext(ctx context.Context, request *DeleteCustomImagesRequest) (response *DeleteCustomImagesResponse, err error) {
+    if request == nil {
+        request = NewDeleteCustomImagesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteCustomImagesResponse()
     err = c.Send(request, response)
@@ -365,6 +526,24 @@ func (c *Client) DeletePsaRegulation(request *DeletePsaRegulationRequest) (respo
     return
 }
 
+// DeletePsaRegulation
+// 删除预授权规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeletePsaRegulationWithContext(ctx context.Context, request *DeletePsaRegulationRequest) (response *DeletePsaRegulationResponse, err error) {
+    if request == nil {
+        request = NewDeletePsaRegulationRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeletePsaRegulationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteUserCmdsRequest() (request *DeleteUserCmdsRequest) {
     request = &DeleteUserCmdsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -399,6 +578,24 @@ func (c *Client) DeleteUserCmds(request *DeleteUserCmdsRequest) (response *Delet
     return
 }
 
+// DeleteUserCmds
+// 删除自定义脚本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteUserCmdsWithContext(ctx context.Context, request *DeleteUserCmdsRequest) (response *DeleteUserCmdsResponse, err error) {
+    if request == nil {
+        request = NewDeleteUserCmdsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteUserCmdsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCustomImageProcessRequest() (request *DescribeCustomImageProcessRequest) {
     request = &DescribeCustomImageProcessRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -427,6 +624,24 @@ func (c *Client) DescribeCustomImageProcess(request *DescribeCustomImageProcessR
     if request == nil {
         request = NewDescribeCustomImageProcessRequest()
     }
+    
+    response = NewDescribeCustomImageProcessResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCustomImageProcess
+// 查询自定义镜像制作进度
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeCustomImageProcessWithContext(ctx context.Context, request *DescribeCustomImageProcessRequest) (response *DescribeCustomImageProcessResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomImageProcessRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeCustomImageProcessResponse()
     err = c.Send(request, response)
@@ -469,6 +684,26 @@ func (c *Client) DescribeCustomImages(request *DescribeCustomImagesRequest) (res
     return
 }
 
+// DescribeCustomImages
+// 查看自定义镜像列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeCustomImagesWithContext(ctx context.Context, request *DescribeCustomImagesRequest) (response *DescribeCustomImagesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomImagesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeCustomImagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeviceClassRequest() (request *DescribeDeviceClassRequest) {
     request = &DescribeDeviceClassRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -505,6 +740,26 @@ func (c *Client) DescribeDeviceClass(request *DescribeDeviceClassRequest) (respo
     return
 }
 
+// DescribeDeviceClass
+// 获取设备类型
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeDeviceClassWithContext(ctx context.Context, request *DescribeDeviceClassRequest) (response *DescribeDeviceClassResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceClassRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeviceClassResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeviceClassPartitionRequest() (request *DescribeDeviceClassPartitionRequest) {
     request = &DescribeDeviceClassPartitionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -532,6 +787,23 @@ func (c *Client) DescribeDeviceClassPartition(request *DescribeDeviceClassPartit
     if request == nil {
         request = NewDescribeDeviceClassPartitionRequest()
     }
+    
+    response = NewDescribeDeviceClassPartitionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeDeviceClassPartition
+// 查询机型支持的RAID方式， 并返回系统盘的分区和逻辑盘的列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeDeviceClassPartitionWithContext(ctx context.Context, request *DescribeDeviceClassPartitionRequest) (response *DescribeDeviceClassPartitionResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceClassPartitionRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeDeviceClassPartitionResponse()
     err = c.Send(request, response)
@@ -572,6 +844,24 @@ func (c *Client) DescribeDeviceHardwareInfo(request *DescribeDeviceHardwareInfoR
     return
 }
 
+// DescribeDeviceHardwareInfo
+// 查询设备硬件配置信息，如 CPU 型号，内存大小，磁盘大小和数量
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeDeviceHardwareInfoWithContext(ctx context.Context, request *DescribeDeviceHardwareInfoRequest) (response *DescribeDeviceHardwareInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceHardwareInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeviceHardwareInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeviceInventoryRequest() (request *DescribeDeviceInventoryRequest) {
     request = &DescribeDeviceInventoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -599,6 +889,23 @@ func (c *Client) DescribeDeviceInventory(request *DescribeDeviceInventoryRequest
     if request == nil {
         request = NewDescribeDeviceInventoryRequest()
     }
+    
+    response = NewDescribeDeviceInventoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeDeviceInventory
+// 查询设备库存
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeDeviceInventoryWithContext(ctx context.Context, request *DescribeDeviceInventoryRequest) (response *DescribeDeviceInventoryResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceInventoryRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeDeviceInventoryResponse()
     err = c.Send(request, response)
@@ -639,6 +946,24 @@ func (c *Client) DescribeDeviceOperationLog(request *DescribeDeviceOperationLogR
     return
 }
 
+// DescribeDeviceOperationLog
+// 查询设备操作日志， 如设备重启，重装，设置密码等操作
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeDeviceOperationLogWithContext(ctx context.Context, request *DescribeDeviceOperationLogRequest) (response *DescribeDeviceOperationLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceOperationLogRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeviceOperationLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDevicePartitionRequest() (request *DescribeDevicePartitionRequest) {
     request = &DescribeDevicePartitionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -673,6 +998,24 @@ func (c *Client) DescribeDevicePartition(request *DescribeDevicePartitionRequest
     return
 }
 
+// DescribeDevicePartition
+// 获取物理机的分区格式
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeDevicePartitionWithContext(ctx context.Context, request *DescribeDevicePartitionRequest) (response *DescribeDevicePartitionResponse, err error) {
+    if request == nil {
+        request = NewDescribeDevicePartitionRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDevicePartitionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDevicePositionRequest() (request *DescribeDevicePositionRequest) {
     request = &DescribeDevicePositionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -699,6 +1042,22 @@ func (c *Client) DescribeDevicePosition(request *DescribeDevicePositionRequest) 
     if request == nil {
         request = NewDescribeDevicePositionRequest()
     }
+    
+    response = NewDescribeDevicePositionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeDevicePosition
+// 查询服务器所在的位置，如机架，上联交换机等信息
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeDevicePositionWithContext(ctx context.Context, request *DescribeDevicePositionRequest) (response *DescribeDevicePositionResponse, err error) {
+    if request == nil {
+        request = NewDescribeDevicePositionRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeDevicePositionResponse()
     err = c.Send(request, response)
@@ -739,6 +1098,24 @@ func (c *Client) DescribeDevicePriceInfo(request *DescribeDevicePriceInfoRequest
     return
 }
 
+// DescribeDevicePriceInfo
+// 查询服务器价格信息，支持设备的批量查找，支持标准机型和弹性机型的混合查找
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeDevicePriceInfoWithContext(ctx context.Context, request *DescribeDevicePriceInfoRequest) (response *DescribeDevicePriceInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeDevicePriceInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDevicePriceInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDevicesRequest() (request *DescribeDevicesRequest) {
     request = &DescribeDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -773,6 +1150,24 @@ func (c *Client) DescribeDevices(request *DescribeDevicesRequest) (response *Des
     return
 }
 
+// DescribeDevices
+// 查询物理服务器，可以按照实例，业务IP等过滤
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeDevicesWithContext(ctx context.Context, request *DescribeDevicesRequest) (response *DescribeDevicesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDevicesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeHardwareSpecificationRequest() (request *DescribeHardwareSpecificationRequest) {
     request = &DescribeHardwareSpecificationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -801,6 +1196,24 @@ func (c *Client) DescribeHardwareSpecification(request *DescribeHardwareSpecific
     if request == nil {
         request = NewDescribeHardwareSpecificationRequest()
     }
+    
+    response = NewDescribeHardwareSpecificationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeHardwareSpecification
+// 查询自定义机型部件信息，包括CpuId对应的型号，DiskTypeId对应的磁盘类型
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeHardwareSpecificationWithContext(ctx context.Context, request *DescribeHardwareSpecificationRequest) (response *DescribeHardwareSpecificationResponse, err error) {
+    if request == nil {
+        request = NewDescribeHardwareSpecificationRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeHardwareSpecificationResponse()
     err = c.Send(request, response)
@@ -842,6 +1255,25 @@ func (c *Client) DescribeHostedDeviceOutBandInfo(request *DescribeHostedDeviceOu
     return
 }
 
+// DescribeHostedDeviceOutBandInfo
+// 查询托管设备带外信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeHostedDeviceOutBandInfoWithContext(ctx context.Context, request *DescribeHostedDeviceOutBandInfoRequest) (response *DescribeHostedDeviceOutBandInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeHostedDeviceOutBandInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeHostedDeviceOutBandInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOperationResultRequest() (request *DescribeOperationResultRequest) {
     request = &DescribeOperationResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -876,6 +1308,24 @@ func (c *Client) DescribeOperationResult(request *DescribeOperationResultRequest
     return
 }
 
+// DescribeOperationResult
+// 获取异步操作状态的完成状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeOperationResultWithContext(ctx context.Context, request *DescribeOperationResultRequest) (response *DescribeOperationResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeOperationResultRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeOperationResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOsInfoRequest() (request *DescribeOsInfoRequest) {
     request = &DescribeOsInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -903,6 +1353,23 @@ func (c *Client) DescribeOsInfo(request *DescribeOsInfoRequest) (response *Descr
     if request == nil {
         request = NewDescribeOsInfoRequest()
     }
+    
+    response = NewDescribeOsInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeOsInfo
+// 查询指定机型所支持的操作系统
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeOsInfoWithContext(ctx context.Context, request *DescribeOsInfoRequest) (response *DescribeOsInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeOsInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeOsInfoResponse()
     err = c.Send(request, response)
@@ -943,6 +1410,24 @@ func (c *Client) DescribePsaRegulations(request *DescribePsaRegulationsRequest) 
     return
 }
 
+// DescribePsaRegulations
+// 获取预授权规则列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribePsaRegulationsWithContext(ctx context.Context, request *DescribePsaRegulationsRequest) (response *DescribePsaRegulationsResponse, err error) {
+    if request == nil {
+        request = NewDescribePsaRegulationsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribePsaRegulationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRegionsRequest() (request *DescribeRegionsRequest) {
     request = &DescribeRegionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -977,6 +1462,24 @@ func (c *Client) DescribeRegions(request *DescribeRegionsRequest) (response *Des
     return
 }
 
+// DescribeRegions
+// 查询地域以及可用区
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *DescribeRegionsRequest) (response *DescribeRegionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRegionsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeRegionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRepairTaskConstantRequest() (request *DescribeRepairTaskConstantRequest) {
     request = &DescribeRepairTaskConstantRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1005,6 +1508,24 @@ func (c *Client) DescribeRepairTaskConstant(request *DescribeRepairTaskConstantR
     if request == nil {
         request = NewDescribeRepairTaskConstantRequest()
     }
+    
+    response = NewDescribeRepairTaskConstantResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeRepairTaskConstant
+// 维修任务配置获取
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeRepairTaskConstantWithContext(ctx context.Context, request *DescribeRepairTaskConstantRequest) (response *DescribeRepairTaskConstantResponse, err error) {
+    if request == nil {
+        request = NewDescribeRepairTaskConstantRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeRepairTaskConstantResponse()
     err = c.Send(request, response)
@@ -1061,6 +1582,40 @@ func (c *Client) DescribeTaskInfo(request *DescribeTaskInfoRequest) (response *D
     return
 }
 
+// DescribeTaskInfo
+// 获取用户维修任务列表及详细信息<br>
+//
+// <br>
+//
+// TaskStatus（任务状态ID）与状态中文名的对应关系如下：<br>
+//
+// 1：未授权<br>
+//
+// 2：处理中<br>
+//
+// 3：待确认<br>
+//
+// 4：未授权-暂不处理<br>
+//
+// 5：已恢复<br>
+//
+// 6：待确认-未恢复<br>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeTaskInfoWithContext(ctx context.Context, request *DescribeTaskInfoRequest) (response *DescribeTaskInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeTaskInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTaskOperationLogRequest() (request *DescribeTaskOperationLogRequest) {
     request = &DescribeTaskOperationLogRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1089,6 +1644,24 @@ func (c *Client) DescribeTaskOperationLog(request *DescribeTaskOperationLogReque
     if request == nil {
         request = NewDescribeTaskOperationLogRequest()
     }
+    
+    response = NewDescribeTaskOperationLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeTaskOperationLog
+// 获取维修任务操作日志
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeTaskOperationLogWithContext(ctx context.Context, request *DescribeTaskOperationLogRequest) (response *DescribeTaskOperationLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskOperationLogRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeTaskOperationLogResponse()
     err = c.Send(request, response)
@@ -1129,6 +1702,24 @@ func (c *Client) DescribeUserCmdTaskInfo(request *DescribeUserCmdTaskInfoRequest
     return
 }
 
+// DescribeUserCmdTaskInfo
+// 获取自定义脚本任务详细信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeUserCmdTaskInfoWithContext(ctx context.Context, request *DescribeUserCmdTaskInfoRequest) (response *DescribeUserCmdTaskInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserCmdTaskInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserCmdTaskInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserCmdTasksRequest() (request *DescribeUserCmdTasksRequest) {
     request = &DescribeUserCmdTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1157,6 +1748,24 @@ func (c *Client) DescribeUserCmdTasks(request *DescribeUserCmdTasksRequest) (res
     if request == nil {
         request = NewDescribeUserCmdTasksRequest()
     }
+    
+    response = NewDescribeUserCmdTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeUserCmdTasks
+// 获取自定义脚本任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeUserCmdTasksWithContext(ctx context.Context, request *DescribeUserCmdTasksRequest) (response *DescribeUserCmdTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserCmdTasksRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeUserCmdTasksResponse()
     err = c.Send(request, response)
@@ -1198,6 +1807,25 @@ func (c *Client) DescribeUserCmds(request *DescribeUserCmdsRequest) (response *D
     return
 }
 
+// DescribeUserCmds
+// 获取自定义脚本信息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeUserCmdsWithContext(ctx context.Context, request *DescribeUserCmdsRequest) (response *DescribeUserCmdsResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserCmdsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserCmdsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDetachCamRoleRequest() (request *DetachCamRoleRequest) {
     request = &DetachCamRoleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1224,6 +1852,22 @@ func (c *Client) DetachCamRole(request *DetachCamRoleRequest) (response *DetachC
     if request == nil {
         request = NewDetachCamRoleRequest()
     }
+    
+    response = NewDetachCamRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DetachCamRole
+// 服务器绑定CAM角色
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DetachCamRoleWithContext(ctx context.Context, request *DetachCamRoleRequest) (response *DetachCamRoleResponse, err error) {
+    if request == nil {
+        request = NewDetachCamRoleRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDetachCamRoleResponse()
     err = c.Send(request, response)
@@ -1264,6 +1908,24 @@ func (c *Client) ModifyCustomImageAttribute(request *ModifyCustomImageAttributeR
     return
 }
 
+// ModifyCustomImageAttribute
+// 用于修改自定义镜像名或描述
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyCustomImageAttributeWithContext(ctx context.Context, request *ModifyCustomImageAttributeRequest) (response *ModifyCustomImageAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyCustomImageAttributeRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyCustomImageAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDeviceAliasesRequest() (request *ModifyDeviceAliasesRequest) {
     request = &ModifyDeviceAliasesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1298,6 +1960,24 @@ func (c *Client) ModifyDeviceAliases(request *ModifyDeviceAliasesRequest) (respo
     return
 }
 
+// ModifyDeviceAliases
+// 修改服务器名称
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyDeviceAliasesWithContext(ctx context.Context, request *ModifyDeviceAliasesRequest) (response *ModifyDeviceAliasesResponse, err error) {
+    if request == nil {
+        request = NewModifyDeviceAliasesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyDeviceAliasesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDeviceAutoRenewFlagRequest() (request *ModifyDeviceAutoRenewFlagRequest) {
     request = &ModifyDeviceAutoRenewFlagRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1326,6 +2006,24 @@ func (c *Client) ModifyDeviceAutoRenewFlag(request *ModifyDeviceAutoRenewFlagReq
     if request == nil {
         request = NewModifyDeviceAutoRenewFlagRequest()
     }
+    
+    response = NewModifyDeviceAutoRenewFlagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyDeviceAutoRenewFlag
+// 修改物理机服务器自动续费标志
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyDeviceAutoRenewFlagWithContext(ctx context.Context, request *ModifyDeviceAutoRenewFlagRequest) (response *ModifyDeviceAutoRenewFlagResponse, err error) {
+    if request == nil {
+        request = NewModifyDeviceAutoRenewFlagRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyDeviceAutoRenewFlagResponse()
     err = c.Send(request, response)
@@ -1370,6 +2068,28 @@ func (c *Client) ModifyLanIp(request *ModifyLanIpRequest) (response *ModifyLanIp
     return
 }
 
+// ModifyLanIp
+// 修改物理机内网IP（不重装系统）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TSCAGENTOFFLINE = "FailedOperation.TscAgentOffline"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDOPERATION = "UnsupportedOperation.InvalidOperation"
+func (c *Client) ModifyLanIpWithContext(ctx context.Context, request *ModifyLanIpRequest) (response *ModifyLanIpResponse, err error) {
+    if request == nil {
+        request = NewModifyLanIpRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyLanIpResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyPayModePre2PostRequest() (request *ModifyPayModePre2PostRequest) {
     request = &ModifyPayModePre2PostRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1405,6 +2125,25 @@ func (c *Client) ModifyPayModePre2Post(request *ModifyPayModePre2PostRequest) (r
     return
 }
 
+// ModifyPayModePre2Post
+// 将设备的预付费模式修改为后付费计费模式，支持批量转换。（前提是客户要加入黑石物理机后付费计费的白名单，申请黑石物理机后付费可以联系腾讯云客服）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyPayModePre2PostWithContext(ctx context.Context, request *ModifyPayModePre2PostRequest) (response *ModifyPayModePre2PostResponse, err error) {
+    if request == nil {
+        request = NewModifyPayModePre2PostRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyPayModePre2PostResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyPsaRegulationRequest() (request *ModifyPsaRegulationRequest) {
     request = &ModifyPsaRegulationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1433,6 +2172,24 @@ func (c *Client) ModifyPsaRegulation(request *ModifyPsaRegulationRequest) (respo
     if request == nil {
         request = NewModifyPsaRegulationRequest()
     }
+    
+    response = NewModifyPsaRegulationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyPsaRegulation
+// 允许修改规则信息及关联故障类型
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyPsaRegulationWithContext(ctx context.Context, request *ModifyPsaRegulationRequest) (response *ModifyPsaRegulationResponse, err error) {
+    if request == nil {
+        request = NewModifyPsaRegulationRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyPsaRegulationResponse()
     err = c.Send(request, response)
@@ -1475,6 +2232,26 @@ func (c *Client) ModifyUserCmd(request *ModifyUserCmdRequest) (response *ModifyU
     return
 }
 
+// ModifyUserCmd
+// 修改自定义脚本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyUserCmdWithContext(ctx context.Context, request *ModifyUserCmdRequest) (response *ModifyUserCmdResponse, err error) {
+    if request == nil {
+        request = NewModifyUserCmdRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyUserCmdResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewOfflineDevicesRequest() (request *OfflineDevicesRequest) {
     request = &OfflineDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1503,6 +2280,24 @@ func (c *Client) OfflineDevices(request *OfflineDevicesRequest) (response *Offli
     if request == nil {
         request = NewOfflineDevicesRequest()
     }
+    
+    response = NewOfflineDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// OfflineDevices
+// 销毁黑石物理机实例：可以销毁物理机列表中的竞价实例，或回收站列表中所有计费模式的实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) OfflineDevicesWithContext(ctx context.Context, request *OfflineDevicesRequest) (response *OfflineDevicesResponse, err error) {
+    if request == nil {
+        request = NewOfflineDevicesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewOfflineDevicesResponse()
     err = c.Send(request, response)
@@ -1543,6 +2338,24 @@ func (c *Client) RebootDevices(request *RebootDevicesRequest) (response *RebootD
     return
 }
 
+// RebootDevices
+// 重启机器
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) RebootDevicesWithContext(ctx context.Context, request *RebootDevicesRequest) (response *RebootDevicesResponse, err error) {
+    if request == nil {
+        request = NewRebootDevicesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewRebootDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRecoverDevicesRequest() (request *RecoverDevicesRequest) {
     request = &RecoverDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1570,6 +2383,23 @@ func (c *Client) RecoverDevices(request *RecoverDevicesRequest) (response *Recov
     if request == nil {
         request = NewRecoverDevicesRequest()
     }
+    
+    response = NewRecoverDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// RecoverDevices
+// 恢复回收站中的物理机（仅限后付费的物理机）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) RecoverDevicesWithContext(ctx context.Context, request *RecoverDevicesRequest) (response *RecoverDevicesResponse, err error) {
+    if request == nil {
+        request = NewRecoverDevicesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewRecoverDevicesResponse()
     err = c.Send(request, response)
@@ -1605,6 +2435,25 @@ func (c *Client) ReloadDeviceOs(request *ReloadDeviceOsRequest) (response *Reloa
     if request == nil {
         request = NewReloadDeviceOsRequest()
     }
+    
+    response = NewReloadDeviceOsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ReloadDeviceOs
+// 重装操作系统
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXISTREPAIRTASK = "FailedOperation.ExistRepairTask"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ReloadDeviceOsWithContext(ctx context.Context, request *ReloadDeviceOsRequest) (response *ReloadDeviceOsResponse, err error) {
+    if request == nil {
+        request = NewReloadDeviceOsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewReloadDeviceOsResponse()
     err = c.Send(request, response)
@@ -1689,6 +2538,68 @@ func (c *Client) RepairTaskControl(request *RepairTaskControlRequest) (response 
     return
 }
 
+// RepairTaskControl
+// 此接口用于操作维修任务<br>
+//
+// 入参TaskId为维修任务ID<br>
+//
+// 入参Operate表示对维修任务的操作，支持如下取值：<br>
+//
+// AuthorizeRepair（授权维修）<br>
+//
+// Ignore（暂不提醒）<br>
+//
+// ConfirmRecovered（维修完成后，确认故障恢复）<br>
+//
+// ConfirmUnRecovered（维修完成后，确认故障未恢复，该操作已不推荐用）<br>
+//
+// NeedRepairAgain（维修完成后，故障未恢复，需要重新维修，推荐用此操作打回）<br>
+//
+// 入参OperateRemark仅在Operate为NeedRepairAgain时有效，表示打回重修原因，建议给出打回的具体原因。<br>
+//
+// <br>
+//
+// 操作约束（当前任务状态(TaskStatus)->对应可执行的操作）：<br>
+//
+// 未授权(1)->授权维修；暂不处理<br>
+//
+// 暂不处理(4)->授权维修<br>
+//
+// 待确认(3)->确认故障恢复；确认故障未恢复；需要重新维修<br>
+//
+// 未恢复(6)->确认故障恢复<br>
+//
+// <br>
+//
+// 对于Ping不可达故障的任务，还允许：<br>
+//
+// 未授权->确认故障恢复<br>
+//
+// 暂不处理->确认故障恢复<br>
+//
+// <br>
+//
+// 处理中与已恢复状态的任务不允许进行操作。<br>
+//
+// <br>
+//
+// 详细信息请访问：https://cloud.tencent.com/document/product/386/18190
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) RepairTaskControlWithContext(ctx context.Context, request *RepairTaskControlRequest) (response *RepairTaskControlResponse, err error) {
+    if request == nil {
+        request = NewRepairTaskControlRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewRepairTaskControlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResetDevicePasswordRequest() (request *ResetDevicePasswordRequest) {
     request = &ResetDevicePasswordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1718,6 +2629,25 @@ func (c *Client) ResetDevicePassword(request *ResetDevicePasswordRequest) (respo
     if request == nil {
         request = NewResetDevicePasswordRequest()
     }
+    
+    response = NewResetDevicePasswordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ResetDevicePassword
+// 重置服务器密码
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ResetDevicePasswordWithContext(ctx context.Context, request *ResetDevicePasswordRequest) (response *ResetDevicePasswordResponse, err error) {
+    if request == nil {
+        request = NewResetDevicePasswordRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewResetDevicePasswordResponse()
     err = c.Send(request, response)
@@ -1757,6 +2687,23 @@ func (c *Client) ReturnDevices(request *ReturnDevicesRequest) (response *ReturnD
     return
 }
 
+// ReturnDevices
+// 退回物理机至回收站，支持批量退还不同计费模式的物理机（包括预付费、后付费、预付费转后付费）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ReturnDevicesWithContext(ctx context.Context, request *ReturnDevicesRequest) (response *ReturnDevicesResponse, err error) {
+    if request == nil {
+        request = NewReturnDevicesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewReturnDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRunUserCmdRequest() (request *RunUserCmdRequest) {
     request = &RunUserCmdRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1785,6 +2732,24 @@ func (c *Client) RunUserCmd(request *RunUserCmdRequest) (response *RunUserCmdRes
     if request == nil {
         request = NewRunUserCmdRequest()
     }
+    
+    response = NewRunUserCmdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// RunUserCmd
+// 运行自定义脚本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RunUserCmdWithContext(ctx context.Context, request *RunUserCmdRequest) (response *RunUserCmdResponse, err error) {
+    if request == nil {
+        request = NewRunUserCmdRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewRunUserCmdResponse()
     err = c.Send(request, response)
@@ -1826,6 +2791,25 @@ func (c *Client) SetOutBandVpnAuthPassword(request *SetOutBandVpnAuthPasswordReq
     return
 }
 
+// SetOutBandVpnAuthPassword
+// 设置带外VPN认证用户密码
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SetOutBandVpnAuthPasswordWithContext(ctx context.Context, request *SetOutBandVpnAuthPasswordRequest) (response *SetOutBandVpnAuthPasswordResponse, err error) {
+    if request == nil {
+        request = NewSetOutBandVpnAuthPasswordRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewSetOutBandVpnAuthPasswordResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewShutdownDevicesRequest() (request *ShutdownDevicesRequest) {
     request = &ShutdownDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1854,6 +2838,24 @@ func (c *Client) ShutdownDevices(request *ShutdownDevicesRequest) (response *Shu
     if request == nil {
         request = NewShutdownDevicesRequest()
     }
+    
+    response = NewShutdownDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ShutdownDevices
+// 关闭服务器
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ShutdownDevicesWithContext(ctx context.Context, request *ShutdownDevicesRequest) (response *ShutdownDevicesResponse, err error) {
+    if request == nil {
+        request = NewShutdownDevicesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewShutdownDevicesResponse()
     err = c.Send(request, response)
@@ -1894,6 +2896,24 @@ func (c *Client) StartDevices(request *StartDevicesRequest) (response *StartDevi
     return
 }
 
+// StartDevices
+// 开启服务器
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) StartDevicesWithContext(ctx context.Context, request *StartDevicesRequest) (response *StartDevicesResponse, err error) {
+    if request == nil {
+        request = NewStartDevicesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewStartDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUnbindPsaTagRequest() (request *UnbindPsaTagRequest) {
     request = &UnbindPsaTagRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1922,6 +2942,24 @@ func (c *Client) UnbindPsaTag(request *UnbindPsaTagRequest) (response *UnbindPsa
     if request == nil {
         request = NewUnbindPsaTagRequest()
     }
+    
+    response = NewUnbindPsaTagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UnbindPsaTag
+// 解除标签与预授权规则的绑定
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) UnbindPsaTagWithContext(ctx context.Context, request *UnbindPsaTagRequest) (response *UnbindPsaTagResponse, err error) {
+    if request == nil {
+        request = NewUnbindPsaTagRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUnbindPsaTagResponse()
     err = c.Send(request, response)

@@ -15,6 +15,7 @@
 package v20210527
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -88,6 +89,35 @@ func (c *Client) AddUserContact(request *AddUserContactRequest) (response *AddUs
     return
 }
 
+// AddUserContact
+// 添加邮件接收联系人的姓名， 邮件地址，返回值为添加成功的联系人id。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AddUserContactWithContext(ctx context.Context, request *AddUserContactRequest) (response *AddUserContactResponse, err error) {
+    if request == nil {
+        request = NewAddUserContactRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewAddUserContactResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDBDiagReportTaskRequest() (request *CreateDBDiagReportTaskRequest) {
     request = &CreateDBDiagReportTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -126,6 +156,34 @@ func (c *Client) CreateDBDiagReportTask(request *CreateDBDiagReportTaskRequest) 
     if request == nil {
         request = NewCreateDBDiagReportTaskRequest()
     }
+    
+    response = NewCreateDBDiagReportTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateDBDiagReportTask
+// 创建健康报告，并可以选择是否发送邮件。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDBDiagReportTaskWithContext(ctx context.Context, request *CreateDBDiagReportTaskRequest) (response *CreateDBDiagReportTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateDBDiagReportTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateDBDiagReportTaskResponse()
     err = c.Send(request, response)
@@ -176,6 +234,34 @@ func (c *Client) CreateDBDiagReportUrl(request *CreateDBDiagReportUrlRequest) (r
     return
 }
 
+// CreateDBDiagReportUrl
+// 创建健康报告的浏览地址。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDBDiagReportUrlWithContext(ctx context.Context, request *CreateDBDiagReportUrlRequest) (response *CreateDBDiagReportUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateDBDiagReportUrlRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateDBDiagReportUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateMailProfileRequest() (request *CreateMailProfileRequest) {
     request = &CreateMailProfileRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -214,6 +300,34 @@ func (c *Client) CreateMailProfile(request *CreateMailProfileRequest) (response 
     if request == nil {
         request = NewCreateMailProfileRequest()
     }
+    
+    response = NewCreateMailProfileResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateMailProfile
+// 创建邮件配置。其中入参ProfileType表示所创建配置的类型，ProfileType 取值包括：dbScan_mail_configuration（数据库巡检邮件配置）、scheduler_mail_configuration（定期生成健康报告的邮件发送配置）。Region统一选择广州，和实例所属地域无关。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateMailProfileWithContext(ctx context.Context, request *CreateMailProfileRequest) (response *CreateMailProfileResponse, err error) {
+    if request == nil {
+        request = NewCreateMailProfileRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateMailProfileResponse()
     err = c.Send(request, response)
@@ -265,6 +379,35 @@ func (c *Client) CreateSchedulerMailProfile(request *CreateSchedulerMailProfileR
     return
 }
 
+// CreateSchedulerMailProfile
+// 该接口用于创建定期生成健康报告并邮件发送的配置，将健康报告的定期生成时间作为参数传入（周一至周日），用于设置健康报告的定期生成时间，同时保存相应的定期邮件发送的配置。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateSchedulerMailProfileWithContext(ctx context.Context, request *CreateSchedulerMailProfileRequest) (response *CreateSchedulerMailProfileResponse, err error) {
+    if request == nil {
+        request = NewCreateSchedulerMailProfileRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateSchedulerMailProfileResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSecurityAuditLogExportTaskRequest() (request *CreateSecurityAuditLogExportTaskRequest) {
     request = &CreateSecurityAuditLogExportTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -303,6 +446,34 @@ func (c *Client) CreateSecurityAuditLogExportTask(request *CreateSecurityAuditLo
     if request == nil {
         request = NewCreateSecurityAuditLogExportTaskRequest()
     }
+    
+    response = NewCreateSecurityAuditLogExportTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateSecurityAuditLogExportTask
+// 创建安全审计日志导出任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateSecurityAuditLogExportTaskWithContext(ctx context.Context, request *CreateSecurityAuditLogExportTaskRequest) (response *CreateSecurityAuditLogExportTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateSecurityAuditLogExportTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateSecurityAuditLogExportTaskResponse()
     err = c.Send(request, response)
@@ -353,6 +524,34 @@ func (c *Client) DeleteSecurityAuditLogExportTasks(request *DeleteSecurityAuditL
     return
 }
 
+// DeleteSecurityAuditLogExportTasks
+// 删除安全审计日志导出任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteSecurityAuditLogExportTasksWithContext(ctx context.Context, request *DeleteSecurityAuditLogExportTasksRequest) (response *DeleteSecurityAuditLogExportTasksResponse, err error) {
+    if request == nil {
+        request = NewDeleteSecurityAuditLogExportTasksRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteSecurityAuditLogExportTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAllUserContactRequest() (request *DescribeAllUserContactRequest) {
     request = &DescribeAllUserContactRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -391,6 +590,34 @@ func (c *Client) DescribeAllUserContact(request *DescribeAllUserContactRequest) 
     if request == nil {
         request = NewDescribeAllUserContactRequest()
     }
+    
+    response = NewDescribeAllUserContactResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAllUserContact
+// 获取邮件发送中联系人的相关信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAllUserContactWithContext(ctx context.Context, request *DescribeAllUserContactRequest) (response *DescribeAllUserContactResponse, err error) {
+    if request == nil {
+        request = NewDescribeAllUserContactRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAllUserContactResponse()
     err = c.Send(request, response)
@@ -441,6 +668,34 @@ func (c *Client) DescribeAllUserGroup(request *DescribeAllUserGroupRequest) (res
     return
 }
 
+// DescribeAllUserGroup
+// 获取邮件发送联系组的相关信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAllUserGroupWithContext(ctx context.Context, request *DescribeAllUserGroupRequest) (response *DescribeAllUserGroupResponse, err error) {
+    if request == nil {
+        request = NewDescribeAllUserGroupRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAllUserGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBDiagEventRequest() (request *DescribeDBDiagEventRequest) {
     request = &DescribeDBDiagEventRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -479,6 +734,34 @@ func (c *Client) DescribeDBDiagEvent(request *DescribeDBDiagEventRequest) (respo
     if request == nil {
         request = NewDescribeDBDiagEventRequest()
     }
+    
+    response = NewDescribeDBDiagEventResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeDBDiagEvent
+// 获取实例异常诊断事件的详情信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDBDiagEventWithContext(ctx context.Context, request *DescribeDBDiagEventRequest) (response *DescribeDBDiagEventResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBDiagEventRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeDBDiagEventResponse()
     err = c.Send(request, response)
@@ -529,6 +812,34 @@ func (c *Client) DescribeDBDiagEvents(request *DescribeDBDiagEventsRequest) (res
     return
 }
 
+// DescribeDBDiagEvents
+// 获取指定时间段内的诊断事件列表，支持依据风险等级、实例ID等条件过滤。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDBDiagEventsWithContext(ctx context.Context, request *DescribeDBDiagEventsRequest) (response *DescribeDBDiagEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBDiagEventsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBDiagEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBDiagHistoryRequest() (request *DescribeDBDiagHistoryRequest) {
     request = &DescribeDBDiagHistoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -567,6 +878,34 @@ func (c *Client) DescribeDBDiagHistory(request *DescribeDBDiagHistoryRequest) (r
     if request == nil {
         request = NewDescribeDBDiagHistoryRequest()
     }
+    
+    response = NewDescribeDBDiagHistoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeDBDiagHistory
+// 获取实例诊断事件的列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDBDiagHistoryWithContext(ctx context.Context, request *DescribeDBDiagHistoryRequest) (response *DescribeDBDiagHistoryResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBDiagHistoryRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeDBDiagHistoryResponse()
     err = c.Send(request, response)
@@ -617,6 +956,34 @@ func (c *Client) DescribeDBDiagReportTasks(request *DescribeDBDiagReportTasksReq
     return
 }
 
+// DescribeDBDiagReportTasks
+// 查询健康报告生成任务列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDBDiagReportTasksWithContext(ctx context.Context, request *DescribeDBDiagReportTasksRequest) (response *DescribeDBDiagReportTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBDiagReportTasksRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBDiagReportTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBSpaceStatusRequest() (request *DescribeDBSpaceStatusRequest) {
     request = &DescribeDBSpaceStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -655,6 +1022,34 @@ func (c *Client) DescribeDBSpaceStatus(request *DescribeDBSpaceStatusRequest) (r
     if request == nil {
         request = NewDescribeDBSpaceStatusRequest()
     }
+    
+    response = NewDescribeDBSpaceStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeDBSpaceStatus
+// 获取指定时间段内的实例空间使用概览，包括磁盘增长量(MB)、磁盘剩余(MB)、磁盘总量(MB)及预计可用天数。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDBSpaceStatusWithContext(ctx context.Context, request *DescribeDBSpaceStatusRequest) (response *DescribeDBSpaceStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBSpaceStatusRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeDBSpaceStatusResponse()
     err = c.Send(request, response)
@@ -706,6 +1101,35 @@ func (c *Client) DescribeDiagDBInstances(request *DescribeDiagDBInstancesRequest
     return
 }
 
+// DescribeDiagDBInstances
+// 获取实例信息列表。Region统一选择广州。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDiagDBInstancesWithContext(ctx context.Context, request *DescribeDiagDBInstancesRequest) (response *DescribeDiagDBInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDiagDBInstancesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDiagDBInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeHealthScoreRequest() (request *DescribeHealthScoreRequest) {
     request = &DescribeHealthScoreRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -745,6 +1169,35 @@ func (c *Client) DescribeHealthScore(request *DescribeHealthScoreRequest) (respo
     if request == nil {
         request = NewDescribeHealthScoreRequest()
     }
+    
+    response = NewDescribeHealthScoreResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeHealthScore
+// 根据实例ID获取指定时间段（30分钟）的健康得分，以及异常扣分项。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeHealthScoreWithContext(ctx context.Context, request *DescribeHealthScoreRequest) (response *DescribeHealthScoreResponse, err error) {
+    if request == nil {
+        request = NewDescribeHealthScoreRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeHealthScoreResponse()
     err = c.Send(request, response)
@@ -795,6 +1248,34 @@ func (c *Client) DescribeMailProfile(request *DescribeMailProfileRequest) (respo
     return
 }
 
+// DescribeMailProfile
+// 获取发送邮件的配置， 包括数据库巡检的邮件配置以及定期生成健康报告的邮件发送配置。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeMailProfileWithContext(ctx context.Context, request *DescribeMailProfileRequest) (response *DescribeMailProfileResponse, err error) {
+    if request == nil {
+        request = NewDescribeMailProfileRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeMailProfileResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMySqlProcessListRequest() (request *DescribeMySqlProcessListRequest) {
     request = &DescribeMySqlProcessListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -833,6 +1314,34 @@ func (c *Client) DescribeMySqlProcessList(request *DescribeMySqlProcessListReque
     if request == nil {
         request = NewDescribeMySqlProcessListRequest()
     }
+    
+    response = NewDescribeMySqlProcessListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeMySqlProcessList
+// 查询关系型数据库的实时线程列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeMySqlProcessListWithContext(ctx context.Context, request *DescribeMySqlProcessListRequest) (response *DescribeMySqlProcessListResponse, err error) {
+    if request == nil {
+        request = NewDescribeMySqlProcessListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeMySqlProcessListResponse()
     err = c.Send(request, response)
@@ -883,6 +1392,34 @@ func (c *Client) DescribeSecurityAuditLogDownloadUrls(request *DescribeSecurityA
     return
 }
 
+// DescribeSecurityAuditLogDownloadUrls
+// 查询安全审计日志导出文件下载链接。目前日志文件下载仅提供腾讯云内网地址，请通过广州地域的腾讯云服务器进行下载。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSecurityAuditLogDownloadUrlsWithContext(ctx context.Context, request *DescribeSecurityAuditLogDownloadUrlsRequest) (response *DescribeSecurityAuditLogDownloadUrlsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityAuditLogDownloadUrlsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeSecurityAuditLogDownloadUrlsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSecurityAuditLogExportTasksRequest() (request *DescribeSecurityAuditLogExportTasksRequest) {
     request = &DescribeSecurityAuditLogExportTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -921,6 +1458,34 @@ func (c *Client) DescribeSecurityAuditLogExportTasks(request *DescribeSecurityAu
     if request == nil {
         request = NewDescribeSecurityAuditLogExportTasksRequest()
     }
+    
+    response = NewDescribeSecurityAuditLogExportTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeSecurityAuditLogExportTasks
+// 查询安全审计日志导出任务列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSecurityAuditLogExportTasksWithContext(ctx context.Context, request *DescribeSecurityAuditLogExportTasksRequest) (response *DescribeSecurityAuditLogExportTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityAuditLogExportTasksRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeSecurityAuditLogExportTasksResponse()
     err = c.Send(request, response)
@@ -971,6 +1536,34 @@ func (c *Client) DescribeSlowLogTimeSeriesStats(request *DescribeSlowLogTimeSeri
     return
 }
 
+// DescribeSlowLogTimeSeriesStats
+// 获取慢日志统计柱状图。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSlowLogTimeSeriesStatsWithContext(ctx context.Context, request *DescribeSlowLogTimeSeriesStatsRequest) (response *DescribeSlowLogTimeSeriesStatsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSlowLogTimeSeriesStatsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeSlowLogTimeSeriesStatsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSlowLogTopSqlsRequest() (request *DescribeSlowLogTopSqlsRequest) {
     request = &DescribeSlowLogTopSqlsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1009,6 +1602,34 @@ func (c *Client) DescribeSlowLogTopSqls(request *DescribeSlowLogTopSqlsRequest) 
     if request == nil {
         request = NewDescribeSlowLogTopSqlsRequest()
     }
+    
+    response = NewDescribeSlowLogTopSqlsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeSlowLogTopSqls
+// 按照Sql模板+schema的聚合方式，统计排序指定时间段内的top慢sql。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSlowLogTopSqlsWithContext(ctx context.Context, request *DescribeSlowLogTopSqlsRequest) (response *DescribeSlowLogTopSqlsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSlowLogTopSqlsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeSlowLogTopSqlsResponse()
     err = c.Send(request, response)
@@ -1059,6 +1680,34 @@ func (c *Client) DescribeSlowLogUserHostStats(request *DescribeSlowLogUserHostSt
     return
 }
 
+// DescribeSlowLogUserHostStats
+// 获取慢日志来源地址统计分布图。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSlowLogUserHostStatsWithContext(ctx context.Context, request *DescribeSlowLogUserHostStatsRequest) (response *DescribeSlowLogUserHostStatsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSlowLogUserHostStatsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeSlowLogUserHostStatsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTopSpaceSchemaTimeSeriesRequest() (request *DescribeTopSpaceSchemaTimeSeriesRequest) {
     request = &DescribeTopSpaceSchemaTimeSeriesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1097,6 +1746,34 @@ func (c *Client) DescribeTopSpaceSchemaTimeSeries(request *DescribeTopSpaceSchem
     if request == nil {
         request = NewDescribeTopSpaceSchemaTimeSeriesRequest()
     }
+    
+    response = NewDescribeTopSpaceSchemaTimeSeriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeTopSpaceSchemaTimeSeries
+// 获取实例占用空间最大的前几个库在指定时间段内的每日由DBbrain定时采集的空间数据，默认返回按大小排序。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTopSpaceSchemaTimeSeriesWithContext(ctx context.Context, request *DescribeTopSpaceSchemaTimeSeriesRequest) (response *DescribeTopSpaceSchemaTimeSeriesResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopSpaceSchemaTimeSeriesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeTopSpaceSchemaTimeSeriesResponse()
     err = c.Send(request, response)
@@ -1147,6 +1824,34 @@ func (c *Client) DescribeTopSpaceSchemas(request *DescribeTopSpaceSchemasRequest
     return
 }
 
+// DescribeTopSpaceSchemas
+// 获取实例Top库的实时空间统计信息，默认返回按大小排序。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTopSpaceSchemasWithContext(ctx context.Context, request *DescribeTopSpaceSchemasRequest) (response *DescribeTopSpaceSchemasResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopSpaceSchemasRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeTopSpaceSchemasResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTopSpaceTableTimeSeriesRequest() (request *DescribeTopSpaceTableTimeSeriesRequest) {
     request = &DescribeTopSpaceTableTimeSeriesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1185,6 +1890,34 @@ func (c *Client) DescribeTopSpaceTableTimeSeries(request *DescribeTopSpaceTableT
     if request == nil {
         request = NewDescribeTopSpaceTableTimeSeriesRequest()
     }
+    
+    response = NewDescribeTopSpaceTableTimeSeriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeTopSpaceTableTimeSeries
+// 获取实例占用空间最大的前几张表在指定时间段内的每日由DBbrain定时采集的空间数据，默认返回按大小排序。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTopSpaceTableTimeSeriesWithContext(ctx context.Context, request *DescribeTopSpaceTableTimeSeriesRequest) (response *DescribeTopSpaceTableTimeSeriesResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopSpaceTableTimeSeriesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeTopSpaceTableTimeSeriesResponse()
     err = c.Send(request, response)
@@ -1235,6 +1968,34 @@ func (c *Client) DescribeTopSpaceTables(request *DescribeTopSpaceTablesRequest) 
     return
 }
 
+// DescribeTopSpaceTables
+// 获取实例Top表的实时空间统计信息，默认返回按大小排序。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTopSpaceTablesWithContext(ctx context.Context, request *DescribeTopSpaceTablesRequest) (response *DescribeTopSpaceTablesResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopSpaceTablesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeTopSpaceTablesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserSqlAdviceRequest() (request *DescribeUserSqlAdviceRequest) {
     request = &DescribeUserSqlAdviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1273,6 +2034,34 @@ func (c *Client) DescribeUserSqlAdvice(request *DescribeUserSqlAdviceRequest) (r
     if request == nil {
         request = NewDescribeUserSqlAdviceRequest()
     }
+    
+    response = NewDescribeUserSqlAdviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeUserSqlAdvice
+// 获取SQL优化建议。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeUserSqlAdviceWithContext(ctx context.Context, request *DescribeUserSqlAdviceRequest) (response *DescribeUserSqlAdviceResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserSqlAdviceRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeUserSqlAdviceResponse()
     err = c.Send(request, response)
@@ -1324,6 +2113,35 @@ func (c *Client) KillMySqlThreads(request *KillMySqlThreadsRequest) (response *K
     return
 }
 
+// KillMySqlThreads
+// 根据会话ID中断当前会话，该接口分为两次提交：第一次为预提交阶段，Stage为"Prepare"，得到的返回值包含SqlExecId；第二次为确认提交， Stage为"Commit"， 将SqlExecId的值作为参数传入，最终终止会话进程。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) KillMySqlThreadsWithContext(ctx context.Context, request *KillMySqlThreadsRequest) (response *KillMySqlThreadsResponse, err error) {
+    if request == nil {
+        request = NewKillMySqlThreadsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewKillMySqlThreadsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDiagDBInstanceConfRequest() (request *ModifyDiagDBInstanceConfRequest) {
     request = &ModifyDiagDBInstanceConfRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1362,6 +2180,34 @@ func (c *Client) ModifyDiagDBInstanceConf(request *ModifyDiagDBInstanceConfReque
     if request == nil {
         request = NewModifyDiagDBInstanceConfRequest()
     }
+    
+    response = NewModifyDiagDBInstanceConfResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyDiagDBInstanceConf
+// 修改实例巡检开关。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDiagDBInstanceConfWithContext(ctx context.Context, request *ModifyDiagDBInstanceConfRequest) (response *ModifyDiagDBInstanceConfResponse, err error) {
+    if request == nil {
+        request = NewModifyDiagDBInstanceConfRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyDiagDBInstanceConfResponse()
     err = c.Send(request, response)

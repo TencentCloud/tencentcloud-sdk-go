@@ -15,6 +15,7 @@
 package v20200309
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -92,6 +93,39 @@ func (c *Client) AssociateDDoSEipAddress(request *AssociateDDoSEipAddressRequest
     return
 }
 
+// AssociateDDoSEipAddress
+// 本接口 (AssociateDDoSEipAddress) 用于将高防弹性公网IP绑定到实例或弹性网卡的指定内网 IP 上。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AssociateDDoSEipAddressWithContext(ctx context.Context, request *AssociateDDoSEipAddressRequest) (response *AssociateDDoSEipAddressResponse, err error) {
+    if request == nil {
+        request = NewAssociateDDoSEipAddressRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewAssociateDDoSEipAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAssociateDDoSEipLoadBalancerRequest() (request *AssociateDDoSEipLoadBalancerRequest) {
     request = &AssociateDDoSEipLoadBalancerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -141,6 +175,39 @@ func (c *Client) AssociateDDoSEipLoadBalancer(request *AssociateDDoSEipLoadBalan
     return
 }
 
+// AssociateDDoSEipLoadBalancer
+// 本接口 (AssociateDDoSEipLoadBalancer) 用于将高防弹性公网IP绑定到负载均衡指定内网 IP 上。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AssociateDDoSEipLoadBalancerWithContext(ctx context.Context, request *AssociateDDoSEipLoadBalancerRequest) (response *AssociateDDoSEipLoadBalancerResponse, err error) {
+    if request == nil {
+        request = NewAssociateDDoSEipLoadBalancerRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewAssociateDDoSEipLoadBalancerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBlackWhiteIpListRequest() (request *CreateBlackWhiteIpListRequest) {
     request = &CreateBlackWhiteIpListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -169,6 +236,24 @@ func (c *Client) CreateBlackWhiteIpList(request *CreateBlackWhiteIpListRequest) 
     if request == nil {
         request = NewCreateBlackWhiteIpListRequest()
     }
+    
+    response = NewCreateBlackWhiteIpListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateBlackWhiteIpList
+// 添加DDoS防护的IP黑白名单
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateBlackWhiteIpListWithContext(ctx context.Context, request *CreateBlackWhiteIpListRequest) (response *CreateBlackWhiteIpListResponse, err error) {
+    if request == nil {
+        request = NewCreateBlackWhiteIpListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateBlackWhiteIpListResponse()
     err = c.Send(request, response)
@@ -209,6 +294,24 @@ func (c *Client) CreateBoundIP(request *CreateBoundIPRequest) (response *CreateB
     return
 }
 
+// CreateBoundIP
+// 绑定IP到高防包实例，支持独享包、共享包；需要注意的是此接口绑定或解绑IP是异步接口，当处于绑定或解绑中时，则不允许再进行绑定或解绑，需要等待当前绑定或解绑完成。
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateBoundIPWithContext(ctx context.Context, request *CreateBoundIPRequest) (response *CreateBoundIPResponse, err error) {
+    if request == nil {
+        request = NewCreateBoundIPRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateBoundIPResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDDoSAIRequest() (request *CreateDDoSAIRequest) {
     request = &CreateDDoSAIRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -237,6 +340,24 @@ func (c *Client) CreateDDoSAI(request *CreateDDoSAIRequest) (response *CreateDDo
     if request == nil {
         request = NewCreateDDoSAIRequest()
     }
+    
+    response = NewCreateDDoSAIResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateDDoSAI
+// 设置DDoS防护的AI防护开关
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDDoSAIWithContext(ctx context.Context, request *CreateDDoSAIRequest) (response *CreateDDoSAIResponse, err error) {
+    if request == nil {
+        request = NewCreateDDoSAIRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateDDoSAIResponse()
     err = c.Send(request, response)
@@ -277,6 +398,24 @@ func (c *Client) CreateDDoSBlackWhiteIpList(request *CreateDDoSBlackWhiteIpListR
     return
 }
 
+// CreateDDoSBlackWhiteIpList
+// 添加DDoS防护的IP网段黑白名单
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDDoSBlackWhiteIpListWithContext(ctx context.Context, request *CreateDDoSBlackWhiteIpListRequest) (response *CreateDDoSBlackWhiteIpListResponse, err error) {
+    if request == nil {
+        request = NewCreateDDoSBlackWhiteIpListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateDDoSBlackWhiteIpListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDDoSGeoIPBlockConfigRequest() (request *CreateDDoSGeoIPBlockConfigRequest) {
     request = &CreateDDoSGeoIPBlockConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -304,6 +443,23 @@ func (c *Client) CreateDDoSGeoIPBlockConfig(request *CreateDDoSGeoIPBlockConfigR
     if request == nil {
         request = NewCreateDDoSGeoIPBlockConfigRequest()
     }
+    
+    response = NewCreateDDoSGeoIPBlockConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateDDoSGeoIPBlockConfig
+// 添加DDoS防护的区域封禁配置
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDDoSGeoIPBlockConfigWithContext(ctx context.Context, request *CreateDDoSGeoIPBlockConfigRequest) (response *CreateDDoSGeoIPBlockConfigResponse, err error) {
+    if request == nil {
+        request = NewCreateDDoSGeoIPBlockConfigRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateDDoSGeoIPBlockConfigResponse()
     err = c.Send(request, response)
@@ -342,6 +498,22 @@ func (c *Client) CreateDDoSSpeedLimitConfig(request *CreateDDoSSpeedLimitConfigR
     return
 }
 
+// CreateDDoSSpeedLimitConfig
+// 添加DDoS防护的访问限速配置
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) CreateDDoSSpeedLimitConfigWithContext(ctx context.Context, request *CreateDDoSSpeedLimitConfigRequest) (response *CreateDDoSSpeedLimitConfigResponse, err error) {
+    if request == nil {
+        request = NewCreateDDoSSpeedLimitConfigRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateDDoSSpeedLimitConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDefaultAlarmThresholdRequest() (request *CreateDefaultAlarmThresholdRequest) {
     request = &CreateDefaultAlarmThresholdRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -374,6 +546,22 @@ func (c *Client) CreateDefaultAlarmThreshold(request *CreateDefaultAlarmThreshol
     return
 }
 
+// CreateDefaultAlarmThreshold
+// 设置单IP默认告警阈值配置
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
+func (c *Client) CreateDefaultAlarmThresholdWithContext(ctx context.Context, request *CreateDefaultAlarmThresholdRequest) (response *CreateDefaultAlarmThresholdResponse, err error) {
+    if request == nil {
+        request = NewCreateDefaultAlarmThresholdRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateDefaultAlarmThresholdResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateIPAlarmThresholdConfigRequest() (request *CreateIPAlarmThresholdConfigRequest) {
     request = &CreateIPAlarmThresholdConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -400,6 +588,22 @@ func (c *Client) CreateIPAlarmThresholdConfig(request *CreateIPAlarmThresholdCon
     if request == nil {
         request = NewCreateIPAlarmThresholdConfigRequest()
     }
+    
+    response = NewCreateIPAlarmThresholdConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateIPAlarmThresholdConfig
+// 设置单IP告警阈值配置
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
+func (c *Client) CreateIPAlarmThresholdConfigWithContext(ctx context.Context, request *CreateIPAlarmThresholdConfigRequest) (response *CreateIPAlarmThresholdConfigResponse, err error) {
+    if request == nil {
+        request = NewCreateIPAlarmThresholdConfigRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateIPAlarmThresholdConfigResponse()
     err = c.Send(request, response)
@@ -444,6 +648,28 @@ func (c *Client) CreateL7RuleCerts(request *CreateL7RuleCertsRequest) (response 
     return
 }
 
+// CreateL7RuleCerts
+// 批量配置L7转发规则的证书供SSL测调用
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateL7RuleCertsWithContext(ctx context.Context, request *CreateL7RuleCertsRequest) (response *CreateL7RuleCertsResponse, err error) {
+    if request == nil {
+        request = NewCreateL7RuleCertsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateL7RuleCertsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePacketFilterConfigRequest() (request *CreatePacketFilterConfigRequest) {
     request = &CreatePacketFilterConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -476,6 +702,22 @@ func (c *Client) CreatePacketFilterConfig(request *CreatePacketFilterConfigReque
     return
 }
 
+// CreatePacketFilterConfig
+// 添加DDoS防护的特征过滤规则
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreatePacketFilterConfigWithContext(ctx context.Context, request *CreatePacketFilterConfigRequest) (response *CreatePacketFilterConfigResponse, err error) {
+    if request == nil {
+        request = NewCreatePacketFilterConfigRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreatePacketFilterConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateProtocolBlockConfigRequest() (request *CreateProtocolBlockConfigRequest) {
     request = &CreateProtocolBlockConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -502,6 +744,22 @@ func (c *Client) CreateProtocolBlockConfig(request *CreateProtocolBlockConfigReq
     if request == nil {
         request = NewCreateProtocolBlockConfigRequest()
     }
+    
+    response = NewCreateProtocolBlockConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateProtocolBlockConfig
+// 设置DDoS防护的协议封禁配置
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateProtocolBlockConfigWithContext(ctx context.Context, request *CreateProtocolBlockConfigRequest) (response *CreateProtocolBlockConfigResponse, err error) {
+    if request == nil {
+        request = NewCreateProtocolBlockConfigRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateProtocolBlockConfigResponse()
     err = c.Send(request, response)
@@ -549,6 +807,31 @@ func (c *Client) CreateSchedulingDomain(request *CreateSchedulingDomainRequest) 
     return
 }
 
+// CreateSchedulingDomain
+// 创建一个域名，可用于在封堵时调度切换IP
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateSchedulingDomainWithContext(ctx context.Context, request *CreateSchedulingDomainRequest) (response *CreateSchedulingDomainResponse, err error) {
+    if request == nil {
+        request = NewCreateSchedulingDomainRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateSchedulingDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateWaterPrintConfigRequest() (request *CreateWaterPrintConfigRequest) {
     request = &CreateWaterPrintConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -583,6 +866,24 @@ func (c *Client) CreateWaterPrintConfig(request *CreateWaterPrintConfigRequest) 
     return
 }
 
+// CreateWaterPrintConfig
+// 添加DDoS防护的水印防护配置
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateWaterPrintConfigWithContext(ctx context.Context, request *CreateWaterPrintConfigRequest) (response *CreateWaterPrintConfigResponse, err error) {
+    if request == nil {
+        request = NewCreateWaterPrintConfigRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateWaterPrintConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateWaterPrintKeyRequest() (request *CreateWaterPrintKeyRequest) {
     request = &CreateWaterPrintKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -605,10 +906,30 @@ func NewCreateWaterPrintKeyResponse() (response *CreateWaterPrintKeyResponse) {
 //
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateWaterPrintKey(request *CreateWaterPrintKeyRequest) (response *CreateWaterPrintKeyResponse, err error) {
     if request == nil {
         request = NewCreateWaterPrintKeyRequest()
     }
+    
+    response = NewCreateWaterPrintKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateWaterPrintKey
+// 添加DDoS防护的水印防护密钥
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateWaterPrintKeyWithContext(ctx context.Context, request *CreateWaterPrintKeyRequest) (response *CreateWaterPrintKeyResponse, err error) {
+    if request == nil {
+        request = NewCreateWaterPrintKeyRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateWaterPrintKeyResponse()
     err = c.Send(request, response)
@@ -648,6 +969,23 @@ func (c *Client) DeleteBlackWhiteIpList(request *DeleteBlackWhiteIpListRequest) 
     return
 }
 
+// DeleteBlackWhiteIpList
+// 删除DDoS防护的IP黑白名单
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteBlackWhiteIpListWithContext(ctx context.Context, request *DeleteBlackWhiteIpListRequest) (response *DeleteBlackWhiteIpListResponse, err error) {
+    if request == nil {
+        request = NewDeleteBlackWhiteIpListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteBlackWhiteIpListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteDDoSBlackWhiteIpListRequest() (request *DeleteDDoSBlackWhiteIpListRequest) {
     request = &DeleteDDoSBlackWhiteIpListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -675,6 +1013,23 @@ func (c *Client) DeleteDDoSBlackWhiteIpList(request *DeleteDDoSBlackWhiteIpListR
     if request == nil {
         request = NewDeleteDDoSBlackWhiteIpListRequest()
     }
+    
+    response = NewDeleteDDoSBlackWhiteIpListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteDDoSBlackWhiteIpList
+// 删除DDoS防护的IP网段黑白名单
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteDDoSBlackWhiteIpListWithContext(ctx context.Context, request *DeleteDDoSBlackWhiteIpListRequest) (response *DeleteDDoSBlackWhiteIpListResponse, err error) {
+    if request == nil {
+        request = NewDeleteDDoSBlackWhiteIpListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteDDoSBlackWhiteIpListResponse()
     err = c.Send(request, response)
@@ -713,6 +1068,22 @@ func (c *Client) DeleteDDoSGeoIPBlockConfig(request *DeleteDDoSGeoIPBlockConfigR
     return
 }
 
+// DeleteDDoSGeoIPBlockConfig
+// 删除DDoS防护的区域封禁配置
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteDDoSGeoIPBlockConfigWithContext(ctx context.Context, request *DeleteDDoSGeoIPBlockConfigRequest) (response *DeleteDDoSGeoIPBlockConfigResponse, err error) {
+    if request == nil {
+        request = NewDeleteDDoSGeoIPBlockConfigRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteDDoSGeoIPBlockConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteDDoSSpeedLimitConfigRequest() (request *DeleteDDoSSpeedLimitConfigRequest) {
     request = &DeleteDDoSSpeedLimitConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -739,6 +1110,22 @@ func (c *Client) DeleteDDoSSpeedLimitConfig(request *DeleteDDoSSpeedLimitConfigR
     if request == nil {
         request = NewDeleteDDoSSpeedLimitConfigRequest()
     }
+    
+    response = NewDeleteDDoSSpeedLimitConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteDDoSSpeedLimitConfig
+// 删除DDoS防护的访问限速配置
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteDDoSSpeedLimitConfigWithContext(ctx context.Context, request *DeleteDDoSSpeedLimitConfigRequest) (response *DeleteDDoSSpeedLimitConfigResponse, err error) {
+    if request == nil {
+        request = NewDeleteDDoSSpeedLimitConfigRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteDDoSSpeedLimitConfigResponse()
     err = c.Send(request, response)
@@ -777,6 +1164,22 @@ func (c *Client) DeletePacketFilterConfig(request *DeletePacketFilterConfigReque
     return
 }
 
+// DeletePacketFilterConfig
+// 删除DDoS防护的特征过滤规则
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeletePacketFilterConfigWithContext(ctx context.Context, request *DeletePacketFilterConfigRequest) (response *DeletePacketFilterConfigResponse, err error) {
+    if request == nil {
+        request = NewDeletePacketFilterConfigRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeletePacketFilterConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteWaterPrintConfigRequest() (request *DeleteWaterPrintConfigRequest) {
     request = &DeleteWaterPrintConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -809,6 +1212,22 @@ func (c *Client) DeleteWaterPrintConfig(request *DeleteWaterPrintConfigRequest) 
     return
 }
 
+// DeleteWaterPrintConfig
+// 删除DDoS防护的水印防护配置
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
+func (c *Client) DeleteWaterPrintConfigWithContext(ctx context.Context, request *DeleteWaterPrintConfigRequest) (response *DeleteWaterPrintConfigResponse, err error) {
+    if request == nil {
+        request = NewDeleteWaterPrintConfigRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteWaterPrintConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteWaterPrintKeyRequest() (request *DeleteWaterPrintKeyRequest) {
     request = &DeleteWaterPrintKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -830,11 +1249,27 @@ func NewDeleteWaterPrintKeyResponse() (response *DeleteWaterPrintKeyResponse) {
 // 删除DDoS防护的水印防护密钥
 //
 // 可能返回的错误码:
-//  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteWaterPrintKey(request *DeleteWaterPrintKeyRequest) (response *DeleteWaterPrintKeyResponse, err error) {
     if request == nil {
         request = NewDeleteWaterPrintKeyRequest()
     }
+    
+    response = NewDeleteWaterPrintKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteWaterPrintKey
+// 删除DDoS防护的水印防护密钥
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteWaterPrintKeyWithContext(ctx context.Context, request *DeleteWaterPrintKeyRequest) (response *DeleteWaterPrintKeyResponse, err error) {
+    if request == nil {
+        request = NewDeleteWaterPrintKeyRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteWaterPrintKeyResponse()
     err = c.Send(request, response)
@@ -862,11 +1297,27 @@ func NewDescribeBasicDeviceStatusResponse() (response *DescribeBasicDeviceStatus
 // 获取基础防护攻击状态
 //
 // 可能返回的错误码:
-//  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBasicDeviceStatus(request *DescribeBasicDeviceStatusRequest) (response *DescribeBasicDeviceStatusResponse, err error) {
     if request == nil {
         request = NewDescribeBasicDeviceStatusRequest()
     }
+    
+    response = NewDescribeBasicDeviceStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeBasicDeviceStatus
+// 获取基础防护攻击状态
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeBasicDeviceStatusWithContext(ctx context.Context, request *DescribeBasicDeviceStatusRequest) (response *DescribeBasicDeviceStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeBasicDeviceStatusRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeBasicDeviceStatusResponse()
     err = c.Send(request, response)
@@ -908,6 +1359,31 @@ func (c *Client) DescribeBizTrend(request *DescribeBizTrendRequest) (response *D
     if request == nil {
         request = NewDescribeBizTrendRequest()
     }
+    
+    response = NewDescribeBizTrendResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeBizTrend
+// 获取业务流量曲线
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeBizTrendWithContext(ctx context.Context, request *DescribeBizTrendRequest) (response *DescribeBizTrendResponse, err error) {
+    if request == nil {
+        request = NewDescribeBizTrendRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeBizTrendResponse()
     err = c.Send(request, response)
@@ -962,6 +1438,38 @@ func (c *Client) DescribeBlackWhiteIpList(request *DescribeBlackWhiteIpListReque
     return
 }
 
+// DescribeBlackWhiteIpList
+// 获取DDoS防护的IP黑白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeBlackWhiteIpListWithContext(ctx context.Context, request *DescribeBlackWhiteIpListRequest) (response *DescribeBlackWhiteIpListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBlackWhiteIpListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeBlackWhiteIpListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCCTrendRequest() (request *DescribeCCTrendRequest) {
     request = &DescribeCCTrendRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1004,6 +1512,38 @@ func (c *Client) DescribeCCTrend(request *DescribeCCTrendRequest) (response *Des
     if request == nil {
         request = NewDescribeCCTrendRequest()
     }
+    
+    response = NewDescribeCCTrendResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCCTrend
+// 获取CC攻击指标数据，包括总请求峰值(QPS)和攻击请求(QPS)以及总请求次数和攻击请求次数
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCCTrendWithContext(ctx context.Context, request *DescribeCCTrendRequest) (response *DescribeCCTrendResponse, err error) {
+    if request == nil {
+        request = NewDescribeCCTrendRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeCCTrendResponse()
     err = c.Send(request, response)
@@ -1058,6 +1598,38 @@ func (c *Client) DescribeDDoSBlackWhiteIpList(request *DescribeDDoSBlackWhiteIpL
     return
 }
 
+// DescribeDDoSBlackWhiteIpList
+// 获取DDoS防护的IP网段黑白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDDoSBlackWhiteIpListWithContext(ctx context.Context, request *DescribeDDoSBlackWhiteIpListRequest) (response *DescribeDDoSBlackWhiteIpListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDDoSBlackWhiteIpListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDDoSBlackWhiteIpListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDDoSTrendRequest() (request *DescribeDDoSTrendRequest) {
     request = &DescribeDDoSTrendRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1100,6 +1672,38 @@ func (c *Client) DescribeDDoSTrend(request *DescribeDDoSTrendRequest) (response 
     if request == nil {
         request = NewDescribeDDoSTrendRequest()
     }
+    
+    response = NewDescribeDDoSTrendResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeDDoSTrend
+// 获取DDoS攻击流量带宽和攻击包速率数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDDoSTrendWithContext(ctx context.Context, request *DescribeDDoSTrendRequest) (response *DescribeDDoSTrendResponse, err error) {
+    if request == nil {
+        request = NewDescribeDDoSTrendRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeDDoSTrendResponse()
     err = c.Send(request, response)
@@ -1154,6 +1758,38 @@ func (c *Client) DescribeDefaultAlarmThreshold(request *DescribeDefaultAlarmThre
     return
 }
 
+// DescribeDefaultAlarmThreshold
+// 获取单IP默认告警阈值配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDefaultAlarmThresholdWithContext(ctx context.Context, request *DescribeDefaultAlarmThresholdRequest) (response *DescribeDefaultAlarmThresholdResponse, err error) {
+    if request == nil {
+        request = NewDescribeDefaultAlarmThresholdRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDefaultAlarmThresholdResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeL7RulesBySSLCertIdRequest() (request *DescribeL7RulesBySSLCertIdRequest) {
     request = &DescribeL7RulesBySSLCertIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1187,6 +1823,29 @@ func (c *Client) DescribeL7RulesBySSLCertId(request *DescribeL7RulesBySSLCertIdR
     if request == nil {
         request = NewDescribeL7RulesBySSLCertIdRequest()
     }
+    
+    response = NewDescribeL7RulesBySSLCertIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeL7RulesBySSLCertId
+// 查询与证书ID对于域名匹配的七层规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeL7RulesBySSLCertIdWithContext(ctx context.Context, request *DescribeL7RulesBySSLCertIdRequest) (response *DescribeL7RulesBySSLCertIdResponse, err error) {
+    if request == nil {
+        request = NewDescribeL7RulesBySSLCertIdRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeL7RulesBySSLCertIdResponse()
     err = c.Send(request, response)
@@ -1232,6 +1891,29 @@ func (c *Client) DescribeListBGPIPInstances(request *DescribeListBGPIPInstancesR
     return
 }
 
+// DescribeListBGPIPInstances
+// 获取高防IP资产实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeListBGPIPInstancesWithContext(ctx context.Context, request *DescribeListBGPIPInstancesRequest) (response *DescribeListBGPIPInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeListBGPIPInstancesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeListBGPIPInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeListBGPInstancesRequest() (request *DescribeListBGPInstancesRequest) {
     request = &DescribeListBGPInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1265,6 +1947,29 @@ func (c *Client) DescribeListBGPInstances(request *DescribeListBGPInstancesReque
     if request == nil {
         request = NewDescribeListBGPInstancesRequest()
     }
+    
+    response = NewDescribeListBGPInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeListBGPInstances
+// 获取高防包资产实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeListBGPInstancesWithContext(ctx context.Context, request *DescribeListBGPInstancesRequest) (response *DescribeListBGPInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeListBGPInstancesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeListBGPInstancesResponse()
     err = c.Send(request, response)
@@ -1310,6 +2015,29 @@ func (c *Client) DescribeListBlackWhiteIpList(request *DescribeListBlackWhiteIpL
     return
 }
 
+// DescribeListBlackWhiteIpList
+// 获取DDoS防护的IP黑白名单列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeListBlackWhiteIpListWithContext(ctx context.Context, request *DescribeListBlackWhiteIpListRequest) (response *DescribeListBlackWhiteIpListResponse, err error) {
+    if request == nil {
+        request = NewDescribeListBlackWhiteIpListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeListBlackWhiteIpListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeListDDoSAIRequest() (request *DescribeListDDoSAIRequest) {
     request = &DescribeListDDoSAIRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1343,6 +2071,29 @@ func (c *Client) DescribeListDDoSAI(request *DescribeListDDoSAIRequest) (respons
     if request == nil {
         request = NewDescribeListDDoSAIRequest()
     }
+    
+    response = NewDescribeListDDoSAIResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeListDDoSAI
+// 获取DDoS防护的AI防护开关列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeListDDoSAIWithContext(ctx context.Context, request *DescribeListDDoSAIRequest) (response *DescribeListDDoSAIResponse, err error) {
+    if request == nil {
+        request = NewDescribeListDDoSAIRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeListDDoSAIResponse()
     err = c.Send(request, response)
@@ -1388,6 +2139,29 @@ func (c *Client) DescribeListDDoSGeoIPBlockConfig(request *DescribeListDDoSGeoIP
     return
 }
 
+// DescribeListDDoSGeoIPBlockConfig
+// 获取DDoS防护的区域封禁配置列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeListDDoSGeoIPBlockConfigWithContext(ctx context.Context, request *DescribeListDDoSGeoIPBlockConfigRequest) (response *DescribeListDDoSGeoIPBlockConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeListDDoSGeoIPBlockConfigRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeListDDoSGeoIPBlockConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeListDDoSSpeedLimitConfigRequest() (request *DescribeListDDoSSpeedLimitConfigRequest) {
     request = &DescribeListDDoSSpeedLimitConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1421,6 +2195,29 @@ func (c *Client) DescribeListDDoSSpeedLimitConfig(request *DescribeListDDoSSpeed
     if request == nil {
         request = NewDescribeListDDoSSpeedLimitConfigRequest()
     }
+    
+    response = NewDescribeListDDoSSpeedLimitConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeListDDoSSpeedLimitConfig
+// 获取DDoS防护的访问限速配置列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeListDDoSSpeedLimitConfigWithContext(ctx context.Context, request *DescribeListDDoSSpeedLimitConfigRequest) (response *DescribeListDDoSSpeedLimitConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeListDDoSSpeedLimitConfigRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeListDDoSSpeedLimitConfigResponse()
     err = c.Send(request, response)
@@ -1466,6 +2263,29 @@ func (c *Client) DescribeListIPAlarmConfig(request *DescribeListIPAlarmConfigReq
     return
 }
 
+// DescribeListIPAlarmConfig
+// 获取单IP告警阈值配置列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeListIPAlarmConfigWithContext(ctx context.Context, request *DescribeListIPAlarmConfigRequest) (response *DescribeListIPAlarmConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeListIPAlarmConfigRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeListIPAlarmConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeListListenerRequest() (request *DescribeListListenerRequest) {
     request = &DescribeListListenerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1499,6 +2319,29 @@ func (c *Client) DescribeListListener(request *DescribeListListenerRequest) (res
     if request == nil {
         request = NewDescribeListListenerRequest()
     }
+    
+    response = NewDescribeListListenerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeListListener
+// 获取转发监听器列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeListListenerWithContext(ctx context.Context, request *DescribeListListenerRequest) (response *DescribeListListenerResponse, err error) {
+    if request == nil {
+        request = NewDescribeListListenerRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeListListenerResponse()
     err = c.Send(request, response)
@@ -1544,6 +2387,29 @@ func (c *Client) DescribeListPacketFilterConfig(request *DescribeListPacketFilte
     return
 }
 
+// DescribeListPacketFilterConfig
+// 获取DDoS防护的特征过滤规则列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeListPacketFilterConfigWithContext(ctx context.Context, request *DescribeListPacketFilterConfigRequest) (response *DescribeListPacketFilterConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeListPacketFilterConfigRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeListPacketFilterConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeListProtectThresholdConfigRequest() (request *DescribeListProtectThresholdConfigRequest) {
     request = &DescribeListProtectThresholdConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1577,6 +2443,29 @@ func (c *Client) DescribeListProtectThresholdConfig(request *DescribeListProtect
     if request == nil {
         request = NewDescribeListProtectThresholdConfigRequest()
     }
+    
+    response = NewDescribeListProtectThresholdConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeListProtectThresholdConfig
+// 获取防护阈值配置列表，包括DDoS的AI、等级、CC阈值开关等
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeListProtectThresholdConfigWithContext(ctx context.Context, request *DescribeListProtectThresholdConfigRequest) (response *DescribeListProtectThresholdConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeListProtectThresholdConfigRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeListProtectThresholdConfigResponse()
     err = c.Send(request, response)
@@ -1622,6 +2511,29 @@ func (c *Client) DescribeListProtocolBlockConfig(request *DescribeListProtocolBl
     return
 }
 
+// DescribeListProtocolBlockConfig
+// 获取DDoS防护的协议封禁配置列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeListProtocolBlockConfigWithContext(ctx context.Context, request *DescribeListProtocolBlockConfigRequest) (response *DescribeListProtocolBlockConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeListProtocolBlockConfigRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeListProtocolBlockConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeListSchedulingDomainRequest() (request *DescribeListSchedulingDomainRequest) {
     request = &DescribeListSchedulingDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1661,6 +2573,29 @@ func (c *Client) DescribeListSchedulingDomain(request *DescribeListSchedulingDom
     return
 }
 
+// DescribeListSchedulingDomain
+// 获取智能调度域名列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeListSchedulingDomainWithContext(ctx context.Context, request *DescribeListSchedulingDomainRequest) (response *DescribeListSchedulingDomainResponse, err error) {
+    if request == nil {
+        request = NewDescribeListSchedulingDomainRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeListSchedulingDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeListWaterPrintConfigRequest() (request *DescribeListWaterPrintConfigRequest) {
     request = &DescribeListWaterPrintConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1694,6 +2629,29 @@ func (c *Client) DescribeListWaterPrintConfig(request *DescribeListWaterPrintCon
     if request == nil {
         request = NewDescribeListWaterPrintConfigRequest()
     }
+    
+    response = NewDescribeListWaterPrintConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeListWaterPrintConfig
+// 获取DDoS防护的水印防护配置列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeListWaterPrintConfigWithContext(ctx context.Context, request *DescribeListWaterPrintConfigRequest) (response *DescribeListWaterPrintConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeListWaterPrintConfigRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeListWaterPrintConfigResponse()
     err = c.Send(request, response)
@@ -1749,6 +2707,39 @@ func (c *Client) DisassociateDDoSEipAddress(request *DisassociateDDoSEipAddressR
     return
 }
 
+// DisassociateDDoSEipAddress
+// 本接口 (DisassociateDDoSEipAddress) 用于解绑高防弹性公网IP。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DisassociateDDoSEipAddressWithContext(ctx context.Context, request *DisassociateDDoSEipAddressRequest) (response *DisassociateDDoSEipAddressResponse, err error) {
+    if request == nil {
+        request = NewDisassociateDDoSEipAddressRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDisassociateDDoSEipAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDDoSGeoIPBlockConfigRequest() (request *ModifyDDoSGeoIPBlockConfigRequest) {
     request = &ModifyDDoSGeoIPBlockConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1775,6 +2766,22 @@ func (c *Client) ModifyDDoSGeoIPBlockConfig(request *ModifyDDoSGeoIPBlockConfigR
     if request == nil {
         request = NewModifyDDoSGeoIPBlockConfigRequest()
     }
+    
+    response = NewModifyDDoSGeoIPBlockConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyDDoSGeoIPBlockConfig
+// 修改DDoS防护的区域封禁配置
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyDDoSGeoIPBlockConfigWithContext(ctx context.Context, request *ModifyDDoSGeoIPBlockConfigRequest) (response *ModifyDDoSGeoIPBlockConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyDDoSGeoIPBlockConfigRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyDDoSGeoIPBlockConfigResponse()
     err = c.Send(request, response)
@@ -1813,6 +2820,22 @@ func (c *Client) ModifyDDoSSpeedLimitConfig(request *ModifyDDoSSpeedLimitConfigR
     return
 }
 
+// ModifyDDoSSpeedLimitConfig
+// 修改DDoS防护的访问限速配置
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyDDoSSpeedLimitConfigWithContext(ctx context.Context, request *ModifyDDoSSpeedLimitConfigRequest) (response *ModifyDDoSSpeedLimitConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyDDoSSpeedLimitConfigRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyDDoSSpeedLimitConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDomainUsrNameRequest() (request *ModifyDomainUsrNameRequest) {
     request = &ModifyDomainUsrNameRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1839,6 +2862,22 @@ func (c *Client) ModifyDomainUsrName(request *ModifyDomainUsrNameRequest) (respo
     if request == nil {
         request = NewModifyDomainUsrNameRequest()
     }
+    
+    response = NewModifyDomainUsrNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyDomainUsrName
+// 修改智能解析域名名称
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyDomainUsrNameWithContext(ctx context.Context, request *ModifyDomainUsrNameRequest) (response *ModifyDomainUsrNameResponse, err error) {
+    if request == nil {
+        request = NewModifyDomainUsrNameRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyDomainUsrNameResponse()
     err = c.Send(request, response)
@@ -1878,6 +2917,23 @@ func (c *Client) ModifyL7RulesEdge(request *ModifyL7RulesEdgeRequest) (response 
     return
 }
 
+// ModifyL7RulesEdge
+// 修改边界防护L7转发规则
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyL7RulesEdgeWithContext(ctx context.Context, request *ModifyL7RulesEdgeRequest) (response *ModifyL7RulesEdgeResponse, err error) {
+    if request == nil {
+        request = NewModifyL7RulesEdgeRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyL7RulesEdgeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyNewDomainRulesRequest() (request *ModifyNewDomainRulesRequest) {
     request = &ModifyNewDomainRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1905,6 +2961,23 @@ func (c *Client) ModifyNewDomainRules(request *ModifyNewDomainRulesRequest) (res
     if request == nil {
         request = NewModifyNewDomainRulesRequest()
     }
+    
+    response = NewModifyNewDomainRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyNewDomainRules
+// 修改7层转发规则
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyNewDomainRulesWithContext(ctx context.Context, request *ModifyNewDomainRulesRequest) (response *ModifyNewDomainRulesResponse, err error) {
+    if request == nil {
+        request = NewModifyNewDomainRulesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyNewDomainRulesResponse()
     err = c.Send(request, response)
@@ -1944,6 +3017,23 @@ func (c *Client) ModifyPacketFilterConfig(request *ModifyPacketFilterConfigReque
     return
 }
 
+// ModifyPacketFilterConfig
+// 修改DDoS防护的特征过滤规则
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyPacketFilterConfigWithContext(ctx context.Context, request *ModifyPacketFilterConfigRequest) (response *ModifyPacketFilterConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyPacketFilterConfigRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyPacketFilterConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSwitchWaterPrintConfigRequest() (request *SwitchWaterPrintConfigRequest) {
     request = &SwitchWaterPrintConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1971,6 +3061,23 @@ func (c *Client) SwitchWaterPrintConfig(request *SwitchWaterPrintConfigRequest) 
     if request == nil {
         request = NewSwitchWaterPrintConfigRequest()
     }
+    
+    response = NewSwitchWaterPrintConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SwitchWaterPrintConfig
+// 开启或关闭DDoS防护的水印防护配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SwitchWaterPrintConfigWithContext(ctx context.Context, request *SwitchWaterPrintConfigRequest) (response *SwitchWaterPrintConfigResponse, err error) {
+    if request == nil {
+        request = NewSwitchWaterPrintConfigRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewSwitchWaterPrintConfigResponse()
     err = c.Send(request, response)

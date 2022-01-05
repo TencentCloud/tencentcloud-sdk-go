@@ -89,6 +89,9 @@ const (
 	// 没有API权限。
 	OPERATIONDENIED_NOAPIAUTH = "OperationDenied.NoApiAuth"
 
+	// 未通过个人实名。
+	OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+
 	// 用户与企业不对应。
 	OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 

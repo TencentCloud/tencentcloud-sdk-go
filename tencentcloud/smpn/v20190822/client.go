@@ -15,6 +15,7 @@
 package v20190822
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -78,6 +79,25 @@ func (c *Client) CreateSmpnEpa(request *CreateSmpnEpaRequest) (response *CreateS
     return
 }
 
+// CreateSmpnEpa
+// 企业号码认证
+//
+// 可能返回的错误码:
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_PHONENUMBER = "InvalidParameter.PhoneNumber"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateSmpnEpaWithContext(ctx context.Context, request *CreateSmpnEpaRequest) (response *CreateSmpnEpaResponse, err error) {
+    if request == nil {
+        request = NewCreateSmpnEpaRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateSmpnEpaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSmpnChpRequest() (request *DescribeSmpnChpRequest) {
     request = &DescribeSmpnChpRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -106,6 +126,24 @@ func (c *Client) DescribeSmpnChp(request *DescribeSmpnChpRequest) (response *Des
     if request == nil {
         request = NewDescribeSmpnChpRequest()
     }
+    
+    response = NewDescribeSmpnChpResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeSmpnChp
+// 查询号码的标记和标记次数
+//
+// 可能返回的错误码:
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER_PHONENUMBER = "InvalidParameter.PhoneNumber"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeSmpnChpWithContext(ctx context.Context, request *DescribeSmpnChpRequest) (response *DescribeSmpnChpResponse, err error) {
+    if request == nil {
+        request = NewDescribeSmpnChpRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeSmpnChpResponse()
     err = c.Send(request, response)
@@ -146,6 +184,24 @@ func (c *Client) DescribeSmpnFnr(request *DescribeSmpnFnrRequest) (response *Des
     return
 }
 
+// DescribeSmpnFnr
+// 虚假号码识别
+//
+// 可能返回的错误码:
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER_PHONENUMBER = "InvalidParameter.PhoneNumber"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeSmpnFnrWithContext(ctx context.Context, request *DescribeSmpnFnrRequest) (response *DescribeSmpnFnrResponse, err error) {
+    if request == nil {
+        request = NewDescribeSmpnFnrRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeSmpnFnrResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSmpnMhmRequest() (request *DescribeSmpnMhmRequest) {
     request = &DescribeSmpnMhmRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -180,6 +236,24 @@ func (c *Client) DescribeSmpnMhm(request *DescribeSmpnMhmRequest) (response *Des
     return
 }
 
+// DescribeSmpnMhm
+// 号码营销监控
+//
+// 可能返回的错误码:
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER_PHONENUMBER = "InvalidParameter.PhoneNumber"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeSmpnMhmWithContext(ctx context.Context, request *DescribeSmpnMhmRequest) (response *DescribeSmpnMhmResponse, err error) {
+    if request == nil {
+        request = NewDescribeSmpnMhmRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeSmpnMhmResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSmpnMrlRequest() (request *DescribeSmpnMrlRequest) {
     request = &DescribeSmpnMrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -208,6 +282,24 @@ func (c *Client) DescribeSmpnMrl(request *DescribeSmpnMrlRequest) (response *Des
     if request == nil {
         request = NewDescribeSmpnMrlRequest()
     }
+    
+    response = NewDescribeSmpnMrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeSmpnMrl
+// 查询号码恶意标记等级
+//
+// 可能返回的错误码:
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER_PHONENUMBER = "InvalidParameter.PhoneNumber"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeSmpnMrlWithContext(ctx context.Context, request *DescribeSmpnMrlRequest) (response *DescribeSmpnMrlResponse, err error) {
+    if request == nil {
+        request = NewDescribeSmpnMrlRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeSmpnMrlResponse()
     err = c.Send(request, response)

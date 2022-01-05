@@ -15,6 +15,7 @@
 package v20190328
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -114,6 +115,67 @@ func (c *Client) DescribeBRI(request *DescribeBRIRequest) (response *DescribeBRI
     if request == nil {
         request = NewDescribeBRIRequest()
     }
+    
+    response = NewDescribeBRIResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeBRI
+// 输入业务名 (bri_num, bri_dev, bri_ip, bri_apk, bri_url, bri_social 六种之一)  及其 相应字段, 获取业务风险分数和标签。
+//
+// 
+//
+// 当业务名为bri_num时，必须填PhoneNumber字段.
+//
+// 
+//
+// 当业务名为bri_dev时, 必须填Imei字段.
+//
+// 
+//
+// 当业务名为bri_ip时，必须填IP字段.
+//
+// 
+//
+// 当业务名为bri_apk时，必须填 (PackageName,CertMd5,FileSize) 三个字段 或者 FileMd5一个字段.
+//
+// 
+//
+// 当业务名为bri_url时，必须填Url字段.
+//
+// 
+//
+// 当业务名为bri_social时，必须填QQ和Wechat字段两者其中一个或者两个.
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CERTMD5 = "InvalidParameter.CertMd5"
+//  INVALIDPARAMETER_FILEMD5 = "InvalidParameter.FileMd5"
+//  INVALIDPARAMETER_FILESIZE = "InvalidParameter.FileSize"
+//  INVALIDPARAMETER_IMEI = "InvalidParameter.Imei"
+//  INVALIDPARAMETER_INVALIDACTION = "InvalidParameter.InvalidAction"
+//  INVALIDPARAMETER_IP = "InvalidParameter.Ip"
+//  INVALIDPARAMETER_PACKAGENAME = "InvalidParameter.PackageName"
+//  INVALIDPARAMETER_PHONENUMBER = "InvalidParameter.PhoneNumber"
+//  INVALIDPARAMETER_QQ = "InvalidParameter.QQ"
+//  INVALIDPARAMETER_SERVICE = "InvalidParameter.Service"
+//  INVALIDPARAMETER_URL = "InvalidParameter.Url"
+//  INVALIDPARAMETER_WECHAT = "InvalidParameter.Wechat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeBRIWithContext(ctx context.Context, request *DescribeBRIRequest) (response *DescribeBRIResponse, err error) {
+    if request == nil {
+        request = NewDescribeBRIRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeBRIResponse()
     err = c.Send(request, response)

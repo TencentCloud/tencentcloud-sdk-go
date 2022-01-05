@@ -15,6 +15,7 @@
 package v20190916
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -85,6 +86,32 @@ func (c *Client) DescribeAuthInfo(request *DescribeAuthInfoRequest) (response *D
     return
 }
 
+// DescribeAuthInfo
+// 获取授权项目信息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAuthInfoWithContext(ctx context.Context, request *DescribeAuthInfoRequest) (response *DescribeAuthInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeAuthInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAuthInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudMusicRequest() (request *DescribeCloudMusicRequest) {
     request = &DescribeCloudMusicRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -116,6 +143,27 @@ func (c *Client) DescribeCloudMusic(request *DescribeCloudMusicRequest) (respons
     if request == nil {
         request = NewDescribeCloudMusicRequest()
     }
+    
+    response = NewDescribeCloudMusicResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCloudMusic
+// 获取云音乐播放信息接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeCloudMusicWithContext(ctx context.Context, request *DescribeCloudMusicRequest) (response *DescribeCloudMusicResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudMusicRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeCloudMusicResponse()
     err = c.Send(request, response)
@@ -169,6 +217,37 @@ func (c *Client) DescribeCloudMusicPurchased(request *DescribeCloudMusicPurchase
     return
 }
 
+// DescribeCloudMusicPurchased
+// 获取授权项目下已购云音乐列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudMusicPurchasedWithContext(ctx context.Context, request *DescribeCloudMusicPurchasedRequest) (response *DescribeCloudMusicPurchasedResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudMusicPurchasedRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudMusicPurchasedResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeItemByIdRequest() (request *DescribeItemByIdRequest) {
     request = &DescribeItemByIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -197,6 +276,24 @@ func (c *Client) DescribeItemById(request *DescribeItemByIdRequest) (response *D
     if request == nil {
         request = NewDescribeItemByIdRequest()
     }
+    
+    response = NewDescribeItemByIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeItemById
+// 根据歌曲ID查询歌曲信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeItemByIdWithContext(ctx context.Context, request *DescribeItemByIdRequest) (response *DescribeItemByIdResponse, err error) {
+    if request == nil {
+        request = NewDescribeItemByIdRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeItemByIdResponse()
     err = c.Send(request, response)
@@ -240,6 +337,27 @@ func (c *Client) DescribeItems(request *DescribeItemsRequest) (response *Describ
     return
 }
 
+// DescribeItems
+// 该服务后续会停用，不再建议使用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeItemsWithContext(ctx context.Context, request *DescribeItemsRequest) (response *DescribeItemsResponse, err error) {
+    if request == nil {
+        request = NewDescribeItemsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeItemsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeKTVMusicDetailRequest() (request *DescribeKTVMusicDetailRequest) {
     request = &DescribeKTVMusicDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -269,6 +387,25 @@ func (c *Client) DescribeKTVMusicDetail(request *DescribeKTVMusicDetailRequest) 
     if request == nil {
         request = NewDescribeKTVMusicDetailRequest()
     }
+    
+    response = NewDescribeKTVMusicDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeKTVMusicDetail
+// 根据 Id 查询歌曲的详细信息，包含基础信息及播放信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeKTVMusicDetailWithContext(ctx context.Context, request *DescribeKTVMusicDetailRequest) (response *DescribeKTVMusicDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeKTVMusicDetailRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeKTVMusicDetailResponse()
     err = c.Send(request, response)
@@ -309,6 +446,30 @@ func (c *Client) DescribeKTVPlaylistDetail(request *DescribeKTVPlaylistDetailReq
     if request == nil {
         request = NewDescribeKTVPlaylistDetailRequest()
     }
+    
+    response = NewDescribeKTVPlaylistDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeKTVPlaylistDetail
+// 根据歌单 Id 获取歌单详情，包括歌单的基础信息以及歌曲列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeKTVPlaylistDetailWithContext(ctx context.Context, request *DescribeKTVPlaylistDetailRequest) (response *DescribeKTVPlaylistDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeKTVPlaylistDetailRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeKTVPlaylistDetailResponse()
     err = c.Send(request, response)
@@ -356,6 +517,31 @@ func (c *Client) DescribeKTVPlaylists(request *DescribeKTVPlaylistsRequest) (res
     return
 }
 
+// DescribeKTVPlaylists
+// 获取直播互动曲库推荐歌单列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeKTVPlaylistsWithContext(ctx context.Context, request *DescribeKTVPlaylistsRequest) (response *DescribeKTVPlaylistsResponse, err error) {
+    if request == nil {
+        request = NewDescribeKTVPlaylistsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeKTVPlaylistsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLyricRequest() (request *DescribeLyricRequest) {
     request = &DescribeLyricRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -384,6 +570,24 @@ func (c *Client) DescribeLyric(request *DescribeLyricRequest) (response *Describ
     if request == nil {
         request = NewDescribeLyricRequest()
     }
+    
+    response = NewDescribeLyricResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeLyric
+// 根据接口的模式及歌曲ID来取得歌词信息或者波形图信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeLyricWithContext(ctx context.Context, request *DescribeLyricRequest) (response *DescribeLyricResponse, err error) {
+    if request == nil {
+        request = NewDescribeLyricRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeLyricResponse()
     err = c.Send(request, response)
@@ -421,6 +625,27 @@ func (c *Client) DescribeMusic(request *DescribeMusicRequest) (response *Describ
     if request == nil {
         request = NewDescribeMusicRequest()
     }
+    
+    response = NewDescribeMusicResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeMusic
+// 获取曲库包歌曲播放信息接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeMusicWithContext(ctx context.Context, request *DescribeMusicRequest) (response *DescribeMusicResponse, err error) {
+    if request == nil {
+        request = NewDescribeMusicRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeMusicResponse()
     err = c.Send(request, response)
@@ -466,6 +691,29 @@ func (c *Client) DescribeMusicSaleStatus(request *DescribeMusicSaleStatusRequest
     return
 }
 
+// DescribeMusicSaleStatus
+// 根据音乐信息查询音乐是否在售
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeMusicSaleStatusWithContext(ctx context.Context, request *DescribeMusicSaleStatusRequest) (response *DescribeMusicSaleStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeMusicSaleStatusRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeMusicSaleStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePackageItemsRequest() (request *DescribePackageItemsRequest) {
     request = &DescribePackageItemsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -504,6 +752,28 @@ func (c *Client) DescribePackageItems(request *DescribePackageItemsRequest) (res
     return
 }
 
+// DescribePackageItems
+// 获取曲库包下已核销歌曲列表接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePackageItemsWithContext(ctx context.Context, request *DescribePackageItemsRequest) (response *DescribePackageItemsResponse, err error) {
+    if request == nil {
+        request = NewDescribePackageItemsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribePackageItemsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePackagesRequest() (request *DescribePackagesRequest) {
     request = &DescribePackagesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -536,6 +806,28 @@ func (c *Client) DescribePackages(request *DescribePackagesRequest) (response *D
     if request == nil {
         request = NewDescribePackagesRequest()
     }
+    
+    response = NewDescribePackagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribePackages
+// 获取已购曲库包列表接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePackagesWithContext(ctx context.Context, request *DescribePackagesRequest) (response *DescribePackagesResponse, err error) {
+    if request == nil {
+        request = NewDescribePackagesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribePackagesResponse()
     err = c.Send(request, response)
@@ -583,6 +875,31 @@ func (c *Client) DescribePkgOfflineMusic(request *DescribePkgOfflineMusicRequest
     return
 }
 
+// DescribePkgOfflineMusic
+// 根据购买曲库包用户可查询已回退的歌曲信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePkgOfflineMusicWithContext(ctx context.Context, request *DescribePkgOfflineMusicRequest) (response *DescribePkgOfflineMusicResponse, err error) {
+    if request == nil {
+        request = NewDescribePkgOfflineMusicRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribePkgOfflineMusicResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeStationsRequest() (request *DescribeStationsRequest) {
     request = &DescribeStationsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -614,6 +931,27 @@ func (c *Client) DescribeStations(request *DescribeStationsRequest) (response *D
     if request == nil {
         request = NewDescribeStationsRequest()
     }
+    
+    response = NewDescribeStationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeStations
+// 该服务后续会停用，不再建议使用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeStationsWithContext(ctx context.Context, request *DescribeStationsRequest) (response *DescribeStationsResponse, err error) {
+    if request == nil {
+        request = NewDescribeStationsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeStationsResponse()
     err = c.Send(request, response)
@@ -661,6 +999,31 @@ func (c *Client) ModifyMusicOnShelves(request *ModifyMusicOnShelvesRequest) (res
     return
 }
 
+// ModifyMusicOnShelves
+// 根据资源方，需要变更的参数，请求该接口进行变更，为空的参数默认为无变更
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyMusicOnShelvesWithContext(ctx context.Context, request *ModifyMusicOnShelvesRequest) (response *ModifyMusicOnShelvesResponse, err error) {
+    if request == nil {
+        request = NewModifyMusicOnShelvesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyMusicOnShelvesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPutMusicOnTheShelvesRequest() (request *PutMusicOnTheShelvesRequest) {
     request = &PutMusicOnTheShelvesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -702,6 +1065,31 @@ func (c *Client) PutMusicOnTheShelves(request *PutMusicOnTheShelvesRequest) (res
     return
 }
 
+// PutMusicOnTheShelves
+// 根据资源方所传歌曲信息，进行歌曲上架，多个歌曲同时请求时，需构造复合结构进行请求
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) PutMusicOnTheShelvesWithContext(ctx context.Context, request *PutMusicOnTheShelvesRequest) (response *PutMusicOnTheShelvesResponse, err error) {
+    if request == nil {
+        request = NewPutMusicOnTheShelvesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewPutMusicOnTheShelvesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewReportDataRequest() (request *ReportDataRequest) {
     request = &ReportDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -736,6 +1124,24 @@ func (c *Client) ReportData(request *ReportDataRequest) (response *ReportDataRes
     return
 }
 
+// ReportData
+// 客户上报用户数据功能，为了更好地为用户提供优质服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ReportDataWithContext(ctx context.Context, request *ReportDataRequest) (response *ReportDataResponse, err error) {
+    if request == nil {
+        request = NewReportDataRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewReportDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSearchKTVMusicsRequest() (request *SearchKTVMusicsRequest) {
     request = &SearchKTVMusicsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -764,6 +1170,24 @@ func (c *Client) SearchKTVMusics(request *SearchKTVMusicsRequest) (response *Sea
     if request == nil {
         request = NewSearchKTVMusicsRequest()
     }
+    
+    response = NewSearchKTVMusicsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SearchKTVMusics
+// 根据搜索条件，返回匹配的歌曲列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SearchKTVMusicsWithContext(ctx context.Context, request *SearchKTVMusicsRequest) (response *SearchKTVMusicsResponse, err error) {
+    if request == nil {
+        request = NewSearchKTVMusicsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewSearchKTVMusicsResponse()
     err = c.Send(request, response)
@@ -805,6 +1229,31 @@ func (c *Client) TakeMusicOffShelves(request *TakeMusicOffShelvesRequest) (respo
     if request == nil {
         request = NewTakeMusicOffShelvesRequest()
     }
+    
+    response = NewTakeMusicOffShelvesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// TakeMusicOffShelves
+// 根据资源方所传MusicId进行将歌曲进行下架，多个MusicId使用逗号隔开
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) TakeMusicOffShelvesWithContext(ctx context.Context, request *TakeMusicOffShelvesRequest) (response *TakeMusicOffShelvesResponse, err error) {
+    if request == nil {
+        request = NewTakeMusicOffShelvesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewTakeMusicOffShelvesResponse()
     err = c.Send(request, response)

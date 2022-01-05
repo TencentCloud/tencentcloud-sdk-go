@@ -15,6 +15,7 @@
 package v20181203
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -72,6 +73,19 @@ func (c *Client) DescribeStatus(request *DescribeStatusRequest) (response *Descr
     return
 }
 
+// DescribeStatus
+// 查询指定md5样本是否分析完成，并获取分析日志下载地址。
+func (c *Client) DescribeStatusWithContext(ctx context.Context, request *DescribeStatusRequest) (response *DescribeStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeStatusRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStartAnalyseRequest() (request *StartAnalyseRequest) {
     request = &StartAnalyseRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -95,6 +109,19 @@ func (c *Client) StartAnalyse(request *StartAnalyseRequest) (response *StartAnal
     if request == nil {
         request = NewStartAnalyseRequest()
     }
+    
+    response = NewStartAnalyseResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// StartAnalyse
+// 上传样本到哈勃进行分析，异步生成分析日志。
+func (c *Client) StartAnalyseWithContext(ctx context.Context, request *StartAnalyseRequest) (response *StartAnalyseResponse, err error) {
+    if request == nil {
+        request = NewStartAnalyseRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewStartAnalyseResponse()
     err = c.Send(request, response)

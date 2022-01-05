@@ -15,6 +15,7 @@
 package v20181115
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -79,6 +80,26 @@ func (c *Client) DescribeDomainInfo(request *DescribeDomainInfoRequest) (respons
     return
 }
 
+// DescribeDomainInfo
+// 提供域名相关的基础信息以及与攻击事件（团伙、家族）、恶意文件等相关联信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CACHEERR = "InternalError.CacheErr"
+//  INTERNALERROR_LOCALERR = "InternalError.LocalErr"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) DescribeDomainInfoWithContext(ctx context.Context, request *DescribeDomainInfoRequest) (response *DescribeDomainInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDomainInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFileInfoRequest() (request *DescribeFileInfoRequest) {
     request = &DescribeFileInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -109,6 +130,26 @@ func (c *Client) DescribeFileInfo(request *DescribeFileInfoRequest) (response *D
     if request == nil {
         request = NewDescribeFileInfoRequest()
     }
+    
+    response = NewDescribeFileInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeFileInfo
+// 提供文件相关的基础信息以及与攻击事件（团伙、家族）、恶意文件等相关联信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CACHEERR = "InternalError.CacheErr"
+//  INTERNALERROR_LOCALERR = "InternalError.LocalErr"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) DescribeFileInfoWithContext(ctx context.Context, request *DescribeFileInfoRequest) (response *DescribeFileInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeFileInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeFileInfoResponse()
     err = c.Send(request, response)
@@ -151,6 +192,26 @@ func (c *Client) DescribeIpInfo(request *DescribeIpInfoRequest) (response *Descr
     return
 }
 
+// DescribeIpInfo
+// 提供IP相关的基础信息以及与攻击事件（团伙、家族）、恶意文件等相关联信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CACHEERR = "InternalError.CacheErr"
+//  INTERNALERROR_LOCALERR = "InternalError.LocalErr"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) DescribeIpInfoWithContext(ctx context.Context, request *DescribeIpInfoRequest) (response *DescribeIpInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeIpInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeIpInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeThreatInfoRequest() (request *DescribeThreatInfoRequest) {
     request = &DescribeThreatInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -181,6 +242,26 @@ func (c *Client) DescribeThreatInfo(request *DescribeThreatInfoRequest) (respons
     if request == nil {
         request = NewDescribeThreatInfoRequest()
     }
+    
+    response = NewDescribeThreatInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeThreatInfo
+// 提供IP和域名相关威胁情报信息查询，这些信息可以辅助检测失陷主机、帮助SIEM/SOC等系统做研判决策、帮助运营团队对设备报警的编排处理。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CACHEERR = "InternalError.CacheErr"
+//  INTERNALERROR_LOCALERR = "InternalError.LocalErr"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) DescribeThreatInfoWithContext(ctx context.Context, request *DescribeThreatInfoRequest) (response *DescribeThreatInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeThreatInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeThreatInfoResponse()
     err = c.Send(request, response)

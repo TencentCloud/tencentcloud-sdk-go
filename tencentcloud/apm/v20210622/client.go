@@ -15,6 +15,7 @@
 package v20210622
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -72,6 +73,19 @@ func (c *Client) CreateApmInstance(request *CreateApmInstanceRequest) (response 
     return
 }
 
+// CreateApmInstance
+// 业务购买APM实例，调用该接口创建
+func (c *Client) CreateApmInstanceWithContext(ctx context.Context, request *CreateApmInstanceRequest) (response *CreateApmInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateApmInstanceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateApmInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeApmAgentRequest() (request *DescribeApmAgentRequest) {
     request = &DescribeApmAgentRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -96,12 +110,34 @@ func NewDescribeApmAgentResponse() (response *DescribeApmAgentResponse) {
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTINNERVPC = "FailedOperation.NotInnerVPC"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeApmAgent(request *DescribeApmAgentRequest) (response *DescribeApmAgentResponse, err error) {
     if request == nil {
         request = NewDescribeApmAgentRequest()
     }
+    
+    response = NewDescribeApmAgentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeApmAgent
+// 获取Apm Agent信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTINNERVPC = "FailedOperation.NotInnerVPC"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeApmAgentWithContext(ctx context.Context, request *DescribeApmAgentRequest) (response *DescribeApmAgentResponse, err error) {
+    if request == nil {
+        request = NewDescribeApmAgentRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeApmAgentResponse()
     err = c.Send(request, response)
@@ -129,15 +165,27 @@ func NewDescribeApmInstancesResponse() (response *DescribeApmInstancesResponse) 
 // APM实例列表拉取
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeApmInstances(request *DescribeApmInstancesRequest) (response *DescribeApmInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeApmInstancesRequest()
     }
+    
+    response = NewDescribeApmInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeApmInstances
+// APM实例列表拉取
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeApmInstancesWithContext(ctx context.Context, request *DescribeApmInstancesRequest) (response *DescribeApmInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeApmInstancesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeApmInstancesResponse()
     err = c.Send(request, response)

@@ -15,6 +15,7 @@
 package v20210526
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -87,6 +88,34 @@ func (c *Client) CreateConsoleLoginUrl(request *CreateConsoleLoginUrlRequest) (r
     return
 }
 
+// CreateConsoleLoginUrl
+// 此接口（CreateConsoleLoginUrl）用于创建电子签控制台登录链接。若企业未激活，调用同步企业信息、同步经办人信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BANNEDAPPLICATION = "OperationDenied.BannedApplication"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateConsoleLoginUrlWithContext(ctx context.Context, request *CreateConsoleLoginUrlRequest) (response *CreateConsoleLoginUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateConsoleLoginUrlRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateConsoleLoginUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateFlowsByTemplatesRequest() (request *CreateFlowsByTemplatesRequest) {
     request = &CreateFlowsByTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -129,6 +158,38 @@ func (c *Client) CreateFlowsByTemplates(request *CreateFlowsByTemplatesRequest) 
     if request == nil {
         request = NewCreateFlowsByTemplatesRequest()
     }
+    
+    response = NewCreateFlowsByTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateFlowsByTemplates
+// 接口（CreateFlowsByTemplates）用于使用多个模板批量创建流程
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+//  INTERNALERROR_THIRDPARTY = "InternalError.ThirdParty"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
+//  INVALIDPARAMETER_BIZAPPROVERALREADYEXISTS = "InvalidParameter.BizApproverAlreadyExists"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+func (c *Client) CreateFlowsByTemplatesWithContext(ctx context.Context, request *CreateFlowsByTemplatesRequest) (response *CreateFlowsByTemplatesResponse, err error) {
+    if request == nil {
+        request = NewCreateFlowsByTemplatesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateFlowsByTemplatesResponse()
     err = c.Send(request, response)
@@ -179,6 +240,34 @@ func (c *Client) CreateSignUrls(request *CreateSignUrlsRequest) (response *Creat
     return
 }
 
+// CreateSignUrls
+// 根据流程Id批量创建签署参与者签署H5链接
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateSignUrlsWithContext(ctx context.Context, request *CreateSignUrlsRequest) (response *CreateSignUrlsResponse, err error) {
+    if request == nil {
+        request = NewCreateSignUrlsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateSignUrlsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFlowDetailInfoRequest() (request *DescribeFlowDetailInfoRequest) {
     request = &DescribeFlowDetailInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -213,6 +302,30 @@ func (c *Client) DescribeFlowDetailInfo(request *DescribeFlowDetailInfoRequest) 
     if request == nil {
         request = NewDescribeFlowDetailInfoRequest()
     }
+    
+    response = NewDescribeFlowDetailInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeFlowDetailInfo
+// 此接口（DescribeFlowDetailInfo）用于查询合同(流程)的详细信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeFlowDetailInfoWithContext(ctx context.Context, request *DescribeFlowDetailInfoRequest) (response *DescribeFlowDetailInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeFlowDetailInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeFlowDetailInfoResponse()
     err = c.Send(request, response)
@@ -265,6 +378,36 @@ func (c *Client) DescribeResourceUrlsByFlows(request *DescribeResourceUrlsByFlow
     return
 }
 
+// DescribeResourceUrlsByFlows
+// 根据流程信息批量获取资源下载链接
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeResourceUrlsByFlowsWithContext(ctx context.Context, request *DescribeResourceUrlsByFlowsRequest) (response *DescribeResourceUrlsByFlowsResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceUrlsByFlowsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeResourceUrlsByFlowsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTemplatesRequest() (request *DescribeTemplatesRequest) {
     request = &DescribeTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -295,6 +438,7 @@ func NewDescribeTemplatesResponse() (response *DescribeTemplatesResponse) {
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
@@ -302,6 +446,34 @@ func (c *Client) DescribeTemplates(request *DescribeTemplatesRequest) (response 
     if request == nil {
         request = NewDescribeTemplatesRequest()
     }
+    
+    response = NewDescribeTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeTemplates
+// 通过此接口（DescribeTemplates）查询该企业在电子签渠道版中配置的有效模板列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+func (c *Client) DescribeTemplatesWithContext(ctx context.Context, request *DescribeTemplatesRequest) (response *DescribeTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeTemplatesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeTemplatesResponse()
     err = c.Send(request, response)
@@ -353,6 +525,35 @@ func (c *Client) DescribeUsage(request *DescribeUsageRequest) (response *Describ
     return
 }
 
+// DescribeUsage
+// 此接口（DescribeUsage）用于获取渠道所有合作企业流量消耗情况。
+//
+//  注: 此接口每日限频2次，若要扩大限制次数,请提前与客服经理或邮件至e-contract@tencent.com进行联系。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BANNEDAPPLICATION = "OperationDenied.BannedApplication"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeUsageWithContext(ctx context.Context, request *DescribeUsageRequest) (response *DescribeUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribeUsageRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeUsageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetDownloadFlowUrlRequest() (request *GetDownloadFlowUrlRequest) {
     request = &GetDownloadFlowUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -391,6 +592,34 @@ func (c *Client) GetDownloadFlowUrl(request *GetDownloadFlowUrlRequest) (respons
     if request == nil {
         request = NewGetDownloadFlowUrlRequest()
     }
+    
+    response = NewGetDownloadFlowUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// GetDownloadFlowUrl
+// 此接口（GetDownloadFlowUrl）用于创建电子签批量下载确认页面链接，支持客户合同（流程）归类打包下载。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BANNEDAPPLICATION = "OperationDenied.BannedApplication"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetDownloadFlowUrlWithContext(ctx context.Context, request *GetDownloadFlowUrlRequest) (response *GetDownloadFlowUrlResponse, err error) {
+    if request == nil {
+        request = NewGetDownloadFlowUrlRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewGetDownloadFlowUrlResponse()
     err = c.Send(request, response)
@@ -475,6 +704,68 @@ func (c *Client) OperateChannelTemplate(request *OperateChannelTemplateRequest) 
     return
 }
 
+// OperateChannelTemplate
+// 此接口（OperateChannelTemplate）用于渠道侧将模板库中的模板对合作企业进行查询和设置, 其中包括可见性的修改以及对合作企业的指定.
+//
+// 1、同步标识=select时：
+//
+// 输入规则：“可见标识”、“指定合作企业列表”为空。
+//
+// 处理规则：返回指定模版的可见标识、指定合作企业列表。
+//
+// 2、同步标识=update时：
+//
+// 输入规则：“可见标识”、“指定合作企业列表”非必填输入。
+//
+// 处理规则：
+//
+// 若“可见标识”=空，不做处理，返回当前的可见标识。
+//
+// 若“可见标识”=所有合作企业，不取“指定合作企业列表”的值处理。
+//
+// 若“可见标识”=指定合作企业，取“指定合作企业列表”的值进行更新/插入。
+//
+// 3、同步标识=delete时：
+//
+// 输入规则：“可见标识”、“指定合作企业列表”非必填输入。
+//
+// 处理规则：
+//
+// 仅取“指定合作企业列表”的值进行删除处理，为空时不做处。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_STAFFALREADYVERIFY = "FailedOperation.StaffAlreadyVerify"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INTERNALERROR_DBUPDATE = "InternalError.DbUpdate"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOAPIAUTH = "OperationDenied.NoApiAuth"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) OperateChannelTemplateWithContext(ctx context.Context, request *OperateChannelTemplateRequest) (response *OperateChannelTemplateResponse, err error) {
+    if request == nil {
+        request = NewOperateChannelTemplateRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewOperateChannelTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPrepareFlowsRequest() (request *PrepareFlowsRequest) {
     request = &PrepareFlowsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -500,6 +791,7 @@ func NewPrepareFlowsResponse() (response *PrepareFlowsResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_API = "InternalError.Api"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
@@ -508,6 +800,30 @@ func (c *Client) PrepareFlows(request *PrepareFlowsRequest) (response *PrepareFl
     if request == nil {
         request = NewPrepareFlowsRequest()
     }
+    
+    response = NewPrepareFlowsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// PrepareFlows
+// 该接口 (PrepareFlows) 用于创建待发起文件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+func (c *Client) PrepareFlowsWithContext(ctx context.Context, request *PrepareFlowsRequest) (response *PrepareFlowsResponse, err error) {
+    if request == nil {
+        request = NewPrepareFlowsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewPrepareFlowsResponse()
     err = c.Send(request, response)
@@ -539,6 +855,7 @@ func NewSyncProxyOrganizationResponse() (response *SyncProxyOrganizationResponse
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_API = "InternalError.Api"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_BANNEDAPPLICATION = "OperationDenied.BannedApplication"
@@ -551,6 +868,34 @@ func (c *Client) SyncProxyOrganization(request *SyncProxyOrganizationRequest) (r
     if request == nil {
         request = NewSyncProxyOrganizationRequest()
     }
+    
+    response = NewSyncProxyOrganizationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SyncProxyOrganization
+// 此接口（SyncProxyOrganization）用于同步渠道侧企业信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BANNEDAPPLICATION = "OperationDenied.BannedApplication"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SyncProxyOrganizationWithContext(ctx context.Context, request *SyncProxyOrganizationRequest) (response *SyncProxyOrganizationResponse, err error) {
+    if request == nil {
+        request = NewSyncProxyOrganizationRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewSyncProxyOrganizationResponse()
     err = c.Send(request, response)
@@ -603,6 +948,42 @@ func (c *Client) SyncProxyOrganizationOperators(request *SyncProxyOrganizationOp
     if request == nil {
         request = NewSyncProxyOrganizationOperatorsRequest()
     }
+    
+    response = NewSyncProxyOrganizationOperatorsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SyncProxyOrganizationOperators
+// 此接口（SyncProxyOrganizationOperators）用于同步渠道合作企业经办人列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_STAFFALREADYVERIFY = "FailedOperation.StaffAlreadyVerify"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INTERNALERROR_DBUPDATE = "InternalError.DbUpdate"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOAPIAUTH = "OperationDenied.NoApiAuth"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SyncProxyOrganizationOperatorsWithContext(ctx context.Context, request *SyncProxyOrganizationOperatorsRequest) (response *SyncProxyOrganizationOperatorsResponse, err error) {
+    if request == nil {
+        request = NewSyncProxyOrganizationOperatorsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewSyncProxyOrganizationOperatorsResponse()
     err = c.Send(request, response)

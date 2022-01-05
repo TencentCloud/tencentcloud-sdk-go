@@ -15,6 +15,7 @@
 package v20190318
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -71,6 +72,24 @@ func (c *Client) DescribeSdkAppid(request *DescribeSdkAppidRequest) (response *D
     if request == nil {
         request = NewDescribeSdkAppidRequest()
     }
+    
+    response = NewDescribeSdkAppidResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeSdkAppid
+// 获取云通信IM中腾讯云账号对应的SDKAppID
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeSdkAppidWithContext(ctx context.Context, request *DescribeSdkAppidRequest) (response *DescribeSdkAppidResponse, err error) {
+    if request == nil {
+        request = NewDescribeSdkAppidRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeSdkAppidResponse()
     err = c.Send(request, response)

@@ -15,6 +15,7 @@
 package v20200720
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -77,6 +78,24 @@ func (c *Client) CreateWeappQRUrl(request *CreateWeappQRUrlRequest) (response *C
     return
 }
 
+// CreateWeappQRUrl
+// 创建渠道备案小程序二维码
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) CreateWeappQRUrlWithContext(ctx context.Context, request *CreateWeappQRUrlRequest) (response *CreateWeappQRUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateWeappQRUrlRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateWeappQRUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeGetAuthInfoRequest() (request *DescribeGetAuthInfoRequest) {
     request = &DescribeGetAuthInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -105,6 +124,24 @@ func (c *Client) DescribeGetAuthInfo(request *DescribeGetAuthInfoRequest) (respo
     if request == nil {
         request = NewDescribeGetAuthInfoRequest()
     }
+    
+    response = NewDescribeGetAuthInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeGetAuthInfo
+// 获取实名认证信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_RESOURCENOTFOUND = "InternalError.ResourceNotFound"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeGetAuthInfoWithContext(ctx context.Context, request *DescribeGetAuthInfoRequest) (response *DescribeGetAuthInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeGetAuthInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeGetAuthInfoResponse()
     err = c.Send(request, response)
@@ -141,6 +178,26 @@ func (c *Client) SyncIcpOrderWebInfo(request *SyncIcpOrderWebInfoRequest) (respo
     if request == nil {
         request = NewSyncIcpOrderWebInfoRequest()
     }
+    
+    response = NewSyncIcpOrderWebInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SyncIcpOrderWebInfo
+// 将备案ICP订单下的一个网站信息 同步给订单下其他网站，需要被同步的网站被检查通过(isCheck:true)；
+//
+// 只有指定的网站信息字段能被同步
+//
+// 可能返回的错误码:
+//  INTERNALERROR_RESOURCENOTFOUND = "InternalError.ResourceNotFound"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) SyncIcpOrderWebInfoWithContext(ctx context.Context, request *SyncIcpOrderWebInfoRequest) (response *SyncIcpOrderWebInfoResponse, err error) {
+    if request == nil {
+        request = NewSyncIcpOrderWebInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewSyncIcpOrderWebInfoResponse()
     err = c.Send(request, response)

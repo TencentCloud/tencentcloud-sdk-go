@@ -1,3 +1,251 @@
+# Release v1.0.324
+
+## 应用性能观测(apm) 版本：2021-06-22
+
+### 第 4 次发布
+
+发布时间：2022-01-05 08:03:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ApmInstanceDetail](https://cloud.tencent.com/document/api/1463/64927#ApmInstanceDetail)
+
+	* 新增成员：LogRegion, LogSource, IsRelatedLog, LogTopicID
+
+
+
+
+## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 44 次发布
+
+发布时间：2022-01-05 08:03:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AttachLoadBalancers](https://cloud.tencent.com/document/api/377/67354)
+* [DetachLoadBalancers](https://cloud.tencent.com/document/api/377/67353)
+* [ModifyLoadBalancerTargetAttributes](https://cloud.tencent.com/document/api/377/67352)
+
+新增数据结构：
+
+* [ForwardLoadBalancerIdentification](https://cloud.tencent.com/document/api/377/20453#ForwardLoadBalancerIdentification)
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 76 次发布
+
+发布时间：2022-01-05 08:04:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDBInstance](https://cloud.tencent.com/document/api/236/15871)
+
+	* 新增入参：ParamTemplateType
+
+
+
+
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 92 次发布
+
+发布时间：2022-01-05 08:05:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MainlandConfig](https://cloud.tencent.com/document/api/228/30987#MainlandConfig)
+
+	* 新增成员：AwsPrivateAccess, OssPrivateAccess
+
+* [OverseaConfig](https://cloud.tencent.com/document/api/228/30987#OverseaConfig)
+
+	* 新增成员：AwsPrivateAccess, OssPrivateAccess
+
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 14 次发布
+
+发布时间：2022-01-05 08:06:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreateAsyncContextTask
+* CreateAsyncSearchTask
+* DeleteAsyncContextTask
+* DeleteAsyncSearchTask
+* DescribeAsyncContextResult
+* DescribeAsyncContextTasks
+* DescribeAsyncSearchResult
+* DescribeAsyncSearchTasks
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* AsyncContextTask
+* AsyncSearchTask
+
+
+
+## 数字身份管控平台（员工版）(eiam) 版本：2021-04-20
+
+### 第 12 次发布
+
+发布时间：2022-01-05 08:08:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddUserToUserGroup](https://cloud.tencent.com/document/api/1442/57991)
+
+	* 新增出参：FailedItems
+
+* [CreateUser](https://cloud.tencent.com/document/api/1442/57929)
+
+	* 新增入参：SecondaryOrgNodeIdList
+
+* [DescribeUserInfo](https://cloud.tencent.com/document/api/1442/57984)
+
+	* 新增出参：SecondaryOrgNodeIdList
+
+* [ListApplications](https://cloud.tencent.com/document/api/1442/58480)
+
+	* 新增入参：ApplicationIdList
+
+* [ListUsersInUserGroup](https://cloud.tencent.com/document/api/1442/57980)
+
+	* 新增入参：SearchCondition, Sort, Offset, Limit
+
+* [ModifyUserInfo](https://cloud.tencent.com/document/api/1442/58033)
+
+	* 新增入参：SecondaryOrgNodeIdList
+
+
+
+
+## 云直播(live) 版本：2018-08-01
+
+### 第 72 次发布
+
+发布时间：2022-01-05 08:10:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBillBandwidthAndFluxList](https://cloud.tencent.com/document/api/267/35971)
+
+	* 新增入参：RegionNames
+
+* [DescribePushBandwidthAndFluxList](https://cloud.tencent.com/document/api/267/59511)
+
+	* 新增入参：RegionNames
+
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 17 次发布
+
+发布时间：2022-01-05 08:11:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [SetAccountUserPrivilege](https://cloud.tencent.com/document/api/240/67357)
+
+新增数据结构：
+
+* [Auth](https://cloud.tencent.com/document/api/240/38576#Auth)
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2018-04-08
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 84 次发布
+
+发布时间：2022-01-05 08:14:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateClusterNodePool](https://cloud.tencent.com/document/api/457/49436)
+
+	* 新增入参：Tags
+
+* [ModifyClusterNodePool](https://cloud.tencent.com/document/api/457/49431)
+
+	* 新增入参：Tags
+
+
+修改数据结构：
+
+* [NodePool](https://cloud.tencent.com/document/api/457/31866#NodePool)
+
+	* 新增成员：Tags
+
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 65 次发布
+
+发布时间：2022-01-05 08:15:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeployContainerGroup](https://cloud.tencent.com/document/api/649/36071)
+
+	* 新增入参：VolumeInfoList, VolumeMountInfoList
+
+
+
+
 # Release v1.0.323
 
 ## Elasticsearch Service(es) 版本：2018-04-16

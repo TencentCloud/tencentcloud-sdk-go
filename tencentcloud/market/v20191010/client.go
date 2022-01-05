@@ -15,6 +15,7 @@
 package v20191010
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -72,6 +73,19 @@ func (c *Client) FlowProductRemind(request *FlowProductRemindRequest) (response 
     return
 }
 
+// FlowProductRemind
+// 计量商品用量提醒，用于服务商调用云服务，云服务向客户发送提醒信息
+func (c *Client) FlowProductRemindWithContext(ctx context.Context, request *FlowProductRemindRequest) (response *FlowProductRemindResponse, err error) {
+    if request == nil {
+        request = NewFlowProductRemindRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewFlowProductRemindResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetUsagePlanUsageAmountRequest() (request *GetUsagePlanUsageAmountRequest) {
     request = &GetUsagePlanUsageAmountRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -93,12 +107,31 @@ func NewGetUsagePlanUsageAmountResponse() (response *GetUsagePlanUsageAmountResp
 // 该接口可以根据InstanceId查询实例的api的使用情况。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) GetUsagePlanUsageAmount(request *GetUsagePlanUsageAmountRequest) (response *GetUsagePlanUsageAmountResponse, err error) {
     if request == nil {
         request = NewGetUsagePlanUsageAmountRequest()
     }
+    
+    response = NewGetUsagePlanUsageAmountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// GetUsagePlanUsageAmount
+// 该接口可以根据InstanceId查询实例的api的使用情况。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) GetUsagePlanUsageAmountWithContext(ctx context.Context, request *GetUsagePlanUsageAmountRequest) (response *GetUsagePlanUsageAmountResponse, err error) {
+    if request == nil {
+        request = NewGetUsagePlanUsageAmountRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewGetUsagePlanUsageAmountResponse()
     err = c.Send(request, response)

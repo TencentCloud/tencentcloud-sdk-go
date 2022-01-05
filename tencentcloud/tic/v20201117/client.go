@@ -15,6 +15,7 @@
 package v20201117
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -87,6 +88,34 @@ func (c *Client) ApplyStack(request *ApplyStackRequest) (response *ApplyStackRes
     return
 }
 
+// ApplyStack
+// 本接口（ApplyStack）用于触发资源栈下某个版本的Apply事件。
+//
+// 
+//
+// - 当版本处于PLAN_IN_PROGRESS或APPLY_IN_PROGRESS状态时，将无法再执行本操作
+//
+// - 当版本处于APPLY_COMPLETED状态时，本操作无法执行
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTEXIST = "FailedOperation.NotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_COSERROR = "InternalError.CosError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  UNSUPPORTEDOPERATION_FORBIDOP = "UnsupportedOperation.ForbidOp"
+func (c *Client) ApplyStackWithContext(ctx context.Context, request *ApplyStackRequest) (response *ApplyStackResponse, err error) {
+    if request == nil {
+        request = NewApplyStackRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewApplyStackResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateStackRequest() (request *CreateStackRequest) {
     request = &CreateStackRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -118,6 +147,27 @@ func (c *Client) CreateStack(request *CreateStackRequest) (response *CreateStack
     if request == nil {
         request = NewCreateStackRequest()
     }
+    
+    response = NewCreateStackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateStack
+// 本接口（CreateStack）用于通过传递一个COS的terraform zip模版URL来创建一个资源栈。创建资源栈后仍需要用户调用对应的plan, apply, destory执行对应的事件。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_HTTPREQUESTERROR = "FailedOperation.HttpRequestError"
+//  INTERNALERROR_COSERROR = "InternalError.CosError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+func (c *Client) CreateStackWithContext(ctx context.Context, request *CreateStackRequest) (response *CreateStackResponse, err error) {
+    if request == nil {
+        request = NewCreateStackRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateStackResponse()
     err = c.Send(request, response)
@@ -164,6 +214,30 @@ func (c *Client) CreateStackVersion(request *CreateStackVersionRequest) (respons
     return
 }
 
+// CreateStackVersion
+// 本接口（CreateStackVersion）用于给资源栈新增一个HCL模版版本，仅限COS链接，且为zip格式。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTEXIST = "FailedOperation.NotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_COSERROR = "InternalError.CosError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_MQERROR = "InternalError.MqError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  UNSUPPORTEDOPERATION_FORBIDOP = "UnsupportedOperation.ForbidOp"
+func (c *Client) CreateStackVersionWithContext(ctx context.Context, request *CreateStackVersionRequest) (response *CreateStackVersionResponse, err error) {
+    if request == nil {
+        request = NewCreateStackVersionRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateStackVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteStackRequest() (request *DeleteStackRequest) {
     request = &DeleteStackRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -195,6 +269,27 @@ func (c *Client) DeleteStack(request *DeleteStackRequest) (response *DeleteStack
     if request == nil {
         request = NewDeleteStackRequest()
     }
+    
+    response = NewDeleteStackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteStack
+// 本接口（DeleteStack）用于删除一个资源栈（配置、版本、事件信息）。但不会销毁资源管理的云资源。如果需要销毁资源栈管理的云资源，请调用 DestoryStack 接口销毁云资源。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTEXIST = "FailedOperation.NotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_COSERROR = "InternalError.CosError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteStackWithContext(ctx context.Context, request *DeleteStackRequest) (response *DeleteStackResponse, err error) {
+    if request == nil {
+        request = NewDeleteStackRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteStackResponse()
     err = c.Send(request, response)
@@ -238,6 +333,27 @@ func (c *Client) DeleteStackVersion(request *DeleteStackVersionRequest) (respons
     return
 }
 
+// DeleteStackVersion
+// 本接口（DeleteStackVersion）用于删除一个版本，处于PLAN_IN_PROGRESS和APPLY_IN_PROGRESS状态中的版本无法删除。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_COSERROR = "InternalError.CosError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteStackVersionWithContext(ctx context.Context, request *DeleteStackVersionRequest) (response *DeleteStackVersionResponse, err error) {
+    if request == nil {
+        request = NewDeleteStackVersionRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteStackVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeStackEventRequest() (request *DescribeStackEventRequest) {
     request = &DescribeStackEventRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -269,6 +385,27 @@ func (c *Client) DescribeStackEvent(request *DescribeStackEventRequest) (respons
     if request == nil {
         request = NewDescribeStackEventRequest()
     }
+    
+    response = NewDescribeStackEventResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeStackEvent
+// 本接口（DescribeStackEvent）用于获取单个事件详情，尤其是可以得到事件的详细控制台输出文本。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_HTTPREQUESTERROR = "FailedOperation.HttpRequestError"
+//  FAILEDOPERATION_NOTEXIST = "FailedOperation.NotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_COSERROR = "InternalError.CosError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeStackEventWithContext(ctx context.Context, request *DescribeStackEventRequest) (response *DescribeStackEventResponse, err error) {
+    if request == nil {
+        request = NewDescribeStackEventRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeStackEventResponse()
     err = c.Send(request, response)
@@ -319,6 +456,34 @@ func (c *Client) DescribeStackEvents(request *DescribeStackEventsRequest) (respo
     return
 }
 
+// DescribeStackEvents
+// 本接口（DescribeStackEvents）用于查看一个或多个事件详细信息。
+//
+// 
+//
+// - 可以根据事件ID过滤感兴趣的事件
+//
+// - 也可以根据版本ID，资源栈ID，事件类型，事件状态过滤事件，过滤信息详细请见过滤器Filter
+//
+// - 如果参数为空，返回当前用户一定数量（Limit所指定的数量，默认为20）的事件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_COSERROR = "InternalError.CosError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeStackEventsWithContext(ctx context.Context, request *DescribeStackEventsRequest) (response *DescribeStackEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeStackEventsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeStackEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeStackVersionsRequest() (request *DescribeStackVersionsRequest) {
     request = &DescribeStackVersionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -357,6 +522,34 @@ func (c *Client) DescribeStackVersions(request *DescribeStackVersionsRequest) (r
     if request == nil {
         request = NewDescribeStackVersionsRequest()
     }
+    
+    response = NewDescribeStackVersionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeStackVersions
+// 本接口（DescribeStackVersions）用于查询一个或多个版本的详细信息。
+//
+// 
+//
+// - 可以根据版本ID查询感兴趣的版本
+//
+// - 可以根据版本名字和状态来过滤版本，详见过滤器Filter
+//
+// - 如果参数为空，返回当前用户一定数量（Limit所指定的数量，默认为20）的版本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTEXIST = "FailedOperation.NotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_COSERROR = "InternalError.CosError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeStackVersionsWithContext(ctx context.Context, request *DescribeStackVersionsRequest) (response *DescribeStackVersionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeStackVersionsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeStackVersionsResponse()
     err = c.Send(request, response)
@@ -405,6 +598,32 @@ func (c *Client) DescribeStacks(request *DescribeStacksRequest) (response *Descr
     return
 }
 
+// DescribeStacks
+// 本接口（DescribeStacks）用于查询一个或多个资源栈的详细信息。
+//
+// 
+//
+// - 可以根据资源栈ID来查询感兴趣的资源栈信息
+//
+// - 若参数为空，返回当前用户一定数量（Limit所指定的数量，默认为20）的资源栈
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_COSERROR = "InternalError.CosError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeStacksWithContext(ctx context.Context, request *DescribeStacksRequest) (response *DescribeStacksResponse, err error) {
+    if request == nil {
+        request = NewDescribeStacksRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeStacksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDestroyStackRequest() (request *DestroyStackRequest) {
     request = &DestroyStackRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -437,6 +656,28 @@ func (c *Client) DestroyStack(request *DestroyStackRequest) (response *DestroySt
     if request == nil {
         request = NewDestroyStackRequest()
     }
+    
+    response = NewDestroyStackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DestroyStack
+// 本接口（DestroyStack）用于删除资源栈下的某个版本所创建的资源。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTEXIST = "FailedOperation.NotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_COSERROR = "InternalError.CosError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+func (c *Client) DestroyStackWithContext(ctx context.Context, request *DestroyStackRequest) (response *DestroyStackResponse, err error) {
+    if request == nil {
+        request = NewDestroyStackRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDestroyStackResponse()
     err = c.Send(request, response)
@@ -487,6 +728,34 @@ func (c *Client) PlanStack(request *PlanStackRequest) (response *PlanStackRespon
     return
 }
 
+// PlanStack
+// 本接口（PlanStack）用于触发资源栈下某个版本的PLAN事件。
+//
+// 
+//
+// - 当版本处于PLAN_IN_PROGRESS或APPLY_IN_PROGRESS状态时，将无法再执行本操作
+//
+// - 当版本处于APPLY_COMPLETED状态时，本操作无法执行
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTEXIST = "FailedOperation.NotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_COSERROR = "InternalError.CosError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION_FORBIDOP = "UnsupportedOperation.ForbidOp"
+func (c *Client) PlanStackWithContext(ctx context.Context, request *PlanStackRequest) (response *PlanStackResponse, err error) {
+    if request == nil {
+        request = NewPlanStackRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewPlanStackResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateStackRequest() (request *UpdateStackRequest) {
     request = &UpdateStackRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -517,6 +786,26 @@ func (c *Client) UpdateStack(request *UpdateStackRequest) (response *UpdateStack
     if request == nil {
         request = NewUpdateStackRequest()
     }
+    
+    response = NewUpdateStackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UpdateStack
+// 本接口（UpdateStack）用于更新资源栈的名称和描述。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_COSERROR = "InternalError.CosError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) UpdateStackWithContext(ctx context.Context, request *UpdateStackRequest) (response *UpdateStackResponse, err error) {
+    if request == nil {
+        request = NewUpdateStackRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUpdateStackResponse()
     err = c.Send(request, response)
@@ -554,6 +843,27 @@ func (c *Client) UpdateStackVersion(request *UpdateStackVersionRequest) (respons
     if request == nil {
         request = NewUpdateStackVersionRequest()
     }
+    
+    response = NewUpdateStackVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UpdateStackVersion
+// 本接口（UpdateStackVersion）用于更新一个版本的模版内容，名称或描述，模版仅限COS URL，且为zip格式。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_COSERROR = "InternalError.CosError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+func (c *Client) UpdateStackVersionWithContext(ctx context.Context, request *UpdateStackVersionRequest) (response *UpdateStackVersionResponse, err error) {
+    if request == nil {
+        request = NewUpdateStackVersionRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUpdateStackVersionResponse()
     err = c.Send(request, response)

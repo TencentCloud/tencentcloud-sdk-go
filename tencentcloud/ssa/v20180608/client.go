@@ -15,6 +15,7 @@
 package v20180608
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -76,6 +77,23 @@ func (c *Client) DescribeAssetDetail(request *DescribeAssetDetailRequest) (respo
     return
 }
 
+// DescribeAssetDetail
+// 资产安全页资产详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAssetDetailWithContext(ctx context.Context, request *DescribeAssetDetailRequest) (response *DescribeAssetDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetDetailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetListRequest() (request *DescribeAssetListRequest) {
     request = &DescribeAssetListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -104,6 +122,24 @@ func (c *Client) DescribeAssetList(request *DescribeAssetListRequest) (response 
     if request == nil {
         request = NewDescribeAssetListRequest()
     }
+    
+    response = NewDescribeAssetListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAssetList
+// 资产安全资产列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAssetListWithContext(ctx context.Context, request *DescribeAssetListRequest) (response *DescribeAssetListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAssetListResponse()
     err = c.Send(request, response)
@@ -145,6 +181,25 @@ func (c *Client) DescribeAssetsMappingList(request *DescribeAssetsMappingListReq
     return
 }
 
+// DescribeAssetsMappingList
+// 资产测绘-测绘列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_AUTHMODULEFAILED = "AuthFailure.AuthModuleFailed"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+func (c *Client) DescribeAssetsMappingListWithContext(ctx context.Context, request *DescribeAssetsMappingListRequest) (response *DescribeAssetsMappingListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetsMappingListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetsMappingListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCheckConfigAssetListRequest() (request *DescribeCheckConfigAssetListRequest) {
     request = &DescribeCheckConfigAssetListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -174,6 +229,25 @@ func (c *Client) DescribeCheckConfigAssetList(request *DescribeCheckConfigAssetL
     if request == nil {
         request = NewDescribeCheckConfigAssetListRequest()
     }
+    
+    response = NewDescribeCheckConfigAssetListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCheckConfigAssetList
+// 云安全配置管理资产组列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCheckConfigAssetListWithContext(ctx context.Context, request *DescribeCheckConfigAssetListRequest) (response *DescribeCheckConfigAssetListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCheckConfigAssetListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeCheckConfigAssetListResponse()
     err = c.Send(request, response)
@@ -215,6 +289,25 @@ func (c *Client) DescribeCheckConfigDetail(request *DescribeCheckConfigDetailReq
     return
 }
 
+// DescribeCheckConfigDetail
+// 云安全配置检查项详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCheckConfigDetailWithContext(ctx context.Context, request *DescribeCheckConfigDetailRequest) (response *DescribeCheckConfigDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeCheckConfigDetailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeCheckConfigDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeComplianceAssetListRequest() (request *DescribeComplianceAssetListRequest) {
     request = &DescribeComplianceAssetListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -243,6 +336,24 @@ func (c *Client) DescribeComplianceAssetList(request *DescribeComplianceAssetLis
     if request == nil {
         request = NewDescribeComplianceAssetListRequest()
     }
+    
+    response = NewDescribeComplianceAssetListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeComplianceAssetList
+// 合规管理-资产列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeComplianceAssetListWithContext(ctx context.Context, request *DescribeComplianceAssetListRequest) (response *DescribeComplianceAssetListResponse, err error) {
+    if request == nil {
+        request = NewDescribeComplianceAssetListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeComplianceAssetListResponse()
     err = c.Send(request, response)
@@ -278,6 +389,25 @@ func (c *Client) DescribeComplianceDetail(request *DescribeComplianceDetailReque
     if request == nil {
         request = NewDescribeComplianceDetailRequest()
     }
+    
+    response = NewDescribeComplianceDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeComplianceDetail
+// 合规管理检查项详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeComplianceDetailWithContext(ctx context.Context, request *DescribeComplianceDetailRequest) (response *DescribeComplianceDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeComplianceDetailRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeComplianceDetailResponse()
     err = c.Send(request, response)
@@ -320,6 +450,26 @@ func (c *Client) DescribeComplianceList(request *DescribeComplianceListRequest) 
     return
 }
 
+// DescribeComplianceList
+// 合规管理总览页检查项列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_AUTHMODULEFAILED = "AuthFailure.AuthModuleFailed"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeComplianceListWithContext(ctx context.Context, request *DescribeComplianceListRequest) (response *DescribeComplianceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeComplianceListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeComplianceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeConfigListRequest() (request *DescribeConfigListRequest) {
     request = &DescribeConfigListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -348,6 +498,24 @@ func (c *Client) DescribeConfigList(request *DescribeConfigListRequest) (respons
     if request == nil {
         request = NewDescribeConfigListRequest()
     }
+    
+    response = NewDescribeConfigListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeConfigList
+// 云配置检查项总览页检查项列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_AUTHMODULEFAILED = "AuthFailure.AuthModuleFailed"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeConfigListWithContext(ctx context.Context, request *DescribeConfigListRequest) (response *DescribeConfigListResponse, err error) {
+    if request == nil {
+        request = NewDescribeConfigListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeConfigListResponse()
     err = c.Send(request, response)
@@ -386,6 +554,22 @@ func (c *Client) DescribeEventDetail(request *DescribeEventDetailRequest) (respo
     return
 }
 
+// DescribeEventDetail
+// 获取安全事件详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeEventDetailWithContext(ctx context.Context, request *DescribeEventDetailRequest) (response *DescribeEventDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeEventDetailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeEventDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLeakDetectionListRequest() (request *DescribeLeakDetectionListRequest) {
     request = &DescribeLeakDetectionListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -413,6 +597,23 @@ func (c *Client) DescribeLeakDetectionList(request *DescribeLeakDetectionListReq
     if request == nil {
         request = NewDescribeLeakDetectionListRequest()
     }
+    
+    response = NewDescribeLeakDetectionListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeLeakDetectionList
+// 获取泄露列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeLeakDetectionListWithContext(ctx context.Context, request *DescribeLeakDetectionListRequest) (response *DescribeLeakDetectionListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLeakDetectionListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeLeakDetectionListResponse()
     err = c.Send(request, response)
@@ -453,6 +654,24 @@ func (c *Client) DescribeSafetyEventList(request *DescribeSafetyEventListRequest
     return
 }
 
+// DescribeSafetyEventList
+// 获取安全事件列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+func (c *Client) DescribeSafetyEventListWithContext(ctx context.Context, request *DescribeSafetyEventListRequest) (response *DescribeSafetyEventListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSafetyEventListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeSafetyEventListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSocAlertDetailsRequest() (request *DescribeSocAlertDetailsRequest) {
     request = &DescribeSocAlertDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -487,6 +706,24 @@ func (c *Client) DescribeSocAlertDetails(request *DescribeSocAlertDetailsRequest
     return
 }
 
+// DescribeSocAlertDetails
+// 返回告警详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+func (c *Client) DescribeSocAlertDetailsWithContext(ctx context.Context, request *DescribeSocAlertDetailsRequest) (response *DescribeSocAlertDetailsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSocAlertDetailsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeSocAlertDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSocAlertListRequest() (request *DescribeSocAlertListRequest) {
     request = &DescribeSocAlertListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -515,6 +752,24 @@ func (c *Client) DescribeSocAlertList(request *DescribeSocAlertListRequest) (res
     if request == nil {
         request = NewDescribeSocAlertListRequest()
     }
+    
+    response = NewDescribeSocAlertListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeSocAlertList
+// 拉取告警列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+func (c *Client) DescribeSocAlertListWithContext(ctx context.Context, request *DescribeSocAlertListRequest) (response *DescribeSocAlertListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSocAlertListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeSocAlertListResponse()
     err = c.Send(request, response)
@@ -573,6 +828,42 @@ func (c *Client) DescribeSocCspmCompliance(request *DescribeSocCspmComplianceReq
     return
 }
 
+// DescribeSocCspmCompliance
+// 合规详情项
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_AUTHMODULEFAILED = "AuthFailure.AuthModuleFailed"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_SUBACCOUNTUNAUTHORIZED = "UnauthorizedOperation.SubAccountUnauthorized"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSocCspmComplianceWithContext(ctx context.Context, request *DescribeSocCspmComplianceRequest) (response *DescribeSocCspmComplianceResponse, err error) {
+    if request == nil {
+        request = NewDescribeSocCspmComplianceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeSocCspmComplianceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVulDetailRequest() (request *DescribeVulDetailRequest) {
     request = &DescribeVulDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -599,6 +890,22 @@ func (c *Client) DescribeVulDetail(request *DescribeVulDetailRequest) (response 
     if request == nil {
         request = NewDescribeVulDetailRequest()
     }
+    
+    response = NewDescribeVulDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeVulDetail
+// 漏洞列表页，获取漏洞详情信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeVulDetailWithContext(ctx context.Context, request *DescribeVulDetailRequest) (response *DescribeVulDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulDetailRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeVulDetailResponse()
     err = c.Send(request, response)
@@ -639,6 +946,24 @@ func (c *Client) DescribeVulList(request *DescribeVulListRequest) (response *Des
     return
 }
 
+// DescribeVulList
+// 漏洞管理页，获取漏洞列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeVulListWithContext(ctx context.Context, request *DescribeVulListRequest) (response *DescribeVulListResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeVulListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSaDivulgeDataQueryPubRequest() (request *SaDivulgeDataQueryPubRequest) {
     request = &SaDivulgeDataQueryPubRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -667,6 +992,24 @@ func (c *Client) SaDivulgeDataQueryPub(request *SaDivulgeDataQueryPubRequest) (r
     if request == nil {
         request = NewSaDivulgeDataQueryPubRequest()
     }
+    
+    response = NewSaDivulgeDataQueryPubResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SaDivulgeDataQueryPub
+// 查询【通用字段】【泄露监测数据列表】
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+func (c *Client) SaDivulgeDataQueryPubWithContext(ctx context.Context, request *SaDivulgeDataQueryPubRequest) (response *SaDivulgeDataQueryPubResponse, err error) {
+    if request == nil {
+        request = NewSaDivulgeDataQueryPubRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewSaDivulgeDataQueryPubResponse()
     err = c.Send(request, response)

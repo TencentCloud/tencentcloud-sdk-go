@@ -15,6 +15,7 @@
 package v20180808
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -86,6 +87,33 @@ func (c *Client) BatchModifyDomainInfo(request *BatchModifyDomainInfoRequest) (r
     return
 }
 
+// BatchModifyDomainInfo
+// 本接口 ( BatchModifyDomainInfo ) 用于批量域名信息修改 。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UPTO4000 = "InvalidParameter.UpTo4000"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_DOMAINISEMPTY = "MissingParameter.DomainIsEmpty"
+//  MISSINGPARAMETER_REPDATAISNONE = "MissingParameter.RepDataIsNone"
+//  MISSINGPARAMETER_TEMPLATEIDISEMPTY = "MissingParameter.TemplateIdIsEmpty"
+//  RESOURCEINSUFFICIENT_OVERWORK = "ResourceInsufficient.Overwork"
+//  RESOURCENOTFOUND_APPROVEDTEMPLATENOTFOUND = "ResourceNotFound.ApprovedTemplateNotFound"
+//  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
+func (c *Client) BatchModifyDomainInfoWithContext(ctx context.Context, request *BatchModifyDomainInfoRequest) (response *BatchModifyDomainInfoResponse, err error) {
+    if request == nil {
+        request = NewBatchModifyDomainInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewBatchModifyDomainInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckBatchStatusRequest() (request *CheckBatchStatusRequest) {
     request = &CheckBatchStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -113,6 +141,23 @@ func (c *Client) CheckBatchStatus(request *CheckBatchStatusRequest) (response *C
     if request == nil {
         request = NewCheckBatchStatusRequest()
     }
+    
+    response = NewCheckBatchStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CheckBatchStatus
+// 本接口 ( CheckBatchStatus ) 用于查询批量操作日志状态 。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CheckBatchStatusWithContext(ctx context.Context, request *CheckBatchStatusRequest) (response *CheckBatchStatusResponse, err error) {
+    if request == nil {
+        request = NewCheckBatchStatusRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCheckBatchStatusResponse()
     err = c.Send(request, response)
@@ -155,6 +200,26 @@ func (c *Client) CheckDomain(request *CheckDomainRequest) (response *CheckDomain
     return
 }
 
+// CheckDomain
+// 检查域名是否可以注册。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHECKDOMAINFAILED = "FailedOperation.CheckDomainFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINNAMEISINVALID = "InvalidParameter.DomainNameIsInvalid"
+//  MISSINGPARAMETER_DOMAINISEMPTY = "MissingParameter.DomainIsEmpty"
+func (c *Client) CheckDomainWithContext(ctx context.Context, request *CheckDomainRequest) (response *CheckDomainResponse, err error) {
+    if request == nil {
+        request = NewCheckDomainRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCheckDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDomainBatchRequest() (request *CreateDomainBatchRequest) {
     request = &CreateDomainBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -190,11 +255,43 @@ func NewCreateDomainBatchResponse() (response *CreateDomainBatchResponse) {
 //  MISSINGPARAMETER_REPDATAISNONE = "MissingParameter.RepDataIsNone"
 //  MISSINGPARAMETER_TEMPLATEIDISEMPTY = "MissingParameter.TemplateIdIsEmpty"
 //  RESOURCEINSUFFICIENT_OVERWORK = "ResourceInsufficient.Overwork"
+//  RESOURCENOTFOUND_APPROVEDTEMPLATENOTFOUND = "ResourceNotFound.ApprovedTemplateNotFound"
 //  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
 func (c *Client) CreateDomainBatch(request *CreateDomainBatchRequest) (response *CreateDomainBatchResponse, err error) {
     if request == nil {
         request = NewCreateDomainBatchRequest()
     }
+    
+    response = NewCreateDomainBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateDomainBatch
+// 本接口 ( CreateDomainBatch ) 用于批量域名注册 。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_REGISTERDOMAIN = "FailedOperation.RegisterDomain"
+//  FAILEDOPERATION_REGISTERDOMAINFAILED = "FailedOperation.RegisterDomainFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CUSTOMDNSNOTALLOWED = "InvalidParameter.CustomDnsNotAllowed"
+//  INVALIDPARAMETER_PACKAGERESOURCEIDINVALID = "InvalidParameter.PackageResourceIdInvalid"
+//  INVALIDPARAMETER_UPTO4000 = "InvalidParameter.UpTo4000"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_DOMAINISEMPTY = "MissingParameter.DomainIsEmpty"
+//  MISSINGPARAMETER_REPDATAISNONE = "MissingParameter.RepDataIsNone"
+//  MISSINGPARAMETER_TEMPLATEIDISEMPTY = "MissingParameter.TemplateIdIsEmpty"
+//  RESOURCEINSUFFICIENT_OVERWORK = "ResourceInsufficient.Overwork"
+//  RESOURCENOTFOUND_APPROVEDTEMPLATENOTFOUND = "ResourceNotFound.ApprovedTemplateNotFound"
+//  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
+func (c *Client) CreateDomainBatchWithContext(ctx context.Context, request *CreateDomainBatchRequest) (response *CreateDomainBatchResponse, err error) {
+    if request == nil {
+        request = NewCreateDomainBatchRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateDomainBatchResponse()
     err = c.Send(request, response)
@@ -232,6 +329,27 @@ func (c *Client) CreatePhoneEmail(request *CreatePhoneEmailRequest) (response *C
     if request == nil {
         request = NewCreatePhoneEmailRequest()
     }
+    
+    response = NewCreatePhoneEmailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreatePhoneEmail
+// 此接口用于创建有效的手机、邮箱
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DUPLICATEPHONEEMAIL = "FailedOperation.DuplicatePhoneEmail"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_CODETYPEISINVALID = "InvalidParameter.CodeTypeIsInvalid"
+//  INVALIDPARAMETER_EMAILISINVALID = "InvalidParameter.EmailIsInvalid"
+//  INVALIDPARAMETER_TELEPHONEISINVALID = "InvalidParameter.TelephoneIsInvalid"
+//  INVALIDPARAMETER_VERIFYCODEISINVALID = "InvalidParameter.VerifyCodeIsInvalid"
+func (c *Client) CreatePhoneEmailWithContext(ctx context.Context, request *CreatePhoneEmailRequest) (response *CreatePhoneEmailResponse, err error) {
+    if request == nil {
+        request = NewCreatePhoneEmailRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreatePhoneEmailResponse()
     err = c.Send(request, response)
@@ -298,6 +416,50 @@ func (c *Client) CreateTemplate(request *CreateTemplateRequest) (response *Creat
     return
 }
 
+// CreateTemplate
+// 本接口 ( CreateTemplate ) 用于添加域名信息模板 。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATETEMPLATEFAILED = "FailedOperation.CreateTemplateFailed"
+//  FAILEDOPERATION_DESCRIBEDOMAINLISTFAILED = "FailedOperation.DescribeDomainListFailed"
+//  FAILEDOPERATION_DESCRIBETEMPLATEFAILED = "FailedOperation.DescribeTemplateFailed"
+//  FAILEDOPERATION_TEMPLATEMAXNUMFAILED = "FailedOperation.TemplateMaxNumFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CERTIFICATECODEISINVALID = "InvalidParameter.CertificateCodeIsInvalid"
+//  INVALIDPARAMETER_CERTIFICATEIMAGEISINVALID = "InvalidParameter.CertificateImageIsInvalid"
+//  INVALIDPARAMETER_EMAILISINVALID = "InvalidParameter.EmailIsInvalid"
+//  INVALIDPARAMETER_EMAILISUNVERIFIED = "InvalidParameter.EmailIsUnverified"
+//  INVALIDPARAMETER_NAMEISINVALID = "InvalidParameter.NameIsInvalid"
+//  INVALIDPARAMETER_NAMEISKEYWORD = "InvalidParameter.NameIsKeyword"
+//  INVALIDPARAMETER_ORGISINVALID = "InvalidParameter.OrgIsInvalid"
+//  INVALIDPARAMETER_ORGISKEYWORD = "InvalidParameter.OrgIsKeyword"
+//  INVALIDPARAMETER_REPTYPEISINVALID = "InvalidParameter.RepTypeIsInvalid"
+//  INVALIDPARAMETER_STREETISINVALID = "InvalidParameter.StreetIsInvalid"
+//  INVALIDPARAMETER_TELEPHONEISINVALID = "InvalidParameter.TelephoneIsInvalid"
+//  INVALIDPARAMETER_TELEPHONEISUNVERIFIED = "InvalidParameter.TelephoneIsUnverified"
+//  INVALIDPARAMETER_USERTYPEISINVALID = "InvalidParameter.UserTypeIsInvalid"
+//  INVALIDPARAMETER_ZIPCODEISINVALID = "InvalidParameter.ZipCodeIsInvalid"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_DOMAINISEMPTY = "MissingParameter.DomainIsEmpty"
+//  MISSINGPARAMETER_REPDATAISNONE = "MissingParameter.RepDataIsNone"
+//  MISSINGPARAMETER_TEMPLATEIDISEMPTY = "MissingParameter.TemplateIdIsEmpty"
+//  MISSINGPARAMETER_TEMPLATEIDISEXIST = "MissingParameter.TemplateIdIsExist"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
+func (c *Client) CreateTemplateWithContext(ctx context.Context, request *CreateTemplateRequest) (response *CreateTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateTemplateRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeletePhoneEmailRequest() (request *DeletePhoneEmailRequest) {
     request = &DeletePhoneEmailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -328,6 +490,26 @@ func (c *Client) DeletePhoneEmail(request *DeletePhoneEmailRequest) (response *D
     if request == nil {
         request = NewDeletePhoneEmailRequest()
     }
+    
+    response = NewDeletePhoneEmailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeletePhoneEmail
+// 此接口用于删除已验证的手机邮箱
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMAILISINVALID = "InvalidParameter.EmailIsInvalid"
+//  INVALIDPARAMETER_TELEPHONEISINVALID = "InvalidParameter.TelephoneIsInvalid"
+func (c *Client) DeletePhoneEmailWithContext(ctx context.Context, request *DeletePhoneEmailRequest) (response *DeletePhoneEmailResponse, err error) {
+    if request == nil {
+        request = NewDeletePhoneEmailRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeletePhoneEmailResponse()
     err = c.Send(request, response)
@@ -371,6 +553,27 @@ func (c *Client) DeleteTemplate(request *DeleteTemplateRequest) (response *Delet
     return
 }
 
+// DeleteTemplate
+// 本接口 ( DeleteTemplate ) 用于删除信息模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DELETETEMPLATEFAILED = "FailedOperation.DeleteTemplateFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_TEMPLATEIDISEMPTY = "MissingParameter.TemplateIdIsEmpty"
+//  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
+func (c *Client) DeleteTemplateWithContext(ctx context.Context, request *DeleteTemplateRequest) (response *DeleteTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteTemplateRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBatchOperationLogDetailsRequest() (request *DescribeBatchOperationLogDetailsRequest) {
     request = &DescribeBatchOperationLogDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -405,6 +608,24 @@ func (c *Client) DescribeBatchOperationLogDetails(request *DescribeBatchOperatio
     return
 }
 
+// DescribeBatchOperationLogDetails
+// 本接口 ( DescribeBatchOperationLogDetails ) 用于获取批量操作日志详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBatchOperationLogDetailsWithContext(ctx context.Context, request *DescribeBatchOperationLogDetailsRequest) (response *DescribeBatchOperationLogDetailsResponse, err error) {
+    if request == nil {
+        request = NewDescribeBatchOperationLogDetailsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeBatchOperationLogDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBatchOperationLogsRequest() (request *DescribeBatchOperationLogsRequest) {
     request = &DescribeBatchOperationLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -433,6 +654,24 @@ func (c *Client) DescribeBatchOperationLogs(request *DescribeBatchOperationLogsR
     if request == nil {
         request = NewDescribeBatchOperationLogsRequest()
     }
+    
+    response = NewDescribeBatchOperationLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeBatchOperationLogs
+// 本接口 ( DescribeBatchOperationLogs ) 用于获取批量操作日志 。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBatchOperationLogsWithContext(ctx context.Context, request *DescribeBatchOperationLogsRequest) (response *DescribeBatchOperationLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeBatchOperationLogsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeBatchOperationLogsResponse()
     err = c.Send(request, response)
@@ -476,6 +715,27 @@ func (c *Client) DescribeDomainBaseInfo(request *DescribeDomainBaseInfoRequest) 
     return
 }
 
+// DescribeDomainBaseInfo
+// 本接口 (  DescribeDomainBaseInfo) 获取域名基本信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CHECKDOMAINFAILED = "FailedOperation.CheckDomainFailed"
+//  FAILEDOPERATION_DESCRIBEDOMAINFAILED = "FailedOperation.DescribeDomainFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DOMAINNOTFOUND = "ResourceNotFound.DomainNotFound"
+func (c *Client) DescribeDomainBaseInfoWithContext(ctx context.Context, request *DescribeDomainBaseInfoRequest) (response *DescribeDomainBaseInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainBaseInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDomainBaseInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDomainNameListRequest() (request *DescribeDomainNameListRequest) {
     request = &DescribeDomainNameListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -503,6 +763,23 @@ func (c *Client) DescribeDomainNameList(request *DescribeDomainNameListRequest) 
     if request == nil {
         request = NewDescribeDomainNameListRequest()
     }
+    
+    response = NewDescribeDomainNameListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeDomainNameList
+// 本接口 (  DescribeDomainNameList ) 我的域名列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEDOMAINLISTFAILED = "FailedOperation.DescribeDomainListFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeDomainNameListWithContext(ctx context.Context, request *DescribeDomainNameListRequest) (response *DescribeDomainNameListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainNameListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeDomainNameListResponse()
     err = c.Send(request, response)
@@ -544,6 +821,25 @@ func (c *Client) DescribeDomainPriceList(request *DescribeDomainPriceListRequest
     return
 }
 
+// DescribeDomainPriceList
+// 按照域名后缀获取对应的价格列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOMAINPRICELISTFAILED = "FailedOperation.DomainPriceListFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeDomainPriceListWithContext(ctx context.Context, request *DescribeDomainPriceListRequest) (response *DescribeDomainPriceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainPriceListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDomainPriceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePhoneEmailListRequest() (request *DescribePhoneEmailListRequest) {
     request = &DescribePhoneEmailListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -571,6 +867,23 @@ func (c *Client) DescribePhoneEmailList(request *DescribePhoneEmailListRequest) 
     if request == nil {
         request = NewDescribePhoneEmailListRequest()
     }
+    
+    response = NewDescribePhoneEmailListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribePhoneEmailList
+// 本接口用于获取已验证的手机邮箱列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribePhoneEmailListWithContext(ctx context.Context, request *DescribePhoneEmailListRequest) (response *DescribePhoneEmailListResponse, err error) {
+    if request == nil {
+        request = NewDescribePhoneEmailListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribePhoneEmailListResponse()
     err = c.Send(request, response)
@@ -617,6 +930,30 @@ func (c *Client) DescribeTemplate(request *DescribeTemplateRequest) (response *D
     return
 }
 
+// DescribeTemplate
+// 本接口 (DescribeTemplate) 用于获取模板信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DESCRIBETEMPLATEFAILED = "FailedOperation.DescribeTemplateFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_TEMPLATEIDISEMPTY = "MissingParameter.TemplateIdIsEmpty"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
+func (c *Client) DescribeTemplateWithContext(ctx context.Context, request *DescribeTemplateRequest) (response *DescribeTemplateResponse, err error) {
+    if request == nil {
+        request = NewDescribeTemplateRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTemplateListRequest() (request *DescribeTemplateListRequest) {
     request = &DescribeTemplateListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -649,6 +986,28 @@ func (c *Client) DescribeTemplateList(request *DescribeTemplateListRequest) (res
     if request == nil {
         request = NewDescribeTemplateListRequest()
     }
+    
+    response = NewDescribeTemplateListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeTemplateList
+// 本接口 (DescribeTemplateList) 用于获取信息模板列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DESCRIBETEMPLATEFAILED = "FailedOperation.DescribeTemplateFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTemplateListWithContext(ctx context.Context, request *DescribeTemplateListRequest) (response *DescribeTemplateListResponse, err error) {
+    if request == nil {
+        request = NewDescribeTemplateListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeTemplateListResponse()
     err = c.Send(request, response)
@@ -701,6 +1060,36 @@ func (c *Client) ModifyDomainDNSBatch(request *ModifyDomainDNSBatchRequest) (res
     return
 }
 
+// ModifyDomainDNSBatch
+// 本接口 ( ModifyDomainDNSBatch) 用于批量域名 DNS 修改 。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SETDOMAINDNSFAILED = "FailedOperation.SetDomainDnsFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINNAMEISINVALID = "InvalidParameter.DomainNameIsInvalid"
+//  INVALIDPARAMETER_UPTO4000 = "InvalidParameter.UpTo4000"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_DOMAINISEMPTY = "MissingParameter.DomainIsEmpty"
+//  MISSINGPARAMETER_REPDATAISNONE = "MissingParameter.RepDataIsNone"
+//  RESOURCEINSUFFICIENT_OVERWORK = "ResourceInsufficient.Overwork"
+//  RESOURCENOTFOUND_DOMAINNOTFOUND = "ResourceNotFound.DomainNotFound"
+//  RESOURCEUNAVAILABLE_DOMAINISMODIFYINGDNS = "ResourceUnavailable.DomainIsModifyingDNS"
+//  UNSUPPORTEDOPERATION_MODIFYDOMAININFOUNSUPPORTED = "UnsupportedOperation.ModifyDomainInfoUnsupported"
+//  UNSUPPORTEDOPERATION_MODIFYDOMAINUNSUPPORTED = "UnsupportedOperation.ModifyDomainUnsupported"
+func (c *Client) ModifyDomainDNSBatchWithContext(ctx context.Context, request *ModifyDomainDNSBatchRequest) (response *ModifyDomainDNSBatchResponse, err error) {
+    if request == nil {
+        request = NewModifyDomainDNSBatchRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyDomainDNSBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDomainOwnerBatchRequest() (request *ModifyDomainOwnerBatchRequest) {
     request = &ModifyDomainOwnerBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -733,6 +1122,28 @@ func (c *Client) ModifyDomainOwnerBatch(request *ModifyDomainOwnerBatchRequest) 
     if request == nil {
         request = NewModifyDomainOwnerBatchRequest()
     }
+    
+    response = NewModifyDomainOwnerBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyDomainOwnerBatch
+// 本接口 ( ModifyDomainOwnerBatch) 用于域名批量账号间转移 。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MODIFYDOMAINOWNERFAILED = "FailedOperation.ModifyDomainOwnerFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UPTO4000 = "InvalidParameter.UpTo4000"
+//  RESOURCEINSUFFICIENT_OVERWORK = "ResourceInsufficient.Overwork"
+//  RESOURCEUNAVAILABLE_DOMAINISMODIFYINGDNS = "ResourceUnavailable.DomainIsModifyingDNS"
+//  UNSUPPORTEDOPERATION_ACCOUNTREALNAME = "UnsupportedOperation.AccountRealName"
+func (c *Client) ModifyDomainOwnerBatchWithContext(ctx context.Context, request *ModifyDomainOwnerBatchRequest) (response *ModifyDomainOwnerBatchResponse, err error) {
+    if request == nil {
+        request = NewModifyDomainOwnerBatchRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyDomainOwnerBatchResponse()
     err = c.Send(request, response)
@@ -780,6 +1191,31 @@ func (c *Client) RenewDomainBatch(request *RenewDomainBatchRequest) (response *R
     return
 }
 
+// RenewDomainBatch
+// 本接口 ( RenewDomainBatch ) 用于批量续费域名 。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UPTO4000 = "InvalidParameter.UpTo4000"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_DOMAINISEMPTY = "MissingParameter.DomainIsEmpty"
+//  MISSINGPARAMETER_REPDATAISNONE = "MissingParameter.RepDataIsNone"
+//  RESOURCEINSUFFICIENT_OVERWORK = "ResourceInsufficient.Overwork"
+//  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
+func (c *Client) RenewDomainBatchWithContext(ctx context.Context, request *RenewDomainBatchRequest) (response *RenewDomainBatchResponse, err error) {
+    if request == nil {
+        request = NewRenewDomainBatchRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewRenewDomainBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSendPhoneEmailCodeRequest() (request *SendPhoneEmailCodeRequest) {
     request = &SendPhoneEmailCodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -812,6 +1248,28 @@ func (c *Client) SendPhoneEmailCode(request *SendPhoneEmailCodeRequest) (respons
     if request == nil {
         request = NewSendPhoneEmailCodeRequest()
     }
+    
+    response = NewSendPhoneEmailCodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SendPhoneEmailCode
+// 此接口用于发送手机邮箱验证码。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SENDTCBPHONEEMAILCODEFAILED = "FailedOperation.SendTcbPhoneEmailCodeFailed"
+//  FAILEDOPERATION_SENDVERIFYCODEISLIMITED = "FailedOperation.SendVerifyCodeIsLimited"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_CODETYPEISINVALID = "InvalidParameter.CodeTypeIsInvalid"
+//  INVALIDPARAMETER_EMAILISINVALID = "InvalidParameter.EmailIsInvalid"
+//  INVALIDPARAMETER_TELEPHONEISINVALID = "InvalidParameter.TelephoneIsInvalid"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) SendPhoneEmailCodeWithContext(ctx context.Context, request *SendPhoneEmailCodeRequest) (response *SendPhoneEmailCodeResponse, err error) {
+    if request == nil {
+        request = NewSendPhoneEmailCodeRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewSendPhoneEmailCodeResponse()
     err = c.Send(request, response)
@@ -851,6 +1309,29 @@ func (c *Client) SetDomainAutoRenew(request *SetDomainAutoRenewRequest) (respons
     if request == nil {
         request = NewSetDomainAutoRenewRequest()
     }
+    
+    response = NewSetDomainAutoRenewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SetDomainAutoRenew
+// 本接口 ( SetDomainAutoRenew ) 用于设置域名自动续费。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHECKDOMAINFAILED = "FailedOperation.CheckDomainFailed"
+//  FAILEDOPERATION_DESCRIBEDOMAINFAILED = "FailedOperation.DescribeDomainFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) SetDomainAutoRenewWithContext(ctx context.Context, request *SetDomainAutoRenewRequest) (response *SetDomainAutoRenewResponse, err error) {
+    if request == nil {
+        request = NewSetDomainAutoRenewRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewSetDomainAutoRenewResponse()
     err = c.Send(request, response)
@@ -901,6 +1382,34 @@ func (c *Client) TransferInDomainBatch(request *TransferInDomainBatchRequest) (r
     return
 }
 
+// TransferInDomainBatch
+// 本接口 ( TransferInDomainBatch ) 用于批量转入域名 。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINNAMEISINVALID = "InvalidParameter.DomainNameIsInvalid"
+//  INVALIDPARAMETER_DUPLICATEDOMAINEXISTS = "InvalidParameter.DuplicateDomainExists"
+//  INVALIDPARAMETER_UPTO4000 = "InvalidParameter.UpTo4000"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_TEMPLATEIDISEMPTY = "MissingParameter.TemplateIdIsEmpty"
+//  RESOURCEINSUFFICIENT_OVERWORK = "ResourceInsufficient.Overwork"
+//  RESOURCENOTFOUND_APPROVEDTEMPLATENOTFOUND = "ResourceNotFound.ApprovedTemplateNotFound"
+//  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
+//  RESOURCEUNAVAILABLE_DOMAINISMODIFYINGDNS = "ResourceUnavailable.DomainIsModifyingDNS"
+func (c *Client) TransferInDomainBatchWithContext(ctx context.Context, request *TransferInDomainBatchRequest) (response *TransferInDomainBatchResponse, err error) {
+    if request == nil {
+        request = NewTransferInDomainBatchRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewTransferInDomainBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTransferProhibitionBatchRequest() (request *TransferProhibitionBatchRequest) {
     request = &TransferProhibitionBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -935,6 +1444,30 @@ func (c *Client) TransferProhibitionBatch(request *TransferProhibitionBatchReque
     if request == nil {
         request = NewTransferProhibitionBatchRequest()
     }
+    
+    response = NewTransferProhibitionBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// TransferProhibitionBatch
+// 本接口 ( TransferProhibitionBatch ) 用于批量禁止域名转移 。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UPTO4000 = "InvalidParameter.UpTo4000"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_DOMAINISEMPTY = "MissingParameter.DomainIsEmpty"
+//  MISSINGPARAMETER_REPDATAISNONE = "MissingParameter.RepDataIsNone"
+//  RESOURCEINSUFFICIENT_OVERWORK = "ResourceInsufficient.Overwork"
+func (c *Client) TransferProhibitionBatchWithContext(ctx context.Context, request *TransferProhibitionBatchRequest) (response *TransferProhibitionBatchResponse, err error) {
+    if request == nil {
+        request = NewTransferProhibitionBatchRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewTransferProhibitionBatchResponse()
     err = c.Send(request, response)
@@ -981,6 +1514,30 @@ func (c *Client) UpdateProhibitionBatch(request *UpdateProhibitionBatchRequest) 
     return
 }
 
+// UpdateProhibitionBatch
+// 本接口 ( UpdateProhibitionBatch ) 用于批量禁止更新锁。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UPTO4000 = "InvalidParameter.UpTo4000"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_DOMAINISEMPTY = "MissingParameter.DomainIsEmpty"
+//  MISSINGPARAMETER_REPDATAISNONE = "MissingParameter.RepDataIsNone"
+//  RESOURCEINSUFFICIENT_OVERWORK = "ResourceInsufficient.Overwork"
+func (c *Client) UpdateProhibitionBatchWithContext(ctx context.Context, request *UpdateProhibitionBatchRequest) (response *UpdateProhibitionBatchResponse, err error) {
+    if request == nil {
+        request = NewUpdateProhibitionBatchRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewUpdateProhibitionBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUploadImageRequest() (request *UploadImageRequest) {
     request = &UploadImageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1019,6 +1576,34 @@ func (c *Client) UploadImage(request *UploadImageRequest) (response *UploadImage
     if request == nil {
         request = NewUploadImageRequest()
     }
+    
+    response = NewUploadImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UploadImage
+// 本接口 ( UploadImage ) 用于证件图片上传 。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DESCRIBEDOMAINFAILED = "FailedOperation.DescribeDomainFailed"
+//  FAILEDOPERATION_UPLOADIMAGEFAILED = "FailedOperation.UploadImageFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_IMAGEEXTINVALID = "InvalidParameter.ImageExtInvalid"
+//  INVALIDPARAMETER_IMAGEFILEISINVALID = "InvalidParameter.ImageFileIsInvalid"
+//  INVALIDPARAMETER_IMAGEFORMATISINVALID = "InvalidParameter.ImageFormatIsInvalid"
+//  INVALIDPARAMETER_IMAGESIZEBELOW = "InvalidParameter.ImageSizeBelow"
+//  INVALIDPARAMETER_IMAGESIZEEXCEED = "InvalidParameter.ImageSizeExceed"
+//  INVALIDPARAMETER_IMAGESIZELIMIT = "InvalidParameter.ImageSizeLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) UploadImageWithContext(ctx context.Context, request *UploadImageRequest) (response *UploadImageResponse, err error) {
+    if request == nil {
+        request = NewUploadImageRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUploadImageResponse()
     err = c.Send(request, response)

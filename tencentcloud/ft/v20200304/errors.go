@@ -41,8 +41,14 @@ const (
 	// 图片下载错误。
 	FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
 
+	// 不支持的图片文件。
+	FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
+
 	// 素材尺寸超过2000*2000像素。
 	FAILEDOPERATION_IMAGEPIXELEXCEED = "FailedOperation.ImagePixelExceed"
+
+	// 图片分辨率过大，超过2000*2000。
+	FAILEDOPERATION_IMAGERESOLUTIONEXCEED = "FailedOperation.ImageResolutionExceed"
 
 	// 图片短边分辨率太小，小于64。
 	FAILEDOPERATION_IMAGERESOLUTIONTOOSMALL = "FailedOperation.ImageResolutionTooSmall"
@@ -65,6 +71,9 @@ const (
 	// 后端服务超时。
 	FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
 
+	// RPC请求失败，一般为算法微服务故障。
+	FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
@@ -73,6 +82,9 @@ const (
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
+
+	// 人脸框不合法。
+	INVALIDPARAMETERVALUE_FACERECTINVALID = "InvalidParameterValue.FaceRectInvalid"
 
 	// 第1个人脸框参数不合法。
 	INVALIDPARAMETERVALUE_FACERECTINVALIDFIRST = "InvalidParameterValue.FaceRectInvalidFirst"
@@ -112,6 +124,9 @@ const (
 
 	// 余额不足。
 	RESOURCEUNAVAILABLE_LOWBALANCE = "ResourceUnavailable.LowBalance"
+
+	// 计费状态未知，请确认是否已在控制台开通服务。
+	RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 
 	// 服务未开通。
 	RESOURCEUNAVAILABLE_NOTREADY = "ResourceUnavailable.NotReady"

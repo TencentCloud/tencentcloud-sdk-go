@@ -15,6 +15,7 @@
 package v20201215
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -77,6 +78,24 @@ func (c *Client) ApplyAIModel(request *ApplyAIModelRequest) (response *ApplyAIMo
     return
 }
 
+// ApplyAIModel
+// 申请AI模型
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ApplyAIModelWithContext(ctx context.Context, request *ApplyAIModelRequest) (response *ApplyAIModelResponse, err error) {
+    if request == nil {
+        request = NewApplyAIModelRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewApplyAIModelResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBatchUpdateFirmwareRequest() (request *BatchUpdateFirmwareRequest) {
     request = &BatchUpdateFirmwareRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -105,6 +124,24 @@ func (c *Client) BatchUpdateFirmware(request *BatchUpdateFirmwareRequest) (respo
     if request == nil {
         request = NewBatchUpdateFirmwareRequest()
     }
+    
+    response = NewBatchUpdateFirmwareResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// BatchUpdateFirmware
+// 本接口（BatchUpdateFirmware）用于批量更新设备固件 
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DEVICEISUPDATING = "FailedOperation.DeviceIsUpdating"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) BatchUpdateFirmwareWithContext(ctx context.Context, request *BatchUpdateFirmwareRequest) (response *BatchUpdateFirmwareResponse, err error) {
+    if request == nil {
+        request = NewBatchUpdateFirmwareRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewBatchUpdateFirmwareResponse()
     err = c.Send(request, response)
@@ -145,6 +182,24 @@ func (c *Client) BindCloudStorageUser(request *BindCloudStorageUserRequest) (res
     return
 }
 
+// BindCloudStorageUser
+// 绑定云存用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BindCloudStorageUserWithContext(ctx context.Context, request *BindCloudStorageUserRequest) (response *BindCloudStorageUserResponse, err error) {
+    if request == nil {
+        request = NewBindCloudStorageUserRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewBindCloudStorageUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCancelAIModelApplicationRequest() (request *CancelAIModelApplicationRequest) {
     request = &CancelAIModelApplicationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -173,6 +228,24 @@ func (c *Client) CancelAIModelApplication(request *CancelAIModelApplicationReque
     if request == nil {
         request = NewCancelAIModelApplicationRequest()
     }
+    
+    response = NewCancelAIModelApplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CancelAIModelApplication
+// 取消AI模型申请
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CancelAIModelApplicationWithContext(ctx context.Context, request *CancelAIModelApplicationRequest) (response *CancelAIModelApplicationResponse, err error) {
+    if request == nil {
+        request = NewCancelAIModelApplicationRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCancelAIModelApplicationResponse()
     err = c.Send(request, response)
@@ -213,6 +286,24 @@ func (c *Client) CancelDeviceFirmwareTask(request *CancelDeviceFirmwareTaskReque
     return
 }
 
+// CancelDeviceFirmwareTask
+// 本接口用于取消设备升级任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DEVICEFIRMWARETASKALREADDONE = "FailedOperation.DeviceFirmwareTaskAlreadDone"
+//  FAILEDOPERATION_DEVICERUNNINGOTHEROTATASK = "FailedOperation.DeviceRunningOtherOtaTask"
+//  RESOURCENOTFOUND_DEVICEFIRMWARETASKNOTEXIST = "ResourceNotFound.DeviceFirmwareTaskNotExist"
+func (c *Client) CancelDeviceFirmwareTaskWithContext(ctx context.Context, request *CancelDeviceFirmwareTaskRequest) (response *CancelDeviceFirmwareTaskResponse, err error) {
+    if request == nil {
+        request = NewCancelDeviceFirmwareTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCancelDeviceFirmwareTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckForwardAuthRequest() (request *CheckForwardAuthRequest) {
     request = &CheckForwardAuthRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -241,6 +332,24 @@ func (c *Client) CheckForwardAuth(request *CheckForwardAuthRequest) (response *C
     if request == nil {
         request = NewCheckForwardAuthRequest()
     }
+    
+    response = NewCheckForwardAuthResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CheckForwardAuth
+// 判断是否开启的转发的权限
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CheckForwardAuthWithContext(ctx context.Context, request *CheckForwardAuthRequest) (response *CheckForwardAuthResponse, err error) {
+    if request == nil {
+        request = NewCheckForwardAuthRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCheckForwardAuthResponse()
     err = c.Send(request, response)
@@ -281,6 +390,24 @@ func (c *Client) ControlDeviceData(request *ControlDeviceDataRequest) (response 
     return
 }
 
+// ControlDeviceData
+// 根据设备产品ID、设备名称，设置控制设备的属性数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ControlDeviceDataWithContext(ctx context.Context, request *ControlDeviceDataRequest) (response *ControlDeviceDataResponse, err error) {
+    if request == nil {
+        request = NewControlDeviceDataRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewControlDeviceDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAIDetectionRequest() (request *CreateAIDetectionRequest) {
     request = &CreateAIDetectionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -309,6 +436,24 @@ func (c *Client) CreateAIDetection(request *CreateAIDetectionRequest) (response 
     if request == nil {
         request = NewCreateAIDetectionRequest()
     }
+    
+    response = NewCreateAIDetectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateAIDetection
+// 发起AI推理请求
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateAIDetectionWithContext(ctx context.Context, request *CreateAIDetectionRequest) (response *CreateAIDetectionResponse, err error) {
+    if request == nil {
+        request = NewCreateAIDetectionRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateAIDetectionResponse()
     err = c.Send(request, response)
@@ -349,6 +494,24 @@ func (c *Client) CreateBatch(request *CreateBatchRequest) (response *CreateBatch
     return
 }
 
+// CreateBatch
+// 创建批次
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateBatchWithContext(ctx context.Context, request *CreateBatchRequest) (response *CreateBatchResponse, err error) {
+    if request == nil {
+        request = NewCreateBatchRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCOSCredentialsRequest() (request *CreateCOSCredentialsRequest) {
     request = &CreateCOSCredentialsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -377,6 +540,24 @@ func (c *Client) CreateCOSCredentials(request *CreateCOSCredentialsRequest) (res
     if request == nil {
         request = NewCreateCOSCredentialsRequest()
     }
+    
+    response = NewCreateCOSCredentialsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateCOSCredentials
+// 创建COS上传密钥
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCOSCredentialsWithContext(ctx context.Context, request *CreateCOSCredentialsRequest) (response *CreateCOSCredentialsResponse, err error) {
+    if request == nil {
+        request = NewCreateCOSCredentialsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateCOSCredentialsResponse()
     err = c.Send(request, response)
@@ -417,6 +598,24 @@ func (c *Client) CreateCloudStorage(request *CreateCloudStorageRequest) (respons
     return
 }
 
+// CreateCloudStorage
+// 开通云存服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCloudStorageWithContext(ctx context.Context, request *CreateCloudStorageRequest) (response *CreateCloudStorageResponse, err error) {
+    if request == nil {
+        request = NewCreateCloudStorageRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateCloudStorageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDataForwardRequest() (request *CreateDataForwardRequest) {
     request = &CreateDataForwardRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -451,6 +650,24 @@ func (c *Client) CreateDataForward(request *CreateDataForwardRequest) (response 
     return
 }
 
+// CreateDataForward
+// 创建数据转发
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDataForwardWithContext(ctx context.Context, request *CreateDataForwardRequest) (response *CreateDataForwardResponse, err error) {
+    if request == nil {
+        request = NewCreateDataForwardRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateDataForwardResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateForwardRuleRequest() (request *CreateForwardRuleRequest) {
     request = &CreateForwardRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -479,6 +696,24 @@ func (c *Client) CreateForwardRule(request *CreateForwardRuleRequest) (response 
     if request == nil {
         request = NewCreateForwardRuleRequest()
     }
+    
+    response = NewCreateForwardRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateForwardRule
+// 创建转发规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateForwardRuleWithContext(ctx context.Context, request *CreateForwardRuleRequest) (response *CreateForwardRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateForwardRuleRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateForwardRuleResponse()
     err = c.Send(request, response)
@@ -520,6 +755,25 @@ func (c *Client) CreateProduct(request *CreateProductRequest) (response *CreateP
     return
 }
 
+// CreateProduct
+// 创建产品
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateProductWithContext(ctx context.Context, request *CreateProductRequest) (response *CreateProductResponse, err error) {
+    if request == nil {
+        request = NewCreateProductRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTaskFileUrlRequest() (request *CreateTaskFileUrlRequest) {
     request = &CreateTaskFileUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -547,6 +801,23 @@ func (c *Client) CreateTaskFileUrl(request *CreateTaskFileUrlRequest) (response 
     if request == nil {
         request = NewCreateTaskFileUrlRequest()
     }
+    
+    response = NewCreateTaskFileUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateTaskFileUrl
+// 本接口（CreateTaskFileUrl）用于获取产品级任务文件上传链接
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateTaskFileUrlWithContext(ctx context.Context, request *CreateTaskFileUrlRequest) (response *CreateTaskFileUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateTaskFileUrlRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateTaskFileUrlResponse()
     err = c.Send(request, response)
@@ -587,6 +858,24 @@ func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDev
     return
 }
 
+// DeleteDevice
+// 删除设备
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteDeviceWithContext(ctx context.Context, request *DeleteDeviceRequest) (response *DeleteDeviceResponse, err error) {
+    if request == nil {
+        request = NewDeleteDeviceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteFirmwareRequest() (request *DeleteFirmwareRequest) {
     request = &DeleteFirmwareRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -615,6 +904,24 @@ func (c *Client) DeleteFirmware(request *DeleteFirmwareRequest) (response *Delet
     if request == nil {
         request = NewDeleteFirmwareRequest()
     }
+    
+    response = NewDeleteFirmwareResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteFirmware
+// 本接口（DeleteFirmware）用于删除固件 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeleteFirmwareWithContext(ctx context.Context, request *DeleteFirmwareRequest) (response *DeleteFirmwareResponse, err error) {
+    if request == nil {
+        request = NewDeleteFirmwareRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteFirmwareResponse()
     err = c.Send(request, response)
@@ -655,6 +962,24 @@ func (c *Client) DeleteForwardRule(request *DeleteForwardRuleRequest) (response 
     return
 }
 
+// DeleteForwardRule
+// 删除转发规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteForwardRuleWithContext(ctx context.Context, request *DeleteForwardRuleRequest) (response *DeleteForwardRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteForwardRuleRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteForwardRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteProductRequest() (request *DeleteProductRequest) {
     request = &DeleteProductRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -683,6 +1008,24 @@ func (c *Client) DeleteProduct(request *DeleteProductRequest) (response *DeleteP
     if request == nil {
         request = NewDeleteProductRequest()
     }
+    
+    response = NewDeleteProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteProduct
+// 删除产品
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteProductWithContext(ctx context.Context, request *DeleteProductRequest) (response *DeleteProductResponse, err error) {
+    if request == nil {
+        request = NewDeleteProductRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteProductResponse()
     err = c.Send(request, response)
@@ -723,6 +1066,24 @@ func (c *Client) DescribeAIModelApplications(request *DescribeAIModelApplication
     return
 }
 
+// DescribeAIModelApplications
+// 用户AI模型申请记录
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAIModelApplicationsWithContext(ctx context.Context, request *DescribeAIModelApplicationsRequest) (response *DescribeAIModelApplicationsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAIModelApplicationsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAIModelApplicationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAIModelChannelRequest() (request *DescribeAIModelChannelRequest) {
     request = &DescribeAIModelChannelRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -751,6 +1112,24 @@ func (c *Client) DescribeAIModelChannel(request *DescribeAIModelChannelRequest) 
     if request == nil {
         request = NewDescribeAIModelChannelRequest()
     }
+    
+    response = NewDescribeAIModelChannelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAIModelChannel
+// 查看AI推理结果推送配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAIModelChannelWithContext(ctx context.Context, request *DescribeAIModelChannelRequest) (response *DescribeAIModelChannelResponse, err error) {
+    if request == nil {
+        request = NewDescribeAIModelChannelRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAIModelChannelResponse()
     err = c.Send(request, response)
@@ -791,6 +1170,24 @@ func (c *Client) DescribeAIModelUsage(request *DescribeAIModelUsageRequest) (res
     return
 }
 
+// DescribeAIModelUsage
+// 查看AI模型资源包
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAIModelUsageWithContext(ctx context.Context, request *DescribeAIModelUsageRequest) (response *DescribeAIModelUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribeAIModelUsageRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAIModelUsageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAIModelsRequest() (request *DescribeAIModelsRequest) {
     request = &DescribeAIModelsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -819,6 +1216,24 @@ func (c *Client) DescribeAIModels(request *DescribeAIModelsRequest) (response *D
     if request == nil {
         request = NewDescribeAIModelsRequest()
     }
+    
+    response = NewDescribeAIModelsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAIModels
+// 拉取AI模型列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAIModelsWithContext(ctx context.Context, request *DescribeAIModelsRequest) (response *DescribeAIModelsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAIModelsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAIModelsResponse()
     err = c.Send(request, response)
@@ -859,6 +1274,24 @@ func (c *Client) DescribeBalance(request *DescribeBalanceRequest) (response *Des
     return
 }
 
+// DescribeBalance
+// 查询账户余额
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeBalanceWithContext(ctx context.Context, request *DescribeBalanceRequest) (response *DescribeBalanceResponse, err error) {
+    if request == nil {
+        request = NewDescribeBalanceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeBalanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBalanceTransactionsRequest() (request *DescribeBalanceTransactionsRequest) {
     request = &DescribeBalanceTransactionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -887,6 +1320,24 @@ func (c *Client) DescribeBalanceTransactions(request *DescribeBalanceTransaction
     if request == nil {
         request = NewDescribeBalanceTransactionsRequest()
     }
+    
+    response = NewDescribeBalanceTransactionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeBalanceTransactions
+// 拉取账户流水
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeBalanceTransactionsWithContext(ctx context.Context, request *DescribeBalanceTransactionsRequest) (response *DescribeBalanceTransactionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeBalanceTransactionsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeBalanceTransactionsResponse()
     err = c.Send(request, response)
@@ -927,6 +1378,24 @@ func (c *Client) DescribeBatch(request *DescribeBatchRequest) (response *Describ
     return
 }
 
+// DescribeBatch
+// 获取批次详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeBatchWithContext(ctx context.Context, request *DescribeBatchRequest) (response *DescribeBatchResponse, err error) {
+    if request == nil {
+        request = NewDescribeBatchRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBatchsRequest() (request *DescribeBatchsRequest) {
     request = &DescribeBatchsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -955,6 +1424,24 @@ func (c *Client) DescribeBatchs(request *DescribeBatchsRequest) (response *Descr
     if request == nil {
         request = NewDescribeBatchsRequest()
     }
+    
+    response = NewDescribeBatchsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeBatchs
+// 获取批次列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeBatchsWithContext(ctx context.Context, request *DescribeBatchsRequest) (response *DescribeBatchsResponse, err error) {
+    if request == nil {
+        request = NewDescribeBatchsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeBatchsResponse()
     err = c.Send(request, response)
@@ -995,6 +1482,24 @@ func (c *Client) DescribeCategory(request *DescribeCategoryRequest) (response *D
     return
 }
 
+// DescribeCategory
+// 获取Category详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCategoryWithContext(ctx context.Context, request *DescribeCategoryRequest) (response *DescribeCategoryResponse, err error) {
+    if request == nil {
+        request = NewDescribeCategoryRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeCategoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudStorageRequest() (request *DescribeCloudStorageRequest) {
     request = &DescribeCloudStorageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1022,6 +1527,23 @@ func (c *Client) DescribeCloudStorage(request *DescribeCloudStorageRequest) (res
     if request == nil {
         request = NewDescribeCloudStorageRequest()
     }
+    
+    response = NewDescribeCloudStorageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCloudStorage
+// 获取设备云存服务详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageWithContext(ctx context.Context, request *DescribeCloudStorageRequest) (response *DescribeCloudStorageResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeCloudStorageResponse()
     err = c.Send(request, response)
@@ -1062,6 +1584,24 @@ func (c *Client) DescribeCloudStorageDate(request *DescribeCloudStorageDateReque
     return
 }
 
+// DescribeCloudStorageDate
+// 获取具有云存的日期
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageDateWithContext(ctx context.Context, request *DescribeCloudStorageDateRequest) (response *DescribeCloudStorageDateResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageDateRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudStorageDateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudStorageEventsRequest() (request *DescribeCloudStorageEventsRequest) {
     request = &DescribeCloudStorageEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1090,6 +1630,24 @@ func (c *Client) DescribeCloudStorageEvents(request *DescribeCloudStorageEventsR
     if request == nil {
         request = NewDescribeCloudStorageEventsRequest()
     }
+    
+    response = NewDescribeCloudStorageEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCloudStorageEvents
+// 拉取云存事件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageEventsWithContext(ctx context.Context, request *DescribeCloudStorageEventsRequest) (response *DescribeCloudStorageEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageEventsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeCloudStorageEventsResponse()
     err = c.Send(request, response)
@@ -1130,6 +1688,24 @@ func (c *Client) DescribeCloudStorageThumbnail(request *DescribeCloudStorageThum
     return
 }
 
+// DescribeCloudStorageThumbnail
+// 拉取云存事件缩略图
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageThumbnailWithContext(ctx context.Context, request *DescribeCloudStorageThumbnailRequest) (response *DescribeCloudStorageThumbnailResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageThumbnailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudStorageThumbnailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudStorageTimeRequest() (request *DescribeCloudStorageTimeRequest) {
     request = &DescribeCloudStorageTimeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1158,6 +1734,24 @@ func (c *Client) DescribeCloudStorageTime(request *DescribeCloudStorageTimeReque
     if request == nil {
         request = NewDescribeCloudStorageTimeRequest()
     }
+    
+    response = NewDescribeCloudStorageTimeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCloudStorageTime
+// 获取某一天云存时间轴
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageTimeWithContext(ctx context.Context, request *DescribeCloudStorageTimeRequest) (response *DescribeCloudStorageTimeResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageTimeRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeCloudStorageTimeResponse()
     err = c.Send(request, response)
@@ -1198,6 +1792,24 @@ func (c *Client) DescribeCloudStorageUsers(request *DescribeCloudStorageUsersReq
     return
 }
 
+// DescribeCloudStorageUsers
+// 拉取云存用户列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageUsersWithContext(ctx context.Context, request *DescribeCloudStorageUsersRequest) (response *DescribeCloudStorageUsersResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageUsersRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudStorageUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDataForwardListRequest() (request *DescribeDataForwardListRequest) {
     request = &DescribeDataForwardListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1226,6 +1838,24 @@ func (c *Client) DescribeDataForwardList(request *DescribeDataForwardListRequest
     if request == nil {
         request = NewDescribeDataForwardListRequest()
     }
+    
+    response = NewDescribeDataForwardListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeDataForwardList
+// 获取数据转发列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDataForwardListWithContext(ctx context.Context, request *DescribeDataForwardListRequest) (response *DescribeDataForwardListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDataForwardListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeDataForwardListResponse()
     err = c.Send(request, response)
@@ -1266,6 +1896,24 @@ func (c *Client) DescribeDevice(request *DescribeDeviceRequest) (response *Descr
     return
 }
 
+// DescribeDevice
+// 查看设备详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDeviceWithContext(ctx context.Context, request *DescribeDeviceRequest) (response *DescribeDeviceResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeviceActionHistoryRequest() (request *DescribeDeviceActionHistoryRequest) {
     request = &DescribeDeviceActionHistoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1294,6 +1942,24 @@ func (c *Client) DescribeDeviceActionHistory(request *DescribeDeviceActionHistor
     if request == nil {
         request = NewDescribeDeviceActionHistoryRequest()
     }
+    
+    response = NewDescribeDeviceActionHistoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeDeviceActionHistory
+// 为用户提供获取动作历史的能力。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDeviceActionHistoryWithContext(ctx context.Context, request *DescribeDeviceActionHistoryRequest) (response *DescribeDeviceActionHistoryResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceActionHistoryRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeDeviceActionHistoryResponse()
     err = c.Send(request, response)
@@ -1334,6 +2000,24 @@ func (c *Client) DescribeDeviceCommLog(request *DescribeDeviceCommLogRequest) (r
     return
 }
 
+// DescribeDeviceCommLog
+// 获取设备在指定时间范围内的通讯日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDeviceCommLogWithContext(ctx context.Context, request *DescribeDeviceCommLogRequest) (response *DescribeDeviceCommLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceCommLogRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeviceCommLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeviceDataRequest() (request *DescribeDeviceDataRequest) {
     request = &DescribeDeviceDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1362,6 +2046,24 @@ func (c *Client) DescribeDeviceData(request *DescribeDeviceDataRequest) (respons
     if request == nil {
         request = NewDescribeDeviceDataRequest()
     }
+    
+    response = NewDescribeDeviceDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeDeviceData
+// 获取设备属性数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDeviceDataWithContext(ctx context.Context, request *DescribeDeviceDataRequest) (response *DescribeDeviceDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceDataRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeDeviceDataResponse()
     err = c.Send(request, response)
@@ -1402,6 +2104,24 @@ func (c *Client) DescribeDeviceDataHistory(request *DescribeDeviceDataHistoryReq
     return
 }
 
+// DescribeDeviceDataHistory
+// 获取设备在指定时间范围内上报的历史数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDeviceDataHistoryWithContext(ctx context.Context, request *DescribeDeviceDataHistoryRequest) (response *DescribeDeviceDataHistoryResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceDataHistoryRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeviceDataHistoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeviceEventHistoryRequest() (request *DescribeDeviceEventHistoryRequest) {
     request = &DescribeDeviceEventHistoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1430,6 +2150,24 @@ func (c *Client) DescribeDeviceEventHistory(request *DescribeDeviceEventHistoryR
     if request == nil {
         request = NewDescribeDeviceEventHistoryRequest()
     }
+    
+    response = NewDescribeDeviceEventHistoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeDeviceEventHistory
+// 获取设备的历史事件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDeviceEventHistoryWithContext(ctx context.Context, request *DescribeDeviceEventHistoryRequest) (response *DescribeDeviceEventHistoryResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceEventHistoryRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeDeviceEventHistoryResponse()
     err = c.Send(request, response)
@@ -1470,6 +2208,24 @@ func (c *Client) DescribeDeviceStatusLog(request *DescribeDeviceStatusLogRequest
     return
 }
 
+// DescribeDeviceStatusLog
+// 获取设备上下线日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDeviceStatusLogWithContext(ctx context.Context, request *DescribeDeviceStatusLogRequest) (response *DescribeDeviceStatusLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceStatusLogRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeviceStatusLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDevicesRequest() (request *DescribeDevicesRequest) {
     request = &DescribeDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1498,6 +2254,24 @@ func (c *Client) DescribeDevices(request *DescribeDevicesRequest) (response *Des
     if request == nil {
         request = NewDescribeDevicesRequest()
     }
+    
+    response = NewDescribeDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeDevices
+// 获取设备列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDevicesWithContext(ctx context.Context, request *DescribeDevicesRequest) (response *DescribeDevicesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDevicesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeDevicesResponse()
     err = c.Send(request, response)
@@ -1536,6 +2310,22 @@ func (c *Client) DescribeFirmware(request *DescribeFirmwareRequest) (response *D
     return
 }
 
+// DescribeFirmware
+// 本接口（DescribeFirmware）用于查询固件信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_FIRMWARENOTEXIST = "ResourceNotFound.FirmwareNotExist"
+func (c *Client) DescribeFirmwareWithContext(ctx context.Context, request *DescribeFirmwareRequest) (response *DescribeFirmwareResponse, err error) {
+    if request == nil {
+        request = NewDescribeFirmwareRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeFirmwareResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFirmwareTaskRequest() (request *DescribeFirmwareTaskRequest) {
     request = &DescribeFirmwareTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1562,6 +2352,22 @@ func (c *Client) DescribeFirmwareTask(request *DescribeFirmwareTaskRequest) (res
     if request == nil {
         request = NewDescribeFirmwareTaskRequest()
     }
+    
+    response = NewDescribeFirmwareTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeFirmwareTask
+// 此接口查询固件升级任务详情
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_FIRMWARETASKNOTEXIST = "ResourceNotFound.FirmwareTaskNotExist"
+func (c *Client) DescribeFirmwareTaskWithContext(ctx context.Context, request *DescribeFirmwareTaskRequest) (response *DescribeFirmwareTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeFirmwareTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeFirmwareTaskResponse()
     err = c.Send(request, response)
@@ -1602,6 +2408,24 @@ func (c *Client) DescribeFirmwareTaskDevices(request *DescribeFirmwareTaskDevice
     return
 }
 
+// DescribeFirmwareTaskDevices
+// 本接口用于查询固件升级任务的设备列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeFirmwareTaskDevicesWithContext(ctx context.Context, request *DescribeFirmwareTaskDevicesRequest) (response *DescribeFirmwareTaskDevicesResponse, err error) {
+    if request == nil {
+        request = NewDescribeFirmwareTaskDevicesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeFirmwareTaskDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFirmwareTaskDistributionRequest() (request *DescribeFirmwareTaskDistributionRequest) {
     request = &DescribeFirmwareTaskDistributionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1630,6 +2454,24 @@ func (c *Client) DescribeFirmwareTaskDistribution(request *DescribeFirmwareTaskD
     if request == nil {
         request = NewDescribeFirmwareTaskDistributionRequest()
     }
+    
+    response = NewDescribeFirmwareTaskDistributionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeFirmwareTaskDistribution
+// 本接口用于查询固件升级任务状态分布
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeFirmwareTaskDistributionWithContext(ctx context.Context, request *DescribeFirmwareTaskDistributionRequest) (response *DescribeFirmwareTaskDistributionResponse, err error) {
+    if request == nil {
+        request = NewDescribeFirmwareTaskDistributionRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeFirmwareTaskDistributionResponse()
     err = c.Send(request, response)
@@ -1670,6 +2512,24 @@ func (c *Client) DescribeFirmwareTaskStatistics(request *DescribeFirmwareTaskSta
     return
 }
 
+// DescribeFirmwareTaskStatistics
+// 本接口用于查询固件升级任务统计信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeFirmwareTaskStatisticsWithContext(ctx context.Context, request *DescribeFirmwareTaskStatisticsRequest) (response *DescribeFirmwareTaskStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeFirmwareTaskStatisticsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeFirmwareTaskStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFirmwareTasksRequest() (request *DescribeFirmwareTasksRequest) {
     request = &DescribeFirmwareTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1698,6 +2558,24 @@ func (c *Client) DescribeFirmwareTasks(request *DescribeFirmwareTasksRequest) (r
     if request == nil {
         request = NewDescribeFirmwareTasksRequest()
     }
+    
+    response = NewDescribeFirmwareTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeFirmwareTasks
+// 本接口用于查询固件升级任务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeFirmwareTasksWithContext(ctx context.Context, request *DescribeFirmwareTasksRequest) (response *DescribeFirmwareTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeFirmwareTasksRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeFirmwareTasksResponse()
     err = c.Send(request, response)
@@ -1738,6 +2616,24 @@ func (c *Client) DescribeForwardRule(request *DescribeForwardRuleRequest) (respo
     return
 }
 
+// DescribeForwardRule
+// 获取产品转发规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeForwardRuleWithContext(ctx context.Context, request *DescribeForwardRuleRequest) (response *DescribeForwardRuleResponse, err error) {
+    if request == nil {
+        request = NewDescribeForwardRuleRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeForwardRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeModelDefinitionRequest() (request *DescribeModelDefinitionRequest) {
     request = &DescribeModelDefinitionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1766,6 +2662,24 @@ func (c *Client) DescribeModelDefinition(request *DescribeModelDefinitionRequest
     if request == nil {
         request = NewDescribeModelDefinitionRequest()
     }
+    
+    response = NewDescribeModelDefinitionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeModelDefinition
+// 查询产品配置的数据模板信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeModelDefinitionWithContext(ctx context.Context, request *DescribeModelDefinitionRequest) (response *DescribeModelDefinitionResponse, err error) {
+    if request == nil {
+        request = NewDescribeModelDefinitionRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeModelDefinitionResponse()
     err = c.Send(request, response)
@@ -1806,6 +2720,24 @@ func (c *Client) DescribeProduct(request *DescribeProductRequest) (response *Des
     return
 }
 
+// DescribeProduct
+// 获取产品详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeProductWithContext(ctx context.Context, request *DescribeProductRequest) (response *DescribeProductResponse, err error) {
+    if request == nil {
+        request = NewDescribeProductRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProductDynamicRegisterRequest() (request *DescribeProductDynamicRegisterRequest) {
     request = &DescribeProductDynamicRegisterRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1834,6 +2766,24 @@ func (c *Client) DescribeProductDynamicRegister(request *DescribeProductDynamicR
     if request == nil {
         request = NewDescribeProductDynamicRegisterRequest()
     }
+    
+    response = NewDescribeProductDynamicRegisterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeProductDynamicRegister
+// 获取产品动态注册详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeProductDynamicRegisterWithContext(ctx context.Context, request *DescribeProductDynamicRegisterRequest) (response *DescribeProductDynamicRegisterResponse, err error) {
+    if request == nil {
+        request = NewDescribeProductDynamicRegisterRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeProductDynamicRegisterResponse()
     err = c.Send(request, response)
@@ -1874,6 +2824,24 @@ func (c *Client) DescribeProducts(request *DescribeProductsRequest) (response *D
     return
 }
 
+// DescribeProducts
+// 获取产品列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeProductsWithContext(ctx context.Context, request *DescribeProductsRequest) (response *DescribeProductsResponse, err error) {
+    if request == nil {
+        request = NewDescribeProductsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeProductsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSDKLogRequest() (request *DescribeSDKLogRequest) {
     request = &DescribeSDKLogRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1908,6 +2876,24 @@ func (c *Client) DescribeSDKLog(request *DescribeSDKLogRequest) (response *Descr
     return
 }
 
+// DescribeSDKLog
+// 获取设备sdk日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSDKLogWithContext(ctx context.Context, request *DescribeSDKLogRequest) (response *DescribeSDKLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeSDKLogRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeSDKLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEditFirmwareRequest() (request *EditFirmwareRequest) {
     request = &EditFirmwareRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1934,6 +2920,22 @@ func (c *Client) EditFirmware(request *EditFirmwareRequest) (response *EditFirmw
     if request == nil {
         request = NewEditFirmwareRequest()
     }
+    
+    response = NewEditFirmwareResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// EditFirmware
+// 本接口用于编辑固件信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_DEVICEHASNOFIRMWARE = "ResourceNotFound.DeviceHasNoFirmware"
+func (c *Client) EditFirmwareWithContext(ctx context.Context, request *EditFirmwareRequest) (response *EditFirmwareResponse, err error) {
+    if request == nil {
+        request = NewEditFirmwareRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewEditFirmwareResponse()
     err = c.Send(request, response)
@@ -1974,6 +2976,24 @@ func (c *Client) GenerateSignedVideoURL(request *GenerateSignedVideoURLRequest) 
     return
 }
 
+// GenerateSignedVideoURL
+// 获取视频防盗链播放URL
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GenerateSignedVideoURLWithContext(ctx context.Context, request *GenerateSignedVideoURLRequest) (response *GenerateSignedVideoURLResponse, err error) {
+    if request == nil {
+        request = NewGenerateSignedVideoURLRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewGenerateSignedVideoURLResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetAllFirmwareVersionRequest() (request *GetAllFirmwareVersionRequest) {
     request = &GetAllFirmwareVersionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2008,6 +3028,24 @@ func (c *Client) GetAllFirmwareVersion(request *GetAllFirmwareVersionRequest) (r
     return
 }
 
+// GetAllFirmwareVersion
+// 本接口（GetAllFirmwareVersion）用于获取所有的版本列表 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetAllFirmwareVersionWithContext(ctx context.Context, request *GetAllFirmwareVersionRequest) (response *GetAllFirmwareVersionResponse, err error) {
+    if request == nil {
+        request = NewGetAllFirmwareVersionRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewGetAllFirmwareVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetFirmwareURLRequest() (request *GetFirmwareURLRequest) {
     request = &GetFirmwareURLRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2035,6 +3073,23 @@ func (c *Client) GetFirmwareURL(request *GetFirmwareURLRequest) (response *GetFi
     if request == nil {
         request = NewGetFirmwareURLRequest()
     }
+    
+    response = NewGetFirmwareURLResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// GetFirmwareURL
+// 本接口（GetFirmwareURL）用于获取固件存储的URL 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetFirmwareURLWithContext(ctx context.Context, request *GetFirmwareURLRequest) (response *GetFirmwareURLResponse, err error) {
+    if request == nil {
+        request = NewGetFirmwareURLRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewGetFirmwareURLResponse()
     err = c.Send(request, response)
@@ -2075,6 +3130,24 @@ func (c *Client) ImportModelDefinition(request *ImportModelDefinitionRequest) (r
     return
 }
 
+// ImportModelDefinition
+// 导入其它产品的数据模板，覆盖现有数据模板的物模型和产品分类信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ImportModelDefinitionWithContext(ctx context.Context, request *ImportModelDefinitionRequest) (response *ImportModelDefinitionResponse, err error) {
+    if request == nil {
+        request = NewImportModelDefinitionRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewImportModelDefinitionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInheritCloudStorageUserRequest() (request *InheritCloudStorageUserRequest) {
     request = &InheritCloudStorageUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2103,6 +3176,24 @@ func (c *Client) InheritCloudStorageUser(request *InheritCloudStorageUserRequest
     if request == nil {
         request = NewInheritCloudStorageUserRequest()
     }
+    
+    response = NewInheritCloudStorageUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// InheritCloudStorageUser
+// 继承云存用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) InheritCloudStorageUserWithContext(ctx context.Context, request *InheritCloudStorageUserRequest) (response *InheritCloudStorageUserResponse, err error) {
+    if request == nil {
+        request = NewInheritCloudStorageUserRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewInheritCloudStorageUserResponse()
     err = c.Send(request, response)
@@ -2143,6 +3234,24 @@ func (c *Client) ListFirmwares(request *ListFirmwaresRequest) (response *ListFir
     return
 }
 
+// ListFirmwares
+// 本接口（ListFirmwares）用于获取固件列表 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ListFirmwaresWithContext(ctx context.Context, request *ListFirmwaresRequest) (response *ListFirmwaresResponse, err error) {
+    if request == nil {
+        request = NewListFirmwaresRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewListFirmwaresResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDataForwardRequest() (request *ModifyDataForwardRequest) {
     request = &ModifyDataForwardRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2171,6 +3280,24 @@ func (c *Client) ModifyDataForward(request *ModifyDataForwardRequest) (response 
     if request == nil {
         request = NewModifyDataForwardRequest()
     }
+    
+    response = NewModifyDataForwardResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyDataForward
+// 修改数据转发
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDataForwardWithContext(ctx context.Context, request *ModifyDataForwardRequest) (response *ModifyDataForwardResponse, err error) {
+    if request == nil {
+        request = NewModifyDataForwardRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyDataForwardResponse()
     err = c.Send(request, response)
@@ -2211,6 +3338,24 @@ func (c *Client) ModifyDataForwardStatus(request *ModifyDataForwardStatusRequest
     return
 }
 
+// ModifyDataForwardStatus
+// 设置数据转发状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDataForwardStatusWithContext(ctx context.Context, request *ModifyDataForwardStatusRequest) (response *ModifyDataForwardStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyDataForwardStatusRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyDataForwardStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDeviceRequest() (request *ModifyDeviceRequest) {
     request = &ModifyDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2239,6 +3384,24 @@ func (c *Client) ModifyDevice(request *ModifyDeviceRequest) (response *ModifyDev
     if request == nil {
         request = NewModifyDeviceRequest()
     }
+    
+    response = NewModifyDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyDevice
+// 修改设备信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDeviceWithContext(ctx context.Context, request *ModifyDeviceRequest) (response *ModifyDeviceResponse, err error) {
+    if request == nil {
+        request = NewModifyDeviceRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyDeviceResponse()
     err = c.Send(request, response)
@@ -2279,6 +3442,24 @@ func (c *Client) ModifyDeviceLogLevel(request *ModifyDeviceLogLevelRequest) (res
     return
 }
 
+// ModifyDeviceLogLevel
+// 更新设备日志级别
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDeviceLogLevelWithContext(ctx context.Context, request *ModifyDeviceLogLevelRequest) (response *ModifyDeviceLogLevelResponse, err error) {
+    if request == nil {
+        request = NewModifyDeviceLogLevelRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyDeviceLogLevelResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyForwardRuleRequest() (request *ModifyForwardRuleRequest) {
     request = &ModifyForwardRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2307,6 +3488,24 @@ func (c *Client) ModifyForwardRule(request *ModifyForwardRuleRequest) (response 
     if request == nil {
         request = NewModifyForwardRuleRequest()
     }
+    
+    response = NewModifyForwardRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyForwardRule
+// 修改转发规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyForwardRuleWithContext(ctx context.Context, request *ModifyForwardRuleRequest) (response *ModifyForwardRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyForwardRuleRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyForwardRuleResponse()
     err = c.Send(request, response)
@@ -2347,6 +3546,24 @@ func (c *Client) ModifyModelDefinition(request *ModifyModelDefinitionRequest) (r
     return
 }
 
+// ModifyModelDefinition
+// 提供修改产品的数据模板的能力
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyModelDefinitionWithContext(ctx context.Context, request *ModifyModelDefinitionRequest) (response *ModifyModelDefinitionResponse, err error) {
+    if request == nil {
+        request = NewModifyModelDefinitionRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyModelDefinitionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyProductRequest() (request *ModifyProductRequest) {
     request = &ModifyProductRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2375,6 +3592,24 @@ func (c *Client) ModifyProduct(request *ModifyProductRequest) (response *ModifyP
     if request == nil {
         request = NewModifyProductRequest()
     }
+    
+    response = NewModifyProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyProduct
+// 修改产品信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyProductWithContext(ctx context.Context, request *ModifyProductRequest) (response *ModifyProductResponse, err error) {
+    if request == nil {
+        request = NewModifyProductRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyProductResponse()
     err = c.Send(request, response)
@@ -2415,6 +3650,24 @@ func (c *Client) ModifyProductDynamicRegister(request *ModifyProductDynamicRegis
     return
 }
 
+// ModifyProductDynamicRegister
+// 修改产品动态注册
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyProductDynamicRegisterWithContext(ctx context.Context, request *ModifyProductDynamicRegisterRequest) (response *ModifyProductDynamicRegisterResponse, err error) {
+    if request == nil {
+        request = NewModifyProductDynamicRegisterRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyProductDynamicRegisterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPublishMessageRequest() (request *PublishMessageRequest) {
     request = &PublishMessageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2443,6 +3696,24 @@ func (c *Client) PublishMessage(request *PublishMessageRequest) (response *Publi
     if request == nil {
         request = NewPublishMessageRequest()
     }
+    
+    response = NewPublishMessageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// PublishMessage
+// 本接口（PublishMessage）用于使用自定义透传协议进行设备远控
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) PublishMessageWithContext(ctx context.Context, request *PublishMessageRequest) (response *PublishMessageResponse, err error) {
+    if request == nil {
+        request = NewPublishMessageRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewPublishMessageResponse()
     err = c.Send(request, response)
@@ -2483,6 +3754,24 @@ func (c *Client) ReportAliveDevice(request *ReportAliveDeviceRequest) (response 
     return
 }
 
+// ReportAliveDevice
+// 上报活跃设备
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ReportAliveDeviceWithContext(ctx context.Context, request *ReportAliveDeviceRequest) (response *ReportAliveDeviceResponse, err error) {
+    if request == nil {
+        request = NewReportAliveDeviceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewReportAliveDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResetCloudStorageRequest() (request *ResetCloudStorageRequest) {
     request = &ResetCloudStorageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2511,6 +3800,24 @@ func (c *Client) ResetCloudStorage(request *ResetCloudStorageRequest) (response 
     if request == nil {
         request = NewResetCloudStorageRequest()
     }
+    
+    response = NewResetCloudStorageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ResetCloudStorage
+// 重置云存服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ResetCloudStorageWithContext(ctx context.Context, request *ResetCloudStorageRequest) (response *ResetCloudStorageResponse, err error) {
+    if request == nil {
+        request = NewResetCloudStorageRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewResetCloudStorageResponse()
     err = c.Send(request, response)
@@ -2553,6 +3860,26 @@ func (c *Client) RetryDeviceFirmwareTask(request *RetryDeviceFirmwareTaskRequest
     return
 }
 
+// RetryDeviceFirmwareTask
+// 本接口用于重试设备升级任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DEVICEFIRMWARETASKALREADDONE = "FailedOperation.DeviceFirmwareTaskAlreadDone"
+//  FAILEDOPERATION_DEVICERUNNINGOTHEROTATASK = "FailedOperation.DeviceRunningOtherOtaTask"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICEFIRMWARETASKNOTEXIST = "ResourceNotFound.DeviceFirmwareTaskNotExist"
+func (c *Client) RetryDeviceFirmwareTaskWithContext(ctx context.Context, request *RetryDeviceFirmwareTaskRequest) (response *RetryDeviceFirmwareTaskResponse, err error) {
+    if request == nil {
+        request = NewRetryDeviceFirmwareTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewRetryDeviceFirmwareTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSetForwardAuthRequest() (request *SetForwardAuthRequest) {
     request = &SetForwardAuthRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2581,6 +3908,24 @@ func (c *Client) SetForwardAuth(request *SetForwardAuthRequest) (response *SetFo
     if request == nil {
         request = NewSetForwardAuthRequest()
     }
+    
+    response = NewSetForwardAuthResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SetForwardAuth
+// 设置转发权限
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SetForwardAuthWithContext(ctx context.Context, request *SetForwardAuthRequest) (response *SetForwardAuthResponse, err error) {
+    if request == nil {
+        request = NewSetForwardAuthRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewSetForwardAuthResponse()
     err = c.Send(request, response)
@@ -2621,6 +3966,24 @@ func (c *Client) TransferCloudStorage(request *TransferCloudStorageRequest) (res
     return
 }
 
+// TransferCloudStorage
+// 转移云存服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) TransferCloudStorageWithContext(ctx context.Context, request *TransferCloudStorageRequest) (response *TransferCloudStorageResponse, err error) {
+    if request == nil {
+        request = NewTransferCloudStorageRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewTransferCloudStorageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateAIModelChannelRequest() (request *UpdateAIModelChannelRequest) {
     request = &UpdateAIModelChannelRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2649,6 +4012,24 @@ func (c *Client) UpdateAIModelChannel(request *UpdateAIModelChannelRequest) (res
     if request == nil {
         request = NewUpdateAIModelChannelRequest()
     }
+    
+    response = NewUpdateAIModelChannelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UpdateAIModelChannel
+// 更新AI推理结果推送配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateAIModelChannelWithContext(ctx context.Context, request *UpdateAIModelChannelRequest) (response *UpdateAIModelChannelResponse, err error) {
+    if request == nil {
+        request = NewUpdateAIModelChannelRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUpdateAIModelChannelResponse()
     err = c.Send(request, response)
@@ -2689,6 +4070,24 @@ func (c *Client) UploadFirmware(request *UploadFirmwareRequest) (response *Uploa
     return
 }
 
+// UploadFirmware
+// 本接口（UploadFirmware）用于上传设备固件信息 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FIRMWAREALREADYEXIST = "InvalidParameterValue.FirmwareAlreadyExist"
+func (c *Client) UploadFirmwareWithContext(ctx context.Context, request *UploadFirmwareRequest) (response *UploadFirmwareResponse, err error) {
+    if request == nil {
+        request = NewUploadFirmwareRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewUploadFirmwareResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewWakeUpDeviceRequest() (request *WakeUpDeviceRequest) {
     request = &WakeUpDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2717,6 +4116,24 @@ func (c *Client) WakeUpDevice(request *WakeUpDeviceRequest) (response *WakeUpDev
     if request == nil {
         request = NewWakeUpDeviceRequest()
     }
+    
+    response = NewWakeUpDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// WakeUpDevice
+// 设备唤醒
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) WakeUpDeviceWithContext(ctx context.Context, request *WakeUpDeviceRequest) (response *WakeUpDeviceResponse, err error) {
+    if request == nil {
+        request = NewWakeUpDeviceRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewWakeUpDeviceResponse()
     err = c.Send(request, response)

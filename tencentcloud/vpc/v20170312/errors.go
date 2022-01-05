@@ -107,17 +107,29 @@ const (
 	// IP地址未找到。
 	INVALIDPARAMETERVALUE_ADDRESSIPNOTFOUND = "InvalidParameterValue.AddressIpNotFound"
 
+	// VPC中不存在此IP地址。
+	INVALIDPARAMETERVALUE_ADDRESSIPNOTINVPC = "InvalidParameterValue.AddressIpNotInVpc"
+
 	// 该地址不可与此实例申请。
 	INVALIDPARAMETERVALUE_ADDRESSNOTAPPLICABLE = "InvalidParameterValue.AddressNotApplicable"
 
 	// 该地址不是CalcIP。
 	INVALIDPARAMETERVALUE_ADDRESSNOTCALCIP = "InvalidParameterValue.AddressNotCalcIP"
 
+	// 该地址不是EIP。
+	INVALIDPARAMETERVALUE_ADDRESSNOTEIP = "InvalidParameterValue.AddressNotEIP"
+
 	// 未找到该地址。
 	INVALIDPARAMETERVALUE_ADDRESSNOTFOUND = "InvalidParameterValue.AddressNotFound"
 
+	// 该IPv6地址已经发布。
+	INVALIDPARAMETERVALUE_ADDRESSPUBLISHED = "InvalidParameterValue.AddressPublished"
+
 	// 带宽超出限制。
 	INVALIDPARAMETERVALUE_BANDWIDTHOUTOFRANGE = "InvalidParameterValue.BandwidthOutOfRange"
+
+	// 带宽包ID不正确。
+	INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDMALFORMED = "InvalidParameterValue.BandwidthPackageIdMalformed"
 
 	// 该带宽包正在被使用。
 	INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEINUSE = "InvalidParameterValue.BandwidthPackageInUse"
@@ -212,6 +224,9 @@ const (
 	// 探测目的IP与同一个私有网络内的同一个子网下的其他网络探测的探测目的IP相同。
 	INVALIDPARAMETERVALUE_NETDETECTSAMEIP = "InvalidParameterValue.NetDetectSameIp"
 
+	// 网络接口ID不正确。
+	INVALIDPARAMETERVALUE_NETWORKINTERFACEIDMALFORMED = "InvalidParameterValue.NetworkInterfaceIdMalformed"
+
 	// 未找到网络接口ID，或私有IP地址未在网络接口配置。
 	INVALIDPARAMETERVALUE_NETWORKINTERFACENOTFOUND = "InvalidParameterValue.NetworkInterfaceNotFound"
 
@@ -227,6 +242,9 @@ const (
 	// 该资源已加入其他带宽包。
 	INVALIDPARAMETERVALUE_RESOURCEALREADYEXISTED = "InvalidParameterValue.ResourceAlreadyExisted"
 
+	// 该资源已过期。
+	INVALIDPARAMETERVALUE_RESOURCEEXPIRED = "InvalidParameterValue.ResourceExpired"
+
 	// 资源ID不正确。
 	INVALIDPARAMETERVALUE_RESOURCEIDMALFORMED = "InvalidParameterValue.ResourceIdMalformed"
 
@@ -241,6 +259,9 @@ const (
 
 	// 子网CIDR冲突。
 	INVALIDPARAMETERVALUE_SUBNETCONFLICT = "InvalidParameterValue.SubnetConflict"
+
+	// 子网与辅助Cidr网段重叠。
+	INVALIDPARAMETERVALUE_SUBNETOVERLAPASSISTCIDR = "InvalidParameterValue.SubnetOverlapAssistCidr"
 
 	// 子网CIDR不合法。
 	INVALIDPARAMETERVALUE_SUBNETRANGE = "InvalidParameterValue.SubnetRange"
@@ -460,6 +481,9 @@ const (
 
 	// 终端节点服务本身不能是终端节点。
 	UNSUPPORTEDOPERATION_ENDPOINTSERVICE = "UnsupportedOperation.EndPointService"
+
+	// 该种类型地址不支持此操作。
+	UNSUPPORTEDOPERATION_INCORRECTADDRESSRESOURCETYPE = "UnsupportedOperation.IncorrectAddressResourceType"
 
 	// 用户配置的实例和路由表不匹配。
 	UNSUPPORTEDOPERATION_INSTANCEANDRTBNOTMATCH = "UnsupportedOperation.InstanceAndRtbNotMatch"

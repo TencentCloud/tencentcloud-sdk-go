@@ -15,6 +15,7 @@
 package v20210601
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -85,6 +86,32 @@ func (c *Client) GetRuntimeMC(request *GetRuntimeMCRequest) (response *GetRuntim
     return
 }
 
+// GetRuntimeMC
+// 获取运行时详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTHENTICATIONFAILED = "FailedOperation.AuthenticationFailed"
+//  INTERNALERROR_CHECKRUNTIMEFAILED = "InternalError.CheckRuntimeFailed"
+//  INTERNALERROR_COUNTRUNTIMEINSTANCESFAILED = "InternalError.CountRuntimeInstancesFailed"
+//  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
+//  INTERNALERROR_METACOMPILERERROR = "InternalError.MetaCompilerError"
+//  INTERNALERROR_RPCPILOTSERVERERROR = "InternalError.RpcPilotServerError"
+//  INVALIDPARAMETERVALUE_PILOTZONENOTSUPPORTED = "InvalidParameterValue.PilotZoneNotSupported"
+//  INVALIDPARAMETERVALUE_RUNTIMEALREADYDELETED = "InvalidParameterValue.RuntimeAlreadyDeleted"
+//  INVALIDPARAMETERVALUE_RUNTIMEIDNOTEXIST = "InvalidParameterValue.RuntimeIdNotExist"
+//  INVALIDPARAMETERVALUE_RUNTIMENAMESPACEINVALID = "InvalidParameterValue.RuntimeNamespaceInvalid"
+//  INVALIDPARAMETERVALUE_RUNTIMEZONENOTEXISTED = "InvalidParameterValue.RuntimeZoneNotExisted"
+func (c *Client) GetRuntimeMCWithContext(ctx context.Context, request *GetRuntimeMCRequest) (response *GetRuntimeMCResponse, err error) {
+    if request == nil {
+        request = NewGetRuntimeMCRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewGetRuntimeMCResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetRuntimeResourceMonitorMetricMCRequest() (request *GetRuntimeResourceMonitorMetricMCRequest) {
     request = &GetRuntimeResourceMonitorMetricMCRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -125,6 +152,30 @@ func (c *Client) GetRuntimeResourceMonitorMetricMC(request *GetRuntimeResourceMo
     return
 }
 
+// GetRuntimeResourceMonitorMetricMC
+// 获取运行时资源监控详情，cpu，memory，bandwidth
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CHECKRUNTIMEFAILED = "InternalError.CheckRuntimeFailed"
+//  INVALIDPARAMETERVALUE_INVALIDRUNTIMEMETRICSEARCHCONDITION = "InvalidParameterValue.InvalidRuntimeMetricSearchCondition"
+//  INVALIDPARAMETERVALUE_NOTSUPPORTEDACTIONFORPUBLICRUNTIME = "InvalidParameterValue.NotSupportedActionForPublicRuntime"
+//  INVALIDPARAMETERVALUE_PILOTZONENOTSUPPORTED = "InvalidParameterValue.PilotZoneNotSupported"
+//  INVALIDPARAMETERVALUE_RUNTIMEALREADYDELETED = "InvalidParameterValue.RuntimeAlreadyDeleted"
+//  INVALIDPARAMETERVALUE_RUNTIMEIDNOTEXIST = "InvalidParameterValue.RuntimeIdNotExist"
+//  INVALIDPARAMETERVALUE_RUNTIMEMETRICRATENOTSUPPORT = "InvalidParameterValue.RuntimeMetricRateNotSupport"
+//  INVALIDPARAMETERVALUE_RUNTIMENAMESPACEINVALID = "InvalidParameterValue.RuntimeNamespaceInvalid"
+//  INVALIDPARAMETERVALUE_RUNTIMEZONENOTEXISTED = "InvalidParameterValue.RuntimeZoneNotExisted"
+func (c *Client) GetRuntimeResourceMonitorMetricMCWithContext(ctx context.Context, request *GetRuntimeResourceMonitorMetricMCRequest) (response *GetRuntimeResourceMonitorMetricMCResponse, err error) {
+    if request == nil {
+        request = NewGetRuntimeResourceMonitorMetricMCRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewGetRuntimeResourceMonitorMetricMCResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListDeployableRuntimesMCRequest() (request *ListDeployableRuntimesMCRequest) {
     request = &ListDeployableRuntimesMCRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -151,6 +202,22 @@ func (c *Client) ListDeployableRuntimesMC(request *ListDeployableRuntimesMCReque
     if request == nil {
         request = NewListDeployableRuntimesMCRequest()
     }
+    
+    response = NewListDeployableRuntimesMCResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ListDeployableRuntimesMC
+// 返回用户可用的运行时列表，发布应用时返回的运行时环境，仅shared和private运行时，无sandbox运行时，并且只有running/scaling状态的
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
+func (c *Client) ListDeployableRuntimesMCWithContext(ctx context.Context, request *ListDeployableRuntimesMCRequest) (response *ListDeployableRuntimesMCResponse, err error) {
+    if request == nil {
+        request = NewListDeployableRuntimesMCRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewListDeployableRuntimesMCResponse()
     err = c.Send(request, response)
@@ -197,6 +264,30 @@ func (c *Client) ListRuntimeDeployedInstancesMC(request *ListRuntimeDeployedInst
     return
 }
 
+// ListRuntimeDeployedInstancesMC
+// 获取运行时部署的应用实例列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CHECKRUNTIMEFAILED = "InternalError.CheckRuntimeFailed"
+//  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
+//  INTERNALERROR_LISTRUNTIMEINSTANCESFAILED = "InternalError.ListRuntimeInstancesFailed"
+//  INTERNALERROR_METACOMPILERERROR = "InternalError.MetaCompilerError"
+//  INTERNALERROR_RPCPILOTSERVERERROR = "InternalError.RpcPilotServerError"
+//  INVALIDPARAMETERVALUE_PILOTZONENOTSUPPORTED = "InvalidParameterValue.PilotZoneNotSupported"
+//  INVALIDPARAMETERVALUE_RUNTIMEALREADYDELETED = "InvalidParameterValue.RuntimeAlreadyDeleted"
+//  INVALIDPARAMETERVALUE_RUNTIMEIDNOTEXIST = "InvalidParameterValue.RuntimeIdNotExist"
+//  INVALIDPARAMETERVALUE_RUNTIMEZONENOTEXISTED = "InvalidParameterValue.RuntimeZoneNotExisted"
+func (c *Client) ListRuntimeDeployedInstancesMCWithContext(ctx context.Context, request *ListRuntimeDeployedInstancesMCRequest) (response *ListRuntimeDeployedInstancesMCResponse, err error) {
+    if request == nil {
+        request = NewListRuntimeDeployedInstancesMCRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewListRuntimeDeployedInstancesMCResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListRuntimesMCRequest() (request *ListRuntimesMCRequest) {
     request = &ListRuntimesMCRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -228,6 +319,27 @@ func (c *Client) ListRuntimesMC(request *ListRuntimesMCRequest) (response *ListR
     if request == nil {
         request = NewListRuntimesMCRequest()
     }
+    
+    response = NewListRuntimesMCResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ListRuntimesMC
+// 返回用户的运行时列表，运行时管理主页使用，包含沙箱、共享运行时及独立运行时环境，不包含已经删除的运行时
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTHENTICATIONFAILED = "FailedOperation.AuthenticationFailed"
+//  FAILEDOPERATION_METACOMPILERERROR = "FailedOperation.MetaCompilerError"
+//  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
+//  INTERNALERROR_LISTRUNTIMESFAILED = "InternalError.ListRuntimesFailed"
+//  INTERNALERROR_METACOMPILERERROR = "InternalError.MetaCompilerError"
+//  INTERNALERROR_RPCPILOTSERVERERROR = "InternalError.RpcPilotServerError"
+func (c *Client) ListRuntimesMCWithContext(ctx context.Context, request *ListRuntimesMCRequest) (response *ListRuntimesMCResponse, err error) {
+    if request == nil {
+        request = NewListRuntimesMCRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewListRuntimesMCResponse()
     err = c.Send(request, response)

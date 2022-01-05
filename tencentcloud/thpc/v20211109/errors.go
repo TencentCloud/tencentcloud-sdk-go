@@ -17,6 +17,9 @@ package v20211109
 const (
 	// 此产品的特有错误码
 
+	// cvm调用失败。
+	INTERNALERROR_CALLCVM = "InternalError.CallCvm"
+
 	// 参数格式有误。
 	INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
 

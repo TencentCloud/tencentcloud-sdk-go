@@ -15,6 +15,7 @@
 package v20210903
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -87,6 +88,34 @@ func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskRes
     return
 }
 
+// CreateTask
+// 创建智能标签任务。
+//
+// 
+//
+// 请注意，本接口为异步接口，**返回TaskId只代表任务创建成功，不代表任务执行成功**。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  FAILEDOPERATION_AITEMPLATENOTEXIST = "FailedOperation.AiTemplateNotExist"
+//  FAILEDOPERATION_MEDIANOTREADY = "FailedOperation.MediaNotReady"
+//  FAILEDOPERATION_TASKALREADYEXIST = "FailedOperation.TaskAlreadyExist"
+//  FAILEDOPERATION_TASKNOTFINISHED = "FailedOperation.TaskNotFinished"
+//  INVALIDPARAMETER_INVALIDMEDIAID = "InvalidParameter.InvalidMediaId"
+//  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidURL"
+//  RESOURCENOTFOUND_MEDIANOTFOUND = "ResourceNotFound.MediaNotFound"
+func (c *Client) CreateTaskWithContext(ctx context.Context, request *CreateTaskRequest) (response *CreateTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteMediaRequest() (request *DeleteMediaRequest) {
     request = &DeleteMediaRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -130,6 +159,33 @@ func (c *Client) DeleteMedia(request *DeleteMediaRequest) (response *DeleteMedia
     return
 }
 
+// DeleteMedia
+// 将MediaId对应的媒资文件从系统中删除。
+//
+// 
+//
+// **请注意，本接口仅删除媒资文件，媒资文件对应的视频分析结果不会被删除**。如您需要删除结构化分析结果，请调用DeleteTask接口。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MEDIAALREADYEXIST = "FailedOperation.MediaAlreadyExist"
+//  FAILEDOPERATION_MEDIAINUSE = "FailedOperation.MediaInUse"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDMEDIAID = "InvalidParameter.InvalidMediaId"
+//  INVALIDPARAMETER_INVALIDMEDIASTATUS = "InvalidParameter.InvalidMediaStatus"
+//  RESOURCENOTFOUND_MEDIANOTFOUND = "ResourceNotFound.MediaNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_MEDIANOTACCESSIBLE = "UnsupportedOperation.MediaNotAccessible"
+func (c *Client) DeleteMediaWithContext(ctx context.Context, request *DeleteMediaRequest) (response *DeleteMediaResponse, err error) {
+    if request == nil {
+        request = NewDeleteMediaRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteMediaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMediaRequest() (request *DescribeMediaRequest) {
     request = &DescribeMediaRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -165,6 +221,31 @@ func (c *Client) DescribeMedia(request *DescribeMediaRequest) (response *Describ
     if request == nil {
         request = NewDescribeMediaRequest()
     }
+    
+    response = NewDescribeMediaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeMedia
+// 描述媒资文件信息，包括媒资状态，分辨率，帧率等。
+//
+// 
+//
+// 如果媒资文件未完成导入，本接口将仅输出媒资文件的状态信息；导入完成后，本接口还将输出媒资文件的其他元信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADFAILED = "FailedOperation.DownloadFailed"
+//  FAILEDOPERATION_MD5MISMATCH = "FailedOperation.MD5Mismatch"
+//  FAILEDOPERATION_MEDIANOTREADY = "FailedOperation.MediaNotReady"
+//  FAILEDOPERATION_TRANSCODEFAILED = "FailedOperation.TranscodeFailed"
+//  INVALIDPARAMETER_INVALIDMEDIAID = "InvalidParameter.InvalidMediaId"
+//  RESOURCENOTFOUND_MEDIANOTFOUND = "ResourceNotFound.MediaNotFound"
+func (c *Client) DescribeMediaWithContext(ctx context.Context, request *DescribeMediaRequest) (response *DescribeMediaResponse, err error) {
+    if request == nil {
+        request = NewDescribeMediaRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeMediaResponse()
     err = c.Send(request, response)
@@ -224,6 +305,43 @@ func (c *Client) DescribeMedias(request *DescribeMediasRequest) (response *Descr
     return
 }
 
+// DescribeMedias
+// 依照输入条件，描述命中的媒资文件信息，包括媒资状态，分辨率，帧率等。
+//
+// 
+//
+// 请注意，本接口最多支持同时描述**50**个媒资文件
+//
+// 
+//
+// 如果媒资文件未完成导入，本接口将仅输出媒资文件的状态信息；导入完成后，本接口还将输出媒资文件的其他元信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MEDIAALREADYEXIST = "FailedOperation.MediaAlreadyExist"
+//  INVALIDPARAMETER_INVALIDMD5 = "InvalidParameter.InvalidMD5"
+//  INVALIDPARAMETER_INVALIDMEDIAID = "InvalidParameter.InvalidMediaId"
+//  INVALIDPARAMETER_INVALIDMEDIANAME = "InvalidParameter.InvalidMediaName"
+//  INVALIDPARAMETER_INVALIDMEDIASTATUS = "InvalidParameter.InvalidMediaStatus"
+//  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
+//  INVALIDPARAMETER_INVALIDPAGENUMBER = "InvalidParameter.InvalidPageNumber"
+//  INVALIDPARAMETER_INVALIDPAGESIZE = "InvalidParameter.InvalidPageSize"
+//  INVALIDPARAMETER_INVALIDSORTBY = "InvalidParameter.InvalidSortBy"
+//  INVALIDPARAMETER_INVALIDSORTORDER = "InvalidParameter.InvalidSortOrder"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidURL"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  INVALIDPARAMETER_NAMETOOLONG = "InvalidParameter.NameTooLong"
+//  INVALIDPARAMETER_UNSUPPORTURL = "InvalidParameter.UnsupportURL"
+func (c *Client) DescribeMediasWithContext(ctx context.Context, request *DescribeMediasRequest) (response *DescribeMediasResponse, err error) {
+    if request == nil {
+        request = NewDescribeMediasRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeMediasResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTaskRequest() (request *DescribeTaskRequest) {
     request = &DescribeTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -265,6 +383,31 @@ func (c *Client) DescribeTask(request *DescribeTaskRequest) (response *DescribeT
     return
 }
 
+// DescribeTask
+// 描述智能标签任务进度。
+//
+// 
+//
+// 请注意，**此接口仅返回任务执行状态信息，不返回任务执行结果**
+//
+// 
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) DescribeTaskWithContext(ctx context.Context, request *DescribeTaskRequest) (response *DescribeTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTaskDetailRequest() (request *DescribeTaskDetailRequest) {
     request = &DescribeTaskDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -295,6 +438,26 @@ func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (respons
     if request == nil {
         request = NewDescribeTaskDetailRequest()
     }
+    
+    response = NewDescribeTaskDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeTaskDetail
+// 描述任务信息，如果任务成功完成，还将返回任务结果
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  FAILEDOPERATION_TASKNOTFINISHED = "FailedOperation.TaskNotFinished"
+//  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) DescribeTaskDetailWithContext(ctx context.Context, request *DescribeTaskDetailRequest) (response *DescribeTaskDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskDetailRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeTaskDetailResponse()
     err = c.Send(request, response)
@@ -340,6 +503,35 @@ func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *Describ
     if request == nil {
         request = NewDescribeTasksRequest()
     }
+    
+    response = NewDescribeTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeTasks
+// 依照输入条件，描述命中的任务信息，包括任务创建时间，处理时间信息等。
+//
+// 
+//
+// 请注意，本接口最多支持同时描述**50**个任务信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  FAILEDOPERATION_GETTASKLISTFAILED = "FailedOperation.GetTaskListFailed"
+//  INVALIDPARAMETER_INVALIDPAGENUMBER = "InvalidParameter.InvalidPageNumber"
+//  INVALIDPARAMETER_INVALIDPAGESIZE = "InvalidParameter.InvalidPageSize"
+//  INVALIDPARAMETER_INVALIDSORTBY = "InvalidParameter.InvalidSortBy"
+//  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
+//  INVALIDPARAMETER_INVALIDTASKNAME = "InvalidParameter.InvalidTaskName"
+//  INVALIDPARAMETER_INVALIDTASKSTATUS = "InvalidParameter.InvalidTaskStatus"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) DescribeTasksWithContext(ctx context.Context, request *DescribeTasksRequest) (response *DescribeTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeTasksRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeTasksResponse()
     err = c.Send(request, response)
@@ -406,6 +598,56 @@ func (c *Client) ImportMedia(request *ImportMediaRequest) (response *ImportMedia
     if request == nil {
         request = NewImportMediaRequest()
     }
+    
+    response = NewImportMediaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ImportMedia
+// 将URL指向的媒资视频文件导入系统之中。
+//
+// 
+//
+// **请注意，本接口为异步接口**。接口返回MediaId仅代表导入视频任务发起，不代表任务完成，您可调用读接口(DescribeMedia/DescribeMedias)接口查询MediaId对应的媒资文件的状态。
+//
+// 
+//
+// 当前URL只支持COS地址，其形式为`https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${ObjectKey}`，其中`${Bucket}`为您的COS桶名称，Region为COS桶所在[可用区](https://cloud.tencent.com/document/product/213/6091)，`${ObjectKey}`为指向存储在COS桶内的待分析的视频的[ObjectKey](https://cloud.tencent.com/document/product/436/13324)
+//
+// 
+//
+// 分析完成后，本产品将在您的`${Bucket}`桶内创建名为`${ObjectKey}-${task-start-time}`的目录(`task-start-time`形式为1970-01-01T08:08:08)并将分析结果将回传回该目录，也即，结构化分析结果(包括图片，JSON等数据)将会写回`https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${ObjectKey}-${task-start-time}`目录
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  FAILEDOPERATION_DBCONNECTIONERROR = "FailedOperation.DBConnectionError"
+//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_GETVIDEOMETADATAFAILED = "FailedOperation.GetVideoMetadataFailed"
+//  FAILEDOPERATION_MD5MISMATCH = "FailedOperation.MD5Mismatch"
+//  FAILEDOPERATION_MEDIAALREADYEXIST = "FailedOperation.MediaAlreadyExist"
+//  FAILEDOPERATION_MEDIAINUSE = "FailedOperation.MediaInUse"
+//  FAILEDOPERATION_MEDIANOTREADY = "FailedOperation.MediaNotReady"
+//  FAILEDOPERATION_TASKALREADYEXIST = "FailedOperation.TaskAlreadyExist"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INVALIDPARAMETER_INVALIDFILEPATH = "InvalidParameter.InvalidFilePath"
+//  INVALIDPARAMETER_INVALIDMD5 = "InvalidParameter.InvalidMD5"
+//  INVALIDPARAMETER_INVALIDMEDIAID = "InvalidParameter.InvalidMediaId"
+//  INVALIDPARAMETER_INVALIDMEDIANAME = "InvalidParameter.InvalidMediaName"
+//  INVALIDPARAMETER_INVALIDMEDIASTATUS = "InvalidParameter.InvalidMediaStatus"
+//  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidURL"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  INVALIDPARAMETER_NAMETOOLONG = "InvalidParameter.NameTooLong"
+//  INVALIDPARAMETER_UNSUPPORTURL = "InvalidParameter.UnsupportURL"
+//  LIMITEXCEEDED_USAGELIMITEXCEEDED = "LimitExceeded.UsageLimitExceeded"
+//  REQUESTLIMITEXCEEDED_CONCURRENCYOVERFLOW = "RequestLimitExceeded.ConcurrencyOverflow"
+//  RESOURCENOTFOUND_MEDIANOTFOUND = "ResourceNotFound.MediaNotFound"
+func (c *Client) ImportMediaWithContext(ctx context.Context, request *ImportMediaRequest) (response *ImportMediaResponse, err error) {
+    if request == nil {
+        request = NewImportMediaRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewImportMediaResponse()
     err = c.Send(request, response)

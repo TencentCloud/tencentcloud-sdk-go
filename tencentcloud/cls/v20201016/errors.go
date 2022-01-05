@@ -23,12 +23,6 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
-	// 异步检索任务还未完成，请稍后。
-	FAILEDOPERATION_ASYNCSEARCHNOTCOMPLETED = "FailedOperation.AsyncSearchNotCompleted"
-
-	// 异步任务未完成。
-	FAILEDOPERATION_ASYNCTASKNOTCOMPLETED = "FailedOperation.AsyncTaskNotCompleted"
-
 	// 告警策略通知模板已经绑定到了某个告警策略上。
 	FAILEDOPERATION_BINDEDALARM = "FailedOperation.BindedAlarm"
 
@@ -77,9 +71,6 @@ const (
 	// 日志主题已隔离。
 	FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
 
-	// 日志主题不支持该操作。
-	FAILEDOPERATION_TOPICNOTSUPPORT = "FailedOperation.TopicNotSupport"
-
 	// 写qps超过限制。
 	FAILEDOPERATION_WRITEQPSLIMIT = "FailedOperation.WriteQpsLimit"
 
@@ -127,12 +118,6 @@ const (
 
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
-
-	// 运行中的异步检索任务数目超限。
-	LIMITEXCEEDED_ASYNCSEARCHTASK = "LimitExceeded.AsyncSearchTask"
-
-	// 异步任务数目超过限制。
-	LIMITEXCEEDED_ASYNCTASK = "LimitExceeded.AsyncTask"
 
 	// 采集规则配置超过最大值限制。
 	LIMITEXCEEDED_CONFIG = "LimitExceeded.Config"
@@ -214,12 +199,6 @@ const (
 
 	// 告警策略通知模板不存在。
 	RESOURCENOTFOUND_ALARMNOTICENOTEXIST = "ResourceNotFound.AlarmNoticeNotExist"
-
-	// 异步检索任务不存在。
-	RESOURCENOTFOUND_ASYNCSEARCHTASKNOTEXIST = "ResourceNotFound.AsyncSearchTaskNotExist"
-
-	// 异步任务不存在。
-	RESOURCENOTFOUND_ASYNCTASKNOTEXIST = "ResourceNotFound.AsyncTaskNotExist"
 
 	// 指定的采集规则配置不存在。
 	RESOURCENOTFOUND_CONFIGNOTEXIST = "ResourceNotFound.ConfigNotExist"

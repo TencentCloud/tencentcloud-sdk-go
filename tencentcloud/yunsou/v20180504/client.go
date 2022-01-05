@@ -15,6 +15,7 @@
 package v20180504
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -72,6 +73,19 @@ func (c *Client) DataManipulation(request *DataManipulationRequest) (response *D
     return
 }
 
+// DataManipulation
+// 上传云搜数据的API接口
+func (c *Client) DataManipulationWithContext(ctx context.Context, request *DataManipulationRequest) (response *DataManipulationResponse, err error) {
+    if request == nil {
+        request = NewDataManipulationRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDataManipulationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDataSearchRequest() (request *DataSearchRequest) {
     request = &DataSearchRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -95,6 +109,19 @@ func (c *Client) DataSearch(request *DataSearchRequest) (response *DataSearchRes
     if request == nil {
         request = NewDataSearchRequest()
     }
+    
+    response = NewDataSearchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DataSearch
+// 用于检索云搜中的数据
+func (c *Client) DataSearchWithContext(ctx context.Context, request *DataSearchRequest) (response *DataSearchResponse, err error) {
+    if request == nil {
+        request = NewDataSearchRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDataSearchResponse()
     err = c.Send(request, response)

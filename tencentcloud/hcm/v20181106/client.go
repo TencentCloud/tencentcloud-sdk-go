@@ -15,6 +15,7 @@
 package v20181106
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -64,6 +65,7 @@ func NewEvaluationResponse() (response *EvaluationResponse) {
 // 速算题目批改接口，根据用户上传的图片或图片的URL识别图片中的数学算式，进而给出算式的正确性评估。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_ENGINERESULTERROR = "InternalError.EngineResultError"
 //  INTERNALERROR_INITIALPARAMETERERROR = "InternalError.InitialParameterError"
 //  INTERNALERROR_SERVERINTERNALERROR = "InternalError.ServerInternalError"
 //  INVALIDPARAMETERVALUE_CANNOTFINDIMAGEERROR = "InvalidParameterValue.CannotFindImageError"
@@ -80,6 +82,34 @@ func (c *Client) Evaluation(request *EvaluationRequest) (response *EvaluationRes
     if request == nil {
         request = NewEvaluationRequest()
     }
+    
+    response = NewEvaluationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// Evaluation
+// 速算题目批改接口，根据用户上传的图片或图片的URL识别图片中的数学算式，进而给出算式的正确性评估。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ENGINERESULTERROR = "InternalError.EngineResultError"
+//  INTERNALERROR_INITIALPARAMETERERROR = "InternalError.InitialParameterError"
+//  INTERNALERROR_SERVERINTERNALERROR = "InternalError.ServerInternalError"
+//  INVALIDPARAMETERVALUE_CANNOTFINDIMAGEERROR = "InvalidParameterValue.CannotFindImageError"
+//  INVALIDPARAMETERVALUE_CANNOTFINDSESSION = "InvalidParameterValue.CannotFindSession"
+//  INVALIDPARAMETERVALUE_EMPTYIMAGEERROR = "InvalidParameterValue.EmptyImageError"
+//  INVALIDPARAMETERVALUE_EMPTYINPUTERROR = "InvalidParameterValue.EmptyInputError"
+//  INVALIDPARAMETERVALUE_EXCEEDDOWNLOADIMAGESIZEERROR = "InvalidParameterValue.ExceedDownloadImageSizeError"
+//  INVALIDPARAMETERVALUE_FAILDECODEERROR = "InvalidParameterValue.FailDecodeError"
+//  INVALIDPARAMETERVALUE_FAILDOWNLOADIMAGEERROR = "InvalidParameterValue.FailDownloadImageError"
+//  INVALIDPARAMETERVALUE_FAILRECOGNIZEERROR = "InvalidParameterValue.FailRecognizeError"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEERROR = "InvalidParameterValue.InvalidImageError"
+//  RESOURCENOTFOUND_CANNOTFINDUSER = "ResourceNotFound.CannotFindUser"
+func (c *Client) EvaluationWithContext(ctx context.Context, request *EvaluationRequest) (response *EvaluationResponse, err error) {
+    if request == nil {
+        request = NewEvaluationRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewEvaluationResponse()
     err = c.Send(request, response)

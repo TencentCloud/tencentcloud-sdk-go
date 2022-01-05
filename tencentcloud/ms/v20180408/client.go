@@ -15,6 +15,7 @@
 package v20180408
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -78,6 +79,25 @@ func (c *Client) CreateBindInstance(request *CreateBindInstanceRequest) (respons
     return
 }
 
+// CreateBindInstance
+// 将应用和资源进行绑定
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
+func (c *Client) CreateBindInstanceWithContext(ctx context.Context, request *CreateBindInstanceRequest) (response *CreateBindInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateBindInstanceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateBindInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCosSecKeyInstanceRequest() (request *CreateCosSecKeyInstanceRequest) {
     request = &CreateCosSecKeyInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -106,6 +126,24 @@ func (c *Client) CreateCosSecKeyInstance(request *CreateCosSecKeyInstanceRequest
     if request == nil {
         request = NewCreateCosSecKeyInstanceRequest()
     }
+    
+    response = NewCreateCosSecKeyInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateCosSecKeyInstance
+// 获取云COS文件存储临时密钥，密钥仅限于临时上传文件，有访问限制和时效性。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateCosSecKeyInstanceWithContext(ctx context.Context, request *CreateCosSecKeyInstanceRequest) (response *CreateCosSecKeyInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateCosSecKeyInstanceRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateCosSecKeyInstanceResponse()
     err = c.Send(request, response)
@@ -150,6 +188,28 @@ func (c *Client) CreateResourceInstances(request *CreateResourceInstancesRequest
     return
 }
 
+// CreateResourceInstances
+// 用户可以使用该接口自建资源，只支持白名单用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
+func (c *Client) CreateResourceInstancesWithContext(ctx context.Context, request *CreateResourceInstancesRequest) (response *CreateResourceInstancesResponse, err error) {
+    if request == nil {
+        request = NewCreateResourceInstancesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateResourceInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateScanInstancesRequest() (request *CreateScanInstancesRequest) {
     request = &CreateScanInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -179,6 +239,25 @@ func (c *Client) CreateScanInstances(request *CreateScanInstancesRequest) (respo
     if request == nil {
         request = NewCreateScanInstancesRequest()
     }
+    
+    response = NewCreateScanInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateScanInstances
+// 用户通过该接口批量提交应用进行应用扫描，扫描后需通过DescribeScanResults接口查询扫描结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER_MISSINGAPPINFO = "MissingParameter.MissingAppInfo"
+func (c *Client) CreateScanInstancesWithContext(ctx context.Context, request *CreateScanInstancesRequest) (response *CreateScanInstancesResponse, err error) {
+    if request == nil {
+        request = NewCreateScanInstancesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateScanInstancesResponse()
     err = c.Send(request, response)
@@ -225,6 +304,30 @@ func (c *Client) CreateShieldInstance(request *CreateShieldInstanceRequest) (res
     return
 }
 
+// CreateShieldInstance
+// 用户通过该接口提交应用进行应用加固，加固后需通过DescribeShieldResult接口查询加固结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETER_MISSINGSERVICEINFO = "InvalidParameter.MissingServiceInfo"
+//  INVALIDPARAMETER_PLANIDNOTFOUND = "InvalidParameter.PlanIdNotFound"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER_MISSINGAPPINFO = "MissingParameter.MissingAppInfo"
+//  RESOURCENOTFOUND_PLANIDNOTFOUND = "ResourceNotFound.PlanIdNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateShieldInstanceWithContext(ctx context.Context, request *CreateShieldInstanceRequest) (response *CreateShieldInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateShieldInstanceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateShieldInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateShieldPlanInstanceRequest() (request *CreateShieldPlanInstanceRequest) {
     request = &CreateShieldPlanInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -261,6 +364,26 @@ func (c *Client) CreateShieldPlanInstance(request *CreateShieldPlanInstanceReque
     return
 }
 
+// CreateShieldPlanInstance
+// 对资源进行策略新增
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateShieldPlanInstanceWithContext(ctx context.Context, request *CreateShieldPlanInstanceRequest) (response *CreateShieldPlanInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateShieldPlanInstanceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateShieldPlanInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteScanInstancesRequest() (request *DeleteScanInstancesRequest) {
     request = &DeleteScanInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -289,6 +412,24 @@ func (c *Client) DeleteScanInstances(request *DeleteScanInstancesRequest) (respo
     if request == nil {
         request = NewDeleteScanInstancesRequest()
     }
+    
+    response = NewDeleteScanInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteScanInstances
+// 删除一个或者多个app扫描信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) DeleteScanInstancesWithContext(ctx context.Context, request *DeleteScanInstancesRequest) (response *DeleteScanInstancesResponse, err error) {
+    if request == nil {
+        request = NewDeleteScanInstancesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteScanInstancesResponse()
     err = c.Send(request, response)
@@ -330,6 +471,25 @@ func (c *Client) DeleteShieldInstances(request *DeleteShieldInstancesRequest) (r
     return
 }
 
+// DeleteShieldInstances
+// 删除一个或者多个app加固信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETERVALUE_INVALIDITEMIDS = "InvalidParameterValue.InvalidItemIds"
+//  MISSINGPARAMETER_MISSINGITEMIDS = "MissingParameter.MissingItemIds"
+//  RESOURCENOTFOUND_ITEMIDNOTFOUND = "ResourceNotFound.ItemIdNotFound"
+func (c *Client) DeleteShieldInstancesWithContext(ctx context.Context, request *DeleteShieldInstancesRequest) (response *DeleteShieldInstancesResponse, err error) {
+    if request == nil {
+        request = NewDeleteShieldInstancesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteShieldInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeResourceInstancesRequest() (request *DescribeResourceInstancesRequest) {
     request = &DescribeResourceInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -363,6 +523,29 @@ func (c *Client) DescribeResourceInstances(request *DescribeResourceInstancesReq
     if request == nil {
         request = NewDescribeResourceInstancesRequest()
     }
+    
+    response = NewDescribeResourceInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeResourceInstances
+// 获取某个用户的所有资源信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDLIMIT = "InvalidParameterValue.InvalidLimit"
+//  INVALIDPARAMETERVALUE_INVALIDOFFSET = "InvalidParameterValue.InvalidOffset"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeResourceInstancesWithContext(ctx context.Context, request *DescribeResourceInstancesRequest) (response *DescribeResourceInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceInstancesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeResourceInstancesResponse()
     err = c.Send(request, response)
@@ -410,6 +593,31 @@ func (c *Client) DescribeScanInstances(request *DescribeScanInstancesRequest) (r
     return
 }
 
+// DescribeScanInstances
+// 本接口用于查看app列表。
+//
+// 可以通过指定任务唯一标识ItemId来查询指定app的详细信息，或通过设定过滤器来查询满足过滤条件的app的详细信息。 指定偏移(Offset)和限制(Limit)来选择结果中的一部分，默认返回满足条件的前20个app信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDITEMIDS = "InvalidParameterValue.InvalidItemIds"
+//  INVALIDPARAMETERVALUE_INVALIDLIMIT = "InvalidParameterValue.InvalidLimit"
+//  INVALIDPARAMETERVALUE_INVALIDOFFSET = "InvalidParameterValue.InvalidOffset"
+//  INVALIDPARAMETERVALUE_INVALIDORDERFIELD = "InvalidParameterValue.InvalidOrderField"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) DescribeScanInstancesWithContext(ctx context.Context, request *DescribeScanInstancesRequest) (response *DescribeScanInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeScanInstancesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeScanInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeScanResultsRequest() (request *DescribeScanResultsRequest) {
     request = &DescribeScanResultsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -439,6 +647,25 @@ func (c *Client) DescribeScanResults(request *DescribeScanResultsRequest) (respo
     if request == nil {
         request = NewDescribeScanResultsRequest()
     }
+    
+    response = NewDescribeScanResultsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeScanResults
+// 用户通过CreateScanInstances接口提交应用进行风险批量扫描后，用此接口批量获取风险详细信息,包含漏洞信息，广告信息，插件信息和病毒信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  MISSINGPARAMETER_MISSINGITEMID = "MissingParameter.MissingItemId"
+//  RESOURCENOTFOUND_ITEMIDNOTFOUND = "ResourceNotFound.ItemIdNotFound"
+func (c *Client) DescribeScanResultsWithContext(ctx context.Context, request *DescribeScanResultsRequest) (response *DescribeScanResultsResponse, err error) {
+    if request == nil {
+        request = NewDescribeScanResultsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeScanResultsResponse()
     err = c.Send(request, response)
@@ -486,6 +713,31 @@ func (c *Client) DescribeShieldInstances(request *DescribeShieldInstancesRequest
     return
 }
 
+// DescribeShieldInstances
+// 本接口用于查看app列表。
+//
+// 可以通过指定任务唯一标识ItemId来查询指定app的详细信息，或通过设定过滤器来查询满足过滤条件的app的详细信息。 指定偏移(Offset)和限制(Limit)来选择结果中的一部分，默认返回满足条件的前20个app信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETERVALUE_INVALIDCOEXISTITEMIDSFILTERS = "InvalidParameterValue.InvalidCoexistItemIdsFilters"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDITEMIDS = "InvalidParameterValue.InvalidItemIds"
+//  INVALIDPARAMETERVALUE_INVALIDLIMIT = "InvalidParameterValue.InvalidLimit"
+//  INVALIDPARAMETERVALUE_INVALIDOFFSET = "InvalidParameterValue.InvalidOffset"
+//  INVALIDPARAMETERVALUE_INVALIDORDERDIRECTION = "InvalidParameterValue.InvalidOrderDirection"
+//  INVALIDPARAMETERVALUE_INVALIDORDERFIELD = "InvalidParameterValue.InvalidOrderField"
+func (c *Client) DescribeShieldInstancesWithContext(ctx context.Context, request *DescribeShieldInstancesRequest) (response *DescribeShieldInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeShieldInstancesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeShieldInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeShieldPlanInstanceRequest() (request *DescribeShieldPlanInstanceRequest) {
     request = &DescribeShieldPlanInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -515,6 +767,25 @@ func (c *Client) DescribeShieldPlanInstance(request *DescribeShieldPlanInstanceR
     if request == nil {
         request = NewDescribeShieldPlanInstanceRequest()
     }
+    
+    response = NewDescribeShieldPlanInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeShieldPlanInstance
+// 查询加固策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  RESOURCEUNAVAILABLE_NOTBIND = "ResourceUnavailable.NotBind"
+//  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
+func (c *Client) DescribeShieldPlanInstanceWithContext(ctx context.Context, request *DescribeShieldPlanInstanceRequest) (response *DescribeShieldPlanInstanceResponse, err error) {
+    if request == nil {
+        request = NewDescribeShieldPlanInstanceRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeShieldPlanInstanceResponse()
     err = c.Send(request, response)
@@ -555,6 +826,24 @@ func (c *Client) DescribeShieldResult(request *DescribeShieldResultRequest) (res
     return
 }
 
+// DescribeShieldResult
+// 通过唯一标识获取加固的结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  MISSINGPARAMETER_MISSINGITEMID = "MissingParameter.MissingItemId"
+//  RESOURCENOTFOUND_ITEMIDNOTFOUND = "ResourceNotFound.ItemIdNotFound"
+func (c *Client) DescribeShieldResultWithContext(ctx context.Context, request *DescribeShieldResultRequest) (response *DescribeShieldResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeShieldResultRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeShieldResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserBaseInfoInstanceRequest() (request *DescribeUserBaseInfoInstanceRequest) {
     request = &DescribeUserBaseInfoInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -583,6 +872,24 @@ func (c *Client) DescribeUserBaseInfoInstance(request *DescribeUserBaseInfoInsta
     if request == nil {
         request = NewDescribeUserBaseInfoInstanceRequest()
     }
+    
+    response = NewDescribeUserBaseInfoInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeUserBaseInfoInstance
+// 获取用户基础信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  MISSINGPARAMETER_MISSINGITEMID = "MissingParameter.MissingItemId"
+//  RESOURCENOTFOUND_ITEMIDNOTFOUND = "ResourceNotFound.ItemIdNotFound"
+func (c *Client) DescribeUserBaseInfoInstanceWithContext(ctx context.Context, request *DescribeUserBaseInfoInstanceRequest) (response *DescribeUserBaseInfoInstanceResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserBaseInfoInstanceRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeUserBaseInfoInstanceResponse()
     err = c.Send(request, response)

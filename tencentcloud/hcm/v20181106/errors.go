@@ -17,6 +17,9 @@ package v20181106
 const (
 	// 此产品的特有错误码
 
+	// 引擎识别失败。
+	INTERNALERROR_ENGINERESULTERROR = "InternalError.EngineResultError"
+
 	// 初始化参数错误。
 	INTERNALERROR_INITIALPARAMETERERROR = "InternalError.InitialParameterError"
 

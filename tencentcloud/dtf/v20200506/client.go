@@ -15,6 +15,7 @@
 package v20200506
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -70,6 +71,23 @@ func (c *Client) DescribeTransactions(request *DescribeTransactionsRequest) (res
     if request == nil {
         request = NewDescribeTransactionsRequest()
     }
+    
+    response = NewDescribeTransactionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeTransactions
+// 查询主事务列表
+//
+// 可能返回的错误码:
+//  MISSINGPARAMETER_GROUPIDREQUIRED = "MissingParameter.GroupIdRequired"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+func (c *Client) DescribeTransactionsWithContext(ctx context.Context, request *DescribeTransactionsRequest) (response *DescribeTransactionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTransactionsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeTransactionsResponse()
     err = c.Send(request, response)

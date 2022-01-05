@@ -15,6 +15,7 @@
 package v20190422
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -76,6 +77,7 @@ func NewCreateJobResponse() (response *CreateJobResponse) {
 //  INVALIDPARAMETERVALUE_CUMEM = "InvalidParameterValue.CuMem"
 //  INVALIDPARAMETERVALUE_JOBNAME = "InvalidParameterValue.JobName"
 //  INVALIDPARAMETERVALUE_JOBNAMEEXISTED = "InvalidParameterValue.JobNameExisted"
+//  INVALIDPARAMETERVALUE_JOBTYPECOMBINEWITHCLUSTERTYPE = "InvalidParameterValue.JobTypeCombineWithClusterType"
 //  INVALIDPARAMETERVALUE_UNSUPPORTEDCOMPOSITE = "InvalidParameterValue.UnSupportedComposite"
 //  LIMITEXCEEDED_JOB = "LimitExceeded.Job"
 //  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
@@ -85,6 +87,39 @@ func (c *Client) CreateJob(request *CreateJobRequest) (response *CreateJobRespon
     if request == nil {
         request = NewCreateJobRequest()
     }
+    
+    response = NewCreateJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateJob
+// 新建作业接口，一个 AppId 最多允许创建1000个作业
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DUPLICATEDJOBNAME = "FailedOperation.DuplicatedJobName"
+//  FAILEDOPERATION_USERNOTAUTHENTICATED = "FailedOperation.UserNotAuthenticated"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.DB"
+//  INTERNALERROR_LOGICERROR = "InternalError.LogicError"
+//  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
+//  INVALIDPARAMETERVALUE_CLUSTERID = "InvalidParameterValue.ClusterId"
+//  INVALIDPARAMETERVALUE_CUMEM = "InvalidParameterValue.CuMem"
+//  INVALIDPARAMETERVALUE_JOBNAME = "InvalidParameterValue.JobName"
+//  INVALIDPARAMETERVALUE_JOBNAMEEXISTED = "InvalidParameterValue.JobNameExisted"
+//  INVALIDPARAMETERVALUE_JOBTYPECOMBINEWITHCLUSTERTYPE = "InvalidParameterValue.JobTypeCombineWithClusterType"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDCOMPOSITE = "InvalidParameterValue.UnSupportedComposite"
+//  LIMITEXCEEDED_JOB = "LimitExceeded.Job"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  RESOURCEUNAVAILABLE_CLUSTERGROUPSTATUS = "ResourceUnavailable.ClusterGroupStatus"
+//  RESOURCEUNAVAILABLE_REQCUMEM = "ResourceUnavailable.ReqCuMem"
+func (c *Client) CreateJobWithContext(ctx context.Context, request *CreateJobRequest) (response *CreateJobResponse, err error) {
+    if request == nil {
+        request = NewCreateJobRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateJobResponse()
     err = c.Send(request, response)
@@ -114,12 +149,16 @@ func NewCreateJobConfigResponse() (response *CreateJobConfigResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_GRAMMARCHECKFAILURE = "FailedOperation.GrammarCheckFailure"
 //  INTERNALERROR_COSCLIENT = "InternalError.COSClient"
 //  INTERNALERROR_DB = "InternalError.DB"
 //  INTERNALERROR_LOGICERROR = "InternalError.LogicError"
 //  INTERNALERROR_SQLCODENOTFOUND = "InternalError.SqlCodeNotFound"
 //  INTERNALERROR_STSNEWCLIENT = "InternalError.StsNewClient"
+//  INVALIDPARAMETER_ILLEGALMAXPARALLELISM = "InvalidParameter.IllegalMaxParallelism"
 //  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
+//  INVALIDPARAMETER_MAXPARALLELISMTOOLARGE = "InvalidParameter.MaxParallelismTooLarge"
+//  INVALIDPARAMETER_MAXPARALLELISMTOOSMALL = "InvalidParameter.MaxParallelismTooSmall"
 //  INVALIDPARAMETER_UNSUPPORTEDFLINKCONF = "InvalidParameter.UnsupportedFlinkConf"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_JOBTYPECOMBINEWITHENTRYPOINTCLASS = "InvalidParameterValue.JobTypeCombineWithEntrypointClass"
@@ -134,6 +173,43 @@ func (c *Client) CreateJobConfig(request *CreateJobConfigRequest) (response *Cre
     if request == nil {
         request = NewCreateJobConfigRequest()
     }
+    
+    response = NewCreateJobConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateJobConfig
+// 创建作业配置，一个作业最多有100个配置版本
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_GRAMMARCHECKFAILURE = "FailedOperation.GrammarCheckFailure"
+//  INTERNALERROR_COSCLIENT = "InternalError.COSClient"
+//  INTERNALERROR_DB = "InternalError.DB"
+//  INTERNALERROR_LOGICERROR = "InternalError.LogicError"
+//  INTERNALERROR_SQLCODENOTFOUND = "InternalError.SqlCodeNotFound"
+//  INTERNALERROR_STSNEWCLIENT = "InternalError.StsNewClient"
+//  INVALIDPARAMETER_ILLEGALMAXPARALLELISM = "InvalidParameter.IllegalMaxParallelism"
+//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
+//  INVALIDPARAMETER_MAXPARALLELISMTOOLARGE = "InvalidParameter.MaxParallelismTooLarge"
+//  INVALIDPARAMETER_MAXPARALLELISMTOOSMALL = "InvalidParameter.MaxParallelismTooSmall"
+//  INVALIDPARAMETER_UNSUPPORTEDFLINKCONF = "InvalidParameter.UnsupportedFlinkConf"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_JOBTYPECOMBINEWITHENTRYPOINTCLASS = "InvalidParameterValue.JobTypeCombineWithEntrypointClass"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_JOBCONFIG = "LimitExceeded.JobConfig"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_COSBUCKET = "ResourceNotFound.COSBucket"
+//  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
+//  RESOURCENOTFOUND_JOBID = "ResourceNotFound.JobId"
+//  UNSUPPORTEDOPERATION_INVALIDCHECKPOINTINTERVALERROR = "UnsupportedOperation.InvalidCheckpointIntervalError"
+func (c *Client) CreateJobConfigWithContext(ctx context.Context, request *CreateJobConfigRequest) (response *CreateJobConfigResponse, err error) {
+    if request == nil {
+        request = NewCreateJobConfigRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateJobConfigResponse()
     err = c.Send(request, response)
@@ -182,6 +258,32 @@ func (c *Client) CreateResource(request *CreateResourceRequest) (response *Creat
     return
 }
 
+// CreateResource
+// 创建资源接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_COSCLIENT = "InternalError.COSClient"
+//  INTERNALERROR_DB = "InternalError.DB"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE_RESOURCENAMEALREADYEXISTS = "ResourceInUse.ResourceNameAlreadyExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_CHECKRESOURCELOCEXISTS = "ResourceUnavailable.CheckResourceLocExists"
+//  RESOURCEUNAVAILABLE_RESOURCELOCNOTEXISTS = "ResourceUnavailable.ResourceLocNotExists"
+func (c *Client) CreateResourceWithContext(ctx context.Context, request *CreateResourceRequest) (response *CreateResourceResponse, err error) {
+    if request == nil {
+        request = NewCreateResourceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateResourceConfigRequest() (request *CreateResourceConfigRequest) {
     request = &CreateResourceConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -214,6 +316,28 @@ func (c *Client) CreateResourceConfig(request *CreateResourceConfigRequest) (res
     if request == nil {
         request = NewCreateResourceConfigRequest()
     }
+    
+    response = NewCreateResourceConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateResourceConfig
+// 创建资源配置接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_RESOURCENOTEXIST = "InternalError.ResourceNotExist"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTEXIST = "ResourceNotFound.ResourceNotExist"
+func (c *Client) CreateResourceConfigWithContext(ctx context.Context, request *CreateResourceConfigRequest) (response *CreateResourceConfigResponse, err error) {
+    if request == nil {
+        request = NewCreateResourceConfigRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateResourceConfigResponse()
     err = c.Send(request, response)
@@ -262,6 +386,32 @@ func (c *Client) DeleteResourceConfigs(request *DeleteResourceConfigsRequest) (r
     return
 }
 
+// DeleteResourceConfigs
+// 删除资源版本
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.DB"
+//  INTERNALERROR_RESOURCECONFIGCANNOTDELETE = "InternalError.ResourceConfigCanNotDelete"
+//  INVALIDPARAMETER_INVALIDRESOURCEIDS = "InvalidParameter.InvalidResourceIds"
+//  INVALIDPARAMETERVALUE_RESOURCEIDSNOTFOUND = "InvalidParameterValue.ResourceIdsNotFound"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_BEUSEBYSOMEJOBCONFIG = "ResourceUnavailable.BeUseBySomeJobConfig"
+func (c *Client) DeleteResourceConfigsWithContext(ctx context.Context, request *DeleteResourceConfigsRequest) (response *DeleteResourceConfigsResponse, err error) {
+    if request == nil {
+        request = NewDeleteResourceConfigsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteResourceConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteResourcesRequest() (request *DeleteResourcesRequest) {
     request = &DeleteResourcesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -301,6 +451,29 @@ func (c *Client) DeleteResources(request *DeleteResourcesRequest) (response *Del
     return
 }
 
+// DeleteResources
+// 删除资源接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.DB"
+//  INTERNALERROR_LOGICERROR = "InternalError.LogicError"
+//  INVALIDPARAMETER_INVALIDRESOURCEIDS = "InvalidParameter.InvalidResourceIds"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteResourcesWithContext(ctx context.Context, request *DeleteResourcesRequest) (response *DeleteResourcesResponse, err error) {
+    if request == nil {
+        request = NewDeleteResourcesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteTableConfigRequest() (request *DeleteTableConfigRequest) {
     request = &DeleteTableConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -328,6 +501,23 @@ func (c *Client) DeleteTableConfig(request *DeleteTableConfigRequest) (response 
     if request == nil {
         request = NewDeleteTableConfigRequest()
     }
+    
+    response = NewDeleteTableConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteTableConfig
+// 删除作业表配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+func (c *Client) DeleteTableConfigWithContext(ctx context.Context, request *DeleteTableConfigRequest) (response *DeleteTableConfigResponse, err error) {
+    if request == nil {
+        request = NewDeleteTableConfigRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteTableConfigResponse()
     err = c.Send(request, response)
@@ -374,6 +564,30 @@ func (c *Client) DescribeJobConfigs(request *DescribeJobConfigsRequest) (respons
     return
 }
 
+// DescribeJobConfigs
+// 查询作业配置列表，一次最多查询100个
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_DB = "InternalError.DB"
+//  INTERNALERROR_LOGICERROR = "InternalError.LogicError"
+//  INVALIDPARAMETER_ILLEGALMAXPARALLELISM = "InvalidParameter.IllegalMaxParallelism"
+//  INVALIDPARAMETER_MAXPARALLELISMTOOLARGE = "InvalidParameter.MaxParallelismTooLarge"
+//  INVALIDPARAMETER_MAXPARALLELISMTOOSMALL = "InvalidParameter.MaxParallelismTooSmall"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
+func (c *Client) DescribeJobConfigsWithContext(ctx context.Context, request *DescribeJobConfigsRequest) (response *DescribeJobConfigsResponse, err error) {
+    if request == nil {
+        request = NewDescribeJobConfigsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeJobConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeJobsRequest() (request *DescribeJobsRequest) {
     request = &DescribeJobsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -398,6 +612,7 @@ func NewDescribeJobsResponse() (response *DescribeJobsResponse) {
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
 //  INTERNALERROR_DB = "InternalError.DB"
 //  RESOURCENOTFOUND_JOBID = "ResourceNotFound.JobId"
 //  RESOURCEUNAVAILABLE_GETJOBPUBLISHEDJOBCONFIG = "ResourceUnavailable.GetJobPublishedJobConfig"
@@ -405,6 +620,28 @@ func (c *Client) DescribeJobs(request *DescribeJobsRequest) (response *DescribeJ
     if request == nil {
         request = NewDescribeJobsRequest()
     }
+    
+    response = NewDescribeJobsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeJobs
+// 查询作业
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_DB = "InternalError.DB"
+//  RESOURCENOTFOUND_JOBID = "ResourceNotFound.JobId"
+//  RESOURCEUNAVAILABLE_GETJOBPUBLISHEDJOBCONFIG = "ResourceUnavailable.GetJobPublishedJobConfig"
+func (c *Client) DescribeJobsWithContext(ctx context.Context, request *DescribeJobsRequest) (response *DescribeJobsResponse, err error) {
+    if request == nil {
+        request = NewDescribeJobsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeJobsResponse()
     err = c.Send(request, response)
@@ -453,6 +690,32 @@ func (c *Client) DescribeResourceConfigs(request *DescribeResourceConfigsRequest
     return
 }
 
+// DescribeResourceConfigs
+// 描述资源配置接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.DB"
+//  INVALIDPARAMETER_APPIDRESOURCENOTMATCH = "InvalidParameter.AppIdResourceNotMatch"
+//  INVALIDPARAMETER_UINRESOURCENOTMATCH = "InvalidParameter.UinResourceNotMatch"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_JOBIDVALUEERROR = "InvalidParameterValue.JobIdValueError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
+//  RESOURCENOTFOUND_RESOURCECONFIG = "ResourceNotFound.ResourceConfig"
+func (c *Client) DescribeResourceConfigsWithContext(ctx context.Context, request *DescribeResourceConfigsRequest) (response *DescribeResourceConfigsResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceConfigsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeResourceConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeResourceRelatedJobsRequest() (request *DescribeResourceRelatedJobsRequest) {
     request = &DescribeResourceRelatedJobsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -484,6 +747,27 @@ func (c *Client) DescribeResourceRelatedJobs(request *DescribeResourceRelatedJob
     if request == nil {
         request = NewDescribeResourceRelatedJobsRequest()
     }
+    
+    response = NewDescribeResourceRelatedJobsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeResourceRelatedJobs
+// 获取资源关联作业信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.DB"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeResourceRelatedJobsWithContext(ctx context.Context, request *DescribeResourceRelatedJobsRequest) (response *DescribeResourceRelatedJobsResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceRelatedJobsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeResourceRelatedJobsResponse()
     err = c.Send(request, response)
@@ -529,6 +813,29 @@ func (c *Client) DescribeResources(request *DescribeResourcesRequest) (response 
     return
 }
 
+// DescribeResources
+// 描述资源接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.DB"
+//  INTERNALERROR_LOGICERROR = "InternalError.LogicError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_RESOURCECONFIG = "ResourceNotFound.ResourceConfig"
+func (c *Client) DescribeResourcesWithContext(ctx context.Context, request *DescribeResourcesRequest) (response *DescribeResourcesResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourcesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSystemResourcesRequest() (request *DescribeSystemResourcesRequest) {
     request = &DescribeSystemResourcesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -562,6 +869,29 @@ func (c *Client) DescribeSystemResources(request *DescribeSystemResourcesRequest
     if request == nil {
         request = NewDescribeSystemResourcesRequest()
     }
+    
+    response = NewDescribeSystemResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeSystemResources
+// 描述系统资源接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.DB"
+//  INTERNALERROR_FAILEDTOBESCRIBERESOURCES = "InternalError.FailedToBescribeResources"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  RESOURCEUNAVAILABLE_FAILEDTOBESCRIBERESOURCES = "ResourceUnavailable.FailedToBescribeResources"
+func (c *Client) DescribeSystemResourcesWithContext(ctx context.Context, request *DescribeSystemResourcesRequest) (response *DescribeSystemResourcesResponse, err error) {
+    if request == nil {
+        request = NewDescribeSystemResourcesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeSystemResourcesResponse()
     err = c.Send(request, response)
@@ -624,6 +954,46 @@ func (c *Client) RunJobs(request *RunJobsRequest) (response *RunJobsResponse, er
     return
 }
 
+// RunJobs
+// 批量启动或者恢复作业，批量操作数量上限20
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_COSCLIENT = "InternalError.COSClient"
+//  INTERNALERROR_DB = "InternalError.DB"
+//  INTERNALERROR_FAILEDTOUPDATEJOB = "InternalError.FailedToUpdateJob"
+//  INTERNALERROR_LOGICERROR = "InternalError.LogicError"
+//  INTERNALERROR_STSNEWCLIENT = "InternalError.StsNewClient"
+//  INVALIDPARAMETER_INVALIDCLUSTERID = "InvalidParameter.InvalidClusterId"
+//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
+//  INVALIDPARAMETERVALUE_INVALIDSTARTMODE = "InvalidParameterValue.InvalidStartMode"
+//  INVALIDPARAMETERVALUE_JOBIDVALUEERROR = "InvalidParameterValue.JobIdValueError"
+//  INVALIDPARAMETERVALUE_RUNJOBDESCRIPTIONSCOUNT = "InvalidParameterValue.RunJobDescriptionsCount"
+//  INVALIDPARAMETERVALUE_RUNTYPE = "InvalidParameterValue.RunType"
+//  RESOURCEINUSE_INSTANCEINPROCESS = "ResourceInUse.InstanceInProcess"
+//  RESOURCEINSUFFICIENT_CU = "ResourceInsufficient.CU"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_COSBUCKET = "ResourceNotFound.COSBucket"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
+//  RESOURCENOTFOUND_JOBCONFIG = "ResourceNotFound.JobConfig"
+//  RESOURCENOTFOUND_RESOURCE = "ResourceNotFound.Resource"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_JOBRESOURCECONFIGNOTREADY = "ResourceUnavailable.JobResourceConfigNotReady"
+//  RESOURCEUNAVAILABLE_NORUNNINGJOBINSTANCESFOUNDFORJOBID = "ResourceUnavailable.NoRunningJobInstancesFoundForJobId"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDSTARTMODE = "UnsupportedOperation.UnsupportedStartMode"
+func (c *Client) RunJobsWithContext(ctx context.Context, request *RunJobsRequest) (response *RunJobsResponse, err error) {
+    if request == nil {
+        request = NewRunJobsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewRunJobsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopJobsRequest() (request *StopJobsRequest) {
     request = &StopJobsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -657,6 +1027,29 @@ func (c *Client) StopJobs(request *StopJobsRequest) (response *StopJobsResponse,
     if request == nil {
         request = NewStopJobsRequest()
     }
+    
+    response = NewStopJobsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// StopJobs
+// 批量停止作业，批量操作数量上限为20
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
+//  RESOURCENOTFOUND_JOBID = "ResourceNotFound.JobId"
+//  RESOURCEUNAVAILABLE_NOTALLOWEDTOBESTOPORPAUSE = "ResourceUnavailable.NotAllowedToBeStopOrPause"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) StopJobsWithContext(ctx context.Context, request *StopJobsRequest) (response *StopJobsResponse, err error) {
+    if request == nil {
+        request = NewStopJobsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewStopJobsResponse()
     err = c.Send(request, response)

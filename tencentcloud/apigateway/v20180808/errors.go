@@ -68,6 +68,9 @@ const (
 	// Apis 证书为空，请上传证书。
 	FAILEDOPERATION_CERTIFICATEISNULL = "FailedOperation.CertificateIsNull"
 
+	// 调用CLS服务失败。
+	FAILEDOPERATION_CLSERROR = "FailedOperation.ClsError"
+
 	// API文档操作失败。
 	FAILEDOPERATION_CODINGERROR = "FailedOperation.CodingError"
 

@@ -7260,6 +7260,14 @@ type MainlandConfig struct {
 	// 视频拖拽配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoSeek *VideoSeek `json:"VideoSeek,omitempty" name:"VideoSeek"`
+
+	// 回源S3私有鉴权。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AwsPrivateAccess *AwsPrivateAccess `json:"AwsPrivateAccess,omitempty" name:"AwsPrivateAccess"`
+
+	// 回源OSS私有鉴权。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OssPrivateAccess *OssPrivateAccess `json:"OssPrivateAccess,omitempty" name:"OssPrivateAccess"`
 }
 
 type ManageClsTopicDomainsRequest struct {
@@ -7682,6 +7690,14 @@ type OverseaConfig struct {
 	// 视频拖拽配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoSeek *VideoSeek `json:"VideoSeek,omitempty" name:"VideoSeek"`
+
+	// 回源S3私有鉴权。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AwsPrivateAccess *AwsPrivateAccess `json:"AwsPrivateAccess,omitempty" name:"AwsPrivateAccess"`
+
+	// 回源OSS私有鉴权。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OssPrivateAccess *OssPrivateAccess `json:"OssPrivateAccess,omitempty" name:"OssPrivateAccess"`
 }
 
 type PathBasedOriginRule struct {
@@ -8882,8 +8898,7 @@ type Seo struct {
 
 type ServerCert struct {
 
-	// 服务器证书 ID
-	// 在 SSL 证书管理进行证书托管时自动生成
+	// 服务器证书 ID 在 SSL 证书管理进行证书托管时自动生成
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertId *string `json:"CertId,omitempty" name:"CertId"`
 

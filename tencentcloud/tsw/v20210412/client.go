@@ -15,6 +15,7 @@
 package v20210412
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -72,6 +73,19 @@ func (c *Client) DescribeComponentAlertObject(request *DescribeComponentAlertObj
     return
 }
 
+// DescribeComponentAlertObject
+// 获取告警对象-组件告警
+func (c *Client) DescribeComponentAlertObjectWithContext(ctx context.Context, request *DescribeComponentAlertObjectRequest) (response *DescribeComponentAlertObjectResponse, err error) {
+    if request == nil {
+        request = NewDescribeComponentAlertObjectRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeComponentAlertObjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeServiceAlertObjectRequest() (request *DescribeServiceAlertObjectRequest) {
     request = &DescribeServiceAlertObjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -101,6 +115,19 @@ func (c *Client) DescribeServiceAlertObject(request *DescribeServiceAlertObjectR
     return
 }
 
+// DescribeServiceAlertObject
+// 获取告警对象-服务告警表
+func (c *Client) DescribeServiceAlertObjectWithContext(ctx context.Context, request *DescribeServiceAlertObjectRequest) (response *DescribeServiceAlertObjectResponse, err error) {
+    if request == nil {
+        request = NewDescribeServiceAlertObjectRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeServiceAlertObjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTokenRequest() (request *DescribeTokenRequest) {
     request = &DescribeTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -124,6 +151,19 @@ func (c *Client) DescribeToken(request *DescribeTokenRequest) (response *Describ
     if request == nil {
         request = NewDescribeTokenRequest()
     }
+    
+    response = NewDescribeTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeToken
+// 查询token
+func (c *Client) DescribeTokenWithContext(ctx context.Context, request *DescribeTokenRequest) (response *DescribeTokenResponse, err error) {
+    if request == nil {
+        request = NewDescribeTokenRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeTokenResponse()
     err = c.Send(request, response)

@@ -15,6 +15,7 @@
 package v20180129
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -78,6 +79,25 @@ func (c *Client) DescribeBrandCommentCount(request *DescribeBrandCommentCountReq
     return
 }
 
+// DescribeBrandCommentCount
+// 通过分析用户在评价品牌时用词的正负面情绪评分，返回品牌好评与差评评价条数，按天输出结果。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INNERSERVERFAILED = "InternalError.InnerServerFailed"
+//  INTERNALERROR_METADATAOPFAILED = "InternalError.MetaDataOpFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeBrandCommentCountWithContext(ctx context.Context, request *DescribeBrandCommentCountRequest) (response *DescribeBrandCommentCountResponse, err error) {
+    if request == nil {
+        request = NewDescribeBrandCommentCountRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeBrandCommentCountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBrandExposureRequest() (request *DescribeBrandExposureRequest) {
     request = &DescribeBrandExposureRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -108,6 +128,26 @@ func (c *Client) DescribeBrandExposure(request *DescribeBrandExposureRequest) (r
     if request == nil {
         request = NewDescribeBrandExposureRequest()
     }
+    
+    response = NewDescribeBrandExposureResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeBrandExposure
+// 监测品牌关键词命中文章标题或全文的文章篇数，按天输出数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_METADATAOPFAILED = "InternalError.MetaDataOpFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeBrandExposureWithContext(ctx context.Context, request *DescribeBrandExposureRequest) (response *DescribeBrandExposureResponse, err error) {
+    if request == nil {
+        request = NewDescribeBrandExposureRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeBrandExposureResponse()
     err = c.Send(request, response)
@@ -150,6 +190,26 @@ func (c *Client) DescribeBrandMediaReport(request *DescribeBrandMediaReportReque
     return
 }
 
+// DescribeBrandMediaReport
+// 监测品牌关键词出现在媒体网站（新闻媒体、网络门户、政府网站、微信公众号、天天快报等）发布资讯标题和正文中的报道数。按天输出结果。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_METADATAOPFAILED = "InternalError.MetaDataOpFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeBrandMediaReportWithContext(ctx context.Context, request *DescribeBrandMediaReportRequest) (response *DescribeBrandMediaReportResponse, err error) {
+    if request == nil {
+        request = NewDescribeBrandMediaReportRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeBrandMediaReportResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBrandNegCommentsRequest() (request *DescribeBrandNegCommentsRequest) {
     request = &DescribeBrandNegCommentsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -184,6 +244,24 @@ func (c *Client) DescribeBrandNegComments(request *DescribeBrandNegCommentsReque
     return
 }
 
+// DescribeBrandNegComments
+// 通过分析用户在评价品牌时用词的正负面情绪评分，返回品牌热门差评观点列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_METADATAOPFAILED = "InternalError.MetaDataOpFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeBrandNegCommentsWithContext(ctx context.Context, request *DescribeBrandNegCommentsRequest) (response *DescribeBrandNegCommentsResponse, err error) {
+    if request == nil {
+        request = NewDescribeBrandNegCommentsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeBrandNegCommentsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBrandPosCommentsRequest() (request *DescribeBrandPosCommentsRequest) {
     request = &DescribeBrandPosCommentsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -212,6 +290,24 @@ func (c *Client) DescribeBrandPosComments(request *DescribeBrandPosCommentsReque
     if request == nil {
         request = NewDescribeBrandPosCommentsRequest()
     }
+    
+    response = NewDescribeBrandPosCommentsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeBrandPosComments
+// 通过分析用户在评价品牌时用词的正负面情绪评分，返回品牌热门好评观点列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_METADATAOPFAILED = "InternalError.MetaDataOpFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeBrandPosCommentsWithContext(ctx context.Context, request *DescribeBrandPosCommentsRequest) (response *DescribeBrandPosCommentsResponse, err error) {
+    if request == nil {
+        request = NewDescribeBrandPosCommentsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeBrandPosCommentsResponse()
     err = c.Send(request, response)
@@ -254,6 +350,26 @@ func (c *Client) DescribeBrandSocialOpinion(request *DescribeBrandSocialOpinionR
     return
 }
 
+// DescribeBrandSocialOpinion
+// 检测品牌关键词出现在微博、QQ兴趣部落、论坛、博客等个人公开贡献资讯中的内容，每天聚合近30天热度最高的观点列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_METADATAOPFAILED = "InternalError.MetaDataOpFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeBrandSocialOpinionWithContext(ctx context.Context, request *DescribeBrandSocialOpinionRequest) (response *DescribeBrandSocialOpinionResponse, err error) {
+    if request == nil {
+        request = NewDescribeBrandSocialOpinionRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeBrandSocialOpinionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBrandSocialReportRequest() (request *DescribeBrandSocialReportRequest) {
     request = &DescribeBrandSocialReportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -284,6 +400,26 @@ func (c *Client) DescribeBrandSocialReport(request *DescribeBrandSocialReportReq
     if request == nil {
         request = NewDescribeBrandSocialReportRequest()
     }
+    
+    response = NewDescribeBrandSocialReportResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeBrandSocialReport
+// 监测品牌关键词出现在微博、QQ兴趣部落、论坛、博客等个人公开贡献资讯中的条数。按天输出数据结果。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_METADATAOPFAILED = "InternalError.MetaDataOpFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeBrandSocialReportWithContext(ctx context.Context, request *DescribeBrandSocialReportRequest) (response *DescribeBrandSocialReportResponse, err error) {
+    if request == nil {
+        request = NewDescribeBrandSocialReportRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeBrandSocialReportResponse()
     err = c.Send(request, response)
@@ -326,6 +462,26 @@ func (c *Client) DescribeIndustryNews(request *DescribeIndustryNewsRequest) (res
     return
 }
 
+// DescribeIndustryNews
+// 根据客户定制的行业关键词，监测关键词出现在媒体网站（新闻媒体、网络门户、政府网站、微信公众号、天天快报等）发布资讯标题和正文中的报道数，以及文章列表、来源渠道、作者、发布时间等。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_METADATAOPFAILED = "InternalError.MetaDataOpFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeIndustryNewsWithContext(ctx context.Context, request *DescribeIndustryNewsRequest) (response *DescribeIndustryNewsResponse, err error) {
+    if request == nil {
+        request = NewDescribeIndustryNewsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeIndustryNewsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserPortraitRequest() (request *DescribeUserPortraitRequest) {
     request = &DescribeUserPortraitRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -356,6 +512,26 @@ func (c *Client) DescribeUserPortrait(request *DescribeUserPortraitRequest) (res
     if request == nil {
         request = NewDescribeUserPortraitRequest()
     }
+    
+    response = NewDescribeUserPortraitResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeUserPortrait
+// 通过分析洞察参与过品牌媒体互动的用户，比如公开发表品牌的新闻评论、在公开社交渠道发表过对品牌的评价观点等用户，返回用户的画像属性分布，例如性别、年龄、地域、喜爱的明星、喜爱的影视。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATAINPROCESSING = "InternalError.DataInProcessing"
+//  INTERNALERROR_METADATAOPFAILED = "InternalError.MetaDataOpFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeUserPortraitWithContext(ctx context.Context, request *DescribeUserPortraitRequest) (response *DescribeUserPortraitResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserPortraitRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeUserPortraitResponse()
     err = c.Send(request, response)

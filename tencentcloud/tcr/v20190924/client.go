@@ -15,6 +15,7 @@
 package v20190924
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -78,6 +79,25 @@ func (c *Client) BatchDeleteImagePersonal(request *BatchDeleteImagePersonalReque
     return
 }
 
+// BatchDeleteImagePersonal
+// 用于在个人版镜像仓库中批量删除Tag
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRUNAUTHORIZED = "InternalError.ErrUnauthorized"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
+func (c *Client) BatchDeleteImagePersonalWithContext(ctx context.Context, request *BatchDeleteImagePersonalRequest) (response *BatchDeleteImagePersonalResponse, err error) {
+    if request == nil {
+        request = NewBatchDeleteImagePersonalRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewBatchDeleteImagePersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBatchDeleteRepositoryPersonalRequest() (request *BatchDeleteRepositoryPersonalRequest) {
     request = &BatchDeleteRepositoryPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -106,6 +126,24 @@ func (c *Client) BatchDeleteRepositoryPersonal(request *BatchDeleteRepositoryPer
     if request == nil {
         request = NewBatchDeleteRepositoryPersonalRequest()
     }
+    
+    response = NewBatchDeleteRepositoryPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// BatchDeleteRepositoryPersonal
+// 用于个人版镜像仓库中批量删除镜像仓库
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRUNAUTHORIZED = "InternalError.ErrUnauthorized"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) BatchDeleteRepositoryPersonalWithContext(ctx context.Context, request *BatchDeleteRepositoryPersonalRequest) (response *BatchDeleteRepositoryPersonalResponse, err error) {
+    if request == nil {
+        request = NewBatchDeleteRepositoryPersonalRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewBatchDeleteRepositoryPersonalResponse()
     err = c.Send(request, response)
@@ -158,6 +196,36 @@ func (c *Client) CheckInstance(request *CheckInstanceRequest) (response *CheckIn
     return
 }
 
+// CheckInstance
+// 用于校验企业版实例信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
+//  INTERNALERROR_ERRNOTEXIST = "InternalError.ErrNotExist"
+//  INTERNALERROR_ERRORCONFLICT = "InternalError.ErrorConflict"
+//  INTERNALERROR_ERROROVERLIMIT = "InternalError.ErrorOverLimit"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORNAMEEXISTS = "InvalidParameter.ErrorNameExists"
+//  INVALIDPARAMETER_ERRORREGISTRYNAME = "InvalidParameter.ErrorRegistryName"
+//  INVALIDPARAMETER_ERRORTAGOVERLIMIT = "InvalidParameter.ErrorTagOverLimit"
+//  INVALIDPARAMETER_UNSUPPORTEDREGION = "InvalidParameter.UnsupportedRegion"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CheckInstanceWithContext(ctx context.Context, request *CheckInstanceRequest) (response *CheckInstanceResponse, err error) {
+    if request == nil {
+        request = NewCheckInstanceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCheckInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckInstanceNameRequest() (request *CheckInstanceNameRequest) {
     request = &CheckInstanceNameRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -204,6 +272,36 @@ func (c *Client) CheckInstanceName(request *CheckInstanceNameRequest) (response 
     return
 }
 
+// CheckInstanceName
+// 检查待创建的实例名称是否符合规范
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
+//  INTERNALERROR_ERRNOTEXIST = "InternalError.ErrNotExist"
+//  INTERNALERROR_ERRORCONFLICT = "InternalError.ErrorConflict"
+//  INTERNALERROR_ERROROVERLIMIT = "InternalError.ErrorOverLimit"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORNAMEEXISTS = "InvalidParameter.ErrorNameExists"
+//  INVALIDPARAMETER_ERRORREGISTRYNAME = "InvalidParameter.ErrorRegistryName"
+//  INVALIDPARAMETER_ERRORTAGOVERLIMIT = "InvalidParameter.ErrorTagOverLimit"
+//  INVALIDPARAMETER_UNSUPPORTEDREGION = "InvalidParameter.UnsupportedRegion"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CheckInstanceNameWithContext(ctx context.Context, request *CheckInstanceNameRequest) (response *CheckInstanceNameResponse, err error) {
+    if request == nil {
+        request = NewCheckInstanceNameRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCheckInstanceNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateApplicationTriggerPersonalRequest() (request *CreateApplicationTriggerPersonalRequest) {
     request = &CreateApplicationTriggerPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -236,6 +334,28 @@ func (c *Client) CreateApplicationTriggerPersonal(request *CreateApplicationTrig
     if request == nil {
         request = NewCreateApplicationTriggerPersonalRequest()
     }
+    
+    response = NewCreateApplicationTriggerPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateApplicationTriggerPersonal
+// 用于创建应用更新触发器
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRUNAUTHORIZED = "InternalError.ErrUnauthorized"
+//  INVALIDPARAMETER_ERRTRIGGEREXIST = "InvalidParameter.ErrTriggerExist"
+//  LIMITEXCEEDED_ERRTRIGGERMAXLIMIT = "LimitExceeded.ErrTriggerMaxLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
+//  RESOURCENOTFOUND_ERRNOUSER = "ResourceNotFound.ErrNoUser"
+func (c *Client) CreateApplicationTriggerPersonalWithContext(ctx context.Context, request *CreateApplicationTriggerPersonalRequest) (response *CreateApplicationTriggerPersonalResponse, err error) {
+    if request == nil {
+        request = NewCreateApplicationTriggerPersonalRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateApplicationTriggerPersonalResponse()
     err = c.Send(request, response)
@@ -277,6 +397,25 @@ func (c *Client) CreateImageLifecyclePersonal(request *CreateImageLifecyclePerso
     return
 }
 
+// CreateImageLifecyclePersonal
+// 用于在个人版中创建清理策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRUNAUTHORIZED = "InternalError.ErrUnauthorized"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
+func (c *Client) CreateImageLifecyclePersonalWithContext(ctx context.Context, request *CreateImageLifecyclePersonalRequest) (response *CreateImageLifecyclePersonalResponse, err error) {
+    if request == nil {
+        request = NewCreateImageLifecyclePersonalRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateImageLifecyclePersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateImmutableTagRulesRequest() (request *CreateImmutableTagRulesRequest) {
     request = &CreateImmutableTagRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -308,6 +447,27 @@ func (c *Client) CreateImmutableTagRules(request *CreateImmutableTagRulesRequest
     if request == nil {
         request = NewCreateImmutableTagRulesRequest()
     }
+    
+    response = NewCreateImmutableTagRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateImmutableTagRules
+// 创建镜像不可变规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
+func (c *Client) CreateImmutableTagRulesWithContext(ctx context.Context, request *CreateImmutableTagRulesRequest) (response *CreateImmutableTagRulesResponse, err error) {
+    if request == nil {
+        request = NewCreateImmutableTagRulesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateImmutableTagRulesResponse()
     err = c.Send(request, response)
@@ -362,6 +522,38 @@ func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *Creat
     return
 }
 
+// CreateInstance
+// 创建实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
+//  INTERNALERROR_ERRNOTEXIST = "InternalError.ErrNotExist"
+//  INTERNALERROR_ERRORCONFLICT = "InternalError.ErrorConflict"
+//  INTERNALERROR_ERROROVERLIMIT = "InternalError.ErrorOverLimit"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORNAMEEXISTS = "InvalidParameter.ErrorNameExists"
+//  INVALIDPARAMETER_ERRORNAMEILLEGAL = "InvalidParameter.ErrorNameIllegal"
+//  INVALIDPARAMETER_ERRORNAMERESERVED = "InvalidParameter.ErrorNameReserved"
+//  INVALIDPARAMETER_ERRORREGISTRYNAME = "InvalidParameter.ErrorRegistryName"
+//  INVALIDPARAMETER_ERRORTAGOVERLIMIT = "InvalidParameter.ErrorTagOverLimit"
+//  INVALIDPARAMETER_UNSUPPORTEDREGION = "InvalidParameter.UnsupportedRegion"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateInstanceRequest) (response *CreateInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateInstanceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateInstanceTokenRequest() (request *CreateInstanceTokenRequest) {
     request = &CreateInstanceTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -395,6 +587,29 @@ func (c *Client) CreateInstanceToken(request *CreateInstanceTokenRequest) (respo
     if request == nil {
         request = NewCreateInstanceTokenRequest()
     }
+    
+    response = NewCreateInstanceTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateInstanceToken
+// 创建实例的临时或长期访问凭证
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateInstanceTokenWithContext(ctx context.Context, request *CreateInstanceTokenRequest) (response *CreateInstanceTokenResponse, err error) {
+    if request == nil {
+        request = NewCreateInstanceTokenRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateInstanceTokenResponse()
     err = c.Send(request, response)
@@ -444,6 +659,33 @@ func (c *Client) CreateInternalEndpointDns(request *CreateInternalEndpointDnsReq
     return
 }
 
+// CreateInternalEndpointDns
+// 创建tcr内网私有域名解析
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CREATEPRIVATEZONE = "InternalError.CreatePrivateZone"
+//  INTERNALERROR_CREATEPRIVATEZONERECORD = "InternalError.CreatePrivateZoneRecord"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_DELETEPRIVATEZONERECORD = "InternalError.DeletePrivateZoneRecord"
+//  INTERNALERROR_DESCRIBEINTERNALENDPOINTDNSSTATUS = "InternalError.DescribeInternalEndpointDnsStatus"
+//  INTERNALERROR_DESCRIBEPRIVATEZONELIST = "InternalError.DescribePrivateZoneList"
+//  INTERNALERROR_DESCRIBEPRIVATEZONERECORDLIST = "InternalError.DescribePrivateZoneRecordList"
+//  INTERNALERROR_DESCRIBEPRIVATEZONESERVICELIST = "InternalError.DescribePrivateZoneServiceList"
+//  INTERNALERROR_MODIFYPRIVATEZONEVPC = "InternalError.ModifyPrivateZoneVpc"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateInternalEndpointDnsWithContext(ctx context.Context, request *CreateInternalEndpointDnsRequest) (response *CreateInternalEndpointDnsResponse, err error) {
+    if request == nil {
+        request = NewCreateInternalEndpointDnsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateInternalEndpointDnsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateMultipleSecurityPolicyRequest() (request *CreateMultipleSecurityPolicyRequest) {
     request = &CreateMultipleSecurityPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -476,6 +718,28 @@ func (c *Client) CreateMultipleSecurityPolicy(request *CreateMultipleSecurityPol
     if request == nil {
         request = NewCreateMultipleSecurityPolicyRequest()
     }
+    
+    response = NewCreateMultipleSecurityPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateMultipleSecurityPolicy
+// 用于在TCR实例中，创建多个白名单策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateMultipleSecurityPolicyWithContext(ctx context.Context, request *CreateMultipleSecurityPolicyRequest) (response *CreateMultipleSecurityPolicyResponse, err error) {
+    if request == nil {
+        request = NewCreateMultipleSecurityPolicyRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateMultipleSecurityPolicyResponse()
     err = c.Send(request, response)
@@ -524,6 +788,32 @@ func (c *Client) CreateNamespace(request *CreateNamespaceRequest) (response *Cre
     return
 }
 
+// CreateNamespace
+// 用于在企业版中创建命名空间
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
+//  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
+//  INTERNALERROR_ERRORTCRRESOURCECONFLICT = "InternalError.ErrorTcrResourceConflict"
+//  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateNamespaceWithContext(ctx context.Context, request *CreateNamespaceRequest) (response *CreateNamespaceResponse, err error) {
+    if request == nil {
+        request = NewCreateNamespaceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateNamespaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateNamespacePersonalRequest() (request *CreateNamespacePersonalRequest) {
     request = &CreateNamespacePersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -555,6 +845,27 @@ func (c *Client) CreateNamespacePersonal(request *CreateNamespacePersonalRequest
     if request == nil {
         request = NewCreateNamespacePersonalRequest()
     }
+    
+    response = NewCreateNamespacePersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateNamespacePersonal
+// 创建个人版镜像仓库命名空间，此命名空间全局唯一
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ERRNAMESPACEEXIST = "InvalidParameter.ErrNamespaceExist"
+//  INVALIDPARAMETER_ERRNAMESPACERESERVED = "InvalidParameter.ErrNamespaceReserved"
+//  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ERRNOUSER = "ResourceNotFound.ErrNoUser"
+func (c *Client) CreateNamespacePersonalWithContext(ctx context.Context, request *CreateNamespacePersonalRequest) (response *CreateNamespacePersonalResponse, err error) {
+    if request == nil {
+        request = NewCreateNamespacePersonalRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateNamespacePersonalResponse()
     err = c.Send(request, response)
@@ -604,6 +915,33 @@ func (c *Client) CreateReplicationInstance(request *CreateReplicationInstanceReq
     return
 }
 
+// CreateReplicationInstance
+// 创建从实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
+//  INTERNALERROR_ERRNOTEXIST = "InternalError.ErrNotExist"
+//  INTERNALERROR_ERRORCONFLICT = "InternalError.ErrorConflict"
+//  INTERNALERROR_ERROROVERLIMIT = "InternalError.ErrorOverLimit"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNSUPPORTEDREGION = "InvalidParameter.UnsupportedRegion"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateReplicationInstanceWithContext(ctx context.Context, request *CreateReplicationInstanceRequest) (response *CreateReplicationInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateReplicationInstanceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateReplicationInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRepositoryRequest() (request *CreateRepositoryRequest) {
     request = &CreateRepositoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -645,6 +983,31 @@ func (c *Client) CreateRepository(request *CreateRepositoryRequest) (response *C
     return
 }
 
+// CreateRepository
+// 用于企业版创建镜像仓库
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
+//  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
+//  INTERNALERROR_ERRORTCRRESOURCECONFLICT = "InternalError.ErrorTcrResourceConflict"
+//  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateRepositoryWithContext(ctx context.Context, request *CreateRepositoryRequest) (response *CreateRepositoryResponse, err error) {
+    if request == nil {
+        request = NewCreateRepositoryRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateRepositoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRepositoryPersonalRequest() (request *CreateRepositoryPersonalRequest) {
     request = &CreateRepositoryPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -675,6 +1038,26 @@ func (c *Client) CreateRepositoryPersonal(request *CreateRepositoryPersonalReque
     if request == nil {
         request = NewCreateRepositoryPersonalRequest()
     }
+    
+    response = NewCreateRepositoryPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateRepositoryPersonal
+// 用于在个人版仓库中创建镜像仓库
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ERRNSMISMATCH = "InvalidParameter.ErrNSMisMatch"
+//  INVALIDPARAMETER_ERRREPOEXIST = "InvalidParameter.ErrRepoExist"
+//  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreateRepositoryPersonalWithContext(ctx context.Context, request *CreateRepositoryPersonalRequest) (response *CreateRepositoryPersonalResponse, err error) {
+    if request == nil {
+        request = NewCreateRepositoryPersonalRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateRepositoryPersonalResponse()
     err = c.Send(request, response)
@@ -720,6 +1103,29 @@ func (c *Client) CreateSecurityPolicy(request *CreateSecurityPolicyRequest) (res
     return
 }
 
+// CreateSecurityPolicy
+// 创建实例公网访问白名单策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateSecurityPolicyWithContext(ctx context.Context, request *CreateSecurityPolicyRequest) (response *CreateSecurityPolicyResponse, err error) {
+    if request == nil {
+        request = NewCreateSecurityPolicyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateSecurityPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTagRetentionExecutionRequest() (request *CreateTagRetentionExecutionRequest) {
     request = &CreateTagRetentionExecutionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -757,6 +1163,33 @@ func (c *Client) CreateTagRetentionExecution(request *CreateTagRetentionExecutio
     if request == nil {
         request = NewCreateTagRetentionExecutionRequest()
     }
+    
+    response = NewCreateTagRetentionExecutionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateTagRetentionExecution
+// 手动执行版本保留
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
+//  INTERNALERROR_ERRNOTEXIST = "InternalError.ErrNotExist"
+//  INTERNALERROR_ERRORCONFLICT = "InternalError.ErrorConflict"
+//  INTERNALERROR_ERROROVERLIMIT = "InternalError.ErrorOverLimit"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateTagRetentionExecutionWithContext(ctx context.Context, request *CreateTagRetentionExecutionRequest) (response *CreateTagRetentionExecutionResponse, err error) {
+    if request == nil {
+        request = NewCreateTagRetentionExecutionRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateTagRetentionExecutionResponse()
     err = c.Send(request, response)
@@ -807,6 +1240,34 @@ func (c *Client) CreateTagRetentionRule(request *CreateTagRetentionRuleRequest) 
     return
 }
 
+// CreateTagRetentionRule
+// 创建版本保留规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
+//  INTERNALERROR_ERRNOTEXIST = "InternalError.ErrNotExist"
+//  INTERNALERROR_ERRORCONFLICT = "InternalError.ErrorConflict"
+//  INTERNALERROR_ERROROVERLIMIT = "InternalError.ErrorOverLimit"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateTagRetentionRuleWithContext(ctx context.Context, request *CreateTagRetentionRuleRequest) (response *CreateTagRetentionRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateTagRetentionRuleRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateTagRetentionRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateUserPersonalRequest() (request *CreateUserPersonalRequest) {
     request = &CreateUserPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -835,6 +1296,24 @@ func (c *Client) CreateUserPersonal(request *CreateUserPersonalRequest) (respons
     if request == nil {
         request = NewCreateUserPersonalRequest()
     }
+    
+    response = NewCreateUserPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateUserPersonal
+// 创建个人用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ERRUSEREXIST = "InvalidParameter.ErrUserExist"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+func (c *Client) CreateUserPersonalWithContext(ctx context.Context, request *CreateUserPersonalRequest) (response *CreateUserPersonalResponse, err error) {
+    if request == nil {
+        request = NewCreateUserPersonalRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateUserPersonalResponse()
     err = c.Send(request, response)
@@ -879,6 +1358,28 @@ func (c *Client) CreateWebhookTrigger(request *CreateWebhookTriggerRequest) (res
     return
 }
 
+// CreateWebhookTrigger
+// 创建触发器
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
+//  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+func (c *Client) CreateWebhookTriggerWithContext(ctx context.Context, request *CreateWebhookTriggerRequest) (response *CreateWebhookTriggerResponse, err error) {
+    if request == nil {
+        request = NewCreateWebhookTriggerRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateWebhookTriggerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteApplicationTriggerPersonalRequest() (request *DeleteApplicationTriggerPersonalRequest) {
     request = &DeleteApplicationTriggerPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -907,6 +1408,24 @@ func (c *Client) DeleteApplicationTriggerPersonal(request *DeleteApplicationTrig
     if request == nil {
         request = NewDeleteApplicationTriggerPersonalRequest()
     }
+    
+    response = NewDeleteApplicationTriggerPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteApplicationTriggerPersonal
+// 用于删除应用更新触发器
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_ERRNOTRIGGER = "ResourceNotFound.ErrNoTrigger"
+//  RESOURCENOTFOUND_ERRNOUSER = "ResourceNotFound.ErrNoUser"
+func (c *Client) DeleteApplicationTriggerPersonalWithContext(ctx context.Context, request *DeleteApplicationTriggerPersonalRequest) (response *DeleteApplicationTriggerPersonalResponse, err error) {
+    if request == nil {
+        request = NewDeleteApplicationTriggerPersonalRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteApplicationTriggerPersonalResponse()
     err = c.Send(request, response)
@@ -955,6 +1474,32 @@ func (c *Client) DeleteImage(request *DeleteImageRequest) (response *DeleteImage
     return
 }
 
+// DeleteImage
+// 删除指定镜像
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
+//  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
+//  INTERNALERROR_ERRORTCRRESOURCECONFLICT = "InternalError.ErrorTcrResourceConflict"
+//  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteImageWithContext(ctx context.Context, request *DeleteImageRequest) (response *DeleteImageResponse, err error) {
+    if request == nil {
+        request = NewDeleteImageRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteImageLifecycleGlobalPersonalRequest() (request *DeleteImageLifecycleGlobalPersonalRequest) {
     request = &DeleteImageLifecycleGlobalPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -981,6 +1526,22 @@ func (c *Client) DeleteImageLifecycleGlobalPersonal(request *DeleteImageLifecycl
     if request == nil {
         request = NewDeleteImageLifecycleGlobalPersonalRequest()
     }
+    
+    response = NewDeleteImageLifecycleGlobalPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteImageLifecycleGlobalPersonal
+// 用于删除个人版全局镜像版本自动清理策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DeleteImageLifecycleGlobalPersonalWithContext(ctx context.Context, request *DeleteImageLifecycleGlobalPersonalRequest) (response *DeleteImageLifecycleGlobalPersonalResponse, err error) {
+    if request == nil {
+        request = NewDeleteImageLifecycleGlobalPersonalRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteImageLifecycleGlobalPersonalResponse()
     err = c.Send(request, response)
@@ -1015,6 +1576,24 @@ func (c *Client) DeleteImageLifecyclePersonal(request *DeleteImageLifecyclePerso
     if request == nil {
         request = NewDeleteImageLifecyclePersonalRequest()
     }
+    
+    response = NewDeleteImageLifecyclePersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteImageLifecyclePersonal
+// 用于在个人版镜像仓库中删除仓库Tag自动清理策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
+func (c *Client) DeleteImageLifecyclePersonalWithContext(ctx context.Context, request *DeleteImageLifecyclePersonalRequest) (response *DeleteImageLifecyclePersonalResponse, err error) {
+    if request == nil {
+        request = NewDeleteImageLifecyclePersonalRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteImageLifecyclePersonalResponse()
     err = c.Send(request, response)
@@ -1056,6 +1635,25 @@ func (c *Client) DeleteImagePersonal(request *DeleteImagePersonalRequest) (respo
     return
 }
 
+// DeleteImagePersonal
+// 用于在个人版中删除tag
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRUNAUTHORIZED = "InternalError.ErrUnauthorized"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
+func (c *Client) DeleteImagePersonalWithContext(ctx context.Context, request *DeleteImagePersonalRequest) (response *DeleteImagePersonalResponse, err error) {
+    if request == nil {
+        request = NewDeleteImagePersonalRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteImagePersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteImmutableTagRulesRequest() (request *DeleteImmutableTagRulesRequest) {
     request = &DeleteImmutableTagRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1086,6 +1684,26 @@ func (c *Client) DeleteImmutableTagRules(request *DeleteImmutableTagRulesRequest
     if request == nil {
         request = NewDeleteImmutableTagRulesRequest()
     }
+    
+    response = NewDeleteImmutableTagRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteImmutableTagRules
+//  删除镜像不可变规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteImmutableTagRulesWithContext(ctx context.Context, request *DeleteImmutableTagRulesRequest) (response *DeleteImmutableTagRulesResponse, err error) {
+    if request == nil {
+        request = NewDeleteImmutableTagRulesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteImmutableTagRulesResponse()
     err = c.Send(request, response)
@@ -1132,6 +1750,30 @@ func (c *Client) DeleteInstance(request *DeleteInstanceRequest) (response *Delet
     return
 }
 
+// DeleteInstance
+// 删除镜像仓库企业版实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ERRORCONFLICT = "InternalError.ErrorConflict"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteInstanceRequest) (response *DeleteInstanceResponse, err error) {
+    if request == nil {
+        request = NewDeleteInstanceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteInstanceTokenRequest() (request *DeleteInstanceTokenRequest) {
     request = &DeleteInstanceTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1164,6 +1806,28 @@ func (c *Client) DeleteInstanceToken(request *DeleteInstanceTokenRequest) (respo
     if request == nil {
         request = NewDeleteInstanceTokenRequest()
     }
+    
+    response = NewDeleteInstanceTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteInstanceToken
+// 删除长期访问凭证
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteInstanceTokenWithContext(ctx context.Context, request *DeleteInstanceTokenRequest) (response *DeleteInstanceTokenResponse, err error) {
+    if request == nil {
+        request = NewDeleteInstanceTokenRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteInstanceTokenResponse()
     err = c.Send(request, response)
@@ -1212,6 +1876,32 @@ func (c *Client) DeleteInternalEndpointDns(request *DeleteInternalEndpointDnsReq
     return
 }
 
+// DeleteInternalEndpointDns
+// 删除tcr内网私有域名解析
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CREATEPRIVATEZONE = "InternalError.CreatePrivateZone"
+//  INTERNALERROR_CREATEPRIVATEZONERECORD = "InternalError.CreatePrivateZoneRecord"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_DELETEPRIVATEZONERECORD = "InternalError.DeletePrivateZoneRecord"
+//  INTERNALERROR_DESCRIBEINTERNALENDPOINTDNSSTATUS = "InternalError.DescribeInternalEndpointDnsStatus"
+//  INTERNALERROR_DESCRIBEPRIVATEZONELIST = "InternalError.DescribePrivateZoneList"
+//  INTERNALERROR_DESCRIBEPRIVATEZONERECORDLIST = "InternalError.DescribePrivateZoneRecordList"
+//  INTERNALERROR_DESCRIBEPRIVATEZONESERVICELIST = "InternalError.DescribePrivateZoneServiceList"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteInternalEndpointDnsWithContext(ctx context.Context, request *DeleteInternalEndpointDnsRequest) (response *DeleteInternalEndpointDnsResponse, err error) {
+    if request == nil {
+        request = NewDeleteInternalEndpointDnsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteInternalEndpointDnsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteMultipleSecurityPolicyRequest() (request *DeleteMultipleSecurityPolicyRequest) {
     request = &DeleteMultipleSecurityPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1244,6 +1934,28 @@ func (c *Client) DeleteMultipleSecurityPolicy(request *DeleteMultipleSecurityPol
     if request == nil {
         request = NewDeleteMultipleSecurityPolicyRequest()
     }
+    
+    response = NewDeleteMultipleSecurityPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteMultipleSecurityPolicy
+// 用于删除实例多个公网访问白名单策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteMultipleSecurityPolicyWithContext(ctx context.Context, request *DeleteMultipleSecurityPolicyRequest) (response *DeleteMultipleSecurityPolicyResponse, err error) {
+    if request == nil {
+        request = NewDeleteMultipleSecurityPolicyRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteMultipleSecurityPolicyResponse()
     err = c.Send(request, response)
@@ -1292,6 +2004,32 @@ func (c *Client) DeleteNamespace(request *DeleteNamespaceRequest) (response *Del
     return
 }
 
+// DeleteNamespace
+// 删除命名空间
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
+//  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
+//  INTERNALERROR_ERRORTCRRESOURCECONFLICT = "InternalError.ErrorTcrResourceConflict"
+//  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteNamespaceWithContext(ctx context.Context, request *DeleteNamespaceRequest) (response *DeleteNamespaceResponse, err error) {
+    if request == nil {
+        request = NewDeleteNamespaceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteNamespaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteNamespacePersonalRequest() (request *DeleteNamespacePersonalRequest) {
     request = &DeleteNamespacePersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1322,6 +2060,26 @@ func (c *Client) DeleteNamespacePersonal(request *DeleteNamespacePersonalRequest
     if request == nil {
         request = NewDeleteNamespacePersonalRequest()
     }
+    
+    response = NewDeleteNamespacePersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteNamespacePersonal
+// 删除共享版命名空间
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRUNAUTHORIZED = "InternalError.ErrUnauthorized"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ERRNONAMESPACE = "ResourceNotFound.ErrNoNamespace"
+//  RESOURCENOTFOUND_ERRNOUSER = "ResourceNotFound.ErrNoUser"
+func (c *Client) DeleteNamespacePersonalWithContext(ctx context.Context, request *DeleteNamespacePersonalRequest) (response *DeleteNamespacePersonalResponse, err error) {
+    if request == nil {
+        request = NewDeleteNamespacePersonalRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteNamespacePersonalResponse()
     err = c.Send(request, response)
@@ -1370,6 +2128,32 @@ func (c *Client) DeleteRepository(request *DeleteRepositoryRequest) (response *D
     return
 }
 
+// DeleteRepository
+// 删除镜像仓库
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
+//  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
+//  INTERNALERROR_ERRORTCRRESOURCECONFLICT = "InternalError.ErrorTcrResourceConflict"
+//  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteRepositoryWithContext(ctx context.Context, request *DeleteRepositoryRequest) (response *DeleteRepositoryResponse, err error) {
+    if request == nil {
+        request = NewDeleteRepositoryRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteRepositoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteRepositoryPersonalRequest() (request *DeleteRepositoryPersonalRequest) {
     request = &DeleteRepositoryPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1399,6 +2183,25 @@ func (c *Client) DeleteRepositoryPersonal(request *DeleteRepositoryPersonalReque
     if request == nil {
         request = NewDeleteRepositoryPersonalRequest()
     }
+    
+    response = NewDeleteRepositoryPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteRepositoryPersonal
+// 用于个人版镜像仓库中删除
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRUNAUTHORIZED = "InternalError.ErrUnauthorized"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
+func (c *Client) DeleteRepositoryPersonalWithContext(ctx context.Context, request *DeleteRepositoryPersonalRequest) (response *DeleteRepositoryPersonalResponse, err error) {
+    if request == nil {
+        request = NewDeleteRepositoryPersonalRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteRepositoryPersonalResponse()
     err = c.Send(request, response)
@@ -1438,6 +2241,29 @@ func (c *Client) DeleteSecurityPolicy(request *DeleteSecurityPolicyRequest) (res
     if request == nil {
         request = NewDeleteSecurityPolicyRequest()
     }
+    
+    response = NewDeleteSecurityPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteSecurityPolicy
+// 删除实例公网访问白名单策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteSecurityPolicyWithContext(ctx context.Context, request *DeleteSecurityPolicyRequest) (response *DeleteSecurityPolicyResponse, err error) {
+    if request == nil {
+        request = NewDeleteSecurityPolicyRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteSecurityPolicyResponse()
     err = c.Send(request, response)
@@ -1488,6 +2314,34 @@ func (c *Client) DeleteTagRetentionRule(request *DeleteTagRetentionRuleRequest) 
     return
 }
 
+// DeleteTagRetentionRule
+// 删除版本保留规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
+//  INTERNALERROR_ERRNOTEXIST = "InternalError.ErrNotExist"
+//  INTERNALERROR_ERRORCONFLICT = "InternalError.ErrorConflict"
+//  INTERNALERROR_ERROROVERLIMIT = "InternalError.ErrorOverLimit"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteTagRetentionRuleWithContext(ctx context.Context, request *DeleteTagRetentionRuleRequest) (response *DeleteTagRetentionRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteTagRetentionRuleRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteTagRetentionRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteWebhookTriggerRequest() (request *DeleteWebhookTriggerRequest) {
     request = &DeleteWebhookTriggerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1526,6 +2380,28 @@ func (c *Client) DeleteWebhookTrigger(request *DeleteWebhookTriggerRequest) (res
     return
 }
 
+// DeleteWebhookTrigger
+// 删除触发器
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
+//  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+func (c *Client) DeleteWebhookTriggerWithContext(ctx context.Context, request *DeleteWebhookTriggerRequest) (response *DeleteWebhookTriggerResponse, err error) {
+    if request == nil {
+        request = NewDeleteWebhookTriggerRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteWebhookTriggerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeApplicationTriggerLogPersonalRequest() (request *DescribeApplicationTriggerLogPersonalRequest) {
     request = &DescribeApplicationTriggerLogPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1553,6 +2429,23 @@ func (c *Client) DescribeApplicationTriggerLogPersonal(request *DescribeApplicat
     if request == nil {
         request = NewDescribeApplicationTriggerLogPersonalRequest()
     }
+    
+    response = NewDescribeApplicationTriggerLogPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeApplicationTriggerLogPersonal
+// 用于查询应用更新触发器触发日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
+func (c *Client) DescribeApplicationTriggerLogPersonalWithContext(ctx context.Context, request *DescribeApplicationTriggerLogPersonalRequest) (response *DescribeApplicationTriggerLogPersonalResponse, err error) {
+    if request == nil {
+        request = NewDescribeApplicationTriggerLogPersonalRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeApplicationTriggerLogPersonalResponse()
     err = c.Send(request, response)
@@ -1593,6 +2486,24 @@ func (c *Client) DescribeApplicationTriggerPersonal(request *DescribeApplication
     return
 }
 
+// DescribeApplicationTriggerPersonal
+// 用于查询应用更新触发器
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ERRNOUSER = "ResourceNotFound.ErrNoUser"
+func (c *Client) DescribeApplicationTriggerPersonalWithContext(ctx context.Context, request *DescribeApplicationTriggerPersonalRequest) (response *DescribeApplicationTriggerPersonalResponse, err error) {
+    if request == nil {
+        request = NewDescribeApplicationTriggerPersonalRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeApplicationTriggerPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeChartDownloadInfoRequest() (request *DescribeChartDownloadInfoRequest) {
     request = &DescribeChartDownloadInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1622,6 +2533,25 @@ func (c *Client) DescribeChartDownloadInfo(request *DescribeChartDownloadInfoReq
     if request == nil {
         request = NewDescribeChartDownloadInfoRequest()
     }
+    
+    response = NewDescribeChartDownloadInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeChartDownloadInfo
+// 用于在企业版中返回Chart的下载信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeChartDownloadInfoWithContext(ctx context.Context, request *DescribeChartDownloadInfoRequest) (response *DescribeChartDownloadInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeChartDownloadInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeChartDownloadInfoResponse()
     err = c.Send(request, response)
@@ -1666,6 +2596,28 @@ func (c *Client) DescribeExternalEndpointStatus(request *DescribeExternalEndpoin
     return
 }
 
+// DescribeExternalEndpointStatus
+// 查询实例公网访问入口状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeExternalEndpointStatusWithContext(ctx context.Context, request *DescribeExternalEndpointStatusRequest) (response *DescribeExternalEndpointStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeExternalEndpointStatusRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeExternalEndpointStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFavorRepositoryPersonalRequest() (request *DescribeFavorRepositoryPersonalRequest) {
     request = &DescribeFavorRepositoryPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1693,6 +2645,23 @@ func (c *Client) DescribeFavorRepositoryPersonal(request *DescribeFavorRepositor
     if request == nil {
         request = NewDescribeFavorRepositoryPersonalRequest()
     }
+    
+    response = NewDescribeFavorRepositoryPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeFavorRepositoryPersonal
+// 查询个人收藏仓库
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeFavorRepositoryPersonalWithContext(ctx context.Context, request *DescribeFavorRepositoryPersonalRequest) (response *DescribeFavorRepositoryPersonalResponse, err error) {
+    if request == nil {
+        request = NewDescribeFavorRepositoryPersonalRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeFavorRepositoryPersonalResponse()
     err = c.Send(request, response)
@@ -1734,6 +2703,25 @@ func (c *Client) DescribeImageFilterPersonal(request *DescribeImageFilterPersona
     return
 }
 
+// DescribeImageFilterPersonal
+// 用于在个人版中查询与指定tag镜像内容相同的tag列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRUNAUTHORIZED = "InternalError.ErrUnauthorized"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
+func (c *Client) DescribeImageFilterPersonalWithContext(ctx context.Context, request *DescribeImageFilterPersonalRequest) (response *DescribeImageFilterPersonalResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageFilterPersonalRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageFilterPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeImageLifecycleGlobalPersonalRequest() (request *DescribeImageLifecycleGlobalPersonalRequest) {
     request = &DescribeImageLifecycleGlobalPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1760,6 +2748,22 @@ func (c *Client) DescribeImageLifecycleGlobalPersonal(request *DescribeImageLife
     if request == nil {
         request = NewDescribeImageLifecycleGlobalPersonalRequest()
     }
+    
+    response = NewDescribeImageLifecycleGlobalPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeImageLifecycleGlobalPersonal
+// 用于获取个人版全局镜像版本自动清理策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeImageLifecycleGlobalPersonalWithContext(ctx context.Context, request *DescribeImageLifecycleGlobalPersonalRequest) (response *DescribeImageLifecycleGlobalPersonalResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageLifecycleGlobalPersonalRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeImageLifecycleGlobalPersonalResponse()
     err = c.Send(request, response)
@@ -1793,6 +2797,23 @@ func (c *Client) DescribeImageLifecyclePersonal(request *DescribeImageLifecycleP
     if request == nil {
         request = NewDescribeImageLifecyclePersonalRequest()
     }
+    
+    response = NewDescribeImageLifecyclePersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeImageLifecyclePersonal
+// 用于获取个人版仓库中自动清理策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeImageLifecyclePersonalWithContext(ctx context.Context, request *DescribeImageLifecyclePersonalRequest) (response *DescribeImageLifecyclePersonalResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageLifecyclePersonalRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeImageLifecyclePersonalResponse()
     err = c.Send(request, response)
@@ -1842,6 +2863,33 @@ func (c *Client) DescribeImageManifests(request *DescribeImageManifestsRequest) 
     return
 }
 
+// DescribeImageManifests
+// 查询容器镜像Manifest信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
+//  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
+//  INTERNALERROR_ERRORTCRRESOURCECONFLICT = "InternalError.ErrorTcrResourceConflict"
+//  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeImageManifestsWithContext(ctx context.Context, request *DescribeImageManifestsRequest) (response *DescribeImageManifestsResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageManifestsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageManifestsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeImagePersonalRequest() (request *DescribeImagePersonalRequest) {
     request = &DescribeImagePersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1871,6 +2919,25 @@ func (c *Client) DescribeImagePersonal(request *DescribeImagePersonalRequest) (r
     if request == nil {
         request = NewDescribeImagePersonalRequest()
     }
+    
+    response = NewDescribeImagePersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeImagePersonal
+// 用于获取个人版镜像仓库tag列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRUNAUTHORIZED = "InternalError.ErrUnauthorized"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
+func (c *Client) DescribeImagePersonalWithContext(ctx context.Context, request *DescribeImagePersonalRequest) (response *DescribeImagePersonalResponse, err error) {
+    if request == nil {
+        request = NewDescribeImagePersonalRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeImagePersonalResponse()
     err = c.Send(request, response)
@@ -1919,6 +2986,32 @@ func (c *Client) DescribeImages(request *DescribeImagesRequest) (response *Descr
     return
 }
 
+// DescribeImages
+// 查询镜像版本列表或指定容器镜像信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
+//  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
+//  INTERNALERROR_ERRORTCRRESOURCECONFLICT = "InternalError.ErrorTcrResourceConflict"
+//  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+func (c *Client) DescribeImagesWithContext(ctx context.Context, request *DescribeImagesRequest) (response *DescribeImagesResponse, err error) {
+    if request == nil {
+        request = NewDescribeImagesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeImagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeImmutableTagRulesRequest() (request *DescribeImmutableTagRulesRequest) {
     request = &DescribeImmutableTagRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1951,6 +3044,28 @@ func (c *Client) DescribeImmutableTagRules(request *DescribeImmutableTagRulesReq
     if request == nil {
         request = NewDescribeImmutableTagRulesRequest()
     }
+    
+    response = NewDescribeImmutableTagRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeImmutableTagRules
+// 列出镜像不可变规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+func (c *Client) DescribeImmutableTagRulesWithContext(ctx context.Context, request *DescribeImmutableTagRulesRequest) (response *DescribeImmutableTagRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeImmutableTagRulesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeImmutableTagRulesResponse()
     err = c.Send(request, response)
@@ -1995,6 +3110,28 @@ func (c *Client) DescribeInstanceStatus(request *DescribeInstanceStatusRequest) 
     return
 }
 
+// DescribeInstanceStatus
+// 查询实例当前状态以及过程信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeInstanceStatusWithContext(ctx context.Context, request *DescribeInstanceStatusRequest) (response *DescribeInstanceStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceStatusRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceTokenRequest() (request *DescribeInstanceTokenRequest) {
     request = &DescribeInstanceTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2026,6 +3163,27 @@ func (c *Client) DescribeInstanceToken(request *DescribeInstanceTokenRequest) (r
     if request == nil {
         request = NewDescribeInstanceTokenRequest()
     }
+    
+    response = NewDescribeInstanceTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeInstanceToken
+// 查询长期访问凭证信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeInstanceTokenWithContext(ctx context.Context, request *DescribeInstanceTokenRequest) (response *DescribeInstanceTokenResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceTokenRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeInstanceTokenResponse()
     err = c.Send(request, response)
@@ -2066,6 +3224,30 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    
+    response = NewDescribeInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeInstances
+// 查询实例信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINSUFFICIENT_ERRORINSTANCENOTRUNNING = "ResourceInsufficient.ErrorInstanceNotRunning"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstancesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeInstancesResponse()
     err = c.Send(request, response)
@@ -2114,6 +3296,32 @@ func (c *Client) DescribeInternalEndpointDnsStatus(request *DescribeInternalEndp
     return
 }
 
+// DescribeInternalEndpointDnsStatus
+// 批量查询vpc是否已经添加私有域名解析
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CREATEPRIVATEZONE = "InternalError.CreatePrivateZone"
+//  INTERNALERROR_CREATEPRIVATEZONERECORD = "InternalError.CreatePrivateZoneRecord"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_DELETEPRIVATEZONERECORD = "InternalError.DeletePrivateZoneRecord"
+//  INTERNALERROR_DESCRIBEINTERNALENDPOINTDNSSTATUS = "InternalError.DescribeInternalEndpointDnsStatus"
+//  INTERNALERROR_DESCRIBEPRIVATEZONELIST = "InternalError.DescribePrivateZoneList"
+//  INTERNALERROR_DESCRIBEPRIVATEZONERECORDLIST = "InternalError.DescribePrivateZoneRecordList"
+//  INTERNALERROR_DESCRIBEPRIVATEZONESERVICELIST = "InternalError.DescribePrivateZoneServiceList"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeInternalEndpointDnsStatusWithContext(ctx context.Context, request *DescribeInternalEndpointDnsStatusRequest) (response *DescribeInternalEndpointDnsStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeInternalEndpointDnsStatusRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeInternalEndpointDnsStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInternalEndpointsRequest() (request *DescribeInternalEndpointsRequest) {
     request = &DescribeInternalEndpointsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2152,6 +3360,28 @@ func (c *Client) DescribeInternalEndpoints(request *DescribeInternalEndpointsReq
     return
 }
 
+// DescribeInternalEndpoints
+// 查询实例内网访问VPC链接
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeInternalEndpointsWithContext(ctx context.Context, request *DescribeInternalEndpointsRequest) (response *DescribeInternalEndpointsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInternalEndpointsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeInternalEndpointsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNamespacePersonalRequest() (request *DescribeNamespacePersonalRequest) {
     request = &DescribeNamespacePersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2180,6 +3410,24 @@ func (c *Client) DescribeNamespacePersonal(request *DescribeNamespacePersonalReq
     if request == nil {
         request = NewDescribeNamespacePersonalRequest()
     }
+    
+    response = NewDescribeNamespacePersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeNamespacePersonal
+// 查询个人版命名空间信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ERRNOUSER = "ResourceNotFound.ErrNoUser"
+func (c *Client) DescribeNamespacePersonalWithContext(ctx context.Context, request *DescribeNamespacePersonalRequest) (response *DescribeNamespacePersonalResponse, err error) {
+    if request == nil {
+        request = NewDescribeNamespacePersonalRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeNamespacePersonalResponse()
     err = c.Send(request, response)
@@ -2228,6 +3476,32 @@ func (c *Client) DescribeNamespaces(request *DescribeNamespacesRequest) (respons
     return
 }
 
+// DescribeNamespaces
+// 查询命名空间列表或指定命名空间信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
+//  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
+//  INTERNALERROR_ERRORTCRRESOURCECONFLICT = "InternalError.ErrorTcrResourceConflict"
+//  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeNamespacesWithContext(ctx context.Context, request *DescribeNamespacesRequest) (response *DescribeNamespacesResponse, err error) {
+    if request == nil {
+        request = NewDescribeNamespacesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeNamespacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeReplicationInstanceCreateTasksRequest() (request *DescribeReplicationInstanceCreateTasksRequest) {
     request = &DescribeReplicationInstanceCreateTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2260,6 +3534,28 @@ func (c *Client) DescribeReplicationInstanceCreateTasks(request *DescribeReplica
     if request == nil {
         request = NewDescribeReplicationInstanceCreateTasksRequest()
     }
+    
+    response = NewDescribeReplicationInstanceCreateTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeReplicationInstanceCreateTasks
+// 查询创建从实例任务状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeReplicationInstanceCreateTasksWithContext(ctx context.Context, request *DescribeReplicationInstanceCreateTasksRequest) (response *DescribeReplicationInstanceCreateTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeReplicationInstanceCreateTasksRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeReplicationInstanceCreateTasksResponse()
     err = c.Send(request, response)
@@ -2304,6 +3600,28 @@ func (c *Client) DescribeReplicationInstanceSyncStatus(request *DescribeReplicat
     return
 }
 
+// DescribeReplicationInstanceSyncStatus
+// 查询从实例同步状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeReplicationInstanceSyncStatusWithContext(ctx context.Context, request *DescribeReplicationInstanceSyncStatusRequest) (response *DescribeReplicationInstanceSyncStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeReplicationInstanceSyncStatusRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeReplicationInstanceSyncStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeReplicationInstancesRequest() (request *DescribeReplicationInstancesRequest) {
     request = &DescribeReplicationInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2338,6 +3656,30 @@ func (c *Client) DescribeReplicationInstances(request *DescribeReplicationInstan
     if request == nil {
         request = NewDescribeReplicationInstancesRequest()
     }
+    
+    response = NewDescribeReplicationInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeReplicationInstances
+// 查询从实例列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINSUFFICIENT_ERRORINSTANCENOTRUNNING = "ResourceInsufficient.ErrorInstanceNotRunning"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeReplicationInstancesWithContext(ctx context.Context, request *DescribeReplicationInstancesRequest) (response *DescribeReplicationInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeReplicationInstancesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeReplicationInstancesResponse()
     err = c.Send(request, response)
@@ -2386,6 +3728,32 @@ func (c *Client) DescribeRepositories(request *DescribeRepositoriesRequest) (res
     return
 }
 
+// DescribeRepositories
+// 查询镜像仓库列表或指定镜像仓库信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
+//  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
+//  INTERNALERROR_ERRORTCRRESOURCECONFLICT = "InternalError.ErrorTcrResourceConflict"
+//  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRepositoriesWithContext(ctx context.Context, request *DescribeRepositoriesRequest) (response *DescribeRepositoriesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRepositoriesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeRepositoriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRepositoryFilterPersonalRequest() (request *DescribeRepositoryFilterPersonalRequest) {
     request = &DescribeRepositoryFilterPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2414,6 +3782,24 @@ func (c *Client) DescribeRepositoryFilterPersonal(request *DescribeRepositoryFil
     if request == nil {
         request = NewDescribeRepositoryFilterPersonalRequest()
     }
+    
+    response = NewDescribeRepositoryFilterPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeRepositoryFilterPersonal
+// 用于在个人版镜像仓库中，获取满足输入搜索条件的用户镜像仓库
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ERRNOUSER = "ResourceNotFound.ErrNoUser"
+func (c *Client) DescribeRepositoryFilterPersonalWithContext(ctx context.Context, request *DescribeRepositoryFilterPersonalRequest) (response *DescribeRepositoryFilterPersonalResponse, err error) {
+    if request == nil {
+        request = NewDescribeRepositoryFilterPersonalRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeRepositoryFilterPersonalResponse()
     err = c.Send(request, response)
@@ -2454,6 +3840,24 @@ func (c *Client) DescribeRepositoryOwnerPersonal(request *DescribeRepositoryOwne
     return
 }
 
+// DescribeRepositoryOwnerPersonal
+// 用于在个人版中获取用户全部的镜像仓库列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ERRNOUSER = "ResourceNotFound.ErrNoUser"
+func (c *Client) DescribeRepositoryOwnerPersonalWithContext(ctx context.Context, request *DescribeRepositoryOwnerPersonalRequest) (response *DescribeRepositoryOwnerPersonalResponse, err error) {
+    if request == nil {
+        request = NewDescribeRepositoryOwnerPersonalRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeRepositoryOwnerPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRepositoryPersonalRequest() (request *DescribeRepositoryPersonalRequest) {
     request = &DescribeRepositoryPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2482,6 +3886,24 @@ func (c *Client) DescribeRepositoryPersonal(request *DescribeRepositoryPersonalR
     if request == nil {
         request = NewDescribeRepositoryPersonalRequest()
     }
+    
+    response = NewDescribeRepositoryPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeRepositoryPersonal
+// 查询个人版仓库信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
+func (c *Client) DescribeRepositoryPersonalWithContext(ctx context.Context, request *DescribeRepositoryPersonalRequest) (response *DescribeRepositoryPersonalResponse, err error) {
+    if request == nil {
+        request = NewDescribeRepositoryPersonalRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeRepositoryPersonalResponse()
     err = c.Send(request, response)
@@ -2520,6 +3942,28 @@ func (c *Client) DescribeSecurityPolicies(request *DescribeSecurityPoliciesReque
     if request == nil {
         request = NewDescribeSecurityPoliciesRequest()
     }
+    
+    response = NewDescribeSecurityPoliciesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeSecurityPolicies
+// 查询实例公网访问白名单策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSecurityPoliciesWithContext(ctx context.Context, request *DescribeSecurityPoliciesRequest) (response *DescribeSecurityPoliciesResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityPoliciesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeSecurityPoliciesResponse()
     err = c.Send(request, response)
@@ -2569,6 +4013,33 @@ func (c *Client) DescribeTagRetentionExecution(request *DescribeTagRetentionExec
     return
 }
 
+// DescribeTagRetentionExecution
+// 查询版本保留执行记录
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
+//  INTERNALERROR_ERRNOTEXIST = "InternalError.ErrNotExist"
+//  INTERNALERROR_ERRORCONFLICT = "InternalError.ErrorConflict"
+//  INTERNALERROR_ERROROVERLIMIT = "InternalError.ErrorOverLimit"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTagRetentionExecutionWithContext(ctx context.Context, request *DescribeTagRetentionExecutionRequest) (response *DescribeTagRetentionExecutionResponse, err error) {
+    if request == nil {
+        request = NewDescribeTagRetentionExecutionRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeTagRetentionExecutionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTagRetentionExecutionTaskRequest() (request *DescribeTagRetentionExecutionTaskRequest) {
     request = &DescribeTagRetentionExecutionTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2606,6 +4077,33 @@ func (c *Client) DescribeTagRetentionExecutionTask(request *DescribeTagRetention
     if request == nil {
         request = NewDescribeTagRetentionExecutionTaskRequest()
     }
+    
+    response = NewDescribeTagRetentionExecutionTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeTagRetentionExecutionTask
+// 查询版本保留执行任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
+//  INTERNALERROR_ERRNOTEXIST = "InternalError.ErrNotExist"
+//  INTERNALERROR_ERRORCONFLICT = "InternalError.ErrorConflict"
+//  INTERNALERROR_ERROROVERLIMIT = "InternalError.ErrorOverLimit"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTagRetentionExecutionTaskWithContext(ctx context.Context, request *DescribeTagRetentionExecutionTaskRequest) (response *DescribeTagRetentionExecutionTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeTagRetentionExecutionTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeTagRetentionExecutionTaskResponse()
     err = c.Send(request, response)
@@ -2656,6 +4154,34 @@ func (c *Client) DescribeTagRetentionRules(request *DescribeTagRetentionRulesReq
     return
 }
 
+// DescribeTagRetentionRules
+// 查询版本保留规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
+//  INTERNALERROR_ERRNOTEXIST = "InternalError.ErrNotExist"
+//  INTERNALERROR_ERRORCONFLICT = "InternalError.ErrorConflict"
+//  INTERNALERROR_ERROROVERLIMIT = "InternalError.ErrorOverLimit"
+//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTagRetentionRulesWithContext(ctx context.Context, request *DescribeTagRetentionRulesRequest) (response *DescribeTagRetentionRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeTagRetentionRulesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeTagRetentionRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserQuotaPersonalRequest() (request *DescribeUserQuotaPersonalRequest) {
     request = &DescribeUserQuotaPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2688,6 +4214,22 @@ func (c *Client) DescribeUserQuotaPersonal(request *DescribeUserQuotaPersonalReq
     return
 }
 
+// DescribeUserQuotaPersonal
+// 查询个人用户配额
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeUserQuotaPersonalWithContext(ctx context.Context, request *DescribeUserQuotaPersonalRequest) (response *DescribeUserQuotaPersonalResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserQuotaPersonalRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserQuotaPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeWebhookTriggerRequest() (request *DescribeWebhookTriggerRequest) {
     request = &DescribeWebhookTriggerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2714,12 +4256,36 @@ func NewDescribeWebhookTriggerResponse() (response *DescribeWebhookTriggerRespon
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
 //  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
 func (c *Client) DescribeWebhookTrigger(request *DescribeWebhookTriggerRequest) (response *DescribeWebhookTriggerResponse, err error) {
     if request == nil {
         request = NewDescribeWebhookTriggerRequest()
     }
+    
+    response = NewDescribeWebhookTriggerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeWebhookTrigger
+// 查询触发器
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
+//  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+func (c *Client) DescribeWebhookTriggerWithContext(ctx context.Context, request *DescribeWebhookTriggerRequest) (response *DescribeWebhookTriggerResponse, err error) {
+    if request == nil {
+        request = NewDescribeWebhookTriggerRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeWebhookTriggerResponse()
     err = c.Send(request, response)
@@ -2764,6 +4330,28 @@ func (c *Client) DescribeWebhookTriggerLog(request *DescribeWebhookTriggerLogReq
     return
 }
 
+// DescribeWebhookTriggerLog
+// 获取触发器日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
+//  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+func (c *Client) DescribeWebhookTriggerLogWithContext(ctx context.Context, request *DescribeWebhookTriggerLogRequest) (response *DescribeWebhookTriggerLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeWebhookTriggerLogRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeWebhookTriggerLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDownloadHelmChartRequest() (request *DownloadHelmChartRequest) {
     request = &DownloadHelmChartRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2787,11 +4375,31 @@ func NewDownloadHelmChartResponse() (response *DownloadHelmChartResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DownloadHelmChart(request *DownloadHelmChartRequest) (response *DownloadHelmChartResponse, err error) {
     if request == nil {
         request = NewDownloadHelmChartRequest()
     }
+    
+    response = NewDownloadHelmChartResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DownloadHelmChart
+// 用于在TCR中下载helm chart
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DownloadHelmChartWithContext(ctx context.Context, request *DownloadHelmChartRequest) (response *DownloadHelmChartResponse, err error) {
+    if request == nil {
+        request = NewDownloadHelmChartRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDownloadHelmChartResponse()
     err = c.Send(request, response)
@@ -2827,6 +4435,25 @@ func (c *Client) DuplicateImagePersonal(request *DuplicateImagePersonalRequest) 
     if request == nil {
         request = NewDuplicateImagePersonalRequest()
     }
+    
+    response = NewDuplicateImagePersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DuplicateImagePersonal
+// 用于在个人版镜像仓库中复制镜像版本
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ERRNSMISMATCH = "InvalidParameter.ErrNSMisMatch"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ERRNOTAG = "ResourceNotFound.ErrNoTag"
+func (c *Client) DuplicateImagePersonalWithContext(ctx context.Context, request *DuplicateImagePersonalRequest) (response *DuplicateImagePersonalResponse, err error) {
+    if request == nil {
+        request = NewDuplicateImagePersonalRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDuplicateImagePersonalResponse()
     err = c.Send(request, response)
@@ -2871,6 +4498,28 @@ func (c *Client) ManageExternalEndpoint(request *ManageExternalEndpointRequest) 
     return
 }
 
+// ManageExternalEndpoint
+// 管理实例公网访问
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ManageExternalEndpointWithContext(ctx context.Context, request *ManageExternalEndpointRequest) (response *ManageExternalEndpointResponse, err error) {
+    if request == nil {
+        request = NewManageExternalEndpointRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewManageExternalEndpointResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewManageImageLifecycleGlobalPersonalRequest() (request *ManageImageLifecycleGlobalPersonalRequest) {
     request = &ManageImageLifecycleGlobalPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2897,6 +4546,22 @@ func (c *Client) ManageImageLifecycleGlobalPersonal(request *ManageImageLifecycl
     if request == nil {
         request = NewManageImageLifecycleGlobalPersonalRequest()
     }
+    
+    response = NewManageImageLifecycleGlobalPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ManageImageLifecycleGlobalPersonal
+// 用于设置个人版全局镜像版本自动清理策略
+//
+// 可能返回的错误码:
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ManageImageLifecycleGlobalPersonalWithContext(ctx context.Context, request *ManageImageLifecycleGlobalPersonalRequest) (response *ManageImageLifecycleGlobalPersonalResponse, err error) {
+    if request == nil {
+        request = NewManageImageLifecycleGlobalPersonalRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewManageImageLifecycleGlobalPersonalResponse()
     err = c.Send(request, response)
@@ -2940,6 +4605,33 @@ func (c *Client) ManageInternalEndpoint(request *ManageInternalEndpointRequest) 
     if request == nil {
         request = NewManageInternalEndpointRequest()
     }
+    
+    response = NewManageInternalEndpointResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ManageInternalEndpoint
+// 管理实例内网访问VPC链接
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ERRORCONFLICT = "InternalError.ErrorConflict"
+//  INTERNALERROR_ERROROVERLIMIT = "InternalError.ErrorOverLimit"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINSUFFICIENT_ERRORVPCDNSSTATUS = "ResourceInsufficient.ErrorVpcDnsStatus"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ManageInternalEndpointWithContext(ctx context.Context, request *ManageInternalEndpointRequest) (response *ManageInternalEndpointResponse, err error) {
+    if request == nil {
+        request = NewManageInternalEndpointRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewManageInternalEndpointResponse()
     err = c.Send(request, response)
@@ -2991,6 +4683,35 @@ func (c *Client) ManageReplication(request *ManageReplicationRequest) (response 
     return
 }
 
+// ManageReplication
+// 管理实例同步
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
+//  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
+//  INTERNALERROR_ERRORTCRRESOURCECONFLICT = "InternalError.ErrorTcrResourceConflict"
+//  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ManageReplicationWithContext(ctx context.Context, request *ManageReplicationRequest) (response *ManageReplicationResponse, err error) {
+    if request == nil {
+        request = NewManageReplicationRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewManageReplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyApplicationTriggerPersonalRequest() (request *ModifyApplicationTriggerPersonalRequest) {
     request = &ModifyApplicationTriggerPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3021,6 +4742,26 @@ func (c *Client) ModifyApplicationTriggerPersonal(request *ModifyApplicationTrig
     if request == nil {
         request = NewModifyApplicationTriggerPersonalRequest()
     }
+    
+    response = NewModifyApplicationTriggerPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyApplicationTriggerPersonal
+// 用于修改应用更新触发器
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
+//  RESOURCENOTFOUND_ERRNOTRIGGER = "ResourceNotFound.ErrNoTrigger"
+//  RESOURCENOTFOUND_ERRNOUSER = "ResourceNotFound.ErrNoUser"
+func (c *Client) ModifyApplicationTriggerPersonalWithContext(ctx context.Context, request *ModifyApplicationTriggerPersonalRequest) (response *ModifyApplicationTriggerPersonalResponse, err error) {
+    if request == nil {
+        request = NewModifyApplicationTriggerPersonalRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyApplicationTriggerPersonalResponse()
     err = c.Send(request, response)
@@ -3058,6 +4799,27 @@ func (c *Client) ModifyImmutableTagRules(request *ModifyImmutableTagRulesRequest
     if request == nil {
         request = NewModifyImmutableTagRulesRequest()
     }
+    
+    response = NewModifyImmutableTagRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyImmutableTagRules
+// 更新镜像不可变规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
+func (c *Client) ModifyImmutableTagRulesWithContext(ctx context.Context, request *ModifyImmutableTagRulesRequest) (response *ModifyImmutableTagRulesResponse, err error) {
+    if request == nil {
+        request = NewModifyImmutableTagRulesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyImmutableTagRulesResponse()
     err = c.Send(request, response)
@@ -3105,6 +4867,31 @@ func (c *Client) ModifyInstance(request *ModifyInstanceRequest) (response *Modif
     return
 }
 
+// ModifyInstance
+// 更新实例信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ERRNOTEXIST = "InternalError.ErrNotExist"
+//  INTERNALERROR_ERRORCONFLICT = "InternalError.ErrorConflict"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyInstanceWithContext(ctx context.Context, request *ModifyInstanceRequest) (response *ModifyInstanceResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyInstanceTokenRequest() (request *ModifyInstanceTokenRequest) {
     request = &ModifyInstanceTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3137,6 +4924,28 @@ func (c *Client) ModifyInstanceToken(request *ModifyInstanceTokenRequest) (respo
     if request == nil {
         request = NewModifyInstanceTokenRequest()
     }
+    
+    response = NewModifyInstanceTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyInstanceToken
+// 更新实例内指定长期访问凭证的启用状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyInstanceTokenWithContext(ctx context.Context, request *ModifyInstanceTokenRequest) (response *ModifyInstanceTokenResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceTokenRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyInstanceTokenResponse()
     err = c.Send(request, response)
@@ -3186,6 +4995,33 @@ func (c *Client) ModifyNamespace(request *ModifyNamespaceRequest) (response *Mod
     return
 }
 
+// ModifyNamespace
+// 更新命名空间信息，当前仅支持修改命名空间访问级别
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
+//  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
+//  INTERNALERROR_ERRORTCRRESOURCECONFLICT = "InternalError.ErrorTcrResourceConflict"
+//  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyNamespaceWithContext(ctx context.Context, request *ModifyNamespaceRequest) (response *ModifyNamespaceResponse, err error) {
+    if request == nil {
+        request = NewModifyNamespaceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyNamespaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyRepositoryRequest() (request *ModifyRepositoryRequest) {
     request = &ModifyRepositoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3220,6 +5056,30 @@ func (c *Client) ModifyRepository(request *ModifyRepositoryRequest) (response *M
     if request == nil {
         request = NewModifyRepositoryRequest()
     }
+    
+    response = NewModifyRepositoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyRepository
+// 更新镜像仓库信息，可修改仓库描述信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
+//  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
+//  INTERNALERROR_ERRORTCRRESOURCECONFLICT = "InternalError.ErrorTcrResourceConflict"
+//  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyRepositoryWithContext(ctx context.Context, request *ModifyRepositoryRequest) (response *ModifyRepositoryResponse, err error) {
+    if request == nil {
+        request = NewModifyRepositoryRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyRepositoryResponse()
     err = c.Send(request, response)
@@ -3261,6 +5121,25 @@ func (c *Client) ModifyRepositoryAccessPersonal(request *ModifyRepositoryAccessP
     return
 }
 
+// ModifyRepositoryAccessPersonal
+// 用于更新个人版镜像仓库的访问属性
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ERRNSMISMATCH = "InvalidParameter.ErrNSMisMatch"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
+func (c *Client) ModifyRepositoryAccessPersonalWithContext(ctx context.Context, request *ModifyRepositoryAccessPersonalRequest) (response *ModifyRepositoryAccessPersonalResponse, err error) {
+    if request == nil {
+        request = NewModifyRepositoryAccessPersonalRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyRepositoryAccessPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyRepositoryInfoPersonalRequest() (request *ModifyRepositoryInfoPersonalRequest) {
     request = &ModifyRepositoryInfoPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3290,6 +5169,25 @@ func (c *Client) ModifyRepositoryInfoPersonal(request *ModifyRepositoryInfoPerso
     if request == nil {
         request = NewModifyRepositoryInfoPersonalRequest()
     }
+    
+    response = NewModifyRepositoryInfoPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyRepositoryInfoPersonal
+// 用于在个人版镜像仓库中更新容器镜像描述
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ERRNSMISMATCH = "InvalidParameter.ErrNSMisMatch"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
+func (c *Client) ModifyRepositoryInfoPersonalWithContext(ctx context.Context, request *ModifyRepositoryInfoPersonalRequest) (response *ModifyRepositoryInfoPersonalResponse, err error) {
+    if request == nil {
+        request = NewModifyRepositoryInfoPersonalRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyRepositoryInfoPersonalResponse()
     err = c.Send(request, response)
@@ -3328,6 +5226,28 @@ func (c *Client) ModifySecurityPolicy(request *ModifySecurityPolicyRequest) (res
     if request == nil {
         request = NewModifySecurityPolicyRequest()
     }
+    
+    response = NewModifySecurityPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifySecurityPolicy
+// 更新实例公网访问白名单
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifySecurityPolicyWithContext(ctx context.Context, request *ModifySecurityPolicyRequest) (response *ModifySecurityPolicyResponse, err error) {
+    if request == nil {
+        request = NewModifySecurityPolicyRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifySecurityPolicyResponse()
     err = c.Send(request, response)
@@ -3378,6 +5298,34 @@ func (c *Client) ModifyTagRetentionRule(request *ModifyTagRetentionRuleRequest) 
     return
 }
 
+// ModifyTagRetentionRule
+// 更新版本保留规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
+//  INTERNALERROR_ERRNOTEXIST = "InternalError.ErrNotExist"
+//  INTERNALERROR_ERRORCONFLICT = "InternalError.ErrorConflict"
+//  INTERNALERROR_ERROROVERLIMIT = "InternalError.ErrorOverLimit"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyTagRetentionRuleWithContext(ctx context.Context, request *ModifyTagRetentionRuleRequest) (response *ModifyTagRetentionRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyTagRetentionRuleRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyTagRetentionRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyUserPasswordPersonalRequest() (request *ModifyUserPasswordPersonalRequest) {
     request = &ModifyUserPasswordPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3406,6 +5354,24 @@ func (c *Client) ModifyUserPasswordPersonal(request *ModifyUserPasswordPersonalR
     if request == nil {
         request = NewModifyUserPasswordPersonalRequest()
     }
+    
+    response = NewModifyUserPasswordPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyUserPasswordPersonal
+// 修改个人用户登录密码
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ERRNOUSER = "ResourceNotFound.ErrNoUser"
+func (c *Client) ModifyUserPasswordPersonalWithContext(ctx context.Context, request *ModifyUserPasswordPersonalRequest) (response *ModifyUserPasswordPersonalResponse, err error) {
+    if request == nil {
+        request = NewModifyUserPasswordPersonalRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyUserPasswordPersonalResponse()
     err = c.Send(request, response)
@@ -3444,6 +5410,28 @@ func (c *Client) ModifyWebhookTrigger(request *ModifyWebhookTriggerRequest) (res
     if request == nil {
         request = NewModifyWebhookTriggerRequest()
     }
+    
+    response = NewModifyWebhookTriggerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyWebhookTrigger
+// 更新触发器
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+func (c *Client) ModifyWebhookTriggerWithContext(ctx context.Context, request *ModifyWebhookTriggerRequest) (response *ModifyWebhookTriggerResponse, err error) {
+    if request == nil {
+        request = NewModifyWebhookTriggerRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyWebhookTriggerResponse()
     err = c.Send(request, response)
@@ -3496,6 +5484,36 @@ func (c *Client) RenewInstance(request *RenewInstanceRequest) (response *RenewIn
     return
 }
 
+// RenewInstance
+// 预付费实例续费，同时支持按量计费转包年包月
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
+//  INTERNALERROR_ERRNOTEXIST = "InternalError.ErrNotExist"
+//  INTERNALERROR_ERRORCONFLICT = "InternalError.ErrorConflict"
+//  INTERNALERROR_ERROROVERLIMIT = "InternalError.ErrorOverLimit"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORNAMEEXISTS = "InvalidParameter.ErrorNameExists"
+//  INVALIDPARAMETER_ERRORREGISTRYNAME = "InvalidParameter.ErrorRegistryName"
+//  INVALIDPARAMETER_ERRORTAGOVERLIMIT = "InvalidParameter.ErrorTagOverLimit"
+//  INVALIDPARAMETER_UNSUPPORTEDREGION = "InvalidParameter.UnsupportedRegion"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RenewInstanceWithContext(ctx context.Context, request *RenewInstanceRequest) (response *RenewInstanceResponse, err error) {
+    if request == nil {
+        request = NewRenewInstanceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewRenewInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewValidateNamespaceExistPersonalRequest() (request *ValidateNamespaceExistPersonalRequest) {
     request = &ValidateNamespaceExistPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3523,6 +5541,23 @@ func (c *Client) ValidateNamespaceExistPersonal(request *ValidateNamespaceExistP
     if request == nil {
         request = NewValidateNamespaceExistPersonalRequest()
     }
+    
+    response = NewValidateNamespaceExistPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ValidateNamespaceExistPersonal
+// 查询个人版用户命名空间是否存在
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ValidateNamespaceExistPersonalWithContext(ctx context.Context, request *ValidateNamespaceExistPersonalRequest) (response *ValidateNamespaceExistPersonalResponse, err error) {
+    if request == nil {
+        request = NewValidateNamespaceExistPersonalRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewValidateNamespaceExistPersonalResponse()
     err = c.Send(request, response)
@@ -3557,6 +5592,24 @@ func (c *Client) ValidateRepositoryExistPersonal(request *ValidateRepositoryExis
     if request == nil {
         request = NewValidateRepositoryExistPersonalRequest()
     }
+    
+    response = NewValidateRepositoryExistPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ValidateRepositoryExistPersonal
+// 用于判断个人版仓库是否存在
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ERRNSMISMATCH = "InvalidParameter.ErrNSMisMatch"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ValidateRepositoryExistPersonalWithContext(ctx context.Context, request *ValidateRepositoryExistPersonalRequest) (response *ValidateRepositoryExistPersonalResponse, err error) {
+    if request == nil {
+        request = NewValidateRepositoryExistPersonalRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewValidateRepositoryExistPersonalResponse()
     err = c.Send(request, response)

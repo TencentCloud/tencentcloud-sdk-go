@@ -50,6 +50,9 @@ const (
 	// 支付成功但发货失败，请联系腾讯云工作人员处理。
 	FAILEDOPERATION_PAYSUCCDELIVERFAILED = "FailedOperation.PaySuccDeliverFailed"
 
+	// 获取数据条数失败。
+	FAILEDOPERATION_QUERYCOUNTFAILED = "FailedOperation.QueryCountFailed"
+
 	// 汇总数据正在构建中，请稍后再试。
 	FAILEDOPERATION_SUMMARYDATANOTREADY = "FailedOperation.SummaryDataNotReady"
 

@@ -15,6 +15,7 @@
 package v20190725
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -78,6 +79,25 @@ func (c *Client) AssignProject(request *AssignProjectRequest) (response *AssignP
     return
 }
 
+// AssignProject
+// 本接口(AssignProject)用于指定云数据库实例的所属项目。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_LOCKFAILED = "InvalidParameterValue.LockFailed"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  INVALIDPARAMETERVALUE_PROJECTNOTFOUND = "InvalidParameterValue.ProjectNotFound"
+func (c *Client) AssignProjectWithContext(ctx context.Context, request *AssignProjectRequest) (response *AssignProjectResponse, err error) {
+    if request == nil {
+        request = NewAssignProjectRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewAssignProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBackupDBInstanceRequest() (request *CreateBackupDBInstanceRequest) {
     request = &CreateBackupDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -115,6 +135,27 @@ func (c *Client) CreateBackupDBInstance(request *CreateBackupDBInstanceRequest) 
     return
 }
 
+// CreateBackupDBInstance
+// 备份实例接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_CHECKAPPIDFAILED = "InvalidParameterValue.CheckAppIdFailed"
+//  INVALIDPARAMETERVALUE_ILLEGALINSTANCESTATUS = "InvalidParameterValue.IllegalInstanceStatus"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  INVALIDPARAMETERVALUE_STATUSABNORMAL = "InvalidParameterValue.StatusAbnormal"
+func (c *Client) CreateBackupDBInstanceWithContext(ctx context.Context, request *CreateBackupDBInstanceRequest) (response *CreateBackupDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateBackupDBInstanceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateBackupDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBackupDownloadTaskRequest() (request *CreateBackupDownloadTaskRequest) {
     request = &CreateBackupDownloadTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -145,6 +186,26 @@ func (c *Client) CreateBackupDownloadTask(request *CreateBackupDownloadTaskReque
     if request == nil {
         request = NewCreateBackupDownloadTaskRequest()
     }
+    
+    response = NewCreateBackupDownloadTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateBackupDownloadTask
+// 本接口用来创建某个备份文件的下载任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CHECKAPPIDFAILED = "InternalError.CheckAppIdFailed"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_BACKUPFILENOTFOUND = "InvalidParameterValue.BackupFileNotFound"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) CreateBackupDownloadTaskWithContext(ctx context.Context, request *CreateBackupDownloadTaskRequest) (response *CreateBackupDownloadTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateBackupDownloadTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateBackupDownloadTaskResponse()
     err = c.Send(request, response)
@@ -199,6 +260,38 @@ func (c *Client) CreateDBInstance(request *CreateDBInstanceRequest) (response *C
     return
 }
 
+// CreateDBInstance
+// 本接口(CreateDBInstance)用于创建包年包月的MongoDB云数据库实例。接口支持的售卖规格，可从查询云数据库的售卖规格（DescribeSpecInfo）获取。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_INVALIDTRADEOPERATION = "InvalidParameterValue.InvalidTradeOperation"
+//  INVALIDPARAMETERVALUE_MACHINETYPEERROR = "InvalidParameterValue.MachineTypeError"
+//  INVALIDPARAMETERVALUE_MONGOVERSIONERROR = "InvalidParameterValue.MongoVersionError"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  INVALIDPARAMETERVALUE_PASSWORDRULEFAILED = "InvalidParameterValue.PasswordRuleFailed"
+//  INVALIDPARAMETERVALUE_PROJECTNOTFOUND = "InvalidParameterValue.ProjectNotFound"
+//  INVALIDPARAMETERVALUE_REGIONERROR = "InvalidParameterValue.RegionError"
+//  INVALIDPARAMETERVALUE_REPLICASETNUMERROR = "InvalidParameterValue.ReplicaSetNumError"
+//  INVALIDPARAMETERVALUE_SECONDARYNUMERROR = "InvalidParameterValue.SecondaryNumError"
+//  INVALIDPARAMETERVALUE_SPECNOTONSALE = "InvalidParameterValue.SpecNotOnSale"
+//  INVALIDPARAMETERVALUE_TAGNOTFOUND = "InvalidParameterValue.TagNotFound"
+//  INVALIDPARAMETERVALUE_VPCIDORSUBNETIDNOTFOUND = "InvalidParameterValue.VpcIdOrSubnetIdNotFound"
+//  INVALIDPARAMETERVALUE_ZONECLOSED = "InvalidParameterValue.ZoneClosed"
+//  INVALIDPARAMETERVALUE_ZONEERROR = "InvalidParameterValue.ZoneError"
+//  UNSUPPORTEDOPERATION_VERSIONNOTSUPPORT = "UnsupportedOperation.VersionNotSupport"
+func (c *Client) CreateDBInstanceWithContext(ctx context.Context, request *CreateDBInstanceRequest) (response *CreateDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateDBInstanceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDBInstanceHourRequest() (request *CreateDBInstanceHourRequest) {
     request = &CreateDBInstanceHourRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -247,6 +340,38 @@ func (c *Client) CreateDBInstanceHour(request *CreateDBInstanceHourRequest) (res
     return
 }
 
+// CreateDBInstanceHour
+// 本接口(CreateDBInstanceHour)用于创建按量计费的MongoDB云数据库实例。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_CLUSTERTYPEERROR = "InvalidParameterValue.ClusterTypeError"
+//  INVALIDPARAMETERVALUE_INVALIDTRADEOPERATION = "InvalidParameterValue.InvalidTradeOperation"
+//  INVALIDPARAMETERVALUE_MACHINETYPEERROR = "InvalidParameterValue.MachineTypeError"
+//  INVALIDPARAMETERVALUE_MONGOVERSIONERROR = "InvalidParameterValue.MongoVersionError"
+//  INVALIDPARAMETERVALUE_PASSWORDRULEFAILED = "InvalidParameterValue.PasswordRuleFailed"
+//  INVALIDPARAMETERVALUE_POSTPAIDINSTANCEBEYONDLIMIT = "InvalidParameterValue.PostPaidInstanceBeyondLimit"
+//  INVALIDPARAMETERVALUE_PROJECTNOTFOUND = "InvalidParameterValue.ProjectNotFound"
+//  INVALIDPARAMETERVALUE_REGIONERROR = "InvalidParameterValue.RegionError"
+//  INVALIDPARAMETERVALUE_REPLICASETNUMERROR = "InvalidParameterValue.ReplicaSetNumError"
+//  INVALIDPARAMETERVALUE_SPECNOTONSALE = "InvalidParameterValue.SpecNotOnSale"
+//  INVALIDPARAMETERVALUE_TAGNOTFOUND = "InvalidParameterValue.TagNotFound"
+//  INVALIDPARAMETERVALUE_VPCIDORSUBNETIDNOTFOUND = "InvalidParameterValue.VpcIdOrSubnetIdNotFound"
+//  INVALIDPARAMETERVALUE_ZONECLOSED = "InvalidParameterValue.ZoneClosed"
+//  INVALIDPARAMETERVALUE_ZONEERROR = "InvalidParameterValue.ZoneError"
+//  UNSUPPORTEDOPERATION_VERSIONNOTSUPPORT = "UnsupportedOperation.VersionNotSupport"
+func (c *Client) CreateDBInstanceHourWithContext(ctx context.Context, request *CreateDBInstanceHourRequest) (response *CreateDBInstanceHourResponse, err error) {
+    if request == nil {
+        request = NewCreateDBInstanceHourRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateDBInstanceHourResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAsyncRequestInfoRequest() (request *DescribeAsyncRequestInfoRequest) {
     request = &DescribeAsyncRequestInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -275,6 +400,24 @@ func (c *Client) DescribeAsyncRequestInfo(request *DescribeAsyncRequestInfoReque
     if request == nil {
         request = NewDescribeAsyncRequestInfoRequest()
     }
+    
+    response = NewDescribeAsyncRequestInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAsyncRequestInfo
+// 查询异步任务状态接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_STATUSABNORMAL = "InvalidParameterValue.StatusAbnormal"
+func (c *Client) DescribeAsyncRequestInfoWithContext(ctx context.Context, request *DescribeAsyncRequestInfoRequest) (response *DescribeAsyncRequestInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeAsyncRequestInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAsyncRequestInfoResponse()
     err = c.Send(request, response)
@@ -319,6 +462,28 @@ func (c *Client) DescribeBackupAccess(request *DescribeBackupAccessRequest) (res
     return
 }
 
+// DescribeBackupAccess
+// 备份下载功能已调整，此接口即将下线
+//
+// 
+//
+// 本接口（DescribeBackupAccess）用于获取备份文件的下载授权，具体的备份文件信息可通过查询实例备份列表（DescribeDBBackups）接口获取
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_BACKUPFILENOTFOUND = "InvalidParameterValue.BackupFileNotFound"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) DescribeBackupAccessWithContext(ctx context.Context, request *DescribeBackupAccessRequest) (response *DescribeBackupAccessResponse, err error) {
+    if request == nil {
+        request = NewDescribeBackupAccessRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeBackupAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBackupDownloadTaskRequest() (request *DescribeBackupDownloadTaskRequest) {
     request = &DescribeBackupDownloadTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -349,6 +514,26 @@ func (c *Client) DescribeBackupDownloadTask(request *DescribeBackupDownloadTaskR
     if request == nil {
         request = NewDescribeBackupDownloadTaskRequest()
     }
+    
+    response = NewDescribeBackupDownloadTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeBackupDownloadTask
+// 查询备份下载任务信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_BACKUPFILENOTFOUND = "InvalidParameterValue.BackupFileNotFound"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) DescribeBackupDownloadTaskWithContext(ctx context.Context, request *DescribeBackupDownloadTaskRequest) (response *DescribeBackupDownloadTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeBackupDownloadTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeBackupDownloadTaskResponse()
     err = c.Send(request, response)
@@ -391,6 +576,26 @@ func (c *Client) DescribeClientConnections(request *DescribeClientConnectionsReq
     return
 }
 
+// DescribeClientConnections
+// 本接口(DescribeClientConnections)用于查询实例客户端连接信息，包括连接IP和连接数量。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_MONGOVERSIONNOTSUPPORTQUERYCLIENT = "InvalidParameterValue.MongoVersionNotSupportQueryClient"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  INVALIDPARAMETERVALUE_PROXYNOTSUPPORTQUERYCLIENT = "InvalidParameterValue.ProxyNotSupportQueryClient"
+//  INVALIDPARAMETERVALUE_REGIONNOTSUPPORTQUERYCLIENT = "InvalidParameterValue.RegionNotSupportQueryClient"
+func (c *Client) DescribeClientConnectionsWithContext(ctx context.Context, request *DescribeClientConnectionsRequest) (response *DescribeClientConnectionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeClientConnectionsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeClientConnectionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCurrentOpRequest() (request *DescribeCurrentOpRequest) {
     request = &DescribeCurrentOpRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -421,6 +626,26 @@ func (c *Client) DescribeCurrentOp(request *DescribeCurrentOpRequest) (response 
     if request == nil {
         request = NewDescribeCurrentOpRequest()
     }
+    
+    response = NewDescribeCurrentOpResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCurrentOp
+// 本接口(DescribeCurrentOp)用于查询MongoDB云数据库实例的当前正在执行的操作。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  INVALIDPARAMETERVALUE_QUERYOUTOFRANGE = "InvalidParameterValue.QueryOutOfRange"
+//  INVALIDPARAMETERVALUE_REGIONNOTSUPPORTOPERATION = "InvalidParameterValue.RegionNotSupportOperation"
+//  INVALIDPARAMETERVALUE_REPLICANOTFOUND = "InvalidParameterValue.ReplicaNotFound"
+func (c *Client) DescribeCurrentOpWithContext(ctx context.Context, request *DescribeCurrentOpRequest) (response *DescribeCurrentOpResponse, err error) {
+    if request == nil {
+        request = NewDescribeCurrentOpRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeCurrentOpResponse()
     err = c.Send(request, response)
@@ -461,6 +686,24 @@ func (c *Client) DescribeDBBackups(request *DescribeDBBackupsRequest) (response 
     return
 }
 
+// DescribeDBBackups
+// 本接口（DescribeDBBackups）用于查询实例备份列表，目前只支持查询7天内的备份记录。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) DescribeDBBackupsWithContext(ctx context.Context, request *DescribeDBBackupsRequest) (response *DescribeDBBackupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBBackupsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBBackupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBInstanceDealRequest() (request *DescribeDBInstanceDealRequest) {
     request = &DescribeDBInstanceDealRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -488,6 +731,23 @@ func (c *Client) DescribeDBInstanceDeal(request *DescribeDBInstanceDealRequest) 
     if request == nil {
         request = NewDescribeDBInstanceDealRequest()
     }
+    
+    response = NewDescribeDBInstanceDealResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeDBInstanceDeal
+// 本接口（DescribeDBInstanceDeal）用于获取MongoDB购买、续费及变配订单详细。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeDBInstanceDealWithContext(ctx context.Context, request *DescribeDBInstanceDealRequest) (response *DescribeDBInstanceDealResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBInstanceDealRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeDBInstanceDealResponse()
     err = c.Send(request, response)
@@ -530,6 +790,26 @@ func (c *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (respo
     return
 }
 
+// DescribeDBInstances
+// 本接口(DescribeDBInstances)用于查询云数据库实例列表，支持通过项目ID、实例ID、实例状态等过滤条件来筛选实例。支持查询主实例、灾备实例和只读实例信息列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_ILLEGALINSTANCESTATUS = "InvalidParameterValue.IllegalInstanceStatus"
+//  INVALIDPARAMETERVALUE_REGIONERROR = "InvalidParameterValue.RegionError"
+//  INVALIDPARAMETERVALUE_VPCIDORSUBNETIDNOTFOUND = "InvalidParameterValue.VpcIdOrSubnetIdNotFound"
+//  INVALIDPARAMETERVALUE_ZONEERROR = "InvalidParameterValue.ZoneError"
+func (c *Client) DescribeDBInstancesWithContext(ctx context.Context, request *DescribeDBInstancesRequest) (response *DescribeDBInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBInstancesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceParamsRequest() (request *DescribeInstanceParamsRequest) {
     request = &DescribeInstanceParamsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -566,6 +846,26 @@ func (c *Client) DescribeInstanceParams(request *DescribeInstanceParamsRequest) 
     return
 }
 
+// DescribeInstanceParams
+// 本接口(DescribeInstanceParams)用于查询当前实例可修改的参数列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CURRENTINSTANCENOTSUPPORTMODIFYPARAMS = "InvalidParameter.CurrentInstanceNotSupportModifyParams"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeInstanceParamsWithContext(ctx context.Context, request *DescribeInstanceParamsRequest) (response *DescribeInstanceParamsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceParamsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceParamsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSecurityGroupRequest() (request *DescribeSecurityGroupRequest) {
     request = &DescribeSecurityGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -593,6 +893,23 @@ func (c *Client) DescribeSecurityGroup(request *DescribeSecurityGroupRequest) (r
     if request == nil {
         request = NewDescribeSecurityGroupRequest()
     }
+    
+    response = NewDescribeSecurityGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeSecurityGroup
+// 查询实例绑定的安全组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) DescribeSecurityGroupWithContext(ctx context.Context, request *DescribeSecurityGroupRequest) (response *DescribeSecurityGroupResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityGroupRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeSecurityGroupResponse()
     err = c.Send(request, response)
@@ -638,6 +955,29 @@ func (c *Client) DescribeSlowLogPatterns(request *DescribeSlowLogPatternsRequest
     return
 }
 
+// DescribeSlowLogPatterns
+// 本接口（DescribeSlowLogPatterns）用于获取数据库实例慢日志的统计信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  INVALIDPARAMETERVALUE_QUERYTIMEOUTOFRANGE = "InvalidParameterValue.QueryTimeOutOfRange"
+//  INVALIDPARAMETERVALUE_QUERYTIMERANGEBEYONDLIMIT = "InvalidParameterValue.QueryTimeRangeBeyondLimit"
+//  INVALIDPARAMETERVALUE_SLOWMSBELOWLIMIT = "InvalidParameterValue.SlowMSBelowLimit"
+//  INVALIDPARAMETERVALUE_STARTTIMENOTBEFORETHANENDTIME = "InvalidParameterValue.StartTimeNotBeforeThanEndTime"
+func (c *Client) DescribeSlowLogPatternsWithContext(ctx context.Context, request *DescribeSlowLogPatternsRequest) (response *DescribeSlowLogPatternsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSlowLogPatternsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeSlowLogPatternsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSlowLogsRequest() (request *DescribeSlowLogsRequest) {
     request = &DescribeSlowLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -671,6 +1011,29 @@ func (c *Client) DescribeSlowLogs(request *DescribeSlowLogsRequest) (response *D
     if request == nil {
         request = NewDescribeSlowLogsRequest()
     }
+    
+    response = NewDescribeSlowLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeSlowLogs
+// 本接口（DescribeSlowLogs）用于获取云数据库慢日志信息。接口只支持查询最近7天内慢日志。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  INVALIDPARAMETERVALUE_QUERYTIMEOUTOFRANGE = "InvalidParameterValue.QueryTimeOutOfRange"
+//  INVALIDPARAMETERVALUE_QUERYTIMERANGEBEYONDLIMIT = "InvalidParameterValue.QueryTimeRangeBeyondLimit"
+//  INVALIDPARAMETERVALUE_SLOWMSBELOWLIMIT = "InvalidParameterValue.SlowMSBelowLimit"
+//  INVALIDPARAMETERVALUE_STARTTIMENOTBEFORETHANENDTIME = "InvalidParameterValue.StartTimeNotBeforeThanEndTime"
+func (c *Client) DescribeSlowLogsWithContext(ctx context.Context, request *DescribeSlowLogsRequest) (response *DescribeSlowLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSlowLogsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeSlowLogsResponse()
     err = c.Send(request, response)
@@ -711,6 +1074,24 @@ func (c *Client) DescribeSpecInfo(request *DescribeSpecInfoRequest) (response *D
     return
 }
 
+// DescribeSpecInfo
+// 本接口(DescribeSpecInfo)用于查询实例的售卖规格。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_REGIONERROR = "InvalidParameterValue.RegionError"
+//  INVALIDPARAMETERVALUE_ZONEERROR = "InvalidParameterValue.ZoneError"
+func (c *Client) DescribeSpecInfoWithContext(ctx context.Context, request *DescribeSpecInfoRequest) (response *DescribeSpecInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeSpecInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeSpecInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewFlushInstanceRouterConfigRequest() (request *FlushInstanceRouterConfigRequest) {
     request = &FlushInstanceRouterConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -739,6 +1120,24 @@ func (c *Client) FlushInstanceRouterConfig(request *FlushInstanceRouterConfigReq
     if request == nil {
         request = NewFlushInstanceRouterConfigRequest()
     }
+    
+    response = NewFlushInstanceRouterConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// FlushInstanceRouterConfig
+// 在所有mongos上执行FlushRouterConfig命令
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CHECKAPPIDFAILED = "InternalError.CheckAppIdFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) FlushInstanceRouterConfigWithContext(ctx context.Context, request *FlushInstanceRouterConfigRequest) (response *FlushInstanceRouterConfigResponse, err error) {
+    if request == nil {
+        request = NewFlushInstanceRouterConfigRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewFlushInstanceRouterConfigResponse()
     err = c.Send(request, response)
@@ -781,6 +1180,26 @@ func (c *Client) InquirePriceCreateDBInstances(request *InquirePriceCreateDBInst
     return
 }
 
+// InquirePriceCreateDBInstances
+// 本接口用于创建数据库实例询价。本接口参数中必须传入region参数，否则无法通过校验。本接口仅允许针对购买限制范围内的实例配置进行询价。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_REPLICASETNUMERROR = "InvalidParameterValue.ReplicaSetNumError"
+//  INVALIDPARAMETERVALUE_ZONEERROR = "InvalidParameterValue.ZoneError"
+func (c *Client) InquirePriceCreateDBInstancesWithContext(ctx context.Context, request *InquirePriceCreateDBInstancesRequest) (response *InquirePriceCreateDBInstancesResponse, err error) {
+    if request == nil {
+        request = NewInquirePriceCreateDBInstancesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewInquirePriceCreateDBInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInquirePriceModifyDBInstanceSpecRequest() (request *InquirePriceModifyDBInstanceSpecRequest) {
     request = &InquirePriceModifyDBInstanceSpecRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -807,6 +1226,22 @@ func (c *Client) InquirePriceModifyDBInstanceSpec(request *InquirePriceModifyDBI
     if request == nil {
         request = NewInquirePriceModifyDBInstanceSpecRequest()
     }
+    
+    response = NewInquirePriceModifyDBInstanceSpecResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// InquirePriceModifyDBInstanceSpec
+// 本接口 (InquirePriceModifyDBInstanceSpec) 用于调整实例的配置询价。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+func (c *Client) InquirePriceModifyDBInstanceSpecWithContext(ctx context.Context, request *InquirePriceModifyDBInstanceSpecRequest) (response *InquirePriceModifyDBInstanceSpecResponse, err error) {
+    if request == nil {
+        request = NewInquirePriceModifyDBInstanceSpecRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewInquirePriceModifyDBInstanceSpecResponse()
     err = c.Send(request, response)
@@ -843,6 +1278,26 @@ func (c *Client) InquirePriceRenewDBInstances(request *InquirePriceRenewDBInstan
     if request == nil {
         request = NewInquirePriceRenewDBInstancesRequest()
     }
+    
+    response = NewInquirePriceRenewDBInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// InquirePriceRenewDBInstances
+// 本接口 (InquiryPriceRenewDBInstances) 用于续费包年包月实例询价。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_FINDINSTANCEFAILED = "InternalError.FindInstanceFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_ZONECLOSED = "InvalidParameterValue.ZoneClosed"
+func (c *Client) InquirePriceRenewDBInstancesWithContext(ctx context.Context, request *InquirePriceRenewDBInstancesRequest) (response *InquirePriceRenewDBInstancesResponse, err error) {
+    if request == nil {
+        request = NewInquirePriceRenewDBInstancesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewInquirePriceRenewDBInstancesResponse()
     err = c.Send(request, response)
@@ -888,6 +1343,29 @@ func (c *Client) IsolateDBInstance(request *IsolateDBInstanceRequest) (response 
     return
 }
 
+// IsolateDBInstance
+// 本接口(IsolateDBInstance)用于隔离MongoDB云数据库按量计费实例。隔离后实例保留在回收站中，不能再写入数据。隔离一定时间后，实例会彻底删除，回收站保存时间请参考按量计费的服务条款。在隔离中的按量计费实例无法恢复，请谨慎操作。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_INSTANCEHASBEENDELETED = "InvalidParameterValue.InstanceHasBeenDeleted"
+//  INVALIDPARAMETERVALUE_INSTANCEHASBEENISOLATED = "InvalidParameterValue.InstanceHasBeenIsolated"
+//  INVALIDPARAMETERVALUE_LOCKFAILED = "InvalidParameterValue.LockFailed"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  INVALIDPARAMETERVALUE_PREPAIDINSTANCEUNABLETOISOLATE = "InvalidParameterValue.PrePaidInstanceUnableToIsolate"
+func (c *Client) IsolateDBInstanceWithContext(ctx context.Context, request *IsolateDBInstanceRequest) (response *IsolateDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewIsolateDBInstanceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewIsolateDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewKillOpsRequest() (request *KillOpsRequest) {
     request = &KillOpsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -915,6 +1393,23 @@ func (c *Client) KillOps(request *KillOpsRequest) (response *KillOpsResponse, er
     if request == nil {
         request = NewKillOpsRequest()
     }
+    
+    response = NewKillOpsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// KillOps
+// 本接口(KillOps)用于终止MongoDB云数据库实例上执行的特定操作。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_NODENOTFOUNDINREPLICA = "InvalidParameterValue.NodeNotFoundInReplica"
+func (c *Client) KillOpsWithContext(ctx context.Context, request *KillOpsRequest) (response *KillOpsResponse, err error) {
+    if request == nil {
+        request = NewKillOpsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewKillOpsResponse()
     err = c.Send(request, response)
@@ -960,6 +1455,29 @@ func (c *Client) ModifyDBInstanceSpec(request *ModifyDBInstanceSpecRequest) (res
     return
 }
 
+// ModifyDBInstanceSpec
+// 本接口(ModifyDBInstanceSpec)用于调整MongoDB云数据库实例配置。接口支持的售卖规格，可从查询云数据库的售卖规格（DescribeSpecInfo）获取。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_ZONECLOSED = "InvalidParameter.ZoneClosed"
+//  INVALIDPARAMETERVALUE_INVALIDTRADEOPERATION = "InvalidParameterValue.InvalidTradeOperation"
+//  INVALIDPARAMETERVALUE_MODIFYMODEERROR = "InvalidParameterValue.ModifyModeError"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  INVALIDPARAMETERVALUE_OPLOGSIZEOUTOFRANGE = "InvalidParameterValue.OplogSizeOutOfRange"
+//  INVALIDPARAMETERVALUE_SETDISKLESSTHANUSED = "InvalidParameterValue.SetDiskLessThanUsed"
+//  INVALIDPARAMETERVALUE_SPECNOTONSALE = "InvalidParameterValue.SpecNotOnSale"
+//  INVALIDPARAMETERVALUE_STATUSABNORMAL = "InvalidParameterValue.StatusAbnormal"
+func (c *Client) ModifyDBInstanceSpecWithContext(ctx context.Context, request *ModifyDBInstanceSpecRequest) (response *ModifyDBInstanceSpecResponse, err error) {
+    if request == nil {
+        request = NewModifyDBInstanceSpecRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyDBInstanceSpecResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewOfflineIsolatedDBInstanceRequest() (request *OfflineIsolatedDBInstanceRequest) {
     request = &OfflineIsolatedDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -990,6 +1508,26 @@ func (c *Client) OfflineIsolatedDBInstance(request *OfflineIsolatedDBInstanceReq
     if request == nil {
         request = NewOfflineIsolatedDBInstanceRequest()
     }
+    
+    response = NewOfflineIsolatedDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// OfflineIsolatedDBInstance
+// 本接口(OfflineIsolatedDBInstance)用于立即下线隔离状态的云数据库实例。进行操作的实例状态必须为隔离状态。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_ILLEGALSTATUSTOOFFLINE = "InvalidParameterValue.IllegalStatusToOffline"
+//  INVALIDPARAMETERVALUE_INSTANCEHASBEENDELETED = "InvalidParameterValue.InstanceHasBeenDeleted"
+//  INVALIDPARAMETERVALUE_LOCKFAILED = "InvalidParameterValue.LockFailed"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) OfflineIsolatedDBInstanceWithContext(ctx context.Context, request *OfflineIsolatedDBInstanceRequest) (response *OfflineIsolatedDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewOfflineIsolatedDBInstanceRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewOfflineIsolatedDBInstanceResponse()
     err = c.Send(request, response)
@@ -1032,6 +1570,26 @@ func (c *Client) RenameInstance(request *RenameInstanceRequest) (response *Renam
     return
 }
 
+// RenameInstance
+// 本接口(RenameInstance)用于修改云数据库实例的名称。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_ILLEGALINSTANCENAME = "InvalidParameterValue.IllegalInstanceName"
+//  INVALIDPARAMETERVALUE_INSTANCEHASBEENDELETED = "InvalidParameterValue.InstanceHasBeenDeleted"
+//  INVALIDPARAMETERVALUE_INSTANCEHASBEENISOLATED = "InvalidParameterValue.InstanceHasBeenIsolated"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) RenameInstanceWithContext(ctx context.Context, request *RenameInstanceRequest) (response *RenameInstanceResponse, err error) {
+    if request == nil {
+        request = NewRenameInstanceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewRenameInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRenewDBInstancesRequest() (request *RenewDBInstancesRequest) {
     request = &RenewDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1058,6 +1616,22 @@ func (c *Client) RenewDBInstances(request *RenewDBInstancesRequest) (response *R
     if request == nil {
         request = NewRenewDBInstancesRequest()
     }
+    
+    response = NewRenewDBInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// RenewDBInstances
+// 本接口(RenewDBInstance)用于续费云数据库实例，仅支持付费模式为包年包月的实例。按量计费实例不需要续费。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) RenewDBInstancesWithContext(ctx context.Context, request *RenewDBInstancesRequest) (response *RenewDBInstancesResponse, err error) {
+    if request == nil {
+        request = NewRenewDBInstancesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewRenewDBInstancesResponse()
     err = c.Send(request, response)
@@ -1100,6 +1674,82 @@ func (c *Client) ResetDBInstancePassword(request *ResetDBInstancePasswordRequest
     }
     
     response = NewResetDBInstancePasswordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ResetDBInstancePassword
+// 修改实例用户的密码
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_ILLEGALINSTANCESTATUS = "InvalidParameterValue.IllegalInstanceStatus"
+//  INVALIDPARAMETERVALUE_LOCKFAILED = "InvalidParameterValue.LockFailed"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  INVALIDPARAMETERVALUE_PASSWORDRULEFAILED = "InvalidParameterValue.PasswordRuleFailed"
+//  INVALIDPARAMETERVALUE_STATUSABNORMAL = "InvalidParameterValue.StatusAbnormal"
+//  INVALIDPARAMETERVALUE_USERNOTFOUND = "InvalidParameterValue.UserNotFound"
+func (c *Client) ResetDBInstancePasswordWithContext(ctx context.Context, request *ResetDBInstancePasswordRequest) (response *ResetDBInstancePasswordResponse, err error) {
+    if request == nil {
+        request = NewResetDBInstancePasswordRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewResetDBInstancePasswordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetAccountUserPrivilegeRequest() (request *SetAccountUserPrivilegeRequest) {
+    request = &SetAccountUserPrivilegeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mongodb", APIVersion, "SetAccountUserPrivilege")
+    
+    
+    return
+}
+
+func NewSetAccountUserPrivilegeResponse() (response *SetAccountUserPrivilegeResponse) {
+    response = &SetAccountUserPrivilegeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SetAccountUserPrivilege
+// 账户权限设置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CHECKAPPIDFAILED = "InternalError.CheckAppIdFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) SetAccountUserPrivilege(request *SetAccountUserPrivilegeRequest) (response *SetAccountUserPrivilegeResponse, err error) {
+    if request == nil {
+        request = NewSetAccountUserPrivilegeRequest()
+    }
+    
+    response = NewSetAccountUserPrivilegeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SetAccountUserPrivilege
+// 账户权限设置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CHECKAPPIDFAILED = "InternalError.CheckAppIdFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) SetAccountUserPrivilegeWithContext(ctx context.Context, request *SetAccountUserPrivilegeRequest) (response *SetAccountUserPrivilegeResponse, err error) {
+    if request == nil {
+        request = NewSetAccountUserPrivilegeRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewSetAccountUserPrivilegeResponse()
     err = c.Send(request, response)
     return
 }

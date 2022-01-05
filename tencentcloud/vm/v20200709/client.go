@@ -15,6 +15,7 @@
 package v20200709
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -90,6 +91,37 @@ func (c *Client) CancelTask(request *CancelTaskRequest) (response *CancelTaskRes
     return
 }
 
+// CancelTask
+// 取消任务
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CancelTaskWithContext(ctx context.Context, request *CancelTaskRequest) (response *CancelTaskResponse, err error) {
+    if request == nil {
+        request = NewCancelTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCancelTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBizConfigRequest() (request *CreateBizConfigRequest) {
     request = &CreateBizConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -145,6 +177,45 @@ func (c *Client) CreateBizConfig(request *CreateBizConfigRequest) (response *Cre
     return
 }
 
+// CreateBizConfig
+// 创建业务配置，1个账号最多可以创建20个配置，可定义音频审核的场景，如色情、谩骂等，
+//
+// 
+//
+// 在创建业务配置之前，你需要以下步骤：
+//
+// 1. 开通COS存储捅功能，新建存储桶，例如 cms_segments，用来存储 视频转换过程中生成对音频和图片。
+//
+// 2. 然后在COS控制台，授权天御内容安全主账号 对 cms_segments 存储桶对读写权限。具体授权操作，参考https://cloud.tencent.com/document/product/436/38648
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateBizConfigWithContext(ctx context.Context, request *CreateBizConfigRequest) (response *CreateBizConfigResponse, err error) {
+    if request == nil {
+        request = NewCreateBizConfigRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateBizConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateVideoModerationTaskRequest() (request *CreateVideoModerationTaskRequest) {
     request = &CreateVideoModerationTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -187,6 +258,38 @@ func (c *Client) CreateVideoModerationTask(request *CreateVideoModerationTaskReq
     if request == nil {
         request = NewCreateVideoModerationTaskRequest()
     }
+    
+    response = NewCreateVideoModerationTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateVideoModerationTask
+// 通过URL或存储桶创建审核任务
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateVideoModerationTaskWithContext(ctx context.Context, request *CreateVideoModerationTaskRequest) (response *CreateVideoModerationTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateVideoModerationTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateVideoModerationTaskResponse()
     err = c.Send(request, response)
@@ -241,6 +344,38 @@ func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (respons
     return
 }
 
+// DescribeTaskDetail
+// 查看任务详情DescribeTaskDetail 
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTaskDetailWithContext(ctx context.Context, request *DescribeTaskDetailRequest) (response *DescribeTaskDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskDetailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeTaskDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVideoStatRequest() (request *DescribeVideoStatRequest) {
     request = &DescribeVideoStatRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -271,6 +406,26 @@ func (c *Client) DescribeVideoStat(request *DescribeVideoStatRequest) (response 
     if request == nil {
         request = NewDescribeVideoStatRequest()
     }
+    
+    response = NewDescribeVideoStatResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeVideoStat
+// 控制台识别统计
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVideoStatWithContext(ctx context.Context, request *DescribeVideoStatRequest) (response *DescribeVideoStatResponse, err error) {
+    if request == nil {
+        request = NewDescribeVideoStatRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeVideoStatResponse()
     err = c.Send(request, response)

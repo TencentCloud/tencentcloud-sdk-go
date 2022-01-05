@@ -15,6 +15,7 @@
 package v20201222
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -83,6 +84,30 @@ func (c *Client) ArchiveFlow(request *ArchiveFlowRequest) (response *ArchiveFlow
     return
 }
 
+// ArchiveFlow
+// 此接口（ArchiveFlow）用于流程的归档。
+//
+// 
+//
+// 注意：归档后的流程不可再进行发送、签署、拒签、撤回等一系列操作。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ArchiveFlowWithContext(ctx context.Context, request *ArchiveFlowRequest) (response *ArchiveFlowResponse, err error) {
+    if request == nil {
+        request = NewArchiveFlowRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewArchiveFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCancelFlowRequest() (request *CancelFlowRequest) {
     request = &CancelFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -124,6 +149,31 @@ func (c *Client) CancelFlow(request *CancelFlowRequest) (response *CancelFlowRes
     return
 }
 
+// CancelFlow
+// 此接口（CancelFlow）用于撤销正在进行中的流程。
+//
+// 
+//
+// 注：已归档流程不可完成撤销动作。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CancelFlowWithContext(ctx context.Context, request *CancelFlowRequest) (response *CancelFlowResponse, err error) {
+    if request == nil {
+        request = NewCancelFlowRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCancelFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckBankCard2EVerificationRequest() (request *CheckBankCard2EVerificationRequest) {
     request = &CheckBankCard2EVerificationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -153,6 +203,25 @@ func (c *Client) CheckBankCard2EVerification(request *CheckBankCard2EVerificatio
     if request == nil {
         request = NewCheckBankCard2EVerificationRequest()
     }
+    
+    response = NewCheckBankCard2EVerificationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CheckBankCard2EVerification
+// 该接口为第三方平台向电子签平台验证银行卡二要素
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CheckBankCard2EVerificationWithContext(ctx context.Context, request *CheckBankCard2EVerificationRequest) (response *CheckBankCard2EVerificationResponse, err error) {
+    if request == nil {
+        request = NewCheckBankCard2EVerificationRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCheckBankCard2EVerificationResponse()
     err = c.Send(request, response)
@@ -194,6 +263,25 @@ func (c *Client) CheckBankCard3EVerification(request *CheckBankCard3EVerificatio
     return
 }
 
+// CheckBankCard3EVerification
+// 该接口为第三方平台向电子签平台验证银行卡三要素
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CheckBankCard3EVerificationWithContext(ctx context.Context, request *CheckBankCard3EVerificationRequest) (response *CheckBankCard3EVerificationResponse, err error) {
+    if request == nil {
+        request = NewCheckBankCard3EVerificationRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCheckBankCard3EVerificationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckBankCard4EVerificationRequest() (request *CheckBankCard4EVerificationRequest) {
     request = &CheckBankCard4EVerificationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -223,6 +311,25 @@ func (c *Client) CheckBankCard4EVerification(request *CheckBankCard4EVerificatio
     if request == nil {
         request = NewCheckBankCard4EVerificationRequest()
     }
+    
+    response = NewCheckBankCard4EVerificationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CheckBankCard4EVerification
+// 该接口为第三方平台向电子签平台验证银行卡四要素
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CheckBankCard4EVerificationWithContext(ctx context.Context, request *CheckBankCard4EVerificationRequest) (response *CheckBankCard4EVerificationResponse, err error) {
+    if request == nil {
+        request = NewCheckBankCard4EVerificationRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCheckBankCard4EVerificationResponse()
     err = c.Send(request, response)
@@ -270,6 +377,31 @@ func (c *Client) CheckBankCardVerification(request *CheckBankCardVerificationReq
     return
 }
 
+// CheckBankCardVerification
+// 该接口为第三方平台向电子签平台验证银行卡二/三/四要素
+//
+// 银行卡二要素(同CheckBankCard2EVerification): bank_card + name
+//
+// 银行卡三要素(同CheckBankCard3EVerification): bank_card + name + id_card_number
+//
+// 银行卡四要素(同CheckBankCard4EVerification): bank_card + name + id_card_number + mobile
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CheckBankCardVerificationWithContext(ctx context.Context, request *CheckBankCardVerificationRequest) (response *CheckBankCardVerificationResponse, err error) {
+    if request == nil {
+        request = NewCheckBankCardVerificationRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCheckBankCardVerificationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckFaceIdentifyRequest() (request *CheckFaceIdentifyRequest) {
     request = &CheckFaceIdentifyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -301,6 +433,27 @@ func (c *Client) CheckFaceIdentify(request *CheckFaceIdentifyRequest) (response 
     if request == nil {
         request = NewCheckFaceIdentifyRequest()
     }
+    
+    response = NewCheckFaceIdentifyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CheckFaceIdentify
+// 该接口为第三方平台向电子签平台检测慧眼或腾讯电子签小程序人脸核身结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CheckFaceIdentifyWithContext(ctx context.Context, request *CheckFaceIdentifyRequest) (response *CheckFaceIdentifyResponse, err error) {
+    if request == nil {
+        request = NewCheckFaceIdentifyRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCheckFaceIdentifyResponse()
     err = c.Send(request, response)
@@ -342,6 +495,25 @@ func (c *Client) CheckIdCardVerification(request *CheckIdCardVerificationRequest
     return
 }
 
+// CheckIdCardVerification
+// 该接口为第三方平台向电子签平台验证姓名和身份证信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CheckIdCardVerificationWithContext(ctx context.Context, request *CheckIdCardVerificationRequest) (response *CheckIdCardVerificationResponse, err error) {
+    if request == nil {
+        request = NewCheckIdCardVerificationRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCheckIdCardVerificationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckMobileAndNameRequest() (request *CheckMobileAndNameRequest) {
     request = &CheckMobileAndNameRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -377,6 +549,25 @@ func (c *Client) CheckMobileAndName(request *CheckMobileAndNameRequest) (respons
     return
 }
 
+// CheckMobileAndName
+// 该接口为第三方平台向电子签平台验证手机号二要素
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CheckMobileAndNameWithContext(ctx context.Context, request *CheckMobileAndNameRequest) (response *CheckMobileAndNameResponse, err error) {
+    if request == nil {
+        request = NewCheckMobileAndNameRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCheckMobileAndNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckMobileVerificationRequest() (request *CheckMobileVerificationRequest) {
     request = &CheckMobileVerificationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -406,6 +597,25 @@ func (c *Client) CheckMobileVerification(request *CheckMobileVerificationRequest
     if request == nil {
         request = NewCheckMobileVerificationRequest()
     }
+    
+    response = NewCheckMobileVerificationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CheckMobileVerification
+// 该接口为第三方平台向电子签平台验证手机号三要素
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CheckMobileVerificationWithContext(ctx context.Context, request *CheckMobileVerificationRequest) (response *CheckMobileVerificationResponse, err error) {
+    if request == nil {
+        request = NewCheckMobileVerificationRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCheckMobileVerificationResponse()
     err = c.Send(request, response)
@@ -452,6 +662,30 @@ func (c *Client) CheckVerifyCodeMatchFlowId(request *CheckVerifyCodeMatchFlowIdR
     return
 }
 
+// CheckVerifyCodeMatchFlowId
+// 此接口用于确认验证码是否正确
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CACHE = "InternalError.Cache"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INTERNALERROR_UNSERIALIZE = "InternalError.UnSerialize"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CheckVerifyCodeMatchFlowIdWithContext(ctx context.Context, request *CheckVerifyCodeMatchFlowIdRequest) (response *CheckVerifyCodeMatchFlowIdResponse, err error) {
+    if request == nil {
+        request = NewCheckVerifyCodeMatchFlowIdRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCheckVerifyCodeMatchFlowIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateFaceIdSignRequest() (request *CreateFaceIdSignRequest) {
     request = &CreateFaceIdSignRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -482,6 +716,26 @@ func (c *Client) CreateFaceIdSign(request *CreateFaceIdSignRequest) (response *C
     if request == nil {
         request = NewCreateFaceIdSignRequest()
     }
+    
+    response = NewCreateFaceIdSignResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateFaceIdSign
+// 该接口为第三方平台向电子签平台获取慧眼慧眼API签名
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateFaceIdSignWithContext(ctx context.Context, request *CreateFaceIdSignRequest) (response *CreateFaceIdSignResponse, err error) {
+    if request == nil {
+        request = NewCreateFaceIdSignRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateFaceIdSignResponse()
     err = c.Send(request, response)
@@ -529,6 +783,31 @@ func (c *Client) CreateFlowByFiles(request *CreateFlowByFilesRequest) (response 
     return
 }
 
+// CreateFlowByFiles
+// 此接口（CreateFlowByFiles）用于通过PDF文件创建签署流程。
+//
+// 
+//
+// 注意：调用此接口前，请先调用多文件上传接口 (UploadFiles)，提前上传合同文件。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateFlowByFilesWithContext(ctx context.Context, request *CreateFlowByFilesRequest) (response *CreateFlowByFilesResponse, err error) {
+    if request == nil {
+        request = NewCreateFlowByFilesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateFlowByFilesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateH5FaceIdUrlRequest() (request *CreateH5FaceIdUrlRequest) {
     request = &CreateH5FaceIdUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -559,6 +838,26 @@ func (c *Client) CreateH5FaceIdUrl(request *CreateH5FaceIdUrlRequest) (response 
     if request == nil {
         request = NewCreateH5FaceIdUrlRequest()
     }
+    
+    response = NewCreateH5FaceIdUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateH5FaceIdUrl
+// 该接口为第三方平台向电子签平台获取慧眼H5人脸核身Url
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateH5FaceIdUrlWithContext(ctx context.Context, request *CreateH5FaceIdUrlRequest) (response *CreateH5FaceIdUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateH5FaceIdUrlRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateH5FaceIdUrlResponse()
     err = c.Send(request, response)
@@ -648,6 +947,73 @@ func (c *Client) CreatePreviewSignUrl(request *CreatePreviewSignUrlRequest) (res
     return
 }
 
+// CreatePreviewSignUrl
+// 此接口（CreatePreviewSignUrl）用于生成生成预览签署URL。
+//
+// 
+//
+// 注：调用此接口前，请确保您已提前调用了发送流程接口（SendFlow）指定相关签署方。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTALREADYEXISTS = "FailedOperation.AccountAlreadyExists"
+//  FAILEDOPERATION_ACCOUNTVERIFYFAIL = "FailedOperation.AccountVerifyFail"
+//  FAILEDOPERATION_AUTHFAIL = "FailedOperation.AuthFail"
+//  FAILEDOPERATION_DLOCKFAILED = "FailedOperation.DLockFailed"
+//  FAILEDOPERATION_ERRBINDINGREPEATED = "FailedOperation.ErrBindingRepeated"
+//  FAILEDOPERATION_GENERATEUSERSEAL = "FailedOperation.GenerateUserSeal"
+//  FAILEDOPERATION_NOROLE = "FailedOperation.NoRole"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_CACHE = "InternalError.Cache"
+//  INTERNALERROR_CALLBACK = "InternalError.Callback"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+//  INTERNALERROR_MQ = "InternalError.Mq"
+//  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INTERNALERROR_STORAGE = "InternalError.Storage"
+//  INTERNALERROR_THIRDPARTY = "InternalError.ThirdParty"
+//  INTERNALERROR_UNSERIALIZE = "InternalError.UnSerialize"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BANNEDAPPLICATION = "OperationDenied.BannedApplication"
+//  OPERATIONDENIED_NOAPIAUTH = "OperationDenied.NoApiAuth"
+//  OPERATIONDENIED_NOEXTRAVERIFY = "OperationDenied.NoExtraVerify"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOPAYMENTVERIFY = "OperationDenied.NoPaymentVerify"
+//  OPERATIONDENIED_NOSESSION = "OperationDenied.NoSession"
+//  OPERATIONDENIED_NOVERIFY = "OperationDenied.NoVerify"
+//  OPERATIONDENIED_NOTOWNERUIN = "OperationDenied.NotOwnerUin"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreatePreviewSignUrlWithContext(ctx context.Context, request *CreatePreviewSignUrlRequest) (response *CreatePreviewSignUrlResponse, err error) {
+    if request == nil {
+        request = NewCreatePreviewSignUrlRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreatePreviewSignUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSealRequest() (request *CreateSealRequest) {
     request = &CreateSealRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -687,6 +1053,35 @@ func (c *Client) CreateSeal(request *CreateSealRequest) (response *CreateSealRes
     if request == nil {
         request = NewCreateSealRequest()
     }
+    
+    response = NewCreateSealResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateSeal
+// 此接口（CreateSeal）用于创建个人/企业印章。
+//
+// 
+//
+// 注意：使用FileId参数指定印章，需先调用多文件上传 (UploadFiles) 上传印章图片。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+//  INTERNALERROR_STORAGE = "InternalError.Storage"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateSealWithContext(ctx context.Context, request *CreateSealRequest) (response *CreateSealResponse, err error) {
+    if request == nil {
+        request = NewCreateSealRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateSealResponse()
     err = c.Send(request, response)
@@ -734,6 +1129,37 @@ func (c *Client) CreateServerFlowSign(request *CreateServerFlowSignRequest) (res
     if request == nil {
         request = NewCreateServerFlowSignRequest()
     }
+    
+    response = NewCreateServerFlowSignResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateServerFlowSign
+// 此接口（CreateServerFlowSign）用于静默签署文件。
+//
+// 
+//
+// 注：
+//
+// 1、此接口为白名单接口，调用前请提前与客服经理或邮件至e-contract@tencent.com进行联系。
+//
+// 2、仅合同发起者可使用流程静默签署能力。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTVERIFYFAIL = "FailedOperation.AccountVerifyFail"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_PDF = "InternalError.Pdf"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateServerFlowSignWithContext(ctx context.Context, request *CreateServerFlowSignRequest) (response *CreateServerFlowSignResponse, err error) {
+    if request == nil {
+        request = NewCreateServerFlowSignRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateServerFlowSignResponse()
     err = c.Send(request, response)
@@ -823,6 +1249,73 @@ func (c *Client) CreateSignUrl(request *CreateSignUrlRequest) (response *CreateS
     return
 }
 
+// CreateSignUrl
+// 此接口（CreateSignUrl）用于生成指定用户的签署URL。
+//
+// 
+//
+// 注：调用此接口前，请确保您已提前调用了发送流程接口（SendFlow）指定相关签署方。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTALREADYEXISTS = "FailedOperation.AccountAlreadyExists"
+//  FAILEDOPERATION_ACCOUNTVERIFYFAIL = "FailedOperation.AccountVerifyFail"
+//  FAILEDOPERATION_AUTHFAIL = "FailedOperation.AuthFail"
+//  FAILEDOPERATION_DLOCKFAILED = "FailedOperation.DLockFailed"
+//  FAILEDOPERATION_ERRBINDINGREPEATED = "FailedOperation.ErrBindingRepeated"
+//  FAILEDOPERATION_GENERATEUSERSEAL = "FailedOperation.GenerateUserSeal"
+//  FAILEDOPERATION_NOROLE = "FailedOperation.NoRole"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_CACHE = "InternalError.Cache"
+//  INTERNALERROR_CALLBACK = "InternalError.Callback"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+//  INTERNALERROR_MQ = "InternalError.Mq"
+//  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INTERNALERROR_STORAGE = "InternalError.Storage"
+//  INTERNALERROR_THIRDPARTY = "InternalError.ThirdParty"
+//  INTERNALERROR_UNSERIALIZE = "InternalError.UnSerialize"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BANNEDAPPLICATION = "OperationDenied.BannedApplication"
+//  OPERATIONDENIED_NOAPIAUTH = "OperationDenied.NoApiAuth"
+//  OPERATIONDENIED_NOEXTRAVERIFY = "OperationDenied.NoExtraVerify"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOPAYMENTVERIFY = "OperationDenied.NoPaymentVerify"
+//  OPERATIONDENIED_NOSESSION = "OperationDenied.NoSession"
+//  OPERATIONDENIED_NOVERIFY = "OperationDenied.NoVerify"
+//  OPERATIONDENIED_NOTOWNERUIN = "OperationDenied.NotOwnerUin"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateSignUrlWithContext(ctx context.Context, request *CreateSignUrlRequest) (response *CreateSignUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateSignUrlRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateSignUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSubOrganizationRequest() (request *CreateSubOrganizationRequest) {
     request = &CreateSubOrganizationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -898,6 +1391,71 @@ func (c *Client) CreateSubOrganization(request *CreateSubOrganizationRequest) (r
     if request == nil {
         request = NewCreateSubOrganizationRequest()
     }
+    
+    response = NewCreateSubOrganizationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateSubOrganization
+// 此接口（CreateSubOrganization）用于在腾讯电子签内注册子机构。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTALREADYEXISTS = "FailedOperation.AccountAlreadyExists"
+//  FAILEDOPERATION_ACCOUNTVERIFYFAIL = "FailedOperation.AccountVerifyFail"
+//  FAILEDOPERATION_AUTHFAIL = "FailedOperation.AuthFail"
+//  FAILEDOPERATION_DLOCKFAILED = "FailedOperation.DLockFailed"
+//  FAILEDOPERATION_ERRBINDINGREPEATED = "FailedOperation.ErrBindingRepeated"
+//  FAILEDOPERATION_GENERATEUSERSEAL = "FailedOperation.GenerateUserSeal"
+//  FAILEDOPERATION_NOROLE = "FailedOperation.NoRole"
+//  FAILEDOPERATION_OPENIDALREADYEXISTS = "FailedOperation.OpenIdAlreadyExists"
+//  FAILEDOPERATION_ORGIDCARDNUMBERALREADYEXISTS = "FailedOperation.OrgIdCardNumberAlreadyExists"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_CACHE = "InternalError.Cache"
+//  INTERNALERROR_CALLBACK = "InternalError.Callback"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+//  INTERNALERROR_MQ = "InternalError.Mq"
+//  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INTERNALERROR_STORAGE = "InternalError.Storage"
+//  INTERNALERROR_THIRDPARTY = "InternalError.ThirdParty"
+//  INTERNALERROR_UNSERIALIZE = "InternalError.UnSerialize"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BANNEDAPPLICATION = "OperationDenied.BannedApplication"
+//  OPERATIONDENIED_NOAPIAUTH = "OperationDenied.NoApiAuth"
+//  OPERATIONDENIED_NOEXTRAVERIFY = "OperationDenied.NoExtraVerify"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOPAYMENTVERIFY = "OperationDenied.NoPaymentVerify"
+//  OPERATIONDENIED_NOSESSION = "OperationDenied.NoSession"
+//  OPERATIONDENIED_NOVERIFY = "OperationDenied.NoVerify"
+//  OPERATIONDENIED_NOTOWNERUIN = "OperationDenied.NotOwnerUin"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateSubOrganizationWithContext(ctx context.Context, request *CreateSubOrganizationRequest) (response *CreateSubOrganizationResponse, err error) {
+    if request == nil {
+        request = NewCreateSubOrganizationRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateSubOrganizationResponse()
     err = c.Send(request, response)
@@ -992,6 +1550,78 @@ func (c *Client) CreateSubOrganizationAndSeal(request *CreateSubOrganizationAndS
     return
 }
 
+// CreateSubOrganizationAndSeal
+// 此接口（CreateSubOrganizationAndSeal）用于注册子机构，同时系统将为该子企业自动生成一个默认电子印章图片。
+//
+// 
+//
+// 注意：
+//
+// 1. 在后续的签署流程中，若未指定签署使用的印章ID，则默认调用自动生成的印章图片进行签署。
+//
+// 2. 此接口为白名单接口，如您需要使用此能力，请提前与客户经理沟通或邮件至e-contract@tencent.com与我们联系。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTALREADYEXISTS = "FailedOperation.AccountAlreadyExists"
+//  FAILEDOPERATION_ACCOUNTVERIFYFAIL = "FailedOperation.AccountVerifyFail"
+//  FAILEDOPERATION_AUTHFAIL = "FailedOperation.AuthFail"
+//  FAILEDOPERATION_DLOCKFAILED = "FailedOperation.DLockFailed"
+//  FAILEDOPERATION_ERRBINDINGREPEATED = "FailedOperation.ErrBindingRepeated"
+//  FAILEDOPERATION_GENERATEUSERSEAL = "FailedOperation.GenerateUserSeal"
+//  FAILEDOPERATION_NOROLE = "FailedOperation.NoRole"
+//  FAILEDOPERATION_ORGIDCARDNUMBERALREADYEXISTS = "FailedOperation.OrgIdCardNumberAlreadyExists"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_CACHE = "InternalError.Cache"
+//  INTERNALERROR_CALLBACK = "InternalError.Callback"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+//  INTERNALERROR_MQ = "InternalError.Mq"
+//  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INTERNALERROR_STORAGE = "InternalError.Storage"
+//  INTERNALERROR_THIRDPARTY = "InternalError.ThirdParty"
+//  INTERNALERROR_UNSERIALIZE = "InternalError.UnSerialize"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BANNEDAPPLICATION = "OperationDenied.BannedApplication"
+//  OPERATIONDENIED_NOAPIAUTH = "OperationDenied.NoApiAuth"
+//  OPERATIONDENIED_NOEXTRAVERIFY = "OperationDenied.NoExtraVerify"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOPAYMENTVERIFY = "OperationDenied.NoPaymentVerify"
+//  OPERATIONDENIED_NOSESSION = "OperationDenied.NoSession"
+//  OPERATIONDENIED_NOVERIFY = "OperationDenied.NoVerify"
+//  OPERATIONDENIED_NOTOWNERUIN = "OperationDenied.NotOwnerUin"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateSubOrganizationAndSealWithContext(ctx context.Context, request *CreateSubOrganizationAndSealRequest) (response *CreateSubOrganizationAndSealResponse, err error) {
+    if request == nil {
+        request = NewCreateSubOrganizationAndSealRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateSubOrganizationAndSealResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateUserRequest() (request *CreateUserRequest) {
     request = &CreateUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1069,6 +1699,73 @@ func (c *Client) CreateUser(request *CreateUserRequest) (response *CreateUserRes
     if request == nil {
         request = NewCreateUserRequest()
     }
+    
+    response = NewCreateUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateUser
+// 此接口（CreateUser）用于注册腾讯电子签个人用户。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTALREADYEXISTS = "FailedOperation.AccountAlreadyExists"
+//  FAILEDOPERATION_ACCOUNTVERIFYFAIL = "FailedOperation.AccountVerifyFail"
+//  FAILEDOPERATION_AUTHFAIL = "FailedOperation.AuthFail"
+//  FAILEDOPERATION_DLOCKFAILED = "FailedOperation.DLockFailed"
+//  FAILEDOPERATION_ERRBINDINGREPEATED = "FailedOperation.ErrBindingRepeated"
+//  FAILEDOPERATION_GENERATEUSERSEAL = "FailedOperation.GenerateUserSeal"
+//  FAILEDOPERATION_NOROLE = "FailedOperation.NoRole"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED1D = "FailedOperation.RequestLimitExceeded1D"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED1H = "FailedOperation.RequestLimitExceeded1H"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED30S = "FailedOperation.RequestLimitExceeded30S"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_CACHE = "InternalError.Cache"
+//  INTERNALERROR_CALLBACK = "InternalError.Callback"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+//  INTERNALERROR_MQ = "InternalError.Mq"
+//  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INTERNALERROR_STORAGE = "InternalError.Storage"
+//  INTERNALERROR_THIRDPARTY = "InternalError.ThirdParty"
+//  INTERNALERROR_UNSERIALIZE = "InternalError.UnSerialize"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDVERIFYRESULT = "InvalidParameter.InvalidVerifyResult"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BANNEDAPPLICATION = "OperationDenied.BannedApplication"
+//  OPERATIONDENIED_NOAPIAUTH = "OperationDenied.NoApiAuth"
+//  OPERATIONDENIED_NOEXTRAVERIFY = "OperationDenied.NoExtraVerify"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOPAYMENTVERIFY = "OperationDenied.NoPaymentVerify"
+//  OPERATIONDENIED_NOSESSION = "OperationDenied.NoSession"
+//  OPERATIONDENIED_NOVERIFY = "OperationDenied.NoVerify"
+//  OPERATIONDENIED_NOTOWNERUIN = "OperationDenied.NotOwnerUin"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateUserWithContext(ctx context.Context, request *CreateUserRequest) (response *CreateUserResponse, err error) {
+    if request == nil {
+        request = NewCreateUserRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateUserResponse()
     err = c.Send(request, response)
@@ -1166,6 +1863,81 @@ func (c *Client) CreateUserAndSeal(request *CreateUserAndSealRequest) (response 
     return
 }
 
+// CreateUserAndSeal
+// 第三方应用可通过此接口（CreateUserAndSeal）注册腾讯电子签实名个人用户，同时系统将为该用户自动生成一个默认电子签名图片。
+//
+// 
+//
+// 注意：
+//
+// 1. 在后续的签署流程中，若未指定签署使用的印章ID，则默认调用自动生成的签名图片进行签署。
+//
+// 2. 此接口为白名单接口，如您需要使用此能力，请提前与客户经理沟通或邮件至e-contract@tencent.com与我们联系。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTALREADYEXISTS = "FailedOperation.AccountAlreadyExists"
+//  FAILEDOPERATION_ACCOUNTVERIFYFAIL = "FailedOperation.AccountVerifyFail"
+//  FAILEDOPERATION_AUTHFAIL = "FailedOperation.AuthFail"
+//  FAILEDOPERATION_DLOCKFAILED = "FailedOperation.DLockFailed"
+//  FAILEDOPERATION_ERRBINDINGREPEATED = "FailedOperation.ErrBindingRepeated"
+//  FAILEDOPERATION_GENERATEUSERSEAL = "FailedOperation.GenerateUserSeal"
+//  FAILEDOPERATION_NOROLE = "FailedOperation.NoRole"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED1D = "FailedOperation.RequestLimitExceeded1D"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED1H = "FailedOperation.RequestLimitExceeded1H"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED30S = "FailedOperation.RequestLimitExceeded30S"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_CACHE = "InternalError.Cache"
+//  INTERNALERROR_CALLBACK = "InternalError.Callback"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+//  INTERNALERROR_MQ = "InternalError.Mq"
+//  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INTERNALERROR_STORAGE = "InternalError.Storage"
+//  INTERNALERROR_THIRDPARTY = "InternalError.ThirdParty"
+//  INTERNALERROR_UNSERIALIZE = "InternalError.UnSerialize"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDVERIFYRESULT = "InvalidParameter.InvalidVerifyResult"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BANNEDAPPLICATION = "OperationDenied.BannedApplication"
+//  OPERATIONDENIED_NOAPIAUTH = "OperationDenied.NoApiAuth"
+//  OPERATIONDENIED_NOEXTRAVERIFY = "OperationDenied.NoExtraVerify"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOPAYMENTVERIFY = "OperationDenied.NoPaymentVerify"
+//  OPERATIONDENIED_NOSESSION = "OperationDenied.NoSession"
+//  OPERATIONDENIED_NOVERIFY = "OperationDenied.NoVerify"
+//  OPERATIONDENIED_NOTOWNERUIN = "OperationDenied.NotOwnerUin"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateUserAndSealWithContext(ctx context.Context, request *CreateUserAndSealRequest) (response *CreateUserAndSealResponse, err error) {
+    if request == nil {
+        request = NewCreateUserAndSealRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateUserAndSealResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteSealRequest() (request *DeleteSealRequest) {
     request = &DeleteSealRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1210,6 +1982,34 @@ func (c *Client) DeleteSeal(request *DeleteSealRequest) (response *DeleteSealRes
     return
 }
 
+// DeleteSeal
+// 此接口 (DeleteSeal) 用于删除指定ID的印章。
+//
+// 
+//
+// 注意：默认印章不支持删除
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteSealWithContext(ctx context.Context, request *DeleteSealRequest) (response *DeleteSealResponse, err error) {
+    if request == nil {
+        request = NewDeleteSealRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteSealResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCatalogApproversRequest() (request *DescribeCatalogApproversRequest) {
     request = &DescribeCatalogApproversRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1240,6 +2040,26 @@ func (c *Client) DescribeCatalogApprovers(request *DescribeCatalogApproversReque
     if request == nil {
         request = NewDescribeCatalogApproversRequest()
     }
+    
+    response = NewDescribeCatalogApproversResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCatalogApprovers
+// 第三方应用可通过此接口（DescribeCatalogApprovers）查询指定目录的参与者列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_UNSERIALIZE = "InternalError.UnSerialize"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeCatalogApproversWithContext(ctx context.Context, request *DescribeCatalogApproversRequest) (response *DescribeCatalogApproversResponse, err error) {
+    if request == nil {
+        request = NewDescribeCatalogApproversRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeCatalogApproversResponse()
     err = c.Send(request, response)
@@ -1329,6 +2149,73 @@ func (c *Client) DescribeCatalogSignComponents(request *DescribeCatalogSignCompo
     return
 }
 
+// DescribeCatalogSignComponents
+// 第三方应用可通过此接口（DescribeCatalogSignComponents）拉取目录签署区
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTALREADYEXISTS = "FailedOperation.AccountAlreadyExists"
+//  FAILEDOPERATION_ACCOUNTVERIFYFAIL = "FailedOperation.AccountVerifyFail"
+//  FAILEDOPERATION_AUTHFAIL = "FailedOperation.AuthFail"
+//  FAILEDOPERATION_DLOCKFAILED = "FailedOperation.DLockFailed"
+//  FAILEDOPERATION_ERRBINDINGREPEATED = "FailedOperation.ErrBindingRepeated"
+//  FAILEDOPERATION_GENERATEUSERSEAL = "FailedOperation.GenerateUserSeal"
+//  FAILEDOPERATION_NOROLE = "FailedOperation.NoRole"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED1D = "FailedOperation.RequestLimitExceeded1D"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED1H = "FailedOperation.RequestLimitExceeded1H"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED30S = "FailedOperation.RequestLimitExceeded30S"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_CACHE = "InternalError.Cache"
+//  INTERNALERROR_CALLBACK = "InternalError.Callback"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+//  INTERNALERROR_MQ = "InternalError.Mq"
+//  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INTERNALERROR_STORAGE = "InternalError.Storage"
+//  INTERNALERROR_THIRDPARTY = "InternalError.ThirdParty"
+//  INTERNALERROR_UNSERIALIZE = "InternalError.UnSerialize"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDVERIFYRESULT = "InvalidParameter.InvalidVerifyResult"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BANNEDAPPLICATION = "OperationDenied.BannedApplication"
+//  OPERATIONDENIED_NOAPIAUTH = "OperationDenied.NoApiAuth"
+//  OPERATIONDENIED_NOEXTRAVERIFY = "OperationDenied.NoExtraVerify"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOPAYMENTVERIFY = "OperationDenied.NoPaymentVerify"
+//  OPERATIONDENIED_NOSESSION = "OperationDenied.NoSession"
+//  OPERATIONDENIED_NOVERIFY = "OperationDenied.NoVerify"
+//  OPERATIONDENIED_NOTOWNERUIN = "OperationDenied.NotOwnerUin"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCatalogSignComponentsWithContext(ctx context.Context, request *DescribeCatalogSignComponentsRequest) (response *DescribeCatalogSignComponentsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCatalogSignComponentsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeCatalogSignComponentsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCustomFlowIdsRequest() (request *DescribeCustomFlowIdsRequest) {
     request = &DescribeCustomFlowIdsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1361,6 +2248,28 @@ func (c *Client) DescribeCustomFlowIds(request *DescribeCustomFlowIdsRequest) (r
     if request == nil {
         request = NewDescribeCustomFlowIdsRequest()
     }
+    
+    response = NewDescribeCustomFlowIdsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCustomFlowIds
+// 此接口（DescribeCustomFlowIds）用于通过自定义流程id来查询对应的电子签流程id
+//
+// 可能返回的错误码:
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeCustomFlowIdsWithContext(ctx context.Context, request *DescribeCustomFlowIdsRequest) (response *DescribeCustomFlowIdsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomFlowIdsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeCustomFlowIdsResponse()
     err = c.Send(request, response)
@@ -1405,6 +2314,28 @@ func (c *Client) DescribeCustomFlowIdsByFlowId(request *DescribeCustomFlowIdsByF
     return
 }
 
+// DescribeCustomFlowIdsByFlowId
+// 此接口（DescribeCustomFlowIdsByFlowId）用于根据流程id反查自定义流程id
+//
+// 可能返回的错误码:
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeCustomFlowIdsByFlowIdWithContext(ctx context.Context, request *DescribeCustomFlowIdsByFlowIdRequest) (response *DescribeCustomFlowIdsByFlowIdResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomFlowIdsByFlowIdRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeCustomFlowIdsByFlowIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFaceIdPhotosRequest() (request *DescribeFaceIdPhotosRequest) {
     request = &DescribeFaceIdPhotosRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1442,6 +2373,27 @@ func (c *Client) DescribeFaceIdPhotos(request *DescribeFaceIdPhotosRequest) (res
     return
 }
 
+// DescribeFaceIdPhotos
+// 该接口为第三方平台向电子签平台获取慧眼人脸核身照片
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeFaceIdPhotosWithContext(ctx context.Context, request *DescribeFaceIdPhotosRequest) (response *DescribeFaceIdPhotosResponse, err error) {
+    if request == nil {
+        request = NewDescribeFaceIdPhotosRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeFaceIdPhotosResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFaceIdResultsRequest() (request *DescribeFaceIdResultsRequest) {
     request = &DescribeFaceIdResultsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1473,6 +2425,27 @@ func (c *Client) DescribeFaceIdResults(request *DescribeFaceIdResultsRequest) (r
     if request == nil {
         request = NewDescribeFaceIdResultsRequest()
     }
+    
+    response = NewDescribeFaceIdResultsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeFaceIdResults
+// 该接口为第三方平台向电子签平台获取慧眼人脸核身结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeFaceIdResultsWithContext(ctx context.Context, request *DescribeFaceIdResultsRequest) (response *DescribeFaceIdResultsResponse, err error) {
+    if request == nil {
+        request = NewDescribeFaceIdResultsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeFaceIdResultsResponse()
     err = c.Send(request, response)
@@ -1518,6 +2491,29 @@ func (c *Client) DescribeFileIdsByCustomIds(request *DescribeFileIdsByCustomIdsR
     return
 }
 
+// DescribeFileIdsByCustomIds
+// 根据用户自定义id查询文件id
+//
+// 可能返回的错误码:
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeFileIdsByCustomIdsWithContext(ctx context.Context, request *DescribeFileIdsByCustomIdsRequest) (response *DescribeFileIdsByCustomIdsResponse, err error) {
+    if request == nil {
+        request = NewDescribeFileIdsByCustomIdsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeFileIdsByCustomIdsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFileUrlsRequest() (request *DescribeFileUrlsRequest) {
     request = &DescribeFileUrlsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1548,6 +2544,26 @@ func (c *Client) DescribeFileUrls(request *DescribeFileUrlsRequest) (response *D
     if request == nil {
         request = NewDescribeFileUrlsRequest()
     }
+    
+    response = NewDescribeFileUrlsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeFileUrls
+// 此接口（DescribeFileUrls）用于获取签署文件下载的URL。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeFileUrlsWithContext(ctx context.Context, request *DescribeFileUrlsRequest) (response *DescribeFileUrlsResponse, err error) {
+    if request == nil {
+        request = NewDescribeFileUrlsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeFileUrlsResponse()
     err = c.Send(request, response)
@@ -1589,6 +2605,25 @@ func (c *Client) DescribeFlow(request *DescribeFlowRequest) (response *DescribeF
     return
 }
 
+// DescribeFlow
+// 通过此接口（DescribeFlow）可查询签署流程的详细信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeFlowWithContext(ctx context.Context, request *DescribeFlowRequest) (response *DescribeFlowResponse, err error) {
+    if request == nil {
+        request = NewDescribeFlowRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFlowApproversRequest() (request *DescribeFlowApproversRequest) {
     request = &DescribeFlowApproversRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1617,6 +2652,24 @@ func (c *Client) DescribeFlowApprovers(request *DescribeFlowApproversRequest) (r
     if request == nil {
         request = NewDescribeFlowApproversRequest()
     }
+    
+    response = NewDescribeFlowApproversResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeFlowApprovers
+// 第三方应用可通过此接口（DescribeFlowApprovers）查询流程参与者信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_UNSERIALIZE = "InternalError.UnSerialize"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeFlowApproversWithContext(ctx context.Context, request *DescribeFlowApproversRequest) (response *DescribeFlowApproversResponse, err error) {
+    if request == nil {
+        request = NewDescribeFlowApproversRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeFlowApproversResponse()
     err = c.Send(request, response)
@@ -1657,6 +2710,24 @@ func (c *Client) DescribeFlowFiles(request *DescribeFlowFilesRequest) (response 
     return
 }
 
+// DescribeFlowFiles
+// 查询流程文件
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeFlowFilesWithContext(ctx context.Context, request *DescribeFlowFilesRequest) (response *DescribeFlowFilesResponse, err error) {
+    if request == nil {
+        request = NewDescribeFlowFilesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeFlowFilesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSealsRequest() (request *DescribeSealsRequest) {
     request = &DescribeSealsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1690,6 +2761,29 @@ func (c *Client) DescribeSeals(request *DescribeSealsRequest) (response *Describ
     if request == nil {
         request = NewDescribeSealsRequest()
     }
+    
+    response = NewDescribeSealsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeSeals
+// 此接口（DescribeSeals）用于查询指定ID的印章信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeSealsWithContext(ctx context.Context, request *DescribeSealsRequest) (response *DescribeSealsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSealsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeSealsResponse()
     err = c.Send(request, response)
@@ -1779,6 +2873,73 @@ func (c *Client) DescribeSubOrganizations(request *DescribeSubOrganizationsReque
     return
 }
 
+// DescribeSubOrganizations
+// 此接口（DescribeSubOrganizations）用于查询子机构信息。
+//
+// 
+//
+// 注：此接口仅可查询您所属机构应用号创建的子机构信息，不可跨应用/跨机构查询。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTALREADYEXISTS = "FailedOperation.AccountAlreadyExists"
+//  FAILEDOPERATION_ACCOUNTVERIFYFAIL = "FailedOperation.AccountVerifyFail"
+//  FAILEDOPERATION_AUTHFAIL = "FailedOperation.AuthFail"
+//  FAILEDOPERATION_DLOCKFAILED = "FailedOperation.DLockFailed"
+//  FAILEDOPERATION_ERRBINDINGREPEATED = "FailedOperation.ErrBindingRepeated"
+//  FAILEDOPERATION_GENERATEUSERSEAL = "FailedOperation.GenerateUserSeal"
+//  FAILEDOPERATION_NOROLE = "FailedOperation.NoRole"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_CACHE = "InternalError.Cache"
+//  INTERNALERROR_CALLBACK = "InternalError.Callback"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+//  INTERNALERROR_MQ = "InternalError.Mq"
+//  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INTERNALERROR_STORAGE = "InternalError.Storage"
+//  INTERNALERROR_THIRDPARTY = "InternalError.ThirdParty"
+//  INTERNALERROR_UNSERIALIZE = "InternalError.UnSerialize"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BANNEDAPPLICATION = "OperationDenied.BannedApplication"
+//  OPERATIONDENIED_NOAPIAUTH = "OperationDenied.NoApiAuth"
+//  OPERATIONDENIED_NOEXTRAVERIFY = "OperationDenied.NoExtraVerify"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOPAYMENTVERIFY = "OperationDenied.NoPaymentVerify"
+//  OPERATIONDENIED_NOSESSION = "OperationDenied.NoSession"
+//  OPERATIONDENIED_NOVERIFY = "OperationDenied.NoVerify"
+//  OPERATIONDENIED_NOTOWNERUIN = "OperationDenied.NotOwnerUin"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSubOrganizationsWithContext(ctx context.Context, request *DescribeSubOrganizationsRequest) (response *DescribeSubOrganizationsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSubOrganizationsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeSubOrganizationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUsersRequest() (request *DescribeUsersRequest) {
     request = &DescribeUsersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1811,6 +2972,28 @@ func (c *Client) DescribeUsers(request *DescribeUsersRequest) (response *Describ
     if request == nil {
         request = NewDescribeUsersRequest()
     }
+    
+    response = NewDescribeUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeUsers
+// 此接口（DescribeUsers）用于查询应用号下的个人用户信息。
+//
+// 
+//
+// 注：此接口仅可查询您所属机构应用号创建的个人用户信息，不可跨应用/跨机构查询。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeUsersWithContext(ctx context.Context, request *DescribeUsersRequest) (response *DescribeUsersResponse, err error) {
+    if request == nil {
+        request = NewDescribeUsersRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeUsersResponse()
     err = c.Send(request, response)
@@ -1855,6 +3038,28 @@ func (c *Client) DestroyFlowFile(request *DestroyFlowFileRequest) (response *Des
     return
 }
 
+// DestroyFlowFile
+// 通过此接口（DestroyFlowFile）可删除指定流程中的合同文件。
+//
+// 
+//
+// 注：调用此接口前，请确保此流程已属于归档状态。您可通过查询流程信息接口（DescribeFlow）进行查询。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DestroyFlowFileWithContext(ctx context.Context, request *DestroyFlowFileRequest) (response *DestroyFlowFileResponse, err error) {
+    if request == nil {
+        request = NewDestroyFlowFileRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDestroyFlowFileResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGenerateOrganizationSealRequest() (request *GenerateOrganizationSealRequest) {
     request = &GenerateOrganizationSealRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1892,6 +3097,33 @@ func (c *Client) GenerateOrganizationSeal(request *GenerateOrganizationSealReque
     if request == nil {
         request = NewGenerateOrganizationSealRequest()
     }
+    
+    response = NewGenerateOrganizationSealResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// GenerateOrganizationSeal
+// 生成企业电子印章
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GENERATEORGSEAL = "FailedOperation.GenerateOrgSeal"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+//  INTERNALERROR_STORAGE = "InternalError.Storage"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) GenerateOrganizationSealWithContext(ctx context.Context, request *GenerateOrganizationSealRequest) (response *GenerateOrganizationSealResponse, err error) {
+    if request == nil {
+        request = NewGenerateOrganizationSealRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewGenerateOrganizationSealResponse()
     err = c.Send(request, response)
@@ -1949,6 +3181,41 @@ func (c *Client) GenerateUserSeal(request *GenerateUserSealRequest) (response *G
     return
 }
 
+// GenerateUserSeal
+// 此接口（GenerateUserSeal）用于生成个人签名图片。
+//
+// 
+//
+// 注意：
+//
+// 1. 个人签名由用户注册时预留的姓名信息生成，不支持自定义签名内容。
+//
+// 2. 个人用户仅支持拥有一个系统生成的电子签名。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GENERATEUSERSEAL = "FailedOperation.GenerateUserSeal"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+//  INTERNALERROR_STORAGE = "InternalError.Storage"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) GenerateUserSealWithContext(ctx context.Context, request *GenerateUserSealRequest) (response *GenerateUserSealResponse, err error) {
+    if request == nil {
+        request = NewGenerateUserSealRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewGenerateUserSealResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyOrganizationDefaultSealRequest() (request *ModifyOrganizationDefaultSealRequest) {
     request = &ModifyOrganizationDefaultSealRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1983,6 +3250,30 @@ func (c *Client) ModifyOrganizationDefaultSeal(request *ModifyOrganizationDefaul
     if request == nil {
         request = NewModifyOrganizationDefaultSealRequest()
     }
+    
+    response = NewModifyOrganizationDefaultSealResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyOrganizationDefaultSeal
+// 此接口 (ModifyOrganizationDefaultSeal) 用于重新指定企业默认印章。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyOrganizationDefaultSealWithContext(ctx context.Context, request *ModifyOrganizationDefaultSealRequest) (response *ModifyOrganizationDefaultSealResponse, err error) {
+    if request == nil {
+        request = NewModifyOrganizationDefaultSealRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyOrganizationDefaultSealResponse()
     err = c.Send(request, response)
@@ -2027,6 +3318,34 @@ func (c *Client) ModifySeal(request *ModifySealRequest) (response *ModifySealRes
     if request == nil {
         request = NewModifySealRequest()
     }
+    
+    response = NewModifySealResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifySeal
+// 此接口（ModifySeal）用于修改指定印章ID的印章图片和名称。
+//
+// 
+//
+// 注：印章类型暂不支持修改，如需调整，请联系客服经理或通过创建印章接口（CreateSeal）进行创建新印章。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifySealWithContext(ctx context.Context, request *ModifySealRequest) (response *ModifySealResponse, err error) {
+    if request == nil {
+        request = NewModifySealRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifySealResponse()
     err = c.Send(request, response)
@@ -2112,6 +3431,75 @@ func (c *Client) ModifySubOrganizationInfo(request *ModifySubOrganizationInfoReq
     if request == nil {
         request = NewModifySubOrganizationInfoRequest()
     }
+    
+    response = NewModifySubOrganizationInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifySubOrganizationInfo
+// 此接口（ModifySubOrganizationInfo）用于更新子机构信息。
+//
+// 
+//
+// 注：若修改子机构名称或更新机构证件照片，需要重新通过子机构实名接口（VerifySubOrganization）进行重新实名。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTALREADYEXISTS = "FailedOperation.AccountAlreadyExists"
+//  FAILEDOPERATION_ACCOUNTVERIFYFAIL = "FailedOperation.AccountVerifyFail"
+//  FAILEDOPERATION_AUTHFAIL = "FailedOperation.AuthFail"
+//  FAILEDOPERATION_DLOCKFAILED = "FailedOperation.DLockFailed"
+//  FAILEDOPERATION_ERRBINDINGREPEATED = "FailedOperation.ErrBindingRepeated"
+//  FAILEDOPERATION_GENERATEUSERSEAL = "FailedOperation.GenerateUserSeal"
+//  FAILEDOPERATION_NOROLE = "FailedOperation.NoRole"
+//  FAILEDOPERATION_OPENIDALREADYEXISTS = "FailedOperation.OpenIdAlreadyExists"
+//  FAILEDOPERATION_ORGIDCARDNUMBERALREADYEXISTS = "FailedOperation.OrgIdCardNumberAlreadyExists"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_CACHE = "InternalError.Cache"
+//  INTERNALERROR_CALLBACK = "InternalError.Callback"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+//  INTERNALERROR_MQ = "InternalError.Mq"
+//  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INTERNALERROR_STORAGE = "InternalError.Storage"
+//  INTERNALERROR_THIRDPARTY = "InternalError.ThirdParty"
+//  INTERNALERROR_UNSERIALIZE = "InternalError.UnSerialize"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BANNEDAPPLICATION = "OperationDenied.BannedApplication"
+//  OPERATIONDENIED_NOAPIAUTH = "OperationDenied.NoApiAuth"
+//  OPERATIONDENIED_NOEXTRAVERIFY = "OperationDenied.NoExtraVerify"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOPAYMENTVERIFY = "OperationDenied.NoPaymentVerify"
+//  OPERATIONDENIED_NOSESSION = "OperationDenied.NoSession"
+//  OPERATIONDENIED_NOVERIFY = "OperationDenied.NoVerify"
+//  OPERATIONDENIED_NOTOWNERUIN = "OperationDenied.NotOwnerUin"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifySubOrganizationInfoWithContext(ctx context.Context, request *ModifySubOrganizationInfoRequest) (response *ModifySubOrganizationInfoResponse, err error) {
+    if request == nil {
+        request = NewModifySubOrganizationInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifySubOrganizationInfoResponse()
     err = c.Send(request, response)
@@ -2205,6 +3593,77 @@ func (c *Client) ModifyUser(request *ModifyUserRequest) (response *ModifyUserRes
     return
 }
 
+// ModifyUser
+// 此接口（ModifyUser）用于更新个人用户信息。
+//
+// 
+//
+// 注：若修改用户姓名，需要重新通过个人用户实名接口（VerifyUser）进行重新实名。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTALREADYEXISTS = "FailedOperation.AccountAlreadyExists"
+//  FAILEDOPERATION_ACCOUNTVERIFYFAIL = "FailedOperation.AccountVerifyFail"
+//  FAILEDOPERATION_AUTHFAIL = "FailedOperation.AuthFail"
+//  FAILEDOPERATION_DLOCKFAILED = "FailedOperation.DLockFailed"
+//  FAILEDOPERATION_ERRBINDINGREPEATED = "FailedOperation.ErrBindingRepeated"
+//  FAILEDOPERATION_GENERATEUSERSEAL = "FailedOperation.GenerateUserSeal"
+//  FAILEDOPERATION_NOROLE = "FailedOperation.NoRole"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED1D = "FailedOperation.RequestLimitExceeded1D"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED1H = "FailedOperation.RequestLimitExceeded1H"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED30S = "FailedOperation.RequestLimitExceeded30S"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_CACHE = "InternalError.Cache"
+//  INTERNALERROR_CALLBACK = "InternalError.Callback"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+//  INTERNALERROR_MQ = "InternalError.Mq"
+//  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INTERNALERROR_STORAGE = "InternalError.Storage"
+//  INTERNALERROR_THIRDPARTY = "InternalError.ThirdParty"
+//  INTERNALERROR_UNSERIALIZE = "InternalError.UnSerialize"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDVERIFYRESULT = "InvalidParameter.InvalidVerifyResult"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BANNEDAPPLICATION = "OperationDenied.BannedApplication"
+//  OPERATIONDENIED_NOAPIAUTH = "OperationDenied.NoApiAuth"
+//  OPERATIONDENIED_NOEXTRAVERIFY = "OperationDenied.NoExtraVerify"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOPAYMENTVERIFY = "OperationDenied.NoPaymentVerify"
+//  OPERATIONDENIED_NOSESSION = "OperationDenied.NoSession"
+//  OPERATIONDENIED_NOVERIFY = "OperationDenied.NoVerify"
+//  OPERATIONDENIED_NOTOWNERUIN = "OperationDenied.NotOwnerUin"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyUserWithContext(ctx context.Context, request *ModifyUserRequest) (response *ModifyUserResponse, err error) {
+    if request == nil {
+        request = NewModifyUserRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyUserDefaultSealRequest() (request *ModifyUserDefaultSealRequest) {
     request = &ModifyUserDefaultSealRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2239,6 +3698,30 @@ func (c *Client) ModifyUserDefaultSeal(request *ModifyUserDefaultSealRequest) (r
     if request == nil {
         request = NewModifyUserDefaultSealRequest()
     }
+    
+    response = NewModifyUserDefaultSealResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyUserDefaultSeal
+// 此接口 (ModifyUserDefaultSeal) 用于重新指定个人默认印章。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyUserDefaultSealWithContext(ctx context.Context, request *ModifyUserDefaultSealRequest) (response *ModifyUserDefaultSealResponse, err error) {
+    if request == nil {
+        request = NewModifyUserDefaultSealRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyUserDefaultSealResponse()
     err = c.Send(request, response)
@@ -2328,6 +3811,73 @@ func (c *Client) RejectFlow(request *RejectFlowRequest) (response *RejectFlowRes
     return
 }
 
+// RejectFlow
+// 此接口（RejectFlow）用于用户拒绝签署合同流程。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTALREADYEXISTS = "FailedOperation.AccountAlreadyExists"
+//  FAILEDOPERATION_ACCOUNTVERIFYFAIL = "FailedOperation.AccountVerifyFail"
+//  FAILEDOPERATION_AUTHFAIL = "FailedOperation.AuthFail"
+//  FAILEDOPERATION_DLOCKFAILED = "FailedOperation.DLockFailed"
+//  FAILEDOPERATION_ERRBINDINGREPEATED = "FailedOperation.ErrBindingRepeated"
+//  FAILEDOPERATION_GENERATEUSERSEAL = "FailedOperation.GenerateUserSeal"
+//  FAILEDOPERATION_NOROLE = "FailedOperation.NoRole"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED1D = "FailedOperation.RequestLimitExceeded1D"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED1H = "FailedOperation.RequestLimitExceeded1H"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED30S = "FailedOperation.RequestLimitExceeded30S"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_CACHE = "InternalError.Cache"
+//  INTERNALERROR_CALLBACK = "InternalError.Callback"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+//  INTERNALERROR_MQ = "InternalError.Mq"
+//  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INTERNALERROR_STORAGE = "InternalError.Storage"
+//  INTERNALERROR_THIRDPARTY = "InternalError.ThirdParty"
+//  INTERNALERROR_UNSERIALIZE = "InternalError.UnSerialize"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDVERIFYRESULT = "InvalidParameter.InvalidVerifyResult"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BANNEDAPPLICATION = "OperationDenied.BannedApplication"
+//  OPERATIONDENIED_NOAPIAUTH = "OperationDenied.NoApiAuth"
+//  OPERATIONDENIED_NOEXTRAVERIFY = "OperationDenied.NoExtraVerify"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOPAYMENTVERIFY = "OperationDenied.NoPaymentVerify"
+//  OPERATIONDENIED_NOSESSION = "OperationDenied.NoSession"
+//  OPERATIONDENIED_NOVERIFY = "OperationDenied.NoVerify"
+//  OPERATIONDENIED_NOTOWNERUIN = "OperationDenied.NotOwnerUin"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RejectFlowWithContext(ctx context.Context, request *RejectFlowRequest) (response *RejectFlowResponse, err error) {
+    if request == nil {
+        request = NewRejectFlowRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewRejectFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSendFlowRequest() (request *SendFlowRequest) {
     request = &SendFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2361,6 +3911,29 @@ func (c *Client) SendFlow(request *SendFlowRequest) (response *SendFlowResponse,
     if request == nil {
         request = NewSendFlowRequest()
     }
+    
+    response = NewSendFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SendFlow
+// 此接口（SendFlow）用于指定签署者及签署内容，后续可通过生成签署接口（CreateSignUrl）获取签署url。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INTERNALERROR_UNSERIALIZE = "InternalError.UnSerialize"
+//  INVALIDPARAMETER_BIZAPPROVERALREADYEXISTS = "InvalidParameter.BizApproverAlreadyExists"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) SendFlowWithContext(ctx context.Context, request *SendFlowRequest) (response *SendFlowResponse, err error) {
+    if request == nil {
+        request = NewSendFlowRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewSendFlowResponse()
     err = c.Send(request, response)
@@ -2403,6 +3976,32 @@ func (c *Client) SendFlowUrl(request *SendFlowUrlRequest) (response *SendFlowUrl
     if request == nil {
         request = NewSendFlowUrlRequest()
     }
+    
+    response = NewSendFlowUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SendFlowUrl
+// 发送流程并获取签署URL
+//
+// 可能返回的错误码:
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+//  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INTERNALERROR_UNSERIALIZE = "InternalError.UnSerialize"
+//  INVALIDPARAMETER_BIZAPPROVERALREADYEXISTS = "InvalidParameter.BizApproverAlreadyExists"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) SendFlowUrlWithContext(ctx context.Context, request *SendFlowUrlRequest) (response *SendFlowUrlResponse, err error) {
+    if request == nil {
+        request = NewSendFlowUrlRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewSendFlowUrlResponse()
     err = c.Send(request, response)
@@ -2454,6 +4053,35 @@ func (c *Client) SendSignInnerVerifyCode(request *SendSignInnerVerifyCodeRequest
     return
 }
 
+// SendSignInnerVerifyCode
+// 此接口用于发送签署验证码
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED1D = "FailedOperation.RequestLimitExceeded1D"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED1H = "FailedOperation.RequestLimitExceeded1H"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED30S = "FailedOperation.RequestLimitExceeded30S"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_CACHE = "InternalError.Cache"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) SendSignInnerVerifyCodeWithContext(ctx context.Context, request *SendSignInnerVerifyCodeRequest) (response *SendSignInnerVerifyCodeResponse, err error) {
+    if request == nil {
+        request = NewSendSignInnerVerifyCodeRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewSendSignInnerVerifyCodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSignFlowRequest() (request *SignFlowRequest) {
     request = &SignFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2491,6 +4119,27 @@ func (c *Client) SignFlow(request *SignFlowRequest) (response *SignFlowResponse,
     return
 }
 
+// SignFlow
+// 此接口（SignFlow）可用于对流程文件进行签署。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDVERIFYRESULT = "InvalidParameter.InvalidVerifyResult"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) SignFlowWithContext(ctx context.Context, request *SignFlowRequest) (response *SignFlowResponse, err error) {
+    if request == nil {
+        request = NewSignFlowRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewSignFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUploadFilesRequest() (request *UploadFilesRequest) {
     request = &UploadFilesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2522,6 +4171,27 @@ func (c *Client) UploadFiles(request *UploadFilesRequest) (response *UploadFiles
     if request == nil {
         request = NewUploadFilesRequest()
     }
+    
+    response = NewUploadFilesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UploadFiles
+// 此接口（UploadFiles）用于文件上传。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) UploadFilesWithContext(ctx context.Context, request *UploadFilesRequest) (response *UploadFilesResponse, err error) {
+    if request == nil {
+        request = NewUploadFilesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUploadFilesResponse()
     err = c.Send(request, response)
@@ -2611,6 +4281,73 @@ func (c *Client) VerifySubOrganization(request *VerifySubOrganizationRequest) (r
     return
 }
 
+// VerifySubOrganization
+// 此接口（VerifySubOrganization）用于通过子机构的实名认证。
+//
+// 
+//
+// 注：此接口为白名单接口，如您需要使用此能力，请提前与客户经理沟通或邮件至e-contract@tencent.com与我们联系。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTALREADYEXISTS = "FailedOperation.AccountAlreadyExists"
+//  FAILEDOPERATION_ACCOUNTVERIFYFAIL = "FailedOperation.AccountVerifyFail"
+//  FAILEDOPERATION_AUTHFAIL = "FailedOperation.AuthFail"
+//  FAILEDOPERATION_DLOCKFAILED = "FailedOperation.DLockFailed"
+//  FAILEDOPERATION_ERRBINDINGREPEATED = "FailedOperation.ErrBindingRepeated"
+//  FAILEDOPERATION_GENERATEUSERSEAL = "FailedOperation.GenerateUserSeal"
+//  FAILEDOPERATION_NOROLE = "FailedOperation.NoRole"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_CACHE = "InternalError.Cache"
+//  INTERNALERROR_CALLBACK = "InternalError.Callback"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+//  INTERNALERROR_MQ = "InternalError.Mq"
+//  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INTERNALERROR_STORAGE = "InternalError.Storage"
+//  INTERNALERROR_THIRDPARTY = "InternalError.ThirdParty"
+//  INTERNALERROR_UNSERIALIZE = "InternalError.UnSerialize"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BANNEDAPPLICATION = "OperationDenied.BannedApplication"
+//  OPERATIONDENIED_NOAPIAUTH = "OperationDenied.NoApiAuth"
+//  OPERATIONDENIED_NOEXTRAVERIFY = "OperationDenied.NoExtraVerify"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOPAYMENTVERIFY = "OperationDenied.NoPaymentVerify"
+//  OPERATIONDENIED_NOSESSION = "OperationDenied.NoSession"
+//  OPERATIONDENIED_NOVERIFY = "OperationDenied.NoVerify"
+//  OPERATIONDENIED_NOTOWNERUIN = "OperationDenied.NotOwnerUin"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) VerifySubOrganizationWithContext(ctx context.Context, request *VerifySubOrganizationRequest) (response *VerifySubOrganizationResponse, err error) {
+    if request == nil {
+        request = NewVerifySubOrganizationRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewVerifySubOrganizationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewVerifyUserRequest() (request *VerifyUserRequest) {
     request = &VerifyUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2644,6 +4381,29 @@ func (c *Client) VerifyUser(request *VerifyUserRequest) (response *VerifyUserRes
     if request == nil {
         request = NewVerifyUserRequest()
     }
+    
+    response = NewVerifyUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// VerifyUser
+// 第三方应用可通过此接口（VerifyUser）将腾讯电子签个人用户的实名认证状态设为通过。
+//
+// 
+//
+// 注：此接口为白名单接口，如您需要使用此能力，请提前与客户经理沟通或邮件至e-contract@tencent.com与我们联系。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) VerifyUserWithContext(ctx context.Context, request *VerifyUserRequest) (response *VerifyUserResponse, err error) {
+    if request == nil {
+        request = NewVerifyUserRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewVerifyUserResponse()
     err = c.Send(request, response)

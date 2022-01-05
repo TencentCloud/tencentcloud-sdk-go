@@ -15,6 +15,7 @@
 package v20200513
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -79,6 +80,26 @@ func (c *Client) BatchDescribeOrderCertificate(request *BatchDescribeOrderCertif
     return
 }
 
+// BatchDescribeOrderCertificate
+// 批量获取授权书下载地址
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_SENSITIVEIMAGE = "ResourceNotFound.SensitiveImage"
+//  RESOURCENOTFOUND_SENSITIVESEARCH = "ResourceNotFound.SensitiveSearch"
+func (c *Client) BatchDescribeOrderCertificateWithContext(ctx context.Context, request *BatchDescribeOrderCertificateRequest) (response *BatchDescribeOrderCertificateResponse, err error) {
+    if request == nil {
+        request = NewBatchDescribeOrderCertificateRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewBatchDescribeOrderCertificateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBatchDescribeOrderImageRequest() (request *BatchDescribeOrderImageRequest) {
     request = &BatchDescribeOrderImageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -116,6 +137,27 @@ func (c *Client) BatchDescribeOrderImage(request *BatchDescribeOrderImageRequest
     return
 }
 
+// BatchDescribeOrderImage
+// 批量获取图片下载地址
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_ORDEREXPIREDERROR = "LimitExceeded.OrderExpiredError"
+//  RESOURCENOTFOUND_SENSITIVEIMAGE = "ResourceNotFound.SensitiveImage"
+//  RESOURCENOTFOUND_SENSITIVESEARCH = "ResourceNotFound.SensitiveSearch"
+func (c *Client) BatchDescribeOrderImageWithContext(ctx context.Context, request *BatchDescribeOrderImageRequest) (response *BatchDescribeOrderImageResponse, err error) {
+    if request == nil {
+        request = NewBatchDescribeOrderImageRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewBatchDescribeOrderImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateOrderAndDownloadsRequest() (request *CreateOrderAndDownloadsRequest) {
     request = &CreateOrderAndDownloadsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -145,6 +187,25 @@ func (c *Client) CreateOrderAndDownloads(request *CreateOrderAndDownloadsRequest
     if request == nil {
         request = NewCreateOrderAndDownloadsRequest()
     }
+    
+    response = NewCreateOrderAndDownloadsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateOrderAndDownloads
+// 核销图片，获取原图URL地址
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateOrderAndDownloadsWithContext(ctx context.Context, request *CreateOrderAndDownloadsRequest) (response *CreateOrderAndDownloadsResponse, err error) {
+    if request == nil {
+        request = NewCreateOrderAndDownloadsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateOrderAndDownloadsResponse()
     err = c.Send(request, response)
@@ -190,6 +251,29 @@ func (c *Client) CreateOrderAndPay(request *CreateOrderAndPayRequest) (response 
     return
 }
 
+// CreateOrderAndPay
+// 购买一张图片并且支付
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_ORDERLIMITERROR = "LimitExceeded.OrderLimitError"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateOrderAndPayWithContext(ctx context.Context, request *CreateOrderAndPayRequest) (response *CreateOrderAndPayResponse, err error) {
+    if request == nil {
+        request = NewCreateOrderAndPayRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateOrderAndPayResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAuthUsersRequest() (request *DescribeAuthUsersRequest) {
     request = &DescribeAuthUsersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -224,6 +308,24 @@ func (c *Client) DescribeAuthUsers(request *DescribeAuthUsersRequest) (response 
     return
 }
 
+// DescribeAuthUsers
+// 分页查询授权人列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeAuthUsersWithContext(ctx context.Context, request *DescribeAuthUsersRequest) (response *DescribeAuthUsersResponse, err error) {
+    if request == nil {
+        request = NewDescribeAuthUsersRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAuthUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDownloadInfosRequest() (request *DescribeDownloadInfosRequest) {
     request = &DescribeDownloadInfosRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -251,6 +353,23 @@ func (c *Client) DescribeDownloadInfos(request *DescribeDownloadInfosRequest) (r
     if request == nil {
         request = NewDescribeDownloadInfosRequest()
     }
+    
+    response = NewDescribeDownloadInfosResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeDownloadInfos
+// 获取用户图片下载记录
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeDownloadInfosWithContext(ctx context.Context, request *DescribeDownloadInfosRequest) (response *DescribeDownloadInfosResponse, err error) {
+    if request == nil {
+        request = NewDescribeDownloadInfosRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeDownloadInfosResponse()
     err = c.Send(request, response)
@@ -296,6 +415,29 @@ func (c *Client) DescribeImage(request *DescribeImageRequest) (response *Describ
     return
 }
 
+// DescribeImage
+// 根据ID查询一张图片的详细信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SENSITIVEIMAGE = "ResourceNotFound.SensitiveImage"
+//  RESOURCENOTFOUND_SENSITIVESEARCH = "ResourceNotFound.SensitiveSearch"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeImageWithContext(ctx context.Context, request *DescribeImageRequest) (response *DescribeImageResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeImagesRequest() (request *DescribeImagesRequest) {
     request = &DescribeImagesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -327,6 +469,27 @@ func (c *Client) DescribeImages(request *DescribeImagesRequest) (response *Descr
     if request == nil {
         request = NewDescribeImagesRequest()
     }
+    
+    response = NewDescribeImagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeImages
+// 根据关键字搜索图片列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_SENSITIVESEARCH = "ResourceNotFound.SensitiveSearch"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeImagesWithContext(ctx context.Context, request *DescribeImagesRequest) (response *DescribeImagesResponse, err error) {
+    if request == nil {
+        request = NewDescribeImagesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeImagesResponse()
     err = c.Send(request, response)

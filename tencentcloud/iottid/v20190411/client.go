@@ -15,6 +15,7 @@
 package v20190411
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -79,6 +80,26 @@ func (c *Client) AuthTestTid(request *AuthTestTidRequest) (response *AuthTestTid
     return
 }
 
+// AuthTestTid
+// 单向认证测试TID 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATA = "InvalidParameterValue.Data"
+//  INVALIDPARAMETERVALUE_EMPTYSTRING = "InvalidParameterValue.EmptyString"
+//  INVALIDPARAMETERVALUE_PERMISSIONDENIED = "InvalidParameterValue.PermissionDenied"
+func (c *Client) AuthTestTidWithContext(ctx context.Context, request *AuthTestTidRequest) (response *AuthTestTidResponse, err error) {
+    if request == nil {
+        request = NewAuthTestTidRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewAuthTestTidResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBurnTidNotifyRequest() (request *BurnTidNotifyRequest) {
     request = &BurnTidNotifyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -111,6 +132,28 @@ func (c *Client) BurnTidNotify(request *BurnTidNotifyRequest) (response *BurnTid
     if request == nil {
         request = NewBurnTidNotifyRequest()
     }
+    
+    response = NewBurnTidNotifyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// BurnTidNotify
+// 安全芯片TID烧录回执 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_EMPTYSTRING = "InvalidParameterValue.EmptyString"
+//  INVALIDPARAMETERVALUE_ORDERID = "InvalidParameterValue.OrderId"
+//  INVALIDPARAMETERVALUE_PERMISSIONDENIED = "InvalidParameterValue.PermissionDenied"
+//  INVALIDPARAMETERVALUE_QUANTITY = "InvalidParameterValue.Quantity"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+func (c *Client) BurnTidNotifyWithContext(ctx context.Context, request *BurnTidNotifyRequest) (response *BurnTidNotifyResponse, err error) {
+    if request == nil {
+        request = NewBurnTidNotifyRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewBurnTidNotifyResponse()
     err = c.Send(request, response)
@@ -154,6 +197,27 @@ func (c *Client) DeliverTidNotify(request *DeliverTidNotifyRequest) (response *D
     return
 }
 
+// DeliverTidNotify
+// 安全芯片为载体的TID空发回执，绑定TID与订单号。 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_EMPTYSTRING = "InvalidParameterValue.EmptyString"
+//  INVALIDPARAMETERVALUE_ORDERID = "InvalidParameterValue.OrderId"
+//  INVALIDPARAMETERVALUE_OVERLIMIT = "InvalidParameterValue.OverLimit"
+//  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
+func (c *Client) DeliverTidNotifyWithContext(ctx context.Context, request *DeliverTidNotifyRequest) (response *DeliverTidNotifyResponse, err error) {
+    if request == nil {
+        request = NewDeliverTidNotifyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeliverTidNotifyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeliverTidsRequest() (request *DeliverTidsRequest) {
     request = &DeliverTidsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -185,6 +249,27 @@ func (c *Client) DeliverTids(request *DeliverTidsRequest) (response *DeliverTids
     if request == nil {
         request = NewDeliverTidsRequest()
     }
+    
+    response = NewDeliverTidsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeliverTids
+// 设备服务商请求空发产品订单的TID信息 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_EMPTYSTRING = "InvalidParameterValue.EmptyString"
+//  INVALIDPARAMETERVALUE_ORDERID = "InvalidParameterValue.OrderId"
+//  INVALIDPARAMETERVALUE_PERMISSIONDENIED = "InvalidParameterValue.PermissionDenied"
+//  INVALIDPARAMETERVALUE_QUANTITY = "InvalidParameterValue.Quantity"
+func (c *Client) DeliverTidsWithContext(ctx context.Context, request *DeliverTidsRequest) (response *DeliverTidsResponse, err error) {
+    if request == nil {
+        request = NewDeliverTidsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeliverTidsResponse()
     err = c.Send(request, response)
@@ -226,6 +311,25 @@ func (c *Client) DescribeAvailableLibCount(request *DescribeAvailableLibCountReq
     return
 }
 
+// DescribeAvailableLibCount
+// 查询指定订单的可空发的白盒密钥数量
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ORDERID = "InvalidParameterValue.OrderId"
+//  INVALIDPARAMETERVALUE_PERMISSIONDENIED = "InvalidParameterValue.PermissionDenied"
+func (c *Client) DescribeAvailableLibCountWithContext(ctx context.Context, request *DescribeAvailableLibCountRequest) (response *DescribeAvailableLibCountResponse, err error) {
+    if request == nil {
+        request = NewDescribeAvailableLibCountRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAvailableLibCountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePermissionRequest() (request *DescribePermissionRequest) {
     request = &DescribePermissionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -255,6 +359,25 @@ func (c *Client) DescribePermission(request *DescribePermissionRequest) (respons
     if request == nil {
         request = NewDescribePermissionRequest()
     }
+    
+    response = NewDescribePermissionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribePermission
+// 查询企业用户TID平台控制台权限 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_APPID = "InvalidParameterValue.AppId"
+//  INVALIDPARAMETERVALUE_EMPTYSTRING = "InvalidParameterValue.EmptyString"
+func (c *Client) DescribePermissionWithContext(ctx context.Context, request *DescribePermissionRequest) (response *DescribePermissionResponse, err error) {
+    if request == nil {
+        request = NewDescribePermissionRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribePermissionResponse()
     err = c.Send(request, response)
@@ -292,6 +415,27 @@ func (c *Client) DownloadTids(request *DownloadTidsRequest) (response *DownloadT
     if request == nil {
         request = NewDownloadTidsRequest()
     }
+    
+    response = NewDownloadTidsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DownloadTids
+// 下载芯片订单的TID 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_EMPTYSTRING = "InvalidParameterValue.EmptyString"
+//  INVALIDPARAMETERVALUE_ORDERID = "InvalidParameterValue.OrderId"
+//  INVALIDPARAMETERVALUE_PERMISSIONDENIED = "InvalidParameterValue.PermissionDenied"
+//  INVALIDPARAMETERVALUE_QUANTITY = "InvalidParameterValue.Quantity"
+func (c *Client) DownloadTidsWithContext(ctx context.Context, request *DownloadTidsRequest) (response *DownloadTidsResponse, err error) {
+    if request == nil {
+        request = NewDownloadTidsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDownloadTidsResponse()
     err = c.Send(request, response)
@@ -336,6 +480,28 @@ func (c *Client) UploadDeviceUniqueCode(request *UploadDeviceUniqueCodeRequest) 
     return
 }
 
+// UploadDeviceUniqueCode
+// 上传硬件唯一标识码，是软加固设备身份参数。本接口如遇到错误数据，则所有当次上传数据失效。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_COUNT = "InvalidParameterValue.Count"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_ORDERID = "InvalidParameterValue.OrderId"
+//  INVALIDPARAMETERVALUE_OVERLIMIT = "InvalidParameterValue.OverLimit"
+//  INVALIDPARAMETERVALUE_PERMISSIONDENIED = "InvalidParameterValue.PermissionDenied"
+//  INVALIDPARAMETERVALUE_QUANTITY = "InvalidParameterValue.Quantity"
+func (c *Client) UploadDeviceUniqueCodeWithContext(ctx context.Context, request *UploadDeviceUniqueCodeRequest) (response *UploadDeviceUniqueCodeResponse, err error) {
+    if request == nil {
+        request = NewUploadDeviceUniqueCodeRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewUploadDeviceUniqueCodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewVerifyChipBurnInfoRequest() (request *VerifyChipBurnInfoRequest) {
     request = &VerifyChipBurnInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -366,6 +532,26 @@ func (c *Client) VerifyChipBurnInfo(request *VerifyChipBurnInfoRequest) (respons
     if request == nil {
         request = NewVerifyChipBurnInfoRequest()
     }
+    
+    response = NewVerifyChipBurnInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// VerifyChipBurnInfo
+// 下载控制台验证芯片烧录信息，保证TID与中心信息一致 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATA = "InvalidParameterValue.Data"
+//  INVALIDPARAMETERVALUE_EMPTYSTRING = "InvalidParameterValue.EmptyString"
+//  INVALIDPARAMETERVALUE_PERMISSIONDENIED = "InvalidParameterValue.PermissionDenied"
+func (c *Client) VerifyChipBurnInfoWithContext(ctx context.Context, request *VerifyChipBurnInfoRequest) (response *VerifyChipBurnInfoResponse, err error) {
+    if request == nil {
+        request = NewVerifyChipBurnInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewVerifyChipBurnInfoResponse()
     err = c.Send(request, response)

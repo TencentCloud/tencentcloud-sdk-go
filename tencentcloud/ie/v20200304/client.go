@@ -15,6 +15,7 @@
 package v20200304
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -92,6 +93,39 @@ func (c *Client) CreateEditingTask(request *CreateEditingTaskRequest) (response 
     return
 }
 
+// CreateEditingTask
+// 创建编辑理解任务，可以同时选择视频标签识别、分类识别、智能拆条、智能集锦、智能封面和片头片尾识别中的一项或者多项能力。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COSSTORAGEERROR = "FailedOperation.CosStorageError"
+//  FAILEDOPERATION_RUNNINGTASKEXCEED = "FailedOperation.RunningTaskExceed"
+//  FAILEDOPERATION_SERVERBUSY = "FailedOperation.ServerBusy"
+//  FAILEDOPERATION_VIDEODOWNLOADERROR = "FailedOperation.VideoDownloadError"
+//  FAILEDOPERATION_VIDEOPARSEERROR = "FailedOperation.VideoParseError"
+//  FAILEDOPERATION_VIDEOSIZEEXCEED = "FailedOperation.VideoSizeExceed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_CALLBACKURLERROR = "InvalidParameterValue.CallbackUrlError"
+//  INVALIDPARAMETERVALUE_CALLBACKURLNOTEXIST = "InvalidParameterValue.CallbackUrlNotExist"
+//  INVALIDPARAMETERVALUE_COSAUTHMODEERROR = "InvalidParameterValue.CosAuthModeError"
+//  INVALIDPARAMETERVALUE_COSHOSTEDIDNOTEXIST = "InvalidParameterValue.CosHostedIdNotExist"
+//  INVALIDPARAMETERVALUE_DOWNINFOFORMATWRONG = "InvalidParameterValue.DownInfoFormatWrong"
+//  INVALIDPARAMETERVALUE_DOWNINFOTYPEWRONG = "InvalidParameterValue.DownInfoTypeWrong"
+//  INVALIDPARAMETERVALUE_URLINFOURLERROR = "InvalidParameterValue.UrlInfoUrlError"
+//  INVALIDPARAMETERVALUE_VIDEOFORMATERROR = "InvalidParameterValue.VideoFormatError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateEditingTaskWithContext(ctx context.Context, request *CreateEditingTaskRequest) (response *CreateEditingTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateEditingTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateEditingTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateMediaProcessTaskRequest() (request *CreateMediaProcessTaskRequest) {
     request = &CreateMediaProcessTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -142,6 +176,40 @@ func (c *Client) CreateMediaProcessTask(request *CreateMediaProcessTaskRequest) 
     return
 }
 
+// CreateMediaProcessTask
+// 用于创建编辑处理任务，如媒体截取、媒体编辑、媒体拼接、媒体字幕。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RUNNINGTASKEXCEED = "FailedOperation.RunningTaskExceed"
+//  FAILEDOPERATION_SERVERBUSY = "FailedOperation.ServerBusy"
+//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
+//  FAILEDOPERATION_VIDEODOWNLOADERROR = "FailedOperation.VideoDownloadError"
+//  FAILEDOPERATION_VIDEOPARSEERROR = "FailedOperation.VideoParseError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CALLBACKURLERROR = "InvalidParameterValue.CallbackUrlError"
+//  INVALIDPARAMETERVALUE_DOWNINFOFORMATWRONG = "InvalidParameterValue.DownInfoFormatWrong"
+//  INVALIDPARAMETERVALUE_DOWNINFOTYPEWRONG = "InvalidParameterValue.DownInfoTypeWrong"
+//  INVALIDPARAMETERVALUE_LIVESOURCENOTSUPPORT = "InvalidParameterValue.LiveSourceNotSupport"
+//  INVALIDPARAMETERVALUE_TASKIDNOTEXIST = "InvalidParameterValue.TaskIdNotExist"
+//  INVALIDPARAMETERVALUE_URLINFOURLERROR = "InvalidParameterValue.UrlInfoUrlError"
+//  INVALIDPARAMETERVALUE_VIDEOFORMATERROR = "InvalidParameterValue.VideoFormatError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+func (c *Client) CreateMediaProcessTaskWithContext(ctx context.Context, request *CreateMediaProcessTaskRequest) (response *CreateMediaProcessTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateMediaProcessTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateMediaProcessTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateMediaQualityRestorationTaskRequest() (request *CreateMediaQualityRestorationTaskRequest) {
     request = &CreateMediaQualityRestorationTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -179,6 +247,33 @@ func (c *Client) CreateMediaQualityRestorationTask(request *CreateMediaQualityRe
     if request == nil {
         request = NewCreateMediaQualityRestorationTaskRequest()
     }
+    
+    response = NewCreateMediaQualityRestorationTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateMediaQualityRestorationTask
+// 创建画质重生任务，对视频进行转码、去噪、去划痕、去毛刺、超分、细节增强和色彩增强。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RUNNINGTASKEXCEED = "FailedOperation.RunningTaskExceed"
+//  FAILEDOPERATION_SERVERBUSY = "FailedOperation.ServerBusy"
+//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_CALLBACKURLERROR = "InvalidParameterValue.CallbackUrlError"
+//  INVALIDPARAMETERVALUE_TASKALREADYDONE = "InvalidParameterValue.TaskAlreadyDone"
+//  INVALIDPARAMETERVALUE_TASKDELETED = "InvalidParameterValue.TaskDeleted"
+//  INVALIDPARAMETERVALUE_TASKIDNOTEXIST = "InvalidParameterValue.TaskIdNotExist"
+//  INVALIDPARAMETERVALUE_URIERROR = "InvalidParameterValue.UriError"
+//  INVALIDPARAMETERVALUE_URLINFOURLERROR = "InvalidParameterValue.UrlInfoUrlError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateMediaQualityRestorationTaskWithContext(ctx context.Context, request *CreateMediaQualityRestorationTaskRequest) (response *CreateMediaQualityRestorationTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateMediaQualityRestorationTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateMediaQualityRestorationTaskResponse()
     err = c.Send(request, response)
@@ -228,6 +323,33 @@ func (c *Client) CreateQualityControlTask(request *CreateQualityControlTaskReque
     return
 }
 
+// CreateQualityControlTask
+// 通过接口可以智能检测视频画面中抖动重影、模糊、低光照、过曝光、黑边、白边、黑屏、白屏、花屏、噪点、马赛克、二维码等在内的多个场景，还可以自动检测视频无音频异常、无声音片段。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RUNNINGTASKEXCEED = "FailedOperation.RunningTaskExceed"
+//  FAILEDOPERATION_SERVERBUSY = "FailedOperation.ServerBusy"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_CALLBACKURLERROR = "InvalidParameterValue.CallbackUrlError"
+//  INVALIDPARAMETERVALUE_COSAUTHMODEERROR = "InvalidParameterValue.CosAuthModeError"
+//  INVALIDPARAMETERVALUE_COSHOSTEDIDNOTEXIST = "InvalidParameterValue.CosHostedIdNotExist"
+//  INVALIDPARAMETERVALUE_DOWNINFOFORMATWRONG = "InvalidParameterValue.DownInfoFormatWrong"
+//  INVALIDPARAMETERVALUE_DOWNINFOTYPEWRONG = "InvalidParameterValue.DownInfoTypeWrong"
+//  INVALIDPARAMETERVALUE_URLINFOURLERROR = "InvalidParameterValue.UrlInfoUrlError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateQualityControlTaskWithContext(ctx context.Context, request *CreateQualityControlTaskRequest) (response *CreateQualityControlTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateQualityControlTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateQualityControlTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEditingTaskResultRequest() (request *DescribeEditingTaskResultRequest) {
     request = &DescribeEditingTaskResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -264,6 +386,26 @@ func (c *Client) DescribeEditingTaskResult(request *DescribeEditingTaskResultReq
     return
 }
 
+// DescribeEditingTaskResult
+// 获取编辑理解任务结果。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_TASKIDNOTEXIST = "InvalidParameterValue.TaskIdNotExist"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeEditingTaskResultWithContext(ctx context.Context, request *DescribeEditingTaskResultRequest) (response *DescribeEditingTaskResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeEditingTaskResultRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeEditingTaskResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMediaProcessTaskResultRequest() (request *DescribeMediaProcessTaskResultRequest) {
     request = &DescribeMediaProcessTaskResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -290,6 +432,22 @@ func (c *Client) DescribeMediaProcessTaskResult(request *DescribeMediaProcessTas
     if request == nil {
         request = NewDescribeMediaProcessTaskResultRequest()
     }
+    
+    response = NewDescribeMediaProcessTaskResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeMediaProcessTaskResult
+// 用于获取编辑处理任务的结果。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_TASKIDNOTEXIST = "InvalidParameterValue.TaskIdNotExist"
+func (c *Client) DescribeMediaProcessTaskResultWithContext(ctx context.Context, request *DescribeMediaProcessTaskResultRequest) (response *DescribeMediaProcessTaskResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeMediaProcessTaskResultRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeMediaProcessTaskResultResponse()
     err = c.Send(request, response)
@@ -344,6 +502,38 @@ func (c *Client) DescribeMediaQualityRestorationTaskRusult(request *DescribeMedi
     return
 }
 
+// DescribeMediaQualityRestorationTaskRusult
+// 获取画质重生任务结果，查看结束后的文件信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COSSTORAGEERROR = "FailedOperation.CosStorageError"
+//  FAILEDOPERATION_EDITERROR = "FailedOperation.EditError"
+//  FAILEDOPERATION_ENCODEFORMATERROR = "FailedOperation.EncodeFormatError"
+//  FAILEDOPERATION_SEGMENTERROR = "FailedOperation.SegmentError"
+//  FAILEDOPERATION_SERVERBUSY = "FailedOperation.ServerBusy"
+//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
+//  FAILEDOPERATION_TRANSCODEERROR = "FailedOperation.TranscodeError"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  FAILEDOPERATION_VIDEODOWNLOADERROR = "FailedOperation.VideoDownloadError"
+//  FAILEDOPERATION_VIDEOPARSEERROR = "FailedOperation.VideoParseError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_TASKALREADYDONE = "InvalidParameterValue.TaskAlreadyDone"
+//  INVALIDPARAMETERVALUE_TASKDELETED = "InvalidParameterValue.TaskDeleted"
+//  INVALIDPARAMETERVALUE_TASKIDNOTEXIST = "InvalidParameterValue.TaskIdNotExist"
+//  INVALIDPARAMETERVALUE_URIERROR = "InvalidParameterValue.UriError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeMediaQualityRestorationTaskRusultWithContext(ctx context.Context, request *DescribeMediaQualityRestorationTaskRusultRequest) (response *DescribeMediaQualityRestorationTaskRusultResponse, err error) {
+    if request == nil {
+        request = NewDescribeMediaQualityRestorationTaskRusultRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeMediaQualityRestorationTaskRusultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeQualityControlTaskResultRequest() (request *DescribeQualityControlTaskResultRequest) {
     request = &DescribeQualityControlTaskResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -388,6 +578,34 @@ func (c *Client) DescribeQualityControlTaskResult(request *DescribeQualityContro
     return
 }
 
+// DescribeQualityControlTaskResult
+// 获取媒体质检任务结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SERVERBUSY = "FailedOperation.ServerBusy"
+//  FAILEDOPERATION_VIDEODOWNLOADERROR = "FailedOperation.VideoDownloadError"
+//  FAILEDOPERATION_VIDEOPARSEERROR = "FailedOperation.VideoParseError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_CALLBACKURLNOTEXIST = "InvalidParameterValue.CallbackUrlNotExist"
+//  INVALIDPARAMETERVALUE_COSAUTHMODEERROR = "InvalidParameterValue.CosAuthModeError"
+//  INVALIDPARAMETERVALUE_COSHOSTEDIDNOTEXIST = "InvalidParameterValue.CosHostedIdNotExist"
+//  INVALIDPARAMETERVALUE_DOWNINFOFORMATWRONG = "InvalidParameterValue.DownInfoFormatWrong"
+//  INVALIDPARAMETERVALUE_DOWNINFOTYPEWRONG = "InvalidParameterValue.DownInfoTypeWrong"
+//  INVALIDPARAMETERVALUE_TASKIDNOTEXIST = "InvalidParameterValue.TaskIdNotExist"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeQualityControlTaskResultWithContext(ctx context.Context, request *DescribeQualityControlTaskResultRequest) (response *DescribeQualityControlTaskResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeQualityControlTaskResultRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeQualityControlTaskResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopMediaProcessTaskRequest() (request *StopMediaProcessTaskRequest) {
     request = &StopMediaProcessTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -417,6 +635,25 @@ func (c *Client) StopMediaProcessTask(request *StopMediaProcessTaskRequest) (res
     if request == nil {
         request = NewStopMediaProcessTaskRequest()
     }
+    
+    response = NewStopMediaProcessTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// StopMediaProcessTask
+// 用于停止正在进行中的编辑处理任务。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ACTIONNOTSUPPORT = "InvalidParameterValue.ActionNotSupport"
+//  INVALIDPARAMETERVALUE_TASKIDNOTEXIST = "InvalidParameterValue.TaskIdNotExist"
+func (c *Client) StopMediaProcessTaskWithContext(ctx context.Context, request *StopMediaProcessTaskRequest) (response *StopMediaProcessTaskResponse, err error) {
+    if request == nil {
+        request = NewStopMediaProcessTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewStopMediaProcessTaskResponse()
     err = c.Send(request, response)
@@ -457,6 +694,30 @@ func (c *Client) StopMediaQualityRestorationTask(request *StopMediaQualityRestor
     if request == nil {
         request = NewStopMediaQualityRestorationTaskRequest()
     }
+    
+    response = NewStopMediaQualityRestorationTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// StopMediaQualityRestorationTask
+// 删除正在进行的画质重生任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SERVERBUSY = "FailedOperation.ServerBusy"
+//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_TASKALREADYDONE = "InvalidParameterValue.TaskAlreadyDone"
+//  INVALIDPARAMETERVALUE_TASKDELETED = "InvalidParameterValue.TaskDeleted"
+//  INVALIDPARAMETERVALUE_TASKIDNOTEXIST = "InvalidParameterValue.TaskIdNotExist"
+//  INVALIDPARAMETERVALUE_URIERROR = "InvalidParameterValue.UriError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) StopMediaQualityRestorationTaskWithContext(ctx context.Context, request *StopMediaQualityRestorationTaskRequest) (response *StopMediaQualityRestorationTaskResponse, err error) {
+    if request == nil {
+        request = NewStopMediaQualityRestorationTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewStopMediaQualityRestorationTaskResponse()
     err = c.Send(request, response)

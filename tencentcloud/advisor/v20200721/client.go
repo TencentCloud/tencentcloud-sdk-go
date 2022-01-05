@@ -15,6 +15,7 @@
 package v20200721
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -78,6 +79,25 @@ func (c *Client) DescribeStrategies(request *DescribeStrategiesRequest) (respons
     return
 }
 
+// DescribeStrategies
+// 用于查询评估项的信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeStrategiesWithContext(ctx context.Context, request *DescribeStrategiesRequest) (response *DescribeStrategiesResponse, err error) {
+    if request == nil {
+        request = NewDescribeStrategiesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeStrategiesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTaskStrategyRisksRequest() (request *DescribeTaskStrategyRisksRequest) {
     request = &DescribeTaskStrategyRisksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -110,6 +130,28 @@ func (c *Client) DescribeTaskStrategyRisks(request *DescribeTaskStrategyRisksReq
     if request == nil {
         request = NewDescribeTaskStrategyRisksRequest()
     }
+    
+    response = NewDescribeTaskStrategyRisksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeTaskStrategyRisks
+// 查询评估项风险实例列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTaskStrategyRisksWithContext(ctx context.Context, request *DescribeTaskStrategyRisksRequest) (response *DescribeTaskStrategyRisksResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskStrategyRisksRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeTaskStrategyRisksResponse()
     err = c.Send(request, response)

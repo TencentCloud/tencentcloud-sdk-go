@@ -15,6 +15,7 @@
 package v20180125
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -75,6 +76,22 @@ func (c *Client) AddCustomRule(request *AddCustomRuleRequest) (response *AddCust
     return
 }
 
+// AddCustomRule
+// 增加自定义策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) AddCustomRuleWithContext(ctx context.Context, request *AddCustomRuleRequest) (response *AddCustomRuleResponse, err error) {
+    if request == nil {
+        request = NewAddCustomRuleRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewAddCustomRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAccessExportRequest() (request *CreateAccessExportRequest) {
     request = &CreateAccessExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -126,6 +143,41 @@ func (c *Client) CreateAccessExport(request *CreateAccessExportRequest) (respons
     return
 }
 
+// CreateAccessExport
+// 本接口用于创建访问日志导出
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateAccessExportWithContext(ctx context.Context, request *CreateAccessExportRequest) (response *CreateAccessExportResponse, err error) {
+    if request == nil {
+        request = NewCreateAccessExportRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateAccessExportResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAttackDownloadTaskRequest() (request *CreateAttackDownloadTaskRequest) {
     request = &CreateAttackDownloadTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -152,6 +204,22 @@ func (c *Client) CreateAttackDownloadTask(request *CreateAttackDownloadTaskReque
     if request == nil {
         request = NewCreateAttackDownloadTaskRequest()
     }
+    
+    response = NewCreateAttackDownloadTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateAttackDownloadTask
+// 创建攻击日志下载任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) CreateAttackDownloadTaskWithContext(ctx context.Context, request *CreateAttackDownloadTaskRequest) (response *CreateAttackDownloadTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateAttackDownloadTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateAttackDownloadTaskResponse()
     err = c.Send(request, response)
@@ -209,6 +277,41 @@ func (c *Client) DeleteAccessExport(request *DeleteAccessExportRequest) (respons
     return
 }
 
+// DeleteAccessExport
+// 本接口用于删除访问日志导出
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteAccessExportWithContext(ctx context.Context, request *DeleteAccessExportRequest) (response *DeleteAccessExportResponse, err error) {
+    if request == nil {
+        request = NewDeleteAccessExportRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteAccessExportResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAttackDownloadRecordRequest() (request *DeleteAttackDownloadRecordRequest) {
     request = &DeleteAttackDownloadRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -236,6 +339,23 @@ func (c *Client) DeleteAttackDownloadRecord(request *DeleteAttackDownloadRecordR
     if request == nil {
         request = NewDeleteAttackDownloadRecordRequest()
     }
+    
+    response = NewDeleteAttackDownloadRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteAttackDownloadRecord
+// 删除攻击日志下载任务记录
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteAttackDownloadRecordWithContext(ctx context.Context, request *DeleteAttackDownloadRecordRequest) (response *DeleteAttackDownloadRecordResponse, err error) {
+    if request == nil {
+        request = NewDeleteAttackDownloadRecordRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteAttackDownloadRecordResponse()
     err = c.Send(request, response)
@@ -274,6 +394,22 @@ func (c *Client) DeleteDownloadRecord(request *DeleteDownloadRecordRequest) (res
     return
 }
 
+// DeleteDownloadRecord
+// 删除访问日志下载记录
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DeleteDownloadRecordWithContext(ctx context.Context, request *DeleteDownloadRecordRequest) (response *DeleteDownloadRecordResponse, err error) {
+    if request == nil {
+        request = NewDeleteDownloadRecordRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteDownloadRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteSessionRequest() (request *DeleteSessionRequest) {
     request = &DeleteSessionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -300,6 +436,22 @@ func (c *Client) DeleteSession(request *DeleteSessionRequest) (response *DeleteS
     if request == nil {
         request = NewDeleteSessionRequest()
     }
+    
+    response = NewDeleteSessionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteSession
+// 删除CC攻击的session设置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DeleteSessionWithContext(ctx context.Context, request *DeleteSessionRequest) (response *DeleteSessionResponse, err error) {
+    if request == nil {
+        request = NewDeleteSessionRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteSessionResponse()
     err = c.Send(request, response)
@@ -357,6 +509,41 @@ func (c *Client) DescribeAccessExports(request *DescribeAccessExportsRequest) (r
     return
 }
 
+// DescribeAccessExports
+// 本接口用于获取访问日志导出列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAccessExportsWithContext(ctx context.Context, request *DescribeAccessExportsRequest) (response *DescribeAccessExportsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccessExportsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAccessExportsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAccessFastAnalysisRequest() (request *DescribeAccessFastAnalysisRequest) {
     request = &DescribeAccessFastAnalysisRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -402,6 +589,41 @@ func (c *Client) DescribeAccessFastAnalysis(request *DescribeAccessFastAnalysisR
     if request == nil {
         request = NewDescribeAccessFastAnalysisRequest()
     }
+    
+    response = NewDescribeAccessFastAnalysisResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAccessFastAnalysis
+// 本接口用于访问日志的快速分析
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAccessFastAnalysisWithContext(ctx context.Context, request *DescribeAccessFastAnalysisRequest) (response *DescribeAccessFastAnalysisResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccessFastAnalysisRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAccessFastAnalysisResponse()
     err = c.Send(request, response)
@@ -459,6 +681,41 @@ func (c *Client) DescribeAccessIndex(request *DescribeAccessIndexRequest) (respo
     return
 }
 
+// DescribeAccessIndex
+// 本接口用于获取访问日志索引配置信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAccessIndexWithContext(ctx context.Context, request *DescribeAccessIndexRequest) (response *DescribeAccessIndexResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccessIndexRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAccessIndexResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCustomRulesRequest() (request *DescribeCustomRulesRequest) {
     request = &DescribeCustomRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -485,6 +742,22 @@ func (c *Client) DescribeCustomRules(request *DescribeCustomRulesRequest) (respo
     if request == nil {
         request = NewDescribeCustomRulesRequest()
     }
+    
+    response = NewDescribeCustomRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCustomRules
+// 获取防护配置中的自定义策略列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeCustomRulesWithContext(ctx context.Context, request *DescribeCustomRulesRequest) (response *DescribeCustomRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomRulesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeCustomRulesResponse()
     err = c.Send(request, response)
@@ -520,6 +793,25 @@ func (c *Client) DescribeFlowTrend(request *DescribeFlowTrendRequest) (response 
     if request == nil {
         request = NewDescribeFlowTrendRequest()
     }
+    
+    response = NewDescribeFlowTrendResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeFlowTrend
+// 获取waf流量访问趋势
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeFlowTrendWithContext(ctx context.Context, request *DescribeFlowTrendRequest) (response *DescribeFlowTrendResponse, err error) {
+    if request == nil {
+        request = NewDescribeFlowTrendRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeFlowTrendResponse()
     err = c.Send(request, response)
@@ -566,6 +858,36 @@ func (c *Client) DescribeUserClbWafRegions(request *DescribeUserClbWafRegionsReq
     if request == nil {
         request = NewDescribeUserClbWafRegionsRequest()
     }
+    
+    response = NewDescribeUserClbWafRegionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeUserClbWafRegions
+// 在负载均衡型WAF的添加、编辑域名配置的时候，需要展示负载均衡型WAF（clb-waf)支持的地域列表，通过DescribeUserClbWafRegions既可以获得当前对客户已经开放的地域列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeUserClbWafRegionsWithContext(ctx context.Context, request *DescribeUserClbWafRegionsRequest) (response *DescribeUserClbWafRegionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserClbWafRegionsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeUserClbWafRegionsResponse()
     err = c.Send(request, response)
@@ -623,6 +945,41 @@ func (c *Client) ModifyAccessPeriod(request *ModifyAccessPeriodRequest) (respons
     return
 }
 
+// ModifyAccessPeriod
+// 本接口用于修改访问日志保存期限
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyAccessPeriodWithContext(ctx context.Context, request *ModifyAccessPeriodRequest) (response *ModifyAccessPeriodResponse, err error) {
+    if request == nil {
+        request = NewModifyAccessPeriodRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyAccessPeriodResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyCustomRuleStatusRequest() (request *ModifyCustomRuleStatusRequest) {
     request = &ModifyCustomRuleStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -649,6 +1006,22 @@ func (c *Client) ModifyCustomRuleStatus(request *ModifyCustomRuleStatusRequest) 
     if request == nil {
         request = NewModifyCustomRuleStatusRequest()
     }
+    
+    response = NewModifyCustomRuleStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyCustomRuleStatus
+// 开启或禁用自定义策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ModifyCustomRuleStatusWithContext(ctx context.Context, request *ModifyCustomRuleStatusRequest) (response *ModifyCustomRuleStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyCustomRuleStatusRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyCustomRuleStatusResponse()
     err = c.Send(request, response)
@@ -700,6 +1073,41 @@ func (c *Client) SearchAccessLog(request *SearchAccessLogRequest) (response *Sea
     if request == nil {
         request = NewSearchAccessLogRequest()
     }
+    
+    response = NewSearchAccessLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SearchAccessLog
+// 本接口用于搜索WAF访问日志
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SearchAccessLogWithContext(ctx context.Context, request *SearchAccessLogRequest) (response *SearchAccessLogResponse, err error) {
+    if request == nil {
+        request = NewSearchAccessLogRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewSearchAccessLogResponse()
     err = c.Send(request, response)

@@ -73,6 +73,15 @@ func (r *AssignProjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Auth struct {
+
+	// *表示所有数据库,db.name表示特定的name数据库。
+	NameSpace *string `json:"NameSpace,omitempty" name:"NameSpace"`
+
+	// 用于控制权限,0无权限，1只读，2只写，3读写。
+	Mask *int64 `json:"Mask,omitempty" name:"Mask"`
+}
+
 type BackupDownloadTask struct {
 
 	// 任务创建时间
@@ -2441,6 +2450,63 @@ type SecurityGroupBound struct {
 
 	// 描述
 	Desc *string `json:"Desc,omitempty" name:"Desc"`
+}
+
+type SetAccountUserPrivilegeRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 账号名称
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 权限信息
+	AuthRole []*Auth `json:"AuthRole,omitempty" name:"AuthRole"`
+}
+
+func (r *SetAccountUserPrivilegeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetAccountUserPrivilegeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "UserName")
+	delete(f, "AuthRole")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetAccountUserPrivilegeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SetAccountUserPrivilegeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 设置任务ID,用于查询是否设置完成
+		FlowId *uint64 `json:"FlowId,omitempty" name:"FlowId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SetAccountUserPrivilegeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetAccountUserPrivilegeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ShardInfo struct {
