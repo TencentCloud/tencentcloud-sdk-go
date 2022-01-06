@@ -1,3 +1,152 @@
+# Release v1.0.325
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 77 次发布
+
+发布时间：2022-01-06 08:05:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCloneInstance](https://cloud.tencent.com/document/api/236/50424)
+
+	* 新增入参：CageId
+
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 62 次发布
+
+发布时间：2022-01-06 08:06:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateLoadBalancer](https://cloud.tencent.com/document/api/214/30692)
+
+	* 新增出参：DealName
+
+* [DescribeTaskStatus](https://cloud.tencent.com/document/api/214/30683)
+
+	* 新增入参：DealName
+
+	* 新增出参：LoadBalancerIds
+
+
+
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 36 次发布
+
+发布时间：2022-01-06 08:09:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [PhoneVerification](https://cloud.tencent.com/document/api/1007/39765)
+
+	* 新增出参：Isp
+
+
+修改数据结构：
+
+* [DetectInfoIdCardData](https://cloud.tencent.com/document/api/1007/41958#DetectInfoIdCardData)
+
+	* 新增成员：WarnInfos
+
+
+
+
+## 物联网智能视频服务（行业版）(iotvideoindustry) 版本：2020-12-01
+
+### 第 15 次发布
+
+发布时间：2022-01-06 08:11:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ControlChannelLocalRecord](https://cloud.tencent.com/document/api/1361/67425)
+* [ControlChannelPTZ](https://cloud.tencent.com/document/api/1361/67403)
+* [ControlHomePosition](https://cloud.tencent.com/document/api/1361/67396)
+* [ControlPreset](https://cloud.tencent.com/document/api/1361/67402)
+* [CreateRecordingPlan](https://cloud.tencent.com/document/api/1361/53742)
+* [DeleteRecordingPlan](https://cloud.tencent.com/document/api/1361/53740)
+* [DeleteWarning](https://cloud.tencent.com/document/api/1361/67401)
+* [DescribeAbnormalEvents](https://cloud.tencent.com/document/api/1361/67411)
+* [DescribeBindSceneChannels](https://cloud.tencent.com/document/api/1361/67404)
+* [DescribeChannelLocalRecordURL](https://cloud.tencent.com/document/api/1361/67424)
+* [DescribeChannelStreamURL](https://cloud.tencent.com/document/api/1361/67426)
+* [DescribeChannels](https://cloud.tencent.com/document/api/1361/67429)
+* [DescribeCurrentDeviceData](https://cloud.tencent.com/document/api/1361/67410)
+* [DescribeDevice](https://cloud.tencent.com/document/api/1361/67395)
+* [DescribeDeviceEvent](https://cloud.tencent.com/document/api/1361/67409)
+* [DescribeDeviceList](https://cloud.tencent.com/document/api/1361/53721)
+* [DescribeDeviceMonitorData](https://cloud.tencent.com/document/api/1361/67408)
+* [DescribeMonitorDataByDate](https://cloud.tencent.com/document/api/1361/67407)
+* [DescribePresetList](https://cloud.tencent.com/document/api/1361/67400)
+* [DescribeRecordDatesByChannel](https://cloud.tencent.com/document/api/1361/67423)
+* [DescribeRecordingPlanById](https://cloud.tencent.com/document/api/1361/67419)
+* [DescribeRecordingPlans](https://cloud.tencent.com/document/api/1361/67418)
+* [DescribeScene](https://cloud.tencent.com/document/api/1361/67417)
+* [DescribeVideoListByChannel](https://cloud.tencent.com/document/api/1361/67422)
+* [DescribeWarnMod](https://cloud.tencent.com/document/api/1361/67399)
+* [DescribeWarnings](https://cloud.tencent.com/document/api/1361/67398)
+* [DescribeXP2PData](https://cloud.tencent.com/document/api/1361/67431)
+* [ModifyBindRecordingPlan](https://cloud.tencent.com/document/api/1361/67416)
+* [ModifyBindSceneChannels](https://cloud.tencent.com/document/api/1361/67415)
+* [ModifyBindSceneDevice](https://cloud.tencent.com/document/api/1361/67414)
+* [ModifyPreset](https://cloud.tencent.com/document/api/1361/67394)
+* [ModifyRecordingPlan](https://cloud.tencent.com/document/api/1361/67413)
+* [ModifyScene](https://cloud.tencent.com/document/api/1361/67412)
+* [ResetWarning](https://cloud.tencent.com/document/api/1361/67397)
+
+修改接口：
+
+* [CreateScene](https://cloud.tencent.com/document/api/1361/65989)
+
+	* 新增入参：Channels
+
+
+新增数据结构：
+
+* [AbnormalEvents](https://cloud.tencent.com/document/api/1361/53754#AbnormalEvents)
+* [AbnormalEventsInfo](https://cloud.tencent.com/document/api/1361/53754#AbnormalEventsInfo)
+* [ChannelDetail](https://cloud.tencent.com/document/api/1361/53754#ChannelDetail)
+* [ChannelItem](https://cloud.tencent.com/document/api/1361/53754#ChannelItem)
+* [DeviceMonitorValue](https://cloud.tencent.com/document/api/1361/53754#DeviceMonitorValue)
+* [Events](https://cloud.tencent.com/document/api/1361/53754#Events)
+* [PresetItem](https://cloud.tencent.com/document/api/1361/53754#PresetItem)
+* [RecordPlanDetail](https://cloud.tencent.com/document/api/1361/53754#RecordPlanDetail)
+* [RecordStatistic](https://cloud.tencent.com/document/api/1361/53754#RecordStatistic)
+* [RecordStatisticValue](https://cloud.tencent.com/document/api/1361/53754#RecordStatisticValue)
+* [WarningsData](https://cloud.tencent.com/document/api/1361/53754#WarningsData)
+
+修改数据结构：
+
+* [GroupDeviceItem](https://cloud.tencent.com/document/api/1361/53754#GroupDeviceItem)
+
+	* 新增成员：CreateTime, ChannelNum, VideoChannelNum
+
+
+
+
 # Release v1.0.324
 
 ## 应用性能观测(apm) 版本：2021-06-22

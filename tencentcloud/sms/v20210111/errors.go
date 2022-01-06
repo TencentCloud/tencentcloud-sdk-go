@@ -50,7 +50,7 @@ const (
 	// 此模板 ID 未提交申请或不存在，不能进行修改操作，请检查您的 TemplateId是否填写正确。
 	FAILEDOPERATION_MISSINGTEMPLATETOMODIFY = "FailedOperation.MissingTemplateToModify"
 
-	// 非企业认证无法使用签名及模版相关接口，您可以[ 变更实名认证模式](https://cloud.tencent.com/document/product/378/34075)，变更为企业认证用户后，约1小时左右生效。
+	// 非企业认证无法使用签名及模板相关接口，您可以[ 变更实名认证模式](https://cloud.tencent.com/document/product/378/34075)，变更为企业认证用户后，约1小时左右生效。
 	FAILEDOPERATION_NOTENTERPRISECERTIFICATION = "FailedOperation.NotEnterpriseCertification"
 
 	// 其他错误，一般是由于参数携带不符合要求导致，请参考API接口说明，如有需要请联系 [腾讯云短信小助手](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81)。
@@ -176,7 +176,7 @@ const (
 	// 已存在相同的待审核签名。
 	INVALIDPARAMETERVALUE_SIGNEXISTANDUNAPPROVED = "InvalidParameterValue.SignExistAndUnapproved"
 
-	// 验证码模板参数格式错误，验证码类模版，模版变量只能传入0 - 6位（包括6位）纯数字。
+	// 验证码模板参数格式错误，验证码类模板，模板变量只能传入0 - 6位（包括6位）纯数字。
 	INVALIDPARAMETERVALUE_TEMPLATEPARAMETERFORMATERROR = "InvalidParameterValue.TemplateParameterFormatError"
 
 	// 单个模板变量字符数超过12个，企业认证用户不限制单个变量值字数，您可以 [变更实名认证模式](https://cloud.tencent.com/document/product/378/34075)，变更为企业认证用户后，该限制变更约1小时左右生效。

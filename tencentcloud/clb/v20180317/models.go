@@ -1173,6 +1173,10 @@ type CreateLoadBalancerResponse struct {
 		// 由负载均衡实例唯一 ID 组成的数组。
 		LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds"`
 
+		// 订单号。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DealName *string `json:"DealName,omitempty" name:"DealName"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -3584,6 +3588,9 @@ type DescribeTaskStatusRequest struct {
 
 	// 请求ID，即接口返回的 RequestId 参数。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 订单ID。
+	DealName *string `json:"DealName,omitempty" name:"DealName"`
 }
 
 func (r *DescribeTaskStatusRequest) ToJsonString() string {
@@ -3599,6 +3606,7 @@ func (r *DescribeTaskStatusRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "TaskId")
+	delete(f, "DealName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskStatusRequest has unknown keys!", "")
 	}
@@ -3611,6 +3619,10 @@ type DescribeTaskStatusResponse struct {
 
 		// 任务的当前状态。 0：成功，1：失败，2：进行中。
 		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 由负载均衡实例唯一 ID 组成的数组。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

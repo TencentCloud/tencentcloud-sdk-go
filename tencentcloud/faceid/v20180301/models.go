@@ -853,6 +853,13 @@ type DetectInfoIdCardData struct {
 	// 身份证正面人像图base64编码。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Avatar *string `json:"Avatar,omitempty" name:"Avatar"`
+
+	// 开启身份证防翻拍告警功能后才会返回，返回数组中可能出现的告警码如下：
+	// -9102 身份证复印件告警。
+	// -9103 身份证翻拍告警。
+	// -9106 身份证 PS 告警。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WarnInfos []*int64 `json:"WarnInfos,omitempty" name:"WarnInfos"`
 }
 
 type DetectInfoText struct {
@@ -2734,6 +2741,10 @@ type PhoneVerificationResponse struct {
 
 		// 业务结果描述。
 		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 运营商名称。
+	// 取值范围为["","移动","电信","联通"]
+		Isp *string `json:"Isp,omitempty" name:"Isp"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

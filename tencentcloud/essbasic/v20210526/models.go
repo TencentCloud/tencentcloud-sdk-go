@@ -477,7 +477,7 @@ type DescribeTemplatesRequest struct {
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 模版唯一标识
+	// 模板唯一标识
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 

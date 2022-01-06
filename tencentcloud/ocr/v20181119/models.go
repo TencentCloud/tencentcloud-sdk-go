@@ -464,7 +464,7 @@ func (r *BizLicenseOCRResponse) FromJsonString(s string) error {
 type BizLicenseVerifyResult struct {
 
 	// “0“：一致
-	// “-1”：此号未查询到结果
+	// “-1”：不一致
 	RegNum *string `json:"RegNum,omitempty" name:"RegNum"`
 
 	// “0“：一致

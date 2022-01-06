@@ -50,6 +50,9 @@ const (
 	// 账户余额不足，请检查。
 	INVALIDPARAMETERVALUE_BALANCENOTENOUGH = "InvalidParameterValue.BalanceNotEnough"
 
+	// 无法通过该设备ID查找设备。
+	INVALIDPARAMETERVALUE_DEVICEDATAMAPERROR = "InvalidParameterValue.DeviceDataMapError"
+
 	// 设备Id不合法。
 	INVALIDPARAMETERVALUE_DEVICEID = "InvalidParameterValue.DeviceId"
 
@@ -58,6 +61,9 @@ const (
 
 	// 设备离线或未注册。
 	INVALIDPARAMETERVALUE_DEVICEOFFLINE = "InvalidParameterValue.DeviceOffline"
+
+	// 设备或通道处于在线状态。
+	INVALIDPARAMETERVALUE_DEVICEONLINE = "InvalidParameterValue.DeviceOnline"
 
 	// 设备类型不支持。
 	INVALIDPARAMETERVALUE_DEVICETYPENOTSUPPORT = "InvalidParameterValue.DeviceTypeNotSupport"
@@ -83,6 +89,12 @@ const (
 	// 最多创建100个录制计划。
 	INVALIDPARAMETERVALUE_RECORDPLANBEYONDLIMIT = "InvalidParameterValue.RecordPlanBeyondLimit"
 
+	// 超过创建条目限制。
+	INVALIDPARAMETERVALUE_RULELIMIT = "InvalidParameterValue.RuleLimit"
+
+	// 规则不存在。
+	INVALIDPARAMETERVALUE_RULENOTEXIST = "InvalidParameterValue.RuleNotExist"
+
 	// 流Id不合法。
 	INVALIDPARAMETERVALUE_STREAMID = "InvalidParameterValue.StreamId"
 
@@ -94,6 +106,12 @@ const (
 
 	// 模板时间片段为空。
 	INVALIDPARAMETERVALUE_TEMPLATESPECEMPTY = "InvalidParameterValue.TemplateSpecEmpty"
+
+	// 请求时间粒度不支持。
+	INVALIDPARAMETERVALUE_TIMESPECNOTSUPPORT = "InvalidParameterValue.TimeSpecNotSupport"
+
+	// 请求类型不支持。
+	INVALIDPARAMETERVALUE_TYPENOTSUPPORT = "InvalidParameterValue.TypeNotSupport"
 
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
@@ -188,11 +206,20 @@ const (
 	// 父分组不存在。
 	UNSUPPORTEDOPERATION_GROUPPARENTIDNOTEXIST = "UnsupportedOperation.GroupParentidNotExist"
 
+	// 存在直播频道与当前直播录制计划绑定。
+	UNSUPPORTEDOPERATION_LIVECHANNELBINDEXIST = "UnsupportedOperation.LiveChannelBindExist"
+
+	// 没有该设备的权限。
+	UNSUPPORTEDOPERATION_NOPERMISSION = "UnsupportedOperation.NoPermission"
+
 	// 时间模板下存在未删除的录制计划时不允许删除或修改。
 	UNSUPPORTEDOPERATION_PLANEXISTUNDERTEMPLATE = "UnsupportedOperation.PlanExistUnderTemplate"
 
 	// 该名字录制计划已创建，请修改其他计划名字。
 	UNSUPPORTEDOPERATION_RECORDPLANEXIST = "UnsupportedOperation.RecordPlanExist"
+
+	// 存在重复规则。
+	UNSUPPORTEDOPERATION_RULEDUPKEYEXIST = "UnsupportedOperation.RuleDupKeyExist"
 
 	// 已存在同名场景。
 	UNSUPPORTEDOPERATION_SCENEEXIST = "UnsupportedOperation.SceneExist"

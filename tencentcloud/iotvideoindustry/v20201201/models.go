@@ -20,6 +20,28 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AbnormalEvents struct {
+
+	// 对应查询日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 列表信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Info []*AbnormalEventsInfo `json:"Info,omitempty" name:"Info"`
+}
+
+type AbnormalEventsInfo struct {
+
+	// 类型值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *int64 `json:"Key,omitempty" name:"Key"`
+
+	// 类型总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+}
+
 type AllDeviceInfo struct {
 
 	// 设备唯一标识
@@ -125,6 +147,186 @@ func (r *BindGroupDevicesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ChannelDetail struct {
+
+	// 通道名称
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 通道唯一标识
+	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
+
+	// 通道类型 0：未知；1：视频通道；2：音频通道；3：告警通道
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelType *int64 `json:"ChannelType,omitempty" name:"ChannelType"`
+
+	// 20位国标通道编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelCode *string `json:"ChannelCode,omitempty" name:"ChannelCode"`
+
+	// 通道扩展信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtraInformation *string `json:"ExtraInformation,omitempty" name:"ExtraInformation"`
+
+	// 通道在线状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 通道是否存在录像标识 0：无录像；1：有录像
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsRecord *int64 `json:"IsRecord,omitempty" name:"IsRecord"`
+
+	// 通道所属设备唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 通道所属虚拟组织的ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessGroupId *string `json:"BusinessGroupId,omitempty" name:"BusinessGroupId"`
+}
+
+type ChannelItem struct {
+
+	// 设备唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 通道唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
+}
+
+type ControlChannelLocalRecordRequest struct {
+	*tchttp.BaseRequest
+
+	// 设备唯一标识
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 通道唯一标识
+	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
+
+	// 流Id，流的唯一标识
+	StreamId *string `json:"StreamId,omitempty" name:"StreamId"`
+
+	// 控制参数，转义的json字符串
+	// 
+	// 目前支持的command：
+	// "Command": "{"Action":"PAUSE"}" 暂停
+	// "Command": "{"Action":"PLAY"}" 暂停恢复
+	// "Command": "{"Action":"PLAY","Offset":"15"}" 基于文件起始时间点的位置偏移，单位秒
+	Command *string `json:"Command,omitempty" name:"Command"`
+}
+
+func (r *ControlChannelLocalRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ControlChannelLocalRecordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceId")
+	delete(f, "ChannelId")
+	delete(f, "StreamId")
+	delete(f, "Command")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ControlChannelLocalRecordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ControlChannelLocalRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ControlChannelLocalRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ControlChannelLocalRecordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ControlChannelPTZRequest struct {
+	*tchttp.BaseRequest
+
+	// 设备唯一标识
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 通道唯一标识
+	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
+
+	// PTZ控制命令类型：
+	// stop - 停止当前PTZ信令
+	// left - 向左移动
+	// right - 向右移动
+	// up - 向上移动
+	// down - 向下移动
+	// leftUp - 左上移动
+	// leftDown - 左下移动
+	// rightUp - 右上移动
+	// rightDown - 右下移动
+	// zoomOut - 镜头缩小
+	// zoomIn - 镜头放大
+	// irisIn - 光圈缩小
+	// irisOut - 光圈放大
+	// focusIn - 焦距变近
+	// focusOut - 焦距变远
+	Command *string `json:"Command,omitempty" name:"Command"`
+}
+
+func (r *ControlChannelPTZRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ControlChannelPTZRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceId")
+	delete(f, "ChannelId")
+	delete(f, "Command")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ControlChannelPTZRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ControlChannelPTZResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ControlChannelPTZResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ControlChannelPTZResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ControlDevicePTZRequest struct {
 	*tchttp.BaseRequest
 
@@ -191,6 +393,129 @@ func (r *ControlDevicePTZResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ControlDevicePTZResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ControlHomePositionRequest struct {
+	*tchttp.BaseRequest
+
+	// 通道ID
+	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
+
+	// 设备Id
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 看守位使能 0-停用看守位 1-启用看守位
+	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
+
+	// 预置位编码 范围1-8，启用看守位时必填
+	PresetId *int64 `json:"PresetId,omitempty" name:"PresetId"`
+
+	// 看守位自动归位时间， 启用看守位时必填
+	ResetTime *int64 `json:"ResetTime,omitempty" name:"ResetTime"`
+}
+
+func (r *ControlHomePositionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ControlHomePositionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelId")
+	delete(f, "DeviceId")
+	delete(f, "Enable")
+	delete(f, "PresetId")
+	delete(f, "ResetTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ControlHomePositionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ControlHomePositionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ControlHomePositionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ControlHomePositionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ControlPresetRequest struct {
+	*tchttp.BaseRequest
+
+	// 通道ID
+	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
+
+	// 控制命令：
+	// Set-设置当前位置为预置位
+	// Del-删除指定的预置位
+	// Call-调用指定的预置位
+	Command *string `json:"Command,omitempty" name:"Command"`
+
+	// 预置位编码 范围1-8
+	PresetId *int64 `json:"PresetId,omitempty" name:"PresetId"`
+
+	// 设备Id
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+}
+
+func (r *ControlPresetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ControlPresetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelId")
+	delete(f, "Command")
+	delete(f, "PresetId")
+	delete(f, "DeviceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ControlPresetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ControlPresetResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ControlPresetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ControlPresetResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -328,7 +653,7 @@ type CreateDeviceRequest struct {
 	// 设备密码
 	PassWord *string `json:"PassWord,omitempty" name:"PassWord"`
 
-	// 设备类型 2:国标IPC设备; 3:NVR设备
+	// 设备类型，1：国标VMS设备(公有云不支持此类型)，2：国标IPC设备，3：国标NVR设备，9：智能告警设备(公有云不支持此类型)
 	DeviceType *int64 `json:"DeviceType,omitempty" name:"DeviceType"`
 
 	// 设备需要绑定的分组ID，参数为空则默认绑定到根分组
@@ -369,7 +694,7 @@ type CreateDeviceResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
 
-		// 设备虚拟组信息，仅在创建NVR/VMS时返回该值
+		// 设备虚拟组信息，仅在创建NVR时返回该值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		VirtualGroupId *string `json:"VirtualGroupId,omitempty" name:"VirtualGroupId"`
 
@@ -652,6 +977,67 @@ func (r *CreateRecordPlanResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateRecordingPlanRequest struct {
+	*tchttp.BaseRequest
+
+	// 计划名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 时间模板ID
+	TimeTemplateId *string `json:"TimeTemplateId,omitempty" name:"TimeTemplateId"`
+
+	// 该录制计划绑定的通道列表
+	Channels []*ChannelItem `json:"Channels,omitempty" name:"Channels"`
+
+	// 存储周期(天)；默认存储30天
+	RecordStorageTime *int64 `json:"RecordStorageTime,omitempty" name:"RecordStorageTime"`
+}
+
+func (r *CreateRecordingPlanRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRecordingPlanRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "TimeTemplateId")
+	delete(f, "Channels")
+	delete(f, "RecordStorageTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRecordingPlanRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateRecordingPlanResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 录制计划ID
+		PlanId *string `json:"PlanId,omitempty" name:"PlanId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateRecordingPlanResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRecordingPlanResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateSceneRequest struct {
 	*tchttp.BaseRequest
 
@@ -667,8 +1053,11 @@ type CreateSceneRequest struct {
 	// 录像存储时长(天)
 	StoreDuration *int64 `json:"StoreDuration,omitempty" name:"StoreDuration"`
 
-	// 设备列表
+	// 设备列表(不推荐使用)
 	Devices []*DeviceItem `json:"Devices,omitempty" name:"Devices"`
+
+	// 通道列表
+	Channels []*ChannelItem `json:"Channels,omitempty" name:"Channels"`
 }
 
 func (r *CreateSceneRequest) ToJsonString() string {
@@ -688,6 +1077,7 @@ func (r *CreateSceneRequest) FromJsonString(s string) error {
 	delete(f, "RecordDuration")
 	delete(f, "StoreDuration")
 	delete(f, "Devices")
+	delete(f, "Channels")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSceneRequest has unknown keys!", "")
 	}
@@ -905,7 +1295,7 @@ type DeleteDeviceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 操作结果
+		// 操作结果 OK-成功； 其他-失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Status *string `json:"Status,omitempty" name:"Status"`
 
@@ -1161,6 +1551,55 @@ func (r *DeleteRecordPlanResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteRecordingPlanRequest struct {
+	*tchttp.BaseRequest
+
+	// 录制计划ID
+	PlanId *string `json:"PlanId,omitempty" name:"PlanId"`
+}
+
+func (r *DeleteRecordingPlanRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRecordingPlanRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PlanId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRecordingPlanRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteRecordingPlanResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 操作结果，OK：成功，其他：失败
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteRecordingPlanResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRecordingPlanResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteSceneRequest struct {
 	*tchttp.BaseRequest
 
@@ -1303,6 +1742,110 @@ func (r *DeleteVideoListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteWarningRequest struct {
+	*tchttp.BaseRequest
+
+	// 告警ID
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// 告警索引
+	Index *string `json:"Index,omitempty" name:"Index"`
+}
+
+func (r *DeleteWarningRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteWarningRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Index")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteWarningRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteWarningResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteWarningResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteWarningResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAbnormalEventsRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeAbnormalEventsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAbnormalEventsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAbnormalEventsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAbnormalEventsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 异动事件走势列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data []*AbnormalEvents `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAbnormalEventsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAbnormalEventsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeAllDeviceListRequest struct {
 	*tchttp.BaseRequest
 
@@ -1318,7 +1861,7 @@ type DescribeAllDeviceListRequest struct {
 	// DeviceId列表，需要精确查找设备时为必填
 	DeviceIds []*string `json:"DeviceIds,omitempty" name:"DeviceIds"`
 
-	// 设备类型过滤
+	// 设备类型过滤，设备类型，1：国标VMS设备(公有云不支持此类型)，2：国标IPC设备，3：国标NVR设备，9：智能告警设备(公有云不支持此类型)
 	DeviceTypes []*int64 `json:"DeviceTypes,omitempty" name:"DeviceTypes"`
 }
 
@@ -1370,6 +1913,68 @@ func (r *DescribeAllDeviceListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAllDeviceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBindSceneChannelsRequest struct {
+	*tchttp.BaseRequest
+
+	// 条数限制最大不能超过1000
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 场景ID
+	SceneId *int64 `json:"SceneId,omitempty" name:"SceneId"`
+
+	// 偏移值
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeBindSceneChannelsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBindSceneChannelsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "SceneId")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBindSceneChannelsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBindSceneChannelsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Total *int64 `json:"Total,omitempty" name:"Total"`
+
+		// 通道列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		List []*ChannelItem `json:"List,omitempty" name:"List"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBindSceneChannelsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBindSceneChannelsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1435,6 +2040,124 @@ func (r *DescribeBindSceneDevicesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeChannelLocalRecordURLRequest struct {
+	*tchttp.BaseRequest
+
+	// 设备唯一标识
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 通道唯一标识
+	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
+
+	// 录像文件Id，通过获取本地录像返回
+	RecordId *string `json:"RecordId,omitempty" name:"RecordId"`
+
+	// 录像文件推送的开始时间，需要在RecordId参数起始时间内，可以通过此参数控制回放流起始点
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 录像文件推送的结束时间，需要在RecordId参数起始时间内，可以通过此参数控制回放流起始点
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeChannelLocalRecordURLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeChannelLocalRecordURLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceId")
+	delete(f, "ChannelId")
+	delete(f, "RecordId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeChannelLocalRecordURLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeChannelLocalRecordURLResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 结果
+		Data *DescribeRecordStreamData `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeChannelLocalRecordURLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeChannelLocalRecordURLResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeChannelStreamURLRequest struct {
+	*tchttp.BaseRequest
+
+	// 设备唯一标识
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 通道唯一标识（接口升级字段为必填）
+	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
+}
+
+func (r *DescribeChannelStreamURLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeChannelStreamURLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceId")
+	delete(f, "ChannelId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeChannelStreamURLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeChannelStreamURLResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 设备实时流地址列表
+		Data *DescribeDeviceStreamsData `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeChannelStreamURLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeChannelStreamURLResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeChannelsByLiveRecordPlanRequest struct {
 	*tchttp.BaseRequest
 
@@ -1497,6 +2220,211 @@ func (r *DescribeChannelsByLiveRecordPlanResponse) FromJsonString(s string) erro
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeChannelsRequest struct {
+	*tchttp.BaseRequest
+
+	// 设备Id
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 限制，默认0
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 通道类型  0: 未知类型 1: 视频通道 2:  音频通道 3: 告警通道
+	ChannelTypes []*uint64 `json:"ChannelTypes,omitempty" name:"ChannelTypes"`
+
+	// 录制计划ID， 当为"null"值时未绑定录制计划
+	PlanId *string `json:"PlanId,omitempty" name:"PlanId"`
+
+	// 告警联动场景ID， 当为 -1 值时未绑定场景
+	SceneId *int64 `json:"SceneId,omitempty" name:"SceneId"`
+}
+
+func (r *DescribeChannelsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeChannelsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "ChannelTypes")
+	delete(f, "PlanId")
+	delete(f, "SceneId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeChannelsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeChannelsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 通道总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 通道详情列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Channels []*ChannelDetail `json:"Channels,omitempty" name:"Channels"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeChannelsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeChannelsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCurrentDeviceDataRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeCurrentDeviceDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCurrentDeviceDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCurrentDeviceDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCurrentDeviceDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 通道数
+		Channels *int64 `json:"Channels,omitempty" name:"Channels"`
+
+		// 设备数
+		Devices *int64 `json:"Devices,omitempty" name:"Devices"`
+
+		// 在线通道数
+		OnlineChannels *int64 `json:"OnlineChannels,omitempty" name:"OnlineChannels"`
+
+		// 在线设备数
+		OnlineDevices *int64 `json:"OnlineDevices,omitempty" name:"OnlineDevices"`
+
+		// 正在录制通道数
+		RecordingChannels *int64 `json:"RecordingChannels,omitempty" name:"RecordingChannels"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCurrentDeviceDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCurrentDeviceDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceEventRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始时间，秒级时间戳
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，秒级时间戳
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 设备Id
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 事件类型 1:注册 2:心跳 4:录制异常 5:播放异常 6:流中断
+	EventTypes []*int64 `json:"EventTypes,omitempty" name:"EventTypes"`
+
+	// 偏移值
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// limit限制值
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeDeviceEventRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceEventRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "DeviceId")
+	delete(f, "EventTypes")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceEventRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceEventResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 事件列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Events []*Events `json:"Events,omitempty" name:"Events"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDeviceEventResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceEventResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDeviceGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -1547,6 +2475,133 @@ func (r *DescribeDeviceGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDeviceListRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量，默认0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制，默认200
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 设备名前缀
+	NickName *string `json:"NickName,omitempty" name:"NickName"`
+
+	// 设备类型，1：国标VMS设备(公有云不支持此类型)，2：国标IPC设备，3：国标NVR设备，9：智能告警设备(公有云不支持此类型)
+	DeviceTypes []*int64 `json:"DeviceTypes,omitempty" name:"DeviceTypes"`
+}
+
+func (r *DescribeDeviceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "NickName")
+	delete(f, "DeviceTypes")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 设备总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 设备详细信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Devices []*AllDeviceInfo `json:"Devices,omitempty" name:"Devices"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDeviceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceMonitorDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始时间戳
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间戳
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 类型 支持 OnlineChannels/OnlineDevices/RecordingChannels
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 时间粒度 目前只支持 1h
+	TimesSpec *string `json:"TimesSpec,omitempty" name:"TimesSpec"`
+}
+
+func (r *DescribeDeviceMonitorDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceMonitorDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Type")
+	delete(f, "TimesSpec")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceMonitorDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceMonitorDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 查询设备统计monitor信息列表
+		Data []*DeviceMonitorValue `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDeviceMonitorDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceMonitorDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDevicePassWordRequest struct {
 	*tchttp.BaseRequest
 
@@ -1593,6 +2648,55 @@ func (r *DescribeDevicePassWordResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDevicePassWordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceRequest struct {
+	*tchttp.BaseRequest
+
+	// 设备ID
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+}
+
+func (r *DescribeDeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 设备详情信息
+		Device *AllDeviceInfo `json:"Device,omitempty" name:"Device"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1786,8 +2890,8 @@ type DescribeGroupDevicesRequest struct {
 	// 过滤不可录制设备
 	Recordable *int64 `json:"Recordable,omitempty" name:"Recordable"`
 
-	// 当Group是普通组的时候，支持根据deviceTypes筛选类型
-	//  0: 普通摄像头1:  国标VMS设备 2: 国标IPC设备 3: 国标NVR设备  4: 国标NVR通道 5: 国标VMS通道 6: 国标IPC通道 9: 智能告警设备 10: 带有RTSP固定地址的设备
+	// 当Group是普通组的时候，支持根据DeviceTypes筛选类型，
+	//  设备类型，1：国标VMS设备(公有云不支持此类型)，2：国标IPC设备，3：国标NVR设备，9：智能告警设备(公有云不支持此类型)
 	DeviceTypes []*int64 `json:"DeviceTypes,omitempty" name:"DeviceTypes"`
 }
 
@@ -2287,7 +3391,7 @@ type DescribeLiveVideoListRequest struct {
 	// 分页的每页数量
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 直播ID
+	// 直播频道ID
 	LiveChannelId *string `json:"LiveChannelId,omitempty" name:"LiveChannelId"`
 
 	// 开始录制开始时间
@@ -2512,6 +3616,180 @@ func (r *DescribeMessageForwardsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeMonitorDataByDateRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始时间戳
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间戳 最多显示30天数据
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeMonitorDataByDateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMonitorDataByDateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMonitorDataByDateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMonitorDataByDateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 统计数据列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data []*RecordStatistic `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeMonitorDataByDateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMonitorDataByDateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePresetListRequest struct {
+	*tchttp.BaseRequest
+
+	// 视频通道唯一标识
+	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
+
+	// 设备唯一标识
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+}
+
+func (r *DescribePresetListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePresetListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelId")
+	delete(f, "DeviceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePresetListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePresetListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 预置列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data []*PresetItem `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePresetListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePresetListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRecordDatesByChannelRequest struct {
+	*tchttp.BaseRequest
+
+	// 设备唯一标识
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 通道唯一标识
+	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
+
+	// 1: 云端录制 2: 本地录制
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 限制量，默认200
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeRecordDatesByChannelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordDatesByChannelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceId")
+	delete(f, "ChannelId")
+	delete(f, "Type")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRecordDatesByChannelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRecordDatesByChannelResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 含有录像文件的日期列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Dates []*string `json:"Dates,omitempty" name:"Dates"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRecordDatesByChannelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordDatesByChannelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeRecordDatesByLiveRequest struct {
 	*tchttp.BaseRequest
 
@@ -2594,16 +3872,16 @@ type DescribeRecordStreamRequest struct {
 	// 设备Id
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
 
-	// 流失效时间
+	// 流失效时间，UNIX时间戳，30天内
 	ExpireTime *int64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
-	// 录像文件Id
+	// 录像文件ID
 	RecordId *string `json:"RecordId,omitempty" name:"RecordId"`
 
-	// 录像流开始时间，当录像文件Id为空时有效
+	// 录像流开始时间，当录像文件ID为空时有效，UNIX时间戳
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 录像流结束时间，当录像文件Id为空时有效
+	// 录像流结束时间，当录像文件iD为空时有效，UNIX时间戳
 	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 通道唯一标识
@@ -2657,6 +3935,106 @@ func (r *DescribeRecordStreamResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeRecordingPlanByIdRequest struct {
+	*tchttp.BaseRequest
+
+	// 录制计划ID
+	PlanId *string `json:"PlanId,omitempty" name:"PlanId"`
+}
+
+func (r *DescribeRecordingPlanByIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordingPlanByIdRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PlanId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRecordingPlanByIdRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRecordingPlanByIdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 录制计划详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Plan *RecordPlanDetail `json:"Plan,omitempty" name:"Plan"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRecordingPlanByIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordingPlanByIdResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRecordingPlansRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeRecordingPlansRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordingPlansRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRecordingPlansRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRecordingPlansResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 录制计划详情·列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Plans []*RecordPlanDetail `json:"Plans,omitempty" name:"Plans"`
+
+		// 录制计划总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRecordingPlansResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordingPlansResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSIPServerRequest struct {
 	*tchttp.BaseRequest
 }
@@ -2699,6 +4077,83 @@ func (r *DescribeSIPServerResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeSIPServerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSceneRequest struct {
+	*tchttp.BaseRequest
+
+	// 场景ID
+	IntId *int64 `json:"IntId,omitempty" name:"IntId"`
+}
+
+func (r *DescribeSceneRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSceneRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IntId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSceneRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSceneResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 场景ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IntId *int64 `json:"IntId,omitempty" name:"IntId"`
+
+		// 录制时长(秒)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RecordDuration *int64 `json:"RecordDuration,omitempty" name:"RecordDuration"`
+
+		// 场景名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SceneName *string `json:"SceneName,omitempty" name:"SceneName"`
+
+		// 场景触发规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SceneTrigger *string `json:"SceneTrigger,omitempty" name:"SceneTrigger"`
+
+		// 存储时长 (天)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		StoreDuration *int64 `json:"StoreDuration,omitempty" name:"StoreDuration"`
+
+		// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+		// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+		// 用户Uin
+		Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSceneResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSceneResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3018,6 +4473,81 @@ func (r *DescribeSubscriptionStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeVideoListByChannelRequest struct {
+	*tchttp.BaseRequest
+
+	// 设备唯一标识
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 通道唯一标识
+	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
+
+	// 1: 云端录制 2: 本地录制
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 指定某天。取值【YYYY-MM-DD】
+	// 为空时默认查询最近一天的记录
+	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 限制量，默认2000
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeVideoListByChannelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVideoListByChannelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceId")
+	delete(f, "ChannelId")
+	delete(f, "Type")
+	delete(f, "Date")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVideoListByChannelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVideoListByChannelResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 录像详情列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VideoList []*RecordTaskItem `json:"VideoList,omitempty" name:"VideoList"`
+
+		// 录像总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVideoListByChannelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVideoListByChannelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeVideoListRequest struct {
 	*tchttp.BaseRequest
 
@@ -3137,6 +4667,198 @@ func (r *DescribeVideoListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeWarnModRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeWarnModRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWarnModRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWarnModRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWarnModResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 告警类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data *string `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWarnModResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWarnModResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWarningsRequest struct {
+	*tchttp.BaseRequest
+
+	// 1:创建时间倒序 2：创建时间升序 3：level倒序 4：leve升序
+	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 可选设备id
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 如果不传则查询所有，取值参见配置
+	WarnLevelArray []*int64 `json:"WarnLevelArray,omitempty" name:"WarnLevelArray"`
+
+	// 如果不传则查询所有，取值参见配置
+	WarnModeArray []*int64 `json:"WarnModeArray,omitempty" name:"WarnModeArray"`
+
+	// 不传认为是0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 不传认为是20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 形似：2021-05-21 00:00:00 .取值在当前日前30天内，不传默认是当前日前30天日期
+	DateBegin *string `json:"DateBegin,omitempty" name:"DateBegin"`
+
+	// 形似：2021-05-21 23:59:59 .取值在当前日前30天内，不传默认是当前日前30天日期
+	DateEnd *string `json:"DateEnd,omitempty" name:"DateEnd"`
+}
+
+func (r *DescribeWarningsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWarningsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OrderType")
+	delete(f, "DeviceId")
+	delete(f, "WarnLevelArray")
+	delete(f, "WarnModeArray")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "DateBegin")
+	delete(f, "DateEnd")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWarningsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWarningsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Total *int64 `json:"Total,omitempty" name:"Total"`
+
+		// 告警列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data []*WarningsData `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWarningsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWarningsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeXP2PDataRequest struct {
+	*tchttp.BaseRequest
+
+	// P2P应用ID
+	P2PAppId *string `json:"P2PAppId,omitempty" name:"P2PAppId"`
+
+	// 查询开始时间
+	From *int64 `json:"From,omitempty" name:"From"`
+
+	// 查询结束时间
+	To *int64 `json:"To,omitempty" name:"To"`
+
+	// P2P通路ID
+	P2PChannelId *string `json:"P2PChannelId,omitempty" name:"P2PChannelId"`
+}
+
+func (r *DescribeXP2PDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeXP2PDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "P2PAppId")
+	delete(f, "From")
+	delete(f, "To")
+	delete(f, "P2PChannelId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeXP2PDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeXP2PDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// [log_time,cdn_bytes , p2p_bytes, online_people, stuck_times, stuck_people,request,request_success,request_fail,play_fail]
+	// [时间戳,cdn流量(字节) , p2p流量(字节), 在线人数, 卡播次数, 卡播人数,起播请求次数,起播成功次数,起播失败次数,播放失败次数, pcdn cdn流量（字节), pcdn路由流量(字节), 上传流量(字节)]
+	// [1481016480, 46118502414, 75144943171, 61691, 3853, 0,0,0,0,0, 0, 0, 0]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data *string `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeXP2PDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeXP2PDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DevGroupInfo struct {
 
 	// 设备唯一标识
@@ -3166,17 +4888,62 @@ type DeviceItem struct {
 	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
 }
 
+type DeviceMonitorValue struct {
+
+	// 统计值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *float64 `json:"Value,omitempty" name:"Value"`
+
+	// 统计时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Time *int64 `json:"Time,omitempty" name:"Time"`
+}
+
+type Events struct {
+
+	// 开始时间，秒级时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventTime *int64 `json:"EventTime,omitempty" name:"EventTime"`
+
+	// 事件类型 1:注册 2:心跳 4:录制异常 5:播放异常 6:流中断
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventType *int64 `json:"EventType,omitempty" name:"EventType"`
+
+	// 事件描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventDesc *string `json:"EventDesc,omitempty" name:"EventDesc"`
+
+	// 设备类型
+	DeviceType *int64 `json:"DeviceType,omitempty" name:"DeviceType"`
+
+	// 设备地址
+	DeviceAddress *string `json:"DeviceAddress,omitempty" name:"DeviceAddress"`
+
+	// 设备Id
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 通道Id
+	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
+
+	// 事件日志
+	EventLog *string `json:"EventLog,omitempty" name:"EventLog"`
+
+	// 设备备注名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+}
+
 type GetRecordDatesByDevRequest struct {
 	*tchttp.BaseRequest
 
 	// 设备唯一标识
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
 
-	// 偏移量，默认0
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
-
 	// 限制量，默认200
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 通道唯一标识
 	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
@@ -3198,8 +4965,8 @@ func (r *GetRecordDatesByDevRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "DeviceId")
-	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Offset")
 	delete(f, "ChannelId")
 	delete(f, "Type")
 	if len(f) > 0 {
@@ -3493,15 +5260,15 @@ type GetVideoListByConRequest struct {
 	// 限制量，默认200
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
+	// 通道唯一标识
+	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
+
 	// 0：查询指定日期的录像；1：查询最近一天的录像；默认0
 	LatestDay *int64 `json:"LatestDay,omitempty" name:"LatestDay"`
 
 	// 指定某天。取值【YYYY-MM-DD】
-	// 当LatestDay为空或为0时，本参数不允许为空。
+	// 为空时默认查询最近一天的记录
 	Date *string `json:"Date,omitempty" name:"Date"`
-
-	// 通道唯一标识
-	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
 
 	// 1: 云端录制 2: 本地录制
 	Type *int64 `json:"Type,omitempty" name:"Type"`
@@ -3522,9 +5289,9 @@ func (r *GetVideoListByConRequest) FromJsonString(s string) error {
 	delete(f, "DeviceId")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "ChannelId")
 	delete(f, "LatestDay")
 	delete(f, "Date")
-	delete(f, "ChannelId")
 	delete(f, "Type")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetVideoListByConRequest has unknown keys!", "")
@@ -3601,6 +5368,18 @@ type GroupDeviceItem struct {
 	// 设备接入协议
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 设备创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 设备通道总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelNum *int64 `json:"ChannelNum,omitempty" name:"ChannelNum"`
+
+	// 设备视频通道总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoChannelNum *int64 `json:"VideoChannelNum,omitempty" name:"VideoChannelNum"`
 }
 
 type GroupInfo struct {
@@ -3867,6 +5646,168 @@ func (r *ModifyBindPlanLiveChannelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyBindRecordingPlanRequest struct {
+	*tchttp.BaseRequest
+
+	// 操作类型： 1-绑定设备 ；2-解绑设备
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 录制计划ID
+	PlanId *string `json:"PlanId,omitempty" name:"PlanId"`
+
+	// 录制通道列表
+	Channels []*ChannelItem `json:"Channels,omitempty" name:"Channels"`
+}
+
+func (r *ModifyBindRecordingPlanRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBindRecordingPlanRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Type")
+	delete(f, "PlanId")
+	delete(f, "Channels")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBindRecordingPlanRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyBindRecordingPlanResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyBindRecordingPlanResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBindRecordingPlanResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyBindSceneChannelsRequest struct {
+	*tchttp.BaseRequest
+
+	// 场景ID
+	SceneId *int64 `json:"SceneId,omitempty" name:"SceneId"`
+
+	// 1: 绑定 2: 解绑
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 通道列表
+	Channels []*ChannelItem `json:"Channels,omitempty" name:"Channels"`
+}
+
+func (r *ModifyBindSceneChannelsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBindSceneChannelsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SceneId")
+	delete(f, "Type")
+	delete(f, "Channels")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBindSceneChannelsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyBindSceneChannelsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyBindSceneChannelsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBindSceneChannelsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyBindSceneDeviceRequest struct {
+	*tchttp.BaseRequest
+
+	// 场景ID
+	SceneId *int64 `json:"SceneId,omitempty" name:"SceneId"`
+
+	// 1: 绑定 2: 解绑
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 设备列表
+	Devices []*DeviceItem `json:"Devices,omitempty" name:"Devices"`
+}
+
+func (r *ModifyBindSceneDeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBindSceneDeviceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SceneId")
+	delete(f, "Type")
+	delete(f, "Devices")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBindSceneDeviceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyBindSceneDeviceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyBindSceneDeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBindSceneDeviceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyDeviceDataRequest struct {
 	*tchttp.BaseRequest
 
@@ -4125,6 +6066,179 @@ func (r *ModifyMessageForwardResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyPresetRequest struct {
+	*tchttp.BaseRequest
+
+	// 通道ID
+	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
+
+	// 预置位编码 范围1-8
+	PresetId *int64 `json:"PresetId,omitempty" name:"PresetId"`
+
+	// 预制位名称
+	PresetName *string `json:"PresetName,omitempty" name:"PresetName"`
+
+	// 设备Id
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+}
+
+func (r *ModifyPresetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPresetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelId")
+	delete(f, "PresetId")
+	delete(f, "PresetName")
+	delete(f, "DeviceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPresetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyPresetResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyPresetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPresetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyRecordingPlanRequest struct {
+	*tchttp.BaseRequest
+
+	// 录制计划ID
+	PlanId *string `json:"PlanId,omitempty" name:"PlanId"`
+
+	// 计划名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 时间模板ID
+	TimeTemplateId *string `json:"TimeTemplateId,omitempty" name:"TimeTemplateId"`
+}
+
+func (r *ModifyRecordingPlanRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRecordingPlanRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PlanId")
+	delete(f, "Name")
+	delete(f, "TimeTemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRecordingPlanRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyRecordingPlanResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 操作结果
+		Status *string `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyRecordingPlanResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRecordingPlanResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySceneRequest struct {
+	*tchttp.BaseRequest
+
+	// 场景ID
+	IntId *int64 `json:"IntId,omitempty" name:"IntId"`
+
+	// 场景名称
+	SceneName *string `json:"SceneName,omitempty" name:"SceneName"`
+
+	// 触发条件
+	SceneTrigger *string `json:"SceneTrigger,omitempty" name:"SceneTrigger"`
+
+	// 录制时长(秒)
+	RecordDuration *int64 `json:"RecordDuration,omitempty" name:"RecordDuration"`
+}
+
+func (r *ModifySceneRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySceneRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IntId")
+	delete(f, "SceneName")
+	delete(f, "SceneTrigger")
+	delete(f, "RecordDuration")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySceneRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySceneResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifySceneResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySceneResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifySubscriptionStatusRequest struct {
 	*tchttp.BaseRequest
 
@@ -4229,6 +6343,50 @@ func (r *ModifyVideoInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type PresetItem struct {
+
+	// 预置位ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PresetId *int64 `json:"PresetId,omitempty" name:"PresetId"`
+
+	// 预置位名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PresetName *string `json:"PresetName,omitempty" name:"PresetName"`
+
+	// 预置位状态 0:未设置预置位 1:已设置预置位 2:已设置预置位&看守位
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 预置位启用时的自动归位时间
+	ResetTime *int64 `json:"ResetTime,omitempty" name:"ResetTime"`
+}
+
+type RecordPlanDetail struct {
+
+	// 计划ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PlanId *string `json:"PlanId,omitempty" name:"PlanId"`
+
+	// 计划名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 时间模板ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeTemplateId *string `json:"TimeTemplateId,omitempty" name:"TimeTemplateId"`
+
+	// 时间模板名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeTemplateName *string `json:"TimeTemplateName,omitempty" name:"TimeTemplateName"`
+
+	// 绑定的通道列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Channels []*ChannelItem `json:"Channels,omitempty" name:"Channels"`
+
+	// 存储周期（天）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordStorageTime *int64 `json:"RecordStorageTime,omitempty" name:"RecordStorageTime"`
+}
+
 type RecordPlanItem struct {
 
 	// 计划ID
@@ -4254,6 +6412,32 @@ type RecordPlanItem struct {
 	// 绑定的设备列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Devices []*DeviceItem `json:"Devices,omitempty" name:"Devices"`
+}
+
+type RecordStatistic struct {
+
+	// 时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Time *int64 `json:"Time,omitempty" name:"Time"`
+
+	// 统计结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *RecordStatisticValue `json:"Value,omitempty" name:"Value"`
+}
+
+type RecordStatisticValue struct {
+
+	// 期望执行时间 秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpectTimeLen *int64 `json:"ExpectTimeLen,omitempty" name:"ExpectTimeLen"`
+
+	// 实际执行时间 秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordTimeLen *int64 `json:"RecordTimeLen,omitempty" name:"RecordTimeLen"`
+
+	// 存储大小 G
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileSize *float64 `json:"FileSize,omitempty" name:"FileSize"`
 }
 
 type RecordTaskItem struct {
@@ -4297,6 +6481,56 @@ type RecordTaskItem struct {
 	// 录制id，NVR下属设备有效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordId *string `json:"RecordId,omitempty" name:"RecordId"`
+}
+
+type ResetWarningRequest struct {
+	*tchttp.BaseRequest
+
+	// 告警ID
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// Es中告警ID
+	Index *string `json:"Index,omitempty" name:"Index"`
+}
+
+func (r *ResetWarningRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetWarningRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Index")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetWarningRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ResetWarningResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ResetWarningResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetWarningResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SceneItem struct {
@@ -4391,11 +6625,11 @@ type TimeTemplateItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 是否全时录制，即7*24小时录制
+	// 是否全时录制，即7*24小时录制 0-否 1-是
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAllWeek *int64 `json:"IsAllWeek,omitempty" name:"IsAllWeek"`
 
-	// 是否为自定义模板
+	// 是否为自定义模板 0-否 1-是
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 
@@ -4662,4 +6896,88 @@ func (r *UpdateTimeTemplateResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UpdateTimeTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type WarningsData struct {
+
+	// 唯一ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// 设备ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 设备名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 告警通道
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WarnChannel *string `json:"WarnChannel,omitempty" name:"WarnChannel"`
+
+	// 告警级别 1: "一级警情", 2: "二级警情", 3: "三级警情", 4: "四级警情",
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WarnLevel *int64 `json:"WarnLevel,omitempty" name:"WarnLevel"`
+
+	// 告警级别名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WarnLevelName *string `json:"WarnLevelName,omitempty" name:"WarnLevelName"`
+
+	// 告警方式 2 设备报警 5 视频报警 6 设备故障报警
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WarnMode *int64 `json:"WarnMode,omitempty" name:"WarnMode"`
+
+	// 告警方式名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WarnModeName *string `json:"WarnModeName,omitempty" name:"WarnModeName"`
+
+	// 告警类型  2: {
+	// 			Name: "设备报警",
+	// 			WarnType: map[int]string{
+	// 				1: "视频丢失报警",
+	// 				2: "设备防拆报警",
+	// 				3: "存储设备磁盘满报警",
+	// 				4: "设备高温报警",
+	// 				5: "设备低温报警",
+	// 			},
+	// 		},
+	// 		5: {
+	// 			Name: "视频报警",
+	// 			WarnType: map[int]string{
+	// 				1:  "人工视频报警",
+	// 				2:  "运动目标检测报警",
+	// 				3:  "遗留物检测报警",
+	// 				4:  "物体移除检测报警",
+	// 				5:  "绊线检测报警",
+	// 				6:  "入侵检测报警",
+	// 				7:  "逆行检测报警",
+	// 				8:  "徘徊检测报警",
+	// 				9:  "流量统计报警",
+	// 				10: "密度检测报警",
+	// 				11: "视频异常检测报警",
+	// 				12: "快速移动报警",
+	// 			},
+	// 		},
+	// 		6: {
+	// 			Name: "设备故障报警",
+	// 			WarnType: map[int]string{
+	// 				1: "存储设备磁盘故障报警",
+	// 				2: "存储设备风扇故障报警",
+	// 			},
+	// 		}
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WarnType *int64 `json:"WarnType,omitempty" name:"WarnType"`
+
+	// 是否删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Del *int64 `json:"Del,omitempty" name:"Del"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
