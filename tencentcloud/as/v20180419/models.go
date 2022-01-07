@@ -3149,6 +3149,9 @@ type ModifyLaunchConfigurationAttributesRequest struct {
 
 	// 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。
 	EnhancedService *EnhancedService `json:"EnhancedService,omitempty" name:"EnhancedService"`
+
+	// CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
+	CamRoleName *string `json:"CamRoleName,omitempty" name:"CamRoleName"`
 }
 
 func (r *ModifyLaunchConfigurationAttributesRequest) ToJsonString() string {
@@ -3180,6 +3183,7 @@ func (r *ModifyLaunchConfigurationAttributesRequest) FromJsonString(s string) er
 	delete(f, "HostNameSettings")
 	delete(f, "InstanceNameSettings")
 	delete(f, "EnhancedService")
+	delete(f, "CamRoleName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLaunchConfigurationAttributesRequest has unknown keys!", "")
 	}

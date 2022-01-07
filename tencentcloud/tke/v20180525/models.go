@@ -6773,6 +6773,11 @@ type PrometheusAgentOverview struct {
 
 	// 集群名称
 	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 额外labels
+	// 本集群的所有指标都会带上这几个label
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalLabels []*Label `json:"ExternalLabels,omitempty" name:"ExternalLabels"`
 }
 
 type PrometheusAlertHistoryItem struct {
@@ -6827,6 +6832,10 @@ type PrometheusAlertRule struct {
 	// 参考prometheus rule中的annotations
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Annotations []*Label `json:"Annotations,omitempty" name:"Annotations"`
+
+	// 告警规则状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleState *int64 `json:"RuleState,omitempty" name:"RuleState"`
 }
 
 type PrometheusAlertRuleDetail struct {

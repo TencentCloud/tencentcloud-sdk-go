@@ -1448,6 +1448,58 @@ func (c *Client) GetRealNameAuthTokenWithContext(ctx context.Context, request *G
     return
 }
 
+func NewGetWeChatBillDetailsRequest() (request *GetWeChatBillDetailsRequest) {
+    request = &GetWeChatBillDetailsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("faceid", APIVersion, "GetWeChatBillDetails")
+    
+    
+    return
+}
+
+func NewGetWeChatBillDetailsResponse() (response *GetWeChatBillDetailsResponse) {
+    response = &GetWeChatBillDetailsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetWeChatBillDetails
+// 查询微信渠道服务（微信小程序、微信原生H5、微信普通H5）的账单明细及计费状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_RULEIDNOTEXIST = "InvalidParameterValue.RuleIdNotExist"
+func (c *Client) GetWeChatBillDetails(request *GetWeChatBillDetailsRequest) (response *GetWeChatBillDetailsResponse, err error) {
+    if request == nil {
+        request = NewGetWeChatBillDetailsRequest()
+    }
+    
+    response = NewGetWeChatBillDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// GetWeChatBillDetails
+// 查询微信渠道服务（微信小程序、微信原生H5、微信普通H5）的账单明细及计费状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_RULEIDNOTEXIST = "InvalidParameterValue.RuleIdNotExist"
+func (c *Client) GetWeChatBillDetailsWithContext(ctx context.Context, request *GetWeChatBillDetailsRequest) (response *GetWeChatBillDetailsResponse, err error) {
+    if request == nil {
+        request = NewGetWeChatBillDetailsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewGetWeChatBillDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewIdCardOCRVerificationRequest() (request *IdCardOCRVerificationRequest) {
     request = &IdCardOCRVerificationRequest{
         BaseRequest: &tchttp.BaseRequest{},

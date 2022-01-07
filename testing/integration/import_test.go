@@ -91,6 +91,7 @@ import (
 	dsv20180523 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ds/v20180523"
 	dtfv20200506 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dtf/v20200506"
 	dtsv20180330 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dts/v20180330"
+	ebv20210416 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eb/v20210416"
 	eccv20181213 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecc/v20181213"
 	ecdnv20191012 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecdn/v20191012"
 	ecmv20190719 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecm/v20190719"
@@ -1150,6 +1151,19 @@ func TestDtsv20180330Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf(fmt.Sprintf("fail to init dts_v20180330 client: %v", err))
+    }
+}
+
+func TestEbv20210416Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := ebv20210416.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf(fmt.Sprintf("fail to init eb_v20210416 client: %v", err))
     }
 }
 

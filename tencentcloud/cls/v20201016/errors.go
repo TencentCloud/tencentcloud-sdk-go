@@ -179,7 +179,7 @@ const (
 	// 字段没有开启分析功能。
 	OPERATIONDENIED_ANALYSISSWITCHCLOSE = "OperationDenied.AnalysisSwitchClose"
 
-	// 通知模版已绑定告警，无法删除。
+	// 通知模板已绑定告警，无法删除。
 	OPERATIONDENIED_NOTICEHASALARM = "OperationDenied.NoticeHasAlarm"
 
 	// topic绑定了数据加工。

@@ -2108,10 +2108,13 @@ func (r *DescribeChannelLocalRecordURLResponse) FromJsonString(s string) error {
 type DescribeChannelStreamURLRequest struct {
 	*tchttp.BaseRequest
 
-	// 设备唯一标识
+	// 设备唯一标识，必填参数
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
 
-	// 通道唯一标识（接口升级字段为必填）
+	// 流地址失效时间，固定值填写0，其他参数无效，必填参数
+	ExpireTime *uint64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 通道唯一标识（接口升级字段为必填），必填参数
 	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
 }
 
@@ -2128,6 +2131,7 @@ func (r *DescribeChannelStreamURLRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "DeviceId")
+	delete(f, "ExpireTime")
 	delete(f, "ChannelId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeChannelStreamURLRequest has unknown keys!", "")

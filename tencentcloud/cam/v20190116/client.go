@@ -2720,6 +2720,58 @@ func (c *Client) ListAttachedRolePoliciesWithContext(ctx context.Context, reques
     return
 }
 
+func NewListAttachedUserAllPoliciesRequest() (request *ListAttachedUserAllPoliciesRequest) {
+    request = &ListAttachedUserAllPoliciesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "ListAttachedUserAllPolicies")
+    
+    
+    return
+}
+
+func NewListAttachedUserAllPoliciesResponse() (response *ListAttachedUserAllPoliciesResponse) {
+    response = &ListAttachedUserAllPoliciesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListAttachedUserAllPolicies
+// 列出用户关联的策略（包括随组关联）
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ListAttachedUserAllPolicies(request *ListAttachedUserAllPoliciesRequest) (response *ListAttachedUserAllPoliciesResponse, err error) {
+    if request == nil {
+        request = NewListAttachedUserAllPoliciesRequest()
+    }
+    
+    response = NewListAttachedUserAllPoliciesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ListAttachedUserAllPolicies
+// 列出用户关联的策略（包括随组关联）
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ListAttachedUserAllPoliciesWithContext(ctx context.Context, request *ListAttachedUserAllPoliciesRequest) (response *ListAttachedUserAllPoliciesResponse, err error) {
+    if request == nil {
+        request = NewListAttachedUserAllPoliciesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewListAttachedUserAllPoliciesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListAttachedUserPoliciesRequest() (request *ListAttachedUserPoliciesRequest) {
     request = &ListAttachedUserPoliciesRequest{
         BaseRequest: &tchttp.BaseRequest{},

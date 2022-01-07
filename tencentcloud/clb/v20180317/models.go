@@ -658,6 +658,9 @@ type CloneLoadBalancerRequest struct {
 	// 公网独占集群ID或者CDCId。
 	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
 
+	// 性能保障规格。
+	SlaType *string `json:"SlaType,omitempty" name:"SlaType"`
+
 	// Stgw独占集群的标签。
 	ClusterTag *string `json:"ClusterTag,omitempty" name:"ClusterTag"`
 
@@ -695,6 +698,7 @@ func (r *CloneLoadBalancerRequest) FromJsonString(s string) error {
 	delete(f, "SnatPro")
 	delete(f, "SnatIps")
 	delete(f, "ClusterIds")
+	delete(f, "SlaType")
 	delete(f, "ClusterTag")
 	delete(f, "Zones")
 	delete(f, "EipAddressId")

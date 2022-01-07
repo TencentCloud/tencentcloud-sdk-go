@@ -4031,6 +4031,12 @@ type DescribeAssetHostDetailResponse struct {
 		// 外网ip
 		PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
 
+		// 主机实例ID
+		InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+
+		// 地域ID
+		RegionID *int64 `json:"RegionID,omitempty" name:"RegionID"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -4064,6 +4070,7 @@ type DescribeAssetHostListRequest struct {
 	// <li>HostID- string - 是否必填：否 - 主机id搜索</li>
 	// <li>DockerVersion- string - 是否必填：否 - docker版本搜索</li>
 	// <li>MachineType- string - 是否必填：否 - 主机来源MachineType搜索，"ALL":"全部"(或不传该字段),"TENCENTCLOUD":"腾讯云服务器","OTHERCLOUD":"非腾讯云服务器"</li>
+	// <li>DockerStatus- string - 是否必填：否 - docker安装状态，"ALL":"全部"(或不传该字段),"INSTALL":"已安装","UNINSTALL":"未安装"</li>
 	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序字段
@@ -10235,7 +10242,7 @@ type HostInfo struct {
 	// 是否是Containerd
 	IsContainerd *bool `json:"IsContainerd,omitempty" name:"IsContainerd"`
 
-	// 主机来源
+	// 主机来源：["CVM", "ECM", "LH", "BM"]  中的之一为腾讯云服务器；["Other"]之一非腾讯云服务器；
 	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
 
 	// 外网ip
@@ -10243,6 +10250,12 @@ type HostInfo struct {
 
 	// 主机uuid
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 主机实例ID
+	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+
+	// 地域ID
+	RegionID *int64 `json:"RegionID,omitempty" name:"RegionID"`
 }
 
 type ImageHost struct {
