@@ -209,7 +209,7 @@ const (
 	// 投递目标创建失败，当前资源不可用。
 	RESOURCEUNAVAILABLE_TARGET = "ResourceUnavailable.Target"
 
-	// 当前账号缺少 EB 操作权限，请登陆 CAM 控制台进行授权。
+	// 当前账号缺少 EB 操作权限，请登录 CAM 控制台进行授权。
 	UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
 
 	// 操作不支持。

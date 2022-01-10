@@ -1,3 +1,182 @@
+# Release v1.0.327
+
+## API网关(apigateway) 版本：2018-08-08
+
+### 第 23 次发布
+
+发布时间：2022-01-10 08:05:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [CosConfig](https://cloud.tencent.com/document/api/628/45244#CosConfig)
+
+修改数据结构：
+
+* [ServiceConfig](https://cloud.tencent.com/document/api/628/45244#ServiceConfig)
+
+	* 新增成员：CosConfig
+
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 78 次发布
+
+发布时间：2022-01-10 08:06:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDBInstanceHour](https://cloud.tencent.com/document/api/236/15865)
+
+	* 新增入参：ParamTemplateType
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 37 次发布
+
+发布时间：2022-01-10 08:08:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeGeneralStat](https://cloud.tencent.com/document/api/296/53132)
+
+	* 新增出参：FlagshipMachineCnt, ProtectDays
+
+* [DescribeImportMachineInfo](https://cloud.tencent.com/document/api/296/55203)
+
+	* 新增入参：Filters
+
+* [DescribeMachineInfo](https://cloud.tencent.com/document/api/296/19851)
+
+	* 新增出参：ProtectType
+
+
+修改数据结构：
+
+* [Machine](https://cloud.tencent.com/document/api/296/19867#Machine)
+
+	* 新增成员：ProtectType
+
+* [MalwareInfo](https://cloud.tencent.com/document/api/296/19867#MalwareInfo)
+
+	* 新增成员：CheckPlatform, Uuid
+
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+
+### 第 6 次发布
+
+发布时间：2022-01-10 08:09:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateKillTask](https://cloud.tencent.com/document/api/1130/67783)
+* [CreateProxySessionKillTask](https://cloud.tencent.com/document/api/1130/67782)
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+
+
+
+## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+
+### 第 23 次发布
+
+发布时间：2022-01-10 08:14:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstances](https://cloud.tencent.com/document/api/409/56107)
+
+	* 新增入参：DBNodeSet
+
+
+新增数据结构：
+
+* [DBNode](https://cloud.tencent.com/document/api/409/16778#DBNode)
+
+修改数据结构：
+
+* [DBBackup](https://cloud.tencent.com/document/api/409/16778#DBBackup)
+
+	* 新增成员：SetId
+
+* [DBInstance](https://cloud.tencent.com/document/api/409/16778#DBInstance)
+
+	* 新增成员：DBNodeSet
+
+* [ZoneInfo](https://cloud.tencent.com/document/api/409/16778#ZoneInfo)
+
+	* 新增成员：StandbyZoneSet
+
+
+
+
+## 全栈式风控引擎(rce) 版本：2020-11-03
+
+### 第 5 次发布
+
+发布时间：2022-01-10 08:14:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InputDescribeRiskModelData](https://cloud.tencent.com/document/api/1343/52566#InputDescribeRiskModelData)
+
+	* 新增成员：IsTest
+
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 28 次发布
+
+发布时间：2022-01-10 08:15:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyDBInstanceNetwork](https://cloud.tencent.com/document/api/238/52347)
+
+	* 新增入参：Vip
+
+
+
+
 # Release v1.0.326
 
 ## 弹性伸缩(as) 版本：2018-04-19

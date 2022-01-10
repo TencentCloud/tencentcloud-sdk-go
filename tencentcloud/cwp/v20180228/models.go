@@ -7568,6 +7568,14 @@ type DescribeGeneralStatResponse struct {
 		// 已离线总数
 		Offline *uint64 `json:"Offline,omitempty" name:"Offline"`
 
+		// 旗舰版主机数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FlagshipMachineCnt *uint64 `json:"FlagshipMachineCnt,omitempty" name:"FlagshipMachineCnt"`
+
+		// 保护天数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ProtectDays *uint64 `json:"ProtectDays,omitempty" name:"ProtectDays"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -7919,8 +7927,12 @@ type DescribeImportMachineInfoRequest struct {
 	// 批量导入的数据类型：Ip、Name、Id 三选一
 	ImportType *string `json:"ImportType,omitempty" name:"ImportType"`
 
-	// 是否仅支持专业版机器的查询（true：仅专业版   false：专业版+基础版）
+	// 该参数已作废.
 	IsQueryProMachine *bool `json:"IsQueryProMachine,omitempty" name:"IsQueryProMachine"`
+
+	// 过滤条件。
+	// <li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版 | Flagship : 旗舰版 | ProtectedMachines: 专业版+旗舰版）</li>
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeImportMachineInfoRequest) ToJsonString() string {
@@ -7938,6 +7950,7 @@ func (r *DescribeImportMachineInfoRequest) FromJsonString(s string) error {
 	delete(f, "MachineList")
 	delete(f, "ImportType")
 	delete(f, "IsQueryProMachine")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImportMachineInfoRequest has unknown keys!", "")
 	}
@@ -8296,6 +8309,9 @@ type DescribeMachineInfoResponse struct {
 		// 是否有资产扫描记录，0无，1有
 		HasAssetScan *uint64 `json:"HasAssetScan,omitempty" name:"HasAssetScan"`
 
+		// 防护版本 BASIC_VERSION 基础版, PRO_VERSION 专业版 Flagship 旗舰版.
+		ProtectType *string `json:"ProtectType,omitempty" name:"ProtectType"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -8517,10 +8533,11 @@ type DescribeMachinesRequest struct {
 	// 过滤条件。
 	// <li>Keywords - String - 是否必填：否 - 查询关键字 </li>
 	// <li>Status - String - 是否必填：否 - 客户端在线状态（OFFLINE: 离线/关机 | ONLINE: 在线 | UNINSTALLED：未安装 | AGENT_OFFLINE 离线| AGENT_SHUTDOWN 已关机）</li>
-	// <li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版）</li>
+	// <li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版 | Flagship : 旗舰版 | ProtectedMachines: 专业版+旗舰版）</li>
 	// <li>Risk - String 是否必填: 否 - 风险主机( yes ) </li>
 	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
 	// 每个过滤条件只支持一个值，暂不支持多个值“或”关系查询
+	// <li>Quuid - String - 是否必填: 否 - 云服务器uuid  最大100条.</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 机器所属业务ID列表
@@ -13918,6 +13935,7 @@ type Machine struct {
 	// <li>OFFLINE: 离线  </li>
 	// <li>ONLINE: 在线</li>
 	// <li>SHUTDOWN: 已关机</li>
+	// <li>UNINSTALLED: 未防护</li>
 	MachineStatus *string `json:"MachineStatus,omitempty" name:"MachineStatus"`
 
 	// 云镜客户端唯一Uuid，若客户端长时间不在线将返回空字符。
@@ -13986,6 +14004,9 @@ type Machine struct {
 
 	// 内核版本
 	KernelVersion *string `json:"KernelVersion,omitempty" name:"KernelVersion"`
+
+	// 防护版本 BASIC_VERSION 基础版, PRO_VERSION 专业版 Flagship 旗舰版.
+	ProtectType *string `json:"ProtectType,omitempty" name:"ProtectType"`
 }
 
 type MachineTag struct {
@@ -14147,6 +14168,14 @@ type MalwareInfo struct {
 	// 风险等级 0提示、1低、2中、3高、4严重
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Level *uint64 `json:"Level,omitempty" name:"Level"`
+
+	// 木马检测平台用,分割 1云查杀引擎、2TAV、3binaryAi、4异常行为、5威胁情报
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckPlatform *string `json:"CheckPlatform,omitempty" name:"CheckPlatform"`
+
+	// 主机uuid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 }
 
 type MalwareRisk struct {

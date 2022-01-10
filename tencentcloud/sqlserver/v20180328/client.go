@@ -4176,13 +4176,12 @@ func NewModifyDBInstanceNetworkResponse() (response *ModifyDBInstanceNetworkResp
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  FAILEDOPERATION_GETVPCFAILED = "FailedOperation.GetVpcFailed"
-//  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
 //  INTERNALERROR_CREATEFLOWFAILED = "InternalError.CreateFlowFailed"
 //  INTERNALERROR_DBCONNECTERROR = "InternalError.DBConnectError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_GCSERROR = "InternalError.GcsError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INTERNALERROR_VPCERROR = "InternalError.VPCError"
@@ -4195,6 +4194,7 @@ func NewModifyDBInstanceNetworkResponse() (response *ModifyDBInstanceNetworkResp
 //  RESOURCEUNAVAILABLE_VPCNOTEXIST = "ResourceUnavailable.VpcNotExist"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 //  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTREPEAT = "UnsupportedOperation.NotSupportRepeat"
 func (c *Client) ModifyDBInstanceNetwork(request *ModifyDBInstanceNetworkRequest) (response *ModifyDBInstanceNetworkResponse, err error) {
     if request == nil {
         request = NewModifyDBInstanceNetworkRequest()
@@ -4210,13 +4210,12 @@ func (c *Client) ModifyDBInstanceNetwork(request *ModifyDBInstanceNetworkRequest
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  FAILEDOPERATION_GETVPCFAILED = "FailedOperation.GetVpcFailed"
-//  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
 //  INTERNALERROR_CREATEFLOWFAILED = "InternalError.CreateFlowFailed"
 //  INTERNALERROR_DBCONNECTERROR = "InternalError.DBConnectError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_GCSERROR = "InternalError.GcsError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INTERNALERROR_VPCERROR = "InternalError.VPCError"
@@ -4229,6 +4228,7 @@ func (c *Client) ModifyDBInstanceNetwork(request *ModifyDBInstanceNetworkRequest
 //  RESOURCEUNAVAILABLE_VPCNOTEXIST = "ResourceUnavailable.VpcNotExist"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 //  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTREPEAT = "UnsupportedOperation.NotSupportRepeat"
 func (c *Client) ModifyDBInstanceNetworkWithContext(ctx context.Context, request *ModifyDBInstanceNetworkRequest) (response *ModifyDBInstanceNetworkResponse, err error) {
     if request == nil {
         request = NewModifyDBInstanceNetworkRequest()

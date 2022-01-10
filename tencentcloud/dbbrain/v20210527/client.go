@@ -262,6 +262,76 @@ func (c *Client) CreateDBDiagReportUrlWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateKillTaskRequest() (request *CreateKillTaskRequest) {
+    request = &CreateKillTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "CreateKillTask")
+    
+    
+    return
+}
+
+func NewCreateKillTaskResponse() (response *CreateKillTaskResponse) {
+    response = &CreateKillTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateKillTask
+// 创建中断会话的任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateKillTask(request *CreateKillTaskRequest) (response *CreateKillTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateKillTaskRequest()
+    }
+    
+    response = NewCreateKillTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateKillTask
+// 创建中断会话的任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateKillTaskWithContext(ctx context.Context, request *CreateKillTaskRequest) (response *CreateKillTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateKillTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateKillTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateMailProfileRequest() (request *CreateMailProfileRequest) {
     request = &CreateMailProfileRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -330,6 +400,78 @@ func (c *Client) CreateMailProfileWithContext(ctx context.Context, request *Crea
     request.SetContext(ctx)
     
     response = NewCreateMailProfileResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateProxySessionKillTaskRequest() (request *CreateProxySessionKillTaskRequest) {
+    request = &CreateProxySessionKillTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "CreateProxySessionKillTask")
+    
+    
+    return
+}
+
+func NewCreateProxySessionKillTaskResponse() (response *CreateProxySessionKillTaskResponse) {
+    response = &CreateProxySessionKillTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateProxySessionKillTask
+// 创建中止所有代理节点连接会话的异步任务。当前仅支持 Redis。得到的返回值为异步任务 id，可以作为参数传入接口 DescribeProxySessionKillTasks 查询kill会话任务执行状态。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateProxySessionKillTask(request *CreateProxySessionKillTaskRequest) (response *CreateProxySessionKillTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateProxySessionKillTaskRequest()
+    }
+    
+    response = NewCreateProxySessionKillTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateProxySessionKillTask
+// 创建中止所有代理节点连接会话的异步任务。当前仅支持 Redis。得到的返回值为异步任务 id，可以作为参数传入接口 DescribeProxySessionKillTasks 查询kill会话任务执行状态。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateProxySessionKillTaskWithContext(ctx context.Context, request *CreateProxySessionKillTaskRequest) (response *CreateProxySessionKillTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateProxySessionKillTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateProxySessionKillTaskResponse()
     err = c.Send(request, response)
     return
 }

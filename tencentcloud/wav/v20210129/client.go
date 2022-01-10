@@ -616,7 +616,7 @@ func NewQueryExternalContactDetailResponse() (response *QueryExternalContactDeta
 }
 
 // QueryExternalContactDetail
-// 企业可通过此接口，根据外部联系人的userid，拉取客户详情
+// 企业可通过此接口，根据外部联系人的userid，拉取外部联系人详情
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -639,7 +639,7 @@ func (c *Client) QueryExternalContactDetail(request *QueryExternalContactDetailR
 }
 
 // QueryExternalContactDetail
-// 企业可通过此接口，根据外部联系人的userid，拉取客户详情
+// 企业可通过此接口，根据外部联系人的userid，拉取外部联系人详情
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -680,7 +680,7 @@ func NewQueryExternalContactListResponse() (response *QueryExternalContactListRe
 }
 
 // QueryExternalContactList
-// 企业可通过此接口获取指定成员添加的客户列表。客户是指配置了客户联系功能的成员所添加的外部联系人。没有配置客户联系功能的成员，所添加的外部联系人将不会作为客户返回。
+// 企业可通过此接口基于外部联系人获取指定成员添加的客户列表。客户是指配置了客户联系功能的成员所添加的外部联系人。没有配置客户联系功能的成员，所添加的外部联系人将不会作为客户返回。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -699,7 +699,7 @@ func (c *Client) QueryExternalContactList(request *QueryExternalContactListReque
 }
 
 // QueryExternalContactList
-// 企业可通过此接口获取指定成员添加的客户列表。客户是指配置了客户联系功能的成员所添加的外部联系人。没有配置客户联系功能的成员，所添加的外部联系人将不会作为客户返回。
+// 企业可通过此接口基于外部联系人获取指定成员添加的客户列表。客户是指配置了客户联系功能的成员所添加的外部联系人。没有配置客户联系功能的成员，所添加的外部联系人将不会作为客户返回。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

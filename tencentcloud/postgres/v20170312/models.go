@@ -441,6 +441,9 @@ type CreateInstancesRequest struct {
 
 	// PostgreSQL内核版本。当输入该参数时，会创建该内核版本号实例
 	DBKernelVersion *string `json:"DBKernelVersion,omitempty" name:"DBKernelVersion"`
+
+	// 实例节点信息，购买跨可用区实例时填写。
+	DBNodeSet []*DBNode `json:"DBNodeSet,omitempty" name:"DBNodeSet"`
 }
 
 func (r *CreateInstancesRequest) ToJsonString() string {
@@ -478,6 +481,7 @@ func (r *CreateInstancesRequest) FromJsonString(s string) error {
 	delete(f, "SecurityGroupIds")
 	delete(f, "DBMajorVersion")
 	delete(f, "DBKernelVersion")
+	delete(f, "DBNodeSet")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstancesRequest has unknown keys!", "")
 	}
@@ -848,6 +852,10 @@ type DBBackup struct {
 
 	// 外网下载地址
 	ExternalAddr *string `json:"ExternalAddr,omitempty" name:"ExternalAddr"`
+
+	// 备份集ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SetId *string `json:"SetId,omitempty" name:"SetId"`
 }
 
 type DBInstance struct {
@@ -964,6 +972,10 @@ type DBInstance struct {
 	// PostgreSQL主要版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DBMajorVersion *string `json:"DBMajorVersion,omitempty" name:"DBMajorVersion"`
+
+	// 实例的节点信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DBNodeSet []*DBNode `json:"DBNodeSet,omitempty" name:"DBNodeSet"`
 }
 
 type DBInstanceNetInfo struct {
@@ -990,6 +1002,17 @@ type DBInstanceNetInfo struct {
 	// 子网ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+}
+
+type DBNode struct {
+
+	// 节点类型，值可以为：
+	// Primary，代表主节点；
+	// Standby，代表备节点。
+	Role *string `json:"Role,omitempty" name:"Role"`
+
+	// 节点所在可用区，例如 ap-guangzhou-1。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
 }
 
 type DeleteReadOnlyGroupRequest struct {
@@ -4215,9 +4238,13 @@ type ZoneInfo struct {
 	// 该可用区对应的数字编号
 	ZoneId *uint64 `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 可用状态，UNAVAILABLE表示不可用，AVAILABLE表示可用
+	// 可用状态，UNAVAILABLE表示不可用，AVAILABLE表示可用，SELLOUT表示售罄
 	ZoneState *string `json:"ZoneState,omitempty" name:"ZoneState"`
 
 	// 该可用区是否支持Ipv6
 	ZoneSupportIpv6 *uint64 `json:"ZoneSupportIpv6,omitempty" name:"ZoneSupportIpv6"`
+
+	// 该可用区对应的备可用区集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StandbyZoneSet []*string `json:"StandbyZoneSet,omitempty" name:"StandbyZoneSet"`
 }

@@ -197,6 +197,9 @@ type InputDescribeRiskModelData struct {
 
 	// 客户业务侧标识用户的唯一ID
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 是否为测试流量
+	IsTest *uint64 `json:"IsTest,omitempty" name:"IsTest"`
 }
 
 type InputDetails struct {

@@ -2784,6 +2784,7 @@ type MLIDCardOCRResponse struct {
 	// -9103	证照翻拍告警
 	// -9102	证照复印件告警
 	// -9106       证件遮挡告警
+	// -9107       模糊图片告警
 		Warn []*int64 `json:"Warn,omitempty" name:"Warn"`
 
 		// 证件图片

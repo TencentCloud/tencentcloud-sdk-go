@@ -176,6 +176,9 @@ const (
 	// 由于该IP被禁用，无法绑定该实例。
 	INVALIDPARAMETERVALUE_INSTANCENORMALPUBLICIPBLOCKED = "InvalidParameterValue.InstanceNormalPublicIpBlocked"
 
+	// 弹性网卡绑定的实例与地址绑定的实例不一致。
+	INVALIDPARAMETERVALUE_INSTANCENOTMATCHASSOCIATEENI = "InvalidParameterValue.InstanceNotMatchAssociateEni"
+
 	// 网络计费模式没有更改。
 	INVALIDPARAMETERVALUE_INTERNETCHARGETYPENOTCHANGED = "InvalidParameterValue.InternetChargeTypeNotChanged"
 
@@ -208,6 +211,9 @@ const (
 
 	// 入参格式不合法。
 	INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+
+	// 缺少绑定的实例。
+	INVALIDPARAMETERVALUE_MISSINGASSOCIATEENTITY = "InvalidParameterValue.MissingAssociateEntity"
 
 	// 集群类型不同的IP不可在同一请求中。
 	INVALIDPARAMETERVALUE_MIXEDADDRESSIPSETTYPE = "InvalidParameterValue.MixedAddressIpSetType"
