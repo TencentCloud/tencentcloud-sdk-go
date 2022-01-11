@@ -424,6 +424,7 @@ func NewCreateAccountResponse() (response *CreateAccountResponse) {
 //  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INTERNALERROR_GETUSERLISTFAILED = "InternalError.GetUserListFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CHARACTERERROR = "InvalidParameter.CharacterError"
 //  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
 //  INVALIDPARAMETERVALUE_ACCOUNTALREADYEXISTS = "InvalidParameterValue.AccountAlreadyExists"
@@ -452,6 +453,7 @@ func (c *Client) CreateAccount(request *CreateAccountRequest) (response *CreateA
 //  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INTERNALERROR_GETUSERLISTFAILED = "InternalError.GetUserListFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CHARACTERERROR = "InvalidParameter.CharacterError"
 //  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
 //  INVALIDPARAMETERVALUE_ACCOUNTALREADYEXISTS = "InvalidParameterValue.AccountAlreadyExists"
@@ -829,6 +831,7 @@ func NewDescribeDBLogFilesResponse() (response *DescribeDBLogFilesResponse) {
 // 本接口(DescribeDBLogFiles)用于获取数据库的各种日志列表，包括冷备、binlog、errlog和slowlog。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
 //  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
 //  INTERNALERROR_COSCONFIGURATION = "InternalError.CosConfiguration"
 //  INTERNALERROR_COSSIGNURL = "InternalError.CosSignUrl"
@@ -856,6 +859,7 @@ func (c *Client) DescribeDBLogFiles(request *DescribeDBLogFilesRequest) (respons
 // 本接口(DescribeDBLogFiles)用于获取数据库的各种日志列表，包括冷备、binlog、errlog和slowlog。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
 //  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
 //  INTERNALERROR_COSCONFIGURATION = "InternalError.CosConfiguration"
 //  INTERNALERROR_COSSIGNURL = "InternalError.CosSignUrl"

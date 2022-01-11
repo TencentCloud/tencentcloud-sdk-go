@@ -488,6 +488,7 @@ func NewCreateDDoSSpeedLimitConfigResponse() (response *CreateDDoSSpeedLimitConf
 //
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateDDoSSpeedLimitConfig(request *CreateDDoSSpeedLimitConfigRequest) (response *CreateDDoSSpeedLimitConfigResponse, err error) {
     if request == nil {
         request = NewCreateDDoSSpeedLimitConfigRequest()
@@ -503,6 +504,7 @@ func (c *Client) CreateDDoSSpeedLimitConfig(request *CreateDDoSSpeedLimitConfigR
 //
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateDDoSSpeedLimitConfigWithContext(ctx context.Context, request *CreateDDoSSpeedLimitConfigRequest) (response *CreateDDoSSpeedLimitConfigResponse, err error) {
     if request == nil {
         request = NewCreateDDoSSpeedLimitConfigRequest()

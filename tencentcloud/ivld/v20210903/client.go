@@ -75,9 +75,11 @@ func NewCreateTaskResponse() (response *CreateTaskResponse) {
 //  FAILEDOPERATION_TASKALREADYEXIST = "FailedOperation.TaskAlreadyExist"
 //  FAILEDOPERATION_TASKNOTFINISHED = "FailedOperation.TaskNotFinished"
 //  INVALIDPARAMETER_INVALIDMEDIAID = "InvalidParameter.InvalidMediaId"
+//  INVALIDPARAMETER_INVALIDMEDIANAME = "InvalidParameter.InvalidMediaName"
 //  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
 //  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidURL"
 //  RESOURCENOTFOUND_MEDIANOTFOUND = "ResourceNotFound.MediaNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskResponse, err error) {
     if request == nil {
         request = NewCreateTaskRequest()
@@ -102,9 +104,11 @@ func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskRes
 //  FAILEDOPERATION_TASKALREADYEXIST = "FailedOperation.TaskAlreadyExist"
 //  FAILEDOPERATION_TASKNOTFINISHED = "FailedOperation.TaskNotFinished"
 //  INVALIDPARAMETER_INVALIDMEDIAID = "InvalidParameter.InvalidMediaId"
+//  INVALIDPARAMETER_INVALIDMEDIANAME = "InvalidParameter.InvalidMediaName"
 //  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
 //  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidURL"
 //  RESOURCENOTFOUND_MEDIANOTFOUND = "ResourceNotFound.MediaNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) CreateTaskWithContext(ctx context.Context, request *CreateTaskRequest) (response *CreateTaskResponse, err error) {
     if request == nil {
         request = NewCreateTaskRequest()

@@ -44,6 +44,138 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewBindDevicesRequest() (request *BindDevicesRequest) {
+    request = &BindDevicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "BindDevices")
+    
+    
+    return
+}
+
+func NewBindDevicesResponse() (response *BindDevicesResponse) {
+    response = &BindDevicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BindDevices
+// 批量绑定子设备
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DEVICEISNOTGATEWAY = "InvalidParameterValue.DeviceIsNotGateway"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+func (c *Client) BindDevices(request *BindDevicesRequest) (response *BindDevicesResponse, err error) {
+    if request == nil {
+        request = NewBindDevicesRequest()
+    }
+    
+    response = NewBindDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// BindDevices
+// 批量绑定子设备
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DEVICEISNOTGATEWAY = "InvalidParameterValue.DeviceIsNotGateway"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+func (c *Client) BindDevicesWithContext(ctx context.Context, request *BindDevicesRequest) (response *BindDevicesResponse, err error) {
+    if request == nil {
+        request = NewBindDevicesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewBindDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewBindProductsRequest() (request *BindProductsRequest) {
+    request = &BindProductsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "BindProducts")
+    
+    
+    return
+}
+
+func NewBindProductsResponse() (response *BindProductsResponse) {
+    response = &BindProductsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BindProducts
+// 批量绑定子产品
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SOMEPRODUCTISALREADYBINDED = "FailedOperation.SomeProductIsAlreadyBinded"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PRODUCTISNOTGATEWAY = "InvalidParameter.ProductIsNotGateway"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PRODUCTISNOTGATEWAY = "InvalidParameterValue.ProductIsNotGateway"
+//  LIMITEXCEEDED_BINDPRODUCTSEXCEEDLIMIT = "LimitExceeded.BindProductsExceedLimit"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_PROJECTNOTEXIST = "ResourceNotFound.ProjectNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) BindProducts(request *BindProductsRequest) (response *BindProductsResponse, err error) {
+    if request == nil {
+        request = NewBindProductsRequest()
+    }
+    
+    response = NewBindProductsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// BindProducts
+// 批量绑定子产品
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SOMEPRODUCTISALREADYBINDED = "FailedOperation.SomeProductIsAlreadyBinded"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PRODUCTISNOTGATEWAY = "InvalidParameter.ProductIsNotGateway"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PRODUCTISNOTGATEWAY = "InvalidParameterValue.ProductIsNotGateway"
+//  LIMITEXCEEDED_BINDPRODUCTSEXCEEDLIMIT = "LimitExceeded.BindProductsExceedLimit"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_PROJECTNOTEXIST = "ResourceNotFound.ProjectNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) BindProductsWithContext(ctx context.Context, request *BindProductsRequest) (response *BindProductsResponse, err error) {
+    if request == nil {
+        request = NewBindProductsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewBindProductsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCallDeviceActionAsyncRequest() (request *CallDeviceActionAsyncRequest) {
     request = &CallDeviceActionAsyncRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1040,6 +1172,7 @@ func NewDeleteDeviceResponse() (response *DeleteDeviceResponse) {
 //  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_DEVICEHASALREADYBINDGATEWAY = "UnauthorizedOperation.DeviceHasAlreadyBindGateway"
@@ -1065,6 +1198,7 @@ func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDev
 //  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_DEVICEHASALREADYBINDGATEWAY = "UnauthorizedOperation.DeviceHasAlreadyBindGateway"
@@ -1732,6 +1866,68 @@ func (c *Client) DescribeBatchProductionWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeBindedProductsRequest() (request *DescribeBindedProductsRequest) {
+    request = &DescribeBindedProductsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeBindedProducts")
+    
+    
+    return
+}
+
+func NewDescribeBindedProductsResponse() (response *DescribeBindedProductsResponse) {
+    response = &DescribeBindedProductsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBindedProducts
+// 获取网关产品已经绑定的子产品
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+func (c *Client) DescribeBindedProducts(request *DescribeBindedProductsRequest) (response *DescribeBindedProductsResponse, err error) {
+    if request == nil {
+        request = NewDescribeBindedProductsRequest()
+    }
+    
+    response = NewDescribeBindedProductsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeBindedProducts
+// 获取网关产品已经绑定的子产品
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+func (c *Client) DescribeBindedProductsWithContext(ctx context.Context, request *DescribeBindedProductsRequest) (response *DescribeBindedProductsResponse, err error) {
+    if request == nil {
+        request = NewDescribeBindedProductsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeBindedProductsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeviceRequest() (request *DescribeDeviceRequest) {
     request = &DescribeDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1790,6 +1986,70 @@ func (c *Client) DescribeDeviceWithContext(ctx context.Context, request *Describ
     request.SetContext(ctx)
     
     response = NewDescribeDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDeviceBindGatewayRequest() (request *DescribeDeviceBindGatewayRequest) {
+    request = &DescribeDeviceBindGatewayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeDeviceBindGateway")
+    
+    
+    return
+}
+
+func NewDescribeDeviceBindGatewayResponse() (response *DescribeDeviceBindGatewayResponse) {
+    response = &DescribeDeviceBindGatewayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDeviceBindGateway
+// 查询设备绑定的网关设备
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DEVICEHASNOTBINDGATEWAY = "InvalidParameterValue.DeviceHasNotBindGateway"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDeviceBindGateway(request *DescribeDeviceBindGatewayRequest) (response *DescribeDeviceBindGatewayResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceBindGatewayRequest()
+    }
+    
+    response = NewDescribeDeviceBindGatewayResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeDeviceBindGateway
+// 查询设备绑定的网关设备
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DEVICEHASNOTBINDGATEWAY = "InvalidParameterValue.DeviceHasNotBindGateway"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDeviceBindGatewayWithContext(ctx context.Context, request *DescribeDeviceBindGatewayRequest) (response *DescribeDeviceBindGatewayResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceBindGatewayRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeviceBindGatewayResponse()
     err = c.Send(request, response)
     return
 }
@@ -2057,6 +2317,7 @@ func NewDescribeFenceEventListResponse() (response *DescribeFenceEventListRespon
 //  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_STARTTIMELATERENDTIME = "InvalidParameterValue.StartTimeLaterEndTime"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  RESOURCENOTFOUND_FENCENOTEXIST = "ResourceNotFound.FenceNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOFENCE = "UnauthorizedOperation.NoPermissionToStudioFence"
@@ -2078,6 +2339,7 @@ func (c *Client) DescribeFenceEventList(request *DescribeFenceEventListRequest) 
 //  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_STARTTIMELATERENDTIME = "InvalidParameterValue.StartTimeLaterEndTime"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  RESOURCENOTFOUND_FENCENOTEXIST = "ResourceNotFound.FenceNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOFENCE = "UnauthorizedOperation.NoPermissionToStudioFence"
@@ -2140,6 +2402,128 @@ func (c *Client) DescribeFirmwareTaskWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeFirmwareTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGatewayBindDevicesRequest() (request *DescribeGatewayBindDevicesRequest) {
+    request = &DescribeGatewayBindDevicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeGatewayBindDevices")
+    
+    
+    return
+}
+
+func NewDescribeGatewayBindDevicesResponse() (response *DescribeGatewayBindDevicesResponse) {
+    response = &DescribeGatewayBindDevicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeGatewayBindDevices
+// 获取网关绑定的子设备列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeGatewayBindDevices(request *DescribeGatewayBindDevicesRequest) (response *DescribeGatewayBindDevicesResponse, err error) {
+    if request == nil {
+        request = NewDescribeGatewayBindDevicesRequest()
+    }
+    
+    response = NewDescribeGatewayBindDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeGatewayBindDevices
+// 获取网关绑定的子设备列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeGatewayBindDevicesWithContext(ctx context.Context, request *DescribeGatewayBindDevicesRequest) (response *DescribeGatewayBindDevicesResponse, err error) {
+    if request == nil {
+        request = NewDescribeGatewayBindDevicesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeGatewayBindDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGatewaySubProductsRequest() (request *DescribeGatewaySubProductsRequest) {
+    request = &DescribeGatewaySubProductsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeGatewaySubProducts")
+    
+    
+    return
+}
+
+func NewDescribeGatewaySubProductsResponse() (response *DescribeGatewaySubProductsResponse) {
+    response = &DescribeGatewaySubProductsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeGatewaySubProducts
+// 用于获取网关可绑定或解绑的子产品
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_STAFFPOOLDUPNAMEEXIST = "UnsupportedOperation.StaffPoolDupNameExist"
+func (c *Client) DescribeGatewaySubProducts(request *DescribeGatewaySubProductsRequest) (response *DescribeGatewaySubProductsResponse, err error) {
+    if request == nil {
+        request = NewDescribeGatewaySubProductsRequest()
+    }
+    
+    response = NewDescribeGatewaySubProductsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeGatewaySubProducts
+// 用于获取网关可绑定或解绑的子产品
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_STAFFPOOLDUPNAMEEXIST = "UnsupportedOperation.StaffPoolDupNameExist"
+func (c *Client) DescribeGatewaySubProductsWithContext(ctx context.Context, request *DescribeGatewaySubProductsRequest) (response *DescribeGatewaySubProductsResponse, err error) {
+    if request == nil {
+        request = NewDescribeGatewaySubProductsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeGatewaySubProductsResponse()
     err = c.Send(request, response)
     return
 }
@@ -3212,6 +3596,64 @@ func (c *Client) GetFamilyDeviceUserListWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewGetFamilyDeviceUserListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetGatewaySubDeviceListRequest() (request *GetGatewaySubDeviceListRequest) {
+    request = &GetGatewaySubDeviceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "GetGatewaySubDeviceList")
+    
+    
+    return
+}
+
+func NewGetGatewaySubDeviceListResponse() (response *GetGatewaySubDeviceListResponse) {
+    response = &GetGatewaySubDeviceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetGatewaySubDeviceList
+// 获取指定网关设备的子设备列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOINSTANCE = "UnauthorizedOperation.NoPermissionToInstance"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+func (c *Client) GetGatewaySubDeviceList(request *GetGatewaySubDeviceListRequest) (response *GetGatewaySubDeviceListResponse, err error) {
+    if request == nil {
+        request = NewGetGatewaySubDeviceListRequest()
+    }
+    
+    response = NewGetGatewaySubDeviceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// GetGatewaySubDeviceList
+// 获取指定网关设备的子设备列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOINSTANCE = "UnauthorizedOperation.NoPermissionToInstance"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+func (c *Client) GetGatewaySubDeviceListWithContext(ctx context.Context, request *GetGatewaySubDeviceListRequest) (response *GetGatewaySubDeviceListResponse, err error) {
+    if request == nil {
+        request = NewGetGatewaySubDeviceListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewGetGatewaySubDeviceListResponse()
     err = c.Send(request, response)
     return
 }
@@ -4796,6 +5238,124 @@ func (c *Client) SearchTopicRuleWithContext(ctx context.Context, request *Search
     request.SetContext(ctx)
     
     response = NewSearchTopicRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnbindDevicesRequest() (request *UnbindDevicesRequest) {
+    request = &UnbindDevicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "UnbindDevices")
+    
+    
+    return
+}
+
+func NewUnbindDevicesResponse() (response *UnbindDevicesResponse) {
+    response = &UnbindDevicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UnbindDevices
+// 批量解绑子设备
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) UnbindDevices(request *UnbindDevicesRequest) (response *UnbindDevicesResponse, err error) {
+    if request == nil {
+        request = NewUnbindDevicesRequest()
+    }
+    
+    response = NewUnbindDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UnbindDevices
+// 批量解绑子设备
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) UnbindDevicesWithContext(ctx context.Context, request *UnbindDevicesRequest) (response *UnbindDevicesResponse, err error) {
+    if request == nil {
+        request = NewUnbindDevicesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewUnbindDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnbindProductsRequest() (request *UnbindProductsRequest) {
+    request = &UnbindProductsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "UnbindProducts")
+    
+    
+    return
+}
+
+func NewUnbindProductsResponse() (response *UnbindProductsResponse) {
+    response = &UnbindProductsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UnbindProducts
+// 批量解绑子产品
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_EXISTBINDEDDEVICESUNDERGATEWAYPRODUCT = "UnsupportedOperation.ExistBindedDevicesUnderGatewayProduct"
+func (c *Client) UnbindProducts(request *UnbindProductsRequest) (response *UnbindProductsResponse, err error) {
+    if request == nil {
+        request = NewUnbindProductsRequest()
+    }
+    
+    response = NewUnbindProductsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UnbindProducts
+// 批量解绑子产品
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_EXISTBINDEDDEVICESUNDERGATEWAYPRODUCT = "UnsupportedOperation.ExistBindedDevicesUnderGatewayProduct"
+func (c *Client) UnbindProductsWithContext(ctx context.Context, request *UnbindProductsRequest) (response *UnbindProductsResponse, err error) {
+    if request == nil {
+        request = NewUnbindProductsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewUnbindProductsResponse()
     err = c.Send(request, response)
     return
 }

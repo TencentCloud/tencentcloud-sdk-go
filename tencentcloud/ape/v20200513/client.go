@@ -181,6 +181,7 @@ func NewCreateOrderAndDownloadsResponse() (response *CreateOrderAndDownloadsResp
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateOrderAndDownloads(request *CreateOrderAndDownloadsRequest) (response *CreateOrderAndDownloadsResponse, err error) {
@@ -199,6 +200,7 @@ func (c *Client) CreateOrderAndDownloads(request *CreateOrderAndDownloadsRequest
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateOrderAndDownloadsWithContext(ctx context.Context, request *CreateOrderAndDownloadsRequest) (response *CreateOrderAndDownloadsResponse, err error) {

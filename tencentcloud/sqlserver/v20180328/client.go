@@ -5811,6 +5811,7 @@ func NewStartBackupMigrationResponse() (response *StartBackupMigrationResponse) 
 // 本接口（StartBackupMigration）用于启动备份导入任务。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
 //  FAILEDOPERATION_MIGRATIONLOCKERROR = "FailedOperation.MigrationLockError"
 //  INTERNALERROR_COSERROR = "InternalError.CosError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
@@ -5836,6 +5837,7 @@ func (c *Client) StartBackupMigration(request *StartBackupMigrationRequest) (res
 // 本接口（StartBackupMigration）用于启动备份导入任务。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
 //  FAILEDOPERATION_MIGRATIONLOCKERROR = "FailedOperation.MigrationLockError"
 //  INTERNALERROR_COSERROR = "InternalError.CosError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"

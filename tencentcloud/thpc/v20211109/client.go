@@ -63,6 +63,10 @@ func NewBindAutoScalingGroupResponse() (response *BindAutoScalingGroupResponse) 
 
 // BindAutoScalingGroup
 // 本接口(BindAutoScalingGroup)用于为集群队列绑定弹性伸缩组
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_LAUNCHCONFIGURATIONID = "ResourceNotFound.LaunchConfigurationId"
+//  UNSUPPORTEDOPERATION_AUTOSCALINGGROUPALREADYBINDED = "UnsupportedOperation.AutoScalingGroupAlreadyBinded"
 func (c *Client) BindAutoScalingGroup(request *BindAutoScalingGroupRequest) (response *BindAutoScalingGroupResponse, err error) {
     if request == nil {
         request = NewBindAutoScalingGroupRequest()
@@ -75,6 +79,10 @@ func (c *Client) BindAutoScalingGroup(request *BindAutoScalingGroupRequest) (res
 
 // BindAutoScalingGroup
 // 本接口(BindAutoScalingGroup)用于为集群队列绑定弹性伸缩组
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_LAUNCHCONFIGURATIONID = "ResourceNotFound.LaunchConfigurationId"
+//  UNSUPPORTEDOPERATION_AUTOSCALINGGROUPALREADYBINDED = "UnsupportedOperation.AutoScalingGroupAlreadyBinded"
 func (c *Client) BindAutoScalingGroupWithContext(ctx context.Context, request *BindAutoScalingGroupRequest) (response *BindAutoScalingGroupResponse, err error) {
     if request == nil {
         request = NewBindAutoScalingGroupRequest()

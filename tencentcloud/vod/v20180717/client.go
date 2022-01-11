@@ -6853,6 +6853,7 @@ func NewModifyVodDomainConfigResponse() (response *ModifyVodDomainConfigResponse
 // 1、域名部署状态为 Online 状态时才允许修改域名的配置。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyVodDomainConfig(request *ModifyVodDomainConfigRequest) (response *ModifyVodDomainConfigResponse, err error) {
     if request == nil {
@@ -6870,6 +6871,7 @@ func (c *Client) ModifyVodDomainConfig(request *ModifyVodDomainConfigRequest) (r
 // 1、域名部署状态为 Online 状态时才允许修改域名的配置。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyVodDomainConfigWithContext(ctx context.Context, request *ModifyVodDomainConfigRequest) (response *ModifyVodDomainConfigResponse, err error) {
     if request == nil {

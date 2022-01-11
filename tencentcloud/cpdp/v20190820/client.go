@@ -6715,6 +6715,7 @@ func NewRefundResponse() (response *RefundResponse) {
 // 如交易订单需退款，可以通过本接口将支付款全部或部分退还给付款方，聚鑫将在收到退款请求并且验证成功之后，按照退款规则将支付款按原路退回到支付帐号。最长支持1年的订单退款。在订单包含多个子订单的情况下，如果使用本接口传入OutTradeNo或TransactionId退款，则只支持全单退款；如果需要部分退款，请通过传入子订单的方式来指定部分金额退款。 
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ABNORMALMERCHANTSTATE = "FailedOperation.AbnormalMerchantState"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
@@ -6742,6 +6743,7 @@ func (c *Client) Refund(request *RefundRequest) (response *RefundResponse, err e
 // 如交易订单需退款，可以通过本接口将支付款全部或部分退还给付款方，聚鑫将在收到退款请求并且验证成功之后，按照退款规则将支付款按原路退回到支付帐号。最长支持1年的订单退款。在订单包含多个子订单的情况下，如果使用本接口传入OutTradeNo或TransactionId退款，则只支持全单退款；如果需要部分退款，请通过传入子订单的方式来指定部分金额退款。 
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ABNORMALMERCHANTSTATE = "FailedOperation.AbnormalMerchantState"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
@@ -7363,6 +7365,7 @@ func NewSyncContractDataResponse() (response *SyncContractDataResponse) {
 // 对于存量的签约关系导入或者部分场景下米大师无法收到签约通知的场景，需要由调用方主动将签约状态同步至米大师
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_BACKCALLERROR = "FailedOperation.BackCallError"
 //  FAILEDOPERATION_CALLCHANNELGATEWAYERROR = "FailedOperation.CallChannelGatewayError"
@@ -7406,6 +7409,7 @@ func (c *Client) SyncContractData(request *SyncContractDataRequest) (response *S
 // 对于存量的签约关系导入或者部分场景下米大师无法收到签约通知的场景，需要由调用方主动将签约状态同步至米大师
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_BACKCALLERROR = "FailedOperation.BackCallError"
 //  FAILEDOPERATION_CALLCHANNELGATEWAYERROR = "FailedOperation.CallChannelGatewayError"

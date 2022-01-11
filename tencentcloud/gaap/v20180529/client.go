@@ -866,6 +866,7 @@ func NewCreateHTTPListenerResponse() (response *CreateHTTPListenerResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateHTTPListener(request *CreateHTTPListenerRequest) (response *CreateHTTPListenerResponse, err error) {
     if request == nil {
         request = NewCreateHTTPListenerRequest()
@@ -897,6 +898,7 @@ func (c *Client) CreateHTTPListener(request *CreateHTTPListenerRequest) (respons
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateHTTPListenerWithContext(ctx context.Context, request *CreateHTTPListenerRequest) (response *CreateHTTPListenerResponse, err error) {
     if request == nil {
         request = NewCreateHTTPListenerRequest()
@@ -945,6 +947,7 @@ func NewCreateHTTPSListenerResponse() (response *CreateHTTPSListenerResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateHTTPSListener(request *CreateHTTPSListenerRequest) (response *CreateHTTPSListenerResponse, err error) {
     if request == nil {
         request = NewCreateHTTPSListenerRequest()
@@ -975,6 +978,7 @@ func (c *Client) CreateHTTPSListener(request *CreateHTTPSListenerRequest) (respo
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateHTTPSListenerWithContext(ctx context.Context, request *CreateHTTPSListenerRequest) (response *CreateHTTPSListenerResponse, err error) {
     if request == nil {
         request = NewCreateHTTPSListenerRequest()
@@ -1104,6 +1108,7 @@ func NewCreateProxyGroupResponse() (response *CreateProxyGroupResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FEATURECONFLICT = "InvalidParameterValue.FeatureConflict"
 //  INVALIDPARAMETERVALUE_INVALIDTAGS = "InvalidParameterValue.InvalidTags"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -1130,6 +1135,7 @@ func (c *Client) CreateProxyGroup(request *CreateProxyGroupRequest) (response *C
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FEATURECONFLICT = "InvalidParameterValue.FeatureConflict"
 //  INVALIDPARAMETERVALUE_INVALIDTAGS = "InvalidParameterValue.InvalidTags"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -1472,6 +1478,7 @@ func NewCreateTCPListenersResponse() (response *CreateTCPListenersResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateTCPListeners(request *CreateTCPListenersRequest) (response *CreateTCPListenersResponse, err error) {
     if request == nil {
         request = NewCreateTCPListenersRequest()
@@ -1505,6 +1512,7 @@ func (c *Client) CreateTCPListeners(request *CreateTCPListenersRequest) (respons
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateTCPListenersWithContext(ctx context.Context, request *CreateTCPListenersRequest) (response *CreateTCPListenersResponse, err error) {
     if request == nil {
         request = NewCreateTCPListenersRequest()
@@ -1552,6 +1560,7 @@ func NewCreateUDPListenersResponse() (response *CreateUDPListenersResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateUDPListeners(request *CreateUDPListenersRequest) (response *CreateUDPListenersResponse, err error) {
     if request == nil {
         request = NewCreateUDPListenersRequest()
@@ -1581,6 +1590,7 @@ func (c *Client) CreateUDPListeners(request *CreateUDPListenersRequest) (respons
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateUDPListenersWithContext(ctx context.Context, request *CreateUDPListenersRequest) (response *CreateUDPListenersResponse, err error) {
     if request == nil {
         request = NewCreateUDPListenersRequest()

@@ -26,6 +26,9 @@ const (
 	// 另一个请求正在处理中，请稍后再试。
 	FAILEDOPERATION_ANOTHERREQUESTPROCESSING = "FailedOperation.AnotherRequestProcessing"
 
+	// HTTP客户端请求失败。
+	FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 

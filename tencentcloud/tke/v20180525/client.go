@@ -68,6 +68,7 @@ func NewAcquireClusterAdminRoleResponse() (response *AcquireClusterAdminRoleResp
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
 //  INTERNALERROR_KUBERNETESCLIENTBUILDERROR = "InternalError.KubernetesClientBuildError"
+//  INTERNALERROR_KUBERNETESCREATEOPERATIONERROR = "InternalError.KubernetesCreateOperationError"
 //  INTERNALERROR_KUBERNETESGETOPERATIONERROR = "InternalError.KubernetesGetOperationError"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -93,6 +94,7 @@ func (c *Client) AcquireClusterAdminRole(request *AcquireClusterAdminRoleRequest
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
 //  INTERNALERROR_KUBERNETESCLIENTBUILDERROR = "InternalError.KubernetesClientBuildError"
+//  INTERNALERROR_KUBERNETESCREATEOPERATIONERROR = "InternalError.KubernetesCreateOperationError"
 //  INTERNALERROR_KUBERNETESGETOPERATIONERROR = "InternalError.KubernetesGetOperationError"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -461,6 +463,7 @@ func NewCreateClusterResponse() (response *CreateClusterResponse) {
 //  INTERNALERROR_CREATEMASTERFAILED = "InternalError.CreateMasterFailed"
 //  INTERNALERROR_CVMCOMMON = "InternalError.CvmCommon"
 //  INTERNALERROR_CVMNUMBERNOTMATCH = "InternalError.CvmNumberNotMatch"
+//  INTERNALERROR_CVMSTATUS = "InternalError.CvmStatus"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBAFFECTIVEDROWS = "InternalError.DbAffectivedRows"
 //  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
@@ -516,6 +519,7 @@ func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateC
 //  INTERNALERROR_CREATEMASTERFAILED = "InternalError.CreateMasterFailed"
 //  INTERNALERROR_CVMCOMMON = "InternalError.CvmCommon"
 //  INTERNALERROR_CVMNUMBERNOTMATCH = "InternalError.CvmNumberNotMatch"
+//  INTERNALERROR_CVMSTATUS = "InternalError.CvmStatus"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBAFFECTIVEDROWS = "InternalError.DbAffectivedRows"
 //  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
@@ -3950,6 +3954,7 @@ func NewDescribeExternalClusterSpecResponse() (response *DescribeExternalCluster
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 //  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
 //  RESOURCENOTFOUND_KUBERNETESRESOURCENOTFOUND = "ResourceNotFound.KubernetesResourceNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
 //  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
 func (c *Client) DescribeExternalClusterSpec(request *DescribeExternalClusterSpecRequest) (response *DescribeExternalClusterSpecResponse, err error) {
     if request == nil {
@@ -3978,6 +3983,7 @@ func (c *Client) DescribeExternalClusterSpec(request *DescribeExternalClusterSpe
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 //  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
 //  RESOURCENOTFOUND_KUBERNETESRESOURCENOTFOUND = "ResourceNotFound.KubernetesResourceNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
 //  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
 func (c *Client) DescribeExternalClusterSpecWithContext(ctx context.Context, request *DescribeExternalClusterSpecRequest) (response *DescribeExternalClusterSpecResponse, err error) {
     if request == nil {
@@ -4946,6 +4952,7 @@ func NewDisableVpcCniNetworkTypeResponse() (response *DisableVpcCniNetworkTypeRe
 //  INTERNALERROR_KUBECLIENTCREATE = "InternalError.KubeClientCreate"
 //  INTERNALERROR_KUBECOMMON = "InternalError.KubeCommon"
 //  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 func (c *Client) DisableVpcCniNetworkType(request *DisableVpcCniNetworkTypeRequest) (response *DisableVpcCniNetworkTypeResponse, err error) {
     if request == nil {
@@ -4964,6 +4971,7 @@ func (c *Client) DisableVpcCniNetworkType(request *DisableVpcCniNetworkTypeReque
 //  INTERNALERROR_KUBECLIENTCREATE = "InternalError.KubeClientCreate"
 //  INTERNALERROR_KUBECOMMON = "InternalError.KubeCommon"
 //  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 func (c *Client) DisableVpcCniNetworkTypeWithContext(ctx context.Context, request *DisableVpcCniNetworkTypeRequest) (response *DisableVpcCniNetworkTypeResponse, err error) {
     if request == nil {
@@ -6102,6 +6110,7 @@ func NewScaleOutClusterMasterResponse() (response *ScaleOutClusterMasterResponse
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) ScaleOutClusterMaster(request *ScaleOutClusterMasterRequest) (response *ScaleOutClusterMasterResponse, err error) {
     if request == nil {
         request = NewScaleOutClusterMasterRequest()
@@ -6117,6 +6126,7 @@ func (c *Client) ScaleOutClusterMaster(request *ScaleOutClusterMasterRequest) (r
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) ScaleOutClusterMasterWithContext(ctx context.Context, request *ScaleOutClusterMasterRequest) (response *ScaleOutClusterMasterResponse, err error) {
     if request == nil {
         request = NewScaleOutClusterMasterRequest()

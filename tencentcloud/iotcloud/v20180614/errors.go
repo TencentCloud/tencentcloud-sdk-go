@@ -146,6 +146,9 @@ const (
 	// 创建的产品名已存在。
 	INVALIDPARAMETERVALUE_PRODUCTALREADYEXIST = "InvalidParameterValue.ProductAlreadyExist"
 
+	// 产品不是网关类型，无法绑定子产品。
+	INVALIDPARAMETERVALUE_PRODUCTISNOTGATEWAY = "InvalidParameterValue.ProductIsNotGateway"
+
 	// 产品类型不支持。
 	INVALIDPARAMETERVALUE_PRODUCTTYPENOTSUPPORT = "InvalidParameterValue.ProductTypeNotSupport"
 

@@ -3250,6 +3250,9 @@ type Instance struct {
 
 	// 可用区。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 实例绑定的标签列表。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type InstanceChargePrepaid struct {
@@ -4280,6 +4283,15 @@ type SystemDisk struct {
 	// 系统盘ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
+}
+
+type Tag struct {
+
+	// 标签键
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 标签值
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type TerminateDisksRequest struct {

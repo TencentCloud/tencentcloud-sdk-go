@@ -63,6 +63,9 @@ func NewCreateApmInstanceResponse() (response *CreateApmInstanceResponse) {
 
 // CreateApmInstance
 // 业务购买APM实例，调用该接口创建
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CreateApmInstance(request *CreateApmInstanceRequest) (response *CreateApmInstanceResponse, err error) {
     if request == nil {
         request = NewCreateApmInstanceRequest()
@@ -75,6 +78,9 @@ func (c *Client) CreateApmInstance(request *CreateApmInstanceRequest) (response 
 
 // CreateApmInstance
 // 业务购买APM实例，调用该接口创建
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CreateApmInstanceWithContext(ctx context.Context, request *CreateApmInstanceRequest) (response *CreateApmInstanceResponse, err error) {
     if request == nil {
         request = NewCreateApmInstanceRequest()
@@ -166,6 +172,7 @@ func NewDescribeApmInstancesResponse() (response *DescribeApmInstancesResponse) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SENDREQUEST = "FailedOperation.SendRequest"
 func (c *Client) DescribeApmInstances(request *DescribeApmInstancesRequest) (response *DescribeApmInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeApmInstancesRequest()
@@ -181,6 +188,7 @@ func (c *Client) DescribeApmInstances(request *DescribeApmInstancesRequest) (res
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SENDREQUEST = "FailedOperation.SendRequest"
 func (c *Client) DescribeApmInstancesWithContext(ctx context.Context, request *DescribeApmInstancesRequest) (response *DescribeApmInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeApmInstancesRequest()

@@ -57,6 +57,20 @@ type AccessRegionDetial struct {
 
 	// 机房类型, dc表示DataCenter数据中心, ec表示EdgeComputing边缘节点
 	IDCType *string `json:"IDCType,omitempty" name:"IDCType"`
+
+	// 特性位图，每个bit位代表一种特性，其中：
+	// 0，表示不支持该特性；
+	// 1，表示支持该特性。
+	// 特性位图含义如下（从右往左）：
+	// 第1个bit，支持4层加速；
+	// 第2个bit，支持7层加速；
+	// 第3个bit，支持Http3接入；
+	// 第4个bit，支持IPv6；
+	// 第5个bit，支持精品BGP接入；
+	// 第6个bit，支持三网接入；
+	// 第7个bit，支持接入段Qos加速。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FeatureBitmap *int64 `json:"FeatureBitmap,omitempty" name:"FeatureBitmap"`
 }
 
 type AccessRegionDomainConf struct {
@@ -399,6 +413,9 @@ type CheckProxyCreateRequest struct {
 
 	// 通道套餐类型。Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
 	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
+
+	// 支持Http3的开关，其中：0，表示不需要支持Http3接入；1，表示需要支持Http3接入。注意：如果开启了Http3的功能，那么该通道就不再支持TCP/UDP接入的功能。该功能的启停无法在通道创建完毕后再修改。
+	Http3Supported *int64 `json:"Http3Supported,omitempty" name:"Http3Supported"`
 }
 
 func (r *CheckProxyCreateRequest) ToJsonString() string {
@@ -421,6 +438,7 @@ func (r *CheckProxyCreateRequest) FromJsonString(s string) error {
 	delete(f, "IPAddressVersion")
 	delete(f, "NetworkType")
 	delete(f, "PackageType")
+	delete(f, "Http3Supported")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckProxyCreateRequest has unknown keys!", "")
 	}
@@ -847,6 +865,12 @@ type CreateDomainRequest struct {
 	// 客户端CA证书，用于客户端与GAAP的HTTPS的交互。
 	// 仅当采用双向认证的方式时，需要设置该字段或ClientCertificateId字段。
 	PolyClientCertificateIds []*string `json:"PolyClientCertificateIds,omitempty" name:"PolyClientCertificateIds"`
+
+	// 是否开启Http3特性的标识，其中：
+	// 0，表示不开启Http3；
+	// 1，表示开启Http3。
+	// 默认不开启Http3。可以通过SetDomainHttp3开启。
+	Http3Supported *int64 `json:"Http3Supported,omitempty" name:"Http3Supported"`
 }
 
 func (r *CreateDomainRequest) ToJsonString() string {
@@ -866,6 +890,7 @@ func (r *CreateDomainRequest) FromJsonString(s string) error {
 	delete(f, "CertificateId")
 	delete(f, "ClientCertificateId")
 	delete(f, "PolyClientCertificateIds")
+	delete(f, "Http3Supported")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDomainRequest has unknown keys!", "")
 	}
@@ -985,6 +1010,13 @@ type CreateHTTPSListenerRequest struct {
 
 	// 通道组ID，与ProxyId之间只能设置一个。表示创建通道组的监听器。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 支持Http3的开关，其中：
+	// 0，表示不需要支持Http3接入；
+	// 1，表示需要支持Http3接入。
+	// 注意：如果支持了Http3的功能，那么该监听器会占用对应的UDP接入端口，不可再创建相同端口的UDP监听器。
+	// 该功能的启停无法在监听器创建完毕后再修改。
+	Http3Supported *int64 `json:"Http3Supported,omitempty" name:"Http3Supported"`
 }
 
 func (r *CreateHTTPSListenerRequest) ToJsonString() string {
@@ -1008,6 +1040,7 @@ func (r *CreateHTTPSListenerRequest) FromJsonString(s string) error {
 	delete(f, "ClientCertificateId")
 	delete(f, "PolyClientCertificateIds")
 	delete(f, "GroupId")
+	delete(f, "Http3Supported")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHTTPSListenerRequest has unknown keys!", "")
 	}
@@ -1109,6 +1142,13 @@ type CreateProxyGroupRequest struct {
 
 	// 通道组套餐类型，可取值：Thunder、Accelerator，默认值Thunder
 	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
+
+	// 支持Http3的开关，其中：
+	// 0，表示不需要支持Http3接入；
+	// 1，表示需要支持Http3接入。
+	// 注意：如果开启了Http3的功能，那么该通道组就不再支持TCP/UDP接入的功能。
+	// 该功能的启停无法在通道组创建完毕后再修改。
+	Http3Supported *int64 `json:"Http3Supported,omitempty" name:"Http3Supported"`
 }
 
 func (r *CreateProxyGroupRequest) ToJsonString() string {
@@ -1130,6 +1170,7 @@ func (r *CreateProxyGroupRequest) FromJsonString(s string) error {
 	delete(f, "AccessRegionSet")
 	delete(f, "IPAddressVersion")
 	delete(f, "PackageType")
+	delete(f, "Http3Supported")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProxyGroupRequest has unknown keys!", "")
 	}
@@ -1205,6 +1246,9 @@ type CreateProxyRequest struct {
 
 	// 通道套餐类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
 	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
+
+	// 支持Http3的开关，其中：0，表示不需要支持Http3接入；1，表示需要支持Http3接入。注意：如果开启了Http3的功能，那么该通道就不再支持TCP/UDP接入的功能。该功能的启停无法在通道创建完毕后再修改。
+	Http3Supported *int64 `json:"Http3Supported,omitempty" name:"Http3Supported"`
 }
 
 func (r *CreateProxyRequest) ToJsonString() string {
@@ -1233,6 +1277,7 @@ func (r *CreateProxyRequest) FromJsonString(s string) error {
 	delete(f, "IPAddressVersion")
 	delete(f, "NetworkType")
 	delete(f, "PackageType")
+	delete(f, "Http3Supported")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProxyRequest has unknown keys!", "")
 	}
@@ -2778,6 +2823,13 @@ type DescribeHTTPSListenersRequest struct {
 
 	// 过滤条件，通道组ID
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 支持Http3的开关，其中：
+	// 0，表示不需要支持Http3接入；
+	// 1，表示需要支持Http3接入。
+	// 注意：如果支持了Http3的功能，那么该监听器会占用对应的UDP接入端口，不可再创建相同端口的UDP监听器。
+	// 该功能的启停无法在监听器创建完毕后再修改。
+	Http3Supported *int64 `json:"Http3Supported,omitempty" name:"Http3Supported"`
 }
 
 func (r *DescribeHTTPSListenersRequest) ToJsonString() string {
@@ -2800,6 +2852,7 @@ func (r *DescribeHTTPSListenersRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "SearchValue")
 	delete(f, "GroupId")
+	delete(f, "Http3Supported")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHTTPSListenersRequest has unknown keys!", "")
 	}
@@ -4475,6 +4528,12 @@ type DomainRuleSet struct {
 	// 封禁解封状态：BANNED表示已封禁，RECOVER表示已解封或未封禁，BANNING表示封禁中，RECOVERING表示解封中，BAN_FAILED表示封禁失败，RECOVER_FAILED表示解封失败。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BanStatus *string `json:"BanStatus,omitempty" name:"BanStatus"`
+
+	// Http3特性标识，其中：
+	// 0表示关闭；
+	// 1表示启用。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Http3Supported *int64 `json:"Http3Supported,omitempty" name:"Http3Supported"`
 }
 
 type Filter struct {
@@ -4631,6 +4690,9 @@ type InquiryPriceCreateProxyRequest struct {
 
 	// 通道套餐类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
 	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
+
+	// 支持Http3的开关，其中：0，表示不需要支持Http3接入；1，表示需要支持Http3接入。注意：如果开启了Http3的功能，那么该通道就不再支持TCP/UDP接入的功能。该功能的启停无法在通道创建完毕后再修改。
+	Http3Supported *int64 `json:"Http3Supported,omitempty" name:"Http3Supported"`
 }
 
 func (r *InquiryPriceCreateProxyRequest) ToJsonString() string {
@@ -4655,6 +4717,7 @@ func (r *InquiryPriceCreateProxyRequest) FromJsonString(s string) error {
 	delete(f, "IPAddressVersion")
 	delete(f, "NetworkType")
 	delete(f, "PackageType")
+	delete(f, "Http3Supported")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceCreateProxyRequest has unknown keys!", "")
 	}
@@ -5944,9 +6007,15 @@ type ProxyGroupDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPAddressVersion *string `json:"IPAddressVersion,omitempty" name:"IPAddressVersion"`
 
-	// 通道组套餐类型：Thunder表示标准通道组，Accelerator表示游戏加速器通道组。
+	// 通道组套餐类型：Thunder表示标准通道组，Accelerator表示游戏加速器通道组，CrossBorder表示跨境通道组。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
+
+	// 支持Http3特性的标识，其中：
+	// 0表示关闭；
+	// 1表示启用。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Http3Supported *int64 `json:"Http3Supported,omitempty" name:"Http3Supported"`
 }
 
 type ProxyGroupInfo struct {
@@ -5990,6 +6059,12 @@ type ProxyGroupInfo struct {
 	// 通道组是否包含微软通道
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyType *uint64 `json:"ProxyType,omitempty" name:"ProxyType"`
+
+	// 支持Http3特性的标识，其中：
+	// 0，表示不支持Http3；
+	// 1，表示支持Http3。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Http3Supported *int64 `json:"Http3Supported,omitempty" name:"Http3Supported"`
 }
 
 type ProxyIdDict struct {
@@ -6124,6 +6199,12 @@ type ProxyInfo struct {
 	// IP列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPList []*IPDetail `json:"IPList,omitempty" name:"IPList"`
+
+	// 支持Http3协议的标识，其中：
+	// 0表示关闭；
+	// 1表示启用。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Http3Supported *int64 `json:"Http3Supported,omitempty" name:"Http3Supported"`
 }
 
 type ProxySimpleInfo struct {
@@ -6222,6 +6303,20 @@ type RegionDetail struct {
 
 	// 机房类型, dc表示DataCenter数据中心, ec表示EdgeComputing边缘节点
 	IDCType *string `json:"IDCType,omitempty" name:"IDCType"`
+
+	// 特性位图，每个bit位代表一种特性，其中：
+	// 0，表示不支持该特性；
+	// 1，表示支持该特性。
+	// 特性位图含义如下（从右往左）：
+	// 第1个bit，支持4层加速；
+	// 第2个bit，支持7层加速；
+	// 第3个bit，支持Http3接入；
+	// 第4个bit，支持IPv6；
+	// 第5个bit，支持精品BGP接入；
+	// 第6个bit，支持三网接入；
+	// 第7个bit，支持接入段Qos加速。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FeatureBitmap *uint64 `json:"FeatureBitmap,omitempty" name:"FeatureBitmap"`
 }
 
 type RemoveRealServersRequest struct {

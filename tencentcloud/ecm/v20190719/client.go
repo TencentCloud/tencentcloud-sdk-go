@@ -729,6 +729,7 @@ func NewBatchModifyTargetWeightResponse() (response *BatchModifyTargetWeightResp
 // 批量修改监听器绑定的后端机器的转发权重。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
@@ -749,6 +750,7 @@ func (c *Client) BatchModifyTargetWeight(request *BatchModifyTargetWeightRequest
 // 批量修改监听器绑定的后端机器的转发权重。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
@@ -3129,6 +3131,7 @@ func NewDescribeDisksResponse() (response *DescribeDisksResponse) {
 // * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的云硬盘列表。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONNOTALLOW = "FailedOperation.OperationNotAllow"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -3152,6 +3155,7 @@ func (c *Client) DescribeDisks(request *DescribeDisksRequest) (response *Describ
 // * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的云硬盘列表。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONNOTALLOW = "FailedOperation.OperationNotAllow"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 //  MISSINGPARAMETER = "MissingParameter"

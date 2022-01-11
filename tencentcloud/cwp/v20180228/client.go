@@ -381,6 +381,7 @@ func NewCreateEmergencyVulScanResponse() (response *CreateEmergencyVulScanRespon
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateEmergencyVulScan(request *CreateEmergencyVulScanRequest) (response *CreateEmergencyVulScanResponse, err error) {
     if request == nil {
@@ -404,6 +405,7 @@ func (c *Client) CreateEmergencyVulScan(request *CreateEmergencyVulScanRequest) 
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateEmergencyVulScanWithContext(ctx context.Context, request *CreateEmergencyVulScanRequest) (response *CreateEmergencyVulScanResponse, err error) {
     if request == nil {
@@ -4768,6 +4770,7 @@ func NewDescribeBruteAttackListResponse() (response *DescribeBruteAttackListResp
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeBruteAttackList(request *DescribeBruteAttackListRequest) (response *DescribeBruteAttackListResponse, err error) {
     if request == nil {
         request = NewDescribeBruteAttackListRequest()
@@ -4789,6 +4792,7 @@ func (c *Client) DescribeBruteAttackList(request *DescribeBruteAttackListRequest
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeBruteAttackListWithContext(ctx context.Context, request *DescribeBruteAttackListRequest) (response *DescribeBruteAttackListResponse, err error) {
     if request == nil {
         request = NewDescribeBruteAttackListRequest()
@@ -11471,6 +11475,7 @@ func NewOpenProVersionResponse() (response *OpenProVersionResponse) {
 // 本接口 (OpenProVersion) 用于开通专业版。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_OPENPROVERSION = "FailedOperation.OpenProVersion"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -11495,6 +11500,7 @@ func (c *Client) OpenProVersion(request *OpenProVersionRequest) (response *OpenP
 // 本接口 (OpenProVersion) 用于开通专业版。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_OPENPROVERSION = "FailedOperation.OpenProVersion"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"

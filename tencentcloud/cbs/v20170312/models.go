@@ -468,7 +468,7 @@ type CreateSnapshotRequest struct {
 	// 快照名称，不传则新快照名称默认为“未命名”。
 	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
 
-	// 快照的到期时间，到期后该快照将会自动删除
+	// 快照的到期时间，到期后该快照将会自动删除,需要传入UTC时间下的ISO-8601标准时间格式,例如:2022-01-08T09:47:55+00:00
 	Deadline *string `json:"Deadline,omitempty" name:"Deadline"`
 }
 
@@ -2529,6 +2529,9 @@ type TerminateDisksRequest struct {
 
 	// 需退还的云盘ID列表。
 	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
+
+	// 销毁云盘时删除关联的非永久保留快照。0 表示非永久快照不随云盘销毁而销毁，1表示非永久快照随云盘销毁而销毁，默认取0。快照是否永久保留可以通过DescribeSnapshots接口返回的快照详情的IsPermanent字段来判断，true表示永久快照，false表示非永久快照。
+	DeleteSnapshot *int64 `json:"DeleteSnapshot,omitempty" name:"DeleteSnapshot"`
 }
 
 func (r *TerminateDisksRequest) ToJsonString() string {
@@ -2544,6 +2547,7 @@ func (r *TerminateDisksRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "DiskIds")
+	delete(f, "DeleteSnapshot")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TerminateDisksRequest has unknown keys!", "")
 	}

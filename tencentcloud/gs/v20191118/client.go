@@ -226,6 +226,64 @@ func (c *Client) SaveGameArchiveWithContext(ctx context.Context, request *SaveGa
     return
 }
 
+func NewStartPublishStreamRequest() (request *StartPublishStreamRequest) {
+    request = &StartPublishStreamRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gs", APIVersion, "StartPublishStream")
+    
+    
+    return
+}
+
+func NewStartPublishStreamResponse() (response *StartPublishStreamResponse) {
+    response = &StartPublishStreamResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StartPublishStream
+// 开始云端推流
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  UNSUPPORTEDOPERATION_NOTRUNNING = "UnsupportedOperation.NotRunning"
+func (c *Client) StartPublishStream(request *StartPublishStreamRequest) (response *StartPublishStreamResponse, err error) {
+    if request == nil {
+        request = NewStartPublishStreamRequest()
+    }
+    
+    response = NewStartPublishStreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// StartPublishStream
+// 开始云端推流
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  UNSUPPORTEDOPERATION_NOTRUNNING = "UnsupportedOperation.NotRunning"
+func (c *Client) StartPublishStreamWithContext(ctx context.Context, request *StartPublishStreamRequest) (response *StartPublishStreamResponse, err error) {
+    if request == nil {
+        request = NewStartPublishStreamRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewStartPublishStreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopGameRequest() (request *StopGameRequest) {
     request = &StopGameRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -274,6 +332,64 @@ func (c *Client) StopGameWithContext(ctx context.Context, request *StopGameReque
     request.SetContext(ctx)
     
     response = NewStopGameResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopPublishStreamRequest() (request *StopPublishStreamRequest) {
+    request = &StopPublishStreamRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gs", APIVersion, "StopPublishStream")
+    
+    
+    return
+}
+
+func NewStopPublishStreamResponse() (response *StopPublishStreamResponse) {
+    response = &StopPublishStreamResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StopPublishStream
+// 停止云端推流
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  UNSUPPORTEDOPERATION_NOTRUNNING = "UnsupportedOperation.NotRunning"
+func (c *Client) StopPublishStream(request *StopPublishStreamRequest) (response *StopPublishStreamResponse, err error) {
+    if request == nil {
+        request = NewStopPublishStreamRequest()
+    }
+    
+    response = NewStopPublishStreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// StopPublishStream
+// 停止云端推流
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  UNSUPPORTEDOPERATION_NOTRUNNING = "UnsupportedOperation.NotRunning"
+func (c *Client) StopPublishStreamWithContext(ctx context.Context, request *StopPublishStreamRequest) (response *StopPublishStreamResponse, err error) {
+    if request == nil {
+        request = NewStopPublishStreamRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewStopPublishStreamResponse()
     err = c.Send(request, response)
     return
 }

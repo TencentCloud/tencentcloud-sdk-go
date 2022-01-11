@@ -65,6 +65,7 @@ func NewEvaluationResponse() (response *EvaluationResponse) {
 // 速算题目批改接口，根据用户上传的图片或图片的URL识别图片中的数学算式，进而给出算式的正确性评估。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CHARGECOUNTERROR = "FailedOperation.ChargeCountError"
 //  INTERNALERROR_ENGINERESULTERROR = "InternalError.EngineResultError"
 //  INTERNALERROR_INITIALPARAMETERERROR = "InternalError.InitialParameterError"
 //  INTERNALERROR_SERVERINTERNALERROR = "InternalError.ServerInternalError"
@@ -92,6 +93,7 @@ func (c *Client) Evaluation(request *EvaluationRequest) (response *EvaluationRes
 // 速算题目批改接口，根据用户上传的图片或图片的URL识别图片中的数学算式，进而给出算式的正确性评估。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CHARGECOUNTERROR = "FailedOperation.ChargeCountError"
 //  INTERNALERROR_ENGINERESULTERROR = "InternalError.EngineResultError"
 //  INTERNALERROR_INITIALPARAMETERERROR = "InternalError.InitialParameterError"
 //  INTERNALERROR_SERVERINTERNALERROR = "InternalError.ServerInternalError"

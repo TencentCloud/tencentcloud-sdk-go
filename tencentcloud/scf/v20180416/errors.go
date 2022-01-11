@@ -599,6 +599,9 @@ const (
 	// 指定的cfs下未找到您所指定的挂载点。
 	RESOURCENOTFOUND_CFSMOUNTINSNOTMATCH = "ResourceNotFound.CfsMountInsNotMatch"
 
+	// 检测cfs状态为不可用。
+	RESOURCENOTFOUND_CFSSTATUSERROR = "ResourceNotFound.CfsStatusError"
+
 	// cfs与云函数所处vpc不一致。
 	RESOURCENOTFOUND_CFSVPCNOTMATCH = "ResourceNotFound.CfsVpcNotMatch"
 

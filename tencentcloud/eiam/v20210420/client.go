@@ -654,8 +654,10 @@ func NewDeleteUserResponse() (response *DeleteUserResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DELETEUSEREXISTSADMINISTRATOR = "FailedOperation.DeleteUserExistsAdministrator"
+//  FAILEDOPERATION_DELETEUSERFAILURE = "FailedOperation.DeleteUserFailure"
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
 //  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
 func (c *Client) DeleteUser(request *DeleteUserRequest) (response *DeleteUserResponse, err error) {
     if request == nil {
@@ -672,8 +674,10 @@ func (c *Client) DeleteUser(request *DeleteUserRequest) (response *DeleteUserRes
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DELETEUSEREXISTSADMINISTRATOR = "FailedOperation.DeleteUserExistsAdministrator"
+//  FAILEDOPERATION_DELETEUSERFAILURE = "FailedOperation.DeleteUserFailure"
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
 //  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
 func (c *Client) DeleteUserWithContext(ctx context.Context, request *DeleteUserRequest) (response *DeleteUserResponse, err error) {
     if request == nil {
@@ -1240,6 +1244,8 @@ func NewDescribeUserInfoResponse() (response *DescribeUserInfoResponse) {
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
 //  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
 //  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  INVALIDPARAMETER_USERIDISNULL = "InvalidParameter.UserIDIsNull"
+//  INVALIDPARAMETER_USERNAMEISNULL = "InvalidParameter.UserNameIsNull"
 func (c *Client) DescribeUserInfo(request *DescribeUserInfoRequest) (response *DescribeUserInfoResponse, err error) {
     if request == nil {
         request = NewDescribeUserInfoRequest()
@@ -1257,6 +1263,8 @@ func (c *Client) DescribeUserInfo(request *DescribeUserInfoRequest) (response *D
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
 //  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
 //  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  INVALIDPARAMETER_USERIDISNULL = "InvalidParameter.UserIDIsNull"
+//  INVALIDPARAMETER_USERNAMEISNULL = "InvalidParameter.UserNameIsNull"
 func (c *Client) DescribeUserInfoWithContext(ctx context.Context, request *DescribeUserInfoRequest) (response *DescribeUserInfoResponse, err error) {
     if request == nil {
         request = NewDescribeUserInfoRequest()
@@ -1779,6 +1787,7 @@ func NewListUserGroupsOfUserResponse() (response *ListUserGroupsOfUserResponse) 
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
 //  FAILEDOPERATION_USERINFOSORTKEYISILLEGAL = "FailedOperation.UserInfoSortKeyIsIllegal"
 //  FAILEDOPERATION_USERNOTFOUND = "FailedOperation.UserNotFound"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
 func (c *Client) ListUserGroupsOfUser(request *ListUserGroupsOfUserRequest) (response *ListUserGroupsOfUserResponse, err error) {
     if request == nil {
@@ -1798,6 +1807,7 @@ func (c *Client) ListUserGroupsOfUser(request *ListUserGroupsOfUserRequest) (res
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
 //  FAILEDOPERATION_USERINFOSORTKEYISILLEGAL = "FailedOperation.UserInfoSortKeyIsIllegal"
 //  FAILEDOPERATION_USERNOTFOUND = "FailedOperation.UserNotFound"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
 func (c *Client) ListUserGroupsOfUserWithContext(ctx context.Context, request *ListUserGroupsOfUserRequest) (response *ListUserGroupsOfUserResponse, err error) {
     if request == nil {
@@ -2003,6 +2013,7 @@ func NewModifyAccountGroupResponse() (response *ModifyAccountGroupResponse) {
 // 修改账号组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTGROUPNAMEEXISTED = "FailedOperation.AccountGroupNameExisted"
 //  FAILEDOPERATION_ACCOUNTGROUPNOTEXISTED = "FailedOperation.AccountGroupNotExisted"
 //  FAILEDOPERATION_ACCOUNTNOTEXISTED = "FailedOperation.AccountNotExisted"
 //  FAILEDOPERATION_APPNOTEXISTED = "FailedOperation.AppNotExisted"
@@ -2022,6 +2033,7 @@ func (c *Client) ModifyAccountGroup(request *ModifyAccountGroupRequest) (respons
 // 修改账号组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTGROUPNAMEEXISTED = "FailedOperation.AccountGroupNameExisted"
 //  FAILEDOPERATION_ACCOUNTGROUPNOTEXISTED = "FailedOperation.AccountGroupNotExisted"
 //  FAILEDOPERATION_ACCOUNTNOTEXISTED = "FailedOperation.AccountNotExisted"
 //  FAILEDOPERATION_APPNOTEXISTED = "FailedOperation.AppNotExisted"
@@ -2059,6 +2071,7 @@ func NewModifyAppAccountResponse() (response *ModifyAppAccountResponse) {
 // 修改应用账号
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTNAMEEXISTED = "FailedOperation.AccountNameExisted"
 //  FAILEDOPERATION_ACCOUNTNOTEXISTED = "FailedOperation.AccountNotExisted"
 //  FAILEDOPERATION_APPNOTEXISTED = "FailedOperation.AppNotExisted"
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
@@ -2077,6 +2090,7 @@ func (c *Client) ModifyAppAccount(request *ModifyAppAccountRequest) (response *M
 // 修改应用账号
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTNAMEEXISTED = "FailedOperation.AccountNameExisted"
 //  FAILEDOPERATION_ACCOUNTNOTEXISTED = "FailedOperation.AccountNotExisted"
 //  FAILEDOPERATION_APPNOTEXISTED = "FailedOperation.AppNotExisted"
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
@@ -2178,6 +2192,7 @@ func NewModifyUserInfoResponse() (response *ModifyUserInfoResponse) {
 //  FAILEDOPERATION_UPDATEWECOMUSERORGEXCEEDSRANGE = "FailedOperation.UpdateWeComUserOrgExceedsRange"
 //  FAILEDOPERATION_UPDATEWECOMUSERORGNOTINSAMECROP = "FailedOperation.UpdateWeComUserOrgNotInSameCrop"
 //  FAILEDOPERATION_USEREMAILEXISTED = "FailedOperation.UserEmailExisted"
+//  FAILEDOPERATION_USEREXPRIATIONTIMEISILLEGAL = "FailedOperation.UserExpriationTimeIsIllegal"
 //  FAILEDOPERATION_USERPHONEEXISTED = "FailedOperation.UserPhoneExisted"
 //  FAILEDOPERATION_USERPHONEISEMPTY = "FailedOperation.UserPhoneIsEmpty"
 //  INVALIDPARAMETER_ATTRIBUTEVALUEVALIDFAILURE = "InvalidParameter.AttributeValueValidFailure"
@@ -2212,6 +2227,7 @@ func (c *Client) ModifyUserInfo(request *ModifyUserInfoRequest) (response *Modif
 //  FAILEDOPERATION_UPDATEWECOMUSERORGEXCEEDSRANGE = "FailedOperation.UpdateWeComUserOrgExceedsRange"
 //  FAILEDOPERATION_UPDATEWECOMUSERORGNOTINSAMECROP = "FailedOperation.UpdateWeComUserOrgNotInSameCrop"
 //  FAILEDOPERATION_USEREMAILEXISTED = "FailedOperation.UserEmailExisted"
+//  FAILEDOPERATION_USEREXPRIATIONTIMEISILLEGAL = "FailedOperation.UserExpriationTimeIsIllegal"
 //  FAILEDOPERATION_USERPHONEEXISTED = "FailedOperation.UserPhoneExisted"
 //  FAILEDOPERATION_USERPHONEISEMPTY = "FailedOperation.UserPhoneIsEmpty"
 //  INVALIDPARAMETER_ATTRIBUTEVALUEVALIDFAILURE = "InvalidParameter.AttributeValueValidFailure"

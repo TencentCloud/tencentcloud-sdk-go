@@ -69,6 +69,7 @@ func NewCreateConsoleLoginUrlResponse() (response *CreateConsoleLoginUrlResponse
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_API = "InternalError.Api"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
@@ -96,6 +97,7 @@ func (c *Client) CreateConsoleLoginUrl(request *CreateConsoleLoginUrlRequest) (r
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_API = "InternalError.Api"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
@@ -134,7 +136,7 @@ func NewCreateFlowsByTemplatesResponse() (response *CreateFlowsByTemplatesRespon
 }
 
 // CreateFlowsByTemplates
-// 接口（CreateFlowsByTemplates）用于使用多个模板批量创建流程
+// 接口（CreateFlowsByTemplates）用于使用多个模板批量创建流程。当前可批量发起合同（流程）数量最大为20个。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -165,7 +167,7 @@ func (c *Client) CreateFlowsByTemplates(request *CreateFlowsByTemplatesRequest) 
 }
 
 // CreateFlowsByTemplates
-// 接口（CreateFlowsByTemplates）用于使用多个模板批量创建流程
+// 接口（CreateFlowsByTemplates）用于使用多个模板批量创建流程。当前可批量发起合同（流程）数量最大为20个。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -214,7 +216,7 @@ func NewCreateSignUrlsResponse() (response *CreateSignUrlsResponse) {
 }
 
 // CreateSignUrls
-// 根据流程Id批量创建签署参与者签署H5链接
+// 创建参与者签署短链
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -241,7 +243,7 @@ func (c *Client) CreateSignUrls(request *CreateSignUrlsRequest) (response *Creat
 }
 
 // CreateSignUrls
-// 根据流程Id批量创建签署参与者签署H5链接
+// 创建参与者签署短链
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -438,6 +440,7 @@ func NewDescribeTemplatesResponse() (response *DescribeTemplatesResponse) {
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
@@ -465,6 +468,7 @@ func (c *Client) DescribeTemplates(request *DescribeTemplatesRequest) (response 
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
@@ -572,7 +576,9 @@ func NewGetDownloadFlowUrlResponse() (response *GetDownloadFlowUrlResponse) {
 }
 
 // GetDownloadFlowUrl
-// 此接口（GetDownloadFlowUrl）用于创建电子签批量下载确认页面链接，支持客户合同（流程）归类打包下载。
+// 此接口（GetDownloadFlowUrl）用于创建电子签批量下载确认页面链接，支持客户合同（流程）按照自定义文件夹形式 分类下载。
+//
+// 当前接口限制最多合同（流程）50个.
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -599,7 +605,9 @@ func (c *Client) GetDownloadFlowUrl(request *GetDownloadFlowUrlRequest) (respons
 }
 
 // GetDownloadFlowUrl
-// 此接口（GetDownloadFlowUrl）用于创建电子签批量下载确认页面链接，支持客户合同（流程）归类打包下载。
+// 此接口（GetDownloadFlowUrl）用于创建电子签批量下载确认页面链接，支持客户合同（流程）按照自定义文件夹形式 分类下载。
+//
+// 当前接口限制最多合同（流程）50个.
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -644,33 +652,15 @@ func NewOperateChannelTemplateResponse() (response *OperateChannelTemplateRespon
 }
 
 // OperateChannelTemplate
-// 此接口（OperateChannelTemplate）用于渠道侧将模板库中的模板对合作企业进行查询和设置, 其中包括可见性的修改以及对合作企业的指定.
+// 此接口（OperateChannelTemplate）用于渠道侧将模板库中的模板对合作企业进行查询和设置, 其中包括可见性的修改以及对合作企业的设置.
 //
 // 1、同步标识=select时：
 //
-// 输入规则：“可见标识”、“指定合作企业列表”为空。
+// 返回渠道侧模板库当前模板的属性.
 //
-// 处理规则：返回指定模版的可见标识、指定合作企业列表。
+// 2、同步标识=update或者delete时：
 //
-// 2、同步标识=update时：
-//
-// 输入规则：“可见标识”、“指定合作企业列表”非必填输入。
-//
-// 处理规则：
-//
-// 若“可见标识”=空，不做处理，返回当前的可见标识。
-//
-// 若“可见标识”=所有合作企业，不取“指定合作企业列表”的值处理。
-//
-// 若“可见标识”=指定合作企业，取“指定合作企业列表”的值进行更新/插入。
-//
-// 3、同步标识=delete时：
-//
-// 输入规则：“可见标识”、“指定合作企业列表”非必填输入。
-//
-// 处理规则：
-//
-// 仅取“指定合作企业列表”的值进行删除处理，为空时不做处。
+// 对渠道子客进行模板库中模板授权,修改操作
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -705,33 +695,15 @@ func (c *Client) OperateChannelTemplate(request *OperateChannelTemplateRequest) 
 }
 
 // OperateChannelTemplate
-// 此接口（OperateChannelTemplate）用于渠道侧将模板库中的模板对合作企业进行查询和设置, 其中包括可见性的修改以及对合作企业的指定.
+// 此接口（OperateChannelTemplate）用于渠道侧将模板库中的模板对合作企业进行查询和设置, 其中包括可见性的修改以及对合作企业的设置.
 //
 // 1、同步标识=select时：
 //
-// 输入规则：“可见标识”、“指定合作企业列表”为空。
+// 返回渠道侧模板库当前模板的属性.
 //
-// 处理规则：返回指定模版的可见标识、指定合作企业列表。
+// 2、同步标识=update或者delete时：
 //
-// 2、同步标识=update时：
-//
-// 输入规则：“可见标识”、“指定合作企业列表”非必填输入。
-//
-// 处理规则：
-//
-// 若“可见标识”=空，不做处理，返回当前的可见标识。
-//
-// 若“可见标识”=所有合作企业，不取“指定合作企业列表”的值处理。
-//
-// 若“可见标识”=指定合作企业，取“指定合作企业列表”的值进行更新/插入。
-//
-// 3、同步标识=delete时：
-//
-// 输入规则：“可见标识”、“指定合作企业列表”非必填输入。
-//
-// 处理规则：
-//
-// 仅取“指定合作企业列表”的值进行删除处理，为空时不做处。
+// 对渠道子客进行模板库中模板授权,修改操作
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -786,6 +758,10 @@ func NewPrepareFlowsResponse() (response *PrepareFlowsResponse) {
 // PrepareFlows
 // 该接口 (PrepareFlows) 用于创建待发起文件
 //
+// 用户通过该接口进入流程发起的确认页面，进行发起信息二次确认， 如果确认则进行正常发起。
+//
+// 目前该接口只支持B2C。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
@@ -808,6 +784,10 @@ func (c *Client) PrepareFlows(request *PrepareFlowsRequest) (response *PrepareFl
 
 // PrepareFlows
 // 该接口 (PrepareFlows) 用于创建待发起文件
+//
+// 用户通过该接口进入流程发起的确认页面，进行发起信息二次确认， 如果确认则进行正常发起。
+//
+// 目前该接口只支持B2C。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

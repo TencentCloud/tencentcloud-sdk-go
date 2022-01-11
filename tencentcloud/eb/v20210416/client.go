@@ -66,6 +66,7 @@ func NewCheckRuleResponse() (response *CheckRuleResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CheckRule(request *CheckRuleRequest) (response *CheckRuleResponse, err error) {
     if request == nil {
@@ -82,6 +83,7 @@ func (c *Client) CheckRule(request *CheckRuleRequest) (response *CheckRuleRespon
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CheckRuleWithContext(ctx context.Context, request *CheckRuleRequest) (response *CheckRuleResponse, err error) {
     if request == nil {
@@ -116,6 +118,7 @@ func NewCheckTransformationResponse() (response *CheckTransformationResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CheckTransformation(request *CheckTransformationRequest) (response *CheckTransformationResponse, err error) {
     if request == nil {
@@ -132,6 +135,7 @@ func (c *Client) CheckTransformation(request *CheckTransformationRequest) (respo
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CheckTransformationWithContext(ctx context.Context, request *CheckTransformationRequest) (response *CheckTransformationResponse, err error) {
     if request == nil {

@@ -382,6 +382,7 @@ func NewDescribeKTVMusicDetailResponse() (response *DescribeKTVMusicDetailRespon
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeKTVMusicDetail(request *DescribeKTVMusicDetailRequest) (response *DescribeKTVMusicDetailResponse, err error) {
     if request == nil {
@@ -400,6 +401,7 @@ func (c *Client) DescribeKTVMusicDetail(request *DescribeKTVMusicDetailRequest) 
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeKTVMusicDetailWithContext(ctx context.Context, request *DescribeKTVMusicDetailRequest) (response *DescribeKTVMusicDetailResponse, err error) {
     if request == nil {
@@ -1165,6 +1167,7 @@ func NewSearchKTVMusicsResponse() (response *SearchKTVMusicsResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SearchKTVMusics(request *SearchKTVMusicsRequest) (response *SearchKTVMusicsResponse, err error) {
     if request == nil {
@@ -1182,6 +1185,7 @@ func (c *Client) SearchKTVMusics(request *SearchKTVMusicsRequest) (response *Sea
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SearchKTVMusicsWithContext(ctx context.Context, request *SearchKTVMusicsRequest) (response *SearchKTVMusicsResponse, err error) {
     if request == nil {

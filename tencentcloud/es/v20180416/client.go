@@ -893,6 +893,7 @@ func NewUpdatePluginsResponse() (response *UpdatePluginsResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
 //  FAILEDOPERATION_ERRORCLUSTERSTATENOREPLICATION = "FailedOperation.ErrorClusterStateNoReplication"
+//  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
 //  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -916,6 +917,7 @@ func (c *Client) UpdatePlugins(request *UpdatePluginsRequest) (response *UpdateP
 // 可能返回的错误码:
 //  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
 //  FAILEDOPERATION_ERRORCLUSTERSTATENOREPLICATION = "FailedOperation.ErrorClusterStateNoReplication"
+//  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
 //  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"

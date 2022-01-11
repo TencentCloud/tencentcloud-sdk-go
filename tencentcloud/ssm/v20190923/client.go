@@ -755,6 +755,7 @@ func NewDescribeSecretResponse() (response *DescribeSecretResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_ROLENOTEXIST = "OperationDenied.RoleNotExist"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
@@ -775,6 +776,7 @@ func (c *Client) DescribeSecret(request *DescribeSecretRequest) (response *Descr
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_ROLENOTEXIST = "OperationDenied.RoleNotExist"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
@@ -1169,7 +1171,9 @@ func NewGetSecretValueResponse() (response *GetSecretValueResponse) {
 //  FAILEDOPERATION_ACCESSKMSERROR = "FailedOperation.AccessKmsError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_ROLENOTEXIST = "OperationDenied.RoleNotExist"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SECRETNOTEXIST = "ResourceNotFound.SecretNotExist"
 //  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
 //  RESOURCEUNAVAILABLE_RESOURCEDISABLED = "ResourceUnavailable.ResourceDisabled"
 //  RESOURCEUNAVAILABLE_RESOURCEPENDINGDELETED = "ResourceUnavailable.ResourcePendingDeleted"
@@ -1195,7 +1199,9 @@ func (c *Client) GetSecretValue(request *GetSecretValueRequest) (response *GetSe
 //  FAILEDOPERATION_ACCESSKMSERROR = "FailedOperation.AccessKmsError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_ROLENOTEXIST = "OperationDenied.RoleNotExist"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SECRETNOTEXIST = "ResourceNotFound.SecretNotExist"
 //  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
 //  RESOURCEUNAVAILABLE_RESOURCEDISABLED = "ResourceUnavailable.ResourceDisabled"
 //  RESOURCEUNAVAILABLE_RESOURCEPENDINGDELETED = "ResourceUnavailable.ResourcePendingDeleted"
@@ -1520,7 +1526,9 @@ func NewRotateProductSecretResponse() (response *RotateProductSecretResponse) {
 }
 
 // RotateProductSecret
-// 轮转云产品凭据。该接口仅适用于处于Enabled状态的云产品凭据，对于其他状态的云产品凭据或用户自定义凭据不适用。
+// 轮转云产品凭据或云API密钥对凭据。
+//
+// 该接口仅适用于处于Enabled状态的云产品凭据或处于Enable状态的云API密钥对凭据，对于其他状态的云产品凭据或云API密钥对凭据或用户自定义凭据不适用。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1563,7 +1571,9 @@ func (c *Client) RotateProductSecret(request *RotateProductSecretRequest) (respo
 }
 
 // RotateProductSecret
-// 轮转云产品凭据。该接口仅适用于处于Enabled状态的云产品凭据，对于其他状态的云产品凭据或用户自定义凭据不适用。
+// 轮转云产品凭据或云API密钥对凭据。
+//
+// 该接口仅适用于处于Enabled状态的云产品凭据或处于Enable状态的云API密钥对凭据，对于其他状态的云产品凭据或云API密钥对凭据或用户自定义凭据不适用。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1693,6 +1703,7 @@ func NewUpdateRotationStatusResponse() (response *UpdateRotationStatusResponse) 
 //  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ACCESSKMSERROR = "FailedOperation.AccessKmsError"
+//  FAILEDOPERATION_ROTATIONFORBIDDEN = "FailedOperation.RotationForbidden"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1742,6 +1753,7 @@ func (c *Client) UpdateRotationStatus(request *UpdateRotationStatusRequest) (res
 //  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ACCESSKMSERROR = "FailedOperation.AccessKmsError"
+//  FAILEDOPERATION_ROTATIONFORBIDDEN = "FailedOperation.RotationForbidden"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

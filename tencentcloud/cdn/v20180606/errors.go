@@ -431,6 +431,9 @@ const (
 	// 域名在内部系统已存在，请提工单处理。
 	UNAUTHORIZEDOPERATION_CDNHOSTEXISTSININTERNAL = "UnauthorizedOperation.CdnHostExistsInInternal"
 
+	// 域名现存在风险，不可接入。
+	UNAUTHORIZEDOPERATION_CDNHOSTINICPBLACKLIST = "UnauthorizedOperation.CdnHostInIcpBlacklist"
+
 	// 该域名属于其他账号，您没有权限接入。
 	UNAUTHORIZEDOPERATION_CDNHOSTISOWNEDBYOTHER = "UnauthorizedOperation.CdnHostIsOwnedByOther"
 

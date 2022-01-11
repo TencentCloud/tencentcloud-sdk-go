@@ -1131,7 +1131,7 @@ type CreateClusterRequest struct {
 	// 说明，128个字符以内。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
-	// 集群的标签列表
+	// 集群的标签列表(已废弃)
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 是否开启公网访问，不填时默认开启

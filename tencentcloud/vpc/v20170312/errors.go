@@ -278,6 +278,9 @@ const (
 	// 无效参数值。参数值太长。
 	INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 
+	// 该可用区不可用。
+	INVALIDPARAMETERVALUE_UNAVAILABLEZONE = "InvalidParameterValue.UnavailableZone"
+
 	// 目的网段和当前VPC的CIDR冲突。
 	INVALIDPARAMETERVALUE_VPCCIDRCONFLICT = "InvalidParameterValue.VpcCidrConflict"
 

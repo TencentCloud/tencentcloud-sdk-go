@@ -796,6 +796,22 @@ type Deal struct {
 
 	// 付费模式：prePay 预付费 postPay后付费 riPay预留实例
 	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 交易类型
+	// modifyNetworkMode 调整带宽模式
+	// modifyNetworkSize 调整带宽大小
+	// refund 退款
+	// downgrade 降配
+	// upgrade 升配
+	// renew 续费
+	// purchase 购买
+	// preMoveOut 包年包月迁出资源
+	// preMoveIn 包年包月迁入资源
+	// preToPost 预付费转后付费
+	// postMoveOut 按量计费迁出资源
+	// postMoveIn 按量计费迁入资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Action *string `json:"Action,omitempty" name:"Action"`
 }
 
 type DescribeAccountBalanceRequest struct {

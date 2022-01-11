@@ -275,6 +275,9 @@ const (
 	// 发货异常。
 	RESOURCEUNAVAILABLE_CREATEFAILED = "ResourceUnavailable.CreateFailed"
 
+	// 需要充值才可继续操作。
+	RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
+
 	// 系统升级。
 	RESOURCEUNAVAILABLE_SYSTEMUPGRADE = "ResourceUnavailable.SystemUpgrade"
 
