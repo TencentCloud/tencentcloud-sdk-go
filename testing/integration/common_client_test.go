@@ -97,3 +97,43 @@ func TestClient_SendOctetStream(t *testing.T) {
 	}
 	t.Log(string(response.GetBody()))
 }
+
+func TestClient_SupportNilCredential(t *testing.T) {
+	defer func() {
+		if r := recover(); r != nil {
+			t.Fatal(r)
+		}
+	}()
+	cpf := profile.NewClientProfile()
+	cpf.HttpProfile.Endpoint = "cvm.tencentcloudapi.com"
+	cpf.HttpProfile.ReqMethod = "POST"
+	//创建common client
+	client := common.NewCommonClient(nil, regions.Guangzhou, cpf)
+
+	// 创建common request
+	request := tchttp.NewCommonRequest("cvm", "2017-03-12", "DescribeZones")
+	// 自定义请求参数,SetActionParameters 函数支持三种数据类型的入参
+	// 1. map[string]interface{}
+	//body:=map[string]interface{}{
+	//	"InstanceId":"crs-xxx",
+	//	"SpanType":2,
+	//}
+
+	// 2. string
+	bodyStr := `{}`
+
+	// 3. []byte
+	bodyBytes := []byte(bodyStr)
+
+	// 设置action所需的请求数据
+	err := request.SetActionParameters(bodyBytes)
+	if err != nil {
+		return
+	}
+
+	//创建common response
+	response := tchttp.NewCommonResponse()
+
+	//发送请求
+	client.Send(request, response)
+}
