@@ -15,6 +15,7 @@
 package v20210701
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -85,6 +86,32 @@ func (c *Client) DescribeNewUserAcquisition(request *DescribeNewUserAcquisitionR
     return
 }
 
+// DescribeNewUserAcquisition
+// 判断新用户信誉值
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICETIMEOUT = "InternalError.ServiceTimeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_REPLAYATTACK = "LimitExceeded.ReplayAttack"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeNewUserAcquisitionWithContext(ctx context.Context, request *DescribeNewUserAcquisitionRequest) (response *DescribeNewUserAcquisitionResponse, err error) {
+    if request == nil {
+        request = NewDescribeNewUserAcquisitionRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeNewUserAcquisitionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeStockEstimationRequest() (request *DescribeStockEstimationRequest) {
     request = &DescribeStockEstimationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -121,6 +148,32 @@ func (c *Client) DescribeStockEstimation(request *DescribeStockEstimationRequest
     if request == nil {
         request = NewDescribeStockEstimationRequest()
     }
+    
+    response = NewDescribeStockEstimationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeStockEstimation
+// 查询存量判断服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICETIMEOUT = "InternalError.ServiceTimeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_REPLAYATTACK = "LimitExceeded.ReplayAttack"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeStockEstimationWithContext(ctx context.Context, request *DescribeStockEstimationRequest) (response *DescribeStockEstimationResponse, err error) {
+    if request == nil {
+        request = NewDescribeStockEstimationRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeStockEstimationResponse()
     err = c.Send(request, response)

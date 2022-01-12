@@ -1141,6 +1141,26 @@ type ConstantParameter struct {
 	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
 }
 
+type CosConfig struct {
+
+	// API调用后端COS的方式，前端请求方法与Action的可选值为：
+	// GET：GetObject
+	// PUT：PutObject
+	// POST：PostObject、AppendObject
+	// HEAD： HeadObject
+	// DELETE： DeleteObject。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// API后端COS的存储桶名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+
+	// API调用后端COS的签名开关，默认为false。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Authorization *bool `json:"Authorization,omitempty" name:"Authorization"`
+}
+
 type CreateAPIDocRequest struct {
 	*tchttp.BaseRequest
 
@@ -6721,6 +6741,10 @@ type ServiceConfig struct {
 
 	// API的后端服务请求方法，如 GET。如果 ServiceType 是 HTTP，则此参数必传。前后端方法可不同。
 	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// API后端COS配置。如果 ServiceType 是 COS，则此参数必传。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CosConfig *CosConfig `json:"CosConfig,omitempty" name:"CosConfig"`
 }
 
 type ServiceEnvironmentSet struct {

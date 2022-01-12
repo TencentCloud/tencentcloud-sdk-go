@@ -15,6 +15,7 @@
 package v20190304
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -84,6 +85,31 @@ func (c *Client) ClearQueue(request *ClearQueueRequest) (response *ClearQueueRes
     return
 }
 
+// ClearQueue
+// 清除queue中的所有消息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_NOTASKID = "InvalidParameterValue.NoTaskId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ClearQueueWithContext(ctx context.Context, request *ClearQueueRequest) (response *ClearQueueResponse, err error) {
+    if request == nil {
+        request = NewClearQueueRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewClearQueueResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewClearSubscriptionFilterTagsRequest() (request *ClearSubscriptionFilterTagsRequest) {
     request = &ClearSubscriptionFilterTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -125,6 +151,31 @@ func (c *Client) ClearSubscriptionFilterTags(request *ClearSubscriptionFilterTag
     return
 }
 
+// ClearSubscriptionFilterTags
+// 清空订阅者消息标签
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_NOTASKID = "InvalidParameterValue.NoTaskId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ClearSubscriptionFilterTagsWithContext(ctx context.Context, request *ClearSubscriptionFilterTagsRequest) (response *ClearSubscriptionFilterTagsResponse, err error) {
+    if request == nil {
+        request = NewClearSubscriptionFilterTagsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewClearSubscriptionFilterTagsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateQueueRequest() (request *CreateQueueRequest) {
     request = &CreateQueueRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -156,6 +207,27 @@ func (c *Client) CreateQueue(request *CreateQueueRequest) (response *CreateQueue
     if request == nil {
         request = NewCreateQueueRequest()
     }
+    
+    response = NewCreateQueueResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateQueue
+// 创建队列接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateQueueWithContext(ctx context.Context, request *CreateQueueRequest) (response *CreateQueueResponse, err error) {
+    if request == nil {
+        request = NewCreateQueueRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateQueueResponse()
     err = c.Send(request, response)
@@ -203,6 +275,31 @@ func (c *Client) CreateSubscribe(request *CreateSubscribeRequest) (response *Cre
     return
 }
 
+// CreateSubscribe
+// 创建订阅接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_NOTASKID = "InvalidParameterValue.NoTaskId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateSubscribeWithContext(ctx context.Context, request *CreateSubscribeRequest) (response *CreateSubscribeResponse, err error) {
+    if request == nil {
+        request = NewCreateSubscribeRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateSubscribeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTopicRequest() (request *CreateTopicRequest) {
     request = &CreateTopicRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -243,6 +340,30 @@ func (c *Client) CreateTopic(request *CreateTopicRequest) (response *CreateTopic
     return
 }
 
+// CreateTopic
+// 创建主题
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateTopicWithContext(ctx context.Context, request *CreateTopicRequest) (response *CreateTopicResponse, err error) {
+    if request == nil {
+        request = NewCreateTopicRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateTopicResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteQueueRequest() (request *DeleteQueueRequest) {
     request = &DeleteQueueRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -274,6 +395,27 @@ func (c *Client) DeleteQueue(request *DeleteQueueRequest) (response *DeleteQueue
     if request == nil {
         request = NewDeleteQueueRequest()
     }
+    
+    response = NewDeleteQueueResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteQueue
+// DeleteQueue
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteQueueWithContext(ctx context.Context, request *DeleteQueueRequest) (response *DeleteQueueResponse, err error) {
+    if request == nil {
+        request = NewDeleteQueueRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteQueueResponse()
     err = c.Send(request, response)
@@ -320,6 +462,30 @@ func (c *Client) DeleteSubscribe(request *DeleteSubscribeRequest) (response *Del
     return
 }
 
+// DeleteSubscribe
+// 删除订阅
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteSubscribeWithContext(ctx context.Context, request *DeleteSubscribeRequest) (response *DeleteSubscribeResponse, err error) {
+    if request == nil {
+        request = NewDeleteSubscribeRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteSubscribeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteTopicRequest() (request *DeleteTopicRequest) {
     request = &DeleteTopicRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -354,6 +520,30 @@ func (c *Client) DeleteTopic(request *DeleteTopicRequest) (response *DeleteTopic
     if request == nil {
         request = NewDeleteTopicRequest()
     }
+    
+    response = NewDeleteTopicResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteTopic
+// 删除主题
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteTopicWithContext(ctx context.Context, request *DeleteTopicRequest) (response *DeleteTopicResponse, err error) {
+    if request == nil {
+        request = NewDeleteTopicRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteTopicResponse()
     err = c.Send(request, response)
@@ -400,6 +590,30 @@ func (c *Client) DescribeDeadLetterSourceQueues(request *DescribeDeadLetterSourc
     return
 }
 
+// DescribeDeadLetterSourceQueues
+// 枚举死信队列源队列
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeDeadLetterSourceQueuesWithContext(ctx context.Context, request *DescribeDeadLetterSourceQueuesRequest) (response *DescribeDeadLetterSourceQueuesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeadLetterSourceQueuesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeadLetterSourceQueuesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeQueueDetailRequest() (request *DescribeQueueDetailRequest) {
     request = &DescribeQueueDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -434,6 +648,30 @@ func (c *Client) DescribeQueueDetail(request *DescribeQueueDetailRequest) (respo
     if request == nil {
         request = NewDescribeQueueDetailRequest()
     }
+    
+    response = NewDescribeQueueDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeQueueDetail
+// 枚举队列
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeQueueDetailWithContext(ctx context.Context, request *DescribeQueueDetailRequest) (response *DescribeQueueDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeQueueDetailRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeQueueDetailResponse()
     err = c.Send(request, response)
@@ -481,6 +719,31 @@ func (c *Client) DescribeSubscriptionDetail(request *DescribeSubscriptionDetailR
     return
 }
 
+// DescribeSubscriptionDetail
+// 查询订阅详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_NOTASKID = "InvalidParameterValue.NoTaskId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeSubscriptionDetailWithContext(ctx context.Context, request *DescribeSubscriptionDetailRequest) (response *DescribeSubscriptionDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeSubscriptionDetailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeSubscriptionDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTopicDetailRequest() (request *DescribeTopicDetailRequest) {
     request = &DescribeTopicDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -516,6 +779,31 @@ func (c *Client) DescribeTopicDetail(request *DescribeTopicDetailRequest) (respo
     if request == nil {
         request = NewDescribeTopicDetailRequest()
     }
+    
+    response = NewDescribeTopicDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeTopicDetail
+// 查询主题详情 
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_NOTASKID = "InvalidParameterValue.NoTaskId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeTopicDetailWithContext(ctx context.Context, request *DescribeTopicDetailRequest) (response *DescribeTopicDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopicDetailRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeTopicDetailResponse()
     err = c.Send(request, response)
@@ -563,6 +851,31 @@ func (c *Client) ModifyQueueAttribute(request *ModifyQueueAttributeRequest) (res
     return
 }
 
+// ModifyQueueAttribute
+// 修改队列属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_NOTASKID = "InvalidParameterValue.NoTaskId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyQueueAttributeWithContext(ctx context.Context, request *ModifyQueueAttributeRequest) (response *ModifyQueueAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyQueueAttributeRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyQueueAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifySubscriptionAttributeRequest() (request *ModifySubscriptionAttributeRequest) {
     request = &ModifySubscriptionAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -598,6 +911,31 @@ func (c *Client) ModifySubscriptionAttribute(request *ModifySubscriptionAttribut
     if request == nil {
         request = NewModifySubscriptionAttributeRequest()
     }
+    
+    response = NewModifySubscriptionAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifySubscriptionAttribute
+// 修改订阅属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_NOTASKID = "InvalidParameterValue.NoTaskId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifySubscriptionAttributeWithContext(ctx context.Context, request *ModifySubscriptionAttributeRequest) (response *ModifySubscriptionAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifySubscriptionAttributeRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifySubscriptionAttributeResponse()
     err = c.Send(request, response)
@@ -644,6 +982,30 @@ func (c *Client) ModifyTopicAttribute(request *ModifyTopicAttributeRequest) (res
     return
 }
 
+// ModifyTopicAttribute
+// 修改主题属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyTopicAttributeWithContext(ctx context.Context, request *ModifyTopicAttributeRequest) (response *ModifyTopicAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyTopicAttributeRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyTopicAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRewindQueueRequest() (request *RewindQueueRequest) {
     request = &RewindQueueRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -678,6 +1040,30 @@ func (c *Client) RewindQueue(request *RewindQueueRequest) (response *RewindQueue
     if request == nil {
         request = NewRewindQueueRequest()
     }
+    
+    response = NewRewindQueueResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// RewindQueue
+// 回溯队列
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) RewindQueueWithContext(ctx context.Context, request *RewindQueueRequest) (response *RewindQueueResponse, err error) {
+    if request == nil {
+        request = NewRewindQueueRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewRewindQueueResponse()
     err = c.Send(request, response)
@@ -719,6 +1105,31 @@ func (c *Client) UnbindDeadLetter(request *UnbindDeadLetterRequest) (response *U
     if request == nil {
         request = NewUnbindDeadLetterRequest()
     }
+    
+    response = NewUnbindDeadLetterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UnbindDeadLetter
+// 解绑死信队列
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRYLATER = "FailedOperation.TryLater"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_NOTASKID = "InvalidParameterValue.NoTaskId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) UnbindDeadLetterWithContext(ctx context.Context, request *UnbindDeadLetterRequest) (response *UnbindDeadLetterResponse, err error) {
+    if request == nil {
+        request = NewUnbindDeadLetterRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUnbindDeadLetterResponse()
     err = c.Send(request, response)

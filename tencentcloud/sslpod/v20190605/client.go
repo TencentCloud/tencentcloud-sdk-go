@@ -15,6 +15,7 @@
 package v20190605
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -87,6 +88,34 @@ func (c *Client) CreateDomain(request *CreateDomainRequest) (response *CreateDom
     return
 }
 
+// CreateDomain
+// 通过域名端口添加监控
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_REPETITIONADD = "FailedOperation.RepetitionAdd"
+//  FAILEDOPERATION_RESOLVEDOMAINFAILED = "FailedOperation.ResolveDomainFailed"
+//  INVALIDPARAMETER_INVALIDDOMAIN = "InvalidParameter.InvalidDomain"
+//  INVALIDPARAMETER_INVALIDIP = "InvalidParameter.InvalidIP"
+//  INVALIDPARAMETER_INVALIDPORT = "InvalidParameter.InvalidPort"
+//  INVALIDPARAMETER_INVALIDSERVERTYPE = "InvalidParameter.InvalidServerType"
+//  INVALIDPARAMETER_INVALIDTAGNAME = "InvalidParameter.InvalidTagName"
+//  INVALIDPARAMETER_TOOMANYTAG = "InvalidParameter.TooManyTag"
+//  INVALIDPARAMETERVALUE_INVALIDNOTICETYPE = "InvalidParameterValue.InvalidNoticeType"
+//  INVALIDPARAMETERVALUE_INVALIDSEARCHTYPE = "InvalidParameterValue.InvalidSearchType"
+//  LIMITEXCEEDED_ADDEXCEEDED = "LimitExceeded.AddExceeded"
+//  LIMITEXCEEDED_MONITOREXCEEDED = "LimitExceeded.MonitorExceeded"
+//  RESOURCENOTFOUND_PRODUCT = "ResourceNotFound.Product"
+func (c *Client) CreateDomainWithContext(ctx context.Context, request *CreateDomainRequest) (response *CreateDomainResponse, err error) {
+    if request == nil {
+        request = NewCreateDomainRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteDomainRequest() (request *DeleteDomainRequest) {
     request = &DeleteDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -120,6 +149,23 @@ func (c *Client) DeleteDomain(request *DeleteDomainRequest) (response *DeleteDom
     return
 }
 
+// DeleteDomain
+// 通过域名ID删除监控的域名
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeleteDomainWithContext(ctx context.Context, request *DeleteDomainRequest) (response *DeleteDomainResponse, err error) {
+    if request == nil {
+        request = NewDeleteDomainRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDashboardRequest() (request *DescribeDashboardRequest) {
     request = &DescribeDashboardRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -146,6 +192,22 @@ func (c *Client) DescribeDashboard(request *DescribeDashboardRequest) (response 
     if request == nil {
         request = NewDescribeDashboardRequest()
     }
+    
+    response = NewDescribeDashboardResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeDashboard
+// 获取仪表盘数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeDashboardWithContext(ctx context.Context, request *DescribeDashboardRequest) (response *DescribeDashboardResponse, err error) {
+    if request == nil {
+        request = NewDescribeDashboardRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeDashboardResponse()
     err = c.Send(request, response)
@@ -185,6 +247,23 @@ func (c *Client) DescribeDomainCerts(request *DescribeDomainCertsRequest) (respo
     return
 }
 
+// DescribeDomainCerts
+// 获取域名关联证书
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeDomainCertsWithContext(ctx context.Context, request *DescribeDomainCertsRequest) (response *DescribeDomainCertsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainCertsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDomainCertsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDomainTagsRequest() (request *DescribeDomainTagsRequest) {
     request = &DescribeDomainTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -211,6 +290,22 @@ func (c *Client) DescribeDomainTags(request *DescribeDomainTagsRequest) (respons
     if request == nil {
         request = NewDescribeDomainTagsRequest()
     }
+    
+    response = NewDescribeDomainTagsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeDomainTags
+// 获取账号下所有tag
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeDomainTagsWithContext(ctx context.Context, request *DescribeDomainTagsRequest) (response *DescribeDomainTagsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainTagsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeDomainTagsResponse()
     err = c.Send(request, response)
@@ -249,6 +344,22 @@ func (c *Client) DescribeDomains(request *DescribeDomainsRequest) (response *Des
     return
 }
 
+// DescribeDomains
+// 通过searchType搜索已经添加的域名
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDSEARCHTYPE = "InvalidParameterValue.InvalidSearchType"
+func (c *Client) DescribeDomainsWithContext(ctx context.Context, request *DescribeDomainsRequest) (response *DescribeDomainsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDomainsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNoticeInfoRequest() (request *DescribeNoticeInfoRequest) {
     request = &DescribeNoticeInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -275,6 +386,22 @@ func (c *Client) DescribeNoticeInfo(request *DescribeNoticeInfoRequest) (respons
     if request == nil {
         request = NewDescribeNoticeInfoRequest()
     }
+    
+    response = NewDescribeNoticeInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeNoticeInfo
+// 获取通知额度信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeNoticeInfoWithContext(ctx context.Context, request *DescribeNoticeInfoRequest) (response *DescribeNoticeInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeNoticeInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeNoticeInfoResponse()
     err = c.Send(request, response)
@@ -316,6 +443,25 @@ func (c *Client) ModifyDomainTags(request *ModifyDomainTagsRequest) (response *M
     return
 }
 
+// ModifyDomainTags
+// 修改域名tag
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDTAGNAME = "InvalidParameter.InvalidTagName"
+//  INVALIDPARAMETER_TOOMANYTAG = "InvalidParameter.TooManyTag"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyDomainTagsWithContext(ctx context.Context, request *ModifyDomainTagsRequest) (response *ModifyDomainTagsResponse, err error) {
+    if request == nil {
+        request = NewModifyDomainTagsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyDomainTagsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRefreshDomainRequest() (request *RefreshDomainRequest) {
     request = &RefreshDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -350,6 +496,24 @@ func (c *Client) RefreshDomain(request *RefreshDomainRequest) (response *Refresh
     return
 }
 
+// RefreshDomain
+// 强制重新检测域名
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) RefreshDomainWithContext(ctx context.Context, request *RefreshDomainRequest) (response *RefreshDomainResponse, err error) {
+    if request == nil {
+        request = NewRefreshDomainRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewRefreshDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResolveDomainRequest() (request *ResolveDomainRequest) {
     request = &ResolveDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -378,6 +542,24 @@ func (c *Client) ResolveDomain(request *ResolveDomainRequest) (response *Resolve
     if request == nil {
         request = NewResolveDomainRequest()
     }
+    
+    response = NewResolveDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ResolveDomain
+// 解析域名获得多个IP地址
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RESOLVEDOMAINFAILED = "FailedOperation.ResolveDomainFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDDOMAIN = "InvalidParameter.InvalidDomain"
+func (c *Client) ResolveDomainWithContext(ctx context.Context, request *ResolveDomainRequest) (response *ResolveDomainResponse, err error) {
+    if request == nil {
+        request = NewResolveDomainRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewResolveDomainResponse()
     err = c.Send(request, response)

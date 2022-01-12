@@ -596,6 +596,9 @@ const (
 	// 资源不存在：人物。
 	RESOURCENOTFOUND_PERSON = "ResourceNotFound.Person"
 
+	// 没有开通服务。
+	RESOURCENOTFOUND_SERVICENOTEXIST = "ResourceNotFound.ServiceNotExist"
+
 	// 资源不存在：模板不存在。
 	RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 

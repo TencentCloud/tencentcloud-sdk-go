@@ -15,6 +15,7 @@
 package v20200820
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -92,6 +93,39 @@ func (c *Client) CancelMatching(request *CancelMatchingRequest) (response *Cance
     return
 }
 
+// CancelMatching
+// 取消匹配。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SERVICEUNAVAILABLE = "FailedOperation.ServiceUnavailable"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MATCHCODENOTFOUND = "InvalidParameterValue.MatchCodeNotFound"
+//  INVALIDPARAMETERVALUE_MATCHSTATUSNOTPERMITCANCEL = "InvalidParameterValue.MatchStatusNotPermitCancel"
+//  INVALIDPARAMETERVALUE_MATCHTICKETIDNOTFOUND = "InvalidParameterValue.MatchTicketIdNotFound"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACTION = "UnauthorizedOperation.UnauthorizedAction"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDREGION = "UnsupportedRegion"
+func (c *Client) CancelMatchingWithContext(ctx context.Context, request *CancelMatchingRequest) (response *CancelMatchingResponse, err error) {
+    if request == nil {
+        request = NewCancelMatchingRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCancelMatchingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateMatchRequest() (request *CreateMatchRequest) {
     request = &CreateMatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -147,6 +181,51 @@ func (c *Client) CreateMatch(request *CreateMatchRequest) (response *CreateMatch
     if request == nil {
         request = NewCreateMatchRequest()
     }
+    
+    response = NewCreateMatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateMatch
+// 创建匹配
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_LIMITMATCHCOUNT = "FailedOperation.LimitMatchCount"
+//  FAILEDOPERATION_SERVICEUNAVAILABLE = "FailedOperation.ServiceUnavailable"
+//  FAILEDOPERATION_TAGSOPEARTIONFAILED = "FailedOperation.TagsOpeartionFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_RULENOTFOUND = "InvalidParameterValue.RuleNotFound"
+//  INVALIDPARAMETERVALUE_TAGSLIMITPERMISSION = "InvalidParameterValue.TagsLimitPermission"
+//  INVALIDPARAMETERVALUE_VALUERANGELIMIT = "InvalidParameterValue.ValueRangeLimit"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZEDOPERATION = "UnauthorizedOperation.CAMUnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACTION = "UnauthorizedOperation.UnauthorizedAction"
+//  UNAUTHORIZEDOPERATION_USERUNAUTH = "UnauthorizedOperation.UserUnAuth"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDREGION = "UnsupportedRegion"
+func (c *Client) CreateMatchWithContext(ctx context.Context, request *CreateMatchRequest) (response *CreateMatchResponse, err error) {
+    if request == nil {
+        request = NewCreateMatchRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateMatchResponse()
     err = c.Send(request, response)
@@ -212,6 +291,49 @@ func (c *Client) CreateRule(request *CreateRuleRequest) (response *CreateRuleRes
     return
 }
 
+// CreateRule
+// 创建规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_LIMITRULECOUNT = "FailedOperation.LimitRuleCount"
+//  FAILEDOPERATION_SERVICEUNAVAILABLE = "FailedOperation.ServiceUnavailable"
+//  FAILEDOPERATION_TAGSOPEARTIONFAILED = "FailedOperation.TagsOpeartionFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDRULESCRIPT = "InvalidParameterValue.InvalidRuleScript"
+//  INVALIDPARAMETERVALUE_RULENAMEDUPLICATED = "InvalidParameterValue.RuleNameDuplicated"
+//  INVALIDPARAMETERVALUE_TAGSLIMITPERMISSION = "InvalidParameterValue.TagsLimitPermission"
+//  INVALIDPARAMETERVALUE_VALUERANGELIMIT = "InvalidParameterValue.ValueRangeLimit"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDREGION = "UnsupportedRegion"
+func (c *Client) CreateRuleWithContext(ctx context.Context, request *CreateRuleRequest) (response *CreateRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateRuleRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteMatchRequest() (request *DeleteMatchRequest) {
     request = &DeleteMatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -264,6 +386,48 @@ func (c *Client) DeleteMatch(request *DeleteMatchRequest) (response *DeleteMatch
     if request == nil {
         request = NewDeleteMatchRequest()
     }
+    
+    response = NewDeleteMatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteMatch
+// 删除匹配
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSFAILEDOPERATION = "FailedOperation.CLSFailedOperation"
+//  FAILEDOPERATION_SERVICEUNAVAILABLE = "FailedOperation.ServiceUnavailable"
+//  FAILEDOPERATION_TAGSOPEARTIONFAILED = "FailedOperation.TagsOpeartionFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MATCHNOTFOUND = "InvalidParameterValue.MatchNotFound"
+//  INVALIDPARAMETERVALUE_TAGSLIMITPERMISSION = "InvalidParameterValue.TagsLimitPermission"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZEDOPERATION = "UnauthorizedOperation.CAMUnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDREGION = "UnsupportedRegion"
+func (c *Client) DeleteMatchWithContext(ctx context.Context, request *DeleteMatchRequest) (response *DeleteMatchResponse, err error) {
+    if request == nil {
+        request = NewDeleteMatchRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteMatchResponse()
     err = c.Send(request, response)
@@ -327,6 +491,47 @@ func (c *Client) DeleteRule(request *DeleteRuleRequest) (response *DeleteRuleRes
     return
 }
 
+// DeleteRule
+// 删除规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SERVICEUNAVAILABLE = "FailedOperation.ServiceUnavailable"
+//  FAILEDOPERATION_TAGSOPEARTIONFAILED = "FailedOperation.TagsOpeartionFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_RULEMATCHEXISTENT = "InvalidParameterValue.RuleMatchExistent"
+//  INVALIDPARAMETERVALUE_RULENOTFOUND = "InvalidParameterValue.RuleNotFound"
+//  INVALIDPARAMETERVALUE_TAGSLIMITPERMISSION = "InvalidParameterValue.TagsLimitPermission"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDREGION = "UnsupportedRegion"
+func (c *Client) DeleteRuleWithContext(ctx context.Context, request *DeleteRuleRequest) (response *DeleteRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteRuleRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDataRequest() (request *DescribeDataRequest) {
     request = &DescribeDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -378,6 +583,47 @@ func (c *Client) DescribeData(request *DescribeDataRequest) (response *DescribeD
     if request == nil {
         request = NewDescribeDataRequest()
     }
+    
+    response = NewDescribeDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeData
+// 统计数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SERVICEUNAVAILABLE = "FailedOperation.ServiceUnavailable"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MATCHCODENOTFOUND = "InvalidParameterValue.MatchCodeNotFound"
+//  INVALIDPARAMETERVALUE_MATCHNOTFOUND = "InvalidParameterValue.MatchNotFound"
+//  INVALIDPARAMETERVALUE_VALUERANGELIMIT = "InvalidParameterValue.ValueRangeLimit"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACTION = "UnauthorizedOperation.UnauthorizedAction"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDREGION = "UnsupportedRegion"
+func (c *Client) DescribeDataWithContext(ctx context.Context, request *DescribeDataRequest) (response *DescribeDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeDataRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeDataResponse()
     err = c.Send(request, response)
@@ -439,6 +685,45 @@ func (c *Client) DescribeMatch(request *DescribeMatchRequest) (response *Describ
     return
 }
 
+// DescribeMatch
+// 查询匹配详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SERVICEUNAVAILABLE = "FailedOperation.ServiceUnavailable"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MATCHNOTFOUND = "InvalidParameterValue.MatchNotFound"
+//  INVALIDPARAMETERVALUE_RULENOTFOUND = "InvalidParameterValue.RuleNotFound"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDREGION = "UnsupportedRegion"
+func (c *Client) DescribeMatchWithContext(ctx context.Context, request *DescribeMatchRequest) (response *DescribeMatchResponse, err error) {
+    if request == nil {
+        request = NewDescribeMatchRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeMatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMatchCodesRequest() (request *DescribeMatchCodesRequest) {
     request = &DescribeMatchCodesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -487,6 +772,44 @@ func (c *Client) DescribeMatchCodes(request *DescribeMatchCodesRequest) (respons
     if request == nil {
         request = NewDescribeMatchCodesRequest()
     }
+    
+    response = NewDescribeMatchCodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeMatchCodes
+// 分页查询匹配Code
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SERVICEUNAVAILABLE = "FailedOperation.ServiceUnavailable"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACTION = "UnauthorizedOperation.UnauthorizedAction"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDREGION = "UnsupportedRegion"
+func (c *Client) DescribeMatchCodesWithContext(ctx context.Context, request *DescribeMatchCodesRequest) (response *DescribeMatchCodesResponse, err error) {
+    if request == nil {
+        request = NewDescribeMatchCodesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeMatchCodesResponse()
     err = c.Send(request, response)
@@ -551,6 +874,48 @@ func (c *Client) DescribeMatches(request *DescribeMatchesRequest) (response *Des
     return
 }
 
+// DescribeMatches
+// 分页查询匹配列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSFAILEDOPERATION = "FailedOperation.CLSFailedOperation"
+//  FAILEDOPERATION_SERVICEUNAVAILABLE = "FailedOperation.ServiceUnavailable"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_VALUERANGELIMIT = "InvalidParameterValue.ValueRangeLimit"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_CLSSERVICENOTACTIVATED = "ResourceUnavailable.CLSServiceNotActivated"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZEDOPERATION = "UnauthorizedOperation.CAMUnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACTION = "UnauthorizedOperation.UnauthorizedAction"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDREGION = "UnsupportedRegion"
+func (c *Client) DescribeMatchesWithContext(ctx context.Context, request *DescribeMatchesRequest) (response *DescribeMatchesResponse, err error) {
+    if request == nil {
+        request = NewDescribeMatchesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeMatchesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMatchingProgressRequest() (request *DescribeMatchingProgressRequest) {
     request = &DescribeMatchingProgressRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -593,6 +958,38 @@ func (c *Client) DescribeMatchingProgress(request *DescribeMatchingProgressReque
     if request == nil {
         request = NewDescribeMatchingProgressRequest()
     }
+    
+    response = NewDescribeMatchingProgressResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeMatchingProgress
+// 查询匹配进度。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SERVICEUNAVAILABLE = "FailedOperation.ServiceUnavailable"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MATCHCODENOTFOUND = "InvalidParameterValue.MatchCodeNotFound"
+//  INVALIDPARAMETERVALUE_MATCHTICKETIDNOTFOUND = "InvalidParameterValue.MatchTicketIdNotFound"
+//  INVALIDPARAMETERVALUE_MATCHTICKETLIMIT = "InvalidParameterValue.MatchTicketLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACTION = "UnauthorizedOperation.UnauthorizedAction"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeMatchingProgressWithContext(ctx context.Context, request *DescribeMatchingProgressRequest) (response *DescribeMatchingProgressResponse, err error) {
+    if request == nil {
+        request = NewDescribeMatchingProgressRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeMatchingProgressResponse()
     err = c.Send(request, response)
@@ -647,6 +1044,44 @@ func (c *Client) DescribeRule(request *DescribeRuleRequest) (response *DescribeR
     if request == nil {
         request = NewDescribeRuleRequest()
     }
+    
+    response = NewDescribeRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeRule
+// 查询规则详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SERVICEUNAVAILABLE = "FailedOperation.ServiceUnavailable"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_RULENOTFOUND = "InvalidParameterValue.RuleNotFound"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDREGION = "UnsupportedRegion"
+func (c *Client) DescribeRuleWithContext(ctx context.Context, request *DescribeRuleRequest) (response *DescribeRuleResponse, err error) {
+    if request == nil {
+        request = NewDescribeRuleRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeRuleResponse()
     err = c.Send(request, response)
@@ -709,6 +1144,46 @@ func (c *Client) DescribeRules(request *DescribeRulesRequest) (response *Describ
     return
 }
 
+// DescribeRules
+// 分页查询规则集列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SERVICEUNAVAILABLE = "FailedOperation.ServiceUnavailable"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_RULENOTFOUND = "InvalidParameterValue.RuleNotFound"
+//  INVALIDPARAMETERVALUE_VALUERANGELIMIT = "InvalidParameterValue.ValueRangeLimit"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACTION = "UnauthorizedOperation.UnauthorizedAction"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDREGION = "UnsupportedRegion"
+func (c *Client) DescribeRulesWithContext(ctx context.Context, request *DescribeRulesRequest) (response *DescribeRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRulesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTokenRequest() (request *DescribeTokenRequest) {
     request = &DescribeTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -738,6 +1213,25 @@ func (c *Client) DescribeToken(request *DescribeTokenRequest) (response *Describ
     if request == nil {
         request = NewDescribeTokenRequest()
     }
+    
+    response = NewDescribeTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeToken
+// 查询匹配Token，Token用于push消息验证。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SERVICEUNAVAILABLE = "FailedOperation.ServiceUnavailable"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_MATCHCODENOTFOUND = "InvalidParameterValue.MatchCodeNotFound"
+//  INVALIDPARAMETERVALUE_MATCHNOTFOUND = "InvalidParameterValue.MatchNotFound"
+func (c *Client) DescribeTokenWithContext(ctx context.Context, request *DescribeTokenRequest) (response *DescribeTokenResponse, err error) {
+    if request == nil {
+        request = NewDescribeTokenRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeTokenResponse()
     err = c.Send(request, response)
@@ -804,6 +1298,50 @@ func (c *Client) ModifyMatch(request *ModifyMatchRequest) (response *ModifyMatch
     return
 }
 
+// ModifyMatch
+// 修改匹配
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SERVICEUNAVAILABLE = "FailedOperation.ServiceUnavailable"
+//  FAILEDOPERATION_TAGSOPEARTIONFAILED = "FailedOperation.TagsOpeartionFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MATCHNOTFOUND = "InvalidParameterValue.MatchNotFound"
+//  INVALIDPARAMETERVALUE_RULENOTFOUND = "InvalidParameterValue.RuleNotFound"
+//  INVALIDPARAMETERVALUE_TAGSLIMITPERMISSION = "InvalidParameterValue.TagsLimitPermission"
+//  INVALIDPARAMETERVALUE_VALUERANGELIMIT = "InvalidParameterValue.ValueRangeLimit"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZEDOPERATION = "UnauthorizedOperation.CAMUnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACTION = "UnauthorizedOperation.UnauthorizedAction"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDREGION = "UnsupportedRegion"
+func (c *Client) ModifyMatchWithContext(ctx context.Context, request *ModifyMatchRequest) (response *ModifyMatchResponse, err error) {
+    if request == nil {
+        request = NewModifyMatchRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyMatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyRuleRequest() (request *ModifyRuleRequest) {
     request = &ModifyRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -860,6 +1398,46 @@ func (c *Client) ModifyRule(request *ModifyRuleRequest) (response *ModifyRuleRes
     return
 }
 
+// ModifyRule
+// 修改规则（描述、标签）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SERVICEUNAVAILABLE = "FailedOperation.ServiceUnavailable"
+//  FAILEDOPERATION_TAGSOPEARTIONFAILED = "FailedOperation.TagsOpeartionFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_RULENOTFOUND = "InvalidParameterValue.RuleNotFound"
+//  INVALIDPARAMETERVALUE_VALUERANGELIMIT = "InvalidParameterValue.ValueRangeLimit"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDREGION = "UnsupportedRegion"
+func (c *Client) ModifyRuleWithContext(ctx context.Context, request *ModifyRuleRequest) (response *ModifyRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyRuleRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyTokenRequest() (request *ModifyTokenRequest) {
     request = &ModifyTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -889,6 +1467,25 @@ func (c *Client) ModifyToken(request *ModifyTokenRequest) (response *ModifyToken
     if request == nil {
         request = NewModifyTokenRequest()
     }
+    
+    response = NewModifyTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyToken
+// 修改匹配Token。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SERVICEUNAVAILABLE = "FailedOperation.ServiceUnavailable"
+//  INVALIDPARAMETERVALUE_TOKENCOMPATIBLESPANINVALID = "InvalidParameterValue.TokenCompatibleSpanInvalid"
+//  INVALIDPARAMETERVALUE_TOKENLIMIT = "InvalidParameterValue.TokenLimit"
+//  LIMITEXCEEDED_TOKENUPDATEEXCEED = "LimitExceeded.TokenUpdateExceed"
+func (c *Client) ModifyTokenWithContext(ctx context.Context, request *ModifyTokenRequest) (response *ModifyTokenResponse, err error) {
+    if request == nil {
+        request = NewModifyTokenRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyTokenResponse()
     err = c.Send(request, response)
@@ -953,6 +1550,48 @@ func (c *Client) StartMatching(request *StartMatchingRequest) (response *StartMa
     return
 }
 
+// StartMatching
+// 支持传入一个玩家或多个玩家发起匹配，在同一个请求内的玩家将被分到同一个对局。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_FREQUENCYSAMEPLAYERLIMITED = "FailedOperation.FrequencySamePlayerLimited"
+//  FAILEDOPERATION_SERVICEUNAVAILABLE = "FailedOperation.ServiceUnavailable"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDRULESCRIPT = "InvalidParameterValue.InvalidRuleScript"
+//  INVALIDPARAMETERVALUE_MATCHCODENOTFOUND = "InvalidParameterValue.MatchCodeNotFound"
+//  INVALIDPARAMETERVALUE_MATCHFEILDVALUELIMIT = "InvalidParameterValue.MatchFeildValueLimit"
+//  INVALIDPARAMETERVALUE_MATCHINVALIDCHARACTERS = "InvalidParameterValue.MatchInvalidCharacters"
+//  INVALIDPARAMETERVALUE_MATCHPLAYERSLIMIT = "InvalidParameterValue.MatchPlayersLimit"
+//  INVALIDPARAMETERVALUE_MATCHPLAYERSREPEATED = "InvalidParameterValue.MatchPlayersRepeated"
+//  INVALIDPARAMETERVALUE_MATCHTICKETIDREPEATED = "InvalidParameterValue.MatchTicketIdRepeated"
+//  INVALIDPARAMETERVALUE_RULENOTFOUND = "InvalidParameterValue.RuleNotFound"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACTION = "UnauthorizedOperation.UnauthorizedAction"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDREGION = "UnsupportedRegion"
+func (c *Client) StartMatchingWithContext(ctx context.Context, request *StartMatchingRequest) (response *StartMatchingResponse, err error) {
+    if request == nil {
+        request = NewStartMatchingRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewStartMatchingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStartMatchingBackfillRequest() (request *StartMatchingBackfillRequest) {
     request = &StartMatchingBackfillRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1007,6 +1646,50 @@ func (c *Client) StartMatchingBackfill(request *StartMatchingBackfillRequest) (r
     if request == nil {
         request = NewStartMatchingBackfillRequest()
     }
+    
+    response = NewStartMatchingBackfillResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// StartMatchingBackfill
+// 通过调用StartMatchingBackfill，用户可以传入一个回填的匹配请求，GPM为回填请求搜索符合条件的ticket并形成一个新的match。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_FREQUENCYSAMEPLAYERLIMITED = "FailedOperation.FrequencySamePlayerLimited"
+//  FAILEDOPERATION_SERVICEUNAVAILABLE = "FailedOperation.ServiceUnavailable"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_GAMESERVERSESSIONREPEATED = "InvalidParameterValue.GameServerSessionRepeated"
+//  INVALIDPARAMETERVALUE_INVALIDRULESCRIPT = "InvalidParameterValue.InvalidRuleScript"
+//  INVALIDPARAMETERVALUE_MATCHCODENOTFOUND = "InvalidParameterValue.MatchCodeNotFound"
+//  INVALIDPARAMETERVALUE_MATCHFEILDVALUELIMIT = "InvalidParameterValue.MatchFeildValueLimit"
+//  INVALIDPARAMETERVALUE_MATCHINVALIDCHARACTERS = "InvalidParameterValue.MatchInvalidCharacters"
+//  INVALIDPARAMETERVALUE_MATCHPLAYERSLIMIT = "InvalidParameterValue.MatchPlayersLimit"
+//  INVALIDPARAMETERVALUE_MATCHPLAYERSREPEATED = "InvalidParameterValue.MatchPlayersRepeated"
+//  INVALIDPARAMETERVALUE_MATCHTICKETIDNOTFOUND = "InvalidParameterValue.MatchTicketIdNotFound"
+//  INVALIDPARAMETERVALUE_MATCHTICKETIDREPEATED = "InvalidParameterValue.MatchTicketIdRepeated"
+//  INVALIDPARAMETERVALUE_RULENOTFOUND = "InvalidParameterValue.RuleNotFound"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACTION = "UnauthorizedOperation.UnauthorizedAction"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDREGION = "UnsupportedRegion"
+func (c *Client) StartMatchingBackfillWithContext(ctx context.Context, request *StartMatchingBackfillRequest) (response *StartMatchingBackfillResponse, err error) {
+    if request == nil {
+        request = NewStartMatchingBackfillRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewStartMatchingBackfillResponse()
     err = c.Send(request, response)

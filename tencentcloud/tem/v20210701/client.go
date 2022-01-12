@@ -15,6 +15,7 @@
 package v20210701
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -76,6 +77,23 @@ func (c *Client) CreateApplication(request *CreateApplicationRequest) (response 
     return
 }
 
+// CreateApplication
+// 创建应用
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+//  INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = "InvalidParameterValue.ServiceNameDuplicateError"
+func (c *Client) CreateApplicationWithContext(ctx context.Context, request *CreateApplicationRequest) (response *CreateApplicationResponse, err error) {
+    if request == nil {
+        request = NewCreateApplicationRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateApplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCosTokenRequest() (request *CreateCosTokenRequest) {
     request = &CreateCosTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -109,6 +127,23 @@ func (c *Client) CreateCosToken(request *CreateCosTokenRequest) (response *Creat
     return
 }
 
+// CreateCosToken
+// 生成Cos临时秘钥
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+//  INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = "InvalidParameterValue.ServiceNameDuplicateError"
+func (c *Client) CreateCosTokenWithContext(ctx context.Context, request *CreateCosTokenRequest) (response *CreateCosTokenResponse, err error) {
+    if request == nil {
+        request = NewCreateCosTokenRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateCosTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateEnvironmentRequest() (request *CreateEnvironmentRequest) {
     request = &CreateEnvironmentRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -130,12 +165,29 @@ func NewCreateEnvironmentResponse() (response *CreateEnvironmentResponse) {
 // 创建环境
 //
 // 可能返回的错误码:
-//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
-//  INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = "InvalidParameterValue.ServiceNameDuplicateError"
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  INVALIDPARAMETERVALUE_NAMESPACEDUPLICATEERROR = "InvalidParameterValue.NamespaceDuplicateError"
 func (c *Client) CreateEnvironment(request *CreateEnvironmentRequest) (response *CreateEnvironmentResponse, err error) {
     if request == nil {
         request = NewCreateEnvironmentRequest()
     }
+    
+    response = NewCreateEnvironmentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateEnvironment
+// 创建环境
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  INVALIDPARAMETERVALUE_NAMESPACEDUPLICATEERROR = "InvalidParameterValue.NamespaceDuplicateError"
+func (c *Client) CreateEnvironmentWithContext(ctx context.Context, request *CreateEnvironmentRequest) (response *CreateEnvironmentResponse, err error) {
+    if request == nil {
+        request = NewCreateEnvironmentRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateEnvironmentResponse()
     err = c.Send(request, response)
@@ -163,12 +215,27 @@ func NewCreateResourceResponse() (response *CreateResourceResponse) {
 // 绑定云资源
 //
 // 可能返回的错误码:
-//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
-//  INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = "InvalidParameterValue.ServiceNameDuplicateError"
+//  INVALIDPARAMETERVALUE_NAMESPACEREACHMAXIMUM = "InvalidParameterValue.NamespaceReachMaximum"
 func (c *Client) CreateResource(request *CreateResourceRequest) (response *CreateResourceResponse, err error) {
     if request == nil {
         request = NewCreateResourceRequest()
     }
+    
+    response = NewCreateResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateResource
+// 绑定云资源
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_NAMESPACEREACHMAXIMUM = "InvalidParameterValue.NamespaceReachMaximum"
+func (c *Client) CreateResourceWithContext(ctx context.Context, request *CreateResourceRequest) (response *CreateResourceResponse, err error) {
+    if request == nil {
+        request = NewCreateResourceRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateResourceResponse()
     err = c.Send(request, response)
@@ -202,11 +269,45 @@ func NewDeleteApplicationResponse() (response *DeleteApplicationResponse) {
 //   - 删除服务
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  INVALIDPARAMETERVALUE_SERVICEFOUNDRUNNINGVERSION = "InvalidParameterValue.ServiceFoundRunningVersion"
 //  INVALIDPARAMETERVALUE_VERSIONROUTERATENOTZERO = "InvalidParameterValue.VersionRouteRateNotZero"
+//  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
+//  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DeleteApplication(request *DeleteApplicationRequest) (response *DeleteApplicationResponse, err error) {
     if request == nil {
         request = NewDeleteApplicationRequest()
     }
+    
+    response = NewDeleteApplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteApplication
+// 服务删除
+//
+//   - 停止当前运行服务
+//
+//   - 删除服务相关资源
+//
+//   - 删除服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  INVALIDPARAMETERVALUE_SERVICEFOUNDRUNNINGVERSION = "InvalidParameterValue.ServiceFoundRunningVersion"
+//  INVALIDPARAMETERVALUE_VERSIONROUTERATENOTZERO = "InvalidParameterValue.VersionRouteRateNotZero"
+//  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
+//  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DeleteApplicationWithContext(ctx context.Context, request *DeleteApplicationRequest) (response *DeleteApplicationResponse, err error) {
+    if request == nil {
+        request = NewDeleteApplicationRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteApplicationResponse()
     err = c.Send(request, response)
@@ -234,11 +335,39 @@ func NewDeleteIngressResponse() (response *DeleteIngressResponse) {
 // 删除 Ingress 规则
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  INVALIDPARAMETERVALUE_SERVICEFOUNDRUNNINGVERSION = "InvalidParameterValue.ServiceFoundRunningVersion"
 //  INVALIDPARAMETERVALUE_VERSIONROUTERATENOTZERO = "InvalidParameterValue.VersionRouteRateNotZero"
+//  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
+//  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DeleteIngress(request *DeleteIngressRequest) (response *DeleteIngressResponse, err error) {
     if request == nil {
         request = NewDeleteIngressRequest()
     }
+    
+    response = NewDeleteIngressResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteIngress
+// 删除 Ingress 规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  INVALIDPARAMETERVALUE_SERVICEFOUNDRUNNINGVERSION = "InvalidParameterValue.ServiceFoundRunningVersion"
+//  INVALIDPARAMETERVALUE_VERSIONROUTERATENOTZERO = "InvalidParameterValue.VersionRouteRateNotZero"
+//  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
+//  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DeleteIngressWithContext(ctx context.Context, request *DeleteIngressRequest) (response *DeleteIngressResponse, err error) {
+    if request == nil {
+        request = NewDeleteIngressRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteIngressResponse()
     err = c.Send(request, response)
@@ -266,11 +395,37 @@ func NewDeployApplicationResponse() (response *DeployApplicationResponse) {
 // 应用部署
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_VERSIONROUTERATENOTZERO = "InvalidParameterValue.VersionRouteRateNotZero"
+//  INTERNALERROR_CREATEAPMRESOURCEERROR = "InternalError.CreateApmResourceError"
+//  INTERNALERROR_DEPLOYVERSIONERROR = "InternalError.DeployVersionError"
+//  INVALIDPARAMETERVALUE_INVALIDDEPLOYVERSION = "InvalidParameterValue.InvalidDeployVersion"
+//  INVALIDPARAMETERVALUE_TRAITSTRACINGNOTSUPPORTED = "InvalidParameterValue.TraitsTracingNotSupported"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  RESOURCEUNAVAILABLE_WAITFORKRUISE = "ResourceUnavailable.WaitForKruise"
 func (c *Client) DeployApplication(request *DeployApplicationRequest) (response *DeployApplicationResponse, err error) {
     if request == nil {
         request = NewDeployApplicationRequest()
     }
+    
+    response = NewDeployApplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeployApplication
+// 应用部署
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATEAPMRESOURCEERROR = "InternalError.CreateApmResourceError"
+//  INTERNALERROR_DEPLOYVERSIONERROR = "InternalError.DeployVersionError"
+//  INVALIDPARAMETERVALUE_INVALIDDEPLOYVERSION = "InvalidParameterValue.InvalidDeployVersion"
+//  INVALIDPARAMETERVALUE_TRAITSTRACINGNOTSUPPORTED = "InvalidParameterValue.TraitsTracingNotSupported"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  RESOURCEUNAVAILABLE_WAITFORKRUISE = "ResourceUnavailable.WaitForKruise"
+func (c *Client) DeployApplicationWithContext(ctx context.Context, request *DeployApplicationRequest) (response *DeployApplicationResponse, err error) {
+    if request == nil {
+        request = NewDeployApplicationRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeployApplicationResponse()
     err = c.Send(request, response)
@@ -298,11 +453,31 @@ func NewDescribeApplicationPodsResponse() (response *DescribeApplicationPodsResp
 // 获取应用实例列表
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_VERSIONROUTERATENOTZERO = "InvalidParameterValue.VersionRouteRateNotZero"
+//  INTERNALERROR_DESCRIBERUNPODLISTERROR = "InternalError.DescribeRunPodListError"
+//  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
+//  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
 func (c *Client) DescribeApplicationPods(request *DescribeApplicationPodsRequest) (response *DescribeApplicationPodsResponse, err error) {
     if request == nil {
         request = NewDescribeApplicationPodsRequest()
     }
+    
+    response = NewDescribeApplicationPodsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeApplicationPods
+// 获取应用实例列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DESCRIBERUNPODLISTERROR = "InternalError.DescribeRunPodListError"
+//  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
+//  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
+func (c *Client) DescribeApplicationPodsWithContext(ctx context.Context, request *DescribeApplicationPodsRequest) (response *DescribeApplicationPodsResponse, err error) {
+    if request == nil {
+        request = NewDescribeApplicationPodsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeApplicationPodsResponse()
     err = c.Send(request, response)
@@ -330,11 +505,29 @@ func NewDescribeDeployApplicationDetailResponse() (response *DescribeDeployAppli
 // 获取分批发布详情
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_VERSIONROUTERATENOTZERO = "InvalidParameterValue.VersionRouteRateNotZero"
+//  INTERNALERROR_DESCRIBERUNPODLISTERROR = "InternalError.DescribeRunPodListError"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 func (c *Client) DescribeDeployApplicationDetail(request *DescribeDeployApplicationDetailRequest) (response *DescribeDeployApplicationDetailResponse, err error) {
     if request == nil {
         request = NewDescribeDeployApplicationDetailRequest()
     }
+    
+    response = NewDescribeDeployApplicationDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeDeployApplicationDetail
+// 获取分批发布详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DESCRIBERUNPODLISTERROR = "InternalError.DescribeRunPodListError"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+func (c *Client) DescribeDeployApplicationDetailWithContext(ctx context.Context, request *DescribeDeployApplicationDetailRequest) (response *DescribeDeployApplicationDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeployApplicationDetailRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeDeployApplicationDetailResponse()
     err = c.Send(request, response)
@@ -362,11 +555,29 @@ func NewDescribeEnvironmentsResponse() (response *DescribeEnvironmentsResponse) 
 // 获取租户环境列表
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_VERSIONROUTERATENOTZERO = "InvalidParameterValue.VersionRouteRateNotZero"
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 func (c *Client) DescribeEnvironments(request *DescribeEnvironmentsRequest) (response *DescribeEnvironmentsResponse, err error) {
     if request == nil {
         request = NewDescribeEnvironmentsRequest()
     }
+    
+    response = NewDescribeEnvironmentsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeEnvironments
+// 获取租户环境列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+func (c *Client) DescribeEnvironmentsWithContext(ctx context.Context, request *DescribeEnvironmentsRequest) (response *DescribeEnvironmentsResponse, err error) {
+    if request == nil {
+        request = NewDescribeEnvironmentsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeEnvironmentsResponse()
     err = c.Send(request, response)
@@ -394,11 +605,29 @@ func NewDescribeIngressResponse() (response *DescribeIngressResponse) {
 // 查询 Ingress 规则
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_VERSIONROUTERATENOTZERO = "InvalidParameterValue.VersionRouteRateNotZero"
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 func (c *Client) DescribeIngress(request *DescribeIngressRequest) (response *DescribeIngressResponse, err error) {
     if request == nil {
         request = NewDescribeIngressRequest()
     }
+    
+    response = NewDescribeIngressResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeIngress
+// 查询 Ingress 规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+func (c *Client) DescribeIngressWithContext(ctx context.Context, request *DescribeIngressRequest) (response *DescribeIngressResponse, err error) {
+    if request == nil {
+        request = NewDescribeIngressRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeIngressResponse()
     err = c.Send(request, response)
@@ -426,11 +655,29 @@ func NewDescribeIngressesResponse() (response *DescribeIngressesResponse) {
 // 查询 Ingress 规则列表
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_VERSIONROUTERATENOTZERO = "InvalidParameterValue.VersionRouteRateNotZero"
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 func (c *Client) DescribeIngresses(request *DescribeIngressesRequest) (response *DescribeIngressesResponse, err error) {
     if request == nil {
         request = NewDescribeIngressesRequest()
     }
+    
+    response = NewDescribeIngressesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeIngresses
+// 查询 Ingress 规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+func (c *Client) DescribeIngressesWithContext(ctx context.Context, request *DescribeIngressesRequest) (response *DescribeIngressesResponse, err error) {
+    if request == nil {
+        request = NewDescribeIngressesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeIngressesResponse()
     err = c.Send(request, response)
@@ -458,11 +705,29 @@ func NewDescribeRelatedIngressesResponse() (response *DescribeRelatedIngressesRe
 // 查询应用关联的 Ingress 规则列表
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_VERSIONROUTERATENOTZERO = "InvalidParameterValue.VersionRouteRateNotZero"
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 func (c *Client) DescribeRelatedIngresses(request *DescribeRelatedIngressesRequest) (response *DescribeRelatedIngressesResponse, err error) {
     if request == nil {
         request = NewDescribeRelatedIngressesRequest()
     }
+    
+    response = NewDescribeRelatedIngressesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeRelatedIngresses
+// 查询应用关联的 Ingress 规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+func (c *Client) DescribeRelatedIngressesWithContext(ctx context.Context, request *DescribeRelatedIngressesRequest) (response *DescribeRelatedIngressesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRelatedIngressesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeRelatedIngressesResponse()
     err = c.Send(request, response)
@@ -490,11 +755,29 @@ func NewGenerateApplicationPackageDownloadUrlResponse() (response *GenerateAppli
 // 生成应用程序包预签名下载链接
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_VERSIONROUTERATENOTZERO = "InvalidParameterValue.VersionRouteRateNotZero"
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 func (c *Client) GenerateApplicationPackageDownloadUrl(request *GenerateApplicationPackageDownloadUrlRequest) (response *GenerateApplicationPackageDownloadUrlResponse, err error) {
     if request == nil {
         request = NewGenerateApplicationPackageDownloadUrlRequest()
     }
+    
+    response = NewGenerateApplicationPackageDownloadUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// GenerateApplicationPackageDownloadUrl
+// 生成应用程序包预签名下载链接
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+func (c *Client) GenerateApplicationPackageDownloadUrlWithContext(ctx context.Context, request *GenerateApplicationPackageDownloadUrlRequest) (response *GenerateApplicationPackageDownloadUrlResponse, err error) {
+    if request == nil {
+        request = NewGenerateApplicationPackageDownloadUrlRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewGenerateApplicationPackageDownloadUrlResponse()
     err = c.Send(request, response)
@@ -533,6 +816,22 @@ func (c *Client) ModifyApplicationInfo(request *ModifyApplicationInfoRequest) (r
     return
 }
 
+// ModifyApplicationInfo
+// 修改应用基本信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+func (c *Client) ModifyApplicationInfoWithContext(ctx context.Context, request *ModifyApplicationInfoRequest) (response *ModifyApplicationInfoResponse, err error) {
+    if request == nil {
+        request = NewModifyApplicationInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyApplicationInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyApplicationReplicasRequest() (request *ModifyApplicationReplicasRequest) {
     request = &ModifyApplicationReplicasRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -554,11 +853,27 @@ func NewModifyApplicationReplicasResponse() (response *ModifyApplicationReplicas
 // 修改应用实例数量
 //
 // 可能返回的错误码:
-//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+//  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
 func (c *Client) ModifyApplicationReplicas(request *ModifyApplicationReplicasRequest) (response *ModifyApplicationReplicasResponse, err error) {
     if request == nil {
         request = NewModifyApplicationReplicasRequest()
     }
+    
+    response = NewModifyApplicationReplicasResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyApplicationReplicas
+// 修改应用实例数量
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
+func (c *Client) ModifyApplicationReplicasWithContext(ctx context.Context, request *ModifyApplicationReplicasRequest) (response *ModifyApplicationReplicasResponse, err error) {
+    if request == nil {
+        request = NewModifyApplicationReplicasRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyApplicationReplicasResponse()
     err = c.Send(request, response)
@@ -586,11 +901,27 @@ func NewModifyEnvironmentResponse() (response *ModifyEnvironmentResponse) {
 // 编辑环境
 //
 // 可能返回的错误码:
-//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 func (c *Client) ModifyEnvironment(request *ModifyEnvironmentRequest) (response *ModifyEnvironmentResponse, err error) {
     if request == nil {
         request = NewModifyEnvironmentRequest()
     }
+    
+    response = NewModifyEnvironmentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyEnvironment
+// 编辑环境
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+func (c *Client) ModifyEnvironmentWithContext(ctx context.Context, request *ModifyEnvironmentRequest) (response *ModifyEnvironmentResponse, err error) {
+    if request == nil {
+        request = NewModifyEnvironmentRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyEnvironmentResponse()
     err = c.Send(request, response)
@@ -618,11 +949,27 @@ func NewModifyIngressResponse() (response *ModifyIngressResponse) {
 // 创建或者更新 Ingress 规则
 //
 // 可能返回的错误码:
-//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 func (c *Client) ModifyIngress(request *ModifyIngressRequest) (response *ModifyIngressResponse, err error) {
     if request == nil {
         request = NewModifyIngressRequest()
     }
+    
+    response = NewModifyIngressResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyIngress
+// 创建或者更新 Ingress 规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+func (c *Client) ModifyIngressWithContext(ctx context.Context, request *ModifyIngressRequest) (response *ModifyIngressResponse, err error) {
+    if request == nil {
+        request = NewModifyIngressRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyIngressResponse()
     err = c.Send(request, response)
@@ -650,11 +997,27 @@ func NewRestartApplicationResponse() (response *RestartApplicationResponse) {
 // 服务重启
 //
 // 可能返回的错误码:
-//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+//  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
 func (c *Client) RestartApplication(request *RestartApplicationRequest) (response *RestartApplicationResponse, err error) {
     if request == nil {
         request = NewRestartApplicationRequest()
     }
+    
+    response = NewRestartApplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// RestartApplication
+// 服务重启
+//
+// 可能返回的错误码:
+//  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+func (c *Client) RestartApplicationWithContext(ctx context.Context, request *RestartApplicationRequest) (response *RestartApplicationResponse, err error) {
+    if request == nil {
+        request = NewRestartApplicationRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewRestartApplicationResponse()
     err = c.Send(request, response)
@@ -682,11 +1045,27 @@ func NewRestartApplicationPodResponse() (response *RestartApplicationPodResponse
 // 重启应用实例
 //
 // 可能返回的错误码:
-//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+//  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
 func (c *Client) RestartApplicationPod(request *RestartApplicationPodRequest) (response *RestartApplicationPodResponse, err error) {
     if request == nil {
         request = NewRestartApplicationPodRequest()
     }
+    
+    response = NewRestartApplicationPodResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// RestartApplicationPod
+// 重启应用实例
+//
+// 可能返回的错误码:
+//  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+func (c *Client) RestartApplicationPodWithContext(ctx context.Context, request *RestartApplicationPodRequest) (response *RestartApplicationPodResponse, err error) {
+    if request == nil {
+        request = NewRestartApplicationPodRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewRestartApplicationPodResponse()
     err = c.Send(request, response)
@@ -714,11 +1093,27 @@ func NewResumeDeployApplicationResponse() (response *ResumeDeployApplicationResp
 // 开始下一批次发布
 //
 // 可能返回的错误码:
-//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+//  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
 func (c *Client) ResumeDeployApplication(request *ResumeDeployApplicationRequest) (response *ResumeDeployApplicationResponse, err error) {
     if request == nil {
         request = NewResumeDeployApplicationRequest()
     }
+    
+    response = NewResumeDeployApplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ResumeDeployApplication
+// 开始下一批次发布
+//
+// 可能返回的错误码:
+//  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+func (c *Client) ResumeDeployApplicationWithContext(ctx context.Context, request *ResumeDeployApplicationRequest) (response *ResumeDeployApplicationResponse, err error) {
+    if request == nil {
+        request = NewResumeDeployApplicationRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewResumeDeployApplicationResponse()
     err = c.Send(request, response)
@@ -746,11 +1141,27 @@ func NewRevertDeployApplicationResponse() (response *RevertDeployApplicationResp
 // 回滚分批发布
 //
 // 可能返回的错误码:
-//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+//  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
 func (c *Client) RevertDeployApplication(request *RevertDeployApplicationRequest) (response *RevertDeployApplicationResponse, err error) {
     if request == nil {
         request = NewRevertDeployApplicationRequest()
     }
+    
+    response = NewRevertDeployApplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// RevertDeployApplication
+// 回滚分批发布
+//
+// 可能返回的错误码:
+//  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+func (c *Client) RevertDeployApplicationWithContext(ctx context.Context, request *RevertDeployApplicationRequest) (response *RevertDeployApplicationResponse, err error) {
+    if request == nil {
+        request = NewRevertDeployApplicationRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewRevertDeployApplicationResponse()
     err = c.Send(request, response)
@@ -778,11 +1189,29 @@ func NewRollingUpdateApplicationByVersionResponse() (response *RollingUpdateAppl
 // 更新应用部署版本
 //
 // 可能返回的错误码:
-//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 func (c *Client) RollingUpdateApplicationByVersion(request *RollingUpdateApplicationByVersionRequest) (response *RollingUpdateApplicationByVersionResponse, err error) {
     if request == nil {
         request = NewRollingUpdateApplicationByVersionRequest()
     }
+    
+    response = NewRollingUpdateApplicationByVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// RollingUpdateApplicationByVersion
+// 更新应用部署版本
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+func (c *Client) RollingUpdateApplicationByVersionWithContext(ctx context.Context, request *RollingUpdateApplicationByVersionRequest) (response *RollingUpdateApplicationByVersionResponse, err error) {
+    if request == nil {
+        request = NewRollingUpdateApplicationByVersionRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewRollingUpdateApplicationByVersionResponse()
     err = c.Send(request, response)
@@ -810,11 +1239,29 @@ func NewStopApplicationResponse() (response *StopApplicationResponse) {
 // 服务停止
 //
 // 可能返回的错误码:
-//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+//  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+//  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
 func (c *Client) StopApplication(request *StopApplicationRequest) (response *StopApplicationResponse, err error) {
     if request == nil {
         request = NewStopApplicationRequest()
     }
+    
+    response = NewStopApplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// StopApplication
+// 服务停止
+//
+// 可能返回的错误码:
+//  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+//  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
+func (c *Client) StopApplicationWithContext(ctx context.Context, request *StopApplicationRequest) (response *StopApplicationResponse, err error) {
+    if request == nil {
+        request = NewStopApplicationRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewStopApplicationResponse()
     err = c.Send(request, response)

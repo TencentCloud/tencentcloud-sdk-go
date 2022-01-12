@@ -15,6 +15,7 @@
 package v20181225
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -76,6 +77,23 @@ func (c *Client) AcceptOrganizationInvitation(request *AcceptOrganizationInvitat
     return
 }
 
+// AcceptOrganizationInvitation
+// 接受加入企业组织邀请
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INORGANIZATIONALREADY = "FailedOperation.InOrganizationAlready"
+//  RESOURCENOTFOUND_INVITATIONNOTEXIST = "ResourceNotFound.InvitationNotExist"
+func (c *Client) AcceptOrganizationInvitationWithContext(ctx context.Context, request *AcceptOrganizationInvitationRequest) (response *AcceptOrganizationInvitationResponse, err error) {
+    if request == nil {
+        request = NewAcceptOrganizationInvitationRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewAcceptOrganizationInvitationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddOrganizationNodeRequest() (request *AddOrganizationNodeRequest) {
     request = &AddOrganizationNodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -106,6 +124,26 @@ func (c *Client) AddOrganizationNode(request *AddOrganizationNodeRequest) (respo
     if request == nil {
         request = NewAddOrganizationNodeRequest()
     }
+    
+    response = NewAddOrganizationNodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// AddOrganizationNode
+// 添加企业组织单元
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED_NODEDEPTHEXCEEDLIMIT = "LimitExceeded.NodeDepthExceedLimit"
+//  LIMITEXCEEDED_NODEEXCEEDLIMIT = "LimitExceeded.NodeExceedLimit"
+//  RESOURCEINUSE_NODENAME = "ResourceInUse.NodeName"
+//  RESOURCENOTFOUND_NODENOTEXIST = "ResourceNotFound.NodeNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) AddOrganizationNodeWithContext(ctx context.Context, request *AddOrganizationNodeRequest) (response *AddOrganizationNodeResponse, err error) {
+    if request == nil {
+        request = NewAddOrganizationNodeRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewAddOrganizationNodeResponse()
     err = c.Send(request, response)
@@ -144,6 +182,22 @@ func (c *Client) CancelOrganizationInvitation(request *CancelOrganizationInvitat
     return
 }
 
+// CancelOrganizationInvitation
+// 取消企业组织邀请
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INVITATIONNOTEXIST = "ResourceNotFound.InvitationNotExist"
+func (c *Client) CancelOrganizationInvitationWithContext(ctx context.Context, request *CancelOrganizationInvitationRequest) (response *CancelOrganizationInvitationResponse, err error) {
+    if request == nil {
+        request = NewCancelOrganizationInvitationRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCancelOrganizationInvitationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateOrganizationRequest() (request *CreateOrganizationRequest) {
     request = &CreateOrganizationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -171,6 +225,23 @@ func (c *Client) CreateOrganization(request *CreateOrganizationRequest) (respons
     if request == nil {
         request = NewCreateOrganizationRequest()
     }
+    
+    response = NewCreateOrganizationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateOrganization
+// 创建企业组织
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ORGANIZATIONEXISTALREADY = "FailedOperation.OrganizationExistAlready"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) CreateOrganizationWithContext(ctx context.Context, request *CreateOrganizationRequest) (response *CreateOrganizationResponse, err error) {
+    if request == nil {
+        request = NewCreateOrganizationRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateOrganizationResponse()
     err = c.Send(request, response)
@@ -211,6 +282,24 @@ func (c *Client) DeleteOrganization(request *DeleteOrganizationRequest) (respons
     return
 }
 
+// DeleteOrganization
+// 删除企业组织
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ORGANIZATIONNOTEMPTY = "FailedOperation.OrganizationNotEmpty"
+//  FAILEDOPERATION_SHAREUNITNOTEMPTY = "FailedOperation.ShareUnitNotEmpty"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) DeleteOrganizationWithContext(ctx context.Context, request *DeleteOrganizationRequest) (response *DeleteOrganizationResponse, err error) {
+    if request == nil {
+        request = NewDeleteOrganizationRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteOrganizationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteOrganizationMemberFromNodeRequest() (request *DeleteOrganizationMemberFromNodeRequest) {
     request = &DeleteOrganizationMemberFromNodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -239,6 +328,24 @@ func (c *Client) DeleteOrganizationMemberFromNode(request *DeleteOrganizationMem
     if request == nil {
         request = NewDeleteOrganizationMemberFromNodeRequest()
     }
+    
+    response = NewDeleteOrganizationMemberFromNodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteOrganizationMemberFromNode
+// 删除企业组织成员
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DISABLEDELETEMEMBERFROMROOTNODE = "FailedOperation.DisableDeleteMemberFromRootNode"
+//  RESOURCENOTFOUND_NODENOTEXIST = "ResourceNotFound.NodeNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) DeleteOrganizationMemberFromNodeWithContext(ctx context.Context, request *DeleteOrganizationMemberFromNodeRequest) (response *DeleteOrganizationMemberFromNodeResponse, err error) {
+    if request == nil {
+        request = NewDeleteOrganizationMemberFromNodeRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteOrganizationMemberFromNodeResponse()
     err = c.Send(request, response)
@@ -278,6 +385,23 @@ func (c *Client) DeleteOrganizationMembers(request *DeleteOrganizationMembersReq
     return
 }
 
+// DeleteOrganizationMembers
+// 批量删除企业组织成员
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUITSHAREUINTERROR = "FailedOperation.QuitShareUintError"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) DeleteOrganizationMembersWithContext(ctx context.Context, request *DeleteOrganizationMembersRequest) (response *DeleteOrganizationMembersResponse, err error) {
+    if request == nil {
+        request = NewDeleteOrganizationMembersRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteOrganizationMembersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteOrganizationNodesRequest() (request *DeleteOrganizationNodesRequest) {
     request = &DeleteOrganizationNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -311,6 +435,23 @@ func (c *Client) DeleteOrganizationNodes(request *DeleteOrganizationNodesRequest
     return
 }
 
+// DeleteOrganizationNodes
+// 批量删除企业组织单元
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NODENOTEMPTY = "FailedOperation.NodeNotEmpty"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) DeleteOrganizationNodesWithContext(ctx context.Context, request *DeleteOrganizationNodesRequest) (response *DeleteOrganizationNodesResponse, err error) {
+    if request == nil {
+        request = NewDeleteOrganizationNodesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteOrganizationNodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDenyOrganizationInvitationRequest() (request *DenyOrganizationInvitationRequest) {
     request = &DenyOrganizationInvitationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -337,6 +478,22 @@ func (c *Client) DenyOrganizationInvitation(request *DenyOrganizationInvitationR
     if request == nil {
         request = NewDenyOrganizationInvitationRequest()
     }
+    
+    response = NewDenyOrganizationInvitationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DenyOrganizationInvitation
+// 拒绝企业组织邀请
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INVITATIONNOTEXIST = "ResourceNotFound.InvitationNotExist"
+func (c *Client) DenyOrganizationInvitationWithContext(ctx context.Context, request *DenyOrganizationInvitationRequest) (response *DenyOrganizationInvitationResponse, err error) {
+    if request == nil {
+        request = NewDenyOrganizationInvitationRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDenyOrganizationInvitationResponse()
     err = c.Send(request, response)
@@ -376,6 +533,23 @@ func (c *Client) GetOrganization(request *GetOrganizationRequest) (response *Get
     return
 }
 
+// GetOrganization
+// 获取企业组织信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) GetOrganizationWithContext(ctx context.Context, request *GetOrganizationRequest) (response *GetOrganizationResponse, err error) {
+    if request == nil {
+        request = NewGetOrganizationRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewGetOrganizationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetOrganizationMemberRequest() (request *GetOrganizationMemberRequest) {
     request = &GetOrganizationMemberRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -409,6 +583,23 @@ func (c *Client) GetOrganizationMember(request *GetOrganizationMemberRequest) (r
     return
 }
 
+// GetOrganizationMember
+// 获取企业组织成员
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_NODENOTEXIST = "ResourceNotFound.NodeNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) GetOrganizationMemberWithContext(ctx context.Context, request *GetOrganizationMemberRequest) (response *GetOrganizationMemberResponse, err error) {
+    if request == nil {
+        request = NewGetOrganizationMemberRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewGetOrganizationMemberResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListOrganizationInvitationsRequest() (request *ListOrganizationInvitationsRequest) {
     request = &ListOrganizationInvitationsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -435,6 +626,22 @@ func (c *Client) ListOrganizationInvitations(request *ListOrganizationInvitation
     if request == nil {
         request = NewListOrganizationInvitationsRequest()
     }
+    
+    response = NewListOrganizationInvitationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ListOrganizationInvitations
+// 获取邀请信息列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) ListOrganizationInvitationsWithContext(ctx context.Context, request *ListOrganizationInvitationsRequest) (response *ListOrganizationInvitationsResponse, err error) {
+    if request == nil {
+        request = NewListOrganizationInvitationsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewListOrganizationInvitationsResponse()
     err = c.Send(request, response)
@@ -474,6 +681,23 @@ func (c *Client) ListOrganizationMembers(request *ListOrganizationMembersRequest
     return
 }
 
+// ListOrganizationMembers
+// 获取企业组织成员列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) ListOrganizationMembersWithContext(ctx context.Context, request *ListOrganizationMembersRequest) (response *ListOrganizationMembersResponse, err error) {
+    if request == nil {
+        request = NewListOrganizationMembersRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewListOrganizationMembersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListOrganizationNodeMembersRequest() (request *ListOrganizationNodeMembersRequest) {
     request = &ListOrganizationNodeMembersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -507,6 +731,23 @@ func (c *Client) ListOrganizationNodeMembers(request *ListOrganizationNodeMember
     return
 }
 
+// ListOrganizationNodeMembers
+// 获取企业组织单元成员列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_NODENOTEXIST = "ResourceNotFound.NodeNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) ListOrganizationNodeMembersWithContext(ctx context.Context, request *ListOrganizationNodeMembersRequest) (response *ListOrganizationNodeMembersResponse, err error) {
+    if request == nil {
+        request = NewListOrganizationNodeMembersRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewListOrganizationNodeMembersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListOrganizationNodesRequest() (request *ListOrganizationNodesRequest) {
     request = &ListOrganizationNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -533,6 +774,22 @@ func (c *Client) ListOrganizationNodes(request *ListOrganizationNodesRequest) (r
     if request == nil {
         request = NewListOrganizationNodesRequest()
     }
+    
+    response = NewListOrganizationNodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ListOrganizationNodes
+// 获取企业组织单元列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) ListOrganizationNodesWithContext(ctx context.Context, request *ListOrganizationNodesRequest) (response *ListOrganizationNodesResponse, err error) {
+    if request == nil {
+        request = NewListOrganizationNodesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewListOrganizationNodesResponse()
     err = c.Send(request, response)
@@ -573,6 +830,24 @@ func (c *Client) MoveOrganizationMembersToNode(request *MoveOrganizationMembersT
     return
 }
 
+// MoveOrganizationMembersToNode
+// 移动成员到指定企业组织单元
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SOMEUINSNOTINORGANIZATION = "FailedOperation.SomeUinsNotInOrganization"
+//  RESOURCENOTFOUND_NODENOTEXIST = "ResourceNotFound.NodeNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) MoveOrganizationMembersToNodeWithContext(ctx context.Context, request *MoveOrganizationMembersToNodeRequest) (response *MoveOrganizationMembersToNodeResponse, err error) {
+    if request == nil {
+        request = NewMoveOrganizationMembersToNodeRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewMoveOrganizationMembersToNodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQuitOrganizationRequest() (request *QuitOrganizationRequest) {
     request = &QuitOrganizationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -600,6 +875,23 @@ func (c *Client) QuitOrganization(request *QuitOrganizationRequest) (response *Q
     if request == nil {
         request = NewQuitOrganizationRequest()
     }
+    
+    response = NewQuitOrganizationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// QuitOrganization
+// 退出企业组织
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DISABLEQUITSELFCREATEDORGANIZATION = "FailedOperation.DisableQuitSelfCreatedOrganization"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) QuitOrganizationWithContext(ctx context.Context, request *QuitOrganizationRequest) (response *QuitOrganizationResponse, err error) {
+    if request == nil {
+        request = NewQuitOrganizationRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewQuitOrganizationResponse()
     err = c.Send(request, response)
@@ -645,6 +937,29 @@ func (c *Client) SendOrganizationInvitation(request *SendOrganizationInvitationR
     return
 }
 
+// SendOrganizationInvitation
+// 发送企业组织邀请
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MEMBERNAMEUSED = "FailedOperation.MemberNameUsed"
+//  FAILEDOPERATION_NOTSAMEREGION = "FailedOperation.NotSameRegion"
+//  FAILEDOPERATION_RESENTINVITATION = "FailedOperation.ReSentInvitation"
+//  FAILEDOPERATION_USERINORGANIZATION = "FailedOperation.UserInOrganization"
+//  FAILEDOPERATION_USERNOTREGISTER = "FailedOperation.UserNotRegister"
+//  LIMITEXCEEDED_MEMBERS = "LimitExceeded.Members"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) SendOrganizationInvitationWithContext(ctx context.Context, request *SendOrganizationInvitationRequest) (response *SendOrganizationInvitationResponse, err error) {
+    if request == nil {
+        request = NewSendOrganizationInvitationRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewSendOrganizationInvitationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateOrganizationMemberRequest() (request *UpdateOrganizationMemberRequest) {
     request = &UpdateOrganizationMemberRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -673,6 +988,24 @@ func (c *Client) UpdateOrganizationMember(request *UpdateOrganizationMemberReque
     if request == nil {
         request = NewUpdateOrganizationMemberRequest()
     }
+    
+    response = NewUpdateOrganizationMemberResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UpdateOrganizationMember
+// 更新企业成员信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MEMBERNAMEUSED = "FailedOperation.MemberNameUsed"
+//  RESOURCENOTFOUND_MEMBERNOTEXIST = "ResourceNotFound.MemberNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) UpdateOrganizationMemberWithContext(ctx context.Context, request *UpdateOrganizationMemberRequest) (response *UpdateOrganizationMemberResponse, err error) {
+    if request == nil {
+        request = NewUpdateOrganizationMemberRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUpdateOrganizationMemberResponse()
     err = c.Send(request, response)
@@ -708,6 +1041,25 @@ func (c *Client) UpdateOrganizationNode(request *UpdateOrganizationNodeRequest) 
     if request == nil {
         request = NewUpdateOrganizationNodeRequest()
     }
+    
+    response = NewUpdateOrganizationNodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UpdateOrganizationNode
+// 更新企业组织单元
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED_NODEDEPTHEXCEEDLIMIT = "LimitExceeded.NodeDepthExceedLimit"
+//  RESOURCEINUSE_NODENAMEUSED = "ResourceInUse.NodeNameUsed"
+//  RESOURCENOTFOUND_NODENOTEXIST = "ResourceNotFound.NodeNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) UpdateOrganizationNodeWithContext(ctx context.Context, request *UpdateOrganizationNodeRequest) (response *UpdateOrganizationNodeResponse, err error) {
+    if request == nil {
+        request = NewUpdateOrganizationNodeRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUpdateOrganizationNodeResponse()
     err = c.Send(request, response)

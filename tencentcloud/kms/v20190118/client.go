@@ -15,6 +15,7 @@
 package v20190118
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -83,6 +84,30 @@ func (c *Client) ArchiveKey(request *ArchiveKeyRequest) (response *ArchiveKeyRes
     return
 }
 
+// ArchiveKey
+// 对密钥进行归档，被归档的密钥只能用于解密，不能加密
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CMKUSEDBYCLOUDPRODUCT = "FailedOperation.CmkUsedByCloudProduct"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_NOTUSERCREATEDCMK = "UnsupportedOperation.NotUserCreatedCmk"
+//  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
+func (c *Client) ArchiveKeyWithContext(ctx context.Context, request *ArchiveKeyRequest) (response *ArchiveKeyResponse, err error) {
+    if request == nil {
+        request = NewArchiveKeyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewArchiveKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAsymmetricRsaDecryptRequest() (request *AsymmetricRsaDecryptRequest) {
     request = &AsymmetricRsaDecryptRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -116,6 +141,29 @@ func (c *Client) AsymmetricRsaDecrypt(request *AsymmetricRsaDecryptRequest) (res
     if request == nil {
         request = NewAsymmetricRsaDecryptRequest()
     }
+    
+    response = NewAsymmetricRsaDecryptResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// AsymmetricRsaDecrypt
+// 使用指定的RSA非对称密钥的私钥进行数据解密，密文必须是使用对应公钥加密的。处于Enabled 状态的非对称密钥才能进行解密操作。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DECRYPTERROR = "FailedOperation.DecryptError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  INVALIDPARAMETERVALUE_INVALIDKEYUSAGE = "InvalidParameterValue.InvalidKeyUsage"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AsymmetricRsaDecryptWithContext(ctx context.Context, request *AsymmetricRsaDecryptRequest) (response *AsymmetricRsaDecryptResponse, err error) {
+    if request == nil {
+        request = NewAsymmetricRsaDecryptRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewAsymmetricRsaDecryptResponse()
     err = c.Send(request, response)
@@ -162,6 +210,30 @@ func (c *Client) AsymmetricSm2Decrypt(request *AsymmetricSm2DecryptRequest) (res
     return
 }
 
+// AsymmetricSm2Decrypt
+// 使用指定的SM2非对称密钥的私钥进行数据解密，密文必须是使用对应公钥加密的。处于Enabled 状态的非对称密钥才能进行解密操作。传入的密文的长度不能超过256字节。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DECRYPTERROR = "FailedOperation.DecryptError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  INVALIDPARAMETERVALUE_INVALIDKEYUSAGE = "InvalidParameterValue.InvalidKeyUsage"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDKEYUSAGEINCURRENTREGION = "UnsupportedOperation.UnsupportedKeyUsageInCurrentRegion"
+func (c *Client) AsymmetricSm2DecryptWithContext(ctx context.Context, request *AsymmetricSm2DecryptRequest) (response *AsymmetricSm2DecryptResponse, err error) {
+    if request == nil {
+        request = NewAsymmetricSm2DecryptRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewAsymmetricSm2DecryptResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindCloudResourceRequest() (request *BindCloudResourceRequest) {
     request = &BindCloudResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -194,6 +266,28 @@ func (c *Client) BindCloudResource(request *BindCloudResourceRequest) (response 
     if request == nil {
         request = NewBindCloudResourceRequest()
     }
+    
+    response = NewBindCloudResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// BindCloudResource
+// 记录当前key被哪个云产品的那个资源所使用。如果当前key设置了自动过期，则取消该设置，确保当前key不会自动失效。如果当前关联关系已经创建，也返回成功。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CMKUSEDBYCLOUDPRODUCT = "FailedOperation.CmkUsedByCloudProduct"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+//  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
+func (c *Client) BindCloudResourceWithContext(ctx context.Context, request *BindCloudResourceRequest) (response *BindCloudResourceResponse, err error) {
+    if request == nil {
+        request = NewBindCloudResourceRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewBindCloudResourceResponse()
     err = c.Send(request, response)
@@ -239,6 +333,29 @@ func (c *Client) CancelKeyArchive(request *CancelKeyArchiveRequest) (response *C
     return
 }
 
+// CancelKeyArchive
+// 取消密钥归档，取消后密钥的状态变为Enabled。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_NOTUSERCREATEDCMK = "UnsupportedOperation.NotUserCreatedCmk"
+//  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
+func (c *Client) CancelKeyArchiveWithContext(ctx context.Context, request *CancelKeyArchiveRequest) (response *CancelKeyArchiveResponse, err error) {
+    if request == nil {
+        request = NewCancelKeyArchiveRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCancelKeyArchiveResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCancelKeyDeletionRequest() (request *CancelKeyDeletionRequest) {
     request = &CancelKeyDeletionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -270,6 +387,27 @@ func (c *Client) CancelKeyDeletion(request *CancelKeyDeletionRequest) (response 
     if request == nil {
         request = NewCancelKeyDeletionRequest()
     }
+    
+    response = NewCancelKeyDeletionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CancelKeyDeletion
+// 取消CMK的计划删除操作
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKNOTPENDINGDELETE = "ResourceUnavailable.CmkNotPendingDelete"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
+func (c *Client) CancelKeyDeletionWithContext(ctx context.Context, request *CancelKeyDeletionRequest) (response *CancelKeyDeletionResponse, err error) {
+    if request == nil {
+        request = NewCancelKeyDeletionRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCancelKeyDeletionResponse()
     err = c.Send(request, response)
@@ -319,6 +457,33 @@ func (c *Client) CreateKey(request *CreateKeyRequest) (response *CreateKeyRespon
     return
 }
 
+// CreateKey
+// 创建用户管理数据密钥的主密钥CMK（Custom Master Key）。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"
+//  INVALIDPARAMETERVALUE_INVALIDALIAS = "InvalidParameterValue.InvalidAlias"
+//  INVALIDPARAMETERVALUE_INVALIDKEYUSAGE = "InvalidParameterValue.InvalidKeyUsage"
+//  INVALIDPARAMETERVALUE_INVALIDTYPE = "InvalidParameterValue.InvalidType"
+//  INVALIDPARAMETERVALUE_TAGKEYSDUPLICATED = "InvalidParameterValue.TagKeysDuplicated"
+//  INVALIDPARAMETERVALUE_TAGSNOTEXISTED = "InvalidParameterValue.TagsNotExisted"
+//  LIMITEXCEEDED_CMKLIMITEXCEEDED = "LimitExceeded.CmkLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDKEYUSAGEINCURRENTREGION = "UnsupportedOperation.UnsupportedKeyUsageInCurrentRegion"
+func (c *Client) CreateKeyWithContext(ctx context.Context, request *CreateKeyRequest) (response *CreateKeyResponse, err error) {
+    if request == nil {
+        request = NewCreateKeyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateWhiteBoxKeyRequest() (request *CreateWhiteBoxKeyRequest) {
     request = &CreateWhiteBoxKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -359,6 +524,30 @@ func (c *Client) CreateWhiteBoxKey(request *CreateWhiteBoxKeyRequest) (response 
     return
 }
 
+// CreateWhiteBoxKey
+// 创建白盒密钥。 密钥个数的上限为 50。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"
+//  INVALIDPARAMETERVALUE_INVALIDALIAS = "InvalidParameterValue.InvalidAlias"
+//  INVALIDPARAMETERVALUE_TAGKEYSDUPLICATED = "InvalidParameterValue.TagKeysDuplicated"
+//  INVALIDPARAMETERVALUE_TAGSNOTEXISTED = "InvalidParameterValue.TagsNotExisted"
+//  LIMITEXCEEDED_KEYLIMITEXCEEDED = "LimitExceeded.KeyLimitExceeded"
+//  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateWhiteBoxKeyWithContext(ctx context.Context, request *CreateWhiteBoxKeyRequest) (response *CreateWhiteBoxKeyResponse, err error) {
+    if request == nil {
+        request = NewCreateWhiteBoxKeyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateWhiteBoxKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDecryptRequest() (request *DecryptRequest) {
     request = &DecryptRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -391,6 +580,28 @@ func (c *Client) Decrypt(request *DecryptRequest) (response *DecryptResponse, er
     if request == nil {
         request = NewDecryptRequest()
     }
+    
+    response = NewDecryptResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// Decrypt
+// 本接口用于解密密文，得到明文数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENCRYPTIONERROR = "FailedOperation.EncryptionError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDCIPHERTEXT = "InvalidParameterValue.InvalidCiphertext"
+//  RESOURCEUNAVAILABLE_CMKDISABLED = "ResourceUnavailable.CmkDisabled"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DecryptWithContext(ctx context.Context, request *DecryptRequest) (response *DecryptResponse, err error) {
+    if request == nil {
+        request = NewDecryptRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDecryptResponse()
     err = c.Send(request, response)
@@ -436,6 +647,29 @@ func (c *Client) DeleteImportedKeyMaterial(request *DeleteImportedKeyMaterialReq
     return
 }
 
+// DeleteImportedKeyMaterial
+// 用于删除导入的密钥材料，仅对EXTERNAL类型的CMK有效，该接口将CMK设置为PendingImport 状态，并不会删除CMK，在重新进行密钥导入后可继续使用。彻底删除CMK请使用 ScheduleKeyDeletion 接口。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CMKUSEDBYCLOUDPRODUCT = "FailedOperation.CmkUsedByCloudProduct"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+//  UNSUPPORTEDOPERATION_NOTEXTERNALCMK = "UnsupportedOperation.NotExternalCmk"
+//  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
+func (c *Client) DeleteImportedKeyMaterialWithContext(ctx context.Context, request *DeleteImportedKeyMaterialRequest) (response *DeleteImportedKeyMaterialResponse, err error) {
+    if request == nil {
+        request = NewDeleteImportedKeyMaterialRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteImportedKeyMaterialResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteWhiteBoxKeyRequest() (request *DeleteWhiteBoxKeyRequest) {
     request = &DeleteWhiteBoxKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -473,6 +707,27 @@ func (c *Client) DeleteWhiteBoxKey(request *DeleteWhiteBoxKeyRequest) (response 
     return
 }
 
+// DeleteWhiteBoxKey
+// 删除白盒密钥, 注意：必须先禁用后，才可以删除。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteWhiteBoxKeyWithContext(ctx context.Context, request *DeleteWhiteBoxKeyRequest) (response *DeleteWhiteBoxKeyResponse, err error) {
+    if request == nil {
+        request = NewDeleteWhiteBoxKeyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteWhiteBoxKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeKeyRequest() (request *DescribeKeyRequest) {
     request = &DescribeKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -503,6 +758,26 @@ func (c *Client) DescribeKey(request *DescribeKeyRequest) (response *DescribeKey
     if request == nil {
         request = NewDescribeKeyRequest()
     }
+    
+    response = NewDescribeKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeKey
+// 用于获取指定KeyId的主密钥属性详情信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeKeyWithContext(ctx context.Context, request *DescribeKeyRequest) (response *DescribeKeyResponse, err error) {
+    if request == nil {
+        request = NewDescribeKeyRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeKeyResponse()
     err = c.Send(request, response)
@@ -546,6 +821,27 @@ func (c *Client) DescribeKeys(request *DescribeKeysRequest) (response *DescribeK
     return
 }
 
+// DescribeKeys
+// 该接口用于批量获取主密钥属性信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DUPLICATEDKEYID = "InvalidParameterValue.DuplicatedKeyId"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeKeysWithContext(ctx context.Context, request *DescribeKeysRequest) (response *DescribeKeysResponse, err error) {
+    if request == nil {
+        request = NewDescribeKeysRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeKeysResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeWhiteBoxDecryptKeyRequest() (request *DescribeWhiteBoxDecryptKeyRequest) {
     request = &DescribeWhiteBoxDecryptKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -582,6 +878,26 @@ func (c *Client) DescribeWhiteBoxDecryptKey(request *DescribeWhiteBoxDecryptKeyR
     return
 }
 
+// DescribeWhiteBoxDecryptKey
+// 获取白盒解密密钥
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeWhiteBoxDecryptKeyWithContext(ctx context.Context, request *DescribeWhiteBoxDecryptKeyRequest) (response *DescribeWhiteBoxDecryptKeyResponse, err error) {
+    if request == nil {
+        request = NewDescribeWhiteBoxDecryptKeyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeWhiteBoxDecryptKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeWhiteBoxDeviceFingerprintsRequest() (request *DescribeWhiteBoxDeviceFingerprintsRequest) {
     request = &DescribeWhiteBoxDeviceFingerprintsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -611,6 +927,25 @@ func (c *Client) DescribeWhiteBoxDeviceFingerprints(request *DescribeWhiteBoxDev
     if request == nil {
         request = NewDescribeWhiteBoxDeviceFingerprintsRequest()
     }
+    
+    response = NewDescribeWhiteBoxDeviceFingerprintsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeWhiteBoxDeviceFingerprints
+// 获取指定密钥的设备指纹列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeWhiteBoxDeviceFingerprintsWithContext(ctx context.Context, request *DescribeWhiteBoxDeviceFingerprintsRequest) (response *DescribeWhiteBoxDeviceFingerprintsResponse, err error) {
+    if request == nil {
+        request = NewDescribeWhiteBoxDeviceFingerprintsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeWhiteBoxDeviceFingerprintsResponse()
     err = c.Send(request, response)
@@ -653,6 +988,26 @@ func (c *Client) DescribeWhiteBoxKey(request *DescribeWhiteBoxKeyRequest) (respo
     return
 }
 
+// DescribeWhiteBoxKey
+// 展示白盒密钥的信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeWhiteBoxKeyWithContext(ctx context.Context, request *DescribeWhiteBoxKeyRequest) (response *DescribeWhiteBoxKeyResponse, err error) {
+    if request == nil {
+        request = NewDescribeWhiteBoxKeyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeWhiteBoxKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeWhiteBoxKeyDetailsRequest() (request *DescribeWhiteBoxKeyDetailsRequest) {
     request = &DescribeWhiteBoxKeyDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -688,6 +1043,25 @@ func (c *Client) DescribeWhiteBoxKeyDetails(request *DescribeWhiteBoxKeyDetailsR
     return
 }
 
+// DescribeWhiteBoxKeyDetails
+// 获取白盒密钥列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeWhiteBoxKeyDetailsWithContext(ctx context.Context, request *DescribeWhiteBoxKeyDetailsRequest) (response *DescribeWhiteBoxKeyDetailsResponse, err error) {
+    if request == nil {
+        request = NewDescribeWhiteBoxKeyDetailsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeWhiteBoxKeyDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeWhiteBoxServiceStatusRequest() (request *DescribeWhiteBoxServiceStatusRequest) {
     request = &DescribeWhiteBoxServiceStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -716,6 +1090,24 @@ func (c *Client) DescribeWhiteBoxServiceStatus(request *DescribeWhiteBoxServiceS
     if request == nil {
         request = NewDescribeWhiteBoxServiceStatusRequest()
     }
+    
+    response = NewDescribeWhiteBoxServiceStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeWhiteBoxServiceStatus
+// 获取白盒密钥服务状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeWhiteBoxServiceStatusWithContext(ctx context.Context, request *DescribeWhiteBoxServiceStatusRequest) (response *DescribeWhiteBoxServiceStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeWhiteBoxServiceStatusRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeWhiteBoxServiceStatusResponse()
     err = c.Send(request, response)
@@ -761,6 +1153,29 @@ func (c *Client) DisableKey(request *DisableKeyRequest) (response *DisableKeyRes
     return
 }
 
+// DisableKey
+// 本接口用于禁用一个主密钥，处于禁用状态的Key无法用于加密、解密操作。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CMKUSEDBYCLOUDPRODUCT = "FailedOperation.CmkUsedByCloudProduct"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
+func (c *Client) DisableKeyWithContext(ctx context.Context, request *DisableKeyRequest) (response *DisableKeyResponse, err error) {
+    if request == nil {
+        request = NewDisableKeyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDisableKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisableKeyRotationRequest() (request *DisableKeyRotationRequest) {
     request = &DisableKeyRotationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -791,6 +1206,26 @@ func (c *Client) DisableKeyRotation(request *DisableKeyRotationRequest) (respons
     if request == nil {
         request = NewDisableKeyRotationRequest()
     }
+    
+    response = NewDisableKeyRotationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DisableKeyRotation
+// 对指定的CMK禁止密钥轮换功能。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DisableKeyRotationWithContext(ctx context.Context, request *DisableKeyRotationRequest) (response *DisableKeyRotationResponse, err error) {
+    if request == nil {
+        request = NewDisableKeyRotationRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDisableKeyRotationResponse()
     err = c.Send(request, response)
@@ -837,6 +1272,30 @@ func (c *Client) DisableKeys(request *DisableKeysRequest) (response *DisableKeys
     return
 }
 
+// DisableKeys
+// 该接口用于批量禁止CMK的使用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CMKUSEDBYCLOUDPRODUCT = "FailedOperation.CmkUsedByCloudProduct"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DUPLICATEDKEYID = "InvalidParameterValue.DuplicatedKeyId"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
+func (c *Client) DisableKeysWithContext(ctx context.Context, request *DisableKeysRequest) (response *DisableKeysResponse, err error) {
+    if request == nil {
+        request = NewDisableKeysRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDisableKeysResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisableWhiteBoxKeyRequest() (request *DisableWhiteBoxKeyRequest) {
     request = &DisableWhiteBoxKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -867,6 +1326,26 @@ func (c *Client) DisableWhiteBoxKey(request *DisableWhiteBoxKeyRequest) (respons
     if request == nil {
         request = NewDisableWhiteBoxKeyRequest()
     }
+    
+    response = NewDisableWhiteBoxKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DisableWhiteBoxKey
+// 禁用白盒密钥
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DisableWhiteBoxKeyWithContext(ctx context.Context, request *DisableWhiteBoxKeyRequest) (response *DisableWhiteBoxKeyResponse, err error) {
+    if request == nil {
+        request = NewDisableWhiteBoxKeyRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDisableWhiteBoxKeyResponse()
     err = c.Send(request, response)
@@ -911,6 +1390,28 @@ func (c *Client) DisableWhiteBoxKeys(request *DisableWhiteBoxKeysRequest) (respo
     return
 }
 
+// DisableWhiteBoxKeys
+// 批量禁用白盒密钥
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DUPLICATEDKEYID = "InvalidParameterValue.DuplicatedKeyId"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DisableWhiteBoxKeysWithContext(ctx context.Context, request *DisableWhiteBoxKeysRequest) (response *DisableWhiteBoxKeysResponse, err error) {
+    if request == nil {
+        request = NewDisableWhiteBoxKeysRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDisableWhiteBoxKeysResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEnableKeyRequest() (request *EnableKeyRequest) {
     request = &EnableKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -943,6 +1444,28 @@ func (c *Client) EnableKey(request *EnableKeyRequest) (response *EnableKeyRespon
     if request == nil {
         request = NewEnableKeyRequest()
     }
+    
+    response = NewEnableKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// EnableKey
+// 用于启用一个指定的CMK。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
+func (c *Client) EnableKeyWithContext(ctx context.Context, request *EnableKeyRequest) (response *EnableKeyResponse, err error) {
+    if request == nil {
+        request = NewEnableKeyRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewEnableKeyResponse()
     err = c.Send(request, response)
@@ -988,6 +1511,29 @@ func (c *Client) EnableKeyRotation(request *EnableKeyRotationRequest) (response 
     return
 }
 
+// EnableKeyRotation
+// 对指定的CMK开启密钥轮换功能。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_EXTERNALCMKCANNOTROTATE = "UnsupportedOperation.ExternalCmkCanNotRotate"
+//  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
+func (c *Client) EnableKeyRotationWithContext(ctx context.Context, request *EnableKeyRotationRequest) (response *EnableKeyRotationResponse, err error) {
+    if request == nil {
+        request = NewEnableKeyRotationRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewEnableKeyRotationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEnableKeysRequest() (request *EnableKeysRequest) {
     request = &EnableKeysRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1021,6 +1567,29 @@ func (c *Client) EnableKeys(request *EnableKeysRequest) (response *EnableKeysRes
     if request == nil {
         request = NewEnableKeysRequest()
     }
+    
+    response = NewEnableKeysResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// EnableKeys
+// 该接口用于批量启用CMK。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DUPLICATEDKEYID = "InvalidParameterValue.DuplicatedKeyId"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
+func (c *Client) EnableKeysWithContext(ctx context.Context, request *EnableKeysRequest) (response *EnableKeysResponse, err error) {
+    if request == nil {
+        request = NewEnableKeysRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewEnableKeysResponse()
     err = c.Send(request, response)
@@ -1063,6 +1632,26 @@ func (c *Client) EnableWhiteBoxKey(request *EnableWhiteBoxKeyRequest) (response 
     return
 }
 
+// EnableWhiteBoxKey
+// 启用白盒密钥
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) EnableWhiteBoxKeyWithContext(ctx context.Context, request *EnableWhiteBoxKeyRequest) (response *EnableWhiteBoxKeyResponse, err error) {
+    if request == nil {
+        request = NewEnableWhiteBoxKeyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewEnableWhiteBoxKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEnableWhiteBoxKeysRequest() (request *EnableWhiteBoxKeysRequest) {
     request = &EnableWhiteBoxKeysRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1095,6 +1684,28 @@ func (c *Client) EnableWhiteBoxKeys(request *EnableWhiteBoxKeysRequest) (respons
     if request == nil {
         request = NewEnableWhiteBoxKeysRequest()
     }
+    
+    response = NewEnableWhiteBoxKeysResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// EnableWhiteBoxKeys
+// 批量启用白盒密钥
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DUPLICATEDKEYID = "InvalidParameterValue.DuplicatedKeyId"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) EnableWhiteBoxKeysWithContext(ctx context.Context, request *EnableWhiteBoxKeysRequest) (response *EnableWhiteBoxKeysResponse, err error) {
+    if request == nil {
+        request = NewEnableWhiteBoxKeysRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewEnableWhiteBoxKeysResponse()
     err = c.Send(request, response)
@@ -1140,6 +1751,29 @@ func (c *Client) Encrypt(request *EncryptRequest) (response *EncryptResponse, er
     return
 }
 
+// Encrypt
+// 本接口用于加密最多为4KB任意数据，可用于加密数据库密码，RSA Key，或其它较小的敏感信息。对于应用的数据加密，使用GenerateDataKey生成的DataKey进行本地数据的加解密操作
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  INVALIDPARAMETERVALUE_INVALIDPLAINTEXT = "InvalidParameterValue.InvalidPlaintext"
+//  RESOURCEUNAVAILABLE_CMKARCHIVED = "ResourceUnavailable.CmkArchived"
+//  RESOURCEUNAVAILABLE_CMKDISABLED = "ResourceUnavailable.CmkDisabled"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) EncryptWithContext(ctx context.Context, request *EncryptRequest) (response *EncryptResponse, err error) {
+    if request == nil {
+        request = NewEncryptRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewEncryptResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEncryptByWhiteBoxRequest() (request *EncryptByWhiteBoxRequest) {
     request = &EncryptByWhiteBoxRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1172,6 +1806,28 @@ func (c *Client) EncryptByWhiteBox(request *EncryptByWhiteBoxRequest) (response 
     if request == nil {
         request = NewEncryptByWhiteBoxRequest()
     }
+    
+    response = NewEncryptByWhiteBoxResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// EncryptByWhiteBox
+// 使用白盒密钥进行加密
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_KEYDISABLED = "ResourceUnavailable.KeyDisabled"
+//  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) EncryptByWhiteBoxWithContext(ctx context.Context, request *EncryptByWhiteBoxRequest) (response *EncryptByWhiteBoxResponse, err error) {
+    if request == nil {
+        request = NewEncryptByWhiteBoxRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewEncryptByWhiteBoxResponse()
     err = c.Send(request, response)
@@ -1217,6 +1873,29 @@ func (c *Client) GenerateDataKey(request *GenerateDataKeyRequest) (response *Gen
     return
 }
 
+// GenerateDataKey
+// 本接口生成一个数据密钥，您可以用这个密钥进行本地数据的加密。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENCRYPTIONERROR = "FailedOperation.EncryptionError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_CMKDISABLED = "ResourceUnavailable.CmkDisabled"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_KEYPENDINGDELETE = "ResourceUnavailable.KeyPendingDelete"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) GenerateDataKeyWithContext(ctx context.Context, request *GenerateDataKeyRequest) (response *GenerateDataKeyResponse, err error) {
+    if request == nil {
+        request = NewGenerateDataKeyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewGenerateDataKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGenerateRandomRequest() (request *GenerateRandomRequest) {
     request = &GenerateRandomRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1245,6 +1924,24 @@ func (c *Client) GenerateRandom(request *GenerateRandomRequest) (response *Gener
     if request == nil {
         request = NewGenerateRandomRequest()
     }
+    
+    response = NewGenerateRandomResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// GenerateRandom
+// 随机数生成接口。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) GenerateRandomWithContext(ctx context.Context, request *GenerateRandomRequest) (response *GenerateRandomResponse, err error) {
+    if request == nil {
+        request = NewGenerateRandomRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewGenerateRandomResponse()
     err = c.Send(request, response)
@@ -1281,6 +1978,26 @@ func (c *Client) GetKeyRotationStatus(request *GetKeyRotationStatusRequest) (res
     if request == nil {
         request = NewGetKeyRotationStatusRequest()
     }
+    
+    response = NewGetKeyRotationStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// GetKeyRotationStatus
+// 查询指定的CMK是否开启了密钥轮换功能。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) GetKeyRotationStatusWithContext(ctx context.Context, request *GetKeyRotationStatusRequest) (response *GetKeyRotationStatusResponse, err error) {
+    if request == nil {
+        request = NewGetKeyRotationStatusRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewGetKeyRotationStatusResponse()
     err = c.Send(request, response)
@@ -1324,6 +2041,27 @@ func (c *Client) GetParametersForImport(request *GetParametersForImportRequest) 
     return
 }
 
+// GetParametersForImport
+// 获取导入主密钥（CMK）材料的参数，返回的Token作为执行ImportKeyMaterial的参数之一，返回的PublicKey用于对自主导入密钥材料进行加密。返回的Token和PublicKey 24小时后失效，失效后如需重新导入，需要再次调用该接口获取新的Token和PublicKey。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  UNSUPPORTEDOPERATION_NOTEXTERNALCMK = "UnsupportedOperation.NotExternalCmk"
+//  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
+func (c *Client) GetParametersForImportWithContext(ctx context.Context, request *GetParametersForImportRequest) (response *GetParametersForImportResponse, err error) {
+    if request == nil {
+        request = NewGetParametersForImportRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewGetParametersForImportResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetPublicKeyRequest() (request *GetPublicKeyRequest) {
     request = &GetPublicKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1355,6 +2093,27 @@ func (c *Client) GetPublicKey(request *GetPublicKeyRequest) (response *GetPublic
     if request == nil {
         request = NewGetPublicKeyRequest()
     }
+    
+    response = NewGetPublicKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// GetPublicKey
+// 该接口用于获取非对称密钥的公钥信息，可用于本地数据加密或验签。只有处于Enabled状态的非对称密钥才可能获取公钥。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) GetPublicKeyWithContext(ctx context.Context, request *GetPublicKeyRequest) (response *GetPublicKeyResponse, err error) {
+    if request == nil {
+        request = NewGetPublicKeyRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewGetPublicKeyResponse()
     err = c.Send(request, response)
@@ -1393,6 +2152,22 @@ func (c *Client) GetRegions(request *GetRegionsRequest) (response *GetRegionsRes
     return
 }
 
+// GetRegions
+// 获取可以提供KMS服务的地域列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) GetRegionsWithContext(ctx context.Context, request *GetRegionsRequest) (response *GetRegionsResponse, err error) {
+    if request == nil {
+        request = NewGetRegionsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewGetRegionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetServiceStatusRequest() (request *GetServiceStatusRequest) {
     request = &GetServiceStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1420,6 +2195,23 @@ func (c *Client) GetServiceStatus(request *GetServiceStatusRequest) (response *G
     if request == nil {
         request = NewGetServiceStatusRequest()
     }
+    
+    response = NewGetServiceStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// GetServiceStatus
+// 用于查询该用户是否已开通KMS服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) GetServiceStatusWithContext(ctx context.Context, request *GetServiceStatusRequest) (response *GetServiceStatusResponse, err error) {
+    if request == nil {
+        request = NewGetServiceStatusRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewGetServiceStatusResponse()
     err = c.Send(request, response)
@@ -1468,6 +2260,32 @@ func (c *Client) ImportKeyMaterial(request *ImportKeyMaterialRequest) (response 
     return
 }
 
+// ImportKeyMaterial
+// 用于导入密钥材料。只有类型为EXTERNAL 的CMK 才可以导入，导入的密钥材料使用 GetParametersForImport 获取的密钥进行加密。可以为指定的 CMK 重新导入密钥材料，并重新指定过期时间，但必须导入相同的密钥材料。CMK 密钥材料导入后不可以更换密钥材料。导入的密钥材料过期或者被删除后，指定的CMK将无法使用，需要再次导入相同的密钥材料才能正常使用。CMK是独立的，同样的密钥材料可导入不同的 CMK 中，但使用其中一个 CMK 加密的数据无法使用另一个 CMK解密。
+//
+// 只有Enabled 和 PendingImport状态的CMK可以导入密钥材料。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DECRYPTMATERIALERROR = "InvalidParameter.DecryptMaterialError"
+//  INVALIDPARAMETERVALUE_MATERIALNOTMATCH = "InvalidParameterValue.MaterialNotMatch"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+//  RESOURCEUNAVAILABLE_TOKENEXPIRED = "ResourceUnavailable.TokenExpired"
+//  UNSUPPORTEDOPERATION_NOTEXTERNALCMK = "UnsupportedOperation.NotExternalCmk"
+//  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
+func (c *Client) ImportKeyMaterialWithContext(ctx context.Context, request *ImportKeyMaterialRequest) (response *ImportKeyMaterialResponse, err error) {
+    if request == nil {
+        request = NewImportKeyMaterialRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewImportKeyMaterialResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListAlgorithmsRequest() (request *ListAlgorithmsRequest) {
     request = &ListAlgorithmsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1495,6 +2313,23 @@ func (c *Client) ListAlgorithms(request *ListAlgorithmsRequest) (response *ListA
     if request == nil {
         request = NewListAlgorithmsRequest()
     }
+    
+    response = NewListAlgorithmsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ListAlgorithms
+// 列出当前Region支持的加密方式
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ListAlgorithmsWithContext(ctx context.Context, request *ListAlgorithmsRequest) (response *ListAlgorithmsResponse, err error) {
+    if request == nil {
+        request = NewListAlgorithmsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewListAlgorithmsResponse()
     err = c.Send(request, response)
@@ -1535,6 +2370,24 @@ func (c *Client) ListKeyDetail(request *ListKeyDetailRequest) (response *ListKey
     return
 }
 
+// ListKeyDetail
+// 根据指定Offset和Limit获取主密钥列表详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ListKeyDetailWithContext(ctx context.Context, request *ListKeyDetailRequest) (response *ListKeyDetailResponse, err error) {
+    if request == nil {
+        request = NewListKeyDetailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewListKeyDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListKeysRequest() (request *ListKeysRequest) {
     request = &ListKeysRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1563,6 +2416,24 @@ func (c *Client) ListKeys(request *ListKeysRequest) (response *ListKeysResponse,
     if request == nil {
         request = NewListKeysRequest()
     }
+    
+    response = NewListKeysResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ListKeys
+// 列出账号下面状态为Enabled， Disabled 和 PendingImport 的CMK KeyId 列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ListKeysWithContext(ctx context.Context, request *ListKeysRequest) (response *ListKeysResponse, err error) {
+    if request == nil {
+        request = NewListKeysRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewListKeysResponse()
     err = c.Send(request, response)
@@ -1607,6 +2478,28 @@ func (c *Client) OverwriteWhiteBoxDeviceFingerprints(request *OverwriteWhiteBoxD
     return
 }
 
+// OverwriteWhiteBoxDeviceFingerprints
+// 覆盖指定密钥的设备指纹信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  LIMITEXCEEDED_FINGERPRINTSLIMITEXCEEDED = "LimitExceeded.FingerprintsLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) OverwriteWhiteBoxDeviceFingerprintsWithContext(ctx context.Context, request *OverwriteWhiteBoxDeviceFingerprintsRequest) (response *OverwriteWhiteBoxDeviceFingerprintsResponse, err error) {
+    if request == nil {
+        request = NewOverwriteWhiteBoxDeviceFingerprintsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewOverwriteWhiteBoxDeviceFingerprintsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewReEncryptRequest() (request *ReEncryptRequest) {
     request = &ReEncryptRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1639,6 +2532,28 @@ func (c *Client) ReEncrypt(request *ReEncryptRequest) (response *ReEncryptRespon
     if request == nil {
         request = NewReEncryptRequest()
     }
+    
+    response = NewReEncryptResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ReEncrypt
+// 使用指定CMK对密文重新加密。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDCIPHERTEXT = "InvalidParameterValue.InvalidCiphertext"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_CMKDISABLED = "ResourceUnavailable.CmkDisabled"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ReEncryptWithContext(ctx context.Context, request *ReEncryptRequest) (response *ReEncryptResponse, err error) {
+    if request == nil {
+        request = NewReEncryptRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewReEncryptResponse()
     err = c.Send(request, response)
@@ -1685,6 +2600,30 @@ func (c *Client) ScheduleKeyDeletion(request *ScheduleKeyDeletionRequest) (respo
     return
 }
 
+// ScheduleKeyDeletion
+// CMK计划删除接口，用于指定CMK删除的时间，可选时间区间为[7,30]天
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CMKUSEDBYCLOUDPRODUCT = "FailedOperation.CmkUsedByCloudProduct"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDPENDINGWINDOWINDAYS = "InvalidParameter.InvalidPendingWindowInDays"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKSHOULDBEDISABLED = "ResourceUnavailable.CmkShouldBeDisabled"
+//  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
+func (c *Client) ScheduleKeyDeletionWithContext(ctx context.Context, request *ScheduleKeyDeletionRequest) (response *ScheduleKeyDeletionResponse, err error) {
+    if request == nil {
+        request = NewScheduleKeyDeletionRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewScheduleKeyDeletionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSignByAsymmetricKeyRequest() (request *SignByAsymmetricKeyRequest) {
     request = &SignByAsymmetricKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1725,6 +2664,30 @@ func (c *Client) SignByAsymmetricKey(request *SignByAsymmetricKeyRequest) (respo
     return
 }
 
+// SignByAsymmetricKey
+// 非对称密钥签名。
+//
+// 注意：只有 KeyUsage 为 ASYMMETRIC_SIGN_VERIFY_SM2、ASYMMETRIC_SIGN_VERIFY_ECC 或其他支持的 ASYMMETRIC_SIGN_VERIFY_${ALGORITHM} 的密钥才可以使用签名功能。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+func (c *Client) SignByAsymmetricKeyWithContext(ctx context.Context, request *SignByAsymmetricKeyRequest) (response *SignByAsymmetricKeyResponse, err error) {
+    if request == nil {
+        request = NewSignByAsymmetricKeyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewSignByAsymmetricKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUnbindCloudResourceRequest() (request *UnbindCloudResourceRequest) {
     request = &UnbindCloudResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1757,6 +2720,28 @@ func (c *Client) UnbindCloudResource(request *UnbindCloudResourceRequest) (respo
     if request == nil {
         request = NewUnbindCloudResourceRequest()
     }
+    
+    response = NewUnbindCloudResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UnbindCloudResource
+// 删除指定（key, 资源，云产品）的记录，以表明：指定的云产品的资源已不再使用当前的key。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_CLOUDRESOURCEBINDINGNOTFOUND = "ResourceUnavailable.CloudResourceBindingNotFound"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
+func (c *Client) UnbindCloudResourceWithContext(ctx context.Context, request *UnbindCloudResourceRequest) (response *UnbindCloudResourceResponse, err error) {
+    if request == nil {
+        request = NewUnbindCloudResourceRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUnbindCloudResourceResponse()
     err = c.Send(request, response)
@@ -1802,6 +2787,29 @@ func (c *Client) UpdateAlias(request *UpdateAliasRequest) (response *UpdateAlias
     return
 }
 
+// UpdateAlias
+// 用于修改CMK的别名。对于处于PendingDelete状态的CMK禁止修改。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"
+//  INVALIDPARAMETERVALUE_INVALIDALIAS = "InvalidParameterValue.InvalidAlias"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
+func (c *Client) UpdateAliasWithContext(ctx context.Context, request *UpdateAliasRequest) (response *UpdateAliasResponse, err error) {
+    if request == nil {
+        request = NewUpdateAliasRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewUpdateAliasResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateKeyDescriptionRequest() (request *UpdateKeyDescriptionRequest) {
     request = &UpdateKeyDescriptionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1839,6 +2847,27 @@ func (c *Client) UpdateKeyDescription(request *UpdateKeyDescriptionRequest) (res
     return
 }
 
+// UpdateKeyDescription
+// 该接口用于对指定的cmk修改描述信息。对于处于PendingDelete状态的CMK禁止修改。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
+func (c *Client) UpdateKeyDescriptionWithContext(ctx context.Context, request *UpdateKeyDescriptionRequest) (response *UpdateKeyDescriptionResponse, err error) {
+    if request == nil {
+        request = NewUpdateKeyDescriptionRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewUpdateKeyDescriptionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewVerifyByAsymmetricKeyRequest() (request *VerifyByAsymmetricKeyRequest) {
     request = &VerifyByAsymmetricKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1870,6 +2899,27 @@ func (c *Client) VerifyByAsymmetricKey(request *VerifyByAsymmetricKeyRequest) (r
     if request == nil {
         request = NewVerifyByAsymmetricKeyRequest()
     }
+    
+    response = NewVerifyByAsymmetricKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// VerifyByAsymmetricKey
+// 使用非对称密钥验签
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+func (c *Client) VerifyByAsymmetricKeyWithContext(ctx context.Context, request *VerifyByAsymmetricKeyRequest) (response *VerifyByAsymmetricKeyResponse, err error) {
+    if request == nil {
+        request = NewVerifyByAsymmetricKeyRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewVerifyByAsymmetricKeyResponse()
     err = c.Send(request, response)

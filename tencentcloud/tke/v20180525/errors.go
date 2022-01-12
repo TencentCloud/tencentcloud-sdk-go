@@ -92,6 +92,9 @@ const (
 	// 存在云服务器在CVM侧查询不到。
 	INTERNALERROR_CVMNUMBERNOTMATCH = "InternalError.CvmNumberNotMatch"
 
+	// cvm状态不正常。
+	INTERNALERROR_CVMSTATUS = "InternalError.CvmStatus"
+
 	// db错误。
 	INTERNALERROR_DB = "InternalError.Db"
 

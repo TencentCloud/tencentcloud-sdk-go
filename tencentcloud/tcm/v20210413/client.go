@@ -15,6 +15,7 @@
 package v20210413
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -79,6 +80,26 @@ func (c *Client) DescribeMesh(request *DescribeMeshRequest) (response *DescribeM
     return
 }
 
+// DescribeMesh
+// 查询网格详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeMeshWithContext(ctx context.Context, request *DescribeMeshRequest) (response *DescribeMeshResponse, err error) {
+    if request == nil {
+        request = NewDescribeMeshRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeMeshResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMeshListRequest() (request *DescribeMeshListRequest) {
     request = &DescribeMeshListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -108,6 +129,25 @@ func (c *Client) DescribeMeshList(request *DescribeMeshListRequest) (response *D
     if request == nil {
         request = NewDescribeMeshListRequest()
     }
+    
+    response = NewDescribeMeshListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeMeshList
+// 查询网格列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeMeshListWithContext(ctx context.Context, request *DescribeMeshListRequest) (response *DescribeMeshListResponse, err error) {
+    if request == nil {
+        request = NewDescribeMeshListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeMeshListResponse()
     err = c.Send(request, response)

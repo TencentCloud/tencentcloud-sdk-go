@@ -15,6 +15,7 @@
 package v20180409
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -77,6 +78,24 @@ func (c *Client) BindAlarmPolicy(request *BindAlarmPolicyRequest) (response *Bin
     return
 }
 
+// BindAlarmPolicy
+// 绑定拨测任务和告警策略组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) BindAlarmPolicyWithContext(ctx context.Context, request *BindAlarmPolicyRequest) (response *BindAlarmPolicyResponse, err error) {
+    if request == nil {
+        request = NewBindAlarmPolicyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewBindAlarmPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAgentGroupRequest() (request *CreateAgentGroupRequest) {
     request = &CreateAgentGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -105,6 +124,24 @@ func (c *Client) CreateAgentGroup(request *CreateAgentGroupRequest) (response *C
     if request == nil {
         request = NewCreateAgentGroupRequest()
     }
+    
+    response = NewCreateAgentGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateAgentGroup
+// 添加拨测分组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateAgentGroupWithContext(ctx context.Context, request *CreateAgentGroupRequest) (response *CreateAgentGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateAgentGroupRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateAgentGroupResponse()
     err = c.Send(request, response)
@@ -152,6 +189,31 @@ func (c *Client) CreateProbeTasks(request *CreateProbeTasksRequest) (response *C
     return
 }
 
+// CreateProbeTasks
+// 批量创建拨测任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_NOVALIDNODES = "FailedOperation.NoValidNodes"
+//  FAILEDOPERATION_ORDEROUTOFCREDIT = "FailedOperation.OrderOutOfCredit"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  FAILEDOPERATION_TASKTYPENOTSAME = "FailedOperation.TaskTypeNotSame"
+//  FAILEDOPERATION_TRIALTASKEXCEED = "FailedOperation.TrialTaskExceed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateProbeTasksWithContext(ctx context.Context, request *CreateProbeTasksRequest) (response *CreateProbeTasksResponse, err error) {
+    if request == nil {
+        request = NewCreateProbeTasksRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateProbeTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTaskExRequest() (request *CreateTaskExRequest) {
     request = &CreateTaskExRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -186,6 +248,24 @@ func (c *Client) CreateTaskEx(request *CreateTaskExRequest) (response *CreateTas
     return
 }
 
+// CreateTaskEx
+// 创建拨测任务(扩展)
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateTaskExWithContext(ctx context.Context, request *CreateTaskExRequest) (response *CreateTaskExResponse, err error) {
+    if request == nil {
+        request = NewCreateTaskExRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateTaskExResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAgentGroupRequest() (request *DeleteAgentGroupRequest) {
     request = &DeleteAgentGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -214,6 +294,24 @@ func (c *Client) DeleteAgentGroup(request *DeleteAgentGroupRequest) (response *D
     if request == nil {
         request = NewDeleteAgentGroupRequest()
     }
+    
+    response = NewDeleteAgentGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteAgentGroup
+// 删除拨测分组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteAgentGroupWithContext(ctx context.Context, request *DeleteAgentGroupRequest) (response *DeleteAgentGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteAgentGroupRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteAgentGroupResponse()
     err = c.Send(request, response)
@@ -262,6 +360,32 @@ func (c *Client) DeleteProbeTask(request *DeleteProbeTaskRequest) (response *Del
     return
 }
 
+// DeleteProbeTask
+// 删除拨测任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_NOVALIDNODES = "FailedOperation.NoValidNodes"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  FAILEDOPERATION_TASKNOTRUNNING = "FailedOperation.TaskNotRunning"
+//  FAILEDOPERATION_TASKNOTSUSPENDED = "FailedOperation.TaskNotSuspended"
+//  FAILEDOPERATION_TASKOPERATIONNOTALLOW = "FailedOperation.TaskOperationNotAllow"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteProbeTaskWithContext(ctx context.Context, request *DeleteProbeTaskRequest) (response *DeleteProbeTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteProbeTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteProbeTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteTasksRequest() (request *DeleteTasksRequest) {
     request = &DeleteTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -290,6 +414,24 @@ func (c *Client) DeleteTasks(request *DeleteTasksRequest) (response *DeleteTasks
     if request == nil {
         request = NewDeleteTasksRequest()
     }
+    
+    response = NewDeleteTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteTasks
+// 删除多个拨测任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteTasksWithContext(ctx context.Context, request *DeleteTasksRequest) (response *DeleteTasksResponse, err error) {
+    if request == nil {
+        request = NewDeleteTasksRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteTasksResponse()
     err = c.Send(request, response)
@@ -330,6 +472,24 @@ func (c *Client) DescribeAgentGroups(request *DescribeAgentGroupsRequest) (respo
     return
 }
 
+// DescribeAgentGroups
+// 查询拨测分组列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAgentGroupsWithContext(ctx context.Context, request *DescribeAgentGroupsRequest) (response *DescribeAgentGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAgentGroupsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAgentGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAgentsRequest() (request *DescribeAgentsRequest) {
     request = &DescribeAgentsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -358,6 +518,24 @@ func (c *Client) DescribeAgents(request *DescribeAgentsRequest) (response *Descr
     if request == nil {
         request = NewDescribeAgentsRequest()
     }
+    
+    response = NewDescribeAgentsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAgents
+// 查询本用户可选的拨测点列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAgentsWithContext(ctx context.Context, request *DescribeAgentsRequest) (response *DescribeAgentsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAgentsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAgentsResponse()
     err = c.Send(request, response)
@@ -398,6 +576,24 @@ func (c *Client) DescribeAlarmTopic(request *DescribeAlarmTopicRequest) (respons
     return
 }
 
+// DescribeAlarmTopic
+// 查询用户的告警主题列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAlarmTopicWithContext(ctx context.Context, request *DescribeAlarmTopicRequest) (response *DescribeAlarmTopicResponse, err error) {
+    if request == nil {
+        request = NewDescribeAlarmTopicRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAlarmTopicResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAlarmsRequest() (request *DescribeAlarmsRequest) {
     request = &DescribeAlarmsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -425,6 +621,23 @@ func (c *Client) DescribeAlarms(request *DescribeAlarmsRequest) (response *Descr
     if request == nil {
         request = NewDescribeAlarmsRequest()
     }
+    
+    response = NewDescribeAlarmsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAlarms
+// 查询拨测告警列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAlarmsWithContext(ctx context.Context, request *DescribeAlarmsRequest) (response *DescribeAlarmsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAlarmsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAlarmsResponse()
     err = c.Send(request, response)
@@ -465,6 +678,24 @@ func (c *Client) DescribeAlarmsByTask(request *DescribeAlarmsByTaskRequest) (res
     return
 }
 
+// DescribeAlarmsByTask
+// 按任务查询拨测告警列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAlarmsByTaskWithContext(ctx context.Context, request *DescribeAlarmsByTaskRequest) (response *DescribeAlarmsByTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeAlarmsByTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAlarmsByTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCatLogsRequest() (request *DescribeCatLogsRequest) {
     request = &DescribeCatLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -493,6 +724,24 @@ func (c *Client) DescribeCatLogs(request *DescribeCatLogsRequest) (response *Des
     if request == nil {
         request = NewDescribeCatLogsRequest()
     }
+    
+    response = NewDescribeCatLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCatLogs
+// 查询拨测流水
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCatLogsWithContext(ctx context.Context, request *DescribeCatLogsRequest) (response *DescribeCatLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCatLogsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeCatLogsResponse()
     err = c.Send(request, response)
@@ -538,6 +787,29 @@ func (c *Client) DescribeDetailedSingleProbeData(request *DescribeDetailedSingle
     return
 }
 
+// DescribeDetailedSingleProbeData
+// 根据时间范围、任务ID、运营商等条件查询单次拨测详情数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_ESQUERYERROR = "FailedOperation.ESQueryError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeDetailedSingleProbeDataWithContext(ctx context.Context, request *DescribeDetailedSingleProbeDataRequest) (response *DescribeDetailedSingleProbeDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeDetailedSingleProbeDataRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDetailedSingleProbeDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProbeNodesRequest() (request *DescribeProbeNodesRequest) {
     request = &DescribeProbeNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -565,6 +837,23 @@ func (c *Client) DescribeProbeNodes(request *DescribeProbeNodesRequest) (respons
     if request == nil {
         request = NewDescribeProbeNodesRequest()
     }
+    
+    response = NewDescribeProbeNodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeProbeNodes
+// 查询拨测节点
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeProbeNodesWithContext(ctx context.Context, request *DescribeProbeNodesRequest) (response *DescribeProbeNodesResponse, err error) {
+    if request == nil {
+        request = NewDescribeProbeNodesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeProbeNodesResponse()
     err = c.Send(request, response)
@@ -610,6 +899,29 @@ func (c *Client) DescribeProbeTasks(request *DescribeProbeTasksRequest) (respons
     return
 }
 
+// DescribeProbeTasks
+// 查询拨测任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_NOVALIDNODES = "FailedOperation.NoValidNodes"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeProbeTasksWithContext(ctx context.Context, request *DescribeProbeTasksRequest) (response *DescribeProbeTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeProbeTasksRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeProbeTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTaskDetailRequest() (request *DescribeTaskDetailRequest) {
     request = &DescribeTaskDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -638,6 +950,24 @@ func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (respons
     if request == nil {
         request = NewDescribeTaskDetailRequest()
     }
+    
+    response = NewDescribeTaskDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeTaskDetail
+// 查询拨测任务信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTaskDetailWithContext(ctx context.Context, request *DescribeTaskDetailRequest) (response *DescribeTaskDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskDetailRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeTaskDetailResponse()
     err = c.Send(request, response)
@@ -678,6 +1008,24 @@ func (c *Client) DescribeTasksByType(request *DescribeTasksByTypeRequest) (respo
     return
 }
 
+// DescribeTasksByType
+// 按类型查询拨测任务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTasksByTypeWithContext(ctx context.Context, request *DescribeTasksByTypeRequest) (response *DescribeTasksByTypeResponse, err error) {
+    if request == nil {
+        request = NewDescribeTasksByTypeRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeTasksByTypeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserLimitRequest() (request *DescribeUserLimitRequest) {
     request = &DescribeUserLimitRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -706,6 +1054,24 @@ func (c *Client) DescribeUserLimit(request *DescribeUserLimitRequest) (response 
     if request == nil {
         request = NewDescribeUserLimitRequest()
     }
+    
+    response = NewDescribeUserLimitResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeUserLimit
+// 获取用户可用资源限制
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeUserLimitWithContext(ctx context.Context, request *DescribeUserLimitRequest) (response *DescribeUserLimitResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserLimitRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeUserLimitResponse()
     err = c.Send(request, response)
@@ -746,6 +1112,24 @@ func (c *Client) GetAvailRatioHistory(request *GetAvailRatioHistoryRequest) (res
     return
 }
 
+// GetAvailRatioHistory
+// 获取指定时刻的可用率地图信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) GetAvailRatioHistoryWithContext(ctx context.Context, request *GetAvailRatioHistoryRequest) (response *GetAvailRatioHistoryResponse, err error) {
+    if request == nil {
+        request = NewGetAvailRatioHistoryRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewGetAvailRatioHistoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetDailyAvailRatioRequest() (request *GetDailyAvailRatioRequest) {
     request = &GetDailyAvailRatioRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -774,6 +1158,24 @@ func (c *Client) GetDailyAvailRatio(request *GetDailyAvailRatioRequest) (respons
     if request == nil {
         request = NewGetDailyAvailRatioRequest()
     }
+    
+    response = NewGetDailyAvailRatioResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// GetDailyAvailRatio
+// 获取一天的整体可用率信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) GetDailyAvailRatioWithContext(ctx context.Context, request *GetDailyAvailRatioRequest) (response *GetDailyAvailRatioResponse, err error) {
+    if request == nil {
+        request = NewGetDailyAvailRatioRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewGetDailyAvailRatioResponse()
     err = c.Send(request, response)
@@ -814,6 +1216,24 @@ func (c *Client) GetRealAvailRatio(request *GetRealAvailRatioRequest) (response 
     return
 }
 
+// GetRealAvailRatio
+// 获取实时可用率信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) GetRealAvailRatioWithContext(ctx context.Context, request *GetRealAvailRatioRequest) (response *GetRealAvailRatioResponse, err error) {
+    if request == nil {
+        request = NewGetRealAvailRatioRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewGetRealAvailRatioResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetRespTimeTrendExRequest() (request *GetRespTimeTrendExRequest) {
     request = &GetRespTimeTrendExRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -842,6 +1262,24 @@ func (c *Client) GetRespTimeTrendEx(request *GetRespTimeTrendExRequest) (respons
     if request == nil {
         request = NewGetRespTimeTrendExRequest()
     }
+    
+    response = NewGetRespTimeTrendExResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// GetRespTimeTrendEx
+// 查询拨测任务的走势数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) GetRespTimeTrendExWithContext(ctx context.Context, request *GetRespTimeTrendExRequest) (response *GetRespTimeTrendExResponse, err error) {
+    if request == nil {
+        request = NewGetRespTimeTrendExRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewGetRespTimeTrendExResponse()
     err = c.Send(request, response)
@@ -882,6 +1320,24 @@ func (c *Client) GetResultSummary(request *GetResultSummaryRequest) (response *G
     return
 }
 
+// GetResultSummary
+// 获取任务列表的实时数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) GetResultSummaryWithContext(ctx context.Context, request *GetResultSummaryRequest) (response *GetResultSummaryResponse, err error) {
+    if request == nil {
+        request = NewGetResultSummaryRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewGetResultSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetReturnCodeHistoryRequest() (request *GetReturnCodeHistoryRequest) {
     request = &GetReturnCodeHistoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -910,6 +1366,24 @@ func (c *Client) GetReturnCodeHistory(request *GetReturnCodeHistoryRequest) (res
     if request == nil {
         request = NewGetReturnCodeHistoryRequest()
     }
+    
+    response = NewGetReturnCodeHistoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// GetReturnCodeHistory
+// 查询拨测任务的历史返回码信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) GetReturnCodeHistoryWithContext(ctx context.Context, request *GetReturnCodeHistoryRequest) (response *GetReturnCodeHistoryResponse, err error) {
+    if request == nil {
+        request = NewGetReturnCodeHistoryRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewGetReturnCodeHistoryResponse()
     err = c.Send(request, response)
@@ -950,6 +1424,24 @@ func (c *Client) GetReturnCodeInfo(request *GetReturnCodeInfoRequest) (response 
     return
 }
 
+// GetReturnCodeInfo
+// 查询拨测任务的返回码统计信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) GetReturnCodeInfoWithContext(ctx context.Context, request *GetReturnCodeInfoRequest) (response *GetReturnCodeInfoResponse, err error) {
+    if request == nil {
+        request = NewGetReturnCodeInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewGetReturnCodeInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetTaskTotalNumberRequest() (request *GetTaskTotalNumberRequest) {
     request = &GetTaskTotalNumberRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -977,6 +1469,23 @@ func (c *Client) GetTaskTotalNumber(request *GetTaskTotalNumberRequest) (respons
     if request == nil {
         request = NewGetTaskTotalNumberRequest()
     }
+    
+    response = NewGetTaskTotalNumberResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// GetTaskTotalNumber
+// 获取AppId下的拨测任务总数
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) GetTaskTotalNumberWithContext(ctx context.Context, request *GetTaskTotalNumberRequest) (response *GetTaskTotalNumberResponse, err error) {
+    if request == nil {
+        request = NewGetTaskTotalNumberRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewGetTaskTotalNumberResponse()
     err = c.Send(request, response)
@@ -1017,6 +1526,24 @@ func (c *Client) ModifyAgentGroup(request *ModifyAgentGroupRequest) (response *M
     return
 }
 
+// ModifyAgentGroup
+// 修改拨测分组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyAgentGroupWithContext(ctx context.Context, request *ModifyAgentGroupRequest) (response *ModifyAgentGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyAgentGroupRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyAgentGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyTaskExRequest() (request *ModifyTaskExRequest) {
     request = &ModifyTaskExRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1051,6 +1578,24 @@ func (c *Client) ModifyTaskEx(request *ModifyTaskExRequest) (response *ModifyTas
     return
 }
 
+// ModifyTaskEx
+// 修改拨测任务(扩展)
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyTaskExWithContext(ctx context.Context, request *ModifyTaskExRequest) (response *ModifyTaskExResponse, err error) {
+    if request == nil {
+        request = NewModifyTaskExRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyTaskExResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPauseTaskRequest() (request *PauseTaskRequest) {
     request = &PauseTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1079,6 +1624,24 @@ func (c *Client) PauseTask(request *PauseTaskRequest) (response *PauseTaskRespon
     if request == nil {
         request = NewPauseTaskRequest()
     }
+    
+    response = NewPauseTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// PauseTask
+// 暂停拨测任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) PauseTaskWithContext(ctx context.Context, request *PauseTaskRequest) (response *PauseTaskResponse, err error) {
+    if request == nil {
+        request = NewPauseTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewPauseTaskResponse()
     err = c.Send(request, response)
@@ -1127,6 +1690,32 @@ func (c *Client) ResumeProbeTask(request *ResumeProbeTaskRequest) (response *Res
     return
 }
 
+// ResumeProbeTask
+// 恢复拨测任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_NOVALIDNODES = "FailedOperation.NoValidNodes"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  FAILEDOPERATION_TASKNOTRUNNING = "FailedOperation.TaskNotRunning"
+//  FAILEDOPERATION_TASKNOTSUSPENDED = "FailedOperation.TaskNotSuspended"
+//  FAILEDOPERATION_TASKOPERATIONNOTALLOW = "FailedOperation.TaskOperationNotAllow"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ResumeProbeTaskWithContext(ctx context.Context, request *ResumeProbeTaskRequest) (response *ResumeProbeTaskResponse, err error) {
+    if request == nil {
+        request = NewResumeProbeTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewResumeProbeTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRunTaskRequest() (request *RunTaskRequest) {
     request = &RunTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1155,6 +1744,24 @@ func (c *Client) RunTask(request *RunTaskRequest) (response *RunTaskResponse, er
     if request == nil {
         request = NewRunTaskRequest()
     }
+    
+    response = NewRunTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// RunTask
+// 运行拨测任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) RunTaskWithContext(ctx context.Context, request *RunTaskRequest) (response *RunTaskResponse, err error) {
+    if request == nil {
+        request = NewRunTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewRunTaskResponse()
     err = c.Send(request, response)
@@ -1196,6 +1803,31 @@ func (c *Client) SuspendProbeTask(request *SuspendProbeTaskRequest) (response *S
     if request == nil {
         request = NewSuspendProbeTaskRequest()
     }
+    
+    response = NewSuspendProbeTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SuspendProbeTask
+// 暂停拨测任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  FAILEDOPERATION_TASKNOTRUNNING = "FailedOperation.TaskNotRunning"
+//  FAILEDOPERATION_TASKNOTSUSPENDED = "FailedOperation.TaskNotSuspended"
+//  FAILEDOPERATION_TASKOPERATIONNOTALLOW = "FailedOperation.TaskOperationNotAllow"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) SuspendProbeTaskWithContext(ctx context.Context, request *SuspendProbeTaskRequest) (response *SuspendProbeTaskResponse, err error) {
+    if request == nil {
+        request = NewSuspendProbeTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewSuspendProbeTaskResponse()
     err = c.Send(request, response)
@@ -1245,6 +1877,33 @@ func (c *Client) UpdateProbeTaskConfigurationList(request *UpdateProbeTaskConfig
     return
 }
 
+// UpdateProbeTaskConfigurationList
+// 批量更新拨测任务配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_NOVALIDNODES = "FailedOperation.NoValidNodes"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  FAILEDOPERATION_TASKNOTRUNNING = "FailedOperation.TaskNotRunning"
+//  FAILEDOPERATION_TASKNOTSUSPENDED = "FailedOperation.TaskNotSuspended"
+//  FAILEDOPERATION_TASKOPERATIONNOTALLOW = "FailedOperation.TaskOperationNotAllow"
+//  FAILEDOPERATION_TASKTYPENOTSAME = "FailedOperation.TaskTypeNotSame"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) UpdateProbeTaskConfigurationListWithContext(ctx context.Context, request *UpdateProbeTaskConfigurationListRequest) (response *UpdateProbeTaskConfigurationListResponse, err error) {
+    if request == nil {
+        request = NewUpdateProbeTaskConfigurationListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewUpdateProbeTaskConfigurationListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewVerifyResultRequest() (request *VerifyResultRequest) {
     request = &VerifyResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1273,6 +1932,24 @@ func (c *Client) VerifyResult(request *VerifyResultRequest) (response *VerifyRes
     if request == nil {
         request = NewVerifyResultRequest()
     }
+    
+    response = NewVerifyResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// VerifyResult
+// 验证拨测任务，结果验证查询（验证成功的，才建议创建拨测任务）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) VerifyResultWithContext(ctx context.Context, request *VerifyResultRequest) (response *VerifyResultResponse, err error) {
+    if request == nil {
+        request = NewVerifyResultRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewVerifyResultResponse()
     err = c.Send(request, response)

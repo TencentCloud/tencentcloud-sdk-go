@@ -1,3 +1,1347 @@
+# Release v1.0.328
+
+## 计费相关(billing) 版本：2018-07-09
+
+### 第 30 次发布
+
+发布时间：2022-01-11 08:03:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Deal](https://cloud.tencent.com/document/api/555/19183#Deal)
+
+	* 新增成员：Action
+
+
+
+
+## 云硬盘(cbs) 版本：2017-03-12
+
+### 第 36 次发布
+
+发布时间：2022-01-11 08:04:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [TerminateDisks](https://cloud.tencent.com/document/api/362/16321)
+
+	* 新增入参：DeleteSnapshot
+
+
+
+
+## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+
+### 第 32 次发布
+
+发布时间：2022-01-11 08:07:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDCDBInstance](https://cloud.tencent.com/document/api/557/16135)
+
+	* 新增入参：SecurityGroupIds
+
+* [DescribeProjectSecurityGroups](https://cloud.tencent.com/document/api/557/51780)
+
+	* 新增出参：Total
+
+
+修改数据结构：
+
+* [DCDBInstanceInfo](https://cloud.tencent.com/document/api/557/16142#DCDBInstanceInfo)
+
+	* 新增成员：ResourceTags
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 11 次发布
+
+发布时间：2022-01-11 08:08:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Recipient](https://cloud.tencent.com/document/api/1420/61525#Recipient)
+
+	* 新增成员：IsPromoter
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 27 次发布
+
+发布时间：2022-01-11 08:09:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CheckProxyCreate](https://cloud.tencent.com/document/api/608/36974)
+
+	* 新增入参：Http3Supported
+
+* [CreateDomain](https://cloud.tencent.com/document/api/608/36991)
+
+	* 新增入参：Http3Supported
+
+* [CreateHTTPSListener](https://cloud.tencent.com/document/api/608/37006)
+
+	* 新增入参：Http3Supported
+
+* [CreateProxy](https://cloud.tencent.com/document/api/608/36971)
+
+	* 新增入参：Http3Supported
+
+* [CreateProxyGroup](https://cloud.tencent.com/document/api/608/36949)
+
+	* 新增入参：Http3Supported
+
+* [DescribeHTTPSListeners](https://cloud.tencent.com/document/api/608/37001)
+
+	* 新增入参：Http3Supported
+
+* [InquiryPriceCreateProxy](https://cloud.tencent.com/document/api/608/36957)
+
+	* 新增入参：Http3Supported
+
+
+修改数据结构：
+
+* [AccessRegionDetial](https://cloud.tencent.com/document/api/608/37023#AccessRegionDetial)
+
+	* 新增成员：FeatureBitmap
+
+* [DomainRuleSet](https://cloud.tencent.com/document/api/608/37023#DomainRuleSet)
+
+	* 新增成员：Http3Supported
+
+* [ProxyGroupDetail](https://cloud.tencent.com/document/api/608/37023#ProxyGroupDetail)
+
+	* 新增成员：Http3Supported
+
+* [ProxyGroupInfo](https://cloud.tencent.com/document/api/608/37023#ProxyGroupInfo)
+
+	* 新增成员：Http3Supported
+
+* [ProxyInfo](https://cloud.tencent.com/document/api/608/37023#ProxyInfo)
+
+	* 新增成员：Http3Supported
+
+* [RegionDetail](https://cloud.tencent.com/document/api/608/37023#RegionDetail)
+
+	* 新增成员：FeatureBitmap
+
+
+
+
+## 云游戏解决方案(gs) 版本：2019-11-18
+
+### 第 16 次发布
+
+发布时间：2022-01-11 08:09:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [StartPublishStream](https://cloud.tencent.com/document/api/1162/67868)
+* [StopPublishStream](https://cloud.tencent.com/document/api/1162/67867)
+
+
+
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 40 次发布
+
+发布时间：2022-01-11 08:10:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BindDevices](https://cloud.tencent.com/document/api/1081/67873)
+* [BindProducts](https://cloud.tencent.com/document/api/1081/67877)
+* [DescribeBindedProducts](https://cloud.tencent.com/document/api/1081/67876)
+* [DescribeDeviceBindGateway](https://cloud.tencent.com/document/api/1081/67872)
+* [DescribeGatewayBindDevices](https://cloud.tencent.com/document/api/1081/67871)
+* [DescribeGatewaySubProducts](https://cloud.tencent.com/document/api/1081/67875)
+* [GetGatewaySubDeviceList](https://cloud.tencent.com/document/api/1081/67870)
+* [UnbindDevices](https://cloud.tencent.com/document/api/1081/67869)
+* [UnbindProducts](https://cloud.tencent.com/document/api/1081/67874)
+
+新增数据结构：
+
+* [BindDeviceInfo](https://cloud.tencent.com/document/api/1081/34988#BindDeviceInfo)
+* [BindProductInfo](https://cloud.tencent.com/document/api/1081/34988#BindProductInfo)
+* [FamilySubDevice](https://cloud.tencent.com/document/api/1081/34988#FamilySubDevice)
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 24 次发布
+
+发布时间：2022-01-11 08:11:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [Tag](https://cloud.tencent.com/document/api/1207/47576#Tag)
+
+修改数据结构：
+
+* [Instance](https://cloud.tencent.com/document/api/1207/47576#Instance)
+
+	* 新增成员：Tags
+
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 29 次发布
+
+发布时间：2022-01-11 08:12:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateHourDBInstance](https://cloud.tencent.com/document/api/237/67878)
+
+修改接口：
+
+* [DescribeProjectSecurityGroups](https://cloud.tencent.com/document/api/237/51786)
+
+	* 新增出参：Total
+
+
+修改数据结构：
+
+* [DBInstance](https://cloud.tencent.com/document/api/237/16191#DBInstance)
+
+	* 新增成员：ResourceTags
+
+
+
+
+## 凭据管理系统(ssm) 版本：2019-09-23
+
+### 第 6 次发布
+
+发布时间：2022-01-11 08:14:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSecret](https://cloud.tencent.com/document/api/1140/40526)
+
+	* 新增出参：TargetUin
+
+* [GetServiceStatus](https://cloud.tencent.com/document/api/1140/40521)
+
+	* 新增出参：AccessKeyEscrowEnabled
+
+
+修改数据结构：
+
+* [SecretMetadata](https://cloud.tencent.com/document/api/1140/40530#SecretMetadata)
+
+	* 新增成员：TargetUin
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 94 次发布
+
+发布时间：2022-01-11 08:17:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AdaptiveDynamicStreamingInfoItem](https://cloud.tencent.com/document/api/266/31773#AdaptiveDynamicStreamingInfoItem)
+
+	* 新增成员：Size
+
+
+
+
+# Release v1.0.327
+
+## API网关(apigateway) 版本：2018-08-08
+
+### 第 23 次发布
+
+发布时间：2022-01-10 08:05:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [CosConfig](https://cloud.tencent.com/document/api/628/45244#CosConfig)
+
+修改数据结构：
+
+* [ServiceConfig](https://cloud.tencent.com/document/api/628/45244#ServiceConfig)
+
+	* 新增成员：CosConfig
+
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 78 次发布
+
+发布时间：2022-01-10 08:06:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDBInstanceHour](https://cloud.tencent.com/document/api/236/15865)
+
+	* 新增入参：ParamTemplateType
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 37 次发布
+
+发布时间：2022-01-10 08:08:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeGeneralStat](https://cloud.tencent.com/document/api/296/53132)
+
+	* 新增出参：FlagshipMachineCnt, ProtectDays
+
+* [DescribeImportMachineInfo](https://cloud.tencent.com/document/api/296/55203)
+
+	* 新增入参：Filters
+
+* [DescribeMachineInfo](https://cloud.tencent.com/document/api/296/19851)
+
+	* 新增出参：ProtectType
+
+
+修改数据结构：
+
+* [Machine](https://cloud.tencent.com/document/api/296/19867#Machine)
+
+	* 新增成员：ProtectType
+
+* [MalwareInfo](https://cloud.tencent.com/document/api/296/19867#MalwareInfo)
+
+	* 新增成员：CheckPlatform, Uuid
+
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+
+### 第 6 次发布
+
+发布时间：2022-01-10 08:09:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateKillTask](https://cloud.tencent.com/document/api/1130/67783)
+* [CreateProxySessionKillTask](https://cloud.tencent.com/document/api/1130/67782)
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+
+
+
+## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+
+### 第 23 次发布
+
+发布时间：2022-01-10 08:14:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstances](https://cloud.tencent.com/document/api/409/56107)
+
+	* 新增入参：DBNodeSet
+
+
+新增数据结构：
+
+* [DBNode](https://cloud.tencent.com/document/api/409/16778#DBNode)
+
+修改数据结构：
+
+* [DBBackup](https://cloud.tencent.com/document/api/409/16778#DBBackup)
+
+	* 新增成员：SetId
+
+* [DBInstance](https://cloud.tencent.com/document/api/409/16778#DBInstance)
+
+	* 新增成员：DBNodeSet
+
+* [ZoneInfo](https://cloud.tencent.com/document/api/409/16778#ZoneInfo)
+
+	* 新增成员：StandbyZoneSet
+
+
+
+
+## 全栈式风控引擎(rce) 版本：2020-11-03
+
+### 第 5 次发布
+
+发布时间：2022-01-10 08:14:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InputDescribeRiskModelData](https://cloud.tencent.com/document/api/1343/52566#InputDescribeRiskModelData)
+
+	* 新增成员：IsTest
+
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 28 次发布
+
+发布时间：2022-01-10 08:15:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyDBInstanceNetwork](https://cloud.tencent.com/document/api/238/52347)
+
+	* 新增入参：Vip
+
+
+
+
+# Release v1.0.326
+
+## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 45 次发布
+
+发布时间：2022-01-07 08:03:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyLaunchConfigurationAttributes](https://cloud.tencent.com/document/api/377/31298)
+
+	* 新增入参：CamRoleName
+
+
+
+
+## 访问管理(cam) 版本：2019-01-16
+
+### 第 41 次发布
+
+发布时间：2022-01-07 08:04:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ListAttachedUserAllPolicies](https://cloud.tencent.com/document/api/598/67728)
+
+新增数据结构：
+
+* [AttachedUserPolicy](https://cloud.tencent.com/document/api/598/33167#AttachedUserPolicy)
+* [AttachedUserPolicyGroupInfo](https://cloud.tencent.com/document/api/598/33167#AttachedUserPolicyGroupInfo)
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 63 次发布
+
+发布时间：2022-01-07 08:05:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CloneLoadBalancer](https://cloud.tencent.com/document/api/214/64874)
+
+	* 新增入参：SlaType
+
+
+
+
+## 事件总线(eb) 版本：2021-04-16
+
+### 第 1 次发布
+
+发布时间：2022-01-06 16:11:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CheckRule](https://cloud.tencent.com/document/api/1359/67698)
+* [CheckTransformation](https://cloud.tencent.com/document/api/1359/67679)
+* [CreateConnection](https://cloud.tencent.com/document/api/1359/67691)
+* [CreateEventBus](https://cloud.tencent.com/document/api/1359/67686)
+* [CreateRule](https://cloud.tencent.com/document/api/1359/67697)
+* [CreateTarget](https://cloud.tencent.com/document/api/1359/67703)
+* [CreateTransformation](https://cloud.tencent.com/document/api/1359/67678)
+* [DeleteConnection](https://cloud.tencent.com/document/api/1359/67690)
+* [DeleteEventBus](https://cloud.tencent.com/document/api/1359/67685)
+* [DeleteRule](https://cloud.tencent.com/document/api/1359/67696)
+* [DeleteTarget](https://cloud.tencent.com/document/api/1359/67702)
+* [DeleteTransformation](https://cloud.tencent.com/document/api/1359/67677)
+* [GetEventBus](https://cloud.tencent.com/document/api/1359/67684)
+* [GetRule](https://cloud.tencent.com/document/api/1359/67695)
+* [GetTransformation](https://cloud.tencent.com/document/api/1359/67676)
+* [ListConnections](https://cloud.tencent.com/document/api/1359/67689)
+* [ListEventBuses](https://cloud.tencent.com/document/api/1359/67683)
+* [ListRules](https://cloud.tencent.com/document/api/1359/67694)
+* [ListTargets](https://cloud.tencent.com/document/api/1359/67701)
+* [PublishEvent](https://cloud.tencent.com/document/api/1359/67682)
+* [UpdateConnection](https://cloud.tencent.com/document/api/1359/67688)
+* [UpdateEventBus](https://cloud.tencent.com/document/api/1359/67681)
+* [UpdateRule](https://cloud.tencent.com/document/api/1359/67693)
+* [UpdateTarget](https://cloud.tencent.com/document/api/1359/67700)
+* [UpdateTransformation](https://cloud.tencent.com/document/api/1359/67675)
+
+新增数据结构：
+
+* [APIGWParams](https://cloud.tencent.com/document/api/1359/67704#APIGWParams)
+* [CkafkaDeliveryParams](https://cloud.tencent.com/document/api/1359/67704#CkafkaDeliveryParams)
+* [CkafkaParams](https://cloud.tencent.com/document/api/1359/67704#CkafkaParams)
+* [CkafkaTargetParams](https://cloud.tencent.com/document/api/1359/67704#CkafkaTargetParams)
+* [Connection](https://cloud.tencent.com/document/api/1359/67704#Connection)
+* [ConnectionDescription](https://cloud.tencent.com/document/api/1359/67704#ConnectionDescription)
+* [DeadLetterConfig](https://cloud.tencent.com/document/api/1359/67704#DeadLetterConfig)
+* [EtlFilter](https://cloud.tencent.com/document/api/1359/67704#EtlFilter)
+* [Event](https://cloud.tencent.com/document/api/1359/67704#Event)
+* [EventBus](https://cloud.tencent.com/document/api/1359/67704#EventBus)
+* [Extraction](https://cloud.tencent.com/document/api/1359/67704#Extraction)
+* [Filter](https://cloud.tencent.com/document/api/1359/67704#Filter)
+* [OutputStructParam](https://cloud.tencent.com/document/api/1359/67704#OutputStructParam)
+* [RetryPolicy](https://cloud.tencent.com/document/api/1359/67704#RetryPolicy)
+* [Rule](https://cloud.tencent.com/document/api/1359/67704#Rule)
+* [SCFParams](https://cloud.tencent.com/document/api/1359/67704#SCFParams)
+* [Target](https://cloud.tencent.com/document/api/1359/67704#Target)
+* [TargetBrief](https://cloud.tencent.com/document/api/1359/67704#TargetBrief)
+* [TargetDescription](https://cloud.tencent.com/document/api/1359/67704#TargetDescription)
+* [TextParams](https://cloud.tencent.com/document/api/1359/67704#TextParams)
+* [Transform](https://cloud.tencent.com/document/api/1359/67704#Transform)
+* [Transformation](https://cloud.tencent.com/document/api/1359/67704#Transformation)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 10 次发布
+
+发布时间：2022-01-07 08:08:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FlowApproverInfo](https://cloud.tencent.com/document/api/1420/61525#FlowApproverInfo)
+
+	* 新增成员：ComponentLimitType, RecipientId, OrganizationOpenId, OrganizationName
+
+	* <font color="#dd0000">**修改成员**：</font>Name, Mobile
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 37 次发布
+
+发布时间：2022-01-07 08:08:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetWeChatBillDetails](https://cloud.tencent.com/document/api/1007/67729)
+
+新增数据结构：
+
+* [ChargeDetail](https://cloud.tencent.com/document/api/1007/41958#ChargeDetail)
+* [WeChatBillDetail](https://cloud.tencent.com/document/api/1007/41958#WeChatBillDetail)
+
+
+
+## 物联网智能视频服务（行业版）(iotvideoindustry) 版本：2020-12-01
+
+### 第 16 次发布
+
+发布时间：2022-01-07 08:10:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeChannelStreamURL](https://cloud.tencent.com/document/api/1361/67426)
+
+	* 新增入参：ExpireTime
+
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 4 次发布
+
+发布时间：2022-01-07 08:13:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAssetHostDetail](https://cloud.tencent.com/document/api/1285/65508)
+
+	* 新增出参：InstanceID, RegionID
+
+
+修改数据结构：
+
+* [HostInfo](https://cloud.tencent.com/document/api/1285/65614#HostInfo)
+
+	* 新增成员：InstanceID, RegionID
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 85 次发布
+
+发布时间：2022-01-07 08:14:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PrometheusAgentOverview](https://cloud.tencent.com/document/api/457/31866#PrometheusAgentOverview)
+
+	* 新增成员：ExternalLabels
+
+* [PrometheusAlertRule](https://cloud.tencent.com/document/api/457/31866#PrometheusAlertRule)
+
+	* 新增成员：RuleState
+
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 66 次发布
+
+发布时间：2022-01-07 08:15:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ContainerGroupDeploy](https://cloud.tencent.com/document/api/649/36099#ContainerGroupDeploy)
+
+	* 新增成员：VolumeInfos, VolumeMountInfos
+
+
+
+
+# Release v1.0.325
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 77 次发布
+
+发布时间：2022-01-06 08:05:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCloneInstance](https://cloud.tencent.com/document/api/236/50424)
+
+	* 新增入参：CageId
+
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 62 次发布
+
+发布时间：2022-01-06 08:06:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateLoadBalancer](https://cloud.tencent.com/document/api/214/30692)
+
+	* 新增出参：DealName
+
+* [DescribeTaskStatus](https://cloud.tencent.com/document/api/214/30683)
+
+	* 新增入参：DealName
+
+	* 新增出参：LoadBalancerIds
+
+
+
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 36 次发布
+
+发布时间：2022-01-06 08:09:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [PhoneVerification](https://cloud.tencent.com/document/api/1007/39765)
+
+	* 新增出参：Isp
+
+
+修改数据结构：
+
+* [DetectInfoIdCardData](https://cloud.tencent.com/document/api/1007/41958#DetectInfoIdCardData)
+
+	* 新增成员：WarnInfos
+
+
+
+
+## 物联网智能视频服务（行业版）(iotvideoindustry) 版本：2020-12-01
+
+### 第 15 次发布
+
+发布时间：2022-01-06 08:11:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ControlChannelLocalRecord](https://cloud.tencent.com/document/api/1361/67425)
+* [ControlChannelPTZ](https://cloud.tencent.com/document/api/1361/67403)
+* [ControlHomePosition](https://cloud.tencent.com/document/api/1361/67396)
+* [ControlPreset](https://cloud.tencent.com/document/api/1361/67402)
+* [CreateRecordingPlan](https://cloud.tencent.com/document/api/1361/53742)
+* [DeleteRecordingPlan](https://cloud.tencent.com/document/api/1361/53740)
+* [DeleteWarning](https://cloud.tencent.com/document/api/1361/67401)
+* [DescribeAbnormalEvents](https://cloud.tencent.com/document/api/1361/67411)
+* [DescribeBindSceneChannels](https://cloud.tencent.com/document/api/1361/67404)
+* [DescribeChannelLocalRecordURL](https://cloud.tencent.com/document/api/1361/67424)
+* [DescribeChannelStreamURL](https://cloud.tencent.com/document/api/1361/67426)
+* [DescribeChannels](https://cloud.tencent.com/document/api/1361/67429)
+* [DescribeCurrentDeviceData](https://cloud.tencent.com/document/api/1361/67410)
+* [DescribeDevice](https://cloud.tencent.com/document/api/1361/67395)
+* [DescribeDeviceEvent](https://cloud.tencent.com/document/api/1361/67409)
+* [DescribeDeviceList](https://cloud.tencent.com/document/api/1361/53721)
+* [DescribeDeviceMonitorData](https://cloud.tencent.com/document/api/1361/67408)
+* [DescribeMonitorDataByDate](https://cloud.tencent.com/document/api/1361/67407)
+* [DescribePresetList](https://cloud.tencent.com/document/api/1361/67400)
+* [DescribeRecordDatesByChannel](https://cloud.tencent.com/document/api/1361/67423)
+* [DescribeRecordingPlanById](https://cloud.tencent.com/document/api/1361/67419)
+* [DescribeRecordingPlans](https://cloud.tencent.com/document/api/1361/67418)
+* [DescribeScene](https://cloud.tencent.com/document/api/1361/67417)
+* [DescribeVideoListByChannel](https://cloud.tencent.com/document/api/1361/67422)
+* [DescribeWarnMod](https://cloud.tencent.com/document/api/1361/67399)
+* [DescribeWarnings](https://cloud.tencent.com/document/api/1361/67398)
+* [DescribeXP2PData](https://cloud.tencent.com/document/api/1361/67431)
+* [ModifyBindRecordingPlan](https://cloud.tencent.com/document/api/1361/67416)
+* [ModifyBindSceneChannels](https://cloud.tencent.com/document/api/1361/67415)
+* [ModifyBindSceneDevice](https://cloud.tencent.com/document/api/1361/67414)
+* [ModifyPreset](https://cloud.tencent.com/document/api/1361/67394)
+* [ModifyRecordingPlan](https://cloud.tencent.com/document/api/1361/67413)
+* [ModifyScene](https://cloud.tencent.com/document/api/1361/67412)
+* [ResetWarning](https://cloud.tencent.com/document/api/1361/67397)
+
+修改接口：
+
+* [CreateScene](https://cloud.tencent.com/document/api/1361/65989)
+
+	* 新增入参：Channels
+
+
+新增数据结构：
+
+* [AbnormalEvents](https://cloud.tencent.com/document/api/1361/53754#AbnormalEvents)
+* [AbnormalEventsInfo](https://cloud.tencent.com/document/api/1361/53754#AbnormalEventsInfo)
+* [ChannelDetail](https://cloud.tencent.com/document/api/1361/53754#ChannelDetail)
+* [ChannelItem](https://cloud.tencent.com/document/api/1361/53754#ChannelItem)
+* [DeviceMonitorValue](https://cloud.tencent.com/document/api/1361/53754#DeviceMonitorValue)
+* [Events](https://cloud.tencent.com/document/api/1361/53754#Events)
+* [PresetItem](https://cloud.tencent.com/document/api/1361/53754#PresetItem)
+* [RecordPlanDetail](https://cloud.tencent.com/document/api/1361/53754#RecordPlanDetail)
+* [RecordStatistic](https://cloud.tencent.com/document/api/1361/53754#RecordStatistic)
+* [RecordStatisticValue](https://cloud.tencent.com/document/api/1361/53754#RecordStatisticValue)
+* [WarningsData](https://cloud.tencent.com/document/api/1361/53754#WarningsData)
+
+修改数据结构：
+
+* [GroupDeviceItem](https://cloud.tencent.com/document/api/1361/53754#GroupDeviceItem)
+
+	* 新增成员：CreateTime, ChannelNum, VideoChannelNum
+
+
+
+
+# Release v1.0.324
+
+## 应用性能观测(apm) 版本：2021-06-22
+
+### 第 4 次发布
+
+发布时间：2022-01-05 08:03:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ApmInstanceDetail](https://cloud.tencent.com/document/api/1463/64927#ApmInstanceDetail)
+
+	* 新增成员：LogRegion, LogSource, IsRelatedLog, LogTopicID
+
+
+
+
+## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 44 次发布
+
+发布时间：2022-01-05 08:03:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AttachLoadBalancers](https://cloud.tencent.com/document/api/377/67354)
+* [DetachLoadBalancers](https://cloud.tencent.com/document/api/377/67353)
+* [ModifyLoadBalancerTargetAttributes](https://cloud.tencent.com/document/api/377/67352)
+
+新增数据结构：
+
+* [ForwardLoadBalancerIdentification](https://cloud.tencent.com/document/api/377/20453#ForwardLoadBalancerIdentification)
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 76 次发布
+
+发布时间：2022-01-05 08:04:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDBInstance](https://cloud.tencent.com/document/api/236/15871)
+
+	* 新增入参：ParamTemplateType
+
+
+
+
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 92 次发布
+
+发布时间：2022-01-05 08:05:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MainlandConfig](https://cloud.tencent.com/document/api/228/30987#MainlandConfig)
+
+	* 新增成员：AwsPrivateAccess, OssPrivateAccess
+
+* [OverseaConfig](https://cloud.tencent.com/document/api/228/30987#OverseaConfig)
+
+	* 新增成员：AwsPrivateAccess, OssPrivateAccess
+
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 14 次发布
+
+发布时间：2022-01-05 08:06:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreateAsyncContextTask
+* CreateAsyncSearchTask
+* DeleteAsyncContextTask
+* DeleteAsyncSearchTask
+* DescribeAsyncContextResult
+* DescribeAsyncContextTasks
+* DescribeAsyncSearchResult
+* DescribeAsyncSearchTasks
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* AsyncContextTask
+* AsyncSearchTask
+
+
+
+## 数字身份管控平台（员工版）(eiam) 版本：2021-04-20
+
+### 第 12 次发布
+
+发布时间：2022-01-05 08:08:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddUserToUserGroup](https://cloud.tencent.com/document/api/1442/57991)
+
+	* 新增出参：FailedItems
+
+* [CreateUser](https://cloud.tencent.com/document/api/1442/57929)
+
+	* 新增入参：SecondaryOrgNodeIdList
+
+* [DescribeUserInfo](https://cloud.tencent.com/document/api/1442/57984)
+
+	* 新增出参：SecondaryOrgNodeIdList
+
+* [ListApplications](https://cloud.tencent.com/document/api/1442/58480)
+
+	* 新增入参：ApplicationIdList
+
+* [ListUsersInUserGroup](https://cloud.tencent.com/document/api/1442/57980)
+
+	* 新增入参：SearchCondition, Sort, Offset, Limit
+
+* [ModifyUserInfo](https://cloud.tencent.com/document/api/1442/58033)
+
+	* 新增入参：SecondaryOrgNodeIdList
+
+
+
+
+## 云直播(live) 版本：2018-08-01
+
+### 第 72 次发布
+
+发布时间：2022-01-05 08:10:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBillBandwidthAndFluxList](https://cloud.tencent.com/document/api/267/35971)
+
+	* 新增入参：RegionNames
+
+* [DescribePushBandwidthAndFluxList](https://cloud.tencent.com/document/api/267/59511)
+
+	* 新增入参：RegionNames
+
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 17 次发布
+
+发布时间：2022-01-05 08:11:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [SetAccountUserPrivilege](https://cloud.tencent.com/document/api/240/67357)
+
+新增数据结构：
+
+* [Auth](https://cloud.tencent.com/document/api/240/38576#Auth)
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2018-04-08
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 84 次发布
+
+发布时间：2022-01-05 08:14:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateClusterNodePool](https://cloud.tencent.com/document/api/457/49436)
+
+	* 新增入参：Tags
+
+* [ModifyClusterNodePool](https://cloud.tencent.com/document/api/457/49431)
+
+	* 新增入参：Tags
+
+
+修改数据结构：
+
+* [NodePool](https://cloud.tencent.com/document/api/457/31866#NodePool)
+
+	* 新增成员：Tags
+
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 65 次发布
+
+发布时间：2022-01-05 08:15:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeployContainerGroup](https://cloud.tencent.com/document/api/649/36071)
+
+	* 新增入参：VolumeInfoList, VolumeMountInfoList
+
+
+
+
+# Release v1.0.323
+
+## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 22 次发布
+
+发布时间：2021-12-30 08:09:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstance](https://cloud.tencent.com/document/api/845/30633)
+
+	* 新增出参：DealName
+
+* [DescribeInstances](https://cloud.tencent.com/document/api/845/30631)
+
+	* 新增入参：ZoneList
+
+* [UpdateInstance](https://cloud.tencent.com/document/api/845/30629)
+
+	* 新增出参：DealName
+
+* [UpdatePlugins](https://cloud.tencent.com/document/api/845/46048)
+
+	* 新增入参：PluginType
+
+* [UpgradeLicense](https://cloud.tencent.com/document/api/845/36269)
+
+	* 新增出参：DealName
+
+
+修改数据结构：
+
+* [ClusterView](https://cloud.tencent.com/document/api/845/30634#ClusterView)
+
+	* 新增成员：TotalCosStorage, SearchableSnapshotCosBucket, SearchableSnapshotCosAppId
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/845/30634#InstanceInfo)
+
+	* 新增成员：ColdNodeType, ColdNodeNum, ColdCpuNum, ColdMemSize, ColdDiskType, ColdDiskSize, FrozenNodeType, FrozenNodeNum, FrozenCpuNum, FrozenMemSize, FrozenDiskType, FrozenDiskSize
+
+
+
+
+## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 26 次发布
+
+发布时间：2021-12-30 08:09:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateProxy](https://cloud.tencent.com/document/api/608/36971)
+
+	* 新增入参：PackageType
+
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 35 次发布
+
+发布时间：2021-12-30 08:11:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BindingPolicyTag](https://cloud.tencent.com/document/api/248/67219)
+
+新增数据结构：
+
+* [PolicyTag](https://cloud.tencent.com/document/api/248/30354#PolicyTag)
+
+
+
+## 企业组织(organization) 版本：2021-03-31
+
+### 第 4 次发布
+
+发布时间：2021-12-30 08:12:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeOrganizationMembers](https://cloud.tencent.com/document/api/850/67220)
+
+新增数据结构：
+
+* [OrgMember](https://cloud.tencent.com/document/api/850/67060#OrgMember)
+
+
+
+## 企业组织(organization) 版本：2018-12-25
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 64 次发布
+
+发布时间：2021-12-30 08:15:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeContainerGroupDeployInfo](https://cloud.tencent.com/document/api/649/67221)
+
+新增数据结构：
+
+* [ContainerGroupDeploy](https://cloud.tencent.com/document/api/649/36099#ContainerGroupDeploy)
+
+
+
+# Release v1.0.322
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 34 次发布
+
+发布时间：2021-12-29 08:10:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PrometheusInstancesItem](https://cloud.tencent.com/document/api/248/30354#PrometheusInstancesItem)
+
+	* 新增成员：GrafanaInstanceId
+
+
+
+
+## 全栈式风控引擎(rce) 版本：2020-11-03
+
+### 第 4 次发布
+
+发布时间：2021-12-29 08:11:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeRiskAssessment](https://cloud.tencent.com/document/api/1343/67099)
+* [DescribeRiskTrends](https://cloud.tencent.com/document/api/1343/67098)
+
+新增数据结构：
+
+* [InputFrontRisk](https://cloud.tencent.com/document/api/1343/52566#InputFrontRisk)
+* [OutputFrontRisk](https://cloud.tencent.com/document/api/1343/52566#OutputFrontRisk)
+* [OutputFrontRiskData](https://cloud.tencent.com/document/api/1343/52566#OutputFrontRiskData)
+* [OutputFrontRiskValue](https://cloud.tencent.com/document/api/1343/52566#OutputFrontRiskValue)
+
+
+
+## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 27 次发布
+
+发布时间：2021-12-29 08:13:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeProducers
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* Connection
+* Producer
+
+
+
 # Release v1.0.321
 
 ## 企业组织(organization) 版本：2021-03-31

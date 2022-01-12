@@ -15,6 +15,7 @@
 package v20201002
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -86,6 +87,33 @@ func (c *Client) BatchSendEmail(request *BatchSendEmailRequest) (response *Batch
     return
 }
 
+// BatchSendEmail
+// 您可以通过此API批量发送TEXT或者HTML邮件，适用于营销类、通知类邮件。默认仅支持使用模板发送邮件，如需发送自定义内容，请单独联系商务开通此功能。批量发送之前，需先创建收件人列表，和收件人地址，并通过收件人列表id来进行发送。批量发送任务支持定时发送和周期重复发送，定时发送需传TimedParam，周期重复发送需传CycleParam
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EMAILCONTENTTOOLARGE = "FailedOperation.EmailContentToolarge"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_BEGINTIMEBEFORENOW = "InvalidParameterValue.BeginTimeBeforeNow"
+//  INVALIDPARAMETERVALUE_EMAILCONTENTISWRONG = "InvalidParameterValue.EmailContentIsWrong"
+//  INVALIDPARAMETERVALUE_TEMPLATEDATAERROR = "InvalidParameterValue.TemplateDataError"
+//  MISSINGPARAMETER_CYCLEPARAMNECESSARY = "MissingParameter.CycleParamNecessary"
+//  MISSINGPARAMETER_SENDPARAMNECESSARY = "MissingParameter.SendParamNecessary"
+//  MISSINGPARAMETER_TIMEDPARAMNECESSARY = "MissingParameter.TimedParamNecessary"
+//  OPERATIONDENIED_RECEIVERNOTEXIST = "OperationDenied.ReceiverNotExist"
+//  OPERATIONDENIED_RECEIVERSTATUSERROR = "OperationDenied.ReceiverStatusError"
+//  OPERATIONDENIED_SENDADDRESSSTATUSERROR = "OperationDenied.SendAddressStatusError"
+//  OPERATIONDENIED_TEMPLATESTATUSERROR = "OperationDenied.TemplateStatusError"
+func (c *Client) BatchSendEmailWithContext(ctx context.Context, request *BatchSendEmailRequest) (response *BatchSendEmailResponse, err error) {
+    if request == nil {
+        request = NewBatchSendEmailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewBatchSendEmailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateEmailAddressRequest() (request *CreateEmailAddressRequest) {
     request = &CreateEmailAddressRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -128,6 +156,32 @@ func (c *Client) CreateEmailAddress(request *CreateEmailAddressRequest) (respons
     return
 }
 
+// CreateEmailAddress
+// 在验证了发信域名之后，您需要一个发信地址来发送邮件。例如发信域名是mail.qcloud.com，那么发信地址可以为 service@mail.qcloud.com。如果您想要收件人在收件箱列表中显示您的别名，例如"腾讯云邮件通知"。那么发信地址为： 别名 空格 尖括号 邮箱地址。请注意中间需要有空格
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ILLEGALEMAILADDRESS = "InvalidParameterValue.IllegalEmailAddress"
+//  INVALIDPARAMETERVALUE_REPEATEMAILADDRESS = "InvalidParameterValue.RepeatEmailAddress"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_DOMAINNOTVERIFIED = "OperationDenied.DomainNotVerified"
+//  OPERATIONDENIED_EXCEEDSENDERLIMIT = "OperationDenied.ExceedSenderLimit"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) CreateEmailAddressWithContext(ctx context.Context, request *CreateEmailAddressRequest) (response *CreateEmailAddressResponse, err error) {
+    if request == nil {
+        request = NewCreateEmailAddressRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateEmailAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateEmailIdentityRequest() (request *CreateEmailIdentityRequest) {
     request = &CreateEmailIdentityRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -164,6 +218,32 @@ func (c *Client) CreateEmailIdentity(request *CreateEmailIdentityRequest) (respo
     if request == nil {
         request = NewCreateEmailIdentityRequest()
     }
+    
+    response = NewCreateEmailIdentityResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateEmailIdentity
+// 在使用身份发送电子邮件之前，您需要有一个电子邮件域名，该域名可以是您的网站或者移动应用的域名。您首先必须进行验证，证明自己是该域名的所有者，并且授权给腾讯云SES发送许可，才可以从该域名发送电子邮件。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CREATEDBYOTHER = "InvalidParameterValue.CreatedByOther"
+//  INVALIDPARAMETERVALUE_INVALIDEMAILIDENTITY = "InvalidParameterValue.InvalidEmailIdentity"
+//  INVALIDPARAMETERVALUE_REPEATCREATION = "InvalidParameterValue.RepeatCreation"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_EXCEEDDOMAINLIMIT = "OperationDenied.ExceedDomainLimit"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) CreateEmailIdentityWithContext(ctx context.Context, request *CreateEmailIdentityRequest) (response *CreateEmailIdentityResponse, err error) {
+    if request == nil {
+        request = NewCreateEmailIdentityRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateEmailIdentityResponse()
     err = c.Send(request, response)
@@ -214,6 +294,34 @@ func (c *Client) CreateEmailTemplate(request *CreateEmailTemplateRequest) (respo
     return
 }
 
+// CreateEmailTemplate
+// 创建模板，该模板可以是TXT或者HTML，请注意如果HTML不要包含外部文件的CSS。模板中的变量使用 {{变量名}} 表示。
+//
+// 注意：模版需要审核通过才可以使用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXCEEDTEMPLATELIMIT = "FailedOperation.ExceedTemplateLimit"
+//  FAILEDOPERATION_TEMPLATECONTENTTOOLARGE = "FailedOperation.TemplateContentToolarge"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TEMPLATECONTENTISNULL = "InvalidParameterValue.TemplateContentIsNULL"
+//  INVALIDPARAMETERVALUE_TEMPLATECONTENTISWRONG = "InvalidParameterValue.TemplateContentIsWrong"
+//  INVALIDPARAMETERVALUE_TEMPLATENAMEILLEGAL = "InvalidParameterValue.TemplateNameIllegal"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) CreateEmailTemplateWithContext(ctx context.Context, request *CreateEmailTemplateRequest) (response *CreateEmailTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateEmailTemplateRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateEmailTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteBlackListRequest() (request *DeleteBlackListRequest) {
     request = &DeleteBlackListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -243,6 +351,25 @@ func (c *Client) DeleteBlackList(request *DeleteBlackListRequest) (response *Del
     if request == nil {
         request = NewDeleteBlackListRequest()
     }
+    
+    response = NewDeleteBlackListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteBlackList
+// 邮箱被拉黑之后，用户如果确认收件邮箱有效或者已经处于激活状态，可以从腾讯云地址库中删除该黑名单之后继续投递。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) DeleteBlackListWithContext(ctx context.Context, request *DeleteBlackListRequest) (response *DeleteBlackListResponse, err error) {
+    if request == nil {
+        request = NewDeleteBlackListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteBlackListResponse()
     err = c.Send(request, response)
@@ -288,6 +415,29 @@ func (c *Client) DeleteEmailAddress(request *DeleteEmailAddressRequest) (respons
     return
 }
 
+// DeleteEmailAddress
+// 删除发信人地址
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_NOSUCHSENDER = "InvalidParameterValue.NoSuchSender"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) DeleteEmailAddressWithContext(ctx context.Context, request *DeleteEmailAddressRequest) (response *DeleteEmailAddressResponse, err error) {
+    if request == nil {
+        request = NewDeleteEmailAddressRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteEmailAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteEmailIdentityRequest() (request *DeleteEmailIdentityRequest) {
     request = &DeleteEmailIdentityRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -326,6 +476,28 @@ func (c *Client) DeleteEmailIdentity(request *DeleteEmailIdentityRequest) (respo
     return
 }
 
+// DeleteEmailIdentity
+// 删除发信域名，删除后，将不可再使用该域名进行发信
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) DeleteEmailIdentityWithContext(ctx context.Context, request *DeleteEmailIdentityRequest) (response *DeleteEmailIdentityResponse, err error) {
+    if request == nil {
+        request = NewDeleteEmailIdentityRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteEmailIdentityResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteEmailTemplateRequest() (request *DeleteEmailTemplateRequest) {
     request = &DeleteEmailTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -344,7 +516,7 @@ func NewDeleteEmailTemplateResponse() (response *DeleteEmailTemplateResponse) {
 }
 
 // DeleteEmailTemplate
-// 删除发信模版
+// 删除发信模板
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -358,6 +530,28 @@ func (c *Client) DeleteEmailTemplate(request *DeleteEmailTemplateRequest) (respo
     if request == nil {
         request = NewDeleteEmailTemplateRequest()
     }
+    
+    response = NewDeleteEmailTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteEmailTemplate
+// 删除发信模板
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) DeleteEmailTemplateWithContext(ctx context.Context, request *DeleteEmailTemplateRequest) (response *DeleteEmailTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteEmailTemplateRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteEmailTemplateResponse()
     err = c.Send(request, response)
@@ -403,6 +597,29 @@ func (c *Client) GetEmailIdentity(request *GetEmailIdentityRequest) (response *G
     return
 }
 
+// GetEmailIdentity
+// 获取某个发信域名的配置详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_NOTEXISTDOMAIN = "InvalidParameterValue.NotExistDomain"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) GetEmailIdentityWithContext(ctx context.Context, request *GetEmailIdentityRequest) (response *GetEmailIdentityResponse, err error) {
+    if request == nil {
+        request = NewGetEmailIdentityRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewGetEmailIdentityResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetEmailTemplateRequest() (request *GetEmailTemplateRequest) {
     request = &GetEmailTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -436,6 +653,29 @@ func (c *Client) GetEmailTemplate(request *GetEmailTemplateRequest) (response *G
     if request == nil {
         request = NewGetEmailTemplateRequest()
     }
+    
+    response = NewGetEmailTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// GetEmailTemplate
+// 根据模板ID获取模板详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TEMPLATENOTEXIST = "InvalidParameterValue.TemplateNotExist"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) GetEmailTemplateWithContext(ctx context.Context, request *GetEmailTemplateRequest) (response *GetEmailTemplateResponse, err error) {
+    if request == nil {
+        request = NewGetEmailTemplateRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewGetEmailTemplateResponse()
     err = c.Send(request, response)
@@ -505,6 +745,53 @@ func (c *Client) GetSendEmailStatus(request *GetSendEmailStatusRequest) (respons
     return
 }
 
+// GetSendEmailStatus
+// 获取邮件发送状态。仅支持查询180天之内的数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EMAILADDRINBLACKLIST = "FailedOperation.EmailAddrInBlacklist"
+//  FAILEDOPERATION_EMAILCONTENTTOOLARGE = "FailedOperation.EmailContentToolarge"
+//  FAILEDOPERATION_EXCEEDSENDLIMIT = "FailedOperation.ExceedSendLimit"
+//  FAILEDOPERATION_FREQUENCYLIMIT = "FailedOperation.FrequencyLimit"
+//  FAILEDOPERATION_HIGHREJECTIONRATE = "FailedOperation.HighRejectionRate"
+//  FAILEDOPERATION_INCORRECTEMAIL = "FailedOperation.IncorrectEmail"
+//  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
+//  FAILEDOPERATION_INSUFFICIENTQUOTA = "FailedOperation.InsufficientQuota"
+//  FAILEDOPERATION_INVALIDLIMIT = "FailedOperation.InvalidLimit"
+//  FAILEDOPERATION_INVALIDTEMPLATEID = "FailedOperation.InvalidTemplateID"
+//  FAILEDOPERATION_NOTAUTHENTICATEDSENDER = "FailedOperation.NotAuthenticatedSender"
+//  FAILEDOPERATION_NOTSUPPORTDATE = "FailedOperation.NotSupportDate"
+//  FAILEDOPERATION_PROTOCOLCHECKERR = "FailedOperation.ProtocolCheckErr"
+//  FAILEDOPERATION_TEMPORARYBLOCKED = "FailedOperation.TemporaryBlocked"
+//  FAILEDOPERATION_TOOMANYRECIPIENTS = "FailedOperation.TooManyRecipients"
+//  FAILEDOPERATION_UNSUPPORTMAILTYPE = "FailedOperation.UnsupportMailType"
+//  FAILEDOPERATION_WITHOUTPERMISSION = "FailedOperation.WithOutPermission"
+//  FAILEDOPERATION_WRONGCONTENTJSON = "FailedOperation.WrongContentJson"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_EMAILADDRESSISNULL = "InvalidParameterValue.EmailAddressIsNULL"
+//  INVALIDPARAMETERVALUE_EMAILCONTENTISWRONG = "InvalidParameterValue.EmailContentIsWrong"
+//  INVALIDPARAMETERVALUE_WRONGDATE = "InvalidParameterValue.WrongDate"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetSendEmailStatusWithContext(ctx context.Context, request *GetSendEmailStatusRequest) (response *GetSendEmailStatusResponse, err error) {
+    if request == nil {
+        request = NewGetSendEmailStatusRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewGetSendEmailStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetStatisticsReportRequest() (request *GetStatisticsReportRequest) {
     request = &GetStatisticsReportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -542,6 +829,27 @@ func (c *Client) GetStatisticsReport(request *GetStatisticsReportRequest) (respo
     return
 }
 
+// GetStatisticsReport
+// 获取近期发送的统计情况，包含发送量、送达率、打开率、退信率等一系列数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_WRONGDATE = "InvalidParameterValue.WrongDate"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) GetStatisticsReportWithContext(ctx context.Context, request *GetStatisticsReportRequest) (response *GetStatisticsReportResponse, err error) {
+    if request == nil {
+        request = NewGetStatisticsReportRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewGetStatisticsReportResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListBlackEmailAddressRequest() (request *ListBlackEmailAddressRequest) {
     request = &ListBlackEmailAddressRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -573,6 +881,27 @@ func (c *Client) ListBlackEmailAddress(request *ListBlackEmailAddressRequest) (r
     if request == nil {
         request = NewListBlackEmailAddressRequest()
     }
+    
+    response = NewListBlackEmailAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ListBlackEmailAddress
+// 腾讯云发送的邮件一旦被收件方判断为硬退(Hard Bounce)，腾讯云会拉黑该地址，并不允许所有用户向该地址发送邮件。成为邮箱黑名单。如果业务方确认是误判，可以从黑名单中删除。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDLIMIT = "FailedOperation.InvalidLimit"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_WRONGDATE = "InvalidParameterValue.WrongDate"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) ListBlackEmailAddressWithContext(ctx context.Context, request *ListBlackEmailAddressRequest) (response *ListBlackEmailAddressResponse, err error) {
+    if request == nil {
+        request = NewListBlackEmailAddressRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewListBlackEmailAddressResponse()
     err = c.Send(request, response)
@@ -617,6 +946,28 @@ func (c *Client) ListEmailAddress(request *ListEmailAddressRequest) (response *L
     return
 }
 
+// ListEmailAddress
+// 获取发信地址列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) ListEmailAddressWithContext(ctx context.Context, request *ListEmailAddressRequest) (response *ListEmailAddressResponse, err error) {
+    if request == nil {
+        request = NewListEmailAddressRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewListEmailAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListEmailIdentitiesRequest() (request *ListEmailIdentitiesRequest) {
     request = &ListEmailIdentitiesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -655,6 +1006,28 @@ func (c *Client) ListEmailIdentities(request *ListEmailIdentitiesRequest) (respo
     return
 }
 
+// ListEmailIdentities
+// 获取当前发信域名列表，包含已验证通过与未验证的域名
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) ListEmailIdentitiesWithContext(ctx context.Context, request *ListEmailIdentitiesRequest) (response *ListEmailIdentitiesResponse, err error) {
+    if request == nil {
+        request = NewListEmailIdentitiesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewListEmailIdentitiesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListEmailTemplatesRequest() (request *ListEmailTemplatesRequest) {
     request = &ListEmailTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -687,6 +1060,28 @@ func (c *Client) ListEmailTemplates(request *ListEmailTemplatesRequest) (respons
     if request == nil {
         request = NewListEmailTemplatesRequest()
     }
+    
+    response = NewListEmailTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ListEmailTemplates
+// 获取当前邮件模板列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDLIMIT = "FailedOperation.InvalidLimit"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) ListEmailTemplatesWithContext(ctx context.Context, request *ListEmailTemplatesRequest) (response *ListEmailTemplatesResponse, err error) {
+    if request == nil {
+        request = NewListEmailTemplatesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewListEmailTemplatesResponse()
     err = c.Send(request, response)
@@ -743,6 +1138,7 @@ func NewSendEmailResponse() (response *SendEmailResponse) {
 //  INVALIDPARAMETERVALUE_ATTACHCONTENTISWRONG = "InvalidParameterValue.AttachContentIsWrong"
 //  INVALIDPARAMETERVALUE_EMAILADDRESSISNULL = "InvalidParameterValue.EmailAddressIsNULL"
 //  INVALIDPARAMETERVALUE_EMAILCONTENTISWRONG = "InvalidParameterValue.EmailContentIsWrong"
+//  INVALIDPARAMETERVALUE_INVALIDEMAILIDENTITY = "InvalidParameterValue.InvalidEmailIdentity"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
@@ -755,6 +1151,59 @@ func (c *Client) SendEmail(request *SendEmailRequest) (response *SendEmailRespon
     if request == nil {
         request = NewSendEmailRequest()
     }
+    
+    response = NewSendEmailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SendEmail
+// 您可以通过此API发送TEXT或者HTML邮件，适用于触发类邮件（验证码、交易类）。默认仅支持使用模板发送邮件，如需发送自定义内容，请单独联系商务开通此功能。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ATTACHCONTENTTOOLARGE = "FailedOperation.AttachContentToolarge"
+//  FAILEDOPERATION_EMAILADDRINBLACKLIST = "FailedOperation.EmailAddrInBlacklist"
+//  FAILEDOPERATION_EMAILCONTENTTOOLARGE = "FailedOperation.EmailContentToolarge"
+//  FAILEDOPERATION_EXCEEDSENDLIMIT = "FailedOperation.ExceedSendLimit"
+//  FAILEDOPERATION_FREQUENCYLIMIT = "FailedOperation.FrequencyLimit"
+//  FAILEDOPERATION_HIGHREJECTIONRATE = "FailedOperation.HighRejectionRate"
+//  FAILEDOPERATION_INCORRECTEMAIL = "FailedOperation.IncorrectEmail"
+//  FAILEDOPERATION_INCORRECTSENDER = "FailedOperation.IncorrectSender"
+//  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
+//  FAILEDOPERATION_INSUFFICIENTQUOTA = "FailedOperation.InsufficientQuota"
+//  FAILEDOPERATION_INVALIDATTACHNAME = "FailedOperation.InvalidAttachName"
+//  FAILEDOPERATION_INVALIDTEMPLATEID = "FailedOperation.InvalidTemplateID"
+//  FAILEDOPERATION_MISSINGEMAILCONTENT = "FailedOperation.MissingEmailContent"
+//  FAILEDOPERATION_NOATTACHPERMISSION = "FailedOperation.NoAttachPermission"
+//  FAILEDOPERATION_NOTAUTHENTICATEDSENDER = "FailedOperation.NotAuthenticatedSender"
+//  FAILEDOPERATION_PROTOCOLCHECKERR = "FailedOperation.ProtocolCheckErr"
+//  FAILEDOPERATION_SENDEMAILERR = "FailedOperation.SendEmailErr"
+//  FAILEDOPERATION_TEMPORARYBLOCKED = "FailedOperation.TemporaryBlocked"
+//  FAILEDOPERATION_TOOMANYATTACHMENTS = "FailedOperation.TooManyAttachments"
+//  FAILEDOPERATION_TOOMANYRECIPIENTS = "FailedOperation.TooManyRecipients"
+//  FAILEDOPERATION_UNSUPPORTMAILTYPE = "FailedOperation.UnsupportMailType"
+//  FAILEDOPERATION_WITHOUTPERMISSION = "FailedOperation.WithOutPermission"
+//  FAILEDOPERATION_WRONGCONTENTJSON = "FailedOperation.WrongContentJson"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ATTACHCONTENTISWRONG = "InvalidParameterValue.AttachContentIsWrong"
+//  INVALIDPARAMETERVALUE_EMAILADDRESSISNULL = "InvalidParameterValue.EmailAddressIsNULL"
+//  INVALIDPARAMETERVALUE_EMAILCONTENTISWRONG = "InvalidParameterValue.EmailContentIsWrong"
+//  INVALIDPARAMETERVALUE_INVALIDEMAILIDENTITY = "InvalidParameterValue.InvalidEmailIdentity"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SendEmailWithContext(ctx context.Context, request *SendEmailRequest) (response *SendEmailResponse, err error) {
+    if request == nil {
+        request = NewSendEmailRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewSendEmailResponse()
     err = c.Send(request, response)
@@ -801,6 +1250,30 @@ func (c *Client) UpdateEmailIdentity(request *UpdateEmailIdentityRequest) (respo
     return
 }
 
+// UpdateEmailIdentity
+// 您已经成功配置好了您的DNS，接下来请求腾讯云验证您的DNS配置是否正确
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SERVICENOTAVAILABLE = "FailedOperation.ServiceNotAvailable"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_NOTEXISTDOMAIN = "InvalidParameterValue.NotExistDomain"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) UpdateEmailIdentityWithContext(ctx context.Context, request *UpdateEmailIdentityRequest) (response *UpdateEmailIdentityResponse, err error) {
+    if request == nil {
+        request = NewUpdateEmailIdentityRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewUpdateEmailIdentityResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateEmailTemplateRequest() (request *UpdateEmailTemplateRequest) {
     request = &UpdateEmailTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -837,6 +1310,32 @@ func (c *Client) UpdateEmailTemplate(request *UpdateEmailTemplateRequest) (respo
     if request == nil {
         request = NewUpdateEmailTemplateRequest()
     }
+    
+    response = NewUpdateEmailTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UpdateEmailTemplate
+// 更新邮件模板，更新后需再次审核
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TEMPLATECONTENTISNULL = "InvalidParameterValue.TemplateContentIsNULL"
+//  INVALIDPARAMETERVALUE_TEMPLATECONTENTISWRONG = "InvalidParameterValue.TemplateContentIsWrong"
+//  INVALIDPARAMETERVALUE_TEMPLATENAMEILLEGAL = "InvalidParameterValue.TemplateNameIllegal"
+//  INVALIDPARAMETERVALUE_TEMPLATENAMEISNULL = "InvalidParameterValue.TemplateNameIsNULL"
+//  INVALIDPARAMETERVALUE_TEMPLATENOTEXIST = "InvalidParameterValue.TemplateNotExist"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) UpdateEmailTemplateWithContext(ctx context.Context, request *UpdateEmailTemplateRequest) (response *UpdateEmailTemplateResponse, err error) {
+    if request == nil {
+        request = NewUpdateEmailTemplateRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUpdateEmailTemplateResponse()
     err = c.Send(request, response)

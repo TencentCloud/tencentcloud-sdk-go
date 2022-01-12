@@ -15,6 +15,7 @@
 package v20180319
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -76,6 +77,23 @@ func (c *Client) DeregisterMigrationTask(request *DeregisterMigrationTaskRequest
     return
 }
 
+// DeregisterMigrationTask
+// 取消注册迁移任务
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DeregisterMigrationTaskWithContext(ctx context.Context, request *DeregisterMigrationTaskRequest) (response *DeregisterMigrationTaskResponse, err error) {
+    if request == nil {
+        request = NewDeregisterMigrationTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeregisterMigrationTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMigrationTaskRequest() (request *DescribeMigrationTaskRequest) {
     request = &DescribeMigrationTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -102,6 +120,22 @@ func (c *Client) DescribeMigrationTask(request *DescribeMigrationTaskRequest) (r
     if request == nil {
         request = NewDescribeMigrationTaskRequest()
     }
+    
+    response = NewDescribeMigrationTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeMigrationTask
+// 获取指定迁移任务详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeMigrationTaskWithContext(ctx context.Context, request *DescribeMigrationTaskRequest) (response *DescribeMigrationTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeMigrationTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeMigrationTaskResponse()
     err = c.Send(request, response)
@@ -140,6 +174,22 @@ func (c *Client) ListMigrationProject(request *ListMigrationProjectRequest) (res
     return
 }
 
+// ListMigrationProject
+// 获取迁移项目名称列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ListMigrationProjectWithContext(ctx context.Context, request *ListMigrationProjectRequest) (response *ListMigrationProjectResponse, err error) {
+    if request == nil {
+        request = NewListMigrationProjectRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewListMigrationProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListMigrationTaskRequest() (request *ListMigrationTaskRequest) {
     request = &ListMigrationTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -166,6 +216,22 @@ func (c *Client) ListMigrationTask(request *ListMigrationTaskRequest) (response 
     if request == nil {
         request = NewListMigrationTaskRequest()
     }
+    
+    response = NewListMigrationTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ListMigrationTask
+// 获取迁移任务列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ListMigrationTaskWithContext(ctx context.Context, request *ListMigrationTaskRequest) (response *ListMigrationTaskResponse, err error) {
+    if request == nil {
+        request = NewListMigrationTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewListMigrationTaskResponse()
     err = c.Send(request, response)
@@ -205,6 +271,23 @@ func (c *Client) ModifyMigrationTaskBelongToProject(request *ModifyMigrationTask
     return
 }
 
+// ModifyMigrationTaskBelongToProject
+// 更改迁移任务所属项目
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) ModifyMigrationTaskBelongToProjectWithContext(ctx context.Context, request *ModifyMigrationTaskBelongToProjectRequest) (response *ModifyMigrationTaskBelongToProjectResponse, err error) {
+    if request == nil {
+        request = NewModifyMigrationTaskBelongToProjectRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyMigrationTaskBelongToProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyMigrationTaskStatusRequest() (request *ModifyMigrationTaskStatusRequest) {
     request = &ModifyMigrationTaskStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -231,6 +314,22 @@ func (c *Client) ModifyMigrationTaskStatus(request *ModifyMigrationTaskStatusReq
     if request == nil {
         request = NewModifyMigrationTaskStatusRequest()
     }
+    
+    response = NewModifyMigrationTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyMigrationTaskStatus
+// 更新迁移任务状态
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyMigrationTaskStatusWithContext(ctx context.Context, request *ModifyMigrationTaskStatusRequest) (response *ModifyMigrationTaskStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyMigrationTaskStatusRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyMigrationTaskStatusResponse()
     err = c.Send(request, response)
@@ -264,6 +363,23 @@ func (c *Client) RegisterMigrationTask(request *RegisterMigrationTaskRequest) (r
     if request == nil {
         request = NewRegisterMigrationTaskRequest()
     }
+    
+    response = NewRegisterMigrationTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// RegisterMigrationTask
+// 注册迁移任务
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) RegisterMigrationTaskWithContext(ctx context.Context, request *RegisterMigrationTaskRequest) (response *RegisterMigrationTaskResponse, err error) {
+    if request == nil {
+        request = NewRegisterMigrationTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewRegisterMigrationTaskResponse()
     err = c.Send(request, response)

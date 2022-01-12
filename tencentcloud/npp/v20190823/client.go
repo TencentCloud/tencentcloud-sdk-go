@@ -15,6 +15,7 @@
 package v20190823
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -72,6 +73,19 @@ func (c *Client) CreateCallBack(request *CreateCallBackRequest) (response *Creat
     return
 }
 
+// CreateCallBack
+// 回拨呼叫请求
+func (c *Client) CreateCallBackWithContext(ctx context.Context, request *CreateCallBackRequest) (response *CreateCallBackResponse, err error) {
+    if request == nil {
+        request = NewCreateCallBackRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateCallBackResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDelVirtualNumRequest() (request *DelVirtualNumRequest) {
     request = &DelVirtualNumRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -95,6 +109,19 @@ func (c *Client) DelVirtualNum(request *DelVirtualNumRequest) (response *DelVirt
     if request == nil {
         request = NewDelVirtualNumRequest()
     }
+    
+    response = NewDelVirtualNumResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DelVirtualNum
+// 直拨解绑中间号
+func (c *Client) DelVirtualNumWithContext(ctx context.Context, request *DelVirtualNumRequest) (response *DelVirtualNumResponse, err error) {
+    if request == nil {
+        request = NewDelVirtualNumRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDelVirtualNumResponse()
     err = c.Send(request, response)
@@ -130,6 +157,19 @@ func (c *Client) DeleteCallBack(request *DeleteCallBackRequest) (response *Delet
     return
 }
 
+// DeleteCallBack
+// 回拨呼叫取消
+func (c *Client) DeleteCallBackWithContext(ctx context.Context, request *DeleteCallBackRequest) (response *DeleteCallBackResponse, err error) {
+    if request == nil {
+        request = NewDeleteCallBackRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteCallBackResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCallBackCdrRequest() (request *DescribeCallBackCdrRequest) {
     request = &DescribeCallBackCdrRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -153,6 +193,19 @@ func (c *Client) DescribeCallBackCdr(request *DescribeCallBackCdrRequest) (respo
     if request == nil {
         request = NewDescribeCallBackCdrRequest()
     }
+    
+    response = NewDescribeCallBackCdrResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCallBackCdr
+// 回拨话单获取接口
+func (c *Client) DescribeCallBackCdrWithContext(ctx context.Context, request *DescribeCallBackCdrRequest) (response *DescribeCallBackCdrResponse, err error) {
+    if request == nil {
+        request = NewDescribeCallBackCdrRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeCallBackCdrResponse()
     err = c.Send(request, response)
@@ -188,6 +241,19 @@ func (c *Client) DescribeCallBackStatus(request *DescribeCallBackStatusRequest) 
     return
 }
 
+// DescribeCallBackStatus
+// 回拨通话状态获取
+func (c *Client) DescribeCallBackStatusWithContext(ctx context.Context, request *DescribeCallBackStatusRequest) (response *DescribeCallBackStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeCallBackStatusRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeCallBackStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCallerDisplayListRequest() (request *DescribeCallerDisplayListRequest) {
     request = &DescribeCallerDisplayListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -211,6 +277,19 @@ func (c *Client) DescribeCallerDisplayList(request *DescribeCallerDisplayListReq
     if request == nil {
         request = NewDescribeCallerDisplayListRequest()
     }
+    
+    response = NewDescribeCallerDisplayListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCallerDisplayList
+// 回拨拉取主叫显号号码集合
+func (c *Client) DescribeCallerDisplayListWithContext(ctx context.Context, request *DescribeCallerDisplayListRequest) (response *DescribeCallerDisplayListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCallerDisplayListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeCallerDisplayListResponse()
     err = c.Send(request, response)
@@ -246,6 +325,19 @@ func (c *Client) Get400Cdr(request *Get400CdrRequest) (response *Get400CdrRespon
     return
 }
 
+// Get400Cdr
+// 直拨话单获取接口
+func (c *Client) Get400CdrWithContext(ctx context.Context, request *Get400CdrRequest) (response *Get400CdrResponse, err error) {
+    if request == nil {
+        request = NewGet400CdrRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewGet400CdrResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetVirtualNumRequest() (request *GetVirtualNumRequest) {
     request = &GetVirtualNumRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -269,6 +361,19 @@ func (c *Client) GetVirtualNum(request *GetVirtualNumRequest) (response *GetVirt
     if request == nil {
         request = NewGetVirtualNumRequest()
     }
+    
+    response = NewGetVirtualNumResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// GetVirtualNum
+// 直拨获取中间号（App 使用方发起）
+func (c *Client) GetVirtualNumWithContext(ctx context.Context, request *GetVirtualNumRequest) (response *GetVirtualNumResponse, err error) {
+    if request == nil {
+        request = NewGetVirtualNumRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewGetVirtualNumResponse()
     err = c.Send(request, response)

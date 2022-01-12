@@ -15,6 +15,7 @@
 package v20190718
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -89,6 +90,36 @@ func (c *Client) CreateAccessGroup(request *CreateAccessGroupRequest) (response 
     return
 }
 
+// CreateAccessGroup
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+//
+// 
+//
+// 创建权限组。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDACCESSGROUPNAME = "InvalidParameterValue.InvalidAccessGroupName"
+//  INVALIDPARAMETERVALUE_INVALIDDESCRIPTION = "InvalidParameterValue.InvalidDescription"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAccessGroupWithContext(ctx context.Context, request *CreateAccessGroupRequest) (response *CreateAccessGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateAccessGroupRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateAccessGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAccessRulesRequest() (request *CreateAccessRulesRequest) {
     request = &CreateAccessRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -130,6 +161,37 @@ func (c *Client) CreateAccessRules(request *CreateAccessRulesRequest) (response 
     if request == nil {
         request = NewCreateAccessRulesRequest()
     }
+    
+    response = NewCreateAccessRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateAccessRules
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+//
+// 
+//
+// 批量创建权限规则，权限规则ID和创建时间无需填写。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDACCESSGROUPID = "InvalidParameterValue.InvalidAccessGroupId"
+//  INVALIDPARAMETERVALUE_INVALIDACCESSRULEADDRESS = "InvalidParameterValue.InvalidAccessRuleAddress"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_ACCESSGROUPNOTEXISTS = "ResourceNotFound.AccessGroupNotExists"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAccessRulesWithContext(ctx context.Context, request *CreateAccessRulesRequest) (response *CreateAccessRulesResponse, err error) {
+    if request == nil {
+        request = NewCreateAccessRulesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateAccessRulesResponse()
     err = c.Send(request, response)
@@ -183,6 +245,37 @@ func (c *Client) CreateFileSystem(request *CreateFileSystemRequest) (response *C
     return
 }
 
+// CreateFileSystem
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+//
+// 
+//
+// 创建文件系统（异步）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDCAPACITYQUOTA = "InvalidParameterValue.InvalidCapacityQuota"
+//  INVALIDPARAMETERVALUE_INVALIDDESCRIPTION = "InvalidParameterValue.InvalidDescription"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMNAME = "InvalidParameterValue.InvalidFileSystemName"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateFileSystemWithContext(ctx context.Context, request *CreateFileSystemRequest) (response *CreateFileSystemResponse, err error) {
+    if request == nil {
+        request = NewCreateFileSystemRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateFileSystemResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateLifeCycleRulesRequest() (request *CreateLifeCycleRulesRequest) {
     request = &CreateLifeCycleRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -224,6 +317,37 @@ func (c *Client) CreateLifeCycleRules(request *CreateLifeCycleRulesRequest) (res
     if request == nil {
         request = NewCreateLifeCycleRulesRequest()
     }
+    
+    response = NewCreateLifeCycleRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateLifeCycleRules
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+//
+// 
+//
+// 批量创建生命周期规则，生命周期规则ID和创建时间无需填写。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FILESYSTEMNOTEXISTS = "ResourceNotFound.FileSystemNotExists"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateLifeCycleRulesWithContext(ctx context.Context, request *CreateLifeCycleRulesRequest) (response *CreateLifeCycleRulesResponse, err error) {
+    if request == nil {
+        request = NewCreateLifeCycleRulesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateLifeCycleRulesResponse()
     err = c.Send(request, response)
@@ -281,6 +405,41 @@ func (c *Client) CreateMountPoint(request *CreateMountPointRequest) (response *C
     return
 }
 
+// CreateMountPoint
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+//
+// 
+//
+// 创建文件系统挂载点，仅限于创建成功的文件系统。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDACCESSGROUPID = "InvalidParameterValue.InvalidAccessGroupId"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  INVALIDPARAMETERVALUE_INVALIDMOUNTPOINTNAME = "InvalidParameterValue.InvalidMountPointName"
+//  INVALIDPARAMETERVALUE_INVALIDVPCID = "InvalidParameterValue.InvalidVpcId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_ACCESSGROUPNOTEXISTS = "ResourceNotFound.AccessGroupNotExists"
+//  RESOURCENOTFOUND_FILESYSTEMNOTEXISTS = "ResourceNotFound.FileSystemNotExists"
+//  RESOURCENOTFOUND_VPCNOTEXISTS = "ResourceNotFound.VpcNotExists"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateMountPointWithContext(ctx context.Context, request *CreateMountPointRequest) (response *CreateMountPointResponse, err error) {
+    if request == nil {
+        request = NewCreateMountPointRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateMountPointResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRestoreTasksRequest() (request *CreateRestoreTasksRequest) {
     request = &CreateRestoreTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -322,6 +481,37 @@ func (c *Client) CreateRestoreTasks(request *CreateRestoreTasksRequest) (respons
     if request == nil {
         request = NewCreateRestoreTasksRequest()
     }
+    
+    response = NewCreateRestoreTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateRestoreTasks
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+//
+// 
+//
+// 批量创建回热任务，回热任务ID、状态和创建时间无需填写。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FILESYSTEMNOTEXISTS = "ResourceNotFound.FileSystemNotExists"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateRestoreTasksWithContext(ctx context.Context, request *CreateRestoreTasksRequest) (response *CreateRestoreTasksResponse, err error) {
+    if request == nil {
+        request = NewCreateRestoreTasksRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateRestoreTasksResponse()
     err = c.Send(request, response)
@@ -372,6 +562,34 @@ func (c *Client) DeleteAccessGroup(request *DeleteAccessGroupRequest) (response 
     return
 }
 
+// DeleteAccessGroup
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+//
+// 
+//
+// 删除权限组。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDACCESSGROUPID = "InvalidParameterValue.InvalidAccessGroupId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_ACCESSGROUPNOTEXISTS = "ResourceNotFound.AccessGroupNotExists"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteAccessGroupWithContext(ctx context.Context, request *DeleteAccessGroupRequest) (response *DeleteAccessGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteAccessGroupRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteAccessGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAccessRulesRequest() (request *DeleteAccessRulesRequest) {
     request = &DeleteAccessRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -408,6 +626,32 @@ func (c *Client) DeleteAccessRules(request *DeleteAccessRulesRequest) (response 
     if request == nil {
         request = NewDeleteAccessRulesRequest()
     }
+    
+    response = NewDeleteAccessRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteAccessRules
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+//
+// 
+//
+// 批量删除权限规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ACCESSRULENOTEXISTS = "ResourceNotFound.AccessRuleNotExists"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteAccessRulesWithContext(ctx context.Context, request *DeleteAccessRulesRequest) (response *DeleteAccessRulesResponse, err error) {
+    if request == nil {
+        request = NewDeleteAccessRulesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteAccessRulesResponse()
     err = c.Send(request, response)
@@ -459,6 +703,35 @@ func (c *Client) DeleteFileSystem(request *DeleteFileSystemRequest) (response *D
     return
 }
 
+// DeleteFileSystem
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+//
+// 
+//
+// 删除文件系统，不允许删除非空文件系统。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_FILESYSTEMNOTEMPTY = "FailedOperation.FileSystemNotEmpty"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FILESYSTEMNOTEXISTS = "ResourceNotFound.FileSystemNotExists"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteFileSystemWithContext(ctx context.Context, request *DeleteFileSystemRequest) (response *DeleteFileSystemResponse, err error) {
+    if request == nil {
+        request = NewDeleteFileSystemRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteFileSystemResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteLifeCycleRulesRequest() (request *DeleteLifeCycleRulesRequest) {
     request = &DeleteLifeCycleRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -495,6 +768,32 @@ func (c *Client) DeleteLifeCycleRules(request *DeleteLifeCycleRulesRequest) (res
     if request == nil {
         request = NewDeleteLifeCycleRulesRequest()
     }
+    
+    response = NewDeleteLifeCycleRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteLifeCycleRules
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+//
+// 
+//
+// 批量删除生命周期规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteLifeCycleRulesWithContext(ctx context.Context, request *DeleteLifeCycleRulesRequest) (response *DeleteLifeCycleRulesResponse, err error) {
+    if request == nil {
+        request = NewDeleteLifeCycleRulesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteLifeCycleRulesResponse()
     err = c.Send(request, response)
@@ -544,6 +843,33 @@ func (c *Client) DeleteMountPoint(request *DeleteMountPointRequest) (response *D
     return
 }
 
+// DeleteMountPoint
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+//
+// 
+//
+// 删除挂载点。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDMOUNTPOINTID = "InvalidParameterValue.InvalidMountPointId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_MOUNTPOINTNOTEXISTS = "ResourceNotFound.MountPointNotExists"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteMountPointWithContext(ctx context.Context, request *DeleteMountPointRequest) (response *DeleteMountPointResponse, err error) {
+    if request == nil {
+        request = NewDeleteMountPointRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteMountPointResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAccessGroupsRequest() (request *DescribeAccessGroupsRequest) {
     request = &DescribeAccessGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -579,6 +905,31 @@ func (c *Client) DescribeAccessGroups(request *DescribeAccessGroupsRequest) (res
     if request == nil {
         request = NewDescribeAccessGroupsRequest()
     }
+    
+    response = NewDescribeAccessGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAccessGroups
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+//
+// 
+//
+// 查看权限组列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAccessGroupsWithContext(ctx context.Context, request *DescribeAccessGroupsRequest) (response *DescribeAccessGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccessGroupsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAccessGroupsResponse()
     err = c.Send(request, response)
@@ -622,6 +973,33 @@ func (c *Client) DescribeAccessRules(request *DescribeAccessRulesRequest) (respo
     if request == nil {
         request = NewDescribeAccessRulesRequest()
     }
+    
+    response = NewDescribeAccessRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAccessRules
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+//
+// 
+//
+// 通过权限组ID查看权限规则列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDACCESSGROUPID = "InvalidParameterValue.InvalidAccessGroupId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ACCESSGROUPNOTEXISTS = "ResourceNotFound.AccessGroupNotExists"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAccessRulesWithContext(ctx context.Context, request *DescribeAccessRulesRequest) (response *DescribeAccessRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccessRulesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAccessRulesResponse()
     err = c.Send(request, response)
@@ -672,6 +1050,34 @@ func (c *Client) DescribeFileSystem(request *DescribeFileSystemRequest) (respons
     return
 }
 
+// DescribeFileSystem
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+//
+// 
+//
+// 查看文件系统详细信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FILESYSTEMNOTEXISTS = "ResourceNotFound.FileSystemNotExists"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeFileSystemWithContext(ctx context.Context, request *DescribeFileSystemRequest) (response *DescribeFileSystemResponse, err error) {
+    if request == nil {
+        request = NewDescribeFileSystemRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeFileSystemResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFileSystemsRequest() (request *DescribeFileSystemsRequest) {
     request = &DescribeFileSystemsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -707,6 +1113,31 @@ func (c *Client) DescribeFileSystems(request *DescribeFileSystemsRequest) (respo
     if request == nil {
         request = NewDescribeFileSystemsRequest()
     }
+    
+    response = NewDescribeFileSystemsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeFileSystems
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+//
+// 
+//
+// 查看文件系统列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeFileSystemsWithContext(ctx context.Context, request *DescribeFileSystemsRequest) (response *DescribeFileSystemsResponse, err error) {
+    if request == nil {
+        request = NewDescribeFileSystemsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeFileSystemsResponse()
     err = c.Send(request, response)
@@ -757,6 +1188,34 @@ func (c *Client) DescribeLifeCycleRules(request *DescribeLifeCycleRulesRequest) 
     return
 }
 
+// DescribeLifeCycleRules
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+//
+// 
+//
+// 通过文件系统ID查看生命周期规则列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FILESYSTEMNOTEXISTS = "ResourceNotFound.FileSystemNotExists"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeLifeCycleRulesWithContext(ctx context.Context, request *DescribeLifeCycleRulesRequest) (response *DescribeLifeCycleRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeLifeCycleRulesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeLifeCycleRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMountPointRequest() (request *DescribeMountPointRequest) {
     request = &DescribeMountPointRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -794,6 +1253,33 @@ func (c *Client) DescribeMountPoint(request *DescribeMountPointRequest) (respons
     if request == nil {
         request = NewDescribeMountPointRequest()
     }
+    
+    response = NewDescribeMountPointResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeMountPoint
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+//
+// 
+//
+// 查看挂载点详细信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDMOUNTPOINTID = "InvalidParameterValue.InvalidMountPointId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_MOUNTPOINTNOTEXISTS = "ResourceNotFound.MountPointNotExists"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeMountPointWithContext(ctx context.Context, request *DescribeMountPointRequest) (response *DescribeMountPointResponse, err error) {
+    if request == nil {
+        request = NewDescribeMountPointRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeMountPointResponse()
     err = c.Send(request, response)
@@ -846,6 +1332,36 @@ func (c *Client) DescribeMountPoints(request *DescribeMountPointsRequest) (respo
     return
 }
 
+// DescribeMountPoints
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+//
+// 
+//
+// 通过文件系统ID或者权限组ID查看挂载点列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDACCESSGROUPID = "InvalidParameterValue.InvalidAccessGroupId"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ACCESSGROUPNOTEXISTS = "ResourceNotFound.AccessGroupNotExists"
+//  RESOURCENOTFOUND_FILESYSTEMNOTEXISTS = "ResourceNotFound.FileSystemNotExists"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeMountPointsWithContext(ctx context.Context, request *DescribeMountPointsRequest) (response *DescribeMountPointsResponse, err error) {
+    if request == nil {
+        request = NewDescribeMountPointsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeMountPointsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeResourceTagsRequest() (request *DescribeResourceTagsRequest) {
     request = &DescribeResourceTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -890,6 +1406,34 @@ func (c *Client) DescribeResourceTags(request *DescribeResourceTagsRequest) (res
     return
 }
 
+// DescribeResourceTags
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+//
+// 
+//
+// 通过文件系统ID查看资源标签列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FILESYSTEMNOTEXISTS = "ResourceNotFound.FileSystemNotExists"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeResourceTagsWithContext(ctx context.Context, request *DescribeResourceTagsRequest) (response *DescribeResourceTagsResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceTagsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeResourceTagsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRestoreTasksRequest() (request *DescribeRestoreTasksRequest) {
     request = &DescribeRestoreTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -928,6 +1472,34 @@ func (c *Client) DescribeRestoreTasks(request *DescribeRestoreTasksRequest) (res
     if request == nil {
         request = NewDescribeRestoreTasksRequest()
     }
+    
+    response = NewDescribeRestoreTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeRestoreTasks
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+//
+// 
+//
+// 通过文件系统ID查看回热任务列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FILESYSTEMNOTEXISTS = "ResourceNotFound.FileSystemNotExists"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeRestoreTasksWithContext(ctx context.Context, request *DescribeRestoreTasksRequest) (response *DescribeRestoreTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeRestoreTasksRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeRestoreTasksResponse()
     err = c.Send(request, response)
@@ -979,6 +1551,35 @@ func (c *Client) ModifyAccessGroup(request *ModifyAccessGroupRequest) (response 
     return
 }
 
+// ModifyAccessGroup
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+//
+// 
+//
+// 修改权限组属性。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDACCESSGROUPID = "InvalidParameterValue.InvalidAccessGroupId"
+//  INVALIDPARAMETERVALUE_INVALIDACCESSGROUPNAME = "InvalidParameterValue.InvalidAccessGroupName"
+//  INVALIDPARAMETERVALUE_INVALIDDESCRIPTION = "InvalidParameterValue.InvalidDescription"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ACCESSGROUPNOTEXISTS = "ResourceNotFound.AccessGroupNotExists"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyAccessGroupWithContext(ctx context.Context, request *ModifyAccessGroupRequest) (response *ModifyAccessGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyAccessGroupRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyAccessGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAccessRulesRequest() (request *ModifyAccessRulesRequest) {
     request = &ModifyAccessRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1016,6 +1617,33 @@ func (c *Client) ModifyAccessRules(request *ModifyAccessRulesRequest) (response 
     if request == nil {
         request = NewModifyAccessRulesRequest()
     }
+    
+    response = NewModifyAccessRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyAccessRules
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+//
+// 
+//
+// 批量修改权限规则属性，需要指定权限规则ID，支持修改权限规则地址、访问模式和优先级。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDACCESSRULEADDRESS = "InvalidParameterValue.InvalidAccessRuleAddress"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ACCESSRULENOTEXISTS = "ResourceNotFound.AccessRuleNotExists"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyAccessRulesWithContext(ctx context.Context, request *ModifyAccessRulesRequest) (response *ModifyAccessRulesResponse, err error) {
+    if request == nil {
+        request = NewModifyAccessRulesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyAccessRulesResponse()
     err = c.Send(request, response)
@@ -1070,6 +1698,38 @@ func (c *Client) ModifyFileSystem(request *ModifyFileSystemRequest) (response *M
     return
 }
 
+// ModifyFileSystem
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+//
+// 
+//
+// 修改文件系统属性，仅限于创建成功的文件系统。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_QUOTALESSTHANCURRENTUSED = "FailedOperation.QuotaLessThanCurrentUsed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDCAPACITYQUOTA = "InvalidParameterValue.InvalidCapacityQuota"
+//  INVALIDPARAMETERVALUE_INVALIDDESCRIPTION = "InvalidParameterValue.InvalidDescription"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMNAME = "InvalidParameterValue.InvalidFileSystemName"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FILESYSTEMNOTEXISTS = "ResourceNotFound.FileSystemNotExists"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyFileSystemWithContext(ctx context.Context, request *ModifyFileSystemRequest) (response *ModifyFileSystemResponse, err error) {
+    if request == nil {
+        request = NewModifyFileSystemRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyFileSystemResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyLifeCycleRulesRequest() (request *ModifyLifeCycleRulesRequest) {
     request = &ModifyLifeCycleRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1107,6 +1767,33 @@ func (c *Client) ModifyLifeCycleRules(request *ModifyLifeCycleRulesRequest) (res
     if request == nil {
         request = NewModifyLifeCycleRulesRequest()
     }
+    
+    response = NewModifyLifeCycleRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyLifeCycleRules
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+//
+// 
+//
+// 批量修改生命周期规则属性，需要指定生命周期规则ID，支持修改生命周期规则名称、路径、转换列表和状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyLifeCycleRulesWithContext(ctx context.Context, request *ModifyLifeCycleRulesRequest) (response *ModifyLifeCycleRulesResponse, err error) {
+    if request == nil {
+        request = NewModifyLifeCycleRulesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyLifeCycleRulesResponse()
     err = c.Send(request, response)
@@ -1159,6 +1846,36 @@ func (c *Client) ModifyMountPoint(request *ModifyMountPointRequest) (response *M
     return
 }
 
+// ModifyMountPoint
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+//
+// 
+//
+// 修改挂载点属性。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDACCESSGROUPID = "InvalidParameterValue.InvalidAccessGroupId"
+//  INVALIDPARAMETERVALUE_INVALIDMOUNTPOINTID = "InvalidParameterValue.InvalidMountPointId"
+//  INVALIDPARAMETERVALUE_INVALIDMOUNTPOINTNAME = "InvalidParameterValue.InvalidMountPointName"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ACCESSGROUPNOTEXISTS = "ResourceNotFound.AccessGroupNotExists"
+//  RESOURCENOTFOUND_MOUNTPOINTNOTEXISTS = "ResourceNotFound.MountPointNotExists"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyMountPointWithContext(ctx context.Context, request *ModifyMountPointRequest) (response *ModifyMountPointResponse, err error) {
+    if request == nil {
+        request = NewModifyMountPointRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyMountPointResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyResourceTagsRequest() (request *ModifyResourceTagsRequest) {
     request = &ModifyResourceTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1199,6 +1916,36 @@ func (c *Client) ModifyResourceTags(request *ModifyResourceTagsRequest) (respons
     if request == nil {
         request = NewModifyResourceTagsRequest()
     }
+    
+    response = NewModifyResourceTagsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyResourceTags
+// 云API旧版本2019-07-18预下线，所有功能由新版本2020-11-12替代，目前云API主要用作控制台使用。
+//
+// 
+//
+// 修改资源标签列表，全量覆盖。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FILESYSTEMNOTEXISTS = "ResourceNotFound.FileSystemNotExists"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyResourceTagsWithContext(ctx context.Context, request *ModifyResourceTagsRequest) (response *ModifyResourceTagsResponse, err error) {
+    if request == nil {
+        request = NewModifyResourceTagsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyResourceTagsResponse()
     err = c.Send(request, response)

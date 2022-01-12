@@ -15,6 +15,7 @@
 package v20180228
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -82,6 +83,29 @@ func (c *Client) CreateAccount(request *CreateAccountRequest) (response *CreateA
     return
 }
 
+// CreateAccount
+// 创建集团门店管理员账号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTEXIST = "FailedOperation.AccountExist"
+//  FAILEDOPERATION_NEEDGRANTROLEFIRST = "FailedOperation.NeedGrantRoleFirst"
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  FAILEDOPERATION_NOTMATCHSHOPCODE = "FailedOperation.NotMatchShopCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) CreateAccountWithContext(ctx context.Context, request *CreateAccountRequest) (response *CreateAccountResponse, err error) {
+    if request == nil {
+        request = NewCreateAccountRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateFacePictureRequest() (request *CreateFacePictureRequest) {
     request = &CreateFacePictureRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -115,6 +139,29 @@ func (c *Client) CreateFacePicture(request *CreateFacePictureRequest) (response 
     if request == nil {
         request = NewCreateFacePictureRequest()
     }
+    
+    response = NewCreateFacePictureResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateFacePicture
+// 通过上传指定规格的人脸图片，创建黑名单用户或者白名单用户。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTEXIST = "FailedOperation.AccountExist"
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  FAILEDOPERATION_NOTMATCHSHOPCODE = "FailedOperation.NotMatchShopCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateFacePictureWithContext(ctx context.Context, request *CreateFacePictureRequest) (response *CreateFacePictureResponse, err error) {
+    if request == nil {
+        request = NewCreateFacePictureRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateFacePictureResponse()
     err = c.Send(request, response)
@@ -169,6 +216,38 @@ func (c *Client) DeletePersonFeature(request *DeletePersonFeatureRequest) (respo
     return
 }
 
+// DeletePersonFeature
+// 删除顾客特征，仅支持删除黑名单或者白名单用户特征。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTEXIST = "FailedOperation.AccountExist"
+//  FAILEDOPERATION_NEEDGRANTROLEFIRST = "FailedOperation.NeedGrantRoleFirst"
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NOPERSON = "FailedOperation.NoPerson"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  FAILEDOPERATION_NOTMATCHSHOPCODE = "FailedOperation.NotMatchShopCode"
+//  FAILEDOPERATION_PARAMETERERROR = "FailedOperation.ParameterError"
+//  FAILEDOPERATION_PROCESSFAIL = "FailedOperation.ProcessFail"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATAERROR = "InternalError.DataError"
+//  INTERNALERROR_DATAHASEXISTS = "InternalError.DataHasExists"
+//  INTERNALERROR_INNERSERVERFAILED = "InternalError.InnerServerFailed"
+//  INTERNALERROR_METADATAOPFAILED = "InternalError.MetaDataOpFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_JSONPARSEERR = "InvalidParameterValue.JsonParseErr"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeletePersonFeatureWithContext(ctx context.Context, request *DeletePersonFeatureRequest) (response *DeletePersonFeatureResponse, err error) {
+    if request == nil {
+        request = NewDeletePersonFeatureRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeletePersonFeatureResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCameraPersonRequest() (request *DescribeCameraPersonRequest) {
     request = &DescribeCameraPersonRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -197,6 +276,24 @@ func (c *Client) DescribeCameraPerson(request *DescribeCameraPersonRequest) (res
     if request == nil {
         request = NewDescribeCameraPersonRequest()
     }
+    
+    response = NewDescribeCameraPersonResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCameraPerson
+// 通过指定设备ID和指定时段，获取该时段内中收银台摄像设备抓取到顾客头像及身份ID
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_PARAMETERERROR = "FailedOperation.ParameterError"
+//  FAILEDOPERATION_PROCESSFAIL = "FailedOperation.ProcessFail"
+func (c *Client) DescribeCameraPersonWithContext(ctx context.Context, request *DescribeCameraPersonRequest) (response *DescribeCameraPersonResponse, err error) {
+    if request == nil {
+        request = NewDescribeCameraPersonRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeCameraPersonResponse()
     err = c.Send(request, response)
@@ -243,6 +340,30 @@ func (c *Client) DescribeClusterPersonArrivedMall(request *DescribeClusterPerson
     return
 }
 
+// DescribeClusterPersonArrivedMall
+// 输出开始时间到结束时间段内的进出场数据。按天聚合的情况下，每天多次进出场算一次，以最初进场时间为进场时间，最后离场时间为离场时间。停留时间为多次进出场的停留时间之和。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATAERROR = "InternalError.DataError"
+//  INTERNALERROR_DATAHASEXISTS = "InternalError.DataHasExists"
+//  INTERNALERROR_INNERSERVERFAILED = "InternalError.InnerServerFailed"
+//  INTERNALERROR_METADATAOPFAILED = "InternalError.MetaDataOpFailed"
+//  INTERNALERROR_USERNOTEXIST = "InternalError.UserNotExist"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeClusterPersonArrivedMallWithContext(ctx context.Context, request *DescribeClusterPersonArrivedMallRequest) (response *DescribeClusterPersonArrivedMallResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterPersonArrivedMallRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterPersonArrivedMallResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterPersonTraceRequest() (request *DescribeClusterPersonTraceRequest) {
     request = &DescribeClusterPersonTraceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -277,6 +398,30 @@ func (c *Client) DescribeClusterPersonTrace(request *DescribeClusterPersonTraceR
     if request == nil {
         request = NewDescribeClusterPersonTraceRequest()
     }
+    
+    response = NewDescribeClusterPersonTraceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeClusterPersonTrace
+// 输出开始时间到结束时间段内的进出场数据。按天聚合的情况下，每天多次进出场算一次，以最初进场时间为进场时间，最后离场时间为离场时间。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATAERROR = "InternalError.DataError"
+//  INTERNALERROR_DATAHASEXISTS = "InternalError.DataHasExists"
+//  INTERNALERROR_INNERSERVERFAILED = "InternalError.InnerServerFailed"
+//  INTERNALERROR_METADATAOPFAILED = "InternalError.MetaDataOpFailed"
+//  INTERNALERROR_USERNOTEXIST = "InternalError.UserNotExist"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeClusterPersonTraceWithContext(ctx context.Context, request *DescribeClusterPersonTraceRequest) (response *DescribeClusterPersonTraceResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterPersonTraceRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeClusterPersonTraceResponse()
     err = c.Send(request, response)
@@ -327,6 +472,34 @@ func (c *Client) DescribeFaceIdByTempId(request *DescribeFaceIdByTempIdRequest) 
     return
 }
 
+// DescribeFaceIdByTempId
+// 通过DescribeCameraPerson接口上报的收银台身份ID查询顾客的FaceID。查询最佳时间为收银台上报的次日1点后。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_PARAMETERERROR = "FailedOperation.ParameterError"
+//  FAILEDOPERATION_PROCESSFAIL = "FailedOperation.ProcessFail"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATAERROR = "InternalError.DataError"
+//  INTERNALERROR_DATAHASEXISTS = "InternalError.DataHasExists"
+//  INTERNALERROR_INNERSERVERFAILED = "InternalError.InnerServerFailed"
+//  INTERNALERROR_METADATAOPFAILED = "InternalError.MetaDataOpFailed"
+//  INTERNALERROR_USERNOTEXIST = "InternalError.UserNotExist"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_JSONPARSEERR = "InvalidParameterValue.JsonParseErr"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeFaceIdByTempIdWithContext(ctx context.Context, request *DescribeFaceIdByTempIdRequest) (response *DescribeFaceIdByTempIdResponse, err error) {
+    if request == nil {
+        request = NewDescribeFaceIdByTempIdRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeFaceIdByTempIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeHistoryNetworkInfoRequest() (request *DescribeHistoryNetworkInfoRequest) {
     request = &DescribeHistoryNetworkInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -357,6 +530,26 @@ func (c *Client) DescribeHistoryNetworkInfo(request *DescribeHistoryNetworkInfoR
     if request == nil {
         request = NewDescribeHistoryNetworkInfoRequest()
     }
+    
+    response = NewDescribeHistoryNetworkInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeHistoryNetworkInfo
+// 返回当前门店历史网络状态数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  FAILEDOPERATION_PARAMETERERROR = "FailedOperation.ParameterError"
+//  FAILEDOPERATION_PROCESSFAIL = "FailedOperation.ProcessFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeHistoryNetworkInfoWithContext(ctx context.Context, request *DescribeHistoryNetworkInfoRequest) (response *DescribeHistoryNetworkInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeHistoryNetworkInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeHistoryNetworkInfoResponse()
     err = c.Send(request, response)
@@ -399,6 +592,26 @@ func (c *Client) DescribeNetworkInfo(request *DescribeNetworkInfoRequest) (respo
     return
 }
 
+// DescribeNetworkInfo
+// 返回当前门店最新网络状态数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  FAILEDOPERATION_PARAMETERERROR = "FailedOperation.ParameterError"
+//  FAILEDOPERATION_PROCESSFAIL = "FailedOperation.ProcessFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeNetworkInfoWithContext(ctx context.Context, request *DescribeNetworkInfoRequest) (response *DescribeNetworkInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeNetworkInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeNetworkInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePersonRequest() (request *DescribePersonRequest) {
     request = &DescribePersonRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -434,6 +647,31 @@ func (c *Client) DescribePerson(request *DescribePersonRequest) (response *Descr
     if request == nil {
         request = NewDescribePersonRequest()
     }
+    
+    response = NewDescribePersonResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribePerson
+// 查询指定某一卖场的用户信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTEXIST = "FailedOperation.AccountExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATAERROR = "InternalError.DataError"
+//  INTERNALERROR_DATAHASEXISTS = "InternalError.DataHasExists"
+//  INTERNALERROR_INNERSERVERFAILED = "InternalError.InnerServerFailed"
+//  INTERNALERROR_METADATAOPFAILED = "InternalError.MetaDataOpFailed"
+//  INTERNALERROR_USERNOTEXIST = "InternalError.UserNotExist"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribePersonWithContext(ctx context.Context, request *DescribePersonRequest) (response *DescribePersonResponse, err error) {
+    if request == nil {
+        request = NewDescribePersonRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribePersonResponse()
     err = c.Send(request, response)
@@ -483,6 +721,33 @@ func (c *Client) DescribePersonArrivedMall(request *DescribePersonArrivedMallReq
     return
 }
 
+// DescribePersonArrivedMall
+// 输出开始时间到结束时间段内的进出场数据。不做按天聚合的情况下，每次进出场，产生一条进出场数据。
+//
+// 
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATAERROR = "InternalError.DataError"
+//  INTERNALERROR_DATAHASEXISTS = "InternalError.DataHasExists"
+//  INTERNALERROR_INNERSERVERFAILED = "InternalError.InnerServerFailed"
+//  INTERNALERROR_METADATAOPFAILED = "InternalError.MetaDataOpFailed"
+//  INTERNALERROR_USERNOTEXIST = "InternalError.UserNotExist"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribePersonArrivedMallWithContext(ctx context.Context, request *DescribePersonArrivedMallRequest) (response *DescribePersonArrivedMallResponse, err error) {
+    if request == nil {
+        request = NewDescribePersonArrivedMallRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribePersonArrivedMallResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePersonInfoRequest() (request *DescribePersonInfoRequest) {
     request = &DescribePersonInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -513,6 +778,26 @@ func (c *Client) DescribePersonInfo(request *DescribePersonInfoRequest) (respons
     if request == nil {
         request = NewDescribePersonInfoRequest()
     }
+    
+    response = NewDescribePersonInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribePersonInfo
+// 指定门店获取所有顾客详情列表，包含客户ID、图片、年龄、性别
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribePersonInfoWithContext(ctx context.Context, request *DescribePersonInfoRequest) (response *DescribePersonInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribePersonInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribePersonInfoResponse()
     err = c.Send(request, response)
@@ -567,6 +852,38 @@ func (c *Client) DescribePersonInfoByFacePicture(request *DescribePersonInfoByFa
     return
 }
 
+// DescribePersonInfoByFacePicture
+// 通过上传人脸图片检索系统face id、顾客身份信息及底图
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BADFACEQUALITY = "FailedOperation.BadFaceQuality"
+//  FAILEDOPERATION_FACENOTFOUND = "FailedOperation.FaceNotFound"
+//  FAILEDOPERATION_FACESIZEERROR = "FailedOperation.FaceSizeError"
+//  FAILEDOPERATION_MULTIFACEDETECTED = "FailedOperation.MultiFaceDetected"
+//  FAILEDOPERATION_NEEDGRANTROLEFIRST = "FailedOperation.NeedGrantRoleFirst"
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NOPERSON = "FailedOperation.NoPerson"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  FAILEDOPERATION_NOTMATCHSHOPCODE = "FailedOperation.NotMatchShopCode"
+//  FAILEDOPERATION_OTHERS = "FailedOperation.Others"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATAERROR = "InternalError.DataError"
+//  INTERNALERROR_INNERSERVERFAILED = "InternalError.InnerServerFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_JSONPARSEERR = "InvalidParameterValue.JsonParseErr"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribePersonInfoByFacePictureWithContext(ctx context.Context, request *DescribePersonInfoByFacePictureRequest) (response *DescribePersonInfoByFacePictureResponse, err error) {
+    if request == nil {
+        request = NewDescribePersonInfoByFacePictureRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribePersonInfoByFacePictureResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePersonTraceRequest() (request *DescribePersonTraceRequest) {
     request = &DescribePersonTraceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -602,6 +919,31 @@ func (c *Client) DescribePersonTrace(request *DescribePersonTraceRequest) (respo
     if request == nil {
         request = NewDescribePersonTraceRequest()
     }
+    
+    response = NewDescribePersonTraceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribePersonTrace
+// 输出开始时间到结束时间段内的进出场数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATAERROR = "InternalError.DataError"
+//  INTERNALERROR_DATAHASEXISTS = "InternalError.DataHasExists"
+//  INTERNALERROR_INNERSERVERFAILED = "InternalError.InnerServerFailed"
+//  INTERNALERROR_METADATAOPFAILED = "InternalError.MetaDataOpFailed"
+//  INTERNALERROR_USERNOTEXIST = "InternalError.UserNotExist"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribePersonTraceWithContext(ctx context.Context, request *DescribePersonTraceRequest) (response *DescribePersonTraceResponse, err error) {
+    if request == nil {
+        request = NewDescribePersonTraceRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribePersonTraceResponse()
     err = c.Send(request, response)
@@ -648,6 +990,30 @@ func (c *Client) DescribePersonTraceDetail(request *DescribePersonTraceDetailReq
     return
 }
 
+// DescribePersonTraceDetail
+// 查询客户单次到场轨迹明细
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATAERROR = "InternalError.DataError"
+//  INTERNALERROR_DATAHASEXISTS = "InternalError.DataHasExists"
+//  INTERNALERROR_INNERSERVERFAILED = "InternalError.InnerServerFailed"
+//  INTERNALERROR_METADATAOPFAILED = "InternalError.MetaDataOpFailed"
+//  INTERNALERROR_USERNOTEXIST = "InternalError.UserNotExist"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribePersonTraceDetailWithContext(ctx context.Context, request *DescribePersonTraceDetailRequest) (response *DescribePersonTraceDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribePersonTraceDetailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribePersonTraceDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePersonVisitInfoRequest() (request *DescribePersonVisitInfoRequest) {
     request = &DescribePersonVisitInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -677,6 +1043,25 @@ func (c *Client) DescribePersonVisitInfo(request *DescribePersonVisitInfoRequest
     if request == nil {
         request = NewDescribePersonVisitInfoRequest()
     }
+    
+    response = NewDescribePersonVisitInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribePersonVisitInfo
+// 获取门店指定时间范围内的所有用户到访信息记录，支持的时间范围：过去365天，含当天。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribePersonVisitInfoWithContext(ctx context.Context, request *DescribePersonVisitInfoRequest) (response *DescribePersonVisitInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribePersonVisitInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribePersonVisitInfoResponse()
     err = c.Send(request, response)
@@ -719,6 +1104,26 @@ func (c *Client) DescribeShopHourTrafficInfo(request *DescribeShopHourTrafficInf
     return
 }
 
+// DescribeShopHourTrafficInfo
+// 按小时提供查询日期范围内门店的每天每小时累计客流人数数据，支持的时间范围：过去365天，含当天。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeShopHourTrafficInfoWithContext(ctx context.Context, request *DescribeShopHourTrafficInfoRequest) (response *DescribeShopHourTrafficInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeShopHourTrafficInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeShopHourTrafficInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeShopInfoRequest() (request *DescribeShopInfoRequest) {
     request = &DescribeShopInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -755,6 +1160,26 @@ func (c *Client) DescribeShopInfo(request *DescribeShopInfoRequest) (response *D
     return
 }
 
+// DescribeShopInfo
+// 根据客户身份标识获取客户下所有的门店信息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeShopInfoWithContext(ctx context.Context, request *DescribeShopInfoRequest) (response *DescribeShopInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeShopInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeShopInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeShopTrafficInfoRequest() (request *DescribeShopTrafficInfoRequest) {
     request = &DescribeShopTrafficInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -785,6 +1210,26 @@ func (c *Client) DescribeShopTrafficInfo(request *DescribeShopTrafficInfoRequest
     if request == nil {
         request = NewDescribeShopTrafficInfoRequest()
     }
+    
+    response = NewDescribeShopTrafficInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeShopTrafficInfo
+// 按天提供查询日期范围内门店的单日累计客流人数，支持的时间范围：过去365天，含当天。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeShopTrafficInfoWithContext(ctx context.Context, request *DescribeShopTrafficInfoRequest) (response *DescribeShopTrafficInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeShopTrafficInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeShopTrafficInfoResponse()
     err = c.Send(request, response)
@@ -829,6 +1274,28 @@ func (c *Client) DescribeTrajectoryData(request *DescribeTrajectoryDataRequest) 
     return
 }
 
+// DescribeTrajectoryData
+// 获取动线轨迹信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTEXIST = "FailedOperation.AccountExist"
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  FAILEDOPERATION_NOTMATCHSHOPCODE = "FailedOperation.NotMatchShopCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeTrajectoryDataWithContext(ctx context.Context, request *DescribeTrajectoryDataRequest) (response *DescribeTrajectoryDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeTrajectoryDataRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeTrajectoryDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeZoneFlowAgeInfoByZoneIdRequest() (request *DescribeZoneFlowAgeInfoByZoneIdRequest) {
     request = &DescribeZoneFlowAgeInfoByZoneIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -861,6 +1328,28 @@ func (c *Client) DescribeZoneFlowAgeInfoByZoneId(request *DescribeZoneFlowAgeInf
     if request == nil {
         request = NewDescribeZoneFlowAgeInfoByZoneIdRequest()
     }
+    
+    response = NewDescribeZoneFlowAgeInfoByZoneIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeZoneFlowAgeInfoByZoneId
+// 获取指定区域人流各年龄占比
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTEXIST = "FailedOperation.AccountExist"
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  FAILEDOPERATION_NOTMATCHSHOPCODE = "FailedOperation.NotMatchShopCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeZoneFlowAgeInfoByZoneIdWithContext(ctx context.Context, request *DescribeZoneFlowAgeInfoByZoneIdRequest) (response *DescribeZoneFlowAgeInfoByZoneIdResponse, err error) {
+    if request == nil {
+        request = NewDescribeZoneFlowAgeInfoByZoneIdRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeZoneFlowAgeInfoByZoneIdResponse()
     err = c.Send(request, response)
@@ -905,6 +1394,28 @@ func (c *Client) DescribeZoneFlowAndStayTime(request *DescribeZoneFlowAndStayTim
     return
 }
 
+// DescribeZoneFlowAndStayTime
+// 获取区域人流和停留时间
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTEXIST = "FailedOperation.AccountExist"
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  FAILEDOPERATION_NOTMATCHSHOPCODE = "FailedOperation.NotMatchShopCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeZoneFlowAndStayTimeWithContext(ctx context.Context, request *DescribeZoneFlowAndStayTimeRequest) (response *DescribeZoneFlowAndStayTimeResponse, err error) {
+    if request == nil {
+        request = NewDescribeZoneFlowAndStayTimeRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeZoneFlowAndStayTimeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeZoneFlowDailyByZoneIdRequest() (request *DescribeZoneFlowDailyByZoneIdRequest) {
     request = &DescribeZoneFlowDailyByZoneIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -937,6 +1448,28 @@ func (c *Client) DescribeZoneFlowDailyByZoneId(request *DescribeZoneFlowDailyByZ
     if request == nil {
         request = NewDescribeZoneFlowDailyByZoneIdRequest()
     }
+    
+    response = NewDescribeZoneFlowDailyByZoneIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeZoneFlowDailyByZoneId
+// 获取指定区域每日客流量
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTEXIST = "FailedOperation.AccountExist"
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  FAILEDOPERATION_NOTMATCHSHOPCODE = "FailedOperation.NotMatchShopCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeZoneFlowDailyByZoneIdWithContext(ctx context.Context, request *DescribeZoneFlowDailyByZoneIdRequest) (response *DescribeZoneFlowDailyByZoneIdResponse, err error) {
+    if request == nil {
+        request = NewDescribeZoneFlowDailyByZoneIdRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeZoneFlowDailyByZoneIdResponse()
     err = c.Send(request, response)
@@ -981,6 +1514,28 @@ func (c *Client) DescribeZoneFlowGenderAvrStayTimeByZoneId(request *DescribeZone
     return
 }
 
+// DescribeZoneFlowGenderAvrStayTimeByZoneId
+// 获取指定区域不同年龄段男女平均停留时间
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTEXIST = "FailedOperation.AccountExist"
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  FAILEDOPERATION_NOTMATCHSHOPCODE = "FailedOperation.NotMatchShopCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeZoneFlowGenderAvrStayTimeByZoneIdWithContext(ctx context.Context, request *DescribeZoneFlowGenderAvrStayTimeByZoneIdRequest) (response *DescribeZoneFlowGenderAvrStayTimeByZoneIdResponse, err error) {
+    if request == nil {
+        request = NewDescribeZoneFlowGenderAvrStayTimeByZoneIdRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeZoneFlowGenderAvrStayTimeByZoneIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeZoneFlowGenderInfoByZoneIdRequest() (request *DescribeZoneFlowGenderInfoByZoneIdRequest) {
     request = &DescribeZoneFlowGenderInfoByZoneIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1013,6 +1568,28 @@ func (c *Client) DescribeZoneFlowGenderInfoByZoneId(request *DescribeZoneFlowGen
     if request == nil {
         request = NewDescribeZoneFlowGenderInfoByZoneIdRequest()
     }
+    
+    response = NewDescribeZoneFlowGenderInfoByZoneIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeZoneFlowGenderInfoByZoneId
+// 获取指定区域性别占比
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTEXIST = "FailedOperation.AccountExist"
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  FAILEDOPERATION_NOTMATCHSHOPCODE = "FailedOperation.NotMatchShopCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeZoneFlowGenderInfoByZoneIdWithContext(ctx context.Context, request *DescribeZoneFlowGenderInfoByZoneIdRequest) (response *DescribeZoneFlowGenderInfoByZoneIdResponse, err error) {
+    if request == nil {
+        request = NewDescribeZoneFlowGenderInfoByZoneIdRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeZoneFlowGenderInfoByZoneIdResponse()
     err = c.Send(request, response)
@@ -1057,6 +1634,28 @@ func (c *Client) DescribeZoneFlowHourlyByZoneId(request *DescribeZoneFlowHourlyB
     return
 }
 
+// DescribeZoneFlowHourlyByZoneId
+// 获取指定区域分时客流量
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTEXIST = "FailedOperation.AccountExist"
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  FAILEDOPERATION_NOTMATCHSHOPCODE = "FailedOperation.NotMatchShopCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeZoneFlowHourlyByZoneIdWithContext(ctx context.Context, request *DescribeZoneFlowHourlyByZoneIdRequest) (response *DescribeZoneFlowHourlyByZoneIdResponse, err error) {
+    if request == nil {
+        request = NewDescribeZoneFlowHourlyByZoneIdRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeZoneFlowHourlyByZoneIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeZoneTrafficInfoRequest() (request *DescribeZoneTrafficInfoRequest) {
     request = &DescribeZoneTrafficInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1087,6 +1686,26 @@ func (c *Client) DescribeZoneTrafficInfo(request *DescribeZoneTrafficInfoRequest
     if request == nil {
         request = NewDescribeZoneTrafficInfoRequest()
     }
+    
+    response = NewDescribeZoneTrafficInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeZoneTrafficInfo
+// 按天提供查询日期范围内，客户指定门店下的所有区域（优Mall部署时已配置区域）的累计客流人次和平均停留时间。支持的时间范围：过去365天，含当天。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeZoneTrafficInfoWithContext(ctx context.Context, request *DescribeZoneTrafficInfoRequest) (response *DescribeZoneTrafficInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeZoneTrafficInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeZoneTrafficInfoResponse()
     err = c.Send(request, response)
@@ -1136,6 +1755,33 @@ func (c *Client) ModifyPersonFeatureInfo(request *ModifyPersonFeatureInfoRequest
     return
 }
 
+// ModifyPersonFeatureInfo
+// 支持修改黑白名单类型的顾客特征
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BADFACEQUALITY = "FailedOperation.BadFaceQuality"
+//  FAILEDOPERATION_EXTRACTFEATUREERROR = "FailedOperation.ExtractFeatureError"
+//  FAILEDOPERATION_FACENOTFOUND = "FailedOperation.FaceNotFound"
+//  FAILEDOPERATION_FACESIZEERROR = "FailedOperation.FaceSizeError"
+//  FAILEDOPERATION_HASEXISTPERSON = "FailedOperation.HasExistPerson"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_MULTIFACEDETECTED = "FailedOperation.MultiFaceDetected"
+//  FAILEDOPERATION_NOPERSON = "FailedOperation.NoPerson"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATAERROR = "InternalError.DataError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyPersonFeatureInfoWithContext(ctx context.Context, request *ModifyPersonFeatureInfoRequest) (response *ModifyPersonFeatureInfoResponse, err error) {
+    if request == nil {
+        request = NewModifyPersonFeatureInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyPersonFeatureInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyPersonTagInfoRequest() (request *ModifyPersonTagInfoRequest) {
     request = &ModifyPersonTagInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1165,6 +1811,25 @@ func (c *Client) ModifyPersonTagInfo(request *ModifyPersonTagInfoRequest) (respo
     if request == nil {
         request = NewModifyPersonTagInfoRequest()
     }
+    
+    response = NewModifyPersonTagInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyPersonTagInfo
+// 标记到店顾客的身份类型，例如黑名单、白名单等
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyPersonTagInfoWithContext(ctx context.Context, request *ModifyPersonTagInfoRequest) (response *ModifyPersonTagInfoResponse, err error) {
+    if request == nil {
+        request = NewModifyPersonTagInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyPersonTagInfoResponse()
     err = c.Send(request, response)
@@ -1219,6 +1884,38 @@ func (c *Client) ModifyPersonType(request *ModifyPersonTypeRequest) (response *M
     return
 }
 
+// ModifyPersonType
+// 修改顾客身份类型接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTEXIST = "FailedOperation.AccountExist"
+//  FAILEDOPERATION_NEEDGRANTROLEFIRST = "FailedOperation.NeedGrantRoleFirst"
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_NORIGHT = "FailedOperation.NoRight"
+//  FAILEDOPERATION_NOTMATCHSHOPCODE = "FailedOperation.NotMatchShopCode"
+//  FAILEDOPERATION_PARAMETERERROR = "FailedOperation.ParameterError"
+//  FAILEDOPERATION_PROCESSFAIL = "FailedOperation.ProcessFail"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATAERROR = "InternalError.DataError"
+//  INTERNALERROR_DATAHASEXISTS = "InternalError.DataHasExists"
+//  INTERNALERROR_INNERSERVERFAILED = "InternalError.InnerServerFailed"
+//  INTERNALERROR_METADATAOPFAILED = "InternalError.MetaDataOpFailed"
+//  INTERNALERROR_USERNOTEXIST = "InternalError.UserNotExist"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_JSONPARSEERR = "InvalidParameterValue.JsonParseErr"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyPersonTypeWithContext(ctx context.Context, request *ModifyPersonTypeRequest) (response *ModifyPersonTypeResponse, err error) {
+    if request == nil {
+        request = NewModifyPersonTypeRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyPersonTypeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRegisterCallbackRequest() (request *RegisterCallbackRequest) {
     request = &RegisterCallbackRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1248,6 +1945,25 @@ func (c *Client) RegisterCallback(request *RegisterCallbackRequest) (response *R
     if request == nil {
         request = NewRegisterCallbackRequest()
     }
+    
+    response = NewRegisterCallbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// RegisterCallback
+// 调用本接口在优Mall中注册自己集团的到店通知回调接口地址，接口协议为HTTP或HTTPS。注册后，若集团有特殊身份（例如老客）到店通知，优Mall后台将主动将到店信息push给该接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NODATA = "FailedOperation.NoData"
+//  FAILEDOPERATION_PROCESSFAIL = "FailedOperation.ProcessFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_JSONPARSEERR = "InvalidParameterValue.JsonParseErr"
+func (c *Client) RegisterCallbackWithContext(ctx context.Context, request *RegisterCallbackRequest) (response *RegisterCallbackResponse, err error) {
+    if request == nil {
+        request = NewRegisterCallbackRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewRegisterCallbackResponse()
     err = c.Send(request, response)

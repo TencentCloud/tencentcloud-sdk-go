@@ -15,6 +15,7 @@
 package v20181201
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -74,6 +75,27 @@ func (c *Client) DescribeMaterialList(request *DescribeMaterialListRequest) (res
     if request == nil {
         request = NewDescribeMaterialListRequest()
     }
+    
+    response = NewDescribeMaterialListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeMaterialList
+// 通常通过腾讯云人脸融合的控制台可以查看到素材相关的参数数据，可以满足使用。本接口返回活动的素材数据，包括素材状态等。用于用户通过Api查看素材相关数据，方便使用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_FUSEMATERIALNOTEXIST = "FailedOperation.FuseMaterialNotExist"
+//  FAILEDOPERATION_PARAMETERVALUEERROR = "FailedOperation.ParameterValueError"
+//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
+//  INVALIDPARAMETERVALUE_ACTIVITYIDNOTFOUND = "InvalidParameterValue.ActivityIdNotFound"
+//  INVALIDPARAMETERVALUE_MATERIALIDNOTFOUND = "InvalidParameterValue.MaterialIdNotFound"
+func (c *Client) DescribeMaterialListWithContext(ctx context.Context, request *DescribeMaterialListRequest) (response *DescribeMaterialListResponse, err error) {
+    if request == nil {
+        request = NewDescribeMaterialListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeMaterialListResponse()
     err = c.Send(request, response)
@@ -152,6 +174,62 @@ func (c *Client) FaceFusion(request *FaceFusionRequest) (response *FaceFusionRes
     return
 }
 
+// FaceFusion
+// 本接口用于人脸融合，用户上传人脸图片，获取与模板融合后的人脸图片。未发布的活动请求频率限制为1次/秒，已发布的活动请求频率限制50次/秒。如有需要提高活动的请求频率限制，请在控制台中申请。
+//
+// >     
+//
+// - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+//  FAILEDOPERATION_FACEBORDERCHECKFAILED = "FailedOperation.FaceBorderCheckFailed"
+//  FAILEDOPERATION_FACEFUSIONERROR = "FailedOperation.FaceFusionError"
+//  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
+//  FAILEDOPERATION_FUSEFREQCTRL = "FailedOperation.FuseFreqCtrl"
+//  FAILEDOPERATION_FUSEIMAGEERROR = "FailedOperation.FuseImageError"
+//  FAILEDOPERATION_FUSEINNERERROR = "FailedOperation.FuseInnerError"
+//  FAILEDOPERATION_FUSEMATERIALNOTAUTH = "FailedOperation.FuseMaterialNotAuth"
+//  FAILEDOPERATION_FUSEMATERIALNOTEXIST = "FailedOperation.FuseMaterialNotExist"
+//  FAILEDOPERATION_FUSESAVEPHOTOFAIL = "FailedOperation.FuseSavePhotoFail"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  FAILEDOPERATION_IMAGEPIXELEXCEED = "FailedOperation.ImagePixelExceed"
+//  FAILEDOPERATION_IMAGERESOLUTIONEXCEED = "FailedOperation.ImageResolutionExceed"
+//  FAILEDOPERATION_IMAGERESOLUTIONTOOSMALL = "FailedOperation.ImageResolutionTooSmall"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_NOFACEDETECTED = "FailedOperation.NoFaceDetected"
+//  FAILEDOPERATION_PARAMETERVALUEERROR = "FailedOperation.ParameterValueError"
+//  FAILEDOPERATION_PROJECTNOTAUTH = "FailedOperation.ProjectNotAuth"
+//  FAILEDOPERATION_REQUESTENTITYTOOLARGE = "FailedOperation.RequestEntityTooLarge"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_TEMPLATEFACEIDNOTEXIST = "FailedOperation.TemplateFaceIDNotExist"
+//  INVALIDPARAMETERVALUE_ACTIVITYIDNOTFOUND = "InvalidParameterValue.ActivityIdNotFound"
+//  INVALIDPARAMETERVALUE_FACERECTPARAMETERVALUEERROR = "InvalidParameterValue.FaceRectParameterValueError"
+//  INVALIDPARAMETERVALUE_IMAGEEMPTY = "InvalidParameterValue.ImageEmpty"
+//  INVALIDPARAMETERVALUE_NOFACEINPHOTO = "InvalidParameterValue.NoFaceInPhoto"
+//  RESOURCEUNAVAILABLE_DELIVERING = "ResourceUnavailable.Delivering"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_GETAUTHINFOERROR = "ResourceUnavailable.GetAuthInfoError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_LOWBALANCE = "ResourceUnavailable.LowBalance"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_NOTREADY = "ResourceUnavailable.NotReady"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+//  RESOURCEUNAVAILABLE_UNKNOWNSTATUS = "ResourceUnavailable.UnknownStatus"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) FaceFusionWithContext(ctx context.Context, request *FaceFusionRequest) (response *FaceFusionResponse, err error) {
+    if request == nil {
+        request = NewFaceFusionRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewFaceFusionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewFaceFusionLiteRequest() (request *FaceFusionLiteRequest) {
     request = &FaceFusionLiteRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -215,6 +293,59 @@ func (c *Client) FaceFusionLite(request *FaceFusionLiteRequest) (response *FaceF
     if request == nil {
         request = NewFaceFusionLiteRequest()
     }
+    
+    response = NewFaceFusionLiteResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// FaceFusionLite
+// 人脸融合活动专用版，不推荐使用。人脸融合接口建议使用[人脸融合](https://cloud.tencent.com/document/product/670/31061)或[选脸融合](https://cloud.tencent.com/document/product/670/37736)接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACTIVITYSTATUSINVALID = "FailedOperation.ActivityStatusInvalid"
+//  FAILEDOPERATION_FACEBORDERCHECKFAILED = "FailedOperation.FaceBorderCheckFailed"
+//  FAILEDOPERATION_FACEDETECTFAILED = "FailedOperation.FaceDetectFailed"
+//  FAILEDOPERATION_FACEFEATUREFAILED = "FailedOperation.FaceFeatureFailed"
+//  FAILEDOPERATION_FACEFUSIONERROR = "FailedOperation.FaceFusionError"
+//  FAILEDOPERATION_FACEPOSEFAILED = "FailedOperation.FacePoseFailed"
+//  FAILEDOPERATION_FACERECTINVALID = "FailedOperation.FaceRectInvalid"
+//  FAILEDOPERATION_FACESHAPEINVALID = "FailedOperation.FaceShapeInvalid"
+//  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
+//  FAILEDOPERATION_FUSEBACKENDSERVERFAULT = "FailedOperation.FuseBackendServerFault"
+//  FAILEDOPERATION_FUSEDETECTNOFACE = "FailedOperation.FuseDetectNoFace"
+//  FAILEDOPERATION_FUSEFREQCTRL = "FailedOperation.FuseFreqCtrl"
+//  FAILEDOPERATION_FUSEIMAGEERROR = "FailedOperation.FuseImageError"
+//  FAILEDOPERATION_FUSEINNERERROR = "FailedOperation.FuseInnerError"
+//  FAILEDOPERATION_FUSEMATERIALNOTAUTH = "FailedOperation.FuseMaterialNotAuth"
+//  FAILEDOPERATION_FUSEMATERIALNOTEXIST = "FailedOperation.FuseMaterialNotExist"
+//  FAILEDOPERATION_FUSESAVEPHOTOFAIL = "FailedOperation.FuseSavePhotoFail"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  FAILEDOPERATION_IMAGEPIXELEXCEED = "FailedOperation.ImagePixelExceed"
+//  FAILEDOPERATION_IMAGERESOLUTIONEXCEED = "FailedOperation.ImageResolutionExceed"
+//  FAILEDOPERATION_IMAGERESOLUTIONTOOSMALL = "FailedOperation.ImageResolutionTooSmall"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_IMAGESIZEEXCEEDFIVEHUNDREDKB = "FailedOperation.ImageSizeExceedFiveHundredKB"
+//  FAILEDOPERATION_IMAGESIZEINVALID = "FailedOperation.ImageSizeInvalid"
+//  FAILEDOPERATION_IMAGEUPLOADFAILED = "FailedOperation.ImageUploadFailed"
+//  FAILEDOPERATION_MATERIALVALUEEXCEED = "FailedOperation.MaterialValueExceed"
+//  FAILEDOPERATION_NOFACEDETECTED = "FailedOperation.NoFaceDetected"
+//  FAILEDOPERATION_PARAMETERVALUEERROR = "FailedOperation.ParameterValueError"
+//  FAILEDOPERATION_PROJECTNOTAUTH = "FailedOperation.ProjectNotAuth"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
+//  FAILEDOPERATION_TEMPLATEFACEIDNOTEXIST = "FailedOperation.TemplateFaceIDNotExist"
+//  INVALIDPARAMETERVALUE_ENGINEVALUEERROR = "InvalidParameterValue.EngineValueError"
+//  INVALIDPARAMETERVALUE_FACERECTPARAMETERVALUEERROR = "InvalidParameterValue.FaceRectParameterValueError"
+//  INVALIDPARAMETERVALUE_IMAGEEMPTY = "InvalidParameterValue.ImageEmpty"
+//  INVALIDPARAMETERVALUE_MATERIALIDNOTFOUND = "InvalidParameterValue.MaterialIdNotFound"
+//  INVALIDPARAMETERVALUE_NOFACEINPHOTO = "InvalidParameterValue.NoFaceInPhoto"
+func (c *Client) FaceFusionLiteWithContext(ctx context.Context, request *FaceFusionLiteRequest) (response *FaceFusionLiteResponse, err error) {
+    if request == nil {
+        request = NewFaceFusionLiteRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewFaceFusionLiteResponse()
     err = c.Send(request, response)
@@ -289,6 +420,64 @@ func (c *Client) FuseFace(request *FuseFaceRequest) (response *FuseFaceResponse,
     if request == nil {
         request = NewFuseFaceRequest()
     }
+    
+    response = NewFuseFaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// FuseFace
+// 本接口用于单脸、多脸融合，用户上传人脸图片，获取与模板融合后的人脸图片。查看 <a href="https://cloud.tencent.com/document/product/670/38247" target="_blank">选脸融合接入指引</a>。
+//
+// 
+//
+// 未发布的活动请求频率限制为1次/秒，已发布的活动请求频率限制50次/秒。如有需要提高活动的请求频率限制，请在控制台中申请。
+//
+// >
+//
+// - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FACEBORDERCHECKFAILED = "FailedOperation.FaceBorderCheckFailed"
+//  FAILEDOPERATION_FACEFUSIONERROR = "FailedOperation.FaceFusionError"
+//  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
+//  FAILEDOPERATION_FUSEFREQCTRL = "FailedOperation.FuseFreqCtrl"
+//  FAILEDOPERATION_FUSEIMAGEERROR = "FailedOperation.FuseImageError"
+//  FAILEDOPERATION_FUSEINNERERROR = "FailedOperation.FuseInnerError"
+//  FAILEDOPERATION_FUSEMATERIALNOTAUTH = "FailedOperation.FuseMaterialNotAuth"
+//  FAILEDOPERATION_FUSEMATERIALNOTEXIST = "FailedOperation.FuseMaterialNotExist"
+//  FAILEDOPERATION_FUSESAVEPHOTOFAIL = "FailedOperation.FuseSavePhotoFail"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  FAILEDOPERATION_IMAGEPIXELEXCEED = "FailedOperation.ImagePixelExceed"
+//  FAILEDOPERATION_IMAGERESOLUTIONEXCEED = "FailedOperation.ImageResolutionExceed"
+//  FAILEDOPERATION_IMAGERESOLUTIONTOOSMALL = "FailedOperation.ImageResolutionTooSmall"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_NOFACEDETECTED = "FailedOperation.NoFaceDetected"
+//  FAILEDOPERATION_PARAMETERVALUEERROR = "FailedOperation.ParameterValueError"
+//  FAILEDOPERATION_PROJECTNOTAUTH = "FailedOperation.ProjectNotAuth"
+//  FAILEDOPERATION_REQUESTENTITYTOOLARGE = "FailedOperation.RequestEntityTooLarge"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_TEMPLATEFACEIDNOTEXIST = "FailedOperation.TemplateFaceIDNotExist"
+//  INVALIDPARAMETERVALUE_ACTIVITYIDNOTFOUND = "InvalidParameterValue.ActivityIdNotFound"
+//  INVALIDPARAMETERVALUE_FACERECTPARAMETERVALUEERROR = "InvalidParameterValue.FaceRectParameterValueError"
+//  INVALIDPARAMETERVALUE_IMAGEEMPTY = "InvalidParameterValue.ImageEmpty"
+//  INVALIDPARAMETERVALUE_NOFACEINPHOTO = "InvalidParameterValue.NoFaceInPhoto"
+//  RESOURCEUNAVAILABLE_DELIVERING = "ResourceUnavailable.Delivering"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_GETAUTHINFOERROR = "ResourceUnavailable.GetAuthInfoError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_LOWBALANCE = "ResourceUnavailable.LowBalance"
+//  RESOURCEUNAVAILABLE_NOTREADY = "ResourceUnavailable.NotReady"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+//  RESOURCEUNAVAILABLE_UNKNOWNSTATUS = "ResourceUnavailable.UnknownStatus"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) FuseFaceWithContext(ctx context.Context, request *FuseFaceRequest) (response *FuseFaceResponse, err error) {
+    if request == nil {
+        request = NewFuseFaceRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewFuseFaceResponse()
     err = c.Send(request, response)

@@ -1008,6 +1008,9 @@ type CreateCloneInstanceRequest struct {
 
 	// 是否只预检此次请求。true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制等。如果检查不通过，则返回对应错误码；如果检查通过，则返回RequestId.默认为false：发送正常请求，通过检查后直接创建实例。
 	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
+
+	// 金融围拢 ID 。
+	CageId *string `json:"CageId,omitempty" name:"CageId"`
 }
 
 func (r *CreateCloneInstanceRequest) ToJsonString() string {
@@ -1041,6 +1044,7 @@ func (r *CreateCloneInstanceRequest) FromJsonString(s string) error {
 	delete(f, "InstanceNodes")
 	delete(f, "DeployGroupId")
 	delete(f, "DryRun")
+	delete(f, "CageId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloneInstanceRequest has unknown keys!", "")
 	}
@@ -1234,6 +1238,9 @@ type CreateDBInstanceHourRequest struct {
 	// 金融围拢 ID 。
 	CageId *string `json:"CageId,omitempty" name:"CageId"`
 
+	// 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。
+	ParamTemplateType *string `json:"ParamTemplateType,omitempty" name:"ParamTemplateType"`
+
 	// 告警策略名数组，例如:["policy-uyoee9wg"]，AlarmPolicyList不为空时该参数无效。
 	AlarmPolicyIdList []*string `json:"AlarmPolicyIdList,omitempty" name:"AlarmPolicyIdList"`
 
@@ -1285,6 +1292,7 @@ func (r *CreateDBInstanceHourRequest) FromJsonString(s string) error {
 	delete(f, "Cpu")
 	delete(f, "AutoSyncFlag")
 	delete(f, "CageId")
+	delete(f, "ParamTemplateType")
 	delete(f, "AlarmPolicyIdList")
 	delete(f, "DryRun")
 	if len(f) > 0 {
@@ -1421,6 +1429,9 @@ type CreateDBInstanceRequest struct {
 	// 金融围拢 ID。
 	CageId *string `json:"CageId,omitempty" name:"CageId"`
 
+	// 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。
+	ParamTemplateType *string `json:"ParamTemplateType,omitempty" name:"ParamTemplateType"`
+
 	// 告警策略名数组，例如:["policy-uyoee9wg"]，AlarmPolicyList不为空时该参数无效。
 	AlarmPolicyIdList []*string `json:"AlarmPolicyIdList,omitempty" name:"AlarmPolicyIdList"`
 
@@ -1473,6 +1484,7 @@ func (r *CreateDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "Cpu")
 	delete(f, "AutoSyncFlag")
 	delete(f, "CageId")
+	delete(f, "ParamTemplateType")
 	delete(f, "AlarmPolicyIdList")
 	delete(f, "DryRun")
 	if len(f) > 0 {

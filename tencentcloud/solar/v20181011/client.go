@@ -15,6 +15,7 @@
 package v20181011
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -76,6 +77,23 @@ func (c *Client) CheckStaffChUser(request *CheckStaffChUserRequest) (response *C
     return
 }
 
+// CheckStaffChUser
+// 员工渠道更改员工状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_THIRDSERVERERROR = "InternalError.ThirdServerError"
+func (c *Client) CheckStaffChUserWithContext(ctx context.Context, request *CheckStaffChUserRequest) (response *CheckStaffChUserResponse, err error) {
+    if request == nil {
+        request = NewCheckStaffChUserRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCheckStaffChUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCopyActivityChannelRequest() (request *CopyActivityChannelRequest) {
     request = &CopyActivityChannelRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -104,6 +122,24 @@ func (c *Client) CopyActivityChannel(request *CopyActivityChannelRequest) (respo
     if request == nil {
         request = NewCopyActivityChannelRequest()
     }
+    
+    response = NewCopyActivityChannelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CopyActivityChannel
+// 复制活动渠道的策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GENERATETOKENERROR = "FailedOperation.GenerateTokenError"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_CHANNEL = "ResourceNotFound.Channel"
+func (c *Client) CopyActivityChannelWithContext(ctx context.Context, request *CopyActivityChannelRequest) (response *CopyActivityChannelResponse, err error) {
+    if request == nil {
+        request = NewCopyActivityChannelRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCopyActivityChannelResponse()
     err = c.Send(request, response)
@@ -144,6 +180,24 @@ func (c *Client) CreateProject(request *CreateProjectRequest) (response *CreateP
     return
 }
 
+// CreateProject
+// 创建项目
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GENERATETOKENERROR = "FailedOperation.GenerateTokenError"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_CHANNEL = "ResourceNotFound.Channel"
+func (c *Client) CreateProjectWithContext(ctx context.Context, request *CreateProjectRequest) (response *CreateProjectResponse, err error) {
+    if request == nil {
+        request = NewCreateProjectRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSubProjectRequest() (request *CreateSubProjectRequest) {
     request = &CreateSubProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -172,6 +226,24 @@ func (c *Client) CreateSubProject(request *CreateSubProjectRequest) (response *C
     if request == nil {
         request = NewCreateSubProjectRequest()
     }
+    
+    response = NewCreateSubProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateSubProject
+// 创建子项目
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GENERATETOKENERROR = "FailedOperation.GenerateTokenError"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_CHANNEL = "ResourceNotFound.Channel"
+func (c *Client) CreateSubProjectWithContext(ctx context.Context, request *CreateSubProjectRequest) (response *CreateSubProjectResponse, err error) {
+    if request == nil {
+        request = NewCreateSubProjectRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateSubProjectResponse()
     err = c.Send(request, response)
@@ -210,6 +282,22 @@ func (c *Client) DeleteProject(request *DeleteProjectRequest) (response *DeleteP
     return
 }
 
+// DeleteProject
+// 删除项目
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION_PROJECTNOTALLOWEDTODELETE = "UnsupportedOperation.ProjectNotAllowedToDelete"
+func (c *Client) DeleteProjectWithContext(ctx context.Context, request *DeleteProjectRequest) (response *DeleteProjectResponse, err error) {
+    if request == nil {
+        request = NewDeleteProjectRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCustomerRequest() (request *DescribeCustomerRequest) {
     request = &DescribeCustomerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -236,6 +324,22 @@ func (c *Client) DescribeCustomer(request *DescribeCustomerRequest) (response *D
     if request == nil {
         request = NewDescribeCustomerRequest()
     }
+    
+    response = NewDescribeCustomerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCustomer
+// 客户档案查询客户详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeCustomerWithContext(ctx context.Context, request *DescribeCustomerRequest) (response *DescribeCustomerResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomerRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeCustomerResponse()
     err = c.Send(request, response)
@@ -274,6 +378,22 @@ func (c *Client) DescribeCustomers(request *DescribeCustomersRequest) (response 
     return
 }
 
+// DescribeCustomers
+// 查询客户档案列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeCustomersWithContext(ctx context.Context, request *DescribeCustomersRequest) (response *DescribeCustomersResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomersRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeCustomersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProjectRequest() (request *DescribeProjectRequest) {
     request = &DescribeProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -300,6 +420,22 @@ func (c *Client) DescribeProject(request *DescribeProjectRequest) (response *Des
     if request == nil {
         request = NewDescribeProjectRequest()
     }
+    
+    response = NewDescribeProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeProject
+// 项目详情展示
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_PROJECT = "ResourceNotFound.Project"
+func (c *Client) DescribeProjectWithContext(ctx context.Context, request *DescribeProjectRequest) (response *DescribeProjectResponse, err error) {
+    if request == nil {
+        request = NewDescribeProjectRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeProjectResponse()
     err = c.Send(request, response)
@@ -338,6 +474,22 @@ func (c *Client) DescribeProjectStock(request *DescribeProjectStockRequest) (res
     return
 }
 
+// DescribeProjectStock
+// 项目库存详情
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_PROJECT = "ResourceNotFound.Project"
+func (c *Client) DescribeProjectStockWithContext(ctx context.Context, request *DescribeProjectStockRequest) (response *DescribeProjectStockResponse, err error) {
+    if request == nil {
+        request = NewDescribeProjectStockRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeProjectStockResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProjectsRequest() (request *DescribeProjectsRequest) {
     request = &DescribeProjectsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -364,6 +516,22 @@ func (c *Client) DescribeProjects(request *DescribeProjectsRequest) (response *D
     if request == nil {
         request = NewDescribeProjectsRequest()
     }
+    
+    response = NewDescribeProjectsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeProjects
+// 项目列表展示
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeProjectsWithContext(ctx context.Context, request *DescribeProjectsRequest) (response *DescribeProjectsResponse, err error) {
+    if request == nil {
+        request = NewDescribeProjectsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeProjectsResponse()
     err = c.Send(request, response)
@@ -403,6 +571,23 @@ func (c *Client) DescribeResourceTemplateHeaders(request *DescribeResourceTempla
     return
 }
 
+// DescribeResourceTemplateHeaders
+// 素材查询服务号模板的列表（样例）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_THIRDSERVERERROR = "InternalError.ThirdServerError"
+func (c *Client) DescribeResourceTemplateHeadersWithContext(ctx context.Context, request *DescribeResourceTemplateHeadersRequest) (response *DescribeResourceTemplateHeadersResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceTemplateHeadersRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeResourceTemplateHeadersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSubProjectRequest() (request *DescribeSubProjectRequest) {
     request = &DescribeSubProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -430,6 +615,23 @@ func (c *Client) DescribeSubProject(request *DescribeSubProjectRequest) (respons
     if request == nil {
         request = NewDescribeSubProjectRequest()
     }
+    
+    response = NewDescribeSubProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeSubProject
+// 子项目详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_THIRDSERVERERROR = "InternalError.ThirdServerError"
+func (c *Client) DescribeSubProjectWithContext(ctx context.Context, request *DescribeSubProjectRequest) (response *DescribeSubProjectResponse, err error) {
+    if request == nil {
+        request = NewDescribeSubProjectRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeSubProjectResponse()
     err = c.Send(request, response)
@@ -469,6 +671,23 @@ func (c *Client) ExpireFlow(request *ExpireFlowRequest) (response *ExpireFlowRes
     return
 }
 
+// ExpireFlow
+// 把审批中的工单置为已失效
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+func (c *Client) ExpireFlowWithContext(ctx context.Context, request *ExpireFlowRequest) (response *ExpireFlowResponse, err error) {
+    if request == nil {
+        request = NewExpireFlowRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewExpireFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyProjectRequest() (request *ModifyProjectRequest) {
     request = &ModifyProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -496,6 +715,23 @@ func (c *Client) ModifyProject(request *ModifyProjectRequest) (response *ModifyP
     if request == nil {
         request = NewModifyProjectRequest()
     }
+    
+    response = NewModifyProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyProject
+// 修改项目
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+func (c *Client) ModifyProjectWithContext(ctx context.Context, request *ModifyProjectRequest) (response *ModifyProjectResponse, err error) {
+    if request == nil {
+        request = NewModifyProjectRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyProjectResponse()
     err = c.Send(request, response)
@@ -534,6 +770,22 @@ func (c *Client) OffLineProject(request *OffLineProjectRequest) (response *OffLi
     return
 }
 
+// OffLineProject
+// 下线项目
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION_STATUSOFFLINEPROJECT = "UnsupportedOperation.StatusOffLineProject"
+func (c *Client) OffLineProjectWithContext(ctx context.Context, request *OffLineProjectRequest) (response *OffLineProjectResponse, err error) {
+    if request == nil {
+        request = NewOffLineProjectRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewOffLineProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewReplenishProjectStockRequest() (request *ReplenishProjectStockRequest) {
     request = &ReplenishProjectStockRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -560,6 +812,22 @@ func (c *Client) ReplenishProjectStock(request *ReplenishProjectStockRequest) (r
     if request == nil {
         request = NewReplenishProjectStockRequest()
     }
+    
+    response = NewReplenishProjectStockResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ReplenishProjectStock
+// 补充子项目库存
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSUFFICIENTPRIZESTOCK = "FailedOperation.InsufficientPrizeStock"
+func (c *Client) ReplenishProjectStockWithContext(ctx context.Context, request *ReplenishProjectStockRequest) (response *ReplenishProjectStockResponse, err error) {
+    if request == nil {
+        request = NewReplenishProjectStockRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewReplenishProjectStockResponse()
     err = c.Send(request, response)
@@ -593,6 +861,23 @@ func (c *Client) SendWxTouchTask(request *SendWxTouchTaskRequest) (response *Sen
     if request == nil {
         request = NewSendWxTouchTaskRequest()
     }
+    
+    response = NewSendWxTouchTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SendWxTouchTask
+// 发送企业微信触达任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_THIRDSERVERERROR = "InternalError.ThirdServerError"
+func (c *Client) SendWxTouchTaskWithContext(ctx context.Context, request *SendWxTouchTaskRequest) (response *SendWxTouchTaskResponse, err error) {
+    if request == nil {
+        request = NewSendWxTouchTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewSendWxTouchTaskResponse()
     err = c.Send(request, response)

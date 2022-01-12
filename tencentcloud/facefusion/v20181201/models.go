@@ -406,7 +406,7 @@ type MergeInfo struct {
 	// 上传的图片人脸位置信息（人脸框）
 	InputImageFaceRect *FaceRect `json:"InputImageFaceRect,omitempty" name:"InputImageFaceRect"`
 
-	// 控制台上传的素材人脸ID
+	// 控制台上传的素材人脸ID，不填默认取最大人脸
 	TemplateFaceID *string `json:"TemplateFaceID,omitempty" name:"TemplateFaceID"`
 }
 

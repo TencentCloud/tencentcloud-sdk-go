@@ -29,6 +29,9 @@ const (
 	// KMS操作失败。
 	FAILEDOPERATION_ACCESSKMSERROR = "FailedOperation.AccessKmsError"
 
+	// 凭据被禁止轮转。
+	FAILEDOPERATION_ROTATIONFORBIDDEN = "FailedOperation.RotationForbidden"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
@@ -56,6 +59,9 @@ const (
 	// 不允许手动更新具有自动轮换功能的凭据。
 	OPERATIONDENIED_AUTOROTATEDRESOURCE = "OperationDenied.AutoRotatedResource"
 
+	// 角色不存在。
+	OPERATIONDENIED_ROLENOTEXIST = "OperationDenied.RoleNotExist"
+
 	// 请求的次数超过了频率限制。
 	REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 
@@ -73,6 +79,9 @@ const (
 
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
+
+	// 凭据不存在。
+	RESOURCENOTFOUND_SECRETNOTEXIST = "ResourceNotFound.SecretNotExist"
 
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"

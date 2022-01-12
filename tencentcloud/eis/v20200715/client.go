@@ -15,6 +15,7 @@
 package v20200715
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -79,6 +80,26 @@ func (c *Client) DescribeEisConnectorConfig(request *DescribeEisConnectorConfigR
     return
 }
 
+// DescribeEisConnectorConfig
+// 获取连接器配置参数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTHENTICATIONFAILED = "FailedOperation.AuthenticationFailed"
+//  FAILEDOPERATION_METACOMPILERERROR = "FailedOperation.MetaCompilerError"
+//  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
+//  INTERNALERROR_RPCPILOTSERVERERROR = "InternalError.RpcPilotServerError"
+//  INVALIDPARAMETERVALUE_CONNECTORNOTEXIST = "InvalidParameterValue.ConnectorNotExist"
+func (c *Client) DescribeEisConnectorConfigWithContext(ctx context.Context, request *DescribeEisConnectorConfigRequest) (response *DescribeEisConnectorConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeEisConnectorConfigRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeEisConnectorConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListEisConnectorOperationsRequest() (request *ListEisConnectorOperationsRequest) {
     request = &ListEisConnectorOperationsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -115,6 +136,26 @@ func (c *Client) ListEisConnectorOperations(request *ListEisConnectorOperationsR
     return
 }
 
+// ListEisConnectorOperations
+// 获取连接器操作列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTHENTICATIONFAILED = "FailedOperation.AuthenticationFailed"
+//  FAILEDOPERATION_METACOMPILERERROR = "FailedOperation.MetaCompilerError"
+//  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
+//  INTERNALERROR_RPCPILOTSERVERERROR = "InternalError.RpcPilotServerError"
+//  INVALIDPARAMETERVALUE_CONNECTORNOTEXIST = "InvalidParameterValue.ConnectorNotExist"
+func (c *Client) ListEisConnectorOperationsWithContext(ctx context.Context, request *ListEisConnectorOperationsRequest) (response *ListEisConnectorOperationsResponse, err error) {
+    if request == nil {
+        request = NewListEisConnectorOperationsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewListEisConnectorOperationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListEisConnectorsRequest() (request *ListEisConnectorsRequest) {
     request = &ListEisConnectorsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -143,6 +184,24 @@ func (c *Client) ListEisConnectors(request *ListEisConnectorsRequest) (response 
     if request == nil {
         request = NewListEisConnectorsRequest()
     }
+    
+    response = NewListEisConnectorsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ListEisConnectors
+// 连接器列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTHENTICATIONFAILED = "FailedOperation.AuthenticationFailed"
+//  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ListEisConnectorsWithContext(ctx context.Context, request *ListEisConnectorsRequest) (response *ListEisConnectorsResponse, err error) {
+    if request == nil {
+        request = NewListEisConnectorsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewListEisConnectorsResponse()
     err = c.Send(request, response)

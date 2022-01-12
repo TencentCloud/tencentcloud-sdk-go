@@ -15,6 +15,7 @@
 package v20210408
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -81,6 +82,28 @@ func (c *Client) CreateAutoClassifyStructureTask(request *CreateAutoClassifyStru
     return
 }
 
+// CreateAutoClassifyStructureTask
+// 本接口(CreateAutoClassifyStructureTask)基于提供的客户及保单信息，创建并启动结构化识别任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateAutoClassifyStructureTaskWithContext(ctx context.Context, request *CreateAutoClassifyStructureTaskRequest) (response *CreateAutoClassifyStructureTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateAutoClassifyStructureTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateAutoClassifyStructureTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateStructureTaskRequest() (request *CreateStructureTaskRequest) {
     request = &CreateStructureTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -113,6 +136,28 @@ func (c *Client) CreateStructureTask(request *CreateStructureTaskRequest) (respo
     if request == nil {
         request = NewCreateStructureTaskRequest()
     }
+    
+    response = NewCreateStructureTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateStructureTask
+// 本接口(CreateStructureTask)基于提供的客户及保单信息，创建并启动结构化识别任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateStructureTaskWithContext(ctx context.Context, request *CreateStructureTaskRequest) (response *CreateStructureTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateStructureTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateStructureTaskResponse()
     err = c.Send(request, response)
@@ -157,6 +202,28 @@ func (c *Client) CreateUnderwriteTaskById(request *CreateUnderwriteTaskByIdReque
     return
 }
 
+// CreateUnderwriteTaskById
+// 本接口(CreateUnderwriteTaskById)用于根据结构化任务ID创建核保任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreateUnderwriteTaskByIdWithContext(ctx context.Context, request *CreateUnderwriteTaskByIdRequest) (response *CreateUnderwriteTaskByIdResponse, err error) {
+    if request == nil {
+        request = NewCreateUnderwriteTaskByIdRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateUnderwriteTaskByIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMachineUnderwriteRequest() (request *DescribeMachineUnderwriteRequest) {
     request = &DescribeMachineUnderwriteRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -187,6 +254,26 @@ func (c *Client) DescribeMachineUnderwrite(request *DescribeMachineUnderwriteReq
     if request == nil {
         request = NewDescribeMachineUnderwriteRequest()
     }
+    
+    response = NewDescribeMachineUnderwriteResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeMachineUnderwrite
+// 本接口(DescribeMachineUnderwrite)用于查询机器核保任务数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) DescribeMachineUnderwriteWithContext(ctx context.Context, request *DescribeMachineUnderwriteRequest) (response *DescribeMachineUnderwriteResponse, err error) {
+    if request == nil {
+        request = NewDescribeMachineUnderwriteRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeMachineUnderwriteResponse()
     err = c.Send(request, response)
@@ -227,6 +314,24 @@ func (c *Client) DescribeStructCompareData(request *DescribeStructCompareDataReq
     return
 }
 
+// DescribeStructCompareData
+// 结构化对比查询接口，对比结构化复核前后数据差异，查询识别正确率，召回率。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeStructCompareDataWithContext(ctx context.Context, request *DescribeStructCompareDataRequest) (response *DescribeStructCompareDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeStructCompareDataRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeStructCompareDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeStructureDifferenceRequest() (request *DescribeStructureDifferenceRequest) {
     request = &DescribeStructureDifferenceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -255,6 +360,24 @@ func (c *Client) DescribeStructureDifference(request *DescribeStructureDifferenc
     if request == nil {
         request = NewDescribeStructureDifferenceRequest()
     }
+    
+    response = NewDescribeStructureDifferenceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeStructureDifference
+// 结构化复核差异查询接口，对比结构化复核前后数据差异，返回差异的部分。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeStructureDifferenceWithContext(ctx context.Context, request *DescribeStructureDifferenceRequest) (response *DescribeStructureDifferenceResponse, err error) {
+    if request == nil {
+        request = NewDescribeStructureDifferenceRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeStructureDifferenceResponse()
     err = c.Send(request, response)
@@ -299,6 +422,28 @@ func (c *Client) DescribeStructureResult(request *DescribeStructureResultRequest
     return
 }
 
+// DescribeStructureResult
+// 本接口(DescribeStructureResult)用于查询结构化结果接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeStructureResultWithContext(ctx context.Context, request *DescribeStructureResultRequest) (response *DescribeStructureResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeStructureResultRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeStructureResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeStructureTaskResultRequest() (request *DescribeStructureTaskResultRequest) {
     request = &DescribeStructureTaskResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -330,6 +475,27 @@ func (c *Client) DescribeStructureTaskResult(request *DescribeStructureTaskResul
     if request == nil {
         request = NewDescribeStructureTaskResultRequest()
     }
+    
+    response = NewDescribeStructureTaskResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeStructureTaskResult
+// 依据任务ID获取结构化结果接口。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeStructureTaskResultWithContext(ctx context.Context, request *DescribeStructureTaskResultRequest) (response *DescribeStructureTaskResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeStructureTaskResultRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeStructureTaskResultResponse()
     err = c.Send(request, response)
@@ -368,6 +534,28 @@ func (c *Client) UploadMedicalFile(request *UploadMedicalFileRequest) (response 
     if request == nil {
         request = NewUploadMedicalFileRequest()
     }
+    
+    response = NewUploadMedicalFileResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UploadMedicalFile
+// 上传医疗影像文件，可以用来做结构化。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_ENTERPRISE = "AuthFailure.Enterprise"
+//  AUTHFAILURE_PERSONAL = "AuthFailure.Personal"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) UploadMedicalFileWithContext(ctx context.Context, request *UploadMedicalFileRequest) (response *UploadMedicalFileResponse, err error) {
+    if request == nil {
+        request = NewUploadMedicalFileRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUploadMedicalFileResponse()
     err = c.Send(request, response)

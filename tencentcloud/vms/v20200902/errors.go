@@ -44,7 +44,7 @@ const (
 	// 未申请号码或申请的号码资源已过期，请及时支付月功能费用和信息服务费用，具体操作请参见[购买指南](https://cloud.tencent.com/document/product/1128)。
 	FAILEDOPERATION_PHONENUMBERUNAPPLIEDOREXPIRED = "FailedOperation.PhonenumberUnappliedOrExpired"
 
-	// 模版未审核或请求的内容与审核通过的模版内容不匹配，请参见[1014错误详解](https://cloud.tencent.com/document/product/1128/38004#Q8)。
+	// 模板未审核或请求的内容与审核通过的模板内容不匹配，请参见[1014错误详解](https://cloud.tencent.com/document/product/1128/38004
 	FAILEDOPERATION_TEMPLATEINCORRECTORUNAPPROVED = "FailedOperation.TemplateIncorrectOrUnapproved"
 
 	// 访问上游超时网络，请稍后重试。

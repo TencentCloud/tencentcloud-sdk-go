@@ -15,6 +15,7 @@
 package v20201106
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -76,6 +77,23 @@ func (c *Client) DescribeRegions(request *DescribeRegionsRequest) (response *Des
     return
 }
 
+// DescribeRegions
+// 本接口(DescribeRegions)用于查询各个产品支持地域信息，当前只支持cvm。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *DescribeRegionsRequest) (response *DescribeRegionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRegionsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeRegionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeZonesRequest() (request *DescribeZonesRequest) {
     request = &DescribeZonesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -102,6 +120,22 @@ func (c *Client) DescribeZones(request *DescribeZonesRequest) (response *Describ
     if request == nil {
         request = NewDescribeZonesRequest()
     }
+    
+    response = NewDescribeZonesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeZones
+// 本接口(DescribeZones)用于查询产品可用区信息，当前只支持cvm。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeZonesWithContext(ctx context.Context, request *DescribeZonesRequest) (response *DescribeZonesResponse, err error) {
+    if request == nil {
+        request = NewDescribeZonesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeZonesResponse()
     err = c.Send(request, response)

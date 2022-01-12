@@ -430,6 +430,48 @@ type AttachedPolicyOfRole struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
+type AttachedUserPolicy struct {
+
+	// 策略ID
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 策略名
+	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+
+	// 策略描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 创建时间
+	AddTime *string `json:"AddTime,omitempty" name:"AddTime"`
+
+	// 策略类型(1表示自定义策略，2表示预设策略)
+	StrategyType *string `json:"StrategyType,omitempty" name:"StrategyType"`
+
+	// 创建模式(1表示按产品或项目权限创建的策略，其他表示策略语法创建的策略)
+	CreateMode *string `json:"CreateMode,omitempty" name:"CreateMode"`
+
+	// 随组关联信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Groups []*AttachedUserPolicyGroupInfo `json:"Groups,omitempty" name:"Groups"`
+
+	// 是否已下线(0:否 1:是)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Deactived *uint64 `json:"Deactived,omitempty" name:"Deactived"`
+
+	// 已下线的产品列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeactivedDetail []*string `json:"DeactivedDetail,omitempty" name:"DeactivedDetail"`
+}
+
+type AttachedUserPolicyGroupInfo struct {
+
+	// 分组ID
+	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 分组名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+}
+
 type ConsumeCustomMFATokenRequest struct {
 	*tchttp.BaseRequest
 
@@ -2748,6 +2790,78 @@ func (r *ListAttachedRolePoliciesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ListAttachedRolePoliciesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListAttachedUserAllPoliciesRequest struct {
+	*tchttp.BaseRequest
+
+	// 目标用户ID
+	TargetUin *uint64 `json:"TargetUin,omitempty" name:"TargetUin"`
+
+	// 每页数量，必须大于 0 且小于或等于 200
+	Rp *uint64 `json:"Rp,omitempty" name:"Rp"`
+
+	// 页码，从 1开始，不能大于 200
+	Page *uint64 `json:"Page,omitempty" name:"Page"`
+
+	// 0:返回直接关联和随组关联策略，1:只返回直接关联策略，2:只返回随组关联策略
+	AttachType *uint64 `json:"AttachType,omitempty" name:"AttachType"`
+
+	// 策略类型
+	StrategyType *uint64 `json:"StrategyType,omitempty" name:"StrategyType"`
+
+	// 搜索关键字
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+}
+
+func (r *ListAttachedUserAllPoliciesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAttachedUserAllPoliciesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TargetUin")
+	delete(f, "Rp")
+	delete(f, "Page")
+	delete(f, "AttachType")
+	delete(f, "StrategyType")
+	delete(f, "Keyword")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAttachedUserAllPoliciesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListAttachedUserAllPoliciesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 策略列表数据
+		PolicyList []*AttachedUserPolicy `json:"PolicyList,omitempty" name:"PolicyList"`
+
+		// 策略总数
+		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListAttachedUserAllPoliciesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAttachedUserAllPoliciesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

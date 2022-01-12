@@ -15,6 +15,7 @@
 package v20180420
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -72,6 +73,19 @@ func (c *Client) DescribeDasbImageIds(request *DescribeDasbImageIdsRequest) (res
     return
 }
 
+// DescribeDasbImageIds
+// 获取镜像列表
+func (c *Client) DescribeDasbImageIdsWithContext(ctx context.Context, request *DescribeDasbImageIdsRequest) (response *DescribeDasbImageIdsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDasbImageIdsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDasbImageIdsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDbauditInstanceTypeRequest() (request *DescribeDbauditInstanceTypeRequest) {
     request = &DescribeDbauditInstanceTypeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -95,6 +109,19 @@ func (c *Client) DescribeDbauditInstanceType(request *DescribeDbauditInstanceTyp
     if request == nil {
         request = NewDescribeDbauditInstanceTypeRequest()
     }
+    
+    response = NewDescribeDbauditInstanceTypeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeDbauditInstanceType
+// 本接口 (DescribeDbauditInstanceType) 用于查询可售卖的产品规格列表。
+func (c *Client) DescribeDbauditInstanceTypeWithContext(ctx context.Context, request *DescribeDbauditInstanceTypeRequest) (response *DescribeDbauditInstanceTypeResponse, err error) {
+    if request == nil {
+        request = NewDescribeDbauditInstanceTypeRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeDbauditInstanceTypeResponse()
     err = c.Send(request, response)
@@ -130,6 +157,19 @@ func (c *Client) DescribeDbauditInstances(request *DescribeDbauditInstancesReque
     return
 }
 
+// DescribeDbauditInstances
+// 本接口 (DescribeDbauditInstances) 用于查询数据安全审计实例列表
+func (c *Client) DescribeDbauditInstancesWithContext(ctx context.Context, request *DescribeDbauditInstancesRequest) (response *DescribeDbauditInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDbauditInstancesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDbauditInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDbauditUsedRegionsRequest() (request *DescribeDbauditUsedRegionsRequest) {
     request = &DescribeDbauditUsedRegionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -153,6 +193,19 @@ func (c *Client) DescribeDbauditUsedRegions(request *DescribeDbauditUsedRegionsR
     if request == nil {
         request = NewDescribeDbauditUsedRegionsRequest()
     }
+    
+    response = NewDescribeDbauditUsedRegionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeDbauditUsedRegions
+// 本接口 (DescribeDbauditUsedRegions) 用于查询可售卖地域列表。
+func (c *Client) DescribeDbauditUsedRegionsWithContext(ctx context.Context, request *DescribeDbauditUsedRegionsRequest) (response *DescribeDbauditUsedRegionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDbauditUsedRegionsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeDbauditUsedRegionsResponse()
     err = c.Send(request, response)
@@ -188,6 +241,19 @@ func (c *Client) InquiryPriceDbauditInstance(request *InquiryPriceDbauditInstanc
     return
 }
 
+// InquiryPriceDbauditInstance
+// 用于查询数据安全审计产品实例价格
+func (c *Client) InquiryPriceDbauditInstanceWithContext(ctx context.Context, request *InquiryPriceDbauditInstanceRequest) (response *InquiryPriceDbauditInstanceResponse, err error) {
+    if request == nil {
+        request = NewInquiryPriceDbauditInstanceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewInquiryPriceDbauditInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDbauditInstancesRenewFlagRequest() (request *ModifyDbauditInstancesRenewFlagRequest) {
     request = &ModifyDbauditInstancesRenewFlagRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -216,6 +282,24 @@ func (c *Client) ModifyDbauditInstancesRenewFlag(request *ModifyDbauditInstances
     if request == nil {
         request = NewModifyDbauditInstancesRenewFlagRequest()
     }
+    
+    response = NewModifyDbauditInstancesRenewFlagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyDbauditInstancesRenewFlag
+// 本接口 (ModifyDbauditInstancesRenewFlag) 用于修改数据安全审计产品实例续费标识
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETER_RESOURCEIDERROR = "InvalidParameter.ResourceIdError"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) ModifyDbauditInstancesRenewFlagWithContext(ctx context.Context, request *ModifyDbauditInstancesRenewFlagRequest) (response *ModifyDbauditInstancesRenewFlagResponse, err error) {
+    if request == nil {
+        request = NewModifyDbauditInstancesRenewFlagRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyDbauditInstancesRenewFlagResponse()
     err = c.Send(request, response)

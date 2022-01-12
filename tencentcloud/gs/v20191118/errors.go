@@ -56,6 +56,9 @@ const (
 	// 机器还在初始化中。
 	RESOURCEUNAVAILABLE_INITIALIZATION = "ResourceUnavailable.Initialization"
 
+	// 机器未运行。
+	UNSUPPORTEDOPERATION_NOTRUNNING = "UnsupportedOperation.NotRunning"
+
 	// 退出游戏中。
 	UNSUPPORTEDOPERATION_STOPPING = "UnsupportedOperation.Stopping"
 )

@@ -15,6 +15,7 @@
 package v20190313
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -78,6 +79,25 @@ func (c *Client) CreateSession(request *CreateSessionRequest) (response *CreateS
     return
 }
 
+// CreateSession
+// 创建会话
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_LACKBANDWIDTH = "FailedOperation.LackBandwidth"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  RESOURCENOTFOUND_NOIDLE = "ResourceNotFound.NoIdle"
+func (c *Client) CreateSessionWithContext(ctx context.Context, request *CreateSessionRequest) (response *CreateSessionResponse, err error) {
+    if request == nil {
+        request = NewCreateSessionRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateSessionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeStreamPlayInfoListRequest() (request *DescribeStreamPlayInfoListRequest) {
     request = &DescribeStreamPlayInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -113,6 +133,25 @@ func (c *Client) DescribeStreamPlayInfoList(request *DescribeStreamPlayInfoListR
     return
 }
 
+// DescribeStreamPlayInfoList
+// 查询播放数据，支持按流名称查询详细播放数据，也可按播放域名查询详细总数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeStreamPlayInfoListWithContext(ctx context.Context, request *DescribeStreamPlayInfoListRequest) (response *DescribeStreamPlayInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamPlayInfoListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeStreamPlayInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeWorkersRequest() (request *DescribeWorkersRequest) {
     request = &DescribeWorkersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -139,6 +178,22 @@ func (c *Client) DescribeWorkers(request *DescribeWorkersRequest) (response *Des
     if request == nil {
         request = NewDescribeWorkersRequest()
     }
+    
+    response = NewDescribeWorkersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeWorkers
+// 查询空闲机器数量
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+func (c *Client) DescribeWorkersWithContext(ctx context.Context, request *DescribeWorkersRequest) (response *DescribeWorkersResponse, err error) {
+    if request == nil {
+        request = NewDescribeWorkersRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeWorkersResponse()
     err = c.Send(request, response)
@@ -188,6 +243,33 @@ func (c *Client) ForbidLiveStream(request *ForbidLiveStreamRequest) (response *F
     return
 }
 
+// ForbidLiveStream
+// 禁止某条流的推送，可以预设某个时刻将流恢复。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLOTHERSVRERROR = "InternalError.CallOtherSvrError"
+//  INTERNALERROR_CONFIGNOTEXIST = "InternalError.ConfigNotExist"
+//  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
+//  INTERNALERROR_GETSTREAMINFOERROR = "InternalError.GetStreamInfoError"
+//  INTERNALERROR_GETUPSTREAMINFOERROR = "InternalError.GetUpstreamInfoError"
+//  INTERNALERROR_NOTPERMMITOPERAT = "InternalError.NotPermmitOperat"
+//  INTERNALERROR_STREAMSTATUSERROR = "InternalError.StreamStatusError"
+//  INTERNALERROR_UPDATEDATAERROR = "InternalError.UpdateDataError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ForbidLiveStreamWithContext(ctx context.Context, request *ForbidLiveStreamRequest) (response *ForbidLiveStreamResponse, err error) {
+    if request == nil {
+        request = NewForbidLiveStreamRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewForbidLiveStreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRegisterIMRequest() (request *RegisterIMRequest) {
     request = &RegisterIMRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -224,6 +306,26 @@ func (c *Client) RegisterIM(request *RegisterIMRequest) (response *RegisterIMRes
     return
 }
 
+// RegisterIM
+// 注册聊天室
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  LIMITEXCEEDED_NOIMABILITY = "LimitExceeded.NoIMAbility"
+func (c *Client) RegisterIMWithContext(ctx context.Context, request *RegisterIMRequest) (response *RegisterIMResponse, err error) {
+    if request == nil {
+        request = NewRegisterIMRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewRegisterIMResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopGameRequest() (request *StopGameRequest) {
     request = &StopGameRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -251,6 +353,23 @@ func (c *Client) StopGame(request *StopGameRequest) (response *StopGameResponse,
     if request == nil {
         request = NewStopGameRequest()
     }
+    
+    response = NewStopGameResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// StopGame
+// 强制退出游戏
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+func (c *Client) StopGameWithContext(ctx context.Context, request *StopGameRequest) (response *StopGameResponse, err error) {
+    if request == nil {
+        request = NewStopGameRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewStopGameResponse()
     err = c.Send(request, response)

@@ -71,6 +71,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ds v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dtf v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dts v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eb v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecc v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecdn v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecm v0.0.0
@@ -263,6 +264,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ds => ../tencentcloud/ds
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dtf => ../tencentcloud/dtf
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dts => ../tencentcloud/dts
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eb => ../tencentcloud/eb
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecc => ../tencentcloud/ecc
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecdn => ../tencentcloud/ecdn
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecm => ../tencentcloud/ecm

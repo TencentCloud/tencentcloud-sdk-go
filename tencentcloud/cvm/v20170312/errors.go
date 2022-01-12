@@ -50,6 +50,9 @@ const (
 	// 请求不支持`EMR`的实例`ins-xxxxxxxx`。
 	FAILEDOPERATION_INVALIDINSTANCEAPPLICATIONROLEEMR = "FailedOperation.InvalidInstanceApplicationRoleEmr"
 
+	// 子网可用IP已耗尽。
+	FAILEDOPERATION_NOAVAILABLEIPADDRESSCOUNTINSUBNET = "FailedOperation.NoAvailableIpAddressCountInSubnet"
+
 	// 当前实例没有弹性IP
 	FAILEDOPERATION_NOTFOUNDEIP = "FailedOperation.NotFoundEIP"
 
@@ -302,6 +305,9 @@ const (
 	// HostName参数值不合法
 	INVALIDPARAMETERVALUE_ILLEGALHOSTNAME = "InvalidParameterValue.IllegalHostName"
 
+	// 不支持操作不同计费方式的实例。
+	INVALIDPARAMETERVALUE_INSTANCENOTSUPPORTEDMIXPRICINGMODEL = "InvalidParameterValue.InstanceNotSupportedMixPricingModel"
+
 	// 指定机型不存在
 	INVALIDPARAMETERVALUE_INSTANCETYPENOTFOUND = "InvalidParameterValue.InstanceTypeNotFound"
 
@@ -350,6 +356,9 @@ const (
 	// 参数值错误。
 	INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 
+	// 无效密码。指定的密码不符合密码复杂度限制。例如密码长度不符合限制等。
+	INVALIDPARAMETERVALUE_INVALIDPASSWORD = "InvalidParameterValue.InvalidPassword"
+
 	// 时间格式不合法。
 	INVALIDPARAMETERVALUE_INVALIDTIMEFORMAT = "InvalidParameterValue.InvalidTimeFormat"
 
@@ -365,6 +374,9 @@ const (
 	// 指定的密钥不支持当前操作。
 	INVALIDPARAMETERVALUE_KEYPAIRNOTSUPPORTED = "InvalidParameterValue.KeyPairNotSupported"
 
+	// 不支持删除默认启动模板版本。
+	INVALIDPARAMETERVALUE_LAUNCHTEMPLATEDEFAULTVERSION = "InvalidParameterValue.LaunchTemplateDefaultVersion"
+
 	// 实例启动模板ID格式错误。
 	INVALIDPARAMETERVALUE_LAUNCHTEMPLATEIDMALFORMED = "InvalidParameterValue.LaunchTemplateIdMalformed"
 
@@ -373,6 +385,9 @@ const (
 
 	// 实例启动模板和版本ID组合不存在。
 	INVALIDPARAMETERVALUE_LAUNCHTEMPLATEIDVERNOTEXISTED = "InvalidParameterValue.LaunchTemplateIdVerNotExisted"
+
+	// 指定的实例启动模板id不存在。
+	INVALIDPARAMETERVALUE_LAUNCHTEMPLATEIDVERSETALREADY = "InvalidParameterValue.LaunchTemplateIdVerSetAlready"
 
 	// 实例启动模板未找到。
 	INVALIDPARAMETERVALUE_LAUNCHTEMPLATENOTFOUND = "InvalidParameterValue.LaunchTemplateNotFound"
@@ -418,6 +433,9 @@ const (
 
 	// VPC ID`xxx`不合要求，请提供规范的Vpc ID， 类似vpc-xxxxxxxx，字母x代表小写字符或者数字。
 	INVALIDPARAMETERVALUE_VPCIDMALFORMED = "InvalidParameterValue.VpcIdMalformed"
+
+	// 指定的VpcId不存在。
+	INVALIDPARAMETERVALUE_VPCIDNOTEXIST = "InvalidParameterValue.VpcIdNotExist"
 
 	// VPC网络与实例不在同一可用区
 	INVALIDPARAMETERVALUE_VPCIDZONEIDNOTMATCH = "InvalidParameterValue.VpcIdZoneIdNotMatch"
@@ -554,6 +572,9 @@ const (
 	// 指定的实例类型库存不足。
 	RESOURCEINSUFFICIENT_SPECIFIEDINSTANCETYPE = "ResourceInsufficient.SpecifiedInstanceType"
 
+	// 指定的实例类型在选择的可用区已售罄。
+	RESOURCEINSUFFICIENT_ZONESOLDOUTFORSPECIFIEDINSTANCE = "ResourceInsufficient.ZoneSoldOutForSpecifiedInstance"
+
 	// 高性能计算集群不存在。
 	RESOURCENOTFOUND_HPCCLUSTER = "ResourceNotFound.HpcCluster"
 
@@ -617,8 +638,14 @@ const (
 	// 请求不支持该实例计费模式
 	UNSUPPORTEDOPERATION_INSTANCECHARGETYPE = "UnsupportedOperation.InstanceChargeType"
 
+	// 不支持混合付费模式。
+	UNSUPPORTEDOPERATION_INSTANCEMIXEDPRICINGMODEL = "UnsupportedOperation.InstanceMixedPricingModel"
+
 	// 请求不支持操作系统为`Xserver windows2012cndatacenterx86_64`的实例`ins-xxxxxx` 。
 	UNSUPPORTEDOPERATION_INSTANCEOSWINDOWS = "UnsupportedOperation.InstanceOsWindows"
+
+	// 该子机处于封禁状态，请联系相关人员处理。
+	UNSUPPORTEDOPERATION_INSTANCESTATEBANNING = "UnsupportedOperation.InstanceStateBanning"
 
 	// 请求不支持永久故障的实例。
 	UNSUPPORTEDOPERATION_INSTANCESTATECORRUPTED = "UnsupportedOperation.InstanceStateCorrupted"
@@ -634,6 +661,9 @@ const (
 
 	// 不支持状态为 `EXIT_SERVICE_LIVE_MIGRATE`.的实例 `ins-xxxxxx` 。
 	UNSUPPORTEDOPERATION_INSTANCESTATEEXITSERVICELIVEMIGRATE = "UnsupportedOperation.InstanceStateExitServiceLiveMigrate"
+
+	// 操作不支持已冻结的实例。
+	UNSUPPORTEDOPERATION_INSTANCESTATEFREEZING = "UnsupportedOperation.InstanceStateFreezing"
 
 	// 请求不支持正在隔离状态的实例。
 	UNSUPPORTEDOPERATION_INSTANCESTATEISOLATING = "UnsupportedOperation.InstanceStateIsolating"
@@ -730,6 +760,9 @@ const (
 
 	// 目标机型是SA3, 不支持变配。
 	UNSUPPORTEDOPERATION_UNSUPPORTEDCHANGEINSTANCEFAMILYTOSA3 = "UnsupportedOperation.UnsupportedChangeInstanceFamilyToSA3"
+
+	// 不支持实例变配到此类型机型。
+	UNSUPPORTEDOPERATION_UNSUPPORTEDCHANGEINSTANCETOTHISINSTANCEFAMILY = "UnsupportedOperation.UnsupportedChangeInstanceToThisInstanceFamily"
 
 	// 请求不支持国际版账号
 	UNSUPPORTEDOPERATION_UNSUPPORTEDINTERNATIONALUSER = "UnsupportedOperation.UnsupportedInternationalUser"

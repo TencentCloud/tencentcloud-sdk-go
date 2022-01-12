@@ -649,7 +649,7 @@ type DescribeSecretResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ResourceID *string `json:"ResourceID,omitempty" name:"ResourceID"`
 
-		// 是否开启轮转：True -- 开启轮转；False -- 禁止轮转。
+		// 是否开启轮转：True -- 开启轮转；False -- 关闭轮转。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		RotationStatus *bool `json:"RotationStatus,omitempty" name:"RotationStatus"`
 
@@ -668,6 +668,10 @@ type DescribeSecretResponse struct {
 		// 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所关联的CVM实例ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		AssociatedInstanceIDs []*string `json:"AssociatedInstanceIDs,omitempty" name:"AssociatedInstanceIDs"`
+
+		// 当凭据类型为云API密钥对凭据时，此字段有效，用于表示此云API密钥对所属的用户UIN。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TargetUin *uint64 `json:"TargetUin,omitempty" name:"TargetUin"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1043,6 +1047,10 @@ type GetServiceStatusResponse struct {
 		// 服务不可用类型： 0-未购买，1-正常， 2-欠费停服， 3-资源释放。
 		InvalidType *int64 `json:"InvalidType,omitempty" name:"InvalidType"`
 
+		// true表示用户已经可以使用云API密钥安全托管功能，
+	// false表示用户暂时不能使用云API密钥安全托管功能。
+		AccessKeyEscrowEnabled *bool `json:"AccessKeyEscrowEnabled,omitempty" name:"AccessKeyEscrowEnabled"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -1143,6 +1151,7 @@ type ListSecretsRequest struct {
 	// 0  -- 表示用户自定义凭据，默认为0。
 	// 1  -- 表示用户云产品凭据。
 	// 2 -- 表示SSH密钥对凭据。
+	// 3 -- 表示云API密钥对凭据。
 	SecretType *uint64 `json:"SecretType,omitempty" name:"SecretType"`
 
 	// 此参数仅在SecretType参数值为1时生效，
@@ -1392,7 +1401,7 @@ type RotateProductSecretResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 轮转异步任务ID号。
+		// 当凭据类型为云产品凭据时（即SecretType为1，如Mysq、Tdsql等托管凭据）此字段有效，返回轮转异步任务ID号。
 		FlowID *int64 `json:"FlowID,omitempty" name:"FlowID"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1445,7 +1454,10 @@ type SecretMetadata struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NextRotationTime *uint64 `json:"NextRotationTime,omitempty" name:"NextRotationTime"`
 
-	// 0 -- 用户自定义凭据；1 -- 云产品凭据
+	// 0 -- 用户自定义凭据；
+	// 1 -- 云产品凭据；
+	// 2 -- SSH密钥对凭据；
+	// 3 -- 云API密钥对凭据；
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecretType *int64 `json:"SecretType,omitempty" name:"SecretType"`
 
@@ -1464,6 +1476,10 @@ type SecretMetadata struct {
 	// 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所关联的CVM实例ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssociatedInstanceIDs []*string `json:"AssociatedInstanceIDs,omitempty" name:"AssociatedInstanceIDs"`
+
+	// 当凭据类型为云API密钥对凭据时，此字段有效，用于表示云API密钥对所属的用户UIN。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetUin *uint64 `json:"TargetUin,omitempty" name:"TargetUin"`
 }
 
 type Tag struct {

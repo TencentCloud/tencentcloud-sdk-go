@@ -504,6 +504,9 @@ type CreateDCDBInstanceRequest struct {
 
 	// 自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费，用户开通了预付费不停服特权也会进行自动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)，若业务无续费概念或无需自动续费，需要设置为0
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 安全组ids，安全组可以传数组形式，兼容之前SecurityGroupId参数
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 }
 
 func (r *CreateDCDBInstanceRequest) ToJsonString() string {
@@ -539,6 +542,7 @@ func (r *CreateDCDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "DcnRegion")
 	delete(f, "DcnInstanceId")
 	delete(f, "AutoRenewFlag")
+	delete(f, "SecurityGroupIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDCDBInstanceRequest has unknown keys!", "")
 	}
@@ -908,6 +912,10 @@ type DCDBInstanceInfo struct {
 	// 1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 实例标签信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags"`
 }
 
 type DCDBShardInfo struct {
@@ -2476,6 +2484,9 @@ type DescribeProjectSecurityGroupsResponse struct {
 		// 安全组详情。
 		Groups []*SecurityGroup `json:"Groups,omitempty" name:"Groups"`
 
+		// 安全组个数。
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -3789,11 +3800,11 @@ type SecurityGroup struct {
 
 type SecurityGroupBound struct {
 
-	// 策略，ACCEPT 或者 DROP
-	Action *string `json:"Action,omitempty" name:"Action"`
-
 	// 来源 IP 或 IP 段，例如192.168.0.0/16
 	CidrIp *string `json:"CidrIp,omitempty" name:"CidrIp"`
+
+	// 策略，ACCEPT 或者 DROP
+	Action *string `json:"Action,omitempty" name:"Action"`
 
 	// 端口
 	PortRange *string `json:"PortRange,omitempty" name:"PortRange"`

@@ -15,6 +15,7 @@
 package v20180408
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -76,6 +77,23 @@ func (c *Client) CreateContainerInstance(request *CreateContainerInstanceRequest
     return
 }
 
+// CreateContainerInstance
+// 此接口（CreateContainerInstance）用于创建容器实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateContainerInstanceWithContext(ctx context.Context, request *CreateContainerInstanceRequest) (response *CreateContainerInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateContainerInstanceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateContainerInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteContainerInstanceRequest() (request *DeleteContainerInstanceRequest) {
     request = &DeleteContainerInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -103,6 +121,23 @@ func (c *Client) DeleteContainerInstance(request *DeleteContainerInstanceRequest
     if request == nil {
         request = NewDeleteContainerInstanceRequest()
     }
+    
+    response = NewDeleteContainerInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteContainerInstance
+// 此接口（DeleteContainerInstance）用于删除容器实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteContainerInstanceWithContext(ctx context.Context, request *DeleteContainerInstanceRequest) (response *DeleteContainerInstanceResponse, err error) {
+    if request == nil {
+        request = NewDeleteContainerInstanceRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteContainerInstanceResponse()
     err = c.Send(request, response)
@@ -142,6 +177,23 @@ func (c *Client) DescribeContainerInstance(request *DescribeContainerInstanceReq
     return
 }
 
+// DescribeContainerInstance
+// 此接口（DescribeContainerInstance）用于获取容器实例详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeContainerInstanceWithContext(ctx context.Context, request *DescribeContainerInstanceRequest) (response *DescribeContainerInstanceResponse, err error) {
+    if request == nil {
+        request = NewDescribeContainerInstanceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeContainerInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeContainerInstanceEventsRequest() (request *DescribeContainerInstanceEventsRequest) {
     request = &DescribeContainerInstanceEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -169,6 +221,23 @@ func (c *Client) DescribeContainerInstanceEvents(request *DescribeContainerInsta
     if request == nil {
         request = NewDescribeContainerInstanceEventsRequest()
     }
+    
+    response = NewDescribeContainerInstanceEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeContainerInstanceEvents
+// 此接口（DescribeContainerInstanceEvents）用于查询容器实例事件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeContainerInstanceEventsWithContext(ctx context.Context, request *DescribeContainerInstanceEventsRequest) (response *DescribeContainerInstanceEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeContainerInstanceEventsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeContainerInstanceEventsResponse()
     err = c.Send(request, response)
@@ -208,6 +277,23 @@ func (c *Client) DescribeContainerInstances(request *DescribeContainerInstancesR
     return
 }
 
+// DescribeContainerInstances
+// 此接口（DescribeContainerInstances）查询容器实例列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeContainerInstancesWithContext(ctx context.Context, request *DescribeContainerInstancesRequest) (response *DescribeContainerInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeContainerInstancesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeContainerInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeContainerLogRequest() (request *DescribeContainerLogRequest) {
     request = &DescribeContainerLogRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -241,6 +327,23 @@ func (c *Client) DescribeContainerLog(request *DescribeContainerLogRequest) (res
     return
 }
 
+// DescribeContainerLog
+// 此接口（DescribeContainerLog）用于获取容器日志信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeContainerLogWithContext(ctx context.Context, request *DescribeContainerLogRequest) (response *DescribeContainerLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeContainerLogRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeContainerLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInquiryPriceCreateCisRequest() (request *InquiryPriceCreateCisRequest) {
     request = &InquiryPriceCreateCisRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -268,6 +371,23 @@ func (c *Client) InquiryPriceCreateCis(request *InquiryPriceCreateCisRequest) (r
     if request == nil {
         request = NewInquiryPriceCreateCisRequest()
     }
+    
+    response = NewInquiryPriceCreateCisResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// InquiryPriceCreateCis
+// 此接口（InquiryPriceCreateCis）用于查询容器实例价格
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) InquiryPriceCreateCisWithContext(ctx context.Context, request *InquiryPriceCreateCisRequest) (response *InquiryPriceCreateCisResponse, err error) {
+    if request == nil {
+        request = NewInquiryPriceCreateCisRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewInquiryPriceCreateCisResponse()
     err = c.Send(request, response)

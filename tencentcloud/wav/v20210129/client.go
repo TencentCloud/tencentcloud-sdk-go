@@ -15,6 +15,7 @@
 package v20210129
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -72,6 +73,19 @@ func (c *Client) CreateChannelCode(request *CreateChannelCodeRequest) (response 
     return
 }
 
+// CreateChannelCode
+// 新增渠道活码接口
+func (c *Client) CreateChannelCodeWithContext(ctx context.Context, request *CreateChannelCodeRequest) (response *CreateChannelCodeResponse, err error) {
+    if request == nil {
+        request = NewCreateChannelCodeRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateChannelCodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCorpTagRequest() (request *CreateCorpTagRequest) {
     request = &CreateCorpTagRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -105,6 +119,29 @@ func (c *Client) CreateCorpTag(request *CreateCorpTagRequest) (response *CreateC
     if request == nil {
         request = NewCreateCorpTagRequest()
     }
+    
+    response = NewCreateCorpTagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateCorpTag
+// 该接口用户设置标签库, 每个企业最多可配置3000个企业标签。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  AUTHFAILURE_MISSINGACCESSTOKEN = "AuthFailure.MissingAccessToken"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreateCorpTagWithContext(ctx context.Context, request *CreateCorpTagRequest) (response *CreateCorpTagResponse, err error) {
+    if request == nil {
+        request = NewCreateCorpTagRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateCorpTagResponse()
     err = c.Send(request, response)
@@ -154,6 +191,33 @@ func (c *Client) CreateLead(request *CreateLeadRequest) (response *CreateLeadRes
     return
 }
 
+// CreateLead
+// 线索回收接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_OPENPLATFORMERROR = "FailedOperation.OpenPlatformError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateLeadWithContext(ctx context.Context, request *CreateLeadRequest) (response *CreateLeadResponse, err error) {
+    if request == nil {
+        request = NewCreateLeadRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateLeadResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryActivityJoinListRequest() (request *QueryActivityJoinListRequest) {
     request = &QueryActivityJoinListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -183,6 +247,25 @@ func (c *Client) QueryActivityJoinList(request *QueryActivityJoinListRequest) (r
     if request == nil {
         request = NewQueryActivityJoinListRequest()
     }
+    
+    response = NewQueryActivityJoinListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// QueryActivityJoinList
+// 根据游标拉取活动参与列表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  FAILEDOPERATION_OPENPLATFORMERROR = "FailedOperation.OpenPlatformError"
+//  INTERNALERROR = "InternalError"
+func (c *Client) QueryActivityJoinListWithContext(ctx context.Context, request *QueryActivityJoinListRequest) (response *QueryActivityJoinListResponse, err error) {
+    if request == nil {
+        request = NewQueryActivityJoinListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewQueryActivityJoinListResponse()
     err = c.Send(request, response)
@@ -224,6 +307,25 @@ func (c *Client) QueryActivityList(request *QueryActivityListRequest) (response 
     return
 }
 
+// QueryActivityList
+// 根据游标拉取活动列表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  FAILEDOPERATION_OPENPLATFORMERROR = "FailedOperation.OpenPlatformError"
+//  INTERNALERROR = "InternalError"
+func (c *Client) QueryActivityListWithContext(ctx context.Context, request *QueryActivityListRequest) (response *QueryActivityListResponse, err error) {
+    if request == nil {
+        request = NewQueryActivityListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewQueryActivityListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryActivityLiveCodeListRequest() (request *QueryActivityLiveCodeListRequest) {
     request = &QueryActivityLiveCodeListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -252,6 +354,24 @@ func (c *Client) QueryActivityLiveCodeList(request *QueryActivityLiveCodeListReq
     if request == nil {
         request = NewQueryActivityLiveCodeListRequest()
     }
+    
+    response = NewQueryActivityLiveCodeListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// QueryActivityLiveCodeList
+// 根据游标拉取活动活码列表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  INTERNALERROR = "InternalError"
+func (c *Client) QueryActivityLiveCodeListWithContext(ctx context.Context, request *QueryActivityLiveCodeListRequest) (response *QueryActivityLiveCodeListResponse, err error) {
+    if request == nil {
+        request = NewQueryActivityLiveCodeListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewQueryActivityLiveCodeListResponse()
     err = c.Send(request, response)
@@ -292,6 +412,24 @@ func (c *Client) QueryChannelCodeList(request *QueryChannelCodeListRequest) (res
     return
 }
 
+// QueryChannelCodeList
+// 根据游标拉取渠道活码列表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  INTERNALERROR = "InternalError"
+func (c *Client) QueryChannelCodeListWithContext(ctx context.Context, request *QueryChannelCodeListRequest) (response *QueryChannelCodeListResponse, err error) {
+    if request == nil {
+        request = NewQueryChannelCodeListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewQueryChannelCodeListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryChatArchivingListRequest() (request *QueryChatArchivingListRequest) {
     request = &QueryChatArchivingListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -320,6 +458,24 @@ func (c *Client) QueryChatArchivingList(request *QueryChatArchivingListRequest) 
     if request == nil {
         request = NewQueryChatArchivingListRequest()
     }
+    
+    response = NewQueryChatArchivingListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// QueryChatArchivingList
+// 根据游标拉取会话存档列表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  INTERNALERROR = "InternalError"
+func (c *Client) QueryChatArchivingListWithContext(ctx context.Context, request *QueryChatArchivingListRequest) (response *QueryChatArchivingListResponse, err error) {
+    if request == nil {
+        request = NewQueryChatArchivingListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewQueryChatArchivingListResponse()
     err = c.Send(request, response)
@@ -363,6 +519,27 @@ func (c *Client) QueryClueInfoList(request *QueryClueInfoListRequest) (response 
     return
 }
 
+// QueryClueInfoList
+// 企业可通过此接口获取线索列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) QueryClueInfoListWithContext(ctx context.Context, request *QueryClueInfoListRequest) (response *QueryClueInfoListResponse, err error) {
+    if request == nil {
+        request = NewQueryClueInfoListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewQueryClueInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryDealerInfoListRequest() (request *QueryDealerInfoListRequest) {
     request = &QueryDealerInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -400,6 +577,27 @@ func (c *Client) QueryDealerInfoList(request *QueryDealerInfoListRequest) (respo
     return
 }
 
+// QueryDealerInfoList
+// 企业可通过此接口获取录入在企微SaaS平台上的经销商信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) QueryDealerInfoListWithContext(ctx context.Context, request *QueryDealerInfoListRequest) (response *QueryDealerInfoListResponse, err error) {
+    if request == nil {
+        request = NewQueryDealerInfoListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewQueryDealerInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryExternalContactDetailRequest() (request *QueryExternalContactDetailRequest) {
     request = &QueryExternalContactDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -418,7 +616,7 @@ func NewQueryExternalContactDetailResponse() (response *QueryExternalContactDeta
 }
 
 // QueryExternalContactDetail
-// 企业可通过此接口，根据外部联系人的userid，拉取客户详情
+// 企业可通过此接口，根据外部联系人的userid，拉取外部联系人详情
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -434,6 +632,30 @@ func (c *Client) QueryExternalContactDetail(request *QueryExternalContactDetailR
     if request == nil {
         request = NewQueryExternalContactDetailRequest()
     }
+    
+    response = NewQueryExternalContactDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// QueryExternalContactDetail
+// 企业可通过此接口，根据外部联系人的userid，拉取外部联系人详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) QueryExternalContactDetailWithContext(ctx context.Context, request *QueryExternalContactDetailRequest) (response *QueryExternalContactDetailResponse, err error) {
+    if request == nil {
+        request = NewQueryExternalContactDetailRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewQueryExternalContactDetailResponse()
     err = c.Send(request, response)
@@ -458,7 +680,7 @@ func NewQueryExternalContactListResponse() (response *QueryExternalContactListRe
 }
 
 // QueryExternalContactList
-// 企业可通过此接口获取指定成员添加的客户列表。客户是指配置了客户联系功能的成员所添加的外部联系人。没有配置客户联系功能的成员，所添加的外部联系人将不会作为客户返回。
+// 企业可通过此接口基于外部联系人获取指定成员添加的客户列表。客户是指配置了客户联系功能的成员所添加的外部联系人。没有配置客户联系功能的成员，所添加的外部联系人将不会作为客户返回。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -470,6 +692,26 @@ func (c *Client) QueryExternalContactList(request *QueryExternalContactListReque
     if request == nil {
         request = NewQueryExternalContactListRequest()
     }
+    
+    response = NewQueryExternalContactListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// QueryExternalContactList
+// 企业可通过此接口基于外部联系人获取指定成员添加的客户列表。客户是指配置了客户联系功能的成员所添加的外部联系人。没有配置客户联系功能的成员，所添加的外部联系人将不会作为客户返回。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) QueryExternalContactListWithContext(ctx context.Context, request *QueryExternalContactListRequest) (response *QueryExternalContactListResponse, err error) {
+    if request == nil {
+        request = NewQueryExternalContactListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewQueryExternalContactListResponse()
     err = c.Send(request, response)
@@ -512,6 +754,26 @@ func (c *Client) QueryExternalUserMappingInfo(request *QueryExternalUserMappingI
     return
 }
 
+// QueryExternalUserMappingInfo
+// 企业可通过此接口将企业主体对应的外部联系人id转换为乐销车应用主体对应的外部联系人。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) QueryExternalUserMappingInfoWithContext(ctx context.Context, request *QueryExternalUserMappingInfoRequest) (response *QueryExternalUserMappingInfoResponse, err error) {
+    if request == nil {
+        request = NewQueryExternalUserMappingInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewQueryExternalUserMappingInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryLicenseInfoRequest() (request *QueryLicenseInfoRequest) {
     request = &QueryLicenseInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -541,6 +803,25 @@ func (c *Client) QueryLicenseInfo(request *QueryLicenseInfoRequest) (response *Q
     if request == nil {
         request = NewQueryLicenseInfoRequest()
     }
+    
+    response = NewQueryLicenseInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// QueryLicenseInfo
+// 该接口获取license对应的详细信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) QueryLicenseInfoWithContext(ctx context.Context, request *QueryLicenseInfoRequest) (response *QueryLicenseInfoResponse, err error) {
+    if request == nil {
+        request = NewQueryLicenseInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewQueryLicenseInfoResponse()
     err = c.Send(request, response)
@@ -586,6 +867,29 @@ func (c *Client) QueryMiniAppCodeList(request *QueryMiniAppCodeListRequest) (res
     return
 }
 
+// QueryMiniAppCodeList
+// 查询小程序码列表接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  AUTHFAILURE_MISSINGACCESSTOKEN = "AuthFailure.MissingAccessToken"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) QueryMiniAppCodeListWithContext(ctx context.Context, request *QueryMiniAppCodeListRequest) (response *QueryMiniAppCodeListResponse, err error) {
+    if request == nil {
+        request = NewQueryMiniAppCodeListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewQueryMiniAppCodeListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryVehicleInfoListRequest() (request *QueryVehicleInfoListRequest) {
     request = &QueryVehicleInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -617,6 +921,27 @@ func (c *Client) QueryVehicleInfoList(request *QueryVehicleInfoListRequest) (res
     if request == nil {
         request = NewQueryVehicleInfoListRequest()
     }
+    
+    response = NewQueryVehicleInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// QueryVehicleInfoList
+// 企业可通过此接口获取企微SaaS平台上的车系车型信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) QueryVehicleInfoListWithContext(ctx context.Context, request *QueryVehicleInfoListRequest) (response *QueryVehicleInfoListResponse, err error) {
+    if request == nil {
+        request = NewQueryVehicleInfoListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewQueryVehicleInfoListResponse()
     err = c.Send(request, response)

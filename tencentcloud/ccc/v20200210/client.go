@@ -15,6 +15,7 @@
 package v20200210
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -78,6 +79,25 @@ func (c *Client) BindStaffSkillGroupList(request *BindStaffSkillGroupListRequest
     return
 }
 
+// BindStaffSkillGroupList
+// 绑定坐席所属技能组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) BindStaffSkillGroupListWithContext(ctx context.Context, request *BindStaffSkillGroupListRequest) (response *BindStaffSkillGroupListResponse, err error) {
+    if request == nil {
+        request = NewBindStaffSkillGroupListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewBindStaffSkillGroupListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSDKLoginTokenRequest() (request *CreateSDKLoginTokenRequest) {
     request = &CreateSDKLoginTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -108,6 +128,26 @@ func (c *Client) CreateSDKLoginToken(request *CreateSDKLoginTokenRequest) (respo
     if request == nil {
         request = NewCreateSDKLoginTokenRequest()
     }
+    
+    response = NewCreateSDKLoginTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateSDKLoginToken
+// 创建 SDK 登录 Token。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_ACCOUNTNOTEXIST = "InvalidParameterValue.AccountNotExist"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) CreateSDKLoginTokenWithContext(ctx context.Context, request *CreateSDKLoginTokenRequest) (response *CreateSDKLoginTokenResponse, err error) {
+    if request == nil {
+        request = NewCreateSDKLoginTokenRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateSDKLoginTokenResponse()
     err = c.Send(request, response)
@@ -152,6 +192,28 @@ func (c *Client) CreateStaff(request *CreateStaffRequest) (response *CreateStaff
     return
 }
 
+// CreateStaff
+// 创建客服账号。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DUPLICATEDACCOUNT = "FailedOperation.DuplicatedAccount"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) CreateStaffWithContext(ctx context.Context, request *CreateStaffRequest) (response *CreateStaffResponse, err error) {
+    if request == nil {
+        request = NewCreateStaffRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateStaffResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateUserSigRequest() (request *CreateUserSigRequest) {
     request = &CreateUserSigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -187,6 +249,25 @@ func (c *Client) CreateUserSig(request *CreateUserSigRequest) (response *CreateU
     return
 }
 
+// CreateUserSig
+// 创建用户数据签名
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) CreateUserSigWithContext(ctx context.Context, request *CreateUserSigRequest) (response *CreateUserSigResponse, err error) {
+    if request == nil {
+        request = NewCreateUserSigRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateUserSigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteStaffRequest() (request *DeleteStaffRequest) {
     request = &DeleteStaffRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -214,6 +295,23 @@ func (c *Client) DeleteStaff(request *DeleteStaffRequest) (response *DeleteStaff
     if request == nil {
         request = NewDeleteStaffRequest()
     }
+    
+    response = NewDeleteStaffResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteStaff
+// 删除坐席信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+func (c *Client) DeleteStaffWithContext(ctx context.Context, request *DeleteStaffRequest) (response *DeleteStaffResponse, err error) {
+    if request == nil {
+        request = NewDeleteStaffRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteStaffResponse()
     err = c.Send(request, response)
@@ -256,6 +354,26 @@ func (c *Client) DescribeCCCBuyInfoList(request *DescribeCCCBuyInfoListRequest) 
     return
 }
 
+// DescribeCCCBuyInfoList
+// 获取用户购买信息列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ACCOUNTNOTEXIST = "InvalidParameterValue.AccountNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeCCCBuyInfoListWithContext(ctx context.Context, request *DescribeCCCBuyInfoListRequest) (response *DescribeCCCBuyInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCCCBuyInfoListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeCCCBuyInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCallInMetricsRequest() (request *DescribeCallInMetricsRequest) {
     request = &DescribeCallInMetricsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -286,6 +404,26 @@ func (c *Client) DescribeCallInMetrics(request *DescribeCallInMetricsRequest) (r
     if request == nil {
         request = NewDescribeCallInMetricsRequest()
     }
+    
+    response = NewDescribeCallInMetricsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCallInMetrics
+// 获取呼入实时数据统计指标
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) DescribeCallInMetricsWithContext(ctx context.Context, request *DescribeCallInMetricsRequest) (response *DescribeCallInMetricsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCallInMetricsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeCallInMetricsResponse()
     err = c.Send(request, response)
@@ -328,6 +466,26 @@ func (c *Client) DescribeChatMessages(request *DescribeChatMessagesRequest) (res
     return
 }
 
+// DescribeChatMessages
+// 包括具体聊天内容
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_RECORDNOTEXIST = "InvalidParameterValue.RecordNotExist"
+func (c *Client) DescribeChatMessagesWithContext(ctx context.Context, request *DescribeChatMessagesRequest) (response *DescribeChatMessagesResponse, err error) {
+    if request == nil {
+        request = NewDescribeChatMessagesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeChatMessagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeIMCdrsRequest() (request *DescribeIMCdrsRequest) {
     request = &DescribeIMCdrsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -361,6 +519,23 @@ func (c *Client) DescribeIMCdrs(request *DescribeIMCdrsRequest) (response *Descr
     return
 }
 
+// DescribeIMCdrs
+// 包括全媒体和文本两种类型
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeIMCdrsWithContext(ctx context.Context, request *DescribeIMCdrsRequest) (response *DescribeIMCdrsResponse, err error) {
+    if request == nil {
+        request = NewDescribeIMCdrsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeIMCdrsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePSTNActiveSessionListRequest() (request *DescribePSTNActiveSessionListRequest) {
     request = &DescribePSTNActiveSessionListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -388,6 +563,23 @@ func (c *Client) DescribePSTNActiveSessionList(request *DescribePSTNActiveSessio
     if request == nil {
         request = NewDescribePSTNActiveSessionListRequest()
     }
+    
+    response = NewDescribePSTNActiveSessionListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribePSTNActiveSessionList
+// 获取当前正在通话的会话列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_OUTOFCOUNTLIMIT = "LimitExceeded.OutOfCountLimit"
+func (c *Client) DescribePSTNActiveSessionListWithContext(ctx context.Context, request *DescribePSTNActiveSessionListRequest) (response *DescribePSTNActiveSessionListResponse, err error) {
+    if request == nil {
+        request = NewDescribePSTNActiveSessionListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribePSTNActiveSessionListResponse()
     err = c.Send(request, response)
@@ -433,6 +625,29 @@ func (c *Client) DescribeSeatUserList(request *DescribeSeatUserListRequest) (res
     return
 }
 
+// DescribeSeatUserList
+// 废弃接口下架
+//
+// 
+//
+// 获取坐席用户列表（废弃）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) DescribeSeatUserListWithContext(ctx context.Context, request *DescribeSeatUserListRequest) (response *DescribeSeatUserListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSeatUserListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeSeatUserListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSkillGroupInfoListRequest() (request *DescribeSkillGroupInfoListRequest) {
     request = &DescribeSkillGroupInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -463,6 +678,26 @@ func (c *Client) DescribeSkillGroupInfoList(request *DescribeSkillGroupInfoListR
     if request == nil {
         request = NewDescribeSkillGroupInfoListRequest()
     }
+    
+    response = NewDescribeSkillGroupInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeSkillGroupInfoList
+// 获取技能组信息列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) DescribeSkillGroupInfoListWithContext(ctx context.Context, request *DescribeSkillGroupInfoListRequest) (response *DescribeSkillGroupInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSkillGroupInfoListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeSkillGroupInfoListResponse()
     err = c.Send(request, response)
@@ -504,6 +739,25 @@ func (c *Client) DescribeStaffInfoList(request *DescribeStaffInfoListRequest) (r
     return
 }
 
+// DescribeStaffInfoList
+// 获取坐席信息列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) DescribeStaffInfoListWithContext(ctx context.Context, request *DescribeStaffInfoListRequest) (response *DescribeStaffInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeStaffInfoListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeStaffInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeStaffStatusMetricsRequest() (request *DescribeStaffStatusMetricsRequest) {
     request = &DescribeStaffStatusMetricsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -539,6 +793,25 @@ func (c *Client) DescribeStaffStatusMetrics(request *DescribeStaffStatusMetricsR
     return
 }
 
+// DescribeStaffStatusMetrics
+// 获取坐席实时状态统计指标
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+func (c *Client) DescribeStaffStatusMetricsWithContext(ctx context.Context, request *DescribeStaffStatusMetricsRequest) (response *DescribeStaffStatusMetricsResponse, err error) {
+    if request == nil {
+        request = NewDescribeStaffStatusMetricsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeStaffStatusMetricsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTelCallInfoRequest() (request *DescribeTelCallInfoRequest) {
     request = &DescribeTelCallInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -568,6 +841,25 @@ func (c *Client) DescribeTelCallInfo(request *DescribeTelCallInfoRequest) (respo
     if request == nil {
         request = NewDescribeTelCallInfoRequest()
     }
+    
+    response = NewDescribeTelCallInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeTelCallInfo
+// 按实例获取电话消耗统计
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) DescribeTelCallInfoWithContext(ctx context.Context, request *DescribeTelCallInfoRequest) (response *DescribeTelCallInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeTelCallInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeTelCallInfoResponse()
     err = c.Send(request, response)
@@ -610,6 +902,26 @@ func (c *Client) DescribeTelCdr(request *DescribeTelCdrRequest) (response *Descr
     return
 }
 
+// DescribeTelCdr
+// 获取电话服务记录与录音
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) DescribeTelCdrWithContext(ctx context.Context, request *DescribeTelCdrRequest) (response *DescribeTelCdrResponse, err error) {
+    if request == nil {
+        request = NewDescribeTelCdrRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeTelCdrResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTelSessionRequest() (request *DescribeTelSessionRequest) {
     request = &DescribeTelSessionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -638,6 +950,24 @@ func (c *Client) DescribeTelSession(request *DescribeTelSessionRequest) (respons
     if request == nil {
         request = NewDescribeTelSessionRequest()
     }
+    
+    response = NewDescribeTelSessionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeTelSession
+// 获取 PSTN 会话信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) DescribeTelSessionWithContext(ctx context.Context, request *DescribeTelSessionRequest) (response *DescribeTelSessionResponse, err error) {
+    if request == nil {
+        request = NewDescribeTelSessionRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeTelSessionResponse()
     err = c.Send(request, response)
@@ -673,6 +1003,25 @@ func (c *Client) UnbindStaffSkillGroupList(request *UnbindStaffSkillGroupListReq
     if request == nil {
         request = NewUnbindStaffSkillGroupListRequest()
     }
+    
+    response = NewUnbindStaffSkillGroupListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UnbindStaffSkillGroupList
+// 解绑坐席所属技能组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) UnbindStaffSkillGroupListWithContext(ctx context.Context, request *UnbindStaffSkillGroupListRequest) (response *UnbindStaffSkillGroupListResponse, err error) {
+    if request == nil {
+        request = NewUnbindStaffSkillGroupListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUnbindStaffSkillGroupListResponse()
     err = c.Send(request, response)

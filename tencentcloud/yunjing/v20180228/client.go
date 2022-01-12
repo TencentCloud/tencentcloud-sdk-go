@@ -15,6 +15,7 @@
 package v20180228
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -78,6 +79,25 @@ func (c *Client) AddLoginWhiteList(request *AddLoginWhiteListRequest) (response 
     return
 }
 
+// AddLoginWhiteList
+// 本接口（AddLoginWhiteList）用于添加白名单规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+func (c *Client) AddLoginWhiteListWithContext(ctx context.Context, request *AddLoginWhiteListRequest) (response *AddLoginWhiteListResponse, err error) {
+    if request == nil {
+        request = NewAddLoginWhiteListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewAddLoginWhiteListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddMachineTagRequest() (request *AddMachineTagRequest) {
     request = &AddMachineTagRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -107,6 +127,25 @@ func (c *Client) AddMachineTag(request *AddMachineTagRequest) (response *AddMach
     if request == nil {
         request = NewAddMachineTagRequest()
     }
+    
+    response = NewAddMachineTagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// AddMachineTag
+// 增加机器关联标签
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) AddMachineTagWithContext(ctx context.Context, request *AddMachineTagRequest) (response *AddMachineTagResponse, err error) {
+    if request == nil {
+        request = NewAddMachineTagRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewAddMachineTagResponse()
     err = c.Send(request, response)
@@ -152,6 +191,29 @@ func (c *Client) CloseProVersion(request *CloseProVersionRequest) (response *Clo
     return
 }
 
+// CloseProVersion
+// 本接口 (CloseProVersion) 用于关闭专业版。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLOSEPROVERSION = "FailedOperation.CloseProVersion"
+//  FAILEDOPERATION_OPENPROVERSION = "FailedOperation.OpenProVersion"
+//  FAILEDOPERATION_PREPAYMODE = "FailedOperation.PrePayMode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CloseProVersionWithContext(ctx context.Context, request *CloseProVersionRequest) (response *CloseProVersionResponse, err error) {
+    if request == nil {
+        request = NewCloseProVersionRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCloseProVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBaselineStrategyRequest() (request *CreateBaselineStrategyRequest) {
     request = &CreateBaselineStrategyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -189,6 +251,27 @@ func (c *Client) CreateBaselineStrategy(request *CreateBaselineStrategyRequest) 
     return
 }
 
+// CreateBaselineStrategy
+// 根据策略信息创建基线策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOPROFESSIONHOST = "FailedOperation.NoProfessionHost"
+//  FAILEDOPERATION_TOOMANYSTRATEGY = "FailedOperation.TooManyStrategy"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+func (c *Client) CreateBaselineStrategyWithContext(ctx context.Context, request *CreateBaselineStrategyRequest) (response *CreateBaselineStrategyResponse, err error) {
+    if request == nil {
+        request = NewCreateBaselineStrategyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateBaselineStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateOpenPortTaskRequest() (request *CreateOpenPortTaskRequest) {
     request = &CreateOpenPortTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -219,6 +302,26 @@ func (c *Client) CreateOpenPortTask(request *CreateOpenPortTaskRequest) (respons
     if request == nil {
         request = NewCreateOpenPortTaskRequest()
     }
+    
+    response = NewCreateOpenPortTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateOpenPortTask
+// 本接口 (CreateOpenPortTask) 用于创建实时获取端口任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEOPENPORTTASK = "FailedOperation.CreateOpenPortTask"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateOpenPortTaskWithContext(ctx context.Context, request *CreateOpenPortTaskRequest) (response *CreateOpenPortTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateOpenPortTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateOpenPortTaskResponse()
     err = c.Send(request, response)
@@ -263,6 +366,28 @@ func (c *Client) CreateProcessTask(request *CreateProcessTaskRequest) (response 
     return
 }
 
+// CreateProcessTask
+// 本接口 (CreateProcessTask) 用于创建实时拉取进程任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEPROCESSTASK = "FailedOperation.CreateProcessTask"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateProcessTaskWithContext(ctx context.Context, request *CreateProcessTaskRequest) (response *CreateProcessTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateProcessTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateProcessTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateUsualLoginPlacesRequest() (request *CreateUsualLoginPlacesRequest) {
     request = &CreateUsualLoginPlacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -293,6 +418,26 @@ func (c *Client) CreateUsualLoginPlaces(request *CreateUsualLoginPlacesRequest) 
     if request == nil {
         request = NewCreateUsualLoginPlacesRequest()
     }
+    
+    response = NewCreateUsualLoginPlacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateUsualLoginPlaces
+// 此接口（CreateUsualLoginPlaces）用于添加常用登录地。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreateUsualLoginPlacesWithContext(ctx context.Context, request *CreateUsualLoginPlacesRequest) (response *CreateUsualLoginPlacesResponse, err error) {
+    if request == nil {
+        request = NewCreateUsualLoginPlacesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateUsualLoginPlacesResponse()
     err = c.Send(request, response)
@@ -336,6 +481,27 @@ func (c *Client) DeleteAttackLogs(request *DeleteAttackLogsRequest) (response *D
     return
 }
 
+// DeleteAttackLogs
+// 删除网络攻击日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+func (c *Client) DeleteAttackLogsWithContext(ctx context.Context, request *DeleteAttackLogsRequest) (response *DeleteAttackLogsResponse, err error) {
+    if request == nil {
+        request = NewDeleteAttackLogsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteAttackLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteBashEventsRequest() (request *DeleteBashEventsRequest) {
     request = &DeleteBashEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -369,6 +535,29 @@ func (c *Client) DeleteBashEvents(request *DeleteBashEventsRequest) (response *D
     if request == nil {
         request = NewDeleteBashEventsRequest()
     }
+    
+    response = NewDeleteBashEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteBashEvents
+// 根据Ids删除高危命令事件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteBashEventsWithContext(ctx context.Context, request *DeleteBashEventsRequest) (response *DeleteBashEventsResponse, err error) {
+    if request == nil {
+        request = NewDeleteBashEventsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteBashEventsResponse()
     err = c.Send(request, response)
@@ -416,6 +605,31 @@ func (c *Client) DeleteBashRules(request *DeleteBashRulesRequest) (response *Del
     return
 }
 
+// DeleteBashRules
+// 删除高危命令规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteBashRulesWithContext(ctx context.Context, request *DeleteBashRulesRequest) (response *DeleteBashRulesResponse, err error) {
+    if request == nil {
+        request = NewDeleteBashRulesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteBashRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteBruteAttacksRequest() (request *DeleteBruteAttacksRequest) {
     request = &DeleteBruteAttacksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -451,6 +665,25 @@ func (c *Client) DeleteBruteAttacks(request *DeleteBruteAttacksRequest) (respons
     return
 }
 
+// DeleteBruteAttacks
+// 本接口 (DeleteBruteAttacks) 用于删除暴力破解记录。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+func (c *Client) DeleteBruteAttacksWithContext(ctx context.Context, request *DeleteBruteAttacksRequest) (response *DeleteBruteAttacksResponse, err error) {
+    if request == nil {
+        request = NewDeleteBruteAttacksRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteBruteAttacksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteLoginWhiteListRequest() (request *DeleteLoginWhiteListRequest) {
     request = &DeleteLoginWhiteListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -480,6 +713,25 @@ func (c *Client) DeleteLoginWhiteList(request *DeleteLoginWhiteListRequest) (res
     if request == nil {
         request = NewDeleteLoginWhiteListRequest()
     }
+    
+    response = NewDeleteLoginWhiteListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteLoginWhiteList
+// 删除白名单规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+func (c *Client) DeleteLoginWhiteListWithContext(ctx context.Context, request *DeleteLoginWhiteListRequest) (response *DeleteLoginWhiteListResponse, err error) {
+    if request == nil {
+        request = NewDeleteLoginWhiteListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteLoginWhiteListResponse()
     err = c.Send(request, response)
@@ -523,6 +775,27 @@ func (c *Client) DeleteMachine(request *DeleteMachineRequest) (response *DeleteM
     return
 }
 
+// DeleteMachine
+// 本接口（DeleteMachine）用于卸载云镜客户端。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MACHINEDELETE = "FailedOperation.MachineDelete"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+func (c *Client) DeleteMachineWithContext(ctx context.Context, request *DeleteMachineRequest) (response *DeleteMachineResponse, err error) {
+    if request == nil {
+        request = NewDeleteMachineRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteMachineResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteMachineTagRequest() (request *DeleteMachineTagRequest) {
     request = &DeleteMachineTagRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -558,6 +831,25 @@ func (c *Client) DeleteMachineTag(request *DeleteMachineTagRequest) (response *D
     return
 }
 
+// DeleteMachineTag
+// 删除服务器关联的标签
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteMachineTagWithContext(ctx context.Context, request *DeleteMachineTagRequest) (response *DeleteMachineTagResponse, err error) {
+    if request == nil {
+        request = NewDeleteMachineTagRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteMachineTagResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteMaliciousRequestsRequest() (request *DeleteMaliciousRequestsRequest) {
     request = &DeleteMaliciousRequestsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -585,6 +877,23 @@ func (c *Client) DeleteMaliciousRequests(request *DeleteMaliciousRequestsRequest
     if request == nil {
         request = NewDeleteMaliciousRequestsRequest()
     }
+    
+    response = NewDeleteMaliciousRequestsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteMaliciousRequests
+// 本接口 (DeleteMaliciousRequests) 用于删除恶意请求记录。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+func (c *Client) DeleteMaliciousRequestsWithContext(ctx context.Context, request *DeleteMaliciousRequestsRequest) (response *DeleteMaliciousRequestsResponse, err error) {
+    if request == nil {
+        request = NewDeleteMaliciousRequestsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteMaliciousRequestsResponse()
     err = c.Send(request, response)
@@ -626,6 +935,25 @@ func (c *Client) DeleteMalwares(request *DeleteMalwaresRequest) (response *Delet
     return
 }
 
+// DeleteMalwares
+// 本接口 (DeleteMalwares) 用于删除木马记录。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+func (c *Client) DeleteMalwaresWithContext(ctx context.Context, request *DeleteMalwaresRequest) (response *DeleteMalwaresResponse, err error) {
+    if request == nil {
+        request = NewDeleteMalwaresRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteMalwaresResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteNonlocalLoginPlacesRequest() (request *DeleteNonlocalLoginPlacesRequest) {
     request = &DeleteNonlocalLoginPlacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -655,6 +983,25 @@ func (c *Client) DeleteNonlocalLoginPlaces(request *DeleteNonlocalLoginPlacesReq
     if request == nil {
         request = NewDeleteNonlocalLoginPlacesRequest()
     }
+    
+    response = NewDeleteNonlocalLoginPlacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteNonlocalLoginPlaces
+// 本接口 (DeleteNonlocalLoginPlaces) 用于删除异地登录记录。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+func (c *Client) DeleteNonlocalLoginPlacesWithContext(ctx context.Context, request *DeleteNonlocalLoginPlacesRequest) (response *DeleteNonlocalLoginPlacesResponse, err error) {
+    if request == nil {
+        request = NewDeleteNonlocalLoginPlacesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteNonlocalLoginPlacesResponse()
     err = c.Send(request, response)
@@ -692,6 +1039,27 @@ func (c *Client) DeletePrivilegeEvents(request *DeletePrivilegeEventsRequest) (r
     if request == nil {
         request = NewDeletePrivilegeEventsRequest()
     }
+    
+    response = NewDeletePrivilegeEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeletePrivilegeEvents
+// 根据Ids删除本地提权
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DeletePrivilegeEventsWithContext(ctx context.Context, request *DeletePrivilegeEventsRequest) (response *DeletePrivilegeEventsResponse, err error) {
+    if request == nil {
+        request = NewDeletePrivilegeEventsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeletePrivilegeEventsResponse()
     err = c.Send(request, response)
@@ -739,6 +1107,31 @@ func (c *Client) DeletePrivilegeRules(request *DeletePrivilegeRulesRequest) (res
     return
 }
 
+// DeletePrivilegeRules
+// 删除本地提权规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeletePrivilegeRulesWithContext(ctx context.Context, request *DeletePrivilegeRulesRequest) (response *DeletePrivilegeRulesResponse, err error) {
+    if request == nil {
+        request = NewDeletePrivilegeRulesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeletePrivilegeRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteReverseShellEventsRequest() (request *DeleteReverseShellEventsRequest) {
     request = &DeleteReverseShellEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -771,6 +1164,28 @@ func (c *Client) DeleteReverseShellEvents(request *DeleteReverseShellEventsReque
     if request == nil {
         request = NewDeleteReverseShellEventsRequest()
     }
+    
+    response = NewDeleteReverseShellEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteReverseShellEvents
+// 根据Ids删除反弹Shell事件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteReverseShellEventsWithContext(ctx context.Context, request *DeleteReverseShellEventsRequest) (response *DeleteReverseShellEventsResponse, err error) {
+    if request == nil {
+        request = NewDeleteReverseShellEventsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteReverseShellEventsResponse()
     err = c.Send(request, response)
@@ -819,6 +1234,32 @@ func (c *Client) DeleteReverseShellRules(request *DeleteReverseShellRulesRequest
     return
 }
 
+// DeleteReverseShellRules
+// 删除反弹Shell规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETER_REVERSHELLKEYFIELDALLEMPTY = "InvalidParameter.ReverShellKeyFieldAllEmpty"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteReverseShellRulesWithContext(ctx context.Context, request *DeleteReverseShellRulesRequest) (response *DeleteReverseShellRulesResponse, err error) {
+    if request == nil {
+        request = NewDeleteReverseShellRulesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteReverseShellRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteTagsRequest() (request *DeleteTagsRequest) {
     request = &DeleteTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -854,6 +1295,25 @@ func (c *Client) DeleteTags(request *DeleteTagsRequest) (response *DeleteTagsRes
     return
 }
 
+// DeleteTags
+// 删除标签
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteTagsWithContext(ctx context.Context, request *DeleteTagsRequest) (response *DeleteTagsResponse, err error) {
+    if request == nil {
+        request = NewDeleteTagsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteTagsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteUsualLoginPlacesRequest() (request *DeleteUsualLoginPlacesRequest) {
     request = &DeleteUsualLoginPlacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -883,6 +1343,25 @@ func (c *Client) DeleteUsualLoginPlaces(request *DeleteUsualLoginPlacesRequest) 
     if request == nil {
         request = NewDeleteUsualLoginPlacesRequest()
     }
+    
+    response = NewDeleteUsualLoginPlacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteUsualLoginPlaces
+// 本接口（DeleteUsualLoginPlaces）用于删除常用登录地。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DeleteUsualLoginPlacesWithContext(ctx context.Context, request *DeleteUsualLoginPlacesRequest) (response *DeleteUsualLoginPlacesResponse, err error) {
+    if request == nil {
+        request = NewDeleteUsualLoginPlacesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteUsualLoginPlacesResponse()
     err = c.Send(request, response)
@@ -925,6 +1404,26 @@ func (c *Client) DescribeAccountStatistics(request *DescribeAccountStatisticsReq
     return
 }
 
+// DescribeAccountStatistics
+// 本接口 (DescribeAccountStatistics) 用于获取帐号统计列表数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAccountStatisticsWithContext(ctx context.Context, request *DescribeAccountStatisticsRequest) (response *DescribeAccountStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccountStatisticsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAccountStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAccountsRequest() (request *DescribeAccountsRequest) {
     request = &DescribeAccountsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -954,6 +1453,25 @@ func (c *Client) DescribeAccounts(request *DescribeAccountsRequest) (response *D
     if request == nil {
         request = NewDescribeAccountsRequest()
     }
+    
+    response = NewDescribeAccountsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAccounts
+// 本接口 (DescribeAccounts) 用于获取帐号列表数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAccountsWithContext(ctx context.Context, request *DescribeAccountsRequest) (response *DescribeAccountsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccountsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAccountsResponse()
     err = c.Send(request, response)
@@ -995,6 +1513,25 @@ func (c *Client) DescribeAgentVuls(request *DescribeAgentVulsRequest) (response 
     return
 }
 
+// DescribeAgentVuls
+// 本接口 (DescribeAgentVuls) 用于获取单台主机的漏洞列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAgentVulsWithContext(ctx context.Context, request *DescribeAgentVulsRequest) (response *DescribeAgentVulsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAgentVulsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAgentVulsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAlarmAttributeRequest() (request *DescribeAlarmAttributeRequest) {
     request = &DescribeAlarmAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1021,6 +1558,22 @@ func (c *Client) DescribeAlarmAttribute(request *DescribeAlarmAttributeRequest) 
     if request == nil {
         request = NewDescribeAlarmAttributeRequest()
     }
+    
+    response = NewDescribeAlarmAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAlarmAttribute
+// 本接口 (DescribeAlarmAttribute) 用于获取告警设置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeAlarmAttributeWithContext(ctx context.Context, request *DescribeAlarmAttributeRequest) (response *DescribeAlarmAttributeResponse, err error) {
+    if request == nil {
+        request = NewDescribeAlarmAttributeRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAlarmAttributeResponse()
     err = c.Send(request, response)
@@ -1063,6 +1616,26 @@ func (c *Client) DescribeAttackLogInfo(request *DescribeAttackLogInfoRequest) (r
     return
 }
 
+// DescribeAttackLogInfo
+// 网络攻击日志详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+func (c *Client) DescribeAttackLogInfoWithContext(ctx context.Context, request *DescribeAttackLogInfoRequest) (response *DescribeAttackLogInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeAttackLogInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAttackLogInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAttackLogsRequest() (request *DescribeAttackLogsRequest) {
     request = &DescribeAttackLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1092,6 +1665,25 @@ func (c *Client) DescribeAttackLogs(request *DescribeAttackLogsRequest) (respons
     if request == nil {
         request = NewDescribeAttackLogsRequest()
     }
+    
+    response = NewDescribeAttackLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAttackLogs
+// 按分页形式展示网络攻击日志列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAttackLogsWithContext(ctx context.Context, request *DescribeAttackLogsRequest) (response *DescribeAttackLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAttackLogsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAttackLogsResponse()
     err = c.Send(request, response)
@@ -1136,6 +1728,28 @@ func (c *Client) DescribeBashEvents(request *DescribeBashEventsRequest) (respons
     return
 }
 
+// DescribeBashEvents
+// 获取高危命令列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeBashEventsWithContext(ctx context.Context, request *DescribeBashEventsRequest) (response *DescribeBashEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeBashEventsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeBashEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBashRulesRequest() (request *DescribeBashRulesRequest) {
     request = &DescribeBashRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1174,6 +1788,28 @@ func (c *Client) DescribeBashRules(request *DescribeBashRulesRequest) (response 
     return
 }
 
+// DescribeBashRules
+// 获取高危命令规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeBashRulesWithContext(ctx context.Context, request *DescribeBashRulesRequest) (response *DescribeBashRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeBashRulesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeBashRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBruteAttacksRequest() (request *DescribeBruteAttacksRequest) {
     request = &DescribeBruteAttacksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1203,6 +1839,25 @@ func (c *Client) DescribeBruteAttacks(request *DescribeBruteAttacksRequest) (res
     if request == nil {
         request = NewDescribeBruteAttacksRequest()
     }
+    
+    response = NewDescribeBruteAttacksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeBruteAttacks
+// 本接口{DescribeBruteAttacks}用于获取暴力破解事件列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+func (c *Client) DescribeBruteAttacksWithContext(ctx context.Context, request *DescribeBruteAttacksRequest) (response *DescribeBruteAttacksResponse, err error) {
+    if request == nil {
+        request = NewDescribeBruteAttacksRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeBruteAttacksResponse()
     err = c.Send(request, response)
@@ -1246,6 +1901,27 @@ func (c *Client) DescribeComponentInfo(request *DescribeComponentInfoRequest) (r
     return
 }
 
+// DescribeComponentInfo
+// 本接口 (DescribeComponentInfo) 用于获取组件信息数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeComponentInfoWithContext(ctx context.Context, request *DescribeComponentInfoRequest) (response *DescribeComponentInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeComponentInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeComponentInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeComponentStatisticsRequest() (request *DescribeComponentStatisticsRequest) {
     request = &DescribeComponentStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1282,6 +1958,26 @@ func (c *Client) DescribeComponentStatistics(request *DescribeComponentStatistic
     return
 }
 
+// DescribeComponentStatistics
+// 本接口 (DescribeComponentStatistics) 用于获取组件统计列表数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeComponentStatisticsWithContext(ctx context.Context, request *DescribeComponentStatisticsRequest) (response *DescribeComponentStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeComponentStatisticsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeComponentStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeComponentsRequest() (request *DescribeComponentsRequest) {
     request = &DescribeComponentsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1311,6 +2007,25 @@ func (c *Client) DescribeComponents(request *DescribeComponentsRequest) (respons
     if request == nil {
         request = NewDescribeComponentsRequest()
     }
+    
+    response = NewDescribeComponentsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeComponents
+// 本接口 (DescribeComponents) 用于获取组件列表数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+func (c *Client) DescribeComponentsWithContext(ctx context.Context, request *DescribeComponentsRequest) (response *DescribeComponentsResponse, err error) {
+    if request == nil {
+        request = NewDescribeComponentsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeComponentsResponse()
     err = c.Send(request, response)
@@ -1353,6 +2068,26 @@ func (c *Client) DescribeHistoryAccounts(request *DescribeHistoryAccountsRequest
     return
 }
 
+// DescribeHistoryAccounts
+// 本接口 (DescribeHistoryAccounts) 用于获取帐号变更历史列表数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeHistoryAccountsWithContext(ctx context.Context, request *DescribeHistoryAccountsRequest) (response *DescribeHistoryAccountsResponse, err error) {
+    if request == nil {
+        request = NewDescribeHistoryAccountsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeHistoryAccountsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeImpactedHostsRequest() (request *DescribeImpactedHostsRequest) {
     request = &DescribeImpactedHostsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1388,6 +2123,25 @@ func (c *Client) DescribeImpactedHosts(request *DescribeImpactedHostsRequest) (r
     return
 }
 
+// DescribeImpactedHosts
+// 本接口 (DescribeImpactedHosts) 用于获取漏洞受影响机器列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeImpactedHostsWithContext(ctx context.Context, request *DescribeImpactedHostsRequest) (response *DescribeImpactedHostsResponse, err error) {
+    if request == nil {
+        request = NewDescribeImpactedHostsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeImpactedHostsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLoginWhiteListRequest() (request *DescribeLoginWhiteListRequest) {
     request = &DescribeLoginWhiteListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1417,6 +2171,25 @@ func (c *Client) DescribeLoginWhiteList(request *DescribeLoginWhiteListRequest) 
     if request == nil {
         request = NewDescribeLoginWhiteListRequest()
     }
+    
+    response = NewDescribeLoginWhiteListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeLoginWhiteList
+// 获取异地登录白名单列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+func (c *Client) DescribeLoginWhiteListWithContext(ctx context.Context, request *DescribeLoginWhiteListRequest) (response *DescribeLoginWhiteListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLoginWhiteListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeLoginWhiteListResponse()
     err = c.Send(request, response)
@@ -1459,6 +2232,26 @@ func (c *Client) DescribeMachineInfo(request *DescribeMachineInfoRequest) (respo
     return
 }
 
+// DescribeMachineInfo
+// 本接口（DescribeMachineInfo）用于获取机器详细信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeMachineInfoWithContext(ctx context.Context, request *DescribeMachineInfoRequest) (response *DescribeMachineInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeMachineInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeMachineInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMachinesRequest() (request *DescribeMachinesRequest) {
     request = &DescribeMachinesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1495,6 +2288,26 @@ func (c *Client) DescribeMachines(request *DescribeMachinesRequest) (response *D
     return
 }
 
+// DescribeMachines
+// 本接口 (DescribeMachines) 用于获取区域主机列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeMachinesWithContext(ctx context.Context, request *DescribeMachinesRequest) (response *DescribeMachinesResponse, err error) {
+    if request == nil {
+        request = NewDescribeMachinesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeMachinesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMaliciousRequestsRequest() (request *DescribeMaliciousRequestsRequest) {
     request = &DescribeMaliciousRequestsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1522,6 +2335,23 @@ func (c *Client) DescribeMaliciousRequests(request *DescribeMaliciousRequestsReq
     if request == nil {
         request = NewDescribeMaliciousRequestsRequest()
     }
+    
+    response = NewDescribeMaliciousRequestsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeMaliciousRequests
+// 本接口 (DescribeMaliciousRequests) 用于获取恶意请求数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+func (c *Client) DescribeMaliciousRequestsWithContext(ctx context.Context, request *DescribeMaliciousRequestsRequest) (response *DescribeMaliciousRequestsResponse, err error) {
+    if request == nil {
+        request = NewDescribeMaliciousRequestsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeMaliciousRequestsResponse()
     err = c.Send(request, response)
@@ -1563,6 +2393,25 @@ func (c *Client) DescribeMalwares(request *DescribeMalwaresRequest) (response *D
     return
 }
 
+// DescribeMalwares
+// 本接口（DescribeMalwares）用于获取木马事件列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+func (c *Client) DescribeMalwaresWithContext(ctx context.Context, request *DescribeMalwaresRequest) (response *DescribeMalwaresResponse, err error) {
+    if request == nil {
+        request = NewDescribeMalwaresRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeMalwaresResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNonlocalLoginPlacesRequest() (request *DescribeNonlocalLoginPlacesRequest) {
     request = &DescribeNonlocalLoginPlacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1598,6 +2447,25 @@ func (c *Client) DescribeNonlocalLoginPlaces(request *DescribeNonlocalLoginPlace
     return
 }
 
+// DescribeNonlocalLoginPlaces
+// 本接口(DescribeNonlocalLoginPlaces)用于获取异地登录事件。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+func (c *Client) DescribeNonlocalLoginPlacesWithContext(ctx context.Context, request *DescribeNonlocalLoginPlacesRequest) (response *DescribeNonlocalLoginPlacesResponse, err error) {
+    if request == nil {
+        request = NewDescribeNonlocalLoginPlacesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeNonlocalLoginPlacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOpenPortStatisticsRequest() (request *DescribeOpenPortStatisticsRequest) {
     request = &DescribeOpenPortStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1626,6 +2494,24 @@ func (c *Client) DescribeOpenPortStatistics(request *DescribeOpenPortStatisticsR
     if request == nil {
         request = NewDescribeOpenPortStatisticsRequest()
     }
+    
+    response = NewDescribeOpenPortStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeOpenPortStatistics
+// 本接口 (DescribeOpenPortStatistics) 用于获取端口统计列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+func (c *Client) DescribeOpenPortStatisticsWithContext(ctx context.Context, request *DescribeOpenPortStatisticsRequest) (response *DescribeOpenPortStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeOpenPortStatisticsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeOpenPortStatisticsResponse()
     err = c.Send(request, response)
@@ -1668,6 +2554,26 @@ func (c *Client) DescribeOpenPortTaskStatus(request *DescribeOpenPortTaskStatusR
     return
 }
 
+// DescribeOpenPortTaskStatus
+// 本接口 (DescribeOpenPortTaskStatus) 用于获取实时拉取端口任务状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AGENTOFFLINE = "FailedOperation.AgentOffline"
+//  FAILEDOPERATION_OPENPORTTASKNOTFOUND = "FailedOperation.OpenPortTaskNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeOpenPortTaskStatusWithContext(ctx context.Context, request *DescribeOpenPortTaskStatusRequest) (response *DescribeOpenPortTaskStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeOpenPortTaskStatusRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeOpenPortTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOpenPortsRequest() (request *DescribeOpenPortsRequest) {
     request = &DescribeOpenPortsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1703,6 +2609,25 @@ func (c *Client) DescribeOpenPorts(request *DescribeOpenPortsRequest) (response 
     return
 }
 
+// DescribeOpenPorts
+// 本接口 (DescribeOpenPorts) 用于获取端口列表数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeOpenPortsWithContext(ctx context.Context, request *DescribeOpenPortsRequest) (response *DescribeOpenPortsResponse, err error) {
+    if request == nil {
+        request = NewDescribeOpenPortsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeOpenPortsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOverviewStatisticsRequest() (request *DescribeOverviewStatisticsRequest) {
     request = &DescribeOverviewStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1731,6 +2656,24 @@ func (c *Client) DescribeOverviewStatistics(request *DescribeOverviewStatisticsR
     if request == nil {
         request = NewDescribeOverviewStatisticsRequest()
     }
+    
+    response = NewDescribeOverviewStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeOverviewStatistics
+// 本接口用于（DescribeOverviewStatistics）获取概览统计数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeOverviewStatisticsWithContext(ctx context.Context, request *DescribeOverviewStatisticsRequest) (response *DescribeOverviewStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeOverviewStatisticsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeOverviewStatisticsResponse()
     err = c.Send(request, response)
@@ -1775,6 +2718,28 @@ func (c *Client) DescribePrivilegeEvents(request *DescribePrivilegeEventsRequest
     return
 }
 
+// DescribePrivilegeEvents
+// 获取本地提权事件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribePrivilegeEventsWithContext(ctx context.Context, request *DescribePrivilegeEventsRequest) (response *DescribePrivilegeEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribePrivilegeEventsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribePrivilegeEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePrivilegeRulesRequest() (request *DescribePrivilegeRulesRequest) {
     request = &DescribePrivilegeRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1813,6 +2778,28 @@ func (c *Client) DescribePrivilegeRules(request *DescribePrivilegeRulesRequest) 
     return
 }
 
+// DescribePrivilegeRules
+// 获取本地提权规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribePrivilegeRulesWithContext(ctx context.Context, request *DescribePrivilegeRulesRequest) (response *DescribePrivilegeRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribePrivilegeRulesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribePrivilegeRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProVersionInfoRequest() (request *DescribeProVersionInfoRequest) {
     request = &DescribeProVersionInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1839,6 +2826,22 @@ func (c *Client) DescribeProVersionInfo(request *DescribeProVersionInfoRequest) 
     if request == nil {
         request = NewDescribeProVersionInfoRequest()
     }
+    
+    response = NewDescribeProVersionInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeProVersionInfo
+// 本接口 (DescribeProVersionInfo) 用于获取专业版信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeProVersionInfoWithContext(ctx context.Context, request *DescribeProVersionInfoRequest) (response *DescribeProVersionInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeProVersionInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeProVersionInfoResponse()
     err = c.Send(request, response)
@@ -1875,6 +2878,26 @@ func (c *Client) DescribeProcessStatistics(request *DescribeProcessStatisticsReq
     if request == nil {
         request = NewDescribeProcessStatisticsRequest()
     }
+    
+    response = NewDescribeProcessStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeProcessStatistics
+// 本接口 (DescribeProcessStatistics) 用于获取进程统计列表数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeProcessStatisticsWithContext(ctx context.Context, request *DescribeProcessStatisticsRequest) (response *DescribeProcessStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeProcessStatisticsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeProcessStatisticsResponse()
     err = c.Send(request, response)
@@ -1919,6 +2942,28 @@ func (c *Client) DescribeProcessTaskStatus(request *DescribeProcessTaskStatusReq
     return
 }
 
+// DescribeProcessTaskStatus
+// 本接口 (DescribeProcessTaskStatus) 用于获取实时拉取进程任务状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PROCESSTASKNOTFOUND = "FailedOperation.ProcessTaskNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeProcessTaskStatusWithContext(ctx context.Context, request *DescribeProcessTaskStatusRequest) (response *DescribeProcessTaskStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeProcessTaskStatusRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeProcessTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProcessesRequest() (request *DescribeProcessesRequest) {
     request = &DescribeProcessesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1949,6 +2994,26 @@ func (c *Client) DescribeProcesses(request *DescribeProcessesRequest) (response 
     if request == nil {
         request = NewDescribeProcessesRequest()
     }
+    
+    response = NewDescribeProcessesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeProcesses
+// 本接口 (DescribeProcesses) 用于获取进程列表数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeProcessesWithContext(ctx context.Context, request *DescribeProcessesRequest) (response *DescribeProcessesResponse, err error) {
+    if request == nil {
+        request = NewDescribeProcessesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeProcessesResponse()
     err = c.Send(request, response)
@@ -1987,6 +3052,28 @@ func (c *Client) DescribeReverseShellEvents(request *DescribeReverseShellEventsR
     if request == nil {
         request = NewDescribeReverseShellEventsRequest()
     }
+    
+    response = NewDescribeReverseShellEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeReverseShellEvents
+// 获取反弹Shell列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeReverseShellEventsWithContext(ctx context.Context, request *DescribeReverseShellEventsRequest) (response *DescribeReverseShellEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeReverseShellEventsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeReverseShellEventsResponse()
     err = c.Send(request, response)
@@ -2034,6 +3121,31 @@ func (c *Client) DescribeReverseShellRules(request *DescribeReverseShellRulesReq
     return
 }
 
+// DescribeReverseShellRules
+// 获取反弹Shell规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeReverseShellRulesWithContext(ctx context.Context, request *DescribeReverseShellRulesRequest) (response *DescribeReverseShellRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeReverseShellRulesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeReverseShellRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSecurityDynamicsRequest() (request *DescribeSecurityDynamicsRequest) {
     request = &DescribeSecurityDynamicsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2062,6 +3174,24 @@ func (c *Client) DescribeSecurityDynamics(request *DescribeSecurityDynamicsReque
     if request == nil {
         request = NewDescribeSecurityDynamicsRequest()
     }
+    
+    response = NewDescribeSecurityDynamicsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeSecurityDynamics
+// 本接口 (DescribeSecurityDynamics) 用于获取安全事件消息数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+func (c *Client) DescribeSecurityDynamicsWithContext(ctx context.Context, request *DescribeSecurityDynamicsRequest) (response *DescribeSecurityDynamicsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityDynamicsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeSecurityDynamicsResponse()
     err = c.Send(request, response)
@@ -2103,6 +3233,25 @@ func (c *Client) DescribeSecurityTrends(request *DescribeSecurityTrendsRequest) 
     return
 }
 
+// DescribeSecurityTrends
+// 本接口 (DescribeSecurityTrends) 用于获取安全事件统计数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+func (c *Client) DescribeSecurityTrendsWithContext(ctx context.Context, request *DescribeSecurityTrendsRequest) (response *DescribeSecurityTrendsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityTrendsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeSecurityTrendsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTagMachinesRequest() (request *DescribeTagMachinesRequest) {
     request = &DescribeTagMachinesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2132,6 +3281,25 @@ func (c *Client) DescribeTagMachines(request *DescribeTagMachinesRequest) (respo
     if request == nil {
         request = NewDescribeTagMachinesRequest()
     }
+    
+    response = NewDescribeTagMachinesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeTagMachines
+// 获取指定标签关联的服务器信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTagMachinesWithContext(ctx context.Context, request *DescribeTagMachinesRequest) (response *DescribeTagMachinesResponse, err error) {
+    if request == nil {
+        request = NewDescribeTagMachinesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeTagMachinesResponse()
     err = c.Send(request, response)
@@ -2174,6 +3342,26 @@ func (c *Client) DescribeTags(request *DescribeTagsRequest) (response *DescribeT
     return
 }
 
+// DescribeTags
+// 获取所有主机标签
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTagsWithContext(ctx context.Context, request *DescribeTagsRequest) (response *DescribeTagsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTagsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeTagsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUsualLoginPlacesRequest() (request *DescribeUsualLoginPlacesRequest) {
     request = &DescribeUsualLoginPlacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2204,6 +3392,26 @@ func (c *Client) DescribeUsualLoginPlaces(request *DescribeUsualLoginPlacesReque
     if request == nil {
         request = NewDescribeUsualLoginPlacesRequest()
     }
+    
+    response = NewDescribeUsualLoginPlacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeUsualLoginPlaces
+// 此接口（DescribeUsualLoginPlaces）用于查询常用登录地。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeUsualLoginPlacesWithContext(ctx context.Context, request *DescribeUsualLoginPlacesRequest) (response *DescribeUsualLoginPlacesResponse, err error) {
+    if request == nil {
+        request = NewDescribeUsualLoginPlacesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeUsualLoginPlacesResponse()
     err = c.Send(request, response)
@@ -2246,6 +3454,26 @@ func (c *Client) DescribeVulInfo(request *DescribeVulInfoRequest) (response *Des
     return
 }
 
+// DescribeVulInfo
+// 本接口 (DescribeVulInfo) 用于获取漏洞详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVulInfoWithContext(ctx context.Context, request *DescribeVulInfoRequest) (response *DescribeVulInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeVulInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVulScanResultRequest() (request *DescribeVulScanResultRequest) {
     request = &DescribeVulScanResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2275,6 +3503,25 @@ func (c *Client) DescribeVulScanResult(request *DescribeVulScanResultRequest) (r
     if request == nil {
         request = NewDescribeVulScanResultRequest()
     }
+    
+    response = NewDescribeVulScanResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeVulScanResult
+// 本接口 (DescribeVulScanResult) 用于获取漏洞检测结果。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeVulScanResultWithContext(ctx context.Context, request *DescribeVulScanResultRequest) (response *DescribeVulScanResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulScanResultRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeVulScanResultResponse()
     err = c.Send(request, response)
@@ -2315,6 +3562,24 @@ func (c *Client) DescribeVuls(request *DescribeVulsRequest) (response *DescribeV
     return
 }
 
+// DescribeVuls
+// 本接口 (DescribeVuls) 用于获取漏洞列表数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeVulsWithContext(ctx context.Context, request *DescribeVulsRequest) (response *DescribeVulsResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeVulsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeWeeklyReportBruteAttacksRequest() (request *DescribeWeeklyReportBruteAttacksRequest) {
     request = &DescribeWeeklyReportBruteAttacksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2349,6 +3614,24 @@ func (c *Client) DescribeWeeklyReportBruteAttacks(request *DescribeWeeklyReportB
     return
 }
 
+// DescribeWeeklyReportBruteAttacks
+// 本接口 (DescribeWeeklyReportBruteAttacks) 用于获取专业周报密码破解数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+func (c *Client) DescribeWeeklyReportBruteAttacksWithContext(ctx context.Context, request *DescribeWeeklyReportBruteAttacksRequest) (response *DescribeWeeklyReportBruteAttacksResponse, err error) {
+    if request == nil {
+        request = NewDescribeWeeklyReportBruteAttacksRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeWeeklyReportBruteAttacksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeWeeklyReportInfoRequest() (request *DescribeWeeklyReportInfoRequest) {
     request = &DescribeWeeklyReportInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2376,6 +3659,23 @@ func (c *Client) DescribeWeeklyReportInfo(request *DescribeWeeklyReportInfoReque
     if request == nil {
         request = NewDescribeWeeklyReportInfoRequest()
     }
+    
+    response = NewDescribeWeeklyReportInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeWeeklyReportInfo
+// 本接口 (DescribeWeeklyReportInfo) 用于获取专业周报详情数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+func (c *Client) DescribeWeeklyReportInfoWithContext(ctx context.Context, request *DescribeWeeklyReportInfoRequest) (response *DescribeWeeklyReportInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeWeeklyReportInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeWeeklyReportInfoResponse()
     err = c.Send(request, response)
@@ -2416,6 +3716,24 @@ func (c *Client) DescribeWeeklyReportMalwares(request *DescribeWeeklyReportMalwa
     return
 }
 
+// DescribeWeeklyReportMalwares
+// 本接口 (DescribeWeeklyReportMalwares) 用于获取专业周报木马数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+func (c *Client) DescribeWeeklyReportMalwaresWithContext(ctx context.Context, request *DescribeWeeklyReportMalwaresRequest) (response *DescribeWeeklyReportMalwaresResponse, err error) {
+    if request == nil {
+        request = NewDescribeWeeklyReportMalwaresRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeWeeklyReportMalwaresResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeWeeklyReportNonlocalLoginPlacesRequest() (request *DescribeWeeklyReportNonlocalLoginPlacesRequest) {
     request = &DescribeWeeklyReportNonlocalLoginPlacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2444,6 +3762,24 @@ func (c *Client) DescribeWeeklyReportNonlocalLoginPlaces(request *DescribeWeekly
     if request == nil {
         request = NewDescribeWeeklyReportNonlocalLoginPlacesRequest()
     }
+    
+    response = NewDescribeWeeklyReportNonlocalLoginPlacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeWeeklyReportNonlocalLoginPlaces
+// 本接口 (DescribeWeeklyReportNonlocalLoginPlaces) 用于获取专业周报异地登录数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+func (c *Client) DescribeWeeklyReportNonlocalLoginPlacesWithContext(ctx context.Context, request *DescribeWeeklyReportNonlocalLoginPlacesRequest) (response *DescribeWeeklyReportNonlocalLoginPlacesResponse, err error) {
+    if request == nil {
+        request = NewDescribeWeeklyReportNonlocalLoginPlacesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeWeeklyReportNonlocalLoginPlacesResponse()
     err = c.Send(request, response)
@@ -2484,6 +3820,24 @@ func (c *Client) DescribeWeeklyReportVuls(request *DescribeWeeklyReportVulsReque
     return
 }
 
+// DescribeWeeklyReportVuls
+// 本接口 (DescribeWeeklyReportVuls) 用于专业版周报漏洞数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+func (c *Client) DescribeWeeklyReportVulsWithContext(ctx context.Context, request *DescribeWeeklyReportVulsRequest) (response *DescribeWeeklyReportVulsResponse, err error) {
+    if request == nil {
+        request = NewDescribeWeeklyReportVulsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeWeeklyReportVulsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeWeeklyReportsRequest() (request *DescribeWeeklyReportsRequest) {
     request = &DescribeWeeklyReportsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2511,6 +3865,23 @@ func (c *Client) DescribeWeeklyReports(request *DescribeWeeklyReportsRequest) (r
     if request == nil {
         request = NewDescribeWeeklyReportsRequest()
     }
+    
+    response = NewDescribeWeeklyReportsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeWeeklyReports
+// 本接口 (DescribeWeeklyReports) 用于获取周报列表数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+func (c *Client) DescribeWeeklyReportsWithContext(ctx context.Context, request *DescribeWeeklyReportsRequest) (response *DescribeWeeklyReportsResponse, err error) {
+    if request == nil {
+        request = NewDescribeWeeklyReportsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeWeeklyReportsResponse()
     err = c.Send(request, response)
@@ -2557,6 +3928,30 @@ func (c *Client) EditBashRule(request *EditBashRuleRequest) (response *EditBashR
     return
 }
 
+// EditBashRule
+// 新增或修改高危命令规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_IPNOVALID = "InvalidParameter.IpNoValid"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETER_RULEHOSTIPERR = "InvalidParameter.RuleHostipErr"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) EditBashRuleWithContext(ctx context.Context, request *EditBashRuleRequest) (response *EditBashRuleResponse, err error) {
+    if request == nil {
+        request = NewEditBashRuleRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewEditBashRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEditPrivilegeRuleRequest() (request *EditPrivilegeRuleRequest) {
     request = &EditPrivilegeRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2593,6 +3988,32 @@ func (c *Client) EditPrivilegeRule(request *EditPrivilegeRuleRequest) (response 
     if request == nil {
         request = NewEditPrivilegeRuleRequest()
     }
+    
+    response = NewEditPrivilegeRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// EditPrivilegeRule
+// 新增或修改本地提权规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETER_RULEHOSTIPERR = "InvalidParameter.RuleHostipErr"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) EditPrivilegeRuleWithContext(ctx context.Context, request *EditPrivilegeRuleRequest) (response *EditPrivilegeRuleResponse, err error) {
+    if request == nil {
+        request = NewEditPrivilegeRuleRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewEditPrivilegeRuleResponse()
     err = c.Send(request, response)
@@ -2643,6 +4064,34 @@ func (c *Client) EditReverseShellRule(request *EditReverseShellRuleRequest) (res
     return
 }
 
+// EditReverseShellRule
+// 编辑反弹Shell规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_IPNOVALID = "InvalidParameter.IpNoValid"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_PORTNOVALID = "InvalidParameter.PortNoValid"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETER_REVERSHELLKEYFIELDALLEMPTY = "InvalidParameter.ReverShellKeyFieldAllEmpty"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) EditReverseShellRuleWithContext(ctx context.Context, request *EditReverseShellRuleRequest) (response *EditReverseShellRuleResponse, err error) {
+    if request == nil {
+        request = NewEditReverseShellRuleRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewEditReverseShellRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEditTagsRequest() (request *EditTagsRequest) {
     request = &EditTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2674,6 +4123,27 @@ func (c *Client) EditTags(request *EditTagsRequest) (response *EditTagsResponse,
     if request == nil {
         request = NewEditTagsRequest()
     }
+    
+    response = NewEditTagsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// EditTags
+// 新增或编辑标签
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE_TAGNAMELENGTHLIMIT = "InvalidParameterValue.TagNameLengthLimit"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) EditTagsWithContext(ctx context.Context, request *EditTagsRequest) (response *EditTagsResponse, err error) {
+    if request == nil {
+        request = NewEditTagsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewEditTagsResponse()
     err = c.Send(request, response)
@@ -2713,6 +4183,23 @@ func (c *Client) ExportAttackLogs(request *ExportAttackLogsRequest) (response *E
     return
 }
 
+// ExportAttackLogs
+// 导出网络攻击日志
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXPORT = "FailedOperation.Export"
+//  INTERNALERROR = "InternalError"
+func (c *Client) ExportAttackLogsWithContext(ctx context.Context, request *ExportAttackLogsRequest) (response *ExportAttackLogsResponse, err error) {
+    if request == nil {
+        request = NewExportAttackLogsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewExportAttackLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExportBashEventsRequest() (request *ExportBashEventsRequest) {
     request = &ExportBashEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2740,6 +4227,23 @@ func (c *Client) ExportBashEvents(request *ExportBashEventsRequest) (response *E
     if request == nil {
         request = NewExportBashEventsRequest()
     }
+    
+    response = NewExportBashEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ExportBashEvents
+// 导出高危命令事件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXPORT = "FailedOperation.Export"
+//  INTERNALERROR = "InternalError"
+func (c *Client) ExportBashEventsWithContext(ctx context.Context, request *ExportBashEventsRequest) (response *ExportBashEventsResponse, err error) {
+    if request == nil {
+        request = NewExportBashEventsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewExportBashEventsResponse()
     err = c.Send(request, response)
@@ -2779,6 +4283,23 @@ func (c *Client) ExportBruteAttacks(request *ExportBruteAttacksRequest) (respons
     return
 }
 
+// ExportBruteAttacks
+// 本接口 (ExportBruteAttacks) 用于导出密码破解记录成CSV文件。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXPORT = "FailedOperation.Export"
+//  INTERNALERROR = "InternalError"
+func (c *Client) ExportBruteAttacksWithContext(ctx context.Context, request *ExportBruteAttacksRequest) (response *ExportBruteAttacksResponse, err error) {
+    if request == nil {
+        request = NewExportBruteAttacksRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewExportBruteAttacksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExportMaliciousRequestsRequest() (request *ExportMaliciousRequestsRequest) {
     request = &ExportMaliciousRequestsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2806,6 +4327,23 @@ func (c *Client) ExportMaliciousRequests(request *ExportMaliciousRequestsRequest
     if request == nil {
         request = NewExportMaliciousRequestsRequest()
     }
+    
+    response = NewExportMaliciousRequestsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ExportMaliciousRequests
+// 本接口 (ExportMaliciousRequests) 用于导出下载恶意请求文件。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+func (c *Client) ExportMaliciousRequestsWithContext(ctx context.Context, request *ExportMaliciousRequestsRequest) (response *ExportMaliciousRequestsResponse, err error) {
+    if request == nil {
+        request = NewExportMaliciousRequestsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewExportMaliciousRequestsResponse()
     err = c.Send(request, response)
@@ -2845,6 +4383,23 @@ func (c *Client) ExportMalwares(request *ExportMalwaresRequest) (response *Expor
     return
 }
 
+// ExportMalwares
+// 本接口 (ExportMalwares) 用于导出木马记录CSV文件。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXPORT = "FailedOperation.Export"
+//  INTERNALERROR = "InternalError"
+func (c *Client) ExportMalwaresWithContext(ctx context.Context, request *ExportMalwaresRequest) (response *ExportMalwaresResponse, err error) {
+    if request == nil {
+        request = NewExportMalwaresRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewExportMalwaresResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExportNonlocalLoginPlacesRequest() (request *ExportNonlocalLoginPlacesRequest) {
     request = &ExportNonlocalLoginPlacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2878,6 +4433,23 @@ func (c *Client) ExportNonlocalLoginPlaces(request *ExportNonlocalLoginPlacesReq
     return
 }
 
+// ExportNonlocalLoginPlaces
+// 本接口 (ExportNonlocalLoginPlaces) 用于导出异地登录事件记录CSV文件。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXPORT = "FailedOperation.Export"
+//  INTERNALERROR = "InternalError"
+func (c *Client) ExportNonlocalLoginPlacesWithContext(ctx context.Context, request *ExportNonlocalLoginPlacesRequest) (response *ExportNonlocalLoginPlacesResponse, err error) {
+    if request == nil {
+        request = NewExportNonlocalLoginPlacesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewExportNonlocalLoginPlacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExportPrivilegeEventsRequest() (request *ExportPrivilegeEventsRequest) {
     request = &ExportPrivilegeEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2905,6 +4477,23 @@ func (c *Client) ExportPrivilegeEvents(request *ExportPrivilegeEventsRequest) (r
     if request == nil {
         request = NewExportPrivilegeEventsRequest()
     }
+    
+    response = NewExportPrivilegeEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ExportPrivilegeEvents
+// 导出本地提权事件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXPORT = "FailedOperation.Export"
+//  INTERNALERROR = "InternalError"
+func (c *Client) ExportPrivilegeEventsWithContext(ctx context.Context, request *ExportPrivilegeEventsRequest) (response *ExportPrivilegeEventsResponse, err error) {
+    if request == nil {
+        request = NewExportPrivilegeEventsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewExportPrivilegeEventsResponse()
     err = c.Send(request, response)
@@ -2948,6 +4537,27 @@ func (c *Client) ExportReverseShellEvents(request *ExportReverseShellEventsReque
     return
 }
 
+// ExportReverseShellEvents
+// 导出反弹Shell事件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXPORT = "FailedOperation.Export"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ExportReverseShellEventsWithContext(ctx context.Context, request *ExportReverseShellEventsRequest) (response *ExportReverseShellEventsResponse, err error) {
+    if request == nil {
+        request = NewExportReverseShellEventsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewExportReverseShellEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewIgnoreImpactedHostsRequest() (request *IgnoreImpactedHostsRequest) {
     request = &IgnoreImpactedHostsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2984,6 +4594,26 @@ func (c *Client) IgnoreImpactedHosts(request *IgnoreImpactedHostsRequest) (respo
     return
 }
 
+// IgnoreImpactedHosts
+// 本接口 (IgnoreImpactedHosts) 用于忽略漏洞。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) IgnoreImpactedHostsWithContext(ctx context.Context, request *IgnoreImpactedHostsRequest) (response *IgnoreImpactedHostsResponse, err error) {
+    if request == nil {
+        request = NewIgnoreImpactedHostsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewIgnoreImpactedHostsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInquiryPriceOpenProVersionPrepaidRequest() (request *InquiryPriceOpenProVersionPrepaidRequest) {
     request = &InquiryPriceOpenProVersionPrepaidRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3012,6 +4642,24 @@ func (c *Client) InquiryPriceOpenProVersionPrepaid(request *InquiryPriceOpenProV
     if request == nil {
         request = NewInquiryPriceOpenProVersionPrepaidRequest()
     }
+    
+    response = NewInquiryPriceOpenProVersionPrepaidResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// InquiryPriceOpenProVersionPrepaid
+// 本接口 (InquiryPriceOpenProVersionPrepaid) 用于开通专业版询价(预付费)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INQUIRYPRICE = "FailedOperation.InquiryPrice"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+func (c *Client) InquiryPriceOpenProVersionPrepaidWithContext(ctx context.Context, request *InquiryPriceOpenProVersionPrepaidRequest) (response *InquiryPriceOpenProVersionPrepaidResponse, err error) {
+    if request == nil {
+        request = NewInquiryPriceOpenProVersionPrepaidRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewInquiryPriceOpenProVersionPrepaidResponse()
     err = c.Send(request, response)
@@ -3053,6 +4701,25 @@ func (c *Client) MisAlarmNonlocalLoginPlaces(request *MisAlarmNonlocalLoginPlace
     return
 }
 
+// MisAlarmNonlocalLoginPlaces
+// 本接口{MisAlarmNonlocalLoginPlaces}将设置当前地点为常用登录地。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+func (c *Client) MisAlarmNonlocalLoginPlacesWithContext(ctx context.Context, request *MisAlarmNonlocalLoginPlacesRequest) (response *MisAlarmNonlocalLoginPlacesResponse, err error) {
+    if request == nil {
+        request = NewMisAlarmNonlocalLoginPlacesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewMisAlarmNonlocalLoginPlacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAlarmAttributeRequest() (request *ModifyAlarmAttributeRequest) {
     request = &ModifyAlarmAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3088,6 +4755,25 @@ func (c *Client) ModifyAlarmAttribute(request *ModifyAlarmAttributeRequest) (res
     return
 }
 
+// ModifyAlarmAttribute
+// 本接口（ModifyAlarmAttribute）用于修改告警设置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyAlarmAttributeWithContext(ctx context.Context, request *ModifyAlarmAttributeRequest) (response *ModifyAlarmAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyAlarmAttributeRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyAlarmAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAutoOpenProVersionConfigRequest() (request *ModifyAutoOpenProVersionConfigRequest) {
     request = &ModifyAutoOpenProVersionConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3114,6 +4800,22 @@ func (c *Client) ModifyAutoOpenProVersionConfig(request *ModifyAutoOpenProVersio
     if request == nil {
         request = NewModifyAutoOpenProVersionConfigRequest()
     }
+    
+    response = NewModifyAutoOpenProVersionConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyAutoOpenProVersionConfig
+// 本接口 (ModifyAutoOpenProVersionConfig) 用于设置新增主机自动开通专业版配置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ModifyAutoOpenProVersionConfigWithContext(ctx context.Context, request *ModifyAutoOpenProVersionConfigRequest) (response *ModifyAutoOpenProVersionConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyAutoOpenProVersionConfigRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyAutoOpenProVersionConfigResponse()
     err = c.Send(request, response)
@@ -3155,6 +4857,25 @@ func (c *Client) ModifyLoginWhiteList(request *ModifyLoginWhiteListRequest) (res
     return
 }
 
+// ModifyLoginWhiteList
+// 编辑白名单规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+func (c *Client) ModifyLoginWhiteListWithContext(ctx context.Context, request *ModifyLoginWhiteListRequest) (response *ModifyLoginWhiteListResponse, err error) {
+    if request == nil {
+        request = NewModifyLoginWhiteListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyLoginWhiteListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyProVersionRenewFlagRequest() (request *ModifyProVersionRenewFlagRequest) {
     request = &ModifyProVersionRenewFlagRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3183,6 +4904,24 @@ func (c *Client) ModifyProVersionRenewFlag(request *ModifyProVersionRenewFlagReq
     if request == nil {
         request = NewModifyProVersionRenewFlagRequest()
     }
+    
+    response = NewModifyProVersionRenewFlagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyProVersionRenewFlag
+// 本接口 (ModifyProVersionRenewFlag) 用于修改专业版包年包月续费标识。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyProVersionRenewFlagWithContext(ctx context.Context, request *ModifyProVersionRenewFlagRequest) (response *ModifyProVersionRenewFlagResponse, err error) {
+    if request == nil {
+        request = NewModifyProVersionRenewFlagRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyProVersionRenewFlagResponse()
     err = c.Send(request, response)
@@ -3227,6 +4966,28 @@ func (c *Client) OpenProVersion(request *OpenProVersionRequest) (response *OpenP
     return
 }
 
+// OpenProVersion
+// 本接口 (OpenProVersion) 用于开通专业版。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPENPROVERSION = "FailedOperation.OpenProVersion"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) OpenProVersionWithContext(ctx context.Context, request *OpenProVersionRequest) (response *OpenProVersionResponse, err error) {
+    if request == nil {
+        request = NewOpenProVersionRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewOpenProVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewOpenProVersionPrepaidRequest() (request *OpenProVersionPrepaidRequest) {
     request = &OpenProVersionPrepaidRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3255,6 +5016,24 @@ func (c *Client) OpenProVersionPrepaid(request *OpenProVersionPrepaidRequest) (r
     if request == nil {
         request = NewOpenProVersionPrepaidRequest()
     }
+    
+    response = NewOpenProVersionPrepaidResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// OpenProVersionPrepaid
+// 本接口 (OpenProVersionPrepaid) 用于开通专业版(包年包月)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TRADEERROR = "FailedOperation.TradeError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+func (c *Client) OpenProVersionPrepaidWithContext(ctx context.Context, request *OpenProVersionPrepaidRequest) (response *OpenProVersionPrepaidResponse, err error) {
+    if request == nil {
+        request = NewOpenProVersionPrepaidRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewOpenProVersionPrepaidResponse()
     err = c.Send(request, response)
@@ -3297,6 +5076,26 @@ func (c *Client) RecoverMalwares(request *RecoverMalwaresRequest) (response *Rec
     return
 }
 
+// RecoverMalwares
+// 本接口（RecoverMalwares）用于批量恢复已经被隔离的木马文件。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RECOVER = "FailedOperation.Recover"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+func (c *Client) RecoverMalwaresWithContext(ctx context.Context, request *RecoverMalwaresRequest) (response *RecoverMalwaresResponse, err error) {
+    if request == nil {
+        request = NewRecoverMalwaresRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewRecoverMalwaresResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRenewProVersionRequest() (request *RenewProVersionRequest) {
     request = &RenewProVersionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3326,6 +5125,25 @@ func (c *Client) RenewProVersion(request *RenewProVersionRequest) (response *Ren
     if request == nil {
         request = NewRenewProVersionRequest()
     }
+    
+    response = NewRenewProVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// RenewProVersion
+// 本接口 (RenewProVersion) 用于续费专业版(包年包月)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TRADEERROR = "FailedOperation.TradeError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) RenewProVersionWithContext(ctx context.Context, request *RenewProVersionRequest) (response *RenewProVersionResponse, err error) {
+    if request == nil {
+        request = NewRenewProVersionRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewRenewProVersionResponse()
     err = c.Send(request, response)
@@ -3370,6 +5188,28 @@ func (c *Client) RescanImpactedHost(request *RescanImpactedHostRequest) (respons
     return
 }
 
+// RescanImpactedHost
+// 本接口 (RescanImpactedHost) 用于漏洞重新检测。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AGENTOFFLINE = "FailedOperation.AgentOffline"
+//  FAILEDOPERATION_RESCANVUL = "FailedOperation.RescanVul"
+//  FAILEDOPERATION_RESCANVULPROCESSINUSE = "FailedOperation.RescanVulProcessInUse"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) RescanImpactedHostWithContext(ctx context.Context, request *RescanImpactedHostRequest) (response *RescanImpactedHostResponse, err error) {
+    if request == nil {
+        request = NewRescanImpactedHostRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewRescanImpactedHostResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSeparateMalwaresRequest() (request *SeparateMalwaresRequest) {
     request = &SeparateMalwaresRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3407,6 +5247,27 @@ func (c *Client) SeparateMalwares(request *SeparateMalwaresRequest) (response *S
     return
 }
 
+// SeparateMalwares
+// 本接口（SeparateMalwares）用于隔离木马。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PARTSEPARATE = "FailedOperation.PartSeparate"
+//  FAILEDOPERATION_SINGLESEPARATE = "FailedOperation.SingleSeparate"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+func (c *Client) SeparateMalwaresWithContext(ctx context.Context, request *SeparateMalwaresRequest) (response *SeparateMalwaresResponse, err error) {
+    if request == nil {
+        request = NewSeparateMalwaresRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewSeparateMalwaresResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSetBashEventsStatusRequest() (request *SetBashEventsStatusRequest) {
     request = &SetBashEventsStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3438,6 +5299,27 @@ func (c *Client) SetBashEventsStatus(request *SetBashEventsStatusRequest) (respo
     if request == nil {
         request = NewSetBashEventsStatusRequest()
     }
+    
+    response = NewSetBashEventsStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SetBashEventsStatus
+// 设置高危命令事件状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) SetBashEventsStatusWithContext(ctx context.Context, request *SetBashEventsStatusRequest) (response *SetBashEventsStatusResponse, err error) {
+    if request == nil {
+        request = NewSetBashEventsStatusRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewSetBashEventsStatusResponse()
     err = c.Send(request, response)
@@ -3485,6 +5367,31 @@ func (c *Client) SwitchBashRules(request *SwitchBashRulesRequest) (response *Swi
     return
 }
 
+// SwitchBashRules
+// 切换高危命令规则状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) SwitchBashRulesWithContext(ctx context.Context, request *SwitchBashRulesRequest) (response *SwitchBashRulesResponse, err error) {
+    if request == nil {
+        request = NewSwitchBashRulesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewSwitchBashRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTrustMaliciousRequestRequest() (request *TrustMaliciousRequestRequest) {
     request = &TrustMaliciousRequestRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3512,6 +5419,23 @@ func (c *Client) TrustMaliciousRequest(request *TrustMaliciousRequestRequest) (r
     if request == nil {
         request = NewTrustMaliciousRequestRequest()
     }
+    
+    response = NewTrustMaliciousRequestResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// TrustMaliciousRequest
+// 本接口 (TrustMaliciousRequest) 用于恶意请求添加信任。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+func (c *Client) TrustMaliciousRequestWithContext(ctx context.Context, request *TrustMaliciousRequestRequest) (response *TrustMaliciousRequestResponse, err error) {
+    if request == nil {
+        request = NewTrustMaliciousRequestRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewTrustMaliciousRequestResponse()
     err = c.Send(request, response)
@@ -3554,6 +5478,26 @@ func (c *Client) TrustMalwares(request *TrustMalwaresRequest) (response *TrustMa
     return
 }
 
+// TrustMalwares
+// 本接口(TrustMalwares)将被识别木马文件设为信任。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) TrustMalwaresWithContext(ctx context.Context, request *TrustMalwaresRequest) (response *TrustMalwaresResponse, err error) {
+    if request == nil {
+        request = NewTrustMalwaresRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewTrustMalwaresResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUntrustMaliciousRequestRequest() (request *UntrustMaliciousRequestRequest) {
     request = &UntrustMaliciousRequestRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3582,6 +5526,24 @@ func (c *Client) UntrustMaliciousRequest(request *UntrustMaliciousRequestRequest
     if request == nil {
         request = NewUntrustMaliciousRequestRequest()
     }
+    
+    response = NewUntrustMaliciousRequestResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UntrustMaliciousRequest
+// 本接口 (UntrustMaliciousRequest) 用于取消信任恶意请求。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) UntrustMaliciousRequestWithContext(ctx context.Context, request *UntrustMaliciousRequestRequest) (response *UntrustMaliciousRequestResponse, err error) {
+    if request == nil {
+        request = NewUntrustMaliciousRequestRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUntrustMaliciousRequestResponse()
     err = c.Send(request, response)
@@ -3617,6 +5579,25 @@ func (c *Client) UntrustMalwares(request *UntrustMalwaresRequest) (response *Unt
     if request == nil {
         request = NewUntrustMalwaresRequest()
     }
+    
+    response = NewUntrustMalwaresResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UntrustMalwares
+// 本接口（UntrustMalwares）用于取消信任木马文件。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+func (c *Client) UntrustMalwaresWithContext(ctx context.Context, request *UntrustMalwaresRequest) (response *UntrustMalwaresResponse, err error) {
+    if request == nil {
+        request = NewUntrustMalwaresRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUntrustMalwaresResponse()
     err = c.Send(request, response)

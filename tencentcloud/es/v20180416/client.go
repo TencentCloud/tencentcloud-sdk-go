@@ -15,6 +15,7 @@
 package v20180416
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -73,11 +74,38 @@ func NewCreateInstanceResponse() (response *CreateInstanceResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
+//  RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
 //  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
 func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *CreateInstanceResponse, err error) {
     if request == nil {
         request = NewCreateInstanceRequest()
     }
+    
+    response = NewCreateInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateInstance
+// 创建指定规格的ES集群实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
+//  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
+//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
+//  FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
+//  RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
+//  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateInstanceRequest) (response *CreateInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateInstanceRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateInstanceResponse()
     err = c.Send(request, response)
@@ -119,6 +147,25 @@ func (c *Client) DeleteInstance(request *DeleteInstanceRequest) (response *Delet
     return
 }
 
+// DeleteInstance
+// 销毁集群实例 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteInstanceRequest) (response *DeleteInstanceResponse, err error) {
+    if request == nil {
+        request = NewDeleteInstanceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceLogsRequest() (request *DescribeInstanceLogsRequest) {
     request = &DescribeInstanceLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -146,6 +193,23 @@ func (c *Client) DescribeInstanceLogs(request *DescribeInstanceLogsRequest) (res
     if request == nil {
         request = NewDescribeInstanceLogsRequest()
     }
+    
+    response = NewDescribeInstanceLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeInstanceLogs
+// 查询用户该地域下符合条件的ES集群的日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeInstanceLogsWithContext(ctx context.Context, request *DescribeInstanceLogsRequest) (response *DescribeInstanceLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceLogsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeInstanceLogsResponse()
     err = c.Send(request, response)
@@ -186,6 +250,24 @@ func (c *Client) DescribeInstanceOperations(request *DescribeInstanceOperationsR
     return
 }
 
+// DescribeInstanceOperations
+// 查询实例指定条件下的操作记录
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+func (c *Client) DescribeInstanceOperationsWithContext(ctx context.Context, request *DescribeInstanceOperationsRequest) (response *DescribeInstanceOperationsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceOperationsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceOperationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
     request = &DescribeInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -220,6 +302,24 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
     return
 }
 
+// DescribeInstances
+// 查询用户该地域下符合条件的所有实例
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstancesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeViewsRequest() (request *DescribeViewsRequest) {
     request = &DescribeViewsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -248,6 +348,24 @@ func (c *Client) DescribeViews(request *DescribeViewsRequest) (response *Describ
     if request == nil {
         request = NewDescribeViewsRequest()
     }
+    
+    response = NewDescribeViewsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeViews
+// 查询集群各视图数据，包括集群维度、节点维度、Kibana维度
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+func (c *Client) DescribeViewsWithContext(ctx context.Context, request *DescribeViewsRequest) (response *DescribeViewsResponse, err error) {
+    if request == nil {
+        request = NewDescribeViewsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeViewsResponse()
     err = c.Send(request, response)
@@ -291,6 +409,27 @@ func (c *Client) DiagnoseInstance(request *DiagnoseInstanceRequest) (response *D
     return
 }
 
+// DiagnoseInstance
+// 智能运维诊断集群
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DiagnoseInstanceWithContext(ctx context.Context, request *DiagnoseInstanceRequest) (response *DiagnoseInstanceResponse, err error) {
+    if request == nil {
+        request = NewDiagnoseInstanceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDiagnoseInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetRequestTargetNodeTypesRequest() (request *GetRequestTargetNodeTypesRequest) {
     request = &GetRequestTargetNodeTypesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -319,6 +458,24 @@ func (c *Client) GetRequestTargetNodeTypes(request *GetRequestTargetNodeTypesReq
     if request == nil {
         request = NewGetRequestTargetNodeTypesRequest()
     }
+    
+    response = NewGetRequestTargetNodeTypesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// GetRequestTargetNodeTypes
+// 获取接收客户端请求的节点类型
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetRequestTargetNodeTypesWithContext(ctx context.Context, request *GetRequestTargetNodeTypesRequest) (response *GetRequestTargetNodeTypesResponse, err error) {
+    if request == nil {
+        request = NewGetRequestTargetNodeTypesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewGetRequestTargetNodeTypesResponse()
     err = c.Send(request, response)
@@ -359,6 +516,24 @@ func (c *Client) RestartInstance(request *RestartInstanceRequest) (response *Res
     return
 }
 
+// RestartInstance
+// 重启ES集群实例(用于系统版本更新等操作) 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+func (c *Client) RestartInstanceWithContext(ctx context.Context, request *RestartInstanceRequest) (response *RestartInstanceResponse, err error) {
+    if request == nil {
+        request = NewRestartInstanceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewRestartInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRestartKibanaRequest() (request *RestartKibanaRequest) {
     request = &RestartKibanaRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -387,6 +562,24 @@ func (c *Client) RestartKibana(request *RestartKibanaRequest) (response *Restart
     if request == nil {
         request = NewRestartKibanaRequest()
     }
+    
+    response = NewRestartKibanaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// RestartKibana
+// 重启Kibana 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+func (c *Client) RestartKibanaWithContext(ctx context.Context, request *RestartKibanaRequest) (response *RestartKibanaResponse, err error) {
+    if request == nil {
+        request = NewRestartKibanaRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewRestartKibanaResponse()
     err = c.Send(request, response)
@@ -429,6 +622,26 @@ func (c *Client) RestartNodes(request *RestartNodesRequest) (response *RestartNo
     return
 }
 
+// RestartNodes
+// 用于重启集群节点
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RestartNodesWithContext(ctx context.Context, request *RestartNodesRequest) (response *RestartNodesResponse, err error) {
+    if request == nil {
+        request = NewRestartNodesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewRestartNodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateDiagnoseSettingsRequest() (request *UpdateDiagnoseSettingsRequest) {
     request = &UpdateDiagnoseSettingsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -460,6 +673,27 @@ func (c *Client) UpdateDiagnoseSettings(request *UpdateDiagnoseSettingsRequest) 
     if request == nil {
         request = NewUpdateDiagnoseSettingsRequest()
     }
+    
+    response = NewUpdateDiagnoseSettingsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UpdateDiagnoseSettings
+// 更新智能运维配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateDiagnoseSettingsWithContext(ctx context.Context, request *UpdateDiagnoseSettingsRequest) (response *UpdateDiagnoseSettingsResponse, err error) {
+    if request == nil {
+        request = NewUpdateDiagnoseSettingsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUpdateDiagnoseSettingsResponse()
     err = c.Send(request, response)
@@ -523,6 +757,47 @@ func (c *Client) UpdateInstance(request *UpdateInstanceRequest) (response *Updat
     return
 }
 
+// UpdateInstance
+// 对集群进行节点规格变更，修改实例名称，修改配置，重置密码， 添加Kibana黑白名单等操作。参数中InstanceId为必传参数，ForceRestart为选填参数，剩余参数传递组合及含义如下：
+//
+// - InstanceName：修改实例名称(仅用于标识实例)
+//
+// - NodeInfoList: 修改节点配置（节点横向扩缩容，纵向扩缩容，增加主节点，增加冷节点等）
+//
+// - EsConfig：修改集群配置
+//
+// - Password：修改默认用户elastic的密码
+//
+// - EsAcl：修改访问控制列表
+//
+// - CosBackUp: 设置集群COS自动备份信息
+//
+// 以上参数组合只能传递一种，多传或少传均会导致请求失败
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
+//  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
+//  FAILEDOPERATION_UNSUPPORTREVERSEREGULATIONNODETYPEANDDISK = "FailedOperation.UnsupportReverseRegulationNodeTypeAndDisk"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
+//  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateInstanceWithContext(ctx context.Context, request *UpdateInstanceRequest) (response *UpdateInstanceResponse, err error) {
+    if request == nil {
+        request = NewUpdateInstanceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewUpdateInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateJdkRequest() (request *UpdateJdkRequest) {
     request = &UpdateJdkRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -567,6 +842,34 @@ func (c *Client) UpdateJdk(request *UpdateJdkRequest) (response *UpdateJdkRespon
     return
 }
 
+// UpdateJdk
+// 更新实例Jdk配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  FAILEDOPERATION_ERRORCLUSTERSTATENOREPLICATION = "FailedOperation.ErrorClusterStateNoReplication"
+//  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateJdkWithContext(ctx context.Context, request *UpdateJdkRequest) (response *UpdateJdkResponse, err error) {
+    if request == nil {
+        request = NewUpdateJdkRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewUpdateJdkResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdatePluginsRequest() (request *UpdatePluginsRequest) {
     request = &UpdatePluginsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -590,6 +893,7 @@ func NewUpdatePluginsResponse() (response *UpdatePluginsResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
 //  FAILEDOPERATION_ERRORCLUSTERSTATENOREPLICATION = "FailedOperation.ErrorClusterStateNoReplication"
+//  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
 //  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -601,6 +905,31 @@ func (c *Client) UpdatePlugins(request *UpdatePluginsRequest) (response *UpdateP
     if request == nil {
         request = NewUpdatePluginsRequest()
     }
+    
+    response = NewUpdatePluginsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UpdatePlugins
+// 变更插件列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  FAILEDOPERATION_ERRORCLUSTERSTATENOREPLICATION = "FailedOperation.ErrorClusterStateNoReplication"
+//  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
+//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdatePluginsWithContext(ctx context.Context, request *UpdatePluginsRequest) (response *UpdatePluginsResponse, err error) {
+    if request == nil {
+        request = NewUpdatePluginsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUpdatePluginsResponse()
     err = c.Send(request, response)
@@ -638,6 +967,27 @@ func (c *Client) UpdateRequestTargetNodeTypes(request *UpdateRequestTargetNodeTy
     if request == nil {
         request = NewUpdateRequestTargetNodeTypesRequest()
     }
+    
+    response = NewUpdateRequestTargetNodeTypesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UpdateRequestTargetNodeTypes
+// 更新接收客户端请求的节点类型
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateRequestTargetNodeTypesWithContext(ctx context.Context, request *UpdateRequestTargetNodeTypesRequest) (response *UpdateRequestTargetNodeTypesResponse, err error) {
+    if request == nil {
+        request = NewUpdateRequestTargetNodeTypesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUpdateRequestTargetNodeTypesResponse()
     err = c.Send(request, response)
@@ -684,6 +1034,30 @@ func (c *Client) UpgradeInstance(request *UpgradeInstanceRequest) (response *Upg
     return
 }
 
+// UpgradeInstance
+// 升级ES集群版本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
+//  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpgradeInstanceWithContext(ctx context.Context, request *UpgradeInstanceRequest) (response *UpgradeInstanceResponse, err error) {
+    if request == nil {
+        request = NewUpgradeInstanceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewUpgradeInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpgradeLicenseRequest() (request *UpgradeLicenseRequest) {
     request = &UpgradeLicenseRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -716,6 +1090,28 @@ func (c *Client) UpgradeLicense(request *UpgradeLicenseRequest) (response *Upgra
     if request == nil {
         request = NewUpgradeLicenseRequest()
     }
+    
+    response = NewUpgradeLicenseResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UpgradeLicense
+// 升级ES商业特性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpgradeLicenseWithContext(ctx context.Context, request *UpgradeLicenseRequest) (response *UpgradeLicenseResponse, err error) {
+    if request == nil {
+        request = NewUpgradeLicenseRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUpgradeLicenseResponse()
     err = c.Send(request, response)

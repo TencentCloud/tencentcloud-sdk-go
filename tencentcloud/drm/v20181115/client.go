@@ -15,6 +15,7 @@
 package v20181115
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -82,6 +83,29 @@ func (c *Client) AddFairPlayPem(request *AddFairPlayPemRequest) (response *AddFa
     return
 }
 
+// AddFairPlayPem
+// 本接口用来设置fairplay方案所需的私钥、私钥密钥、ask等信息。
+//
+// 如需使用fairplay方案，请务必先设置私钥。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PEMIDNOTEXIST = "FailedOperation.PemIdNotExist"
+//  FAILEDOPERATION_PEMNUMTOOMUCH = "FailedOperation.PemNumTooMuch"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) AddFairPlayPemWithContext(ctx context.Context, request *AddFairPlayPemRequest) (response *AddFairPlayPemResponse, err error) {
+    if request == nil {
+        request = NewAddFairPlayPemRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewAddFairPlayPemResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateEncryptKeysRequest() (request *CreateEncryptKeysRequest) {
     request = &CreateEncryptKeysRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -111,6 +135,25 @@ func (c *Client) CreateEncryptKeys(request *CreateEncryptKeysRequest) (response 
     if request == nil {
         request = NewCreateEncryptKeysRequest()
     }
+    
+    response = NewCreateEncryptKeysResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateEncryptKeys
+// 该接口用来设置加密的密钥。注意，同一个content id，只能设置一次！
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateEncryptKeysWithContext(ctx context.Context, request *CreateEncryptKeysRequest) (response *CreateEncryptKeysResponse, err error) {
+    if request == nil {
+        request = NewCreateEncryptKeysRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateEncryptKeysResponse()
     err = c.Send(request, response)
@@ -148,6 +191,27 @@ func (c *Client) CreateLicense(request *CreateLicenseRequest) (response *CreateL
     if request == nil {
         request = NewCreateLicenseRequest()
     }
+    
+    response = NewCreateLicenseResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateLicense
+// 本接口用来生成DRM方案对应的播放许可证，开发者需提供DRM方案类型、内容类型参数，后台将生成许可证后返回许可证数据
+//
+// 开发者需要转发终端设备发出的许可证请求信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateLicenseWithContext(ctx context.Context, request *CreateLicenseRequest) (response *CreateLicenseResponse, err error) {
+    if request == nil {
+        request = NewCreateLicenseRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateLicenseResponse()
     err = c.Send(request, response)
@@ -193,6 +257,29 @@ func (c *Client) DeleteFairPlayPem(request *DeleteFairPlayPemRequest) (response 
     return
 }
 
+// DeleteFairPlayPem
+// 本接口用来删除fairplay方案的私钥、ask等信息
+//
+// 注：高风险操作，删除后，您将无法使用腾讯云DRM提供的fairplay服务。
+//
+// 由于缓存，删除操作需要约半小时生效
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteFairPlayPemWithContext(ctx context.Context, request *DeleteFairPlayPemRequest) (response *DeleteFairPlayPemResponse, err error) {
+    if request == nil {
+        request = NewDeleteFairPlayPemRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteFairPlayPemResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAllKeysRequest() (request *DescribeAllKeysRequest) {
     request = &DescribeAllKeysRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -222,6 +309,25 @@ func (c *Client) DescribeAllKeys(request *DescribeAllKeysRequest) (response *Des
     if request == nil {
         request = NewDescribeAllKeysRequest()
     }
+    
+    response = NewDescribeAllKeysResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAllKeys
+// 本接口用来查询指定DRM类型、ContentType的所有加密密钥
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeAllKeysWithContext(ctx context.Context, request *DescribeAllKeysRequest) (response *DescribeAllKeysResponse, err error) {
+    if request == nil {
+        request = NewDescribeAllKeysRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAllKeysResponse()
     err = c.Send(request, response)
@@ -263,6 +369,25 @@ func (c *Client) DescribeFairPlayPem(request *DescribeFairPlayPemRequest) (respo
     return
 }
 
+// DescribeFairPlayPem
+// 该接口用来查询设置的FairPlay私钥校验信息。可用该接口校验设置的私钥与本身的私钥是否一致。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeFairPlayPemWithContext(ctx context.Context, request *DescribeFairPlayPemRequest) (response *DescribeFairPlayPemResponse, err error) {
+    if request == nil {
+        request = NewDescribeFairPlayPemRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeFairPlayPemResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeKeysRequest() (request *DescribeKeysRequest) {
     request = &DescribeKeysRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -294,6 +419,27 @@ func (c *Client) DescribeKeys(request *DescribeKeysRequest) (response *DescribeK
     if request == nil {
         request = NewDescribeKeysRequest()
     }
+    
+    response = NewDescribeKeysResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeKeys
+// 开发者需要指定使用的DRM类型、和需要加密的Track类型，后台返回加密使用的密钥
+//
+// 如果加密使用的ContentID没有关联的密钥信息，后台会自动生成新的密钥返回
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeKeysWithContext(ctx context.Context, request *DescribeKeysRequest) (response *DescribeKeysResponse, err error) {
+    if request == nil {
+        request = NewDescribeKeysRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeKeysResponse()
     err = c.Send(request, response)
@@ -339,6 +485,29 @@ func (c *Client) ModifyFairPlayPem(request *ModifyFairPlayPemRequest) (response 
     return
 }
 
+// ModifyFairPlayPem
+// 本接口用来设置fairplay方案所需的私钥、私钥密钥、ask等信息。
+//
+// 如需使用fairplay方案，请务必先设置私钥。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PEMIDNOTEXIST = "FailedOperation.PemIdNotExist"
+//  FAILEDOPERATION_PEMNUMTOOMUCH = "FailedOperation.PemNumTooMuch"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyFairPlayPemWithContext(ctx context.Context, request *ModifyFairPlayPemRequest) (response *ModifyFairPlayPemResponse, err error) {
+    if request == nil {
+        request = NewModifyFairPlayPemRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyFairPlayPemResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStartEncryptionRequest() (request *StartEncryptionRequest) {
     request = &StartEncryptionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -370,6 +539,27 @@ func (c *Client) StartEncryption(request *StartEncryptionRequest) (response *Sta
     if request == nil {
         request = NewStartEncryptionRequest()
     }
+    
+    response = NewStartEncryptionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// StartEncryption
+// 开发者调用该接口，启动一次内容文件的DRM加密工作流。
+//
+// 注意：该接口已下线。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) StartEncryptionWithContext(ctx context.Context, request *StartEncryptionRequest) (response *StartEncryptionResponse, err error) {
+    if request == nil {
+        request = NewStartEncryptionRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewStartEncryptionResponse()
     err = c.Send(request, response)

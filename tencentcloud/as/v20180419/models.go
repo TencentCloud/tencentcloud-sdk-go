@@ -152,6 +152,63 @@ func (r *AttachInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AttachLoadBalancersRequest struct {
+	*tchttp.BaseRequest
+
+	// 伸缩组ID
+	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitempty" name:"AutoScalingGroupId"`
+
+	// 传统负载均衡器ID列表，伸缩组绑定数量上限为20，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds"`
+
+	// 应用型负载均衡器列表，伸缩组绑定数量上限为50，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+	ForwardLoadBalancers []*ForwardLoadBalancer `json:"ForwardLoadBalancers,omitempty" name:"ForwardLoadBalancers"`
+}
+
+func (r *AttachLoadBalancersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AttachLoadBalancersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AutoScalingGroupId")
+	delete(f, "LoadBalancerIds")
+	delete(f, "ForwardLoadBalancers")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AttachLoadBalancersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AttachLoadBalancersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 伸缩活动ID
+		ActivityId *string `json:"ActivityId,omitempty" name:"ActivityId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AttachLoadBalancersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AttachLoadBalancersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type AutoScalingAdvice struct {
 
 	// 伸缩组ID。
@@ -1710,7 +1767,7 @@ type DescribeAutoScalingInstancesRequest struct {
 	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	// 返回数量，默认为20，最大值为2000。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -2217,6 +2274,63 @@ func (r *DetachInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DetachLoadBalancersRequest struct {
+	*tchttp.BaseRequest
+
+	// 伸缩组ID
+	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitempty" name:"AutoScalingGroupId"`
+
+	// 传统负载均衡器ID列表，目前长度上限为20，LoadBalancerIds 和 ForwardLoadBalancerIdentifications 二者同时最多只能指定一个
+	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds"`
+
+	// 应用型负载均衡器标识信息列表，目前长度上限为50，LoadBalancerIds 和 ForwardLoadBalancerIdentifications二者同时最多只能指定一个
+	ForwardLoadBalancerIdentifications []*ForwardLoadBalancerIdentification `json:"ForwardLoadBalancerIdentifications,omitempty" name:"ForwardLoadBalancerIdentifications"`
+}
+
+func (r *DetachLoadBalancersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetachLoadBalancersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AutoScalingGroupId")
+	delete(f, "LoadBalancerIds")
+	delete(f, "ForwardLoadBalancerIdentifications")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetachLoadBalancersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DetachLoadBalancersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 伸缩活动ID
+		ActivityId *string `json:"ActivityId,omitempty" name:"ActivityId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DetachLoadBalancersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetachLoadBalancersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DetailedStatusMessage struct {
 
 	// 错误类型。
@@ -2424,6 +2538,18 @@ type ForwardLoadBalancer struct {
 
 	// 负载均衡实例所属地域，默认取AS服务所在地域。格式与公共参数Region相同，如："ap-guangzhou"。
 	Region *string `json:"Region,omitempty" name:"Region"`
+}
+
+type ForwardLoadBalancerIdentification struct {
+
+	// 负载均衡器ID
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+
+	// 应用型负载均衡监听器 ID
+	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
+
+	// 转发规则ID，注意：针对七层监听器此参数必填
+	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
 }
 
 type HostNameSettings struct {
@@ -3023,6 +3149,9 @@ type ModifyLaunchConfigurationAttributesRequest struct {
 
 	// 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。
 	EnhancedService *EnhancedService `json:"EnhancedService,omitempty" name:"EnhancedService"`
+
+	// CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
+	CamRoleName *string `json:"CamRoleName,omitempty" name:"CamRoleName"`
 }
 
 func (r *ModifyLaunchConfigurationAttributesRequest) ToJsonString() string {
@@ -3054,6 +3183,7 @@ func (r *ModifyLaunchConfigurationAttributesRequest) FromJsonString(s string) er
 	delete(f, "HostNameSettings")
 	delete(f, "InstanceNameSettings")
 	delete(f, "EnhancedService")
+	delete(f, "CamRoleName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLaunchConfigurationAttributesRequest has unknown keys!", "")
 	}
@@ -3077,6 +3207,59 @@ func (r *ModifyLaunchConfigurationAttributesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyLaunchConfigurationAttributesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyLoadBalancerTargetAttributesRequest struct {
+	*tchttp.BaseRequest
+
+	// 伸缩组ID
+	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitempty" name:"AutoScalingGroupId"`
+
+	// 需修改目标规则属性的应用型负载均衡器列表，长度上限为50
+	ForwardLoadBalancers []*ForwardLoadBalancer `json:"ForwardLoadBalancers,omitempty" name:"ForwardLoadBalancers"`
+}
+
+func (r *ModifyLoadBalancerTargetAttributesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLoadBalancerTargetAttributesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AutoScalingGroupId")
+	delete(f, "ForwardLoadBalancers")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLoadBalancerTargetAttributesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyLoadBalancerTargetAttributesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 伸缩活动ID
+		ActivityId *string `json:"ActivityId,omitempty" name:"ActivityId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyLoadBalancerTargetAttributesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLoadBalancerTargetAttributesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

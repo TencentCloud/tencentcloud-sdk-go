@@ -15,6 +15,7 @@
 package v20180529
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -86,6 +87,33 @@ func (c *Client) AddRealServers(request *AddRealServersRequest) (response *AddRe
     return
 }
 
+// AddRealServers
+// 添加源站(服务器)信息，支持IP或域名
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATERS = "InvalidParameterValue.DuplicateRS"
+//  INVALIDPARAMETERVALUE_INVALIDTAGS = "InvalidParameterValue.InvalidTags"
+//  INVALIDPARAMETERVALUE_PROJECTIDNOTBELONG = "InvalidParameterValue.ProjectIdNotBelong"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) AddRealServersWithContext(ctx context.Context, request *AddRealServersRequest) (response *AddRealServersResponse, err error) {
+    if request == nil {
+        request = NewAddRealServersRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewAddRealServersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindListenerRealServersRequest() (request *BindListenerRealServersRequest) {
     request = &BindListenerRealServersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -127,6 +155,37 @@ func (c *Client) BindListenerRealServers(request *BindListenerRealServersRequest
     if request == nil {
         request = NewBindListenerRealServersRequest()
     }
+    
+    response = NewBindListenerRealServersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// BindListenerRealServers
+// 本接口（BindListenerRealServers）用于TCP/UDP监听器绑定解绑源站。
+//
+// 注意：本接口会解绑之前绑定的源站，绑定本次调用所选择的源站。例如：原来绑定的源站为A，B，C，本次调用的选择绑定的源站为C，D，E，那么调用后所绑定的源站为C，D，E。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GROUPSTATUSNOTINRUNING = "FailedOperation.GroupStatusNotInRuning"
+//  FAILEDOPERATION_INSTANCESTATUSNOTINRUNING = "FailedOperation.InstanceStatusNotInRuning"
+//  FAILEDOPERATION_LIMITREALSERVERNUM = "FailedOperation.LimitRealServerNum"
+//  FAILEDOPERATION_LISTENERHASTASK = "FailedOperation.ListenerHasTask"
+//  FAILEDOPERATION_PROXYSTATUSNOTINRUNING = "FailedOperation.ProxyStatusNotInRuning"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_REALSERVERNOTBELONG = "InvalidParameterValue.RealServerNotBelong"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) BindListenerRealServersWithContext(ctx context.Context, request *BindListenerRealServersRequest) (response *BindListenerRealServersResponse, err error) {
+    if request == nil {
+        request = NewBindListenerRealServersRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewBindListenerRealServersResponse()
     err = c.Send(request, response)
@@ -180,6 +239,37 @@ func (c *Client) BindRuleRealServers(request *BindRuleRealServersRequest) (respo
     return
 }
 
+// BindRuleRealServers
+// 该接口用于7层监听器的转发规则绑定源站。注意：本接口会解绑之前绑定的源站，绑定本次调用所选择的源站。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DOMAINSTATUSNOTINRUNNING = "FailedOperation.DomainStatusNotInRunning"
+//  FAILEDOPERATION_GROUPSTATUSNOTINRUNING = "FailedOperation.GroupStatusNotInRuning"
+//  FAILEDOPERATION_INSTANCESTATUSNOTINRUNING = "FailedOperation.InstanceStatusNotInRuning"
+//  FAILEDOPERATION_LISTENERHASTASK = "FailedOperation.ListenerHasTask"
+//  FAILEDOPERATION_LISTENERSTATUSERROR = "FailedOperation.ListenerStatusError"
+//  FAILEDOPERATION_NOTSUPPORTPROXYGROUP = "FailedOperation.NotSupportProxyGroup"
+//  FAILEDOPERATION_PROXYSTATUSNOTINRUNING = "FailedOperation.ProxyStatusNotInRuning"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_REALSERVERNOTBELONG = "InvalidParameterValue.RealServerNotBelong"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) BindRuleRealServersWithContext(ctx context.Context, request *BindRuleRealServersRequest) (response *BindRuleRealServersResponse, err error) {
+    if request == nil {
+        request = NewBindRuleRealServersRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewBindRuleRealServersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckProxyCreateRequest() (request *CheckProxyCreateRequest) {
     request = &CheckProxyCreateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -215,6 +305,31 @@ func (c *Client) CheckProxyCreate(request *CheckProxyCreateRequest) (response *C
     if request == nil {
         request = NewCheckProxyCreateRequest()
     }
+    
+    response = NewCheckProxyCreateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CheckProxyCreate
+// 本接口(CheckProxyCreate)用于查询能否创建指定配置的加速通道。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDBANDWIDTH = "InvalidParameterValue.InvalidBandwidth"
+//  INVALIDPARAMETERVALUE_INVALIDCONCURRENCY = "InvalidParameterValue.InvalidConcurrency"
+//  INVALIDPARAMETERVALUE_UNKNOWNACCESSREGION = "InvalidParameterValue.UnknownAccessRegion"
+//  INVALIDPARAMETERVALUE_UNKNOWNDESTREGION = "InvalidParameterValue.UnknownDestRegion"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) CheckProxyCreateWithContext(ctx context.Context, request *CheckProxyCreateRequest) (response *CheckProxyCreateResponse, err error) {
+    if request == nil {
+        request = NewCheckProxyCreateRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCheckProxyCreateResponse()
     err = c.Send(request, response)
@@ -265,6 +380,34 @@ func (c *Client) CloseProxies(request *CloseProxiesRequest) (response *CloseProx
     return
 }
 
+// CloseProxies
+// 本接口（CloseProxies）用于关闭通道。通道关闭后，不再产生流量，但每天仍然收取通道基础配置费用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTBALANCEINSUFFICIENT = "FailedOperation.AccountBalanceInsufficient"
+//  FAILEDOPERATION_DUPLICATEDREQUEST = "FailedOperation.DuplicatedRequest"
+//  FAILEDOPERATION_NOTSUPPORTOLDVERSIONPROXY = "FailedOperation.NotSupportOldVersionProxy"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CloseProxiesWithContext(ctx context.Context, request *CloseProxiesRequest) (response *CloseProxiesResponse, err error) {
+    if request == nil {
+        request = NewCloseProxiesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCloseProxiesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCloseProxyGroupRequest() (request *CloseProxyGroupRequest) {
     request = &CloseProxyGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -301,6 +444,32 @@ func (c *Client) CloseProxyGroup(request *CloseProxyGroupRequest) (response *Clo
     if request == nil {
         request = NewCloseProxyGroupRequest()
     }
+    
+    response = NewCloseProxyGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CloseProxyGroup
+// 本接口（CloseProxyGroup）用于关闭通道组。通道组关闭后，不再产生流量，但每天仍然收取通道基础配置费用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTBALANCEINSUFFICIENT = "FailedOperation.AccountBalanceInsufficient"
+//  FAILEDOPERATION_DUPLICATEDREQUEST = "FailedOperation.DuplicatedRequest"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CloseProxyGroupWithContext(ctx context.Context, request *CloseProxyGroupRequest) (response *CloseProxyGroupResponse, err error) {
+    if request == nil {
+        request = NewCloseProxyGroupRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCloseProxyGroupResponse()
     err = c.Send(request, response)
@@ -350,6 +519,33 @@ func (c *Client) CloseSecurityPolicy(request *CloseSecurityPolicyRequest) (respo
     return
 }
 
+// CloseSecurityPolicy
+// 关闭安全策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACTIONISDOING = "FailedOperation.ActionIsDoing"
+//  FAILEDOPERATION_PROXYSECURITYALREADYCLOSE = "FailedOperation.ProxySecurityAlreadyClose"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CloseSecurityPolicyWithContext(ctx context.Context, request *CloseSecurityPolicyRequest) (response *CloseSecurityPolicyResponse, err error) {
+    if request == nil {
+        request = NewCloseSecurityPolicyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCloseSecurityPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCertificateRequest() (request *CreateCertificateRequest) {
     request = &CreateCertificateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -392,6 +588,32 @@ func (c *Client) CreateCertificate(request *CreateCertificateRequest) (response 
     return
 }
 
+// CreateCertificate
+// 本接口（CreateCertificate）用于创建Gaap相关证书和配置文件，包括基础认证配置文件，客户端CA证书，服务器SSL证书，Gaap SSL证书以及源站CA证书。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDCERTIFICATECONTENT = "InvalidParameterValue.InvalidCertificateContent"
+//  INVALIDPARAMETERVALUE_INVALIDCERTIFICATEKEY = "InvalidParameterValue.InvalidCertificateKey"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCertificateWithContext(ctx context.Context, request *CreateCertificateRequest) (response *CreateCertificateResponse, err error) {
+    if request == nil {
+        request = NewCreateCertificateRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateCertificateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCustomHeaderRequest() (request *CreateCustomHeaderRequest) {
     request = &CreateCustomHeaderRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -428,6 +650,32 @@ func (c *Client) CreateCustomHeader(request *CreateCustomHeaderRequest) (respons
     if request == nil {
         request = NewCreateCustomHeaderRequest()
     }
+    
+    response = NewCreateCustomHeaderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateCustomHeader
+// 本接口（CreateCustomHeader）用于创建HTTP/HTTPS监听器的自定义header，客户端请求通过访问该监听器时，会将监听器中配置的header信息发送到源站。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GROUPSTATUSNOTINRUNING = "FailedOperation.GroupStatusNotInRuning"
+//  FAILEDOPERATION_INSTANCESTATUSNOTINRUNING = "FailedOperation.InstanceStatusNotInRuning"
+//  FAILEDOPERATION_INVALIDLISTENERPROTOCOL = "FailedOperation.InvalidListenerProtocol"
+//  FAILEDOPERATION_LISTENERHASTASK = "FailedOperation.ListenerHasTask"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_HITBLACKLIST = "InvalidParameterValue.HitBlacklist"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) CreateCustomHeaderWithContext(ctx context.Context, request *CreateCustomHeaderRequest) (response *CreateCustomHeaderResponse, err error) {
+    if request == nil {
+        request = NewCreateCustomHeaderRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateCustomHeaderResponse()
     err = c.Send(request, response)
@@ -481,6 +729,37 @@ func (c *Client) CreateDomain(request *CreateDomainRequest) (response *CreateDom
     return
 }
 
+// CreateDomain
+// 本接口（CreateDomain）用于创建HTTP/HTTPS监听器的访问域名，客户端请求通过访问该域名来请求后端业务。
+//
+// 该接口仅支持version3.0的通道。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DOMAINALREADYEXISTED = "FailedOperation.DomainAlreadyExisted"
+//  FAILEDOPERATION_GROUPSTATUSNOTINRUNING = "FailedOperation.GroupStatusNotInRuning"
+//  FAILEDOPERATION_INSTANCESTATUSNOTINRUNING = "FailedOperation.InstanceStatusNotInRuning"
+//  FAILEDOPERATION_INVALIDLISTENERPROTOCOL = "FailedOperation.InvalidListenerProtocol"
+//  FAILEDOPERATION_LISTENERHASTASK = "FailedOperation.ListenerHasTask"
+//  FAILEDOPERATION_PROXYVERSIONNOTSUPPORT = "FailedOperation.ProxyVersionNotSupport"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DOMAININICPBLACKLIST = "InvalidParameterValue.DomainInIcpBlacklist"
+//  INVALIDPARAMETERVALUE_DOMAINNOTREGISTER = "InvalidParameterValue.DomainNotRegister"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) CreateDomainWithContext(ctx context.Context, request *CreateDomainRequest) (response *CreateDomainResponse, err error) {
+    if request == nil {
+        request = NewCreateDomainRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDomainErrorPageInfoRequest() (request *CreateDomainErrorPageInfoRequest) {
     request = &CreateDomainErrorPageInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -523,6 +802,32 @@ func (c *Client) CreateDomainErrorPageInfo(request *CreateDomainErrorPageInfoReq
     return
 }
 
+// CreateDomainErrorPageInfo
+// 定制域名指定错误码的错误响应
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDLISTENERPROTOCOL = "FailedOperation.InvalidListenerProtocol"
+//  FAILEDOPERATION_LISTENERHASTASK = "FailedOperation.ListenerHasTask"
+//  FAILEDOPERATION_PROXYSTATUSNOTINRUNING = "FailedOperation.ProxyStatusNotInRuning"
+//  FAILEDOPERATION_PROXYVERSIONNOTSUPPORT = "FailedOperation.ProxyVersionNotSupport"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateDomainErrorPageInfoWithContext(ctx context.Context, request *CreateDomainErrorPageInfoRequest) (response *CreateDomainErrorPageInfoResponse, err error) {
+    if request == nil {
+        request = NewCreateDomainErrorPageInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateDomainErrorPageInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateHTTPListenerRequest() (request *CreateHTTPListenerRequest) {
     request = &CreateHTTPListenerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -544,6 +849,7 @@ func NewCreateHTTPListenerResponse() (response *CreateHTTPListenerResponse) {
 // 该接口（CreateHTTPListener）用于在通道实例下创建HTTP协议类型的监听器。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_GROUPSTATUSNOTINRUNING = "FailedOperation.GroupStatusNotInRuning"
 //  FAILEDOPERATION_INSTANCESTATUSNOTINRUNING = "FailedOperation.InstanceStatusNotInRuning"
@@ -560,10 +866,44 @@ func NewCreateHTTPListenerResponse() (response *CreateHTTPListenerResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateHTTPListener(request *CreateHTTPListenerRequest) (response *CreateHTTPListenerResponse, err error) {
     if request == nil {
         request = NewCreateHTTPListenerRequest()
     }
+    
+    response = NewCreateHTTPListenerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateHTTPListener
+// 该接口（CreateHTTPListener）用于在通道实例下创建HTTP协议类型的监听器。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GROUPSTATUSNOTINRUNING = "FailedOperation.GroupStatusNotInRuning"
+//  FAILEDOPERATION_INSTANCESTATUSNOTINRUNING = "FailedOperation.InstanceStatusNotInRuning"
+//  FAILEDOPERATION_LIMITNUMOFLISTENER = "FailedOperation.LimitNumofListener"
+//  FAILEDOPERATION_LISTENERHASTASK = "FailedOperation.ListenerHasTask"
+//  FAILEDOPERATION_NOTSUPPORTPROXYGROUP = "FailedOperation.NotSupportProxyGroup"
+//  FAILEDOPERATION_PROXYSTATUSNOTINRUNING = "FailedOperation.ProxyStatusNotInRuning"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATEDLISTENERPORT = "InvalidParameterValue.DuplicatedListenerPort"
+//  INVALIDPARAMETERVALUE_INVALIDLISTENERPORT = "InvalidParameterValue.InvalidListenerPort"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateHTTPListenerWithContext(ctx context.Context, request *CreateHTTPListenerRequest) (response *CreateHTTPListenerResponse, err error) {
+    if request == nil {
+        request = NewCreateHTTPListenerRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateHTTPListenerResponse()
     err = c.Send(request, response)
@@ -607,10 +947,43 @@ func NewCreateHTTPSListenerResponse() (response *CreateHTTPSListenerResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateHTTPSListener(request *CreateHTTPSListenerRequest) (response *CreateHTTPSListenerResponse, err error) {
     if request == nil {
         request = NewCreateHTTPSListenerRequest()
     }
+    
+    response = NewCreateHTTPSListenerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateHTTPSListener
+// 该接口（CreateHTTPSListener）用于在通道实例下创建HTTPS协议类型的监听器。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GROUPSTATUSNOTINRUNING = "FailedOperation.GroupStatusNotInRuning"
+//  FAILEDOPERATION_INSTANCESTATUSNOTINRUNING = "FailedOperation.InstanceStatusNotInRuning"
+//  FAILEDOPERATION_LIMITNUMOFLISTENER = "FailedOperation.LimitNumofListener"
+//  FAILEDOPERATION_LISTENERHASTASK = "FailedOperation.ListenerHasTask"
+//  FAILEDOPERATION_PROXYSTATUSNOTINRUNING = "FailedOperation.ProxyStatusNotInRuning"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATEDLISTENERPORT = "InvalidParameterValue.DuplicatedListenerPort"
+//  INVALIDPARAMETERVALUE_INVALIDCERTIFICATEID = "InvalidParameterValue.InvalidCertificateId"
+//  INVALIDPARAMETERVALUE_INVALIDLISTENERPORT = "InvalidParameterValue.InvalidListenerPort"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateHTTPSListenerWithContext(ctx context.Context, request *CreateHTTPSListenerRequest) (response *CreateHTTPSListenerResponse, err error) {
+    if request == nil {
+        request = NewCreateHTTPSListenerRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateHTTPSListenerResponse()
     err = c.Send(request, response)
@@ -638,6 +1011,7 @@ func NewCreateProxyResponse() (response *CreateProxyResponse) {
 // 本接口（CreateProxy）用于创建/复制一个指定配置的加速通道。当复制通道时，需要设置新通道的基本配置参数，并设置ClonedProxyId来指定被复制的通道。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ACCOUNTBALANCEINSUFFICIENT = "FailedOperation.AccountBalanceInsufficient"
 //  FAILEDOPERATION_DUPLICATEDREQUEST = "FailedOperation.DuplicatedRequest"
@@ -647,10 +1021,13 @@ func NewCreateProxyResponse() (response *CreateProxyResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FEATURECONFLICT = "InvalidParameterValue.FeatureConflict"
 //  INVALIDPARAMETERVALUE_INVALIDBANDWIDTH = "InvalidParameterValue.InvalidBandwidth"
 //  INVALIDPARAMETERVALUE_INVALIDCONCURRENCY = "InvalidParameterValue.InvalidConcurrency"
 //  INVALIDPARAMETERVALUE_INVALIDTAGS = "InvalidParameterValue.InvalidTags"
 //  INVALIDPARAMETERVALUE_PROJECTIDNOTBELONG = "InvalidParameterValue.ProjectIdNotBelong"
+//  INVALIDPARAMETERVALUE_PROXYANDGROUPFEATURECONFLICT = "InvalidParameterValue.ProxyAndGroupFeatureConflict"
+//  INVALIDPARAMETERVALUE_PROXYANDREGIONFEATURECONFLICT = "InvalidParameterValue.ProxyAndRegionFeatureConflict"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
@@ -661,6 +1038,44 @@ func (c *Client) CreateProxy(request *CreateProxyRequest) (response *CreateProxy
     if request == nil {
         request = NewCreateProxyRequest()
     }
+    
+    response = NewCreateProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateProxy
+// 本接口（CreateProxy）用于创建/复制一个指定配置的加速通道。当复制通道时，需要设置新通道的基本配置参数，并设置ClonedProxyId来指定被复制的通道。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTBALANCEINSUFFICIENT = "FailedOperation.AccountBalanceInsufficient"
+//  FAILEDOPERATION_DUPLICATEDREQUEST = "FailedOperation.DuplicatedRequest"
+//  FAILEDOPERATION_LIMITNUMOFLISTENER = "FailedOperation.LimitNumofListener"
+//  FAILEDOPERATION_PROXYSELLOUT = "FailedOperation.ProxySellOut"
+//  FAILEDOPERATION_USERNOTAUTHENTICATED = "FailedOperation.UserNotAuthenticated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FEATURECONFLICT = "InvalidParameterValue.FeatureConflict"
+//  INVALIDPARAMETERVALUE_INVALIDBANDWIDTH = "InvalidParameterValue.InvalidBandwidth"
+//  INVALIDPARAMETERVALUE_INVALIDCONCURRENCY = "InvalidParameterValue.InvalidConcurrency"
+//  INVALIDPARAMETERVALUE_INVALIDTAGS = "InvalidParameterValue.InvalidTags"
+//  INVALIDPARAMETERVALUE_PROJECTIDNOTBELONG = "InvalidParameterValue.ProjectIdNotBelong"
+//  INVALIDPARAMETERVALUE_PROXYANDGROUPFEATURECONFLICT = "InvalidParameterValue.ProxyAndGroupFeatureConflict"
+//  INVALIDPARAMETERVALUE_PROXYANDREGIONFEATURECONFLICT = "InvalidParameterValue.ProxyAndRegionFeatureConflict"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateProxyWithContext(ctx context.Context, request *CreateProxyRequest) (response *CreateProxyResponse, err error) {
+    if request == nil {
+        request = NewCreateProxyRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateProxyResponse()
     err = c.Send(request, response)
@@ -693,6 +1108,7 @@ func NewCreateProxyGroupResponse() (response *CreateProxyGroupResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FEATURECONFLICT = "InvalidParameterValue.FeatureConflict"
 //  INVALIDPARAMETERVALUE_INVALIDTAGS = "InvalidParameterValue.InvalidTags"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -704,6 +1120,34 @@ func (c *Client) CreateProxyGroup(request *CreateProxyGroupRequest) (response *C
     if request == nil {
         request = NewCreateProxyGroupRequest()
     }
+    
+    response = NewCreateProxyGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateProxyGroup
+// 本接口（CreateProxyGroup）用于创建通道组。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_LIMITNUMOFPROXIESINGROUP = "FailedOperation.LimitNumofProxiesInGroup"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FEATURECONFLICT = "InvalidParameterValue.FeatureConflict"
+//  INVALIDPARAMETERVALUE_INVALIDTAGS = "InvalidParameterValue.InvalidTags"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateProxyGroupWithContext(ctx context.Context, request *CreateProxyGroupRequest) (response *CreateProxyGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateProxyGroupRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateProxyGroupResponse()
     err = c.Send(request, response)
@@ -745,6 +1189,31 @@ func (c *Client) CreateProxyGroupDomain(request *CreateProxyGroupDomainRequest) 
     if request == nil {
         request = NewCreateProxyGroupDomainRequest()
     }
+    
+    response = NewCreateProxyGroupDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateProxyGroupDomain
+// 本接口（CreateProxyGroupDomain）用于创建通道组域名，并开启域名解析。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateProxyGroupDomainWithContext(ctx context.Context, request *CreateProxyGroupDomainRequest) (response *CreateProxyGroupDomainResponse, err error) {
+    if request == nil {
+        request = NewCreateProxyGroupDomainRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateProxyGroupDomainResponse()
     err = c.Send(request, response)
@@ -798,6 +1267,37 @@ func (c *Client) CreateRule(request *CreateRuleRequest) (response *CreateRuleRes
     return
 }
 
+// CreateRule
+// 该接口（CreateRule）用于创建HTTP/HTTPS监听器转发规则。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACTIONOPERATETOOQUICKLY = "FailedOperation.ActionOperateTooQuickly"
+//  FAILEDOPERATION_GROUPSTATUSNOTINRUNING = "FailedOperation.GroupStatusNotInRuning"
+//  FAILEDOPERATION_INSTANCESTATUSNOTINRUNING = "FailedOperation.InstanceStatusNotInRuning"
+//  FAILEDOPERATION_LIMITNUMOFRULES = "FailedOperation.LimitNumofRules"
+//  FAILEDOPERATION_LISTENERHASTASK = "FailedOperation.ListenerHasTask"
+//  FAILEDOPERATION_NOTSUPPORTOLDVERSIONPROXY = "FailedOperation.NotSupportOldVersionProxy"
+//  FAILEDOPERATION_RULEALREADYEXISTED = "FailedOperation.RuleAlreadyExisted"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateRuleWithContext(ctx context.Context, request *CreateRuleRequest) (response *CreateRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateRuleRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSecurityPolicyRequest() (request *CreateSecurityPolicyRequest) {
     request = &CreateSecurityPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -819,6 +1319,7 @@ func NewCreateSecurityPolicyResponse() (response *CreateSecurityPolicyResponse) 
 // 创建安全策略
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_PROXYSECURITYPOLICYEXISTED = "FailedOperation.ProxySecurityPolicyExisted"
 //  INTERNALERROR = "InternalError"
@@ -834,6 +1335,33 @@ func (c *Client) CreateSecurityPolicy(request *CreateSecurityPolicyRequest) (res
     if request == nil {
         request = NewCreateSecurityPolicyRequest()
     }
+    
+    response = NewCreateSecurityPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateSecurityPolicy
+// 创建安全策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROXYSECURITYPOLICYEXISTED = "FailedOperation.ProxySecurityPolicyExisted"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateSecurityPolicyWithContext(ctx context.Context, request *CreateSecurityPolicyRequest) (response *CreateSecurityPolicyResponse, err error) {
+    if request == nil {
+        request = NewCreateSecurityPolicyRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateSecurityPolicyResponse()
     err = c.Send(request, response)
@@ -883,6 +1411,33 @@ func (c *Client) CreateSecurityRules(request *CreateSecurityRulesRequest) (respo
     return
 }
 
+// CreateSecurityRules
+// 添加安全策略规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROXYSECURITYPOLICYDEFAULTRULE = "FailedOperation.ProxySecurityPolicyDefaultRule"
+//  FAILEDOPERATION_PROXYSECURITYPOLICYDUPLICATEDRULE = "FailedOperation.ProxySecurityPolicyDuplicatedRule"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateSecurityRulesWithContext(ctx context.Context, request *CreateSecurityRulesRequest) (response *CreateSecurityRulesResponse, err error) {
+    if request == nil {
+        request = NewCreateSecurityRulesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateSecurityRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTCPListenersRequest() (request *CreateTCPListenersRequest) {
     request = &CreateTCPListenersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -923,10 +1478,46 @@ func NewCreateTCPListenersResponse() (response *CreateTCPListenersResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateTCPListeners(request *CreateTCPListenersRequest) (response *CreateTCPListenersResponse, err error) {
     if request == nil {
         request = NewCreateTCPListenersRequest()
     }
+    
+    response = NewCreateTCPListenersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateTCPListeners
+// 该接口（CreateTCPListeners）用于批量创建单通道或者通道组的TCP协议类型的监听器。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DUPLICATEDREQUEST = "FailedOperation.DuplicatedRequest"
+//  FAILEDOPERATION_GROUPSTATUSNOTINRUNING = "FailedOperation.GroupStatusNotInRuning"
+//  FAILEDOPERATION_INSTANCESTATUSNOTINRUNING = "FailedOperation.InstanceStatusNotInRuning"
+//  FAILEDOPERATION_LIMITNUMOFLISTENER = "FailedOperation.LimitNumofListener"
+//  FAILEDOPERATION_LISTENERHASTASK = "FailedOperation.ListenerHasTask"
+//  FAILEDOPERATION_OPERATELIMITNUMOFLISTENER = "FailedOperation.OperateLimitNumofListener"
+//  FAILEDOPERATION_PROXYSTATUSNOTINRUNING = "FailedOperation.ProxyStatusNotInRuning"
+//  FAILEDOPERATION_RESOURCEUPGRADING = "FailedOperation.ResourceUpgrading"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATEDLISTENERPORT = "InvalidParameterValue.DuplicatedListenerPort"
+//  INVALIDPARAMETERVALUE_INVALIDLISTENERPORT = "InvalidParameterValue.InvalidListenerPort"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateTCPListenersWithContext(ctx context.Context, request *CreateTCPListenersRequest) (response *CreateTCPListenersResponse, err error) {
+    if request == nil {
+        request = NewCreateTCPListenersRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateTCPListenersResponse()
     err = c.Send(request, response)
@@ -969,10 +1560,42 @@ func NewCreateUDPListenersResponse() (response *CreateUDPListenersResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateUDPListeners(request *CreateUDPListenersRequest) (response *CreateUDPListenersResponse, err error) {
     if request == nil {
         request = NewCreateUDPListenersRequest()
     }
+    
+    response = NewCreateUDPListenersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateUDPListeners
+// 该接口（CreateUDPListeners）用于批量创建单通道或者通道组的UDP协议类型的监听器。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GROUPSTATUSNOTINRUNING = "FailedOperation.GroupStatusNotInRuning"
+//  FAILEDOPERATION_INSTANCESTATUSNOTINRUNING = "FailedOperation.InstanceStatusNotInRuning"
+//  FAILEDOPERATION_LIMITNUMOFLISTENER = "FailedOperation.LimitNumofListener"
+//  FAILEDOPERATION_LISTENERHASTASK = "FailedOperation.ListenerHasTask"
+//  FAILEDOPERATION_OPERATELIMITNUMOFLISTENER = "FailedOperation.OperateLimitNumofListener"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATEDLISTENERPORT = "InvalidParameterValue.DuplicatedListenerPort"
+//  INVALIDPARAMETERVALUE_INVALIDLISTENERPORT = "InvalidParameterValue.InvalidListenerPort"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateUDPListenersWithContext(ctx context.Context, request *CreateUDPListenersRequest) (response *CreateUDPListenersResponse, err error) {
+    if request == nil {
+        request = NewCreateUDPListenersRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateUDPListenersResponse()
     err = c.Send(request, response)
@@ -1014,6 +1637,31 @@ func (c *Client) DeleteCertificate(request *DeleteCertificateRequest) (response 
     if request == nil {
         request = NewDeleteCertificateRequest()
     }
+    
+    response = NewDeleteCertificateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteCertificate
+// 本接口（DeleteCertificate）用于删除证书。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CERTIFICATEISUSING = "FailedOperation.CertificateIsUsing"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteCertificateWithContext(ctx context.Context, request *DeleteCertificateRequest) (response *DeleteCertificateResponse, err error) {
+    if request == nil {
+        request = NewDeleteCertificateRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteCertificateResponse()
     err = c.Send(request, response)
@@ -1064,6 +1712,34 @@ func (c *Client) DeleteDomain(request *DeleteDomainRequest) (response *DeleteDom
     return
 }
 
+// DeleteDomain
+// 本接口（DeleteDomain）仅适用于7层监听器，用于删除该监听器下对应域名及域名下的所有规则，所有已绑定源站的规则将自动解绑。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DOMAINSTATUSNOTINRUNNING = "FailedOperation.DomainStatusNotInRunning"
+//  FAILEDOPERATION_GROUPSTATUSNOTINRUNING = "FailedOperation.GroupStatusNotInRuning"
+//  FAILEDOPERATION_INSTANCESTATUSNOTINRUNING = "FailedOperation.InstanceStatusNotInRuning"
+//  FAILEDOPERATION_LISTENERHASTASK = "FailedOperation.ListenerHasTask"
+//  FAILEDOPERATION_PROXYSTATUSNOTINRUNING = "FailedOperation.ProxyStatusNotInRuning"
+//  FAILEDOPERATION_REALSERVERALREADYBOUND = "FailedOperation.RealServerAlreadyBound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteDomainWithContext(ctx context.Context, request *DeleteDomainRequest) (response *DeleteDomainResponse, err error) {
+    if request == nil {
+        request = NewDeleteDomainRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteDomainErrorPageInfoRequest() (request *DeleteDomainErrorPageInfoRequest) {
     request = &DeleteDomainErrorPageInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1099,6 +1775,31 @@ func (c *Client) DeleteDomainErrorPageInfo(request *DeleteDomainErrorPageInfoReq
     if request == nil {
         request = NewDeleteDomainErrorPageInfoRequest()
     }
+    
+    response = NewDeleteDomainErrorPageInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteDomainErrorPageInfo
+// 删除域名的定制错误
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_LISTENERHASTASK = "FailedOperation.ListenerHasTask"
+//  FAILEDOPERATION_LISTENERSTATUSERROR = "FailedOperation.ListenerStatusError"
+//  FAILEDOPERATION_PROXYSTATUSNOTINRUNING = "FailedOperation.ProxyStatusNotInRuning"
+//  FAILEDOPERATION_PROXYVERSIONNOTSUPPORT = "FailedOperation.ProxyVersionNotSupport"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) DeleteDomainErrorPageInfoWithContext(ctx context.Context, request *DeleteDomainErrorPageInfoRequest) (response *DeleteDomainErrorPageInfoResponse, err error) {
+    if request == nil {
+        request = NewDeleteDomainErrorPageInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteDomainErrorPageInfoResponse()
     err = c.Send(request, response)
@@ -1148,6 +1849,33 @@ func (c *Client) DeleteListeners(request *DeleteListenersRequest) (response *Del
     return
 }
 
+// DeleteListeners
+// 该接口（DeleteListeners）用于批量删除通道或通道组的监听器，包括4/7层监听器。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GROUPSTATUSNOTINRUNING = "FailedOperation.GroupStatusNotInRuning"
+//  FAILEDOPERATION_INSTANCESTATUSNOTINRUNING = "FailedOperation.InstanceStatusNotInRuning"
+//  FAILEDOPERATION_LISTENERHASTASK = "FailedOperation.ListenerHasTask"
+//  FAILEDOPERATION_REALSERVERALREADYBOUND = "FailedOperation.RealServerAlreadyBound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteListenersWithContext(ctx context.Context, request *DeleteListenersRequest) (response *DeleteListenersResponse, err error) {
+    if request == nil {
+        request = NewDeleteListenersRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteListenersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteProxyGroupRequest() (request *DeleteProxyGroupRequest) {
     request = &DeleteProxyGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1185,6 +1913,33 @@ func (c *Client) DeleteProxyGroup(request *DeleteProxyGroupRequest) (response *D
     if request == nil {
         request = NewDeleteProxyGroupRequest()
     }
+    
+    response = NewDeleteProxyGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteProxyGroup
+// 本接口（DeleteProxyGroup）用于删除通道组。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DELETEPROXYGROUPPROXYREMAINED = "FailedOperation.DeleteProxyGroupProxyRemained"
+//  FAILEDOPERATION_REALSERVERALREADYBOUND = "FailedOperation.RealServerAlreadyBound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteProxyGroupWithContext(ctx context.Context, request *DeleteProxyGroupRequest) (response *DeleteProxyGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteProxyGroupRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteProxyGroupResponse()
     err = c.Send(request, response)
@@ -1235,6 +1990,34 @@ func (c *Client) DeleteRule(request *DeleteRuleRequest) (response *DeleteRuleRes
     return
 }
 
+// DeleteRule
+// 该接口（DeleteRule）用于删除HTTP/HTTPS监听器的转发规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DOMAINSTATUSNOTINRUNNING = "FailedOperation.DomainStatusNotInRunning"
+//  FAILEDOPERATION_GROUPSTATUSNOTINRUNING = "FailedOperation.GroupStatusNotInRuning"
+//  FAILEDOPERATION_INSTANCESTATUSNOTINRUNING = "FailedOperation.InstanceStatusNotInRuning"
+//  FAILEDOPERATION_LISTENERHASTASK = "FailedOperation.ListenerHasTask"
+//  FAILEDOPERATION_PROXYSTATUSNOTINRUNING = "FailedOperation.ProxyStatusNotInRuning"
+//  FAILEDOPERATION_REALSERVERALREADYBOUND = "FailedOperation.RealServerAlreadyBound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteRuleWithContext(ctx context.Context, request *DeleteRuleRequest) (response *DeleteRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteRuleRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteSecurityPolicyRequest() (request *DeleteSecurityPolicyRequest) {
     request = &DeleteSecurityPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1271,6 +2054,32 @@ func (c *Client) DeleteSecurityPolicy(request *DeleteSecurityPolicyRequest) (res
     if request == nil {
         request = NewDeleteSecurityPolicyRequest()
     }
+    
+    response = NewDeleteSecurityPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteSecurityPolicy
+// 删除安全策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteSecurityPolicyWithContext(ctx context.Context, request *DeleteSecurityPolicyRequest) (response *DeleteSecurityPolicyResponse, err error) {
+    if request == nil {
+        request = NewDeleteSecurityPolicyRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteSecurityPolicyResponse()
     err = c.Send(request, response)
@@ -1318,6 +2127,31 @@ func (c *Client) DeleteSecurityRules(request *DeleteSecurityRulesRequest) (respo
     return
 }
 
+// DeleteSecurityRules
+// 删除安全策略规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteSecurityRulesWithContext(ctx context.Context, request *DeleteSecurityRulesRequest) (response *DeleteSecurityRulesResponse, err error) {
+    if request == nil {
+        request = NewDeleteSecurityRulesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteSecurityRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAccessRegionsRequest() (request *DescribeAccessRegionsRequest) {
     request = &DescribeAccessRegionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1359,6 +2193,31 @@ func (c *Client) DescribeAccessRegions(request *DescribeAccessRegionsRequest) (r
     return
 }
 
+// DescribeAccessRegions
+// 本接口（DescribeAccessRegions）用于查询加速区域，即客户端接入区域。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEUPGRADING = "FailedOperation.ResourceUpgrading"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeAccessRegionsWithContext(ctx context.Context, request *DescribeAccessRegionsRequest) (response *DescribeAccessRegionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccessRegionsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAccessRegionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAccessRegionsByDestRegionRequest() (request *DescribeAccessRegionsByDestRegionRequest) {
     request = &DescribeAccessRegionsByDestRegionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1377,7 +2236,7 @@ func NewDescribeAccessRegionsByDestRegionResponse() (response *DescribeAccessReg
 }
 
 // DescribeAccessRegionsByDestRegion
-// 本接口（DescribeAccessRegionsByDestRegion）根据源站区域查询可用的加速区域列表
+// 本接口（DescribeAccessRegionsByDestRegion）根据源站区域查询可用的加速区域列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1393,6 +2252,30 @@ func (c *Client) DescribeAccessRegionsByDestRegion(request *DescribeAccessRegion
     if request == nil {
         request = NewDescribeAccessRegionsByDestRegionRequest()
     }
+    
+    response = NewDescribeAccessRegionsByDestRegionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAccessRegionsByDestRegion
+// 本接口（DescribeAccessRegionsByDestRegion）根据源站区域查询可用的加速区域列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_UNKNOWNDESTREGION = "InvalidParameterValue.UnknownDestRegion"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeAccessRegionsByDestRegionWithContext(ctx context.Context, request *DescribeAccessRegionsByDestRegionRequest) (response *DescribeAccessRegionsByDestRegionResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccessRegionsByDestRegionRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAccessRegionsByDestRegionResponse()
     err = c.Send(request, response)
@@ -1433,6 +2316,30 @@ func (c *Client) DescribeBlackHeader(request *DescribeBlackHeaderRequest) (respo
     if request == nil {
         request = NewDescribeBlackHeaderRequest()
     }
+    
+    response = NewDescribeBlackHeaderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeBlackHeader
+// 本接口（DescribeBlackHeader）用于查询禁用的自定义header 名称
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeBlackHeaderWithContext(ctx context.Context, request *DescribeBlackHeaderRequest) (response *DescribeBlackHeaderResponse, err error) {
+    if request == nil {
+        request = NewDescribeBlackHeaderRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeBlackHeaderResponse()
     err = c.Send(request, response)
@@ -1480,6 +2387,31 @@ func (c *Client) DescribeCertificateDetail(request *DescribeCertificateDetailReq
     return
 }
 
+// DescribeCertificateDetail
+// 本接口（DescribeCertificateDetail）用于查询证书详情，包括证书ID，证书名字，证书类型，证书内容以及密钥等信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCertificateDetailWithContext(ctx context.Context, request *DescribeCertificateDetailRequest) (response *DescribeCertificateDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeCertificateDetailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeCertificateDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCertificatesRequest() (request *DescribeCertificatesRequest) {
     request = &DescribeCertificatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1515,6 +2447,31 @@ func (c *Client) DescribeCertificates(request *DescribeCertificatesRequest) (res
     if request == nil {
         request = NewDescribeCertificatesRequest()
     }
+    
+    response = NewDescribeCertificatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCertificates
+// 本接口（DescribeCertificates）用来查询可以使用的证书列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCertificatesWithContext(ctx context.Context, request *DescribeCertificatesRequest) (response *DescribeCertificatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCertificatesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeCertificatesResponse()
     err = c.Send(request, response)
@@ -1563,6 +2520,32 @@ func (c *Client) DescribeCountryAreaMapping(request *DescribeCountryAreaMappingR
     return
 }
 
+// DescribeCountryAreaMapping
+// 本接口（DescribeCountryAreaMapping）用于获取国家地区编码映射表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeCountryAreaMappingWithContext(ctx context.Context, request *DescribeCountryAreaMappingRequest) (response *DescribeCountryAreaMappingResponse, err error) {
+    if request == nil {
+        request = NewDescribeCountryAreaMappingRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeCountryAreaMappingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCustomHeaderRequest() (request *DescribeCustomHeaderRequest) {
     request = &DescribeCustomHeaderRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1597,6 +2580,30 @@ func (c *Client) DescribeCustomHeader(request *DescribeCustomHeaderRequest) (res
     if request == nil {
         request = NewDescribeCustomHeaderRequest()
     }
+    
+    response = NewDescribeCustomHeaderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCustomHeader
+// 本接口（DescribeCustomHeader）用于自定义header列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeCustomHeaderWithContext(ctx context.Context, request *DescribeCustomHeaderRequest) (response *DescribeCustomHeaderResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomHeaderRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeCustomHeaderResponse()
     err = c.Send(request, response)
@@ -1643,6 +2650,30 @@ func (c *Client) DescribeDestRegions(request *DescribeDestRegionsRequest) (respo
     return
 }
 
+// DescribeDestRegions
+// 本接口（DescribeDestRegions）用于查询源站区域，即源站服务器所在区域。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeDestRegionsWithContext(ctx context.Context, request *DescribeDestRegionsRequest) (response *DescribeDestRegionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDestRegionsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDestRegionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDomainErrorPageInfoRequest() (request *DescribeDomainErrorPageInfoRequest) {
     request = &DescribeDomainErrorPageInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1674,6 +2705,27 @@ func (c *Client) DescribeDomainErrorPageInfo(request *DescribeDomainErrorPageInf
     if request == nil {
         request = NewDescribeDomainErrorPageInfoRequest()
     }
+    
+    response = NewDescribeDomainErrorPageInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeDomainErrorPageInfo
+// 查询目前定制域名的错误响应
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTSUPPORTPROXYGROUP = "FailedOperation.NotSupportProxyGroup"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) DescribeDomainErrorPageInfoWithContext(ctx context.Context, request *DescribeDomainErrorPageInfoRequest) (response *DescribeDomainErrorPageInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainErrorPageInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeDomainErrorPageInfoResponse()
     err = c.Send(request, response)
@@ -1717,6 +2769,27 @@ func (c *Client) DescribeDomainErrorPageInfoByIds(request *DescribeDomainErrorPa
     return
 }
 
+// DescribeDomainErrorPageInfoByIds
+// 根据定制错误ID查询错误响应
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTSUPPORTPROXYGROUP = "FailedOperation.NotSupportProxyGroup"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) DescribeDomainErrorPageInfoByIdsWithContext(ctx context.Context, request *DescribeDomainErrorPageInfoByIdsRequest) (response *DescribeDomainErrorPageInfoByIdsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainErrorPageInfoByIdsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDomainErrorPageInfoByIdsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeGroupAndStatisticsProxyRequest() (request *DescribeGroupAndStatisticsProxyRequest) {
     request = &DescribeGroupAndStatisticsProxyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1751,6 +2824,30 @@ func (c *Client) DescribeGroupAndStatisticsProxy(request *DescribeGroupAndStatis
     if request == nil {
         request = NewDescribeGroupAndStatisticsProxyRequest()
     }
+    
+    response = NewDescribeGroupAndStatisticsProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeGroupAndStatisticsProxy
+// 该接口为内部接口，用于查询可以获取统计数据的通道组和通道信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCECANNOTACCESS = "FailedOperation.ResourceCanNotAccess"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeGroupAndStatisticsProxyWithContext(ctx context.Context, request *DescribeGroupAndStatisticsProxyRequest) (response *DescribeGroupAndStatisticsProxyResponse, err error) {
+    if request == nil {
+        request = NewDescribeGroupAndStatisticsProxyRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeGroupAndStatisticsProxyResponse()
     err = c.Send(request, response)
@@ -1800,6 +2897,33 @@ func (c *Client) DescribeGroupDomainConfig(request *DescribeGroupDomainConfigReq
     return
 }
 
+// DescribeGroupDomainConfig
+// 本接口（DescribeGroupDomainConfig）用于获取通道组域名解析配置详情。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEUPGRADING = "FailedOperation.ResourceUpgrading"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeGroupDomainConfigWithContext(ctx context.Context, request *DescribeGroupDomainConfigRequest) (response *DescribeGroupDomainConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeGroupDomainConfigRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeGroupDomainConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeHTTPListenersRequest() (request *DescribeHTTPListenersRequest) {
     request = &DescribeHTTPListenersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1821,6 +2945,7 @@ func NewDescribeHTTPListenersResponse() (response *DescribeHTTPListenersResponse
 // 该接口（DescribeHTTPListeners）用来查询HTTP监听器信息。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_NOTSUPPORTOLDVERSIONPROXY = "FailedOperation.NotSupportOldVersionProxy"
 //  FAILEDOPERATION_NOTSUPPORTPROXYGROUP = "FailedOperation.NotSupportProxyGroup"
@@ -1836,6 +2961,33 @@ func (c *Client) DescribeHTTPListeners(request *DescribeHTTPListenersRequest) (r
     if request == nil {
         request = NewDescribeHTTPListenersRequest()
     }
+    
+    response = NewDescribeHTTPListenersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeHTTPListeners
+// 该接口（DescribeHTTPListeners）用来查询HTTP监听器信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTSUPPORTOLDVERSIONPROXY = "FailedOperation.NotSupportOldVersionProxy"
+//  FAILEDOPERATION_NOTSUPPORTPROXYGROUP = "FailedOperation.NotSupportProxyGroup"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeHTTPListenersWithContext(ctx context.Context, request *DescribeHTTPListenersRequest) (response *DescribeHTTPListenersResponse, err error) {
+    if request == nil {
+        request = NewDescribeHTTPListenersRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeHTTPListenersResponse()
     err = c.Send(request, response)
@@ -1884,6 +3036,32 @@ func (c *Client) DescribeHTTPSListeners(request *DescribeHTTPSListenersRequest) 
     return
 }
 
+// DescribeHTTPSListeners
+// 本接口（DescribeHTTPSListeners）用来查询HTTPS监听器信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTSUPPORTOLDVERSIONPROXY = "FailedOperation.NotSupportOldVersionProxy"
+//  FAILEDOPERATION_NOTSUPPORTPROXYGROUP = "FailedOperation.NotSupportProxyGroup"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeHTTPSListenersWithContext(ctx context.Context, request *DescribeHTTPSListenersRequest) (response *DescribeHTTPSListenersResponse, err error) {
+    if request == nil {
+        request = NewDescribeHTTPSListenersRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeHTTPSListenersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeListenerRealServersRequest() (request *DescribeListenerRealServersRequest) {
     request = &DescribeListenerRealServersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1918,6 +3096,30 @@ func (c *Client) DescribeListenerRealServers(request *DescribeListenerRealServer
     if request == nil {
         request = NewDescribeListenerRealServersRequest()
     }
+    
+    response = NewDescribeListenerRealServersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeListenerRealServers
+// 该接口（DescribeListenerRealServers）用于查询TCP/UDP监听器源站列表，包括该监听器已经绑定的源站列表以及可以绑定的源站列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeListenerRealServersWithContext(ctx context.Context, request *DescribeListenerRealServersRequest) (response *DescribeListenerRealServersResponse, err error) {
+    if request == nil {
+        request = NewDescribeListenerRealServersRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeListenerRealServersResponse()
     err = c.Send(request, response)
@@ -1965,6 +3167,31 @@ func (c *Client) DescribeListenerStatistics(request *DescribeListenerStatisticsR
     return
 }
 
+// DescribeListenerStatistics
+// 该接口用于查询监听器统计数据，包括出入带宽，出入包量，并发数据。支持300秒, 3600秒和86400秒的细粒度，取值为细粒度范围内最大值。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCECANNOTACCESS = "FailedOperation.ResourceCanNotAccess"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) DescribeListenerStatisticsWithContext(ctx context.Context, request *DescribeListenerStatisticsRequest) (response *DescribeListenerStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeListenerStatisticsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeListenerStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProxiesRequest() (request *DescribeProxiesRequest) {
     request = &DescribeProxiesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2000,6 +3227,31 @@ func (c *Client) DescribeProxies(request *DescribeProxiesRequest) (response *Des
     if request == nil {
         request = NewDescribeProxiesRequest()
     }
+    
+    response = NewDescribeProxiesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeProxies
+// 本接口（DescribeProxies）用于查询通道实例列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeProxiesWithContext(ctx context.Context, request *DescribeProxiesRequest) (response *DescribeProxiesResponse, err error) {
+    if request == nil {
+        request = NewDescribeProxiesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeProxiesResponse()
     err = c.Send(request, response)
@@ -2048,6 +3300,32 @@ func (c *Client) DescribeProxiesStatus(request *DescribeProxiesStatusRequest) (r
     return
 }
 
+// DescribeProxiesStatus
+// 本接口（DescribeProxiesStatus）用于查询通道状态列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTBALANCEINSUFFICIENT = "FailedOperation.AccountBalanceInsufficient"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeProxiesStatusWithContext(ctx context.Context, request *DescribeProxiesStatusRequest) (response *DescribeProxiesStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeProxiesStatusRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeProxiesStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProxyAndStatisticsListenersRequest() (request *DescribeProxyAndStatisticsListenersRequest) {
     request = &DescribeProxyAndStatisticsListenersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2081,6 +3359,29 @@ func (c *Client) DescribeProxyAndStatisticsListeners(request *DescribeProxyAndSt
     if request == nil {
         request = NewDescribeProxyAndStatisticsListenersRequest()
     }
+    
+    response = NewDescribeProxyAndStatisticsListenersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeProxyAndStatisticsListeners
+// 该接口为内部接口，用于查询可以获取统计数据的通道和监听器信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) DescribeProxyAndStatisticsListenersWithContext(ctx context.Context, request *DescribeProxyAndStatisticsListenersRequest) (response *DescribeProxyAndStatisticsListenersResponse, err error) {
+    if request == nil {
+        request = NewDescribeProxyAndStatisticsListenersRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeProxyAndStatisticsListenersResponse()
     err = c.Send(request, response)
@@ -2132,6 +3433,35 @@ func (c *Client) DescribeProxyDetail(request *DescribeProxyDetailRequest) (respo
     return
 }
 
+// DescribeProxyDetail
+// 本接口（DescribeProxyDetail）用于查询通道详情。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACTIONISDOING = "FailedOperation.ActionIsDoing"
+//  FAILEDOPERATION_ACTIONOPERATETOOQUICKLY = "FailedOperation.ActionOperateTooQuickly"
+//  FAILEDOPERATION_RESOURCECANNOTACCESS = "FailedOperation.ResourceCanNotAccess"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PROJECTIDNOTBELONG = "InvalidParameterValue.ProjectIdNotBelong"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeProxyDetailWithContext(ctx context.Context, request *DescribeProxyDetailRequest) (response *DescribeProxyDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeProxyDetailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeProxyDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProxyGroupDetailsRequest() (request *DescribeProxyGroupDetailsRequest) {
     request = &DescribeProxyGroupDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2168,6 +3498,32 @@ func (c *Client) DescribeProxyGroupDetails(request *DescribeProxyGroupDetailsReq
     if request == nil {
         request = NewDescribeProxyGroupDetailsRequest()
     }
+    
+    response = NewDescribeProxyGroupDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeProxyGroupDetails
+// 本接口（DescribeProxyGroupDetails）用于查询通道组详情。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeProxyGroupDetailsWithContext(ctx context.Context, request *DescribeProxyGroupDetailsRequest) (response *DescribeProxyGroupDetailsResponse, err error) {
+    if request == nil {
+        request = NewDescribeProxyGroupDetailsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeProxyGroupDetailsResponse()
     err = c.Send(request, response)
@@ -2216,6 +3572,32 @@ func (c *Client) DescribeProxyGroupList(request *DescribeProxyGroupListRequest) 
     return
 }
 
+// DescribeProxyGroupList
+// 本接口（DescribeProxyGroupList）用于拉取通道组列表及各通道组基本信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeProxyGroupListWithContext(ctx context.Context, request *DescribeProxyGroupListRequest) (response *DescribeProxyGroupListResponse, err error) {
+    if request == nil {
+        request = NewDescribeProxyGroupListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeProxyGroupListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProxyGroupStatisticsRequest() (request *DescribeProxyGroupStatisticsRequest) {
     request = &DescribeProxyGroupStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2256,6 +3638,30 @@ func (c *Client) DescribeProxyGroupStatistics(request *DescribeProxyGroupStatist
     return
 }
 
+// DescribeProxyGroupStatistics
+// 该接口用于查询监听器统计数据，包括出入带宽，出入包量，并发数据。支持300, 3600和86400的细粒度，取值为细粒度范围内最大值。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCECANNOTACCESS = "FailedOperation.ResourceCanNotAccess"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeProxyGroupStatisticsWithContext(ctx context.Context, request *DescribeProxyGroupStatisticsRequest) (response *DescribeProxyGroupStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeProxyGroupStatisticsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeProxyGroupStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProxyStatisticsRequest() (request *DescribeProxyStatisticsRequest) {
     request = &DescribeProxyStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2277,6 +3683,7 @@ func NewDescribeProxyStatisticsResponse() (response *DescribeProxyStatisticsResp
 // 该接口用于查询监听器统计数据，包括出入带宽，出入包量，并发，丢包和时延数据。支持300, 3600和86400的细粒度，取值为细粒度范围内最大值。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_RESOURCECANNOTACCESS = "FailedOperation.ResourceCanNotAccess"
 //  INTERNALERROR = "InternalError"
@@ -2290,6 +3697,31 @@ func (c *Client) DescribeProxyStatistics(request *DescribeProxyStatisticsRequest
     if request == nil {
         request = NewDescribeProxyStatisticsRequest()
     }
+    
+    response = NewDescribeProxyStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeProxyStatistics
+// 该接口用于查询监听器统计数据，包括出入带宽，出入包量，并发，丢包和时延数据。支持300, 3600和86400的细粒度，取值为细粒度范围内最大值。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCECANNOTACCESS = "FailedOperation.ResourceCanNotAccess"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeProxyStatisticsWithContext(ctx context.Context, request *DescribeProxyStatisticsRequest) (response *DescribeProxyStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeProxyStatisticsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeProxyStatisticsResponse()
     err = c.Send(request, response)
@@ -2328,6 +3760,28 @@ func (c *Client) DescribeRealServerStatistics(request *DescribeRealServerStatist
     if request == nil {
         request = NewDescribeRealServerStatisticsRequest()
     }
+    
+    response = NewDescribeRealServerStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeRealServerStatistics
+// 该接口（DescribeRealServerStatistics）用于查询源站健康检查结果的统计数据。源站状态展示位为1：正常或者0：异常。查询的源站需要在监听器或者规则上进行了绑定，查询时需指定绑定的监听器或者规则ID。该接口支持1分钟细粒度的源站状态统计数据展示。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) DescribeRealServerStatisticsWithContext(ctx context.Context, request *DescribeRealServerStatisticsRequest) (response *DescribeRealServerStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRealServerStatisticsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeRealServerStatisticsResponse()
     err = c.Send(request, response)
@@ -2374,6 +3828,30 @@ func (c *Client) DescribeRealServers(request *DescribeRealServersRequest) (respo
     return
 }
 
+// DescribeRealServers
+// 本接口（DescribeRealServers）用于查询源站信息，可以根据项目名查询所有的源站信息，此外支持指定IP或者域名的源站模糊查询。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeRealServersWithContext(ctx context.Context, request *DescribeRealServersRequest) (response *DescribeRealServersResponse, err error) {
+    if request == nil {
+        request = NewDescribeRealServersRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeRealServersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRealServersStatusRequest() (request *DescribeRealServersStatusRequest) {
     request = &DescribeRealServersStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2408,6 +3886,30 @@ func (c *Client) DescribeRealServersStatus(request *DescribeRealServersStatusReq
     if request == nil {
         request = NewDescribeRealServersStatusRequest()
     }
+    
+    response = NewDescribeRealServersStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeRealServersStatus
+// 本接口（DescribeRealServersStatus）用于查询源站是否已被规则或者监听器绑定
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_REALSERVERNOTINPROJECT = "FailedOperation.RealServerNotInProject"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_REALSERVERNOTBELONG = "InvalidParameterValue.RealServerNotBelong"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) DescribeRealServersStatusWithContext(ctx context.Context, request *DescribeRealServersStatusRequest) (response *DescribeRealServersStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeRealServersStatusRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeRealServersStatusResponse()
     err = c.Send(request, response)
@@ -2454,6 +3956,30 @@ func (c *Client) DescribeRegionAndPrice(request *DescribeRegionAndPriceRequest) 
     return
 }
 
+// DescribeRegionAndPrice
+// 该接口（DescribeRegionAndPrice）用于获取源站区域和带宽梯度价格
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeRegionAndPriceWithContext(ctx context.Context, request *DescribeRegionAndPriceRequest) (response *DescribeRegionAndPriceResponse, err error) {
+    if request == nil {
+        request = NewDescribeRegionAndPriceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeRegionAndPriceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeResourcesByTagRequest() (request *DescribeResourcesByTagRequest) {
     request = &DescribeResourcesByTagRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2488,6 +4014,30 @@ func (c *Client) DescribeResourcesByTag(request *DescribeResourcesByTagRequest) 
     if request == nil {
         request = NewDescribeResourcesByTagRequest()
     }
+    
+    response = NewDescribeResourcesByTagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeResourcesByTag
+// 本接口（DescribeResourcesByTag）用于根据标签来查询对应的资源信息，包括通道，通道组和源站。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION_DUPLICATEDREQUEST = "FailedOperation.DuplicatedRequest"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeResourcesByTagWithContext(ctx context.Context, request *DescribeResourcesByTagRequest) (response *DescribeResourcesByTagResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourcesByTagRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeResourcesByTagResponse()
     err = c.Send(request, response)
@@ -2534,6 +4084,30 @@ func (c *Client) DescribeRuleRealServers(request *DescribeRuleRealServersRequest
     return
 }
 
+// DescribeRuleRealServers
+// 本接口（DescribeRuleRealServers）用于查询转发规则相关的源站信息， 包括该规则可绑定的源站信息和已绑定的源站信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEUPGRADING = "FailedOperation.ResourceUpgrading"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) DescribeRuleRealServersWithContext(ctx context.Context, request *DescribeRuleRealServersRequest) (response *DescribeRuleRealServersResponse, err error) {
+    if request == nil {
+        request = NewDescribeRuleRealServersRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeRuleRealServersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRulesRequest() (request *DescribeRulesRequest) {
     request = &DescribeRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2568,6 +4142,30 @@ func (c *Client) DescribeRules(request *DescribeRulesRequest) (response *Describ
     if request == nil {
         request = NewDescribeRulesRequest()
     }
+    
+    response = NewDescribeRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeRules
+// 本接口（DescribeRules）用于查询监听器下的所有规则信息，包括规则域名，路径以及该规则下所绑定的源站列表。当通道版本为3.0时，该接口会返回该域名对应的高级认证配置信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeRulesWithContext(ctx context.Context, request *DescribeRulesRequest) (response *DescribeRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRulesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeRulesResponse()
     err = c.Send(request, response)
@@ -2617,6 +4215,33 @@ func (c *Client) DescribeRulesByRuleIds(request *DescribeRulesByRuleIdsRequest) 
     return
 }
 
+// DescribeRulesByRuleIds
+// 本接口（DescribeRulesByRuleIds）用于根据规则ID拉取规则信息列表。支持一个或者多个规则信息的拉取。一次最多支持10个规则信息的拉取。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCECANNOTACCESS = "FailedOperation.ResourceCanNotAccess"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRulesByRuleIdsWithContext(ctx context.Context, request *DescribeRulesByRuleIdsRequest) (response *DescribeRulesByRuleIdsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRulesByRuleIdsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeRulesByRuleIdsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSecurityPolicyDetailRequest() (request *DescribeSecurityPolicyDetailRequest) {
     request = &DescribeSecurityPolicyDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2659,6 +4284,32 @@ func (c *Client) DescribeSecurityPolicyDetail(request *DescribeSecurityPolicyDet
     return
 }
 
+// DescribeSecurityPolicyDetail
+// 获取安全策略详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeSecurityPolicyDetailWithContext(ctx context.Context, request *DescribeSecurityPolicyDetailRequest) (response *DescribeSecurityPolicyDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityPolicyDetailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeSecurityPolicyDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSecurityRulesRequest() (request *DescribeSecurityRulesRequest) {
     request = &DescribeSecurityRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2680,6 +4331,7 @@ func NewDescribeSecurityRulesResponse() (response *DescribeSecurityRulesResponse
 // 本接口（DescribeSecurityRules）用于根据安全规则ID查询安全规则详情列表。支持一个或多个安全规则的查询。一次最多支持20个安全规则的查询。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_RESOURCECANNOTACCESS = "FailedOperation.ResourceCanNotAccess"
 //  INTERNALERROR = "InternalError"
@@ -2696,6 +4348,34 @@ func (c *Client) DescribeSecurityRules(request *DescribeSecurityRulesRequest) (r
     if request == nil {
         request = NewDescribeSecurityRulesRequest()
     }
+    
+    response = NewDescribeSecurityRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeSecurityRules
+// 本接口（DescribeSecurityRules）用于根据安全规则ID查询安全规则详情列表。支持一个或多个安全规则的查询。一次最多支持20个安全规则的查询。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCECANNOTACCESS = "FailedOperation.ResourceCanNotAccess"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSecurityRulesWithContext(ctx context.Context, request *DescribeSecurityRulesRequest) (response *DescribeSecurityRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityRulesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeSecurityRulesResponse()
     err = c.Send(request, response)
@@ -2743,6 +4423,31 @@ func (c *Client) DescribeTCPListeners(request *DescribeTCPListenersRequest) (res
     return
 }
 
+// DescribeTCPListeners
+// 该接口（DescribeTCPListeners）用于查询单通道或者通道组下的TCP监听器信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTCPListenersWithContext(ctx context.Context, request *DescribeTCPListenersRequest) (response *DescribeTCPListenersResponse, err error) {
+    if request == nil {
+        request = NewDescribeTCPListenersRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeTCPListenersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUDPListenersRequest() (request *DescribeUDPListenersRequest) {
     request = &DescribeUDPListenersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2777,6 +4482,30 @@ func (c *Client) DescribeUDPListeners(request *DescribeUDPListenersRequest) (res
     if request == nil {
         request = NewDescribeUDPListenersRequest()
     }
+    
+    response = NewDescribeUDPListenersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeUDPListeners
+// 该接口（DescribeUDPListeners）用于查询单通道或者通道组下的UDP监听器信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeUDPListenersWithContext(ctx context.Context, request *DescribeUDPListenersRequest) (response *DescribeUDPListenersResponse, err error) {
+    if request == nil {
+        request = NewDescribeUDPListenersRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeUDPListenersResponse()
     err = c.Send(request, response)
@@ -2830,6 +4559,37 @@ func (c *Client) DestroyProxies(request *DestroyProxiesRequest) (response *Destr
     return
 }
 
+// DestroyProxies
+// 本接口（DestroyProxies）用于销毁。通道销毁后，不再产生任何费用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTBALANCEINSUFFICIENT = "FailedOperation.AccountBalanceInsufficient"
+//  FAILEDOPERATION_ACTIONISDOING = "FailedOperation.ActionIsDoing"
+//  FAILEDOPERATION_BELONGDIFFERENTGROUP = "FailedOperation.BelongDifferentGroup"
+//  FAILEDOPERATION_DUPLICATEDREQUEST = "FailedOperation.DuplicatedRequest"
+//  FAILEDOPERATION_REALSERVERALREADYBOUND = "FailedOperation.RealServerAlreadyBound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DestroyProxiesWithContext(ctx context.Context, request *DestroyProxiesRequest) (response *DestroyProxiesResponse, err error) {
+    if request == nil {
+        request = NewDestroyProxiesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDestroyProxiesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInquiryPriceCreateProxyRequest() (request *InquiryPriceCreateProxyRequest) {
     request = &InquiryPriceCreateProxyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2870,6 +4630,36 @@ func (c *Client) InquiryPriceCreateProxy(request *InquiryPriceCreateProxyRequest
     if request == nil {
         request = NewInquiryPriceCreateProxyRequest()
     }
+    
+    response = NewInquiryPriceCreateProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// InquiryPriceCreateProxy
+// 本接口（InquiryPriceCreateProxy）用于创建加速通道询价。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEUPGRADING = "FailedOperation.ResourceUpgrading"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDBANDWIDTH = "InvalidParameterValue.InvalidBandwidth"
+//  INVALIDPARAMETERVALUE_INVALIDCONCURRENCY = "InvalidParameterValue.InvalidConcurrency"
+//  INVALIDPARAMETERVALUE_UNKNOWNACCESSREGION = "InvalidParameterValue.UnknownAccessRegion"
+//  INVALIDPARAMETERVALUE_UNKNOWNDESTREGION = "InvalidParameterValue.UnknownDestRegion"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) InquiryPriceCreateProxyWithContext(ctx context.Context, request *InquiryPriceCreateProxyRequest) (response *InquiryPriceCreateProxyResponse, err error) {
+    if request == nil {
+        request = NewInquiryPriceCreateProxyRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewInquiryPriceCreateProxyResponse()
     err = c.Send(request, response)
@@ -2921,6 +4711,35 @@ func (c *Client) ModifyCertificate(request *ModifyCertificateRequest) (response 
     return
 }
 
+// ModifyCertificate
+// 本接口（ModifyCertificate）用于修改监听器下的域名对应的证书。该接口仅适用于version3.0的通道。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DOMAINSTATUSNOTINRUNNING = "FailedOperation.DomainStatusNotInRunning"
+//  FAILEDOPERATION_LISTENERHASTASK = "FailedOperation.ListenerHasTask"
+//  FAILEDOPERATION_PROXYSTATUSNOTINRUNING = "FailedOperation.ProxyStatusNotInRuning"
+//  FAILEDOPERATION_PROXYVERSIONNOTSUPPORT = "FailedOperation.ProxyVersionNotSupport"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CERTIFICATENOTMATCHDOMAIN = "InvalidParameterValue.CertificateNotMatchDomain"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyCertificateWithContext(ctx context.Context, request *ModifyCertificateRequest) (response *ModifyCertificateResponse, err error) {
+    if request == nil {
+        request = NewModifyCertificateRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyCertificateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyCertificateAttributesRequest() (request *ModifyCertificateAttributesRequest) {
     request = &ModifyCertificateAttributesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2956,6 +4775,31 @@ func (c *Client) ModifyCertificateAttributes(request *ModifyCertificateAttribute
     if request == nil {
         request = NewModifyCertificateAttributesRequest()
     }
+    
+    response = NewModifyCertificateAttributesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyCertificateAttributes
+// 本接口（ModifyCertificateAttributes）用于修改证书，包括证书名字以及证书内容。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CERTIFICATEISUSING = "FailedOperation.CertificateIsUsing"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCertificateAttributesWithContext(ctx context.Context, request *ModifyCertificateAttributesRequest) (response *ModifyCertificateAttributesResponse, err error) {
+    if request == nil {
+        request = NewModifyCertificateAttributesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyCertificateAttributesResponse()
     err = c.Send(request, response)
@@ -3009,6 +4853,37 @@ func (c *Client) ModifyDomain(request *ModifyDomainRequest) (response *ModifyDom
     return
 }
 
+// ModifyDomain
+// 本接口（ModifyDomain）用于监听器下的域名。当通道版本为3.0时，支持对该域名所对应的证书修改。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DOMAINALREADYEXISTED = "FailedOperation.DomainAlreadyExisted"
+//  FAILEDOPERATION_DOMAINSTATUSNOTINRUNNING = "FailedOperation.DomainStatusNotInRunning"
+//  FAILEDOPERATION_INSTANCESTATUSNOTINRUNING = "FailedOperation.InstanceStatusNotInRuning"
+//  FAILEDOPERATION_INVALIDLISTENERPROTOCOL = "FailedOperation.InvalidListenerProtocol"
+//  FAILEDOPERATION_LISTENERHASTASK = "FailedOperation.ListenerHasTask"
+//  FAILEDOPERATION_PROXYSTATUSNOTINRUNING = "FailedOperation.ProxyStatusNotInRuning"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CERTIFICATENOTMATCHDOMAIN = "InvalidParameterValue.CertificateNotMatchDomain"
+//  INVALIDPARAMETERVALUE_DOMAININICPBLACKLIST = "InvalidParameterValue.DomainInIcpBlacklist"
+//  INVALIDPARAMETERVALUE_DOMAINNOTREGISTER = "InvalidParameterValue.DomainNotRegister"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyDomainWithContext(ctx context.Context, request *ModifyDomainRequest) (response *ModifyDomainResponse, err error) {
+    if request == nil {
+        request = NewModifyDomainRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyGroupDomainConfigRequest() (request *ModifyGroupDomainConfigRequest) {
     request = &ModifyGroupDomainConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3044,6 +4919,31 @@ func (c *Client) ModifyGroupDomainConfig(request *ModifyGroupDomainConfigRequest
     if request == nil {
         request = NewModifyGroupDomainConfigRequest()
     }
+    
+    response = NewModifyGroupDomainConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyGroupDomainConfig
+// 本接口（ModifyGroupDomainConfig）用于配置通道组就近接入域名。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyGroupDomainConfigWithContext(ctx context.Context, request *ModifyGroupDomainConfigRequest) (response *ModifyGroupDomainConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyGroupDomainConfigRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyGroupDomainConfigResponse()
     err = c.Send(request, response)
@@ -3093,6 +4993,33 @@ func (c *Client) ModifyHTTPListenerAttribute(request *ModifyHTTPListenerAttribut
     return
 }
 
+// ModifyHTTPListenerAttribute
+// 该接口（ModifyHTTPListenerAttribute）用于修改通道的HTTP监听器配置信息，目前仅支持修改监听器的名称。
+//
+// 注意：通道组通道暂时不支持HTTP/HTTPS监听器。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_LISTENERSTATUSERROR = "FailedOperation.ListenerStatusError"
+//  FAILEDOPERATION_NOTSUPPORTOLDVERSIONPROXY = "FailedOperation.NotSupportOldVersionProxy"
+//  FAILEDOPERATION_NOTSUPPORTPROXYGROUP = "FailedOperation.NotSupportProxyGroup"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) ModifyHTTPListenerAttributeWithContext(ctx context.Context, request *ModifyHTTPListenerAttributeRequest) (response *ModifyHTTPListenerAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyHTTPListenerAttributeRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyHTTPListenerAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyHTTPSListenerAttributeRequest() (request *ModifyHTTPSListenerAttributeRequest) {
     request = &ModifyHTTPSListenerAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3130,6 +5057,33 @@ func (c *Client) ModifyHTTPSListenerAttribute(request *ModifyHTTPSListenerAttrib
     if request == nil {
         request = NewModifyHTTPSListenerAttributeRequest()
     }
+    
+    response = NewModifyHTTPSListenerAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyHTTPSListenerAttribute
+// 该接口（ModifyHTTPSListenerAttribute）用于修改HTTPS监听器配置，当前不支持通道组和v1版本通道。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GROUPSTATUSNOTINRUNING = "FailedOperation.GroupStatusNotInRuning"
+//  FAILEDOPERATION_INSTANCESTATUSNOTINRUNING = "FailedOperation.InstanceStatusNotInRuning"
+//  FAILEDOPERATION_LISTENERHASTASK = "FailedOperation.ListenerHasTask"
+//  FAILEDOPERATION_NOTSUPPORTOLDVERSIONPROXY = "FailedOperation.NotSupportOldVersionProxy"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyHTTPSListenerAttributeWithContext(ctx context.Context, request *ModifyHTTPSListenerAttributeRequest) (response *ModifyHTTPSListenerAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyHTTPSListenerAttributeRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyHTTPSListenerAttributeResponse()
     err = c.Send(request, response)
@@ -3180,6 +5134,34 @@ func (c *Client) ModifyProxiesAttribute(request *ModifyProxiesAttributeRequest) 
     return
 }
 
+// ModifyProxiesAttribute
+// 本接口（ModifyProxiesAttribute）用于修改实例的属性（目前只支持修改通道的名称）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTBALANCEINSUFFICIENT = "FailedOperation.AccountBalanceInsufficient"
+//  FAILEDOPERATION_DUPLICATEDREQUEST = "FailedOperation.DuplicatedRequest"
+//  FAILEDOPERATION_RESOURCECANNOTACCESS = "FailedOperation.ResourceCanNotAccess"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PROJECTIDNOTBELONG = "InvalidParameterValue.ProjectIdNotBelong"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyProxiesAttributeWithContext(ctx context.Context, request *ModifyProxiesAttributeRequest) (response *ModifyProxiesAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyProxiesAttributeRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyProxiesAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyProxiesProjectRequest() (request *ModifyProxiesProjectRequest) {
     request = &ModifyProxiesProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3218,6 +5200,34 @@ func (c *Client) ModifyProxiesProject(request *ModifyProxiesProjectRequest) (res
     if request == nil {
         request = NewModifyProxiesProjectRequest()
     }
+    
+    response = NewModifyProxiesProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyProxiesProject
+// 本接口（ModifyProxiesProject）用于修改通道所属项目。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTBALANCEINSUFFICIENT = "FailedOperation.AccountBalanceInsufficient"
+//  FAILEDOPERATION_DUPLICATEDREQUEST = "FailedOperation.DuplicatedRequest"
+//  FAILEDOPERATION_NOTSUPPORTOLDVERSIONPROXY = "FailedOperation.NotSupportOldVersionProxy"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyProxiesProjectWithContext(ctx context.Context, request *ModifyProxiesProjectRequest) (response *ModifyProxiesProjectResponse, err error) {
+    if request == nil {
+        request = NewModifyProxiesProjectRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyProxiesProjectResponse()
     err = c.Send(request, response)
@@ -3269,6 +5279,35 @@ func (c *Client) ModifyProxyConfiguration(request *ModifyProxyConfigurationReque
     return
 }
 
+// ModifyProxyConfiguration
+// 本接口（ModifyProxyConfiguration）用于修改通道的配置。根据当前业务的容量需求，扩容或缩容相关通道的配置。仅支持Scalarable为1的通道,Scalarable可通过接口DescribeProxies获取。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTBALANCEINSUFFICIENT = "FailedOperation.AccountBalanceInsufficient"
+//  FAILEDOPERATION_DUPLICATEDREQUEST = "FailedOperation.DuplicatedRequest"
+//  FAILEDOPERATION_NOTSUPPORTSCALAR = "FailedOperation.NotSupportScalar"
+//  FAILEDOPERATION_REALSERVERALREADYBOUND = "FailedOperation.RealServerAlreadyBound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyProxyConfigurationWithContext(ctx context.Context, request *ModifyProxyConfigurationRequest) (response *ModifyProxyConfigurationResponse, err error) {
+    if request == nil {
+        request = NewModifyProxyConfigurationRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyProxyConfigurationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyProxyGroupAttributeRequest() (request *ModifyProxyGroupAttributeRequest) {
     request = &ModifyProxyGroupAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3304,6 +5343,31 @@ func (c *Client) ModifyProxyGroupAttribute(request *ModifyProxyGroupAttributeReq
     if request == nil {
         request = NewModifyProxyGroupAttributeRequest()
     }
+    
+    response = NewModifyProxyGroupAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyProxyGroupAttribute
+// 本接口（ModifyProxyGroupAttribute）用于修改通道组属性，目前仅支持修改通道组名称。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyProxyGroupAttributeWithContext(ctx context.Context, request *ModifyProxyGroupAttributeRequest) (response *ModifyProxyGroupAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyProxyGroupAttributeRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyProxyGroupAttributeResponse()
     err = c.Send(request, response)
@@ -3349,6 +5413,29 @@ func (c *Client) ModifyRealServerName(request *ModifyRealServerNameRequest) (res
     return
 }
 
+// ModifyRealServerName
+// 本接口（ModifyRealServerName）用于修改源站的名称
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyRealServerNameWithContext(ctx context.Context, request *ModifyRealServerNameRequest) (response *ModifyRealServerNameResponse, err error) {
+    if request == nil {
+        request = NewModifyRealServerNameRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyRealServerNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyRuleAttributeRequest() (request *ModifyRuleAttributeRequest) {
     request = &ModifyRuleAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3384,6 +5471,31 @@ func (c *Client) ModifyRuleAttribute(request *ModifyRuleAttributeRequest) (respo
     if request == nil {
         request = NewModifyRuleAttributeRequest()
     }
+    
+    response = NewModifyRuleAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyRuleAttribute
+// 本接口（ModifyRuleAttribute）用于修改转发规则的信息，包括健康检查的配置以及转发策略。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCESTATUSNOTINRUNING = "FailedOperation.InstanceStatusNotInRuning"
+//  FAILEDOPERATION_LISTENERHASTASK = "FailedOperation.ListenerHasTask"
+//  FAILEDOPERATION_RULEALREADYEXISTED = "FailedOperation.RuleAlreadyExisted"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyRuleAttributeWithContext(ctx context.Context, request *ModifyRuleAttributeRequest) (response *ModifyRuleAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyRuleAttributeRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyRuleAttributeResponse()
     err = c.Send(request, response)
@@ -3433,6 +5545,33 @@ func (c *Client) ModifySecurityRule(request *ModifySecurityRuleRequest) (respons
     return
 }
 
+// ModifySecurityRule
+// 修改安全策略规则名
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROXYSECURITYPOLICYDEFAULTRULE = "FailedOperation.ProxySecurityPolicyDefaultRule"
+//  FAILEDOPERATION_PROXYSECURITYPOLICYDUPLICATEDRULE = "FailedOperation.ProxySecurityPolicyDuplicatedRule"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifySecurityRuleWithContext(ctx context.Context, request *ModifySecurityRuleRequest) (response *ModifySecurityRuleResponse, err error) {
+    if request == nil {
+        request = NewModifySecurityRuleRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifySecurityRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyTCPListenerAttributeRequest() (request *ModifyTCPListenerAttributeRequest) {
     request = &ModifyTCPListenerAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3470,6 +5609,33 @@ func (c *Client) ModifyTCPListenerAttribute(request *ModifyTCPListenerAttributeR
     if request == nil {
         request = NewModifyTCPListenerAttributeRequest()
     }
+    
+    response = NewModifyTCPListenerAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyTCPListenerAttribute
+// 本接口（ModifyTCPListenerAttribute）用于修改通道实例下TCP监听器配置，包括健康检查的配置，调度策略。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GROUPSTATUSNOTINRUNING = "FailedOperation.GroupStatusNotInRuning"
+//  FAILEDOPERATION_INSTANCESTATUSNOTINRUNING = "FailedOperation.InstanceStatusNotInRuning"
+//  FAILEDOPERATION_LISTENERHASTASK = "FailedOperation.ListenerHasTask"
+//  FAILEDOPERATION_LISTENERSTATUSERROR = "FailedOperation.ListenerStatusError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyTCPListenerAttributeWithContext(ctx context.Context, request *ModifyTCPListenerAttributeRequest) (response *ModifyTCPListenerAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyTCPListenerAttributeRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyTCPListenerAttributeResponse()
     err = c.Send(request, response)
@@ -3519,6 +5685,33 @@ func (c *Client) ModifyUDPListenerAttribute(request *ModifyUDPListenerAttributeR
     return
 }
 
+// ModifyUDPListenerAttribute
+// 本接口（ModifyUDPListenerAttribute）用于修改通道实例下UDP监听器配置，包括监听器名称和调度策略的修改。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GROUPSTATUSNOTINRUNING = "FailedOperation.GroupStatusNotInRuning"
+//  FAILEDOPERATION_INSTANCESTATUSNOTINRUNING = "FailedOperation.InstanceStatusNotInRuning"
+//  FAILEDOPERATION_LISTENERHASTASK = "FailedOperation.ListenerHasTask"
+//  FAILEDOPERATION_LISTENERSTATUSERROR = "FailedOperation.ListenerStatusError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyUDPListenerAttributeWithContext(ctx context.Context, request *ModifyUDPListenerAttributeRequest) (response *ModifyUDPListenerAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyUDPListenerAttributeRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyUDPListenerAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewOpenProxiesRequest() (request *OpenProxiesRequest) {
     request = &OpenProxiesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3552,11 +5745,41 @@ func NewOpenProxiesResponse() (response *OpenProxiesResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION_CROSSBORDERINISOLATING = "UnauthorizedOperation.CrossBorderInIsolating"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) OpenProxies(request *OpenProxiesRequest) (response *OpenProxiesResponse, err error) {
     if request == nil {
         request = NewOpenProxiesRequest()
     }
+    
+    response = NewOpenProxiesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// OpenProxies
+// 该接口（OpenProxies）用于开启一条或者多条通道。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTBALANCEINSUFFICIENT = "FailedOperation.AccountBalanceInsufficient"
+//  FAILEDOPERATION_DUPLICATEDREQUEST = "FailedOperation.DuplicatedRequest"
+//  FAILEDOPERATION_NOTSUPPORTOLDVERSIONPROXY = "FailedOperation.NotSupportOldVersionProxy"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION_CROSSBORDERINISOLATING = "UnauthorizedOperation.CrossBorderInIsolating"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) OpenProxiesWithContext(ctx context.Context, request *OpenProxiesRequest) (response *OpenProxiesResponse, err error) {
+    if request == nil {
+        request = NewOpenProxiesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewOpenProxiesResponse()
     err = c.Send(request, response)
@@ -3598,6 +5821,31 @@ func (c *Client) OpenProxyGroup(request *OpenProxyGroupRequest) (response *OpenP
     if request == nil {
         request = NewOpenProxyGroupRequest()
     }
+    
+    response = NewOpenProxyGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// OpenProxyGroup
+// 该接口（OpenProxyGroup）用于开启一条通道组中的所有通道
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTBALANCEINSUFFICIENT = "FailedOperation.AccountBalanceInsufficient"
+//  FAILEDOPERATION_DUPLICATEDREQUEST = "FailedOperation.DuplicatedRequest"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) OpenProxyGroupWithContext(ctx context.Context, request *OpenProxyGroupRequest) (response *OpenProxyGroupResponse, err error) {
+    if request == nil {
+        request = NewOpenProxyGroupRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewOpenProxyGroupResponse()
     err = c.Send(request, response)
@@ -3647,6 +5895,33 @@ func (c *Client) OpenSecurityPolicy(request *OpenSecurityPolicyRequest) (respons
     return
 }
 
+// OpenSecurityPolicy
+// 开启安全策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACTIONISDOING = "FailedOperation.ActionIsDoing"
+//  FAILEDOPERATION_PROXYSECURITYALREADYOPEN = "FailedOperation.ProxySecurityAlreadyOpen"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) OpenSecurityPolicyWithContext(ctx context.Context, request *OpenSecurityPolicyRequest) (response *OpenSecurityPolicyResponse, err error) {
+    if request == nil {
+        request = NewOpenSecurityPolicyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewOpenSecurityPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRemoveRealServersRequest() (request *RemoveRealServersRequest) {
     request = &RemoveRealServersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3682,6 +5957,31 @@ func (c *Client) RemoveRealServers(request *RemoveRealServersRequest) (response 
     if request == nil {
         request = NewRemoveRealServersRequest()
     }
+    
+    response = NewRemoveRealServersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// RemoveRealServers
+// 删除已添加的源站(服务器)IP或域名
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_REALSERVERALREADYBOUND = "FailedOperation.RealServerAlreadyBound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) RemoveRealServersWithContext(ctx context.Context, request *RemoveRealServersRequest) (response *RemoveRealServersResponse, err error) {
+    if request == nil {
+        request = NewRemoveRealServersRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewRemoveRealServersResponse()
     err = c.Send(request, response)
@@ -3729,6 +6029,37 @@ func (c *Client) SetAuthentication(request *SetAuthenticationRequest) (response 
     if request == nil {
         request = NewSetAuthenticationRequest()
     }
+    
+    response = NewSetAuthenticationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SetAuthentication
+// 本接口（SetAuthentication）用于通道的高级认证配置，包括认证方式选择，以及各种认证方式对应的证书选择。仅支持Version3.0的通道。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACTIONISDOING = "FailedOperation.ActionIsDoing"
+//  FAILEDOPERATION_LISTENERHASTASK = "FailedOperation.ListenerHasTask"
+//  FAILEDOPERATION_LISTENERSTATUSERROR = "FailedOperation.ListenerStatusError"
+//  FAILEDOPERATION_NOTSUPPORTOLDVERSIONPROXY = "FailedOperation.NotSupportOldVersionProxy"
+//  FAILEDOPERATION_PROXYVERSIONNOTSUPPORT = "FailedOperation.ProxyVersionNotSupport"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDCERTIFICATEID = "InvalidParameterValue.InvalidCertificateId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) SetAuthenticationWithContext(ctx context.Context, request *SetAuthenticationRequest) (response *SetAuthenticationResponse, err error) {
+    if request == nil {
+        request = NewSetAuthenticationRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewSetAuthenticationResponse()
     err = c.Send(request, response)

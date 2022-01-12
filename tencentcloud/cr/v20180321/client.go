@@ -15,6 +15,7 @@
 package v20180321
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -77,6 +78,24 @@ func (c *Client) ApplyBlackList(request *ApplyBlackListRequest) (response *Apply
     return
 }
 
+// ApplyBlackList
+// 提交黑名单后，黑名单中有效期内的号码将停止拨打，适用于到期/逾期提醒、回访场景。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLYBLACKLISTERROR = "FailedOperation.ApplyBlackListError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+func (c *Client) ApplyBlackListWithContext(ctx context.Context, request *ApplyBlackListRequest) (response *ApplyBlackListResponse, err error) {
+    if request == nil {
+        request = NewApplyBlackListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewApplyBlackListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewApplyBlackListDataRequest() (request *ApplyBlackListDataRequest) {
     request = &ApplyBlackListDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -112,6 +131,25 @@ func (c *Client) ApplyBlackListData(request *ApplyBlackListDataRequest) (respons
     return
 }
 
+// ApplyBlackListData
+// 提交机器人黑名单申请
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLYBLACKLISTDATAERROR = "FailedOperation.ApplyBlackListDataError"
+//  FAILEDOPERATION_APPLYBLACKLISTERROR = "FailedOperation.ApplyBlackListError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+func (c *Client) ApplyBlackListDataWithContext(ctx context.Context, request *ApplyBlackListDataRequest) (response *ApplyBlackListDataResponse, err error) {
+    if request == nil {
+        request = NewApplyBlackListDataRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewApplyBlackListDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewApplyCreditAuditRequest() (request *ApplyCreditAuditRequest) {
     request = &ApplyCreditAuditRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -141,6 +179,25 @@ func (c *Client) ApplyCreditAudit(request *ApplyCreditAuditRequest) (response *A
     if request == nil {
         request = NewApplyCreditAuditRequest()
     }
+    
+    response = NewApplyCreditAuditResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ApplyCreditAudit
+// 提交信审外呼申请，返回当次请求日期。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLYCREDITAUDITERROR = "FailedOperation.ApplyCreditAuditError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  UNAUTHORIZEDOPERATION_ACCOUNTNOTFOUND = "UnauthorizedOperation.AccountNotFound"
+func (c *Client) ApplyCreditAuditWithContext(ctx context.Context, request *ApplyCreditAuditRequest) (response *ApplyCreditAuditResponse, err error) {
+    if request == nil {
+        request = NewApplyCreditAuditRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewApplyCreditAuditResponse()
     err = c.Send(request, response)
@@ -185,6 +242,28 @@ func (c *Client) ChangeBotCallStatus(request *ChangeBotCallStatusRequest) (respo
     return
 }
 
+// ChangeBotCallStatus
+// 更新机器人任务作业状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CHANGEBOTCALLSTATUSERROR = "FailedOperation.ChangeBotCallStatusError"
+//  FAILEDOPERATION_CHANGEBOTSTATUSERROR = "FailedOperation.ChangeBotStatusError"
+//  FAILEDOPERATION_QUERYCALLLISTERROR = "FailedOperation.QueryCallListError"
+//  FAILEDOPERATION_UPLOADBOTFILE = "FailedOperation.UploadBotFile"
+//  FAILEDOPERATION_UPLOADDATAERROR = "FailedOperation.UploadDataError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+func (c *Client) ChangeBotCallStatusWithContext(ctx context.Context, request *ChangeBotCallStatusRequest) (response *ChangeBotCallStatusResponse, err error) {
+    if request == nil {
+        request = NewChangeBotCallStatusRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewChangeBotCallStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChangeBotTaskStatusRequest() (request *ChangeBotTaskStatusRequest) {
     request = &ChangeBotTaskStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -213,6 +292,24 @@ func (c *Client) ChangeBotTaskStatus(request *ChangeBotTaskStatusRequest) (respo
     if request == nil {
         request = NewChangeBotTaskStatusRequest()
     }
+    
+    response = NewChangeBotTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ChangeBotTaskStatus
+// 更新机器人任务状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CHANGEBOTSTATUSERROR = "FailedOperation.ChangeBotStatusError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+func (c *Client) ChangeBotTaskStatusWithContext(ctx context.Context, request *ChangeBotTaskStatusRequest) (response *ChangeBotTaskStatusResponse, err error) {
+    if request == nil {
+        request = NewChangeBotTaskStatusRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewChangeBotTaskStatusResponse()
     err = c.Send(request, response)
@@ -254,6 +351,25 @@ func (c *Client) CreateBotTask(request *CreateBotTaskRequest) (response *CreateB
     return
 }
 
+// CreateBotTask
+// 创建机器人任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEBOTTASKERROR = "FailedOperation.CreateBotTaskError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+func (c *Client) CreateBotTaskWithContext(ctx context.Context, request *CreateBotTaskRequest) (response *CreateBotTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateBotTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateBotTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBotFlowRequest() (request *DescribeBotFlowRequest) {
     request = &DescribeBotFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -283,6 +399,25 @@ func (c *Client) DescribeBotFlow(request *DescribeBotFlowRequest) (response *Des
     if request == nil {
         request = NewDescribeBotFlowRequest()
     }
+    
+    response = NewDescribeBotFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeBotFlow
+// 查询机器人对话流
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEBOTFLOWERROR = "FailedOperation.DescribeBotFlowError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+func (c *Client) DescribeBotFlowWithContext(ctx context.Context, request *DescribeBotFlowRequest) (response *DescribeBotFlowResponse, err error) {
+    if request == nil {
+        request = NewDescribeBotFlowRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeBotFlowResponse()
     err = c.Send(request, response)
@@ -324,6 +459,25 @@ func (c *Client) DescribeCreditResult(request *DescribeCreditResultRequest) (res
     return
 }
 
+// DescribeCreditResult
+// 根据信审任务ID和请求日期，获取相关信审结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GETCREDITAUDITERROR = "FailedOperation.GetCreditAuditError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  UNAUTHORIZEDOPERATION_ACCOUNTNOTFOUND = "UnauthorizedOperation.AccountNotFound"
+func (c *Client) DescribeCreditResultWithContext(ctx context.Context, request *DescribeCreditResultRequest) (response *DescribeCreditResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeCreditResultRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeCreditResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFileModelRequest() (request *DescribeFileModelRequest) {
     request = &DescribeFileModelRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -358,6 +512,24 @@ func (c *Client) DescribeFileModel(request *DescribeFileModelRequest) (response 
     return
 }
 
+// DescribeFileModel
+// 查询机器人文件模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEFILEMODELERROR = "FailedOperation.DescribeFileModelError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+func (c *Client) DescribeFileModelWithContext(ctx context.Context, request *DescribeFileModelRequest) (response *DescribeFileModelResponse, err error) {
+    if request == nil {
+        request = NewDescribeFileModelRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeFileModelResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRecordsRequest() (request *DescribeRecordsRequest) {
     request = &DescribeRecordsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -386,6 +558,24 @@ func (c *Client) DescribeRecords(request *DescribeRecordsRequest) (response *Des
     if request == nil {
         request = NewDescribeRecordsRequest()
     }
+    
+    response = NewDescribeRecordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeRecords
+// 用于获取指定案件的录音地址，次日早上8:00后可查询前日录音。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBERECORDSERROR = "FailedOperation.DescribeRecordsError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+func (c *Client) DescribeRecordsWithContext(ctx context.Context, request *DescribeRecordsRequest) (response *DescribeRecordsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRecordsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeRecordsResponse()
     err = c.Send(request, response)
@@ -427,6 +617,25 @@ func (c *Client) DescribeTaskStatus(request *DescribeTaskStatusRequest) (respons
     return
 }
 
+// DescribeTaskStatus
+// 根据上传文件接口的输出参数DataResId，获取相关上传结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBETASKSTATUSERROR = "FailedOperation.DescribeTaskStatusError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
+func (c *Client) DescribeTaskStatusWithContext(ctx context.Context, request *DescribeTaskStatusRequest) (response *DescribeTaskStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskStatusRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDownloadBotRecordRequest() (request *DownloadBotRecordRequest) {
     request = &DownloadBotRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -462,6 +671,25 @@ func (c *Client) DownloadBotRecord(request *DownloadBotRecordRequest) (response 
     return
 }
 
+// DownloadBotRecord
+// 下载任务录音与文本，第二天12点后可使用此接口获取对应的录音与文本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBETASKSTATUSERROR = "FailedOperation.DescribeTaskStatusError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
+func (c *Client) DownloadBotRecordWithContext(ctx context.Context, request *DownloadBotRecordRequest) (response *DownloadBotRecordResponse, err error) {
+    if request == nil {
+        request = NewDownloadBotRecordRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDownloadBotRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDownloadDialogueTextRequest() (request *DownloadDialogueTextRequest) {
     request = &DownloadDialogueTextRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -491,6 +719,25 @@ func (c *Client) DownloadDialogueText(request *DownloadDialogueTextRequest) (res
     if request == nil {
         request = NewDownloadDialogueTextRequest()
     }
+    
+    response = NewDownloadDialogueTextResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DownloadDialogueText
+// 用于获取指定案件的对话文本内容，次日早上8:00后可查询前日对话文本内容。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADREPORTERROR = "FailedOperation.DownloadReportError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  RESOURCENOTFOUND_REPORTNOTFOUND = "ResourceNotFound.ReportNotFound"
+func (c *Client) DownloadDialogueTextWithContext(ctx context.Context, request *DownloadDialogueTextRequest) (response *DownloadDialogueTextResponse, err error) {
+    if request == nil {
+        request = NewDownloadDialogueTextRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDownloadDialogueTextResponse()
     err = c.Send(request, response)
@@ -534,6 +781,27 @@ func (c *Client) DownloadRecordList(request *DownloadRecordListRequest) (respons
     return
 }
 
+// DownloadRecordList
+// <p>用于获取录音下载链接清单，次日早上8:00后可查询前日录音清单。</p>
+//
+// <p>注意：录音清单中的录音下载链接仅次日20:00之前有效，请及时下载。</p>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADRECORDLISTERROR = "FailedOperation.DownloadRecordListError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  RESOURCENOTFOUND_RECORDLISTNOTFOUND = "ResourceNotFound.RecordListNotFound"
+func (c *Client) DownloadRecordListWithContext(ctx context.Context, request *DownloadRecordListRequest) (response *DownloadRecordListResponse, err error) {
+    if request == nil {
+        request = NewDownloadRecordListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDownloadRecordListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDownloadReportRequest() (request *DownloadReportRequest) {
     request = &DownloadReportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -570,6 +838,26 @@ func (c *Client) DownloadReport(request *DownloadReportRequest) (response *Downl
     return
 }
 
+// DownloadReport
+// 用于下载结果报表。当日23:00后，可获取当日到期/逾期提醒结果，次日00:30后，可获取昨日回访结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADREPORTERROR = "FailedOperation.DownloadReportError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  RESOURCENOTFOUND_COMPANYNOTFOUND = "ResourceNotFound.CompanyNotFound"
+//  RESOURCENOTFOUND_REPORTNOTFOUND = "ResourceNotFound.ReportNotFound"
+func (c *Client) DownloadReportWithContext(ctx context.Context, request *DownloadReportRequest) (response *DownloadReportResponse, err error) {
+    if request == nil {
+        request = NewDownloadReportRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDownloadReportResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExportBotDataRequest() (request *ExportBotDataRequest) {
     request = &ExportBotDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -598,6 +886,24 @@ func (c *Client) ExportBotData(request *ExportBotDataRequest) (response *ExportB
     if request == nil {
         request = NewExportBotDataRequest()
     }
+    
+    response = NewExportBotDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ExportBotData
+// 导出机器人数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXPORTBOTDATAERROR = "FailedOperation.ExportBotDataError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+func (c *Client) ExportBotDataWithContext(ctx context.Context, request *ExportBotDataRequest) (response *ExportBotDataResponse, err error) {
+    if request == nil {
+        request = NewExportBotDataRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewExportBotDataResponse()
     err = c.Send(request, response)
@@ -640,6 +946,26 @@ func (c *Client) QueryBlackListData(request *QueryBlackListDataRequest) (respons
     return
 }
 
+// QueryBlackListData
+// 查看黑名单数据列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEBLACKLISTDATAERROR = "FailedOperation.DescribeBlacklistDataError"
+//  FAILEDOPERATION_QUERYBLACKLISTDATAERROR = "FailedOperation.QueryBlackListDataError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  RESOURCENOTFOUND_BLACKLISTDATANOTFOUND = "ResourceNotFound.BlacklistDataNotFound"
+func (c *Client) QueryBlackListDataWithContext(ctx context.Context, request *QueryBlackListDataRequest) (response *QueryBlackListDataResponse, err error) {
+    if request == nil {
+        request = NewQueryBlackListDataRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewQueryBlackListDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryBotListRequest() (request *QueryBotListRequest) {
     request = &QueryBotListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -666,6 +992,22 @@ func (c *Client) QueryBotList(request *QueryBotListRequest) (response *QueryBotL
     if request == nil {
         request = NewQueryBotListRequest()
     }
+    
+    response = NewQueryBotListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// QueryBotList
+// 查询机器人任务状态列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYBOTLISTERROR = "FailedOperation.QueryBotListError"
+func (c *Client) QueryBotListWithContext(ctx context.Context, request *QueryBotListRequest) (response *QueryBotListResponse, err error) {
+    if request == nil {
+        request = NewQueryBotListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewQueryBotListResponse()
     err = c.Send(request, response)
@@ -708,6 +1050,26 @@ func (c *Client) QueryCallList(request *QueryCallListRequest) (response *QueryCa
     return
 }
 
+// QueryCallList
+// 机器人任务查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYCALLLISTERROR = "FailedOperation.QueryCallListError"
+//  FAILEDOPERATION_UPLOADBOTFILE = "FailedOperation.UploadBotFile"
+//  FAILEDOPERATION_UPLOADDATAERROR = "FailedOperation.UploadDataError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+func (c *Client) QueryCallListWithContext(ctx context.Context, request *QueryCallListRequest) (response *QueryCallListResponse, err error) {
+    if request == nil {
+        request = NewQueryCallListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewQueryCallListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryInstantDataRequest() (request *QueryInstantDataRequest) {
     request = &QueryInstantDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -735,6 +1097,23 @@ func (c *Client) QueryInstantData(request *QueryInstantDataRequest) (response *Q
     if request == nil {
         request = NewQueryInstantDataRequest()
     }
+    
+    response = NewQueryInstantDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// QueryInstantData
+// 实时数据查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+func (c *Client) QueryInstantDataWithContext(ctx context.Context, request *QueryInstantDataRequest) (response *QueryInstantDataResponse, err error) {
+    if request == nil {
+        request = NewQueryInstantDataRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewQueryInstantDataResponse()
     err = c.Send(request, response)
@@ -776,6 +1155,25 @@ func (c *Client) QueryProducts(request *QueryProductsRequest) (response *QueryPr
     return
 }
 
+// QueryProducts
+// 查询产品列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEPRODUCTSERROR = "FailedOperation.DescribeProductsError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+func (c *Client) QueryProductsWithContext(ctx context.Context, request *QueryProductsRequest) (response *QueryProductsResponse, err error) {
+    if request == nil {
+        request = NewQueryProductsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewQueryProductsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryRecordListRequest() (request *QueryRecordListRequest) {
     request = &QueryRecordListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -802,6 +1200,22 @@ func (c *Client) QueryRecordList(request *QueryRecordListRequest) (response *Que
     if request == nil {
         request = NewQueryRecordListRequest()
     }
+    
+    response = NewQueryRecordListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// QueryRecordList
+// 查询录音列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYRECORDLISTERROR = "FailedOperation.QueryRecordListError"
+func (c *Client) QueryRecordListWithContext(ctx context.Context, request *QueryRecordListRequest) (response *QueryRecordListResponse, err error) {
+    if request == nil {
+        request = NewQueryRecordListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewQueryRecordListResponse()
     err = c.Send(request, response)
@@ -837,6 +1251,25 @@ func (c *Client) UpdateBotTask(request *UpdateBotTaskRequest) (response *UpdateB
     if request == nil {
         request = NewUpdateBotTaskRequest()
     }
+    
+    response = NewUpdateBotTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UpdateBotTask
+// 更新机器人任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UPDATEBOTTASKERROR = "FailedOperation.UpdateBotTaskError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+func (c *Client) UpdateBotTaskWithContext(ctx context.Context, request *UpdateBotTaskRequest) (response *UpdateBotTaskResponse, err error) {
+    if request == nil {
+        request = NewUpdateBotTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUpdateBotTaskResponse()
     err = c.Send(request, response)
@@ -879,6 +1312,26 @@ func (c *Client) UploadBotData(request *UploadBotDataRequest) (response *UploadB
     return
 }
 
+// UploadBotData
+// 上传机器人任务数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UPLOADBOTFILE = "FailedOperation.UploadBotFile"
+//  FAILEDOPERATION_UPLOADDATAERROR = "FailedOperation.UploadDataError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+func (c *Client) UploadBotDataWithContext(ctx context.Context, request *UploadBotDataRequest) (response *UploadBotDataResponse, err error) {
+    if request == nil {
+        request = NewUploadBotDataRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewUploadBotDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUploadBotFileRequest() (request *UploadBotFileRequest) {
     request = &UploadBotFileRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -908,6 +1361,25 @@ func (c *Client) UploadBotFile(request *UploadBotFileRequest) (response *UploadB
     if request == nil {
         request = NewUploadBotFileRequest()
     }
+    
+    response = NewUploadBotFileResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UploadBotFile
+// 上传机器人文件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UPLOADBOTFILE = "FailedOperation.UploadBotFile"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+func (c *Client) UploadBotFileWithContext(ctx context.Context, request *UploadBotFileRequest) (response *UploadBotFileResponse, err error) {
+    if request == nil {
+        request = NewUploadBotFileRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUploadBotFileResponse()
     err = c.Send(request, response)
@@ -949,6 +1421,25 @@ func (c *Client) UploadDataFile(request *UploadDataFileRequest) (response *Uploa
     return
 }
 
+// UploadDataFile
+// 上传文件，接口返回数据任务ID，支持xlsx、xls、csv、zip格式。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UPLOADDATAERROR = "FailedOperation.UploadDataError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  UNAUTHORIZEDOPERATION_ACCOUNTNOTFOUND = "UnauthorizedOperation.AccountNotFound"
+func (c *Client) UploadDataFileWithContext(ctx context.Context, request *UploadDataFileRequest) (response *UploadDataFileResponse, err error) {
+    if request == nil {
+        request = NewUploadDataFileRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewUploadDataFileResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUploadDataJsonRequest() (request *UploadDataJsonRequest) {
     request = &UploadDataJsonRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -977,6 +1468,24 @@ func (c *Client) UploadDataJson(request *UploadDataJsonRequest) (response *Uploa
     if request == nil {
         request = NewUploadDataJsonRequest()
     }
+    
+    response = NewUploadDataJsonResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UploadDataJson
+// 上传Json格式数据，接口返回数据任务ID
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UPLOADDATAERROR = "FailedOperation.UploadDataError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+func (c *Client) UploadDataJsonWithContext(ctx context.Context, request *UploadDataJsonRequest) (response *UploadDataJsonResponse, err error) {
+    if request == nil {
+        request = NewUploadDataJsonRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUploadDataJsonResponse()
     err = c.Send(request, response)
@@ -1013,6 +1522,26 @@ func (c *Client) UploadFile(request *UploadFileRequest) (response *UploadFileRes
     if request == nil {
         request = NewUploadFileRequest()
     }
+    
+    response = NewUploadFileResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UploadFile
+// 客户通过调用该接口上传需催收文档，格式需为excel格式。接口返回任务ID。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UPLOADDATAERROR = "FailedOperation.UploadDataError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
+//  RESOURCENOTFOUND_COMPANYNOTFOUND = "ResourceNotFound.CompanyNotFound"
+//  RESOURCEUNAVAILABLE_COMPANYUNAVAILABLE = "ResourceUnavailable.CompanyUnavailable"
+func (c *Client) UploadFileWithContext(ctx context.Context, request *UploadFileRequest) (response *UploadFileResponse, err error) {
+    if request == nil {
+        request = NewUploadFileRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUploadFileResponse()
     err = c.Send(request, response)

@@ -77,9 +77,6 @@ const (
 	// 主题删除失败。
 	FAILEDOPERATION_DELETETOPICS = "FailedOperation.DeleteTopics"
 
-	// 查询生产者数据失败。
-	FAILEDOPERATION_DESCRIBEPRODUCERS = "FailedOperation.DescribeProducers"
-
 	// 查询订阅数据失败。
 	FAILEDOPERATION_DESCRIBESUBSCRIPTION = "FailedOperation.DescribeSubscription"
 
@@ -151,6 +148,9 @@ const (
 
 	// 获取属性失败。
 	INTERNALERROR_GETATTRIBUTESFAILED = "InternalError.GetAttributesFailed"
+
+	// 内部错误。
+	INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
 
 	// 重试可以成功。
 	INTERNALERROR_RETRY = "InternalError.Retry"
@@ -227,6 +227,9 @@ const (
 	// 重名，命名空间已存在。
 	RESOURCEINUSE_NAMESPACE = "ResourceInUse.Namespace"
 
+	// 队列已存在。
+	RESOURCEINUSE_QUEUE = "ResourceInUse.Queue"
+
 	// 角色已存在。
 	RESOURCEINUSE_ROLE = "ResourceInUse.Role"
 
@@ -268,6 +271,12 @@ const (
 
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"
+
+	// 发货异常。
+	RESOURCEUNAVAILABLE_CREATEFAILED = "ResourceUnavailable.CreateFailed"
+
+	// 需要充值才可继续操作。
+	RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
 
 	// 系统升级。
 	RESOURCEUNAVAILABLE_SYSTEMUPGRADE = "ResourceUnavailable.SystemUpgrade"

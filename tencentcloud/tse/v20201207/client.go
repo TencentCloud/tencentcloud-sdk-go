@@ -15,6 +15,7 @@
 package v20201207
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -78,6 +79,25 @@ func (c *Client) DescribeSREInstanceAccessAddress(request *DescribeSREInstanceAc
     return
 }
 
+// DescribeSREInstanceAccessAddress
+// 查询引擎实例访问地址
+//
+// 可能返回的错误码:
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeSREInstanceAccessAddressWithContext(ctx context.Context, request *DescribeSREInstanceAccessAddressRequest) (response *DescribeSREInstanceAccessAddressResponse, err error) {
+    if request == nil {
+        request = NewDescribeSREInstanceAccessAddressRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeSREInstanceAccessAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSREInstancesRequest() (request *DescribeSREInstancesRequest) {
     request = &DescribeSREInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -106,6 +126,24 @@ func (c *Client) DescribeSREInstances(request *DescribeSREInstancesRequest) (res
     if request == nil {
         request = NewDescribeSREInstancesRequest()
     }
+    
+    response = NewDescribeSREInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeSREInstances
+// 用于查询引擎实例列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+func (c *Client) DescribeSREInstancesWithContext(ctx context.Context, request *DescribeSREInstancesRequest) (response *DescribeSREInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeSREInstancesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeSREInstancesResponse()
     err = c.Send(request, response)

@@ -15,6 +15,7 @@
 package v20201210
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -80,6 +81,27 @@ func (c *Client) CreateStructureTask(request *CreateStructureTaskRequest) (respo
     return
 }
 
+// CreateStructureTask
+// 基于提供的客户及保单信息，启动结构化识别任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreateStructureTaskWithContext(ctx context.Context, request *CreateStructureTaskRequest) (response *CreateStructureTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateStructureTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateStructureTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeStructCompareDataRequest() (request *DescribeStructCompareDataRequest) {
     request = &DescribeStructCompareDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -108,6 +130,24 @@ func (c *Client) DescribeStructCompareData(request *DescribeStructCompareDataReq
     if request == nil {
         request = NewDescribeStructCompareDataRequest()
     }
+    
+    response = NewDescribeStructCompareDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeStructCompareData
+// 结构化对比查询接口，对比结构化复核前后数据差异，查询识别正确率，召回率。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeStructCompareDataWithContext(ctx context.Context, request *DescribeStructCompareDataRequest) (response *DescribeStructCompareDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeStructCompareDataRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeStructCompareDataResponse()
     err = c.Send(request, response)
@@ -145,6 +185,27 @@ func (c *Client) DescribeStructureTaskResult(request *DescribeStructureTaskResul
     if request == nil {
         request = NewDescribeStructureTaskResultRequest()
     }
+    
+    response = NewDescribeStructureTaskResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeStructureTaskResult
+// 依据任务ID获取结构化结果接口。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeStructureTaskResultWithContext(ctx context.Context, request *DescribeStructureTaskResultRequest) (response *DescribeStructureTaskResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeStructureTaskResultRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeStructureTaskResultResponse()
     err = c.Send(request, response)

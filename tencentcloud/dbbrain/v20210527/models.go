@@ -223,6 +223,87 @@ func (r *CreateDBDiagReportUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateKillTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// kill会话任务的关联实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 任务持续时间时间，单位秒，手动关闭任务传-1。
+	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 任务过滤条件，客户端IP。
+	Host *string `json:"Host,omitempty" name:"Host"`
+
+	// 任务过滤条件，数据库库名,多个","隔开。
+	DB *string `json:"DB,omitempty" name:"DB"`
+
+	// 任务过滤条件，相关命令，多个","隔开。
+	Command *string `json:"Command,omitempty" name:"Command"`
+
+	// 任务过滤条件，支持单条件前缀匹配。
+	Info *string `json:"Info,omitempty" name:"Info"`
+
+	// 任务过滤条件，用户类型。
+	User *string `json:"User,omitempty" name:"User"`
+
+	// 任务过滤条件，会话持续时长，单位秒。
+	Time *int64 `json:"Time,omitempty" name:"Time"`
+
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
+}
+
+func (r *CreateKillTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateKillTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Duration")
+	delete(f, "Host")
+	delete(f, "DB")
+	delete(f, "Command")
+	delete(f, "Info")
+	delete(f, "User")
+	delete(f, "Time")
+	delete(f, "Product")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateKillTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateKillTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// kill会话任务创建成功返回1
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateKillTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateKillTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateMailProfileRequest struct {
 	*tchttp.BaseRequest
 
@@ -286,6 +367,59 @@ func (r *CreateMailProfileResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateMailProfileResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateProxySessionKillTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitempty" name:"Product"`
+}
+
+func (r *CreateProxySessionKillTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateProxySessionKillTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Product")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProxySessionKillTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateProxySessionKillTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 创建 kill 会话任务返回的异步任务 id
+		AsyncRequestId *int64 `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateProxySessionKillTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateProxySessionKillTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

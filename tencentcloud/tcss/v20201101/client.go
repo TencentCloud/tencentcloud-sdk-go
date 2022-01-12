@@ -15,6 +15,7 @@
 package v20201101
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -83,6 +84,30 @@ func (c *Client) AddAssetImageRegistryRegistryDetail(request *AddAssetImageRegis
     return
 }
 
+// AddAssetImageRegistryRegistryDetail
+// 新增单个镜像仓库详细信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATAVALUENOTCORRECT = "FailedOperation.DataValueNotCorrect"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) AddAssetImageRegistryRegistryDetailWithContext(ctx context.Context, request *AddAssetImageRegistryRegistryDetailRequest) (response *AddAssetImageRegistryRegistryDetailResponse, err error) {
+    if request == nil {
+        request = NewAddAssetImageRegistryRegistryDetailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewAddAssetImageRegistryRegistryDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddCompliancePolicyItemToWhitelistRequest() (request *AddCompliancePolicyItemToWhitelistRequest) {
     request = &AddCompliancePolicyItemToWhitelistRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -115,6 +140,28 @@ func (c *Client) AddCompliancePolicyItemToWhitelist(request *AddCompliancePolicy
     if request == nil {
         request = NewAddCompliancePolicyItemToWhitelistRequest()
     }
+    
+    response = NewAddCompliancePolicyItemToWhitelistResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// AddCompliancePolicyItemToWhitelist
+// 将指定的检测项添加到白名单中，不显示未通过结果。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) AddCompliancePolicyItemToWhitelistWithContext(ctx context.Context, request *AddCompliancePolicyItemToWhitelistRequest) (response *AddCompliancePolicyItemToWhitelistResponse, err error) {
+    if request == nil {
+        request = NewAddCompliancePolicyItemToWhitelistRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewAddCompliancePolicyItemToWhitelistResponse()
     err = c.Send(request, response)
@@ -166,6 +213,35 @@ func (c *Client) AddEditAbnormalProcessRule(request *AddEditAbnormalProcessRuleR
     return
 }
 
+// AddEditAbnormalProcessRule
+// 添加编辑运行时异常进程策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTIFYPOLICYCHANGEFAILED = "FailedOperation.NotifyPolicyChangeFailed"
+//  FAILEDOPERATION_RULECONFIGTOOMANY = "FailedOperation.RuleConfigTooMany"
+//  FAILEDOPERATION_RULEINFOREPEAT = "FailedOperation.RuleInfoRepeat"
+//  FAILEDOPERATION_RULENAMEREPEAT = "FailedOperation.RuleNameRepeat"
+//  FAILEDOPERATION_RULESELECTIMAGEOUTRANGE = "FailedOperation.RuleSelectImageOutRange"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_RULEINFOINVALID = "InvalidParameter.RuleInfoInValid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) AddEditAbnormalProcessRuleWithContext(ctx context.Context, request *AddEditAbnormalProcessRuleRequest) (response *AddEditAbnormalProcessRuleResponse, err error) {
+    if request == nil {
+        request = NewAddEditAbnormalProcessRuleRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewAddEditAbnormalProcessRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddEditAccessControlRuleRequest() (request *AddEditAccessControlRuleRequest) {
     request = &AddEditAccessControlRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -204,6 +280,34 @@ func (c *Client) AddEditAccessControlRule(request *AddEditAccessControlRuleReque
     if request == nil {
         request = NewAddEditAccessControlRuleRequest()
     }
+    
+    response = NewAddEditAccessControlRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// AddEditAccessControlRule
+// 添加编辑运行时访问控制策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_NOTIFYPOLICYCHANGEFAILED = "FailedOperation.NotifyPolicyChangeFailed"
+//  FAILEDOPERATION_RULECONFIGTOOMANY = "FailedOperation.RuleConfigTooMany"
+//  FAILEDOPERATION_RULEINFOREPEAT = "FailedOperation.RuleInfoRepeat"
+//  FAILEDOPERATION_RULENAMEREPEAT = "FailedOperation.RuleNameRepeat"
+//  FAILEDOPERATION_RULESELECTIMAGEOUTRANGE = "FailedOperation.RuleSelectImageOutRange"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_RULEINFOINVALID = "InvalidParameter.RuleInfoInValid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) AddEditAccessControlRuleWithContext(ctx context.Context, request *AddEditAccessControlRuleRequest) (response *AddEditAccessControlRuleResponse, err error) {
+    if request == nil {
+        request = NewAddEditAccessControlRuleRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewAddEditAccessControlRuleResponse()
     err = c.Send(request, response)
@@ -257,6 +361,37 @@ func (c *Client) AddEditReverseShellWhiteList(request *AddEditReverseShellWhiteL
     return
 }
 
+// AddEditReverseShellWhiteList
+// 添加编辑运行时反弹shell白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_NOTIFYPOLICYCHANGEFAILED = "FailedOperation.NotifyPolicyChangeFailed"
+//  FAILEDOPERATION_RULECONFIGTOOMANY = "FailedOperation.RuleConfigTooMany"
+//  FAILEDOPERATION_RULEINFOREPEAT = "FailedOperation.RuleInfoRepeat"
+//  FAILEDOPERATION_RULENAMEREPEAT = "FailedOperation.RuleNameRepeat"
+//  FAILEDOPERATION_RULESELECTIMAGEOUTRANGE = "FailedOperation.RuleSelectImageOutRange"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRIPNOVALID = "InvalidParameter.ErrIpNoValid"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PORTNOVALID = "InvalidParameter.PortNoValid"
+//  INVALIDPARAMETER_REVERSHELLKEYFIELDALLEMPTY = "InvalidParameter.ReverShellKeyFieldAllEmpty"
+//  INVALIDPARAMETER_RULEINFOINVALID = "InvalidParameter.RuleInfoInValid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LENGTHLIMIT = "InvalidParameterValue.LengthLimit"
+func (c *Client) AddEditReverseShellWhiteListWithContext(ctx context.Context, request *AddEditReverseShellWhiteListRequest) (response *AddEditReverseShellWhiteListResponse, err error) {
+    if request == nil {
+        request = NewAddEditReverseShellWhiteListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewAddEditReverseShellWhiteListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddEditRiskSyscallWhiteListRequest() (request *AddEditRiskSyscallWhiteListRequest) {
     request = &AddEditRiskSyscallWhiteListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -301,6 +436,34 @@ func (c *Client) AddEditRiskSyscallWhiteList(request *AddEditRiskSyscallWhiteLis
     return
 }
 
+// AddEditRiskSyscallWhiteList
+// 添加编辑运行时高危系统调用白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_NOTIFYPOLICYCHANGEFAILED = "FailedOperation.NotifyPolicyChangeFailed"
+//  FAILEDOPERATION_RULECONFIGTOOMANY = "FailedOperation.RuleConfigTooMany"
+//  FAILEDOPERATION_RULEINFOREPEAT = "FailedOperation.RuleInfoRepeat"
+//  FAILEDOPERATION_RULENAMEREPEAT = "FailedOperation.RuleNameRepeat"
+//  FAILEDOPERATION_RULESELECTIMAGEOUTRANGE = "FailedOperation.RuleSelectImageOutRange"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_RULEINFOINVALID = "InvalidParameter.RuleInfoInValid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LENGTHLIMIT = "InvalidParameterValue.LengthLimit"
+func (c *Client) AddEditRiskSyscallWhiteListWithContext(ctx context.Context, request *AddEditRiskSyscallWhiteListRequest) (response *AddEditRiskSyscallWhiteListResponse, err error) {
+    if request == nil {
+        request = NewAddEditRiskSyscallWhiteListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewAddEditRiskSyscallWhiteListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddEditWarningRulesRequest() (request *AddEditWarningRulesRequest) {
     request = &AddEditWarningRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -329,6 +492,24 @@ func (c *Client) AddEditWarningRules(request *AddEditWarningRulesRequest) (respo
     if request == nil {
         request = NewAddEditWarningRulesRequest()
     }
+    
+    response = NewAddEditWarningRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// AddEditWarningRules
+// 添加编辑告警策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) AddEditWarningRulesWithContext(ctx context.Context, request *AddEditWarningRulesRequest) (response *AddEditWarningRulesResponse, err error) {
+    if request == nil {
+        request = NewAddEditWarningRulesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewAddEditWarningRulesResponse()
     err = c.Send(request, response)
@@ -375,6 +556,30 @@ func (c *Client) CheckRepeatAssetImageRegistry(request *CheckRepeatAssetImageReg
     return
 }
 
+// CheckRepeatAssetImageRegistry
+// 检查单个镜像仓库名是否重复
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATAVALUENOTCORRECT = "FailedOperation.DataValueNotCorrect"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CheckRepeatAssetImageRegistryWithContext(ctx context.Context, request *CheckRepeatAssetImageRegistryRequest) (response *CheckRepeatAssetImageRegistryResponse, err error) {
+    if request == nil {
+        request = NewCheckRepeatAssetImageRegistryRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCheckRepeatAssetImageRegistryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAssetImageRegistryScanTaskRequest() (request *CreateAssetImageRegistryScanTaskRequest) {
     request = &CreateAssetImageRegistryScanTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -408,6 +613,23 @@ func (c *Client) CreateAssetImageRegistryScanTask(request *CreateAssetImageRegis
     return
 }
 
+// CreateAssetImageRegistryScanTask
+// 镜像仓库创建镜像扫描任务
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateAssetImageRegistryScanTaskWithContext(ctx context.Context, request *CreateAssetImageRegistryScanTaskRequest) (response *CreateAssetImageRegistryScanTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateAssetImageRegistryScanTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateAssetImageRegistryScanTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAssetImageRegistryScanTaskOneKeyRequest() (request *CreateAssetImageRegistryScanTaskOneKeyRequest) {
     request = &CreateAssetImageRegistryScanTaskOneKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -435,6 +657,23 @@ func (c *Client) CreateAssetImageRegistryScanTaskOneKey(request *CreateAssetImag
     if request == nil {
         request = NewCreateAssetImageRegistryScanTaskOneKeyRequest()
     }
+    
+    response = NewCreateAssetImageRegistryScanTaskOneKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateAssetImageRegistryScanTaskOneKey
+// 镜像仓库创建镜像一键扫描任务
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateAssetImageRegistryScanTaskOneKeyWithContext(ctx context.Context, request *CreateAssetImageRegistryScanTaskOneKeyRequest) (response *CreateAssetImageRegistryScanTaskOneKeyResponse, err error) {
+    if request == nil {
+        request = NewCreateAssetImageRegistryScanTaskOneKeyRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateAssetImageRegistryScanTaskOneKeyResponse()
     err = c.Send(request, response)
@@ -476,6 +715,25 @@ func (c *Client) CreateAssetImageScanSetting(request *CreateAssetImageScanSettin
     return
 }
 
+// CreateAssetImageScanSetting
+// 添加容器安全镜像扫描设置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreateAssetImageScanSettingWithContext(ctx context.Context, request *CreateAssetImageScanSettingRequest) (response *CreateAssetImageScanSettingResponse, err error) {
+    if request == nil {
+        request = NewCreateAssetImageScanSettingRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateAssetImageScanSettingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAssetImageScanTaskRequest() (request *CreateAssetImageScanTaskRequest) {
     request = &CreateAssetImageScanTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -506,6 +764,26 @@ func (c *Client) CreateAssetImageScanTask(request *CreateAssetImageScanTaskReque
     if request == nil {
         request = NewCreateAssetImageScanTaskRequest()
     }
+    
+    response = NewCreateAssetImageScanTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateAssetImageScanTask
+// 容器安全创建镜像扫描任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ERRALREADYSCANNING = "FailedOperation.ErrAlreadyScanning"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateAssetImageScanTaskWithContext(ctx context.Context, request *CreateAssetImageScanTaskRequest) (response *CreateAssetImageScanTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateAssetImageScanTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateAssetImageScanTaskResponse()
     err = c.Send(request, response)
@@ -550,6 +828,28 @@ func (c *Client) CreateCheckComponent(request *CreateCheckComponentRequest) (res
     return
 }
 
+// CreateCheckComponent
+// 安装检查组件，创建防护容器
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateCheckComponentWithContext(ctx context.Context, request *CreateCheckComponentRequest) (response *CreateCheckComponentResponse, err error) {
+    if request == nil {
+        request = NewCreateCheckComponentRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateCheckComponentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateClusterCheckTaskRequest() (request *CreateClusterCheckTaskRequest) {
     request = &CreateClusterCheckTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -582,6 +882,28 @@ func (c *Client) CreateClusterCheckTask(request *CreateClusterCheckTaskRequest) 
     if request == nil {
         request = NewCreateClusterCheckTaskRequest()
     }
+    
+    response = NewCreateClusterCheckTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateClusterCheckTask
+// 创建集群检查任务，用户检查用户的集群相关风险项
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateClusterCheckTaskWithContext(ctx context.Context, request *CreateClusterCheckTaskRequest) (response *CreateClusterCheckTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateClusterCheckTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateClusterCheckTaskResponse()
     err = c.Send(request, response)
@@ -627,6 +949,29 @@ func (c *Client) CreateComplianceTask(request *CreateComplianceTaskRequest) (res
     return
 }
 
+// CreateComplianceTask
+// 创建合规检查任务，在资产级别触发重新检测时使用。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateComplianceTaskWithContext(ctx context.Context, request *CreateComplianceTaskRequest) (response *CreateComplianceTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateComplianceTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateComplianceTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateExportComplianceStatusListJobRequest() (request *CreateExportComplianceStatusListJobRequest) {
     request = &CreateExportComplianceStatusListJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -659,6 +1004,28 @@ func (c *Client) CreateExportComplianceStatusListJob(request *CreateExportCompli
     if request == nil {
         request = NewCreateExportComplianceStatusListJobRequest()
     }
+    
+    response = NewCreateExportComplianceStatusListJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateExportComplianceStatusListJob
+// 创建一个导出安全合规信息的任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATANOTFOUND = "InvalidParameterValue.DataNotFound"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) CreateExportComplianceStatusListJobWithContext(ctx context.Context, request *CreateExportComplianceStatusListJobRequest) (response *CreateExportComplianceStatusListJobResponse, err error) {
+    if request == nil {
+        request = NewCreateExportComplianceStatusListJobRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateExportComplianceStatusListJobResponse()
     err = c.Send(request, response)
@@ -700,6 +1067,25 @@ func (c *Client) CreateOrModifyPostPayCores(request *CreateOrModifyPostPayCoresR
     return
 }
 
+// CreateOrModifyPostPayCores
+// CreateOrModifyPostPayCores  创建或者编辑弹性计费上限
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateOrModifyPostPayCoresWithContext(ctx context.Context, request *CreateOrModifyPostPayCoresRequest) (response *CreateOrModifyPostPayCoresResponse, err error) {
+    if request == nil {
+        request = NewCreateOrModifyPostPayCoresRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateOrModifyPostPayCoresResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRefreshTaskRequest() (request *CreateRefreshTaskRequest) {
     request = &CreateRefreshTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -732,6 +1118,28 @@ func (c *Client) CreateRefreshTask(request *CreateRefreshTaskRequest) (response 
     if request == nil {
         request = NewCreateRefreshTaskRequest()
     }
+    
+    response = NewCreateRefreshTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateRefreshTask
+// 下发刷新任务，会刷新资产信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateRefreshTaskWithContext(ctx context.Context, request *CreateRefreshTaskRequest) (response *CreateRefreshTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateRefreshTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateRefreshTaskResponse()
     err = c.Send(request, response)
@@ -777,6 +1185,29 @@ func (c *Client) CreateVirusScanAgain(request *CreateVirusScanAgainRequest) (res
     return
 }
 
+// CreateVirusScanAgain
+// 运行时文件查杀重新检测
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateVirusScanAgainWithContext(ctx context.Context, request *CreateVirusScanAgainRequest) (response *CreateVirusScanAgainResponse, err error) {
+    if request == nil {
+        request = NewCreateVirusScanAgainRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateVirusScanAgainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateVirusScanTaskRequest() (request *CreateVirusScanTaskRequest) {
     request = &CreateVirusScanTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -805,6 +1236,24 @@ func (c *Client) CreateVirusScanTask(request *CreateVirusScanTaskRequest) (respo
     if request == nil {
         request = NewCreateVirusScanTaskRequest()
     }
+    
+    response = NewCreateVirusScanTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateVirusScanTask
+// 运行时文件查杀一键扫描
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateVirusScanTaskWithContext(ctx context.Context, request *CreateVirusScanTaskRequest) (response *CreateVirusScanTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateVirusScanTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateVirusScanTaskResponse()
     err = c.Send(request, response)
@@ -849,6 +1298,28 @@ func (c *Client) DeleteAbnormalProcessRules(request *DeleteAbnormalProcessRulesR
     return
 }
 
+// DeleteAbnormalProcessRules
+// 删除运行异常进程策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteAbnormalProcessRulesWithContext(ctx context.Context, request *DeleteAbnormalProcessRulesRequest) (response *DeleteAbnormalProcessRulesResponse, err error) {
+    if request == nil {
+        request = NewDeleteAbnormalProcessRulesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteAbnormalProcessRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAccessControlRulesRequest() (request *DeleteAccessControlRulesRequest) {
     request = &DeleteAccessControlRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -881,6 +1352,28 @@ func (c *Client) DeleteAccessControlRules(request *DeleteAccessControlRulesReque
     if request == nil {
         request = NewDeleteAccessControlRulesRequest()
     }
+    
+    response = NewDeleteAccessControlRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteAccessControlRules
+// 删除运行访问控制策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteAccessControlRulesWithContext(ctx context.Context, request *DeleteAccessControlRulesRequest) (response *DeleteAccessControlRulesResponse, err error) {
+    if request == nil {
+        request = NewDeleteAccessControlRulesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteAccessControlRulesResponse()
     err = c.Send(request, response)
@@ -924,6 +1417,27 @@ func (c *Client) DeleteCompliancePolicyItemFromWhitelist(request *DeleteComplian
     return
 }
 
+// DeleteCompliancePolicyItemFromWhitelist
+// 从白名单中删除将指定的检测项。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) DeleteCompliancePolicyItemFromWhitelistWithContext(ctx context.Context, request *DeleteCompliancePolicyItemFromWhitelistRequest) (response *DeleteCompliancePolicyItemFromWhitelistResponse, err error) {
+    if request == nil {
+        request = NewDeleteCompliancePolicyItemFromWhitelistRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteCompliancePolicyItemFromWhitelistResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteReverseShellWhiteListsRequest() (request *DeleteReverseShellWhiteListsRequest) {
     request = &DeleteReverseShellWhiteListsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -961,6 +1475,27 @@ func (c *Client) DeleteReverseShellWhiteLists(request *DeleteReverseShellWhiteLi
     return
 }
 
+// DeleteReverseShellWhiteLists
+// 删除运行时反弹shell白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeleteReverseShellWhiteListsWithContext(ctx context.Context, request *DeleteReverseShellWhiteListsRequest) (response *DeleteReverseShellWhiteListsResponse, err error) {
+    if request == nil {
+        request = NewDeleteReverseShellWhiteListsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteReverseShellWhiteListsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteRiskSyscallWhiteListsRequest() (request *DeleteRiskSyscallWhiteListsRequest) {
     request = &DeleteRiskSyscallWhiteListsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -992,6 +1527,27 @@ func (c *Client) DeleteRiskSyscallWhiteLists(request *DeleteRiskSyscallWhiteList
     if request == nil {
         request = NewDeleteRiskSyscallWhiteListsRequest()
     }
+    
+    response = NewDeleteRiskSyscallWhiteListsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteRiskSyscallWhiteLists
+// 删除运行时高危系统调用白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeleteRiskSyscallWhiteListsWithContext(ctx context.Context, request *DeleteRiskSyscallWhiteListsRequest) (response *DeleteRiskSyscallWhiteListsResponse, err error) {
+    if request == nil {
+        request = NewDeleteRiskSyscallWhiteListsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteRiskSyscallWhiteListsResponse()
     err = c.Send(request, response)
@@ -1037,6 +1593,29 @@ func (c *Client) DescribeAbnormalProcessDetail(request *DescribeAbnormalProcessD
     return
 }
 
+// DescribeAbnormalProcessDetail
+// 查询运行时异常进程事件详细信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DATAVALUENOTCORRECT = "FailedOperation.DataValueNotCorrect"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAbnormalProcessDetailWithContext(ctx context.Context, request *DescribeAbnormalProcessDetailRequest) (response *DescribeAbnormalProcessDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeAbnormalProcessDetailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAbnormalProcessDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAbnormalProcessEventsRequest() (request *DescribeAbnormalProcessEventsRequest) {
     request = &DescribeAbnormalProcessEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1075,6 +1654,28 @@ func (c *Client) DescribeAbnormalProcessEvents(request *DescribeAbnormalProcessE
     return
 }
 
+// DescribeAbnormalProcessEvents
+// 查询运行时异常进程事件列表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAbnormalProcessEventsWithContext(ctx context.Context, request *DescribeAbnormalProcessEventsRequest) (response *DescribeAbnormalProcessEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAbnormalProcessEventsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAbnormalProcessEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAbnormalProcessEventsExportRequest() (request *DescribeAbnormalProcessEventsExportRequest) {
     request = &DescribeAbnormalProcessEventsExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1107,6 +1708,28 @@ func (c *Client) DescribeAbnormalProcessEventsExport(request *DescribeAbnormalPr
     if request == nil {
         request = NewDescribeAbnormalProcessEventsExportRequest()
     }
+    
+    response = NewDescribeAbnormalProcessEventsExportResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAbnormalProcessEventsExport
+// 查询运行时异常进程事件列表信息导出
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAbnormalProcessEventsExportWithContext(ctx context.Context, request *DescribeAbnormalProcessEventsExportRequest) (response *DescribeAbnormalProcessEventsExportResponse, err error) {
+    if request == nil {
+        request = NewDescribeAbnormalProcessEventsExportRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAbnormalProcessEventsExportResponse()
     err = c.Send(request, response)
@@ -1152,6 +1775,29 @@ func (c *Client) DescribeAbnormalProcessRuleDetail(request *DescribeAbnormalProc
     return
 }
 
+// DescribeAbnormalProcessRuleDetail
+// 查询运行时异常策略详细信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_RULENOTFIND = "FailedOperation.RuleNotFind"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAbnormalProcessRuleDetailWithContext(ctx context.Context, request *DescribeAbnormalProcessRuleDetailRequest) (response *DescribeAbnormalProcessRuleDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeAbnormalProcessRuleDetailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAbnormalProcessRuleDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAbnormalProcessRulesRequest() (request *DescribeAbnormalProcessRulesRequest) {
     request = &DescribeAbnormalProcessRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1190,6 +1836,28 @@ func (c *Client) DescribeAbnormalProcessRules(request *DescribeAbnormalProcessRu
     return
 }
 
+// DescribeAbnormalProcessRules
+// 查询运行时异常进程策略列表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAbnormalProcessRulesWithContext(ctx context.Context, request *DescribeAbnormalProcessRulesRequest) (response *DescribeAbnormalProcessRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAbnormalProcessRulesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAbnormalProcessRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAbnormalProcessRulesExportRequest() (request *DescribeAbnormalProcessRulesExportRequest) {
     request = &DescribeAbnormalProcessRulesExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1222,6 +1890,28 @@ func (c *Client) DescribeAbnormalProcessRulesExport(request *DescribeAbnormalPro
     if request == nil {
         request = NewDescribeAbnormalProcessRulesExportRequest()
     }
+    
+    response = NewDescribeAbnormalProcessRulesExportResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAbnormalProcessRulesExport
+// 查询运行时异常进程策略列表信息导出
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAbnormalProcessRulesExportWithContext(ctx context.Context, request *DescribeAbnormalProcessRulesExportRequest) (response *DescribeAbnormalProcessRulesExportResponse, err error) {
+    if request == nil {
+        request = NewDescribeAbnormalProcessRulesExportRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAbnormalProcessRulesExportResponse()
     err = c.Send(request, response)
@@ -1268,6 +1958,30 @@ func (c *Client) DescribeAccessControlDetail(request *DescribeAccessControlDetai
     return
 }
 
+// DescribeAccessControlDetail
+// 查询运行时访问控制事件的详细信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATAVALUENOTCORRECT = "FailedOperation.DataValueNotCorrect"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAccessControlDetailWithContext(ctx context.Context, request *DescribeAccessControlDetailRequest) (response *DescribeAccessControlDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccessControlDetailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAccessControlDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAccessControlEventsRequest() (request *DescribeAccessControlEventsRequest) {
     request = &DescribeAccessControlEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1306,6 +2020,28 @@ func (c *Client) DescribeAccessControlEvents(request *DescribeAccessControlEvent
     return
 }
 
+// DescribeAccessControlEvents
+// 查询运行时访问控制事件列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAccessControlEventsWithContext(ctx context.Context, request *DescribeAccessControlEventsRequest) (response *DescribeAccessControlEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccessControlEventsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAccessControlEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAccessControlEventsExportRequest() (request *DescribeAccessControlEventsExportRequest) {
     request = &DescribeAccessControlEventsExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1338,6 +2074,28 @@ func (c *Client) DescribeAccessControlEventsExport(request *DescribeAccessContro
     if request == nil {
         request = NewDescribeAccessControlEventsExportRequest()
     }
+    
+    response = NewDescribeAccessControlEventsExportResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAccessControlEventsExport
+// 查询运行时访问控制事件列表导出
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAccessControlEventsExportWithContext(ctx context.Context, request *DescribeAccessControlEventsExportRequest) (response *DescribeAccessControlEventsExportResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccessControlEventsExportRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAccessControlEventsExportResponse()
     err = c.Send(request, response)
@@ -1383,6 +2141,29 @@ func (c *Client) DescribeAccessControlRuleDetail(request *DescribeAccessControlR
     return
 }
 
+// DescribeAccessControlRuleDetail
+// 查询运行时访问控制策略详细信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_RULENOTFIND = "FailedOperation.RuleNotFind"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAccessControlRuleDetailWithContext(ctx context.Context, request *DescribeAccessControlRuleDetailRequest) (response *DescribeAccessControlRuleDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccessControlRuleDetailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAccessControlRuleDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAccessControlRulesRequest() (request *DescribeAccessControlRulesRequest) {
     request = &DescribeAccessControlRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1415,6 +2196,28 @@ func (c *Client) DescribeAccessControlRules(request *DescribeAccessControlRulesR
     if request == nil {
         request = NewDescribeAccessControlRulesRequest()
     }
+    
+    response = NewDescribeAccessControlRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAccessControlRules
+// 查询运行访问控制策略列表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAccessControlRulesWithContext(ctx context.Context, request *DescribeAccessControlRulesRequest) (response *DescribeAccessControlRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccessControlRulesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAccessControlRulesResponse()
     err = c.Send(request, response)
@@ -1459,6 +2262,28 @@ func (c *Client) DescribeAccessControlRulesExport(request *DescribeAccessControl
     return
 }
 
+// DescribeAccessControlRulesExport
+// 查询运行时访问控制策略列表导出
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAccessControlRulesExportWithContext(ctx context.Context, request *DescribeAccessControlRulesExportRequest) (response *DescribeAccessControlRulesExportResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccessControlRulesExportRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAccessControlRulesExportResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAffectedClusterCountRequest() (request *DescribeAffectedClusterCountRequest) {
     request = &DescribeAffectedClusterCountRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1491,6 +2316,28 @@ func (c *Client) DescribeAffectedClusterCount(request *DescribeAffectedClusterCo
     if request == nil {
         request = NewDescribeAffectedClusterCountRequest()
     }
+    
+    response = NewDescribeAffectedClusterCountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAffectedClusterCount
+// 获取受影响的集群数量，返回数量
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAffectedClusterCountWithContext(ctx context.Context, request *DescribeAffectedClusterCountRequest) (response *DescribeAffectedClusterCountResponse, err error) {
+    if request == nil {
+        request = NewDescribeAffectedClusterCountRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAffectedClusterCountResponse()
     err = c.Send(request, response)
@@ -1535,6 +2382,28 @@ func (c *Client) DescribeAffectedNodeList(request *DescribeAffectedNodeListReque
     return
 }
 
+// DescribeAffectedNodeList
+// 查询节点类型的影响范围，返回节点列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAffectedNodeListWithContext(ctx context.Context, request *DescribeAffectedNodeListRequest) (response *DescribeAffectedNodeListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAffectedNodeListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAffectedNodeListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAffectedWorkloadListRequest() (request *DescribeAffectedWorkloadListRequest) {
     request = &DescribeAffectedWorkloadListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1567,6 +2436,28 @@ func (c *Client) DescribeAffectedWorkloadList(request *DescribeAffectedWorkloadL
     if request == nil {
         request = NewDescribeAffectedWorkloadListRequest()
     }
+    
+    response = NewDescribeAffectedWorkloadListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAffectedWorkloadList
+// 查询workload类型的影响范围，返回workload列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAffectedWorkloadListWithContext(ctx context.Context, request *DescribeAffectedWorkloadListRequest) (response *DescribeAffectedWorkloadListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAffectedWorkloadListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAffectedWorkloadListResponse()
     err = c.Send(request, response)
@@ -1608,6 +2499,25 @@ func (c *Client) DescribeAssetAppServiceList(request *DescribeAssetAppServiceLis
     return
 }
 
+// DescribeAssetAppServiceList
+// 容器安全查询app服务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetAppServiceListWithContext(ctx context.Context, request *DescribeAssetAppServiceListRequest) (response *DescribeAssetAppServiceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetAppServiceListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetAppServiceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetComponentListRequest() (request *DescribeAssetComponentListRequest) {
     request = &DescribeAssetComponentListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1637,6 +2547,25 @@ func (c *Client) DescribeAssetComponentList(request *DescribeAssetComponentListR
     if request == nil {
         request = NewDescribeAssetComponentListRequest()
     }
+    
+    response = NewDescribeAssetComponentListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAssetComponentList
+// 容器安全搜索查询容器组件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetComponentListWithContext(ctx context.Context, request *DescribeAssetComponentListRequest) (response *DescribeAssetComponentListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetComponentListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAssetComponentListResponse()
     err = c.Send(request, response)
@@ -1678,6 +2607,25 @@ func (c *Client) DescribeAssetContainerDetail(request *DescribeAssetContainerDet
     return
 }
 
+// DescribeAssetContainerDetail
+// 查询容器详细信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetContainerDetailWithContext(ctx context.Context, request *DescribeAssetContainerDetailRequest) (response *DescribeAssetContainerDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetContainerDetailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetContainerDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetContainerListRequest() (request *DescribeAssetContainerListRequest) {
     request = &DescribeAssetContainerListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1707,6 +2655,25 @@ func (c *Client) DescribeAssetContainerList(request *DescribeAssetContainerListR
     if request == nil {
         request = NewDescribeAssetContainerListRequest()
     }
+    
+    response = NewDescribeAssetContainerListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAssetContainerList
+// 搜索查询容器列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetContainerListWithContext(ctx context.Context, request *DescribeAssetContainerListRequest) (response *DescribeAssetContainerListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetContainerListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAssetContainerListResponse()
     err = c.Send(request, response)
@@ -1748,6 +2715,25 @@ func (c *Client) DescribeAssetDBServiceList(request *DescribeAssetDBServiceListR
     return
 }
 
+// DescribeAssetDBServiceList
+// 容器安全查询db服务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetDBServiceListWithContext(ctx context.Context, request *DescribeAssetDBServiceListRequest) (response *DescribeAssetDBServiceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetDBServiceListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetDBServiceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetHostDetailRequest() (request *DescribeAssetHostDetailRequest) {
     request = &DescribeAssetHostDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1783,6 +2769,25 @@ func (c *Client) DescribeAssetHostDetail(request *DescribeAssetHostDetailRequest
     return
 }
 
+// DescribeAssetHostDetail
+// 查询主机详细信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetHostDetailWithContext(ctx context.Context, request *DescribeAssetHostDetailRequest) (response *DescribeAssetHostDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetHostDetailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetHostDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetHostListRequest() (request *DescribeAssetHostListRequest) {
     request = &DescribeAssetHostListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1812,6 +2817,25 @@ func (c *Client) DescribeAssetHostList(request *DescribeAssetHostListRequest) (r
     if request == nil {
         request = NewDescribeAssetHostListRequest()
     }
+    
+    response = NewDescribeAssetHostListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAssetHostList
+// 容器安全搜索查询主机列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetHostListWithContext(ctx context.Context, request *DescribeAssetHostListRequest) (response *DescribeAssetHostListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetHostListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAssetHostListResponse()
     err = c.Send(request, response)
@@ -1856,6 +2880,28 @@ func (c *Client) DescribeAssetImageBindRuleInfo(request *DescribeAssetImageBindR
     return
 }
 
+// DescribeAssetImageBindRuleInfo
+// 镜像绑定规则列表信息，包含运行时访问控制和异常进程公用
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetImageBindRuleInfoWithContext(ctx context.Context, request *DescribeAssetImageBindRuleInfoRequest) (response *DescribeAssetImageBindRuleInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetImageBindRuleInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetImageBindRuleInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetImageDetailRequest() (request *DescribeAssetImageDetailRequest) {
     request = &DescribeAssetImageDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1886,6 +2932,26 @@ func (c *Client) DescribeAssetImageDetail(request *DescribeAssetImageDetailReque
     if request == nil {
         request = NewDescribeAssetImageDetailRequest()
     }
+    
+    response = NewDescribeAssetImageDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAssetImageDetail
+// 查询镜像详细信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetImageDetailWithContext(ctx context.Context, request *DescribeAssetImageDetailRequest) (response *DescribeAssetImageDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetImageDetailRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAssetImageDetailResponse()
     err = c.Send(request, response)
@@ -1927,6 +2993,25 @@ func (c *Client) DescribeAssetImageHostList(request *DescribeAssetImageHostListR
     return
 }
 
+// DescribeAssetImageHostList
+// 容器安全查询镜像关联主机
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetImageHostListWithContext(ctx context.Context, request *DescribeAssetImageHostListRequest) (response *DescribeAssetImageHostListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetImageHostListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetImageHostListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetImageListRequest() (request *DescribeAssetImageListRequest) {
     request = &DescribeAssetImageListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1956,6 +3041,25 @@ func (c *Client) DescribeAssetImageList(request *DescribeAssetImageListRequest) 
     if request == nil {
         request = NewDescribeAssetImageListRequest()
     }
+    
+    response = NewDescribeAssetImageListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAssetImageList
+// 容器安全搜索查询镜像列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetImageListWithContext(ctx context.Context, request *DescribeAssetImageListRequest) (response *DescribeAssetImageListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetImageListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAssetImageListResponse()
     err = c.Send(request, response)
@@ -1997,6 +3101,25 @@ func (c *Client) DescribeAssetImageListExport(request *DescribeAssetImageListExp
     return
 }
 
+// DescribeAssetImageListExport
+// 容器安全搜索查询镜像列表导出
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetImageListExportWithContext(ctx context.Context, request *DescribeAssetImageListExportRequest) (response *DescribeAssetImageListExportResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetImageListExportRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetImageListExportResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetImageRegistryAssetStatusRequest() (request *DescribeAssetImageRegistryAssetStatusRequest) {
     request = &DescribeAssetImageRegistryAssetStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2026,6 +3149,25 @@ func (c *Client) DescribeAssetImageRegistryAssetStatus(request *DescribeAssetIma
     if request == nil {
         request = NewDescribeAssetImageRegistryAssetStatusRequest()
     }
+    
+    response = NewDescribeAssetImageRegistryAssetStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAssetImageRegistryAssetStatus
+// 查看镜像仓库资产更新进度状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetImageRegistryAssetStatusWithContext(ctx context.Context, request *DescribeAssetImageRegistryAssetStatusRequest) (response *DescribeAssetImageRegistryAssetStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetImageRegistryAssetStatusRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAssetImageRegistryAssetStatusResponse()
     err = c.Send(request, response)
@@ -2065,6 +3207,23 @@ func (c *Client) DescribeAssetImageRegistryDetail(request *DescribeAssetImageReg
     return
 }
 
+// DescribeAssetImageRegistryDetail
+// 镜像仓库镜像仓库列表详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetImageRegistryDetailWithContext(ctx context.Context, request *DescribeAssetImageRegistryDetailRequest) (response *DescribeAssetImageRegistryDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetImageRegistryDetailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetImageRegistryDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetImageRegistryListRequest() (request *DescribeAssetImageRegistryListRequest) {
     request = &DescribeAssetImageRegistryListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2098,6 +3257,23 @@ func (c *Client) DescribeAssetImageRegistryList(request *DescribeAssetImageRegis
     return
 }
 
+// DescribeAssetImageRegistryList
+// 镜像仓库镜像仓库列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetImageRegistryListWithContext(ctx context.Context, request *DescribeAssetImageRegistryListRequest) (response *DescribeAssetImageRegistryListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetImageRegistryListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetImageRegistryListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetImageRegistryListExportRequest() (request *DescribeAssetImageRegistryListExportRequest) {
     request = &DescribeAssetImageRegistryListExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2125,6 +3301,23 @@ func (c *Client) DescribeAssetImageRegistryListExport(request *DescribeAssetImag
     if request == nil {
         request = NewDescribeAssetImageRegistryListExportRequest()
     }
+    
+    response = NewDescribeAssetImageRegistryListExportResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAssetImageRegistryListExport
+// 镜像仓库镜像列表导出
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetImageRegistryListExportWithContext(ctx context.Context, request *DescribeAssetImageRegistryListExportRequest) (response *DescribeAssetImageRegistryListExportResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetImageRegistryListExportRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAssetImageRegistryListExportResponse()
     err = c.Send(request, response)
@@ -2171,6 +3364,30 @@ func (c *Client) DescribeAssetImageRegistryRegistryDetail(request *DescribeAsset
     return
 }
 
+// DescribeAssetImageRegistryRegistryDetail
+// 查看单个镜像仓库详细信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATAVALUENOTCORRECT = "FailedOperation.DataValueNotCorrect"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetImageRegistryRegistryDetailWithContext(ctx context.Context, request *DescribeAssetImageRegistryRegistryDetailRequest) (response *DescribeAssetImageRegistryRegistryDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetImageRegistryRegistryDetailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetImageRegistryRegistryDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetImageRegistryRegistryListRequest() (request *DescribeAssetImageRegistryRegistryListRequest) {
     request = &DescribeAssetImageRegistryRegistryListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2198,6 +3415,23 @@ func (c *Client) DescribeAssetImageRegistryRegistryList(request *DescribeAssetIm
     if request == nil {
         request = NewDescribeAssetImageRegistryRegistryListRequest()
     }
+    
+    response = NewDescribeAssetImageRegistryRegistryListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAssetImageRegistryRegistryList
+// 镜像仓库仓库列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetImageRegistryRegistryListWithContext(ctx context.Context, request *DescribeAssetImageRegistryRegistryListRequest) (response *DescribeAssetImageRegistryRegistryListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetImageRegistryRegistryListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAssetImageRegistryRegistryListResponse()
     err = c.Send(request, response)
@@ -2239,6 +3473,25 @@ func (c *Client) DescribeAssetImageRegistryRiskInfoList(request *DescribeAssetIm
     return
 }
 
+// DescribeAssetImageRegistryRiskInfoList
+// 镜像仓库查询镜像高危行为列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetImageRegistryRiskInfoListWithContext(ctx context.Context, request *DescribeAssetImageRegistryRiskInfoListRequest) (response *DescribeAssetImageRegistryRiskInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetImageRegistryRiskInfoListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetImageRegistryRiskInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetImageRegistryRiskListExportRequest() (request *DescribeAssetImageRegistryRiskListExportRequest) {
     request = &DescribeAssetImageRegistryRiskListExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2266,6 +3519,23 @@ func (c *Client) DescribeAssetImageRegistryRiskListExport(request *DescribeAsset
     if request == nil {
         request = NewDescribeAssetImageRegistryRiskListExportRequest()
     }
+    
+    response = NewDescribeAssetImageRegistryRiskListExportResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAssetImageRegistryRiskListExport
+// 镜像仓库敏感信息列表导出
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetImageRegistryRiskListExportWithContext(ctx context.Context, request *DescribeAssetImageRegistryRiskListExportRequest) (response *DescribeAssetImageRegistryRiskListExportResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetImageRegistryRiskListExportRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAssetImageRegistryRiskListExportResponse()
     err = c.Send(request, response)
@@ -2306,6 +3576,24 @@ func (c *Client) DescribeAssetImageRegistryScanStatusOneKey(request *DescribeAss
     return
 }
 
+// DescribeAssetImageRegistryScanStatusOneKey
+// 镜像仓库查询一键镜像扫描状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetImageRegistryScanStatusOneKeyWithContext(ctx context.Context, request *DescribeAssetImageRegistryScanStatusOneKeyRequest) (response *DescribeAssetImageRegistryScanStatusOneKeyResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetImageRegistryScanStatusOneKeyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetImageRegistryScanStatusOneKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetImageRegistrySummaryRequest() (request *DescribeAssetImageRegistrySummaryRequest) {
     request = &DescribeAssetImageRegistrySummaryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2333,6 +3621,23 @@ func (c *Client) DescribeAssetImageRegistrySummary(request *DescribeAssetImageRe
     if request == nil {
         request = NewDescribeAssetImageRegistrySummaryRequest()
     }
+    
+    response = NewDescribeAssetImageRegistrySummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAssetImageRegistrySummary
+// 镜像仓库查询镜像统计信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetImageRegistrySummaryWithContext(ctx context.Context, request *DescribeAssetImageRegistrySummaryRequest) (response *DescribeAssetImageRegistrySummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetImageRegistrySummaryRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAssetImageRegistrySummaryResponse()
     err = c.Send(request, response)
@@ -2372,6 +3677,23 @@ func (c *Client) DescribeAssetImageRegistryVirusList(request *DescribeAssetImage
     return
 }
 
+// DescribeAssetImageRegistryVirusList
+// 镜像仓库查询木马病毒列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetImageRegistryVirusListWithContext(ctx context.Context, request *DescribeAssetImageRegistryVirusListRequest) (response *DescribeAssetImageRegistryVirusListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetImageRegistryVirusListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetImageRegistryVirusListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetImageRegistryVirusListExportRequest() (request *DescribeAssetImageRegistryVirusListExportRequest) {
     request = &DescribeAssetImageRegistryVirusListExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2399,6 +3721,23 @@ func (c *Client) DescribeAssetImageRegistryVirusListExport(request *DescribeAsse
     if request == nil {
         request = NewDescribeAssetImageRegistryVirusListExportRequest()
     }
+    
+    response = NewDescribeAssetImageRegistryVirusListExportResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAssetImageRegistryVirusListExport
+// 镜像仓库木马信息列表导出
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetImageRegistryVirusListExportWithContext(ctx context.Context, request *DescribeAssetImageRegistryVirusListExportRequest) (response *DescribeAssetImageRegistryVirusListExportResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetImageRegistryVirusListExportRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAssetImageRegistryVirusListExportResponse()
     err = c.Send(request, response)
@@ -2438,6 +3777,23 @@ func (c *Client) DescribeAssetImageRegistryVulList(request *DescribeAssetImageRe
     return
 }
 
+// DescribeAssetImageRegistryVulList
+// 镜像仓库查询镜像漏洞列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetImageRegistryVulListWithContext(ctx context.Context, request *DescribeAssetImageRegistryVulListRequest) (response *DescribeAssetImageRegistryVulListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetImageRegistryVulListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetImageRegistryVulListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetImageRegistryVulListExportRequest() (request *DescribeAssetImageRegistryVulListExportRequest) {
     request = &DescribeAssetImageRegistryVulListExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2465,6 +3821,23 @@ func (c *Client) DescribeAssetImageRegistryVulListExport(request *DescribeAssetI
     if request == nil {
         request = NewDescribeAssetImageRegistryVulListExportRequest()
     }
+    
+    response = NewDescribeAssetImageRegistryVulListExportResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAssetImageRegistryVulListExport
+// 镜像仓库漏洞列表导出
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetImageRegistryVulListExportWithContext(ctx context.Context, request *DescribeAssetImageRegistryVulListExportRequest) (response *DescribeAssetImageRegistryVulListExportResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetImageRegistryVulListExportRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAssetImageRegistryVulListExportResponse()
     err = c.Send(request, response)
@@ -2507,6 +3880,26 @@ func (c *Client) DescribeAssetImageRiskList(request *DescribeAssetImageRiskListR
     return
 }
 
+// DescribeAssetImageRiskList
+// 容器安全查询镜像风险列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetImageRiskListWithContext(ctx context.Context, request *DescribeAssetImageRiskListRequest) (response *DescribeAssetImageRiskListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetImageRiskListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetImageRiskListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetImageRiskListExportRequest() (request *DescribeAssetImageRiskListExportRequest) {
     request = &DescribeAssetImageRiskListExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2536,6 +3929,25 @@ func (c *Client) DescribeAssetImageRiskListExport(request *DescribeAssetImageRis
     if request == nil {
         request = NewDescribeAssetImageRiskListExportRequest()
     }
+    
+    response = NewDescribeAssetImageRiskListExportResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAssetImageRiskListExport
+// 容器安全搜索查询镜像风险列表导出
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetImageRiskListExportWithContext(ctx context.Context, request *DescribeAssetImageRiskListExportRequest) (response *DescribeAssetImageRiskListExportResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetImageRiskListExportRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAssetImageRiskListExportResponse()
     err = c.Send(request, response)
@@ -2576,6 +3988,24 @@ func (c *Client) DescribeAssetImageScanSetting(request *DescribeAssetImageScanSe
     return
 }
 
+// DescribeAssetImageScanSetting
+// 获取镜像扫描设置信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+func (c *Client) DescribeAssetImageScanSettingWithContext(ctx context.Context, request *DescribeAssetImageScanSettingRequest) (response *DescribeAssetImageScanSettingResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetImageScanSettingRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetImageScanSettingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetImageScanStatusRequest() (request *DescribeAssetImageScanStatusRequest) {
     request = &DescribeAssetImageScanStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2599,12 +4029,33 @@ func NewDescribeAssetImageScanStatusResponse() (response *DescribeAssetImageScan
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageScanStatus(request *DescribeAssetImageScanStatusRequest) (response *DescribeAssetImageScanStatusResponse, err error) {
     if request == nil {
         request = NewDescribeAssetImageScanStatusRequest()
     }
+    
+    response = NewDescribeAssetImageScanStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAssetImageScanStatus
+// 容器安全查询镜像扫描状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetImageScanStatusWithContext(ctx context.Context, request *DescribeAssetImageScanStatusRequest) (response *DescribeAssetImageScanStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetImageScanStatusRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAssetImageScanStatusResponse()
     err = c.Send(request, response)
@@ -2646,6 +4097,25 @@ func (c *Client) DescribeAssetImageScanTask(request *DescribeAssetImageScanTaskR
     return
 }
 
+// DescribeAssetImageScanTask
+// 查询正在一键扫描的镜像扫描taskid
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetImageScanTaskWithContext(ctx context.Context, request *DescribeAssetImageScanTaskRequest) (response *DescribeAssetImageScanTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetImageScanTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetImageScanTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetImageSimpleListRequest() (request *DescribeAssetImageSimpleListRequest) {
     request = &DescribeAssetImageSimpleListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2675,6 +4145,25 @@ func (c *Client) DescribeAssetImageSimpleList(request *DescribeAssetImageSimpleL
     if request == nil {
         request = NewDescribeAssetImageSimpleListRequest()
     }
+    
+    response = NewDescribeAssetImageSimpleListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAssetImageSimpleList
+// 容器安全搜索查询镜像简略信息列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetImageSimpleListWithContext(ctx context.Context, request *DescribeAssetImageSimpleListRequest) (response *DescribeAssetImageSimpleListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetImageSimpleListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAssetImageSimpleListResponse()
     err = c.Send(request, response)
@@ -2717,6 +4206,26 @@ func (c *Client) DescribeAssetImageVirusList(request *DescribeAssetImageVirusLis
     return
 }
 
+// DescribeAssetImageVirusList
+// 容器安全查询镜像病毒列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetImageVirusListWithContext(ctx context.Context, request *DescribeAssetImageVirusListRequest) (response *DescribeAssetImageVirusListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetImageVirusListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetImageVirusListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetImageVirusListExportRequest() (request *DescribeAssetImageVirusListExportRequest) {
     request = &DescribeAssetImageVirusListExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2746,6 +4255,25 @@ func (c *Client) DescribeAssetImageVirusListExport(request *DescribeAssetImageVi
     if request == nil {
         request = NewDescribeAssetImageVirusListExportRequest()
     }
+    
+    response = NewDescribeAssetImageVirusListExportResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAssetImageVirusListExport
+// 容器安全搜索查询镜像木马列表导出
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetImageVirusListExportWithContext(ctx context.Context, request *DescribeAssetImageVirusListExportRequest) (response *DescribeAssetImageVirusListExportResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetImageVirusListExportRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAssetImageVirusListExportResponse()
     err = c.Send(request, response)
@@ -2788,6 +4316,26 @@ func (c *Client) DescribeAssetImageVulList(request *DescribeAssetImageVulListReq
     return
 }
 
+// DescribeAssetImageVulList
+// 容器安全查询镜像漏洞列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetImageVulListWithContext(ctx context.Context, request *DescribeAssetImageVulListRequest) (response *DescribeAssetImageVulListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetImageVulListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetImageVulListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetImageVulListExportRequest() (request *DescribeAssetImageVulListExportRequest) {
     request = &DescribeAssetImageVulListExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2817,6 +4365,25 @@ func (c *Client) DescribeAssetImageVulListExport(request *DescribeAssetImageVulL
     if request == nil {
         request = NewDescribeAssetImageVulListExportRequest()
     }
+    
+    response = NewDescribeAssetImageVulListExportResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAssetImageVulListExport
+// 容器安全搜索查询镜像漏洞列表导出
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetImageVulListExportWithContext(ctx context.Context, request *DescribeAssetImageVulListExportRequest) (response *DescribeAssetImageVulListExportResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetImageVulListExportRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAssetImageVulListExportResponse()
     err = c.Send(request, response)
@@ -2858,6 +4425,25 @@ func (c *Client) DescribeAssetPortList(request *DescribeAssetPortListRequest) (r
     return
 }
 
+// DescribeAssetPortList
+// 容器安全搜索查询端口占用列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetPortListWithContext(ctx context.Context, request *DescribeAssetPortListRequest) (response *DescribeAssetPortListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetPortListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetPortListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetProcessListRequest() (request *DescribeAssetProcessListRequest) {
     request = &DescribeAssetProcessListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2887,6 +4473,25 @@ func (c *Client) DescribeAssetProcessList(request *DescribeAssetProcessListReque
     if request == nil {
         request = NewDescribeAssetProcessListRequest()
     }
+    
+    response = NewDescribeAssetProcessListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAssetProcessList
+// 容器安全搜索查询进程列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetProcessListWithContext(ctx context.Context, request *DescribeAssetProcessListRequest) (response *DescribeAssetProcessListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetProcessListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAssetProcessListResponse()
     err = c.Send(request, response)
@@ -2928,6 +4533,25 @@ func (c *Client) DescribeAssetSummary(request *DescribeAssetSummaryRequest) (res
     return
 }
 
+// DescribeAssetSummary
+// 查询账户容器、镜像等统计信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetSummaryWithContext(ctx context.Context, request *DescribeAssetSummaryRequest) (response *DescribeAssetSummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetSummaryRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetWebServiceListRequest() (request *DescribeAssetWebServiceListRequest) {
     request = &DescribeAssetWebServiceListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2957,6 +4581,25 @@ func (c *Client) DescribeAssetWebServiceList(request *DescribeAssetWebServiceLis
     if request == nil {
         request = NewDescribeAssetWebServiceListRequest()
     }
+    
+    response = NewDescribeAssetWebServiceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAssetWebServiceList
+// 容器安全查询web服务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAssetWebServiceListWithContext(ctx context.Context, request *DescribeAssetWebServiceListRequest) (response *DescribeAssetWebServiceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetWebServiceListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAssetWebServiceListResponse()
     err = c.Send(request, response)
@@ -3001,6 +4644,28 @@ func (c *Client) DescribeCheckItemList(request *DescribeCheckItemListRequest) (r
     return
 }
 
+// DescribeCheckItemList
+// 查询所有检查项接口，返回总数和检查项列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeCheckItemListWithContext(ctx context.Context, request *DescribeCheckItemListRequest) (response *DescribeCheckItemListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCheckItemListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeCheckItemListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterDetailRequest() (request *DescribeClusterDetailRequest) {
     request = &DescribeClusterDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3033,6 +4698,28 @@ func (c *Client) DescribeClusterDetail(request *DescribeClusterDetailRequest) (r
     if request == nil {
         request = NewDescribeClusterDetailRequest()
     }
+    
+    response = NewDescribeClusterDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeClusterDetail
+// 查询单个集群的详细信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeClusterDetailWithContext(ctx context.Context, request *DescribeClusterDetailRequest) (response *DescribeClusterDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterDetailRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeClusterDetailResponse()
     err = c.Send(request, response)
@@ -3077,6 +4764,28 @@ func (c *Client) DescribeClusterSummary(request *DescribeClusterSummaryRequest) 
     return
 }
 
+// DescribeClusterSummary
+// 查询用户集群资产总览
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeClusterSummaryWithContext(ctx context.Context, request *DescribeClusterSummaryRequest) (response *DescribeClusterSummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterSummaryRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeComplianceAssetDetailInfoRequest() (request *DescribeComplianceAssetDetailInfoRequest) {
     request = &DescribeComplianceAssetDetailInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3115,6 +4824,28 @@ func (c *Client) DescribeComplianceAssetDetailInfo(request *DescribeComplianceAs
     return
 }
 
+// DescribeComplianceAssetDetailInfo
+// 查询某个资产的详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) DescribeComplianceAssetDetailInfoWithContext(ctx context.Context, request *DescribeComplianceAssetDetailInfoRequest) (response *DescribeComplianceAssetDetailInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeComplianceAssetDetailInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeComplianceAssetDetailInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeComplianceAssetListRequest() (request *DescribeComplianceAssetListRequest) {
     request = &DescribeComplianceAssetListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3146,6 +4877,27 @@ func (c *Client) DescribeComplianceAssetList(request *DescribeComplianceAssetLis
     if request == nil {
         request = NewDescribeComplianceAssetListRequest()
     }
+    
+    response = NewDescribeComplianceAssetListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeComplianceAssetList
+// 查询某类资产的列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) DescribeComplianceAssetListWithContext(ctx context.Context, request *DescribeComplianceAssetListRequest) (response *DescribeComplianceAssetListResponse, err error) {
+    if request == nil {
+        request = NewDescribeComplianceAssetListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeComplianceAssetListResponse()
     err = c.Send(request, response)
@@ -3190,6 +4942,28 @@ func (c *Client) DescribeComplianceAssetPolicyItemList(request *DescribeComplian
     return
 }
 
+// DescribeComplianceAssetPolicyItemList
+// 查询某资产下的检测项列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) DescribeComplianceAssetPolicyItemListWithContext(ctx context.Context, request *DescribeComplianceAssetPolicyItemListRequest) (response *DescribeComplianceAssetPolicyItemListResponse, err error) {
+    if request == nil {
+        request = NewDescribeComplianceAssetPolicyItemListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeComplianceAssetPolicyItemListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCompliancePeriodTaskListRequest() (request *DescribeCompliancePeriodTaskListRequest) {
     request = &DescribeCompliancePeriodTaskListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3220,6 +4994,26 @@ func (c *Client) DescribeCompliancePeriodTaskList(request *DescribeCompliancePer
     if request == nil {
         request = NewDescribeCompliancePeriodTaskListRequest()
     }
+    
+    response = NewDescribeCompliancePeriodTaskListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCompliancePeriodTaskList
+// 查询合规检测的定时任务列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) DescribeCompliancePeriodTaskListWithContext(ctx context.Context, request *DescribeCompliancePeriodTaskListRequest) (response *DescribeCompliancePeriodTaskListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCompliancePeriodTaskListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeCompliancePeriodTaskListResponse()
     err = c.Send(request, response)
@@ -3263,6 +5057,27 @@ func (c *Client) DescribeCompliancePolicyItemAffectedAssetList(request *Describe
     return
 }
 
+// DescribeCompliancePolicyItemAffectedAssetList
+// 按照 检测项 → 资产 的两级层次展开的第二层级：资产层级。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) DescribeCompliancePolicyItemAffectedAssetListWithContext(ctx context.Context, request *DescribeCompliancePolicyItemAffectedAssetListRequest) (response *DescribeCompliancePolicyItemAffectedAssetListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCompliancePolicyItemAffectedAssetListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeCompliancePolicyItemAffectedAssetListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCompliancePolicyItemAffectedSummaryRequest() (request *DescribeCompliancePolicyItemAffectedSummaryRequest) {
     request = &DescribeCompliancePolicyItemAffectedSummaryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3294,6 +5109,27 @@ func (c *Client) DescribeCompliancePolicyItemAffectedSummary(request *DescribeCo
     if request == nil {
         request = NewDescribeCompliancePolicyItemAffectedSummaryRequest()
     }
+    
+    response = NewDescribeCompliancePolicyItemAffectedSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCompliancePolicyItemAffectedSummary
+// 按照 检测项 → 资产 的两级层次展开的第一层级：检测项层级。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) DescribeCompliancePolicyItemAffectedSummaryWithContext(ctx context.Context, request *DescribeCompliancePolicyItemAffectedSummaryRequest) (response *DescribeCompliancePolicyItemAffectedSummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribeCompliancePolicyItemAffectedSummaryRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeCompliancePolicyItemAffectedSummaryResponse()
     err = c.Send(request, response)
@@ -3337,6 +5173,27 @@ func (c *Client) DescribeComplianceScanFailedAssetList(request *DescribeComplian
     return
 }
 
+// DescribeComplianceScanFailedAssetList
+// 按照 资产 → 检测项 二层结构展示的信息。这里查询第一层 资产的通过率汇总信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) DescribeComplianceScanFailedAssetListWithContext(ctx context.Context, request *DescribeComplianceScanFailedAssetListRequest) (response *DescribeComplianceScanFailedAssetListResponse, err error) {
+    if request == nil {
+        request = NewDescribeComplianceScanFailedAssetListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeComplianceScanFailedAssetListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeComplianceTaskAssetSummaryRequest() (request *DescribeComplianceTaskAssetSummaryRequest) {
     request = &DescribeComplianceTaskAssetSummaryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3368,6 +5225,27 @@ func (c *Client) DescribeComplianceTaskAssetSummary(request *DescribeComplianceT
     if request == nil {
         request = NewDescribeComplianceTaskAssetSummaryRequest()
     }
+    
+    response = NewDescribeComplianceTaskAssetSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeComplianceTaskAssetSummary
+// 查询上次任务的资产通过率汇总信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) DescribeComplianceTaskAssetSummaryWithContext(ctx context.Context, request *DescribeComplianceTaskAssetSummaryRequest) (response *DescribeComplianceTaskAssetSummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribeComplianceTaskAssetSummaryRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeComplianceTaskAssetSummaryResponse()
     err = c.Send(request, response)
@@ -3412,6 +5290,28 @@ func (c *Client) DescribeComplianceTaskPolicyItemSummaryList(request *DescribeCo
     return
 }
 
+// DescribeComplianceTaskPolicyItemSummaryList
+// 查询最近一次任务发现的检测项的汇总信息列表，按照 检测项 → 资产 的两级层次展开。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeComplianceTaskPolicyItemSummaryListWithContext(ctx context.Context, request *DescribeComplianceTaskPolicyItemSummaryListRequest) (response *DescribeComplianceTaskPolicyItemSummaryListResponse, err error) {
+    if request == nil {
+        request = NewDescribeComplianceTaskPolicyItemSummaryListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeComplianceTaskPolicyItemSummaryListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeComplianceWhitelistItemListRequest() (request *DescribeComplianceWhitelistItemListRequest) {
     request = &DescribeComplianceWhitelistItemListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3443,6 +5343,27 @@ func (c *Client) DescribeComplianceWhitelistItemList(request *DescribeCompliance
     if request == nil {
         request = NewDescribeComplianceWhitelistItemListRequest()
     }
+    
+    response = NewDescribeComplianceWhitelistItemListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeComplianceWhitelistItemList
+// 查询白名单列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) DescribeComplianceWhitelistItemListWithContext(ctx context.Context, request *DescribeComplianceWhitelistItemListRequest) (response *DescribeComplianceWhitelistItemListResponse, err error) {
+    if request == nil {
+        request = NewDescribeComplianceWhitelistItemListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeComplianceWhitelistItemListResponse()
     err = c.Send(request, response)
@@ -3482,6 +5403,23 @@ func (c *Client) DescribeContainerAssetSummary(request *DescribeContainerAssetSu
     return
 }
 
+// DescribeContainerAssetSummary
+// 查询容器资产概览信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeContainerAssetSummaryWithContext(ctx context.Context, request *DescribeContainerAssetSummaryRequest) (response *DescribeContainerAssetSummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribeContainerAssetSummaryRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeContainerAssetSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeContainerSecEventSummaryRequest() (request *DescribeContainerSecEventSummaryRequest) {
     request = &DescribeContainerSecEventSummaryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3515,6 +5453,23 @@ func (c *Client) DescribeContainerSecEventSummary(request *DescribeContainerSecE
     return
 }
 
+// DescribeContainerSecEventSummary
+// 查询容器安全未处理事件信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeContainerSecEventSummaryWithContext(ctx context.Context, request *DescribeContainerSecEventSummaryRequest) (response *DescribeContainerSecEventSummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribeContainerSecEventSummaryRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeContainerSecEventSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEscapeEventDetailRequest() (request *DescribeEscapeEventDetailRequest) {
     request = &DescribeEscapeEventDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3538,11 +5493,31 @@ func NewDescribeEscapeEventDetailResponse() (response *DescribeEscapeEventDetail
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 func (c *Client) DescribeEscapeEventDetail(request *DescribeEscapeEventDetailRequest) (response *DescribeEscapeEventDetailResponse, err error) {
     if request == nil {
         request = NewDescribeEscapeEventDetailRequest()
     }
+    
+    response = NewDescribeEscapeEventDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeEscapeEventDetail
+// DescribeEscapeEventDetail  查询容器逃逸事件详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+func (c *Client) DescribeEscapeEventDetailWithContext(ctx context.Context, request *DescribeEscapeEventDetailRequest) (response *DescribeEscapeEventDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeEscapeEventDetailRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeEscapeEventDetailResponse()
     err = c.Send(request, response)
@@ -3583,6 +5558,24 @@ func (c *Client) DescribeEscapeEventInfo(request *DescribeEscapeEventInfoRequest
     return
 }
 
+// DescribeEscapeEventInfo
+// DescribeEscapeEventInfo 查询容器逃逸事件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeEscapeEventInfoWithContext(ctx context.Context, request *DescribeEscapeEventInfoRequest) (response *DescribeEscapeEventInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeEscapeEventInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeEscapeEventInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEscapeEventsExportRequest() (request *DescribeEscapeEventsExportRequest) {
     request = &DescribeEscapeEventsExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3611,6 +5604,24 @@ func (c *Client) DescribeEscapeEventsExport(request *DescribeEscapeEventsExportR
     if request == nil {
         request = NewDescribeEscapeEventsExportRequest()
     }
+    
+    response = NewDescribeEscapeEventsExportResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeEscapeEventsExport
+// DescribeEscapeEventsExport  查询容器逃逸事件列表导出
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeEscapeEventsExportWithContext(ctx context.Context, request *DescribeEscapeEventsExportRequest) (response *DescribeEscapeEventsExportResponse, err error) {
+    if request == nil {
+        request = NewDescribeEscapeEventsExportRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeEscapeEventsExportResponse()
     err = c.Send(request, response)
@@ -3650,6 +5661,23 @@ func (c *Client) DescribeEscapeRuleInfo(request *DescribeEscapeRuleInfoRequest) 
     return
 }
 
+// DescribeEscapeRuleInfo
+// DescribeEscapeRuleInfo 查询容器逃逸扫描规则信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeEscapeRuleInfoWithContext(ctx context.Context, request *DescribeEscapeRuleInfoRequest) (response *DescribeEscapeRuleInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeEscapeRuleInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeEscapeRuleInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEscapeSafeStateRequest() (request *DescribeEscapeSafeStateRequest) {
     request = &DescribeEscapeSafeStateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3677,6 +5705,23 @@ func (c *Client) DescribeEscapeSafeState(request *DescribeEscapeSafeStateRequest
     if request == nil {
         request = NewDescribeEscapeSafeStateRequest()
     }
+    
+    response = NewDescribeEscapeSafeStateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeEscapeSafeState
+// DescribeEscapeSafeState 查询容器逃逸安全状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeEscapeSafeStateWithContext(ctx context.Context, request *DescribeEscapeSafeStateRequest) (response *DescribeEscapeSafeStateResponse, err error) {
+    if request == nil {
+        request = NewDescribeEscapeSafeStateRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeEscapeSafeStateResponse()
     err = c.Send(request, response)
@@ -3721,6 +5766,28 @@ func (c *Client) DescribeExportJobResult(request *DescribeExportJobResultRequest
     return
 }
 
+// DescribeExportJobResult
+// 查询导出任务的结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATANOTFOUND = "InvalidParameterValue.DataNotFound"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) DescribeExportJobResultWithContext(ctx context.Context, request *DescribeExportJobResultRequest) (response *DescribeExportJobResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeExportJobResultRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeExportJobResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeImageAuthorizedInfoRequest() (request *DescribeImageAuthorizedInfoRequest) {
     request = &DescribeImageAuthorizedInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3748,6 +5815,23 @@ func (c *Client) DescribeImageAuthorizedInfo(request *DescribeImageAuthorizedInf
     if request == nil {
         request = NewDescribeImageAuthorizedInfoRequest()
     }
+    
+    response = NewDescribeImageAuthorizedInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeImageAuthorizedInfo
+// DescribeImageAuthorizedInfo  查询镜像授权信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+func (c *Client) DescribeImageAuthorizedInfoWithContext(ctx context.Context, request *DescribeImageAuthorizedInfoRequest) (response *DescribeImageAuthorizedInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageAuthorizedInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeImageAuthorizedInfoResponse()
     err = c.Send(request, response)
@@ -3787,6 +5871,23 @@ func (c *Client) DescribeImageRegistryTimingScanTask(request *DescribeImageRegis
     return
 }
 
+// DescribeImageRegistryTimingScanTask
+// 镜像仓库查看定时任务
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeImageRegistryTimingScanTaskWithContext(ctx context.Context, request *DescribeImageRegistryTimingScanTaskRequest) (response *DescribeImageRegistryTimingScanTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageRegistryTimingScanTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageRegistryTimingScanTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeImageRiskSummaryRequest() (request *DescribeImageRiskSummaryRequest) {
     request = &DescribeImageRiskSummaryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3814,6 +5915,23 @@ func (c *Client) DescribeImageRiskSummary(request *DescribeImageRiskSummaryReque
     if request == nil {
         request = NewDescribeImageRiskSummaryRequest()
     }
+    
+    response = NewDescribeImageRiskSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeImageRiskSummary
+// 查询本地镜像风险概览
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeImageRiskSummaryWithContext(ctx context.Context, request *DescribeImageRiskSummaryRequest) (response *DescribeImageRiskSummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageRiskSummaryRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeImageRiskSummaryResponse()
     err = c.Send(request, response)
@@ -3858,6 +5976,28 @@ func (c *Client) DescribeImageRiskTendency(request *DescribeImageRiskTendencyReq
     return
 }
 
+// DescribeImageRiskTendency
+// 查询容器安全本地镜像风险趋势
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATARANGE = "InvalidParameterValue.DataRange"
+func (c *Client) DescribeImageRiskTendencyWithContext(ctx context.Context, request *DescribeImageRiskTendencyRequest) (response *DescribeImageRiskTendencyResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageRiskTendencyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageRiskTendencyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeImageSimpleListRequest() (request *DescribeImageSimpleListRequest) {
     request = &DescribeImageSimpleListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3892,6 +6032,24 @@ func (c *Client) DescribeImageSimpleList(request *DescribeImageSimpleListRequest
     return
 }
 
+// DescribeImageSimpleList
+// DescribeImageSimpleList 查询全部镜像列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeImageSimpleListWithContext(ctx context.Context, request *DescribeImageSimpleListRequest) (response *DescribeImageSimpleListResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageSimpleListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageSimpleListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePostPayDetailRequest() (request *DescribePostPayDetailRequest) {
     request = &DescribePostPayDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3919,6 +6077,23 @@ func (c *Client) DescribePostPayDetail(request *DescribePostPayDetailRequest) (r
     if request == nil {
         request = NewDescribePostPayDetailRequest()
     }
+    
+    response = NewDescribePostPayDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribePostPayDetail
+// DescribePostPayDetail  查询后付费详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+func (c *Client) DescribePostPayDetailWithContext(ctx context.Context, request *DescribePostPayDetailRequest) (response *DescribePostPayDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribePostPayDetailRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribePostPayDetailResponse()
     err = c.Send(request, response)
@@ -3960,6 +6135,25 @@ func (c *Client) DescribeProVersionInfo(request *DescribeProVersionInfoRequest) 
     return
 }
 
+// DescribeProVersionInfo
+// DescribeProVersionInfo  查询专业版需购买信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRROLENOTEXIST = "InternalError.ErrRoleNotExist"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+func (c *Client) DescribeProVersionInfoWithContext(ctx context.Context, request *DescribeProVersionInfoRequest) (response *DescribeProVersionInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeProVersionInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeProVersionInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePurchaseStateInfoRequest() (request *DescribePurchaseStateInfoRequest) {
     request = &DescribePurchaseStateInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3989,6 +6183,25 @@ func (c *Client) DescribePurchaseStateInfo(request *DescribePurchaseStateInfoReq
     if request == nil {
         request = NewDescribePurchaseStateInfoRequest()
     }
+    
+    response = NewDescribePurchaseStateInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribePurchaseStateInfo
+// DescribePurchaseStateInfo 查询容器安全服务已购买信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRROLENOTEXIST = "InternalError.ErrRoleNotExist"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribePurchaseStateInfoWithContext(ctx context.Context, request *DescribePurchaseStateInfoRequest) (response *DescribePurchaseStateInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribePurchaseStateInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribePurchaseStateInfoResponse()
     err = c.Send(request, response)
@@ -4027,6 +6240,28 @@ func (c *Client) DescribeRefreshTask(request *DescribeRefreshTaskRequest) (respo
     if request == nil {
         request = NewDescribeRefreshTaskRequest()
     }
+    
+    response = NewDescribeRefreshTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeRefreshTask
+// 查询刷新任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeRefreshTaskWithContext(ctx context.Context, request *DescribeRefreshTaskRequest) (response *DescribeRefreshTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeRefreshTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeRefreshTaskResponse()
     err = c.Send(request, response)
@@ -4072,6 +6307,29 @@ func (c *Client) DescribeReverseShellDetail(request *DescribeReverseShellDetailR
     return
 }
 
+// DescribeReverseShellDetail
+// 查询运行时反弹shell事件详细信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DATAVALUENOTCORRECT = "FailedOperation.DataValueNotCorrect"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATANOTFOUND = "InvalidParameterValue.DataNotFound"
+func (c *Client) DescribeReverseShellDetailWithContext(ctx context.Context, request *DescribeReverseShellDetailRequest) (response *DescribeReverseShellDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeReverseShellDetailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeReverseShellDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeReverseShellEventsRequest() (request *DescribeReverseShellEventsRequest) {
     request = &DescribeReverseShellEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4110,6 +6368,28 @@ func (c *Client) DescribeReverseShellEvents(request *DescribeReverseShellEventsR
     return
 }
 
+// DescribeReverseShellEvents
+// 查询运行时反弹shell事件列表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeReverseShellEventsWithContext(ctx context.Context, request *DescribeReverseShellEventsRequest) (response *DescribeReverseShellEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeReverseShellEventsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeReverseShellEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeReverseShellEventsExportRequest() (request *DescribeReverseShellEventsExportRequest) {
     request = &DescribeReverseShellEventsExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4142,6 +6422,28 @@ func (c *Client) DescribeReverseShellEventsExport(request *DescribeReverseShellE
     if request == nil {
         request = NewDescribeReverseShellEventsExportRequest()
     }
+    
+    response = NewDescribeReverseShellEventsExportResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeReverseShellEventsExport
+// 查询运行时反弹shell事件列表信息导出
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeReverseShellEventsExportWithContext(ctx context.Context, request *DescribeReverseShellEventsExportRequest) (response *DescribeReverseShellEventsExportResponse, err error) {
+    if request == nil {
+        request = NewDescribeReverseShellEventsExportRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeReverseShellEventsExportResponse()
     err = c.Send(request, response)
@@ -4187,6 +6489,29 @@ func (c *Client) DescribeReverseShellWhiteListDetail(request *DescribeReverseShe
     return
 }
 
+// DescribeReverseShellWhiteListDetail
+// 查询运行时反弹shell白名单详细信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DATAVALUENOTCORRECT = "FailedOperation.DataValueNotCorrect"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATANOTFOUND = "InvalidParameterValue.DataNotFound"
+func (c *Client) DescribeReverseShellWhiteListDetailWithContext(ctx context.Context, request *DescribeReverseShellWhiteListDetailRequest) (response *DescribeReverseShellWhiteListDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeReverseShellWhiteListDetailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeReverseShellWhiteListDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeReverseShellWhiteListsRequest() (request *DescribeReverseShellWhiteListsRequest) {
     request = &DescribeReverseShellWhiteListsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4218,6 +6543,27 @@ func (c *Client) DescribeReverseShellWhiteLists(request *DescribeReverseShellWhi
     if request == nil {
         request = NewDescribeReverseShellWhiteListsRequest()
     }
+    
+    response = NewDescribeReverseShellWhiteListsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeReverseShellWhiteLists
+// 查询运行时运行时反弹shell白名单列表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeReverseShellWhiteListsWithContext(ctx context.Context, request *DescribeReverseShellWhiteListsRequest) (response *DescribeReverseShellWhiteListsResponse, err error) {
+    if request == nil {
+        request = NewDescribeReverseShellWhiteListsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeReverseShellWhiteListsResponse()
     err = c.Send(request, response)
@@ -4256,6 +6602,28 @@ func (c *Client) DescribeRiskList(request *DescribeRiskListRequest) (response *D
     if request == nil {
         request = NewDescribeRiskListRequest()
     }
+    
+    response = NewDescribeRiskListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeRiskList
+// 查询最近一次任务发现的风险项的信息列表，支持根据特殊字段进行过滤
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeRiskListWithContext(ctx context.Context, request *DescribeRiskListRequest) (response *DescribeRiskListResponse, err error) {
+    if request == nil {
+        request = NewDescribeRiskListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeRiskListResponse()
     err = c.Send(request, response)
@@ -4301,6 +6669,29 @@ func (c *Client) DescribeRiskSyscallDetail(request *DescribeRiskSyscallDetailReq
     return
 }
 
+// DescribeRiskSyscallDetail
+// 查询高危系统调用事件详细信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DATAVALUENOTCORRECT = "FailedOperation.DataValueNotCorrect"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATANOTFOUND = "InvalidParameterValue.DataNotFound"
+func (c *Client) DescribeRiskSyscallDetailWithContext(ctx context.Context, request *DescribeRiskSyscallDetailRequest) (response *DescribeRiskSyscallDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeRiskSyscallDetailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeRiskSyscallDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRiskSyscallEventsRequest() (request *DescribeRiskSyscallEventsRequest) {
     request = &DescribeRiskSyscallEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4334,6 +6725,29 @@ func (c *Client) DescribeRiskSyscallEvents(request *DescribeRiskSyscallEventsReq
     if request == nil {
         request = NewDescribeRiskSyscallEventsRequest()
     }
+    
+    response = NewDescribeRiskSyscallEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeRiskSyscallEvents
+// 查询运行时运行时高危系统调用列表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRiskSyscallEventsWithContext(ctx context.Context, request *DescribeRiskSyscallEventsRequest) (response *DescribeRiskSyscallEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRiskSyscallEventsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeRiskSyscallEventsResponse()
     err = c.Send(request, response)
@@ -4378,6 +6792,28 @@ func (c *Client) DescribeRiskSyscallEventsExport(request *DescribeRiskSyscallEve
     return
 }
 
+// DescribeRiskSyscallEventsExport
+// 运行时高危系统调用列表导出
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRiskSyscallEventsExportWithContext(ctx context.Context, request *DescribeRiskSyscallEventsExportRequest) (response *DescribeRiskSyscallEventsExportResponse, err error) {
+    if request == nil {
+        request = NewDescribeRiskSyscallEventsExportRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeRiskSyscallEventsExportResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRiskSyscallNamesRequest() (request *DescribeRiskSyscallNamesRequest) {
     request = &DescribeRiskSyscallNamesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4410,6 +6846,28 @@ func (c *Client) DescribeRiskSyscallNames(request *DescribeRiskSyscallNamesReque
     if request == nil {
         request = NewDescribeRiskSyscallNamesRequest()
     }
+    
+    response = NewDescribeRiskSyscallNamesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeRiskSyscallNames
+// 查询运行时高危系统调用系统名称列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRiskSyscallNamesWithContext(ctx context.Context, request *DescribeRiskSyscallNamesRequest) (response *DescribeRiskSyscallNamesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRiskSyscallNamesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeRiskSyscallNamesResponse()
     err = c.Send(request, response)
@@ -4455,6 +6913,29 @@ func (c *Client) DescribeRiskSyscallWhiteListDetail(request *DescribeRiskSyscall
     return
 }
 
+// DescribeRiskSyscallWhiteListDetail
+// 查询运行时高危系统调用白名单详细信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DATAVALUENOTCORRECT = "FailedOperation.DataValueNotCorrect"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATANOTFOUND = "InvalidParameterValue.DataNotFound"
+func (c *Client) DescribeRiskSyscallWhiteListDetailWithContext(ctx context.Context, request *DescribeRiskSyscallWhiteListDetailRequest) (response *DescribeRiskSyscallWhiteListDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeRiskSyscallWhiteListDetailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeRiskSyscallWhiteListDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRiskSyscallWhiteListsRequest() (request *DescribeRiskSyscallWhiteListsRequest) {
     request = &DescribeRiskSyscallWhiteListsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4486,6 +6967,27 @@ func (c *Client) DescribeRiskSyscallWhiteLists(request *DescribeRiskSyscallWhite
     if request == nil {
         request = NewDescribeRiskSyscallWhiteListsRequest()
     }
+    
+    response = NewDescribeRiskSyscallWhiteListsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeRiskSyscallWhiteLists
+// 查询运行时高危系统调用白名单列表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeRiskSyscallWhiteListsWithContext(ctx context.Context, request *DescribeRiskSyscallWhiteListsRequest) (response *DescribeRiskSyscallWhiteListsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRiskSyscallWhiteListsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeRiskSyscallWhiteListsResponse()
     err = c.Send(request, response)
@@ -4530,6 +7032,28 @@ func (c *Client) DescribeSecEventsTendency(request *DescribeSecEventsTendencyReq
     return
 }
 
+// DescribeSecEventsTendency
+// 查询容器运行时安全事件趋势
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATARANGE = "InvalidParameterValue.DataRange"
+func (c *Client) DescribeSecEventsTendencyWithContext(ctx context.Context, request *DescribeSecEventsTendencyRequest) (response *DescribeSecEventsTendencyResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecEventsTendencyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeSecEventsTendencyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTaskResultSummaryRequest() (request *DescribeTaskResultSummaryRequest) {
     request = &DescribeTaskResultSummaryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4562,6 +7086,28 @@ func (c *Client) DescribeTaskResultSummary(request *DescribeTaskResultSummaryReq
     if request == nil {
         request = NewDescribeTaskResultSummaryRequest()
     }
+    
+    response = NewDescribeTaskResultSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeTaskResultSummary
+// 查询检查结果总览，返回受影响的节点数量，返回7天的数据，总共7个
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeTaskResultSummaryWithContext(ctx context.Context, request *DescribeTaskResultSummaryRequest) (response *DescribeTaskResultSummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskResultSummaryRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeTaskResultSummaryResponse()
     err = c.Send(request, response)
@@ -4606,6 +7152,28 @@ func (c *Client) DescribeUnfinishRefreshTask(request *DescribeUnfinishRefreshTas
     return
 }
 
+// DescribeUnfinishRefreshTask
+// 查询未完成的刷新资产任务信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeUnfinishRefreshTaskWithContext(ctx context.Context, request *DescribeUnfinishRefreshTaskRequest) (response *DescribeUnfinishRefreshTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeUnfinishRefreshTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeUnfinishRefreshTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserClusterRequest() (request *DescribeUserClusterRequest) {
     request = &DescribeUserClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4644,6 +7212,28 @@ func (c *Client) DescribeUserCluster(request *DescribeUserClusterRequest) (respo
     return
 }
 
+// DescribeUserCluster
+// 安全概览和集群安全页进入调用该接口，查询用户集群相关信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeUserClusterWithContext(ctx context.Context, request *DescribeUserClusterRequest) (response *DescribeUserClusterResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserClusterRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeValueAddedSrvInfoRequest() (request *DescribeValueAddedSrvInfoRequest) {
     request = &DescribeValueAddedSrvInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4671,6 +7261,23 @@ func (c *Client) DescribeValueAddedSrvInfo(request *DescribeValueAddedSrvInfoReq
     if request == nil {
         request = NewDescribeValueAddedSrvInfoRequest()
     }
+    
+    response = NewDescribeValueAddedSrvInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeValueAddedSrvInfo
+// DescribeValueAddedSrvInfo查询增值服务需购买信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+func (c *Client) DescribeValueAddedSrvInfoWithContext(ctx context.Context, request *DescribeValueAddedSrvInfoRequest) (response *DescribeValueAddedSrvInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeValueAddedSrvInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeValueAddedSrvInfoResponse()
     err = c.Send(request, response)
@@ -4712,6 +7319,25 @@ func (c *Client) DescribeVirusDetail(request *DescribeVirusDetailRequest) (respo
     return
 }
 
+// DescribeVirusDetail
+// 运行时查询木马文件信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVirusDetailWithContext(ctx context.Context, request *DescribeVirusDetailRequest) (response *DescribeVirusDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeVirusDetailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeVirusDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVirusListRequest() (request *DescribeVirusListRequest) {
     request = &DescribeVirusListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4741,6 +7367,25 @@ func (c *Client) DescribeVirusList(request *DescribeVirusListRequest) (response 
     if request == nil {
         request = NewDescribeVirusListRequest()
     }
+    
+    response = NewDescribeVirusListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeVirusList
+// 运行时文件查杀事件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVirusListWithContext(ctx context.Context, request *DescribeVirusListRequest) (response *DescribeVirusListResponse, err error) {
+    if request == nil {
+        request = NewDescribeVirusListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeVirusListResponse()
     err = c.Send(request, response)
@@ -4781,6 +7426,24 @@ func (c *Client) DescribeVirusMonitorSetting(request *DescribeVirusMonitorSettin
     return
 }
 
+// DescribeVirusMonitorSetting
+// 运行时查询文件查杀实时监控设置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVirusMonitorSettingWithContext(ctx context.Context, request *DescribeVirusMonitorSettingRequest) (response *DescribeVirusMonitorSettingResponse, err error) {
+    if request == nil {
+        request = NewDescribeVirusMonitorSettingRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeVirusMonitorSettingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVirusScanSettingRequest() (request *DescribeVirusScanSettingRequest) {
     request = &DescribeVirusScanSettingRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4809,6 +7472,24 @@ func (c *Client) DescribeVirusScanSetting(request *DescribeVirusScanSettingReque
     if request == nil {
         request = NewDescribeVirusScanSettingRequest()
     }
+    
+    response = NewDescribeVirusScanSettingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeVirusScanSetting
+// 运行时查询文件查杀设置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVirusScanSettingWithContext(ctx context.Context, request *DescribeVirusScanSettingRequest) (response *DescribeVirusScanSettingResponse, err error) {
+    if request == nil {
+        request = NewDescribeVirusScanSettingRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeVirusScanSettingResponse()
     err = c.Send(request, response)
@@ -4849,6 +7530,24 @@ func (c *Client) DescribeVirusScanTaskStatus(request *DescribeVirusScanTaskStatu
     return
 }
 
+// DescribeVirusScanTaskStatus
+// 运行时查询文件查杀任务状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVirusScanTaskStatusWithContext(ctx context.Context, request *DescribeVirusScanTaskStatusRequest) (response *DescribeVirusScanTaskStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeVirusScanTaskStatusRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeVirusScanTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVirusScanTimeoutSettingRequest() (request *DescribeVirusScanTimeoutSettingRequest) {
     request = &DescribeVirusScanTimeoutSettingRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4877,6 +7576,24 @@ func (c *Client) DescribeVirusScanTimeoutSetting(request *DescribeVirusScanTimeo
     if request == nil {
         request = NewDescribeVirusScanTimeoutSettingRequest()
     }
+    
+    response = NewDescribeVirusScanTimeoutSettingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeVirusScanTimeoutSetting
+// 运行时文件扫描超时设置查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVirusScanTimeoutSettingWithContext(ctx context.Context, request *DescribeVirusScanTimeoutSettingRequest) (response *DescribeVirusScanTimeoutSettingResponse, err error) {
+    if request == nil {
+        request = NewDescribeVirusScanTimeoutSettingRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeVirusScanTimeoutSettingResponse()
     err = c.Send(request, response)
@@ -4912,6 +7629,25 @@ func (c *Client) DescribeVirusSummary(request *DescribeVirusSummaryRequest) (res
     if request == nil {
         request = NewDescribeVirusSummaryRequest()
     }
+    
+    response = NewDescribeVirusSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeVirusSummary
+// 运行时查询木马概览信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVirusSummaryWithContext(ctx context.Context, request *DescribeVirusSummaryRequest) (response *DescribeVirusSummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribeVirusSummaryRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeVirusSummaryResponse()
     err = c.Send(request, response)
@@ -4954,6 +7690,26 @@ func (c *Client) DescribeVirusTaskList(request *DescribeVirusTaskListRequest) (r
     return
 }
 
+// DescribeVirusTaskList
+// 运行时查询文件查杀任务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVirusTaskListWithContext(ctx context.Context, request *DescribeVirusTaskListRequest) (response *DescribeVirusTaskListResponse, err error) {
+    if request == nil {
+        request = NewDescribeVirusTaskListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeVirusTaskListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeWarningRulesRequest() (request *DescribeWarningRulesRequest) {
     request = &DescribeWarningRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4989,6 +7745,25 @@ func (c *Client) DescribeWarningRules(request *DescribeWarningRulesRequest) (res
     return
 }
 
+// DescribeWarningRules
+// 获取告警策略列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeWarningRulesWithContext(ctx context.Context, request *DescribeWarningRulesRequest) (response *DescribeWarningRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeWarningRulesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeWarningRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExportVirusListRequest() (request *ExportVirusListRequest) {
     request = &ExportVirusListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5017,6 +7792,24 @@ func (c *Client) ExportVirusList(request *ExportVirusListRequest) (response *Exp
     if request == nil {
         request = NewExportVirusListRequest()
     }
+    
+    response = NewExportVirusListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ExportVirusList
+// 运行时文件查杀事件列表导出
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ExportVirusListWithContext(ctx context.Context, request *ExportVirusListRequest) (response *ExportVirusListResponse, err error) {
+    if request == nil {
+        request = NewExportVirusListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewExportVirusListResponse()
     err = c.Send(request, response)
@@ -5061,6 +7854,28 @@ func (c *Client) InitializeUserComplianceEnvironment(request *InitializeUserComp
     return
 }
 
+// InitializeUserComplianceEnvironment
+// 为客户初始化合规基线的使用环境，创建必要的数据和选项。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) InitializeUserComplianceEnvironmentWithContext(ctx context.Context, request *InitializeUserComplianceEnvironmentRequest) (response *InitializeUserComplianceEnvironmentResponse, err error) {
+    if request == nil {
+        request = NewInitializeUserComplianceEnvironmentRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewInitializeUserComplianceEnvironmentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAbnormalProcessRuleStatusRequest() (request *ModifyAbnormalProcessRuleStatusRequest) {
     request = &ModifyAbnormalProcessRuleStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5093,6 +7908,28 @@ func (c *Client) ModifyAbnormalProcessRuleStatus(request *ModifyAbnormalProcessR
     if request == nil {
         request = NewModifyAbnormalProcessRuleStatusRequest()
     }
+    
+    response = NewModifyAbnormalProcessRuleStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyAbnormalProcessRuleStatus
+// 修改运行时异常进程策略的开启关闭状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyAbnormalProcessRuleStatusWithContext(ctx context.Context, request *ModifyAbnormalProcessRuleStatusRequest) (response *ModifyAbnormalProcessRuleStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyAbnormalProcessRuleStatusRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyAbnormalProcessRuleStatusResponse()
     err = c.Send(request, response)
@@ -5137,6 +7974,28 @@ func (c *Client) ModifyAbnormalProcessStatus(request *ModifyAbnormalProcessStatu
     return
 }
 
+// ModifyAbnormalProcessStatus
+// 修改异常进程事件的状态信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyAbnormalProcessStatusWithContext(ctx context.Context, request *ModifyAbnormalProcessStatusRequest) (response *ModifyAbnormalProcessStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyAbnormalProcessStatusRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyAbnormalProcessStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAccessControlRuleStatusRequest() (request *ModifyAccessControlRuleStatusRequest) {
     request = &ModifyAccessControlRuleStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5169,6 +8028,28 @@ func (c *Client) ModifyAccessControlRuleStatus(request *ModifyAccessControlRuleS
     if request == nil {
         request = NewModifyAccessControlRuleStatusRequest()
     }
+    
+    response = NewModifyAccessControlRuleStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyAccessControlRuleStatus
+// 修改运行时访问控制策略的状态，启用或者禁用
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyAccessControlRuleStatusWithContext(ctx context.Context, request *ModifyAccessControlRuleStatusRequest) (response *ModifyAccessControlRuleStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyAccessControlRuleStatusRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyAccessControlRuleStatusResponse()
     err = c.Send(request, response)
@@ -5213,6 +8094,28 @@ func (c *Client) ModifyAccessControlStatus(request *ModifyAccessControlStatusReq
     return
 }
 
+// ModifyAccessControlStatus
+// 修改运行时访问控制事件状态信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyAccessControlStatusWithContext(ctx context.Context, request *ModifyAccessControlStatusRequest) (response *ModifyAccessControlStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyAccessControlStatusRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyAccessControlStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAssetRequest() (request *ModifyAssetRequest) {
     request = &ModifyAssetRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5236,12 +8139,33 @@ func NewModifyAssetResponse() (response *ModifyAssetResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyAsset(request *ModifyAssetRequest) (response *ModifyAssetResponse, err error) {
     if request == nil {
         request = NewModifyAssetRequest()
     }
+    
+    response = NewModifyAssetResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyAsset
+// 容器安全主机资产刷新
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyAssetWithContext(ctx context.Context, request *ModifyAssetRequest) (response *ModifyAssetResponse, err error) {
+    if request == nil {
+        request = NewModifyAssetRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyAssetResponse()
     err = c.Send(request, response)
@@ -5281,6 +8205,23 @@ func (c *Client) ModifyAssetImageRegistryScanStop(request *ModifyAssetImageRegis
     return
 }
 
+// ModifyAssetImageRegistryScanStop
+// 镜像仓库停止镜像扫描任务
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyAssetImageRegistryScanStopWithContext(ctx context.Context, request *ModifyAssetImageRegistryScanStopRequest) (response *ModifyAssetImageRegistryScanStopResponse, err error) {
+    if request == nil {
+        request = NewModifyAssetImageRegistryScanStopRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyAssetImageRegistryScanStopResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAssetImageRegistryScanStopOneKeyRequest() (request *ModifyAssetImageRegistryScanStopOneKeyRequest) {
     request = &ModifyAssetImageRegistryScanStopOneKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5308,6 +8249,23 @@ func (c *Client) ModifyAssetImageRegistryScanStopOneKey(request *ModifyAssetImag
     if request == nil {
         request = NewModifyAssetImageRegistryScanStopOneKeyRequest()
     }
+    
+    response = NewModifyAssetImageRegistryScanStopOneKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyAssetImageRegistryScanStopOneKey
+// 镜像仓库停止镜像一键扫描任务
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyAssetImageRegistryScanStopOneKeyWithContext(ctx context.Context, request *ModifyAssetImageRegistryScanStopOneKeyRequest) (response *ModifyAssetImageRegistryScanStopOneKeyResponse, err error) {
+    if request == nil {
+        request = NewModifyAssetImageRegistryScanStopOneKeyRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyAssetImageRegistryScanStopOneKeyResponse()
     err = c.Send(request, response)
@@ -5344,6 +8302,26 @@ func (c *Client) ModifyAssetImageScanStop(request *ModifyAssetImageScanStopReque
     if request == nil {
         request = NewModifyAssetImageScanStopRequest()
     }
+    
+    response = NewModifyAssetImageScanStopResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyAssetImageScanStop
+// 容器安全停止镜像扫描
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyAssetImageScanStopWithContext(ctx context.Context, request *ModifyAssetImageScanStopRequest) (response *ModifyAssetImageScanStopResponse, err error) {
+    if request == nil {
+        request = NewModifyAssetImageScanStopRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyAssetImageScanStopResponse()
     err = c.Send(request, response)
@@ -5387,6 +8365,27 @@ func (c *Client) ModifyCompliancePeriodTask(request *ModifyCompliancePeriodTaskR
     return
 }
 
+// ModifyCompliancePeriodTask
+// 修改定时任务的设置，包括检测周期、开启/禁用合规基准。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) ModifyCompliancePeriodTaskWithContext(ctx context.Context, request *ModifyCompliancePeriodTaskRequest) (response *ModifyCompliancePeriodTaskResponse, err error) {
+    if request == nil {
+        request = NewModifyCompliancePeriodTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyCompliancePeriodTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyEscapeEventStatusRequest() (request *ModifyEscapeEventStatusRequest) {
     request = &ModifyEscapeEventStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5415,6 +8414,24 @@ func (c *Client) ModifyEscapeEventStatus(request *ModifyEscapeEventStatusRequest
     if request == nil {
         request = NewModifyEscapeEventStatusRequest()
     }
+    
+    response = NewModifyEscapeEventStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyEscapeEventStatus
+// ModifyEscapeEventStatus  修改容器逃逸扫描事件状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+func (c *Client) ModifyEscapeEventStatusWithContext(ctx context.Context, request *ModifyEscapeEventStatusRequest) (response *ModifyEscapeEventStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyEscapeEventStatusRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyEscapeEventStatusResponse()
     err = c.Send(request, response)
@@ -5451,6 +8468,26 @@ func (c *Client) ModifyEscapeRule(request *ModifyEscapeRuleRequest) (response *M
     if request == nil {
         request = NewModifyEscapeRuleRequest()
     }
+    
+    response = NewModifyEscapeRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyEscapeRule
+// ModifyEscapeRule  修改容器逃逸扫描规则信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_NOTIFYPOLICYCHANGEFAILED = "FailedOperation.NotifyPolicyChangeFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+func (c *Client) ModifyEscapeRuleWithContext(ctx context.Context, request *ModifyEscapeRuleRequest) (response *ModifyEscapeRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyEscapeRuleRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyEscapeRuleResponse()
     err = c.Send(request, response)
@@ -5495,6 +8532,28 @@ func (c *Client) ModifyReverseShellStatus(request *ModifyReverseShellStatusReque
     return
 }
 
+// ModifyReverseShellStatus
+// 修改反弹shell事件的状态信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATANOTFOUND = "InvalidParameterValue.DataNotFound"
+func (c *Client) ModifyReverseShellStatusWithContext(ctx context.Context, request *ModifyReverseShellStatusRequest) (response *ModifyReverseShellStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyReverseShellStatusRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyReverseShellStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyRiskSyscallStatusRequest() (request *ModifyRiskSyscallStatusRequest) {
     request = &ModifyRiskSyscallStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5527,6 +8586,28 @@ func (c *Client) ModifyRiskSyscallStatus(request *ModifyRiskSyscallStatusRequest
     if request == nil {
         request = NewModifyRiskSyscallStatusRequest()
     }
+    
+    response = NewModifyRiskSyscallStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyRiskSyscallStatus
+// 修改高危系统调用事件的状态信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATANOTFOUND = "InvalidParameterValue.DataNotFound"
+func (c *Client) ModifyRiskSyscallStatusWithContext(ctx context.Context, request *ModifyRiskSyscallStatusRequest) (response *ModifyRiskSyscallStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyRiskSyscallStatusRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyRiskSyscallStatusResponse()
     err = c.Send(request, response)
@@ -5571,6 +8652,28 @@ func (c *Client) ModifyVirusFileStatus(request *ModifyVirusFileStatusRequest) (r
     return
 }
 
+// ModifyVirusFileStatus
+// 运行时更新木马文件事件状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATANOTFOUND = "InvalidParameterValue.DataNotFound"
+func (c *Client) ModifyVirusFileStatusWithContext(ctx context.Context, request *ModifyVirusFileStatusRequest) (response *ModifyVirusFileStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyVirusFileStatusRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyVirusFileStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyVirusMonitorSettingRequest() (request *ModifyVirusMonitorSettingRequest) {
     request = &ModifyVirusMonitorSettingRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5599,6 +8702,24 @@ func (c *Client) ModifyVirusMonitorSetting(request *ModifyVirusMonitorSettingReq
     if request == nil {
         request = NewModifyVirusMonitorSettingRequest()
     }
+    
+    response = NewModifyVirusMonitorSettingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyVirusMonitorSetting
+// 运行时更新文件查杀实时监控设置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyVirusMonitorSettingWithContext(ctx context.Context, request *ModifyVirusMonitorSettingRequest) (response *ModifyVirusMonitorSettingResponse, err error) {
+    if request == nil {
+        request = NewModifyVirusMonitorSettingRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyVirusMonitorSettingResponse()
     err = c.Send(request, response)
@@ -5640,6 +8761,25 @@ func (c *Client) ModifyVirusScanSetting(request *ModifyVirusScanSettingRequest) 
     return
 }
 
+// ModifyVirusScanSetting
+// 运行时更新文件查杀设置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyVirusScanSettingWithContext(ctx context.Context, request *ModifyVirusScanSettingRequest) (response *ModifyVirusScanSettingResponse, err error) {
+    if request == nil {
+        request = NewModifyVirusScanSettingRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyVirusScanSettingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyVirusScanTimeoutSettingRequest() (request *ModifyVirusScanTimeoutSettingRequest) {
     request = &ModifyVirusScanTimeoutSettingRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5668,6 +8808,24 @@ func (c *Client) ModifyVirusScanTimeoutSetting(request *ModifyVirusScanTimeoutSe
     if request == nil {
         request = NewModifyVirusScanTimeoutSettingRequest()
     }
+    
+    response = NewModifyVirusScanTimeoutSettingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyVirusScanTimeoutSetting
+// 运行时文件扫描超时设置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyVirusScanTimeoutSettingWithContext(ctx context.Context, request *ModifyVirusScanTimeoutSettingRequest) (response *ModifyVirusScanTimeoutSettingResponse, err error) {
+    if request == nil {
+        request = NewModifyVirusScanTimeoutSettingRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyVirusScanTimeoutSettingResponse()
     err = c.Send(request, response)
@@ -5714,6 +8872,30 @@ func (c *Client) RemoveAssetImageRegistryRegistryDetail(request *RemoveAssetImag
     return
 }
 
+// RemoveAssetImageRegistryRegistryDetail
+// 删除单个镜像仓库详细信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATAVALUENOTCORRECT = "FailedOperation.DataValueNotCorrect"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) RemoveAssetImageRegistryRegistryDetailWithContext(ctx context.Context, request *RemoveAssetImageRegistryRegistryDetailRequest) (response *RemoveAssetImageRegistryRegistryDetailResponse, err error) {
+    if request == nil {
+        request = NewRemoveAssetImageRegistryRegistryDetailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewRemoveAssetImageRegistryRegistryDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRenewImageAuthorizeStateRequest() (request *RenewImageAuthorizeStateRequest) {
     request = &RenewImageAuthorizeStateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5743,6 +8925,25 @@ func (c *Client) RenewImageAuthorizeState(request *RenewImageAuthorizeStateReque
     if request == nil {
         request = NewRenewImageAuthorizeStateRequest()
     }
+    
+    response = NewRenewImageAuthorizeStateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// RenewImageAuthorizeState
+// RenewImageAuthorizeState   授权镜像扫描
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTHORIZEDNOTENOUGH = "FailedOperation.AuthorizedNotEnough"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) RenewImageAuthorizeStateWithContext(ctx context.Context, request *RenewImageAuthorizeStateRequest) (response *RenewImageAuthorizeStateResponse, err error) {
+    if request == nil {
+        request = NewRenewImageAuthorizeStateRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewRenewImageAuthorizeStateResponse()
     err = c.Send(request, response)
@@ -5787,6 +8988,28 @@ func (c *Client) ScanComplianceAssets(request *ScanComplianceAssetsRequest) (res
     return
 }
 
+// ScanComplianceAssets
+// 重新检测选定的资产
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) ScanComplianceAssetsWithContext(ctx context.Context, request *ScanComplianceAssetsRequest) (response *ScanComplianceAssetsResponse, err error) {
+    if request == nil {
+        request = NewScanComplianceAssetsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewScanComplianceAssetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewScanComplianceAssetsByPolicyItemRequest() (request *ScanComplianceAssetsByPolicyItemRequest) {
     request = &ScanComplianceAssetsByPolicyItemRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5819,6 +9042,28 @@ func (c *Client) ScanComplianceAssetsByPolicyItem(request *ScanComplianceAssetsB
     if request == nil {
         request = NewScanComplianceAssetsByPolicyItemRequest()
     }
+    
+    response = NewScanComplianceAssetsByPolicyItemResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ScanComplianceAssetsByPolicyItem
+// 用指定的检测项重新检测选定的资产，返回创建的合规检查任务的ID。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) ScanComplianceAssetsByPolicyItemWithContext(ctx context.Context, request *ScanComplianceAssetsByPolicyItemRequest) (response *ScanComplianceAssetsByPolicyItemResponse, err error) {
+    if request == nil {
+        request = NewScanComplianceAssetsByPolicyItemRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewScanComplianceAssetsByPolicyItemResponse()
     err = c.Send(request, response)
@@ -5863,6 +9108,28 @@ func (c *Client) ScanCompliancePolicyItems(request *ScanCompliancePolicyItemsReq
     return
 }
 
+// ScanCompliancePolicyItems
+// 重新检测选的检测项下的所有资产，返回创建的合规检查任务的ID。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) ScanCompliancePolicyItemsWithContext(ctx context.Context, request *ScanCompliancePolicyItemsRequest) (response *ScanCompliancePolicyItemsResponse, err error) {
+    if request == nil {
+        request = NewScanCompliancePolicyItemsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewScanCompliancePolicyItemsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewScanComplianceScanFailedAssetsRequest() (request *ScanComplianceScanFailedAssetsRequest) {
     request = &ScanComplianceScanFailedAssetsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5895,6 +9162,28 @@ func (c *Client) ScanComplianceScanFailedAssets(request *ScanComplianceScanFaile
     if request == nil {
         request = NewScanComplianceScanFailedAssetsRequest()
     }
+    
+    response = NewScanComplianceScanFailedAssetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ScanComplianceScanFailedAssets
+// 重新检测选定的检测失败的资产下的所有失败的检测项，返回创建的合规检查任务的ID。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) ScanComplianceScanFailedAssetsWithContext(ctx context.Context, request *ScanComplianceScanFailedAssetsRequest) (response *ScanComplianceScanFailedAssetsResponse, err error) {
+    if request == nil {
+        request = NewScanComplianceScanFailedAssetsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewScanComplianceScanFailedAssetsResponse()
     err = c.Send(request, response)
@@ -5939,6 +9228,28 @@ func (c *Client) SetCheckMode(request *SetCheckModeRequest) (response *SetCheckM
     return
 }
 
+// SetCheckMode
+// 设置检测模式和自动检查
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) SetCheckModeWithContext(ctx context.Context, request *SetCheckModeRequest) (response *SetCheckModeResponse, err error) {
+    if request == nil {
+        request = NewSetCheckModeRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewSetCheckModeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopVirusScanTaskRequest() (request *StopVirusScanTaskRequest) {
     request = &StopVirusScanTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5976,6 +9287,27 @@ func (c *Client) StopVirusScanTask(request *StopVirusScanTaskRequest) (response 
     return
 }
 
+// StopVirusScanTask
+// 运行时停止木马查杀任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) StopVirusScanTaskWithContext(ctx context.Context, request *StopVirusScanTaskRequest) (response *StopVirusScanTaskResponse, err error) {
+    if request == nil {
+        request = NewStopVirusScanTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewStopVirusScanTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSyncAssetImageRegistryAssetRequest() (request *SyncAssetImageRegistryAssetRequest) {
     request = &SyncAssetImageRegistryAssetRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6005,6 +9337,25 @@ func (c *Client) SyncAssetImageRegistryAsset(request *SyncAssetImageRegistryAsse
     if request == nil {
         request = NewSyncAssetImageRegistryAssetRequest()
     }
+    
+    response = NewSyncAssetImageRegistryAssetResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SyncAssetImageRegistryAsset
+// 镜像仓库资产刷新
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) SyncAssetImageRegistryAssetWithContext(ctx context.Context, request *SyncAssetImageRegistryAssetRequest) (response *SyncAssetImageRegistryAssetResponse, err error) {
+    if request == nil {
+        request = NewSyncAssetImageRegistryAssetRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewSyncAssetImageRegistryAssetResponse()
     err = c.Send(request, response)
@@ -6051,6 +9402,30 @@ func (c *Client) UpdateAssetImageRegistryRegistryDetail(request *UpdateAssetImag
     return
 }
 
+// UpdateAssetImageRegistryRegistryDetail
+// 更新单个镜像仓库详细信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATAVALUENOTCORRECT = "FailedOperation.DataValueNotCorrect"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) UpdateAssetImageRegistryRegistryDetailWithContext(ctx context.Context, request *UpdateAssetImageRegistryRegistryDetailRequest) (response *UpdateAssetImageRegistryRegistryDetailResponse, err error) {
+    if request == nil {
+        request = NewUpdateAssetImageRegistryRegistryDetailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewUpdateAssetImageRegistryRegistryDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateImageRegistryTimingScanTaskRequest() (request *UpdateImageRegistryTimingScanTaskRequest) {
     request = &UpdateImageRegistryTimingScanTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6078,6 +9453,23 @@ func (c *Client) UpdateImageRegistryTimingScanTask(request *UpdateImageRegistryT
     if request == nil {
         request = NewUpdateImageRegistryTimingScanTaskRequest()
     }
+    
+    response = NewUpdateImageRegistryTimingScanTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UpdateImageRegistryTimingScanTask
+// 镜像仓库更新定时任务
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) UpdateImageRegistryTimingScanTaskWithContext(ctx context.Context, request *UpdateImageRegistryTimingScanTaskRequest) (response *UpdateImageRegistryTimingScanTaskResponse, err error) {
+    if request == nil {
+        request = NewUpdateImageRegistryTimingScanTaskRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUpdateImageRegistryTimingScanTaskResponse()
     err = c.Send(request, response)

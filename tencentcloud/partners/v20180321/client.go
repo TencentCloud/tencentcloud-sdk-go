@@ -15,6 +15,7 @@
 package v20180321
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -78,6 +79,25 @@ func (c *Client) AgentPayDeals(request *AgentPayDealsRequest) (response *AgentPa
     return
 }
 
+// AgentPayDeals
+// 代理商支付订单接口，支持自付/代付
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AgentPayDealsWithContext(ctx context.Context, request *AgentPayDealsRequest) (response *AgentPayDealsResponse, err error) {
+    if request == nil {
+        request = NewAgentPayDealsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewAgentPayDealsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAgentTransferMoneyRequest() (request *AgentTransferMoneyRequest) {
     request = &AgentTransferMoneyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -107,6 +127,25 @@ func (c *Client) AgentTransferMoney(request *AgentTransferMoneyRequest) (respons
     if request == nil {
         request = NewAgentTransferMoneyRequest()
     }
+    
+    response = NewAgentTransferMoneyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// AgentTransferMoney
+// 为合作伙伴提供转账给客户能力。仅支持合作伙伴为自己名下客户转账。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AgentTransferMoneyWithContext(ctx context.Context, request *AgentTransferMoneyRequest) (response *AgentTransferMoneyResponse, err error) {
+    if request == nil {
+        request = NewAgentTransferMoneyRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewAgentTransferMoneyResponse()
     err = c.Send(request, response)
@@ -147,6 +186,24 @@ func (c *Client) AuditApplyClient(request *AuditApplyClientRequest) (response *A
     return
 }
 
+// AuditApplyClient
+// 代理商可以审核其名下申请中代客
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) AuditApplyClientWithContext(ctx context.Context, request *AuditApplyClientRequest) (response *AuditApplyClientResponse, err error) {
+    if request == nil {
+        request = NewAuditApplyClientRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewAuditApplyClientResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePayRelationForClientRequest() (request *CreatePayRelationForClientRequest) {
     request = &CreatePayRelationForClientRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -173,6 +230,22 @@ func (c *Client) CreatePayRelationForClient(request *CreatePayRelationForClientR
     if request == nil {
         request = NewCreatePayRelationForClientRequest()
     }
+    
+    response = NewCreatePayRelationForClientResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreatePayRelationForClient
+// 合作伙伴为客户创建强代付关系
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreatePayRelationForClientWithContext(ctx context.Context, request *CreatePayRelationForClientRequest) (response *CreatePayRelationForClientResponse, err error) {
+    if request == nil {
+        request = NewCreatePayRelationForClientRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreatePayRelationForClientResponse()
     err = c.Send(request, response)
@@ -213,6 +286,24 @@ func (c *Client) DescribeAgentAuditedClients(request *DescribeAgentAuditedClient
     return
 }
 
+// DescribeAgentAuditedClients
+// 查询已审核客户列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAgentAuditedClientsWithContext(ctx context.Context, request *DescribeAgentAuditedClientsRequest) (response *DescribeAgentAuditedClientsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAgentAuditedClientsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAgentAuditedClientsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAgentBillsRequest() (request *DescribeAgentBillsRequest) {
     request = &DescribeAgentBillsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -240,6 +331,23 @@ func (c *Client) DescribeAgentBills(request *DescribeAgentBillsRequest) (respons
     if request == nil {
         request = NewDescribeAgentBillsRequest()
     }
+    
+    response = NewDescribeAgentBillsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAgentBills
+// 代理商可查询自己及名下代客所有业务明细
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAgentBillsWithContext(ctx context.Context, request *DescribeAgentBillsRequest) (response *DescribeAgentBillsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAgentBillsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAgentBillsResponse()
     err = c.Send(request, response)
@@ -281,6 +389,25 @@ func (c *Client) DescribeAgentClientGrade(request *DescribeAgentClientGradeReque
     return
 }
 
+// DescribeAgentClientGrade
+// 传入代客uin，查客户级别，客户审核状态，客户实名认证状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAgentClientGradeWithContext(ctx context.Context, request *DescribeAgentClientGradeRequest) (response *DescribeAgentClientGradeResponse, err error) {
+    if request == nil {
+        request = NewDescribeAgentClientGradeRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAgentClientGradeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAgentClientsRequest() (request *DescribeAgentClientsRequest) {
     request = &DescribeAgentClientsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -308,6 +435,23 @@ func (c *Client) DescribeAgentClients(request *DescribeAgentClientsRequest) (res
     if request == nil {
         request = NewDescribeAgentClientsRequest()
     }
+    
+    response = NewDescribeAgentClientsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAgentClients
+// 代理商可查询自己名下待审核客户列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAgentClientsWithContext(ctx context.Context, request *DescribeAgentClientsRequest) (response *DescribeAgentClientsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAgentClientsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAgentClientsResponse()
     err = c.Send(request, response)
@@ -349,6 +493,25 @@ func (c *Client) DescribeAgentDealsByCache(request *DescribeAgentDealsByCacheReq
     return
 }
 
+// DescribeAgentDealsByCache
+// 供超大型代理商（代客数量>=3000 ）拉取缓存的全量客户订单。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAgentDealsByCacheWithContext(ctx context.Context, request *DescribeAgentDealsByCacheRequest) (response *DescribeAgentDealsByCacheResponse, err error) {
+    if request == nil {
+        request = NewDescribeAgentDealsByCacheRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAgentDealsByCacheResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAgentDealsCacheRequest() (request *DescribeAgentDealsCacheRequest) {
     request = &DescribeAgentDealsCacheRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -378,6 +541,25 @@ func (c *Client) DescribeAgentDealsCache(request *DescribeAgentDealsCacheRequest
     if request == nil {
         request = NewDescribeAgentDealsCacheRequest()
     }
+    
+    response = NewDescribeAgentDealsCacheResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAgentDealsCache
+// 【该接口将逐步下线，请切换使用升级版本DescribeAgentDealsByCache】供超大型代理商（代客数量>=3000 ）拉取缓存的全量客户订单。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAgentDealsCacheWithContext(ctx context.Context, request *DescribeAgentDealsCacheRequest) (response *DescribeAgentDealsCacheResponse, err error) {
+    if request == nil {
+        request = NewDescribeAgentDealsCacheRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAgentDealsCacheResponse()
     err = c.Send(request, response)
@@ -419,6 +601,25 @@ func (c *Client) DescribeAgentPayDeals(request *DescribeAgentPayDealsRequest) (r
     return
 }
 
+// DescribeAgentPayDeals
+// 【该接口将逐步下线，请切换使用升级版本DescribeAgentPayDealsV2】可以查询代理商代付的所有订单
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAgentPayDealsWithContext(ctx context.Context, request *DescribeAgentPayDealsRequest) (response *DescribeAgentPayDealsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAgentPayDealsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAgentPayDealsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAgentPayDealsV2Request() (request *DescribeAgentPayDealsV2Request) {
     request = &DescribeAgentPayDealsV2Request{
         BaseRequest: &tchttp.BaseRequest{},
@@ -448,6 +649,25 @@ func (c *Client) DescribeAgentPayDealsV2(request *DescribeAgentPayDealsV2Request
     if request == nil {
         request = NewDescribeAgentPayDealsV2Request()
     }
+    
+    response = NewDescribeAgentPayDealsV2Response()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAgentPayDealsV2
+// 可以查询代理商代付的所有订单
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAgentPayDealsV2WithContext(ctx context.Context, request *DescribeAgentPayDealsV2Request) (response *DescribeAgentPayDealsV2Response, err error) {
+    if request == nil {
+        request = NewDescribeAgentPayDealsV2Request()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAgentPayDealsV2Response()
     err = c.Send(request, response)
@@ -489,6 +709,25 @@ func (c *Client) DescribeAgentSelfPayDeals(request *DescribeAgentSelfPayDealsReq
     return
 }
 
+// DescribeAgentSelfPayDeals
+// 【该接口将逐步下线，请切换使用升级版本DescribeAgentSelfPayDealsV2】可以查询代理商下指定客户的自付订单
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAgentSelfPayDealsWithContext(ctx context.Context, request *DescribeAgentSelfPayDealsRequest) (response *DescribeAgentSelfPayDealsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAgentSelfPayDealsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAgentSelfPayDealsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAgentSelfPayDealsV2Request() (request *DescribeAgentSelfPayDealsV2Request) {
     request = &DescribeAgentSelfPayDealsV2Request{
         BaseRequest: &tchttp.BaseRequest{},
@@ -518,6 +757,25 @@ func (c *Client) DescribeAgentSelfPayDealsV2(request *DescribeAgentSelfPayDealsV
     if request == nil {
         request = NewDescribeAgentSelfPayDealsV2Request()
     }
+    
+    response = NewDescribeAgentSelfPayDealsV2Response()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAgentSelfPayDealsV2
+// 可以查询代理商下指定客户的自付订单
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAgentSelfPayDealsV2WithContext(ctx context.Context, request *DescribeAgentSelfPayDealsV2Request) (response *DescribeAgentSelfPayDealsV2Response, err error) {
+    if request == nil {
+        request = NewDescribeAgentSelfPayDealsV2Request()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeAgentSelfPayDealsV2Response()
     err = c.Send(request, response)
@@ -558,6 +816,24 @@ func (c *Client) DescribeClientBalance(request *DescribeClientBalanceRequest) (r
     return
 }
 
+// DescribeClientBalance
+// 【该接口将逐步下线，请切换使用升级版本DescribeClientBalanceNew】为合作伙伴提供查询客户余额能力。调用者必须是合作伙伴，只能查询自己名下客户余额.
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeClientBalanceWithContext(ctx context.Context, request *DescribeClientBalanceRequest) (response *DescribeClientBalanceResponse, err error) {
+    if request == nil {
+        request = NewDescribeClientBalanceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeClientBalanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClientBalanceNewRequest() (request *DescribeClientBalanceNewRequest) {
     request = &DescribeClientBalanceNewRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -592,6 +868,24 @@ func (c *Client) DescribeClientBalanceNew(request *DescribeClientBalanceNewReque
     return
 }
 
+// DescribeClientBalanceNew
+// 为合作伙伴提供查询客户余额能力。调用者必须是合作伙伴，只能查询自己名下客户余额
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeClientBalanceNewWithContext(ctx context.Context, request *DescribeClientBalanceNewRequest) (response *DescribeClientBalanceNewResponse, err error) {
+    if request == nil {
+        request = NewDescribeClientBalanceNewRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeClientBalanceNewResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRebateInfosRequest() (request *DescribeRebateInfosRequest) {
     request = &DescribeRebateInfosRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -619,6 +913,23 @@ func (c *Client) DescribeRebateInfos(request *DescribeRebateInfosRequest) (respo
     if request == nil {
         request = NewDescribeRebateInfosRequest()
     }
+    
+    response = NewDescribeRebateInfosResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeRebateInfos
+// 代理商可查询自己名下全部返佣信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeRebateInfosWithContext(ctx context.Context, request *DescribeRebateInfosRequest) (response *DescribeRebateInfosResponse, err error) {
+    if request == nil {
+        request = NewDescribeRebateInfosRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeRebateInfosResponse()
     err = c.Send(request, response)
@@ -660,6 +971,25 @@ func (c *Client) DescribeSalesmans(request *DescribeSalesmansRequest) (response 
     return
 }
 
+// DescribeSalesmans
+// 代理商查询名下业务员列表信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeSalesmansWithContext(ctx context.Context, request *DescribeSalesmansRequest) (response *DescribeSalesmansResponse, err error) {
+    if request == nil {
+        request = NewDescribeSalesmansRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeSalesmansResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUnbindClientListRequest() (request *DescribeUnbindClientListRequest) {
     request = &DescribeUnbindClientListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -689,6 +1019,25 @@ func (c *Client) DescribeUnbindClientList(request *DescribeUnbindClientListReque
     if request == nil {
         request = NewDescribeUnbindClientListRequest()
     }
+    
+    response = NewDescribeUnbindClientListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeUnbindClientList
+// 代理商名下客户解绑记录查询接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeUnbindClientListWithContext(ctx context.Context, request *DescribeUnbindClientListRequest) (response *DescribeUnbindClientListResponse, err error) {
+    if request == nil {
+        request = NewDescribeUnbindClientListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeUnbindClientListResponse()
     err = c.Send(request, response)
@@ -728,6 +1077,23 @@ func (c *Client) ModifyClientRemark(request *ModifyClientRemarkRequest) (respons
     return
 }
 
+// ModifyClientRemark
+// 代理商可以对名下客户添加备注、修改备注
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyClientRemarkWithContext(ctx context.Context, request *ModifyClientRemarkRequest) (response *ModifyClientRemarkResponse, err error) {
+    if request == nil {
+        request = NewModifyClientRemarkRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyClientRemarkResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRemovePayRelationForClientRequest() (request *RemovePayRelationForClientRequest) {
     request = &RemovePayRelationForClientRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -754,6 +1120,22 @@ func (c *Client) RemovePayRelationForClient(request *RemovePayRelationForClientR
     if request == nil {
         request = NewRemovePayRelationForClientRequest()
     }
+    
+    response = NewRemovePayRelationForClientResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// RemovePayRelationForClient
+// 合作伙伴为客户消除强代付关系
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) RemovePayRelationForClientWithContext(ctx context.Context, request *RemovePayRelationForClientRequest) (response *RemovePayRelationForClientResponse, err error) {
+    if request == nil {
+        request = NewRemovePayRelationForClientRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewRemovePayRelationForClientResponse()
     err = c.Send(request, response)

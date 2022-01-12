@@ -15,6 +15,7 @@
 package v20180426
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -79,6 +80,26 @@ func (c *Client) DeleteCert(request *DeleteCertRequest) (response *DeleteCertRes
     return
 }
 
+// DeleteCert
+// 本接口（DeleteCert）用于删除证书。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CERTINVALIDPARAM = "FailedOperation.CertInvalidParam"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_REPTYPEISINVALID = "InvalidParameter.RepTypeIsInvalid"
+func (c *Client) DeleteCertWithContext(ctx context.Context, request *DeleteCertRequest) (response *DeleteCertResponse, err error) {
+    if request == nil {
+        request = NewDeleteCertRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteCertResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCertListRequest() (request *DescribeCertListRequest) {
     request = &DescribeCertListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -108,6 +129,25 @@ func (c *Client) DescribeCertList(request *DescribeCertListRequest) (response *D
     if request == nil {
         request = NewDescribeCertListRequest()
     }
+    
+    response = NewDescribeCertListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCertList
+// 本接口(DescribeCertList)用于获取证书列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_REPTYPEISINVALID = "InvalidParameter.RepTypeIsInvalid"
+func (c *Client) DescribeCertListWithContext(ctx context.Context, request *DescribeCertListRequest) (response *DescribeCertListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCertListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeCertListResponse()
     err = c.Send(request, response)
@@ -146,6 +186,28 @@ func (c *Client) UploadCert(request *UploadCertRequest) (response *UploadCertRes
     if request == nil {
         request = NewUploadCertRequest()
     }
+    
+    response = NewUploadCertResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UploadCert
+// 本接口（UploadCert）用于上传证书。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CERTINVALIDPARAM = "FailedOperation.CertInvalidParam"
+//  FAILEDOPERATION_CERTMISMATCH = "FailedOperation.CertMismatch"
+//  FAILEDOPERATION_INVALIDCERT = "FailedOperation.InvalidCert"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_REPTYPEISINVALID = "InvalidParameter.RepTypeIsInvalid"
+func (c *Client) UploadCertWithContext(ctx context.Context, request *UploadCertRequest) (response *UploadCertResponse, err error) {
+    if request == nil {
+        request = NewUploadCertRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUploadCertResponse()
     err = c.Send(request, response)

@@ -44,6 +44,12 @@ const (
 	// 命名空间查询失败。
 	FAILEDOPERATION_CONFIGNAMESPACEQUERYFAILED = "FailedOperation.ConfigNamespaceQueryFailed"
 
+	// 配置项查询失败。
+	FAILEDOPERATION_CONFIGQUERYFAILED = "FailedOperation.ConfigQueryFailed"
+
+	// 配置项发布信息查询失败。
+	FAILEDOPERATION_CONFIGRELEASEQUERYFAILED = "FailedOperation.ConfigReleaseQueryFailed"
+
 	// 部署组处于运行状态，无法启动。
 	FAILEDOPERATION_CONTAINERGROUPGROUPHASRUN = "FailedOperation.ContainergroupGroupHasrun"
 
@@ -61,6 +67,9 @@ const (
 
 	// 部署组查询失败。
 	FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+
+	// 查询机器实例部分失败。
+	FAILEDOPERATION_INSTANCEQUERYFAILED = "FailedOperation.InstanceQueryFailed"
 
 	// 重装系统失败，请稍后重试。若无法解决，请联系智能客服或提交工单。
 	FAILEDOPERATION_INSTANCERESETERROR = "FailedOperation.InstanceResetError"
@@ -185,6 +194,9 @@ const (
 	// 命令下放失败。
 	INTERNALERROR_CVMCAEMASTERDISPATCHERROR = "InternalError.CvmCaeMasterDispatchError"
 
+	// TSF MASTER 内部执行错误。
+	INTERNALERROR_CVMCAEMASTERINTERNALERROR = "InternalError.CvmCaeMasterInternalError"
+
 	// MASTER通道查询失败。
 	INTERNALERROR_CVMCAEMASTERNONALIVE = "InternalError.CvmCaeMasterNonAlive"
 
@@ -206,8 +218,14 @@ const (
 	// 部署组操作请求MASTER 操作失败。
 	INTERNALERROR_GROUPMASTERNUKNOWNERROR = "InternalError.GroupMasterNuknownError"
 
+	// tcr仓库绑定失败。
+	INTERNALERROR_IMAGEREPOTCRBINDERROR = "InternalError.ImagerepoTcrBindError"
+
 	// TSF节点管理通用错误信息。
 	INTERNALERROR_INSTANCECOMMONERROR = "InternalError.InstanceCommonError"
+
+	// 创建kubernetes命名空间失败。
+	INTERNALERROR_KUBERNETESAPICREATENAMESPACESERROR = "InternalError.KubernetesApiCreateNamespacesError"
 
 	// 创建kubernetes秘钥失败。
 	INTERNALERROR_KUBERNETESAPICREATESECRETERROR = "InternalError.KubernetesApiCreateSecretError"
@@ -407,6 +425,9 @@ const (
 	// 配置项版本不合规。
 	INVALIDPARAMETERVALUE_CONFIGVERSIONINVALID = "InvalidParameterValue.ConfigVersionInvalid"
 
+	// 该镜像被占用中。
+	INVALIDPARAMETERVALUE_CONTAINERGROUPIMAGETAGISINUSE = "InvalidParameterValue.ContainerGroupImageTagIsInUse"
+
 	// 服务访问方式不能为空。
 	INVALIDPARAMETERVALUE_CONTAINERGROUPACCESSTYPENULL = "InvalidParameterValue.ContainergroupAccesstypeNull"
 
@@ -443,6 +464,9 @@ const (
 	// 服务端口值非法。
 	INVALIDPARAMETERVALUE_CONTAINERGROUPPORTINVALID = "InvalidParameterValue.ContainergroupPortInvalid"
 
+	// 服务端口不允许重复映射。
+	INVALIDPARAMETERVALUE_CONTAINERGROUPPORTSREPEAT = "InvalidParameterValue.ContainergroupPortsRepeat"
+
 	// 协议值非法,限定:TCP/UDP。
 	INVALIDPARAMETERVALUE_CONTAINERGROUPPROTOCOLINVALID = "InvalidParameterValue.ContainergroupProtocolInvalid"
 
@@ -451,6 +475,9 @@ const (
 
 	// 镜像仓库名与应用名不匹配。
 	INVALIDPARAMETERVALUE_CONTAINERGROUPREPONAMEINVALID = "InvalidParameterValue.ContainergroupReponameInvalid"
+
+	// agent 容器资源值非法 , %s。
+	INVALIDPARAMETERVALUE_CONTAINERGROUPRESOURCEAGENTVALUEINVALID = "InvalidParameterValue.ContainergroupResourceAgentValueInvalid"
 
 	// 容器端口不允许重复映射。
 	INVALIDPARAMETERVALUE_CONTAINERGROUPTARGETPORTSREPEAT = "InvalidParameterValue.ContainergroupTargetPortsRepeat"
@@ -493,6 +520,9 @@ const (
 
 	// 文件配置项名称不合规。
 	INVALIDPARAMETERVALUE_FILECONFIGNAMEINVALID = "InvalidParameterValue.FileConfigNameInvalid"
+
+	// 同一部署组禁止配置文件重复(文件路径+文件名)。
+	INVALIDPARAMETERVALUE_FILECONFIGPATHEXISTS = "InvalidParameterValue.FileConfigPathExists"
 
 	// 文件配置项版本描述不合规。
 	INVALIDPARAMETERVALUE_FILECONFIGVERSIONDESCINVALID = "InvalidParameterValue.FileConfigVersionDescInvalid"

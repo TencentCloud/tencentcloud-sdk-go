@@ -15,6 +15,7 @@
 package v20200918
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -90,6 +91,37 @@ func (c *Client) CreateCameraAlerts(request *CreateCameraAlertsRequest) (respons
     return
 }
 
+// CreateCameraAlerts
+// 上报相机移动、遮挡等告警信息
+//
+// 
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCameraAlertsWithContext(ctx context.Context, request *CreateCameraAlertsRequest) (response *CreateCameraAlertsResponse, err error) {
+    if request == nil {
+        request = NewCreateCameraAlertsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateCameraAlertsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCameraStateRequest() (request *CreateCameraStateRequest) {
     request = &CreateCameraStateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -129,6 +161,35 @@ func (c *Client) CreateCameraState(request *CreateCameraStateRequest) (response 
     if request == nil {
         request = NewCreateCameraStateRequest()
     }
+    
+    response = NewCreateCameraStateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateCameraState
+// 上报当前场内所有相机的当前状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCameraStateWithContext(ctx context.Context, request *CreateCameraStateRequest) (response *CreateCameraStateResponse, err error) {
+    if request == nil {
+        request = NewCreateCameraStateRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateCameraStateResponse()
     err = c.Send(request, response)
@@ -180,6 +241,35 @@ func (c *Client) CreateCapture(request *CreateCaptureRequest) (response *CreateC
     return
 }
 
+// CreateCapture
+// 场内抓拍上报接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCaptureWithContext(ctx context.Context, request *CreateCaptureRequest) (response *CreateCaptureResponse, err error) {
+    if request == nil {
+        request = NewCreateCaptureRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateCaptureResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateMultiBizAlertRequest() (request *CreateMultiBizAlertRequest) {
     request = &CreateMultiBizAlertRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -219,6 +309,35 @@ func (c *Client) CreateMultiBizAlert(request *CreateMultiBizAlertRequest) (respo
     if request == nil {
         request = NewCreateMultiBizAlertRequest()
     }
+    
+    response = NewCreateMultiBizAlertResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateMultiBizAlert
+// 集团广场的多经点位告警
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateMultiBizAlertWithContext(ctx context.Context, request *CreateMultiBizAlertRequest) (response *CreateMultiBizAlertResponse, err error) {
+    if request == nil {
+        request = NewCreateMultiBizAlertRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateMultiBizAlertResponse()
     err = c.Send(request, response)
@@ -270,6 +389,35 @@ func (c *Client) CreateProgramState(request *CreateProgramStateRequest) (respons
     return
 }
 
+// CreateProgramState
+// 上报所有进程监控信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateProgramStateWithContext(ctx context.Context, request *CreateProgramStateRequest) (response *CreateProgramStateResponse, err error) {
+    if request == nil {
+        request = NewCreateProgramStateRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateProgramStateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateServerStateRequest() (request *CreateServerStateRequest) {
     request = &CreateServerStateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -309,6 +457,35 @@ func (c *Client) CreateServerState(request *CreateServerStateRequest) (response 
     if request == nil {
         request = NewCreateServerStateRequest()
     }
+    
+    response = NewCreateServerStateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateServerState
+// 上报所有服务器硬件监控信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateServerStateWithContext(ctx context.Context, request *CreateServerStateRequest) (response *CreateServerStateResponse, err error) {
+    if request == nil {
+        request = NewCreateServerStateRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateServerStateResponse()
     err = c.Send(request, response)
@@ -360,6 +537,35 @@ func (c *Client) DeleteMultiBizAlert(request *DeleteMultiBizAlertRequest) (respo
     return
 }
 
+// DeleteMultiBizAlert
+// 集团广场的多经点位消警
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteMultiBizAlertWithContext(ctx context.Context, request *DeleteMultiBizAlertRequest) (response *DeleteMultiBizAlertResponse, err error) {
+    if request == nil {
+        request = NewDeleteMultiBizAlertRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteMultiBizAlertResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteTaskRequest() (request *DeleteTaskRequest) {
     request = &DeleteTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -405,6 +611,35 @@ func (c *Client) DeleteTask(request *DeleteTaskRequest) (response *DeleteTaskRes
     return
 }
 
+// DeleteTask
+// 删除集团广场对应的任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteTaskWithContext(ctx context.Context, request *DeleteTaskRequest) (response *DeleteTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCamerasRequest() (request *DescribeCamerasRequest) {
     request = &DescribeCamerasRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -444,6 +679,35 @@ func (c *Client) DescribeCameras(request *DescribeCamerasRequest) (response *Des
     if request == nil {
         request = NewDescribeCamerasRequest()
     }
+    
+    response = NewDescribeCamerasResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCameras
+// 获取集团广场对应的摄像头列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCamerasWithContext(ctx context.Context, request *DescribeCamerasRequest) (response *DescribeCamerasResponse, err error) {
+    if request == nil {
+        request = NewDescribeCamerasRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeCamerasResponse()
     err = c.Send(request, response)
@@ -499,6 +763,39 @@ func (c *Client) DescribeConfig(request *DescribeConfigRequest) (response *Descr
     return
 }
 
+// DescribeConfig
+// 获取摄像头配置信息
+//
+// mac不为空返回指定相机配置
+//
+// mac为空返回对应GroupCode和MallId全量配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeConfigWithContext(ctx context.Context, request *DescribeConfigRequest) (response *DescribeConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeConfigRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeImageRequest() (request *DescribeImageRequest) {
     request = &DescribeImageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -538,6 +835,35 @@ func (c *Client) DescribeImage(request *DescribeImageRequest) (response *Describ
     if request == nil {
         request = NewDescribeImageRequest()
     }
+    
+    response = NewDescribeImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeImage
+// 实时获取底图接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeImageWithContext(ctx context.Context, request *DescribeImageRequest) (response *DescribeImageResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeImageResponse()
     err = c.Send(request, response)
@@ -589,6 +915,35 @@ func (c *Client) DescribeMultiBizBaseImage(request *DescribeMultiBizBaseImageReq
     return
 }
 
+// DescribeMultiBizBaseImage
+// 获取多经点位底图
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeMultiBizBaseImageWithContext(ctx context.Context, request *DescribeMultiBizBaseImageRequest) (response *DescribeMultiBizBaseImageResponse, err error) {
+    if request == nil {
+        request = NewDescribeMultiBizBaseImageRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeMultiBizBaseImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTasksRequest() (request *DescribeTasksRequest) {
     request = &DescribeTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -628,6 +983,35 @@ func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *Describ
     if request == nil {
         request = NewDescribeTasksRequest()
     }
+    
+    response = NewDescribeTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeTasks
+// 查询集团广场对应的任务列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTasksWithContext(ctx context.Context, request *DescribeTasksRequest) (response *DescribeTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeTasksRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeTasksResponse()
     err = c.Send(request, response)
@@ -679,6 +1063,35 @@ func (c *Client) DescribeZones(request *DescribeZonesRequest) (response *Describ
     return
 }
 
+// DescribeZones
+// 获取集团广场的点位列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeZonesWithContext(ctx context.Context, request *DescribeZonesRequest) (response *DescribeZonesResponse, err error) {
+    if request == nil {
+        request = NewDescribeZonesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeZonesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyMultiBizConfigRequest() (request *ModifyMultiBizConfigRequest) {
     request = &ModifyMultiBizConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -718,6 +1131,35 @@ func (c *Client) ModifyMultiBizConfig(request *ModifyMultiBizConfigRequest) (res
     if request == nil {
         request = NewModifyMultiBizConfigRequest()
     }
+    
+    response = NewModifyMultiBizConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyMultiBizConfig
+// 集团广场的多经点位配置更新
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyMultiBizConfigWithContext(ctx context.Context, request *ModifyMultiBizConfigRequest) (response *ModifyMultiBizConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyMultiBizConfigRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyMultiBizConfigResponse()
     err = c.Send(request, response)
@@ -769,6 +1211,35 @@ func (c *Client) ReportServiceRegister(request *ReportServiceRegisterRequest) (r
     return
 }
 
+// ReportServiceRegister
+// 上报服务注册自身的服务地址作为回调地址, 用于信息回传。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ReportServiceRegisterWithContext(ctx context.Context, request *ReportServiceRegisterRequest) (response *ReportServiceRegisterResponse, err error) {
+    if request == nil {
+        request = NewReportServiceRegisterRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewReportServiceRegisterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSearchImageRequest() (request *SearchImageRequest) {
     request = &SearchImageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -808,6 +1279,35 @@ func (c *Client) SearchImage(request *SearchImageRequest) (response *SearchImage
     if request == nil {
         request = NewSearchImageRequest()
     }
+    
+    response = NewSearchImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SearchImage
+// 以图搜图
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SearchImageWithContext(ctx context.Context, request *SearchImageRequest) (response *SearchImageResponse, err error) {
+    if request == nil {
+        request = NewSearchImageRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewSearchImageResponse()
     err = c.Send(request, response)

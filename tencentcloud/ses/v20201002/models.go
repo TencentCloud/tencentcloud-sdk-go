@@ -448,7 +448,7 @@ func (r *DeleteEmailIdentityResponse) FromJsonString(s string) error {
 type DeleteEmailTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// 模版ID
+	// 模板ID
 	TemplateID *uint64 `json:"TemplateID,omitempty" name:"TemplateID"`
 }
 

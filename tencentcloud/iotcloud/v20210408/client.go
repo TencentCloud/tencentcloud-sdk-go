@@ -15,6 +15,7 @@
 package v20210408
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -86,6 +87,33 @@ func (c *Client) CreateDevice(request *CreateDeviceRequest) (response *CreateDev
     return
 }
 
+// CreateDevice
+// 本接口（CreateDevice）用于新建一个物联网通信设备。 
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TIDWHITELISTNOTOPEN = "FailedOperation.TidWhiteListNotOpen"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DEFINEDPSKNOTBASE64 = "InvalidParameterValue.DefinedPskNotBase64"
+//  INVALIDPARAMETERVALUE_DEVICEALREADYEXIST = "InvalidParameterValue.DeviceAlreadyExist"
+//  LIMITEXCEEDED_DEVICEEXCEEDLIMIT = "LimitExceeded.DeviceExceedLimit"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  UNAUTHORIZEDOPERATION_PRODUCTCANTHAVELORADEVICE = "UnauthorizedOperation.ProductCantHaveLoRaDevice"
+//  UNAUTHORIZEDOPERATION_PRODUCTCANTHAVENORMALDEVICE = "UnauthorizedOperation.ProductCantHaveNormalDevice"
+//  UNAUTHORIZEDOPERATION_PRODUCTCANTHAVENOTLORADEVICE = "UnauthorizedOperation.ProductCantHaveNotLoRaDevice"
+//  UNAUTHORIZEDOPERATION_PRODUCTNOTSUPPORTPSK = "UnauthorizedOperation.ProductNotSupportPSK"
+//  UNSUPPORTEDOPERATION_SUITETOKENNOCREATE = "UnsupportedOperation.SuiteTokenNoCreate"
+func (c *Client) CreateDeviceWithContext(ctx context.Context, request *CreateDeviceRequest) (response *CreateDeviceResponse, err error) {
+    if request == nil {
+        request = NewCreateDeviceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePrivateCARequest() (request *CreatePrivateCARequest) {
     request = &CreatePrivateCARequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -112,6 +140,22 @@ func (c *Client) CreatePrivateCA(request *CreatePrivateCARequest) (response *Cre
     if request == nil {
         request = NewCreatePrivateCARequest()
     }
+    
+    response = NewCreatePrivateCAResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreatePrivateCA
+// 创建私有CA证书
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CACERTNOTMATCH = "InvalidParameterValue.CACertNotMatch"
+func (c *Client) CreatePrivateCAWithContext(ctx context.Context, request *CreatePrivateCARequest) (response *CreatePrivateCAResponse, err error) {
+    if request == nil {
+        request = NewCreatePrivateCARequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreatePrivateCAResponse()
     err = c.Send(request, response)
@@ -155,6 +199,27 @@ func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDev
     return
 }
 
+// DeleteDevice
+// 本接口（DeleteDevice）用于删除物联网通信设备。 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  UNAUTHORIZEDOPERATION_DEVICEHASALREADYBINDGATEWAY = "UnauthorizedOperation.DeviceHasAlreadyBindGateway"
+//  UNAUTHORIZEDOPERATION_GATEWAYHASBINDEDDEVICES = "UnauthorizedOperation.GatewayHasBindedDevices"
+//  UNSUPPORTEDOPERATION_DEVICEOTATASKINPROGRESS = "UnsupportedOperation.DeviceOtaTaskInProgress"
+func (c *Client) DeleteDeviceWithContext(ctx context.Context, request *DeleteDeviceRequest) (response *DeleteDeviceResponse, err error) {
+    if request == nil {
+        request = NewDeleteDeviceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeletePrivateCARequest() (request *DeletePrivateCARequest) {
     request = &DeletePrivateCARequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -186,6 +251,27 @@ func (c *Client) DeletePrivateCA(request *DeletePrivateCARequest) (response *Del
     if request == nil {
         request = NewDeletePrivateCARequest()
     }
+    
+    response = NewDeletePrivateCAResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeletePrivateCA
+// 删除私有CA证书
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  UNAUTHORIZEDOPERATION_DEVICEHASALREADYBINDGATEWAY = "UnauthorizedOperation.DeviceHasAlreadyBindGateway"
+//  UNAUTHORIZEDOPERATION_GATEWAYHASBINDEDDEVICES = "UnauthorizedOperation.GatewayHasBindedDevices"
+//  UNSUPPORTEDOPERATION_DEVICEOTATASKINPROGRESS = "UnsupportedOperation.DeviceOtaTaskInProgress"
+func (c *Client) DeletePrivateCAWithContext(ctx context.Context, request *DeletePrivateCARequest) (response *DeletePrivateCAResponse, err error) {
+    if request == nil {
+        request = NewDeletePrivateCARequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeletePrivateCAResponse()
     err = c.Send(request, response)
@@ -230,6 +316,28 @@ func (c *Client) DeleteProduct(request *DeleteProductRequest) (response *DeleteP
     return
 }
 
+// DeleteProduct
+// 本接口（DeleteProduct）用于删除一个物联网通信产品
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  UNAUTHORIZEDOPERATION_DEVICESEXISTUNDERPRODUCT = "UnauthorizedOperation.DevicesExistUnderProduct"
+//  UNSUPPORTEDOPERATION_GATEWAYPRODUCTHASBINDEDPRODUCT = "UnsupportedOperation.GatewayProductHasBindedProduct"
+//  UNSUPPORTEDOPERATION_PRODUCTHASBINDGATEWAY = "UnsupportedOperation.ProductHasBindGateway"
+//  UNSUPPORTEDOPERATION_PRODUCTHASBINDEDGATEWAYPRODUCT = "UnsupportedOperation.ProductHasBindedGatewayProduct"
+func (c *Client) DeleteProductWithContext(ctx context.Context, request *DeleteProductRequest) (response *DeleteProductResponse, err error) {
+    if request == nil {
+        request = NewDeleteProductRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeviceRequest() (request *DescribeDeviceRequest) {
     request = &DescribeDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -259,6 +367,25 @@ func (c *Client) DescribeDevice(request *DescribeDeviceRequest) (response *Descr
     if request == nil {
         request = NewDescribeDeviceRequest()
     }
+    
+    response = NewDescribeDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeDevice
+// 本接口（DescribeDevice）用于查看设备信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) DescribeDeviceWithContext(ctx context.Context, request *DescribeDeviceRequest) (response *DescribeDeviceResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeDeviceResponse()
     err = c.Send(request, response)
@@ -299,6 +426,24 @@ func (c *Client) DescribeDevices(request *DescribeDevicesRequest) (response *Des
     return
 }
 
+// DescribeDevices
+// 本接口（DescribeDevices）用于查询物联网通信设备的设备列表。 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) DescribeDevicesWithContext(ctx context.Context, request *DescribeDevicesRequest) (response *DescribeDevicesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDevicesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePrivateCARequest() (request *DescribePrivateCARequest) {
     request = &DescribePrivateCARequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -327,6 +472,24 @@ func (c *Client) DescribePrivateCA(request *DescribePrivateCARequest) (response 
     if request == nil {
         request = NewDescribePrivateCARequest()
     }
+    
+    response = NewDescribePrivateCAResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribePrivateCA
+// 查询私有化CA信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) DescribePrivateCAWithContext(ctx context.Context, request *DescribePrivateCARequest) (response *DescribePrivateCAResponse, err error) {
+    if request == nil {
+        request = NewDescribePrivateCARequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribePrivateCAResponse()
     err = c.Send(request, response)
@@ -367,6 +530,24 @@ func (c *Client) DescribePrivateCABindedProducts(request *DescribePrivateCABinde
     return
 }
 
+// DescribePrivateCABindedProducts
+// 查询私有CA绑定的产品列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) DescribePrivateCABindedProductsWithContext(ctx context.Context, request *DescribePrivateCABindedProductsRequest) (response *DescribePrivateCABindedProductsResponse, err error) {
+    if request == nil {
+        request = NewDescribePrivateCABindedProductsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribePrivateCABindedProductsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePrivateCAsRequest() (request *DescribePrivateCAsRequest) {
     request = &DescribePrivateCAsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -395,6 +576,24 @@ func (c *Client) DescribePrivateCAs(request *DescribePrivateCAsRequest) (respons
     if request == nil {
         request = NewDescribePrivateCAsRequest()
     }
+    
+    response = NewDescribePrivateCAsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribePrivateCAs
+// 查询私有CA证书列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) DescribePrivateCAsWithContext(ctx context.Context, request *DescribePrivateCAsRequest) (response *DescribePrivateCAsResponse, err error) {
+    if request == nil {
+        request = NewDescribePrivateCAsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribePrivateCAsResponse()
     err = c.Send(request, response)
@@ -435,6 +634,24 @@ func (c *Client) DescribeProduct(request *DescribeProductRequest) (response *Des
     return
 }
 
+// DescribeProduct
+// 本接口（DescribeProduct）用于查看产品详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) DescribeProductWithContext(ctx context.Context, request *DescribeProductRequest) (response *DescribeProductResponse, err error) {
+    if request == nil {
+        request = NewDescribeProductRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProductCARequest() (request *DescribeProductCARequest) {
     request = &DescribeProductCARequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -469,6 +686,24 @@ func (c *Client) DescribeProductCA(request *DescribeProductCARequest) (response 
     return
 }
 
+// DescribeProductCA
+// 查询产品绑定的CA证书
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) DescribeProductCAWithContext(ctx context.Context, request *DescribeProductCARequest) (response *DescribeProductCAResponse, err error) {
+    if request == nil {
+        request = NewDescribeProductCARequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeProductCAResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateDeviceLogLevelRequest() (request *UpdateDeviceLogLevelRequest) {
     request = &UpdateDeviceLogLevelRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -497,6 +732,24 @@ func (c *Client) UpdateDeviceLogLevel(request *UpdateDeviceLogLevelRequest) (res
     if request == nil {
         request = NewUpdateDeviceLogLevelRequest()
     }
+    
+    response = NewUpdateDeviceLogLevelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UpdateDeviceLogLevel
+// 设置设备上报的日志级别  
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  UNAUTHORIZEDOPERATION_DEVICEISNOTENABLED = "UnauthorizedOperation.DeviceIsNotEnabled"
+func (c *Client) UpdateDeviceLogLevelWithContext(ctx context.Context, request *UpdateDeviceLogLevelRequest) (response *UpdateDeviceLogLevelResponse, err error) {
+    if request == nil {
+        request = NewUpdateDeviceLogLevelRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUpdateDeviceLogLevelResponse()
     err = c.Send(request, response)
@@ -539,6 +792,26 @@ func (c *Client) UpdateDevicesEnableState(request *UpdateDevicesEnableStateReque
     return
 }
 
+// UpdateDevicesEnableState
+// 批量启用或者禁用设备 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_PRODUCTTYPENOTSUPPORT = "InvalidParameterValue.ProductTypeNotSupport"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  UNAUTHORIZEDOPERATION_DEVICEHASALREADYBINDGATEWAY = "UnauthorizedOperation.DeviceHasAlreadyBindGateway"
+func (c *Client) UpdateDevicesEnableStateWithContext(ctx context.Context, request *UpdateDevicesEnableStateRequest) (response *UpdateDevicesEnableStateResponse, err error) {
+    if request == nil {
+        request = NewUpdateDevicesEnableStateRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewUpdateDevicesEnableStateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdatePrivateCARequest() (request *UpdatePrivateCARequest) {
     request = &UpdatePrivateCARequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -569,6 +842,26 @@ func (c *Client) UpdatePrivateCA(request *UpdatePrivateCARequest) (response *Upd
     if request == nil {
         request = NewUpdatePrivateCARequest()
     }
+    
+    response = NewUpdatePrivateCAResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UpdatePrivateCA
+// 更新私有CA证书
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_PRODUCTTYPENOTSUPPORT = "InvalidParameterValue.ProductTypeNotSupport"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  UNAUTHORIZEDOPERATION_DEVICEHASALREADYBINDGATEWAY = "UnauthorizedOperation.DeviceHasAlreadyBindGateway"
+func (c *Client) UpdatePrivateCAWithContext(ctx context.Context, request *UpdatePrivateCARequest) (response *UpdatePrivateCAResponse, err error) {
+    if request == nil {
+        request = NewUpdatePrivateCARequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUpdatePrivateCAResponse()
     err = c.Send(request, response)

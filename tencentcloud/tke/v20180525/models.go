@@ -1258,6 +1258,9 @@ type CreateClusterNodePoolRequest struct {
 
 	// 容器的镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
 	OsCustomizeType *string `json:"OsCustomizeType,omitempty" name:"OsCustomizeType"`
+
+	// 资源标签
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateClusterNodePoolRequest) ToJsonString() string {
@@ -1282,6 +1285,7 @@ func (r *CreateClusterNodePoolRequest) FromJsonString(s string) error {
 	delete(f, "Taints")
 	delete(f, "NodePoolOs")
 	delete(f, "OsCustomizeType")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterNodePoolRequest has unknown keys!", "")
 	}
@@ -6325,6 +6329,9 @@ type ModifyClusterNodePoolRequest struct {
 
 	// 节点自定义参数
 	ExtraArgs *InstanceExtraArgs `json:"ExtraArgs,omitempty" name:"ExtraArgs"`
+
+	// 资源标签
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *ModifyClusterNodePoolRequest) ToJsonString() string {
@@ -6350,6 +6357,7 @@ func (r *ModifyClusterNodePoolRequest) FromJsonString(s string) error {
 	delete(f, "OsName")
 	delete(f, "OsCustomizeType")
 	delete(f, "ExtraArgs")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterNodePoolRequest has unknown keys!", "")
 	}
@@ -6674,6 +6682,10 @@ type NodePool struct {
 	// 用户自定义脚本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserScript *string `json:"UserScript,omitempty" name:"UserScript"`
+
+	// 资源标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type NodePoolOption struct {
@@ -6761,6 +6773,11 @@ type PrometheusAgentOverview struct {
 
 	// 集群名称
 	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 额外labels
+	// 本集群的所有指标都会带上这几个label
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalLabels []*Label `json:"ExternalLabels,omitempty" name:"ExternalLabels"`
 }
 
 type PrometheusAlertHistoryItem struct {
@@ -6815,6 +6832,10 @@ type PrometheusAlertRule struct {
 	// 参考prometheus rule中的annotations
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Annotations []*Label `json:"Annotations,omitempty" name:"Annotations"`
+
+	// 告警规则状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleState *int64 `json:"RuleState,omitempty" name:"RuleState"`
 }
 
 type PrometheusAlertRuleDetail struct {

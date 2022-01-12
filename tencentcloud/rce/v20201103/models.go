@@ -35,6 +35,48 @@ type AccountInfo struct {
 	OtherAccount *OtherAccountInfo `json:"OtherAccount,omitempty" name:"OtherAccount"`
 }
 
+type DescribeRiskAssessmentRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeRiskAssessmentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRiskAssessmentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRiskAssessmentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRiskAssessmentResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRiskAssessmentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRiskAssessmentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeRiskModelRequest struct {
 	*tchttp.BaseRequest
 
@@ -84,6 +126,55 @@ func (r *DescribeRiskModelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeRiskTrendsRequest struct {
+	*tchttp.BaseRequest
+
+	// 业务入参
+	BusinessSecurityData *InputFrontRisk `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
+}
+
+func (r *DescribeRiskTrendsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRiskTrendsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BusinessSecurityData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRiskTrendsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRiskTrendsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务出参
+		Data *OutputFrontRiskData `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRiskTrendsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRiskTrendsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type InputCryptoManageMarketingRisk struct {
 
 	// 是否授权
@@ -106,6 +197,9 @@ type InputDescribeRiskModelData struct {
 
 	// 客户业务侧标识用户的唯一ID
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 是否为测试流量
+	IsTest *uint64 `json:"IsTest,omitempty" name:"IsTest"`
 }
 
 type InputDetails struct {
@@ -115,6 +209,27 @@ type InputDetails struct {
 
 	// 字段值
 	FieldValue *string `json:"FieldValue,omitempty" name:"FieldValue"`
+}
+
+type InputFrontRisk struct {
+
+	// 事件ID
+	EventId *int64 `json:"EventId,omitempty" name:"EventId"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 趋势类型
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 当前开始时间
+	CurrentStartTime *string `json:"CurrentStartTime,omitempty" name:"CurrentStartTime"`
+
+	// 当前结束时间
+	CurrentEndTime *string `json:"CurrentEndTime,omitempty" name:"CurrentEndTime"`
 }
 
 type InputManageMarketingRisk struct {
@@ -293,6 +408,43 @@ type OutputDescribeRiskModelValue struct {
 
 	// 模型分数值
 	ApplyScore *float64 `json:"ApplyScore,omitempty" name:"ApplyScore"`
+}
+
+type OutputFrontRisk struct {
+
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 参数值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value []*OutputFrontRiskValue `json:"Value,omitempty" name:"Value"`
+}
+
+type OutputFrontRiskData struct {
+
+	// 返回码[0：成功；非0：标识失败错误码]。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *int64 `json:"Code,omitempty" name:"Code"`
+
+	// 出错消息[UTF-8编码]。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 返回结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value []*OutputFrontRisk `json:"Value,omitempty" name:"Value"`
+}
+
+type OutputFrontRiskValue struct {
+
+	// 请求次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Requests *int64 `json:"Requests,omitempty" name:"Requests"`
+
+	// 日期标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Index *string `json:"Index,omitempty" name:"Index"`
 }
 
 type OutputManageMarketingRisk struct {

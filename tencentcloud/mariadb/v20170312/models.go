@@ -703,6 +703,132 @@ func (r *CreateDedicatedClusterDBInstanceResponse) FromJsonString(s string) erro
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateHourDBInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 节点可用区分布，最多可填两个可用区。当分片规格为一主两从时，其中两个节点在第一个可用区。
+	Zones []*string `json:"Zones,omitempty" name:"Zones"`
+
+	// 节点个数
+	NodeCount *int64 `json:"NodeCount,omitempty" name:"NodeCount"`
+
+	// 内存大小，单位：GB
+	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 储存大小，单位：GB
+	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
+
+	// 购买实例数量
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+
+	// 项目ID，不传表示默认项目
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 统一网络ID，不传表示基础网络
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 统一子网ID，VpcId有值时需填写
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 数据库引擎版本，当前可选：10.0.10，10.1.9，5.7.17。
+	// 10.0.10 - Mariadb 10.0.10；
+	// 10.1.9 - Mariadb 10.1.9；
+	// 5.7.17 - Percona 5.7.17。
+	// 如果不填的话，默认为10.1.9，表示Mariadb 10.1.9。
+	DbVersionId *string `json:"DbVersionId,omitempty" name:"DbVersionId"`
+
+	// 自定义实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 安全组ID，不传表示不绑定安全组
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
+
+	// 是否支持IPv6
+	Ipv6Flag *int64 `json:"Ipv6Flag,omitempty" name:"Ipv6Flag"`
+
+	// 标签键值对数组
+	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags"`
+
+	// DCN源地域
+	DcnRegion *string `json:"DcnRegion,omitempty" name:"DcnRegion"`
+
+	// DCN源实例ID
+	DcnInstanceId *string `json:"DcnInstanceId,omitempty" name:"DcnInstanceId"`
+
+	// 参数列表。本接口的可选值为：character_set_server（字符集，必传），lower_case_table_names（表名大小写敏感，必传，0 - 敏感；1-不敏感），innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化。默认为强同步可退化）。
+	InitParams []*DBParamValue `json:"InitParams,omitempty" name:"InitParams"`
+
+	// 回档源实例ID
+	RollbackInstanceId *string `json:"RollbackInstanceId,omitempty" name:"RollbackInstanceId"`
+
+	// 回档时间
+	RollbackTime *string `json:"RollbackTime,omitempty" name:"RollbackTime"`
+}
+
+func (r *CreateHourDBInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateHourDBInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Zones")
+	delete(f, "NodeCount")
+	delete(f, "Memory")
+	delete(f, "Storage")
+	delete(f, "Count")
+	delete(f, "ProjectId")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "DbVersionId")
+	delete(f, "InstanceName")
+	delete(f, "SecurityGroupIds")
+	delete(f, "Ipv6Flag")
+	delete(f, "ResourceTags")
+	delete(f, "DcnRegion")
+	delete(f, "DcnInstanceId")
+	delete(f, "InitParams")
+	delete(f, "RollbackInstanceId")
+	delete(f, "RollbackTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHourDBInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateHourDBInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 长订单号。可以据此调用 DescribeOrders
+	//  查询订单详细信息，或在支付失败时调用用户账号相关接口进行支付。
+		DealName *string `json:"DealName,omitempty" name:"DealName"`
+
+		// 订单对应的实例 ID 列表，如果此处没有返回实例 ID，可以通过订单查询接口获取。还可通过实例查询接口查询实例是否创建完成。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateHourDBInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateHourDBInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateTmpInstancesRequest struct {
 	*tchttp.BaseRequest
 
@@ -958,6 +1084,10 @@ type DBInstance struct {
 	// 1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 实例标签信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags"`
 }
 
 type DBParamValue struct {
@@ -2526,6 +2656,9 @@ type DescribeProjectSecurityGroupsResponse struct {
 		// 安全组详情。
 		Groups []*SecurityGroup `json:"Groups,omitempty" name:"Groups"`
 
+		// 安全组总数。
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -3734,7 +3867,7 @@ func (r *ModifyRealServerAccessStrategyResponse) FromJsonString(s string) error 
 type ModifySyncTaskAttributeRequest struct {
 	*tchttp.BaseRequest
 
-	// 一个或多个待操作的任务ID。可通过DescribeSyncTasks API返回值中的TaskId获取。每次请求允许操作的实例数量上限是100。
+	// 一个或多个待操作的任务ID。可通过DescribeSyncTasks API返回值中的TaskId获取。每次请求允许操作的任务数量上限是100。
 	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds"`
 
 	// 任务名称。可任意命名，但不得超过100个字符。

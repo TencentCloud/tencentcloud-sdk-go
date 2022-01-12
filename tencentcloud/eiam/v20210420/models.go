@@ -125,6 +125,10 @@ type AddUserToUserGroupResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// 未成功加入用户组的用户ID列表信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FailedItems []*string `json:"FailedItems,omitempty" name:"FailedItems"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -565,7 +569,7 @@ type CreateUserRequest struct {
 	// 用户手机号。例如：+86-1xxxxxxxxxx。
 	Phone *string `json:"Phone,omitempty" name:"Phone"`
 
-	// 用户所属组织机构唯一ID。如果为空，默认为在根节点下创建用户。
+	// 用户所属的主组织机构唯一ID。如果为空，默认为在根节点下创建用户。
 	OrgNodeId *string `json:"OrgNodeId,omitempty" name:"OrgNodeId"`
 
 	// 用户过期时间，遵循 ISO 8601 标准。
@@ -576,6 +580,9 @@ type CreateUserRequest struct {
 
 	// 密码是否需要重置，为空默认为false不需要重置密码。
 	PwdNeedReset *bool `json:"PwdNeedReset,omitempty" name:"PwdNeedReset"`
+
+	// 用户所属的次要组织机构ID列表。
+	SecondaryOrgNodeIdList []*string `json:"SecondaryOrgNodeIdList,omitempty" name:"SecondaryOrgNodeIdList"`
 }
 
 func (r *CreateUserRequest) ToJsonString() string {
@@ -600,6 +607,7 @@ func (r *CreateUserRequest) FromJsonString(s string) error {
 	delete(f, "ExpirationTime")
 	delete(f, "Email")
 	delete(f, "PwdNeedReset")
+	delete(f, "SecondaryOrgNodeIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserRequest has unknown keys!", "")
 	}
@@ -1575,7 +1583,7 @@ type DescribeUserInfoResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Phone *string `json:"Phone,omitempty" name:"Phone"`
 
-		// 用户所属组织机构 Id。
+		// 用户所属的主组织机构唯一ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		OrgNodeId *string `json:"OrgNodeId,omitempty" name:"OrgNodeId"`
 
@@ -1594,6 +1602,10 @@ type DescribeUserInfoResponse struct {
 		// 当前用户的密码是否需要重置，该字段为false表示不需要重置密码。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		PwdNeedReset *bool `json:"PwdNeedReset,omitempty" name:"PwdNeedReset"`
+
+		// 用户所属的次要组织机构ID列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SecondaryOrgNodeIdList []*string `json:"SecondaryOrgNodeIdList,omitempty" name:"SecondaryOrgNodeIdList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1913,17 +1925,20 @@ func (r *ListApplicationAuthorizationsResponse) FromJsonString(s string) error {
 type ListApplicationsRequest struct {
 	*tchttp.BaseRequest
 
-	// 查询条件，支持多搜索条件组合、多数据范围匹配的搜索。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（""）表示全匹配、以星号（* ) 结尾表示字段部分匹配。如果该字段为空，则默认查全量表。
+	// 模糊匹配搜索条件，支持多搜索条件组合、多数据范围匹配的搜索。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（""）表示全匹配、以星号（* ) 结尾表示字段部分匹配。模糊匹配搜索功能与精准匹配查询不会同时生效，如果SearchCondition与ApplicationIdList均不为空，则默认以ApplicationIdList进行精准查询。如果SearchCondition字段与ApplicationIdList字段均为空，则默认返回全部的应用信息。
 	SearchCondition *ApplicationInfoSearchCriteria `json:"SearchCondition,omitempty" name:"SearchCondition"`
 
-	// 排序条件集合。可排序的属性支持：应用名字（displayName）、创建时间（createdDate）、上次修改时间（lastModifiedDate）。如果该字段为空，则默认按照应用名字正向排序。
+	// 排序条件集合。可排序的属性支持：应用名字（DisplayName）、创建时间（CreatedDate）、上次修改时间（LastModifiedDate）。如果该字段为空，则默认按照应用名字正向排序。
 	Sort *SortCondition `json:"Sort,omitempty" name:"Sort"`
 
-	// 分页偏移量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
+	// 排序条件集合。可排序的属性支持：应用名字（DisplayName）、创建时间（CreatedDate）、上次修改时间（LastModifiedDate）。如果该字段为空，则默认按照应用名字正向排序。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 分页读取数量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 应用ID列表，通过应用ID列表精准匹配对应的应用信息。模糊匹配搜索功能与精准匹配查询不会同时生效，如果SearchCondition与ApplicationIdList均不为空，则默认以ApplicationIdList进行精准查询。如果SearchCondition字段与ApplicationIdList字段均为空，则默认返回全部的应用信息。
+	ApplicationIdList []*string `json:"ApplicationIdList,omitempty" name:"ApplicationIdList"`
 }
 
 func (r *ListApplicationsRequest) ToJsonString() string {
@@ -1942,6 +1957,7 @@ func (r *ListApplicationsRequest) FromJsonString(s string) error {
 	delete(f, "Sort")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "ApplicationIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListApplicationsRequest has unknown keys!", "")
 	}
@@ -2393,6 +2409,18 @@ type ListUsersInUserGroupRequest struct {
 
 	// 用户组ID，是用户组的全局唯一标识。
 	UserGroupId *string `json:"UserGroupId,omitempty" name:"UserGroupId"`
+
+	// 用户属性搜索条件，可查询条件包括：用户名、手机号码，邮箱、用户锁定状态、用户冻结状态、创建时间、上次修改时间，支持多种属性组合作为查询条件。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（“”）表示全匹配、以星号（）结尾表示字段部分匹配、中括号以逗号分隔（[Min，Max]）表示闭区间查询、大括号以逗号分隔（{Min，Max}）表示开区间查询，中括号与大括号可以配合使用（例如：{Min，Max]表示最小值开区间，最大值闭区间查询）。范围匹配支持使用星号（例如{20,]表示查询范围为大于20的所有数据）。范围查询同时支持时间段查询，支持的属性包括创建时间 （CreationTime）、上次修改时间（LastUpdateTime），查询的时间格式遵循 ISO 8601 标准，例如：2021-01-13T09:44:07.182+0000。
+	SearchCondition *UserSearchCriteria `json:"SearchCondition,omitempty" name:"SearchCondition"`
+
+	// 排序条件集合。可排序的属性支持：用户名字（UserName）、用户昵称（DisplayName）、手机号（Phone）、邮箱（Email）、用户状态（Status）、创建时间 （CreatedDate）、上次更新时间（LastModifiedDate）。如果不指定，则默认按照用户昵称（DisplayName）正向排序。
+	Sort *SortCondition `json:"Sort,omitempty" name:"Sort"`
+
+	// 分页偏移量，默认为0。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多50个用户。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页读取数量，默认为50，最大值为100。 Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多50个用户。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
 func (r *ListUsersInUserGroupRequest) ToJsonString() string {
@@ -2408,6 +2436,10 @@ func (r *ListUsersInUserGroupRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "UserGroupId")
+	delete(f, "SearchCondition")
+	delete(f, "Sort")
+	delete(f, "Offset")
+	delete(f, "Limit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListUsersInUserGroupRequest has unknown keys!", "")
 	}
@@ -2733,6 +2765,9 @@ type ModifyUserInfoRequest struct {
 
 	// 用户所属的主组织机构唯一ID。如果为空，默认为在根节点下创建用户。
 	OrgNodeId *string `json:"OrgNodeId,omitempty" name:"OrgNodeId"`
+
+	// 用户所属的次要组织机构ID列表。
+	SecondaryOrgNodeIdList []*string `json:"SecondaryOrgNodeIdList,omitempty" name:"SecondaryOrgNodeIdList"`
 }
 
 func (r *ModifyUserInfoRequest) ToJsonString() string {
@@ -2758,6 +2793,7 @@ func (r *ModifyUserInfoRequest) FromJsonString(s string) error {
 	delete(f, "Email")
 	delete(f, "PwdNeedReset")
 	delete(f, "OrgNodeId")
+	delete(f, "SecondaryOrgNodeIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserInfoRequest has unknown keys!", "")
 	}
@@ -3121,7 +3157,7 @@ type UserInformation struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreationTime *string `json:"CreationTime,omitempty" name:"CreationTime"`
 
-	// 用户所属组织机构路径。
+	// 用户所属主组织机构的路径ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrgPath *string `json:"OrgPath,omitempty" name:"OrgPath"`
 

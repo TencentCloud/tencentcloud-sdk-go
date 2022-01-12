@@ -15,6 +15,7 @@
 package v20190121
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -75,6 +76,22 @@ func (c *Client) AddCrowdPackInfo(request *AddCrowdPackInfoRequest) (response *A
     return
 }
 
+// AddCrowdPackInfo
+// 添加短信人群包信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) AddCrowdPackInfoWithContext(ctx context.Context, request *AddCrowdPackInfoRequest) (response *AddCrowdPackInfoResponse, err error) {
+    if request == nil {
+        request = NewAddCrowdPackInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewAddCrowdPackInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddSmsSignRequest() (request *AddSmsSignRequest) {
     request = &AddSmsSignRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -106,6 +123,27 @@ func (c *Client) AddSmsSign(request *AddSmsSignRequest) (response *AddSmsSignRes
     if request == nil {
         request = NewAddSmsSignRequest()
     }
+    
+    response = NewAddSmsSignResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// AddSmsSign
+// 创建普通短信签名信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
+func (c *Client) AddSmsSignWithContext(ctx context.Context, request *AddSmsSignRequest) (response *AddSmsSignResponse, err error) {
+    if request == nil {
+        request = NewAddSmsSignRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewAddSmsSignResponse()
     err = c.Send(request, response)
@@ -150,6 +188,28 @@ func (c *Client) AddSmsTemplate(request *AddSmsTemplateRequest) (response *AddSm
     return
 }
 
+// AddSmsTemplate
+// 根据短信标题、模板内容等创建短信模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SMSTEMPLATEEXISTS = "FailedOperation.SmsTemplateExists"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
+func (c *Client) AddSmsTemplateWithContext(ctx context.Context, request *AddSmsTemplateRequest) (response *AddSmsTemplateResponse, err error) {
+    if request == nil {
+        request = NewAddSmsTemplateRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewAddSmsTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCancelCampaignRequest() (request *CancelCampaignRequest) {
     request = &CancelCampaignRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -181,6 +241,27 @@ func (c *Client) CancelCampaign(request *CancelCampaignRequest) (response *Cance
     if request == nil {
         request = NewCancelCampaignRequest()
     }
+    
+    response = NewCancelCampaignResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CancelCampaign
+// 取消短信推送活动
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
+func (c *Client) CancelCampaignWithContext(ctx context.Context, request *CancelCampaignRequest) (response *CancelCampaignResponse, err error) {
+    if request == nil {
+        request = NewCancelCampaignRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCancelCampaignResponse()
     err = c.Send(request, response)
@@ -225,6 +306,28 @@ func (c *Client) CreateCampaign(request *CreateCampaignRequest) (response *Creat
     return
 }
 
+// CreateCampaign
+// 创建短信推送活动
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
+func (c *Client) CreateCampaignWithContext(ctx context.Context, request *CreateCampaignRequest) (response *CreateCampaignResponse, err error) {
+    if request == nil {
+        request = NewCreateCampaignRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateCampaignResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateMmsInstanceRequest() (request *CreateMmsInstanceRequest) {
     request = &CreateMmsInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -256,6 +359,27 @@ func (c *Client) CreateMmsInstance(request *CreateMmsInstanceRequest) (response 
     if request == nil {
         request = NewCreateMmsInstanceRequest()
     }
+    
+    response = NewCreateMmsInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateMmsInstance
+// 创建超级短信的素材样例内容
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
+func (c *Client) CreateMmsInstanceWithContext(ctx context.Context, request *CreateMmsInstanceRequest) (response *CreateMmsInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateMmsInstanceRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateMmsInstanceResponse()
     err = c.Send(request, response)
@@ -298,6 +422,26 @@ func (c *Client) DelCrowdPack(request *DelCrowdPackRequest) (response *DelCrowdP
     return
 }
 
+// DelCrowdPack
+// 删除人群包
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DelCrowdPackWithContext(ctx context.Context, request *DelCrowdPackRequest) (response *DelCrowdPackResponse, err error) {
+    if request == nil {
+        request = NewDelCrowdPackRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDelCrowdPackResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDelTemplateRequest() (request *DelTemplateRequest) {
     request = &DelTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -327,6 +471,25 @@ func (c *Client) DelTemplate(request *DelTemplateRequest) (response *DelTemplate
     if request == nil {
         request = NewDelTemplateRequest()
     }
+    
+    response = NewDelTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DelTemplate
+// 删除短信模板
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DelTemplateWithContext(ctx context.Context, request *DelTemplateRequest) (response *DelTemplateResponse, err error) {
+    if request == nil {
+        request = NewDelTemplateRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDelTemplateResponse()
     err = c.Send(request, response)
@@ -370,6 +533,27 @@ func (c *Client) DeleteMmsInstance(request *DeleteMmsInstanceRequest) (response 
     return
 }
 
+// DeleteMmsInstance
+// 删除超级短信样例
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
+func (c *Client) DeleteMmsInstanceWithContext(ctx context.Context, request *DeleteMmsInstanceRequest) (response *DeleteMmsInstanceResponse, err error) {
+    if request == nil {
+        request = NewDeleteMmsInstanceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteMmsInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMmsInstanceInfoRequest() (request *DescribeMmsInstanceInfoRequest) {
     request = &DescribeMmsInstanceInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -406,6 +590,26 @@ func (c *Client) DescribeMmsInstanceInfo(request *DescribeMmsInstanceInfoRequest
     return
 }
 
+// DescribeMmsInstanceInfo
+// 获取彩信实例信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeMmsInstanceInfoWithContext(ctx context.Context, request *DescribeMmsInstanceInfoRequest) (response *DescribeMmsInstanceInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeMmsInstanceInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeMmsInstanceInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMmsInstanceListRequest() (request *DescribeMmsInstanceListRequest) {
     request = &DescribeMmsInstanceListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -436,6 +640,26 @@ func (c *Client) DescribeMmsInstanceList(request *DescribeMmsInstanceListRequest
     if request == nil {
         request = NewDescribeMmsInstanceListRequest()
     }
+    
+    response = NewDescribeMmsInstanceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeMmsInstanceList
+// 获取彩信实例列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeMmsInstanceListWithContext(ctx context.Context, request *DescribeMmsInstanceListRequest) (response *DescribeMmsInstanceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeMmsInstanceListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeMmsInstanceListResponse()
     err = c.Send(request, response)
@@ -479,6 +703,27 @@ func (c *Client) DescribeSmsCampaignStatistics(request *DescribeSmsCampaignStati
     return
 }
 
+// DescribeSmsCampaignStatistics
+// 获取短信超短活动统计数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
+func (c *Client) DescribeSmsCampaignStatisticsWithContext(ctx context.Context, request *DescribeSmsCampaignStatisticsRequest) (response *DescribeSmsCampaignStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSmsCampaignStatisticsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeSmsCampaignStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSmsSignListRequest() (request *DescribeSmsSignListRequest) {
     request = &DescribeSmsSignListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -510,6 +755,27 @@ func (c *Client) DescribeSmsSignList(request *DescribeSmsSignListRequest) (respo
     if request == nil {
         request = NewDescribeSmsSignListRequest()
     }
+    
+    response = NewDescribeSmsSignListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeSmsSignList
+// 获取普通短信签名信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
+func (c *Client) DescribeSmsSignListWithContext(ctx context.Context, request *DescribeSmsSignListRequest) (response *DescribeSmsSignListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSmsSignListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeSmsSignListResponse()
     err = c.Send(request, response)
@@ -553,6 +819,27 @@ func (c *Client) DescribeSmsTemplateList(request *DescribeSmsTemplateListRequest
     return
 }
 
+// DescribeSmsTemplateList
+// 获取模板信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
+func (c *Client) DescribeSmsTemplateListWithContext(ctx context.Context, request *DescribeSmsTemplateListRequest) (response *DescribeSmsTemplateListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSmsTemplateListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeSmsTemplateListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetCrowdPackListRequest() (request *GetCrowdPackListRequest) {
     request = &GetCrowdPackListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -583,6 +870,26 @@ func (c *Client) GetCrowdPackList(request *GetCrowdPackListRequest) (response *G
     if request == nil {
         request = NewGetCrowdPackListRequest()
     }
+    
+    response = NewGetCrowdPackListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// GetCrowdPackList
+// 获取人群包列表接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) GetCrowdPackListWithContext(ctx context.Context, request *GetCrowdPackListRequest) (response *GetCrowdPackListResponse, err error) {
+    if request == nil {
+        request = NewGetCrowdPackListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewGetCrowdPackListResponse()
     err = c.Send(request, response)
@@ -625,6 +932,26 @@ func (c *Client) GetCrowdUploadInfo(request *GetCrowdUploadInfoRequest) (respons
     return
 }
 
+// GetCrowdUploadInfo
+// 获取短信人群包cos上传需要的信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) GetCrowdUploadInfoWithContext(ctx context.Context, request *GetCrowdUploadInfoRequest) (response *GetCrowdUploadInfoResponse, err error) {
+    if request == nil {
+        request = NewGetCrowdUploadInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewGetCrowdUploadInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetSmsAmountInfoRequest() (request *GetSmsAmountInfoRequest) {
     request = &GetSmsAmountInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -661,6 +988,26 @@ func (c *Client) GetSmsAmountInfo(request *GetSmsAmountInfoRequest) (response *G
     return
 }
 
+// GetSmsAmountInfo
+// 获取账号短信额度配置信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) GetSmsAmountInfoWithContext(ctx context.Context, request *GetSmsAmountInfoRequest) (response *GetSmsAmountInfoResponse, err error) {
+    if request == nil {
+        request = NewGetSmsAmountInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewGetSmsAmountInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetSmsCampaignStatusRequest() (request *GetSmsCampaignStatusRequest) {
     request = &GetSmsCampaignStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -691,6 +1038,26 @@ func (c *Client) GetSmsCampaignStatus(request *GetSmsCampaignStatusRequest) (res
     if request == nil {
         request = NewGetSmsCampaignStatusRequest()
     }
+    
+    response = NewGetSmsCampaignStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// GetSmsCampaignStatus
+// 获取短信活动状态信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) GetSmsCampaignStatusWithContext(ctx context.Context, request *GetSmsCampaignStatusRequest) (response *GetSmsCampaignStatusResponse, err error) {
+    if request == nil {
+        request = NewGetSmsCampaignStatusRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewGetSmsCampaignStatusResponse()
     err = c.Send(request, response)
@@ -748,6 +1115,41 @@ func (c *Client) ModifySmsTemplate(request *ModifySmsTemplateRequest) (response 
     return
 }
 
+// ModifySmsTemplate
+// 对未审核或者审核未通过的短信模板内容进行编辑修改
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SMSTEMPLATEEXISTS = "FailedOperation.SmsTemplateExists"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifySmsTemplateWithContext(ctx context.Context, request *ModifySmsTemplateRequest) (response *ModifySmsTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifySmsTemplateRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifySmsTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPushMmsContentRequest() (request *PushMmsContentRequest) {
     request = &PushMmsContentRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -785,6 +1187,27 @@ func (c *Client) PushMmsContent(request *PushMmsContentRequest) (response *PushM
     return
 }
 
+// PushMmsContent
+// 推送超级短信
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
+func (c *Client) PushMmsContentWithContext(ctx context.Context, request *PushMmsContentRequest) (response *PushMmsContentResponse, err error) {
+    if request == nil {
+        request = NewPushMmsContentRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewPushMmsContentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSendSmsRequest() (request *SendSmsRequest) {
     request = &SendSmsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -816,6 +1239,27 @@ func (c *Client) SendSms(request *SendSmsRequest) (response *SendSmsResponse, er
     if request == nil {
         request = NewSendSmsRequest()
     }
+    
+    response = NewSendSmsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SendSms
+// 发送短信
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
+func (c *Client) SendSmsWithContext(ctx context.Context, request *SendSmsRequest) (response *SendSmsResponse, err error) {
+    if request == nil {
+        request = NewSendSmsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewSendSmsResponse()
     err = c.Send(request, response)

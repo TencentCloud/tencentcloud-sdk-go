@@ -15,6 +15,7 @@
 package v20201221
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -72,6 +73,19 @@ func (c *Client) CreateCosToken(request *CreateCosTokenRequest) (response *Creat
     return
 }
 
+// CreateCosToken
+// 生成Cos临时秘钥
+func (c *Client) CreateCosTokenWithContext(ctx context.Context, request *CreateCosTokenRequest) (response *CreateCosTokenResponse, err error) {
+    if request == nil {
+        request = NewCreateCosTokenRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateCosTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCosTokenV2Request() (request *CreateCosTokenV2Request) {
     request = &CreateCosTokenV2Request{
         BaseRequest: &tchttp.BaseRequest{},
@@ -95,6 +109,19 @@ func (c *Client) CreateCosTokenV2(request *CreateCosTokenV2Request) (response *C
     if request == nil {
         request = NewCreateCosTokenV2Request()
     }
+    
+    response = NewCreateCosTokenV2Response()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateCosTokenV2
+// 生成Cos临时秘钥
+func (c *Client) CreateCosTokenV2WithContext(ctx context.Context, request *CreateCosTokenV2Request) (response *CreateCosTokenV2Response, err error) {
+    if request == nil {
+        request = NewCreateCosTokenV2Request()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateCosTokenV2Response()
     err = c.Send(request, response)
@@ -130,6 +157,19 @@ func (c *Client) CreateNamespace(request *CreateNamespaceRequest) (response *Cre
     return
 }
 
+// CreateNamespace
+// 创建环境
+func (c *Client) CreateNamespaceWithContext(ctx context.Context, request *CreateNamespaceRequest) (response *CreateNamespaceResponse, err error) {
+    if request == nil {
+        request = NewCreateNamespaceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateNamespaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateResourceRequest() (request *CreateResourceRequest) {
     request = &CreateResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -153,6 +193,19 @@ func (c *Client) CreateResource(request *CreateResourceRequest) (response *Creat
     if request == nil {
         request = NewCreateResourceRequest()
     }
+    
+    response = NewCreateResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateResource
+// 绑定云资源
+func (c *Client) CreateResourceWithContext(ctx context.Context, request *CreateResourceRequest) (response *CreateResourceResponse, err error) {
+    if request == nil {
+        request = NewCreateResourceRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateResourceResponse()
     err = c.Send(request, response)
@@ -191,6 +244,22 @@ func (c *Client) CreateServiceV2(request *CreateServiceV2Request) (response *Cre
     return
 }
 
+// CreateServiceV2
+// 创建服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+func (c *Client) CreateServiceV2WithContext(ctx context.Context, request *CreateServiceV2Request) (response *CreateServiceV2Response, err error) {
+    if request == nil {
+        request = NewCreateServiceV2Request()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateServiceV2Response()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteIngressRequest() (request *DeleteIngressRequest) {
     request = &DeleteIngressRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -217,6 +286,22 @@ func (c *Client) DeleteIngress(request *DeleteIngressRequest) (response *DeleteI
     if request == nil {
         request = NewDeleteIngressRequest()
     }
+    
+    response = NewDeleteIngressResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteIngress
+// 删除 Ingress 规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+func (c *Client) DeleteIngressWithContext(ctx context.Context, request *DeleteIngressRequest) (response *DeleteIngressResponse, err error) {
+    if request == nil {
+        request = NewDeleteIngressRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteIngressResponse()
     err = c.Send(request, response)
@@ -255,6 +340,22 @@ func (c *Client) DeployServiceV2(request *DeployServiceV2Request) (response *Dep
     return
 }
 
+// DeployServiceV2
+// 服务部署
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+func (c *Client) DeployServiceV2WithContext(ctx context.Context, request *DeployServiceV2Request) (response *DeployServiceV2Response, err error) {
+    if request == nil {
+        request = NewDeployServiceV2Request()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeployServiceV2Response()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeIngressRequest() (request *DescribeIngressRequest) {
     request = &DescribeIngressRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -281,6 +382,22 @@ func (c *Client) DescribeIngress(request *DescribeIngressRequest) (response *Des
     if request == nil {
         request = NewDescribeIngressRequest()
     }
+    
+    response = NewDescribeIngressResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeIngress
+// 查询 Ingress 规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+func (c *Client) DescribeIngressWithContext(ctx context.Context, request *DescribeIngressRequest) (response *DescribeIngressResponse, err error) {
+    if request == nil {
+        request = NewDescribeIngressRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeIngressResponse()
     err = c.Send(request, response)
@@ -319,6 +436,22 @@ func (c *Client) DescribeIngresses(request *DescribeIngressesRequest) (response 
     return
 }
 
+// DescribeIngresses
+// 查询 Ingress 规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+func (c *Client) DescribeIngressesWithContext(ctx context.Context, request *DescribeIngressesRequest) (response *DescribeIngressesResponse, err error) {
+    if request == nil {
+        request = NewDescribeIngressesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeIngressesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNamespacesRequest() (request *DescribeNamespacesRequest) {
     request = &DescribeNamespacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -345,6 +478,22 @@ func (c *Client) DescribeNamespaces(request *DescribeNamespacesRequest) (respons
     if request == nil {
         request = NewDescribeNamespacesRequest()
     }
+    
+    response = NewDescribeNamespacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeNamespaces
+// 获取租户环境列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+func (c *Client) DescribeNamespacesWithContext(ctx context.Context, request *DescribeNamespacesRequest) (response *DescribeNamespacesResponse, err error) {
+    if request == nil {
+        request = NewDescribeNamespacesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeNamespacesResponse()
     err = c.Send(request, response)
@@ -383,6 +532,22 @@ func (c *Client) DescribeRelatedIngresses(request *DescribeRelatedIngressesReque
     return
 }
 
+// DescribeRelatedIngresses
+// 查询服务关联的 Ingress 规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+func (c *Client) DescribeRelatedIngressesWithContext(ctx context.Context, request *DescribeRelatedIngressesRequest) (response *DescribeRelatedIngressesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRelatedIngressesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeRelatedIngressesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeServiceRunPodListV2Request() (request *DescribeServiceRunPodListV2Request) {
     request = &DescribeServiceRunPodListV2Request{
         BaseRequest: &tchttp.BaseRequest{},
@@ -409,6 +574,22 @@ func (c *Client) DescribeServiceRunPodListV2(request *DescribeServiceRunPodListV
     if request == nil {
         request = NewDescribeServiceRunPodListV2Request()
     }
+    
+    response = NewDescribeServiceRunPodListV2Response()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeServiceRunPodListV2
+// 获取服务下面运行pod列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+func (c *Client) DescribeServiceRunPodListV2WithContext(ctx context.Context, request *DescribeServiceRunPodListV2Request) (response *DescribeServiceRunPodListV2Response, err error) {
+    if request == nil {
+        request = NewDescribeServiceRunPodListV2Request()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeServiceRunPodListV2Response()
     err = c.Send(request, response)
@@ -447,6 +628,22 @@ func (c *Client) GenerateDownloadUrl(request *GenerateDownloadUrlRequest) (respo
     return
 }
 
+// GenerateDownloadUrl
+// 生成包预签名下载链接
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+func (c *Client) GenerateDownloadUrlWithContext(ctx context.Context, request *GenerateDownloadUrlRequest) (response *GenerateDownloadUrlResponse, err error) {
+    if request == nil {
+        request = NewGenerateDownloadUrlRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewGenerateDownloadUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyIngressRequest() (request *ModifyIngressRequest) {
     request = &ModifyIngressRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -473,6 +670,22 @@ func (c *Client) ModifyIngress(request *ModifyIngressRequest) (response *ModifyI
     if request == nil {
         request = NewModifyIngressRequest()
     }
+    
+    response = NewModifyIngressResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyIngress
+// 创建或者更新 Ingress 规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+func (c *Client) ModifyIngressWithContext(ctx context.Context, request *ModifyIngressRequest) (response *ModifyIngressResponse, err error) {
+    if request == nil {
+        request = NewModifyIngressRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyIngressResponse()
     err = c.Send(request, response)
@@ -511,6 +724,22 @@ func (c *Client) ModifyNamespace(request *ModifyNamespaceRequest) (response *Mod
     return
 }
 
+// ModifyNamespace
+// 编辑环境
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+func (c *Client) ModifyNamespaceWithContext(ctx context.Context, request *ModifyNamespaceRequest) (response *ModifyNamespaceResponse, err error) {
+    if request == nil {
+        request = NewModifyNamespaceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyNamespaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyServiceInfoRequest() (request *ModifyServiceInfoRequest) {
     request = &ModifyServiceInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -543,6 +772,22 @@ func (c *Client) ModifyServiceInfo(request *ModifyServiceInfoRequest) (response 
     return
 }
 
+// ModifyServiceInfo
+// 修改服务基本信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+func (c *Client) ModifyServiceInfoWithContext(ctx context.Context, request *ModifyServiceInfoRequest) (response *ModifyServiceInfoResponse, err error) {
+    if request == nil {
+        request = NewModifyServiceInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyServiceInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRestartServiceRunPodRequest() (request *RestartServiceRunPodRequest) {
     request = &RestartServiceRunPodRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -569,6 +814,22 @@ func (c *Client) RestartServiceRunPod(request *RestartServiceRunPodRequest) (res
     if request == nil {
         request = NewRestartServiceRunPodRequest()
     }
+    
+    response = NewRestartServiceRunPodResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// RestartServiceRunPod
+// 重启实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
+func (c *Client) RestartServiceRunPodWithContext(ctx context.Context, request *RestartServiceRunPodRequest) (response *RestartServiceRunPodResponse, err error) {
+    if request == nil {
+        request = NewRestartServiceRunPodRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewRestartServiceRunPodResponse()
     err = c.Send(request, response)

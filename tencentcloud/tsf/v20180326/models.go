@@ -1177,6 +1177,145 @@ type ContainerEvent struct {
 	Count *int64 `json:"Count,omitempty" name:"Count"`
 }
 
+type ContainerGroupDeploy struct {
+
+	// 部署组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 分组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 实例总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceNum *int64 `json:"InstanceNum,omitempty" name:"InstanceNum"`
+
+	// 已启动实例总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentNum *int64 `json:"CurrentNum,omitempty" name:"CurrentNum"`
+
+	// 镜像server
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Server *string `json:"Server,omitempty" name:"Server"`
+
+	// 镜像名，如/tsf/nginx
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reponame *string `json:"Reponame,omitempty" name:"Reponame"`
+
+	// 镜像版本名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagName *string `json:"TagName,omitempty" name:"TagName"`
+
+	// 业务容器初始分配的 CPU 核数，对应 K8S request
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuRequest *string `json:"CpuRequest,omitempty" name:"CpuRequest"`
+
+	// 业务容器最大分配的 CPU 核数，对应 K8S limit
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuLimit *string `json:"CpuLimit,omitempty" name:"CpuLimit"`
+
+	// 业务容器初始分配的内存 MiB 数，对应 K8S request
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemRequest *string `json:"MemRequest,omitempty" name:"MemRequest"`
+
+	// 业务容器最大分配的内存 MiB 数，对应 K8S limit
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemLimit *string `json:"MemLimit,omitempty" name:"MemLimit"`
+
+	// 0:公网 1:集群内访问 2：NodePort
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessType *int64 `json:"AccessType,omitempty" name:"AccessType"`
+
+	// 端口映射
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProtocolPorts []*ProtocolPort `json:"ProtocolPorts,omitempty" name:"ProtocolPorts"`
+
+	// 更新方式：0:快速更新 1:滚动更新
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateType *int64 `json:"UpdateType,omitempty" name:"UpdateType"`
+
+	// 更新间隔,单位秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateIvl *int64 `json:"UpdateIvl,omitempty" name:"UpdateIvl"`
+
+	// jvm参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JvmOpts *string `json:"JvmOpts,omitempty" name:"JvmOpts"`
+
+	// 子网id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// agent容器初始分配的 CPU 核数，对应 K8S request
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentCpuRequest *string `json:"AgentCpuRequest,omitempty" name:"AgentCpuRequest"`
+
+	// agent容器最大分配的 CPU 核数，对应 K8S limit
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentCpuLimit *string `json:"AgentCpuLimit,omitempty" name:"AgentCpuLimit"`
+
+	// agent容器初始分配的内存 MiB 数，对应 K8S request
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentMemRequest *string `json:"AgentMemRequest,omitempty" name:"AgentMemRequest"`
+
+	// agent容器最大分配的内存 MiB 数，对应 K8S limit
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentMemLimit *string `json:"AgentMemLimit,omitempty" name:"AgentMemLimit"`
+
+	// istioproxy容器初始分配的 CPU 核数，对应 K8S request
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IstioCpuRequest *string `json:"IstioCpuRequest,omitempty" name:"IstioCpuRequest"`
+
+	// istioproxy容器最大分配的 CPU 核数，对应 K8S limit
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IstioCpuLimit *string `json:"IstioCpuLimit,omitempty" name:"IstioCpuLimit"`
+
+	// istioproxy容器初始分配的内存 MiB 数，对应 K8S request
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IstioMemRequest *string `json:"IstioMemRequest,omitempty" name:"IstioMemRequest"`
+
+	// istioproxy容器最大分配的内存 MiB 数，对应 K8S limit
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IstioMemLimit *string `json:"IstioMemLimit,omitempty" name:"IstioMemLimit"`
+
+	// 部署组的环境变量数组，这里没有展示 tsf 使用的环境变量，只展示了用户设置的环境变量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Envs []*Env `json:"Envs,omitempty" name:"Envs"`
+
+	// 健康检查配置信息，若不指定该参数，则默认不设置健康检查。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthCheckSettings *HealthCheckSettings `json:"HealthCheckSettings,omitempty" name:"HealthCheckSettings"`
+
+	// 是否部署Agent容器
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeployAgent *bool `json:"DeployAgent,omitempty" name:"DeployAgent"`
+
+	// 部署组备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
+
+	// 是否创建 k8s service
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisableService *bool `json:"DisableService,omitempty" name:"DisableService"`
+
+	// service 是否为 headless 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HeadlessService *bool `json:"HeadlessService,omitempty" name:"HeadlessService"`
+
+	// TcrRepoInfo值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TcrRepoInfo *TcrRepoInfo `json:"TcrRepoInfo,omitempty" name:"TcrRepoInfo"`
+
+	// 数据卷信息，list
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VolumeInfos []*VolumeInfo `json:"VolumeInfos,omitempty" name:"VolumeInfos"`
+
+	// 数据卷挂载信息，list
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VolumeMountInfos []*VolumeMountInfo `json:"VolumeMountInfos,omitempty" name:"VolumeMountInfos"`
+}
+
 type ContainerGroupDetail struct {
 
 	// 部署组ID
@@ -4047,11 +4186,17 @@ type DeployContainerGroupRequest struct {
 	// tcr或者不填
 	RepoType *string `json:"RepoType,omitempty" name:"RepoType"`
 
-	// 数据卷信息
+	// 数据卷信息-废弃，请用VolumeInfoList参数
 	VolumeInfos *VolumeInfo `json:"VolumeInfos,omitempty" name:"VolumeInfos"`
 
-	// 数据卷挂载点信息
+	// 数据卷挂载点信息-废弃，请用VolumeMountInfoList参数
 	VolumeMountInfos *VolumeMountInfo `json:"VolumeMountInfos,omitempty" name:"VolumeMountInfos"`
+
+	// 数据卷信息，list
+	VolumeInfoList []*VolumeInfo `json:"VolumeInfoList,omitempty" name:"VolumeInfoList"`
+
+	// 数据卷挂载点信息，list
+	VolumeMountInfoList []*VolumeMountInfo `json:"VolumeMountInfoList,omitempty" name:"VolumeMountInfoList"`
 }
 
 func (r *DeployContainerGroupRequest) ToJsonString() string {
@@ -4099,6 +4244,8 @@ func (r *DeployContainerGroupRequest) FromJsonString(s string) error {
 	delete(f, "RepoType")
 	delete(f, "VolumeInfos")
 	delete(f, "VolumeMountInfos")
+	delete(f, "VolumeInfoList")
+	delete(f, "VolumeMountInfoList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployContainerGroupRequest has unknown keys!", "")
 	}
@@ -5384,6 +5531,55 @@ func (r *DescribeContainerEventsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeContainerEventsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeContainerGroupDeployInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例所属 groupId
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+}
+
+func (r *DescribeContainerGroupDeployInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeContainerGroupDeployInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeContainerGroupDeployInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeContainerGroupDeployInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 获取部署组
+		Result *ContainerGroupDeploy `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeContainerGroupDeployInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeContainerGroupDeployInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

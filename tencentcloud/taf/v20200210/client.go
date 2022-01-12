@@ -15,6 +15,7 @@
 package v20200210
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -108,6 +109,55 @@ func (c *Client) DetectFraudKOL(request *DetectFraudKOLRequest) (response *Detec
     return
 }
 
+// DetectFraudKOL
+// 流量反欺诈-KOL欺诈识别
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAPSIGERROR = "AuthFailure.CapSigError"
+//  AUTHFAILURE_EXPIRED = "AuthFailure.Expired"
+//  INTERNALERROR_ADDTASKFAIL = "InternalError.AddTaskFail"
+//  INTERNALERROR_BACKENDLOGICERROR = "InternalError.BackendLogicError"
+//  INTERNALERROR_CONNECTDBTIMEOUT = "InternalError.ConnectDBTimeout"
+//  INTERNALERROR_DETECTFAIL = "InternalError.DetectFail"
+//  INTERNALERROR_DOWNLOADFAIL = "InternalError.DownloadFail"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INTERNALERROR_QUERYTASKFAIL = "InternalError.QueryTaskFail"
+//  INTERNALERROR_SIGNBACKENDERROR = "InternalError.SignBackendError"
+//  INTERNALERROR_SIGNATUREFAIL = "InternalError.SignatureFail"
+//  INTERNALERROR_TASKIDNOTFOUND = "InternalError.TaskIdNotFound"
+//  INTERNALERROR_UPDATETASKFAIL = "InternalError.UpdateTaskFail"
+//  INVALIDPARAMETER_CAPSIGERROR = "InvalidParameter.CapSigError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_URLERROR = "InvalidParameter.UrlError"
+//  INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
+//  INVALIDPARAMETERVALUE_BADBODY = "InvalidParameterValue.BadBody"
+//  INVALIDPARAMETERVALUE_BODYTOOLARGE = "InvalidParameterValue.BodyTooLarge"
+//  INVALIDPARAMETERVALUE_CAPMISMATCH = "InvalidParameterValue.CapMisMatch"
+//  INVALIDPARAMETERVALUE_HTTPMETHODERROR = "InvalidParameterValue.HttpMethodError"
+//  INVALIDPARAMETERVALUE_INVALIDDATE = "InvalidParameterValue.InvalidDate"
+//  INVALIDPARAMETERVALUE_INVALIDLIMIT = "InvalidParameterValue.InvalidLimit"
+//  INVALIDPARAMETERVALUE_INVALIDNUM = "InvalidParameterValue.InvalidNum"
+//  INVALIDPARAMETERVALUE_INVALIDSRVID = "InvalidParameterValue.InvalidSrvId"
+//  INVALIDPARAMETERVALUE_INVALIDSTRIDE = "InvalidParameterValue.InvalidStride"
+//  LIMITEXCEEDED_FREQCNT = "LimitExceeded.FreqCnt"
+//  LIMITEXCEEDED_IPFREQCNT = "LimitExceeded.IpFreqCnt"
+//  LIMITEXCEEDED_KEYFREQCNT = "LimitExceeded.KeyFreqCnt"
+//  LIMITEXCEEDED_REPLAYATTACK = "LimitExceeded.ReplayAttack"
+//  RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
+//  RESOURCEUNAVAILABLE_PERMISSIONDENIED = "ResourceUnavailable.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
+//  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
+func (c *Client) DetectFraudKOLWithContext(ctx context.Context, request *DetectFraudKOLRequest) (response *DetectFraudKOLResponse, err error) {
+    if request == nil {
+        request = NewDetectFraudKOLRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDetectFraudKOLResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEnhanceTaDegreeRequest() (request *EnhanceTaDegreeRequest) {
     request = &EnhanceTaDegreeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -167,6 +217,55 @@ func (c *Client) EnhanceTaDegree(request *EnhanceTaDegreeRequest) (response *Enh
     if request == nil {
         request = NewEnhanceTaDegreeRequest()
     }
+    
+    response = NewEnhanceTaDegreeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// EnhanceTaDegree
+// 流量反欺诈-虚假TA识别
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAPSIGERROR = "AuthFailure.CapSigError"
+//  AUTHFAILURE_EXPIRED = "AuthFailure.Expired"
+//  INTERNALERROR_ADDTASKFAIL = "InternalError.AddTaskFail"
+//  INTERNALERROR_BACKENDLOGICERROR = "InternalError.BackendLogicError"
+//  INTERNALERROR_CONNECTDBTIMEOUT = "InternalError.ConnectDBTimeout"
+//  INTERNALERROR_DETECTFAIL = "InternalError.DetectFail"
+//  INTERNALERROR_DOWNLOADFAIL = "InternalError.DownloadFail"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INTERNALERROR_QUERYTASKFAIL = "InternalError.QueryTaskFail"
+//  INTERNALERROR_SIGNBACKENDERROR = "InternalError.SignBackendError"
+//  INTERNALERROR_SIGNATUREFAIL = "InternalError.SignatureFail"
+//  INTERNALERROR_TASKIDNOTFOUND = "InternalError.TaskIdNotFound"
+//  INTERNALERROR_UPDATETASKFAIL = "InternalError.UpdateTaskFail"
+//  INVALIDPARAMETER_CAPSIGERROR = "InvalidParameter.CapSigError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_URLERROR = "InvalidParameter.UrlError"
+//  INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
+//  INVALIDPARAMETERVALUE_BADBODY = "InvalidParameterValue.BadBody"
+//  INVALIDPARAMETERVALUE_BODYTOOLARGE = "InvalidParameterValue.BodyTooLarge"
+//  INVALIDPARAMETERVALUE_CAPMISMATCH = "InvalidParameterValue.CapMisMatch"
+//  INVALIDPARAMETERVALUE_HTTPMETHODERROR = "InvalidParameterValue.HttpMethodError"
+//  INVALIDPARAMETERVALUE_INVALIDDATE = "InvalidParameterValue.InvalidDate"
+//  INVALIDPARAMETERVALUE_INVALIDLIMIT = "InvalidParameterValue.InvalidLimit"
+//  INVALIDPARAMETERVALUE_INVALIDNUM = "InvalidParameterValue.InvalidNum"
+//  INVALIDPARAMETERVALUE_INVALIDSRVID = "InvalidParameterValue.InvalidSrvId"
+//  INVALIDPARAMETERVALUE_INVALIDSTRIDE = "InvalidParameterValue.InvalidStride"
+//  LIMITEXCEEDED_FREQCNT = "LimitExceeded.FreqCnt"
+//  LIMITEXCEEDED_IPFREQCNT = "LimitExceeded.IpFreqCnt"
+//  LIMITEXCEEDED_KEYFREQCNT = "LimitExceeded.KeyFreqCnt"
+//  LIMITEXCEEDED_REPLAYATTACK = "LimitExceeded.ReplayAttack"
+//  RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
+//  RESOURCEUNAVAILABLE_PERMISSIONDENIED = "ResourceUnavailable.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
+//  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
+func (c *Client) EnhanceTaDegreeWithContext(ctx context.Context, request *EnhanceTaDegreeRequest) (response *EnhanceTaDegreeResponse, err error) {
+    if request == nil {
+        request = NewEnhanceTaDegreeRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewEnhanceTaDegreeResponse()
     err = c.Send(request, response)
@@ -238,6 +337,55 @@ func (c *Client) RecognizeCustomizedAudience(request *RecognizeCustomizedAudienc
     return
 }
 
+// RecognizeCustomizedAudience
+// 流量反欺诈-流量验准定制版
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAPSIGERROR = "AuthFailure.CapSigError"
+//  AUTHFAILURE_EXPIRED = "AuthFailure.Expired"
+//  INTERNALERROR_ADDTASKFAIL = "InternalError.AddTaskFail"
+//  INTERNALERROR_BACKENDLOGICERROR = "InternalError.BackendLogicError"
+//  INTERNALERROR_CONNECTDBTIMEOUT = "InternalError.ConnectDBTimeout"
+//  INTERNALERROR_DETECTFAIL = "InternalError.DetectFail"
+//  INTERNALERROR_DOWNLOADFAIL = "InternalError.DownloadFail"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INTERNALERROR_QUERYTASKFAIL = "InternalError.QueryTaskFail"
+//  INTERNALERROR_SIGNBACKENDERROR = "InternalError.SignBackendError"
+//  INTERNALERROR_SIGNATUREFAIL = "InternalError.SignatureFail"
+//  INTERNALERROR_TASKIDNOTFOUND = "InternalError.TaskIdNotFound"
+//  INTERNALERROR_UPDATETASKFAIL = "InternalError.UpdateTaskFail"
+//  INVALIDPARAMETER_CAPSIGERROR = "InvalidParameter.CapSigError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_URLERROR = "InvalidParameter.UrlError"
+//  INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
+//  INVALIDPARAMETERVALUE_BADBODY = "InvalidParameterValue.BadBody"
+//  INVALIDPARAMETERVALUE_BODYTOOLARGE = "InvalidParameterValue.BodyTooLarge"
+//  INVALIDPARAMETERVALUE_CAPMISMATCH = "InvalidParameterValue.CapMisMatch"
+//  INVALIDPARAMETERVALUE_HTTPMETHODERROR = "InvalidParameterValue.HttpMethodError"
+//  INVALIDPARAMETERVALUE_INVALIDDATE = "InvalidParameterValue.InvalidDate"
+//  INVALIDPARAMETERVALUE_INVALIDLIMIT = "InvalidParameterValue.InvalidLimit"
+//  INVALIDPARAMETERVALUE_INVALIDNUM = "InvalidParameterValue.InvalidNum"
+//  INVALIDPARAMETERVALUE_INVALIDSRVID = "InvalidParameterValue.InvalidSrvId"
+//  INVALIDPARAMETERVALUE_INVALIDSTRIDE = "InvalidParameterValue.InvalidStride"
+//  LIMITEXCEEDED_FREQCNT = "LimitExceeded.FreqCnt"
+//  LIMITEXCEEDED_IPFREQCNT = "LimitExceeded.IpFreqCnt"
+//  LIMITEXCEEDED_KEYFREQCNT = "LimitExceeded.KeyFreqCnt"
+//  LIMITEXCEEDED_REPLAYATTACK = "LimitExceeded.ReplayAttack"
+//  RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
+//  RESOURCEUNAVAILABLE_PERMISSIONDENIED = "ResourceUnavailable.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
+//  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
+func (c *Client) RecognizeCustomizedAudienceWithContext(ctx context.Context, request *RecognizeCustomizedAudienceRequest) (response *RecognizeCustomizedAudienceResponse, err error) {
+    if request == nil {
+        request = NewRecognizeCustomizedAudienceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewRecognizeCustomizedAudienceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRecognizeEffectiveFlowRequest() (request *RecognizeEffectiveFlowRequest) {
     request = &RecognizeEffectiveFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -285,6 +433,43 @@ func (c *Client) RecognizeEffectiveFlow(request *RecognizeEffectiveFlowRequest) 
     if request == nil {
         request = NewRecognizeEffectiveFlowRequest()
     }
+    
+    response = NewRecognizeEffectiveFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// RecognizeEffectiveFlow
+// 该服务已不再对外提供能力
+//
+// 
+//
+// 筛选敏感易骚扰人群
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_EXPIRED = "AuthFailure.Expired"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_QUERYTASKFAIL = "InternalError.QueryTaskFail"
+//  INTERNALERROR_SIGNBACKENDERROR = "InternalError.SignBackendError"
+//  INTERNALERROR_SIGNATUREFAIL = "InternalError.SignatureFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_FREQCNT = "LimitExceeded.FreqCnt"
+//  LIMITEXCEEDED_REPLAYATTACK = "LimitExceeded.ReplayAttack"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE_PERMISSIONDENIED = "ResourceUnavailable.PermissionDenied"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RecognizeEffectiveFlowWithContext(ctx context.Context, request *RecognizeEffectiveFlowRequest) (response *RecognizeEffectiveFlowResponse, err error) {
+    if request == nil {
+        request = NewRecognizeEffectiveFlowRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewRecognizeEffectiveFlowResponse()
     err = c.Send(request, response)
@@ -350,6 +535,55 @@ func (c *Client) RecognizePreciseTargetAudience(request *RecognizePreciseTargetA
     if request == nil {
         request = NewRecognizePreciseTargetAudienceRequest()
     }
+    
+    response = NewRecognizePreciseTargetAudienceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// RecognizePreciseTargetAudience
+// 流量反欺诈-流量验准高级版
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAPSIGERROR = "AuthFailure.CapSigError"
+//  AUTHFAILURE_EXPIRED = "AuthFailure.Expired"
+//  INTERNALERROR_ADDTASKFAIL = "InternalError.AddTaskFail"
+//  INTERNALERROR_BACKENDLOGICERROR = "InternalError.BackendLogicError"
+//  INTERNALERROR_CONNECTDBTIMEOUT = "InternalError.ConnectDBTimeout"
+//  INTERNALERROR_DETECTFAIL = "InternalError.DetectFail"
+//  INTERNALERROR_DOWNLOADFAIL = "InternalError.DownloadFail"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INTERNALERROR_QUERYTASKFAIL = "InternalError.QueryTaskFail"
+//  INTERNALERROR_SIGNBACKENDERROR = "InternalError.SignBackendError"
+//  INTERNALERROR_SIGNATUREFAIL = "InternalError.SignatureFail"
+//  INTERNALERROR_TASKIDNOTFOUND = "InternalError.TaskIdNotFound"
+//  INTERNALERROR_UPDATETASKFAIL = "InternalError.UpdateTaskFail"
+//  INVALIDPARAMETER_CAPSIGERROR = "InvalidParameter.CapSigError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_URLERROR = "InvalidParameter.UrlError"
+//  INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
+//  INVALIDPARAMETERVALUE_BADBODY = "InvalidParameterValue.BadBody"
+//  INVALIDPARAMETERVALUE_BODYTOOLARGE = "InvalidParameterValue.BodyTooLarge"
+//  INVALIDPARAMETERVALUE_CAPMISMATCH = "InvalidParameterValue.CapMisMatch"
+//  INVALIDPARAMETERVALUE_HTTPMETHODERROR = "InvalidParameterValue.HttpMethodError"
+//  INVALIDPARAMETERVALUE_INVALIDDATE = "InvalidParameterValue.InvalidDate"
+//  INVALIDPARAMETERVALUE_INVALIDLIMIT = "InvalidParameterValue.InvalidLimit"
+//  INVALIDPARAMETERVALUE_INVALIDNUM = "InvalidParameterValue.InvalidNum"
+//  INVALIDPARAMETERVALUE_INVALIDSRVID = "InvalidParameterValue.InvalidSrvId"
+//  INVALIDPARAMETERVALUE_INVALIDSTRIDE = "InvalidParameterValue.InvalidStride"
+//  LIMITEXCEEDED_FREQCNT = "LimitExceeded.FreqCnt"
+//  LIMITEXCEEDED_IPFREQCNT = "LimitExceeded.IpFreqCnt"
+//  LIMITEXCEEDED_KEYFREQCNT = "LimitExceeded.KeyFreqCnt"
+//  LIMITEXCEEDED_REPLAYATTACK = "LimitExceeded.ReplayAttack"
+//  RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
+//  RESOURCEUNAVAILABLE_PERMISSIONDENIED = "ResourceUnavailable.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
+//  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
+func (c *Client) RecognizePreciseTargetAudienceWithContext(ctx context.Context, request *RecognizePreciseTargetAudienceRequest) (response *RecognizePreciseTargetAudienceResponse, err error) {
+    if request == nil {
+        request = NewRecognizePreciseTargetAudienceRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewRecognizePreciseTargetAudienceResponse()
     err = c.Send(request, response)
@@ -439,6 +673,73 @@ func (c *Client) RecognizeTargetAudience(request *RecognizeTargetAudienceRequest
     return
 }
 
+// RecognizeTargetAudience
+// 流量反欺诈-流量验准
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAPSIGERROR = "AuthFailure.CapSigError"
+//  AUTHFAILURE_EXPIRED = "AuthFailure.Expired"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ADDTASKFAIL = "InternalError.AddTaskFail"
+//  INTERNALERROR_BACKENDLOGICERROR = "InternalError.BackendLogicError"
+//  INTERNALERROR_CONNECTDBTIMEOUT = "InternalError.ConnectDBTimeout"
+//  INTERNALERROR_DETECTFAIL = "InternalError.DetectFail"
+//  INTERNALERROR_DOWNLOADFAIL = "InternalError.DownloadFail"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INTERNALERROR_QUERYTASKFAIL = "InternalError.QueryTaskFail"
+//  INTERNALERROR_SIGNBACKENDERROR = "InternalError.SignBackendError"
+//  INTERNALERROR_SIGNATUREFAIL = "InternalError.SignatureFail"
+//  INTERNALERROR_TASKIDNOTFOUND = "InternalError.TaskIdNotFound"
+//  INTERNALERROR_UPDATETASKFAIL = "InternalError.UpdateTaskFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CAPSIGERROR = "InvalidParameter.CapSigError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_URLERROR = "InvalidParameter.UrlError"
+//  INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_BADBODY = "InvalidParameterValue.BadBody"
+//  INVALIDPARAMETERVALUE_BODYTOOLARGE = "InvalidParameterValue.BodyTooLarge"
+//  INVALIDPARAMETERVALUE_CAPMISMATCH = "InvalidParameterValue.CapMisMatch"
+//  INVALIDPARAMETERVALUE_HTTPMETHODERROR = "InvalidParameterValue.HttpMethodError"
+//  INVALIDPARAMETERVALUE_INVALIDDATE = "InvalidParameterValue.InvalidDate"
+//  INVALIDPARAMETERVALUE_INVALIDLIMIT = "InvalidParameterValue.InvalidLimit"
+//  INVALIDPARAMETERVALUE_INVALIDNUM = "InvalidParameterValue.InvalidNum"
+//  INVALIDPARAMETERVALUE_INVALIDSRVID = "InvalidParameterValue.InvalidSrvId"
+//  INVALIDPARAMETERVALUE_INVALIDSTRIDE = "InvalidParameterValue.InvalidStride"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_FREQCNT = "LimitExceeded.FreqCnt"
+//  LIMITEXCEEDED_IPFREQCNT = "LimitExceeded.IpFreqCnt"
+//  LIMITEXCEEDED_KEYFREQCNT = "LimitExceeded.KeyFreqCnt"
+//  LIMITEXCEEDED_REPLAYATTACK = "LimitExceeded.ReplayAttack"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_PERMISSIONDENIED = "ResourceUnavailable.PermissionDenied"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RecognizeTargetAudienceWithContext(ctx context.Context, request *RecognizeTargetAudienceRequest) (response *RecognizeTargetAudienceResponse, err error) {
+    if request == nil {
+        request = NewRecognizeTargetAudienceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewRecognizeTargetAudienceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSendTrafficSecuritySmsMessageRequest() (request *SendTrafficSecuritySmsMessageRequest) {
     request = &SendTrafficSecuritySmsMessageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -498,6 +799,55 @@ func (c *Client) SendTrafficSecuritySmsMessage(request *SendTrafficSecuritySmsMe
     if request == nil {
         request = NewSendTrafficSecuritySmsMessageRequest()
     }
+    
+    response = NewSendTrafficSecuritySmsMessageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SendTrafficSecuritySmsMessage
+// 流量安选产品，短信发送接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAPSIGERROR = "AuthFailure.CapSigError"
+//  AUTHFAILURE_EXPIRED = "AuthFailure.Expired"
+//  INTERNALERROR_ADDTASKFAIL = "InternalError.AddTaskFail"
+//  INTERNALERROR_BACKENDLOGICERROR = "InternalError.BackendLogicError"
+//  INTERNALERROR_CONNECTDBTIMEOUT = "InternalError.ConnectDBTimeout"
+//  INTERNALERROR_DETECTFAIL = "InternalError.DetectFail"
+//  INTERNALERROR_DOWNLOADFAIL = "InternalError.DownloadFail"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INTERNALERROR_QUERYTASKFAIL = "InternalError.QueryTaskFail"
+//  INTERNALERROR_SIGNBACKENDERROR = "InternalError.SignBackendError"
+//  INTERNALERROR_SIGNATUREFAIL = "InternalError.SignatureFail"
+//  INTERNALERROR_TASKIDNOTFOUND = "InternalError.TaskIdNotFound"
+//  INTERNALERROR_UPDATETASKFAIL = "InternalError.UpdateTaskFail"
+//  INVALIDPARAMETER_CAPSIGERROR = "InvalidParameter.CapSigError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_URLERROR = "InvalidParameter.UrlError"
+//  INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
+//  INVALIDPARAMETERVALUE_BADBODY = "InvalidParameterValue.BadBody"
+//  INVALIDPARAMETERVALUE_BODYTOOLARGE = "InvalidParameterValue.BodyTooLarge"
+//  INVALIDPARAMETERVALUE_CAPMISMATCH = "InvalidParameterValue.CapMisMatch"
+//  INVALIDPARAMETERVALUE_HTTPMETHODERROR = "InvalidParameterValue.HttpMethodError"
+//  INVALIDPARAMETERVALUE_INVALIDDATE = "InvalidParameterValue.InvalidDate"
+//  INVALIDPARAMETERVALUE_INVALIDLIMIT = "InvalidParameterValue.InvalidLimit"
+//  INVALIDPARAMETERVALUE_INVALIDNUM = "InvalidParameterValue.InvalidNum"
+//  INVALIDPARAMETERVALUE_INVALIDSRVID = "InvalidParameterValue.InvalidSrvId"
+//  INVALIDPARAMETERVALUE_INVALIDSTRIDE = "InvalidParameterValue.InvalidStride"
+//  LIMITEXCEEDED_FREQCNT = "LimitExceeded.FreqCnt"
+//  LIMITEXCEEDED_IPFREQCNT = "LimitExceeded.IpFreqCnt"
+//  LIMITEXCEEDED_KEYFREQCNT = "LimitExceeded.KeyFreqCnt"
+//  LIMITEXCEEDED_REPLAYATTACK = "LimitExceeded.ReplayAttack"
+//  RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
+//  RESOURCEUNAVAILABLE_PERMISSIONDENIED = "ResourceUnavailable.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
+//  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
+func (c *Client) SendTrafficSecuritySmsMessageWithContext(ctx context.Context, request *SendTrafficSecuritySmsMessageRequest) (response *SendTrafficSecuritySmsMessageResponse, err error) {
+    if request == nil {
+        request = NewSendTrafficSecuritySmsMessageRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewSendTrafficSecuritySmsMessageResponse()
     err = c.Send(request, response)

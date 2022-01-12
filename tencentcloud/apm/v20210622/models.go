@@ -118,6 +118,22 @@ type ApmInstanceDetail struct {
 	// 慢调用保存阈值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlowRequestSavedThreshold *int64 `json:"SlowRequestSavedThreshold,omitempty" name:"SlowRequestSavedThreshold"`
+
+	// cls日志所在地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogRegion *string `json:"LogRegion,omitempty" name:"LogRegion"`
+
+	// 日志来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogSource *string `json:"LogSource,omitempty" name:"LogSource"`
+
+	// 日志功能开关 0 关 | 1 开
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsRelatedLog *int64 `json:"IsRelatedLog,omitempty" name:"IsRelatedLog"`
+
+	// 日志主题ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogTopicID *string `json:"LogTopicID,omitempty" name:"LogTopicID"`
 }
 
 type ApmTag struct {

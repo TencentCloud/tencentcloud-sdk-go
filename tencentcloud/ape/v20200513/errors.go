@@ -32,6 +32,9 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
+	// 超过配额限制。
+	LIMITEXCEEDED = "LimitExceeded"
+
 	// 图片使用期限已过期。
 	LIMITEXCEEDED_ORDEREXPIREDERROR = "LimitExceeded.OrderExpiredError"
 

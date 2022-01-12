@@ -17,6 +17,12 @@ package v20181106
 const (
 	// 此产品的特有错误码
 
+	// 计费次数统计失败。
+	FAILEDOPERATION_CHARGECOUNTERROR = "FailedOperation.ChargeCountError"
+
+	// 引擎识别失败。
+	INTERNALERROR_ENGINERESULTERROR = "InternalError.EngineResultError"
+
 	// 初始化参数错误。
 	INTERNALERROR_INITIALPARAMETERERROR = "InternalError.InitialParameterError"
 

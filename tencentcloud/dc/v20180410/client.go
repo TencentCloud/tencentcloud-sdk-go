@@ -15,6 +15,7 @@
 package v20180410
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -80,6 +81,27 @@ func (c *Client) AcceptDirectConnectTunnel(request *AcceptDirectConnectTunnelReq
     return
 }
 
+// AcceptDirectConnectTunnel
+// 接受专用通道申请
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DIRECTCONNECTTUNNELIDISNOTEXIST = "ResourceNotFound.DirectConnectTunnelIdIsNotExist"
+//  UNSUPPORTEDOPERATION_STATECONFLICT = "UnsupportedOperation.StateConfLict"
+func (c *Client) AcceptDirectConnectTunnelWithContext(ctx context.Context, request *AcceptDirectConnectTunnelRequest) (response *AcceptDirectConnectTunnelResponse, err error) {
+    if request == nil {
+        request = NewAcceptDirectConnectTunnelRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewAcceptDirectConnectTunnelResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewApplyInternetAddressRequest() (request *ApplyInternetAddressRequest) {
     request = &ApplyInternetAddressRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -106,6 +128,22 @@ func (c *Client) ApplyInternetAddress(request *ApplyInternetAddressRequest) (res
     if request == nil {
         request = NewApplyInternetAddressRequest()
     }
+    
+    response = NewApplyInternetAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ApplyInternetAddress
+// 申请互联网CIDR地址
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) ApplyInternetAddressWithContext(ctx context.Context, request *ApplyInternetAddressRequest) (response *ApplyInternetAddressResponse, err error) {
+    if request == nil {
+        request = NewApplyInternetAddressRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewApplyInternetAddressResponse()
     err = c.Send(request, response)
@@ -149,6 +187,33 @@ func (c *Client) CreateDirectConnect(request *CreateDirectConnectRequest) (respo
     if request == nil {
         request = NewCreateDirectConnectRequest()
     }
+    
+    response = NewCreateDirectConnectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateDirectConnect
+// 申请物理专线接入。
+//
+// 调用该接口时，请注意：
+//
+// 账号要进行实名认证，否则不允许申请物理专线；
+//
+// 若账户下存在欠费状态的物理专线，则不能申请更多的物理专线。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_DIRECTCONNECTLIMITEXCEEDED = "LimitExceeded.DirectConnectLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDirectConnectWithContext(ctx context.Context, request *CreateDirectConnectRequest) (response *CreateDirectConnectResponse, err error) {
+    if request == nil {
+        request = NewCreateDirectConnectRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateDirectConnectResponse()
     err = c.Send(request, response)
@@ -202,6 +267,37 @@ func (c *Client) CreateDirectConnectTunnel(request *CreateDirectConnectTunnelReq
     return
 }
 
+// CreateDirectConnectTunnel
+// 用于创建专用通道的接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ADDRESSERROR = "InvalidParameter.AddressError"
+//  INVALIDPARAMETER_DIRECTCONNECTIDISNOTUIN = "InvalidParameter.DirectConnectIdIsNotUin"
+//  INVALIDPARAMETER_UINISNOTEXIST = "InvalidParameter.UinIsNotExist"
+//  INVALIDPARAMETER_VLANCONFLICT = "InvalidParameter.VlanConflict"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_VLANCONFLICT = "InvalidParameterValue.VlanConfLict"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_DIRECTCONNECTLIMITEXCEEDED = "LimitExceeded.DirectConnectLimitExceeded"
+//  LIMITEXCEEDED_DIRECTCONNECTTUNNELLIMITEXCEEDED = "LimitExceeded.DirectConnectTunnelLimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE_DCVPCISEXIST = "ResourceInUse.DcVpcIsExist"
+//  RESOURCEUNAVAILABLE_INSUFFICIENTBALANCE = "ResourceUnavailable.InsufficientBalance"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_CROSSBORDERDIRECTCONNECTTUNNEL = "UnsupportedOperation.CrossBorderDirectConnectTunnel"
+func (c *Client) CreateDirectConnectTunnelWithContext(ctx context.Context, request *CreateDirectConnectTunnelRequest) (response *CreateDirectConnectTunnelResponse, err error) {
+    if request == nil {
+        request = NewCreateDirectConnectTunnelRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateDirectConnectTunnelResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteDirectConnectRequest() (request *DeleteDirectConnectRequest) {
     request = &DeleteDirectConnectRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -244,6 +340,32 @@ func (c *Client) DeleteDirectConnect(request *DeleteDirectConnectRequest) (respo
     return
 }
 
+// DeleteDirectConnect
+// 删除物理专线。
+//
+// 只能删除处于已连接状态的物理专线。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DIRECTCONNECTIDISNOTUIN = "InvalidParameter.DirectConnectIdIsNotUin"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_STATECONFLICT = "UnsupportedOperation.StateConfLict"
+func (c *Client) DeleteDirectConnectWithContext(ctx context.Context, request *DeleteDirectConnectRequest) (response *DeleteDirectConnectResponse, err error) {
+    if request == nil {
+        request = NewDeleteDirectConnectRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteDirectConnectResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteDirectConnectTunnelRequest() (request *DeleteDirectConnectTunnelRequest) {
     request = &DeleteDirectConnectTunnelRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -275,6 +397,27 @@ func (c *Client) DeleteDirectConnectTunnel(request *DeleteDirectConnectTunnelReq
     if request == nil {
         request = NewDeleteDirectConnectTunnelRequest()
     }
+    
+    response = NewDeleteDirectConnectTunnelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteDirectConnectTunnel
+// 删除专用通道
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DIRECTCONNECTTUNNELIDISNOTEXIST = "ResourceNotFound.DirectConnectTunnelIdIsNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_STATECONFLICT = "UnsupportedOperation.StateConfLict"
+func (c *Client) DeleteDirectConnectTunnelWithContext(ctx context.Context, request *DeleteDirectConnectTunnelRequest) (response *DeleteDirectConnectTunnelResponse, err error) {
+    if request == nil {
+        request = NewDeleteDirectConnectTunnelRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteDirectConnectTunnelResponse()
     err = c.Send(request, response)
@@ -320,6 +463,29 @@ func (c *Client) DescribeAccessPoints(request *DescribeAccessPointsRequest) (res
     return
 }
 
+// DescribeAccessPoints
+// 查询物理专线接入点
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAccessPointsWithContext(ctx context.Context, request *DescribeAccessPointsRequest) (response *DescribeAccessPointsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccessPointsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAccessPointsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDirectConnectTunnelExtraRequest() (request *DescribeDirectConnectTunnelExtraRequest) {
     request = &DescribeDirectConnectTunnelExtraRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -348,6 +514,24 @@ func (c *Client) DescribeDirectConnectTunnelExtra(request *DescribeDirectConnect
     if request == nil {
         request = NewDescribeDirectConnectTunnelExtraRequest()
     }
+    
+    response = NewDescribeDirectConnectTunnelExtraResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeDirectConnectTunnelExtra
+// 本接口（DescribeDirectConnectTunnelExtra）用于查询专用通道扩展信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DIRECTCONNECTTUNNELIDISNOTEXIST = "ResourceNotFound.DirectConnectTunnelIdIsNotExist"
+func (c *Client) DescribeDirectConnectTunnelExtraWithContext(ctx context.Context, request *DescribeDirectConnectTunnelExtraRequest) (response *DescribeDirectConnectTunnelExtraResponse, err error) {
+    if request == nil {
+        request = NewDescribeDirectConnectTunnelExtraRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeDirectConnectTunnelExtraResponse()
     err = c.Send(request, response)
@@ -384,6 +568,26 @@ func (c *Client) DescribeDirectConnectTunnels(request *DescribeDirectConnectTunn
     if request == nil {
         request = NewDescribeDirectConnectTunnelsRequest()
     }
+    
+    response = NewDescribeDirectConnectTunnelsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeDirectConnectTunnels
+// 用于查询专用通道列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DIRECTCONNECTTUNNELIDISNOTEXIST = "ResourceNotFound.DirectConnectTunnelIdIsNotExist"
+func (c *Client) DescribeDirectConnectTunnelsWithContext(ctx context.Context, request *DescribeDirectConnectTunnelsRequest) (response *DescribeDirectConnectTunnelsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDirectConnectTunnelsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeDirectConnectTunnelsResponse()
     err = c.Send(request, response)
@@ -427,6 +631,27 @@ func (c *Client) DescribeDirectConnects(request *DescribeDirectConnectsRequest) 
     return
 }
 
+// DescribeDirectConnects
+// 查询物理专线列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDirectConnectsWithContext(ctx context.Context, request *DescribeDirectConnectsRequest) (response *DescribeDirectConnectsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDirectConnectsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDirectConnectsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInternetAddressRequest() (request *DescribeInternetAddressRequest) {
     request = &DescribeInternetAddressRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -458,6 +683,27 @@ func (c *Client) DescribeInternetAddress(request *DescribeInternetAddressRequest
     if request == nil {
         request = NewDescribeInternetAddressRequest()
     }
+    
+    response = NewDescribeInternetAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeInternetAddress
+// 获取用户互联网公网地址信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeInternetAddressWithContext(ctx context.Context, request *DescribeInternetAddressRequest) (response *DescribeInternetAddressResponse, err error) {
+    if request == nil {
+        request = NewDescribeInternetAddressRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeInternetAddressResponse()
     err = c.Send(request, response)
@@ -501,6 +747,27 @@ func (c *Client) DescribeInternetAddressQuota(request *DescribeInternetAddressQu
     return
 }
 
+// DescribeInternetAddressQuota
+// 获取用户互联网公网地址配额
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeInternetAddressQuotaWithContext(ctx context.Context, request *DescribeInternetAddressQuotaRequest) (response *DescribeInternetAddressQuotaResponse, err error) {
+    if request == nil {
+        request = NewDescribeInternetAddressQuotaRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeInternetAddressQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInternetAddressStatisticsRequest() (request *DescribeInternetAddressStatisticsRequest) {
     request = &DescribeInternetAddressStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -532,6 +799,27 @@ func (c *Client) DescribeInternetAddressStatistics(request *DescribeInternetAddr
     if request == nil {
         request = NewDescribeInternetAddressStatisticsRequest()
     }
+    
+    response = NewDescribeInternetAddressStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeInternetAddressStatistics
+// 获取用户互联网公网地址分配统计信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeInternetAddressStatisticsWithContext(ctx context.Context, request *DescribeInternetAddressStatisticsRequest) (response *DescribeInternetAddressStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInternetAddressStatisticsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeInternetAddressStatisticsResponse()
     err = c.Send(request, response)
@@ -573,6 +861,25 @@ func (c *Client) DescribePublicDirectConnectTunnelRoutes(request *DescribePublic
     return
 }
 
+// DescribePublicDirectConnectTunnelRoutes
+// 本接口（DescribePublicDirectConnectTunnelRoutes）用于查询互联网通道路由列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DIRECTCONNECTTUNNELIDISNOTEXIST = "ResourceNotFound.DirectConnectTunnelIdIsNotExist"
+func (c *Client) DescribePublicDirectConnectTunnelRoutesWithContext(ctx context.Context, request *DescribePublicDirectConnectTunnelRoutesRequest) (response *DescribePublicDirectConnectTunnelRoutesResponse, err error) {
+    if request == nil {
+        request = NewDescribePublicDirectConnectTunnelRoutesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribePublicDirectConnectTunnelRoutesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisableInternetAddressRequest() (request *DisableInternetAddressRequest) {
     request = &DisableInternetAddressRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -608,6 +915,25 @@ func (c *Client) DisableInternetAddress(request *DisableInternetAddressRequest) 
     return
 }
 
+// DisableInternetAddress
+// 停用用户申请的公网互联网地址
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DIRECTCONNECTTUNNELIDISNOTEXIST = "ResourceNotFound.DirectConnectTunnelIdIsNotExist"
+func (c *Client) DisableInternetAddressWithContext(ctx context.Context, request *DisableInternetAddressRequest) (response *DisableInternetAddressResponse, err error) {
+    if request == nil {
+        request = NewDisableInternetAddressRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDisableInternetAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEnableInternetAddressRequest() (request *EnableInternetAddressRequest) {
     request = &EnableInternetAddressRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -637,6 +963,25 @@ func (c *Client) EnableInternetAddress(request *EnableInternetAddressRequest) (r
     if request == nil {
         request = NewEnableInternetAddressRequest()
     }
+    
+    response = NewEnableInternetAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// EnableInternetAddress
+// 启用已停用的互联网公网地址
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DIRECTCONNECTTUNNELIDISNOTEXIST = "ResourceNotFound.DirectConnectTunnelIdIsNotExist"
+func (c *Client) EnableInternetAddressWithContext(ctx context.Context, request *EnableInternetAddressRequest) (response *EnableInternetAddressResponse, err error) {
+    if request == nil {
+        request = NewEnableInternetAddressRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewEnableInternetAddressResponse()
     err = c.Send(request, response)
@@ -682,6 +1027,29 @@ func (c *Client) ModifyDirectConnectAttribute(request *ModifyDirectConnectAttrib
     return
 }
 
+// ModifyDirectConnectAttribute
+// 修改物理专线的属性。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DIRECTCONNECTIDISNOTUIN = "InvalidParameter.DirectConnectIdIsNotUin"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_INSUFFICIENTBALANCE = "ResourceUnavailable.InsufficientBalance"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDirectConnectAttributeWithContext(ctx context.Context, request *ModifyDirectConnectAttributeRequest) (response *ModifyDirectConnectAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyDirectConnectAttributeRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyDirectConnectAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDirectConnectTunnelAttributeRequest() (request *ModifyDirectConnectTunnelAttributeRequest) {
     request = &ModifyDirectConnectTunnelAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -713,6 +1081,27 @@ func (c *Client) ModifyDirectConnectTunnelAttribute(request *ModifyDirectConnect
     if request == nil {
         request = NewModifyDirectConnectTunnelAttributeRequest()
     }
+    
+    response = NewModifyDirectConnectTunnelAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyDirectConnectTunnelAttribute
+// 修改专用通道属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_DIRECTCONNECTTUNNELIDISNOTEXIST = "ResourceNotFound.DirectConnectTunnelIdIsNotExist"
+//  UNSUPPORTEDOPERATION_STATECONFLICT = "UnsupportedOperation.StateConfLict"
+func (c *Client) ModifyDirectConnectTunnelAttributeWithContext(ctx context.Context, request *ModifyDirectConnectTunnelAttributeRequest) (response *ModifyDirectConnectTunnelAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyDirectConnectTunnelAttributeRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyDirectConnectTunnelAttributeResponse()
     err = c.Send(request, response)
@@ -760,6 +1149,31 @@ func (c *Client) ModifyDirectConnectTunnelExtra(request *ModifyDirectConnectTunn
     return
 }
 
+// ModifyDirectConnectTunnelExtra
+// 本接口（ModifyDirectConnectTunnelExtra）用于修改专用通道扩展信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDirectConnectTunnelExtraWithContext(ctx context.Context, request *ModifyDirectConnectTunnelExtraRequest) (response *ModifyDirectConnectTunnelExtraResponse, err error) {
+    if request == nil {
+        request = NewModifyDirectConnectTunnelExtraRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyDirectConnectTunnelExtraResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRejectDirectConnectTunnelRequest() (request *RejectDirectConnectTunnelRequest) {
     request = &RejectDirectConnectTunnelRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -796,6 +1210,26 @@ func (c *Client) RejectDirectConnectTunnel(request *RejectDirectConnectTunnelReq
     return
 }
 
+// RejectDirectConnectTunnel
+// 拒绝专用通道申请
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DIRECTCONNECTTUNNELIDISNOTEXIST = "ResourceNotFound.DirectConnectTunnelIdIsNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_STATECONFLICT = "UnsupportedOperation.StateConfLict"
+func (c *Client) RejectDirectConnectTunnelWithContext(ctx context.Context, request *RejectDirectConnectTunnelRequest) (response *RejectDirectConnectTunnelResponse, err error) {
+    if request == nil {
+        request = NewRejectDirectConnectTunnelRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewRejectDirectConnectTunnelResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewReleaseInternetAddressRequest() (request *ReleaseInternetAddressRequest) {
     request = &ReleaseInternetAddressRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -826,6 +1260,26 @@ func (c *Client) ReleaseInternetAddress(request *ReleaseInternetAddressRequest) 
     if request == nil {
         request = NewReleaseInternetAddressRequest()
     }
+    
+    response = NewReleaseInternetAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ReleaseInternetAddress
+// 释放已申请的互联网地址
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DIRECTCONNECTTUNNELIDISNOTEXIST = "ResourceNotFound.DirectConnectTunnelIdIsNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_STATECONFLICT = "UnsupportedOperation.StateConfLict"
+func (c *Client) ReleaseInternetAddressWithContext(ctx context.Context, request *ReleaseInternetAddressRequest) (response *ReleaseInternetAddressResponse, err error) {
+    if request == nil {
+        request = NewReleaseInternetAddressRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewReleaseInternetAddressResponse()
     err = c.Send(request, response)

@@ -15,6 +15,7 @@
 package v20200224
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -101,6 +102,48 @@ func (c *Client) ManageMarketingRisk(request *ManageMarketingRiskRequest) (respo
     return
 }
 
+// ManageMarketingRisk
+// 活动防刷、注册保护、登录保护等营销产品的高级版本
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAPSIGERROR = "AuthFailure.CapSigError"
+//  AUTHFAILURE_EXPIRED = "AuthFailure.Expired"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_BACKENDLOGICERROR = "InternalError.BackendLogicError"
+//  INTERNALERROR_CONNECTDBTIMEOUT = "InternalError.ConnectDBTimeout"
+//  INTERNALERROR_SIGNBACKENDERROR = "InternalError.SignBackendError"
+//  INVALIDPARAMETER_CAPSIGERROR = "InvalidParameter.CapSigError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_URLERROR = "InvalidParameter.UrlError"
+//  INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
+//  INVALIDPARAMETERVALUE_BADBODY = "InvalidParameterValue.BadBody"
+//  INVALIDPARAMETERVALUE_BODYTOOLARGE = "InvalidParameterValue.BodyTooLarge"
+//  INVALIDPARAMETERVALUE_CAPMISMATCH = "InvalidParameterValue.CapMisMatch"
+//  INVALIDPARAMETERVALUE_HTTPMETHODERROR = "InvalidParameterValue.HttpMethodError"
+//  INVALIDPARAMETERVALUE_INVALIDDATE = "InvalidParameterValue.InvalidDate"
+//  INVALIDPARAMETERVALUE_INVALIDLIMIT = "InvalidParameterValue.InvalidLimit"
+//  INVALIDPARAMETERVALUE_INVALIDNUM = "InvalidParameterValue.InvalidNum"
+//  INVALIDPARAMETERVALUE_INVALIDSRVID = "InvalidParameterValue.InvalidSrvId"
+//  INVALIDPARAMETERVALUE_INVALIDSTRIDE = "InvalidParameterValue.InvalidStride"
+//  LIMITEXCEEDED_FREQCNT = "LimitExceeded.FreqCnt"
+//  LIMITEXCEEDED_IPFREQCNT = "LimitExceeded.IpFreqCnt"
+//  LIMITEXCEEDED_KEYFREQCNT = "LimitExceeded.KeyFreqCnt"
+//  LIMITEXCEEDED_REPLAYATTACK = "LimitExceeded.ReplayAttack"
+//  RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
+//  RESOURCEUNAVAILABLE_PERMISSIONDENIED = "ResourceUnavailable.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
+//  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
+func (c *Client) ManageMarketingRiskWithContext(ctx context.Context, request *ManageMarketingRiskRequest) (response *ManageMarketingRiskResponse, err error) {
+    if request == nil {
+        request = NewManageMarketingRiskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewManageMarketingRiskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryActivityAntiRushRequest() (request *QueryActivityAntiRushRequest) {
     request = &QueryActivityAntiRushRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -147,6 +190,42 @@ func (c *Client) QueryActivityAntiRush(request *QueryActivityAntiRushRequest) (r
     if request == nil {
         request = NewQueryActivityAntiRushRequest()
     }
+    
+    response = NewQueryActivityAntiRushResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// QueryActivityAntiRush
+// 腾讯云活动防刷（ActivityAntiRush，AA）是针对电商、O2O、P2P、游戏、支付等行业在促销活动中遇到“羊毛党”恶意刷取优惠福利的行为时，通过防刷引擎，精准识别出“薅羊毛”恶意行为的活动防刷服务，避免了企业被刷带来的巨大经济损失。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAPSIGERROR = "AuthFailure.CapSigError"
+//  AUTHFAILURE_EXPIRED = "AuthFailure.Expired"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_BACKENDLOGICERROR = "InternalError.BackendLogicError"
+//  INTERNALERROR_SIGNBACKENDERROR = "InternalError.SignBackendError"
+//  INVALIDPARAMETER_CAPSIGERROR = "InvalidParameter.CapSigError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_URLERROR = "InvalidParameter.UrlError"
+//  INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
+//  INVALIDPARAMETERVALUE_BADBODY = "InvalidParameterValue.BadBody"
+//  INVALIDPARAMETERVALUE_BODYTOOLARGE = "InvalidParameterValue.BodyTooLarge"
+//  INVALIDPARAMETERVALUE_CAPMISMATCH = "InvalidParameterValue.CapMisMatch"
+//  INVALIDPARAMETERVALUE_HTTPMETHODERROR = "InvalidParameterValue.HttpMethodError"
+//  LIMITEXCEEDED_FREQCNT = "LimitExceeded.FreqCnt"
+//  LIMITEXCEEDED_IPFREQCNT = "LimitExceeded.IpFreqCnt"
+//  LIMITEXCEEDED_KEYFREQCNT = "LimitExceeded.KeyFreqCnt"
+//  LIMITEXCEEDED_REPLAYATTACK = "LimitExceeded.ReplayAttack"
+//  RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
+//  RESOURCEUNAVAILABLE_PERMISSIONDENIED = "ResourceUnavailable.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
+//  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
+func (c *Client) QueryActivityAntiRushWithContext(ctx context.Context, request *QueryActivityAntiRushRequest) (response *QueryActivityAntiRushResponse, err error) {
+    if request == nil {
+        request = NewQueryActivityAntiRushRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewQueryActivityAntiRushResponse()
     err = c.Send(request, response)
@@ -205,6 +284,48 @@ func (c *Client) QueryActivityAntiRushAdvanced(request *QueryActivityAntiRushAdv
     if request == nil {
         request = NewQueryActivityAntiRushAdvancedRequest()
     }
+    
+    response = NewQueryActivityAntiRushAdvancedResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// QueryActivityAntiRushAdvanced
+// 活动防刷高级版，支持对网赚众包、网赚防刷、引流反诈骗场景的检测识别
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAPSIGERROR = "AuthFailure.CapSigError"
+//  AUTHFAILURE_EXPIRED = "AuthFailure.Expired"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_BACKENDLOGICERROR = "InternalError.BackendLogicError"
+//  INTERNALERROR_CONNECTDBTIMEOUT = "InternalError.ConnectDBTimeout"
+//  INTERNALERROR_SIGNBACKENDERROR = "InternalError.SignBackendError"
+//  INVALIDPARAMETER_CAPSIGERROR = "InvalidParameter.CapSigError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_URLERROR = "InvalidParameter.UrlError"
+//  INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
+//  INVALIDPARAMETERVALUE_BADBODY = "InvalidParameterValue.BadBody"
+//  INVALIDPARAMETERVALUE_BODYTOOLARGE = "InvalidParameterValue.BodyTooLarge"
+//  INVALIDPARAMETERVALUE_CAPMISMATCH = "InvalidParameterValue.CapMisMatch"
+//  INVALIDPARAMETERVALUE_HTTPMETHODERROR = "InvalidParameterValue.HttpMethodError"
+//  INVALIDPARAMETERVALUE_INVALIDDATE = "InvalidParameterValue.InvalidDate"
+//  INVALIDPARAMETERVALUE_INVALIDLIMIT = "InvalidParameterValue.InvalidLimit"
+//  INVALIDPARAMETERVALUE_INVALIDNUM = "InvalidParameterValue.InvalidNum"
+//  INVALIDPARAMETERVALUE_INVALIDSRVID = "InvalidParameterValue.InvalidSrvId"
+//  INVALIDPARAMETERVALUE_INVALIDSTRIDE = "InvalidParameterValue.InvalidStride"
+//  LIMITEXCEEDED_FREQCNT = "LimitExceeded.FreqCnt"
+//  LIMITEXCEEDED_IPFREQCNT = "LimitExceeded.IpFreqCnt"
+//  LIMITEXCEEDED_KEYFREQCNT = "LimitExceeded.KeyFreqCnt"
+//  LIMITEXCEEDED_REPLAYATTACK = "LimitExceeded.ReplayAttack"
+//  RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
+//  RESOURCEUNAVAILABLE_PERMISSIONDENIED = "ResourceUnavailable.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
+//  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
+func (c *Client) QueryActivityAntiRushAdvancedWithContext(ctx context.Context, request *QueryActivityAntiRushAdvancedRequest) (response *QueryActivityAntiRushAdvancedResponse, err error) {
+    if request == nil {
+        request = NewQueryActivityAntiRushAdvancedRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewQueryActivityAntiRushAdvancedResponse()
     err = c.Send(request, response)

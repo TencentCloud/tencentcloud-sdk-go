@@ -26,6 +26,9 @@ const (
 	// 重复的作业名。
 	FAILEDOPERATION_DUPLICATEDJOBNAME = "FailedOperation.DuplicatedJobName"
 
+	// 语法检查失败。
+	FAILEDOPERATION_GRAMMARCHECKFAILURE = "FailedOperation.GrammarCheckFailure"
+
 	// 用户未实名验证。
 	FAILEDOPERATION_USERNOTAUTHENTICATED = "FailedOperation.UserNotAuthenticated"
 
@@ -34,6 +37,9 @@ const (
 
 	// COS 服务访问错误。
 	INTERNALERROR_COSCLIENT = "InternalError.COSClient"
+
+	// CAM 网关错误。
+	INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
 
 	// 数据库异常。
 	INTERNALERROR_DB = "InternalError.DB"
@@ -115,6 +121,9 @@ const (
 
 	// 作业名称已存在。
 	INVALIDPARAMETERVALUE_JOBNAMEEXISTED = "InvalidParameterValue.JobNameExisted"
+
+	// 集群模式与作业类型不匹配。
+	INVALIDPARAMETERVALUE_JOBTYPECOMBINEWITHCLUSTERTYPE = "InvalidParameterValue.JobTypeCombineWithClusterType"
 
 	// SQL作业不能指定EntrypointClass，JAR作业则必须指定。
 	INVALIDPARAMETERVALUE_JOBTYPECOMBINEWITHENTRYPOINTCLASS = "InvalidParameterValue.JobTypeCombineWithEntrypointClass"

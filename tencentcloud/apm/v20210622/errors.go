@@ -26,6 +26,12 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 非内网vpc。
+	FAILEDOPERATION_NOTINNERVPC = "FailedOperation.NotInnerVPC"
+
+	// 发送查询请求失败。
+	FAILEDOPERATION_SENDREQUEST = "FailedOperation.SendRequest"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 

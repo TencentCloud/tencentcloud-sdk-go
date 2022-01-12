@@ -78,6 +78,17 @@ type ClusterView struct {
 
 	// 未分配的分片个数
 	UnassignedShardNum *int64 `json:"UnassignedShardNum,omitempty" name:"UnassignedShardNum"`
+
+	// 企业版COS存储容量大小，单位GB
+	TotalCosStorage *int64 `json:"TotalCosStorage,omitempty" name:"TotalCosStorage"`
+
+	// 企业版集群可搜索快照cos存放的bucket名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SearchableSnapshotCosBucket *string `json:"SearchableSnapshotCosBucket,omitempty" name:"SearchableSnapshotCosBucket"`
+
+	// 企业版集群可搜索快照cos所属appid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SearchableSnapshotCosAppId *string `json:"SearchableSnapshotCosAppId,omitempty" name:"SearchableSnapshotCosAppId"`
 }
 
 type CosBackup struct {
@@ -245,6 +256,10 @@ type CreateInstanceResponse struct {
 
 		// 实例ID
 		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+		// 订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DealName *string `json:"DealName,omitempty" name:"DealName"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -491,6 +506,9 @@ type DescribeInstancesRequest struct {
 
 	// 私有网络vip列表
 	IpList []*string `json:"IpList,omitempty" name:"IpList"`
+
+	// 可用区列表
+	ZoneList []*string `json:"ZoneList,omitempty" name:"ZoneList"`
 }
 
 func (r *DescribeInstancesRequest) ToJsonString() string {
@@ -514,6 +532,7 @@ func (r *DescribeInstancesRequest) FromJsonString(s string) error {
 	delete(f, "OrderByType")
 	delete(f, "TagList")
 	delete(f, "IpList")
+	delete(f, "ZoneList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesRequest has unknown keys!", "")
 	}
@@ -866,27 +885,27 @@ type InstanceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableHotWarmMode *bool `json:"EnableHotWarmMode,omitempty" name:"EnableHotWarmMode"`
 
-	// 冷节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+	// 温节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WarmNodeType *string `json:"WarmNodeType,omitempty" name:"WarmNodeType"`
 
-	// 冷节点个数
+	// 温节点个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WarmNodeNum *uint64 `json:"WarmNodeNum,omitempty" name:"WarmNodeNum"`
 
-	// 冷节点CPU核数
+	// 温节点CPU核数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WarmCpuNum *uint64 `json:"WarmCpuNum,omitempty" name:"WarmCpuNum"`
 
-	// 冷节点内存内存大小，单位GB
+	// 温节点内存内存大小，单位GB
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WarmMemSize *uint64 `json:"WarmMemSize,omitempty" name:"WarmMemSize"`
 
-	// 冷节点磁盘类型
+	// 温节点磁盘类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WarmDiskType *string `json:"WarmDiskType,omitempty" name:"WarmDiskType"`
 
-	// 冷节点磁盘大小，单位GB
+	// 温节点磁盘大小，单位GB
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WarmDiskSize *uint64 `json:"WarmDiskSize,omitempty" name:"WarmDiskSize"`
 
@@ -956,6 +975,54 @@ type InstanceInfo struct {
 	// 安全组id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroups []*string `json:"SecurityGroups,omitempty" name:"SecurityGroups"`
+
+	// 冷节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColdNodeType *string `json:"ColdNodeType,omitempty" name:"ColdNodeType"`
+
+	// 冷节点个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColdNodeNum *uint64 `json:"ColdNodeNum,omitempty" name:"ColdNodeNum"`
+
+	// 冷节点CPU核数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColdCpuNum *uint64 `json:"ColdCpuNum,omitempty" name:"ColdCpuNum"`
+
+	// 冷节点内存大小，单位GB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColdMemSize *uint64 `json:"ColdMemSize,omitempty" name:"ColdMemSize"`
+
+	// 冷节点磁盘类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColdDiskType *string `json:"ColdDiskType,omitempty" name:"ColdDiskType"`
+
+	// 冷节点磁盘大小，单位GB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColdDiskSize *uint64 `json:"ColdDiskSize,omitempty" name:"ColdDiskSize"`
+
+	// 冻节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FrozenNodeType *string `json:"FrozenNodeType,omitempty" name:"FrozenNodeType"`
+
+	// 冻节点个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FrozenNodeNum *uint64 `json:"FrozenNodeNum,omitempty" name:"FrozenNodeNum"`
+
+	// 冻节点CPU核数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FrozenCpuNum *uint64 `json:"FrozenCpuNum,omitempty" name:"FrozenCpuNum"`
+
+	// 冻节点内存大小，单位GB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FrozenMemSize *uint64 `json:"FrozenMemSize,omitempty" name:"FrozenMemSize"`
+
+	// 冻节点磁盘类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FrozenDiskType *string `json:"FrozenDiskType,omitempty" name:"FrozenDiskType"`
+
+	// 冻节点磁盘大小，单位GB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FrozenDiskSize *uint64 `json:"FrozenDiskSize,omitempty" name:"FrozenDiskSize"`
 }
 
 type InstanceLog struct {
@@ -1591,6 +1658,10 @@ type UpdateInstanceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// 订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DealName *string `json:"DealName,omitempty" name:"DealName"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -1682,6 +1753,9 @@ type UpdatePluginsRequest struct {
 
 	// 是否重新安装
 	ForceUpdate *bool `json:"ForceUpdate,omitempty" name:"ForceUpdate"`
+
+	// 0：系统插件
+	PluginType *uint64 `json:"PluginType,omitempty" name:"PluginType"`
 }
 
 func (r *UpdatePluginsRequest) ToJsonString() string {
@@ -1701,6 +1775,7 @@ func (r *UpdatePluginsRequest) FromJsonString(s string) error {
 	delete(f, "RemovePluginList")
 	delete(f, "ForceRestart")
 	delete(f, "ForceUpdate")
+	delete(f, "PluginType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdatePluginsRequest has unknown keys!", "")
 	}
@@ -1892,6 +1967,10 @@ func (r *UpgradeLicenseRequest) FromJsonString(s string) error {
 type UpgradeLicenseResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
+		// 订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DealName *string `json:"DealName,omitempty" name:"DealName"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

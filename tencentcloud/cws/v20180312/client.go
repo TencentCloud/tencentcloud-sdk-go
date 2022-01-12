@@ -15,6 +15,7 @@
 package v20180312
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -79,6 +80,26 @@ func (c *Client) CreateMonitors(request *CreateMonitorsRequest) (response *Creat
     return
 }
 
+// CreateMonitors
+// 本接口（CreateMonitors）用于新增一个或多个站点的监测任务。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  LIMITEXCEEDED_MONITORQUOTA = "LimitExceeded.MonitorQuota"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateMonitorsWithContext(ctx context.Context, request *CreateMonitorsRequest) (response *CreateMonitorsResponse, err error) {
+    if request == nil {
+        request = NewCreateMonitorsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateMonitorsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSitesRequest() (request *CreateSitesRequest) {
     request = &CreateSitesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -107,6 +128,24 @@ func (c *Client) CreateSites(request *CreateSitesRequest) (response *CreateSites
     if request == nil {
         request = NewCreateSitesRequest()
     }
+    
+    response = NewCreateSitesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateSites
+// 本接口（CreateSites）用于新增一个或多个站点。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DUPLICATE = "InvalidParameter.Duplicate"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+func (c *Client) CreateSitesWithContext(ctx context.Context, request *CreateSitesRequest) (response *CreateSitesResponse, err error) {
+    if request == nil {
+        request = NewCreateSitesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateSitesResponse()
     err = c.Send(request, response)
@@ -142,6 +181,25 @@ func (c *Client) CreateSitesScans(request *CreateSitesScansRequest) (response *C
     if request == nil {
         request = NewCreateSitesScansRequest()
     }
+    
+    response = NewCreateSitesScansResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateSitesScans
+// 本接口（CreateSitesScans）用于新增一个或多个站点的单次扫描任务。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  LIMITEXCEEDED_SCANQUOTA = "LimitExceeded.ScanQuota"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateSitesScansWithContext(ctx context.Context, request *CreateSitesScansRequest) (response *CreateSitesScansResponse, err error) {
+    if request == nil {
+        request = NewCreateSitesScansRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateSitesScansResponse()
     err = c.Send(request, response)
@@ -184,6 +242,26 @@ func (c *Client) CreateVulsMisinformation(request *CreateVulsMisinformationReque
     return
 }
 
+// CreateVulsMisinformation
+// 本接口（CreateVulsMisinformation）可以用于新增一个或多个漏洞误报信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DUPLICATE = "InvalidParameter.Duplicate"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateVulsMisinformationWithContext(ctx context.Context, request *CreateVulsMisinformationRequest) (response *CreateVulsMisinformationResponse, err error) {
+    if request == nil {
+        request = NewCreateVulsMisinformationRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateVulsMisinformationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateVulsReportRequest() (request *CreateVulsReportRequest) {
     request = &CreateVulsReportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -211,6 +289,23 @@ func (c *Client) CreateVulsReport(request *CreateVulsReportRequest) (response *C
     if request == nil {
         request = NewCreateVulsReportRequest()
     }
+    
+    response = NewCreateVulsReportResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateVulsReport
+// 本接口 (CreateVulsReport) 用于生成漏洞报告并返回下载链接。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+func (c *Client) CreateVulsReportWithContext(ctx context.Context, request *CreateVulsReportRequest) (response *CreateVulsReportResponse, err error) {
+    if request == nil {
+        request = NewCreateVulsReportRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateVulsReportResponse()
     err = c.Send(request, response)
@@ -251,6 +346,24 @@ func (c *Client) DeleteMonitors(request *DeleteMonitorsRequest) (response *Delet
     return
 }
 
+// DeleteMonitors
+// 本接口 (DeleteMonitors) 用于删除用户监控任务。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+func (c *Client) DeleteMonitorsWithContext(ctx context.Context, request *DeleteMonitorsRequest) (response *DeleteMonitorsResponse, err error) {
+    if request == nil {
+        request = NewDeleteMonitorsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteMonitorsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteSitesRequest() (request *DeleteSitesRequest) {
     request = &DeleteSitesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -285,6 +398,24 @@ func (c *Client) DeleteSites(request *DeleteSitesRequest) (response *DeleteSites
     return
 }
 
+// DeleteSites
+// 本接口 (DeleteSites) 用于删除站点。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+func (c *Client) DeleteSitesWithContext(ctx context.Context, request *DeleteSitesRequest) (response *DeleteSitesResponse, err error) {
+    if request == nil {
+        request = NewDeleteSitesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteSitesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeConfigRequest() (request *DescribeConfigRequest) {
     request = &DescribeConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -311,6 +442,22 @@ func (c *Client) DescribeConfig(request *DescribeConfigRequest) (response *Descr
     if request == nil {
         request = NewDescribeConfigRequest()
     }
+    
+    response = NewDescribeConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeConfig
+// 本接口 (DescribeConfig) 用于查询用户配置的详细信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeConfigWithContext(ctx context.Context, request *DescribeConfigRequest) (response *DescribeConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeConfigRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeConfigResponse()
     err = c.Send(request, response)
@@ -351,6 +498,24 @@ func (c *Client) DescribeMonitors(request *DescribeMonitorsRequest) (response *D
     return
 }
 
+// DescribeMonitors
+// 本接口 (DescribeMonitors) 用于查询一个或多个监控任务的详细信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+func (c *Client) DescribeMonitorsWithContext(ctx context.Context, request *DescribeMonitorsRequest) (response *DescribeMonitorsResponse, err error) {
+    if request == nil {
+        request = NewDescribeMonitorsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeMonitorsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSiteQuotaRequest() (request *DescribeSiteQuotaRequest) {
     request = &DescribeSiteQuotaRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -377,6 +542,22 @@ func (c *Client) DescribeSiteQuota(request *DescribeSiteQuotaRequest) (response 
     if request == nil {
         request = NewDescribeSiteQuotaRequest()
     }
+    
+    response = NewDescribeSiteQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeSiteQuota
+// 本接口 (DescribeSiteQuota) 用于查询用户购买的扫描次数总数和已使用数。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeSiteQuotaWithContext(ctx context.Context, request *DescribeSiteQuotaRequest) (response *DescribeSiteQuotaResponse, err error) {
+    if request == nil {
+        request = NewDescribeSiteQuotaRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeSiteQuotaResponse()
     err = c.Send(request, response)
@@ -417,6 +598,24 @@ func (c *Client) DescribeSites(request *DescribeSitesRequest) (response *Describ
     return
 }
 
+// DescribeSites
+// 本接口 (DescribeSites) 用于查询一个或多个站点的详细信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+func (c *Client) DescribeSitesWithContext(ctx context.Context, request *DescribeSitesRequest) (response *DescribeSitesResponse, err error) {
+    if request == nil {
+        request = NewDescribeSitesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeSitesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSitesVerificationRequest() (request *DescribeSitesVerificationRequest) {
     request = &DescribeSitesVerificationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -445,6 +644,24 @@ func (c *Client) DescribeSitesVerification(request *DescribeSitesVerificationReq
     if request == nil {
         request = NewDescribeSitesVerificationRequest()
     }
+    
+    response = NewDescribeSitesVerificationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeSitesVerification
+// 本接口 (DescribeSitesVerification) 用于查询一个或多个待验证站点的验证信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+func (c *Client) DescribeSitesVerificationWithContext(ctx context.Context, request *DescribeSitesVerificationRequest) (response *DescribeSitesVerificationResponse, err error) {
+    if request == nil {
+        request = NewDescribeSitesVerificationRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeSitesVerificationResponse()
     err = c.Send(request, response)
@@ -486,6 +703,25 @@ func (c *Client) DescribeVuls(request *DescribeVulsRequest) (response *DescribeV
     return
 }
 
+// DescribeVuls
+// 本接口 (DescribeVuls) 用于查询一个或多个漏洞的详细信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeVulsWithContext(ctx context.Context, request *DescribeVulsRequest) (response *DescribeVulsResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeVulsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVulsNumberRequest() (request *DescribeVulsNumberRequest) {
     request = &DescribeVulsNumberRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -512,6 +748,22 @@ func (c *Client) DescribeVulsNumber(request *DescribeVulsNumberRequest) (respons
     if request == nil {
         request = NewDescribeVulsNumberRequest()
     }
+    
+    response = NewDescribeVulsNumberResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeVulsNumber
+// 本接口 (DescribeVulsNumber) 用于查询用户网站的漏洞总计数量。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeVulsNumberWithContext(ctx context.Context, request *DescribeVulsNumberRequest) (response *DescribeVulsNumberResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulsNumberRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeVulsNumberResponse()
     err = c.Send(request, response)
@@ -550,6 +802,22 @@ func (c *Client) DescribeVulsNumberTimeline(request *DescribeVulsNumberTimelineR
     return
 }
 
+// DescribeVulsNumberTimeline
+// 本接口 (DescribeVulsNumberTimeline) 用于查询漏洞数随时间变化统计信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeVulsNumberTimelineWithContext(ctx context.Context, request *DescribeVulsNumberTimelineRequest) (response *DescribeVulsNumberTimelineResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulsNumberTimelineRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeVulsNumberTimelineResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyConfigAttributeRequest() (request *ModifyConfigAttributeRequest) {
     request = &ModifyConfigAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -576,6 +844,22 @@ func (c *Client) ModifyConfigAttribute(request *ModifyConfigAttributeRequest) (r
     if request == nil {
         request = NewModifyConfigAttributeRequest()
     }
+    
+    response = NewModifyConfigAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyConfigAttribute
+// 本接口 (ModifyConfigAttribute) 用于修改用户配置的属性。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ModifyConfigAttributeWithContext(ctx context.Context, request *ModifyConfigAttributeRequest) (response *ModifyConfigAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyConfigAttributeRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyConfigAttributeResponse()
     err = c.Send(request, response)
@@ -617,6 +901,25 @@ func (c *Client) ModifyMonitorAttribute(request *ModifyMonitorAttributeRequest) 
     return
 }
 
+// ModifyMonitorAttribute
+// 本接口 (ModifyMonitorAttribute) 用于修改监测任务的属性。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  LIMITEXCEEDED_MONITORQUOTA = "LimitExceeded.MonitorQuota"
+func (c *Client) ModifyMonitorAttributeWithContext(ctx context.Context, request *ModifyMonitorAttributeRequest) (response *ModifyMonitorAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyMonitorAttributeRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyMonitorAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifySiteAttributeRequest() (request *ModifySiteAttributeRequest) {
     request = &ModifySiteAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -651,6 +954,24 @@ func (c *Client) ModifySiteAttribute(request *ModifySiteAttributeRequest) (respo
     return
 }
 
+// ModifySiteAttribute
+// 本接口 (ModifySiteAttribute) 用于修改站点的属性。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifySiteAttributeWithContext(ctx context.Context, request *ModifySiteAttributeRequest) (response *ModifySiteAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifySiteAttributeRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifySiteAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewVerifySitesRequest() (request *VerifySitesRequest) {
     request = &VerifySitesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -679,6 +1000,24 @@ func (c *Client) VerifySites(request *VerifySitesRequest) (response *VerifySites
     if request == nil {
         request = NewVerifySitesRequest()
     }
+    
+    response = NewVerifySitesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// VerifySites
+// 本接口 (VerifySites) 用于验证一个或多个待验证站点。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+func (c *Client) VerifySitesWithContext(ctx context.Context, request *VerifySitesRequest) (response *VerifySitesResponse, err error) {
+    if request == nil {
+        request = NewVerifySitesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewVerifySitesResponse()
     err = c.Send(request, response)

@@ -65,6 +65,9 @@ const (
 	// 用户信息缓存保存失败，请稍后重试。
 	FAILEDOPERATION_FAILEDSETUSER = "FailedOperation.FailedSetUser"
 
+	// 服务内部错误，请稍后重试或联系我们。
+	FAILEDOPERATION_INTERNALSERVERERROR = "FailedOperation.InternalServerError"
+
 	// 引擎参数错误，请稍后重试。
 	FAILEDOPERATION_INVALIDPARAMETERVALUE = "FailedOperation.InvalidParameterValue"
 
@@ -253,6 +256,9 @@ const (
 
 	// 表单中没有文件。
 	INVALIDPARAMETERVALUE_NODOCINLIST = "InvalidParameterValue.NoDocInList"
+
+	// 参数值无效，请检查ScoreCoeff参数输入是否在限制内。
+	INVALIDPARAMETERVALUE_PARAMETERINVALID = "InvalidParameterValue.ParameterInvalid"
 
 	// 请求参数RefText无效或参考文本为空，请检查RefText是否为空。
 	INVALIDPARAMETERVALUE_REFTEXTEMPTY = "InvalidParameterValue.RefTextEmpty"

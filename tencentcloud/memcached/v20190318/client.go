@@ -15,6 +15,7 @@
 package v20190318
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -75,6 +76,28 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    
+    response = NewDescribeInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeInstances
+// 获取Cmem实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONFAILED = "FailedOperation.DbOperationFailed"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
+//  RESOURCENOTFOUND_ACCOUNTDOESNOTEXISTS = "ResourceNotFound.AccountDoesNotExists"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstancesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeInstancesResponse()
     err = c.Send(request, response)

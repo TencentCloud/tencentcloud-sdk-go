@@ -282,6 +282,36 @@ func (r *BankCardVerificationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ChargeDetail struct {
+
+	// 一比一时间时间戳，13位。
+	ReqTime *string `json:"ReqTime,omitempty" name:"ReqTime"`
+
+	// 一比一请求的唯一标记。
+	Seq *string `json:"Seq,omitempty" name:"Seq"`
+
+	// 一比一时使用的、脱敏后的身份证号。
+	Idcard *string `json:"Idcard,omitempty" name:"Idcard"`
+
+	// 一比一时使用的、脱敏后的姓名。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 一比一的相似度。0-100，保留2位小数。
+	Sim *string `json:"Sim,omitempty" name:"Sim"`
+
+	// 本次详情是否收费。
+	IsNeedCharge *bool `json:"IsNeedCharge,omitempty" name:"IsNeedCharge"`
+
+	// 收费类型，比对、核身、混合部署。
+	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// 本次活体一比一最终结果。
+	ErrorCode *string `json:"ErrorCode,omitempty" name:"ErrorCode"`
+
+	// 本次活体一比一最终结果描述。
+	ErrorMessage *string `json:"ErrorMessage,omitempty" name:"ErrorMessage"`
+}
+
 type CheckBankCardInformationRequest struct {
 	*tchttp.BaseRequest
 
@@ -853,6 +883,13 @@ type DetectInfoIdCardData struct {
 	// 身份证正面人像图base64编码。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Avatar *string `json:"Avatar,omitempty" name:"Avatar"`
+
+	// 开启身份证防翻拍告警功能后才会返回，返回数组中可能出现的告警码如下：
+	// -9102 身份证复印件告警。
+	// -9103 身份证翻拍告警。
+	// -9106 身份证 PS 告警。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WarnInfos []*int64 `json:"WarnInfos,omitempty" name:"WarnInfos"`
 }
 
 type DetectInfoText struct {
@@ -1880,6 +1917,69 @@ func (r *GetRealNameAuthTokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type GetWeChatBillDetailsRequest struct {
+	*tchttp.BaseRequest
+
+	// 拉取的日期（YYYY-MM-DD）。最大可追溯到365天前。当天6点后才能拉取前一天的数据。
+	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 游标。用于分页，取第一页时传0，取后续页面时，传入本接口响应中返回的NextCursor字段的值。
+	Cursor *uint64 `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 需要拉取账单详情业务对应的RuleId。不传会返回所有RuleId数据。默认为空字符串。
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+}
+
+func (r *GetWeChatBillDetailsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetWeChatBillDetailsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Date")
+	delete(f, "Cursor")
+	delete(f, "RuleId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetWeChatBillDetailsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetWeChatBillDetailsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 是否还有下一页。该字段为true时，需要将NextCursor的值作为入参Cursor继续调用本接口。
+		HasNextPage *bool `json:"HasNextPage,omitempty" name:"HasNextPage"`
+
+		// 下一页的游标。用于分页。
+		NextCursor *uint64 `json:"NextCursor,omitempty" name:"NextCursor"`
+
+		// 数据
+		WeChatBillDetails []*WeChatBillDetail `json:"WeChatBillDetails,omitempty" name:"WeChatBillDetails"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetWeChatBillDetailsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetWeChatBillDetailsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type IdCardOCRVerificationRequest struct {
 	*tchttp.BaseRequest
 
@@ -2735,6 +2835,10 @@ type PhoneVerificationResponse struct {
 		// 业务结果描述。
 		Description *string `json:"Description,omitempty" name:"Description"`
 
+		// 运营商名称。
+	// 取值范围为["","移动","电信","联通"]
+		Isp *string `json:"Isp,omitempty" name:"Isp"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -2749,4 +2853,19 @@ func (r *PhoneVerificationResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *PhoneVerificationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type WeChatBillDetail struct {
+
+	// token
+	BizToken *string `json:"BizToken,omitempty" name:"BizToken"`
+
+	// 本token收费次数
+	ChargeCount *uint64 `json:"ChargeCount,omitempty" name:"ChargeCount"`
+
+	// 本token计费详情
+	ChargeDetails []*ChargeDetail `json:"ChargeDetails,omitempty" name:"ChargeDetails"`
+
+	// 业务RuleId
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
 }

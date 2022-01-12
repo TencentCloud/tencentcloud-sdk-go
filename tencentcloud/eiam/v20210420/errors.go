@@ -26,6 +26,9 @@ const (
 	// 账号组不存在。
 	FAILEDOPERATION_ACCOUNTGROUPNOTEXISTED = "FailedOperation.AccountGroupNotExisted"
 
+	// 账号ID列表不能为空。
+	FAILEDOPERATION_ACCOUNTIDSISNULL = "FailedOperation.AccountIdsIsNull"
+
 	// 账号名称已存在。
 	FAILEDOPERATION_ACCOUNTNAMEEXISTED = "FailedOperation.AccountNameExisted"
 
@@ -65,6 +68,12 @@ const (
 	// 删除机构节点异常。
 	FAILEDOPERATION_DELETEORGNODEFAILURE = "FailedOperation.DeleteOrgNodeFailure"
 
+	// 用户为管理员，不能删除。
+	FAILEDOPERATION_DELETEUSEREXISTSADMINISTRATOR = "FailedOperation.DeleteUserExistsAdministrator"
+
+	// 删除用户失败。
+	FAILEDOPERATION_DELETEUSERFAILURE = "FailedOperation.DeleteUserFailure"
+
 	// 删除用户组异常。
 	FAILEDOPERATION_DELETEUSERGROUPFAILURE = "FailedOperation.DeleteUserGroupFailure"
 
@@ -94,6 +103,9 @@ const (
 
 	// 获取用户组中的用户列表异常。
 	FAILEDOPERATION_LISTUSERSINUSERGROUPFAILURE = "FailedOperation.ListUsersInUserGroupFailure"
+
+	// 主组织机构不存在。
+	FAILEDOPERATION_MAINORGNODENOTEXIST = "FailedOperation.MainOrgNodeNotExist"
 
 	// 新密码必须不能为空。
 	FAILEDOPERATION_NEWPASSWORDMUSTNOTBLANK = "FailedOperation.NewPasswordMustNotBlank"
@@ -128,8 +140,17 @@ const (
 	// 列表搜索条件不合法。
 	FAILEDOPERATION_SEARCHCRITERIAISILLEGAL = "FailedOperation.SearchCriteriaIsIllegal"
 
+	// 用户的次要机构数量超过上限。
+	FAILEDOPERATION_SECONDARYNODENUMBEROVERLIMIT = "FailedOperation.SecondaryNodeNumberOverLimit"
+
 	// 设定的时间格式不合法。
 	FAILEDOPERATION_TIMEFORMATISILLEGAL = "FailedOperation.TimeFormatIsIllegal"
+
+	// 不能变更企业微信用户到企业外的组织机构。
+	FAILEDOPERATION_UPDATEWECOMUSERORGEXCEEDSRANGE = "FailedOperation.UpdateWeComUserOrgExceedsRange"
+
+	// 不能变更企业微信用户到非相同的企业机构下。
+	FAILEDOPERATION_UPDATEWECOMUSERORGNOTINSAMECROP = "FailedOperation.UpdateWeComUserOrgNotInSameCrop"
 
 	// 用户已存在于该用户组。
 	FAILEDOPERATION_USERALREADYEXISTEDINUSERGROUP = "FailedOperation.UserAlreadyExistedInUserGroup"

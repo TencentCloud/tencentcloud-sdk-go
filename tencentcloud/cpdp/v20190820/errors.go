@@ -20,8 +20,17 @@ const (
 	// 未进行实名认证。
 	AUTHFAILURE_ACCOUNT = "AuthFailure.Account"
 
+	// 未找到密钥。
+	AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
+
+	// 验证失败。
+	AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
+
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
+
+	// 商户状态异常。
+	FAILEDOPERATION_ABNORMALMERCHANTSTATE = "FailedOperation.AbnormalMerchantState"
 
 	// 账户未绑定。
 	FAILEDOPERATION_ACCTNOTBIND = "FailedOperation.AcctNotBind"
@@ -58,6 +67,9 @@ const (
 
 	// 调用银行接口失败，可能原因： 银行接口超时或为获取到返回值 银行接口返回非法。
 	FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
+
+	// 余额不足。
+	FAILEDOPERATION_BANLANCENOTENOUGHERROR = "FailedOperation.BanlanceNotEnoughError"
 
 	// 内部请求渠道网关错误。
 	FAILEDOPERATION_CALLCHANNELGATEWAYERROR = "FailedOperation.CallChannelGatewayError"
@@ -113,6 +125,9 @@ const (
 	// 未查到第三方渠道合约数据。
 	FAILEDOPERATION_EXTERNALCONTRACTNOTFOUND = "FailedOperation.ExternalContractNotFound"
 
+	// 外部签约状态无效。
+	FAILEDOPERATION_EXTERNALCONTRACTSTATUSINVALID = "FailedOperation.ExternalContractStatusInvalid"
+
 	// 第三方渠道商户合约配置查询错误。
 	FAILEDOPERATION_EXTERNALMERCHANTCONTRACTINFOCONFIGNOFOUND = "FailedOperation.ExternalMerchantContractInfoConfigNoFound"
 
@@ -134,8 +149,14 @@ const (
 	// 内部http方式请求下游服务错误。
 	FAILEDOPERATION_HTTPDOREQUESTERROR = "FailedOperation.HttpDoRequestError"
 
+	// 内部服务超时。
+	FAILEDOPERATION_INTERNALSERVICETIMEOUT = "FailedOperation.InternalServiceTimeout"
+
 	// 参数错误。
 	FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+
+	// 退款金额无效。
+	FAILEDOPERATION_INVALIDREFUNDAMT = "FailedOperation.InvalidRefundAmt"
 
 	// 请求参数符合参数格式，但不符合业务规则。
 	FAILEDOPERATION_INVALIDREQUEST = "FailedOperation.InvalidRequest"
@@ -148,6 +169,9 @@ const (
 
 	// 序列化出错。
 	FAILEDOPERATION_MARSHALERROR = "FailedOperation.MarshalError"
+
+	// 商户余额不足。
+	FAILEDOPERATION_MERCHANTBALANCENOTENOUGH = "FailedOperation.MerchantBalanceNotEnough"
 
 	// 商户信息验证失败。
 	FAILEDOPERATION_MERCHANTCHECKFAILED = "FailedOperation.MerchantCheckFailed"
@@ -191,6 +215,9 @@ const (
 	// 订单号重复，但是两次请求参数不 一致。
 	FAILEDOPERATION_OCREPEATORDER = "FailedOperation.OcRepeatOrder"
 
+	// 退款主单被锁，请待前退款单完成后再发起退款。
+	FAILEDOPERATION_ORDERLOCKED = "FailedOperation.OrderLocked"
+
 	// 订单状态不可用。
 	FAILEDOPERATION_ORDERNOTACTIVATED = "FailedOperation.OrderNotActivated"
 
@@ -232,6 +259,9 @@ const (
 
 	// 超出商户单日转账额度。
 	FAILEDOPERATION_QUOTAEXCEED = "FailedOperation.QuotaExceed"
+
+	// 退款交易已完成，请勿重复操作。
+	FAILEDOPERATION_REFUNDTRANSACTIONFINISHED = "FailedOperation.RefundTransactionFinished"
 
 	// 云鉴内部调用失败。
 	FAILEDOPERATION_SDKERROR = "FailedOperation.SDKError"

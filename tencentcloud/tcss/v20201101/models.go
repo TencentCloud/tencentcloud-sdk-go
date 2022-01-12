@@ -577,10 +577,10 @@ func (r *AddEditAccessControlRuleResponse) FromJsonString(s string) error {
 type AddEditReverseShellWhiteListRequest struct {
 	*tchttp.BaseRequest
 
-	// 增加白名单信息，白名单id为空，编辑白名单id不能为空
+	// 增加或编辑白名单信息。新增白名单时WhiteListInfo.id为空，编辑白名单WhiteListInfo.id不能为空。
 	WhiteListInfo *ReverseShellWhiteListInfo `json:"WhiteListInfo,omitempty" name:"WhiteListInfo"`
 
-	// 仅在添加白名单时候使用
+	// 仅在添加事件白名单时候使用
 	EventId *string `json:"EventId,omitempty" name:"EventId"`
 }
 
@@ -2016,6 +2016,7 @@ type CreateComplianceTaskRequest struct {
 	// ASSET_IMAGE, 镜像
 	// ASSET_HOST, 主机
 	// ASSET_K8S, K8S资产
+	// AssetTypeSet, PolicySetId, PeriodTaskId三个参数，必须要给其中一个参数填写有效的值。
 	AssetTypeSet []*string `json:"AssetTypeSet,omitempty" name:"AssetTypeSet"`
 
 	// 按照策略集ID指定的策略执行合规检查。
@@ -4031,6 +4032,12 @@ type DescribeAssetHostDetailResponse struct {
 		// 外网ip
 		PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
 
+		// 主机实例ID
+		InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+
+		// 地域ID
+		RegionID *int64 `json:"RegionID,omitempty" name:"RegionID"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -4064,6 +4071,7 @@ type DescribeAssetHostListRequest struct {
 	// <li>HostID- string - 是否必填：否 - 主机id搜索</li>
 	// <li>DockerVersion- string - 是否必填：否 - docker版本搜索</li>
 	// <li>MachineType- string - 是否必填：否 - 主机来源MachineType搜索，"ALL":"全部"(或不传该字段),"TENCENTCLOUD":"腾讯云服务器","OTHERCLOUD":"非腾讯云服务器"</li>
+	// <li>DockerStatus- string - 是否必填：否 - docker安装状态，"ALL":"全部"(或不传该字段),"INSTALL":"已安装","UNINSTALL":"未安装"</li>
 	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序字段
@@ -7054,6 +7062,10 @@ type DescribeComplianceTaskAssetSummaryRequest struct {
 	*tchttp.BaseRequest
 
 	// 资产类型列表。
+	// ASSET_CONTAINER, 容器
+	// ASSET_IMAGE, 镜像
+	// ASSET_HOST, 主机
+	// ASSET_K8S, K8S资产
 	AssetTypeSet []*string `json:"AssetTypeSet,omitempty" name:"AssetTypeSet"`
 }
 
@@ -10235,7 +10247,7 @@ type HostInfo struct {
 	// 是否是Containerd
 	IsContainerd *bool `json:"IsContainerd,omitempty" name:"IsContainerd"`
 
-	// 主机来源
+	// 主机来源：["CVM", "ECM", "LH", "BM"]  中的之一为腾讯云服务器；["Other"]之一非腾讯云服务器；
 	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
 
 	// 外网ip
@@ -10243,6 +10255,12 @@ type HostInfo struct {
 
 	// 主机uuid
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 主机实例ID
+	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+
+	// 地域ID
+	RegionID *int64 `json:"RegionID,omitempty" name:"RegionID"`
 }
 
 type ImageHost struct {

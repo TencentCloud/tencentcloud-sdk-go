@@ -568,6 +568,7 @@ type CommonMixLayoutParams struct {
 	// 输入图层。取值范围[1，16]。
 	// 1)背景流（即大主播画面或画布）的 image_layer 填1。
 	// 2)纯音频混流，该参数也需填。
+	// 注意：不同输入，该值不可重复
 	ImageLayer *int64 `json:"ImageLayer,omitempty" name:"ImageLayer"`
 
 	// 输入类型。取值范围[0，5]。
@@ -2950,6 +2951,18 @@ type DescribeBillBandwidthAndFluxListRequest struct {
 
 	// 服务名称，可选值包括LVB(标准直播)，LEB(快直播)，不填则查LVB+LEB总值。
 	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+
+	// 大区，映射表如下：
+	// China Mainland 中国大陆
+	// Asia Pacific I 亚太一区
+	// Asia Pacific II 亚太二区
+	// Asia Pacific III 亚太三区
+	// Europe 欧洲
+	// North America 北美
+	// South America 南美
+	// Middle East 中东
+	// Africa 非洲。
+	RegionNames []*string `json:"RegionNames,omitempty" name:"RegionNames"`
 }
 
 func (r *DescribeBillBandwidthAndFluxListRequest) ToJsonString() string {
@@ -2970,6 +2983,7 @@ func (r *DescribeBillBandwidthAndFluxListRequest) FromJsonString(s string) error
 	delete(f, "MainlandOrOversea")
 	delete(f, "Granularity")
 	delete(f, "ServiceName")
+	delete(f, "RegionNames")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillBandwidthAndFluxListRequest has unknown keys!", "")
 	}
@@ -5967,6 +5981,18 @@ type DescribePushBandwidthAndFluxListRequest struct {
 	// 1440：天粒度（跨度不支持超过一个月）。
 	// 默认值：5。
 	Granularity *uint64 `json:"Granularity,omitempty" name:"Granularity"`
+
+	// 大区，映射表如下：
+	// China Mainland 中国大陆
+	// Asia Pacific I 亚太一区
+	// Asia Pacific II 亚太二区
+	// Asia Pacific III 亚太三区
+	// Europe 欧洲
+	// North America 北美
+	// South America 南美
+	// Middle East 中东
+	// Africa 非洲。
+	RegionNames []*string `json:"RegionNames,omitempty" name:"RegionNames"`
 }
 
 func (r *DescribePushBandwidthAndFluxListRequest) ToJsonString() string {
@@ -5986,6 +6012,7 @@ func (r *DescribePushBandwidthAndFluxListRequest) FromJsonString(s string) error
 	delete(f, "PushDomains")
 	delete(f, "MainlandOrOversea")
 	delete(f, "Granularity")
+	delete(f, "RegionNames")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePushBandwidthAndFluxListRequest has unknown keys!", "")
 	}

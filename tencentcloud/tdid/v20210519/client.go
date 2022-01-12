@@ -15,6 +15,7 @@
 package v20210519
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -80,6 +81,27 @@ func (c *Client) CreateCredential(request *CreateCredentialRequest) (response *C
     return
 }
 
+// CreateCredential
+// 创建凭证
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCredentialWithContext(ctx context.Context, request *CreateCredentialRequest) (response *CreateCredentialResponse, err error) {
+    if request == nil {
+        request = NewCreateCredentialRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateCredentialResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSelectiveCredentialRequest() (request *CreateSelectiveCredentialRequest) {
     request = &CreateSelectiveCredentialRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -118,6 +140,34 @@ func (c *Client) CreateSelectiveCredential(request *CreateSelectiveCredentialReq
     if request == nil {
         request = NewCreateSelectiveCredentialRequest()
     }
+    
+    response = NewCreateSelectiveCredentialResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateSelectiveCredential
+// 创建选择性批露凭证
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateSelectiveCredentialWithContext(ctx context.Context, request *CreateSelectiveCredentialRequest) (response *CreateSelectiveCredentialResponse, err error) {
+    if request == nil {
+        request = NewCreateSelectiveCredentialRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateSelectiveCredentialResponse()
     err = c.Send(request, response)
@@ -166,6 +216,32 @@ func (c *Client) CreateTDid(request *CreateTDidRequest) (response *CreateTDidRes
     return
 }
 
+// CreateTDid
+// 创建机构DID
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+func (c *Client) CreateTDidWithContext(ctx context.Context, request *CreateTDidRequest) (response *CreateTDidResponse, err error) {
+    if request == nil {
+        request = NewCreateTDidRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateTDidResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewVerifyCredentialRequest() (request *VerifyCredentialRequest) {
     request = &VerifyCredentialRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -204,6 +280,34 @@ func (c *Client) VerifyCredential(request *VerifyCredentialRequest) (response *V
     if request == nil {
         request = NewVerifyCredentialRequest()
     }
+    
+    response = NewVerifyCredentialResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// VerifyCredential
+// 验证凭证
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) VerifyCredentialWithContext(ctx context.Context, request *VerifyCredentialRequest) (response *VerifyCredentialResponse, err error) {
+    if request == nil {
+        request = NewVerifyCredentialRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewVerifyCredentialResponse()
     err = c.Send(request, response)

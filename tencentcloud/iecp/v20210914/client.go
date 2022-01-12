@@ -15,6 +15,7 @@
 package v20210914
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -87,6 +88,34 @@ func (c *Client) ApplyMarketComponent(request *ApplyMarketComponentRequest) (res
     return
 }
 
+// ApplyMarketComponent
+// 从组件市场选中组件并添加到应用模板列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ApplyMarketComponentWithContext(ctx context.Context, request *ApplyMarketComponentRequest) (response *ApplyMarketComponentResponse, err error) {
+    if request == nil {
+        request = NewApplyMarketComponentRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewApplyMarketComponentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateApplicationVisualizationRequest() (request *CreateApplicationVisualizationRequest) {
     request = &CreateApplicationVisualizationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -125,6 +154,34 @@ func (c *Client) CreateApplicationVisualization(request *CreateApplicationVisual
     if request == nil {
         request = NewCreateApplicationVisualizationRequest()
     }
+    
+    response = NewCreateApplicationVisualizationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateApplicationVisualization
+// 创建可视化创建应用模板
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateApplicationVisualizationWithContext(ctx context.Context, request *CreateApplicationVisualizationRequest) (response *CreateApplicationVisualizationResponse, err error) {
+    if request == nil {
+        request = NewCreateApplicationVisualizationRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateApplicationVisualizationResponse()
     err = c.Send(request, response)
@@ -175,6 +232,34 @@ func (c *Client) CreateConfigMap(request *CreateConfigMapRequest) (response *Cre
     return
 }
 
+// CreateConfigMap
+// 创建ConfigMap
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateConfigMapWithContext(ctx context.Context, request *CreateConfigMapRequest) (response *CreateConfigMapResponse, err error) {
+    if request == nil {
+        request = NewCreateConfigMapRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateConfigMapResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateEdgeNodeRequest() (request *CreateEdgeNodeRequest) {
     request = &CreateEdgeNodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -213,6 +298,34 @@ func (c *Client) CreateEdgeNode(request *CreateEdgeNodeRequest) (response *Creat
     if request == nil {
         request = NewCreateEdgeNodeRequest()
     }
+    
+    response = NewCreateEdgeNodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateEdgeNode
+// 创建边缘节点
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateEdgeNodeWithContext(ctx context.Context, request *CreateEdgeNodeRequest) (response *CreateEdgeNodeResponse, err error) {
+    if request == nil {
+        request = NewCreateEdgeNodeRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateEdgeNodeResponse()
     err = c.Send(request, response)
@@ -263,6 +376,34 @@ func (c *Client) CreateEdgeNodeGroup(request *CreateEdgeNodeGroupRequest) (respo
     return
 }
 
+// CreateEdgeNodeGroup
+// 创建边缘单元NodeGroup
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateEdgeNodeGroupWithContext(ctx context.Context, request *CreateEdgeNodeGroupRequest) (response *CreateEdgeNodeGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateEdgeNodeGroupRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateEdgeNodeGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateEdgeNodeUnitTemplateRequest() (request *CreateEdgeNodeUnitTemplateRequest) {
     request = &CreateEdgeNodeUnitTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -301,6 +442,34 @@ func (c *Client) CreateEdgeNodeUnitTemplate(request *CreateEdgeNodeUnitTemplateR
     if request == nil {
         request = NewCreateEdgeNodeUnitTemplateRequest()
     }
+    
+    response = NewCreateEdgeNodeUnitTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateEdgeNodeUnitTemplate
+// 创建边缘单元NodeUnit模版
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateEdgeNodeUnitTemplateWithContext(ctx context.Context, request *CreateEdgeNodeUnitTemplateRequest) (response *CreateEdgeNodeUnitTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateEdgeNodeUnitTemplateRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateEdgeNodeUnitTemplateResponse()
     err = c.Send(request, response)
@@ -351,6 +520,34 @@ func (c *Client) CreateEdgeUnitApplicationVisualization(request *CreateEdgeUnitA
     return
 }
 
+// CreateEdgeUnitApplicationVisualization
+// 可视化创建应用
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateEdgeUnitApplicationVisualizationWithContext(ctx context.Context, request *CreateEdgeUnitApplicationVisualizationRequest) (response *CreateEdgeUnitApplicationVisualizationResponse, err error) {
+    if request == nil {
+        request = NewCreateEdgeUnitApplicationVisualizationRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateEdgeUnitApplicationVisualizationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateEdgeUnitApplicationYamlRequest() (request *CreateEdgeUnitApplicationYamlRequest) {
     request = &CreateEdgeUnitApplicationYamlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -389,6 +586,34 @@ func (c *Client) CreateEdgeUnitApplicationYaml(request *CreateEdgeUnitApplicatio
     if request == nil {
         request = NewCreateEdgeUnitApplicationYamlRequest()
     }
+    
+    response = NewCreateEdgeUnitApplicationYamlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateEdgeUnitApplicationYaml
+// yaml方式创建应用
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateEdgeUnitApplicationYamlWithContext(ctx context.Context, request *CreateEdgeUnitApplicationYamlRequest) (response *CreateEdgeUnitApplicationYamlResponse, err error) {
+    if request == nil {
+        request = NewCreateEdgeUnitApplicationYamlRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateEdgeUnitApplicationYamlResponse()
     err = c.Send(request, response)
@@ -446,6 +671,41 @@ func (c *Client) CreateEdgeUnitCloud(request *CreateEdgeUnitCloudRequest) (respo
     return
 }
 
+// CreateEdgeUnitCloud
+// 创建边缘单元
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateEdgeUnitCloudWithContext(ctx context.Context, request *CreateEdgeUnitCloudRequest) (response *CreateEdgeUnitCloudResponse, err error) {
+    if request == nil {
+        request = NewCreateEdgeUnitCloudRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateEdgeUnitCloudResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateNamespaceRequest() (request *CreateNamespaceRequest) {
     request = &CreateNamespaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -484,6 +744,34 @@ func (c *Client) CreateNamespace(request *CreateNamespaceRequest) (response *Cre
     if request == nil {
         request = NewCreateNamespaceRequest()
     }
+    
+    response = NewCreateNamespaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateNamespace
+// 创建命名空间
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateNamespaceWithContext(ctx context.Context, request *CreateNamespaceRequest) (response *CreateNamespaceResponse, err error) {
+    if request == nil {
+        request = NewCreateNamespaceRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateNamespaceResponse()
     err = c.Send(request, response)
@@ -534,6 +822,34 @@ func (c *Client) CreateSecret(request *CreateSecretRequest) (response *CreateSec
     return
 }
 
+// CreateSecret
+// 创建Secret
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateSecretWithContext(ctx context.Context, request *CreateSecretRequest) (response *CreateSecretResponse, err error) {
+    if request == nil {
+        request = NewCreateSecretRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateSecretResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateUpdateNodeUnitRequest() (request *CreateUpdateNodeUnitRequest) {
     request = &CreateUpdateNodeUnitRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -572,6 +888,34 @@ func (c *Client) CreateUpdateNodeUnit(request *CreateUpdateNodeUnitRequest) (res
     if request == nil {
         request = NewCreateUpdateNodeUnitRequest()
     }
+    
+    response = NewCreateUpdateNodeUnitResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateUpdateNodeUnit
+// 创建或更新边缘单元NodeUnit
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateUpdateNodeUnitWithContext(ctx context.Context, request *CreateUpdateNodeUnitRequest) (response *CreateUpdateNodeUnitResponse, err error) {
+    if request == nil {
+        request = NewCreateUpdateNodeUnitRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewCreateUpdateNodeUnitResponse()
     err = c.Send(request, response)
@@ -629,6 +973,41 @@ func (c *Client) DeleteApplications(request *DeleteApplicationsRequest) (respons
     return
 }
 
+// DeleteApplications
+// 删除应用模板
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteApplicationsWithContext(ctx context.Context, request *DeleteApplicationsRequest) (response *DeleteApplicationsResponse, err error) {
+    if request == nil {
+        request = NewDeleteApplicationsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteApplicationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteConfigMapRequest() (request *DeleteConfigMapRequest) {
     request = &DeleteConfigMapRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -667,6 +1046,34 @@ func (c *Client) DeleteConfigMap(request *DeleteConfigMapRequest) (response *Del
     if request == nil {
         request = NewDeleteConfigMapRequest()
     }
+    
+    response = NewDeleteConfigMapResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteConfigMap
+// 删除ConfigMap
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteConfigMapWithContext(ctx context.Context, request *DeleteConfigMapRequest) (response *DeleteConfigMapResponse, err error) {
+    if request == nil {
+        request = NewDeleteConfigMapRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteConfigMapResponse()
     err = c.Send(request, response)
@@ -717,6 +1124,34 @@ func (c *Client) DeleteEdgeNodeGroup(request *DeleteEdgeNodeGroupRequest) (respo
     return
 }
 
+// DeleteEdgeNodeGroup
+// 删除边缘单元NodeGroup
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteEdgeNodeGroupWithContext(ctx context.Context, request *DeleteEdgeNodeGroupRequest) (response *DeleteEdgeNodeGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteEdgeNodeGroupRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteEdgeNodeGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteEdgeNodeUnitTemplatesRequest() (request *DeleteEdgeNodeUnitTemplatesRequest) {
     request = &DeleteEdgeNodeUnitTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -755,6 +1190,34 @@ func (c *Client) DeleteEdgeNodeUnitTemplates(request *DeleteEdgeNodeUnitTemplate
     if request == nil {
         request = NewDeleteEdgeNodeUnitTemplatesRequest()
     }
+    
+    response = NewDeleteEdgeNodeUnitTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteEdgeNodeUnitTemplates
+// 删除边缘单元NodeUnit模版
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteEdgeNodeUnitTemplatesWithContext(ctx context.Context, request *DeleteEdgeNodeUnitTemplatesRequest) (response *DeleteEdgeNodeUnitTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDeleteEdgeNodeUnitTemplatesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteEdgeNodeUnitTemplatesResponse()
     err = c.Send(request, response)
@@ -805,6 +1268,34 @@ func (c *Client) DeleteEdgeNodes(request *DeleteEdgeNodesRequest) (response *Del
     return
 }
 
+// DeleteEdgeNodes
+// 批量删除边缘节点
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteEdgeNodesWithContext(ctx context.Context, request *DeleteEdgeNodesRequest) (response *DeleteEdgeNodesResponse, err error) {
+    if request == nil {
+        request = NewDeleteEdgeNodesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteEdgeNodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteEdgeUnitApplicationsRequest() (request *DeleteEdgeUnitApplicationsRequest) {
     request = &DeleteEdgeUnitApplicationsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -843,6 +1334,34 @@ func (c *Client) DeleteEdgeUnitApplications(request *DeleteEdgeUnitApplicationsR
     if request == nil {
         request = NewDeleteEdgeUnitApplicationsRequest()
     }
+    
+    response = NewDeleteEdgeUnitApplicationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteEdgeUnitApplications
+// 删除应用列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteEdgeUnitApplicationsWithContext(ctx context.Context, request *DeleteEdgeUnitApplicationsRequest) (response *DeleteEdgeUnitApplicationsResponse, err error) {
+    if request == nil {
+        request = NewDeleteEdgeUnitApplicationsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteEdgeUnitApplicationsResponse()
     err = c.Send(request, response)
@@ -900,6 +1419,41 @@ func (c *Client) DeleteEdgeUnitCloud(request *DeleteEdgeUnitCloudRequest) (respo
     return
 }
 
+// DeleteEdgeUnitCloud
+// 删除边缘单元
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteEdgeUnitCloudWithContext(ctx context.Context, request *DeleteEdgeUnitCloudRequest) (response *DeleteEdgeUnitCloudResponse, err error) {
+    if request == nil {
+        request = NewDeleteEdgeUnitCloudRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteEdgeUnitCloudResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteEdgeUnitDeployGridItemRequest() (request *DeleteEdgeUnitDeployGridItemRequest) {
     request = &DeleteEdgeUnitDeployGridItemRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -938,6 +1492,34 @@ func (c *Client) DeleteEdgeUnitDeployGridItem(request *DeleteEdgeUnitDeployGridI
     if request == nil {
         request = NewDeleteEdgeUnitDeployGridItemRequest()
     }
+    
+    response = NewDeleteEdgeUnitDeployGridItemResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteEdgeUnitDeployGridItem
+// 重新部署边缘单元指定Grid下应用
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteEdgeUnitDeployGridItemWithContext(ctx context.Context, request *DeleteEdgeUnitDeployGridItemRequest) (response *DeleteEdgeUnitDeployGridItemResponse, err error) {
+    if request == nil {
+        request = NewDeleteEdgeUnitDeployGridItemRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteEdgeUnitDeployGridItemResponse()
     err = c.Send(request, response)
@@ -988,6 +1570,34 @@ func (c *Client) DeleteEdgeUnitPod(request *DeleteEdgeUnitPodRequest) (response 
     return
 }
 
+// DeleteEdgeUnitPod
+// 删除指定pod
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteEdgeUnitPodWithContext(ctx context.Context, request *DeleteEdgeUnitPodRequest) (response *DeleteEdgeUnitPodResponse, err error) {
+    if request == nil {
+        request = NewDeleteEdgeUnitPodRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteEdgeUnitPodResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteNamespaceRequest() (request *DeleteNamespaceRequest) {
     request = &DeleteNamespaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1026,6 +1636,34 @@ func (c *Client) DeleteNamespace(request *DeleteNamespaceRequest) (response *Del
     if request == nil {
         request = NewDeleteNamespaceRequest()
     }
+    
+    response = NewDeleteNamespaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteNamespace
+// 删除命名空间
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteNamespaceWithContext(ctx context.Context, request *DeleteNamespaceRequest) (response *DeleteNamespaceResponse, err error) {
+    if request == nil {
+        request = NewDeleteNamespaceRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteNamespaceResponse()
     err = c.Send(request, response)
@@ -1076,6 +1714,34 @@ func (c *Client) DeleteNodeUnit(request *DeleteNodeUnitRequest) (response *Delet
     return
 }
 
+// DeleteNodeUnit
+// 删除边缘单元NodeUnit
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteNodeUnitWithContext(ctx context.Context, request *DeleteNodeUnitRequest) (response *DeleteNodeUnitResponse, err error) {
+    if request == nil {
+        request = NewDeleteNodeUnitRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteNodeUnitResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteSecretRequest() (request *DeleteSecretRequest) {
     request = &DeleteSecretRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1120,6 +1786,34 @@ func (c *Client) DeleteSecret(request *DeleteSecretRequest) (response *DeleteSec
     return
 }
 
+// DeleteSecret
+// 删除Secret
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteSecretWithContext(ctx context.Context, request *DeleteSecretRequest) (response *DeleteSecretResponse, err error) {
+    if request == nil {
+        request = NewDeleteSecretRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteSecretResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeApplicationVisualizationRequest() (request *DescribeApplicationVisualizationRequest) {
     request = &DescribeApplicationVisualizationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1158,6 +1852,34 @@ func (c *Client) DescribeApplicationVisualization(request *DescribeApplicationVi
     if request == nil {
         request = NewDescribeApplicationVisualizationRequest()
     }
+    
+    response = NewDescribeApplicationVisualizationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeApplicationVisualization
+// 获取应用模板可视化配置信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeApplicationVisualizationWithContext(ctx context.Context, request *DescribeApplicationVisualizationRequest) (response *DescribeApplicationVisualizationResponse, err error) {
+    if request == nil {
+        request = NewDescribeApplicationVisualizationRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeApplicationVisualizationResponse()
     err = c.Send(request, response)
@@ -1214,6 +1936,40 @@ func (c *Client) DescribeApplicationYaml(request *DescribeApplicationYamlRequest
     return
 }
 
+// DescribeApplicationYaml
+// 查询应用模板Yaml
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeApplicationYamlWithContext(ctx context.Context, request *DescribeApplicationYamlRequest) (response *DescribeApplicationYamlResponse, err error) {
+    if request == nil {
+        request = NewDescribeApplicationYamlRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeApplicationYamlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeApplicationYamlErrorRequest() (request *DescribeApplicationYamlErrorRequest) {
     request = &DescribeApplicationYamlErrorRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1252,6 +2008,34 @@ func (c *Client) DescribeApplicationYamlError(request *DescribeApplicationYamlEr
     if request == nil {
         request = NewDescribeApplicationYamlErrorRequest()
     }
+    
+    response = NewDescribeApplicationYamlErrorResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeApplicationYamlError
+// 检查应用模板的Yaml配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeApplicationYamlErrorWithContext(ctx context.Context, request *DescribeApplicationYamlErrorRequest) (response *DescribeApplicationYamlErrorResponse, err error) {
+    if request == nil {
+        request = NewDescribeApplicationYamlErrorRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeApplicationYamlErrorResponse()
     err = c.Send(request, response)
@@ -1309,6 +2093,41 @@ func (c *Client) DescribeApplications(request *DescribeApplicationsRequest) (res
     return
 }
 
+// DescribeApplications
+// 获取应用模板列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeApplicationsWithContext(ctx context.Context, request *DescribeApplicationsRequest) (response *DescribeApplicationsResponse, err error) {
+    if request == nil {
+        request = NewDescribeApplicationsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeApplicationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeConfigMapRequest() (request *DescribeConfigMapRequest) {
     request = &DescribeConfigMapRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1347,6 +2166,34 @@ func (c *Client) DescribeConfigMap(request *DescribeConfigMapRequest) (response 
     if request == nil {
         request = NewDescribeConfigMapRequest()
     }
+    
+    response = NewDescribeConfigMapResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeConfigMap
+// 获取ConfigMap详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeConfigMapWithContext(ctx context.Context, request *DescribeConfigMapRequest) (response *DescribeConfigMapResponse, err error) {
+    if request == nil {
+        request = NewDescribeConfigMapRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeConfigMapResponse()
     err = c.Send(request, response)
@@ -1397,6 +2244,34 @@ func (c *Client) DescribeConfigMapYamlError(request *DescribeConfigMapYamlErrorR
     return
 }
 
+// DescribeConfigMapYamlError
+// 校验ConfigMap的Yaml语法
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeConfigMapYamlErrorWithContext(ctx context.Context, request *DescribeConfigMapYamlErrorRequest) (response *DescribeConfigMapYamlErrorResponse, err error) {
+    if request == nil {
+        request = NewDescribeConfigMapYamlErrorRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeConfigMapYamlErrorResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeConfigMapsRequest() (request *DescribeConfigMapsRequest) {
     request = &DescribeConfigMapsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1435,6 +2310,34 @@ func (c *Client) DescribeConfigMaps(request *DescribeConfigMapsRequest) (respons
     if request == nil {
         request = NewDescribeConfigMapsRequest()
     }
+    
+    response = NewDescribeConfigMapsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeConfigMaps
+// 获取ConfigMap列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeConfigMapsWithContext(ctx context.Context, request *DescribeConfigMapsRequest) (response *DescribeConfigMapsResponse, err error) {
+    if request == nil {
+        request = NewDescribeConfigMapsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeConfigMapsResponse()
     err = c.Send(request, response)
@@ -1485,6 +2388,34 @@ func (c *Client) DescribeEdgeAgentNodeInstaller(request *DescribeEdgeAgentNodeIn
     return
 }
 
+// DescribeEdgeAgentNodeInstaller
+// 获取节点安装信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgeAgentNodeInstallerWithContext(ctx context.Context, request *DescribeEdgeAgentNodeInstallerRequest) (response *DescribeEdgeAgentNodeInstallerResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeAgentNodeInstallerRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeEdgeAgentNodeInstallerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEdgeDefaultVpcRequest() (request *DescribeEdgeDefaultVpcRequest) {
     request = &DescribeEdgeDefaultVpcRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1523,6 +2454,34 @@ func (c *Client) DescribeEdgeDefaultVpc(request *DescribeEdgeDefaultVpcRequest) 
     if request == nil {
         request = NewDescribeEdgeDefaultVpcRequest()
     }
+    
+    response = NewDescribeEdgeDefaultVpcResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeEdgeDefaultVpc
+// 获取边缘集群默认VPC信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgeDefaultVpcWithContext(ctx context.Context, request *DescribeEdgeDefaultVpcRequest) (response *DescribeEdgeDefaultVpcResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeDefaultVpcRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeEdgeDefaultVpcResponse()
     err = c.Send(request, response)
@@ -1573,6 +2532,34 @@ func (c *Client) DescribeEdgeNode(request *DescribeEdgeNodeRequest) (response *D
     return
 }
 
+// DescribeEdgeNode
+// 获取边缘节点信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgeNodeWithContext(ctx context.Context, request *DescribeEdgeNodeRequest) (response *DescribeEdgeNodeResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeNodeRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeEdgeNodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEdgeNodePodContainersRequest() (request *DescribeEdgeNodePodContainersRequest) {
     request = &DescribeEdgeNodePodContainersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1611,6 +2598,34 @@ func (c *Client) DescribeEdgeNodePodContainers(request *DescribeEdgeNodePodConta
     if request == nil {
         request = NewDescribeEdgeNodePodContainersRequest()
     }
+    
+    response = NewDescribeEdgeNodePodContainersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeEdgeNodePodContainers
+// 查询节点Pod内的容器列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgeNodePodContainersWithContext(ctx context.Context, request *DescribeEdgeNodePodContainersRequest) (response *DescribeEdgeNodePodContainersResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeNodePodContainersRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeEdgeNodePodContainersResponse()
     err = c.Send(request, response)
@@ -1661,6 +2676,34 @@ func (c *Client) DescribeEdgeNodePods(request *DescribeEdgeNodePodsRequest) (res
     return
 }
 
+// DescribeEdgeNodePods
+// 查询节点Pod列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgeNodePodsWithContext(ctx context.Context, request *DescribeEdgeNodePodsRequest) (response *DescribeEdgeNodePodsResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeNodePodsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeEdgeNodePodsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEdgeNodesRequest() (request *DescribeEdgeNodesRequest) {
     request = &DescribeEdgeNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1699,6 +2742,34 @@ func (c *Client) DescribeEdgeNodes(request *DescribeEdgeNodesRequest) (response 
     if request == nil {
         request = NewDescribeEdgeNodesRequest()
     }
+    
+    response = NewDescribeEdgeNodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeEdgeNodes
+// 查询边缘节点列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgeNodesWithContext(ctx context.Context, request *DescribeEdgeNodesRequest) (response *DescribeEdgeNodesResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeNodesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeEdgeNodesResponse()
     err = c.Send(request, response)
@@ -1749,6 +2820,34 @@ func (c *Client) DescribeEdgeOperationLogs(request *DescribeEdgeOperationLogsReq
     return
 }
 
+// DescribeEdgeOperationLogs
+// 查询边缘操作日志
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgeOperationLogsWithContext(ctx context.Context, request *DescribeEdgeOperationLogsRequest) (response *DescribeEdgeOperationLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeOperationLogsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeEdgeOperationLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEdgePodRequest() (request *DescribeEdgePodRequest) {
     request = &DescribeEdgePodRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1787,6 +2886,34 @@ func (c *Client) DescribeEdgePod(request *DescribeEdgePodRequest) (response *Des
     if request == nil {
         request = NewDescribeEdgePodRequest()
     }
+    
+    response = NewDescribeEdgePodResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeEdgePod
+// 查询边缘单元Pod
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgePodWithContext(ctx context.Context, request *DescribeEdgePodRequest) (response *DescribeEdgePodResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgePodRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeEdgePodResponse()
     err = c.Send(request, response)
@@ -1837,6 +2964,34 @@ func (c *Client) DescribeEdgeUnitApplicationEvents(request *DescribeEdgeUnitAppl
     return
 }
 
+// DescribeEdgeUnitApplicationEvents
+// 获取应用事件列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgeUnitApplicationEventsWithContext(ctx context.Context, request *DescribeEdgeUnitApplicationEventsRequest) (response *DescribeEdgeUnitApplicationEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeUnitApplicationEventsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeEdgeUnitApplicationEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEdgeUnitApplicationLogsRequest() (request *DescribeEdgeUnitApplicationLogsRequest) {
     request = &DescribeEdgeUnitApplicationLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1875,6 +3030,34 @@ func (c *Client) DescribeEdgeUnitApplicationLogs(request *DescribeEdgeUnitApplic
     if request == nil {
         request = NewDescribeEdgeUnitApplicationLogsRequest()
     }
+    
+    response = NewDescribeEdgeUnitApplicationLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeEdgeUnitApplicationLogs
+// 获取应用日志
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgeUnitApplicationLogsWithContext(ctx context.Context, request *DescribeEdgeUnitApplicationLogsRequest) (response *DescribeEdgeUnitApplicationLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeUnitApplicationLogsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeEdgeUnitApplicationLogsResponse()
     err = c.Send(request, response)
@@ -1925,6 +3108,34 @@ func (c *Client) DescribeEdgeUnitApplicationPodContainers(request *DescribeEdgeU
     return
 }
 
+// DescribeEdgeUnitApplicationPodContainers
+// 获取应用容器状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgeUnitApplicationPodContainersWithContext(ctx context.Context, request *DescribeEdgeUnitApplicationPodContainersRequest) (response *DescribeEdgeUnitApplicationPodContainersResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeUnitApplicationPodContainersRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeEdgeUnitApplicationPodContainersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEdgeUnitApplicationPodsRequest() (request *DescribeEdgeUnitApplicationPodsRequest) {
     request = &DescribeEdgeUnitApplicationPodsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1963,6 +3174,34 @@ func (c *Client) DescribeEdgeUnitApplicationPods(request *DescribeEdgeUnitApplic
     if request == nil {
         request = NewDescribeEdgeUnitApplicationPodsRequest()
     }
+    
+    response = NewDescribeEdgeUnitApplicationPodsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeEdgeUnitApplicationPods
+// 获取应用下Pod状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgeUnitApplicationPodsWithContext(ctx context.Context, request *DescribeEdgeUnitApplicationPodsRequest) (response *DescribeEdgeUnitApplicationPodsResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeUnitApplicationPodsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeEdgeUnitApplicationPodsResponse()
     err = c.Send(request, response)
@@ -2013,6 +3252,34 @@ func (c *Client) DescribeEdgeUnitApplicationVisualization(request *DescribeEdgeU
     return
 }
 
+// DescribeEdgeUnitApplicationVisualization
+// 获取单元可视化配置信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgeUnitApplicationVisualizationWithContext(ctx context.Context, request *DescribeEdgeUnitApplicationVisualizationRequest) (response *DescribeEdgeUnitApplicationVisualizationResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeUnitApplicationVisualizationRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeEdgeUnitApplicationVisualizationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEdgeUnitApplicationYamlRequest() (request *DescribeEdgeUnitApplicationYamlRequest) {
     request = &DescribeEdgeUnitApplicationYamlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2051,6 +3318,34 @@ func (c *Client) DescribeEdgeUnitApplicationYaml(request *DescribeEdgeUnitApplic
     if request == nil {
         request = NewDescribeEdgeUnitApplicationYamlRequest()
     }
+    
+    response = NewDescribeEdgeUnitApplicationYamlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeEdgeUnitApplicationYaml
+// 获取应用的Yaml配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgeUnitApplicationYamlWithContext(ctx context.Context, request *DescribeEdgeUnitApplicationYamlRequest) (response *DescribeEdgeUnitApplicationYamlResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeUnitApplicationYamlRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeEdgeUnitApplicationYamlResponse()
     err = c.Send(request, response)
@@ -2101,6 +3396,34 @@ func (c *Client) DescribeEdgeUnitApplicationYamlError(request *DescribeEdgeUnitA
     return
 }
 
+// DescribeEdgeUnitApplicationYamlError
+// 检查单元应用的Yaml配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgeUnitApplicationYamlErrorWithContext(ctx context.Context, request *DescribeEdgeUnitApplicationYamlErrorRequest) (response *DescribeEdgeUnitApplicationYamlErrorResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeUnitApplicationYamlErrorRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeEdgeUnitApplicationYamlErrorResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEdgeUnitApplicationsRequest() (request *DescribeEdgeUnitApplicationsRequest) {
     request = &DescribeEdgeUnitApplicationsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2139,6 +3462,34 @@ func (c *Client) DescribeEdgeUnitApplications(request *DescribeEdgeUnitApplicati
     if request == nil {
         request = NewDescribeEdgeUnitApplicationsRequest()
     }
+    
+    response = NewDescribeEdgeUnitApplicationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeEdgeUnitApplications
+// 获取单元下应用列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgeUnitApplicationsWithContext(ctx context.Context, request *DescribeEdgeUnitApplicationsRequest) (response *DescribeEdgeUnitApplicationsResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeUnitApplicationsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeEdgeUnitApplicationsResponse()
     err = c.Send(request, response)
@@ -2196,6 +3547,41 @@ func (c *Client) DescribeEdgeUnitCloud(request *DescribeEdgeUnitCloudRequest) (r
     return
 }
 
+// DescribeEdgeUnitCloud
+// 查询边缘集群详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgeUnitCloudWithContext(ctx context.Context, request *DescribeEdgeUnitCloudRequest) (response *DescribeEdgeUnitCloudResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeUnitCloudRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeEdgeUnitCloudResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEdgeUnitDeployGridRequest() (request *DescribeEdgeUnitDeployGridRequest) {
     request = &DescribeEdgeUnitDeployGridRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2234,6 +3620,34 @@ func (c *Client) DescribeEdgeUnitDeployGrid(request *DescribeEdgeUnitDeployGridR
     if request == nil {
         request = NewDescribeEdgeUnitDeployGridRequest()
     }
+    
+    response = NewDescribeEdgeUnitDeployGridResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeEdgeUnitDeployGrid
+// 查询边缘单元Grid列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgeUnitDeployGridWithContext(ctx context.Context, request *DescribeEdgeUnitDeployGridRequest) (response *DescribeEdgeUnitDeployGridResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeUnitDeployGridRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeEdgeUnitDeployGridResponse()
     err = c.Send(request, response)
@@ -2284,6 +3698,34 @@ func (c *Client) DescribeEdgeUnitDeployGridItem(request *DescribeEdgeUnitDeployG
     return
 }
 
+// DescribeEdgeUnitDeployGridItem
+// 查询边缘单元指定Grid下的部署应用列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgeUnitDeployGridItemWithContext(ctx context.Context, request *DescribeEdgeUnitDeployGridItemRequest) (response *DescribeEdgeUnitDeployGridItemResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeUnitDeployGridItemRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeEdgeUnitDeployGridItemResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEdgeUnitDeployGridItemYamlRequest() (request *DescribeEdgeUnitDeployGridItemYamlRequest) {
     request = &DescribeEdgeUnitDeployGridItemYamlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2322,6 +3764,34 @@ func (c *Client) DescribeEdgeUnitDeployGridItemYaml(request *DescribeEdgeUnitDep
     if request == nil {
         request = NewDescribeEdgeUnitDeployGridItemYamlRequest()
     }
+    
+    response = NewDescribeEdgeUnitDeployGridItemYamlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeEdgeUnitDeployGridItemYaml
+// 查询指定Grid下应用的Yaml
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgeUnitDeployGridItemYamlWithContext(ctx context.Context, request *DescribeEdgeUnitDeployGridItemYamlRequest) (response *DescribeEdgeUnitDeployGridItemYamlResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeUnitDeployGridItemYamlRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeEdgeUnitDeployGridItemYamlResponse()
     err = c.Send(request, response)
@@ -2372,6 +3842,34 @@ func (c *Client) DescribeEdgeUnitExtra(request *DescribeEdgeUnitExtraRequest) (r
     return
 }
 
+// DescribeEdgeUnitExtra
+// 查询边缘单元额外信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgeUnitExtraWithContext(ctx context.Context, request *DescribeEdgeUnitExtraRequest) (response *DescribeEdgeUnitExtraResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeUnitExtraRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeEdgeUnitExtraResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEdgeUnitGridEventsRequest() (request *DescribeEdgeUnitGridEventsRequest) {
     request = &DescribeEdgeUnitGridEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2410,6 +3908,34 @@ func (c *Client) DescribeEdgeUnitGridEvents(request *DescribeEdgeUnitGridEventsR
     if request == nil {
         request = NewDescribeEdgeUnitGridEventsRequest()
     }
+    
+    response = NewDescribeEdgeUnitGridEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeEdgeUnitGridEvents
+// 查询边缘单元Grid事件列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgeUnitGridEventsWithContext(ctx context.Context, request *DescribeEdgeUnitGridEventsRequest) (response *DescribeEdgeUnitGridEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeUnitGridEventsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeEdgeUnitGridEventsResponse()
     err = c.Send(request, response)
@@ -2460,6 +3986,34 @@ func (c *Client) DescribeEdgeUnitGridPods(request *DescribeEdgeUnitGridPodsReque
     return
 }
 
+// DescribeEdgeUnitGridPods
+// 查询边缘单元Grid的Pod列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgeUnitGridPodsWithContext(ctx context.Context, request *DescribeEdgeUnitGridPodsRequest) (response *DescribeEdgeUnitGridPodsResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeUnitGridPodsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeEdgeUnitGridPodsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEdgeUnitMonitorStatusRequest() (request *DescribeEdgeUnitMonitorStatusRequest) {
     request = &DescribeEdgeUnitMonitorStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2498,6 +4052,34 @@ func (c *Client) DescribeEdgeUnitMonitorStatus(request *DescribeEdgeUnitMonitorS
     if request == nil {
         request = NewDescribeEdgeUnitMonitorStatusRequest()
     }
+    
+    response = NewDescribeEdgeUnitMonitorStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeEdgeUnitMonitorStatus
+// 查询边缘集群监控状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgeUnitMonitorStatusWithContext(ctx context.Context, request *DescribeEdgeUnitMonitorStatusRequest) (response *DescribeEdgeUnitMonitorStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeUnitMonitorStatusRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeEdgeUnitMonitorStatusResponse()
     err = c.Send(request, response)
@@ -2555,6 +4137,41 @@ func (c *Client) DescribeEdgeUnitNodeGroup(request *DescribeEdgeUnitNodeGroupReq
     return
 }
 
+// DescribeEdgeUnitNodeGroup
+// 查询边缘集群NodeGroup
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgeUnitNodeGroupWithContext(ctx context.Context, request *DescribeEdgeUnitNodeGroupRequest) (response *DescribeEdgeUnitNodeGroupResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeUnitNodeGroupRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeEdgeUnitNodeGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEdgeUnitNodeUnitTemplatesRequest() (request *DescribeEdgeUnitNodeUnitTemplatesRequest) {
     request = &DescribeEdgeUnitNodeUnitTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2593,6 +4210,34 @@ func (c *Client) DescribeEdgeUnitNodeUnitTemplates(request *DescribeEdgeUnitNode
     if request == nil {
         request = NewDescribeEdgeUnitNodeUnitTemplatesRequest()
     }
+    
+    response = NewDescribeEdgeUnitNodeUnitTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeEdgeUnitNodeUnitTemplates
+// 查询边缘单元EdgeUnit模版列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgeUnitNodeUnitTemplatesWithContext(ctx context.Context, request *DescribeEdgeUnitNodeUnitTemplatesRequest) (response *DescribeEdgeUnitNodeUnitTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeUnitNodeUnitTemplatesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeEdgeUnitNodeUnitTemplatesResponse()
     err = c.Send(request, response)
@@ -2649,6 +4294,40 @@ func (c *Client) DescribeEdgeUnitsCloud(request *DescribeEdgeUnitsCloudRequest) 
     return
 }
 
+// DescribeEdgeUnitsCloud
+// 查询边缘单元列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgeUnitsCloudWithContext(ctx context.Context, request *DescribeEdgeUnitsCloudRequest) (response *DescribeEdgeUnitsCloudResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeUnitsCloudRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeEdgeUnitsCloudResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMonitorMetricsRequest() (request *DescribeMonitorMetricsRequest) {
     request = &DescribeMonitorMetricsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2687,6 +4366,34 @@ func (c *Client) DescribeMonitorMetrics(request *DescribeMonitorMetricsRequest) 
     if request == nil {
         request = NewDescribeMonitorMetricsRequest()
     }
+    
+    response = NewDescribeMonitorMetricsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeMonitorMetrics
+// 查询边缘单元监控数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeMonitorMetricsWithContext(ctx context.Context, request *DescribeMonitorMetricsRequest) (response *DescribeMonitorMetricsResponse, err error) {
+    if request == nil {
+        request = NewDescribeMonitorMetricsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeMonitorMetricsResponse()
     err = c.Send(request, response)
@@ -2737,6 +4444,34 @@ func (c *Client) DescribeNamespace(request *DescribeNamespaceRequest) (response 
     return
 }
 
+// DescribeNamespace
+// 获取命名空间
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeNamespaceWithContext(ctx context.Context, request *DescribeNamespaceRequest) (response *DescribeNamespaceResponse, err error) {
+    if request == nil {
+        request = NewDescribeNamespaceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeNamespaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNamespaceResourcesRequest() (request *DescribeNamespaceResourcesRequest) {
     request = &DescribeNamespaceResourcesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2775,6 +4510,34 @@ func (c *Client) DescribeNamespaceResources(request *DescribeNamespaceResourcesR
     if request == nil {
         request = NewDescribeNamespaceResourcesRequest()
     }
+    
+    response = NewDescribeNamespaceResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeNamespaceResources
+// 获取命名空间下的资源信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeNamespaceResourcesWithContext(ctx context.Context, request *DescribeNamespaceResourcesRequest) (response *DescribeNamespaceResourcesResponse, err error) {
+    if request == nil {
+        request = NewDescribeNamespaceResourcesRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeNamespaceResourcesResponse()
     err = c.Send(request, response)
@@ -2825,6 +4588,34 @@ func (c *Client) DescribeNamespaces(request *DescribeNamespacesRequest) (respons
     return
 }
 
+// DescribeNamespaces
+// 获取命名空间列表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeNamespacesWithContext(ctx context.Context, request *DescribeNamespacesRequest) (response *DescribeNamespacesResponse, err error) {
+    if request == nil {
+        request = NewDescribeNamespacesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeNamespacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNodeUnitRequest() (request *DescribeNodeUnitRequest) {
     request = &DescribeNodeUnitRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2863,6 +4654,34 @@ func (c *Client) DescribeNodeUnit(request *DescribeNodeUnitRequest) (response *D
     if request == nil {
         request = NewDescribeNodeUnitRequest()
     }
+    
+    response = NewDescribeNodeUnitResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeNodeUnit
+// 查询边缘单元NodeUnit列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeNodeUnitWithContext(ctx context.Context, request *DescribeNodeUnitRequest) (response *DescribeNodeUnitResponse, err error) {
+    if request == nil {
+        request = NewDescribeNodeUnitRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeNodeUnitResponse()
     err = c.Send(request, response)
@@ -2913,6 +4732,34 @@ func (c *Client) DescribeNodeUnitTemplateOnNodeGroup(request *DescribeNodeUnitTe
     return
 }
 
+// DescribeNodeUnitTemplateOnNodeGroup
+// 查询指定NodeGroup下NodeUnit模版列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeNodeUnitTemplateOnNodeGroupWithContext(ctx context.Context, request *DescribeNodeUnitTemplateOnNodeGroupRequest) (response *DescribeNodeUnitTemplateOnNodeGroupResponse, err error) {
+    if request == nil {
+        request = NewDescribeNodeUnitTemplateOnNodeGroupRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeNodeUnitTemplateOnNodeGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSecretRequest() (request *DescribeSecretRequest) {
     request = &DescribeSecretRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2951,6 +4798,34 @@ func (c *Client) DescribeSecret(request *DescribeSecretRequest) (response *Descr
     if request == nil {
         request = NewDescribeSecretRequest()
     }
+    
+    response = NewDescribeSecretResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeSecret
+// 获取Secret详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSecretWithContext(ctx context.Context, request *DescribeSecretRequest) (response *DescribeSecretResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecretRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeSecretResponse()
     err = c.Send(request, response)
@@ -3001,6 +4876,34 @@ func (c *Client) DescribeSecretYamlError(request *DescribeSecretYamlErrorRequest
     return
 }
 
+// DescribeSecretYamlError
+// 校验Secret的Yaml语法
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSecretYamlErrorWithContext(ctx context.Context, request *DescribeSecretYamlErrorRequest) (response *DescribeSecretYamlErrorResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecretYamlErrorRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeSecretYamlErrorResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSecretsRequest() (request *DescribeSecretsRequest) {
     request = &DescribeSecretsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3039,6 +4942,34 @@ func (c *Client) DescribeSecrets(request *DescribeSecretsRequest) (response *Des
     if request == nil {
         request = NewDescribeSecretsRequest()
     }
+    
+    response = NewDescribeSecretsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeSecrets
+// 获取Secrets列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSecretsWithContext(ctx context.Context, request *DescribeSecretsRequest) (response *DescribeSecretsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecretsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeSecretsResponse()
     err = c.Send(request, response)
@@ -3089,6 +5020,34 @@ func (c *Client) GetMarketComponent(request *GetMarketComponentRequest) (respons
     return
 }
 
+// GetMarketComponent
+// 获取组件市场的组件信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetMarketComponentWithContext(ctx context.Context, request *GetMarketComponentRequest) (response *GetMarketComponentResponse, err error) {
+    if request == nil {
+        request = NewGetMarketComponentRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewGetMarketComponentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetMarketComponentListRequest() (request *GetMarketComponentListRequest) {
     request = &GetMarketComponentListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3127,6 +5086,34 @@ func (c *Client) GetMarketComponentList(request *GetMarketComponentListRequest) 
     if request == nil {
         request = NewGetMarketComponentListRequest()
     }
+    
+    response = NewGetMarketComponentListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// GetMarketComponentList
+// 获取组件市场组件列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetMarketComponentListWithContext(ctx context.Context, request *GetMarketComponentListRequest) (response *GetMarketComponentListResponse, err error) {
+    if request == nil {
+        request = NewGetMarketComponentListRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewGetMarketComponentListResponse()
     err = c.Send(request, response)
@@ -3184,6 +5171,41 @@ func (c *Client) ModifyApplicationBasicInfo(request *ModifyApplicationBasicInfoR
     return
 }
 
+// ModifyApplicationBasicInfo
+// 修改应用模板基本信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyApplicationBasicInfoWithContext(ctx context.Context, request *ModifyApplicationBasicInfoRequest) (response *ModifyApplicationBasicInfoResponse, err error) {
+    if request == nil {
+        request = NewModifyApplicationBasicInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyApplicationBasicInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyApplicationVisualizationRequest() (request *ModifyApplicationVisualizationRequest) {
     request = &ModifyApplicationVisualizationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3222,6 +5244,34 @@ func (c *Client) ModifyApplicationVisualization(request *ModifyApplicationVisual
     if request == nil {
         request = NewModifyApplicationVisualizationRequest()
     }
+    
+    response = NewModifyApplicationVisualizationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyApplicationVisualization
+// 修改应用模板配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyApplicationVisualizationWithContext(ctx context.Context, request *ModifyApplicationVisualizationRequest) (response *ModifyApplicationVisualizationResponse, err error) {
+    if request == nil {
+        request = NewModifyApplicationVisualizationRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyApplicationVisualizationResponse()
     err = c.Send(request, response)
@@ -3272,6 +5322,34 @@ func (c *Client) ModifyConfigMap(request *ModifyConfigMapRequest) (response *Mod
     return
 }
 
+// ModifyConfigMap
+// 修改ConfigMap
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyConfigMapWithContext(ctx context.Context, request *ModifyConfigMapRequest) (response *ModifyConfigMapResponse, err error) {
+    if request == nil {
+        request = NewModifyConfigMapRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyConfigMapResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyEdgeNodeLabelsRequest() (request *ModifyEdgeNodeLabelsRequest) {
     request = &ModifyEdgeNodeLabelsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3310,6 +5388,34 @@ func (c *Client) ModifyEdgeNodeLabels(request *ModifyEdgeNodeLabelsRequest) (res
     if request == nil {
         request = NewModifyEdgeNodeLabelsRequest()
     }
+    
+    response = NewModifyEdgeNodeLabelsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyEdgeNodeLabels
+// 编辑边缘节点标签
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyEdgeNodeLabelsWithContext(ctx context.Context, request *ModifyEdgeNodeLabelsRequest) (response *ModifyEdgeNodeLabelsResponse, err error) {
+    if request == nil {
+        request = NewModifyEdgeNodeLabelsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyEdgeNodeLabelsResponse()
     err = c.Send(request, response)
@@ -3367,6 +5473,41 @@ func (c *Client) ModifyEdgeUnit(request *ModifyEdgeUnitRequest) (response *Modif
     return
 }
 
+// ModifyEdgeUnit
+// 修改边缘集群
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyEdgeUnitWithContext(ctx context.Context, request *ModifyEdgeUnitRequest) (response *ModifyEdgeUnitResponse, err error) {
+    if request == nil {
+        request = NewModifyEdgeUnitRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyEdgeUnitResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyEdgeUnitApplicationBasicInfoRequest() (request *ModifyEdgeUnitApplicationBasicInfoRequest) {
     request = &ModifyEdgeUnitApplicationBasicInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3405,6 +5546,34 @@ func (c *Client) ModifyEdgeUnitApplicationBasicInfo(request *ModifyEdgeUnitAppli
     if request == nil {
         request = NewModifyEdgeUnitApplicationBasicInfoRequest()
     }
+    
+    response = NewModifyEdgeUnitApplicationBasicInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyEdgeUnitApplicationBasicInfo
+// 修改单元应用基本信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyEdgeUnitApplicationBasicInfoWithContext(ctx context.Context, request *ModifyEdgeUnitApplicationBasicInfoRequest) (response *ModifyEdgeUnitApplicationBasicInfoResponse, err error) {
+    if request == nil {
+        request = NewModifyEdgeUnitApplicationBasicInfoRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyEdgeUnitApplicationBasicInfoResponse()
     err = c.Send(request, response)
@@ -3455,6 +5624,34 @@ func (c *Client) ModifyEdgeUnitApplicationVisualization(request *ModifyEdgeUnitA
     return
 }
 
+// ModifyEdgeUnitApplicationVisualization
+// 可视化修改应用配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyEdgeUnitApplicationVisualizationWithContext(ctx context.Context, request *ModifyEdgeUnitApplicationVisualizationRequest) (response *ModifyEdgeUnitApplicationVisualizationResponse, err error) {
+    if request == nil {
+        request = NewModifyEdgeUnitApplicationVisualizationRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyEdgeUnitApplicationVisualizationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyEdgeUnitApplicationYamlRequest() (request *ModifyEdgeUnitApplicationYamlRequest) {
     request = &ModifyEdgeUnitApplicationYamlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3493,6 +5690,34 @@ func (c *Client) ModifyEdgeUnitApplicationYaml(request *ModifyEdgeUnitApplicatio
     if request == nil {
         request = NewModifyEdgeUnitApplicationYamlRequest()
     }
+    
+    response = NewModifyEdgeUnitApplicationYamlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyEdgeUnitApplicationYaml
+// Yaml方式修改应用配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyEdgeUnitApplicationYamlWithContext(ctx context.Context, request *ModifyEdgeUnitApplicationYamlRequest) (response *ModifyEdgeUnitApplicationYamlResponse, err error) {
+    if request == nil {
+        request = NewModifyEdgeUnitApplicationYamlRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyEdgeUnitApplicationYamlResponse()
     err = c.Send(request, response)
@@ -3543,6 +5768,34 @@ func (c *Client) ModifyEdgeUnitDeployGridItem(request *ModifyEdgeUnitDeployGridI
     return
 }
 
+// ModifyEdgeUnitDeployGridItem
+// 修改边缘单元Grid部署应用副本数
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyEdgeUnitDeployGridItemWithContext(ctx context.Context, request *ModifyEdgeUnitDeployGridItemRequest) (response *ModifyEdgeUnitDeployGridItemResponse, err error) {
+    if request == nil {
+        request = NewModifyEdgeUnitDeployGridItemRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyEdgeUnitDeployGridItemResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyNodeUnitTemplateRequest() (request *ModifyNodeUnitTemplateRequest) {
     request = &ModifyNodeUnitTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3581,6 +5834,34 @@ func (c *Client) ModifyNodeUnitTemplate(request *ModifyNodeUnitTemplateRequest) 
     if request == nil {
         request = NewModifyNodeUnitTemplateRequest()
     }
+    
+    response = NewModifyNodeUnitTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyNodeUnitTemplate
+// 修改边缘单元NodeUnit模版
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyNodeUnitTemplateWithContext(ctx context.Context, request *ModifyNodeUnitTemplateRequest) (response *ModifyNodeUnitTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyNodeUnitTemplateRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewModifyNodeUnitTemplateResponse()
     err = c.Send(request, response)
@@ -3631,6 +5912,34 @@ func (c *Client) ModifySecret(request *ModifySecretRequest) (response *ModifySec
     return
 }
 
+// ModifySecret
+// 修改Secret
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifySecretWithContext(ctx context.Context, request *ModifySecretRequest) (response *ModifySecretResponse, err error) {
+    if request == nil {
+        request = NewModifySecretRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifySecretResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRedeployEdgeUnitApplicationRequest() (request *RedeployEdgeUnitApplicationRequest) {
     request = &RedeployEdgeUnitApplicationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3669,6 +5978,34 @@ func (c *Client) RedeployEdgeUnitApplication(request *RedeployEdgeUnitApplicatio
     if request == nil {
         request = NewRedeployEdgeUnitApplicationRequest()
     }
+    
+    response = NewRedeployEdgeUnitApplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// RedeployEdgeUnitApplication
+// 单元应用重部署
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RedeployEdgeUnitApplicationWithContext(ctx context.Context, request *RedeployEdgeUnitApplicationRequest) (response *RedeployEdgeUnitApplicationResponse, err error) {
+    if request == nil {
+        request = NewRedeployEdgeUnitApplicationRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewRedeployEdgeUnitApplicationResponse()
     err = c.Send(request, response)

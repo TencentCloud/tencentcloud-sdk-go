@@ -15,6 +15,7 @@
 package v20191118
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -86,6 +87,33 @@ func (c *Client) CreateSession(request *CreateSessionRequest) (response *CreateS
     return
 }
 
+// CreateSession
+// 创建会话
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_LOCKTIMEOUT = "FailedOperation.LockTimeout"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  FAILEDOPERATION_SLOWDOWN = "FailedOperation.SlowDown"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  FAILEDOPERATION_TOOFREQUENTLY = "FailedOperation.TooFrequently"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_ROLE = "LimitExceeded.Role"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_NOIDLE = "ResourceNotFound.NoIdle"
+//  UNSUPPORTEDOPERATION_STOPPING = "UnsupportedOperation.Stopping"
+func (c *Client) CreateSessionWithContext(ctx context.Context, request *CreateSessionRequest) (response *CreateSessionResponse, err error) {
+    if request == nil {
+        request = NewCreateSessionRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateSessionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstancesCountRequest() (request *DescribeInstancesCountRequest) {
     request = &DescribeInstancesCountRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -114,6 +142,24 @@ func (c *Client) DescribeInstancesCount(request *DescribeInstancesCountRequest) 
     if request == nil {
         request = NewDescribeInstancesCountRequest()
     }
+    
+    response = NewDescribeInstancesCountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeInstancesCount
+// 获取实例总数和运行数
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeInstancesCountWithContext(ctx context.Context, request *DescribeInstancesCountRequest) (response *DescribeInstancesCountResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstancesCountRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeInstancesCountResponse()
     err = c.Send(request, response)
@@ -158,6 +204,86 @@ func (c *Client) SaveGameArchive(request *SaveGameArchiveRequest) (response *Sav
     return
 }
 
+// SaveGameArchive
+// 保存游戏存档
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SLOWDOWN = "FailedOperation.SlowDown"
+//  FAILEDOPERATION_TOOFREQUENTLY = "FailedOperation.TooFrequently"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+func (c *Client) SaveGameArchiveWithContext(ctx context.Context, request *SaveGameArchiveRequest) (response *SaveGameArchiveResponse, err error) {
+    if request == nil {
+        request = NewSaveGameArchiveRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewSaveGameArchiveResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStartPublishStreamRequest() (request *StartPublishStreamRequest) {
+    request = &StartPublishStreamRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gs", APIVersion, "StartPublishStream")
+    
+    
+    return
+}
+
+func NewStartPublishStreamResponse() (response *StartPublishStreamResponse) {
+    response = &StartPublishStreamResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StartPublishStream
+// 开始云端推流
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  UNSUPPORTEDOPERATION_NOTRUNNING = "UnsupportedOperation.NotRunning"
+func (c *Client) StartPublishStream(request *StartPublishStreamRequest) (response *StartPublishStreamResponse, err error) {
+    if request == nil {
+        request = NewStartPublishStreamRequest()
+    }
+    
+    response = NewStartPublishStreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// StartPublishStream
+// 开始云端推流
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  UNSUPPORTEDOPERATION_NOTRUNNING = "UnsupportedOperation.NotRunning"
+func (c *Client) StartPublishStreamWithContext(ctx context.Context, request *StartPublishStreamRequest) (response *StartPublishStreamResponse, err error) {
+    if request == nil {
+        request = NewStartPublishStreamRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewStartPublishStreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopGameRequest() (request *StopGameRequest) {
     request = &StopGameRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -188,6 +314,82 @@ func (c *Client) StopGame(request *StopGameRequest) (response *StopGameResponse,
     }
     
     response = NewStopGameResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// StopGame
+// 强制退出游戏
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+func (c *Client) StopGameWithContext(ctx context.Context, request *StopGameRequest) (response *StopGameResponse, err error) {
+    if request == nil {
+        request = NewStopGameRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewStopGameResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopPublishStreamRequest() (request *StopPublishStreamRequest) {
+    request = &StopPublishStreamRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gs", APIVersion, "StopPublishStream")
+    
+    
+    return
+}
+
+func NewStopPublishStreamResponse() (response *StopPublishStreamResponse) {
+    response = &StopPublishStreamResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StopPublishStream
+// 停止云端推流
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  UNSUPPORTEDOPERATION_NOTRUNNING = "UnsupportedOperation.NotRunning"
+func (c *Client) StopPublishStream(request *StopPublishStreamRequest) (response *StopPublishStreamResponse, err error) {
+    if request == nil {
+        request = NewStopPublishStreamRequest()
+    }
+    
+    response = NewStopPublishStreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// StopPublishStream
+// 停止云端推流
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  UNSUPPORTEDOPERATION_NOTRUNNING = "UnsupportedOperation.NotRunning"
+func (c *Client) StopPublishStreamWithContext(ctx context.Context, request *StopPublishStreamRequest) (response *StopPublishStreamResponse, err error) {
+    if request == nil {
+        request = NewStopPublishStreamRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewStopPublishStreamResponse()
     err = c.Send(request, response)
     return
 }
@@ -230,6 +432,28 @@ func (c *Client) SwitchGameArchive(request *SwitchGameArchiveRequest) (response 
     return
 }
 
+// SwitchGameArchive
+// 切换游戏存档
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SLOWDOWN = "FailedOperation.SlowDown"
+//  FAILEDOPERATION_TOOFREQUENTLY = "FailedOperation.TooFrequently"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+func (c *Client) SwitchGameArchiveWithContext(ctx context.Context, request *SwitchGameArchiveRequest) (response *SwitchGameArchiveResponse, err error) {
+    if request == nil {
+        request = NewSwitchGameArchiveRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewSwitchGameArchiveResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTrylockWorkerRequest() (request *TrylockWorkerRequest) {
     request = &TrylockWorkerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -262,6 +486,28 @@ func (c *Client) TrylockWorker(request *TrylockWorkerRequest) (response *Trylock
     if request == nil {
         request = NewTrylockWorkerRequest()
     }
+    
+    response = NewTrylockWorkerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// TrylockWorker
+// 尝试锁定机器
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_NOIDLE = "ResourceNotFound.NoIdle"
+//  RESOURCEUNAVAILABLE_INITIALIZATION = "ResourceUnavailable.Initialization"
+//  UNSUPPORTEDOPERATION_STOPPING = "UnsupportedOperation.Stopping"
+func (c *Client) TrylockWorkerWithContext(ctx context.Context, request *TrylockWorkerRequest) (response *TrylockWorkerResponse, err error) {
+    if request == nil {
+        request = NewTrylockWorkerRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewTrylockWorkerResponse()
     err = c.Send(request, response)

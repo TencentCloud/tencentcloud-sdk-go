@@ -477,7 +477,7 @@ type DescribeTemplatesRequest struct {
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 模版唯一标识
+	// 模板唯一标识
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
@@ -660,11 +660,11 @@ type FlowApproverInfo struct {
 	// 签署人姓名
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 签署人手机号，脱敏显示
-	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
-
 	// 经办人身份证号
 	IdCardNumber *string `json:"IdCardNumber,omitempty" name:"IdCardNumber"`
+
+	// 签署人手机号，脱敏显示
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 
 	// 签署完前端跳转的url，暂未使用
 	JumpUrl *string `json:"JumpUrl,omitempty" name:"JumpUrl"`
@@ -683,6 +683,18 @@ type FlowApproverInfo struct {
 
 	// 合同的强制预览时间：3~300s，未指定则按合同页数计算
 	PreReadTime *int64 `json:"PreReadTime,omitempty" name:"PreReadTime"`
+
+	// 个人签署方指定签署控件类型，目前仅支持：OCR_ESIGN(AI智慧手写签名)
+	ComponentLimitType []*string `json:"ComponentLimitType,omitempty" name:"ComponentLimitType"`
+
+	// 流程签署人在模板中对应的签署人Id；在非单方签署、以及非B2C签署的场景下必传，用于指定当前签署方在流程中的位置；
+	RecipientId *string `json:"RecipientId,omitempty" name:"RecipientId"`
+
+	// 同一渠道下其他合作企业OpenId，签署人为非发起方企业员工场景下必传；
+	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
+
+	// 同一渠道下其他合作企业OpenId，签署人为非发起方企业员工场景下必传；
+	OrganizationOpenId *string `json:"OrganizationOpenId,omitempty" name:"OrganizationOpenId"`
 }
 
 type FlowDetailInfo struct {
@@ -748,7 +760,7 @@ type FlowInfo struct {
 	// 渠道的业务信息，限制1024字符
 	CustomerData *string `json:"CustomerData,omitempty" name:"CustomerData"`
 
-	// 被抄送人的信息列表
+	// 被抄送人的信息列表，抄送功能暂不开放
 	CcInfos []*CcInfo `json:"CcInfos,omitempty" name:"CcInfos"`
 }
 
@@ -853,7 +865,7 @@ type OperateChannelTemplateRequest struct {
 	// 模板可见性, 全部可见-"all", 部分可见-"part"
 	AuthTag *string `json:"AuthTag,omitempty" name:"AuthTag"`
 
-	// 合作企业方第三方机构唯一标识数据
+	// 合作企业方第三方机构唯一标识数据，支持多个， 用","进行分隔
 	ProxyOrganizationOpenIds *string `json:"ProxyOrganizationOpenIds,omitempty" name:"ProxyOrganizationOpenIds"`
 }
 
@@ -1033,6 +1045,9 @@ type Recipient struct {
 
 	// 签署顺序：数字越小优先级越高
 	RoutingOrder *int64 `json:"RoutingOrder,omitempty" name:"RoutingOrder"`
+
+	// 是否是发起方
+	IsPromoter *bool `json:"IsPromoter,omitempty" name:"IsPromoter"`
 }
 
 type ResourceUrlInfo struct {

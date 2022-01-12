@@ -464,7 +464,7 @@ func (r *BizLicenseOCRResponse) FromJsonString(s string) error {
 type BizLicenseVerifyResult struct {
 
 	// “0“：一致
-	// “-1”：此号未查询到结果
+	// “-1”：不一致
 	RegNum *string `json:"RegNum,omitempty" name:"RegNum"`
 
 	// “0“：一致
@@ -2784,6 +2784,7 @@ type MLIDCardOCRResponse struct {
 	// -9103	证照翻拍告警
 	// -9102	证照复印件告警
 	// -9106       证件遮挡告警
+	// -9107       模糊图片告警
 		Warn []*int64 `json:"Warn,omitempty" name:"Warn"`
 
 		// 证件图片

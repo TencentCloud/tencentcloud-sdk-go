@@ -53,6 +53,9 @@ const (
 	// 通信协议错误。
 	INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
 
+	// 内部错误。
+	INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
+
 	// 未知的内部错误。
 	INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 

@@ -15,6 +15,7 @@
 package v20191012
 
 import (
+    "context"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -86,12 +87,53 @@ func NewAddEcdnDomainResponse() (response *AddEcdnDomainResponse) {
 //  UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = "UnauthorizedOperation.EcdnCamUnauthorized"
 //  UNAUTHORIZEDOPERATION_ECDNDOMAINRECORDNOTVERIFIED = "UnauthorizedOperation.EcdnDomainRecordNotVerified"
 //  UNAUTHORIZEDOPERATION_ECDNHOSTISOWNEDBYOTHER = "UnauthorizedOperation.EcdnHostIsOwnedByOther"
+//  UNAUTHORIZEDOPERATION_ECDNMIGRATEDCDN = "UnauthorizedOperation.EcdnMigratedCdn"
 //  UNAUTHORIZEDOPERATION_ECDNUSERISSUSPENDED = "UnauthorizedOperation.EcdnUserIsSuspended"
 //  UNAUTHORIZEDOPERATION_ECDNUSERNOWHITELIST = "UnauthorizedOperation.EcdnUserNoWhitelist"
 func (c *Client) AddEcdnDomain(request *AddEcdnDomainRequest) (response *AddEcdnDomainResponse, err error) {
     if request == nil {
         request = NewAddEcdnDomainRequest()
     }
+    
+    response = NewAddEcdnDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// AddEcdnDomain
+// 本接口（AddEcdnDomain）用于创建加速域名。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"
+//  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
+//  INTERNALERROR_ECDNDBERROR = "InternalError.EcdnDbError"
+//  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
+//  INVALIDPARAMETER_ECDNCAMTAGKEYNOTEXIST = "InvalidParameter.EcdnCamTagKeyNotExist"
+//  INVALIDPARAMETER_ECDNINTERFACEERROR = "InvalidParameter.EcdnInterfaceError"
+//  INVALIDPARAMETER_ECDNPARAMERROR = "InvalidParameter.EcdnParamError"
+//  INVALIDPARAMETER_ECDNRESOURCEMANYTAGKEY = "InvalidParameter.EcdnResourceManyTagKey"
+//  INVALIDPARAMETER_ECDNTAGKEYINVALID = "InvalidParameter.EcdnTagKeyInvalid"
+//  INVALIDPARAMETER_ECDNTAGKEYNOTEXIST = "InvalidParameter.EcdnTagKeyNotExist"
+//  INVALIDPARAMETER_ECDNTAGKEYTOOMANYVALUE = "InvalidParameter.EcdnTagKeyTooManyValue"
+//  INVALIDPARAMETER_ECDNTAGVALUEINVALID = "InvalidParameter.EcdnTagValueInvalid"
+//  INVALIDPARAMETER_ECDNUSERTOOMANYTAGKEY = "InvalidParameter.EcdnUserTooManyTagKey"
+//  LIMITEXCEEDED_ECDNDOMAINOPTOOOFTEN = "LimitExceeded.EcdnDomainOpTooOften"
+//  LIMITEXCEEDED_ECDNUSERTOOMANYDOMAINS = "LimitExceeded.EcdnUserTooManyDomains"
+//  RESOURCEINUSE_ECDNDOMAINEXISTS = "ResourceInUse.EcdnDomainExists"
+//  RESOURCEINUSE_ECDNOPINPROGRESS = "ResourceInUse.EcdnOpInProgress"
+//  RESOURCENOTFOUND_ECDNDOMAINNOTEXISTS = "ResourceNotFound.EcdnDomainNotExists"
+//  RESOURCENOTFOUND_ECDNUSERNOTEXISTS = "ResourceNotFound.EcdnUserNotExists"
+//  UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = "UnauthorizedOperation.EcdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNDOMAINRECORDNOTVERIFIED = "UnauthorizedOperation.EcdnDomainRecordNotVerified"
+//  UNAUTHORIZEDOPERATION_ECDNHOSTISOWNEDBYOTHER = "UnauthorizedOperation.EcdnHostIsOwnedByOther"
+//  UNAUTHORIZEDOPERATION_ECDNMIGRATEDCDN = "UnauthorizedOperation.EcdnMigratedCdn"
+//  UNAUTHORIZEDOPERATION_ECDNUSERISSUSPENDED = "UnauthorizedOperation.EcdnUserIsSuspended"
+//  UNAUTHORIZEDOPERATION_ECDNUSERNOWHITELIST = "UnauthorizedOperation.EcdnUserNoWhitelist"
+func (c *Client) AddEcdnDomainWithContext(ctx context.Context, request *AddEcdnDomainRequest) (response *AddEcdnDomainResponse, err error) {
+    if request == nil {
+        request = NewAddEcdnDomainRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewAddEcdnDomainResponse()
     err = c.Send(request, response)
@@ -138,6 +180,30 @@ func (c *Client) CreateVerifyRecord(request *CreateVerifyRecordRequest) (respons
     return
 }
 
+// CreateVerifyRecord
+// 生成一条子域名解析，提示客户添加到域名解析上，用于泛域名及域名取回校验归属权
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCOUNTSYSTEMERROR = "InternalError.AccountSystemError"
+//  INTERNALERROR_DATASYSTEMERROR = "InternalError.DataSystemError"
+//  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
+//  INTERNALERROR_ECDNDBERROR = "InternalError.EcdnDbError"
+//  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
+//  INVALIDPARAMETER_ECDNPARAMERROR = "InvalidParameter.EcdnParamError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_ECDNUSERNOTEXISTS = "ResourceNotFound.EcdnUserNotExists"
+func (c *Client) CreateVerifyRecordWithContext(ctx context.Context, request *CreateVerifyRecordRequest) (response *CreateVerifyRecordResponse, err error) {
+    if request == nil {
+        request = NewCreateVerifyRecordRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateVerifyRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteEcdnDomainRequest() (request *DeleteEcdnDomainRequest) {
     request = &DeleteEcdnDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -168,12 +234,42 @@ func NewDeleteEcdnDomainResponse() (response *DeleteEcdnDomainResponse) {
 //  RESOURCEINUSE_ECDNOPINPROGRESS = "ResourceInUse.EcdnOpInProgress"
 //  RESOURCENOTFOUND_ECDNDOMAINNOTEXISTS = "ResourceNotFound.EcdnDomainNotExists"
 //  RESOURCENOTFOUND_ECDNUSERNOTEXISTS = "ResourceNotFound.EcdnUserNotExists"
+//  RESOURCEUNAVAILABLE_ECDNDOMAINISLOCKED = "ResourceUnavailable.EcdnDomainIsLocked"
+//  RESOURCEUNAVAILABLE_ECDNDOMAINISNOTOFFLINE = "ResourceUnavailable.EcdnDomainIsNotOffline"
 //  UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = "UnauthorizedOperation.EcdnCamUnauthorized"
 //  UNAUTHORIZEDOPERATION_ECDNUSERISSUSPENDED = "UnauthorizedOperation.EcdnUserIsSuspended"
 func (c *Client) DeleteEcdnDomain(request *DeleteEcdnDomainRequest) (response *DeleteEcdnDomainResponse, err error) {
     if request == nil {
         request = NewDeleteEcdnDomainRequest()
     }
+    
+    response = NewDeleteEcdnDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteEcdnDomain
+// 本接口（DeleteEcdnDomain）用于删除指定加速域名。待删除域名必须处于已停用状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"
+//  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
+//  INTERNALERROR_ECDNDBERROR = "InternalError.EcdnDbError"
+//  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
+//  INVALIDPARAMETER_ECDNINTERFACEERROR = "InvalidParameter.EcdnInterfaceError"
+//  INVALIDPARAMETER_ECDNPARAMERROR = "InvalidParameter.EcdnParamError"
+//  RESOURCEINUSE_ECDNOPINPROGRESS = "ResourceInUse.EcdnOpInProgress"
+//  RESOURCENOTFOUND_ECDNDOMAINNOTEXISTS = "ResourceNotFound.EcdnDomainNotExists"
+//  RESOURCENOTFOUND_ECDNUSERNOTEXISTS = "ResourceNotFound.EcdnUserNotExists"
+//  RESOURCEUNAVAILABLE_ECDNDOMAINISLOCKED = "ResourceUnavailable.EcdnDomainIsLocked"
+//  RESOURCEUNAVAILABLE_ECDNDOMAINISNOTOFFLINE = "ResourceUnavailable.EcdnDomainIsNotOffline"
+//  UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = "UnauthorizedOperation.EcdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNUSERISSUSPENDED = "UnauthorizedOperation.EcdnUserIsSuspended"
+func (c *Client) DeleteEcdnDomainWithContext(ctx context.Context, request *DeleteEcdnDomainRequest) (response *DeleteEcdnDomainResponse, err error) {
+    if request == nil {
+        request = NewDeleteEcdnDomainRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDeleteEcdnDomainResponse()
     err = c.Send(request, response)
@@ -220,6 +316,30 @@ func (c *Client) DescribeDomains(request *DescribeDomainsRequest) (response *Des
     return
 }
 
+// DescribeDomains
+// 本接口（DescribeDomains）用于查询CDN域名基本信息，包括项目id，状态，业务类型，创建时间，更新时间等。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
+//  INTERNALERROR_ECDNDBERROR = "InternalError.EcdnDbError"
+//  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
+//  INVALIDPARAMETER_ECDNINTERFACEERROR = "InvalidParameter.EcdnInterfaceError"
+//  INVALIDPARAMETER_ECDNPARAMERROR = "InvalidParameter.EcdnParamError"
+//  LIMITEXCEEDED_ECDNDOMAINOPTOOOFTEN = "LimitExceeded.EcdnDomainOpTooOften"
+//  RESOURCENOTFOUND_ECDNDOMAINNOTEXISTS = "ResourceNotFound.EcdnDomainNotExists"
+//  RESOURCENOTFOUND_ECDNUSERNOTEXISTS = "ResourceNotFound.EcdnUserNotExists"
+//  UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = "UnauthorizedOperation.EcdnCamUnauthorized"
+func (c *Client) DescribeDomainsWithContext(ctx context.Context, request *DescribeDomainsRequest) (response *DescribeDomainsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeDomainsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDomainsConfigRequest() (request *DescribeDomainsConfigRequest) {
     request = &DescribeDomainsConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -246,6 +366,7 @@ func NewDescribeDomainsConfigResponse() (response *DescribeDomainsConfigResponse
 //  INTERNALERROR_ECDNDBERROR = "InternalError.EcdnDbError"
 //  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
 //  INVALIDPARAMETER_ECDNCERTNOCERTINFO = "InvalidParameter.EcdnCertNoCertInfo"
+//  INVALIDPARAMETER_ECDNCONFIGINVALIDCACHE = "InvalidParameter.EcdnConfigInvalidCache"
 //  INVALIDPARAMETER_ECDNINTERFACEERROR = "InvalidParameter.EcdnInterfaceError"
 //  INVALIDPARAMETER_ECDNPARAMERROR = "InvalidParameter.EcdnParamError"
 //  LIMITEXCEEDED_ECDNDOMAINOPTOOOFTEN = "LimitExceeded.EcdnDomainOpTooOften"
@@ -256,6 +377,33 @@ func (c *Client) DescribeDomainsConfig(request *DescribeDomainsConfigRequest) (r
     if request == nil {
         request = NewDescribeDomainsConfigRequest()
     }
+    
+    response = NewDescribeDomainsConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeDomainsConfig
+// 本接口（DescribeDomainsConfig）用于查询CDN加速域名详细配置信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"
+//  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
+//  INTERNALERROR_ECDNDBERROR = "InternalError.EcdnDbError"
+//  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
+//  INVALIDPARAMETER_ECDNCERTNOCERTINFO = "InvalidParameter.EcdnCertNoCertInfo"
+//  INVALIDPARAMETER_ECDNCONFIGINVALIDCACHE = "InvalidParameter.EcdnConfigInvalidCache"
+//  INVALIDPARAMETER_ECDNINTERFACEERROR = "InvalidParameter.EcdnInterfaceError"
+//  INVALIDPARAMETER_ECDNPARAMERROR = "InvalidParameter.EcdnParamError"
+//  LIMITEXCEEDED_ECDNDOMAINOPTOOOFTEN = "LimitExceeded.EcdnDomainOpTooOften"
+//  RESOURCENOTFOUND_ECDNDOMAINNOTEXISTS = "ResourceNotFound.EcdnDomainNotExists"
+//  RESOURCENOTFOUND_ECDNUSERNOTEXISTS = "ResourceNotFound.EcdnUserNotExists"
+//  UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = "UnauthorizedOperation.EcdnCamUnauthorized"
+func (c *Client) DescribeDomainsConfigWithContext(ctx context.Context, request *DescribeDomainsConfigRequest) (response *DescribeDomainsConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainsConfigRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeDomainsConfigResponse()
     err = c.Send(request, response)
@@ -300,6 +448,34 @@ func (c *Client) DescribeEcdnDomainLogs(request *DescribeEcdnDomainLogsRequest) 
     if request == nil {
         request = NewDescribeEcdnDomainLogsRequest()
     }
+    
+    response = NewDescribeEcdnDomainLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeEcdnDomainLogs
+// 本接口（DescribeEcdnDomainLogs）用于查询域名的访问日志下载地址。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
+//  INTERNALERROR_ECDNDBERROR = "InternalError.EcdnDbError"
+//  INVALIDPARAMETER_ECDNPARAMERROR = "InvalidParameter.EcdnParamError"
+//  INVALIDPARAMETER_ECDNSTATINVALIDDATE = "InvalidParameter.EcdnStatInvalidDate"
+//  LIMITEXCEEDED_ECDNDOMAINOPTOOOFTEN = "LimitExceeded.EcdnDomainOpTooOften"
+//  RESOURCENOTFOUND_ECDNDOMAINNOTEXISTS = "ResourceNotFound.EcdnDomainNotExists"
+//  RESOURCENOTFOUND_ECDNHOSTNOTEXISTS = "ResourceNotFound.EcdnHostNotExists"
+//  RESOURCENOTFOUND_ECDNUSERNOTEXISTS = "ResourceNotFound.EcdnUserNotExists"
+//  UNAUTHORIZEDOPERATION_ECDNACCOUNTUNAUTHORIZED = "UnauthorizedOperation.EcdnAccountUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = "UnauthorizedOperation.EcdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNDOMAINUNAUTHORIZED = "UnauthorizedOperation.EcdnDomainUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNHOSTUNAUTHORIZED = "UnauthorizedOperation.EcdnHostUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNNODOMAINUNAUTHORIZED = "UnauthorizedOperation.EcdnNoDomainUnauthorized"
+func (c *Client) DescribeEcdnDomainLogsWithContext(ctx context.Context, request *DescribeEcdnDomainLogsRequest) (response *DescribeEcdnDomainLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeEcdnDomainLogsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeEcdnDomainLogsResponse()
     err = c.Send(request, response)
@@ -358,6 +534,48 @@ func (c *Client) DescribeEcdnDomainStatistics(request *DescribeEcdnDomainStatist
     if request == nil {
         request = NewDescribeEcdnDomainStatisticsRequest()
     }
+    
+    response = NewDescribeEcdnDomainStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeEcdnDomainStatistics
+// 本接口（DescribeEcdnDomainStatistics）用于查询指定时间段内的域名访问统计指标
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ECDNDBERROR = "InternalError.EcdnDbError"
+//  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
+//  INVALIDPARAMETER_ECDNPARAMERROR = "InvalidParameter.EcdnParamError"
+//  INVALIDPARAMETER_ECDNSTATINVALIDDATE = "InvalidParameter.EcdnStatInvalidDate"
+//  INVALIDPARAMETER_ECDNSTATINVALIDMETRIC = "InvalidParameter.EcdnStatInvalidMetric"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  LIMITEXCEEDED_ECDNDOMAINOPTOOOFTEN = "LimitExceeded.EcdnDomainOpTooOften"
+//  RESOURCENOTFOUND_ECDNDOMAINNOTEXISTS = "ResourceNotFound.EcdnDomainNotExists"
+//  RESOURCENOTFOUND_ECDNPROJECTNOTEXISTS = "ResourceNotFound.EcdnProjectNotExists"
+//  RESOURCENOTFOUND_ECDNUSERNOTEXISTS = "ResourceNotFound.EcdnUserNotExists"
+//  UNAUTHORIZEDOPERATION_CDNACCOUNTUNAUTHORIZED = "UnauthorizedOperation.CdnAccountUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNDOMAINUNAUTHORIZED = "UnauthorizedOperation.CdnDomainUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNHOSTUNAUTHORIZED = "UnauthorizedOperation.CdnHostUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNNODOMAINUNAUTHORIZED = "UnauthorizedOperation.CdnNoDomainUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNPROJECTUNAUTHORIZED = "UnauthorizedOperation.CdnProjectUnauthorized"
+//  UNAUTHORIZEDOPERATION_DOMAINNOPERMISSION = "UnauthorizedOperation.DomainNoPermission"
+//  UNAUTHORIZEDOPERATION_DOMAINSNOPERMISSION = "UnauthorizedOperation.DomainsNoPermission"
+//  UNAUTHORIZEDOPERATION_ECDNACCOUNTUNAUTHORIZED = "UnauthorizedOperation.EcdnAccountUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = "UnauthorizedOperation.EcdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNDOMAINUNAUTHORIZED = "UnauthorizedOperation.EcdnDomainUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNHOSTUNAUTHORIZED = "UnauthorizedOperation.EcdnHostUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNNODOMAINUNAUTHORIZED = "UnauthorizedOperation.EcdnNoDomainUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNPROJECTUNAUTHORIZED = "UnauthorizedOperation.EcdnProjectUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNAUTHORIZEDOPERATION_PROJECTNOPERMISSION = "UnauthorizedOperation.ProjectNoPermission"
+//  UNAUTHORIZEDOPERATION_PROJECTSNOPERMISSION = "UnauthorizedOperation.ProjectsNoPermission"
+func (c *Client) DescribeEcdnDomainStatisticsWithContext(ctx context.Context, request *DescribeEcdnDomainStatisticsRequest) (response *DescribeEcdnDomainStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeEcdnDomainStatisticsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeEcdnDomainStatisticsResponse()
     err = c.Send(request, response)
@@ -431,10 +649,73 @@ func NewDescribeEcdnStatisticsResponse() (response *DescribeEcdnStatisticsRespon
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 //  UNAUTHORIZEDOPERATION_PROJECTNOPERMISSION = "UnauthorizedOperation.ProjectNoPermission"
 //  UNAUTHORIZEDOPERATION_PROJECTSNOPERMISSION = "UnauthorizedOperation.ProjectsNoPermission"
+//  UNAUTHORIZEDOPERATION_UNKNOWN = "UnauthorizedOperation.Unknown"
 func (c *Client) DescribeEcdnStatistics(request *DescribeEcdnStatisticsRequest) (response *DescribeEcdnStatisticsResponse, err error) {
     if request == nil {
         request = NewDescribeEcdnStatisticsRequest()
     }
+    
+    response = NewDescribeEcdnStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeEcdnStatistics
+// DescribeEcdnStatistics用于查询 ECDN 实时访问监控数据，支持以下指标查询：
+//
+// 
+//
+// + 流量（单位为 byte）
+//
+// + 带宽（单位为 bps）
+//
+// + 请求数（单位为 次）
+//
+// + 状态码 2xx 汇总及各 2 开头状态码明细（单位为 个）
+//
+// + 状态码 3xx 汇总及各 3 开头状态码明细（单位为 个）
+//
+// + 状态码 4xx 汇总及各 4 开头状态码明细（单位为 个）
+//
+// + 状态码 5xx 汇总及各 5 开头状态码明细（单位为 个）
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
+//  INTERNALERROR_ECDNDBERROR = "InternalError.EcdnDbError"
+//  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
+//  INVALIDPARAMETER_ECDNINVALIDPARAMINTERVAL = "InvalidParameter.EcdnInvalidParamInterval"
+//  INVALIDPARAMETER_ECDNPARAMERROR = "InvalidParameter.EcdnParamError"
+//  INVALIDPARAMETER_ECDNSTATINVALIDDATE = "InvalidParameter.EcdnStatInvalidDate"
+//  INVALIDPARAMETER_ECDNSTATINVALIDMETRIC = "InvalidParameter.EcdnStatInvalidMetric"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  LIMITEXCEEDED_ECDNDOMAINOPTOOOFTEN = "LimitExceeded.EcdnDomainOpTooOften"
+//  RESOURCENOTFOUND_ECDNDOMAINNOTEXISTS = "ResourceNotFound.EcdnDomainNotExists"
+//  RESOURCENOTFOUND_ECDNHOSTNOTEXISTS = "ResourceNotFound.EcdnHostNotExists"
+//  RESOURCENOTFOUND_ECDNPROJECTNOTEXISTS = "ResourceNotFound.EcdnProjectNotExists"
+//  RESOURCENOTFOUND_ECDNUSERNOTEXISTS = "ResourceNotFound.EcdnUserNotExists"
+//  UNAUTHORIZEDOPERATION_CDNACCOUNTUNAUTHORIZED = "UnauthorizedOperation.CdnAccountUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNDOMAINUNAUTHORIZED = "UnauthorizedOperation.CdnDomainUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNHOSTUNAUTHORIZED = "UnauthorizedOperation.CdnHostUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNNODOMAINUNAUTHORIZED = "UnauthorizedOperation.CdnNoDomainUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNPROJECTUNAUTHORIZED = "UnauthorizedOperation.CdnProjectUnauthorized"
+//  UNAUTHORIZEDOPERATION_DOMAINNOPERMISSION = "UnauthorizedOperation.DomainNoPermission"
+//  UNAUTHORIZEDOPERATION_DOMAINSNOPERMISSION = "UnauthorizedOperation.DomainsNoPermission"
+//  UNAUTHORIZEDOPERATION_ECDNACCOUNTUNAUTHORIZED = "UnauthorizedOperation.EcdnAccountUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = "UnauthorizedOperation.EcdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNDOMAINUNAUTHORIZED = "UnauthorizedOperation.EcdnDomainUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNHOSTUNAUTHORIZED = "UnauthorizedOperation.EcdnHostUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNNODOMAINUNAUTHORIZED = "UnauthorizedOperation.EcdnNoDomainUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNPROJECTUNAUTHORIZED = "UnauthorizedOperation.EcdnProjectUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNAUTHORIZEDOPERATION_PROJECTNOPERMISSION = "UnauthorizedOperation.ProjectNoPermission"
+//  UNAUTHORIZEDOPERATION_PROJECTSNOPERMISSION = "UnauthorizedOperation.ProjectsNoPermission"
+//  UNAUTHORIZEDOPERATION_UNKNOWN = "UnauthorizedOperation.Unknown"
+func (c *Client) DescribeEcdnStatisticsWithContext(ctx context.Context, request *DescribeEcdnStatisticsRequest) (response *DescribeEcdnStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeEcdnStatisticsRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribeEcdnStatisticsResponse()
     err = c.Send(request, response)
@@ -487,6 +768,36 @@ func (c *Client) DescribeIpStatus(request *DescribeIpStatusRequest) (response *D
     return
 }
 
+// DescribeIpStatus
+// DescribeIpStatus 用于查询域名所在加速平台的所有节点信息, 如果您的源站有白名单设置,可以通过本接口获取ECDN服务的节点IP进行加白, 本接口为内测接口,请联系腾讯云工程师开白。
+//
+// 
+//
+// 由于产品服务节点常有更新，对于源站开白的使用场景，请定期调用接口获取最新节点信息，若新增服务节点发布7日后您尚未更新加白导致回源失败等问题，ECDN侧不对此承担责任。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
+//  INTERNALERROR_ECDNDBERROR = "InternalError.EcdnDbError"
+//  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
+//  INVALIDPARAMETER_ECDNPARAMERROR = "InvalidParameter.EcdnParamError"
+//  RESOURCENOTFOUND_ECDNDOMAINNOTEXISTS = "ResourceNotFound.EcdnDomainNotExists"
+//  RESOURCENOTFOUND_ECDNHOSTNOTEXISTS = "ResourceNotFound.EcdnHostNotExists"
+//  RESOURCENOTFOUND_ECDNUSERNOTEXISTS = "ResourceNotFound.EcdnUserNotExists"
+//  UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = "UnauthorizedOperation.EcdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNDOMAINUNAUTHORIZED = "UnauthorizedOperation.EcdnDomainUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNHOSTUNAUTHORIZED = "UnauthorizedOperation.EcdnHostUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNUSERNOWHITELIST = "UnauthorizedOperation.EcdnUserNoWhitelist"
+func (c *Client) DescribeIpStatusWithContext(ctx context.Context, request *DescribeIpStatusRequest) (response *DescribeIpStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeIpStatusRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeIpStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePurgeQuotaRequest() (request *DescribePurgeQuotaRequest) {
     request = &DescribePurgeQuotaRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -515,11 +826,36 @@ func NewDescribePurgeQuotaResponse() (response *DescribePurgeQuotaResponse) {
 //  RESOURCENOTFOUND_ECDNDOMAINNOTEXISTS = "ResourceNotFound.EcdnDomainNotExists"
 //  RESOURCENOTFOUND_ECDNUSERNOTEXISTS = "ResourceNotFound.EcdnUserNotExists"
 //  UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = "UnauthorizedOperation.EcdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNMIGRATEDCDN = "UnauthorizedOperation.EcdnMigratedCdn"
 //  UNAUTHORIZEDOPERATION_ECDNUSERISSUSPENDED = "UnauthorizedOperation.EcdnUserIsSuspended"
 func (c *Client) DescribePurgeQuota(request *DescribePurgeQuotaRequest) (response *DescribePurgeQuotaResponse, err error) {
     if request == nil {
         request = NewDescribePurgeQuotaRequest()
     }
+    
+    response = NewDescribePurgeQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribePurgeQuota
+// 查询刷新接口的用量配额。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"
+//  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
+//  INVALIDPARAMETER_ECDNINTERFACEERROR = "InvalidParameter.EcdnInterfaceError"
+//  INVALIDPARAMETER_ECDNPARAMERROR = "InvalidParameter.EcdnParamError"
+//  RESOURCENOTFOUND_ECDNDOMAINNOTEXISTS = "ResourceNotFound.EcdnDomainNotExists"
+//  RESOURCENOTFOUND_ECDNUSERNOTEXISTS = "ResourceNotFound.EcdnUserNotExists"
+//  UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = "UnauthorizedOperation.EcdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNMIGRATEDCDN = "UnauthorizedOperation.EcdnMigratedCdn"
+//  UNAUTHORIZEDOPERATION_ECDNUSERISSUSPENDED = "UnauthorizedOperation.EcdnUserIsSuspended"
+func (c *Client) DescribePurgeQuotaWithContext(ctx context.Context, request *DescribePurgeQuotaRequest) (response *DescribePurgeQuotaResponse, err error) {
+    if request == nil {
+        request = NewDescribePurgeQuotaRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribePurgeQuotaResponse()
     err = c.Send(request, response)
@@ -553,11 +889,35 @@ func NewDescribePurgeTasksResponse() (response *DescribePurgeTasksResponse) {
 //  RESOURCENOTFOUND_ECDNDOMAINNOTEXISTS = "ResourceNotFound.EcdnDomainNotExists"
 //  RESOURCENOTFOUND_ECDNUSERNOTEXISTS = "ResourceNotFound.EcdnUserNotExists"
 //  UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = "UnauthorizedOperation.EcdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNMIGRATEDCDN = "UnauthorizedOperation.EcdnMigratedCdn"
 //  UNAUTHORIZEDOPERATION_ECDNUSERISSUSPENDED = "UnauthorizedOperation.EcdnUserIsSuspended"
 func (c *Client) DescribePurgeTasks(request *DescribePurgeTasksRequest) (response *DescribePurgeTasksResponse, err error) {
     if request == nil {
         request = NewDescribePurgeTasksRequest()
     }
+    
+    response = NewDescribePurgeTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribePurgeTasks
+// DescribePurgeTasks 用于查询刷新任务提交历史记录及执行进度。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
+//  INVALIDPARAMETER_ECDNINTERFACEERROR = "InvalidParameter.EcdnInterfaceError"
+//  INVALIDPARAMETER_ECDNPARAMERROR = "InvalidParameter.EcdnParamError"
+//  RESOURCENOTFOUND_ECDNDOMAINNOTEXISTS = "ResourceNotFound.EcdnDomainNotExists"
+//  RESOURCENOTFOUND_ECDNUSERNOTEXISTS = "ResourceNotFound.EcdnUserNotExists"
+//  UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = "UnauthorizedOperation.EcdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNMIGRATEDCDN = "UnauthorizedOperation.EcdnMigratedCdn"
+//  UNAUTHORIZEDOPERATION_ECDNUSERISSUSPENDED = "UnauthorizedOperation.EcdnUserIsSuspended"
+func (c *Client) DescribePurgeTasksWithContext(ctx context.Context, request *DescribePurgeTasksRequest) (response *DescribePurgeTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribePurgeTasksRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewDescribePurgeTasksResponse()
     err = c.Send(request, response)
@@ -599,11 +959,43 @@ func NewPurgePathCacheResponse() (response *PurgePathCacheResponse) {
 //  RESOURCENOTFOUND_ECDNUSERNOTEXISTS = "ResourceNotFound.EcdnUserNotExists"
 //  UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = "UnauthorizedOperation.EcdnCamUnauthorized"
 //  UNAUTHORIZEDOPERATION_ECDNDOMAINUNAUTHORIZED = "UnauthorizedOperation.EcdnDomainUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNMIGRATEDCDN = "UnauthorizedOperation.EcdnMigratedCdn"
 //  UNAUTHORIZEDOPERATION_ECDNUSERISSUSPENDED = "UnauthorizedOperation.EcdnUserIsSuspended"
 func (c *Client) PurgePathCache(request *PurgePathCacheRequest) (response *PurgePathCacheResponse, err error) {
     if request == nil {
         request = NewPurgePathCacheRequest()
     }
+    
+    response = NewPurgePathCacheResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// PurgePathCache
+// PurgePathCache 用于批量刷新目录缓存，一次提交将返回一个刷新任务id。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"
+//  INTERNALERROR_ECDNDBERROR = "InternalError.EcdnDbError"
+//  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
+//  INVALIDPARAMETER_ECDNDOMAININVALIDSTATUS = "InvalidParameter.EcdnDomainInvalidStatus"
+//  INVALIDPARAMETER_ECDNINTERFACEERROR = "InvalidParameter.EcdnInterfaceError"
+//  INVALIDPARAMETER_ECDNPARAMERROR = "InvalidParameter.EcdnParamError"
+//  INVALIDPARAMETER_ECDNPURGEWILDCARDNOTALLOWED = "InvalidParameter.EcdnPurgeWildcardNotAllowed"
+//  INVALIDPARAMETER_ECDNURLEXCEEDLENGTH = "InvalidParameter.EcdnUrlExceedLength"
+//  LIMITEXCEEDED_ECDNPURGEPATHEXCEEDBATCHLIMIT = "LimitExceeded.EcdnPurgePathExceedBatchLimit"
+//  LIMITEXCEEDED_ECDNPURGEPATHEXCEEDDAYLIMIT = "LimitExceeded.EcdnPurgePathExceedDayLimit"
+//  RESOURCENOTFOUND_ECDNDOMAINNOTEXISTS = "ResourceNotFound.EcdnDomainNotExists"
+//  RESOURCENOTFOUND_ECDNUSERNOTEXISTS = "ResourceNotFound.EcdnUserNotExists"
+//  UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = "UnauthorizedOperation.EcdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNDOMAINUNAUTHORIZED = "UnauthorizedOperation.EcdnDomainUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNMIGRATEDCDN = "UnauthorizedOperation.EcdnMigratedCdn"
+//  UNAUTHORIZEDOPERATION_ECDNUSERISSUSPENDED = "UnauthorizedOperation.EcdnUserIsSuspended"
+func (c *Client) PurgePathCacheWithContext(ctx context.Context, request *PurgePathCacheRequest) (response *PurgePathCacheResponse, err error) {
+    if request == nil {
+        request = NewPurgePathCacheRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewPurgePathCacheResponse()
     err = c.Send(request, response)
@@ -646,11 +1038,44 @@ func NewPurgeUrlsCacheResponse() (response *PurgeUrlsCacheResponse) {
 //  RESOURCENOTFOUND_ECDNUSERNOTEXISTS = "ResourceNotFound.EcdnUserNotExists"
 //  UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = "UnauthorizedOperation.EcdnCamUnauthorized"
 //  UNAUTHORIZEDOPERATION_ECDNDOMAINUNAUTHORIZED = "UnauthorizedOperation.EcdnDomainUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNMIGRATEDCDN = "UnauthorizedOperation.EcdnMigratedCdn"
 //  UNAUTHORIZEDOPERATION_ECDNUSERISSUSPENDED = "UnauthorizedOperation.EcdnUserIsSuspended"
 func (c *Client) PurgeUrlsCache(request *PurgeUrlsCacheRequest) (response *PurgeUrlsCacheResponse, err error) {
     if request == nil {
         request = NewPurgeUrlsCacheRequest()
     }
+    
+    response = NewPurgeUrlsCacheResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// PurgeUrlsCache
+// PurgeUrlsCache 用于批量刷新Url，一次提交将返回一个刷新任务id。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"
+//  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
+//  INTERNALERROR_ECDNDBERROR = "InternalError.EcdnDbError"
+//  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
+//  INVALIDPARAMETER_ECDNDOMAININVALIDSTATUS = "InvalidParameter.EcdnDomainInvalidStatus"
+//  INVALIDPARAMETER_ECDNINTERFACEERROR = "InvalidParameter.EcdnInterfaceError"
+//  INVALIDPARAMETER_ECDNPARAMERROR = "InvalidParameter.EcdnParamError"
+//  INVALIDPARAMETER_ECDNPURGEWILDCARDNOTALLOWED = "InvalidParameter.EcdnPurgeWildcardNotAllowed"
+//  INVALIDPARAMETER_ECDNURLEXCEEDLENGTH = "InvalidParameter.EcdnUrlExceedLength"
+//  LIMITEXCEEDED_ECDNPURGEURLEXCEEDBATCHLIMIT = "LimitExceeded.EcdnPurgeUrlExceedBatchLimit"
+//  LIMITEXCEEDED_ECDNPURGEURLEXCEEDDAYLIMIT = "LimitExceeded.EcdnPurgeUrlExceedDayLimit"
+//  RESOURCENOTFOUND_ECDNDOMAINNOTEXISTS = "ResourceNotFound.EcdnDomainNotExists"
+//  RESOURCENOTFOUND_ECDNUSERNOTEXISTS = "ResourceNotFound.EcdnUserNotExists"
+//  UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = "UnauthorizedOperation.EcdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNDOMAINUNAUTHORIZED = "UnauthorizedOperation.EcdnDomainUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNMIGRATEDCDN = "UnauthorizedOperation.EcdnMigratedCdn"
+//  UNAUTHORIZEDOPERATION_ECDNUSERISSUSPENDED = "UnauthorizedOperation.EcdnUserIsSuspended"
+func (c *Client) PurgeUrlsCacheWithContext(ctx context.Context, request *PurgeUrlsCacheRequest) (response *PurgeUrlsCacheResponse, err error) {
+    if request == nil {
+        request = NewPurgeUrlsCacheRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewPurgeUrlsCacheResponse()
     err = c.Send(request, response)
@@ -686,12 +1111,41 @@ func NewStartEcdnDomainResponse() (response *StartEcdnDomainResponse) {
 //  RESOURCEINUSE_ECDNOPINPROGRESS = "ResourceInUse.EcdnOpInProgress"
 //  RESOURCENOTFOUND_ECDNDOMAINNOTEXISTS = "ResourceNotFound.EcdnDomainNotExists"
 //  RESOURCENOTFOUND_ECDNUSERNOTEXISTS = "ResourceNotFound.EcdnUserNotExists"
+//  RESOURCEUNAVAILABLE_ECDNDOMAINISLOCKED = "ResourceUnavailable.EcdnDomainIsLocked"
+//  RESOURCEUNAVAILABLE_ECDNDOMAINISNOTOFFLINE = "ResourceUnavailable.EcdnDomainIsNotOffline"
 //  UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = "UnauthorizedOperation.EcdnCamUnauthorized"
 //  UNAUTHORIZEDOPERATION_ECDNUSERISSUSPENDED = "UnauthorizedOperation.EcdnUserIsSuspended"
 func (c *Client) StartEcdnDomain(request *StartEcdnDomainRequest) (response *StartEcdnDomainResponse, err error) {
     if request == nil {
         request = NewStartEcdnDomainRequest()
     }
+    
+    response = NewStartEcdnDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// StartEcdnDomain
+// 本接口（StartEcdnDomain）用于启用加速域名，待启用域名必须处于已下线状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"
+//  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
+//  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
+//  INVALIDPARAMETER_ECDNINTERFACEERROR = "InvalidParameter.EcdnInterfaceError"
+//  INVALIDPARAMETER_ECDNPARAMERROR = "InvalidParameter.EcdnParamError"
+//  RESOURCEINUSE_ECDNOPINPROGRESS = "ResourceInUse.EcdnOpInProgress"
+//  RESOURCENOTFOUND_ECDNDOMAINNOTEXISTS = "ResourceNotFound.EcdnDomainNotExists"
+//  RESOURCENOTFOUND_ECDNUSERNOTEXISTS = "ResourceNotFound.EcdnUserNotExists"
+//  RESOURCEUNAVAILABLE_ECDNDOMAINISLOCKED = "ResourceUnavailable.EcdnDomainIsLocked"
+//  RESOURCEUNAVAILABLE_ECDNDOMAINISNOTOFFLINE = "ResourceUnavailable.EcdnDomainIsNotOffline"
+//  UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = "UnauthorizedOperation.EcdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNUSERISSUSPENDED = "UnauthorizedOperation.EcdnUserIsSuspended"
+func (c *Client) StartEcdnDomainWithContext(ctx context.Context, request *StartEcdnDomainRequest) (response *StartEcdnDomainResponse, err error) {
+    if request == nil {
+        request = NewStartEcdnDomainRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewStartEcdnDomainResponse()
     err = c.Send(request, response)
@@ -728,12 +1182,42 @@ func NewStopEcdnDomainResponse() (response *StopEcdnDomainResponse) {
 //  RESOURCEINUSE_ECDNOPINPROGRESS = "ResourceInUse.EcdnOpInProgress"
 //  RESOURCENOTFOUND_ECDNDOMAINNOTEXISTS = "ResourceNotFound.EcdnDomainNotExists"
 //  RESOURCENOTFOUND_ECDNUSERNOTEXISTS = "ResourceNotFound.EcdnUserNotExists"
+//  RESOURCEUNAVAILABLE_ECDNDOMAINISNOTONLINE = "ResourceUnavailable.EcdnDomainIsNotOnline"
 //  UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = "UnauthorizedOperation.EcdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNMIGRATEDCDN = "UnauthorizedOperation.EcdnMigratedCdn"
 //  UNAUTHORIZEDOPERATION_ECDNUSERISSUSPENDED = "UnauthorizedOperation.EcdnUserIsSuspended"
 func (c *Client) StopEcdnDomain(request *StopEcdnDomainRequest) (response *StopEcdnDomainResponse, err error) {
     if request == nil {
         request = NewStopEcdnDomainRequest()
     }
+    
+    response = NewStopEcdnDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// StopEcdnDomain
+// 本接口（StopCdnDomain）用于停止加速域名，待停用加速域名必须处于已上线或部署中状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"
+//  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
+//  INTERNALERROR_ECDNDBERROR = "InternalError.EcdnDbError"
+//  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
+//  INVALIDPARAMETER_ECDNINTERFACEERROR = "InvalidParameter.EcdnInterfaceError"
+//  INVALIDPARAMETER_ECDNPARAMERROR = "InvalidParameter.EcdnParamError"
+//  RESOURCEINUSE_ECDNOPINPROGRESS = "ResourceInUse.EcdnOpInProgress"
+//  RESOURCENOTFOUND_ECDNDOMAINNOTEXISTS = "ResourceNotFound.EcdnDomainNotExists"
+//  RESOURCENOTFOUND_ECDNUSERNOTEXISTS = "ResourceNotFound.EcdnUserNotExists"
+//  RESOURCEUNAVAILABLE_ECDNDOMAINISNOTONLINE = "ResourceUnavailable.EcdnDomainIsNotOnline"
+//  UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = "UnauthorizedOperation.EcdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNMIGRATEDCDN = "UnauthorizedOperation.EcdnMigratedCdn"
+//  UNAUTHORIZEDOPERATION_ECDNUSERISSUSPENDED = "UnauthorizedOperation.EcdnUserIsSuspended"
+func (c *Client) StopEcdnDomainWithContext(ctx context.Context, request *StopEcdnDomainRequest) (response *StopEcdnDomainResponse, err error) {
+    if request == nil {
+        request = NewStopEcdnDomainRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewStopEcdnDomainResponse()
     err = c.Send(request, response)
@@ -781,6 +1265,7 @@ func NewUpdateDomainConfigResponse() (response *UpdateDomainConfigResponse) {
 //  RESOURCENOTFOUND_ECDNUSERNOTEXISTS = "ResourceNotFound.EcdnUserNotExists"
 //  UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = "UnauthorizedOperation.EcdnCamUnauthorized"
 //  UNAUTHORIZEDOPERATION_ECDNDOMAINUNAUTHORIZED = "UnauthorizedOperation.EcdnDomainUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNMIGRATEDCDN = "UnauthorizedOperation.EcdnMigratedCdn"
 //  UNAUTHORIZEDOPERATION_ECDNPROJECTUNAUTHORIZED = "UnauthorizedOperation.EcdnProjectUnauthorized"
 //  UNAUTHORIZEDOPERATION_ECDNUSERISSUSPENDED = "UnauthorizedOperation.EcdnUserIsSuspended"
 //  UNAUTHORIZEDOPERATION_ECDNUSERNOWHITELIST = "UnauthorizedOperation.EcdnUserNoWhitelist"
@@ -788,6 +1273,45 @@ func (c *Client) UpdateDomainConfig(request *UpdateDomainConfigRequest) (respons
     if request == nil {
         request = NewUpdateDomainConfigRequest()
     }
+    
+    response = NewUpdateDomainConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UpdateDomainConfig
+// 本接口（UpdateDomainConfig）用于更新ECDN加速域名配置信息。
+//
+// 注意：如果需要更新复杂类型的配置项，必须传递整个对象的所有属性，未传递的属性将使用默认值。建议通过查询接口获取配置属性后，直接修改后传递给本接口。Https配置由于证书的特殊性，更新时不用传递证书和密钥字段。
+//
+// 
+//
+// >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/product/228/41116"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"
+//  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
+//  INTERNALERROR_ECDNDBERROR = "InternalError.EcdnDbError"
+//  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
+//  INVALIDPARAMETER_ECDNINTERFACEERROR = "InvalidParameter.EcdnInterfaceError"
+//  INVALIDPARAMETER_ECDNINVALIDPARAMAREA = "InvalidParameter.EcdnInvalidParamArea"
+//  INVALIDPARAMETER_ECDNPARAMERROR = "InvalidParameter.EcdnParamError"
+//  LIMITEXCEEDED_ECDNDOMAINOPTOOOFTEN = "LimitExceeded.EcdnDomainOpTooOften"
+//  RESOURCEINUSE_ECDNOPINPROGRESS = "ResourceInUse.EcdnOpInProgress"
+//  RESOURCENOTFOUND_ECDNDOMAINNOTEXISTS = "ResourceNotFound.EcdnDomainNotExists"
+//  RESOURCENOTFOUND_ECDNPROJECTNOTEXISTS = "ResourceNotFound.EcdnProjectNotExists"
+//  RESOURCENOTFOUND_ECDNUSERNOTEXISTS = "ResourceNotFound.EcdnUserNotExists"
+//  UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = "UnauthorizedOperation.EcdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNDOMAINUNAUTHORIZED = "UnauthorizedOperation.EcdnDomainUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNMIGRATEDCDN = "UnauthorizedOperation.EcdnMigratedCdn"
+//  UNAUTHORIZEDOPERATION_ECDNPROJECTUNAUTHORIZED = "UnauthorizedOperation.EcdnProjectUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNUSERISSUSPENDED = "UnauthorizedOperation.EcdnUserIsSuspended"
+//  UNAUTHORIZEDOPERATION_ECDNUSERNOWHITELIST = "UnauthorizedOperation.EcdnUserNoWhitelist"
+func (c *Client) UpdateDomainConfigWithContext(ctx context.Context, request *UpdateDomainConfigRequest) (response *UpdateDomainConfigResponse, err error) {
+    if request == nil {
+        request = NewUpdateDomainConfigRequest()
+    }
+    request.SetContext(ctx)
     
     response = NewUpdateDomainConfigResponse()
     err = c.Send(request, response)
