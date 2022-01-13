@@ -537,7 +537,7 @@ type CreateTaskRequest struct {
 	// 计算任务，该参数中包含任务类型及其相关配置信息
 	Task *Task `json:"Task,omitempty" name:"Task"`
 
-	// 数据库名称。任务在执行前均会USE该数据库， 除了首次建库时，其他情况建议均添加上。
+	// 数据库名称。如果SQL语句中有数据库名称，优先使用SQL语句中的数据库，否则使用该参数指定的数据库（注：当提交建库sql时，该字段传空字符串）。
 	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
 
 	// 默认数据源名称。
@@ -656,7 +656,7 @@ func (r *CreateTasksInOrderResponse) FromJsonString(s string) error {
 type CreateTasksRequest struct {
 	*tchttp.BaseRequest
 
-	// 数据库名称。如果SQL语句中有数据库名称，优先使用SQL语句中的数据库，否则使用该参数指定的数据库。
+	// 数据库名称。如果SQL语句中有数据库名称，优先使用SQL语句中的数据库，否则使用该参数指定的数据库（注：当提交建库sql时，该字段传空字符串）。
 	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
 
 	// SQL任务信息

@@ -1601,6 +1601,9 @@ type CreateParamTemplateRequest struct {
 
 	// 参数列表。
 	ParamList []*Parameter `json:"ParamList,omitempty" name:"ParamList"`
+
+	// 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模版，"HIGH_PERFORMANCE" - 高性能模版。
+	TemplateType *string `json:"TemplateType,omitempty" name:"TemplateType"`
 }
 
 func (r *CreateParamTemplateRequest) ToJsonString() string {
@@ -1620,6 +1623,7 @@ func (r *CreateParamTemplateRequest) FromJsonString(s string) error {
 	delete(f, "EngineVersion")
 	delete(f, "TemplateId")
 	delete(f, "ParamList")
+	delete(f, "TemplateType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateParamTemplateRequest has unknown keys!", "")
 	}
@@ -4549,6 +4553,9 @@ type DescribeParamTemplateInfoResponse struct {
 		// 参数模板描述
 		Description *string `json:"Description,omitempty" name:"Description"`
 
+		// 参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模版，"HIGH_PERFORMANCE" - 高性能模版。
+		TemplateType *string `json:"TemplateType,omitempty" name:"TemplateType"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -4567,6 +4574,9 @@ func (r *DescribeParamTemplateInfoResponse) FromJsonString(s string) error {
 
 type DescribeParamTemplatesRequest struct {
 	*tchttp.BaseRequest
+
+	// 引擎版本，缺省则查询所有
+	EngineVersions []*string `json:"EngineVersions,omitempty" name:"EngineVersions"`
 }
 
 func (r *DescribeParamTemplatesRequest) ToJsonString() string {
@@ -4581,6 +4591,7 @@ func (r *DescribeParamTemplatesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "EngineVersions")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeParamTemplatesRequest has unknown keys!", "")
 	}
@@ -7475,6 +7486,9 @@ type ParamTemplateInfo struct {
 
 	// 实例引擎版本
 	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
+
+	// 参数模板类型
+	TemplateType *string `json:"TemplateType,omitempty" name:"TemplateType"`
 }
 
 type Parameter struct {
@@ -7491,7 +7505,7 @@ type ParameterDetail struct {
 	// 参数名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 参数类型
+	// 参数类型：integer，enum，float，string，func
 	ParamType *string `json:"ParamType,omitempty" name:"ParamType"`
 
 	// 参数默认值
@@ -7514,6 +7528,12 @@ type ParameterDetail struct {
 
 	// 参数的可选枚举值。如果为非枚举参数，则为空
 	EnumValue []*string `json:"EnumValue,omitempty" name:"EnumValue"`
+
+	// 参数是公式类型时，该字段有效，表示公式类型最大值
+	MaxFunc *string `json:"MaxFunc,omitempty" name:"MaxFunc"`
+
+	// 参数是公式类型时，该字段有效，表示公式类型最小值
+	MinFunc *string `json:"MinFunc,omitempty" name:"MinFunc"`
 }
 
 type RegionSellConf struct {

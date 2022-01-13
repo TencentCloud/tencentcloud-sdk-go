@@ -5583,6 +5583,39 @@ type KVPair struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
+type LogObject struct {
+
+	// 日志属于的 topic ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 日志主题的名字
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// 日志时间
+	Timestamp *string `json:"Timestamp,omitempty" name:"Timestamp"`
+
+	// 日志内容
+	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 采集路径
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 日志来源设备
+	Source *string `json:"Source,omitempty" name:"Source"`
+}
+
+type LogResObject struct {
+
+	// 获取更多检索结果的游标
+	Context *string `json:"Context,omitempty" name:"Context"`
+
+	// 搜索结果是否已经全部返回
+	ListOver *bool `json:"ListOver,omitempty" name:"ListOver"`
+
+	// 日志内容信息
+	Results []*LogObject `json:"Results,omitempty" name:"Results"`
+}
+
 type LogServiceInfo struct {
 
 	// log名
@@ -6422,6 +6455,83 @@ func (r *RollUpdateCloudBaseRunServerVersionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RollUpdateCloudBaseRunServerVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchClsLogRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境唯一ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 查询起始时间条件
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间条件
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 查询语句，详情参考 https://cloud.tencent.com/document/product/614/47044
+	QueryString *string `json:"QueryString,omitempty" name:"QueryString"`
+
+	// 单次要返回的日志条数，单次返回的最大条数为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 加载更多使用，透传上次返回的 context 值，获取后续的日志内容，通过游标最多可获取10000条，请尽可能缩小时间范围
+	Context *string `json:"Context,omitempty" name:"Context"`
+
+	// 按时间排序 asc（升序）或者 desc（降序），默认为 desc
+	Sort *string `json:"Sort,omitempty" name:"Sort"`
+
+	// 是否使用Lucene语法，默认为false
+	UseLucene *bool `json:"UseLucene,omitempty" name:"UseLucene"`
+}
+
+func (r *SearchClsLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchClsLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "QueryString")
+	delete(f, "Limit")
+	delete(f, "Context")
+	delete(f, "Sort")
+	delete(f, "UseLucene")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchClsLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchClsLogResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 日志内容结果
+		LogResults *LogResObject `json:"LogResults,omitempty" name:"LogResults"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SearchClsLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchClsLogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

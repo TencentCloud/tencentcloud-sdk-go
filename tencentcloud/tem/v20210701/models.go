@@ -563,8 +563,10 @@ type DeployApplicationRequest struct {
 	PkgName *string `json:"PkgName,omitempty" name:"PkgName"`
 
 	// JDK 版本。
-	// - KONA：使用 kona jdk。
-	// - OPEN：使用 open jdk。
+	// - KONA:8：使用 kona jdk 8。
+	// - OPEN:8：使用 open jdk 8。
+	// - KONA:11：使用 kona jdk 11。
+	// - OPEN:11：使用 open jdk 11。
 	JdkVersion *string `json:"JdkVersion,omitempty" name:"JdkVersion"`
 
 	// 安全组ID s
@@ -620,6 +622,15 @@ type DeployApplicationRequest struct {
 
 	// 是否启用log，1为启用，0为不启用
 	LogEnable *int64 `json:"LogEnable,omitempty" name:"LogEnable"`
+
+	// （除开镜像配置）配置是否修改
+	ConfEdited *bool `json:"ConfEdited,omitempty" name:"ConfEdited"`
+
+	// 是否开启应用加速
+	SpeedUp *bool `json:"SpeedUp,omitempty" name:"SpeedUp"`
+
+	// 启动探针配置
+	StartupProbe *HealthCheckConfig `json:"StartupProbe,omitempty" name:"StartupProbe"`
 }
 
 func (r *DeployApplicationRequest) ToJsonString() string {
@@ -669,6 +680,9 @@ func (r *DeployApplicationRequest) FromJsonString(s string) error {
 	delete(f, "HorizontalAutoscaler")
 	delete(f, "CronHorizontalAutoscaler")
 	delete(f, "LogEnable")
+	delete(f, "ConfEdited")
+	delete(f, "SpeedUp")
+	delete(f, "StartupProbe")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployApplicationRequest has unknown keys!", "")
 	}
@@ -773,6 +787,9 @@ type DeployStrategyConf struct {
 
 	// 每批暂停间隔
 	BatchInterval *int64 `json:"BatchInterval,omitempty" name:"BatchInterval"`
+
+	// 最小可用实例数
+	MinAvailable *int64 `json:"MinAvailable,omitempty" name:"MinAvailable"`
 }
 
 type DescribeApplicationPodsRequest struct {
@@ -1719,11 +1736,19 @@ type NamespacePage struct {
 
 type Pair struct {
 
-	// 建
+	// 键
 	Key *string `json:"Key,omitempty" name:"Key"`
 
 	// 值
 	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 类型，default 为自定义，reserved 为系统变量，referenced 为引用配置项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 配置名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Config *string `json:"Config,omitempty" name:"Config"`
 }
 
 type PortMapping struct {

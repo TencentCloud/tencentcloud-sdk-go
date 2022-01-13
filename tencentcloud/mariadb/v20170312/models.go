@@ -4458,6 +4458,59 @@ type SqlLogItem struct {
 	ResultCode *uint64 `json:"ResultCode,omitempty" name:"ResultCode"`
 }
 
+type SwitchDBInstanceHARequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id，形如 tdsql-ow728lmc
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 切换的目标区域，会自动选择该可用区中延迟最低的节点
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+}
+
+func (r *SwitchDBInstanceHARequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SwitchDBInstanceHARequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Zone")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SwitchDBInstanceHARequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SwitchDBInstanceHAResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 异步流程Id
+		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *SwitchDBInstanceHAResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SwitchDBInstanceHAResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type TablePrivilege struct {
 
 	// 数据库名

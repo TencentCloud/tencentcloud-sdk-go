@@ -1,29 +1,26 @@
 # 本版本更新包含以下内容：
 
-## 计费相关(billing) 版本：2018-07-09
+## 云硬盘(cbs) 版本：2017-03-12
 
-### 第 30 次发布
+### 第 38 次发布
 
-发布时间：2022-01-11 08:03:32
+发布时间：2022-01-13 08:11:09
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [Deal](https://cloud.tencent.com/document/api/555/19183#Deal)
-
-	* 新增成员：Action
+* [InitializeDisks](https://cloud.tencent.com/document/api/362/68110)
 
 
 
+## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-## 云硬盘(cbs) 版本：2017-03-12
+### 第 79 次发布
 
-### 第 36 次发布
-
-发布时间：2022-01-11 08:04:11
+发布时间：2022-01-13 08:11:45
 
 本次发布包含了以下内容：
 
@@ -31,141 +28,83 @@
 
 修改接口：
 
-* [TerminateDisks](https://cloud.tencent.com/document/api/362/16321)
+* [CreateParamTemplate](https://cloud.tencent.com/document/api/236/32663)
 
-	* 新增入参：DeleteSnapshot
+	* 新增入参：TemplateType
+
+* [DescribeParamTemplateInfo](https://cloud.tencent.com/document/api/236/32660)
+
+	* 新增出参：TemplateType
+
+* [DescribeParamTemplates](https://cloud.tencent.com/document/api/236/32659)
+
+	* 新增入参：EngineVersions
+
+
+修改数据结构：
+
+* [ParamTemplateInfo](https://cloud.tencent.com/document/api/236/15878#ParamTemplateInfo)
+
+	* 新增成员：TemplateType
+
+* [ParameterDetail](https://cloud.tencent.com/document/api/236/15878#ParameterDetail)
+
+	* 新增成员：MaxFunc, MinFunc
+
+
+
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 15 次发布
+
+发布时间：2022-01-13 08:15:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateNatFwInstance](https://cloud.tencent.com/document/api/1132/60250)
+
+	* 新增出参：CfwInsId
+
+* [CreateNatFwInstanceWithDomain](https://cloud.tencent.com/document/api/1132/61923)
+
+	* 新增出参：CfwInsId
+
+* [DescribeVpcRuleOverview](https://cloud.tencent.com/document/api/1132/49065)
+
+	* 新增出参：Total
+
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 69 次发布
+
+发布时间：2022-01-13 08:23:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ResizeInstanceDisks](https://cloud.tencent.com/document/api/213/15731)
+
+	* 新增入参：SystemDisk, ResizeOnline
 
 
 
 
 ## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
 
-### 第 32 次发布
+### 第 33 次发布
 
-发布时间：2022-01-11 08:07:36
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateDCDBInstance](https://cloud.tencent.com/document/api/557/16135)
-
-	* 新增入参：SecurityGroupIds
-
-* [DescribeProjectSecurityGroups](https://cloud.tencent.com/document/api/557/51780)
-
-	* 新增出参：Total
-
-
-修改数据结构：
-
-* [DCDBInstanceInfo](https://cloud.tencent.com/document/api/557/16142#DCDBInstanceInfo)
-
-	* 新增成员：ResourceTags
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
-
-### 第 11 次发布
-
-发布时间：2022-01-11 08:08:55
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Recipient](https://cloud.tencent.com/document/api/1420/61525#Recipient)
-
-	* 新增成员：IsPromoter
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
-
-
-
-## 全球应用加速(gaap) 版本：2018-05-29
-
-### 第 27 次发布
-
-发布时间：2022-01-11 08:09:11
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CheckProxyCreate](https://cloud.tencent.com/document/api/608/36974)
-
-	* 新增入参：Http3Supported
-
-* [CreateDomain](https://cloud.tencent.com/document/api/608/36991)
-
-	* 新增入参：Http3Supported
-
-* [CreateHTTPSListener](https://cloud.tencent.com/document/api/608/37006)
-
-	* 新增入参：Http3Supported
-
-* [CreateProxy](https://cloud.tencent.com/document/api/608/36971)
-
-	* 新增入参：Http3Supported
-
-* [CreateProxyGroup](https://cloud.tencent.com/document/api/608/36949)
-
-	* 新增入参：Http3Supported
-
-* [DescribeHTTPSListeners](https://cloud.tencent.com/document/api/608/37001)
-
-	* 新增入参：Http3Supported
-
-* [InquiryPriceCreateProxy](https://cloud.tencent.com/document/api/608/36957)
-
-	* 新增入参：Http3Supported
-
-
-修改数据结构：
-
-* [AccessRegionDetial](https://cloud.tencent.com/document/api/608/37023#AccessRegionDetial)
-
-	* 新增成员：FeatureBitmap
-
-* [DomainRuleSet](https://cloud.tencent.com/document/api/608/37023#DomainRuleSet)
-
-	* 新增成员：Http3Supported
-
-* [ProxyGroupDetail](https://cloud.tencent.com/document/api/608/37023#ProxyGroupDetail)
-
-	* 新增成员：Http3Supported
-
-* [ProxyGroupInfo](https://cloud.tencent.com/document/api/608/37023#ProxyGroupInfo)
-
-	* 新增成员：Http3Supported
-
-* [ProxyInfo](https://cloud.tencent.com/document/api/608/37023#ProxyInfo)
-
-	* 新增成员：Http3Supported
-
-* [RegionDetail](https://cloud.tencent.com/document/api/608/37023#RegionDetail)
-
-	* 新增成员：FeatureBitmap
-
-
-
-
-## 云游戏解决方案(gs) 版本：2019-11-18
-
-### 第 16 次发布
-
-发布时间：2022-01-11 08:09:37
+发布时间：2022-01-13 08:32:29
 
 本次发布包含了以下内容：
 
@@ -173,16 +112,50 @@
 
 新增接口：
 
-* [StartPublishStream](https://cloud.tencent.com/document/api/1162/67868)
-* [StopPublishStream](https://cloud.tencent.com/document/api/1162/67867)
+* [SwitchDBInstanceHA](https://cloud.tencent.com/document/api/557/68111)
 
 
 
-## 物联网开发平台(iotexplorer) 版本：2019-04-23
+## 数字身份管控平台（员工版）(eiam) 版本：2021-04-20
 
-### 第 40 次发布
+### 第 13 次发布
 
-发布时间：2022-01-11 08:10:29
+发布时间：2022-01-12 20:31:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeOrgResourcesAuthorization](https://cloud.tencent.com/document/api/1442/60259)
+
+	* <font color="#dd0000">**修改出参**：</font>AuthorizationOrgResourceList
+
+* [DescribeUserGroupResourcesAuthorization](https://cloud.tencent.com/document/api/1442/60258)
+
+	* <font color="#dd0000">**修改出参**：</font>AuthorizationUserGroupResourceList
+
+
+新增数据结构：
+
+* [AuthorizationResourceEntityInfo](https://cloud.tencent.com/document/api/1442/57931#AuthorizationResourceEntityInfo)
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* AuthorizationResouceEntityInfo
+
+
+
+## 物联网通信(iotcloud) 版本：2021-04-08
+
+
+
+## 物联网通信(iotcloud) 版本：2018-06-14
+
+### 第 25 次发布
+
+发布时间：2022-01-13 08:43:07
 
 本次发布包含了以下内容：
 
@@ -190,52 +163,23 @@
 
 新增接口：
 
-* [BindDevices](https://cloud.tencent.com/document/api/1081/67873)
-* [BindProducts](https://cloud.tencent.com/document/api/1081/67877)
-* [DescribeBindedProducts](https://cloud.tencent.com/document/api/1081/67876)
-* [DescribeDeviceBindGateway](https://cloud.tencent.com/document/api/1081/67872)
-* [DescribeGatewayBindDevices](https://cloud.tencent.com/document/api/1081/67871)
-* [DescribeGatewaySubProducts](https://cloud.tencent.com/document/api/1081/67875)
-* [GetGatewaySubDeviceList](https://cloud.tencent.com/document/api/1081/67870)
-* [UnbindDevices](https://cloud.tencent.com/document/api/1081/67869)
-* [UnbindProducts](https://cloud.tencent.com/document/api/1081/67874)
+* [ListLog](https://cloud.tencent.com/document/api/634/68114)
+* [ListLogPayload](https://cloud.tencent.com/document/api/634/68113)
+* [ListSDKLog](https://cloud.tencent.com/document/api/634/68112)
 
 新增数据结构：
 
-* [BindDeviceInfo](https://cloud.tencent.com/document/api/1081/34988#BindDeviceInfo)
-* [BindProductInfo](https://cloud.tencent.com/document/api/1081/34988#BindProductInfo)
-* [FamilySubDevice](https://cloud.tencent.com/document/api/1081/34988#FamilySubDevice)
-
-
-
-## 轻量应用服务器(lighthouse) 版本：2020-03-24
-
-### 第 24 次发布
-
-发布时间：2022-01-11 08:11:43
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [Tag](https://cloud.tencent.com/document/api/1207/47576#Tag)
-
-修改数据结构：
-
-* [Instance](https://cloud.tencent.com/document/api/1207/47576#Instance)
-
-	* 新增成员：Tags
-
+* [CLSLogItem](https://cloud.tencent.com/document/api/634/19497#CLSLogItem)
+* [PayloadLogItem](https://cloud.tencent.com/document/api/634/19497#PayloadLogItem)
+* [SDKLogItem](https://cloud.tencent.com/document/api/634/19497#SDKLogItem)
 
 
 
 ## 云数据库 MariaDB(mariadb) 版本：2017-03-12
 
-### 第 29 次发布
+### 第 30 次发布
 
-发布时间：2022-01-11 08:12:13
+发布时间：2022-01-13 08:50:16
 
 本次发布包含了以下内容：
 
@@ -243,29 +187,15 @@
 
 新增接口：
 
-* [CreateHourDBInstance](https://cloud.tencent.com/document/api/237/67878)
-
-修改接口：
-
-* [DescribeProjectSecurityGroups](https://cloud.tencent.com/document/api/237/51786)
-
-	* 新增出参：Total
-
-
-修改数据结构：
-
-* [DBInstance](https://cloud.tencent.com/document/api/237/16191#DBInstance)
-
-	* 新增成员：ResourceTags
+* [SwitchDBInstanceHA](https://cloud.tencent.com/document/api/237/68116)
 
 
 
-
-## 凭据管理系统(ssm) 版本：2019-09-23
+## 邮件推送(ses) 版本：2020-10-02
 
 ### 第 6 次发布
 
-发布时间：2022-01-11 08:14:31
+发布时间：2022-01-13 08:58:20
 
 本次发布包含了以下内容：
 
@@ -273,40 +203,31 @@
 
 修改接口：
 
-* [DescribeSecret](https://cloud.tencent.com/document/api/1140/40526)
+* [SendEmail](https://cloud.tencent.com/document/api/1288/51034)
 
-	* 新增出参：TargetUin
-
-* [GetServiceStatus](https://cloud.tencent.com/document/api/1140/40521)
-
-	* 新增出参：AccessKeyEscrowEnabled
-
-
-修改数据结构：
-
-* [SecretMetadata](https://cloud.tencent.com/document/api/1140/40530#SecretMetadata)
-
-	* 新增成员：TargetUin
+	* 新增入参：Unsubscribe
 
 
 
 
-## 云点播(vod) 版本：2018-07-17
+## 云开发 CloudBase(tcb) 版本：2018-06-08
 
-### 第 94 次发布
+### 第 78 次发布
 
-发布时间：2022-01-11 08:17:35
+发布时间：2022-01-13 09:02:45
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [AdaptiveDynamicStreamingInfoItem](https://cloud.tencent.com/document/api/266/31773#AdaptiveDynamicStreamingInfoItem)
+* [SearchClsLog](https://cloud.tencent.com/document/api/876/68117)
 
-	* 新增成员：Size
+新增数据结构：
 
+* [LogObject](https://cloud.tencent.com/document/api/876/34822#LogObject)
+* [LogResObject](https://cloud.tencent.com/document/api/876/34822#LogResObject)
 
 
 
@@ -7863,6 +7784,33 @@
 
 ## 云硬盘(cbs) 版本：2017-03-12
 
+### 第 38 次发布
+
+发布时间：2022-01-13 08:11:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[InitializeDisks](https://cloud.tencent.com/document/api/362/68110)](https://cloud.tencent.com/document/api/#/#)
+
+### 第 37 次发布
+
+发布时间：2022-01-12 08:06:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Disk](https://cloud.tencent.com/document/api/362/15669#Disk)
+
+	* 新增成员：DeleteSnapshot
+
+
 ### 第 36 次发布
 
 发布时间：2022-01-11 08:04:11
@@ -8944,6 +8892,40 @@
 
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 79 次发布
+
+发布时间：2022-01-13 08:11:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateParamTemplate](https://cloud.tencent.com/document/api/236/32663)
+
+	* 新增入参：TemplateType
+
+* [DescribeParamTemplateInfo](https://cloud.tencent.com/document/api/236/32660)
+
+	* 新增出参：TemplateType
+
+* [DescribeParamTemplates](https://cloud.tencent.com/document/api/236/32659)
+
+	* 新增入参：EngineVersions
+
+
+修改数据结构：
+
+* [ParamTemplateInfo](https://cloud.tencent.com/document/api/236/15878#ParamTemplateInfo)
+
+	* 新增成员：TemplateType
+
+* [ParameterDetail](https://cloud.tencent.com/document/api/236/15878#ParameterDetail)
+
+	* 新增成员：MaxFunc, MinFunc
+
 
 ### 第 78 次发布
 
@@ -12928,6 +12910,29 @@
 
 
 ## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 15 次发布
+
+发布时间：2022-01-13 08:15:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateNatFwInstance](https://cloud.tencent.com/document/api/1132/60250)
+
+	* 新增出参：CfwInsId
+
+* [CreateNatFwInstanceWithDomain](https://cloud.tencent.com/document/api/1132/61923)
+
+	* 新增出参：CfwInsId
+
+* [DescribeVpcRuleOverview](https://cloud.tencent.com/document/api/1132/49065)
+
+	* 新增出参：Total
+
 
 ### 第 14 次发布
 
@@ -19458,6 +19463,21 @@
 
 ## 云服务器(cvm) 版本：2017-03-12
 
+### 第 69 次发布
+
+发布时间：2022-01-13 08:23:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ResizeInstanceDisks](https://cloud.tencent.com/document/api/213/15731)
+
+	* 新增入参：SystemDisk, ResizeOnline
+
+
 ### 第 68 次发布
 
 发布时间：2021-12-22 08:09:40
@@ -23908,6 +23928,18 @@
 
 ## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
 
+### 第 33 次发布
+
+发布时间：2022-01-13 08:32:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[SwitchDBInstanceHA](https://cloud.tencent.com/document/api/557/68111)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 32 次发布
 
 发布时间：2022-01-11 08:07:36
@@ -27592,6 +27624,33 @@
 
 
 ## 数字身份管控平台（员工版）(eiam) 版本：2021-04-20
+
+### 第 13 次发布
+
+发布时间：2022-01-12 20:31:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeOrgResourcesAuthorization](https://cloud.tencent.com/document/api/1442/60259)
+
+	* <font color="#dd0000">**修改出参**：</font>AuthorizationOrgResourceList
+
+* [DescribeUserGroupResourcesAuthorization](https://cloud.tencent.com/document/api/1442/60258)
+
+	* <font color="#dd0000">**修改出参**：</font>AuthorizationUserGroupResourceList
+
+
+新增数据结构：
+
+* [[AuthorizationResourceEntityInfo](https://cloud.tencent.com/document/api/1442/57931#AuthorizationResourceEntityInfo)](https://cloud.tencent.com/document/api/1442/57931#[AuthorizationResourceEntityInfo](https://cloud.tencent.com/document/api/1442/57931#AuthorizationResourceEntityInfo))
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* AuthorizationResouceEntityInfo
 
 ### 第 12 次发布
 
@@ -31752,8 +31811,8 @@
 
 新增接口：
 
-* [[StartPublishStream](https://cloud.tencent.com/document/api/1162/67868)](https://cloud.tencent.com/document/api/#/#)
-* [[StopPublishStream](https://cloud.tencent.com/document/api/1162/67867)](https://cloud.tencent.com/document/api/#/#)
+* [StartPublishStream](https://cloud.tencent.com/document/api/1162/67868)
+* [StopPublishStream](https://cloud.tencent.com/document/api/1162/67867)
 
 ### 第 15 次发布
 
@@ -34458,6 +34517,26 @@
 
 ## 物联网通信(iotcloud) 版本：2018-06-14
 
+### 第 25 次发布
+
+发布时间：2022-01-13 08:43:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ListLog](https://cloud.tencent.com/document/api/634/68114)](https://cloud.tencent.com/document/api/#/#)
+* [[ListLogPayload](https://cloud.tencent.com/document/api/634/68113)](https://cloud.tencent.com/document/api/#/#)
+* [[ListSDKLog](https://cloud.tencent.com/document/api/634/68112)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CLSLogItem](https://cloud.tencent.com/document/api/634/19497#CLSLogItem)](https://cloud.tencent.com/document/api/634/19497#[CLSLogItem](https://cloud.tencent.com/document/api/634/19497#CLSLogItem))
+* [[PayloadLogItem](https://cloud.tencent.com/document/api/634/19497#PayloadLogItem)](https://cloud.tencent.com/document/api/634/19497#[PayloadLogItem](https://cloud.tencent.com/document/api/634/19497#PayloadLogItem))
+* [[SDKLogItem](https://cloud.tencent.com/document/api/634/19497#SDKLogItem)](https://cloud.tencent.com/document/api/634/19497#[SDKLogItem](https://cloud.tencent.com/document/api/634/19497#SDKLogItem))
+
 ### 第 24 次发布
 
 发布时间：2021-09-27 08:12:57
@@ -35084,21 +35163,21 @@
 
 新增接口：
 
-* [[BindDevices](https://cloud.tencent.com/document/api/1081/67873)](https://cloud.tencent.com/document/api/#/#)
-* [[BindProducts](https://cloud.tencent.com/document/api/1081/67877)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBindedProducts](https://cloud.tencent.com/document/api/1081/67876)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDeviceBindGateway](https://cloud.tencent.com/document/api/1081/67872)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeGatewayBindDevices](https://cloud.tencent.com/document/api/1081/67871)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeGatewaySubProducts](https://cloud.tencent.com/document/api/1081/67875)](https://cloud.tencent.com/document/api/#/#)
-* [[GetGatewaySubDeviceList](https://cloud.tencent.com/document/api/1081/67870)](https://cloud.tencent.com/document/api/#/#)
-* [[UnbindDevices](https://cloud.tencent.com/document/api/1081/67869)](https://cloud.tencent.com/document/api/#/#)
-* [[UnbindProducts](https://cloud.tencent.com/document/api/1081/67874)](https://cloud.tencent.com/document/api/#/#)
+* [BindDevices](https://cloud.tencent.com/document/api/1081/67873)
+* [BindProducts](https://cloud.tencent.com/document/api/1081/67877)
+* [DescribeBindedProducts](https://cloud.tencent.com/document/api/1081/67876)
+* [DescribeDeviceBindGateway](https://cloud.tencent.com/document/api/1081/67872)
+* [DescribeGatewayBindDevices](https://cloud.tencent.com/document/api/1081/67871)
+* [DescribeGatewaySubProducts](https://cloud.tencent.com/document/api/1081/67875)
+* [GetGatewaySubDeviceList](https://cloud.tencent.com/document/api/1081/67870)
+* [UnbindDevices](https://cloud.tencent.com/document/api/1081/67869)
+* [UnbindProducts](https://cloud.tencent.com/document/api/1081/67874)
 
 新增数据结构：
 
-* [[BindDeviceInfo](https://cloud.tencent.com/document/api/1081/34988#BindDeviceInfo)](https://cloud.tencent.com/document/api/1081/34988#[BindDeviceInfo](https://cloud.tencent.com/document/api/1081/34988#BindDeviceInfo))
-* [[BindProductInfo](https://cloud.tencent.com/document/api/1081/34988#BindProductInfo)](https://cloud.tencent.com/document/api/1081/34988#[BindProductInfo](https://cloud.tencent.com/document/api/1081/34988#BindProductInfo))
-* [[FamilySubDevice](https://cloud.tencent.com/document/api/1081/34988#FamilySubDevice)](https://cloud.tencent.com/document/api/1081/34988#[FamilySubDevice](https://cloud.tencent.com/document/api/1081/34988#FamilySubDevice))
+* [BindDeviceInfo](https://cloud.tencent.com/document/api/1081/34988#BindDeviceInfo)
+* [BindProductInfo](https://cloud.tencent.com/document/api/1081/34988#BindProductInfo)
+* [FamilySubDevice](https://cloud.tencent.com/document/api/1081/34988#FamilySubDevice)
 
 ### 第 39 次发布
 
@@ -37671,7 +37750,7 @@
 
 新增数据结构：
 
-* [[Tag](https://cloud.tencent.com/document/api/1207/47576#Tag)](https://cloud.tencent.com/document/api/1207/47576#[Tag](https://cloud.tencent.com/document/api/1207/47576#Tag))
+* [Tag](https://cloud.tencent.com/document/api/1207/47576#Tag)
 
 修改数据结构：
 
@@ -39685,6 +39764,18 @@
 
 ## 云数据库 MariaDB(mariadb) 版本：2017-03-12
 
+### 第 30 次发布
+
+发布时间：2022-01-13 08:50:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[SwitchDBInstanceHA](https://cloud.tencent.com/document/api/237/68116)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 29 次发布
 
 发布时间：2022-01-11 08:12:13
@@ -39695,7 +39786,7 @@
 
 新增接口：
 
-* [[CreateHourDBInstance](https://cloud.tencent.com/document/api/237/67878)](https://cloud.tencent.com/document/api/#/#)
+* [CreateHourDBInstance](https://cloud.tencent.com/document/api/237/67878)
 
 修改接口：
 
@@ -41078,6 +41169,21 @@
 
 
 ## 云监控(monitor) 版本：2018-07-24
+
+### 第 36 次发布
+
+发布时间：2022-01-12 08:12:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [URLNotice](https://cloud.tencent.com/document/api/248/30354#URLNotice)
+
+	* 新增成员：StartTime, EndTime
+
 
 ### 第 35 次发布
 
@@ -45887,6 +45993,27 @@
 
 ## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
 
+### 第 24 次发布
+
+发布时间：2022-01-12 08:13:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CloneDBInstance](https://cloud.tencent.com/document/api/409/68071)
+* [DescribeAvailableRecoveryTime](https://cloud.tencent.com/document/api/409/68070)
+* [DescribeBackupPlans](https://cloud.tencent.com/document/api/409/68069)
+* [DescribeCloneDBInstanceSpec](https://cloud.tencent.com/document/api/409/68068)
+* [ModifyBackupPlan](https://cloud.tencent.com/document/api/409/68067)
+* [ModifyDBInstanceDeployment](https://cloud.tencent.com/document/api/409/68066)
+
+新增数据结构：
+
+* [BackupPlan](https://cloud.tencent.com/document/api/409/16778#BackupPlan)
+
 ### 第 23 次发布
 
 发布时间：2022-01-10 08:14:24
@@ -47669,6 +47796,21 @@
 
 ## 云函数(scf) 版本：2018-04-16
 
+### 第 43 次发布
+
+发布时间：2022-01-12 08:13:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TriggerAction](https://cloud.tencent.com/document/api/583/17244#TriggerAction)
+
+	* 新增成员：ProvisionedType
+
+
 ### 第 42 次发布
 
 发布时间：2021-12-09 08:09:39
@@ -48605,6 +48747,21 @@
 
 ## 邮件推送(ses) 版本：2020-10-02
 
+### 第 6 次发布
+
+发布时间：2022-01-13 08:58:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SendEmail](https://cloud.tencent.com/document/api/1288/51034)
+
+	* 新增入参：Unsubscribe
+
+
 ### 第 5 次发布
 
 发布时间：2021-10-29 08:08:48
@@ -48761,7 +48918,7 @@
 
 修改数据结构：
 
-* [SendStatus](https://cloud.tencent.com/document/api/#/##SendStatus)
+* [SendStatus](https://cloud.tencent.com/document/api/382/67948#SendStatus)
 
 	* 新增成员：IsoCode
 
@@ -48776,11 +48933,11 @@
 
 修改接口：
 
-* [PullSmsReplyStatusByPhoneNumber](https://cloud.tencent.com/document/api/#/#)
+* [PullSmsReplyStatusByPhoneNumber](https://cloud.tencent.com/document/api/382/67944)
 
 	* 新增入参：EndDateTime
 
-* [PullSmsSendStatusByPhoneNumber](https://cloud.tencent.com/document/api/#/#)
+* [PullSmsSendStatusByPhoneNumber](https://cloud.tencent.com/document/api/382/67942)
 
 	* 新增入参：EndDateTime
 
@@ -48795,13 +48952,13 @@
 
 新增接口：
 
-* [DescribeSmsSignList](https://cloud.tencent.com/document/api/#/#)
-* [DescribeSmsTemplateList](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSmsSignList](https://cloud.tencent.com/document/api/382/67933)
+* [DescribeSmsTemplateList](https://cloud.tencent.com/document/api/382/67938)
 
 新增数据结构：
 
-* [DescribeSignListStatus](https://cloud.tencent.com/document/api/#/##DescribeSignListStatus)
-* [DescribeTemplateListStatus](https://cloud.tencent.com/document/api/#/##DescribeTemplateListStatus)
+* [DescribeSignListStatus](https://cloud.tencent.com/document/api/382/67948#DescribeSignListStatus)
+* [DescribeTemplateListStatus](https://cloud.tencent.com/document/api/382/67948#DescribeTemplateListStatus)
 
 ### 第 6 次发布
 
@@ -48813,21 +48970,21 @@
 
 新增接口：
 
-* [AddSmsSign](https://cloud.tencent.com/document/api/#/#)
-* [AddSmsTemplate](https://cloud.tencent.com/document/api/#/#)
-* [DeleteSmsSign](https://cloud.tencent.com/document/api/#/#)
-* [DeleteSmsTemplate](https://cloud.tencent.com/document/api/#/#)
-* [ModifySmsSign](https://cloud.tencent.com/document/api/#/#)
-* [ModifySmsTemplate](https://cloud.tencent.com/document/api/#/#)
+* [AddSmsSign](https://cloud.tencent.com/document/api/382/67935)
+* [AddSmsTemplate](https://cloud.tencent.com/document/api/382/67940)
+* [DeleteSmsSign](https://cloud.tencent.com/document/api/382/67934)
+* [DeleteSmsTemplate](https://cloud.tencent.com/document/api/382/67939)
+* [ModifySmsSign](https://cloud.tencent.com/document/api/382/67932)
+* [ModifySmsTemplate](https://cloud.tencent.com/document/api/382/67937)
 
 新增数据结构：
 
-* [AddSignStatus](https://cloud.tencent.com/document/api/#/##AddSignStatus)
-* [AddTemplateStatus](https://cloud.tencent.com/document/api/#/##AddTemplateStatus)
-* [DeleteSignStatus](https://cloud.tencent.com/document/api/#/##DeleteSignStatus)
-* [DeleteTemplateStatus](https://cloud.tencent.com/document/api/#/##DeleteTemplateStatus)
-* [ModifySignStatus](https://cloud.tencent.com/document/api/#/##ModifySignStatus)
-* [ModifyTemplateStatus](https://cloud.tencent.com/document/api/#/##ModifyTemplateStatus)
+* [AddSignStatus](https://cloud.tencent.com/document/api/382/67948#AddSignStatus)
+* [AddTemplateStatus](https://cloud.tencent.com/document/api/382/67948#AddTemplateStatus)
+* [DeleteSignStatus](https://cloud.tencent.com/document/api/382/67948#DeleteSignStatus)
+* [DeleteTemplateStatus](https://cloud.tencent.com/document/api/382/67948#DeleteTemplateStatus)
+* [ModifySignStatus](https://cloud.tencent.com/document/api/382/67948#ModifySignStatus)
+* [ModifyTemplateStatus](https://cloud.tencent.com/document/api/382/67948#ModifyTemplateStatus)
 
 ### 第 5 次发布
 
@@ -48839,15 +48996,15 @@
 
 修改数据结构：
 
-* [PullSmsReplyStatus](https://cloud.tencent.com/document/api/#/##PullSmsReplyStatus)
+* [PullSmsReplyStatus](https://cloud.tencent.com/document/api/382/67948#PullSmsReplyStatus)
 
 	* 新增成员：ReplyUnixTime
 
-* [PullSmsSendStatus](https://cloud.tencent.com/document/api/#/##PullSmsSendStatus)
+* [PullSmsSendStatus](https://cloud.tencent.com/document/api/382/67948#PullSmsSendStatus)
 
 	* 新增成员：UserReceiveUnixTime
 
-* [SmsPackagesStatistics](https://cloud.tencent.com/document/api/#/##SmsPackagesStatistics)
+* [SmsPackagesStatistics](https://cloud.tencent.com/document/api/382/67948#SmsPackagesStatistics)
 
 	* 新增成员：PackageCreateUnixTime, PackageEffectiveUnixTime, PackageExpiredUnixTime
 
@@ -48862,30 +49019,30 @@
 
 修改接口：
 
-* [PullSmsReplyStatusByPhoneNumber](https://cloud.tencent.com/document/api/#/#)
+* [PullSmsReplyStatusByPhoneNumber](https://cloud.tencent.com/document/api/382/67944)
 
 	* <font color="#dd0000">**修改入参**：</font>SendDateTime
 
-* [PullSmsSendStatusByPhoneNumber](https://cloud.tencent.com/document/api/#/#)
+* [PullSmsSendStatusByPhoneNumber](https://cloud.tencent.com/document/api/382/67942)
 
 	* <font color="#dd0000">**修改入参**：</font>SendDateTime
 
-* [SendSms](https://cloud.tencent.com/document/api/#/#)
+* [SendSms](https://cloud.tencent.com/document/api/382/67947)
 
 	* <font color="#dd0000">**修改入参**：</font>ExtendCode
 
-* [SmsPackagesStatistics](https://cloud.tencent.com/document/api/#/#)
+* [SmsPackagesStatistics](https://cloud.tencent.com/document/api/382/67928)
 
 	* <font color="#dd0000">**删除入参**：</font>NumberOfPullPackages
 
 
 修改数据结构：
 
-* [PullSmsReplyStatus](https://cloud.tencent.com/document/api/#/##PullSmsReplyStatus)
+* [PullSmsReplyStatus](https://cloud.tencent.com/document/api/382/67948#PullSmsReplyStatus)
 
 	* <font color="#dd0000">**修改成员**：</font>ExtendCode
 
-* [SendStatusStatistics](https://cloud.tencent.com/document/api/#/##SendStatusStatistics)
+* [SendStatusStatistics](https://cloud.tencent.com/document/api/382/67948#SendStatusStatistics)
 
 	* 新增成员：FeeCount, RequestCount, RequestSuccessCount
 
@@ -48902,15 +49059,15 @@
 
 新增接口：
 
-* [CallbackStatusStatistics](https://cloud.tencent.com/document/api/#/#)
-* [SendStatusStatistics](https://cloud.tencent.com/document/api/#/#)
-* [SmsPackagesStatistics](https://cloud.tencent.com/document/api/#/#)
+* [CallbackStatusStatistics](https://cloud.tencent.com/document/api/382/67930)
+* [SendStatusStatistics](https://cloud.tencent.com/document/api/382/67929)
+* [SmsPackagesStatistics](https://cloud.tencent.com/document/api/382/67928)
 
 新增数据结构：
 
-* [CallbackStatusStatistics](https://cloud.tencent.com/document/api/#/##CallbackStatusStatistics)
-* [SendStatusStatistics](https://cloud.tencent.com/document/api/#/##SendStatusStatistics)
-* [SmsPackagesStatistics](https://cloud.tencent.com/document/api/#/##SmsPackagesStatistics)
+* [CallbackStatusStatistics](https://cloud.tencent.com/document/api/382/67948#CallbackStatusStatistics)
+* [SendStatusStatistics](https://cloud.tencent.com/document/api/382/67948#SendStatusStatistics)
+* [SmsPackagesStatistics](https://cloud.tencent.com/document/api/382/67948#SmsPackagesStatistics)
 
 ### 第 2 次发布
 
@@ -48922,7 +49079,7 @@
 
 修改数据结构：
 
-* [PullSmsReplyStatus](https://cloud.tencent.com/document/api/#/##PullSmsReplyStatus)
+* [PullSmsReplyStatus](https://cloud.tencent.com/document/api/382/67948#PullSmsReplyStatus)
 
 	* <font color="#dd0000">**修改成员**：</font>ExtendCode, ReplyTime
 
@@ -48937,17 +49094,17 @@
 
 新增接口：
 
-* [PullSmsReplyStatus](https://cloud.tencent.com/document/api/#/#)
-* [PullSmsReplyStatusByPhoneNumber](https://cloud.tencent.com/document/api/#/#)
-* [PullSmsSendStatus](https://cloud.tencent.com/document/api/#/#)
-* [PullSmsSendStatusByPhoneNumber](https://cloud.tencent.com/document/api/#/#)
-* [SendSms](https://cloud.tencent.com/document/api/#/#)
+* [PullSmsReplyStatus](https://cloud.tencent.com/document/api/382/67945)
+* [PullSmsReplyStatusByPhoneNumber](https://cloud.tencent.com/document/api/382/67944)
+* [PullSmsSendStatus](https://cloud.tencent.com/document/api/382/67943)
+* [PullSmsSendStatusByPhoneNumber](https://cloud.tencent.com/document/api/382/67942)
+* [SendSms](https://cloud.tencent.com/document/api/382/67947)
 
 新增数据结构：
 
-* [PullSmsReplyStatus](https://cloud.tencent.com/document/api/#/##PullSmsReplyStatus)
-* [PullSmsSendStatus](https://cloud.tencent.com/document/api/#/##PullSmsSendStatus)
-* [SendStatus](https://cloud.tencent.com/document/api/#/##SendStatus)
+* [PullSmsReplyStatus](https://cloud.tencent.com/document/api/382/67948#PullSmsReplyStatus)
+* [PullSmsSendStatus](https://cloud.tencent.com/document/api/382/67948#PullSmsSendStatus)
+* [SendStatus](https://cloud.tencent.com/document/api/382/67948#SendStatus)
 
 
 
@@ -52418,6 +52575,23 @@
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 78 次发布
+
+发布时间：2022-01-13 09:02:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[SearchClsLog](https://cloud.tencent.com/document/api/876/68117)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[LogObject](https://cloud.tencent.com/document/api/876/34822#LogObject)](https://cloud.tencent.com/document/api/876/34822#[LogObject](https://cloud.tencent.com/document/api/876/34822#LogObject))
+* [[LogResObject](https://cloud.tencent.com/document/api/876/34822#LogResObject)](https://cloud.tencent.com/document/api/876/34822#[LogResObject](https://cloud.tencent.com/document/api/876/34822#LogResObject))
 
 ### 第 77 次发布
 
@@ -56283,6 +56457,32 @@
 
 
 ## 弹性微服务(tem) 版本：2021-07-01
+
+### 第 10 次发布
+
+发布时间：2022-01-12 08:15:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeployApplication](https://cloud.tencent.com/document/api/1371/60158)
+
+	* 新增入参：ConfEdited, SpeedUp, StartupProbe
+
+
+修改数据结构：
+
+* [DeployStrategyConf](https://cloud.tencent.com/document/api/1371/60171#DeployStrategyConf)
+
+	* 新增成员：MinAvailable
+
+* [Pair](https://cloud.tencent.com/document/api/1371/60171#Pair)
+
+	* 新增成员：Type, Config
+
 
 ### 第 9 次发布
 

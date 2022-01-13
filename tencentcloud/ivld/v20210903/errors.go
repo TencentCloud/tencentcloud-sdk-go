@@ -17,6 +17,21 @@ package v20210903
 const (
 	// 此产品的特有错误码
 
+	// SecredId失效。
+	AUTHFAILURE_INVALIDSECRETID = "AuthFailure.InvalidSecretId"
+
+	// MFA失败。
+	AUTHFAILURE_MFAFAILURE = "AuthFailure.MFAFailure"
+
+	// SecretId不存在。
+	AUTHFAILURE_SECRETIDNOTFOUND = "AuthFailure.SecretIdNotFound"
+
+	// 签名已过期。
+	AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+
+	// 签名校验失败。
+	AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+
 	// 任务已完成。
 	AUTHFAILURE_TASKFINISHED = "AuthFailure.TaskFinished"
 
@@ -34,6 +49,9 @@ const (
 
 	// 自定义人物分类已存在。
 	FAILEDOPERATION_CATEGORYEXIST = "FailedOperation.CategoryExist"
+
+	// 自定义类型层级变化。
+	FAILEDOPERATION_CATEGORYLEVELCHANGED = "FailedOperation.CategoryLevelChanged"
 
 	// 自定义人物分类被引用，不能删除。
 	FAILEDOPERATION_CATEGORYREFERRED = "FailedOperation.CategoryReferred"
@@ -137,10 +155,10 @@ const (
 	// 图片ID不合法。
 	INVALIDPARAMETER_INVALIDIMAGEID = "InvalidParameter.InvalidImageId"
 
-	// 一级自定义标签不合法。
+	// 一级自定义类型不合法。
 	INVALIDPARAMETER_INVALIDL1CATEGORY = "InvalidParameter.InvalidL1Category"
 
-	// 二级自定义标签不合法。
+	// 二级自定义类型不合法。
 	INVALIDPARAMETER_INVALIDL2CATEGORY = "InvalidParameter.InvalidL2Category"
 
 	// MD5不合法。
@@ -214,6 +232,12 @@ const (
 
 	// 同时发起过多任务。
 	REQUESTLIMITEXCEEDED_CONCURRENCYOVERFLOW = "RequestLimitExceeded.ConcurrencyOverflow"
+
+	// 自定义人物类型不存在。
+	RESOURCENOTFOUND_CUSTOMCATEGORYNOTFOUND = "ResourceNotFound.CustomCategoryNotFound"
+
+	// 自定义人物库不存在。
+	RESOURCENOTFOUND_CUSTOMGROUPNOTFOUND = "ResourceNotFound.CustomGroupNotFound"
 
 	// 媒资文件不存在。
 	RESOURCENOTFOUND_MEDIANOTFOUND = "ResourceNotFound.MediaNotFound"

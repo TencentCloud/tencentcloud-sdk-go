@@ -569,6 +569,9 @@ type CreateNatFwInstanceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// 防火墙实例id
+		CfwInsId *string `json:"CfwInsId,omitempty" name:"CfwInsId"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -650,6 +653,10 @@ func (r *CreateNatFwInstanceWithDomainRequest) FromJsonString(s string) error {
 type CreateNatFwInstanceWithDomainResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
+		// nat实例信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CfwInsId *string `json:"CfwInsId,omitempty" name:"CfwInsId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2956,6 +2963,10 @@ type DescribeVpcRuleOverviewResponse struct {
 		// 启用规则数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		StartRuleNum *uint64 `json:"StartRuleNum,omitempty" name:"StartRuleNum"`
+
+		// 规则总量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

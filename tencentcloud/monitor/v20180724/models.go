@@ -5243,6 +5243,14 @@ type URLNotice struct {
 	// 验证码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidationCode *string `json:"ValidationCode,omitempty" name:"ValidationCode"`
+
+	// 通知开始时间 一天开始的秒数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 通知结束时间 一天开始的秒数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
 }
 
 type UnBindingAllPolicyObjectRequest struct {

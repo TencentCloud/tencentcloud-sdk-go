@@ -2598,6 +2598,156 @@ func (c *Client) GetUserResourceInfoWithContext(ctx context.Context, request *Ge
     return
 }
 
+func NewListLogRequest() (request *ListLogRequest) {
+    request = &ListLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "ListLog")
+    
+    
+    return
+}
+
+func NewListLogResponse() (response *ListLogResponse) {
+    response = &ListLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListLog
+// 本接口（ListLog）用于查看日志信息 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ListLog(request *ListLogRequest) (response *ListLogResponse, err error) {
+    if request == nil {
+        request = NewListLogRequest()
+    }
+    
+    response = NewListLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ListLog
+// 本接口（ListLog）用于查看日志信息 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ListLogWithContext(ctx context.Context, request *ListLogRequest) (response *ListLogResponse, err error) {
+    if request == nil {
+        request = NewListLogRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewListLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListLogPayloadRequest() (request *ListLogPayloadRequest) {
+    request = &ListLogPayloadRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "ListLogPayload")
+    
+    
+    return
+}
+
+func NewListLogPayloadResponse() (response *ListLogPayloadResponse) {
+    response = &ListLogPayloadResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListLogPayload
+// 获取日志内容列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ListLogPayload(request *ListLogPayloadRequest) (response *ListLogPayloadResponse, err error) {
+    if request == nil {
+        request = NewListLogPayloadRequest()
+    }
+    
+    response = NewListLogPayloadResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ListLogPayload
+// 获取日志内容列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ListLogPayloadWithContext(ctx context.Context, request *ListLogPayloadRequest) (response *ListLogPayloadResponse, err error) {
+    if request == nil {
+        request = NewListLogPayloadRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewListLogPayloadResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListSDKLogRequest() (request *ListSDKLogRequest) {
+    request = &ListSDKLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "ListSDKLog")
+    
+    
+    return
+}
+
+func NewListSDKLogResponse() (response *ListSDKLogResponse) {
+    response = &ListSDKLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListSDKLog
+// 获取设备上报的日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) ListSDKLog(request *ListSDKLogRequest) (response *ListSDKLogResponse, err error) {
+    if request == nil {
+        request = NewListSDKLogRequest()
+    }
+    
+    response = NewListSDKLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ListSDKLog
+// 获取设备上报的日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) ListSDKLogWithContext(ctx context.Context, request *ListSDKLogRequest) (response *ListSDKLogResponse, err error) {
+    if request == nil {
+        request = NewListSDKLogRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewListSDKLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPublishAsDeviceRequest() (request *PublishAsDeviceRequest) {
     request = &PublishAsDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -152,7 +152,7 @@ type CreateConsoleLoginUrlRequest struct {
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 控制台指定模块，文件/合同管理:"DOCUMENT"，模版管理:"TEMPLATE"，印章管理:"SEAL"，组织架构/人员:"OPERATOR"，空字符串："账号信息"
+	// 控制台指定模块，文件/合同管理:"DOCUMENT"，模板管理:"TEMPLATE"，印章管理:"SEAL"，组织架构/人员:"OPERATOR"，空字符串："账号信息"
 	Module *string `json:"Module,omitempty" name:"Module"`
 
 	// 控制台指定模块Id
@@ -1283,7 +1283,7 @@ type TemplateInfo struct {
 	// 模板创建的时间戳（精确到秒）
 	CreatedOn *int64 `json:"CreatedOn,omitempty" name:"CreatedOn"`
 
-	// 模板类型：1-静默签；2-静默签授权；3-普通模版
+	// 模板类型：1-静默签；2-静默签授权；3-普通模板
 	TemplateType *int64 `json:"TemplateType,omitempty" name:"TemplateType"`
 
 	// 模板中的流程参与人信息

@@ -251,6 +251,9 @@ const (
 	// 找不到指定的虚拟私有网络。
 	INVALIDPARAMETER_VPCNOTFOUND = "InvalidParameter.VpcNotFound"
 
+	// 可用区信息错误。
+	INVALIDPARAMETER_ZONEIDILLEGAL = "InvalidParameter.ZoneIdIllegal"
+
 	// 想要创建的账号已经存在。
 	INVALIDPARAMETERVALUE_ACCOUNTALREADYEXISTS = "InvalidParameterValue.AccountAlreadyExists"
 

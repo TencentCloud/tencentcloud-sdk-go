@@ -193,6 +193,33 @@ type BrokerSubscribe struct {
 	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
 }
 
+type CLSLogItem struct {
+
+	// 日志内容
+	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 设备名称
+	Devicename *string `json:"Devicename,omitempty" name:"Devicename"`
+
+	// 产品ID
+	Productid *string `json:"Productid,omitempty" name:"Productid"`
+
+	// 请求ID
+	Requestid *string `json:"Requestid,omitempty" name:"Requestid"`
+
+	// 结果
+	Result *string `json:"Result,omitempty" name:"Result"`
+
+	// 模块
+	Scene *string `json:"Scene,omitempty" name:"Scene"`
+
+	// 日志时间
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 腾讯云账号
+	Userid *string `json:"Userid,omitempty" name:"Userid"`
+}
+
 type CancelDeviceFirmwareTaskRequest struct {
 	*tchttp.BaseRequest
 
@@ -3234,6 +3261,228 @@ func (r *GetUserResourceInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ListLogPayloadRequest struct {
+	*tchttp.BaseRequest
+
+	// 日志开始时间
+	MinTime *uint64 `json:"MinTime,omitempty" name:"MinTime"`
+
+	// 日志结束时间
+	MaxTime *uint64 `json:"MaxTime,omitempty" name:"MaxTime"`
+
+	// 查询关键字，可以同时支持键值查询和文本查询，例如，查询某key的值为value，并且包含某word的日志，该参数为：key:value word。键值或文本可以包含多个，以空格隔开。其中可以索引的key比如：RequestID、ProductID、DeviceName等。
+	// 一个典型的查询示例：ProductID:ABCDE12345 DeviceName:test publish
+	Keywords *string `json:"Keywords,omitempty" name:"Keywords"`
+
+	// 日志检索上下文
+	Context *string `json:"Context,omitempty" name:"Context"`
+
+	// 日志最大条数
+	MaxNum *int64 `json:"MaxNum,omitempty" name:"MaxNum"`
+}
+
+func (r *ListLogPayloadRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListLogPayloadRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MinTime")
+	delete(f, "MaxTime")
+	delete(f, "Keywords")
+	delete(f, "Context")
+	delete(f, "MaxNum")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListLogPayloadRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListLogPayloadResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 日志上下文
+		Context *string `json:"Context,omitempty" name:"Context"`
+
+		// 是否还有日志，如有仍有日志，下次查询的请求带上当前请求返回的Context
+		Listover *bool `json:"Listover,omitempty" name:"Listover"`
+
+		// 日志列表
+		Results []*PayloadLogItem `json:"Results,omitempty" name:"Results"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListLogPayloadResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListLogPayloadResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListLogRequest struct {
+	*tchttp.BaseRequest
+
+	// 日志开始时间
+	MinTime *uint64 `json:"MinTime,omitempty" name:"MinTime"`
+
+	// 日志结束时间
+	MaxTime *uint64 `json:"MaxTime,omitempty" name:"MaxTime"`
+
+	// 查询关键字，可以同时支持键值查询和文本查询，例如，查询某key的值为value，并且包含某word的日志，该参数为：key:value word。键值或文本可以包含多个，以空格隔开。其中可以索引的key包括：requestid、productid、devicename、scene、content。
+	// 一个典型的查询示例：productid:ABCDE12345 devicename:test scene:SHADOW content:Device%20connect publish
+	Keywords *string `json:"Keywords,omitempty" name:"Keywords"`
+
+	// 日志检索上下文
+	Context *string `json:"Context,omitempty" name:"Context"`
+
+	// 查询条数
+	MaxNum *int64 `json:"MaxNum,omitempty" name:"MaxNum"`
+}
+
+func (r *ListLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MinTime")
+	delete(f, "MaxTime")
+	delete(f, "Keywords")
+	delete(f, "Context")
+	delete(f, "MaxNum")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListLogResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 日志上下文
+		Context *string `json:"Context,omitempty" name:"Context"`
+
+		// 是否还有日志，如有仍有日志，下次查询的请求带上当前请求返回的Context
+		Listover *bool `json:"Listover,omitempty" name:"Listover"`
+
+		// 日志列表
+		Results []*CLSLogItem `json:"Results,omitempty" name:"Results"`
+
+		// 日志总条数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListSDKLogRequest struct {
+	*tchttp.BaseRequest
+
+	// 日志开始时间
+	MinTime *uint64 `json:"MinTime,omitempty" name:"MinTime"`
+
+	// 日志结束时间
+	MaxTime *uint64 `json:"MaxTime,omitempty" name:"MaxTime"`
+
+	// 查询关键字，可以同时支持键值查询和文本查询，
+	// 例如，查询某key的值为value，并且包含某word的日志，该参数为：key:value word。
+	// 键值或文本可以包含多个，以空格隔开。
+	// 其中可以索引的key包括：productid、devicename、loglevel
+	// 一个典型的查询示例：productid:7JK1G72JNE devicename:name publish loglevel:WARN一个典型的查询示例：productid:ABCDE12345 devicename:test scene:SHADOW publish
+	Keywords *string `json:"Keywords,omitempty" name:"Keywords"`
+
+	// 日志检索上下文
+	Context *string `json:"Context,omitempty" name:"Context"`
+
+	// 查询条数
+	MaxNum *uint64 `json:"MaxNum,omitempty" name:"MaxNum"`
+}
+
+func (r *ListSDKLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListSDKLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MinTime")
+	delete(f, "MaxTime")
+	delete(f, "Keywords")
+	delete(f, "Context")
+	delete(f, "MaxNum")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListSDKLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListSDKLogResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 日志检索上下文
+		Context *string `json:"Context,omitempty" name:"Context"`
+
+		// 是否还有日志，如有仍有日志，下次查询的请求带上当前请求返回的Context
+		Listover *bool `json:"Listover,omitempty" name:"Listover"`
+
+		// 日志列表
+		Results []*SDKLogItem `json:"Results,omitempty" name:"Results"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListSDKLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListSDKLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type MultiDevicesInfo struct {
 
 	// 设备名
@@ -3253,6 +3502,39 @@ type MultiDevicesInfo struct {
 
 	// 错误信息
 	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+}
+
+type PayloadLogItem struct {
+
+	// 账号id
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 产品id
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 来源类型
+	SrcType *string `json:"SrcType,omitempty" name:"SrcType"`
+
+	// 来源名称
+	SrcName *string `json:"SrcName,omitempty" name:"SrcName"`
+
+	// 消息topic
+	Topic *string `json:"Topic,omitempty" name:"Topic"`
+
+	// 内容格式类型
+	PayloadFmtType *string `json:"PayloadFmtType,omitempty" name:"PayloadFmtType"`
+
+	// 内容信息
+	Payload *string `json:"Payload,omitempty" name:"Payload"`
+
+	// 请求ID
+	RequestID *string `json:"RequestID,omitempty" name:"RequestID"`
+
+	// 日期时间
+	DateTime *string `json:"DateTime,omitempty" name:"DateTime"`
 }
 
 type ProductInfo struct {
@@ -3874,6 +4156,24 @@ func (r *RetryDeviceFirmwareTaskResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RetryDeviceFirmwareTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SDKLogItem struct {
+
+	// 产品ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 日志等级
+	Level *string `json:"Level,omitempty" name:"Level"`
+
+	// 日志时间
+	DateTime *string `json:"DateTime,omitempty" name:"DateTime"`
+
+	// 日志内容
+	Content *string `json:"Content,omitempty" name:"Content"`
 }
 
 type SearchKeyword struct {

@@ -3444,6 +3444,10 @@ type TriggerAction struct {
 	// 设置定时触发器的时间配置，cron表达式。Cron 表达式有七个必需字段，按空格分隔。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerCronConfig *string `json:"TriggerCronConfig,omitempty" name:"TriggerCronConfig"`
+
+	// 预置类型 Default
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProvisionedType *string `json:"ProvisionedType,omitempty" name:"ProvisionedType"`
 }
 
 type TriggerCount struct {

@@ -3802,6 +3802,68 @@ func (c *Client) RestartDBInstancesWithContext(ctx context.Context, request *Res
     return
 }
 
+func NewSwitchDBInstanceHARequest() (request *SwitchDBInstanceHARequest) {
+    request = &SwitchDBInstanceHARequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mariadb", APIVersion, "SwitchDBInstanceHA")
+    
+    
+    return
+}
+
+func NewSwitchDBInstanceHAResponse() (response *SwitchDBInstanceHAResponse) {
+    response = &SwitchDBInstanceHAResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SwitchDBInstanceHA
+// 本接口（SwitchDBInstanceHA）用于发起实例主备切换。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATEFLOWFAILED = "InternalError.CreateFlowFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETINSTANCEDETAILFAILED = "InternalError.GetInstanceDetailFailed"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_ZONEIDILLEGAL = "InvalidParameter.ZoneIdIllegal"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNSUPPORTEDOPERATION_INVALIDOPERATION = "UnsupportedOperation.InvalidOperation"
+func (c *Client) SwitchDBInstanceHA(request *SwitchDBInstanceHARequest) (response *SwitchDBInstanceHAResponse, err error) {
+    if request == nil {
+        request = NewSwitchDBInstanceHARequest()
+    }
+    
+    response = NewSwitchDBInstanceHAResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SwitchDBInstanceHA
+// 本接口（SwitchDBInstanceHA）用于发起实例主备切换。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATEFLOWFAILED = "InternalError.CreateFlowFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETINSTANCEDETAILFAILED = "InternalError.GetInstanceDetailFailed"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_ZONEIDILLEGAL = "InvalidParameter.ZoneIdIllegal"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNSUPPORTEDOPERATION_INVALIDOPERATION = "UnsupportedOperation.InvalidOperation"
+func (c *Client) SwitchDBInstanceHAWithContext(ctx context.Context, request *SwitchDBInstanceHARequest) (response *SwitchDBInstanceHAResponse, err error) {
+    if request == nil {
+        request = NewSwitchDBInstanceHARequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewSwitchDBInstanceHAResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpgradeDBInstanceRequest() (request *UpgradeDBInstanceRequest) {
     request = &UpgradeDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},

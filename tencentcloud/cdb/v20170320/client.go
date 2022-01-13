@@ -4046,7 +4046,7 @@ func NewDescribeParamTemplatesResponse() (response *DescribeParamTemplatesRespon
 }
 
 // DescribeParamTemplates
-// 该接口（DescribeParamTemplates）查询参数模板列表。
+// 该接口（DescribeParamTemplates）查询参数模板列表，全地域公共参数Region均为ap-guangzhou。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4063,7 +4063,7 @@ func (c *Client) DescribeParamTemplates(request *DescribeParamTemplatesRequest) 
 }
 
 // DescribeParamTemplates
-// 该接口（DescribeParamTemplates）查询参数模板列表。
+// 该接口（DescribeParamTemplates）查询参数模板列表，全地域公共参数Region均为ap-guangzhou。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4860,7 +4860,7 @@ func NewDescribeUploadedFilesResponse() (response *DescribeUploadedFilesResponse
 }
 
 // DescribeUploadedFiles
-// 本接口(DescribeUploadedFiles)用于查询用户导入的SQL文件列表。
+// 本接口(DescribeUploadedFiles)用于查询用户导入的SQL文件列表，全地域公共参数Region均为ap-shanghai。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_COSERROR = "InternalError.CosError"
@@ -4877,7 +4877,7 @@ func (c *Client) DescribeUploadedFiles(request *DescribeUploadedFilesRequest) (r
 }
 
 // DescribeUploadedFiles
-// 本接口(DescribeUploadedFiles)用于查询用户导入的SQL文件列表。
+// 本接口(DescribeUploadedFiles)用于查询用户导入的SQL文件列表，全地域公共参数Region均为ap-shanghai。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_COSERROR = "InternalError.CosError"

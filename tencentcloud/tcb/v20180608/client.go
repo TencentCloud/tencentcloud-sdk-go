@@ -4156,6 +4156,60 @@ func (c *Client) RollUpdateCloudBaseRunServerVersionWithContext(ctx context.Cont
     return
 }
 
+func NewSearchClsLogRequest() (request *SearchClsLogRequest) {
+    request = &SearchClsLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "SearchClsLog")
+    
+    
+    return
+}
+
+func NewSearchClsLogResponse() (response *SearchClsLogResponse) {
+    response = &SearchClsLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SearchClsLog
+// 搜索CLS日志，TCB角色秘钥访问
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) SearchClsLog(request *SearchClsLogRequest) (response *SearchClsLogResponse, err error) {
+    if request == nil {
+        request = NewSearchClsLogRequest()
+    }
+    
+    response = NewSearchClsLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SearchClsLog
+// 搜索CLS日志，TCB角色秘钥访问
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) SearchClsLogWithContext(ctx context.Context, request *SearchClsLogRequest) (response *SearchClsLogResponse, err error) {
+    if request == nil {
+        request = NewSearchClsLogRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewSearchClsLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTurnOffStandaloneGatewayRequest() (request *TurnOffStandaloneGatewayRequest) {
     request = &TurnOffStandaloneGatewayRequest{
         BaseRequest: &tchttp.BaseRequest{},

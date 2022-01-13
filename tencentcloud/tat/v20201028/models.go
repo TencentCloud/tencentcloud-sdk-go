@@ -203,7 +203,7 @@ type CreateCommandRequest struct {
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 在 CVM 或 Lighthouse 实例中执行命令的用户名称。
-	// 使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。默认情况下，在 Linux 实例中以 root 用户执行命令；Windows 实例当前仅支持以 System 用户执行命令。
+	// 使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。默认情况下，在 Linux 实例中以 root 用户执行命令；在Windows 实例中以 System 用户执行命令。
 	Username *string `json:"Username,omitempty" name:"Username"`
 
 	// 指定日志上传的cos bucket 地址，必须以https开头，如 https://BucketName-123454321.cos.ap-beijing.myqcloud.com。
@@ -1306,7 +1306,7 @@ type ModifyCommandRequest struct {
 	DefaultParameters *string `json:"DefaultParameters,omitempty" name:"DefaultParameters"`
 
 	// 在 CVM 或 Lighthouse 实例中执行命令的用户名称。
-	// 使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。Windows 实例当前仅支持以 System 用户执行命令。
+	// 使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。
 	Username *string `json:"Username,omitempty" name:"Username"`
 
 	// 指定日志上传的cos bucket 地址，必须以https开头，如 https://BucketName-123454321.cos.ap-beijing.myqcloud.com。
@@ -1572,7 +1572,7 @@ type RunCommandRequest struct {
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 在 CVM 或 Lighthouse 实例中执行命令的用户名称。
-	// 使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。默认情况下，在 Linux 实例中以 root 用户执行命令；Windows 实例当前仅支持以 System 用户执行命令。
+	// 使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。默认情况下，在 Linux 实例中以 root 用户执行命令；在Windows 实例中以 System 用户执行命令。
 	Username *string `json:"Username,omitempty" name:"Username"`
 
 	// 指定日志上传的cos bucket 地址，必须以https开头，如 https://BucketName-123454321.cos.ap-beijing.myqcloud.com。

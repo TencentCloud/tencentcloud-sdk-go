@@ -266,7 +266,7 @@ type AuthorizationInfoSearchCriteria struct {
 	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
 }
 
-type AuthorizationResouceEntityInfo struct {
+type AuthorizationResourceEntityInfo struct {
 
 	// 授权关系的唯一ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1313,7 +1313,7 @@ type DescribeOrgResourcesAuthorizationResponse struct {
 
 		// 资源列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		AuthorizationOrgResourceList []*AuthorizationResouceEntityInfo `json:"AuthorizationOrgResourceList,omitempty" name:"AuthorizationOrgResourceList"`
+		AuthorizationOrgResourceList []*AuthorizationResourceEntityInfo `json:"AuthorizationOrgResourceList,omitempty" name:"AuthorizationOrgResourceList"`
 
 		// 资源数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1467,7 +1467,7 @@ type DescribeUserGroupResourcesAuthorizationResponse struct {
 
 		// 资源列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		AuthorizationUserGroupResourceList []*AuthorizationResouceEntityInfo `json:"AuthorizationUserGroupResourceList,omitempty" name:"AuthorizationUserGroupResourceList"`
+		AuthorizationUserGroupResourceList []*AuthorizationResourceEntityInfo `json:"AuthorizationUserGroupResourceList,omitempty" name:"AuthorizationUserGroupResourceList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

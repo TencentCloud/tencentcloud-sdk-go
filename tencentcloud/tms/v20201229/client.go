@@ -90,7 +90,7 @@ func NewTextModerationResponse() (response *TextModerationResponse) {
 //
 // ### 接口调用说明：
 //
-// - 文本内容大小支持：文本原文base64编码后长度不能超过unicode编码长度10000；
+// - 文本内容大小支持：文本原文长度不能超过unicode编码长度10000个字符；
 //
 // - 文本审核语言支持：目前支持中文、英文、阿拉伯数字的检测；
 //
@@ -144,7 +144,7 @@ func (c *Client) TextModeration(request *TextModerationRequest) (response *TextM
 //
 // ### 接口调用说明：
 //
-// - 文本内容大小支持：文本原文base64编码后长度不能超过unicode编码长度10000；
+// - 文本内容大小支持：文本原文长度不能超过unicode编码长度10000个字符；
 //
 // - 文本审核语言支持：目前支持中文、英文、阿拉伯数字的检测；
 //

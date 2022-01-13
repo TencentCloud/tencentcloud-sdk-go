@@ -1442,6 +1442,72 @@ func (c *Client) GetSnapOverviewWithContext(ctx context.Context, request *GetSna
     return
 }
 
+func NewInitializeDisksRequest() (request *InitializeDisksRequest) {
+    request = &InitializeDisksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cbs", APIVersion, "InitializeDisks")
+    
+    
+    return
+}
+
+func NewInitializeDisksResponse() (response *InitializeDisksResponse) {
+    response = &InitializeDisksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// InitializeDisks
+// 重新初始化云硬盘至云硬盘初始创建时的状态。使用云硬盘的重新初始化功能时需要注意以下4点：
+//
+// 1. 如果云硬盘是由快照创建的，则重新初始化会通过此快照重新回滚此云硬盘，即将云硬盘恢复为与快照一致的状态；
+//
+// 2. 如果云硬盘不是通过快照创建的，则重新初始化会清空此云硬盘的数据；请在重新初始化云硬盘前检查并备份必要的数据；
+//
+// 3. 当前仅未挂载的、非共享属性的数据盘云硬盘支持重新初始化；
+//
+// 4. 当创建此云硬盘的原始快照被删除时，不再支持重新初始化此云硬盘。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) InitializeDisks(request *InitializeDisksRequest) (response *InitializeDisksResponse, err error) {
+    if request == nil {
+        request = NewInitializeDisksRequest()
+    }
+    
+    response = NewInitializeDisksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// InitializeDisks
+// 重新初始化云硬盘至云硬盘初始创建时的状态。使用云硬盘的重新初始化功能时需要注意以下4点：
+//
+// 1. 如果云硬盘是由快照创建的，则重新初始化会通过此快照重新回滚此云硬盘，即将云硬盘恢复为与快照一致的状态；
+//
+// 2. 如果云硬盘不是通过快照创建的，则重新初始化会清空此云硬盘的数据；请在重新初始化云硬盘前检查并备份必要的数据；
+//
+// 3. 当前仅未挂载的、非共享属性的数据盘云硬盘支持重新初始化；
+//
+// 4. 当创建此云硬盘的原始快照被删除时，不再支持重新初始化此云硬盘。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) InitializeDisksWithContext(ctx context.Context, request *InitializeDisksRequest) (response *InitializeDisksResponse, err error) {
+    if request == nil {
+        request = NewInitializeDisksRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewInitializeDisksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInquirePriceModifyDiskExtraPerformanceRequest() (request *InquirePriceModifyDiskExtraPerformanceRequest) {
     request = &InquirePriceModifyDiskExtraPerformanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
